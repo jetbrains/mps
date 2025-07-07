@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -290,7 +290,7 @@ public abstract class SAbstractConceptAdapter extends SNamedElementAdapter imple
 
   @Override
   public String toString() {
-    return getQualifiedName();
+    return myFqName;
   }
 
   public abstract String serialize();

@@ -555,10 +555,10 @@ public class UsagesView implements IExternalizeable {
             models.add(modelDescriptor);
           }
         }
-        return new ModelsToResources(models).resources();
+        return new ModelsToResources(models, true).resources();
       });
 
-      if (myMakeSession.compareAndSet(null, new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), false))) {
+      if (myMakeSession.compareAndSet(null, new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), true))) {
         try {
           IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
           if (makeService.openNewSession(myMakeSession.get())) {

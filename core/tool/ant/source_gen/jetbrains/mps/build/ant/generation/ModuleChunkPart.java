@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.tools.ant.types.DataType;
 import java.io.File;
 
-@GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/9096318311151864960", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
+@GeneratedClass(nodeId = "9096318311151864960", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class ModuleChunkPart extends DataType {
   private File myModuleFile;
   private boolean myBootstrap;

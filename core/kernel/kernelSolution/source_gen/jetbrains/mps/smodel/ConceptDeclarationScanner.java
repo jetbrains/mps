@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
  * Scanner of a model with {@code ConceptDeclarations}to find cross-model dependencies.
  * Much like {@link jetbrains.mps.smodel.ModelDependencyScanner } albeit narrow tailored for structure models and extends relation between Language modules.
  */
-@GeneratedClass(node = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/7408719695775110713", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
+@GeneratedClass(nodeId = "7408719695775110713", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
 public class ConceptDeclarationScanner {
   private final Set<SNode> myExternalConcepts = new HashSet<SNode>();
   private final Set<SNode> myExternalIfaces = new HashSet<SNode>();

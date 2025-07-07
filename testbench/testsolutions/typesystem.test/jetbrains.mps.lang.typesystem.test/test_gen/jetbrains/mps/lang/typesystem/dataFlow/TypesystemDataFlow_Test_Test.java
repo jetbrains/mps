@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -18,7 +18,7 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 @MPSLaunch
 public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TypesystemDataFlow_Test_Test.class, "${mps_home}", "r:492b107a-8575-4936-a6cc-bbf97899a142(jetbrains.mps.lang.typesystem.dataFlow@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypesystemDataFlow_Test_Test.class).projectPath(null).modelRef("r:492b107a-8575-4936-a6cc-bbf97899a142(jetbrains.mps.lang.typesystem.dataFlow@tests)").reopenProject(null).build());
 
   public TypesystemDataFlow_Test_Test() {
     super(ourParametersCacheExtension.getParametersCache());

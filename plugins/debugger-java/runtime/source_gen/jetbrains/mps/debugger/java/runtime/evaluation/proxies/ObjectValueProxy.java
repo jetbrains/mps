@@ -25,7 +25,7 @@ import com.sun.jdi.ClassNotLoadedException;
 import com.sun.jdi.IncompatibleThreadStateException;
 import com.sun.jdi.StringReference;
 
-@GeneratedClass(node = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)/3102837338444216503", model = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)")
+@GeneratedClass(nodeId = "3102837338444216503", model = "r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)")
 /*package*/ class ObjectValueProxy extends ValueProxy implements IObjectValueProxy {
   private ClassType myReferenceType;
   public ObjectValueProxy(ObjectReference v) {

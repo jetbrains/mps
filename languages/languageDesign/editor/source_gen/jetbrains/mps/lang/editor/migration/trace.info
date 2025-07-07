@@ -1273,6 +1273,96 @@
       <unit id="5181650540338073526" at="26,0,71,0" name="jetbrains.mps.lang.editor.migration.DependentModulesUtil" />
     </file>
   </root>
+  <root nodeRef="r:85a46d2f-efef-4783-8e02-3976663ecd73(jetbrains.mps.lang.editor.migration)/5455738218399931658">
+    <file name="Migrate_CellModelTxPropertyToExtendCellModel_WithRole.java">
+      <node id="5455738218399931658" at="25,0,26,0" concept="4" trace="description" />
+      <node id="5455738218399931658" at="26,30,27,23" concept="9" />
+      <node id="5455738218399931658" at="30,33,31,16" concept="9" />
+      <node id="5455738218399931658" at="33,41,34,17" concept="3" />
+      <node id="5455738218399931658" at="34,17,35,16" concept="9" />
+      <node id="5455738218399952089" at="38,5,39,64" concept="8" />
+      <node id="5455738218399952089" at="39,64,40,90" concept="8" />
+      <node id="5455738218399952089" at="40,90,41,63" concept="8" />
+      <node id="5291972363510705604" at="43,80,44,131" concept="3" />
+      <node id="5291972363510705612" at="44,131,45,72" concept="3" />
+      <node id="5291972363510649294" at="47,81,48,76" concept="3" />
+      <node id="5291972363510686896" at="48,76,49,80" concept="3" />
+      <node id="5455738218400019539" at="56,5,57,64" concept="8" />
+      <node id="5455738218400019539" at="57,64,58,90" concept="8" />
+      <node id="5455738218400019539" at="58,90,59,63" concept="8" />
+      <node id="5291972363510981855" at="62,38,63,126" concept="9" />
+      <node id="5291972363510987595" at="69,38,70,125" concept="9" />
+      <node id="5455738218400139238" at="73,9,74,108" concept="9" />
+      <node id="5455738218399931658" at="77,50,78,147" concept="9" />
+      <node id="5455738218399931658" at="82,0,83,0" concept="12" trace="CellModel_TransactionalProperty$zZ" />
+      <node id="5455738218399931658" at="86,0,87,0" concept="12" trace="relationDeclaration$E2hc" />
+      <node id="5455738218399931658" at="87,0,88,0" concept="12" trace="propertyOld$cqCy" />
+      <node id="5455738218399931658" at="91,0,92,0" concept="12" trace="allowEmptyText$Nme7" />
+      <node id="5455738218399931658" at="92,0,93,0" concept="12" trace="allowEmptyTextOld$gppz" />
+      <node id="5455738218399931658" at="26,0,29,0" concept="7" trace="getCaption#()Ljava/lang/String;" />
+      <node id="5291972363510981851" at="62,0,65,0" concept="7" trace="getMessage#()Ljava/lang/String;" />
+      <node id="5291972363510987591" at="69,0,72,0" concept="7" trace="getMessage#()Ljava/lang/String;" />
+      <node id="5455738218399931658" at="77,0,80,0" concept="7" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="5455738218399931658" at="29,0,33,0" concept="7" trace="isRerunnable#()Z" />
+      <node id="5455738218399931658" at="33,0,37,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5291972363510701976" at="42,175,46,9" concept="6" />
+      <node id="5291972363510679150" at="46,9,50,9" concept="6" />
+      <node id="5291972363510981846" at="60,296,65,10" concept="9" />
+      <node id="5291972363510987586" at="67,299,72,10" concept="9" />
+      <node id="5291972363510981826" at="59,63,66,9" concept="8" />
+      <node id="5291972363510987568" at="66,9,73,9" concept="8" />
+      <node id="5291972363510649275" at="41,63,51,9" concept="3" />
+      <node id="5455738218399952089" at="37,42,52,5" concept="0" />
+      <node id="5455738218399931658" at="37,0,54,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="5455738218400019539" at="55,45,75,5" concept="0" />
+      <node id="5455738218399931658" at="54,0,77,0" concept="7" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
+      <scope id="5455738218399931658" at="26,30,27,23" />
+      <scope id="5455738218399931658" at="30,33,31,16" />
+      <scope id="5291972363510981854" at="62,38,63,126" />
+      <scope id="5291972363510987594" at="69,38,70,125" />
+      <scope id="5455738218399931658" at="77,50,78,147" />
+      <scope id="5455738218399931658" at="33,41,35,16" />
+      <scope id="5291972363510701978" at="43,80,45,72" />
+      <scope id="5291972363510679152" at="47,81,49,80" />
+      <scope id="5455738218399931658" at="26,0,29,0" />
+      <scope id="5291972363510981851" at="62,0,65,0" />
+      <scope id="5291972363510987591" at="69,0,72,0" />
+      <scope id="5455738218399931658" at="77,0,80,0" />
+      <scope id="5455738218399931658" at="29,0,33,0" />
+      <scope id="5455738218399931658" at="33,0,37,0">
+        <var name="m" id="5455738218399931658" />
+      </scope>
+      <scope id="5291972363510981845" at="60,296,65,10" />
+      <scope id="5291972363510987585" at="67,299,72,10" />
+      <scope id="5291972363510649293" at="42,175,50,9" />
+      <scope id="5455738218399952089" at="38,5,51,9">
+        <var name="context" id="5455738218399952089" />
+        <var name="scope_1qfx22_a0e" id="5455738218399952089" />
+        <var name="scope_1qfx22_a0e_0" id="5455738218399952089" />
+      </scope>
+      <scope id="5455738218399931658" at="37,42,52,5" />
+      <scope id="5455738218399931658" at="37,0,54,0">
+        <var name="m" id="5455738218399931658" />
+      </scope>
+      <scope id="5455738218400019539" at="56,5,74,108">
+        <var name="context" id="5455738218400019539" />
+        <var name="scope_1qfx22_a0f" id="5455738218400019539" />
+        <var name="scope_1qfx22_a0f_0" id="5455738218400019539" />
+        <var name="seqAllowEmptyProblems" id="5291972363510987569" />
+        <var name="seqPropertyProblems" id="5291972363510981827" />
+      </scope>
+      <scope id="5455738218399931658" at="55,45,75,5" />
+      <scope id="5455738218399931658" at="54,0,77,0">
+        <var name="m" id="5455738218399931658" />
+      </scope>
+      <unit id="5455738218399931658" at="81,0,84,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$CONCEPTS" />
+      <unit id="5291972363510981849" at="61,19,65,9" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$1" />
+      <unit id="5291972363510987589" at="68,19,72,9" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$2" />
+      <unit id="5455738218399931658" at="85,0,89,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$LINKS" />
+      <unit id="5455738218399931658" at="90,0,94,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$PROPS" />
+      <unit id="5455738218399931658" at="24,0,95,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole" />
+    </file>
+  </root>
   <root nodeRef="r:85a46d2f-efef-4783-8e02-3976663ecd73(jetbrains.mps.lang.editor.migration)/7062604503501116899">
     <file name="RemoveCellModelCollectionDeprecatedProps.java">
       <node id="7062604503501116899" at="20,0,21,0" concept="4" trace="description" />
@@ -1756,8 +1846,8 @@
       <node id="2025969025285330884" at="53,157,54,81" concept="3" />
       <node id="2025969025285334257" at="56,175,57,81" concept="3" />
       <node id="2025969025285337194" at="59,175,60,81" concept="3" />
-      <node id="1680923497972683512" at="62,175,63,83" concept="8" />
-      <node id="1680923497969620393" at="63,83,64,0" concept="11" />
+      <node id="1680923497972683512" at="62,175,63,86" concept="8" />
+      <node id="1680923497969620393" at="63,86,64,0" concept="11" />
       <node id="10950666310589035" at="64,0,65,131" concept="8" />
       <node id="2025969025285345689" at="66,230,67,61" concept="3" />
       <node id="2025969025285348597" at="69,230,70,61" concept="3" />
@@ -1772,8 +1862,8 @@
       <node id="3899612785644323772" at="89,499,90,484" concept="3" />
       <node id="8885607660571258900" at="90,484,91,479" concept="3" />
       <node id="8885607660571272513" at="91,479,92,497" concept="3" />
-      <node id="8885607660571285802" at="92,497,93,475" concept="3" />
-      <node id="8885607660571295802" at="93,475,94,482" concept="3" />
+      <node id="8885607660571285802" at="92,497,93,481" concept="3" />
+      <node id="8885607660571295802" at="93,481,94,482" concept="3" />
       <node id="8885607660571304580" at="94,482,95,479" concept="3" />
       <node id="3899612785644111903" at="95,479,96,22" concept="9" />
       <node id="8267787266002295635" at="99,60,100,223" concept="9" />
@@ -1781,7 +1871,7 @@
       <node id="8267787266002295635" at="108,0,109,0" concept="12" trace="relationDeclaration$$vVu" />
       <node id="8267787266002295635" at="109,0,110,0" concept="12" trace="relationDeclaration$E2hc" />
       <node id="8267787266002295635" at="110,0,111,0" concept="12" trace="propertyDeclaration$Vpxj" />
-      <node id="8267787266002295635" at="111,0,112,0" concept="12" trace="property$cqCy" />
+      <node id="8267787266002295635" at="111,0,112,0" concept="12" trace="propertyOld$cqCy" />
       <node id="8267787266002295635" at="112,0,113,0" concept="12" trace="dataType$5j5Y" />
       <node id="8267787266002295635" at="113,0,114,0" concept="12" trace="handlerBlock$RPvD" />
       <node id="8267787266002295635" at="114,0,115,0" concept="12" trace="property$gitv" />

@@ -4,6 +4,6 @@ package jetbrains.mps.make.delta;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:0bcaf439-5bc6-429b-a457-4e0d9746449f(jetbrains.mps.make.delta)/6067326609049460296", model = "r:0bcaf439-5bc6-429b-a457-4e0d9746449f(jetbrains.mps.make.delta)")
+@GeneratedClass(nodeId = "6067326609049460296", model = "r:0bcaf439-5bc6-429b-a457-4e0d9746449f(jetbrains.mps.make.delta)")
 public interface IDeltaVisitor {
 }

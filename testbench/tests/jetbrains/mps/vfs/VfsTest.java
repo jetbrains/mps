@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,14 @@ package jetbrains.mps.vfs;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.ReadUtil;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
@@ -34,6 +36,7 @@ import java.util.function.Consumer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -46,17 +49,20 @@ public class VfsTest implements EnvironmentAware {
   private static final int FILE_SIZE = 20000;
 
   private static final String JAR_NAME = "testjar.zip";
-  private static final String JAR_SUFFIX = "!/testjar";
+  private static final String JAR_FOLDER = "testjar";
 
-  private static void IO_FS_TEST(final Consumer<FileSystem> testRunnable) {
-    testRunnable.accept(IoFileSystem.INSTANCE);
+  private Platform myPlatform;
+
+  private void IO_FS_TEST(final Consumer<FileSystem> testRunnable) {
+    VFSManager vfsManager = myPlatform.findComponent(VFSManager.class);
+    testRunnable.accept(vfsManager.getUmbrellaFileSystemJavaIO());
   }
 
   private static void IDEA_FS_TEST(final Consumer<FileSystem> testRunnable) {
     final Throwable[] ex = new Throwable[1];
     ApplicationManager.getApplication().invokeAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
       try {
-        testRunnable.accept(ApplicationManager.getApplication().getComponent(IdeaFileSystem.class));
+        testRunnable.accept(IdeaFileSystem.getInstance());
       } catch (Throwable e) {
         ex[0] = e;
       }
@@ -68,8 +74,9 @@ public class VfsTest implements EnvironmentAware {
   }
 
   @Override
-  public void setEnvironment(@NotNull Environment ignored) {
-    // Needs IdeaEnvironment, but doesn't utilize it
+  public void setEnvironment(@NotNull Environment env) {
+    // Needs IdeaEnvironment
+    myPlatform = env.getPlatform();
   }
 
   private static void doBaseVfsTest(@NotNull FileSystem fs) {
@@ -88,35 +95,29 @@ public class VfsTest implements EnvironmentAware {
     IFile file1 = subSubDir.findChild("file1");
     assertFalse(file1.exists());
     assertEquals(file1.getParent(), subSubDir);
-    try {
-      OutputStream os = file1.openOutputStream();
+    try (OutputStream os = file1.openOutputStream()) {
       for (int i = 0; i < FILE_SIZE; i++) {
         os.write(i % 256);
       }
-      os.close();
     } catch (IOException e) {
-      e.printStackTrace();
-      fail();
+      fail(e.getMessage());
     }
     assertTrue(file1.exists());
-    assertEquals(file1.length(), FILE_SIZE);
+    assertEquals(FILE_SIZE, file1.length());
     assertEquals(Collections.singletonList(file1), subSubDir.getChildren());
 
-    try {
-      InputStream os = file1.openInputStream();
+    try (InputStream os = file1.openInputStream()) {
       for (int i = 0; i < FILE_SIZE; i++) {
         assertEquals(os.read(), i % 256);
       }
-      os.close();
     } catch (IOException e) {
-      e.printStackTrace();
-      fail();
+      fail(e.getMessage());
     }
 
-    assertTrue(file1.rename("file111"));
-    assertTrue(file1.getName().equals("file1"));
-    assertTrue(!file1.getParent().findChild("file111").equals(file1));
-    assertTrue(file1.getParent().findChild("file1").equals(file1));
+    IFile file111 = file1.rename1("file111");
+    assertEquals("file1", file1.getName());
+    assertNotEquals(file111, file1);
+    assertEquals(file1.getParent().findChild("file1"), file1);
     assertFalse(file1.exists());
 
     file1 =  file1.getParent().findChild("file111");
@@ -124,7 +125,7 @@ public class VfsTest implements EnvironmentAware {
     String path1Original = file1.getPath();
     file1 = file1.getParent().findChild("file1");
     assertTrue(file1.move(tmpDir));
-    assertFalse(file1.getPath().equals(path1Original));
+    assertNotEquals(file1.getPath(), path1Original);
     assertFalse(fs.getFile(path1Original).exists());
 
     assertTrue(tmpDir.delete());
@@ -132,22 +133,53 @@ public class VfsTest implements EnvironmentAware {
   }
 
   private static void doJarVfsTest(@NotNull FileSystem fileSystem) {
-    IFile jarRoot = fileSystem.getFile(VfsTest.class.getResource(JAR_NAME).getFile() + JAR_SUFFIX);
-    assertEquals(jarRoot.getChildren().size(), 3);
-    assertTrue(jarRoot.isDirectory());
-    assertTrue(jarRoot.isReadOnly());
-    assertTrue(jarRoot.isPackaged());
-    IFile readmeFile = jarRoot.findChild("README");
-    assertFalse(readmeFile.isDirectory());
-    try {
-      assertEquals("this is a test file\n", new String(ReadUtil.read(readmeFile.openInputStream())));
-    } catch (IOException e) {
-      e.printStackTrace();
-      fail();
-    }
+    String testJarPath = VfsTest.class.getResource(JAR_NAME).getPath();
+    IFile jarRoot1 = fileSystem.getFile(testJarPath + Path.ARCHIVE_SEPARATOR + JAR_FOLDER);
+    testJarRoot(jarRoot1);
+
+    IFile testJarFile = fileSystem.getFile(testJarPath);
 
     try {
-      readmeFile.openOutputStream();
+      assertTrue(testJarFile.isZipArchive());
+      assertFalse(testJarFile.isInZipArchive());
+      assertFalse(testJarFile.isDirectory());
+
+      IFile zipRoot = testJarFile.stepIntoArchive();
+      assertFalse(zipRoot.isZipArchive());
+      assertTrue(zipRoot.isInZipArchive());
+      assertTrue(zipRoot.isReadOnly());
+      assertTrue(zipRoot.isDirectory());
+
+      IFile jarRoot2 = zipRoot.findChild(JAR_FOLDER);
+      testJarRoot(jarRoot2);
+
+      assertEquals(jarRoot1, jarRoot2);
+
+      // stepUpToArchive
+      assertTrue(zipRoot.stepUpToArchive().isZipArchive());
+      assertTrue(jarRoot2.stepUpToArchive().isZipArchive());
+      assertEquals(zipRoot.stepUpToArchive(), jarRoot2.stepUpToArchive());
+      assertEquals(testJarFile, jarRoot2.stepUpToArchive()); // implies == zipRoot.stepUpToArchive()
+
+    } catch (IOException e) {
+      fail(e.getMessage());
+    }
+  }
+
+  private static void testJarRoot(IFile jarRoot) {
+    assertEquals(3, jarRoot.getChildren().size());
+    assertTrue(jarRoot.isDirectory());
+    assertTrue(jarRoot.isReadOnly());
+    assertTrue(jarRoot.isInZipArchive());
+    IFile readmeFile = jarRoot.findChild("README");
+    assertFalse(readmeFile.isDirectory());
+    try (InputStream is = readmeFile.openInputStream()) {
+      assertEquals("this is a test file\n", new String(ReadUtil.read(is)));
+    } catch (IOException e) {
+      fail(e.getMessage());
+    }
+
+    try (OutputStream ignored = readmeFile.openOutputStream()) {
       // if file was opened for output, it is an error
       fail();
     } catch (UnsupportedOperationException | IOException e) {
@@ -156,11 +188,10 @@ public class VfsTest implements EnvironmentAware {
 
     IFile file1 = jarRoot.findChild("dir1").findChild("subdir").findChild("file1");
 
-    try {
-      assertEquals("file1\n", new String(ReadUtil.read(file1.openInputStream())));
+    try (InputStream is = file1.openInputStream()) {
+      assertEquals("file1\n", new String(ReadUtil.read(is)));
     } catch (IOException e) {
-      e.printStackTrace();
-      fail();
+      fail(e.getMessage());
     }
 
     assertEquals(jarRoot.getPath(), file1.getParent().getParent().getParent().getPath());

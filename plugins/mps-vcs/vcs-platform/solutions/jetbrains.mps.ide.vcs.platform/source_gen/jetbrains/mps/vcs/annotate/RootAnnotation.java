@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
-import com.intellij.openapi.vfs.VirtualFile;
 import java.util.Map;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.concurrent.ConcurrentHashMap;
@@ -47,14 +46,13 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5611602621953836093", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "5611602621953836093", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ final class RootAnnotation implements CommitsGraphNodeConsumer {
 
   private final List<RootAnnotationUpdateListener> myUpdateListeners = ListSequence.fromList(new ArrayList<RootAnnotationUpdateListener>());
   private final SNodeId myRootId;
   private final ModelAccess myModelAccess;
   private RootCommitsGraphTraverser myRevisionsGraphTraverser;
-  private final VirtualFile myFile;
   private final Map<CommitsGraphNode, RevisionChanges> myAnnotation = new ConcurrentHashMap<CommitsGraphNode, RevisionChanges>();
   @Nullable
   private CommitsGraphNode myLocalCommitsGraphNode;
@@ -63,35 +61,33 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   private final List<CommitsGraphNode> myHiddenRevisions = ListSequence.fromList(new ArrayList<CommitsGraphNode>());
 
 
-  /*package*/ RootAnnotation(VirtualFile file, SNodeId rootId, ModelAccess modelAccess, @NotNull CommitsGraph commitsGraph) {
-    myFile = file;
+  /*package*/ RootAnnotation(SNodeId rootId, ModelAccess modelAccess, @NotNull CommitsGraph commitsGraph) {
     myRootId = rootId;
     myModelAccess = modelAccess;
     myCommitsGraph = commitsGraph;
   }
 
   /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel) throws RootCommitsGraphTraverser.ModelReadException {
-    CurrentRevision currentRevision = new CurrentRevision(myFile, new VcsRevisionNumber() {
-      @Override
-      public int compareTo(VcsRevisionNumber p0) {
-        return 0;
-      }
-      @NotNull
-      @Override
-      public String asString() {
-        return "Local Changes";
-      }
-    });
     if (currentModel != null) {
+      CurrentRevision currentRevision = new CurrentRevision(myCommitsGraph.getFile(), new VcsRevisionNumber() {
+        @Override
+        public int compareTo(VcsRevisionNumber p0) {
+          return 0;
+        }
+        @NotNull
+        @Override
+        public String asString() {
+          return "Local Changes";
+        }
+      });
       myLocalCommitsGraphNode = new CommitsGraphNode(currentRevision, currentModel);
       myCommitsGraph.addLocalRevisionNode(myLocalCommitsGraphNode);
     }
-    CommitsGraphNode startNode = myCommitsGraph.getHeadNode();
-    if (startNode == null) {
+    if (myCommitsGraph.getHeadNode() == null) {
       return;
     }
 
-    myRevisionsGraphTraverser = new RootCommitsGraphTraverser(startNode, myRootId, myFile, this);
+    myRevisionsGraphTraverser = new RootCommitsGraphTraverser(myCommitsGraph, myRootId, this);
     myRevisionsGraphTraverser.run();
     if (myRevisionsGraphTraverser.getException() != null) {
       throw myRevisionsGraphTraverser.getException();
@@ -103,7 +99,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   }
 
   /*package*/ void cancelAnnotate() {
-    check_nt8dt4_a0a91(myRevisionsGraphTraverser);
+    check_nt8dt4_a0a81(myRevisionsGraphTraverser);
   }
 
   /*package*/ synchronized Collection<RevisionChanges> getChanges() {
@@ -277,7 +273,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   /*package*/ List<CommitsGraphNode> getHiddenRevisions() {
     return myHiddenRevisions;
   }
-  private static void check_nt8dt4_a0a91(RootCommitsGraphTraverser checkedDotOperand) {
+  private static void check_nt8dt4_a0a81(RootCommitsGraphTraverser checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.stop();
     }

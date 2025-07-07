@@ -5,7 +5,6 @@
   <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
   <uses module="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="dp" />
   <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
-  <uses module="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3(MPS.Boot)" kind="dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" kind="dp" />
 </dependenciesRoot>

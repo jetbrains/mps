@@ -20,7 +20,7 @@ import com.sun.jdi.ThreadReference;
 import jetbrains.mps.debug.api.programState.IThread;
 import jetbrains.mps.debug.api.AbstractUiState;
 
-@GeneratedClass(node = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)/4352118152439825362", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
+@GeneratedClass(nodeId = "4352118152439825362", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
 public abstract class JavaUiStateImpl extends JavaUiState {
   protected final DebugSession myDebugSession;
   protected int myThreadIndex;

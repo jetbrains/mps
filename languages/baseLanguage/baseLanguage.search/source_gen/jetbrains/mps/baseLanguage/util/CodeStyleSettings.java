@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.references.Reference;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)/1650638035896359074", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
+@GeneratedClass(nodeId = "1650638035896359074", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
 public class CodeStyleSettings {
   private String myFieldPrefix;
   public String getFieldPrefix() {

@@ -22,7 +22,6 @@
     <import index="kip1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.nodefs(MPS.Platform/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -149,9 +148,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
@@ -605,14 +601,13 @@
             </node>
           </node>
           <node concept="2OqwBi" id="2n7wcdLayIv" role="2GsD0m">
-            <node concept="2OqwBi" id="2n7wcdLayIw" role="2Oq$k0">
-              <node concept="liA8E" id="2n7wcdLayIy" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="2n7wcdLayIz" role="37wK5m">
-                  <ref role="3VsUkX" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
-                </node>
-              </node>
-              <node concept="2OqwBi" id="3kLufn9Jln$" role="2Oq$k0">
+            <node concept="liA8E" id="2n7wcdLayI$" role="2OqNvi">
+              <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getTabDescriptors()" resolve="getTabDescriptors" />
+            </node>
+            <node concept="2YIFZM" id="4fcW_bTRvrk" role="2Oq$k0">
+              <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
+              <node concept="2OqwBi" id="3kLufn9Jln$" role="37wK5m">
                 <node concept="37vLTw" id="qh1hBLbpG7" role="2Oq$k0">
                   <ref role="3cqZAo" to="lcr:5A04Co8KyHu" resolve="myProject" />
                 </node>
@@ -620,9 +615,6 @@
                   <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
                 </node>
               </node>
-            </node>
-            <node concept="liA8E" id="2n7wcdLayI$" role="2OqNvi">
-              <ref role="37wK5l" to="xj2j:~ProjectPluginManager.getTabDescriptors()" resolve="getTabDescriptors" />
             </node>
           </node>
         </node>

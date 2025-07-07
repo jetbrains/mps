@@ -5,11 +5,11 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmDeclarationContainer;
+import kotlin.metadata.KmDeclarationContainer;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)/3463082351152539737", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
+@GeneratedClass(nodeId = "3463082351152539737", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
 public class KtModuleParser {
   public static List<SNode> parseDeclarations(KmDeclarationContainer pkg, final String parentFqName, final KtReadContext context) {
     final List<SNode> decls = new ArrayList<SNode>();

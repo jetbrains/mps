@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import gnu.trove.THashSet;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.ReadUtil;
 import org.jetbrains.annotations.NotNull;
 

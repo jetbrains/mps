@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.Constraints;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -41,6 +42,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Provisional code to get rid of reflection access to EditorComponent and IntentionsSupport internals
@@ -71,6 +73,9 @@ public class IntentionMenuProducer {
     List<AnAction> actions = new ArrayList<>();
     collectActionsAsIntentions(ActionManager.getInstance().getAction(MPSActions.ACTIONS_AS_INTENTIONS_GROUP), actions, dataContext);
 
+    List<AnAction> errorActions = new ArrayList<>();
+    collectActionsAsIntentions(ActionManager.getInstance().getAction(MPSActions.ACTIONS_AS_ERROR_INTENTIONS_GROUP), errorActions, dataContext);
+
     if (groupItems.isEmpty() && actions.isEmpty()) {
       return null;
     }
@@ -78,6 +83,11 @@ public class IntentionMenuProducer {
     for (final Pair<IntentionExecutable, SNode> pair : groupItems) {
       group.add(getIntentionActionOrGroup(pair.o1, pair.o2));
     }
+    errorActions = errorActions.stream().sorted((a, b) -> a.getTemplateText().compareTo(b.getTemplateText())).collect(Collectors.toList());
+    for (AnAction errorAction : errorActions) {
+      group.add(errorAction, Constraints.FIRST);
+    }
+    actions = actions.stream().sorted((a, b) -> a.getTemplateText().compareTo(b.getTemplateText())).collect(Collectors.toList());
     group.addAll(actions);
     return group;
   }
@@ -147,8 +157,9 @@ public class IntentionMenuProducer {
   }
 
   private static void collectActionsAsIntentions(AnAction action, List<AnAction> actions, DataContext dataContext) {
-    if (action instanceof ActionGroup) {
-      for (AnAction child : ((ActionGroup) action).getChildren(null)) {
+    if (action instanceof ActionGroup actionGroup) {
+      AnAction [] children = (actionGroup instanceof DefaultActionGroup dag) ? dag.getChildren(ActionManager.getInstance()) : actionGroup.getChildren(null);
+      for (AnAction child : children) {
         collectActionsAsIntentions(child, actions, dataContext);
       }
     } else if (action instanceof BaseAction) {

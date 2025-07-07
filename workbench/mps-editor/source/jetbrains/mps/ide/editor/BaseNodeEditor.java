@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,9 +83,7 @@ public abstract class BaseNodeEditor implements Editor {
       myMessageBusConnection.subscribe(
           EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> {
             if (myEditorComponent != null) {
-              // XXX no idea why update comes first, and backround change next
               myEditorComponent.update();
-              myEditorComponent.setBackground(StyleRegistry.getInstance().getEditorBackground());
             }
           }
       );
@@ -279,6 +277,15 @@ public abstract class BaseNodeEditor implements Editor {
 
   @Override
   public void loadState(@NotNull EditorState state) {
+    loadStateImpl(state, false);
+  }
+
+  @Override
+  public void loadState(@NotNull EditorState state, boolean isUndo) {
+    loadStateImpl(state, isUndo);
+  }
+
+  protected void loadStateImpl(@NotNull EditorState state, boolean isUndo) {
     if (!(state instanceof BaseEditorState)) {
       return;
     }
@@ -299,7 +306,7 @@ public abstract class BaseNodeEditor implements Editor {
         editorComponent.restoreState(s.memento);
 
         editorComponent.getFocusTracker().setEffectiveFocusState(s.isEditorFocused);
-        if (s.isEditorFocused && focusManager != null) {
+        if (!isUndo && s.isEditorFocused && focusManager != null) {
           focusManager.requestFocus(editorComponent, true);
         }
         editorComponent.deactivateSubstituteChooser();
@@ -308,27 +315,31 @@ public abstract class BaseNodeEditor implements Editor {
     if (s.inspectorMemento == null) {
       return;
     }
-    final EditorComponent inspectorEditorComponent = editorComponent.getInspector();
-    if (inspectorEditorComponent == null) {
-      LOG.error("No inspector - memento will not be restored");
-      return;
-    }
-    executeInEDT(new PrioritizedTask(TaskType.INSPECTOR_MEMENTO, myType2TaskMap) {
-      @Override
-      public void performTask() {
-        if (editorComponent.isDisposed()) {
-          return;
-        }
-        inspectorEditorComponent.restoreState(s.inspectorMemento);
-        inspectorEditorComponent.getFocusTracker().setEffectiveFocusState(s.isInspectorFocused);
-        if (s.isInspectorFocused && focusManager != null) {
-          InspectorTool inspectorTool = myProject.getComponent(InspectorTool.class);
-          if (inspectorTool != null && inspectorTool.isAvailable()) {
-            inspectorTool.activate();
+    InspectorTool.executeWhenInspectorAvailable(myProject, () -> {
+      executeInEDT(new PrioritizedTask(TaskType.INSPECTOR_MEMENTO, myType2TaskMap) {
+        @Override
+        public void performTask() {
+          if (editorComponent.isDisposed()) {
+            return;
           }
-          focusManager.requestFocus(inspectorEditorComponent, true);
+
+          final EditorComponent inspectorEditorComponent = editorComponent.getInspector();
+          if (inspectorEditorComponent == null) {
+            LOG.error("No inspector - memento will not be restored");
+            return;
+          }
+
+          inspectorEditorComponent.restoreState(s.inspectorMemento);
+          inspectorEditorComponent.getFocusTracker().setEffectiveFocusState(s.isInspectorFocused);
+          if (s.isInspectorFocused && focusManager != null) {
+            InspectorTool inspectorTool = InspectorTool.getInstance(myProject);
+            if (inspectorTool != null && inspectorTool.isAvailable()) {
+              inspectorTool.activate();
+            }
+            focusManager.requestFocus(inspectorEditorComponent, true);
+          }
         }
-      }
+      });
     });
   }
 

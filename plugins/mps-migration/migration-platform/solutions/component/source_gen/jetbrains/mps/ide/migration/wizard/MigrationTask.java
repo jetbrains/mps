@@ -16,6 +16,9 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.ide.migration.MigrationListener;
+import jetbrains.mps.smodel.structure.ExtensionPoint;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.Project;
 import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -40,10 +43,9 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.migration.global.ProjectMigration;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/961570622494166185", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
+@GeneratedClass(nodeId = "961570622494166185", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationTask {
   private static final Logger LOG = Logger.getLogger(MigrationTask.class);
   public static final String STARTED = "Migration started";
@@ -163,18 +165,24 @@ public class MigrationTask {
       }
     }
 
-    // from here, we don't ignore errors
-    addGlobalLabel(mySession.getProject(), STARTED);
-    Status pmStatus = runProjectMigrations(monitor.subTask(5, SubProgressKind.REPLACING));
-    if (!(pmStatus.isOk())) {
-      throw new MigrationExceptionError(pmStatus);
-    }
+    Iterable<MigrationListener> seq = new ExtensionPoint<MigrationListener>("jetbrains.mps.migration.listener.MigrationListenerEP").getObjects();
+    Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchStarted(mySession.getProject()));
+    try {
+      // from here, we don't ignore errors
+      addGlobalLabel(mySession.getProject(), STARTED);
+      Status pmStatus = runProjectMigrations(monitor.subTask(5, SubProgressKind.REPLACING));
+      if (!(pmStatus.isOk())) {
+        throw new MigrationExceptionError(pmStatus);
+      }
 
-    Status lmStatus = runLanguageMigrations(monitor.subTask(30, SubProgressKind.REPLACING));
-    if (!(lmStatus.isOk())) {
-      throw new MigrationExceptionError(lmStatus);
+      Status lmStatus = runLanguageMigrations(monitor.subTask(30, SubProgressKind.REPLACING));
+      if (!(lmStatus.isOk())) {
+        throw new MigrationExceptionError(lmStatus);
+      }
+      addGlobalLabel(mySession.getProject(), FINISHED);
+    } finally {
+      Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchEnded(mySession.getProject()));
     }
-    addGlobalLabel(mySession.getProject(), FINISHED);
 
     // todo move from here to migration annotations
     if (findNotMigrated(monitor.subTask(15, SubProgressKind.REPLACING))) {

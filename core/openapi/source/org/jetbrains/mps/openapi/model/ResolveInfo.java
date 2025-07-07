@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,13 @@ public interface ResolveInfo {
 
   static ResolveInfo of(@NotNull SNode plainTarget) {
     return new N(plainTarget);
+  }
+
+  /**
+   * @since 2025.1
+   */
+  static ResolveInfo of(@NotNull SNodeId nodeId, @Nullable String resolveInfo) {
+    return new D(nodeId, resolveInfo);
   }
 
   @Immutable
@@ -84,6 +91,24 @@ public interface ResolveInfo {
 
     public SNode getTargetNode() {
       return myTargetNode;
+    }
+  }
+
+  final class D implements ResolveInfo {
+    private final SNodeId myNodeId;
+    private final String myResolveInfo;
+
+    private D(SNodeId nodeId, String resolveInfo) {
+      myNodeId = nodeId;
+      myResolveInfo = resolveInfo;
+    }
+
+    public SNodeId getTargetNode() {
+      return myNodeId;
+    }
+    @Nullable
+    public String getValue() {
+      return myResolveInfo;
     }
   }
 }

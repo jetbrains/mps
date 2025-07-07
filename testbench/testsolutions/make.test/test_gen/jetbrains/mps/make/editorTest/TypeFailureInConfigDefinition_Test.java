@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class TypeFailureInConfigDefinition_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TypeFailureInConfigDefinition_Test.class, "${mps_home}", "r:44f67fb3-9f2f-48cf-be4d-4c511452435b(jetbrains.mps.make.editorTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypeFailureInConfigDefinition_Test.class).projectPath(null).modelRef("r:44f67fb3-9f2f-48cf-be4d-4c511452435b(jetbrains.mps.make.editorTest@tests)").reopenProject(false).build());
 
   public TypeFailureInConfigDefinition_Test() {
     super(ourParametersCacheExtension.getParametersCache());

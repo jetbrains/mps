@@ -1,10 +1,9 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.project;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.Project;
@@ -28,8 +27,7 @@ import jetbrains.mps.project.validation.ModelValidator;
 import jetbrains.mps.project.validation.ValidationUtil;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.smodel.SModelAdapter;
-import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
@@ -41,7 +39,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
@@ -54,9 +51,9 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -70,10 +67,10 @@ import java.util.function.Predicate;
   private final MessagesContainer myMessagesContainer;
   private final ModelGenerationStatusManager myGenerationStatusManager;
   private final MyLoadingListener myProjectListener = new MyLoadingListener();
-  private final MyModuleListener myModuleListener = new MyModuleListener();
   private final MyGenerationStatusListener myGenerationStatusListener = new MyGenerationStatusListener();
   private final MyRepositoryObserver myRepositoryObserver = new MyRepositoryObserver();
-  private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
+  private final AtomicBoolean myEnqueueAllModulesInProject = new AtomicBoolean(true);
+  private final AtomicBoolean myEnqueueAllModulesInRepository = new AtomicBoolean(true);
   private final Queue<SObject> myUpdatesQueue = new ConcurrentLinkedQueue<>();
   private final Map<SObject, AtomicInteger> myUpdateCardinality = new ConcurrentHashMap<>();
   private final Map<IFile, List<SModuleReference>> myModuleReferencesCache = new ConcurrentHashMap<>();
@@ -84,9 +81,6 @@ import java.util.function.Predicate;
     myProject = project;
     myMessagesContainer = messagesContainer;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-    forAllModulesInProject(this::registerListener);
-    enqueueAllModulesInProject();
-    enqueueAllModulesInRepository();
     mpsProject.addListener(myProjectListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryObserver).attach();
     myGenerationStatusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
@@ -105,13 +99,16 @@ import java.util.function.Predicate;
       if (mpsProject != null) {
         mpsProject.removeListener(myProjectListener);
         new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryObserver).detach();
-        forAllModulesInProject(this::unregisterListener);
       }
     }
     if (myGenerationStatusManager != null) {
       myGenerationStatusManager.removeGenerationStatusListener(myGenerationStatusListener);
     }
     myDisposed = true;
+  }
+
+  /*package*/ void refresh() {
+    enqueueAllModulesInProject();
   }
 
   protected Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
@@ -121,6 +118,16 @@ import java.util.function.Predicate;
       result = myModuleReferencesCache.getOrDefault(extractIoFile(descriptionFile), createCache());
     }
     return new SmartList<>(result);
+  }
+
+  protected SModelReference lookupProjectModel(IFile descriptionFile) {
+    SModelFileTracker fileTracker = SModelFileTracker.getInstance(ProjectHelper.fromIdeaProject(myProject).getRepository());
+    SModelReference result = fileTracker.modelFor(descriptionFile);
+    if (result == null) {
+      // model descriptor file might have been loaded with the "default" file system (java.io.File-based)
+      result = fileTracker.modelFor(extractIoFile(descriptionFile));
+    }
+    return result;
   }
 
   @Nullable
@@ -163,17 +170,25 @@ import java.util.function.Predicate;
     if (progressIndicator.isCanceled()) {
       return MissionControlRefreshRequest.NONE;
     }
-    
-    RefreshRequestBuilder requestBuilder = null;
-
-    for(SObject next; (next = myUpdatesQueue.poll()) != null;) {
-      AtomicInteger leftInQueue = myUpdateCardinality.computeIfPresent(next, (__, card) -> card.decrementAndGet() > 0 ? card : null);
-      if (leftInQueue != null) continue;
-      myUpdateCardinality.remove(next);
-      if (requestBuilder == null) {
-        requestBuilder = new RefreshRequestBuilder();
+    if (myEnqueueAllModulesInRepository.getAndSet(false)) {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("enqueueAllModulesInRepository");
       }
-      buildRequest(next, requestBuilder, this::checkModel, this::checkModule);
+      forAllModulesInRepository(this::enqueueUpdate);
+    }
+    if (myEnqueueAllModulesInProject.getAndSet(false)) {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("enqueueAllModulesInProject");
+      }
+      forAllModulesInProject(this::enqueueUpdate);
+    }
+    if (progressIndicator.isCanceled()) {
+      return MissionControlRefreshRequest.NONE;
+    }
+
+    RefreshRequestBuilder requestBuilder = null;
+    for(SObject next; (next = myUpdatesQueue.poll()) != null;) {
+      requestBuilder = buildRefreshRequest(next, requestBuilder);
       if (progressIndicator.isCanceled()) {
         break;
       }
@@ -182,18 +197,26 @@ import java.util.function.Predicate;
     return requestBuilder != null ? requestBuilder.toRefreshRequest() : MissionControlRefreshRequest.NONE;
   }
 
-  private void buildRequest(SObject sObject, RefreshRequestBuilder builder, Function<SModel, MessagesUpdate> modelChecker, Function<SModule, MessagesUpdate> moduleChecker) {
-    MessagesUpdate update = sObject.ifHasSModel(modelChecker);
+  @Nullable
+  private RefreshRequestBuilder buildRefreshRequest(SObject toUpdate, RefreshRequestBuilder requestBuilder) {
+    AtomicInteger leftInQueue = myUpdateCardinality.computeIfPresent(toUpdate, (__, card) -> card.decrementAndGet() > 0 ? card : null);
+    if (leftInQueue != null) return requestBuilder;
+    myUpdateCardinality.remove(toUpdate);
+    if (requestBuilder == null) {
+      requestBuilder = new RefreshRequestBuilder();
+    }
+    MessagesUpdate update = toUpdate.ifHasSModel(this::checkModel);
     if (update == null) {
-      update = sObject.ifHasSModule(moduleChecker);
+      update = toUpdate.ifHasSModule(this::checkModule);
     }
     if (update != null) {
-      builder.toUpdatePresentation.computeIfAbsent(update, __ ->new ArrayList<>()).add(sObject);
+      requestBuilder.toUpdatePresentation.computeIfAbsent(update, __ ->new ArrayList<>()).add(toUpdate);
     }
+    return requestBuilder;
   }
 
   private MessagesUpdate checkModule(SModule module) {
-    boolean wereMessagesReported = myMessagesContainer.clearMessages(module.getModuleReference());
+    boolean wereMessagesReported = myMessagesContainer.clearMessages(module);
     MessagesUpdate event = wereMessagesReported ? MessagesUpdate.DISAPPEARED : MessagesUpdate.NONE;
     if (module != null) {
       List<ModuleReportItem> messages = new ArrayList<>();
@@ -202,7 +225,7 @@ import java.util.function.Predicate;
         addGenerationStatusMessages(module, messages, myGenerationStatusManager::generationRequired);
       }
       if (!messages.isEmpty()) {
-        myMessagesContainer.reportMessages(module.getModuleReference(), messages);
+        myMessagesContainer.reportMessages(module, messages);
         event = event == MessagesUpdate.NONE ? MessagesUpdate.APPEARED : MessagesUpdate.CHANGED;
       }
       module.getModels().forEach(this::enqueueUpdate);
@@ -214,14 +237,17 @@ import java.util.function.Predicate;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     boolean wereMessagesReported = myMessagesContainer.clearMessages(model.getReference());
     MessagesUpdate event = wereMessagesReported ? MessagesUpdate.DISAPPEARED : MessagesUpdate.NONE;
-    if (model != null && !(model instanceof TransientSModel)) {
+    if (model != null) {
       List<ModelReportItem> messages = new ArrayList<>();
-      addValidationMessages(model, messages, mpsProject::getPlatform);
+      if (!(model instanceof TransientSModel)) {
+        // generation status messages are applicable to transient models, too
+        addValidationMessages(model, messages, mpsProject::getPlatform);
+      }
       if (myGenerationStatusManager != null) {
         addGenerationStatusMessages(model, messages, myGenerationStatusManager::generationRequired);
       }
       if (!messages.isEmpty()) {
-        myMessagesContainer.reportMessages(model.getReference(), messages);
+        myMessagesContainer.reportMessages(model, messages);
         event = event == MessagesUpdate.NONE ? MessagesUpdate.APPEARED : MessagesUpdate.CHANGED;
       }
     }
@@ -274,51 +300,21 @@ import java.util.function.Predicate;
     }
   }
 
-  private void registerListener(SModule module) {
-    module.addModuleListener(myModuleListener);
-  }
-
-  private void unregisterListener(SModule module) {
-    module.removeModuleListener(myModuleListener);
-  }
-
-  private void unregisterListener(SModelInternal model) {
-    model.removeModelListener(myModelChangeListener);
-  }
-
-  private void registerListener(SModelInternal model) {
-    model.addModelListener(myModelChangeListener);
-  }
-
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-    ApplicationManager.getApplication().invokeLater(() -> {
-      mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer);
-    });
+    mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer);
   }
 
   @SuppressWarnings("removal")
   private void forAllModulesInRepository(Consumer<SModule> moduleConsumer) {
     MPSModuleRepository repository = MPSModuleRepository.getInstance();
     if (repository == null) return;
-    ApplicationManager.getApplication().invokeLater(() -> {
-      repository.getModelAccess().runReadAction(() -> { repository.getModules().forEach(moduleConsumer); });
-    });
+    repository.getModules().forEach(moduleConsumer);
   }
 
   private void enqueueAllModulesInProject() {
-    if (LOG.isDebugEnabled()) {
-      LOG.debug("enqueueAllModulesInProject");
-    }
-    forAllModulesInProject(this::enqueueUpdate);
-  }
-
-  private void enqueueAllModulesInRepository() {
-    if (LOG.isDebugEnabled()) {
-      LOG.debug("enqueueAllModulesInRepository");
-    }
-    forAllModulesInRepository(this::enqueueUpdate);
+    myEnqueueAllModulesInProject.set(true);
   }
 
   private void enqueueUpdate(SModel model) {
@@ -374,49 +370,10 @@ import java.util.function.Predicate;
 
   }
 
-  private class MyModuleListener implements SModuleListener {
-
-    @Override
-    public void modelAdded(SModule module, SModel model) {
-      registerListener((SModelInternal) model);
-      enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      unregisterListener((SModelInternal) model);
-    }
-
-    @Override
-    public void modelRemoved(SModule module, SModelReference ref) {
-      myMessagesContainer.clearMessages(ref);
-      enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
-      myMessagesContainer.clearMessages(oldRef);
-      enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
-      myMessagesContainer.clearMessages(oldRef);
-      enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void moduleChanged(SModule module) {
-      enqueueUpdate(module);
-      enqueueAllModulesInProject();
-    }
-  }
-
   private class MyLoadingListener implements ProjectModuleLoadingListener {
 
     @Override
     public void moduleLoaded(ModulePath modulePath, @NotNull SModule module) {
-      registerListener(module);
       cacheModuleReference(modulePath.getFile(), module.getModuleReference());
       enqueueAllModulesInProject();
     }
@@ -425,8 +382,7 @@ import java.util.function.Predicate;
     public void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
       enqueueAllModulesInProject();
       clearModuleReference(modulePath.getFile(), module.getModuleReference());
-      myMessagesContainer.clearMessages(module.getModuleReference());
-      unregisterListener(module);
+      myMessagesContainer.clearMessages(module);
     }
 
     @Override
@@ -449,46 +405,19 @@ import java.util.function.Predicate;
     @Override
     protected void startListening(@NotNull SModel model) {
       model.addModelListener(this);
-      registerListener((SModelInternal) model);
+      // ensure messages for a new model are updated
+      enqueueUpdate(model);
     }
 
     @Override
     protected void stopListening(@NotNull SModel model) {
       model.removeModelListener(this);
-      unregisterListener((SModelInternal) model);
     }
 
+    // SModelListener events:
     @Override
     public void modelReplaced(SModel model) {
       enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void moduleAdded(@NotNull SModule module) {
-      enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void moduleRemoved(@NotNull SModuleReference module) {
-      enqueueAllModulesInProject();
-    }
-
-    @Override
-    public void moduleChanged(SModule module) {
-      enqueueAllModulesInProject();
-    }
-  }
-
-  private class MyModelChangeListener extends SModelAdapter {
-
-    @Override
-    public void modelChanged(SModel model) {
-      enqueueUpdate(model);
-    }
-
-    @Override
-    public void modelChangedDramatically(SModel model) {
-      enqueueUpdate(model);
     }
 
     @Override
@@ -496,6 +425,55 @@ import java.util.function.Predicate;
       enqueueUpdate(model);
     }
 
-  }
+    @Override
+    public void dependenciesChanged(SModel model, DependencyChange change) {
+      enqueueUpdate(model);
+    }
 
+    @Override
+    public void nodesChanged(SModel model) {
+      enqueueUpdate(model);
+    }
+
+    //
+
+    @Override
+    protected void startListening(SModule module) {
+      super.startListening(module);
+      enqueueAllModulesInProject();
+    }
+
+    @Override
+    protected void stopListening(SModule module) {
+      super.stopListening(module);
+      myMessagesContainer.clearMessages(module);
+      enqueueAllModulesInProject();
+    }
+
+    // SModuleListener events:
+
+    @Override
+    public void moduleChanged(SModule module) {
+      enqueueUpdate(module);
+      enqueueAllModulesInProject();
+    }
+
+    @Override
+    public void modelRemoved(SModule module, SModelReference ref) {
+      myMessagesContainer.clearMessages(ref);
+      enqueueAllModulesInProject();
+    }
+
+    @Override
+    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
+      myMessagesContainer.clearMessages(oldRef);
+      enqueueAllModulesInProject();
+    }
+
+    @Override
+    public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
+      myMessagesContainer.clearMessages(oldRef);
+      enqueueAllModulesInProject();
+    }
+  }
 }

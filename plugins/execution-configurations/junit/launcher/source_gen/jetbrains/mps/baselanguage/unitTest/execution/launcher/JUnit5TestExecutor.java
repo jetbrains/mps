@@ -51,13 +51,22 @@ public class JUnit5TestExecutor extends AbstractJUnitTestMixin {
 
     LauncherConfig launcherConfig = builder.build();
     Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
-    DefaultTestExecutionListener listener = new DefaultTestExecutionListener(myOutStream);
+    DefaultTestExecutionListener listener = createTestExecutionListener();
     try {
       launcher.execute(request, listener);
 
     } finally {
       this.myFailureCount = listener.getFailuresCount();
     }
+  }
+
+  protected DefaultTestExecutionListener createTestExecutionListener() {
+    return new DefaultTestExecutionListener(myOutStream) {
+      @Override
+      protected void flush() {
+        // NOP: avoid attempting to flush stdout/stderr in order not to deadlock; MPS-37852
+      }
+    };
   }
 
   @Override

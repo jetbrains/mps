@@ -42,7 +42,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 /**
  * Tests merge algorithm
  */
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/445606167100192267", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "445606167100192267", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class MergeTest extends ChangesTestBase {
   private static boolean ourMergeDriverModeWas;
 

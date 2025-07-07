@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.module.SModule;
  * For adoption of 'new model' dialogue in RCPs, custom implementations can be provided to 
  * {@link jetbrains.mps.ide.dialogs.project.creation.NewModelDialog }.
  */
-@GeneratedClass(node = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)/7081154005682091284", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
+@GeneratedClass(nodeId = "7081154005682091284", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
 public interface NewModelDialogSettings {
 
   /**

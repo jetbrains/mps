@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * IMPORTANT: despite the fact it's public class in api package, don't use outside of MPS. We need to access it from both
  * EvaluationTree and VariablesTree, and there's no better place to put this class I'm aware of.
  */
-@GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/7059155213106620134", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
+@GeneratedClass(nodeId = "7059155213106620134", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
 public final class PlaceholderTreeNode extends MPSTreeNode {
   /*package*/ PlaceholderTreeNode(String escapedNodeIdentifier) {
     // escapedNodeIdentifier means it's not the value to match directly with WatchableNode.calculateNodeId value

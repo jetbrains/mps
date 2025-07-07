@@ -4,19 +4,21 @@ package jetbrains.mps.lang.dataFlow;
 
 import jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SRepository;
+import java.util.Map;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.dataFlow.framework.IDataFlowBuilder;
+import java.util.HashMap;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.dataFlow.framework.instructions.InstructionBuilder;
 import jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContext;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.components.ComponentHost;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.dataFlow.framework.IDataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.EndTryInstruction;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.language.LanguageRuntime;
+import java.util.stream.Stream;
 import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
-import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptorBase;
 import java.util.Collection;
 import jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -27,23 +29,66 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
  */
 public class MPSProgramBuilder extends StructuralProgramBuilder<SNode> {
   private boolean myMayBeUnreachable = false;
-  private SRepository myRepository;
+  private final Map<SAbstractConcept, IDataFlowBuilder> myCache = new HashMap<>();
+  private final LanguageRegistry myModuleRegistry;
 
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.dataFlow.MPSProgramBuilder#MPSProgramBuilder(InstructionBuilder, ProgramBuilderContext, ComponentHost) }
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public MPSProgramBuilder() {
+    myModuleRegistry = null;
+    //  1 use in mbeddr.core.modules.typesystem, 15 in MPS
   }
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.dataFlow.MPSProgramBuilder#MPSProgramBuilder(InstructionBuilder, ProgramBuilderContext, ComponentHost) }
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public MPSProgramBuilder(InstructionBuilder builder) {
     super(builder);
+    myModuleRegistry = null;
+    // no uses
   }
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.dataFlow.MPSProgramBuilder#MPSProgramBuilder(InstructionBuilder, ProgramBuilderContext, ComponentHost) }
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public MPSProgramBuilder(SRepository repository) {
-    this.myRepository = repository;
+    this.myModuleRegistry = (repository == null ? null : LanguageRegistry.getInstance(repository));
+    // no uses
   }
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.dataFlow.MPSProgramBuilder#MPSProgramBuilder(InstructionBuilder, ProgramBuilderContext, ComponentHost) }
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public MPSProgramBuilder(SRepository repository, InstructionBuilder builder) {
     super(builder);
-    this.myRepository = repository;
+    this.myModuleRegistry = (repository == null ? null : LanguageRegistry.getInstance(repository));
+    // no uses
   }
+
+  /**
+   * 
+   * @deprecated use alternative that takes ComponentHost
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public MPSProgramBuilder(SRepository repository, InstructionBuilder builder, ProgramBuilderContext context) {
     super(builder, context);
-    this.myRepository = repository;
+    this.myModuleRegistry = (repository == null ? null : LanguageRegistry.getInstance(repository));
+    // there's 1 use in mbeddr (mpsutil.df.runtime), and 1 legacy in MPS
+  }
+
+  /**
+   * 
+   * @since 2025.1
+   */
+  public MPSProgramBuilder(InstructionBuilder builder, ProgramBuilderContext context, ComponentHost mpsPlatform) {
+    super(builder, context);
+    this.myModuleRegistry = mpsPlatform.findComponent(LanguageRegistry.class);
   }
 
   protected DataFlowBuilderContext createContext(SNode node) {
@@ -81,29 +126,30 @@ public class MPSProgramBuilder extends StructuralProgramBuilder<SNode> {
     }
   }
 
-  private IDataFlowBuilder getDataFlowBuilder(SAbstractConcept concept) {
-    LanguageRegistry instance = (myRepository != null ? LanguageRegistry.getInstance(myRepository) : LanguageRegistry.getInstance());
-    LanguageRuntime language = instance.getLanguage(concept.getLanguage());
-    if (language != null) {
-      DataFlowAspectDescriptor aspect = language.getAspect(DataFlowAspectDescriptor.class);
-      if (aspect instanceof DataFlowAspectDescriptorBase) {
-        Collection<IDataFlowBuilder> dataFlowBuilders = ((DataFlowAspectDescriptorBase) aspect).getDataFlowBuilders(concept);
-        Collection<IDataFlowModeId> contextModes = getBuilderContext().getBuilderModes();
-        for (IDataFlowModeId contextMode : CollectionSequence.fromCollection(contextModes)) {
+  private IDataFlowBuilder getDataFlowBuilder(final SAbstractConcept concept) {
+    LanguageRegistry langRegistry = (myModuleRegistry != null ? myModuleRegistry : LanguageRegistry.getInstance());
+
+    if (!(myCache.containsKey(concept))) {
+      // XXX would be nice to have a method to visit concept hierarchy right away
+      langRegistry.withAvailableAspects(Stream.of(concept.getLanguage()), DataFlowAspectDescriptor.class, (dfa) -> {
+        Collection<IDataFlowBuilder> dataFlowBuilders = dfa.getDataFlowBuilders(concept);
+        for (IDataFlowModeId contextMode : CollectionSequence.fromCollection(getBuilderContext().getBuilderModes())) {
           for (IDataFlowBuilder builder : CollectionSequence.fromCollection(dataFlowBuilders)) {
             if (builder.getModes().contains(contextMode)) {
-              return builder;
+              myCache.put(concept, builder);
+              return;
             }
           }
         }
         for (IDataFlowBuilder builder : CollectionSequence.fromCollection(dataFlowBuilders)) {
           if (builder.getModes().isEmpty()) {
-            return builder;
+            myCache.put(concept, builder);
+            return;
           }
         }
-        return null;
-      }
+        myCache.put(concept, null);
+      });
     }
-    return null;
+    return myCache.get(concept);
   }
 }

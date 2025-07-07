@@ -15,7 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3774693388238498747", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "3774693388238498747", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class DeleteLine_Action extends BaseAction {
   private static final Icon ICON = null;
 

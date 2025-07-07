@@ -15,7 +15,7 @@ import com.intellij.openapi.util.Disposer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.mps.openapi.model.SModel;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/6400105291801680728", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "6400105291801680728", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public class MoveNodeDialog extends ModelOrNodeChooserDialog {
   private final SNode myNodeToMove;
   private NodeFilter myNodeFilter;

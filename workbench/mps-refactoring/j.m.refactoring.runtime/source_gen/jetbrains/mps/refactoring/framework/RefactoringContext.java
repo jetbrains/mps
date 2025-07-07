@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
 
-@GeneratedClass(node = "r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)/4792031542972811415", model = "r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)")
+@GeneratedClass(nodeId = "4792031542972811415", model = "r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)")
 public class RefactoringContext {
   private IRefactoring myRefactoring;
   private Map<String, Object> myParametersMap = new HashMap<String, Object>();
@@ -212,15 +212,6 @@ public class RefactoringContext {
     return myCurrentScope;
   }
 
-  /**
-   * 
-   * @deprecated fix reduce_OperationContextOperation and delete
-   * @return always null
-   */
-  @Deprecated
-  public Object getCurrentOperationContext() {
-    return null;
-  }
   private void setTarget(final Object target) {
     final IRefactoringTarget refTarget = myRefactoring.getRefactoringTarget();
     getRepository().getModelAccess().runReadAction(() -> {

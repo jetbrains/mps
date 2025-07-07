@@ -4,8 +4,8 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmConstructor;
-import kotlinx.metadata.Attributes;
+import kotlin.metadata.KmConstructor;
+import kotlin.metadata.Attributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -15,7 +15,7 @@ import jetbrains.mps.kotlin.stubs.extension.KtAnnotations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)/2993321679752331768", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
+@GeneratedClass(nodeId = "2993321679752331768", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
 public class KtConstructorParser {
   public static SNode parseConstructor(KmConstructor constructor, String receiverType, final KtReadContext context) {
     final boolean isSecondary = Attributes.isSecondary(constructor);

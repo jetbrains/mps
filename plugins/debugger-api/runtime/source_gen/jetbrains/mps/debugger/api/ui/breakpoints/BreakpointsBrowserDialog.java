@@ -50,7 +50,7 @@ import java.awt.event.WindowEvent;
 import org.jetbrains.annotations.NonNls;
 import javax.swing.Action;
 
-@GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083122178", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
+@GeneratedClass(nodeId = "4474271214083122178", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvider {
   private static final String COMMAND_SHOW_NODE = "COMMAND_SHOW_NODE";
   private final JPanel myMainPanel;

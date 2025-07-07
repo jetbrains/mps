@@ -49,7 +49,7 @@ public class GenerationStatusUtil {
     if (model == null || model.getModule() == null) {
       return GenerationStatus.NOT_REQUIRED;
     }
-    if (isPackaged(model)) {
+    if (isPackaged(model) || model.getModule().isReadOnly()) {
       return GenerationStatus.READONLY;
     }
     if (isDoNotGenerate(model)) {

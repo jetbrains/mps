@@ -100,6 +100,9 @@ public interface FunctionDeclaration {
   default String getFunctionPresentation(final boolean erased, @NotNull final TypeExpander expander) {
     StringBuilder builder = new StringBuilder();
 
+    // isExtension here is necessary in case we are in inheritance context ("SuperClass.a()" obviously is different from "SubClass.a()")
+    // One problem with that is that extension functions (fun SuperClass.a()) would not clash anymore with functions defined in the class itself.
+    // If having this hiding of signature an issue in the future, perhaps a separate mechanism or signature should be used for inheritance?
     SNode receiverType = getReceiverType();
     if (!(erased) && isExtension() && (receiverType != null)) {
       builder.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(expander.expandType(receiverType), ((boolean) false))).append(".");

@@ -56,7 +56,7 @@ import org.jdom.Element;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199795365573", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "3719390199795365573", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerViewer extends JPanel {
   private final Project myIdeaProject;
   private final MPSProject myProject;

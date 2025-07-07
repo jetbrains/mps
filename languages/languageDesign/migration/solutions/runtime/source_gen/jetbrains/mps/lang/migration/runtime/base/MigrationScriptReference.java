@@ -8,10 +8,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.project.Project;
 import java.util.Map;
 import java.util.List;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 import java.util.HashMap;
@@ -20,8 +19,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-@GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/3309033097910132680", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
-public class MigrationScriptReference implements BaseScriptReference<MigrationScript> {
+@GeneratedClass(nodeId = "3309033097910132680", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
+public class MigrationScriptReference implements BaseScriptReference {
   private static final Logger LOG = Logger.getLogger(MigrationScriptReference.class);
   private final SLanguage language;
   private final int fromVersion;
@@ -68,16 +67,6 @@ public class MigrationScriptReference implements BaseScriptReference<MigrationSc
     int ix = s.indexOf('(');
     SLanguage language = MetaAdapterFactory.getLanguage(SLanguageId.deserialize(s.substring(0, ix)), s.substring(ix + 1, s.indexOf(')', ix)));
     return new MigrationScriptReference(language, version);
-  }
-
-  /**
-   * 
-   * @deprecated script reference has to stay reference only, and resolution logic shall be kept outside to avoid unnecessary re-resolve of the script instance. See {@link jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference#resolve(LanguageRegistry, MigrationScriptReference) }
-   */
-  @Override
-  @Deprecated(forRemoval = true, since = "2023.1")
-  public MigrationScript resolve(Project p, boolean silent) {
-    return resolve(p.getComponent(LanguageRegistry.class), this);
   }
 
   /**

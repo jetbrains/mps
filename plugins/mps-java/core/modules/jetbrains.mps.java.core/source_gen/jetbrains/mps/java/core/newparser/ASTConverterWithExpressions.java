@@ -63,7 +63,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/5721922144037709678", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "5721922144037709678", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 public class ASTConverterWithExpressions extends ASTConverter {
   private final Logger LOG = Logger.getLogger(ASTConverterWithExpressions.class);
 

@@ -48,9 +48,7 @@
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mpsBootstrapCore}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
@@ -477,6 +475,7 @@
           <language id="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
           <language id="l:ef7bf5ac-d06c-4342-b11d-e42104eb9343:jetbrains.mps.lang.plugin.standalone" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
+          <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
           <language id="l:13744753-c81f-424a-9c1b-cf8943bf4e86:jetbrains.mps.lang.sharedConcepts" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
@@ -962,7 +961,6 @@
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)" kind="cl" />
-          <module ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3(MPS.Boot)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
@@ -1118,7 +1116,7 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsBuild}/mps-build" id="jetbrains.mps.build" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
@@ -1128,6 +1126,8 @@
       <plugin path="${artifacts.mpsTesting}/mps-junit5" id="jetbrains.mps.junit5" />
       <plugin path="${artifacts.mpsTesting}/mps-testing" id="jetbrains.mps.testing" />
       <plugin path="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
+      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/plaf/jetbrains.mps.ide.ui.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
@@ -1199,9 +1199,9 @@
   <target name="java.compile.execution-impl-idea" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/jetbrains.mps.execution.impl/source_gen" />
     <mkdir dir="${build.tmp}/java/out/execution-impl-idea" />
-    <javac2 destdir="${build.tmp}/java/out/execution-impl-idea" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/execution-impl-idea" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="execution-impl-idea">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1230,14 +1230,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1256,9 +1255,9 @@
   <target name="java.compile.jetbrains.mps.execution.commands" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/commands/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.commands" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.commands" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.commands" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.commands">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1294,14 +1293,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1340,9 +1338,9 @@
   <target name="java.compile.jetbrains.mps.execution.commands#856705193941426438" depends="java.compile.jetbrains.mps.execution.commands, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/commands/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.commands#856705193941426438" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.commands#856705193941426438" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.commands#856705193941426438" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.commands#856705193941426438">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1379,14 +1377,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.execution.commands" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1413,9 +1410,9 @@
   <target name="java.compile.jetbrains.mps.execution.configurations" depends="java.compile.jetbrains.mps.execution.commands, java.compile.execution-impl-idea, java.compile.jetbrains.mps.execution.library, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/configurations/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.configurations">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1456,14 +1453,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-scripts-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1505,9 +1501,9 @@
   <target name="java.compile.jetbrains.mps.execution.configurations#3754890006475631525" depends="java.compile.jetbrains.mps.execution.commands, java.compile.execution-impl-idea, java.compile.jetbrains.mps.execution.configurations, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/configurations/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations#3754890006475631525" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations#3754890006475631525" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations#3754890006475631525" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.configurations#3754890006475631525">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1548,14 +1544,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-scripts-rt.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.execution.configurations" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1592,9 +1587,9 @@
   <target name="java.compile.jetbrains.mps.execution.library" depends="java.compile.execution-impl-idea, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/library/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.library" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.library" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.library" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.library">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1640,7 +1635,6 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <path refid="path.jdk.classpath" />
@@ -1654,9 +1648,9 @@
   <target name="java.compile.jetbrains.mps.execution.configurations.pluginSolution" depends="java.compile.execution-impl-idea, java.compile.jetbrains.mps.execution.configurations, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/configurations/solutions/pluginSolution/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.pluginSolution" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.configurations.pluginSolution">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1696,14 +1690,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-scripts-rt.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.execution.configurations" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1733,9 +1726,9 @@
   <target name="java.compile.jetbrains.mps.execution.languages" depends="java.compile.execution-impl-idea, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-languages/languages/plugin/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.languages" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.languages" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.languages" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.languages">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1759,8 +1752,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -1773,9 +1764,9 @@
   <target name="java.compile.jetbrains.mps.ant.execution" depends="java.compile.execution-impl-idea, java.compile.jetbrains.mps.baseLanguage.execution.util, java.compile.jetbrains.mps.execution.library, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-configurations/ant.cmd/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ant.execution" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ant.execution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ant.execution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.ant.execution">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1810,16 +1801,14 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.execution.library" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />
@@ -1840,9 +1829,9 @@
   <target name="java.compile.jetbrains.mps.baseLanguage.execution.util" depends="java.compile.execution-impl-idea, java.compile.jetbrains.mps.execution.library, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-configurations/java.cmd/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.execution.util">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1891,7 +1880,6 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -1909,9 +1897,9 @@
   <target name="java.compile.jetbrains.mps.execution.configurations.implementation.plugin" depends="java.compile.execution-impl-idea, java.compile.jetbrains.mps.ant.execution, java.compile.jetbrains.mps.baseLanguage.execution.util, java.compile.jetbrains.mps.baseLanguage.unitTest.execution, java.compile.jetbrains.mps.baselanguage.unitTest.launcher, java.compile.jetbrains.mps.execution.configurations.pluginSolution, java.compile.jetbrains.mps.execution.languages, java.compile.jetbrains.mps.execution.library, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-configurations/plugin/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.implementation.plugin" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.implementation.plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.implementation.plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.execution.configurations.implementation.plugin">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -1946,7 +1934,6 @@
         <fileset file="${artifacts.mpsDebuggerPlugin}/mps-debugger-api/lib/debugger-api.jar" />
         <fileset file="${artifacts.mpsDebuggerPlugin}/mps-debugger-java/lib/debugger-java.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-test.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.execution" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mpsant/mps-tool.jar" />
@@ -1970,7 +1957,6 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -2008,9 +1994,9 @@
   <target name="java.compile.jetbrains.mps.baseLanguage.unitTest.execution" depends="java.compile.execution-impl-idea, java.compile.jetbrains.mps.baseLanguage.execution.util, java.compile.jetbrains.mps.baselanguage.unitTest.launcher, java.compile.jetbrains.mps.execution.library, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-configurations/junit/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.execution" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.execution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.execution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.unitTest.execution">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2047,13 +2033,11 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mpsant/mps-tool.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baselanguage.unitTest.launcher" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.execution.library" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-test.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
@@ -2105,9 +2089,9 @@
   <target name="java.compile.jetbrains.mps.baselanguage.unitTest.launcher" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/execution-configurations/junit/launcher/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baselanguage.unitTest.launcher" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baselanguage.unitTest.launcher" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baselanguage.unitTest.launcher" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.baselanguage.unitTest.launcher">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -2151,7 +2135,6 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.regexp.runtime.jar" />
         <fileset dir="${artifacts.mpsTesting}/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />

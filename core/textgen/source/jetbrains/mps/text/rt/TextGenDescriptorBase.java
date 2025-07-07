@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,21 @@
  */
 package jetbrains.mps.text.rt;
 
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+
 /**
  * Base implementation of {@link TextGenDescriptor} each generated TextGen shall extend to facilitate future changes.
  * @author Artem Tikhomirov
  * @since 3.3
  */
 public abstract class TextGenDescriptorBase implements TextGenDescriptor {
+  @Override
+  public void generateText(TextGenContext ctx) {
+    throw new UnsupportedOperationException(String.format("Generation of text output is not supported for %s", SNodeOperations.present(ctx.getPrimaryInput())));
+  }
+
+  @Override
+  public void generateBinary(TextGenContext ctx) {
+    throw new UnsupportedOperationException(String.format("Generation of binary output is not supported for %s", SNodeOperations.present(ctx.getPrimaryInput())));
+  }
 }

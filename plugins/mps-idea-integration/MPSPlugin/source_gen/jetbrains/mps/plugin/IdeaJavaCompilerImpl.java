@@ -19,7 +19,7 @@ import jetbrains.mps.project.SModuleOperations;
 import java.util.Collections;
 import java.rmi.RemoteException;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131071966", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131071966", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler {
   private final Project myProject;
   private IProjectHandler myIdeaProjectHandler;

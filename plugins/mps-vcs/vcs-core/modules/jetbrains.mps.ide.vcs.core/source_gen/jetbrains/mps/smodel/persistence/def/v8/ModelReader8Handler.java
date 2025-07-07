@@ -10,7 +10,6 @@ import java.util.Stack;
 import org.xml.sax.Locator;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.smodel.persistence.def.ReadHelper;
 import org.xml.sax.SAXException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
@@ -32,7 +31,7 @@ import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
-@GeneratedClass(node = "r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)/286176397450364062", model = "r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)")
+@GeneratedClass(nodeId = "286176397450364062", model = "r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)")
 public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
   private static final Logger LOG = Logger.getLogger(ModelReader8Handler.class);
   private ModelElementHandler modelHandler = new ModelElementHandler();

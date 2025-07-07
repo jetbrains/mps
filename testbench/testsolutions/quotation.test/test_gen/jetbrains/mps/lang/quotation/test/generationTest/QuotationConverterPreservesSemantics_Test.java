@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class QuotationConverterPreservesSemantics_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(QuotationConverterPreservesSemantics_Test.class, "${mps_home}", "r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(QuotationConverterPreservesSemantics_Test.class).projectPath(null).modelRef("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)").reopenProject(null).build());
 
   public QuotationConverterPreservesSemantics_Test() {
     super(ourParametersCacheExtension.getParametersCache());

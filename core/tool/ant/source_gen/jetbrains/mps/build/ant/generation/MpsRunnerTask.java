@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.build.ant.MpsLoadTask;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
 
-@GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4271560773252437472", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
+@GeneratedClass(nodeId = "4271560773252437472", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class MpsRunnerTask extends MpsLoadTask {
   private final MpsRunnerProperties myProperties;
 

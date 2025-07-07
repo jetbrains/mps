@@ -19,7 +19,7 @@ import jetbrains.mps.ide.ui.finders.ModelImportsUsagesFinder;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2214103008221911165", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "2214103008221911165", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class FindModelUsages_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Find;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,15 +31,17 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task.Backgroundable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
+import com.intellij.ui.stripe.ErrorStripe;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.containers.ContainerUtil;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.ide.actions.CopyNode_Action;
@@ -49,30 +51,29 @@ import jetbrains.mps.ide.actions.SModelActionData;
 import jetbrains.mps.ide.actions.SModuleActionData;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.projectPane.logicalview.LogicalProjectViewNode;
+import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
 import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
-import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Transients;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.IMakeNotificationListener;
-import jetbrains.mps.make.IMakeNotificationListener.Stub;
 import jetbrains.mps.make.MakeNotification;
 import jetbrains.mps.make.MakeServiceComponent;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.smodel.SModelAdapter;
-import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.Pair;
@@ -87,13 +88,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.repository.CommandListener;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
@@ -105,7 +103,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
@@ -114,22 +112,12 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   private static final Logger LOG = Logger.getLogger(BaseLogicalViewProjectPane.class);
 
   private final MyRepositoryListener myRepositoryListener = new MyRepositoryListener();
-  private final MyModuleListener myModuleListener = new MyModuleListener();
-  private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
   protected boolean myDisposed;
 
-  private final DeployListener myClassesListener = new DeployListener() {
-    @Override
-    public void onUnloaded(@NotNull Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
-    }
+  protected final MPSProject myProjectMPS;
+  private final ModuleDeploymentListener myClassesListener = change -> rebuild();
 
-    @Override
-    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
-      rebuild();
-    }
-  };
-
-  private final IMakeNotificationListener myMakeNotificationListener = new Stub() {
+  private final IMakeNotificationListener myMakeNotificationListener = new IMakeNotificationListener() {
     @Override
     public void sessionClosed(MakeNotification notification) {
       // rebuild tree in case of 'cancel' too (need to get 'transient models' node rebuilt)
@@ -152,9 +140,38 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     else {
       elementToSelect = element;
     }
+    final VirtualFile fileToSelect;
+    if (getProjectViewState().getShowMembers() && element instanceof VirtualFile) {
+      // member (non-root node) may be passed as a VirtualFile instance
+      fileToSelect = (VirtualFile) element;
+    }
+    else {
+      fileToSelect = file;
+    }
     ActionCallback callback = new ActionCallback();
     EdtExecutorService.getScheduledExecutorInstance()
-                      .schedule(() -> super.selectCB(elementToSelect, file, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
+                      .schedule(() -> super.selectCB(elementToSelect, fileToSelect, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
+
+    EdtExecutorService.getScheduledExecutorInstance()
+                      .schedule(() -> {
+                        if (!callback.isDone()) {
+                          ProgressManager.getInstance().run(new Backgroundable(getProject(), "Busy", false) {
+                            @Override
+                            public void run(@NotNull ProgressIndicator indicator) {
+                              indicator.setIndeterminate(true);
+                              Semaphore s = new Semaphore(0);
+                              callback.doWhenDone(s::release);
+                              if (!callback.isDone()) {
+                                try {
+                                  s.acquire();
+                                } catch (InterruptedException ignore) {
+                                }
+                              }
+                            }
+                          });
+                        }
+                      }, 1100, TimeUnit.MILLISECONDS );
+
     return callback;
   }
 
@@ -176,6 +193,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   protected BaseLogicalViewProjectPane(Project project) {
     super(project);
+    myProjectMPS = ProjectHelper.fromIdeaProject(getProject());
   }
 
   public Project getProject() {
@@ -218,8 +236,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @SuppressWarnings("removal")
   protected void updateFrom(IFile iFile, boolean updateStructure) {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    IdeaFileSystem fileSystem = mpsProject.getFileSystem();
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
 
     VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
     if (virtualFile != null) {
@@ -269,14 +286,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     if (MPSDataKeys.CONTEXT_MODULE.is(dataId)) {
       return getContextModule();
     }
-
-
     if (MPSDataKeys.VIRTUAL_PACKAGES.is(dataId)) {
-      // FIXME getSelectedPackages() requires model read (resolves model references)
       final List<Pair<SModel, String>> rv = getSelectedPackages();
       return rv.isEmpty() ? null : rv;
     }
-
     if (MPSDataKeys.NAMESPACE.is(dataId)) {
       Object firstSelected = Arrays.stream(getSelectedValues(getSelectedUserObjects())).findFirst().orElseGet(() -> null);
       if (firstSelected instanceof VirtualFolder) {
@@ -331,7 +344,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
 
     if (MPSDataKeys.MPS_PROJECT.is(dataId)) {
-      return ProjectHelper.fromIdeaProject(getProject());
+      return myProjectMPS;
     }
 
     //not found
@@ -357,7 +370,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   /**
-   * @deprecated use {@link jetbrains.mps.ide.projectView.MPSProjectViewSettings} instead.
+   * @deprecated use {@link MPSProjectViewSettings} instead.
    */
   @Deprecated
   public boolean isSortByConcept() {
@@ -391,79 +404,47 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   protected void removeListeners() {
-    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    mpsProject.getComponent(ClassLoaderManager.class).removeListener(myClassesListener);
+    jetbrains.mps.project.Project mpsProject = myProjectMPS;
+    mpsProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
     mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
-    mpsProject.getComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
-    forAllModulesInProject(this::unregisterListener);
+    mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
   }
 
   protected void addListeners() {
-    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    jetbrains.mps.project.Project mpsProject = myProjectMPS;
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).attach();
     mpsProject.getModelAccess().addCommandListener(myRepositoryListener);
-
-    forAllModulesInProject(this::registerListener);
 
     // XXX here used to be a hasMakeService() check, which I found superfluous,
     //     as we always have make service in UI (at least, we never check for it in other locations)
     //     However, the idea to keep listeners inside MakeServiceComponent and install them into active
     //     IMakeService once it's updated looks nice
-    mpsProject.getComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
-    mpsProject.getComponent(ClassLoaderManager.class).addListener(myClassesListener);
+    mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
+    mpsProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
   }
 
-  private void registerListener(SModule module) {
-    module.addModuleListener(myModuleListener);
-  }
-
-  private void unregisterListener(SModule module) {
-    module.removeModuleListener(myModuleListener);
-  }
-
-  private void registerListener(SModelInternal model) {
-    model.addModelListener(myModelChangeListener);
-  }
-
-  private void unregisterListener(SModelInternal model) {
-    model.removeModelListener(myModelChangeListener);
+  @Override
+  protected ErrorStripe getStripe(Object object, boolean expanded) {
+    if (expanded && object instanceof LogicalProjectViewNode) {
+      if (!((LogicalProjectViewNode<?>) object).hasOwnProblems()) return null;
+    }
+    return super.getStripe(object, expanded);
   }
 
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    MPSProject mpsProject = myProjectMPS;
     ApplicationManager.getApplication().invokeLater(() -> {
       mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer);
     });
   }
 
-  /**
-   * expects model read lock at least
-   *
-   * @deprecated don't use, prefer {@code SNodeReference} and {@code DataContext.getData()}
-   */
-  @Deprecated(forRemoval = true, since = "2021.3")
-  public SNode getSelectedSNode() {
-    List<SNode> result = getSelectedSNodes();
-    if (result.size() != 1) {
-      return null;
-    }
-    return result.get(0);
-  }
-
-  /**
-   * NB! The implementation of this method has been altered to rely on the modern implementation of underlying
-   * tree. The following comments may not be relevant.
-   * <p>
-   * expects model read lock at least
-   *
-   * @deprecated don't use, prefer {@code SNodeReference} and {@code DataContext.getData()}
-   */
-  @NotNull
   @Deprecated(forRemoval = true, since = "2021.3")
   public List<SNode> getSelectedSNodes() {
-    return ContainerUtil.filterIsInstance(getSelectedValues(getSelectedUserObjects()), SNode.class);
+    // MPS-extensions, CustomProjectView overrides the method
+    assert  false : "Method is kept solely to satisfy compilation of subclasses with overrides";
+    return null;
   }
 
   @NotNull
@@ -509,26 +490,19 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @NotNull
   public List<Pair<SModel, String>> getSelectedPackages() {
-    // FIXME update the implementation or drop
-    JTree tree = getTree();
-    if (tree == null) {
+    @Nullable Object[] userObjects = getSelectedUserObjects();
+    if (userObjects == null || userObjects.length == 0) {
       return Collections.emptyList();
     }
-    TreePath[] paths = tree.getSelectionPaths();
-    SRepository projectRepo = ProjectHelper.getProjectRepository(getProject());
-    if (paths == null || paths.length == 0 || projectRepo == null) {
-      return Collections.emptyList();
-    }
-    List<Pair<SModel, String>> result = new ArrayList<>();
-    for (TreePath path : paths) {
-      if (path.getLastPathComponent() instanceof PackageNode) {
-        PackageNode pn = (PackageNode) path.getLastPathComponent();
-        projectRepo.getModelAccess().runReadAction(new Runnable() {
-          @Override
-          public void run() {
-            result.add(new Pair<>(pn.getModelReference().resolve(projectRepo), pn.getFullPackage()));
-          }
-        });
+    ArrayList<Pair<SModel, String>> result = new ArrayList<>(userObjects.length);
+    for (Object userObject : userObjects) {
+      Object value = getValueFromNode(userObject);
+      if (value instanceof VirtualFolder) {
+        if (userObject instanceof ContextValueProvider) {
+          ((ContextValueProvider) userObject)
+              .contextValueOfType(SModel.class)
+              .ifPresent((model) -> result.add(new Pair<>(model, ((VirtualFolder) value).getName())));
+        }
       }
     }
     return result;
@@ -548,7 +522,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return ActionPlace.PROJECT_PANE_PROJECT;
     } else if (selectedValue instanceof Generator) {
       return ActionPlace.PROJECT_PANE_GENERATOR;
-    } else if (selectedValue instanceof TransientModelsModule) {
+    } else if (selectedValue instanceof TransientModelsModule || selectedValue instanceof Transients) {
       return ActionPlace.PROJECT_PANE_TRANSIENT_MODULES;
     } else if (selectedValue instanceof Nodes) {
       return ActionPlace.PROJECT_PANE_PACKAGE;
@@ -653,7 +627,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return null;
     }
 
-    final FileSystemBridge fs = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
+    final FileSystemBridge fs = myProjectMPS.getFileSystem();
     return selectedFilesList.stream().map(fs::asVirtualFile).filter(Objects::nonNull).toArray(VirtualFile[]::new);
   }
 
@@ -752,18 +726,27 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     @Override
     protected void startListening(SModel model) {
       model.addModelListener(this);
-      registerListener((SModelInternal) model);
     }
 
     @Override
     protected void stopListening(SModel model) {
       model.removeModelListener(this);
-      unregisterListener((SModelInternal) model);
     }
 
     @Override
-    public void moduleAdded(@NotNull SModule module) {
-      registerListener(module);
+    protected void startListening(SModule module) {
+      if (!isIncluded(module)) {
+        return;
+      }
+      super.startListening(module);
+      if (!(module instanceof TempModule || module instanceof TempModule2)) {
+        updateFromRoot(true);
+      }
+    }
+
+    @Override
+    protected void stopListening(SModule module) {
+      super.stopListening(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
       }
@@ -775,11 +758,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
 
     @Override
-    public void beforeModuleRemoved(@NotNull SModule module) {
+    public void moduleChanged(SModule module) {
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
       }
-      unregisterListener(module);
     }
 
     @Override
@@ -800,44 +782,15 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     public void modelReplaced(SModel model) {
       forEachFile(model, f -> updateFrom(f, true));
     }
-  }
-
-  private class MyModuleListener implements SModuleListener {
 
     @Override
-    public void modelAdded(SModule module, SModel model) {
-      registerListener((SModelInternal) model);
-      forEachFile(module, f -> updateFrom(f, true));
-    }
-
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      unregisterListener((SModelInternal) model);
-    }
-
-    @Override
-    public void modelRemoved(SModule module, SModelReference ref) {
-      forEachFile(module, f -> updateFrom(f, true));
-    }
-    
-    @Override
-    public void moduleChanged(SModule module) {
-      if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true);
-      }
-    }
-  }
-
-  private class MyModelChangeListener extends SModelAdapter {
-    @Override
-    public void modelChangedDramatically(SModel model) {
+    public void dependenciesChanged(SModel model, DependencyChange change) {
       forEachFile(model, f -> updateFrom(f, true));
     }
 
     @Override
-    public void modelChanged(SModel model) {
+    public void nodesChanged(SModel model) {
       forEachFile(model, f -> updateFrom(f, true));
     }
   }
-
 }

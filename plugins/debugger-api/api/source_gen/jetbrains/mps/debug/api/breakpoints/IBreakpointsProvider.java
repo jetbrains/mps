@@ -12,7 +12,7 @@ import org.jdom.Element;
 import javax.swing.Icon;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 
-@GeneratedClass(node = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)/4474271214082912942", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
+@GeneratedClass(nodeId = "4474271214082912942", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
 public interface IBreakpointsProvider<B extends IBreakpoint, K extends IBreakpointKind<B>> {
   @NotNull
   List<K> getAllKinds();

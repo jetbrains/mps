@@ -21,7 +21,7 @@ import jetbrains.mps.make.resources.IResource;
 import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
-@GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/6168415856807658379", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
+@GeneratedClass(nodeId = "6168415856807658379", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class TargetRange {
   private Map<ITarget.Name, ITarget> targetsView = MapSequence.fromMap(new HashMap<ITarget.Name, ITarget>());
   private Set<ITarget> allTargets = SetSequence.fromSet(new HashSet<ITarget>());

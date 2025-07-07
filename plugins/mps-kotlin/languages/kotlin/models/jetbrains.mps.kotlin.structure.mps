@@ -721,8 +721,11 @@
     <node concept="PrWs8" id="18X2O0Fyb4a" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
     </node>
+    <node concept="PrWs8" id="7LH$Ac_$$yg" role="PzmwI">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
     <node concept="t5JxF" id="6gam351cCpq" role="lGtFl">
-      <property role="t5JxN" value="block of statements, that can be seen either as a { list of statements } or as an expression" />
+      <property role="t5JxN" value="block of statements, that can be seen either as a { list of statements } or as an expression. To be used as part of an expression (example: if, when), otherwise use IStatementHolder which lets you free to use IInferencePart or not." />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JfJ">
@@ -1294,6 +1297,9 @@
     <property role="EcuMT" value="2936055411798373497" />
     <property role="TrG5h" value="ILambdaParameter" />
     <property role="3GE5qa" value="expression.function" />
+    <node concept="PrWs8" id="2tT4f1P7a57" role="PrDN$">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JhV">
     <property role="EcuMT" value="2936055411798373499" />

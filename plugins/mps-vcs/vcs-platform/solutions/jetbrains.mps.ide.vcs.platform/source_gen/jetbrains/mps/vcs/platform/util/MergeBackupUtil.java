@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)/6933307669479990701", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
+@GeneratedClass(nodeId = "6933307669479990701", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
 public class MergeBackupUtil {
   private static final Logger LOG = Logger.getLogger(MergeBackupUtil.class);
   public MergeBackupUtil() {

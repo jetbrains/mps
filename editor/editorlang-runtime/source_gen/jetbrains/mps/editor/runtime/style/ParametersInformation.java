@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 
-@GeneratedClass(node = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)/6822392181928409958", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
+@GeneratedClass(nodeId = "6822392181928409958", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
 public interface ParametersInformation<T> {
   Iterable<T> getMethods(SNode node, EditorContext editorContext);
   void getStyledMethodPresentation(SNode node, EditorContext editorContext, T method, StyledTextPrinter printer);

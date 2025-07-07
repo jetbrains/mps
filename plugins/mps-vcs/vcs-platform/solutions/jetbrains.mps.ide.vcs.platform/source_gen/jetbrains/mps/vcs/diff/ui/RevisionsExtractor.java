@@ -7,7 +7,7 @@ import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4799633552518811124", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "4799633552518811124", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public interface RevisionsExtractor extends Runnable {
   boolean isLoading();
   List<VcsFileRevision> getRevisions();

@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.generator.template;
 
+import jetbrains.mps.generator.impl.CloneUtil;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.impl.TemplateExecutionEnvironmentImpl;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,6 +32,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.StreamSupport;
 
 /**
  * Context for operations of genContext parameter in generator's concept functions. This is what generated code of template queries (like input nodes query,
@@ -72,6 +76,7 @@ public class TemplateQueryContext {
     myTemplateNode = templateNode;
     myEnv = env;
     myGenerator = myEnv.getGenerator();
+    // once last usage in MappingScriptContext gone, re-evaluate myEnv and myGenerator fields.
   }
 
     /**
@@ -316,6 +321,37 @@ public class TemplateQueryContext {
     SNodeReference rnr = getRuleNode();
     myGenerator.getLogger().error(rnr == null ? tn : rnr, message,
         GeneratorUtil.describeIfExists(inputNode, "input node"), GeneratorUtil.describeIfExists(tn, "template node"));
+  }
+
+  /**
+   * {@code GenerationContextOp_CopyWithTrace(node<>)}
+   * @since 2025.2
+   */
+  public SNode copyWithTrace(@Nullable SNode inputNode) {
+    // FWIW, prior to this change, GenerationContextOp_CopyWithTrace didn't have any return type, hence no proper use of this IOperation was possible
+    if (inputNode == null) {
+      return null;
+    }
+    return copyWithTrace(Collections.singletonList(inputNode)).get(0);
+  }
+
+  /**
+   * {@code GenerationContextOp_CopyWithTrace(nlist<>)}
+   * @since 2025.2
+   */
+  public List<SNode> copyWithTrace(@NotNull Iterable<? extends SNode> nodes) {
+    return TracingUtil.copyWithTrace(IterableUtil.asList(nodes));
+//    CloneUtil cu = new CloneUtil(getInputModel(), getOutputModel());
+//    return StreamSupport.stream(nodes.spliterator(), false).filter(Objects::nonNull).map(n -> {
+//      SNode o = cu.clone(n);
+//      SNodeReference origin = TracingUtil.getInput(n);
+//      if (origin != null) {
+//        TracingUtil.putInput(o, origin);
+//      } else {
+//        TracingUtil.putInputNode(o, n);
+//      }
+//      return o;
+//    }).toList();
   }
 
   /**

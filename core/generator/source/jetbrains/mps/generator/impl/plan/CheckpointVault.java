@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -160,6 +160,8 @@ public class CheckpointVault {
     myKnownCheckpoints.clear();
     StreamDataSource source = myStreams.getOutputLocation().getStreamByNameOrCreate("checkpoints");
     if (!source.exists()) {
+      // XXX revert SingleStreamDataSource(myStreams.getOutputLocation(), "checkpoints") with explicit subclass and don't use StreamDataSource.exists()
+      //     or don't bother to check exists() at all and just go ahead with exception handling
       Logger.getLogger(GenerationPlan.class).info("No checkpoint registry file found");
     } else {
       try (InputStream is = source.openInputStream()) {

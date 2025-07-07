@@ -5,21 +5,21 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.language.SConcept;
-import kotlinx.metadata.Visibility;
+import kotlin.metadata.Visibility;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import kotlinx.metadata.KmFunction;
+import kotlin.metadata.KmFunction;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import kotlinx.metadata.Attributes;
-import kotlinx.metadata.Modality;
-import kotlinx.metadata.ClassKind;
+import kotlin.metadata.Attributes;
+import kotlin.metadata.Modality;
+import kotlin.metadata.ClassKind;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import kotlinx.metadata.KmVariance;
+import kotlin.metadata.KmVariance;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)/6505065053931584762", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
+@GeneratedClass(nodeId = "6505065053931584762", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
 public class KtAttributes {
   private static final Logger LOG = Logger.getLogger(KtAttributes.class);
 

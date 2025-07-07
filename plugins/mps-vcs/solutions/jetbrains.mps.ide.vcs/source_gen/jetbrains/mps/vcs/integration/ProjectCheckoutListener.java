@@ -14,7 +14,7 @@ import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.ide.impl.OpenProjectTask;
 
-@GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/3521790172251160903", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
+@GeneratedClass(nodeId = "3521790172251160903", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class ProjectCheckoutListener implements CheckoutListener {
   @Override
   public boolean processCheckedOutDirectory(@NotNull Project project, @NotNull Path directory) {

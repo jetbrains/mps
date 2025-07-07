@@ -24,9 +24,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
@@ -102,6 +99,12 @@
       <property role="TrG5h" value="doNotCompile" />
       <property role="IQ2nx" value="1500819558096356884" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="asaX9" id="2yzLGrRnotl" role="lGtFl" />
+    </node>
+    <node concept="1TJgyi" id="2yzLGrRnnCb" role="1TKVEl">
+      <property role="IQ2nx" value="2928402740576877067" />
+      <property role="TrG5h" value="javaCode" />
+      <ref role="AX2Wp" node="3kCd1ud3JDB" resolve="BuildMps_CodeKind" />
     </node>
     <node concept="1TJgyj" id="4zCbl23d1OL" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -192,13 +195,6 @@
       <property role="TrG5h" value="sourcesKind" />
       <property role="IQ2nx" value="269707337715731330" />
       <ref role="AX2Wp" node="3Ftr4R6BFCz" resolve="BuildMps_ModuleSourcesKind" />
-      <node concept="3l_iC" id="3Ftr4R6BH9S" role="lGtFl">
-        <node concept="1TJgyi" id="eYcmk9RcI2" role="3l_iP">
-          <property role="TrG5h" value="sourcesKind" />
-          <property role="IQ2nx" value="269707337715731330" />
-          <ref role="AX2Wp" node="3Ftr4R6BFCz" resolve="BuildMps_ModuleSourcesKind" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="2L4pT56gD3S">
@@ -1597,6 +1593,7 @@
     <property role="3GE5qa" value="Project.Sources" />
     <property role="TrG5h" value="BuildMps_ModuleResources" />
     <property role="R4oN_" value="auxiliary resource files to deploy with a module" />
+    <property role="34LRSv" value="resources" />
     <ref role="1TJDcQ" node="4zCbl23d1OJ" resolve="BuildMps_ModuleSource" />
     <node concept="1TJgyj" id="EpEP7hVcc7" role="1TKVEi">
       <property role="IQ2ns" value="763829979718664967" />
@@ -1876,6 +1873,7 @@
     <property role="3GE5qa" value="Project.Sources" />
     <property role="TrG5h" value="BuildMps_ModuleDoc" />
     <property role="R4oN_" value="documentation files" />
+    <property role="34LRSv" value="documentation" />
     <ref role="1TJDcQ" node="4zCbl23d1OJ" resolve="BuildMps_ModuleSource" />
     <node concept="1TJgyj" id="1znuW2OtALF" role="1TKVEi">
       <property role="IQ2ns" value="1790035444494658667" />
@@ -1883,6 +1881,27 @@
       <property role="20kJfa" value="files" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="3ior:4zlO3QT8$m$" resolve="BuildInputFiles" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3kCd1ud3JDB">
+    <property role="TrG5h" value="BuildMps_CodeKind" />
+    <property role="3GE5qa" value="Project.Sources" />
+    <property role="3F6X1D" value="3830368758834068071" />
+    <ref role="1H5jkz" node="3kCd1ud3JDC" resolve="compile_mps" />
+    <node concept="25R33" id="3kCd1ud3JDC" role="25R1y">
+      <property role="TrG5h" value="compile_mps" />
+      <property role="3tVfz5" value="3830368758834068072" />
+      <property role="1L1pqM" value="compile in MPS" />
+    </node>
+    <node concept="25R33" id="3kCd1ud3JDD" role="25R1y">
+      <property role="TrG5h" value="compile_ext" />
+      <property role="1L1pqM" value="compile externally" />
+      <property role="3tVfz5" value="3830368758834068073" />
+    </node>
+    <node concept="25R33" id="3kCd1ud3JDF" role="25R1y">
+      <property role="3tVfz5" value="3830368758834068075" />
+      <property role="TrG5h" value="none" />
+      <property role="1L1pqM" value="no code" />
     </node>
   </node>
 </model>

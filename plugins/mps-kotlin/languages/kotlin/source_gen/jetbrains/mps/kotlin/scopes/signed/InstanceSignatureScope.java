@@ -19,6 +19,7 @@ import java.util.Objects;
  * Scope that collects all signatures in a type using a visitor.
  * 
  * @see jetbrains.mps.kotlin.scopes.TypeMembersVisitor 
+ * @see jetbrains.mps.kotlin.plugin.ExtensionsHelper requires typesystem enabled to work reliably (may function on certain types)
  */
 public class InstanceSignatureScope implements SignatureScope {
   private final TypeReference myTypeReference;

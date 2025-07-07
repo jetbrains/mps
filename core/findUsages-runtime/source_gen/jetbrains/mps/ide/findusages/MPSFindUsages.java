@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 /**
  * evgeny, 10/14/11
  */
-@GeneratedClass(node = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)/8568892084424440596", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
+@GeneratedClass(nodeId = "8568892084424440596", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
 public final class MPSFindUsages extends ComponentPlugin implements ComponentHost {
   private final LanguageRegistry myLanguageRegistry;
   private FindUsagesManager myFindUsageManager;

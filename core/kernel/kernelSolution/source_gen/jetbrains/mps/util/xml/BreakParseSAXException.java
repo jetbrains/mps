@@ -5,7 +5,7 @@ package jetbrains.mps.util.xml;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.xml.sax.SAXException;
 
-@GeneratedClass(node = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)/8666712036583221658", model = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)")
+@GeneratedClass(nodeId = "8666712036583221658", model = "r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)")
 public class BreakParseSAXException extends SAXException {
   public BreakParseSAXException() {
   }

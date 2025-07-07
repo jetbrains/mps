@@ -25,7 +25,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
  */
 @State(name = "ModelCheckerSettings", storages = @Storage(value = "modelCheckerSettings.xml")
 , reportStatistic = true)
-@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793464912", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
+@GeneratedClass(nodeId = "3719390199793464912", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerSettings implements PersistentStateComponent<ModelCheckerSettings.MyState> {
   private MyState myState = new MyState();
 

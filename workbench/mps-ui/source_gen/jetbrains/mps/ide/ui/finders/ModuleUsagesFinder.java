@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.SModelInternal;
 /**
  * In fact, ModuleDependencyFinder, looks up given module as a dependency in other modules and their models.
  */
-@GeneratedClass(node = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)/4132059805486520986", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
+@GeneratedClass(nodeId = "4132059805486520986", model = "r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)")
 public class ModuleUsagesFinder implements IFinder {
   /*package*/ static final String USED_BY = "used by";
   private static final String DEPENDENT_MODULES = "dependent modules";

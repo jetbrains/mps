@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,16 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.constraints.ConstraintsInit;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
+import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.interpreted.ConstraintsAspectInterpreted;
+import jetbrains.mps.smodel.runtime.impl.BasicInitContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -43,7 +46,8 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
 
   public ConstraintsRegistry(@NotNull LanguageRegistry languageRegistry, SConceptC3StarMRO mro) {
     myLanguageRegistry = languageRegistry;
-    myNewCounterpart = new RulesConstraintsRegistry(languageRegistry, mro);
+    myNewCounterpart = new RulesConstraintsRegistry(languageRegistry, mro, this);
+    ConstraintsInit.init(this);
   }
 
   @NotNull
@@ -68,18 +72,31 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
         } else {
           aspectDescriptor = languageRuntime.getAspect(ConstraintsAspectDescriptor.class);
         }
-        if (aspectDescriptor == null) {
-          // @see jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor
-          aspectDescriptor = ConstraintsAspectInterpreted.getInstance();
-        }
 
-        //todo simplify following if after 3.4
-        descriptor = aspectDescriptor.getConstraints(concept);
+        // could be lazy parent calculation, but it helps only in case there are subclasses that define all possible constraints, which is rare, I believe.
+        // FIXME for a long time (see BaseConstraintsDescriptor.collectParents) there's a comment to 'rewrite without recursion'
+        //       which I believe refers to the fact that access to CD of a concept triggers CD creation for its complete hierarchy.
+        //       I wonder if there's an easy way to deal with that here?
+        final List<ConstraintsDescriptor> parentDescriptors = new BasicInitContext(this).getAncestorConstraints(concept).toList();
+        // there could be up to 5 uses of parentDescriptors, therefore use cached value
+        BasicInitContext initContext = new BasicInitContext(this, concept, parentDescriptors);
+
+        if (aspectDescriptor != null) {
+          descriptor = aspectDescriptor.getConstraints(concept, initContext);
+        }
+        // note, here we cover both scenarios: no 'constraints' aspect (it's ok, just go with defaults),
+        // and 'no specific constraints for given concept in existing aspect'. There's no reason for ConstraintsAspectDescriptor
+        // to care about specific class of default descriptor (and whether it's necessary or not)
+        if (descriptor == null) {
+          // @see jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor
+          descriptor = new BaseConstraintsDescriptor(concept, initContext);
+        }
       } catch (Throwable e) {
         LOG.error("Exception while constraints descriptor creating", e);
       }
 
       if (descriptor == null) {
+        // e.g. if there's exception
         descriptor = new IllegalConstraintsDescriptor(concept);
       }
 

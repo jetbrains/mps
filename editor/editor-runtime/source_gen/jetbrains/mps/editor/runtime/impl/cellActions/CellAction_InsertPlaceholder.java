@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SAbstractLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/7082927757140330659", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "7082927757140330659", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CellAction_InsertPlaceholder extends AbstractCellAction {
   private final boolean myIsAfter;
   public CellAction_InsertPlaceholder(boolean isAfter) {

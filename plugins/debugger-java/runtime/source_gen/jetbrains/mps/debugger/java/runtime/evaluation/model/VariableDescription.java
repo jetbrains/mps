@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)/5600437724825447679", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
+@GeneratedClass(nodeId = "5600437724825447679", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
 /*package*/ class VariableDescription {
   private SNode myHighLevelType;
   private final SNode myLowLevelType;

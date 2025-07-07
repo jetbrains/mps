@@ -42,7 +42,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
  * These tests check that incremental changes building works well with VCS (commit, reset, rollback) 
  * and model operations (create, delete)
  */
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/8885850892995062355", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "8885850892995062355", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
 
   @Test

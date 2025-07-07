@@ -82,7 +82,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("Named tuple declaration");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0l);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_NamedTupleDeclaration = cpb.create();
         }
         return props_NamedTupleDeclaration;

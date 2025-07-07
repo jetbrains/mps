@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -71,15 +70,6 @@ public final class ModelsAutoImportsManager implements CoreComponent {
       }
     }
     return result;
-  }
-
-  /**
-   * In use in the single place, SModuleOperations.createModelWithAdjustments(), which is extensively used throughout MPS code (26 uses to date) and in mbeddr (6 uses)
-   * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #performImports(SModule, SModel)} instead
-   */
-  @Deprecated(since = "2018.3", forRemoval = true)
-  public static void doAutoImport(SModule module, SModel model) {
-    Logger.getLogger(ModelsAutoImportsManager.class).warnDeprecatedUse("doAutoImport() method is no-op and scheduled for removal in next release");
   }
 
   public void performImports(SModule module, SModel model) {

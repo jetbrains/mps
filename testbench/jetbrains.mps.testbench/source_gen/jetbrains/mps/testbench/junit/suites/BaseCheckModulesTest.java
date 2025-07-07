@@ -24,7 +24,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 @RunWith(value = TeamCityParameterizedRunner.class)
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376386357053", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "9170334376386357053", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class BaseCheckModulesTest {
   private static MpsEnvironment ourEnvironment;
   private static Project ourContextProject;

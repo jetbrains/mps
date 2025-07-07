@@ -23,7 +23,7 @@ import java.util.Collections;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086812204", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "227146524086812204", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class HighlightInstances_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -74,7 +74,7 @@ public class HighlightInstances_Action extends BaseAction {
     Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ModelsScope(event.getData(MPSCommonDataKeys.CONTEXT_MODEL)), Collections.singleton(concept), false, new EmptyProgressMonitor());
     for (SNode ref : SetSequence.fromSet(usages)) {
       if (ref.getContainingRoot() == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
-        highlightManager.mark(((SNode) ref), HighlightConstants.INSTANCES_COLOR, "usage", messageOwner);
+        highlightManager.mark(((SNode) ref), HighlightConstants.getSearchResultsBackgroundColor(), "usage", messageOwner);
       }
     }
     highlightManager.repaintAndRebuildEditorMessages();

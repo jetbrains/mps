@@ -20,7 +20,7 @@ public class SeqToStream_Test {
 
     int actual = ListSequence.fromList(list).toStream(true).reduce(0, (sum, nextChar) -> addFirstChar(sum, nextChar), (lSum, rSum) -> lSum + rSum);
 
-    Assert.assertEquals(expected, actual);
+    Assert.assertEquals(Integer.valueOf(expected), Integer.valueOf(actual));
   }
   /*package*/ int addFirstChar(int sum, String value) {
     return sum + (int) value.charAt(0);

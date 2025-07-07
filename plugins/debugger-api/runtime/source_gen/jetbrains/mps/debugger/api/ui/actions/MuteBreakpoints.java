@@ -12,7 +12,7 @@ import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/2392684134639444998", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "2392684134639444998", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class MuteBreakpoints extends ToggleAction {
   private static final Icon ICON = AllIcons.Debugger.MuteBreakpoints;
   public MuteBreakpoints() {

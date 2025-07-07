@@ -122,6 +122,7 @@ public class MPSIcons {
     public static final Icon Unknown = load("/nodes/unknown.png");
     public static final Icon UsagesResultOverlay = load("/nodes/usages-result-overlay.png");
     public static final Icon UsagesFinder = load("/nodes/usagesFinder.png");
+    public static final Icon TrackRunningTests = load("nodes/jsf/renderer.svg");
 
     public static class Models {
       public static final Icon AspectModel = load("/nodes/models/aspect.png");

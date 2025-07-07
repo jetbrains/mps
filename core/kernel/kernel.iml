@@ -22,7 +22,6 @@
     <orderEntry type="module" module-name="behavior-api" exported="" />
     <orderEntry type="module" module-name="behavior-runtime" exported="" />
     <orderEntry type="module" module-name="mps-messaging" exported="" />
-    <orderEntry type="module" module-name="boot-util" />
     <orderEntry type="library" name="org.jdom" level="project" />
     <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="module" module-name="baseLanguage-runtime" exported="" />

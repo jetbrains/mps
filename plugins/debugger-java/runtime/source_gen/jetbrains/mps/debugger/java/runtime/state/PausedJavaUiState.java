@@ -22,7 +22,7 @@ import jetbrains.mps.debugger.java.runtime.state.watchables.EventWatchablesCreat
 import com.sun.jdi.event.Event;
 import com.sun.jdi.StackFrame;
 
-@GeneratedClass(node = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)/4352118152439825500", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
+@GeneratedClass(nodeId = "4352118152439825500", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
 public class PausedJavaUiState extends JavaUiStateImpl {
   @NotNull
   private final Context myContext;

@@ -17,7 +17,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import javax.swing.Icon;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8733553229778920021", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "8733553229778920021", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class DiffButtonsPainter extends ButtonsPainter {
   private IHighlighter myDiffPane;
   private DiffButtonsPainter(IHighlighter rehighlighter, EditorComponent editorComponent, ChangeGroupLayout changeGroupLayout) {

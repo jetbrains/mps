@@ -178,6 +178,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_2eo8r0_a09a0());
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no theProperty>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }
@@ -372,6 +373,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         style.set(StyleAttributes.SCRIPT_KIND, ScriptKind.SUPERSCRIPT);
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no theProperty>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }

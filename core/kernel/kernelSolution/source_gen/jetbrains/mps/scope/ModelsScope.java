@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/16879048186085434", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "16879048186085434", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class ModelsScope extends Scope {
   private final boolean myRootsOnly;
   private final SAbstractConcept myTargetConcept;

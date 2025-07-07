@@ -21,7 +21,7 @@ public class EnumerationDescriptor_TargetDependencyQualifier extends Enumeration
   private final EnumerationDescriptor.MemberDescriptor myMember_NOT_AFTER_0 = new EnumerationDescriptor.MemberDescriptor("NOT_AFTER", "not after", 0x73e720709e3139e7L, "r:b16ff46d-fa06-479d-9f5c-5b6e17e7f1b2(jetbrains.mps.make.facet.structure)/4241665505353446921");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e3139e2L, 0x73e720709e3139e3L, 0x73e720709e3139e5L, 0x73e720709e3139e6L, 0x73e720709e3139e7L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BEFORE_0, myMember_NOT_BEFORE_0, myMember_AFTER_0, myMember_NOT_AFTER_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_BEFORE_0, myMember_NOT_BEFORE_0, myMember_AFTER_0, myMember_NOT_AFTER_0);
 
   @Nullable
   @Override

@@ -167,6 +167,9 @@
     <node concept="PrWs8" id="2I7VK7MCAM4" role="PzmwI">
       <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
     </node>
+    <node concept="PrWs8" id="7tOh0Kn4qev" role="PzmwI">
+      <ref role="PrY4T" to="tpck:7tOh0Kn0S3L" resolve="ICommentedOutFromScope" />
+    </node>
   </node>
   <node concept="PlHQZ" id="6GJhO0n1XxQ">
     <property role="EcuMT" value="7723470226553559158" />
@@ -205,6 +208,9 @@
     </node>
     <node concept="PrWs8" id="2MpFNjy3sHi" role="PzmwI">
       <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
+    </node>
+    <node concept="PrWs8" id="7tOh0Kn6M0W" role="PzmwI">
+      <ref role="PrY4T" to="tpck:7tOh0Kn0S3L" resolve="ICommentedOutFromScope" />
     </node>
     <node concept="t5JxF" id="5Mky_DWK6m2" role="lGtFl">
       <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
@@ -425,6 +431,47 @@
     <property role="3F6X1D" value="6991822193150408942" />
     <property role="TrG5h" value="Url" />
     <property role="FLfZY" value="https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&amp;//=]*)" />
+  </node>
+  <node concept="1TIwiD" id="6N0oV4ThMNB">
+    <property role="EcuMT" value="7836372964445990119" />
+    <property role="TrG5h" value="TextNodeReference" />
+    <property role="3GE5qa" value="doc" />
+    <property role="34LRSv" value="reference" />
+    <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />
+    <node concept="1TJgyj" id="rh3Y2YeW$V" role="1TKVEi">
+      <property role="IQ2ns" value="491191292298774843" />
+      <property role="20kJfa" value="reference" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="GWtNbsAtfA">
+    <property role="EcuMT" value="809653093352985574" />
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="HtmlTag" />
+    <property role="34LRSv" value="tag" />
+    <property role="R4oN_" value="html tag" />
+    <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />
+    <node concept="1TJgyj" id="1q3yNZeA$$y" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="content" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <property role="IQ2ns" value="1622293396948928802" />
+      <ref role="20lvS9" node="2cLqkTm6J5A" resolve="Line" />
+    </node>
+    <node concept="1TJgyi" id="5M4a$b5iL2Q" role="1TKVEl">
+      <property role="TrG5h" value="tagName" />
+      <property role="IQ2nx" value="6666499814681415862" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="3fm7HO1ENRN">
+    <property role="EcuMT" value="3735206875515010547" />
+    <property role="TrG5h" value="IHoldDocumentation" />
+    <node concept="3MrDgS" id="3fm7HO1ENRO" role="lGtFl" />
+    <node concept="t5JxF" id="3fm7HO1ENRP" role="lGtFl">
+      <property role="t5JxN" value="Flag to trick the comment style for Words" />
+    </node>
   </node>
 </model>
 

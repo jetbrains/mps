@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -27,6 +26,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectRepository;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -109,7 +109,6 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   private DefaultSModel myModelBackup;
   private StreamDataSource myOriginalModelDataSource;
 
-  private volatile ModelStorageConflictsListener myOldModelStorageListener; // to preserve the model conflict logic as it was in @afterTest
   private volatile DiskMemoryDialogExposer myExposer = (a, b, c, d) -> UserChoice.MEMORY_CHOSEN; // will be changed from test to test
   private ConflictResolverImpl myResolver;
 
@@ -156,7 +155,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   }
 
   private void attachConflictResolver() {
-    MPSCoreComponents coreComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
     VFSManager vfsManager = coreComponents.getPlatform().findComponent(VFSManager.class);
     DiskMemoryDialogExposer diskMemoryDialogExposer = (parentComponent, m, source, backupFile) -> myExposer.askUser(parentComponent, m, source, backupFile);
     myResolver = new ConflictResolverImpl(getMPSProject(),
@@ -164,7 +163,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
                                           vfsManager,
                                           diskMemoryDialogExposer);
 
-    myModelAccess.runReadAction(() -> ((EditableSModelBase) getModel()).setConflictResolver(myResolver::resolve));
+    ((ProjectRepository) myRepository).setConflictResolver(myResolver);
     myConflictListener = new ConflictResolverListener();
     myResolver.addListener(myConflictListener);
   }
@@ -173,6 +172,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   public void afterTest() {
 //    checkInitialState();
     myResolver.removeListener(myConflictListener);
+    ((ProjectRepository) myRepository).setConflictResolver(null);
     ourProject.closeAndDelete();
   }
 

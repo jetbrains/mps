@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/4558608847800740951", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "4558608847800740951", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public class ClassifierLoader {
   private static final Logger LOG = Logger.getLogger(ClassifierLoader.class);
 

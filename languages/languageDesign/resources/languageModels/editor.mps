@@ -2,7 +2,7 @@
 <model ref="r:dc468d7c-ca2d-45f7-ace9-6f81e4694f66(jetbrains.mps.lang.resources.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1213,6 +1213,19 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6S5fI02tqpQ">
+    <property role="3GE5qa" value="icons.descriptors" />
+    <ref role="1XX52x" to="1oap:6S5fI02sJjS" resolve="ConstantFieldIcon" />
+    <node concept="3EZMnI" id="6S5fI02tqso" role="2wV5jI">
+      <node concept="3F0ifn" id="6S5fI02tqtX" role="3EZMnx">
+        <property role="3F0ifm" value="constant:" />
+      </node>
+      <node concept="3F1sOY" id="6S5fI02tquZ" role="3EZMnx">
+        <ref role="1NtTu8" to="1oap:6S5fI02sJzE" resolve="field" />
+      </node>
+      <node concept="l2Vlx" id="6S5fI02tqsr" role="2iSdaV" />
     </node>
   </node>
 </model>

@@ -16,10 +16,10 @@
 package jetbrains.mps.ide.devkit.cellExplorer.cellsTree;
 
 import jetbrains.mps.icons.MPSIcons.CellExplorer;
-import jetbrains.mps.ide.devkit.cellExplorer.CellExplorerTool;
 import jetbrains.mps.ide.devkit.cellExplorer.MPSTreeWithAction;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -97,7 +97,7 @@ public class CellsTree extends MPSTreeWithAction {
 
     MPSTreeNode current = findCellNode(cell);
     if (current == null) {
-      CellExplorerTool.LOG.warning("Can't find cell in tree");
+      Logger.getLogger(CellsTree.class).warning("Can't find cell in tree");
       return;
     }
     selectNode(current);

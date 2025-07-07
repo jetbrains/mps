@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,12 @@ import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromPath;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSourceFactories;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 
@@ -33,7 +36,10 @@ import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceT
  * Created by apyshkin on 1/19/17.
  */
 /*package*/ class FileDataSourceFactoryRule implements DataSourceFactoryRule {
-  public FileDataSourceFactoryRule() {
+  private final VFSManager myFileManager;
+
+  public FileDataSourceFactoryRule(@NotNull VFSManager fileManager) {
+    myFileManager = fileManager;
   }
 
   @Nullable
@@ -48,6 +54,15 @@ import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceT
   @Nullable
   @Override
   public DataSourceFactoryFromPath spawn(@NotNull Path path) {
-    return PreinstalledPathDataSourceFactories.FILE_OR_FOLDER;
+    return new DataSourceFactoryFromPath() {
+      @Override
+      public @NotNull DataSource create(@NotNull Path path) {
+        // see FileSystem.getFile(Path)
+        IFile f = myFileManager.getFileSystem(path.isArchive() ? VFSManager.JAR_FS : VFSManager.FILE_FS).getFile(path.toUnixPathFormat().toText());
+        // this is just a tribute to legacy code, in fact, shall create FileDataSource right away. I see no reason for file OR folder ambiguity
+        //noinspection removal
+        return PreinstalledPathDataSourceFactories.FILE_OR_FOLDER.createFromFile(f);
+      }
+    };
   }
 }

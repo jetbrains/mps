@@ -39,7 +39,7 @@ import jetbrains.mps.ide.icons.IdeIcons;
 /**
  * evgeny, 11/15/11
  */
-@GeneratedClass(node = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6058851216819286114", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
+@GeneratedClass(nodeId = "6058851216819286114", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
 public class AddRequiredImportsDialog extends DialogWrapper {
   @NotNull
   private final Project myProject;

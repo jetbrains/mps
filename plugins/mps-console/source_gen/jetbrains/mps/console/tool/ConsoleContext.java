@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.module.SearchScope;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/351968380915666545", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "351968380915666545", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public interface ConsoleContext {
   Project getProject();
   BaseConsoleTab getOutputWindow();

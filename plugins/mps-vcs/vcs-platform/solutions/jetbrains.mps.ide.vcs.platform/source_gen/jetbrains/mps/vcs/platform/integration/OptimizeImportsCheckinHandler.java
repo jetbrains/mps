@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.vcs.checkin.CheckinHandlerFactory;
 import com.intellij.openapi.vcs.changes.CommitContext;
 
-@GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5337823064584388635", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
+@GeneratedClass(nodeId = "5337823064584388635", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class OptimizeImportsCheckinHandler extends CheckinHandler {
   private static final Logger LOG = Logger.getLogger(OptimizeImportsCheckinHandler.class);
   private Project myProject;

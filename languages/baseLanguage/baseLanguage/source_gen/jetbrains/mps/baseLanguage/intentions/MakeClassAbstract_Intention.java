@@ -13,12 +13,12 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class MakeClassAbstract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
@@ -70,7 +70,7 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$Bt)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$Vk));
+      return (boolean) ClassConcept__BehaviorDescriptor.canBeAbstract_id6aeBP5Qh1A$.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)));
     }
 
     private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
@@ -86,11 +86,6 @@ public final class MakeClassAbstract_Intention extends AbstractIntentionDescript
 
   private static final class PROPS {
     /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {

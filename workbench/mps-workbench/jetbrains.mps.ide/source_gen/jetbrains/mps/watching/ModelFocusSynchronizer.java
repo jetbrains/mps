@@ -28,7 +28,7 @@ import com.intellij.openapi.vfs.newvfs.RefreshQueue;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import com.intellij.openapi.application.ModalityState;
 
-@GeneratedClass(node = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)/3316697760692356691", model = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)")
+@GeneratedClass(nodeId = "3316697760692356691", model = "r:b41d4b6d-4038-4cd8-94d3-475689babea3(jetbrains.mps.watching)")
 public class ModelFocusSynchronizer implements FrameStateListener {
   private static final Logger LOG = Logger.getLogger(ModelFocusSynchronizer.class);
   @Override

@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
  * The resulting checker is an instance of {@link jetbrains.mps.checkers.IAbstractChecker } and can accept {@link jetbrains.mps.checkers.ModelCheckerBuilder.ItemsToCheck }.
  * 
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/3719390199793466458", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "3719390199793466458", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class ModelCheckerBuilder {
   private static final Logger LOG = Logger.getLogger(ModelCheckerBuilder.class);
 
@@ -121,9 +121,11 @@ public class ModelCheckerBuilder {
     for (IChecker<?, ? extends IssueKindReportItem> it : ListSequence.fromList(specificCheckers)) {
       IChecker<?, ? extends IssueKindReportItem> checker = it;
       if (checker instanceof IChecker.AbstractModuleChecker) {
-        ListSequence.fromList(moduleCheckers).addElement((IChecker.AbstractModuleChecker<? extends IssueKindReportItem>) checker);
+        IChecker.AbstractModuleChecker<? extends IssueKindReportItem> moduleChecker = (IChecker.AbstractModuleChecker<? extends IssueKindReportItem>) checker;
+        ListSequence.fromList(moduleCheckers).addElement(moduleChecker.catchingErrors());
       } else if (checker instanceof IChecker.AbstractModelChecker) {
-        ListSequence.fromList(modelCheckers).addElement((IChecker.AbstractModelChecker<?>) checker);
+        IChecker.AbstractModelChecker<?> moduleChecker = (IChecker.AbstractModelChecker<?>) checker;
+        ListSequence.fromList(modelCheckers).addElement(moduleChecker.catchingErrors());
       } else if (checker instanceof IChecker.AbstractRootChecker) {
         ListSequence.fromList(modelCheckers).addElement(((IChecker.AbstractRootChecker<?>) checker).asModelChecker());
       } else if (checker instanceof IChecker.AbstractNodeChecker) {

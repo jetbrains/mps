@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.stream.Stream;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/5166120419668914497", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "5166120419668914497", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public final class FeatureWithParent {
   private final Feature myFeature;
   private final FeatureWithParent myParent;

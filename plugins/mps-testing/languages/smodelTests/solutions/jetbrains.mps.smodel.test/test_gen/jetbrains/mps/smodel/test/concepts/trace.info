@@ -102,11 +102,11 @@
     <file name="ConceptCasts_Test.java">
       <node id="6410670351276877627" at="19,49,20,218" concept="3" />
       <node id="6410670351276877911" at="20,218,21,263" concept="3" />
-      <node id="6410670351276910050" at="21,263,22,77" concept="1" />
+      <node id="6410670351276910050" at="21,263,22,111" concept="1" />
       <node id="6410670351277074989" at="25,65,26,218" concept="3" />
       <node id="6410670351277075000" at="26,218,27,53" concept="3" />
       <node id="6410670351277075004" at="27,53,28,279" concept="3" />
-      <node id="6410670351277075033" at="28,279,29,77" concept="1" />
+      <node id="6410670351277075033" at="28,279,29,111" concept="1" />
       <node id="5375498624328879719" at="32,57,33,43" concept="3" />
       <node id="5375498624329234440" at="33,43,34,53" concept="3" />
       <node id="5375498624329568615" at="34,53,35,112" concept="3" />
@@ -119,11 +119,11 @@
       <node id="6410670351276877550" at="18,0,24,0" concept="2" trace="test_MPS_31361#()V" />
       <node id="6410670351277074985" at="24,0,31,0" concept="2" trace="test_MPS_31361_PoundExpression#()V" />
       <node id="5375498624329581386" at="31,0,38,0" concept="2" trace="test_castToBaseConcept#()V" />
-      <scope id="6410670351276877553" at="19,49,22,77">
+      <scope id="6410670351276877553" at="19,49,22,111">
         <var name="abstractConcepts" id="6410670351276877630" />
         <var name="statementConcepts" id="6410670351276877914" />
       </scope>
-      <scope id="6410670351277074988" at="25,65,29,77">
+      <scope id="6410670351277074988" at="25,65,29,111">
         <var name="abstractConcepts" id="6410670351277074990" />
         <var name="statement" id="6410670351277075001" />
         <var name="statementConcepts" id="6410670351277075005" />

@@ -26,7 +26,7 @@ import jetbrains.mps.core.platform.Platform;
  * There are two base implementations, {@link jetbrains.mps.tool.environment.EnvironmentBase } which is deemed for full-fledged runtime instances, and
  *  {@link jetbrains.mps.tool.environment.AbstractEnvironment } generally intended for lightweight, API-like access to existing runtime instance.
  */
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/824372260173098491", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "824372260173098491", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public interface Environment {
   /**
    * Creates and opens an empty project

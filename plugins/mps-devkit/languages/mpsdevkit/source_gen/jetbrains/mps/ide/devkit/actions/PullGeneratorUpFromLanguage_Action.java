@@ -16,6 +16,12 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.vfs.IFile;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import jetbrains.mps.persistence.MementoImpl;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -81,16 +87,35 @@ public class PullGeneratorUpFromLanguage_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final MPSProject myProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     final ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myProject);
-    final GeneratorDescriptor md = ((Generator) event.getData(MPSCommonDataKeys.MODULE)).getModuleDescriptor();
+    Generator generator = (Generator) event.getData(MPSCommonDataKeys.MODULE);
+    final GeneratorDescriptor md = generator.getModuleDescriptor();
     final Language sourceLanguage = (Language) repoFacade.getModule(md.getSourceLanguage());
     final String virtualFolder = myProject.getVirtualFolder(sourceLanguage);
-    final IFile generatorModuleLocation = (((Generator) event.getData(MPSCommonDataKeys.MODULE)).getOutputPath()).getParent();
+    final IFile generatorModuleLocation = generator.getOutputPath().getParent();
+    ArrayList<ModelRoot> modelRoots = new ArrayList<>();
+    ArrayList<SModuleFacet> moduleFacets = new ArrayList<>();
+    generator.getModelRoots().forEach(modelRoots::add);
+    generator.getFacets().forEach(moduleFacets::add);
     //  see NewGeneratorDialog
     myProject.removeModule(event.getData(MPSCommonDataKeys.MODULE));
-    repoFacade.unregisterModule(event.getData(MPSCommonDataKeys.MODULE));
     sourceLanguage.getModuleDescriptor().getGenerators().remove(md);
     sourceLanguage.setChanged();
     md.standaloneModule(true);
+    md.clearModelRootDescriptors();
+    // facets and model roots from a disposed module get their File values serialized in full (not "shrank" with any macro).
+    // Once they get loaded back, they point to same proper location (no macro to resolve), and get serialized with a new ${module} location
+    // on eventual save(). 
+    for (ModelRoot mr : modelRoots) {
+      MementoImpl m = new MementoImpl();
+      mr.save(m);
+      md.getModelRootDescriptors().add(new ModelRootDescriptor(mr.getType(), m));
+    }
+    md.clearModuleFacetDescriptors();
+    for (SModuleFacet mf : moduleFacets) {
+      MementoImpl m = new MementoImpl();
+      mf.save(m);
+      md.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(mf.getFacetType(), m));
+    }
     // FIXME need a naming convention for generator module names 
     IFile moduleFile = generatorModuleLocation.findChild(md.getNamespace().replace("#", "") + MPSExtentions.DOT_GENERATOR);
     SModule gm = repoFacade.instantiate(md, moduleFile);

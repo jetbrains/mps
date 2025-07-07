@@ -4,66 +4,67 @@ package jetbrains.mps.internal.make.runtime.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
+import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.delta.IDeltaVisitor;
 import java.util.Iterator;
 
-@GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/505174985642691359", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
+@GeneratedClass(nodeId = "505174985642691359", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class DeltaReconciler {
-  private List<DeltaContainer> topContainer = ListSequence.fromList(new ArrayList<DeltaContainer>());
+
+  private List<IDelta> contents = ListSequence.fromList(new ArrayList<IDelta>());
+
   public DeltaReconciler() {
   }
+
   public DeltaReconciler(Iterable<IDelta> toReconcile) {
     addAll(toReconcile);
   }
+
   public void addDelta(IDelta delta) {
-    DeltaContainer.insert(delta, topContainer);
+    insert(delta);
   }
+
   public final void addAll(Iterable<IDelta> toReconcile) {
-    Sequence.fromIterable(toReconcile).visitAll((d) -> DeltaContainer.insert(d, topContainer));
+    Sequence.fromIterable(toReconcile).visitAll((d) -> insert(d));
   }
+
   public void reconcileAll() {
-    ListSequence.fromList(topContainer).visitAll((dc) -> dc.mergeContent().reconcile());
+    ListSequence.fromList(contents).visitAll((it) -> it.reconcile());
   }
+
   public void visitAll(final IDeltaVisitor visitor) {
-    ListSequence.fromList(topContainer).visitAll((dc) -> dc.mergeContent().acceptVisitor(visitor));
+    ListSequence.fromList(contents).visitAll((it) -> it.acceptVisitor(visitor));
   }
-  private static class DeltaContainer {
-    private IDelta delta;
-    private List<DeltaContainer> content = ListSequence.fromList(new ArrayList<DeltaContainer>());
-    private DeltaContainer(IDelta delta) {
-      this.delta = delta;
-    }
-    private IDelta mergeContent() {
-      return ListSequence.fromList(content).foldLeft(this.delta, (IDelta d, DeltaContainer dc) -> d.merge(dc.mergeContent()));
-    }
-    private boolean tryInsert(IDelta delta) {
-      if (this.delta.contains(delta)) {
-        insert(delta, content);
-        return true;
-      }
-      return false;
-    }
-    private static void insert(final IDelta delta, List<DeltaContainer> into) {
-      DeltaContainer dc = null;
-      for (Iterator<DeltaContainer> it = ListSequence.fromList(into).iterator(); it.hasNext();) {
-        DeltaContainer next = it.next();
-        if (delta.contains(next.delta)) {
-          if (dc == null) {
-            dc = new DeltaContainer(delta);
-          }
-          ListSequence.fromList(dc.content).addElement(next);
-          it.remove();
+
+  private void insert(IDelta delta) {
+    IDelta toInsert = delta;
+    int size;
+    // conflate possible merges until there are no more
+    do {
+      size = ListSequence.fromList(contents).count();
+      for (Iterator<IDelta> itr = ListSequence.fromList(contents).iterator(); itr.hasNext();) {
+        IDelta contained = itr.next();
+        if (toInsert.contains(contained)) {
+          toInsert = toInsert.merge(contained);
+          itr.remove();
+          break;
         }
       }
-      if (dc != null) {
-        ListSequence.fromList(into).addElement(dc);
-      } else if (!(ListSequence.fromList(into).any((it) -> it.tryInsert(delta)))) {
-        ListSequence.fromList(into).addElement(new DeltaContainer(delta));
+    } while (size > ListSequence.fromList(contents).count());
+
+    // find a possible containing delta and merge into it
+    for (int i = 0; i < ListSequence.fromList(contents).count(); i++) {
+      if (ListSequence.fromList(contents).getElement(i).contains(toInsert)) {
+        ListSequence.fromList(contents).setElement(i, ListSequence.fromList(contents).getElement(i).merge(toInsert));
+        return;
       }
     }
+
+    // if not found, just add to the contents
+    ListSequence.fromList(contents).addElement(toInsert);
   }
+
 }

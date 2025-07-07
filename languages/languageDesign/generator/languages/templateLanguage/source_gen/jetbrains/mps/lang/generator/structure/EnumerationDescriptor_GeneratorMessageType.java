@@ -20,7 +20,7 @@ public class EnumerationDescriptor_GeneratorMessageType extends EnumerationDescr
   private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", 0x11055c831d8L, "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/4241665505353446768");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11055c71875L, 0x11055c71876L, 0x11055c81594L, 0x11055c831d8L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_info_0, myMember_warning_0, myMember_error_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_info_0, myMember_warning_0, myMember_error_0);
 
   @Nullable
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,6 +132,8 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
 
   private void doReplace(T newModel, ModelLoadingState state) {
     myModel = newModel;
+    // myModelDescriptor.replaceModelAndFireEvent()??? - perhaps, this is the place to myModel.setModelDescriptor(myModelDescriptor, ),
+    // not in LazyEditableSModelBase#doLoad()? I'd like to hide SModelBase#getNodeEventDispatch() method, eventually
     myModelDescriptor.setLoadingState(state);
   }
 

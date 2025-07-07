@@ -15,7 +15,7 @@ import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376387736840", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "9170334376387736840", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class AuditTypeSystem extends BaseCheckerTest {
   @ClassRule
   public static final PerformanceMessenger ourStats = new PerformanceMessenger("auditTypeSystem");

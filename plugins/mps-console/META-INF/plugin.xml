@@ -16,9 +16,4 @@
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.console.tool.ConsoleTool</implementation-class>
-    </component>
-  </project-components>
 </idea-plugin>

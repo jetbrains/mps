@@ -14,7 +14,7 @@ import jetbrains.mps.progress.ProgressTask;
  * Conditionally applies the checker passed as {@code origin} parameter to the constructor, based on 
  * boolean value returned from the function {@code accept} passed as the second parameter.
  */
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/8195773907766032343", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "8195773907766032343", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class SkippingChecker<O, I extends ReportItem> implements IAbstractChecker<O, I> {
   private IAbstractChecker<O, ? extends I> myOrigin;
   private _FunctionTypes._return_P2_E0<? extends Boolean, ? super O, ? super SRepository> myAccept;

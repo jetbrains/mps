@@ -54,11 +54,11 @@
     <mkdir dir="${build.layout}/plugins" />
     <mkdir dir="${build.layout}/plugins/vcs-github" />
     <copy todir="${build.layout}/plugins/vcs-github">
-      <fileset dir="${basedir}/plugins/vcs-github" />
+      <fileset dir="${basedir}/plugins/vcs-github-IC" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/vcs-changeReminder" />
-    <copy todir="${build.layout}/plugins/vcs-changeReminder">
-      <fileset dir="${basedir}/plugins/vcs-changeReminder" />
+    <mkdir dir="${build.layout}/plugins/vcs-git-commit-modal" />
+    <copy todir="${build.layout}/plugins/vcs-git-commit-modal">
+      <fileset dir="${basedir}/plugins/vcs-git-commit-modal" />
     </copy>
     <mkdir dir="${build.layout}/plugins/platform-images" />
     <copy todir="${build.layout}/plugins/platform-images">
@@ -79,6 +79,10 @@
     <mkdir dir="${build.layout}/plugins/java" />
     <copy todir="${build.layout}/plugins/java">
       <fileset dir="${basedir}/plugins/java" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/json" />
+    <copy todir="${build.layout}/plugins/json">
+      <fileset dir="${basedir}/plugins/json" />
     </copy>
     <mkdir dir="${build.layout}/plugins/copyright" />
     <copy todir="${build.layout}/plugins/copyright">

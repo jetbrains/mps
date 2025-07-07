@@ -7,51 +7,21 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Map;
 import jetbrains.mps.smodel.SModel;
-import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.SNodeId;
 
-@GeneratedClass(node = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)/453110257780685237", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
+@GeneratedClass(nodeId = "453110257780685237", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
 public class VersionUtil {
   private static final Logger LOG = Logger.getLogger(VersionUtil.class);
   private static final char VERSION_SEPARATOR_CHAR = ':';
   private static final char MODEL_SEPARATOR_CHAR = '.';
   private SModelReference myModelRef;
   private Map<SModelReference, SModel.ImportElement> myImports;
-  public VersionUtil(SModel model) {
-    myModelRef = model.getReference();
-    myImports = new HashMap<SModelReference, SModel.ImportElement>();
-    fillReferenceIDs(model);
-    // replace "-1" indice to valid values and advance maxImportIndex
-    for (SModel.ImportElement elem : model.importedModels()) {
-      myImports.put(elem.getModelReference(), elem);
-    }
-    for (SModel.ImportElement elem : model.getImplicitImportsSupport().getAdditionalModelVersions()) {
-      myImports.put(elem.getModelReference(), elem);
-    }
-  }
-  /*package*/ static void fillReferenceIDs(SModel model) {
-    int maxImport = 0;
-    for (SModel.ImportElement elem : model.importedModels()) {
-      maxImport = Math.max(elem.getReferenceID(), maxImport);
-    }
-    for (SModel.ImportElement elem : model.getImplicitImportsSupport().getAdditionalModelVersions()) {
-      maxImport = Math.max(elem.getReferenceID(), maxImport);
-    }
-    for (SModel.ImportElement elem : model.importedModels()) {
-      if (elem.getReferenceID() < 0) {
-        elem.setReferenceID(++maxImport);
-      }
-    }
-    for (SModel.ImportElement elem : model.getImplicitImportsSupport().getAdditionalModelVersions()) {
-      if (elem.getReferenceID() < 0) {
-        elem.setReferenceID(++maxImport);
-      }
-    }
-  }
+
   public String genImportIndex(SModel.ImportElement elem) {
     return Integer.toString(elem.getReferenceID());
   }
@@ -88,9 +58,6 @@ public class VersionUtil {
     SModel.ImportElement elem = new SModel.ImportElement(modelRef, ix, version);
     myImports.put(modelRef, elem);
     myImportByIx.put(ix, elem);
-    if (implicit) {
-      model.getImplicitImportsSupport().addAdditionalModelVersion(elem);
-    } else
     model.addModelImport(elem);
   }
   public SModelReference getSModelReference(int ix) {

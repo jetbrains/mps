@@ -19,7 +19,7 @@ public class EnumerationDescriptor_Result extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_FAILURE_0 = new EnumerationDescriptor.MemberDescriptor("FAILURE", "failure", 0x20c069f80a9472dcL, "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446961");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, 0x20c069f80a9472dbL, 0x20c069f80a9472dcL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_SUCCESS_0, myMember_FAILURE_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_SUCCESS_0, myMember_FAILURE_0);
 
   @Nullable
   @Override

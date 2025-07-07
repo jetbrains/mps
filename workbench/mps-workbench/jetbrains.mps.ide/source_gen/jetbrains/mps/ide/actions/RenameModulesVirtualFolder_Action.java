@@ -19,6 +19,13 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import java.util.List;
 import java.util.stream.Collectors;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.ui.InputValidatorEx;
+import com.intellij.openapi.util.NlsContexts;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NonNls;
+import java.util.Arrays;
+import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
 import jetbrains.mps.smodel.undo.NamedCommand;
@@ -29,7 +36,7 @@ import com.intellij.openapi.command.undo.UndoableAction;
 import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/142393105344666009", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "142393105344666009", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenameModulesVirtualFolder_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -97,7 +104,29 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
     final String originalVFolder = ((VirtualFolder.Modules) MapSequence.fromMap(_params).get("selectedValue")).getName();
     final List<SModule> modules = ((DiscoveryValueProvider) MapSequence.fromMap(_params).get("selectedObject")).discoverValuesOfType(SModule.class).collect(Collectors.<SModule>toList());
 
-    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, null);
+    InputValidator validator = new InputValidatorEx() {
+
+      @NlsContexts.DetailedDescription
+      @Nullable
+      @Override
+      public String getErrorText(@NonNls String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return "Invalid virtual folder format";
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return "Virtual folder cannot start with a '.'";
+        }
+        return null;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return getErrorText(virtualFolder) == null;
+      }
+    };
+    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, validator);
 
     // Allow passing of an empty string which will result in virtual folder removal
     if (modifiedVFolder == null || Objects.equals(originalVFolder, modifiedVFolder)) {

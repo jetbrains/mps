@@ -40,7 +40,7 @@ public abstract class AbstractIntroduceFieldRefactoring extends IntroduceVariabl
       this.myVariable = SNodeOperations.as(node, CONCEPTS.LocalVariableDeclaration$41);
       return initForVariable(this.myVariable, SLinkOperations.getTarget(this.myVariable, LINKS.initializer$2twD), editorComponent);
     } else {
-      return super.init(node, editorComponent);
+      return super.init((SNode) node, editorComponent);
     }
   }
 

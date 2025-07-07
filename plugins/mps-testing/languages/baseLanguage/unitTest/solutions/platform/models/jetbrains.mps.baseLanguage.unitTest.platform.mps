@@ -3508,6 +3508,16 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="15ZFihwSN5L" role="jymVt">
+      <property role="TrG5h" value="myProperties" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="15ZFihwSN5M" role="1B3o_S" />
+      <node concept="3uibUv" id="15ZFihwSN5N" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
+        <node concept="17QB3L" id="15ZFihwSOl8" role="11_B2D" />
+        <node concept="17QB3L" id="15ZFihwSOxW" role="11_B2D" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="4rQ9_5dKEU$" role="jymVt" />
     <node concept="3clFbW" id="4rQ9_5dKEPd" role="jymVt">
       <node concept="37vLTG" id="4rQ9_5dNYZo" role="3clF46">
@@ -3520,6 +3530,14 @@
           <node concept="3uibUv" id="4rQ9_5dNYZr" role="11_B2D">
             <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="15ZFihwSOIm" role="3clF46">
+        <property role="TrG5h" value="properties" />
+        <node concept="3uibUv" id="15ZFihwSOU4" role="1tU5fm">
+          <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
+          <node concept="17QB3L" id="15ZFihwSP4i" role="11_B2D" />
+          <node concept="17QB3L" id="15ZFihwSP4X" role="11_B2D" />
         </node>
       </node>
       <node concept="3cqZAl" id="4rQ9_5dKEPf" role="3clF45" />
@@ -3536,6 +3554,20 @@
             </node>
             <node concept="37vLTw" id="4rQ9_5dO0wl" role="37vLTJ">
               <ref role="3cqZAo" node="4rQ9_5dNXl4" resolve="myAccessories" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="15ZFihwSP7a" role="3cqZAp">
+          <node concept="37vLTI" id="15ZFihwSP7b" role="3clFbG">
+            <node concept="2YIFZM" id="15ZFihwSP7c" role="37vLTx">
+              <ref role="37wK5l" to="33ny:~Map.copyOf(java.util.Map)" resolve="copyOf" />
+              <ref role="1Pybhc" to="33ny:~Map" resolve="Map" />
+              <node concept="37vLTw" id="15ZFihwSP7d" role="37wK5m">
+                <ref role="3cqZAo" node="15ZFihwSOIm" resolve="properties" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="15ZFihwSP7e" role="37vLTJ">
+              <ref role="3cqZAo" node="15ZFihwSN5L" resolve="myProperties" />
             </node>
           </node>
         </node>
@@ -3659,6 +3691,95 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="15ZFihwStyd" role="jymVt" />
+    <node concept="3clFb_" id="15ZFihwSubz" role="jymVt">
+      <property role="TrG5h" value="getSystemProperty" />
+      <node concept="37vLTG" id="15ZFihwS__6" role="3clF46">
+        <property role="TrG5h" value="key" />
+        <node concept="17QB3L" id="15ZFihwS_Vs" role="1tU5fm" />
+      </node>
+      <node concept="17QB3L" id="15ZFihwSuJq" role="3clF45" />
+      <node concept="3Tm1VV" id="15ZFihwSubA" role="1B3o_S" />
+      <node concept="3clFbS" id="15ZFihwSubB" role="3clF47">
+        <node concept="3clFbJ" id="15ZFihwSRmU" role="3cqZAp">
+          <node concept="3clFbS" id="15ZFihwSRmW" role="3clFbx">
+            <node concept="3cpWs6" id="15ZFihwSX8A" role="3cqZAp">
+              <node concept="2OqwBi" id="15ZFihwSZN0" role="3cqZAk">
+                <node concept="37vLTw" id="15ZFihwSZ9A" role="2Oq$k0">
+                  <ref role="3cqZAo" node="15ZFihwSN5L" resolve="myProperties" />
+                </node>
+                <node concept="liA8E" id="15ZFihwT1PK" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
+                  <node concept="37vLTw" id="15ZFihwT2uI" role="37wK5m">
+                    <ref role="3cqZAo" node="15ZFihwS__6" resolve="key" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="15ZFihwSSIm" role="3clFbw">
+            <node concept="37vLTw" id="15ZFihwSROu" role="2Oq$k0">
+              <ref role="3cqZAo" node="15ZFihwSN5L" resolve="myProperties" />
+            </node>
+            <node concept="liA8E" id="15ZFihwSVTn" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Map.containsKey(java.lang.Object)" resolve="containsKey" />
+              <node concept="37vLTw" id="15ZFihwSWu3" role="37wK5m">
+                <ref role="3cqZAo" node="15ZFihwS__6" resolve="key" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="15ZFihwSA1C" role="3cqZAp">
+          <node concept="2YIFZM" id="15ZFihwSArs" role="3clFbG">
+            <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+            <node concept="37vLTw" id="15ZFihwSAR0" role="37wK5m">
+              <ref role="3cqZAo" node="15ZFihwS__6" resolve="key" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="15ZFihwSzBB" role="lGtFl">
+        <node concept="TZ5HA" id="15ZFihwSzBC" role="TZ5H$">
+          <node concept="1dT_AC" id="15ZFihwSzBD" role="1dT_Ay">
+            <property role="1dT_AB" value="Serves to facilitate overriding of system properties for tests that are run with this session." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="15ZFihwS$19" role="TZ5H$">
+          <node concept="1dT_AC" id="15ZFihwS$1a" role="1dT_Ay">
+            <property role="1dT_AB" value="Instead of calling directly " />
+          </node>
+          <node concept="1dT_AA" id="15ZFihwS$lC" role="1dT_Ay">
+            <node concept="VVOAv" id="15ZFihwS$lY" role="qph3F">
+              <node concept="TZ5HA" id="15ZFihwS$m0" role="2Xj1qM">
+                <node concept="1dT_AC" id="15ZFihwS$mk" role="1dT_Ay">
+                  <property role="1dT_AB" value="System.getProperty()" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="15ZFihwS$lB" role="1dT_Ay">
+            <property role="1dT_AB" value=", this method should be used, which " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="15ZFihwS$om" role="TZ5H$">
+          <node concept="1dT_AC" id="15ZFihwS$on" role="1dT_Ay">
+            <property role="1dT_AB" value="delegates to " />
+          </node>
+          <node concept="1dT_AA" id="15ZFihwS$LU" role="1dT_Ay">
+            <node concept="92FcH" id="15ZFihwS$Mg" role="qph3F">
+              <node concept="TZ5HA" id="15ZFihwS$Mi" role="2XjZqd" />
+              <node concept="VXe08" id="15ZFihwS_bu" role="92FcQ">
+                <ref role="VXe09" to="wyt6:~System" resolve="System" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="15ZFihwS$LT" role="1dT_Ay">
+            <property role="1dT_AB" value=" for properties that are not defined for this session." />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="4rQ9_5dBfXo" role="jymVt" />
     <node concept="3Tm1VV" id="4rQ9_5dBfWf" role="1B3o_S" />
     <node concept="3UR2Jj" id="642Zr9KAhNL" role="lGtFl">
@@ -3689,6 +3810,24 @@
           <property role="373rjd" value="true" />
           <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;(int)" resolve="HashMap" />
           <node concept="3cmrfG" id="4rQ9_5dOgnD" role="37wK5m">
+            <property role="3cmrfH" value="4" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="15ZFihwSDKg" role="jymVt">
+      <property role="TrG5h" value="myProperties" />
+      <node concept="3Tm6S6" id="15ZFihwSDKh" role="1B3o_S" />
+      <node concept="3uibUv" id="15ZFihwSDKi" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
+        <node concept="17QB3L" id="15ZFihwSElm" role="11_B2D" />
+        <node concept="17QB3L" id="15ZFihwSEta" role="11_B2D" />
+      </node>
+      <node concept="2ShNRf" id="15ZFihwSDKl" role="33vP2m">
+        <node concept="1pGfFk" id="15ZFihwSDKm" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;(int)" resolve="HashMap" />
+          <node concept="3cmrfG" id="15ZFihwSDKn" role="37wK5m">
             <property role="3cmrfH" value="4" />
           </node>
         </node>
@@ -3786,6 +3925,60 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="15ZFihwSBvA" role="jymVt" />
+    <node concept="3clFb_" id="15ZFihwSBZV" role="jymVt">
+      <property role="TrG5h" value="withSystemProperty" />
+      <node concept="37vLTG" id="15ZFihwSCQL" role="3clF46">
+        <property role="TrG5h" value="key" />
+        <node concept="17QB3L" id="15ZFihwSD11" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="15ZFihwSD1R" role="3clF46">
+        <property role="TrG5h" value="property" />
+        <node concept="17QB3L" id="15ZFihwSDcm" role="1tU5fm" />
+      </node>
+      <node concept="3uibUv" id="15ZFihwSCf2" role="3clF45">
+        <ref role="3uigEE" node="4rQ9_5dOfYm" resolve="TestSessionConfig" />
+      </node>
+      <node concept="3Tm1VV" id="15ZFihwSBZY" role="1B3o_S" />
+      <node concept="3clFbS" id="15ZFihwSBZZ" role="3clF47">
+        <node concept="3clFbJ" id="CScIjURlO2" role="3cqZAp">
+          <node concept="3clFbS" id="CScIjURlO4" role="3clFbx">
+            <node concept="3clFbF" id="15ZFihwSEQp" role="3cqZAp">
+              <node concept="2OqwBi" id="15ZFihwSFKk" role="3clFbG">
+                <node concept="37vLTw" id="15ZFihwSEQo" role="2Oq$k0">
+                  <ref role="3cqZAo" node="15ZFihwSDKg" resolve="myProperties" />
+                </node>
+                <node concept="liA8E" id="15ZFihwSIrw" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
+                  <node concept="37vLTw" id="15ZFihwSJ2G" role="37wK5m">
+                    <ref role="3cqZAo" node="15ZFihwSCQL" resolve="key" />
+                  </node>
+                  <node concept="37vLTw" id="15ZFihwSKt3" role="37wK5m">
+                    <ref role="3cqZAo" node="15ZFihwSD1R" resolve="property" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="CScIjURnw6" role="3clFbw">
+            <node concept="10Nm6u" id="CScIjURozM" role="3uHU7w" />
+            <node concept="37vLTw" id="CScIjURmcZ" role="3uHU7B">
+              <ref role="3cqZAo" node="15ZFihwSD1R" resolve="property" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="15ZFihwSLXz" role="3cqZAp">
+          <node concept="Xjq3P" id="15ZFihwSLXx" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="15ZFihwSDh2" role="lGtFl">
+        <node concept="TZ5HA" id="15ZFihwSDh3" role="TZ5H$">
+          <node concept="1dT_AC" id="15ZFihwSDh4" role="1dT_Ay">
+            <property role="1dT_AB" value="Set a value for a system property that needs to be overridden." />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="4rQ9_5dOg0I" role="jymVt" />
     <node concept="3clFb_" id="4rQ9_5dOwUD" role="jymVt">
       <property role="TrG5h" value="create" />
@@ -3801,6 +3994,9 @@
               <ref role="37wK5l" node="4rQ9_5dKEPd" resolve="TestSession" />
               <node concept="37vLTw" id="4rQ9_5dOzwO" role="37wK5m">
                 <ref role="3cqZAo" node="4rQ9_5dOgny" resolve="myAccessories" />
+              </node>
+              <node concept="37vLTw" id="15ZFihwTeYU" role="37wK5m">
+                <ref role="3cqZAo" node="15ZFihwSDKg" resolve="myProperties" />
               </node>
             </node>
           </node>
@@ -3822,6 +4018,51 @@
           </node>
         </node>
         <node concept="1dT_AC" id="642Zr9K_Q7y" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="5qUkJhvm4Q_">
+    <property role="TrG5h" value="SystemProperties" />
+    <node concept="2tJIrI" id="5qUkJhvm56c" role="jymVt" />
+    <node concept="Wx3nA" id="5qUkJhvm5dl" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="PROJECT_PATH" />
+      <node concept="17QB3L" id="5qUkJhvm5f_" role="1tU5fm" />
+      <node concept="3Tm1VV" id="5qUkJhvm5dn" role="1B3o_S" />
+      <node concept="Xl_RD" id="5qUkJhvm5h5" role="33vP2m">
+        <property role="Xl_RC" value="mps.test.project.path" />
+      </node>
+      <node concept="z59LJ" id="5qUkJhvm5ob" role="lGtFl">
+        <node concept="TZ5HA" id="5qUkJhvm5oc" role="TZ5H$">
+          <node concept="1dT_AC" id="5qUkJhvm5od" role="1dT_Ay">
+            <property role="1dT_AB" value="Can be used to pass the URL (filesystem path) of the project to open." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5qUkJhvm56h" role="jymVt" />
+    <node concept="3Tm1VV" id="5qUkJhvm4QA" role="1B3o_S" />
+    <node concept="3UR2Jj" id="5qUkJhvm4UT" role="lGtFl">
+      <node concept="TZ5HA" id="5qUkJhvm4UU" role="TZ5H$">
+        <node concept="1dT_AC" id="5qUkJhvm4UV" role="1dT_Ay">
+          <property role="1dT_AB" value="Defines the system property keys that are used internally by the test platform. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5qUkJhvm5sj" role="TZ5H$">
+        <node concept="1dT_AC" id="5qUkJhvm5sk" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;See " />
+        </node>
+        <node concept="1dT_AA" id="5qUkJhvm5uM" role="1dT_Ay">
+          <node concept="92FcH" id="5qUkJhvm5vB" role="qph3F">
+            <node concept="TZ5HA" id="5qUkJhvm5vD" role="2XjZqd" />
+            <node concept="VXe0Z" id="5qUkJhvm5Ud" role="92FcQ">
+              <ref role="VXe0S" node="15ZFihwSubz" resolve="getSystemProperty" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="5qUkJhvm5uL" role="1dT_Ay">
           <property role="1dT_AB" value="" />
         </node>
       </node>

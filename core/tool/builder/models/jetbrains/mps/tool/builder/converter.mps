@@ -787,6 +787,46 @@
       <node concept="3clFbW" id="1XAHtgEIUac" role="jymVt">
         <node concept="3cqZAl" id="1XAHtgEIUae" role="3clF45" />
         <node concept="3clFbS" id="1XAHtgEIUag" role="3clF47">
+          <node concept="3SKdUt" id="3BZAxdm2Tyt" role="3cqZAp">
+            <node concept="1PaTwC" id="3BZAxdm2Tyu" role="1aUNEU">
+              <node concept="3oM_SD" id="3BZAxdm2UPP" role="1PaTwD">
+                <property role="3oM_SC" value="don't" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UQ6" role="1PaTwD">
+                <property role="3oM_SC" value="bother" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UQS" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UQT" role="1PaTwD">
+                <property role="3oM_SC" value="DisposableDataSource.delete()" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2USq" role="1PaTwD">
+                <property role="3oM_SC" value="as" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2USF" role="1PaTwD">
+                <property role="3oM_SC" value="it's" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2USW" role="1PaTwD">
+                <property role="3oM_SC" value="beyond" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UTZ" role="1PaTwD">
+                <property role="3oM_SC" value="the" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UUh" role="1PaTwD">
+                <property role="3oM_SC" value="scope" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UU0" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UUy" role="1PaTwD">
+                <property role="3oM_SC" value="the" />
+              </node>
+              <node concept="3oM_SD" id="3BZAxdm2UUz" role="1PaTwD">
+                <property role="3oM_SC" value="task" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="1XAHtgEIUoA" role="3cqZAp">
             <node concept="37vLTI" id="1XAHtgEIUoC" role="3clFbG">
               <node concept="37vLTw" id="1XAHtgEIUoF" role="37vLTJ">
@@ -1053,27 +1093,6 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="6VQQFQNQ9vA" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-      </node>
-      <node concept="2tJIrI" id="6VQQFQNQbso" role="jymVt" />
-      <node concept="3clFb_" id="6VQQFQNQbql" role="jymVt">
-        <property role="TrG5h" value="delete" />
-        <node concept="3Tm1VV" id="6VQQFQNQbqm" role="1B3o_S" />
-        <node concept="10P_77" id="6VQQFQNQbqn" role="3clF45" />
-        <node concept="3clFbS" id="6VQQFQNQbqo" role="3clF47">
-          <node concept="3clFbF" id="6VQQFQNQbqp" role="3cqZAp">
-            <node concept="2OqwBi" id="6VQQFQNQbqq" role="3clFbG">
-              <node concept="37vLTw" id="6VQQFQNQbqr" role="2Oq$k0">
-                <ref role="3cqZAo" node="1XAHtgEIUoy" resolve="myFile" />
-              </node>
-              <node concept="liA8E" id="6VQQFQNQbJ2" role="2OqNvi">
-                <ref role="37wK5l" to="guwi:~File.delete()" resolve="delete" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="6VQQFQNQbqt" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>

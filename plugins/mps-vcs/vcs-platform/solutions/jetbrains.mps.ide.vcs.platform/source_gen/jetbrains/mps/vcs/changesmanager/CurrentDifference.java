@@ -17,7 +17,7 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 /**
  * a difference for a model
  */
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3161776655522572366", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "3161776655522572366", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class CurrentDifference {
   private final SimpleCommandQueue myCommandQueue;
   private final EditableSModel myModelDescriptor;

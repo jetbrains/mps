@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -124,7 +124,7 @@ public class ProjectPaneDnDListener implements DropTargetListener {
 
       for (Pair<SNode, String> sourceNode : getNodesToMove(targetModel, targetPackage, sourceNodes)) {
         String fullTargetPack = getFullTargetPack(targetPackage, sourceNode.o2);
-        SNodeAccessUtil.setProperty(sourceNode.o1, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
+        SNodeAccessUtil.setPropertyValue(sourceNode.o1, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
         if (SNodeOperations.isInstanceOf(sourceNode.o1, SNodeUtil.concept_AbstractConceptDeclaration)) {
           SNode baseNode = sourceNode.o1;
           List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(project.getProject(), baseNode);
@@ -134,7 +134,7 @@ public class ProjectPaneDnDListener implements DropTargetListener {
 
               for (SNode aspect : tab.getNodes(baseNode)) {
                 if (tab.getBaseNode(aspect) != baseNode) continue;
-                SNodeAccessUtil.setProperty(aspect, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
+                SNodeAccessUtil.setPropertyValue(aspect, SNodeUtil.property_BaseConcept_virtualPackage, fullTargetPack);
               }
             } catch (Throwable t) {
               LOG.error("Exception in extension code: ", t);

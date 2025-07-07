@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4664177994951620648", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "4664177994951620648", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetReferenceStructChange extends SetReferenceChange {
 
   public SetReferenceStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, SNodeId newSourceNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo) {

@@ -13,7 +13,7 @@
       <unit at="11,0,310,0" name="jetbrains.mps.lang.dataFlow.analyzers.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,12,0" name="jetbrains.mps.lang.dataFlow.analyzers.structure.IconContainer" />
+      <unit at="8,0,13,0" name="jetbrains.mps.lang.dataFlow.analyzers.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,98,0" name="jetbrains.mps.lang.dataFlow.analyzers.structure.LanguageConceptSwitch" />
@@ -153,8 +153,8 @@
       <node id="3325264799421303651" at="494,83,495,76" concept="0" />
       <node id="3325264799421303651" at="495,76,496,124" concept="0" />
       <node id="3325264799421303651" at="496,124,497,17" concept="0" />
-      <node id="3325264799421304898" at="497,17,498,196" concept="0" />
-      <node id="3325264799421303651" at="498,196,499,22" concept="4" />
+      <node id="3325264799421304898" at="497,17,498,195" concept="0" />
+      <node id="3325264799421303651" at="498,195,499,22" concept="4" />
       <node id="3325264799421303651" at="491,0,501,0" concept="7" trace="createDescriptorForPatternCondition#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="3325264799421303651" at="144,50,145,41" />
       <scope id="3325264799421303651" at="491,74,499,22">
@@ -350,8 +350,8 @@
       <node id="430844094082168520" at="46,0,47,0" concept="1" trace="props_Rule" />
       <node id="430844094082168520" at="292,33,293,76" concept="3" />
       <node id="430844094082168520" at="293,76,294,35" concept="0" />
-      <node id="430844094082168520" at="294,35,295,57" concept="0" />
-      <node id="430844094082168520" at="295,57,296,36" concept="0" />
+      <node id="430844094082168520" at="294,35,295,45" concept="0" />
+      <node id="430844094082168520" at="295,45,296,36" concept="0" />
       <node id="430844094082168520" at="297,9,298,26" concept="4" />
       <node id="430844094082168520" at="291,38,297,9" concept="2" />
       <scope id="430844094082168520" at="292,33,296,36">
@@ -758,8 +758,8 @@
       <node id="6618572076229093257" at="13,0,14,0" concept="1" trace="props_Analyzer" />
       <node id="6618572076229093257" at="61,37,62,76" concept="3" />
       <node id="6618572076229093257" at="62,76,63,35" concept="0" />
-      <node id="6618572076229093257" at="63,35,64,56" concept="0" />
-      <node id="6618572076229093257" at="64,56,65,40" concept="0" />
+      <node id="6618572076229093257" at="63,35,64,45" concept="0" />
+      <node id="6618572076229093257" at="64,45,65,40" concept="0" />
       <node id="6618572076229093257" at="66,9,67,30" concept="4" />
       <node id="6618572076229093257" at="60,42,66,9" concept="2" />
       <scope id="6618572076229093257" at="61,37,65,40">

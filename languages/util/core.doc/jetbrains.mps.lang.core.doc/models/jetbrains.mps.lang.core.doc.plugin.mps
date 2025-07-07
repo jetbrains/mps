@@ -279,10 +279,10 @@
                     <property role="TrG5h" value="genPlanModel" />
                     <node concept="1XwpNF" id="7_nN6E$T0dm" role="1tU5fm" />
                     <node concept="1Xw6AR" id="7_nN6E$T0n4" role="33vP2m">
-                      <node concept="1dCxOl" id="1iJFhwdSILQ" role="1XwpL7">
+                      <node concept="1dCxOl" id="1Qlc62NAYmf" role="1XwpL7">
                         <property role="1XweGQ" value="r:d1cf1bdc-d32d-481e-8ec6-73dc1f9dcb76" />
-                        <node concept="1j_P7g" id="1iJFhwdSILR" role="1j$8Uc">
-                          <property role="1j_P7h" value="jetbrains.mps.lang.descriptor.structure_doc@genplan" />
+                        <node concept="1j_P7g" id="1Qlc62NAYmg" role="1j$8Uc">
+                          <property role="1j_P7h" value="jetbrains.mps.lang.documentation@genplan" />
                         </node>
                       </node>
                     </node>

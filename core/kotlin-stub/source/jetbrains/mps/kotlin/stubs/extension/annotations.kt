@@ -1,27 +1,30 @@
 @file:JvmName("KtAnnotations")
+
 package jetbrains.mps.kotlin.stubs.extension
 
-import kotlinx.metadata.*
+import kotlinx.metadata.klib.annotations as klib_annotations
+import kotlin.metadata.*
 
-private fun KmExtensionVisitor?.readAnnotations(): List<KmAnnotation> {
-    return if (this is StubExtension) this.annotations else emptyList()
-}
+/**
+ * Since abandoning the own metadata extensions for parsing protobuf
+ * the extension properties defined here are simply forwarding to
+ * the ones defined in [klibExtensions] .
+ */
 
 val KmType.annotations
-    get() = visitExtensions(StubExtension.extensionType).readAnnotations()
+    get() = klib_annotations
 
 val KmClass.annotations
-    get() = visitExtensions(StubExtension.extensionType).readAnnotations()
+    get() = klib_annotations
 
 val KmConstructor.annotations
-    get() = visitExtensions(StubExtension.extensionType).readAnnotations()
+    get() = klib_annotations
 
 val KmValueParameter.annotations
-    get() = visitExtensions(StubExtension.extensionType).readAnnotations()
+    get() = klib_annotations
 
 val KmFunction.annotations
-    get() = visitExtensions(StubExtension.extensionType).readAnnotations()
+    get() = klib_annotations
 
 val KmProperty.annotations
-    get() = visitExtensions(StubExtension.extensionType).readAnnotations()
-
+    get() = klib_annotations

@@ -32,6 +32,7 @@
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
+    <import index="jyou" ref="r:ca03e632-3f02-43dd-8ea4-ad134e38a5a2(jetbrains.mps.kotlin.plugin)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -1276,7 +1277,7 @@
             <node concept="1AR3kn" id="1CUeZUo8ipE" role="2OqNvi">
               <node concept="1QN52j" id="1CUeZUo8iw4" role="1AR3km">
                 <node concept="ZC_QK" id="1CUeZUo8iw2" role="1QN54C">
-                  <ref role="2aWVGs" to="0:~~StandardKt" resolve="StandardKt" />
+                  <ref role="2aWVGs" to="0:~~Standard.kt" resolve="Standard.kt" />
                   <node concept="ZC_QK" id="1CUeZUo8i$q" role="2aWVGa">
                     <ref role="2aWVGs" to="0:~.TODO()" resolve="TODO" />
                   </node>
@@ -3617,14 +3618,25 @@
         <node concept="3clFbS" id="4JVbw4UjE5d" role="3clFbx">
           <node concept="3cpWs6" id="4JVbw4UjGdc" role="3cqZAp" />
         </node>
-        <node concept="2YIFZM" id="4JVbw4UjEQO" role="3clFbw">
-          <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-          <ref role="37wK5l" to="w1kc:~SModelStereotype.isStubModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isStubModel" />
-          <node concept="2OqwBi" id="4JVbw4UjEQP" role="37wK5m">
-            <node concept="1YBJjd" id="4JVbw4UjEQQ" role="2Oq$k0">
-              <ref role="1YBMHb" node="2ul4aX8XbyV" resolve="type" />
+        <node concept="22lmx$" id="3E2609YkxeY" role="3clFbw">
+          <node concept="3fqX7Q" id="3E2609Yl809" role="3uHU7w">
+            <node concept="2YIFZM" id="3E2609Yl80b" role="3fr31v">
+              <ref role="37wK5l" to="jyou:3E2609Yk_CW" resolve="hasTypesystem" />
+              <ref role="1Pybhc" to="jyou:7iropoGY2fi" resolve="ExtensionsHelper" />
+              <node concept="1YBJjd" id="3E2609Yl80c" role="37wK5m">
+                <ref role="1YBMHb" node="2ul4aX8XbyV" resolve="type" />
+              </node>
             </node>
-            <node concept="I4A8Y" id="4JVbw4UjEQR" role="2OqNvi" />
+          </node>
+          <node concept="2YIFZM" id="4JVbw4UjEQO" role="3uHU7B">
+            <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
+            <ref role="37wK5l" to="w1kc:~SModelStereotype.isStubModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isStubModel" />
+            <node concept="2OqwBi" id="4JVbw4UjEQP" role="37wK5m">
+              <node concept="1YBJjd" id="4JVbw4UjEQQ" role="2Oq$k0">
+                <ref role="1YBMHb" node="2ul4aX8XbyV" resolve="type" />
+              </node>
+              <node concept="I4A8Y" id="4JVbw4UjEQR" role="2OqNvi" />
+            </node>
           </node>
         </node>
       </node>

@@ -5,7 +5,7 @@ package jetbrains.mps.smodel.persistence.def;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-@GeneratedClass(node = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)/3847617280526267717", model = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)")
+@GeneratedClass(nodeId = "3847617280526267717", model = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)")
 public interface VisibleModelElements {
   SModelReference getModelUID(int importIndex);
   int getVisibleModelIndex(SModelReference targetModelReference);

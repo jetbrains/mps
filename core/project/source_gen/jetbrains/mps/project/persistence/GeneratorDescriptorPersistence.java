@@ -26,20 +26,11 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_R
 /**
  * XML/DOM persistence for a descriptor of Generator module 
  */
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883030499", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "842994667883030499", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class GeneratorDescriptorPersistence {
   private final String SOURCE_GEN_DEFAULT = "${module}/generator/source_gen";
 
   private final boolean myIsInsideLanguage;
-
-  /**
-   * 
-   * @deprecated use another cons
-   */
-  @Deprecated(forRemoval = true, since = "2023.3")
-  public GeneratorDescriptorPersistence(Object unused, boolean isInsideLanguage) {
-    myIsInsideLanguage = isInsideLanguage;
-  }
 
   public GeneratorDescriptorPersistence(boolean isInsideLanguage) {
     myIsInsideLanguage = isInsideLanguage;
@@ -49,74 +40,74 @@ public class GeneratorDescriptorPersistence {
   public GeneratorDescriptor load(@NotNull final Element generatorElement) throws ModuleReadException {
     try {
       GeneratorDescriptor descriptor = ((_FunctionTypes._return_P0_E0<GeneratorDescriptor>) () -> {
-        final GeneratorDescriptor result_wk2vdq_a0a0a0a0i = new GeneratorDescriptor();
+        final GeneratorDescriptor result_wk2vdq_a0a0a0a0g = new GeneratorDescriptor();
         String genUID = generatorElement.getAttributeValue("namespace");
-        final String result_wk2vdq_a1a0a0a0a0i = genUID;
-        result_wk2vdq_a0a0a0a0i.setNamespace(result_wk2vdq_a1a0a0a0a0i);
-        final boolean result_wk2vdq_a2a0a0a0a0i = XmlUtil.booleanWithDefault(generatorElement, "generate-templates", false);
-        result_wk2vdq_a0a0a0a0i.setGenerateTemplates(result_wk2vdq_a2a0a0a0a0i);
+        final String result_wk2vdq_a1a0a0a0a0g = genUID;
+        result_wk2vdq_a0a0a0a0g.setNamespace(result_wk2vdq_a1a0a0a0a0g);
+        final boolean result_wk2vdq_a2a0a0a0a0g = XmlUtil.booleanWithDefault(generatorElement, "generate-templates", false);
+        result_wk2vdq_a0a0a0a0g.setGenerateTemplates(result_wk2vdq_a2a0a0a0a0g);
         // I don't like defaults hard-coded in persistence, but don't want to complicate transition
         // as I need to check both null and default value in AB.updateMDValues (null indicates use of default value)
         // Perhaps, shall move default into AM code later.
         String op = XmlUtil.stringWithDefault(generatorElement, "generatorOutputPath", SOURCE_GEN_DEFAULT);
-        final String result_wk2vdq_a7a0a0a0a0i = (op.isBlank() ? null : op);
-        result_wk2vdq_a0a0a0a0i.setOutputRoot(result_wk2vdq_a7a0a0a0a0i);
+        final String result_wk2vdq_a7a0a0a0a0g = (op.isBlank() ? null : op);
+        result_wk2vdq_a0a0a0a0g.setOutputRoot(result_wk2vdq_a7a0a0a0a0g);
 
         String uuid = generatorElement.getAttributeValue("uuid");
         if (uuid != null) {
-          final ModuleId result_wk2vdq_a0a01a0a0a0a0i = ModuleId.fromString(uuid);
-          result_wk2vdq_a0a0a0a0i.setId(result_wk2vdq_a0a01a0a0a0a0i);
+          final ModuleId result_wk2vdq_a0a01a0a0a0a0g = ModuleId.fromString(uuid);
+          result_wk2vdq_a0a0a0a0g.setId(result_wk2vdq_a0a01a0a0a0a0g);
         }
 
         String generatorName = generatorElement.getAttributeValue("alias");
         if (generatorName != null) {
-          final String result_wk2vdq_a0a31a0a0a0a0i = generatorName;
-          result_wk2vdq_a0a0a0a0i.setAlias(result_wk2vdq_a0a31a0a0a0a0i);
+          final String result_wk2vdq_a0a31a0a0a0a0g = generatorName;
+          result_wk2vdq_a0a0a0a0g.setAlias(result_wk2vdq_a0a31a0a0a0a0g);
         }
 
         if (!(myIsInsideLanguage)) {
           Element srcLang = XmlUtil.first(generatorElement, "source-language");
           if (srcLang != null) {
-            final SModuleReference result_wk2vdq_a0a1a51a0a0a0a0i = PersistenceFacade.getInstance().createModuleReference(srcLang.getAttributeValue("module"));
-            result_wk2vdq_a0a0a0a0i.setSourceLanguage(result_wk2vdq_a0a1a51a0a0a0a0i);
+            final SModuleReference result_wk2vdq_a0a1a51a0a0a0a0g = PersistenceFacade.getInstance().createModuleReference(srcLang.getAttributeValue("module"));
+            result_wk2vdq_a0a0a0a0g.setSourceLanguage(result_wk2vdq_a0a1a51a0a0a0a0g);
           }
-          result_wk2vdq_a0a0a0a0i.standaloneModule(true);
+          result_wk2vdq_a0a0a0a0g.standaloneModule(true);
         }
 
         Element models = XmlUtil.first(generatorElement, "models");
         if (models != null) {
-          result_wk2vdq_a0a0a0a0i.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(models, "modelRoot")));
+          result_wk2vdq_a0a0a0a0g.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(models, "modelRoot")));
         }
 
         Element facets = XmlUtil.first(generatorElement, "facets");
         if (facets != null) {
-          result_wk2vdq_a0a0a0a0i.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
+          result_wk2vdq_a0a0a0a0g.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
         }
 
-        ModuleDescriptorPersistence.loadDependencies(result_wk2vdq_a0a0a0a0i, generatorElement);
+        ModuleDescriptorPersistence.loadDependencies(result_wk2vdq_a0a0a0a0g, generatorElement);
 
         // "depends on" generators
         for (Element refGenerator : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(generatorElement, "external-templates"), "generator"))) {
-          result_wk2vdq_a0a0a0a0i.getDepGenerators().add(PersistenceFacade.getInstance().createModuleReference(refGenerator.getAttributeValue("generatorUID")));
+          result_wk2vdq_a0a0a0a0g.getDepGenerators().add(PersistenceFacade.getInstance().createModuleReference(refGenerator.getAttributeValue("generatorUID")));
         }
 
         for (Element ruleElement : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(generatorElement, "mapping-priorities"), "mapping-priority-rule"))) {
-          final MappingPriorityRule result_wk2vdq_a0a82a0a0a0a0i = new MappingPriorityRule();
-          final RuleType result_wk2vdq_a0a0a82a0a0a0a0i = RuleType.parse(ruleElement.getAttributeValue("kind"));
-          result_wk2vdq_a0a82a0a0a0a0i.setType(result_wk2vdq_a0a0a82a0a0a0a0i);
+          final MappingPriorityRule result_wk2vdq_a0a82a0a0a0a0g = new MappingPriorityRule();
+          final RuleType result_wk2vdq_a0a0a82a0a0a0a0g = RuleType.parse(ruleElement.getAttributeValue("kind"));
+          result_wk2vdq_a0a82a0a0a0a0g.setType(result_wk2vdq_a0a0a82a0a0a0a0g);
           Element greaterPM = XmlUtil.first(ruleElement, "greater-priority-mapping");
           if (greaterPM != null) {
-            final MappingConfig_AbstractRef result_wk2vdq_a0a2a0a82a0a0a0a0i = loadGeneratorMappingConfigRef(greaterPM, genUID, false);
-            result_wk2vdq_a0a82a0a0a0a0i.setLeft(result_wk2vdq_a0a2a0a82a0a0a0a0i);
+            final MappingConfig_AbstractRef result_wk2vdq_a0a2a0a82a0a0a0a0g = loadGeneratorMappingConfigRef(greaterPM, genUID, false);
+            result_wk2vdq_a0a82a0a0a0a0g.setLeft(result_wk2vdq_a0a2a0a82a0a0a0a0g);
           }
           Element lesserPM = XmlUtil.first(ruleElement, "lesser-priority-mapping");
           if (lesserPM != null) {
-            final MappingConfig_AbstractRef result_wk2vdq_a0a4a0a82a0a0a0a0i = loadGeneratorMappingConfigRef(lesserPM, genUID, false);
-            result_wk2vdq_a0a82a0a0a0a0i.setRight(result_wk2vdq_a0a4a0a82a0a0a0a0i);
+            final MappingConfig_AbstractRef result_wk2vdq_a0a4a0a82a0a0a0a0g = loadGeneratorMappingConfigRef(lesserPM, genUID, false);
+            result_wk2vdq_a0a82a0a0a0a0g.setRight(result_wk2vdq_a0a4a0a82a0a0a0a0g);
           }
-          result_wk2vdq_a0a0a0a0i.getPriorityRules().add(result_wk2vdq_a0a82a0a0a0a0i);
+          result_wk2vdq_a0a0a0a0g.getPriorityRules().add(result_wk2vdq_a0a82a0a0a0a0g);
         }
-        return result_wk2vdq_a0a0a0a0i;
+        return result_wk2vdq_a0a0a0a0g;
       }).invoke();
       return descriptor;
     } catch (Exception ex) {
@@ -146,12 +137,8 @@ public class GeneratorDescriptorPersistence {
         generator.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
       }
     } else {
-      if (descriptor.getOutputPath() != null) {
-        generator.setAttribute("generatorOutputPath", descriptor.getOutputPath());
-      } else {
-        // indicate "no value"
-        generator.setAttribute("generatorOutputPath", "");
-      }
+      // indicate "no value"
+      generator.setAttribute("generatorOutputPath", "");
     }
 
     if (!(myIsInsideLanguage)) {
@@ -234,12 +221,12 @@ public class GeneratorDescriptorPersistence {
       }
 
       return ((_FunctionTypes._return_P0_E0<MappingConfig_ExternalRef>) () -> {
-        final MappingConfig_ExternalRef result_wk2vdq_a0a3a0c0n = new MappingConfig_ExternalRef();
-        final SModuleReference result_wk2vdq_a0a0a3a0c0n = PersistenceFacade.getInstance().createModuleReference(genUID);
-        result_wk2vdq_a0a3a0c0n.setGenerator(result_wk2vdq_a0a0a3a0c0n);
-        final MappingConfig_AbstractRef result_wk2vdq_a1a0a3a0c0n = local;
-        result_wk2vdq_a0a3a0c0n.setMappingConfig(result_wk2vdq_a1a0a3a0c0n);
-        return result_wk2vdq_a0a3a0c0n;
+        final MappingConfig_ExternalRef result_wk2vdq_a0a3a0c0l = new MappingConfig_ExternalRef();
+        final SModuleReference result_wk2vdq_a0a0a3a0c0l = PersistenceFacade.getInstance().createModuleReference(genUID);
+        result_wk2vdq_a0a3a0c0l.setGenerator(result_wk2vdq_a0a0a3a0c0l);
+        final MappingConfig_AbstractRef result_wk2vdq_a1a0a3a0c0l = local;
+        result_wk2vdq_a0a3a0c0l.setMappingConfig(result_wk2vdq_a1a0a3a0c0l);
+        return result_wk2vdq_a0a3a0c0l;
       }).invoke();
     } else if (XmlUtil.first(parentElement, "mapping-set") != null) {
       MappingConfig_RefSet mappingSet = new MappingConfig_RefSet();
@@ -251,34 +238,34 @@ public class GeneratorDescriptorPersistence {
       // external reference
       final Element generator = XmlUtil.first(parentElement, "generator");
       return ((_FunctionTypes._return_P0_E0<MappingConfig_ExternalRef>) () -> {
-        final MappingConfig_ExternalRef result_wk2vdq_a0a2a2c0n = new MappingConfig_ExternalRef();
-        final SModuleReference result_wk2vdq_a0a0a2a2c0n = PersistenceFacade.getInstance().createModuleReference(generator.getAttributeValue("generatorUID"));
-        result_wk2vdq_a0a2a2c0n.setGenerator(result_wk2vdq_a0a0a2a2c0n);
-        final MappingConfig_AbstractRef result_wk2vdq_a1a0a2a2c0n = loadGeneratorMappingConfigRef(XmlUtil.first(parentElement, "external-mapping"), generator.getAttributeValue("generatorUID"), true);
-        result_wk2vdq_a0a2a2c0n.setMappingConfig(result_wk2vdq_a1a0a2a2c0n);
-        return result_wk2vdq_a0a2a2c0n;
+        final MappingConfig_ExternalRef result_wk2vdq_a0a2a2c0l = new MappingConfig_ExternalRef();
+        final SModuleReference result_wk2vdq_a0a0a2a2c0l = PersistenceFacade.getInstance().createModuleReference(generator.getAttributeValue("generatorUID"));
+        result_wk2vdq_a0a2a2c0l.setGenerator(result_wk2vdq_a0a0a2a2c0l);
+        final MappingConfig_AbstractRef result_wk2vdq_a1a0a2a2c0l = loadGeneratorMappingConfigRef(XmlUtil.first(parentElement, "external-mapping"), generator.getAttributeValue("generatorUID"), true);
+        result_wk2vdq_a0a2a2c0l.setMappingConfig(result_wk2vdq_a1a0a2a2c0l);
+        return result_wk2vdq_a0a2a2c0l;
       }).invoke();
     } else if (XmlUtil.first(parentElement, "mapping-node") != null) {
       // simple reference
       Element mappingNode = XmlUtil.first(parentElement, "mapping-node");
       final MappingConfig_SimpleRef mapping_SimpleRef = new MappingConfig_SimpleRef();
-      MappingConfig_SimpleRef result_wk2vdq_a3a3c0n = mapping_SimpleRef;
-      final String result_wk2vdq_a0a3a3c0n = mappingNode.getAttributeValue("modelUID");
-      result_wk2vdq_a3a3c0n.setModelUID(result_wk2vdq_a0a3a3c0n);
-      final String result_wk2vdq_a1a3a3c0n = mappingNode.getAttributeValue("nodeID");
-      result_wk2vdq_a3a3c0n.setNodeID(result_wk2vdq_a1a3a3c0n);
+      MappingConfig_SimpleRef result_wk2vdq_a3a3c0l = mapping_SimpleRef;
+      final String result_wk2vdq_a0a3a3c0l = mappingNode.getAttributeValue("modelUID");
+      result_wk2vdq_a3a3c0l.setModelUID(result_wk2vdq_a0a3a3c0l);
+      final String result_wk2vdq_a1a3a3c0l = mappingNode.getAttributeValue("nodeID");
+      result_wk2vdq_a3a3c0l.setNodeID(result_wk2vdq_a1a3a3c0l);
 
       if (childOfGen) {
         return mapping_SimpleRef;
       }
 
       return ((_FunctionTypes._return_P0_E0<MappingConfig_ExternalRef>) () -> {
-        final MappingConfig_ExternalRef result_wk2vdq_a0a7a3c0n = new MappingConfig_ExternalRef();
-        final SModuleReference result_wk2vdq_a0a0a7a3c0n = PersistenceFacade.getInstance().createModuleReference(genUID);
-        result_wk2vdq_a0a7a3c0n.setGenerator(result_wk2vdq_a0a0a7a3c0n);
-        final MappingConfig_AbstractRef result_wk2vdq_a1a0a7a3c0n = mapping_SimpleRef;
-        result_wk2vdq_a0a7a3c0n.setMappingConfig(result_wk2vdq_a1a0a7a3c0n);
-        return result_wk2vdq_a0a7a3c0n;
+        final MappingConfig_ExternalRef result_wk2vdq_a0a7a3c0l = new MappingConfig_ExternalRef();
+        final SModuleReference result_wk2vdq_a0a0a7a3c0l = PersistenceFacade.getInstance().createModuleReference(genUID);
+        result_wk2vdq_a0a7a3c0l.setGenerator(result_wk2vdq_a0a0a7a3c0l);
+        final MappingConfig_AbstractRef result_wk2vdq_a1a0a7a3c0l = mapping_SimpleRef;
+        result_wk2vdq_a0a7a3c0l.setMappingConfig(result_wk2vdq_a1a0a7a3c0l);
+        return result_wk2vdq_a0a7a3c0l;
       }).invoke();
     }
 

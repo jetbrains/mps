@@ -38,7 +38,7 @@ import com.intellij.ui.LightColors;
 import com.intellij.openapi.ui.popup.Balloon;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484395587263", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6595589484395587263", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenameModelsNamespace_Action extends BaseAction {
   private static final Icon ICON = null;
 

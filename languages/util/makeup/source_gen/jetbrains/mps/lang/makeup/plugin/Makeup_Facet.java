@@ -21,7 +21,8 @@ import jetbrains.mps.lang.core.plugin.TextGenOutcomeResource;
 import java.util.stream.IntStream;
 import jetbrains.mps.internal.make.runtime.java.FileProcessor;
 import jetbrains.mps.make.delta.IDelta;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
@@ -34,6 +35,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.resources.DResource;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -85,7 +87,7 @@ public class Makeup_Facet extends IFacet.Stub {
               List<IDelta> deltas = ListSequence.fromList(new ArrayList<IDelta>());
 
               // XXX can I ask e.g. project for its FS?
-              final FileSystem localFileSystem = FileSystem.getInstance();
+              final IFileSystem localFileSystem = monitor.getSession().getProject().getComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
 
               for (TextGenOutcomeResource res : Sequence.fromIterable(input)) {
                 final ArrayList<TextUnit> generatedTextUnits = new ArrayList<TextUnit>();
@@ -143,7 +145,7 @@ public class Makeup_Facet extends IFacet.Stub {
 
               subProgress_a0a0a.advance(1);
 
-              localFileSystem.runWriteTransaction(() -> fp.flushChanges());
+              new WriteTransaction(localFileSystem, () -> fp.flushChanges()).executeAndWait();
 
               subProgress_a0a0a.done();
             default:

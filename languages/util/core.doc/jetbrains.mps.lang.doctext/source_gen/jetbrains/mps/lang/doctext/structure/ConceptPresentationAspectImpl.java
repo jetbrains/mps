@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_DocText;
-  private ConceptPresentation props_TextNodeReference;
 
   @Override
   @Nullable
@@ -24,13 +23,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DocText = cpb.create();
         }
         return props_DocText;
-      case LanguageConceptSwitch.TextNodeReference:
-        if (props_TextNodeReference == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("reference");
-          props_TextNodeReference = cpb.create();
-        }
-        return props_TextNodeReference;
     }
     return null;
   }

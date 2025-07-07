@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.io.OutputStream;
 import java.io.InputStream;
 
-@GeneratedClass(node = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)/4328738523548225887", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
+@GeneratedClass(nodeId = "4328738523548225887", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
 public class FileProcessor {
   private final List<FileContent> myFilesAndContents = new ArrayList<FileContent>();
   private final List<IFile> myFilesToDelete = new ArrayList<IFile>();

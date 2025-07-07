@@ -52,16 +52,6 @@ public class GeneratorProjectViewNode extends BaseModuleProjectViewNode<Generato
   }
 
   @Override
-  protected boolean containsSObject(SObject sObject) {
-    return sObject.testIfHasSModule(module -> Objects.equals(module, getValue()));
-  }
-  
-  @Override
-  protected boolean canRepresentSObject(SObject sObject) {
-    return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
-  }
-
-  @Override
   protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
     List<SModel> models = getValue().getModels();
     if (getMPSSettings().isShowDescriptorModels()) {

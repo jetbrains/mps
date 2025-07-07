@@ -9,7 +9,7 @@ import com.intellij.openapi.vcs.changes.ui.ChangesBrowserNodeRenderer;
 import com.intellij.ui.SimpleTextAttributes;
 import org.jetbrains.annotations.Nls;
 
-@GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/8537482397934728411", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
+@GeneratedClass(nodeId = "8537482397934728411", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class ExtensionChangesBrowserNode extends ChangesBrowserNode<String> {
   public ExtensionChangesBrowserNode(String extension) {
     super(extension);

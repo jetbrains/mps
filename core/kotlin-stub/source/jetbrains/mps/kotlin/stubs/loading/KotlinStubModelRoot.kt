@@ -49,11 +49,6 @@ class KotlinStubModelRoot : FileBasedModelRoot() {
 
     override fun canCreateModel(modelName: SModelName) = false
 
-    /**
-     * not implemented in BL either
-     */
-    override fun getModel(id: SModelId) = null
-
     private fun Collection<SourceRoot>.toFiles(): List<IFile> = this.map { it.absolutePath }
 
     override fun loadModels(): Iterable<SModel> {
@@ -64,9 +59,7 @@ class KotlinStubModelRoot : FileBasedModelRoot() {
 
         getSourceRoots(SourceRootKinds.SOURCES).toFiles().forEach { file ->
             val anyAdded = collectJarFiles(file, excluded) {
-                // FIXME though IFile("whatever.jar") could be already from JAR FS (e.g. CommonPaths creates IFiles using JAR FS for jar files right away), I found no way to figure it out
-                // therefore have to resort to this stupid way to step into jar
-                rootsToLoad.add(fileSystem.getFile(it.path + Path.ARCHIVE_SEPARATOR))
+                rootsToLoad.add(it.stepIntoArchive())
             }
 
             // we suppose here that each path can be either a jar-file or a classes directory or a jar directory,

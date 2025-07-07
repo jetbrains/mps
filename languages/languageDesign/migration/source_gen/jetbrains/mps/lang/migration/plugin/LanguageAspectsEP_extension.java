@@ -43,7 +43,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a5a0a0a1;
+        return IconContainer.RESOURCE_0;
       }
       @Nullable
       public String getHelpUrl() {
@@ -55,7 +55,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
     };
   }
-  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/migrations.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "migrations.html";
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept RefactoringLog$xp = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");

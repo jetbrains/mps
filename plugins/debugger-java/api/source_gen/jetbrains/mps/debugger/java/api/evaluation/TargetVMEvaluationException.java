@@ -16,7 +16,7 @@ import jetbrains.mps.logging.Logger;
  * Wraps com.sun.jdi.InvocationException.
  * Thrown to indicate an exception occurred in an invoked method within the target VM.
  */
-@GeneratedClass(node = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)/4727801710070563977", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
+@GeneratedClass(nodeId = "4727801710070563977", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
 public class TargetVMEvaluationException extends EvaluationException {
   public TargetVMEvaluationException(@NotNull InvocationException e) {
     this(e, null);

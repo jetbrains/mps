@@ -16,7 +16,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/5783684243119878690", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
+@GeneratedClass(nodeId = "5783684243119878690", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CellAction_CommentOrUncommentChild extends CellAction_CommentOrUncomment {
   private final SNode myNode;
   private final SContainmentLink myLink;

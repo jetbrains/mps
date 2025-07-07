@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
  * use of a concept from a foreign language is sort of "extension". Discovered dependencies shall not get 
  * translated directly into 'extends' between languages, rather as a notion of a general extension contribution.
  */
-@GeneratedClass(node = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/4375757543141667420", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
+@GeneratedClass(nodeId = "4375757543141667420", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
 public class EditorDeclarationScanner {
   private final Set<SNode> myExternalConcepts = new HashSet<SNode>();
   private final Set<SModel> myExtendedModels = new HashSet<SModel>();

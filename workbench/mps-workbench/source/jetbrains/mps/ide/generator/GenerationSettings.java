@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,31 +31,39 @@ import org.jetbrains.annotations.NotNull;
 import java.time.Duration;
 
 
+/**
+ * IDEA app service with persistent state, registered into MPS by means of app part in j.m.ide module.
+ * No {@code #getInstance()} method as we don't expect client code to access this service, it's merely an implementation detail to
+ * initialize {@code GenerationSettingsProvider}, which is the right starting point for client code.
+ */
 @State(
   name = "GenerationSettings",
   storages = @Storage("generationSettings.xml"),
     reportStatistic = true
 )
-public final class GenerationSettings implements PersistentStateComponent<MyState>, Disposable {
+public final class GenerationSettings implements PersistentStateComponent<MyState> {
 
   private final DefaultModifiableGenerationSettings myState = new DefaultModifiableGenerationSettings();
   // unlike myState which we push down to GenerationSettingsProvider, myState2 is a copy we populate with
   // CoreComponent counterpart, if any. Would like to understand which one is better.
   private final TextGenSettings myState2 = new TextGenSettings();
 
+  private IModifiableGenerationSettings myOldGenerationSettings;
+
   public GenerationSettings() {
-    GenerationSettingsProvider settingsProvider = MPSCoreComponents.getInstance().getPlatform().findComponent(GenerationSettingsProvider.class);
-    if (settingsProvider != null) {
-      settingsProvider.setGenerationSettings(getModifiableSettings());
-    }
   }
 
-  @Override
-  public void dispose() {
-    // XXX what's the idea behind setGenerationSettings(null), anyone?
-    GenerationSettingsProvider settingsProvider = MPSCoreComponents.getInstance().getPlatform().findComponent(GenerationSettingsProvider.class);
-    if (settingsProvider != null && getModifiableSettings() == settingsProvider.getGenerationSettings()) {
-      settingsProvider.setGenerationSettings(null);
+  public void install(@NotNull GenerationSettingsProvider settingsProvider) {
+    myOldGenerationSettings = settingsProvider.getGenerationSettings();
+    settingsProvider.setGenerationSettings(getModifiableSettings());
+  }
+
+  public void uninstall(@NotNull GenerationSettingsProvider settingsProvider) {
+    if (getModifiableSettings() == settingsProvider.getGenerationSettings()) {
+      // used to be setGenerationSettings(null), and I don't understand the reason for it.
+      // Indeed, myOldGenerationSettings == null in most (all?) scenarios, yet it's a bit better, imo.
+      settingsProvider.setGenerationSettings(myOldGenerationSettings);
+      myOldGenerationSettings = null;
     }
   }
 

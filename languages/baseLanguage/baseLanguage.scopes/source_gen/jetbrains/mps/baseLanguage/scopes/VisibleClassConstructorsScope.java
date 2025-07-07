@@ -50,7 +50,7 @@ public class VisibleClassConstructorsScope extends Scope {
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(contextNode, CONCEPTS.ConstructorDeclaration$yG), PROPS.name$MnvL);
+    return SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$yG), PROPS.name$MnvL);
   }
   @Nullable
   @Override
@@ -79,8 +79,8 @@ public class VisibleClassConstructorsScope extends Scope {
     }
 
     // use types
-    Iterator<SNode> typeParms = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw).iterator();
-    Iterator<SNode> typeVars = SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp).iterator();
+    Iterator<SNode> typeParms = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw)).iterator();
+    Iterator<SNode> typeVars = ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).iterator();
     Map<SNode, SNode> typeByTypeVar = new HashMap<SNode, SNode>();
     while (typeParms.hasNext() && typeVars.hasNext()) {
       typeByTypeVar.put(typeVars.next(), typeParms.next());

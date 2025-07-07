@@ -12,6 +12,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.SetPropertyStructChange;
@@ -36,17 +37,22 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SType;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/4664177994952427344", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+@GeneratedClass(nodeId = "4664177994952427344", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public class StructChangeSetBuilder {
   private StructChangeSetImpl myChangeSet;
   private List<ModelChange> myNewChanges = ListSequence.fromList(new ArrayList<ModelChange>());
   private Map<SNodeId, SNodeId> myOldToNewMap = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
+  private final boolean myRespectCommentedOutNodes;
+
   private StructChangeSetBuilder(SNode oldNode, SNode newNode) {
     this(new StructChangeSetImpl(oldNode, newNode));
   }
   private StructChangeSetBuilder(StructChangeSetImpl changeSet) {
     myChangeSet = changeSet;
+    // see ChangeSetBuilder(MPS-35421) for explanation
+    myRespectCommentedOutNodes = !(RuntimeFlags.isMergeDriverMode());
   }
+
   private void buildForProperties(SNode oldNode, SNode newNode) {
     Iterable<SProperty> oldProperties = oldNode.getProperties();
     Iterable<SProperty> newProperties = newNode.getProperties();
@@ -70,12 +76,12 @@ public class StructChangeSetBuilder {
     SReference oldReference = oldNode.getReference(role);
     SReference newReference = newNode.getReference(role);
     if (!(equalsReference(oldReference, newReference, oldToNewMap, false))) {
-      SModelReference targetModel = check_okvhpb_a0a0c0i(newReference);
-      SNodeId targetId = (newReference instanceof DynamicReference ? null : check_okvhpb_a0a1a2a8(newReference));
+      SModelReference targetModel = check_okvhpb_a0a0c0l(newReference);
+      SNodeId targetId = (newReference instanceof DynamicReference ? null : check_okvhpb_a0a1a2a11(newReference));
       ListSequence.fromList(myNewChanges).addElement(new SetReferenceStructChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, targetId, SLinkOperations.getResolveInfo(newReference)));
     }
   }
-  private void buildForNode(final Map<SNode, SNode> oldToNewMap, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
+  private void buildForNode(final Map<SNode, SNode> oldToNewMap, @NotNull SNode oldNode, @NotNull SNode newNode) {
     // updates oldToNewMap with new mappings
     if (!(Objects.equals(SNodeOperations.getConcept(oldNode), SNodeOperations.getConcept(newNode)))) {
       // todo: should be whole node change instead of going into details...
@@ -85,21 +91,24 @@ public class StructChangeSetBuilder {
     buildForProperties(oldNode, newNode);
     buildForReferences(oldToNewMap, oldNode, newNode);
 
-    final Map<SContainmentLink, List<SNode>> roleToOldChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(oldNode);
-    final Map<SContainmentLink, List<SNode>> roleToNewChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(newNode);
+    final AggregationToChildMap roleToOldChildren = new AggregationToChildMap(oldNode, myRespectCommentedOutNodes);
+    final AggregationToChildMap roleToNewChildren = new AggregationToChildMap(newNode, myRespectCommentedOutNodes);
 
-    SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct().visitAll((role) -> buildForNodeRole(oldToNewMap, roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), oldNode.getNodeId(), newNode.getNodeId(), role));
+    Sequence.fromIterable(roleToOldChildren.roles()).concat(Sequence.fromIterable(roleToNewChildren.roles())).distinct().visitAll((role) -> buildForNodeRole(oldToNewMap, roleToOldChildren, roleToNewChildren, role));
+
 
   }
 
-  private void buildForNodeRole(Map<SNode, SNode> oldToNewMap, List<SNode> oldChildren, List<SNode> newChildren, SNodeId parentId, SNodeId newParentId, SContainmentLink role) {
+  private void buildForNodeRole(Map<SNode, SNode> oldToNewMap, AggregationToChildMap oldChildren, AggregationToChildMap newChildren, SContainmentLink role) {
     // updates oldToNewMap with new mappings
     final Map<SNode, Integer> nodeClasses = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
     Map<SNode, SNode> old2NewMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
     MapSequence.fromMap(old2NewMap).putAll(oldToNewMap);
+    List<SNode> oldChildNodes = oldChildren.get(role);
+    List<SNode> newChildNodes = newChildren.get(role);
 outer:
-    for (SNode node : ListSequence.fromList(oldChildren).concat(ListSequence.fromList(newChildren))) {
+    for (SNode node : ListSequence.fromList(oldChildNodes).concat(ListSequence.fromList(newChildNodes))) {
       for (SNode nodeClass : SetSequence.fromSet(MapSequence.fromMap(nodeClasses).keySet())) {
         if (equalsNodeStructure(node, nodeClass, old2NewMap, false)) {
           MapSequence.fromMap(nodeClasses).put(node, MapSequence.fromMap(nodeClasses).get(nodeClass));
@@ -109,43 +118,43 @@ outer:
       MapSequence.fromMap(nodeClasses).put(node, i++);
     }
 
-    List<Integer> oldClasses = ListSequence.fromList(oldChildren).select((n) -> MapSequence.fromMap(nodeClasses).get(n)).toList();
-    List<Integer> newClasses = ListSequence.fromList(newChildren).select((n) -> MapSequence.fromMap(nodeClasses).get(n)).toList();
+    List<Integer> oldClasses = ListSequence.fromList(oldChildNodes).select((n) -> MapSequence.fromMap(nodeClasses).get(n)).toList();
+    List<Integer> newClasses = ListSequence.fromList(newChildNodes).select((n) -> MapSequence.fromMap(nodeClasses).get(n)).toList();
     LongestCommonSubsequenceFinder<Integer> finder = new LongestCommonSubsequenceFinder<Integer>(oldClasses, newClasses);
 
     // add matched Nodes
     List<Tuples._2<Integer, Integer>> commonIndices = finder.getCommonIndices();
     for (Tuples._2<Integer, Integer> ix : ListSequence.fromList(commonIndices)) {
-      addMatchedNodes(oldToNewMap, ListSequence.fromList(oldChildren).getElement((int) ix._0()), ListSequence.fromList(newChildren).getElement((int) ix._1()));
+      addMatchedNodes(oldToNewMap, ListSequence.fromList(oldChildNodes).getElement((int) ix._0()), ListSequence.fromList(newChildNodes).getElement((int) ix._1()));
     }
-    // Finding insertings, deletings and replacings
+    // Find inserts, deletes and replacements
     List<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>> differentIndices = finder.getDifferentIndices();
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(differentIndices)) {
       Tuples._2<Integer, Integer> oldIndices = indices._0();
       Tuples._2<Integer, Integer> newIndices = indices._1();
 
-      List<SConcept> oldC = ListSequence.fromList(oldChildren).page((int) oldIndices._0(), (int) oldIndices._1()).select((n) -> n.getConcept()).toList();
-      List<SConcept> newC = ListSequence.fromList(newChildren).page((int) newIndices._0(), (int) newIndices._1()).select((n) -> n.getConcept()).toList();
+      List<SConcept> oldC = ListSequence.fromList(oldChildNodes).page((int) oldIndices._0(), (int) oldIndices._1()).select((n) -> n.getConcept()).toList();
+      List<SConcept> newC = ListSequence.fromList(newChildNodes).page((int) newIndices._0(), (int) newIndices._1()).select((n) -> n.getConcept()).toList();
       LongestCommonSubsequenceFinder<SConcept> finder2 = new LongestCommonSubsequenceFinder<SConcept>(oldC, newC);
       // concepts were not matched:
       for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> ixs : ListSequence.fromList(finder2.getDifferentIndices())) {
-        ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, parentId, newParentId, role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
+        ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, oldChildren.getParentId(), newChildren.getParentId(), role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
       }
       // Finding changes for "matched" children
       for (Tuples._2<Integer, Integer> ixs : ListSequence.fromList(finder2.getCommonIndices())) {
-        buildForNode(oldToNewMap, ListSequence.fromList(oldChildren).getElement((int) oldIndices._0() + (int) ixs._0()), ListSequence.fromList(newChildren).getElement((int) newIndices._0() + (int) ixs._1()));
+        buildForNode(oldToNewMap, ListSequence.fromList(oldChildNodes).getElement((int) oldIndices._0() + (int) ixs._0()), ListSequence.fromList(newChildNodes).getElement((int) newIndices._0() + (int) ixs._1()));
       }
     }
   }
   private void addMatchedNodes(Map<SNode, SNode> oldToNewNodes, SNode oldNode, SNode newNode) {
     MapSequence.fromMap(oldToNewNodes).put(oldNode, newNode);
 
-    Map<SContainmentLink, List<SNode>> roleToOldChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(oldNode);
-    Map<SContainmentLink, List<SNode>> roleToNewChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(newNode);
+    AggregationToChildMap roleToOldChildren = new AggregationToChildMap(oldNode, myRespectCommentedOutNodes);
+    AggregationToChildMap roleToNewChildren = new AggregationToChildMap(newNode, myRespectCommentedOutNodes);
 
-    for (SContainmentLink role : SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct()) {
-      List<SNode> ch1List = roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>()));
-      List<SNode> ch2List = roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>()));
+    for (SContainmentLink role : Sequence.fromIterable(roleToOldChildren.roles()).concat(Sequence.fromIterable(roleToNewChildren.roles())).distinct()) {
+      List<SNode> ch1List = roleToOldChildren.get(role);
+      List<SNode> ch2List = roleToNewChildren.get(role);
       {
         Iterator<SNode> ch1_it = ListSequence.fromList(ch1List).iterator();
         Iterator<SNode> ch2_it = ListSequence.fromList(ch2List).iterator();
@@ -252,22 +261,23 @@ outer:
         return false;
       }
     }
-
-    List<SReference> n1References = (List<SReference>) n1.getReferences();
-    List<SReference> n2References = (List<SReference>) n2.getReferences();
-    for (SReferenceLink role : ListSequence.fromList(n1References).concat(ListSequence.fromList(n2References)).select((r) -> r.getLink()).distinct()) {
+    Iterable<SReference> n1References = (Iterable<SReference>) n1.getReferences();
+    Iterable<SReference> n2References = (Iterable<SReference>) n2.getReferences();
+    for (SReferenceLink role : Sequence.fromIterable(n1References).concat(Sequence.fromIterable(n2References)).select((r) -> r.getLink()).distinct()) {
       if (!(equalsReference(n1.getReference(role), n2.getReference(role), tempMap, easyRef))) {
         return false;
       }
     }
 
-    Map<SContainmentLink, List<SNode>> roleToN1ChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(n1);
-    Map<SContainmentLink, List<SNode>> roleToN2ChildCollection = ChangeSetBuilder.getRoleToChildCollectionMap(n2);
+    // FIXME shall get configured from outside, see ChangeSetBuilder
+    final boolean respectCommentedOutNodes = !(RuntimeFlags.isMergeDriverMode());
 
+    AggregationToChildMap roleToOldChildren = new AggregationToChildMap(n1, respectCommentedOutNodes);
+    AggregationToChildMap roleToNewChildren = new AggregationToChildMap(n2, respectCommentedOutNodes);
 
-    for (SContainmentLink role : SetSequence.fromSet(MapSequence.fromMap(roleToN1ChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToN2ChildCollection).keySet())).distinct()) {
-      List<SNode> ch1List = roleToN1ChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>()));
-      List<SNode> ch2List = roleToN2ChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>()));
+    for (SContainmentLink role : Sequence.fromIterable(roleToOldChildren.roles()).concat(Sequence.fromIterable(roleToNewChildren.roles())).distinct()) {
+      List<SNode> ch1List = roleToOldChildren.get(role);
+      List<SNode> ch2List = roleToNewChildren.get(role);
       if (ListSequence.fromList(ch1List).count() != ListSequence.fromList(ch2List).count()) {
         return false;
       }
@@ -288,13 +298,13 @@ outer:
     MapSequence.fromMap(oldToNewMap).putAll(tempMap);
     return true;
   }
-  private static SModelReference check_okvhpb_a0a0c0i(SReference checkedDotOperand) {
+  private static SModelReference check_okvhpb_a0a0c0l(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static SNodeId check_okvhpb_a0a1a2a8(SReference checkedDotOperand) {
+  private static SNodeId check_okvhpb_a0a1a2a11(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }

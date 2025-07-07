@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,8 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
@@ -54,7 +54,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Language extends ReloadableModuleBase implements ReloadableModule {
+public class Language extends AbstractModule implements ReloadableModule {
 
   /**
    * Default, although not mandatory location we save our models to.
@@ -90,7 +90,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
     moduleDescriptor.getExtendedLanguages().add(langRef);
 
-    dependenciesChanged();
     setChanged();
 
     fireChanged();
@@ -215,8 +214,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
         // looking for the existing generator with same ID
         Generator nextGeneratorCandidate = it.next();
         GeneratorDescriptor nextGeneratorCandidateDescriptor = nextGeneratorCandidate.getModuleDescriptor();
-        if (Objects.equals(nextGeneratorCandidateDescriptor.getNamespace(), nextDescriptor.getNamespace()) &&
-            Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
+        if (Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
           nextGenerator = nextGeneratorCandidate;
           it.remove();
           break;

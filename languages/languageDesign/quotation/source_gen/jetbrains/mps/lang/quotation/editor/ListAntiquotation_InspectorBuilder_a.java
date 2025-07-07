@@ -18,6 +18,7 @@ import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /*package*/ class ListAntiquotation_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -106,7 +107,8 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
       public String getText() {
         SNode parent = SNodeOperations.getParent(myNode);
         if ((parent != null)) {
-          return parent.getRoleInParent();
+          SContainmentLink link = SNodeOperations.getContainingLink(parent);
+          return (link == null ? "" : link.getName());
         } else {
           return "";
         }

@@ -2,7 +2,7 @@
 <model ref="r:e53530cd-224e-499c-94ff-76ea1cff3ec4(jetbrains.mps.lang.html.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -680,14 +680,14 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+      <node concept="l2Vlx" id="1v8pb4C9gPu" role="2iSdaV" />
+      <node concept="VPM3Z" id="2eIZDSBkC$L" role="3F10Kt" />
       <node concept="3F0ifn" id="dX4qbK6PuX" role="3EZMnx">
         <ref role="1k5W1q" node="5M4a$b5iSSc" resolve="htmlTagPunctuation" />
         <node concept="11L4FC" id="dX4qbK6PuY" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="l2Vlx" id="1v8pb4C9gPu" role="2iSdaV" />
-      <node concept="VPM3Z" id="2eIZDSBkC$L" role="3F10Kt" />
     </node>
   </node>
   <node concept="24kQdi" id="1v8pb4C9gWl">
@@ -729,12 +729,12 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+      <node concept="l2Vlx" id="2YAlhTAJ0L" role="2iSdaV" />
       <node concept="3F0ifn" id="dX4qbK6lEy" role="3EZMnx">
         <node concept="11L4FC" id="dX4qbK6lEz" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="l2Vlx" id="2YAlhTAJ0L" role="2iSdaV" />
     </node>
   </node>
   <node concept="1h_SRR" id="1ZLaG1TO5RT">
@@ -2260,6 +2260,9 @@
         <property role="Q2I2d" value="g$1Qtxb/punctuation" />
         <ref role="1NtTu8" to="7vgx:2YAlhTEkQa" resolve="elements" />
         <node concept="l2Vlx" id="2cLqkTm6J5W" role="2czzBx" />
+        <node concept="3F0ifn" id="2cLqkTm91rs" role="2czzBI">
+          <ref role="1ERwB7" node="5LP$7dDeYHG" resolve="EmptyHtmlLineActions" />
+        </node>
         <node concept="1Bt7hp" id="3trim7lMZAA" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
@@ -2278,9 +2281,6 @@
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3F0ifn" id="2cLqkTm91rs" role="2czzBI">
-          <ref role="1ERwB7" node="5LP$7dDeYHG" resolve="EmptyHtmlLineActions" />
         </node>
       </node>
     </node>
@@ -6500,7 +6500,7 @@
           <node concept="3clFbS" id="1vS6d1NZqeS" role="2VODD2">
             <node concept="3clFbF" id="4eW2rsATtg4" role="3cqZAp">
               <node concept="Xl_RD" id="4eW2rsATtg3" role="3clFbG">
-                <property role="Xl_RC" value="&lt;!" />
+                <property role="Xl_RC" value="&lt;&lt;" />
               </node>
             </node>
           </node>
@@ -6582,7 +6582,7 @@
           <node concept="3clFbS" id="2eIZDSBsBDs" role="2VODD2">
             <node concept="3clFbF" id="2eIZDSBsBDt" role="3cqZAp">
               <node concept="Xl_RD" id="2eIZDSBsBDu" role="3clFbG">
-                <property role="Xl_RC" value="&lt;@" />
+                <property role="Xl_RC" value="&lt;&gt;" />
               </node>
             </node>
           </node>
@@ -8169,6 +8169,19 @@
   <node concept="22mcaB" id="647WjQbegd1">
     <ref role="aqKnT" to="7vgx:5M4a$b5jfOv" resolve="HtmlTextValue" />
     <node concept="22hDWj" id="647WjQbegfu" role="22hAXT" />
+  </node>
+  <node concept="24kQdi" id="42q9MnH_fvq">
+    <ref role="1XX52x" to="7vgx:42q9MnH_fvn" resolve="HtmlLineWithoutSpaces" />
+    <node concept="3EZMnI" id="42q9MnHOghe" role="2wV5jI">
+      <node concept="l2Vlx" id="42q9MnHOghf" role="2iSdaV" />
+      <node concept="3F2HdR" id="42q9MnHOghg" role="3EZMnx">
+        <ref role="1NtTu8" to="7vgx:2YAlhTEkQa" resolve="elements" />
+        <node concept="l2Vlx" id="42q9MnHOghh" role="2czzBx" />
+        <node concept="3F0ifn" id="42q9MnHOghi" role="2czzBI">
+          <ref role="1ERwB7" node="5LP$7dDeYHG" resolve="EmptyHtmlLineActions" />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

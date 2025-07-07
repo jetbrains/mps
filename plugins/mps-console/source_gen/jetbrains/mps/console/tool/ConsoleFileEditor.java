@@ -23,7 +23,7 @@ import com.intellij.openapi.editor.Document;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
 
-@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/4393777506305219687", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
+@GeneratedClass(nodeId = "4393777506305219687", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class ConsoleFileEditor implements DocumentsEditor {
   private EditorComponent myEditor;
   private boolean myDisposed = false;

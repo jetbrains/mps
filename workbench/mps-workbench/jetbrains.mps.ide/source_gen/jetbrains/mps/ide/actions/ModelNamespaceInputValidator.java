@@ -12,7 +12,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484396888089", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6595589484396888089", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ final class ModelNamespaceInputValidator implements InputValidatorEx {
 
   private final Collection<SModel> myAllModelsUnderNamespace;

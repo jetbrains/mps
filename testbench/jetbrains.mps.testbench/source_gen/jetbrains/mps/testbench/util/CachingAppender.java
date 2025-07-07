@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 /**
  * Mechanism to treat certain log error messages as 'expected'
  */
-@GeneratedClass(node = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)/5294483648489410428", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
+@GeneratedClass(nodeId = "5294483648489410428", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
 public class CachingAppender implements Output {
   /**
    * Corresponds to Level enum from j.m.lang.test language, the one employed in LogEvent

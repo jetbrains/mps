@@ -576,6 +576,31 @@
       <unit id="491383275436614940" at="16,0,43,0" name="jetbrains.mps.lang.editor.style.test.FontFamilyGenerationIfUnknown_Test" />
     </file>
   </root>
+  <root nodeRef="r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)/521245079299941975">
+    <file name="ManualTestInspectorStyle_Test.java">
+      <node id="521245079299941975" at="19,42,20,60" concept="6" />
+      <node id="521245079299941975" at="24,64,25,36" concept="1" />
+      <node id="521245079299941975" at="30,52,31,19" concept="6" />
+      <node id="521245079299941975" at="35,51,36,52" concept="1" />
+      <node id="521245079299941975" at="16,0,18,0" concept="5" trace="ourParametersCacheExtension" />
+      <node id="521245079299941975" at="19,0,22,0" concept="0" trace="ManualTestInspectorStyle_Test#()V" />
+      <node id="521245079299941975" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="521245079299941975" at="23,0,27,0" concept="2" trace="test_ManualTestInspectorStyle#()V" />
+      <node id="521245079299941975" at="34,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="521245079299941975" at="19,42,20,60" />
+      <scope id="521245079299941975" at="24,64,25,36" />
+      <scope id="521245079299941975" at="30,52,31,19" />
+      <scope id="521245079299941975" at="35,51,36,52" />
+      <scope id="521245079299941975" at="19,0,22,0" />
+      <scope id="521245079299941975" at="30,0,33,0">
+        <var name="owner" id="521245079299941975" />
+      </scope>
+      <scope id="521245079299941975" at="23,0,27,0" />
+      <scope id="521245079299941975" at="34,0,38,0" />
+      <unit id="521245079299941975" at="28,0,39,0" name="jetbrains.mps.lang.editor.style.test.ManualTestInspectorStyle_Test$TestBody" />
+      <unit id="521245079299941975" at="14,0,40,0" name="jetbrains.mps.lang.editor.style.test.ManualTestInspectorStyle_Test" />
+    </file>
+  </root>
   <root nodeRef="r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)/6519503956375921847">
     <file name="StyleOfSingleRoleChild_Test.java">
       <node id="6519503956375921847" at="19,40,20,60" concept="6" />
@@ -656,15 +681,15 @@
       <node id="491383275435186151" at="41,101,42,0" concept="4" />
       <node id="491383275435184922" at="42,0,43,198" concept="3" />
       <node id="8545423393708727755" at="43,198,44,77" concept="1" />
-      <node id="8545423393708740618" at="44,77,45,70" concept="1" />
-      <node id="8545423393708742558" at="45,70,46,0" concept="4" />
+      <node id="8545423393708740618" at="44,77,45,104" concept="1" />
+      <node id="8545423393708742558" at="45,104,46,0" concept="4" />
       <node id="491383275435207134" at="46,0,47,200" concept="3" />
       <node id="8545423393708729870" at="47,200,48,78" concept="1" />
-      <node id="8545423393708734247" at="48,78,49,77" concept="1" />
-      <node id="8545423393708743042" at="49,77,50,0" concept="4" />
+      <node id="8545423393708734247" at="48,78,49,111" concept="1" />
+      <node id="8545423393708743042" at="49,111,50,0" concept="4" />
       <node id="491383275435219921" at="50,0,51,218" concept="3" />
       <node id="8545423393708736182" at="51,218,52,91" concept="1" />
-      <node id="8545423393708743527" at="52,91,53,86" concept="1" />
+      <node id="8545423393708743527" at="52,91,53,120" concept="1" />
       <node id="8545423393708262847" at="20,0,22,0" concept="5" trace="ourParametersCacheExtension" />
       <node id="8545423393708262847" at="23,0,26,0" concept="0" trace="FontStyleInheritanceTest_Test#()V" />
       <node id="8545423393708262847" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -679,7 +704,7 @@
         <var name="owner" id="8545423393708262847" />
       </scope>
       <scope id="8545423393708262847" at="27,0,31,0" />
-      <scope id="8545423393708670968" at="41,101,53,86">
+      <scope id="8545423393708670968" at="41,101,53,120">
         <var name="nodeWithCustomFontSizeAndFamily_font" id="491383275435219922" />
         <var name="nodeWithCustomFontSize_font" id="491383275435207135" />
         <var name="nodeWithoutCustomFont_font" id="491383275435184923" />

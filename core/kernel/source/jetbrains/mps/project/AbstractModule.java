@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -56,6 +57,7 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.ArrayList;
@@ -75,9 +77,9 @@ import java.util.function.Function;
 import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 
 /**
- * First of all, this class serves as a file-based module. Obviously it requires a file which contains a persisted
- * module descriptor (see constructor).
- * Secondly, this class provides a common implementation of the module editing. Not only the implementation of
+ * {@code SModule} implementation backed by {@link ModuleDescriptor} usually comming from {@link IFile}.
+ * <p>
+ * This class provides a common implementation of the module editing. Not only the implementation of
  * simple interface {@link EditableSModule} is here but also a special editing mechanism is suggested below.
  * Nonetheless there are several flaws.
  * <p>
@@ -97,7 +99,6 @@ import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
  *
  * @see ModuleDescriptor for the details
  */
-@Immutable
 public abstract class AbstractModule extends SModuleBase implements EditableSModule {
   private static final Logger LOG = Logger.getLogger(AbstractModule.class);
 
@@ -133,16 +134,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return jetbrains.mps.vfs.FileSystem.getInstance();
   }
 
-  @Deprecated
-  protected AbstractModule() {
-    this(getFSSingleton());
-  }
-
-  protected AbstractModule(@NotNull FileSystem fileSystem) {
-    myDescriptorFile = null;
-    myFileSystem = fileSystem;
-  }
-
   protected AbstractModule(@Nullable IFile descriptorFile) {
     myDescriptorFile = descriptorFile;
     if (descriptorFile != null) {
@@ -152,23 +143,27 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
   }
 
-  @NotNull
+  /**
+   * @deprecated there's no guarantee {@code AbstractModule} is based on a file
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public FileSystem getFileSystem() {
+    // 2 uses in MPS-extension, 1 in mbeddr
     return myFileSystem;
   }
 
-  //----reference
   @NotNull
   @Override
   public SModuleId getModuleId() {
 //    assertCanRead(); @see getModuleReference()
-    return getModuleReference().getModuleId();
+    // keep the method here, despite identical default implenentation, to satisfy uses in MPS/MS-extensions/mbeddr code
+    return super.getModuleId();
   }
 
   @Override
-  public String getModuleName() {
-//    assertCanRead(); @see getModuleReference()
-    return getModuleReference().getModuleName();
+  public @Nullable String getModuleName() {
+    // keep the method here, despite identical default implenentation, to satisfy uses in MPS/MS-extensions/mbeddr code
+    return super.getModuleName();
   }
 
   @Override
@@ -247,7 +242,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
   @Override
   @NotNull
-  //module reference is immutable, so we cn return original
+  //module reference is immutable, so we can return original
   public SModuleReference getModuleReference() {
 //    assertCanRead(); ClassLoaderManager needs module reference. Do we need CLM to obtain read lock?
     return myModuleReference;
@@ -283,7 +278,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
     reloadAfterDescriptorChange();
     fireChanged();
-    dependenciesChanged();
   }
 
   // no notifications are sent
@@ -333,13 +327,14 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     // ensure ModelRoot has a chance to serialize their changes, if any
     // For now, we don't account for added/removed model roots as there's no API other than ModuleDescriptor, hence we only try to change matching MR-MRD pairs
     if (moduleDescriptor != null) {
+      final ModulePersistenceContext mpc = PersistenceContextImpl.forModule(this);
       // after #updateModuleDescriptorValues or #reloadAfterDescriptorChange(), myOutputRoot is our only source of information
       // FIXME it's not nice to modify MD, provided we use MD as an editing handle for module. Just need to come up with a better approach
       //       Note, for ModuleFacetDescriptor and ModelRootDescriptor, it's easier as they got Memento to keep the transformed values!
       //       Perhaps, shall introduce Memento to keep MD settings instead of fields? Or to keep fields and introduce MD.load/save()
       //       with Memento to populate the fields?
       // Note, in persistence, we use empty string to indicate null (aka "no value")
-      moduleDescriptor.setOutputRoot(myOutputRoot == null ? null : myOutputRoot.shrink(MacrosFactory.forModule((SModule) this)));
+      moduleDescriptor.setOutputRoot(myOutputRoot == null ? null : myOutputRoot.shrink(PersistenceContextImpl.macroHelper(mpc)));
       // clear old value just in case, not to get serialized
       ProjectPathUtil._setGeneratorOutputPathPrim(moduleDescriptor, null);
       var descriptors = new LinkedList<>(moduleDescriptor.getModelRootDescriptors());
@@ -368,7 +363,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
           continue;
         }
         MementoImpl clearMemento = new MementoImpl();
-        mr.save(clearMemento);
+        mr.save(clearMemento, mpc);
         if (!clearMemento.equals(mrd.getMemento())) {
           // root settings changed
           newDescriptors.add(new ModelRootDescriptor(mrd.getType(), clearMemento));
@@ -378,11 +373,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         }
       }
       newDescriptors.addAll(descriptors);
-      moduleDescriptor.getModelRootDescriptors().clear();
+      moduleDescriptor.clearModelRootDescriptors();
       moduleDescriptor.getModelRootDescriptors().addAll(newDescriptors);
 
       // make sure module facets serialize their changes as well.
-      getFacets().forEach(moduleDescriptor::updateFacetDescriptor);
+      for (SModuleFacet mf : getFacets()) {
+        moduleDescriptor.updateFacetDescriptor(mf, mpc);
+      }
     }
     myChanged = false;
   }
@@ -410,7 +407,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
       if (reexport && !dep.isReexport()) {
         dep.setReexport(true);
-        dependenciesChanged();
         fireChanged();
         setChanged();
       }
@@ -420,7 +416,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     Dependency dep = new Dependency(moduleRef, reexport);
     descriptor.getDependencies().add(dep);
 
-    dependenciesChanged();
     fireChanged();
     setChanged();
     return dep;
@@ -438,7 +433,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
     descriptor.getDependencies().remove(dependency);
 
-    dependenciesChanged();
     fireChanged();
     setChanged();
   }
@@ -506,7 +500,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       assert (facet.getModule() == null);
       facet.attach(this);
     }
-    facet.load(memento != null ? memento : new MementoImpl());
+    facet.load(memento != null ? memento : new MementoImpl(), PersistenceContextImpl.forModule(this));
     return facet;
   }
 
@@ -553,7 +547,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   private void createUnknownFacet(FacetsFacade facetsFacade, String facetType, Memento memento) {
     LOG.warning(String.format("no registered factory for a facet with type=`%s'", facetType));
     SModuleFacet unknownFacet = new UnknownFacet(facetType, this);
-    unknownFacet.load(memento);
+    unknownFacet.load(memento, PersistenceContextImpl.empty());
     myFacets.add(unknownFacet);
     facetsFacade.callWhenFacetFactoryAppears(facetType, (facetFactory -> {
       myFacets.remove(unknownFacet);
@@ -576,19 +570,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       facet.detach();
     }
     myFacets.clear();
-  }
-
-  /**
-   * @deprecated There's no direct replacement, as the method was crafted for MPS internal needs (MPSProject init).
-   *             In case there's need for disting 'loaded' (vs 'added'), has to be part of repository listener.
-   */
-  @Deprecated(since = "2024.1", forRemoval = true)
-  public void onModuleLoad() {
-    // FIXME any reason to update references for read-only (deployed) modules?
-    // FIXME any reason to update references on module load at all?
-    //       if any, has to be part of migration and explicit action, rather than silent
-    //       update on startup (triggers loading of all models due to update of priority rules in generators)
-    // updateExternalReferences();
   }
 
   @Override
@@ -731,6 +712,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
 
     List<ModelRoot> result = new ArrayList<>();
+    final ModulePersistenceContext mpc = PersistenceContextImpl.forModule(this);
     for (ModelRootDescriptor modelRoot : descriptor.getModelRootDescriptors()) {
       try {
         ModelRootFactory modelRootFactory = PersistenceFacade.getInstance().getModelRootFactory(modelRoot.getType());
@@ -740,7 +722,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         }
 
         ModelRoot root = modelRootFactory.create();
-        root.load(modelRoot.getMemento());
+        root.load(modelRoot.getMemento(), mpc);
         result.add(root);
       } catch (Exception e) {
         LOG.error("Error loading models from root with type: `" + modelRoot.getType() + "'. Requested by: " + this, e);
@@ -886,16 +868,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     if (moduleDescriptor.updateModuleRefs(repository)) {
       setChanged();
     }
-  }
-
-  protected void dependenciesChanged() {
-    // todo: review all usages after migration!
-
-    // callback on dependencies (any of them) changed event
-    // you can override this method with some invalidation action
-    // call super.dependenciesChanged() at the end
-
-    // todo: as we haven't dependencies listeners...
   }
 
   @Override

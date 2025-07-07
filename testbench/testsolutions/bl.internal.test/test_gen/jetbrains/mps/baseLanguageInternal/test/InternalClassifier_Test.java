@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -18,7 +18,7 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 @MPSLaunch
 public class InternalClassifier_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(InternalClassifier_Test.class, "${mps_home}", "r:a56a2ec2-acbf-42ea-9fe6-7091c607ee89(jetbrains.mps.baseLanguageInternal.test@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InternalClassifier_Test.class).projectPath(null).modelRef("r:a56a2ec2-acbf-42ea-9fe6-7091c607ee89(jetbrains.mps.baseLanguageInternal.test@tests)").reopenProject(null).build());
 
   public InternalClassifier_Test() {
     super(ourParametersCacheExtension.getParametersCache());

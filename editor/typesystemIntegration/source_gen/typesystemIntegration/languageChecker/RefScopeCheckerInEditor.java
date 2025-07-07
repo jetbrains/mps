@@ -4,17 +4,17 @@ package typesystemIntegration.languageChecker;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.checkers.RefScopeChecker;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.errors.item.EditorQuickFix;
 import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.errors.item.NodeFeatureFlavouredItem;
 import jetbrains.mps.nodeEditor.checking.EditorContextQuickfix;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
-import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import jetbrains.mps.errors.item.FlavouredItem;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -32,18 +32,18 @@ import jetbrains.mps.project.ModelImporter;
 import java.awt.Component;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import com.intellij.openapi.wm.WindowManager;
-import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 
-@GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/2855655749838535756", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
+@GeneratedClass(nodeId = "2855655749838535756", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
 public class RefScopeCheckerInEditor extends RefScopeChecker {
-  public RefScopeCheckerInEditor(@Nullable ComponentHost host) {
+  public RefScopeCheckerInEditor(@NotNull ComponentHost host) {
     super(host);
   }
 
   @Override
   protected EditorQuickFix createResolveReferenceQuickfix(SReference reference, boolean executeImmediately) {
-    return new ResolveReferenceEditorBasedQuickFix(reference, executeImmediately);
+    ResolverComponent resolver = myHost.findComponent(ResolverComponent.class);
+    return new ResolveReferenceEditorBasedQuickFix(resolver, reference, executeImmediately);
   }
 
   @Override
@@ -145,13 +145,13 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
 
 
   private static class ResolveReferenceEditorBasedQuickFix extends RefScopeChecker.ResolveReferenceQuickFix implements EditorContextQuickfix {
-    public ResolveReferenceEditorBasedQuickFix(SReference reference, boolean executeImmediately) {
-      super(reference, executeImmediately);
+    public ResolveReferenceEditorBasedQuickFix(ResolverComponent resolver, SReference reference, boolean executeImmediately) {
+      super(resolver, reference, executeImmediately);
     }
     @Override
     public void execute(EditorContext editorContext) {
       // XXX this is basically what ResolverComponent.resolve() does, except for EditorComponent re-use
-      if (ResolverComponent.getInstance().resolveScopesOnly(myReference, editorContext.getRepository())) {
+      if (myResolver.resolveScopesOnly(myReference, editorContext.getRepository())) {
         return;
       }
       new ReferenceResolveInEditor(editorContext.getEditorComponent()).substitute(myReference);

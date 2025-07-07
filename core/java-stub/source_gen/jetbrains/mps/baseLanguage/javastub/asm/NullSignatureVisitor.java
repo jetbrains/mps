@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007196", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "7241381882860007196", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 /*package*/ class NullSignatureVisitor extends SignatureVisitor {
   public static final SignatureVisitor INSTANCE = new NullSignatureVisitor();
   private NullSignatureVisitor() {

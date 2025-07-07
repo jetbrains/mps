@@ -26,6 +26,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
@@ -33,10 +34,11 @@ import com.intellij.openapi.progress.PerformInBackgroundOption;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.Task.Backgroundable;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.ui.content.Content;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -58,6 +60,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -74,7 +77,8 @@ import java.util.List;
     name = "UsagesViewTool",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
+@Service(Service.Level.PROJECT)
+public final class UsagesViewTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
 
   private static final String VERSION_NUMBER = "1";
   private static final String VERSION = "version";
@@ -90,10 +94,23 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
   private final ViewOptions myDefaultViewOptions = new ViewOptions();
   private final DataTreeChangesNotifier myChangeTracker = new DataTreeChangesNotifier();
 
+  private volatile Runnable loadedTabInitializer = null;
+
   //----CONSTRUCT STUFF----
 
   public UsagesViewTool(Project project) {
     super(project, TOOL_WINDOW_ID, shortcutsFromNumber(3), Toolwindows.ToolWindowFind, ToolWindowAnchor.BOTTOM, true);
+  }
+
+  public static UsagesViewTool getInstance(Project project) {
+    final UsagesViewTool service = project.getService(UsagesViewTool.class);
+    //ensure tool window registration
+    final ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow(TOOL_WINDOW_ID);
+    if (toolWindow!=null) {
+      return service;
+    } else {
+      return null;
+    }
   }
 
   /*package*/ void register(UsageViewData viewData) {
@@ -110,9 +127,11 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
     }
   }
 
+  //----TOOL STUFF----
+
   @Override
-  public void disposeComponent() {
-    super.disposeComponent();
+  public void dispose() {
+    super.dispose();
     // if any data left (e.g. data restored but not visualized by addTab() - still in the myUsagesViewsData)
     ArrayList<UsageViewData> copy = new ArrayList<>(myUsageViewsData);
     // pretty much the same what we do in Tab.disposeTab(), below
@@ -121,8 +140,6 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
       uv.myUsagesView.dispose();
     }
   }
-
-  //----TOOL STUFF----
 
   @Override
   protected boolean isInitiallyAvailable() {
@@ -135,7 +152,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
    * Display usages in a tool window of a respective project, according to options supplied.
    */
   public static void showUsages(@NotNull Project project, @NotNull IResultProvider provider, @NotNull SearchQuery query, @NotNull UsageToolOptions options) {
-    project.getComponent(UsagesViewTool.class).findUsages(provider, query, options);
+    UsagesViewTool.getInstance(project).findUsages(provider, query, options);
   }
 
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {
@@ -164,7 +181,8 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
     showResults(null, results, new UsageToolOptions().navigateIfSingle(false).allowRunAgain(false).notFoundMessage(notFoundMsg), representator);
   }
 
-  public <T> void showResults(@Nullable SearchTaskImpl searchTask, final SearchResults<T> searchResults, UsageToolOptions options, @Nullable INodeRepresentator<T> representator) {
+  private <T> void showResults(@Nullable SearchTaskImpl searchTask, final SearchResults<T> searchResults, UsageToolOptions options, @Nullable INodeRepresentator<T> representator) {
+    register();  //Make sure the tool window is properly initialized before showing results.
     if (options.myRunAgain && searchTask == null) {
       throw new IllegalStateException("Search task should be provided to allow rerunning.");
     }
@@ -181,7 +199,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
         new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(node.getReference());
         return;
       }
-      // FALL THROUGH (single result we can't navigate to)
+      // FALL THROUGH (a single result we can't navigate to)
     }
     UsagesView usagesView = createUsageView(options.myRunAgain ? searchTask : null);
     usagesView.setCustomNodeRepresentator(representator);
@@ -207,6 +225,10 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
         uv.dispose();
       }
     }, forceNewTab, openTool);
+    if (usageViewData.myPinned) {
+      final Content content = getContentManager().getContent(component);
+      content.setPinned(true);
+    }
   }
 
   //---END FIND STUFF----
@@ -222,6 +244,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
     }
 
     Element tabsXML = element.getChild(TABS);
+    final List<UsageViewData> loadedUsageViewData = new ArrayList<>();
     if (tabsXML != null) {
       for (Element tabXML : tabsXML.getChildren()) {
         final UsageViewData usageViewData;
@@ -233,25 +256,28 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
         } catch (CantLoadSomethingException e) {
           continue;
         }
-        register(usageViewData);
+        loadedUsageViewData.add(usageViewData);
       }
     }
 
     Element defaultViewOptionsXML = element.getChild(DEFAULT_VIEW_OPTIONS);
     myDefaultViewOptions.read(defaultViewOptionsXML, project);
 
-    if (!myUsageViewsData.isEmpty()) {
-      // XXX not really nice to assume myUsagesViewData doesn't change between here and EDT when we add tabs,
-      //     but I'm not ready for a thorough refactoring of this piece now. Likely, need to collect UVD
-      //     into a list here, and register+addTab later from EDT to ensure the state is consistent
-      ApplicationManager.getApplication().invokeLater(() -> {
-        for (UsageViewData d : myUsageViewsData) {
-          // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
-          UsagesViewTool.this.addTab(d, true, false);
+    assert loadedTabInitializer == null;
+    if (!loadedUsageViewData.isEmpty()) {
+      // We must delay adding visual tabs until the tool window is registered with ToolWindowManager,
+      loadedTabInitializer = new Runnable() {
+        @Override
+        public void run() {
+          for (UsageViewData d : loadedUsageViewData) {
+            register(d);
+          }
+          for (UsageViewData d : myUsageViewsData) {
+            // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
+            UsagesViewTool.this.addTab(d, true, false);
+          }
         }
-      });
-    } else {
-      makeUnavailableLater();
+      };
     }
   }
 
@@ -267,7 +293,8 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
       }
       try {
         Element tabXML = new Element(TAB);
-        usageViewData.write(tabXML, project);
+        final Content content = getContentManager().getContent(usageViewData.myUsagesView.getComponent());
+        usageViewData.write(tabXML, project, content);
         tabsXML.addContent(tabXML);
       } catch (CantSaveSomethingException e) {
         // ignore
@@ -290,15 +317,11 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
 
   @Override
   public void loadState(@NotNull final Element state) {
-    //startup manager is needed cause the contract is that you can't use read and write locks
-    //on component load - it can cause a deadlock (MPS-2811) 
-    StartupManager.getInstance(getProject()).runWhenProjectIsInitialized(() -> {
       if (getProject().isDisposed()) {
         return;
       }
-      final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+      final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
       mpsProject.getModelAccess().runReadAction(() -> read(state, mpsProject));
-    });
   }
 
   private UsagesView createUsageView(@Nullable SearchTaskImpl searchTask) {
@@ -336,13 +359,19 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
 
     public final UsagesView myUsagesView;
     public final SearchTaskImpl mySearchTask;
+    private final boolean myPinned;
     private boolean myIsTransientView = false;
     // now it's not in use, but will be used to implement constructable finders
 //    private FindUsagesOptions myOptions = new FindUsagesOptions();
 
-    public UsageViewData(@NotNull UsagesView view, @Nullable SearchTaskImpl searchTask) {
+    public UsageViewData(@NotNull UsagesView view, @Nullable SearchTaskImpl searchTask, boolean pinned) {
       myUsagesView = view;
       mySearchTask = searchTask;
+      myPinned = pinned;
+    }
+
+    public UsageViewData(@NotNull UsagesView view, @Nullable SearchTaskImpl searchTask) {
+      this(view, searchTask, false);
     }
 
     /*package*/void setTransientView(boolean isTransientView) {
@@ -362,15 +391,16 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
 
 //      Element usageViewOptionsXML = element.getChild(USAGE_VIEW_OPTIONS);
 //      myOptions = new FindUsagesOptions(usageViewOptionsXML, project);
-      return new UsageViewData(usageView, task);
+      final Attribute pinned = element.getAttribute("pinned");
+      return new UsageViewData(usageView, task, pinned!=null && "true".equals(pinned.getValue()));
     }
 
-    public void write(Element element, jetbrains.mps.project.Project project) throws CantSaveSomethingException {
+    public void write(Element element, jetbrains.mps.project.Project project, Content content) throws CantSaveSomethingException {
       //this is to partially fix MPS-14671
       if (myUsagesView.getIncludedResultNodes().size() > 500) {
         throw new CantSaveSomethingException("usages view size too big to save");
       }
-
+      element.setAttribute("pinned", Boolean.toString(content.isPinned()));
 
       if (mySearchTask != null) {
         mySearchTask.write(element, project);
@@ -442,6 +472,46 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
 
       AnAction action = ActionManager.getInstance().getAction(MPSActions.FIND_USAGES_WITH_DIALOG_ACTION);
       action.actionPerformed(event);
+    }
+  }
+
+  private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
+    /**
+     * Returning false when no usage data has been loaded ensures that the tool button is not shown upon start.
+     * If no usages report data was loaded, without this method, the platform shows a tool button, which disappears as soon as clicked.
+     * This method instantiates the Usages service and loads its persistent state.
+     * Special care must be taken in the service's loadState/read methods to avoid registering this tool window with ToolWindowManager,
+     * since it leads to double-registering and an exception thrown.
+     */
+    @Override
+    public boolean shouldBeAvailable(@NotNull Project project) {
+      final UsagesViewTool service = project.getService(UsagesViewTool.class);
+      return service != null && service.loadedTabInitializer != null;
+    }
+
+    /**
+     * Initializes the tabs from the loaded state, hides the window explicitly so as not to start with open Usages
+     */
+    @Override
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+      //Initialize loading of saved tabs
+      final UsagesViewTool service = project.getService(UsagesViewTool.class);
+      if (service != null) {
+        toolWindow.hide();
+        //Propagate the loaded usages report data into actual visual tabs
+        if (service.loadedTabInitializer != null) {
+          final Runnable runnable = () -> {
+            service.loadedTabInitializer.run();
+            service.loadedTabInitializer = null;
+            service.openToolLater(false);
+          };
+          if (ThreadUtils.isInEDT()) {
+            runnable.run();
+          } else {
+            ApplicationManager.getApplication().invokeLater(runnable);
+          }
+        }
+      }
     }
   }
 }

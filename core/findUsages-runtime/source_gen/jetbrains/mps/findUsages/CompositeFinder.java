@@ -18,7 +18,7 @@ import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
  * 
  *  @author Artem Tikhomirov
  */
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424439333", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424439333", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 public class CompositeFinder implements IFinder {
   private final IFinder myDelegate;
   public CompositeFinder(@NotNull IFinder delegate) {

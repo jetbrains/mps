@@ -13,10 +13,10 @@ import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
@@ -46,7 +46,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016165577"), CONCEPTS.Expression$mB, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_8_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -63,7 +63,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016171124"), CONCEPTS.Expression$mB, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_8_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -94,7 +94,7 @@ public class Switch_NodeBuilderExternalParameterType extends TemplateSwitchBase 
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8021365306016174162"), CONCEPTS.Expression$mB, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_8_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

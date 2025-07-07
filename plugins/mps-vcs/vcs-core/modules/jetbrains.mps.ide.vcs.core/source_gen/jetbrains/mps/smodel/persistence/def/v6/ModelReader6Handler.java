@@ -24,7 +24,7 @@ import jetbrains.mps.vcspersistence.SNodeFactory;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.SNodeLegacy;
 
-@GeneratedClass(node = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)/7319439566871678351", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
+@GeneratedClass(nodeId = "7319439566871678351", model = "r:83748538-cbc9-4e2d-b0e1-e282b3d0c13d(jetbrains.mps.smodel.persistence.def.v6)")
 public class ModelReader6Handler extends XMLSAXHandler<ModelLoadResult> {
   private static final Logger LOG = Logger.getLogger(ModelReader6Handler.class);
   private ModelElementHandler modelHandler = new ModelElementHandler();

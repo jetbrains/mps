@@ -18,7 +18,7 @@ import org.jetbrains.mps.openapi.module.SDependencyScope;
 import jetbrains.mps.project.structure.modules.Dependency;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/1986682148700850462", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "1986682148700850462", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public final class DeploymentDescriptorPersistence {
   public DeploymentDescriptorPersistence() {
   }

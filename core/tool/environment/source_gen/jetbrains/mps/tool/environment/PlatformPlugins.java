@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
-import jetbrains.mps.string.Strings;
+import java.util.Locale;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.URLClassLoader;
@@ -32,7 +32,7 @@ import java.net.URLClassLoader;
  * When there's full-fledged IDEA (i.e. IdeaEnvironment), there's no need to process plugin.xml, but with lightweight MpsEnvironment we have to carry the burden
  * This is basically what PluginManagerCore from IDEA platform does, stripped down and focused on vital aspects only (namely, classloading and discovery of MPS modules)
  */
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/33726302329121273", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "33726302329121273", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 /*package*/ class PlatformPlugins {
   private static final Logger LOG = Logger.getLogger(PlatformPlugins.class);
   public static final String PLUGIN_DESCRIPTOR_LOCATION = "META-INF/plugin.xml";
@@ -45,8 +45,6 @@ import java.net.URLClassLoader;
 
 
   /*package*/ PlatformPlugins(EnvironmentConfig config) {
-    // FIXME PathManager.getPluginsPath is a dependency to j.m.tool.common I'd like to get rid of (this class has access to MPS kernel classes
-    //       and doesn't need to depend from tool.common at all), but I didn't find a proper alternative. Alex P., could you please help me here?
     for (PluginData pd : config.getPlugins()) {
       File pluginLocation = new File(pd.path);
       List<File> cp = detectClasspath(pluginLocation);
@@ -197,8 +195,8 @@ import java.net.URLClassLoader;
       if (files != null && files.length > 0) {
         for (final File f : files) {
           if (f.isFile()) {
-            final String name = f.getName();
-            if (Strings.endsWithIgnoreCase(name, ".jar") || Strings.endsWithIgnoreCase(name, ".zip")) {
+            final String name = f.getName().toLowerCase(Locale.ENGLISH);
+            if (name.endsWith(".jar") || name.endsWith(".zip")) {
               result.add(f);
             }
           } else {

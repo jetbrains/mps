@@ -44,7 +44,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:5b5d3edc-7109-4b21-b309-f1eed7ed275b(jetbrains.mps.project.structure.stub)/4198951972171372748", model = "r:5b5d3edc-7109-4b21-b309-f1eed7ed275b(jetbrains.mps.project.structure.stub)")
+@GeneratedClass(nodeId = "4198951972171372748", model = "r:5b5d3edc-7109-4b21-b309-f1eed7ed275b(jetbrains.mps.project.structure.stub)")
 public class ProjectStructureBuilder {
   private final AbstractModule mySourceModule;
   private final ModuleDescriptor mySource;

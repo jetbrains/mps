@@ -18,7 +18,7 @@ import jetbrains.mps.vfs.IFile;
 /**
  * todo: merge with "modules collected from dir", or specify here paths to msd/mpl files
  */
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/6450649963068241995", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "6450649963068241995", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public class FromModulesListProjectStrategy extends ProjectStrategyBase {
   public static final String MODULES_PATHS_PROPERTY = "mps.test.modules";
   private final String myModulesPath;

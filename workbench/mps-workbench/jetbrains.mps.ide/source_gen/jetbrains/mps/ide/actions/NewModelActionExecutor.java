@@ -35,7 +35,7 @@ import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
  * 
  * @see jetbrains.mps.ide.actions.ModelCreationActionsBaseExecutor 
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7081154005681548338", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7081154005681548338", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
 
   protected final NewModelDialogSettings.Factory myDialogSettingsFactory;

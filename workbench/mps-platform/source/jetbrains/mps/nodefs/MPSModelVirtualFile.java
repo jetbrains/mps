@@ -17,6 +17,7 @@ package jetbrains.mps.nodefs;
 
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.openapi.vfs.VirtualFileWithoutContent;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.logging.Logger;
@@ -34,7 +35,7 @@ import java.io.OutputStream;
  * User: fyodor
  * Date: 3/6/13
  */
-public final class MPSModelVirtualFile extends VirtualFile {
+public final class MPSModelVirtualFile extends VirtualFile implements VirtualFileWithoutContent {
   private static final Logger LOG = Logger.getLogger(MPSModelVirtualFile.class);
   private static final byte[] ZERO_BYTES = new byte[0];
   public static final String MODEL_PREFIX = "model://";

@@ -13,7 +13,7 @@
       <unit at="11,0,113,0" name="jetbrains.mps.testHybridEditor.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,12,0" name="jetbrains.mps.testHybridEditor.structure.IconContainer" />
+      <unit at="8,0,14,0" name="jetbrains.mps.testHybridEditor.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,48,0" name="jetbrains.mps.testHybridEditor.structure.LanguageConceptSwitch" />
@@ -27,8 +27,8 @@
       <node id="2353136177973871304" at="20,0,21,0" concept="1" trace="props_MetaBlock" />
       <node id="2353136177973871304" at="88,38,89,76" concept="3" />
       <node id="2353136177973871304" at="89,76,90,35" concept="0" />
-      <node id="2353136177973871304" at="90,35,91,55" concept="0" />
-      <node id="2353136177973871304" at="91,55,92,41" concept="0" />
+      <node id="2353136177973871304" at="90,35,91,45" concept="0" />
+      <node id="2353136177973871304" at="91,45,92,41" concept="0" />
       <node id="2353136177973871304" at="93,9,94,31" concept="4" />
       <node id="2353136177973871304" at="87,43,93,9" concept="2" />
       <scope id="2353136177973871304" at="88,38,92,41">
@@ -139,8 +139,8 @@
       <node id="2353136177974088982" at="17,0,18,0" concept="1" trace="props_ConnectorInstance" />
       <node id="2353136177974088982" at="66,46,67,76" concept="3" />
       <node id="2353136177974088982" at="67,76,68,51" concept="0" />
-      <node id="2353136177974088982" at="68,51,69,55" concept="0" />
-      <node id="2353136177974088982" at="69,55,70,49" concept="0" />
+      <node id="2353136177974088982" at="68,51,69,45" concept="0" />
+      <node id="2353136177974088982" at="69,45,70,49" concept="0" />
       <node id="2353136177974088982" at="71,9,72,39" concept="4" />
       <node id="2353136177974088982" at="65,51,71,9" concept="2" />
       <scope id="2353136177974088982" at="66,46,70,49">
@@ -325,8 +325,8 @@
       <node id="725186580883451809" at="15,0,16,0" concept="1" trace="props_Connector" />
       <node id="725186580883451809" at="51,38,52,76" concept="3" />
       <node id="725186580883451809" at="52,76,53,35" concept="0" />
-      <node id="725186580883451809" at="53,35,54,55" concept="0" />
-      <node id="725186580883451809" at="54,55,55,41" concept="0" />
+      <node id="725186580883451809" at="53,35,54,45" concept="0" />
+      <node id="725186580883451809" at="54,45,55,41" concept="0" />
       <node id="725186580883451809" at="56,9,57,31" concept="4" />
       <node id="725186580883451809" at="50,43,56,9" concept="2" />
       <scope id="725186580883451809" at="51,38,55,41">

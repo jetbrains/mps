@@ -11,27 +11,47 @@
   </root>
   <root nodeRef="r:ca03e632-3f02-43dd-8ea4-ad134e38a5a2(jetbrains.mps.kotlin.plugin)/8402416827417240530">
     <file name="ExtensionsHelper.java">
-      <node id="8402416827417278329" at="12,73,13,175" concept="2" />
-      <node id="2668329653424410105" at="16,149,17,61" concept="1" />
-      <node id="2668329653424411497" at="18,29,19,26" concept="2" />
-      <node id="2668329653424411923" at="20,5,21,37" concept="2" />
-      <node id="8402416827417242018" at="12,0,15,0" concept="3" trace="getTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/api/extension/KotlinTypesystem;" />
-      <node id="2668329653424410396" at="17,61,20,5" concept="0" />
-      <node id="2668329653424404554" at="16,0,23,0" concept="3" trace="withTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;nullLjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
-      <scope id="8402416827417242021" at="12,73,13,175" />
-      <scope id="2668329653424410398" at="18,29,19,26" />
-      <scope id="8402416827417242018" at="12,0,15,0">
+      <node id="8402416827417278329" at="17,73,18,175" concept="2" />
+      <node id="4215958600160533056" at="24,58,25,46" concept="2" />
+      <node id="4662124839794149414" at="32,190,33,61" concept="1" />
+      <node id="4662124839794149421" at="34,29,35,33" concept="2" />
+      <node id="4662124839794149426" at="36,5,37,40" concept="2" />
+      <node id="2668329653424410105" at="43,149,44,61" concept="1" />
+      <node id="2668329653424411497" at="45,29,46,26" concept="2" />
+      <node id="2668329653424411923" at="47,5,48,37" concept="2" />
+      <node id="8402416827417242018" at="17,0,20,0" concept="3" trace="getTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/api/extension/KotlinTypesystem;" />
+      <node id="4215958600160533052" at="24,0,27,0" concept="3" trace="hasTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4662124839794149419" at="33,61,36,5" concept="0" />
+      <node id="2668329653424410396" at="44,61,47,5" concept="0" />
+      <node id="4662124839794149404" at="32,0,39,0" concept="3" trace="withTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
+      <node id="2668329653424404554" at="43,0,50,0" concept="3" trace="withTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;nullLjetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;)null" />
+      <scope id="8402416827417242021" at="17,73,18,175" />
+      <scope id="4215958600160533055" at="24,58,25,46" />
+      <scope id="4662124839794149420" at="34,29,35,33" />
+      <scope id="2668329653424410398" at="45,29,46,26" />
+      <scope id="8402416827417242018" at="17,0,20,0">
         <var name="contextNode" id="8402416827417274007" />
       </scope>
-      <scope id="2668329653424404557" at="16,149,21,37">
+      <scope id="4215958600160533052" at="24,0,27,0">
+        <var name="contextNode" id="4215958600160533053" />
+      </scope>
+      <scope id="4662124839794149413" at="32,190,37,40">
+        <var name="typesystem" id="4662124839794149415" />
+      </scope>
+      <scope id="2668329653424404557" at="43,149,48,37">
         <var name="typesystem" id="2668329653424410106" />
       </scope>
-      <scope id="2668329653424404554" at="16,0,23,0">
+      <scope id="4662124839794149404" at="32,0,39,0">
+        <var name="contextNode" id="4662124839794149405" />
+        <var name="ifDisabled" id="4662124839794149407" />
+        <var name="ifEnabled" id="4662124839794149409" />
+      </scope>
+      <scope id="2668329653424404554" at="43,0,50,0">
         <var name="action" id="2668329653424405082" />
         <var name="contextNode" id="2668329653424404772" />
         <var name="defaultValue" id="2668329653424404923" />
       </scope>
-      <unit id="8402416827417240530" at="11,0,24,0" name="jetbrains.mps.kotlin.plugin.ExtensionsHelper" />
+      <unit id="8402416827417240530" at="11,0,51,0" name="jetbrains.mps.kotlin.plugin.ExtensionsHelper" />
     </file>
   </root>
 </debug-info>

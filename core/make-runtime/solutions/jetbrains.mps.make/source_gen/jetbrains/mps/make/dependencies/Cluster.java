@@ -14,7 +14,7 @@ import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.facet.ITarget;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/4634869729620616118", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "4634869729620616118", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class Cluster {
   private final Iterable<IResource> myResources;
   private final Iterable<SLanguage> myUsedLang;

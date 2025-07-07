@@ -20,6 +20,7 @@
     <import index="5h2r" ref="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="lgib" ref="r:3d049421-2cf2-4818-944e-c4d825789632(jetbrains.mps.lang.core.findUsages)" />
+    <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
   </imports>
   <registry>
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
@@ -72,6 +73,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -606,6 +610,12 @@
                               <node concept="zAVLb" id="1ofoPOHM_XB" role="1ef06T">
                                 <ref role="2$JaeB" node="htS555P" resolve="DerivedClasses" />
                               </node>
+                              <node concept="2ShNRf" id="7THuFKMFDXD" role="1ecym3">
+                                <node concept="1pGfFk" id="7THuFKMFDXE" role="2ShVmc">
+                                  <property role="373rjd" value="true" />
+                                  <ref role="37wK5l" to="mk8z:~EmptyProgressMonitor.&lt;init&gt;()" resolve="EmptyProgressMonitor" />
+                                </node>
+                              </node>
                             </node>
                           </node>
                           <node concept="2OqwBi" id="hxiFsmU" role="3clFbw">
@@ -672,6 +682,12 @@
                 </node>
                 <node concept="zAVLb" id="1ofoPOHMv$s" role="1ef06T">
                   <ref role="2$JaeB" to="tpci:hroFk9u" resolve="NodeUsages" />
+                </node>
+                <node concept="2ShNRf" id="7THuFKMFC18" role="1ecym3">
+                  <node concept="1pGfFk" id="7THuFKMFDKX" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="mk8z:~EmptyProgressMonitor.&lt;init&gt;()" resolve="EmptyProgressMonitor" />
+                  </node>
                 </node>
               </node>
             </node>

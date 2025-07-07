@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.smodel.CopyUtil;
 import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -71,10 +70,10 @@ public final class ConvertClassConceptToExtract_Intention extends AbstractIntent
         newNode.addChild(child.getContainmentLink(), mapping.get(child));
       }
       for (SReference reference : SNodeOperations.getReferences(node)) {
-        SNodeAccessUtil.setReferenceTarget(newNode, reference.getLink(), reference.getTargetNode());
+        newNode.setReferenceTarget(reference.getLink(), reference.getTargetNode());
       }
       for (SProperty p : node.getProperties()) {
-        SNodeAccessUtil.setProperty(newNode, p, SNodeAccessUtil.getProperty(node, p));
+        newNode.setProperty(p, node.getProperty(p));
       }
       SNodeOperations.replaceWithAnother(node, newNode);
     }

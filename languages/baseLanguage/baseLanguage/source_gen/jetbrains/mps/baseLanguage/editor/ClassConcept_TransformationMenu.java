@@ -33,6 +33,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -159,6 +160,10 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return (boolean) ClassConcept__BehaviorDescriptor.canBeFinal_id6aeBP5Qha2s.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())));
+        }
 
 
         public void customize(String pattern, EditorMenuItemStyle style) {
@@ -210,6 +215,10 @@ public class ClassConcept_TransformationMenu extends TransformationMenuBase {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "classKeyword", 0);
         }
 
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return (boolean) ClassConcept__BehaviorDescriptor.canBeAbstract_id6aeBP5Qh1A$.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())));
+        }
 
 
         public void customize(String pattern, EditorMenuItemStyle style) {

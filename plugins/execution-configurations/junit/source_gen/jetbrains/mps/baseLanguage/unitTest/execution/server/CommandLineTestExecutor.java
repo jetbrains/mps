@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit4TestExecutor;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
 import org.jetbrains.annotations.Nullable;
@@ -37,7 +38,7 @@ public class CommandLineTestExecutor implements TestExecutor {
       myTestExecutor = new JUnit5TestExecutor(new JUnit5ScriptTestContributor(myEnv, myExecScript.getTests()), true) {
         @Override
         protected void executeSafe() throws Throwable {
-          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnv);
+          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnv).withSystemProperty(SystemProperties.PROJECT_PATH, myExecScript.getProjectUrl());
           TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
           try {
             super.executeSafe();

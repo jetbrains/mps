@@ -30,7 +30,7 @@ import org.junit.runner.Description;
  * @deprecated 
  */
 @Deprecated(forRemoval = true)
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/8946405811982745735", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "8946405811982745735", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
   private final RunnerBuilder myDelegateBuilder;
   /*package*/ final Environment myEnvironmentToPush;

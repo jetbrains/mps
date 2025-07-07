@@ -45,7 +45,7 @@ import com.intellij.ui.IdeBorderFactory;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933583134", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
+@GeneratedClass(nodeId = "3201642974933583134", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   private final MPSProject myProject;
   private final ProjectFilesModel myModuleFiles = new ProjectFilesModel();

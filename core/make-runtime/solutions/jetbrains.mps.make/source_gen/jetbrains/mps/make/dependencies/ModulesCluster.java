@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -28,9 +28,10 @@ import java.util.Collections;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.LinkedList;
+import java.util.HashSet;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/5888262800849895741", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "5888262800849895741", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class ModulesCluster {
   private final Map<SModuleReference, ModuleDeps> myDepsGraph = MapSequence.fromMap(new HashMap<SModuleReference, ModuleDeps>());
   private final Map<SLanguage, ModuleDeps> languageModules = MapSequence.fromMap(new HashMap<SLanguage, ModuleDeps>());
@@ -46,7 +47,10 @@ public class ModulesCluster {
     // keep track of a module that results in a deployed language; these need to be build prior to their uses
     MapSequence.fromMap(languageModules).clear();
     // ensure we've got all the vertexes of our graph ready
-    for (SModule m : Sequence.fromIterable(pool)) {
+    // XXX sorting is just an attempt to get same order (assume myDepsGraph map with same SModuleReference as a key gives same order 
+    // for map.values() call - ModuleReference comes with hashCode() implementation. This ordering doesn't solve MPS-37246 (or any other issue),
+    // rather helps to get repeatable success/failures
+    for (SModule m : Sequence.fromIterable(pool).sort((it) -> it.getModuleName(), true)) {
       SModuleReference mr = m.getModuleReference();
       ModuleDeps md = new ModuleDeps(m);
       MapSequence.fromMap(myDepsGraph).put(mr, md);
@@ -79,9 +83,9 @@ public class ModulesCluster {
     ArrayList<SModule> modExt = new ArrayList<SModule>();
     modExt.add(mod);
 
-    Set<SLanguage> moduleUsedLanguages;
-    // inv: reference existing vertexes only
-    Set<ModuleDeps> reqs = SetSequence.fromSet(new HashSet<ModuleDeps>());
+    final Set<SLanguage> moduleUsedLanguages = SetSequence.fromSet(new LinkedHashSet<SLanguage>());
+    // inv: reference existing vertexes only (therefore, we don't care about equals/hashCode impl)
+    final Set<ModuleDeps> reqs = SetSequence.fromSet(new LinkedHashSet<ModuleDeps>());
     if (mod instanceof Generator) {
       Generator generator = (Generator) mod;
       // Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here
@@ -95,14 +99,26 @@ public class ModulesCluster {
         // XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there
         //     is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed)
       }
-      moduleUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
       for (SModel m : generator.getModels()) {
         SetSequence.fromSet(moduleUsedLanguages).addSequence(CollectionSequence.fromCollection(ModelContentUtil.getUsedLanguages(m)));
       }
     } else {
-      moduleUsedLanguages = mod.getUsedLanguages();
+      // XXX perhaps, shall ask each model individually and ignore models that aren't subject to m2m?
+      SetSequence.fromSet(moduleUsedLanguages).addSequence(SetSequence.fromSet(mod.getUsedLanguages()));
       // XXX ModelContentUtil adds auto-imported and engaged on generation languages as well, shall I use it here, too?
       //     I didn't add them as previous version relied on SModule.getUsedLanguages() collection, which does not include engaged nor auto-imports, and is working for years
+    }
+
+    // Attempt to address MPS-37246 by ensuring extended languages come as first dependencies of an extending language, 
+    // before any other module that may alter topological sorting shows up.
+    if (mod instanceof Language) {
+      for (SModuleReference ext : ((Language) mod).getExtendedLanguageRefs()) {
+        ModuleDeps dl = MapSequence.fromMap(myDepsGraph).get(ext);
+        if (dl != null) {
+          SetSequence.fromSet(reqs).addElement(dl);
+        }
+        // XXX don't feel there's a need for transitive closure of extended languages, I don't expect scenarios when L1 -> L2 -> L3 and only L1 and L3 come into cluster.
+      }
     }
 
     while (SetSequence.fromSet(moduleUsedLanguages).isNotEmpty()) {
@@ -115,7 +131,7 @@ public class ModulesCluster {
       if (MapSequence.fromMap(languageModules).containsKey(language)) {
         // module uses a language which is part of the make sequence
         ModuleDeps lmd = MapSequence.fromMap(languageModules).get(language);
-        Language lm = as_7qjyo9_a0a2a4a01a21(lmd.getModule(), Language.class);
+        Language lm = as_7qjyo9_a0a2a4a41a21(lmd.getModule(), Language.class);
         // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators...
         // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged,
         // and we make RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first
@@ -193,7 +209,8 @@ public class ModulesCluster {
     private final List<ModuleDeps> myAllVertices;
 
     public ModulesGraph(Iterable<ModuleDeps> allVertices) {
-      myAllVertices = Sequence.fromIterable(allVertices).toList();
+      // again, sorting here is to get reproducible outcome, not to fix any particular defect. Remove once true nature of MPS-37246 is clear.
+      myAllVertices = Sequence.fromIterable(allVertices).sort((it) -> it.getModule().getModuleName(), true).toList();
     }
 
     @Override
@@ -271,7 +288,7 @@ public class ModulesCluster {
       }
     }
   }
-  private static <T> T as_7qjyo9_a0a2a4a01a21(Object o, Class<T> type) {
+  private static <T> T as_7qjyo9_a0a2a4a41a21(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

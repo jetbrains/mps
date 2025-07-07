@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 
-@GeneratedClass(node = "r:03d3090f-cc5b-43a6-b212-e089f946314d(jetbrains.mps.vcs.mergehints.runtime)/5705146868101010166", model = "r:03d3090f-cc5b-43a6-b212-e089f946314d(jetbrains.mps.vcs.mergehints.runtime)")
+@GeneratedClass(nodeId = "5705146868101010166", model = "r:03d3090f-cc5b-43a6-b212-e089f946314d(jetbrains.mps.vcs.mergehints.runtime)")
 public abstract class VCSAspectUtil {
   private VCSAspectUtil() {
   }

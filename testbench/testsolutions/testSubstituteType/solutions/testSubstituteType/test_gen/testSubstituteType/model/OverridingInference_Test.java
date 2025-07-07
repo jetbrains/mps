@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class OverridingInference_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(OverridingInference_Test.class, "${mps_home}", "r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(OverridingInference_Test.class).projectPath(null).modelRef("r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)").reopenProject(null).build());
 
   public OverridingInference_Test() {
     super(ourParametersCacheExtension.getParametersCache());

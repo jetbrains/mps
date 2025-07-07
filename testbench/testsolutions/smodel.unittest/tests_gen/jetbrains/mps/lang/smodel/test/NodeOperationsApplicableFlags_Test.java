@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 @MPSLaunch
 public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(NodeOperationsApplicableFlags_Test.class, "${mps_home}", "r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NodeOperationsApplicableFlags_Test.class).projectPath(null).modelRef("r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)").reopenProject(null).build());
 
   public NodeOperationsApplicableFlags_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -82,7 +82,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
           boolean toLinkList = (boolean) SNodeOperation__BehaviorDescriptor.applicableToLinkList_id1653mnvAgwe.invoke(SNodeOperations.asSConcept(c));
           boolean toSingleLink = (boolean) SNodeOperation__BehaviorDescriptor.applicableToLink_id1653mnvAgvK.invoke(SNodeOperations.asSConcept(c));
           boolean toConceptOrNode = (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c));
-          Assert.assertEquals(String.format("Wrong applicableTo for %s", c.getName()), 1, TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), toProperty, toModel, toSingleLink, toLinkList, toConceptOrNode)));
+          Assert.assertEquals(String.format("Wrong applicableTo for %s", c.getName()), Integer.valueOf(1), Integer.valueOf(TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), toProperty, toModel, toSingleLink, toLinkList, toConceptOrNode))));
           Assert.assertTrue(c.getQualifiedName(), SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.AsSConcept$qr) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Node_ConceptMethodCall$mz) || TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)), (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c)))) <= 1);
         }
       });

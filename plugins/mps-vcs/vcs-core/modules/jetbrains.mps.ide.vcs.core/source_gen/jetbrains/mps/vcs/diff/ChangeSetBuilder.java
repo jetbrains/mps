@@ -10,31 +10,14 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.RuntimeFlags;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.vcs.diff.changes.AddRootChange;
-import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
-import java.util.Map;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
-import java.util.function.Function;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
-import java.util.Objects;
-import jetbrains.mps.util.LongestCommonSubsequenceFinder;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.vcs.diff.changes.DependencyChange;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
@@ -42,16 +25,21 @@ import jetbrains.mps.vcs.diff.changes.ModuleDependencyChange;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
+import java.util.Objects;
 import jetbrains.mps.vcs.diff.changes.ModelAttributeChange;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/4652592318748341229", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+/**
+ * Collects changes of a model as a whole, including "metadata" changes (i.e. imports) and structure changes
+ */
+@GeneratedClass(nodeId = "4652592318748341229", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public final class ChangeSetBuilder {
 
   @NotNull
@@ -87,14 +75,6 @@ public final class ChangeSetBuilder {
     myRespectCommentedOutNodes = !(RuntimeFlags.isMergeDriverMode());
   }
 
-  public void buildForProperty(@NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SProperty property) {
-    ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(DiffUtil.collectPropertyChanges(myChangeSet, oldNode, newNode, property)));
-  }
-
-  public void buildForReference(@NotNull SNode oldNode, @NotNull SNode newNode, @NotNull SReferenceLink role) {
-    ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(DiffUtil.collectReferenceChanges(myChangeSet, oldNode, newNode, role)));
-  }
-
   private void buildForRoot(@Nullable SNode oldNode, @Nullable SNode newNode) {
     if (SNodeOperations.getContainingRoot(oldNode) != oldNode) {
       oldNode = null;
@@ -109,150 +89,23 @@ public final class ChangeSetBuilder {
   }
 
   private void buildChangeSetForNode(@Nullable SNode oldNode, @Nullable SNode newNode) {
+    NodeChangesBuilder builder;
     if (myTrackMovedNodes) {
-      MovesAwareChangeSetBuilder builder = new MovesAwareChangeSetBuilder(oldNode, newNode, myChangeSet);
-      ListSequence.fromList(myNewChanges).addSequence(ListSequence.fromList(builder.getChanges()));
+      builder = new MoveAwareNodeChangeBuilder(myChangeSet, myRespectCommentedOutNodes);
     } else {
-      buildForNode(oldNode, newNode);
+      builder = new BasicNodeChangesBuilder(myChangeSet, myRespectCommentedOutNodes);
     }
-  }
-
-  @Nullable
-  private SNode getOldNode(@NotNull SNodeId nodeId) {
-    return myOldModel.getNode(nodeId);
-  }
-
-  @Nullable
-  private SNode getNewNode(@NotNull SNodeId nodeId) {
-    return myNewModel.getNode(nodeId);
-  }
-
-  public void buildForNode(@Nullable final SNode oldNode, @Nullable final SNode newNode) {
-
-    assert oldNode != null || newNode != null;
-
-    if (oldNode == null) {
-      ListSequence.fromList(myNewChanges).addElement(new AddRootChange(myChangeSet, newNode.getNodeId()));
-    } else if (newNode == null) {
-      ListSequence.fromList(myNewChanges).addElement(new DeleteRootChange(myChangeSet, oldNode.getNodeId()));
-    } else {
-      ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(DiffUtil.collectNodeChanges(myChangeSet, oldNode, newNode)));
-
-      final Map<SContainmentLink, List<SNode>> roleToOldChildCollection = getRoleToChildCollectionMap(oldNode);
-      final Map<SContainmentLink, List<SNode>> roleToNewChildCollection = getRoleToChildCollectionMap(newNode);
-
-      SetSequence.fromSet(MapSequence.fromMap(roleToOldChildCollection).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(roleToNewChildCollection).keySet())).distinct().visitAll((role) -> buildForNodeRole(roleToOldChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), roleToNewChildCollection.getOrDefault(role, ListSequence.fromList(new ArrayList<SNode>())), oldNode.getNodeId(), newNode.getNodeId(), role));
-    }
-  }
-
-  /*package*/ static Map<SContainmentLink, List<SNode>> getRoleToChildCollectionMap(SNode node) {
-    final Map<SContainmentLink, List<SNode>> roleToChildCollection = new HashMap<SContainmentLink, List<SNode>>();
-    // FIXME if(!myRespectCommentedOutNodes), but can't use it here as it's a static method with quite some uses
-    //      What I need is to synchronise knowledge about whether to stick to single role or look into combination with
-    //      respective ChildAttributes under smodelAttributes role throughout few classes, where this assumption is now
-    //      scattered around and is not apparent.
-    if (RuntimeFlags.isMergeDriverMode()) {
-      // see MPS-35421, SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection() case
-      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll((child) -> roleToChildCollection.computeIfAbsent(child.getContainmentLink(), (SContainmentLink link) -> ListSequence.fromList(new ArrayList<SNode>())).add(child));
-    } else {
-      ListSequence.fromList(SNodeOperations.getChildren(node)).visitAll((child) -> {
-        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(child);
-        roleToChildCollection.computeIfAbsent(link, new Function<SContainmentLink, List<SNode>>() {
-          public IListSequence<SNode> apply(SContainmentLink link) {
-            return ListSequence.fromList(new ArrayList<SNode>());
-          }
-        }).add(child);
-      });
-    }
-    return roleToChildCollection;
-  }
-
-  public void buildForNodeRole(final List<SNode> oldChildren, List<SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
-
-    final List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select((n) -> n.getNodeId()).toList();
-    final List<SNodeId> newIds = ListSequence.fromList(newChildren).select((n) -> n.getNodeId()).toList();
-
-    if (Objects.equals(oldIds, newIds)) {
-      for (SNode child : ListSequence.fromList(oldChildren)) {
-        buildForNode(child, getNewNode(child.getNodeId()));
-      }
-      return;
-    }
-
-    LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds);
-    List<Tuples._2<Integer, Integer>> commonIndices = finder.getCommonIndices();
-    ListSequence.fromList(commonIndices).select((in) -> ListSequence.fromList(oldChildren).getElement((int) in._0())).visitAll((child) -> buildForNode(child, getNewNode(child.getNodeId())));
-
-    // Finding inserts, deletions and replacements
-    for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(finder.getDifferentIndices())) {
-      final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toList();
-      List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toList();
-      final Map<SNodeId, SNodeId> newToOldMap = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
-      for (SNodeId oldNodeId : oldIds1) {
-        for (SNodeId newNodeId : newIds1) {
-          if (MapSequence.fromMap(newToOldMap).containsKey(newNodeId)) {
-            continue;
-          }
-          if (DiffUtil.nodesDifferByIdOnly(myOldModel, getOldNode(oldNodeId), getNewNode(newNodeId))) {
-            MapSequence.fromMap(newToOldMap).put(newNodeId, oldNodeId);
-            break;
-          }
-        }
-      }
-      if (MapSequence.fromMap(newToOldMap).isEmpty()) {
-        ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, oldParentId, newParentId, role, (int) indices._0()._0(), (int) indices._0()._1(), (int) indices._1()._0(), (int) indices._1()._1()));
-        continue;
-      }
-      List<SNodeId> newIds2 = ListSequence.fromList(newIds1).select((it) -> (MapSequence.fromMap(newToOldMap).containsKey(it) ? MapSequence.fromMap(newToOldMap).get(it) : it)).toList();
-      LongestCommonSubsequenceFinder<SNodeId> finder1 = new LongestCommonSubsequenceFinder<SNodeId>(oldIds1, newIds2);
-      List<Tuples._2<Integer, Integer>> commonIndices1 = finder1.getCommonIndices();
-      for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices1 : ListSequence.fromList(finder1.getDifferentIndices())) {
-        int oldStart1 = (int) indices1._0()._0();
-        int oldEnd1 = (int) indices1._0()._1();
-        int newStart1 = (int) indices1._1()._0();
-        int newEnd1 = (int) indices1._1()._1();
-        int oldStart = (oldStart1 < ListSequence.fromList(oldIds1).count() ? ListSequence.fromList(oldIds).indexOf(ListSequence.fromList(oldIds1).getElement(oldStart1)) : (int) indices._0()._1());
-        int oldEnd = (oldEnd1 < ListSequence.fromList(oldIds1).count() ? ListSequence.fromList(oldIds).indexOf(ListSequence.fromList(oldIds1).getElement(oldEnd1)) : (int) indices._0()._1());
-        int newStart;
-        if (newStart1 < ListSequence.fromList(newIds2).count()) {
-          final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newStart1));
-          if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0db(MapSequence.fromMap(newToOldMap).findFirst((it) -> Objects.equals(it.value(), newNodeId.value)));
-          }
-          newStart = ListSequence.fromList(newIds).indexOf(newNodeId.value);
-        } else {
-          newStart = (int) indices._1()._1();
-        }
-        int newEnd;
-        if (newEnd1 < ListSequence.fromList(newIds2).count()) {
-          final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newEnd1));
-          if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0db(MapSequence.fromMap(newToOldMap).findFirst((it) -> Objects.equals(it.value(), newNodeId.value)));
-          }
-          newEnd = ListSequence.fromList(newIds).indexOf(newNodeId.value);
-        } else {
-          newEnd = (int) indices._1()._1();
-        }
-        ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, oldParentId, newParentId, role, oldStart, oldEnd, newStart, newEnd));
-      }
-      // Finding changes for children
-      ListSequence.fromList(commonIndices1).select((in) -> ListSequence.fromList(oldIds1).getElement((int) in._0())).visitAll((final SNodeId oldNodeId) -> {
-        SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a92(MapSequence.fromMap(newToOldMap).findFirst((it) -> Objects.equals(it.value(), oldNodeId)));
-        assert newNodeId != null;
-        assert ListSequence.fromList(oldIds).contains(oldNodeId) && ListSequence.fromList(newIds).contains(newNodeId);
-        ListSequence.fromList(myNewChanges).addElement(new NodeIdChange(myChangeSet, oldParentId, newParentId, role, oldNodeId, newNodeId));
-        buildForNode(getOldNode(oldNodeId), getNewNode(newNodeId));
-      });
-    }
+    builder.buildForRoot(oldNode, newNode);
+    ListSequence.fromList(myNewChanges).addSequence(ListSequence.fromList(builder.buildChanges()));
   }
 
   private <D> void buildAddedAndDeletedDependencies(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> referencesExtractor, final _FunctionTypes._return_P2_E0<? extends DependencyChange, ? super D, ? super Boolean> changeCreator) {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0fb = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0fb._0();
-      deleted = _tmp_nbyrtw_c0fb._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0r = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0r._0();
+      deleted = _tmp_nbyrtw_c0r._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select((r) -> changeCreator.invoke(r, false)));
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(deleted).select((r) -> changeCreator.invoke(r, true)));
@@ -326,9 +179,9 @@ public final class ChangeSetBuilder {
   }
 
   private void build(boolean withOpposite) {
-    Iterable<SNodeId> allRootIds = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myOldModel, null)).concat(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myNewModel, null))).select((n) -> n.getNodeId());
-    for (SNodeId rootId : SetSequence.fromSetWithValues(new HashSet<SNodeId>(), allRootIds)) {
-      buildForRoot(getOldNode(rootId), getNewNode(rootId));
+    Iterable<SNodeId> allRootIds = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myOldModel, null)).concat(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(myNewModel, null))).select((n) -> n.getNodeId()).distinct();
+    for (SNodeId rootId : Sequence.fromIterable(allRootIds)) {
+      buildForRoot(myOldModel.getNode(rootId), myNewModel.getNode(rootId));
     }
 
     buildForMetadata();
@@ -355,7 +208,7 @@ public final class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0zb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0zb(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0lb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0lb(myNewModel, SModelBase.class)));
   }
 
   @NotNull
@@ -378,7 +231,7 @@ public final class ChangeSetBuilder {
   public static boolean hasChangesForNodeId(@NotNull SModel oldModel, @NotNull SModel newModel, SNodeId nodeId) {
     SNode oldNode = oldModel.getNode(nodeId);
     SNode newNode = newModel.getNode(nodeId);
-    return MovesAwareChangeSetBuilder.hasChanges(oldNode, newNode, new ChangeSetImpl(oldModel, newModel));
+    return ModifiedNodesBuilder.hasChanges(oldNode, newNode);
   }
 
   public static ModelChangeSet buildChangeSetForNode(@NotNull SModel oldModel, @NotNull SModel newModel, SNodeId rootId, boolean withOpposite, boolean trackMovedNodes) {
@@ -406,32 +259,10 @@ public final class ChangeSetBuilder {
   public static void rebuildChangeSet(ChangeSet changeSet) {
     rebuildChangeSet(changeSet, false);
   }
-
-  public static ChangeSetBuilder createBuilder(ChangeSet changeSet) {
-    return new ChangeSetBuilder((ChangeSetImpl) changeSet, false);
-  }
-  private static SNodeId check_nbyrtw_a0a0b0h0i0l0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.key();
-    }
-    return null;
-  }
-  private static SNodeId check_nbyrtw_a0a0b0j0i0l0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.key();
-    }
-    return null;
-  }
-  private static SNodeId check_nbyrtw_a0a0a0a01a11a92(IMapping<SNodeId, SNodeId> checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.key();
-    }
-    return null;
-  }
-  private static <T> T as_nbyrtw_a0a0a0zb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0a0a0lb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nbyrtw_a0b0a0zb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0b0a0lb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

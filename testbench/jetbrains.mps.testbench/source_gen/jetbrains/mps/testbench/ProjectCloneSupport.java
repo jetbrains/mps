@@ -10,7 +10,7 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.UnzipUtil;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)/3119708621987692562", model = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)")
+@GeneratedClass(nodeId = "3119708621987692562", model = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)")
 public class ProjectCloneSupport {
   private final Environment myEnv;
   private Project myProject;

@@ -14,7 +14,7 @@ import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4621883088124559446", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "4621883088124559446", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class DiffEditorSettingsAction extends BaseGroup {
 
   @NotNull

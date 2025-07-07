@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-@GeneratedClass(node = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)/3847617280526268737", model = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)")
+@GeneratedClass(nodeId = "3847617280526268737", model = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)")
 public class SAXVisibleModelElements implements VisibleModelElements {
   private Map<Integer, SModelReference> myVisibleModelElements = new HashMap<>();
   @Override

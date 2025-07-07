@@ -38,6 +38,9 @@ import java.util.HashSet;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import java.util.HashMap;
 import jetbrains.mps.project.PathMacros;
+import jetbrains.mps.project.ProjectRepository;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 
 /**
  * Calculates required modules, macros and other stuff for the external process test run
@@ -74,6 +77,7 @@ import jetbrains.mps.project.PathMacros;
 
   private String calcParamsWithMpsPlatformToStart(boolean useCompatibilityMode) throws ExecutionException {
     ClientExecutorScript args = new ClientExecutorScript();
+    args.setProjectUrl(getProjectUrl());
     ScriptData startupArgs = args.addStartupArguments();
     addModulesAndDepsToStartupArgs(startupArgs);
     addMacrosToStartupArgs(startupArgs);
@@ -190,5 +194,15 @@ import jetbrains.mps.project.PathMacros;
         }
       }
     }
+  }
+
+  private String getProjectUrl() {
+    if (myRepo instanceof ProjectRepository) {
+      Project project = ((ProjectRepository) myRepo).getProject();
+      if (project instanceof MPSProject) {
+        return ((MPSProject) project).getProject().getPresentableUrl();
+      }
+    }
+    return null;
   }
 }

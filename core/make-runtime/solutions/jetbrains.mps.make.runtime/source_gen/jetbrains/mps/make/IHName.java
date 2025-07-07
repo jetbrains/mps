@@ -4,7 +4,7 @@ package jetbrains.mps.make;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)/2958721966247272985", model = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)")
+@GeneratedClass(nodeId = "2958721966247272985", model = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)")
 public interface IHName<T> {
   T parentName();
   String name();

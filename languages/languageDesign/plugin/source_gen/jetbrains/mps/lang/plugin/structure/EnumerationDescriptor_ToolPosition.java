@@ -22,7 +22,7 @@ public class EnumerationDescriptor_ToolPosition extends EnumerationDescriptorBas
   private final EnumerationDescriptor.MemberDescriptor myMember_BOTTOM_RIGHT_0 = new EnumerationDescriptor.MemberDescriptor("BOTTOM_RIGHT", "bottom_right", 0x6897bc8d777c7debL, "r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/7536699817208872427");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22ace24ea9f74877L, 0x22ace24ea9f74878L, 0x22ace24ea9f74879L, 0x22ace24ea9f7487aL, 0x22ace24ea9f7487bL, 0x6897bc8d777c7debL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_BOTTOM_0, myMember_TOP_0, myMember_LEFT_0, myMember_RIGHT_0, myMember_BOTTOM_RIGHT_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_BOTTOM_0, myMember_TOP_0, myMember_LEFT_0, myMember_RIGHT_0, myMember_BOTTOM_RIGHT_0);
 
   @Nullable
   @Override

@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.persistence.def.v4.ModelReader4;
 import org.jdom.Element;
 import jetbrains.mps.smodel.DefaultSModel;
 
-@GeneratedClass(node = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)/453110257780703035", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
+@GeneratedClass(nodeId = "453110257780703035", model = "r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)")
 public class ModelReader5 extends ModelReader4 {
   @Override
   protected void readRefactorings(Element rootElement, DefaultSModel model) {

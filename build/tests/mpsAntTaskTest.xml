@@ -44,7 +44,7 @@
 
   <target name="compileTestClasses">
     <mkdir dir="${test_classes}"/>
-    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.7" target="1.7">
+    <javac destdir="${test_classes}" fork="false" includeantruntime="false">
       <compilerarg value="-Xlint:none"/>
       <classpath refid="test_classpath"/>
       <src>
@@ -60,9 +60,7 @@
     </custom>
 
     <custom mpshome="${mps_build_home}" worker="${worker.class}" args="${ref.baseLanguage} true">
-      <repository>
-        <allmpsmodules/>
-      </repository>
+      <repository/>
     </custom>
 
     <!--todo remove duplication-->

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_MenuTraceEnum extends EnumerationDescriptorBa
   private final EnumerationDescriptor.MemberDescriptor myMember_enum2_0 = new EnumerationDescriptor.MemberDescriptor("enum2", "enum2", 0x326616b1fdb131b4L, "r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)/4241665505353445489");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x326616b1fdb131b2L, 0x326616b1fdb131b3L, 0x326616b1fdb131b4L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_enum1_0, myMember_enum2_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_enum1_0, myMember_enum2_0);
 
   @Nullable
   @Override

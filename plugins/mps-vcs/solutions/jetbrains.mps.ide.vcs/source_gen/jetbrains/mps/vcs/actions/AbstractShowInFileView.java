@@ -15,7 +15,7 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.actionSystem.Presentation;
 import java.util.List;
 
-@GeneratedClass(node = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)/7705742079275757770", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
+@GeneratedClass(nodeId = "7705742079275757770", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
 /*package*/ abstract class AbstractShowInFileView extends AbstractVcsAction {
   /*package*/ AbstractShowInFileView() {
   }

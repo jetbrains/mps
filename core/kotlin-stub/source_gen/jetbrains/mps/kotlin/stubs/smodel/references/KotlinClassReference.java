@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)/6616942641365770961", model = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)")
+@GeneratedClass(nodeId = "6616942641365770961", model = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)")
 public class KotlinClassReference extends ClassStereotype {
   public KotlinClassReference(String fqName, List<KotlinModelKind> platforms) {
     super(KotlinId.kotlinId(fqName), KotlinId.kotlinId(KotlinId.topLevelClass(fqName)), fqName, platforms);

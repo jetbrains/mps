@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.extapi.module;
 
-import jetbrains.mps.classloading.DumbIdeaPluginFacet;
-import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
@@ -121,8 +119,6 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     }
   };
 
-  private FacetFactory DUMB_IDEA_PLUGIN_FACET_FACTORY;
-
   private final MultiMap<String, String> myLanguageToFacetTypes = new MultiMap<>();
 
   private final Map<FacetFactory, String> myFactoryType = new HashMap<>();
@@ -211,45 +207,13 @@ public class FacetsRegistry extends FacetsFacade implements CoreComponent {
     addFactory(TestsFacet.FACET_TYPE, TESTS_FACET_FACTORY);
     addFactory(PlainTextTargetFacet.FACET_TYPE, myPlainTextFacetFactory);
     addFactory(DocumentationFacet.FACET_TYPE, DOCUMENTATION_FACET_FACTORY);
-    setUpDumbIdeaFacet();
 
     registerLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
-  }
-
-  private void setUpDumbIdeaFacet() {
-    // FIXME drop once 2022.3 is out
-    // NOTE there are uses of 'ideaPlugin' facet in mps-extensions and mbeddr branches mps/2022.2 we
-    // still use to build MPS 2023.1
-    FacetFactory existingFactory = getFacetFactory(IdeaPluginModuleFacet.FACET_TYPE);
-    if (existingFactory == null) {
-      DUMB_IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
-        @Override
-        public boolean isApplicable(@NotNull SModule module) {
-          // false to prevent the facet showing up at 'Facets' tab of module properties, no need to add new instances
-          return false;
-        }
-
-        @Override
-        public SModuleFacet create(@NotNull SModule module) {
-          return new DumbIdeaPluginFacet(module);
-        }
-
-        @NotNull
-        @Override
-        public String getPresentation() {
-          return "Idea Plugin";
-        }
-      };
-      addFactory(DumbIdeaPluginFacet.FACET_TYPE, DUMB_IDEA_PLUGIN_FACET_FACTORY);
-    }
   }
 
   @Override
   public void dispose() {
     unregisterLanguageFacet(BootstrapLanguages.getBaseLang(), JavaModuleFacet.FACET_TYPE);
-    if (DUMB_IDEA_PLUGIN_FACET_FACTORY != null) {
-      removeFactory(DUMB_IDEA_PLUGIN_FACET_FACTORY);
-    }
     removeFactory(myPlainTextFacetFactory);
     removeFactory(TESTS_FACET_FACTORY);
     removeFactory(JAVA_MODULE_FACET_FACTORY);

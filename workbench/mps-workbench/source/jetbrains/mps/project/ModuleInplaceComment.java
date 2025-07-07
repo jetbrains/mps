@@ -29,7 +29,7 @@ public class ModuleInplaceComment extends ModuleReportItemBase implements HasGen
 
   @Override
   public ItemKind getIssueKind() {
-    return MissionControl.GENERATION_STATUS.deriveItemKind("module");
+    return MissionControl.Impl.GENERATION_STATUS.deriveItemKind("module");
   }
 
   @Override

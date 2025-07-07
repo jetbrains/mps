@@ -13,7 +13,7 @@ import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/4634869729620720374", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "4634869729620720374", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class MakeSequence {
   private Iterable<Cluster> myClusters;
   private final Iterable<? extends IResource> myInputRes;

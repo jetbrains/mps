@@ -14,7 +14,6 @@ import com.intellij.openapi.progress.util.ProgressIndicatorUtils;
 import com.intellij.openapi.progress.util.ReadTask;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.ProjectActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.util.ConcurrencyUtil;
 import com.intellij.util.concurrency.EdtExecutorService;
@@ -23,10 +22,8 @@ import jetbrains.mps.errors.item.IssueKindReportItem.CheckerCategory;
 import jetbrains.mps.errors.item.IssueKindReportItem.KindLevel;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vfs.IFile;
-import kotlin.Unit;
-import kotlin.coroutines.Continuation;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collection;
@@ -51,188 +48,241 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * @author Fedor Isakov
  */
-public class MissionControl implements Disposable {
+public interface MissionControl {
 
-  /*package*/ static final Logger LOG = Logger.getInstance(MissionControl.class);
+  Logger LOG = Logger.getInstance(MissionControl.class);
 
-  public static CheckerCategory GENERATION_STATUS = new CheckerCategory(KindLevel.PROJECT, "generation status");
-
-  public static final int DEFAULT_DELAY = 300;  // in ms
-
-  private final Project myProject;
-  private boolean myDisposed = false;
-  private final MyUpdateRunnable myUpdateRunnable;
-  private long myUpdateScheduledAt;
-  private volatile Future<?> myUpdateRunnableFuture = CompletableFuture.completedFuture(null);
-  private volatile ProgressIndicator myBackgroundProgressIndicator;
-
-  private final MessagesContainer myMessagesContainer;
-  private final ChangesMonitor myChangesMonitor;
-  private final AtomicReference<MissionControlRefreshRequest> myRefreshRequest = new AtomicReference<>(MissionControlRefreshRequest.NONE);
-  public static MissionControl getInstance(Project project) {
+  static MissionControl getInstance(Project project) {
     return project.getService(MissionControl.class);
   }
 
-  public MissionControl(Project project) {
-    myProject = project;
-    myUpdateRunnable = new MyUpdateRunnable(project);
-    myMessagesContainer = new MessagesContainer(myProject);
-    Disposer.register(this, myMessagesContainer);
-    myChangesMonitor = new ChangesMonitor(project, myMessagesContainer);
-    Disposer.register(this, myChangesMonitor);
-    Disposer.register(this, () -> {
-      myUpdateRunnable.clearOnDispose();
-      stopAndRestartUpdate(false);
-      myDisposed = true;
-    });
-  }
+  Collection<SModuleReference> lookupProjectModule(IFile descriptionFile);
 
-  @Override
-  public synchronized void dispose() {
-    myUpdateRunnableFuture.cancel(true);
-  }
+  SModelReference lookupProjectModel(IFile descriptionFile);
 
-  public boolean isDisposed() {
-    return myDisposed;
-  }
+  MessagesContainer getMessagesContainer();
 
-  public Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
-    return Collections.unmodifiableCollection(myChangesMonitor.lookupProjectModule(descriptionFile));
-  }
+  void refresh();
 
-  public MessagesContainer getMessagesContainer() {
-    return myMessagesContainer;
-  }
+  class Impl implements MissionControl, Disposable {
 
-  public synchronized void stopAndRestartUpdate(boolean restart) {
-    if (myDisposed || myProject.isDisposed() || myProject.getMessageBus().isDisposed()) return;
+    public static CheckerCategory GENERATION_STATUS = new CheckerCategory(KindLevel.PROJECT, "generation status");
 
-    cancelBackgroundTask();
+    public static final int DEFAULT_DELAY = 300;  // in ms
 
-    long delay = TimeUnit.MILLISECONDS.toNanos(DEFAULT_DELAY);
-    myUpdateScheduledAt = System.nanoTime() + delay;
+    private final Project myProject;
+    private boolean myDisposed = false;
+    private final MyUpdateRunnable myUpdateRunnable;
+    private long myUpdateScheduledAt;
+    private volatile Future<?> myUpdateRunnableFuture = CompletableFuture.completedFuture(null);
+    private volatile ProgressIndicator myBackgroundProgressIndicator;
 
-    // optimisation: this check is to avoid too many re-schedules in case of thousands of event spikes
-    boolean isDone = myUpdateRunnableFuture.isDone();
-    if (isDone && restart) {
-      scheduleUpdateRunnable(delay);
-    }
-  }
+    private final MessagesContainer myMessagesContainer;
+    private final ChangesMonitor myChangesMonitor;
+    private final AtomicReference<MissionControlRefreshRequest> myRefreshRequest = new AtomicReference<>(MissionControlRefreshRequest.NONE);
 
-  private synchronized void scheduleUpdateRunnable(long delayNanos) {
-    rethrowExceptionIfDone(myUpdateRunnableFuture);
-    myUpdateRunnableFuture = EdtExecutorService.getScheduledExecutorInstance().schedule(myUpdateRunnable, delayNanos, TimeUnit.NANOSECONDS);
-  }
-
-  private void cancelBackgroundTask() {
-    ProgressIndicator progressIndicator = myBackgroundProgressIndicator;
-    if (progressIndicator != null && !progressIndicator.isCanceled()) {
-      progressIndicator.cancel();
-    }
-  }
-
-  private void submitInBackground() {
-    myBackgroundProgressIndicator = new ProgressIndicatorBase();
-    CompletableFuture<?> collectErrorsFuture = ProgressIndicatorUtils.scheduleWithWriteActionPriority(myBackgroundProgressIndicator, new CollectErrorsTask());
-    collectErrorsFuture.whenComplete((__, ___) -> stopAndRestartUpdate(true));
-  }
-
-  private static void doUpdate(Project project) {
-    ThreadingAssertions.assertEventDispatchThread();
-
-    MissionControl instance;
-    if (project == null ||
-        project.isDefault() ||
-        !project.isInitialized() ||
-        project.isDisposed() ||
-        (instance = MissionControl.getInstance(project)).isDisposed())
-    {
-      return;
-    }
-    
-    if (PowerSaveMode.isEnabled()) {
-      // FIXME this terminates the update loop, ensure it is re-started when PowerSaveMode is disabled
-      return;
+    public Impl(Project project) {
+      myProject = project;
+      myUpdateRunnable = new MyUpdateRunnable(project);
+      myMessagesContainer = new MessagesContainer(myProject);
+      Disposer.register(this, myMessagesContainer);
+      myChangesMonitor = new ChangesMonitor(project, myMessagesContainer);
+      Disposer.register(this, myChangesMonitor);
+      Disposer.register(this, () -> {
+        myUpdateRunnable.clearOnDispose();
+        stopAndRestartUpdate(false);
+        myDisposed = true;
+      });
+      ApplicationManager.getApplication().executeOnPooledThread(() -> {
+        // this instantiates the service
+        MissionControl missionControl = MissionControl.getInstance(project);
+        // start update loop
+        ((Impl) missionControl).stopAndRestartUpdate(true);
+      });
     }
 
-    // FIXME: check if the job is underway
-    
-    synchronized (instance) {
-      // process results of previous runs
-      MissionControlRefreshRequest refreshRequest = instance.myRefreshRequest.getAndSet(MissionControlRefreshRequest.NONE);
-      if (refreshRequest != MissionControlRefreshRequest.NONE) {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("dispatching refresh request");
-        }
-        MissionControlListener listener = instance.myProject.getMessageBus().syncPublisher(MissionControlListener.MISSION_CONTROL_UPDATE);
-        ApplicationManager.getApplication().invokeLater(() -> listener.requestReceived(refreshRequest));
+    @Override
+    public synchronized void dispose() {
+      myUpdateRunnableFuture.cancel(true);
+    }
+
+    public boolean isDisposed() {
+      return myDisposed;
+    }
+
+    @Override
+    public Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
+      return Collections.unmodifiableCollection(myChangesMonitor.lookupProjectModule(descriptionFile));
+    }
+
+    @Override
+    public SModelReference lookupProjectModel(IFile descriptionFile) {
+      return myChangesMonitor.lookupProjectModel(descriptionFile);
+    }
+
+    @Override
+    public MessagesContainer getMessagesContainer() {
+      return myMessagesContainer;
+    }
+
+    @Override
+    public void refresh() {
+      myChangesMonitor.refresh();
+    }
+
+    public synchronized void stopAndRestartUpdate(boolean restart) {
+      if (myDisposed || myProject.isDisposed() || myProject.getMessageBus().isDisposed()) return;
+
+      cancelBackgroundTask();
+
+      long delay = TimeUnit.MILLISECONDS.toNanos(DEFAULT_DELAY);
+      myUpdateScheduledAt = System.nanoTime() + delay;
+
+      // optimisation: this check is to avoid too many re-schedules in case of thousands of event spikes
+      boolean isDone = myUpdateRunnableFuture.isDone();
+      if (isDone && restart) {
+        scheduleUpdateRunnable(delay);
       }
+    }
 
-      long delay = instance.myUpdateScheduledAt - System.nanoTime();
-      if (delay > 0 || DumbService.getInstance(project).isDumb()) {
-        instance.scheduleUpdateRunnable(delay);
+    private synchronized void scheduleUpdateRunnable(long delayNanos) {
+      rethrowExceptionIfDone(myUpdateRunnableFuture);
+      myUpdateRunnableFuture = EdtExecutorService.getScheduledExecutorInstance().schedule(myUpdateRunnable, delayNanos, TimeUnit.NANOSECONDS);
+    }
+
+    private void cancelBackgroundTask() {
+      ProgressIndicator progressIndicator = myBackgroundProgressIndicator;
+      if (progressIndicator != null && !progressIndicator.isCanceled()) {
+        progressIndicator.cancel();
+      }
+    }
+
+    private void submitInBackground() {
+      myBackgroundProgressIndicator = new ProgressIndicatorBase();
+      CompletableFuture<?> collectErrorsFuture = ProgressIndicatorUtils.scheduleWithWriteActionPriority(myBackgroundProgressIndicator, new CollectErrorsTask());
+      collectErrorsFuture.whenComplete((__, ___) -> stopAndRestartUpdate(true));
+    }
+
+    private static void doUpdate(Project project) {
+      ThreadingAssertions.assertEventDispatchThread();
+
+      MissionControl.Impl instance;
+      if (project == null ||
+          project.isDefault() ||
+          !project.isInitialized() ||
+          project.isDisposed() ||
+          (instance = (Impl) MissionControl.getInstance(project)).isDisposed()) {
         return;
       }
 
-      CompletableFuture<Void> future = CompletableFuture.runAsync(instance::submitInBackground);
-      future.whenComplete((__, ___) -> rethrowExceptionIfDone(future));
-    }
-  }
+      if (PowerSaveMode.isEnabled()) {
+        // FIXME this terminates the update loop, ensure it is re-started when PowerSaveMode is disabled
+        return;
+      }
 
-  private static void rethrowExceptionIfDone(Future<?> maybeDone) {
-    if (maybeDone.isDone()) {
-      ApplicationManager.getApplication().invokeLater(() -> ConcurrencyUtil.manifestExceptionsIn(maybeDone));
-    }
-  }
+      // FIXME: check if the job is underway
 
-  private static class MyUpdateRunnable implements Runnable {
+      synchronized (instance) {
+        // process results of previous runs
+        MissionControlRefreshRequest refreshRequest = instance.myRefreshRequest.getAndSet(MissionControlRefreshRequest.NONE);
+        if (refreshRequest != MissionControlRefreshRequest.NONE) {
+          if (LOG.isDebugEnabled()) {
+            LOG.debug("dispatching refresh request");
+          }
+          MissionControlListener listener = instance.myProject.getMessageBus().syncPublisher(MissionControlListener.MISSION_CONTROL_UPDATE);
+          ApplicationManager.getApplication().invokeLater(() -> listener.requestReceived(refreshRequest));
+        }
 
-    private Project myProjectToUse;
+        long delay = instance.myUpdateScheduledAt - System.nanoTime();
+        if (delay > 0 || DumbService.getInstance(project).isDumb()) {
+          instance.scheduleUpdateRunnable(delay);
+          return;
+        }
 
-    public MyUpdateRunnable(Project projectToUse) {
-      myProjectToUse = projectToUse;
-    }
-
-    @Override
-    public void run() {
-      doUpdate(myProjectToUse);
-    }
-
-    private void clearOnDispose() {
-      // let's help GC
-      this.myProjectToUse = null;
-    }
-  }
-
-  private class CollectErrorsTask extends ReadTask {
-
-    @Override
-    public void computeInReadAction(@NotNull ProgressIndicator indicator) throws ProcessCanceledException {
-      if (isDisposed() || indicator.isCanceled())  return;
-      MissionControlRefreshRequest updateRequest = ProjectHelper.fromIdeaProject(myProject)
-                                                                .getModelAccess()
-                                                                .computeReadAction(() -> myChangesMonitor.pumpQueue(myMessagesContainer, indicator));
-      if (!(myRefreshRequest.compareAndSet(MissionControlRefreshRequest.NONE, updateRequest))) {
-        throw new IllegalStateException("Unexpected state of update request");
+        CompletableFuture<Void> future = CompletableFuture.runAsync(instance::submitInBackground);
+        future.whenComplete((__, ___) -> rethrowExceptionIfDone(future));
       }
     }
 
-    @Override
-    public void onCanceled(@NotNull ProgressIndicator indicator) {
+    private static void rethrowExceptionIfDone(Future<?> maybeDone) {
+      if (maybeDone.isDone()) {
+        ApplicationManager.getApplication().invokeLater(() -> ConcurrencyUtil.manifestExceptionsIn(maybeDone));
+      }
     }
+
+    private static class MyUpdateRunnable implements Runnable {
+
+      private Project myProjectToUse;
+
+      public MyUpdateRunnable(Project projectToUse) {
+        myProjectToUse = projectToUse;
+      }
+
+      @Override
+      public void run() {
+        doUpdate(myProjectToUse);
+      }
+
+      private void clearOnDispose() {
+        // let's help GC
+        this.myProjectToUse = null;
+      }
+    }
+
+    private class CollectErrorsTask extends ReadTask {
+
+      @Override
+      public void computeInReadAction(@NotNull ProgressIndicator indicator) throws ProcessCanceledException {
+        if (isDisposed() || indicator.isCanceled()) return;
+        MissionControlRefreshRequest updateRequest = ProjectHelper.fromIdeaProject(myProject)
+                                                                  .getModelAccess()
+                                                                  .computeReadAction(() -> myChangesMonitor.pumpQueue(myMessagesContainer, indicator));
+        if (!(myRefreshRequest.compareAndSet(MissionControlRefreshRequest.NONE, updateRequest))) {
+          throw new IllegalStateException("Unexpected state of update request");
+        }
+      }
+
+      @Override
+      public void onCanceled(@NotNull ProgressIndicator indicator) {
+      }
+    }
+
   }
 
-  public static class Initializer implements ProjectActivity {
+  /**
+   * Dummy implementation for tests. 
+   */
+  class TestImpl implements MissionControl, Disposable {
 
-    @Nullable
+    private final MessagesContainer myMessagesContainer;
+
+    public TestImpl(Project project) {
+      myMessagesContainer = new MessagesContainer(project);
+    }
+
     @Override
-    public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-      // this instantiates the service
-      MissionControl missionControl = MissionControl.getInstance(project);
-      // start update loop
-      missionControl.stopAndRestartUpdate(true);
+    public void dispose() {
+
+    }
+
+    @Override
+    public Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
+      return Collections.emptyList();
+    }
+
+    @Override
+    public SModelReference lookupProjectModel(IFile descriptionFile) {
       return null;
     }
-  }
 
+    @Override
+    public MessagesContainer getMessagesContainer() {
+      return myMessagesContainer;
+    }
+
+    @Override
+    public void refresh() {
+      throw new UnsupportedOperationException();
+    }
+  }
 }

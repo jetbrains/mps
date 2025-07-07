@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PipedOutputStream;
 import java.io.BufferedOutputStream;
+import com.intellij.execution.process.ProcessOutputType;
+import com.intellij.openapi.util.Key;
 import com.intellij.util.WaitFor;
 
 /**
@@ -22,8 +24,8 @@ public class FakeProcess extends Process {
   public static final int TERMINATION_CODE = 137;
   private static final int BUFFER_SIZE = 65535;
 
-  private final PrintStream myOldOut;
-  private final PrintStream myOldErr;
+  private PrintStream myOldOut;
+  private PrintStream myOldErr;
   private final PipedInputStream myInputOut = new PipedInputStream(BUFFER_SIZE);
   private final PipedInputStream myInputErr = new PipedInputStream(BUFFER_SIZE);
   private final InputStream myBufIn = new BufferedInputStream(myInputOut);
@@ -62,13 +64,24 @@ public class FakeProcess extends Process {
     closeOutAndErr();
   }
 
-  private void closeOutAndErr() {
-    PrintStream newOut = System.out;
-    PrintStream newErr = System.err;
-    System.setOut(myOldOut);
-    System.setErr(myOldErr);
-    newOut.close();
-    newErr.close();
+  protected void closeOutAndErr() {
+    closeProcessStream(ProcessOutputType.STDERR);
+    closeProcessStream(ProcessOutputType.STDOUT);
+  }
+
+  protected void closeProcessStream(Key<?> outputType) {
+    if (myOldErr != null && ProcessOutputType.STDERR == outputType) {
+      PrintStream newErr = System.err;
+      System.setErr(myOldErr);
+      myOldErr = null;
+      newErr.close();
+
+    } else if (myOldOut != null && ProcessOutputType.STDOUT == outputType) {
+      PrintStream newOut = System.out;
+      System.setOut(myOldOut);
+      myOldOut = null;
+      newOut.close();
+    }
   }
 
   @Override
@@ -93,11 +106,14 @@ public class FakeProcess extends Process {
 
   @Override
   public int waitFor() throws InterruptedException {
-    new WaitFor() {
-      protected boolean condition() {
-        return myDestroyed;
-      }
-    };
+    // this method should not return prematurely, before all the activity in the "fake process" have finished
+    while (!(myDestroyed)) {
+      new WaitFor() {
+        protected boolean condition() {
+          return myDestroyed;
+        }
+      };
+    }
     return myExitCode;
   }
 }

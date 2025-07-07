@@ -18,7 +18,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/3257040239264480619", model = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)")
+@GeneratedClass(nodeId = "3257040239264480619", model = "r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)")
 public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   private static final Icon ICON = null;
 

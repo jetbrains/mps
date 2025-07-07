@@ -2,6 +2,7 @@ package org.jetbrains.intellij.build.mps
 
 import org.jetbrains.intellij.build.*
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.plus
 import kotlinx.collections.immutable.toPersistentList
 import org.jetbrains.intellij.build.BuildPaths.Companion.COMMUNITY_ROOT
 import org.jetbrains.intellij.build.impl.LibraryPackMode
@@ -27,65 +28,63 @@ class MPSProperties : JetBrainsProductProperties() {
     init {
         platformPrefix = "Idea"
         applicationInfoModule = "intellij.mps.resources"
-        toolsJarRequired = true
         scrambleMainJar = false
         /* main module for JetBrains Client isn't available in the intellij-community project,
            so this property is set only when PyCharm Community is built from the intellij-ultimate project. */
-        embeddedJetBrainsClientMainModule = null
-
-        productLayout.mainModules = listOf("intellij.idea.community.main")
+        embeddedFrontendRootModule = null
 
         productLayout.productImplementationModules = listOf(
-            "intellij.platform.main",
+            "intellij.platform.starter",
             "intellij.idea.community.customization",
             "intellij.java.ide.resources",
+            "intellij.platform.whatsNew",
             "intellij.xml.dom",
         )
 
         productLayout.addPlatformSpec(javaCompiler)
 
-        productLayout.bundledPluginModules.add("intellij.java.plugin")
-        productLayout.bundledPluginModules.add("intellij.java.ide.customization")
-        productLayout.bundledPluginModules.add("intellij.copyright")
-        productLayout.bundledPluginModules.add("intellij.properties")
-        productLayout.bundledPluginModules.add("intellij.properties.resource.bundle.editor")
-        productLayout.bundledPluginModules.add("intellij.terminal")
-        productLayout.bundledPluginModules.add("intellij.emojipicker")
-        productLayout.bundledPluginModules.add("intellij.settingsSync")
-        productLayout.bundledPluginModules.add("intellij.tasks.core")
-        productLayout.bundledPluginModules.add("intellij.vcs.git")
-        productLayout.bundledPluginModules.add("intellij.vcs.svn")
-        productLayout.bundledPluginModules.add("intellij.vcs.github.community")
-        productLayout.bundledPluginModules.add("intellij.ant")
-        productLayout.bundledPluginModules.add("intellij.sh")
-        productLayout.bundledPluginModules.add("intellij.vcs.changeReminder")
-        productLayout.bundledPluginModules.add("intellij.markdown")
-        productLayout.bundledPluginModules.add("intellij.grazie")
-        productLayout.bundledPluginModules.add("intellij.laf.macos")
-        productLayout.bundledPluginModules.add("intellij.laf.win10")
+        productLayout.bundledPluginModules +=
+        sequenceOf(
+            "intellij.java.plugin",
+            "intellij.java.ide.customization",
+            "intellij.json",
+            "intellij.copyright",
+            "intellij.properties",
+            "intellij.properties.resource.bundle.editor",
+            "intellij.terminal",
+            "intellij.settingsSync",
+            "intellij.tasks.core",
+            "intellij.vcs.git",
+            "intellij.vcs.svn",
+            "intellij.vcs.github.community",
+            "intellij.vcs.git.commit.modal",
+            "intellij.ant",
+            "intellij.sh",
+            "intellij.markdown",
+            "intellij.grazie",
+            "intellij.laf.macos"
+        )
 
+        // A plugin from intellij-community may refer to some additional modules located in the ultimate
+        // part of the project, and they should be skipped while building from intellij-community sources
+        productLayout.skipUnresolvedContentModules = true
         productLayout.prepareCustomPluginRepositoryForPublishedPlugins = false
         productLayout.buildAllCompatiblePlugins = false
         productLayout.compatiblePluginsToIgnore = persistentListOf("intellij.java.plugin")
 
-        val pluginLayouts = productLayout.pluginLayouts + JavaPluginLayout.javaPlugin() + CommunityRepositoryModules.githubPlugin("intellij.vcs.github.community")
+        val pluginLayouts = productLayout.pluginLayouts + JavaPluginLayout.javaPlugin()
         productLayout.pluginLayouts = pluginLayouts.toPersistentList()
 
         productLayout.addPlatformSpec { layout, _ ->
-
-            for (moduleName in listOf(
-                "intellij.java.frontback.impl",
-                "intellij.java.frontback.psi",
-                "intellij.java.frontback.psi.impl",
-            )) {
-                layout.withModule(moduleName, "java-frontback.jar")
-            }
 
             for (moduleName in listOf("intellij.platform.testFramework", "intellij.platform.testFramework.common", "intellij.java.testFramework", "intellij.platform.testFramework.core")) {
                 if (!productLayout.productApiModules.contains(moduleName)) {
                     layout.withModule(moduleName, "testFramework.jar")
                 }
             }
+
+            // Contains the expanded plugin.xml inside
+            layout.withModule("intellij.mps.resources", "mps-resources.zip")
 
             layout.withModule("intellij.tools.testsBootstrap")
 
@@ -96,11 +95,12 @@ class MPSProperties : JetBrainsProductProperties() {
             layout.withProjectLibrary("JUnit4", LibraryPackMode.STANDALONE_MERGED)
             layout.withProjectLibrary("http-client", LibraryPackMode.MERGED)
             layout.withProjectLibrary("pty4j", LibraryPackMode.STANDALONE_MERGED) // for terminal plugin
+            layout.withProjectLibrary("jackson-jr-objects", LibraryPackMode.MERGED) // for Marketplace plugin (needed by Settings Sync)
             layout.withoutProjectLibrary("Ant")
             layout.withoutProjectLibrary("Gradle")
+            layout.withProjectLibrary("maven-resolver-provider", LibraryPackMode.STANDALONE_MERGED)
         }
 
-        additionalModulesToCompile = persistentListOf("intellij.tools.jps.build.standalone")
         modulesToCompileTests = persistentListOf(
             "intellij.platform.jps.build",
             "intellij.platform.jps.build.tests",
@@ -119,11 +119,22 @@ class MPSProperties : JetBrainsProductProperties() {
         FileSet(Path.of("$communityHome/bin/mac/")).includeAll().copyToDir(Path.of("$targetDirectory/bin/mac/"))
         FileSet(Path.of("$communityHome/bin/win/")).includeAll().copyToDir(Path.of("$targetDirectory/bin/win/"))
 
+        // copy Window restarter
+        copyFileToDir(NativeBinaryDownloader.getRestarter(context, OsFamily.WINDOWS, JvmArchitecture.x64), Path.of("$targetDirectory/bin/win/amd64"))
+        copyFileToDir(NativeBinaryDownloader.getRestarter(context, OsFamily.WINDOWS, JvmArchitecture.aarch64), Path.of("$targetDirectory/bin/win/aarch64"))
+
         // copy mac executable
         Files.createDirectories(Path.of("$targetDirectory/build/resources"))
+        val (execPath, _) = NativeBinaryDownloader.getLauncher(context, OsFamily.MACOS, context.options.targetArch ?: JvmArchitecture.x64)
         Files.copy(
-            Path.of("$communityHome/platform/build-scripts/resources/mac/Contents/MacOS/executable"),
-            Path.of("$targetDirectory/build/resources/mps"),
+            execPath,
+            Path.of("$targetDirectory/build/resources/$baseFileName-x64"),
+            StandardCopyOption.COPY_ATTRIBUTES)
+
+        val (execPath2, _) = NativeBinaryDownloader.getLauncher(context, OsFamily.MACOS, context.options.targetArch ?: JvmArchitecture.aarch64)
+        Files.copy(
+            execPath2,
+            Path.of("$targetDirectory/build/resources/$baseFileName-aarch64"),
             StandardCopyOption.COPY_ATTRIBUTES)
 
         // copy jre version

@@ -17,6 +17,13 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import java.util.stream.Collectors;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.ui.InputValidatorEx;
+import com.intellij.openapi.util.NlsContexts;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NonNls;
+import java.util.Arrays;
+import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.smodel.undo.NamedCommand;
@@ -27,7 +34,7 @@ import com.intellij.openapi.command.undo.UndoableAction;
 import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216128015035", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1216128015035", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetVirtualFolder_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -122,7 +129,30 @@ public class SetVirtualFolder_Action extends BaseAction {
     // used to take VF common for all modules, but I don't see any reason not to take just any, we ask user for input anyway
     // if necessary, however, we can tell if there's common VF by allVFs.size() == 1
     String nameHint = (((String) MapSequence.fromMap(_params).get("targetName")) != null ? ((String) MapSequence.fromMap(_params).get("targetName")) : allVFs.stream().findAny().orElse(""));
-    final String inputValue = trim_5evjxr_a0a6a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), nameHint, null));
+    nameHint = (nameHint.startsWith(".") ? nameHint.substring(1) : nameHint);
+    InputValidator validator = new InputValidatorEx() {
+      @NlsContexts.DetailedDescription
+      @Nullable
+      @Override
+      public String getErrorText(@NonNls String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return "Invalid virtual folder format";
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return "Virtual folder cannot start with a '.'";
+        }
+        return null;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return getErrorText(virtualFolder) == null;
+      }
+    };
+
+    final String inputValue = trim_5evjxr_a0a9a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), nameHint, validator));
     // Only do something on OK ...
     if (inputValue == null) {
       return;
@@ -176,7 +206,7 @@ public class SetVirtualFolder_Action extends BaseAction {
     mpsProject.getRepository().getModelAccess().executeCommand(command);
     ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
   }
-  public static String trim_5evjxr_a0a6a7(String str) {
+  public static String trim_5evjxr_a0a9a7(String str) {
     return (str == null ? null : str.trim());
   }
 }

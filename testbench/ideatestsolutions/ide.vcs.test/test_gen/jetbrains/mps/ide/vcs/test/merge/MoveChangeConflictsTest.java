@@ -14,7 +14,7 @@ import java.util.Arrays;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/1592924189472999041", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "1592924189472999041", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class MoveChangeConflictsTest extends ConflictsBuilderTest {
 
   private static final SContainmentLink myLink = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");

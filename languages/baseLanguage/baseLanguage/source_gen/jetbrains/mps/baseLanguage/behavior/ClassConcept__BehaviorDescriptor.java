@@ -75,7 +75,9 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> staticMethods_id4_LVZ3pCeXr = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticMethods").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5292274854859435867L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Iterable<SNode>> constructors_id4_LVZ3pCvsd = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("constructors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5292274854859503373L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Iterable<SNode>> properties_id4_LVZ3pCxYY = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("properties").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5292274854859513790L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> canBeStatic_id2L7NFMAtrRg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeStatic").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3190746170657193424L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeStatic_id2L7NFMAtrRg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3190746170657193424L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeAbstract_id6aeBP5Qh1A$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAbstract").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635192740L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeFinal_id6aeBP5Qha2s = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeFinal").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635227292L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getContextClass_id6WzWPTX2$6q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextClass").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8008512149545173402L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> markDeprecated_id6Va_BJexupi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957651026L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957674666L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
@@ -83,7 +85,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> markLoadedNodeAsDeprecated_id5H8W9_EDlcn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markLoadedNodeAsDeprecated").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6577771797484491543L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeExtendedOrInstantiatedAt").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3434930939514787476L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtendedClassifierTypes_id1UeCwxlWKny, getIconMarks_id6TtJ6IUkhQJ, isDescendant_checkLoops_id6dL7A1DpKoA, checkLoops_id3sXyOQUqKq5, getMainMethod_idhEwIClG, hasStaticMemebers_idhFq8xqE, getMethodsToOverride_id4GM03FJm3zL, getSuperclass_idi3H_lLu, getUnitName_id4pl5GY7LKmR, getAllSuperClassifiers_id4fAeKISQjDi, getMembers_id1UeCwxlVpJs, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, enumerateMembers_id65_8Gi2s6iV, enumerateSupertypes_id65_8Gi1dKDs, instanceInitializers_id6Fz0RL3y9UD, staticInitializers_id2I6sE$IuBP7, fields_id4_LVZ3pC27C, staticMethods_id4_LVZ3pCeXr, constructors_id4_LVZ3pCvsd, properties_id4_LVZ3pCxYY, canBeStatic_id2L7NFMAtrRg, getContextClass_id6WzWPTX2$6q, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, addConstructor_id32Td0Ia9Mgr, markLoadedNodeAsDeprecated_id5H8W9_EDlcn, canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtendedClassifierTypes_id1UeCwxlWKny, getIconMarks_id6TtJ6IUkhQJ, isDescendant_checkLoops_id6dL7A1DpKoA, checkLoops_id3sXyOQUqKq5, getMainMethod_idhEwIClG, hasStaticMemebers_idhFq8xqE, getMethodsToOverride_id4GM03FJm3zL, getSuperclass_idi3H_lLu, getUnitName_id4pl5GY7LKmR, getAllSuperClassifiers_id4fAeKISQjDi, getMembers_id1UeCwxlVpJs, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, enumerateMembers_id65_8Gi2s6iV, enumerateSupertypes_id65_8Gi1dKDs, instanceInitializers_id6Fz0RL3y9UD, staticInitializers_id2I6sE$IuBP7, fields_id4_LVZ3pC27C, staticMethods_id4_LVZ3pCeXr, constructors_id4_LVZ3pCvsd, properties_id4_LVZ3pCxYY, canBeStatic_id2L7NFMAtrRg, canBeAbstract_id6aeBP5Qh1A$, canBeFinal_id6aeBP5Qha2s, getContextClass_id6WzWPTX2$6q, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, addConstructor_id32Td0Ia9Mgr, markLoadedNodeAsDeprecated_id5H8W9_EDlcn, canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -270,6 +272,12 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean canBeStatic_id2L7NFMAtrRg(@NotNull SNode __thisNode__) {
     return ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(__thisNode__)) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$db));
   }
+  /*package*/ static boolean canBeAbstract_id6aeBP5Qh1A$(@NotNull SAbstractConcept __thisConcept__) {
+    return true;
+  }
+  /*package*/ static boolean canBeFinal_id6aeBP5Qha2s(@NotNull SAbstractConcept __thisConcept__) {
+    return true;
+  }
   /*package*/ static SNode getContextClass_id6WzWPTX2$6q(@NotNull SAbstractConcept __thisConcept__, SNode expr) {
     SNode contextNode = expr;
     SNode parent = SNodeOperations.getNodeAncestor(expr, CONCEPTS.Classifier$Ix, false, false);
@@ -374,16 +382,16 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Iterable<SNode>) properties_id4_LVZ3pCxYY(node));
       case 21:
         return (T) ((Boolean) canBeStatic_id2L7NFMAtrRg(node));
-      case 23:
+      case 25:
         markDeprecated_id6Va_BJexupi(node);
         return null;
-      case 24:
+      case 26:
         unmarkDeprecated_id6Va_BJex$aE(node);
         return null;
-      case 25:
+      case 27:
         addConstructor_id32Td0Ia9Mgr(node, (SNode) parameters[0]);
         return null;
-      case 27:
+      case 29:
         return (T) ((Boolean) canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -398,8 +406,12 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 22:
+        return (T) ((Boolean) canBeAbstract_id6aeBP5Qh1A$(concept));
+      case 23:
+        return (T) ((Boolean) canBeFinal_id6aeBP5Qha2s(concept));
+      case 24:
         return (T) ((SNode) getContextClass_id6WzWPTX2$6q(concept, (SNode) parameters[0]));
-      case 26:
+      case 28:
         markLoadedNodeAsDeprecated_id5H8W9_EDlcn(concept, (SNode) parameters[0]);
         return null;
       default:

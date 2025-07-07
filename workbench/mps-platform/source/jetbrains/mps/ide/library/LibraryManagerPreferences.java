@@ -106,7 +106,8 @@ public class LibraryManagerPreferences {
       return;
     }
 
-    l.setPath(result.getPath());
+    final Library originalLibrary = myManager.getLibrary(l.getName());
+    originalLibrary.setPath(result.getPath());
 
     updateModel(true);
     myChanged = true;

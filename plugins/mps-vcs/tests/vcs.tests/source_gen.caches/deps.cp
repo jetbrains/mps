@@ -9,5 +9,6 @@
   <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)" kind="dp" />
+  <uses module="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b(jetbrains.mps.vcs.idea.stubs)" kind="dp" />
 </dependenciesRoot>
 

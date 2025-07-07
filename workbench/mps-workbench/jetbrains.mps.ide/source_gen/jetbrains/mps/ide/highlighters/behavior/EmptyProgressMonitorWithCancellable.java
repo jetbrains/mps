@@ -7,7 +7,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/7515092869553865946", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
+@GeneratedClass(nodeId = "7515092869553865946", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
 public class EmptyProgressMonitorWithCancellable extends EmptyProgressMonitor {
   private final Cancellable myCancellable;
 

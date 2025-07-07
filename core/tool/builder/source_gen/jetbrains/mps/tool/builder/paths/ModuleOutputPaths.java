@@ -12,7 +12,7 @@ import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
-@GeneratedClass(node = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)/1343659934891345537", model = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)")
+@GeneratedClass(nodeId = "1343659934891345537", model = "r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)")
 public class ModuleOutputPaths {
   private String[] sortedOutDirs;
   private String[] sortedTestOutDirs;

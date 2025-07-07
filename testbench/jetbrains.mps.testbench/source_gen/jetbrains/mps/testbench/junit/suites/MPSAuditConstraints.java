@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.Test;
 
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/3567142084943000351", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "3567142084943000351", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class MPSAuditConstraints extends AuditConstraints {
   public MPSAuditConstraints(SModule module) {
     super(module);

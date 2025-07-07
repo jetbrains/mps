@@ -33,7 +33,7 @@ import java.util.List;
  * to be rebuild). Besides, it used to work for modules with sources only (present approach uses 'dependencies' for sources, too
  * but at least these dependencies are expressed in uniform 'module' way, not a unique 'class fqn' way).
  */
-@GeneratedClass(node = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)/757342313568265361", model = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)")
+@GeneratedClass(nodeId = "757342313568265361", model = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)")
 public class ModelDependencies {
   private static final String DEPENDENCY = "dependency";
   private static final String DEPENDENCIES_ROOT = "dependenciesRoot";

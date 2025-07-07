@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-@GeneratedClass(node = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)/7228605397000827110", model = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)")
+@GeneratedClass(nodeId = "7228605397000827110", model = "r:3decc57d-6015-4d6c-ad86-7f2134c013b6(jetbrains.mps.ide.findusages.findalgorithm.finders.specific)")
 public class ConstantFinder implements IFinder {
   private SearchResults<SNode> myResults = new SearchResults<SNode>();
   public ConstantFinder() {

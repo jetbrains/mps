@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.generator.impl.FastRuleFinder.BlockedReductionsData;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateWeavingRule;
-import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.generator.template.QueryExecutionContext;
 import jetbrains.mps.smodel.FastNodeFinder;
 import jetbrains.mps.smodel.FastNodeFinderManager;
@@ -97,13 +96,8 @@ public class WeavingProcessor {
       try {
         DefaultTemplateContext context = new DefaultTemplateContext(myEnv, myApplicableNode, null);
         final QueryExecutionContext queryExecutor = myEnv.getQueryExecutor();
-        SNode outputContextNode = queryExecutor.getContextNode(myRule, context);
-        if (!checkContext(outputContextNode)) {
-          return false;
-        }
-
         try {
-          queryExecutor.applyRule(myRule, context, outputContextNode);
+          queryExecutor.applyRule(myRule, context);
         } catch (DismissTopMappingRuleException e) {
           myEnv.getLogger().error(myRule.getRuleNode(), "bad template: dismiss in a weaving rule is not supported", GeneratorUtil.describeInput(context));
         } catch (AbandonRuleInputException ex) {
@@ -120,64 +114,6 @@ public class WeavingProcessor {
         myEnv.getLogger().error(myRule.getRuleNode(), "internal error: " + e.toString());
       }
       return true; // original code did myGenerator.setChanged once checkContext had passed.
-    }
-
-    private boolean checkContext(SNode contextNode) {
-      TemplateGenerator generator = myEnv.getGenerator();
-
-      if (contextNode == null) {
-        myEnv.getLogger().error(myRule.getRuleNode(), "weaving rule: cannot find context node", GeneratorUtil.describe(myApplicableNode, "input node"));
-        return false;
-      }
-      // Additional check - context should be generated from the same root
-      SNode contextRoot = contextNode.getContainingRoot();
-      SModel model = contextRoot.getModel();
-      if (model == null) {
-        return reportErrorIfStrict("bad context for weaving rule: no root for context " + contextNode);
-      }
-
-      if (model != generator.getOutputModel()) {
-        String msg = "Bad context for weaving rule: context node shall belong to output model.";
-        if (model == generator.getInputModel()) {
-          msg += "Context specified comes from the input model. You may use 'genContext.get copied output for' operation to obtain its output model counterpart.";
-        }
-        myEnv.getLogger().error(myRule.getRuleNode(), msg, GeneratorUtil.describe(myApplicableNode, "input node"));
-        return false;
-      }
-
-      SNode originalContextRoot = generator.getOriginalRootByGenerated(contextRoot);
-      if (originalContextRoot == null) {
-        // new root in output model. As long as we re-generate whole model, it's ok to inject into
-        // this new root, although there's always a question why to weave, not to generate right away.
-        return true;
-      }
-
-      if (myApplicableNode.getModel() == null) {
-        return true;
-      }
-
-      SNode inputRoot = myApplicableNode.getContainingRoot();
-      if (originalContextRoot != inputRoot) {
-        // originally introduced in 245611d0, it was an error in strict mode, which I assume was intended for per-root generation
-        // now, with a CP-backed approach to incremental generation, there's no per-root generation, and seems we shall not bother with weaving into
-        // sibling roots. However, left information message just in case it helps to nail down unexpected behavior.
-        String msg = "unexpected context for weaving rule: %s is generated from %s , while input node is from %s";
-        generator.getLogger().info(myRule.getRuleNode(), String.format(msg, contextRoot, originalContextRoot, inputRoot));
-        // fall-through
-      }
-
-      return true;
-    }
-
-    private boolean reportErrorIfStrict(String msg) {
-      ITemplateGenerator generator = myEnv.getGenerator();
-      if (generator.isStrict()) {
-        generator.getLogger().error(myRule.getRuleNode(), String.format("Strict generation mode failure: %s", msg));
-        return false;
-      } else {
-        generator.getLogger().warning(myRule.getRuleNode(), msg);
-        return true;
-      }
     }
 
     @Override

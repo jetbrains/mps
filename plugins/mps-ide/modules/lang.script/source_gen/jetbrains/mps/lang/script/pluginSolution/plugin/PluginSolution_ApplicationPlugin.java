@@ -7,6 +7,8 @@ import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
+import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
+import jetbrains.mps.ide.actions.PackageActions_ActionGroup;
 import jetbrains.mps.ide.actions.Tools_ActionGroup;
 
 public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
@@ -29,6 +31,8 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   public void adjustRegularGroups() {
     insertGroupIntoAnother(ScriptsForSelection_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_scripts);
     insertGroupIntoAnother(ScriptsForSelection_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_scripts);
+    insertGroupIntoAnother(ScriptsForSelection_ActionGroup.ID, NamespaceActions_ActionGroup.ID, NamespaceActions_ActionGroup.LABEL_ID_check);
+    insertGroupIntoAnother(ScriptsForSelection_ActionGroup.ID, PackageActions_ActionGroup.ID, PackageActions_ActionGroup.LABEL_ID_deletion);
     insertGroupIntoAnother(ScriptsGlobally_ActionGroup.ID, Tools_ActionGroup.ID, null);
   }
 }

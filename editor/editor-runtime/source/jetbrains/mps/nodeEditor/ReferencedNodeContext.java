@@ -74,8 +74,7 @@ public class ReferencedNodeContext {
 
   public ReferencedNodeContext contextWithOneMoreReference(SNode node, SNode contextRefererNode, SReferenceLink refLink) {
     ReferencedNodeContext result = new ReferencedNodeContext(node, this);
-    result.addContextRole(refLink);
-    result.addContextRefererNode(contextRefererNode);
+    result.addReferrer(contextRefererNode, refLink);
     return result;
   }
 
@@ -91,18 +90,13 @@ public class ReferencedNodeContext {
     return myIsNodeAttribute;
   }
 
-  private void addContextRole(SReferenceLink link) {
-    if (myContextRoles == null) {
-      myContextRoles = new LinkedList<>();
-    }
-    myContextRoles.add(link);
-  }
-
-  private void addContextRefererNode(SNode contextRefererNode) {
+  private void addReferrer(SNode referrer, SReferenceLink link) {
     if (myContextRefererNodes == null) {
       myContextRefererNodes = new LinkedList<>();
+      myContextRoles = new LinkedList<>();
     }
-    myContextRefererNodes.add(contextRefererNode);
+    myContextRefererNodes.add(referrer);
+    myContextRoles.add(link);
   }
 
   public int hashCode() {

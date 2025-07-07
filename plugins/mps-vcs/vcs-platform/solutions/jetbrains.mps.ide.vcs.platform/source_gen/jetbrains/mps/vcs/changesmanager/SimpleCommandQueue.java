@@ -14,7 +14,7 @@ import com.intellij.openapi.vcs.changes.ChangeListManagerImpl;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3722815385094205361", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "3722815385094205361", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public final class SimpleCommandQueue {
   private static final Logger LOG = Logger.getLogger(SimpleCommandQueue.class);
   private final Thread myThread;

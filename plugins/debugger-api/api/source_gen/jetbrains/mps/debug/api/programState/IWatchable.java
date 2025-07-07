@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 /**
  * Implementations shall use {@link jetbrains.mps.debug.api.programState.AbstractWatchable }
  */
-@GeneratedClass(node = "r:0a0d7eec-6e5a-412b-8e16-e3ee5ed7fb95(jetbrains.mps.debug.api.programState)/4474271214082916598", model = "r:0a0d7eec-6e5a-412b-8e16-e3ee5ed7fb95(jetbrains.mps.debug.api.programState)")
+@GeneratedClass(nodeId = "4474271214082916598", model = "r:0a0d7eec-6e5a-412b-8e16-e3ee5ed7fb95(jetbrains.mps.debug.api.programState)")
 public interface IWatchable {
   String getName();
   WatchablesCategory getCategory();

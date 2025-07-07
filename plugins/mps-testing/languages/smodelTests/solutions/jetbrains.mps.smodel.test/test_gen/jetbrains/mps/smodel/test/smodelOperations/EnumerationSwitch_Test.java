@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -24,7 +24,7 @@ import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
 @MPSLaunch
 public class EnumerationSwitch_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(EnumerationSwitch_Test.class, "${mps_home}", "r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EnumerationSwitch_Test.class).projectPath(null).modelRef("r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)").reopenProject(null).build());
 
   public EnumerationSwitch_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -89,9 +89,9 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
     public void test_switchInStatement() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        Assert.assertEquals(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
-        Assert.assertEquals(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
-        Assert.assertEquals(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3")), 3);
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1"))), Integer.valueOf(2));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2"))), Integer.valueOf(4));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3"))), Integer.valueOf(3));
         try {
           TestBody.this.testSwitchInStatement(null);
           Assert.fail("null");
@@ -103,9 +103,9 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
     public void test_switchInReturn() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        Assert.assertEquals(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
-        Assert.assertEquals(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
-        Assert.assertEquals(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3")), 3);
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1"))), Integer.valueOf(2));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2"))), Integer.valueOf(4));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3"))), Integer.valueOf(3));
         try {
           TestBody.this.testSwitchInReturn(null);
           Assert.fail("null");
@@ -117,9 +117,9 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
     public void test_switchInAssignment() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        Assert.assertEquals(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
-        Assert.assertEquals(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
-        Assert.assertEquals(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3")), 3);
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1"))), Integer.valueOf(2));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2"))), Integer.valueOf(4));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3"))), Integer.valueOf(3));
         try {
           TestBody.this.testSwitchInAssignment(null);
           Assert.fail("null");
@@ -131,9 +131,9 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
     public void test_switchInLVD() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        Assert.assertEquals(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
-        Assert.assertEquals(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
-        Assert.assertEquals(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3")), 3);
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1"))), Integer.valueOf(2));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2"))), Integer.valueOf(4));
+        Assert.assertEquals(Integer.valueOf(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c117L, "option3"))), Integer.valueOf(3));
         try {
           TestBody.this.testSwitchInLVD(null);
           Assert.fail("null");

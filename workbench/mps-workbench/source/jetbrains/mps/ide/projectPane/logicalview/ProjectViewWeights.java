@@ -13,7 +13,11 @@ public class ProjectViewWeights {
   // top-level
   public static final int TOP_PROJECT_WEIGHT = 10;
   public static final int MODULES_POOL_WEIGHT = 20;
-  public static final int TRANSIENT_MODELS_WEIGHT = 30;
+  public static final int TRANSIENTS_WEIGHT = 30;
+
+  // transients
+  public static final int CHECKPOINT_MODULE_WEIGHT = 10;
+  public static final int TRANSIENT_MODULE_WEIGHT = 20;
 
   // modules
   public static final int TOP_VIRTUAL_FOLDER_WEIGHT = 10;
@@ -22,8 +26,8 @@ public class ProjectViewWeights {
   public static final int DEVKIT_WEIGHT = 40;
 
   // solution
-  public static final int STUBS_WEIGHT = 10;
-  public static final int TESTS_WEIGHT = 20;
+  public static final int STUBS_WEIGHT = 100;
+  public static final int TESTS_WEIGHT = 200;
 
   // language
   public static final int LANGUAGE_ASPECT_WEIGHT = 10;

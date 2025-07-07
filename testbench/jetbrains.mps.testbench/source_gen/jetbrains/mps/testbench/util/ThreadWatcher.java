@@ -12,7 +12,7 @@ import java.lang.management.ManagementFactory;
 /**
  * fyodor, Sep 8, 2010
  */
-@GeneratedClass(node = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)/5294483648489409095", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
+@GeneratedClass(nodeId = "5294483648489409095", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
 public class ThreadWatcher implements Output {
   private ThreadState myState;
   private String myErrors;
@@ -90,6 +90,17 @@ public class ThreadWatcher implements Output {
 
       // com.intellij.util.io.DirectByteBufferAllocator#singleThreadAllocator
       builder.append("|(DirectBufferWrapper allocation thread)");
+
+      // com.intellij.internal.statistic.eventLog#logExecutor
+      builder.append("|(LocalStatisticsFileEventLogger)");
+
+      // com.intellij.util.indexing.contentQueue.dev.LegacyMultiThreadedIndexWriter
+      builder.append("|(IdIndex Writer.*)");
+      builder.append("|(Stubs Writer.*)");
+      builder.append("|(Trigram Writer)");
+      builder.append("|(Trigram.Index Writer.*)");
+      builder.append("|(Aux Index Writer .*)");
+
       // --------------------------------
 
 
@@ -126,6 +137,8 @@ public class ThreadWatcher implements Output {
       // Kotlin coroutines threads
       builder.append("|(DefaultDispatcher-worker-.*)");
       builder.append("|(kotlinx.coroutines.DefaultExecutor)");
+      // kotlinx.coroutines.debug.internal.DebugProbesImpl.startWeakRefCleanerThread
+      builder.append("|(Coroutines Debugger Cleaner)");
 
       // RMI specific threads (used by KotlinCompilerRunner)
       builder.append("|(RMI .*)");

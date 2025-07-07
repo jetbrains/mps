@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.ThreadReference;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/7672976942235813584", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
+@GeneratedClass(nodeId = "7672976942235813584", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
 public class ContextManager {
   private static final Logger LOG = Logger.getLogger(ContextManager.class);
   private final List<EventContext> mySuspendedContexts = ListSequence.fromList(new ArrayList<EventContext>());

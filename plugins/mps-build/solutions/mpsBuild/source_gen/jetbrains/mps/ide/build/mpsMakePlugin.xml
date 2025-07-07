@@ -44,9 +44,7 @@
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mpsBootstrapCore}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
@@ -173,9 +171,11 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
+      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
+      <library file="${artifacts.mpsWorkbench}/languages/plaf/jetbrains.mps.ide.ui.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
@@ -216,9 +216,9 @@
   <target name="java.compile.jetbrains.mps.ide.make" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-make/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.make" />
-    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.make" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.make" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.ide.make">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -263,7 +263,6 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.doc.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />

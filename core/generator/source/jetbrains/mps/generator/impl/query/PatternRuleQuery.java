@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.generator.impl.query;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.template.PatternRuleContext;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,18 +25,7 @@ import org.jetbrains.annotations.Nullable;
  * @author Artem Tikhomirov
  */
 public interface PatternRuleQuery extends Query {
-  /**
-   * @deprecated use {@link #match(PatternRuleContext)} instead
-   */
-  @Deprecated(since = "2024.1", forRemoval = true)
-  default GeneratedMatchingPattern pattern(@NotNull PatternRuleContext ctx) throws GenerationFailureException {
-    return null;
-  }
 
   @Nullable
-  default PatternMatch match(@NotNull PatternRuleContext ctx) throws GenerationFailureException {
-    // keep this default until we've got a couple of releases with PRQ templates that override this method
-    GeneratedMatchingPattern p = pattern(ctx);
-    return p == null ? null : p::getFieldValue;
-  }
+  PatternMatch match(@NotNull PatternRuleContext ctx) throws GenerationFailureException;
 }

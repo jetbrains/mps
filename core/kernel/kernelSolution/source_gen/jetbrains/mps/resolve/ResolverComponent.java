@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
 
-@GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/3840495236046418263", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
+@GeneratedClass(nodeId = "3840495236046418263", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ResolverComponent implements CoreComponent {
   private static ResolverComponent INSTANCE;
   private static Comparator<SReference> REFERENCE_COMPARATOR = (SReference first, SReference second) -> {

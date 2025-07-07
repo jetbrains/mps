@@ -83,7 +83,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553681520"), CONCEPTS.DotExpression$yW, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -113,7 +113,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252945860"), CONCEPTS.DotExpression$yW, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -154,7 +154,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "651058060500594931"), CONCEPTS.ExpressionStatement$O8, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -171,7 +171,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630339828"), CONCEPTS.ExpressionStatement$O8, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -188,7 +188,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630352297"), CONCEPTS.ExpressionStatement$O8, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_4(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -205,7 +205,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209547397"), CONCEPTS.LocalVariableDeclarationStatement$4w, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_5(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -249,7 +249,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630505830"), CONCEPTS.ReturnStatement$lt, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_47_6(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

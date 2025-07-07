@@ -116,7 +116,7 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "Tests in '" + name + "'", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODULE);
       configuration.getJUnitSettings().setModuleRef(source.getModuleReference().toString());
-      return configuration;
+      return (source.isReadOnly() ? null : configuration);
     }
 
     @Override
@@ -160,7 +160,7 @@ public final class JUnitTests_Producer {
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODEL);
       configuration.getJUnitSettings().setModelRef(PersistenceRegistry.getInstance().asString(source.getReference()));
       configuration.getJUnitSettings().setModuleRef(source.getModule().getModuleReference().toString());
-      return configuration;
+      return (source.isReadOnly() ? null : configuration);
     }
 
     @Override

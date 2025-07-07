@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import com.intellij.openapi.ui.DialogBuilder;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.UIBundle;
-import jetbrains.mps.extapi.model.StorageMemoryConflictResolver.ConflictResolved;
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
@@ -64,7 +64,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *       - sometimes there is a command, sometimes there is a write
  * @author apyshkin
  */
-public final class ConflictResolverImpl {
+public final class ConflictResolverImpl implements StorageMemoryConflictResolver<EditableSModel> {
   private static final Logger LOG = Logger.getLogger(ConflictResolverImpl.class);
 
   private final MPSProject myProject;
@@ -86,7 +86,7 @@ public final class ConflictResolverImpl {
     myDialogExposer = exposer;
   }
 
-  ConflictResolverImpl(MPSProject project,
+  public ConflictResolverImpl(MPSProject project,
                        PersistenceFacade persistenceFacade,
                        VFSManager vfsManager) {
     myProject = project;
@@ -95,8 +95,14 @@ public final class ConflictResolverImpl {
     myDialogExposer = defaultExposer();
   }
 
+  @Deprecated(forRemoval = true)
   @NotNull
   CompletionStage<ConflictResolved> resolve(@NotNull EditableSModel model) {
+    return resolveConflict(model);
+  }
+
+  @Override
+  public @NotNull CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
     myResolverListeners.forEach(l -> l.onConflict(model));
     if (!(model.getSource() instanceof FileSystemBasedDataSource)) {
       LOG.error(String.format("Conflicting content in memory and on disk for models '%s' and '%s'. " +
@@ -209,6 +215,8 @@ public final class ConflictResolverImpl {
     try {
       if (source.exists()) {
         onDisk = myPersistenceFacade.getModelFactory(source.getType()).load(source);
+        // make sure there are no subsequent attempts to alter the model's content (e.g. in case DS type supports partial/lazy loading)
+        onDisk.load();
       }
     } catch (UnsupportedDataSourceException | ModelLoadException e) {
       // properly reflect this case

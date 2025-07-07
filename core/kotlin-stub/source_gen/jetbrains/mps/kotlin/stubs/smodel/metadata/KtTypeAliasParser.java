@@ -4,7 +4,7 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmTypeAlias;
+import kotlin.metadata.KmTypeAlias;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)/2993321679756435601", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
+@GeneratedClass(nodeId = "2993321679756435601", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
 public class KtTypeAliasParser {
   public static SNode parseTypeAlias(final KmTypeAlias typeAlias, String receiverName, final KtReadContext context) {
     final SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e2L, "jetbrains.mps.kotlin.structure.TypeAlias"));

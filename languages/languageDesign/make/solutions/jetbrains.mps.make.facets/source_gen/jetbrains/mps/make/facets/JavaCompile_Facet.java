@@ -23,7 +23,10 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.project.SModuleOperations;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.make.ModuleMaker;
+import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.make.kotlin.cache.JvmKotlinCompileCacheHandler;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.core.plugin.TextGen_Facet.Target_textGen;
@@ -39,7 +42,6 @@ import java.util.stream.IntStream;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.internal.make.runtime.java.IdeaJavaCompiler;
 import jetbrains.mps.make.CompilationResult;
-import jetbrains.mps.project.Project;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 
@@ -90,8 +92,17 @@ public class JavaCompile_Facet extends IFacet.Stub {
                 return new IResult.SUCCESS(_output_wf1ya0_a0a);
               }
               progressMonitor.start("Compiling Java", 100);
-              final ModuleMaker mm = new ModuleMaker(monitor.getSession().getMessageHandler());
-              mm.options(vars(pa.global()).options()).kotlinOptions(vars(pa.global()).kotlinOptions()).kotlinCompileCache(new JvmKotlinCompileCacheHandler(monitor.getSession().getMessageHandler()));
+              final IFileSystem localFS = monitor.getSession().getProject().getComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+              final ModuleMaker mm = new ModuleMaker(monitor.getSession().getMessageHandler()).ignoreFiles((f) -> localFS.isFileIgnored(f.getName()));
+              if (vars(pa.global()).options() != null) {
+                mm.options(vars(pa.global()).options());
+              } else {
+                JavaCompilerOptionsComponent jcOptions = monitor.getSession().getProject().getComponent(JavaCompilerOptionsComponent.class);
+                mm.options(jcOptions.getJavaCompilerOptions(monitor.getSession().getProject()));
+              }
+              // FIXME WorkbenchMakeService shall not care about kotlin compilation, move kotlinOptions initialization elsewhere
+              mm.kotlinOptions(vars(pa.global()).kotlinOptions());
+              mm.kotlinCompileCache(new JvmKotlinCompileCacheHandler(monitor.getSession().getMessageHandler()));
               new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
                 // re-use dependencies known to textGen facet (freshly built, in fact)
                 mm.dependencies(Target_textGen.vars(pa.global()).dependenciesCache());
@@ -224,7 +235,6 @@ public class JavaCompile_Facet extends IFacet.Stub {
           progressMonitor.start("", IntStream.of(1000).sum());
           switch (0) {
             case 0:
-              // FIXME project property is no longer needed (we take project from make session), remove after 2017.2
               if (Boolean.TRUE.equals(Target_compile.vars(pa.global()).skipCompilation())) {
                 _output_wf1ya0_a0b = Sequence.fromIterable(_output_wf1ya0_a0b).concat(Sequence.fromIterable(input));
                 return new IResult.SUCCESS(_output_wf1ya0_a0b);
@@ -253,10 +263,10 @@ public class JavaCompile_Facet extends IFacet.Stub {
                 return new IResult.SUCCESS(_output_wf1ya0_a0b);
               }
 
-              final ProgressMonitor subProgress_p0a0b = progressMonitor.subTask(1000);
-              subProgress_p0a0b.start("Compiling in IntelliJ IDEA", 1);
+              final ProgressMonitor subProgress_o0a0b = progressMonitor.subTask(1000);
+              subProgress_o0a0b.start("Compiling in IntelliJ IDEA", 1);
 
-              subProgress_p0a0b.advance(1);
+              subProgress_o0a0b.advance(1);
               CompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> compiler.compileModules(Sequence.fromIterable(toCompile).select((it) -> it.module()).toGenericArray(SModule.class)));
               if (!(cr.isOk())) {
                 if (cr.getErrorsCount() > 0) {
@@ -269,7 +279,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
                 return new IResult.FAILURE(_output_wf1ya0_a0b);
               }
 
-              subProgress_p0a0b.done();
+              subProgress_o0a0b.done();
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_wf1ya0_a0b);
@@ -318,7 +328,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
     public <T> T createParameters(Class<T> cls, T copyFrom) {
       T t = createParameters(cls);
       if (t != null) {
-        ((Tuples._2) t).assign((Tuples._2) copyFrom);
+        ((Tuples._1) t).assign((Tuples._1) copyFrom);
       }
       return t;
     }
@@ -328,24 +338,18 @@ public class JavaCompile_Facet extends IFacet.Stub {
     public static Parameters vars(IPropertiesPool ppool) {
       return ppool.properties(name, Parameters.class);
     }
-    public static class Parameters extends MultiTuple._2<Project, Boolean> {
+    public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {
         super();
       }
-      public Parameters(Project unused, Boolean skipAuxCompile) {
-        super(unused, skipAuxCompile);
-      }
-      public Project unused(Project value) {
-        return super._0(value);
+      public Parameters(Boolean skipAuxCompile) {
+        super(skipAuxCompile);
       }
       public Boolean skipAuxCompile(Boolean value) {
-        return super._1(value);
-      }
-      public Project unused() {
-        return super._0();
+        return super._0(value);
       }
       public Boolean skipAuxCompile() {
-        return super._1();
+        return super._0();
       }
     }
   }
@@ -367,7 +371,6 @@ public class JavaCompile_Facet extends IFacet.Stub {
         ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.auxCompile");
         if (properties.hasProperties(name)) {
           Target_auxCompile.Parameters props = properties.properties(name, Target_auxCompile.Parameters.class);
-          MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.auxCompile.unused", null);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.JavaCompile.auxCompile.skipAuxCompile", String.valueOf(props.skipAuxCompile()));
         }
       }
@@ -393,9 +396,6 @@ public class JavaCompile_Facet extends IFacet.Stub {
         {
           ITarget.Name name = new ITarget.Name("jetbrains.mps.make.facets.JavaCompile.auxCompile");
           Target_auxCompile.Parameters props = properties.properties(name, Target_auxCompile.Parameters.class);
-          if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.JavaCompile.auxCompile.unused")) {
-            props.unused(null);
-          }
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.JavaCompile.auxCompile.skipAuxCompile")) {
             props.skipAuxCompile(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.make.facets.JavaCompile.auxCompile.skipAuxCompile")));
           }

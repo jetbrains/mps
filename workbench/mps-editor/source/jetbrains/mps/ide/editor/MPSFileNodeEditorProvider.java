@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.EditorState;
@@ -42,7 +43,7 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
   @Override
   @NotNull
   public FileEditor createEditor(@NotNull Project project, @NotNull final VirtualFile file) {
-    final MPSProject mpsProject = project.getComponent(MPSProject.class);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(project);
     if (!(file instanceof MPSNodeVirtualFile)) {
       throw new IllegalArgumentException("expecting only our node virtual files");
     }

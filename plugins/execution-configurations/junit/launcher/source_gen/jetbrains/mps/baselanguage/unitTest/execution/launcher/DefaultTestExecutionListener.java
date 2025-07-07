@@ -75,7 +75,7 @@ public class DefaultTestExecutionListener implements TestExecutionListener {
     }
   }
 
-  private void flush() {
+  protected void flush() {
     System.out.flush();
     System.err.flush();
   }

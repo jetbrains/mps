@@ -11,7 +11,7 @@ import jetbrains.mps.kotlin.stubs.loading.kind.KotlinModelKind;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 
-@GeneratedClass(node = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)/2202586844996294808", model = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)")
+@GeneratedClass(nodeId = "2202586844996294808", model = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)")
 public abstract class ClassStereotype extends StereotypeReference {
   public ClassStereotype(@NotNull SNodeId targetNodeId, @NotNull SNodeId topClassifierId, @NotNull String resolveInfo, List<KotlinModelKind> platforms) {
     super(targetNodeId, topClassifierId, resolveInfo, platforms);

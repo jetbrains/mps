@@ -7,7 +7,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/4701043456212926071", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "4701043456212926071", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public class TextSourcePosition extends SourcePosition {
   private final VirtualFile myFile;
   private final int myLine;

@@ -41,7 +41,7 @@ import com.sun.jdi.VirtualMachineManager;
 import com.sun.jdi.Bootstrap;
 import java.util.Iterator;
 
-@GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/4352118152439833399", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
+@GeneratedClass(nodeId = "4352118152439833399", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class VmCreator extends AbstractDebugSessionCreator {
   private static final Logger LOG = Logger.getLogger(VmCreator.class);
   private static final int LOCAL_START_TIMEOUT = 15000;

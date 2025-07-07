@@ -14,7 +14,7 @@ import java.util.Collection;
  * Classes implementing this interface may utilize different strategies for running
  * tasks sequentially or in parallel, using a background execution service.
  */
-@GeneratedClass(node = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)/4352906377357327998", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
+@GeneratedClass(nodeId = "4352906377357327998", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
 public interface TaskScheduler {
 
   /**

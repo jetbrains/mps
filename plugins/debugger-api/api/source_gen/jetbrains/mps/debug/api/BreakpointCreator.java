@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import com.intellij.openapi.project.Project;
 
-@GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/6874707660150056872", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
+@GeneratedClass(nodeId = "6874707660150056872", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public class BreakpointCreator extends MultiTuple._2<_FunctionTypes._return_P2_E0<? extends Boolean, ? super SAbstractConcept, ? super SNode>, _FunctionTypes._return_P2_E1<? extends ILocationBreakpoint, ? super SNode, ? super Project, ? extends Exception>> {
   public BreakpointCreator() {
     super();

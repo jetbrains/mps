@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.openapi.editor.EditorContext;
 
-@GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/4362199797783345393", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
+@GeneratedClass(nodeId = "4362199797783345393", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class CopyThisDown_Action extends BaseAction {
   private static final Icon ICON = null;
 

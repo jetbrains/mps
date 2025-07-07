@@ -8,6 +8,8 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vcs.FileStatus;
+import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.pom.Navigatable;
 import com.intellij.ui.LayeredIcon;
@@ -18,7 +20,10 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.util.NodeAttributesUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -47,8 +52,25 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
   }
 
   @Override
+  public FileStatus getFileStatus() {
+    if (myIsRoot) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      MPSNodeVirtualFile virtualFile = NodeVirtualFileSystem.getInstance().getFileFor(mpsProject.getRepository(), getValue());
+      if (virtualFile != null) {
+        return FileStatusManager.getInstance(myProject).getStatus(virtualFile);
+      }
+    }
+    return FileStatus.NOT_CHANGED;
+  }
+
+  @Override
   protected boolean containsSObject(SObject sObject) {
     return sObject.testIfHasSNode(this::isDescendant);
+  }
+
+  @Override
+  protected boolean matches(SObject wildcard) {
+    return parentMatches(wildcard) && wildcard.testIfHasSNodeOrWildcard(this::isDescendant);
   }
 
   private Boolean isDescendant(SNode sNode) {
@@ -198,11 +220,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     public boolean canNavigate() {
       return true;
     }
@@ -229,11 +246,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
-      return false;
-    }
-
-    @Override
-    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -270,11 +282,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText("references");
       // original todo
@@ -307,11 +314,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void updateInReadAction(PresentationData presentation) {
       Object parentValue = getParentValue();
       String text = "?error?";
@@ -333,11 +335,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
-      return false;
-    }
-
-    @Override
-    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 

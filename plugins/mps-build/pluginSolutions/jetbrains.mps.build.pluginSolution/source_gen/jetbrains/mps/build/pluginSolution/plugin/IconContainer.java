@@ -6,5 +6,5 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 
 public class IconContainer {
-  protected static Icon ICON_b0a0a0c0d = MPSIcons.Ant.Build;
+  protected static Icon ICON0 = MPSIcons.Ant.Build;
 }

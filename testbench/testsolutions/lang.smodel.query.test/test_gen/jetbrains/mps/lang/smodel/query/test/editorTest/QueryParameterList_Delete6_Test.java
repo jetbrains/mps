@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -15,7 +15,7 @@ import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 @MPSLaunch
 public class QueryParameterList_Delete6_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(QueryParameterList_Delete6_Test.class, "${mps_home}", "r:ef2abb2b-cc5a-4776-8085-7767c2890554(jetbrains.mps.lang.smodel.query.test.editorTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(QueryParameterList_Delete6_Test.class).projectPath(null).modelRef("r:ef2abb2b-cc5a-4776-8085-7767c2890554(jetbrains.mps.lang.smodel.query.test.editorTest@tests)").reopenProject(false).build());
 
   public QueryParameterList_Delete6_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+  <uses language="l:443f4c36-fcf5-4eb6-9500-8d06ed259e3e:jetbrains.mps.baseLanguage.classifiers" />
   <uses language="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
   <uses language="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
   <uses language="l:f61473f9-130f-42f6-b98d-6c438812c2f6:jetbrains.mps.baseLanguage.unitTest" />
   <uses language="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
   <uses language="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
   <uses language="l:8585453e-6bfb-4d80-98de-b16074f1d86c:jetbrains.mps.lang.test" />
+  <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
   <uses language="l:b124c25e-1e16-4432-ad5e-0ac0ecae98f5:testCustomAnalyzer" />
   <uses language="l:3ac033a0-bffa-48e3-a843-a40cbdd89859:testExtendingAnalyzer" />
   <uses module="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="dp" />

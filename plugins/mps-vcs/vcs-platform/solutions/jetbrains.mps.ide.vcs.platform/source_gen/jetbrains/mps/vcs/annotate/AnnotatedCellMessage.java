@@ -27,7 +27,7 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import java.awt.Graphics;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   @NotNull

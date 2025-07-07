@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.lang.script.rt" uuid="3330376f-82a0-45ed-ae50-a320ee8b0b63" moduleVersion="0">
   <models>
-    <modelRoot type="java_classes" contentPath="${mps_home}/lib">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="mps-scripts-rt.jar" />
     </modelRoot>
   </models>

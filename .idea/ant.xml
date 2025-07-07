@@ -31,5 +31,6 @@
         <property name="home.idea_ce" value="$ProjectFileDir$/build/IDEA" />
       </properties>
     </buildFile>
+    <buildFile url="file://$PROJECT_DIR$/build.xml" />
   </component>
 </project>

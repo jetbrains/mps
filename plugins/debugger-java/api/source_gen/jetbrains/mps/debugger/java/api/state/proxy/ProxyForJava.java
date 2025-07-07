@@ -4,7 +4,7 @@ package jetbrains.mps.debugger.java.api.state.proxy;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036013921", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
+@GeneratedClass(nodeId = "3432969378036013921", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public abstract class ProxyForJava {
   private final Object myObject;
   public ProxyForJava(Object o) {

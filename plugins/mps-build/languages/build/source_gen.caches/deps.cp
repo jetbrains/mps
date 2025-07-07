@@ -52,12 +52,10 @@
   <uses module="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt+dp" />
   <uses module="798100da-4f0a-421a-b991-71f8c50ce5d2(jetbrains.mps.build)" kind="dp" />
   <uses module="698a8d22-a104-47a0-ba8d-10e3ec237f13(jetbrains.mps.build.workflow)" kind="dp" />
-  <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
   <uses module="479c7a8c-02f9-43b5-9139-d910cb22f298(jetbrains.mps.core.xml)" kind="dp" />
   <uses module="34e84b8f-afa8-4364-abcd-a279fddddbe7(jetbrains.mps.editor.runtime)" kind="rt+dp" />
   <uses module="2e24a298-44d1-4697-baec-5c424fed3a3b(jetbrains.mps.editorlang.runtime)" kind="dp" />
   <uses module="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="dp" />
-  <uses module="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt+dp" />

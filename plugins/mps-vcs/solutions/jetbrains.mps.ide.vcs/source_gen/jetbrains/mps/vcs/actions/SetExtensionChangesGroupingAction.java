@@ -7,7 +7,7 @@ import com.intellij.openapi.vcs.changes.actions.SetChangesGroupingAction;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-@GeneratedClass(node = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)/8537482397936092406", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
+@GeneratedClass(nodeId = "8537482397936092406", model = "r:b2d164a2-987a-4229-af85-1f4f7d3ef996(jetbrains.mps.vcs.actions)")
 public class SetExtensionChangesGroupingAction extends SetChangesGroupingAction {
   @NotNull
   @Override

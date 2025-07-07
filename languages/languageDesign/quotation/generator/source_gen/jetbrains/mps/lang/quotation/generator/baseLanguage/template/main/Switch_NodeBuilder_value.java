@@ -65,7 +65,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100533166"), CONCEPTS.NodeBuilderInitProperty$xv, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -143,7 +143,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5448983161241874563"), CONCEPTS.NodeBuilderInitProperty$xv, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -217,7 +217,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100636918"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -353,7 +353,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100816962"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -418,7 +418,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "3883255117205035015"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_4(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -479,7 +479,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5448983161210278497"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_5(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -546,7 +546,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101641161"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_6(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -650,7 +650,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101119833"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_7(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -740,7 +740,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
       super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288101425578"), CONCEPTS.NodeBuilderInitLink$XR, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_4_8(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

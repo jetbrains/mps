@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,26 +23,26 @@ import com.intellij.ide.dnd.DnDSource;
 import com.intellij.ide.dnd.DnDTarget;
 import com.intellij.ide.dnd.aware.DnDAwareTree;
 import com.intellij.ide.projectView.ProjectView;
+import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewTree;
 import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
 import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
-import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.problems.ProblemListener;
+import com.intellij.util.IJSwingUtilities;
+import com.intellij.util.concurrency.ThreadingAssertions;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor.TabChangedListener;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
@@ -51,14 +51,15 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
 import jetbrains.mps.ide.projectView.MPSProjectViewState;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Transients;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
-import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.MessagesUpdate;
+import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.project.MissionControlListener;
 import jetbrains.mps.project.MissionControlRefreshRequest;
 import jetbrains.mps.smodel.SObject;
@@ -74,7 +75,13 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -90,25 +97,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
 
   public static final String ID = ProjectViewPane.ID;
 
-  private final FileEditorManagerListener myEditorListener = new FileEditorManagerListener() {
-    @Override
-    public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-      FileEditor fileEditor = event.getNewEditor();
-      if (fileEditor instanceof MPSFileNodeEditor) {
-        final MPSFileNodeEditor editor = (MPSFileNodeEditor) fileEditor;
-        if (getProjectView().isAutoscrollFromSource(ID)) {
-          EditorComponent editorComponent = editor.getNodeEditor().getCurrentEditorComponent();
-          if (editorComponent == null) {
-            return;
-          }
-          final SNodeReference sNode = editorComponent.getEditedNodePointer();
-          if (sNode != null) {
-            selectNodeWithoutExpansion(sNode);
-          }
-        }
-      }
-    }
-  };
   private MessageBusConnection myConnection;
 
   public ProjectPane(final Project project) {
@@ -165,11 +153,10 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     assert myConnection == null; // double initialization
     myConnection = getProject().getMessageBus().connect();
     myConnection.subscribe(TabbedEditor.TAB_CHANGES, (TabChangedListener) nodeRef -> {
-      if (getProjectView().isAutoscrollFromSource(ID)) {
+      if (getProjectView().isAutoscrollFromSource(ID) && !IJSwingUtilities.hasFocus(getComponentToFocus())) {
         selectNodeWithoutExpansion(nodeRef);
       }
     });
-    myConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, myEditorListener);
     myConnection.subscribe(MissionControlListener.MISSION_CONTROL_UPDATE, (MissionControlListener) this::refresh);
   }
 
@@ -200,8 +187,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   }
   
   /*package*/ MPSProject getMPSProject() {
-    // Shall I use getTree().getProject() instead?
-    return getProject().getComponent(MPSProject.class);
+    return myProjectMPS;
   }
 
   @Override
@@ -237,6 +223,17 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     if (!alreadyCreated) {
       addListeners();
     }
+    // at this point initTree() has been called
+    myTree.addKeyListener(new KeyAdapter() {
+      @Override
+      public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_F5 && e.getModifiersEx() == 0) {
+          e.consume();
+          MissionControl.getInstance(myProject).refresh();
+          ProjectView.getInstance(myProject).refresh();
+        }
+      }
+    });
     return component;
   }
 
@@ -255,15 +252,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   @Override
   protected DnDAwareTree createTree(@NotNull DefaultTreeModel treeModel) {
     return new ProjectViewTree(treeModel);
-  }
-
-  /**
-   * @deprecated use {@link #rebuild()} instead
-   */
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public void rebuildTree() {
-    // @see #updateFromRoot
-    updateFromRoot(true);
   }
 
   public void activate() {
@@ -286,8 +274,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   @SuppressWarnings("removal")
   private void fireMessageUpdate(MessagesUpdate messagesUpdate, IFile iFile) {
     ProblemListener problemListener = getProject().getMessageBus().syncPublisher(ProblemListener.TOPIC);
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    IdeaFileSystem fileSystem = mpsProject.getFileSystem();
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
 
     VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
     if (virtualFile != null) {
@@ -349,12 +336,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     if (module instanceof AbstractModule) {
       IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
       if (descriptorFile != null) {
-        VirtualFile virtualFile = getVirtualFile(descriptorFile);
-        if (virtualFile != null) {
-          createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus);
-        }  else {
-          LOG.warning("unable to select module corresponding to path: "+descriptorFile.getPath());
-        }
+        selectLater(autofocus).accept(descriptorFile);
       }
     }
   }
@@ -365,15 +347,22 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
       var ds = (FileSystemBasedDataSource) source;
       ds.getAffectedFiles().stream()
         .findFirst()
-        .ifPresent(file -> {
-          VirtualFile virtualFile = getVirtualFile(file);
-          if (virtualFile != null) {
-            createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus);
-          } else {
-            LOG.warning("unable to select model corresponding to path: "+file.getPath());
-          }
-        });
+        .ifPresent(selectLater(autofocus));
     }
+  }
+
+  private @NotNull Consumer<IFile> selectLater(boolean autofocus) {
+    return file -> ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      // getVirtualFile requires a resource-heavy operation
+      VirtualFile virtualFile = getVirtualFile(file);
+      if (virtualFile != null) {
+        ApplicationManager.getApplication().invokeLater(() ->
+            // selection is done in EDT
+            createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus));
+      } else {
+        LOG.warning("unable to select node corresponding to path: " + file.getPath());
+      }
+    });
   }
 
   public void selectNode(@NotNull final SNode node, boolean autofocus) {
@@ -382,6 +371,26 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
 
   public void selectNode(@NotNull SNodeReference node, boolean autofocus) {
     createSelectInTarget().selectIn(new MySelectInContext(NodeVirtualFileSystem.getInstance().getFileFor(getMPSProject().getRepository(), node)), autofocus);
+  }
+
+  /**
+   * A hackish way to select and expand the "checkpoints and transients models" folder. See MPS-38077
+   */
+  @Deprecated
+  public void selectTransientsFolder() {
+    TreeModel model = getTree().getModel();
+    Object o = TreeUtil.nodeChildren(model.getRoot(), model).find(n -> isTransientsFolderNode(TreeUtil.getUserObject(n)));
+    TreeNode toSelect = o instanceof TreeNode ? (TreeNode) o : null;
+    if (toSelect != null) {
+      TreePath path = TreeUtil.getPath((TreeNode) model.getRoot(), toSelect);
+      getTree().expandPath(path);
+      TreeUtil.selectInTree((DefaultMutableTreeNode) toSelect, true, getTree());
+      getTree().scrollPathToVisible(path);
+    }
+  }
+
+  private boolean isTransientsFolderNode(Object abstractNode) {
+    return abstractNode instanceof ProjectViewNode && ((ProjectViewNode<?>) abstractNode).getValue() instanceof Transients;
   }
 
   private void selectNodeWithoutExpansion(@NotNull SNodeReference nodeRef) {
@@ -420,10 +429,15 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     }
   }
 
+
+  /**
+   * Must never be called from EDT.
+   */
   @SuppressWarnings("removal")
   @Nullable
   private VirtualFile getVirtualFile(IFile descriptorFile) {
-    IdeaFileSystem fileSystem = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
+    ThreadingAssertions.assertBackgroundThread();
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
     VirtualFile virtualFile = fileSystem.asVirtualFile(descriptorFile);
     if (virtualFile == null) {
       IdeaFile ideaFile = fileSystem.getFile(descriptorFile.getPath());

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_LoopMacroVariable extends EnumerationDescript
   private final EnumerationDescriptor.MemberDescriptor myMember_index_0 = new EnumerationDescriptor.MemberDescriptor("index", "index", 0x14d5f8229234079eL, "r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1501378878163388318");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, 0x14d5f8229234079dL, 0x14d5f8229234079eL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_inputNode_0, myMember_index_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_inputNode_0, myMember_index_0);
 
   @Nullable
   @Override

@@ -23,9 +23,7 @@
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mpsBootstrapCore}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
@@ -136,8 +134,9 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
+      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
       <chunk>
@@ -177,9 +176,9 @@
   <target name="java.compile.jetbrains.mps.editor.spellcheck" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-spellcheck/modules/spellcheck/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.spellcheck" />
-    <javac destdir="${build.tmp}/java/out/jetbrains.mps.editor.spellcheck" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac destdir="${build.tmp}/java/out/jetbrains.mps.editor.spellcheck" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="jetbrains.mps.editor.spellcheck">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -222,7 +221,6 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
       </classpath>

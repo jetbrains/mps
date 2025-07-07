@@ -17,7 +17,7 @@ import org.jetbrains.org.objectweb.asm.Opcodes;
 import jetbrains.mps.baseLanguage.javastub.ClassifierKind;
 import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860009362", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "7241381882860009362", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMClass {
   private ClassNode myNode;
   private List<ASMTypeVariable> myTypeVariables;

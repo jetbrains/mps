@@ -11,7 +11,7 @@ import jetbrains.mps.smodel.SModelHeader;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 
-@GeneratedClass(node = "r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)/3479938774601117149", model = "r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)")
+@GeneratedClass(nodeId = "3479938774601117149", model = "r:050eb90d-d917-47d4-8d74-cc37a63452a4(jetbrains.mps.smodel.persistence.def.v8)")
 public class ModelPersistence8 implements IModelPersistence {
   public static final String ROOT_NODE = "root";
   @Override

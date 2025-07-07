@@ -25,10 +25,6 @@ import jetbrains.mps.smodel.persistence.def.v4.IPersistenceWithReader;
 import jetbrains.mps.smodel.persistence.def.v4.IModelReader;
 import org.jdom.Document;
 import jetbrains.mps.smodel.SModel;
-import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import jetbrains.mps.util.FileUtil;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import java.io.ByteArrayInputStream;
@@ -60,7 +56,7 @@ import org.xml.sax.SAXException;
  * of the old model. It MUST produce a new SModel. 
  * (??? [Mihail Muhin] isn't it better to produce model with persistence version set to LAST_VERSION?)
  */
-@GeneratedClass(node = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/5317173964874516731", model = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)")
+@GeneratedClass(nodeId = "5317173964874516731", model = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)")
 public class VCSPersistenceSupport {
   private static final Logger LOG = Logger.getLogger(VCSPersistenceSupport.class);
   public static final String TARGET_NODE_ID = "targetNodeId";
@@ -117,7 +113,8 @@ public class VCSPersistenceSupport {
       return new ModelPersistence8();
     }
 
-    // todo remove this after removing usages of VCSPersistenceSupport from everywhere except VCSPersistenceUtil
+    // FIXME remove this after removing usages of VCSPersistenceSupport from everywhere except VCSPersistenceUtil
+    // There are 2 external uses ATM: 1 through readModel (MergeBackupUtil. local ModelSack guards against newer version once header has been read) + 1 getLineToContentMap in RootFileHistoryExtractor
     return ModelPersistence.getPersistence(version);
   }
 
@@ -128,7 +125,7 @@ public class VCSPersistenceSupport {
     return result;
   }
 
-  private static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull InputSource source, ModelLoadingState state) throws IOException, ModelReadException {
+  /*package*/ static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull InputSource source, ModelLoadingState state) throws IOException, ModelReadException {
     if (header.getPersistenceVersion() < 0) {
       throw new ModelReadException("Couldn't read model because of unknown persistence version", null);
     }
@@ -161,20 +158,6 @@ public class VCSPersistenceSupport {
 
     Document document = loadModelDocument(source);
     return new ModelLoadResult((SModel) reader.readModel(document, header), ModelLoadingState.FULLY_LOADED);
-  }
-
-  @NotNull
-  public static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull StreamDataSource dataSource, ModelLoadingState state) throws ModelReadException {
-    InputStream in = null;
-    try {
-      in = dataSource.openInputStream();
-      InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-      return readModel(header, source, state);
-    } catch (IOException e) {
-      throw new ModelReadException("Couldn't read model: " + e.getMessage(), e, header);
-    } finally {
-      FileUtil.closeFileSafe(in);
-    }
   }
 
   @Nullable

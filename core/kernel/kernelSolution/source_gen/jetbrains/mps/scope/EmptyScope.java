@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8401916545537566967", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "8401916545537566967", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class EmptyScope extends Scope {
   public EmptyScope() {
   }

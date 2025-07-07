@@ -174,7 +174,9 @@
       <concept id="1168619357332" name="jetbrains.mps.lang.generator.structure.RootTemplateAnnotation" flags="lg" index="n94m4">
         <reference id="1168619429071" name="applicableConcept" index="n9lRv" />
       </concept>
-      <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj" />
+      <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj">
+        <reference id="1200916687663" name="labelDeclaration" index="2sdACS" />
+      </concept>
       <concept id="1200911316486" name="jetbrains.mps.lang.generator.structure.MappingLabelDeclaration" flags="lg" index="2rT7sh">
         <reference id="1200911342686" name="sourceConcept" index="2rTdP9" />
         <reference id="1200913004646" name="targetConcept" index="2rZz_L" />
@@ -182,6 +184,7 @@
       <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ngI" index="v9R3L">
         <reference id="1722980698497626483" name="template" index="v9R2y" />
       </concept>
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
         <reference id="1167169349424" name="applicableConcept" index="30HIoZ" />
@@ -623,7 +626,7 @@
                 </node>
               </node>
             </node>
-            <node concept="1pdMLZ" id="4CsL_MElurJ" role="lGtFl">
+            <node concept="2ZBi8u" id="37kycsVQI3r" role="lGtFl">
               <ref role="2rW$FS" node="4CsL_MEluja" resolve="components" />
             </node>
           </node>
@@ -688,7 +691,7 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="1pdMLZ" id="4CsL_MElV1s" role="lGtFl">
+                  <node concept="2ZBi8u" id="37kycsVQIAN" role="lGtFl">
                     <ref role="2rW$FS" node="4CsL_MEluja" resolve="components" />
                   </node>
                 </node>
@@ -773,7 +776,7 @@
                     <ref role="37wK5l" to="dxuu:~JPanel.&lt;init&gt;()" resolve="JPanel" />
                   </node>
                 </node>
-                <node concept="1pdMLZ" id="4CsL_MEmfg1" role="lGtFl">
+                <node concept="2ZBi8u" id="37kycsVQHjp" role="lGtFl">
                   <ref role="2rW$FS" node="4CsL_MEluja" resolve="components" />
                 </node>
               </node>
@@ -1007,7 +1010,7 @@
                   <ref role="37wK5l" to="dxuu:~JTextField.&lt;init&gt;()" resolve="JTextField" />
                 </node>
               </node>
-              <node concept="1pdMLZ" id="4CsL_MEmeUj" role="lGtFl">
+              <node concept="2ZBi8u" id="37kycsVQGeI" role="lGtFl">
                 <ref role="2rW$FS" node="4CsL_MEluja" resolve="components" />
               </node>
             </node>
@@ -1240,9 +1243,8 @@
           </node>
         </node>
         <node concept="3Tm1VV" id="OfqpBCgfJp" role="1B3o_S" />
-        <node concept="raruj" id="OfqpBCgfJq" role="lGtFl" />
-        <node concept="1pdMLZ" id="OfqpBCirBb" role="lGtFl">
-          <ref role="2rW$FS" node="OfqpBCgY7J" resolve="transformers" />
+        <node concept="raruj" id="OfqpBCgfJq" role="lGtFl">
+          <ref role="2sdACS" node="OfqpBCgY7J" resolve="transformers" />
         </node>
       </node>
       <node concept="3Tm1VV" id="OfqpBCf142" role="1B3o_S" />

@@ -23,6 +23,10 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import com.intellij.openapi.ui.InputValidator;
+import com.intellij.openapi.util.NlsSafe;
+import java.util.Arrays;
+import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -35,7 +39,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7889360268649425705", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7889360268649425705", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetNodePackage_Action extends BaseAction {
   private static final Logger LOG = Logger.getLogger(SetNodePackage_Action.class);
   private static final Icon ICON = null;
@@ -119,12 +123,31 @@ public class SetNodePackage_Action extends BaseAction {
       packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
       nameHint.value = (nameHint.value == null ? SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl) : nameHint.value);
     });
-    final SetNodePackageDialog dialog = new SetNodePackageDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), packages.value);
-    dialog.setPackage(nameHint.value);
-    if (!(dialog.showAndGet())) {
+    nameHint.value = ((nameHint.value != null && nameHint.value.startsWith(".") ? nameHint.value.substring(1) : nameHint.value));
+    InputValidator validator = new InputValidator() {
+      @Override
+      public boolean checkInput(@NlsSafe String virtualFolder) {
+        String normalized = (virtualFolder == null ? "" : virtualFolder);
+        normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+        if (!(normalized.equals(virtualFolder))) {
+          return false;
+        }
+        normalized = (normalized.startsWith(".") ? normalized.substring(1) : normalized);
+        if (!(normalized.equals(virtualFolder))) {
+          return false;
+        }
+        return true;
+      }
+      @Override
+      public boolean canClose(@NlsSafe String virtualFolder) {
+        return checkInput(virtualFolder);
+      }
+    };
+
+    final String newValue = Messages.showEditableChooseDialog("Enter virtual folder name", "Set Virtual Folder", Messages.getQuestionIcon(), ListSequence.fromList(packages.value).toGenericArray(String.class), nameHint.value, validator);
+    if (newValue == null) {
       return;
     }
-    final String newValue = dialog.getPackage();
     if (Objects.equals(nameHint.value, newValue) && ListSequence.fromList(packages.value).count() == 1 && Objects.equals(nameHint.value, ListSequence.fromList(packages.value).getElement(0))) {
       return;
     }

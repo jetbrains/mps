@@ -19,7 +19,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.project.MPSProject;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215903504454", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1215903504454", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewModel_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Nodes.Model;
 
@@ -37,7 +37,7 @@ public class NewModel_Action extends BaseAction {
     Presentation presentation = event.getPresentation();
     presentation.setText(IdeBundle.message("actions.model.new.text"));
 
-    if (!(((SModule) MapSequence.fromMap(_params).get("module")) instanceof AbstractModule)) {
+    if (!(((SModule) MapSequence.fromMap(_params).get("module")) instanceof AbstractModule) || ((SModule) MapSequence.fromMap(_params).get("module")).isReadOnly()) {
       presentation.setEnabledAndVisible(false);
     } else {
       StereotypeProvider stereotypeProvider = StereotypeProvider.NONE;

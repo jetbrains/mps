@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MoveStaticMethodRefactoring;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -72,6 +73,7 @@ public class MoveStaticMethod implements MoveNodesAction {
         for (SNode oldNode : ListSequence.fromList(nodesRootsToMove)) {
           MapSequence.fromMap(oldMembersToClasses).put(oldNode, SNodeOperations.getNodeAncestor(oldNode, CONCEPTS.ClassConcept$bK, false, false));
         }
+        final NodeIdentityComponent nic = myProject.getComponent(NodeIdentityComponent.class);
         for (SNode oldNode : ListSequence.fromList(nodesRootsToMove)) {
           SNode newNode = MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode);
           if (!(SNodeOperations.isInstanceOf(newNode, CONCEPTS.StaticMethodDeclaration$FJ))) {
@@ -82,6 +84,9 @@ public class MoveStaticMethod implements MoveNodesAction {
           MoveStaticMethodRefactoring.replaceMethods(newNode, originalClass);
           if (MapSequence.fromMap(ifKeepOldNodes).get(oldNode) == RefactoringParticipant.KeepOldNodes.REMOVE) {
             SNodeOperations.deleteNode(oldNode);
+            if (nic != null) {
+              nic.moved(oldNode, copyMap.getCopyMap());
+            }
           }
           myNodeLocation.insertNode(myProject.getRepository(), newNode);
         }

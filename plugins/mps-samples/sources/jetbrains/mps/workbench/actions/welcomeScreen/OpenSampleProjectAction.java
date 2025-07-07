@@ -60,10 +60,13 @@ public class OpenSampleProjectAction extends AnAction {
     final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
     descriptor.setTitle("Samples");
 
-    VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
-    if (result != null) {
-      if (OpenMPSProjectTrustProjectHelper.checkTrust(result)) {
-        ProjectUtil.openProject(result.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+    final VirtualFile @NotNull [] virtualFiles = FileChooser.chooseFiles(descriptor, currentProject, samplesFolder);
+    for (VirtualFile virtualFile : virtualFiles) {
+      if (virtualFile == null) {
+        continue;
+      }
+      if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
+        ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
       }
     }
   }

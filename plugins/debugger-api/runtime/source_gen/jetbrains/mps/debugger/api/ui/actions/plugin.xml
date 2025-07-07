@@ -4,9 +4,9 @@
   <id>jetbrains.mps.debugger.api</id>
   <name>Debugger API for MPS</name>
   <description>Base debugging support for MPS</description>
-  <version>2024.1</version>
+  <version>2025.2</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="232.1" />
+  <idea-version since-build="251.1" />
   
   
   <extensions defaultExtensionNs="com.intellij">

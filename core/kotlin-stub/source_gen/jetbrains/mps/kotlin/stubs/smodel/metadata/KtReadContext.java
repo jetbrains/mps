@@ -13,7 +13,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.kotlin.stubs.loading.references.KtReferenceResolver;
 import jetbrains.mps.kotlin.stubs.loading.kind.KotlinModelKind;
-import kotlinx.metadata.KmTypeParameter;
+import kotlin.metadata.KmTypeParameter;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.stubs.loading.ids.TypeParameterIdSection;
 import java.util.Collections;
@@ -26,7 +26,7 @@ import java.util.function.BiFunction;
 import jetbrains.mps.kotlin.stubs.smodel.references.ClassStereotype;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.kotlin.stubs.loading.references.KtReferenceResolverKt;
-import kotlinx.metadata.KmAnnotation;
+import kotlin.metadata.KmAnnotation;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-@GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)/8055674930054566950", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
+@GeneratedClass(nodeId = "8055674930054566950", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
 public class KtReadContext extends NodeIdHandler {
   private static final Logger LOG = Logger.getLogger(KtReadContext.class);
 

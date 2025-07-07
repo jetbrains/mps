@@ -2,7 +2,7 @@
 <debug-info version="2">
   <root>
     <file name="Generator.java">
-      <unit at="20,0,55,0" name="org.jetbrains.mps.samples.Money.Generator" />
+      <unit at="17,0,44,0" name="org.jetbrains.mps.samples.Money.Generator" />
     </file>
   </root>
 </debug-info>

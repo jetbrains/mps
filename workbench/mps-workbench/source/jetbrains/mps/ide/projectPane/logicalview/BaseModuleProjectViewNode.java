@@ -6,11 +6,15 @@ package jetbrains.mps.ide.projectPane.logicalview;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
+import jetbrains.mps.ide.projectPane.logicalview.LogicalProjectViewNode.ProblemHierarchyNode;
+import jetbrains.mps.project.GenerationStatus;
 import jetbrains.mps.project.MissionControl;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -18,16 +22,27 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Base implementation for a project node corresponding to a module. 
  *
  * @author Fedor Isakov
  */
-public abstract class BaseModuleProjectViewNode<Value extends SModule> extends BranchProjectViewNode<Value> {
+public abstract class BaseModuleProjectViewNode<Value extends SModule> extends BranchProjectViewNode<Value> implements ProblemHierarchyNode {
 
   protected BaseModuleProjectViewNode(Project project, @NotNull Value value, ViewSettings viewSettings) {
     super(project, value, viewSettings);
+  }
+
+  @Override
+  protected boolean containsSObject(SObject sObject) {
+    return sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
+  }
+
+  @Override
+  protected boolean canRepresentSObject(SObject sObject) {
+    return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
   }
 
   @Override
@@ -51,6 +66,17 @@ public abstract class BaseModuleProjectViewNode<Value extends SModule> extends B
       MessageStatus status = getMPSSettings().isShowErrorsOnly() ? MessageStatus.ERROR : MessageStatus.WARNING;
       List<ReportItem> messages = missionControl.getMessagesContainer().getMessages(getValue().getModuleReference(), status, false) ;
       presentation.setTooltip(formatErrorsToolTip(messages));
+    }
+  }
+
+  @Override
+  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+    super.appendInplaceComments(appender);
+    MissionControl missionControl = MissionControl.getInstance(getProject());
+    if (missionControl != null) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkReadonly, MessageStatus.OK, true)) {
+        appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
+      }
     }
   }
 

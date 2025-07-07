@@ -25,7 +25,7 @@ import javax.swing.JCheckBox;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.module.ModuleDeleteHelper;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1241020613337", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1241020613337", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DeleteModules_Action extends BaseAction {
   private static final Icon ICON = null;
 

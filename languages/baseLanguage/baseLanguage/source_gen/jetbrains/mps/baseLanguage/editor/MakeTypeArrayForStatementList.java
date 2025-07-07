@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -75,7 +74,6 @@ public class MakeTypeArrayForStatementList extends KeyMapImpl {
       return hasClassifier;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      LogContext.with(MakeTypeArrayForStatementList.class, null, null, null).error("EEEEEEEEEEE");
       final String text = ((EditorCell_Label) editorContext.getSelectedCell()).getText();
 
       SNode varStms = SNodeFactoryOperations.addNewChild(node, LINKS.statement$53DE, CONCEPTS.LocalVariableDeclarationStatement$4w);

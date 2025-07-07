@@ -49,6 +49,16 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private final CancellableReadsManager myCancellableReads;
   private final ModelAccess mySubstitutedModelAccess;
 
+  /**
+   * PROVISIONAL CODE
+   * DON'T USE OUTSIDE OF MPS.
+   * IN MPS, DON'T USE UNLESS FOR TRANSITION PURPOSES
+   * @return IDEA App Service instance
+   */
+  public static WorkbenchModelAccess getInstance() {
+    return (WorkbenchModelAccess) ApplicationManager.getApplication().getService(org.jetbrains.mps.openapi.module.ModelAccess.class);
+  }
+
   public WorkbenchModelAccess() {
     // not allowing to substitute alien model accesses here
     mySubstitutedModelAccess = instance();
@@ -84,6 +94,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     }
     ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r))));
     myCancellableReads.removeIfCanCancel(r);
+    sharedReadIsOver(); // FIXME not nice we do this outside of LockRunnable, but don't want to bother right now
   }
 
   @Override
@@ -100,6 +111,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     } else {
       ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     }
+    sharedReadIsOver();
   }
 
   // to cease once clearRepositoryStateCache gone

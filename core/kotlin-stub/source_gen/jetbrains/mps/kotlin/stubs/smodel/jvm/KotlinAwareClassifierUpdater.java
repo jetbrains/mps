@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
  * Loads deeply java content from a class file. This extends regular ClassifierUpdater to use VisitorContext API and
  * create references to either kotlin or java declarations when necessary.
  */
-@GeneratedClass(node = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)/3833041373521274818", model = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)")
+@GeneratedClass(nodeId = "3833041373521274818", model = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)")
 public class KotlinAwareClassifierUpdater extends ClassifierUpdater {
   private final KtReadContext mySolvingContext;
 

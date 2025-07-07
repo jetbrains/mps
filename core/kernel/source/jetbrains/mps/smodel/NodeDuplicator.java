@@ -132,7 +132,8 @@ public final class NodeDuplicator {
   }
 
   private void initExtraConfig(@Nullable final SModel model) {
-    myExtraConfig = (o,c) -> {};
+    final NodeIdentitySupplier nic = NodeIdentityComponent.getInstance();
+    myExtraConfig = (o,c) -> nic.configure(c, model, o);
   }
 
   private void initIgnoreAttributes() {

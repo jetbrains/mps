@@ -4,34 +4,23 @@ package jetbrains.mps.editor.runtime.style;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
-import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
 import jetbrains.mps.openapi.editor.update.UpdateSession;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 
-@GeneratedClass(node = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)/3966946038721923250", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
+@GeneratedClass(nodeId = "3966946038721923250", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
 public abstract class AbstractStyleClass implements EditorBuilderEnvironment {
-  private final EditorContext myEditorContext;
   private final SNode myNode;
-  private final EditorBuilderEnvironment myDelegateEnv;
+  private final EditorBuilderEnvironment myEditorEnv;
 
-  /**
-   * 
-   * @deprecated replaced with cons that takes single EBE. Keep for couple of releases and delete then; delegate everything to env
-   */
-  @Deprecated(since = "2022.3", forRemoval = true)
-  public AbstractStyleClass(EditorContext context, SNode node) {
-    myEditorContext = context;
-    myNode = node;
-    myDelegateEnv = null;
-  }
-  protected AbstractStyleClass(EditorBuilderEnvironment env) {
-    myEditorContext = env.getEditorContext();
+  protected AbstractStyleClass(@NotNull EditorBuilderEnvironment env) {
     myNode = env.getNode();
-    myDelegateEnv = env;
+    myEditorEnv = env;
   }
 
   public abstract void apply(Style toStyle, EditorCell editorCell);
@@ -43,7 +32,7 @@ public abstract class AbstractStyleClass implements EditorBuilderEnvironment {
   }
 
   public EditorContext getEditorContext() {
-    return myEditorContext;
+    return myEditorEnv.getEditorContext();
   }
 
   public SNode getNode() {
@@ -52,30 +41,16 @@ public abstract class AbstractStyleClass implements EditorBuilderEnvironment {
 
   @Override
   public EditorCellFactory getCellFactory() {
-    if (myDelegateEnv != null) {
-      return myDelegateEnv.getCellFactory();
-    } else {
-      // stolen from AbstractEditorBuilder
-      return getUpdateSession().getCellFactory();
-    }
+    return myEditorEnv.getCellFactory();
   }
 
   @Override
   public UpdateSession getUpdateSession() {
-    if (myDelegateEnv != null) {
-      return myDelegateEnv.getUpdateSession();
-    } else {
-      // stolen from AbstractEditorBuilder
-      return myEditorContext.getEditorComponent().getUpdater().getCurrentUpdateSession();
-    }
+    return myEditorEnv.getUpdateSession();
   }
 
   @Override
   public StyleRegistry getStyleRegistry() {
-    if (myDelegateEnv != null) {
-      return myDelegateEnv.getStyleRegistry();
-    } else {
-      return StyleRegistry.getInstance();
-    }
+    return myEditorEnv.getStyleRegistry();
   }
 }

@@ -12,7 +12,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.ide.devkit.editorMenuTrace.EditorMenuTraceTool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 
 public class ShowEditorMenuItemTrace_Action extends BaseAction {
@@ -58,7 +58,7 @@ public class ShowEditorMenuItemTrace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    EditorMenuTraceTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(EditorMenuTraceTool.class);
+    EditorMenuTrace_Tool tool = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(EditorMenuTrace_Tool.class);
     EditorMenuTraceInfo editorMenuTraceInfo = null;
     if (event.getData(PlatformCoreDataKeys.SELECTED_ITEM) instanceof SubstituteAction) {
       editorMenuTraceInfo = ((SubstituteAction) event.getData(PlatformCoreDataKeys.SELECTED_ITEM)).getEditorMenuTraceInfo();

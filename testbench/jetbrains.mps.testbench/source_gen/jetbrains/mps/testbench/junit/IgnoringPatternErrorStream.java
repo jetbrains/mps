@@ -12,7 +12,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.regex.Matcher;
 
-@GeneratedClass(node = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/8119336008937684321", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
+@GeneratedClass(nodeId = "8119336008937684321", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
 public class IgnoringPatternErrorStream implements Output {
   private static class CompositeStream extends FilterOutputStream {
     private final FilterOutputStream mySecond;

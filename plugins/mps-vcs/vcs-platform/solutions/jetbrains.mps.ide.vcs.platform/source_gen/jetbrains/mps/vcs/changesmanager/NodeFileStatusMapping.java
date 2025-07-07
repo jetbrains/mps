@@ -32,7 +32,7 @@ import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2722286076674338162", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "2722286076674338162", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class NodeFileStatusMapping implements Disposable {
   private final Map<SNodeReference, FileStatus> myFileStatusMap = new ConcurrentHashMap<SNodeReference, FileStatus>();
   private final CurrentDifferenceListener myGlobalListener = new MyGlobalListener();

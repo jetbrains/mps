@@ -14,7 +14,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMEnumValue;
 
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/2275269892056742751", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "2275269892056742751", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 /*package*/ final class ASMNodeIdFactory {
   private final Map<String, SNodeId.Foreign> myCache;
   private ASMClass myCurrentClass;

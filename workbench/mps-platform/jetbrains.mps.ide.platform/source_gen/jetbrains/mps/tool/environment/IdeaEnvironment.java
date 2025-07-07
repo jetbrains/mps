@@ -6,6 +6,12 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.util.PlatformUtils;
+import java.util.List;
+import java.util.function.Supplier;
+import com.intellij.openapi.util.text.HtmlChunk;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import com.intellij.ide.plugins.PluginManagerCore;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.annotation.Hack;
 import java.util.StringJoiner;
@@ -13,7 +19,6 @@ import java.io.File;
 import jetbrains.mps.tool.common.PluginData;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.PathManager;
 import java.awt.GraphicsEnvironment;
 import com.intellij.testFramework.TestApplicationManager;
@@ -23,22 +28,23 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.testFramework.IndexingTestUtil;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.Application;
 import jetbrains.mps.project.ProjectManager;
-import java.util.List;
-import java.util.ArrayList;
 import com.intellij.testFramework.PlatformTestUtil;
 import com.intellij.openapi.vfs.impl.jar.JarFileSystemImpl;
 import jetbrains.mps.library.LibraryInitializer;
+import jetbrains.mps.vfs.VFSManager;
 import java.util.Collections;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import java.util.concurrent.TimeUnit;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import jetbrains.mps.core.platform.Platform;
 import com.intellij.ide.startup.StartupManagerEx;
@@ -49,7 +55,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * TODO: fix dispose methods
  */
-@GeneratedClass(node = "r:1d4e7c57-c144-4228-9dec-8180ddf9f0ee(jetbrains.mps.tool.environment)/7413225496542992859", model = "r:1d4e7c57-c144-4228-9dec-8180ddf9f0ee(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "7413225496542992859", model = "r:1d4e7c57-c144-4228-9dec-8180ddf9f0ee(jetbrains.mps.tool.environment)")
 public final class IdeaEnvironment extends EnvironmentBase {
   private static final Logger LOG = Logger.getLogger(IdeaEnvironment.class);
   private static final String PLUGIN_PATH = "plugin.path";
@@ -65,7 +71,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
   public IdeaEnvironment(@NotNull EnvironmentConfig config) {
     super(config);
-    PlatformUtils.setDefaultPrefixForCE();
+    System.setProperty(PlatformUtils.PLATFORM_PREFIX_KEY, "MPS");
   }
 
   public void init() {
@@ -75,6 +81,15 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
     addRequiredPlugins(myConfig);
     createIdeaApplication();
+
+    // this is the only way currently to access the plugin loading errors 
+    List<Supplier<HtmlChunk>> errors = ListSequence.fromListWithValues(new ArrayList<>(), PluginManagerCore.INSTANCE.getAndClearPluginLoadingErrors());
+    for (Supplier<HtmlChunk> err : errors) {
+      if (LOG.isErrorLevel()) {
+        LOG.error("" + err.get().toString());
+      }
+    }
+
     // fixme IJ must allow to use our own logging initialization
     // FIXME why do I care to initialize again once IDEA did its own log configuration?
 
@@ -149,7 +164,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   }
 
   private MPSCoreComponents getMPSCoreComponents() {
-    return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    return MPSCoreComponents.getInstance();
   }
 
   private void createIdeaApplication() {
@@ -207,6 +222,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
     if (testMode) {
       Disposer.register(openedProject.getProject(), disposable0);
+      IndexingTestUtil.Companion.waitUntilIndexesAreReady(openedProject.getProject());
     }
     return openedProject;
   }
@@ -281,7 +297,9 @@ public final class IdeaEnvironment extends EnvironmentBase {
   @Override
   protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
-      LibraryContributorHelper helper = new LibraryContributorHelper();
+      // defaults to IoFileSystem for now (historically), although I don't think it's bad idea to go with Java IO FS 
+      // in IdeaEnv (after all, we are for tests/tools scenarios here, don't need full magic of IDEA VFS). OTOH, there would be IDEA VFS anyway.
+      LibraryContributorHelper helper = new LibraryContributorHelper(getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
       libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader())));
     }
     // modules from IDEA plugins are loaded with regular platform component mechanism (ext points, PluginLibraryContributor and RepositoryInitializingComponent)
@@ -296,15 +314,14 @@ public final class IdeaEnvironment extends EnvironmentBase {
   }
 
   @NotNull
-  private MPSProject openProjectInIdeaEnvironment(File projectFile) {
+  private MPSProject openProjectInIdeaEnvironment(final File projectFile) {
     if (!(projectFile.exists())) {
       throw new ProjectDirectoryDoesNotExistException(projectFile.getAbsolutePath());
     }
-    final ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
     final String filePath = projectFile.getAbsolutePath();
 
-    final Reference<com.intellij.openapi.project.Project> project = new Reference<com.intellij.openapi.project.Project>();
-    final Reference<Exception> exc = new Reference<Exception>();
+    final Reference<MPSProject> project = new Reference<>();
+    final Reference<Exception> exc = new Reference<>();
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
         try {
@@ -312,13 +329,13 @@ public final class IdeaEnvironment extends EnvironmentBase {
             LOG.info("Load and open the project with path '" + filePath + "'");
           }
           // fixme this is an IDE way of opening project
-          project.set(projectManager.loadAndOpenProject(filePath));
-          refreshProjectDir(project.get());
+          project.set(MPSProject.open(filePath));
+          refreshProjectDir(project.get(), projectFile);
         } catch (Exception e) {
           exc.set(e);
         }
       }
-    }, ModalityState.NON_MODAL);
+    }, ModalityState.nonModal());
 
     if (!(exc.isNull())) {
       throw new CouldNotLoadProjectException(String.format("ProjectManager could not load project from '%s'", projectFile.getAbsolutePath()), exc.get());
@@ -330,22 +347,24 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
     // does not seem applicable in test mode
     if (!(myConfig.isTestMode())) {
-      final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get());
+      final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get().getProject());
       waiter.wait0(30, TimeUnit.SECONDS);
     }
 
 
-    return project.get().getComponent(MPSProject.class);
+    return project.get();
   }
 
-  private void refreshProjectDir(@NotNull com.intellij.openapi.project.Project project) {
+  private void refreshProjectDir(@Nullable MPSProject project, @NotNull File projectFile) {
     // calling sync refresh for FS in order to update all modules/models loaded from the project
     // if unit-test is executed with the "reuse caches" option.
-    String basePath = project.getBasePath();
-    if (basePath != null) {
-      CachingFileSystem fs = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
-      fs.getFile(basePath).refresh(new DefaultCachingContext(true, true));
+    if (project == null) {
+      return;
     }
+    CachingFileSystem fs = project.getFileSystem();
+    // XXX apparently (according to uses of Env.openProject()), we don't get path to .mps/ folder, rather to its parent, therefore, don't see a reason to use
+    //    Project.getBasePath() when we got direct project location
+    fs.getFile(projectFile).refresh(new DefaultCachingContext(true, true));
   }
 
   /**

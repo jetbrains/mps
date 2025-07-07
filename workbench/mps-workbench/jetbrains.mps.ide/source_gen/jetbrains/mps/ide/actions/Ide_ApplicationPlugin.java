@@ -10,8 +10,9 @@ import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7162597690968192621", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7162597690968192621", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.ide");
 
@@ -40,7 +41,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new DeleteModules_Action());
     addAction(new DeletePropertyAction_Action());
     addAction(new DeleteReferenceAction_Action());
-    addAction(new ExpandNode_Action());
     addAction(new FastFindNodeUsages_Action());
     addAction(new FindConceptInstances_Action());
     addAction(new FindModelUsages_Action());
@@ -190,7 +190,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(Edit_ActionGroup.ID, "IDE_Edit_ActionGrouptoplevel", null);
     insertGroupIntoAnother(Goto_ActionGroup.ID, "GoToMenu", null);
     insertGroupIntoAnother(GoByReference_ActionGroup.ID, "GoToEditorPopupAddition_ActionGrouprefs", null);
-    insertGroupIntoAnother(EditorInternal_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.EditorPopup_ActionGroup", null);
+    insertGroupIntoAnother(EditorInternal_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_editor);
     insertGroupIntoAnother(ToolsInternal_ActionGroup.ID, "Internal", null);
     insertGroupIntoAnother(DebugActions_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_debug);
     insertGroupIntoAnother(DebugActions_ActionGroup.ID, "EditorPopup_ActionGroupdebug", null);
@@ -242,5 +242,10 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_KeymapChanges());
     return res;
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new InstallNavigationSupport_AppPluginPart());
+    parts.add(new InstallSettings_AppPluginPart());
   }
 }

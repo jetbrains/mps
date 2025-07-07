@@ -8,7 +8,7 @@ import jetbrains.mps.vcs.changesmanager.tree.features.Feature;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/6940763585259488666", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "6940763585259488666", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public interface TreeNodeFeatureExtractor {
   @Nullable
   Feature getFeature(@NotNull MPSTreeNode treeNode);

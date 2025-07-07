@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Just a handy exposure of {@code UndoRunnable} in MPS/BL world
  */
-@GeneratedClass(node = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/6674086783798612283", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
+@GeneratedClass(nodeId = "6674086783798612283", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
 public abstract class NamedCommand extends UndoRunnable.Base {
   public NamedCommand(String title) {
     super(title, null);

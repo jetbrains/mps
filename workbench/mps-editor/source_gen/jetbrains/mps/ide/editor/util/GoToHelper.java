@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressManager;
 
-@GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/2808756344206283880", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
+@GeneratedClass(nodeId = "2808756344206283880", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public final class GoToHelper {
   private GoToHelper() {
   }

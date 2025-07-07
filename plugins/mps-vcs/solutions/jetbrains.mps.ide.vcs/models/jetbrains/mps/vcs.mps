@@ -49,6 +49,7 @@
     <import index="2eq1" ref="r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
+    <import index="1038" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes(jetbrains.mps.vcs.idea.stubs/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -410,11 +411,11 @@
           <node concept="3cpWsn" id="38_6U8fKv7A" role="3cpWs9">
             <property role="TrG5h" value="scope" />
             <node concept="3uibUv" id="38_6U8fKv7B" role="1tU5fm">
-              <ref role="3uigEE" to="1037:~VcsDirtyScopeImpl" resolve="VcsDirtyScopeImpl" />
+              <ref role="3uigEE" to="1038:~VcsDirtyScopeImpl" resolve="VcsDirtyScopeImpl" />
             </node>
             <node concept="2ShNRf" id="38_6U8fKv7C" role="33vP2m">
               <node concept="1pGfFk" id="38_6U8fKv7D" role="2ShVmc">
-                <ref role="37wK5l" to="1037:~VcsDirtyScopeImpl.&lt;init&gt;(com.intellij.openapi.vcs.AbstractVcs)" resolve="VcsDirtyScopeImpl" />
+                <ref role="37wK5l" to="1038:~VcsDirtyScopeImpl.&lt;init&gt;(com.intellij.openapi.vcs.AbstractVcs)" resolve="VcsDirtyScopeImpl" />
                 <node concept="37vLTw" id="3GM_nagT$KN" role="37wK5m">
                   <ref role="3cqZAo" node="38_6U8fKv7o" resolve="vcs" />
                 </node>
@@ -428,7 +429,7 @@
               <ref role="3cqZAo" node="38_6U8fKv7A" resolve="scope" />
             </node>
             <node concept="liA8E" id="38_6U8fKv7J" role="2OqNvi">
-              <ref role="37wK5l" to="1037:~VcsDirtyScopeImpl.addDirtyFile(com.intellij.openapi.vcs.FilePath)" resolve="addDirtyFile" />
+              <ref role="37wK5l" to="1038:~VcsDirtyScopeImpl.addDirtyFile(com.intellij.openapi.vcs.FilePath)" resolve="addDirtyFile" />
               <node concept="2OqwBi" id="38_6U8fKv7K" role="37wK5m">
                 <node concept="2YIFZM" id="38_6U8fKv7L" role="2Oq$k0">
                   <ref role="1Pybhc" to="de5p:~VcsContextFactory" resolve="VcsContextFactory" />

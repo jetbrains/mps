@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
-@GeneratedClass(node = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)/4474271214083120082", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
+@GeneratedClass(nodeId = "4474271214083120082", model = "r:a35795b4-c996-4cf6-bdbd-9ddbda25cde5(jetbrains.mps.debugger.api.ui.tree)")
 public class WatchableNode extends AbstractWatchableNode {
   private boolean myInitialized;
   private final IWatchable myWatchable;

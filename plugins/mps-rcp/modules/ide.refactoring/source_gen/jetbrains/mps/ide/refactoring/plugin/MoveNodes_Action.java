@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesAction;
@@ -39,6 +40,10 @@ public class MoveNodes_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) != null && ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).any((node) -> ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(node))))) {
+      event.getPresentation().setEnabled(false);
+      return;
+    }
+    if (ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodesToMove"))).any((it) -> SNodeOperations.getModel(it).isReadOnly() || SNodeOperations.getModel(it).getModule().isReadOnly())) {
       event.getPresentation().setEnabled(false);
       return;
     }
@@ -87,9 +92,6 @@ public class MoveNodes_Action extends BaseAction {
     {
       SModel p = event.getData(MPSCommonDataKeys.TARGET_MODEL);
       MapSequence.fromMap(_params).put("targetModel", p);
-      if (p == null) {
-        return false;
-      }
     }
     return true;
   }

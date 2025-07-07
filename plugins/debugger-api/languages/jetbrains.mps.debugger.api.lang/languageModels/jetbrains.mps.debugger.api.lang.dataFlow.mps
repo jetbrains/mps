@@ -76,7 +76,7 @@
           <node concept="2OqwBi" id="1mQJZ8CEaca" role="3Ah4Yx">
             <node concept="3__QtB" id="1mQJZ8CEacb" role="2Oq$k0" />
             <node concept="3TrEf2" id="1mQJZ8CEacc" role="2OqNvi">
-              <ref role="3Tt5mk" to="86gq:2eCkIB4eWFX" />
+              <ref role="3Tt5mk" to="86gq:2eCkIB4eWFX" resolve="projectExpression" />
             </node>
           </node>
         </node>

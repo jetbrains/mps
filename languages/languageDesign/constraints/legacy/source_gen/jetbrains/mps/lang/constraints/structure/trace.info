@@ -13,7 +13,7 @@
       <unit at="12,0,468,0" name="jetbrains.mps.lang.constraints.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.constraints.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.constraints.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,126,0" name="jetbrains.mps.lang.constraints.structure.LanguageConceptSwitch" />
@@ -635,8 +635,8 @@
       <node id="3754598629525415384" at="71,132,72,75" concept="0" />
       <node id="1213093968558" at="72,75,73,35" concept="0" />
       <node id="1213093968558" at="73,35,74,32" concept="0" />
-      <node id="1213093968558" at="74,32,75,56" concept="0" />
-      <node id="1213093968558" at="75,56,76,50" concept="0" />
+      <node id="1213093968558" at="74,32,75,45" concept="0" />
+      <node id="1213093968558" at="75,45,76,50" concept="0" />
       <node id="1213093968558" at="77,9,78,40" concept="4" />
       <node id="6354210107034397076" at="466,0,467,0" concept="6" trace="HELP_URL" />
       <node id="1213093968558" at="69,52,77,9" concept="2" />

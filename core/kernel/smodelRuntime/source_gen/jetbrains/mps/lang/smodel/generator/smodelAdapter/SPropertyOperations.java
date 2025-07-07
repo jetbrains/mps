@@ -19,7 +19,7 @@ import jetbrains.mps.references.Reference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527298519", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527298519", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class SPropertyOperations {
   public static String assign(SNode node, SProperty property, String propertyValue) {
     set(node, property, propertyValue);

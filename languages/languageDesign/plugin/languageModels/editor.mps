@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
@@ -1739,46 +1739,6 @@
           </node>
           <node concept="2iRfu4" id="i2ICeFe" role="2iSdaV" />
         </node>
-        <node concept="3EZMnI" id="hBy_nHi" role="3EZMnx">
-          <node concept="3F0ifn" id="hBy_nHj" role="3EZMnx">
-            <property role="3F0ifm" value="icon(deprecated)" />
-            <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
-            <node concept="VPM3Z" id="hEU$PT1" role="3F10Kt">
-              <property role="VOm3f" value="true" />
-            </node>
-          </node>
-          <node concept="3F0ifn" id="hByF_V_" role="3EZMnx">
-            <property role="3F0ifm" value=":" />
-            <node concept="VPM3Z" id="hEU$PC$" role="3F10Kt">
-              <property role="VOm3f" value="false" />
-            </node>
-            <node concept="2UZ17K" id="hEV2aGv" role="3F10Kt">
-              <property role="2UZ17L" value="g$1Qtxb/punctuation" />
-            </node>
-          </node>
-          <node concept="3F0A7n" id="XPkXgFeS8p" role="3EZMnx">
-            <ref role="1NtTu8" to="tp4k:hByz$4F" resolve="iconPath" />
-          </node>
-          <node concept="VPM3Z" id="hEU$PIy" role="3F10Kt">
-            <property role="VOm3f" value="false" />
-          </node>
-          <node concept="2iRfu4" id="i2ICeGW" role="2iSdaV" />
-          <node concept="pkWqt" id="XPkXgFeSkc" role="pqm2j">
-            <node concept="3clFbS" id="XPkXgFeSkd" role="2VODD2">
-              <node concept="3clFbF" id="XPkXgFeSrq" role="3cqZAp">
-                <node concept="2OqwBi" id="XPkXgFeTJV" role="3clFbG">
-                  <node concept="2OqwBi" id="XPkXgFeSBX" role="2Oq$k0">
-                    <node concept="pncrf" id="XPkXgFeSrp" role="2Oq$k0" />
-                    <node concept="3TrcHB" id="XPkXgFeT9X" role="2OqNvi">
-                      <ref role="3TsBF5" to="tp4k:hByz$4F" resolve="iconPath" />
-                    </node>
-                  </node>
-                  <node concept="17RvpY" id="XPkXgFeUBz" role="2OqNvi" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3EZMnI" id="XPkXgFeSjg" role="3EZMnx">
           <node concept="3F0ifn" id="XPkXgFeSjh" role="3EZMnx">
             <property role="3F0ifm" value="icon" />
@@ -2991,6 +2951,16 @@
       <node concept="3F0ifn" id="6$2CuKCDA$B" role="3EZMnx">
         <property role="3F0ifm" value=")" />
         <ref role="1k5W1q" to="tpen:hXb$V4T" resolve="RightBracket" />
+      </node>
+      <node concept="3F0ifn" id="2$nlLZcl7Dt" role="3EZMnx">
+        <property role="3F0ifm" value="open tab instantly:" />
+        <node concept="pVoyu" id="2$nlLZcl7Pp" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="2$nlLZcnuLU" role="3EZMnx">
+        <property role="1$x2rV" value="&lt;true by default&gt;" />
+        <ref role="1NtTu8" to="tp4k:2$nlLZcnuCb" resolve="openTab" />
       </node>
       <node concept="l2Vlx" id="6$2CuKCDA$v" role="2iSdaV" />
     </node>

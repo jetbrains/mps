@@ -60,6 +60,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setBig(true);
         setCellContext(editorCell);
         editorCell.setDefaultText("<no theProperty>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(true);
       }

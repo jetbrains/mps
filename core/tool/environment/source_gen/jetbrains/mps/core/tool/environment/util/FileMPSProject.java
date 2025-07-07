@@ -8,6 +8,10 @@ import jetbrains.mps.project.FileBasedProject;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.Platform;
+import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.project.ProjectModelAccess;
+import jetbrains.mps.project.ProjectRepository;
+import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
@@ -17,12 +21,17 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
 
-@GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/2546981710035458892", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
+@GeneratedClass(nodeId = "2546981710035458892", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public class FileMPSProject extends ProjectBase implements FileBasedProject {
   private final File myProjectFile;
 
   public FileMPSProject(@NotNull File file, @NotNull Platform mpsPlatform) {
-    super(file.getName(), mpsPlatform);
+    super(file.getName(), mpsPlatform, false);
+    MPSModuleRepository rootRepo = mpsPlatform.findComponent(MPSModuleRepository.class);
+    ProjectModelAccess pma = new ProjectModelAccess(this, rootRepo.getModelAccess());
+    ProjectRepository r = new ProjectRepository(this, rootRepo, mpsPlatform.findComponent(SRepositoryRegistry.class), pma);
+    r.init();
+    initRepository(r);
     myProjectFile = file;
     init();
   }
@@ -57,7 +66,6 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
     getModelAccess().runWriteAction(() -> {
       ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
       loadModules(pd.getModulePaths());
-      fireModulesLoaded();
     });
   }
 

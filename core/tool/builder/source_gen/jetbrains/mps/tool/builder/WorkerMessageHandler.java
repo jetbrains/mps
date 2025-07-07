@@ -10,7 +10,7 @@ import jetbrains.mps.messages.IMessage;
 /**
  * Handles messages by delegating to respective worker methods
  */
-@GeneratedClass(node = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/878521226301294681", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
+@GeneratedClass(nodeId = "878521226301294681", model = "r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)")
 public class WorkerMessageHandler implements IMessageHandler {
   private final WorkerBase myWorker;
 

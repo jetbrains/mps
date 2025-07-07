@@ -16,6 +16,8 @@
 package jetbrains.mps.ide.editor;
 
 import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
+import com.intellij.ide.FileEditorProvider;
+import com.intellij.ide.SelectInContext;
 import com.intellij.ide.structureView.StructureViewBuilder;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -24,11 +26,15 @@ import com.intellij.openapi.fileEditor.DocumentsEditor;
 import com.intellij.openapi.fileEditor.FileEditorLocation;
 import com.intellij.openapi.fileEditor.FileEditorState;
 import com.intellij.openapi.fileEditor.FileEditorStateLevel;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
+import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.editor.BaseNodeEditor.BaseEditorState;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.editor.Editor;
+import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -136,9 +142,9 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
     myDelayedState = null;
     if (isUndo) {
       //we need it here since undo might need to flush events which requires write action
-      myProject.getModelAccess().runWriteAction(() -> myNodeEditor.loadState(editorState));
+      myProject.getModelAccess().runWriteAction(() -> myNodeEditor.loadState(editorState, isUndo));
     } else {
-      myNodeEditor.loadState(editorState);
+      myNodeEditor.loadState(editorState, isUndo);
       final EditorState result = myProject.getModelAccess().computeReadAction(myNodeEditor::saveState);
       if (result.getClass() != editorState.getClass()) {
         myDelayedState = editorState;
@@ -320,7 +326,54 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
         //  commit 1fa2b4a8 (original MPS-15532 fix))
         return MPSFileNodeEditor.this.getFile();
       }
+      if (SelectInContext.DATA_KEY.is(dataId)) {
+        EditorComponent editorComponent = MPSFileNodeEditor.this.getNodeEditor().getCurrentEditorComponent();
+        if (editorComponent == null || editorComponent.getEditedNode() == null) {
+          return null;
+        }
+        SNode selectedNode = editorComponent.getSelectedNode();
+        SNode editedNode = editorComponent.getEditedNode();
+        if (selectedNode == null) {
+          selectedNode = editedNode;
+        }
+        MPSNodeVirtualFile rootVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), editedNode);
+        MPSNodeVirtualFile nodeVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), selectedNode);
+        return new MySelectInContext(rootVirtualFile, nodeVirtualFile);
+      }
+
       return null;
     }
+
+    private class MySelectInContext implements SelectInContext {
+
+      private final VirtualFile myRootVirtualFile;
+      private final VirtualFile myNodeVirtualFile;
+
+      private MySelectInContext(VirtualFile rootVirtualFile, VirtualFile nodeVirtualFile) {
+        myRootVirtualFile = rootVirtualFile;
+        myNodeVirtualFile = nodeVirtualFile;
+      }
+
+      @Override
+      public @NotNull Project getProject() {
+        return myProject.getProject();
+      }
+
+      @Override
+      public @NotNull VirtualFile getVirtualFile() {
+        return myRootVirtualFile;
+      }
+
+      @Override
+      public @Nullable Object getSelectorInFile() {
+        return myNodeVirtualFile;
+      }
+
+      @Override
+      public @Nullable FileEditorProvider getFileEditorProvider() {
+        return null;
+      }
+    }
+
   }
 }

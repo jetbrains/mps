@@ -16,6 +16,7 @@
 package jetbrains.mps.util;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -374,12 +375,15 @@ public class NameUtil {
     if (node == null) {
       return "null";
     }
-    String name = node.getName();
+    return compactNodeFQName(node, node.getName());
+  }
+
+  public static String compactNodeFQName(@NotNull SNode node, @Nullable String alreadyKnownName) {
     SModel model = node.getModel();
     if (model == null) {
-      return name;
+      return alreadyKnownName;
     }
-    return compactNamespace(getModelLongName(model)) + '.' + name;
+    return compactNamespace(getModelLongName(model)) + '.' + alreadyKnownName;
   }
 
   /**

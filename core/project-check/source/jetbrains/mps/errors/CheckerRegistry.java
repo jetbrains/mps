@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ import java.util.List;
 public final class CheckerRegistry implements CoreComponent {
   private final MultiMap<CheckerCategory, IChecker<?, ?>> myCheckers = new MultiMap<>();
   private final MultiMap<CheckerCategory, AbstractNodeCheckerInEditor> myEditorCheckers = new MultiMap<>();
-  @NotNull private final ComponentHost myHost;
+  private final ComponentHost myHost;
 
   public CheckerRegistry(@NotNull ComponentHost host) {
     myHost = host;
@@ -91,7 +91,7 @@ public final class CheckerRegistry implements CoreComponent {
   /**
    * Returns a list of all editor checkers (instances of {@link AbstractNodeCheckerInEditor}) registered with this registry.
    * <p>
-   *   See {@link jetbrains.mps.ide.editor.MPSValidationComponent}
+   *   See {@code jetbrains.mps.ide.editor.MPSValidationComponent}
    * </p>
    */
   public List<AbstractNodeCheckerInEditor> getEditorCheckers() {

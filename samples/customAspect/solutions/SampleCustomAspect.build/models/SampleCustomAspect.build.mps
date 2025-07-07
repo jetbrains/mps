@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="8" />
   </languages>
   <imports>
     <import index="ffeo" ref="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)" />
@@ -179,7 +179,7 @@
       <property role="2_Ic$B" value="true" />
       <property role="2_GNG2" value="1024" />
       <property role="3fwGa$" value="IntelliJ" />
-      <property role="TZNOO" value="11" />
+      <property role="TZNOO" value="21" />
       <node concept="3qWCbU" id="5yMuYWFN8Pp" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
@@ -199,13 +199,13 @@
       <node concept="m$f5U" id="4FBizC0NEuN" role="m$_yh">
         <ref role="m$f5T" node="4FBizC0NEuH" resolve="SampleCustomAspect" />
       </node>
-      <node concept="m$_yC" id="4FBizC0NEuO" role="m$_yJ">
-        <ref role="m$_y1" to="ffeo:4k71ibbKLe8" resolve="jetbrains.mps.core" />
-      </node>
       <node concept="3_J27D" id="4FBizC0NEuP" role="m_cZH">
         <node concept="3Mxwew" id="4FBizC0NEuQ" role="3MwsjC">
           <property role="3MwjfP" value="SampleCustomAspect" />
         </node>
+      </node>
+      <node concept="m$_yC" id="6xueyVzRueL" role="m$_yJ">
+        <ref role="m$_y1" to="ffeo:4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
     </node>
     <node concept="2G$12M" id="4FBizC0NEuH" role="3989C9">

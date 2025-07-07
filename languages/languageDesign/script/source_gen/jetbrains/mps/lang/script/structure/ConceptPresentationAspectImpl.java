@@ -99,7 +99,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateProperty(0x118d28c5944L, "migrationFromBuild");
           cpb.deprecateProperty(0x118d28cf5b3L, "category");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a9b0s);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_MigrationScript = cpb.create();
         }
         return props_MigrationScript;

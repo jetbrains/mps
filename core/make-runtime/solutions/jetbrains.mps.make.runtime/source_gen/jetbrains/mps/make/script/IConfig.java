@@ -5,7 +5,7 @@ package jetbrains.mps.make.script;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.resources.IPropertiesAccessor;
 
-@GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/8339029394035014655", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
+@GeneratedClass(nodeId = "8339029394035014655", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public interface IConfig {
   boolean configure(IConfigMonitor cmon, IPropertiesAccessor pa);
   class Stub implements IConfig {

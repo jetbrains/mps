@@ -14,7 +14,7 @@ import jetbrains.mps.ide.findusages.view.UsagesTree;
 import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4106919528499268085", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "4106919528499268085", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class TreeHighlighterFactory implements Disposable {
   private final Project myProject;
   private final MergingUpdateQueue myQueue = new MergingUpdateQueue("MPS Changes Manager RehighlightAll Watcher Queue", 500, true, null, null, null, false);

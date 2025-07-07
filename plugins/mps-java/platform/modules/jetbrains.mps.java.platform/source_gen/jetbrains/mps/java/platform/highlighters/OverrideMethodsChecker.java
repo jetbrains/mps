@@ -49,7 +49,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 /**
  * Checks for overridden and implemented methods in order to highlight them
  */
-@GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182578830", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
+@GeneratedClass(nodeId = "8432634623182578830", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   private static final int MAX_MESSAGE_NUMBER = 5;
   private static final String LF = "\n";

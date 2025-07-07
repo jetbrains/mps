@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.projectPane.fileSystem.nodes;
 
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
+import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.MPSProject;
@@ -51,7 +51,7 @@ public abstract class AbstractFileTreeNode extends MPSTreeNode {
   }
 
   private void updatePresentationInternal() {
-    setColor(VcsFileStatusProvider.getInstance(myProject.getProject()).getFileStatus(myFile).getColor());
+    setColor(FileStatusManager.getInstance(myProject.getProject()).getStatus(myFile).getColor());
   }
 
   public VirtualFile getFile() {

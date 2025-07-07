@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.SNodeId;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SReference;
 
-@GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780703469", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
+@GeneratedClass(nodeId = "453110257780703469", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ReferencePersister4 implements IReferencePersister {
   private static final Logger LOG = Logger.getLogger(ReferencePersister4.class);
   protected SNode mySourceNode;

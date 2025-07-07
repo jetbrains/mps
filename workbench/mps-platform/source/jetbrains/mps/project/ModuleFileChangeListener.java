@@ -140,10 +140,15 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
   @Override
   public void moduleLoaded(ModulePath modulePath, @NotNull SModule module) {
     final IFile file = modulePath.getFile();
+    // FIXME I'd love to use `file = file.stepUpToArchive()` here not to add listeners inside archives, but this change require careful fix in other
+    //       places ModuleFileTracker is used (especially in update/#buildDeltaFor()
+    boolean needListener = !myProjectModulesAndFiles.isAnyModuleTrackedFor(file);
     myProjectModulesAndFiles.track(file, module);
     // Shall account for more than one module for the same path (e.g. if/when ProjectModuleLoader dispatches events for generators)
-    //   IFile.addListener implementation now adds given listener only once, we have to be careful when removing a listener, though.
-    file.addListener(myRedispatchListener);
+    //   although IFile.addListener implementation adds given listener for a file only once, doesn't hurt to be careful/explicit about adding one.
+    if (needListener) {
+      file.addListener(myRedispatchListener);
+    }
   }
 
   @Override

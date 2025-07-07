@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.model.SModelName;
  * Just a handy alternative to using separate LanguageProducer and SolutionProducer
  * (use producers directly in case defaults are not fine for your scenarios)
  */
-@GeneratedClass(node = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)/3515481342124049796", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
+@GeneratedClass(nodeId = "3515481342124049796", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
 public class LanguageAndSolutionsProducer {
   private final MPSProject myProject;
   private boolean myRuntime = false;
@@ -38,6 +38,7 @@ public class LanguageAndSolutionsProducer {
   private boolean mySandbox = false;
   private Solution myRuntimeModule;
   private Solution mySandboxModule;
+  private boolean myWithGenerator = true;
 
   public LanguageAndSolutionsProducer(@NotNull MPSProject mpsProject) {
     myProject = mpsProject;
@@ -67,6 +68,12 @@ public class LanguageAndSolutionsProducer {
     return this;
   }
 
+  public LanguageAndSolutionsProducer withGenerator(boolean flag) {
+    myWithGenerator = flag;
+    return this;
+  }
+
+
   public Optional<Solution> getRuntimeSolution() {
     return (myRuntimeModule == null ? Optional.empty() : Optional.of(myRuntimeModule));
   }
@@ -77,7 +84,7 @@ public class LanguageAndSolutionsProducer {
 
   @NotNull
   public Language create(@NotNull String namespace, @NotNull IFile moduleDir) {
-    Language l = new LanguageProducer(myProject).create(namespace, moduleDir);
+    Language l = new LanguageProducer(myProject).withGenerator(myWithGenerator).create(namespace, moduleDir);
     ModuleDependencyVersions versionFix = versionFix();
 
     // I didn't like nested rt/sandbox modules under a language as it used to be with NewLanguageDialog.

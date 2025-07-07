@@ -4,6 +4,6 @@ package jetbrains.mps.make.delta;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:0bcaf439-5bc6-429b-a457-4e0d9746449f(jetbrains.mps.make.delta)/5429064975945235670", model = "r:0bcaf439-5bc6-429b-a457-4e0d9746449f(jetbrains.mps.make.delta)")
+@GeneratedClass(nodeId = "5429064975945235670", model = "r:0bcaf439-5bc6-429b-a457-4e0d9746449f(jetbrains.mps.make.delta)")
 public interface IInternalDelta extends IDelta {
 }

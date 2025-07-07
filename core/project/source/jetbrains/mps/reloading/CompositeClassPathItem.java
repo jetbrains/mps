@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.reloading;
 
 import jetbrains.mps.util.iterable.IterableEnumeration;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
@@ -25,9 +26,17 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class CompositeClassPathItem extends AbstractClassPathItem {
-  private List<IClassPathItem> myChildren = new ArrayList<>();
+  private final List<IClassPathItem> myChildren = new ArrayList<>();
+
+  public CompositeClassPathItem() {
+  }
+
+  public CompositeClassPathItem(@NotNull Stream<IClassPathItem> items) {
+    items.forEach(myChildren::add);
+  }
 
   public void add(IClassPathItem item) {
     assert item != null;

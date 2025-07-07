@@ -4,7 +4,7 @@ package jetbrains.mps.ide.platform.refactoring;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/3748064186690605985", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "3748064186690605985", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public interface RefactoringViewAction {
   void performAction(RefactoringViewItem refactoringViewItem);
 }

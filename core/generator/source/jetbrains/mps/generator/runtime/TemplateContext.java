@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -107,16 +106,6 @@ public interface TemplateContext {
    * @since 2020.3
    */
   SNode getCallSiteNode();
-
-  /**
-   * @deprecated use {@link #subContext(PatternMatch)} instead
-   * @return new context that preserves input, but discards {@link #getInputName() mapping label}
-   */
-  @Deprecated(since = "2024.1", forRemoval = true)
-  default TemplateContext subContext(GeneratedMatchingPattern pattern) {
-    // once usages of GMP gone, we can drop [pattern-runtime] dependency of [generator-engine]
-    return subContext(pattern::getFieldValue);
-  }
 
   TemplateContext subContext(PatternMatch pattern);
 

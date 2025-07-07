@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 
-@GeneratedClass(node = "r:f39afe13-666a-48f2-9d7c-2f9366f78fe5(jetbrains.mps.typesystemEngine.checker)/5231630840089786268", model = "r:f39afe13-666a-48f2-9d7c-2f9366f78fe5(jetbrains.mps.typesystemEngine.checker)")
+@GeneratedClass(nodeId = "5231630840089786268", model = "r:f39afe13-666a-48f2-9d7c-2f9366f78fe5(jetbrains.mps.typesystemEngine.checker)")
 public class TypesystemChecker extends IChecker.AbstractRootChecker<NodeReportItem> implements IChecker<SNode, NodeReportItem> {
   public TypesystemChecker() {
   }

@@ -20,7 +20,7 @@ public class EnumerationDescriptor_StaticScope extends EnumerationDescriptorBase
   private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "none", 0x4b014033eedc8becL, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447716");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4b014033eedc8be7L, 0x4b014033eedc8be8L, 0x4b014033eedc8be9L, 0x4b014033eedc8becL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_global_0, myMember_root_0, myMember_none_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_global_0, myMember_root_0, myMember_none_0);
 
   @Nullable
   @Override

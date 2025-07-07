@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 /**
  * Check correctness of diff algorithm
  */
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/5632611840849159681", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "5632611840849159681", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class StructuredChangesCalculationTest extends ChangesTestBase {
   @Test
   public void changeProperty() {

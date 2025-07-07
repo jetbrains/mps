@@ -39,7 +39,6 @@
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="true">8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)</dependency>
-    <dependency reexport="false">3a8d80d2-32d9-f1f2-4443-6a1111e12ef3(MPS.Boot)</dependency>
     <dependency reexport="false">f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)</dependency>
     <dependency reexport="false">5a9ccb4c-d683-45a8-bc1d-ecfdfb8366f0(gnu.trove)</dependency>
     <!-- next two have to disappear once we break constraints-kernel cycle -->

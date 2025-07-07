@@ -4,8 +4,8 @@
 package jetbrains.mps.kotlin.stubs.loading.signature
 
 import jetbrains.mps.kotlin.stubs.loading.PackageName
-import kotlinx.metadata.*
-import kotlinx.metadata.internal.common.KmModuleFragment
+import kotlin.metadata.*
+import kotlin.metadata.internal.common.KmModuleFragment
 
 @JvmInline
 value class MemberSignature(val name: String)

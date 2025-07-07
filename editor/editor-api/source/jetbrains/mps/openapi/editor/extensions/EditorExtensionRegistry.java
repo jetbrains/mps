@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor.extensions;
 
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
  * Maintains a set of {@linkplain EditorExtension editor extensions} that are used to extend editor components. All extensions will be given the opportunity
  * to extend all editor components, including extensions registered after an editor component is created.
  */
-public interface EditorExtensionRegistry {
+public interface EditorExtensionRegistry extends CoreComponent {
   /**
    * Register an editor extension.
    *

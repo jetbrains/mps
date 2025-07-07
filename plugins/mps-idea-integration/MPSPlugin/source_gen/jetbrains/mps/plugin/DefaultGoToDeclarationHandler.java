@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/5516192790075456626", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "5516192790075456626", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 /*package*/ class DefaultGoToDeclarationHandler extends GoToDeclarationHandlerRegistry.GoToDeclarationHandler {
   public DefaultGoToDeclarationHandler() {
   }

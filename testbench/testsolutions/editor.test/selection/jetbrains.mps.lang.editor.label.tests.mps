@@ -38,9 +38,6 @@
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="210559400605421433" name="jetbrains.mps.lang.test.structure.PressMouseStatement" flags="ng" index="37Q87h">
         <property id="210559400606080744" name="y" index="37OD10" />
         <property id="210559400606080743" name="x" index="37OD1f" />
@@ -242,9 +239,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="50UgHNTM2nS">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="LiM7Y" id="VpSNXveJ5g">
     <property role="TrG5h" value="LabelWithBrackets_Click" />

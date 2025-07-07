@@ -68,7 +68,11 @@ public class MPSNavBarExtension implements NavBarModelExtension {
     }
     SNodeActionData data = dataContext.getData(SNodeActionData.KEY);
     if (data != null) {
-      return new MPSPsiNode(PsiManager.getInstance(p), data.node());
+      final MPSPsiNode mpsPsiNode = new MPSPsiNode(PsiManager.getInstance(p), data.node());
+      if (!UISettings.getInstance().getShowMembersInNavigationBar()) {
+        return mpsPsiNode.getMPSPsiRoot();
+      }
+      return mpsPsiNode;
     }
     var modelData = dataContext.getData(SModelActionData.KEY);
     if (modelData != null) {
@@ -91,11 +95,6 @@ public class MPSNavBarExtension implements NavBarModelExtension {
   @Nullable
   @Override
   public PsiElement adjustElement(@NotNull PsiElement psiElement) {
-    if (!UISettings.getInstance().getShowMembersInNavigationBar()) {
-      if (psiElement instanceof MPSPsiNode) {
-        return ((MPSPsiNode) psiElement).getMPSPsiRoot();
-      }
-    }
     return psiElement;
   }
 

@@ -87,4 +87,10 @@ public abstract class VirtualFolder {
     }
   }
 
+  public static class Transients extends VirtualFolder {
+    public Transients() {
+      super("Checkpoints and Transient Models");
+    }
+  }
+
 }

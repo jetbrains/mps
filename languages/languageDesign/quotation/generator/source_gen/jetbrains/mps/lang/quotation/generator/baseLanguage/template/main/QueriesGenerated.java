@@ -27,7 +27,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.behavior.ContainmentLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
-import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.behavior.ConceptId__BehaviorDescriptor;
@@ -43,7 +42,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -435,7 +433,7 @@ public class QueriesGenerated {
     return (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilderInitProperty$xv, false, false), LINKS.property$Y_u4), LINKS.dataType$5j5Y));
   }
   public static SNode sourceNodeQuery_9_0(final SourceSubstituteMacroNodeContext _context) {
-    SNode originalNode = TracingUtil.getInputNode(_context.getNode(), _context.getOriginalInputModel().getRepository());
+    SNode originalNode = _context.getOriginalCopiedInputNode(_context.getNode());
     if (originalNode == null) {
       originalNode = _context.getNode();
     }
@@ -641,8 +639,7 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_9_2(final SourceSubstituteMacroNodesContext _context) {
     final List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    SRepository repo = _context.getOriginalInputModel().getRepository();
-    SNode originalNode = TracingUtil.getInputNode(_context.getNode(), repo);
+    SNode originalNode = _context.getOriginalCopiedInputNode(_context.getNode());
     if (originalNode == null) {
       originalNode = _context.getNode();
     }

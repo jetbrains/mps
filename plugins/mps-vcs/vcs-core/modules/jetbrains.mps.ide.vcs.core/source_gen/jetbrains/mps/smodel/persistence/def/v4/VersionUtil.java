@@ -5,7 +5,7 @@ package jetbrains.mps.smodel.persistence.def.v4;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.SNodeId;
 
-@GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780704953", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
+@GeneratedClass(nodeId = "453110257780704953", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class VersionUtil {
   private static final char VERSION_SEPARATOR_CHAR = ':';
   private static final String VERSION_SEPARATOR = "" + VERSION_SEPARATOR_CHAR;

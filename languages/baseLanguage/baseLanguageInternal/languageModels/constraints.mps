@@ -2,6 +2,7 @@
 <model ref="r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)">
   <persistence version="9" />
   <languages>
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -574,6 +575,28 @@
         </node>
         <node concept="3clFbF" id="147CB3QsUaB" role="3cqZAp">
           <node concept="3clFbT" id="147CB3QsUaC" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="4YxXGhSBzN$">
+    <ref role="1M2myG" to="tp68:h8HPosR" resolve="InternalPartialFieldReference" />
+    <node concept="9S07l" id="4YxXGhSB$74" role="9Vyp8">
+      <node concept="3clFbS" id="4YxXGhSB$75" role="2VODD2">
+        <node concept="3SKdUt" id="7GD_TdpbmYb" role="3cqZAp">
+          <node concept="1PaTwC" id="7GD_TdpbmYc" role="1aUNEU">
+            <node concept="3oM_SD" id="7GD_TdpbmYd" role="1PaTwD">
+              <property role="3oM_SC" value="override" />
+            </node>
+            <node concept="3oM_SD" id="7GD_TdpbmYe" role="1PaTwD">
+              <property role="3oM_SC" value="IOperation.canBeChild" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7GD_Tdpbne4" role="3cqZAp">
+          <node concept="3clFbT" id="7GD_Tdpbne3" role="3clFbG">
             <property role="3clFbU" value="true" />
           </node>
         </node>

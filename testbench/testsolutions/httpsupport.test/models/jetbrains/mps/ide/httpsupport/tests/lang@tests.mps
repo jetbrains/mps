@@ -35,9 +35,6 @@
       </concept>
       <concept id="428590876651279930" name="jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation" flags="ng" index="2DdRWr" />
       <concept id="4531408400486526326" name="jetbrains.mps.lang.test.structure.WarningStatementReference" flags="ng" index="2PQEqo" />
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="2325284917965993569" name="beforeTests" index="0EEgL" />
@@ -440,9 +437,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="toFl8p7aXP">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="toFl8p7__m">
     <property role="TrG5h" value="TestRHBehavior" />
@@ -1045,7 +1039,7 @@
                 <ref role="3cqZAo" node="49_GDO7AoLC" resolve="url" />
               </node>
               <node concept="3cmrfG" id="49_GDO7AI33" role="2XxRq1">
-                <property role="3cmrfH" value="404" />
+                <property role="3cmrfH" value="400" />
               </node>
               <node concept="10Nm6u" id="49_GDO7AI3$" role="2XxRq1" />
             </node>

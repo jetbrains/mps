@@ -22,14 +22,26 @@ public final class Extension__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x1c30c5b543be3b2L, "jetbrains.mps.lang.extension.structure.Extension");
 
   public static final SMethod<SNode> getDescriptor_idUBgfI9eMAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1055884086724995485L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
+  public static final SMethod<Boolean> canBeFinal_id6aeBP5Qha2s = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeFinal").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635227292L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeAbstract_id6aeBP5Qh1A$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAbstract").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635192740L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> canBeStatic_id2L7NFMAtrRg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3190746170657193424L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_idUBgfI9eMAt);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_idUBgfI9eMAt, canBeFinal_id6aeBP5Qha2s, canBeAbstract_id6aeBP5Qh1A$, canBeStatic_id2L7NFMAtrRg);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static SNode getDescriptor_idUBgfI9eMAt(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557976");
+  }
+  /*package*/ static boolean canBeFinal_id6aeBP5Qha2s(@NotNull SAbstractConcept __thisConcept__) {
+    return false;
+  }
+  /*package*/ static boolean canBeAbstract_id6aeBP5Qh1A$(@NotNull SAbstractConcept __thisConcept__) {
+    return false;
+  }
+  /*package*/ static boolean canBeStatic_id2L7NFMAtrRg(@NotNull SNode __thisNode__) {
+    return false;
   }
 
   /*package*/ Extension__BehaviorDescriptor() {
@@ -49,6 +61,8 @@ public final class Extension__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((SNode) getDescriptor_idUBgfI9eMAt(node));
+      case 3:
+        return (T) ((Boolean) canBeStatic_id2L7NFMAtrRg(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -61,6 +75,10 @@ public final class Extension__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((Boolean) canBeFinal_id6aeBP5Qha2s(concept));
+      case 2:
+        return (T) ((Boolean) canBeAbstract_id6aeBP5Qh1A$(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

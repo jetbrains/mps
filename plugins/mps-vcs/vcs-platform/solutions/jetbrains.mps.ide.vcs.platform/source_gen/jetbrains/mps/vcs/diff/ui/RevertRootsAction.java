@@ -11,7 +11,7 @@ import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8733553229778918876", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "8733553229778918876", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public abstract class RevertRootsAction extends BaseAction implements DumbAware {
   private String myRevertTitle;
   public RevertRootsAction(String revertTitle) {

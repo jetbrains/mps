@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,6 +51,7 @@ class ChildRemovedSelectionHandler extends ModelEventsSelectionHandler {
     boolean isNextSibling = false;
     int index = 0;
     for (SNode nextChild : myParent.getChildren()) {
+      // not myParent.getChildren(myChildRole) as myChildIndex is a value for the complete list, not that of a given aggregation
       if (myChildRole.equals(nextChild.getContainmentLink())) {
         siblingToSelect = nextChild;
         if (index >= myChildIndex) {

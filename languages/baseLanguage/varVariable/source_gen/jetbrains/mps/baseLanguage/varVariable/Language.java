@@ -10,8 +10,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
-import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
-import jetbrains.mps.baseLanguage.varVariable.dataFlow.DataFlowAspectDescriptorImpl;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.baseLanguage.varVariable.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
@@ -20,6 +18,8 @@ import jetbrains.mps.baseLanguage.varVariable.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.baseLanguage.varVariable.structure.ConceptPresentationAspectImpl;
+import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
+import jetbrains.mps.baseLanguage.varVariable.dataFlow.DataFlowAspectDescriptorImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -57,9 +57,6 @@ public class Language extends LanguageRuntime {
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.baseLanguage.varVariable.constraints.ConstraintsAspectDescriptor());
     }
-    if (aspectClass == DataFlowAspectDescriptor.class) {
-      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
-    }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
@@ -74,6 +71,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
+    }
+    if (aspectClass == DataFlowAspectDescriptor.class) {
+      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     return null;
   }

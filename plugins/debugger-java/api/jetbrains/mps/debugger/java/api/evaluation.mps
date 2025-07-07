@@ -15,6 +15,8 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -32,6 +34,7 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
       </concept>
@@ -196,10 +199,6 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
-      <concept id="1170075670744" name="jetbrains.mps.baseLanguage.structure.SynchronizedStatement" flags="nn" index="1HWtB8">
-        <child id="1170075728144" name="expression" index="1HWFw0" />
-        <child id="1170075736412" name="block" index="1HWHxc" />
-      </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
@@ -263,26 +262,6 @@
     <property role="1sVAO0" value="true" />
     <property role="1EXbeo" value="false" />
     <node concept="3Tm1VV" id="46sxDGTfnGk" role="1B3o_S" />
-    <node concept="Wx3nA" id="6w0uxLH27vW" role="jymVt">
-      <property role="TrG5h" value="INSTANCE" />
-      <node concept="3Tmbuc" id="6w0uxLH27vZ" role="1B3o_S" />
-      <node concept="3uibUv" id="6w0uxLH27w0" role="1tU5fm">
-        <ref role="3uigEE" node="46sxDGTfnGj" resolve="EvaluationUtils" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="6w0uxLH27wC" role="jymVt">
-      <property role="TrG5h" value="LOCK" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tmbuc" id="6w0uxLH27wF" role="1B3o_S" />
-      <node concept="3uibUv" id="6w0uxLH27wG" role="1tU5fm">
-        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-      </node>
-      <node concept="2ShNRf" id="6w0uxLH27wI" role="33vP2m">
-        <node concept="1pGfFk" id="6w0uxLH27wK" role="2ShVmc">
-          <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-        </node>
-      </node>
-    </node>
     <node concept="Wx3nA" id="5j5ipK2ftOy" role="jymVt">
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="JAVA_LANG_OBJECT" />
@@ -296,22 +275,6 @@
       <node concept="3Tm1VV" id="46sxDGTfnGE" role="1B3o_S" />
       <node concept="3cqZAl" id="46sxDGTfnGF" role="3clF45" />
       <node concept="3clFbS" id="46sxDGTfnGG" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="6w0uxLH27w1" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="init" />
-      <property role="od$2w" value="false" />
-      <node concept="3cqZAl" id="6w0uxLH27w2" role="3clF45" />
-      <node concept="3Tm1VV" id="6w0uxLH27w3" role="1B3o_S" />
-      <node concept="3clFbS" id="6w0uxLH27w4" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="6w0uxLH27w5" role="jymVt">
-      <property role="1EzhhJ" value="true" />
-      <property role="TrG5h" value="dispose" />
-      <property role="od$2w" value="false" />
-      <node concept="3cqZAl" id="6w0uxLH27w6" role="3clF45" />
-      <node concept="3Tm1VV" id="6w0uxLH27w7" role="1B3o_S" />
-      <node concept="3clFbS" id="6w0uxLH27w8" role="3clF47" />
     </node>
     <node concept="3clFb_" id="6w0uxLH2nqo" role="jymVt">
       <property role="1EzhhJ" value="true" />
@@ -942,19 +905,22 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="1MgGTZ278we" role="jymVt" />
     <node concept="2YIFZL" id="6w0uxLH27wx" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <property role="od$2w" value="false" />
       <node concept="3Tm1VV" id="6w0uxLH27wz" role="1B3o_S" />
       <node concept="3clFbS" id="6w0uxLH27w$" role="3clF47">
-        <node concept="1HWtB8" id="6w0uxLH27wL" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeonLT" role="1HWFw0">
-            <ref role="3cqZAo" node="6w0uxLH27wC" resolve="LOCK" />
-          </node>
-          <node concept="3clFbS" id="6w0uxLH27wN" role="1HWHxc">
-            <node concept="3cpWs6" id="6w0uxLH27wP" role="3cqZAp">
-              <node concept="37vLTw" id="2BHiRxeoryW" role="3cqZAk">
-                <ref role="3cqZAo" node="6w0uxLH27vW" resolve="INSTANCE" />
+        <node concept="3clFbF" id="1MgGTZ279Ne" role="3cqZAp">
+          <node concept="2OqwBi" id="1MgGTZ27b1a" role="3clFbG">
+            <node concept="2YIFZM" id="1MgGTZ27aAe" role="2Oq$k0">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+            <node concept="liA8E" id="1MgGTZ27bCV" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
+              <node concept="3VsKOn" id="1MgGTZ27di2" role="37wK5m">
+                <ref role="3VsUkX" node="46sxDGTfnGj" resolve="EvaluationUtils" />
               </node>
             </node>
           </node>
@@ -964,6 +930,7 @@
         <ref role="3uigEE" node="46sxDGTfnGj" resolve="EvaluationUtils" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1MgGTZ27dLG" role="jymVt" />
     <node concept="2YIFZL" id="46sxDGTfnXC" role="jymVt">
       <property role="TrG5h" value="handleInvocationExceptions" />
       <property role="DiZV1" value="false" />

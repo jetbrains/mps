@@ -21,7 +21,7 @@ import org.jdom.JDOMException;
  * To use, add a field annotated with {@link org.junit.Rule } or {@link org.junit.ClassRule } to your test
  * Evgeny Gryaznov, Oct 7, 2010
  */
-@GeneratedClass(node = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)/5294483648489413878", model = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)")
+@GeneratedClass(nodeId = "5294483648489413878", model = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)")
 public class PerformanceMessenger implements TestRule {
   private Map<String, Long> mySingleValues = new LinkedHashMap<String, Long>();
   private Map<String, long[]> myPercentValues = new LinkedHashMap<String, long[]>();

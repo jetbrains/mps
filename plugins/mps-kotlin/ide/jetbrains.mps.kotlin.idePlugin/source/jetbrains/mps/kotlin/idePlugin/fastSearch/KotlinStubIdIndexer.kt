@@ -15,7 +15,7 @@ class KotlinStubIdIndexer : IdIndexer {
         // Parse (registry with extensions allows to get annotations)
         ByteArrayInputStream(content.content)
             .readKtMetadata(content.fileName)
-            ?.let { metadata ->
+            ?.let { (metadata, _) ->
                 // Visit content and collect indexes
                 KtModuleIndexer().also { it.indexModule(metadata) }.entries
             }

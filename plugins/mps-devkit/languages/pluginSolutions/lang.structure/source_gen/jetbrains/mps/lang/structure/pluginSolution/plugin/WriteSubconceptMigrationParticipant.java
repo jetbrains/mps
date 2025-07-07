@@ -10,9 +10,9 @@ import jetbrains.mps.refactoring.participant.MoveNodeRefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.Language;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
@@ -29,9 +29,9 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
@@ -63,8 +63,8 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
       return version;
     }
     public SNode resolve(SRepository repository) {
-      Language resolve = ((Language) languageRef.resolve(repository));
-      SModel migrationModel = LanguageAspect.MIGRATION.get(resolve);
+      SModule resolve = languageRef.resolve(repository);
+      SModel migrationModel = SModuleOperations.getAspect(resolve, "migration");
       return ListSequence.fromList(SModelOperations.roots(migrationModel, CONCEPTS.IMigrationUnit$xq)).where((it) -> (int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(it) == version).first();
     }
   }

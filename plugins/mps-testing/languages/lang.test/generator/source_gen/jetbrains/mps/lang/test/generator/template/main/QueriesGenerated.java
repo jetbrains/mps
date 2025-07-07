@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.plugin.behavior.KeyMapKeystroke__BehaviorDescriptor;
 import jetbrains.mps.lang.test.behavior.ActionReference__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.test.generator.template.util.TestsUtil;
 import jetbrains.mps.lang.test.behavior.TestInfo__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
@@ -47,6 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jetbrains.mps.lang.test.behavior.IgnoreMigrationDataOption__BehaviorDescriptor;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
+import jetbrains.mps.lang.test.generator.template.util.TestsUtil;
 import jetbrains.mps.generator.template.InsertMacroContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Map;
@@ -149,7 +149,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((SNode) _context.getVariable("testNode")).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return TestsUtil.getProjectPath(SNodeOperations.getModel(_context.getNode()));
+    return ((String) _context.getVariable("var:projectPath"));
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     return _context.getOriginalInputModel().getReference().toString();
@@ -188,7 +188,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BaseIntentionDeclaration__BehaviorDescriptor.getGeneratedId_id2ytFvC$HDcE.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.intention$m3$T));
   }
   public static Object propertyMacro_GetValue_8_0(final PropertyMacroContext _context) {
-    return TestsUtil.getProjectPath(SNodeOperations.getModel(_context.getNode()));
+    return ((String) _context.getVariable("var:projectPath"));
   }
   public static Object propertyMacro_GetValue_8_1(final PropertyMacroContext _context) {
     return _context.getOriginalInputModel().getReference().toString();
@@ -221,7 +221,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BaseIntentionDeclaration__BehaviorDescriptor.getGeneratedId_id2ytFvC$HDcE.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.intention$gTRv));
   }
   public static Object propertyMacro_GetValue_13_0(final PropertyMacroContext _context) {
-    return TestsUtil.getProjectPath(SNodeOperations.getModel(_context.getNode()));
+    return ((String) _context.getVariable("var:projectPath"));
   }
   public static Object propertyMacro_GetValue_13_1(final PropertyMacroContext _context) {
     return _context.getOriginalInputModel().getReference().toString();
@@ -406,15 +406,24 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.message$SzPZ) == null);
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null) && (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj), CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
+    return ((String) _context.getVariable("var:projectPath")) != null;
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null);
+    return ((String) _context.getVariable("var:projectPath")) != null;
   }
   public static boolean ifMacro_Condition_3_2(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null) && (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8), CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
+    return ((String) _context.getVariable("var:projectPath")) != null;
   }
   public static boolean ifMacro_Condition_3_3(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null) && (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj), CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
+  }
+  public static boolean ifMacro_Condition_3_4(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null);
+  }
+  public static boolean ifMacro_Condition_3_5(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null) && (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8), CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
+  }
+  public static boolean ifMacro_Condition_3_6(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null);
   }
   public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {
@@ -430,10 +439,19 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$TyS_) != null);
   }
   public static boolean ifMacro_Condition_8_0(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.logEvents$XchQ)).isNotEmpty();
+    return ((String) _context.getVariable("var:projectPath")) != null;
   }
   public static boolean ifMacro_Condition_8_1(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.logEvents$XchQ)).isNotEmpty();
+  }
+  public static boolean ifMacro_Condition_8_2(final IfMacroContext _context) {
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.logEvents$XchQ)).isNotEmpty();
+  }
+  public static boolean ifMacro_Condition_13_0(final IfMacroContext _context) {
+    return ((String) _context.getVariable("var:projectPath")) != null;
+  }
+  public static boolean ifMacro_Condition_13_1(final IfMacroContext _context) {
+    return ((String) _context.getVariable("var:projectPath")) != null;
   }
   public static boolean ifMacro_Condition_15_0(final IfMacroContext _context) {
     return SNodeOperations.getModel(SLinkOperations.getTarget(_context.getNode(), LINKS.ref$RHE6)) != _context.getInputModel();
@@ -601,10 +619,19 @@ public class QueriesGenerated extends QueryProviderBase {
     TestsUtil.mapSrcExtract(_context.getOutputNode());
   }
   public static SNode insertMacro_Query_15_0(final InsertMacroContext _context) {
-    return _quotation_createNode_x583g4_a0a651();
+    return _quotation_createNode_x583g4_a0a261();
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
+    return TestsUtil.getProjectPath(SNodeOperations.getModel(_context.getNode()));
+  }
+  public static Object varMacro_Value_3_1(final TemplateVarContext _context) {
     return _context.getNode();
+  }
+  public static Object varMacro_Value_8_0(final TemplateVarContext _context) {
+    return TestsUtil.getProjectPath(SNodeOperations.getModel(_context.getNode()));
+  }
+  public static Object varMacro_Value_13_0(final TemplateVarContext _context) {
+    return TestsUtil.getProjectPath(SNodeOperations.getModel(_context.getNode()));
   }
   public static Object varMacro_Value_16_0(final TemplateVarContext _context) {
     return SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(_context.getNode()));
@@ -1114,6 +1141,9 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     imcMethods.put("1863298100471541194", new IfMC(i++));
     imcMethods.put("3455411064017514090", new IfMC(i++));
+    imcMethods.put("7978162869570492197", new IfMC(i++));
+    imcMethods.put("7978162869570507372", new IfMC(i++));
+    imcMethods.put("7978162869570525246", new IfMC(i++));
     imcMethods.put("8762304748376777546", new IfMC(i++));
     imcMethods.put("7965618678812608497", new IfMC(i++));
     imcMethods.put("8762304748376777948", new IfMC(i++));
@@ -1122,8 +1152,11 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("7850693985441852018", new IfMC(i++));
     imcMethods.put("7850693985441525698", new IfMC(i++));
     imcMethods.put("8933192351751931378", new IfMC(i++));
+    imcMethods.put("7978162869570420057", new IfMC(i++));
     imcMethods.put("4296455270565126151", new IfMC(i++));
     imcMethods.put("5219531754070576524", new IfMC(i++));
+    imcMethods.put("7978162869570238117", new IfMC(i++));
+    imcMethods.put("7978162869570267769", new IfMC(i++));
     imcMethods.put("7244590811597310749", new IfMC(i++));
     imcMethods.put("3003602683700024820", new IfMC(i++));
     imcMethods.put("7850693985442098100", new IfMC(i++));
@@ -1157,26 +1190,38 @@ public class QueriesGenerated extends QueryProviderBase {
         case 5:
           return QueriesGenerated.ifMacro_Condition_3_3(ctx);
         case 6:
-          return QueriesGenerated.ifMacro_Condition_6_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_3_4(ctx);
         case 7:
-          return QueriesGenerated.ifMacro_Condition_6_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_3_5(ctx);
         case 8:
-          return QueriesGenerated.ifMacro_Condition_6_2(ctx);
+          return QueriesGenerated.ifMacro_Condition_3_6(ctx);
         case 9:
-          return QueriesGenerated.ifMacro_Condition_7_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_6_0(ctx);
         case 10:
-          return QueriesGenerated.ifMacro_Condition_8_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_6_1(ctx);
         case 11:
-          return QueriesGenerated.ifMacro_Condition_8_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_6_2(ctx);
         case 12:
-          return QueriesGenerated.ifMacro_Condition_15_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_7_0(ctx);
         case 13:
-          return QueriesGenerated.ifMacro_Condition_17_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_8_0(ctx);
         case 14:
-          return QueriesGenerated.ifMacro_Condition_19_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_8_1(ctx);
         case 15:
-          return QueriesGenerated.ifMacro_Condition_19_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_8_2(ctx);
         case 16:
+          return QueriesGenerated.ifMacro_Condition_13_0(ctx);
+        case 17:
+          return QueriesGenerated.ifMacro_Condition_13_1(ctx);
+        case 18:
+          return QueriesGenerated.ifMacro_Condition_15_0(ctx);
+        case 19:
+          return QueriesGenerated.ifMacro_Condition_17_0(ctx);
+        case 20:
+          return QueriesGenerated.ifMacro_Condition_19_0(ctx);
+        case 21:
+          return QueriesGenerated.ifMacro_Condition_19_1(ctx);
+        case 22:
           return QueriesGenerated.ifMacro_Condition_19_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1226,10 +1271,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("1138552043284828839", new VVQ(0));
-    vvqMethods.put("9018216227568987309", new VVQ(1));
-    vvqMethods.put("9018216227568987444", new VVQ(2));
-    vvqMethods.put("9018216227568987579", new VVQ(3));
+    vvqMethods.put("7978162869570484396", new VVQ(0));
+    vvqMethods.put("1138552043284828839", new VVQ(1));
+    vvqMethods.put("7978162869570414728", new VVQ(2));
+    vvqMethods.put("7978162869570273971", new VVQ(3));
+    vvqMethods.put("9018216227568987309", new VVQ(4));
+    vvqMethods.put("9018216227568987444", new VVQ(5));
+    vvqMethods.put("9018216227568987579", new VVQ(6));
   }
   @NotNull
   @Override
@@ -1248,10 +1296,16 @@ public class QueriesGenerated extends QueryProviderBase {
         case 0:
           return QueriesGenerated.varMacro_Value_3_0(ctx);
         case 1:
-          return QueriesGenerated.varMacro_Value_16_0(ctx);
+          return QueriesGenerated.varMacro_Value_3_1(ctx);
         case 2:
-          return QueriesGenerated.varMacro_Value_16_1(ctx);
+          return QueriesGenerated.varMacro_Value_8_0(ctx);
         case 3:
+          return QueriesGenerated.varMacro_Value_13_0(ctx);
+        case 4:
+          return QueriesGenerated.varMacro_Value_16_0(ctx);
+        case 5:
+          return QueriesGenerated.varMacro_Value_16_1(ctx);
+        case 6:
           return QueriesGenerated.varMacro_Value_16_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1346,7 +1400,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a651() {
+  private static SNode _quotation_createNode_x583g4_a0a261() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal"), 0x111fb5bb1f2L, "InternalVariableReference"));

@@ -22,7 +22,7 @@ public class EnumerationDescriptor_AssignmentOperator extends EnumerationDescrip
   private final EnumerationDescriptor.MemberDescriptor myMember_remAssign_0 = new EnumerationDescriptor.MemberDescriptor("remAssign", "%=", 0x11400bb790954e83L, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881667");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954e6bL, 0x11400bb790954e71L, 0x11400bb790954e74L, 0x11400bb790954e78L, 0x11400bb790954e7dL, 0x11400bb790954e83L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_plusAssign_0, myMember_minusAssign_0, myMember_timesAssign_0, myMember_divAssign_0, myMember_remAssign_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_plusAssign_0, myMember_minusAssign_0, myMember_timesAssign_0, myMember_divAssign_0, myMember_remAssign_0);
 
   @Nullable
   @Override

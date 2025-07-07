@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
 import javax.swing.JComponent;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/5814231631271705710", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "5814231631271705710", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public interface ModelElementTargetChooser extends Disposable {
   JComponent getComponent();
   JComponent getPreferredFocusedComponent();

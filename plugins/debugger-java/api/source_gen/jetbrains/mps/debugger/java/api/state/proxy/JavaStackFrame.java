@@ -23,7 +23,7 @@ import jetbrains.mps.debugger.java.api.state.watchables.JavaStaticContext;
 import jetbrains.mps.debug.api.programState.IValue;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 
-@GeneratedClass(node = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036016687", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
+@GeneratedClass(nodeId = "3432969378036016687", model = "r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)")
 public class JavaStackFrame extends ProxyForJava implements IStackFrame {
   private final int myIndex;
   private final JavaLocation myLocation;

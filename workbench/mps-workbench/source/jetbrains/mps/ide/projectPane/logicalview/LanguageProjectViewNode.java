@@ -8,15 +8,20 @@ import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.projectPane.ProjectPane;
+import jetbrains.mps.ide.projectPane.logicalview.LogicalProjectViewNode.ProblemHierarchyNode;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import jetbrains.mps.project.GenerationStatus;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.Generator;
@@ -39,7 +44,7 @@ import java.util.Objects;
 /**
  * @author Fedor Isakov
  */
-public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
+public class LanguageProjectViewNode extends BranchProjectViewNode<Language> implements ProblemHierarchyNode {
 
   protected LanguageProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
     super(project, language, viewSettings);
@@ -47,9 +52,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
   @Override
   protected boolean containsSObject(SObject sObject) {
-    return sObject.testIfHasSModule(sModule -> containsModule(sModule));
+    return sObject.testIfHasSModule(this::containsModule);
   }
 
+  @SuppressWarnings("SuspiciousMethodCalls")
   private boolean containsModule(SModule sModule) {
     return ProjectHelper.fromIdeaProject(getProject()).getModelAccess().computeReadAction(() ->
               Objects.equals(sModule, getValue()) || getValue().getOwnedGenerators().contains(sModule));
@@ -68,7 +74,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     if (!getValue().getAccessoryModels().isEmpty()) {
-      children.add(new AccessorySModelProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new AccessorySModelProjectViewNode(getProject(), "accessories", getSettings()));
     }
 
     for (Generator ownedGenerator : getValue().getOwnedGenerators()) {
@@ -76,14 +82,14 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     if (!getValue().getRuntimeModulesReferences().isEmpty()) {
-      children.add(new LanguageRuntimeModulesProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new LanguageRuntimeModulesProjectViewNode(getProject(), "runtime", getSettings()));
     }
 
     if (!getValue().getUtilModels().isEmpty()) {
-      children.add(new LanguageUtilModelsProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new LanguageUtilModelsProjectViewNode(getProject(), "util", getSettings()));
     }
 
-    children.add(new LanguageAllModelsProjectViewNode(getProject(), getValue(), getSettings()));
+    children.add(new LanguageAllModelsProjectViewNode(getProject(), "all models", getSettings()));
 
     if (getMPSSettings().isShowDescriptorModels()) {
       getValue().getModels().stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
@@ -110,6 +116,17 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
   }
 
   @Override
+  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+    super.appendInplaceComments(appender);
+    MissionControl missionControl = MissionControl.getInstance(getProject());
+    if (missionControl != null) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkReadonly, MessageStatus.OK, true)) {
+        appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
+      }
+    }
+  }
+
+  @Override
   public int getTypeSortWeight(boolean sortByType) {
     return ProjectViewWeights.LANGUAGE_WEIGHT;
   }
@@ -128,7 +145,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     public @Nullable Comparable getSortKey() {
       return myOrdinal;
     }
-
+    
     @Override
     public @Nullable Comparable getTypeSortKey() {
       return myOrdinal;
@@ -154,10 +171,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
   }
 
-  protected static class AccessorySModelProjectViewNode extends BranchProjectViewNode<Language> {
+  protected static class AccessorySModelProjectViewNode extends BranchProjectViewNode<String> {
 
-    protected AccessorySModelProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected AccessorySModelProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -166,24 +183,37 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      return false;
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModel(this::containsSModel);
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(this::containsSModel);
+    }
+
+    private boolean containsSModel(SModel sModel) {
+      final Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        return ((Language) parentValue).getAccessoryModels().stream()
+            .filter(model -> model.getModule() == null || model.getModule() == parentValue)
+            .anyMatch(model -> model == sModel);
+      }
       return false;
     }
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      List<SModel> accessoryModels = getValue().getAccessoryModels();
-      for (SModel model : accessoryModels) {
-        // comparison by == was used originally
-        if (model.getModule() == null || model.getModule() == getValue()) {
-          children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()));
-        } else {
-          children.add(new ModelReferenceProjectViewNode(getProject(), model.getReference(), getSettings()));
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        List<SModel> accessoryModels = ((Language) parentValue).getAccessoryModels();
+        for (SModel model : accessoryModels) {
+          // comparison by == was used originally
+          if (model.getModule() == null || model.getModule() == parentValue) {
+            children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()));
+          } else {
+            children.add(new ModelReferenceProjectViewNode(getProject(), model.getReference(), getSettings()));
+          }
         }
       }
     }
@@ -195,10 +225,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
   }
 
-  protected static class LanguageRuntimeModulesProjectViewNode extends BranchProjectViewNode<Language> {
+  protected static class LanguageRuntimeModulesProjectViewNode extends BranchProjectViewNode<String> {
 
-    protected LanguageRuntimeModulesProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected LanguageRuntimeModulesProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -212,15 +242,13 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      Collection<SModuleReference> references = getValue().getRuntimeModulesReferences();
-      for (SModuleReference reference : references) {
-        children.add(new SolutionReferenceProjectViewNode(getProject(), reference, getSettings()));
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        Collection<SModuleReference> references = ((Language) parentValue).getRuntimeModulesReferences();
+        for (SModuleReference reference : references) {
+          children.add(new SolutionReferenceProjectViewNode(getProject(), reference, getSettings()));
+        }
       }
     }
 
@@ -231,10 +259,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
   }
 
-  protected static class LanguageUtilModelsProjectViewNode extends BranchProjectViewNode<Language> implements StereotypeProvider {
+  protected static class LanguageUtilModelsProjectViewNode extends BranchProjectViewNode<String> implements StereotypeProvider {
 
-    protected LanguageUtilModelsProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected LanguageUtilModelsProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -253,19 +281,31 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      return false;
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModel(this::containsSModel);
+    }
+    
+    @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(this::containsSModel);
     }
 
-    @Override
-    protected boolean containsSObject(SObject sObject) {
+    private boolean containsSModel(SModel model) {
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        return ProjectHelper.fromIdeaProject(getProject()).getModelAccess()
+                            .computeReadAction(() -> ((Language) parentValue).getUtilModels().contains(model));
+      }
       return false;
     }
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(getValue().getUtilModels(), this::getVirtualFolder);
-      hierarchy.fillChildren("", children);
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(((Language) parentValue).getUtilModels(), this::getVirtualFolder);
+        hierarchy.fillChildren("", children);
+      }
     }
 
     protected String getVirtualFolder(SModel model) {
@@ -279,10 +319,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
   }
 
-  protected static class LanguageAllModelsProjectViewNode extends BranchProjectViewNode<Language> {
+  protected static class LanguageAllModelsProjectViewNode extends BranchProjectViewNode<String> {
 
-    protected LanguageAllModelsProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected LanguageAllModelsProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -296,22 +336,20 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      List<SModel> models = new ArrayList<>(getValue().getModels());
-      models.removeIf(SModelStereotype::isDescriptorModel);
-      for (SModel model : models) {
-        children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()) {
-          @NotNull
-          @Override
-          protected String getPresentableText() {
-            return getValue().getName().getShortNameWithStereotype();
-          }
-        });
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        List<SModel> models = new ArrayList<>(((Language) parentValue).getModels());
+        models.removeIf(SModelStereotype::isDescriptorModel);
+        for (SModel model : models) {
+          children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()) {
+            @NotNull
+            @Override
+            protected String getPresentableText() {
+              return getValue().getName().getShortNameWithStereotype();
+            }
+          });
+        }
       }
     }
 
@@ -334,15 +372,31 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText(getValue().getName().getValue());
       Icon icon = IdeIcons.MODEL_ICON;
       presentation.setIcon(layeredIcon(icon, Nodes.Symlink));
+    }
+
+    @Override
+    public boolean canNavigate() {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() ->
+        getValue().resolve(mpsProject.getRepository()) != null
+      );
+    }
+
+    @Override
+    public void navigate(boolean requestFocus) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      mpsProject.getModelAccess().runReadAction(() -> {
+        SModel model = getValue().resolve(mpsProject.getRepository());
+        if (model != null) {
+          ProjectPane.getInstance(mpsProject).selectModel(model, requestFocus);
+        } else {
+          LOG.warn("can't navigate to null model: "+getValue());
+        }
+      });
     }
   }
 
@@ -358,15 +412,35 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText(getValue().getModuleName());
       Icon icon = IdeIcons.SOLUTION_ICON;
       presentation.setIcon(layeredIcon(icon, Nodes.Symlink));
+    }
+
+    @Override
+    protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+      super.appendInplaceComments(appender);
+    }
+
+    @Override
+    public boolean canNavigate() {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() ->
+                 getValue().resolve(mpsProject.getRepository())  != null);
+    }
+
+    @Override
+    public void navigate(boolean requestFocus) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      mpsProject.getModelAccess().runReadAction(() -> {
+        SModule module = getValue().resolve(mpsProject.getRepository());
+        if (module != null) {
+          ProjectPane.getInstance(mpsProject).selectModule(module, requestFocus);
+        } else {
+          LOG.warn("can't navigate to null module: "+getValue());
+        }
+      });
     }
   }
 }

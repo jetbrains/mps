@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.nodeEditor;
 
@@ -28,7 +28,6 @@ import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.ex.EditorSettingsExternalizable;
@@ -83,6 +82,7 @@ import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWrapper;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.highlighter.EditorHighlighter;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.nodeEditor.keymaps.AWTKeymapHandler;
@@ -124,7 +124,6 @@ import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.workbench.ActionPlace;
@@ -267,7 +266,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private final List<LeftMarginMouseListener> myLeftMarginPressListeners = new ArrayList<>(0);
 
   private final EditorSettingsListener mySettingsListener = () -> getModelAccess().runReadInEDT(() -> {
-    if (isDisposed()) {
+    if (isDisposed() || isProjectDisposed()) {
       return;
     }
     releaseTypecheckingSession(true);
@@ -368,7 +367,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myRootCell = new EditorCell_Constant(getEditorContext(), null, "");
     myRootCell.setSelectable(false);
 
-    setBackground(StyleRegistry.getInstance().getEditorBackground());
     if (configuration.showSelectionLine) {
       myAdditionalPainters.add(new SelectedLinePainter());
     }
@@ -733,7 +731,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return new FontSizeChangingScrollPane();
   }
 
-  protected Editor getPlatformEditorEmulation() {
+  public PlatformEditorEmulation getPlatformEditorEmulation() {
     return myPlatformEditorEmulation;
   }
 
@@ -1064,7 +1062,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public Color getBackground() {
     // intentional override of JComponent method to facilitate split of EC and JComponent
     // review uses and decide whether the method has to be part of this class API, EC API or cease to exist
-    return super.getBackground();
+    return getStyleRegistry().getEditorBackground();
   }
 
   /**
@@ -1246,8 +1244,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         requestTypecheckingSession();
       }
 
-      rebuildEditorContent();
+      rebuildEditorIgnoreViewport();
       if (hasUI()) {
+        scrollToTopLeft();
         refreshContentHighlighter();
       }
 
@@ -2056,14 +2055,26 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return null;
   }
 
+  private void scrollToTopLeft() {
+    JScrollPane scrollPane = getScrollPane();
+    JScrollBar verticalScrollBar = scrollPane.getVerticalScrollBar();
+    verticalScrollBar.setValue(verticalScrollBar.getMinimum());
+    JScrollBar horizontalScrollBar = scrollPane.getHorizontalScrollBar();
+    horizontalScrollBar.setValue(horizontalScrollBar.getMinimum());
+  }
+
+  private void rebuildEditorIgnoreViewport() {
+    getUpdater().update();
+    relayout();
+  }
+
   @Override
   public void rebuildEditorContent() {
     assertInEDT();
 
     // XXX is myScrollPane == null possible here? perhaps, for !hasUI() case?
     ViewportState vps = new ViewportState(myScrollPane == null ? null : myScrollPane.getViewport());
-    getUpdater().update();
-    relayout();
+    rebuildEditorIgnoreViewport();
     // JFTR, this (EC) is Viewport's View component
     vps.restore(this.getPreferredSize());
   }
@@ -2179,6 +2190,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public void showCellError() {
     final jetbrains.mps.openapi.editor.cells.EditorCell selectedCell = getSelectedCell();
     if (selectedCell != null) {
+      myPlatformEditorEmulation.cancelShowInfoToolTipRequest();
+      MPSDocumentationManager.getInstance().cancelAll();
       final HighlighterMessage message = getHighlighterMessageFor(selectedCell);
       MPSErrorDialog.showCellErrorDialog(getCurrentProject(), SwingUtilities.windowForComponent(EditorComponent.this), message);
     }
@@ -2393,7 +2406,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
     turnOnAliasingIfPossible(g);
 
-    g.setColor(getStyleRegistry().getEditorBackground());
+    g.setColor(getBackground());
     Rectangle bounds = g.getClipBounds();
 
     g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
@@ -2762,6 +2775,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   public boolean hasNodeInformationDialog() {
+    // FIXME now that NodeInformationDialog uses popup, not JDialog, and is smart to handle cancellation, is there any reason
+    //       to keep this association and keep handling in Escape_Action?
     return myNodeInformationDialog != null;
   }
 

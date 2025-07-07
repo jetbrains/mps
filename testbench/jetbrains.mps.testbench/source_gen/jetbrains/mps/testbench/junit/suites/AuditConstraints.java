@@ -20,7 +20,7 @@ import jetbrains.mps.checkers.TargetConceptChecker2;
 import jetbrains.mps.checkers.UsedLanguagesChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376387816357", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "9170334376387816357", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class AuditConstraints extends BaseCheckerTest {
   @ClassRule
   public static final PerformanceMessenger ourStats = new PerformanceMessenger("auditConstraints");

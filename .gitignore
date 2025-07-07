@@ -26,6 +26,7 @@
 **/.mps/shelf
 
 # Build artifacts
+/workbench/mps-workbench/source/META-INF/MPSPlugin.xml
 /MPSPlugin/apiclasses
 /build/tmp/
 /contrib/build/tmp/
@@ -62,6 +63,7 @@ teamcity-info.xml
 # (in the same order as in the MPSProperties.groovy to simplify maintaining)
 /plugins/java
 /plugins/java-ide-customization
+/plugins/json
 /plugins/copyright
 /plugins/properties
 /plugins/properties-resource-bundle-editor
@@ -70,19 +72,18 @@ teamcity-info.xml
 /plugins/settingsSync
 /plugins/tasks
 /plugins/vcs-git
+/plugins/vcs-git-commit-modal
 /plugins/vcs-svn
-/plugins/vcs-github
+/plugins/vcs-github-IC
 /plugins/yaml
 /plugins/ant
 /plugins/sh
-/plugins/vcs-changeReminder
 /plugins/markdown
 /plugins/grazie
 /plugins/space
 # some default plugins (not mentioned in MPSProperties.groovy)
 /plugins/platform-images
 /plugins/laf-macos
-/plugins/laf-win10
 /plugins/mps-devkit/lib
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
@@ -98,7 +99,9 @@ teamcity-info.xml
 /bin/linux
 /bin/mac
 /bin/win
-/build/resources/mps
+/build/resources/mps-aarch64
+/build/resources/mps-x64
+
 
 # Path to log files which is overriden in run configuration to allow developers to see log output in run/debug console
 /log/

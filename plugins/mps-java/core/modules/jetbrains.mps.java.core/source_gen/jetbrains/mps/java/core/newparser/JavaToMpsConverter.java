@@ -73,12 +73,13 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/3356342729940974921", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "3356342729940974921", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 public class JavaToMpsConverter {
   private SModule myModule;
   private SModel myModel;
@@ -179,7 +180,10 @@ public class JavaToMpsConverter {
     // now we attach the models and try to resolve
 
     myModelAccess.runWriteAction(() -> {
-      ((AbstractModule) myModule).addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
+      if (myModule instanceof AbstractModule) {
+        ((AbstractModule) myModule).addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
+        // otherwise, expect module(if e.g. TempModule2 that collects deps)/caller(who knows how to add imports to its module) to deal with it
+      }
 
       if (myModel == null) {
         myModels = ListSequence.fromList(new ArrayList<SModel>());
@@ -364,7 +368,7 @@ public class JavaToMpsConverter {
     }
 
     IFile dir = file.getParent();
-    if (!(DirParser.checkPackageMatchesSourceDirectory(pkg, dir))) {
+    if (!(checkPackageMatchesSourceDirectory(pkg, dir))) {
       myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("package %s doesn't match directory %s (in file %s)", pkg, dir.getPath(), file.getName())));
       return;
     }
@@ -1034,6 +1038,14 @@ public class JavaToMpsConverter {
       }
     }
     return MultiTuple.<DefaultModelRoot,SourceRoot>from((DefaultModelRoot) null, (SourceRoot) null);
+  }
+
+  /*package*/ static boolean checkPackageMatchesSourceDirectory(String pkg, IFile sourceDir) {
+    String pathPostfix = NameUtil.pathFromNamespace(pkg);
+    // pathFromNamespace returns system-dependent path
+    // while IdeaFile.getPath() returns system-independent
+    String sourceDirSysDep = NameUtil.toSystemDependentPath(sourceDir.getPath());
+    return sourceDirSysDep.endsWith(pathPostfix);
   }
 
   private static final class CONCEPTS {

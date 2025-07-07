@@ -20,7 +20,7 @@ import java.util.Collections;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.nodeEditor.highlighter.EditorsHelper;
 
-@GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/4491627601716787026", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
+@GeneratedClass(nodeId = "4491627601716787026", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public class EditorComponentUtil {
   public EditorComponentUtil() {
   }
@@ -35,7 +35,7 @@ public class EditorComponentUtil {
       return null;
     }
     Project mpsProject = ProjectHelper.getProject(component.getEditorContext().getRepository());
-    jetbrains.mps.nodeEditor.EditorComponent inspector = (mpsProject == null ? null : mpsProject.getComponent(InspectorTool.class).getInspector());
+    jetbrains.mps.nodeEditor.EditorComponent inspector = (mpsProject == null ? null : InspectorTool.getInstance(mpsProject).getInspector());
     if (inspector != null) {
       boolean searchInInspector = false;
       SNode currentTargetNode = node;
@@ -115,7 +115,7 @@ public class EditorComponentUtil {
     if (manager.getProject().isDisposed()) {
       return null;
     }
-    InspectorTool tool = manager.getProject().getComponent(InspectorTool.class);
+    InspectorTool tool = InspectorTool.getInstance(ProjectHelper.fromIdeaProject(manager.getProject()));
     if (tool == null) {
       return null;
     }

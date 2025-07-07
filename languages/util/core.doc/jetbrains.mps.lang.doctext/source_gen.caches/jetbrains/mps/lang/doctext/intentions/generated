@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="651ojh3uy52f1ryfyiypqqifaish81">
-  <files names="AddDocumentation_Intention.java:IntentionsDescriptor.java:RemoveDocumentation_Intention.java" />
+<product version="3" modelHash="6wfom3o14awzu485ey7y3b24yhtawx1">
+  <files names="AddDocumentation_Intention.java:ConvertDocumentedNodeAnnotation_Intention.java:IntentionsDescriptor.java:RemoveDocumentation_Intention.java" />
 </product>
 

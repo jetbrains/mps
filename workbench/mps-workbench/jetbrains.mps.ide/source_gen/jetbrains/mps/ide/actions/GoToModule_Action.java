@@ -30,7 +30,7 @@ import com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import com.intellij.openapi.application.ModalityState;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3906874221886742454", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3906874221886742454", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoToModule_Action extends BaseAction {
   private static final Icon ICON = null;
 

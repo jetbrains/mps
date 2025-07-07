@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class QuotationModelNodeId_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(QuotationModelNodeId_Test.class, "${mps_home}", "r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(QuotationModelNodeId_Test.class).projectPath(null).modelRef("r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)").reopenProject(null).build());
 
   public QuotationModelNodeId_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -61,7 +61,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_lightQuotation_nodeId() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
         SNodeId.Regular id = new SNodeId.Regular(239);
         SNode node = createReturnStatement_fw7ydn_a0c0a0b0f8(model, id);
         SModelOperations.addRootNode(model, node);
@@ -72,7 +72,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_quotation_nodeId() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
         SNodeId.Regular id = new SNodeId.Regular(239);
         SNode node = _quotation_createNode_fw7ydn_a0c0a0b0g8(model, id);
         SModelOperations.addRootNode(model, node);
@@ -87,7 +87,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
         SNodeId.Regular id = new SNodeId.Regular(239);
         SNode node = _quotation_createNode_fw7ydn_a0c0a0b0h8(null, id);
         Assert.assertTrue(Objects.equals(node.getNodeId(), id));
-        Assert.assertEquals(2, ListSequence.fromList(SNodeOperations.getChildren(node)).count());
+        Assert.assertEquals(Integer.valueOf(2), Integer.valueOf(ListSequence.fromList(SNodeOperations.getChildren(node)).count()));
         Assert.assertFalse(Objects.equals(ListSequence.fromList(SNodeOperations.getChildren(node)).getElement(0).getNodeId(), id));
         Assert.assertFalse(Objects.equals(ListSequence.fromList(SNodeOperations.getChildren(node)).getElement(1).getNodeId(), id));
       });

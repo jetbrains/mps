@@ -17,7 +17,7 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)/1883223317720973623", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
+@GeneratedClass(nodeId = "1883223317720973623", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
 public class LatticeUtil {
   public LatticeUtil() {
   }

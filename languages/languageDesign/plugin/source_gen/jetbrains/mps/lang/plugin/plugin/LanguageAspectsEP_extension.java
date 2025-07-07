@@ -40,7 +40,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a5a0a0a1;
+        return IconContainer.RESOURCE_0;
       }
       @Nullable
       public String getHelpUrl() {
@@ -48,5 +48,5 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
     };
   }
-  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/plugin.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html";
 }

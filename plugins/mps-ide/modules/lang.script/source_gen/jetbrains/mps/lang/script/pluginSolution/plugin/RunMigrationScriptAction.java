@@ -14,8 +14,11 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import java.util.Collections;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.workbench.MPSDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.ArrayList;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class RunMigrationScriptAction extends BaseAction implements DumbAware {
@@ -23,6 +26,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
   private boolean myApplyToSelection;
   private List<SModel> myModels;
   private List<SModule> myModules;
+  private Object[] mySelectedItems;
   private MPSProject myProject;
 
   public RunMigrationScriptAction(RefactoringScript script, boolean applyToSelection) {
@@ -33,12 +37,8 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
   }
   @Override
   protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-    SearchScope scope;
-    if (myApplyToSelection) {
-      scope = AbstractMigrationScriptHelper.createMigrationScope(myModules, myModels);
-    } else {
-      scope = AbstractMigrationScriptHelper.createMigrationScope(myProject);
-    }
+    SearchScope scope = myProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(!(myApplyToSelection), myProject, mySelectedItems, myModules, myModels));
+
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }
@@ -49,7 +49,9 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
     if (!(super.collectActionData(e, _params))) {
       return false;
     }
-    myProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
+    Project ideaProject = e.getData(MPSDataKeys.PROJECT);
+    myProject = ProjectHelper.fromIdeaProject(ideaProject);
+    // MPSCommonDataKeys.MPS_PROJECT in not available when other than Logical View is active or a non-MPS-model file is open in the editor
     if (myProject == null) {
       return false;
     }
@@ -65,6 +67,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
         myModules.add(module);
       }
     }
+    mySelectedItems = e.getData(MPSCommonDataKeys.SELECTED_ITEMS);
     return true;
   }
 }

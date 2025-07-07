@@ -34,7 +34,7 @@ public class ModelInplaceComment extends ModelReportItemBase implements HasGener
 
   @Override
   public ItemKind getIssueKind() {
-    return MissionControl.GENERATION_STATUS.deriveItemKind("model");
+    return MissionControl.Impl.GENERATION_STATUS.deriveItemKind("model");
   }
   
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.vfs.iofs.file;
 
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
@@ -22,11 +23,14 @@ import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 
 public final class LocalIoFileSystem implements IFileSystem {
+  private final FileSystem myUmbrellaFileSystem;
+
   /**
    * Clients shall not instantiate this class. Instead, use {@link jetbrains.mps.vfs.VFSManager#getFileSystem(String)}
    */
-  public LocalIoFileSystem(@SuppressWarnings("unused") @NotNull VFSManager unused) {
+  public LocalIoFileSystem(@SuppressWarnings("unused") @NotNull VFSManager unused, @NotNull FileSystem umbrellaFileSystem) {
     // the only reason to pass non-null VFSManager instance here at the moment is to prevent arbitrary instantiation of the class
+    myUmbrellaFileSystem = umbrellaFileSystem;
   }
 
   @NotNull
@@ -39,5 +43,13 @@ public final class LocalIoFileSystem implements IFileSystem {
   @Override
   public boolean isFileIgnored(@NotNull String name) {
     return false;
+  }
+
+  /**
+   * @since 2025.1
+   */
+  @NotNull
+  /*package*/ FileSystem getUmbrellaFileSystem() {
+    return myUmbrellaFileSystem;
   }
 }

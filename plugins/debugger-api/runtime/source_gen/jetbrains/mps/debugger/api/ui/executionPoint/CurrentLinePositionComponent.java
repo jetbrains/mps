@@ -18,7 +18,7 @@ import jetbrains.mps.debug.api.source.PositionProvider;
 import jetbrains.mps.debug.api.source.NodeSourcePosition;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 
-@GeneratedClass(node = "r:b844984f-e192-4128-bae9-ea8360d94146(jetbrains.mps.debugger.api.ui.executionPoint)/1482618131069247085", model = "r:b844984f-e192-4128-bae9-ea8360d94146(jetbrains.mps.debugger.api.ui.executionPoint)")
+@GeneratedClass(nodeId = "1482618131069247085", model = "r:b844984f-e192-4128-bae9-ea8360d94146(jetbrains.mps.debugger.api.ui.executionPoint)")
 public class CurrentLinePositionComponent extends CurrentLinePositionComponentEx<AbstractDebugSession> implements Disposable {
   private final SessionChangeListener myChangeListener = new MySessionChangeListener();
 

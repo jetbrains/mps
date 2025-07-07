@@ -47,7 +47,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
   private final MPSProjectViewState myState;
   private final Project myProject; // FIXME superclass's field is private and there's no accessor
 
-  private final Option myShowDescriptorModels = new Option("Show Descriptor Models", "Show descriptor models in generator modules") {
+  private final Option myShowDescriptorModels = new Option("Descriptor Models", "Show descriptor models of languages, solutions, and generators") {
 
     @Override
     public boolean isSelected() {
@@ -69,7 +69,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
     }
   }
   ;
-  private final Option myShowErrorsOnly = new Option("Show Errors Only", "Only show errors reported on modules and models") {
+  private final Option myShowErrorsOnly = new Option("Errors Only", "Only show errors reported on modules and models") {
 
     @Override
     public boolean isSelected() {
@@ -98,6 +98,26 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
     super(project);
     myProject = project;
     myState = MPSProjectViewState.getInstance(project);
+  }
+
+  @Override
+  public boolean isFoldersAlwaysOnTop(String paneId) {
+    // force the option to always be true; MPS-38219
+    if (ProjectViewPane.ID.equals(paneId)) return true;
+    return super.isFoldersAlwaysOnTop(paneId);
+  }
+
+  @Override
+  @SuppressWarnings("removal")
+  public boolean isFoldersAlwaysOnTop() {
+    // force the option to always be true; MPS-38219
+    return true;
+  }
+
+  @Override
+  public void setFoldersAlwaysOnTop(boolean foldersAlwaysOnTop) {
+    // force the option to always be true; MPS-38219
+    // NOP
   }
 
   @Override
@@ -178,7 +198,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
 
     static final class SortRootsByConcept extends SortKeyAction {
       SortRootsByConcept() {
-        super(NodeSortKey.BY_TYPE, "Sort by Concept", "Sort root nodes by their concept");
+        super(NodeSortKey.BY_TYPE, "Concept", "Sort root nodes by their concept");
       }
     }
 

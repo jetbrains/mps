@@ -675,7 +675,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="4B6mtDMVXnQ" role="37vLTJ">
-              <ref role="3cqZAo" node="4B6mtDMVXDu" resolve="findComponent" />
+              <ref role="3cqZAo" node="4B6mtDMVXDu" resolve="myRepo" />
             </node>
           </node>
         </node>

@@ -4,14 +4,14 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmClass;
+import kotlin.metadata.KmClass;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import kotlinx.metadata.Attributes;
+import kotlin.metadata.Attributes;
 import java.util.Objects;
-import kotlinx.metadata.ClassKind;
+import kotlin.metadata.ClassKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.stubs.loading.ids.KotlinId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)/2993321679751230671", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
+@GeneratedClass(nodeId = "2993321679751230671", model = "r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)")
 public class KtClassParser {
   public static SNode parseClass(final KmClass kmClass, final SNode node, final List<SNode> childClasses, final List<SNode> enumEntries, final KtReadContext context) {
     final String fqName = kmClass.getName();

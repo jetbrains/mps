@@ -14,6 +14,6 @@ import jetbrains.mps.annotations.GeneratedClass;
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD, ElementType.TYPE})
-@GeneratedClass(node = "r:609ff00a-e99e-4fdb-a9f0-2fac708d77c0(jetbrains.mps)/5294483648489409013", model = "r:609ff00a-e99e-4fdb-a9f0-2fac708d77c0(jetbrains.mps)")
+@GeneratedClass(nodeId = "5294483648489409013", model = "r:609ff00a-e99e-4fdb-a9f0-2fac708d77c0(jetbrains.mps)")
 public @interface MPSLaunch {
 }

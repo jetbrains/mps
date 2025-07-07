@@ -19,7 +19,7 @@ import jetbrains.mps.project.io.DescriptorIOFacade;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/6450649963068242642", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "6450649963068242642", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
   private static final String MODULES_ROOT_PROPERTY = "mps.junit.modules.root";
   private static final String[] EXCLUDES = new String[]{"IdeaPlugin"};

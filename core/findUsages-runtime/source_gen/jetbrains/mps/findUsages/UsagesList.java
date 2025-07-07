@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424436711", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424436711", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 public interface UsagesList {
   Set<SModel> getAffectedModels();
 }

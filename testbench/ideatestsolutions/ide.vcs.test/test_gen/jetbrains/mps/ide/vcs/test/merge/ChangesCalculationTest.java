@@ -62,7 +62,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
  * These tests check correctness of diff algorithm
  * todo: add tests for model metadata changes
  */
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/8885850892995882493", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "8885850892995882493", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class ChangesCalculationTest extends ChangesTestBase {
   /**
    * Detached clone of jetbrains.mps.ide.vcs.test.testModel model. We use it to match against changes in myTestMode

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.java.stub;
 
 import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import jetbrains.mps.project.AbstractModule;
@@ -30,13 +31,22 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SModuleId;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Collections;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
@@ -94,9 +104,55 @@ public class StubModelLazyLoadStressTest implements EnvironmentAware {
         trace("JCSMD.marked as " + newState + " from " + Thread.currentThread().getName());
       }
     };
-    model.setModule(new AbstractModule() {
-      {
-        setModuleReference(moduleRef);
+    model.setModule(new SModuleBase() {
+      @Override
+      public @NotNull SModuleId getModuleId() {
+        return getModuleReference().getModuleId();
+      }
+
+      @Override
+      public @Nullable String getModuleName() {
+        return getModuleReference().getModuleName();
+      }
+
+      @Override
+      public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage) {
+        return -1;
+      }
+
+      @Override
+      public @NotNull SModuleReference getModuleReference() {
+        return moduleRef;
+      }
+
+      @Override
+      public boolean isReadOnly() {
+        return true;
+      }
+
+      @Override
+      public boolean isPackaged() {
+        return false;
+      }
+
+      @Override
+      public Iterable<SDependency> getDeclaredDependencies() {
+        return Collections.emptyList();
+      }
+
+      @Override
+      public Set<SLanguage> getUsedLanguages() {
+        return Collections.emptySet();
+      }
+
+      @Override
+      public @NotNull Iterable<SModuleFacet> getFacets() {
+        return Collections.emptyList();
+      }
+
+      @Override
+      public Iterable<ModelRoot> getModelRoots() {
+        return Collections.emptyList();
       }
     });
     SNodeId nodeId = new Foreign("~THashMap.<init>()");

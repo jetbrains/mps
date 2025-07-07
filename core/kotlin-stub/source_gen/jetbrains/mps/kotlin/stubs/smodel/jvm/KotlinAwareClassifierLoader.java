@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * refer to both kotlin and java constructs, using VisitorContext API (updateClassifier(node, VisitorContext, Function)
  * needs to be called instead of the parent updateClassifier method for that).
  */
-@GeneratedClass(node = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)/3833041373521027993", model = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)")
+@GeneratedClass(nodeId = "3833041373521027993", model = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)")
 public class KotlinAwareClassifierLoader extends ClassifierLoader {
   protected KotlinAwareClassifierLoader(IFile file, ClassifierLoader outer, InnerClassNode innerClassStruct) {
     super(file, outer, innerClassStruct);

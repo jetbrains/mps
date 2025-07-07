@@ -23,7 +23,7 @@ import com.intellij.openapi.util.io.FileUtil;
  * 
  * @author apyshkin
  */
-@GeneratedClass(node = "r:c481ad16-14f9-48de-9f34-59089869d64f(jetbrains.mps.vcs.fs)/2383629893871162926", model = "r:c481ad16-14f9-48de-9f34-59089869d64f(jetbrains.mps.vcs.fs)")
+@GeneratedClass(nodeId = "2383629893871162926", model = "r:c481ad16-14f9-48de-9f34-59089869d64f(jetbrains.mps.vcs.fs)")
 public final class ExternalVcsRepoSynchronization implements GitRepositoryChangeListener {
   private static final Logger LOG = Logger.getLogger(ExternalVcsRepoSynchronization.class);
   private final Project myIJProject;

@@ -9,7 +9,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCellFactory;
 import jetbrains.mps.openapi.editor.update.UpdateSession;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 
-@GeneratedClass(node = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)/7869544664116130538", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
+@GeneratedClass(nodeId = "7869544664116130538", model = "r:8ff33705-85bf-4855-805c-06d68fbe233c(jetbrains.mps.editor.runtime.descriptor)")
 public interface EditorBuilderEnvironment {
   EditorContext getEditorContext();
   SNode getNode();

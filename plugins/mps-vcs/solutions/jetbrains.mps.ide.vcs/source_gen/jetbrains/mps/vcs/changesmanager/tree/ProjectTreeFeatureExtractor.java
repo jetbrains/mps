@@ -26,7 +26,7 @@ import jetbrains.mps.vcs.changesmanager.tree.features.VirtualPackageFeature;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.vcs.changesmanager.tree.features.ModelFeature;
 
-@GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4106919528499190854", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
+@GeneratedClass(nodeId = "4106919528499190854", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class ProjectTreeFeatureExtractor implements TreeNodeFeatureExtractor {
   public ProjectTreeFeatureExtractor() {
   }

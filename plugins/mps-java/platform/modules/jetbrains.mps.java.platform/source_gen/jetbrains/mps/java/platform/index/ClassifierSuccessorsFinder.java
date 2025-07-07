@@ -48,7 +48,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)/4183391441819863852", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
+@GeneratedClass(nodeId = "4183391441819863852", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
 public final class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, Disposable {
   private final MPSProject myProject;
 

@@ -19,7 +19,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 
-@GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182579978", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
+@GeneratedClass(nodeId = "8432634623182579978", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class SubclassedClassifierEditorMessage extends AbstractLeftEditorHighlighterMessage {
   private static final EditorMessageIconRenderer.IconRendererType TYPE = new EditorMessageIconRenderer.IconRendererType(1);
   private final boolean myInterfaceFlag;

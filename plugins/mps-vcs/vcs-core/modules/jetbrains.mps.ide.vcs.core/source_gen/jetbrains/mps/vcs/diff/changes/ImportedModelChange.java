@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelImports;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6562343564267124230", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "6562343564267124230", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class ImportedModelChange extends DependencyChange {
   private SModelReference myModelReference;
   public ImportedModelChange(@NotNull ChangeSet changeSet, @NotNull SModelReference modelReference, boolean delete) {

@@ -39,7 +39,7 @@ public class Map_Test extends Util_Test {
     map.put(1, "a");
     map.put(2, "b");
     map.put(3, "c");
-    Assert.assertEquals(3, map.size());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(map.size()));
     this.assertIterableEqualsIgnoreOrder(Arrays.asList(1, 2, 3), map.keySet());
     this.assertIterableEqualsIgnoreOrder(Arrays.asList("a", "b", "c"), map.values());
   }
@@ -93,7 +93,7 @@ public class Map_Test extends Util_Test {
     Assert.assertSame('1', MapSequence.fromMap(ascii).get(49));
     Iterable<Integer> keys = MapSequence.fromMap(ascii).keySet();
     for (int k : keys) {
-      Assert.assertEquals(Character.valueOf((char) (int) k), MapSequence.fromMap(ascii).get(k));
+      Assert.assertEquals(Character.valueOf((char) (int) k), Character.valueOf(MapSequence.fromMap(ascii).get(k)));
     }
   }
   @Test
@@ -168,7 +168,7 @@ public class Map_Test extends Util_Test {
   public void test_removeKey() throws Exception {
     Map<String, Integer> map = MapSequence.fromMapAndEntryArray(new HashMap<String, Integer>(), Map.entry("a", 1), Map.entry("b", 2), Map.entry("c", 3));
     int removed = MapSequence.fromMap(map).removeKey("a");
-    Assert.assertEquals(1, removed);
+    Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(removed));
     Assert.assertSame(2, MapSequence.fromMap(map).count());
     Assert.assertSame(2, MapSequence.fromMap(map).get("b"));
     Assert.assertSame(3, MapSequence.fromMap(map).get("c"));
@@ -207,11 +207,11 @@ public class Map_Test extends Util_Test {
   @Test
   public void test_opAssign() throws Exception {
     Map<String, Integer> mapsi = MapSequence.fromMapAndEntryArray(new HashMap<String, Integer>(), Map.entry("A", 345), Map.entry("B", 543), Map.entry("C", 1111));
-    Assert.assertTrue(645 == (int) BLOperations.plusAssign(MapSequence.fromMap(mapsi).getValueRef("A"), 300));
+    Assert.assertTrue(645 == (BLOperations.plusAssign(MapSequence.fromMap(mapsi).getValueRef("A"), 300)));
     Assert.assertTrue(645 == (int) MapSequence.fromMap(mapsi).get("A"));
-    Assert.assertTrue((int) BLOperations.minusAssign(MapSequence.fromMap(mapsi).getValueRef("B"), 40) == 503);
+    Assert.assertTrue((BLOperations.minusAssign(MapSequence.fromMap(mapsi).getValueRef("B"), 40)) == 503);
     Assert.assertTrue((int) MapSequence.fromMap(mapsi).get("B") == 503);
-    Assert.assertTrue(9999 == (int) BLOperations.multAssign(MapSequence.fromMap(mapsi).getValueRef("C"), 9));
+    Assert.assertTrue(9999 == (BLOperations.multAssign(MapSequence.fromMap(mapsi).getValueRef("C"), 9)));
     Assert.assertTrue(9999 == (int) MapSequence.fromMap(mapsi).get("C"));
   }
 }

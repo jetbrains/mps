@@ -11,6 +11,7 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
@@ -43,7 +44,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
       FindUtils.searchForResults(monitor.subTask(1), (searchResult) -> {
         SNode nodeParam = (SNode) searchResult.getObject();
         ((_FunctionTypes._void_P1_E0<SNode>) (SNode derivedInterface) -> {
-          FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
+          FindUtils.searchForResults(new EmptyProgressMonitor(), new IFinder.FindCallback() {
             public void onUsageFound(SearchResult<?> searchResult) {
               SNode nodeParam = (SNode) searchResult.getObject();
               ((_FunctionTypes._void_P1_E0<SNode>) (SNode interfaceNode) -> {
@@ -51,7 +52,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                   // class implements interface case
                   if (SNodeOperations.hasRole(interfaceNode, LINKS.implementedInterface$rujG)) {
                     callback.onUsageFound(createSingleResult(SNodeOperations.getParent(interfaceNode)));
-                    FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
+                    FindUtils.searchForResults(new EmptyProgressMonitor(), new IFinder.FindCallback() {
                       public void onUsageFound(SearchResult<?> searchResult) {
                         SNode nodeParam = (SNode) searchResult.getObject();
                         ((_FunctionTypes._void_P1_E0<SNode>) (SNode classNode) -> {

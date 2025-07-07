@@ -18,7 +18,7 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 
-@GeneratedClass(node = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/789530343628636149", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
+@GeneratedClass(nodeId = "789530343628636149", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 /*package*/ abstract class IncrementalModelAccessBase implements IncrementalModelAccess {
   protected final ModelAccess myModelAccess;
   private Iterable<SModel> myModels;

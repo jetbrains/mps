@@ -29,6 +29,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * @param <V> vertex of a graph
@@ -70,6 +71,10 @@ public final class GraphHolder<V, W> {
   public Collection<V> getVertices() {
     checkGraphsCorrectness();
     return Collections.unmodifiableCollection(myGraph.getVertices());
+  }
+
+  public Stream<W> getValues() {
+    return myValueStorage.values().stream();
   }
 
   public W add(V v, W value) {
@@ -143,8 +148,19 @@ public final class GraphHolder<V, W> {
     myGraph.dfs(vv, result);
   }
 
+  // exclusive of value for V
+  public Stream<W> forOutgoingShallow(V v) {
+    return myGraph.getOuts(v).stream().map(this::get);
+  }
+
+  // inclusive value of each element in vv
   public void visitOutgoingDeep(Iterable<? extends V> vv, Consumer<? super W> result) {
     myGraph.dfs(vv, v -> result.accept(get(v)));
+  }
+
+  // inclusive value of each element in vv
+  public void visitOutgoingDeep(Iterable<? extends V> vv, Consumer<? super W> result, boolean postVisit) {
+    myGraph.dfs(vv, v -> result.accept(get(v)), postVisit);
   }
 
   public void cleanOutgoingEdges(Iterable<? extends V> vv) {
@@ -251,7 +267,11 @@ public final class GraphHolder<V, W> {
     }
 
     public void dfs(Iterable<? extends V> starts, Consumer<? super V> visitor) {
-      new DfsTraversal<>(this, starts, visitor).dfs();
+      new DfsTraversal<>(this, starts, visitor, false).dfs();
+    }
+
+    public void dfs(Iterable<? extends V> starts, Consumer<? super V> visitor, boolean postVisit) {
+      new DfsTraversal<>(this, starts, visitor, postVisit).dfs();
     }
 
     public Collection<V> getVertices() {
@@ -263,11 +283,19 @@ public final class GraphHolder<V, W> {
       private final Set<V> myVisited = new HashSet<>();
       private final Iterable<? extends V> myStartVs;
       private final Consumer<? super V> myVisitor;
+      // DFS despite the name doesn't mandate visit of the vertex as the last element (*after* visit of adjunct verticies, not *before*)
+      // with myPostVisitor we control whether a vertex is visited pre/post its outgoing edges.
+      private final boolean myPostVisitor;
 
       public DfsTraversal(Graph<V> graph, Iterable<? extends V> startVs, Consumer<? super V> visitor) {
+        this(graph, startVs, visitor, false);
+      }
+
+      public DfsTraversal(Graph<V> graph, Iterable<? extends V> startVs, Consumer<? super V> visitor, boolean postVisitor) {
         myGraph = graph;
         myStartVs = startVs;
         myVisitor = visitor;
+        myPostVisitor = postVisitor;
       }
 
       public void dfs() {
@@ -282,11 +310,16 @@ public final class GraphHolder<V, W> {
       // pre: v belongs to the graph and hasn't beed visited yeet
       private void dfs0(V v) {
         myVisited.add(v);
-        myVisitor.accept(v); // DFS despite the name doesn't mandate visit of the vertex as the last element (*after* visit of adjunct verticies, not *before*)
+        if (!myPostVisitor) {
+          myVisitor.accept(v);
+        }
         for (V vOut : myGraph.getOuts(v)) {
           if (!myVisited.contains(vOut)) {
             dfs0(vOut);
           }
+        }
+        if (myPostVisitor) {
+          myVisitor.accept(v);
         }
       }
     }

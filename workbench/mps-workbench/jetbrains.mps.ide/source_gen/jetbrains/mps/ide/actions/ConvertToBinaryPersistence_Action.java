@@ -36,7 +36,7 @@ import java.io.IOException;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6981599660810253824", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "6981599660810253824", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ConvertToBinaryPersistence_Action extends BaseAction {
   private static final Logger LOG = Logger.getLogger(ConvertToBinaryPersistence_Action.class);
   private static final Icon ICON = null;

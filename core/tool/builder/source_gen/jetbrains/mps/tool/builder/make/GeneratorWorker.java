@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.tool.builder.WorkerBase;
 
-@GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/4263887295358465244", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
+@GeneratedClass(nodeId = "4263887295358465244", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public class GeneratorWorker extends BaseGeneratorWorker {
   public GeneratorWorker(Script whatToDo) {
     super(whatToDo);

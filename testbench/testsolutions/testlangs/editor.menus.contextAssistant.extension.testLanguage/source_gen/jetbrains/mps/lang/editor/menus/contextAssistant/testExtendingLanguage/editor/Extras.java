@@ -59,7 +59,7 @@ public class Extras extends TransformationMenuBase {
 
       @Override
       public IconResource getIcon() {
-        return IconContainer.RESOURCE_a0a2e4;
+        return IconContainer.RESOURCE_0;
       }
       @Override
       public String getTooltipText() {
@@ -84,7 +84,7 @@ public class Extras extends TransformationMenuBase {
 
       @Override
       public IconResource getIcon() {
-        return IconContainer.RESOURCE_a0a2e5;
+        return IconContainer.RESOURCE_1;
       }
       @Override
       public String getTooltipText() {

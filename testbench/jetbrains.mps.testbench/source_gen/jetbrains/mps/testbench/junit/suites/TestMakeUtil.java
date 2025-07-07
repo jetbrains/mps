@@ -11,7 +11,7 @@ import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.classloading.ClassLoaderManager;
 
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/2577066619598079009", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "2577066619598079009", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public final class TestMakeUtil {
   private final Platform myPlatform;
 

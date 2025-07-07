@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.ProxyEqualsUtil;
 
-@GeneratedClass(node = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)/2929731761237869279", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
+@GeneratedClass(nodeId = "2929731761237869279", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
 public class MapEntry_WrapperFactory extends ValueWrapperFactory {
   public MapEntry_WrapperFactory() {
   }

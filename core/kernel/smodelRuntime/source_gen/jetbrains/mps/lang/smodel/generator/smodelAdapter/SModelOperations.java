@@ -19,13 +19,14 @@ import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.stub.ProjectStructureBuilder;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
-@GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527280390", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
+@GeneratedClass(nodeId = "6599163591527280390", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public final class SModelOperations {
   public SModelOperations() {
   }
@@ -109,9 +110,7 @@ public final class SModelOperations {
     final SConcept properConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
 
     final SNode result = newNode(model, id, properConcept);
-    if (result == null) {
-      return null;
-    }
+    NodeIdentityComponent.getInstance().configure(result, model, null);
 
     BHReflection.initNode(result);
     return result;
@@ -131,6 +130,7 @@ public final class SModelOperations {
 
   public static SNode createNewRootNode(SModel model, @Nullable SNodeId nodeId, SConcept concept) {
     SNode newNode = newNode(model, nodeId, concept);
+    NodeIdentityComponent.getInstance().configure(newNode, model, null);
     BHReflection.initNode(newNode);
     model.addRootNode(newNode);
     return newNode;

@@ -20,7 +20,7 @@ public class EnumerationDescriptor_TestEnum_Switch extends EnumerationDescriptor
   private final EnumerationDescriptor.MemberDescriptor myMember_option3_0 = new EnumerationDescriptor.MemberDescriptor("option3", "option3", 0x6eb821113ba9c117L, "r:43b4d418-d4ca-4d97-ab07-31e4f3ddb3e5(jetbrains.mps.lang.smodelTests.structure)/7978163097785975063");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, 0x6eb821113ba9c113L, 0x6eb821113ba9c114L, 0x6eb821113ba9c117L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_option1_0, myMember_option2_0, myMember_option3_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_option1_0, myMember_option2_0, myMember_option3_0);
 
   @Nullable
   @Override

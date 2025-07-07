@@ -11,11 +11,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationMarkup;
 import com.intellij.openapi.util.text.HtmlChunk;
@@ -26,22 +27,41 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/156597066336189561", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "156597066336189561", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class DocumentationProvider {
-  private SNode myNode;
+  private final SNode myNode;
+  private final SRepository myRepository;
 
-  public DocumentationProvider(SNode node) {
+  public DocumentationProvider(SNode node, SRepository repository) {
     myNode = node;
+    myRepository = repository;
   }
 
-  public DocumentationProvider(SRepository repository, EditorCell currentCell) {
-    myNode = findTargetNode(repository, currentCell);
+  public DocumentationProvider(final SRepository repository, final EditorCell currentCell) {
+    myRepository = repository;
+    final SNode[] node = new SNode[]{null};
+    myRepository.getModelAccess().runReadAction(() -> node[0] = findTargetNode(repository, currentCell));
+    myNode = node[0];
   }
 
   private SNode findTargetNode(SRepository repository, EditorCell currentCell) {
     SNode contextNode = null;
     SReferenceLink referenceLink = null;
     SProperty property = null;
+
+    /*
+      If the selected editor cell belongs to a DocumentationAnnotation, return the node associated with this annotation.
+
+    */
+
+    SNode parentNode = currentCell.getSNode();
+    while (parentNode != null) {
+      if (parentNode.isInstanceOfConcept(CONCEPTS.DocumentationAnnotation$ug)) {
+        return parentNode.getParent();
+      }
+      parentNode = parentNode.getParent();
+    }
+
     do {
       if (currentCell.getSRole() instanceof SReferenceLink) {
         contextNode = currentCell.getSNode();
@@ -80,16 +100,42 @@ public class DocumentationProvider {
     }
   }
 
+  public SNode getNode() {
+    return myNode;
+  }
+
 
   private String getDocumentationContent() {
-    SNode docTextNode = Sequence.fromIterable(SLinkOperations.collect(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(SNodeOperations.as(myNode, CONCEPTS.DocumentationObjective$OD)), LINKS.text$Dgpy)).first();
-    SModel model = SNodeOperations.getModel(docTextNode);
-    SRepository repo = model.getRepository();
-    HeadlessEditorComponent component = new HeadlessEditorComponent(repo);
-    component.editNode(docTextNode);
-    HtmlTextBuilder tb;
-    tb = component.getRootCell().renderHtml();
-    return tb.getHtmlText();
+    final Wrappers._T<HtmlTextBuilder> tb = new Wrappers._T<HtmlTextBuilder>();
+    myRepository.getModelAccess().runReadAction(() -> {
+      SNode docTextNode = Sequence.fromIterable(SLinkOperations.collect(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(SNodeOperations.as(myNode, CONCEPTS.DocumentationObjective$OD)), LINKS.text$Dgpy)).first();
+      SModel model = SNodeOperations.getModel(docTextNode);
+      SRepository repo = model.getRepository();
+      HeadlessEditorComponent component = new HeadlessEditorComponent(repo);
+      component.editNode(docTextNode);
+      tb.value = component.getRootCell().renderHtml();
+    });
+    return tb.value.getHtmlText();
+  }
+
+  @Nullable
+  public String getConcept() {
+    if (myNode == null) {
+      return null;
+    }
+    final Wrappers._T<String> answer = new Wrappers._T<String>(null);
+    myRepository.getModelAccess().runReadAction(() -> answer.value = myNode.getConcept().getName());
+    return answer.value;
+  }
+
+  @Nullable
+  public String getName() {
+    if (myNode == null) {
+      return null;
+    }
+    final Wrappers._T<String> answer = new Wrappers._T<String>(null);
+    myRepository.getModelAccess().runReadAction(() -> answer.value = myNode.getName());
+    return answer.value;
   }
 
   @Nullable
@@ -97,20 +143,36 @@ public class DocumentationProvider {
     if (myNode == null) {
       return null;
     }
-    if ((Sequence.fromIterable(SLinkOperations.collect(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(SNodeOperations.as(myNode, CONCEPTS.DocumentationObjective$OD)), LINKS.text$Dgpy)).first() == null)) {
+    final Wrappers._boolean emptyDocumentation = new Wrappers._boolean(false);
+    myRepository.getModelAccess().runReadAction(() -> {
+      if ((Sequence.fromIterable(SLinkOperations.collect(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(SNodeOperations.as(myNode, CONCEPTS.DocumentationObjective$OD)), LINKS.text$Dgpy)).first() == null)) {
+        emptyDocumentation.value = true;
+      }
+    });
+    if (emptyDocumentation.value) {
       return null;
     }
     StringBuilder sb = new StringBuilder();
     sb.append(MPSDocumentationMarkup.DEFINITION_START);
-    sb.append("Concept: " + myNode.getConcept().getName());
+    sb.append("Concept: " + this.getConcept());
     sb.append("<br>");
-    sb.append("Name: " + myNode.getName());
+    sb.append("Name: " + this.getName());
     sb.append(MPSDocumentationMarkup.DEFINITION_END);
     sb.append(MPSDocumentationMarkup.CONTENT_START);
     sb.append(getDocumentationContent());
     sb.append(MPSDocumentationMarkup.CONTENT_END);
     sb.append(HtmlChunk.div().setClass("bottom").child(getModelInfo()));
     return sb.toString();
+  }
+
+  public boolean hasDocumentation() {
+    final Wrappers._boolean emptyDocumentation = new Wrappers._boolean(false);
+    myRepository.getModelAccess().runReadAction(() -> {
+      if ((Sequence.fromIterable(SLinkOperations.collect(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(SNodeOperations.as(myNode, CONCEPTS.DocumentationObjective$OD)), LINKS.text$Dgpy)).first() == null)) {
+        emptyDocumentation.value = true;
+      }
+    });
+    return !(emptyDocumentation.value);
   }
 
   private HtmlChunk getModelInfo() {

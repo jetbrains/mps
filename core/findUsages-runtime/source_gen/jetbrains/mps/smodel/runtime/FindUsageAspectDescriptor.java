@@ -12,7 +12,7 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder;
  * 
  *  @author Artem Tikhomirov
  */
-@GeneratedClass(node = "r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)/8568892084424438907", model = "r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)")
+@GeneratedClass(nodeId = "8568892084424438907", model = "r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)")
 public interface FindUsageAspectDescriptor extends ILanguageAspect {
   default void init(FinderRegistry registry) {
   }

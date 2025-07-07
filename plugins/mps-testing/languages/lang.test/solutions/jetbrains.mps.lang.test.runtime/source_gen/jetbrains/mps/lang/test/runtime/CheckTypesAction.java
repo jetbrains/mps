@@ -19,7 +19,12 @@ public abstract class CheckTypesAction {
   public void checkNodeWithTypeCheckingAction(final SNode node, Runnable checkingAction) {
     SNode containingRoot = node.getContainingRoot();
     TypecheckingSession.Flags flags = TypecheckingSession.Flags.forRoot(containingRoot).incremental();
-    TypecheckingFacade.getFromContext().runWithSession(TypecheckingFacade.getFromContext().requestNewSession(flags).session(), checkingAction);
+    TypecheckingSession.Handle handle = TypecheckingFacade.getFromContext().requestNewSession(flags);
+    try {
+      TypecheckingFacade.getFromContext().runWithSession(handle.session(), checkingAction);
+    } finally {
+      handle.release();
+    }
   }
 
   public void checkTypeIs(final SNode typeToCompare) {

@@ -29,7 +29,7 @@ import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2732852465125672459", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "2732852465125672459", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetReferenceChange extends NodeChange {
   private final SReferenceLink myRole;
   private final SModelReference myTargetModelReference;

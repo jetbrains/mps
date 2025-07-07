@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)/6616942641365771212", model = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)")
+@GeneratedClass(nodeId = "6616942641365771212", model = "r:46b5a205-6da9-4b5a-ac93-05f04740d2d2(jetbrains.mps.kotlin.stubs.smodel.references)")
 public class JavaClassReference extends ClassStereotype {
   public JavaClassReference(String fqName) {
     // TODO name handling might differ from ASMNodeId, it depends who inputs it

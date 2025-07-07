@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)/775260118347464044", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
+@GeneratedClass(nodeId = "775260118347464044", model = "r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)")
 public class AddConstructorParameterRefactoring extends AbstractInitializeFieldRefactoring {
 
   public void performRefactoring(SNode field, SNodeReference[] selectedConstructors, SRepository repository) {

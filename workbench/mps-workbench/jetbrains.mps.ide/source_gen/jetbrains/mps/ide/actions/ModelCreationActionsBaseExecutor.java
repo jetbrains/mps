@@ -16,7 +16,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.ModulePropertiesConfigurable;
 import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.smodel.ModelAccessHelper;
 
 /**
  * Provides a generic template for building various model-creation actions.
@@ -38,7 +37,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
  * @see jetbrains.mps.ide.actions.NewModelActionExecutor default executor for 'new model' action
  * @see jetbrains.mps.ide.actions.CloneModelActionExecutor default executor for 'clone model' action
  */
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7081154005685488008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7081154005685488008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public abstract class ModelCreationActionsBaseExecutor {
 
   protected final Project myIdeaProject;
@@ -54,7 +53,7 @@ public abstract class ModelCreationActionsBaseExecutor {
 
       SModule module = selectModule();
 
-      if (module == null || !(canBeCreatedInModule(module))) {
+      if (module == null || module.isReadOnly() || !(canBeCreatedInModule(module))) {
         return;
       }
 
@@ -87,7 +86,7 @@ public abstract class ModelCreationActionsBaseExecutor {
    * that can be only placed in specific modules, e.g. has some custom model root or facet.
    */
   protected boolean canBeCreatedInModule(@NotNull SModule module) {
-    if (hasModelRoots(module)) {
+    if (hasNoModelRoots(module)) {
       // provide a dialog asking for creating new model root
       if (Messages.showOkCancelDialog(myIdeaProject, String.format("There are no model roots in the module. It is required for model creation.%nDo you want to add one?"), "Model Root Not Found", Messages.OK_BUTTON, Messages.CANCEL_BUTTON, Messages.getQuestionIcon()) == Messages.OK) {
         MPSPropertiesConfigurable configurable = new ModulePropertiesConfigurable(module, myProject);
@@ -134,7 +133,7 @@ public abstract class ModelCreationActionsBaseExecutor {
     ProjectPane.getInstance(myIdeaProject).selectModel(result, false);
   }
 
-  private boolean hasModelRoots(@NotNull final SModule module) {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> !(module.getModelRoots().iterator().hasNext()));
+  private boolean hasNoModelRoots(@NotNull final SModule module) {
+    return myProject.getModelAccess().computeReadAction(() -> !(module.getModelRoots().iterator().hasNext()));
   }
 }

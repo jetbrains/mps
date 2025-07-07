@@ -56,7 +56,7 @@ public class ForEach_Test extends Util_Test {
     for (int[] ints : lints) {
       sum += Sequence.fromIterable(ArrayUtils.fromIntegerArray(ints)).reduceLeft((a, b) -> a + b);
     }
-    Assert.assertEquals(6010, sum);
+    Assert.assertEquals(Integer.valueOf(6010), Integer.valueOf(sum));
   }
   @Test
   public void test_mps10737() throws Exception {

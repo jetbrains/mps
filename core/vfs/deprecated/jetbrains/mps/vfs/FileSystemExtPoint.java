@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.vfs.impl.IoFileSystem;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -26,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @Deprecated(since = "2019.1", forRemoval = true)
 public final class FileSystemExtPoint {
-  private static FileSystem ourFS = IoFileSystem.INSTANCE;
+  private static FileSystem ourFS;
 
   public static void setFS(@NotNull FileSystem fileSystem) {
     ourFS = fileSystem;

@@ -17,9 +17,9 @@ import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import java.util.Collections;
@@ -72,7 +72,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195170730024"), CONCEPTS.InputNode_A$Jt, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -96,7 +96,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1202780884290"), CONCEPTS.InputNode_A$Jt, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -111,7 +111,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195168895642"), CONCEPTS.InputRoot$nY, false, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_3(new MapRootRuleContext(context, getRuleNode()));
     }
     @Override
@@ -126,10 +126,10 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195165196524"));
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.createRootRule_Condition_0_0(new CreateRootRuleContext(context, getRuleNode()));
     }
-    public Collection<SNode> apply(TemplateContext context) throws GenerationException {
+    public Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> result = environment.callSite(new Template_OutputRoot_By_RootRule(), new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195165196524")).apply(context);
       return result;

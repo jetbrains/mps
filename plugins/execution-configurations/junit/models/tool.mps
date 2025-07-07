@@ -69,6 +69,7 @@
     <import index="jgl2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.testframework.export(MPS.IDEA/)" />
     <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" />
     <import index="lxc5" ref="r:b25f8540-4e18-427d-a8ac-60f947a3fbc1(jetbrains.mps.baselanguage.unitTest.execution)" />
+    <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" implicit="true" />
   </imports>
   <registry>
@@ -4294,7 +4295,7 @@
                             <node concept="10Nm6u" id="4LTxumy2LtM" role="10QFUP" />
                           </node>
                         </node>
-                        <node concept="2YIFZM" id="4LTxumy1FKS" role="37wK5m">
+                        <node concept="2YIFZM" id="6Nbkq$6meO6" role="37wK5m">
                           <ref role="1Pybhc" node="3b_6O4IZPfR" resolve="UnitTestOptions" />
                           <ref role="37wK5l" node="3b_6O4IZPfX" resolve="isHidePassed" />
                         </node>
@@ -4394,7 +4395,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="6lFKwfyH6mo" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZyfm" role="37wK5m">
@@ -4520,7 +4521,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="27G_0cyvyhJ" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZyfX" role="37wK5m">
@@ -4529,9 +4530,9 @@
                 <node concept="Xl_RD" id="4LTxumxZyfY" role="37wK5m">
                   <property role="Xl_RC" value="Select currently running test in tree" />
                 </node>
-                <node concept="10M0yZ" id="4LTxumxZIyr" role="37wK5m">
-                  <ref role="1PxDUh" to="z2i8:~AllIcons$Nodes$Jsf" resolve="AllIcons.Nodes.Jsf" />
-                  <ref role="3cqZAo" to="z2i8:~AllIcons$Nodes$Jsf.Renderer" resolve="Renderer" />
+                <node concept="10M0yZ" id="6FTCJIUQw83" role="37wK5m">
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.TrackRunningTests" resolve="TrackRunningTests" />
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
                 </node>
               </node>
             </node>
@@ -4703,7 +4704,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="27G_0cyw6qc" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZygP" role="37wK5m">
@@ -4816,7 +4817,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="27G_0cywkuM" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZyhm" role="37wK5m">
@@ -4941,7 +4942,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="27G_0cywv9o" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZyhV" role="37wK5m">
@@ -5066,7 +5067,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="27G_0cywDxc" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZyiw" role="37wK5m">
@@ -5192,7 +5193,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="27G_0cyvQ7F" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="4LTxumxZyj7" role="37wK5m">
@@ -14235,28 +14236,60 @@
           <node concept="3clFbS" id="36vIONTtRj9" role="3clFbx">
             <node concept="3cpWs6" id="36vIONTtRja" role="3cqZAp" />
           </node>
-          <node concept="3y3z36" id="36vIONTtRjb" role="3clFbw">
-            <node concept="10Nm6u" id="36vIONTtRjc" role="3uHU7w" />
-            <node concept="2OqwBi" id="36vIONTtRjd" role="3uHU7B">
-              <node concept="37vLTw" id="2BHiRxeug5_" role="2Oq$k0">
-                <ref role="3cqZAo" node="36vIONTtRix" resolve="myTreeComponent" />
-              </node>
-              <node concept="liA8E" id="36vIONTtRjh" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~JTree.getPathForLocation(int,int)" resolve="getPathForLocation" />
-                <node concept="2OqwBi" id="36vIONTtRji" role="37wK5m">
-                  <node concept="37vLTw" id="2BHiRxgmvK0" role="2Oq$k0">
-                    <ref role="3cqZAo" node="36vIONTtRj5" resolve="event" />
-                  </node>
-                  <node concept="liA8E" id="36vIONTtRjk" role="2OqNvi">
-                    <ref role="37wK5l" to="hyam:~MouseEvent.getX()" resolve="getX" />
+          <node concept="22lmx$" id="6Nbkq$6FerJ" role="3clFbw">
+            <node concept="3y3z36" id="36vIONTtRjb" role="3uHU7B">
+              <node concept="2OqwBi" id="36vIONTtRjd" role="3uHU7B">
+                <node concept="37vLTw" id="2BHiRxeug5_" role="2Oq$k0">
+                  <ref role="3cqZAo" node="36vIONTtRix" resolve="myTreeComponent" />
+                </node>
+                <node concept="liA8E" id="36vIONTtRjh" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JTree.getPathForRow(int)" resolve="getPathForRow" />
+                  <node concept="2OqwBi" id="2xv2Kj1BOfX" role="37wK5m">
+                    <node concept="37vLTw" id="2xv2Kj1BLna" role="2Oq$k0">
+                      <ref role="3cqZAo" node="36vIONTtRix" resolve="myTreeComponent" />
+                    </node>
+                    <node concept="liA8E" id="2xv2Kj1BTH5" role="2OqNvi">
+                      <ref role="37wK5l" to="dxuu:~JTree.getRowForLocation(int,int)" resolve="getRowForLocation" />
+                      <node concept="2OqwBi" id="2xv2Kj1BUJa" role="37wK5m">
+                        <node concept="37vLTw" id="2xv2Kj1BUJb" role="2Oq$k0">
+                          <ref role="3cqZAo" node="36vIONTtRj5" resolve="event" />
+                        </node>
+                        <node concept="liA8E" id="2xv2Kj1BUJc" role="2OqNvi">
+                          <ref role="37wK5l" to="hyam:~MouseEvent.getX()" resolve="getX" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="36vIONTtRjl" role="37wK5m">
+                        <node concept="37vLTw" id="2BHiRxgmxKa" role="2Oq$k0">
+                          <ref role="3cqZAo" node="36vIONTtRj5" resolve="event" />
+                        </node>
+                        <node concept="liA8E" id="36vIONTtRjn" role="2OqNvi">
+                          <ref role="37wK5l" to="hyam:~MouseEvent.getY()" resolve="getY" />
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
-                <node concept="2OqwBi" id="36vIONTtRjl" role="37wK5m">
-                  <node concept="37vLTw" id="2BHiRxgmxKa" role="2Oq$k0">
-                    <ref role="3cqZAo" node="36vIONTtRj5" resolve="event" />
+              </node>
+              <node concept="10Nm6u" id="36vIONTtRjc" role="3uHU7w" />
+            </node>
+            <node concept="3y3z36" id="6Nbkq$6Fg0G" role="3uHU7w">
+              <node concept="10Nm6u" id="6Nbkq$6Fh38" role="3uHU7w" />
+              <node concept="2OqwBi" id="6Nbkq$6Ff4G" role="3uHU7B">
+                <node concept="37vLTw" id="6Nbkq$6Ff4H" role="2Oq$k0">
+                  <ref role="3cqZAo" node="36vIONTtRix" resolve="myTreeComponent" />
+                </node>
+                <node concept="liA8E" id="6Nbkq$6Ff4I" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JTree.getClosestPathForLocation(int,int)" resolve="getClosestPathForLocation" />
+                  <node concept="3cmrfG" id="6Nbkq$6TS49" role="37wK5m">
+                    <property role="3cmrfH" value="0" />
                   </node>
-                  <node concept="liA8E" id="36vIONTtRjn" role="2OqNvi">
-                    <ref role="37wK5l" to="hyam:~MouseEvent.getY()" resolve="getY" />
+                  <node concept="2OqwBi" id="6Nbkq$6Ff4M" role="37wK5m">
+                    <node concept="37vLTw" id="6Nbkq$6Ff4N" role="2Oq$k0">
+                      <ref role="3cqZAo" node="36vIONTtRj5" resolve="event" />
+                    </node>
+                    <node concept="liA8E" id="6Nbkq$6Ff4O" role="2OqNvi">
+                      <ref role="37wK5l" to="hyam:~MouseEvent.getY()" resolve="getY" />
+                    </node>
                   </node>
                 </node>
               </node>

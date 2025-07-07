@@ -20,7 +20,6 @@
   <property name="artifacts.mpsStandalone" location="${build.dir}/artifacts/mpsStandalone" />
   <property name="artifacts.mpsDevKit" location="${build.dir}/artifacts/mpsDevKit" />
   <property name="artifacts.mpsPlugins" location="${build.dir}/artifacts/mpsPlugins" />
-  <property name="artifacts.mpsJavaPlatform" location="${build.dir}/artifacts/mpsJavaPlatform" />
   <property name="artifacts.mpsJava" location="${build.dir}/artifacts/mpsJava" />
   <property name="artifacts.mpsHttpSupportPlugin" location="${build.dir}/artifacts/mpsHttpSupportPlugin" />
   <property name="artifacts.mpsNavigationBar" location="${build.dir}/artifacts/mpsNavigationBar" />
@@ -75,9 +74,9 @@
     </copy>
     <mkdir dir="${build.tmp}/default/branding.jar" />
     <mkdir dir="${build.tmp}/default/branding.jar/idea" />
-    <echoxml file="${build.tmp}/default/branding.jar/idea/IdeaApplicationInfo.xml">
+    <echoxml file="${build.tmp}/default/branding.jar/idea/MPSApplicationInfo.xml">
       <component>
-        <version major="${mpsBootstrapCore.version.major}" minor="${mpsBootstrapCore.version.minor}${mpsBootstrapCore.version.bugfixNr}" eap="true" update-channel="MPS241EAP" />
+        <version major="${mpsBootstrapCore.version.major}" minor="${mpsBootstrapCore.version.minor}${mpsBootstrapCore.version.bugfixNr}" eap="true" update-channel="MPS252EAP" />
         <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009" />
         <build number="${build.number}" date="${date}" />
         <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="396" progressHeight="4" />
@@ -88,7 +87,7 @@
         <welcome-screen logo-url="/MPS_welcomeScreen.png" />
         
         <plugins url="https://plugins.jetbrains.com/" />
-        <update-urls check="https://www.jetbrains.com/mps/update.xml" patches="https://www.jetbrains.com/mps/download/" />
+        <update-urls check="https://www.jetbrains.com/mps/update.xml" patches="https://www.jetbrains.com/mps/download/?utm_source=product&amp;utm_media=link&amp;utm_campaign=MPS&amp;utm_content=${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" />
         
         <help root="mps" webhelp-url="https://www.jetbrains.com/mps/webhelp/" />
         <documentation url="https://www.jetbrains.com/help/mps/${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}/fast-track-to-mps.html" />
@@ -254,9 +253,6 @@
         <tokenfilter>
           <replaceregex pattern=".+" replace="${build.number}" flags="" />
         </tokenfilter>
-        <tokenfilter>
-          <replaceregex pattern="MPS-" replace="" flags="" />
-        </tokenfilter>
       </filterchain>
     </copy>
     <copy todir="${build.layout}">
@@ -280,18 +276,17 @@
     <ant antfile="build/mpsTrueBootstrap.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTroveCollections.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDevKit.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsConsolePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsStandalone.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsHttpSupportPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsNavigationBar.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsDebuggerPlugin.xml" inheritAll="false" useNativeBasedir="true" />

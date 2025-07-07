@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,19 +51,6 @@ public final class PasteNodeData {
     myNecessaryModels = in.getNecessaryModels();
   }
 
-  /**
-   * @deprecated use alternative without model reference; drop once 24.1 is out
-   */
-  @Deprecated(forRemoval = true, since = "2024.1")
-  // for copy scenario, old
-  public PasteNodeData(SModelReference sourceModelRef,
-                       List<SNode> nodes,
-                       @NotNull Collection<AssociationLink> references,
-                       Set<SLanguage> necessaryLanguages,
-                       Set<SModelReference> necessaryModels) {
-    this(nodes, references, necessaryLanguages, necessaryModels);
-  }
-
   // for copy scenario, new
   public PasteNodeData(List<SNode> nodes,
                        @NotNull Collection<AssociationLink> references,
@@ -94,15 +81,6 @@ public final class PasteNodeData {
     return myCopiedLinks;
   }
 
-  /**
-   * @deprecated always null, of no use; drop once 24.1 is out
-   */
-  @Nullable
-  @Deprecated(forRemoval = true,since = "2024.1")
-  public SModelReference getSourceModel() {
-    return null;
-  }
-
   public Set<SLanguage> getNecessaryLanguages() {
     return myNecessaryLanguages;
   }
@@ -128,14 +106,6 @@ public final class PasteNodeData {
    */
   public boolean consumed() {
     return myPasteCount > 0;
-  }
-
-  /**
-   * @deprecated unused; drop once 24.1 is out
-   */
-  @Deprecated(forRemoval = true,since = "2024.1")
-  public static PasteNodeData emptyPasteNodeData(SModelReference sourceModel) {
-    return new PasteNodeData();
   }
 
   public static PasteNodeData emptyPasteNodeData() {

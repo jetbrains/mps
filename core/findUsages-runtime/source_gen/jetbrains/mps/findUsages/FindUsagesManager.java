@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.LinkedHashSet;
 
-@GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/8568892084424436293", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
+@GeneratedClass(nodeId = "8568892084424436293", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
 public class FindUsagesManager extends FindUsagesFacade implements CoreComponent {
   /**
    * @deprecated it's {@link CoreComponent}, use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} to retrieve an instance

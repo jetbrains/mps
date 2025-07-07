@@ -11,7 +11,7 @@ import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 /**
  * No context (i.e. not paused)
  */
-@GeneratedClass(node = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)/4352118152439826150", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
+@GeneratedClass(nodeId = "4352118152439826150", model = "r:63e7a653-1334-49d4-8e81-fd72b84fb4ff(jetbrains.mps.debugger.java.runtime.state)")
 public class RunningJavaUiState extends JavaUiStateImpl {
   public RunningJavaUiState(DebugSession session) {
     super(session);

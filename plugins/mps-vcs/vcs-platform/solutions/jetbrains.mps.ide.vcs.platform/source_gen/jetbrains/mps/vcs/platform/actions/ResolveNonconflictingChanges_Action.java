@@ -21,7 +21,7 @@ import com.intellij.openapi.vcs.merge.MergeProvider2;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8695149241388806063", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "8695149241388806063", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ResolveNonconflictingChanges_Action extends BaseAction {
   private static final Icon ICON = null;
 

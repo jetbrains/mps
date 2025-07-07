@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.plugins.applicationplugins;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
@@ -32,14 +33,20 @@ import java.util.List;
 /**
  * Is a {@link BasePluginManager} which is responsible for loading application plugins {@link BaseApplicationPlugin};
  * Triggered from the superclass (#afterPluginsCreated)
+ * <p>
+ *   Used to be IDEA App Component, now it's an App Service (although as long as its initialization is explicit, doesn't need to be integrated into
+ *   IDEA story altogether, both this class and PluginLoaderRegistry could be POJO components.
+ *   FIXME Besides, register/unregister() shall become external operations, rather than shared behavior of superclass
+ * </p>
  */
-public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements BaseComponent {
+public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements Disposable {
   private static final Logger LOG = Logger.getLogger(ApplicationPluginManager.class);
 
   private final Platform myPlatform;
 
   public ApplicationPluginManager() {
     myPlatform = MPSCoreComponents.getInstance().getPlatform();
+    register();
   }
 
   @Override
@@ -83,36 +90,7 @@ public class ApplicationPluginManager extends BasePluginManager<BaseApplicationP
   }
 
   @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return ApplicationPluginManager.class.getName();
-  }
-
-  /**
-   * Cannot load existing plugins here since:
-   * 1. we need to initialize ide plugin at the first place here (other plugins' actions depend on it)
-   * 2. it has some action which recursively addresses this component via Application#getComponent which leads to infinite recursive initialization
-   *    fixme we can get rid of that but probably some generated code needs to be rewritten (the only place is {@link jetbrains.mps.plugins.actions.GeneratedActionGroup}
-   *
-   * Thus we state that currently there must be no loaded modules in the repository when #initComponent() is called
-   */
-  @Override
-  public void initComponent() {
-    LOG.debug("Running startup activity");
-    register();
-    LOG.debug("Finished running startup activity");
-  }
-
-  @Override
-  public void disposeComponent() {
-    LOG.debug("Running shutdown app activity");
+  public void dispose() {
     unregister();
-    LOG.debug("Finished running shutdown app activity");
-  }
-
-  @Override
-  public String toString() {
-    return "ApplicationPluginManager";
   }
 }

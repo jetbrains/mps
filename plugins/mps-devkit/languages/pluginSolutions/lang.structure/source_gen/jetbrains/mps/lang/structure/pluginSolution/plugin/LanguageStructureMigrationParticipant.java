@@ -21,9 +21,13 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.SModelInternal;
+import java.util.Collection;
+import jetbrains.mps.smodel.language.CreateAspectContext;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelOperations;
@@ -110,38 +114,50 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
       public final List<String> conceptArgs = ListSequence.fromList(new ArrayList<String>());
       public final List<String> memberArgs = ListSequence.fromList(new ArrayList<String>());
     }
+
     public MigrationBuilder(RefactoringSession session, final Language language) {
       final int languageVersion = language.getLanguageVersion();
       String refactoringName = session.getRefactoringName();
       String migrationScriptName = (refactoringName == null ? "MigrationScript" : "Migrate_" + NameUtil.toValidCamelIdentifier(refactoringName));
-      myRefactoringStep = createPureMigrationScript_kz6lmo_a0d0f01(languageVersion, migrationScriptName + "_" + languageVersion);
+      myRefactoringStep = createPureMigrationScript_kz6lmo_a0d0g01(languageVersion, migrationScriptName + "_" + languageVersion);
       session.registerChange(() -> {
-        SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
-        SModelInternal sm = (SModelInternal) (SModel) migrationModel;
+        LanguageAspectDescriptor lad = LanguageAspectSupport.getAspectDescriptorById("migration");
+        final SModel migrationModel;
+        Collection<SModel> aspectModels = lad.getAspectModels(language);
+        if (aspectModels.isEmpty()) {
+          // FIXME would be nice to get mps.Project or ComponentHost through RefactoringSession, but of 3 uses of new RefactoringSessionImpl,
+          //      there's 1 (ImplicitNodeRenamer_extension) that doesn't have one ready.
+          CreateAspectContext cac = CreateAspectContext.create(language, MPSCoreComponents.getInstance().getPlatform(), null);
+          lad.create(cac);
+          migrationModel = lad.getAspectModels(language).iterator().next();
+        } else {
+          migrationModel = aspectModels.iterator().next();
+        }
+        ModelImports mi = new ModelImports(migrationModel);
         for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate((it) -> SNodeOperations.getReferences(it)).select((it) -> it.getTargetSModelReference()).distinct()) {
           if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
-            sm.addModelImport(reference);
+            mi.addModelImport(reference);
           }
         }
         SPropertyOperations.assign(myRefactoringStep, PROPS.description$l$Pt, myDescription.description);
-        jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
+        migrationModel.addRootNode(myRefactoringStep);
         language.setLanguageVersion(languageVersion + 1);
       });
     }
     public void addPart(@NotNull SNode initialStateNode, @NotNull SNode finalStateNode, SNode specialization) {
-      addPart(createMoveNodeMigrationPart_kz6lmo_a0a0g01(NodeReferenceUtil.makeReflection(initialStateNode), NodeReferenceUtil.makeReflection(finalStateNode), specialization));
+      addPart(createMoveNodeMigrationPart_kz6lmo_a0a0h01(NodeReferenceUtil.makeReflection(initialStateNode), NodeReferenceUtil.makeReflection(finalStateNode), specialization));
     }
     public void addPart(SNode migrationPart) {
       ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$ITsP)).addElement(migrationPart);
     }
-    private static SNode createPureMigrationScript_kz6lmo_a0d0f01(int p0, String p1) {
+    private static SNode createPureMigrationScript_kz6lmo_a0d0g01(int p0, String p1) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PureMigrationScript$hG);
       n0.setProperty(PROPS.fromVersion$hHKK, "" + (p0));
       n0.setProperty(PROPS.name$MnvL, p1);
       n0.setProperty(PROPS.description$l$Pt, null);
       return n0.getResult();
     }
-    private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0g01(SNode p0, SNode p1, SNode p2) {
+    private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0h01(SNode p0, SNode p1, SNode p2) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveNodeMigrationPart$zn);
       n0.forChild(LINKS.fromNode$UG1d).initNode(p0, CONCEPTS.AbstractNodeReference$bQ, true);
       n0.forChild(LINKS.toNode$UGvf).initNode(p1, CONCEPTS.AbstractNodeReference$bQ, true);

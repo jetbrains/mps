@@ -22,6 +22,7 @@ import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
 import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -101,7 +102,8 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
       mmiProvider = new RegularMetaModelInfo();
     }
     IdInfoReadHelper readHelper = new IdInfoReadHelper(mmiProvider, interfaceOnly, stripImplementation);
-    return new ModelReader9Handler(header, readHelper);
+    DefaultSModel modelData = new DefaultSModel(header.getModelReference(), header);
+    return new ModelReader9Handler(header, modelData, readHelper);
   }
 
   @Override

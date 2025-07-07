@@ -20,7 +20,7 @@ import jetbrains.mps.debug.api.Debuggers;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)/2244048449136669030", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
+@GeneratedClass(nodeId = "2244048449136669030", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
 public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
   private Set<BreakpointCreator> myCreators = SetSequence.fromSet(new HashSet<BreakpointCreator>());
   public DebugInfoProvider_AppPluginPart() {

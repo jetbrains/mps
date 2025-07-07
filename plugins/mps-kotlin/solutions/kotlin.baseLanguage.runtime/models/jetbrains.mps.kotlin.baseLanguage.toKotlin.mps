@@ -29,6 +29,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -91,6 +92,7 @@
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
       <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
+      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -1475,17 +1477,25 @@
               </node>
             </node>
           </node>
-          <node concept="2dkUwp" id="3lDDPlncK9j" role="3clFbw">
-            <node concept="2OqwBi" id="3lDDPlncI3X" role="3uHU7B">
-              <node concept="37vLTw" id="3lDDPlncJ9b" role="2Oq$k0">
+          <node concept="22lmx$" id="4jEVP0mw7bw" role="3clFbw">
+            <node concept="3clFbC" id="4jEVP0mw8yr" role="3uHU7B">
+              <node concept="10Nm6u" id="4jEVP0mw9ly" role="3uHU7w" />
+              <node concept="37vLTw" id="4jEVP0mw7fH" role="3uHU7B">
                 <ref role="3cqZAo" node="3lDDPlnbjQw" resolve="name" />
               </node>
-              <node concept="liA8E" id="3lDDPlncIKn" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
-              </node>
             </node>
-            <node concept="3cmrfG" id="3lDDPlncKc2" role="3uHU7w">
-              <property role="3cmrfH" value="3" />
+            <node concept="2dkUwp" id="3lDDPlncK9j" role="3uHU7w">
+              <node concept="2OqwBi" id="3lDDPlncI3X" role="3uHU7B">
+                <node concept="37vLTw" id="3lDDPlncJ9b" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3lDDPlnbjQw" resolve="name" />
+                </node>
+                <node concept="liA8E" id="3lDDPlncIKn" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
+                </node>
+              </node>
+              <node concept="3cmrfG" id="3lDDPlncKc2" role="3uHU7w">
+                <property role="3cmrfH" value="3" />
+              </node>
             </node>
           </node>
         </node>

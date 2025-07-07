@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 /**
  * This works on concept nodes
  */
-@GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049414443", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
+@GeneratedClass(nodeId = "5797068448049414443", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public class ConceptHierarchyTree extends AbstractHierarchyTree {
   private Map<SNode, Set<SNode>> myChildrenCache = MapSequence.fromMap(new HashMap<SNode, Set<SNode>>());
 

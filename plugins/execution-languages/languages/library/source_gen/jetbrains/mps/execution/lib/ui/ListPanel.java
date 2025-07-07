@@ -77,6 +77,7 @@ public abstract class ListPanel<T> extends JBPanel {
     DefaultActionGroup group = ActionUtils.groupFromActions(add, remove);
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUN_CONFIGURATIONS_COMBOBOX, group, false);
     mainPanel.add(toolbar.getComponent(), BorderLayout.EAST);
+    toolbar.setTargetComponent(mainPanel);
 
     add(new JBLabel(myTitle + ":"), LayoutUtil.createLabelConstraints(0));
     add(mainPanel, LayoutUtil.createPanelConstraints(1));

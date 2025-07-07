@@ -7,7 +7,7 @@ import com.intellij.refactoring.RefactoringBundle;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 
-@GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1685972956014334002", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
+@GeneratedClass(nodeId = "1685972956014334002", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public class RenameDialog extends StringChooserDialog {
   private static String REFACTORING_NAME = RefactoringBundle.message("rename.title");
 

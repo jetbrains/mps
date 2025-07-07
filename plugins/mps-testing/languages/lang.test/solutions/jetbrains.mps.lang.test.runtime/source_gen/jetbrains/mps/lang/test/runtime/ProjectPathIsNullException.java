@@ -5,6 +5,6 @@ package jetbrains.mps.lang.test.runtime;
 
 /*package*/ final class ProjectPathIsNullException extends RuntimeException {
   public ProjectPathIsNullException() {
-    super("The project path was not specified in the TestInfo root.");
+    super("The project path is not specified.");
   }
 }

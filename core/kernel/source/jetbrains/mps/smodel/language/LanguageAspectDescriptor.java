@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.annotations.ResourceModule;
 import jetbrains.mps.aspects.OrderParticipant;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.project.DevKit;
@@ -31,8 +32,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 //todo: make identifiers instead of names-as-identifiers
+@ResourceModule("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)")
 public abstract class LanguageAspectDescriptor implements OrderParticipant<String> {
-  private static final IconResource MODEL_ICON = new IconResource("/jetbrains/mps/smodel/language/model.png", LanguageAspectDescriptor.class);
+  private static final IconResource MODEL_ICON = new IconResource("/jetbrains/mps/smodel/language/model.png", null, LanguageAspectDescriptor.class);
 
   public abstract String getPresentableAspectName();
 
@@ -44,27 +46,11 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
   }
 
   /**
-   * @deprecated use {@link #canCreate(CreateAspectContext)} instead
-   */
-  @Deprecated(since = "2022.3", forRemoval = true)
-  public boolean canCreate(SModule language) {
-    return false;
-  }
-
-  /**
-   * @deprecated use {@link #create(CreateAspectContext)} instead
-   */
-  @Deprecated(since = "2022.3", forRemoval = true)
-  public void create(SModule language) {
-    // AP: to return smodel obviously
-  }
-
-  /**
    * @return true if aspect model(s) can get created in a given context
    * @since 2022.3
    */
   public boolean canCreate(@NotNull CreateAspectContext context) {
-    return canCreate(context.getOwner());
+    return false;
   }
 
   /**
@@ -74,7 +60,7 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
    * @since 2022.3
    */
   public void create(@NotNull CreateAspectContext context) {
-    create(context.getOwner());
+    // no-op
   }
 
   @Nullable

@@ -37,7 +37,7 @@ import javax.swing.JList;
 import javax.swing.JComponent;
 import jetbrains.mps.ide.IdeBundle;
 
-@GeneratedClass(node = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)/7081154005682232171", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
+@GeneratedClass(nodeId = "7081154005682232171", model = "r:478bf62d-84fb-4fba-aeda-183fb2769e64(jetbrains.mps.ide.dialogs.project.creation)")
 public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
   @NotNull

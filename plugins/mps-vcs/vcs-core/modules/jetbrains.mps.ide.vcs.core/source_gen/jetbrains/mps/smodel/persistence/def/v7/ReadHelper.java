@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.SNodePointer;
 
-@GeneratedClass(node = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)/4362914091961475519", model = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)")
+@GeneratedClass(nodeId = "4362914091961475519", model = "r:b11ed8aa-3bfd-4e32-9f42-fbe92f0be58c(jetbrains.mps.smodel.persistence.def.v7)")
 public class ReadHelper {
   private static final Logger LOG = Logger.getLogger(ReadHelper.class);
   public static final char MODEL_SEPARATOR_CHAR = '.';
@@ -41,11 +41,7 @@ public class ReadHelper {
     }
     SModelReference modelRef = VCSPersistenceUtil.createModelReference(modelUID);
     SModel.ImportElement elem = new SModel.ImportElement(modelRef, ++myMaxImportIndex, version);
-    if (implicit) {
-      model.getImplicitImportsSupport().addAdditionalModelVersion(elem);
-    } else {
-      model.addModelImport(elem);
-    }
+    model.addModelImport(elem);
     addModelRef(index, modelRef);
   }
   public SModelReference getSModelReference(@NotNull String ix) {

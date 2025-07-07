@@ -223,7 +223,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a81b0dd);
+          cpb.icon(IconContainer.RESOURCE_0);
           props_EditorTestCase = cpb.create();
         }
         return props_EditorTestCase;
@@ -349,7 +349,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL1);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a63b0dd);
+          cpb.icon(IconContainer.RESOURCE_1);
           props_MigrationTestCase = cpb.create();
         }
         return props_MigrationTestCase;
@@ -507,7 +507,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateProperty(0x57f984daa37add4aL, "needsNoWriteAction");
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL2);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a85b0dd);
+          cpb.icon(IconContainer.RESOURCE_2);
           props_NodesTestCase = cpb.create();
         }
         return props_NodesTestCase;

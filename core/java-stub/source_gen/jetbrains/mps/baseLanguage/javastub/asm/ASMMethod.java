@@ -15,7 +15,7 @@ import javax.lang.model.SourceVersion;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 import java.util.Comparator;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860005690", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "7241381882860005690", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMMethod {
   private MethodNode myMethod;
   private ASMType myReturnType;

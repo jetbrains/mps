@@ -13,7 +13,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.common.FileOpenUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 
-@GeneratedClass(node = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)/7048882195103546169", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
+@GeneratedClass(nodeId = "7048882195103546169", model = "r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)")
 public class TextPositionProvider implements IPositionProvider<TextSourcePosition> {
 
   public TextPositionProvider() {

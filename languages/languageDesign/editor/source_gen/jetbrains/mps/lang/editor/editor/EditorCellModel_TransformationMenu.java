@@ -504,7 +504,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         }
 
         BinaryOperationEditorBuilder.BuilderResult builderResult = new BinaryOperationEditorBuilder(_context.getNode(), left, right, assistantUtils).buildEditor();
-        builderResult.commit();
+        builderResult.commit(_context.getEditorContext());
         SelectionUtil.selectCell(_context.getEditorContext(), builderResult.getAliasCell(), SelectionManager.FIRST_EDITABLE_CELL);
       }
 

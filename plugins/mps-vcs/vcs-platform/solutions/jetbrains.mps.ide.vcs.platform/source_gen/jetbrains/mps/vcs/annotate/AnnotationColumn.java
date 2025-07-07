@@ -61,7 +61,7 @@ import com.intellij.openapi.actionSystem.IdeActions;
 import git4idea.i18n.GitBundle;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotationColumn extends AbstractLeftColumn {
 
   private final EditorAnnotation myEditorAnnotation;

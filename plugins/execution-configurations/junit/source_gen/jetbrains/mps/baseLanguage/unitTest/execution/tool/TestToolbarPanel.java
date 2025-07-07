@@ -21,6 +21,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.actionSystem.IdeActions;
@@ -143,7 +144,7 @@ public class TestToolbarPanel extends JPanel {
   }
 
   private ToggleAction cteateTrackRunningAction() {
-    return new ToggleAction("Track Running Test", "Select currently running test in tree", AllIcons.Nodes.Jsf.Renderer) {
+    return new ToggleAction("Track Running Test", "Select currently running test in tree", MPSIcons.Nodes.TrackRunningTests) {
       {
         setSelected(((AnActionEvent) null), UnitTestOptions.isTrackRunning());
       }

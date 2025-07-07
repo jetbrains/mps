@@ -54,6 +54,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
         editorCell.setCellId("TransactionalProperty_huu55s_a");
         editorCell.setDefaultText("<no theProperty>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }

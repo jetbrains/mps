@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * Feature is either node, node's property, node's reference, node's property list,
  * or node's reference list (see subclasses)
  */
-@GeneratedClass(node = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)/5060092229902868305", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
+@GeneratedClass(nodeId = "5060092229902868305", model = "r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)")
 public abstract class Feature {
   private final SModelReference myModelReference;
 

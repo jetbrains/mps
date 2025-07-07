@@ -14,7 +14,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)/8568892084424437602", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
+@GeneratedClass(nodeId = "8568892084424437602", model = "r:6d26b589-14c5-496e-9d2b-5c71b3a15e5d(jetbrains.mps.ide.findusages.model.holders)")
 public class ModelsHolder implements IHolder<List<SModelReference>> {
   private List<SModelReference> myModelReferences;
   public ModelsHolder(@NotNull List<SModelReference> modelReferences) {

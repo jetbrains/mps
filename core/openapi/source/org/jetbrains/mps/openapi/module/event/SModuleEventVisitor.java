@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,26 @@
  */
 package org.jetbrains.mps.openapi.module.event;
 
+import org.jetbrains.annotations.NotNull;
+
 public interface SModuleEventVisitor {
-  void visit(SModuleAddedEvent event);
+  default void visit(SModuleAddedEvent event) {
+  }
 
-  void visit(SModuleRemovedEvent event);
+  default void visit(SModuleRemovedEvent event) {
+  }
 
-  void visit(SModuleRemovingEvent event);
+  default void visit(SModuleRemovingEvent event) {
+  }
 
-  void visit(SModuleChangedEvent event);
+  default void visit(SModuleChangedEvent event) {
+  }
+
+  /**
+   * just a handy method to invert {@code this} for {@link SRepositoryModuleEvent#accept(SModuleEventVisitor)} call, handy for method references and stream.
+   * Generally, there's no reason to provide alternative implementation, default one is ok.
+   */
+  default void dispatch(@NotNull SRepositoryEvent event) {
+    event.accept(this);
+  }
 }

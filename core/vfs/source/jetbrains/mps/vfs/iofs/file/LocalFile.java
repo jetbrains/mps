@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -52,13 +51,13 @@ import java.util.List;
 class LocalFile implements IFile {
   private static final Logger LOG = Logger.getLogger(LocalFile.class);
 
-  private final IFileSystem myFileSystem;
+  private final LocalIoFileSystem myFileSystem;
   private final String myPath;
   @NotNull private final File myFile;
 
   //must be used only by filesystems
   @Internal
-  LocalFile(@NotNull String path, IFileSystem fileSystem) {
+  LocalFile(@NotNull String path, LocalIoFileSystem fileSystem) {
     myPath = path;
     myFileSystem = fileSystem;
     myFile = new File(PathUtil.toSystemDependent(path));
@@ -73,7 +72,7 @@ class LocalFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return IoFileSystem.INSTANCE;
+    return myFileSystem.getUmbrellaFileSystem();
   }
 
   @NotNull
@@ -198,7 +197,9 @@ class LocalFile implements IFile {
       throw new IllegalArgumentException("Cannot copy: '" + newParent + " is not a directory");
     }
     File to = new File(newParent.getPath(), newName);
-    if (FileUtil.copyFile(myFile, to)) return new LocalFile(to.getAbsolutePath(), myFileSystem);
+    if (FileUtil.copyFile(myFile, to)) {
+      return new LocalFile(to.getAbsolutePath(), myFileSystem);
+    }
     else return null;
   }
 
@@ -239,8 +240,28 @@ class LocalFile implements IFile {
   }
 
   @Override
+  public @NotNull IFile stepIntoArchive() {
+    try {
+      if (isZipArchive()) {
+        return myFileSystem.getUmbrellaFileSystem().getFile(myPath + Path.ARCHIVE_SEPARATOR);
+      } else {
+        return this;
+      }
+    } catch (IOException ex) {
+      // ignore, treat as a regular file
+      return this;
+    }
+  }
+
+  @Override
   public boolean isInZipArchive() {
     return false;
+  }
+
+  @Override
+  @NotNull
+  public IFile stepUpToArchive() {
+    return this;
   }
 
   @Override

@@ -64,16 +64,16 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.mySubtypingRules.add(subtypingRule);
     }
     {
-      SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierType_SubtypingRule();
-      this.mySubtypingRules.add(subtypingRule);
-    }
-    {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_FunctionType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
     {
       ComparisonRule_Runtime comparisonRule = new wildcardtype_comparable_ComparisonRule();
       this.myComparisonRules.add(comparisonRule);
+    }
+    {
+      InequationReplacementRule_Runtime eliminationRule = new ClassifierType_subtypeOf_ClosureLiteralType_InequationReplacementRule();
+      this.myInequationReplacementRules.add(eliminationRule);
     }
     {
       InequationReplacementRule_Runtime eliminationRule = new ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRule();

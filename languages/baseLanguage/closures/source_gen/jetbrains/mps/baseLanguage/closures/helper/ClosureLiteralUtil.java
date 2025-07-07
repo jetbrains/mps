@@ -142,7 +142,7 @@ public class ClosureLiteralUtil {
     SNode targetType = (SNode) Values.LITERAL_TARGET.get(genContext, closure);
     SNode functionType = (SNode) Values.LITERAL_TYPE.get(genContext, closure);
 
-    // TODO is this fallback necessary?
+    // This fallback is necessary in case the function type is not properly set by generator (may happen in case a custom generator plan is used)
     if ((functionType == null)) {
       functionType = SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(closure), CONCEPTS.FunctionType$9U);
     }

@@ -54,6 +54,6 @@ import java.awt.Color;
     return editorCell;
   }
   private Color _StyleParameter_QueryFunction_mtiojs_a0a() {
-    return _EditorUtil.grayIfNotSelectable(getNode());
+    return _EditorUtil.grayIfNotSelectable(getNode(), getEditorContext());
   }
 }

@@ -415,31 +415,35 @@
   </root>
   <root nodeRef="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)/6060921217291445821">
     <file name="EnvironmentAwareExtension.java">
-      <node id="4853409916370613403" at="14,0,15,0" concept="10" trace="ourEnvironment" />
-      <node id="3134646415291208468" at="16,62,17,36" concept="1" />
-      <node id="6060921217291457376" at="29,45,30,71" concept="1" />
-      <node id="6060921217300244891" at="20,0,22,0" concept="0" trace="EnvironmentAwareExtension#()V" />
-      <node id="3134646415291205473" at="16,0,19,0" concept="11" trace="setEnvironment#(Ljetbrains/mps/tool/environment/Environment;)V" />
-      <node id="6060921217305543987" at="23,0,26,0" concept="5" trace="beforeAll#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
-      <node id="6060921217291451404" at="28,97,31,5" concept="4" />
-      <node id="6060921217291450246" at="27,0,33,0" concept="5" trace="postProcessTestInstance#(Ljava/lang/Object;Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
-      <scope id="6060921217300244895" at="20,38,20,38" />
-      <scope id="6060921217305543995" at="24,68,24,68" />
-      <scope id="3134646415291205477" at="16,62,17,36" />
-      <scope id="6060921217291451406" at="29,45,30,71" />
-      <scope id="6060921217300244891" at="20,0,22,0" />
-      <scope id="3134646415291205473" at="16,0,19,0">
-        <var name="environment" id="3134646415291207075" />
-      </scope>
-      <scope id="6060921217305543987" at="23,0,26,0">
+      <node id="4853409916370613403" at="16,0,17,0" concept="10" trace="ourEnvironment" />
+      <node id="7156297676438896376" at="17,0,18,0" concept="10" trace="ourProjectUrl" />
+      <node id="3134646415291208468" at="19,101,20,36" concept="1" />
+      <node id="7156297676438929525" at="20,36,21,34" concept="1" />
+      <node id="6060921217291457376" at="33,45,34,71" concept="1" />
+      <node id="7156297676438939428" at="34,71,35,95" concept="1" />
+      <node id="6060921217300244891" at="24,0,26,0" concept="0" trace="EnvironmentAwareExtension#()V" />
+      <node id="6060921217305543987" at="27,0,30,0" concept="5" trace="beforeAll#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
+      <node id="3134646415291205473" at="19,0,23,0" concept="11" trace="setEnvironment#(Ljetbrains/mps/tool/environment/Environment;Ljava/util/Optional;)V" />
+      <node id="6060921217291451404" at="32,103,36,5" concept="4" />
+      <node id="6060921217291450246" at="31,0,38,0" concept="5" trace="postProcessTestInstance#(Ljava/lang/Object;Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
+      <scope id="6060921217300244895" at="24,38,24,38" />
+      <scope id="6060921217305543995" at="28,68,28,68" />
+      <scope id="3134646415291205477" at="19,101,21,34" />
+      <scope id="6060921217300244891" at="24,0,26,0" />
+      <scope id="6060921217291451406" at="33,45,35,95" />
+      <scope id="6060921217305543987" at="27,0,30,0">
         <var name="context" id="6060921217305543991" />
       </scope>
-      <scope id="6060921217291450255" at="28,97,31,5" />
-      <scope id="6060921217291450246" at="27,0,33,0">
+      <scope id="3134646415291205473" at="19,0,23,0">
+        <var name="environment" id="3134646415291207075" />
+        <var name="projectUrl" id="7156297676436781326" />
+      </scope>
+      <scope id="6060921217291450255" at="32,103,36,5" />
+      <scope id="6060921217291450246" at="31,0,38,0">
         <var name="context" id="6060921217291450252" />
         <var name="object" id="6060921217291450250" />
       </scope>
-      <unit id="6060921217291445821" at="12,0,35,0" name="jetbrains.mps.baseLanguage.unitTest.runtime.EnvironmentAwareExtension" />
+      <unit id="6060921217291445821" at="14,0,40,0" name="jetbrains.mps.baseLanguage.unitTest.runtime.EnvironmentAwareExtension" />
     </file>
   </root>
 </debug-info>

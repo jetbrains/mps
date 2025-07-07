@@ -50,12 +50,12 @@ open class KotlinModelKind(val platform: TargetPlatform, val simpleName: String,
         return topFiles.flatMap { file ->
             // Read and parse metadata from most supported formats
             file.openInputStream().readKtMetadata(file.name)
-                ?.let { module ->
+                ?.let { (module, name) ->
                     module.classes.toClassRoots(mask) + module.pkg
                         ?.takeIf { !it.isEmpty() }
                         ?.let { mask.apply(packageName, it) }
                         ?.let {
-                            listOf(PackageRoot(file.nameWithoutExtension, packageName, it))
+                            listOf(PackageRoot(name ?: file.nameWithoutExtension, packageName, it))
                         }.orEmpty()
                 }.orEmpty()
         }

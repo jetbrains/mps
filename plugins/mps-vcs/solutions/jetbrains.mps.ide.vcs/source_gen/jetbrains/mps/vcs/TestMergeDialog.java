@@ -33,7 +33,7 @@ import com.intellij.openapi.util.IconLoader;
 /**
  * Class for analyzing merge driver dumps
  */
-@GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/7314351270975557769", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
+@GeneratedClass(nodeId = "7314351270975557769", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
 public class TestMergeDialog {
   private static final Logger LOG = Logger.getLogger(TestMergeDialog.class);
 

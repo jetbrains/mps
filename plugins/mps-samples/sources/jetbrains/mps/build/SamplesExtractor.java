@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.build;
 
-import com.intellij.ide.impl.TrustedPaths;
 import com.intellij.ide.impl.TrustedPathsSettings;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
@@ -23,26 +22,24 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task.Modal;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.BuildNumber;
 import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.util.ThreeState;
 import com.intellij.util.io.ZipUtil;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.build.SamplesExtractor.MyState;
 import jetbrains.mps.samples.SamplesBundle;
 import jetbrains.mps.samples.SamplesInfo;
 import jetbrains.mps.util.PathManager;
-import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -55,6 +52,7 @@ import java.util.stream.Collectors;
 )
 public final class SamplesExtractor implements PersistentStateComponent<MyState>, SamplesInfo {
   private static final String SAMPLES_IN_MPS_HOME_DIR = "samples";
+  private static final Logger LOG = Logger.getInstance(SamplesExtractor.class);
 
   private MyState myState = new MyState();
   private final boolean myIsSamplesInMPSHome;
@@ -62,16 +60,6 @@ public final class SamplesExtractor implements PersistentStateComponent<MyState>
   public SamplesExtractor() {
     File samplesDirectory = new File(getSamplesPathInMPSHome());
     myIsSamplesInMPSHome = samplesDirectory.exists() && samplesDirectory.isDirectory();
-  }
-
-  /**
-   * @deprecated use {@link SamplesInfo#getInstance()}
-   */
-  @ScheduledForRemoval(inVersion = "2021.1")
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public static SamplesExtractor getInstance() {
-    final SamplesInfo samplesInfo = SamplesInfo.getInstance();
-    return samplesInfo instanceof SamplesExtractor ? (SamplesExtractor) samplesInfo : null;
   }
 
   private void checkSamplesAndUpdateIfNeeded() {
@@ -189,7 +177,7 @@ public final class SamplesExtractor implements PersistentStateComponent<MyState>
 
     @Override
     public void onThrowable(@NotNull Throwable error) {
-      super.onThrowable(error);
+      LOG.warn(error.getMessage());
       boolean restored = tryToRestoreSamples();
       Messages.showErrorDialog(
           SamplesBundle.message("modal.task.fail.text",

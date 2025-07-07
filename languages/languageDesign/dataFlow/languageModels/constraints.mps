@@ -13,6 +13,7 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="hgrf" ref="r:01b252f4-57dd-45b0-b193-1c0cf81e6653(jetbrains.mps.lang.dataFlow.plugin)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
+    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -426,6 +427,21 @@
                 <ref role="cht4Q" to="tp41:hz_zdoP" resolve="DataFlowBuilderDeclaration" />
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="7YXEDumy4aT">
+    <property role="3GE5qa" value="descriptor" />
+    <ref role="1M2myG" to="tp41:7YXEDumxSSb" resolve="DataFlowAspectDeputy" />
+    <node concept="2NXJUA" id="7YXEDumy4bK" role="2NY200">
+      <node concept="3clFbS" id="7YXEDumy4bL" role="2VODD2">
+        <node concept="3clFbF" id="7YXEDumy4lL" role="3cqZAp">
+          <node concept="2YIFZM" id="7YXEDumy4sc" role="3clFbG">
+            <ref role="37wK5l" to="w1kc:~SModelStereotype.isDescriptorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isDescriptorModel" />
+            <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
+            <node concept="1Q6Npb" id="7YXEDumy4tI" role="37wK5m" />
           </node>
         </node>
       </node>

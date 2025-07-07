@@ -7,7 +7,7 @@ import org.apache.tools.ant.types.DataType;
 import java.util.List;
 import java.util.ArrayList;
 
-@GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/9096318311151691260", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
+@GeneratedClass(nodeId = "9096318311151691260", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class Chunk extends DataType {
   private boolean myBootstrap;
   private final List<String> myModules = new ArrayList<String>();

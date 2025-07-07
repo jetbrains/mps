@@ -21,7 +21,7 @@ public class EnumerationDescriptor_Feedback extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_MESSAGE_0 = new EnumerationDescriptor.MemberDescriptor("MESSAGE", "message", 0x57b831ed8283282cL, "r:308041c6-80bc-4e26-b4b1-473fd45c9339(jetbrains.mps.make.script.structure)/4241665505353446967");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, 0x32eac1b57fc1b82bL, 0x32eac1b57fc1b82cL, 0x32eac1b57fc1b82dL, 0x57b831ed8283282cL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_INFO_0, myMember_WARNING_0, myMember_ERROR_0, myMember_MESSAGE_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_INFO_0, myMember_WARNING_0, myMember_ERROR_0, myMember_MESSAGE_0);
 
   @Nullable
   @Override

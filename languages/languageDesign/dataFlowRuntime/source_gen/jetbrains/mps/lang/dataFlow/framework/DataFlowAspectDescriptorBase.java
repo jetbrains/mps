@@ -17,6 +17,7 @@ public class DataFlowAspectDescriptorBase implements DataFlowAspectDescriptor {
     return Collections.emptyList();
   }
   @NotNull
+  @Override
   public Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
     return Collections.emptyList();
   }

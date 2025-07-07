@@ -24,6 +24,9 @@ import java.util.List;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.kotlin.plugin.ExtensionsHelper;
+import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
+import jetbrains.mps.kotlin.scopes.signed.ReceiverTypeFilter;
 import jetbrains.mps.kotlin.scopes.signed.TypeExtensionsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
@@ -86,7 +89,8 @@ public class KotlinInJavaScopeHelper {
     final FullScopeContext context = context(referenceNode, contextNode, containmentLink);
 
     return NavigationHelper.withReceiver(javaCallKind, context, (final SNode operand) -> {
-      SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> JavaToKtConversion.convert(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.Type$bu)));
+      // Note: unlike most Kotlin member scoping, we do not check for typesystem to be there. Our context (baseLanguage) has typesystem support in the legacy typesystem, so scope can be provided with ease (with the exception of extension scope which will not be precise, but should include all compatible members).
+      final SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> JavaToKtConversion.convert(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(operand), CONCEPTS.Type$bu)));
 
       if ((instanceType == null)) {
         return new EmptyScope();
@@ -101,7 +105,18 @@ public class KotlinInJavaScopeHelper {
 
       // Use API defined above
       // Main type with type extensions
-      List<SignatureScope> scopes = ListSequence.fromListAndArray(new ArrayList<>(), new ProtectedInstanceSignatureScope(instanceType, signatureFilter, context.getNode()), new TypeExtensionsScope(context, instanceType, signatureFilter));
+      final List<SignatureScope> scopes = ListSequence.fromListAndArray(new ArrayList<SignatureScope>(), new ProtectedInstanceSignatureScope(instanceType, signatureFilter, context.getNode()));
+
+      ExtensionsHelper.withTypesystem(contextNode, () -> {
+        // Extension scopes in Java are a special case: instance types are sure to be known (legacy typesystem is there) so we can safely use all receiver members to get a set that includes all possible cases
+        // If that proves not to be the case anymore, please wrap the whole method with KotlinScopes.scopeWithLegacyTypesystemFallback(node<>,concept<INamedConcept>,{=>SignatureScope}):Scope .
+        ScopeCollector collector = new ScopeCollector(new ReceiverTypeFilter(signatureFilter, instanceType));
+        SignatureScope.collectHierarchyScopes(context, collector);
+        return ListSequence.fromList(scopes).addSequence(ListSequence.fromList(collector.getScopes()));
+      }, (_typesystem) -> {
+        // Otherwise default to the regular scope
+        return new TypeExtensionsScope(context, instanceType, signatureFilter);
+      });
 
       // Scopes from bounds
       // TODO is that going to be handled by the converted type of TypeVariableReference?

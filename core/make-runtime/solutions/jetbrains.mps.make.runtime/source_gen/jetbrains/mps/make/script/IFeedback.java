@@ -5,7 +5,7 @@ package jetbrains.mps.make.script;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.messages.IMessage;
 
-@GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/7797884084018455875", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
+@GeneratedClass(nodeId = "7797884084018455875", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public interface IFeedback {
   Severity getSeverity();
   String getMessage();

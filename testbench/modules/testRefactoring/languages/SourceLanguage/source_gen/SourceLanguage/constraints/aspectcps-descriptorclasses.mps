@@ -8,8 +8,8 @@
   <imports>
     <import index="jm9" ref="r:bd146201-753a-4f62-9de3-080d0101373f(SourceLanguage.constraints)" />
     <import index="ze1i" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" />
+    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="79pl" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime.base(jetbrains.mps.lang.constraints.rules.runtime/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -31,6 +31,7 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -70,9 +71,7 @@
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
-        <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -236,40 +235,48 @@
       <node concept="2AHcQZ" id="_" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
-      <node concept="3Tm1VV" id="A" role="1B3o_S" />
-      <node concept="3uibUv" id="B" role="3clF45">
+      <node concept="2AHcQZ" id="A" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="3Tm1VV" id="B" role="1B3o_S" />
+      <node concept="3uibUv" id="C" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
-      <node concept="37vLTG" id="C" role="3clF46">
+      <node concept="37vLTG" id="D" role="3clF46">
         <property role="TrG5h" value="concept" />
-        <node concept="3bZ5Sz" id="E" role="1tU5fm" />
-      </node>
-      <node concept="3clFbS" id="D" role="3clF47">
-        <node concept="1_3QMa" id="F" role="3cqZAp">
-          <node concept="37vLTw" id="H" role="1_3QMn">
-            <ref role="3cqZAo" node="C" resolve="concept" />
-          </node>
-          <node concept="3clFbS" id="I" role="1prKM_" />
+        <node concept="3bZ5Sz" id="G" role="1tU5fm" />
+        <node concept="2AHcQZ" id="H" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
-        <node concept="3cpWs6" id="G" role="3cqZAp">
-          <node concept="2ShNRf" id="J" role="3cqZAk">
-            <node concept="1pGfFk" id="K" role="2ShVmc">
-              <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
-              <node concept="37vLTw" id="L" role="37wK5m">
-                <ref role="3cqZAo" node="C" resolve="concept" />
-              </node>
-            </node>
+      </node>
+      <node concept="37vLTG" id="E" role="3clF46">
+        <property role="TrG5h" value="context" />
+        <node concept="3uibUv" id="I" role="1tU5fm">
+          <ref role="3uigEE" to="ze1i:~ConstraintsDescriptorInitContext" resolve="ConstraintsDescriptorInitContext" />
+        </node>
+        <node concept="2AHcQZ" id="J" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="F" role="3clF47">
+        <node concept="1_3QMa" id="K" role="3cqZAp">
+          <node concept="37vLTw" id="M" role="1_3QMn">
+            <ref role="3cqZAo" node="D" resolve="concept" />
           </node>
+          <node concept="3clFbS" id="N" role="1prKM_" />
+        </node>
+        <node concept="3cpWs6" id="L" role="3cqZAp">
+          <node concept="10Nm6u" id="O" role="3cqZAk" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="39dXUE" id="M">
-    <node concept="39e2AJ" id="N" role="39e2AI">
+  <node concept="39dXUE" id="P">
+    <node concept="39e2AJ" id="Q" role="39e2AI">
       <property role="39e3Y2" value="aspectDescriptorClass" />
-      <node concept="39e2AG" id="O" role="39e3Y0">
+      <node concept="39e2AG" id="R" role="39e3Y0">
         <property role="2mV_xN" value="true" />
-        <node concept="39e2AT" id="P" role="39e2AY">
+        <node concept="39e2AT" id="S" role="39e2AY">
           <ref role="39e2AS" node="s" resolve="ConstraintsAspectDescriptor" />
         </node>
       </node>

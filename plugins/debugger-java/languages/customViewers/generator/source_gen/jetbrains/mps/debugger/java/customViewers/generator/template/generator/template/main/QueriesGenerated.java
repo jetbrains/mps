@@ -9,7 +9,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
+import jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformationUtil;
 import jetbrains.mps.debugger.java.customViewers.behavior.HighLevelCustomViewer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -25,6 +25,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorImpl;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -65,10 +66,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return TransformatorBuilder.getInstance().getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return TransformatorBuilder.getInstance().getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getJniSignatureFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "Wrapper";
@@ -116,31 +117,31 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.getPresentation$wMV3) != null);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_1(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.canWrap$tqnC), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_3(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_4(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.getWatchables$wNa4), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_5(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_6(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_3_7(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.getPresentation$wMV3), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_3_8(final SourceSubstituteMacroNodeContext _context) {
-    return TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
+    return TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(_context.getNode()));
   }
   public static SNode sourceNodeQuery_5_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.valueProxyType$DzNl);
@@ -192,17 +193,17 @@ public class QueriesGenerated extends QueryProviderBase {
     for (SNode classConcept : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ClassConcept$bK))) {
       if (SLinkOperations.hasPointer(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr, new SNodePointer("r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)", "3432969378036017270")) && SPropertyOperations.getString(classConcept, PROPS.name$MnvL).endsWith("_WrapperFactory")) {
         for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where((it) -> (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null))) {
-          if ((method == null)) {
-            continue;
-          }
-          TransformatorBuilder.getInstance().build(method, false).transform();
+          // This code is executed w/o IDE running (e.g. command-line <generate>, and no chances to get TransformatorBuilder service initialized)
+          // DotExpression
+          new TransformatorImpl(method).transform();
         }
       }
     }
   }
   public static void mappingScript_CodeBlock_9(final MappingScriptContext _context) {
     for (SNode viewer : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.HighLevelCustomViewer$Bb))) {
-      SNode valueProxyType = TransformatorBuilder.getInstance().getProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(viewer));
+      // see applyTransformationUtil for explanation about TransformatorBuilder.getInstance and use of TransformatorImpl
+      SNode valueProxyType = TransformationUtil.getValueProxyTypeFromType(HighLevelCustomViewer__BehaviorDescriptor.getValueTypeCopy_id2q5hg4fWIQ.invoke(viewer));
       for (SNode valueParameter : ListSequence.fromList(SNodeOperations.getNodeDescendants(viewer, CONCEPTS.HighLevelValue_ConceptFunctionParameter$O5, false, new SAbstractConcept[]{}))) {
         SLinkOperations.setTarget(valueParameter, LINKS.valueProxyType$DzNl, SNodeOperations.copyNode(valueProxyType));
       }

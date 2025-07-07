@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.concurrent.FutureTask;
 import java.util.Collection;
 
-@GeneratedClass(node = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)/4352906377363159179", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
+@GeneratedClass(nodeId = "4352906377363159179", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
 public class DefaultTaskScheduler implements TaskScheduler {
 
   private final Executor myExecutor;

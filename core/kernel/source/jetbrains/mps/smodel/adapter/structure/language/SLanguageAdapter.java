@@ -104,7 +104,7 @@ public abstract class SLanguageAdapter implements SLanguage {
 
   @Override
   public String toString() {
-    return getQualifiedName();
+    return myLanguageFqName;
   }
 
   public abstract String serialize();

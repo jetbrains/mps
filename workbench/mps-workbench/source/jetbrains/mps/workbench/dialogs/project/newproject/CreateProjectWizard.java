@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -380,7 +380,16 @@ public final class CreateProjectWizard extends DialogWrapper {
     if (myProjectName.getText().isEmpty()) {
       getOKAction().setEnabled(false);
       setErrorText("Project name cannot be empty");
-
+      return;
+    }
+    if (myProjectPath.getPath().isEmpty()) {
+      getOKAction().setEnabled(false);
+      setErrorText("Project location must not be empty");
+      return;
+    }
+    if (!new File(myProjectPath.getPath()).isAbsolute()) {
+      getOKAction().setEnabled(false);
+      setErrorText("Project location must be an absolute path");
       return;
     }
 
@@ -403,7 +412,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     // Extension point for project template to check settings on template choose
     if (myCurrentTemplateItem != null) {
       final String errorText = myCurrentTemplateItem.myTemplate.checkSettings();
-      getOKAction().setEnabled(errorText == null);
+      getOKAction().setEnabled(errorText == null || errorText.trim().length()==0);
       setErrorText(errorText);
 
       return;
@@ -502,8 +511,8 @@ public final class CreateProjectWizard extends DialogWrapper {
     if (proceed) {
       try {
         ProjectFactory factory = new ProjectFactory(myOptions);
-        Project project = factory.createProject();
-        myCurrentTemplateItem.fillProjectWithModules(project.getComponent(MPSProject.class));
+        MPSProject project = factory.createProjectMPS();
+        myCurrentTemplateItem.fillProjectWithModules(project);
         ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
           @Override
           public void run() {

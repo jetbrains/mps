@@ -62,7 +62,7 @@ public class ShowStructure_Action extends BaseAction {
     }
 
     StructureView structureView = structureViewBuilder.createStructureView(event.getData(PlatformCoreDataKeys.FILE_EDITOR), event.getData(CommonDataKeys.PROJECT));
-    FileStructurePopup popup = new FileStructurePopup(event.getData(CommonDataKeys.PROJECT), event.getData(PlatformCoreDataKeys.FILE_EDITOR), structureView, true);
+    FileStructurePopup popup = new FileStructurePopup(event.getData(CommonDataKeys.PROJECT), event.getData(PlatformCoreDataKeys.FILE_EDITOR), structureView.getTreeModel());
     if (event.getData(CommonDataKeys.VIRTUAL_FILE) != null) {
       // todo: look like this action is unnecessary (it's just ctrl+f12 idea action by logic and implementation)
       popup.setTitle(event.getData(CommonDataKeys.VIRTUAL_FILE).getName());

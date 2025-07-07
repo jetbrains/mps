@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.generator.GenerationFacade;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683188476", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "1156564534683188476", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
   private static final Icon ICON = null;
 

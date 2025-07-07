@@ -4,6 +4,9 @@
   <name>MPS Tooltips</name>
   <description>Provides MPS with tooltips</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
+  <dependencies>
+    <plugin id="jetbrains.mps.core"/>
+  </dependencies>
 
   <depends>jetbrains.mps.core</depends>
 

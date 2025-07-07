@@ -58,7 +58,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)/317191294095137637", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
+@GeneratedClass(nodeId = "317191294095137637", model = "r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)")
 public class EvaluationWithContextContainer extends EvaluationContainer {
   private static final Logger LOG = Logger.getLogger(EvaluationWithContextContainer.class);
   private final boolean myIsInWatch;

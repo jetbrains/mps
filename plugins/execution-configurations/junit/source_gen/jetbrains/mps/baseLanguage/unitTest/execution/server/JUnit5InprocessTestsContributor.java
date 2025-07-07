@@ -13,8 +13,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.module.ModuleClassLoaderIsNullException;
 import org.junit.platform.engine.discovery.DiscoverySelectors;
+import jetbrains.mps.module.ModuleClassLoaderIsNullException;
 
 /**
  * Adaptation of {@code NodeWrappersTestsContributor} tp JUnit5 API.
@@ -82,13 +82,11 @@ public class JUnit5InprocessTestsContributor extends AbstractInProcessTestContri
   }
 
   private DiscoverySelector createFailedSelectorForClass(String fqName, Exception e) {
-    // FIXME implement using special TestEngine
-    throw new UnsupportedOperationException("not implemented");
+    return DiscoverySelectors.selectUniqueId("[class:" + fqName + "]");
   }
 
   private DiscoverySelector createFailedSelectorForMethod(String testFqName, String methodName, Exception e) {
-    // FIXME implement using special TestEngine
-    throw new UnsupportedOperationException("not implemented");
+    return DiscoverySelectors.selectUniqueId("[class:" + testFqName + "]/[method:" + methodName + "]");
   }
 
   private DiscoverySelector selectorForTestMethod(String fqName, String methodName, SModule module) throws ClassNotFoundException, ModuleClassLoaderIsNullException {

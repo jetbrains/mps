@@ -11,7 +11,7 @@ import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876315875804", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
+@GeneratedClass(nodeId = "2620437876315875804", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public abstract class MigrationError extends Exception {
   public MigrationError() {
   }

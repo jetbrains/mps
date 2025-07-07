@@ -22,10 +22,8 @@
     <import index="ii9q" ref="r:1dca5eee-6e62-48f8-9e94-dbbe31be2456(jetbrains.mps.lang.quotation.behavior)" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="fwk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.textgen.trace(MPS.Core/)" />
     <import index="tp27" ref="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
-    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
@@ -313,6 +311,9 @@
         <child id="1187483539462121948" name="baseName" index="32eq0w" />
         <child id="1187483539462121949" name="contextNode" index="32eq0x" />
       </concept>
+      <concept id="1229477454423" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalCopiedInputByOutput" flags="nn" index="12$id9">
+        <child id="1229477520175" name="outputNode" index="12$y8L" />
+      </concept>
       <concept id="5190093307972723402" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ParameterRef" flags="nn" index="3cR$yn">
         <reference id="5190093307972736266" name="parameter" index="3cRzXn" />
       </concept>
@@ -325,7 +326,6 @@
         <reference id="1048903277984174663" name="vardecl" index="1psM6Y" />
       </concept>
       <concept id="1217004708011" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetInputModel" flags="nn" index="1r8y6K" />
-      <concept id="1217026863835" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalInputModel" flags="nn" index="1st3f0" />
       <concept id="1217282130234" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputModel" flags="nn" index="1FEO0x" />
     </language>
     <language id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal">
@@ -6292,20 +6292,10 @@
                           <node concept="3cpWsn" id="1WT1RVICTKR" role="3cpWs9">
                             <property role="TrG5h" value="originalNode" />
                             <node concept="3Tqbb2" id="1WT1RVICTKS" role="1tU5fm" />
-                            <node concept="2YIFZM" id="1WT1RVICTKT" role="33vP2m">
-                              <ref role="1Pybhc" to="fwk:~TracingUtil" resolve="TracingUtil" />
-                              <ref role="37wK5l" to="fwk:~TracingUtil.getInputNode(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.module.SRepository)" resolve="getInputNode" />
-                              <node concept="30H73N" id="1WT1RVICTKU" role="37wK5m" />
-                              <node concept="2OqwBi" id="1WT1RVICTKV" role="37wK5m">
-                                <node concept="2JrnkZ" id="1WT1RVICTKW" role="2Oq$k0">
-                                  <node concept="2OqwBi" id="1WT1RVICTKX" role="2JrQYb">
-                                    <node concept="1iwH7S" id="1WT1RVICTKY" role="2Oq$k0" />
-                                    <node concept="1st3f0" id="1WT1RVICTKZ" role="2OqNvi" />
-                                  </node>
-                                </node>
-                                <node concept="liA8E" id="1WT1RVICTL0" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                                </node>
+                            <node concept="2OqwBi" id="1WT1RVICTKX" role="33vP2m">
+                              <node concept="1iwH7S" id="1WT1RVICTKY" role="2Oq$k0" />
+                              <node concept="12$id9" id="3IQV2NHMain" role="2OqNvi">
+                                <node concept="30H73N" id="3IQV2NHMaRb" role="12$y8L" />
                               </node>
                             </node>
                           </node>
@@ -7033,35 +7023,14 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs8" id="1WT1RVICTPW" role="3cqZAp">
-                  <node concept="3cpWsn" id="1WT1RVICTPX" role="3cpWs9">
-                    <property role="TrG5h" value="repo" />
-                    <node concept="3uibUv" id="1WT1RVICTPY" role="1tU5fm">
-                      <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-                    </node>
-                    <node concept="2OqwBi" id="1WT1RVICTPZ" role="33vP2m">
-                      <node concept="2JrnkZ" id="1WT1RVICTQ0" role="2Oq$k0">
-                        <node concept="2OqwBi" id="1WT1RVICTQ1" role="2JrQYb">
-                          <node concept="1iwH7S" id="1WT1RVICTQ2" role="2Oq$k0" />
-                          <node concept="1st3f0" id="1WT1RVICTQ3" role="2OqNvi" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="1WT1RVICTQ4" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="3cpWs8" id="1WT1RVICTQ5" role="3cqZAp">
                   <node concept="3cpWsn" id="1WT1RVICTQ6" role="3cpWs9">
                     <property role="TrG5h" value="originalNode" />
                     <node concept="3Tqbb2" id="1WT1RVICTQ7" role="1tU5fm" />
-                    <node concept="2YIFZM" id="1WT1RVICTQ8" role="33vP2m">
-                      <ref role="1Pybhc" to="fwk:~TracingUtil" resolve="TracingUtil" />
-                      <ref role="37wK5l" to="fwk:~TracingUtil.getInputNode(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.module.SRepository)" resolve="getInputNode" />
-                      <node concept="30H73N" id="1WT1RVICTQ9" role="37wK5m" />
-                      <node concept="37vLTw" id="1WT1RVICTQa" role="37wK5m">
-                        <ref role="3cqZAo" node="1WT1RVICTPX" resolve="repo" />
+                    <node concept="2OqwBi" id="3IQV2NHM2dr" role="33vP2m">
+                      <node concept="1iwH7S" id="3IQV2NHM1tC" role="2Oq$k0" />
+                      <node concept="12$id9" id="3IQV2NHM2VK" role="2OqNvi">
+                        <node concept="30H73N" id="3IQV2NHM45t" role="12$y8L" />
                       </node>
                     </node>
                   </node>

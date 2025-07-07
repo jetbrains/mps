@@ -44,7 +44,7 @@ import com.sun.jdi.InterfaceType;
 import jetbrains.mps.debug.api.BreakpointManagerComponent;
 import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 
-@GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449033006", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
+@GeneratedClass(nodeId = "8961922059449033006", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class RequestManager implements IRequestManager {
   private static final Logger LOG = Logger.getLogger(RequestManager.class);
   private static final Object REQUESTOR = new Object();

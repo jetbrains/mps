@@ -8,11 +8,13 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.module.SModule;
+import java.nio.file.Path;
+import java.io.File;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import java.io.File;
 import java.io.IOException;
+import jetbrains.mps.project.FileBasedProject;
 import jetbrains.mps.generator.GenerationOptions;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.make.script.IScript;
@@ -29,8 +31,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import difflib.Patch;
-import difflib.DiffUtils;
+import com.github.difflib.patch.Patch;
+import com.github.difflib.DiffUtils;
+import com.github.difflib.UnifiedDiffUtils;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
@@ -54,14 +57,15 @@ import jetbrains.mps.messages.IMessage;
 import java.io.StringWriter;
 import java.io.PrintWriter;
 
-@GeneratedClass(node = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)/8597743085639790147", model = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)")
+@GeneratedClass(nodeId = "8597743085639790147", model = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)")
 public class ModuleGenerationHolder {
   private static String[] BINARY_FILE_EXTENSIONS = new String[]{".png", ".gif"};
   private Set<String> ignoredFiles = SetSequence.fromSetAndArray(new HashSet<String>(), "generated", "dependencies");
   private final Project project;
   private final SModule module;
-  private String tmpPath;
-  private Map<String, String> path2tmp = MapSequence.fromMap(new HashMap<String, String>());
+  private final Path basePath;
+  private File tmpPath;
+  private Map<String, File> path2tmp = MapSequence.fromMap(new HashMap<>());
   private final MyMessageHandler myMessageHandler = new MyMessageHandler();
   private boolean isSuccessful;
 
@@ -70,13 +74,18 @@ public class ModuleGenerationHolder {
     this.project = project;
     File tmpDir;
     try {
-      tmpDir = File.createTempFile("projecttest", "tmp");
+      tmpDir = File.createTempFile("test-" + project.getName() + "-", "");
       tmpDir.delete();
       tmpDir.mkdir();
     } catch (IOException ex) {
       throw new RuntimeException(ex);
     }
-    this.tmpPath = tmpDir.getAbsolutePath();
+    if (project instanceof FileBasedProject) {
+      basePath = ((FileBasedProject) project).getProjectFile().toPath();
+    } else {
+      basePath = null;
+    }
+    this.tmpPath = tmpDir;
   }
 
   public void build() throws Exception {
@@ -126,9 +135,9 @@ public class ModuleGenerationHolder {
     dirsWithDiff = new HashMap<File, File>();
 
     List<String> diffs = ListSequence.fromList(new ArrayList<String>());
-    for (IMapping<String, String> p2t : MapSequence.fromMap(path2tmp).mappingsSet()) {
+    for (IMapping<String, File> p2t : MapSequence.fromMap(path2tmp).mappingsSet()) {
       File orig = new File(p2t.key());
-      File revd = new File(p2t.value());
+      File revd = p2t.value();
       if (orig.exists() && revd.exists() && orig.isDirectory() && revd.isDirectory()) {
         diffDirs(orig, revd, diffs);
       } else if (!(orig.exists()) && !(revd.exists())) {
@@ -151,9 +160,17 @@ public class ModuleGenerationHolder {
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
       return fs.getFile(MapSequence.fromMap(path2tmp).get(path));
     }
-    int idx = path.indexOf('/');
-    idx = (idx < 0 ? path.indexOf(File.separator) : idx);
-    String tmp = tmpPath + "/" + ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
+    String tail;
+    Path pp;
+    if (basePath != null && (pp = Path.of(path)).startsWith(basePath)) {
+      tail = basePath.relativize(pp).toString();
+    } else {
+      int idx = path.indexOf('/');
+      idx = (idx < 0 ? path.indexOf(File.separator) : idx);
+      tail = ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
+    }
+
+    File tmp = new File(tmpPath, tail);
     MapSequence.fromMap(path2tmp).put(path, tmp);
     return fs.getFile(tmp);
   }
@@ -214,7 +231,7 @@ public class ModuleGenerationHolder {
             }
             continue;
           }
-          ListSequence.fromList(diffs).addSequence(ListSequence.fromList(DiffUtils.generateUnifiedDiff(onext.getPath(), rnext.getPath(), olines, patch, 3)));
+          ListSequence.fromList(diffs).addSequence(ListSequence.fromList(UnifiedDiffUtils.generateUnifiedDiff(onext.getPath(), rnext.getPath(), olines, patch, 3)));
         } else {
           diffDirs(onext, rnext, diffs);
         }
@@ -256,7 +273,7 @@ public class ModuleGenerationHolder {
     return result;
   }
   public void cleanUp() {
-    for (Queue<File> dirs = QueueSequence.fromQueueAndArray(new LinkedList<File>(), new File(tmpPath)); QueueSequence.fromQueue(dirs).isNotEmpty();) {
+    for (Queue<File> dirs = QueueSequence.fromQueueAndArray(new LinkedList<File>(), tmpPath); QueueSequence.fromQueue(dirs).isNotEmpty();) {
       File dir = QueueSequence.fromQueue(dirs).removeFirstElement();
       dir.deleteOnExit();
       for (File f : dir.listFiles()) {

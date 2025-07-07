@@ -18,7 +18,7 @@ import javax.swing.JList;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.awt.datatransfer.StringSelection;
 
-@GeneratedClass(node = "r:54883260-1d2e-4108-8311-3a1f6d27f2b4(jetbrains.mps.workbench.dialogs.project.components.parts)/1560298786499494350", model = "r:54883260-1d2e-4108-8311-3a1f6d27f2b4(jetbrains.mps.workbench.dialogs.project.components.parts)")
+@GeneratedClass(nodeId = "1560298786499494350", model = "r:54883260-1d2e-4108-8311-3a1f6d27f2b4(jetbrains.mps.workbench.dialogs.project.components.parts)")
 public class CopySupport {
   public CopySupport() {
   }

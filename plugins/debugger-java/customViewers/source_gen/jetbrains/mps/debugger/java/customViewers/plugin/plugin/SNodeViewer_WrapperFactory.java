@@ -20,7 +20,7 @@ import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.ProxyEqualsUtil;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IArrayValueProxy;
 
-@GeneratedClass(node = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)/2929731761237871848", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
+@GeneratedClass(nodeId = "2929731761237871848", model = "r:9d33947d-45a8-4aa4-b61a-9c874e4614d7(jetbrains.mps.debugger.java.customViewers.plugin.plugin)")
 public class SNodeViewer_WrapperFactory extends ValueWrapperFactory {
   public SNodeViewer_WrapperFactory() {
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.project.structure.modules;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
@@ -30,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
@@ -170,6 +172,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myId;
   }
 
+  // FIXME WHY NOT SModuleId
   public final void setId(ModuleId id) {
     myId = id;
   }
@@ -227,6 +230,9 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     // no-op, subclasses that do support this setting shall override
   }
 
+  /**
+   * @since 2023.3
+   */
   @Nullable
   public String getOutputRoot() {
     return myOutputRoot;
@@ -256,8 +262,25 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myModelRoots;
   }
 
+  /**
+   * Hides the fact if {@link #getModelRootDescriptors()} gives a copy or by-reference value
+   * @since 2024.2
+   */
+  public void clearModelRootDescriptors() {
+    myModelRoots.clear();
+  }
+
   public final Collection<ModuleFacetDescriptor> getModuleFacetDescriptors() {
     return myFacets;
+  }
+
+
+  /**
+   * Hides the fact if {@link #getModuleFacetDescriptors()} gives a copy or by-reference value
+   * @since 2024.2
+   */
+  public void clearModuleFacetDescriptors() {
+    myFacets.clear();
   }
 
   /**
@@ -271,7 +294,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     removeFacetDescriptor(facet);
     final ModuleFacetDescriptor fd = new ModuleFacetDescriptor(facet.getFacetType(), new MementoImpl());
     // write defaults or actual values, if any
-    facet.save(fd.getMemento());
+    facet.save(fd.getMemento(), PersistenceContextImpl.empty());
     myFacets.add(fd);
   }
 
@@ -305,10 +328,10 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
    * for editing of module settings) - it's sort of changes snapshot, applied with a single setModuleDescriptor operation, rather than sequence
    * of SModule changes.
    */
-  public final void updateFacetDescriptor(@NotNull SModuleFacet facet) {
+  public final void updateFacetDescriptor(@NotNull SModuleFacet facet, @NotNull ModulePersistenceContext context) {
     for (ModuleFacetDescriptor facetDescriptor : myFacets) {
       if (facetDescriptor.getType().equals(facet.getFacetType())) {
-        facet.save(facetDescriptor.getMemento());
+        facet.save(facetDescriptor.getMemento(), context);
         break;
       }
     }
@@ -332,42 +355,12 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
 
 
   /**
-   * Paths to extra jar files needed to compile and run given module, generally empty unless a module has some peculiar dependencies on existing java libraries.
-   * As of today, these come from {@code <stubModelEntry path=""/>} in a module descriptor.
-   * according to {@code LanguageDescriptorPersistence}, legacy entries were {@code classPath} and {@code runtimeClassPath}.
-   * This method is just a better name for what used to be {@code getAdditionalJavaStubPaths()}.
-   * FIXME WHY DOES IT USE String for File location, which FS shall I use to resolve these locations?
-   * @deprecated replaced with {@link jetbrains.mps.project.facets.JavaModuleFacetImpl#getJavaLibrarySpec()}, although if all you need is
-   *             to access libraries, {@link jetbrains.mps.project.facets.JavaModuleFacet#getLibraryClassPath()} might be better alternative
-   *             This method will be removed after few releases (as it's part of well-known MD class, we'll keep it for a couple of releases)
-   */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public final Collection<String> getJavaLibs() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Java Libraries are part of JavaModuleFacet specification now");
-    return myJavaLibsWarnWrap;
-  }
-
-  /**
    * Provisional API to migrate usages of {@code MD.getJavaLibs()} to libraries from {@code JavaModuleFacet}
    * This field reflects legacy persisted values, these are converted to respective elements in JMF
    */
   @Deprecated(forRemoval = true, since = "0")
   public final Collection<String> getJavaLibPersistedValues() {
     return myJavaLibs;
-  }
-
-    /**
-     * Additional source files to compile along with module's own generated output.
-     * Though, uses are bit odd:
-     *  - There's unused {@link AbstractModule#getSourcePaths()}
-     *  - JavaModuleFacet manifests these {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()}, likely using module descriptor just as a storage (it's what JMF does anyway)
-     *  - Make respects these to compile a module
-     * @deprecated not an attribute of every module, use {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()} instead
-     */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public final Collection<String> getSourcePaths() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Additional source paths are part of JavaModuleFacet specification now");
-    return getSourcePathPersistedValue();
   }
 
   @Deprecated(forRemoval = true, since = "0")
@@ -524,8 +517,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
     descriptorCopy.setOutputRoot(getOutputRoot());
-    // delete next line once 2023.3 is out; need just for the sake of DescriptorCopyOrganizer
-    descriptorCopy.markOutputRootLegacyValue(isOutputRootFromLegacy());
     return descriptorCopy;
   }
 

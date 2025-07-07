@@ -17,7 +17,7 @@ import jetbrains.mps.util.JDOMUtil;
 import org.jdom.Document;
 import jetbrains.mps.vfs.path.Path;
 
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883032218", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "842994667883032218", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class ProjectDescriptorPersistence {
   private static final String MPS_DOT_FOLDER = ".mps";
   private static final String MODULES_XML_LOCATION = "modules.xml";

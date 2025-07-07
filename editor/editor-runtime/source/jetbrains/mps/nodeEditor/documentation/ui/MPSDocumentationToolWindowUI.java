@@ -22,6 +22,7 @@ public class MPSDocumentationToolWindowUI implements Disposable {
   public MPSDocumentationToolWindowUI(MPSDocumentationUI ui, Content content) {
     myUI = ui;
     myContent = content;
+    myContent.setDisplayName(ui.myCurrentProvider.getName());
     myContentComponent = new JPanel(new BorderLayout());
     myContentComponent.add(ui.myScrollPane, BorderLayout.CENTER);
     Disposer.register(this, myUI);

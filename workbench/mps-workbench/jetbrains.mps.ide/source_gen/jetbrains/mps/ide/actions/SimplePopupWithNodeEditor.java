@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.awt.Point;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3538501397189789300", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3538501397189789300", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public final class SimplePopupWithNodeEditor extends PopupWithNodeEditor {
   private final EditorComponent myEditorComponent;
   private final List<SNode> myNodes;

@@ -9,6 +9,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.runners.model.Statement;
 import org.junit.runner.Description;
 import jetbrains.mps.tool.environment.Environment;
+import org.jetbrains.annotations.Nullable;
+import java.util.function.Supplier;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.util.MacrosFactory;
 import java.io.File;
@@ -63,14 +65,14 @@ public final class TestParametersCache implements TestRule {
     };
   }
 
-  public void initializeOnce(Object ownerInstance, Environment environment) throws Exception {
+  public void initializeOnce(Object ownerInstance, Environment environment, @Nullable Supplier<String> projectUrlSupplier) throws Exception {
     // both arguments are non null
     assert ownerInstance.getClass() == myOwner;
 
     if (myInitialized) {
       return;
     }
-    initCachedValues(environment);
+    initCachedValues(environment, projectUrlSupplier);
     assert myProject != null;
     assert myTestModel != null;
     assert myTransientModel != null;
@@ -93,19 +95,20 @@ public final class TestParametersCache implements TestRule {
     if (myProject == null) {
       return;
     }
+    final SModel modelToDispose = myTransientModel;
     myProject.getModelAccess().runWriteInEDT(() -> {
       if (LOG.isInfoLevel()) {
         LOG.info("Disposing the temporary model");
       }
-      TemporaryModels.getInstance().dispose(myTransientModel);
-      myTransientModel = null;
+      TemporaryModels.getInstance().dispose(modelToDispose);
     });
+    myTransientModel = null;
     myProject = null;
     myTestModel = null;
     myInitialized = false;
   }
 
-  private void initCachedValues(Environment environment) throws Exception {
+  private void initCachedValues(Environment environment, Supplier<String> projectUrlSupplier) throws Exception {
     // MPS's in-process, out-of-process and ant script executors
     // supply Environment through EnvironmentAware and custom RunnerBuilder
     // namely, PushEnvironmentRunnerBuilder. IDEA MPS plugin and IDEA test configurations use this RunnerBuilder, too.
@@ -116,13 +119,17 @@ public final class TestParametersCache implements TestRule {
       LOG.info("Initializing the test");
     }
 
-    if ((myProjectPath == null || myProjectPath.length() == 0)) {
+    String projectPath = myProjectPath;
+    if (projectPath == null && projectUrlSupplier != null) {
+      projectPath = projectUrlSupplier.get();
+    }
+    if ((projectPath == null || projectPath.length() == 0)) {
       throw new ProjectPathIsNullException();
     }
     // FIXME can access MacrosFactory through environment.getPlatform, if necessary.
-    String expandedProjectPath = MacrosFactory.getGlobal().expandPath(myProjectPath);
+    String expandedProjectPath = MacrosFactory.getGlobal().expandPath(projectPath);
     if ((expandedProjectPath == null || expandedProjectPath.length() == 0)) {
-      throw new ExpandedProjectPathIsNullException(myProjectPath);
+      throw new ExpandedProjectPathIsNullException(projectPath);
     }
     File projectToOpen = new File(expandedProjectPath);
     Project p = environment.openProject(projectToOpen);
@@ -143,7 +150,7 @@ public final class TestParametersCache implements TestRule {
             throw new CouldNotFindModelException(String.format("Can't find model %s in supplied repository %s.", myModelRef, repository));
           }
           myTestModel = modelDescriptor;
-          SModel transientModel = TemporaryModels.getInstance().create(false, true, null, TempModuleOptions.nonReloadableModule());
+          SModel transientModel = TemporaryModels.getInstance().create(false, true, null, TempModuleOptions.nonReloadableModule(repository));
           final ModelImports mi = new ModelImports(transientModel);
           mi.copyEmployedDevKitsFrom(modelDescriptor);
           // test nodes we're gonna copy into transient model may reference auxiliary nodes in the original model, need to make sure

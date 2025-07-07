@@ -9,10 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.Presentation;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.ide.actions.NewModelActionExecutor;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -33,7 +33,7 @@ public class NewAccessoryModel_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
-    presentation.setEnabledAndVisible(true);
+    presentation.setEnabledAndVisible(!(((Language) event.getData(MPSCommonDataKeys.CONTEXT_MODULE)).isReadOnly()));
     presentation.setText(((event.getData(MPSCommonDataKeys.VALUE) instanceof SModule ? "" : "New ")) + "Accessory Model");
   }
   @Override

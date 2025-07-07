@@ -11,10 +11,10 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.Arrays;
-import jetbrains.mps.internal.collections.runtime.ArrayUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ArrayUtils;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
@@ -25,10 +25,10 @@ public class Sequence_Test extends Util_Test {
     ISequence<Integer> input = Sequence.fromIterable(this.input5());
     Assert.assertEquals(((Integer) 1), input.first());
     Assert.assertEquals(((Integer) 5), input.last());
-    Assert.assertEquals(5, input.count());
+    Assert.assertEquals(Integer.valueOf(5), Integer.valueOf(input.count()));
     for (Integer i : this.input5()) {
       Assert.assertEquals(true, input.contains(i));
-      Assert.assertEquals(i - 1, input.indexOf(i));
+      Assert.assertEquals(Integer.valueOf(i - 1), Integer.valueOf(input.indexOf(i)));
     }
     Assert.assertEquals(false, input.contains(-1));
     Assert.assertEquals(false, input.isEmpty());
@@ -256,11 +256,11 @@ __switch__:
     Iterable<Integer> input = this.input5();
     Assert.assertEquals(((Integer) 1), Sequence.fromIterable(input).first());
     Assert.assertEquals(((Integer) 5), Sequence.fromIterable(input).last());
-    Assert.assertEquals(5, Sequence.fromIterable(input).count());
+    Assert.assertEquals(Integer.valueOf(5), Integer.valueOf(Sequence.fromIterable(input).count()));
     for (Integer i : this.input5()) {
       Assert.assertEquals(true, Sequence.fromIterable(input).contains(i));
-      Assert.assertEquals(i - 1, Sequence.fromIterable(input).indexOf(i));
-      Assert.assertEquals(i - 1, Sequence.fromIterable(input).lastIndexOf(i));
+      Assert.assertEquals(Integer.valueOf(i - 1), Integer.valueOf(Sequence.fromIterable(input).indexOf(i)));
+      Assert.assertEquals(Integer.valueOf(i - 1), Integer.valueOf(Sequence.fromIterable(input).lastIndexOf(i)));
     }
     Assert.assertEquals(false, Sequence.fromIterable(input).contains(-1));
     Assert.assertEquals(false, Sequence.fromIterable(input).isEmpty());
@@ -274,14 +274,14 @@ __switch__:
     input = Sequence.fromIterable(input).concat(Sequence.fromIterable(input));
     for (Integer i : this.input5()) {
       Assert.assertEquals(true, Sequence.fromIterable(input).contains(i));
-      Assert.assertEquals(i - 1, Sequence.fromIterable(input).indexOf(i));
-      Assert.assertEquals(5 + i - 1, Sequence.fromIterable(input).lastIndexOf(i));
+      Assert.assertEquals(Integer.valueOf(i - 1), Integer.valueOf(Sequence.fromIterable(input).indexOf(i)));
+      Assert.assertEquals(Integer.valueOf(5 + i - 1), Integer.valueOf(Sequence.fromIterable(input).lastIndexOf(i)));
     }
   }
   @Test
   public void test_toOperations() throws Exception {
     Iterable<Integer> input = this.input5();
-    Assert.assertTrue(Arrays.equals(new int[]{1, 2, 3, 4, 5}, ArrayUtils.toIntArray(ListSequence.fromList(Sequence.fromIterable(input).toList()))));
+    Assert.assertTrue(Arrays.equals(new Integer[]{1, 2, 3, 4, 5}, ListSequence.fromList(Sequence.fromIterable(input).toList()).toGenericArray(Integer.class)));
     this.assertIterableEquals(this.expect5(), Sequence.fromIterable(input).toList());
     Integer i = 1;
     for (Iterator<Integer> it = input.iterator(); it.hasNext(); i++) {
@@ -336,14 +336,14 @@ __switch__:
         };
       };
     });
-    Assert.assertEquals(3, Sequence.fromIterable(test).count());
+    Assert.assertEquals(Integer.valueOf(3), Integer.valueOf(Sequence.fromIterable(test).count()));
     Iterable<Integer> TEST = test;
     test = TEST;
     int[] iarr = ArrayUtils.toIntArray(Sequence.fromIterable(test));
     int foo = Sequence.fromIterable(test).toGenericArray(Integer.class)[0];
     Iterable<Character> empty = Sequence.fromIterable(Collections.<Character>emptyList());
     char[] carr = ArrayUtils.toCharArray(Sequence.fromIterable(empty));
-    Assert.assertEquals(0, carr.length);
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(carr.length));
   }
   @Test
   public void test_singleton() throws Exception {
@@ -501,6 +501,7 @@ __switch__:
         };
       };
     });
+    // Note: error is suppressed instead of adding support for raw sequence
     Iterable is = si;
     this.assertIterableEquals(this.input5(), is);
   }

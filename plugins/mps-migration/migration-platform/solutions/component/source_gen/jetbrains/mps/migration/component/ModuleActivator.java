@@ -8,7 +8,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.core.platform.DynamicComponentWarden;
 import jetbrains.mps.project.ProjectManager;
 
-@GeneratedClass(node = "r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)/6032067180686067638", model = "r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)")
+@GeneratedClass(nodeId = "6032067180686067638", model = "r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)")
 public class ModuleActivator implements ModuleRuntime.Activator {
   private final ComponentHost myPlatform;
   private DynamicComponentWarden.Token myMigrationAccess;

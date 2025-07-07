@@ -423,6 +423,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
     RelativePoint showPoint = new RelativePoint(scrollbar, event.getPoint());
 
+    // this shows a hint popup on the error strip at right hand side of the editor
     myHintPopupController.showInfoToolTip(project, myEditorComponent.getPlatformEditorEmulation(), null, tooltipRenderer, tooltipGroup, showPoint);
   }
 

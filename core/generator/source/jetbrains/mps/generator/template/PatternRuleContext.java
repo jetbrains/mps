@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.runtime.TemplateContext;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -33,15 +32,6 @@ public class PatternRuleContext extends BaseMappingRuleContext {
    */
   public PatternRuleContext(@NotNull TemplateContext context, @NotNull SNodeReference ruleNode) {
     super(context, ruleNode);
-  }
-
-  /**
-   * @deprecated use {@link #withValues(PatternMatch)} instead
-   */
-  @Deprecated(since = "2024.1", forRemoval = true)
-  public void createPatternContext(GeneratedMatchingPattern pattern) {
-    // in use from compiled generators, need to wait for few releases until last uses of non-regenerated modules fade away.
-    myContext = myContext.subContext(pattern);
   }
 
   /**

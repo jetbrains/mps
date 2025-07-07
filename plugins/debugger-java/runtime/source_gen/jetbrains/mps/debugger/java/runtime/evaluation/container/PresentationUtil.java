@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-@GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144115944320", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
+@GeneratedClass(nodeId = "846214144115944320", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public class PresentationUtil {
   public static String getPresentation(SNode statementList) {
     List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$53DE);

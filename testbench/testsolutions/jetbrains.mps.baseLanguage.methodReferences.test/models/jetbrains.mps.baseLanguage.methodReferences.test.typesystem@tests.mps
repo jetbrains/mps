@@ -42,9 +42,6 @@
       </concept>
       <concept id="4649457259824807647" name="jetbrains.mps.lang.test.structure.TypesystemEquationReference" flags="ng" index="MGsTx" />
       <concept id="4531408400484511853" name="jetbrains.mps.lang.test.structure.ReportErrorStatementReference" flags="ng" index="2PYRI3" />
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
@@ -170,6 +167,7 @@
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
+      <concept id="1171903607971" name="jetbrains.mps.baseLanguage.structure.WildCardType" flags="in" index="3qTvmN" />
       <concept id="1171903862077" name="jetbrains.mps.baseLanguage.structure.LowerBoundType" flags="in" index="3qUtgH">
         <child id="1171903869531" name="bound" index="3qUvdb" />
       </concept>
@@ -976,6 +974,7 @@
             </node>
             <node concept="3uibUv" id="27WzgVy6F_H" role="Sfmx6">
               <ref role="3uigEE" node="27WzgVy6Fku" resolve="ThrowTest.UnhandledError" />
+              <node concept="3qTvmN" id="4LKOcpBgs1K" role="11_B2D" />
             </node>
           </node>
           <node concept="2tJIrI" id="27WzgVy6E3P" role="jymVt" />
@@ -1193,6 +1192,7 @@
           </node>
           <node concept="3uibUv" id="7NbpLe7rVQL" role="3clF45">
             <ref role="3uigEE" to="urs3:5Ffu4tBUx5R" resolve="ISequence" />
+            <node concept="3qTvmN" id="4LKOcpBgiHf" role="11_B2D" />
           </node>
           <node concept="37vLTG" id="7NbpLe7r7KF" role="3clF46">
             <property role="TrG5h" value="seqs" />
@@ -1201,6 +1201,7 @@
               <node concept="3qUE_q" id="7NbpLe7r91A" role="11_B2D">
                 <node concept="3uibUv" id="7NbpLe7rUYi" role="3qUE_r">
                   <ref role="3uigEE" to="urs3:5Ffu4tBUx5R" resolve="ISequence" />
+                  <node concept="3qTvmN" id="4LKOcpBgk_r" role="11_B2D" />
                 </node>
               </node>
             </node>
@@ -1576,6 +1577,7 @@
                 <node concept="A3Dl8" id="7NbpLe7scZ0" role="1tU5fm">
                   <node concept="3uibUv" id="7NbpLe7sr55" role="A3Ik2">
                     <ref role="3uigEE" to="urs3:5Ffu4tBUx5R" resolve="ISequence" />
+                    <node concept="3qTvmN" id="4LKOcpBgaSs" role="11_B2D" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="7NbpLe7scZ2" role="33vP2m">
@@ -1586,6 +1588,7 @@
                         <node concept="3qUE_q" id="7NbpLe7scZ6" role="11_B2D">
                           <node concept="3uibUv" id="7NbpLe7shfc" role="3qUE_r">
                             <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
+                            <node concept="3qTvmN" id="4LKOcpBg8QJ" role="11_B2D" />
                           </node>
                         </node>
                       </node>
@@ -1617,6 +1620,7 @@
                 <node concept="A3Dl8" id="7NbpLe7rasz" role="1tU5fm">
                   <node concept="3uibUv" id="7NbpLe7si34" role="A3Ik2">
                     <ref role="3uigEE" to="urs3:5Ffu4tBUx5R" resolve="ISequence" />
+                    <node concept="3qTvmN" id="4LKOcpBgcKf" role="11_B2D" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="7NbpLe7ras_" role="33vP2m">
@@ -1627,6 +1631,7 @@
                         <node concept="3qUE_q" id="7NbpLe7rrjX" role="11_B2D">
                           <node concept="3uibUv" id="7NbpLe7ruwf" role="3qUE_r">
                             <ref role="3uigEE" to="urs3:5Ffu4tBUwT$" resolve="Sequence" />
+                            <node concept="3qTvmN" id="4LKOcpBgdU9" role="11_B2D" />
                           </node>
                         </node>
                       </node>
@@ -1673,6 +1678,7 @@
                   <node concept="_YKpA" id="7NbpLe7qp9C" role="_ZDj9">
                     <node concept="3uibUv" id="7NbpLe7s9T1" role="_ZDj9">
                       <ref role="3uigEE" to="urs3:5Ffu4tBUwT$" resolve="Sequence" />
+                      <node concept="3qTvmN" id="4LKOcpBghrs" role="11_B2D" />
                     </node>
                   </node>
                 </node>
@@ -1681,6 +1687,7 @@
                     <node concept="_YKpA" id="7NbpLe7qp9N" role="HW$YZ">
                       <node concept="3uibUv" id="7NbpLe7saMh" role="_ZDj9">
                         <ref role="3uigEE" to="urs3:5Ffu4tBUwT$" resolve="Sequence" />
+                        <node concept="3qTvmN" id="4LKOcpBgf7_" role="11_B2D" />
                       </node>
                     </node>
                   </node>
@@ -1839,9 +1846,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="5DBbMQ1Hau4">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="1jNyE7Gzms$">
     <property role="3DII0k" value="2hh8MJdVwqX/command" />

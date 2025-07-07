@@ -5,7 +5,7 @@ package jetbrains.mps.baseLanguage.javastub;
 import org.jetbrains.mps.annotations.Immutable;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.AbstractModule;
+import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Collection;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -22,16 +22,16 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 @Immutable
-@GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860001930", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
+@GeneratedClass(nodeId = "7241381882860001930", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public final class ASMModelLoader {
   private static final Logger LOG = Logger.getLogger(ASMModelLoader.class);
 
-  private final AbstractModule myModule;
+  private final SModule myModule;
   private final Collection<IFile> myPaths;
   private boolean mySkipPrivate;
   private boolean myOnlyPublic;
 
-  public ASMModelLoader(@NotNull AbstractModule module, Collection<IFile> paths) {
+  public ASMModelLoader(@NotNull SModule module, Collection<IFile> paths) {
     myModule = module;
     myPaths = paths;
   }

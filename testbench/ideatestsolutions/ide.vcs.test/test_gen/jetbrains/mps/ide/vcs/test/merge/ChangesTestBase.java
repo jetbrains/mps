@@ -58,7 +58,7 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
-@GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/3089989024970166387", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
+@GeneratedClass(nodeId = "3089989024970166387", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public abstract class ChangesTestBase implements EnvironmentAware {
   protected static boolean ourEnabled;
   protected Environment myEnv;

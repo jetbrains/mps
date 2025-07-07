@@ -47,7 +47,7 @@ public class NewRuntimeModule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((SModule) MapSequence.fromMap(_params).get("contextModule")) instanceof Language;
+    return ((SModule) MapSequence.fromMap(_params).get("contextModule")) instanceof Language && !(((SModule) MapSequence.fromMap(_params).get("contextModule")).isReadOnly());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

@@ -20,7 +20,7 @@ public class EnumerationDescriptor_BuildMps_GeneratorOptions_MessageLevel extend
   private final EnumerationDescriptor.MemberDescriptor myMember_error_0 = new EnumerationDescriptor.MemberDescriptor("error", "error", 0x188f61e0d025cbd7L, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/1769740796772600791");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x188f61e0d025c872L, 0x188f61e0d025c873L, 0x188f61e0d025cafcL, 0x188f61e0d025cbd7L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_info_0, myMember_warn_0, myMember_error_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_info_0, myMember_warn_0, myMember_error_0);
 
   @Nullable
   @Override

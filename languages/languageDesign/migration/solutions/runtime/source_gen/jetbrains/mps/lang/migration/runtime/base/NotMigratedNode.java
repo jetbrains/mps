@@ -8,7 +8,7 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-@GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/5462094956390120585", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
+@GeneratedClass(nodeId = "5462094956390120585", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public abstract class NotMigratedNode extends Problem<SNode> implements NodeReportItem {
   public NotMigratedNode(SNode reason) {
     super(reason);

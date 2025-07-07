@@ -9,7 +9,7 @@ import jetbrains.mps.debug.api.IDebuggerSettings;
 import jetbrains.mps.debug.api.EmptyDebuggerSettings;
 import jetbrains.mps.logging.Logger;
 
-@GeneratedClass(node = "r:0cf7389f-e174-4742-a3d2-15c79317838a(jetbrains.mps.debug.api.run)/4474271214082913266", model = "r:0cf7389f-e174-4742-a3d2-15c79317838a(jetbrains.mps.debug.api.run)")
+@GeneratedClass(nodeId = "4474271214082913266", model = "r:0cf7389f-e174-4742-a3d2-15c79317838a(jetbrains.mps.debug.api.run)")
 public abstract class DebuggerRunProfileState implements RunProfileState {
 
   @NotNull

@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.Icon;
 import com.intellij.icons.AllIcons;
 
-@GeneratedClass(node = "r:b54bdfd2-1093-4bb6-bc08-562a3cd72450(jetbrains.mps.debugger.java.runtime.ui)/3187167456722827906", model = "r:b54bdfd2-1093-4bb6-bc08-562a3cd72450(jetbrains.mps.debugger.java.runtime.ui)")
+@GeneratedClass(nodeId = "3187167456722827906", model = "r:b54bdfd2-1093-4bb6-bc08-562a3cd72450(jetbrains.mps.debugger.java.runtime.ui)")
 public class Icons {
   public static final Icon EXCEPTION_BREAKPOINT = AllIcons.Debugger.Db_exception_breakpoint;
   public static final Icon DISABLED_EXCEPTION_BREAKPOINT = AllIcons.Debugger.Db_disabled_exception_breakpoint;

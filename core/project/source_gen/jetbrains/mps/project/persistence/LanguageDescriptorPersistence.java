@@ -16,23 +16,14 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 /**
  * XML/DOM persistence for a descriptor of Language module 
  */
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883031167", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "842994667883031167", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class LanguageDescriptorPersistence {
   private final String SOURCE_GEN_DEFAULT = "${module}/source_gen";
-
-  /**
-   * 
-   * @deprecated use another cons
-   */
-  @Deprecated(forRemoval = true, since = "2023.3")
-  public LanguageDescriptorPersistence(@NotNull Object unused) {
-  }
 
   public LanguageDescriptorPersistence() {
   }
@@ -43,47 +34,47 @@ public class LanguageDescriptorPersistence {
 
     try {
       descriptor = ((_FunctionTypes._return_P0_E0<LanguageDescriptor>) () -> {
-        final LanguageDescriptor result_v3r4p8_a0a0a0c0g = new LanguageDescriptor();
-        final String result_v3r4p8_a0a0a0a0c0g = languageElement.getAttributeValue("namespace");
-        result_v3r4p8_a0a0a0c0g.setNamespace(result_v3r4p8_a0a0a0a0c0g);
+        final LanguageDescriptor result_v3r4p8_a0a0a0c0e = new LanguageDescriptor();
+        final String result_v3r4p8_a0a0a0a0c0e = languageElement.getAttributeValue("namespace");
+        result_v3r4p8_a0a0a0c0e.setNamespace(result_v3r4p8_a0a0a0a0c0e);
         String uuid = languageElement.getAttributeValue("uuid");
         if (uuid != null) {
-          final ModuleId result_v3r4p8_a0a2a0a0a0c0g = ModuleId.fromString(uuid);
-          result_v3r4p8_a0a0a0c0g.setId(result_v3r4p8_a0a2a0a0a0c0g);
+          final ModuleId result_v3r4p8_a0a2a0a0a0c0e = ModuleId.fromString(uuid);
+          result_v3r4p8_a0a0a0c0e.setId(result_v3r4p8_a0a2a0a0a0c0e);
         }
         String op = XmlUtil.stringWithDefault(languageElement, "generatorOutputPath", SOURCE_GEN_DEFAULT);
-        final String result_v3r4p8_a4a0a0a0c0g = (op.isBlank() ? null : op);
-        result_v3r4p8_a0a0a0c0g.setOutputRoot(result_v3r4p8_a4a0a0a0c0g);
+        final String result_v3r4p8_a4a0a0a0c0e = (op.isBlank() ? null : op);
+        result_v3r4p8_a0a0a0c0e.setOutputRoot(result_v3r4p8_a4a0a0a0c0e);
 
         String moduleVersion = languageElement.getAttributeValue("moduleVersion");
         if (moduleVersion != null) {
           try {
-            result_v3r4p8_a0a0a0c0g.setModuleVersion(Integer.parseInt(moduleVersion));
+            result_v3r4p8_a0a0a0c0e.setModuleVersion(Integer.parseInt(moduleVersion));
           } catch (NumberFormatException ignored) {
           }
         }
         String languageVersion = (languageElement.getAttributeValue("languageVersion") != null ? languageElement.getAttributeValue("languageVersion") : languageElement.getAttributeValue("version"));
         if (languageVersion != null) {
           try {
-            result_v3r4p8_a0a0a0c0g.setLanguageVersion(Integer.parseInt(languageVersion));
+            result_v3r4p8_a0a0a0c0e.setLanguageVersion(Integer.parseInt(languageVersion));
           } catch (NumberFormatException ignored) {
           }
         }
 
         Element modelsTag = XmlUtil.first(languageElement, "models");
         if (modelsTag != null) {
-          result_v3r4p8_a0a0a0c0g.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(modelsTag, "modelRoot")));
+          result_v3r4p8_a0a0a0c0e.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(modelsTag, "modelRoot")));
         }
 
         Element facets = XmlUtil.first(languageElement, "facets");
         if (facets != null) {
-          result_v3r4p8_a0a0a0c0g.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
+          result_v3r4p8_a0a0a0c0e.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
         }
 
 
-        ModuleDescriptorPersistence.loadDependencies(result_v3r4p8_a0a0a0c0g, languageElement);
+        ModuleDescriptorPersistence.loadDependencies(result_v3r4p8_a0a0a0c0e, languageElement);
         for (Element extendedLanguage : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "extendedLanguages"), "extendedLanguage"))) {
-          result_v3r4p8_a0a0a0c0g.getExtendedLanguages().add(PersistenceFacade.getInstance().createModuleReference(extendedLanguage.getText()));
+          result_v3r4p8_a0a0a0c0e.getExtendedLanguages().add(PersistenceFacade.getInstance().createModuleReference(extendedLanguage.getText()));
         }
 
         Element autoImports = XmlUtil.first(languageElement, "accessoryModels");
@@ -92,7 +83,7 @@ public class LanguageDescriptorPersistence {
           autoImports = XmlUtil.first(languageElement, "library");
         }
         for (Element modelElement : Sequence.fromIterable(XmlUtil.children(autoImports, "model"))) {
-          result_v3r4p8_a0a0a0c0g.getAccessoryModels().add(PersistenceFacade.getInstance().createModelReference(modelElement.getAttributeValue("modelUID")));
+          result_v3r4p8_a0a0a0c0e.getAccessoryModels().add(PersistenceFacade.getInstance().createModelReference(modelElement.getAttributeValue("modelUID")));
         }
 
         GeneratorDescriptorPersistence gdp = new GeneratorDescriptorPersistence(true);
@@ -100,19 +91,20 @@ public class LanguageDescriptorPersistence {
           GeneratorDescriptor gd = gdp.load(generatorElement);
           // as long as generator descriptors are part of language descriptor, no need to persist identity of a source language, we can
           // re-construct it here at loading time.
-          gd.setSourceLanguage(result_v3r4p8_a0a0a0c0g.getModuleReference());
-          result_v3r4p8_a0a0a0c0g.getGenerators().add(gd);
+          gd.setSourceLanguage(result_v3r4p8_a0a0a0c0e.getModuleReference());
+          result_v3r4p8_a0a0a0c0e.getGenerators().add(gd);
         }
 
         // next 2 entries, java libs and source paths, to be removed once 2023.3 is out
+        //  for now, we keep them for the sake of 2023 project migration (i.e. if users use modern version w/o using intermediate one)
 
         // odd 'stubModelEntry' name for auxiliary classpath is due to legacy
         List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "stubModelEntries"), "stubModelEntry")).select((mee) -> mee.getAttributeValue("path")).toList();
-        result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(javaLibs);
+        result_v3r4p8_a0a0a0c0e.getJavaLibPersistedValues().addAll(javaLibs);
 
         List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "sourcePath"), "source")).select((it) -> it.getAttributeValue("path")).toList();
-        result_v3r4p8_a0a0a0c0g.getSourcePathPersistedValue().addAll(sources);
-        return result_v3r4p8_a0a0a0c0g;
+        result_v3r4p8_a0a0a0c0e.getSourcePathPersistedValue().addAll(sources);
+        return result_v3r4p8_a0a0a0c0e;
       }).invoke();
     } catch (ModuleReadException ex) {
       throw ex;
@@ -134,12 +126,7 @@ public class LanguageDescriptorPersistence {
         languageElement.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
       }
     } else {
-      if (descriptor.getGenPath() != null) {
-        // FIXME remove this if() once 2023.3 is out (keep else body with "" only)
-        languageElement.setAttribute("generatorOutputPath", descriptor.getGenPath());
-      } else {
-        languageElement.setAttribute("generatorOutputPath", "");
-      }
+      languageElement.setAttribute("generatorOutputPath", "");
     }
     languageElement.setAttribute("languageVersion", Integer.toString(descriptor.getLanguageVersion()));
     languageElement.setAttribute("moduleVersion", Integer.toString(descriptor.getModuleVersion()));
@@ -168,24 +155,6 @@ public class LanguageDescriptorPersistence {
         generators.addContent(gdp.save(generatorDescriptor));
       }
       languageElement.addContent(generators);
-    }
-
-    Collection<String> javaLibs = descriptor.getJavaLibPersistedValues();
-    if (!(javaLibs.isEmpty())) {
-      Element stubModelEntries = new Element("stubModelEntries");
-      for (String l : javaLibs) {
-        XmlUtil.tagWithAttribute(stubModelEntries, "stubModelEntry", "path", l);
-      }
-      languageElement.addContent(stubModelEntries);
-    }
-
-    Collection<String> sources = descriptor.getSourcePathPersistedValue();
-    if (!(sources.isEmpty())) {
-      Element sourcePath = new Element("sourcePath");
-      for (String p : sources) {
-        XmlUtil.tagWithAttribute(sourcePath, "source", "path", p);
-      }
-      languageElement.addContent(sourcePath);
     }
 
     ModuleDescriptorPersistence.saveDependencies(languageElement, descriptor);

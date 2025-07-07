@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 
-@GeneratedClass(node = "r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)/1616056205644436339", model = "r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)")
+@GeneratedClass(nodeId = "1616056205644436339", model = "r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)")
 public class DefaultNodeRenderer extends BaseRenderer<NodeNavigatable> {
   protected final SRepository myRepository;
 

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Objects;
 
-@GeneratedClass(node = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/847291649004063609", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
+@GeneratedClass(nodeId = "847291649004063609", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
 public class SearchResult<T> {
   private final T myObject;
   private final Object myPathObject;

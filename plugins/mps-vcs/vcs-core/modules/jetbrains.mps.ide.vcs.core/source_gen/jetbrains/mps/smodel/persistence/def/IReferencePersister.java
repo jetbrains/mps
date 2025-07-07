@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SModel;
 import org.jetbrains.mps.openapi.model.SReference;
 
-@GeneratedClass(node = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)/3847617280526289999", model = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)")
+@GeneratedClass(nodeId = "3847617280526289999", model = "r:1c5d92b8-7752-468c-b8cd-6c72a8a4137d(jetbrains.mps.smodel.persistence.def)")
 public interface IReferencePersister {
   void fillFields(Element linkElement, SNode sourceNode, boolean useUIDs);
   int getImportIndex();

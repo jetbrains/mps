@@ -212,7 +212,9 @@
       <concept id="1168619357332" name="jetbrains.mps.lang.generator.structure.RootTemplateAnnotation" flags="lg" index="n94m4">
         <reference id="1168619429071" name="applicableConcept" index="n9lRv" />
       </concept>
-      <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj" />
+      <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj">
+        <reference id="1200916687663" name="labelDeclaration" index="2sdACS" />
+      </concept>
       <concept id="1200911316486" name="jetbrains.mps.lang.generator.structure.MappingLabelDeclaration" flags="lg" index="2rT7sh">
         <reference id="1200911342686" name="sourceConcept" index="2rTdP9" />
         <reference id="1200913004646" name="targetConcept" index="2rZz_L" />
@@ -245,9 +247,6 @@
       </concept>
       <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
         <child id="1169672767469" name="ruleConsequence" index="1lVwrX" />
-      </concept>
-      <concept id="1133037731736" name="jetbrains.mps.lang.generator.structure.MapSrcListMacro" flags="ln" index="3ejVUv">
-        <child id="1168291362368" name="sourceNodesQuery" index="3_Rtg" />
       </concept>
       <concept id="1184616041890" name="jetbrains.mps.lang.generator.structure.Weaving_MappingRule_ContextNodeQuery" flags="in" index="3gB$ML" />
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
@@ -2759,9 +2758,9 @@
           </node>
         </node>
       </node>
-      <node concept="3ejVUv" id="4nPCR7KFTHc" role="lGtFl">
+      <node concept="1WS0z7" id="6MbZi$kKJPU" role="lGtFl">
         <ref role="2rW$FS" node="4nPCR7KGl8h" resolve="PersistentPropertyToGetter" />
-        <node concept="3JmXsc" id="4nPCR7KFTHd" role="3_Rtg">
+        <node concept="3JmXsc" id="4nPCR7KFTHd" role="3Jn$fo">
           <node concept="3clFbS" id="4nPCR7KFTHe" role="2VODD2">
             <node concept="3clFbF" id="4nPCR7KFTHf" role="3cqZAp">
               <node concept="2OqwBi" id="4nPCR7KFTHg" role="3clFbG">
@@ -2916,9 +2915,9 @@
           </node>
         </node>
       </node>
-      <node concept="3ejVUv" id="4nPCR7KFTI6" role="lGtFl">
+      <node concept="1WS0z7" id="6MbZi$kKFKA" role="lGtFl">
         <ref role="2rW$FS" node="4nPCR7KGl8i" resolve="PersistentPropertyToSetter" />
-        <node concept="3JmXsc" id="4nPCR7KFTI7" role="3_Rtg">
+        <node concept="3JmXsc" id="4nPCR7KFTI7" role="3Jn$fo">
           <node concept="3clFbS" id="4nPCR7KFTI8" role="2VODD2">
             <node concept="3clFbF" id="4nPCR7KFTI9" role="3cqZAp">
               <node concept="2OqwBi" id="4nPCR7KFTIb" role="3clFbG">
@@ -4067,9 +4066,8 @@
       </node>
       <node concept="2tJIrI" id="7DjC5ztrTkv" role="jymVt" />
       <node concept="3clFbW" id="4nPCR7KFTOV" role="jymVt">
-        <node concept="raruj" id="4nPCR7KFTQt" role="lGtFl" />
-        <node concept="2ZBi8u" id="3xwsMyQkEyd" role="lGtFl">
-          <ref role="2rW$FS" node="4nPCR7KGl8p" resolve="PersistentConfigurationTemplateToEditorConstructor" />
+        <node concept="raruj" id="4nPCR7KFTQt" role="lGtFl">
+          <ref role="2sdACS" node="4nPCR7KGl8p" resolve="PersistentConfigurationTemplateToEditorConstructor" />
         </node>
         <node concept="37vLTG" id="4nPCR7KFTOW" role="3clF46">
           <property role="TrG5h" value="editor" />

@@ -16,7 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-@GeneratedClass(node = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/1833709501617514825", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
+@GeneratedClass(nodeId = "1833709501617514825", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
 /*package*/ final class CopyPasteMagic {
   private final Map<SNode, SNode> myOriginal2NewNodes = new HashMap<>();
   private final Map<SNode, SNode> myNew2OriginalNodes = new HashMap<>();

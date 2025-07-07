@@ -83,7 +83,7 @@
       <node id="1230052406741" at="40,36,41,40" concept="2" />
       <node id="1230052406767" at="44,69,45,22" concept="2" />
       <node id="1230052406770" at="46,30,47,192" concept="6" />
-      <node id="1230052406780" at="47,192,48,92" concept="2" />
+      <node id="1230052406780" at="47,192,48,126" concept="2" />
       <node id="1230052406741" at="21,0,23,0" concept="10" trace="ourParametersCacheExtension" />
       <node id="1230052406741" at="24,0,27,0" concept="1" trace="ConceptFunctioParameterTest_Test#()V" />
       <node id="1230052406741" at="35,0,38,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -95,7 +95,7 @@
       <scope id="1230052406767" at="29,67,30,58" />
       <scope id="1230052406741" at="35,52,36,19" />
       <scope id="1230052406741" at="40,36,41,40" />
-      <scope id="1230052406767" at="46,30,48,92">
+      <scope id="1230052406767" at="46,30,48,126">
         <var name="analyzer" id="1230052406771" />
       </scope>
       <scope id="1230052406741" at="24,0,27,0" />
@@ -257,8 +257,8 @@
       <node id="1230052444345" at="46,60,47,22" concept="2" />
       <node id="1230052444348" at="48,30,49,209" concept="6" />
       <node id="1230052444359" at="49,209,50,59" concept="6" />
-      <node id="1230052444366" at="50,59,51,68" concept="2" />
-      <node id="1230052444371" at="51,68,52,107" concept="2" />
+      <node id="1230052444366" at="50,59,51,102" concept="2" />
+      <node id="1230052444371" at="51,102,52,107" concept="2" />
       <node id="1230052444309" at="23,0,25,0" concept="10" trace="ourParametersCacheExtension" />
       <node id="1230052444309" at="26,0,29,0" concept="1" trace="FindInputVariables_Test#()V" />
       <node id="1230052444309" at="37,0,40,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />

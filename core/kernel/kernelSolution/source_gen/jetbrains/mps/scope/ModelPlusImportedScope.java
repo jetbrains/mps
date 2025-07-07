@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.SModelOperations;
 
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8401916545537551267", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "8401916545537551267", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class ModelPlusImportedScope extends ModelsScope {
   public ModelPlusImportedScope(SModel model, boolean rootsOnly, SAbstractConcept targetConcept) {
     super(getImportedModels(model), rootsOnly, targetConcept);

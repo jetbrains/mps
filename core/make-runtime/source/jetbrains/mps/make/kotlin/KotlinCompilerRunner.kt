@@ -2,12 +2,11 @@ package jetbrains.mps.make.kotlin
 
 import jetbrains.mps.make.CompositeTracer
 import jetbrains.mps.util.PathManager
-import org.jetbrains.kotlin.daemon.client.BasicCompilerServicesWithResultsFacadeServer
-import org.jetbrains.kotlin.daemon.client.CompileServiceSession
-import org.jetbrains.kotlin.daemon.client.DaemonReportMessage
-import org.jetbrains.kotlin.daemon.client.DaemonReportingTargets
+import org.jetbrains.kotlin.cli.common.CompilerSystemProperties
+import org.jetbrains.kotlin.daemon.client.*
 import org.jetbrains.kotlin.daemon.client.KotlinCompilerClient.connectAndLease
 import org.jetbrains.kotlin.daemon.common.*
+import org.jetbrains.kotlin.daemon.common.FileSystem.runtimeStateFilesBasePath
 import org.jetbrains.kotlin.daemon.common.FileSystem.tempPath
 import java.io.Closeable
 import java.io.File
@@ -32,33 +31,15 @@ abstract class KotlinCompilerRunner(
      * Flag that indicates MPS is still alive, whose location provided from [KotlinCompilerOptions].
      * Creation and deletion of this file is not handled in ModuleMaker/CompilerRunner.
      */
-    private val clientAliveFlagFile: File
+    private val clientAliveFlagFile: File = kotlinCompilerOptions?.clientFile ?: KotlinCompilerOptions.createClientFile()
 
     /**
      * Flag that indicates the make session is still alive, created and deleted by [KotlinCompilerRunner].
      * Once the compilation is over (all cycles done), this file should be deleted to indicate kotlin compiler
      * daemon the session is done.
      */
-    private var sessionAliveFlagFile: File? = null
+    private val sessionAliveFlagFile: File = makeAutodeletingFlagFile("compiler-jps-session-", File(DAEMON_OPTIONS.runFilesPathOrDefault))
     private var serviceSession: CompileServiceSession? = null
-
-    init {
-        // Session and client file
-        try {
-            Files.createTempFile("kotlin-compiler-mps-session", ".alive").toFile().also {
-                sessionAliveFlagFile = it
-
-                // This should not be necessary if dispose() is called properly, but it adds a guard in case
-                it.deleteOnExit()
-            }
-        } catch (e: IOException) {
-            logger.error(e.message ?: "error creating temp file", error = e)
-            sessionAliveFlagFile = File("")
-        }
-
-        clientAliveFlagFile = kotlinCompilerOptions?.clientFile ?: KotlinCompilerOptions.createClientFile()
-    }
-
 
     abstract val compileOptions: CompilationOptions
     abstract fun getCompilerArgs(modulesToCompile: List<KotlinModule>): Array<String>
@@ -163,7 +144,7 @@ abstract class KotlinCompilerRunner(
     }
 
     override fun close() {
-        sessionAliveFlagFile?.delete()
+        sessionAliveFlagFile.delete()
         serviceSession = null
     }
 
@@ -173,18 +154,9 @@ abstract class KotlinCompilerRunner(
          * Options for the kotlin compiler daemon
          * <br></br>
          *
-         * All default daemon option EXCEPT runFilesPath: it's default value (when calling `new DaemonOptions()`) make classloading fails
-         * because it requires CapitalizeDecapitalizeKt (from OSKind usage of toLowerCaseAsciiOnly) which is nowhere to be found.
+         * All default daemon option EXCEPT runFilesPath: it's default value make classloading fails (see getRuntimeStateFilesPath for details).
          */
-        val DAEMON_OPTIONS = DaemonOptions(
-            tempPath,
-            COMPILE_DAEMON_MEMORY_THRESHOLD_INFINITE,
-            COMPILE_DAEMON_DEFAULT_IDLE_TIMEOUT_S,
-            COMPILE_DAEMON_DEFAULT_UNUSED_TIMEOUT_S,
-            COMPILE_DAEMON_DEFAULT_SHUTDOWN_DELAY_MS,
-            COMPILE_DAEMON_FORCE_SHUTDOWN_DEFAULT_TIMEOUT_MS,
-            verbose = false, reportPerf = false
-        )
+        val DAEMON_OPTIONS = configureDaemonOptions(DaemonOptions(runFilesPath = KotlinCompilerOptions.getRuntimeStateFilesPath()))
 
         val DAEMON_JVM_OPTIONS = configureDaemonJVMOptions(
             inheritMemoryLimits = true,

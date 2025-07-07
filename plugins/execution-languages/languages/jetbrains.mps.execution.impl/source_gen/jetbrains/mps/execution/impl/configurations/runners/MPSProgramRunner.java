@@ -10,7 +10,7 @@ import com.intellij.execution.configurations.RunProfile;
 import com.intellij.execution.executors.DefaultRunExecutor;
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 
-@GeneratedClass(node = "r:8b4f0747-4cce-403c-a9ed-8700a357a916(jetbrains.mps.execution.impl.configurations.runners)/5145867626676113213", model = "r:8b4f0747-4cce-403c-a9ed-8700a357a916(jetbrains.mps.execution.impl.configurations.runners)")
+@GeneratedClass(nodeId = "5145867626676113213", model = "r:8b4f0747-4cce-403c-a9ed-8700a357a916(jetbrains.mps.execution.impl.configurations.runners)")
 public class MPSProgramRunner extends DefaultProgramRunner {
   private static final Logger LOG = Logger.getLogger(MPSProgramRunner.class);
   public MPSProgramRunner() {

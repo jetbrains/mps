@@ -10,7 +10,7 @@ import com.sun.jdi.event.LocatableEvent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
 
-@GeneratedClass(node = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)/6460341978864584962", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
+@GeneratedClass(nodeId = "6460341978864584962", model = "r:6c060161-192f-4aa3-a797-df89b30aa449(jetbrains.mps.debugger.java.runtime.engine.events)")
 public class EventContext implements Context {
   private final EventSet myEventSet;
   private int myVotesToVote;

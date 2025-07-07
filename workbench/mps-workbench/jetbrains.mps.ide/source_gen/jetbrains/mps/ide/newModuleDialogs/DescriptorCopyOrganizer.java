@@ -5,14 +5,10 @@ package jetbrains.mps.ide.newModuleDialogs;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.util.ModulePathConverter;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.util.PathConverters;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.ModuleId;
 
 /**
@@ -22,25 +18,17 @@ import jetbrains.mps.project.ModuleId;
  * 
  *  Created by apyshkin on 12/6/16.
  */
-@GeneratedClass(node = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)/7650435763716686950", model = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)")
+@GeneratedClass(nodeId = "7650435763716686950", model = "r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)")
 /*package*/ final class DescriptorCopyOrganizer {
   @NotNull
   private final AbstractModule myModuleToCopy;
   @NotNull
   private final String myNewName;
-  private final ModulePathConverter myModulePathConverter;
-  private final IFile myNewFile;
 
-  public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName, @NotNull IFile newFile) {
+
+  public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName) {
     myModuleToCopy = moduleToCopy;
     myNewName = newName;
-    myNewFile = newFile;
-    if (moduleToCopy.getDescriptorFile() != null) {
-      // hackXXX methods need path conversion
-      myModulePathConverter = PathConverters.forDescriptorFiles(moduleToCopy.getDescriptorFile(), newFile);
-    } else {
-      myModulePathConverter = null;
-    }
     if (moduleToCopy.getModuleDescriptor() == null) {
       throw new UnsupportedOperationException("Cannot copy without descriptor so far");
     }
@@ -71,27 +59,8 @@ import jetbrains.mps.project.ModuleId;
         resetModelRoots(gd);
       });
     }
-    if (myModulePathConverter != null) {
-      hackModuleDescriptor(copyDescriptor);
-
-      if (copyDescriptor instanceof LanguageDescriptor) {
-        ((LanguageDescriptor) copyDescriptor).getGenerators().forEach(this::hackModuleDescriptor);
-      }
-      // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators 
-    }
+    // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators 
     return copyDescriptor;
-  }
-
-  @SuppressWarnings("removal")
-  private void hackModuleDescriptor(final ModuleDescriptor copyDescriptor) {
-    // will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-    if (!(copyDescriptor.isOutputRootFromLegacy())) {
-      return;
-    }
-    String generatorOutputPath = ProjectPathUtil._getGeneratorOutputPathPrim(copyDescriptor);
-    if (generatorOutputPath != null) {
-      ProjectPathUtil._setGeneratorOutputPathPrim(copyDescriptor, myModulePathConverter.source2Target(generatorOutputPath));
-    }
   }
 
   private void resetModelRoots(final ModuleDescriptor copyDescriptor) {
@@ -100,7 +69,7 @@ import jetbrains.mps.project.ModuleId;
 
     // FWIW, it's CopyModuleHelper.copyModelRoots() that performs adjustment of the roots.
     // XXX not sure if this logic is still valid, need to check if just cloning MRD works.
-    copyDescriptor.getModelRootDescriptors().clear();
+    copyDescriptor.clearModelRootDescriptors();
   }
 
   private static void setNewIdAndTimestamp(final ModuleDescriptor descriptor) {

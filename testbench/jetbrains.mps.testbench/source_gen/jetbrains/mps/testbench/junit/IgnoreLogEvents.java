@@ -10,6 +10,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})
-@GeneratedClass(node = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/756918652029555751", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
+@GeneratedClass(nodeId = "756918652029555751", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
 public @interface IgnoreLogEvents {
 }

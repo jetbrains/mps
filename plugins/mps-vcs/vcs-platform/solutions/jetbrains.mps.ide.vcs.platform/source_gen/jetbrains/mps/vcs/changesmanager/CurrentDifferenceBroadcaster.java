@@ -12,7 +12,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.List;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/8579517044346265736", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "8579517044346265736", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 /*package*/ class CurrentDifferenceBroadcaster implements CurrentDifferenceListener {
   private static final Logger LOG = Logger.getLogger(CurrentDifferenceBroadcaster.class);
   private final CopyOnWriteArrayList<CurrentDifferenceListener> myListeners = new CopyOnWriteArrayList<CurrentDifferenceListener>();

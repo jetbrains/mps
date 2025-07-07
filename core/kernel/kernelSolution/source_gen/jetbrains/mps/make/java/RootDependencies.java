@@ -8,7 +8,7 @@ import org.jdom.Element;
 import java.util.Set;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)/757342313568265510", model = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)")
+@GeneratedClass(nodeId = "757342313568265510", model = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)")
 public class RootDependencies implements Comparable<RootDependencies> {
 
   /*package*/ RootDependencies() {

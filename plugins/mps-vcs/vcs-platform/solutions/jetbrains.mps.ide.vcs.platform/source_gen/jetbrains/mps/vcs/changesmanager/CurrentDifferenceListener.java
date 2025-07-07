@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
-@GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/6756213824749053844", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
+@GeneratedClass(nodeId = "6756213824749053844", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public interface CurrentDifferenceListener extends EventListener {
   void changeAdded(@NotNull ModelChange change);
   void changeRemoved(@NotNull ModelChange change);

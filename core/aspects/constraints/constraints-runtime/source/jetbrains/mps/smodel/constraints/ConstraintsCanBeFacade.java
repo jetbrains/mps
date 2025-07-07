@@ -1,17 +1,17 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.constraints;
 
-import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.RuleKind;
+import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.context.Context;
-import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.language.ConstraintsRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,8 +27,14 @@ import java.util.stream.Stream;
  *
  * @author apyshkin
  */
-public class ConstraintsCanBeFacade {
+public final class ConstraintsCanBeFacade {
+  private static ConstraintsRegistry ourConstraintsRegistry;
+
   private ConstraintsCanBeFacade() {}
+
+  /*package*/ static void initRegistry(ConstraintsRegistry registry) {
+    ourConstraintsRegistry = registry;
+  }
 
   /**
    * @return canBeRoot failing rules
@@ -81,7 +87,7 @@ public class ConstraintsCanBeFacade {
    */
   @NotNull
   static <C extends Context> Stream<Rule<C>> checkPerConceptRulesOfKind(@NotNull SAbstractConcept concept, @NotNull RuleKind kind, @NotNull C context) {
-    RulesConstraintsRegistry constraintsRegistry = ConceptRegistry.getInstance().getConstraintsRegistry().getNewRegistry();
+    RulesConstraintsRegistry constraintsRegistry = ourConstraintsRegistry.getNewRegistry();
     return constraintsRegistry.getPerConceptFailingRulesFor(concept, kind, context);
   }
 }

@@ -15,10 +15,15 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, "jetbrains.mps.lang.doctext.structure.DocText");
@@ -26,8 +31,9 @@ public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeEmpty_idpB77MxqCkE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeEmpty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(461368808438400298L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> extractDocText_id3ahYUteDckr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("extractDocText").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3643970269516973339L).languageId(0xac8b972b953bcdfeL, 0xd304f2474944479dL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeEmpty_idpB77MxqCkE, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeEmpty_idpB77MxqCkE, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, extractDocText_id3ahYUteDckr);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,6 +46,22 @@ public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void addLine_id7q4YwcerggR(@NotNull SNode __thisNode__, SNode l) {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$4Ez6)).addElement(l);
+  }
+  /*package*/ static SNode extractDocText_id3ahYUteDckr(@NotNull SAbstractConcept __thisConcept__, SNode oldAnnotation) {
+    String docString = SPropertyOperations.getString(oldAnnotation, PROPS.text$W7yf);
+    String[] words = new String[0];
+    if (docString != null) {
+      words = docString.split("\\s+");
+    }
+    SNode lineNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+    for (String word : words) {
+      SNode wordNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+      SPropertyOperations.assign(wordNode, PROPS.value$zQr_, word);
+      Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(lineNode, wordNode);
+    }
+    SNode docTextNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, "jetbrains.mps.lang.doctext.structure.DocText"));
+    IHoldLines__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(docTextNode, lineNode);
+    return docTextNode;
   }
 
   /*package*/ DocText__BehaviorDescriptor() {
@@ -76,6 +98,8 @@ public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 3:
+        return (T) ((SNode) extractDocText_id3ahYUteDckr(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -95,5 +119,10 @@ public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink lines$4Ez6 = MetaAdapterFactory.getContainmentLink(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, 0x3d1f117681e68108L, "lines");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty text$W7yf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0ea9L, 0x6d1df6c2700b0eb1L, "text");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

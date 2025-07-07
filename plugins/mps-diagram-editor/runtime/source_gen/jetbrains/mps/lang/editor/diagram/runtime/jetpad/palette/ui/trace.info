@@ -31,29 +31,30 @@
       <node id="623259708492377191" at="48,53,49,34" concept="9" />
       <node id="1592880402203753741" at="53,43,54,24" concept="3" />
       <node id="623259708492240926" at="54,24,55,56" concept="8" />
-      <node id="708810380379853620" at="56,35,57,81" concept="3" />
-      <node id="623259708492301742" at="57,81,58,49" concept="3" />
-      <node id="708810380378265204" at="59,12,60,64" concept="3" />
-      <node id="623259708492324208" at="60,64,61,50" concept="3" />
-      <node id="708810380379823738" at="64,55,65,30" concept="3" />
+      <node id="3375993307056581429" at="55,56,56,74" concept="3" />
+      <node id="708810380379853620" at="57,35,58,81" concept="3" />
+      <node id="623259708492301742" at="58,81,59,49" concept="3" />
+      <node id="708810380378265204" at="60,12,61,64" concept="3" />
+      <node id="623259708492324208" at="61,64,62,50" concept="3" />
+      <node id="708810380379823738" at="65,55,66,30" concept="3" />
       <node id="7882925886018881775" at="42,0,45,0" concept="7" trace="removeChildren#()V" />
-      <node id="708810380379925845" at="59,10,62,5" concept="1" />
-      <node id="708810380379804005" at="64,0,67,0" concept="7" trace="setSelectedAction#(Lcom/intellij/openapi/actionSystem/AnAction;)V" />
+      <node id="708810380379925845" at="60,10,63,5" concept="1" />
+      <node id="708810380379804005" at="65,0,68,0" concept="7" trace="setSelectedAction#(Lcom/intellij/openapi/actionSystem/AnAction;)V" />
       <node id="4394877045816285153" at="34,0,38,0" concept="7" trace="getChildren#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)[Lcom/intellij/openapi/actionSystem/AnAction;" />
       <node id="7882925886018880654" at="38,0,42,0" concept="7" trace="updateChildren#()V" />
       <node id="623259708492360351" at="46,0,51,0" concept="7" trace="getActionUpdateThread#()Lcom/intellij/openapi/actionSystem/ActionUpdateThread;" />
       <node id="121824560294371237" at="26,0,33,0" concept="2" trace="PopupPaletteActionGroupAdapter#(Ljetbrains/mps/lang/editor/diagram/runtime/jetpad/palette/ui/DiagramPalette;Ljetbrains/mps/lang/editor/diagram/runtime/jetpad/palette/openapi/PaletteActionGroup;)V" />
-      <node id="708810380379851830" at="55,56,62,5" concept="6" />
-      <node id="1592880402203753731" at="52,0,64,0" concept="7" trace="update#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
+      <node id="708810380379851830" at="56,74,63,5" concept="6" />
+      <node id="1592880402203753731" at="52,0,65,0" concept="7" trace="update#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
       <scope id="4394877045816285162" at="35,64,36,76" />
       <scope id="7882925886018881776" at="42,32,43,46" />
       <scope id="623259708492360357" at="48,53,49,34" />
-      <scope id="708810380379804008" at="64,55,65,30" />
+      <scope id="708810380379804008" at="65,55,66,30" />
       <scope id="7882925886018880657" at="38,32,40,198" />
-      <scope id="708810380379851833" at="56,35,58,49" />
-      <scope id="708810380379925846" at="59,12,61,50" />
+      <scope id="708810380379851833" at="57,35,59,49" />
+      <scope id="708810380379925846" at="60,12,62,50" />
       <scope id="7882925886018881775" at="42,0,45,0" />
-      <scope id="708810380379804005" at="64,0,67,0">
+      <scope id="708810380379804005" at="65,0,68,0">
         <var name="action" id="708810380379818184" />
       </scope>
       <scope id="4394877045816285153" at="34,0,38,0">
@@ -66,13 +67,13 @@
         <var name="group" id="121824560294371276" />
         <var name="palette" id="121824560294371274" />
       </scope>
-      <scope id="1592880402203753737" at="53,43,62,5">
+      <scope id="1592880402203753737" at="53,43,63,5">
         <var name="presentation" id="623259708492240927" />
       </scope>
-      <scope id="1592880402203753731" at="52,0,64,0">
+      <scope id="1592880402203753731" at="52,0,65,0">
         <var name="event" id="1592880402203753735" />
       </scope>
-      <unit id="121824560294371229" at="20,0,68,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.PopupPaletteActionGroupAdapter" />
+      <unit id="121824560294371229" at="20,0,69,0" name="jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui.PopupPaletteActionGroupAdapter" />
     </file>
   </root>
   <root nodeRef="r:5bf72784-5b6b-4f6b-be0c-06a9e6006826(jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.ui)/121824560294371282">

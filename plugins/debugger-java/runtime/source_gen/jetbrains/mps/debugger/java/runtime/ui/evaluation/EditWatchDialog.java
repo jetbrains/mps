@@ -12,7 +12,7 @@ import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationConta
 import javax.swing.Action;
 import org.jetbrains.annotations.NonNls;
 
-@GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/4577525712681038408", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
+@GeneratedClass(nodeId = "4577525712681038408", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public class EditWatchDialog extends AbstractEvaluationDialog {
   @Nullable
   private final _FunctionTypes._void_P0_E0 myOkAction;

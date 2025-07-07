@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.SModelOperations;
@@ -89,7 +88,7 @@ public class UpdateModelImports extends RefactoringParticipantBase<SNodeReferenc
     if (!(model instanceof SModelInternal)) {
       return;
     }
-    if (!(model.getModule() instanceof ReloadableModule)) {
+    if (!(model.getModule() instanceof AbstractModule)) {
       return;
     }
     if (targetModel == null) {

@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class SLinkImplicitSelect_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SLinkImplicitSelect_Test.class, "${mps_home}", "r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SLinkImplicitSelect_Test.class).projectPath(null).modelRef("r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)").reopenProject(null).build());
 
   public SLinkImplicitSelect_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -114,7 +114,7 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
     }
 
     public void assertEquals(Iterable<SNode> expected, final Iterable<SNode> actual) {
-      Assert.assertEquals(Sequence.fromIterable(expected).count(), Sequence.fromIterable(actual).count());
+      Assert.assertEquals(Integer.valueOf(Sequence.fromIterable(expected).count()), Integer.valueOf(Sequence.fromIterable(actual).count()));
       Sequence.fromIterable(expected).visitAll((it) -> Assert.assertTrue(Sequence.fromIterable(actual).contains(it)));
     }
   }

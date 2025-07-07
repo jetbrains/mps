@@ -2,9 +2,9 @@ package jetbrains.mps.kotlin.stubs.loading.signature
 
 import jetbrains.mps.kotlin.stubs.loading.PackageName
 import jetbrains.mps.kotlin.stubs.metadata.isEmpty
-import kotlinx.metadata.KmClass
-import kotlinx.metadata.KmPackage
-import kotlinx.metadata.internal.common.KmModuleFragment
+import kotlin.metadata.KmClass
+import kotlin.metadata.KmPackage
+import kotlin.metadata.internal.common.KmModuleFragment
 
 /**
  * List of signatures from common models aimed to be masked in platform-specific models.

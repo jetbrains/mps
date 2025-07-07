@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.extapi.persistence;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
@@ -26,19 +26,18 @@ import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileEventProcessor;
+import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
-import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
@@ -77,9 +76,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Deprecated
   public static final String EXCLUDED = "excluded";
 
-  // FIXME right now necessary for MPS-as-IDEA-plugin scenario, where we don't use MementoWithFS and
-  //       need to edit MR instance w/o SModule being ready/initialized yet (new MPSFacet story)
-  private /*final*/ FileSystem myFileSystem = jetbrains.mps.vfs.FileSystem.getInstance(); // TODO not read from memento
+  private final PathListener myFileListener = new PathListener();
 
   /**
    * This is a private model root persistence notation, ought to be concealed from the general public
@@ -100,7 +97,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   private PathSpec myContentDir;
 
   private final SourcePaths mySourcePathStorage;
-  private final List<PathListener> myListeners = new ArrayList<>();
+  private final List<IFile> myTrackedFiles = new ArrayList<>();
 
   private Memento memento;
   private boolean myBrokenState = false;
@@ -117,18 +114,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   public final void setContentDirectory(@NotNull IFile contentDir) {
     checkNotRegistered();
     myContentDir = new PathSpec(contentDir);
-  }
-
-  /**
-   * @deprecated use of this method is discouraged.
-   *    On one hand, it's reasonable to expect that FileBasedModelRoot knows about FileSystem,
-   *    on the other, uses seem to deal with limitation of the class itself (e.g. api to add source roots),
-   *    rather than need for MR to expose FS.
-   */
-  @NotNull
-  @Deprecated(since = "2021.3")
-  public final FileSystem getFileSystem() {
-    return myFileSystem;
   }
 
   /**
@@ -211,7 +196,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   }
 
   @Override
-  public void save(@NotNull Memento memento) {
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.save(memento, context); // support subclasses that override save(Memento)
     if (myBrokenState) {
       assert this.memento != null;
       copyMemento(this.memento, memento);
@@ -223,7 +209,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     if (myContentDir != null) {
       memento.put(CONTENT_PATH, myContentDir.shrink(mh));
     }
-    memento.put("type", getType()); // historically we put contentDir first, and to avoid diff on module save, keep it this way
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (SourceRoot root : getSourceRoots(kind)) {
         Memento modelRootMemento = memento.createChild(kind.getName());
@@ -251,19 +236,16 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.load(memento, context); // support subclasses that override load(Memento)
     checkNotRegistered();
 
+    this.memento = null;
+    myBrokenState = false;
     mySourcePathStorage.clearAll(); // AP: I'd rather force a single invocation of the #load method
 
-    this.memento = memento.copy();
-    // delay proper initialization until we've got SModule instance (setModule() followed by attach())
-    // but provide some minimalistic defaults to facilitate new MPSFacet scenario, when there's no
-    // associated solution yet and no way to resolve paths, but we still need to edit the root in UI
-    // MPS-as-IDEA-plugin functionality.
-    // FIXME indeed, this code duplicates code in setModule(), I just care for the 22.3 to get out now,
-    //       need a proper fix (the one that bounds myFileSystem init, use of IFile/Path/String and editing
-    //       approach for MR/MRD, both attached and detached (from a module, MPSFacet case in IdeaPlugin) scenario)
+    // FIXME need a proper fix (use of IFile/Path/String and editing approach for MR/MRD,
+    //       both attached and detached (from a module, MPSFacet case in IdeaPlugin) scenario)
     try {
       final String cpString = memento.get(CONTENT_PATH);
       if (cpString != null) {
@@ -292,32 +274,32 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
           mySourcePathStorage.addSourceRoot(kind, dsr);
         }
       }
+      // resolve PathSpec with actual IFile
+      final Function<String, IFile> path2file = PersistenceContextImpl.pathResolveFunction(context);
+      if (myContentDir != null) {
+        myContentDir.resolve(path2file);
+      }
+      for (SourceRootKind kind : getSupportedFileKinds1()) {
+        for (SourceRoot sourceRoot : mySourcePathStorage.getByKind(kind)) {
+          if (sourceRoot instanceof DefaultSourceRoot) {
+            // XXX in fact, could be re-resolve of myContentDir. Perhaps, shall record created unique PathSpec, above, and resolve only these?
+            ((DefaultSourceRoot) sourceRoot).resolve(path2file);
+          }
+        }
+      }
     } catch (Exception ex) {
       // here I hope to get setModule() later, hence info. As setModule call is not always the case (new MPSFacet),
       // get a chance to see if anything is wrong with values provided at facet creation.
       Logger.getLogger(getClass()).info(String.format("Failed to load configuration of model root: %s", ex.getMessage()));
       // keep this.memento values
+      this.memento = memento.copy();
       myBrokenState = true;
     }
   }
 
-  @SuppressWarnings("removal")
   @Override
   public void setModule(@NotNull SModuleBase module) {
     super.setModule(module);
-    myFileSystem = module instanceof AbstractModule ? ((AbstractModule) module).getFileSystem() : null;
-    final MacroHelper mh = MacrosFactory.forModule(module);
-    final Function<String, IFile> path2file = s -> myFileSystem.getFile(mh.expandPath(s));
-    if (myContentDir != null) {
-      myContentDir.resolve(path2file);
-    }
-    for (SourceRootKind kind : getSupportedFileKinds1()) {
-      for (SourceRoot sourceRoot : mySourcePathStorage.getByKind(kind)) {
-        if (sourceRoot instanceof DefaultSourceRoot) {
-          ((DefaultSourceRoot) sourceRoot).resolve(path2file);
-        }
-      }
-    }
   }
 
   @Override
@@ -333,23 +315,16 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
                             .forEach(kind -> {
                               for (SourceRoot sourceRoot : getSourceRoots(kind)) {
                                 IFile file = sourceRoot.getAbsolutePath();
-                                PathListener listener = new PathListener(file);
-                                myListeners.add(listener);
-                                if (myFileSystem instanceof CachingFileSystem) {
-                                  ((CachingFileSystem) myFileSystem).addListener(listener);
-                                }
+                                myTrackedFiles.add(file);
+                                file.addListener(myFileListener);
                               }
                             });
   }
 
   @Override
   public void dispose() {
-    if (myFileSystem instanceof CachingFileSystem) {
-      for (PathListener listener : myListeners) {
-        ((CachingFileSystem) myFileSystem).removeListener(listener);
-      }
-    }
-    myListeners.clear();
+    myTrackedFiles.forEach(f -> f.removeListener(myFileListener));
+    myTrackedFiles.clear();
     super.dispose();
   }
 
@@ -390,7 +365,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     }
 
     return Objects.equals(mySourcePathStorage, that.mySourcePathStorage)
-           && Objects.equals(myFileSystem, that.myFileSystem)
            // AM.doUpdateModelRoots() relies on equals for attached and detached MR, and these might
            // have completely different memento value. XXX perhaps, shall not clear this.memento in setModule()?
            && (memento == null || that.memento == null || Objects.equals(memento, that.memento));
@@ -423,11 +397,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     return getUnixPath(getAbsolutePath(path));
   }
 
-  private final class PathListener implements FileSystemListener {
-    private final IFile myPath;
-
-    private PathListener(@NotNull IFile path) {
-      myPath = path;
+  private final class PathListener implements FileListener {
+    PathListener() {
     }
 
     @NotNull
@@ -440,20 +411,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
                                      .build();
     }
 
-    @NotNull
-    @Override
-    public IFile getFileToListen() {
-      return myPath;
-    }
-
     @Override
     public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
       event.notify(FileBasedModelRoot.this);
-    }
-
-    @Override
-    public String toString() {
-      return "[PathListener: path: " + myPath + "; modelRoot: " + FileBasedModelRoot.this + "]";
     }
   }
 }

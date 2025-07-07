@@ -17,7 +17,7 @@ import jetbrains.mps.TestMode;
  * @deprecated 
  */
 @Deprecated(forRemoval = true)
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/6944172844332268314", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "6944172844332268314", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class BaseMpsSuite extends Suite {
   @Deprecated
   public BaseMpsSuite(Class<?> aClass, RunnerBuilder builder) throws InitializationError {

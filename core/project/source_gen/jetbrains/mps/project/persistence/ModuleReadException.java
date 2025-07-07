@@ -4,7 +4,7 @@ package jetbrains.mps.project.persistence;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/2709156219364650064", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
+@GeneratedClass(nodeId = "2709156219364650064", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class ModuleReadException extends RuntimeException {
   public ModuleReadException(Throwable e) {
     super(e);

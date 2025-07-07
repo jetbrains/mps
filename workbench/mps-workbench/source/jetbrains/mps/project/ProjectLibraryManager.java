@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,14 @@ import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManagerListener;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.library.BaseLibraryManager;
 import jetbrains.mps.library.contributor.LibraryContributor;
+import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -39,6 +40,7 @@ import java.util.Collections;
 )
 public class ProjectLibraryManager extends BaseLibraryManager {
   private final Project myProject;
+  private IFileSystem myFileSystem;
 
   public static ProjectLibraryManager getInstance(Project ideaProject) {
     return ideaProject.getService(ProjectLibraryManager.class);
@@ -56,24 +58,37 @@ public class ProjectLibraryManager extends BaseLibraryManager {
   }
 
   @Override
+  @NotNull
+  public LibraryContributor createContributor(IFileSystem fs) {
+    myFileSystem = fs;
+    return super.createContributor(fs);
+  }
+
+  @Override
   protected String addMacros(String path) {
-    return MacrosFactory.forProjectFile(getAnchorIFile()).shrinkPath(path);
+    return withProject().shrinkPath(path);
   }
 
   @Override
   protected String removeMacros(String path) {
-    return MacrosFactory.forProjectFile(getAnchorIFile()).expandPath(path);
+    return withProject().expandPath(path);
   }
 
-  private IFile getAnchorIFile() {
-    // FIXME createContributor() in superclass takes IFileSystem, can I use it here?
-    //       perhaps, MPSProject.getFileSystem?
-    return FileSystem.getInstance().getFile(getAnchorFile().getPath());
+  private MacroHelper withProject() {
+    if (myFileSystem == null) {
+      // do not mangle file names unless we've been properly initialized. This is a hack, instead, shall not mangle file names on loadState()/getState()
+      // but this is much less trivial to accomplish now.
+      return MacrosFactory.getGlobal();
+    }
+    IFile projectFile = myFileSystem.getFile(getAnchorFile());
+    return MacrosFactory.forProjectFile(projectFile);
   }
 
   private File getAnchorFile() {
     String projectUrl = myProject.getPresentableUrl();
-    if (projectUrl != null) return new File(projectUrl);
+    if (projectUrl != null) {
+      return new File(projectUrl);
+    }
     return new File(PathManager.getHomePath());
   }
 
@@ -85,7 +100,8 @@ public class ProjectLibraryManager extends BaseLibraryManager {
       if (project.isDefault()) {
         return;
       }
-      myContributor = ProjectLibraryManager.getInstance(project).createContributor(ProjectHelper.fromIdeaProject(project).getFileSystem());
+      VFSManager vfsManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
+      myContributor = ProjectLibraryManager.getInstance(project).createContributor(vfsManager.getFileSystem(VFSManager.FILE_FS));
       MPSCoreComponents.getInstance().getLibraryInitializer().load(Collections.singletonList(myContributor));
     }
 

@@ -32,7 +32,6 @@
     <dependency reexport="false">d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)</dependency>
     <dependency reexport="false">0cf935df-4699-4e9c-a132-fa109541cba3(jetbrains.mps.build.mps)</dependency>
     <dependency reexport="false">798100da-4f0a-421a-b991-71f8c50ce5d2(jetbrains.mps.build)</dependency>
-    <dependency reexport="false">3a8d80d2-32d9-f1f2-4443-6a1111e12ef3(MPS.Boot)</dependency>
     <dependency reexport="false">f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)</dependency>
     <dependency reexport="true">63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)</dependency>
     <dependency reexport="false">33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)</dependency>
@@ -66,7 +65,6 @@
     <module reference="1fd846c3-c5f9-4b9e-9ecc-e716f7149f86(Hamcrest)" version="0" />
     <module reference="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" version="0" />
     <module reference="49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)" version="0" />
-    <module reference="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3(MPS.Boot)" version="0" />
     <module reference="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" version="0" />
     <module reference="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" version="0" />
     <module reference="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" version="0" />

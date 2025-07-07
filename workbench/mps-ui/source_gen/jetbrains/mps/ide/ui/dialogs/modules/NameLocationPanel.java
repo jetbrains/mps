@@ -25,7 +25,7 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
-@GeneratedClass(node = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)/8865490921770283968", model = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)")
+@GeneratedClass(nodeId = "8865490921770283968", model = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)")
 public class NameLocationPanel extends JPanel {
 
   private final JTextField myModuleName;

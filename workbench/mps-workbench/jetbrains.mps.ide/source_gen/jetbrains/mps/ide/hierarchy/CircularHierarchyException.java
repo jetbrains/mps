@@ -4,7 +4,7 @@ package jetbrains.mps.ide.hierarchy;
 
 import jetbrains.mps.annotations.GeneratedClass;
 
-@GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049415534", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
+@GeneratedClass(nodeId = "5797068448049415534", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public class CircularHierarchyException extends Exception {
   private Object myRepeatedObject;
   public CircularHierarchyException(Object repeatedObject, String message) {

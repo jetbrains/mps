@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import jetbrains.mps.lang.test.runtime.ExecuteCommandExtension;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseMigrationTestBody;
@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class SampleDeclMigration_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SampleDeclMigration_Test.class, "${project_home}", "r:6e4b2d34-6979-4587-970a-72cdf9e24f7c(migr.test.tests@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SampleDeclMigration_Test.class).projectPath("${project_home}").modelRef("r:6e4b2d34-6979-4587-970a-72cdf9e24f7c(migr.test.tests@tests)").reopenProject(false).build());
 
   @RegisterExtension
   private ExecuteCommandExtension myCommandExtension = new ExecuteCommandExtension(this);

@@ -11,7 +11,7 @@ import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 import java.util.LinkedHashSet;
 
-@GeneratedClass(node = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/3983419922566758952", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
+@GeneratedClass(nodeId = "3983419922566758952", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 /*package*/ class MPSClasspathUtil {
   private final Project project;
   private final List<File> myClasspathRoots = new ArrayList<>();

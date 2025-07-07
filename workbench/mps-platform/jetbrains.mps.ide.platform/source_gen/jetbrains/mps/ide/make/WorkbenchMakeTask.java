@@ -8,7 +8,6 @@ import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.CountDownLatch;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.messages.IMessageHandler;
@@ -22,15 +21,15 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
  * CoreMakeTask that tracks state changes as it progresses and let you get outcome in non-blocking, IFuture way
  * Not supposed to be re-executed, runs once.
  */
-@GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428922083", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
+@GeneratedClass(nodeId = "173672751428922083", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 /*package*/ class WorkbenchMakeTask extends CoreMakeTask implements Future<IResult> {
   private final AtomicReference<TaskState> myState = new AtomicReference<TaskState>(TaskState.NOT_STARTED);
   private final CountDownLatch myLatch = new CountDownLatch(1);
 
   private boolean isCancelled = false;
 
-  public WorkbenchMakeTask(@NotNull String title, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
-    super(title, makeSeq, ctl, mh);
+  public WorkbenchMakeTask(MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh) {
+    super(makeSeq, ctl, mh);
   }
 
   @Override
@@ -70,15 +69,12 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
     return getResult();
   }
 
-
-  @Override
-  protected void reconcile() {
+  private void reconcile() {
     myState.set(TaskState.DONE);
     try {
       if (isCancelled || getResult() == null) {
         myState.set(TaskState.CANCELLED);
       }
-      super.reconcile();
     } finally {
       myLatch.countDown();
       done();
@@ -87,9 +83,13 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
   @Override
   protected void doRun(ProgressMonitor monitor) {
-    if (myState.compareAndSet(TaskState.NOT_STARTED, TaskState.RUNNING)) {
-      super.doRun(monitor);
-      myState.set(TaskState.INDETERMINATE);
+    try {
+      if (myState.compareAndSet(TaskState.NOT_STARTED, TaskState.RUNNING)) {
+        super.doRun(monitor);
+        myState.set(TaskState.INDETERMINATE);
+      }
+    } finally {
+      reconcile();
     }
   }
 
@@ -104,5 +104,4 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
     CANCELLED(),
     INDETERMINATE()
   }
-
 }

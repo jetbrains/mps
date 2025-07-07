@@ -15,6 +15,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -66,7 +67,7 @@ public final class ChangeStaticInInner_Intention extends AbstractIntentionDescri
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return (boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(node) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) && (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK));
+      return (boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(node) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) && (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db) || (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK) && (boolean) ClassConcept__BehaviorDescriptor.canBeStatic_id2L7NFMAtrRg.invoke(SNodeOperations.as(node, CONCEPTS.ClassConcept$bK))));
     }
 
 

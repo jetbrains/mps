@@ -18,7 +18,7 @@ import org.jdom.Document;
 import java.io.IOException;
 import org.jdom.JDOMException;
 
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/878521226297927156", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "878521226297927156", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class Script {
   private static final String ELEMENT_TODO = "todo";
   private static final String ELEMENT_MODEL = "model";
@@ -36,7 +36,7 @@ public class Script {
   /**
    * XXX why File, can't I use some macro to specify project location?
    */
-  private final List<File> myMPSProjects = new ArrayList<File>(3);
+  private final List<File> myProjectDir = new ArrayList<File>(3);
   private final Map<List<String>, Boolean> myChunks = new LinkedHashMap<List<String>, Boolean>();
 
   public Script() {
@@ -52,8 +52,8 @@ public class Script {
 
   public void addProjectFile(File projectFile) {
     assert projectFile.exists() : projectFile.getPath();
-    if (!(myMPSProjects.contains(projectFile))) {
-      myMPSProjects.add(projectFile);
+    if (!(myProjectDir.contains(projectFile))) {
+      myProjectDir.add(projectFile);
     }
   }
 
@@ -96,12 +96,18 @@ public class Script {
     myModules.addAll(modules);
   }
 
-  public List<File> getMPSProjectFiles() {
-    return Collections.unmodifiableList(myMPSProjects);
+  public List<File> getProjectDirectories() {
+    return Collections.unmodifiableList(myProjectDir);
   }
 
+  @Deprecated(forRemoval = true)
+  public List<File> getMPSProjectFiles() {
+    return Collections.unmodifiableList(myProjectDir);
+  }
+
+  @Deprecated(forRemoval = true)
   public void updateMPSProjectFiles(List<File> mpsProjects) {
-    myMPSProjects.addAll(mpsProjects);
+    myProjectDir.addAll(mpsProjects);
   }
 
   public boolean getFailOnError() {
@@ -212,7 +218,7 @@ public class Script {
     for (File f : myExcludedFromDiff) {
       data.addContent(new Element(ELEMENT_EXCLUDEDFROMDIFF).setAttribute(PATH, f.getAbsolutePath()));
     }
-    for (File f : myMPSProjects) {
+    for (File f : myProjectDir) {
       data.addContent(new Element(ELEMENT_PROJECT).setAttribute(PATH, f.getAbsolutePath()));
     }
     for (Map.Entry<List<String>, Boolean> chunk : myChunks.entrySet()) {

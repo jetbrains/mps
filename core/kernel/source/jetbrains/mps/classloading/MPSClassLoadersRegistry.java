@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +40,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -74,6 +74,16 @@ final class MPSClassLoadersRegistry {
       return myIDEAClassLoaders.get(mref);
     }
   }
+
+  /*package*/ Predicate<SModule> getUnloadedCondition() {
+    return (m -> getClassLoadingProgress(m.getModuleReference()) == ClassLoadingProgress.UNLOADED);
+  }
+
+  // LAZY_LOADED or LOADED
+  /*package*/ Predicate<SModule> getLoadedCondition() {
+    return (m -> getClassLoadingProgress(m.getModuleReference()) != ClassLoadingProgress.UNLOADED);
+  }
+
 
   @Nullable
   private ModuleClassLoader getModuleClassLoader(@NotNull SModuleReference mref) {
@@ -226,11 +236,11 @@ final class MPSClassLoadersRegistry {
 
     DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
       // modulesToUnload are both LAZY_LOADED and LOADED, myRegistry::getModuleClassLoader() may have not been initialized for LAZY
-      List<ModuleClassLoader> classLoaders = modulesToUnload.stream()
+      Set<ModuleClassLoader> classLoaders = modulesToUnload.stream()
                                                             .map(SModule::getModuleReference)
                                                             .map(myRegistry::getModuleClassLoader)
                                                             .filter(Objects::nonNull)
-                                                            .collect(Collectors.toList());
+                                                            .collect(Collectors.toSet());
 
       final DisposeSession ds = new DisposeSession(modulesToUnload, classLoaders, onDisposed);
       mySessions.add(ds);
@@ -246,7 +256,7 @@ final class MPSClassLoadersRegistry {
     static final class DisposeSession {
       private static final int MAX_MINUTES_FOR_STALE_CLASSLOADERS = 5;
       private final Set<ReloadableModule> myModulesToUnload;
-      private final List<ModuleClassLoader> myModuleClassloaders2Dispose;
+      private final Set<ModuleClassLoader> myModuleClassloaders2Dispose;
       private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
       private final Instant myCreationTime;
       @Nullable
@@ -259,70 +269,68 @@ final class MPSClassLoadersRegistry {
         @NotNull
         @Override
         public Set<ReloadableModule> acquire(@NotNull Object requestor) {
-          if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
-            throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
-          }
-          return myModulesToUnload;
+          doAquire(requestor);
+          return Collections.unmodifiableSet(myModulesToUnload);
         }
 
         @NotNull
         @Override
         public Set<ModuleClassLoader> acquire2(@NotNull Object requestor) {
-          if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
-            throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
-          }
-
-          return new HashSet<>(myModuleClassloaders2Dispose);
+          doAquire(requestor);
+          return Collections.unmodifiableSet(myModuleClassloaders2Dispose);
         }
-
-        private Object actualDisposeRequestor = null;
 
         @Override
         public void release(@NotNull Object requestor) {
-          Boolean value = myBlockingRequestors.remove(requestor);
-          if (value == null) {
-            LOG.warning("Please report next message and the steps that lead to it to MPS-36887");
-            LOG.error("DisposeSession release comes from an unknown (already removed?) requestor " + requestor);
-          }
-          synchronized (DisposeSession.this) {
-            if (isNotBlocked() && isReadyToDispose()) {
-              if (actualDisposeRequestor!= null) {
-                LOG.warning("Please report next message and the steps that lead to it to MPS-36887");
-                LOG.error(String.format("DisposeSession.release(%s) faces previous completed release(%s)", requestor, actualDisposeRequestor));
-              } else {
-                actualDisposeRequestor = requestor;
-              }
-              doDispose();
-            }
-          }
+          doRelease(requestor);
         }
       };
 
       public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload,
-                            @NotNull List<ModuleClassLoader> theirClassloaders,
+                            @NotNull Set<ModuleClassLoader> theirClassloaders,
                             @Nullable Consumer<DisposeSession> onDisposed) {
         myOnDisposed = onDisposed;
         myCreationTime = Instant.now();
-        myModulesToUnload = Collections.unmodifiableSet(modulesToUnload);
+        myModulesToUnload = modulesToUnload;
         myModuleClassloaders2Dispose = theirClassloaders;
       }
+
+      /*package*/ void doAquire(@NotNull Object requestor) {
+        if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
+          throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
+        }
+        if (myActualDisposalTime != null || myDisposeHappened) {
+          throw new IllegalStateException(String.format("Requestor '%s' tries to #acquire already disposed session", requestor));
+        }
+      }
+
+      /*package*/ void doRelease(@NotNull Object requestor) {
+        // we can get here from multiple threads at the same time
+        Boolean value = myBlockingRequestors.remove(requestor);
+        if (value == null) {
+          LOG.warning("Please report next message and the steps that lead to it to MPS-36887");
+          LOG.error("DisposeSession release comes from an unknown (already removed?) requestor " + requestor);
+        }
+        checkAndDisposeIfReady();
+      }
+
+      private synchronized void checkAndDisposeIfReady() {
+        if (isReadyToDispose() && myBlockingRequestors.isEmpty() && !myDisposeHappened) {
+          doDispose();
+        } // else we wait for the last #release
+      }
+
 
       public synchronized void readyToDispose() {
         assert myCreationTime != null;
         assert myPlanningDisposalTime == null;
         myPlanningDisposalTime = Instant.now();
-        if (isNotBlocked()) {
-          doDispose();
-        } // else we wait for the last #release
+        checkAndDisposeIfReady();
       }
 
       // shall answer true iff readyToDispose() was signaled
       private boolean isReadyToDispose() {
         return myPlanningDisposalTime != null;
-      }
-
-      private boolean isNotBlocked() {
-        return myBlockingRequestors.isEmpty();
       }
 
       public synchronized void destroy() {
@@ -344,12 +352,14 @@ final class MPSClassLoadersRegistry {
         assert myCreationTime != null;
         assert myPlanningDisposalTime != null;
         assert !myDisposeHappened : "Dispose has already been done.";
+        myActualDisposalTime = Instant.now();
         LOG.debug("Disposing " + myModuleClassloaders2Dispose.size() + " class loaders");
         for (ModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
           classLoader.dispose();
         }
+        // help GC by removing references to CL
         myModuleClassloaders2Dispose.clear();
-        myActualDisposalTime = Instant.now();
+        myModulesToUnload.clear();
         myDisposeHappened = true;
         if (myOnDisposed != null) {
           myOnDisposed.consume(this);

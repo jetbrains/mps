@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -207,7 +207,7 @@ public class Equations {
     for (SNode child : node.getChildren()) {
       SNode newChild = expandNode(child, variablesMet, finalExpansion, copy);
       if (finalExpansion && TypesUtil.isVariable(newChild)) {
-        newChild = convertReferentVariable(node, child.getRoleInParent(), child);
+        newChild = convertReferentVariable(node, child.getContainmentLink().getName(), child);
       }
 
       if (newChild != child) {

@@ -8,7 +8,7 @@ import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.make.script.IJob;
 import jetbrains.mps.internal.make.runtime.util.DefaultHName;
 
-@GeneratedClass(node = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)/6168415856807657134", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
+@GeneratedClass(nodeId = "6168415856807657134", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
 public interface ITarget {
   Name getName();
   boolean requiresInput();

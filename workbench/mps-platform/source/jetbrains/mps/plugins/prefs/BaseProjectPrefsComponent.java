@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.plugins.prefs;
 
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import org.jdom.Element;
 
@@ -40,7 +41,7 @@ public abstract class BaseProjectPrefsComponent implements PersistentStateCompon
   }
 
   public MPSProject getMPSProject() {
-    return myProject.getComponent(MPSProject.class);
+    return ProjectHelper.fromIdeaProject(myProject);
   }
 
   public void init() {

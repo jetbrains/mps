@@ -216,6 +216,12 @@
           </node>
         </node>
         <node concept="3clFbJ" id="7v5ch11Erzw" role="3cqZAp">
+          <node concept="3y3z36" id="6US8dKoWnI5" role="3clFbw">
+            <node concept="37vLTw" id="7v5ch11ErzA" role="3uHU7B">
+              <ref role="3cqZAo" node="7v5ch11Erzq" resolve="projectPath" />
+            </node>
+            <node concept="10Nm6u" id="7v5ch11Erz_" role="3uHU7w" />
+          </node>
           <node concept="3clFbS" id="7v5ch11Erzx" role="3clFbx">
             <node concept="3cpWs6" id="7v5ch11Erzy" role="3cqZAp">
               <node concept="2YIFZM" id="2$lGPJtm42B" role="3cqZAk">
@@ -225,12 +231,6 @@
                   <ref role="3cqZAo" node="7v5ch11Erzq" resolve="projectPath" />
                 </node>
               </node>
-            </node>
-          </node>
-          <node concept="3y3z36" id="7v5ch11Erz$" role="3clFbw">
-            <node concept="10Nm6u" id="7v5ch11Erz_" role="3uHU7w" />
-            <node concept="37vLTw" id="7v5ch11ErzA" role="3uHU7B">
-              <ref role="3cqZAo" node="7v5ch11Erzq" resolve="projectPath" />
             </node>
           </node>
         </node>
@@ -244,12 +244,12 @@
               </node>
             </node>
             <node concept="liA8E" id="7v5ch11ErzF" role="2OqNvi">
-              <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
+              <ref role="37wK5l" to="wwqx:~Logger.info(java.lang.String)" resolve="info" />
               <node concept="2YIFZM" id="7v5ch11ErzG" role="37wK5m">
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="Xl_RD" id="7v5ch11ErzH" role="37wK5m">
-                  <property role="Xl_RC" value="Model %s (from %s) doesn't specify project path in TestInfo!" />
+                  <property role="Xl_RC" value="Model %s (from %s) doesn't specify project path in TestInfo. Use -Dmps.test.project.path to specify project path." />
                 </node>
                 <node concept="2OqwBi" id="7v5ch11ErzI" role="37wK5m">
                   <node concept="37vLTw" id="7v5ch11ErzJ" role="2Oq$k0">
@@ -272,9 +272,7 @@
           </node>
         </node>
         <node concept="3cpWs6" id="7v5ch11ErzP" role="3cqZAp">
-          <node concept="Xl_RD" id="7v5ch11ErzQ" role="3cqZAk">
-            <property role="Xl_RC" value="" />
-          </node>
+          <node concept="10Nm6u" id="6US8dKoWnBg" role="3cqZAk" />
         </node>
       </node>
       <node concept="17QB3L" id="7v5ch11ErxB" role="3clF45" />

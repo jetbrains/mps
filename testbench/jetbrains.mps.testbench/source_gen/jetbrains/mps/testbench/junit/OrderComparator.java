@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 /**
  * fyodor, Sep 6, 2010
  */
-@GeneratedClass(node = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/5294483648489412039", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
+@GeneratedClass(nodeId = "5294483648489412039", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
 public class OrderComparator implements Comparator<Description> {
   public OrderComparator() {
   }

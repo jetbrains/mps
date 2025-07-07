@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class JavaVariableHelper {
   public static String accessorNameOf(SNode method) {
     String name = SPropertyOperations.getString(method, PROPS.name$MnvL);
-    if (name.length() <= 3) {
+    if (name == null || name.length() <= 3) {
       return name;
     }
 

@@ -7,7 +7,7 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.tool.environment.Environment;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)/6452630887101907682", model = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)")
+@GeneratedClass(nodeId = "6452630887101907682", model = "r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)")
 public abstract class EnvironmentAwareTestCase implements EnvironmentAware {
   protected Environment myEnvironment;
 

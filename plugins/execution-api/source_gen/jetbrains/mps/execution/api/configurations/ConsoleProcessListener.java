@@ -10,7 +10,7 @@ import com.intellij.openapi.util.Key;
 import com.intellij.execution.process.ProcessOutputTypes;
 import com.intellij.execution.ui.ConsoleViewContentType;
 
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/3908032508224771150", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "3908032508224771150", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 public class ConsoleProcessListener extends ProcessAdapter {
   private final ConsoleView myConsoleView;
   public ConsoleProcessListener(ConsoleView consoleView) {

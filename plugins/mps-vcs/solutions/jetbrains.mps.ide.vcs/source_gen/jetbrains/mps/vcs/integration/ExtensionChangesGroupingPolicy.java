@@ -15,7 +15,7 @@ import com.intellij.openapi.vcs.changes.ui.ChangesGroupingPolicyFactory;
 import com.intellij.openapi.vcs.changes.ui.ChangesGroupingPolicy;
 import com.intellij.openapi.project.Project;
 
-@GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/8537482397934932198", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
+@GeneratedClass(nodeId = "8537482397934932198", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class ExtensionChangesGroupingPolicy extends SimpleChangesGroupingPolicy<String> {
   public ExtensionChangesGroupingPolicy(DefaultTreeModel model) {
     super(model);

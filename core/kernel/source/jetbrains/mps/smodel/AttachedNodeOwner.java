@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.AssociationData.Transition;
+import jetbrains.mps.smodel.AssociationData.TransitionIndirect;
+import jetbrains.mps.smodel.AssociationData.TransitionDirect;
 import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.util.SNodeOperations;
@@ -114,7 +115,7 @@ final class AttachedNodeOwner extends SNodeOwner {
       // not inside a repository, that's why I don't make them indirect just the moment node get attached to a model.
       // There's ImmatureReferences that would force indirect references the moment command completes, regardless of
       // repository presence.
-      final Transition transition = new Transition(false);
+      final TransitionIndirect transition = new TransitionIndirect(myModel.getModelDescriptor(), false);
       node.forEachAssociationDeep(data -> transition.makeIndirect(data, SNodeOperations::getResolveInfo));
     }
   }
@@ -146,9 +147,9 @@ final class AttachedNodeOwner extends SNodeOwner {
       // makeDirect has been separated from detach() code to give better control over reference resolution time.
       // indeed, in a perfect world we would know all nodes to be deleted during a command beforehand, and could process their references at once.
       // as it's not possible (node.sibling.detach could come right after node.detach) we at least go easy path for references within a detached subtree
-      final Transition transition = new Transition();
       final org.jetbrains.mps.openapi.model.SModel current = myModel.getModelDescriptor();
-      node.forEachAssociationDeep(data -> transition.makeDirect(data, () -> StaticReference.getTargetModel_Fair_ProvisionalStatic(data.getTargetModel(), current)));
+      final TransitionDirect transition = new TransitionDirect(current);
+      node.forEachAssociationDeep(data -> transition.makeDirect(data));
       // Direct object pointers facilitate reference access operations from the detached nodes just in case there's need.
     }
 
@@ -305,7 +306,7 @@ final class AttachedNodeOwner extends SNodeOwner {
     if (node == null && role == null) {
       final ModelEventDispatch md = myEventDispatch;
       if (md != null) {
-        md.fireNodeRemove(null, null, child);
+        md.fireNodeRemove(null, null, child, null);
       }
       myModel.fireRootRemovedEvent(child);
       return;
@@ -317,7 +318,7 @@ final class AttachedNodeOwner extends SNodeOwner {
     //nodeRemoved(child, role);
     final ModelEventDispatch md = myEventDispatch;
     if (md != null) {
-      md.fireNodeRemove(node, role, child);
+      md.fireNodeRemove(node, role, child, anchor);
     }
   }
 

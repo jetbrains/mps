@@ -45,13 +45,11 @@ public class JUnit5ScriptTestContributor extends AbstractTestConverter<Discovery
 
   @Override
   protected DiscoverySelector createFailedRequestForClass(String fqName, Exception e) {
-    // FIXME implement using special TestEngine
-    throw new UnsupportedOperationException("not implemented");
+    return DiscoverySelectors.selectUniqueId("[class:" + fqName + "]");
   }
 
   @Override
   protected DiscoverySelector createFailedRequestForMethod(String testFqName, String methodName, Exception e) {
-    // FIXME implement using special TestEngine
-    throw new UnsupportedOperationException("not implemented");
+    return DiscoverySelectors.selectUniqueId("[class:" + testFqName + "]/[method:" + methodName + "]");
   }
 }

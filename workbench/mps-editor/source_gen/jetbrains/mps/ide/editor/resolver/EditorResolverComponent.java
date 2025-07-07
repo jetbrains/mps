@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.resolve.ResolverComponent;
 
-@GeneratedClass(node = "r:e83eb82a-b3b8-4003-84af-b40cb742ea94(jetbrains.mps.ide.editor.resolver)/1802459475176570754", model = "r:e83eb82a-b3b8-4003-84af-b40cb742ea94(jetbrains.mps.ide.editor.resolver)")
+@GeneratedClass(nodeId = "1802459475176570754", model = "r:e83eb82a-b3b8-4003-84af-b40cb742ea94(jetbrains.mps.ide.editor.resolver)")
 public class EditorResolverComponent implements CoreComponent {
 
   private final ResolverComponent myRegistry;

@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="0" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
@@ -43,8 +43,8 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -372,8 +372,8 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Analyze Module Dependencies" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8eWj" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8f2g" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAy" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8f2g" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowModuleDependencies" resolve="ToolWindowModuleDependencies" />
       </node>
@@ -454,8 +454,8 @@
   <node concept="sEfby" id="4K0u7uB3vjg">
     <property role="TrG5h" value="ModuleDependenies" />
     <property role="2XNbzY" value="Module Dependencies" />
-    <node concept="1QGGSu" id="6XsdSpivWhJ" role="1nVCmq">
-      <node concept="10M0yZ" id="6XsdSpivWqK" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAz" role="1nVCmq">
+      <node concept="10M0yZ" id="6XsdSpivWqK" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowModuleDependencies" resolve="ToolWindowModuleDependencies" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
       </node>
@@ -2332,8 +2332,8 @@
       </node>
       <node concept="3Tm6S6" id="441vB8LS_r$" role="1B3o_S" />
     </node>
-    <node concept="1QGGSu" id="222i7iS8zo2" role="3Uehp1">
-      <node concept="10M0yZ" id="222i7iS8zo3" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGA$" role="3Uehp1">
+      <node concept="10M0yZ" id="222i7iS8zo3" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowInspection" resolve="ToolWindowInspection" />
       </node>
@@ -2478,8 +2478,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="7TKpiq41PqU" role="1nVCmq">
-      <node concept="10M0yZ" id="7TKpiq41Put" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGA_" role="1nVCmq">
+      <node concept="10M0yZ" id="7TKpiq41Put" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowInspection" resolve="ToolWindowInspection" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
       </node>

@@ -15,9 +15,6 @@
   -->
 <idea-plugin>
   <actions>
-    <action id="ServiceView.ShowServices" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="ServiceView.ConfigureServices" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
 
     <action id="ClassNameCompletion" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="SurroundWithLiveTemplate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
@@ -394,7 +391,6 @@
     <action id="Resume" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <action id="EvaluateExpression" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="QuickEvaluateExpression" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="ShowExecutionPoint" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--      </group>-->
     <group id="BreakpointActionsGroup" popup="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
@@ -429,7 +425,6 @@
     <action id="XDebugger.RemoveWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.MoveWatchUp" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.MoveWatchDown" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.SwitchWatchesInVariables" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.RemoveAllWatches" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.MuteBreakpoints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="XDebugger.ToggleSortValues" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
@@ -484,7 +479,7 @@
     <action id="openAssertEqualsDiff" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <group id="RunTestGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 
-    <action id="DumpLookupElementWeights" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <action id="DumpLookupElementWeights" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <action id="JumpToColorsAndFonts" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     

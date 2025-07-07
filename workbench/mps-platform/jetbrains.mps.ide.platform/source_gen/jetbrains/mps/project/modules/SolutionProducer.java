@@ -21,7 +21,7 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 
-@GeneratedClass(node = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)/1723752571811373979", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
+@GeneratedClass(nodeId = "1723752571811373979", model = "r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)")
 public class SolutionProducer {
   private static final Logger LOG = Logger.getLogger(SolutionProducer.class);
   private final MPSProject myProject;

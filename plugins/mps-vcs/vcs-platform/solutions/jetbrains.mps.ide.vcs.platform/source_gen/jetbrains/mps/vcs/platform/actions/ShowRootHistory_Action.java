@@ -18,7 +18,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.NameUtil;
 import com.intellij.openapi.util.registry.Registry;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/6427926084137613936", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "6427926084137613936", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ShowRootHistory_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -26,6 +26,7 @@ public class ShowRootHistory_Action extends BaseAction {
     super("Show Root History", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

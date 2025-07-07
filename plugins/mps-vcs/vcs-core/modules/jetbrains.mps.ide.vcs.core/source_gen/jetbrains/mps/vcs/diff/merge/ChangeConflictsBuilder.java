@@ -9,7 +9,7 @@ import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import java.util.List;
 
-@GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/6095050343213851618", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
+@GeneratedClass(nodeId = "6095050343213851618", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public interface ChangeConflictsBuilder {
   @NotNull
   ChangeSet getMyChangeSet();

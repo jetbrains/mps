@@ -6,6 +6,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.Collections;
 import jetbrains.mps.ide.depanalyzer.DependencyUtil.Dependency;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -32,6 +34,12 @@ public final class DepLink {
   public DepLink parent() {
     return myParent;
   }
+  public Iterable<DepLink> ancestors() {
+    if (myParent == null) {
+      return Sequence.fromIterable(Collections.<DepLink>emptyList());
+    }
+    return Sequence.fromIterable(Sequence.<DepLink>singleton(myParent)).concat(Sequence.fromIterable(myParent.ancestors()));
+  }
   public void setReused(DepLink reusedDepLink) {
     myReusedDepLink = reusedDepLink;
     ListSequence.fromList(reusedDepLink.myReferences).addElement(this);
@@ -42,6 +50,13 @@ public final class DepLink {
   public List<DepLink> reusedFrom() {
     return myReferences;
   }
+  public boolean isDependencyRole() {
+    return role.isDependency();
+  }
+  public boolean isUsedLanguageRole() {
+    return role.isUsedLanguage();
+  }
+
   @Override
   public boolean equals(Object object) {
     if (object instanceof DepLink) {

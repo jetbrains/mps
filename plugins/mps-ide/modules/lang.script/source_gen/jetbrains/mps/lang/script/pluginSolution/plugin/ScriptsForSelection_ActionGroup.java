@@ -13,15 +13,14 @@ import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.workbench.MPSDataKeys;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.workbench.MPSDataKeys;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.workbench.action.BaseGroup;
-import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.Nullable;
 
 public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
@@ -35,25 +34,28 @@ public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
   }
   public void doUpdate(AnActionEvent event) {
     removeAll();
-    List<SModel> models = MPSCommonDataKeys.MODELS.getData(event.getDataContext());
-    if (ListSequence.fromList(models).count() == 1 && !(ListSequence.fromList(models).first() instanceof EditableSModel && !(ListSequence.fromList(models).first().isReadOnly()))) {
-      event.getPresentation().setVisible(false);
-      return;
-    }
-    event.getPresentation().setVisible(true);
-    MPSProject project = event.getData(MPSDataKeys.MPS_PROJECT);
-    if (project == null) {
+    final MPSProject mpsProject = event.getData(MPSDataKeys.MPS_PROJECT);
+    if (mpsProject == null) {
       event.getPresentation().setEnabled(false);
       return;
     }
+    final List<SModel> models = MPSCommonDataKeys.MODELS.getData(event.getDataContext());
+    final List<SModule> modules = MPSCommonDataKeys.MODULES.getData(event.getDataContext());
+    final Object[] selectedItems = MPSCommonDataKeys.SELECTED_ITEMS.getData(event.getDataContext());
+    SearchScope scope = mpsProject.getModelAccess().computeReadAction(() -> MigrationScriptHelper.combineModulesModelsSelectedItemsIntoScope(false, mpsProject, selectedItems, modules, models));
+
+    if (!(scope.getModels().iterator().hasNext())) {
+      event.getPresentation().setVisible(false);
+      event.getPresentation().setEnabled(false);
+      return;
+    }
+    event.getPresentation().setVisible(true);
     event.getPresentation().setEnabled(true);
 
-    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project);
+    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(mpsProject);
     BaseGroup catGroup = menuBuilder.createPopup(true);
-    for (AnAction a : catGroup.getChildren(null)) {
-      ScriptsForSelection_ActionGroup.this.add(a);
-    }
-    ScriptsForSelection_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(true), true);
+    ScriptsForSelection_ActionGroup.this.add(catGroup);
+    ScriptsForSelection_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(false), false);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }

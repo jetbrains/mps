@@ -7,7 +7,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 /**
  * Thrown when we can not find a class, method or field user whants to evaluate -- so users expression is invalid.
  */
-@GeneratedClass(node = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)/4727801710070564141", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
+@GeneratedClass(nodeId = "4727801710070564141", model = "r:f326a98e-32f7-47a0-ba29-239107a89ca4(jetbrains.mps.debugger.java.api.evaluation)")
 public class InvalidEvaluatedExpressionException extends EvaluationException {
   public InvalidEvaluatedExpressionException() {
     super();

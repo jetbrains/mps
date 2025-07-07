@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
-@GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/1030074786389909272", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
+@GeneratedClass(nodeId = "1030074786389909272", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 /*package*/ class ModuleBuildSequence {
   private List<List<SModule>> myPhaseOne;
   private List<List<SModule>> myPhaseTwo;

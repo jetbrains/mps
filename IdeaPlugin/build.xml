@@ -344,7 +344,7 @@
       <sysproperty key="idea.force.use.core.classloader" value="true"/>
       <sysproperty key="jna.boot.library.path" value="${ideaPath}/lib/jna/${os.arch}"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
-      <sysproperty key="idea.platform.prefix" value="Idea"/>
+      <sysproperty key="idea.platform.prefix" value="MPS"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
       <sysproperty key="idea.system.path" value="${test.platform.sandbox.dir}/system"/>
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>
@@ -596,6 +596,7 @@
       <!-- TODO: remove property after investigation and fix MPS-25217 -->
       <!-- See com.intellij.openapi.project.impl.ProjectManagerImpl#newProject and ProjectManagerImpl#LOG_PROJECT_LEAKAGE_IN_TESTS-->
       <sysproperty key="idea.log.leaked.projects.in.tests" value="false"/>
+      <sysproperty key="mps.test.project.path" value="${base_dir}"/>
       <sysproperty key="mps.test.module.names"
                    value="jetbrains.mps.lang.editor.tests,jetbrains.mps.lang.editor.multiple.tests,jetbrains.mps.console.test,jetbrains.mps.lang.actions.test,jetbrains.mps.lang.editor.table.tests,jetbrains.mps.baseLanguage.test"/>
       <classpath>

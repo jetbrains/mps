@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import java.util.Set;
 
-@GeneratedClass(node = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/8535156717799810040", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
+@GeneratedClass(nodeId = "8535156717799810040", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
 public final class ModelImportsCheck {
   private final Project myProject;
   private final SModel myModel;

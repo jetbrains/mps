@@ -77,7 +77,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552955746"), CONCEPTS.EnumMember_ValueOperation_Old$rN, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_116_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -103,7 +103,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552955752"), CONCEPTS.EnumMember_ValueOperation_Old$rN, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_116_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
@@ -138,7 +138,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
       super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552961455"), CONCEPTS.EnumMember_ValueOperation_Old$rN, true);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_116_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

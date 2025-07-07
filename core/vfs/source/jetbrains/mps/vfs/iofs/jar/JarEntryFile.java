@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -66,7 +65,7 @@ public class JarEntryFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return IoFileSystem.INSTANCE;
+    return myFileSystem.getUmbrellaFileSystem();
   }
 
   @NotNull
@@ -102,7 +101,7 @@ public class JarEntryFile implements IFile {
     for (String e : myJarFileData.getSubdirectories(myEntryPath)) {
       result.add(myFileSystem.createFile(e, myJarFileData));
     }
-    final String prefix = myEntryPath.length() > 0 ? myEntryPath + '/' : null;
+    final String prefix = myEntryPath.isEmpty() ? null : myEntryPath + '/';
     for (String e : myJarFileData.getFiles(myEntryPath)) {
       result.add(myFileSystem.createFile(prefix != null ? prefix + e : e, myJarFileData));
     }
@@ -116,8 +115,20 @@ public class JarEntryFile implements IFile {
   }
 
   @Override
+  @NotNull
+  public IFile stepIntoArchive() {
+    return this;
+  }
+
+  @Override
   public boolean isInZipArchive() {
     return true;
+  }
+
+  @NotNull
+  @Override
+  public IFile stepUpToArchive() {
+    return myFileSystem.getUmbrellaFileSystem().getFile(myJarFileData.getFile());
   }
 
   @Override
@@ -134,7 +145,7 @@ public class JarEntryFile implements IFile {
   @NotNull
   public IFile findChild(@NotNull String name) {
     new PathFormatChecker(name).nonEmpty().noSeparators();
-    String path = myEntryPath.length() > 0 ? myEntryPath + IFileSystem.SEPARATOR + name : name;
+    String path = myEntryPath.isEmpty() ? name : myEntryPath + IFileSystem.SEPARATOR + name;
     return myFileSystem.createFile(path, myJarFileData);
   }
 
@@ -245,7 +256,7 @@ public class JarEntryFile implements IFile {
 
   @Override
   public IFile getBundleHome() {
-    return myFileSystem.getManager().getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(myJarFileData.getFile());
+    return stepUpToArchive();
   }
 
   @Override

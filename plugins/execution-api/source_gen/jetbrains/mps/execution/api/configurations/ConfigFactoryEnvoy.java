@@ -20,7 +20,7 @@ import java.lang.reflect.InvocationTargetException;
  * MPS module that contributed them (with a help of app plugin part) has been disposed - IDEA's RunnerAndConfigurationSettingsImpl holds
  * run configuration instance and accesses its factory.
  */
-@GeneratedClass(node = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/897795129551183473", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
+@GeneratedClass(nodeId = "897795129551183473", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
 /*package*/ final class ConfigFactoryEnvoy extends ConfigurationFactory {
   private static final Logger LOG = Logger.getLogger(ConfigFactoryEnvoy.class);
   private boolean myIsIvalid;

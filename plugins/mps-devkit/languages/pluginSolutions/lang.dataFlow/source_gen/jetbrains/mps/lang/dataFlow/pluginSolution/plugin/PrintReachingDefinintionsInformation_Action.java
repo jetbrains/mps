@@ -11,8 +11,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.lang.dataFlow.MPSProgramFactory;
+import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.lang.dataFlow.framework.Program;
-import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import java.util.Set;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
@@ -24,7 +26,7 @@ public class PrintReachingDefinintionsInformation_Action extends BaseAction {
   public PrintReachingDefinintionsInformation_Action() {
     super("Print DFA Reaching Definitions Information", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
     updateInBackground(true);
   }
   @Override
@@ -52,8 +54,11 @@ public class PrintReachingDefinintionsInformation_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    Program program = new MPSProgramBuilder(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()).buildProgram(event.getData(MPSCommonDataKeys.NODE));
-    AnalysisResult<Set<WriteInstruction>> result = program.analyze(new ReachingDefinitionsAnalyzer());
-    System.out.println(result.toString());
+    LanguageRegistry languageRegistry = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(LanguageRegistry.class);
+    languageRegistry.withAvailableExtensions(MPSProgramFactory.class, new ModuleRuntime.Extension.MatchRequest() {}, (pf) -> {
+      Program program = pf.createProgram(event.getData(MPSCommonDataKeys.NODE));
+      AnalysisResult<Set<WriteInstruction>> result = program.analyze(new ReachingDefinitionsAnalyzer());
+      System.out.println(result.toString());
+    });
   }
 }

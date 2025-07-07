@@ -549,7 +549,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="yAgQsnw2EA" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="yAgQsnw1Dg" role="jymVt" />
@@ -586,6 +586,23 @@
               </node>
               <node concept="liA8E" id="yAgQsnv_wy" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2VpW0qBd2GP" role="3cqZAp">
+          <node concept="2OqwBi" id="2VpW0qBd3vM" role="3clFbG">
+            <node concept="37vLTw" id="2VpW0qBd2GN" role="2Oq$k0">
+              <ref role="3cqZAo" node="yAgQsnv_wv" resolve="presentation" />
+            </node>
+            <node concept="liA8E" id="2VpW0qBd6b9" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.putClientProperty(com.intellij.openapi.util.Key,java.lang.Object)" resolve="putClientProperty" />
+              <node concept="10M0yZ" id="2VpW0qBd9bb" role="37wK5m">
+                <ref role="3cqZAo" to="8rsk:~ActionUtil.ALWAYS_VISIBLE_GROUP" resolve="ALWAYS_VISIBLE_GROUP" />
+                <ref role="1PxDUh" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+              </node>
+              <node concept="3clFbT" id="2VpW0qBdbtj" role="37wK5m">
+                <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
@@ -702,9 +719,6 @@
     </node>
     <node concept="3uibUv" id="6KNGF9gTZh" role="EKbjA">
       <ref role="3uigEE" to="qkt:~Toggleable" resolve="Toggleable" />
-    </node>
-    <node concept="3uibUv" id="6P_LPfEVTGE" role="EKbjA">
-      <ref role="3uigEE" to="qkt:~AlwaysVisibleActionGroup" resolve="AlwaysVisibleActionGroup" />
     </node>
   </node>
   <node concept="312cEu" id="6KNGF9gTZi">

@@ -62,7 +62,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
-import jetbrains.mps.nodeEditor.MPSColors;
+import jetbrains.mps.lang.core.editor.BaseStyleSheet_StyleSheet.CommentStyleClass;
 import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -124,7 +124,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         new FieldStyleClass(this).apply(style, editorCell);
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no role>");
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), provider.getCellContext(), new SubstituteInfoPartExt[]{new LinkDeclaration_null_postfixCellMenu_6h6dhy_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), provider.getCellContext(), new SubstituteInfoPartExt[]{new LinkDeclaration_role_postfixCellMenu_6h6dhy_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }
@@ -139,8 +140,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
-  public static class LinkDeclaration_null_postfixCellMenu_6h6dhy_a0a0 extends AbstractCellMenuPart_PropertyPostfixHints {
-    public LinkDeclaration_null_postfixCellMenu_6h6dhy_a0a0() {
+  public static class LinkDeclaration_role_postfixCellMenu_6h6dhy_a0a0 extends AbstractCellMenuPart_PropertyPostfixHints {
+    public LinkDeclaration_role_postfixCellMenu_6h6dhy_a0a0() {
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
@@ -333,7 +334,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
     editorCell.setCellId("ReadOnlyModelAccessor_6h6dhy_d2a");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.lightGray));
+    new CommentStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     return editorCell;

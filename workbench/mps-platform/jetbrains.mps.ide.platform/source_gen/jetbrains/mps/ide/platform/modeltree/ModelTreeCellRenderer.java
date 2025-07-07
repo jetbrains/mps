@@ -8,7 +8,7 @@ import javax.swing.tree.TreeCellRenderer;
 import javax.swing.JTree;
 import javax.swing.tree.TreeNode;
 
-@GeneratedClass(node = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)/4288082098349207990", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
+@GeneratedClass(nodeId = "4288082098349207990", model = "r:e180cc3d-e9f2-4c0c-91b4-6730d80d9b23(jetbrains.mps.ide.platform.modeltree)")
 public class ModelTreeCellRenderer extends ColoredTreeCellRenderer implements TreeCellRenderer {
   public ModelTreeCellRenderer() {
   }

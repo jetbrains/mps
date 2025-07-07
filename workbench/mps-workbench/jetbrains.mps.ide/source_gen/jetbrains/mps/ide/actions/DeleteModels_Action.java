@@ -23,7 +23,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.module.SModule;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3575273646046443826", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "3575273646046443826", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DeleteModels_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -119,10 +119,10 @@ public class DeleteModels_Action extends BaseAction {
       return false;
     }
     for (SModel m : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
-      if (!(SModelStereotype.isStubModel(m)) && !(SModelStereotype.isDescriptorModel(m))) {
-        return true;
+      if (SModelStereotype.isStubModel(m) || SModelStereotype.isDescriptorModel(m) || m.isReadOnly() || m.getModule().isReadOnly()) {
+        return false;
       }
     }
-    return false;
+    return true;
   }
 }

@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.application.ApplicationManager;
 
-@GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131072152", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
+@GeneratedClass(nodeId = "8632185942131072152", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class IdeaCodeNavigationProvider implements CodeNavigationProvider {
   public IdeaCodeNavigationProvider() {
   }

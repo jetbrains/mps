@@ -8,7 +8,7 @@ import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144108011478", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
+@GeneratedClass(nodeId = "846214144108011478", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public interface IEvaluationContainer {
   IEvaluationContainer copy(boolean isWatch, _FunctionTypes._void_P1_E0<? super IEvaluationContainer> onNodeSetUp);
   Class generateClass() throws EvaluationException;

@@ -5,6 +5,6 @@ package jetbrains.mps.refactoring.participant;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 
-@GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/8193174057324774207", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
+@GeneratedClass(nodeId = "8193174057324774207", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public interface RenameNodeRefactoringParticipant<InitialDataObject, FinalDataObject> extends RefactoringParticipant<InitialDataObject, FinalDataObject, SNode, String> {
 }

@@ -32,6 +32,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
+import java.awt.Color;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -181,7 +182,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name");
         Style style = new StyleImpl();
-        style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.orange));
+        style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_73o0fl_a0a0c0c0()));
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
@@ -195,6 +196,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       } finally {
         getCellFactory().popCellContext();
       }
+    }
+    private Color _StyleParameter_QueryFunction_73o0fl_a0a0c0c0() {
+      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_LABEL_IN_EDITOR").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     }
   }
 

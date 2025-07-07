@@ -21,6 +21,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.UiDataProvider;
+import com.intellij.openapi.actionSystem.LangDataKeys;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import com.intellij.ui.content.Content;
@@ -32,13 +34,10 @@ import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.execution.ui.actions.CloseAction;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.ide.DataManager;
-import com.intellij.openapi.actionSystem.DataProvider;
-import org.jetbrains.annotations.Nullable;
-import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.ide.DataManager;
 
-@GeneratedClass(node = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)/4474271214083120245", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
+@GeneratedClass(nodeId = "4474271214083120245", model = "r:891e5016-c8e3-4b89-90ed-01a5f21e6fc3(jetbrains.mps.debugger.api.ui.tool)")
 public class DebuggerToolContentBuilder implements Disposable {
   private static final Logger LOG = Logger.getLogger(DebuggerToolContentBuilder.class);
   @NonNls
@@ -78,7 +77,9 @@ public class DebuggerToolContentBuilder implements Disposable {
     return contentDescriptor;
   }
   private MyRunContentDescriptor createDescriptorInternal(RunnerLayoutUi ui, RunProfile profile) {
-    return new MyRunContentDescriptor(profile, myExecutionResult, myReuseProhibited, ui.getComponent(), this);
+    final MyRunContentDescriptor descriptor = new MyRunContentDescriptor(profile, myExecutionResult, myReuseProhibited, ui.getComponent(), this);
+    ui.getContentManager().addUiDataProvider((UiDataProvider) (sink) -> sink.set(LangDataKeys.RUN_CONTENT_DESCRIPTOR, descriptor));
+    return descriptor;
   }
   private void buildUi(RunnerLayoutUi ui, ExecutionConsole console) {
     ui.getOptions().setMoveToGridActionEnabled(true).setMinimizeActionEnabled(true);
@@ -125,15 +126,6 @@ public class DebuggerToolContentBuilder implements Disposable {
       super(executionResult.getExecutionConsole(), executionResult.getProcessHandler(), component, profile.getName(), profile.getIcon());
       myReuseProhibited = reuseProhibited;
       myAdditionalDisposable = additionalDisposable;
-      DataManager.registerDataProvider(component, new DataProvider() {
-        @Nullable
-        public Object getData(@NonNls String dataId) {
-          if (LangDataKeys.RUN_CONTENT_DESCRIPTOR.is(dataId)) {
-            return MyRunContentDescriptor.this;
-          }
-          return null;
-        }
-      });
     }
     @Override
     public boolean isContentReuseProhibited() {

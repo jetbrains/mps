@@ -17,7 +17,7 @@ import java.util.HashSet;
  * class as 'deployed modules repository' and avoid use of source module descriptors.
  * 
  */
-@GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/7110336455353370861", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
+@GeneratedClass(nodeId = "7110336455353370861", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class RepositoryDescriptor {
   public Set<String> files = new HashSet<String>();
   public Set<String> folders = new HashSet<String>();

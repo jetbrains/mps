@@ -13,7 +13,7 @@
       <unit at="12,0,196,0" name="jetbrains.mps.lang.findUsages.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.findUsages.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.findUsages.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,68,0" name="jetbrains.mps.lang.findUsages.structure.LanguageConceptSwitch" />
@@ -102,8 +102,8 @@
       <node id="1197044488845" at="90,46,91,76" concept="3" />
       <node id="1197044488845" at="91,76,92,35" concept="0" />
       <node id="1197044488845" at="92,35,93,32" concept="0" />
-      <node id="1197044488845" at="93,32,94,55" concept="0" />
-      <node id="1197044488845" at="94,55,95,49" concept="0" />
+      <node id="1197044488845" at="93,32,94,45" concept="0" />
+      <node id="1197044488845" at="94,45,95,49" concept="0" />
       <node id="1197044488845" at="96,9,97,39" concept="4" />
       <node id="6354210107034397076" at="194,0,195,0" concept="6" trace="HELP_URL" />
       <node id="1197044488845" at="89,51,96,9" concept="2" />

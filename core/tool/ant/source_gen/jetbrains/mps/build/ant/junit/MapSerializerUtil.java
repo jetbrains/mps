@@ -9,7 +9,7 @@ import java.util.Iterator;
 /**
  * https://github.com/JetBrains/intellij-community/blob/0e2aa4030ee763c9b0c828f0b5119f4cdcc66f35/java/java-runtime/src/com/intellij/rt/execution/junit/MapSerializerUtil.java
  */
-@GeneratedClass(node = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)/6060921217270142714", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
+@GeneratedClass(nodeId = "6060921217270142714", model = "r:df01b7a4-085b-4689-a5be-0177cb8fceea(jetbrains.mps.build.ant.junit)")
 public final class MapSerializerUtil {
   public static final String TEST_FAILED = "testFailed";
   public static final String TEST_IGNORED = "testIgnored";

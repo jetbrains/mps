@@ -12,7 +12,7 @@ import java.awt.Dimension;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7064627997011532536", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "7064627997011532536", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class ExportThreadsDialog extends DialogWrapper {
   private final StringBuffer myThreads;
   private final JComponent myMainComponent;

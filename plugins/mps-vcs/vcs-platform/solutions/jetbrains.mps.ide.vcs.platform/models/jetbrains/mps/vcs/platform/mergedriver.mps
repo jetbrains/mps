@@ -44,6 +44,7 @@
     <import index="wbby" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.crlf(jetbrains.mps.git4idea.stubs/)" />
     <import index="hr4p" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea(jetbrains.mps.git4idea.stubs/)" />
     <import index="ejh2" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:org.jetbrains.idea.svn(jetbrains.mps.ide.vcs.platform/)" />
+    <import index="qv1u" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl.projectlevelman(jetbrains.mps.vcs.idea.stubs/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -6124,8 +6125,8 @@
                                 <node concept="2OqwBi" id="127cgHIfgZI" role="3clFbG">
                                   <node concept="2OqwBi" id="127cgHIfgZC" role="2Oq$k0">
                                     <node concept="2YIFZM" id="127cgHIfgZA" role="2Oq$k0">
-                                      <ref role="37wK5l" to="qv1t:~AllVcses.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-                                      <ref role="1Pybhc" to="qv1t:~AllVcses" resolve="AllVcses" />
+                                      <ref role="37wK5l" to="qv1u:~AllVcses.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                                      <ref role="1Pybhc" to="qv1u:~AllVcses" resolve="AllVcses" />
                                       <node concept="37vLTw" id="2BHiRxeuW13" role="37wK5m">
                                         <ref role="3cqZAo" node="63ZcAL21OIS" resolve="myProject" />
                                       </node>
@@ -7717,6 +7718,9 @@
         <node concept="Xl_RD" id="7q5OfCw3ADb" role="37wK5m">
           <property role="Xl_RC" value="mps-constraints-runtime.jar" />
         </node>
+        <node concept="Xl_RD" id="5O4Q2W5AAH3" role="37wK5m">
+          <property role="Xl_RC" value="trove.jar" />
+        </node>
       </node>
       <node concept="A3Dl8" id="7yiwGpnLbjo" role="1tU5fm">
         <node concept="17QB3L" id="7yiwGpnLbju" role="A3Ik2" />
@@ -7740,7 +7744,7 @@
         <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
         <node concept="3cpWs3" id="10txAzIcfnU" role="37wK5m">
           <node concept="Xl_RD" id="3PaWMnROBBC" role="3uHU7w">
-            <property role="Xl_RC" value="diffutils-1.2.1.jar" />
+            <property role="Xl_RC" value="java-diff-utils-4.15.jar" />
           </node>
           <node concept="3cpWs3" id="10txAzIcHVa" role="3uHU7B">
             <node concept="Xl_RD" id="10txAzIcJn1" role="3uHU7B">

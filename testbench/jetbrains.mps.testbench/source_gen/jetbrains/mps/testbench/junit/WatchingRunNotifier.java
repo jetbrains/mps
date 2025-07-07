@@ -18,7 +18,7 @@ import org.junit.runner.notification.Failure;
 /**
  * fyodor, Aug 18, 2010
  */
-@GeneratedClass(node = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/5294483648489412205", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
+@GeneratedClass(nodeId = "5294483648489412205", model = "r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)")
 public class WatchingRunNotifier extends DelegatingRunNotifier {
   private static final CachingAppender.Level DEFAULT_WATCH_LOGGER_LEVEL = CachingAppender.Level.ERROR;
   private static final Pattern EXECUTION_LIMIT_FAILED_PATTERN = Pattern.compile("(\\d)* ms execution limit failed for:[^,]*,(\\d*)(\\s)*");

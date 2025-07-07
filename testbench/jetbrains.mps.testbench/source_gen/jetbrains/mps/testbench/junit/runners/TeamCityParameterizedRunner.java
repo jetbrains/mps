@@ -23,7 +23,7 @@ import org.junit.runners.model.Statement;
 /**
  * + watching
  */
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/935017990628671531", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "935017990628671531", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public class TeamCityParameterizedRunner extends BaseMpsRunner {
   private final List<Runner> children;
 

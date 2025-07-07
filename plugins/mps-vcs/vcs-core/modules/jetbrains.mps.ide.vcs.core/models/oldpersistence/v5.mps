@@ -342,29 +342,33 @@
               </node>
             </node>
             <node concept="3clFbF" id="1YV9CnIzGe2" role="3cqZAp">
-              <node concept="2OqwBi" id="1YV9CnIzGe4" role="3clFbG">
-                <node concept="2OqwBi" id="7FmuP_qrooX" role="2Oq$k0">
-                  <node concept="CQp63" id="5WIcYaGh_f8" role="2Oq$k0">
-                    <ref role="CQp62" node="3vSwQtv$CKJ" resolve="model" />
-                  </node>
-                  <node concept="liA8E" id="7FmuP_qroAq" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModel.getImplicitImportsSupport()" resolve="getImplicitImportsSupport" />
-                  </node>
+              <node concept="2OqwBi" id="7FmuP_qrooX" role="3clFbG">
+                <node concept="CQp63" id="5WIcYaGh_f8" role="2Oq$k0">
+                  <ref role="CQp62" node="3vSwQtv$CKJ" resolve="model" />
                 </node>
-                <node concept="liA8E" id="1YV9CnIzGe8" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~ImplicitImportsLegacyHolder.addAdditionalModelVersion(org.jetbrains.mps.openapi.model.SModelReference,int)" resolve="addAdditionalModelVersion" />
-                  <node concept="2YIFZM" id="3I8E8teX1xy" role="37wK5m">
-                    <ref role="37wK5l" to="iho:3I8E8teWORk" resolve="createModelReference" />
-                    <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
-                    <node concept="AH0OO" id="3I8E8teX1Bh" role="37wK5m">
-                      <node concept="3cmrfG" id="3I8E8teX1DH" role="AHEQo">
-                        <property role="3cmrfH" value="0" />
+                <node concept="liA8E" id="7FmuP_qroAq" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~SModel.addModelImport(jetbrains.mps.smodel.SModel$ImportElement)" resolve="addModelImport" />
+                  <node concept="2ShNRf" id="4y5aVLu_FTG" role="37wK5m">
+                    <node concept="1pGfFk" id="4y5aVLu_GS7" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="w1kc:~SModel$ImportElement.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModelReference,int,int)" resolve="SModel.ImportElement" />
+                      <node concept="2YIFZM" id="3I8E8teX1xy" role="37wK5m">
+                        <ref role="37wK5l" to="iho:3I8E8teWORk" resolve="createModelReference" />
+                        <ref role="1Pybhc" to="iho:1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
+                        <node concept="AH0OO" id="3I8E8teX1Bh" role="37wK5m">
+                          <node concept="3cmrfG" id="3I8E8teX1DH" role="AHEQo">
+                            <property role="3cmrfH" value="0" />
+                          </node>
+                          <node concept="CQp6Q" id="3I8E8teX1zo" role="AHHXb" />
+                        </node>
                       </node>
-                      <node concept="CQp6Q" id="3I8E8teX1zo" role="AHHXb" />
+                      <node concept="3cmrfG" id="4y5aVLu_Iym" role="37wK5m">
+                        <property role="3cmrfH" value="-1" />
+                      </node>
+                      <node concept="37vLTw" id="4y5aVLu_IQT" role="37wK5m">
+                        <ref role="3cqZAo" node="1YV9CnIzGfv" resolve="version" />
+                      </node>
                     </node>
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagTzLD" role="37wK5m">
-                    <ref role="3cqZAo" node="1YV9CnIzGfv" resolve="version" />
                   </node>
                 </node>
               </node>

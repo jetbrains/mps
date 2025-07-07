@@ -32,7 +32,7 @@ import javax.swing.Icon;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7054831363147542055", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "7054831363147542055", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class MappingDialog extends DialogWrapper {
   private JPanel myMainComponent = new JPanel(new BorderLayout());
   private Language myLanguage;

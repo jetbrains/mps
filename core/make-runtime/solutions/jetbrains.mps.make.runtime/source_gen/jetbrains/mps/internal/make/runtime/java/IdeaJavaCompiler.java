@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.CompilationResult;
 import org.jetbrains.mps.openapi.module.SModule;
 
-@GeneratedClass(node = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)/2974008768272253139", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
+@GeneratedClass(nodeId = "2974008768272253139", model = "r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)")
 public interface IdeaJavaCompiler {
   boolean isValid();
   CompilationResult compileModules(SModule[] modules);

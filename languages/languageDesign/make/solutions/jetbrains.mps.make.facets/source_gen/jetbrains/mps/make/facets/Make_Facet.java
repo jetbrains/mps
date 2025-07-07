@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
 import jetbrains.mps.make.delta.IInternalDelta;
@@ -78,7 +78,7 @@ public class Make_Facet extends IFacet.Stub {
               }
               progressMonitor.start("Reconciling", 1);
               try {
-                FileSystem.getInstance().runWriteTransaction(() -> {
+                new WriteTransaction(monitor.getSession().getProject().getPlatform(), () -> {
                   final List<IFile> writtenFiles = ListSequence.fromList(new ArrayList<IFile>());
                   DeltaReconciler reconciler = new DeltaReconciler(Sequence.fromIterable(input).translate((res) -> res.delta()).where((d) -> !(d instanceof IInternalDelta)));
                   reconciler.reconcileAll();
@@ -99,7 +99,7 @@ public class Make_Facet extends IFacet.Stub {
                     }
                   });
                   monitor.getSession().getProject().reconcileProjectFiles(writtenFiles);
-                });
+                }).executeAndWait();
                 _output_pm9z_a0a = Sequence.fromIterable(_output_pm9z_a0a).concat(Sequence.fromIterable(input));
               } finally {
                 progressMonitor.done();

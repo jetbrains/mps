@@ -7,6 +7,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
+    <use id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes" version="0" />
   </languages>
   <imports>
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" />
@@ -89,6 +90,9 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -178,6 +182,9 @@
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
+    </language>
+    <language id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes">
+      <concept id="8077936094962911282" name="jetbrains.mps.lang.scopes.structure.ParentScope" flags="nn" index="iy90A" />
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
@@ -1823,21 +1830,45 @@
             </node>
           </node>
           <node concept="3clFbS" id="2r4rhgaESxr" role="3clFbx">
-            <node concept="3cpWs6" id="2r4rhgaESZq" role="3cqZAp">
-              <node concept="2ShNRf" id="2r4rhgaESZD" role="3cqZAk">
-                <node concept="1pGfFk" id="2r4rhgaEUtr" role="2ShVmc">
-                  <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
-                  <node concept="2OqwBi" id="2r4rhgaEVd4" role="37wK5m">
-                    <node concept="2OqwBi" id="2r4rhgaEUHz" role="2Oq$k0">
-                      <node concept="13iPFW" id="2r4rhgaEUv9" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="2r4rhgaEURE" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tp3t:1tcvH6b5INO" resolve="pattern" />
+            <node concept="3cpWs8" id="ApPuqRRc6W" role="3cqZAp">
+              <node concept="3cpWsn" id="ApPuqRRc6X" role="3cpWs9">
+                <property role="TrG5h" value="varScope" />
+                <node concept="3uibUv" id="ApPuqRRbff" role="1tU5fm">
+                  <ref role="3uigEE" to="6xgk:3dppoMAuxA2" resolve="NamedElementsScope" />
+                </node>
+                <node concept="2ShNRf" id="ApPuqRRc6Y" role="33vP2m">
+                  <node concept="1pGfFk" id="ApPuqRRc6Z" role="2ShVmc">
+                    <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
+                    <node concept="2OqwBi" id="ApPuqRRc70" role="37wK5m">
+                      <node concept="2OqwBi" id="ApPuqRRc71" role="2Oq$k0">
+                        <node concept="13iPFW" id="ApPuqRRc72" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="ApPuqRRc73" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tp3t:1tcvH6b5INO" resolve="pattern" />
+                        </node>
+                      </node>
+                      <node concept="2qgKlT" id="ApPuqRRc74" role="2OqNvi">
+                        <ref role="37wK5l" node="2r4rhgaEVoa" resolve="getVariables" />
                       </node>
                     </node>
-                    <node concept="2qgKlT" id="2r4rhgaFc4w" role="2OqNvi">
-                      <ref role="37wK5l" node="2r4rhgaEVoa" resolve="getVariables" />
-                    </node>
                   </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="2r4rhgaESZq" role="3cqZAp">
+              <node concept="2ShNRf" id="ApPuqRRe31" role="3cqZAk">
+                <node concept="1pGfFk" id="ApPuqRRjuY" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="6xgk:6Kqn2fZxA8P" resolve="HidingByNameScope" />
+                  <node concept="35c_gC" id="5MsRCEs8nmd" role="37wK5m">
+                    <ref role="35c_gD" to="tp3t:2r4rhgaDx1I" resolve="PatternBuilderVariable" />
+                  </node>
+                  <node concept="37vLTw" id="5MsRCEs8nis" role="37wK5m">
+                    <ref role="3cqZAo" node="2r4rhgaESsO" resolve="kind" />
+                  </node>
+                  <node concept="37vLTw" id="ApPuqRRljN" role="37wK5m">
+                    <ref role="3cqZAo" node="ApPuqRRc6X" resolve="varScope" />
+                  </node>
+                  <node concept="iy90A" id="5MsRCEs8$su" role="37wK5m" />
                 </node>
               </node>
             </node>

@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.module.SearchScope;
  *  @author Artem Tikhomirov
  *  @since 2017.1
  */
-@GeneratedClass(node = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/8568892084424439935", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
+@GeneratedClass(nodeId = "8568892084424439935", model = "r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)")
 public interface SearchObjectResolver {
   /**
    *  Finder may use this method to go from model reference as a search value to SModel object.

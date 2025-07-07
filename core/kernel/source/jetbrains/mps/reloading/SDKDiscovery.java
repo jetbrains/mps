@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.file.Files;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.SystemInfo;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
@@ -43,6 +41,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
@@ -100,7 +99,7 @@ public class SDKDiscovery {
     } else if (isModularRuntime(javaHome)) {
       String jrtBase = getPath(javaHome) + JrtIoFileSystem.JDK_PATH_SEPARATOR + IFileSystem.SEPARATOR;
       try {
-        List<String> modules = Files.readModulesFromReleaseFile(javaHome);
+        List<String> modules = readModulesFromReleaseFile(javaHome);
         // XXX this seems to be dead code, isModularRuntime() here true iff isFile() == true (isExplodedModularRuntime branch is above)
         //     and there could be no "release" file under another File (in java.io)
         if (modules != null) {
@@ -161,7 +160,7 @@ public class SDKDiscovery {
 
   public static List<File> getJdkClassesRoots(@NotNull File home, boolean isJre) {
     File[] jarDirs;
-    if (SystemInfo.isMac && !home.getName().startsWith("mockJDK")) {
+    if (isMacOS() && !home.getName().startsWith("mockJDK")) {
       File openJdkRtJar = new File(home, "jre/lib/rt.jar");
       if (openJdkRtJar.isFile()) {
         File libDir = new File(home, "lib");
@@ -244,5 +243,36 @@ public class SDKDiscovery {
     } catch (IOException e) {
       return null;
     }
+  }
+
+  /**
+   * Tries to load the list of modules in the JDK from the 'release' file. Returns null if the 'release' file is not there
+   * or doesn't contain the expected information.
+   */
+  @Nullable
+  private static List<String> readModulesFromReleaseFile(File jrtBaseDir) throws IOException, IllegalArgumentException {
+    File releaseFile = new File(jrtBaseDir, "release");
+    if (releaseFile.isFile()) {
+      Properties p = new Properties();
+      try (FileInputStream stream = new FileInputStream(releaseFile)) {
+        p.load(stream);
+        String modules = p.getProperty("MODULES");
+        if (modules == null ||modules.length() < 2) {
+          return null;
+        }
+        // not sure it's reasonable to expect quoted string as property value in 'release' file, but doesn't hurt to keep the logic.
+        if (modules.charAt(0) == modules.charAt(modules.length() - 1) && (modules.charAt(0) == '\'' || modules.charAt(0) == '"')) {
+          // StringUtilRt.unquoteString()
+          modules = modules.substring(1, modules.length() - 1);
+        }
+        return Arrays.asList(modules.split("\\s"));
+      }
+    }
+    return null;
+  }
+
+  private static boolean isMacOS() {
+    // copied from c.i.openapi.util.SystemInfoRt
+    return System.getProperty("os.name").toLowerCase(Locale.ENGLISH).startsWith("mac");
   }
 }

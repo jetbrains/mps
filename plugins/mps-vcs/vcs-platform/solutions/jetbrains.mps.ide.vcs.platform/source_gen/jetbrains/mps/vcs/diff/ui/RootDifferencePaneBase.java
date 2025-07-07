@@ -55,7 +55,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 
-@GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
+@GeneratedClass(nodeId = "8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public abstract class RootDifferencePaneBase implements RootDifferencePane, PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePaneBase.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePaneBase.class.getName() + "InspectorSplitterPosition";

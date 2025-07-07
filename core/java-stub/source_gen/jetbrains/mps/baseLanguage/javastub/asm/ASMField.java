@@ -10,7 +10,7 @@ import org.jetbrains.org.objectweb.asm.tree.AnnotationNode;
 import org.jetbrains.org.objectweb.asm.Opcodes;
 import java.util.Collections;
 
-@GeneratedClass(node = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860006793", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
+@GeneratedClass(nodeId = "7241381882860006793", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMField {
   private FieldNode myField;
   private List<ASMAnnotation> myAnnotations;

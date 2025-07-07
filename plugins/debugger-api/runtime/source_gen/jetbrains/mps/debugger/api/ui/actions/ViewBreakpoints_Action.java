@@ -15,7 +15,7 @@ import jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsBrowserDialog;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7064627997011532825", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "7064627997011532825", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class ViewBreakpoints_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Debugger.ViewBreakpoints;
 

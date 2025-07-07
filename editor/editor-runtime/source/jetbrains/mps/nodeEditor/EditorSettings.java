@@ -277,6 +277,30 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     myState.showContextAssistant = showContextAssistant;
   }
 
+  public boolean isShowOnMouseMove(){
+    return myState.showOnMouseMove;
+  }
+
+  public void setShowOnMouseMove(boolean showOnMouseMove) {
+    myState.showOnMouseMove = showOnMouseMove;
+  }
+
+  public boolean isShowDocumentationPopupFirst(){
+    return myState.showDocumentationPopupFirst;
+  }
+
+  public void setShowDocumentationPopupFirst(boolean showDocumentationPopupFirst) {
+    myState.showDocumentationPopupFirst = showDocumentationPopupFirst;
+  }
+
+  public boolean isToolbarSelected(){
+    return myState.toolbarSelected;
+  }
+
+  public void setToolbarSelected(boolean toolbarSelected) {
+    myState.toolbarSelected = toolbarSelected;
+  }
+
   public Color getRangeSelectionForegroundColor() {
     return EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR);
   }
@@ -399,6 +423,10 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     @Transient
     public int caretBlinkPeriod;
     public boolean reflectiveEditorReadonly = false;
+
+    public boolean showOnMouseMove = true;
+    public boolean showDocumentationPopupFirst = true;
+    public boolean toolbarSelected = true;
 
     @Override
     public boolean equals(Object o) {

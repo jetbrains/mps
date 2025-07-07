@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.vcs.VcsBundle;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4433480198085290549", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "4433480198085290549", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class ViewActionGroup extends BaseGroup {
 
   public ViewActionGroup(AnnotationColumn annotationColumn, Iterable<AnnotationAspectSubcolumn> subcolumns) {

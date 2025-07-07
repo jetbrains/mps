@@ -1309,13 +1309,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByMappingLabel("QueriesGenerated", null);
   }
   public static Object referenceMacro_GetReferent_38_4(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.contextNodeQuery$ix$f), "QG.templateQuery");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "QG.templateQuery");
   }
   public static Object referenceMacro_GetReferent_38_5(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByMappingLabel("QueriesGenerated", null);
   }
   public static Object referenceMacro_GetReferent_38_6(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "QG.templateQuery");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.contextNodeQuery$ix$f), "QG.templateQuery");
   }
   public static Object referenceMacro_GetReferent_39_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByMappingLabel("QueriesGenerated", null);
@@ -6090,10 +6090,10 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("3615289984453679352", new RTQ(92, "BaseConcept"));
     rtqMethods.put("59720043761737763", new RTQ(93, "baseMappingRuleCondition"));
     rtqMethods.put("108093191211907762", new RTQ(94, "QueriesGenerated"));
-    rtqMethods.put("108093191211916364", new RTQ(95, "QueriesGenerated"));
-    rtqMethods.put("4953227117797503943", new RTQ(96, "weavingContext"));
-    rtqMethods.put("108093191211922008", new RTQ(97, "QueriesGenerated"));
-    rtqMethods.put("4953227117798409783", new RTQ(98, "weavingAnchor"));
+    rtqMethods.put("108093191211922008", new RTQ(95, "QueriesGenerated"));
+    rtqMethods.put("4953227117798409783", new RTQ(96, "weavingAnchor"));
+    rtqMethods.put("108093191211916364", new RTQ(97, "QueriesGenerated"));
+    rtqMethods.put("4953227117797503943", new RTQ(98, "weavingContext"));
     rtqMethods.put("108093191212075742", new RTQ(99, "QueriesGenerated"));
     rtqMethods.put("2779939608925222725", new RTQ(100, "checkPattern"));
     rtqMethods.put("9191117361655049706", new RTQ(101, "child"));

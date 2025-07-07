@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -23,7 +23,7 @@ import java.util.List;
 @MPSLaunch
 public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(SNodeGetChildrenOperation_Test.class, "${mps_home}", "r:8ac706c2-cfd2-4da3-8b63-a741ed2733d4(jetbrains.mps.smodel.test.reflection@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SNodeGetChildrenOperation_Test.class).projectPath(null).modelRef("r:8ac706c2-cfd2-4da3-8b63-a741ed2733d4(jetbrains.mps.smodel.test.reflection@tests)").reopenProject(null).build());
 
   public SNodeGetChildrenOperation_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -91,9 +91,9 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
         int initialSize = ListSequence.fromList(SNodeOperations.getChildren(getAnnotatedNode("rootWithUnspecifiedChild"))).count();
         SNode unspecifiedChild = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fc4L, "jetbrains.mps.lang.smodelTests.structure.GrandChild"));
         SContainmentLink unspecifiedChildRole = TestBody.this.addUnspecifiedChild(getAnnotatedNode("rootWithUnspecifiedChild"), unspecifiedChild);
-        Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getChildren(getAnnotatedNode("rootWithUnspecifiedChild"))).count());
+        Assert.assertEquals(Integer.valueOf(initialSize + 1), Integer.valueOf(ListSequence.fromList(SNodeOperations.getChildren(getAnnotatedNode("rootWithUnspecifiedChild"))).count()));
         Iterable<SNode> unspecifiedChildren = ListSequence.fromList(SNodeOperations.getChildren(getAnnotatedNode("rootWithUnspecifiedChild"))).where((it) -> !(SNodeOperations.getContainingLink(it).isValid()));
-        Assert.assertEquals(1, Sequence.fromIterable(unspecifiedChildren).count());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(Sequence.fromIterable(unspecifiedChildren).count()));
         SNode theChild = Sequence.fromIterable(unspecifiedChildren).first();
         Assert.assertEquals(unspecifiedChildRole, theChild.getContainmentLink());
         Assert.assertEquals(unspecifiedChild, theChild);
@@ -111,7 +111,7 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
       initTestNodes();
       runWithinCommand(() -> {
         List<SNode> singleChild = SNodeOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu);
-        Assert.assertEquals(1, ListSequence.fromList(singleChild).count());
+        Assert.assertEquals(Integer.valueOf(1), Integer.valueOf(ListSequence.fromList(singleChild).count()));
         Assert.assertEquals(getAnnotatedNode("leftChild"), ListSequence.fromList(singleChild).first());
         List<SNode> twins = SNodeOperations.getChildren(getAnnotatedNode("rootWithTwins"), LINKS.child_1_n$IYmu);
         TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getAnnotatedNode("firstTwin"), getAnnotatedNode("secondTwin")}), twins);

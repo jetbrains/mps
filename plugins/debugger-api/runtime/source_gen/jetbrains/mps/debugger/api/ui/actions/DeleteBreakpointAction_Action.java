@@ -19,7 +19,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.debug.api.BreakpointManagerComponent;
 
-@GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/418270182880363898", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
+@GeneratedClass(nodeId = "418270182880363898", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class DeleteBreakpointAction_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Debug.DeleteBreakpoint;
 

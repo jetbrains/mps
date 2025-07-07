@@ -12,16 +12,16 @@ import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Collection;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import jetbrains.mps.vfs.IFile;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -49,22 +49,15 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
   }
 
   @Override
-  @Nullable
-  public SModel getModel(@NotNull SModelId id) {
-    // TODO why is this method empty? Why does it exist? It seems not to be used
-    return null;
-  }
-
-  @Override
   public boolean canCreateModels() {
     return false;
   }
 
   @Override
-  public void load(Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     // This method documents how to leverage mementos. Since the parent class already handles setting up the content directory
     // and source roots, this method could in fact be deleted from this class.
-    super.load(memento);
+    super.load(memento, context);
     // use memento.get(CUSTOM_KEY) to retrieve settings. Don't forget to do the opposite, memento.put(CUSTOM_KEY, value) in save(Memento)
     // please note, this method deals with persisted state, model root is not completely initialized/attached to a model at this moment.
   }

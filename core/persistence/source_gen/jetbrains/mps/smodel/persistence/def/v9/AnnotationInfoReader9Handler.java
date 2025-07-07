@@ -13,7 +13,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXParseException;
 
-@GeneratedClass(node = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)/7167172773708891006", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
+@GeneratedClass(nodeId = "7167172773708891006", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
 public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent>> {
   private ModelElementHandler modelHandler = new ModelElementHandler();
   private RegistryElementHandler registryHandler = new RegistryElementHandler();

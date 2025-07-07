@@ -7,8 +7,6 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
-import testCustomAnalyzer.dataFlow.DataFlowAspectDescriptorImpl;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import testCustomAnalyzer.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
@@ -16,6 +14,8 @@ import testCustomAnalyzer.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import testCustomAnalyzer.structure.ConceptPresentationAspectImpl;
+import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
+import testCustomAnalyzer.dataFlow.DataFlowAspectDescriptorImpl;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.language.LanguageExtensions;
 
@@ -46,9 +46,6 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-    if (aspectClass == DataFlowAspectDescriptor.class) {
-      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
-    }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
@@ -60,6 +57,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == ConceptPresentationAspect.class) {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
+    }
+    if (aspectClass == DataFlowAspectDescriptor.class) {
+      return aspectClass.cast(new DataFlowAspectDescriptorImpl());
     }
     return null;
   }

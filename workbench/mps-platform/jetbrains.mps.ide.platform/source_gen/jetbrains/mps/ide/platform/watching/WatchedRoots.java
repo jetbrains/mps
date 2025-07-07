@@ -19,7 +19,7 @@ import com.intellij.openapi.vfs.impl.local.LocalFileSystemImpl;
  * The thing is our module structure is opaque (arbitrary model roots, data sources, etc, all of them
  * adding fs listeners on some dirs/files), unlike idea's where there is a known structure: modules, source roots.
  */
-@GeneratedClass(node = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/5765100171650883094", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
+@GeneratedClass(nodeId = "5765100171650883094", model = "r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)")
 public class WatchedRoots {
   private static final Logger LOG = Logger.getLogger(WatchedRoots.class);
   private final Map<String, LocalFileSystem.WatchRequest> myRequests = new HashMap<String, LocalFileSystem.WatchRequest>();
@@ -90,8 +90,8 @@ public class WatchedRoots {
           for (int idx = 0; idx < stackTrace.length; idx++) {
             sb.append(String.format("%n  at %s", stackTrace[idx]));
           }
-          if (LOG.isWarningLevel()) {
-            LOG.warning(sb.toString());
+          if (LOG.isDebugLevel()) {
+            LOG.debug(sb.toString());
           }
         } else {
           localFileSystem.removeWatchedRoot(req);

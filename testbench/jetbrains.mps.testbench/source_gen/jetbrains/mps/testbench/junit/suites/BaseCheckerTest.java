@@ -30,7 +30,7 @@ import java.nio.charset.StandardCharsets;
 import jetbrains.mps.errors.item.ModelReportItem;
 import org.jetbrains.mps.openapi.model.SModel;
 
-@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/3567142084943022134", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
+@GeneratedClass(nodeId = "3567142084943022134", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public abstract class BaseCheckerTest extends BaseCheckModulesTest {
 
   public BaseCheckerTest(SModule module) {

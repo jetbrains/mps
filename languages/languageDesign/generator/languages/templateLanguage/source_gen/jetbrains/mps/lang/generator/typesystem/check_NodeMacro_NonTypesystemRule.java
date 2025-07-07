@@ -11,9 +11,16 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_NodeMacro_NonTypesystemRule() {
@@ -24,6 +31,20 @@ public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, "Macro is outside a Template Fragment", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1226346325150", null, errorTarget);
+        }
+      }
+    }
+    if ((SLinkOperations.getTarget(macro, LINKS.mappingLabel$jbOO) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(macro, LINKS.mappingLabel$jbOO), LINKS.targetConcept$HW_R) != null)) {
+      final SAbstractConcept outputNodeConcept;
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(macro), CONCEPTS.ITemplateCall$ab) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getNextSibling(macro), CONCEPTS.ITemplateCall$ab), LINKS.template$6_6), CONCEPTS.TemplateDeclaration$5G)) {
+        outputNodeConcept = SNodeOperations.getConcept(SNodeOperations.getParent(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getNextSibling(macro), CONCEPTS.ITemplateCall$ab), LINKS.template$6_6), CONCEPTS.TemplateDeclaration$5G), LINKS.contentNode$CQ7t), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{})).first()));
+      } else {
+        outputNodeConcept = SNodeOperations.getConcept(SNodeOperations.getParent(macro));
+      }
+      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(outputNodeConcept), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(macro, LINKS.mappingLabel$jbOO), LINKS.targetConcept$HW_R)))))) {
+        {
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.mappingLabel$jbOO);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(macro, "Label target is not compatible with template node", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "8326747581415193016", null, errorTarget);
         }
       }
     }
@@ -40,6 +61,15 @@ public class check_NodeMacro_NonTypesystemRule extends AbstractNonTypesystemRule
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SInterfaceConcept ITemplateCall$ab = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
+    /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
     /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink contentNode$CQ7t = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SReferenceLink mappingLabel$jbOO = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
+    /*package*/ static final SReferenceLink targetConcept$HW_R = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 }

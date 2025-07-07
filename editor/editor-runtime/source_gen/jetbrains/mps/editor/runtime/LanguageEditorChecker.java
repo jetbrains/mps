@@ -13,6 +13,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
+import java.util.List;
+import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
@@ -28,9 +30,7 @@ import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
 import java.util.HashSet;
-import java.util.List;
 import jetbrains.mps.errors.item.QuickFixBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ import jetbrains.mps.nodeEditor.EditorSettings;
  * See {@link jetbrains.mps.errors.item.QuickFixReportItem }<br>
  * See {@code jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer}<br>
  */
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7390982340086719450", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "7390982340086719450", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class LanguageEditorChecker extends BaseEditorChecker implements DisposableEditorChecker {
   private static final Logger LOG = Logger.getLogger(LanguageEditorChecker.class);
   private boolean myMessagesChanged = false;
@@ -84,6 +84,12 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
       return false;
     }
     return true;
+  }
+
+
+  @Override
+  public void processEvents(List<SModelEvent> events) {
+    myErrorComponents.processEvents(events);
   }
 
   @NotNull

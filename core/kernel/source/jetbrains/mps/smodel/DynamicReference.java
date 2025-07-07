@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ import java.util.Set;
  *      to the aforementioned change in superclass
  * XXX what makes it live in [kernel]? Is it only ModelConstraints or anything else? Can I refactor it to keep the class in [smodel]?
  */
-public final class DynamicReference extends SReferenceBase {
+public final class DynamicReference extends jetbrains.mps.smodel.SReference {
   private static final Logger LOG = Logger.getLogger(DynamicReference.class);
 
   private DynamicPtr myData;

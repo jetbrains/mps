@@ -13,7 +13,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.HashSet;
 
-@GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8401916545537277021", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
+@GeneratedClass(nodeId = "8401916545537277021", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class CompositeScope extends Scope {
   private final List<Scope> myScopes;
   public CompositeScope(Scope... scopeChain) {

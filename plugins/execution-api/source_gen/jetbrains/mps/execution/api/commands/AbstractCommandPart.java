@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
-@GeneratedClass(node = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/6868250101935611940", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
+@GeneratedClass(nodeId = "6868250101935611940", model = "r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)")
 public abstract class AbstractCommandPart implements CommandPart {
   private final List<String> myCommand = ListSequence.fromList(new ArrayList<String>());
   public AbstractCommandPart(List<String> list) {

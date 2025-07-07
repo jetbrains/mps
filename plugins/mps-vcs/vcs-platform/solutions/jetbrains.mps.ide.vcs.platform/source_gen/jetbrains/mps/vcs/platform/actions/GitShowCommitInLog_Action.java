@@ -19,7 +19,7 @@ import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4521758580853870668", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "4521758580853870668", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class GitShowCommitInLog_Action extends BaseAction {
   private static final Icon ICON = null;
 

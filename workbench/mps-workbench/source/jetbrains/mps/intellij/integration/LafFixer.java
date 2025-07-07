@@ -74,7 +74,7 @@ final class LafFixer {
     public void appStarted() {
       // Disables the Welcome screen banner and Project settings toolbar action's (gear icon) tooltip promoting new UI
       if (System.getProperty("experimental.ui.used.once") != null) {
-        com.intellij.ide.util.PropertiesComponent.getInstance().setValue(com.intellij.ui.ExperimentalUI.NEW_UI_USED_PROPERTY, true);
+        com.intellij.ide.util.PropertiesComponent.getInstance().setValue("experimental.ui.used.once", true);
       }
     }
     @Override

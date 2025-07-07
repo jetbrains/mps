@@ -24,7 +24,7 @@ import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/6015942601922580796", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
+@GeneratedClass(nodeId = "6015942601922580796", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public class RefactoringProcessor {
   private static final Logger LOG = Logger.getLogger(RefactoringProcessor.class);
 

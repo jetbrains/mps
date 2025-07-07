@@ -11,7 +11,7 @@ import jetbrains.mps.nodeEditor.Highlighter;
 /**
  * Switch on the highlighters for concept methods (overridden/implementing methods)
  */
-@GeneratedClass(node = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/1401464578585771758", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
+@GeneratedClass(nodeId = "1401464578585771758", model = "r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)")
 public final class ConceptInheritanceHighlighter {
   private final MPSProject myProject;
 

@@ -24,6 +24,7 @@ import com.intellij.ui.SideBorder;
 import com.intellij.ui.components.JBLayeredPane;
 import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
@@ -34,10 +35,11 @@ import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +50,6 @@ public class MPSDocumentationPopupUI implements Disposable {
   private final JComponent myToolbarComponent;
   private final ActionButton myCorner;
   private final JComponent myComponent;
-  private boolean myToolbarSelected = false;
   private AbstractPopup myPopup;
   private final Project myProject;
 
@@ -58,21 +59,22 @@ public class MPSDocumentationPopupUI implements Disposable {
     myEditorPane = myUI.myEditorPane;
     myScrollPane = myUI.myScrollPane;
 
-    Disposer.register(this, myUI);
-
     List<AnAction> secondaryActions = new ArrayList<>();
     OpenInToolwindowAction openInToolwindowAction = new OpenInToolwindowAction();
-    ShowToolbarAction showToolbarAction = new ShowToolbarAction("Show Toolbar");
+    ShowToolbarAction showToolbarAction = new ShowToolbarAction();
     secondaryActions.add(showToolbarAction);
     secondaryActions.add(openInToolwindowAction);
+    secondaryActions.addAll(ui.getCommonGearActions());
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
+    toolbarActionGroup.addAll(ui.getNavigateActions());
     for (AnAction secondaryAction : secondaryActions) {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
     }
     DefaultActionGroup gearActions = new DefaultActionGroup();
     gearActions.setPopup(true);
     gearActions.addAll(secondaryActions);
-
+    gearActions.addSeparator();
+    gearActions.addAll(ui.getNavigateActions());
 
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, toolbarActionGroup, true);
     toolbar.setTargetComponent(myEditorPane);
@@ -83,6 +85,7 @@ public class MPSDocumentationPopupUI implements Disposable {
     Presentation presentation = new Presentation();
     presentation.setIcon(AllIcons.Actions.More);
     presentation.putClientProperty(ActionButton.HIDE_DROPDOWN_ICON, true);
+    presentation.setPopupGroup(true);
     myCorner = new ActionButton(gearActions, presentation, ActionPlaces.UNKNOWN, new Dimension(20, 20));
     myCorner.setNoIconsInPopup(true);
 
@@ -104,6 +107,7 @@ public class MPSDocumentationPopupUI implements Disposable {
           }
         }
       }
+
       @Override
       public Dimension getPreferredSize() {
         return myScrollPane.getPreferredSize();
@@ -118,11 +122,37 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     openInToolwindowAction.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_QUICK_JAVADOC), myComponent, this);
 
-    showToolbar(myToolbarSelected);
+    showToolbar(EditorSettings.getInstance().isToolbarSelected());
+
+    ComponentListener editorPaneListener = new ComponentListener() {
+      @Override
+      public void componentResized(ComponentEvent e) {
+        updateSize();
+      }
+
+      @Override
+      public void componentMoved(ComponentEvent e) {
+      }
+
+      @Override
+      public void componentShown(ComponentEvent e) {
+      }
+
+      @Override
+      public void componentHidden(ComponentEvent e) {
+      }
+    };
+    myEditorPane.addComponentListener(editorPaneListener);
+    Disposer.register(this, () -> myEditorPane.removeComponentListener(editorPaneListener));
   }
 
   @Override
   public void dispose() {
+    MPSDocumentationUI ui = myUI;
+    if (ui != null) {
+      Disposer.dispose(ui);
+      myUI = null;
+    }
   }
 
   public JComponent getComponent() {
@@ -165,35 +195,40 @@ public class MPSDocumentationPopupUI implements Disposable {
     }
 
     @Override
+    public boolean isDumbAware() {
+      return false;
+    }
+
+    @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
       assert myPopup != null;
-      myPopup.cancel();
       MPSDocumentationUI ui = myUI;
       myUI = null;
+      myPopup.cancel();
       MPSDocumentationToolWindowManager.getInstance(myProject).showInToolWindow(ui);
     }
   }
 
   private class ShowToolbarAction extends ToggleAction {
-    ShowToolbarAction(String text) {
-      super(text);
+    ShowToolbarAction() {
+      super("Show Toolbar", null, null);
     }
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent e) {
-      return myToolbarSelected;
+      return EditorSettings.getInstance().isToolbarSelected();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
-      myToolbarSelected = state;
+      EditorSettings.getInstance().setToolbarSelected(state);
       showToolbar(state);
     }
 
     @NotNull
     @Override
     public ActionUpdateThread getActionUpdateThread() {
-      return super.getActionUpdateThread();
+      return ActionUpdateThread.EDT;
     }
   }
 

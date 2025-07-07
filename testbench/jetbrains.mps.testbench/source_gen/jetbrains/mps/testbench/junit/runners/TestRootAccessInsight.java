@@ -15,7 +15,7 @@ import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 /**
  * deals with the VfsRootAccess checks in tests
  */
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/7769998405759555641", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "7769998405759555641", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public class TestRootAccessInsight {
   /**
    * here we use parent directories because of *.jar + *-src.jar layout

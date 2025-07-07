@@ -33,7 +33,8 @@ public class ModuleFilesListProjectStrategy extends ProjectStrategyBase {
     // https://youtrack.jetbrains.com/issue/MPS-24778
     VfsRootAccess.allowRootAccess(ApplicationManager.getApplication(), myModuleDirs.toArray(new String[myModuleDirs.size()]));
 
-    IFileSystem localFS = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+    // use plain java.io-backed FS as we don't need anything but raw contents of these module jars, no change tracking or caching
+    IFileSystem localFS = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
 
     ModulesMiner mm = new ModulesMiner(mpsPlatform);
     for (File moduleFile : CollectionSequence.fromCollection(myModuleFiles)) {

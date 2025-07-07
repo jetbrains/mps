@@ -81,7 +81,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "resource_" + _context.getNode().getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return _context.getOriginalCopiedInputNode(_context.getNode()).getReference().toString();
+    return PersistenceFacade.getInstance().asString(_context.getOriginalCopiedInputNode(_context.getNode()).getNodeId());
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
     return _context.getOriginalInputModel().getReference().toString();

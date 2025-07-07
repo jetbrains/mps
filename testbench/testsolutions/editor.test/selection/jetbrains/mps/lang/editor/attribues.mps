@@ -34,9 +34,6 @@
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="4239542196496927193" name="jetbrains.mps.lang.test.structure.MPSActionReference" flags="ng" index="1iFQzN">
         <reference id="4239542196496929559" name="action" index="1iFR8X" />
       </concept>
@@ -85,8 +82,18 @@
       <concept id="3195708693940803614" name="jetbrains.mps.lang.editor.editorTest.structure.SimplePropertyContainer" flags="ng" index="fCmwY">
         <property id="3195708693940803805" name="property" index="fCmzX" />
       </concept>
+      <concept id="2681959640735315772" name="jetbrains.mps.lang.editor.editorTest.structure.DocumentationTestAttribute" flags="ng" index="12N$GD">
+        <property id="6905285260102010167" name="counter" index="3AMSlG" />
+      </concept>
+      <concept id="2681959640733542358" name="jetbrains.mps.lang.editor.editorTest.structure.AttributedNodeWithReference" flags="ng" index="12SPJ3">
+        <reference id="2681959640733542773" name="otherNodes" index="12SPlw" />
+      </concept>
       <concept id="3447504547918837138" name="jetbrains.mps.lang.editor.editorTest.structure.Composition" flags="ng" index="3bUgEc">
         <child id="3447504547918837407" name="children" index="3bUgA1" />
+      </concept>
+      <concept id="2681959640736854299" name="jetbrains.mps.lang.editor.editorTest.structure.HTML5TestAttribute" flags="ng" index="1ddsOe" />
+      <concept id="2681959640736085821" name="jetbrains.mps.lang.editor.editorTest.structure.AttributedNodesCollection" flags="ng" index="1dewGC">
+        <child id="2681959640736086581" name="nodes" index="1dewow" />
       </concept>
       <concept id="3946870033235823874" name="jetbrains.mps.lang.editor.editorTest.structure.SimpleNode" flags="ng" index="1Rothw" />
       <concept id="3946870033235823875" name="jetbrains.mps.lang.editor.editorTest.structure.SimpleNodeHidingAttribute" flags="ng" index="1Rothx" />
@@ -294,9 +301,6 @@
       </node>
     </node>
   </node>
-  <node concept="2XOHcx" id="50UgHNTM2nS">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="2ZnZLV$g_aC">
     <property role="TrG5h" value="RemovingRightTransformForAttributedProperty" />
     <property role="3YCmrE" value="Adding Right-transform for property cell and then removing it again for the node which concept has editor representing only this property cell and property attribute is attached to the node" />
@@ -445,6 +449,69 @@
             <property role="LIFWd" value="Constant_p2ghwc_a" />
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="hYBaULN499">
+    <property role="TrG5h" value="NestedAttributesUpdate" />
+    <property role="3YCmrE" value="Assert correct set of dependencies in atrributed cell tree. If a node changes its attributes and attributes of these attributes must be recreated" />
+    <node concept="1qefOq" id="hYBaULN4oh" role="25YQCW">
+      <node concept="1dewGC" id="hYBaULN4og" role="1qenE9">
+        <node concept="12SPJ3" id="hYBaULN4rt" role="1dewow">
+          <property role="TrG5h" value="first" />
+          <ref role="12SPlw" node="hYBaULN4qu" resolve="second" />
+          <node concept="12N$GD" id="hYBaULNI4V" role="lGtFl">
+            <property role="3AMSlG" value="0" />
+            <property role="TrG5h" value="Documentation 0" />
+            <node concept="1ddsOe" id="hYBaULNIbK" role="lGtFl" />
+          </node>
+        </node>
+        <node concept="12SPJ3" id="hYBaULN4qu" role="1dewow">
+          <property role="TrG5h" value="second" />
+          <node concept="12N$GD" id="hYBaULNI3G" role="lGtFl">
+            <property role="3AMSlG" value="0" />
+            <property role="TrG5h" value="Documentation 0" />
+          </node>
+          <node concept="LIFWc" id="hYBaULQCY0" role="lGtFl">
+            <property role="LIFWa" value="0" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="0" />
+            <property role="p6zMs" value="0" />
+            <property role="LIFWd" value="Constant_snw2mg_a0a" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="hYBaULQCLh" role="25YQFr">
+      <node concept="1dewGC" id="hYBaULQCLi" role="1qenE9">
+        <node concept="12SPJ3" id="hYBaULQCLj" role="1dewow">
+          <property role="TrG5h" value="first" />
+          <ref role="12SPlw" node="hYBaULQCLm" resolve="second change" />
+          <node concept="12N$GD" id="hYBaULQCLk" role="lGtFl">
+            <property role="3AMSlG" value="0" />
+            <property role="TrG5h" value="Documentation 0" />
+            <node concept="1ddsOe" id="hYBaULQCLl" role="lGtFl" />
+          </node>
+        </node>
+        <node concept="12SPJ3" id="hYBaULQCLm" role="1dewow">
+          <property role="TrG5h" value="second change" />
+          <node concept="12N$GD" id="hYBaULQCLn" role="lGtFl">
+            <property role="3AMSlG" value="1" />
+            <property role="TrG5h" value="Documentation 0" />
+          </node>
+          <node concept="LIFWc" id="hYBaULQDx5" role="lGtFl">
+            <property role="LIFWa" value="0" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="0" />
+            <property role="p6zMs" value="0" />
+            <property role="LIFWd" value="Constant_snw2mg_a0a" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="hYBaULQD5C" role="LjaKd">
+      <node concept="1MFPAf" id="hYBaULQD5B" role="3cqZAp">
+        <ref role="1MFYO6" to="kqxz:hYBaULN4LK" resolve="TriggerNodeChange" />
       </node>
     </node>
   </node>

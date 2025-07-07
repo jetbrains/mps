@@ -22,7 +22,7 @@ import jetbrains.mps.make.IMakeNotificationListener;
  * Simplistic make service tailored for MPS own tests
  * XXX pretty much identical to BuildMakeService, do we care to keep both?
  */
-@GeneratedClass(node = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)/6214179127578263953", model = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)")
+@GeneratedClass(nodeId = "6214179127578263953", model = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)")
 public class TestMakeService extends AbstractMakeService implements IMakeService {
   public TestMakeService() {
   }

@@ -182,10 +182,6 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
 
                 @Override
                 public void navigate(boolean requestFocus) {
-                  MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurableFix(perRootModel, mpsProject);
-                  final SingleConfigurableEditor dialog = new SingleConfigurableEditor(myProject, configurable);
-                  configurable.setParentForCallBack(dialog);
-                  ApplicationManager.getApplication().invokeLater(dialog::show, ModalityState.current());
                 }
               });
             }

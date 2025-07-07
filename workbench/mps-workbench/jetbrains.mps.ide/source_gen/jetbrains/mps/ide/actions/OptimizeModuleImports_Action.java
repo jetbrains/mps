@@ -7,12 +7,12 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.progress.Task;
@@ -28,7 +28,7 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.ui.Messages;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236349476737", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236349476737", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class OptimizeModuleImports_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -41,6 +41,21 @@ public class OptimizeModuleImports_Action extends BaseAction {
   @Override
   public boolean isDumbAware() {
     return true;
+  }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    boolean writableModuleExists = false;
+    for (SModule module : event.getData(MPSCommonDataKeys.MODULES)) {
+      if (module.isReadOnly()) {
+        continue;
+      }
+      writableModuleExists = true;
+    }
+    return writableModuleExists;
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -84,6 +99,9 @@ public class OptimizeModuleImports_Action extends BaseAction {
           });
           final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo, event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelsAutoImportsManager.class));
           for (final SModule module : event.getData(MPSCommonDataKeys.MODULES)) {
+            if (module.isReadOnly()) {
+              continue;
+            }
             monitor.step("Optimizing imports of the " + module);
             ApplicationManager.getApplication().invokeAndWait(() -> repo.getModelAccess().executeCommand(() -> {
               if (module instanceof Solution) {

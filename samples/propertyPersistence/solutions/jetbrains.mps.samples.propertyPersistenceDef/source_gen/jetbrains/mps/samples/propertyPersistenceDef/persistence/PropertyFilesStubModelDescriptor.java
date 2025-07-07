@@ -43,24 +43,29 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   private static final Logger LOG = Logger.getLogger(PropertyFilesStubModelDescriptor.class);
   private static final SLanguage PROPERTY_DEF_LANGUAGE = MetaAdapterFactory.getLanguage(0x3379a6ba4e584d2dL, 0xbe6ae17044723bd3L, "jetbrains.mps.samples.PropertyDefinition");
   private static final int PROPERTY_DEF_LANGUAGE_VERSION = 0;
-  private Map<String, SNode> myRootsByFile = MapSequence.fromMap(new HashMap<>());
-  private Map<SNodeId, SNode> myRootsById = MapSequence.fromMap(new HashMap<SNodeId, SNode>());
+  private final Map<String, SNode> myRootsByFile = MapSequence.fromMap(new HashMap<>());
+  private final Map<SNodeId, SNode> myRootsById = MapSequence.fromMap(new HashMap<SNodeId, SNode>());
 
   public PropertyFilesStubModelDescriptor(@NotNull SModelReference modelReference, @NotNull DataSource ds) {
     super(modelReference, ds);
+  }
+
+  @Override
+  public boolean isReadOnly() {
+    return true;
   }
 
   @NotNull
   @Override
   protected ModelLoadResult<SModel> createModel() {
     try {
-      return new ModelLoadResult(readModel(), ModelLoadingState.FULLY_LOADED);
+      return new ModelLoadResult<>(readModel(), ModelLoadingState.FULLY_LOADED);
     } catch (final ModelLoadException e) {
       if (LOG.isWarningLevel()) {
         LOG.warning(e.getMessage(), e);
       }
       DefaultSModel.InvalidDefaultSModel invalidModel = new DefaultSModel.InvalidDefaultSModel(this.getReference(), new ModelReadException("Cannot read model", e));
-      return new ModelLoadResult(invalidModel, ModelLoadingState.FULLY_LOADED);
+      return new ModelLoadResult<>(invalidModel, ModelLoadingState.FULLY_LOADED);
       // TODO should not be FULLY_LOADED
     }
   }
@@ -90,7 +95,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
       }
 
       try {
-        SNode propertyFileRootNode = createPropertyCollection_fmf8ck_a0a0f0b0l(streamName);
+        SNode propertyFileRootNode = createPropertyCollection_fmf8ck_a0a0f0b0n(streamName);
 
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
         String line = streamReader.readLine();
@@ -98,12 +103,12 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
           int separatorIndex = line.indexOf("=");
           if (separatorIndex < 1 || separatorIndex > line.length() - 1) {
             if (LOG.isInfoLevel()) {
-              LOG.info(String.format("No key=value separator found on this line: %d", line));
+              LOG.info(String.format("No key=value separator found on this line: %s", line));
             }
           } else {
-            String key = trim_fmf8ck_a0a0a0b0e0f0b0l(line.substring(0, separatorIndex));
-            String value = trim_fmf8ck_a0a1a0b0e0f0b0l(line.substring(separatorIndex + 1, line.length()));
-            SNode currentProperty = createProperty_fmf8ck_a0c0a1a4a5a1a11(key, value);
+            String key = trim_fmf8ck_a0a0a0b0e0f0b0n(line.substring(0, separatorIndex));
+            String value = trim_fmf8ck_a0a1a0b0e0f0b0n(line.substring(separatorIndex + 1));
+            SNode currentProperty = createProperty_fmf8ck_a0c0a1a4a5a1a31(key, value);
             propertyFileRootNode.addChild(containmentOfProperties, currentProperty);
           }
           line = streamReader.readLine();
@@ -136,21 +141,21 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
     return (MultiStreamDataSource) super.getSource();
   }
 
-  private static SNode createPropertyCollection_fmf8ck_a0a0f0b0l(String p0) {
+  private static SNode createPropertyCollection_fmf8ck_a0a0f0b0n(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PropertyCollection$kJ);
     n0.setProperty(PROPS.name$MnvL, p0);
     return n0.getResult();
   }
-  private static SNode createProperty_fmf8ck_a0c0a1a4a5a1a11(String p0, String p1) {
+  private static SNode createProperty_fmf8ck_a0c0a1a4a5a1a31(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Property$mc);
     n0.setProperty(PROPS.name$MnvL, p0);
     n0.setProperty(PROPS.value$xdym, p1);
     return n0.getResult();
   }
-  public static String trim_fmf8ck_a0a0a0b0e0f0b0l(String str) {
+  public static String trim_fmf8ck_a0a0a0b0e0f0b0n(String str) {
     return (str == null ? null : str.trim());
   }
-  public static String trim_fmf8ck_a0a1a0b0e0f0b0l(String str) {
+  public static String trim_fmf8ck_a0a1a0b0e0f0b0n(String str) {
     return (str == null ? null : str.trim());
   }
 

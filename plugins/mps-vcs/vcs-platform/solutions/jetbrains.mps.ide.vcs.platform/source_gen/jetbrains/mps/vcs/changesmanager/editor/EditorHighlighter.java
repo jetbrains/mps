@@ -35,7 +35,7 @@ import jetbrains.mps.nodeEditor.NodeHighlightManager;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 
-@GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/6402272430682173534", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
+@GeneratedClass(nodeId = "6402272430682173534", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
 public class EditorHighlighter implements EditorMessageOwner {
   private EditorComponent myEditorComponent;
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangesMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());

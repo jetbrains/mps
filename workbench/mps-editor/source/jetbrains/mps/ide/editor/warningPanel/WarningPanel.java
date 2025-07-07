@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,10 @@
  */
 package jetbrains.mps.ide.editor.warningPanel;
 
-import com.intellij.openapi.editor.colors.EditorColors;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.ui.HyperlinkLabel;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI.CurrentTheme.Editor.Notification;
 import com.intellij.xml.util.XmlStringUtil;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,7 +26,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 public final class WarningPanel extends JPanel {
   private final String myText;
@@ -44,26 +37,14 @@ public final class WarningPanel extends JPanel {
 
   // FWIW, 'provider' here is mere identity object, to tell warnings from different origins.
   public WarningPanel(@NotNull EditorWarningsProvider provider, @NotNull String text, @Nullable String linkText, @Nullable final Runnable handler) {
+    super(new BorderLayout());
     myProvider = provider;
     myText = text;
-    setLayout(new BorderLayout());
 
-    final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
-    Color bg = wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
-    Color fg = wpStyle.get(StyleAttributes.TEXT_COLOR);
-
-    EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
     JBInsets jbInsets = Notification.borderInsetsWithoutStatus();
     setBorder(BorderFactory.createEmptyBorder(jbInsets.top, jbInsets.left, jbInsets.bottom, jbInsets.right));
 
     final JLabel label = new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>");
-    if (bg!=null && fg!=null) {
-      setBackground(bg);
-      label.setForeground(fg);
-    } else {
-      setBackground(colorsScheme.getColor(EditorColors.NOTIFICATION_BACKGROUND));
-      label.setForeground(colorsScheme.getDefaultForeground());
-    }
     add(label, BorderLayout.CENTER);
 
     if (linkText != null && handler != null) {

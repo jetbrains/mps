@@ -10,7 +10,7 @@ import org.junit.runner.notification.RunNotifier;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.TestMode;
 
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/6944172844332338536", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "6944172844332338536", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public abstract class BaseMpsRunner extends ParentRunner<Runner> {
   public BaseMpsRunner(Class<?> aClass) throws InitializationError {
     super(aClass);

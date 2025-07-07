@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,10 @@ import gnu.trove.THashMap;
 
 import javax.swing.KeyStroke;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * The basic logic is to replace the default shortcuts with MPS provided during #init, and to revert the changes on #dispose
@@ -113,38 +111,6 @@ public abstract class BaseKeymapChanges {
   }
 
   /**
-   * @see ShortcutWrapper
-   */
-  @Deprecated(since = "2022.1", forRemoval = true)
-  protected final void addSimpleShortcut(String id, ShortcutWrapper... s) {
-    for (ShortcutWrapper w : s) {
-      mySimpleShortcuts.add(unwrap(id, w));
-    }
-  }
-
-  private static SW unwrap(String id, ShortcutWrapper w) {
-    // Unlike ActionManagerImpl#processRemoveAndReplace(), we pick either remove or replace-all (it's enum in MPS, after all)
-    // Let alone there's no reason to have both remove and replace-all
-    if (w.myRemove) {
-      return new Remove(id, w.myShortcut);
-    } else if (w.myReplaceAll) {
-      return new Replace(id, w.myShortcut);
-    } else {
-      return new Add(id, w.myShortcut);
-    }
-  }
-
-  /**
-   * @deprecated keep for a year for generated/compiled code to work, then remove. use #add() instead
-   */
-  @Deprecated(since = "2022.1", forRemoval = true)
-  protected final void addSimpleShortcut(String id, Shortcut... s) {
-    for (Shortcut shortcut : s) {
-      mySimpleShortcuts.add(new Add(id, shortcut));
-    }
-  }
-
-  /**
    * @since 2022.1
    */
   protected final void add(String id, String keystroke) {
@@ -195,28 +161,6 @@ public abstract class BaseKeymapChanges {
       // I see no reason to support more than 1 custom handling per action, per plugin
       String m = "Duplicated custom keymap change handler %s for action %s (was: %s)";
       throw new IllegalStateException(String.format(m, userCode.getClass().getName(), id, oldValue.getClass().getName()));
-    }
-  }
-
-  /**
-   * @deprecated use {@link #customTemplate(String, CustomChange)} instead
-   */
-  @Deprecated(since = "2022.1", forRemoval = true)
-  protected final void addComplexShortcut(String id, ComplexShortcut... s) {
-    ArrayList<ComplexShortcut> customProcessing = new ArrayList<>();
-    for (ComplexShortcut cs : s) {
-      if (cs.getClass() == BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut.class) {
-        // shortcut to add/remove/replace; consume by redirecting to a new code branch of myShortcutTemplates.
-        for (ShortcutWrapper sw : ((BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut) cs).myShortcutWrappers) {
-          myShortcutTemplates.add(unwrap(id, sw));
-        }
-      } else if (cs.getClass() == BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper.class) {
-        BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper csw = (BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper) cs;
-        customTemplate(id, new LegacyBridge(csw.myComplexShortcut, csw.myRemove, csw.myReplaceAll));
-      } else {
-        // user's subclcass of ComplexShortcut
-        customTemplate(id, new LegacyBridge(cs, false, false));
-      }
     }
   }
 
@@ -295,92 +239,6 @@ public abstract class BaseKeymapChanges {
      * custom keymap change code goes into this method
      */
     protected abstract void fill();
-  }
-
-  private static class LegacyBridge extends CustomChange {
-    private final ComplexShortcut myOldImpl;
-
-    LegacyBridge(ComplexShortcut oldImpl, boolean remove, boolean replace) {
-      super(remove, replace);
-      myOldImpl = oldImpl;
-    }
-
-    @Override
-    protected void fill() {
-      List<Shortcut> shortcuts = myOldImpl.getShortcutsFor(getParameters());
-      shortcuts.forEach(this::__doRegister);
-    }
-  }
-
-  /**
-   * @deprecated same applies as to the rest of the class deprecated stuff
-   */
-  @Deprecated(since = "2022.1", forRemoval = true)
-  protected static abstract class ComplexShortcut {
-    public abstract List<Shortcut> getShortcutsFor(Object... params);
-
-    /**
-     * @deprecated same applies as to the rest of the class deprecated stuff
-     */
-    @Deprecated(since = "2022.1", forRemoval = true)
-    public static final class ParameterizedSimpleShortcut extends ComplexShortcut {
-      /*package*/ final List<ShortcutWrapper> myShortcutWrappers;
-
-      public ParameterizedSimpleShortcut(Shortcut... shortcuts) {
-        myShortcutWrappers = Arrays.stream(shortcuts).map(ShortcutWrapper::new).collect(Collectors.toList());
-      }
-
-      public ParameterizedSimpleShortcut(ShortcutWrapper... shortcutWrappers) {
-        myShortcutWrappers = Arrays.asList(shortcutWrappers);
-      }
-
-      @Override
-      public List<Shortcut> getShortcutsFor(Object... params) {
-        throw new UnsupportedOperationException();
-      }
-    }
-
-    /**
-     * @deprecated same applies as to the rest of the class deprecated stuff
-     */
-    @Deprecated(since = "2022.1", forRemoval = true)
-    public static final class ComplexShortcutWrapper extends ComplexShortcut {
-      /*package*/ final ComplexShortcut myComplexShortcut;
-      /*package*/ final boolean myRemove;
-      /*package*/ final boolean myReplaceAll;
-
-      public ComplexShortcutWrapper(ComplexShortcut complexShortcut, boolean remove, boolean replaceAll) {
-        myComplexShortcut = complexShortcut;
-        myRemove = remove;
-        myReplaceAll = replaceAll;
-      }
-
-      @Override
-      public List<Shortcut> getShortcutsFor(Object... params) {
-        throw new UnsupportedOperationException();
-      }
-    }
-  }
-
-  /**
-   * @deprecated way too verbose, and makes me feel OOP is JAA for MPS team.
-   *             Shall keep for a full release year to make sure old compiled code still works
-   */
-  @Deprecated(since = "2022.1", forRemoval = true)
-  protected static class ShortcutWrapper {
-    public final Shortcut myShortcut;
-    public final boolean myRemove;
-    public final boolean myReplaceAll;
-
-    public ShortcutWrapper(Shortcut shortcut) {
-      this(shortcut, false, false);
-    }
-
-    public ShortcutWrapper(Shortcut shortcut, boolean remove, boolean replaceAll) {
-      myShortcut = shortcut;
-      myRemove = remove;
-      myReplaceAll = replaceAll;
-    }
   }
 
   private static abstract class SW {

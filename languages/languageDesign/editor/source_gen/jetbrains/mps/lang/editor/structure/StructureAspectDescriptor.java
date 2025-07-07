@@ -2720,15 +2720,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForCellModel_TransactionalProperty() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor", "CellModel_TransactionalProperty", 0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel
-    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL);
+    // extends: jetbrains.mps.lang.editor.structure.CellModel_WithRole
+    b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x612410e32cf46136L);
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1216380990741");
     b.version(3);
     b.stub(0x707876b4d5d2538eL);
     b.property("runInCommand", 0x11ef3250f01L).type(PrimitiveTypeId.BOOLEAN).origin("1232439938817").done();
-    b.property("allowEmptyText", 0x728347156800c331L).type(PrimitiveTypeId.BOOLEAN).origin("8251517099537646385").done();
-    b.associate("property", 0x11b35f87187L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL).optional(false).origin("1216381219207").done();
+    b.property("allowEmptyTextOld", 0x728347156800c331L).type(PrimitiveTypeId.BOOLEAN).origin("8251517099537646385").done();
+    b.associate("propertyOld", 0x11b35f87187L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL).optional(true).origin("1216381219207").done();
+    b.associate("propertyDeclaration", 0x4bb6ad00ff1d1839L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL).optional(false).origin("5455738218397636665").specialize(0x10964446123L, 0x10973779681L).done();
     b.aggregate("handlerBlock", 0x11b35f85498L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f5eefdL).optional(false).ordered(true).multiple(false).origin("1216381211800").done();
     b.kind(ConceptKind.IMPLEMENTATION_WITH_STUB, StaticScope.GLOBAL);
     return b.create();
@@ -2881,6 +2882,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
+    b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0eaeL);
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1071666914219");
     b.version(3);
     b.aggregate("inspectedCellModel", 0xfb06ef2f06L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L).optional(true).ordered(true).multiple(false).origin("1078153129734").done();
@@ -3272,6 +3274,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
+    b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0eaeL);
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1078938745671");
     b.version(3);
     b.aggregate("overridenEditorComponent", 0x619d955714550434L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x619d95571435dfe8L).optional(true).ordered(true).multiple(false).origin("7033942394258392116").done();

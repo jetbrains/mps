@@ -22,8 +22,10 @@ import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsCon
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5InprocessTestsContributor;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutionListener;
 import com.intellij.execution.process.ProcessHandler;
 import java.util.concurrent.Future;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
@@ -34,7 +36,6 @@ import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecuto
 import com.intellij.util.WaitFor;
 import org.jetbrains.annotations.Nullable;
 import java.io.OutputStream;
-import com.intellij.execution.process.ProcessOutputTypes;
 
 public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private static final Logger LOG = Logger.getLogger(JUnitInProcessRunStarter.class);
@@ -42,9 +43,9 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private final TestExecutor myTestsExecutor;
   private final FakeProcess myFakeProcess = new FakeProcess();
   private final TestInProcessRunState myTestRunState;
-
-  public JUnitInProcessRunStarter(@NotNull Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, @NotNull Iterable<ITestNodeWrapper> testNodeWrappers) {
-
+  private final JUnitTests_Configuration myRun_configuration;
+  public JUnitInProcessRunStarter(@NotNull final Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, @NotNull Iterable<ITestNodeWrapper> testNodeWrappers) {
+    myRun_configuration = runConfiguration;
     List<ITestNodeWrapper> legacyTests = Sequence.fromIterable(testNodeWrappers).where((it) -> it.useCompatibilityMode()).toList();
     List<ITestNodeWrapper> jupiterTests = Sequence.fromIterable(testNodeWrappers).where((it) -> !(it.useCompatibilityMode())).toList();
     if (ListSequence.fromList(legacyTests).isNotEmpty() && ListSequence.fromList(jupiterTests).isNotEmpty()) {
@@ -58,13 +59,18 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
 
         @Override
         protected void executeSafe() throws Throwable {
-          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, inProcessEnv);
+          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, inProcessEnv).withSystemProperty(SystemProperties.PROJECT_PATH, ((MPSProject) mpsProject).getProject().getPresentableUrl());
           TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
           try {
             super.executeSafe();
           } finally {
             TestPlatform.getInstance().closeSession(testSession);
           }
+        }
+
+        @Override
+        protected DefaultTestExecutionListener createTestExecutionListener() {
+          return super.createTestExecutionListener();
         }
       };
     }
@@ -105,7 +111,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
           }
         }
         // once test execution is over, the runnable at thread pool get control, myFakeProcess receives exit code and is destroyed.
-        // Eventually, BaseOSProcessHandler dispaches notification that the process has been terminated.
+        // Eventually, BaseOSProcessHandler dispatches notification that the process has been terminated.
 
         // XXX Perhaps, we shall leave implementation of this method to BaseOSProcessHandler (which does Process.destroy()), and handle process destroy request instead?
       }
@@ -213,7 +219,10 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     public void startNotify() {
       super.startNotify();
       String terminateMessage = "Only one test instance is allowed to run in process.\n" + "To run in the outer process change the corresponding property in the junit run configuration.\n" + "Process finished with exit code " + -1 + ".\n";
-      notifyTextAvailable(terminateMessage, ProcessOutputTypes.STDERR);
+      if (LOG.isWarningLevel()) {
+        LOG.warning(terminateMessage);
+      }
+      ExecutionUtil.handleExecutionError(myTestRunState.getProject(), ToolWindowId.RUN, myRun_configuration.getName(), new IllegalStateException("Only one test instance is allowed to run in process"), terminateMessage, null);
       this.notifyProcessTerminated(-1);
     }
   }

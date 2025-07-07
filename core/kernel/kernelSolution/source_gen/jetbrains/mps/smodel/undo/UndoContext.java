@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
  * is in use behind the scene) is cases when default logic doesn't detect proper nodes (i.e. those 
  * that correspond to an IDE's file).
  */
-@GeneratedClass(node = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873669826", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
+@GeneratedClass(nodeId = "63618339873669826", model = "r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)")
 public interface UndoContext {
 
   Iterable<SNode> getVirtualFileNodes(SNodeUndoableAction action);

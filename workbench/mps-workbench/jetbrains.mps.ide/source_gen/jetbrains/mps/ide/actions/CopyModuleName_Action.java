@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236184251962", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1236184251962", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CopyModuleName_Action extends BaseAction {
   private static final Icon ICON = null;
 

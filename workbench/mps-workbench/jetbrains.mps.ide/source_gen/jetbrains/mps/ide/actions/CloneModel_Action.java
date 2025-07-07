@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.project.MPSProject;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215874656794", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(nodeId = "1215874656794", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CloneModel_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -48,7 +48,7 @@ public class CloneModel_Action extends BaseAction {
     }
     SModule module = ((SModel) MapSequence.fromMap(_params).get("model")).getModule();
     boolean isAspectModel = module instanceof Language && LanguageAspectSupport.isAspectModel(((SModel) MapSequence.fromMap(_params).get("model")));
-    presentation.setEnabledAndVisible(!(isAspectModel));
+    presentation.setEnabledAndVisible(!(isAspectModel) && !(module.isReadOnly()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {

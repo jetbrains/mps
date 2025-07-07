@@ -2,7 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports />
@@ -19,9 +19,6 @@
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
-      </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
@@ -365,13 +362,6 @@
       <property role="TrG5h" value="side" />
       <property role="IQ2nx" value="779128492853699361" />
       <ref role="AX2Wp" node="3Ftr4R6BF32" resolve="SideTransformSide" />
-      <node concept="3l_iC" id="3Ftr4R6BH0n" role="lGtFl">
-        <node concept="1TJgyi" id="Fg1jLUVycx" role="3l_iP">
-          <property role="TrG5h" value="side" />
-          <property role="IQ2nx" value="779128492853699361" />
-          <ref role="AX2Wp" node="3Ftr4R6BF32" resolve="SideTransformSide" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="Fg1jLUWrAV" role="1TKVEl">
       <property role="TrG5h" value="cellId" />
@@ -423,6 +413,9 @@
     </node>
     <node concept="PrWs8" id="1z_FduHlNUv" role="PzmwI">
       <ref role="PrY4T" node="2WmWrdnSpX3" resolve="ISuppressErrors" />
+    </node>
+    <node concept="PrWs8" id="7tOh0Kn0S3M" role="PzmwI">
+      <ref role="PrY4T" node="7tOh0Kn0S3L" resolve="ICommentedOutFromScope" />
     </node>
   </node>
   <node concept="1TIwiD" id="BpxLfMhSxq">
@@ -643,6 +636,10 @@
     <node concept="PrWs8" id="2se02g_X34W" role="PrDN$">
       <ref role="PrY4T" node="3xhyJYa45Zm" resolve="IPlaceholderContent" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="7tOh0Kn0S3L">
+    <property role="EcuMT" value="8607579606528262385" />
+    <property role="TrG5h" value="ICommentedOutFromScope" />
   </node>
 </model>
 

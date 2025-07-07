@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import jetbrains.mps.lang.test.runtime.ExecuteCommandExtension;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseMigrationTestBody;
@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class EncapsulateModelNodeId extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(EncapsulateModelNodeId.class, "${mps_home}", "r:c0ca7d69-6a8e-4207-889d-76c844df55e0(jetbrains.mps.lang.quotation.test.migrationTest@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EncapsulateModelNodeId.class).projectPath(null).modelRef("r:c0ca7d69-6a8e-4207-889d-76c844df55e0(jetbrains.mps.lang.quotation.test.migrationTest@tests)").reopenProject(null).build());
 
   @RegisterExtension
   private ExecuteCommandExtension myCommandExtension = new ExecuteCommandExtension(this);

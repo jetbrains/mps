@@ -4,16 +4,11 @@
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
-    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow" version="1" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <engage id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -233,7 +228,6 @@
         <child id="1168278589236" name="sourceNodesQuery" index="2P8S$" />
       </concept>
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
-        <property id="1184950341882" name="topPriorityGroup" index="3$yP7D" />
         <child id="1219952894531" name="dropRootRule" index="aQYdv" />
         <child id="1200911492601" name="mappingLabel" index="2rTMjI" />
         <child id="1167328349397" name="reductionMappingRule" index="3acgRq" />
@@ -283,7 +277,6 @@
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
-      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="ln" index="1pdMLZ" />
       <concept id="982871510068000147" name="jetbrains.mps.lang.generator.structure.TemplateSwitchMacro" flags="lg" index="1sPUBX">
         <child id="982871510068000158" name="sourceNodeQuery" index="1sPUBK" />
       </concept>
@@ -428,7 +421,6 @@
   </registry>
   <node concept="bUwia" id="7XrupC0L9ZR">
     <property role="TrG5h" value="main" />
-    <property role="3$yP7D" value="true" />
     <node concept="aNPBN" id="7fxZEB1w48A" role="aQYdv">
       <ref role="aOQi4" to="bj1v:7fxZEB1sFyL" resolve="CustomInstructionsContainer" />
     </node>
@@ -1404,7 +1396,7 @@
           <node concept="3uibUv" id="7XrupC0LiKl" role="1tU5fm">
             <ref role="3uigEE" to="8qxk:3yaa4ph8tzc" resolve="Program" />
           </node>
-          <node concept="1pdMLZ" id="3QIZCvDvXVI" role="lGtFl">
+          <node concept="2ZBi8u" id="6MbZi$kNh26" role="lGtFl">
             <ref role="2rW$FS" node="3QIZCvDv_wO" resolve="funcParam" />
           </node>
         </node>
@@ -1435,7 +1427,7 @@
               </node>
             </node>
           </node>
-          <node concept="1pdMLZ" id="3QIZCvDv_wQ" role="lGtFl">
+          <node concept="2ZBi8u" id="6MbZi$kNhtL" role="lGtFl">
             <ref role="2rW$FS" node="3QIZCvDv_wO" resolve="funcParam" />
           </node>
         </node>
@@ -1908,6 +1900,7 @@
         </node>
       </node>
       <node concept="1WS0z7" id="7wwiZxTDQ18" role="lGtFl">
+        <ref role="2rW$FS" node="5S9yM2ugwUI" resolve="field" />
         <node concept="3JmXsc" id="7wwiZxTDQ19" role="3Jn$fo">
           <node concept="3clFbS" id="7wwiZxTDQ1a" role="2VODD2">
             <node concept="3clFbF" id="7wwiZxTDQ1b" role="3cqZAp">
@@ -1941,9 +1934,6 @@
             </node>
           </node>
         </node>
-      </node>
-      <node concept="1pdMLZ" id="5S9yM2ugwUH" role="lGtFl">
-        <ref role="2rW$FS" node="5S9yM2ugwUI" resolve="field" />
       </node>
     </node>
     <node concept="312cEg" id="5S9yM2ugu_3" role="jymVt">

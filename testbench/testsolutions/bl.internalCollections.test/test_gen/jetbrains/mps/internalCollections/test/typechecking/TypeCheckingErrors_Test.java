@@ -6,7 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -17,7 +17,7 @@ import jetbrains.mps.checkers.SuppressErrorsChecker;
 @MPSLaunch
 public class TypeCheckingErrors_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(TypeCheckingErrors_Test.class, "${mps_home}", "r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypeCheckingErrors_Test.class).projectPath(null).modelRef("r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)").reopenProject(null).build());
 
   public TypeCheckingErrors_Test() {
     super(ourParametersCacheExtension.getParametersCache());
@@ -54,26 +54,26 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
     public void test_mps18720() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("mps18720"), null)).isEmpty();
-        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("mps18720_2"), null)).isEmpty();
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("mps18720"), myProject.getPlatform())).isEmpty();
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("mps18720_2"), myProject.getPlatform())).isEmpty();
       });
     }
     public void test_varar_raw() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("varar_raw"), null)).all((it) -> SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it));
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("varar_raw"), myProject.getPlatform())).all((it) -> SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it));
       });
     }
     public void test_lbt_subtypeof_param() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("lbt_subtype"), null)).isEmpty();
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("lbt_subtype"), myProject.getPlatform())).isEmpty();
       });
     }
     public void test_meet_with_variable_excluded_from_lcs() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("meet_var"), null)).isEmpty();
+        assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getAnnotatedNode("meet_var"), myProject.getPlatform())).isEmpty();
       });
     }
 

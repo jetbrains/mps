@@ -7,7 +7,7 @@ import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import jetbrains.mps.logging.Logger;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import jetbrains.mps.lang.test.runtime.TestParametersCacheExtension;
-import jetbrains.mps.lang.test.runtime.TestParametersCache;
+import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -35,7 +35,7 @@ import com.intellij.execution.ExecutionException;
 public class JUnitInProcess_Test extends BaseTransformationTest {
   private static final Logger LOG = Logger.getLogger(JUnitInProcess_Test.class);
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCache(JUnitInProcess_Test.class, "${mps_home}", "r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)", false));
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JUnitInProcess_Test.class).projectPath(null).modelRef("r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)").reopenProject(null).build());
 
   public JUnitInProcess_Test() {
     super(ourParametersCacheExtension.getParametersCache());

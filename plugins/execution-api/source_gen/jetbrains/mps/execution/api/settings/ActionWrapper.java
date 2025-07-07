@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
-@GeneratedClass(node = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)/8413546332587496379", model = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)")
+@GeneratedClass(nodeId = "8413546332587496379", model = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)")
 public class ActionWrapper extends AbstractAction {
   @NotNull
   private final Action myAction;

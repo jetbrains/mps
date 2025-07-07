@@ -25,7 +25,7 @@ public class EnumerationDescriptor_Level extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember_ALL_0 = new EnumerationDescriptor.MemberDescriptor("ALL", "ALL", 0x486f8079df367401L, "r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/4241665505353448255");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x486f8079df3673c3L, 0x486f8079df3673c4L, 0x486f8079df3673c5L, 0x486f8079df3673caL, 0x486f8079df3673d1L, 0x486f8079df3673daL, 0x486f8079df3673e5L, 0x486f8079df3673f2L, 0x486f8079df367401L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_OFF_0, myMember_FATAL_0, myMember_ERROR_0, myMember_WARN_0, myMember_INFO_0, myMember_DEBUG_0, myMember_TRACE_0, myMember_ALL_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_OFF_0, myMember_FATAL_0, myMember_ERROR_0, myMember_WARN_0, myMember_INFO_0, myMember_DEBUG_0, myMember_TRACE_0, myMember_ALL_0);
 
   @Nullable
   @Override

@@ -41,7 +41,7 @@ import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.internal.make.runtime.util.StaleFilesCollector;
 import jetbrains.mps.smodel.resources.DResource;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -146,7 +146,7 @@ public class Binaries_Facet extends IFacet.Stub {
                 progressMonitor.advance(1);
                 progressMonitor.step("Copying content");
 
-                FileSystem.getInstance().runWriteTransaction(() -> fp.flushChanges());
+                new WriteTransaction(monitor.getSession().getProject().getPlatform(), () -> fp.flushChanges()).executeAndWait();
               } finally {
                 progressMonitor.done();
               }

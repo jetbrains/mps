@@ -8,15 +8,34 @@ import java.util.Map;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.util.Reference;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleRuntime;
+import java.util.function.Consumer;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)/3474473076929729944", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
-public class CodeStyleSettingsRegistry implements CoreComponent {
+@GeneratedClass(nodeId = "3474473076929729944", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
+public class CodeStyleSettingsRegistry implements CoreComponent, CodeStyleSettingsProvider {
   private final Map<Project, CodeStyleSettings> myProjectToSettingsMap = MapSequence.fromMap(new HashMap<Project, CodeStyleSettings>());
 
-  public CodeStyleSettings getSettings(Project project) {
-    return MapSequence.fromMap(myProjectToSettingsMap).get(project);
+  @Override
+  public CodeStyleSettings getSettings(final Project project) {
+    CodeStyleSettings rv = MapSequence.fromMap(myProjectToSettingsMap).get(project);
+    if (rv != null) {
+      return rv;
+    } else {
+      final Reference<CodeStyleSettings> firstNotNull = new Reference<>();
+      LanguageRegistry lr = project.getComponent(LanguageRegistry.class);
+      lr.withAvailableExtensions(CodeStyleSettingsProvider.class, new ModuleRuntime.Extension.MatchRequest() {}, new Consumer<CodeStyleSettingsProvider>() {
+        public void accept(CodeStyleSettingsProvider sp) {
+          if (firstNotNull.isNull()) {
+            firstNotNull.set(sp.getSettings(project));
+          }
+        }
+      });
+      return firstNotNull.get();
+    }
   }
 
   public void registerSettings(Project project, CodeStyleSettings settings) {

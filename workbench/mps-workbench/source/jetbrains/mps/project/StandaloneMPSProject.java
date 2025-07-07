@@ -29,9 +29,11 @@ import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.tracking.ModelStorageProblemsListener;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
@@ -60,6 +62,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   private ModuleFileChangeListener myListener;
   private final VFSManager myManager;
 
+  private final ModelStorageProblemsListener myProblemsListener;
+
   // AP fixme must be final, however StandaloneMpsProject exposes it (a client can publicly reset the project descriptor)
   private ProjectDescriptor myProjectDescriptor;
 
@@ -73,6 +77,13 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     myManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
     myListener = new ModuleFileChangeListener(this);
     addListener(myListener);
+    // NOTE, this listener used to be installed with ModelTracking project component both for Big MPS and MPS-as-IDEA plugin.
+    // With ProjectComponents eclipse, moved listener registration here explicitly. For completeness, same registration has
+    // to be part of MPS-as-IDEA-plugin project init sequence (likely, in MPSFacet or directly by MPSProject), but as long as
+    // MPS-as-IDEA-plugin is now a history, *AND* this listener is relevant for IDE/UI activities only (not for headless IDEA-backed
+    // environment where we still can get simple MPSProject instance), I decided to put it here.
+    // FWIW, could be ProjectRepository attribute, not a listener. See conflict resolver in superclass
+    myProblemsListener = new ModelStorageProblemsListener(this);
   }
 
   @Override
@@ -102,12 +113,14 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   @Override
   public void initComponent() {
     super.initComponent();
+    new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
   }
 
   @Override
   public void disposeComponent() {
-    super.disposeComponent();
+    new RepoListenerRegistrar(getRepository(), myProblemsListener).detach();
     removeListener(myListener);
+    super.disposeComponent();
   }
 
   // todo remove; project descriptor is its internal substance which represents the persistence data
@@ -145,7 +158,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       getModelAccess().runWriteAction(() -> {
         loadModules(myProjectDescriptor.getModulePaths());
         myProjectDescriptor = null; // indicate it's all in RT now.
-        fireModulesLoaded();
       });
       if (progressIndicator != null) {
         progressIndicator.setText2("");

@@ -23,7 +23,7 @@ import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-@GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
+@GeneratedClass(nodeId = "2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetPropertyChange extends NodeChange {
   private SProperty myProperty;
   private String myNewValue;

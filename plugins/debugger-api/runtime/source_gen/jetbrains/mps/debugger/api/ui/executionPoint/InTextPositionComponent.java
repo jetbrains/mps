@@ -28,7 +28,7 @@ import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.vfs.VirtualFile;
 
-@GeneratedClass(node = "r:b844984f-e192-4128-bae9-ea8360d94146(jetbrains.mps.debugger.api.ui.executionPoint)/1482618131069247297", model = "r:b844984f-e192-4128-bae9-ea8360d94146(jetbrains.mps.debugger.api.ui.executionPoint)")
+@GeneratedClass(nodeId = "1482618131069247297", model = "r:b844984f-e192-4128-bae9-ea8360d94146(jetbrains.mps.debugger.api.ui.executionPoint)")
 public class InTextPositionComponent {
   private final SessionChangeListener myChangeListener = new MySessionChangeListener();
   private final Project myProject;

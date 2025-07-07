@@ -31,7 +31,6 @@ import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -42,12 +41,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Defines basic structure of the project view nodes hierarchy.
@@ -56,6 +56,8 @@ import java.util.Optional;
  * @author Fedor Isakov
  */
 public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Value> implements ContextValueProvider, PathElementIdProvider {
+
+  private volatile @Nullable Boolean myHasOwnProblems = null;
 
   protected LogicalProjectViewNode(Project project, @NotNull Value value, ViewSettings viewSettings) {
     super(project, value, viewSettings);
@@ -96,40 +98,32 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
    *   <li>SNode</li>
    * </ul>.
    * <p>These are wrapped into {@link SObject} and returned as a collection.
+   * <p>Must be called in a read action
    *
    * @return collection of SObject instances corresponding to {@code virtualFile} or an empty collection
    */
   protected Collection<SObject> extractSObjects(VirtualFile virtualFile) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    mpsProject.getModelAccess().checkReadAccess();
     if (virtualFile instanceof MPSNodeVirtualFile) {
-      return mpsProject.getModelAccess()
-                       .computeReadAction(() -> {
-                         SNode node = ((MPSNodeVirtualFile) virtualFile).getNode();
-                         return node != null ? Collections.singletonList(SObject.of(node)) : Collections.emptyList();
-                       });
+      SNode node = ((MPSNodeVirtualFile) virtualFile).getNode();
+      return node != null ? Collections.singletonList(SObject.of(node)) : Collections.emptyList();
     }
     IFile file = toIFile(virtualFile);
     if (file != null) {
       Collection<SModuleReference> sModuleReferences = MissionControl.getInstance(getProject()).lookupProjectModule(file);
       if (!sModuleReferences.isEmpty()) {
-        List<SObject> modules = new ArrayList<>(2);
-        mpsProject.getModelAccess()
-                  .runReadAction(() ->
-                                     sModuleReferences.stream()
-                                                      .map(ref -> ref.resolve(mpsProject.getRepository()))
-                                                      .filter(Objects::nonNull)
-                                                      .map(SObject::of)
-                                                      .forEach(modules::add));
-        return modules;
+        return sModuleReferences.stream()
+                         .map(ref -> ref.resolve(mpsProject.getRepository()))
+                         .filter(Objects::nonNull)
+                         .map(SObject::of)
+                         .collect(Collectors.toList());
       }
 
-      SModelReference modelRef = SModelFileTracker.getInstance(mpsProject.getRepository()).modelFor(file);
+      SModelReference modelRef = MissionControl.getInstance(getProject()).lookupProjectModel(file);
       if (modelRef != null) {
-        return mpsProject.getModelAccess()
-                         .computeReadAction(() -> {
-                           SModel model = modelRef.resolve(mpsProject.getRepository());
-                           return model != null ?  Collections.singletonList(SObject.of(model)) : Collections.emptyList();
-                         });
+        SModel model = modelRef.resolve(mpsProject.getRepository());
+        return model != null ?  Collections.singletonList(SObject.of(model)) : Collections.emptyList();
       }
     }
     return Collections.emptyList();
@@ -172,10 +166,14 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
   @Override
   protected void postprocess(@NotNull PresentationData presentation) {
     super.postprocess(presentation);
+    if (Registry.is("projectView.showHierarchyErrors") && this instanceof LogicalProjectViewNode.ProblemHierarchyNode) {
+      this.myHasOwnProblems = hasProblems(this::matchesExactly);
+    }
+    
     if (Registry.is("mps.projectView.generationRequired.icon")) {
       MissionControl missionControl = MissionControl.getInstance(getProject());
       if (missionControl != null) {
-        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkModified, MessageStatus.OK, true)) {
           presentation.setIcon(getModifiedIcon(presentation.getIcon(true)));
         }
       }
@@ -187,7 +185,7 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     if (!Registry.is("mps.projectView.generationRequired.icon")) {
       MissionControl missionControl = MissionControl.getInstance(getProject());
       if (missionControl != null) {
-        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkModified, MessageStatus.OK, true)) {
           appender.append(String.format(" (%s)", GenerationStatus.REQUIRED.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
         }
       }
@@ -199,6 +197,11 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
             ((HasGenerationStatus) reportItem).getStatus() == GenerationStatus.REQUIRED);
   }
 
+  protected boolean shouldMarkReadonly(ReportItem reportItem) {
+    return (reportItem instanceof HasGenerationStatus &&
+            ((HasGenerationStatus) reportItem).getStatus() == GenerationStatus.READONLY);
+  }
+
   protected Icon getModifiedIcon(@Nullable Icon sourceIcon) {
     LayeredIcon icon = new LayeredIcon(2);
     icon.setIcon(sourceIcon, 0);
@@ -206,18 +209,24 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     return icon;
   }
 
+  public boolean hasOwnProblems() {
+    Boolean hasOwnProblems = myHasOwnProblems;
+    return hasOwnProblems != null ? hasOwnProblems : false ;
+  }
+
   @Override
   protected boolean hasProblemFileBeneath() {
     if (!Registry.is("projectView.showHierarchyErrors")) return false;
 
-    Project project = getProject();
-    MissionControl missionControl = MissionControl.getInstance(project);
-    if (missionControl != null) {
-      return getMPSSettings().isShowErrorsOnly() ?
-             missionControl.getMessagesContainer().hasErrorsInHierarchy(this::containsSObject) :
-             missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(this::containsSObject);
-    }
-    return false;
+    return hasProblems(this::matches);
+  }
+
+  private boolean hasProblems(Predicate<SObject> matches) {
+    MissionControl missionControl = MissionControl.getInstance(getProject());
+    if (missionControl == null) return false;
+    return getMPSSettings().isShowErrorsOnly() ?
+           missionControl.getMessagesContainer().hasErrorsInHierarchy(matches) :
+           missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(matches);
   }
 
   protected String formatErrorsToolTip(List<ReportItem> errorMessages) {
@@ -235,22 +244,62 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
 
   @Override
   public boolean contains(@NotNull VirtualFile file) {
-    boolean contains = extractSObjects(file).stream().anyMatch(this::containsSObject);
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-    }
-    return contains;
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    return mpsProject.getModelAccess()
+             .computeReadAction(() -> {
+                 boolean contains = extractSObjects(file).stream().anyMatch(this::containsSObject);
+                 if (LOG.isDebugEnabled() && contains) {
+                   LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
+                 }
+                 return contains;
+             });
   }
 
-  protected abstract boolean containsSObject(SObject sObject);
+  /**
+   * Test if an SObject is contained within this node's hierarchy.
+   * Always called in a read action.
+   */
+  protected boolean containsSObject(SObject sObject) {
+    return false;
+  }
 
-  public boolean canRepresent(Object element) {
-    if (element instanceof VirtualFile) {
-      return extractSObjects(((VirtualFile) element)).stream().anyMatch(this::canRepresentSObject);
+  /**
+   * Test if the node's value matches a wildcard specified in the parameter.
+   * For a non-wildcard SObject, this is equivalent to {@link #containsSObject(SObject)}.
+   * For a partially specified SObject, first ensure the node's parent matches it.
+   */
+  protected boolean matches(SObject wildcard) {
+    return containsSObject(wildcard);
+  }
+
+  /**
+   * Test if the node's value matches a wildcard specified in the parameter.
+   * For a non-wildcard SObject, this is equivalent to {@link #canRepresentSObject(SObject)}.
+   * For a partially specified SObject, first ensure the node's parent matches it.
+   */
+  protected final boolean matchesExactly(SObject wildcard) {
+    return parentMatches(wildcard) && canRepresentSObject(wildcard);
+  }
+
+  protected boolean parentMatches(SObject wildcard) {
+    if (getParent() instanceof LogicalProjectViewNode) {
+      return ((LogicalProjectViewNode<?>) getParent()).matches(wildcard);
     }
     return false;
   }
 
+  public boolean canRepresent(Object element) {
+    if (element instanceof VirtualFile) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess()
+               .computeReadAction(() ->  extractSObjects(((VirtualFile) element)).stream().anyMatch(this::canRepresentSObject));
+    }
+    return false;
+  }
+
+  /**
+   * Always called in a read action.
+   */
   protected boolean canRepresentSObject(SObject sObject) {
     return false;
   }
@@ -278,5 +327,13 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
       candidate = candidate.getParent();
     }
     return null;
+  }
+
+
+  /**
+   * Marker interface to detect nodes that are containers, yet can have own error messages attached.
+   */
+  protected interface ProblemHierarchyNode {
+
   }
 }

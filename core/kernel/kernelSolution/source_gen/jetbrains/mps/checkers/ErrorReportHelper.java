@@ -24,7 +24,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-@GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/6803901086853929087", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
+@GeneratedClass(nodeId = "6803901086853929087", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class ErrorReportHelper {
   private static final Logger LOG = Logger.getLogger(ErrorReportHelper.class);
 

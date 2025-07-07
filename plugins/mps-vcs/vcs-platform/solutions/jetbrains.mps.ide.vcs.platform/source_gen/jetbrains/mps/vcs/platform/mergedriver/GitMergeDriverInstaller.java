@@ -22,7 +22,7 @@ import git4idea.GitVcs;
 import com.intellij.openapi.vcs.VcsException;
 import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
 
-@GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/572687202609936946", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
+@GeneratedClass(nodeId = "572687202609936946", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 /*package*/ class GitMergeDriverInstaller extends AbstractInstaller {
   private static final Logger LOG = Logger.getLogger(GitMergeDriverInstaller.class);
   private static final String MERGE_DRIVER = "merge.mps.driver";

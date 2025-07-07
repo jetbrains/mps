@@ -5,7 +5,7 @@ package jetbrains.mps.make.script;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.resources.IResource;
 
-@GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/1291978361072214397", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
+@GeneratedClass(nodeId = "1291978361072214397", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public interface IResult {
   default String message() {
     // since 2023.2

@@ -25,7 +25,7 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
     // register kinds
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Build Script", IconContainer.ICON_b0a0a0c0d, "Build Script", "Build Script");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Build Script", IconContainer.ICON0, "Build Script", "Build Script");
       runConfigurationKind.addFactoryFor("Build Script", BuildScript_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);

@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
  * I use {@link jetbrains.mps.generator.GenerationPlanBuilder } although it seems like an excessive mediator to hide implementation details and to facilitate
  * plan creation not from a model-backed description.
  */
-@GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/2214485068936293220", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
+@GeneratedClass(nodeId = "2214485068936293220", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public final class GenPlanTranslator {
   private final SNode myPlanDeclaration;
   private final PlanIdentity myPlanIdentity;

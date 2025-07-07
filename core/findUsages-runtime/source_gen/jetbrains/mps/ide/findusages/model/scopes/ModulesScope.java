@@ -21,7 +21,7 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
 
-@GeneratedClass(node = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)/8568892084424435948", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
+@GeneratedClass(nodeId = "8568892084424435948", model = "r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)")
 public class ModulesScope extends FindUsagesScope {
   private static final String MODULE_ID = "ref";
   private static final String MODULE_TAG = "module";

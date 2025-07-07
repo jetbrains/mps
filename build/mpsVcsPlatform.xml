@@ -5,6 +5,7 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsVcsPlatform" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
+  <property name="platform_lib" location="${basedir}/lib" />
   <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
@@ -45,13 +46,12 @@
     <fileset dir="${artifacts.IDEA}/plugins/vcs-svn/lib" includes="*.jar" />
     <fileset dir="${artifacts.IDEA}/plugins/vcs-git/lib" includes="*.jar" />
     <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
+    <fileset dir="${artifacts.IDEA}/lib/modules" includes="*.jar" />
   </path>
   
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mpsBootstrapCore}/lib/ant/lib/ant-mps.jar" />
-    <fileset dir="${artifacts.IDEA}/lib">
-      <include name="util-8.jar" />
-    </fileset>
+    <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
   </path>
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
@@ -106,6 +106,7 @@
         <dependencies>
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b(jetbrains.mps.vcs.idea.stubs)" kind="cl" />
         </dependencies>
         <uses />
         <library jar="../../vcs-git/lib/git4idea-rt.jar" />
@@ -116,6 +117,24 @@
     <jar destfile="${build.layout}/mps-git4idea/languages/jetbrains.mps.git4idea.stubs.jar" duplicate="preserve">
       <zipfileset file="${basedir}/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.vcs.idea.stubs" type="solution" uuid="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b">
+        <dependencies>
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+        </dependencies>
+        <uses />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.dvcs.impl.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.log.impl.jar" />
+        <sources jar="." descriptor="jetbrains.mps.vcs.idea.stubs.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-git4idea/languages/jetbrains.mps.vcs.idea.stubs.jar" duplicate="preserve">
+      <zipfileset file="${basedir}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.vcs.idea.stubs/jetbrains.mps.vcs.idea.stubs.msd" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.vcs.idea.stubs.jar" />
     </jar>
     <mkdir dir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/vcs-core.jar" duplicate="preserve">
@@ -144,11 +163,12 @@
   
   <target name="generate" depends="declare-mps-tasks, fetchDependencies">
     <echo message="generating" />
-    <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
+    <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <chunk>
         <module file="${basedir}/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" />
+        <module file="${basedir}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.vcs.idea.stubs/jetbrains.mps.vcs.idea.stubs.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -157,6 +177,7 @@
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
+      <macro name="platform_lib" path="${platform_lib}" />
       <macro name="kotlinc_home" path="${kotlinc_home}" />
     </generate>
   </target>
@@ -189,9 +210,9 @@
   
   <target name="java.compile.vcs-core" depends="fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/vcs-core" />
-    <javac2 destdir="${build.tmp}/java/out/vcs-core" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/vcs-core" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="vcs-core">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -213,8 +234,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <path refid="path.java.library.idea-vcs" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -227,9 +246,9 @@
   
   <target name="java.compile.vcs-platform" depends="java.compile.vcs-core, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/vcs-platform" />
-    <javac2 destdir="${build.tmp}/java/out/vcs-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac2 destdir="${build.tmp}/java/out/vcs-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
       <withKotlin moduleName="vcs-platform">        
-        <compilerarg value="-jvm-target=11" />
+        <compilerarg value="-jvm-target=21" />
       </withKotlin>
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
@@ -255,14 +274,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
         <pathelement path="${build.tmp}/java/out/vcs-core" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
-        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-frontback.jar" />
         <fileset file="${artifacts.IDEA}/lib/java-impl.jar" />

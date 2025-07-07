@@ -13,12 +13,16 @@
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="ryx4" ref="r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)" />
     <import index="d6hs" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.item(MPS.Core/)" />
+    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
       </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -210,6 +214,7 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
+      <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -2058,25 +2063,115 @@
       </node>
       <node concept="3clFbH" id="6PxdI1Hsppp" role="3cqZAp" />
       <node concept="3clFbJ" id="6PxdI1Hsppq" role="3cqZAp">
-        <node concept="2OqwBi" id="6PxdI1Hsppr" role="3clFbw">
-          <node concept="37vLTw" id="6PxdI1Hspps" role="2Oq$k0">
-            <ref role="3cqZAo" node="6PxdI1Hsppf" resolve="conceptPresentation" />
+        <node concept="1Wc70l" id="7iGqDX2wsXe" role="3clFbw">
+          <node concept="2OqwBi" id="6PxdI1Hsppr" role="3uHU7B">
+            <node concept="37vLTw" id="6PxdI1Hspps" role="2Oq$k0">
+              <ref role="3cqZAo" node="6PxdI1Hsppf" resolve="conceptPresentation" />
+            </node>
+            <node concept="liA8E" id="6PxdI1HspGi" role="2OqNvi">
+              <ref role="37wK5l" to="ze1i:~ConceptPresentation.isExperimental()" resolve="isExperimental" />
+            </node>
           </node>
-          <node concept="liA8E" id="6PxdI1HspGi" role="2OqNvi">
-            <ref role="37wK5l" to="ze1i:~ConceptPresentation.isExperimental()" resolve="isExperimental" />
+          <node concept="3fqX7Q" id="7iGqDX2wwjL" role="3uHU7w">
+            <node concept="2YIFZM" id="7iGqDX2wwjN" role="3fr31v">
+              <ref role="37wK5l" to="w1kc:~SModelStereotype.isDescriptorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isDescriptorModel" />
+              <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
+              <node concept="2OqwBi" id="7iGqDX2wwjO" role="37wK5m">
+                <node concept="1YBJjd" id="7iGqDX2wwjP" role="2Oq$k0">
+                  <ref role="1YBMHb" node="6PxdI1HsppC" resolve="node" />
+                </node>
+                <node concept="I4A8Y" id="7iGqDX2wwjQ" role="2OqNvi" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3clFbS" id="6PxdI1Hsppu" role="3clFbx">
-          <node concept="Dpp1Q" id="6PxdI1HssR9" role="3cqZAp">
-            <node concept="3cpWs3" id="6PxdI1Hsppx" role="Dpw9R">
-              <node concept="Xl_RD" id="6PxdI1Hsppy" role="3uHU7w">
-                <property role="Xl_RC" value="' is an instance of concept marked with API.Experimental attribute" />
+          <node concept="3SKdUt" id="7iGqDX2wwq8" role="3cqZAp">
+            <node concept="1PaTwC" id="7iGqDX2wwq9" role="1aUNEU">
+              <node concept="3oM_SD" id="7iGqDX2wwti" role="1PaTwD">
+                <property role="3oM_SC" value="there" />
               </node>
-              <node concept="3cpWs3" id="6PxdI1Hsppz" role="3uHU7B">
-                <node concept="Xl_RD" id="6PxdI1Hspp$" role="3uHU7B">
-                  <property role="Xl_RC" value="The node '" />
-                </node>
-                <node concept="2OqwBi" id="6PxdI1Hspp_" role="3uHU7w">
+              <node concept="3oM_SD" id="7iGqDX2wwuo" role="1PaTwD">
+                <property role="3oM_SC" value="are" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwuq" role="1PaTwD">
+                <property role="3oM_SC" value="known" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwvw" role="1PaTwD">
+                <property role="3oM_SC" value="uses" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwvx" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwvy" role="1PaTwD">
+                <property role="3oM_SC" value="experimental" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwxH" role="1PaTwD">
+                <property role="3oM_SC" value="concepts" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwzS" role="1PaTwD">
+                <property role="3oM_SC" value="in" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwzT" role="1PaTwD">
+                <property role="3oM_SC" value="@descriptor" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwA4" role="1PaTwD">
+                <property role="3oM_SC" value="models," />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwBa" role="1PaTwD">
+                <property role="3oM_SC" value="we" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwCg" role="1PaTwD">
+                <property role="3oM_SC" value="are" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwCh" role="1PaTwD">
+                <property role="3oM_SC" value="ok" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwDn" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwDo" role="1PaTwD">
+                <property role="3oM_SC" value="that." />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwGC" role="1PaTwD">
+                <property role="3oM_SC" value="Besides," />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwHI" role="1PaTwD">
+                <property role="3oM_SC" value="there's" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwHJ" role="1PaTwD">
+                <property role="3oM_SC" value="nothing" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwIP" role="1PaTwD">
+                <property role="3oM_SC" value="user" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwJV" role="1PaTwD">
+                <property role="3oM_SC" value="could" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwJW" role="1PaTwD">
+                <property role="3oM_SC" value="do" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwJX" role="1PaTwD">
+                <property role="3oM_SC" value="about" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwL3" role="1PaTwD">
+                <property role="3oM_SC" value="these" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwM9" role="1PaTwD">
+                <property role="3oM_SC" value="models" />
+              </node>
+              <node concept="3oM_SD" id="7iGqDX2wwMa" role="1PaTwD">
+                <property role="3oM_SC" value="anyway." />
+              </node>
+            </node>
+          </node>
+          <node concept="Dpp1Q" id="6PxdI1HssR9" role="3cqZAp">
+            <node concept="2OqwBi" id="7iGqDX2wpLC" role="Dpw9R">
+              <node concept="Xl_RD" id="7iGqDX2wpLD" role="2Oq$k0">
+                <property role="Xl_RC" value="The node '%s' is an instance of concept marked with API.Experimental attribute" />
+              </node>
+              <node concept="2cAKMz" id="7iGqDX2wpLE" role="2OqNvi">
+                <node concept="2OqwBi" id="6PxdI1Hspp_" role="2cAKU6">
                   <node concept="1YBJjd" id="6PxdI1HsppA" role="2Oq$k0">
                     <ref role="1YBMHb" node="6PxdI1HsppC" resolve="node" />
                   </node>

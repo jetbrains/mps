@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * fyodor, Aug 18, 2010
  */
-@GeneratedClass(node = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)/5294483648489410732", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
+@GeneratedClass(nodeId = "5294483648489410732", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
 public class CachingPrintStream extends PrintStream implements Output {
   private static final int LS_BYTES = System.getProperty("line.separator").getBytes().length;
 

@@ -7,15 +7,19 @@ import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
-@GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1244156871960204835", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
+@GeneratedClass(nodeId = "1244156871960204835", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase {
   private final Project myMpsProject;
   private final MigrationSetup myMigrationConfig;
   private final MigrationChecker myChecker;
   private final MigrationExecutor myExecutor;
 
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup mc) {
+    this(mpsProject, mc, new MigrationCheckerImpl(mpsProject, mc), new NotifyingMigrationExecutor(mpsProject), mc.isRepositorySaveRequired(), mc.importVersionsUpdateRequired(), mc.isMigrationRequired());
+  }
+
   public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, boolean forceSave, boolean updateVersions, boolean migrate) {
-    this(mpsProject, migrationConfig, new MigrationCheckerImpl(mpsProject, migrationConfig), new MigrationExecutorImpl(mpsProject), forceSave, updateVersions, migrate);
+    this(mpsProject, migrationConfig, new MigrationCheckerImpl(mpsProject, migrationConfig), new NotifyingMigrationExecutor(mpsProject), forceSave, updateVersions, migrate);
   }
 
   public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, MigrationChecker checker, MigrationExecutor executor, boolean forceSave, boolean updateVersions, boolean migrate) {

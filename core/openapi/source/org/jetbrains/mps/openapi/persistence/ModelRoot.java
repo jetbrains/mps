@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,7 +58,10 @@ public interface ModelRoot {
    * @return the model with a given id
    * one-to-one relation is assumed
    */
-  @Nullable SModel getModel(@NotNull SModelId id);
+  default @Nullable SModel getModel(@NotNull SModelId id) {
+    // XXX there are no uses of the method, is there any reason to have one?
+    return null;
+  }
 
   /**
    * @return a sequence of the models under this model root.
@@ -173,11 +176,25 @@ public interface ModelRoot {
   }
 
   /**
+   * @since 2024.2
+   */
+  default void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    save(memento);
+  }
+
+  /**
    * Allows the model root to read its previously saved configuration information
    *
    * Default implementation is blank.
    */
   default void load(@NotNull Memento memento) {
     // no-op
+  }
+
+  /**
+   * @since 2024.2
+   */
+  default void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    load(memento);
   }
 }

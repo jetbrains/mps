@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.vcs.tests" uuid="ed3e0fd1-3ac2-4543-b6b2-d6d0bea8bf18" moduleVersion="0">
   <models>
-    <modelRoot type="default" contentPath="${module}">
+    <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
@@ -26,6 +26,7 @@
     <module reference="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" version="0" />
     <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
     <module reference="f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)" version="0" />
+    <module reference="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b(jetbrains.mps.vcs.idea.stubs)" version="0" />
     <module reference="ed3e0fd1-3ac2-4543-b6b2-d6d0bea8bf18(jetbrains.mps.vcs.tests)" version="0" />
   </dependencyVersions>
 </solution>

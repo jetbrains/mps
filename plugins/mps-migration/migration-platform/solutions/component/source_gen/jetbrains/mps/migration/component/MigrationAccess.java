@@ -18,7 +18,7 @@ import jetbrains.mps.ide.migration.MigrationTrigger;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)/6032067180686557069", model = "r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)")
+@GeneratedClass(nodeId = "6032067180686557069", model = "r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)")
 public class MigrationAccess implements CoreComponent {
 
   private final ProjectManager myProjectManager;

@@ -19,7 +19,7 @@ public class EnumerationDescriptor_Kind extends EnumerationDescriptorBase {
   private final EnumerationDescriptor.MemberDescriptor myMember__2_0 = new EnumerationDescriptor.MemberDescriptor("_2", "TWO", 0x3c70a9e3bda9ab88L, "r:9b56ed90-436a-4093-aab2-2dfe5d09ce42(jetbrains.mps.generator.test.crossmodel.entity.structure)/4241665505353446797");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x4d14758c3ecb486dL, 0xb8c8ea5beb8ae408L, 0x3c70a9e3bda9ab86L, 0x3c70a9e3bda9ab87L, 0x3c70a9e3bda9ab88L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember__1_0, myMember__2_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember__1_0, myMember__2_0);
 
   @Nullable
   @Override

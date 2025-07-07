@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-dva2tvetf51q0f9y1t3ri3rgqtl05tj">
-  <files names="SNodeFactory.java:VCSPersistenceSupport.java:VCSPersistenceUtil.java" />
+<product version="3" modelHash="-bqhfztu4d2z24bcx3qlocvdvnr154hj">
+  <files names="ModelSack.java:SNodeFactory.java:VCSPersistenceSupport.java:VCSPersistenceUtil.java" />
 </product>
 

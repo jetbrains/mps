@@ -16,7 +16,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
-@GeneratedClass(node = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/3896109655413979709", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
+@GeneratedClass(nodeId = "3896109655413979709", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
 public class ClassifierSuccessors implements CoreComponent {
   private static final Logger LOG = Logger.getLogger(ClassifierSuccessors.class);
   private static ClassifierSuccessors INSTANCE;

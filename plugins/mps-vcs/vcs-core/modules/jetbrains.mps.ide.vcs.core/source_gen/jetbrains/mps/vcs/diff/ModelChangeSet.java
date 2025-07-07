@@ -7,7 +7,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 
-@GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/581692556693547169", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
+@GeneratedClass(nodeId = "581692556693547169", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public interface ModelChangeSet extends ChangeSet {
   Iterable<ModelChange> getChangesForRoot(@Nullable SNodeId rootId);
   Iterable<SNodeId> getAffectedRoots();

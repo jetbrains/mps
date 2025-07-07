@@ -8,7 +8,7 @@ import jetbrains.mps.project.Project;
 /**
  * What {@link jetbrains.mps.execution.api.settings.IPersistentConfiguration } knows about outer world
  */
-@GeneratedClass(node = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)/479872435238479898", model = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)")
+@GeneratedClass(nodeId = "479872435238479898", model = "r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)")
 public interface PersistentConfigurationContext {
   /**
    * 

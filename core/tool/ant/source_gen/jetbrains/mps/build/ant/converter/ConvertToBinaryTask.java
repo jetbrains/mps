@@ -22,7 +22,7 @@ import org.apache.tools.ant.types.FilterSetCollection;
 import java.util.Vector;
 import java.io.IOException;
 
-@GeneratedClass(node = "r:a5ddf2e2-82ac-4496-924f-5c515b082a89(jetbrains.mps.build.ant.converter)/288299486413331049", model = "r:a5ddf2e2-82ac-4496-924f-5c515b082a89(jetbrains.mps.build.ant.converter)")
+@GeneratedClass(nodeId = "288299486413331049", model = "r:a5ddf2e2-82ac-4496-924f-5c515b082a89(jetbrains.mps.build.ant.converter)")
 public class ConvertToBinaryTask extends Copy {
   private Map<File, File> toConvert = new HashMap<File, File>();
   private boolean myStripImplementation = false;

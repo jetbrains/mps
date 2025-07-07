@@ -9,7 +9,7 @@ import jetbrains.mps.smodel.InterfaceSNode;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactoryByName;
 
-@GeneratedClass(node = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/2469893808083746703", model = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)")
+@GeneratedClass(nodeId = "2469893808083746703", model = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)")
 public class SNodeFactory {
   public static SNode newLazy(String conceptQualifiedName) {
     return new LazySNode(toConcept(conceptQualifiedName));

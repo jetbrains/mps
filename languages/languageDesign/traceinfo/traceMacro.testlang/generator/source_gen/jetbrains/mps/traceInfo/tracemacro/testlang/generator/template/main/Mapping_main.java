@@ -19,7 +19,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
@@ -66,16 +65,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
         }
         {
           Collection<SNode> tlist4 = null;
-          // calculate input
           final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_0_2(new SourceSubstituteMacroNodeContext(context1, traceMacro));
-          // calculate output
           final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "var", propertyMacro)));
           tlist4 = TemplateUtil.singletonList(tnode5);
-          // put input node
-          for (SNode resultNode : CollectionSequence.fromCollection(tlist4)) {
-            TracingUtil.fillOriginalNode(copySrcInput4, resultNode, false);
-          }
+          TracingUtil.deriveOriginalNode(copySrcInput4, tlist4, true);
           environment.aggregate(tnode1, myAggregationLinks[2], tlist4);
         }
       }
@@ -88,7 +82,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       super(new SNodePointer("r:75f95d80-1d60-4222-8b1e-a09f089fee3e(jetbrains.mps.traceInfo.tracemacro.testlang.generator.template.main@generator)", "7980748436587793686"), CONCEPTS.ForEachVariableReference$CR, false);
     }
     @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+    public boolean isApplicable(@NotNull TemplateContext context) {
       return QueriesGenerated.rule_Condition_0_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override

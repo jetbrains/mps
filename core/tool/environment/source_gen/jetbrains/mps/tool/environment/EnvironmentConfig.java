@@ -21,7 +21,7 @@ import jetbrains.mps.util.PathManager;
  * 
  * @see jetbrains.mps.tool.environment.Environment 
  */
-@GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/7413225496542992777", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
+@GeneratedClass(nodeId = "7413225496542992777", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public class EnvironmentConfig {
   private static final Logger LOG = Logger.getLogger(EnvironmentConfig.class);
   private final Set<PluginData> myPlugins = SetSequence.fromSet(new LinkedHashSet<PluginData>());
@@ -158,7 +158,6 @@ public class EnvironmentConfig {
     if (!(PathManager.isFromSources())) {
       // we're running from app bundle/installed app
       return addDistributedPlugin("mps-debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("mps-debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("mps-execution-api", "jetbrains.mps.execution.api");
-
     } else {
       return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("execution-api", "jetbrains.mps.execution.api");
     }
@@ -175,7 +174,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withModelCheckerPlugin() {
-    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").withTestingPlugin();
+    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker");
   }
 
   public EnvironmentConfig withMigrationPlugin() {

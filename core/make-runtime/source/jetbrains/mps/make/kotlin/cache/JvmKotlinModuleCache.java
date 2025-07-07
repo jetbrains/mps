@@ -5,6 +5,7 @@ package jetbrains.mps.make.kotlin.cache;
 
 import jetbrains.mps.make.PackagePrefix;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.Collections;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
  * This data is used for compilation avoidance (not compiling modules that are up-to-date)
  */
 public class JvmKotlinModuleCache implements KotlinModuleCache {
-  private final Map<String, List<String>> myOutputToSourceFiles;
+  private final Map<File, List<File>> myOutputToSourceFiles;
 
   private final Set<File> mySourceFiles;
 
@@ -31,7 +32,7 @@ public class JvmKotlinModuleCache implements KotlinModuleCache {
    * @param outputToSourceFiles source files per output file mapping
    * @param sourceFiles         optional set of source files (can be approximately derived from map values)
    */
-  public JvmKotlinModuleCache(Map<String, List<String>> outputToSourceFiles, Set<File> sourceFiles) {
+  public JvmKotlinModuleCache(Map<File, List<File>> outputToSourceFiles, Set<File> sourceFiles) {
     this.myOutputToSourceFiles = outputToSourceFiles;
     this.mySourceFiles = sourceFiles;
   }
@@ -47,16 +48,13 @@ public class JvmKotlinModuleCache implements KotlinModuleCache {
    * the entry is not found (which means the output file was either not compiled from kotlin or that
    * cache does not include it).
    */
+  @Nullable
   public List<File> getSourcesFor(@NotNull File outputFile, @NotNull PackagePrefix prefix) {
-    return myOutputToSourceFiles
-               .getOrDefault(prefix.pathWithTail(outputFile.getName()), Collections.emptyList())
-               .stream()
-               .map(File::new)
-               .collect(Collectors.toList());
+    return myOutputToSourceFiles.getOrDefault(prefix.pathWithTail(outputFile.getName()), null);
   }
 
   @Override
-  public Boolean missesOutput(@NotNull Set<String> compiledFiles) {
+  public Boolean missesOutput(@NotNull Set<File> compiledFiles) {
     return !compiledFiles.containsAll(myOutputToSourceFiles.keySet());
   }
 }

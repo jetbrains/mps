@@ -13,7 +13,7 @@ import java.io.File;
 import jetbrains.mps.tool.environment.EnvironmentBase;
 import jetbrains.mps.components.ComponentHost;
 
-@GeneratedClass(node = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/6450649963068242592", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
+@GeneratedClass(nodeId = "6450649963068242592", model = "r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)")
 public class FromProjectPathProjectStrategy extends ProjectStrategyBase {
   private static final String PROJECT_PATH_PROPERTY = "mps.junit.project";
 

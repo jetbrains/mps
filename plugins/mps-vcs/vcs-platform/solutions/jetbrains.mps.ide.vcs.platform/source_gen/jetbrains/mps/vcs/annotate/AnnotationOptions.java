@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.openapi.vcs.actions.ShortNameType;
 
-@GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/839470717526615907", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
+@GeneratedClass(nodeId = "839470717526615907", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AnnotationOptions {
 
   private static final String HIGHLIGHT_CELLS_MODE_KEY = "annotations.highlight.cells.mode";

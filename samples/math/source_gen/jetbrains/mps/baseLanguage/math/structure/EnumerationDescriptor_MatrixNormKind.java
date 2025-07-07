@@ -21,7 +21,7 @@ public class EnumerationDescriptor_MatrixNormKind extends EnumerationDescriptorB
   private final EnumerationDescriptor.MemberDescriptor myMember_normMax_0 = new EnumerationDescriptor.MemberDescriptor("normMax", "max", 0xa87de0e72c5677aL, "r:cb1a36c8-1ffb-415a-aba8-afb9dc042d1b(jetbrains.mps.baseLanguage.math.structure)/4241665505353448481");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0xa87de0e72c56776L, 0xa87de0e72c56777L, 0xa87de0e72c56778L, 0xa87de0e72c56779L, 0xa87de0e72c5677aL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_norm1_0, myMember_normInfty_0, myMember_norm2F_0, myMember_normMax_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_norm1_0, myMember_normInfty_0, myMember_norm2F_0, myMember_normMax_0);
 
   @Nullable
   @Override

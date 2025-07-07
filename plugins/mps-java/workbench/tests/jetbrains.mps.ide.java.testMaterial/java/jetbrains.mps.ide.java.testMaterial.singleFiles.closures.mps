@@ -148,11 +148,9 @@
   </registry>
   <node concept="312cEu" id="7GTlfWVJcNN">
     <property role="TrG5h" value="Closures" />
-    <property role="2bfB8j" value="true" />
     <node concept="3Tm1VV" id="7GTlfWVJcNO" role="1B3o_S" />
     <node concept="3HP615" id="7GTlfWVJcNP" role="jymVt">
       <property role="TrG5h" value="IGeneric" />
-      <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="7GTlfWVJcNQ" role="1B3o_S" />
       <node concept="16euLQ" id="7GTlfWVJcNR" role="16eVyc">
         <property role="TrG5h" value="K" />
@@ -185,7 +183,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJcO3" role="jymVt">
       <property role="TrG5h" value="AbstractGeneric" />
-      <property role="2bfB8j" value="true" />
       <node concept="3Tm1VV" id="7GTlfWVJcO4" role="1B3o_S" />
       <node concept="16euLQ" id="7GTlfWVJcO5" role="16eVyc">
         <property role="TrG5h" value="T" />
@@ -298,7 +295,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJcOJ" role="jymVt">
       <property role="TrG5h" value="BigMapper" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJcOK" role="16eVyc">
         <property role="TrG5h" value="A" />
       </node>
@@ -344,7 +340,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJcP0" role="jymVt">
       <property role="TrG5h" value="Consumer" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJcP1" role="16eVyc">
         <property role="TrG5h" value="CT" />
       </node>
@@ -363,7 +358,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJcP8" role="jymVt">
       <property role="TrG5h" value="Mapper" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJcP9" role="16eVyc">
         <property role="TrG5h" value="I" />
       </node>
@@ -387,7 +381,6 @@
     </node>
     <node concept="3HP615" id="7GTlfWVJcPh" role="jymVt">
       <property role="TrG5h" value="Comparator" />
-      <property role="2bfB8j" value="true" />
       <node concept="16euLQ" id="7GTlfWVJcPi" role="16eVyc">
         <property role="TrG5h" value="U" />
       </node>

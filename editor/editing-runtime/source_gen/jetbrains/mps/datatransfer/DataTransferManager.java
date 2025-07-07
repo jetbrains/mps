@@ -17,11 +17,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
-@GeneratedClass(node = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)/618908363385245775", model = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)")
+@GeneratedClass(nodeId = "618908363385245775", model = "r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)")
 public final class DataTransferManager implements LanguageRegistryListener {
 
   /**
@@ -100,6 +101,7 @@ public final class DataTransferManager implements LanguageRegistryListener {
       postProcessor.postProcessNode(pastedNode);
       return;
     }
+    NodeIdentityComponent.getInstance().configure(pastedNode, SNodeOperations.getModel(pastedNode), null);
 
     for (SNode pastedChild : ListSequence.fromList(SNodeOperations.getChildren(pastedNode))) {
       postProcessNode(pastedChild);

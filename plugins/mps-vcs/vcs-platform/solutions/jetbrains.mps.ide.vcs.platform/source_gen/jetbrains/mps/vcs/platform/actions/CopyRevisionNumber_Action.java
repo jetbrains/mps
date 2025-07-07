@@ -19,7 +19,7 @@ import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
 import org.jetbrains.annotations.Nullable;
 
-@GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/2260553905836919251", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
+@GeneratedClass(nodeId = "2260553905836919251", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class CopyRevisionNumber_Action extends BaseAction {
   private static final Icon ICON = AllIcons.Actions.Copy;
 

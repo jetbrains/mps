@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.changes.ChangeListManagerImpl;
 
-@GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035924748", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
+@GeneratedClass(nodeId = "7545884443035924748", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class AddModuleToVcs_Action extends BaseAction {
   private static final Icon ICON = MPSIcons.Actions.AddToVCS;
 
