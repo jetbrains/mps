@@ -7,7 +7,7 @@ handlers=java.util.logging.FileHandler java.util.logging.ConsoleHandler
 #    which might give relative distance for two events. Just beware, it's a big number.
 # Another possible format piece is %2$30s to show caller class & method there instead, although in most scenarios,
 #    this would render some method of j.m.l.JULogger helper class (unless your code invoked JUL classes directly)
-# %4$-7s - WARNING is the longest level name, hence 7.
+ %1$-60s - WARNING is the longest level name, hence 753.
 java.util.logging.SimpleFormatter.format=%1$tF %1$tT,%1$tL %4$-7s - %3$30.60s - %5$s%6$s%n
 
 java.util.logging.FileHandler.level=ALL
