@@ -28038,30 +28038,6 @@
               </node>
             </node>
           </node>
-          <node concept="398223" id="3OCYZvr1TUF" role="39821P">
-            <node concept="398223" id="3OCYZvr1TZ3" role="39821P">
-              <node concept="3_J27D" id="3OCYZvr1TZ4" role="Nbhlr">
-                <node concept="3Mxwew" id="3OCYZvr1TZ5" role="3MwsjC">
-                  <property role="3MwjfP" value="laf-macos" />
-                </node>
-              </node>
-              <node concept="2HvfSZ" id="3OCYZvr1TZ6" role="39821P">
-                <node concept="55IIr" id="3OCYZvr1TZ7" role="2HvfZ0">
-                  <node concept="2Ry0Ak" id="3OCYZvr1TZ8" role="iGT6I">
-                    <property role="2Ry0Am" value="plugins" />
-                    <node concept="2Ry0Ak" id="3OCYZvr1TZ9" role="2Ry0An">
-                      <property role="2Ry0Am" value="laf-macos" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3_J27D" id="3OCYZvr1TUH" role="Nbhlr">
-              <node concept="3Mxwew" id="3OCYZvr1TYe" role="3MwsjC">
-                <property role="3MwjfP" value="plugins" />
-              </node>
-            </node>
-          </node>
           <node concept="28jJK3" id="1sQhFOgglTc" role="39821P">
             <node concept="2$gBol" id="6GoDrz9tCQc" role="28jJR8">
               <property role="2$htvj" value="*" />
@@ -29334,30 +29310,6 @@
                 </node>
               </node>
             </node>
-            <node concept="398223" id="3OCYZvqRyqH" role="39821P">
-              <node concept="3_J27D" id="3OCYZvqRyqJ" role="Nbhlr">
-                <node concept="3Mxwew" id="3OCYZvqRys5" role="3MwsjC">
-                  <property role="3MwjfP" value="plugins" />
-                </node>
-              </node>
-              <node concept="398223" id="3OCYZvqRysb" role="39821P">
-                <node concept="3_J27D" id="3OCYZvqRysc" role="Nbhlr">
-                  <node concept="3Mxwew" id="3OCYZvqRysf" role="3MwsjC">
-                    <property role="3MwjfP" value="laf-macos" />
-                  </node>
-                </node>
-                <node concept="2HvfSZ" id="3OCYZvqRysh" role="39821P">
-                  <node concept="55IIr" id="3OCYZvqRysi" role="2HvfZ0">
-                    <node concept="2Ry0Ak" id="3OCYZvqRyso" role="iGT6I">
-                      <property role="2Ry0Am" value="plugins" />
-                      <node concept="2Ry0Ak" id="3OCYZvqRyst" role="2Ry0An">
-                        <property role="2Ry0Am" value="laf-macos" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="28jJK3" id="2lgcjg39YuU" role="39821P">
               <node concept="2$gBol" id="6xv$4WsFwz8" role="28jJR8">
                 <property role="2$htvj" value="*" />
@@ -29818,30 +29770,6 @@
                 <node concept="3_J27D" id="6DuhW0rsrAn" role="Nbhlr">
                   <node concept="3Mxwew" id="6DuhW0rsrAL" role="3MwsjC">
                     <property role="3MwjfP" value="pty4j" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="398223" id="1dONgcPskIC" role="39821P">
-              <node concept="3_J27D" id="1dONgcPskID" role="Nbhlr">
-                <node concept="3Mxwew" id="1dONgcPskIE" role="3MwsjC">
-                  <property role="3MwjfP" value="plugins" />
-                </node>
-              </node>
-              <node concept="398223" id="1dONgcPskIF" role="39821P">
-                <node concept="3_J27D" id="1dONgcPskIG" role="Nbhlr">
-                  <node concept="3Mxwew" id="1dONgcPskIH" role="3MwsjC">
-                    <property role="3MwjfP" value="laf-macos" />
-                  </node>
-                </node>
-                <node concept="2HvfSZ" id="1dONgcPskII" role="39821P">
-                  <node concept="55IIr" id="1dONgcPskIJ" role="2HvfZ0">
-                    <node concept="2Ry0Ak" id="1dONgcPskIK" role="iGT6I">
-                      <property role="2Ry0Am" value="plugins" />
-                      <node concept="2Ry0Ak" id="1dONgcPskIL" role="2Ry0An">
-                        <property role="2Ry0Am" value="laf-macos" />
-                      </node>
-                    </node>
                   </node>
                 </node>
               </node>

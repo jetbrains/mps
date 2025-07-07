@@ -83,7 +83,6 @@ teamcity-info.xml
 /plugins/space
 # some default plugins (not mentioned in MPSProperties.groovy)
 /plugins/platform-images
-/plugins/laf-macos
 /plugins/mps-devkit/lib
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml

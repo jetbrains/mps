@@ -177,7 +177,6 @@
       <zipfileset dir="${basedir}/lib/pty4j/darwin" prefix="MPS ${mpsBootstrapCore.version}/lib/pty4j/x86-64" />
       <zipfileset dir="${basedir}/lib/pty4j/linux/x86-64" prefix="MPS ${mpsBootstrapCore.version}/lib/pty4j/x86-64" />
       <zipfileset dir="${basedir}/lib/pty4j/win/x86-64" prefix="MPS ${mpsBootstrapCore.version}/lib/pty4j/x86-64" />
-      <zipfileset dir="${basedir}/plugins/laf-macos" prefix="MPS ${mpsBootstrapCore.version}/plugins/laf-macos" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f755" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7551" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/win" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip" />
@@ -402,7 +401,6 @@
       <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/lib/jna/darwin-x86-64/libjnidispatch.jnilib" prefix="MPS.app/Contents/lib/jna" />
       <zipfileset file="${basedir}/lib/pty4j/darwin/libpty.dylib" prefix="MPS.app/Contents/lib/pty4j/darwin" />
-      <zipfileset dir="${basedir}/plugins/laf-macos" prefix="MPS.app/Contents/plugins/laf-macos" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" filemode="755" prefix="MPS.app/Contents/MacOS" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip" />
     </zip>
@@ -483,7 +481,6 @@
       <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/lib/jna/darwin-aarch64/libjnidispatch.jnilib" prefix="MPS.app/Contents/lib/jna" />
       <zipfileset file="${basedir}/lib/pty4j/darwin/libpty.dylib" prefix="MPS.app/Contents/lib/pty4j/darwin" />
-      <zipfileset dir="${basedir}/plugins/laf-macos" prefix="MPS.app/Contents/plugins/laf-macos" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755" filemode="755" prefix="MPS.app/Contents/MacOS" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip" />
     </zip>
