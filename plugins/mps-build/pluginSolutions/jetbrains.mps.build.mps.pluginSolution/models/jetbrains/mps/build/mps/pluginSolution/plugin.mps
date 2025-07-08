@@ -14691,6 +14691,52 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="28u9K_" id="6wqRQFISgoz" role="39821P">
+                    <property role="28hIV_" value="Linux startup binary" />
+                  </node>
+                  <node concept="28jJK3" id="6wqRQFIS6Xf" role="39821P">
+                    <property role="28jJZ5" value="755" />
+                    <node concept="55IIr" id="6wqRQFIS6Xg" role="28jJRO">
+                      <node concept="2c44te" id="6wqRQFIS6Xh" role="lGtFl">
+                        <node concept="1rXfSq" id="6wqRQFIS6Xi" role="2c44t1">
+                          <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                          <node concept="2c44tf" id="6wqRQFIS6Xj" role="37wK5m">
+                            <node concept="55IIr" id="6wqRQFIS6Xk" role="2c44tc">
+                              <node concept="2Ry0Ak" id="6wqRQFIS6Xl" role="iGT6I">
+                                <property role="2Ry0Am" value="bin" />
+                                <node concept="2Ry0Ak" id="6wqRQFIS6Xm" role="2Ry0An">
+                                  <property role="2Ry0Am" value="linux" />
+                                  <node concept="2Ry0Ak" id="6wqRQFISfEj" role="2Ry0An">
+                                    <property role="2Ry0Am" value="mps" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="37vLTw" id="6wqRQFIS6Xq" role="37wK5m">
+                            <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2$gBol" id="6wqRQFIS6Xr" role="28jJR8">
+                      <property role="2$htvj" value="*" />
+                      <node concept="NbPM2" id="6wqRQFIS6Xs" role="2$htvi">
+                        <node concept="3Mxwew" id="6wqRQFIS6Xt" role="3MwsjC">
+                          <property role="3MwjfP" value="mps" />
+                          <node concept="2EMmih" id="6wqRQFIS6Xu" role="lGtFl">
+                            <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/4903714810883702019/4903714810883755350" />
+                            <property role="2qtEX9" value="text" />
+                            <property role="3hQQBS" value="BuildTextStringPart" />
+                            <property role="3qcH_f" value="true" />
+                            <node concept="37vLTw" id="6wqRQFIS6Xv" role="2c44t1">
+                              <ref role="3cqZAo" node="2g$3PZUmxE8" resolve="scriptName" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
                 <node concept="28jJK3" id="4EMkPAupjlx" role="39821P">
                   <node concept="2$gBol" id="6GoDrz9tCQc" role="28jJR8">
@@ -15017,6 +15063,57 @@
                         <node concept="2c44te" id="2g$3PZUmHH5" role="lGtFl">
                           <node concept="37vLTw" id="2g$3PZUmI0N" role="2c44t1">
                             <ref role="3cqZAo" node="2g$3PZUm6KA" resolve="batWindows" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="28u9K_" id="6wqRQFISfZ_" role="39821P">
+                    <property role="28hIV_" value="Startup .exe file" />
+                  </node>
+                  <node concept="28jJK3" id="6wqRQFIRWIy" role="39821P">
+                    <property role="28jJZ5" value="755" />
+                    <node concept="55IIr" id="6wqRQFIRWIz" role="28jJRO">
+                      <node concept="2c44te" id="6wqRQFIRWI$" role="lGtFl">
+                        <node concept="1rXfSq" id="6wqRQFIRWI_" role="2c44t1">
+                          <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                          <node concept="2c44tf" id="6wqRQFIRWIA" role="37wK5m">
+                            <node concept="55IIr" id="6wqRQFIRWIB" role="2c44tc">
+                              <node concept="2Ry0Ak" id="6wqRQFIRWIC" role="iGT6I">
+                                <property role="2Ry0Am" value="bin" />
+                                <node concept="2Ry0Ak" id="6wqRQFIRWID" role="2Ry0An">
+                                  <property role="2Ry0Am" value="win" />
+                                  <node concept="2Ry0Ak" id="6wqRQFIS5sf" role="2Ry0An">
+                                    <property role="2Ry0Am" value="mps.exe" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="37vLTw" id="6wqRQFIRWIH" role="37wK5m">
+                            <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2$gBol" id="6wqRQFIRWII" role="28jJR8">
+                      <property role="2$htvj" value="*" />
+                      <node concept="NbPM2" id="6wqRQFIRWIJ" role="2$htvi">
+                        <node concept="3Mxwew" id="6wqRQFIRWIK" role="3MwsjC">
+                          <property role="3MwjfP" value="mps" />
+                          <node concept="2EMmih" id="6wqRQFIRWIL" role="lGtFl">
+                            <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/4903714810883702019/4903714810883755350" />
+                            <property role="2qtEX9" value="text" />
+                            <property role="3hQQBS" value="BuildTextStringPart" />
+                            <property role="3qcH_f" value="true" />
+                            <node concept="3cpWs3" id="6wqRQFIS5Xn" role="2c44t1">
+                              <node concept="Xl_RD" id="6wqRQFIS65g" role="3uHU7w">
+                                <property role="Xl_RC" value=".exe" />
+                              </node>
+                              <node concept="37vLTw" id="6wqRQFIRWIM" role="3uHU7B">
+                                <ref role="3cqZAo" node="2g$3PZUmxE8" resolve="scriptName" />
+                              </node>
+                            </node>
                           </node>
                         </node>
                       </node>
