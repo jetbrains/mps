@@ -27722,13 +27722,21 @@
                   </node>
                   <node concept="28jJK3" id="68Q93W$5k7O" role="39821P">
                     <property role="28jJZ5" value="755" />
+                    <node concept="2$gBol" id="6wqRQFIuA$0" role="28jJR8">
+                      <property role="2$htvj" value="*" />
+                      <node concept="NbPM2" id="6wqRQFIuA$1" role="2$htvi">
+                        <node concept="3Mxwew" id="6wqRQFIuA$2" role="3MwsjC">
+                          <property role="3MwjfP" value="mps-x64" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="55IIr" id="68Q93W$5k7P" role="28jJRO">
                       <node concept="2Ry0Ak" id="68Q93W$5k7Q" role="iGT6I">
                         <property role="2Ry0Am" value="build" />
                         <node concept="2Ry0Ak" id="68Q93W$5k7R" role="2Ry0An">
                           <property role="2Ry0Am" value="resources" />
-                          <node concept="2Ry0Ak" id="68Q93W$5k7S" role="2Ry0An">
-                            <property role="2Ry0Am" value="mps-x64" />
+                          <node concept="2Ry0Ak" id="6wqRQFIuAJU" role="2Ry0An">
+                            <property role="2Ry0Am" value="mps-mac-64" />
                           </node>
                         </node>
                       </node>
@@ -27736,13 +27744,21 @@
                   </node>
                   <node concept="28jJK3" id="3f6C5dcXexa" role="39821P">
                     <property role="28jJZ5" value="755" />
+                    <node concept="2$gBol" id="6wqRQFIuAOg" role="28jJR8">
+                      <property role="2$htvj" value="*" />
+                      <node concept="NbPM2" id="6wqRQFIuAOh" role="2$htvi">
+                        <node concept="3Mxwew" id="6wqRQFIuAOi" role="3MwsjC">
+                          <property role="3MwjfP" value="mps-aarch64" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="55IIr" id="3f6C5dcXexb" role="28jJRO">
                       <node concept="2Ry0Ak" id="3f6C5dcXexc" role="iGT6I">
                         <property role="2Ry0Am" value="build" />
                         <node concept="2Ry0Ak" id="3f6C5dcXexd" role="2Ry0An">
                           <property role="2Ry0Am" value="resources" />
-                          <node concept="2Ry0Ak" id="68Q93W$5k7T" role="2Ry0An">
-                            <property role="2Ry0Am" value="mps-aarch64" />
+                          <node concept="2Ry0Ak" id="6wqRQFIuAWV" role="2Ry0An">
+                            <property role="2Ry0Am" value="mps-mac-aarch64" />
                           </node>
                         </node>
                       </node>
@@ -29202,8 +29218,8 @@
                     <property role="2Ry0Am" value="build" />
                     <node concept="2Ry0Ak" id="2lgcjg39YuR" role="2Ry0An">
                       <property role="2Ry0Am" value="resources" />
-                      <node concept="2Ry0Ak" id="2YQC3bF5d1Q" role="2Ry0An">
-                        <property role="2Ry0Am" value="mps-x64" />
+                      <node concept="2Ry0Ak" id="6wqRQFIuxzp" role="2Ry0An">
+                        <property role="2Ry0Am" value="mps-mac-64" />
                       </node>
                     </node>
                   </node>
@@ -29666,8 +29682,8 @@
                     <property role="2Ry0Am" value="build" />
                     <node concept="2Ry0Ak" id="1dONgcPskHP" role="2Ry0An">
                       <property role="2Ry0Am" value="resources" />
-                      <node concept="2Ry0Ak" id="2YQC3bF5dgp" role="2Ry0An">
-                        <property role="2Ry0Am" value="mps-aarch64" />
+                      <node concept="2Ry0Ak" id="6wqRQFIuxH7" role="2Ry0An">
+                        <property role="2Ry0Am" value="mps-mac-aarch64" />
                       </node>
                     </node>
                   </node>

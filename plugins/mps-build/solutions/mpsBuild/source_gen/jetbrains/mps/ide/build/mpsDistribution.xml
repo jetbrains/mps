@@ -113,6 +113,16 @@
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}/bin/mac" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}/bin/mac/Contents" />
+    <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7554" />
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7554">
+      <fileset file="${basedir}/build/resources/mps-mac-64" />
+      <globmapper from="*" to="mps-x64" />
+    </copy>
+    <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7555" />
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7555">
+      <fileset file="${basedir}/build/resources/mps-mac-aarch64" />
+      <globmapper from="*" to="mps-aarch64" />
+    </copy>
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}/bin/mac/Contents">
       <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/Info.plist.xml" />
       <filterchain>
@@ -173,8 +183,6 @@
       <zipfileset file="${basedir}/bin/mac/aarch64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/aarch64" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/amd64" filemode="755" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/Resources" />
-      <zipfileset file="${basedir}/build/resources/mps-x64" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
-      <zipfileset file="${basedir}/build/resources/mps-aarch64" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
       <zipfileset dir="${basedir}/lib/jna/darwin-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
       <zipfileset dir="${basedir}/lib/jna/linux-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
       <zipfileset dir="${basedir}/lib/jna/win32-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
@@ -191,6 +199,8 @@
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7551" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/win" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7552" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/win" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7553" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" />
+      <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7554" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" />
+      <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7555" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip" />
     </zip>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-linux.tar.gz" />
@@ -373,7 +383,7 @@
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755">
-      <fileset file="${basedir}/build/resources/mps-x64" />
+      <fileset file="${basedir}/build/resources/mps-mac-64" />
       <globmapper from="*" to="mps" />
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS.app/Contents/bin" />
@@ -453,7 +463,7 @@
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755">
-      <fileset file="${basedir}/build/resources/mps-aarch64" />
+      <fileset file="${basedir}/build/resources/mps-mac-aarch64" />
       <globmapper from="*" to="mps" />
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS.app/Contents/bin" />
