@@ -282,6 +282,9 @@
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
+      <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
+        <child id="1151689745422" name="elementType" index="A3Ik2" />
+      </concept>
       <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
         <child id="1153944400369" name="variable" index="2Gsz3X" />
         <child id="1153944424730" name="inputSequence" index="2GsD0m" />
@@ -5739,11 +5742,58 @@
         <node concept="1WS0z7" id="6GoDrz8MA0i" role="lGtFl">
           <node concept="3JmXsc" id="6GoDrz8MA0j" role="3Jn$fo">
             <node concept="3clFbS" id="6GoDrz8MA0k" role="2VODD2">
+              <node concept="3cpWs8" id="6wqRQFGVsCL" role="3cqZAp">
+                <node concept="3cpWsn" id="6wqRQFGVsCM" role="3cpWs9">
+                  <property role="TrG5h" value="openedPackages" />
+                  <node concept="A3Dl8" id="6wqRQFGVsmt" role="1tU5fm">
+                    <node concept="17QB3L" id="6wqRQFGVsmw" role="A3Ik2" />
+                  </node>
+                  <node concept="1eOMI4" id="6wqRQFGVAla" role="33vP2m">
+                    <node concept="3K4zz7" id="6wqRQFGVAlb" role="1eOMHV">
+                      <node concept="3K4zz7" id="6wqRQFGVAlc" role="3K4GZi">
+                        <node concept="2OqwBi" id="6wqRQFGVAld" role="3K4Cdx">
+                          <node concept="Xl_RD" id="6wqRQFGVAle" role="2Oq$k0">
+                            <property role="Xl_RC" value="Windows" />
+                          </node>
+                          <node concept="liA8E" id="6wqRQFGVAlf" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                            <node concept="v3LJS" id="6wqRQFGVAlg" role="37wK5m">
+                              <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2YIFZM" id="6wqRQFHv6gY" role="3K4E3e">
+                          <ref role="37wK5l" to="v5fn:2_gL36cJXuW" resolve="getWindowsOpenedPackages" />
+                          <ref role="1Pybhc" to="v5fn:2_gL36cJJGu" resolve="OpenedPackages" />
+                        </node>
+                        <node concept="2YIFZM" id="6wqRQFHv7HV" role="3K4GZi">
+                          <ref role="37wK5l" to="v5fn:2_gL36cJXlS" resolve="getLinuxOpenedPackages" />
+                          <ref role="1Pybhc" to="v5fn:2_gL36cJJGu" resolve="OpenedPackages" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="6wqRQFGVAlj" role="3K4Cdx">
+                        <node concept="Xl_RD" id="6wqRQFGVAlk" role="2Oq$k0">
+                          <property role="Xl_RC" value="macOS" />
+                        </node>
+                        <node concept="liA8E" id="6wqRQFGVAll" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                          <node concept="v3LJS" id="6wqRQFGVAlm" role="37wK5m">
+                            <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2YIFZM" id="6wqRQFGVAln" role="3K4E3e">
+                        <ref role="37wK5l" to="v5fn:2_gL36cJUCx" resolve="getMacOpenedPackages" />
+                        <ref role="1Pybhc" to="v5fn:2_gL36cJJGu" resolve="OpenedPackages" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="6GoDrz8MA0l" role="3cqZAp">
                 <node concept="2OqwBi" id="6GoDrz8MA0m" role="3clFbG">
-                  <node concept="2YIFZM" id="6GoDrz8MA0n" role="2Oq$k0">
-                    <ref role="37wK5l" to="v5fn:2_gL36cJUCx" resolve="getMacOpenedPackages" />
-                    <ref role="1Pybhc" to="v5fn:2_gL36cJJGu" resolve="OpenedPackages" />
+                  <node concept="37vLTw" id="6wqRQFGVsCO" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6wqRQFGVsCM" resolve="openedPackages" />
                   </node>
                   <node concept="3$u5V9" id="6GoDrz8MA0o" role="2OqNvi">
                     <node concept="1bVj0M" id="6GoDrz8MA0p" role="23t8la">

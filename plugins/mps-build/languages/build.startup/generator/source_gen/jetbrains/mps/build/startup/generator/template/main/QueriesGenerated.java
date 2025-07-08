@@ -436,7 +436,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$_ysz);
   }
   public static Iterable<SNode> sourceNodesQuery_6_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(OpenedPackages.getMacOpenedPackages()).select((it) -> {
+    Iterable<String> openedPackages = (("macOS".equals(((String) _context.getVariable("os"))) ? OpenedPackages.getMacOpenedPackages() : ("Windows".equals(((String) _context.getVariable("os"))) ? OpenedPackages.getWindowsOpenedPackages() : OpenedPackages.getLinuxOpenedPackages())));
+    return Sequence.fromIterable(openedPackages).select((it) -> {
       SNode n = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, "jetbrains.mps.build.startup.structure.TextLine"));
       SPropertyOperations.assign(n, PROPS.text$DMB3, String.format("        \"--add-opens=%s=ALL-UNNAMED\",", it));
       return n;
