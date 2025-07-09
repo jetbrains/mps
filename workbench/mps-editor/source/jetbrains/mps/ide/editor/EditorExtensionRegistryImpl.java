@@ -53,6 +53,9 @@ public class EditorExtensionRegistryImpl implements EditorExtensionRegistry {
 
     for (Entry<EditorComponent, Collection<EditorExtension>> entry : myEditorExtensions.entrySet()) {
       EditorComponent editorComponent = entry.getKey();
+      if (!extension.isApplicable(editorComponent)) {
+        continue;
+      }
       if (!entry.getValue().add(extension)) {
         throw new IllegalArgumentException("Extension already installed on editor component: " + extension + ", " + editorComponent);
       }
