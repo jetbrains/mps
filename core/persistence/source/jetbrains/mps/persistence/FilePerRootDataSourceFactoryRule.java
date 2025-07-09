@@ -23,6 +23,7 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSourceFac
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -55,7 +56,9 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
     return new DataSourceFactoryFromPath() {
       @Override
       public @NotNull DataSource create(@NotNull Path path) {
-        IFile f = myFileManager.getFileSystem(path.isArchive() ? VFSManager.JAR_FS : VFSManager.FILE_FS).getFile(path.toUnixPathFormat().toText());
+        // IFileSystem.getFile(String) is very picky about path format
+        final String osIndependentPath = PathUtil.toSystemIndependent(path.toText());
+        IFile f = myFileManager.getFileSystem(path.isArchive() ? VFSManager.JAR_FS : VFSManager.FILE_FS).getFile(osIndependentPath);
         // XXX see FileDataSourceFactoryRule.spawn(Path)
         //noinspection removal
         return PreinstalledPathDataSourceFactories.FILE_OR_FOLDER.createFromFile(f);

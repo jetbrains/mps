@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,9 @@ public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
   @NotNull
   default IFile getFile(@NotNull Path path) {
     // fixme for now we resort to the text representation, but Path is to be extensively used in IFile implementations
-    return getFile(path.toUnixPathFormat().toText());
+    // return getFile(path.toUnixPathFormat().toText()); XXX this doesn't work, can't translate "c:\abc\cde".toUnixPathFormat
+    //    and it's not clear ATM if it's a defect of Path impl (broken contract) or anything else.
+    return getFile(PathUtil.toSystemIndependent(path.toText()));
   }
 
   @NotNull

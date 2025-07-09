@@ -22,6 +22,7 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSourceFac
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -58,7 +59,9 @@ import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceT
       @Override
       public @NotNull DataSource create(@NotNull Path path) {
         // see FileSystem.getFile(Path)
-        IFile f = myFileManager.getFileSystem(path.isArchive() ? VFSManager.JAR_FS : VFSManager.FILE_FS).getFile(path.toUnixPathFormat().toText());
+        // IFileSystem.getFile(String) is very picky about path format
+        final String osIndependentPath = PathUtil.toSystemIndependent(path.toText());
+        IFile f = myFileManager.getFileSystem(path.isArchive() ? VFSManager.JAR_FS : VFSManager.FILE_FS).getFile(osIndependentPath);
         // this is just a tribute to legacy code, in fact, shall create FileDataSource right away. I see no reason for file OR folder ambiguity
         //noinspection removal
         return PreinstalledPathDataSourceFactories.FILE_OR_FOLDER.createFromFile(f);
