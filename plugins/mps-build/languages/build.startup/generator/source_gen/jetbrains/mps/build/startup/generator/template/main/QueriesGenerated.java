@@ -14,7 +14,7 @@ import jetbrains.mps.build.startup.behavior.MpsStartupScript__BehaviorDescriptor
 import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
 import java.text.MessageFormat;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.build.startup.util.OpenedPackages;
+import jetbrains.mps.ide.platform.OpenedPackages;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;

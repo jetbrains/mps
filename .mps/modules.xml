@@ -279,7 +279,6 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/solutions/jetbrains.mps.build.mps.migration/jetbrains.mps.build.migration.msd" folder="plugins.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" folder="plugins.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/solutions/jetbrains.mps.build.sandbox/jetbrains.mps.build.sandbox.msd" folder="plugins.build" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-build/solutions/jetbrains.mps.build.startup.util/jetbrains.mps.build.startup.util.msd" folder="plugins.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/solutions/mpsBuild/jetbrains.mps.ide.build.msd" folder="plugins.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/solutions/workflow.preset/jetbrains.mps.build.workflow.preset.msd" folder="plugins.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/test/jetbrains.mps.build.mps.runner.test/jetbrains.mps.build.mps.runner.test.msd" folder="plugins.build.runner.test" />
