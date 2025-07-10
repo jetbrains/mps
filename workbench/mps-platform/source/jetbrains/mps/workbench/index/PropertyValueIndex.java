@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.workbench.index;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.util.indexing.DataIndexer;
 import com.intellij.util.indexing.DefaultFileTypeSpecificInputFilter;
@@ -114,26 +113,6 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   };
 
   public PropertyValueIndex() {
-    // copied from MPSModelsIndexer
-    final Platform mpsPlatform = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
-    for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
-      if (mf instanceof IndexAwareModelFactory) {
-        for (DataSourceType type : mf.getPreferredDataSourceTypes()) {
-          if (type instanceof FileExtensionDataSourceType) {
-            String fileExt = ((FileExtensionDataSourceType) type).getFileExtension();
-            final FileType ft = MPSFileTypeFactory.findByExtension(fileExt);
-            if (ft != null) {
-              myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
-            }
-          }
-        }
-      }
-    }
-    IndexAwareModelFactory mf = myIndexAwareFileTypes.get(MPSFileTypeFactory.MPS_FILE_TYPE);
-    if (mf != null) {
-      myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, mf);
-      myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE, mf);
-    }
   }
 
   @NotNull
@@ -146,7 +125,33 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   @Override
   public InputFilter getInputFilter() {
     // FIXME need to filter out checkpoint models somehow! They are huge and are not worth indexing!
-    return new DefaultFileTypeSpecificInputFilter(myIndexAwareFileTypes.keySet().toArray(new FileType[0]));
+    return new DefaultFileTypeSpecificInputFilter(getFileTypes().keySet().toArray(new FileType[0]));
+  }
+
+  private Map<FileType, IndexAwareModelFactory> getFileTypes() {
+    if (myIndexAwareFileTypes.isEmpty()) {
+      // copied from MPSModelsIndexer
+      final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
+      for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
+        if (mf instanceof IndexAwareModelFactory) {
+          for (DataSourceType type : mf.getPreferredDataSourceTypes()) {
+            if (type instanceof FileExtensionDataSourceType) {
+              String fileExt = ((FileExtensionDataSourceType) type).getFileExtension();
+              final FileType ft = MPSFileTypeFactory.findByExtension(fileExt);
+              if (ft != null) {
+                myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
+              }
+            }
+          }
+        }
+      }
+      IndexAwareModelFactory mf = myIndexAwareFileTypes.get(MPSFileTypeFactory.MPS_FILE_TYPE);
+      if (mf != null) {
+        myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, mf);
+        myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE, mf);
+      }
+    }
+    return myIndexAwareFileTypes;
   }
 
   @Override
@@ -157,7 +162,7 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
   @NotNull
   @Override
   public DataIndexer<WordIndexEntry, ModelNodesData, FileContent> getIndexer() {
-    return new ValueIndexer(myIndexAwareFileTypes::get, myWordSplitPattern);
+    return new ValueIndexer(getFileTypes()::get, myWordSplitPattern);
   }
 
   @NotNull
