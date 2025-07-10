@@ -50,6 +50,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * Bridge {@link IndexAwareModelFactory} to IDEA file-backed indexing mechanism
@@ -64,32 +65,38 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   }
 
   public MPSModelsIndexer() {
-    final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
-    // FTR, (a) there's duplicated code in PropertyValueIndex,
-    //      (b) RootNodeNameIndex.doModeParsing() approaches MF detection in a different way (likely, less hacky)
-    //      (c)  MPSFileTypeFactory.findByExtension("model") == null, therefore not FilePerRootModelFactory for MPSFileTypeFactory.MPS_HEADER_FILE_TYPE,
-    //           which is added with extra code, below. Note, that code overwrites IAMF for .mpsr files (which is detected by findByExtension)
-    //      I suppose using logic like in RootNodeNameIndex (if we don't get our own MPS-aware indexer that doesn't look into files) would help to
-    //      get rid of deprecated MF.getPreferredDataSourceTypes()
-    for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
-      if (mf instanceof IndexAwareModelFactory) {
-        for (DataSourceType type : mf.getPreferredDataSourceTypes()) {
-          if (type instanceof FileExtensionDataSourceType) {
-            String fileExt = ((FileExtensionDataSourceType) type).getFileExtension();
-            final FileType ft = MPSFileTypeFactory.findByExtension(fileExt);
-            if (ft != null) {
-              myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
+  }
+
+  private Map<FileType, IndexAwareModelFactory> getFileTypes() {
+    if (myIndexAwareFileTypes.isEmpty()) {
+      final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
+      // FTR, (a) there's duplicated code in PropertyValueIndex,
+      //      (b) RootNodeNameIndex.doModeParsing() approaches MF detection in a different way (likely, less hacky)
+      //      (c)  MPSFileTypeFactory.findByExtension("model") == null, therefore not FilePerRootModelFactory for MPSFileTypeFactory.MPS_HEADER_FILE_TYPE,
+      //           which is added with extra code, below. Note, that code overwrites IAMF for .mpsr files (which is detected by findByExtension)
+      //      I suppose using logic like in RootNodeNameIndex (if we don't get our own MPS-aware indexer that doesn't look into files) would help to
+      //      get rid of deprecated MF.getPreferredDataSourceTypes()
+      for (ModelFactory mf : mpsPlatform.findComponent(ModelFactoryService.class).getFactories()) {
+        if (mf instanceof IndexAwareModelFactory) {
+          for (DataSourceType type : mf.getPreferredDataSourceTypes()) {
+            if (type instanceof FileExtensionDataSourceType) {
+              String fileExt = ((FileExtensionDataSourceType) type).getFileExtension();
+              final FileType ft = MPSFileTypeFactory.findByExtension(fileExt);
+              if (ft != null) {
+                myIndexAwareFileTypes.put(ft, (IndexAwareModelFactory) mf);
+              }
             }
           }
         }
       }
+      IndexAwareModelFactory mf = myIndexAwareFileTypes.get(MPSFileTypeFactory.MPS_FILE_TYPE);
+      if (mf != null) {
+        // ModelFactory is registered for the 'primary' extension name only, duplicate for 'auxiliary' extensions as well
+        myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, mf);
+        myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE, mf);
+      }
     }
-    IndexAwareModelFactory mf = myIndexAwareFileTypes.get(MPSFileTypeFactory.MPS_FILE_TYPE);
-    if (mf != null) {
-      // ModelFactory is registered for the 'primary' extension name only, duplicate for 'auxiliary' extensions as well
-      myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_HEADER_FILE_TYPE, mf);
-      myIndexAwareFileTypes.put(MPSFileTypeFactory.MPS_ROOT_FILE_TYPE, mf);
-    }
+    return myIndexAwareFileTypes;
   }
 
   @NotNull
@@ -101,7 +108,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   @NotNull
   @Override
   public DataIndexer<UsageEntry, Void, FileContent> getIndexer() {
-    return new ModelIndexer();
+    return new ModelIndexer(getFileTypes()::get);
   }
 
   @NotNull
@@ -113,7 +120,7 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
   @NotNull
   @Override
   public InputFilter getInputFilter() {
-    return new DefaultFileTypeSpecificInputFilter(myIndexAwareFileTypes.keySet().toArray(new FileType[0]));
+    return new DefaultFileTypeSpecificInputFilter(getFileTypes().keySet().toArray(new FileType[0]));
   }
 
   @Override
@@ -154,12 +161,18 @@ public class MPSModelsIndexer extends ScalarIndexExtension<UsageEntry> {
     }
   }
 
-  private class ModelIndexer implements DataIndexer<UsageEntry, Void, FileContent> {
+  private static class ModelIndexer implements DataIndexer<UsageEntry, Void, FileContent> {
+
+    private final Function<FileType, IndexAwareModelFactory> myFactoryAccess;
+
+    /*package*/ModelIndexer(Function<FileType, IndexAwareModelFactory> factoryAccess) {
+      myFactoryAccess = factoryAccess;
+    }
 
     @NotNull
     @Override
     public Map<UsageEntry, Void> map(@NotNull FileContent inputData) {
-      IndexAwareModelFactory mf = myIndexAwareFileTypes.get(inputData.getFileType());
+      IndexAwareModelFactory mf = myFactoryAccess.apply(inputData.getFileType());
       if (mf == null) {
         return Collections.emptyMap();
       }
