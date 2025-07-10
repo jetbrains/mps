@@ -43,6 +43,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * User: fyodor
@@ -53,7 +54,7 @@ public abstract class SimpleTypecheckingContext<
     TCHECK extends BaseTypechecking<STATE, ? extends SimpleTypecheckingComponent<STATE>>>
   extends BaseTypecheckingContext {
 
-  private TCHECK myTypechecking;
+  private final AtomicReference<TCHECK> myTypechecking = new AtomicReference<>();
   private STATE myState;
   private boolean myCurrentlyChecking;
 
@@ -77,10 +78,10 @@ public abstract class SimpleTypecheckingContext<
   }
 
   public TCHECK getTypechecking() {
-    if (myTypechecking == null) {
+    if (myTypechecking.get() == null) {
       setTypechecking(createTypechecking());
     }
-    return myTypechecking;
+    return myTypechecking.get();
   }
 
   @Override
@@ -184,9 +185,8 @@ public abstract class SimpleTypecheckingContext<
   }
 
   protected final void setTypechecking(TCHECK typechecking) {
-    assert myTypechecking == null;
     assert typechecking != null;
-    myTypechecking = typechecking;
+    myTypechecking.compareAndSet(null, typechecking);
   }
 
   @Override
