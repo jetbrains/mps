@@ -541,8 +541,8 @@
              url="https://www.jetbrains.com/mps/nextversion"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2025" minorVersoin="2">
-      <build number="252.18003.138" version="2025.2 EAP1">
-        <message>JetBrains MPS 2025.2 EAP1 is now available.</message>
+      <build number="252.23309.308" version="2025.2 EAP2">
+        <message>JetBrains MPS 2025.2 EAP2 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/nextversion" download="true"/>
       </build>
     </channel>
