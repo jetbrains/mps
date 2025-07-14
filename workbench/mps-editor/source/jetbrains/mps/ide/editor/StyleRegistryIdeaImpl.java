@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,9 +37,9 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +56,6 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
 
   public StyleRegistryIdeaImpl() {
     fillIdeaMappings();
-    fillColorMappings();
     fillCustomStyles();
   }
 
@@ -192,11 +191,11 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
       return color;
     }
 
-    final Color original = color;
-    Pair<Color, Color> colorPair = new Pair<>(original, bg);
-    if (my2DarkColorsMapping.containsKey(colorPair)) {
-      return my2DarkColorsMapping.get(colorPair);
+    final Color compatibilityMapping = mapUsingCustomDarkColors(color, bg);
+    if (compatibilityMapping != null) {
+      return compatibilityMapping;
     }
+    final Color original = color;
 
     if ((Math.abs(color.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) * (Math.abs(bg.getRGB()) - Math.abs(Color.BLACK.getRGB()) / 2) < 0) {
       color = new Color(255 - color.getRed(), 255 - color.getGreen(), 255 - color.getBlue());
@@ -218,7 +217,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
       counter++;
     }
 
-    my2DarkColorsMapping.put(colorPair, color);
+    my2DarkColorsMapping.put(new Pair<>(original, bg), color);
     return color;
   }
 
@@ -318,6 +317,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
 
   @Deprecated
   private void fillColorMappings() {
+    // XXX the map can't get populated at class init as it may trigger IDEA exception due to internal state expectations
     final Color bg = getEditorBackground();
     // todo we need to remove this colors since user must provide JBColor all by himself or even better use some color scheme
     my2DarkColorsMapping.put(new Pair<>(Color.PINK, bg), JBColor.PINK.darker().darker());
@@ -332,6 +332,15 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     my2DarkColorsMapping.put(new Pair<>(Color.DARK_GRAY, bg), JBColor.DARK_GRAY);
     my2DarkColorsMapping.put(new Pair<>(Color.WHITE, bg), getEditorBackground());
     my2DarkColorsMapping.put(new Pair<>(Color.BLACK, bg), getEditorForeground());
+  }
+
+  @Nullable
+  private Color mapUsingCustomDarkColors(Color original, Color bg) {
+    // I hope we don't call this method from different threads, hence no sync/check here
+    if (my2DarkColorsMapping.isEmpty()) {
+      fillColorMappings();
+    }
+    return my2DarkColorsMapping.get(new Pair<>(original, bg));
   }
 
   private void addIdeaMappingsExt(String mpsKey, String ideaKey) throws StyleRegistryMappingKeyException {
