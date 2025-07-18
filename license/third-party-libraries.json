@@ -1003,7 +1003,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.13.8",
+  "version" : "0.13.9",
   "license" : "EPL 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {
@@ -1015,31 +1015,31 @@
 }, {
   "name" : "rd Swing integration",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-swing",
-  "version" : "2025.1.1",
+  "version" : "2025.2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd core",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-core",
-  "version" : "2025.1.1",
+  "version" : "2025.2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd framework",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-framework",
-  "version" : "2025.1.1",
+  "version" : "2025.2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd generator",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-gen",
-  "version" : "2025.1.1",
+  "version" : "2025.2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd text buffers",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-text",
-  "version" : "2025.1.1",
+  "version" : "2025.2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {

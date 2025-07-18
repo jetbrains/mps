@@ -47,8 +47,6 @@
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.find.backend.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.frontend.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.ide.impl.wsl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.identifiers.highlighting.backend.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.identifiers.highlighting.shared.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.images.backend.svg.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.images.copyright.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.inline.completion.jar!/" />
@@ -101,6 +99,9 @@
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.tasks.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.tasks.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.spellchecker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.managed.cache.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.scopes.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.scopes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
