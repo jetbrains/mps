@@ -1763,8 +1763,9 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((jmAntJar != null)) {
       return helper.getLocation(jmAntJar);
     }
-
-    _context.showErrorMessage(null, String.format("No '%s' artifact has been found in dependencies, using some ${mps_home}-relative defaults", artifact));
+    // fun fact - if BuildProject doesn't import 'java' plugins, BuildMPSPlugin.fetchDependencies can't find and register "ant-mps" artifact
+    // as java modules/libraries get into scope through 'java' plugin. Hence, the default we've got here is vital to point to a correct jar
+    _context.showWarningMessage(null, String.format("No '%s' artifact has been found in dependencies, likely 'java' plugin is not activated. Using some ${mps_home}-relative defaults", artifact));
     return null;
   }
   public static Object varMacro_Value_8_1(final TemplateVarContext _context) {
@@ -1777,7 +1778,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     // in fact, [ant-mps] uses mps-annotations and we might need that dependency as well,
     // but as long as GeneratedClass annotation is CLASS-level, so far it works without the dependency
-    _context.showErrorMessage(null, String.format("No '%s' artifact has been found in dependencies, using some ${mps_home}-relative defaults", artifact));
+    _context.showWarningMessage(null, String.format("No '%s' artifact has been found in dependencies, likely 'java' plugin is not activated. Using some ${mps_home}-relative defaults", artifact));
     return null;
   }
   public static Object varMacro_Value_8_2(final TemplateVarContext _context) {

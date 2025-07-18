@@ -180,6 +180,7 @@
       <concept id="1207055528241" name="jetbrains.mps.lang.typesystem.structure.WarningStatement" flags="nn" index="a7r0C">
         <child id="1207055552304" name="warningText" index="a7wSD" />
       </concept>
+      <concept id="5672535223916537938" name="jetbrains.mps.lang.typesystem.structure.QuickFixApplicableBlock" flags="in" index="rPOND" />
       <concept id="1224760201579" name="jetbrains.mps.lang.typesystem.structure.InfoStatement" flags="nn" index="Dpp1Q">
         <child id="1224760230762" name="infoText" index="Dpw9R" />
       </concept>
@@ -190,6 +191,7 @@
         <reference id="1227096645744" name="linkDeclaration" index="2OEe5H" />
       </concept>
       <concept id="1216383170661" name="jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix" flags="ng" index="Q5z_Y">
+        <child id="5672535223916540985" name="applicableBlock" index="rPP22" />
         <child id="1216383424566" name="executeBlock" index="Q6x$H" />
         <child id="1216391046856" name="descriptionBlock" index="QzAvj" />
       </concept>
@@ -218,6 +220,9 @@
       <concept id="1174650418652" name="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference" flags="nn" index="1YBJjd">
         <reference id="1174650432090" name="applicableNode" index="1YBMHb" />
       </concept>
+    </language>
+    <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
+      <concept id="767145758118872833" name="jetbrains.mps.lang.actions.structure.NF_LinkList_AddNewChildOperation" flags="nn" index="2DeJg1" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -2657,6 +2662,153 @@
     <node concept="1YaCAy" id="1RsDREw1PeS" role="1YuTPh">
       <property role="TrG5h" value="buildMpsLayout_Plugin" />
       <ref role="1YaFvo" to="kdzh:5HVSRHdUrHI" resolve="BuildMpsLayout_Plugin" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="3Dx9CWlsEpa">
+    <property role="TrG5h" value="check_BuildMPSPlugin" />
+    <node concept="3clFbS" id="3Dx9CWlsEpb" role="18ibNy">
+      <node concept="3clFbJ" id="3Dx9CWlsLOH" role="3cqZAp">
+        <node concept="3clFbS" id="3Dx9CWlsLOJ" role="3clFbx">
+          <node concept="Dpp1Q" id="3Dx9CWlsNXV" role="3cqZAp">
+            <node concept="3Cnw8n" id="3Dx9CWlsO28" role="1urrFz">
+              <ref role="QpYPw" node="3Dx9CWlsPt0" resolve="AddJavaPluginImport" />
+            </node>
+            <node concept="Xl_RD" id="3Dx9CWlsNYd" role="Dpw9R">
+              <property role="Xl_RC" value="'mps' plugin relies on functionality of 'java' plugin, consider adding explicit import" />
+            </node>
+            <node concept="1YBJjd" id="3Dx9CWlsO1M" role="1urrMF">
+              <ref role="1YBMHb" node="3Dx9CWlsEpd" resolve="mpsPlugin" />
+            </node>
+          </node>
+        </node>
+        <node concept="1Wc70l" id="3Dx9CWlsNLS" role="3clFbw">
+          <node concept="2OqwBi" id="3Dx9CWlsMPH" role="3uHU7B">
+            <node concept="2OqwBi" id="3Dx9CWlsLZM" role="2Oq$k0">
+              <node concept="1YBJjd" id="3Dx9CWlsLOS" role="2Oq$k0">
+                <ref role="1YBMHb" node="3Dx9CWlsEpd" resolve="mpsPlugin" />
+              </node>
+              <node concept="1mfA1w" id="3Dx9CWlsMz1" role="2OqNvi" />
+            </node>
+            <node concept="1mIQ4w" id="3Dx9CWlsN1V" role="2OqNvi">
+              <node concept="chp4Y" id="3Dx9CWlsN5v" role="cj9EA">
+                <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3Dx9CWlsLLM" role="3uHU7w">
+            <node concept="2OqwBi" id="3Dx9CWlsIq_" role="2Oq$k0">
+              <node concept="2OqwBi" id="3Dx9CWlsFSG" role="2Oq$k0">
+                <node concept="1PxgMI" id="3Dx9CWlsFHm" role="2Oq$k0">
+                  <node concept="chp4Y" id="3Dx9CWlsFHS" role="3oSUPX">
+                    <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+                  </node>
+                  <node concept="2OqwBi" id="3Dx9CWlsEHl" role="1m5AlR">
+                    <node concept="1YBJjd" id="3Dx9CWlsEyn" role="2Oq$k0">
+                      <ref role="1YBMHb" node="3Dx9CWlsEpd" resolve="mpsPlugin" />
+                    </node>
+                    <node concept="1mfA1w" id="3Dx9CWlsF9K" role="2OqNvi" />
+                  </node>
+                </node>
+                <node concept="3Tsc0h" id="3Dx9CWlsG6J" role="2OqNvi">
+                  <ref role="3TtcxE" to="3ior:5KZfyKsUqLK" resolve="plugins" />
+                </node>
+              </node>
+              <node concept="v3k3i" id="3Dx9CWlsLyh" role="2OqNvi">
+                <node concept="chp4Y" id="3Dx9CWlsL$v" role="v3oSu">
+                  <ref role="cht4Q" to="3ior:5KZfyKsUqLB" resolve="BuildJavaPlugin" />
+                </node>
+              </node>
+            </node>
+            <node concept="1v1jN8" id="3Dx9CWlsNra" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3Dx9CWlsEpd" role="1YuTPh">
+      <property role="TrG5h" value="mpsPlugin" />
+      <ref role="1YaFvo" to="kdzh:KbRDZ75DBp" resolve="BuildMPSPlugin" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="3Dx9CWlsPt0">
+    <property role="TrG5h" value="AddJavaPluginImport" />
+    <node concept="Q5ZZ6" id="3Dx9CWlsPt1" role="Q6x$H">
+      <node concept="3clFbS" id="3Dx9CWlsPt2" role="2VODD2">
+        <node concept="3clFbF" id="3Dx9CWlsYqd" role="3cqZAp">
+          <node concept="2OqwBi" id="3Dx9CWlt0VZ" role="3clFbG">
+            <node concept="2OqwBi" id="3Dx9CWlsYqf" role="2Oq$k0">
+              <node concept="1PxgMI" id="3Dx9CWlsYqg" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="3Dx9CWlsYqh" role="3oSUPX">
+                  <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+                </node>
+                <node concept="2OqwBi" id="3Dx9CWlsYqi" role="1m5AlR">
+                  <node concept="Q6c8r" id="3Dx9CWlsYqj" role="2Oq$k0" />
+                  <node concept="2Rxl7S" id="3Dx9CWlsYqk" role="2OqNvi" />
+                </node>
+              </node>
+              <node concept="3Tsc0h" id="3Dx9CWlsYql" role="2OqNvi">
+                <ref role="3TtcxE" to="3ior:5KZfyKsUqLK" resolve="plugins" />
+              </node>
+            </node>
+            <node concept="2DeJg1" id="3Dx9CWlt4Mc" role="2OqNvi">
+              <ref role="1A0vxQ" to="3ior:5KZfyKsUqLB" resolve="BuildJavaPlugin" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="rPOND" id="3Dx9CWlsPtr" role="rPP22">
+      <node concept="3clFbS" id="3Dx9CWlsPts" role="2VODD2">
+        <node concept="3clFbF" id="3Dx9CWlsPyU" role="3cqZAp">
+          <node concept="1Wc70l" id="1LRS2HavjHy" role="3clFbG">
+            <node concept="2OqwBi" id="3Dx9CWlsXU2" role="3uHU7w">
+              <node concept="2OqwBi" id="3Dx9CWlsTgW" role="2Oq$k0">
+                <node concept="2OqwBi" id="3Dx9CWlsQj$" role="2Oq$k0">
+                  <node concept="1PxgMI" id="3Dx9CWlsQ5f" role="2Oq$k0">
+                    <property role="1BlNFB" value="true" />
+                    <node concept="chp4Y" id="3Dx9CWlsQ6d" role="3oSUPX">
+                      <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+                    </node>
+                    <node concept="2OqwBi" id="3Dx9CWlsPM9" role="1m5AlR">
+                      <node concept="Q6c8r" id="3Dx9CWlsPyT" role="2Oq$k0" />
+                      <node concept="2Rxl7S" id="3Dx9CWlsPU8" role="2OqNvi" />
+                    </node>
+                  </node>
+                  <node concept="3Tsc0h" id="3Dx9CWlsQAn" role="2OqNvi">
+                    <ref role="3TtcxE" to="3ior:5KZfyKsUqLK" resolve="plugins" />
+                  </node>
+                </node>
+                <node concept="v3k3i" id="3Dx9CWlsXAf" role="2OqNvi">
+                  <node concept="chp4Y" id="3Dx9CWlsXDl" role="v3oSu">
+                    <ref role="cht4Q" to="3ior:5KZfyKsUqLB" resolve="BuildJavaPlugin" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1v1jN8" id="3Dx9CWlsYo4" role="2OqNvi" />
+            </node>
+            <node concept="2OqwBi" id="1LRS2Havk2W" role="3uHU7B">
+              <node concept="2OqwBi" id="1LRS2HavjSR" role="2Oq$k0">
+                <node concept="Q6c8r" id="1LRS2HavjSS" role="2Oq$k0" />
+                <node concept="2Rxl7S" id="1LRS2HavjST" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="1LRS2HavlR$" role="2OqNvi">
+                <node concept="chp4Y" id="1LRS2HavlUo" role="cj9EA">
+                  <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="3Dx9CWlt4Yk" role="QzAvj">
+      <node concept="3clFbS" id="3Dx9CWlt4Yl" role="2VODD2">
+        <node concept="3clFbF" id="3Dx9CWlt54X" role="3cqZAp">
+          <node concept="Xl_RD" id="3Dx9CWlt54W" role="3clFbG">
+            <property role="Xl_RC" value="Activate 'java' plugin dependency" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

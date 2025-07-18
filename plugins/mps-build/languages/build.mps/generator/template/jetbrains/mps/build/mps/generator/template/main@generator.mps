@@ -14838,17 +14838,141 @@
                         <node concept="3x8VRR" id="2TqXzNe_cWi" role="2OqNvi" />
                       </node>
                     </node>
-                    <node concept="3clFbH" id="Vg9jbax_67" role="3cqZAp" />
+                    <node concept="3SKdUt" id="3Dx9CWlrqw2" role="3cqZAp">
+                      <node concept="1PaTwC" id="3Dx9CWlrqw3" role="1aUNEU">
+                        <node concept="3oM_SD" id="3Dx9CWlrqPF" role="1PaTwD">
+                          <property role="3oM_SC" value="fun" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqPk" role="1PaTwD">
+                          <property role="3oM_SC" value="fact" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqQ2" role="1PaTwD">
+                          <property role="3oM_SC" value="-" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqR7" role="1PaTwD">
+                          <property role="3oM_SC" value="if" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqRO" role="1PaTwD">
+                          <property role="3oM_SC" value="BuildProject" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqTd" role="1PaTwD">
+                          <property role="3oM_SC" value="doesn't" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqUg" role="1PaTwD">
+                          <property role="3oM_SC" value="import" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqUB" role="1PaTwD">
+                          <property role="3oM_SC" value="'java'" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqUY" role="1PaTwD">
+                          <property role="3oM_SC" value="plugins," />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrqUZ" role="1PaTwD">
+                          <property role="3oM_SC" value="BuildMPSPlugin.fetchDependencies" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlruzP" role="1PaTwD">
+                          <property role="3oM_SC" value="can't" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlru$y" role="1PaTwD">
+                          <property role="3oM_SC" value="find" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlru_f" role="1PaTwD">
+                          <property role="3oM_SC" value="and" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlru_A" role="1PaTwD">
+                          <property role="3oM_SC" value="register" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlru_B" role="1PaTwD">
+                          <property role="3oM_SC" value="&quot;ant-mps&quot;" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlruAk" role="1PaTwD">
+                          <property role="3oM_SC" value="artifact" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3SKdUt" id="3Dx9CWlruBp" role="3cqZAp">
+                      <node concept="1PaTwC" id="3Dx9CWlruBq" role="1aUNEU">
+                        <node concept="3oM_SD" id="3Dx9CWlruBw" role="1PaTwD">
+                          <property role="3oM_SC" value="as" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlruBx" role="1PaTwD">
+                          <property role="3oM_SC" value="java" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrv8m" role="1PaTwD">
+                          <property role="3oM_SC" value="modules/libraries" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrva7" role="1PaTwD">
+                          <property role="3oM_SC" value="get" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvau" role="1PaTwD">
+                          <property role="3oM_SC" value="into" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvaP" role="1PaTwD">
+                          <property role="3oM_SC" value="scope" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvaQ" role="1PaTwD">
+                          <property role="3oM_SC" value="through" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvbd" role="1PaTwD">
+                          <property role="3oM_SC" value="'java'" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvb$" role="1PaTwD">
+                          <property role="3oM_SC" value="plugin." />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvbV" role="1PaTwD">
+                          <property role="3oM_SC" value="Hence," />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvcY" role="1PaTwD">
+                          <property role="3oM_SC" value="the" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvdl" role="1PaTwD">
+                          <property role="3oM_SC" value="default" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvdI" role="1PaTwD">
+                          <property role="3oM_SC" value="we've" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrve5" role="1PaTwD">
+                          <property role="3oM_SC" value="got" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrve6" role="1PaTwD">
+                          <property role="3oM_SC" value="here" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrveN" role="1PaTwD">
+                          <property role="3oM_SC" value="is" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrveO" role="1PaTwD">
+                          <property role="3oM_SC" value="vital" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrveP" role="1PaTwD">
+                          <property role="3oM_SC" value="to" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrveQ" role="1PaTwD">
+                          <property role="3oM_SC" value="point" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvfz" role="1PaTwD">
+                          <property role="3oM_SC" value="to" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvf$" role="1PaTwD">
+                          <property role="3oM_SC" value="a" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvf_" role="1PaTwD">
+                          <property role="3oM_SC" value="correct" />
+                        </node>
+                        <node concept="3oM_SD" id="3Dx9CWlrvfW" role="1PaTwD">
+                          <property role="3oM_SC" value="jar" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3clFbF" id="2TqXzNe_cWl" role="3cqZAp">
                       <node concept="2OqwBi" id="2TqXzNe_cWm" role="3clFbG">
                         <node concept="1iwH7S" id="2TqXzNe_cWn" role="2Oq$k0" />
-                        <node concept="2k5nB$" id="2TqXzNe_cWo" role="2OqNvi">
-                          <node concept="2OqwBi" id="Vg9jbax_F6" role="2k5Stb">
-                            <node concept="Xl_RD" id="Vg9jbax_F7" role="2Oq$k0">
-                              <property role="Xl_RC" value="No '%s' artifact has been found in dependencies, using some ${mps_home}-relative defaults" />
+                        <node concept="2kEO4f" id="3Dx9CWlpAVO" role="2OqNvi">
+                          <node concept="2OqwBi" id="3Dx9CWlpAVQ" role="2k5Stb">
+                            <node concept="Xl_RD" id="3Dx9CWlpAVR" role="2Oq$k0">
+                              <property role="Xl_RC" value="No '%s' artifact has been found in dependencies, likely 'java' plugin is not activated. Using some ${mps_home}-relative defaults" />
                             </node>
-                            <node concept="2cAKMz" id="Vg9jbax_F8" role="2OqNvi">
-                              <node concept="37vLTw" id="Vg9jbax_F9" role="2cAKU6">
+                            <node concept="2cAKMz" id="3Dx9CWlpAVS" role="2OqNvi">
+                              <node concept="37vLTw" id="3Dx9CWlpAVT" role="2cAKU6">
                                 <ref role="3cqZAo" node="2TqXzNe_cVx" resolve="artifact" />
                               </node>
                             </node>
@@ -15114,13 +15238,13 @@
                     <node concept="3clFbF" id="2TqXzNeAABr" role="3cqZAp">
                       <node concept="2OqwBi" id="2TqXzNeAABs" role="3clFbG">
                         <node concept="1iwH7S" id="2TqXzNeAABt" role="2Oq$k0" />
-                        <node concept="2k5nB$" id="2TqXzNeAABu" role="2OqNvi">
-                          <node concept="2OqwBi" id="Vg9jbaxx3W" role="2k5Stb">
-                            <node concept="Xl_RD" id="2TqXzNeAABv" role="2Oq$k0">
-                              <property role="Xl_RC" value="No '%s' artifact has been found in dependencies, using some ${mps_home}-relative defaults" />
+                        <node concept="2kEO4f" id="3Dx9CWlpAst" role="2OqNvi">
+                          <node concept="2OqwBi" id="3Dx9CWlpAsv" role="2k5Stb">
+                            <node concept="Xl_RD" id="3Dx9CWlpAsw" role="2Oq$k0">
+                              <property role="Xl_RC" value="No '%s' artifact has been found in dependencies, likely 'java' plugin is not activated. Using some ${mps_home}-relative defaults" />
                             </node>
-                            <node concept="2cAKMz" id="Vg9jbaxzlM" role="2OqNvi">
-                              <node concept="37vLTw" id="Vg9jbax$mg" role="2cAKU6">
+                            <node concept="2cAKMz" id="3Dx9CWlpAsx" role="2OqNvi">
+                              <node concept="37vLTw" id="3Dx9CWlpAsy" role="2cAKU6">
                                 <ref role="3cqZAo" node="2TqXzNeAAB2" resolve="artifact" />
                               </node>
                             </node>
