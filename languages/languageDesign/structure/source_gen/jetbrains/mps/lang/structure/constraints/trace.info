@@ -109,14 +109,15 @@
       <node id="1227087338533" at="106,57,107,102" concept="6" />
       <node id="5814497342257348695" at="109,128,110,105" concept="7" />
       <node id="5814497342257349635" at="110,105,111,41" concept="7" />
-      <node id="5814497342257253248" at="111,41,112,159" concept="6" />
+      <node id="5814497342257253248" at="111,41,112,269" concept="6" />
       <node id="1213104840673" at="114,0,115,0" concept="9" trace="canBeParentBreakingPoint" />
       <node id="1213104840673" at="115,0,116,0" concept="9" trace="canBeRootBreakingPoint" />
       <node id="1213104840673" at="118,0,119,0" concept="9" trace="ConceptDeclaration$gH" />
-      <node id="1213104840673" at="119,0,120,0" concept="9" trace="ConstantFieldIcon$r" />
-      <node id="1213104840673" at="123,0,124,0" concept="9" trace="rootable$_9pz" />
-      <node id="1213104840673" at="127,0,128,0" concept="9" trace="extends$_Isg" />
-      <node id="1213104840673" at="128,0,129,0" concept="9" trace="icon$HKhR" />
+      <node id="1213104840673" at="119,0,120,0" concept="9" trace="FactoryMethodIcon$5O" />
+      <node id="1213104840673" at="120,0,121,0" concept="9" trace="ConstantFieldIcon$r" />
+      <node id="1213104840673" at="124,0,125,0" concept="9" trace="rootable$_9pz" />
+      <node id="1213104840673" at="128,0,129,0" concept="9" trace="extends$_Isg" />
+      <node id="1213104840673" at="129,0,130,0" concept="9" trace="icon$HKhR" />
       <node id="1213104840673" at="61,0,64,9" concept="3" />
       <node id="1213104840673" at="73,0,76,9" concept="3" />
       <node id="1213104840673" at="82,0,85,0" concept="4" trace="getInstanceIcon#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/smodel/runtime/IconResource;" />
@@ -155,7 +156,7 @@
       <scope id="1213104840673" at="106,0,109,0">
         <var name="model" id="1213104840673" />
       </scope>
-      <scope id="5814497342257226115" at="109,128,112,159" />
+      <scope id="5814497342257226115" at="109,128,112,269" />
       <scope id="1213104840673" at="46,0,50,0" />
       <scope id="1213104840673" at="50,0,54,0">
         <var name="_context" id="1213104840673" />
@@ -195,16 +196,16 @@
       <scope id="1213104840673" at="39,0,82,0">
         <var name="initContext" id="1213104840673" />
       </scope>
-      <unit id="1213104840673" at="122,0,125,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$PROPS" />
-      <unit id="1213104840673" at="117,0,121,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$CONCEPTS" />
-      <unit id="1213104840673" at="126,0,130,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$LINKS" />
+      <unit id="1213104840673" at="123,0,126,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$PROPS" />
+      <unit id="1213104840673" at="127,0,131,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$LINKS" />
+      <unit id="1213104840673" at="117,0,122,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$CONCEPTS" />
       <unit id="1213104840673" at="45,19,54,9" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$1$1" />
       <unit id="1213104841230" at="93,17,103,7" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$RD1$1" />
       <unit id="1213104840673" at="57,23,68,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$2" />
       <unit id="1213104840673" at="69,21,80,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$3" />
       <unit id="1213104840673" at="42,24,56,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$1" />
       <unit id="1213104841230" at="86,0,106,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$RD1" />
-      <unit id="1213104840673" at="38,0,131,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints" />
+      <unit id="1213104840673" at="38,0,132,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints" />
     </file>
     <file name="IconContainer.java">
       <node id="1229065756974292339" at="10,0,11,0" concept="9" trace="RESOURCE_0" />

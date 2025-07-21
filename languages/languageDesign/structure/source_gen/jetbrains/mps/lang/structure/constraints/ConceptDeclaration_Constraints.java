@@ -109,13 +109,14 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     // ConceptPresentationAspectImpl template creates IconResource for the icon, and we don't know (yet?)
     // how to make resource from an image
-    return !(Objects.equals(link, LINKS.icon$HKhR)) || !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ConstantFieldIcon$r));
+    return !(Objects.equals(link, LINKS.icon$HKhR)) || (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ConstantFieldIcon$r)) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.FactoryMethodIcon$5O)));
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "5814497342257226114");
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1227087258260");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept FactoryMethodIcon$5O = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x774cdde25a7e1427L, "jetbrains.mps.lang.resources.structure.FactoryMethodIcon");
     /*package*/ static final SConcept ConstantFieldIcon$r = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L, "jetbrains.mps.lang.resources.structure.ConstantFieldIcon");
   }
 

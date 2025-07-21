@@ -645,21 +645,35 @@
         </node>
         <node concept="3cpWs6" id="52LfCqSG$I0" role="3cqZAp">
           <node concept="22lmx$" id="52LfCqSG_R8" role="3cqZAk">
-            <node concept="3fqX7Q" id="52LfCqSGC_C" role="3uHU7w">
-              <node concept="2OqwBi" id="52LfCqSGC_E" role="3fr31v">
-                <node concept="2DD5aU" id="52LfCqSGC_F" role="2Oq$k0" />
-                <node concept="3O6GUB" id="52LfCqSGC_G" role="2OqNvi">
-                  <node concept="chp4Y" id="52LfCqSGC_H" role="3QVz_e">
-                    <ref role="cht4Q" to="1oap:6S5fI02sJjS" resolve="ConstantFieldIcon" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="17QLQc" id="52LfCqSG_y3" role="3uHU7B">
               <node concept="2DA6wF" id="52LfCqSG$Ov" role="3uHU7B" />
               <node concept="359W_D" id="52LfCqSG_$i" role="3uHU7w">
                 <ref role="359W_E" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
                 <ref role="359W_F" to="tpce:5vfjF5cjTVP" resolve="icon" />
+              </node>
+            </node>
+            <node concept="1eOMI4" id="48AItMdBQpe" role="3uHU7w">
+              <node concept="1Wc70l" id="48AItMdBPLD" role="1eOMHV">
+                <node concept="3fqX7Q" id="48AItMdBDNR" role="3uHU7w">
+                  <node concept="2OqwBi" id="48AItMdBDNS" role="3fr31v">
+                    <node concept="2DD5aU" id="48AItMdBDNT" role="2Oq$k0" />
+                    <node concept="3O6GUB" id="48AItMdBDNU" role="2OqNvi">
+                      <node concept="chp4Y" id="48AItMdBDNV" role="3QVz_e">
+                        <ref role="cht4Q" to="1oap:7tcRu9qvxgB" resolve="FactoryMethodIcon" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3fqX7Q" id="52LfCqSGC_C" role="3uHU7B">
+                  <node concept="2OqwBi" id="52LfCqSGC_E" role="3fr31v">
+                    <node concept="2DD5aU" id="52LfCqSGC_F" role="2Oq$k0" />
+                    <node concept="3O6GUB" id="52LfCqSGC_G" role="2OqNvi">
+                      <node concept="chp4Y" id="52LfCqSGC_H" role="3QVz_e">
+                        <ref role="cht4Q" to="1oap:6S5fI02sJjS" resolve="ConstantFieldIcon" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
