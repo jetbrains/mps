@@ -48217,7 +48217,7 @@
       <property role="2DPR8u" value="    CreateDirectory &quot;${MAIN_MENU_FOLDER}&quot;" />
     </node>
     <node concept="2DRAP_" id="1w81suM8MUT" role="2DRAPQ">
-      <property role="2DPR8u" value="    CreateShortCut &quot;${PROGRAM_LINK}&quot; &quot;$INSTDIR\bin\mps.exe&quot; &quot;&quot; &quot;$INSTDIR\bin\mps.ico&quot; &quot;&quot; SW_SHOWMINIMIZED" />
+      <property role="2DPR8u" value="    CreateShortCut &quot;${PROGRAM_LINK}&quot; &quot;$INSTDIR\bin\mps64.exe&quot; &quot;&quot; &quot;$INSTDIR\bin\mps.ico&quot; &quot;&quot; SW_SHOWMINIMIZED" />
     </node>
     <node concept="2DRAP_" id="1w81suM8Pj6" role="2DRAPQ">
       <property role="2DPR8u" value="    WriteIniStr &quot;$INSTDIR\${PRODUCT_NAME}.url&quot; &quot;InternetShortcut&quot; &quot;URL&quot; &quot;${PRODUCT_WEB_SITE}&quot;" />
@@ -48230,7 +48230,7 @@
       <property role="2DPR8u" value="Section &quot;Desktop Shortcut&quot; secDesktop" />
     </node>
     <node concept="2DRAP_" id="1w81suM93$Z" role="2DRAPQ">
-      <property role="2DPR8u" value="    CreateShortCut &quot;${DESKTOP_LINK}&quot; &quot;$INSTDIR\bin\mps.exe&quot; &quot;&quot; &quot;$INSTDIR\bin\mps.ico&quot; &quot;&quot; SW_SHOWMINIMIZED" />
+      <property role="2DPR8u" value="    CreateShortCut &quot;${DESKTOP_LINK}&quot; &quot;$INSTDIR\bin\mps64.exe&quot; &quot;&quot; &quot;$INSTDIR\bin\mps.ico&quot; &quot;&quot; SW_SHOWMINIMIZED" />
     </node>
     <node concept="2DRAP_" id="1w81suM95Xq" role="2DRAPQ">
       <property role="2DPR8u" value="SectionEnd" />
@@ -48240,7 +48240,7 @@
       <property role="2DPR8u" value="Section &quot;Quick Launch Shortcut&quot; secQuickLaunch" />
     </node>
     <node concept="2DRAP_" id="1w81suM9d6S" role="2DRAPQ">
-      <property role="2DPR8u" value="    CreateShortCut &quot;${QL_LINK}&quot; &quot;$INSTDIR\bin\mps.exe&quot; &quot;&quot; &quot;$INSTDIR\bin\mps.ico&quot; &quot;&quot; SW_SHOWMINIMIZED" />
+      <property role="2DPR8u" value="    CreateShortCut &quot;${QL_LINK}&quot; &quot;$INSTDIR\bin\mps64.exe&quot; &quot;&quot; &quot;$INSTDIR\bin\mps.ico&quot; &quot;&quot; SW_SHOWMINIMIZED" />
     </node>
     <node concept="2DRAP_" id="1w81suM9fvr" role="2DRAPQ">
       <property role="2DPR8u" value="SectionEnd" />
