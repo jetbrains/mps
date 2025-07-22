@@ -12,7 +12,7 @@
     {
       "os": "Linux",
       "arch": "amd64",
-      "launcherPath": "bin/mps.sh",
+      "launcherPath": "bin/mps",
       "javaExecutablePath": "jbr/bin/java",
       "vmOptionsFilePath": "bin/mps64.vmoptions",
       "bootClassPathJarNames": [

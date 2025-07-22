@@ -27367,7 +27367,7 @@
                   <property role="2$htvj" value="*" />
                   <node concept="NbPM2" id="6wqRQFHV_GR" role="2$htvi">
                     <node concept="3Mxwew" id="6wqRQFHV_GS" role="3MwsjC">
-                      <property role="3MwjfP" value="mps.exe" />
+                      <property role="3MwjfP" value="mps64.exe" />
                     </node>
                   </node>
                 </node>
@@ -28759,7 +28759,7 @@
                 <property role="2$htvj" value="*" />
                 <node concept="NbPM2" id="6wqRQFFMuh6" role="2$htvi">
                   <node concept="3Mxwew" id="6wqRQFFMuh7" role="3MwsjC">
-                    <property role="3MwjfP" value="mps.exe" />
+                    <property role="3MwjfP" value="mps64.exe" />
                   </node>
                 </node>
               </node>

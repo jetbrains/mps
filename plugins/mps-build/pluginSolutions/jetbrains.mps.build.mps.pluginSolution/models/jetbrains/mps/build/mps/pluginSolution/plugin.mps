@@ -15084,7 +15084,7 @@
                                 <node concept="2Ry0Ak" id="6wqRQFIRWID" role="2Ry0An">
                                   <property role="2Ry0Am" value="win" />
                                   <node concept="2Ry0Ak" id="6wqRQFIS5sf" role="2Ry0An">
-                                    <property role="2Ry0Am" value="mps.exe" />
+                                    <property role="2Ry0Am" value="mps64.exe" />
                                   </node>
                                 </node>
                               </node>
@@ -15108,7 +15108,7 @@
                             <property role="3qcH_f" value="true" />
                             <node concept="3cpWs3" id="6wqRQFIS5Xn" role="2c44t1">
                               <node concept="Xl_RD" id="6wqRQFIS65g" role="3uHU7w">
-                                <property role="Xl_RC" value=".exe" />
+                                <property role="Xl_RC" value="64.exe" />
                               </node>
                               <node concept="37vLTw" id="6wqRQFIRWIM" role="3uHU7B">
                                 <ref role="3cqZAo" node="2g$3PZUmxE8" resolve="scriptName" />

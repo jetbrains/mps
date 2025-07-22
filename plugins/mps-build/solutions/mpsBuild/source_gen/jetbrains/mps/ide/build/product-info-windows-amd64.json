@@ -11,7 +11,7 @@
     {
       "os": "Windows",
       "arch": "amd64",
-      "launcherPath": "bin/mps.bat",
+      "launcherPath": "bin/mps64.exe",
       "javaExecutablePath": "jbr/bin/java.exe",
       "vmOptionsFilePath": "bin/mps64.exe.vmoptions",
       "bootClassPathJarNames": [

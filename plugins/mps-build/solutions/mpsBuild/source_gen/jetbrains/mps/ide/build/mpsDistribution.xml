@@ -79,7 +79,7 @@
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7551" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7551">
       <fileset file="${basedir}/build/resources/mps-win-64.exe" />
-      <globmapper from="*" to="mps.exe" />
+      <globmapper from="*" to="mps64.exe" />
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7552" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7552">
@@ -298,7 +298,7 @@
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip_f755">
       <fileset file="${basedir}/build/resources/mps-win-64.exe" />
-      <globmapper from="*" to="mps.exe" />
+      <globmapper from="*" to="mps64.exe" />
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip_f7551" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip_f7551">

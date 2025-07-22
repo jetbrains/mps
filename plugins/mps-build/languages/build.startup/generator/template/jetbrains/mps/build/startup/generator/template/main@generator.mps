@@ -5270,7 +5270,7 @@
                   </node>
                   <node concept="3K4zz7" id="6GoDrzazX3v" role="37vLTx">
                     <node concept="Xl_RD" id="6GoDrzazXTH" role="3K4E3e">
-                      <property role="Xl_RC" value=".bat" />
+                      <property role="Xl_RC" value="64.exe" />
                     </node>
                     <node concept="2OqwBi" id="6GoDrzazVWd" role="3K4Cdx">
                       <node concept="Xl_RD" id="6GoDrzazVWe" role="2Oq$k0">
@@ -5283,24 +5283,8 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3K4zz7" id="6GoDrza$20D" role="3K4GZi">
-                      <node concept="Xl_RD" id="6GoDrza$3GM" role="3K4E3e">
-                        <property role="Xl_RC" value=".sh" />
-                      </node>
-                      <node concept="Xl_RD" id="6GoDrza$6bz" role="3K4GZi">
-                        <property role="Xl_RC" value="" />
-                      </node>
-                      <node concept="2OqwBi" id="6GoDrzazZLD" role="3K4Cdx">
-                        <node concept="Xl_RD" id="6GoDrzazZLE" role="2Oq$k0">
-                          <property role="Xl_RC" value="Linux" />
-                        </node>
-                        <node concept="liA8E" id="6GoDrzazZLF" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                          <node concept="v3LJS" id="6GoDrzazZLG" role="37wK5m">
-                            <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
-                          </node>
-                        </node>
-                      </node>
+                    <node concept="Xl_RD" id="274xLv2EPNX" role="3K4GZi">
+                      <property role="Xl_RC" value="" />
                     </node>
                   </node>
                 </node>
