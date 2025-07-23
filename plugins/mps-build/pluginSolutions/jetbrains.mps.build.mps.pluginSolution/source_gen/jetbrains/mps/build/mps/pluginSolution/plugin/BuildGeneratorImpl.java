@@ -1886,9 +1886,9 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_82 = nb25.getResult();
     nb25.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262f9cL, 0x48d5d03db9262f9dL, "pattern"), "**/*.exe");
     quotedNode_63.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters"), quotedNode_82);
-    SNodeBuilder nb26 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x48d5d03db9262f9cL, "BuildFileIncludeSelector"));
+    SNodeBuilder nb26 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x48d5d03db9262fa7L, "BuildFileExcludeSelector"));
     quotedNode_83 = nb26.getResult();
-    nb26.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262f9cL, 0x48d5d03db9262f9dL, "pattern"), "**/append.bat");
+    nb26.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9262fa7L, 0x48d5d03db9262fa8L, "pattern"), "mps64.exe");
     quotedNode_63.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb01L, "parameters"), quotedNode_83);
     quotedNode_84 = (SNode) parameter_7;
     if (quotedNode_84 != null) {

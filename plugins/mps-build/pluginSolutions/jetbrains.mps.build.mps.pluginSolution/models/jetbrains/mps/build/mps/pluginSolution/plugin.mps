@@ -15024,8 +15024,8 @@
                       <node concept="3LWZYx" id="3f6C5dcXIAp" role="2HvfZ1">
                         <property role="3LWZYw" value="**/*.exe" />
                       </node>
-                      <node concept="3LWZYx" id="Nf0pasGrof" role="2HvfZ1">
-                        <property role="3LWZYw" value="**/append.bat" />
+                      <node concept="3LWZYq" id="45BoiTF2OsE" role="2HvfZ1">
+                        <property role="3LWZYl" value="mps64.exe" />
                       </node>
                       <node concept="55IIr" id="3f6C5dcXIAq" role="2HvfZ0">
                         <node concept="2c44te" id="3f6C5dcXIAr" role="lGtFl">
