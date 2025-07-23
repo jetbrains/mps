@@ -7,6 +7,13 @@ import com.intellij.platform.whatsNew.WhatsNewInVisionContentProvider
 import kotlin.jvm.java
 
 class MPSWhatsNewInVisionContentProvider : WhatsNewInVisionContentProvider() {
+      override fun getResourceNameByPath(path: String): String {
+            return "jetbrains/mps/whatsNew/$path"
+          }
+
+      override fun getResource(resourceName: String): ContentSource =
+            ResourceContentSource(MPSWhatsNewInVisionContentProvider::class.java.classLoader, resourceName)
+
     override fun getResource(): ContentSource {
         val appInfo = ApplicationInfo.getInstance()
         // return a vision file for the current version
