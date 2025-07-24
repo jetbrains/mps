@@ -35,7 +35,7 @@
     <mkdir dir="${build.tmp}/default/notesOrganizer.jar" />
     <mkdir dir="${build.tmp}/default/notesOrganizer.jar/META-INF" />
     <echoxml file="${build.tmp}/default/notesOrganizer.jar/META-INF/plugin.xml">
-      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+      <idea-plugin>
         <id>notesOrganizer</id>
         <name>notesOrganizer</name>
         <version>1.0</version>

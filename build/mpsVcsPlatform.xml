@@ -82,7 +82,7 @@
     <mkdir dir="${build.tmp}/default/mps-git4idea.jar" />
     <mkdir dir="${build.tmp}/default/mps-git4idea.jar/META-INF" />
     <echoxml file="${build.tmp}/default/mps-git4idea.jar/META-INF/plugin.xml">
-      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+      <idea-plugin>
         <id>jetbrains.mps.git4idea.stubs</id>
         <name>MPS Git integration - stubs</name>
         <version>${mpsBootstrapCore.version}</version>

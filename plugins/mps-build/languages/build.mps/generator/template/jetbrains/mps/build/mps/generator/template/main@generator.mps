@@ -23542,12 +23542,6 @@
       </node>
       <node concept="2pNNFK" id="5HVSRHdWinP" role="1kKnMX">
         <property role="2pNNFO" value="idea-plugin" />
-        <node concept="2pNUuL" id="5HVSRHdWinS" role="2pNNFR">
-          <property role="2pNUuO" value="xmlns:xi" />
-          <node concept="2pMdtt" id="5HVSRHdWinT" role="2pMdts">
-            <property role="2pMdty" value="http://www.w3.org/2001/XInclude" />
-          </node>
-        </node>
         <node concept="2pNNFK" id="5HVSRHdWinU" role="3o6s8t">
           <property role="qg3DV" value="false" />
           <property role="2pNNFO" value="id" />
