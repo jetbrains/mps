@@ -236,8 +236,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 1:
         if (true) {
           switch (menuId.getFqName()) {
-            case "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_backToAll":
-              return Arrays.asList(new TransformationMenu[]{new NonTypesystemRule_backToAll()});
+            case "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_extended":
+              return Arrays.asList(new TransformationMenu[]{new NonTypesystemRule_extended()});
             default:
           }
         }

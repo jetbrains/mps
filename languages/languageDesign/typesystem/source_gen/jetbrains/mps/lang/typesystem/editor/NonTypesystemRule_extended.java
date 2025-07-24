@@ -41,9 +41,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class NonTypesystemRule_backToAll extends TransformationMenuBase {
-  public NonTypesystemRule_backToAll() {
-    super(false, new EditorMenuDescriptorBase("named transformation menu " + "NonTypesystemRule_backToAll", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "8837437332641838288")), List.<String>of(MenuLocations.SUBSTITUTE));
+public class NonTypesystemRule_extended extends TransformationMenuBase {
+  public NonTypesystemRule_extended() {
+    super(false, new EditorMenuDescriptorBase("named transformation menu " + "NonTypesystemRule_extended", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "8837437332641838288")), List.<String>of(MenuLocations.SUBSTITUTE));
   }
 
   @Override
@@ -51,13 +51,13 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Action_bg4dqh_a0());
-      result.add(new TMP_WrapSM_bg4dqh_b0());
+      result.add(new TMP_Action_2568f7_a0());
+      result.add(new TMP_WrapSM_2568f7_b0());
     }
     return result;
   }
 
-  private class TMP_Action_bg4dqh_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_2568f7_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       return new Item(context).resetTraceInfo();
@@ -74,7 +74,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        return "all";
+        return "extended";
       }
 
       @Override
@@ -94,7 +94,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
       }
     }
   }
-  public class TMP_WrapSM_bg4dqh_b0 extends WrapSubstituteMenuTransformationMenuPart {
+  public class TMP_WrapSM_2568f7_b0 extends WrapSubstituteMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {

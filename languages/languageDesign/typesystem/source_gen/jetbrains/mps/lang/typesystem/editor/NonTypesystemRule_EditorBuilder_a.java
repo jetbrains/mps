@@ -69,13 +69,6 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.nodeEditor.AbstractCellProvider;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.awt.Color;
-import java.awt.Font;
-import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
-import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.FoldedCellStyleClass;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBraceStyleClass;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -214,10 +207,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createCollection_4());
     editorCell.addEditorCell(createCollection_5());
-    editorCell.addEditorCell(createCollection_8());
+    editorCell.addEditorCell(createCollection_7());
     editorCell.addEditorCell(createConstant_8());
+    editorCell.addEditorCell(createCollection_8());
     editorCell.addEditorCell(createCollection_9());
-    editorCell.addEditorCell(createCollection_10());
     editorCell.addEditorCell(createConstant_11());
     editorCell.addEditorCell(createConstant_12());
     editorCell.addEditorCell(createConstant_13());
@@ -336,13 +329,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createAlternation_0());
-    if (nodeCondition_tg6zfx_a1b1b1a()) {
-      editorCell.addEditorCell(createCollection_7());
-    }
     return editorCell;
-  }
-  private boolean nodeCondition_tg6zfx_a1b1b1a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.overrides$PgO9);
   }
   private EditorCell createAlternation_0() {
     boolean alternationCondition = true;
@@ -359,11 +346,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return SPropertyOperations.getBoolean(myNode, PROPS.overrides$PgO9);
   }
   private EditorCell createConstant_5() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "all");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "extended");
     editorCell.setCellId("overrides_flag");
     Style style = new StyleImpl();
     style.set(StyleAttributes.EDITABLE, true);
-    style.set(StyleAttributes.STRIKE_OUT, true);
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
@@ -416,7 +402,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.overridenRules$3nIR)).addSequence(Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(node)).select((it) -> createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(it)));
     }
     public String getMatchingText() {
-      return "choose";
+      return "choose...";
     }
     private static SNode createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(SNode p0) {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CheckingRuleReference$BA);
@@ -504,63 +490,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
       style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.gray));
       editorCell.getStyle().putAll(style);
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.NonTypesystemRule$um, "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_backToAll"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.NonTypesystemRule$um, "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_extended"));
       editorCell.setDefaultText("<none>");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
       return editorCell;
     }
   }
   private EditorCell createCollection_7() {
-    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
-    editorCell.setCellId("Collection_tg6zfx_b1b1b0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, false);
-    editorCell.getStyle().putAll(style);
-    editorCell.setFoldable(true);
-    editorCell.setFoldedCell(createReadOnlyModelAccessor_0());
-    editorCell.addEditorCell(createCustom_0());
-    return editorCell;
-  }
-  private EditorCell createCustom_0() {
-    AbstractCellProvider provider = ((_FunctionTypes._return_P0_E0<AbstractCellProvider>) () -> {
-      final List<SNode> allSuperRules = Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(myNode)).toList();
-      return new AbstractCellProvider(myNode) {
-        @Override
-        public EditorCell createEditorCell(EditorContext context) {
-          jetbrains.mps.openapi.editor.cells.EditorCell_Collection collection = EditorCell_Collection.createVertical(context, myNode);
-          collection.getStyle().set(StyleAttributes.TEXT_COLOR, Color.GRAY);
-          for (SNode superRule : ListSequence.fromList(allSuperRules)) {
-            EditorCell_Collection lineCell = EditorCell_Collection.createHorizontal(context, myNode);
-            EditorCell_Constant referenceCell = new EditorCell_Constant(context, myNode, SPropertyOperations.getString(superRule, PROPS.name$MnvL));
-            lineCell.addEditorCell(referenceCell);
-            referenceCell.getStyle().set(StyleAttributes.NAVIGATABLE_NODE, superRule);
-            referenceCell.getStyle().set(StyleAttributes.FONT_STYLE, Font.PLAIN);
-            collection.addEditorCell(lineCell);
-          }
-          return collection;
-        }
-      };
-    }).invoke();
-    EditorCell editorCell = provider.createEditorCell(getEditorContext());
-    editorCell.setCellId("Custom_tg6zfx_a1b1b1a");
-    return editorCell;
-  }
-  private EditorCell createReadOnlyModelAccessor_0() {
-    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
-      public String getText() {
-        return "<<" + Sequence.fromIterable(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(myNode)).count() + " rules>>";
-      }
-    }, myNode);
-    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
-    editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
-    editorCell.setCellId("ReadOnlyModelAccessor_tg6zfx_a1b1b1a");
-    Style style = new StyleImpl();
-    new FoldedCellStyleClass(this).apply(style, editorCell);
-    style.set(StyleAttributes.EDITABLE, false);
-    editorCell.getStyle().putAll(style);
-    return editorCell;
-  }
-  private EditorCell createCollection_8() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_tg6zfx_c1b0");
     Style style = new StyleImpl();
@@ -609,7 +545,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createCollection_9() {
+  private EditorCell createCollection_8() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_tg6zfx_e1b0");
     Style style = new StyleImpl();
@@ -640,7 +576,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createCollection_10() {
+  private EditorCell createCollection_9() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_tg6zfx_f1b0");
     editorCell.addEditorCell(createIndentCell_1());
