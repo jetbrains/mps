@@ -84,7 +84,7 @@ public class RulesManager extends AbstractLanguageProcessor {
       myComparisonRules.addRuleSetItem(comparisonRule_runtimes, languageRanks::get);
       myReplacementRules.addRuleSetItem(typesystem.getEliminationRules(), languageRanks::get);
       myVariableConverters.addAll(typesystem.getVariableConverters());
-      myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules());
+      myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules(), languageRanks::get);
       myOverloadedOperationsManager.addOverloadedOperationsTypeProviders(typesystem.getOverloadedOperationsTypesProviders());
     } catch (RuntimeException t) {
       LOG.error("Error while loading language: " + language.getNamespace(), t);
