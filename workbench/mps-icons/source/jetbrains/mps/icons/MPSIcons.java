@@ -42,7 +42,7 @@ public class MPSIcons {
     public static final Icon ImportModulesFromFolder = load("/actions/importModulesFromFolder.png");
     public static final Icon MigrationBulb = load("/actions/migrationBulb.png");
     // todo: create icon
-    public static final Icon SuppressedError = new LayeredIcon(AllIcons.Nodes.ErrorMark, AllIcons.Actions.Close);
+    public static final Icon SuppressedError = new CachedLayeredIcon(AllIcons.Nodes.ErrorMark, AllIcons.Actions.Close);
     public static final Icon SearchedNodes = load("/actions/searchedNodes.png");
     public static final Icon ShowCellInExplorer = load("/actions/showCellInExplorer.png");
     public static final Icon ShowOnlyStrongSubtypes = load("/actions/showOnlyStrongSubtypes.png");
@@ -104,7 +104,7 @@ public class MPSIcons {
     public static final Icon Editor = load("/nodes/editor.png");
     public static final Icon Generator = load("/nodes/generator.png");
     public static final Icon Language = load("/nodes/language.png");
-    public static final Icon LanguageRuntime = LayeredIcon.create(Language, AllIcons.Nodes.Locked);
+    public static final Icon LanguageRuntime = new CachedLayeredIcon(Language, AllIcons.Nodes.Locked);
     public static final Icon MappingConfig = load("/nodes/mappingConf.png");
     public static final Icon Model = load("/nodes/model.png");
     public static final Icon Node = load("/nodes/node.png");
@@ -114,7 +114,7 @@ public class MPSIcons {
     public static final Icon Rule = load("/nodes/rule.png");
     public static final Icon Solution = load("/nodes/solution.png");
     public static final Icon Structure = load("/nodes/structure.png");
-    public static final Icon TestModel = new LayeredIcon(Nodes.Model, AllIcons.Nodes.JunitTestMark);
+    public static final Icon TestModel = new CachedLayeredIcon(Nodes.Model, AllIcons.Nodes.JunitTestMark);
     public static final Icon TextGen = load("/nodes/textGen.png");
     public static final Icon TransientModule = load("/nodes/transient.svg");
     public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.svg");
