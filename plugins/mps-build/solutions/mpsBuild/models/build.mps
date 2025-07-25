@@ -1678,25 +1678,6 @@
           <property role="3LZaj6" value="4zlO3QTanjS/source" />
         </node>
       </node>
-      <node concept="3_5H9E" id="6CdiFo9D8lX" role="398b2p">
-        <node concept="3LXTmp" id="6CdiFo9D8lZ" role="3_5H9R">
-          <node concept="3qWCbU" id="7oRMAfJnpXn" role="3LXTna">
-            <property role="3qWCbO" value="**/*.dic" />
-          </node>
-          <node concept="398BVA" id="6CdiFo9D8oj" role="3LXTmr">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="6CdiFo9D8qo" role="iGT6I">
-              <property role="2Ry0Am" value="workbench" />
-              <node concept="2Ry0Ak" id="6CdiFo9D8qt" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-platform" />
-                <node concept="2Ry0Ak" id="7oRMAfJnpXl" role="2Ry0An">
-                  <property role="2Ry0Am" value="source" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="nCB5N" id="16Vg0jOco4i" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
@@ -43443,6 +43424,25 @@
       </node>
       <node concept="2sjeV3" id="3gNf3ja$htS" role="nCB5Z">
         <ref role="2sjeV2" node="3gNf3ja$h1s" resolve="spellchecker" />
+      </node>
+      <node concept="3_5H9E" id="4v18hQ8xNZs" role="398b2p">
+        <node concept="3LXTmp" id="4v18hQ8xNZu" role="3_5H9R">
+          <node concept="398BVA" id="4v18hQ8xO1L" role="3LXTmr">
+            <ref role="398BVh" node="4O0hKJpjIUX" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4v18hQ8xO2Y" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="4v18hQ8xO7l" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-devkit" />
+                <node concept="2Ry0Ak" id="4v18hQ8xObG" role="2Ry0An">
+                  <property role="2Ry0Am" value="source" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3qWCbU" id="4v18hQ8xOdR" role="3LXTna">
+            <property role="3qWCbO" value="**/*.dic" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="4O0hKJplCNt" role="3989C9">
