@@ -83,6 +83,9 @@ public class TypesystemReportItemAdapter extends NodeReportItemBase implements N
 
   @Override
   public ItemKind getIssueKind() {
+    if (myErrorReporter.getIssueType() != null) {
+      return IssueKindReportItem.TYPESYSTEM.deriveItemKind(myErrorReporter.getIssueType());
+    }
     return IssueKindReportItem.TYPESYSTEM.deriveItemKind();
   }
 }

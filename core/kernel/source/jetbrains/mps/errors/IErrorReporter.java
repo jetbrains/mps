@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.errors;
 
+import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -57,4 +58,20 @@ public interface IErrorReporter {
    */
   @NotNull
   SNode getSNode();
+
+  /**
+   * Get the issue type -- a string used to categorize the issue in a tool.
+   * Returns null by default, which signifies the default issue type.
+   */
+  default String getIssueType() {
+    return null;
+  }
+
+  /**
+   * Set the issue type to be used for categorization of the issue.
+   * See {@link TypesystemReportItemAdapter#getIssueKind()}.
+   */
+  default void setIssueType(String issueType) {
+    // NOP
+  }
 }

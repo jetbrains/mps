@@ -26,6 +26,7 @@ public class SimpleErrorReporter extends AbstractErrorReporter implements IError
   private MessageStatus myMessageStatus = MessageStatus.ERROR;
   private MessageTarget myErrorTarget = new NodeMessageTarget();
   private final @NotNull SNode mySNode;
+  private String myIssueType = null;
 
   public SimpleErrorReporter(@NotNull SNode node, String s, String ruleModel, String ruleId) {
     super(ruleModel, ruleId);
@@ -72,5 +73,15 @@ public class SimpleErrorReporter extends AbstractErrorReporter implements IError
   @Override
   public SNode getSNode() {
     return mySNode;
+  }
+
+  @Override
+  public String getIssueType() {
+    return myIssueType;
+  }
+
+  @Override
+  public void setIssueType(String issueType) {
+    this.myIssueType = issueType;
   }
 }
