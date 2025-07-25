@@ -45,6 +45,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CreateStrongLessThanInequationStatement;
   private ConceptPresentation props_DefaultGroupReference;
   private ConceptPresentation props_ErrorInfoExpression;
+  private ConceptPresentation props_ExpressionIssueType;
   private ConceptPresentation props_GetOperationType;
   private ConceptPresentation props_IRuleWithOneNode;
   private ConceptPresentation props_IRuleWithTwoNodes;
@@ -58,6 +59,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IsReplacementRuleApplicable_ConceptFunction;
   private ConceptPresentation props_IsStrongSubtypeExpression;
   private ConceptPresentation props_IsSubtypeExpression;
+  private ConceptPresentation props_IssueTypeSpec;
   private ConceptPresentation props_JoinContainer;
   private ConceptPresentation props_JoinType;
   private ConceptPresentation props_LeftOperandType_parameter;
@@ -107,6 +109,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_RuntimeListVariable;
   private ConceptPresentation props_RuntimeTypeVariable;
   private ConceptPresentation props_SelectionType;
+  private ConceptPresentation props_StringIssueType;
   private ConceptPresentation props_SubstituteTypeRule;
   private ConceptPresentation props_SubtypingRule;
   private ConceptPresentation props_SupersedeConceptFunction;
@@ -383,6 +386,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ErrorInfoExpression = cpb.create();
         }
         return props_ErrorInfoExpression;
+      case LanguageConceptSwitch.ExpressionIssueType:
+        if (props_ExpressionIssueType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("expression");
+          props_ExpressionIssueType = cpb.create();
+        }
+        return props_ExpressionIssueType;
       case LanguageConceptSwitch.GetOperationType:
         if (props_GetOperationType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -478,6 +488,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IsSubtypeExpression = cpb.create();
         }
         return props_IsSubtypeExpression;
+      case LanguageConceptSwitch.IssueTypeSpec:
+        if (props_IssueTypeSpec == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IssueTypeSpec = cpb.create();
+        }
+        return props_IssueTypeSpec;
       case LanguageConceptSwitch.JoinContainer:
         if (props_JoinContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -829,6 +845,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_SelectionType = cpb.create();
         }
         return props_SelectionType;
+      case LanguageConceptSwitch.StringIssueType:
+        if (props_StringIssueType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("literal");
+          props_StringIssueType = cpb.create();
+        }
+        return props_StringIssueType;
       case LanguageConceptSwitch.SubstituteTypeRule:
         if (props_SubstituteTypeRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

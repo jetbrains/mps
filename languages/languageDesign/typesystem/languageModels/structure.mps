@@ -2183,6 +2183,12 @@
       <property role="IQ2ns" value="3937244445246643666" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
+    <node concept="1TJgyj" id="3AsFWrFa1Rm" role="1TKVEi">
+      <property role="IQ2ns" value="4151386225412414934" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="issueType" />
+      <ref role="20lvS9" node="3AsFWrF9CKu" resolve="IssueTypeSpec" />
+    </node>
     <node concept="PrWs8" id="3qzTJpCVcjK" role="PzmwI">
       <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
     </node>
@@ -2196,6 +2202,43 @@
     <property role="3GE5qa" value="definition.quickfix" />
     <property role="EcuMT" value="5672535223916537938" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
+  <node concept="PlHQZ" id="3AsFWrF9CKu">
+    <property role="EcuMT" value="4151386225412312094" />
+    <property role="3GE5qa" value="definition.statement" />
+    <property role="TrG5h" value="IssueTypeSpec" />
+  </node>
+  <node concept="1TIwiD" id="3AsFWrF9CKx">
+    <property role="EcuMT" value="4151386225412312097" />
+    <property role="3GE5qa" value="definition.statement" />
+    <property role="TrG5h" value="StringIssueType" />
+    <property role="34LRSv" value="literal" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="3AsFWrF9CKy" role="1TKVEl">
+      <property role="IQ2nx" value="4151386225412312098" />
+      <property role="TrG5h" value="issueType" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="3AsFWrF9F$8" role="PzmwI">
+      <ref role="PrY4T" node="3AsFWrF9CKu" resolve="IssueTypeSpec" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3AsFWrF9F$6">
+    <property role="EcuMT" value="4151386225412323590" />
+    <property role="3GE5qa" value="definition.statement" />
+    <property role="TrG5h" value="ExpressionIssueType" />
+    <property role="34LRSv" value="expression" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3AsFWrF9F$9" role="1TKVEi">
+      <property role="IQ2ns" value="4151386225412323593" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="issueTypeExpression" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="3AsFWrF9F$7" role="PzmwI">
+      <ref role="PrY4T" node="3AsFWrF9CKu" resolve="IssueTypeSpec" />
+    </node>
   </node>
 </model>
 

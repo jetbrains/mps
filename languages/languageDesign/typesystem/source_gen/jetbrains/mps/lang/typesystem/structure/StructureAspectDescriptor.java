@@ -53,6 +53,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptCreateStrongLessThanInequationStatement = createDescriptorForCreateStrongLessThanInequationStatement();
   /*package*/ final ConceptDescriptor myConceptDefaultGroupReference = createDescriptorForDefaultGroupReference();
   /*package*/ final ConceptDescriptor myConceptErrorInfoExpression = createDescriptorForErrorInfoExpression();
+  /*package*/ final ConceptDescriptor myConceptExpressionIssueType = createDescriptorForExpressionIssueType();
   /*package*/ final ConceptDescriptor myConceptGetOperationType = createDescriptorForGetOperationType();
   /*package*/ final ConceptDescriptor myConceptIRuleWithOneNode = createDescriptorForIRuleWithOneNode();
   /*package*/ final ConceptDescriptor myConceptIRuleWithTwoNodes = createDescriptorForIRuleWithTwoNodes();
@@ -66,6 +67,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIsReplacementRuleApplicable_ConceptFunction = createDescriptorForIsReplacementRuleApplicable_ConceptFunction();
   /*package*/ final ConceptDescriptor myConceptIsStrongSubtypeExpression = createDescriptorForIsStrongSubtypeExpression();
   /*package*/ final ConceptDescriptor myConceptIsSubtypeExpression = createDescriptorForIsSubtypeExpression();
+  /*package*/ final ConceptDescriptor myConceptIssueTypeSpec = createDescriptorForIssueTypeSpec();
   /*package*/ final ConceptDescriptor myConceptJoinContainer = createDescriptorForJoinContainer();
   /*package*/ final ConceptDescriptor myConceptJoinType = createDescriptorForJoinType();
   /*package*/ final ConceptDescriptor myConceptLeftOperandType_parameter = createDescriptorForLeftOperandType_parameter();
@@ -115,6 +117,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptRuntimeListVariable = createDescriptorForRuntimeListVariable();
   /*package*/ final ConceptDescriptor myConceptRuntimeTypeVariable = createDescriptorForRuntimeTypeVariable();
   /*package*/ final ConceptDescriptor myConceptSelectionType = createDescriptorForSelectionType();
+  /*package*/ final ConceptDescriptor myConceptStringIssueType = createDescriptorForStringIssueType();
   /*package*/ final ConceptDescriptor myConceptSubstituteTypeRule = createDescriptorForSubstituteTypeRule();
   /*package*/ final ConceptDescriptor myConceptSubtypingRule = createDescriptorForSubtypingRule();
   /*package*/ final ConceptDescriptor myConceptSupersedeConceptFunction = createDescriptorForSupersedeConceptFunction();
@@ -161,7 +164,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractCheckingRule, myConceptAbstractComparableStatement, myConceptAbstractEquationStatement, myConceptAbstractInequationStatement, myConceptAbstractOverloadedOpsTypeRule, myConceptAbstractReportStatement, myConceptAbstractRule, myConceptAbstractSubtypingRule, myConceptAddDependencyStatement, myConceptApplicableNodeCondition, myConceptApplicableNodeReference, myConceptAssertStatement, myConceptAttributedNodeExpression, myConceptCheckingRuleReference, myConceptCoerceExpression, myConceptCoerceStatement, myConceptCoerceStrongExpression, myConceptComparisonRule, myConceptConceptFunctionParameter_ContextNode, myConceptConceptFunctionParameter_EditorContext, myConceptConceptFunctionParameter_Role, myConceptConceptFunctionParameter_Selection, myConceptConceptFunctionParameter_isAggregation, myConceptConceptFunctionParameter_node, myConceptConceptFunctionParameter_var, myConceptConceptReference, myConceptCreateComparableEquationStatement, myConceptCreateComparableEquationStatementStrong, myConceptCreateEquationStatement, myConceptCreateGreaterThanInequationStatement, myConceptCreateLessThanInequationStatement, myConceptCreateStrongGreaterThanInequationStatement, myConceptCreateStrongLessThanInequationStatement, myConceptDefaultGroupReference, myConceptErrorInfoExpression, myConceptGetOperationType, myConceptIRuleWithOneNode, myConceptIRuleWithTwoNodes, myConceptImmediateSupertypesExpression, myConceptInequationReference, myConceptInequationReplacementRule, myConceptInferenceRule, myConceptInfoStatement, myConceptInfoStatementAnnotation, myConceptIsApplicableConceptFunction, myConceptIsReplacementRuleApplicable_ConceptFunction, myConceptIsStrongSubtypeExpression, myConceptIsSubtypeExpression, myConceptJoinContainer, myConceptJoinType, myConceptLeftOperandType_parameter, myConceptLinkPatternVariableReference, myConceptMatchStatement, myConceptMatchStatementItem, myConceptMeetContainer, myConceptMeetType, myConceptMessageStatement, myConceptMessageStatementAnnotation, myConceptMessageTarget, myConceptNode_InferTypeOperation, myConceptNode_TypeOperation, myConceptNonTypesystemRule, myConceptNormalTypeClause, myConceptOperation_parameter, myConceptOrStatement, myConceptOriginalNodeId, myConceptOverloadedOpIsApplicableFunction, myConceptOverloadedOpRulesContainer, myConceptOverloadedOpTypeRule_OneTypeSpecified, myConceptOverloadedOperatorTypeFunction, myConceptOverloadedOperatorTypeRule, myConceptOverridesConceptFunction, myConceptPatternCondition, myConceptPatternVariableReference, myConceptPrintToTrace, myConceptProcessed, myConceptPropertyMessageTarget, myConceptPropertyNameTarget, myConceptPropertyPatternVariableReference, myConceptQuickFixApplicableBlock, myConceptQuickFixArgument, myConceptQuickFixArgumentReference, myConceptQuickFixDescriptionBlock, myConceptQuickFixExecuteBlock, myConceptQuickFixField, myConceptQuickFixFieldReference, myConceptQuickFixSetSelectionBlock, myConceptReferenceMessageTarget, myConceptReferenceRoleTarget, myConceptReportErrorStatement, myConceptReportErrorStatementAnnotation, myConceptRightOperandType_parameter, myConceptRuntimeErrorType, myConceptRuntimeHoleType, myConceptRuntimeListVariable, myConceptRuntimeTypeVariable, myConceptSelectionType, myConceptSubstituteTypeRule, myConceptSubtypingRule, myConceptSupersedeConceptFunction, myConceptTypeCheckerAccessExpression, myConceptTypeClause, myConceptTypeOfExpression, myConceptTypeVarDeclaration, myConceptTypeVarReference, myConceptTypesystemEquationStatementAnnotation, myConceptTypesystemIntention, myConceptTypesystemIntentionArgument, myConceptTypesystemQuickFix, myConceptVariableConverterItem, myConceptVariableConverterItem_ApplicableBlock, myConceptVariableConverterItem_ConvertBlock, myConceptVariableConvertersContainer, myConceptWarningStatement, myConceptWarningStatementAnnotation, myConceptWhenConcreteStatement, myConceptWhenConcreteVariableDeclaration, myConceptWhenConcreteVariableReference);
+    return Arrays.asList(myConceptAbstractCheckingRule, myConceptAbstractComparableStatement, myConceptAbstractEquationStatement, myConceptAbstractInequationStatement, myConceptAbstractOverloadedOpsTypeRule, myConceptAbstractReportStatement, myConceptAbstractRule, myConceptAbstractSubtypingRule, myConceptAddDependencyStatement, myConceptApplicableNodeCondition, myConceptApplicableNodeReference, myConceptAssertStatement, myConceptAttributedNodeExpression, myConceptCheckingRuleReference, myConceptCoerceExpression, myConceptCoerceStatement, myConceptCoerceStrongExpression, myConceptComparisonRule, myConceptConceptFunctionParameter_ContextNode, myConceptConceptFunctionParameter_EditorContext, myConceptConceptFunctionParameter_Role, myConceptConceptFunctionParameter_Selection, myConceptConceptFunctionParameter_isAggregation, myConceptConceptFunctionParameter_node, myConceptConceptFunctionParameter_var, myConceptConceptReference, myConceptCreateComparableEquationStatement, myConceptCreateComparableEquationStatementStrong, myConceptCreateEquationStatement, myConceptCreateGreaterThanInequationStatement, myConceptCreateLessThanInequationStatement, myConceptCreateStrongGreaterThanInequationStatement, myConceptCreateStrongLessThanInequationStatement, myConceptDefaultGroupReference, myConceptErrorInfoExpression, myConceptExpressionIssueType, myConceptGetOperationType, myConceptIRuleWithOneNode, myConceptIRuleWithTwoNodes, myConceptImmediateSupertypesExpression, myConceptInequationReference, myConceptInequationReplacementRule, myConceptInferenceRule, myConceptInfoStatement, myConceptInfoStatementAnnotation, myConceptIsApplicableConceptFunction, myConceptIsReplacementRuleApplicable_ConceptFunction, myConceptIsStrongSubtypeExpression, myConceptIsSubtypeExpression, myConceptIssueTypeSpec, myConceptJoinContainer, myConceptJoinType, myConceptLeftOperandType_parameter, myConceptLinkPatternVariableReference, myConceptMatchStatement, myConceptMatchStatementItem, myConceptMeetContainer, myConceptMeetType, myConceptMessageStatement, myConceptMessageStatementAnnotation, myConceptMessageTarget, myConceptNode_InferTypeOperation, myConceptNode_TypeOperation, myConceptNonTypesystemRule, myConceptNormalTypeClause, myConceptOperation_parameter, myConceptOrStatement, myConceptOriginalNodeId, myConceptOverloadedOpIsApplicableFunction, myConceptOverloadedOpRulesContainer, myConceptOverloadedOpTypeRule_OneTypeSpecified, myConceptOverloadedOperatorTypeFunction, myConceptOverloadedOperatorTypeRule, myConceptOverridesConceptFunction, myConceptPatternCondition, myConceptPatternVariableReference, myConceptPrintToTrace, myConceptProcessed, myConceptPropertyMessageTarget, myConceptPropertyNameTarget, myConceptPropertyPatternVariableReference, myConceptQuickFixApplicableBlock, myConceptQuickFixArgument, myConceptQuickFixArgumentReference, myConceptQuickFixDescriptionBlock, myConceptQuickFixExecuteBlock, myConceptQuickFixField, myConceptQuickFixFieldReference, myConceptQuickFixSetSelectionBlock, myConceptReferenceMessageTarget, myConceptReferenceRoleTarget, myConceptReportErrorStatement, myConceptReportErrorStatementAnnotation, myConceptRightOperandType_parameter, myConceptRuntimeErrorType, myConceptRuntimeHoleType, myConceptRuntimeListVariable, myConceptRuntimeTypeVariable, myConceptSelectionType, myConceptStringIssueType, myConceptSubstituteTypeRule, myConceptSubtypingRule, myConceptSupersedeConceptFunction, myConceptTypeCheckerAccessExpression, myConceptTypeClause, myConceptTypeOfExpression, myConceptTypeVarDeclaration, myConceptTypeVarReference, myConceptTypesystemEquationStatementAnnotation, myConceptTypesystemIntention, myConceptTypesystemIntentionArgument, myConceptTypesystemQuickFix, myConceptVariableConverterItem, myConceptVariableConverterItem_ApplicableBlock, myConceptVariableConverterItem_ConvertBlock, myConceptVariableConvertersContainer, myConceptWarningStatement, myConceptWarningStatementAnnotation, myConceptWhenConcreteStatement, myConceptWhenConcreteVariableDeclaration, myConceptWhenConcreteVariableReference);
   }
 
   @Override
@@ -238,6 +241,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDefaultGroupReference;
       case LanguageConceptSwitch.ErrorInfoExpression:
         return myConceptErrorInfoExpression;
+      case LanguageConceptSwitch.ExpressionIssueType:
+        return myConceptExpressionIssueType;
       case LanguageConceptSwitch.GetOperationType:
         return myConceptGetOperationType;
       case LanguageConceptSwitch.IRuleWithOneNode:
@@ -264,6 +269,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIsStrongSubtypeExpression;
       case LanguageConceptSwitch.IsSubtypeExpression:
         return myConceptIsSubtypeExpression;
+      case LanguageConceptSwitch.IssueTypeSpec:
+        return myConceptIssueTypeSpec;
       case LanguageConceptSwitch.JoinContainer:
         return myConceptJoinContainer;
       case LanguageConceptSwitch.JoinType:
@@ -362,6 +369,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptRuntimeTypeVariable;
       case LanguageConceptSwitch.SelectionType:
         return myConceptSelectionType;
+      case LanguageConceptSwitch.StringIssueType:
+        return myConceptStringIssueType;
       case LanguageConceptSwitch.SubstituteTypeRule:
         return myConceptSubstituteTypeRule;
       case LanguageConceptSwitch.SubtypingRule:
@@ -502,6 +511,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("helginsIntention", 0x36a3e6f668ce5c15L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL).optional(true).ordered(true).multiple(true).origin("3937244445246643221").done();
     b.aggregate("messageTarget", 0x36a3e6f668ce5cf3L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a65783L).optional(true).ordered(true).multiple(false).origin("3937244445246643443").done();
     b.aggregate("foreignMessageSource", 0x36a3e6f668ce5dd2L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("3937244445246643666").done();
+    b.aggregate("issueType", 0x399cafc6eb281dd6L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x399cafc6eb268c1eL).optional(true).ordered(true).multiple(false).origin("4151386225412414934").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForAbstractRule() {
@@ -830,6 +840,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("equationInfo");
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForExpressionIssueType() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "ExpressionIssueType", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x399cafc6eb26b906L);
+    b.class_(false, false, false);
+    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x399cafc6eb268c1eL);
+    b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4151386225412323590");
+    b.version(3);
+    b.aggregate("issueTypeExpression", 0x399cafc6eb26b909L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("4151386225412323593").done();
+    b.alias("expression");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForGetOperationType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "GetOperationType", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fd11186b7L);
     b.class_(false, false, false);
@@ -971,6 +991,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("supertypeExpression", 0x111ef7bf5e7L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1176543950311").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("isSubtype()");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIssueTypeSpec() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "IssueTypeSpec", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x399cafc6eb268c1eL);
+    b.interface_();
+    b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4151386225412312094");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForJoinContainer() {
@@ -1495,6 +1522,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("selection");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForStringIssueType() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "StringIssueType", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x399cafc6eb268c21L);
+    b.class_(false, false, false);
+    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x399cafc6eb268c1eL);
+    b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4151386225412312097");
+    b.version(3);
+    b.property("issueType", 0x399cafc6eb268c22L).type(PrimitiveTypeId.STRING).origin("4151386225412312098").done();
+    b.alias("literal");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSubstituteTypeRule() {
