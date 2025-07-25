@@ -37,7 +37,7 @@
     <mkdir dir="${build.tmp}/default/mps-buildTest2.jar" />
     <mkdir dir="${build.tmp}/default/mps-buildTest2.jar/META-INF" />
     <echoxml file="${build.tmp}/default/mps-buildTest2.jar/META-INF/plugin.xml">
-      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+      <idea-plugin>
         <id>jetbrains.mps.buildTest2</id>
         <name>Build Test SandBox</name>
         <version>1.0.0</version>

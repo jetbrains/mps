@@ -62,7 +62,7 @@
     <mkdir dir="${build.tmp}/default/mps-trove.jar" />
     <mkdir dir="${build.tmp}/default/mps-trove.jar/META-INF" />
     <echoxml file="${build.tmp}/default/mps-trove.jar/META-INF/plugin.xml">
-      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+      <idea-plugin>
         <id>jetbrains.mps.trove</id>
         <name>Trove Collections language for MPS</name>
         <version>${mpsBootstrapCore.version}</version>

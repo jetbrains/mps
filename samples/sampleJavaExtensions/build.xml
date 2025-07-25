@@ -42,7 +42,7 @@
     <mkdir dir="${build.tmp}/default/SampleJavaExtensions.jar" />
     <mkdir dir="${build.tmp}/default/SampleJavaExtensions.jar/META-INF" />
     <echoxml file="${build.tmp}/default/SampleJavaExtensions.jar/META-INF/plugin.xml">
-      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+      <idea-plugin>
         <id>org.jetbrains.mps.samples.sampleJavaExtensions</id>
         <name>MPS Sample Java Extensions</name>
         <version>1.0.0</version>
