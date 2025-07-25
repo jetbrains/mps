@@ -1129,6 +1129,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-devkit">
+      <fileset dir="${mps_home}/plugins/mps-devkit/source" includes="**/*.dic" />
       <fileset dir="${mps_home}/plugins/mps-devkit/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
