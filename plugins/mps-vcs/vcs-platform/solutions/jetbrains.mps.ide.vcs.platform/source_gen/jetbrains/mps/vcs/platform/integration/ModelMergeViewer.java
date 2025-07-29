@@ -24,6 +24,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcspersistence.ModelSack;
 import jetbrains.mps.vcs.util.MergeConstants;
 import jetbrains.mps.smodel.ModelImports;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.vcs.diff.ui.merge.ISaveMergedModel;
 import com.intellij.openapi.application.ApplicationManager;
 import java.io.IOException;
@@ -75,14 +76,17 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       if (baseModel != null && mineModel != null && newModel != null) {
         if (ms.isPerRootPersistenceRoot()) {
           // fix imports and languages for per-root persistence root file to allow completion
-          ModelImports mi = new ModelImports(baseModel);
+          final ModelImports mi = new ModelImports(baseModel);
           // FIXME there's a very odd code, `model repoModel = baseModel/.getReference().resolve(null);`!!!
           //      and (a) it's wrong to use null as a repo; (b) wrong to assume actual model is there and got the same identity
           //      However, as it's relatively fresh fix which seems to address in-IDE merge with actual model present, keep it, with the only fix for context repo
-          SModel repoModel = baseModel.getReference().resolve(mpsProject.getRepository());
-          mi.copyImportedModelsFrom(repoModel);
-          mi.copyUsedLanguagesFrom(repoModel);
-          mi.copyEmployedDevKitsFrom(repoModel);
+          final SRepository repo = mpsProject.getRepository();
+          repo.getModelAccess().runReadAction(() -> {
+            SModel repoModel = baseModel.getReference().resolve(repo);
+            mi.copyImportedModelsFrom(repoModel);
+            mi.copyUsedLanguagesFrom(repoModel);
+            mi.copyEmployedDevKitsFrom(repoModel);
+          });
         }
         final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, ms.isPerRootPersistence());
 
