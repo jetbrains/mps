@@ -72,6 +72,12 @@
     </action>
   </actions>
 
+  <actions>
+    <!-- Disable copy current branch name action from <module name="intellij.platform.vcs.log.impl"> -->
+    <action id="Vcs.CopyCurrentBranchName" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+  </actions>
+
+
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
                         serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
