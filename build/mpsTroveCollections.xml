@@ -69,7 +69,7 @@
         <name>Trove Collections language for MPS</name>
         <version>${mpsBootstrapCore.version}</version>
         <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-        <depends>com.intellij.modules.platform</depends>
+        <depends>com.intellij.modules.mps</depends>
         <depends>jetbrains.mps.core</depends>
         
         <extensions defaultExtensionNs="com.intellij">
