@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.module.SModuleId;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.extapi.module.SModuleBase;
 import java.util.Set;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -36,8 +36,8 @@ import org.jetbrains.annotations.Nullable;
     if (existing != null) {
       throw new IllegalStateException("Duplicate modules with id '" + module.getModuleId() + "'");
     }
-    if (module instanceof AbstractModule) {
-      ((AbstractModule) module).attach(this);
+    if (module instanceof SModuleBase) {
+      ((SModuleBase) module).attach(this);
     }
     return module;
   }
@@ -49,8 +49,8 @@ import org.jetbrains.annotations.Nullable;
     if (removed.module != module || removed.owner != owner) {
       throw new IllegalStateException();
     }
-    if (module instanceof AbstractModule) {
-      ((AbstractModule) module).dispose();
+    if (module instanceof SModuleBase) {
+      ((SModuleBase) module).dispose();
     }
   }
 

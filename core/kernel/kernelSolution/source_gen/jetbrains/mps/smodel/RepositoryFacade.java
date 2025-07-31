@@ -33,6 +33,7 @@ public abstract class RepositoryFacade {
    */
   public static RepositoryFacade createPlainRegistrationRepo() {
     final Repo repo = new Repo(new ModelAccessNoLimit());
+    repo.init();
     // We have to dispose modules as their models/datasources attach e.g. file listeners that get notified long time after generation of a build project is over.
     final MPSModuleOwner owner = new MPSModuleOwner() {
       @Override

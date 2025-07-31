@@ -1214,7 +1214,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       if (node != null) {
         assert node.getModel() != null : "Can't edit a node that is not registered in a model";
         assert SNodeUtil.isAccessible(node, myRepository) :
-            "editNode() accepts nodes from its own repository only (model = " + node.getModel() + ", repository = " + node.getModel().getRepository() + ")";
+            String.format("editNode() accepts nodes from editor's associated repository only (expects repository: %s, node's model: %s, from repository: %s)", myRepository, node.getModel(), node.getModel().getRepository());
       }
 
       // respect notifiesCreation() for the sake of mbeddr.SPreferencesEditorComponent (until it migrates to 22.3)

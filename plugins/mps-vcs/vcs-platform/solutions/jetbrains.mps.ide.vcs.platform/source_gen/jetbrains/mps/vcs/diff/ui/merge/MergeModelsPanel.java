@@ -295,15 +295,19 @@ public class MergeModelsPanel extends JPanel {
     return myMergeTree.getNeighbourRoot(rootId, next);
   }
 
+  private void discardMergeRootPane() {
+    myMergeRootsPane.unregisterShortcuts(this);
+    myPanel.setSecondComponent(myNoRootPanel);
+    myMergeRootsPane.dispose();
+    myMergeRootsPane = null;
+  }
+
   public void resetCurrentRoot() {
     if (myMergeRootsPane == null) {
       return;
     }
 
-    myMergeRootsPane.unregisterShortcuts(this);
-    myPanel.setSecondComponent(myNoRootPanel);
-    myMergeRootsPane.dispose();
-    myMergeRootsPane = null;
+    discardMergeRootPane();
     myRootId = null;
     applyMetadataChanges();
   }
@@ -314,6 +318,11 @@ public class MergeModelsPanel extends JPanel {
     }
     applyMetadataChanges();
 
+    if (myMergeRootsPane != null && (myRootId == null && rootId != null || myRootId != null && rootId == null)) {
+      // XXX quite odd way to re-initialize MergeRootsPane the moment we switch to or from 'model properties' node, which
+      //    resided in another repo and hence can't re-use DiffEditors of existing MergeRootsPane
+      discardMergeRootPane();
+    }
     myRootId = rootId;
     final MergeSession session = (rootId == null ? myMetadataMergeSession : myMergeSession);
     myProjectRepository.getModelAccess().runReadAction(() -> {
