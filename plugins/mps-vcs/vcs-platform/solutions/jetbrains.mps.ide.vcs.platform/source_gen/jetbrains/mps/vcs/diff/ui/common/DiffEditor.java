@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -44,7 +45,6 @@ import com.intellij.codeInsight.hint.TooltipController;
 import com.intellij.codeInsight.hint.LineTooltipRenderer;
 import com.intellij.openapi.ui.popup.Balloon;
 import javax.swing.JScrollPane;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import com.intellij.util.ui.JBUI;
@@ -81,8 +81,11 @@ public class DiffEditor implements EditorMessageOwner {
     myRightToLeft = rightToLeft;
     myIsInspectorShown = isInspectorShown;
     myTitle = contentTitle;
-    myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft, readOnly);
-    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), rightToLeft, readOnly);
+    // FIXME provisional fix for MPS-38868, with metamodel change nodes residing in own repo, can't rely on project repo
+    //      however, would like to get back here and ensure repository is more explicit
+    final SRepository repo4EC = (model == null || model.getRepository() == null ? project.getRepository() : model.getRepository());
+    myMainEditorComponent = new MainEditorComponent(repo4EC, rightToLeft, readOnly);
+    myInspectorComponent = new MyInspectorEditorComponent(repo4EC, rightToLeft, readOnly);
     Sequence.fromIterable(getEditorComponents()).visitAll((ec) -> EditorExtensionUtil.extendUsingProject(ec, project));
 
     if (model != null) {
