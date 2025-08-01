@@ -83,7 +83,18 @@ public class DiffEditor implements EditorMessageOwner {
     myTitle = contentTitle;
     // FIXME provisional fix for MPS-38868, with metamodel change nodes residing in own repo, can't rely on project repo
     //      however, would like to get back here and ensure repository is more explicit
-    final SRepository repo4EC = (model == null || model.getRepository() == null ? project.getRepository() : model.getRepository());
+    final SRepository repo4EC;
+    if (model == null || model.getRepository() == null) {
+      repo4EC = project.getRepository();
+    } else {
+      if (model.getReference().resolve(project.getRepository()) == model) {
+        // can't use model.getRepository() as it answers MPSModuleRepository, not ProjectRepository, 
+        // and subsequent attempt to execute a command with Editor's repo fail (MPS-38874)
+        repo4EC = project.getRepository();
+      } else {
+        repo4EC = model.getRepository();
+      }
+    }
     myMainEditorComponent = new MainEditorComponent(repo4EC, rightToLeft, readOnly);
     myInspectorComponent = new MyInspectorEditorComponent(repo4EC, rightToLeft, readOnly);
     Sequence.fromIterable(getEditorComponents()).visitAll((ec) -> EditorExtensionUtil.extendUsingProject(ec, project));
