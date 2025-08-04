@@ -52,14 +52,14 @@ public class MergeConfirmation {
   private static int showUnresolvedChangesConfirmation(Component parent, int changes) {
     String message = String.format("You have %s left. You can resolve %s automatically.", NameUtil.formatNumericalString(changes, "unresolved change"), (changes > 1 ? "them" : "it"));
     String title = "Unresolved Change" + ((changes > 1 ? "s" : ""));
-    int answer = Messages.showYesNoCancelDialog(parent, message, title, "Resolve automatically and exit", "Exit without remaining changes resolving", "Return to resolving", Messages.getWarningIcon());
+    int answer = Messages.showYesNoCancelDialog(parent, message, title, "Continue Merge", "Apply Changes and Mark Resolved", "Resolve Automatically and Exit", Messages.getWarningIcon());
     if (answer == 0) {
-      return MergeConfirmation.RESOLVE_AUTOMATICALLY;
+      return MergeConfirmation.RETURN;
     } else if (answer == 1) {
       // Do nothing, leave unresolved changes as is
       return MergeConfirmation.SAVE_AS_IS;
     } else {
-      return MergeConfirmation.RETURN;
+      return MergeConfirmation.RESOLVE_AUTOMATICALLY;
     }
   }
 }

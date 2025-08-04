@@ -26,10 +26,6 @@
         <child id="8618885170173601778" name="tail" index="2Ry0An" />
       </concept>
       <concept id="6647099934206700647" name="jetbrains.mps.build.structure.BuildJavaPlugin" flags="ng" index="10PD9b" />
-      <concept id="7181125477683417252" name="jetbrains.mps.build.structure.BuildExternalLayoutDependency" flags="ng" index="13uUGR">
-        <reference id="7181125477683417255" name="layout" index="13uUGO" />
-        <child id="7181125477683417254" name="artifacts" index="13uUGP" />
-      </concept>
       <concept id="7389400916848136194" name="jetbrains.mps.build.structure.BuildFolderMacro" flags="ng" index="398rNT">
         <child id="7389400916848144618" name="defaultPath" index="398pKh" />
       </concept>
@@ -125,7 +121,7 @@
     <node concept="10PD9b" id="3o4bEdkFmrt" role="10PD9s" />
     <node concept="3b7kt6" id="3o4bEdkFmru" role="10PD9s" />
     <node concept="398rNT" id="3o4bEdkFmrv" role="1l3spd">
-      <property role="TrG5h" value="idea_home" />
+      <property role="TrG5h" value="mps_home" />
       <node concept="55IIr" id="3o4bEdkFmt2" role="398pKh">
         <node concept="2Ry0Ak" id="3o4bEdkFmtn" role="iGT6I">
           <property role="2Ry0Am" value=".." />
@@ -142,7 +138,7 @@
                     <node concept="2Ry0Ak" id="3o4bEdkFmtF" role="2Ry0An">
                       <property role="2Ry0Am" value="Applications" />
                       <node concept="2Ry0Ak" id="3o4bEdkFmtK" role="2Ry0An">
-                        <property role="2Ry0Am" value="IntelliJ IDEA.app" />
+                        <property role="2Ry0Am" value="MPS.app" />
                         <node concept="2Ry0Ak" id="3o4bEdkFmtP" role="2Ry0An">
                           <property role="2Ry0Am" value="Contents" />
                         </node>
@@ -156,45 +152,10 @@
         </node>
       </node>
     </node>
-    <node concept="398rNT" id="3o4bEdkFmry" role="1l3spd">
-      <property role="TrG5h" value="plugins_home" />
-      <node concept="55IIr" id="3o4bEdkFmtR" role="398pKh">
-        <node concept="2Ry0Ak" id="3o4bEdkFmuc" role="iGT6I">
-          <property role="2Ry0Am" value=".." />
-          <node concept="2Ry0Ak" id="3o4bEdkFmux" role="2Ry0An">
-            <property role="2Ry0Am" value=".." />
-            <node concept="2Ry0Ak" id="3o4bEdkFmu$" role="2Ry0An">
-              <property role="2Ry0Am" value=".." />
-              <node concept="2Ry0Ak" id="3o4bEdkFmuK" role="2Ry0An">
-                <property role="2Ry0Am" value=".." />
-                <node concept="2Ry0Ak" id="3o4bEdkFmvg" role="2Ry0An">
-                  <property role="2Ry0Am" value="Library" />
-                  <node concept="2Ry0Ak" id="3o4bEdkFmvu" role="2Ry0An">
-                    <property role="2Ry0Am" value="Application Support" />
-                    <node concept="2Ry0Ak" id="3F44tPntaxN" role="2Ry0An">
-                      <property role="2Ry0Am" value="IntelliJIdea2018.3" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13uUGR" id="3o4bEdkFmrw" role="1l3spa">
-      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
-      <node concept="398BVA" id="3o4bEdkFmrx" role="13uUGP">
-        <ref role="398BVh" node="3o4bEdkFmrv" resolve="idea_home" />
-      </node>
-    </node>
-    <node concept="2sgV4H" id="1_Lbg1yF_cI" role="1l3spa">
-      <ref role="1l3spb" to="ffeo:6S1jmf0xDFC" resolve="mpsBootstrapCore" />
-    </node>
     <node concept="2sgV4H" id="1_Lbg1yF_cN" role="1l3spa">
-      <ref role="1l3spb" to="ffeo:5D1dJ7xWer5" resolve="mpsCore" />
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="1_Lbg1yFCpG" role="2JcizS">
-        <ref role="398BVh" node="3o4bEdkFmry" resolve="plugins_home" />
+        <ref role="398BVh" node="3o4bEdkFmrv" resolve="mps_home" />
       </node>
     </node>
     <node concept="1l3spV" id="3o4bEdkFmrS" role="1l3spN">

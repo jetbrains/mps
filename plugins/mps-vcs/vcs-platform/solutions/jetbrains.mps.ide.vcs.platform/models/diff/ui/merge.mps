@@ -1000,14 +1000,14 @@
               <node concept="37vLTw" id="3GM_nagTrzo" role="37wK5m">
                 <ref role="3cqZAo" node="BjUsE2KRhG" resolve="title" />
               </node>
-              <node concept="Xl_RD" id="5yiqMy2PQWJ" role="37wK5m">
-                <property role="Xl_RC" value="Resolve automatically and exit" />
+              <node concept="Xl_RD" id="5yiqMy2PRtL" role="37wK5m">
+                <property role="Xl_RC" value="Continue Merge" />
               </node>
               <node concept="Xl_RD" id="5yiqMy2PRjG" role="37wK5m">
-                <property role="Xl_RC" value="Exit without remaining changes resolving" />
+                <property role="Xl_RC" value="Apply Changes and Mark Resolved" />
               </node>
-              <node concept="Xl_RD" id="5yiqMy2PRtL" role="37wK5m">
-                <property role="Xl_RC" value="Return to resolving" />
+              <node concept="Xl_RD" id="5yiqMy2PQWJ" role="37wK5m">
+                <property role="Xl_RC" value="Resolve Automatically and Exit" />
               </node>
               <node concept="2YIFZM" id="5yiqMy2PP8n" role="37wK5m">
                 <ref role="37wK5l" to="jkm4:~Messages.getWarningIcon()" resolve="getWarningIcon" />
@@ -1018,10 +1018,10 @@
         </node>
         <node concept="3clFbJ" id="BjUsE2KRhZ" role="3cqZAp">
           <node concept="3clFbS" id="BjUsE2KRi0" role="3clFbx">
-            <node concept="3cpWs6" id="BjUsE2KRi1" role="3cqZAp">
-              <node concept="10M0yZ" id="BjUsE2KReC" role="3cqZAk">
+            <node concept="3cpWs6" id="BjUsE2KRif" role="3cqZAp">
+              <node concept="10M0yZ" id="BjUsE2KReE" role="3cqZAk">
                 <ref role="1PxDUh" node="BjUsE2KReF" resolve="MergeConfirmation" />
-                <ref role="3cqZAo" node="BjUsE2KReO" resolve="RESOLVE_AUTOMATICALLY" />
+                <ref role="3cqZAo" node="BjUsE2KReG" resolve="RETURN" />
               </node>
             </node>
           </node>
@@ -1078,10 +1078,10 @@
           </node>
           <node concept="9aQIb" id="BjUsE2KRid" role="9aQIa">
             <node concept="3clFbS" id="BjUsE2KRie" role="9aQI4">
-              <node concept="3cpWs6" id="BjUsE2KRif" role="3cqZAp">
-                <node concept="10M0yZ" id="BjUsE2KReE" role="3cqZAk">
+              <node concept="3cpWs6" id="BjUsE2KRi1" role="3cqZAp">
+                <node concept="10M0yZ" id="BjUsE2KReC" role="3cqZAk">
                   <ref role="1PxDUh" node="BjUsE2KReF" resolve="MergeConfirmation" />
-                  <ref role="3cqZAo" node="BjUsE2KReG" resolve="RETURN" />
+                  <ref role="3cqZAo" node="BjUsE2KReO" resolve="RESOLVE_AUTOMATICALLY" />
                 </node>
               </node>
             </node>
