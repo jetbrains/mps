@@ -97,15 +97,22 @@
           <node concept="2pNUuL" id="7ZoWiKceyzf" role="2pNNFR">
             <property role="2pNUuO" value="since-build" />
             <node concept="2pMdtt" id="7ZoWiKceyzC" role="2pMdts">
-              <property role="2pMdty" value="193.1" />
+              <property role="2pMdty" value="252.1" />
             </node>
           </node>
         </node>
         <node concept="3o6iSG" id="7ZoWiKcey$2" role="3o6s8t" />
-        <node concept="2pNNFK" id="7ZoWiKcey$B" role="3o6s8t">
-          <property role="2pNNFO" value="depends" />
-          <node concept="3o6iSG" id="7ZoWiKcey$U" role="3o6s8t">
-            <property role="3o6i5n" value="jetbrains.mps.core" />
+        <node concept="2pNNFK" id="5pEkj3NnV8j" role="3o6s8t">
+          <property role="2pNNFO" value="dependencies" />
+          <node concept="3o6iSG" id="5pEkj3NnV8k" role="3o6s8t" />
+          <node concept="2pNNFK" id="5pEkj3NnV8m" role="3o6s8t">
+            <property role="2pNNFO" value="plugin" />
+            <node concept="2pNUuL" id="5pEkj3NnV8o" role="2pNNFR">
+              <property role="2pNUuO" value="id" />
+              <node concept="2pMdtt" id="5pEkj3NnV8p" role="2pMdts">
+                <property role="2pMdty" value="jetbrains.mps.core" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3o6iSG" id="7ZoWiKcey_n" role="3o6s8t" />

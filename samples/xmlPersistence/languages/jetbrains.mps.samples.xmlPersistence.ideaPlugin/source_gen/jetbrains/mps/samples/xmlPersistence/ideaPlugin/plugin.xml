@@ -7,9 +7,11 @@
   </description>
   <version>1.0</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="193.1" />
+  <idea-version since-build="252.1" />
   
-  <depends>jetbrains.mps.core</depends>
+  <dependencies>    
+    <plugin id="jetbrains.mps.core"></plugin>
+  </dependencies>
   
   <extensions defaultExtensionNs="com.intellij">
     <mps.ModelFactoryProvider implementationClass="jetbrains.mps.persistence.XmlModelPersistence" />

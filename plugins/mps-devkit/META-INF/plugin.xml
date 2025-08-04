@@ -108,8 +108,14 @@
     </group>
 
     <!--  Override IntelliJ Help and Resources group actions in Learn IDE tab on Welcome Screen,
-    but preserve original actions and add MPS actions to the end  -->
-    <group id="WelcomeScreen.LearnIdeHelp" keep-content="true" overrides="true">
+    re-enter the original actions without the in-IDE WhatsNewAction, add MPS actions to the end
+     and the in-browser What's new action to the front -->
+    <group id="WelcomeScreen.LearnIdeHelp" keep-content="false" overrides="true">
+      <action id="WhatsNewActionInBrowser" class="com.intellij.ide.actions.WhatsNewAction"/>
+      <reference ref="HelpTopics"/>
+      <reference ref="OnlineDocAction"/>
+      <reference ref="Help.JetBrainsTV"/>
+      <reference ref="Help.KeymapReference"/>
       <separator/>
       <reference ref="ShowUserGuide"/>
       <reference ref="ShowStepikCourse"/>
