@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,23 @@
  */
 package jetbrains.mps.vfs.path;
 
+import org.hamcrest.Matchers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ErrorCollector;
 
 import java.util.List;
 
 import static jetbrains.mps.vfs.path.Path.ARCHIVE_SEPARATOR;
 
 public class FilePathTest extends PathTest {
+  @Rule
+  public ErrorCollector myErrors = new ErrorCollector();
+
   @NotNull
   @Override
   public Path fromString(@NotNull String path, @NotNull PathFormat format) {
@@ -112,5 +119,60 @@ public class FilePathTest extends PathTest {
     var format = PathFormats.WIN;
     Path path = fromString("a\\b\\c.jar!/", format);
     Assert.assertEquals(fromString("a\\b\\c.jar", format), path.getParent());
+  }
+
+  // although this test doesn't mention FilePath directly, put it here as path inside archive is FilePath
+  @Test
+  @Ignore
+  public void pathFormatFromParts() {
+    final String winAbsPath = "c:\\Test\\test\\archive.jar";
+    final String unixAbsPath = "/Test/test/archive.jar";
+    final String entryPath = "entry/inside/archive";
+    // JarEntryFile.toPath():
+    Path un1 = PathFormats.UNIX.fromParts(winAbsPath, entryPath);
+    Path win1 = PathFormats.WIN.fromParts(winAbsPath, entryPath);
+    Path un2 = PathFormats.UNIX.fromParts(unixAbsPath, entryPath);
+    Path win2 = PathFormats.WIN.fromParts(unixAbsPath, entryPath);
+    final Path expected = PathFormats.UNIX.fromString(unixAbsPath + "!/" + entryPath);
+    System.out.println(un1.toUnixPathFormat().equals(expected));
+    System.out.println(un2.toUnixPathFormat().equals(expected));
+//    System.out.println(win1.toUnixPathFormat().equals(expected));
+//    System.out.println(win2.toUnixPathFormat().equals(expected));
+  }
+
+  @Test
+  @Ignore
+  public void changePathFormat() {
+    final String winRelPath = "Test\\test\\archive.jar";
+    final String unixRelPath = "Test/test/archive.jar";
+    final String entryPath = "entry/inside/archive";
+    Path un1 = PathFormats.UNIX.fromString(unixRelPath);
+    Path un2 = PathFormats.UNIX.fromParts(unixRelPath, entryPath);
+    Path win1 = PathFormats.WIN.fromString(winRelPath);
+    Path win2 = PathFormats.WIN.fromParts(winRelPath, entryPath);
+    System.out.println(un1);
+    System.out.println("\tparts:" + un1.getAllParts()); // distinct part string for each element of the path
+    // FilePath[Test/test/archive.jar]
+    //     parts:[null, Test, test, archive.jar]
+    System.out.println(un2);
+    System.out.println(win1);
+    System.out.println("\tparts:" + win1.getAllParts()); // distinct part string for each element of the path
+    // FilePath[Test\test\archive.jar]
+    //	   parts:[null, Test, test, archive.jar]
+    System.out.println(win2);
+
+    // see what happens if string doesn't match format (note, string doesn't include root/drive designator)
+    Path un3 = PathFormats.UNIX.fromString(winRelPath);
+    Path win3 = PathFormats.WIN.fromString(unixRelPath);
+
+    System.out.println(un3 + "; FMT=" + un3.getFormat());
+    System.out.println("\tparts:" + un3.getAllParts()); // complete path is treated as single part!
+    // parts:[null, Test\test\archive.jar]
+    System.out.println(win3 + "; FMT=" + win3.getFormat());
+    System.out.println("\tparts:" + win3.getAllParts()); // complete path is treated as single part!
+    // parts:[null, Test/test/archive.jar]
+
+    myErrors.checkThat("toUnixPathFormat() doesn't change path already in UNIX format", un3.toUnixPathFormat(), Matchers.equalTo(un3));
+    myErrors.checkThat("toUnixPathFormat() for relative Windows path translates to UNIX format", win3.toUnixPathFormat(), Matchers.equalTo(un3));
   }
 }

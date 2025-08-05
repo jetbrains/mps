@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,17 +55,22 @@ public interface PathFormat {
 
   /**
    * a Path constructed from the given root part and non-root parts
+   * FIXME single use of the method inside JarEntryFile makes parameters confusing. Does 'rootPart' here corresponds to 'rootPart' in #validateRoot()?
+   *       JarEntryFile uses absolute archive part as 'rootPart' here, while the rest of the class assumes 'rootPart' to be something like 'c:\'
    *
    * @throws PathParseException if the path cannot be parsed for some reason
    */
-  @NotNull Path fromParts(@Nullable String rootPart, @NotNull String... nonRootParts);
+  @NotNull
+  Path fromParts(@Nullable String rootPart, @NotNull String... nonRootParts);
 
   /**
    * a Path constructed from the given text representation of the path
+   * NOTE, path has to be in specified format, otherwise its parts get treated incorrectly!
    *
    * @throws PathParseException if the path cannot be parsed for some reason
    */
-  @NotNull Path fromString(@NotNull String path);
+  @NotNull
+  Path fromString(@NotNull String path);
 
   void validateRoot(@Nullable String rootPart);
 

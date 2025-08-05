@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,14 @@ import org.junit.runners.Suite.SuiteClasses;
     jetbrains.mps.ide.blame.command.YouTrackStatsTest.class,
     jetbrains.mps.smodel.language.ExtensionRegistryTest.class,
     jetbrains.mps.editor.runtime.style.StyleTests.class,
+    jetbrains.mps.util.JDOMUtilTest.class,
+    jetbrains.mps.util.StringUtilTest.class,
+    jetbrains.mps.util.IterableUtilTest.class,
+    jetbrains.mps.util.NameUtilTest.class,
+    jetbrains.mps.vfs.path.NonArchivePathTest.class,
+    jetbrains.mps.vfs.path.FilePathTest.class,
+    jetbrains.mps.vfs.path.FileUtilTest.class,
+    jetbrains.mps.vfs.path.PathFormatTest.class,
     jetbrains.mps.text.TextAreaTest.class,
     jetbrains.mps.text.TextBufferTest.class,
     jetbrains.mps.util.performance.PerfTracerTest.class,

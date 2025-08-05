@@ -34,13 +34,7 @@ import org.junit.runners.model.RunnerBuilder;
  */
 @RunWith(CoreTestSuite.class)
 @Suite.SuiteClasses({
-    jetbrains.mps.util.JDOMUtilTest.class,
-    jetbrains.mps.util.StringUtilTest.class,
-    jetbrains.mps.util.IterableUtilTest.class,
-    jetbrains.mps.util.NameUtilTest.class,
     jetbrains.mps.util.MacrosTest.class,
-    jetbrains.mps.vfs.path.NonArchivePathTest.class,
-    jetbrains.mps.vfs.path.FilePathTest.class,
     jetbrains.mps.aspects.InOrderSorterTest.class,
     jetbrains.mps.compile.EclipseJavaCompilerTest.class,
     jetbrains.mps.classloading.ModuleClassLoaderTest.class,
