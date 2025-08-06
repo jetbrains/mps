@@ -224,7 +224,7 @@
       <node concept="2pNNFK" id="7LQO1Y0N8FN" role="20twgj">
         <property role="2pNNFO" value="depends" />
         <node concept="3o6iSG" id="7LQO1Y0N8FO" role="3o6s8t">
-          <property role="3o6i5n" value="com.intellij.modules.platform" />
+          <property role="3o6i5n" value="com.intellij.modules.mps" />
         </node>
       </node>
     </node>

@@ -401,15 +401,6 @@
         <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
       </concept>
     </language>
-    <language id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml">
-      <concept id="6666499814681415858" name="jetbrains.mps.core.xml.structure.XmlElement" flags="ng" index="2pNNFK">
-        <property id="6666499814681415862" name="tagName" index="2pNNFO" />
-        <child id="1622293396948928802" name="content" index="3o6s8t" />
-      </concept>
-      <concept id="1622293396948952339" name="jetbrains.mps.core.xml.structure.XmlText" flags="nn" index="3o6iSG">
-        <property id="1622293396948953704" name="value" index="3o6i5n" />
-      </concept>
-    </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="2524418899405758586" name="jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration" flags="ig" index="gl6BB" />
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
@@ -805,7 +796,6 @@
       </concept>
       <concept id="6592112598314498932" name="jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin" flags="ng" index="m$_wf">
         <property id="6592112598314498927" name="id" index="m$_wk" />
-        <child id="1359186315025500371" name="xml" index="20twgj" />
         <child id="6592112598314498931" name="version" index="m$_w8" />
         <child id="6592112598314499050" name="content" index="m$_yh" />
         <child id="6592112598314499028" name="dependencies" index="m$_yJ" />
@@ -13028,12 +13018,6 @@
                     <ref role="3cqZAo" node="7$e6lgA3BuC" resolve="name" />
                   </node>
                 </node>
-                <node concept="2pNNFK" id="6uoB7M7GwOh" role="20twgj">
-                  <property role="2pNNFO" value="depends" />
-                  <node concept="3o6iSG" id="6uoB7M7Gxss" role="3o6s8t">
-                    <property role="3o6i5n" value="com.intellij.modules.platform" />
-                  </node>
-                </node>
               </node>
             </node>
           </node>
@@ -14614,9 +14598,6 @@
                   <node concept="yKbIv" id="49zeuIC3TXR" role="39821P">
                     <property role="yKbIr" value="755" />
                     <node concept="2HvfSZ" id="3f6C5dcXtoz" role="39821P">
-                      <node concept="3LWZYq" id="22iE9GX1lhe" role="2HvfZ1">
-                        <property role="3LWZYl" value="mps" />
-                      </node>
                       <node concept="55IIr" id="3f6C5dcXtoA" role="2HvfZ0">
                         <node concept="2c44te" id="3f6C5dcXtoB" role="lGtFl">
                           <node concept="1rXfSq" id="4hiugqyzePN" role="2c44t1">
@@ -14636,6 +14617,9 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                      <node concept="3LWZYq" id="22iE9GX1lhe" role="2HvfZ1">
+                        <property role="3LWZYl" value="mps" />
                       </node>
                     </node>
                   </node>
@@ -15027,9 +15011,6 @@
                       <node concept="3LWZYx" id="3f6C5dcXIAp" role="2HvfZ1">
                         <property role="3LWZYw" value="**/*.exe" />
                       </node>
-                      <node concept="3LWZYq" id="45BoiTF2OsE" role="2HvfZ1">
-                        <property role="3LWZYl" value="mps64.exe" />
-                      </node>
                       <node concept="55IIr" id="3f6C5dcXIAq" role="2HvfZ0">
                         <node concept="2c44te" id="3f6C5dcXIAr" role="lGtFl">
                           <node concept="1rXfSq" id="4hiugqyz3$Q" role="2c44t1">
@@ -15049,6 +15030,9 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                      <node concept="3LWZYq" id="45BoiTF2OsE" role="2HvfZ1">
+                        <property role="3LWZYl" value="mps64.exe" />
                       </node>
                     </node>
                   </node>
