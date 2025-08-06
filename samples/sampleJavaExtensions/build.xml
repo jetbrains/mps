@@ -51,7 +51,7 @@
         <id>org.jetbrains.mps.samples.sampleJavaExtensions</id>
         <name>MPS Sample Java Extensions</name>
         <version>1.0.0</version>
-        <depends>com.intellij.modules.platform</depends>
+        <depends>com.intellij.modules.mps</depends>
         <depends>jetbrains.mps.core</depends>
         
         <extensions defaultExtensionNs="com.intellij">
