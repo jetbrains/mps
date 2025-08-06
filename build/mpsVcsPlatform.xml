@@ -86,7 +86,7 @@
         <id>jetbrains.mps.git4idea.stubs</id>
         <name>MPS Git integration - stubs</name>
         <version>${mpsBootstrapCore.version}</version>
-        <depends>com.intellij.modules.platform</depends>
+        <depends>com.intellij.modules.mps</depends>
         <depends>Git4Idea</depends>
         <depends>jetbrains.mps.core</depends>
         

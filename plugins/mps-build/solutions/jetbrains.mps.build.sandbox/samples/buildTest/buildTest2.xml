@@ -41,7 +41,7 @@
         <id>jetbrains.mps.buildTest2</id>
         <name>Build Test SandBox</name>
         <version>1.0.0</version>
-        <depends>com.intellij.modules.platform</depends>
+        <depends>com.intellij.modules.mps</depends>
         <depends>jetbrains.mps.core</depends>
         <depends>jetbrains.mps.build</depends>
         

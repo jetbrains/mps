@@ -69,7 +69,7 @@
         <id>SampleCustomAspect</id>
         <name>SampleCustomAspect</name>
         <version>1.0</version>
-        <depends>com.intellij.modules.platform</depends>
+        <depends>com.intellij.modules.mps</depends>
         <depends>com.intellij.modules.mps</depends>
         
         <extensions defaultExtensionNs="com.intellij">
