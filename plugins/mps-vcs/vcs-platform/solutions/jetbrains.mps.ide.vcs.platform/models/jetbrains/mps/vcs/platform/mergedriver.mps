@@ -7709,9 +7709,6 @@
         <node concept="Xl_RD" id="45CTGXmyx16" role="37wK5m">
           <property role="Xl_RC" value="mps-annotations.jar" />
         </node>
-        <node concept="Xl_RD" id="5d$B_bo0qx1" role="37wK5m">
-          <property role="Xl_RC" value="mps-boot-util.jar" />
-        </node>
         <node concept="Xl_RD" id="XRbnwf5bbV" role="37wK5m">
           <property role="Xl_RC" value="mps-persistence.jar" />
         </node>
