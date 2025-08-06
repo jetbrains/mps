@@ -720,11 +720,11 @@ public final class ModuleChecker {
         if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7)) || ((boolean) BuildMps_Solution__BehaviorDescriptor.hasSources_id6ogfLD6hwDf.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Solution$R7)) && hasModels)) {
           buildModuleFacade.addJavaSources(convertPath(jmf.getOutputRoot()), true);
         }
-      }
-      if (SPropertyOperations.getBoolean(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).first(), PROPS.useMakeTask$aRFt)) {
-        // MPSI-36
-        buildModuleFacade.addOutputPath(convertPath(jmf.getClassesGen()));
-        //  guess I don't need outputPath unless we use <mps-make> task. Well, just to save some script re-generating 
+        if (SPropertyOperations.getBoolean(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).first(), PROPS.useMakeTask$aRFt)) {
+          // MPSI-36
+          buildModuleFacade.addOutputPath(convertPath(jmf.getClassesGen()));
+          //  guess I don't need outputPath unless we use <mps-make> task. Well, just to save some script re-generating 
+        }
       }
       // FIXME shall not limit tests sources to solutions only (TestsFacetImpl allows Languages to have tests).
       //      Left Solution check as a tribute to old code, pending refactoring of hasSources/hasTestsSources setting. I don't see a reason to keep it.

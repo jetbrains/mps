@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.ui.DarculaColors;
 import com.intellij.ui.JBColor;
 import org.jetbrains.mps.annotations.Immutable;
 
@@ -22,27 +23,36 @@ import java.awt.Color;
 
 @Immutable
 public final class MPSColors extends JBColor {
+  /*
+   * 1. No idea why we extend JBColor (or Color) here.
+   * 2. Please, pretty please, don't use JBColor.darker() as it accesses IDEA's Registry component which is not necessarily
+   *    initialized or even present (in MPS environment).
+   *    Using j.awt.Color.darker() is safe, but is there a reason when we can specify RGB values right away?
+   * 3. Personally, I don't see any reason to use JBColor constants to initialize *parts* of ours. Either state MPSColors.red == JBColors.red,
+   *    or use j.awt.Color, to avoid confusion which particular part of JBColor we refer to (e.g. JBColor.ORANGE as "dark" version of
+   *    MPSColors.darkBlue - does it mean `Color.ORANGE` (aka "getDefaultColor()") or rather `new Color(159, 107, 0)` (aka "getDarkVariant()))?
+   */
   private MPSColors() {
     super(JBColor.background(), JBColor.background());
   }
 
   // COLORS: Remove hardcoded colors
-  public static final Color red = new JBColor(JBColor.RED.darker(), JBColor.RED);
+  public static final Color red = new JBColor(new Color(0xb20000), DarculaColors.RED); // Color.red.darker()
   public static final Color RED = red;
 
   public static final Color lightBlue = new JBColor(new Color(162, 184, 208), new Color(104, 151, 186));
   public static final Color LIGHT_BLUE = lightBlue;
 
-  public static final Color darkBlue = new JBColor(new Color(0x80), JBColor.ORANGE);
+  public static final Color darkBlue = new JBColor(new Color(0x80), JBColor.ORANGE); // XXX how come we use orange for blue in "dark" theme?
   public static final Color DARK_BLUE = darkBlue;
 
-  public static final Color darkGreen = new JBColor(JBColor.GREEN.darker().darker(), JBColor.GREEN);
+  public static final Color darkGreen = new JBColor(new Color(0x007c00), JBColor.GREEN); // Color.GREEN.darker().darker()
   public static final Color DARK_GREEN = darkGreen;
 
-  public static final Color darkMagenta = new JBColor(JBColor.MAGENTA.darker().darker(), JBColor.MAGENTA);
+  public static final Color darkMagenta = new JBColor(new Color(0x7c007c), JBColor.MAGENTA); // Color.MAGENTA.darker().darker()
   public static final Color DARK_MAGENTA = darkMagenta;
 
-  public static final Color pink = new JBColor(JBColor.PINK, JBColor.PINK.darker().darker());
+  public static final Color pink = new JBColor(Color.PINK, new Color(0x7c5555)); // Color.PINK.darker().darker()
   public static final Color PINK = pink;
 
   public static final Color orange = JBColor.orange;
