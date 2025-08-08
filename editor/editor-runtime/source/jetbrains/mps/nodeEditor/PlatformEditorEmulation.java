@@ -681,9 +681,11 @@ public final class PlatformEditorEmulation implements Editor {
   }
 
   private void showInfoToolTip(@NotNull MouseEvent event) {
-    if (isNotInMainEditorPane() || MPSDocumentationManager.getInstance().isQuickDocPopupShown()) {
+    if (getComponent().getRootPane() == null || MPSDocumentationManager.getInstance().isQuickDocPopupShown()) {
       return;
     }
+    //Do not show the documentation popup/tool window when inside a dialog
+    DocumentationProvider provider = (getComponent().getRootPane() instanceof IdeRootPane) ? getDocumentationProvider(event) : null;
 
     boolean isGutter = event.getSource() == myEditorComponent.getLeftEditorHighlighter();
     final EditorTooltipProvider tooltipProvider =
@@ -695,7 +697,6 @@ public final class PlatformEditorEmulation implements Editor {
 
     final TooltipRenderer tooltipRenderer = tooltipProvider.getTooltipRenderer(event);
     final TooltipGroup tooltipGroup = tooltipProvider.getTooltipGroup();
-    final DocumentationProvider provider = getDocumentationProvider(event);
     if ((tooltipRenderer == null && (provider == null || !provider.hasDocumentation())) || this.isDisposed()) {
       return;
     }
@@ -703,10 +704,6 @@ public final class PlatformEditorEmulation implements Editor {
     final RelativePoint showPoint = getShowPoint(event, isGutter);
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
     myHintPopupController.showInfoToolTip(project, this, provider, tooltipRenderer, tooltipGroup, showPoint);
-  }
-
-  private boolean isNotInMainEditorPane() {
-    return getComponent().getRootPane() == null || !(getComponent().getRootPane() instanceof IdeRootPane);
   }
 
   @NotNull
