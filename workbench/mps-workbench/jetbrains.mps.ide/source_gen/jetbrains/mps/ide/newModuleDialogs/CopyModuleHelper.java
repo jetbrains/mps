@@ -9,6 +9,7 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.Language;
 import java.util.Collection;
 import jetbrains.mps.smodel.Generator;
@@ -57,6 +58,12 @@ public final class CopyModuleHelper {
     }
     AbstractModule copy;
     ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName).copyDescriptor();
+    if (copyDescriptor instanceof GeneratorDescriptor) {
+      // myCopyLocation here and general logic of CloneModule action suggests we are to create standalone module.
+      // Therefore, have to tell this explicitly for Generators, not to confuse rest of the logic (e.g. updating MD of a generator which is part of the language
+      // reloads the language and related generators, effectively de-registering the new one)
+      ((GeneratorDescriptor) copyDescriptor).standaloneModule(true);
+    }
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
       addModuleToProject(copy);
