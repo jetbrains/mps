@@ -516,15 +516,6 @@
     <property role="34LRSv" value="sources of" />
     <property role="EcuMT" value="1692280246134781712" />
     <ref role="1TJDcQ" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
-    <node concept="1TJgyi" id="41K1b4v5By6" role="1TKVEl">
-      <property role="TrG5h" value="modelsOnly" />
-      <property role="IQ2nx" value="4643216374596270214" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-      <node concept="asaX9" id="3QjSZgCYW6Y" role="lGtFl">
-        <property role="YLPcu" value="2023.3" />
-        <property role="YLQ7P" value="not in use for a long time, remove once 2023.3 is out" />
-      </node>
-    </node>
     <node concept="1TJgyi" id="6R_3WZ3d1$J" role="1TKVEl">
       <property role="TrG5h" value="stripImplementation" />
       <property role="IQ2nx" value="7918752904808503599" />

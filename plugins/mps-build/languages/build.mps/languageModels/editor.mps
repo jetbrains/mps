@@ -308,9 +308,6 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -396,7 +393,6 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="7835263205327057228" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenAndChildAttributesOperation" flags="ng" index="Bykcj" />
-      <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1143235216708" name="jetbrains.mps.lang.smodel.structure.Model_CreateNewNodeOperation" flags="nn" index="I8ghe">
         <reference id="1143235391024" name="concept" index="I8UWU" />
       </concept>
@@ -2310,30 +2306,6 @@
         </node>
         <node concept="3F0A7n" id="6R_3WZ3dJDA" role="3EZMnx">
           <ref role="1NtTu8" to="kdzh:6R_3WZ3d1$J" resolve="stripImplementation" />
-        </node>
-      </node>
-      <node concept="3EZMnI" id="41K1b4v5By_" role="3EZMnx">
-        <node concept="l2Vlx" id="41K1b4v5ByA" role="2iSdaV" />
-        <node concept="3F0ifn" id="41K1b4v5ByB" role="3EZMnx">
-          <property role="3F0ifm" value="models only:" />
-          <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
-        </node>
-        <node concept="3F0A7n" id="41K1b4v5ByD" role="3EZMnx">
-          <ref role="1NtTu8" to="kdzh:41K1b4v5By6" resolve="modelsOnly" />
-        </node>
-        <node concept="pkWqt" id="41K1b4v5FXK" role="pqm2j">
-          <node concept="3clFbS" id="41K1b4v5FXL" role="2VODD2">
-            <node concept="3clFbF" id="41K1b4v5FYc" role="3cqZAp">
-              <node concept="2YIFZM" id="41K1b4v5FYf" role="3clFbG">
-                <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
-                <ref role="37wK5l" to="w1kc:~SModelStereotype.isGeneratorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isGeneratorModel" />
-                <node concept="2OqwBi" id="41K1b4v5FY4" role="37wK5m">
-                  <node concept="pncrf" id="41K1b4v5FXN" role="2Oq$k0" />
-                  <node concept="I4A8Y" id="41K1b4v5FYa" role="2OqNvi" />
-                </node>
-              </node>
-            </node>
-          </node>
         </node>
       </node>
     </node>

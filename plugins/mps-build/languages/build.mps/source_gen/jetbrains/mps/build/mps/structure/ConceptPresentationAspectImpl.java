@@ -157,8 +157,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildMpsLayout_ModuleJars;
       case LanguageConceptSwitch.BuildMpsLayout_ModuleSources:
         if (props_BuildMpsLayout_ModuleSources == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L);
-          cpb.deprecateProperty(0x407004b11f167886L, "modelsOnly");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("sources of");
           props_BuildMpsLayout_ModuleSources = cpb.create();
         }
