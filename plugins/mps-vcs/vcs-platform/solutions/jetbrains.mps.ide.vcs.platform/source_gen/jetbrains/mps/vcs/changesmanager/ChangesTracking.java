@@ -144,7 +144,13 @@ public final class ChangesTracking {
   }
 
   private void uninstallEventCollector() {
-    myModelDescriptor.getRepository().getModelAccess().removeCommandListener(myEventCollector);
+    if (myModelDescriptor.getRepository() != null) {
+      // the way CurrentDifference is obtained (CurrentDifferenceRegistry.getCurrentDifference) suggests we can
+      // get one for model from a short-lived repository (e.g. the one for diff/merge), which may get disposed/unregistered by the time
+      // there's attempt to dispose its CurrentDifference. Indeed, CDR has to be SRepository-sensitive and not to assume every model 
+      // it receives comes from a Project's repository.
+      myModelDescriptor.getRepository().getModelAccess().removeCommandListener(myEventCollector);
+    }
     myModelDescriptor.removeModelListener(myEventCollector);
     myModelDescriptor.removeChangeListener(myEventCollector);
   }
