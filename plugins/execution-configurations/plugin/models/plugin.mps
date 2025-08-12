@@ -8332,34 +8332,39 @@
     <node concept="yHkDC" id="q00jVsOUD1" role="yHkDi">
       <property role="TrG5h" value="myVmOptions" />
       <node concept="17QB3L" id="q00jVsOUD2" role="1tU5fm" />
-      <node concept="3cpWs3" id="5HBSC1us$4E" role="33vP2m">
+      <node concept="3cpWs3" id="4W$HfCWfPik" role="33vP2m">
         <node concept="Xl_RD" id="5HBSC1usAnn" role="3uHU7w">
           <property role="Xl_RC" value="-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&amp;clearDraft=true&amp;summary=$TITLE$&amp;description=$DESCR$" />
         </node>
-        <node concept="3cpWs3" id="4nmyK_eEJrs" role="3uHU7B">
-          <node concept="3cpWs3" id="2JQcTZRP_tO" role="3uHU7B">
-            <node concept="Xl_RD" id="4v0OxldvcIT" role="3uHU7w">
-              <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true\n" />
-            </node>
-            <node concept="3cpWs3" id="2JQcTZRQfKV" role="3uHU7B">
-              <node concept="Xl_RD" id="2JQcTZRQeUa" role="3uHU7w">
-                <property role="Xl_RC" value="-DjbScreenMenuBar.useStubItem=true\n" />
+        <node concept="3cpWs3" id="5HBSC1us$4E" role="3uHU7B">
+          <node concept="3cpWs3" id="4nmyK_eEJrs" role="3uHU7B">
+            <node concept="3cpWs3" id="2JQcTZRP_tO" role="3uHU7B">
+              <node concept="Xl_RD" id="4v0OxldvcIT" role="3uHU7w">
+                <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true\n" />
               </node>
-              <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
-                <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
-                  <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
+              <node concept="3cpWs3" id="2JQcTZRQfKV" role="3uHU7B">
+                <node concept="Xl_RD" id="2JQcTZRQeUa" role="3uHU7w">
+                  <property role="Xl_RC" value="-DjbScreenMenuBar.useStubItem=true\n" />
                 </node>
-                <node concept="2OqwBi" id="20OjqTFAodj" role="3uHU7B">
-                  <node concept="2WthIp" id="20OjqTFAodm" role="2Oq$k0" />
-                  <node concept="2XshWL" id="20OjqTFAodo" role="2OqNvi">
-                    <ref role="2WH_rO" node="20OjqTF_cQ2" resolve="computeOpenedPackages" />
+                <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
+                  <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
+                    <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
+                  </node>
+                  <node concept="2OqwBi" id="20OjqTFAodj" role="3uHU7B">
+                    <node concept="2WthIp" id="20OjqTFAodm" role="2Oq$k0" />
+                    <node concept="2XshWL" id="20OjqTFAodo" role="2OqNvi">
+                      <ref role="2WH_rO" node="20OjqTF_cQ2" resolve="computeOpenedPackages" />
+                    </node>
                   </node>
                 </node>
               </node>
             </node>
+            <node concept="Xl_RD" id="4nmyK_eEJr$" role="3uHU7w">
+              <property role="Xl_RC" value="-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader\n" />
+            </node>
           </node>
-          <node concept="Xl_RD" id="4nmyK_eEJr$" role="3uHU7w">
-            <property role="Xl_RC" value="-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader\n" />
+          <node concept="Xl_RD" id="4W$HfCWfSdY" role="3uHU7w">
+            <property role="Xl_RC" value="-Dide.native.launcher=false\n" />
           </node>
         </node>
       </node>
