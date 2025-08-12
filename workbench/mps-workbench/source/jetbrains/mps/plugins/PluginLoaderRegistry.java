@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.plugins;
 
+import com.intellij.concurrency.ThreadContext;
 import com.intellij.configurationStore.JdomSerializer;
+import com.intellij.diagnostic.ThreadDumper;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.application.ApplicationManager;
@@ -46,6 +48,7 @@ import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.util.JavaNameUtil;
+import kotlin.coroutines.CoroutineContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -445,6 +448,13 @@ public class PluginLoaderRegistry implements Disposable {
 //            e.printStackTrace();
 //          }
           ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()), modalityState);
+        } catch (IllegalStateException ise) {
+          // Collect additional diagnostics information for MPS-38737
+          String threadDump = ThreadDumper.getThreadDumpInfo(ThreadDumper.getThreadInfos(), false).getRawDump();
+          LOG.info(threadDump);
+          String message = ise.getMessage() + ". Current ThreadContext: " + ThreadContext.currentThreadContext().toString();
+          IllegalStateException wrapper = new IllegalStateException(message, ise);
+          throw wrapper;
         } finally {
           indicator.popState();
         }
