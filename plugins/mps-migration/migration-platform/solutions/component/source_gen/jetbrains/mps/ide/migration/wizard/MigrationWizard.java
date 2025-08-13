@@ -78,7 +78,7 @@ public class MigrationWizard extends AbstractWizardEx {
   }
 
   @Override
-  protected String getHelpID() {
+  protected String getHelpId() {
     return "migration.assistant";
   }
 
