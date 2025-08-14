@@ -467,14 +467,21 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
 
     if (module instanceof Solution) {
       SNode solutionNode = _quotation_createNode_un708i_a0a0g0lb(path);
-      if (module.getUsedLanguages().contains(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources")) || !(module.getModels((model) -> ListSequence.fromList(SModelOperations.nodes(((SModel) model), CONCEPTS.FileIcon$Z0)).isNotEmpty()).isEmpty())) {
-        addResources(solutionNode, descriptorFile, module);
-
+      String pattern = "";
+      if (module.getUsedLanguages().contains(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources")) || !(module.getModels((SModel m) -> ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.FileIcon$Z0)).isNotEmpty()).isEmpty())) {
+        pattern += "icons/**, resources/**";
+      }
+      if (module.getUsedLanguages().contains(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone")) && !(module.getModels((SModel m) -> ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.StandalonePluginDescriptor$4y)).any((pd) -> SPropertyOperations.getBoolean(pd, PROPS.needInitConfig$W9CN))).isEmpty())) {
+        pattern += "startup.properties";
+      }
+      if ((pattern != null && pattern.length() > 0)) {
+        // path.getParent() gives a new detached node
+        addResources(solutionNode, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(path), pattern);
       }
       return solutionNode;
     } else if (module instanceof Language) {
       SNode langNode = _quotation_createNode_un708i_a0a0a6a73(path);
-      addResources(langNode, descriptorFile, module);
+      addResources(langNode, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(path), "icons/**, resources/**");
       myLanguageNodes.put(module.getModuleReference(), langNode);
       return langNode;
     } else if (module instanceof Generator) {
@@ -501,14 +508,8 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$9_ak)).addElement(_quotation_createNode_un708i_a0a1a04(testingPlugin));
   }
 
-  private void addResources(SNode moduleNode, IFile descriptorFile, SModule module) {
-    try {
-      ListSequence.fromList(SLinkOperations.getChildren(moduleNode, LINKS.sources$mT1j)).addElement(_quotation_createNode_un708i_a0a0a0a24(createPathFromFullPath(descriptorFile.getParent().getPath())));
-    } catch (RelativePathHelper.PathException e) {
-      if (LOG.isWarningLevel()) {
-        LOG.warning("Can't make relative path from build model base directory to module " + module, e);
-      }
-    }
+  private void addResources(SNode moduleNode, SNode moduleRoot, String pattern) {
+    ListSequence.fromList(SLinkOperations.getChildren(moduleNode, LINKS.sources$mT1j)).addElement(_quotation_createNode_un708i_a0a0a24(pattern, moduleRoot));
   }
 
   private SNode createPathFromFullPath(String fullPath) throws RelativePathHelper.PathException {
@@ -3194,26 +3195,26 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a0a0a0a24(Object parameter_1) {
-    SNode quotedNode_2 = null;
+  private static SNode _quotation_createNode_un708i_a0a0a24(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
+    SNode quotedNode_7 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0xa99ab51d1ecc306L, "BuildMps_ModuleResources"));
-    quotedNode_2 = nb.getResult();
+    quotedNode_3 = nb.getResult();
     SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x48d5d03db92245a4L, "BuildInputFiles"));
-    quotedNode_3 = nb1.getResult();
+    quotedNode_4 = nb1.getResult();
     SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x7819f90ca2eb7bf6L, "BuildFileIncludesSelector"));
-    quotedNode_4 = nb2.getResult();
-    nb2.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), "icons/**, resources/**");
-    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), quotedNode_4);
-    quotedNode_5 = (SNode) parameter_1;
-    if (quotedNode_5 != null) {
-      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), SNodeOperations.copyIfNecessary(quotedNode_5));
+    quotedNode_5 = nb2.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_5, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), (String) parameter_1);
+    quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), quotedNode_5);
+    quotedNode_6 = (SNode) parameter_2;
+    if (quotedNode_6 != null) {
+      quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), SNodeOperations.copyIfNecessary(quotedNode_6));
     }
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), quotedNode_3);
-    return quotedNode_2;
+    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), quotedNode_4);
+    return quotedNode_3;
   }
   private static SNode _quotation_createNode_un708i_a0b0ub() {
     SNode quotedNode_1 = null;
@@ -3237,6 +3238,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     /*package*/ static final SProperty outputPath$ljii = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath");
     /*package*/ static final SProperty pattern$MQ03 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a3956ec48L, 0x7f76698a3956ec49L, "pattern");
     /*package*/ static final SProperty head$$gC$ = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty needInitConfig$W9CN = MetaAdapterFactory.getProperty(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, 0x5f3b7568ba8feb0fL, "needInitConfig");
     /*package*/ static final SProperty id$W4AX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
   }
 
@@ -3269,6 +3271,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     /*package*/ static final SConcept BuildLayout_CopyFilterReplaceRegex$Pu = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a3956ec48L, "jetbrains.mps.build.structure.BuildLayout_CopyFilterReplaceRegex");
     /*package*/ static final SConcept BuildMps_Branding$M0 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, "jetbrains.mps.build.mps.structure.BuildMps_Branding");
     /*package*/ static final SConcept FileIcon$Z0 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon");
+    /*package*/ static final SConcept StandalonePluginDescriptor$4y = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x685ef16bc1750e9cL, "jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor");
     /*package*/ static final SConcept BuildMps_IdeaPlugin$po = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
     /*package*/ static final SConcept BuildProjectDependency$sN = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
     /*package*/ static final SConcept BuildSourceMacroRelativePath$b7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
