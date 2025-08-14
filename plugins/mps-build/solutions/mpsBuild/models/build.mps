@@ -42557,6 +42557,11 @@
             <ref role="3bR37D" node="14x5$qAUbkv" resolve="jetbrains.mps.lang.resources" />
           </node>
         </node>
+        <node concept="1SiIV0" id="2FkNzsYA5nl" role="3bR37C">
+          <node concept="3bR9La" id="2FkNzsYA5nm" role="1SiIV1">
+            <ref role="3bR37D" node="2eDSGe9d1pJ" resolve="jetbrains.mps.lang.plugin.standalone" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="78GwwOvFiRN" role="2G$12L">
         <property role="TrG5h" value="jetbrains.mps.build.pluginSolution" />

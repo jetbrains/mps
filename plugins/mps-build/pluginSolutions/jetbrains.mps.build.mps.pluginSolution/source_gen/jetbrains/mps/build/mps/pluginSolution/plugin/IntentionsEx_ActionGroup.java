@@ -14,5 +14,6 @@ public class IntentionsEx_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     IntentionsEx_ActionGroup.this.addAction("jetbrains.mps.build.mps.pluginSolution.plugin.ImportAllModulesFromFolder_Action");
+    IntentionsEx_ActionGroup.this.addAction("jetbrains.mps.build.mps.pluginSolution.plugin.AddStartupPropertiesResource_Action");
   }
 }
