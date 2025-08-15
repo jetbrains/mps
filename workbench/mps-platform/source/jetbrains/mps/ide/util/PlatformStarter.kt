@@ -52,6 +52,7 @@ class PlatformStarter {
                     // CMD_NAME here has two purposes: set headless to true (ends in "inspect") and run our MPSHeadlessPlatformStarter starter (which is
                     // declared using the same name)
                     startApplication(
+                        this,
                         listOf(CMD_NAME),
                         configImportNeededDeferred = CompletableDeferred(false),
                         customTargetDirectoryToImportConfig = null,
