@@ -45559,7 +45559,7 @@
               <node concept="2Ry0Ak" id="1Zf1t7r6_nT" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="537sSHLZCye" role="2Ry0An">
-                  <property role="2Ry0Am" value="vcs-github-IC" />
+                  <property role="2Ry0Am" value="vcs-github" />
                 </node>
               </node>
             </node>
@@ -45778,10 +45778,10 @@
       </node>
     </node>
     <node concept="1E1JtA" id="71aLKqdKvPp" role="3989C9">
+      <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.ide.make" />
       <property role="3LESm3" value="8f6725be-608d-433b-98fd-844f816eb05f" />
       <property role="ZpmtF" value="true" />
-      <property role="BnDLt" value="true" />
       <node concept="3rtmxn" id="EpEP7iihM_" role="3bR31x">
         <node concept="3LXTmp" id="EpEP7iihMA" role="3rtmxm">
           <node concept="3qWCbU" id="EpEP7iihMB" role="3LXTna">

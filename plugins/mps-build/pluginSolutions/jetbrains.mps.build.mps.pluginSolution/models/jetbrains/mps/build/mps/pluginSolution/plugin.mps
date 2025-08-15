@@ -9557,7 +9557,7 @@
     </node>
     <node concept="2tJIrI" id="1eG7s_ey6BM" role="jymVt" />
     <node concept="3clFb_" id="7$e6lgA3BfN" role="jymVt">
-      <property role="TrG5h" value="getHelpID" />
+      <property role="TrG5h" value="getHelpId" />
       <node concept="3Tm1VV" id="7$e6lgA3BfO" role="1B3o_S" />
       <node concept="3clFbS" id="7$e6lgA3BfP" role="3clF47">
         <node concept="3clFbH" id="11UgesDP_XU" role="3cqZAp" />
