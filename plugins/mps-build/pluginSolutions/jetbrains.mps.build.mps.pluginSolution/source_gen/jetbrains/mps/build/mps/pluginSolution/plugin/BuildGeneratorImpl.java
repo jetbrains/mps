@@ -59,6 +59,7 @@ import java.util.Iterator;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.Nullable;
+import java.util.stream.Collectors;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
@@ -467,16 +468,17 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
 
     if (module instanceof Solution) {
       SNode solutionNode = _quotation_createNode_un708i_a0a0g0lb(path);
-      String pattern = "";
+      ArrayList<String> pattern = new ArrayList<>();
       if (module.getUsedLanguages().contains(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources")) || !(module.getModels((SModel m) -> ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.FileIcon$Z0)).isNotEmpty()).isEmpty())) {
-        pattern += "icons/**, resources/**";
+        pattern.add("icons/**");
+        pattern.add("resources/**");
       }
       if (module.getUsedLanguages().contains(MetaAdapterFactory.getLanguage(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, "jetbrains.mps.lang.plugin.standalone")) && !(module.getModels((SModel m) -> ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.StandalonePluginDescriptor$4y)).any((pd) -> SPropertyOperations.getBoolean(pd, PROPS.needInitConfig$W9CN))).isEmpty())) {
-        pattern += "startup.properties";
+        pattern.add("startup.properties");
       }
-      if ((pattern != null && pattern.length() > 0)) {
+      if (!(pattern.isEmpty())) {
         // path.getParent() gives a new detached node
-        addResources(solutionNode, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(path), pattern);
+        addResources(solutionNode, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(path), pattern.stream().collect(Collectors.joining(",")));
       }
       return solutionNode;
     } else if (module instanceof Language) {
