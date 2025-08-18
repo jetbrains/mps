@@ -30,8 +30,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LanguageDescriptor extends ModuleDescriptor {
-  private String myGenPath;
-
   private int myLanguageVersion;
 
   private final Set<SModelReference> myAccessoryModels;
@@ -45,22 +43,6 @@ public class LanguageDescriptor extends ModuleDescriptor {
     myGenerators = new ArrayList<>();
     myExtendedLanguages = new LinkedHashSet<>();
     myRuntimeModules = new LinkedHashSet<>();
-  }
-
-  /**
-   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public String getGenPath() {
-    return myGenPath;
-  }
-
-  /**
-   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public void setGenPath(String genPath) {
-    myGenPath = genPath;
   }
 
   public Set<SModelReference> getAccessoryModels() {
@@ -106,7 +88,6 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public void save(ModelOutputStream stream) throws IOException {
     super.save(stream);
     stream.writeInt(myLanguageVersion);
-    stream.writeString(myGenPath);
 
     stream.writeInt(myAccessoryModels.size());
     for (SModelReference ref : myAccessoryModels) {
@@ -135,7 +116,6 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public void load(ModelInputStream stream) throws IOException {
     super.load(stream);
     myLanguageVersion = stream.readInt();
-    myGenPath = stream.readString();
 
     myAccessoryModels.clear();
     for (int size = stream.readInt(); size > 0; size--) {
@@ -167,7 +147,6 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public LanguageDescriptor copy() {
     LanguageDescriptor target = super.copy0(LanguageDescriptor::new);
 
-    target.setGenPath(getGenPath());
     target.setLanguageVersion(getLanguageVersion());
     target.getAccessoryModels().addAll(getAccessoryModels());
     target.getGenerators().addAll(getGenerators().stream().map(GeneratorDescriptor::copy).toList());

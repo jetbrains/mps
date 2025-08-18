@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.excluded;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.excluded.Utils.MyMacroHelper;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.project.io.DescriptorIOException;
@@ -115,7 +114,9 @@ class MPSModuleCollector {
       IFile classesGenDir = classGenOrLegacy(md, expander);
       DescriptorEntry de = new DescriptorEntry(moduleDir);
       String srcPath = getGeneratorOutputPath(md, expander);
-      de.addSourcePath(getCanonicalPath(srcPath));
+      if (srcPath != null) {
+        de.addSourcePath(getCanonicalPath(srcPath));
+      }
       final IFile testsOutputPath = TestsFacetImpl.getTestsOutputPath(md, moduleIFile);
       if (testsOutputPath != null) {
         String testPath = testsOutputPath.getPath();
@@ -125,7 +126,11 @@ class MPSModuleCollector {
       if (md instanceof LanguageDescriptor) {
         LanguageDescriptor ld = ((LanguageDescriptor) md);
         for (GeneratorDescriptor generator : ld.getGenerators()) {
-          String generatorSrcPath = getCanonicalPath(getGeneratorOutputPath(generator, expander));
+          String generatorOutputPath = getGeneratorOutputPath(generator, expander);
+          if (generatorOutputPath == null) {
+            continue;
+          }
+          String generatorSrcPath = getCanonicalPath(generatorOutputPath);
           de.addSourcePath(generatorSrcPath);
           de.addClassGenPath(classGenOrLegacy(generator, expander));
         }
@@ -134,13 +139,11 @@ class MPSModuleCollector {
     }
   }
 
-  @SuppressWarnings("removal")
   private static String getGeneratorOutputPath(final ModuleDescriptor md, final MacroHelper macroHelper) {
     if (md.getOutputRoot() != null) {
       return macroHelper.expandPath(md.getOutputRoot());
     }
-    final String p = ProjectPathUtil._getGeneratorOutputPathPrim(md);
-    return p == null ? null : macroHelper.expandPath(p);
+    return null;
   }
 
   private IFile classGenOrLegacy(final ModuleDescriptor md, final MacroHelper macroHelper) {

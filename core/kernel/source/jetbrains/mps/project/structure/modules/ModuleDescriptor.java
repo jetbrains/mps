@@ -105,8 +105,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
   @Nullable
   private String myOutputRoot;
 
-  private boolean myUseOutputRootFromLegacy;
-
   private Throwable myLoadException;
 
   public ModuleDescriptor() {
@@ -174,22 +172,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
 
   public void setOutputRoot(@Nullable String location) {
     myOutputRoot = location;
-  }
-
-  /**
-   * Transition code, don't use except for MPS internal purposes
-   */
-  @Deprecated(forRemoval = true)
-  public void markOutputRootLegacyValue(boolean value) {
-    myUseOutputRootFromLegacy = value;
-  }
-
-  /**
-   * Transition code, don't use except for MPS internal purposes
-   */
-  @Deprecated(forRemoval = true)
-  public boolean isOutputRootFromLegacy() {
-    return myUseOutputRootFromLegacy;
   }
 
   public final Collection<ModelRootDescriptor> getModelRootDescriptors() {

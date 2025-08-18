@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -33,11 +32,10 @@ import java.util.Set;
 public class GeneratorDescriptor extends ModuleDescriptor {
   private String myAlias;
 
-  private Set<SModuleReference> myDepGenerators;
-  private List<MappingPriorityRule> myPriorityRules;
+  private final Set<SModuleReference> myDepGenerators;
+  private final List<MappingPriorityRule> myPriorityRules;
 
   private boolean myGenerateTemplates = false;
-  private String myGenOutputPath;
   private SModuleReference mySourceLanguage;
   private boolean myStandaloneModule = false;
 
@@ -103,24 +101,6 @@ public class GeneratorDescriptor extends ModuleDescriptor {
   }
 
   /**
-   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
-   * @return filesystem location where generated files for the generator go, or null if this module doesn't support output
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  @Nullable
-  public String getOutputPath() {
-    return myGenOutputPath;
-  }
-
-  /**
-   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public void setOutputPath(@Nullable String path) {
-    myGenOutputPath = path;
-  }
-
-  /**
    * For a long time, Generator modules were part of Language declaration. Now we move towards full-fledged Generator
    * modules and use this flag to tell Generator modules that are part of any language from modules on their on.
    * Default value is {@code false} for compatibility with existing code that configures GD and doesn't know about this flag.
@@ -183,7 +163,6 @@ public class GeneratorDescriptor extends ModuleDescriptor {
     GeneratorDescriptor copy = super.copy0(GeneratorDescriptor::new);
     copy.setAlias(myAlias);
     copy.setGenerateTemplates(isGenerateTemplates());
-    copy.setOutputPath(getOutputPath());
     copy.setSourceLanguage(getSourceLanguage());
     copy.getDepGenerators().addAll(getDepGenerators());
     copy.getPriorityRules().addAll(getPriorityRules().stream().map(MappingPriorityRule::copy).toList());

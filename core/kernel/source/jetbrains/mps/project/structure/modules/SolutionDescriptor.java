@@ -23,25 +23,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 public class SolutionDescriptor extends ModuleDescriptor {
-  private String myOutputPath;
   private boolean myRequestCompileIDEA = false;
   private boolean myReadOnlyStubModule = false;
-
-  /**
-   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public final String getOutputPath() {
-    return myOutputPath;
-  }
-
-  /**
-   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public final void setOutputPath(String outputPath) {
-    myOutputPath = outputPath;
-  }
 
   @Override
   public boolean needsExternalIdeaCompile() {
@@ -93,7 +76,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
   public SolutionDescriptor copy() {
     SolutionDescriptor copy = copy0(SolutionDescriptor::new);
     copy.setNeedsExternalIdeaCompile(needsExternalIdeaCompile());
-    copy.setOutputPath(getOutputPath());
+    copy.readOnlyStubModule(isReadOnlyStubModule());
     return copy;
   }
 }

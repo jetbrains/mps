@@ -335,8 +335,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       //       with Memento to populate the fields?
       // Note, in persistence, we use empty string to indicate null (aka "no value")
       moduleDescriptor.setOutputRoot(myOutputRoot == null ? null : myOutputRoot.shrink(PersistenceContextImpl.macroHelper(mpc)));
-      // clear old value just in case, not to get serialized
-      ProjectPathUtil._setGeneratorOutputPathPrim(moduleDescriptor, null);
       var descriptors = new LinkedList<>(moduleDescriptor.getModelRootDescriptors());
       // I can't change MRD.memento, therefore need to replace MRD instance with new memento, next collection is to ensure root ordering persists.
       var newDescriptors = new ArrayList<ModelRootDescriptor>(moduleDescriptor.getModelRootDescriptors().size());
@@ -454,32 +452,12 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
   private void updateModuleDescriptorValues() {
     ModuleDescriptor descriptor = getModuleDescriptor();
-    if (descriptor != null) {
-      final String legacyValue = ProjectPathUtil._getGeneratorOutputPathPrim(descriptor);
-
-      if (descriptor.getOutputRoot() == null && legacyValue != null) {
-        // manually constructed MD or legacy code (MPS now does setOutputRoot())
-        myOutputRoot = new PathSpec(legacyValue);
-      } else if (descriptor.getOutputRoot() != null && legacyValue == null) {
-        // MD read/constructed by new code, value of legacy attribute moved to a new field, unprocessed
-        myOutputRoot = new PathSpec(descriptor.getOutputRoot());
-      } else {
-        // both new and legacy values are null or non-null, generally shall trust the new one, if any, except for
-        // scenario when some legacy code still uses ProjectPathUtil
-        if (descriptor.isOutputRootFromLegacy()) {
-          // MD got changed though legacy ProjectPathUtil API
-          myOutputRoot = legacyValue == null ? null : new PathSpec(legacyValue);
-        } else {
-          myOutputRoot = descriptor.getOutputRoot() == null ? null : new PathSpec(descriptor.getOutputRoot());
-        }
-      }
-      descriptor.markOutputRootLegacyValue(false);
-      if (myOutputRoot != null) {
-        final Function<String, IFile> path2file = s -> myFileSystem.getFile(MacrosFactory.forModule((SModule) this).expandPath(s));
-        myOutputRoot.resolve(path2file);
-        // let legacy code, using PPU.getGOP(), access actual value
-        ProjectPathUtil._setGeneratorOutputPathPrim(descriptor, myOutputRoot.resolved() ? myOutputRoot.resolvedPath() : myOutputRoot.value());
-      }
+    if (descriptor != null && descriptor.getOutputRoot() != null) {
+      myOutputRoot = new PathSpec(descriptor.getOutputRoot());
+      final Function<String, IFile> path2file = s -> myFileSystem.getFile(MacrosFactory.forModule((SModule) this).expandPath(s));
+      myOutputRoot.resolve(path2file);
+    } else {
+      myOutputRoot = null;
     }
   }
 
