@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,24 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.ModuleClassLoader.ModuleClassLoaderIsDisposedException;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+
+import java.util.Date;
 
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
- *
- * If necessary, may provide access to original {@code SModule} (to justify name/existence)
  *
  * @see ReloadableModule#getClassLoader()
  *
  * @author apyshkin
  */
 public abstract class MPSModuleClassLoader extends ClassLoader {
-  private static final Logger LOG = Logger.getLogger(ModuleClassLoader.class);
+  private volatile boolean myDisposed;
+  private Throwable myDisposeTrace;
 
   public MPSModuleClassLoader(ClassLoader parent) {
     super(parent);
@@ -41,11 +44,13 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
 
   @Override
   public String toString() {
+    String name;
     if (getName() != null) {
-      return String.format("MPS Module CL %s@%x", getName(), hashCode());
+      name = String.format("MPS Module CL %s@%x", getName(), hashCode());
     } else {
-      return super.toString();
+      name = super.toString();
     }
+    return isDisposed() ? name + " [DISPOSED]" : name;
   }
 
   /**
@@ -56,6 +61,25 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
    */
   @NotNull
   public abstract Class<?> loadOwnClass(String name) throws ClassNotFoundException;
+
+  public abstract SModuleReference getModule();
+
+  public boolean isDisposed() {
+    return myDisposed;
+  }
+
+  public void dispose() {
+    if (!myDisposed) {
+      myDisposed = true;
+      myDisposeTrace = new Throwable(String.format("ORIGINAL DISPOSE TRACE @%tT", new Date())).fillInStackTrace();
+    }
+  }
+
+  protected final void checkNotDisposed() throws ModuleClassLoaderIsDisposedException {
+    if (isDisposed()) {
+      throw new ModuleClassLoaderIsDisposedException(getModule(), myDisposeTrace);
+    }
+  }
 
   static {
     registerAsParallelCapable0();
@@ -74,7 +98,7 @@ public abstract class MPSModuleClassLoader extends ClassLoader {
    */
   private static void registerAsParallelCapable0() {
     if (!registerAsParallelCapable()) {
-      LOG.error("MPS was not able to register the MPS class loader as parallel capable: one might encounter a deadlock", new Throwable());
+      Logger.getLogger(ModuleClassLoader.class).error("MPS was not able to register the MPS class loader as parallel capable: one might encounter a deadlock", new Throwable());
     }
   }
 }

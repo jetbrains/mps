@@ -19,7 +19,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
 import jetbrains.mps.reloading.IClassPathItem;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.iterable.IterableEnumeration;
 import jetbrains.mps.util.iterable.MergeIterator;
 import org.jetbrains.annotations.NonNls;
@@ -35,7 +34,6 @@ import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
@@ -71,9 +69,6 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   private final ConcurrentMap<String, Optional<Class<?>>> myClasses = new ConcurrentHashMap<>();
 
   private volatile Collection<ClassLoader> myDependenciesClassLoaders;
-  private volatile boolean myDisposed;
-  private Throwable myDisposeTrace;
-  private final Object myPackageLock = new Object();
 
   static {
   /*
@@ -86,16 +81,6 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     @since 3.4
    */
     registerAsParallelCapable();
-  }
-
-  public boolean isDisposed() {
-    return myDisposed;
-  }
-
-  private void checkNotDisposed() throws ModuleClassLoaderIsDisposedException {
-    if (isDisposed()) {
-      throw new ModuleClassLoaderIsDisposedException(getModule(), myDisposeTrace);
-    }
   }
 
   // XXX could use MPSModuleClassLoader for dependencies
@@ -117,6 +102,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   @NotNull
+  @Override
   public SModuleReference getModule() {
     return myModule;
   }
@@ -357,15 +343,18 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     return new IterableEnumeration<>(result);
   }
 
+  // kept for the sake of mps-extensions, de.q60.mps.polymorphicfunctions.runtime
+  public boolean isDisposed() {
+    return super.isDisposed();
+  }
+
   /**
    * Note: the actual dispose is called asynchronously in the EDT.
    * The motive is to allow a ClassLoading client to dispose asynchronously in the Event Dispatch Thread.
    */
+  @Override
   public void dispose() {
-    if (!myDisposed) {
-      myDisposed = true;
-      myDisposeTrace = new Throwable(String.format("ORIGINAL DISPOSE TRACE @%tT", new Date())).fillInStackTrace();
-    }
+    super.dispose();
     myClasses.clear();
     if (myDependenciesClassLoaders != null) {
       myDependenciesClassLoaders.clear();
@@ -382,11 +371,6 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
       myDependencySupplier = null;
     }
     return myDependenciesClassLoaders;
-  }
-
-  public String toString() {
-    final String rv = super.toString();
-    return myDisposed ? rv + "[DISPOSED]" : rv;
   }
 
   private static ProtectionDomain loadedClassDomain(URL url) {

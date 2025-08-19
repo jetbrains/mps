@@ -2975,7 +2975,7 @@
               <node concept="1eOMI4" id="1Ib63V_g$s$" role="2Oq$k0">
                 <node concept="10QFUN" id="1Ib63V_g$sx" role="1eOMHV">
                   <node concept="3uibUv" id="1Ib63V_g_5D" role="10QFUM">
-                    <ref role="3uigEE" to="3qmy:~ModuleClassLoader" resolve="ModuleClassLoader" />
+                    <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
                   </node>
                   <node concept="37vLTw" id="1Ib63V_g_Gi" role="10QFUP">
                     <ref role="3cqZAo" node="1Ib63V_gvVu" resolve="cl" />
@@ -2983,12 +2983,12 @@
                 </node>
               </node>
               <node concept="liA8E" id="1Ib63V_gAHN" role="2OqNvi">
-                <ref role="37wK5l" to="3qmy:~ModuleClassLoader.isDisposed()" resolve="isDisposed" />
+                <ref role="37wK5l" to="3qmy:~MPSModuleClassLoader.isDisposed()" resolve="isDisposed" />
               </node>
             </node>
             <node concept="2ZW3vV" id="1Ib63V_gy3E" role="3uHU7B">
               <node concept="3uibUv" id="1Ib63V_gy_$" role="2ZW6by">
-                <ref role="3uigEE" to="3qmy:~ModuleClassLoader" resolve="ModuleClassLoader" />
+                <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
               </node>
               <node concept="37vLTw" id="1Ib63V_gxBh" role="2ZW6bz">
                 <ref role="3cqZAo" node="1Ib63V_gvVu" resolve="cl" />

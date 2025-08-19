@@ -23,6 +23,7 @@ import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -169,6 +170,13 @@ public class ClassLoaderManager implements CoreComponent {
   static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader("Delegate to System CL", getSystemClassLoader()) {
     // I want to keep MPSModuleClassLoader abstract for now just to avoid confusion one can create and use
     // MPSModuleClassLoader instances directly
+
+
+    @Override
+    public SModuleReference getModule() {
+      // fake MR just to satisfy MPSModuleClassLoader
+      return new ModuleReference(getName(), null);
+    }
 
     @Override
     public @NotNull Class<?> loadOwnClass(String name) throws ClassNotFoundException {

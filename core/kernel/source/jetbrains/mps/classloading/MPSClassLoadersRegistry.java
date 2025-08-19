@@ -45,6 +45,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This class stores a map SModuleReference->ModuleClassLoader
@@ -79,12 +80,27 @@ final class MPSClassLoadersRegistry {
       return null;
     }
     try {
-      MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(mref);
-      if (moduleClassLoader != null) {
-        return moduleClassLoader;
-      }
+      return _getCL(mref);
+    } finally {
+      myAccessClassLoaders.readLock().unlock();
+    }
+  }
 
-      return myIDEAClassLoaders.get(mref);
+  // expects myAccessClassLoaders.readLock()!!!
+  private MPSModuleClassLoader _getCL(SModuleReference mref) {
+    final ModuleClassLoaderSupport clSupport = myMPSClassLoaders.get(mref);
+    if (clSupport != null) {
+      return clSupport.getModuleClassLoader(); // shall not return null
+    }
+    return myIDEAClassLoaders.get(mref);
+  }
+
+  // internal method for DisposeSession only (just an effective way to guard CL access)
+  private Set<MPSModuleClassLoader> _getClassLoaders(Stream<SModuleReference> modules) {
+    // XXX decided not to use tryLock(timeout) here as we use this inside model write and CLM manipulation only
+    myAccessClassLoaders.readLock().lock();
+    try {
+      return modules.map(this::_getCL).filter(Objects::nonNull).collect(Collectors.toSet());
     } finally {
       myAccessClassLoaders.readLock().unlock();
     }
@@ -97,13 +113,6 @@ final class MPSClassLoadersRegistry {
   // LAZY_LOADED or LOADED
   /*package*/ Predicate<SModule> getLoadedCondition() {
     return (m -> getClassLoadingProgress(m.getModuleReference()) != ClassLoadingProgress.UNLOADED);
-  }
-
-
-  @Nullable
-  private ModuleClassLoader getModuleClassLoader(@NotNull SModuleReference mref) {
-    final ModuleClassLoaderSupport clSupport = myMPSClassLoaders.get(mref);
-    return clSupport == null ? null : clSupport.getModuleClassLoader();
   }
 
   /**
@@ -178,11 +187,11 @@ final class MPSClassLoadersRegistry {
       // I don't quite see any reason for LAZY_LOADED state as we immediately replace it with LOADED, and besides nobody cares about LAZY_LOADED in particular
       markLazyLoaded(toLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
 
-      ArrayList<ReloadableModule> forExtLoader = new ArrayList<>();
       for (ReloadableModule module : toLoad) {
         SModuleReference moduleReference = module.getModuleReference();
         ClassLoadingProgress progress = getClassLoadingProgress(moduleReference);
         if (progress == ClassLoadingProgress.UNLOADED) {
+          // FIXME there's no single place we put value other LAZY_LOADED or LOADED into myMPSLoadableModules
           LOG.error(String.format("Module %s is in UNLOADED state, i.e. the class loading clients know nothing about this module", moduleReference));
           // used to be ISE, don't see how it helps, just keep going but report the error.
         } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
@@ -191,19 +200,15 @@ final class MPSClassLoadersRegistry {
             ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module.getModule(), deps.apply(moduleReference));
             myMPSClassLoaders.put(moduleReference, clSupport);
           } else if (jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
-            forExtLoader.add(module); // do these at once later
-            // FIXME see no reason to avoid myIDEAClassLoaders.put() here
+            // XXX these CLs used to be non-reloadable, but I don't see a reason to treat them differently compared
+            //     to a CL of a regular MPS module. We dispose and reload them as needed
+            myIDEAClassLoaders.put(moduleReference, createDelegateClassLoader(module.getModule()));
           } else {
             // shall not happen, jmf.getLoadClasses().classesAvailable() is precondition of myWatchableCondition
             LOG.error(String.format("Module %s got unexpected class loading setting: %s", module.getModuleName(), jmf.getLoadClasses()));
           }
           myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
         } // XXX else if LOADED -> error, duplicate load attempt?
-      }
-      // FIXME these CLs used to be non-reloadable, but I don't see a reason to treat them differently compared
-      //       to a CL of a regular MPS module. We can reload them as needed
-      for (ReloadableModule m : forExtLoader) {
-        myIDEAClassLoaders.computeIfAbsent(m.getModuleReference(), (ref) -> createDelegateClassLoader(m.getModule()));
       }
     } finally {
       myAccessClassLoaders.writeLock().unlock();
@@ -254,11 +259,7 @@ final class MPSClassLoadersRegistry {
 
     DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
       // modulesToUnload are both LAZY_LOADED and LOADED, myRegistry::getModuleClassLoader() may have not been initialized for LAZY
-      Set<ModuleClassLoader> classLoaders = modulesToUnload.stream()
-                                                            .map(SModule::getModuleReference)
-                                                            .map(myRegistry::getModuleClassLoader)
-                                                            .filter(Objects::nonNull)
-                                                            .collect(Collectors.toSet());
+      Set<MPSModuleClassLoader> classLoaders = myRegistry._getClassLoaders(modulesToUnload.stream().map(SModule::getModuleReference));
 
       final DisposeSession ds = new DisposeSession(modulesToUnload, classLoaders, onDisposed);
       mySessions.add(ds);
@@ -274,7 +275,7 @@ final class MPSClassLoadersRegistry {
     static final class DisposeSession {
       private static final int MAX_MINUTES_FOR_STALE_CLASSLOADERS = 5;
       private final Set<ReloadableModule> myModulesToUnload;
-      private final Set<ModuleClassLoader> myModuleClassloaders2Dispose;
+      private final Set<MPSModuleClassLoader> myModuleClassloaders2Dispose;
       private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
       private final Instant myCreationTime;
       @Nullable
@@ -295,7 +296,7 @@ final class MPSClassLoadersRegistry {
         @Override
         public Set<ModuleClassLoader> acquire2(@NotNull Object requestor) {
           doAquire(requestor);
-          return Collections.unmodifiableSet(myModuleClassloaders2Dispose);
+          return myModuleClassloaders2Dispose.stream().filter(ModuleClassLoader.class::isInstance).map(ModuleClassLoader.class::cast).collect(Collectors.toSet());
         }
 
         @Override
@@ -305,7 +306,7 @@ final class MPSClassLoadersRegistry {
       };
 
       public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload,
-                            @NotNull Set<ModuleClassLoader> theirClassloaders,
+                            Set<MPSModuleClassLoader> theirClassloaders,
                             @Nullable Consumer<DisposeSession> onDisposed) {
         myOnDisposed = onDisposed;
         myCreationTime = Instant.now();
@@ -372,7 +373,7 @@ final class MPSClassLoadersRegistry {
         assert !myDisposeHappened : "Dispose has already been done.";
         myActualDisposalTime = Instant.now();
         LOG.debug("Disposing " + myModuleClassloaders2Dispose.size() + " class loaders");
-        for (ModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
+        for (MPSModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
           classLoader.dispose();
         }
         // help GC by removing references to CL

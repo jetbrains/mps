@@ -44,7 +44,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 import com.intellij.ui.icons.CachedImageIcon;
-import jetbrains.mps.classloading.ModuleClassLoader;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(nodeId = "1315815304215925444", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
@@ -292,7 +292,7 @@ public class BaseIconManager {
       return true;
     }
     ClassLoader cl = c.getClassLoader();
-    return cl instanceof ModuleClassLoader && ((ModuleClassLoader) cl).isDisposed();
+    return cl instanceof MPSModuleClassLoader && ((MPSModuleClassLoader) cl).isDisposed();
   }
 
   private static final class CONCEPTS {

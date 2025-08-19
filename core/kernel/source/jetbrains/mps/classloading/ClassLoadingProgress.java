@@ -27,12 +27,12 @@ package jetbrains.mps.classloading;
    * Class loading has not been initiated yet. [Implies there is no such module in the repository].
    * Note: this enum value is not stored in corresponding map for the sake of simplicity.
    */
-  UNLOADED,
+  UNLOADED, // FIXME in fact, doesn't tell anything about "UNloading", rather "NOT LOADED" (i.e. irrespective of a cause)
   /**
    * The notifications for {@link DeployListener} clients were sent. No actual class loading happened,
    * This module was only marked to load.
    */
-  LAZY_LOADED,
+  LAZY_LOADED, // FIXME effectively not in use
   /**
    * ModuleClassLoader's are created.
    */

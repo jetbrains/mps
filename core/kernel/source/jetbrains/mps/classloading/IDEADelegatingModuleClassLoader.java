@@ -50,4 +50,9 @@ public final class IDEADelegatingModuleClassLoader extends MPSModuleClassLoader 
     }
     throw new ModuleClassNotFoundException(myModule, String.format("Class %s is not available directly from module %s but from one of its dependencies", name, myModule.getModuleName()));
   }
+
+  @Override
+  public SModuleReference getModule() {
+    return myModule;
+  }
 }
