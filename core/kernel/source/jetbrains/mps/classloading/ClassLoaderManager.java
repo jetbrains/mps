@@ -49,7 +49,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
-import static jetbrains.mps.classloading.ClassLoadingProgress.NOT_LOADED;
 
 /**
  * A ClassLoaderManager is a singleton and provides an internal API for loading classes
@@ -353,24 +352,22 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   /**
-   * @param modules are modules which are about to load. The notifications for {@link DeployListener} are sent here.
-   * The actual load happens in {@link #createClassloaders} on a method call of {@link #getClassLoader}.
+   * Of all changed module graph verticies take those that got all dependencies satisfied and tries to create CLs for them (unless there are already).
+   * Then, for each module with a new CL, notifications are sent by means of {@link DeployListener}.
+   * Note, at the moment, we track modules that can supply classes ({@code ModulesWatcher.watchableCondition}), therefore "all dependencies ready"
+   * is the only condition we check here.
    *
-   * Note: currently we need to broadcast load/unload events because there are clients of {@link DeployListener}
-   * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method. (do they?)
+   * @param modules vertices in dependency graph that has been added/replaced by a new one.
    */
   private void preLoadModules(Collection<CModule> modules, ProgressMonitor monitor) {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Loading", 6);
 
-    // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
-    //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
-    //       for modules not yet compiled
-    // XXX getUnloadedCondition() here seems to prevent creating CL for modules that already got CL and were not affected by module reload.
-    // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
-    //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
-    Set<ReloadableModule> modulesPreLoad = filterModules(onlyRM(modules), myClassLoadersHolder.getUnloadedCondition().and(myValidCondition));
+    // XXX Here we imply classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
+    //     as clHolder.createClassLoaders() doesn't re-create CL if there's one already, but what if/when I combine unload/preLoad
+    //     into single transaction, would this assumption cause any throuble then?
+    Set<ReloadableModule> modulesPreLoad = filterModules(onlyRM(modules), myValidCondition);
     if (modulesPreLoad.isEmpty()) {
       return;
     }
@@ -381,7 +378,8 @@ public class ClassLoaderManager implements CoreComponent {
     // XXX perhaps, could keep CL information in CModule, to release model read? OTOH, shall broadcast events within model lock for now (DeployListener
     //     promises model write)
     // FIXME I wonder why we get all dependencies, not just direct and let regular CL delegation to deal with the rest?
-    myClassLoadersHolder.createClassLoaders(modulesPreLoad, mr -> myModulesWatcher.getDependencies(mr));
+    // TODO I wonder if I shall pass subTask into createClassLoaders()
+    modulesPreLoad = myClassLoadersHolder.createClassLoaders(modulesPreLoad, mr -> myModulesWatcher.getDependencies(mr));
     monitor.advance(1);
     myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
 
@@ -395,6 +393,7 @@ public class ClassLoaderManager implements CoreComponent {
    *
    * FIXME not sure supplied modules match myMPSLoadableCondition, perhaps externally-managed modules are
    *       among these, as well. If yes, this means we dispatch different set of modules in onLoaded and in onUnloaded
+   * @param modules vertices in dependency graph that has been removed/replaced by a new one
    */
   private void unloadModules(Collection<CModule> modules, @NotNull ProgressMonitor monitor) {
     // pre: modules - transitive closure
@@ -526,7 +525,7 @@ public class ClassLoaderManager implements CoreComponent {
   @NotNull
   public DeploymentStatus getStatus(@NotNull SModule module) {
     SModuleReference moduleReference = module.getModuleReference();
-    if (myClassLoadersHolder.getClassLoadingProgress(moduleReference) != NOT_LOADED) {
+    if (myClassLoadersHolder.hasCL(moduleReference)) {
       return DeploymentStatuses.DEPLOYED;
     }
     if (myModulesWatcher.getStatus(moduleReference).isValid()) {

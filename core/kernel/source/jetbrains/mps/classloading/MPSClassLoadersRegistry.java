@@ -31,6 +31,7 @@ import java.time.Instant;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -47,19 +48,17 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * This class stores a map SModuleReference->ModuleClassLoader
- *
+ * This class stores a map SModuleReference->MPSModuleClassLoader.
+ * <p>
  * Note: the actual dispose of ModuleClassLoaders happen asynchronously with
  * the help of {@link ModuleClassLoaderDisposer}, see {@link #getDisposer()}
- *
- * {@code ClassLoaderManager#myLoadableCondition}
+ * </p>
  */
 final class MPSClassLoadersRegistry {
   private static final Logger LOG = Logger.getLogger(MPSClassLoadersRegistry.class);
 
   private final Map<SModuleReference, ModuleClassLoaderSupport> myMPSClassLoaders = new HashMap<>();
   private final Map<SModuleReference, MPSModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
-  private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
   private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
   private final ReadWriteLock myAccessClassLoaders = new ReentrantReadWriteLock(); // guards access to myMPSClassLoaders & myIDEAClassLoaders
 
@@ -105,22 +104,13 @@ final class MPSClassLoadersRegistry {
     }
   }
 
-  /*package*/ Predicate<SModule> getUnloadedCondition() {
-    return (m -> getClassLoadingProgress(m.getModuleReference()) == ClassLoadingProgress.NOT_LOADED);
-  }
-
-  //  LOADED
+  // FIXME remove the same way getUnloadedCondition() has been removed (move state checking responsibility into this class)
   /*package*/ Predicate<SModule> getLoadedCondition() {
-    return (m -> getClassLoadingProgress(m.getModuleReference()) == ClassLoadingProgress.LOADED);
+    return (m -> getClassLoader(m.getModuleReference()) != null);
   }
 
-  /**
-   * @return {@link ClassLoadingProgress} for the module. See the documentation of
-   * {@link ClassLoadingProgress} for the description of states and a typical lifecycle of module in a repository.
-   */
-  @NotNull
-  public ClassLoadingProgress getClassLoadingProgress(SModuleReference mRef) {
-    return myMPSLoadableModules.getOrDefault(mRef, ClassLoadingProgress.NOT_LOADED);
+  /*package*/ boolean hasCL(SModuleReference mRef) {
+    return getClassLoader(mRef) != null;
   }
 
   /**
@@ -133,18 +123,11 @@ final class MPSClassLoadersRegistry {
     try {
       // FWIW, CLM.unloadModules() filters toUnload with getLoadedCondition(); likely checks here are excessive
       for (SModuleReference mRef : toUnload) {
-        if (!myMPSLoadableModules.containsKey(mRef)) {
-          LOG.error("", new IllegalStateException("Module " + mRef + " is not loaded -- cannot unload"));
+        if (_getCL(mRef) == null) {
+          LOG.error("", new IllegalStateException("Module %s is not loaded -- cannot unload".formatted(mRef.getModuleName())));
         } else {
-          ClassLoadingProgress progress = myMPSLoadableModules.remove(mRef);
-          if (progress == null) { // ~ UNLOADED
-            LOG.error("", new IllegalStateException("Module " + mRef + " must not be unloaded -- cannot unload it twice"));
-          } else {
-            if (progress == ClassLoadingProgress.LOADED) {
-              if (!myMPSClassLoaders.containsKey(mRef) && !myIDEAClassLoaders.containsKey(mRef)) {
-                LOG.error("", new IllegalStateException("Module " + mRef + " is loaded but has no registered ModuleClassLoader"));
-              }
-            }
+          if (!myMPSClassLoaders.containsKey(mRef) && !myIDEAClassLoaders.containsKey(mRef)) {
+            LOG.error("", new IllegalStateException("Module %s is loaded but has no registered ModuleClassLoader".formatted(mRef.getModuleName())));
           }
           myMPSClassLoaders.remove(mRef);
           myIDEAClassLoaders.remove(mRef);
@@ -160,18 +143,23 @@ final class MPSClassLoadersRegistry {
    *
    * @param toLoad modules NOT tracked by this registry as LOADED (i.e. matching #getUnloadedCondition()) but otherwise ready (dependency-wise) to get loaded
    * @param deps answers with dependencies of a module
+   * @return subset of {@code toLoad} modules that got new ClassLoader
    */
-  /*package*/ void createClassLoaders(final Collection<? extends ReloadableModule> toLoad, Function<SModuleReference, Collection<SModuleReference>> deps) {
+  /*package*/ Set<ReloadableModule> createClassLoaders(final Collection<? extends ReloadableModule> toLoad, Function<SModuleReference, Collection<SModuleReference>> deps) {
+    final HashSet<ReloadableModule> result = new HashSet<>();
     myAccessClassLoaders.writeLock().lock();
     try {
       for (ReloadableModule module : toLoad) {
         SModuleReference moduleReference = module.getModuleReference();
-        ClassLoadingProgress progress = getClassLoadingProgress(moduleReference);
-        if (progress == ClassLoadingProgress.LOADED) {
-          // shall not happen, CLM.preLoadModules() filters using getUnloadedCondition()
-          LOG.warning(String.format("Module %s is already loaded", moduleReference.getModuleName()));
+        if (_getCL(moduleReference) != null) {
+          // fine, there's CL for this module, do nothing. If it has to be re-loaded, I'd expect it to show up in #forgetClassLoaders() first.
+          // This is what getUnloadedCondition() used to ensure in CLM.preLoadModules()
           continue;
         }
+        // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
+        //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
+        //       for modules not yet compiled. Perhaps, ModuleClassLoaderSupport could check CP entry existence?
+        //
         // give precedence to CCLF.
         final CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
         if (customClassLoadingFacet != null ) {
@@ -179,7 +167,7 @@ final class MPSClassLoadersRegistry {
           ClassLoader dd;
           if (customClassLoadingFacet.isValid() && (dd = customClassLoadingFacet.getClassLoader()) != null) {
             myIDEAClassLoaders.put(moduleReference, createDelegateClassLoader(moduleReference, dd));
-            myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
+            result.add(module);
           } else {
             LOG.warning(String.format("Module %s got invalid custom ClassLoader, ignored and not loaded", moduleReference.getModuleName()));
           }
@@ -199,11 +187,12 @@ final class MPSClassLoadersRegistry {
           LOG.error(String.format("Module %s got unexpected class loading setting: %s", module.getModuleName(), jmf.getLoadClasses()));
           continue;
         }
-        myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
+        result.add(module);
       }
     } finally {
       myAccessClassLoaders.writeLock().unlock();
     }
+    return result;
   }
 
   private ModuleClassLoaderSupport prepareModuleClassLoader(@NotNull SModule module, Collection<SModuleReference> deps) {
