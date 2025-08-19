@@ -42,7 +42,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
@@ -299,7 +298,10 @@ public class ClassLoaderManager implements CoreComponent {
       refresh();
 
     }
-    if (!myValidCondition.test(module)) {
+    // first, check if status of this module is valid in the dependencies graph
+    //    however, not sure there's need to, myClassLoadersHolder.getClassLoader(), below, gives the same result
+    //    here is just a tribute to myValidCondition
+    if (!myModulesWatcher.getStatus(module.getModuleReference()).isValid()) {
       return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
     // myValidCondition is true here
@@ -369,7 +371,7 @@ public class ClassLoaderManager implements CoreComponent {
     // XXX Here we imply classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
     //     as clHolder.createClassLoaders() doesn't re-create CL if there's one already, but what if/when I combine unload/preLoad
     //     into single transaction, would this assumption cause any throuble then?
-    Set<ReloadableModule> modulesPreLoad = filterModules(onlyRM(modules), myValidCondition);
+    Set<ReloadableModule> modulesPreLoad = onlyRM(modules.stream().filter(cm -> cm.getStatus().isValid()));
     if (modulesPreLoad.isEmpty()) {
       return;
     }
@@ -381,6 +383,8 @@ public class ClassLoaderManager implements CoreComponent {
     //     promises model write)
     // FIXME I wonder why we get all dependencies, not just direct and let regular CL delegation to deal with the rest?
     // TODO I wonder if I shall pass subTask into createClassLoaders()
+    // TODO pass CModule (filtered by isValid(), and only then filter ReloadableModule instances, so that the moment we can split SModule and
+    //      ReloadableModule, only onLoad() would be affected
     modulesPreLoad = myClassLoadersHolder.createClassLoaders(modulesPreLoad, mr -> myModulesWatcher.getDependencies(mr));
     monitor.advance(1);
     myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
@@ -402,7 +406,7 @@ public class ClassLoaderManager implements CoreComponent {
     checkWriteAccess();
     monitor.start("Unloading", 6);
 
-    final DisposeSession session = myClassLoadersHolder.createDisposeSession(onlyRM(modules).collect(Collectors.toSet()));
+    final DisposeSession session = myClassLoadersHolder.createDisposeSession(onlyRM(modules.stream()));
     monitor.advance(1);
     try {
       if (session.modules().isEmpty()) {
@@ -438,14 +442,8 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
 
-  private static Stream<ReloadableModule> onlyRM(final Collection<CModule> modules) {
-    return modules.stream().map(CModule::getModule).filter(ReloadableModule.class::isInstance).map(ReloadableModule.class::cast);
-  }
-
-  static <M> Set<M> filterModules(Stream<? extends M> modules, Predicate<? super M> condition) {
-    Set<M> filteredModules = new LinkedHashSet<>();
-    modules.filter(condition).forEach(filteredModules::add);
-    return filteredModules;
+  private static Set<ReloadableModule> onlyRM(final Stream<CModule> modules) {
+    return modules.map(CModule::getModule).filter(ReloadableModule.class::isInstance).map(ReloadableModule.class::cast).collect(Collectors.toSet());
   }
 
   public void addListener(@NotNull DeployListener listener) {
@@ -607,15 +605,4 @@ public class ClassLoaderManager implements CoreComponent {
       return myIsDeployed;
     }
   }
-
-  /**
-   * status of this module is valid in the dependencies graph
-   * @see ModulesWatcher
-   */
-  private final Predicate<SModule> myValidCondition = new Predicate<SModule>() {
-    @Override
-    public boolean test(SModule module) {
-      return myModulesWatcher.getStatus(module.getModuleReference()).isValid();
-    }
-  };
 }
