@@ -156,13 +156,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @Override
   public SModuleId getModuleId() {
 //    assertCanRead(); @see getModuleReference()
-    // keep the method here, despite identical default implenentation, to satisfy uses in MPS/MS-extensions/mbeddr code
+    // keep the method here, despite identical default implementation, to satisfy uses in MPS/MPS-extensions/mbeddr code
     return super.getModuleId();
   }
 
   @Override
   public @Nullable String getModuleName() {
-    // keep the method here, despite identical default implenentation, to satisfy uses in MPS/MS-extensions/mbeddr code
+    // keep the method here, despite identical default implementation, to satisfy uses in MPS/MPS-extensions/mbeddr code
     return super.getModuleName();
   }
 

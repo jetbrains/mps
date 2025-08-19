@@ -40,13 +40,10 @@ import java.util.LinkedHashSet;
 /*package*/ final class CLDependencies {
   private final boolean USE_DD = !RuntimeFlags.legacyCLDependencies();
 
-  private final SRepository myRepository;
-
   private final UsedModulesCollector myModulesCollector;
   private boolean myUseDD, myUseDepsCP, myCalculateDeps;
 
   public CLDependencies(@NotNull SRepository repository) {
-    myRepository = repository;
     myModulesCollector = new UsedModulesCollector(repository);
   }
 
@@ -80,12 +77,10 @@ import java.util.LinkedHashSet;
           // XXX getRootElement throws ISE when there are no elements
           final ModelDependencies md = ModelDependencies.fromXml(JDOMUtil.loadDocument(cr.findChild("deps.cp")).getRootElement());
           if (md.hasRuntimeDeps()) {
-            for (SModuleReference mr : md.getModuleDependencies()) {
-              rv.add(mr); // XXX SDependencyScope.DEFAULT
-            }
-            for (SModuleReference mr : md.getLanguageRuntimeModules()) {
-              rv.add(mr); // XXX SDependencyScope.RUNTIME
-            }
+            // XXX SDependencyScope.DEFAULT
+            rv.addAll(md.getModuleDependencies());
+            // XXX SDependencyScope.RUNTIME
+            rv.addAll(md.getLanguageRuntimeModules());
             return rv;
           }
           Logger.getLogger(CLDependencies.class).info(String.format("No cached dependencies for %s; resort to legacy mode", module.getModuleName()));
@@ -112,7 +107,7 @@ import java.util.LinkedHashSet;
         // FIXME when building dependencies of module.xml, we shall stick to identical logic, so that this code branch and ddIfPresent() branch, above,
         //       do the same thing both for deployed and from source scenarios!
         // CLDependencies is expected it to answer with all dependencies, not only those resolved (ModuleUpdater builds graph with missing modules
-        // and updates verticies as modules come and go, instead of rebuilding edges).
+        // and updates vertices as modules come and go, instead of rebuilding edges).
         // At the end of the day, we shall get rid of any code that analyzes dependencies on demand, and stick to deps.cp/pre-generated set of deps.
         for (SDependency dep : module.getDeclaredDependencies()) {
           // XXX I wonder if DevKit could/should answer its exported languages and solutions as declared dependency of a special scope. Now, declared deps
@@ -126,7 +121,7 @@ import java.util.LinkedHashSet;
         //     here to direct CL-enforcing deps and RT modules of used languages.
         // here, we re-use language rt cache inside myModulesCollector for each subsequent module - #directlyUsedModules() is invoked
         // many time during single update)
-        myModulesCollector.runtimeModulesOfUsedLanguages(module).forEach(rv::add);
+        rv.addAll(myModulesCollector.runtimeModulesOfUsedLanguages(module));
       }
     }
     return rv;

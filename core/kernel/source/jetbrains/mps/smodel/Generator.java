@@ -192,6 +192,7 @@ public class Generator extends AbstractModule implements ReloadableModule {
 @Deprecated(since = "2019.1", forRemoval = true)
   @Nullable
   public Language getSourceLanguage() {
+    // 1 use in com.mbeddr.mpsutil.make
     return mySourceLanguage;
   }
 

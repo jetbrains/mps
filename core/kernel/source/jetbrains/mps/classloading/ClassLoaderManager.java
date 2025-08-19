@@ -368,10 +368,10 @@ public class ClassLoaderManager implements CoreComponent {
     }
     monitor.advance(1);
 
-    // markLazyLoaded expects modules that meet myWatchableCondition (part of myValidCondition now)
-    // XXX in fact, with immediate subsequent createClassLoaders(), it's almost useless, but I left it for another round of refactoring
-    myClassLoadersHolder.markLazyLoaded(modulesPreLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
-    // while we still hold model read for SModule, create CLs for them
+    // markLazyLoaded (inside createClassLoaders()) expects modules that meet myWatchableCondition (part of myValidCondition now)
+    // while we still hold model read for SModule, create CLs for them. Would be great to use CModule, but need JMF inside createClassLoader() ATM
+    // XXX perhaps, could keep CL information in CModule, to release model read? OTOH, shall broadcast events within model lock for now (DeployListener
+    //     promises model write)
     // FIXME I wonder why we get all dependencies, not just direct and let regular CL delegation to deal with the rest?
     myClassLoadersHolder.createClassLoaders(modulesPreLoad, mr -> myModulesWatcher.getDependencies(mr));
     monitor.advance(1);

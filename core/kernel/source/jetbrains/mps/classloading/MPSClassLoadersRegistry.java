@@ -39,6 +39,9 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -58,20 +61,32 @@ final class MPSClassLoadersRegistry {
   private final Map<SModuleReference, MPSModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
   private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
   private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
+  private final ReadWriteLock myAccessClassLoaders = new ReentrantReadWriteLock(); // guards access to myMPSClassLoaders & myIDEAClassLoaders
 
   public MPSClassLoadersRegistry() {
   }
 
+  @Nullable
   /*package*/ MPSModuleClassLoader getClassLoader(@NotNull SModuleReference mref) {
-    MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(mref);
-    if (moduleClassLoader != null) {
-      return moduleClassLoader;
+    try {
+      // 10 seconds is just an attempt to avoid deadlock and not to affect regular debug.
+      if (!myAccessClassLoaders.readLock().tryLock(10, TimeUnit.SECONDS)) {
+        LOG.warning("Attempt to get CL for %s failed due to timeout".formatted(mref.getModuleName()));
+        return null;
+      }
+    } catch (InterruptedException ex) {
+      LOG.warning("Attempt to get CL for %s failed due to exception".formatted(mref.getModuleName()), ex);
+      return null;
     }
+    try {
+      MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(mref);
+      if (moduleClassLoader != null) {
+        return moduleClassLoader;
+      }
 
-    synchronized (this) {
-      // added synchronize here to honour sync of fillExternalClassLoader() method
-      // although not sure if I understand (a) why it was there (b) while myMPSClassLoaders access is not controlled
       return myIDEAClassLoaders.get(mref);
+    } finally {
+      myAccessClassLoaders.readLock().unlock();
     }
   }
 
@@ -92,16 +107,6 @@ final class MPSClassLoadersRegistry {
   }
 
   /**
-   * FIXME these CLs used to be non-reloadable, but I don't see a reason to treat them differently compared
-   *       to a CL of a regular MPS module. We can reload them as needed
-   */
-  private synchronized void prepareExternalClassLoader(@NotNull Collection<ReloadableModule> modules) {
-    for (ReloadableModule m : modules) {
-      myIDEAClassLoaders.computeIfAbsent(m.getModuleReference(), (ref) -> createDelegateClassLoader(m.getModule()));
-    }
-  }
-
-  /**
    * @return {@link ClassLoadingProgress} for the module. See the documentation of
    * {@link ClassLoadingProgress} for the description of states and a typical lifecycle of module in a repository.
    */
@@ -117,35 +122,40 @@ final class MPSClassLoadersRegistry {
    * @return modules which changed their ClassLoadingProgress from LAZY_LOADED or LOADED to UNLOADED.
    */
   /*package*/ void forgetClassLoaders(Collection<SModuleReference> toUnload) {
-    for (SModuleReference mRef : toUnload) {
-      if (!myMPSLoadableModules.containsKey(mRef)) {
-        LOG.error("", new IllegalStateException("Module " + mRef + " is not loaded -- cannot unload"));
-      } else {
-        ClassLoadingProgress progress = myMPSLoadableModules.remove(mRef);
-        if (progress == null) { // ~ UNLOADED
-          LOG.error("", new IllegalStateException("Module " + mRef + " must not be unloaded -- cannot unload it twice"));
+    myAccessClassLoaders.writeLock().lock();
+    try {
+      for (SModuleReference mRef : toUnload) {
+        if (!myMPSLoadableModules.containsKey(mRef)) {
+          LOG.error("", new IllegalStateException("Module " + mRef + " is not loaded -- cannot unload"));
         } else {
-          if (progress == ClassLoadingProgress.LOADED) {
-            if (!myMPSClassLoaders.containsKey(mRef) && !myIDEAClassLoaders.containsKey(mRef)) {
-              LOG.error("", new IllegalStateException("Module " + mRef + " is loaded but has no registered ModuleClassLoader"));
+          ClassLoadingProgress progress = myMPSLoadableModules.remove(mRef);
+          if (progress == null) { // ~ UNLOADED
+            LOG.error("", new IllegalStateException("Module " + mRef + " must not be unloaded -- cannot unload it twice"));
+          } else {
+            if (progress == ClassLoadingProgress.LOADED) {
+              if (!myMPSClassLoaders.containsKey(mRef) && !myIDEAClassLoaders.containsKey(mRef)) {
+                LOG.error("", new IllegalStateException("Module " + mRef + " is loaded but has no registered ModuleClassLoader"));
+              }
+            } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
+              if (myMPSClassLoaders.containsKey(mRef) || myIDEAClassLoaders.containsKey(mRef)) {
+                LOG.error("", new IllegalStateException("Module " + mRef + " is lazy loaded but already has a registered ModuleClassLoader"));
+              }
             }
-          } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
-            if (myMPSClassLoaders.containsKey(mRef) || myIDEAClassLoaders.containsKey(mRef)) {
-              LOG.error("", new IllegalStateException("Module " + mRef + " is lazy loaded but already has a registered ModuleClassLoader"));
-            }
+            myMPSClassLoaders.remove(mRef);
+            myIDEAClassLoaders.remove(mRef);
           }
-          myMPSClassLoaders.remove(mRef);
-          myIDEAClassLoaders.remove(mRef);
         }
       }
+    } finally {
+      myAccessClassLoaders.writeLock().unlock();
     }
   }
 
   /**
    * just a change of internal state to let the registry know certain modules are deemed for CL
-   * @param toLoadLazy modules to tranition from UNLOADED state to LAZY_LOADED
+   * @param toLoadLazy modules to transition from UNLOADED state to LAZY_LOADED
    */
-  /*package*/ void markLazyLoaded(Collection<SModuleReference> toLoadLazy) {
+  private void markLazyLoaded(Collection<SModuleReference> toLoadLazy) {
     for (SModuleReference mRef : toLoadLazy) {
       ClassLoadingProgress classLoadingProgress = myMPSLoadableModules.get(mRef);
       if (classLoadingProgress != null) {
@@ -163,28 +173,41 @@ final class MPSClassLoadersRegistry {
    * @param deps answers with dependencies of a module
    */
   /*package*/ void createClassLoaders(final Collection<? extends ReloadableModule> toLoad, Function<SModuleReference, Collection<SModuleReference>> deps) {
-    ArrayList<ReloadableModule> forExtLoader = new ArrayList<>();
-    for (ReloadableModule module : toLoad) {
-      SModuleReference moduleReference = module.getModuleReference();
-      ClassLoadingProgress progress = getClassLoadingProgress(moduleReference);
-      if (progress == ClassLoadingProgress.UNLOADED) {
-        LOG.error(String.format("Module %s is in UNLOADED state, i.e. the class loading clients know nothing about this module", moduleReference));
-        // used to be ISE, don't see how it helps, just keep going but report the error.
-      } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
-        final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-        if (jmf.getLoadClasses() == LoadClasses.ManagedByMPS) {
-          ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module.getModule(), deps.apply(moduleReference));
-          myMPSClassLoaders.put(moduleReference, clSupport);
-        } else if (jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
-          forExtLoader.add(module); // do these at once later
-        } else {
-          // shall not happen, jmf.getLoadClasses().classesAvailable() is precondition of myWatchableCondition
-          LOG.error(String.format("Module %s got unexpected class loading setting: %s", module.getModuleName(), jmf.getLoadClasses()));
-        }
-        myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
-      } // XXX else if LOADED -> error, duplicate load attempt?
+    myAccessClassLoaders.writeLock().lock();
+    try {
+      // I don't quite see any reason for LAZY_LOADED state as we immediately replace it with LOADED, and besides nobody cares about LAZY_LOADED in particular
+      markLazyLoaded(toLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
+
+      ArrayList<ReloadableModule> forExtLoader = new ArrayList<>();
+      for (ReloadableModule module : toLoad) {
+        SModuleReference moduleReference = module.getModuleReference();
+        ClassLoadingProgress progress = getClassLoadingProgress(moduleReference);
+        if (progress == ClassLoadingProgress.UNLOADED) {
+          LOG.error(String.format("Module %s is in UNLOADED state, i.e. the class loading clients know nothing about this module", moduleReference));
+          // used to be ISE, don't see how it helps, just keep going but report the error.
+        } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
+          final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+          if (jmf.getLoadClasses() == LoadClasses.ManagedByMPS) {
+            ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module.getModule(), deps.apply(moduleReference));
+            myMPSClassLoaders.put(moduleReference, clSupport);
+          } else if (jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
+            forExtLoader.add(module); // do these at once later
+            // FIXME see no reason to avoid myIDEAClassLoaders.put() here
+          } else {
+            // shall not happen, jmf.getLoadClasses().classesAvailable() is precondition of myWatchableCondition
+            LOG.error(String.format("Module %s got unexpected class loading setting: %s", module.getModuleName(), jmf.getLoadClasses()));
+          }
+          myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
+        } // XXX else if LOADED -> error, duplicate load attempt?
+      }
+      // FIXME these CLs used to be non-reloadable, but I don't see a reason to treat them differently compared
+      //       to a CL of a regular MPS module. We can reload them as needed
+      for (ReloadableModule m : forExtLoader) {
+        myIDEAClassLoaders.computeIfAbsent(m.getModuleReference(), (ref) -> createDelegateClassLoader(m.getModule()));
+      }
+    } finally {
+      myAccessClassLoaders.writeLock().unlock();
     }
-    prepareExternalClassLoader(forExtLoader);
   }
 
   private ModuleClassLoaderSupport prepareModuleClassLoader(@NotNull SModule module, Collection<SModuleReference> deps) {
