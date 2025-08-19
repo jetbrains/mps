@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
@@ -141,6 +142,10 @@ public class SModuleOperations {
   public static boolean classesAvailableToMPS(@Nullable SModule module) {
     if (module == null) {
       return false;
+    }
+    CustomClassLoadingFacet cclf = module.getFacet(CustomClassLoadingFacet.class);
+    if (cclf != null && cclf.isValid()) {
+      return true;
     }
     final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
     return jmf != null && jmf.getLoadClasses().classesAvailable();

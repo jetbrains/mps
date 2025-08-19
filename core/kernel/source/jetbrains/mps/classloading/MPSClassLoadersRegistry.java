@@ -195,14 +195,28 @@ final class MPSClassLoadersRegistry {
           LOG.error(String.format("Module %s is in UNLOADED state, i.e. the class loading clients know nothing about this module", moduleReference));
           // used to be ISE, don't see how it helps, just keep going but report the error.
         } else if (progress == ClassLoadingProgress.LAZY_LOADED) {
+          // give precedence to CCLF.
+          final CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
+          if (customClassLoadingFacet != null ) {
+            // SModuleOperations.classesAvailableToMPS() aka ModulesWatcher.myWatchableCondition respects modules with CCLF
+            ClassLoader dd;
+            if (customClassLoadingFacet.isValid() && (dd = customClassLoadingFacet.getClassLoader()) != null) {
+              myIDEAClassLoaders.put(moduleReference, createDelegateClassLoader(moduleReference, dd));
+              myMPSLoadableModules.put(moduleReference, ClassLoadingProgress.LOADED);
+            } else {
+              LOG.warning(String.format("Module %s got invalid custom ClassLoader, ignored", moduleReference.getModuleName()));
+            }
+            continue; // ignore JMF when CCLF is there, even if it didn't succeed
+          }
           final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
           if (jmf.getLoadClasses() == LoadClasses.ManagedByMPS) {
             ModuleClassLoaderSupport clSupport = prepareModuleClassLoader(module.getModule(), deps.apply(moduleReference));
             myMPSClassLoaders.put(moduleReference, clSupport);
           } else if (jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
+            ClassLoader classLoader = new RootClassloaderLookup(module.getModule()).get();
             // XXX these CLs used to be non-reloadable, but I don't see a reason to treat them differently compared
             //     to a CL of a regular MPS module. We dispose and reload them as needed
-            myIDEAClassLoaders.put(moduleReference, createDelegateClassLoader(module.getModule()));
+            myIDEAClassLoaders.put(moduleReference, createDelegateClassLoader(moduleReference, classLoader));
           } else {
             // shall not happen, jmf.getLoadClasses().classesAvailable() is precondition of myWatchableCondition
             LOG.error(String.format("Module %s got unexpected class loading setting: %s", module.getModuleName(), jmf.getLoadClasses()));
@@ -220,24 +234,11 @@ final class MPSClassLoadersRegistry {
     return ModuleClassLoaderSupport.create(module, this, deps);
   }
 
-  @Nullable
-  private MPSModuleClassLoader createDelegateClassLoader(@NotNull SModule module) {
+  @NotNull
+  private MPSModuleClassLoader createDelegateClassLoader(SModuleReference module, ClassLoader classLoader) {
     LOG.debug("Creating DelegateClassLoader for " + module);
-    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    if (jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
-      // FIXME refactor this code to avoid unnecessary nesting of classloaders (if possible)
-      final ClassLoader classLoader = new RootClassloaderLookup(module).get();
-      return new IDEADelegatingModuleClassLoader(module.getModuleReference(), classLoader);
-    }
-    // FIXME this piece of code is to address uses of IPMF still out there, e.g. in MPS-as-IDEA-plugin scenario
-    CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
-    if (customClassLoadingFacet != null) {
-      ClassLoader dd;
-      if (customClassLoadingFacet.isValid() && (dd = customClassLoadingFacet.getClassLoader()) != null) {
-        return new IDEADelegatingModuleClassLoader(module.getModuleReference(), dd);
-      }
-    }
-    return null;
+    // Would be nice to avoid unnecessary nesting of classloaders, but we have to keep common MPSModuleClassLoader subclass
+    return new IDEADelegatingModuleClassLoader(module, classLoader);
   }
 
   public void dispose() {
