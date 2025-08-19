@@ -295,6 +295,7 @@ public class ClassLoaderManager implements CoreComponent {
     if (myRepository.getModelAccess().canWrite()) {
       // fixme awful solution, unpredictable return value;
       //  however we need this in the during long writes where we want to see the update without explicit  #reload invocation
+      // FIXME FIXME FIXME I don't quite understand the reason to get fresh CL even during long write!
       refresh();
 
     }
@@ -429,12 +430,13 @@ public class ClassLoaderManager implements CoreComponent {
     }
   }
 
-  // FIXME check if there's need for such high number, provided PluginLoaderRegistry greatly improved since the moment the check was introduced
-  //       Now it doesn't listen to CLM, and proceeds aggregated events fron LanguageRegistry, instead
-  private static final int MAX_SESSIONS_ALIVE = 100;
+  // With PluginLoaderRegistry greatly improved since the moment the check was introduced, and along with the fact it doesn't listen to CLM any more
+  //      (proceeds aggregated events fron LanguageRegistry, instead), there seems no reason to keep high number here.
+  //      Besides, I'd like to cancel the paactive of CL reload during write, see #getClassLoader()
+  private static final int MAX_SESSIONS_ALIVE = 20;
   private boolean ourCheckMemLeaks = true;
-  /**
-   * MigrationsTest does that
+  /*
+   * MigrationsTest used to do that, but no more.
    */
   @TestOnly
   public void setCheckMemLeaks(boolean check) {

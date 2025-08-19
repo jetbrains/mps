@@ -16,7 +16,6 @@
 package jetbrains.mps.migration;
 
 import com.intellij.history.integration.LocalHistoryImpl;
-import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import jetbrains.mps.tool.environment.Environment;
@@ -53,13 +52,10 @@ public class MigrationsTest implements EnvironmentAware {
 
   @Test
   public void testMigrationAndLocalHistory() throws Exception {
-    // only for 193
-    ClassLoaderManager clm = myEnv.getPlatform().findComponent(ClassLoaderManager.class);
-    clm.setCheckMemLeaks(false);
+//    ClassLoaderManager clm = myEnv.getPlatform().findComponent(ClassLoaderManager.class);
+//    clm.setCheckMemLeaks(false);
     new TestMakeUtil(myEnv.getPlatform()).make(myProject);
     LocalHistoryImpl.getInstanceImpl().cleanupForNextTest();
-
-    // only for 193
-    clm.setCheckMemLeaks(true);
+//    clm.setCheckMemLeaks(true);
   }
 }
