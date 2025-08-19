@@ -50,7 +50,7 @@ import java.util.stream.Stream;
  * This class stores a map SModuleReference->MPSModuleClassLoader.
  * <p>
  * Note: the actual dispose of ModuleClassLoaders happen asynchronously with
- * the help of {@link ModuleClassLoaderDisposer} and {@link DisposeSession}
+ * the help of {@link DisposeSession}
  * </p>
  */
 final class MPSClassLoadersRegistry {
@@ -58,8 +58,8 @@ final class MPSClassLoadersRegistry {
 
   private final Map<SModuleReference, ModuleClassLoaderSupport> myMPSClassLoaders = new HashMap<>();
   private final Map<SModuleReference, MPSModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
-  private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
   private final ReadWriteLock myAccessClassLoaders = new ReentrantReadWriteLock(); // guards access to myMPSClassLoaders & myIDEAClassLoaders
+  private final List<DisposeSession> myDisposeSessions = new LinkedList<>();
 
   public MPSClassLoadersRegistry() {
   }
@@ -205,45 +205,26 @@ final class MPSClassLoadersRegistry {
   }
 
   public void dispose() {
-    myModuleClassLoaderDisposer.destroy();
+    for (DisposeSession session : myDisposeSessions) {
+      session.destroy();
+    }
+    myDisposeSessions.clear();
   }
 
-  public DisposeSession createDisposeSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
-    // TODO perhaps, shall move here mySessionsAlive (or better yet use MCLD.mySessions) amd MAX sessions check?
-    //      or could init DisposeSession with mySessions.size() and keep check in CLM
-    // FIXME Doesn't need MCLD, can perform _getClassLoaders() filtering here!
-    return myModuleClassLoaderDisposer.createSession(modulesToUnload, onDisposed);
-  }
+  @NotNull
+  public DisposeSession createDisposeSession(@NotNull Set<ReloadableModule> modulesToUnload) {
+    // XXX not really nice is that read here and write in #forgetClassLoaders() are separated by notification broadcast, but
+    //     I don't expect any code to alter registry in between (we're inside model write here, all we can get are parallel reads with CL access lock)
+    Set<MPSModuleClassLoader> classLoaders = _getClassLoaders(modulesToUnload.stream().map(SModule::getModuleReference));
 
-  private static final class ModuleClassLoaderDisposer {
-    @NotNull
-    private final MPSClassLoadersRegistry myRegistry;
-    private final List<DisposeSession> mySessions = new LinkedList<>();
+    // next is alternative to getLoadedCondition() filtering that used to happen before #createSession() call
+    final Set<SModuleReference> withClassloaders = classLoaders.stream().map(MPSModuleClassLoader::getModule).collect(Collectors.toSet());
+    Set<ReloadableModule> toUnload =
+        modulesToUnload.stream().filter(m -> withClassloaders.contains(m.getModuleReference())).collect(Collectors.toSet());
 
-    public ModuleClassLoaderDisposer(@NotNull MPSClassLoadersRegistry registry) {
-      myRegistry = registry;
-    }
-
-    DisposeSession createSession(Set<ReloadableModule> modulesToUnload, Consumer<DisposeSession> onDisposed) {
-      // XXX not really nice is that read here and write in #forgetClassLoaders() are separated by notification broadcast, but
-      //     I don't expect any code to alter registry in between (we're inside model write here, all we can get are parallel reads with CL access lock)
-      Set<MPSModuleClassLoader> classLoaders = myRegistry._getClassLoaders(modulesToUnload.stream().map(SModule::getModuleReference));
-
-      // next is alternative to getLoadedCondition() filtering that used to happen before #createSession() call
-      final Set<SModuleReference> withClassloaders = classLoaders.stream().map(MPSModuleClassLoader::getModule).collect(Collectors.toSet());
-      Set<ReloadableModule> toUnload =
-          modulesToUnload.stream().filter(m -> withClassloaders.contains(m.getModuleReference())).collect(Collectors.toSet());
-
-      final DisposeSession ds = new DisposeSession(toUnload, classLoaders, onDisposed);
-      mySessions.add(ds);
-      return ds;
-    }
-
-    public void destroy() {
-      for (DisposeSession session : mySessions) {
-        session.destroy();
-      }
-    }
+    DisposeSession ds = new DisposeSession(toUnload, classLoaders, myDisposeSessions::remove,  myDisposeSessions.size() + 1);
+    myDisposeSessions.add(ds);
+    return ds;
   }
 
   static final class DisposeSession {
@@ -252,8 +233,8 @@ final class MPSClassLoadersRegistry {
     private final Set<MPSModuleClassLoader> myModuleClassloaders2Dispose;
     private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
     private final Instant myCreationTime;
-    @Nullable
     private final Consumer<DisposeSession> myOnDisposed;
+    private final int myActualNumberOfSessions;
     private volatile boolean myDisposeHappened = false;
     private volatile Instant myPlanningDisposalTime;
     private volatile Instant myActualDisposalTime;
@@ -280,9 +261,11 @@ final class MPSClassLoadersRegistry {
     };
 
     public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload,
-                          Set<MPSModuleClassLoader> theirClassloaders,
-                          @Nullable Consumer<DisposeSession> onDisposed) {
+                          @NotNull Set<MPSModuleClassLoader> theirClassloaders,
+                          @NotNull Consumer<DisposeSession> onDisposed,
+                          int actualNumberOfSessions) {
       myOnDisposed = onDisposed;
+      myActualNumberOfSessions = actualNumberOfSessions;
       myCreationTime = Instant.now();
       myModulesToUnload = modulesToUnload;
       myModuleClassloaders2Dispose = theirClassloaders;
@@ -354,9 +337,7 @@ final class MPSClassLoadersRegistry {
       myModuleClassloaders2Dispose.clear();
       myModulesToUnload.clear();
       myDisposeHappened = true;
-      if (myOnDisposed != null) {
-        myOnDisposed.consume(this);
-      }
+      myOnDisposed.consume(this);
     }
 
     // internal use only
@@ -367,6 +348,11 @@ final class MPSClassLoadersRegistry {
     // internal use only
     Set<MPSModuleClassLoader> classloaders() {
       return Collections.unmodifiableSet(myModuleClassloaders2Dispose);
+    }
+
+    // CLM use only; gives total number of actual (non-disposed) sessions the moment this one was created
+    int actualNumberOfSessions() {
+      return myActualNumberOfSessions;
     }
 
     @NotNull

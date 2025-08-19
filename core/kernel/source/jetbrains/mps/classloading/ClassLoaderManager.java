@@ -212,8 +212,6 @@ public class ClassLoaderManager implements CoreComponent {
 
   private final ModuleEventsHandler myRepositoryListener;
 
-  private final List<DisposeSession> mySessionsAlive = new LinkedList<>(); // updated only in EDT FIXME [artem]: is it still true about EDT?
-
   public ClassLoaderManager(@NotNull SRepository repository) {
     myRepository = repository;
     // watchableCondition is to filter modules that are subject to class loading. We want to watch and trace the dependencies between these.
@@ -404,19 +402,18 @@ public class ClassLoaderManager implements CoreComponent {
     checkWriteAccess();
     monitor.start("Unloading", 6);
 
-    final DisposeSession session = myClassLoadersHolder.createDisposeSession(onlyRM(modules).collect(Collectors.toSet()), mySessionsAlive::remove);
+    final DisposeSession session = myClassLoadersHolder.createDisposeSession(onlyRM(modules).collect(Collectors.toSet()));
     monitor.advance(1);
     try {
-      mySessionsAlive.add(session); // finally may trigger mySessionsAlive::remove
       if (session.modules().isEmpty()) {
         return;
       }
       LOG.debug("Unloading %d modules".formatted(session.modules().size()));
-      if (ourCheckMemLeaks && mySessionsAlive.size() > MAX_SESSIONS_ALIVE) {
+      if (ourCheckMemLeaks && session.actualNumberOfSessions() > MAX_SESSIONS_ALIVE) {
         // note that if we do 100 reloads during a single write action we might get a 100 sessions
         LOG.error(
             "Possible leaking class loaders : currently there are %d sessions alive. "
-            + "Please avoid running too many reloads in the single write action".formatted(mySessionsAlive.size()));
+            + "Please avoid running too many reloads in the single write action".formatted(session.actualNumberOfSessions()));
       }
 
       myBroadCaster.onUnload(session, monitor.subTask(4, SubProgressKind.AS_COMMENT));
