@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.migration;
 
 import com.intellij.history.integration.LocalHistoryImpl;
-import jetbrains.mps.classloading.ClassLoadingBroadCaster;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import jetbrains.mps.tool.environment.Environment;
@@ -54,11 +54,12 @@ public class MigrationsTest implements EnvironmentAware {
   @Test
   public void testMigrationAndLocalHistory() throws Exception {
     // only for 193
-    ClassLoadingBroadCaster.setCheckMemLeaks(false);
+    ClassLoaderManager clm = myEnv.getPlatform().findComponent(ClassLoaderManager.class);
+    clm.setCheckMemLeaks(false);
     new TestMakeUtil(myEnv.getPlatform()).make(myProject);
     LocalHistoryImpl.getInstanceImpl().cleanupForNextTest();
 
     // only for 193
-    ClassLoadingBroadCaster.setCheckMemLeaks(true);
+    clm.setCheckMemLeaks(true);
   }
 }

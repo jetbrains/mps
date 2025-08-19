@@ -16,18 +16,13 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
-import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
-import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer.DisposeSession;
+import jetbrains.mps.classloading.MPSClassLoadersRegistry.DisposeSession;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -36,66 +31,48 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Broadcasting class loading load/unload events.
  * Guarantees that the listeners are invoked in write action
  */
-public class ClassLoadingBroadCaster {
+/*package*/ class ClassLoadingBroadCaster {
   private static final Logger LOG = Logger.getLogger(ClassLoadingBroadCaster.class);
-  private static final int MAX_SESSIONS_ALIVE = 100; // fixme to be fixed in 201, PluginLoaderRegistry is not up to the desired CLM model
-  private static boolean ourCheckMemLeaks = true;
 
   private final ModelAccess myModelAccess;
-  private final ModuleClassLoaderDisposer myDisposer;
 
-  private final List<DisposeSession> mySessionsAlive = new LinkedList<>(); // updated only in EDT
 
   // reload handlers
   private final List<DeployListener> myDeployListeners = new CopyOnWriteArrayList<>();
 
-  public ClassLoadingBroadCaster(@NotNull ModelAccess modelAccess, @NotNull ModuleClassLoaderDisposer disposer) {
+  public ClassLoadingBroadCaster(@NotNull ModelAccess modelAccess) {
     myModelAccess = modelAccess;
-    myDisposer = disposer;
   }
 
-  /**
-   * MigrationsTest does that
-   */
-  @TestOnly
-  public static void setCheckMemLeaks(boolean check) {
-    ourCheckMemLeaks = check;
-  }
 
-  public void onUnload(Collection<? extends ReloadableModule> toUnload, @NotNull ProgressMonitor monitor) {
-    if (toUnload.isEmpty()) {
+  public void onUnload(@NotNull DisposeSession session, @NotNull ProgressMonitor monitor) {
+    final Set<ReloadableModule> modulesToUnload = session.modules(); // assume unmodifiable set, I expect listeners won't attempt to change it
+    if (modulesToUnload.isEmpty()) {
       return;
     }
-
     myModelAccess.checkWriteAccess(); // DeployListener precondition
-    final Set<ReloadableModule> modulesToUnload = new LinkedHashSet<>(toUnload);
-
     try {
       monitor.start("Broadcasting Unload Events", 2 * myDeployListeners.size());
-      DisposeSession session = myDisposer.createSession(modulesToUnload, mySessionsAlive::remove);
-      if (ourCheckMemLeaks && mySessionsAlive.size() > MAX_SESSIONS_ALIVE) { // note that if we do 100 reloads during a single write action we might get a 100 sessions
-        LOG.error("Possible leaking class loaders : currently there are " + mySessionsAlive.size() + " sessions alive. Please avoid running too many reloads in the single write action");
-      }
-      mySessionsAlive.add(session);
       ResourceTrackerCallback trackerCallback = session.getTrackerCallback();
       for (DeployListener listener : myDeployListeners) {
         try {
           listener.onUnloaded(modulesToUnload, monitor.subTask(1));
           listener.onUnloaded(trackerCallback, monitor.subTask(1));
-        } catch (VirtualMachineError e) {
+        } catch (VirtualMachineError e) { // WTF?!
           throw e;
         } catch (Throwable e) {
           LOG.error(String.format("Caught exception from the listener %s. Will continue.", listener), e);
         }
       }
-      session.readyToDispose();
     } finally {
       monitor.done();
     }
   }
 
   public void onLoad(Set<ReloadableModule> toLoad, @NotNull ProgressMonitor monitor) {
-    if (toLoad.isEmpty()) return;
+    if (toLoad.isEmpty()) {
+      return;
+    }
 
     myModelAccess.checkWriteAccess(); // DeployListener precondition
 

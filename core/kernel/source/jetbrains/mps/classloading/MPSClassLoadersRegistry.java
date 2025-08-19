@@ -43,7 +43,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -51,7 +50,7 @@ import java.util.stream.Stream;
  * This class stores a map SModuleReference->MPSModuleClassLoader.
  * <p>
  * Note: the actual dispose of ModuleClassLoaders happen asynchronously with
- * the help of {@link ModuleClassLoaderDisposer}, see {@link #getDisposer()}
+ * the help of {@link ModuleClassLoaderDisposer} and {@link DisposeSession}
  * </p>
  */
 final class MPSClassLoadersRegistry {
@@ -104,33 +103,31 @@ final class MPSClassLoadersRegistry {
     }
   }
 
-  // FIXME remove the same way getUnloadedCondition() has been removed (move state checking responsibility into this class)
-  /*package*/ Predicate<SModule> getLoadedCondition() {
-    return (m -> getClassLoader(m.getModuleReference()) != null);
-  }
-
   /*package*/ boolean hasCL(SModuleReference mRef) {
     return getClassLoader(mRef) != null;
   }
 
   /**
-   * Note, this method doesn't destroy any CL, it merely records a fact there are no CL for a module and forgets their instances
+   * Note, this method doesn't destroy/dispose any CL, it merely records a fact there are no CL for a module and forgets their instances
    *
-   * @param toUnload do not track CLs for these modules
+   * @param session enumerates modules and their ClassLoaders we are no longer interested to track
    */
-  /*package*/ void forgetClassLoaders(Collection<SModuleReference> toUnload) {
+  /*package*/ void forgetClassLoaders(@NotNull DisposeSession session) {
     myAccessClassLoaders.writeLock().lock();
     try {
-      // FWIW, CLM.unloadModules() filters toUnload with getLoadedCondition(); likely checks here are excessive
-      for (SModuleReference mRef : toUnload) {
-        if (_getCL(mRef) == null) {
-          LOG.error("", new IllegalStateException("Module %s is not loaded -- cannot unload".formatted(mRef.getModuleName())));
+      // FWIW, session, when created, filters modules with CL present; additional checks here are likely excessive, but as a tribute
+      // to legacy code and an extra sanity check - why not
+      for (MPSModuleClassLoader mcl : session.classloaders()) {
+        MPSModuleClassLoader present = _getCL(mcl.getModule());
+        if (present == null) {
+          LOG.error("Module %s is not loaded -- cannot destroy %s".formatted(mcl.getModule().getModuleName(), mcl));
         } else {
-          if (!myMPSClassLoaders.containsKey(mRef) && !myIDEAClassLoaders.containsKey(mRef)) {
-            LOG.error("", new IllegalStateException("Module %s is loaded but has no registered ModuleClassLoader".formatted(mRef.getModuleName())));
+          // present != null indicates either myMPSClassLoaders or myIDEAClassLoaders got it
+          if (mcl != present) {
+            LOG.error("Module %s actual CL %s doesn't match CL to dispose %s".formatted(mcl.getModule().getModuleName(), present, mcl));
           }
-          myMPSClassLoaders.remove(mRef);
-          myIDEAClassLoaders.remove(mRef);
+          myMPSClassLoaders.remove(mcl.getModule());
+          myIDEAClassLoaders.remove(mcl.getModule());
         }
       }
     } finally {
@@ -211,11 +208,14 @@ final class MPSClassLoadersRegistry {
     myModuleClassLoaderDisposer.destroy();
   }
 
-  public ModuleClassLoaderDisposer getDisposer() {
-    return myModuleClassLoaderDisposer;
+  public DisposeSession createDisposeSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
+    // TODO perhaps, shall move here mySessionsAlive (or better yet use MCLD.mySessions) amd MAX sessions check?
+    //      or could init DisposeSession with mySessions.size() and keep check in CLM
+    // FIXME Doesn't need MCLD, can perform _getClassLoaders() filtering here!
+    return myModuleClassLoaderDisposer.createSession(modulesToUnload, onDisposed);
   }
 
-  static final class ModuleClassLoaderDisposer {
+  private static final class ModuleClassLoaderDisposer {
     @NotNull
     private final MPSClassLoadersRegistry myRegistry;
     private final List<DisposeSession> mySessions = new LinkedList<>();
@@ -224,11 +224,17 @@ final class MPSClassLoadersRegistry {
       myRegistry = registry;
     }
 
-    DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
-      // FWIW, modulesToUnload has been filtered by getLoadedCondition()
+    DisposeSession createSession(Set<ReloadableModule> modulesToUnload, Consumer<DisposeSession> onDisposed) {
+      // XXX not really nice is that read here and write in #forgetClassLoaders() are separated by notification broadcast, but
+      //     I don't expect any code to alter registry in between (we're inside model write here, all we can get are parallel reads with CL access lock)
       Set<MPSModuleClassLoader> classLoaders = myRegistry._getClassLoaders(modulesToUnload.stream().map(SModule::getModuleReference));
 
-      final DisposeSession ds = new DisposeSession(modulesToUnload, classLoaders, onDisposed);
+      // next is alternative to getLoadedCondition() filtering that used to happen before #createSession() call
+      final Set<SModuleReference> withClassloaders = classLoaders.stream().map(MPSModuleClassLoader::getModule).collect(Collectors.toSet());
+      Set<ReloadableModule> toUnload =
+          modulesToUnload.stream().filter(m -> withClassloaders.contains(m.getModuleReference())).collect(Collectors.toSet());
+
+      final DisposeSession ds = new DisposeSession(toUnload, classLoaders, onDisposed);
       mySessions.add(ds);
       return ds;
     }
@@ -238,124 +244,134 @@ final class MPSClassLoadersRegistry {
         session.destroy();
       }
     }
+  }
 
-    static final class DisposeSession {
-      private static final int MAX_MINUTES_FOR_STALE_CLASSLOADERS = 5;
-      private final Set<ReloadableModule> myModulesToUnload;
-      private final Set<MPSModuleClassLoader> myModuleClassloaders2Dispose;
-      private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
-      private final Instant myCreationTime;
-      @Nullable
-      private final Consumer<DisposeSession> myOnDisposed;
-      private volatile boolean myDisposeHappened = false;
-      private volatile Instant myPlanningDisposalTime;
-      private volatile Instant myActualDisposalTime;
+  static final class DisposeSession {
+    private static final int MAX_MINUTES_FOR_STALE_CLASSLOADERS = 5;
+    private final Set<ReloadableModule> myModulesToUnload;
+    private final Set<MPSModuleClassLoader> myModuleClassloaders2Dispose;
+    private final ConcurrentMap<Object, Boolean> myBlockingRequestors = new ConcurrentHashMap<>();
+    private final Instant myCreationTime;
+    @Nullable
+    private final Consumer<DisposeSession> myOnDisposed;
+    private volatile boolean myDisposeHappened = false;
+    private volatile Instant myPlanningDisposalTime;
+    private volatile Instant myActualDisposalTime;
 
-      private final ResourceTrackerCallback myTrackerCallback = new ResourceTrackerCallback() {
-        @NotNull
-        @Override
-        public Set<ReloadableModule> acquire(@NotNull Object requestor) {
-          doAquire(requestor);
-          return Collections.unmodifiableSet(myModulesToUnload);
-        }
-
-        @NotNull
-        @Override
-        public Set<ModuleClassLoader> acquire2(@NotNull Object requestor) {
-          doAquire(requestor);
-          return myModuleClassloaders2Dispose.stream().filter(ModuleClassLoader.class::isInstance).map(ModuleClassLoader.class::cast).collect(Collectors.toSet());
-        }
-
-        @Override
-        public void release(@NotNull Object requestor) {
-          doRelease(requestor);
-        }
-      };
-
-      public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload,
-                            Set<MPSModuleClassLoader> theirClassloaders,
-                            @Nullable Consumer<DisposeSession> onDisposed) {
-        myOnDisposed = onDisposed;
-        myCreationTime = Instant.now();
-        myModulesToUnload = modulesToUnload;
-        myModuleClassloaders2Dispose = theirClassloaders;
-      }
-
-      /*package*/ void doAquire(@NotNull Object requestor) {
-        if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
-          throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
-        }
-        if (myActualDisposalTime != null || myDisposeHappened) {
-          throw new IllegalStateException(String.format("Requestor '%s' tries to #acquire already disposed session", requestor));
-        }
-      }
-
-      /*package*/ void doRelease(@NotNull Object requestor) {
-        // we can get here from multiple threads at the same time
-        Boolean value = myBlockingRequestors.remove(requestor);
-        if (value == null) {
-          LOG.warning("Please report next message and the steps that lead to it to MPS-36887");
-          LOG.error("DisposeSession release comes from an unknown (already removed?) requestor " + requestor);
-        }
-        checkAndDisposeIfReady();
-      }
-
-      private synchronized void checkAndDisposeIfReady() {
-        if (isReadyToDispose() && myBlockingRequestors.isEmpty() && !myDisposeHappened) {
-          doDispose();
-        } // else we wait for the last #release
-      }
-
-
-      public synchronized void readyToDispose() {
-        assert myCreationTime != null;
-        assert myPlanningDisposalTime == null;
-        myPlanningDisposalTime = Instant.now();
-        checkAndDisposeIfReady();
-      }
-
-      // shall answer true iff readyToDispose() was signaled
-      private boolean isReadyToDispose() {
-        return myPlanningDisposalTime != null;
-      }
-
-      public synchronized void destroy() {
-        Instant now = Instant.now();
-        if (!myDisposeHappened && Duration.between(myPlanningDisposalTime, now).toMinutes() > MAX_MINUTES_FOR_STALE_CLASSLOADERS) {
-          Set<Object> blockers = myBlockingRequestors.keySet();
-          LOG.error(String.format("The following requestors have not invoked #release and probably are leaking ModuleClassLoaders: %s", blockers));
-        }
-        if (!myDisposeHappened) {
-          doDispose();
-        }
-      }
-
-      public synchronized boolean isDisposed() {
-        return myDisposeHappened;
-      }
-
-      private synchronized void doDispose() {
-        assert myCreationTime != null;
-        assert myPlanningDisposalTime != null;
-        assert !myDisposeHappened : "Dispose has already been done.";
-        myActualDisposalTime = Instant.now();
-        LOG.debug("Disposing " + myModuleClassloaders2Dispose.size() + " class loaders");
-        for (MPSModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
-          classLoader.dispose();
-        }
-        // help GC by removing references to CL
-        myModuleClassloaders2Dispose.clear();
-        myModulesToUnload.clear();
-        myDisposeHappened = true;
-        if (myOnDisposed != null) {
-          myOnDisposed.consume(this);
-        }
+    private final ResourceTrackerCallback myTrackerCallback = new ResourceTrackerCallback() {
+      @NotNull
+      @Override
+      public Set<ReloadableModule> acquire(@NotNull Object requestor) {
+        doAquire(requestor);
+        return Collections.unmodifiableSet(myModulesToUnload);
       }
 
       @NotNull
-      ResourceTrackerCallback getTrackerCallback() {
-        return myTrackerCallback;
+      @Override
+      public Set<ModuleClassLoader> acquire2(@NotNull Object requestor) {
+        doAquire(requestor);
+        return myModuleClassloaders2Dispose.stream().filter(ModuleClassLoader.class::isInstance).map(ModuleClassLoader.class::cast).collect(Collectors.toSet());
       }
+
+      @Override
+      public void release(@NotNull Object requestor) {
+        doRelease(requestor);
+      }
+    };
+
+    public DisposeSession(@NotNull Set<ReloadableModule> modulesToUnload,
+                          Set<MPSModuleClassLoader> theirClassloaders,
+                          @Nullable Consumer<DisposeSession> onDisposed) {
+      myOnDisposed = onDisposed;
+      myCreationTime = Instant.now();
+      myModulesToUnload = modulesToUnload;
+      myModuleClassloaders2Dispose = theirClassloaders;
+    }
+
+    /*package*/ void doAquire(@NotNull Object requestor) {
+      if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
+        throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
+      }
+      if (myActualDisposalTime != null || myDisposeHappened) {
+        throw new IllegalStateException(String.format("Requestor '%s' tries to #acquire already disposed session", requestor));
+      }
+    }
+
+    /*package*/ void doRelease(@NotNull Object requestor) {
+      // we can get here from multiple threads at the same time
+      Boolean value = myBlockingRequestors.remove(requestor);
+      if (value == null) {
+        LOG.warning("Please report next message and the steps that lead to it to MPS-36887");
+        LOG.error("DisposeSession release comes from an unknown (already removed?) requestor " + requestor);
+      }
+      checkAndDisposeIfReady();
+    }
+
+    private synchronized void checkAndDisposeIfReady() {
+      if (isReadyToDispose() && myBlockingRequestors.isEmpty() && !myDisposeHappened) {
+        doDispose();
+      } // else we wait for the last #release
+    }
+
+
+    public synchronized void readyToDispose() {
+      assert myCreationTime != null;
+      assert myPlanningDisposalTime == null;
+      myPlanningDisposalTime = Instant.now();
+      checkAndDisposeIfReady();
+    }
+
+    // shall answer true iff readyToDispose() was signaled
+    private boolean isReadyToDispose() {
+      return myPlanningDisposalTime != null;
+    }
+
+    public synchronized void destroy() {
+      Instant now = Instant.now();
+      if (!myDisposeHappened && Duration.between(myPlanningDisposalTime, now).toMinutes() > MAX_MINUTES_FOR_STALE_CLASSLOADERS) {
+        Set<Object> blockers = myBlockingRequestors.keySet();
+        LOG.error(String.format("The following requestors have not invoked #release and probably are leaking ModuleClassLoaders: %s", blockers));
+      }
+      if (!myDisposeHappened) {
+        doDispose();
+      }
+    }
+
+    public synchronized boolean isDisposed() {
+      return myDisposeHappened;
+    }
+
+    private synchronized void doDispose() {
+      assert myCreationTime != null;
+      assert myPlanningDisposalTime != null;
+      assert !myDisposeHappened : "Dispose has already been done.";
+      myActualDisposalTime = Instant.now();
+      LOG.debug("Disposing " + myModuleClassloaders2Dispose.size() + " class loaders");
+      for (MPSModuleClassLoader classLoader : myModuleClassloaders2Dispose) {
+        classLoader.dispose();
+      }
+      // help GC by removing references to CL
+      myModuleClassloaders2Dispose.clear();
+      myModulesToUnload.clear();
+      myDisposeHappened = true;
+      if (myOnDisposed != null) {
+        myOnDisposed.consume(this);
+      }
+    }
+
+    // internal use only
+    Set<ReloadableModule> modules() {
+      return Collections.unmodifiableSet(myModulesToUnload);
+    }
+
+    // internal use only
+    Set<MPSModuleClassLoader> classloaders() {
+      return Collections.unmodifiableSet(myModuleClassloaders2Dispose);
+    }
+
+    @NotNull
+    ResourceTrackerCallback getTrackerCallback() {
+      return myTrackerCallback;
     }
   }
 }

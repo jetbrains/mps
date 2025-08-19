@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.MPSClassLoadersRegistry.DisposeSession;
 import jetbrains.mps.classloading.ModulesWatcher.UpdateOutcome;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.logging.Logger;
@@ -41,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
@@ -210,6 +212,8 @@ public class ClassLoaderManager implements CoreComponent {
 
   private final ModuleEventsHandler myRepositoryListener;
 
+  private final List<DisposeSession> mySessionsAlive = new LinkedList<>(); // updated only in EDT FIXME [artem]: is it still true about EDT?
+
   public ClassLoaderManager(@NotNull SRepository repository) {
     myRepository = repository;
     // watchableCondition is to filter modules that are subject to class loading. We want to watch and trace the dependencies between these.
@@ -220,7 +224,7 @@ public class ClassLoaderManager implements CoreComponent {
     myModulesWatcher = new ModulesWatcher(myRepository, watchableCondition);
     // ModuleEventsHandler batches module events and pumps it back here, for susbequent processing by myModulesWatcher
     myRepositoryListener = new ModuleEventsHandler(repository, this);
-    myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getDisposer());
+    myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess());
   }
 
   @Override
@@ -399,20 +403,43 @@ public class ClassLoaderManager implements CoreComponent {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Unloading", 6);
-    Set<ReloadableModule> modulesToUnload = filterModules(onlyRM(modules), myClassLoadersHolder.getLoadedCondition());
-    if (modulesToUnload.isEmpty()) {
-      return;
-    }
-    monitor.advance(1);
 
-    LOG.debug("Unloading " + modulesToUnload.size() + " modules");
-    // XXX onUnload() creates a session that tracks discarded CLs, while there's also myClassLoadersHolder that discards CLs as well. Can't be combined?
-    myBroadCaster.onUnload(modulesToUnload, monitor.subTask(4, SubProgressKind.AS_COMMENT));
-    // FIXME Do modulesToUnload contain modules with MPS-managed CL only? What happens for modules with IDEA CL delegate?
-    myClassLoadersHolder.forgetClassLoaders(modulesToUnload.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
+    final DisposeSession session = myClassLoadersHolder.createDisposeSession(onlyRM(modules).collect(Collectors.toSet()), mySessionsAlive::remove);
     monitor.advance(1);
-    monitor.done();
+    try {
+      mySessionsAlive.add(session); // finally may trigger mySessionsAlive::remove
+      if (session.modules().isEmpty()) {
+        return;
+      }
+      LOG.debug("Unloading %d modules".formatted(session.modules().size()));
+      if (ourCheckMemLeaks && mySessionsAlive.size() > MAX_SESSIONS_ALIVE) {
+        // note that if we do 100 reloads during a single write action we might get a 100 sessions
+        LOG.error(
+            "Possible leaking class loaders : currently there are %d sessions alive. "
+            + "Please avoid running too many reloads in the single write action".formatted(mySessionsAlive.size()));
+      }
+
+      myBroadCaster.onUnload(session, monitor.subTask(4, SubProgressKind.AS_COMMENT));
+      myClassLoadersHolder.forgetClassLoaders(session);
+      monitor.advance(1);
+    } finally {
+      session.readyToDispose();
+      monitor.done();
+    }
   }
+
+  // FIXME check if there's need for such high number, provided PluginLoaderRegistry greatly improved since the moment the check was introduced
+  //       Now it doesn't listen to CLM, and proceeds aggregated events fron LanguageRegistry, instead
+  private static final int MAX_SESSIONS_ALIVE = 100;
+  private boolean ourCheckMemLeaks = true;
+  /**
+   * MigrationsTest does that
+   */
+  @TestOnly
+  public void setCheckMemLeaks(boolean check) {
+    ourCheckMemLeaks = check;
+  }
+
 
   private static Stream<ReloadableModule> onlyRM(final Collection<CModule> modules) {
     return modules.stream().map(CModule::getModule).filter(ReloadableModule.class::isInstance).map(ReloadableModule.class::cast);
