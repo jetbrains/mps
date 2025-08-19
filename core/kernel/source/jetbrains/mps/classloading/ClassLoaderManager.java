@@ -49,7 +49,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
-import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
+import static jetbrains.mps.classloading.ClassLoadingProgress.NOT_LOADED;
 
 /**
  * A ClassLoaderManager is a singleton and provides an internal API for loading classes
@@ -367,7 +367,7 @@ public class ClassLoaderManager implements CoreComponent {
     // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
     //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
     //       for modules not yet compiled
-    // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
+    // XXX getUnloadedCondition() here seems to prevent creating CL for modules that already got CL and were not affected by module reload.
     // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
     //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
     Set<ReloadableModule> modulesPreLoad = filterModules(onlyRM(modules), myClassLoadersHolder.getUnloadedCondition().and(myValidCondition));
@@ -526,7 +526,7 @@ public class ClassLoaderManager implements CoreComponent {
   @NotNull
   public DeploymentStatus getStatus(@NotNull SModule module) {
     SModuleReference moduleReference = module.getModuleReference();
-    if (myClassLoadersHolder.getClassLoadingProgress(moduleReference) != UNLOADED) {
+    if (myClassLoadersHolder.getClassLoadingProgress(moduleReference) != NOT_LOADED) {
       return DeploymentStatuses.DEPLOYED;
     }
     if (myModulesWatcher.getStatus(moduleReference).isValid()) {
