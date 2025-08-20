@@ -47604,7 +47604,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVx9" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxa" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-api-5.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-jupiter-api-5.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47623,7 +47623,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVxg" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxh" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-engine-5.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-jupiter-engine-5.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47642,7 +47642,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVxn" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxo" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-migrationsupport-5.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-jupiter-migrationsupport-5.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47661,7 +47661,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVxu" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxv" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-jupiter-params-5.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-jupiter-params-5.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47680,7 +47680,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVx_" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxA" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-platform-commons-1.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-platform-commons-1.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47699,7 +47699,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVxG" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxH" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-platform-engine-1.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-platform-engine-1.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47718,7 +47718,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVxN" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxO" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-platform-launcher-1.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-platform-launcher-1.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47737,7 +47737,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVxU" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVxV" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-vintage-engine-5.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-vintage-engine-5.13.4.jar" />
                     </node>
                   </node>
                 </node>
@@ -47756,7 +47756,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVy1" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVy2" role="2Ry0An">
-                      <property role="2Ry0Am" value="opentest4j-1.2.0.jar" />
+                      <property role="2Ry0Am" value="opentest4j-1.3.0.jar" />
                     </node>
                   </node>
                 </node>
@@ -47775,7 +47775,7 @@
                   <node concept="2Ry0Ak" id="6jDaT$jlVy8" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="6jDaT$jlVy9" role="2Ry0An">
-                      <property role="2Ry0Am" value="junit-platform-reporting-1.9.3.jar" />
+                      <property role="2Ry0Am" value="junit-platform-reporting-1.13.4.jar" />
                     </node>
                   </node>
                 </node>
