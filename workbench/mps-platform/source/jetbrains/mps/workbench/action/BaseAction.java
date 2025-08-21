@@ -18,6 +18,7 @@ package jetbrains.mps.workbench.action;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CustomizedDataContext;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -45,6 +46,7 @@ import javax.swing.Icon;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
 public abstract class BaseAction extends AnAction {
@@ -216,11 +218,17 @@ public abstract class BaseAction extends AnAction {
       try {
         Map<String, Object> params = new THashMap<>();
         // read action here is redundant always except ActionAccess.EmptyAccess; we're already within appropriate model lock
+        // would be great to fix all actions that access model elements within EmptyAccess. Note, may need to avoid legacyWrap
+        // as it is now DataSnapshotProvider and installs all known MPS keys (NODE/MODEL/MODULE) regardless of their use in
+        // the action
         final SRepository repo = getRepository(event);
-        final DataContext dataContext = new CachingDataContext(legacyWrap(repo, event.getDataContext()));
-        final AnActionEvent dcBridgeEvent = event.withDataContext(dataContext);
-        repo.getModelAccess().runReadAction(() -> collectActionData(dcBridgeEvent, params));
-        doExecute(dcBridgeEvent, params);
+        final AtomicReference<AnActionEvent> dcBridgeEvent = new AtomicReference<>();
+        repo.getModelAccess().runReadAction(() -> {
+          final DataContext dataContext = new CachingDataContext(legacyWrap(repo, event.getDataContext()));
+          dcBridgeEvent.set(event.withDataContext(dataContext));
+          collectActionData(dcBridgeEvent.get(), params);
+        });
+        doExecute(dcBridgeEvent.get(), params);
       } catch (RuntimeException ex) {
         final Logger log = Logger.getLogger(getClass());
         if (log.isErrorLevel()) {
@@ -239,7 +247,6 @@ public abstract class BaseAction extends AnAction {
       //noinspection removal
       return MPSCoreComponents.getInstance().getModuleRepository();
     }
-
   }
 
   /**
@@ -264,7 +271,7 @@ public abstract class BaseAction extends AnAction {
    */
   @Internal
   public static DataContext legacyWrap(@NotNull SRepository repository, @NotNull DataContext delegate) {
-    return new LegacyDataContextBridge(repository, delegate);
+    return CustomizedDataContext.withSnapshot(delegate, new LegacyDataContextBridge(repository, delegate));
   }
 
   protected void disable(Presentation p) {
@@ -330,15 +337,18 @@ public abstract class BaseAction extends AnAction {
     if (project == null) {
       return;
     }
-    final String actionText = event.getPresentation().getText();
-    String msg;
-    if (actionText == null || actionText.trim().isEmpty()) {
-      msg = "This action";
-    } else {
-      msg = String.format("Action '%s'", actionText);
-    }
-    msg = String.format("%s requires model command and can not run during make", msg);
+    String msg = String.format("%s requires model command and can not run during make", actionText(event));
     showNotification(project, MessageType.WARNING, msg);
+  }
+
+  private String actionText(final AnActionEvent event) {
+    final String actionText = event.getPresentation().getText();
+
+    if (actionText == null || actionText.trim().isEmpty()) {
+      return "This action";
+    } else {
+      return String.format("Action '%s'", actionText);
+    }
   }
 
   // requires EDT
