@@ -45537,23 +45537,6 @@
             </node>
           </node>
         </node>
-        <node concept="398223" id="6ek1Cjkv_Hf" role="39821P">
-          <node concept="3_J27D" id="6ek1Cjkv_Hh" role="Nbhlr">
-            <node concept="3Mxwew" id="4JleASKO5oW" role="3MwsjC">
-              <property role="3MwjfP" value="settingsSync" />
-            </node>
-          </node>
-          <node concept="2HvfSZ" id="6ek1Cjkv_HM" role="39821P">
-            <node concept="55IIr" id="6ek1Cjkv_HN" role="2HvfZ0">
-              <node concept="2Ry0Ak" id="6ek1Cjkv_HT" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="1A2wFfv_Isi" role="2Ry0An">
-                  <property role="2Ry0Am" value="settingsSync" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="6ek1Cjkv_IM" role="39821P">
           <node concept="3_J27D" id="6ek1Cjkv_IO" role="Nbhlr">
             <node concept="3Mxwew" id="6ek1Cjkv_JE" role="3MwsjC">
