@@ -69,7 +69,6 @@ teamcity-info.xml
 /plugins/properties-resource-bundle-editor
 /plugins/terminal
 /plugins/emojipicker
-/plugins/settingsSync
 /plugins/tasks
 /plugins/vcs-git
 /plugins/vcs-git-commit-modal
