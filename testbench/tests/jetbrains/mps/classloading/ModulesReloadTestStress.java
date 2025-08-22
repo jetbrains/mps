@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class ModulesReloadTestStress extends ModulesReloadTest {
     return new SRepositoryListener() {
       @Override
       public void moduleAdded(@NotNull SModule module) {
-        clm.getClassLoader(module); // to initiate a refresh session in CLManager
+        clm.reloadModule(module); // to initiate a refresh session in CLManager
         checkModuleWatched(module);
         clm.reloadModule(module);
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -213,11 +213,12 @@ public class ModulesReloadTest extends ModuleMpsTest {
     final Language l2 = createLanguage();
     getModelAccess().runWriteAction(() -> {
       addClassTo(l2);
+      // explicit 'reload' here helps to establish a new CL for l2, with classes. Otherwise, only CL(l1) would get updated by the end of this write action
       myManager.reloadModule(l2);
       l1.addDependency(l2.getModuleReference(), false);
-      // XXX generally, adding a dependency should not make any CL change, revisit
-      Assert.assertTrue(classIsLoadableFromModule(l1)); // the class must be available already here
     });
+    // adding a dependency shall trigger CL change when there's no "deps.cl" and CLDependencies defaults to GMDM and used languages
+    Assert.assertTrue(classIsLoadableFromModule(l1)); // the class must be available  here
   }
 
   @Test
@@ -285,6 +286,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
 
   @Test
   public void testModuleRemoval() {
+    // l1 --> l2 (classes) --> l3
     final Language l1 = createLanguage();
     final Language l2 = createLanguage();
     final Language l3 = createLanguage();
@@ -295,12 +297,14 @@ public class ModulesReloadTest extends ModuleMpsTest {
       myManager.reloadModule(l2);
       Assert.assertTrue(classIsLoadableFromModule(l1));
       removeModule(l3);
-      Assert.assertFalse(classIsLoadableFromModule(l1));
+      Assert.assertTrue(classIsLoadableFromModule(l1)); // removal of the module doesn't mean its classes get immediately unavailable
       // there's still dependency from l1 -> l2 -> l3, and despite the module removal, we still keep it in the dep graph
       Assert.assertTrue(myManager.getModulesWatcher().isModuleWatched(l3));
-      Assert.assertFalse(myManager.getModulesWatcher().getStatus(l3.getModuleReference()).isValid()); // but it's not valid for CL
+      Assert.assertTrue(myManager.getModulesWatcher().getStatus(l3.getModuleReference()).isValid()); // and it's still valid for CL
     });
-    Assert.assertFalse(classIsLoadableFromModule(l1));
+    Assert.assertFalse(classIsLoadableFromModule(l1)); // now, when the write is over, no classes for L1
+    Assert.assertTrue(myManager.getModulesWatcher().isModuleWatched(l3)); // dependency is there, we keep record of the module
+    Assert.assertFalse(myManager.getModulesWatcher().getStatus(l3.getModuleReference()).isValid()); // but it's not valid for CL
   }
 
   @Test
