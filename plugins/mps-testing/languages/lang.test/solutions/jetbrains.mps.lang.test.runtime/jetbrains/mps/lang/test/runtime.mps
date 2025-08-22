@@ -7174,7 +7174,7 @@
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
               <node concept="Xl_RD" id="5wEVZcC27k0" role="37wK5m">
-                <property role="Xl_RC" value="node '%s' doesn't have type '%s'!" />
+                <property role="Xl_RC" value="node '%s' expected to have type '%s' but has type '%s'" />
               </node>
               <node concept="1rXfSq" id="5wEVZcC2989" role="37wK5m">
                 <ref role="37wK5l" node="18jf_F1WDtL" resolve="nodeWithIdToString" />
@@ -7182,10 +7182,16 @@
                   <ref role="3cqZAo" node="18jf_F1WDun" resolve="node" />
                 </node>
               </node>
+              <node concept="1rXfSq" id="5ZLr23X0LTr" role="37wK5m">
+                <ref role="37wK5l" node="18jf_F1WDtL" resolve="nodeWithIdToString" />
+                <node concept="37vLTw" id="5ZLr23X0ML5" role="37wK5m">
+                  <ref role="3cqZAo" node="18jf_F1WDur" resolve="type2" />
+                </node>
+              </node>
               <node concept="1rXfSq" id="5wEVZcC2av$" role="37wK5m">
                 <ref role="37wK5l" node="18jf_F1WDtL" resolve="nodeWithIdToString" />
                 <node concept="37vLTw" id="5wEVZcC2av_" role="37wK5m">
-                  <ref role="3cqZAo" node="18jf_F1WDur" resolve="type2" />
+                  <ref role="3cqZAo" node="18jf_F1WDup" resolve="type1" />
                 </node>
               </node>
             </node>
@@ -7199,12 +7205,12 @@
         <node concept="3Tqbb2" id="18jf_F1WDuo" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="18jf_F1WDup" role="3clF46">
-        <property role="TrG5h" value="type1" />
+        <property role="TrG5h" value="actualType" />
         <property role="3TUv4t" value="true" />
         <node concept="3Tqbb2" id="18jf_F1WDuq" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="18jf_F1WDur" role="3clF46">
-        <property role="TrG5h" value="type2" />
+        <property role="TrG5h" value="expectedType" />
         <property role="3TUv4t" value="true" />
         <node concept="3Tqbb2" id="18jf_F1WDus" role="1tU5fm" />
       </node>

@@ -37,8 +37,8 @@ public class NodeCheckerUtil {
     return SNodeOperations.present(node) + " [" + node.getNodeId() + "]";
   }
 
-  public static void assertTypesAreTheSame(SNode node, final SNode type1, final SNode type2) {
-    Assert.assertTrue(String.format("node '%s' doesn't have type '%s'!", nodeWithIdToString(node), nodeWithIdToString(type2)), new NodesMatcher(type1, type2).diff().isEmpty());
+  public static void assertTypesAreTheSame(SNode node, final SNode actualType, final SNode expectedType) {
+    Assert.assertTrue(String.format("node '%s' expected to have type '%s' but has type '%s'", nodeWithIdToString(node), nodeWithIdToString(expectedType), nodeWithIdToString(actualType)), new NodesMatcher(actualType, expectedType).diff().isEmpty());
   }
 
   @Nullable
