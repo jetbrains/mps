@@ -224,7 +224,7 @@ public abstract class BaseAction extends AnAction {
         final SRepository repo = getRepository(event);
         final AtomicReference<AnActionEvent> dcBridgeEvent = new AtomicReference<>();
         repo.getModelAccess().runReadAction(() -> {
-          final DataContext dataContext = new CachingDataContext(legacyWrap(repo, event.getDataContext()));
+          final DataContext dataContext = legacyWrap(repo, event.getDataContext());
           dcBridgeEvent.set(event.withDataContext(dataContext));
           collectActionData(dcBridgeEvent.get(), params);
         });
@@ -271,12 +271,18 @@ public abstract class BaseAction extends AnAction {
    */
   @Internal
   public static DataContext legacyWrap(@NotNull SRepository repository, @NotNull DataContext delegate) {
+    // I don't like the idea of using DataSnapshotProvider to put values of NODE/MODEL/MODULE without explicitly
+    // being asked for these, I didn't better alternative. Use of DataProvider leads to DataKey.allKeys() (270+!!!)
+    // being pumped to the provider instance just to populate the inner snapshot anyway.
+    // Positive side of this is that we no longer need CachingDataContext (introduced in 8c487f4e) to do exactly
+    // the same (keep values for re-use), albeit in a lazy fashion.
     return CustomizedDataContext.withSnapshot(delegate, new LegacyDataContextBridge(repository, delegate));
   }
 
   protected void disable(Presentation p) {
     p.setEnabled(false);
     p.setVisible(myIsAlwaysVisible);
+    // 8c487f4e
   }
 
   protected void enable(final Presentation p) {
