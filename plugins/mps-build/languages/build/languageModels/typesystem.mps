@@ -786,24 +786,24 @@
                           <node concept="3clFbF" id="B4taqEA4ZH" role="3cqZAp">
                             <node concept="1Wc70l" id="B4taqEA50m" role="3clFbG">
                               <node concept="2OqwBi" id="B4taqEA51w" role="3uHU7w">
-                                <node concept="2OqwBi" id="B4taqEA514" role="2Oq$k0">
-                                  <node concept="1PxgMI" id="B4taqEA50I" role="2Oq$k0">
-                                    <node concept="37vLTw" id="2BHiRxghf1$" role="1m5AlR">
-                                      <ref role="3cqZAo" node="5W7E4fV0WJW" resolve="it" />
-                                    </node>
-                                    <node concept="chp4Y" id="714IaVdH0Bc" role="3oSUPX">
-                                      <ref role="cht4Q" to="3ior:6qcrfIJFt02" resolve="BuildFolderMacro" />
-                                    </node>
-                                  </node>
-                                  <node concept="3TrcHB" id="B4taqEA51a" role="2OqNvi">
-                                    <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                                  </node>
-                                </node>
                                 <node concept="liA8E" id="B4taqEA51A" role="2OqNvi">
                                   <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                                  <node concept="Xl_RD" id="B4taqEA51B" role="37wK5m">
-                                    <property role="Xl_RC" value="idea_home" />
+                                  <node concept="2OqwBi" id="B4taqEA514" role="37wK5m">
+                                    <node concept="1PxgMI" id="B4taqEA50I" role="2Oq$k0">
+                                      <node concept="37vLTw" id="2BHiRxghf1$" role="1m5AlR">
+                                        <ref role="3cqZAo" node="5W7E4fV0WJW" resolve="it" />
+                                      </node>
+                                      <node concept="chp4Y" id="714IaVdH0Bc" role="3oSUPX">
+                                        <ref role="cht4Q" to="3ior:6qcrfIJFt02" resolve="BuildFolderMacro" />
+                                      </node>
+                                    </node>
+                                    <node concept="3TrcHB" id="B4taqEA51a" role="2OqNvi">
+                                      <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                                    </node>
                                   </node>
+                                </node>
+                                <node concept="Xl_RD" id="B4taqEA51B" role="2Oq$k0">
+                                  <property role="Xl_RC" value="idea_home" />
                                 </node>
                               </node>
                               <node concept="2OqwBi" id="B4taqEA503" role="3uHU7B">

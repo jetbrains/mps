@@ -27,7 +27,7 @@ public class check_BuildSource_JavaOptions_NonTypesystemRule extends AbstractNon
     if ("IntelliJ".equals(SPropertyOperations.getString(opts, PROPS.compiler$a4kP))) {
       SNode project = SNodeOperations.getNodeAncestor(opts, CONCEPTS.BuildProject$ae, false, false);
       if ((project != null)) {
-        boolean hasIdeaHomeVar = ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.macros$r8_A)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR) && SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL).equals("idea_home"));
+        boolean hasIdeaHomeVar = ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.macros$r8_A)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR) && "idea_home".equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.BuildFolderMacro$mR), PROPS.name$MnvL)));
         if (!(hasIdeaHomeVar)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
