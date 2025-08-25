@@ -2763,6 +2763,9 @@
     <node concept="2DRAP_" id="2_gL36cKoQM" role="2DRAPQ">
       <property role="2DPR8u" value="  %ALL_JVM_ARGS% ^" />
     </node>
+    <node concept="2DRAP_" id="3zmidjZjDBA" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Dide.native.launcher=false ^" />
+    </node>
     <node concept="2DRAP_" id="2_gL36cKmlz" role="2DRAPQ">
       <property role="2DPR8u" value="  -Didea.main.class.name=%MAIN_CLASS% ^" />
     </node>
