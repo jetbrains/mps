@@ -9,11 +9,24 @@ import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import java.util.concurrent.atomic.AtomicReference;
 import java.lang.reflect.Method;
+import jetbrains.mps.library.LibraryInitializer;
+import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.vfs.VFSManager;
+import java.util.Set;
+import jetbrains.mps.library.contributor.LibDescriptor;
+import java.util.LinkedHashSet;
+import jetbrains.mps.library.ModulesMiner;
+import java.io.File;
+import jetbrains.mps.vfs.IFile;
+import java.util.Collections;
+import jetbrains.mps.library.contributor.LibraryContributor;
+import jetbrains.mps.core.tool.environment.util.SetLibraryContributor;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.tool.common.TestData;
 import jetbrains.mps.tool.run.ModuleClassCode;
 import java.util.Optional;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.io.File;
 
 public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
 
@@ -29,8 +42,7 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
 
   @Override
   protected Environment createEnvironment() {
-    EnvironmentConfig config = createEnvironmentConfig(myWhatToDo);
-    config = config.withTestModeOn();
+    EnvironmentConfig config = createEnvironmentConfig(myWhatToDo).withTestModeOn();
     IdeaEnvironment environment = new IdeaEnvironment(config);
     environment.init();
     return environment;
@@ -41,15 +53,37 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
     AtomicReference<Object> object = new AtomicReference<Object>();
     AtomicReference<Method> method = new AtomicReference<Method>();
 
+    LibraryInitializer libInitializer = getPlatform().findComponent(LibraryInitializer.class);
+    FileSystem fs = getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO();
+    Set<LibDescriptor> paths = new LinkedHashSet<LibDescriptor>();
+    ModulesMiner mm = new ModulesMiner(getPlatform());
+    // I wonder if we still need VfsRootAccess.allowRootAccess for https://youtrack.jetbrains.com/issue/MPS-24778
+    // as we use java.io-backed IFile and not IDEA's VirtualFiles to access these modules now
+    for (File testModule : myWhatToDo.getModules()) {
+      IFile ff = fs.getFile(testModule);
+      paths.add(new LibDescriptor(ff));
+      mm.collectModules(ff);
+    }
+    libInitializer.load(Collections.<LibraryContributor>singletonList(SetLibraryContributor.fromSet("TestModules", paths)));
+
+    PersistenceRegistry pf = getPlatform().findComponent(PersistenceRegistry.class);
+    final TestData testData = new TestData();
+    for (ModulesMiner.ModuleHandle mh : mm.getCollectedModules()) {
+      // XXX quite odd to go back and forth with PersistenceFacade as we got ModuleDescriptor with pure persistent values, would be great to use them directly
+      //    otoh, we keep module id and namespace separately, no chance to get serialized ModuleReference right away.
+      info(String.format("Registered module %s for test auto-discovery", mh.getDescriptor().getNamespace()));
+      testData.testModules.add(new TestData.ModuleRecord(pf.asString(mh.getDescriptor().getModuleReference()), true));
+    }
+
     ModuleClassCode code = new ModuleClassCode(LAUNCHER_SOLUTION);
     try {
       code.load(myEnvironment.getPlatform(), LAUNCHER_CLASS);
-      Optional<Constructor<?>> ctor = code.cons(Script.class, Environment.class, WorkerCallback.class);
+      Optional<Constructor<?>> ctor = code.cons(Script.class, Environment.class, TestData.class, WorkerCallback.class);
       Optional<Method> meth = code.instanceMethod(LAUNCHER_METHOD);
       method.set(meth.get());
 
       if (ctor.isPresent() && meth.isPresent()) {
-        object.set(ctor.get().newInstance(myWhatToDo, myEnvironment, this));
+        object.set(ctor.get().newInstance(myWhatToDo, myEnvironment, testData, this));
 
       } else {
         if (!(ctor.isPresent())) {

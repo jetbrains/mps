@@ -4,8 +4,8 @@ package jetbrains.mps.lang.test.junit5;
 
 import jetbrains.mps.lang.test.launcher.WorkerCallback;
 import jetbrains.mps.tool.common.Script;
+import jetbrains.mps.tool.common.TestData;
 import jetbrains.mps.tool.environment.Environment;
-import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import java.util.List;
 import java.io.File;
@@ -13,7 +13,12 @@ import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.persistence.PersistenceRegistry;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.facets.TestsFacet;
+import jetbrains.mps.smodel.Generator;
 
 public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
@@ -22,22 +27,21 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
   private final WorkerCallback myWorkerCallback;
   private final Script myWhatToDo;
+  private final TestData myTestPlan;
 
-  public ScriptJUnit5Launcher(Script whatToDo, Environment environment, WorkerCallback callback) {
+  public ScriptJUnit5Launcher(Script whatToDo, Environment environment, TestData testData, WorkerCallback callback) {
     super(environment);
+    // XXX I wonder if I truly need Environment here, and can't go on with just mps.Platform?
     this.myWhatToDo = whatToDo;
-    this.myWorkerCallback = callback;
+    myWorkerCallback = callback;
+    myTestPlan = testData;
   }
 
   @Override
   public int launchTests() {
-    Project project = myEnvironment.createProject(new ModuleFilesListProjectStrategy(myWhatToDo.getModules()));
     FailureDetector failureDetector = new FailureDetector();
 
-    launchTestsWithSession(collectTestClasses(project), failureDetector);
-
-    myEnvironment.closeProject(project);
-    myEnvironment.dispose();
+    launchTestsWithSession(collectTestClasses(), failureDetector);
 
     if (failureDetector.hasFailures()) {
       failureDetector.flushErrors(myWorkerCallback);
@@ -67,7 +71,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
     };
   }
 
-  private List<Class<?>> collectTestClasses(final Project project) {
+  private List<Class<?>> collectTestClasses() {
     final List<Class<?>> testClasses = new ArrayList<>();
     final TestDiscoveryVisitor visitor = new TestDiscoveryVisitor() {
       @Override
@@ -80,12 +84,30 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
         }
       }
     };
+    // FIXME don't need Project, just a convenience for now, shall access platform.find(LanguageRegistry).withModuleRuntime(modulePtr).loadClass() or findResource(), instead (once supply list of tests)
+    // we rely on project MA being delegate for CLM repository's MA
+    final Project project = myEnvironment.createEmptyProject();
 
     project.getModelAccess().runReadAction(() -> {
+      TestDiscovery discovery = new TestDiscovery(myEnvironment.getPlatform().findComponent(ClassLoaderManager.class), visitor);
+      PersistenceRegistry pf = myEnvironment.getPlatform().findComponent(PersistenceRegistry.class);
 
-      new TestDiscovery(myEnvironment.getPlatform().findComponent(ClassLoaderManager.class), visitor).surveyModules(project.getProjectModules());
-
+      for (TestData.ModuleRecord tm : myTestPlan.testModules) {
+        SModule testModule = pf.createModuleReference(tm.modulePtr).resolve(project.getRepository());
+        if (testModule == null) {
+          myWorkerCallback.fatal("Can't find module %s in a repository", null);
+          continue;
+        }
+        if (testModule.getFacet(TestsFacet.class) == null) {
+          if (false == testModule instanceof Generator) {
+            myWorkerCallback.info(String.format("Module %s doesn't have 'tests' facet, skipped", testModule.getModuleName()));
+          }
+        }
+        discovery.surveyModule(testModule);
+      }
     });
+
+    myEnvironment.closeProject(project);
 
     return testClasses;
   }

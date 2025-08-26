@@ -92,6 +92,9 @@ public class ExecutorScript {
     myEnvironmentStartupData.read(root);
   }
 
+  /**
+   * FIXME replace with generic j.m.tool.common.TestData
+   */
   public static final class TestRecord {
     public final String myTestModule;
     public final List<String> myTestNode = new ArrayList<String>();
