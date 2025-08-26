@@ -31,7 +31,8 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
   public ScriptJUnit5Launcher(Script whatToDo, Environment environment, TestData testData, WorkerCallback callback) {
     super(environment);
-    // XXX I wonder if I truly need Environment here, and can't go on with just mps.Platform?
+    // I need Environment here, not mps.Platform, to pass it down to EnvironmentAware tests. However, could avoid passing it
+    // to superclass and initialize TestSession here directly
     this.myWhatToDo = whatToDo;
     myWorkerCallback = callback;
     myTestPlan = testData;

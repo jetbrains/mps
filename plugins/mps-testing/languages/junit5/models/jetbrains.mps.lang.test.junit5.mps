@@ -229,10 +229,12 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
+      <concept id="5351203823916832286" name="jetbrains.mps.baseLanguage.structure.ResourceVariable" flags="ng" index="3J1hQo" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
+        <child id="5351203823916750334" name="resource" index="3J1_TS" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -384,53 +386,84 @@
         </node>
         <node concept="3SKdUt" id="5tXD4tz7k9U" role="3cqZAp">
           <node concept="1PaTwC" id="5tXD4tz7k9V" role="1aUNEU">
-            <node concept="3oM_SD" id="5tXD4tz7kkg" role="1PaTwD">
-              <property role="3oM_SC" value="XXX" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7kkw" role="1PaTwD">
+            <node concept="3oM_SD" id="63PiL8Q0C41" role="1PaTwD">
               <property role="3oM_SC" value="I" />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7kkM" role="1PaTwD">
-              <property role="3oM_SC" value="wonder" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7klO" role="1PaTwD">
-              <property role="3oM_SC" value="if" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7kmk" role="1PaTwD">
-              <property role="3oM_SC" value="I" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7km_" role="1PaTwD">
-              <property role="3oM_SC" value="truly" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7kn_" role="1PaTwD">
+            <node concept="3oM_SD" id="63PiL8Q0C4K" role="1PaTwD">
               <property role="3oM_SC" value="need" />
             </node>
             <node concept="3oM_SD" id="5tXD4tz7ko5" role="1PaTwD">
               <property role="3oM_SC" value="Environment" />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7kol" role="1PaTwD">
+            <node concept="3oM_SD" id="63PiL8Q0C8H" role="1PaTwD">
               <property role="3oM_SC" value="here," />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7koP" role="1PaTwD">
+            <node concept="3oM_SD" id="63PiL8Q0C9d" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0C9e" role="1PaTwD">
+              <property role="3oM_SC" value="mps.Platform," />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Cbr" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Cbs" role="1PaTwD">
+              <property role="3oM_SC" value="pass" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Cbt" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0CbX" role="1PaTwD">
+              <property role="3oM_SC" value="down" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Cce" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0CcI" role="1PaTwD">
+              <property role="3oM_SC" value="EnvironmentAware" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0CdH" role="1PaTwD">
+              <property role="3oM_SC" value="tests." />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0CeG" role="1PaTwD">
+              <property role="3oM_SC" value="However," />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0CfV" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Cgr" role="1PaTwD">
+              <property role="3oM_SC" value="avoid" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Chb" role="1PaTwD">
+              <property role="3oM_SC" value="passing" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0Chc" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="63PiL8Q0CsJ" role="3cqZAp">
+          <node concept="1PaTwC" id="63PiL8Q0CsK" role="1aUNEU">
+            <node concept="3oM_SD" id="63PiL8Q0C_n" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0C_o" role="1PaTwD">
+              <property role="3oM_SC" value="superclass" />
+            </node>
+            <node concept="3oM_SD" id="63PiL8Q0CAn" role="1PaTwD">
               <property role="3oM_SC" value="and" />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7kp5" role="1PaTwD">
-              <property role="3oM_SC" value="can't" />
+            <node concept="3oM_SD" id="63PiL8Q0CAo" role="1PaTwD">
+              <property role="3oM_SC" value="initialize" />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7kp6" role="1PaTwD">
-              <property role="3oM_SC" value="go" />
+            <node concept="3oM_SD" id="63PiL8Q0CB8" role="1PaTwD">
+              <property role="3oM_SC" value="TestSession" />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7kpQ" role="1PaTwD">
-              <property role="3oM_SC" value="on" />
+            <node concept="3oM_SD" id="63PiL8Q0CCR" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
             </node>
-            <node concept="3oM_SD" id="5tXD4tz7kqm" role="1PaTwD">
-              <property role="3oM_SC" value="with" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7kqn" role="1PaTwD">
-              <property role="3oM_SC" value="just" />
-            </node>
-            <node concept="3oM_SD" id="5tXD4tz7kr6" role="1PaTwD">
-              <property role="3oM_SC" value="mps.Platform?" />
+            <node concept="3oM_SD" id="63PiL8Q0CDB" role="1PaTwD">
+              <property role="3oM_SC" value="directly" />
             </node>
           </node>
         </node>
@@ -2803,110 +2836,110 @@
           </node>
         </node>
         <node concept="3clFbH" id="2BBIwJJqYQk" role="3cqZAp" />
-        <node concept="3cpWs8" id="3OA_Uj9fdik" role="3cqZAp">
-          <node concept="3cpWsn" id="3OA_Uj9fdil" role="3cpWs9">
-            <property role="TrG5h" value="launcher" />
-            <node concept="3uibUv" id="3OA_Uj9fdim" role="1tU5fm">
-              <ref role="3uigEE" to="bws1:~Launcher" resolve="Launcher" />
-            </node>
-            <node concept="2OqwBi" id="3OA_Uj9fdin" role="33vP2m">
-              <node concept="2YIFZM" id="3OA_Uj9fdio" role="2Oq$k0">
-                <ref role="37wK5l" to="z4cc:~LauncherFactory.openSession(org.junit.platform.launcher.core.LauncherConfig)" resolve="openSession" />
-                <ref role="1Pybhc" to="z4cc:~LauncherFactory" resolve="LauncherFactory" />
-                <node concept="37vLTw" id="3OA_Uj9fdip" role="37wK5m">
-                  <ref role="3cqZAo" node="3OA_Uj9fdhU" resolve="launcherConfig" />
+        <node concept="3J1_TO" id="63PiL8Q0lW2" role="3cqZAp">
+          <node concept="3clFbS" id="63PiL8Q0lW4" role="1zxBo7">
+            <node concept="3cpWs8" id="3OA_Uj9fdik" role="3cqZAp">
+              <node concept="3cpWsn" id="3OA_Uj9fdil" role="3cpWs9">
+                <property role="TrG5h" value="launcher" />
+                <node concept="3uibUv" id="3OA_Uj9fdim" role="1tU5fm">
+                  <ref role="3uigEE" to="bws1:~Launcher" resolve="Launcher" />
                 </node>
-              </node>
-              <node concept="liA8E" id="3OA_Uj9fdiq" role="2OqNvi">
-                <ref role="37wK5l" to="bws1:~LauncherSession.getLauncher()" resolve="getLauncher" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3OA_Uj9fdir" role="3cqZAp">
-          <node concept="3clFbS" id="3OA_Uj9fdis" role="3clFbx">
-            <node concept="3clFbF" id="3OA_Uj9fdit" role="3cqZAp">
-              <node concept="2OqwBi" id="3OA_Uj9fdiu" role="3clFbG">
-                <node concept="37vLTw" id="3OA_Uj9fdiv" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
-                </node>
-                <node concept="liA8E" id="3OA_Uj9fdiw" role="2OqNvi">
-                  <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
-                  <node concept="1rXfSq" id="1W7Tdy_UBR7" role="37wK5m">
-                    <ref role="37wK5l" node="1W7Tdy_UBR4" resolve="createTestExecutionListener" />
+                <node concept="2OqwBi" id="3OA_Uj9fdin" role="33vP2m">
+                  <node concept="liA8E" id="3OA_Uj9fdiq" role="2OqNvi">
+                    <ref role="37wK5l" to="bws1:~LauncherSession.getLauncher()" resolve="getLauncher" />
+                  </node>
+                  <node concept="37vLTw" id="63PiL8Q0sDu" role="2Oq$k0">
+                    <ref role="3cqZAo" node="63PiL8Q0lW5" resolve="session" />
                   </node>
                 </node>
               </node>
             </node>
-          </node>
-          <node concept="1rXfSq" id="3OA_Uj9fdiz" role="3clFbw">
-            <ref role="37wK5l" node="3OA_Uj9gCRT" resolve="isRunningOnTeamCity" />
-          </node>
-        </node>
-        <node concept="3cpWs8" id="3OA_Uj9fdi$" role="3cqZAp">
-          <node concept="3cpWsn" id="3OA_Uj9fdi_" role="3cpWs9">
-            <property role="TrG5h" value="testReportsDir" />
-            <node concept="3uibUv" id="3OA_Uj9fdiA" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-            <node concept="1rXfSq" id="3OA_Uj9fdiB" role="33vP2m">
-              <ref role="37wK5l" node="3OA_Uj9gNKn" resolve="getTestReportsDir" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3OA_Uj9fdiC" role="3cqZAp">
-          <node concept="3clFbS" id="3OA_Uj9fdiD" role="3clFbx">
-            <node concept="3clFbJ" id="51DD0tdPDc7" role="3cqZAp">
-              <node concept="3clFbS" id="51DD0tdPDc9" role="3clFbx">
-                <node concept="3clFbF" id="3OA_Uj9fdiE" role="3cqZAp">
-                  <node concept="2OqwBi" id="3OA_Uj9fdiF" role="3clFbG">
-                    <node concept="37vLTw" id="3OA_Uj9fdiG" role="2Oq$k0">
+            <node concept="3clFbJ" id="3OA_Uj9fdir" role="3cqZAp">
+              <node concept="3clFbS" id="3OA_Uj9fdis" role="3clFbx">
+                <node concept="3clFbF" id="3OA_Uj9fdit" role="3cqZAp">
+                  <node concept="2OqwBi" id="3OA_Uj9fdiu" role="3clFbG">
+                    <node concept="37vLTw" id="3OA_Uj9fdiv" role="2Oq$k0">
                       <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
                     </node>
-                    <node concept="liA8E" id="3OA_Uj9fdiH" role="2OqNvi">
+                    <node concept="liA8E" id="3OA_Uj9fdiw" role="2OqNvi">
                       <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
-                      <node concept="2ShNRf" id="51DD0tdJk8G" role="37wK5m">
-                        <node concept="1pGfFk" id="51DD0tdJ$Ca" role="2ShVmc">
-                          <property role="373rjd" value="true" />
-                          <ref role="37wK5l" to="fojo:~OpenTestReportGeneratingListener.&lt;init&gt;()" resolve="OpenTestReportGeneratingListener" />
+                      <node concept="1rXfSq" id="1W7Tdy_UBR7" role="37wK5m">
+                        <ref role="37wK5l" node="1W7Tdy_UBR4" resolve="createTestExecutionListener" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1rXfSq" id="3OA_Uj9fdiz" role="3clFbw">
+                <ref role="37wK5l" node="3OA_Uj9gCRT" resolve="isRunningOnTeamCity" />
+              </node>
+            </node>
+            <node concept="3cpWs8" id="3OA_Uj9fdi$" role="3cqZAp">
+              <node concept="3cpWsn" id="3OA_Uj9fdi_" role="3cpWs9">
+                <property role="TrG5h" value="testReportsDir" />
+                <node concept="3uibUv" id="3OA_Uj9fdiA" role="1tU5fm">
+                  <ref role="3uigEE" to="guwi:~File" resolve="File" />
+                </node>
+                <node concept="1rXfSq" id="3OA_Uj9fdiB" role="33vP2m">
+                  <ref role="37wK5l" node="3OA_Uj9gNKn" resolve="getTestReportsDir" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="3OA_Uj9fdiC" role="3cqZAp">
+              <node concept="3clFbS" id="3OA_Uj9fdiD" role="3clFbx">
+                <node concept="3clFbJ" id="51DD0tdPDc7" role="3cqZAp">
+                  <node concept="3clFbS" id="51DD0tdPDc9" role="3clFbx">
+                    <node concept="3clFbF" id="3OA_Uj9fdiE" role="3cqZAp">
+                      <node concept="2OqwBi" id="3OA_Uj9fdiF" role="3clFbG">
+                        <node concept="37vLTw" id="3OA_Uj9fdiG" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
+                        </node>
+                        <node concept="liA8E" id="3OA_Uj9fdiH" role="2OqNvi">
+                          <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
+                          <node concept="2ShNRf" id="51DD0tdJk8G" role="37wK5m">
+                            <node concept="1pGfFk" id="51DD0tdJ$Ca" role="2ShVmc">
+                              <property role="373rjd" value="true" />
+                              <ref role="37wK5l" to="fojo:~OpenTestReportGeneratingListener.&lt;init&gt;()" resolve="OpenTestReportGeneratingListener" />
+                            </node>
+                          </node>
                         </node>
                       </node>
                     </node>
+                    <node concept="3clFbH" id="51DD0tdPJNr" role="3cqZAp" />
                   </node>
-                </node>
-                <node concept="3clFbH" id="51DD0tdPJNr" role="3cqZAp" />
-              </node>
-              <node concept="1rXfSq" id="51DD0tdPDIr" role="3clFbw">
-                <ref role="37wK5l" node="51DD0tdNZPO" resolve="isOpenTestReport" />
-              </node>
-              <node concept="9aQIb" id="51DD0tdPFiK" role="9aQIa">
-                <node concept="3clFbS" id="51DD0tdPFiL" role="9aQI4">
-                  <node concept="3clFbF" id="51DD0tdPFNU" role="3cqZAp">
-                    <node concept="2OqwBi" id="51DD0tdPFNV" role="3clFbG">
-                      <node concept="37vLTw" id="51DD0tdPFNW" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
-                      </node>
-                      <node concept="liA8E" id="51DD0tdPFNX" role="2OqNvi">
-                        <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
-                        <node concept="2ShNRf" id="51DD0tdPFNY" role="37wK5m">
-                          <node concept="1pGfFk" id="51DD0tdPFNZ" role="2ShVmc">
-                            <property role="373rjd" value="true" />
-                            <ref role="37wK5l" to="7c1v:~LegacyXmlReportGeneratingListener.&lt;init&gt;(java.nio.file.Path,java.io.PrintWriter)" resolve="LegacyXmlReportGeneratingListener" />
-                            <node concept="2OqwBi" id="51DD0tdPFO0" role="37wK5m">
-                              <node concept="37vLTw" id="51DD0tdPFO1" role="2Oq$k0">
-                                <ref role="3cqZAo" node="3OA_Uj9fdi_" resolve="testReportsDir" />
-                              </node>
-                              <node concept="liA8E" id="51DD0tdPFO2" role="2OqNvi">
-                                <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
-                              </node>
-                            </node>
-                            <node concept="2ShNRf" id="51DD0tdPFO3" role="37wK5m">
-                              <node concept="1pGfFk" id="51DD0tdPFO4" role="2ShVmc">
+                  <node concept="1rXfSq" id="51DD0tdPDIr" role="3clFbw">
+                    <ref role="37wK5l" node="51DD0tdNZPO" resolve="isOpenTestReport" />
+                  </node>
+                  <node concept="9aQIb" id="51DD0tdPFiK" role="9aQIa">
+                    <node concept="3clFbS" id="51DD0tdPFiL" role="9aQI4">
+                      <node concept="3clFbF" id="51DD0tdPFNU" role="3cqZAp">
+                        <node concept="2OqwBi" id="51DD0tdPFNV" role="3clFbG">
+                          <node concept="37vLTw" id="51DD0tdPFNW" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
+                          </node>
+                          <node concept="liA8E" id="51DD0tdPFNX" role="2OqNvi">
+                            <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
+                            <node concept="2ShNRf" id="51DD0tdPFNY" role="37wK5m">
+                              <node concept="1pGfFk" id="51DD0tdPFNZ" role="2ShVmc">
                                 <property role="373rjd" value="true" />
-                                <ref role="37wK5l" to="guwi:~PrintWriter.&lt;init&gt;(java.io.OutputStream)" resolve="PrintWriter" />
-                                <node concept="10M0yZ" id="51DD0tdPFO5" role="37wK5m">
-                                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
-                                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                                <ref role="37wK5l" to="7c1v:~LegacyXmlReportGeneratingListener.&lt;init&gt;(java.nio.file.Path,java.io.PrintWriter)" resolve="LegacyXmlReportGeneratingListener" />
+                                <node concept="2OqwBi" id="51DD0tdPFO0" role="37wK5m">
+                                  <node concept="37vLTw" id="51DD0tdPFO1" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="3OA_Uj9fdi_" resolve="testReportsDir" />
+                                  </node>
+                                  <node concept="liA8E" id="51DD0tdPFO2" role="2OqNvi">
+                                    <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
+                                  </node>
+                                </node>
+                                <node concept="2ShNRf" id="51DD0tdPFO3" role="37wK5m">
+                                  <node concept="1pGfFk" id="51DD0tdPFO4" role="2ShVmc">
+                                    <property role="373rjd" value="true" />
+                                    <ref role="37wK5l" to="guwi:~PrintWriter.&lt;init&gt;(java.io.OutputStream)" resolve="PrintWriter" />
+                                    <node concept="10M0yZ" id="51DD0tdPFO5" role="37wK5m">
+                                      <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                                      <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                                    </node>
+                                  </node>
                                 </node>
                               </node>
                             </node>
@@ -2917,50 +2950,64 @@
                   </node>
                 </node>
               </node>
+              <node concept="3y3z36" id="3OA_Uj9fdiQ" role="3clFbw">
+                <node concept="10Nm6u" id="3OA_Uj9fdiR" role="3uHU7w" />
+                <node concept="37vLTw" id="3OA_Uj9fdiS" role="3uHU7B">
+                  <ref role="3cqZAo" node="3OA_Uj9fdi_" resolve="testReportsDir" />
+                </node>
+              </node>
             </node>
-          </node>
-          <node concept="3y3z36" id="3OA_Uj9fdiQ" role="3clFbw">
-            <node concept="10Nm6u" id="3OA_Uj9fdiR" role="3uHU7w" />
-            <node concept="37vLTw" id="3OA_Uj9fdiS" role="3uHU7B">
-              <ref role="3cqZAo" node="3OA_Uj9fdi_" resolve="testReportsDir" />
+            <node concept="3clFbJ" id="3OA_Uj9hzDG" role="3cqZAp">
+              <node concept="3clFbS" id="3OA_Uj9hzDI" role="3clFbx">
+                <node concept="3clFbF" id="3OA_Uj9fdiT" role="3cqZAp">
+                  <node concept="2OqwBi" id="3OA_Uj9fdiU" role="3clFbG">
+                    <node concept="37vLTw" id="3OA_Uj9fdiV" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
+                    </node>
+                    <node concept="liA8E" id="3OA_Uj9fdiW" role="2OqNvi">
+                      <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
+                      <node concept="37vLTw" id="3OA_Uj9fdjb" role="37wK5m">
+                        <ref role="3cqZAo" node="3OA_Uj9fdj4" resolve="executionListener" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3y3z36" id="3OA_Uj9h_cV" role="3clFbw">
+                <node concept="10Nm6u" id="3OA_Uj9h_W2" role="3uHU7w" />
+                <node concept="37vLTw" id="3OA_Uj9h$s5" role="3uHU7B">
+                  <ref role="3cqZAo" node="3OA_Uj9fdj4" resolve="executionListener" />
+                </node>
+              </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3OA_Uj9hzDG" role="3cqZAp">
-          <node concept="3clFbS" id="3OA_Uj9hzDI" role="3clFbx">
-            <node concept="3clFbF" id="3OA_Uj9fdiT" role="3cqZAp">
-              <node concept="2OqwBi" id="3OA_Uj9fdiU" role="3clFbG">
-                <node concept="37vLTw" id="3OA_Uj9fdiV" role="2Oq$k0">
+            <node concept="3clFbF" id="3OA_Uj9fdiY" role="3cqZAp">
+              <node concept="2OqwBi" id="3OA_Uj9fdiZ" role="3clFbG">
+                <node concept="37vLTw" id="3OA_Uj9fdj0" role="2Oq$k0">
                   <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
                 </node>
-                <node concept="liA8E" id="3OA_Uj9fdiW" role="2OqNvi">
-                  <ref role="37wK5l" to="bws1:~Launcher.registerTestExecutionListeners(org.junit.platform.launcher.TestExecutionListener...)" resolve="registerTestExecutionListeners" />
-                  <node concept="37vLTw" id="3OA_Uj9fdjb" role="37wK5m">
-                    <ref role="3cqZAo" node="3OA_Uj9fdj4" resolve="executionListener" />
+                <node concept="liA8E" id="3OA_Uj9fdj1" role="2OqNvi">
+                  <ref role="37wK5l" to="bws1:~Launcher.execute(org.junit.platform.launcher.LauncherDiscoveryRequest,org.junit.platform.launcher.TestExecutionListener...)" resolve="execute" />
+                  <node concept="1rXfSq" id="3OA_Uj9fdj2" role="37wK5m">
+                    <ref role="37wK5l" node="HwplGM784G" resolve="buildRequest" />
+                    <node concept="37vLTw" id="3OA_Uj9fdja" role="37wK5m">
+                      <ref role="3cqZAo" node="3OA_Uj9fdj6" resolve="testClasses" />
+                    </node>
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="3OA_Uj9h_cV" role="3clFbw">
-            <node concept="10Nm6u" id="3OA_Uj9h_W2" role="3uHU7w" />
-            <node concept="37vLTw" id="3OA_Uj9h$s5" role="3uHU7B">
-              <ref role="3cqZAo" node="3OA_Uj9fdj4" resolve="executionListener" />
+          <node concept="3J1hQo" id="63PiL8Q0lW5" role="3J1_TS">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="session" />
+            <node concept="3uibUv" id="63PiL8Q0nby" role="1tU5fm">
+              <ref role="3uigEE" to="bws1:~LauncherSession" resolve="LauncherSession" />
             </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3OA_Uj9fdiY" role="3cqZAp">
-          <node concept="2OqwBi" id="3OA_Uj9fdiZ" role="3clFbG">
-            <node concept="37vLTw" id="3OA_Uj9fdj0" role="2Oq$k0">
-              <ref role="3cqZAo" node="3OA_Uj9fdil" resolve="launcher" />
-            </node>
-            <node concept="liA8E" id="3OA_Uj9fdj1" role="2OqNvi">
-              <ref role="37wK5l" to="bws1:~Launcher.execute(org.junit.platform.launcher.LauncherDiscoveryRequest,org.junit.platform.launcher.TestExecutionListener...)" resolve="execute" />
-              <node concept="1rXfSq" id="3OA_Uj9fdj2" role="37wK5m">
-                <ref role="37wK5l" node="HwplGM784G" resolve="buildRequest" />
-                <node concept="37vLTw" id="3OA_Uj9fdja" role="37wK5m">
-                  <ref role="3cqZAo" node="3OA_Uj9fdj6" resolve="testClasses" />
-                </node>
+            <node concept="2YIFZM" id="3OA_Uj9fdio" role="33vP2m">
+              <ref role="37wK5l" to="z4cc:~LauncherFactory.openSession(org.junit.platform.launcher.core.LauncherConfig)" resolve="openSession" />
+              <ref role="1Pybhc" to="z4cc:~LauncherFactory" resolve="LauncherFactory" />
+              <node concept="37vLTw" id="3OA_Uj9fdip" role="37wK5m">
+                <ref role="3cqZAo" node="3OA_Uj9fdhU" resolve="launcherConfig" />
               </node>
             </node>
           </node>
@@ -3091,8 +3138,9 @@
                 </node>
                 <node concept="liA8E" id="51DD0te2UxP" role="2OqNvi">
                   <ref role="37wK5l" to="z4cc:~LauncherDiscoveryRequestBuilder.configurationParameter(java.lang.String,java.lang.String)" resolve="configurationParameter" />
-                  <node concept="Xl_RD" id="51DD0te2UxQ" role="37wK5m">
-                    <property role="Xl_RC" value="junit.platform.output.capture.stdout" />
+                  <node concept="10M0yZ" id="6xO4sUWWRvH" role="37wK5m">
+                    <ref role="3cqZAo" to="bws1:~LauncherConstants.CAPTURE_STDOUT_PROPERTY_NAME" resolve="CAPTURE_STDOUT_PROPERTY_NAME" />
+                    <ref role="1PxDUh" to="bws1:~LauncherConstants" resolve="LauncherConstants" />
                   </node>
                   <node concept="Xl_RD" id="51DD0te2UxR" role="37wK5m">
                     <property role="Xl_RC" value="true" />
@@ -3101,8 +3149,9 @@
               </node>
               <node concept="liA8E" id="51DD0te2UxS" role="2OqNvi">
                 <ref role="37wK5l" to="z4cc:~LauncherDiscoveryRequestBuilder.configurationParameter(java.lang.String,java.lang.String)" resolve="configurationParameter" />
-                <node concept="Xl_RD" id="51DD0te2UxT" role="37wK5m">
-                  <property role="Xl_RC" value="junit.platform.output.capture.stderr" />
+                <node concept="10M0yZ" id="6xO4sUWX1mf" role="37wK5m">
+                  <ref role="3cqZAo" to="bws1:~LauncherConstants.CAPTURE_STDERR_PROPERTY_NAME" resolve="CAPTURE_STDERR_PROPERTY_NAME" />
+                  <ref role="1PxDUh" to="bws1:~LauncherConstants" resolve="LauncherConstants" />
                 </node>
                 <node concept="Xl_RD" id="51DD0te2UxU" role="37wK5m">
                   <property role="Xl_RC" value="true" />

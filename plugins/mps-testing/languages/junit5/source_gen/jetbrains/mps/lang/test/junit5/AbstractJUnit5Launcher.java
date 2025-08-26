@@ -10,8 +10,9 @@ import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
 import org.junit.platform.commons.PreconditionViolationException;
 import org.junit.platform.launcher.core.LauncherConfig;
-import org.junit.platform.launcher.Launcher;
+import org.junit.platform.launcher.LauncherSession;
 import org.junit.platform.launcher.core.LauncherFactory;
+import org.junit.platform.launcher.Launcher;
 import java.io.File;
 import org.junit.platform.reporting.open.xml.OpenTestReportGeneratingListener;
 import org.junit.platform.reporting.legacy.xml.LegacyXmlReportGeneratingListener;
@@ -23,6 +24,7 @@ import org.junit.platform.engine.DiscoverySelector;
 import org.junit.platform.engine.discovery.DiscoverySelectors;
 import java.util.stream.Collectors;
 import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.launcher.LauncherConstants;
 
 public abstract class AbstractJUnit5Launcher {
 
@@ -68,23 +70,25 @@ public abstract class AbstractJUnit5Launcher {
     LauncherConfig.Builder builder = LauncherConfig.builder().enableTestEngineAutoRegistration(true).enablePostDiscoveryFilterAutoRegistration(false).enableLauncherSessionListenerAutoRegistration(false).enableLauncherDiscoveryListenerAutoRegistration(false).enableTestExecutionListenerAutoRegistration(false);
     LauncherConfig launcherConfig = builder.build();
 
-    Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
-    if (isRunningOnTeamCity()) {
-      launcher.registerTestExecutionListeners(createTestExecutionListener());
-    }
-    File testReportsDir = getTestReportsDir();
-    if (testReportsDir != null) {
-      if (isOpenTestReport()) {
-        launcher.registerTestExecutionListeners(new OpenTestReportGeneratingListener());
-
-      } else {
-        launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(testReportsDir.toPath(), new PrintWriter(System.out)));
+    try (LauncherSession session = LauncherFactory.openSession(launcherConfig)) {
+      Launcher launcher = session.getLauncher();
+      if (isRunningOnTeamCity()) {
+        launcher.registerTestExecutionListeners(createTestExecutionListener());
       }
+      File testReportsDir = getTestReportsDir();
+      if (testReportsDir != null) {
+        if (isOpenTestReport()) {
+          launcher.registerTestExecutionListeners(new OpenTestReportGeneratingListener());
+
+        } else {
+          launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(testReportsDir.toPath(), new PrintWriter(System.out)));
+        }
+      }
+      if (executionListener != null) {
+        launcher.registerTestExecutionListeners(executionListener);
+      }
+      launcher.execute(buildRequest(testClasses));
     }
-    if (executionListener != null) {
-      launcher.registerTestExecutionListeners(executionListener);
-    }
-    launcher.execute(buildRequest(testClasses));
   }
 
   protected JUnit5TestExecutionListener createTestExecutionListener() {
@@ -94,7 +98,7 @@ public abstract class AbstractJUnit5Launcher {
   private LauncherDiscoveryRequest buildRequest(final Collection<Class<?>> testClasses) {
     List<DiscoverySelector> testSelectors = testClasses.stream().map((Class<?> testClass) -> DiscoverySelectors.selectClass(testClass)).collect(Collectors.<DiscoverySelector>toList());
 
-    LauncherDiscoveryRequestBuilder requestBuilder = LauncherDiscoveryRequestBuilder.request().selectors(testSelectors).configurationParameter("junit.platform.output.capture.stdout", "true").configurationParameter("junit.platform.output.capture.stderr", "true");
+    LauncherDiscoveryRequestBuilder requestBuilder = LauncherDiscoveryRequestBuilder.request().selectors(testSelectors).configurationParameter(LauncherConstants.CAPTURE_STDOUT_PROPERTY_NAME, "true").configurationParameter(LauncherConstants.CAPTURE_STDERR_PROPERTY_NAME, "true");
     File testReportsDir = getTestReportsDir();
     if (testReportsDir != null && isOpenTestReport()) {
       requestBuilder = requestBuilder.configurationParameter("junit.platform.reporting.open.xml.enabled", "true").configurationParameter("junit.platform.reporting.output.dir", testReportsDir.getAbsolutePath());
