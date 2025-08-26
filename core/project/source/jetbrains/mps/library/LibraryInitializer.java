@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.FileRefresh;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
 import java.util.ArrayList;
@@ -73,19 +74,6 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
     myModuleDescriptorIO = moduleDescriptorIO;
   }
 
-  /**
-   * EDT is required
-   * @deprecated use {@link #load(List)} instead
-   */
-  @Override
-@Deprecated(since = "2017.3", forRemoval = true)
-  public void loadRefreshed(List<LibraryContributor> contributors) {
-    for (LibraryContributor contributor : contributors) {
-      addContributor(contributor);
-    }
-    update(true);
-  }
-
   @Override
   public void load(List<LibraryContributor> contributors) {
     for (LibraryContributor contributor : contributors) {
@@ -103,9 +91,10 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
   }
 
   /**
-   * @deprecated please use one-step loading methods: {@link #loadRefreshed} or {@link #load}
+   * To add contributors, use {@link #load}. This method is intended for MPS internal use when there's need to force re-load
+   * of existing contributors (e.g. due to FS/configuration change)
    */
-  @Deprecated
+  @Internal
   public void update() {
     update(false);
   }
@@ -117,12 +106,10 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
    *                     FIXME need to get rid of that synchronous refreshLibRoots
    *
    */
-  @Deprecated
-  public void update(final boolean refreshFiles) {
+  private void update(final boolean refreshFiles) {
     myModelAccess.runWriteAction(() -> {
       final Set<SLibrary> currentLibs = new HashSet<>();
-      List<LibraryContributor> contributors = myContributors;
-      for (LibraryContributor contributor : contributors) {
+      for (LibraryContributor contributor : myContributors) {
         // XXX FWIW, it's only BootstrapLibraryContributor that tells hiddenLanguages==true
         boolean hidden = contributor.hiddenLanguages();
         for (LibDescriptor pathDescriptor : contributor.getPaths()) {
@@ -178,19 +165,11 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
 
   //----------bootstrap modules
 
-  /**
-   * Please use one-step version to load modules from disk to MPS {@link #load(List)} or {@link #loadRefreshed(List)}
-   */
-  @Deprecated
   private void addContributor(@NotNull LibraryContributor c) {
     LOG.info("Adding libraries from " + c.getClass().getSimpleName());
     myContributors.add(c);
   }
 
-  /**
-   * Please use one-step version to unload modules from MPS {@link #unload(List)}
-   */
-  @Deprecated
   private void removeContributor(@NotNull LibraryContributor c) {
     LOG.info("Removing libraries from " + c.getClass().getSimpleName());
     myContributors.remove(c);
