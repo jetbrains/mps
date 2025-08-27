@@ -15,6 +15,7 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.smodel.SModelStereotype;
 import org.junit.platform.engine.DiscoverySelector;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import org.junit.platform.engine.discovery.DiscoverySelectors;
@@ -60,10 +61,16 @@ public class TestDiscoveryContributor implements JUnit5TestContributor {
           continue;
         }
         if (testModule.getFacet(TestsFacet.class) == null) {
-          if (false == testModule instanceof Generator) {
-            myWorkerCallback.info(String.format("Module %s doesn't have 'tests' facet, skipped", testModule.getModuleName()));
+          if (testModule instanceof Generator) {
+            // don't expect test models there, just go on silently
+            continue;
           }
-          continue;
+          if (testModule.getModels(SModelStereotype::isTestModel).isEmpty()) {
+            continue;
+          }
+
+          myWorkerCallback.warning(String.format("Module %s doesn't have 'tests' facet, but got @tests models. Please add Tests facet to the module. MPS will ignore modules without the facet in upcoming releases", testModule.getModuleName()));
+          // fall-through
         }
         discovery.surveyModule(testModule);
       }

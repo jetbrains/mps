@@ -3509,47 +3509,109 @@
                       </node>
                       <node concept="3clFbJ" id="1G0B_lkGTVu" role="3cqZAp">
                         <node concept="3clFbS" id="1G0B_lkGTVv" role="3clFbx">
-                          <node concept="3clFbJ" id="1G0B_lkGTVw" role="3cqZAp">
-                            <node concept="3clFbS" id="1G0B_lkGTVx" role="3clFbx">
-                              <node concept="3clFbF" id="1G0B_lkGTVy" role="3cqZAp">
-                                <node concept="2OqwBi" id="1G0B_lkGTVz" role="3clFbG">
-                                  <node concept="37vLTw" id="1G0B_lkGTV$" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
+                          <node concept="3clFbJ" id="7lll8WICLnv" role="3cqZAp">
+                            <node concept="3clFbS" id="7lll8WICLnx" role="3clFbx">
+                              <node concept="3SKdUt" id="7lll8WICTGS" role="3cqZAp">
+                                <node concept="1PaTwC" id="7lll8WICTGT" role="1aUNEU">
+                                  <node concept="3oM_SD" id="7lll8WICW6e" role="1PaTwD">
+                                    <property role="3oM_SC" value="don't" />
                                   </node>
-                                  <node concept="liA8E" id="1G0B_lkGTV_" role="2OqNvi">
-                                    <ref role="37wK5l" to="4f8w:7MSVDs2AdYS" resolve="info" />
-                                    <node concept="2OqwBi" id="1G0B_lkGTVA" role="37wK5m">
-                                      <node concept="Xl_RD" id="1G0B_lkGTVB" role="2Oq$k0">
-                                        <property role="Xl_RC" value="Module %s doesn't have 'tests' facet, skipped" />
+                                  <node concept="3oM_SD" id="7lll8WICZSq" role="1PaTwD">
+                                    <property role="3oM_SC" value="expect" />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID1h1" role="1PaTwD">
+                                    <property role="3oM_SC" value="test" />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID2DR" role="1PaTwD">
+                                    <property role="3oM_SC" value="models" />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID2E7" role="1PaTwD">
+                                    <property role="3oM_SC" value="there," />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID2E8" role="1PaTwD">
+                                    <property role="3oM_SC" value="just" />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID42Y" role="1PaTwD">
+                                    <property role="3oM_SC" value="go" />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID5r_" role="1PaTwD">
+                                    <property role="3oM_SC" value="on" />
+                                  </node>
+                                  <node concept="3oM_SD" id="7lll8WID5rA" role="1PaTwD">
+                                    <property role="3oM_SC" value="silently" />
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3N13vt" id="1G0B_lkGTVL" role="3cqZAp" />
+                            </node>
+                            <node concept="2ZW3vV" id="7lll8WICOoF" role="3clFbw">
+                              <node concept="3uibUv" id="7lll8WICQQz" role="2ZW6by">
+                                <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
+                              </node>
+                              <node concept="37vLTw" id="7lll8WICMQx" role="2ZW6bz">
+                                <ref role="3cqZAo" node="1G0B_lkGTV5" resolve="testModule" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbJ" id="7lll8WICp2B" role="3cqZAp">
+                            <node concept="3clFbS" id="7lll8WICp2D" role="3clFbx">
+                              <node concept="3N13vt" id="7lll8WIDcb9" role="3cqZAp" />
+                            </node>
+                            <node concept="2OqwBi" id="7lll8WICCCE" role="3clFbw">
+                              <node concept="2OqwBi" id="7lll8WICuf6" role="2Oq$k0">
+                                <node concept="37vLTw" id="7lll8WICsLI" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="1G0B_lkGTV5" resolve="testModule" />
+                                </node>
+                                <node concept="liA8E" id="7lll8WICvTt" role="2OqNvi">
+                                  <ref role="37wK5l" to="lui2:~SModule.getModels(java.util.function.Predicate)" resolve="getModels" />
+                                  <node concept="37Ijox" id="7lll8WICzM1" role="37wK5m">
+                                    <ref role="37Ijqf" to="w1kc:~SModelStereotype.isTestModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isTestModel" />
+                                    <node concept="2FaPjH" id="7lll8WICzM3" role="wWaWy">
+                                      <node concept="3uibUv" id="7lll8WICzM4" role="2FaQuo">
+                                        <ref role="3uigEE" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
                                       </node>
-                                      <node concept="2cAKMz" id="1G0B_lkGTVC" role="2OqNvi">
-                                        <node concept="2OqwBi" id="1G0B_lkGTVD" role="2cAKU6">
-                                          <node concept="37vLTw" id="1G0B_lkGTVE" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="1G0B_lkGTV5" resolve="testModule" />
-                                          </node>
-                                          <node concept="liA8E" id="1G0B_lkGTVF" role="2OqNvi">
-                                            <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
-                                          </node>
-                                        </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="liA8E" id="7lll8WICE_U" role="2OqNvi">
+                                <ref role="37wK5l" to="33ny:~Collection.isEmpty()" resolve="isEmpty" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbH" id="7lll8WIDgvd" role="3cqZAp" />
+                          <node concept="3clFbF" id="1G0B_lkGTVy" role="3cqZAp">
+                            <node concept="2OqwBi" id="1G0B_lkGTVz" role="3clFbG">
+                              <node concept="37vLTw" id="1G0B_lkGTV$" role="2Oq$k0">
+                                <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
+                              </node>
+                              <node concept="liA8E" id="1G0B_lkGTV_" role="2OqNvi">
+                                <ref role="37wK5l" to="4f8w:7MSVDs2AenN" resolve="warning" />
+                                <node concept="2OqwBi" id="1G0B_lkGTVA" role="37wK5m">
+                                  <node concept="Xl_RD" id="1G0B_lkGTVB" role="2Oq$k0">
+                                    <property role="Xl_RC" value="Module %s doesn't have 'tests' facet, but got @tests models. Please add Tests facet to the module. MPS will ignore modules without the facet in upcoming releases" />
+                                  </node>
+                                  <node concept="2cAKMz" id="1G0B_lkGTVC" role="2OqNvi">
+                                    <node concept="2OqwBi" id="1G0B_lkGTVD" role="2cAKU6">
+                                      <node concept="37vLTw" id="1G0B_lkGTVE" role="2Oq$k0">
+                                        <ref role="3cqZAo" node="1G0B_lkGTV5" resolve="testModule" />
+                                      </node>
+                                      <node concept="liA8E" id="1G0B_lkGTVF" role="2OqNvi">
+                                        <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
                                       </node>
                                     </node>
                                   </node>
                                 </node>
                               </node>
                             </node>
-                            <node concept="3clFbC" id="1G0B_lkGTVG" role="3clFbw">
-                              <node concept="3clFbT" id="1G0B_lkGTVH" role="3uHU7B" />
-                              <node concept="2ZW3vV" id="1G0B_lkGTVI" role="3uHU7w">
-                                <node concept="3uibUv" id="1G0B_lkGTVJ" role="2ZW6by">
-                                  <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
-                                </node>
-                                <node concept="37vLTw" id="1G0B_lkGTVK" role="2ZW6bz">
-                                  <ref role="3cqZAo" node="1G0B_lkGTV5" resolve="testModule" />
-                                </node>
+                          </node>
+                          <node concept="3SKdUt" id="7lll8WIDhWj" role="3cqZAp">
+                            <node concept="1PaTwC" id="7lll8WIDhWk" role="1aUNEU">
+                              <node concept="3oM_SD" id="7lll8WIDhWl" role="1PaTwD">
+                                <property role="3oM_SC" value="fall-through" />
                               </node>
                             </node>
                           </node>
-                          <node concept="3N13vt" id="1G0B_lkGTVL" role="3cqZAp" />
                         </node>
                         <node concept="3clFbC" id="1G0B_lkGTVM" role="3clFbw">
                           <node concept="10Nm6u" id="1G0B_lkGTVN" role="3uHU7w" />
