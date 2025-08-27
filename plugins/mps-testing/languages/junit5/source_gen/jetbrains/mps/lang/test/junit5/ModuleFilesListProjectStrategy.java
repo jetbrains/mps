@@ -17,6 +17,9 @@ import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
+/**
+ * Not in use (test launcher no longer loads test modules into a project to discover test classes), perhaps, shall drop this one
+ */
 public class ModuleFilesListProjectStrategy extends ProjectStrategyBase {
 
   private final List<String> myModuleDirs;
@@ -32,6 +35,8 @@ public class ModuleFilesListProjectStrategy extends ProjectStrategyBase {
   protected Project construct(@NotNull ComponentHost mpsPlatform, @NotNull Project emptyProject) {
     // https://youtrack.jetbrains.com/issue/MPS-24778
     VfsRootAccess.allowRootAccess(ApplicationManager.getApplication(), myModuleDirs.toArray(new String[myModuleDirs.size()]));
+    // FTR, there's TestRootAccessInsight that does the same. However, with the next code explicitly using java.io.File, do we
+    //     still need to facilitate root access, I wonder.
 
     // use plain java.io-backed FS as we don't need anything but raw contents of these module jars, no change tracking or caching
     IFileSystem localFS = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);

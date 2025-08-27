@@ -27,12 +27,17 @@ import jetbrains.mps.tool.run.ModuleClassCode;
 import java.util.Optional;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
 
   private static final String LAUNCHER_CLASS = "jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher";
   private static final String LAUNCHER_SOLUTION = "c234a56a-502f-4751-aded-6f9846fff7ce(jetbrains.mps.lang.test.junit5)";
   private static final String LAUNCHER_METHOD = "launchTests";
+
+  public static final String TEST_REPORTS_DIR = "launchtests.testReportsDir";
+  public static final String TEST_REPORTS_OPENTEST = "launchtests.testReportsOpenTest";
+
 
   private boolean myForceFailOnError = false;
 
@@ -43,6 +48,8 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
   @Override
   protected Environment createEnvironment() {
     EnvironmentConfig config = createEnvironmentConfig(myWhatToDo).withTestModeOn();
+    // XXX perhaps, it's better to add myWhatToDo.getModules() into config here
+    //    than to deal with LibraryInitializer explicitly later?
     IdeaEnvironment environment = new IdeaEnvironment(config);
     environment.init();
     return environment;
@@ -78,43 +85,60 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
     ModuleClassCode code = new ModuleClassCode(LAUNCHER_SOLUTION);
     try {
       code.load(myEnvironment.getPlatform(), LAUNCHER_CLASS);
-      Optional<Constructor<?>> ctor = code.cons(Script.class, Environment.class, TestData.class, WorkerCallback.class);
+      Optional<Constructor<?>> ctor = code.cons(Environment.class, TestData.class, WorkerCallback.class, File.class);
       Optional<Method> meth = code.instanceMethod(LAUNCHER_METHOD);
       method.set(meth.get());
 
       if (ctor.isPresent() && meth.isPresent()) {
-        object.set(ctor.get().newInstance(myWhatToDo, myEnvironment, testData, this));
+        object.set(ctor.get().newInstance(myEnvironment, testData, this, getTestProjectDir()));
 
       } else {
-        if (!(ctor.isPresent())) {
-          error("not found constructor in " + LAUNCHER_CLASS);
+        if (ctor.isEmpty()) {
+          fatal("not found constructor in " + LAUNCHER_CLASS, null);
         } else {
-          error("not found method " + LAUNCHER_METHOD + " in " + LAUNCHER_CLASS);
+          fatal(String.format("not found method %s in %s", LAUNCHER_METHOD, LAUNCHER_CLASS), null);
         }
       }
 
     } catch (ClassNotFoundException e) {
-      error("not found class " + LAUNCHER_CLASS + " among classes of " + LAUNCHER_SOLUTION, e);
-
+      fatal(String.format("not found class %s among classes of %s", LAUNCHER_CLASS, LAUNCHER_SOLUTION), e);
     } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
-      error("unexpected error ", e);
+      fatal("unexpected error ", e);
     }
 
-    if (method.get() != null && object.get() != null) {
-      try {
+    try {
+      if (method.get() != null && object.get() != null) {
+        if (myWhatToDo.getProperty("teamcity.version") != null) {
+          Optional<Method> r = code.instanceMethod("teamcityReport");
+          if (r.isPresent()) {
+            r.get().invoke(object.get());
+          } else {
+            warning("Can't request TeamCity reporting");
+          }
+        }
+        File testReportsDir = getTestReportsDir();
+        if (testReportsDir != null) {
+          String cfgMethod = (Boolean.parseBoolean(myWhatToDo.getProperty(TEST_REPORTS_OPENTEST)) ? "opentestReport" : "legacyXmlReport");
+          Optional<Method> r = code.instanceMethod(cfgMethod, File.class);
+          if (r.isPresent()) {
+            r.get().invoke(object.get(), testReportsDir);
+          } else {
+            warning(String.format("Can't request test reporting to %s", testReportsDir));
+          }
+        }
+
         Object retVal = method.get().invoke(object.get());
         if (retVal instanceof Integer) {
           if ((Integer) retVal > 0) {
             failBuild();
           }
-        } else {
         }
-
-      } catch (InvocationTargetException | IllegalAccessException e) {
-        error("unexpected error ", e);
-        failBuild();
+      } else {
+        fatal("failed to instantiate MPS code counterpart", null);
       }
-    } else {
+    } catch (InvocationTargetException | IllegalAccessException e) {
+      fatal("unexpected error ", e);
+    } finally {
       failBuild();
     }
   }
@@ -137,6 +161,37 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
   private void failBuild() {
     failBuild("launchtests");
   }
+
+  private File getTestReportsDir() {
+    String property = myWhatToDo.getProperty(TEST_REPORTS_DIR);
+    if (property == null) {
+      return null;
+    }
+    File dir = new File(property);
+    if (!(dir.exists())) {
+      if (!(dir.mkdirs())) {
+        error("could not create directory for test reports: " + dir.getAbsolutePath());
+        return null;
+      }
+    }
+    if (!(dir.isDirectory())) {
+      error("not a directory: " + dir.getAbsolutePath());
+      return null;
+    }
+    return dir;
+  }
+
+  private File getTestProjectDir() {
+    List<File> projectDirectories = myWhatToDo.getProjectDirectories();
+    if (!(projectDirectories.isEmpty())) {
+      if (projectDirectories.size() > 1) {
+        error("only one project directory can be specified:" + projectDirectories, new IllegalStateException());
+      }
+      return projectDirectories.get(0);
+    }
+    return null;
+  }
+
 
   public static void main(String[] args) {
     new LaunchTestWorker(Script.fromDumpInFile(new File(args[0]))).workFromMain();
