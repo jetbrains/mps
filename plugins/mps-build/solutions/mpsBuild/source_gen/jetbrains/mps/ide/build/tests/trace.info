@@ -2,12 +2,12 @@
 <debug-info version="2">
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/141865155246494254">
     <file name="mpsDataFlow.xml">
-      <unit id="141865155246494254" at="1,0,799,10" name="jetbrains.mps.ide.build.tests.mpsDataFlow" />
+      <unit id="141865155246494254" at="1,0,802,10" name="jetbrains.mps.ide.build.tests.mpsDataFlow" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/1889888958307906528">
     <file name="mpsKotlin.xml">
-      <unit id="1889888958307906528" at="1,0,485,10" name="jetbrains.mps.ide.build.tests.mpsKotlin" />
+      <unit id="1889888958307906528" at="1,0,491,10" name="jetbrains.mps.ide.build.tests.mpsKotlin" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/2085316548396374793">

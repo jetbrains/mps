@@ -2422,7 +2422,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.multiple.tests" />
         <property role="3LESm3" value="3c41aa01-5120-470c-8122-06f284bc0419" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="3rtmxn" id="EpEP7iiijJ" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiijK" role="3rtmxm">
@@ -2503,7 +2503,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.tests" />
         <property role="3LESm3" value="7597197a-bad8-4672-9806-215a3efe8740" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="3rtmxn" id="EpEP7iihQq" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihQr" role="3rtmxm">
@@ -2611,7 +2611,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.editor.ide.tests" />
         <property role="3LESm3" value="ffd5bec8-b3f8-478a-81d2-95f525dcdc97" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="55IIr" id="24G41jEwC70" role="3LF7KH">
           <node concept="2Ry0Ak" id="24G41jEwCdI" role="iGT6I">
@@ -3720,7 +3720,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.baseLanguage.tuples.test" />
         <property role="3LESm3" value="993e3b08-9f44-43cf-b983-e474ac66855b" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="55IIr" id="QfMQtuJPwo" role="3LF7KH">
           <node concept="2Ry0Ak" id="QfMQtuJPwp" role="iGT6I">
@@ -3791,7 +3791,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="collections_unittest" />
         <property role="3LESm3" value="39a1a79d-8ae2-4e54-a86a-8f7b9e17e2fe" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="55IIr" id="QfMQtuMyro" role="3LF7KH">
           <node concept="2Ry0Ak" id="QfMQtuMyrp" role="iGT6I">
@@ -3926,7 +3926,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="collections_trove.test" />
         <property role="3LESm3" value="fb186431-2788-490b-9e84-c2b84ef0ca77" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="55IIr" id="QfMQtuMyuT" role="3LF7KH">
           <node concept="2Ry0Ak" id="QfMQtuMyuU" role="iGT6I">
@@ -6833,7 +6833,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.smodel.unittest" />
         <property role="3LESm3" value="d51c8d2d-7b6e-4d93-9eee-b55b04c5886b" />
-        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
+        <property role="aoJFB" value="eYcmk9QOli/sources" />
         <property role="ZpmtF" value="true" />
         <node concept="55IIr" id="5oxhKpzUPAd" role="3LF7KH">
           <node concept="2Ry0Ak" id="5oxhKpzUPCj" role="iGT6I">
@@ -15635,26 +15635,6 @@
             </node>
           </node>
         </node>
-        <node concept="3yLZsm" id="4MTm4DjcSvO" role="3yL2VB">
-          <property role="3yLZsk" value="lib/hamcrest-library-1.3-sources.jar" />
-          <node concept="55IIr" id="4MTm4DjcSvP" role="3yLZsn">
-            <node concept="2Ry0Ak" id="4MTm4DjcSvQ" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcSvR" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcSvS" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcSvT" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcSy5" role="2Ry0An">
-                      <property role="2Ry0Am" value="hamcrest-library-1.3-sources.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3yLZsm" id="4MTm4DjcSns" role="3yL2VB">
           <property role="3yLZsk" value="lib/jmock-2.8.2.jar" />
           <node concept="55IIr" id="4MTm4DjcSnt" role="3yLZsn">
@@ -15675,26 +15655,6 @@
             </node>
           </node>
         </node>
-        <node concept="3yLZsm" id="4MTm4DjcSBA" role="3yL2VB">
-          <property role="3yLZsk" value="lib/jmock-2.8.2-sources.jar" />
-          <node concept="55IIr" id="4MTm4DjcSBB" role="3yLZsn">
-            <node concept="2Ry0Ak" id="4MTm4DjcSBC" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcSBD" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcSBE" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcSBF" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcSH7" role="2Ry0An">
-                      <property role="2Ry0Am" value="jmock-2.8.2-sources.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3yLZsm" id="4MTm4DjcSKN" role="3yL2VB">
           <property role="3yLZsk" value="lib/jmock-junit4-2.8.2.jar" />
           <node concept="55IIr" id="4MTm4DjcSKO" role="3yLZsn">
@@ -15708,26 +15668,6 @@
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="4MTm4DjcSNi" role="2Ry0An">
                       <property role="2Ry0Am" value="jmock-junit4-2.8.2.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3yLZsm" id="4MTm4DjcSP9" role="3yL2VB">
-          <property role="3yLZsk" value="lib/jmock-junit4-2.8.2-sources.jar" />
-          <node concept="55IIr" id="4MTm4DjcSPa" role="3yLZsn">
-            <node concept="2Ry0Ak" id="4MTm4DjcSPb" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcSPc" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcSPd" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcSPe" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcST0" role="2Ry0An">
-                      <property role="2Ry0Am" value="jmock-junit4-2.8.2-sources.jar" />
                     </node>
                   </node>
                 </node>
@@ -16154,6 +16094,7 @@
         <property role="TrG5h" value="jetbrains.mps.kotlin.tests.misc" />
         <property role="3LESm3" value="e61a5b64-d5f3-4672-bf84-a75e1bd7e346" />
         <property role="ZpmtF" value="true" />
+        <property role="aoJFB" value="eYcmk9QOlj/sources_and_tests" />
         <node concept="55IIr" id="7GnJkgHG4JU" role="3LF7KH">
           <node concept="2Ry0Ak" id="7GnJkgHG4JV" role="iGT6I">
             <property role="2Ry0Am" value="plugins" />

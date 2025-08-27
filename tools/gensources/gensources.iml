@@ -231,7 +231,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/html/jetbrains.mps.lang.css/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/html/jetbrains.mps.lang.html/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/html/jetbrains.mps.lang.html/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../languages/util/html/jetbrains.mps.lang.html/test/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/util/html/jetbrains.mps.lang.html/test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/makeup/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/regexp/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/regexp/solutions/jetbrains.mps.baseLanguage.regexp.runtime/source_gen" isTestSource="false" />
@@ -784,8 +784,8 @@
     <content url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.smodel.runtime/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.editor/test_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.misc/test_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.smodel.runtime/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.tests.editor/classes_gen" />
@@ -1300,6 +1300,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDataFlow/languages/testExtendingAnalyzer/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDataFlow/solutions/analyzers.test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDataFlow/solutions/lang.rt.test/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDataFlow/solutions/lang.rt.test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDefaultEditor/languages/editor.languageForDeletedConcepts/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDefaultEditor/languages/testDefaultEditor/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testDepViewer/test_gen" isTestSource="false" />
@@ -1308,7 +1309,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigration/languages/jetbrains.mps.test.testMigration/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigration/languages/jetbrains.mps.test.testMigration/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testModelRenaming/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testModelRenaming/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMoveElements/languages/testMoveElements/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testPackaged/testPackagedLanguage.test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testPackaged/testPackagedLanguage/source_gen" isTestSource="false" />

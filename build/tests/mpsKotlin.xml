@@ -276,6 +276,7 @@
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" />
+        <pathelement path="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/test_gen/" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -346,6 +347,7 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.misc">
       <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -360,6 +362,7 @@
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
+        <pathelement path="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/test_gen/" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -433,6 +436,7 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.editor">
       <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -481,5 +485,7 @@
   <target name="cleanSources">
     <delete dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" />
     <delete dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" />
+    <delete dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/test_gen" />
+    <delete dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/test_gen" />
   </target>
 </project>

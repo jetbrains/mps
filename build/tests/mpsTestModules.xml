@@ -957,6 +957,7 @@
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testModelRenaming/source_gen" />
+        <pathelement path="${basedir}/testbench/modules/testModelRenaming/test_gen/" />
       </src>
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
@@ -1022,6 +1023,7 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/testModelRenaming">
       <fileset dir="${basedir}/testbench/modules/testModelRenaming/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testModelRenaming/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1087,6 +1089,7 @@
     <delete dir="${basedir}/testbench/testsolutions/JavaCompilationXmlConflict.test/test_gen" />
     <delete dir="${basedir}/testbench/testsolutions/smodel.transient/transients.test/test_gen" />
     <delete dir="${basedir}/testbench/modules/testFindUsages/test_gen" />
+    <delete dir="${basedir}/testbench/modules/testModelRenaming/test_gen" />
     <delete dir="${basedir}/testbench/modules/testPersistence/test_gen" />
   </target>
 </project>

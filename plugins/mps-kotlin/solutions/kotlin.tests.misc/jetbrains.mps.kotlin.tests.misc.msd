@@ -9,6 +9,7 @@
     <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
+    <facet type="tests" />
   </facets>
   <dependencies>
     <dependency reexport="false">398d67d2-c2e9-11e2-ad49-6cf049e62ea4(jetbrains.mps.kotin.ui.dsl)</dependency>

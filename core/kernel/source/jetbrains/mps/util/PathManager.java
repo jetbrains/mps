@@ -61,7 +61,7 @@ public final class PathManager {
         sr = PathManager.class.getClassLoader().getResource(thisClassQualifiedFile);
       }
       thisClassURI = sr.toURI();
-      assert JAR_PROTO.equals(thisClassURI.getScheme());
+      assert JAR_PROTO.equals(thisClassURI.getScheme()) : thisClassURI;
       // FWIW, sr.getPath() == null
       String path = thisClassURI.getRawSchemeSpecificPart();
       int delim = path.indexOf("!/");
