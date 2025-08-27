@@ -5,6 +5,11 @@ package jetbrains.mps.baselanguage.unitTest.execution.launcher;
 import java.util.List;
 import org.junit.platform.engine.DiscoverySelector;
 
+/**
+ * My plan is to replace this one with a common JUnit5TestContributor from [mps-testing] plugin, although
+ * unlike this one, the other one lives in MPS CL and I hope I can this working (no-platform JUnit5 execution might
+ * end up as a duplicated code, after all)
+ */
 public interface JUnit5TestContributor {
   List<DiscoverySelector> collectSelectors() throws Exception;
 }

@@ -8823,6 +8823,23 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1wWWPEu9Bc9" role="1B3o_S" />
+    <node concept="3UR2Jj" id="1G0B_lkF4B$" role="lGtFl">
+      <node concept="TZ5HA" id="1G0B_lkF4B_" role="TZ5H$">
+        <node concept="1dT_AC" id="1G0B_lkF4BA" role="1dT_Ay">
+          <property role="1dT_AB" value="My plan is to replace this one with a common JUnit5TestContributor from [mps-testing] plugin, although" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1G0B_lkF98D" role="TZ5H$">
+        <node concept="1dT_AC" id="1G0B_lkF98E" role="1dT_Ay">
+          <property role="1dT_AB" value="unlike this one, the other one lives in MPS CL and I hope I can this working (no-platform JUnit5 execution might" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="1G0B_lkFebw" role="TZ5H$">
+        <node concept="1dT_AC" id="1G0B_lkFebx" role="1dT_Ay">
+          <property role="1dT_AB" value="end up as a duplicated code, after all)" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="6maaEP0G01l">
     <property role="TrG5h" value="DefaultTestExecutionListener" />
