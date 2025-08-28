@@ -17,6 +17,7 @@ public final class TestData {
   private static final String E_CONTAINER = "testcase";
   private static final String E_TEST = "test";
   private static final String A_QNAME = "fqn";
+  private static final String A_NAME = "name";
   private static final String A_PTR = "ptr";
   private static final String A_DISCOVER = "discover";
 
@@ -33,7 +34,7 @@ public final class TestData {
           TestContainerRecord tcr = new TestContainerRecord(tce.getAttributeValue(A_QNAME));
           mr.testCases.add(tcr);
           for (Element tre : tce.getChildren(E_TEST)) {
-            tcr.tests.add(new TestRecord(tre.getAttributeValue(A_QNAME)));
+            tcr.tests.add(new TestRecord(tre.getAttributeValue(A_NAME)));
           }
         }
       }
@@ -53,7 +54,7 @@ public final class TestData {
         tce.setAttribute(A_QNAME, tcr.qualifiedName);
         for (TestRecord tr : tcr.tests) {
           Element tre = new Element(E_TEST);
-          tre.setAttribute(A_QNAME, tr.qualifiedName);
+          tre.setAttribute(A_NAME, tr.name);
           tce.addContent(tre);
         }
         tme.addContent(tce);
@@ -79,6 +80,9 @@ public final class TestData {
 
   public static class TestContainerRecord {
     public final String qualifiedName;
+    /**
+     * no tests means "all tests in the class", otherwise only selected
+     */
     public final List<TestRecord> tests = new ArrayList<>();
 
     public TestContainerRecord(String qualifiedName) {
@@ -87,10 +91,11 @@ public final class TestData {
   }
 
   public static class TestRecord {
-    public final String qualifiedName;
+    public final String name;
 
-    public TestRecord(String qualifiedName) {
-      this.qualifiedName = qualifiedName;
+    public TestRecord(String testName) {
+      this.name = testName;
+      // if necessary to distinguish several test methods with the same name (JUnit5 DiscoverySelector allows that), could use parameters types as part of the name or add one more parameter 
     }
   }
 }

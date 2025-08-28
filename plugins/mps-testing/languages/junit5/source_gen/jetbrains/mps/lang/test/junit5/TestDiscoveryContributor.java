@@ -7,23 +7,25 @@ import jetbrains.mps.tool.common.TestData;
 import jetbrains.mps.lang.test.launcher.WorkerCallback;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
-import org.jetbrains.mps.openapi.module.SRepository;
+import org.junit.platform.engine.DiscoverySelector;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.junit.platform.engine.discovery.DiscoverySelectors;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelStereotype;
-import org.junit.platform.engine.DiscoverySelector;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import org.junit.platform.engine.discovery.DiscoverySelectors;
-import java.util.stream.Collectors;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 
 /**
- * Transforms {@link jetbrains.mps.tool.common.TestData } into JUnit5 selectors 
- * (now ClassSelector and MethodSelector, although we may end up with our own selectors, if we manage to add custom TestEngine)
+ * Transforms {@link jetbrains.mps.tool.common.TestData } into JUnit5 selectors, capable
+ *  to discover all tests in an MPS module, if requested ({@code TestData.ModuleRecord.autoDiscovery}
+ * <p>
+ * Now, we use ClassSelector and MethodSelector, although we may end up with our own selectors, if we manage to add custom TestEngine.
  */
 public class TestDiscoveryContributor implements JUnit5TestContributor {
   private final ComponentHost myPlatform;
@@ -37,13 +39,21 @@ public class TestDiscoveryContributor implements JUnit5TestContributor {
     myWorkerCallback = callback;
   }
 
-  /*package*/ List<Class<?>> discoverTestClasses(@NotNull final SRepository repository) throws Exception {
-    final List<Class<?>> testClasses = new ArrayList<>();
+  @Override
+  public List<DiscoverySelector> collectSelectors() throws Exception {
+    // FIXME resort to global repo (test modules come with code, hence expect them to show up there), however, shall 
+    //      access platform.find(LanguageRegistry).withModuleRuntime(modulePtr).loadClass() or findResource(), instead (especially when there's explicit list of tests in TestData, w/o auto-discovery)
+    // 
+    // XXX for whatever reason, can't parameterise toList(), only collect(Collectors) works
+    final MPSModuleRepository repository = myPlatform.findComponent(MPSModuleRepository.class);
+    final List<DiscoverySelector> tests = new ArrayList<>();
+
     final TestDiscoveryVisitor visitor = new TestDiscoveryVisitor() {
       @Override
       public void visitTestRoot(SNode testRootNode, String testClassName, ClassLoader moduleClassLoader) {
         try {
-          testClasses.add(moduleClassLoader.loadClass(testClassName));
+          // XXX I wonder if selectClass(CL, testClassName) would be smarter, to let JUnit deal with CNFE?
+          tests.add(DiscoverySelectors.selectClass(moduleClassLoader.loadClass(testClassName)));
 
         } catch (ClassNotFoundException e) {
           myWorkerCallback.fatal("error building test suite", e);
@@ -51,39 +61,66 @@ public class TestDiscoveryContributor implements JUnit5TestContributor {
       }
     };
     repository.getModelAccess().runReadAction(() -> {
-      TestDiscovery discovery = new TestDiscovery(myPlatform.findComponent(ClassLoaderManager.class), visitor);
+      final ClassLoaderManager clm = myPlatform.findComponent(ClassLoaderManager.class);
+      TestDiscovery discovery = new TestDiscovery(clm, visitor);
       PersistenceRegistry pf = myPlatform.findComponent(PersistenceRegistry.class);
 
       for (TestData.ModuleRecord tm : myTestPlan.testModules) {
         SModule testModule = pf.createModuleReference(tm.modulePtr).resolve(repository);
         if (testModule == null) {
-          myWorkerCallback.fatal("Can't find module %s in a repository", null);
+          myWorkerCallback.fatal(String.format("Can't find module %s in a repository", tm.modulePtr), null);
           continue;
         }
-        if (testModule.getFacet(TestsFacet.class) == null) {
-          if (testModule instanceof Generator) {
-            // don't expect test models there, just go on silently
+        if (tm.autoDiscovery) {
+          if (!(SModuleOperations.classesAvailableToMPS(testModule))) {
+            myWorkerCallback.warning(String.format("Test module %s is not capable to load classes, ignored", testModule.getModuleName()));
             continue;
           }
-          if (testModule.getModels(SModelStereotype::isTestModel).isEmpty()) {
-            continue;
-          }
+          boolean noTestFacetAndTestModels = false;
+          if (testModule.getFacet(TestsFacet.class) == null) {
+            if (testModule instanceof Generator) {
+              // don't expect test models there, just go on silently
+              continue;
+            }
+            if (!(testModule.getModels(SModelStereotype::isTestModel).isEmpty())) {
+              myWorkerCallback.warning(String.format("Module %s doesn't have 'Tests' facet, but got @tests models. Please add Tests facet to the module. MPS will ignore modules without the facet in future releases", testModule.getModuleName()));
+            } else {
+              noTestFacetAndTestModels = true;
+            }
 
-          myWorkerCallback.warning(String.format("Module %s doesn't have 'tests' facet, but got @tests models. Please add Tests facet to the module. MPS will ignore modules without the facet in upcoming releases", testModule.getModuleName()));
-          // fall-through
+            // fall-through, for compatibility with modules that got tests not in @tests models and don't bear Tests facet
+          }
+          final int presentTests = tests.size();
+          discovery.surveyModule(testModule);
+          if (noTestFacetAndTestModels && presentTests < tests.size()) {
+            myWorkerCallback.warning(String.format("Module %s got neither 'Tests' facet, nor @tests models, yet contributed %d tests. Please add Tests facet to the module. MPS will ignore modules without the facet in future releases", testModule.getModuleName(), tests.size() - presentTests));
+          }
+        } else {
+          // explicit set of tests
+          if (!(SModuleOperations.classesAvailableToMPS(testModule))) {
+            // if anyone explicitly listed tests from a module that doesn't support CL, it's a severe error. 
+            myWorkerCallback.fatal(String.format("Test module %s is not capable to load classes, ignored", testModule.getModuleName()), null);
+            continue;
+          }
+          MPSModuleClassLoader mpsCL = clm.getClassLoader(testModule);
+          for (TestData.TestContainerRecord tcr : tm.testCases) {
+            try {
+              Class<?> testClass = mpsCL.loadOwnClass(tcr.qualifiedName);
+              if (tcr.tests.isEmpty()) {
+                // XXX same as above, CL + name, perhaps?
+                tests.add(DiscoverySelectors.selectClass(testClass));
+              } else {
+                for (TestData.TestRecord tr : tcr.tests) {
+                  tests.add(DiscoverySelectors.selectMethod(testClass, tr.name));
+                }
+              }
+            } catch (Exception ex) {
+              myWorkerCallback.fatal(String.format("error building test suite for module %s", testModule.getModuleName()), ex);
+            }
+          }
         }
-        discovery.surveyModule(testModule);
       }
     });
-    return testClasses;
-  }
-
-  @Override
-  public List<DiscoverySelector> collectSelectors() throws Exception {
-    // FIXME resort to global repo (test modules come with code, hence expect them to show up there), however, shall 
-    //      access platform.find(LanguageRegistry).withModuleRuntime(modulePtr).loadClass() or findResource(), instead (especially when there's explicit list of tests in TestData, w/o auto-discovery)
-    // 
-    // XXX for whatever reason, can't parameterise toList(), only collect(Collectors) works
-    return discoverTestClasses(myPlatform.findComponent(MPSModuleRepository.class)).stream().map(DiscoverySelectors::selectClass).collect(Collectors.<DiscoverySelector>toList());
+    return tests;
   }
 }
