@@ -30583,6 +30583,13 @@
               </node>
             </node>
           </node>
+          <node concept="28jJK3" id="4O9pFxPfePa" role="39821P">
+            <node concept="55IIr" id="4O9pFxPfePb" role="28jJRO">
+              <node concept="2Ry0Ak" id="4O9pFxPfePc" role="iGT6I">
+                <property role="2Ry0Am" value="euaMps.html" />
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="20sUq0" id="3yx5FXANrXq" role="39821P">
           <property role="TrG5h" value="mps-tips.jar" />
@@ -42878,6 +42885,10 @@
     <property role="3GE5qa" value="ide.data" />
     <property role="26EafI" value="bin" />
     <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS ${version.major}.${version.minor}" />
+    <node concept="26Ea6D" id="1t_0ZyxyXAT" role="26FZ21">
+      <property role="2eq24a" value="true" />
+      <property role="26Ea6C" value="MPS no longer uses 32-bit version of mps.vmoptions" />
+    </node>
     <node concept="26Ea6D" id="6KekG3H$kFM" role="2hID6k">
       <property role="26Ea6C" value="Common IntelliJ Platform options:" />
       <property role="2eq24a" value="true" />
@@ -42967,10 +42978,6 @@
     <node concept="26Ea6D" id="2lwFGYOW7EZ" role="2hID6k">
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
-    </node>
-    <node concept="26Ea6D" id="1t_0ZyxyXAT" role="26FZ21">
-      <property role="2eq24a" value="true" />
-      <property role="26Ea6C" value="MPS no longer uses 32-bit version of mps.vmoptions" />
     </node>
     <node concept="26EafG" id="4nX__hM7qzi" role="26Ea7d">
       <property role="26EafJ" value="lib/annotations.jar" />

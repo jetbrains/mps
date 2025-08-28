@@ -1071,6 +1071,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="4O9pFxPg89J" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRtc" resolve="SimpleVmOptions" />
+                <node concept="2pJxcG" id="4O9pFxPg89K" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRtd" resolve="options" />
+                  <node concept="WxPPo" id="4O9pFxPg89L" role="28ntcv">
+                    <node concept="Xl_RD" id="4O9pFxPg89M" role="WxPPp">
+                      <property role="Xl_RC" value="-Dmps.eua.document.name=" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="3rleFKvpH23" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRtc" resolve="SimpleVmOptions" />
                 <node concept="2pJxcG" id="3rleFKvpH24" role="2pJxcM">

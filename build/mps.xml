@@ -109,6 +109,7 @@
       <fileset file="${basedir}/workbench/mps-icons/source/splash@2x.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/about@2x.png" />
       <fileset file="${basedir}/workbench/mps-icons/source/MPS_welcomeScreen@2x.png" />
+      <fileset file="${basedir}/euaMps.html" />
       <fileset dir="${build.tmp}/default/branding.jar" />
     </jar>
     <jar destfile="${build.layout}/lib/mps-tips.jar" duplicate="preserve">
