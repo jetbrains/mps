@@ -6,11 +6,14 @@ import jetbrains.mps.baselanguage.unitTest.execution.launcher.TestExecutor;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.ExecutorScript;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
-import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
+import jetbrains.mps.tool.common.TestData;
+import java.util.Map;
+import java.util.HashMap;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
+import jetbrains.mps.lang.test.launcher.WorkerCallback;
+import jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher;
+import java.io.File;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutionListener;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -29,19 +32,100 @@ public class CommandLineTestExecutor implements TestExecutor {
 
   @Override
   public void init() {
-    // FIXME similar override in JUnitInProcessRunStarter, need to unify
-    myTestExecutor = new JUnit5TestExecutor(new JUnit5ScriptTestContributor(myEnv, myExecScript.getTests()), true) {
-      @Override
-      protected void executeSafe() throws Throwable {
-        TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnv).withSystemProperty(SystemProperties.PROJECT_PATH, myExecScript.getProjectUrl());
-        TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
-        try {
-          super.executeSafe();
-        } finally {
-          TestPlatform.getInstance().closeSession(testSession);
+    final TestData testPlan = new TestData();
+    for (ExecutorScript.TestRecord tr : myExecScript.getTests()) {
+      final TestData.ModuleRecord mr = new TestData.ModuleRecord(tr.myTestModule, false);
+      testPlan.testModules.add(mr);
+      Map<String, TestData.TestContainerRecord> class2record = new HashMap<>();
+      for (int i = 0, x = tr.myTestQualifiedName.size(); i < x; i++) {
+        String qualifiedName = tr.myTestQualifiedName.get(i);
+        final boolean isTestCase = Boolean.parseBoolean(tr.isTestCase.get(i));
+        TestData.TestContainerRecord tcr;
+        final String testClassName;
+        final String testMethod;
+        if (isTestCase) {
+          testClassName = qualifiedName;
+          testMethod = null;
+        } else {
+          int index = qualifiedName.lastIndexOf('.');
+          testClassName = qualifiedName.substring(0, index);
+          testMethod = qualifiedName.substring(index + 1);
+        }
+        tcr = class2record.computeIfAbsent(testClassName, (qn) -> {
+          TestData.TestContainerRecord rv = new TestData.TestContainerRecord(qn);
+          mr.testCases.add(rv);
+          return rv;
+        });
+        if (testMethod != null) {
+          tcr.tests.add(new TestData.TestRecord(testMethod));
         }
       }
+    }
+
+    // FIXME similar override in JUnitInProcessRunStarter, need to unify
+    // FIXME figure out if all this mangling with stdout/stderr output is necessary, if I can produce event by other means (e.g. file or another stream/pipe?)
+    //      anyway, the exec listener that dumps to stdout/another stream could be part of lang.test.junit5, turned on by simple call `mpsStdoutReport()`
+    myTestExecutor = new AbstractJUnitTestMixin(true) {
+      @Override
+      protected void executeSafe() throws Throwable {
+        // FIXME need a better idea how to report feedback
+        WorkerCallback wc = new WorkerCallback() {
+          @Override
+          public void info(String text) {
+            myOutStream.getOldStream().println("INFO:" + text);
+          }
+
+          @Override
+          public void warning(String text) {
+            myOutStream.getOldStream().println("WARN" + text);
+          }
+
+          @Override
+          public void debug(String text) {
+          }
+
+          @Override
+          public void error(String text) {
+            error(text, null);
+          }
+
+          @Override
+          public void error(String text, Throwable ex) {
+            myErrStream.getOldStream().println(text);
+            if (ex != null) {
+              myErrStream.getOldStream().println(ex.toString());
+            }
+          }
+
+          @Override
+          public void fatal(String text, Throwable ex) {
+            error(text, ex);
+            processThrowable(ex);
+          }
+        };
+
+        new ScriptJUnit5Launcher(myEnv, testPlan, wc, new File(myExecScript.getProjectUrl())) {
+          @Override
+          public int launchTests() {
+
+            // JUnit5TestExecutor.createTestExecutionListener
+            final DefaultTestExecutionListener listener = new DefaultTestExecutionListener(myOutStream) {
+              @Override
+              protected void flush() {
+                // NOP: avoid attempting to flush stdout/stderr in order not to deadlock; MPS-37852
+              }
+            };
+            try {
+              launchTestsWithSession(collectTestClasses(), listener);
+            } finally {
+              myFailureCount = listener.getFailuresCount();
+            }
+            return myFailureCount;
+          }
+        }.launchTests();
+      }
     };
+
     myTestExecutor.init();
   }
   @Override

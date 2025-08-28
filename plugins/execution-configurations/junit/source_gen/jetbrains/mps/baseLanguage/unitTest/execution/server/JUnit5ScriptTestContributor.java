@@ -14,6 +14,8 @@ import org.junit.platform.engine.discovery.DiscoverySelectors;
 
 /**
  * Adaptation of {@code ScriptTestContributor} to JUnit5 API
+ * 
+ * FIXME With CommandLineTestExecutor switched to generic lang.test.junit5 launcher and TestData, this class is not in use any more
  */
 public class JUnit5ScriptTestContributor extends AbstractTestConverter<DiscoverySelector> implements JUnit5TestContributor {
   private final Environment myEnv;
