@@ -40,7 +40,7 @@
     <import index="s3rp" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.discovery(org.junit.junit5/)" />
     <import index="34h4" ref="r:263b648a-3e00-426c-ab4b-ba47ccd788c9(jetbrains.mps.baselanguage.unitTest.execution.launcher)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
-    <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
+    <import index="uemk" ref="r:e59b0550-8a55-4ba7-959c-684743b5ee3c(jetbrains.mps.lang.test.junit5)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -4393,8 +4393,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="2$dYB7PExGk" role="EKbjA">
-      <ref role="3uigEE" to="34h4:1wWWPEu9Bc8" resolve="JUnit5TestContributor" />
+    <node concept="3uibUv" id="2Uys8qoajII" role="EKbjA">
+      <ref role="3uigEE" to="uemk:1wWWPEu9Bc8" resolve="JUnit5TestContributor" />
     </node>
   </node>
   <node concept="312cEu" id="5m2bsnphxdF">

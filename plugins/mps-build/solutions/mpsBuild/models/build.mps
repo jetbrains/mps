@@ -38814,11 +38814,6 @@
               <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
             </node>
           </node>
-          <node concept="1SiIV0" id="7YI57w6Kde8" role="3bR37C">
-            <node concept="3bR9La" id="7YI57w6Kde9" role="1SiIV1">
-              <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
-            </node>
-          </node>
           <node concept="1SiIV0" id="7YI57w6Kdec" role="3bR37C">
             <node concept="3bR9La" id="7YI57w6Kded" role="1SiIV1">
               <ref role="3bR37D" node="7gdoTYdo$et" resolve="jetbrains.mps.debugger.api.api" />
@@ -40193,9 +40188,9 @@
             <ref role="3bR37D" node="4MVYzzgl7sL" resolve="jetbrains.mps.lang.test.junit5" />
           </node>
         </node>
-        <node concept="1SiIV0" id="5m2bsnp44VV" role="3bR37C">
-          <node concept="3bR9La" id="5m2bsnp44VW" role="1SiIV1">
-            <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+        <node concept="1SiIV0" id="kdZzJS2s6n" role="3bR37C">
+          <node concept="3bR9La" id="kdZzJS2s6o" role="1SiIV1">
+            <ref role="3bR37D" node="7MSVDs2F8XQ" resolve="jetbrains.mps.lang.test.launcher" />
           </node>
         </node>
       </node>
@@ -40365,6 +40360,11 @@
         <node concept="1SiIV0" id="2Oogzg3vk7z" role="3bR37C">
           <node concept="3bR9La" id="2Oogzg3vk7$" role="1SiIV1">
             <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="kdZzJS2s6z" role="3bR37C">
+          <node concept="3bR9La" id="kdZzJS2s6$" role="1SiIV1">
+            <ref role="3bR37D" node="4MVYzzgl7sL" resolve="jetbrains.mps.lang.test.junit5" />
           </node>
         </node>
       </node>
@@ -42885,10 +42885,6 @@
     <property role="3GE5qa" value="ide.data" />
     <property role="26EafI" value="bin" />
     <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS ${version.major}.${version.minor}" />
-    <node concept="26Ea6D" id="1t_0ZyxyXAT" role="26FZ21">
-      <property role="2eq24a" value="true" />
-      <property role="26Ea6C" value="MPS no longer uses 32-bit version of mps.vmoptions" />
-    </node>
     <node concept="26Ea6D" id="6KekG3H$kFM" role="2hID6k">
       <property role="26Ea6C" value="Common IntelliJ Platform options:" />
       <property role="2eq24a" value="true" />
@@ -42978,6 +42974,10 @@
     <node concept="26Ea6D" id="2lwFGYOW7EZ" role="2hID6k">
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
+    </node>
+    <node concept="26Ea6D" id="1t_0ZyxyXAT" role="26FZ21">
+      <property role="2eq24a" value="true" />
+      <property role="26Ea6C" value="MPS no longer uses 32-bit version of mps.vmoptions" />
     </node>
     <node concept="26EafG" id="4nX__hM7qzi" role="26Ea7d">
       <property role="26EafJ" value="lib/annotations.jar" />
@@ -47461,6 +47461,7 @@
         </node>
         <node concept="1SiIV0" id="4MVYzzgl7vF" role="3bR37C">
           <node concept="3bR9La" id="4MVYzzgl7vG" role="1SiIV1">
+            <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="4Hc8TwAmypn" resolve="jetbrains.mps.tool.common" />
           </node>
         </node>
@@ -47521,6 +47522,7 @@
         </node>
         <node concept="1SiIV0" id="7MSVDs2F9H1" role="3bR37C">
           <node concept="3bR9La" id="7MSVDs2F9H2" role="1SiIV1">
+            <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="7MSVDs2F8XQ" resolve="jetbrains.mps.lang.test.launcher" />
           </node>
         </node>

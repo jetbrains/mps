@@ -105,7 +105,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
     };
   }
 
-  private List<DiscoverySelector> collectTestClasses() {
+  protected List<DiscoverySelector> collectTestClasses() {
     try {
       return myTestSupplier.collectSelectors();
     } catch (Exception ex) {

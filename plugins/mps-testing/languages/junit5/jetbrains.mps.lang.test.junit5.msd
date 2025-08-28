@@ -11,13 +11,13 @@
     </facet>
   </facets>
   <dependencies>
-    <dependency reexport="false">d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)</dependency>
+    <dependency reexport="true">d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)</dependency>
     <dependency reexport="true">fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)</dependency>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="false">498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)</dependency>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
     <dependency reexport="true">63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)</dependency>
-    <dependency reexport="false">03ec8383-884a-4374-a96e-ddef48757b1d(jetbrains.mps.lang.test.launcher)</dependency>
+    <dependency reexport="true">03ec8383-884a-4374-a96e-ddef48757b1d(jetbrains.mps.lang.test.launcher)</dependency>
     <dependency reexport="false">2c7e7a6d-a1f9-4f07-84e0-d0f5b91d380c(jetbrains.mps.baseLanguage.unitTest.platform)</dependency>
   </dependencies>
   <languageVersions>

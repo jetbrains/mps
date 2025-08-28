@@ -11,7 +11,7 @@ public interface WorkerCallback {
 
   void debug(String text);
 
-  void error(String texgt);
+  void error(String text);
 
   void error(String text, Throwable ex);
 

@@ -19,16 +19,14 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit4TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsContributor;
-import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5InprocessTestsContributor;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
-import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
+import jetbrains.mps.lang.test.launcher.WorkerCallback;
+import jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher;
+import java.io.File;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutionListener;
 import com.intellij.execution.process.ProcessHandler;
 import java.util.concurrent.Future;
-import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.TestMode;
 import jetbrains.mps.RuntimeFlags;
@@ -55,22 +53,75 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     if (ListSequence.fromList(legacyTests).isNotEmpty()) {
       myTestsExecutor = new JUnit4TestExecutor(new NodeWrappersTestsContributor(inProcessEnv, (MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers), false);
     } else {
-      myTestsExecutor = new JUnit5TestExecutor(new JUnit5InprocessTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers), false) {
-
+      final JUnit5InprocessTestsContributor tc = new JUnit5InprocessTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers);
+      myTestsExecutor = new AbstractJUnitTestMixin(false) {
         @Override
         protected void executeSafe() throws Throwable {
-          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, inProcessEnv).withSystemProperty(SystemProperties.PROJECT_PATH, ((MPSProject) mpsProject).getProject().getPresentableUrl());
-          TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
-          try {
-            super.executeSafe();
-          } finally {
-            TestPlatform.getInstance().closeSession(testSession);
-          }
-        }
+          // not sure if shall use `log xxx` or rather AbstractJUnitTestMixin.myErrStream
+          final WorkerCallback wc = new WorkerCallback() {
+            @Override
+            public void info(String text) {
+              if (LOG.isInfoLevel()) {
+                LOG.info(text);
+              }
+            }
 
-        @Override
-        protected DefaultTestExecutionListener createTestExecutionListener() {
-          return super.createTestExecutionListener();
+            @Override
+            public void warning(String text) {
+              if (LOG.isWarningLevel()) {
+                LOG.warning(text);
+              }
+            }
+
+            @Override
+            public void debug(String text) {
+              if (LOG.isDebugLevel()) {
+                LOG.debug(text);
+              }
+            }
+
+            @Override
+            public void error(String text) {
+              if (LOG.isErrorLevel()) {
+                LOG.error(text);
+              }
+            }
+
+            @Override
+            public void error(String text, Throwable ex) {
+              if (LOG.isErrorLevel()) {
+                LOG.error(text, ex);
+              }
+            }
+
+            @Override
+            public void fatal(String text, Throwable ex) {
+              if (LOG.isErrorLevel()) {
+                LOG.error(text, ex);
+              }
+              if (ex != null) {
+                processThrowable(ex);
+              }
+            }
+          };
+          new ScriptJUnit5Launcher(inProcessEnv, tc, wc, new File(((MPSProject) mpsProject).getProject().getPresentableUrl())) {
+            @Override
+            public int launchTests() {
+              // JUnit5TestExecutor.createTestExecutionListener
+              final DefaultTestExecutionListener listener = new DefaultTestExecutionListener(myOutStream) {
+                @Override
+                protected void flush() {
+                  // NOP: avoid attempting to flush stdout/stderr in order not to deadlock; MPS-37852
+                }
+              };
+              try {
+                launchTestsWithSession(collectTestClasses(), listener);
+              } finally {
+                myFailureCount = listener.getFailuresCount();
+              }
+              return myFailureCount;
+            }
+          }.launchTests();
         }
       };
     }
@@ -107,6 +158,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
         if (!(myTestRunState.isTerminated())) {
           myTestRunState.advance(RunStateEnum.RUNNING, RunStateEnum.TERMINATING);
           if (myTestsExecutor instanceof AbstractJUnitTestMixin) {
+            // FIXME AbstractJUnitTestMixin.stopRun() is no-op for JUnit5, would be nice to find a way to interrupt it. 
             ((AbstractJUnitTestMixin) myTestsExecutor).stopRun();
           }
         }

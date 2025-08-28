@@ -293,7 +293,7 @@
       <node id="878521226301297742" at="129,0,133,0" concept="7" trace="isRunningOnTeamCity#()Z" />
       <node id="1945729128354435647" at="45,0,51,0" concept="1" trace="ScriptJUnit5Launcher#(Ljetbrains/mps/tool/environment/Environment;Ljetbrains/mps/lang/test/junit5/JUnit5TestContributor;Ljetbrains/mps/lang/test/launcher/WorkerCallback;Ljava/io/File;)V" />
       <node id="2236007359160557406" at="99,71,105,6" concept="9" />
-      <node id="1945729128354692581" at="108,56,114,5" concept="13" />
+      <node id="1945729128354692581" at="108,58,114,5" concept="13" />
       <node id="6586284036924355901" at="117,0,123,0" concept="7" trace="getTestReportsDir#()Ljava/io/File;" />
       <node id="9186374207729532534" at="80,102,87,5" concept="13" />
       <node id="3868917405883729365" at="90,0,97,0" concept="7" trace="configureSession#(Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;)Ljetbrains/mps/baseLanguage/unitTest/platform/TestSessionConfig;" />
@@ -345,7 +345,7 @@
         <var name="testData" id="1945729128354442180" />
       </scope>
       <scope id="2236007359160447637" at="99,71,105,6" />
-      <scope id="819766574538479143" at="108,56,114,5" />
+      <scope id="819766574538479143" at="108,58,114,5" />
       <scope id="6586284036924355901" at="117,0,123,0" />
       <scope id="3868917405883729365" at="90,0,97,0">
         <var name="config" id="3868917405883729366" />
