@@ -119,6 +119,7 @@
     <import index="uzhr" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.diagnostic(MPS.IDEA/)" />
     <import index="8ig8" ref="r:c3f8847b-5450-45d4-8ef0-445954b1dc9e(jetbrains.mps.ide.platform)" />
     <import index="4f8w" ref="r:1cb9f3bb-9050-412e-95bb-906faebc74ca(jetbrains.mps.lang.test.launcher)" />
+    <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -16924,14 +16925,14 @@
                                 <property role="TrG5h" value="wc" />
                                 <property role="3TUv4t" value="true" />
                                 <node concept="3uibUv" id="2Uys8qopREQ" role="1tU5fm">
-                                  <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+                                  <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
                                 </node>
                                 <node concept="2ShNRf" id="2Uys8qopRET" role="33vP2m">
                                   <node concept="YeOm9" id="2Uys8qopREU" role="2ShVmc">
                                     <node concept="1Y3b0j" id="2Uys8qopREV" role="YeSDq">
                                       <property role="2bfB8j" value="true" />
                                       <property role="373rjd" value="true" />
-                                      <ref role="1Y3XeK" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+                                      <ref role="1Y3XeK" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
                                       <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                       <node concept="3Tm1VV" id="2Uys8qopREW" role="1B3o_S" />
                                       <node concept="3clFb_" id="2Uys8qopREX" role="jymVt">

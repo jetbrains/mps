@@ -10,7 +10,7 @@ import jetbrains.mps.tool.common.TestData;
 import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
-import jetbrains.mps.lang.test.launcher.WorkerCallback;
+import jetbrains.mps.tool.common.WorkerCallback;
 import jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher;
 import java.io.File;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutionListener;

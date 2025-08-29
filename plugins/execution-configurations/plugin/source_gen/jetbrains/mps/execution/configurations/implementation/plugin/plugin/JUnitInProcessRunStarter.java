@@ -21,7 +21,7 @@ import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit4TestExecutor
 import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsContributor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5InprocessTestsContributor;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
-import jetbrains.mps.lang.test.launcher.WorkerCallback;
+import jetbrains.mps.tool.common.WorkerCallback;
 import jetbrains.mps.lang.test.junit5.ScriptJUnit5Launcher;
 import java.io.File;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutionListener;

@@ -39,11 +39,9 @@
     <import index="n4ib" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine(org.junit.junit5/)" />
     <import index="s3rp" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.discovery(org.junit.junit5/)" />
     <import index="34h4" ref="r:263b648a-3e00-426c-ab4b-ba47ccd788c9(jetbrains.mps.baselanguage.unitTest.execution.launcher)" />
-    <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
     <import index="uemk" ref="r:e59b0550-8a55-4ba7-959c-684743b5ee3c(jetbrains.mps.lang.test.junit5)" />
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
-    <import index="4f8w" ref="r:1cb9f3bb-9050-412e-95bb-906faebc74ca(jetbrains.mps.lang.test.launcher)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -5135,14 +5133,14 @@
                         <node concept="3cpWsn" id="5mw3b8lQl51" role="3cpWs9">
                           <property role="TrG5h" value="wc" />
                           <node concept="3uibUv" id="5mw3b8lQl52" role="1tU5fm">
-                            <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+                            <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
                           </node>
                           <node concept="2ShNRf" id="5mw3b8lQpGD" role="33vP2m">
                             <node concept="YeOm9" id="5mw3b8lQuXH" role="2ShVmc">
                               <node concept="1Y3b0j" id="5mw3b8lQuXK" role="YeSDq">
                                 <property role="2bfB8j" value="true" />
                                 <property role="373rjd" value="true" />
-                                <ref role="1Y3XeK" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+                                <ref role="1Y3XeK" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
                                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                 <node concept="3Tm1VV" id="5mw3b8lQuXL" role="1B3o_S" />
                                 <node concept="3clFb_" id="5mw3b8lQuY5" role="jymVt">

@@ -34,7 +34,6 @@
     <import index="pzze" ref="r:c7043e16-5749-4bab-81f7-bab46752ca63(jetbrains.mps.lang.test.junit5.tcutil)" />
     <import index="zi5z" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.commons(org.junit.junit5/)" />
     <import index="7c1v" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.reporting.legacy.xml(org.junit.junit5/)" />
-    <import index="4f8w" ref="r:1cb9f3bb-9050-412e-95bb-906faebc74ca(jetbrains.mps.lang.test.launcher)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
     <import index="fojo" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.reporting.open.xml(org.junit.junit5/)" />
     <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
@@ -352,7 +351,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7MSVDs2A7eo" role="1B3o_S" />
       <node concept="3uibUv" id="7MSVDs2A7eq" role="1tU5fm">
-        <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+        <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
       </node>
     </node>
     <node concept="312cEg" id="5tXD4tz76hQ" role="jymVt">
@@ -408,7 +407,7 @@
       <node concept="37vLTG" id="7MSVDs2A6SB" role="3clF46">
         <property role="TrG5h" value="callback" />
         <node concept="3uibUv" id="7MSVDs2A6SC" role="1tU5fm">
-          <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+          <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
         </node>
       </node>
       <node concept="37vLTG" id="5EMxBKzSjdr" role="3clF46">
@@ -497,7 +496,7 @@
       <node concept="37vLTG" id="1G0B_lkGAJ6" role="3clF46">
         <property role="TrG5h" value="callback" />
         <node concept="3uibUv" id="1G0B_lkGAJ7" role="1tU5fm">
-          <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+          <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
         </node>
       </node>
       <node concept="37vLTG" id="1G0B_lkGAJ8" role="3clF46">
@@ -1043,7 +1042,7 @@
                     <ref role="3cqZAo" node="7MSVDs2A7en" resolve="myWorkerCallback" />
                   </node>
                   <node concept="liA8E" id="1G0B_lkHZSb" role="2OqNvi">
-                    <ref role="37wK5l" to="4f8w:5tXD4tyH5RB" resolve="fatal" />
+                    <ref role="37wK5l" to="asz6:5tXD4tyH5RB" resolve="fatal" />
                     <node concept="Xl_RD" id="1G0B_lkI1kY" role="37wK5m">
                       <property role="Xl_RC" value="Failed to discover tests" />
                     </node>
@@ -2204,7 +2203,7 @@
       <node concept="37vLTG" id="HwplGM5p9R" role="3clF46">
         <property role="TrG5h" value="callback" />
         <node concept="3uibUv" id="HwplGM5rPV" role="1tU5fm">
-          <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+          <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
         </node>
       </node>
       <node concept="3cqZAl" id="HwplGLRdIc" role="3clF45" />
@@ -2218,7 +2217,7 @@
                   <ref role="3cqZAo" node="HwplGM5p9R" resolve="callback" />
                 </node>
                 <node concept="liA8E" id="HwplGM5bML" role="2OqNvi">
-                  <ref role="37wK5l" to="4f8w:7MSVDs2AhAE" resolve="error" />
+                  <ref role="37wK5l" to="asz6:7MSVDs2AhAE" resolve="error" />
                   <node concept="37vLTw" id="HwplGM5dpT" role="37wK5m">
                     <ref role="3cqZAo" node="HwplGLRj1e" resolve="err" />
                   </node>
@@ -3174,7 +3173,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="1G0B_lkHLOZ" role="1B3o_S" />
       <node concept="3uibUv" id="1G0B_lkHLP1" role="1tU5fm">
-        <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+        <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
       </node>
     </node>
     <node concept="2tJIrI" id="1G0B_lkFBl7" role="jymVt" />
@@ -3259,7 +3258,7 @@
       <node concept="37vLTG" id="1G0B_lkHLHu" role="3clF46">
         <property role="TrG5h" value="callback" />
         <node concept="3uibUv" id="1G0B_lkHLLi" role="1tU5fm">
-          <ref role="3uigEE" to="4f8w:7MSVDs2AdGA" resolve="WorkerCallback" />
+          <ref role="3uigEE" to="asz6:7MSVDs2AdGA" resolve="WorkerCallback" />
         </node>
       </node>
     </node>
@@ -3657,7 +3656,7 @@
                                   <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                                 </node>
                                 <node concept="liA8E" id="1G0B_lkGL6c" role="2OqNvi">
-                                  <ref role="37wK5l" to="4f8w:5tXD4tyH5RB" resolve="fatal" />
+                                  <ref role="37wK5l" to="asz6:5tXD4tyH5RB" resolve="fatal" />
                                   <node concept="Xl_RD" id="1G0B_lkGL6d" role="37wK5m">
                                     <property role="Xl_RC" value="error building test suite" />
                                   </node>
@@ -3803,7 +3802,7 @@
                                 <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                               </node>
                               <node concept="liA8E" id="1G0B_lkGTVn" role="2OqNvi">
-                                <ref role="37wK5l" to="4f8w:5tXD4tyH5RB" resolve="fatal" />
+                                <ref role="37wK5l" to="asz6:5tXD4tyH5RB" resolve="fatal" />
                                 <node concept="2OqwBi" id="kdZzJSf_OV" role="37wK5m">
                                   <node concept="Xl_RD" id="1G0B_lkGTVo" role="2Oq$k0">
                                     <property role="Xl_RC" value="Can't find module %s in a repository" />
@@ -3842,7 +3841,7 @@
                                     <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                                   </node>
                                   <node concept="liA8E" id="kdZzJSfwC0" role="2OqNvi">
-                                    <ref role="37wK5l" to="4f8w:7MSVDs2AenN" resolve="warning" />
+                                    <ref role="37wK5l" to="asz6:7MSVDs2AenN" resolve="warning" />
                                     <node concept="2OqwBi" id="kdZzJSfT55" role="37wK5m">
                                       <node concept="Xl_RD" id="kdZzJSfwC1" role="2Oq$k0">
                                         <property role="Xl_RC" value="Test module %s is not capable to load classes, ignored" />
@@ -3934,7 +3933,7 @@
                                         <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                                       </node>
                                       <node concept="liA8E" id="1G0B_lkGTV_" role="2OqNvi">
-                                        <ref role="37wK5l" to="4f8w:7MSVDs2AenN" resolve="warning" />
+                                        <ref role="37wK5l" to="asz6:7MSVDs2AenN" resolve="warning" />
                                         <node concept="2OqwBi" id="1G0B_lkGTVA" role="37wK5m">
                                           <node concept="Xl_RD" id="1G0B_lkGTVB" role="2Oq$k0">
                                             <property role="Xl_RC" value="Module %s doesn't have 'Tests' facet, but got @tests models. Please add Tests facet to the module. MPS will ignore modules without the facet in future releases" />
@@ -4100,7 +4099,7 @@
                                     <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                                   </node>
                                   <node concept="liA8E" id="kdZzJSefy3" role="2OqNvi">
-                                    <ref role="37wK5l" to="4f8w:7MSVDs2AenN" resolve="warning" />
+                                    <ref role="37wK5l" to="asz6:7MSVDs2AenN" resolve="warning" />
                                     <node concept="2OqwBi" id="kdZzJSefy4" role="37wK5m">
                                       <node concept="Xl_RD" id="kdZzJSefy5" role="2Oq$k0">
                                         <property role="Xl_RC" value="Module %s got neither 'Tests' facet, nor @tests models, yet contributed %d tests. Please add Tests facet to the module. MPS will ignore modules without the facet in future releases" />
@@ -4242,7 +4241,7 @@
                                       <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                                     </node>
                                     <node concept="liA8E" id="kdZzJSgp_F" role="2OqNvi">
-                                      <ref role="37wK5l" to="4f8w:5tXD4tyH5RB" resolve="fatal" />
+                                      <ref role="37wK5l" to="asz6:5tXD4tyH5RB" resolve="fatal" />
                                       <node concept="2OqwBi" id="kdZzJSgp_G" role="37wK5m">
                                         <node concept="Xl_RD" id="kdZzJSgp_H" role="2Oq$k0">
                                           <property role="Xl_RC" value="Test module %s is not capable to load classes, ignored" />
@@ -4312,7 +4311,7 @@
                                             <ref role="3cqZAo" node="1G0B_lkHLOY" resolve="myWorkerCallback" />
                                           </node>
                                           <node concept="liA8E" id="kdZzJSiAfY" role="2OqNvi">
-                                            <ref role="37wK5l" to="4f8w:5tXD4tyH5RB" resolve="fatal" />
+                                            <ref role="37wK5l" to="asz6:5tXD4tyH5RB" resolve="fatal" />
                                             <node concept="2OqwBi" id="kdZzJSiCuJ" role="37wK5m">
                                               <node concept="Xl_RD" id="kdZzJSiCuK" role="2Oq$k0">
                                                 <property role="Xl_RC" value="error building test suite for module %s" />

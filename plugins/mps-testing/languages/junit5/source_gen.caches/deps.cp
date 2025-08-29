@@ -22,11 +22,7 @@
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
   <uses module="c234a56a-502f-4751-aded-6f9846fff7ce(jetbrains.mps.lang.test.junit5)" kind="dp" />
-  <uses module="03ec8383-884a-4374-a96e-ddef48757b1d(jetbrains.mps.lang.test.launcher)" kind="dp" />
-  <uses module="20351dc3-a2df-46f5-b667-fc9adab1f1c9(jetbrains.mps.make)" kind="dp" />
-  <uses module="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
-  <uses module="e6368d5c-b931-4d4d-9941-07b7da7d2e2d(jetbrains.mps.tool.builder)" kind="dp" />
   <uses module="d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)" kind="dp" />
   <uses module="63b449db-0918-4a4a-a891-2c430ab133e4(org.junit.junit5)" kind="dp" />
 </dependenciesRoot>

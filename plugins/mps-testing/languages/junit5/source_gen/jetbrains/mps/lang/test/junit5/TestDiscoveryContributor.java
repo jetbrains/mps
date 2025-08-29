@@ -4,7 +4,7 @@ package jetbrains.mps.lang.test.junit5;
 
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.tool.common.TestData;
-import jetbrains.mps.lang.test.launcher.WorkerCallback;
+import jetbrains.mps.tool.common.WorkerCallback;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import org.junit.platform.engine.DiscoverySelector;

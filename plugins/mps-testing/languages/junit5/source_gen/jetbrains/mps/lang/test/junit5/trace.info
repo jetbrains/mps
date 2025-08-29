@@ -80,7 +80,7 @@
       <node id="364226678409299686" at="112,20,116,15" concept="0" />
       <node id="364226678407770845" at="84,13,89,13" concept="6" />
       <node id="364226678408434425" at="99,34,104,11" concept="6" />
-      <node id="1945729128354155512" at="35,0,41,0" concept="1" trace="TestDiscoveryContributor#(Ljetbrains/mps/components/ComponentHost;Ljetbrains/mps/tool/common/TestData;Ljetbrains/mps/lang/test/launcher/WorkerCallback;)V" />
+      <node id="1945729128354155512" at="35,0,41,0" concept="1" trace="TestDiscoveryContributor#(Ljetbrains/mps/components/ComponentHost;Ljetbrains/mps/tool/common/TestData;Ljetbrains/mps/tool/common/WorkerCallback;)V" />
       <node id="1945729128354484604" at="53,106,60,9" concept="13" />
       <node id="364226678409221696" at="108,73,116,15" concept="6" />
       <node id="1945729128354484594" at="52,0,62,0" concept="7" trace="visitTestRoot#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Ljava/lang/ClassLoader;)V" />
@@ -336,7 +336,7 @@
       <node id="6535433877003815476" at="120,81,121,23" concept="9" />
       <node id="6535433877002602749" at="125,40,126,30" concept="9" />
       <node id="878521226301297746" at="130,43,131,32" concept="9" />
-      <node id="5529288089447638934" at="41,0,44,0" concept="1" trace="ScriptJUnit5Launcher#(Ljetbrains/mps/tool/environment/Environment;Ljetbrains/mps/tool/common/TestData;Ljetbrains/mps/lang/test/launcher/WorkerCallback;Ljava/io/File;)V" />
+      <node id="5529288089447638934" at="41,0,44,0" concept="1" trace="ScriptJUnit5Launcher#(Ljetbrains/mps/tool/environment/Environment;Ljetbrains/mps/tool/common/TestData;Ljetbrains/mps/tool/common/WorkerCallback;Ljava/io/File;)V" />
       <node id="6535433877001615599" at="62,0,65,0" concept="7" trace="teamcityReport#()V" />
       <node id="819766574533689228" at="71,0,74,5" concept="6" />
       <node id="8806036443189571768" at="91,68,94,5" concept="6" />
@@ -345,7 +345,7 @@
       <node id="2236007359160620861" at="101,0,105,0" concept="7" trace="flushSystemStreams#()V" />
       <node id="5794342746866110451" at="124,0,128,0" concept="7" trace="isOpenTestReport#()Z" />
       <node id="878521226301297742" at="129,0,133,0" concept="7" trace="isRunningOnTeamCity#()Z" />
-      <node id="1945729128354435647" at="45,0,51,0" concept="1" trace="ScriptJUnit5Launcher#(Ljetbrains/mps/tool/environment/Environment;Ljetbrains/mps/lang/test/junit5/JUnit5TestContributor;Ljetbrains/mps/lang/test/launcher/WorkerCallback;Ljava/io/File;)V" />
+      <node id="1945729128354435647" at="45,0,51,0" concept="1" trace="ScriptJUnit5Launcher#(Ljetbrains/mps/tool/environment/Environment;Ljetbrains/mps/lang/test/junit5/JUnit5TestContributor;Ljetbrains/mps/tool/common/WorkerCallback;Ljava/io/File;)V" />
       <node id="2236007359160557406" at="99,71,105,6" concept="9" />
       <node id="1945729128354692581" at="108,58,114,5" concept="13" />
       <node id="6586284036924355901" at="117,0,123,0" concept="7" trace="getTestReportsDir#()Ljava/io/File;" />
@@ -538,7 +538,7 @@
       <node id="819766574533628746" at="22,0,25,0" concept="7" trace="hasFailures#()Z" />
       <node id="4406376019440946462" at="26,0,29,0" concept="7" trace="failuresCount#()I" />
       <node id="819766574534438986" at="30,52,33,5" concept="5" />
-      <node id="819766574534417290" at="30,0,35,0" concept="7" trace="flushErrors#(Ljetbrains/mps/lang/test/launcher/WorkerCallback;)V" />
+      <node id="819766574534417290" at="30,0,35,0" concept="7" trace="flushErrors#(Ljetbrains/mps/tool/common/WorkerCallback;)V" />
       <node id="819766574533576628" at="15,0,21,0" concept="7" trace="executionFinished#(Lorg/junit/platform/launcher/TestIdentifier;Lorg/junit/platform/engine/TestExecutionResult;)V" />
       <scope id="819766574533587711" at="17,79,18,108" />
       <scope id="819766574533628750" at="22,32,23,31" />

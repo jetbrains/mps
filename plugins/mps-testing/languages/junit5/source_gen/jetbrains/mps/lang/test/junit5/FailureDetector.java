@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import org.junit.platform.launcher.TestIdentifier;
 import org.junit.platform.engine.TestExecutionResult;
-import jetbrains.mps.lang.test.launcher.WorkerCallback;
+import jetbrains.mps.tool.common.WorkerCallback;
 
 public class FailureDetector implements TestExecutionListener {
   private List<String> errors = new ArrayList<>();
