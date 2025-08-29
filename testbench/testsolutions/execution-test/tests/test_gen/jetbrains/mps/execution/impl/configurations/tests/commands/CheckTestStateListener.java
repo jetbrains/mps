@@ -7,16 +7,19 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import java.util.List;
+import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
 import com.intellij.execution.process.ProcessOutputTypes;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 public final class CheckTestStateListener extends TestStateAdapter {
   private static final String LINEBREAK = "\n";
@@ -24,7 +27,7 @@ public final class CheckTestStateListener extends TestStateAdapter {
   private final Set<String> mySuccessExpected = SetSequence.fromSet(new HashSet<String>());
   private final Set<String> myFailExpected = SetSequence.fromSet(new HashSet<String>());
   private final Set<String> myFailed = SetSequence.fromSet(new HashSet<String>());
-  private final StringBuilder myMessages = new StringBuilder();
+  private final List<String> myMessages = new ArrayList<>();
 
   public CheckTestStateListener(List<ITestNodeWrapper> success, List<ITestNodeWrapper> failed) {
     SetSequence.fromSet(mySuccessExpected).addSequence(Sequence.fromIterable(selectNames(success)));
@@ -45,7 +48,7 @@ public final class CheckTestStateListener extends TestStateAdapter {
   @Override
   public void onTermination(@NotNull TerminationTestEvent event) {
     for (TestMethodNodeKey lostTest : ListSequence.fromList(event.getNotRanTests())) {
-      myMessages.append("Lost test: ").append(lostTest.getQualifiedName()).append(LINEBREAK);
+      myMessages.add("Lost test: " + lostTest.getQualifiedName());
     }
   }
 
@@ -54,7 +57,7 @@ public final class CheckTestStateListener extends TestStateAdapter {
     String qualifiedName = event.getTestKey().getQualifiedName();
     SetSequence.fromSet(myFailed).addElement(qualifiedName);
     if (!(SetSequence.fromSet(myFailExpected).contains(qualifiedName))) {
-      myMessages.append("Unexpected assumption failure: ").append(qualifiedName).append(LINEBREAK);
+      myMessages.add("Unexpected assumption failure: " + qualifiedName);
     }
   }
 
@@ -63,7 +66,7 @@ public final class CheckTestStateListener extends TestStateAdapter {
     String qualifiedName = event.getTestKey().getQualifiedName();
     SetSequence.fromSet(myFailed).addElement(qualifiedName);
     if (!(SetSequence.fromSet(myFailExpected).contains(qualifiedName))) {
-      myMessages.append("Unexpected failure: ").append(qualifiedName).append(LINEBREAK);
+      myMessages.add("Unexpected failure: " + qualifiedName);
     }
   }
 
@@ -72,21 +75,44 @@ public final class CheckTestStateListener extends TestStateAdapter {
     String qualifiedName = event.getTestKey().getQualifiedName();
     if (!(SetSequence.fromSet(myFailed).contains(qualifiedName))) {
       if (!(SetSequence.fromSet(mySuccessExpected).contains(qualifiedName))) {
-        myMessages.append("Unexpected success: ").append(qualifiedName).append(LINEBREAK);
+        myMessages.add("Unexpected success: " + qualifiedName);
       }
     }
   }
   @Override
   public void onTextAvailable(@NotNull TextTestEvent event) {
-    // the text comes in lines
+    // Beware, this event may get invoked from a listener that parses stdout (a stream that is associated with System.out)
+    // and writing anything to System.out here would be very bad idea, see MPS-37852
     if (event.getKey() == ProcessOutputTypes.STDERR) {
-      System.out.print("test error output >>> " + event.getText());
+      myMessages.add("[CTSL] test error output >>> " + event.getText());
     } else {
-      System.out.print("test output >>> " + event.getText());
+      myMessages.add("[CTSL] test output >>> " + event.getText());
     }
   }
 
-  public String getMessages() {
-    return myMessages.toString();
+  public boolean hasUnexpectedMessages(boolean includingPlainTextOutput) {
+    if (includingPlainTextOutput) {
+      return !(myMessages.isEmpty());
+    } else {
+      final Predicate<String> textEvent = (s) -> s.startsWith("[CTSL] ");
+      return myMessages.stream().anyMatch(textEvent.negate());
+    }
+  }
+
+  public String getMessagesAsText(boolean includingPlainTextOutput) {
+    Stream<String> s = myMessages.stream();
+    if (!(includingPlainTextOutput)) {
+      final Predicate<String> textEvent = (m) -> m.startsWith("[CTSL] ");
+      s = s.filter(textEvent.negate());
+    } else {
+      s = s.map((m) -> {
+        if (m.startsWith("[CTSL] ")) {
+          return m.substring(5);
+        } else {
+          return m;
+        }
+      });
+    }
+    return s.collect(Collectors.joining(LINEBREAK));
   }
 }

@@ -154,9 +154,6 @@
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
-      <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
-        <child id="1081516765348" name="expression" index="3fr31v" />
-      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -240,6 +237,9 @@
       </concept>
       <concept id="1171981022339" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertTrue" flags="nn" index="3vwNmj">
         <child id="1171981057159" name="condition" index="3vwVQn" />
+      </concept>
+      <concept id="1171983834376" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertFalse" flags="nn" index="3vFxKo">
+        <child id="1171983854940" name="condition" index="3vFALc" />
       </concept>
       <concept id="1172017222794" name="jetbrains.mps.baseLanguage.unitTest.structure.Fail" flags="nn" index="3xETmq" />
       <concept id="1172073500303" name="jetbrains.mps.baseLanguage.unitTest.structure.Message" flags="ng" index="3_1$Yv">
@@ -813,33 +813,26 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="5vTxdEzyU02" role="3cqZAp">
-              <node concept="3clFbS" id="5vTxdEzyU03" role="3clFbx">
-                <node concept="3xETmq" id="5vTxdEzyU04" role="3cqZAp">
-                  <node concept="3_1$Yv" id="5vTxdEzyU05" role="3_9lra">
-                    <node concept="2OqwBi" id="5vTxdEzyU06" role="3_1BAH">
-                      <node concept="37vLTw" id="5vTxdEzyU07" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
-                      </node>
-                      <node concept="liA8E" id="5vTxdEzyU08" role="2OqNvi">
-                        <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                      </node>
-                    </node>
-                  </node>
+            <node concept="3vFxKo" id="6WaEr8Io3Rj" role="3cqZAp">
+              <node concept="2OqwBi" id="5vTxdEzyU0b" role="3vFALc">
+                <node concept="37vLTw" id="5vTxdEzyU0c" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
+                </node>
+                <node concept="liA8E" id="6WaEr8Inj44" role="2OqNvi">
+                  <ref role="37wK5l" to="7fn4:6WaEr8IfADw" resolve="hasUnexpectedMessages" />
+                  <node concept="3clFbT" id="6WaEr8Injq5" role="37wK5m" />
                 </node>
               </node>
-              <node concept="3fqX7Q" id="5vTxdEzyU09" role="3clFbw">
-                <node concept="2OqwBi" id="5vTxdEzyU0a" role="3fr31v">
-                  <node concept="2OqwBi" id="5vTxdEzyU0b" role="2Oq$k0">
-                    <node concept="37vLTw" id="5vTxdEzyU0c" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
-                    </node>
-                    <node concept="liA8E" id="5vTxdEzyU0d" role="2OqNvi">
-                      <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                    </node>
+              <node concept="3_1$Yv" id="6WaEr8Io5ZC" role="3_9lra">
+                <node concept="2OqwBi" id="5vTxdEzyU06" role="3_1BAH">
+                  <node concept="37vLTw" id="5vTxdEzyU07" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
                   </node>
-                  <node concept="liA8E" id="3WF3aHSmSO4" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.isEmpty()" resolve="isEmpty" />
+                  <node concept="liA8E" id="5vTxdEzyU08" role="2OqNvi">
+                    <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessagesAsText" />
+                    <node concept="3clFbT" id="6WaEr8Inlcs" role="37wK5m">
+                      <property role="3clFbU" value="true" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -1410,37 +1403,27 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="5vTxdEzz11F" role="3cqZAp">
-              <node concept="3clFbS" id="5vTxdEzz11G" role="3clFbx">
-                <node concept="3xETmq" id="5vTxdEzz11H" role="3cqZAp">
-                  <node concept="3_1$Yv" id="5vTxdEzz11I" role="3_9lra">
-                    <node concept="2OqwBi" id="5vTxdEzz11J" role="3_1BAH">
-                      <node concept="37vLTw" id="5vTxdEzz11K" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5vTxdEzz10J" resolve="checkListener" />
-                      </node>
-                      <node concept="liA8E" id="5vTxdEzz11L" role="2OqNvi">
-                        <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                      </node>
+            <node concept="3vFxKo" id="6WaEr8InX6j" role="3cqZAp">
+              <node concept="3_1$Yv" id="6WaEr8InYGJ" role="3_9lra">
+                <node concept="2OqwBi" id="5vTxdEzz11J" role="3_1BAH">
+                  <node concept="37vLTw" id="5vTxdEzz11K" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5vTxdEzz10J" resolve="checkListener" />
+                  </node>
+                  <node concept="liA8E" id="5vTxdEzz11L" role="2OqNvi">
+                    <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessagesAsText" />
+                    <node concept="3clFbT" id="6WaEr8Io0z$" role="37wK5m">
+                      <property role="3clFbU" value="true" />
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="3fqX7Q" id="5vTxdEzz11M" role="3clFbw">
-                <node concept="2OqwBi" id="5vTxdEzz11N" role="3fr31v">
-                  <node concept="2OqwBi" id="5vTxdEzz11O" role="2Oq$k0">
-                    <node concept="37vLTw" id="5vTxdEzz11P" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5vTxdEzz10J" resolve="checkListener" />
-                    </node>
-                    <node concept="liA8E" id="5vTxdEzz11Q" role="2OqNvi">
-                      <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="5vTxdEzz11R" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                    <node concept="Xl_RD" id="5vTxdEzz11S" role="37wK5m">
-                      <property role="Xl_RC" value="" />
-                    </node>
-                  </node>
+              <node concept="2OqwBi" id="5vTxdEzz11O" role="3vFALc">
+                <node concept="37vLTw" id="5vTxdEzz11P" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5vTxdEzz10J" resolve="checkListener" />
+                </node>
+                <node concept="liA8E" id="6WaEr8InWdB" role="2OqNvi">
+                  <ref role="37wK5l" to="7fn4:6WaEr8IfADw" resolve="hasUnexpectedMessages" />
+                  <node concept="3clFbT" id="6WaEr8Io02q" role="37wK5m" />
                 </node>
               </node>
             </node>
@@ -1940,35 +1923,25 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="5XEoQWrnMK" role="3cqZAp">
-              <node concept="3clFbS" id="5XEoQWrnML" role="3clFbx">
-                <node concept="3xETmq" id="5XEoQWrnMM" role="3cqZAp">
-                  <node concept="3_1$Yv" id="5XEoQWrnMN" role="3_9lra">
-                    <node concept="2OqwBi" id="5XEoQWrnMO" role="3_1BAH">
-                      <node concept="37vLTw" id="5XEoQWrnMP" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5XEoQWrnLO" resolve="checkListener" />
-                      </node>
-                      <node concept="liA8E" id="5XEoQWrnMQ" role="2OqNvi">
-                        <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                      </node>
-                    </node>
-                  </node>
+            <node concept="3vFxKo" id="6WaEr8IoeM1" role="3cqZAp">
+              <node concept="2OqwBi" id="5XEoQWrnMT" role="3vFALc">
+                <node concept="37vLTw" id="5XEoQWrnMU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5XEoQWrnLO" resolve="checkListener" />
+                </node>
+                <node concept="liA8E" id="5XEoQWrnMV" role="2OqNvi">
+                  <ref role="37wK5l" to="7fn4:6WaEr8IfADw" resolve="hasUnexpectedMessages" />
+                  <node concept="3clFbT" id="6WaEr8IohGH" role="37wK5m" />
                 </node>
               </node>
-              <node concept="3fqX7Q" id="5XEoQWrnMR" role="3clFbw">
-                <node concept="2OqwBi" id="5XEoQWrnMS" role="3fr31v">
-                  <node concept="2OqwBi" id="5XEoQWrnMT" role="2Oq$k0">
-                    <node concept="37vLTw" id="5XEoQWrnMU" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5XEoQWrnLO" resolve="checkListener" />
-                    </node>
-                    <node concept="liA8E" id="5XEoQWrnMV" role="2OqNvi">
-                      <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                    </node>
+              <node concept="3_1$Yv" id="6WaEr8IojSh" role="3_9lra">
+                <node concept="2OqwBi" id="5XEoQWrnMO" role="3_1BAH">
+                  <node concept="37vLTw" id="5XEoQWrnMP" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5XEoQWrnLO" resolve="checkListener" />
                   </node>
-                  <node concept="liA8E" id="5XEoQWrnMW" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                    <node concept="Xl_RD" id="5XEoQWrnMX" role="37wK5m">
-                      <property role="Xl_RC" value="" />
+                  <node concept="liA8E" id="5XEoQWrnMQ" role="2OqNvi">
+                    <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessagesAsText" />
+                    <node concept="3clFbT" id="6WaEr8Ioiim" role="37wK5m">
+                      <property role="3clFbU" value="true" />
                     </node>
                   </node>
                 </node>

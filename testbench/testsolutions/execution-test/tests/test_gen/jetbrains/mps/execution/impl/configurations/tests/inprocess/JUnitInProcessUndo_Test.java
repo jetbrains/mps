@@ -92,9 +92,7 @@ public class JUnitInProcessUndo_Test extends BaseTransformationTest {
         } else if (exitcode != ListSequence.fromList(failure).count()) {
           Assert.fail("Exit code must be equal to " + ListSequence.fromList(failure).count() + ", not to " + exitcode);
         }
-        if (!(checkListener.value.getMessages().equals(""))) {
-          Assert.fail(checkListener.value.getMessages());
-        }
+        Assert.assertFalse(checkListener.value.getMessagesAsText(true), checkListener.value.hasUnexpectedMessages(false));
       } catch (ExecutionException e) {
         Assert.fail(e.getMessage());
       }

@@ -139,9 +139,7 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
         } else if (exitCode < 0) {
           Assert.fail("Process is running for too long");
         }
-        if (isNotEmptyString(checkListener.getMessages())) {
-          Assert.fail(checkListener.getMessages());
-        }
+        Assert.assertFalse(checkListener.getMessagesAsText(true), checkListener.hasUnexpectedMessages(false));
 
       } catch (ExecutionException e) {
         Assert.fail(e.getMessage());
@@ -173,9 +171,6 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
       junitRC.setJUnitSettings(this.createDefaultJUnitSettings());
       junitRC.setJavaRunParameters(this.createDefaultJavaSettings());
       return junitRC;
-    }
-    private static boolean isNotEmptyString(String str) {
-      return str != null && str.length() > 0;
     }
   }
 }

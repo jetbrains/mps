@@ -106,9 +106,7 @@ public class JUnitInProcess_Test extends BaseTransformationTest {
         if (runState.getCompletedTests() != completedMustBe) {
           Assert.fail("The number of completed tests must be equal to " + completedMustBe + ", not to " + runState.getCompletedTests());
         }
-        if (!(checkListener.value.getMessages().isEmpty())) {
-          Assert.fail(checkListener.value.getMessages());
-        }
+        Assert.assertFalse(checkListener.value.getMessagesAsText(true), checkListener.value.hasUnexpectedMessages(false));
       } catch (ExecutionException e) {
         Assert.fail(e.getMessage());
       }

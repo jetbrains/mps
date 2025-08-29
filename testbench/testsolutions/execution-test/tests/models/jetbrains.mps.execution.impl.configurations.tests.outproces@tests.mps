@@ -123,7 +123,6 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
-      <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -252,6 +251,9 @@
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
       <concept id="1216130694486" name="jetbrains.mps.baseLanguage.unitTest.structure.ITestCase" flags="ngI" index="B2rLd">
         <property id="6427619394892729757" name="canNotRunInProcess" index="26Nn1l" />
+      </concept>
+      <concept id="1171983834376" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertFalse" flags="nn" index="3vFxKo">
+        <child id="1171983854940" name="condition" index="3vFALc" />
       </concept>
       <concept id="1172017222794" name="jetbrains.mps.baseLanguage.unitTest.structure.Fail" flags="nn" index="3xETmq" />
       <concept id="1172073500303" name="jetbrains.mps.baseLanguage.unitTest.structure.Message" flags="ng" index="3_1$Yv">
@@ -545,31 +547,28 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="6bfDvj8bDpz" role="3cqZAp">
-              <node concept="3clFbS" id="6bfDvj8bDp$" role="3clFbx">
-                <node concept="3xETmq" id="6bfDvj8bDp_" role="3cqZAp">
-                  <node concept="3_1$Yv" id="6bfDvj8bDpA" role="3_9lra">
-                    <node concept="2OqwBi" id="6bfDvj8bDpB" role="3_1BAH">
-                      <node concept="37vLTw" id="4rbJdZOEPMQ" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
-                      </node>
-                      <node concept="liA8E" id="6bfDvj8bDpD" role="2OqNvi">
-                        <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                      </node>
+            <node concept="3vFxKo" id="6WaEr8Ioo0e" role="3cqZAp">
+              <node concept="2OqwBi" id="4rbJdZOEQ8O" role="3vFALc">
+                <node concept="37vLTw" id="4rbJdZOEvJo" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
+                </node>
+                <node concept="liA8E" id="6WaEr8IoszH" role="2OqNvi">
+                  <ref role="37wK5l" to="7fn4:6WaEr8IfADw" resolve="hasUnexpectedMessages" />
+                  <node concept="3clFbT" id="6WaEr8Iot6F" role="37wK5m" />
+                </node>
+              </node>
+              <node concept="3_1$Yv" id="6WaEr8IotEo" role="3_9lra">
+                <node concept="2OqwBi" id="6bfDvj8bDpB" role="3_1BAH">
+                  <node concept="37vLTw" id="4rbJdZOEPMQ" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
+                  </node>
+                  <node concept="liA8E" id="6bfDvj8bDpD" role="2OqNvi">
+                    <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessagesAsText" />
+                    <node concept="3clFbT" id="6WaEr8IoudB" role="37wK5m">
+                      <property role="3clFbU" value="true" />
                     </node>
                   </node>
                 </node>
-              </node>
-              <node concept="2OqwBi" id="6bfDvj8bDpE" role="3clFbw">
-                <node concept="2OqwBi" id="4rbJdZOEQ8O" role="2Oq$k0">
-                  <node concept="37vLTw" id="4rbJdZOEvJo" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5vTxdEzyTZ6" resolve="checkListener" />
-                  </node>
-                  <node concept="liA8E" id="4rbJdZOEVA6" role="2OqNvi">
-                    <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
-                  </node>
-                </node>
-                <node concept="17RvpY" id="6bfDvj8bDpI" role="2OqNvi" />
               </node>
             </node>
             <node concept="3clFbH" id="4rbJdZOyOkH" role="3cqZAp" />

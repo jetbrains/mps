@@ -110,18 +110,13 @@ public class JUnitBTestCaseTest_Test extends BaseTransformationTest {
         } else if (exitcode < 0) {
           Assert.fail("Process is running for too long");
         }
-        if (isNotEmptyString(checkListener.getMessages())) {
-          Assert.fail(checkListener.getMessages());
-        }
+        Assert.assertFalse(checkListener.getMessagesAsText(true), checkListener.hasUnexpectedMessages(false));
       } catch (ExecutionException e) {
         Assert.fail(e.getMessage());
       }
     }
     public List<ITestNodeWrapper> emptyList() {
       return Collections.<ITestNodeWrapper>emptyList();
-    }
-    private static boolean isNotEmptyString(String str) {
-      return str != null && str.length() > 0;
     }
   }
 }

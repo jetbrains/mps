@@ -103,9 +103,7 @@ public class JUnitInProcessTermination_Test extends BaseTransformationTest {
         if (exitcode != FakeProcess.TERMINATION_CODE) {
           Assert.fail("Exit code must be equal to " + FakeProcess.TERMINATION_CODE + ", not to " + exitcode);
         }
-        if (!(checkListener.value.getMessages().equals(""))) {
-          Assert.fail(checkListener.value.getMessages());
-        }
+        Assert.assertFalse(checkListener.value.getMessagesAsText(true), checkListener.value.hasUnexpectedMessages(false));
       } catch (ExecutionException e) {
         Assert.fail(e.getMessage());
       } catch (InterruptedException e) {
