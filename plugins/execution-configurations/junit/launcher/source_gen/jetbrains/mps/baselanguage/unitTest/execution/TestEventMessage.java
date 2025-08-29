@@ -5,7 +5,6 @@ package jetbrains.mps.baselanguage.unitTest.execution;
 import org.jetbrains.mps.annotations.Immutable;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import org.junit.runner.Description;
 import java.util.Objects;
 import org.jetbrains.annotations.Nullable;
 import java.util.regex.Pattern;
@@ -27,11 +26,6 @@ public final class TestEventMessage {
   private static List<String> ALL_TOKENS;
   private final String myToken;
   private final TestRawEvent myEvent;
-
-  private TestEventMessage(@NotNull String token, Description description) {
-    myToken = token;
-    myEvent = new TestRawEvent(description);
-  }
 
   private TestEventMessage(@NotNull String token, String testCaseName, String testMethodName, long memoryUsage, long time, String displayName) {
     myToken = token;

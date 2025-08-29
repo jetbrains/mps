@@ -4,7 +4,6 @@ package jetbrains.mps.baselanguage.unitTest.execution;
 
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.annotations.NotNull;
-import org.junit.runner.Description;
 import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
@@ -18,22 +17,6 @@ public final class TestRawEvent {
   private final long myTime;
   private final String myDisplayName;
 
-  /**
-   * Used to be called from {@link jetbrains.mps.baselanguage.unitTest.execution.TestEventMessage }'s ctor.
-   * Relies on obsolete JUnit API. 
-   * 
-   * @deprecated 
-   */
-  @Deprecated(forRemoval = true)
-  public TestRawEvent(@NotNull Description description) {
-    // note: description.getTestClass() may be null (e.g. when failure indicates an issue with loading of test class)
-    myTestKey = constructKeyFromDescription(description);
-    Runtime runtime = Runtime.getRuntime();
-    myMemoryUsage = runtime.totalMemory() - runtime.freeMemory();
-    myTime = System.currentTimeMillis();
-    myDisplayName = description.getDisplayName();
-  }
-
   public TestRawEvent(@NotNull String testCaseFqName, @Nullable String testMethodFqName, long memoryUsage, long time) {
     // the logic of selecting testMethodFqName as displayName if former is not null, testCaseFqName otherwise, 
     // is in line with the logic of choosing TestMethodStringKey/TestCaseStringKey from same initial data.
@@ -45,12 +28,6 @@ public final class TestRawEvent {
     myMemoryUsage = memoryUsage;
     myTime = time;
     myDisplayName = displayName;
-  }
-
-  private static TestRawKey constructKeyFromDescription(Description description) {
-    String testCaseFqName = description.getClassName();
-    String methodFqName = description.getMethodName();
-    return constructKeyFromString(testCaseFqName, methodFqName);
   }
 
   private static TestRawKey constructKeyFromString(String testCaseFqName, @Nullable String testMethodFqName) {
