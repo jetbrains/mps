@@ -38,7 +38,8 @@ public class RoutineUniqueness_NonTypesystemRule extends AbstractNonTypesystemRu
     if (Sequence.fromIterable(defs).count() > 1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(routineDefinition, "Routine names must be unique within a Script or a Library", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "1904811872814128956", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(routineDefinition, "Routine names must be unique within a Script or a Library", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "6269117168369932130", null, errorTarget);
+        _reporter_2309309498.setIssueType("Naming issues");
       }
     }
   }

@@ -37,6 +37,7 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.samples.Kaja.typesystem.RemoveRepetition_QuickFix", "1645404595817255600", false);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
+        _reporter_2309309498.setIssueType("Repetition issues");
       }
     }
   }

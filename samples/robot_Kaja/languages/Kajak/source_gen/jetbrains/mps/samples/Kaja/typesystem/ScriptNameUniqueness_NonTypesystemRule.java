@@ -35,6 +35,7 @@ public class ScriptNameUniqueness_NonTypesystemRule extends AbstractNonTypesyste
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(script, "Script and Library names must be unique", "r:af5f8eb9-49c0-4279-87d3-3c80b1a56988(jetbrains.mps.samples.Kaja.typesystem)", "1904811872814168191", null, errorTarget);
+        _reporter_2309309498.setIssueType("Naming issues");
       }
     }
   }

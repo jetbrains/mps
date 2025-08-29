@@ -158,7 +158,11 @@
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
       <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="4151386225412312097" name="jetbrains.mps.lang.typesystem.structure.StringIssueType" flags="ng" index="3iIyfB">
+        <property id="4151386225412312098" name="issueType" index="3iIyf$" />
+      </concept>
       <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
+        <child id="4151386225412414934" name="issueType" index="3iHb8g" />
         <child id="3937244445246643221" name="helginsIntention" index="1urrFz" />
         <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
       </concept>
@@ -436,12 +440,15 @@
       </node>
       <node concept="3clFbJ" id="1DJg4Tz25W4" role="3cqZAp">
         <node concept="3clFbS" id="1DJg4Tz25W5" role="3clFbx">
-          <node concept="2MkqsV" id="1DJg4Tz25WW" role="3cqZAp">
-            <node concept="Xl_RD" id="1DJg4Tz25WZ" role="2MkJ7o">
+          <node concept="2MkqsV" id="5s0od_NZxty" role="3cqZAp">
+            <node concept="Xl_RD" id="5s0od_NZxt$" role="2MkJ7o">
               <property role="Xl_RC" value="Routine names must be unique within a Script or a Library" />
             </node>
-            <node concept="1YBJjd" id="1DJg4Tz25X0" role="1urrMF">
+            <node concept="1YBJjd" id="5s0od_NZxt_" role="1urrMF">
               <ref role="1YBMHb" node="1DJg4Tz22kE" resolve="routineDefinition" />
+            </node>
+            <node concept="3iIyfB" id="5s0od_NZxtA" role="3iHb8g">
+              <property role="3iIyf$" value="Naming issues" />
             </node>
           </node>
         </node>
@@ -589,6 +596,9 @@
             </node>
             <node concept="1YBJjd" id="1DJg4Tz2fy3" role="1urrMF">
               <ref role="1YBMHb" node="1DJg4Tz2fsH" resolve="script" />
+            </node>
+            <node concept="3iIyfB" id="5s0od_NZqlA" role="3iHb8g">
+              <property role="3iIyf$" value="Naming issues" />
             </node>
           </node>
         </node>
@@ -773,6 +783,9 @@
             </node>
             <node concept="1YBJjd" id="1DJg4Tz2fzg" role="1urrMF">
               <ref role="1YBMHb" node="1DJg4Tz2fy9" resolve="library" />
+            </node>
+            <node concept="3iIyfB" id="5s0od_NZFI2" role="3iHb8g">
+              <property role="3iIyf$" value="Naming issues" />
             </node>
           </node>
         </node>
@@ -1215,6 +1228,9 @@
             </node>
             <node concept="3Cnw8n" id="1rlDGctuTaK" role="1urrFz">
               <ref role="QpYPw" node="1rlDGctuq0v" resolve="RemoveRepetition" />
+            </node>
+            <node concept="3iIyfB" id="5s0od_NYUeR" role="3iHb8g">
+              <property role="3iIyf$" value="Repetition issues" />
             </node>
           </node>
         </node>

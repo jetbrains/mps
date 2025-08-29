@@ -22,6 +22,7 @@ public class MessageFactories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.helginsIntention$WhDe)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.helginsIntention$WhDe)));
           SLinkOperations.setTarget(newNode, LINKS.messageTarget$3zAg, SLinkOperations.getTarget(original, LINKS.messageTarget$3zAg));
           SLinkOperations.setTarget(newNode, LINKS.foreignMessageSource$aPMj, SLinkOperations.getTarget(original, LINKS.foreignMessageSource$aPMj));
+          SLinkOperations.setTarget(newNode, LINKS.issueType$Mqj6, SLinkOperations.getTarget(original, LINKS.issueType$Mqj6));
         }
       }
     }
@@ -105,6 +106,7 @@ public class MessageFactories {
     /*package*/ static final SContainmentLink helginsIntention$WhDe = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
     /*package*/ static final SContainmentLink messageTarget$3zAg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5cf3L, "messageTarget");
     /*package*/ static final SContainmentLink foreignMessageSource$aPMj = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5dd2L, "foreignMessageSource");
+    /*package*/ static final SContainmentLink issueType$Mqj6 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x399cafc6eb281dd6L, "issueType");
     /*package*/ static final SContainmentLink errorString$2Vf_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b251a62aL, 0x111b252f0c9L, "errorString");
     /*package*/ static final SContainmentLink warningText$plyA = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1190a1db131L, 0x1190a1e0f30L, "warningText");
     /*package*/ static final SContainmentLink infoText$13Kl = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11d2965916bL, 0x11d2966036aL, "infoText");

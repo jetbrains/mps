@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="28kna4obgidx6vyqwancfct44qc138t">
+<product version="3" modelHash="5sk1xiomo2n5w75vuvmg3o3oo0ina3d">
   <files names="LibraryNameUniqueness_NonTypesystemRule.java:RemoveRepetition_QuickFix.java:RepetitionCheck_NonTypesystemRule.java:RoutineUniqueness_NonTypesystemRule.java:ScriptNameUniqueness_NonTypesystemRule.java:TypesystemDescriptor.java:check_KajaDataflow_NonTypesystemRule.java" />
 </product>
 
