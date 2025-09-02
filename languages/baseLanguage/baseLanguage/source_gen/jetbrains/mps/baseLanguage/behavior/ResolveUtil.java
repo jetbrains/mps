@@ -112,7 +112,7 @@ public class ResolveUtil {
     SNode declaringClassifier = SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$Ix, false, false);
     SNode result = SNodeOperations.copyNode(method);
 
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$F5MM)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(result, CONCEPTS.MethodDeclaration$_P), LINKS.modifiers$F5MM)).clear();
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where((it) -> (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && (Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate") || Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "IntrinsicCandidate"))).visitAll((it) -> SNodeOperations.deleteNode(it));
 
     List<SNode> initialClassifierTypes = ListSequence.fromList(new ArrayList<SNode>());
@@ -254,6 +254,7 @@ public class ResolveUtil {
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
     /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
     /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
     /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");

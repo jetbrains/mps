@@ -60,7 +60,7 @@ public class OverrideImplementMethodsHelper {
       if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$39)) {
         SPropertyOperations.assign(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isAbstract$VtH_, createAbstractMethods);
         if (SNodeOperations.isInstanceOf(myClassifier, CONCEPTS.Interface$db) && !(createAbstractMethods)) {
-          SLinkOperations.addNewChild(method, LINKS.modifiers$F5MM, CONCEPTS.DefaultModifier$rO);
+          SLinkOperations.addNewChild(SNodeOperations.as(method, CONCEPTS.MethodDeclaration$_P), LINKS.modifiers$F5MM, CONCEPTS.DefaultModifier$rO);
         }
       }
       if (index != -1) {
@@ -279,6 +279,7 @@ public class OverrideImplementMethodsHelper {
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
     /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
