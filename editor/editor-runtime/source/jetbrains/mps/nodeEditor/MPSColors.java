@@ -43,7 +43,7 @@ public final class MPSColors extends JBColor {
   public static final Color lightBlue = new JBColor(new Color(162, 184, 208), new Color(104, 151, 186));
   public static final Color LIGHT_BLUE = lightBlue;
 
-  public static final Color darkBlue = new JBColor(new Color(0x80), JBColor.ORANGE); // XXX how come we use orange for blue in "dark" theme?
+  public static final Color darkBlue = new JBColor(new Color(0x80), new Color(0x3d6dac)); // used to be ORANGE for blue in "dark" theme! See MPS-30533, now it's DarculaColors.BLUE.darker()
   public static final Color DARK_BLUE = darkBlue;
 
   public static final Color darkGreen = new JBColor(new Color(0x007c00), JBColor.GREEN); // Color.GREEN.darker().darker()

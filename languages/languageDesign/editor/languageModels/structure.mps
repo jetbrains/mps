@@ -6415,7 +6415,7 @@
     <node concept="25R33" id="3Ftr4R6BF5H" role="25R1y">
       <property role="TrG5h" value="darkBlue" />
       <property role="3tVfz5" value="1101209985304" />
-      <property role="1L1pqM" value="light: dark blue     | dark: orange (#000080 / #FFC800)" />
+      <property role="1L1pqM" value="light: dark blue     | dark: steel blue (#000080 / #3D6DAC)" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5I" role="25R1y">
       <property role="TrG5h" value="gray" />
