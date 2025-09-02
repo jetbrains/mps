@@ -31,6 +31,7 @@
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ngI" index="22mbnS">
         <child id="414384289274416996" name="parts" index="3ft7WO" />
       </concept>
+      <concept id="2000375450116423800" name="jetbrains.mps.lang.editor.structure.SubstituteMenu" flags="ng" index="22mcaB" />
       <concept id="540685334799947899" name="jetbrains.mps.lang.editor.structure.SubstituteMenuVariableDeclaration" flags="ig" index="23wRS9">
         <child id="540685334802085316" name="initializerBlock" index="23DdeQ" />
       </concept>
@@ -50,6 +51,9 @@
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
       </concept>
+      <concept id="1196434649611" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_SimpleString" flags="ng" index="2h3Zct">
+        <property id="1196434851095" name="text" index="2h4Kg1" />
+      </concept>
       <concept id="671290755174094691" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_parameterObject" flags="nn" index="2itN01" />
       <concept id="671290755174094686" name="jetbrains.mps.lang.editor.structure.QueryFunction_MethodPresentation" flags="in" index="2itN0W" />
       <concept id="4203201205844553978" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_selectedNode" flags="nn" index="jzRn0" />
@@ -62,6 +66,9 @@
       <concept id="1142886221719" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeCondition" flags="in" index="pkWqt" />
       <concept id="1142886811589" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node" flags="nn" index="pncrf" />
       <concept id="1177327570013" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Substitute" flags="in" index="ucgPf" />
+      <concept id="8478191136883534237" name="jetbrains.mps.lang.editor.structure.IExtensibleSubstituteMenuPart" flags="ngI" index="upBLQ">
+        <child id="8478191136883534238" name="features" index="upBLP" />
+      </concept>
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
@@ -118,6 +125,9 @@
       </concept>
       <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
       <concept id="1233759184865" name="jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem" flags="ln" index="11LMrY" />
+      <concept id="8998492695583125082" name="jetbrains.mps.lang.editor.structure.SubstituteFeature_MatchingText" flags="ng" index="16NfWO">
+        <child id="8998492695583129244" name="query" index="16NeZM" />
+      </concept>
       <concept id="1154465273778" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ParentNode" flags="nn" index="3bvxqY" />
       <concept id="2896773699153795590" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform" flags="ng" index="3cWJ9i">
         <child id="3473224453637651919" name="placeInCell" index="CtIbM" />
@@ -1464,6 +1474,73 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="22mcaB" id="7viyBkze5X5">
+    <property role="3GE5qa" value="Methods" />
+    <ref role="aqKnT" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+    <node concept="3eGOop" id="7viyBkze63A" role="3ft7WO">
+      <node concept="ucgPf" id="7viyBkze63C" role="3aKz83">
+        <node concept="3clFbS" id="7viyBkze63E" role="2VODD2">
+          <node concept="3cpWs8" id="7viyBkzeEvl" role="3cqZAp">
+            <node concept="3cpWsn" id="7viyBkzeEvm" role="3cpWs9">
+              <property role="TrG5h" value="m" />
+              <node concept="3Tqbb2" id="7viyBkzeEtS" role="1tU5fm">
+                <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+              </node>
+              <node concept="2ShNRf" id="7viyBkzeEvn" role="33vP2m">
+                <node concept="2fJWfE" id="7viyBkzeEvo" role="2ShVmc">
+                  <node concept="3Tqbb2" id="7viyBkzeEvp" role="3zrR0E">
+                    <ref role="ehGHo" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="7viyBkzeF__" role="3cqZAp">
+            <node concept="3clFbS" id="7viyBkzeF_B" role="3clFbx">
+              <node concept="3clFbF" id="7viyBkzeH94" role="3cqZAp">
+                <node concept="2OqwBi" id="7viyBkzeM55" role="3clFbG">
+                  <node concept="2OqwBi" id="7viyBkzeHC4" role="2Oq$k0">
+                    <node concept="37vLTw" id="7viyBkzeH92" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7viyBkzeEvm" resolve="m" />
+                    </node>
+                    <node concept="3TrEf2" id="7viyBkzeKU4" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                    </node>
+                  </node>
+                  <node concept="2DeJnY" id="7viyBkzeMw_" role="2OqNvi">
+                    <ref role="1A9B2P" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="441vB8LJDgf" role="3clFbw">
+              <node concept="1PxgMI" id="441vB8LJDgg" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="441vB8LJDgh" role="3oSUPX">
+                  <ref role="cht4Q" to="tp4f:hyWqMFP" resolve="IClassifier" />
+                </node>
+                <node concept="3bvxqY" id="7viyBkzeGNC" role="1m5AlR" />
+              </node>
+              <node concept="2qgKlT" id="441vB8LJDgj" role="2OqNvi">
+                <ref role="37wK5l" to="tp4h:441vB8LJxAr" resolve="requiresAllMethodMembersPrivate" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="7viyBkze95y" role="3cqZAp">
+            <node concept="37vLTw" id="7viyBkzeEvq" role="3clFbG">
+              <ref role="3cqZAo" node="7viyBkzeEvm" resolve="m" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="16NfWO" id="7viyBkzf5gC" role="upBLP">
+        <node concept="2h3Zct" id="7viyBkzf5jK" role="16NeZM">
+          <property role="2h4Kg1" value="method" />
+        </node>
+      </node>
+    </node>
+    <node concept="22hDWj" id="7viyBkze5Zg" role="22hAXT" />
   </node>
 </model>
 

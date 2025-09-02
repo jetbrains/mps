@@ -36,7 +36,7 @@
       <unit at="25,0,69,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierType_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,95,0" name="jetbrains.mps.baseLanguage.classifiers.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,97,0" name="jetbrains.mps.baseLanguage.classifiers.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590370(jetbrains.mps.baseLanguage.classifiers.editor)/1205752655131">
@@ -2070,6 +2070,76 @@
       <unit id="4737538687464648006" at="55,0,59,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodParameterInformationQuery$LINKS" />
       <unit id="4737538687464648006" at="49,0,54,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodParameterInformationQuery$CONCEPTS" />
       <unit id="4737538687464648006" at="24,0,64,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodParameterInformationQuery" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590370(jetbrains.mps.baseLanguage.classifiers.editor)/8634115671329365829">
+    <file name="DefaultClassifierMethodDeclaration_SubstituteMenu.java">
+      <node id="8634115671329365829" at="28,62,29,248" concept="11" />
+      <node id="8634115671329365829" at="33,118,34,140" concept="7" />
+      <node id="8634115671329366246" at="34,140,35,143" concept="2" />
+      <node id="8634115671329365829" at="35,143,36,18" concept="8" />
+      <node id="8634115671329366246" at="43,77,44,37" concept="7" />
+      <node id="8634115671329366246" at="44,37,45,28" concept="2" />
+      <node id="8634115671329366246" at="45,28,46,18" concept="8" />
+      <node id="8634115671329366246" at="49,0,50,0" concept="3" trace="_context" />
+      <node id="8634115671329366246" at="50,50,51,71" concept="11" />
+      <node id="8634115671329366246" at="51,71,52,27" concept="2" />
+      <node id="8634115671329366246" at="55,41,56,71" concept="7" />
+      <node id="8634115671329366246" at="56,71,57,167" concept="2" />
+      <node id="8634115671329515477" at="62,56,63,109" concept="7" />
+      <node id="8634115671329526340" at="64,180,65,102" concept="2" />
+      <node id="8634115671329378658" at="66,9,67,17" concept="8" />
+      <node id="8634115671329625328" at="72,62,73,24" concept="8" />
+      <node id="8634115671329365829" at="79,0,80,0" concept="10" trace="DefaultClassifierMethodDeclaration$Zx" />
+      <node id="8634115671329365829" at="80,0,81,0" concept="10" trace="PrivateVisibility$l0" />
+      <node id="8634115671329365829" at="81,0,82,0" concept="10" trace="IClassifier$BZ" />
+      <node id="8634115671329365829" at="85,0,86,0" concept="10" trace="visibility$Yyua" />
+      <node id="8634115671329365829" at="28,0,31,0" concept="1" trace="DefaultClassifierMethodDeclaration_SubstituteMenu#()V" />
+      <node id="8634115671329519973" at="63,109,66,9" concept="5" />
+      <node id="8634115671329366246" at="50,0,54,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
+      <node id="8634115671329366246" at="55,0,59,0" concept="6" trace="resetTraceInfo#()V" />
+      <node id="8634115671329625128" at="70,0,75,0" concept="6" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="8634115671329365829" at="31,0,38,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="8634115671329366246" at="41,0,48,0" concept="6" trace="createItem#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuItem;" />
+      <node id="8634115671329366246" at="60,0,69,0" concept="6" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="8634115671329365829" at="28,62,29,248" />
+      <scope id="8634115671329519975" at="64,180,65,102" />
+      <scope id="8634115671329625128" at="72,62,73,24" />
+      <scope id="8634115671329366246" at="50,50,52,27" />
+      <scope id="8634115671329366246" at="55,41,57,167">
+        <var name="description" id="8634115671329366246" />
+      </scope>
+      <scope id="8634115671329365829" at="28,0,31,0" />
+      <scope id="8634115671329365829" at="33,118,36,18">
+        <var name="result" id="8634115671329365829" />
+      </scope>
+      <scope id="8634115671329366246" at="43,77,46,18">
+        <var name="item" id="8634115671329366246" />
+      </scope>
+      <scope id="8634115671329366246" at="50,0,54,0">
+        <var name="context" id="8634115671329366246" />
+      </scope>
+      <scope id="8634115671329366246" at="55,0,59,0" />
+      <scope id="8634115671329366246" at="62,56,67,17">
+        <var name="m" id="8634115671329515478" />
+      </scope>
+      <scope id="8634115671329625128" at="70,0,75,0">
+        <var name="pattern" id="8634115671329625128" />
+      </scope>
+      <scope id="8634115671329365829" at="31,0,38,0">
+        <var name="_context" id="8634115671329365829" />
+      </scope>
+      <scope id="8634115671329366246" at="41,0,48,0">
+        <var name="_context" id="8634115671329366246" />
+      </scope>
+      <scope id="8634115671329366246" at="60,0,69,0">
+        <var name="pattern" id="8634115671329366246" />
+      </scope>
+      <unit id="8634115671329365829" at="84,0,87,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_SubstituteMenu$LINKS" />
+      <unit id="8634115671329365829" at="78,0,83,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_SubstituteMenu$CONCEPTS" />
+      <unit id="8634115671329366246" at="48,0,76,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_SubstituteMenu$SMP_Action_2skpg0_a$Item" />
+      <unit id="8634115671329366246" at="39,0,77,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_SubstituteMenu$SMP_Action_2skpg0_a" />
+      <unit id="8634115671329365829" at="27,0,88,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_SubstituteMenu" />
     </file>
   </root>
 </debug-info>
