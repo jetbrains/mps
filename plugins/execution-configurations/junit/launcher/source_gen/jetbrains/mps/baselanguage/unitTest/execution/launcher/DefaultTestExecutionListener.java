@@ -7,6 +7,7 @@ import org.junit.platform.launcher.TestIdentifier;
 import jetbrains.mps.baselanguage.unitTest.execution.TestEventMessage;
 import java.util.Optional;
 import org.junit.platform.engine.TestExecutionResult;
+import java.io.PrintStream;
 import org.jetbrains.annotations.NotNull;
 import org.junit.platform.engine.support.descriptor.ClassSource;
 import org.junit.platform.engine.support.descriptor.MethodSource;
@@ -56,7 +57,7 @@ public class DefaultTestExecutionListener implements TestExecutionListener {
 
         case FAILED:
           printSyncToken(TestEventMessage.FAILURE_TEST_BEGIN, Optional.of(testIdentifier));
-          testExecutionResult.getThrowable().ifPresent((ex) -> ex.printStackTrace(System.out));
+          testExecutionResult.getThrowable().ifPresent((ex) -> ex.printStackTrace(new PrintStream(myOutput)));
           myFailuresCount++;
           // fall through
 
@@ -76,8 +77,7 @@ public class DefaultTestExecutionListener implements TestExecutionListener {
   }
 
   protected void flush() {
-    System.out.flush();
-    System.err.flush();
+    myOutput.flushSafe();
   }
 
   private void printSyncToken(@NotNull String tokenPrefix, @NotNull final Optional<TestIdentifier> identifier) {

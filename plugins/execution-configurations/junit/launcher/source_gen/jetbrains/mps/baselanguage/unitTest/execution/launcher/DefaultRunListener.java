@@ -7,6 +7,7 @@ import org.junit.runner.Description;
 import jetbrains.mps.baselanguage.unitTest.execution.TestEventMessage;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
+import java.io.PrintStream;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -24,8 +25,7 @@ public class DefaultRunListener extends RunListener {
   }
 
   private void flush() {
-    System.out.flush();
-    System.err.flush();
+    myOutput.flushSafe();
   }
 
   @Override
@@ -51,14 +51,14 @@ public class DefaultRunListener extends RunListener {
   @Override
   public void testFailure(Failure failure) {
     printSyncToken(TestEventMessage.FAILURE_TEST_BEGIN, failure.getDescription());
-    failure.getException().printStackTrace(System.out);
+    failure.getException().printStackTrace(new PrintStream(myOutput));
     flush();
   }
 
   @Override
   public void testAssumptionFailure(Failure failure) {
     printSyncToken(TestEventMessage.ASSUMPTION_FAILURE_TEST_PREFIX, failure.getDescription());
-    failure.getException().printStackTrace(System.out);
+    failure.getException().printStackTrace(new PrintStream(myOutput));
     flush();
   }
 

@@ -49,11 +49,7 @@ public class CommandOutputStream extends FilterOutputStream {
   public void flushSafe() {
     try {
       flush();
-    } catch (IOException e) {
+    } catch (IOException ignored) {
     }
-  }
-
-  public PrintStream getOldStream() {
-    return myPrintStream;
   }
 }

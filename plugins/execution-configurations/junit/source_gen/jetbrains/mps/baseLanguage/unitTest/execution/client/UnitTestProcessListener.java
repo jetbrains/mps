@@ -65,6 +65,8 @@ public final class UnitTestProcessListener implements ProcessListener {
           // FIXME this code dates back to initial 2011 commit with no clear explanation what's the reason. 
           //      I suspect this is more of a confusion where DefaultRunListener used to write stacktrace to stderr in testFailure()/testAsssumptionFailure()
           //      while CommandOutputStream has been attached to stdout!
+          //      In fact, CommandOutputStream/DetaultTestExecutionListener could provide stacktrace as part of the 'sync' token (much like mem data), and 
+          //      avoid this suspicious check
           outputKind = ProcessOutputTypes.STDERR;
         }
         myState.onTextAvailable(text, outputKind);

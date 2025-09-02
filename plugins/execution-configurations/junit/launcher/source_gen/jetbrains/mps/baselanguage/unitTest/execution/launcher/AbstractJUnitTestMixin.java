@@ -9,15 +9,15 @@ import org.junit.runner.notification.StoppedByUserException;
 public abstract class AbstractJUnitTestMixin implements TestExecutor {
   private static final Logger LOG = Logger.getLogger(AbstractJUnitTestMixin.class);
 
-  private final boolean myRedirectStdOutErr;
+  private final boolean myRedirectStdOut;
   protected CommandOutputStream myOutStream;
-  protected CommandOutputStream myErrStream;
+  private PrintStream myOriginalStdOut;
 
   protected int myFailureCount = -1;
   private Throwable myException;
 
-  public AbstractJUnitTestMixin(boolean redirectStdOutErr) {
-    this.myRedirectStdOutErr = redirectStdOutErr;
+  public AbstractJUnitTestMixin(boolean redirectStdOut) {
+    this.myRedirectStdOut = redirectStdOut;
   }
 
   @Override
@@ -39,19 +39,18 @@ public abstract class AbstractJUnitTestMixin implements TestExecutor {
     if (LOG.isDebugLevel()) {
       LOG.debug("Initializing " + getClass().getSimpleName());
     }
-    myOutStream = new CommandOutputStream(System.out);
-    myErrStream = new CommandOutputStream(System.err);
-    if (myRedirectStdOutErr) {
+    myOutStream = new CommandOutputStream(myOriginalStdOut = System.out);
+    if (myRedirectStdOut) {
       System.setOut(new PrintStream(myOutStream));
-      System.setErr(new PrintStream(myErrStream));
     }
   }
 
   @Override
   public void dispose() {
-    if (myRedirectStdOutErr) {
-      System.setOut(myOutStream.getOldStream());
-      System.setErr(myErrStream.getOldStream());
+    if (myRedirectStdOut) {
+      assert myOriginalStdOut != null;
+      System.setOut(myOriginalStdOut);
+      myOriginalStdOut = null;
     }
     if (LOG.isDebugLevel()) {
       LOG.debug("Disposing " + getClass().getSimpleName());
