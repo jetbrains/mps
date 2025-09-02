@@ -347,9 +347,6 @@
     <node concept="PrWs8" id="6ffEDrb$cbi" role="PzmwI">
       <ref role="PrY4T" node="7bu6bIyR2DN" resolve="ITypeApplicable" />
     </node>
-    <node concept="PrWs8" id="20YUQaJkyZd" role="PzmwI">
-      <ref role="PrY4T" node="20YUQaJkyY_" resolve="IHasModifiers" />
-    </node>
     <node concept="PrWs8" id="19gBtYEvnx1" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEvilR" resolve="ImplementationContainer" />
     </node>
@@ -4027,6 +4024,9 @@
     </node>
     <node concept="PrWs8" id="1O4dd6ew3Sm" role="PzmwI">
       <ref role="PrY4T" to="tpck:hqLv6T6" resolve="IResolveInfo" />
+    </node>
+    <node concept="PrWs8" id="7viyBkzha6e" role="PzmwI">
+      <ref role="PrY4T" node="20YUQaJkyY_" resolve="IHasModifiers" />
     </node>
   </node>
   <node concept="PlHQZ" id="7bu6bIyR2DN">

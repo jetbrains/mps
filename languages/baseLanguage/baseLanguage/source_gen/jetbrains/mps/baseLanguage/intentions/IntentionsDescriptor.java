@@ -70,12 +70,11 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 5:
         if (true) {
           // concept
-          intentions = new IntentionFactory[5];
+          intentions = new IntentionFactory[4];
           intentions[0] = new MakeGeneric_Intention();
           intentions[1] = new AddThrows_Intention();
           intentions[2] = new ToggleMethodFinal_Intention();
           intentions[3] = new ToggleMethodSynchronized_Intention();
-          intentions[4] = new AddModifiers_Intention();
         }
         break;
       case 6:
@@ -307,8 +306,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 33:
         if (true) {
           // concept
-          intentions = new IntentionFactory[1];
-          intentions[0] = new ToggleMethodStatic_Intention();
+          intentions = new IntentionFactory[2];
+          intentions[0] = new AddModifiers_Intention();
+          intentions[1] = new ToggleMethodStatic_Intention();
         }
         break;
       case 34:

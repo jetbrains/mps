@@ -17731,7 +17731,7 @@
   <node concept="2S6QgY" id="2JMw7nrWN95">
     <property role="TrG5h" value="AddModifiers" />
     <property role="3GE5qa" value="method" />
-    <ref role="2ZfgGC" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+    <ref role="2ZfgGC" to="tpee:6LFqxSRBTg8" resolve="MethodDeclaration" />
     <node concept="2S6ZIM" id="2JMw7nrWN9h" role="2ZfVej">
       <node concept="3clFbS" id="2JMw7nrWN9i" role="2VODD2">
         <node concept="3clFbF" id="2JMw7nrWPa3" role="3cqZAp">
