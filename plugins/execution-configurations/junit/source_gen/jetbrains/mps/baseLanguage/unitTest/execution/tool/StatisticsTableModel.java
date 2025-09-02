@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestStateListener;
-import jetbrains.mps.baseLanguage.unitTest.execution.client.TestStateAdapter;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
@@ -39,7 +38,7 @@ public class StatisticsTableModel implements TableModel {
   public StatisticsTableModel(TestRunState state) {
     myState = state;
     initFromTests(state.getTestsMap());
-    myTestStateListener = new TestStateAdapter() {
+    myTestStateListener = new TestStateListener() {
       @Override
       public void onTestStart(TestNodeEvent event) {
         TestMethodRow row = findRowForEvent(event);

@@ -15,32 +15,25 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
  * #onTestFailure/AssumptionFailure/Ignored might be called multiple times as well
  */
 public interface TestStateListener {
-  void onProcessNotified();
-  /**
-   * Use the overloaded method with {@code TestNodeEvent} parameter
-   */
-  @Deprecated
-  default void onTestRunStarted() {
-    // NOP by default
+  default void onProcessNotified() {
   }
   default void onTestRunStarted(TestNodeEvent event) {
-    onTestRunStarted();
-  }
-  /**
-   * Use the overloaded method with {@code TestNodeEvent} parameter
-   */
-  @Deprecated
-  default void onTestRunFinished() {
   }
   default void onTestRunFinished(TestNodeEvent event) {
-    onTestRunFinished();
   }
-  void onTestStart(TestNodeEvent event);
-  void onTestFinish(TestNodeEvent event);
-  void onTestFailure(TestNodeEvent event);
-  void onTestAssumptionFailure(TestNodeEvent event);
-  void onTestIgnored(TestNodeEvent event);
-  void onTermination(@NotNull TerminationTestEvent event);
+  default void onTestStart(TestNodeEvent event) {
+  }
+  default void onTestFinish(TestNodeEvent event) {
+  }
+  default void onTestFailure(TestNodeEvent event) {
+  }
+  default void onTestAssumptionFailure(TestNodeEvent event) {
+  }
+  default void onTestIgnored(TestNodeEvent event) {
+  }
+  default void onTermination(@NotNull TerminationTestEvent event) {
+  }
 
-  void onTextAvailable(@NotNull TextTestEvent event);
+  default void onTextAvailable(@NotNull TextTestEvent event) {
+  }
 }

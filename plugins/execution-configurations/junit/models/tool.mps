@@ -2732,6 +2732,12 @@
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="onTestRunFinished" />
+      <node concept="37vLTG" id="57tHH2xKTHg" role="3clF46">
+        <property role="TrG5h" value="event" />
+        <node concept="3uibUv" id="57tHH2xKTHh" role="1tU5fm">
+          <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
+        </node>
+      </node>
       <node concept="3Tm1VV" id="2Zbjobgpxj4" role="1B3o_S" />
       <node concept="3cqZAl" id="2Zbjobgpxj5" role="3clF45" />
       <node concept="3clFbS" id="2Zbjobgpxj8" role="3clF47">
@@ -3438,35 +3444,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4e85Rl_FcJ6" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4e85Rl_FcYK" role="jymVt" />
-    <node concept="3clFb_" id="4e85Rl_FcJ7" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="onTextAvailable" />
-      <node concept="3Tm1VV" id="4e85Rl_FcJ9" role="1B3o_S" />
-      <node concept="3cqZAl" id="4e85Rl_FcJa" role="3clF45" />
-      <node concept="37vLTG" id="4e85Rl_FcJb" role="3clF46">
-        <property role="TrG5h" value="event" />
-        <node concept="3uibUv" id="4e85Rl_FcJc" role="1tU5fm">
-          <ref role="3uigEE" to="tpnd:4e85Rl_qXym" resolve="TextTestEvent" />
-        </node>
-        <node concept="2AHcQZ" id="4e85Rl_FcJd" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="4e85Rl_FcJg" role="3clF47">
-        <node concept="3SKdUt" id="7wORwlILy1y" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoev5" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXoev6" role="1PaTwD">
-              <property role="3oM_SC" value="nop" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="4e85Rl_FcJh" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -7903,8 +7880,8 @@
       <node concept="3cqZAl" id="36vIONTtQmi" role="3clF45" />
       <node concept="3Tm6S6" id="4e85Rl_y8ut" role="1B3o_S" />
     </node>
-    <node concept="3uibUv" id="4e85Rl_rqd0" role="1zkMxy">
-      <ref role="3uigEE" to="sfqd:4e85Rl_r7L4" resolve="TestStateAdapter" />
+    <node concept="3uibUv" id="57tHH2xLq8l" role="EKbjA">
+      <ref role="3uigEE" to="sfqd:56tRMpP_Y8z" resolve="TestStateListener" />
     </node>
   </node>
   <node concept="312cEu" id="36vIONTtQre">
@@ -10675,7 +10652,7 @@
                 <node concept="1Y3b0j" id="36vIONTtQDz" role="YeSDq">
                   <property role="2bfB8j" value="true" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                  <ref role="1Y3XeK" to="sfqd:4e85Rl_r7L4" resolve="TestStateAdapter" />
+                  <ref role="1Y3XeK" to="sfqd:56tRMpP_Y8z" resolve="TestStateListener" />
                   <node concept="3Tm1VV" id="36vIONTtQD$" role="1B3o_S" />
                   <node concept="3clFb_" id="36vIONTtQD_" role="jymVt">
                     <property role="1EzhhJ" value="false" />

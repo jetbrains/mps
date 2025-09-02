@@ -4298,7 +4298,7 @@
       </node>
       <node concept="TZ5HA" id="1XbiPVzsG1e" role="TZ5H$">
         <node concept="1dT_AC" id="1XbiPVzsG1f" role="1dT_Ay">
-          <property role="1dT_AB" value="Due to the poor achitectural choice we are to get rid of model-&gt;ui dependency" />
+          <property role="1dT_AB" value="Due to the poor architectural choice we are to get rid of model-&gt;ui dependency" />
         </node>
       </node>
       <node concept="TZ5HA" id="1XbiPVzA8YO" role="TZ5H$">
@@ -4309,6 +4309,26 @@
       <node concept="TZ5HA" id="1XbiPVzA9yY" role="TZ5H$">
         <node concept="1dT_AC" id="1XbiPVzA9yZ" role="1dT_Ay">
           <property role="1dT_AB" value="That would allow to get rid of all this mutability in the TestRunState" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="57tHH2xNQz$" role="TZ5H$">
+        <node concept="1dT_AC" id="57tHH2xNQz_" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="57tHH2xNQzA" role="TZ5H$">
+        <node concept="1dT_AC" id="57tHH2xNQzB" role="1dT_Ay">
+          <property role="1dT_AB" value="[artem] AFAIK, TestRunData here gives overview of the whole test execution process, and can't be easily substituted" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="57tHH2xNQCe" role="TZ5H$">
+        <node concept="1dT_AC" id="57tHH2xNQCf" role="1dT_Ay">
+          <property role="1dT_AB" value="        by TestRunStateListener, which is more per-test event listener. Removing either listener would require some " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="57tHH2xNQHy" role="TZ5H$">
+        <node concept="1dT_AC" id="57tHH2xNQHz" role="1dT_Ay">
+          <property role="1dT_AB" value="        effort." />
         </node>
       </node>
       <node concept="TZ5HI" id="2Zbjobgq4WA" role="3nqlJM">
@@ -4328,50 +4348,7 @@
       <node concept="3clFbS" id="4e85Rl_r5YM" role="3clF47" />
       <node concept="3Tm1VV" id="4e85Rl_r5YN" role="1B3o_S" />
       <node concept="3cqZAl" id="4e85Rl_r5X0" role="3clF45" />
-    </node>
-    <node concept="3clFb_" id="2Zbjobgn6E8" role="jymVt">
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="onTestRunStarted" />
-      <node concept="3clFbS" id="2Zbjobgn6Eb" role="3clF47">
-        <node concept="3SKdUt" id="2zvrUBdU2lN" role="3cqZAp">
-          <node concept="1PaTwC" id="2zvrUBdU2lO" role="1aUNEU">
-            <node concept="3oM_SD" id="2zvrUBdU2p_" role="1PaTwD">
-              <property role="3oM_SC" value="NOP" />
-            </node>
-            <node concept="3oM_SD" id="2zvrUBdU2pB" role="1PaTwD">
-              <property role="3oM_SC" value="by" />
-            </node>
-            <node concept="3oM_SD" id="2zvrUBdU2pE" role="1PaTwD">
-              <property role="3oM_SC" value="default" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="2Zbjobgn6Ec" role="1B3o_S" />
-      <node concept="3cqZAl" id="2Zbjobgn6Dz" role="3clF45" />
-      <node concept="2JFqV2" id="2zvrUBdU2gY" role="2frcjj" />
-      <node concept="P$JXv" id="2zvrUBdU2pK" role="lGtFl">
-        <node concept="TZ5HA" id="2zvrUBdU2pL" role="TZ5H$">
-          <node concept="1dT_AC" id="2zvrUBdU2pM" role="1dT_Ay">
-            <property role="1dT_AB" value="Use the overloaded method with " />
-          </node>
-          <node concept="1dT_AA" id="2zvrUBdU2xR" role="1dT_Ay">
-            <node concept="VVOAv" id="2zvrUBdU2yd" role="qph3F">
-              <node concept="TZ5HA" id="2zvrUBdU2yf" role="2Xj1qM">
-                <node concept="1dT_AC" id="2zvrUBdU2yz" role="1dT_Ay">
-                  <property role="1dT_AB" value="TestNodeEvent" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="2zvrUBdU2xQ" role="1dT_Ay">
-            <property role="1dT_AB" value=" parameter" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2zvrUBdU2tI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
+      <node concept="2JFqV2" id="57tHH2xL9ez" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="2zvrUBdQGNa" role="jymVt">
       <property role="2aFKle" value="false" />
@@ -4382,46 +4359,10 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
-      <node concept="3clFbS" id="2zvrUBdQGNb" role="3clF47">
-        <node concept="3clFbF" id="2zvrUBdQHnj" role="3cqZAp">
-          <node concept="1rXfSq" id="2zvrUBdQHni" role="3clFbG">
-            <ref role="37wK5l" node="2Zbjobgn6E8" resolve="onTestRunStarted" />
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="2zvrUBdQGNb" role="3clF47" />
       <node concept="3Tm1VV" id="2zvrUBdQGNc" role="1B3o_S" />
       <node concept="3cqZAl" id="2zvrUBdQGNd" role="3clF45" />
       <node concept="2JFqV2" id="2zvrUBdQGNe" role="2frcjj" />
-    </node>
-    <node concept="3clFb_" id="2ZbjobgnxUg" role="jymVt">
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="onTestRunFinished" />
-      <node concept="3clFbS" id="2ZbjobgnxUh" role="3clF47" />
-      <node concept="3Tm1VV" id="2ZbjobgnxUi" role="1B3o_S" />
-      <node concept="3cqZAl" id="2ZbjobgnxUj" role="3clF45" />
-      <node concept="2JFqV2" id="2zvrUBdU2AO" role="2frcjj" />
-      <node concept="P$JXv" id="2zvrUBdU2ET" role="lGtFl">
-        <node concept="TZ5HA" id="2zvrUBdU2RQ" role="TZ5H$">
-          <node concept="1dT_AC" id="2zvrUBdU2RR" role="1dT_Ay">
-            <property role="1dT_AB" value="Use the overloaded method with " />
-          </node>
-          <node concept="1dT_AA" id="2zvrUBdU2RS" role="1dT_Ay">
-            <node concept="VVOAv" id="2zvrUBdU2RT" role="qph3F">
-              <node concept="TZ5HA" id="2zvrUBdU2RU" role="2Xj1qM">
-                <node concept="1dT_AC" id="2zvrUBdU2RV" role="1dT_Ay">
-                  <property role="1dT_AB" value="TestNodeEvent" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="2zvrUBdU2RW" role="1dT_Ay">
-            <property role="1dT_AB" value=" parameter" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2zvrUBdU2EW" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
     </node>
     <node concept="3clFb_" id="2zvrUBdQGN5" role="jymVt">
       <property role="2aFKle" value="false" />
@@ -4432,13 +4373,7 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
-      <node concept="3clFbS" id="2zvrUBdQGN6" role="3clF47">
-        <node concept="3clFbF" id="2zvrUBdQHDH" role="3cqZAp">
-          <node concept="1rXfSq" id="2zvrUBdQHDG" role="3clFbG">
-            <ref role="37wK5l" node="2ZbjobgnxUg" resolve="onTestRunFinished" />
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="2zvrUBdQGN6" role="3clF47" />
       <node concept="3Tm1VV" id="2zvrUBdQGN7" role="1B3o_S" />
       <node concept="3cqZAl" id="2zvrUBdQGN8" role="3clF45" />
       <node concept="2JFqV2" id="2zvrUBdQGN9" role="2frcjj" />
@@ -4455,6 +4390,7 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL8Cs" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="56tRMpP_Y8E" role="jymVt">
       <property role="TrG5h" value="onTestFinish" />
@@ -4467,6 +4403,7 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL8HB" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="56tRMpP_Y8K" role="jymVt">
       <property role="TrG5h" value="onTestFailure" />
@@ -4479,6 +4416,7 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL8My" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="56tRMpP_Y8Q" role="jymVt">
       <property role="TrG5h" value="onTestAssumptionFailure" />
@@ -4491,6 +4429,7 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL8Ri" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="2Zbjobgn$z3" role="jymVt">
       <property role="TrG5h" value="onTestIgnored" />
@@ -4503,6 +4442,7 @@
           <ref role="3uigEE" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL8Wd" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="56tRMpP_Y8W" role="jymVt">
       <property role="TrG5h" value="onTermination" />
@@ -4518,6 +4458,7 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL91b" role="2frcjj" />
     </node>
     <node concept="2tJIrI" id="4e85Rl_qXrM" role="jymVt" />
     <node concept="3clFb_" id="4e85Rl_qXwo" role="jymVt">
@@ -4535,6 +4476,7 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
+      <node concept="2JFqV2" id="57tHH2xL99S" role="2frcjj" />
     </node>
     <node concept="3UR2Jj" id="2ZbjobgnxU7" role="lGtFl">
       <node concept="TZ5HA" id="2ZbjobgnxU8" role="TZ5H$">
@@ -9463,30 +9405,6 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="4e85Rl_r7Pd" role="jymVt" />
-    <node concept="3clFb_" id="4e85Rl_r7LH" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="onTestRunStarted" />
-      <node concept="3Tm1VV" id="4e85Rl_r7LJ" role="1B3o_S" />
-      <node concept="3cqZAl" id="4e85Rl_r7LK" role="3clF45" />
-      <node concept="3clFbS" id="4e85Rl_r7LL" role="3clF47" />
-      <node concept="2AHcQZ" id="4e85Rl_r7LM" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4e85Rl_r7Pe" role="jymVt" />
-    <node concept="3clFb_" id="4e85Rl_r7LN" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="onTestRunFinished" />
-      <node concept="3Tm1VV" id="4e85Rl_r7LP" role="1B3o_S" />
-      <node concept="3cqZAl" id="4e85Rl_r7LQ" role="3clF45" />
-      <node concept="3clFbS" id="4e85Rl_r7LR" role="3clF47" />
-      <node concept="2AHcQZ" id="4e85Rl_r7LS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="4e85Rl_r7Pf" role="jymVt" />
     <node concept="3clFb_" id="4e85Rl_r7LT" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -9611,6 +9529,30 @@
       <node concept="3clFbS" id="4e85Rl_r7ML" role="3clF47" />
       <node concept="2AHcQZ" id="4e85Rl_r7MM" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="57tHH2xLECR" role="lGtFl">
+      <node concept="TZ5HI" id="57tHH2xLECS" role="3nqlJM">
+        <node concept="TZ5HA" id="57tHH2xLECT" role="3HnX3l">
+          <node concept="1dT_AC" id="57tHH2xLEUK" role="1dT_Ay">
+            <property role="1dT_AB" value="With default methods in TestStateListener, this class is of no use/value" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="57tHH2xLECU" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      <node concept="2B6LJw" id="57tHH2xLENt" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="57tHH2xLERb" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="57tHH2xLERh" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="57tHH2xLEU9" role="2B70Vg">
+          <property role="Xl_RC" value="2025.3" />
+        </node>
       </node>
     </node>
   </node>

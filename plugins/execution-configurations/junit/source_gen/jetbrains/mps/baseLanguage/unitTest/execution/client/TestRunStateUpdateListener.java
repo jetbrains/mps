@@ -6,9 +6,13 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Obviously that is to be merged with another kind of listener.
- * Due to the poor achitectural choice we are to get rid of model->ui dependency
+ * Due to the poor architectural choice we are to get rid of model->ui dependency
  * I would rather get rid of this #update kind of listener and use the TestRunStateListener.
  * That would allow to get rid of all this mutability in the TestRunState
+ * 
+ * [artem] AFAIK, TestRunData here gives overview of the whole test execution process, and can't be easily substituted
+ *         by TestRunStateListener, which is more per-test event listener. Removing either listener would require some 
+ *         effort.
  * 
  * @deprecated 
  */

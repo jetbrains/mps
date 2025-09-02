@@ -117,7 +117,7 @@
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
-        <child id="1165602531693" name="superclass" index="1zkMxy" />
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -2488,8 +2488,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="4e85Rl_sjv5" role="1zkMxy">
-      <ref role="3uigEE" to="sfqd:4e85Rl_r7L4" resolve="TestStateAdapter" />
+    <node concept="3uibUv" id="57tHH2xLjzH" role="EKbjA">
+      <ref role="3uigEE" to="sfqd:56tRMpP_Y8z" resolve="TestStateListener" />
     </node>
   </node>
 </model>

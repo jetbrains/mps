@@ -30,7 +30,6 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
-import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
 
 /**
  * we need to remove string association aka TestNameMap
@@ -269,7 +268,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   @Override
-  public void onTestRunFinished() {
+  public void onTestRunFinished(TestNodeEvent event) {
     updateRootStateWithMaxInSubtree();
   }
 
@@ -354,10 +353,5 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   @Override
   public void onProcessNotified() {
     updateStateUI(myRoot, TestState.IN_PROGRESS);
-  }
-
-  @Override
-  public void onTextAvailable(@NotNull TextTestEvent event) {
-    // nop
   }
 }

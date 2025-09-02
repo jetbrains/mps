@@ -7,17 +7,14 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TextTestEvent;
 
+/**
+ * 
+ * @deprecated With default methods in TestStateListener, this class is of no use/value
+ */
+@Deprecated(forRemoval = true, since = "2025.3")
 public abstract class TestStateAdapter implements TestStateListener {
   @Override
   public void onProcessNotified() {
-  }
-
-  @Override
-  public void onTestRunStarted() {
-  }
-
-  @Override
-  public void onTestRunFinished() {
   }
 
   @Override
