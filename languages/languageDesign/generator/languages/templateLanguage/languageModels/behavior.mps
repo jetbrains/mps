@@ -2283,13 +2283,8 @@
                   </node>
                 </node>
                 <node concept="2oxUTD" id="2JKPiG_HqcL" role="2OqNvi">
-                  <node concept="1PxgMI" id="wMMLLpsCrb" role="2oxUTC">
-                    <node concept="chp4Y" id="714IaVdGYun" role="3oSUPX">
-                      <ref role="cht4Q" to="tpck:h0TrEE$" resolve="INamedConcept" />
-                    </node>
-                    <node concept="37vLTw" id="2BHiRxgmKcG" role="1m5AlR">
-                      <ref role="3cqZAo" node="2JKPiG_Hoqi" resolve="newMember" />
-                    </node>
+                  <node concept="37vLTw" id="2BHiRxgmKcG" role="2oxUTC">
+                    <ref role="3cqZAo" node="2JKPiG_Hoqi" resolve="newMember" />
                   </node>
                 </node>
               </node>

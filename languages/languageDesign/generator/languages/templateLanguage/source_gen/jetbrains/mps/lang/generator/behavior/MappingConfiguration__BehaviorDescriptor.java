@@ -25,7 +25,6 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
@@ -56,7 +55,7 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
     if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(newMember) != null)) {
       SNode ruleNode = SLinkOperations.addNewChild(__thisNode__, LINKS.rootMappingRule$edB6, CONCEPTS.Root_MappingRule$NH);
       SLinkOperations.setTarget(ruleNode, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(newMember), LINKS.applicableConcept$LAIX));
-      SLinkOperations.setTarget(ruleNode, LINKS.template$n_Qy, SNodeOperations.cast(newMember, CONCEPTS.INamedConcept$Kd));
+      SLinkOperations.setTarget(ruleNode, LINKS.template$n_Qy, newMember);
     } else if (SNodeOperations.isInstanceOf(newMember, CONCEPTS.TemplateDeclaration$5G)) {
       SNode mappingRule = SLinkOperations.addNewChild(__thisNode__, LINKS.reductionMappingRule$epW2, CONCEPTS.Reduction_MappingRule$9X);
       SLinkOperations.setTarget(mappingRule, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(SNodeOperations.cast(newMember, CONCEPTS.TemplateDeclaration$5G), LINKS.applicableConcept$JSvx));
@@ -154,7 +153,6 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
   private static final class CONCEPTS {
     /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
     /*package*/ static final SConcept Root_MappingRule$NH = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, "jetbrains.mps.lang.generator.structure.Root_MappingRule");
-    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
     /*package*/ static final SConcept Reduction_MappingRule$9X = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
     /*package*/ static final SConcept BaseMappingRule$O5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
