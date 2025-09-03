@@ -6,30 +6,27 @@ import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.baseLanguage.unitTest.runtime.plugin.EnvironmentAccessoryHandler;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.core.platform.DynamicComponentWarden;
+import java.util.function.Supplier;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestDiscoveryParticipant;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionListener;
 
 public class ModuleActivator implements ModuleRuntime.Activator {
 
-  private EnvironmentAccessoryHandler myEnvironmentAccessoryHandler = new EnvironmentAccessoryHandler();
+  private final EnvironmentAccessoryHandler myEnvironmentAccessoryHandler = new EnvironmentAccessoryHandler();
   private final ComponentHost myPlatform;
   private DynamicComponentWarden.Token myTestPlatformToken;
-  private final TestPlatform myProvisionalInstance;
-
 
   public ModuleActivator(ComponentHost platform) {
     myPlatform = platform;
-    myProvisionalInstance = TestPlatform.getInstance();
-
   }
 
   @Override
   public void activate() {
-    // FIXME replace myProvisionalInstance with a factory (once explicit discovery participant and listener is done as extensions)
-    myTestPlatformToken = myPlatform.findComponent(DynamicComponentWarden.class).publish(TestPlatform.class, myProvisionalInstance);
-    myProvisionalInstance.addTestSessionLisnener(myEnvironmentAccessoryHandler);
+    Supplier<TestPlatform> onDemand = () -> new TestPlatform(myPlatform.findComponent(LanguageRegistry.class));
+    myTestPlatformToken = myPlatform.findComponent(DynamicComponentWarden.class).publish(TestPlatform.class, onDemand);
   }
 
   @Override
@@ -37,11 +34,10 @@ public class ModuleActivator implements ModuleRuntime.Activator {
     for (JUnitTestDiscoveryParticipants p : JUnitTestDiscoveryParticipants.values()) {
       ctx.extension(TestDiscoveryParticipant.class, ModuleRuntime.Extension.of(p));
     }
-    ctx.extension(TestSessionListener.class, ModuleRuntime.Extension.of(() -> new EnvironmentAccessoryHandler()));
+    ctx.extension(TestSessionListener.class, ModuleRuntime.Extension.of(myEnvironmentAccessoryHandler));
   }
   @Override
   public void deactivate() {
-    myProvisionalInstance.removeTestSessionLisnener(myEnvironmentAccessoryHandler);
     myTestPlatformToken.discard();
     myTestPlatformToken = null;
   }

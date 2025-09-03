@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="4px97rc6nmr1cdrarlng44b1rgzyf8m">
+<product version="3" modelHash="cr4r9qpjurkf5py0pc93r1pzydtubzh">
   <files names="JUnitPlatform.java:SNodeTestSource.java:SystemProperties.java:TestDescriptor.java:TestDescriptorBuilder.java:TestDiscoveryParticipant.java:TestDiscoveryRequest.java:TestPlatform.java:TestProperties.java:TestSession.java:TestSessionConfig.java:TestSessionListener.java:TestSource.java" />
 </product>
 
