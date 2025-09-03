@@ -178,7 +178,8 @@ public class TextGen_Facet extends IFacet.Stub {
               final List<GResource> resourcesWithOutput = ListSequence.fromList(new ArrayList<GResource>(Sequence.fromIterable(input).count()));
               final Map<SModule, ModuleStaleFileManager> moduleStaleFilesMap = new HashMap<SModule, ModuleStaleFileManager>();
 
-              for (GResource inputData : Sequence.fromIterable(input)) {
+with_input:
+              for (GResource inputData : input) {
                 Collection<SModel> outputModels = inputData.status().getOutputModels();
                 if (outputModels.isEmpty()) {
                   continue;
@@ -200,7 +201,7 @@ public class TextGen_Facet extends IFacet.Stub {
                   // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
                   if (!(msfm.hasGenerationTarget())) {
                     monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("no output location for " + model.getName())));
-                    continue;
+                    continue with_input;
                   }
                   if (inputData.getValue(MakeKeys.CLEAN_MAKE)) {
                     msfm.collectGeneratedFilesForceClean();
