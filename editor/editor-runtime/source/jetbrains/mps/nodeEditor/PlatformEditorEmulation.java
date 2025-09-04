@@ -703,6 +703,7 @@ public final class PlatformEditorEmulation implements Editor {
 
     final RelativePoint showPoint = getShowPoint(event, isGutter);
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
+    if (project==null) return;
     myHintPopupController.showInfoToolTip(project, this, provider, tooltipRenderer, tooltipGroup, showPoint);
   }
 
