@@ -393,6 +393,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
+      <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -12158,6 +12159,28 @@
                   </node>
                 </node>
               </node>
+              <node concept="3cpWs8" id="1Z_TAWVR9Qt" role="3cqZAp">
+                <node concept="3cpWsn" id="1Z_TAWVR9Qu" role="3cpWs9">
+                  <property role="TrG5h" value="buildNumbers" />
+                  <node concept="10Q1$e" id="1Z_TAWVR9J2" role="1tU5fm">
+                    <node concept="10Oyi0" id="1Z_TAWVR9J5" role="10Q1$1" />
+                  </node>
+                  <node concept="2OqwBi" id="1Z_TAWVR9Qv" role="33vP2m">
+                    <node concept="2OqwBi" id="1Z_TAWVR9Qw" role="2Oq$k0">
+                      <node concept="2YIFZM" id="1Z_TAWVR9Qx" role="2Oq$k0">
+                        <ref role="37wK5l" to="bd8o:~ApplicationInfo.getInstance()" resolve="getInstance" />
+                        <ref role="1Pybhc" to="bd8o:~ApplicationInfo" resolve="ApplicationInfo" />
+                      </node>
+                      <node concept="liA8E" id="1Z_TAWVR9Qy" role="2OqNvi">
+                        <ref role="37wK5l" to="bd8o:~ApplicationInfo.getBuild()" resolve="getBuild" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1Z_TAWVR9Qz" role="2OqNvi">
+                      <ref role="37wK5l" to="zn9m:~BuildNumber.getComponents()" resolve="getComponents" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="2OJWaFGOVve" role="3cqZAp">
                 <node concept="37vLTI" id="2OJWaFGOVv$" role="3clFbG">
                   <node concept="37vLTw" id="3GM_nagTtIk" role="37vLTJ">
@@ -12179,18 +12202,56 @@
                                 <node concept="Xl_RD" id="2OJWaFGOSmX" role="3uHU7w">
                                   <property role="Xl_RC" value=".SNAPSHOT" />
                                 </node>
-                                <node concept="2OqwBi" id="21T7tZ_SaPt" role="3uHU7B">
-                                  <node concept="2OqwBi" id="21T7tZ_S0VN" role="2Oq$k0">
-                                    <node concept="2YIFZM" id="21T7tZ_S0Q6" role="2Oq$k0">
-                                      <ref role="37wK5l" to="bd8o:~ApplicationInfo.getInstance()" resolve="getInstance" />
-                                      <ref role="1Pybhc" to="bd8o:~ApplicationInfo" resolve="ApplicationInfo" />
+                                <node concept="1eOMI4" id="1Z_TAWVWK6O" role="3uHU7B">
+                                  <node concept="3K4zz7" id="1Z_TAWVWJrh" role="1eOMHV">
+                                    <node concept="2OqwBi" id="1Z_TAWVWO2Y" role="3K4E3e">
+                                      <node concept="2OqwBi" id="1Z_TAWVWMsV" role="2Oq$k0">
+                                        <node concept="2YIFZM" id="1Z_TAWVWLPr" role="2Oq$k0">
+                                          <ref role="37wK5l" to="bd8o:~ApplicationInfo.getInstance()" resolve="getInstance" />
+                                          <ref role="1Pybhc" to="bd8o:~ApplicationInfo" resolve="ApplicationInfo" />
+                                        </node>
+                                        <node concept="liA8E" id="1Z_TAWVWNrp" role="2OqNvi">
+                                          <ref role="37wK5l" to="bd8o:~ApplicationInfo.getBuild()" resolve="getBuild" />
+                                        </node>
+                                      </node>
+                                      <node concept="liA8E" id="1Z_TAWVWOO2" role="2OqNvi">
+                                        <ref role="37wK5l" to="zn9m:~BuildNumber.getBaselineVersion()" resolve="getBaselineVersion" />
+                                      </node>
                                     </node>
-                                    <node concept="liA8E" id="21T7tZ_Sav2" role="2OqNvi">
-                                      <ref role="37wK5l" to="bd8o:~ApplicationInfo.getBuild()" resolve="getBuild" />
+                                    <node concept="3eOVzh" id="1Z_TAWVWI4D" role="3K4Cdx">
+                                      <node concept="2OqwBi" id="1Z_TAWVWGjP" role="3uHU7B">
+                                        <node concept="37vLTw" id="1Z_TAWVR9Q$" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="1Z_TAWVR9Qu" resolve="buildNumbers" />
+                                        </node>
+                                        <node concept="1Rwk04" id="1Z_TAWVWGFr" role="2OqNvi" />
+                                      </node>
+                                      <node concept="3cmrfG" id="1Z_TAWVWIcC" role="3uHU7w">
+                                        <property role="3cmrfH" value="2" />
+                                      </node>
                                     </node>
-                                  </node>
-                                  <node concept="liA8E" id="21T7tZ_SffR" role="2OqNvi">
-                                    <ref role="37wK5l" to="zn9m:~BuildNumber.getBaselineVersion()" resolve="getBaselineVersion" />
+                                    <node concept="3cpWs3" id="1Z_TAWVWKg$" role="3K4GZi">
+                                      <node concept="3cpWs3" id="1Z_TAWVWKg_" role="3uHU7B">
+                                        <node concept="AH0OO" id="1Z_TAWVWKgA" role="3uHU7B">
+                                          <node concept="3cmrfG" id="1Z_TAWVWKgB" role="AHEQo">
+                                            <property role="3cmrfH" value="0" />
+                                          </node>
+                                          <node concept="37vLTw" id="1Z_TAWVWKgC" role="AHHXb">
+                                            <ref role="3cqZAo" node="1Z_TAWVR9Qu" resolve="buildNumbers" />
+                                          </node>
+                                        </node>
+                                        <node concept="Xl_RD" id="1Z_TAWVWKgD" role="3uHU7w">
+                                          <property role="Xl_RC" value="." />
+                                        </node>
+                                      </node>
+                                      <node concept="AH0OO" id="1Z_TAWVWKgE" role="3uHU7w">
+                                        <node concept="3cmrfG" id="1Z_TAWVWKgF" role="AHEQo">
+                                          <property role="3cmrfH" value="1" />
+                                        </node>
+                                        <node concept="37vLTw" id="1Z_TAWVWKgG" role="AHHXb">
+                                          <ref role="3cqZAo" node="1Z_TAWVR9Qu" resolve="buildNumbers" />
+                                        </node>
+                                      </node>
+                                    </node>
                                   </node>
                                 </node>
                               </node>
