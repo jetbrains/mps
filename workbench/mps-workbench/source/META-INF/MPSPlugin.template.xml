@@ -23,7 +23,6 @@
   <!-- Customizations to platform -->
   <xi:include href="/META-INF/DisabledPlatformActions.xml"/>
   <xi:include href="/META-INF/DisabledLangActions.xml"/>
-  <xi:include href="/META-INF/DisabledXmlPluginActions.xml"/>
   <actions>
     <!-- File -->
     <action id="NewElement" class="com.intellij.ide.actions.NewElementAction"/>

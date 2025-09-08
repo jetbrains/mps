@@ -25,6 +25,8 @@
   <dependencies>
     <plugin id="jetbrains.mps.core"/>
     <module name="intellij.spellchecker"/>
+    <!-- Necessary dependency to be able to override actions from the module  -->
+    <module name="intellij.xml.impl"/>
   </dependencies>
   <depends>jetbrains.mps.ide.make</depends>
   <depends>jetbrains.mps.testing</depends>
@@ -71,6 +73,13 @@
     <mps.languageProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultLanguageProjectTemplate"/>
   </extensions>
   <actions>
+
+    <!-- Former content of DisabledXmlPluginActions.xml -->
+    <group id="ToolsXmlGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <action id="EscapeEntities" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+    <action id="EmmetNextEditPoint" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+    <action id="EmmetPreviousEditPoint" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+
     <!--  Insert MPS actions between IntelliJ Help group actions  -->
     <!--Help-->
     <group>
