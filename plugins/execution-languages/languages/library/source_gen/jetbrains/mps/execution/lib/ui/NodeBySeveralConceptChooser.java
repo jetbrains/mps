@@ -4,9 +4,10 @@ package jetbrains.mps.execution.lib.ui;
 
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
-import jetbrains.mps.execution.lib.NodesDescriptor;
+import jetbrains.mps.execution.lib.NodesFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.execution.lib.NodesDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,41 +18,62 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Set;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeBySeveralConceptChooser extends NodeChooser {
   @NotNull
-  private final List<NodesDescriptor> myTargetConcepts = ListSequence.fromList(new ArrayList<NodesDescriptor>());
+  private final List<NodesFilter> myTargetConcepts = ListSequence.fromList(new ArrayList<>());
 
+  @Deprecated
   public NodeBySeveralConceptChooser(NodesDescriptor... targets) {
-    this(Sequence.fromIterable(Sequence.fromArray(targets)).toList());
+    this(Sequence.fromIterable(Sequence.fromArray(targets)).select((it) -> new NodesFilterAdapter(it)).toList());
   }
 
+  @Deprecated
   public NodeBySeveralConceptChooser(List<NodesDescriptor> targets) {
-    ListSequence.fromList(myTargetConcepts).addSequence(ListSequence.fromList(targets).select(new _FunctionTypes._return_P1_E0<NodesDescriptor, NodesDescriptor>() {
+    this(Sequence.fromIterable((ListSequence.fromList(targets).select(new _FunctionTypes._return_P1_E0<NodesDescriptor, NodesDescriptor>() {
       public NodesDescriptor invoke(NodesDescriptor it) {
         return new NodesDescriptor((it.concept() == null ? CONCEPTS.BaseConcept$gP : it.concept()), it.filter());
+      }
+    }))).select(new _FunctionTypes._return_P1_E0<NodesFilterAdapter, NodesDescriptor>() {
+      public NodesFilterAdapter invoke(NodesDescriptor it) {
+        return new NodesFilterAdapter(it);
       }
     }));
   }
 
+  public NodeBySeveralConceptChooser(Iterable<? extends NodesFilter> filters) {
+    ListSequence.fromList(myTargetConcepts).addSequence(Sequence.fromIterable(filters));
+  }
+
   @Override
   protected List<SNode> findToChooseFromOnInit(final FindUsagesFacade manager, final SearchScope scope, final ProgressMonitor monitor) {
-    return (List<SNode>) (ListSequence.fromList(myTargetConcepts).translate((it) -> {
-      SAbstractConcept targetConcept = it.concept();
-      final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
+    return (List<SNode>) (ListSequence.fromList(myTargetConcepts).translate((final NodesFilter filter) -> {
+      SAbstractConcept targetConcept = filter.getConcept();
       Set<SNode> instances = manager.findInstances(scope, Collections.singleton(targetConcept), false, monitor.subTask(10));
-      if (function == null) {
-        return instances;
-      } else {
-        return SetSequence.fromSet(instances).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-          public Boolean invoke(SNode it) {
-            return function.invoke(it);
-          }
-        });
-      }
+      return SetSequence.fromSet(instances).where((it) -> filter.accept(it, (s) -> {
+      }));
     }).toList());
+  }
+
+  private static class NodesFilterAdapter extends NodesFilter {
+
+    private _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> myFilter;
+
+    public NodesFilterAdapter(NodesDescriptor target) {
+      super(target.concept());
+      this.myFilter = target.filter();
+    }
+
+    @Override
+    public boolean accept(SNode node, Consumer<String> errorCollector) {
+      if (myFilter != null) {
+        return myFilter.invoke(node);
+      }
+      return true;
+    }
   }
 
   private static final class CONCEPTS {

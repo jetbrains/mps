@@ -7,10 +7,18 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 
+/**
+ * Use {@link jetbrains.mps.execution.lib.NodesFilter }.
+ * 
+ * @deprecated 
+ */
+@Deprecated
 public class NodesDescriptor extends MultiTuple._2<SAbstractConcept, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode>> {
+  @Deprecated
   public NodesDescriptor() {
     super();
   }
+  @Deprecated
   public NodesDescriptor(SAbstractConcept concept, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> filter) {
     super(concept, filter);
   }

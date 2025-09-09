@@ -8,9 +8,9 @@ import jetbrains.mps.project.structure.modules.Copyable;
 import jetbrains.mps.execution.lib.NodeBySeveralConcepts_Configuration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.execution.lib.NodesDescriptor;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.execution.lib.NodesFilter;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.function.Consumer;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.execution.util.behavior.IMainClass__BehaviorDescriptor;
@@ -54,7 +54,17 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<Java_Configuration> {
-  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(CONCEPTS.ClassConcept$bK, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null))), new NodesDescriptor(CONCEPTS.IMainClass$iX, ((_FunctionTypes._return_P1_E0<Boolean, SNode>) (SNode node) -> (boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(SNodeOperations.cast(node, CONCEPTS.IMainClass$iX)) && Java_Command.isUnitNode(node)))));
+  private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<>(), new NodesFilter(CONCEPTS.ClassConcept$bK) {
+    @Override
+    public boolean accept(SNode node, Consumer<String> errorCollector) {
+      return (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null);
+    }
+  }, new NodesFilter(CONCEPTS.IMainClass$iX) {
+    @Override
+    public boolean accept(SNode node, Consumer<String> errorCollector) {
+      return (boolean) IMainClass__BehaviorDescriptor.isNodeRunnable_id431DWIovi3C.invoke(SNodeOperations.cast(node, CONCEPTS.IMainClass$iX)) && Java_Command.isUnitNode(node, errorCollector);
+    }
+  }));
   private JavaRunParameters_Configuration myRunParameters = new JavaRunParameters_Configuration(this.getProject());
 
   @Override

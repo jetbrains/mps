@@ -48,6 +48,7 @@
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="jtsr" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.project(MPS.OpenAPI/)" />
     <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" implicit="true" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" implicit="true" />
     <import index="eydd" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.zip(JDK/)" implicit="true" />
@@ -423,12 +424,6 @@
       <concept id="2722628536111969416" name="jetbrains.mps.execution.settings.structure.GridBagConstraints" flags="nn" index="1rwKMM">
         <property id="2722628536111969418" name="constraintsKind" index="1rwKMK" />
         <child id="2722628536112144966" name="order" index="1rxHDW" />
-      </concept>
-    </language>
-    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
-      <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
-        <property id="2034914114981261751" name="severity" index="RRSoG" />
-        <child id="2034914114981261753" name="message" index="RRSoy" />
       </concept>
     </language>
     <language id="fbc14279-5e2a-4c87-a5d1-5f7061e6c456" name="jetbrains.mps.debugger.api.lang">
@@ -1526,6 +1521,19 @@
                               <node concept="37vLTw" id="1CVOLqOPv$2" role="2XxRq1">
                                 <ref role="3cqZAo" node="1CVOLqOPvqu" resolve="resolved" />
                               </node>
+                              <node concept="10QFUN" id="6XGccOtJrSO" role="2XxRq1">
+                                <node concept="1bVj0M" id="6XGccOtJrSK" role="10QFUP">
+                                  <node concept="37vLTG" id="6XGccOtJrSL" role="1bW2Oz">
+                                    <property role="TrG5h" value="s" />
+                                    <node concept="17QB3L" id="6XGccOtJrSM" role="1tU5fm" />
+                                  </node>
+                                  <node concept="3clFbS" id="6XGccOtJrSN" role="1bW5cS" />
+                                </node>
+                                <node concept="3uibUv" id="6XGccOtJrXj" role="10QFUM">
+                                  <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
+                                  <node concept="17QB3L" id="6XGccOtJsmv" role="11_B2D" />
+                                </node>
+                              </node>
                             </node>
                           </node>
                           <node concept="37vLTw" id="1CVOLqOPunG" role="37vLTJ">
@@ -1764,6 +1772,9 @@
                 <node concept="37vLTw" id="2BHiRxgmakk" role="2XxRq1">
                   <ref role="3cqZAo" node="14R2qyOBxgF" resolve="node" />
                 </node>
+                <node concept="37vLTw" id="6XGccOtHTBy" role="2XxRq1">
+                  <ref role="3cqZAo" node="6XGccOtHSid" resolve="errorsSink" />
+                </node>
               </node>
             </node>
             <node concept="17RvpY" id="14R2qyOBxgE" role="2OqNvi" />
@@ -1773,6 +1784,13 @@
       <node concept="37vLTG" id="14R2qyOBxgF" role="3clF46">
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="14R2qyOBxgG" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="6XGccOtHSid" role="3clF46">
+        <property role="TrG5h" value="errorsSink" />
+        <node concept="3uibUv" id="6XGccOtHSie" role="1tU5fm">
+          <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
+          <node concept="17QB3L" id="6XGccOtHSif" role="11_B2D" />
+        </node>
       </node>
     </node>
     <node concept="2LYoGM" id="14R2qyOBxgH" role="2LYoGV">
@@ -1830,21 +1848,28 @@
         </node>
         <node concept="3clFbJ" id="4YEli8eI_Gp" role="3cqZAp">
           <node concept="3clFbS" id="4YEli8eI_Gr" role="3clFbx">
-            <node concept="RRSsy" id="3jYQuSB39O6" role="3cqZAp">
-              <property role="RRSoG" value="gZ5fh_4/error" />
-              <node concept="3cpWs3" id="4YEli8eIHg6" role="RRSoy">
-                <node concept="Xl_RD" id="4YEli8eIHg9" role="3uHU7w">
-                  <property role="Xl_RC" value=" classes are not managed by MPS" />
+            <node concept="3clFbF" id="6XGccOtHW2E" role="3cqZAp">
+              <node concept="2OqwBi" id="6XGccOtHXHt" role="3clFbG">
+                <node concept="37vLTw" id="6XGccOtHW2C" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6XGccOtHKuO" resolve="errorsSink" />
                 </node>
-                <node concept="3cpWs3" id="4YEli8eIEyP" role="3uHU7B">
-                  <node concept="Xl_RD" id="4YEli8eID_0" role="3uHU7B">
-                    <property role="Xl_RC" value="The hosting module's " />
-                  </node>
-                  <node concept="2OqwBi" id="ivXwD0FElJ" role="3uHU7w">
-                    <node concept="37vLTw" id="4YEli8eIH3d" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4YEli8eIE$p" resolve="module" />
+                <node concept="liA8E" id="6XGccOtI0p_" role="2OqNvi">
+                  <ref role="37wK5l" to="82uw:~Consumer.accept(java.lang.Object)" resolve="accept" />
+                  <node concept="3cpWs3" id="6XGccOtI0pB" role="37wK5m">
+                    <node concept="Xl_RD" id="6XGccOtI0pC" role="3uHU7w">
+                      <property role="Xl_RC" value=" classes are not managed by MPS" />
                     </node>
-                    <node concept="2Iv5rx" id="ivXwD0FElK" role="2OqNvi" />
+                    <node concept="3cpWs3" id="6XGccOtI0pD" role="3uHU7B">
+                      <node concept="Xl_RD" id="6XGccOtI0pE" role="3uHU7B">
+                        <property role="Xl_RC" value="The hosting module's " />
+                      </node>
+                      <node concept="2OqwBi" id="6XGccOtI0pF" role="3uHU7w">
+                        <node concept="37vLTw" id="6XGccOtI0pG" role="2Oq$k0">
+                          <ref role="3cqZAo" node="4YEli8eIE$p" resolve="module" />
+                        </node>
+                        <node concept="2Iv5rx" id="6XGccOtI0pH" role="2OqNvi" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -1884,19 +1909,26 @@
         </node>
         <node concept="3clFbJ" id="7mvYbwTB7be" role="3cqZAp">
           <node concept="3clFbS" id="7mvYbwTB7bf" role="3clFbx">
-            <node concept="RRSsy" id="3jYQuSB39Ok" role="3cqZAp">
-              <property role="RRSoG" value="gZ5fh_4/error" />
-              <node concept="3cpWs3" id="7mvYbwTB6gu" role="RRSoy">
-                <node concept="3cpWs3" id="7mvYbwTB6gv" role="3uHU7B">
-                  <node concept="Xl_RD" id="7mvYbwTB6gw" role="3uHU7B">
-                    <property role="Xl_RC" value="No trace.info found for model " />
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagTvHH" role="3uHU7w">
-                    <ref role="3cqZAo" node="7mvYbwTB6gd" resolve="model" />
-                  </node>
+            <node concept="3clFbF" id="6XGccOtI3bP" role="3cqZAp">
+              <node concept="2OqwBi" id="6XGccOtI6cB" role="3clFbG">
+                <node concept="37vLTw" id="6XGccOtI3bN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6XGccOtHKuO" resolve="errorsSink" />
                 </node>
-                <node concept="Xl_RD" id="7mvYbwTB6gy" role="3uHU7w">
-                  <property role="Xl_RC" value=". Check that model is generated." />
+                <node concept="liA8E" id="6XGccOtI8cM" role="2OqNvi">
+                  <ref role="37wK5l" to="82uw:~Consumer.accept(java.lang.Object)" resolve="accept" />
+                  <node concept="3cpWs3" id="6XGccOtI9uN" role="37wK5m">
+                    <node concept="3cpWs3" id="6XGccOtI9uO" role="3uHU7B">
+                      <node concept="Xl_RD" id="6XGccOtI9uP" role="3uHU7B">
+                        <property role="Xl_RC" value="No trace.info found for model " />
+                      </node>
+                      <node concept="37vLTw" id="6XGccOtI9uQ" role="3uHU7w">
+                        <ref role="3cqZAo" node="7mvYbwTB6gd" resolve="model" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="6XGccOtI9uR" role="3uHU7w">
+                      <property role="Xl_RC" value=". Check that model is generated." />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -1936,22 +1968,29 @@
               </node>
               <node concept="3clFbJ" id="7mvYbwTB7c6" role="3cqZAp">
                 <node concept="3clFbS" id="7mvYbwTB7c7" role="3clFbx">
-                  <node concept="RRSsy" id="3jYQuSB39Oy" role="3cqZAp">
-                    <property role="RRSoG" value="gZ5fh_4/error" />
-                    <node concept="3cpWs3" id="7mvYbwTB6gP" role="RRSoy">
-                      <node concept="3cpWs3" id="7mvYbwTB6gQ" role="3uHU7B">
-                        <node concept="Xl_RD" id="7mvYbwTB6gR" role="3uHU7B">
-                          <property role="Xl_RC" value="No unitName found for " />
-                        </node>
-                        <node concept="2OqwBi" id="ivXwD0FEmz" role="3uHU7w">
-                          <node concept="37vLTw" id="2BHiRxgmFdQ" role="2Oq$k0">
-                            <ref role="3cqZAo" node="14R2qyOBxgY" resolve="node" />
-                          </node>
-                          <node concept="2Iv5rx" id="ivXwD0FEm$" role="2OqNvi" />
-                        </node>
+                  <node concept="3clFbF" id="6XGccOtIc6M" role="3cqZAp">
+                    <node concept="2OqwBi" id="6XGccOtIf4M" role="3clFbG">
+                      <node concept="37vLTw" id="6XGccOtIc6K" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6XGccOtHKuO" resolve="errorsSink" />
                       </node>
-                      <node concept="Xl_RD" id="7mvYbwTB6gT" role="3uHU7w">
-                        <property role="Xl_RC" value=" in trace.info. Check that model is generated." />
+                      <node concept="liA8E" id="6XGccOtIh5K" role="2OqNvi">
+                        <ref role="37wK5l" to="82uw:~Consumer.accept(java.lang.Object)" resolve="accept" />
+                        <node concept="3cpWs3" id="6XGccOtIioH" role="37wK5m">
+                          <node concept="3cpWs3" id="6XGccOtIioI" role="3uHU7B">
+                            <node concept="Xl_RD" id="6XGccOtIioJ" role="3uHU7B">
+                              <property role="Xl_RC" value="No unitName found for " />
+                            </node>
+                            <node concept="2OqwBi" id="6XGccOtIioK" role="3uHU7w">
+                              <node concept="37vLTw" id="6XGccOtIioL" role="2Oq$k0">
+                                <ref role="3cqZAo" node="14R2qyOBxgY" resolve="node" />
+                              </node>
+                              <node concept="2Iv5rx" id="6XGccOtIioM" role="2OqNvi" />
+                            </node>
+                          </node>
+                          <node concept="Xl_RD" id="6XGccOtIioN" role="3uHU7w">
+                            <property role="Xl_RC" value=" in trace.info. Check that model is generated." />
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -2217,6 +2256,13 @@
       <node concept="37vLTG" id="14R2qyOBxgY" role="3clF46">
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="14R2qyOBxgZ" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="6XGccOtHKuO" role="3clF46">
+        <property role="TrG5h" value="errorsSink" />
+        <node concept="3uibUv" id="6XGccOtHN20" role="1tU5fm">
+          <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
+          <node concept="17QB3L" id="6XGccOtHNaM" role="11_B2D" />
+        </node>
       </node>
     </node>
     <node concept="2LYoGM" id="14R2qyOBxhl" role="2LYoGV">

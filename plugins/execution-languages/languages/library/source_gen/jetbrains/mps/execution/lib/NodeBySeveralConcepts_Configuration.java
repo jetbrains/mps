@@ -20,9 +20,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.execution.lib.ui.NodeChooser;
+import java.util.function.Consumer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 
 public final class NodeBySeveralConcepts_Configuration implements IPersistentConfiguration, Copyable<NodeBySeveralConcepts_Configuration> {
@@ -42,7 +42,8 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
         if (resolved == null) {
           return "Failed to resolve node reference";
         }
-        return (isValid(resolved) ? null : "Node didn't pass validation");
+        final StringBuilder sb = new StringBuilder("Node didn't pass validation");
+        return (isValid(resolved, (s) -> sb.append(".\n").append(s)) ? null : sb.toString());
       } catch (IllegalArgumentException ex) {
         String m = "Node reference is not valid";
         return (ex.getMessage() != null ? String.format("%s: %s", m, ex.getMessage()) : m);
@@ -85,16 +86,11 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
   /*package*/ void setNode(SNodeReference nodePtr) {
     this.setNodePointer((nodePtr == null ? null : PersistenceFacade.getInstance().asString(nodePtr)));
   }
-  private boolean isValid(final SNode node) {
-    return ListSequence.fromList(myTargets).findFirst((it) -> {
-      SAbstractConcept concept = it.concept();
-      _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
+  private boolean isValid(final SNode node, final Consumer<String> errorsSink) {
+    return ListSequence.fromList(myTargets).findFirst((filter) -> {
+      SAbstractConcept concept = filter.getConcept();
       if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(concept))) {
-        if (function != null) {
-          return function.invoke(node);
-        } else {
-          return true;
-        }
+        return filter.accept(node, errorsSink);
       }
       return false;
     }) != null;
@@ -150,10 +146,10 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
       return clone();
     }
   }
-  public NodeBySeveralConcepts_Configuration(List<NodesDescriptor> targets) {
+  public NodeBySeveralConcepts_Configuration(List<NodesFilter> targets) {
     myTargets = targets;
   }
-  private final List<NodesDescriptor> myTargets;
+  private final List<NodesFilter> myTargets;
   public NodeBySeveralConcepts_Configuration createCloneTemplate() {
     return new NodeBySeveralConcepts_Configuration(myTargets);
   }

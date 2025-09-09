@@ -28,8 +28,8 @@ public class NodeBySeveralConcepts_Configuration_Editor extends SettingsEditorEx
     myChooser.setNode(configuration.getNode());
     myChooser.setText(configuration.getNodeText());
   }
-  private List<NodesDescriptor> myTargets;
-  public NodeBySeveralConcepts_Configuration_Editor(final List<NodesDescriptor> targets) {
+  private List<NodesFilter> myTargets;
+  public NodeBySeveralConcepts_Configuration_Editor(final List<NodesFilter> targets) {
     super(() -> new NodeBySeveralConcepts_Configuration(targets));
     myTargets = targets;
   }
