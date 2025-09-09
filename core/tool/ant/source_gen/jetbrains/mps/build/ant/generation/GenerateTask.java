@@ -11,11 +11,15 @@ import java.io.FileReader;
 import java.io.File;
 import org.apache.tools.ant.Project;
 import jetbrains.mps.tool.common.Script;
+import jetbrains.mps.build.ant.JvmArgs;
+import jetbrains.mps.build.ant.Arg;
 import jetbrains.mps.tool.common.GeneratorProperties;
 import jetbrains.mps.tool.common.JavaCompilerProperties;
 
 @GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class GenerateTask extends MpsLoadTask {
+  /*package*/ static final String PROPERTY_LOG_CONFIG_FILE = "mps.log.config.file";
+  /*package*/ static final String PROPERTY_LOG_DIR = "mps.log.dir";
   private String myTargetJavaVersion = null;
   private GeneratorSettings mySettings;
   private int myParallelThreads = 4;
@@ -78,6 +82,19 @@ public class GenerateTask extends MpsLoadTask {
 
   @Override
   protected void finalizeScriptSettings(Script whatToDo) {
+    String v;
+    //  this is a hack and provisional way to get MPS-36481 moving
+    if ((v = getProject().getProperty(PROPERTY_LOG_CONFIG_FILE)) != null) {
+      JvmArgs a = new JvmArgs();
+      // Could have used PathManager.PROPERTY_LOG_CONFIG_FILE, consumed by LogInitializer.init(), but I find generic JUL property more universal
+      a.addConfiguredArg(new Arg(String.format("-Djava.util.logging.config.file=%s", v)));
+      addConfiguredJvmArgs(a);
+    } else if ((v = getProject().getProperty(PROPERTY_LOG_DIR)) != null) {
+      JvmArgs a = new JvmArgs();
+      // PathManager.PROPERTY_LOG_PATH to make LogInitializer.init() use of PM.getLogPath() happy. Once/if we get rid of IDEA's PathManager, shall change this code, too.
+      a.addConfiguredArg(new Arg(String.format("-Didea.log.path=%s", v)));
+      addConfiguredJvmArgs(a);
+    }
     super.finalizeScriptSettings(whatToDo);
     GeneratorProperties gp = new GeneratorProperties(whatToDo);
     getSettings().feedInto(gp);

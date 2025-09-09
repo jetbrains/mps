@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.util;
 
@@ -37,7 +37,8 @@ public final class LogInitializer {
     // next is similar to Log4jInitializer, except that we don't provide default log configuration (as long as
     // IDEA does not). We used to resort to default bin/log.xml; if IDEA comes with .properties with defaults,
     // have to adopt this here, too.
-    String logCfgPathStr = System.getProperty(PathManager.PROPERTY_LOG_CONFIG_FILE);
+    // Note, if there's standard JUL configuration file, use it (unless overridden by IDEA's config file)
+    String logCfgPathStr = System.getProperty(PathManager.PROPERTY_LOG_CONFIG_FILE, System.getProperty("java.util.logging.config.file"));
     if (logCfgPathStr != null) {
       Path logCfgPath = Paths.get(logCfgPathStr);
       if (!logCfgPath.isAbsolute()) {
