@@ -4,43 +4,54 @@ package jetbrains.mps.build.ant;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.tools.ant.types.DataType;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 @GeneratedClass(nodeId = "4003657351907890119", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public final class JvmArgs extends DataType {
-  private final Set<String> myArgs = new HashSet<String>();
-  private final List<String> myDefaultArgs = Arrays.asList("-Xmx512m", "-XX:+HeapDumpOnOutOfMemoryError");
-  private final List<String> myDefaultArgsPatterns = Arrays.asList("-Xmx", "HeapDumpOnOutOfMemoryError");
+  private final List<Arg> myArgs = new ArrayList<>();
 
   public JvmArgs() {
+    this(true);
+    // although I feel withDefaults == 'false' is right, use 'true' to mimic current behavior, just in case it matters
   }
+
+  public JvmArgs(boolean withDefaults) {
+    if (withDefaults) {
+      myArgs.add(new Arg("-Xmx512m", "-Xmx"));
+      myArgs.add(new Arg("-XX:+HeapDumpOnOutOfMemoryError", "HeapDumpOnOutOfMemoryError"));
+    }
+  }
+
   public void addConfiguredArg(Arg arg) {
-    myArgs.add(arg.getValue());
+    myArgs.add(arg);
   }
   public void addConfiguredJvmArgs(JvmArgs jvmargs) {
-    myArgs.addAll(jvmargs.getArgs());
+    myArgs.addAll(jvmargs.getMergedArgs());
   }
   public List<String> getArgs() {
-    return getMergedArgs();
-  }
-  private List<String> getMergedArgs() {
-    if (isReference()) {
-      return ((JvmArgs) getCheckedRef()).getMergedArgs();
+    ArrayList<String> rv = new ArrayList<>();
+    for (Arg a : getMergedArgs()) {
+      rv.add(a.getValue());
     }
-    List<String> result = new ArrayList<String>(myDefaultArgs);
-    assert myDefaultArgs.size() == myDefaultArgsPatterns.size();
-    for (String userSuppliedArg : myArgs) {
-      for (int i = 0; i < myDefaultArgsPatterns.size(); i++) {
-        if (userSuppliedArg.contains(myDefaultArgsPatterns.get(i))) {
-          result.remove(myDefaultArgs.get(i));
-          break;
+    return rv;
+  }
+  private List<Arg> getMergedArgs() {
+    if (isReference()) {
+      return getCheckedRef(JvmArgs.class).getMergedArgs();
+    }
+    // do not include any argument that has been overridden by a subsequent one (i.e. added later get higher precedence)
+    LinkedList<Arg> result = new LinkedList<>();
+L1:
+    for (int i = myArgs.size() - 1; i >= 0; i--) {
+      Arg candidate = myArgs.get(i);
+      for (Arg present : result) {
+        if (candidate.overriddenBy(present)) {
+          continue L1;
         }
       }
-      result.add(userSuppliedArg);
+      result.addFirst(candidate);
     }
     return result;
   }

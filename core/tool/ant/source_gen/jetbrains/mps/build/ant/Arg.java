@@ -8,11 +8,18 @@ import org.apache.tools.ant.ProjectComponent;
 @GeneratedClass(nodeId = "4003657351907886467", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public class Arg extends ProjectComponent {
   private String myValue;
+  private final String myOverridePattern;
   public Arg() {
+    myOverridePattern = null;
   }
 
   public Arg(String value) {
+    this(value, null);
+  }
+
+  public Arg(String value, String pattern) {
     myValue = value;
+    myOverridePattern = pattern;
   }
 
   public String getValue() {
@@ -20,5 +27,10 @@ public class Arg extends ProjectComponent {
   }
   public void setValue(String value) {
     myValue = value;
+  }
+
+  public boolean overriddenBy(Arg another) {
+    // if another specifies anything matching our 'pattern', we consider it as one providing more precise/actual value
+    return myOverridePattern != null && another.getValue().contains(myOverridePattern);
   }
 }

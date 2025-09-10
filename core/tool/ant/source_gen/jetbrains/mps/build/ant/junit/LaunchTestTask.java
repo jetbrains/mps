@@ -15,7 +15,6 @@ import java.util.Set;
 import java.util.LinkedHashSet;
 import jetbrains.mps.tool.common.Script;
 import org.apache.tools.ant.taskdefs.ExecuteStreamHandler;
-import jetbrains.mps.build.ant.Arg;
 import org.apache.tools.ant.Project;
 
 /**
@@ -53,7 +52,7 @@ public class LaunchTestTask extends MpsLoadTask {
     setOpenPackages(true);
     setFailOnError(true);
     setForkTrue();
-    addConfiguredJvmArg(argOf(NO_FS_ROOTS_ACCESS_CHECK_OPTION));
+    addConfiguredJvmArgs(jvmArgsFrom(NO_FS_ROOTS_ACCESS_CHECK_OPTION));
   }
 
   @Override
@@ -149,12 +148,6 @@ public class LaunchTestTask extends MpsLoadTask {
 
   private void setForkTrue() {
     super.setFork(true);
-  }
-
-  private static Arg argOf(String value) {
-    Arg arg = new Arg();
-    arg.setValue(value);
-    return arg;
   }
 
   private boolean checkProperProjectDir(File dir) {

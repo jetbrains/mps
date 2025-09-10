@@ -7,11 +7,11 @@ import org.apache.tools.ant.Task;
 import java.io.File;
 import jetbrains.mps.tool.common.Script;
 import java.util.List;
-import java.util.ArrayList;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import java.util.Hashtable;
 import java.util.Set;
+import java.util.ArrayList;
 import org.apache.tools.ant.util.JavaEnvUtils;
 import java.util.HashSet;
 import java.io.IOException;
@@ -27,6 +27,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collections;
 import java.io.FileInputStream;
+import java.util.Objects;
 import org.jetbrains.annotations.Nullable;
 import org.apache.tools.ant.taskdefs.ExecuteStreamHandler;
 import java.io.InputStream;
@@ -60,7 +61,7 @@ public class MpsLoadTask extends Task {
   private boolean myOpenPackages = false;
   private String myJnaLibraryPath = null;
   private String myWorkerClass;
-  private final List<String> myJvmArgs = new ArrayList<String>();
+  private final JvmArgs myJvmArgs = new JvmArgs(true);
   private List<String> myExtraArgs;
 
   public MpsLoadTask() {
@@ -138,14 +139,22 @@ public class MpsLoadTask extends Task {
       throw new BuildException("Nested jvmarg is only allowed in fork mode.");
     }
     log("Nested jvmarg is deprecated. Use jvmargs instead.", Project.MSG_WARN);
-    myJvmArgs.add(jvmArg.getValue());
+    myJvmArgs.addConfiguredArg(jvmArg);
   }
 
   public void addConfiguredJvmArgs(JvmArgs jvmArg) {
     if (!(myFork)) {
       throw new BuildException("Nested jvmargs is only allowed in fork mode.");
     }
-    myJvmArgs.addAll(jvmArg.getArgs());
+    myJvmArgs.addConfiguredJvmArgs(jvmArg);
+  }
+
+  protected final JvmArgs jvmArgsFrom(String... args) {
+    JvmArgs rv = new JvmArgs(false);
+    for (String a : args) {
+      rv.addConfiguredArg(new Arg(a));
+    }
+    return rv;
   }
 
   public void addConfiguredPlugin(Plugin plugin) {
@@ -223,11 +232,7 @@ public class MpsLoadTask extends Task {
       String currentClassPathString = System.getProperty("java.class.path");
       List<String> commandLine = new ArrayList<String>();
       commandLine.add(JavaEnvUtils.getJreExecutable("java"));
-      if (myJvmArgs.isEmpty()) {
-        commandLine.addAll(new JvmArgs().getArgs());
-      } else {
-        commandLine.addAll(myJvmArgs);
-      }
+      commandLine.addAll(myJvmArgs.getArgs());
       String javaHome = JavaEnvUtils.getJavaHome();
       StringBuilder sb = new StringBuilder();
       Set<String> entries = new HashSet<String>();
@@ -366,7 +371,7 @@ public class MpsLoadTask extends Task {
       }
     }
     // Last, respect the case worker doesn't need anything
-    return workerClass.newInstance();
+    return workerClass.getDeclaredConstructor().newInstance();
   }
 
   /**
@@ -427,9 +432,9 @@ public class MpsLoadTask extends Task {
   }
 
   private void dumpPropertiesToWhatToDo() {
-    Hashtable properties = getProject().getProperties();
-    for (Object key : properties.keySet()) {
-      myWhatToDo.putProperty((String) key, (String) properties.get(key));
+    Hashtable<String, Object> properties = getProject().getProperties();
+    for (String key : properties.keySet()) {
+      myWhatToDo.putProperty(key, Objects.toString(properties.get(key), null));
     }
   }
 
