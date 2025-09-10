@@ -324,9 +324,6 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
       <concept id="6612597108003615641" name="jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement" flags="ng" index="2U$1Ah">
         <property id="6612597108003615642" name="name" index="2U$1Ai" />
         <child id="6612597108003615643" name="line" index="2U$1Aj" />
@@ -3381,11 +3378,83 @@
       <node concept="3Tm1VV" id="3ufQioQQtnM" role="1B3o_S" />
       <node concept="3cqZAl" id="3ufQioQQtnN" role="3clF45" />
       <node concept="3clFbS" id="3ufQioQQtnO" role="3clF47">
+        <node concept="3SKdUt" id="1hBlbKC7Mmg" role="3cqZAp">
+          <node concept="1PaTwC" id="1hBlbKC7Mmh" role="1aUNEU">
+            <node concept="3oM_SD" id="1hBlbKC7Mmi" role="1PaTwD">
+              <property role="3oM_SC" value="first," />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7X_5" role="1PaTwD">
+              <property role="3oM_SC" value="let" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7X_7" role="1PaTwD">
+              <property role="3oM_SC" value="subclasses" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XCw" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XCx" role="1PaTwD">
+              <property role="3oM_SC" value="last" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XJi" role="1PaTwD">
+              <property role="3oM_SC" value="changes" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XMF" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XMG" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XMH" role="1PaTwD">
+              <property role="3oM_SC" value="configuration," />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XMI" role="1PaTwD">
+              <property role="3oM_SC" value="then," />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XQ7" role="1PaTwD">
+              <property role="3oM_SC" value="everything" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7XS6" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7Y2h" role="1PaTwD">
+              <property role="3oM_SC" value="ready" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7Y2i" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7Y2j" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="1hBlbKC7Y2k" role="1PaTwD">
+              <property role="3oM_SC" value="error" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="g9$9d2BuAC" role="3cqZAp">
           <node concept="1rXfSq" id="g9$9d2BuAA" role="3clFbG">
             <ref role="37wK5l" node="g9$9d2AipS" resolve="finalizeScriptSettings" />
             <node concept="37vLTw" id="g9$9d2BCBJ" role="37wK5m">
               <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4vDU0BP_vDF" role="3cqZAp">
+          <node concept="3clFbS" id="4vDU0BP_vDH" role="3clFbx">
+            <node concept="YS8fn" id="4vDU0BPzkAp" role="3cqZAp">
+              <node concept="2ShNRf" id="4vDU0BPzpQq" role="YScLw">
+                <node concept="1pGfFk" id="4vDU0BPzqP2" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
+                  <node concept="Xl_RD" id="4vDU0BP_QN7" role="37wK5m">
+                    <property role="Xl_RC" value="Please specify 'worker' class to execute" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="4vDU0BP__wF" role="3clFbw">
+            <node concept="10Nm6u" id="4vDU0BP__xU" role="3uHU7w" />
+            <node concept="1rXfSq" id="1hBlbKC7fU8" role="3uHU7B">
+              <ref role="37wK5l" node="4vDU0BPyKWd" resolve="getWorker" />
             </node>
           </node>
         </node>
@@ -3757,7 +3826,7 @@
                         <node concept="liA8E" id="3ufQioQQtq9" role="2OqNvi">
                           <ref role="37wK5l" to="wyt6:~ClassLoader.loadClass(java.lang.String)" resolve="loadClass" />
                           <node concept="1rXfSq" id="4hiugqyza05" role="37wK5m">
-                            <ref role="37wK5l" node="3ufQioQQt$B" resolve="getWorkerClass" />
+                            <ref role="37wK5l" node="4vDU0BPyKWd" resolve="getWorker" />
                           </node>
                         </node>
                       </node>
@@ -4581,7 +4650,7 @@
                 <node concept="liA8E" id="3ufQioQQts4" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                   <node concept="1rXfSq" id="4hiugqyz8YN" role="37wK5m">
-                    <ref role="37wK5l" node="3ufQioQQt$B" resolve="getWorkerClass" />
+                    <ref role="37wK5l" node="4vDU0BPyKWd" resolve="getWorker" />
                   </node>
                 </node>
               </node>
@@ -6789,176 +6858,6 @@
           </node>
           <node concept="1dT_AC" id="1rGdf3ZyeCm" role="1dT_Ay">
             <property role="1dT_AB" value=" on a forked process." />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="76_s2Q_8Gxm" role="jymVt" />
-    <node concept="3clFb_" id="3ufQioQQt$B" role="jymVt">
-      <property role="TrG5h" value="getWorkerClass" />
-      <property role="DiZV1" value="false" />
-      <node concept="17QB3L" id="2g9KPLQIWLl" role="3clF45" />
-      <node concept="3Tmbuc" id="3ufQioQQt$C" role="1B3o_S" />
-      <node concept="3clFbS" id="3ufQioQQt$G" role="3clF47">
-        <node concept="3SKdUt" id="4vDU0BP$67t" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo8cB" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXo8cC" role="1PaTwD">
-              <property role="3oM_SC" value="I'd" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cD" role="1PaTwD">
-              <property role="3oM_SC" value="like" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cE" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cF" role="1PaTwD">
-              <property role="3oM_SC" value="keep" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cG" role="1PaTwD">
-              <property role="3oM_SC" value="getWorkerClass()," />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cH" role="1PaTwD">
-              <property role="3oM_SC" value="but" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cI" role="1PaTwD">
-              <property role="3oM_SC" value="can't" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cJ" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cK" role="1PaTwD">
-              <property role="3oM_SC" value="it" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cL" role="1PaTwD">
-              <property role="3oM_SC" value="public" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cM" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cN" role="1PaTwD">
-              <property role="3oM_SC" value="satisfy" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cO" role="1PaTwD">
-              <property role="3oM_SC" value="Ant" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cP" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cQ" role="1PaTwD">
-              <property role="3oM_SC" value="not" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cR" role="1PaTwD">
-              <property role="3oM_SC" value="break" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cS" role="1PaTwD">
-              <property role="3oM_SC" value="binary" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cT" role="1PaTwD">
-              <property role="3oM_SC" value="code" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cU" role="1PaTwD">
-              <property role="3oM_SC" value="compatibility." />
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="4vDU0BPzW3E" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo8cV" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXo8cW" role="1PaTwD">
-              <property role="3oM_SC" value="Left" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cX" role="1PaTwD">
-              <property role="3oM_SC" value="for" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cY" role="1PaTwD">
-              <property role="3oM_SC" value="compatibility," />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8cZ" role="1PaTwD">
-              <property role="3oM_SC" value="just" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d0" role="1PaTwD">
-              <property role="3oM_SC" value="in" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d1" role="1PaTwD">
-              <property role="3oM_SC" value="case" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d2" role="1PaTwD">
-              <property role="3oM_SC" value="there" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d3" role="1PaTwD">
-              <property role="3oM_SC" value="are" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d4" role="1PaTwD">
-              <property role="3oM_SC" value="other" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d5" role="1PaTwD">
-              <property role="3oM_SC" value="subclasses" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d6" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d7" role="1PaTwD">
-              <property role="3oM_SC" value="MpsLoadTask" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d8" role="1PaTwD">
-              <property role="3oM_SC" value="that" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8d9" role="1PaTwD">
-              <property role="3oM_SC" value="override" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8da" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo8db" role="1PaTwD">
-              <property role="3oM_SC" value="method" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4vDU0BP_kLX" role="3cqZAp">
-          <node concept="3cpWsn" id="4vDU0BP_kLY" role="3cpWs9">
-            <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="4vDU0BP_kLZ" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
-            <node concept="1rXfSq" id="4vDU0BP_qE2" role="33vP2m">
-              <ref role="37wK5l" node="4vDU0BPyKWd" resolve="getWorker" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="4vDU0BP_vDF" role="3cqZAp">
-          <node concept="3clFbS" id="4vDU0BP_vDH" role="3clFbx">
-            <node concept="YS8fn" id="4vDU0BPzkAp" role="3cqZAp">
-              <node concept="2ShNRf" id="4vDU0BPzpQq" role="YScLw">
-                <node concept="1pGfFk" id="4vDU0BPzqP2" role="2ShVmc">
-                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                  <node concept="Xl_RD" id="4vDU0BP_QN7" role="37wK5m">
-                    <property role="Xl_RC" value="Please specify 'worker' class to execute" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbC" id="4vDU0BP__wF" role="3clFbw">
-            <node concept="10Nm6u" id="4vDU0BP__xU" role="3uHU7w" />
-            <node concept="37vLTw" id="4vDU0BP__oO" role="3uHU7B">
-              <ref role="3cqZAo" node="4vDU0BP_kLY" resolve="rv" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="4vDU0BP_L1U" role="3cqZAp">
-          <node concept="37vLTw" id="4vDU0BP_V7t" role="3cqZAk">
-            <ref role="3cqZAo" node="4vDU0BP_kLY" resolve="rv" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="4vDU0BPzqSv" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="P$JXv" id="4vDU0BPzqSs" role="lGtFl">
-        <node concept="TZ5HI" id="4vDU0BPzqSt" role="3nqlJM">
-          <node concept="TZ5HA" id="4vDU0BPzqSu" role="3HnX3l">
-            <node concept="1dT_AC" id="4vDU0BPzwHb" role="1dT_Ay">
-              <property role="1dT_AB" value="pass worker class name as cons argument or using #setWorker" />
-            </node>
           </node>
         </node>
       </node>

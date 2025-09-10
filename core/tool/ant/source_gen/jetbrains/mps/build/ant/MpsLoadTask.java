@@ -223,7 +223,11 @@ public class MpsLoadTask extends Task {
 
   @Override
   public void execute() throws BuildException {
+    // first, let subclasses do last changes to the configuration, then, everything not ready is an error
     finalizeScriptSettings(myWhatToDo);
+    if (getWorker() == null) {
+      throw new IllegalStateException("Please specify 'worker' class to execute");
+    }
     // By default, we build a classpath that presumably contains all necessary MPS jars (expecting MpsEnvironment or even IdeaEnvironment to fire up)
     // though specific task subclasses have control over what to include there. Unfortunately, there's no yet fine-grained control e.g. to include
     // only jars sufficient for MpsEnvironment (i.e. not to include any IDEA stuff)
@@ -268,7 +272,7 @@ public class MpsLoadTask extends Task {
         String fullPath = new File(getMpsHome_Checked(), myJnaLibraryPath).getAbsolutePath();
         commandLine.add("-Djna.boot.library.path=" + fullPath);
       }
-      commandLine.add(getWorkerClass());
+      commandLine.add(getWorker());
       dumpPropertiesToWhatToDo();
       try {
         commandLine.add(myWhatToDo.dumpToTmpFile().getAbsolutePath());
@@ -304,7 +308,7 @@ public class MpsLoadTask extends Task {
       final ClassLoader threadContextCL = Thread.currentThread().getContextClassLoader();
       try {
         Thread.currentThread().setContextClassLoader(classLoader);
-        Class<?> workerClass = classLoader.loadClass(getWorkerClass());
+        Class<?> workerClass = classLoader.loadClass(getWorker());
         doInProcessWork(workerClass);
       } catch (BuildException ex) {
         throw ex;
@@ -509,21 +513,6 @@ public class MpsLoadTask extends Task {
    */
   protected ExecuteStreamHandler createStreamHandler() {
     return new MyExecuteStreamHandler(this);
-  }
-
-  /**
-   * 
-   * @deprecated pass worker class name as cons argument or using #setWorker
-   */
-  @Deprecated
-  protected String getWorkerClass() {
-    // I'd like to keep getWorkerClass(), but can't make it public to satisfy Ant and not break binary code compatibility.
-    // Left for compatibility, just in case there are other subclasses of MpsLoadTask that override the method
-    String rv = getWorker();
-    if (rv == null) {
-      throw new IllegalStateException("Please specify 'worker' class to execute");
-    }
-    return rv;
   }
 
   public static String readBuildNumber(InputStream stream) {

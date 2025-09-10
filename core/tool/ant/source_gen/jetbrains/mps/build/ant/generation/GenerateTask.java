@@ -20,17 +20,15 @@ public class GenerateTask extends MpsLoadTask {
   /*package*/ static final String PROPERTY_LOG_DIR = "mps.log.dir";
   private String myTargetJavaVersion = null;
   private GeneratorSettings mySettings;
-  private int myParallelThreads = 4;
 
   public GenerateTask() {
     super("jetbrains.mps.tool.builder.make.GeneratorWorker");
-    // FIXME remove all setXXX methods related to GeneratorSettings once approach with nested <settings> element is in use for at least a year,
-    //   just in case there are old <generate> tasks with settings as attributes.
   }
 
   public void addConfiguredChunk(Chunk chunk) {
     myWhatToDo.addChunk(chunk.getModules(), chunk.getBootstrap());
   }
+
   public void addConfiguredLibrary(ModuleJarDataType jar) {
     // FIXME decide whether I care to evolve manifest story. With reliable <plugin>s, don't think there's much value in 
     //      distinct <library> elements (grouped into manifest). Rather shall spend effort to make more plugins?
@@ -99,38 +97,8 @@ public class GenerateTask extends MpsLoadTask {
     }
   }
 
-  public void setStrictMode(boolean strictMode) {
-    getSettings().setStrictMode(strictMode);
-  }
-  public void setParallelMode(boolean parallelMode) {
-    if (parallelMode == false) {
-      getSettings().setParallelThreads(1);
-    } else {
-      getSettings().setParallelThreads(myParallelThreads);
-    }
-  }
-  public void setUseInplaceTransform(boolean inplaceEnabled) {
-    getSettings().setInplaceTransform(inplaceEnabled);
-  }
-  public void setParallelThreads(int threadCount) {
-    // keep the value in case setParallelMode(true) comes *after* setParallelThreads(8)
-    myParallelThreads = threadCount;
-    getSettings().setParallelThreads(threadCount);
-  }
-  public void setHideWarnings(boolean hideWarnings) {
-    getSettings().setWarnWrongChild(!(hideWarnings));
-  }
-  public void setCreateStaticRefs(boolean useStaticRefs) {
-    getSettings().setCreateStaticRefs(useStaticRefs);
-  }
-  public void setSkipUnmodifiedModels(boolean skipUnmodifiedModels) {
-    getSettings().setSkipUnmodifiedModels(skipUnmodifiedModels);
-  }
   public void setTargetJavaVersion(String targetJavaVersion) {
     // FIXME shall follow GeneratorSettings approach and extract a distinct compile settings typedef
     myTargetJavaVersion = targetJavaVersion;
-  }
-  public void setMessageLevel(String level) {
-    getSettings().setMessageLevel(level);
   }
 }
