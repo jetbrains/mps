@@ -377,6 +377,28 @@
       <node concept="3cqZAl" id="3ufQioQQsmb" role="3clF45" />
       <node concept="3clFbS" id="3ufQioQQsmc" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="4s_xB2uaruC" role="jymVt" />
+    <node concept="3clFbW" id="4s_xB2uakWR" role="jymVt">
+      <node concept="3Tm1VV" id="4s_xB2uakWS" role="1B3o_S" />
+      <node concept="3cqZAl" id="4s_xB2uakWT" role="3clF45" />
+      <node concept="3clFbS" id="4s_xB2uakWU" role="3clF47">
+        <node concept="3clFbF" id="4s_xB2uapEA" role="3cqZAp">
+          <node concept="37vLTI" id="4s_xB2uara9" role="3clFbG">
+            <node concept="37vLTw" id="4s_xB2uarsJ" role="37vLTx">
+              <ref role="3cqZAo" node="4s_xB2uapzu" resolve="value" />
+            </node>
+            <node concept="37vLTw" id="4s_xB2uapE_" role="37vLTJ">
+              <ref role="3cqZAo" node="3ufQioQQsm6" resolve="myValue" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="4s_xB2uapzu" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="17QB3L" id="4s_xB2uapzt" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="4s_xB2uakTB" role="jymVt" />
     <node concept="3clFb_" id="3ufQioQQsmd" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getValue" />
@@ -5943,6 +5965,9 @@
           </node>
         </node>
         <node concept="1gVbGN" id="4yJL2wVNmT0" role="3cqZAp">
+          <node concept="Xl_RD" id="4yJL2wVNmSZ" role="1gVpfI">
+            <property role="Xl_RC" value="MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set" />
+          </node>
           <node concept="2OqwBi" id="4yJL2wVNGgN" role="1gVkn0">
             <node concept="2ShNRf" id="4yJL2wVN_P6" role="2Oq$k0">
               <node concept="1pGfFk" id="4yJL2wVN_Pq" role="2ShVmc">
@@ -5958,9 +5983,6 @@
             <node concept="liA8E" id="4yJL2wVNGgO" role="2OqNvi">
               <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
             </node>
-          </node>
-          <node concept="Xl_RD" id="4yJL2wVNmSZ" role="1gVpfI">
-            <property role="Xl_RC" value="MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set" />
           </node>
         </node>
         <node concept="3clFbH" id="4OPNMy29iTu" role="3cqZAp" />
