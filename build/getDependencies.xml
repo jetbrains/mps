@@ -7,6 +7,7 @@
 
   <property name="mps.ivy.home" value="${user.home}" description="Property used to set custom path on TeamCity"/>
   <property name="idea.platform.local.build" value="false" description="Set to true if use local platform build"/>
+  <property name="idea.platform.provided.filename" value="mps-platform-provided.zip"/>
   <property name="ivy.jar.dir" value="${basedir}/ivy"/>
   <property name="ivy.cache.ttl.default" value="eternal"/>
 
@@ -138,9 +139,6 @@
     <loadfile property="current.version" srcfile="${basedir}/../lib/build.txt">
       <filterchain>
         <replacestring from="MPS-" to=""/>
-        <!-- TODO: fix prefix in platform build -->
-        <!-- Quick fix: wrong prefix in build.txt -->
-        <replacestring from="IC-" to=""/>
         <striplinebreaks/>
       </filterchain>
     </loadfile>
@@ -155,10 +153,17 @@
       </not>
     </condition>
 
+    <!-- mps-platform-provided.zip may be already present in <root>/ if this is a CI build that takes it from the chain -->
+    <!-- Locally present mps-platform-provided.zip is supported as well and overrides version checks. This is to support development on top of CI builds. -->
+    <condition property="platform.provided" value="true" else="false">
+      <available file="${basedir}/../${idea.platform.provided.filename}"/>
+    </condition>
+
     <!-- If platform is not need to be build locally and is outdated - platform with mps.platform.build will be downloaded -->
     <condition property="do.platform.download" value="true" else="false">
       <and>
         <isfalse value="${idea.platform.local.build}"/>
+        <isfalse value="${platform.provided}"/>
         <istrue value="${platform.outdated}"/>
       </and>
     </condition>
@@ -216,21 +221,58 @@
   <!-- Download 3rd party libraries                          -->
   <!-- ===================================================== -->
 
-  <target name="install" depends="download-platform,install-platform,download-3rd-party,embed-module-descriptors" description="Download all platform libs and sources"/>
+  <target name="install" depends="update-platform,install-platform,download-3rd-party,embed-module-descriptors" description="Download all platform libs and sources"/>
 
   <!-- ===================================================== -->
   <!-- Download libraries with ivy                           -->
   <!-- ===================================================== -->
 
-  <target name="download-platform" depends="check-platform,install-ivy" if="${do.platform.download}"
-          description="Download platform based on IDEA Community from TeamCity">
+  <target name="update-platform" depends="check-platform,provided-platform,download-platform" description="Download and/or unpack platform libs and sources"/>
+
+  <target name="provided-platform" depends="check-provided-platform" if="${do.platform.provided.update}">
+    <echo message="Platform is already provided, using ${idea.platform.provided.filename}"/>
+    <antcall target="unzip-platform">
+      <param name="platform.zip.file" value="${idea.platform.provided.filename}"/>
+    </antcall>
+  </target>
+
+  <target name="check-provided-platform" if="${platform.provided}">
+    <unzip src="${basedir}/../${idea.platform.provided.filename}" dest="${basedir}">
+      <patternset>
+        <include name="lib/build.txt"/>
+      </patternset>
+      <mapper type="flatten"/>
+    </unzip>
+    <loadfile property="platform.zip.version" srcFile="${basedir}/build.txt">
+      <filterchain>
+        <replacestring from="MPS-" to=""/>
+        <striplinebreaks/>
+      </filterchain>
+    </loadfile>
+    <echo message="Platform ZIP version: ${platform.zip.version}. Current version: ${current.version}"/>
+    <delete file="${basedir}/build.txt"/>
+    <condition property="do.platform.provided.update" value="false" else="true">
+      <equals arg1="${platform.zip.version}" arg2="${current.version}"/>
+    </condition>
+  </target>
+
+  <target name="download-platform" if="${do.platform.download}" description="Download platform based on IDEA Community from TeamCity">
+    <echo message="Platform will be downloaded"/>
+    <antcall target="download-ivy"/>
+    <antcall target="unzip-platform">
+      <param name="platform.zip.file" value="mps-platform.zip"/>
+    </antcall>
+  </target>
+
+  <target name="download-ivy" depends="install-ivy" description="Download platform based on IDEA Community from TeamCity">
     <ivy:resolve file="ivy.xml" showprogress="true"/>
     <ivy:retrieve pattern="${basedir}/../[artifact].[ext]" overwritemode="different"/>
+  </target>
 
-    <!-- Delete current platform only after successful download of new one -->
+  <target name="unzip-platform" description="Unpacks mps-platform.zip">
     <antcall target="clean-platform"/>
 
-    <unzip src="${basedir}/../mps-platform.zip" dest="${basedir}/../" overwrite="true">
+    <unzip src="${basedir}/../${platform.zip.file}" dest="${basedir}/../" overwrite="true">
       <patternset>
         <exclude name="plugins/java-ide-customization/**"/>
         <!-- TODO: Exclude log.xml & mps.svg from platform-->

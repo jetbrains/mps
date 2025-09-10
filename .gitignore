@@ -89,6 +89,7 @@ teamcity-info.xml
 
 # Intellij Idea platform artifact, which is extracted to bin, build, lib & plugins folders
 /mps-platform.zip
+/mps-platform-provided.zip
 
 # Kotlin compiler
 /plugins/mps-kotlin/kotlinc
