@@ -1482,8 +1482,6 @@
         <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
       </node>
       <node concept="3clFbS" id="4B1FZuRjhXR" role="3clF47">
-        <node concept="3clFbH" id="4B1FZuRjBng" role="3cqZAp" />
-        <node concept="3clFbH" id="4B1FZuRjCep" role="3cqZAp" />
         <node concept="3SKdUt" id="4B1FZuRji0s" role="3cqZAp">
           <node concept="1PaTwC" id="4B1FZuRji0t" role="1aUNEU">
             <node concept="3oM_SD" id="4B1FZuRji0v" role="1PaTwD">
@@ -1613,6 +1611,55 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="1O13eoq3bHz" role="3cqZAp">
+          <node concept="1PaTwC" id="1O13eoq3bH$" role="1aUNEU">
+            <node concept="3oM_SD" id="1O13eoq3c6o" role="1PaTwD">
+              <property role="3oM_SC" value="Note," />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6p" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6q" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6r" role="1PaTwD">
+              <property role="3oM_SC" value="standard" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6s" role="1PaTwD">
+              <property role="3oM_SC" value="JUL" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6t" role="1PaTwD">
+              <property role="3oM_SC" value="configuration" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6u" role="1PaTwD">
+              <property role="3oM_SC" value="file," />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6v" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6w" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6x" role="1PaTwD">
+              <property role="3oM_SC" value="(unless" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6y" role="1PaTwD">
+              <property role="3oM_SC" value="overridden" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6z" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6$" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA's" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6_" role="1PaTwD">
+              <property role="3oM_SC" value="config" />
+            </node>
+            <node concept="3oM_SD" id="1O13eoq3c6A" role="1PaTwD">
+              <property role="3oM_SC" value="file)" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4B1FZuRjhXT" role="3cqZAp">
           <node concept="3cpWsn" id="4B1FZuRjhXS" role="3cpWs9">
             <property role="TrG5h" value="logCfgPathStr" />
@@ -1621,10 +1668,17 @@
             </node>
             <node concept="2YIFZM" id="4B1FZuRjjqq" role="33vP2m">
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String,java.lang.String)" resolve="getProperty" />
               <node concept="10M0yZ" id="4B1FZuRjjLr" role="37wK5m">
                 <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
                 <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_LOG_CONFIG_FILE" resolve="PROPERTY_LOG_CONFIG_FILE" />
+              </node>
+              <node concept="2YIFZM" id="1O13eoq3a95" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+                <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                <node concept="Xl_RD" id="1O13eoq3aqn" role="37wK5m">
+                  <property role="Xl_RC" value="java.util.logging.config.file" />
+                </node>
               </node>
             </node>
           </node>
