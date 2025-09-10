@@ -10,6 +10,11 @@ public class Arg extends ProjectComponent {
   private String myValue;
   public Arg() {
   }
+
+  public Arg(String value) {
+    myValue = value;
+  }
+
   public String getValue() {
     return myValue;
   }

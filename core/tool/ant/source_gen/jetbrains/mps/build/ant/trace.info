@@ -579,20 +579,26 @@
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907886467">
     <file name="Arg.java">
       <node id="4003657351907886470" at="10,0,11,0" concept="6" trace="myValue" />
-      <node id="4003657351907886481" at="13,28,14,19" concept="12" />
-      <node id="4003657351907886489" at="16,38,17,20" concept="5" />
+      <node id="5126651569079163558" at="14,28,15,20" concept="5" />
+      <node id="4003657351907886481" at="18,28,19,19" concept="12" />
+      <node id="4003657351907886489" at="21,38,22,20" concept="5" />
       <node id="4003657351907886473" at="11,0,13,0" concept="3" trace="Arg#()V" />
-      <node id="4003657351907886477" at="13,0,16,0" concept="10" trace="getValue#()Ljava/lang/String;" />
-      <node id="4003657351907886483" at="16,0,19,0" concept="10" trace="setValue#(Ljava/lang/String;)V" />
+      <node id="5126651569079144247" at="14,0,17,0" concept="3" trace="Arg#(Ljava/lang/String;)V" />
+      <node id="4003657351907886477" at="18,0,21,0" concept="10" trace="getValue#()Ljava/lang/String;" />
+      <node id="4003657351907886483" at="21,0,24,0" concept="10" trace="setValue#(Ljava/lang/String;)V" />
       <scope id="4003657351907886476" at="11,16,11,16" />
-      <scope id="4003657351907886480" at="13,28,14,19" />
-      <scope id="4003657351907886488" at="16,38,17,20" />
+      <scope id="5126651569079144250" at="14,28,15,20" />
+      <scope id="4003657351907886480" at="18,28,19,19" />
+      <scope id="4003657351907886488" at="21,38,22,20" />
       <scope id="4003657351907886473" at="11,0,13,0" />
-      <scope id="4003657351907886477" at="13,0,16,0" />
-      <scope id="4003657351907886483" at="16,0,19,0">
+      <scope id="5126651569079144247" at="14,0,17,0">
+        <var name="value" id="5126651569079163102" />
+      </scope>
+      <scope id="4003657351907886477" at="18,0,21,0" />
+      <scope id="4003657351907886483" at="21,0,24,0">
         <var name="value" id="4003657351907886486" />
       </scope>
-      <unit id="4003657351907886467" at="8,0,20,0" name="jetbrains.mps.build.ant.Arg" />
+      <unit id="4003657351907886467" at="8,0,25,0" name="jetbrains.mps.build.ant.Arg" />
     </file>
   </root>
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/4003657351907889245">

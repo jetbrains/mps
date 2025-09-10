@@ -37,12 +37,11 @@ public final class LogInitializer {
    * instead of explicit LogInitializer.init() call?
    */
   public static void init() throws Exception {
-
-
     // next is similar to Log4jInitializer, except that we don't provide default log configuration (as long as
     // IDEA does not). We used to resort to default bin/log.xml; if IDEA comes with .properties with defaults,
     // have to adopt this here, too.
-    String logCfgPathStr = System.getProperty(PathManager.PROPERTY_LOG_CONFIG_FILE);
+    // Note, if there's standard JUL configuration file, use it (unless overridden by IDEA's config file)
+    String logCfgPathStr = System.getProperty(PathManager.PROPERTY_LOG_CONFIG_FILE, System.getProperty("java.util.logging.config.file"));
     if (logCfgPathStr != null) {
       Path logCfgPath = Paths.get(logCfgPathStr);
       if (!(logCfgPath.isAbsolute())) {
