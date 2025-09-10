@@ -18,67 +18,67 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590377(jetbrains.mps.lang.dataFlow.constraints)/1213104840433">
     <file name="DataFlowBuilderDeclaration_Constraints.java">
-      <node id="1213104840433" at="29,100,30,63" concept="10" />
-      <node id="1213104840434" at="30,63,31,30" concept="1" />
-      <node id="1213104840433" at="34,126,35,62" concept="5" />
-      <node id="1213104840433" at="35,62,36,0" concept="7" />
-      <node id="1213104840433" at="37,55,38,70" concept="1" />
-      <node id="1213104840433" at="39,9,40,0" concept="7" />
-      <node id="1213104840433" at="40,0,41,22" concept="6" />
-      <node id="1213104840434" at="47,53,48,60" concept="10" />
-      <node id="2955426575105451558" at="51,40,52,131" concept="5" />
-      <node id="6246554009624086643" at="53,101,54,65" concept="1" />
-      <node id="1213104840437" at="55,7,56,32" concept="6" />
-      <node id="1227089120381" at="59,57,60,57" concept="6" />
-      <node id="1213104840433" at="62,0,63,0" concept="8" trace="canBeRootBreakingPoint" />
-      <node id="1213104840433" at="65,0,66,0" concept="8" trace="DataFlowBuilderDeclaration$NP" />
-      <node id="1213104840433" at="69,0,70,0" concept="8" trace="name$MnvL" />
-      <node id="1213104840433" at="73,0,74,0" concept="8" trace="conceptDeclaration$vN83" />
-      <node id="1213104840433" at="74,0,75,0" concept="8" trace="modes$Mjcf" />
-      <node id="1213104840433" at="36,0,39,9" concept="3" />
-      <node id="1213104840434" at="47,0,50,0" concept="0" trace="Name_PD#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="6246554009624042467" at="52,131,55,7" concept="2" />
-      <node id="1213104840433" at="59,0,62,0" concept="9" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="1213104840434" at="50,0,58,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="1213104840433" at="33,0,43,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="1213104840433" at="31,30,43,7" concept="1" />
-      <node id="1213104840433" at="29,0,45,0" concept="0" trace="DataFlowBuilderDeclaration_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
-      <scope id="1213104840433" at="37,55,38,70" />
-      <scope id="1213104840434" at="47,53,48,60" />
-      <scope id="6246554009624042473" at="53,101,54,65" />
-      <scope id="1227089120380" at="59,57,60,57" />
-      <scope id="1213104840434" at="47,0,50,0">
+      <node id="1213104840433" at="30,100,31,63" concept="10" />
+      <node id="1213104840434" at="31,63,32,30" concept="1" />
+      <node id="1213104840433" at="35,126,36,62" concept="5" />
+      <node id="1213104840433" at="36,62,37,0" concept="7" />
+      <node id="1213104840433" at="38,55,39,70" concept="1" />
+      <node id="1213104840433" at="40,9,41,0" concept="7" />
+      <node id="1213104840433" at="41,0,42,22" concept="6" />
+      <node id="1213104840434" at="48,53,49,60" concept="10" />
+      <node id="2955426575105451558" at="52,40,53,131" concept="5" />
+      <node id="6246554009624086643" at="54,101,55,65" concept="1" />
+      <node id="1213104840437" at="56,7,57,32" concept="6" />
+      <node id="1227089120381" at="60,57,61,101" concept="6" />
+      <node id="1213104840433" at="63,0,64,0" concept="8" trace="canBeRootBreakingPoint" />
+      <node id="1213104840433" at="66,0,67,0" concept="8" trace="DataFlowBuilderDeclaration$NP" />
+      <node id="1213104840433" at="70,0,71,0" concept="8" trace="name$MnvL" />
+      <node id="1213104840433" at="74,0,75,0" concept="8" trace="conceptDeclaration$vN83" />
+      <node id="1213104840433" at="75,0,76,0" concept="8" trace="modes$Mjcf" />
+      <node id="1213104840433" at="37,0,40,9" concept="3" />
+      <node id="1213104840434" at="48,0,51,0" concept="0" trace="Name_PD#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="6246554009624042467" at="53,131,56,7" concept="2" />
+      <node id="1213104840433" at="60,0,63,0" concept="9" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="1213104840434" at="51,0,59,0" concept="4" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1213104840433" at="34,0,44,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="1213104840433" at="32,30,44,7" concept="1" />
+      <node id="1213104840433" at="30,0,46,0" concept="0" trace="DataFlowBuilderDeclaration_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="1213104840433" at="38,55,39,70" />
+      <scope id="1213104840434" at="48,53,49,60" />
+      <scope id="6246554009624042473" at="54,101,55,65" />
+      <scope id="1227089120380" at="60,57,61,101" />
+      <scope id="1213104840434" at="48,0,51,0">
         <var name="container" id="1213104840434" />
       </scope>
-      <scope id="6246554009624042467" at="52,131,55,7">
+      <scope id="6246554009624042467" at="53,131,56,7">
         <var name="mode" id="6246554009624042469" />
       </scope>
-      <scope id="1213104840433" at="59,0,62,0">
+      <scope id="1213104840433" at="60,0,63,0">
         <var name="model" id="1213104840433" />
       </scope>
-      <scope id="1213104840436" at="51,40,56,32">
+      <scope id="1213104840436" at="52,40,57,32">
         <var name="name" id="2955426575105451559" />
       </scope>
-      <scope id="1213104840433" at="34,126,41,22">
+      <scope id="1213104840433" at="35,126,42,22">
         <var name="result" id="1213104840433" />
       </scope>
-      <scope id="1213104840434" at="50,0,58,0">
+      <scope id="1213104840434" at="51,0,59,0">
         <var name="node" id="1213104840434" />
       </scope>
-      <scope id="1213104840433" at="33,0,43,0">
+      <scope id="1213104840433" at="34,0,44,0">
         <var name="checkingNodeContext" id="1213104840433" />
         <var name="context" id="1213104840433" />
       </scope>
-      <scope id="1213104840433" at="29,100,43,7" />
-      <scope id="1213104840433" at="29,0,45,0">
+      <scope id="1213104840433" at="30,100,44,7" />
+      <scope id="1213104840433" at="30,0,46,0">
         <var name="initContext" id="1213104840433" />
       </scope>
-      <unit id="1213104840433" at="64,0,67,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$CONCEPTS" />
-      <unit id="1213104840433" at="68,0,71,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$PROPS" />
-      <unit id="1213104840433" at="72,0,76,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$LINKS" />
-      <unit id="1213104840433" at="32,21,43,5" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$1" />
-      <unit id="1213104840434" at="46,0,59,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$Name_PD" />
-      <unit id="1213104840433" at="28,0,77,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints" />
+      <unit id="1213104840433" at="65,0,68,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$CONCEPTS" />
+      <unit id="1213104840433" at="69,0,72,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$PROPS" />
+      <unit id="1213104840433" at="73,0,77,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$LINKS" />
+      <unit id="1213104840433" at="33,21,44,5" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$1" />
+      <unit id="1213104840434" at="47,0,60,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints$Name_PD" />
+      <unit id="1213104840433" at="29,0,78,0" name="jetbrains.mps.lang.dataFlow.constraints.DataFlowBuilderDeclaration_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590377(jetbrains.mps.lang.dataFlow.constraints)/1213104855807">
