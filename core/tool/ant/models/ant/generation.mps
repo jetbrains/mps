@@ -1975,6 +1975,22 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="7_Tu8dM1kzS" role="3cqZAp">
+          <node concept="1PaTwC" id="7_Tu8dM1kzT" role="1aUNEU">
+            <node concept="3oM_SD" id="7_Tu8dM1kzU" role="1PaTwD">
+              <property role="3oM_SC" value="pretty" />
+            </node>
+            <node concept="3oM_SD" id="7_Tu8dM1kCn" role="1PaTwD">
+              <property role="3oM_SC" value="much" />
+            </node>
+            <node concept="3oM_SD" id="7_Tu8dM1kCp" role="1PaTwD">
+              <property role="3oM_SC" value="==" />
+            </node>
+            <node concept="3oM_SD" id="7_Tu8dM1kCU" role="1PaTwD">
+              <property role="3oM_SC" value="${artifacts.mps}/lib/jna" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4QSveR2VOhz" role="3cqZAp">
           <node concept="1rXfSq" id="4QSveR2VOhx" role="3clFbG">
             <ref role="37wK5l" to="644x:4QSveR2V4Uk" resolve="setJnaLibraryPath" />

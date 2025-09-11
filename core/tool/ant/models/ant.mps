@@ -2306,7 +2306,7 @@
       </node>
       <node concept="P$JXv" id="1gHrQBMJp8o" role="lGtFl">
         <node concept="TUZQ0" id="1gHrQBMJp8r" role="3nqlJM">
-          <property role="TUZQ4" value="path to a directory containing native JNA library" />
+          <property role="TUZQ4" value="path to a directory containing native JNA library, relative to MPS home (the one we use to launch the task)" />
           <node concept="zr_55" id="1gHrQBMJp8t" role="zr_5Q">
             <ref role="zr_51" node="4QSveR2V4Ur" resolve="jnaLibraryPath" />
           </node>
@@ -2324,6 +2324,74 @@
         <node concept="TZ5HA" id="1gHrQBMJY47" role="TZ5H$">
           <node concept="1dT_AC" id="1gHrQBMJY48" role="1dT_Ay">
             <property role="1dT_AB" value="does not require JNA libraries. This setter is therefore currently used only in MigrationTask and MpsRunnerTask." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7_Tu8dM0UId" role="TZ5H$">
+          <node concept="1dT_AC" id="7_Tu8dM0UIe" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7_Tu8dLZUrs" role="TZ5H$">
+          <node concept="1dT_AC" id="7_Tu8dLZUrt" role="1dT_Ay">
+            <property role="1dT_AB" value="NOTE, with some tasks using explicit jvmarg with " />
+          </node>
+          <node concept="1dT_AA" id="7_Tu8dM04qj" role="1dT_Ay">
+            <node concept="VVOAv" id="7_Tu8dM04q_" role="qph3F">
+              <node concept="TZ5HA" id="7_Tu8dM04qB" role="2Xj1qM">
+                <node concept="1dT_AC" id="7_Tu8dM04qT" role="1dT_Ay">
+                  <property role="1dT_AB" value="-Djna.boot.library.path=" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="7_Tu8dM04qi" role="1dT_Ay">
+            <property role="1dT_AB" value=" conflicts with the way value supplied here ends up in a command line." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7_Tu8dM0787" role="TZ5H$">
+          <node concept="1dT_AC" id="7_Tu8dM0788" role="1dT_Ay">
+            <property role="1dT_AB" value="      Perhaps, shall use " />
+          </node>
+          <node concept="1dT_AA" id="7_Tu8dM0imL" role="1dT_Ay">
+            <node concept="VVOAv" id="7_Tu8dM0in3" role="qph3F">
+              <node concept="TZ5HA" id="7_Tu8dM0in5" role="2Xj1qM">
+                <node concept="1dT_AC" id="7_Tu8dM0inB" role="1dT_Ay">
+                  <property role="1dT_AB" value="addConfiguredJvmArgs()" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="7_Tu8dM0imK" role="1dT_Ay">
+            <property role="1dT_AB" value=", instead, to facilitate proper replacement (if user supplies own jvmarg) and a single occurrence of the argument." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7_Tu8dM0irS" role="TZ5H$">
+          <node concept="1dT_AC" id="7_Tu8dM0irT" role="1dT_Ay">
+            <property role="1dT_AB" value="      However, with " />
+          </node>
+          <node concept="1dT_AA" id="7_Tu8dM0tUw" role="1dT_Ay">
+            <node concept="VVOAv" id="7_Tu8dM0tUM" role="qph3F">
+              <node concept="TZ5HA" id="7_Tu8dM0tUO" role="2Xj1qM">
+                <node concept="1dT_AC" id="7_Tu8dM0tUQ" role="1dT_Ay">
+                  <property role="1dT_AB" value="getMpsHome_Checked()" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="7_Tu8dM0tUv" role="1dT_Ay">
+            <property role="1dT_AB" value=" not available at construction time, there's no easy way to use " />
+          </node>
+          <node concept="1dT_AA" id="7_Tu8dM15JB" role="1dT_Ay">
+            <node concept="VVOAv" id="7_Tu8dM15JT" role="qph3F">
+              <node concept="TZ5HA" id="7_Tu8dM15JV" role="2Xj1qM">
+                <node concept="1dT_AC" id="7_Tu8dM0tZ4" role="1dT_Ay">
+                  <property role="1dT_AB" value="addConfiguredJvmArgs()" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="7_Tu8dM15JA" role="1dT_Ay">
+            <property role="1dT_AB" value="." />
           </node>
         </node>
       </node>

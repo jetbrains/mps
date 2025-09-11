@@ -128,7 +128,11 @@ public class MpsLoadTask extends Task {
    * PlatformStarter.startApplicationAsync() via MPSHeadlessPlatformStarter. MpsEnvironment on the other hand
    * does not require JNA libraries. This setter is therefore currently used only in MigrationTask and MpsRunnerTask.
    * 
-   * @param jnaLibraryPath path to a directory containing native JNA library
+   * NOTE, with some tasks using explicit jvmarg with {@code -Djna.boot.library.path=} conflicts with the way value supplied here ends up in a command line.
+   *       Perhaps, shall use {@code addConfiguredJvmArgs()}, instead, to facilitate proper replacement (if user supplies own jvmarg) and a single occurrence of the argument.
+   *       However, with {@code getMpsHome_Checked()} not available at construction time, there's no easy way to use {@code addConfiguredJvmArgs()}.
+   * 
+   * @param jnaLibraryPath path to a directory containing native JNA library, relative to MPS home (the one we use to launch the task)
    */
   public void setJnaLibraryPath(String jnaLibraryPath) {
     // FIXME now there's confusion as some tasks specify JNA lib path with both -D system property and default in the task's constructor
