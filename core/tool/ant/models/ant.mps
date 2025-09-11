@@ -9947,6 +9947,14 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="4QSveR2VOhz" role="3cqZAp">
+          <node concept="1rXfSq" id="4QSveR2VOhx" role="3clFbG">
+            <ref role="37wK5l" node="4QSveR2V4Uk" resolve="setJnaLibraryPath" />
+            <node concept="37vLTw" id="4QSveR2VOSP" role="37wK5m">
+              <ref role="3cqZAo" node="4QSveR2UwNM" resolve="DEFAULT_JNA_LIBRARY_PATH" />
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="2o55QbnMao0" role="3cqZAp">
           <node concept="1PaTwC" id="2o55QbnMao1" role="1aUNEU">
             <node concept="3oM_SD" id="2o55QbnMao2" role="1PaTwD">
@@ -9984,11 +9992,38 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4QSveR2VOhz" role="3cqZAp">
-          <node concept="1rXfSq" id="4QSveR2VOhx" role="3clFbG">
-            <ref role="37wK5l" node="4QSveR2V4Uk" resolve="setJnaLibraryPath" />
-            <node concept="37vLTw" id="4QSveR2VOSP" role="37wK5m">
-              <ref role="3cqZAo" node="4QSveR2UwNM" resolve="DEFAULT_JNA_LIBRARY_PATH" />
+        <node concept="3cpWs8" id="2o55QbnHB7I" role="3cqZAp">
+          <node concept="3cpWsn" id="2o55QbnHB7J" role="3cpWs9">
+            <property role="TrG5h" value="a2" />
+            <node concept="3uibUv" id="2o55QbnHB7K" role="1tU5fm">
+              <ref role="3uigEE" node="3ufQioQQsm3" resolve="Arg" />
+            </node>
+            <node concept="2ShNRf" id="2o55QbnHB7L" role="33vP2m">
+              <node concept="1pGfFk" id="2o55QbnHB7M" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" node="1hBlbKBNftw" resolve="Arg" />
+                <node concept="Xl_RD" id="2bvlWAl6OYE" role="37wK5m">
+                  <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true" />
+                </node>
+                <node concept="Xl_RD" id="2o55QbnHB7O" role="37wK5m">
+                  <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7_Tu8dMjkyE" role="3cqZAp">
+          <node concept="1rXfSq" id="7_Tu8dMjkyC" role="3clFbG">
+            <ref role="37wK5l" node="3ufQioQQtns" resolve="addConfiguredJvmArgs" />
+            <node concept="2ShNRf" id="7_Tu8dMjleL" role="37wK5m">
+              <node concept="1pGfFk" id="7_Tu8dMjmdl" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" node="1hBlbKBX2QW" resolve="JvmArgs" />
+                <node concept="3clFbT" id="7_Tu8dMjmUc" role="37wK5m" />
+                <node concept="37vLTw" id="7_Tu8dMjngL" role="37wK5m">
+                  <ref role="3cqZAo" node="2o55QbnHB7J" resolve="a2" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

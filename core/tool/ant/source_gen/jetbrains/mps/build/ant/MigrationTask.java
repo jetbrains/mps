@@ -29,8 +29,10 @@ public class MigrationTask extends MpsLoadTask {
     // makeDistribModules==true here is for backwards compatibility
     setFailOnError(true);
     setOpenPackages(true);
-    // XXX check LaunchTestTask and MpsRunTask for ideas about useful/necessary JVM args
     setJnaLibraryPath(DEFAULT_JNA_LIBRARY_PATH);
+    // XXX check LaunchTestTask and MpsRunTask for ideas about useful/necessary JVM args
+    Arg a2 = new Arg("-Dintellij.platform.load.app.info.from.resources=true", "-Dintellij.platform.load.app.info.from.resources");
+    addConfiguredJvmArgs(new JvmArgs(false, a2));
   }
 
   public void setProject(String project) {
