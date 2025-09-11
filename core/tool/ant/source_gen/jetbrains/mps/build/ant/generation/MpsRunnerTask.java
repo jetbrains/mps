@@ -5,6 +5,8 @@ package jetbrains.mps.build.ant.generation;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.build.ant.MpsLoadTask;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
+import jetbrains.mps.build.ant.Arg;
+import jetbrains.mps.build.ant.JvmArgs;
 
 @GeneratedClass(nodeId = "4271560773252437472", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class MpsRunnerTask extends MpsLoadTask {
@@ -16,6 +18,11 @@ public class MpsRunnerTask extends MpsLoadTask {
     myProperties = new MpsRunnerProperties(myWhatToDo);
     setOpenPackages(true);
     setJnaLibraryPath(DEFAULT_JNA_LIBRARY_PATH);
+    // system.cl introduced in 07dbc559 as explicit argument in template
+    Arg a1 = new Arg("-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader", "-Djava.system.class.loader");
+    // app.info introduced as generic cmdline argument in 71312d22, together with explicit generation for <launchtests>
+    Arg a2 = new Arg("-Dintellij.platform.load.app.info.from.resources=true", "-Dintellij.platform.load.app.info.from.resources");
+    addConfiguredJvmArgs(new JvmArgs(false, a1, a2));
   }
 
   public String getSolution() {

@@ -355,6 +355,202 @@
             <property role="Xl_RC" value="jetbrains.mps.lang.test.launcher.LaunchTestWorker" />
           </node>
         </node>
+        <node concept="3SKdUt" id="2o55QbnJeiY" role="3cqZAp">
+          <node concept="1PaTwC" id="2o55QbnJeiZ" role="1aUNEU">
+            <node concept="3oM_SD" id="2o55QbnJej0" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJeya" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJeys" role="1PaTwD">
+              <property role="3oM_SC" value="wonder" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJeyt" role="1PaTwD">
+              <property role="3oM_SC" value="why" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJez1" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJezi" role="1PaTwD">
+              <property role="3oM_SC" value="didn't" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJeyK" role="1PaTwD">
+              <property role="3oM_SC" value="specify" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJezz" role="1PaTwD">
+              <property role="3oM_SC" value="system" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfJB" role="1PaTwD">
+              <property role="3oM_SC" value="CL" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfJC" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfJD" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfJU" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfJV" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfKc" role="1PaTwD">
+              <property role="3oM_SC" value="runMPS" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJfKH" role="1PaTwD">
+              <property role="3oM_SC" value="task?" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2o55QbnMffe" role="3cqZAp">
+          <node concept="1PaTwC" id="2o55QbnMfff" role="1aUNEU">
+            <node concept="3oM_SD" id="2o55QbnMfuB" role="1PaTwD">
+              <property role="3oM_SC" value="According" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfuS" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfx$" role="1PaTwD">
+              <property role="3oM_SC" value="CoreProgressManager.shouldKeepTasksAsynchronousInHeadlessMode," />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfy7" role="1PaTwD">
+              <property role="3oM_SC" value="ignoreHeadless" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfyo" role="1PaTwD">
+              <property role="3oM_SC" value="means" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfyD" role="1PaTwD">
+              <property role="3oM_SC" value="async" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfza" role="1PaTwD">
+              <property role="3oM_SC" value="operations" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfzF" role="1PaTwD">
+              <property role="3oM_SC" value="run" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfzG" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfzX" role="1PaTwD">
+              <property role="3oM_SC" value="headless" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMfzY" role="1PaTwD">
+              <property role="3oM_SC" value="mode" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf$f" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf$g" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf$x" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf$M" role="1PaTwD">
+              <property role="3oM_SC" value="they" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf_3" role="1PaTwD">
+              <property role="3oM_SC" value="run" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf_4" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMf_l" role="1PaTwD">
+              <property role="3oM_SC" value="GUI" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2o55QbnJdqm" role="3cqZAp">
+          <node concept="3cpWsn" id="2o55QbnJdqn" role="3cpWs9">
+            <property role="TrG5h" value="a1" />
+            <node concept="3uibUv" id="2o55QbnJdqo" role="1tU5fm">
+              <ref role="3uigEE" to="644x:3ufQioQQsm3" resolve="Arg" />
+            </node>
+            <node concept="2ShNRf" id="2o55QbnJg1S" role="33vP2m">
+              <node concept="1pGfFk" id="2o55QbnJhhG" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="644x:1hBlbKBNftw" resolve="Arg" />
+                <node concept="Xl_RD" id="2o55QbnJhx8" role="37wK5m">
+                  <property role="Xl_RC" value="-Dintellij.progress.task.ignoreHeadless=true" />
+                </node>
+                <node concept="Xl_RD" id="2o55QbnJhZO" role="37wK5m">
+                  <property role="Xl_RC" value="-Dintellij.progress.task.ignoreHeadless" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2o55QbnJqDv" role="3cqZAp">
+          <node concept="1PaTwC" id="2o55QbnJqDw" role="1aUNEU">
+            <node concept="3oM_SD" id="2o55QbnJqDx" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqSA" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqSC" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqT9" role="1PaTwD">
+              <property role="3oM_SC" value="common" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqTa" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqTr" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqTG" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqUd" role="1PaTwD">
+              <property role="3oM_SC" value="env" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJqUu" role="1PaTwD">
+              <property role="3oM_SC" value="arguments?" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2o55QbnHB7I" role="3cqZAp">
+          <node concept="3cpWsn" id="2o55QbnHB7J" role="3cpWs9">
+            <property role="TrG5h" value="a2" />
+            <node concept="3uibUv" id="2o55QbnHB7K" role="1tU5fm">
+              <ref role="3uigEE" to="644x:3ufQioQQsm3" resolve="Arg" />
+            </node>
+            <node concept="2ShNRf" id="2o55QbnHB7L" role="33vP2m">
+              <node concept="1pGfFk" id="2o55QbnHB7M" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="644x:1hBlbKBNftw" resolve="Arg" />
+                <node concept="Xl_RD" id="2bvlWAl6OYE" role="37wK5m">
+                  <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true" />
+                </node>
+                <node concept="Xl_RD" id="2o55QbnHB7O" role="37wK5m">
+                  <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2o55QbnEcBc" role="3cqZAp">
+          <node concept="1rXfSq" id="2o55QbnEcBa" role="3clFbG">
+            <ref role="37wK5l" to="644x:3ufQioQQtns" resolve="addConfiguredJvmArgs" />
+            <node concept="2ShNRf" id="2o55QbnEcGd" role="37wK5m">
+              <node concept="1pGfFk" id="2o55QbnEdO3" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="644x:1hBlbKBX2QW" resolve="JvmArgs" />
+                <node concept="3clFbT" id="2o55QbnEdWe" role="37wK5m" />
+                <node concept="37vLTw" id="2o55QbnHAOd" role="37wK5m">
+                  <ref role="3cqZAo" node="2o55QbnJdqn" resolve="a1" />
+                </node>
+                <node concept="37vLTw" id="2o55QbnIuLA" role="37wK5m">
+                  <ref role="3cqZAo" node="2o55QbnHB7J" resolve="a2" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="4MVYzzgvR6K" role="jymVt" />

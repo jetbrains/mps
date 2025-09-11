@@ -1558,6 +1558,64 @@
                         <property role="TrG5h" value="jvmargs" />
                         <node concept="2jfdEK" id="38ougpFq_e3" role="1ps_xN">
                           <node concept="3clFbS" id="38ougpFq_e4" role="2VODD2">
+                            <node concept="3SKdUt" id="2o55QbnJtcW" role="3cqZAp">
+                              <node concept="1PaTwC" id="2o55QbnJtcX" role="1aUNEU">
+                                <node concept="3oM_SD" id="2o55QbnJtcY" role="1PaTwD">
+                                  <property role="3oM_SC" value="FIXME" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtpz" role="1PaTwD">
+                                  <property role="3oM_SC" value="these" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtqj" role="1PaTwD">
+                                  <property role="3oM_SC" value="defaults" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtrp" role="1PaTwD">
+                                  <property role="3oM_SC" value="could" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtrO" role="1PaTwD">
+                                  <property role="3oM_SC" value="be" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtrS" role="1PaTwD">
+                                  <property role="3oM_SC" value="part" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtrY" role="1PaTwD">
+                                  <property role="3oM_SC" value="of" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJttY" role="1PaTwD">
+                                  <property role="3oM_SC" value="LaunchTestTask," />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtun" role="1PaTwD">
+                                  <property role="3oM_SC" value="why" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtus" role="1PaTwD">
+                                  <property role="3oM_SC" value="bother" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtu$" role="1PaTwD">
+                                  <property role="3oM_SC" value="keeping" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtv1" role="1PaTwD">
+                                  <property role="3oM_SC" value="them" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtw3" role="1PaTwD">
+                                  <property role="3oM_SC" value="the" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtw8" role="1PaTwD">
+                                  <property role="3oM_SC" value="same" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtwU" role="1PaTwD">
+                                  <property role="3oM_SC" value="in" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtwY" role="1PaTwD">
+                                  <property role="3oM_SC" value="all" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtx3" role="1PaTwD">
+                                  <property role="3oM_SC" value="generated" />
+                                </node>
+                                <node concept="3oM_SD" id="2o55QbnJtxQ" role="1PaTwD">
+                                  <property role="3oM_SC" value="scripts?" />
+                                </node>
+                              </node>
+                            </node>
                             <node concept="3clFbJ" id="38ougpFqGbQ" role="3cqZAp">
                               <node concept="3clFbS" id="38ougpFqGbS" role="3clFbx">
                                 <node concept="3cpWs6" id="38ougpFqGPL" role="3cqZAp">
@@ -1709,16 +1767,6 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2pNNFK" id="6u4p9jnVoCZ" role="3o6s8t">
-                    <property role="qg3DV" value="true" />
-                    <property role="2pNNFO" value="arg" />
-                    <node concept="2pNUuL" id="6u4p9jnVoD0" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="6u4p9jnVoD1" role="2pMdts">
-                        <property role="2pMdty" value="-XX:+HeapDumpOnOutOfMemoryError" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="2pNNFK" id="7aYn41gUsuj" role="3o6s8t">
                     <property role="qg3DV" value="true" />
                     <property role="2pNNFO" value="arg" />
@@ -1739,16 +1787,6 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2pNNFK" id="5GRlVyBmTni" role="3o6s8t">
-                    <property role="qg3DV" value="true" />
-                    <property role="2pNNFO" value="arg" />
-                    <node concept="2pNUuL" id="5GRlVyBmTnj" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="5GRlVyBmTnk" role="2pMdts">
-                        <property role="2pMdty" value="-Dintellij.platform.load.app.info.from.resources=true" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="2pNNFK" id="6OON6YVXP4c" role="3o6s8t">
                     <property role="qg3DV" value="true" />
                     <property role="2pNNFO" value="arg" />
@@ -1756,16 +1794,6 @@
                       <property role="2pNUuO" value="value" />
                       <node concept="2pMdtt" id="6OON6YVXP4e" role="2pMdts">
                         <property role="2pMdty" value="-Djna.boot.library.path=${build.jna.library.path}" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="2pNNFK" id="3uKXQOhRTOJ" role="3o6s8t">
-                    <property role="2pNNFO" value="arg" />
-                    <property role="qg3DV" value="true" />
-                    <node concept="2pNUuL" id="3uKXQOhRU7t" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="3uKXQOhRU7u" role="2pMdts">
-                        <property role="2pMdty" value="-Dintellij.progress.task.ignoreHeadless=true" />
                       </node>
                     </node>
                   </node>

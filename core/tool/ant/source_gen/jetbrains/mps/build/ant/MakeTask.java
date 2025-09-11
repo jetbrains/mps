@@ -20,6 +20,7 @@ public final class MakeTask extends MpsLoadTask {
 
   public MakeTask() {
     super("jetbrains.mps.tool.builder.CoreWorker");
+    // XXX are there any default JVM args for MPSEnv?
   }
 
   public void addConfiguredSettings(GeneratorSettings settings) {

@@ -7,6 +7,8 @@ import jetbrains.mps.build.ant.MpsLoadTask;
 import java.util.List;
 import java.io.File;
 import java.util.ArrayList;
+import jetbrains.mps.build.ant.Arg;
+import jetbrains.mps.build.ant.JvmArgs;
 import org.apache.tools.ant.BuildException;
 import jetbrains.mps.build.ant.ProjectPath;
 import jetbrains.mps.build.ant.ModuleJarDataType;
@@ -44,6 +46,12 @@ public class LaunchTestTask extends MpsLoadTask {
 
   public LaunchTestTask() {
     super("jetbrains.mps.lang.test.launcher.LaunchTestWorker");
+    // FIXME I wonder why we didn't specify system CL as we do for runMPS task?
+    // According to CoreProgressManager.shouldKeepTasksAsynchronousInHeadlessMode, ignoreHeadless means async operations run in headless mode the same as they run in GUI
+    Arg a1 = new Arg("-Dintellij.progress.task.ignoreHeadless=true", "-Dintellij.progress.task.ignoreHeadless");
+    // perhaps, need a common method for IDEA env arguments?
+    Arg a2 = new Arg("-Dintellij.platform.load.app.info.from.resources=true", "-Dintellij.platform.load.app.info.from.resources");
+    addConfiguredJvmArgs(new JvmArgs(false, a1, a2));
   }
 
   @Override

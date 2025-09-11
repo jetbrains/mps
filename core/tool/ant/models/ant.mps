@@ -2216,6 +2216,76 @@
       <node concept="3cqZAl" id="4QSveR2V4Ul" role="3clF45" />
       <node concept="3Tm1VV" id="4QSveR2V4Um" role="1B3o_S" />
       <node concept="3clFbS" id="4QSveR2V4Un" role="3clF47">
+        <node concept="3SKdUt" id="2o55QbnISQC" role="3cqZAp">
+          <node concept="1PaTwC" id="2o55QbnISQD" role="1aUNEU">
+            <node concept="3oM_SD" id="2o55QbnJ4an" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4aC" role="1PaTwD">
+              <property role="3oM_SC" value="now" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4aE" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4bW" role="1PaTwD">
+              <property role="3oM_SC" value="confusion" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4bF" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4cd" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4d1" role="1PaTwD">
+              <property role="3oM_SC" value="tasks" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4ce" role="1PaTwD">
+              <property role="3oM_SC" value="specify" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4di" role="1PaTwD">
+              <property role="3oM_SC" value="JNA" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4dz" role="1PaTwD">
+              <property role="3oM_SC" value="lib" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4d$" role="1PaTwD">
+              <property role="3oM_SC" value="path" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4d_" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6SP" role="1PaTwD">
+              <property role="3oM_SC" value="both" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4dA" role="1PaTwD">
+              <property role="3oM_SC" value="-D" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4dR" role="1PaTwD">
+              <property role="3oM_SC" value="system" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ4dS" role="1PaTwD">
+              <property role="3oM_SC" value="property" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6S$" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6Tm" role="1PaTwD">
+              <property role="3oM_SC" value="default" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6Tn" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6To" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6Tp" role="1PaTwD">
+              <property role="3oM_SC" value="task's" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ6TE" role="1PaTwD">
+              <property role="3oM_SC" value="constructor" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4QSveR2V4Uo" role="3cqZAp">
           <node concept="37vLTI" id="4QSveR2V4Up" role="3clFbG">
             <node concept="37vLTw" id="4QSveR2V4Uq" role="37vLTx">
@@ -4601,19 +4671,6 @@
               </node>
               <node concept="37vLTw" id="1$mDfZ_vXLi" role="3clFbw">
                 <ref role="3cqZAo" node="1$mDfZ_uyJm" resolve="myOpenPackages" />
-              </node>
-            </node>
-            <node concept="3clFbF" id="2bvlWAl6OY_" role="3cqZAp">
-              <node concept="2OqwBi" id="2bvlWAl6OYA" role="3clFbG">
-                <node concept="37vLTw" id="2bvlWAl6OYB" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3ufQioQQtqL" resolve="commandLine" />
-                </node>
-                <node concept="liA8E" id="2bvlWAl6OYC" role="2OqNvi">
-                  <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-                  <node concept="Xl_RD" id="2bvlWAl6OYE" role="37wK5m">
-                    <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true" />
-                  </node>
-                </node>
               </node>
             </node>
             <node concept="3clFbJ" id="4QSveR2W6iz" role="3cqZAp">
@@ -9822,6 +9879,43 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="2o55QbnMao0" role="3cqZAp">
+          <node concept="1PaTwC" id="2o55QbnMao1" role="1aUNEU">
+            <node concept="3oM_SD" id="2o55QbnMao2" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMaIg" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMaIy" role="1PaTwD">
+              <property role="3oM_SC" value="LaunchTestTask" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMaK3" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMaKk" role="1PaTwD">
+              <property role="3oM_SC" value="MpsRunTask" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMe_X" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMe_Y" role="1PaTwD">
+              <property role="3oM_SC" value="ideas" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMeAJ" role="1PaTwD">
+              <property role="3oM_SC" value="about" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMeAK" role="1PaTwD">
+              <property role="3oM_SC" value="useful/necessary" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMeC1" role="1PaTwD">
+              <property role="3oM_SC" value="JVM" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnMeCi" role="1PaTwD">
+              <property role="3oM_SC" value="args" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4QSveR2VOhz" role="3cqZAp">
           <node concept="1rXfSq" id="4QSveR2VOhx" role="3clFbG">
             <ref role="37wK5l" node="4QSveR2V4Uk" resolve="setJnaLibraryPath" />
@@ -12193,6 +12287,37 @@
           <ref role="37wK5l" node="4vDU0BPxMGt" resolve="MpsLoadTask" />
           <node concept="Xl_RD" id="1nTn8MoVWgo" role="37wK5m">
             <property role="Xl_RC" value="jetbrains.mps.tool.builder.CoreWorker" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2o55QbnJ_4s" role="3cqZAp">
+          <node concept="1PaTwC" id="2o55QbnJ_4t" role="1aUNEU">
+            <node concept="3oM_SD" id="2o55QbnJ_A1" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_Ai" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_Ak" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_AA" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_AR" role="1PaTwD">
+              <property role="3oM_SC" value="default" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_hb" role="1PaTwD">
+              <property role="3oM_SC" value="JVM" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_hs" role="1PaTwD">
+              <property role="3oM_SC" value="args" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_hH" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2o55QbnJ_hI" role="1PaTwD">
+              <property role="3oM_SC" value="MPSEnv?" />
+            </node>
           </node>
         </node>
       </node>

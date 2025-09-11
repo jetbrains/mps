@@ -131,6 +131,7 @@ public class MpsLoadTask extends Task {
    * @param jnaLibraryPath path to a directory containing native JNA library
    */
   public void setJnaLibraryPath(String jnaLibraryPath) {
+    // FIXME now there's confusion as some tasks specify JNA lib path with both -D system property and default in the task's constructor
     this.myJnaLibraryPath = jnaLibraryPath;
   }
 
@@ -267,7 +268,6 @@ public class MpsLoadTask extends Task {
           commandLine.add("--add-opens=" + p + "=ALL-UNNAMED");
         }
       }
-      commandLine.add("-Dintellij.platform.load.app.info.from.resources=true");
       if ((myJnaLibraryPath != null && myJnaLibraryPath.length() > 0)) {
         String fullPath = new File(getMpsHome_Checked(), myJnaLibraryPath).getAbsolutePath();
         commandLine.add("-Djna.boot.library.path=" + fullPath);

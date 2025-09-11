@@ -217,6 +217,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith(((String) _context.getVariable("var:MPS_MACRO_PREFIX"))) && SPropertyOperations.getString(it, PROPS.name$MnvL).length() > ((String) _context.getVariable("var:MPS_MACRO_PREFIX")).length());
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
+    // FIXME these defaults could be part of LaunchTestTask, why bother keeping them the same in all generated scripts?
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF) == null)) {
       return "-Xss2048k -Xmx1024m";
     }

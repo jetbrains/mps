@@ -1008,46 +1008,6 @@
                 <node concept="2pNNFK" id="6V3S4eksTK4" role="3o6s8t">
                   <property role="2pNNFO" value="jvmargs" />
                   <property role="qg3DV" value="false" />
-                  <node concept="2pNNFK" id="o7F7WgLNWE" role="3o6s8t">
-                    <property role="2pNNFO" value="arg" />
-                    <property role="qg3DV" value="true" />
-                    <node concept="2pNUuL" id="o7F7WgLNWF" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="o7F7WgLNWG" role="2pMdts">
-                        <property role="2pMdty" value="-Didea.config.path=${build.mps.config.path}" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="2pNNFK" id="o7F7WgLM_B" role="3o6s8t">
-                    <property role="2pNNFO" value="arg" />
-                    <property role="qg3DV" value="true" />
-                    <node concept="2pNUuL" id="o7F7WgLMD1" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="o7F7WgLMD3" role="2pMdts">
-                        <property role="2pMdty" value="-Didea.system.path=${build.mps.system.path}" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="2pNNFK" id="oY$DTc6Q1K" role="3o6s8t">
-                    <property role="2pNNFO" value="arg" />
-                    <property role="qg3DV" value="true" />
-                    <node concept="2pNUuL" id="oY$DTc6Q1L" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="oY$DTc6Q1M" role="2pMdts">
-                        <property role="2pMdty" value="-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="2pNNFK" id="2lmZTm18$9_" role="3o6s8t">
-                    <property role="2pNNFO" value="arg" />
-                    <property role="qg3DV" value="true" />
-                    <node concept="2pNUuL" id="2lmZTm18$9A" role="2pNNFR">
-                      <property role="2pNUuO" value="value" />
-                      <node concept="2pMdtt" id="2lmZTm18$9B" role="2pMdts">
-                        <property role="2pMdty" value="-Djna.boot.library.path=${artifacts.mps}/lib/jna" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="2pNNFK" id="2lmZTm18$6E" role="3o6s8t">
                     <property role="2pNNFO" value="arg" />
                     <property role="qg3DV" value="true" />
@@ -1235,6 +1195,36 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="o7F7WgLNWE" role="3o6s8t">
+                    <property role="2pNNFO" value="arg" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="o7F7WgLNWF" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="o7F7WgLNWG" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.config.path=${build.mps.config.path}" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="o7F7WgLM_B" role="3o6s8t">
+                    <property role="2pNNFO" value="arg" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="o7F7WgLMD1" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="o7F7WgLMD3" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.system.path=${build.mps.system.path}" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="2lmZTm18$9_" role="3o6s8t">
+                    <property role="2pNNFO" value="arg" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="2lmZTm18$9A" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="2lmZTm18$9B" role="2pMdts">
+                        <property role="2pMdty" value="-Djna.boot.library.path=${artifacts.mps}/lib/jna" />
                       </node>
                     </node>
                   </node>
