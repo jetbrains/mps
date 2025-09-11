@@ -1040,7 +1040,6 @@
       <jvmargs>
         <arg value="-ea" />
         <arg value="-Xmx512m" />
-        <arg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
