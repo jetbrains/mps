@@ -39,7 +39,7 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static NodeCaretPair tryMergeToRight_idooaTF_3fF3(@NotNull SNode __thisNode__, int index) {
     if (index >= 0 && index + 1 < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).count() && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb) && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index + 1), CONCEPTS.TextCommentLinePart$Eb)) {
       SNode leftPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb);
-      int offset = SPropertyOperations.getString(leftPart, PROPS.text$aOLd).length();
+      int offset = (int) TextCommentLinePart__BehaviorDescriptor.textLength_id5nKpBWI5fwL.invoke(leftPart);
       SNode rightPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index + 1), CONCEPTS.TextCommentLinePart$Eb);
       String text = ((isEmptyString(SPropertyOperations.getString(leftPart, PROPS.text$aOLd)) ? "" : SPropertyOperations.getString(leftPart, PROPS.text$aOLd))) + ((isEmptyString(SPropertyOperations.getString(rightPart, PROPS.text$aOLd)) ? "" : SPropertyOperations.getString(rightPart, PROPS.text$aOLd)));
       SPropertyOperations.assign(leftPart, PROPS.text$aOLd, text);

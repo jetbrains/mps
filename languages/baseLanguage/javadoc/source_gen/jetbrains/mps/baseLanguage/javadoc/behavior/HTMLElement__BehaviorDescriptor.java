@@ -62,7 +62,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
       SNodeOperations.deleteNode(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).first());
       if (isBeginning) {
         nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$QuzQ)).getElement(index - 1);
-        caret = SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$QuzQ)).getElement(index - 1), CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).length();
+        caret = (int) TextCommentLinePart__BehaviorDescriptor.textLength_id5nKpBWI5fwL.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$QuzQ)).getElement(index - 1), CONCEPTS.TextCommentLinePart$Eb));
       }
       CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
 
@@ -77,7 +77,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
         SNodeOperations.deleteNode(__thisNode__);
         if (!(isBeginning)) {
           nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$QuzQ)).getElement(index - 1);
-          caret = SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$QuzQ)).getElement(index - 1), CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).length();
+          caret = (int) TextCommentLinePart__BehaviorDescriptor.textLength_id5nKpBWI5fwL.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.part$QuzQ)).getElement(index - 1), CONCEPTS.TextCommentLinePart$Eb));
         }
         CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
       } else {
@@ -89,7 +89,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
         SNodeOperations.deleteNode(__thisNode__);
         if (!(isBeginning)) {
           nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, LINKS.part$QuzQ)).getElement(index);
-          caret = SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).length();
+          caret = (int) TextCommentLinePart__BehaviorDescriptor.textLength_id5nKpBWI5fwL.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb));
         }
         CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(lastElementLine, ((int) index));
       }

@@ -23,14 +23,18 @@ public final class TextCommentLinePart__BehaviorDescriptor extends BaseBHDescrip
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
 
   public static final SMethod<String> buildCommentText_id7Qt73fl2F3N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9051421835027722483L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
+  public static final SMethod<Integer> textLength_id5nKpBWI5fwL = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("textLength").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6192562184054437937L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(buildCommentText_id7Qt73fl2F3N);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(buildCommentText_id7Qt73fl2F3N, textLength_id5nKpBWI5fwL);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static String buildCommentText_id7Qt73fl2F3N(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.text$aOLd);
+  }
+  /*package*/ static int textLength_id5nKpBWI5fwL(@NotNull SNode __thisNode__) {
+    return (SPropertyOperations.getString(__thisNode__, PROPS.text$aOLd) != null ? SPropertyOperations.getString(__thisNode__, PROPS.text$aOLd).length() : 0);
   }
 
   /*package*/ TextCommentLinePart__BehaviorDescriptor() {
@@ -50,6 +54,8 @@ public final class TextCommentLinePart__BehaviorDescriptor extends BaseBHDescrip
     switch (methodIndex) {
       case 0:
         return (T) ((String) buildCommentText_id7Qt73fl2F3N(node));
+      case 1:
+        return (T) ((Integer) textLength_id5nKpBWI5fwL(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
