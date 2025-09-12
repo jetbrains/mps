@@ -54,19 +54,9 @@ public abstract class BaseTransformationTest implements TransformationTest, Envi
    */
   @BeforeEach
   /*package*/ void setup() throws Exception {
-    if (myParamCache != null) {
-      // initializes project/models for the first test in the class, reuse initialized values for subsequent tests from the same class
-      // FIXME it seems I can do this populate from ClassRule TestParametersCache itself, just need to sort out access to Environment value
-      myParamCache.initializeOnce(this, myEnvironment, myProjectUrlSupplier);
-      setProject(myParamCache.getProject());
-      setModelDescriptor(myParamCache.getTestModel());
-      setTransientModelDescriptor(myParamCache.getTransientModel());
-
-    } else {
-      if (LOG.isWarningLevel()) {
-        LOG.warning("no TestParametersCache instance for " + this);
-      }
-    }
+    setProject(myParamCache.getProject());
+    setModelDescriptor(myParamCache.getTestModel());
+    setTransientModelDescriptor(myParamCache.getTransientModel());
     clearSystemClipboard();
   }
 

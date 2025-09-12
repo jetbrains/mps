@@ -67,8 +67,7 @@ public final class TestParametersCache implements TestRule {
   }
 
   public void initializeOnce(Object ownerInstance, Environment environment, @Nullable Supplier<String> projectUrlSupplier) throws Exception {
-    // both arguments are non null
-    assert ownerInstance.getClass() == myOwner;
+    assert ((ownerInstance instanceof Class ? ownerInstance.equals(myOwner) : ownerInstance.getClass() == myOwner));
 
     if (myInitialized) {
       return;

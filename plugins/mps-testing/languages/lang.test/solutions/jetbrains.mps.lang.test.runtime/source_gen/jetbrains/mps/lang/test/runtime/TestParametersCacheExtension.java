@@ -8,6 +8,10 @@ import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
+import java.util.Optional;
+import jetbrains.mps.tool.environment.Environment;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 
 /**
  * Support for {@code TestParametersCache} rule to work on JUnit5 platform.
@@ -26,13 +30,18 @@ public class TestParametersCacheExtension implements Extension, BeforeAllCallbac
 
   @Override
   public void beforeAll(ExtensionContext context) throws Exception {
+    ExtensionContext.Store store = context.getStore(ExtensionContext.StoreScope.LAUNCHER_SESSION, ExtensionContext.Namespace.create("MPS"));
+    TestSession mpsTestSession = store.get("TestSession", TestSession.class);
+    Optional<Environment> sv = mpsTestSession.getAccessory(Environment.class);
+    final String pp = mpsTestSession.getSystemProperty(SystemProperties.PROJECT_PATH);
+
+    // initializes project/models for the first test in the class, reuse initialized values for subsequent tests from the same class
+    myParametersCache.initializeOnce(context.getRequiredTestClass(), sv.get(), () -> pp);
   }
 
   @Override
   public void afterAll(ExtensionContext context) throws Exception {
-    if (myParametersCache != null) {
-      myParametersCache.clean();
-    }
+    myParametersCache.clean();
   }
 
   @Override
