@@ -53,6 +53,7 @@ public abstract class AbstractJUnit5Launcher {
     LauncherConfig launcherConfig = builder.build();
 
     try (LauncherSession session = LauncherFactory.openSession(launcherConfig)) {
+      configureLauncherSession(session);
       Launcher launcher = session.getLauncher();
       if (isRunningOnTeamCity()) {
         launcher.registerTestExecutionListeners(createTestExecutionListener());
@@ -71,6 +72,10 @@ public abstract class AbstractJUnit5Launcher {
       }
       launcher.execute(discoveryRequest);
     }
+  }
+
+  protected void configureLauncherSession(LauncherSession session) {
+    // no-op; intended for subclasses; simple alternative to LauncherSessionListener
   }
 
   protected JUnit5TestExecutionListener createTestExecutionListener() {

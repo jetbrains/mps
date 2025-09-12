@@ -5,14 +5,16 @@ package jetbrains.mps.lang.test.junit5;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.common.WorkerCallback;
 import java.io.File;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.tool.common.TestData;
 import org.junit.platform.launcher.TestExecutionListener;
 import java.util.List;
 import org.junit.platform.engine.DiscoverySelector;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
+import org.junit.platform.launcher.LauncherSession;
+import org.junit.platform.engine.support.store.Namespace;
 import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import java.util.Collections;
 
@@ -30,6 +32,9 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
   private File myOutputDir;
   private boolean myIsOpenTestReport = false;
   private boolean myNeedTeamCityReport = false;
+
+  private TestSession myTestSession;
+
 
   /**
    * 
@@ -82,13 +87,14 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
   protected void launchTestsWithSession(List<DiscoverySelector> tests, TestExecutionListener executionListener) {
     TestSessionConfig sessionConfig = new TestSessionConfig();
     final TestPlatform testPlatform = myEnvironment.getPlatform().findComponent(TestPlatform.class);
-    TestSession testSession = testPlatform.openSession(configureSession(sessionConfig));
+    myTestSession = testPlatform.openSession(configureSession(sessionConfig));
     try {
       // this class is instantiated via ModuleClassCode which ensures proper MPS classloader for the code.
       ClassLoader contextCL = getClass().getClassLoader();
       launchTestsWithContextCL(contextCL, tests, executionListener);
     } finally {
-      testPlatform.closeSession(testSession);
+      testPlatform.closeSession(myTestSession);
+      myTestSession = null;
     }
   }
 
@@ -98,6 +104,13 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
       return config.withSystemProperty(SystemProperties.PROJECT_PATH, myTestProjectDir.getAbsolutePath());
     }
     return config;
+  }
+
+
+  @Override
+  protected void configureLauncherSession(LauncherSession session) {
+    // XXX not sure if I need to go through MPS TestSession when I can put myEnvironment here directly
+    session.getStore().put(Namespace.create("MPS"), "TestSession", myTestSession);
   }
 
   @Override

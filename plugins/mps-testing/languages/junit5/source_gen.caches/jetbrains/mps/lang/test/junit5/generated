@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-1euougjmyrioa78ut2b53dpikjua5i8">
+<product version="3" modelHash="bg89wxcsqebuwhv4sonjk6wb00o6vis">
   <files names="AbstractJUnit5Launcher.java:FailureDetector.java:JUnit5TestContributor.java:ModuleFilesListProjectStrategy.java:ScriptJUnit5Launcher.java:SimpleJUnit5Launcher.java:TestDiscovery.java:TestDiscoveryContributor.java:TestDiscoveryVisitor.java" />
 </product>
 
