@@ -334,9 +334,6 @@ public class StructDifferencePane implements PropertyChangeListener {
       myNewEditor.editNode(myChangeSet.getNewNodeId(), myChangeSet.getNewModel());
     }
 
-    myNewEditor.getMainEditor().rebuildEditorContent();
-    myOldEditor.getMainEditor().rebuildEditorContent();
-
     highlightAllChanges();
   }
 

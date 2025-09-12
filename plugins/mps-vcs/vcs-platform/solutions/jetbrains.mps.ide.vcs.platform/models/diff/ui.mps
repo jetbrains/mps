@@ -15088,37 +15088,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="42UviMImjP6" role="3cqZAp" />
-        <node concept="3clFbF" id="42UviMImjP7" role="3cqZAp">
-          <node concept="2OqwBi" id="42UviMImjP8" role="3clFbG">
-            <node concept="liA8E" id="42UviMImjP9" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.rebuildEditorContent()" resolve="rebuildEditorContent" />
-            </node>
-            <node concept="2OqwBi" id="42UviMImjPa" role="2Oq$k0">
-              <node concept="liA8E" id="42UviMImjPb" role="2OqNvi">
-                <ref role="37wK5l" to="hdhb:42hl10VHaA0" resolve="getMainEditor" />
-              </node>
-              <node concept="37vLTw" id="42UviMImjPc" role="2Oq$k0">
-                <ref role="3cqZAo" node="42UviMImjD9" resolve="myNewEditor" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="42UviMImjPd" role="3cqZAp">
-          <node concept="2OqwBi" id="42UviMImjPe" role="3clFbG">
-            <node concept="liA8E" id="42UviMImjPf" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.rebuildEditorContent()" resolve="rebuildEditorContent" />
-            </node>
-            <node concept="2OqwBi" id="42UviMImjPg" role="2Oq$k0">
-              <node concept="liA8E" id="42UviMImjPh" role="2OqNvi">
-                <ref role="37wK5l" to="hdhb:42hl10VHaA0" resolve="getMainEditor" />
-              </node>
-              <node concept="37vLTw" id="42UviMImjPi" role="2Oq$k0">
-                <ref role="3cqZAo" node="42UviMImjD6" resolve="myOldEditor" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="42UviMImjPj" role="3cqZAp" />
         <node concept="3clFbF" id="42UviMImjPk" role="3cqZAp">
           <node concept="1rXfSq" id="42UviMImjPl" role="3clFbG">
             <ref role="37wK5l" node="42UviMImjN6" resolve="highlightAllChanges" />
