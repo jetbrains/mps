@@ -12,7 +12,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.ide.tools.CloseAction;
 import jetbrains.mps.icons.MPSIcons;
-import javax.swing.JComponent;
+import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.ui.Splitter;
@@ -43,8 +43,9 @@ public class ModuleDependenciesView extends JPanel implements DataProvider {
 
     ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool), new MyToggleAction("Show Runtime Dependencies", MPSIcons.General.Runtime, false, (Boolean b) -> setShowRuntime(b)), new MyToggleAction("Show Used Languages", MPSIcons.Nodes.Language, true, (Boolean b) -> setShowUsedLanguages(b)));
 
-    JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true).getComponent();
-    add(toolbar, BorderLayout.NORTH);
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true);
+    toolbar.setTargetComponent(this);
+    add(toolbar.getComponent(), BorderLayout.NORTH);
 
     Splitter splitter = new Splitter();
     splitter.setDividerWidth(2);
