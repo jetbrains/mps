@@ -51,6 +51,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     setCellContext(editorCell);
     editorCell.addEditorCell(createAlternation_0());
     editorCell.addEditorCell(createJComponent_0());
+    editorCell.addEditorCell(createConstant_2());
     editorCell.addEditorCell(createComponent_0());
     return editorCell;
   }
@@ -126,6 +127,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
   private JComponent _QueryFunction_JComponent_w2956w_a1a() {
     return EditorUtil.createSelectImageButton(myNode, PROPS.file$He6o, getEditorContext());
+  }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ",");
+    editorCell.setCellId("Constant_w2956w_c0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.resources.editor.TextIconThemeSelection");

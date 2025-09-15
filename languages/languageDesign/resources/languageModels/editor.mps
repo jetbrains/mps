@@ -37,6 +37,7 @@
       <concept id="3459162043708467089" name="jetbrains.mps.lang.editor.structure.CellActionMap_CanExecuteFunction" flags="in" index="jK8Ss" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
+      <concept id="1237308012275" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem" flags="ln" index="ljvvj" />
       <concept id="1142886221719" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeCondition" flags="in" index="pkWqt" />
       <concept id="1142886811589" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node" flags="nn" index="pncrf" />
       <concept id="1237385578942" name="jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem" flags="ln" index="pVoyu" />
@@ -66,6 +67,7 @@
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
+      <concept id="1186414860679" name="jetbrains.mps.lang.editor.structure.EditableStyleClassItem" flags="ln" index="VPxyj" />
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
       <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
       <concept id="1233759184865" name="jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem" flags="ln" index="11LMrY" />
@@ -89,6 +91,7 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ngI" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="1223386653097" name="jetbrains.mps.lang.editor.structure.StrikeOutStyleSheet" flags="ln" index="3nxI2P" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="1139744628335" name="jetbrains.mps.lang.editor.structure.CellModel_Image" flags="sg" stub="8104358048506731195" index="1u4HXA">
         <child id="1176899909521" name="imagePathProvider" index="4GRq3" />
@@ -104,7 +107,10 @@
         <child id="4323500428121274054" name="id" index="2SqHTX" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
+        <property id="1160590353935" name="usesFolding" index="S$Qs1" />
+        <property id="6240706158490734113" name="collapseByDefault" index="3EXrWe" />
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
+        <child id="7723470090030138869" name="foldedCellModel" index="AHCbl" />
         <child id="1073389446424" name="childCellModel" index="3EZMnx" />
       </concept>
       <concept id="1073389577006" name="jetbrains.mps.lang.editor.structure.CellModel_Constant" flags="sn" stub="3610246225209162225" index="3F0ifn">
@@ -714,8 +720,8 @@
   <node concept="24kQdi" id="2p1v3tObwTC">
     <property role="3GE5qa" value="icons.descriptors" />
     <ref role="1XX52x" to="1oap:2p1v3tObwP5" resolve="TextIcon" />
-    <node concept="b$f91" id="2p1v3tObwWH" role="2wV5jI">
-      <node concept="3EZMnI" id="4GjgyZ7ZGV$" role="b$u42">
+    <node concept="3EZMnI" id="4rOpugP9puE" role="2wV5jI">
+      <node concept="3EZMnI" id="4GjgyZ7ZGV$" role="3EZMnx">
         <node concept="2iRkQZ" id="4GjgyZ7ZGV_" role="2iSdaV" />
         <node concept="3EZMnI" id="1brHjIQHBiv" role="3EZMnx">
           <node concept="2iRfu4" id="1brHjIQHBiw" role="2iSdaV" />
@@ -736,23 +742,44 @@
           <node concept="3F2HdR" id="7MKI4BBVgXu" role="b$wch">
             <ref role="1NtTu8" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
             <node concept="3F0ifn" id="7MKI4BBVgXx" role="2czzBI">
-              <property role="3F0ifm" value="use the same as for old UI" />
+              <property role="3F0ifm" value="define the icon layers here" />
               <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
             </node>
             <node concept="2iRkQZ" id="4GjgyZ80pel" role="2czzBx" />
           </node>
           <node concept="3F0ifn" id="7MKI4BBVgXs" role="b$u42">
-            <property role="3F0ifm" value="New UI" />
+            <property role="3F0ifm" value="Layers:" />
           </node>
         </node>
-        <node concept="3F0ifn" id="4GjgyZ80bUf" role="3EZMnx" />
-        <node concept="3F0ifn" id="4GjgyZ80bUr" role="3EZMnx">
-          <property role="3F0ifm" value="Old UI" />
-        </node>
       </node>
-      <node concept="3F2HdR" id="2p1v3tObwXj" role="b$wch">
-        <ref role="1NtTu8" to="1oap:2p1v3tObwTA" resolve="layers" />
-        <node concept="2iRkQZ" id="2p1v3tObwXm" role="2czzBx" />
+      <node concept="l2Vlx" id="4rOpugP9puH" role="2iSdaV" />
+      <node concept="3EZMnI" id="4rOpugP9pux" role="3EZMnx">
+        <property role="S$Qs1" value="true" />
+        <property role="3EXrWe" value="true" />
+        <node concept="l2Vlx" id="4rOpugP9puy" role="2iSdaV" />
+        <node concept="3F0ifn" id="4rOpugP9puz" role="3EZMnx">
+          <property role="3F0ifm" value="Old UI" />
+          <node concept="3nxI2P" id="4rOpugP9pu$" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="4rOpugP9puC" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F2HdR" id="4rOpugP9puA" role="3EZMnx">
+          <ref role="1NtTu8" to="1oap:2p1v3tObwTA" resolve="layers" />
+          <node concept="2iRkQZ" id="4rOpugP9puB" role="2czzBx" />
+        </node>
+        <node concept="pVoyu" id="4rOpugP9Nte" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="3F0ifn" id="4rOpugPa13I" role="AHCbl">
+          <property role="3F0ifm" value="Old UI version" />
+          <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
+          <node concept="3nxI2P" id="4rOpugPa150" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
       </node>
     </node>
   </node>
@@ -825,6 +852,12 @@
       </node>
       <node concept="3F0A7n" id="1ng4Vf3VLdY" role="3EZMnx">
         <ref role="1NtTu8" to="1oap:3Ftr4R6BH86" resolve="r" />
+      </node>
+      <node concept="3F0ifn" id="4rOpugPb5d0" role="3EZMnx">
+        <property role="3F0ifm" value="," />
+        <node concept="11L4FC" id="4rOpugPb5d1" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="PMmxH" id="4rOpugP4jx4" role="3EZMnx">
         <ref role="PMmxG" node="4rOpugP4iUV" resolve="TextIconThemeSelection" />
@@ -901,6 +934,12 @@
       <node concept="3F0A7n" id="2p1v3tObZtS" role="3EZMnx">
         <ref role="1NtTu8" to="1oap:3Ftr4R6BH88" resolve="r" />
       </node>
+      <node concept="3F0ifn" id="4rOpugPb5cY" role="3EZMnx">
+        <property role="3F0ifm" value="," />
+        <node concept="11L4FC" id="4rOpugPb5cZ" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
       <node concept="PMmxH" id="4rOpugP4jx6" role="3EZMnx">
         <ref role="PMmxG" node="4rOpugP4iUV" resolve="TextIconThemeSelection" />
       </node>
@@ -925,6 +964,9 @@
       </node>
       <node concept="3F0ifn" id="1BguvjG4kLK" role="3EZMnx">
         <property role="3F0ifm" value="," />
+        <node concept="11L4FC" id="4rOpugPb5cT" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="3F0ifn" id="2p1v3tObZvD" role="3EZMnx">
         <property role="3F0ifm" value="value=" />
@@ -934,6 +976,12 @@
       </node>
       <node concept="3F0A7n" id="2p1v3tObZx5" role="3EZMnx">
         <ref role="1NtTu8" to="1oap:2p1v3tObyyY" resolve="text" />
+      </node>
+      <node concept="3F0ifn" id="4rOpugPb5cV" role="3EZMnx">
+        <property role="3F0ifm" value="," />
+        <node concept="11L4FC" id="4rOpugPb5cX" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="PMmxH" id="4rOpugP4jx8" role="3EZMnx">
         <ref role="PMmxG" node="4rOpugP4iUV" resolve="TextIconThemeSelection" />
@@ -1025,6 +1073,12 @@
               </node>
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="4rOpugPbjVP" role="3EZMnx">
+        <property role="3F0ifm" value="," />
+        <node concept="11L4FC" id="4rOpugPbjVQ" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
       </node>
       <node concept="PMmxH" id="4rOpugP4jrD" role="3EZMnx">
@@ -1259,19 +1313,30 @@
     <property role="3GE5qa" value="icons.descriptors.text" />
     <property role="TrG5h" value="TextIconThemeSelection" />
     <ref role="1XX52x" to="1oap:2p1v3tObwT_" resolve="IconLayerDescription" />
-    <node concept="3EZMnI" id="4rOpugP4iUX" role="2wV5jI">
-      <node concept="3F0ifn" id="4rOpugP4iV3" role="3EZMnx">
-        <property role="3F0ifm" value="apply to:" />
+    <node concept="3EZMnI" id="4rOpugPcWZV" role="2wV5jI">
+      <node concept="2iRfu4" id="4rOpugPcWZW" role="2iSdaV" />
+      <node concept="3EZMnI" id="4rOpugP4iUX" role="3EZMnx">
+        <node concept="3F0ifn" id="4rOpugP4iV3" role="3EZMnx">
+          <property role="3F0ifm" value="apply to:" />
+        </node>
+        <node concept="3F1sOY" id="4rOpugP5j8B" role="3EZMnx">
+          <property role="2ru_X1" value="true" />
+          <ref role="1NtTu8" to="1oap:4rOpugP5j8y" resolve="targetTheme" />
+          <node concept="3F0ifn" id="4rOpugP5j8D" role="2ruayu">
+            <property role="3F0ifm" value="all themes" />
+            <ref role="1k5W1q" to="tpch:6t_vhrzKdF" resolve="Comment" />
+            <node concept="VPxyj" id="4rOpugPcJZG" role="3F10Kt">
+              <property role="VOm3f" value="true" />
+            </node>
+          </node>
+        </node>
+        <node concept="2iRfu4" id="4rOpugP4iV0" role="2iSdaV" />
       </node>
-      <node concept="3F1sOY" id="4rOpugP5j8B" role="3EZMnx">
-        <property role="2ru_X1" value="true" />
-        <ref role="1NtTu8" to="1oap:4rOpugP5j8y" resolve="targetTheme" />
-        <node concept="3F0ifn" id="4rOpugP5j8D" role="2ruayu">
-          <property role="3F0ifm" value="all themes" />
-          <ref role="1k5W1q" to="tpch:6t_vhrzKdF" resolve="Comment" />
+      <node concept="3F0ifn" id="4rOpugPcWZY" role="3EZMnx">
+        <node concept="VPM3Z" id="4rOpugPcX00" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="2iRfu4" id="4rOpugP4iV0" role="2iSdaV" />
     </node>
   </node>
   <node concept="24kQdi" id="4rOpugP5x3w">

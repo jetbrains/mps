@@ -388,7 +388,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/2756621024541674821");
     b.version(3);
     b.property("iconId", 0x12dbb53bb6b60039L).type(PrimitiveTypeId.STRING).origin("1358878980655415353").done();
-    b.aggregate("layers", 0x26417c37742e0e66L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L).optional(false).ordered(true).multiple(true).origin("2756621024541675110").done();
+    b.aggregate("layers", 0x26417c37742e0e66L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L).optional(true).ordered(true).multiple(true).origin("2756621024541675110").done();
     b.aggregate("newuiLayers", 0x7cb0b849e7eb993bL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L).optional(true).ordered(true).multiple(true).origin("8984883884167239995").done();
     b.alias("describe");
     return b.create();

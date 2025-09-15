@@ -21,6 +21,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.structure.editor.structure_StyleSheet.CommentStyleClass;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class TextIconThemeSelection_ComponentBuilder_a extends AbstractEditorBuilder {
@@ -45,25 +46,32 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_f7yov8_a");
+    editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createConstant_2());
+    return editorCell;
+  }
+  private EditorCell createCollection_1() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_f7yov8_a0");
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNode_0());
     return editorCell;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "apply to:");
-    editorCell.setCellId("Constant_f7yov8_a0");
+    editorCell.setCellId("Constant_f7yov8_a0a");
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new targetThemeSingleRoleHandler_f7yov8_b0(myNode, LINKS.targetTheme$7fjQ, getEditorContext());
+    SingleRoleCellProvider provider = new targetThemeSingleRoleHandler_f7yov8_b0a(myNode, LINKS.targetTheme$7fjQ, getEditorContext());
     return provider.createCell();
   }
-  private static class targetThemeSingleRoleHandler_f7yov8_b0 extends SingleRoleCellProvider {
+  private static class targetThemeSingleRoleHandler_f7yov8_b0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public targetThemeSingleRoleHandler_f7yov8_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public targetThemeSingleRoleHandler_f7yov8_b0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -107,13 +115,23 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "all themes");
-      editorCell.setCellId("Constant_f7yov8_a1a");
+      editorCell.setCellId("Constant_f7yov8_a1a0");
       Style style = new StyleImpl();
       new CommentStyleClass(this).apply(style, editorCell);
+      style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
       editorCell.setDefaultText("");
       return editorCell;
     }
+  }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
+    editorCell.setCellId("Constant_f7yov8_b0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, true);
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
   }
 
   private static final class LINKS {
