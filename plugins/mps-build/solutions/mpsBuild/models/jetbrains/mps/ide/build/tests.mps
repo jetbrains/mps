@@ -14890,13 +14890,16 @@
         <property role="3vZFNd" value="3kCd1ud3JDD/compile_ext" />
         <node concept="55IIr" id="4MTm4DjbCs$" role="3LF7KH">
           <node concept="2Ry0Ak" id="4MTm4DjbC$P" role="iGT6I">
-            <property role="2Ry0Am" value="languages" />
-            <node concept="2Ry0Ak" id="4MTm4DjbCCH" role="2Ry0An">
-              <property role="2Ry0Am" value="baseLanguage" />
-              <node concept="2Ry0Ak" id="4MTm4DjbCG_" role="2Ry0An">
-                <property role="2Ry0Am" value="unitTest" />
-                <node concept="2Ry0Ak" id="4MTm4DjbCJc" role="2Ry0An">
-                  <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.unitTest.libs.msd" />
+            <property role="2Ry0Am" value="plugins" />
+            <node concept="2Ry0Ak" id="73p5MxbjlMh" role="2Ry0An">
+              <property role="2Ry0Am" value="mps-testing" />
+              <node concept="2Ry0Ak" id="73p5MxbjlMi" role="2Ry0An">
+                <property role="2Ry0Am" value="languages" />
+                <node concept="2Ry0Ak" id="73p5MxbjlMj" role="2Ry0An">
+                  <property role="2Ry0Am" value="bl.unittest.lib" />
+                  <node concept="2Ry0Ak" id="73p5MxbjlMk" role="2Ry0An">
+                    <property role="2Ry0Am" value="jetbrains.mps.baseLanguage.unitTest.libs.msd" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -14911,15 +14914,18 @@
           <node concept="1BurEX" id="4MTm4DjbCLn" role="1SiIV1">
             <node concept="55IIr" id="4MTm4DjbCLg" role="1BurEY">
               <node concept="2Ry0Ak" id="4MTm4DjbCLh" role="iGT6I">
-                <property role="2Ry0Am" value="languages" />
-                <node concept="2Ry0Ak" id="4MTm4DjbCLi" role="2Ry0An">
-                  <property role="2Ry0Am" value="baseLanguage" />
-                  <node concept="2Ry0Ak" id="4MTm4DjbCLj" role="2Ry0An">
-                    <property role="2Ry0Am" value="unitTest" />
-                    <node concept="2Ry0Ak" id="4MTm4DjbCLk" role="2Ry0An">
-                      <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="4MTm4DjbCLl" role="2Ry0An">
-                        <property role="2Ry0Am" value="hamcrest-library-1.3.jar" />
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="73p5MxbjlRF" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="73p5MxbjlRG" role="2Ry0An">
+                    <property role="2Ry0Am" value="languages" />
+                    <node concept="2Ry0Ak" id="73p5MxbjlRH" role="2Ry0An">
+                      <property role="2Ry0Am" value="bl.unittest.lib" />
+                      <node concept="2Ry0Ak" id="73p5MxbjlRI" role="2Ry0An">
+                        <property role="2Ry0Am" value="lib" />
+                        <node concept="2Ry0Ak" id="73p5MxbjlRJ" role="2Ry0An">
+                          <property role="2Ry0Am" value="hamcrest-library-1.3.jar" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -14932,15 +14938,18 @@
           <node concept="1BurEX" id="4MTm4DjbCLB" role="1SiIV1">
             <node concept="55IIr" id="4MTm4DjbCLw" role="1BurEY">
               <node concept="2Ry0Ak" id="4MTm4DjbCLx" role="iGT6I">
-                <property role="2Ry0Am" value="languages" />
-                <node concept="2Ry0Ak" id="4MTm4DjbCLy" role="2Ry0An">
-                  <property role="2Ry0Am" value="baseLanguage" />
-                  <node concept="2Ry0Ak" id="4MTm4DjbCLz" role="2Ry0An">
-                    <property role="2Ry0Am" value="unitTest" />
-                    <node concept="2Ry0Ak" id="4MTm4DjbCL$" role="2Ry0An">
-                      <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="4MTm4DjbCL_" role="2Ry0An">
-                        <property role="2Ry0Am" value="jmock-2.8.2.jar" />
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="73p5MxbjlU4" role="2Ry0An">
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="73p5MxbjlU5" role="2Ry0An">
+                    <property role="2Ry0Am" value="languages" />
+                    <node concept="2Ry0Ak" id="73p5MxbjlU6" role="2Ry0An">
+                      <property role="2Ry0Am" value="bl.unittest.lib" />
+                      <node concept="2Ry0Ak" id="73p5MxbjlU7" role="2Ry0An">
+                        <property role="2Ry0Am" value="lib" />
+                        <node concept="2Ry0Ak" id="73p5MxbjlU8" role="2Ry0An">
+                          <property role="2Ry0Am" value="jmock-2.8.2.jar" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -14953,15 +14962,18 @@
           <node concept="1BurEX" id="4MTm4DjbCLR" role="1SiIV1">
             <node concept="55IIr" id="4MTm4DjbCLK" role="1BurEY">
               <node concept="2Ry0Ak" id="4MTm4DjbCLL" role="iGT6I">
-                <property role="2Ry0Am" value="languages" />
+                <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="4MTm4DjbCLM" role="2Ry0An">
-                  <property role="2Ry0Am" value="baseLanguage" />
-                  <node concept="2Ry0Ak" id="4MTm4DjbCLN" role="2Ry0An">
-                    <property role="2Ry0Am" value="unitTest" />
-                    <node concept="2Ry0Ak" id="4MTm4DjbCLO" role="2Ry0An">
-                      <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="4MTm4DjbCLP" role="2Ry0An">
-                        <property role="2Ry0Am" value="jmock-junit4-2.8.2.jar" />
+                  <property role="2Ry0Am" value="mps-testing" />
+                  <node concept="2Ry0Ak" id="73p5MxbjlYr" role="2Ry0An">
+                    <property role="2Ry0Am" value="languages" />
+                    <node concept="2Ry0Ak" id="73p5MxbjlYs" role="2Ry0An">
+                      <property role="2Ry0Am" value="bl.unittest.lib" />
+                      <node concept="2Ry0Ak" id="73p5MxbjlYt" role="2Ry0An">
+                        <property role="2Ry0Am" value="lib" />
+                        <node concept="2Ry0Ak" id="73p5MxbjlYu" role="2Ry0An">
+                          <property role="2Ry0Am" value="jmock-junit4-2.8.2.jar" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -15612,17 +15624,20 @@
         <ref role="L2wRA" node="4MTm4DjbCsx" resolve="jetbrains.mps.baseLanguage.unitTest.libs" />
         <node concept="3yLZsm" id="4MTm4DjcRQs" role="3yL2VB">
           <property role="3yLZsk" value="lib/hamcrest-library-1.3.jar" />
-          <node concept="55IIr" id="4MTm4DjcS0D" role="3yLZsn">
-            <node concept="2Ry0Ak" id="4MTm4DjcS7C" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcS9y" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcScH" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcSe3" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcSgE" role="2Ry0An">
-                      <property role="2Ry0Am" value="hamcrest-library-1.3.jar" />
+          <node concept="55IIr" id="73p5MxbjlZN" role="3yLZsn">
+            <node concept="2Ry0Ak" id="73p5MxbjlZO" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="73p5MxbjlZP" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-testing" />
+                <node concept="2Ry0Ak" id="73p5MxbjlZQ" role="2Ry0An">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="73p5MxbjlZR" role="2Ry0An">
+                    <property role="2Ry0Am" value="bl.unittest.lib" />
+                    <node concept="2Ry0Ak" id="73p5MxbjlZS" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="73p5MxbjlZT" role="2Ry0An">
+                        <property role="2Ry0Am" value="hamcrest-library-1.3.jar" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -15632,17 +15647,20 @@
         </node>
         <node concept="3yLZsm" id="4MTm4DjcSns" role="3yL2VB">
           <property role="3yLZsk" value="lib/jmock-2.8.2.jar" />
-          <node concept="55IIr" id="4MTm4DjcSnt" role="3yLZsn">
-            <node concept="2Ry0Ak" id="4MTm4DjcSnu" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcSnv" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcSnw" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcSnx" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcSqR" role="2Ry0An">
-                      <property role="2Ry0Am" value="jmock-2.8.2.jar" />
+          <node concept="55IIr" id="73p5Mxbjm0f" role="3yLZsn">
+            <node concept="2Ry0Ak" id="73p5Mxbjm0g" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="73p5Mxbjm0h" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-testing" />
+                <node concept="2Ry0Ak" id="73p5Mxbjm0i" role="2Ry0An">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="73p5Mxbjm0j" role="2Ry0An">
+                    <property role="2Ry0Am" value="bl.unittest.lib" />
+                    <node concept="2Ry0Ak" id="73p5Mxbjm0k" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="73p5Mxbjm0l" role="2Ry0An">
+                        <property role="2Ry0Am" value="jmock-2.8.2.jar" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -15652,17 +15670,20 @@
         </node>
         <node concept="3yLZsm" id="4MTm4DjcSKN" role="3yL2VB">
           <property role="3yLZsk" value="lib/jmock-junit4-2.8.2.jar" />
-          <node concept="55IIr" id="4MTm4DjcSKO" role="3yLZsn">
-            <node concept="2Ry0Ak" id="4MTm4DjcSKP" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcSKQ" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcSKR" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcSKS" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcSNi" role="2Ry0An">
-                      <property role="2Ry0Am" value="jmock-junit4-2.8.2.jar" />
+          <node concept="55IIr" id="73p5Mxbjm0F" role="3yLZsn">
+            <node concept="2Ry0Ak" id="73p5Mxbjm0G" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="73p5Mxbjm0H" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-testing" />
+                <node concept="2Ry0Ak" id="73p5Mxbjm0I" role="2Ry0An">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="73p5Mxbjm0J" role="2Ry0An">
+                    <property role="2Ry0Am" value="bl.unittest.lib" />
+                    <node concept="2Ry0Ak" id="73p5Mxbjm0K" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="73p5Mxbjm0L" role="2Ry0An">
+                        <property role="2Ry0Am" value="jmock-junit4-2.8.2.jar" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -15680,14 +15701,17 @@
         <node concept="2HvfSZ" id="4MTm4DjcRoe" role="39821P">
           <node concept="55IIr" id="4MTm4DjcRof" role="2HvfZ0">
             <node concept="2Ry0Ak" id="4MTm4DjcRsG" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4MTm4DjcRvj" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4MTm4DjcRzb" role="2Ry0An">
-                  <property role="2Ry0Am" value="unitTest" />
-                  <node concept="2Ry0Ak" id="4MTm4DjcRET" role="2Ry0An">
-                    <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4MTm4DjcRLm" role="2Ry0An" />
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="73p5MxbjlN6" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-testing" />
+                <node concept="2Ry0Ak" id="73p5MxbjlN7" role="2Ry0An">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="73p5MxbjlN8" role="2Ry0An">
+                    <property role="2Ry0Am" value="bl.unittest.lib" />
+                    <node concept="2Ry0Ak" id="73p5MxbjlN9" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="73p5MxbjlNa" role="2Ry0An" />
+                    </node>
                   </node>
                 </node>
               </node>

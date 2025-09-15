@@ -348,7 +348,7 @@
           description="Download jmock and hamcrest libraries">
     <echo message="Test libraries (hamcrest, jmock and jmock-junit) are missing. Downloading..."/>
     <ivy:resolve file="ivyUnitTestLibs.xml" transitive="false" type="source,jar" showprogress="true"/>
-    <ivy:retrieve pattern="${basedir}/../languages/baseLanguage/unitTest/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
+    <ivy:retrieve pattern="${testlib.lib}/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
   <target name="download-jetpad" depends="check-jetpad,install-ivy" if="${jetpad.missing}"
