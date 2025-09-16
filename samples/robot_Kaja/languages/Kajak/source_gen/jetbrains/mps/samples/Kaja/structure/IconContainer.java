@@ -7,6 +7,6 @@ import jetbrains.mps.smodel.runtime.IconResource;
 
 @ResourceModule("049a08c5-1fe5-43cc-bd99-8b46d641d7f5(jetbrains.mps.samples.Kaja)")
 public class IconContainer {
-  protected static IconResource RESOURCE_0 = new IconResource("TextIcon_928359275.png", null, IconContainer.class);
+  protected static IconResource RESOURCE_0 = new IconResource("TextIcon_928359275.png", "TextIconNewUI_928359275.png", IconContainer.class);
   protected static IconResource RESOURCE_1 = new IconResource("TextIcon_1.png", "TextIconNewUI_1.png", IconContainer.class);
 }
