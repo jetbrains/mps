@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="JMock">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unitTest.lib/lib/jmock-2.8.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unitTest.lib/lib/jmock-junit4-2.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unittest.lib/lib/jmock-2.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unittest.lib/lib/jmock-junit4-2.8.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unitTest.lib/lib/jmock-junit4-2.8.2-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unitTest.lib/lib/jmock-2.8.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unittest.lib/lib/jmock-junit4-2.8.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/mps-testing/languages/bl.unittest.lib/lib/jmock-2.8.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
