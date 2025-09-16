@@ -87,16 +87,21 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     EditorCell_Collection mainCellCollection = pushCollection();
     mainCellCollection.setBig(true);
     mainCellCollection.setCellContext(getCellFactory().getCellContext());
-    addLabel(camelToLabel(myConcept.getName()));
+    addLabel(myConcept.getName());
     final Color firstLabelBackgroundColor = editorContext.getEditorComponent().getStyleRegistry().getStyle("REFLECTIVE_EDITOR_FIRST_LABEL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     addStyle(StyleAttributes.TEXT_BACKGROUND_COLOR, firstLabelBackgroundColor);
     if (nameProperty != null) {
       getProperties().remove(nameProperty);
       addPropertyCell(nameProperty);
     }
-    addReferences();
-    if (!getContainmentLinks().isEmpty() || !getProperties().isEmpty() || isAttribute()) {
-      addPropertiesAndChildren();
+    if (!getReferenceLinks().isEmpty() || !getContainmentLinks().isEmpty() || !getProperties().isEmpty() || isAttribute()) {
+      addIndentedBlock(() -> {
+        addReferences(editorContext);
+        addProperties(editorContext);
+        addChildren(editorContext);
+        addAttributedEntity();
+        addNewLine();
+      });
     }
     popCollection();
     return mainCellCollection;
@@ -171,20 +176,15 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     }
     return priority;
   }
-
-  private void addPropertiesAndChildren() {
+  
+  private void addIndentedBlock(Runnable block) {
     addLabel("{");
     addStyle(StyleAttributes.MATCHING_LABEL, "body-brace");
-    addNewLine();
     pushCollection();
     setIndent(collectionStack.peek());
-    addProperties();
-    addLabel("");
-    addNewLine();
-    addChildren();
-    if (myReflectiveRoot) {
-      addAttributedEntity();
-    }
+
+    block.run();
+
     popCollection();
     addLabel("}");
     addStyle(StyleAttributes.MATCHING_LABEL, "body-brace");
@@ -208,27 +208,57 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
 
   protected abstract void addReferenceCell(final SReferenceLink referenceLink);
 
-  private void addProperties() {
+  private void addProperties(EditorContext editorContext) {
+    boolean header = false;
+    final Color nullColor = editorContext.getEditorComponent().getStyleRegistry().getColor("DEFAULT_NULL_TEXT_COLOR");
+
     for (SProperty property : getProperties()) {
+      addLabel("");
+      addNewLine();
+      if (!header) {
+        addLabel("properties:");
+        addStyle(StyleAttributes.TEXT_COLOR, nullColor);
+        addNewLine();
+        header = true;
+      }
       addRoleLabel(property.getName(), "property");
       addPropertyCell(property);
-      addNewLine();
     }
   }
 
-  private void addReferences() {
+  private void addReferences(EditorContext editorContext) {
+    boolean header = false;
+    final Color nullColor = editorContext.getEditorComponent().getStyleRegistry().getColor("DEFAULT_NULL_TEXT_COLOR");
+
     for (SReferenceLink reference : getReferenceLinks()) {
+      addLabel("");
+      addNewLine();
+      if (!header) {
+        addLabel("references:");
+        addStyle(StyleAttributes.TEXT_COLOR, nullColor);
+        addNewLine();
+        header = true;
+      }
       addRoleLabel(reference.getName(), "reference");
       addReferenceCell(reference);
     }
   }
 
-  private void addChildren() {
+  private void addChildren(EditorContext editorContext) {
+    boolean header = false;
+    final Color nullColor = editorContext.getEditorComponent().getStyleRegistry().getColor("DEFAULT_NULL_TEXT_COLOR");
+
     for (SContainmentLink link : getContainmentLinks()) {
+      addLabel("");
+      addNewLine();
+      if (!header) {
+        addLabel("children:");
+        addStyle(StyleAttributes.TEXT_COLOR, nullColor);
+        addNewLine();
+        header = true;
+      }
       addRoleLabel(link.getName(), "link");
-      addNewLine();
       addChildCell(link);
-      addNewLine();
     }
   }
 
@@ -243,12 +273,13 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   }
 
   private void addAttributedCell(String label, AttributeKind attributeKind) {
+    addLabel("");
+    addNewLine();
     addLabel(label);
     addNewLine();
     EditorCell editorCell = myEditorContext.getEditorComponent().getUpdater().getCurrentUpdateSession().getAttributedCell(attributeKind, mySNode);
     addCell(editorCell);
     setIndent(editorCell);
-    addNewLine();
   }
 
   private boolean isAttribute() {
@@ -259,7 +290,7 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     if (role == null) {
       role = "<no " + type + ">";
     }
-    addLabel(camelToLabel(role));
+    addLabel(role);
     addLabel(":");
   }
 
@@ -277,32 +308,6 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
 
   protected void addCell(EditorCell cell) {
     collectionStack.peek().addEditorCell(cell);
-  }
-
-  private String camelToLabel(String text) {
-    StringBuilder sb = new StringBuilder();
-    char[] cs = text.toCharArray();
-    for (int i = 0; i < cs.length; i++) {
-      if (Character.isUpperCase(cs[i])) {
-        if (sb.length() > 0) {
-          sb.append(' ');
-        }
-        if (i + 1 < cs.length && Character.isLowerCase(cs[i + 1])) {
-          sb.append(Character.toLowerCase(cs[i]));
-          continue;
-        }
-        while (i + 1 < cs.length && !(Character.isLowerCase(cs[i + 1]))) {
-          sb.append(cs[i]);
-          i++;
-        }
-        if (i + 1 < cs.length) {
-          i--;
-          continue;
-        }
-      }
-      sb.append(cs[i]);
-    }
-    return sb.toString();
   }
 
   protected EditorCell createReferentEditorCell(EditorContext editorContext, SReferenceLink link, final SNode targetNode) {
