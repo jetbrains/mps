@@ -346,12 +346,28 @@
                             <node concept="2ShNRf" id="2xAJZV4snHB" role="37wK5m">
                               <node concept="1pGfFk" id="2xAJZV4snHC" role="2ShVmc">
                                 <ref role="37wK5l" to="dxuu:~ImageIcon.&lt;init&gt;(byte[])" resolve="ImageIcon" />
-                                <node concept="2OqwBi" id="2xAJZV4snHD" role="37wK5m">
-                                  <node concept="2GrUjf" id="2xAJZV4snHE" role="2Oq$k0">
-                                    <ref role="2Gs0qQ" node="2xAJZV4snHw" resolve="layer" />
+                                <node concept="3K4zz7" id="1MyVF62eBEc" role="37wK5m">
+                                  <node concept="2OqwBi" id="1MyVF62eAI$" role="3K4Cdx">
+                                    <node concept="117lpO" id="1MyVF62eAcC" role="2Oq$k0" />
+                                    <node concept="3TrcHB" id="1MyVF62eAZ3" role="2OqNvi">
+                                      <ref role="3TsBF5" to="1oap:1MyVF62e$SL" resolve="isDarkVariant" />
+                                    </node>
                                   </node>
-                                  <node concept="2qgKlT" id="2xAJZV4snHF" role="2OqNvi">
-                                    <ref role="37wK5l" to="3767:2p1v3tObywX" resolve="getImageForGeneration" />
+                                  <node concept="2OqwBi" id="2xAJZV4snHD" role="3K4E3e">
+                                    <node concept="2GrUjf" id="2xAJZV4snHE" role="2Oq$k0">
+                                      <ref role="2Gs0qQ" node="2xAJZV4snHw" resolve="layer" />
+                                    </node>
+                                    <node concept="2qgKlT" id="2xAJZV4snHF" role="2OqNvi">
+                                      <ref role="37wK5l" to="3767:4rOpugPeqgL" resolve="getDarkImageForGeneration" />
+                                    </node>
+                                  </node>
+                                  <node concept="2OqwBi" id="1MyVF62eC3s" role="3K4GZi">
+                                    <node concept="2GrUjf" id="1MyVF62eC3t" role="2Oq$k0">
+                                      <ref role="2Gs0qQ" node="2xAJZV4snHw" resolve="layer" />
+                                    </node>
+                                    <node concept="2qgKlT" id="1MyVF62eC3u" role="2OqNvi">
+                                      <ref role="37wK5l" to="3767:2p1v3tObywX" resolve="getImageForGeneration" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>

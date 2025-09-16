@@ -10,10 +10,12 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.ImageIcon;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.resources.behavior.IconLayerDescription__BehaviorDescriptor;
 import jetbrains.mps.text.impl.TextGenBinContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class GeneratedImage_TextGen extends TextGenDescriptorBase {
   @Override
@@ -22,7 +24,7 @@ public class GeneratedImage_TextGen extends TextGenDescriptorBase {
       LayeredIcon res = new LayeredIcon(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.layers$ahIF)).count());
       int i = 0;
       for (SNode layer : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.layers$ahIF))) {
-        res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), i++);
+        res.setIcon(new ImageIcon((SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isDarkVariant$8dXY) ? IconLayerDescription__BehaviorDescriptor.getDarkImageForGeneration_id4rOpugPeqgL.invoke(layer) : IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer))), i++);
       }
       res.paintIcon(null, dc.g, 0, 0);
     });
@@ -31,5 +33,9 @@ public class GeneratedImage_TextGen extends TextGenDescriptorBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink layers$ahIF = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378b5b580L, "layers");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty isDarkVariant$8dXY = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x1ca2eeb1823a4e31L, "isDarkVariant");
   }
 }

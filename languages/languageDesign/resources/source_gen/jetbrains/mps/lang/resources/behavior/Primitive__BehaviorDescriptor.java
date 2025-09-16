@@ -14,51 +14,33 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.IconCreationUtil;
-import java.awt.Font;
-import java.awt.font.TextLayout;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.awt.geom.Rectangle2D;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, "jetbrains.mps.lang.resources.structure.Text");
+public final class Primitive__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, "jetbrains.mps.lang.resources.structure.Primitive");
 
-  /*package*/ static final SMethod<byte[]> getImage_id4rOpugPeyzE = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5112823507792308458L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""));
+  public static final SMethod<byte[]> getImage_id4rOpugPeFSA = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(12, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(5112823507792346662L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""), SMethodBuilder.createJavaParameter(Color.class, ""));
   public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<byte[]> getDarkImageForGeneration_id4rOpugPeqgL = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getDarkImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792274481L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeyzE, getImageForGeneration_id2p1v3tObywX, getDarkImageForGeneration_id4rOpugPeqgL);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA, getImageForGeneration_id2p1v3tObywX, getDarkImageForGeneration_id4rOpugPeqgL);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static byte[] getImage_id4rOpugPeyzE(@NotNull final SNode __thisNode__, final Color color) {
-    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
-      Font font = new Font(Font.DIALOG, Font.BOLD, 12);
-
-      dc.g.setColor(color);
-      dc.g.setFont(font);
-
-      TextLayout text = new TextLayout(SPropertyOperations.getString(__thisNode__, PROPS.text$pUhb), font, dc.g.getFontRenderContext());
-      Rectangle2D rect = text.getBounds();
-
-      text.draw(dc.g, ((float) (((float) dc.width) / 2 - rect.getCenterX())), ((float) (((float) dc.height) / 2 - rect.getCenterY())));
-    });
-  }
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull SNode __thisNode__) {
-    return Text__BehaviorDescriptor.getImage_id4rOpugPeyzE.invokeSpecial(__thisNode__, new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.color$VAO2))));
+    return ((byte[]) Primitive__BehaviorDescriptor.getImage_id4rOpugPeFSA.invoke(__thisNode__, new JBColor((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)), (int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK))), new JBColor((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37)), (int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37)))));
   }
   /*package*/ static byte[] getDarkImageForGeneration_id4rOpugPeqgL(@NotNull SNode __thisNode__) {
-    return ((byte[]) Text__BehaviorDescriptor.getImage_id4rOpugPeyzE.invokeSpecial(__thisNode__, new Color((int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.color$VAO2)))));
+    return ((byte[]) Primitive__BehaviorDescriptor.getImage_id4rOpugPeFSA.invoke(__thisNode__, new Color((int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK))), new Color((int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37)))));
   }
 
-  /*package*/ Text__BehaviorDescriptor() {
+  /*package*/ Primitive__BehaviorDescriptor() {
   }
 
   @Override
@@ -73,8 +55,6 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        return (T) ((byte[]) getImage_id4rOpugPeyzE(node, (Color) parameters[0]));
       case 1:
         return (T) ((byte[]) getImageForGeneration_id2p1v3tObywX(node));
       case 2:
@@ -108,11 +88,8 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty text$pUhb = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x26417c37742e28beL, "text");
-  }
-
   private static final class LINKS {
-    /*package*/ static final SContainmentLink color$VAO2 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color");
+    /*package*/ static final SContainmentLink fillColor$VwDK = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
+    /*package*/ static final SContainmentLink borderColor$VA37 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
   }
 }

@@ -27,14 +27,15 @@ public final class LanguageConceptSwitch {
   public static final int IconLayerDescription = 15;
   public static final int IconResourceExpression = 16;
   public static final int Image = 17;
-  public static final int LightTargetTheme = 18;
-  public static final int NodeIconResourceExpression = 19;
-  public static final int Primitive = 20;
-  public static final int Rect = 21;
-  public static final int Resource = 22;
-  public static final int TargetTextIconTheme = 23;
-  public static final int Text = 24;
-  public static final int TextIcon = 25;
+  public static final int JBColorLiteral = 18;
+  public static final int LightTargetTheme = 19;
+  public static final int NodeIconResourceExpression = 20;
+  public static final int Primitive = 21;
+  public static final int Rect = 22;
+  public static final int Resource = 23;
+  public static final int TargetTextIconTheme = 24;
+  public static final int Text = 25;
+  public static final int TextIcon = 26;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L);
@@ -56,6 +57,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x26417c37742e0e65L, IconLayerDescription);
     builder.put(0x52fb86deea79455eL, IconResourceExpression);
     builder.put(0xb8b96b5078f3367L, Image);
+    builder.put(0x46f465e43534a2d4L, JBColorLiteral);
     builder.put(0x46f465e435153224L, LightTargetTheme);
     builder.put(0x7ce019825925c1aL, NodeIconResourceExpression);
     builder.put(0x26417c37742e28b1L, Primitive);

@@ -11,6 +11,7 @@ import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.resources.behavior.IconLayerDescription__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.resources.behavior.FileIcon__BehaviorDescriptor;
@@ -71,7 +72,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode())));
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()))) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).any((it) -> (SLinkOperations.getTarget(it, LINKS.targetTheme$7fjQ) != null));
+    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()))) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).any((it) -> (boolean) IconLayerDescription__BehaviorDescriptor.isForDarkTheme_id4rOpugPearf.invoke(it) || (boolean) IconLayerDescription__BehaviorDescriptor.hasDistinctColorsForThemes_id4rOpugPeaF2.invoke(it));
   }
   public static boolean rule_Condition_14_0(final BaseMappingRuleContext _context) {
     return ((String) _context.getVariable("oldResourceId")) == null;
@@ -287,13 +288,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode());
   }
   public static Object templateArgumentQuery_13_1(final TemplateArgumentContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.targetTheme$7fjQ), CONCEPTS.DarkTargetTheme$Km)));
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !((boolean) IconLayerDescription__BehaviorDescriptor.isForDarkTheme_id4rOpugPearf.invoke(it)));
   }
   public static Object templateArgumentQuery_16_0(final TemplateArgumentContext _context) {
     return IconFileNameUtil.createDarkSchemeNameForIcon(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()));
   }
   public static Object templateArgumentQuery_16_1(final TemplateArgumentContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.targetTheme$7fjQ), CONCEPTS.LightTargetTheme$JR)));
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !((boolean) IconLayerDescription__BehaviorDescriptor.isForLightTheme_id4rOpugPe88R.invoke(it)));
   }
   public static Object templateArgumentQuery_2_0(final TemplateArgumentContext _context) {
     return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$OBvj));
@@ -316,6 +317,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode insertMacro_Query_11_0(final InsertMacroContext _context) {
     final SNode rv = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratedImage$_G);
     SPropertyOperations.assign(rv, PROPS.fileName$JiWl, ((String) _context.getVariable("resourceId")));
+    SPropertyOperations.assign(rv, PROPS.isDarkVariant$8dXY, ((Boolean) _context.getVariable("isDark")));
     Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("layers"))).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.layers$ahIF)).addElement(SNodeOperations.copyNode(it)));
     return rv;
   }
@@ -768,15 +770,12 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept RefConcept_Reference$Ij = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept PoundExpression$$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
-    /*package*/ static final SConcept DarkTargetTheme$Km = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e435153225L, "jetbrains.mps.lang.resources.structure.DarkTargetTheme");
-    /*package*/ static final SConcept LightTargetTheme$JR = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e435153224L, "jetbrains.mps.lang.resources.structure.LightTargetTheme");
     /*package*/ static final SInterfaceConcept Icon$9F = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL, "jetbrains.mps.lang.resources.structure.Icon");
     /*package*/ static final SConcept GeneratedImage$_G = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, "jetbrains.mps.lang.resources.structure.GeneratedImage");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
-    /*package*/ static final SContainmentLink targetTheme$7fjQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, 0x46f465e435153222L, "targetTheme");
     /*package*/ static final SContainmentLink iconExpression$tVgU = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression");
     /*package*/ static final SReferenceLink baseURL$ZoS = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
     /*package*/ static final SContainmentLink concept$LkIQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL, 0x426bf72c54e74e64L, "concept");
@@ -797,5 +796,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SProperty url$qUOP = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
     /*package*/ static final SProperty url$UpM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
     /*package*/ static final SProperty fileName$JiWl = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378a9d34fL, "fileName");
+    /*package*/ static final SProperty isDarkVariant$8dXY = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x1ca2eeb1823a4e31L, "isDarkVariant");
   }
 }

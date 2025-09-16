@@ -17,10 +17,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import jetbrains.mps.lang.resources.behavior.IconLayerDescription__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_TextIcon_NonTypesystemRule() {
@@ -37,6 +41,21 @@ public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_
       }
 
       SetSequence.fromSet(usedIds).addElement(SPropertyOperations.getString(ti, PROPS.iconId$SZ3g));
+    }
+    if (ListSequence.fromList(SLinkOperations.getChildren(textIcon, LINKS.newuiLayers$lptJ)).isEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(textIcon, LINKS.layers$pqJD)).isEmpty()) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(textIcon, "No layers have specified.", "r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)", "2063474025451538288", null, errorTarget);
+        }
+      }
+    } else {
+      if (ListSequence.fromList(SLinkOperations.getChildren(textIcon, LINKS.newuiLayers$lptJ)).all((it) -> (boolean) IconLayerDescription__BehaviorDescriptor.isForDarkTheme_id4rOpugPearf.invoke(it))) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(textIcon, "Missing a layer applicable to the default (light) theme.", "r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)", "2063474025451361217", null, errorTarget);
+        }
+      }
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -55,5 +74,10 @@ public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextIcon$X0 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
+    /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
   }
 }

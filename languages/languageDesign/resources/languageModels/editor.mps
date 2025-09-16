@@ -1347,5 +1347,35 @@
       <ref role="1k5W1q" to="tpch:24YP6ZDyde4" resolve="Keyword" />
     </node>
   </node>
+  <node concept="24kQdi" id="4rOpugPdaE_">
+    <property role="3GE5qa" value="icons.descriptors.text" />
+    <ref role="1XX52x" to="1oap:4rOpugPdabk" resolve="JBColorLiteral" />
+    <node concept="3EZMnI" id="4rOpugPdaEB" role="2wV5jI">
+      <node concept="2iRfu4" id="4rOpugPdaEC" role="2iSdaV" />
+      <node concept="3F0ifn" id="4rOpugPdaED" role="3EZMnx">
+        <property role="3F0ifm" value="#" />
+        <node concept="11LMrY" id="4rOpugPdaEE" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="4rOpugPdaEF" role="3EZMnx">
+        <property role="1$x2rV" value="light" />
+        <ref role="1NtTu8" to="1oap:4rOpugPdaEz" resolve="lightThemeVal" />
+      </node>
+      <node concept="3F0ifn" id="4rOpugPdaEH" role="3EZMnx">
+        <property role="3F0ifm" value="/" />
+      </node>
+      <node concept="3F0ifn" id="4rOpugPdaEK" role="3EZMnx">
+        <property role="3F0ifm" value="#" />
+        <node concept="11LMrY" id="4rOpugPdCey" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="4rOpugPdaEN" role="3EZMnx">
+        <property role="1$x2rV" value="dark" />
+        <ref role="1NtTu8" to="1oap:4rOpugPdaE$" resolve="darkThemeVal" />
+      </node>
+    </node>
+  </node>
 </model>
 

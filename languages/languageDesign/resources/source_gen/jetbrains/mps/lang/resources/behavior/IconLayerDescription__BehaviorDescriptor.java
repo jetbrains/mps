@@ -13,20 +13,41 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class IconLayerDescription__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, "jetbrains.mps.lang.resources.structure.IconLayerDescription");
 
   public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<byte[]> getDarkImageForGeneration_id4rOpugPeqgL = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getDarkImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792274481L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Boolean> isForLightTheme_id4rOpugPe88R = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isForLightTheme").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792200247L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Boolean> isForDarkTheme_id4rOpugPearf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isForDarkTheme").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792209615L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Boolean> hasDistinctColorsForThemes_id4rOpugPeaF2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDistinctColorsForThemes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792210626L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImageForGeneration_id2p1v3tObywX);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImageForGeneration_id2p1v3tObywX, getDarkImageForGeneration_id4rOpugPeqgL, isForLightTheme_id4rOpugPe88R, isForDarkTheme_id4rOpugPearf, hasDistinctColorsForThemes_id4rOpugPeaF2);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static byte[] getDarkImageForGeneration_id4rOpugPeqgL(@NotNull SNode __thisNode__) {
+    return IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(__thisNode__);
+  }
+  /*package*/ static boolean isForLightTheme_id4rOpugPe88R(@NotNull SNode __thisNode__) {
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.targetTheme$7fjQ), CONCEPTS.LightTargetTheme$JR);
+  }
+  /*package*/ static boolean isForDarkTheme_id4rOpugPearf(@NotNull SNode __thisNode__) {
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.targetTheme$7fjQ), CONCEPTS.DarkTargetTheme$Km);
+  }
+  /*package*/ static boolean hasDistinctColorsForThemes_id4rOpugPeaF2(@NotNull SNode __thisNode__) {
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.targetTheme$7fjQ) == null) && ListSequence.fromList(SNodeOperations.getChildren(__thisNode__)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.JBColorLiteral$9I));
+  }
 
   /*package*/ IconLayerDescription__BehaviorDescriptor() {
   }
@@ -43,6 +64,14 @@ public final class IconLayerDescription__BehaviorDescriptor extends BaseBHDescri
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((byte[]) getDarkImageForGeneration_id4rOpugPeqgL(node));
+      case 2:
+        return (T) ((Boolean) isForLightTheme_id4rOpugPe88R(node));
+      case 3:
+        return (T) ((Boolean) isForDarkTheme_id4rOpugPearf(node));
+      case 4:
+        return (T) ((Boolean) hasDistinctColorsForThemes_id4rOpugPeaF2(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -70,5 +99,15 @@ public final class IconLayerDescription__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink targetTheme$7fjQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, 0x46f465e435153222L, "targetTheme");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept LightTargetTheme$JR = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e435153224L, "jetbrains.mps.lang.resources.structure.LightTargetTheme");
+    /*package*/ static final SConcept DarkTargetTheme$Km = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e435153225L, "jetbrains.mps.lang.resources.structure.DarkTargetTheme");
+    /*package*/ static final SConcept JBColorLiteral$9I = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L, "jetbrains.mps.lang.resources.structure.JBColorLiteral");
   }
 }

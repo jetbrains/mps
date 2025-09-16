@@ -20,9 +20,9 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final Logger LOG = Logger.getLogger(ColorLiteral__BehaviorDescriptor.class);
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, "jetbrains.mps.lang.resources.structure.ColorLiteral");
+public final class JBColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final Logger LOG = Logger.getLogger(JBColorLiteral__BehaviorDescriptor.class);
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L, "jetbrains.mps.lang.resources.structure.JBColorLiteral");
 
   public static final SMethod<Integer> getIntValue_id1BguvjG4ybo = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1860120738943607512L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<Integer> getDarkIntValue_id4rOpugPdD$J = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getDarkIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792075055L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
@@ -34,19 +34,26 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static int getIntValue_id1BguvjG4ybo(@NotNull SNode __thisNode__) {
     try {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.val$$ZaE), 16);
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.lightThemeVal$C0cI), 16);
     } catch (NumberFormatException e) {
       if (LOG.isErrorLevel()) {
-        LOG.error("Wrong color value: " + SPropertyOperations.getString(__thisNode__, PROPS.val$$ZaE));
+        LOG.error("Wrong color value: " + SPropertyOperations.getString(__thisNode__, PROPS.lightThemeVal$C0cI));
       }
       return 0;
     }
   }
   /*package*/ static int getDarkIntValue_id4rOpugPdD$J(@NotNull SNode __thisNode__) {
-    return ((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(__thisNode__));
+    try {
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.darkThemeVal$C0rJ), 16);
+    } catch (NumberFormatException e) {
+      if (LOG.isErrorLevel()) {
+        LOG.error("Wrong color value: " + SPropertyOperations.getString(__thisNode__, PROPS.darkThemeVal$C0rJ));
+      }
+      return 0;
+    }
   }
 
-  /*package*/ ColorLiteral__BehaviorDescriptor() {
+  /*package*/ JBColorLiteral__BehaviorDescriptor() {
   }
 
   @Override
@@ -95,6 +102,7 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty val$$ZaE = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val");
+    /*package*/ static final SProperty lightThemeVal$C0cI = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L, 0x46f465e43534aaa3L, "lightThemeVal");
+    /*package*/ static final SProperty darkThemeVal$C0rJ = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L, 0x46f465e43534aaa4L, "darkThemeVal");
   }
 }

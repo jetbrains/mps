@@ -38,6 +38,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIconLayerDescription = createDescriptorForIconLayerDescription();
   /*package*/ final ConceptDescriptor myConceptIconResourceExpression = createDescriptorForIconResourceExpression();
   /*package*/ final ConceptDescriptor myConceptImage = createDescriptorForImage();
+  /*package*/ final ConceptDescriptor myConceptJBColorLiteral = createDescriptorForJBColorLiteral();
   /*package*/ final ConceptDescriptor myConceptLightTargetTheme = createDescriptorForLightTargetTheme();
   /*package*/ final ConceptDescriptor myConceptNodeIconResourceExpression = createDescriptorForNodeIconResourceExpression();
   /*package*/ final ConceptDescriptor myConceptPrimitive = createDescriptorForPrimitive();
@@ -67,7 +68,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBaseURL, myConceptBaseURLFunction, myConceptBaseURLLiteral, myConceptCircle, myConceptColor, myConceptColorLiteral, myConceptConceptIconResourceExpression, myConceptConstantFieldIcon, myConceptDarkTargetTheme, myConceptFactoryMethodIcon, myConceptFileIcon, myConceptGeneratedImage, myConceptHelpURL, myConceptIcon, myConceptIconExpression, myConceptIconLayerDescription, myConceptIconResourceExpression, myConceptImage, myConceptLightTargetTheme, myConceptNodeIconResourceExpression, myConceptPrimitive, myConceptRect, myConceptResource, myConceptTargetTextIconTheme, myConceptText, myConceptTextIcon);
+    return Arrays.asList(myConceptBaseURL, myConceptBaseURLFunction, myConceptBaseURLLiteral, myConceptCircle, myConceptColor, myConceptColorLiteral, myConceptConceptIconResourceExpression, myConceptConstantFieldIcon, myConceptDarkTargetTheme, myConceptFactoryMethodIcon, myConceptFileIcon, myConceptGeneratedImage, myConceptHelpURL, myConceptIcon, myConceptIconExpression, myConceptIconLayerDescription, myConceptIconResourceExpression, myConceptImage, myConceptJBColorLiteral, myConceptLightTargetTheme, myConceptNodeIconResourceExpression, myConceptPrimitive, myConceptRect, myConceptResource, myConceptTargetTextIconTheme, myConceptText, myConceptTextIcon);
   }
 
   @Override
@@ -110,6 +111,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIconResourceExpression;
       case LanguageConceptSwitch.Image:
         return myConceptImage;
+      case LanguageConceptSwitch.JBColorLiteral:
+        return myConceptJBColorLiteral;
       case LanguageConceptSwitch.LightTargetTheme:
         return myConceptLightTargetTheme;
       case LanguageConceptSwitch.NodeIconResourceExpression:
@@ -256,6 +259,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/3625363630082085223");
     b.version(3);
     b.property("fileName", 0x324fe10378a9d34fL).type(PrimitiveTypeId.STRING).origin("3625363630082085711").done();
+    b.property("isDarkVariant", 0x1ca2eeb1823a4e31L).type(PrimitiveTypeId.BOOLEAN).origin("2063474025450589745").done();
     b.aggregate("layers", 0x324fe10378b5b580L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L).optional(false).ordered(true).multiple(true).origin("3625363630082864512").done();
     return b.create();
   }
@@ -314,6 +318,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/831924260440060775");
     b.version(3);
     b.property("file", 0xb8b96b5078f33bbL).type(PrimitiveTypeId.STRING).origin("831924260440060859").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForJBColorLiteral() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.resources", "JBColorLiteral", 0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L);
+    b.class_(false, false, false);
+    b.parent(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bdeL);
+    b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/5112823507791946452");
+    b.version(3);
+    b.property("lightThemeVal", 0x46f465e43534aaa3L).type(MetaIdFactory.dataTypeId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114c10L)).origin("5112823507791948451").done();
+    b.property("darkThemeVal", 0x46f465e43534aaa4L).type(MetaIdFactory.dataTypeId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114c10L)).origin("5112823507791948452").done();
+    b.alias("##");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLightTargetTheme() {

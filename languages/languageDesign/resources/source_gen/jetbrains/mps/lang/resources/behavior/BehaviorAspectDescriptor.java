@@ -20,10 +20,12 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myCircle__BehaviorDescriptor = new Circle__BehaviorDescriptor();
   private final BHDescriptor myRect__BehaviorDescriptor = new Rect__BehaviorDescriptor();
   private final BHDescriptor myIconLayerDescription__BehaviorDescriptor = new IconLayerDescription__BehaviorDescriptor();
+  private final BHDescriptor myPrimitive__BehaviorDescriptor = new Primitive__BehaviorDescriptor();
   private final BHDescriptor myText__BehaviorDescriptor = new Text__BehaviorDescriptor();
   private final BHDescriptor myBaseURLFunction__BehaviorDescriptor = new BaseURLFunction__BehaviorDescriptor();
   private final BHDescriptor myBaseURL__BehaviorDescriptor = new BaseURL__BehaviorDescriptor();
   private final BHDescriptor myBaseURLLiteral__BehaviorDescriptor = new BaseURLLiteral__BehaviorDescriptor();
+  private final BHDescriptor myJBColorLiteral__BehaviorDescriptor = new JBColorLiteral__BehaviorDescriptor();
   private final BHDescriptor myConstantFieldIcon__BehaviorDescriptor = new ConstantFieldIcon__BehaviorDescriptor();
   private final BHDescriptor myFactoryMethodIcon__BehaviorDescriptor = new FactoryMethodIcon__BehaviorDescriptor();
   private final BHDescriptor myFileIcon__BehaviorDescriptor = new FileIcon__BehaviorDescriptor();
@@ -61,16 +63,20 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 11:
         return myImage__BehaviorDescriptor;
       case 12:
-        return myRect__BehaviorDescriptor;
+        return myJBColorLiteral__BehaviorDescriptor;
       case 13:
-        return myResource__BehaviorDescriptor;
+        return myPrimitive__BehaviorDescriptor;
       case 14:
-        return myText__BehaviorDescriptor;
+        return myRect__BehaviorDescriptor;
       case 15:
+        return myResource__BehaviorDescriptor;
+      case 16:
+        return myText__BehaviorDescriptor;
+      case 17:
         return myTextIcon__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b7L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bdeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x774cdde25a7e1427L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b7L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bdeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x774cdde25a7e1427L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6caL), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L), MetaIdFactory.conceptId(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L)).seal();
 }

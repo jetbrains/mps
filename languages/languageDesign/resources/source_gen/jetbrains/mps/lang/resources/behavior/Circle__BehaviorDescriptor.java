@@ -9,6 +9,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import java.awt.Color;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IconCreationUtil;
 import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.awt.Color;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -27,26 +27,25 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e60L, "jetbrains.mps.lang.resources.structure.Circle");
 
-  public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<byte[]> getImage_id4rOpugPeFSA = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(5112823507792346662L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""), SMethodBuilder.createJavaParameter(Color.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImageForGeneration_id2p1v3tObywX);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
+  /*package*/ static byte[] getImage_id4rOpugPeFSA(@NotNull final SNode __thisNode__, final Color fillColor, final Color borderColor) {
     return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
       int x = (int) (((float) dc.width) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)));
       int y = (int) (((float) dc.height) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)));
       int d = Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)) * 2;
 
-      Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
       if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
         dc.g.setColor(fillColor);
         dc.g.fillOval(x, y, d, d);
       } else {
         // outer
-        dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
+        dc.g.setColor(borderColor);
         dc.g.fillOval(x, y, d, d);
 
         // inner
@@ -73,7 +72,7 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((byte[]) getImageForGeneration_id2p1v3tObywX(node));
+        return (T) ((byte[]) getImage_id4rOpugPeFSA(node, (Color) parameters[0], (Color) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -108,7 +107,6 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fillColor$VwDK = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
     /*package*/ static final SContainmentLink borderColor$VA37 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
   }
 }

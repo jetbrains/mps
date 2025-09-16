@@ -19,31 +19,33 @@
   </root>
   <root nodeRef="r:ee887510-ea76-4f06-8cef-7dc5af062973(jetbrains.mps.lang.resources.textGen)/3625363630082865412">
     <file name="GeneratedImage_TextGen.java">
-      <node id="2911225310079974231" at="21,86,22,142" concept="5" />
-      <node id="5672187556847148174" at="22,142,23,16" concept="5" />
-      <node id="2911225310079974243" at="24,120,25,132" concept="1" />
-      <node id="2911225310079974256" at="26,7,27,38" concept="1" />
-      <node id="5672187556847076364" at="28,7,29,46" concept="1" />
-      <node id="3625363630082865412" at="33,0,34,0" concept="8" trace="layers$ahIF" />
-      <node id="2911225310079974239" at="23,16,26,7" concept="2" />
-      <node id="831924260441356927" at="20,56,28,7" concept="5" />
-      <node id="3625363630082865412" at="19,0,31,0" concept="4" trace="generateBinary#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="2911225310079974242" at="24,120,25,132" />
-      <scope id="2911225310079974239" at="23,16,26,7">
+      <node id="2911225310079974231" at="23,86,24,142" concept="5" />
+      <node id="5672187556847148174" at="24,142,25,16" concept="5" />
+      <node id="2911225310079974243" at="26,120,27,313" concept="1" />
+      <node id="2911225310079974256" at="28,7,29,38" concept="1" />
+      <node id="5672187556847076364" at="30,7,31,46" concept="1" />
+      <node id="3625363630082865412" at="35,0,36,0" concept="8" trace="layers$ahIF" />
+      <node id="3625363630082865412" at="39,0,40,0" concept="8" trace="isDarkVariant$8dXY" />
+      <node id="2911225310079974239" at="25,16,28,7" concept="2" />
+      <node id="831924260441356927" at="22,56,30,7" concept="5" />
+      <node id="3625363630082865412" at="21,0,33,0" concept="4" trace="generateBinary#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="2911225310079974242" at="26,120,27,313" />
+      <scope id="2911225310079974239" at="25,16,28,7">
         <var name="layer" id="2911225310079974240" />
       </scope>
-      <scope id="831924260439135547" at="21,86,27,38">
+      <scope id="831924260439135547" at="23,86,29,38">
         <var name="i" id="5672187556847148177" />
         <var name="res" id="2911225310079974232" />
       </scope>
-      <scope id="3625363630082865412" at="20,56,29,46">
+      <scope id="3625363630082865412" at="22,56,31,46">
         <var name="iconData" id="831924260441356928" />
       </scope>
-      <scope id="3625363630082865412" at="19,0,31,0">
+      <scope id="3625363630082865412" at="21,0,33,0">
         <var name="ctx" id="3625363630082865412" />
       </scope>
-      <unit id="3625363630082865412" at="32,0,35,0" name="jetbrains.mps.lang.resources.textGen.GeneratedImage_TextGen$LINKS" />
-      <unit id="3625363630082865412" at="18,0,36,0" name="jetbrains.mps.lang.resources.textGen.GeneratedImage_TextGen" />
+      <unit id="3625363630082865412" at="34,0,37,0" name="jetbrains.mps.lang.resources.textGen.GeneratedImage_TextGen$LINKS" />
+      <unit id="3625363630082865412" at="38,0,41,0" name="jetbrains.mps.lang.resources.textGen.GeneratedImage_TextGen$PROPS" />
+      <unit id="3625363630082865412" at="20,0,42,0" name="jetbrains.mps.lang.resources.textGen.GeneratedImage_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="3625363630082865412" at="28,48,29,44" concept="6" />

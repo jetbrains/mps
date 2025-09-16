@@ -35,6 +35,7 @@
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
         <property id="4628067390765956807" name="final" index="R5$K2" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
@@ -420,6 +421,11 @@
       <property role="TrG5h" value="fileName" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="1TJgyi" id="1MyVF62e$SL" role="1TKVEl">
+      <property role="IQ2nx" value="2063474025450589745" />
+      <property role="TrG5h" value="isDarkVariant" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1AhYRh" id="39fSgdSEt90" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="6S5fI02sJjS">
@@ -482,6 +488,27 @@
     <property role="TrG5h" value="DarkTargetTheme" />
     <property role="34LRSv" value="dark themes" />
     <ref role="1TJDcQ" node="4rOpugP5j8z" resolve="TargetTextIconTheme" />
+  </node>
+  <node concept="1TIwiD" id="4rOpugPdabk">
+    <property role="EcuMT" value="5112823507791946452" />
+    <property role="3GE5qa" value="icons.descriptors.text" />
+    <property role="TrG5h" value="JBColorLiteral" />
+    <property role="34LRSv" value="##" />
+    <property role="R4oN_" value="Allows to specify a color for both the light and the dark themes" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="4rOpugPdaEz" role="1TKVEl">
+      <property role="IQ2nx" value="5112823507791948451" />
+      <property role="TrG5h" value="lightThemeVal" />
+      <ref role="AX2Wp" node="1BguvjG4kKg" resolve="ColorString" />
+    </node>
+    <node concept="1TJgyi" id="4rOpugPdaE$" role="1TKVEl">
+      <property role="IQ2nx" value="5112823507791948452" />
+      <property role="TrG5h" value="darkThemeVal" />
+      <ref role="AX2Wp" node="1BguvjG4kKg" resolve="ColorString" />
+    </node>
+    <node concept="PrWs8" id="4rOpugPdabl" role="PzmwI">
+      <ref role="PrY4T" node="1BguvjG4kJu" resolve="Color" />
+    </node>
   </node>
 </model>
 

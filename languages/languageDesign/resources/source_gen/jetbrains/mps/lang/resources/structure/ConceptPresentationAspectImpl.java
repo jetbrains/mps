@@ -27,6 +27,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IconLayerDescription;
   private ConceptPresentation props_IconResourceExpression;
   private ConceptPresentation props_Image;
+  private ConceptPresentation props_JBColorLiteral;
   private ConceptPresentation props_LightTargetTheme;
   private ConceptPresentation props_NodeIconResourceExpression;
   private ConceptPresentation props_Primitive;
@@ -165,6 +166,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Image = cpb.create();
         }
         return props_Image;
+      case LanguageConceptSwitch.JBColorLiteral:
+        if (props_JBColorLiteral == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Allows to specify a color for both the light and the dark themes");
+          cpb.rawPresentation("##");
+          props_JBColorLiteral = cpb.create();
+        }
+        return props_JBColorLiteral;
       case LanguageConceptSwitch.LightTargetTheme:
         if (props_LightTargetTheme == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
