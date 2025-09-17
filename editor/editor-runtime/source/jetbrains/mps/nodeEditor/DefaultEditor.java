@@ -185,24 +185,7 @@ public class DefaultEditor extends AbstractDefaultEditor {
   protected void addReferenceCell(final SReferenceLink referenceLink) {
     SReference reference = getNode().getReference(referenceLink);
     if (reference == null) {
-      String noTargetText = "<no " + referenceLink.getName() + ">";
-      jetbrains.mps.nodeEditor.cells.EditorCell_Label noRefCell = referenceLink.isOptional() ?
-                                                                  new EditorCell_Constant(getEditorContext(), getNode(), "") :
-                                                                  new EditorCell_Error(getEditorContext(), getNode(), noTargetText);
-      noRefCell.setText("");
-      noRefCell.setEditable(true);
-      noRefCell.setDefaultText(noTargetText);
-
-      noRefCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getNode(), DeleteDirection.FORWARD));
-      noRefCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(getNode(), DeleteDirection.BACKWARD));
-
-      noRefCell.setCellId("empty_" + referenceLink.getName());
-      noRefCell.setReferenceCell(true);
-      noRefCell.setSubstituteInfo(new SReferenceSubstituteInfo(noRefCell, referenceLink));
-      noRefCell.setSRole(referenceLink);
-
-      setIndent(noRefCell);
-      addCell(noRefCell);
+      addMissingReferenceCell(referenceLink);
     } else {
       final SNode referentNode = reference.getTargetNode();
       if (referentNode == null || referentNode.getModel() == null) {
@@ -210,7 +193,7 @@ public class DefaultEditor extends AbstractDefaultEditor {
         String resolveInfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
         EditorCell errorCell = createErrorCell(resolveInfo != null ? resolveInfo : "?" + referenceLink.getName() + "?", referenceLink);
         errorCell.setCellId("error_" + referenceLink.getName());
-        addCell(errorCell);
+        addCellWithRole(IterableUtils.first(AttributeOperations.getLinkAttributes(getNode(), referenceLink)), AttributeKind.REFERENCE, errorCell);
       } else {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> createReferentEditorCell(getEditorContext(), referenceLink, referentNode), referentNode, referenceLink);
         //todo what is that?
@@ -231,6 +214,26 @@ public class DefaultEditor extends AbstractDefaultEditor {
 
   }
 
+  protected void addMissingReferenceCell(SReferenceLink referenceLink) {
+    String noTargetText = "<no " + referenceLink.getName() + ">";
+    jetbrains.mps.nodeEditor.cells.EditorCell_Label noRefCell = referenceLink.isOptional() ?
+                                                                new EditorCell_Constant(getEditorContext(), getNode(), "") :
+                                                                new EditorCell_Error(getEditorContext(), getNode(), noTargetText);
+    noRefCell.setText("");
+    noRefCell.setEditable(true);
+    noRefCell.setDefaultText(noTargetText);
+
+    noRefCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getNode(), DeleteDirection.FORWARD));
+    noRefCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(getNode(), DeleteDirection.BACKWARD));
+
+    noRefCell.setCellId("empty_" + referenceLink.getName());
+    noRefCell.setReferenceCell(true);
+    noRefCell.setSubstituteInfo(new SReferenceSubstituteInfo(noRefCell, referenceLink));
+    noRefCell.setSRole(referenceLink);
+
+    setIndent(noRefCell);
+    addCell(noRefCell);
+  }
 
   protected EditorCell createErrorCell(String error, SReferenceLink link) {
     EditorCell_Error errorCell = new EditorCell_Error(getEditorContext(), getNode(), error, true);
