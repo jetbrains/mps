@@ -6109,6 +6109,19 @@
             <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
             <node concept="1bVj0M" id="63ZcAL22bUW" role="37wK5m">
               <node concept="3clFbS" id="63ZcAL22bUX" role="1bW5cS">
+                <node concept="3clFbJ" id="1LArolxZL8a" role="3cqZAp">
+                  <node concept="3clFbS" id="1LArolxZL8c" role="3clFbx">
+                    <node concept="3cpWs6" id="1LArolxZOrS" role="3cqZAp" />
+                  </node>
+                  <node concept="2OqwBi" id="1LArolxZN1L" role="3clFbw">
+                    <node concept="37vLTw" id="1LArolxZM2K" role="2Oq$k0">
+                      <ref role="3cqZAo" node="63ZcAL21OIS" resolve="myProject" />
+                    </node>
+                    <node concept="liA8E" id="1LArolxZNGq" role="2OqNvi">
+                      <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="3cpWs8" id="63ZcAL22cko" role="3cqZAp">
                   <node concept="3cpWsn" id="63ZcAL22ckp" role="3cpWs9">
                     <property role="TrG5h" value="whichVcses" />

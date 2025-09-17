@@ -48,6 +48,9 @@ public class MergeDriverNotification {
   private void showNotifications() {
     final Set<String> vcsNames = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(((List<VcsDirectoryMapping>) ProjectLevelVcsManager.getInstance(myProject).getDirectoryMappings())).select((dm) -> dm.getVcs()).where((vn) -> (vn != null && vn.length() > 0)));
     ThreadUtils.runInUIThreadNoWait(() -> {
+      if (myProject.isDisposed()) {
+        return;
+      }
       String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select((vn) -> AllVcses.getInstance(myProject).getByName(vn).getDisplayName()), "and");
       String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
       myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
