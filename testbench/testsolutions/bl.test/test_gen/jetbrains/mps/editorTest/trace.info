@@ -2876,7 +2876,7 @@
       <node id="1840120233258908128" at="24,78,25,36" concept="2" />
       <node id="1840120233258908128" at="30,52,31,19" concept="11" />
       <node id="1840120233258908128" at="35,51,36,72" concept="2" />
-      <node id="1840120233258908130" at="36,72,37,71" concept="2" />
+      <node id="1840120233258908130" at="36,72,37,72" concept="2" />
       <node id="1840120233258908128" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="1840120233258908128" at="19,0,22,0" concept="1" trace="DefaultEditor_ForDeletedConcepts_Child_Test#()V" />
       <node id="1840120233258908128" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -2885,7 +2885,7 @@
       <scope id="1840120233258908128" at="19,56,20,60" />
       <scope id="1840120233258908128" at="24,78,25,36" />
       <scope id="1840120233258908128" at="30,52,31,19" />
-      <scope id="1840120233258908128" at="35,51,37,71" />
+      <scope id="1840120233258908128" at="35,51,37,72" />
       <scope id="1840120233258908128" at="19,0,22,0" />
       <scope id="1840120233258908128" at="30,0,33,0">
         <var name="owner" id="1840120233258908128" />
@@ -2928,7 +2928,7 @@
       <node id="1840120233258930039" at="24,81,25,36" concept="2" />
       <node id="1840120233258930039" at="30,52,31,19" concept="11" />
       <node id="1840120233258930039" at="35,51,36,72" concept="2" />
-      <node id="1840120233258930041" at="36,72,37,71" concept="2" />
+      <node id="1840120233258930041" at="36,72,37,72" concept="2" />
       <node id="1840120233258930039" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="1840120233258930039" at="19,0,22,0" concept="1" trace="DefaultEditor_ForDeletedConcepts_Abstract_Test#()V" />
       <node id="1840120233258930039" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -2937,7 +2937,7 @@
       <scope id="1840120233258930039" at="19,59,20,60" />
       <scope id="1840120233258930039" at="24,81,25,36" />
       <scope id="1840120233258930039" at="30,52,31,19" />
-      <scope id="1840120233258930039" at="35,51,37,71" />
+      <scope id="1840120233258930039" at="35,51,37,72" />
       <scope id="1840120233258930039" at="19,0,22,0" />
       <scope id="1840120233258930039" at="30,0,33,0">
         <var name="owner" id="1840120233258930039" />

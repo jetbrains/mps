@@ -34,7 +34,7 @@ public class DefaultEditor_ForDeletedConcepts_Abstract_Test extends BaseTransfor
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1840120233258930043", "1840120233258930046");
-      invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
     }
   }
 }
