@@ -13,29 +13,20 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class IconLayerDescription__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, "jetbrains.mps.lang.resources.structure.IconLayerDescription");
 
   public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
-  public static final SMethod<Boolean> hasDistinctColorsForThemes_id4rOpugPeaF2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDistinctColorsForThemes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792210626L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImageForGeneration_id2p1v3tObywX, hasDistinctColorsForThemes_id4rOpugPeaF2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImageForGeneration_id2p1v3tObywX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean hasDistinctColorsForThemes_id4rOpugPeaF2(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.targetThemeKind$7fjQ) == null) && ListSequence.fromList(SNodeOperations.getChildren(__thisNode__)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.JBColorLiteral$9I));
-  }
 
   /*package*/ IconLayerDescription__BehaviorDescriptor() {
   }
@@ -52,8 +43,6 @@ public final class IconLayerDescription__BehaviorDescriptor extends BaseBHDescri
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 1:
-        return (T) ((Boolean) hasDistinctColorsForThemes_id4rOpugPeaF2(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -81,13 +70,5 @@ public final class IconLayerDescription__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink targetThemeKind$7fjQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, 0x46f465e435153222L, "targetThemeKind");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept JBColorLiteral$9I = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e43534a2d4L, "jetbrains.mps.lang.resources.structure.JBColorLiteral");
   }
 }

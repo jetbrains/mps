@@ -337,6 +337,9 @@
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
       </concept>
       <concept id="1171500988903" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation" flags="nn" index="32TBzR" />
+      <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
+        <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
+      </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
@@ -471,10 +474,17 @@
           <node concept="3clFbF" id="4rOpugP6Apd" role="3cqZAp">
             <node concept="1Wc70l" id="4rOpugP6CQE" role="3clFbG">
               <node concept="2OqwBi" id="4rOpugP6FgY" role="3uHU7w">
-                <node concept="2OqwBi" id="4rOpugP6Dij" role="2Oq$k0">
-                  <node concept="30H73N" id="4rOpugP6D1F" role="2Oq$k0" />
-                  <node concept="3Tsc0h" id="4rOpugP6Dwh" role="2OqNvi">
-                    <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
+                <node concept="2OqwBi" id="3CuULxINPEH" role="2Oq$k0">
+                  <node concept="2OqwBi" id="4rOpugP6Dij" role="2Oq$k0">
+                    <node concept="30H73N" id="4rOpugP6D1F" role="2Oq$k0" />
+                    <node concept="3Tsc0h" id="4rOpugP6Dwh" role="2OqNvi">
+                      <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
+                    </node>
+                  </node>
+                  <node concept="v3k3i" id="3CuULxINSah" role="2OqNvi">
+                    <node concept="chp4Y" id="3CuULxINSeM" role="v3oSu">
+                      <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2HwmR7" id="4rOpugP6Hnl" role="2OqNvi">
@@ -485,31 +495,31 @@
                           <node concept="2OqwBi" id="3CuULxILIyx" role="3uHU7B">
                             <node concept="2OqwBi" id="1MyVF62gKru" role="2Oq$k0">
                               <node concept="37vLTw" id="1MyVF62gKe6" role="2Oq$k0">
-                                <ref role="3cqZAo" node="4rOpugP6Hnp" resolve="it" />
+                                <ref role="3cqZAo" node="4rOpugP6Hnp" resolve="themeKindSpecificLayer" />
                               </node>
                               <node concept="3TrEf2" id="3CuULxILIbr" role="2OqNvi">
-                                <ref role="3Tt5mk" to="1oap:4rOpugP5j8y" resolve="targetTheme" />
+                                <ref role="3Tt5mk" to="1oap:3CuULxINMq$" resolve="targetThemeKind" />
                               </node>
                             </node>
                             <node concept="1mIQ4w" id="3CuULxILIM7" role="2OqNvi">
                               <node concept="chp4Y" id="3CuULxILISv" role="cj9EA">
-                                <ref role="cht4Q" to="1oap:4rOpugP5j8_" resolve="DarkTargetTheme" />
+                                <ref role="cht4Q" to="1oap:4rOpugP5j8_" resolve="DarkTargetThemes" />
                               </node>
                             </node>
                           </node>
                           <node concept="2OqwBi" id="4rOpugP6HGA" role="3uHU7w">
                             <node concept="37vLTw" id="4rOpugP6HuX" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4rOpugP6Hnp" resolve="it" />
+                              <ref role="3cqZAo" node="4rOpugP6Hnp" resolve="themeKindSpecificLayer" />
                             </node>
                             <node concept="2qgKlT" id="1MyVF62arjI" role="2OqNvi">
-                              <ref role="37wK5l" to="3767:4rOpugPeaF2" resolve="hasDistinctColorsForThemes" />
+                              <ref role="37wK5l" to="3767:3CuULxINMCV" resolve="hasDistinctColorsForThemes" />
                             </node>
                           </node>
                         </node>
                       </node>
                     </node>
                     <node concept="gl6BB" id="4rOpugP6Hnp" role="1bW2Oz">
-                      <property role="TrG5h" value="it" />
+                      <property role="TrG5h" value="themeKindSpecificLayer" />
                       <node concept="2jxLKc" id="4rOpugP6Hnq" role="1tU5fm" />
                     </node>
                   </node>
@@ -2254,19 +2264,35 @@
           <node concept="1bVj0M" id="4rOpugP6wG6" role="23t8la">
             <node concept="3clFbS" id="4rOpugP6wG7" role="1bW5cS">
               <node concept="3clFbF" id="4rOpugP6xoh" role="3cqZAp">
-                <node concept="3fqX7Q" id="1MyVF62g4fk" role="3clFbG">
-                  <node concept="2OqwBi" id="3CuULxILG9s" role="3fr31v">
-                    <node concept="2OqwBi" id="1MyVF62g4fm" role="2Oq$k0">
-                      <node concept="37vLTw" id="1MyVF62g4fn" role="2Oq$k0">
+                <node concept="22lmx$" id="3CuULxIOc13" role="3clFbG">
+                  <node concept="3fqX7Q" id="3CuULxIOc14" role="3uHU7B">
+                    <node concept="2OqwBi" id="3CuULxIOc15" role="3fr31v">
+                      <node concept="37vLTw" id="3CuULxIOc16" role="2Oq$k0">
                         <ref role="3cqZAo" node="4rOpugP6wG8" resolve="it" />
                       </node>
-                      <node concept="3TrEf2" id="3CuULxILFHI" role="2OqNvi">
-                        <ref role="3Tt5mk" to="1oap:4rOpugP5j8y" resolve="targetTheme" />
+                      <node concept="1mIQ4w" id="3CuULxIOc17" role="2OqNvi">
+                        <node concept="chp4Y" id="3CuULxIOc18" role="cj9EA">
+                          <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+                        </node>
                       </node>
                     </node>
-                    <node concept="1mIQ4w" id="3CuULxILG_U" role="2OqNvi">
-                      <node concept="chp4Y" id="3CuULxILGEY" role="cj9EA">
-                        <ref role="cht4Q" to="1oap:4rOpugP5j8_" resolve="DarkTargetTheme" />
+                  </node>
+                  <node concept="3fqX7Q" id="3CuULxIOc19" role="3uHU7w">
+                    <node concept="2OqwBi" id="3CuULxIOc1a" role="3fr31v">
+                      <node concept="1PxgMI" id="3CuULxIOc1b" role="2Oq$k0">
+                        <property role="1BlNFB" value="true" />
+                        <node concept="chp4Y" id="3CuULxIOc1c" role="3oSUPX">
+                          <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+                        </node>
+                        <node concept="37vLTw" id="3CuULxIOc1d" role="1m5AlR">
+                          <ref role="3cqZAo" node="4rOpugP6wG8" resolve="it" />
+                        </node>
+                      </node>
+                      <node concept="2qgKlT" id="3CuULxIOc1e" role="2OqNvi">
+                        <ref role="37wK5l" to="3767:3CuULxINXoF" resolve="isSpecificFor" />
+                        <node concept="35c_gC" id="3CuULxIOc1f" role="37wK5m">
+                          <ref role="35c_gD" to="1oap:4rOpugP5j8_" resolve="DarkTargetThemes" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -3461,19 +3487,35 @@
           <node concept="1bVj0M" id="4rOpugP6BQW" role="23t8la">
             <node concept="3clFbS" id="4rOpugP6BQX" role="1bW5cS">
               <node concept="3clFbF" id="4rOpugP6BQY" role="3cqZAp">
-                <node concept="3fqX7Q" id="3CuULxILC1L" role="3clFbG">
-                  <node concept="2OqwBi" id="3CuULxILC1N" role="3fr31v">
-                    <node concept="2OqwBi" id="3CuULxILC1O" role="2Oq$k0">
-                      <node concept="37vLTw" id="3CuULxILC1P" role="2Oq$k0">
+                <node concept="22lmx$" id="3CuULxINUBQ" role="3clFbG">
+                  <node concept="3fqX7Q" id="3CuULxINWb7" role="3uHU7B">
+                    <node concept="2OqwBi" id="3CuULxINWb9" role="3fr31v">
+                      <node concept="37vLTw" id="3CuULxINWba" role="2Oq$k0">
                         <ref role="3cqZAo" node="4rOpugP6BR6" resolve="it" />
                       </node>
-                      <node concept="3TrEf2" id="3CuULxILC1Q" role="2OqNvi">
-                        <ref role="3Tt5mk" to="1oap:4rOpugP5j8y" resolve="targetTheme" />
+                      <node concept="1mIQ4w" id="3CuULxINWbb" role="2OqNvi">
+                        <node concept="chp4Y" id="3CuULxINWbc" role="cj9EA">
+                          <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+                        </node>
                       </node>
                     </node>
-                    <node concept="1mIQ4w" id="3CuULxILC1R" role="2OqNvi">
-                      <node concept="chp4Y" id="3CuULxILC1S" role="cj9EA">
-                        <ref role="cht4Q" to="1oap:4rOpugP5j8$" resolve="LightTargetTheme" />
+                  </node>
+                  <node concept="3fqX7Q" id="3CuULxILC1L" role="3uHU7w">
+                    <node concept="2OqwBi" id="3CuULxILC1O" role="3fr31v">
+                      <node concept="1PxgMI" id="3CuULxINWq2" role="2Oq$k0">
+                        <property role="1BlNFB" value="true" />
+                        <node concept="chp4Y" id="3CuULxINWu9" role="3oSUPX">
+                          <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+                        </node>
+                        <node concept="37vLTw" id="3CuULxILC1P" role="1m5AlR">
+                          <ref role="3cqZAo" node="4rOpugP6BR6" resolve="it" />
+                        </node>
+                      </node>
+                      <node concept="2qgKlT" id="3CuULxIO5Fd" role="2OqNvi">
+                        <ref role="37wK5l" to="3767:3CuULxINXoF" resolve="isSpecificFor" />
+                        <node concept="35c_gC" id="3CuULxIObp5" role="37wK5m">
+                          <ref role="35c_gD" to="1oap:4rOpugP5j8$" resolve="LightTargetThemes" />
+                        </node>
                       </node>
                     </node>
                   </node>

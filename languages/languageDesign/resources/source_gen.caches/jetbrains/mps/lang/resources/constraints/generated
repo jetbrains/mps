@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5nno2wf51etzbcxdospxymlm0c4sgo6">
-  <files names="ConstantFieldIcon_Constraints.java:ConstraintsAspectDescriptor.java:FactoryMethodIcon_Constraints.java:FileIcon_Constraints.java:IconLayerDescription_Constraints.java:Text_Constraints.java" />
+<product version="3" modelHash="-3t82bays1j1hcb7tn6ooqwubn8sf359">
+  <files names="ConstantFieldIcon_Constraints.java:ConstraintsAspectDescriptor.java:FactoryMethodIcon_Constraints.java:FileIcon_Constraints.java:IThemeKindSpecific_Constraints.java:JBColorLiteral_Constraints.java:Text_Constraints.java" />
 </product>
 

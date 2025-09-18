@@ -20,9 +20,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class IconLayerDescription_Constraints extends BaseConstraintsDescriptor {
-  /*package*/ IconLayerDescription_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.IconLayerDescription$6u, initContext);
+public class IThemeKindSpecific_Constraints extends BaseConstraintsDescriptor {
+  /*package*/ IThemeKindSpecific_Constraints(ConstraintsDescriptorInitContext initContext) {
+    super(CONCEPTS.IThemeKindSpecific$G4, initContext);
     setCanBeParent(new ConstraintFunction<ConstraintContext_CanBeParent, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeParent context, @Nullable CheckingNodeContext checkingNodeContext) {
@@ -45,10 +45,10 @@ public class IconLayerDescription_Constraints extends BaseConstraintsDescriptor 
     }
     return true;
   }
-  private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:91a4131e-4695-42c0-aafd-5099770207dd(jetbrains.mps.lang.resources.constraints)", "2063474025451561056");
+  private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:91a4131e-4695-42c0-aafd-5099770207dd(jetbrains.mps.lang.resources.constraints)", "4188043193672314113");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IconLayerDescription$6u = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, "jetbrains.mps.lang.resources.structure.IconLayerDescription");
+    /*package*/ static final SInterfaceConcept IThemeKindSpecific$G4 = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, "jetbrains.mps.lang.resources.structure.IThemeKindSpecific");
     /*package*/ static final SConcept TargetTextIconThemeKind$Jo = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e435153223L, "jetbrains.mps.lang.resources.structure.TargetTextIconThemeKind");
   }
 

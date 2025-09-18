@@ -212,12 +212,6 @@
     <property role="EcuMT" value="2756621024541675109" />
     <property role="3GE5qa" value="icons.descriptors.text" />
     <property role="TrG5h" value="IconLayerDescription" />
-    <node concept="1TJgyj" id="4rOpugP5j8y" role="1TKVEi">
-      <property role="IQ2ns" value="5112823507789885986" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="targetThemeKind" />
-      <ref role="20lvS9" node="4rOpugP5j8z" resolve="TargetTextIconThemeKind" />
-    </node>
   </node>
   <node concept="1TIwiD" id="2p1v3tObyyL">
     <property role="EcuMT" value="2756621024541681841" />
@@ -242,6 +236,9 @@
     <node concept="PrWs8" id="2p1v3tObyyR" role="PzmwI">
       <ref role="PrY4T" node="2p1v3tObwT_" resolve="IconLayerDescription" />
     </node>
+    <node concept="PrWs8" id="3CuULxIOkNf" role="PzmwI">
+      <ref role="PrY4T" node="3CuULxINGAz" resolve="IThemeKindSpecific" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2p1v3tObyyT">
     <property role="EcuMT" value="2756621024541681849" />
@@ -263,6 +260,9 @@
       <property role="TrG5h" value="text" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="PrWs8" id="3CuULxIOll$" role="PzmwI">
+      <ref role="PrY4T" node="3CuULxINGAz" resolve="IThemeKindSpecific" />
+    </node>
   </node>
   <node concept="1TIwiD" id="Ib_Fk7zNdB">
     <property role="EcuMT" value="831924260440060775" />
@@ -276,6 +276,9 @@
     </node>
     <node concept="PrWs8" id="Ib_Fk7zNdC" role="PzmwI">
       <ref role="PrY4T" node="2p1v3tObwT_" resolve="IconLayerDescription" />
+    </node>
+    <node concept="PrWs8" id="3CuULxINGAE" role="PzmwI">
+      <ref role="PrY4T" node="3CuULxINGAz" resolve="IThemeKindSpecific" />
     </node>
   </node>
   <node concept="1TIwiD" id="1BguvjG4kJt">
@@ -503,6 +506,17 @@
     </node>
     <node concept="PrWs8" id="4rOpugPdabl" role="PzmwI">
       <ref role="PrY4T" node="1BguvjG4kJu" resolve="Color" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="3CuULxINGAz">
+    <property role="EcuMT" value="4188043193671928227" />
+    <property role="3GE5qa" value="icons.descriptors.text" />
+    <property role="TrG5h" value="IThemeKindSpecific" />
+    <node concept="1TJgyj" id="3CuULxINMq$" role="1TKVEi">
+      <property role="IQ2ns" value="4188043193671952036" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="targetThemeKind" />
+      <ref role="20lvS9" node="4rOpugP5j8z" resolve="TargetTextIconThemeKind" />
     </node>
   </node>
 </model>

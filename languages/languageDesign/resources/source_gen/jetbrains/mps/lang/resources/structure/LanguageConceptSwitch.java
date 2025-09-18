@@ -22,20 +22,21 @@ public final class LanguageConceptSwitch {
   public static final int FileIcon = 10;
   public static final int GeneratedImage = 11;
   public static final int HelpURL = 12;
-  public static final int Icon = 13;
-  public static final int IconExpression = 14;
-  public static final int IconLayerDescription = 15;
-  public static final int IconResourceExpression = 16;
-  public static final int Image = 17;
-  public static final int JBColorLiteral = 18;
-  public static final int LightTargetThemes = 19;
-  public static final int NodeIconResourceExpression = 20;
-  public static final int Primitive = 21;
-  public static final int Rect = 22;
-  public static final int Resource = 23;
-  public static final int TargetTextIconThemeKind = 24;
-  public static final int Text = 25;
-  public static final int TextIcon = 26;
+  public static final int IThemeKindSpecific = 13;
+  public static final int Icon = 14;
+  public static final int IconExpression = 15;
+  public static final int IconLayerDescription = 16;
+  public static final int IconResourceExpression = 17;
+  public static final int Image = 18;
+  public static final int JBColorLiteral = 19;
+  public static final int LightTargetThemes = 20;
+  public static final int NodeIconResourceExpression = 21;
+  public static final int Primitive = 22;
+  public static final int Rect = 23;
+  public static final int Resource = 24;
+  public static final int TargetTextIconThemeKind = 25;
+  public static final int Text = 26;
+  public static final int TextIcon = 27;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L);
@@ -52,6 +53,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x7c8b08a50a39c6bbL, FileIcon);
     builder.put(0x324fe10378a9d167L, GeneratedImage);
     builder.put(0x47d8f9811b73d397L, HelpURL);
+    builder.put(0x3a1eeb186ecec9a3L, IThemeKindSpecific);
     builder.put(0x26417c3774289eeeL, Icon);
     builder.put(0x7c8b08a50a39c6c3L, IconExpression);
     builder.put(0x26417c37742e0e65L, IconLayerDescription);

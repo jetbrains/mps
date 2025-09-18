@@ -1323,7 +1323,7 @@
   <node concept="PKFIW" id="4rOpugP4iUV">
     <property role="3GE5qa" value="icons.descriptors.text" />
     <property role="TrG5h" value="TextIconThemeSelection" />
-    <ref role="1XX52x" to="1oap:2p1v3tObwT_" resolve="IconLayerDescription" />
+    <ref role="1XX52x" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
     <node concept="3EZMnI" id="4rOpugPcWZV" role="2wV5jI">
       <node concept="2iRfu4" id="4rOpugPcWZW" role="2iSdaV" />
       <node concept="3EZMnI" id="4rOpugP4iUX" role="3EZMnx">
@@ -1332,7 +1332,7 @@
         </node>
         <node concept="3F1sOY" id="4rOpugP5j8B" role="3EZMnx">
           <property role="2ru_X1" value="true" />
-          <ref role="1NtTu8" to="1oap:4rOpugP5j8y" resolve="targetThemeKind" />
+          <ref role="1NtTu8" to="1oap:3CuULxINMq$" resolve="targetThemeKind" />
           <node concept="3F0ifn" id="4rOpugP5j8D" role="2ruayu">
             <property role="3F0ifm" value="all themes" />
             <ref role="1k5W1q" to="tpch:6t_vhrzKdF" resolve="Comment" />

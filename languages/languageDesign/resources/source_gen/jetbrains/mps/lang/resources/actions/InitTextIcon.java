@@ -8,12 +8,23 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class InitTextIcon {
+  public static class NodeFactory_4188043193672068881 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.IThemeKindSpecific$G4)) {
+          SLinkOperations.setTarget(newNode, LINKS.targetThemeKind$gOwm, SLinkOperations.getTarget(original, LINKS.targetThemeKind$gOwm));
+        }
+      }
+    }
+  }
   public static class NodeFactory_7360544480991162344 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
@@ -21,7 +32,6 @@ public class InitTextIcon {
         if (SNodeOperations.isInstanceOf(original, CONCEPTS.Primitive$zu)) {
           SLinkOperations.setTarget(newNode, LINKS.fillColor$VwDK, SLinkOperations.getTarget(original, LINKS.fillColor$VwDK));
           SLinkOperations.setTarget(newNode, LINKS.borderColor$VA37, SLinkOperations.getTarget(original, LINKS.borderColor$VA37));
-          SLinkOperations.setTarget(newNode, LINKS.targetThemeKind$7fjQ, SLinkOperations.getTarget(original, LINKS.targetThemeKind$7fjQ));
         }
       }
     }
@@ -33,13 +43,14 @@ public class InitTextIcon {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IThemeKindSpecific$G4 = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, "jetbrains.mps.lang.resources.structure.IThemeKindSpecific");
     /*package*/ static final SConcept Primitive$zu = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, "jetbrains.mps.lang.resources.structure.Primitive");
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink targetThemeKind$gOwm = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, 0x3a1eeb186ecf26a4L, "targetThemeKind");
     /*package*/ static final SContainmentLink fillColor$VwDK = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor");
     /*package*/ static final SContainmentLink borderColor$VA37 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor");
-    /*package*/ static final SContainmentLink targetThemeKind$7fjQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, 0x46f465e435153222L, "targetThemeKind");
   }
 
   private static final class PROPS {

@@ -22,6 +22,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_FileIcon;
   private ConceptPresentation props_GeneratedImage;
   private ConceptPresentation props_HelpURL;
+  private ConceptPresentation props_IThemeKindSpecific;
   private ConceptPresentation props_Icon;
   private ConceptPresentation props_IconExpression;
   private ConceptPresentation props_IconLayerDescription;
@@ -133,6 +134,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HelpURL = cpb.create();
         }
         return props_HelpURL;
+      case LanguageConceptSwitch.IThemeKindSpecific:
+        if (props_IThemeKindSpecific == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IThemeKindSpecific = cpb.create();
+        }
+        return props_IThemeKindSpecific;
       case LanguageConceptSwitch.Icon:
         if (props_Icon == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

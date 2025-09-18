@@ -8,6 +8,7 @@
   <imports>
     <import index="ghfj" ref="r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
+    <import index="3767" ref="r:7f24d329-a444-4288-af92-f8ef91dfd241(jetbrains.mps.lang.resources.behavior)" />
     <import index="1oap" ref="r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
@@ -213,6 +214,11 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
+      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
+        <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
+        <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
+      </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
@@ -228,10 +234,10 @@
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
-      <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
-        <child id="1177027386292" name="conceptArgument" index="cj9EA" />
-      </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
+      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
+        <property id="1238684351431" name="asCast" index="1BlNFB" />
+      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
@@ -2299,23 +2305,25 @@
                         <node concept="3clFbF" id="aJ" role="3cqZAp">
                           <uo k="s:originTrace" v="n:2063474025451356229" />
                           <node concept="2OqwBi" id="aK" role="3clFbG">
-                            <uo k="s:originTrace" v="n:4188043193671392785" />
-                            <node concept="2OqwBi" id="aL" role="2Oq$k0">
-                              <uo k="s:originTrace" v="n:2063474025451357339" />
-                              <node concept="37vLTw" id="aN" role="2Oq$k0">
+                            <uo k="s:originTrace" v="n:2063474025451357339" />
+                            <node concept="1PxgMI" id="aL" role="2Oq$k0">
+                              <property role="1BlNFB" value="true" />
+                              <uo k="s:originTrace" v="n:4188043193672062937" />
+                              <node concept="chp4Y" id="aN" role="3oSUPX">
+                                <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+                                <uo k="s:originTrace" v="n:4188043193672063209" />
+                              </node>
+                              <node concept="37vLTw" id="aO" role="1m5AlR">
                                 <ref role="3cqZAo" node="aI" resolve="it" />
                                 <uo k="s:originTrace" v="n:2063474025451356228" />
                               </node>
-                              <node concept="3TrEf2" id="aO" role="2OqNvi">
-                                <ref role="3Tt5mk" to="1oap:4rOpugP5j8y" resolve="targetThemeKind" />
-                                <uo k="s:originTrace" v="n:4188043193671391367" />
-                              </node>
                             </node>
-                            <node concept="1mIQ4w" id="aM" role="2OqNvi">
-                              <uo k="s:originTrace" v="n:4188043193671393752" />
-                              <node concept="chp4Y" id="aP" role="cj9EA">
-                                <ref role="cht4Q" to="1oap:4rOpugP5j8_" resolve="DarkTargetThemes" />
-                                <uo k="s:originTrace" v="n:4188043193671394021" />
+                            <node concept="2qgKlT" id="aM" role="2OqNvi">
+                              <ref role="37wK5l" to="3767:3CuULxINXoF" resolve="isSpecificFor" />
+                              <uo k="s:originTrace" v="n:4188043193672065358" />
+                              <node concept="35c_gC" id="aP" role="37wK5m">
+                                <ref role="35c_gD" to="1oap:4rOpugP5j8_" resolve="DarkTargetThemes" />
+                                <uo k="s:originTrace" v="n:4188043193672066668" />
                               </node>
                             </node>
                           </node>

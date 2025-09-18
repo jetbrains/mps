@@ -172,6 +172,41 @@
   </registry>
   <node concept="37WguZ" id="1BguvjG3MSz">
     <property role="TrG5h" value="InitTextIcon" />
+    <node concept="37WvkG" id="3CuULxIOeWh" role="37WGs$">
+      <ref role="37XkoT" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+      <node concept="37Y9Zx" id="3CuULxIOeWi" role="37ZfLb">
+        <node concept="3clFbS" id="3CuULxIOeWj" role="2VODD2">
+          <node concept="Jncv_" id="3CuULxIOeWC" role="3cqZAp">
+            <ref role="JncvD" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+            <node concept="1r4N5L" id="3CuULxIOeX8" role="JncvB" />
+            <node concept="3clFbS" id="3CuULxIOeWE" role="Jncv$">
+              <node concept="3clFbF" id="3CuULxIOeYQ" role="3cqZAp">
+                <node concept="37vLTI" id="3CuULxIOfrZ" role="3clFbG">
+                  <node concept="2OqwBi" id="3CuULxIOfx9" role="37vLTx">
+                    <node concept="Jnkvi" id="3CuULxIOfuA" role="2Oq$k0">
+                      <ref role="1M0zk5" node="3CuULxIOeWF" resolve="original" />
+                    </node>
+                    <node concept="3TrEf2" id="3CuULxIOfIA" role="2OqNvi">
+                      <ref role="3Tt5mk" to="1oap:3CuULxINMq$" resolve="targetThemeKind" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="3CuULxIOf8p" role="37vLTJ">
+                    <node concept="1r4Lsj" id="3CuULxIOeYP" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="3CuULxIOffM" role="2OqNvi">
+                      <ref role="3Tt5mk" to="1oap:3CuULxINMq$" resolve="targetThemeKind" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="JncvC" id="3CuULxIOeWF" role="JncvA">
+              <property role="TrG5h" value="original" />
+              <node concept="2jxLKc" id="3CuULxIOeWG" role="1tU5fm" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="37WvkG" id="6o_U3kAWaZC" role="37WGs$">
       <ref role="37XkoT" to="1oap:2p1v3tObyyL" resolve="Primitive" />
       <node concept="37Y9Zx" id="6o_U3kAWaZD" role="37ZfLb">
@@ -212,24 +247,6 @@
                     <node concept="1r4Lsj" id="6o_U3kAWdvD" role="2Oq$k0" />
                     <node concept="3TrEf2" id="6o_U3kAWdvE" role="2OqNvi">
                       <ref role="3Tt5mk" to="1oap:1BguvjG4kKj" resolve="borderColor" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6o_U3kAWnIe" role="3cqZAp">
-                <node concept="37vLTI" id="6o_U3kAWnIf" role="3clFbG">
-                  <node concept="2OqwBi" id="6o_U3kAWnIg" role="37vLTx">
-                    <node concept="Jnkvi" id="6o_U3kAWnIh" role="2Oq$k0">
-                      <ref role="1M0zk5" node="6o_U3kAWb02" resolve="original" />
-                    </node>
-                    <node concept="3TrEf2" id="6o_U3kAWnIi" role="2OqNvi">
-                      <ref role="3Tt5mk" to="1oap:4rOpugP5j8y" resolve="targetThemeKind" />
-                    </node>
-                  </node>
-                  <node concept="2OqwBi" id="6o_U3kAWnIj" role="37vLTJ">
-                    <node concept="1r4Lsj" id="6o_U3kAWnIk" role="2Oq$k0" />
-                    <node concept="3TrEf2" id="6o_U3kAWnIl" role="2OqNvi">
-                      <ref role="3Tt5mk" to="1oap:4rOpugP5j8y" resolve="targetThemeKind" />
                     </node>
                   </node>
                 </node>

@@ -499,11 +499,29 @@
       </node>
     </node>
   </node>
-  <node concept="1M2fIO" id="1MyVF62ii1v">
+  <node concept="1M2fIO" id="3CuULxINN4z">
     <property role="3GE5qa" value="icons.descriptors.text" />
-    <ref role="1M2myG" to="1oap:2p1v3tObwT_" resolve="IconLayerDescription" />
-    <node concept="9SLcT" id="1MyVF62ii1w" role="9SGkU">
-      <node concept="3clFbS" id="1MyVF62ii1x" role="2VODD2">
+    <ref role="1M2myG" to="1oap:4rOpugPdabk" resolve="JBColorLiteral" />
+    <node concept="9S07l" id="3CuULxINN9A" role="9Vyp8">
+      <node concept="3clFbS" id="3CuULxINN9B" role="2VODD2">
+        <node concept="3clFbF" id="3CuULxINNay" role="3cqZAp">
+          <node concept="2OqwBi" id="3CuULxINNlo" role="3clFbG">
+            <node concept="nLn13" id="3CuULxINNax" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="3CuULxINNv6" role="2OqNvi">
+              <node concept="chp4Y" id="3CuULxINNxA" role="cj9EA">
+                <ref role="cht4Q" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="3CuULxIP6fW">
+    <property role="3GE5qa" value="icons.descriptors.text" />
+    <ref role="1M2myG" to="1oap:3CuULxINGAz" resolve="IThemeKindSpecific" />
+    <node concept="9SLcT" id="3CuULxIPaO1" role="9SGkU">
+      <node concept="3clFbS" id="3CuULxIPaO2" role="2VODD2">
         <node concept="3clFbJ" id="1MyVF62ii6_" role="3cqZAp">
           <node concept="2OqwBi" id="1MyVF62iimC" role="3clFbw">
             <node concept="2DD5aU" id="1MyVF62ii79" role="2Oq$k0" />

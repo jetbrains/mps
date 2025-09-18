@@ -64,7 +64,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new targetThemeKindSingleRoleHandler_f7yov8_b0a(myNode, LINKS.targetThemeKind$7fjQ, getEditorContext());
+    SingleRoleCellProvider provider = new targetThemeKindSingleRoleHandler_f7yov8_b0a(myNode, LINKS.targetThemeKind$gOwm, getEditorContext());
     return provider.createCell();
   }
   private static class targetThemeKindSingleRoleHandler_f7yov8_b0a extends SingleRoleCellProvider {
@@ -84,8 +84,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.targetThemeKind$7fjQ, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.targetThemeKind$7fjQ, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.targetThemeKind$gOwm, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.targetThemeKind$gOwm, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -97,13 +97,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.targetThemeKind$7fjQ);
+        editorCell.setSRole(LINKS.targetThemeKind$gOwm);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.targetThemeKind$7fjQ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.targetThemeKind$gOwm));
       try {
         EditorCell editorCell = createConstant_1();
         installCellInfo(null, editorCell, true);
@@ -135,6 +135,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targetThemeKind$7fjQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, 0x46f465e435153222L, "targetThemeKind");
+    /*package*/ static final SContainmentLink targetThemeKind$gOwm = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, 0x3a1eeb186ecf26a4L, "targetThemeKind");
   }
 }

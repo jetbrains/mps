@@ -10,9 +10,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor;
 import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.resources.behavior.IconLayerDescription__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.resources.behavior.IThemeKindSpecific__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.resources.behavior.FileIcon__BehaviorDescriptor;
@@ -29,7 +30,6 @@ import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.lang.resources.iconGeneration.IconFileNameUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.InsertMacroContext;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Map;
@@ -73,7 +73,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode())));
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()))) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).any((it) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.targetThemeKind$7fjQ), CONCEPTS.DarkTargetThemes$Km) || (boolean) IconLayerDescription__BehaviorDescriptor.hasDistinctColorsForThemes_id4rOpugPeaF2.invoke(it));
+    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()))) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ), CONCEPTS.IThemeKindSpecific$G4)).any((themeKindSpecificLayer) -> SNodeOperations.isInstanceOf(SLinkOperations.getTarget(themeKindSpecificLayer, LINKS.targetThemeKind$gOwm), CONCEPTS.DarkTargetThemes$Km) || (boolean) IThemeKindSpecific__BehaviorDescriptor.hasDistinctColorsForThemes_id3CuULxINMCV.invoke(themeKindSpecificLayer));
   }
   public static boolean rule_Condition_14_0(final BaseMappingRuleContext _context) {
     return ((String) _context.getVariable("oldResourceId")) == null;
@@ -289,13 +289,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode());
   }
   public static Object templateArgumentQuery_13_1(final TemplateArgumentContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.targetThemeKind$7fjQ), CONCEPTS.DarkTargetThemes$Km)));
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.IThemeKindSpecific$G4)) || !((boolean) IThemeKindSpecific__BehaviorDescriptor.isSpecificFor_id3CuULxINXoF.invoke(SNodeOperations.as(it, CONCEPTS.IThemeKindSpecific$G4), CONCEPTS.DarkTargetThemes$Km)));
   }
   public static Object templateArgumentQuery_16_0(final TemplateArgumentContext _context) {
     return IconFileNameUtil.createDarkSchemeNameForIcon(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()));
   }
   public static Object templateArgumentQuery_16_1(final TemplateArgumentContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.targetThemeKind$7fjQ), CONCEPTS.LightTargetThemes$JR)));
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.IThemeKindSpecific$G4)) || !((boolean) IThemeKindSpecific__BehaviorDescriptor.isSpecificFor_id3CuULxINXoF.invoke(SNodeOperations.as(it, CONCEPTS.IThemeKindSpecific$G4), CONCEPTS.LightTargetThemes$JR)));
   }
   public static Object templateArgumentQuery_2_0(final TemplateArgumentContext _context) {
     return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$OBvj));
@@ -774,6 +774,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private static final class CONCEPTS {
     /*package*/ static final SConcept IconExpression$d3 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, "jetbrains.mps.lang.resources.structure.IconExpression");
     /*package*/ static final SConcept IconResourceExpression$Qx = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x52fb86deea79455eL, "jetbrains.mps.lang.resources.structure.IconResourceExpression");
+    /*package*/ static final SInterfaceConcept IThemeKindSpecific$G4 = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, "jetbrains.mps.lang.resources.structure.IThemeKindSpecific");
     /*package*/ static final SConcept DarkTargetThemes$Km = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x46f465e435153225L, "jetbrains.mps.lang.resources.structure.DarkTargetThemes");
     /*package*/ static final SConcept RefConcept_Reference$Ij = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, "jetbrains.mps.lang.smodel.structure.RefConcept_Reference");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
@@ -786,7 +787,7 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
-    /*package*/ static final SContainmentLink targetThemeKind$7fjQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L, 0x46f465e435153222L, "targetThemeKind");
+    /*package*/ static final SContainmentLink targetThemeKind$gOwm = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, 0x3a1eeb186ecf26a4L, "targetThemeKind");
     /*package*/ static final SContainmentLink iconExpression$tVgU = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression");
     /*package*/ static final SReferenceLink baseURL$ZoS = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
     /*package*/ static final SContainmentLink concept$LkIQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL, 0x426bf72c54e74e64L, "concept");
