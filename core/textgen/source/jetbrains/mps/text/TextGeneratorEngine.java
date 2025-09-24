@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,22 +64,6 @@ public final class TextGeneratorEngine {
   private final IMessageHandler myMessages;
   private final ComponentHost myPlatform;
 
-  /**
-   * @deprecated use {@link #TextGeneratorEngine(IMessageHandler, ComponentHost)} constructor
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public TextGeneratorEngine(@NotNull IMessageHandler messageHandler) {
-    this(messageHandler, new ComponentHost() {
-      @Override
-      public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
-        if (componentClass == TextGenRegistry.class) {
-          return componentClass.cast(TextGenRegistry.getInstance());
-        }
-        return null;
-      }
-    });
-  }
-
   public TextGeneratorEngine(@NotNull IMessageHandler messageHandler, ComponentHost mpsPlatform) {
     myMessages = messageHandler;
     myPlatform = mpsPlatform;
@@ -102,8 +86,9 @@ public final class TextGeneratorEngine {
     return myExecutor.submit(queue::take);
   }
 
-  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue) {
-    schedule(model, resultQueue, null);
+  @Deprecated(since = "2025.3", forRemoval = true)
+  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue, String ignore) {
+    schedule(model, resultQueue);
   }
 
   /**
@@ -113,10 +98,10 @@ public final class TextGeneratorEngine {
    * might add schedule(SModel):Future&lt;Result&gt; (one more async alternative) and generate(SModel):Result (synchronous alternative)
    * @param model model to produce text for
    */
-  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue, String generationTarget) {
+  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue) {
     final List<TextUnit> textUnits = breakdownToUnits(model, myPlatform);
     if (textUnits.isEmpty()) {
-      resultQueue.offer(new TextGenResult(model, textUnits, generationTarget));
+      resultQueue.offer(new TextGenResult(model, textUnits));
     }
     final ModelAccess modelAccess = model.getRepository() != null ? model.getRepository().getModelAccess() : null;
     final AtomicInteger unitsCount = new AtomicInteger(textUnits.size());
@@ -136,7 +121,7 @@ public final class TextGeneratorEngine {
             // once the last unit of the model is completed (either failed or succeeded), notify consumer
             if (unitsCount.decrementAndGet() == 0) {
               try {
-                resultQueue.put(new TextGenResult(model, textUnits, generationTarget));
+                resultQueue.put(new TextGenResult(model, textUnits));
               } catch (InterruptedException ex) {
                 // it's ok, it's likely caller to stop the queue, thus it knows how to deal with incomplete state
                 myMessages.handle(new Message(MessageKind.WARNING, String.format("TextGen interrupted for model %s", model.getName())).setException(ex));

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,16 +28,10 @@ import java.util.List;
 public final class TextGenResult {
   private final SModel myModel;
   private final List<TextUnit> myUnits;
-  private final String myGenerationTarget;
 
   TextGenResult(@NotNull SModel model, @NotNull List<TextUnit> units) {
-    this(model, units, null);
-  }
-
-  TextGenResult(@NotNull SModel model, @NotNull List<TextUnit> units, String gentarget) {
     myModel = model;
     myUnits = units;
-    myGenerationTarget = gentarget;
   }
 
   public SModel getModel() {
@@ -47,9 +41,4 @@ public final class TextGenResult {
   public List<TextUnit> getUnits() {
     return myUnits;
   }
-
-  public String getGenerationTarget() {
-    return myGenerationTarget;
-  }
-  
 }

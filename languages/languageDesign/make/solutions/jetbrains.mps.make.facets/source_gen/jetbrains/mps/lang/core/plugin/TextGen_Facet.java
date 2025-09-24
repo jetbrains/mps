@@ -31,6 +31,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.text.TextGeneratorEngine;
@@ -195,6 +197,9 @@ with_input:
 
                 for (SModel model : outputModels) {
                   String generationTarget = inputData.status().getGenerationTarget(model.getReference());
+                  if (generationTarget != null) {
+                    as_9hut8t_a0a0a1a7a8a0d0a0a0a0c01(model, ModelWithAttributes.class).setAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR, generationTarget);
+                  }
                   ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.new ModelStaleFileManager(inputData.model(), generationTarget);
 
                   // Perhaps, shall check res.status.isError(), however not sure if there
@@ -242,9 +247,8 @@ with_input:
                   for (GResource res : ListSequence.fromList(resourcesWithOutput)) {
                     for (SModel outputModel : CollectionSequence.fromCollection(res.status().getOutputModels())) {
                       inputDataByOutputModel.put(outputModel, res);
-                      String generationTarget = res.status().getGenerationTarget(outputModel.getReference());
                       // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too.
-                      tgEngine.schedule(outputModel, resultQueue, generationTarget);
+                      tgEngine.schedule(outputModel, resultQueue);
                     }
                   }
                 });
@@ -292,6 +296,7 @@ with_input:
                   }
 
                   final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
+                  final String generationTargetFacet = as_9hut8t_a0a0v0s0x0a3a0a0a0a2k(outputModel, ModelWithAttributes.class).getAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR);
 
                   outputModelRepo.getModelAccess().runReadAction(new Runnable() {
                     public void run() {
@@ -305,7 +310,7 @@ with_input:
                       ModuleStaleFileManager staleFilesManager = moduleStaleFilesMap.get(inputResource.module());
                       assert staleFilesManager != null;
 
-                      ModuleStaleFileManager.ModelStaleFileManager msfm = staleFilesManager.new ModelStaleFileManager(inputResource.model(), tgr.getGenerationTarget());
+                      ModuleStaleFileManager.ModelStaleFileManager msfm = staleFilesManager.new ModelStaleFileManager(inputResource.model(), generationTargetFacet);
 
                       // we'd like to report delta per (module, model) pair (DResource is not sufficient, there are TResource clients)
                       // And I don't want to report complete module delta for each model just not to face any trouble with delta merge.
@@ -508,6 +513,12 @@ with_input:
       public BLDependenciesCache dependenciesCache() {
         return super._1();
       }
+    }
+    private static <T> T as_9hut8t_a0a0a1a7a8a0d0a0a0a0c01(Object o, Class<T> type) {
+      return (type.isInstance(o) ? (T) o : null);
+    }
+    private static <T> T as_9hut8t_a0a0v0s0x0a3a0a0a0a2k(Object o, Class<T> type) {
+      return (type.isInstance(o) ? (T) o : null);
     }
   }
   public static class Target_textGenToMemory implements ITargetEx2 {

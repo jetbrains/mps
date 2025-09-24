@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,14 +58,6 @@ public class RegularTextUnit implements TextUnit {
   @Deprecated(since = "2023.3", forRemoval = true)
   public RegularTextUnit(@NotNull SNode root, @NotNull String filename) {
     this(root, filename, null, null);
-  }
-
-  /**
-   * @deprecated use {@link #RegularTextUnit(SNode, String, String, Charset, ComponentHost)} instead
-   */
-  @Deprecated(since = "2023.3", forRemoval = true)
-  public RegularTextUnit(@NotNull SNode root, @NotNull String filename, @Nullable Charset encoding) {
-    this(root, filename, null, encoding);
   }
 
   /**

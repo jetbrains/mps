@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,12 @@ import java.util.stream.Stream;
  * @since 3.5
  */
 public interface GenerationTargetFacet extends SModuleFacet {
+  /**
+   * PROVISIONAL API, DON'T USE OUTSIDE OF MPS
+   * Key for {@link jetbrains.mps.extapi.model.ModelWithAttributes} with a value identifying
+   * specific {@link GenerationTargetFacet} to use for a model
+   */
+  String TARGET_MODEL_ATTR = "targetFacet";
 
   /**
    * XXX See javadoc for JavaModuleFacet#getOutputRoot(). Perhaps, with the rise of textgen-controlled location, GTF shall tell root only
