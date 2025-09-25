@@ -25,10 +25,10 @@ import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import java.util.Map;
-import org.jetbrains.mps.openapi.module.SModule;
-import java.util.HashMap;
-import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
+import java.util.HashMap;
+import org.jetbrains.mps.openapi.module.SModule;
+import java.util.Collection;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
@@ -39,7 +39,7 @@ import jetbrains.mps.text.TextGeneratorEngine;
 import jetbrains.mps.text.TextGenSettings;
 import java.util.concurrent.ArrayBlockingQueue;
 import jetbrains.mps.text.TextGenResult;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.make.java.BLDependenciesCache;
 import jetbrains.mps.textgen.trace.TraceInfoCache;
 import java.util.concurrent.TimeUnit;
@@ -54,12 +54,12 @@ import jetbrains.mps.generator.impl.cache.CacheGenLayout;
 import jetbrains.mps.text.impl.DebugInfoBuilder;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import jetbrains.mps.util.IStatus;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.make.delta.IDelta;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.vfs.WriteTransaction;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
@@ -176,11 +176,10 @@ public class TextGen_Facet extends IFacet.Stub {
               final IMessageHandler messageHandler = monitor.getSession().getMessageHandler();
               final GenerationDependenciesCache genDepsCache = new GenerationDependenciesCache();
 
-              int modelsCount = 0;
-              final List<GResource> resourcesWithOutput = ListSequence.fromList(new ArrayList<GResource>(Sequence.fromIterable(input).count()));
+              final Map<SModel, GResource> inputDataByOutputModel = new HashMap<>(Sequence.fromIterable(input).count() * 2);
+
               final Map<SModule, ModuleStaleFileManager> moduleStaleFilesMap = new HashMap<SModule, ModuleStaleFileManager>();
 
-with_input:
               for (GResource inputData : input) {
                 Collection<SModel> outputModels = inputData.status().getOutputModels();
                 if (outputModels.isEmpty()) {
@@ -200,28 +199,29 @@ with_input:
                   if (generationTarget != null) {
                     as_9hut8t_a0a0a1a7a8a0d0a0a0a0c01(model, ModelWithAttributes.class).setAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR, generationTarget);
                   }
-                  ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.new ModelStaleFileManager(inputData.model(), generationTarget);
+                  ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.forOutputModel(inputData.model(), model);
 
                   // Perhaps, shall check res.status.isError(), however not sure if there
                   // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
-                  if (!(msfm.hasGenerationTarget())) {
-                    monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("no output location for " + model.getName())));
-                    continue with_input;
+                  if (msfm == null) {
+                    monitor.reportFeedback(new IFeedback.WARNING(String.valueOf(String.format("no output location for %s, skipped", model.getName()))));
+                    continue;
                   }
                   if (inputData.getValue(MakeKeys.CLEAN_MAKE)) {
                     msfm.collectGeneratedFilesForceClean();
                   } else {
                     msfm.collectGeneratedFiles();
                   }
+                  inputDataByOutputModel.put(model, inputData);
                 }
-                // need exact number of textgen tasks I'm going to schedule as it's the counter for the poll() loop, and we might get into trouble if
-                // number of scheduled models doesn't match that we expect to poll.
-                modelsCount += outputModels.size();
-                ListSequence.fromList(resourcesWithOutput).addElement(inputData);
               }
 
               final Project mpsProject = monitor.getSession().getProject();
               final TextGeneratorEngine tgEngine = new TextGeneratorEngine(messageHandler, mpsProject.getPlatform());
+
+              // need exact number of textgen tasks I'm going to schedule as it's the counter for the poll() loop, and we might get into trouble if
+              // number of scheduled models doesn't match that we expect to poll.
+              int modelsCount = inputDataByOutputModel.size();
 
               if (modelsCount == 0) {
                 // jftr, ArrayBlockingQueue doesn't tolerate 0 size
@@ -234,26 +234,22 @@ with_input:
               final boolean _generateDebugInfo = (vars(pa.global()).generateDebugInfo() == null && tgs.isGenerateDebugInfo()) || vars(pa.global()).generateDebugInfo();
               final long timeoutSeconds = tgs.getPerModelTimeout().toSeconds();
 
-              final ProgressMonitor subProgress_u0a0b = progressMonitor.subTask(1000);
-              subProgress_u0a0b.start("Writing", modelsCount + 3);
+              final ProgressMonitor subProgress_y0a0b = progressMonitor.subTask(1000);
+              subProgress_y0a0b.start("Writing", modelsCount + 3);
 
               try {
                 final ArrayBlockingQueue<TextGenResult> resultQueue = new ArrayBlockingQueue<TextGenResult>(modelsCount);
-                final Map<SModel, GResource> inputDataByOutputModel = new HashMap<SModel, GResource>(modelsCount * 2);
                 // We queue all models first, prior to poll(), and though ArrayBlockingQueue won't allow more than specified number of result elements, I don't care much.
                 // If I hit the limit and resultQueue is blocked, scheduled textgen tasks would get parked with tgEngine's executor service and proceed once we get to poll().
                 // Nevertheless, the fact I did my best to get modelsCount right makes me feel I'd never face this scenario.
                 mpsProject.getModelAccess().runReadAction(() -> {
-                  for (GResource res : ListSequence.fromList(resourcesWithOutput)) {
-                    for (SModel outputModel : CollectionSequence.fromCollection(res.status().getOutputModels())) {
-                      inputDataByOutputModel.put(outputModel, res);
-                      // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too.
-                      tgEngine.schedule(outputModel, resultQueue);
-                    }
+                  for (SModel outputModel : SetSequence.fromSet(inputDataByOutputModel.keySet())) {
+                    // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too.
+                    tgEngine.schedule(outputModel, resultQueue);
                   }
                 });
 
-                subProgress_u0a0b.advance(3);
+                subProgress_y0a0b.advance(3);
 
                 final Map<GResource, ResourceDeltaCollector> deltas2 = new HashMap<GResource, ResourceDeltaCollector>();
                 // there's no really any use of the cached bl dependencies, provided each model from the set of resources is generated once and the cache is only populated, not read.
@@ -282,9 +278,9 @@ with_input:
                   // (like, 'generated') to track "generation required" status.
                   // Once/if we use other mechanism instead of dependencies/generated files, shall reconsider approach here.
 
-                  SModel outputModel = tgr.getModel();
-                  subProgress_u0a0b.advance(1);
-                  subProgress_u0a0b.step(outputModel.getReference().getModelName());
+                  final SModel outputModel = tgr.getModel();
+                  subProgress_y0a0b.advance(1);
+                  subProgress_y0a0b.step(outputModel.getReference().getModelName());
                   final GResource inputResource = inputDataByOutputModel.get(outputModel);
 
                   _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new TextGenOutcomeResource(inputResource.model(), inputResource.module(), tgr))));
@@ -296,7 +292,6 @@ with_input:
                   }
 
                   final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
-                  final String generationTargetFacet = as_9hut8t_a0a0v0s0x0a3a0a0a0a2k(outputModel, ModelWithAttributes.class).getAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR);
 
                   outputModelRepo.getModelAccess().runReadAction(new Runnable() {
                     public void run() {
@@ -310,7 +305,8 @@ with_input:
                       ModuleStaleFileManager staleFilesManager = moduleStaleFilesMap.get(inputResource.module());
                       assert staleFilesManager != null;
 
-                      ModuleStaleFileManager.ModelStaleFileManager msfm = staleFilesManager.new ModelStaleFileManager(inputResource.model(), generationTargetFacet);
+                      ModuleStaleFileManager.ModelStaleFileManager msfm = staleFilesManager.forOutputModel(inputResource.model(), outputModel);
+                      assert msfm != null : "models w/o output have been filtered out already";
 
                       // we'd like to report delta per (module, model) pair (DResource is not sufficient, there are TResource clients)
                       // And I don't want to report complete module delta for each model just not to face any trouble with delta merge.
@@ -434,7 +430,7 @@ with_input:
                 return new IResult.FAILURE(_output_21gswx_a0b);
               } finally {
                 tgEngine.shutdown();
-                subProgress_u0a0b.done();
+                subProgress_y0a0b.done();
               }
             default:
               progressMonitor.done();
@@ -515,9 +511,6 @@ with_input:
       }
     }
     private static <T> T as_9hut8t_a0a0a1a7a8a0d0a0a0a0c01(Object o, Class<T> type) {
-      return (type.isInstance(o) ? (T) o : null);
-    }
-    private static <T> T as_9hut8t_a0a0v0s0x0a3a0a0a0a2k(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);
     }
   }

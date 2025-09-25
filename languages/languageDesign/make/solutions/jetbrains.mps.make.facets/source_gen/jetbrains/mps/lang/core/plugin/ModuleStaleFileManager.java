@@ -17,13 +17,15 @@ import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.messages.IMessageHandler;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.project.facets.TestsFacet;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
@@ -36,7 +38,13 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 /*package*/ class ModuleStaleFileManager {
   private final SModule myModule;
   private final _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> myPath2File;
+  /**
+   * ATM, module-wide delta, could be just a FilesDelta field
+   */
   private final List<IDelta> myRetainedFilesDelta = ListSequence.fromList(new ArrayList<IDelta>());
+  /**
+   * FilesDelta per modified input model
+   */
   private final List<IDelta> myStaleFilesDelta = ListSequence.fromList(new ArrayList<IDelta>());
   private final Map<IFile, FileDeltaCollector> myModelLocationStreams = new HashMap<IFile, FileDeltaCollector>();
   private final FileProcessor myFileStorage;
@@ -54,6 +62,24 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     myGenDeps = genDeps;
   }
 
+  /**
+   * Provided there could be more than 1 output model per input model, and not all output models may produce a TextGen outcome, this method
+   * detects if there's anything we could generate from the model, and, if yes, gives a handler to collect stale files and report new ones.
+   * 
+   * @return null if there's nothing to generate for the output model
+   */
+  @Nullable
+  /*package*/ ModelStaleFileManager forOutputModel(SModel inputModel, SModel outputModel) {
+    final String targetFacet = as_9j11bm_a0a0a0m(outputModel, ModelWithAttributes.class).getAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR);
+    GenerationTargetFacet gtf = getGenerationTargetFacet(inputModel, targetFacet);
+    if (gtf != null && gtf.getOutputRoot(inputModel) != null) {
+      // tells if we got an idea where we'd like to generate a model to
+      // generic alternative to SModelOperations.getOutputLocation() != null check
+      return new ModelStaleFileManager(inputModel, gtf);
+    }
+    return null;
+  }
+
 
   protected class ModelStaleFileManager {
 
@@ -61,17 +87,11 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     private final GenerationTargetFacet myGenerationTargetFacet;
     private final DeltaKey myPerModelDeltaKey;
 
-    protected ModelStaleFileManager(SModel inputModel, String gentarget) {
+    protected ModelStaleFileManager(@NotNull SModel inputModel, @NotNull GenerationTargetFacet gtf) {
       myInputModel = inputModel;
       // FIXME in fact, seems that I shall keep FileDelta right away, just need to resolve FilesDelta.getDelta() uses (no need to add delta explicitly if shared instance)
       myPerModelDeltaKey = new DeltaKey(myModule, inputModel);
-      myGenerationTargetFacet = getGenerationTargetFacet(inputModel, gentarget);
-    }
-
-    /*package*/ boolean hasGenerationTarget() {
-      // tells if we got an idea where we'd like to generate a model to
-      // generic alternative to SModelOperations.getOutputLocation() != null check
-      return myGenerationTargetFacet != null && myGenerationTargetFacet.getOutputRoot(myInputModel) != null;
+      myGenerationTargetFacet = gtf;
     }
 
     /**
@@ -204,9 +224,12 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
   }
 
   /*package*/ void collectRetainedFiles(Iterable<SModel> retainedModels) {
+    if (Sequence.fromIterable(retainedModels).isEmpty()) {
+      return;
+    }
     // each file we know as generated from a retained model reported as kept
     final FilesDelta fd = new FilesDelta(new DeltaKey(myModule));
-    Consumer<IFile> f = new Consumer<IFile>() {
+    final Consumer<IFile> f = new Consumer<IFile>() {
       public void accept(IFile f) {
         fd.kept(f);
         if (f.isDirectory()) {
@@ -216,12 +239,20 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
         }
       }
     };
-    for (SModel m : Sequence.fromIterable(retainedModels)) {
-      // I'm fine with retained delta as module-wide, known clients that utilize TResource care about fresh files
-      final GenerationTargetFacet gtf = getGenerationTargetFacet(m, null);
-      if (gtf != null) {
-        visitGeneratedFiles(m, gtf, f);
+    // consult all GTF-capable facets for unchanged models just in case they put files in a location that intersects with that of
+    // a modified model
+    ArrayList<GenerationTargetFacet> generationTargetFacets = new ArrayList<>(4);
+    for (SModuleFacet mf : myModule.getFacets()) {
+      if (mf instanceof GenerationTargetFacet) {
+        generationTargetFacets.add((GenerationTargetFacet) mf);
       }
+    }
+    if (generationTargetFacets.isEmpty()) {
+      return;
+    }
+    for (final SModel m : Sequence.fromIterable(retainedModels)) {
+      // I'm fine with retained delta as module-wide, known clients that utilize TResource care about fresh files
+      generationTargetFacets.forEach((gtf) -> visitGeneratedFiles(m, gtf, f));
     }
     ListSequence.fromList(myRetainedFilesDelta).addElement(fd);
   }
@@ -316,5 +347,8 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
   /*package*/ void flushChanges() {
     myFileStorage.flushChanges();
+  }
+  private static <T> T as_9j11bm_a0a0a0m(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }
