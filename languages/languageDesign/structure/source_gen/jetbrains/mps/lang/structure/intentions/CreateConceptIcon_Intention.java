@@ -59,7 +59,7 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Tuples._2<String, String> color = ConceptIconHelper.createColors();
-      SLinkOperations.setTarget(node, LINKS.icon$HKhR, _quotation_createNode_46hmw2_a0b0a(color._0(), color._1(), (isEmptyString(SPropertyOperations.getString(node, PROPS.name$MnvL)) ? "" : SPropertyOperations.getString(node, PROPS.name$MnvL).charAt(0) + ""), IconHelper.createId(SNodeOperations.getModel(node))));
+      SLinkOperations.setTarget(node, LINKS.icon$HKhR, _quotation_createNode_46hmw2_a0b0a(color._0(), color._1(), (isEmptyString(SPropertyOperations.getString(node, PROPS.name$MnvL)) ? "" : SPropertyOperations.getString(node, PROPS.name$MnvL).charAt(0) + ""), IconHelper.createId(SNodeOperations.getModel(node)), color._0(), color._1(), (isEmptyString(SPropertyOperations.getString(node, PROPS.name$MnvL)) ? "" : SPropertyOperations.getString(node, PROPS.name$MnvL).charAt(0) + "")));
     }
 
     @Override
@@ -81,36 +81,60 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
     }
 
   }
-  private static SNode _quotation_createNode_46hmw2_a0b0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
-    SNode quotedNode_5 = null;
-    SNode quotedNode_6 = null;
-    SNode quotedNode_7 = null;
+  private static SNode _quotation_createNode_46hmw2_a0b0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6, Object parameter_7) {
     SNode quotedNode_8 = null;
     SNode quotedNode_9 = null;
     SNode quotedNode_10 = null;
+    SNode quotedNode_11 = null;
+    SNode quotedNode_12 = null;
+    SNode quotedNode_13 = null;
+    SNode quotedNode_14 = null;
+    SNode quotedNode_15 = null;
+    SNode quotedNode_16 = null;
+    SNode quotedNode_17 = null;
+    SNode quotedNode_18 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x26417c37742e0d45L, "TextIcon"));
-    quotedNode_5 = nb.getResult();
-    SNodeAccessUtil.setPropertyValue(quotedNode_5, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId"), (String) parameter_4);
+    quotedNode_8 = nb.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_8, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId"), (String) parameter_4);
     SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x26417c37742e0e60L, "Circle"));
-    quotedNode_6 = nb1.getResult();
+    quotedNode_9 = nb1.getResult();
     SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x19d079f4ec114bddL, "ColorLiteral"));
-    quotedNode_8 = nb2.getResult();
-    SNodeAccessUtil.setPropertyValue(quotedNode_8, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), (String) parameter_1);
-    quotedNode_6.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor"), quotedNode_8);
+    quotedNode_13 = nb2.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_13, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), (String) parameter_1);
+    quotedNode_9.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor"), quotedNode_13);
     SNodeBuilder nb3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x19d079f4ec114bddL, "ColorLiteral"));
-    quotedNode_9 = nb3.getResult();
-    SNodeAccessUtil.setPropertyValue(quotedNode_9, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), (String) parameter_2);
-    quotedNode_6.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor"), quotedNode_9);
-    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers"), quotedNode_6);
+    quotedNode_14 = nb3.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_14, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), (String) parameter_2);
+    quotedNode_9.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor"), quotedNode_14);
+    quotedNode_8.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers"), quotedNode_9);
     SNodeBuilder nb4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x26417c37742e28b9L, "Text"));
-    quotedNode_7 = nb4.getResult();
-    SNodeAccessUtil.setPropertyValue(quotedNode_7, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x26417c37742e28beL, "text"), (String) parameter_3);
+    quotedNode_10 = nb4.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_10, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x26417c37742e28beL, "text"), (String) parameter_3);
     SNodeBuilder nb5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x19d079f4ec114bddL, "ColorLiteral"));
-    quotedNode_10 = nb5.getResult();
+    quotedNode_15 = nb5.getResult();
     nb5.setProperty(MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), "000000");
-    quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color"), quotedNode_10);
-    quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers"), quotedNode_7);
-    return quotedNode_5;
+    quotedNode_10.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color"), quotedNode_15);
+    quotedNode_8.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers"), quotedNode_10);
+    SNodeBuilder nb6 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x26417c37742e0e60L, "Circle"));
+    quotedNode_11 = nb6.getResult();
+    SNodeBuilder nb7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x19d079f4ec114bddL, "ColorLiteral"));
+    quotedNode_16 = nb7.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_16, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), (String) parameter_5);
+    quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c11L, "fillColor"), quotedNode_16);
+    SNodeBuilder nb8 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x19d079f4ec114bddL, "ColorLiteral"));
+    quotedNode_17 = nb8.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_17, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), (String) parameter_6);
+    quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b1L, 0x19d079f4ec114c13L, "borderColor"), quotedNode_17);
+    quotedNode_8.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers"), quotedNode_11);
+    SNodeBuilder nb9 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x26417c37742e28b9L, "Text"));
+    quotedNode_12 = nb9.getResult();
+    SNodeAccessUtil.setPropertyValue(quotedNode_12, MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x26417c37742e28beL, "text"), (String) parameter_7);
+    SNodeBuilder nb10 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"), 0x19d079f4ec114bddL, "ColorLiteral"));
+    quotedNode_18 = nb10.getResult();
+    nb10.setProperty(MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, 0x19d079f4ec114be1L, "val"), "000000");
+    quotedNode_12.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, 0x19d079f4ec114c16L, "color"), quotedNode_18);
+    quotedNode_8.addChild(MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers"), quotedNode_12);
+    return quotedNode_8;
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
