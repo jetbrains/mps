@@ -885,6 +885,50 @@
           </node>
         </node>
       </node>
+      <node concept="3clFbJ" id="214iujSaQqT" role="3cqZAp">
+        <node concept="1Wc70l" id="214iujSaQqU" role="3clFbw">
+          <node concept="2OqwBi" id="214iujSaQqV" role="3uHU7w">
+            <node concept="2OqwBi" id="214iujSaQqW" role="2Oq$k0">
+              <node concept="1YBJjd" id="214iujSaQqX" role="2Oq$k0">
+                <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+              </node>
+              <node concept="3TrcHB" id="214iujSaQqY" role="2OqNvi">
+                <ref role="3TsBF5" to="1oap:1$fQzw7xISD" resolve="newuiFile" />
+              </node>
+            </node>
+            <node concept="17RvpY" id="214iujSaQqZ" role="2OqNvi" />
+          </node>
+          <node concept="2OqwBi" id="214iujSaQr1" role="3uHU7B">
+            <node concept="1YBJjd" id="214iujSaQr2" role="2Oq$k0">
+              <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+            </node>
+            <node concept="2qgKlT" id="214iujSaQYM" role="2OqNvi">
+              <ref role="37wK5l" to="3767:1$fQzw7$hd7" resolve="isFileValid" />
+              <node concept="2OqwBi" id="214iujSaRf_" role="37wK5m">
+                <node concept="1YBJjd" id="214iujSaR2s" role="2Oq$k0">
+                  <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+                </node>
+                <node concept="2qgKlT" id="214iujSaRib" role="2OqNvi">
+                  <ref role="37wK5l" to="3767:1$fQzw7$wcx" resolve="getNamingConventionNewuiFileName" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="214iujSaQr5" role="3clFbx">
+          <node concept="a7r0C" id="214iujSaRkb" role="3cqZAp">
+            <node concept="Xl_RD" id="214iujSaRkd" role="a7wSD">
+              <property role="Xl_RC" value="Both implicit (aka '_newui.svg') and explicit files for a new UI icons are available. The explicitly specified icon will be used under new UI." />
+            </node>
+            <node concept="1YBJjd" id="214iujSaRke" role="1urrMF">
+              <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+            </node>
+            <node concept="2ODE4t" id="214iujSaRkf" role="1urrC5">
+              <ref role="2ODJFN" to="1oap:2p1v3tOafqN" resolve="file" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="1YaCAy" id="1bJ7n0ppNCp" role="1YuTPh">
       <property role="TrG5h" value="fileIcon" />

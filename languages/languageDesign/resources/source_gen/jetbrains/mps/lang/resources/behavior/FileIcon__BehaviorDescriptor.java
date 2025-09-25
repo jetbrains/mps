@@ -51,7 +51,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isValid_id7Mb2akaestJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8974276187400030063L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<Boolean> isExplicitNewuiFileValid_id1$fQzw7$eeH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExplicitNewuiFileValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778817965L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<Boolean> isNewuiFileAvailable_id1$fQzw7$tKW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNewuiFileAvailable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778881596L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
-  /*package*/ static final SMethod<Boolean> isFileValid_id1$fQzw7$hd7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFileValid").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1805901909778830151L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> isFileValid_id1$fQzw7$hd7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFileValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778830151L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541333312L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<String> getNewuiResourceId_id1$fQzw7$LYY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778964414L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
@@ -137,14 +137,14 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static boolean isValid_id7Mb2akaestJ(@NotNull SNode __thisNode__) {
-    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invokeSpecial(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.file$686H)));
+    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.file$686H)));
   }
   /*package*/ static boolean isExplicitNewuiFileValid_id1$fQzw7$eeH(@NotNull SNode __thisNode__) {
     // TODO use in the editor
-    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invokeSpecial(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.newuiFile$Eed5)));
+    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.newuiFile$Eed5)));
   }
   /*package*/ static boolean isNewuiFileAvailable_id1$fQzw7$tKW(@NotNull SNode __thisNode__) {
-    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invokeSpecial(__thisNode__, FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__)));
+    return ((boolean) FileIcon__BehaviorDescriptor.isFileValid_id1$fQzw7$hd7.invoke(__thisNode__, FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(__thisNode__)));
   }
   /*package*/ static boolean isFileValid_id1$fQzw7$hd7(@NotNull SNode __thisNode__, String name) {
     SModule module = SNodeOperations.getModel(__thisNode__).getModule();
