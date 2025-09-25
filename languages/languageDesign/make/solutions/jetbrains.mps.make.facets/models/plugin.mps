@@ -880,67 +880,6 @@
                 <node concept="3clFbH" id="70x5HTuxL9r" role="3cqZAp" />
                 <node concept="1DcWWT" id="3ZuY2RH1lgz" role="3cqZAp">
                   <node concept="3clFbS" id="3ZuY2RH1lgA" role="2LFqv$">
-                    <node concept="3cpWs8" id="2Cc4DRuDKju" role="3cqZAp">
-                      <node concept="3cpWsn" id="2Cc4DRuDKjv" role="3cpWs9">
-                        <property role="TrG5h" value="generationTarget" />
-                        <node concept="3uibUv" id="2Cc4DRuDK2c" role="1tU5fm">
-                          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                        </node>
-                        <node concept="2OqwBi" id="2Cc4DRuDKjw" role="33vP2m">
-                          <node concept="2OqwBi" id="2Cc4DRuDKjx" role="2Oq$k0">
-                            <node concept="37vLTw" id="4o1_qbM_yhR" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4o1_qbM_yhD" resolve="inputData" />
-                            </node>
-                            <node concept="2sxana" id="2Cc4DRuDKjz" role="2OqNvi">
-                              <ref role="2sxfKC" to="fn29:1Xl3kQ1uadG" resolve="status" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="2Cc4DRuDKj$" role="2OqNvi">
-                            <ref role="37wK5l" to="ap4t:~GenerationStatus.getGenerationTarget(org.jetbrains.mps.openapi.model.SModelReference)" resolve="getGenerationTarget" />
-                            <node concept="2OqwBi" id="2Cc4DRuDKj_" role="37wK5m">
-                              <node concept="37vLTw" id="2Cc4DRuDKjA" role="2Oq$k0">
-                                <ref role="3cqZAo" node="3ZuY2RH1lgB" resolve="model" />
-                              </node>
-                              <node concept="liA8E" id="2Cc4DRuDKjB" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbJ" id="62wMJsddbsT" role="3cqZAp">
-                      <node concept="3clFbS" id="62wMJsddbsV" role="3clFbx">
-                        <node concept="3clFbF" id="62wMJsddcQW" role="3cqZAp">
-                          <node concept="2OqwBi" id="62wMJsdddQr" role="3clFbG">
-                            <node concept="0kSF2" id="62wMJsdddnq" role="2Oq$k0">
-                              <node concept="3uibUv" id="62wMJsdddns" role="0kSFW">
-                                <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
-                              </node>
-                              <node concept="37vLTw" id="62wMJsddcQU" role="0kSFX">
-                                <ref role="3cqZAo" node="3ZuY2RH1lgB" resolve="model" />
-                              </node>
-                            </node>
-                            <node concept="liA8E" id="62wMJsddih6" role="2OqNvi">
-                              <ref role="37wK5l" to="g3l6:~ModelWithAttributes.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
-                              <node concept="10M0yZ" id="62wMJsddiQu" role="37wK5m">
-                                <ref role="3cqZAo" to="b0pz:~GenerationTargetFacet.TARGET_MODEL_ATTR" resolve="TARGET_MODEL_ATTR" />
-                                <ref role="1PxDUh" to="b0pz:~GenerationTargetFacet" resolve="GenerationTargetFacet" />
-                              </node>
-                              <node concept="37vLTw" id="62wMJsddjsk" role="37wK5m">
-                                <ref role="3cqZAo" node="2Cc4DRuDKjv" resolve="generationTarget" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3y3z36" id="62wMJsddci5" role="3clFbw">
-                        <node concept="10Nm6u" id="62wMJsddc$v" role="3uHU7w" />
-                        <node concept="37vLTw" id="62wMJsddbYH" role="3uHU7B">
-                          <ref role="3cqZAo" node="2Cc4DRuDKjv" resolve="generationTarget" />
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3cpWs8" id="70x5HTuysHS" role="3cqZAp">
                       <node concept="3cpWsn" id="70x5HTuysHT" role="3cpWs9">
                         <property role="TrG5h" value="msfm" />

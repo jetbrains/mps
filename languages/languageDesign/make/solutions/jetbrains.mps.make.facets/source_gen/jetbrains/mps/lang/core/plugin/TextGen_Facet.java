@@ -31,8 +31,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Collection;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
-import jetbrains.mps.extapi.model.ModelWithAttributes;
-import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.text.TextGeneratorEngine;
@@ -195,10 +193,6 @@ public class TextGen_Facet extends IFacet.Stub {
                 }
 
                 for (SModel model : outputModels) {
-                  String generationTarget = inputData.status().getGenerationTarget(model.getReference());
-                  if (generationTarget != null) {
-                    as_9hut8t_a0a0a1a7a8a0d0a0a0a0c01(model, ModelWithAttributes.class).setAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR, generationTarget);
-                  }
                   ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.forOutputModel(inputData.model(), model);
 
                   // Perhaps, shall check res.status.isError(), however not sure if there
@@ -509,9 +503,6 @@ public class TextGen_Facet extends IFacet.Stub {
       public BLDependenciesCache dependenciesCache() {
         return super._1();
       }
-    }
-    private static <T> T as_9hut8t_a0a0a1a7a8a0d0a0a0a0c01(Object o, Class<T> type) {
-      return (type.isInstance(o) ? (T) o : null);
     }
   }
   public static class Target_textGenToMemory implements ITargetEx2 {

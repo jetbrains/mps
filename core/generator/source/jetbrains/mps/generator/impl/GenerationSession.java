@@ -16,6 +16,7 @@
 package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationParametersProvider;
 import jetbrains.mps.generator.GenerationParametersProviderEx;
@@ -48,6 +49,7 @@ import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
@@ -190,7 +192,6 @@ class GenerationSession {
       //   Logic similar to the one of GMDM (takes used languages of a model) is ok for the first round.
       myEmployedLanguages.addAll(ModelContentUtil.getUsedLanguages(myOriginalInputModel));
       ArrayList<SModel> allOutputModels = new ArrayList<>(4);
-      Map<SModelReference, String> gentargetByOutputModel = new HashMap<>();
       ttrace.push("steps");
 
       ModelTransitions transitionTrace = new ModelTransitions(); // FIXME make it optional, if there are no Checkpoint steps, do not record transitions
@@ -214,7 +215,9 @@ class GenerationSession {
         if (output != null) {
           allOutputModels.add(output);
           mySessionContext.getModule().addModelToKeep(output.getReference(), true);
-          gentargetByOutputModel.put(output.getReference(), branchInfo.generationTarget);
+          if (branchInfo.generationTarget != null) {
+            ((ModelWithAttributes) output).setAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR, branchInfo.generationTarget);
+          }
         }
       }
 
@@ -228,7 +231,7 @@ class GenerationSession {
       // XXX we could use GenerationDependencies to pass more information about actual generators/languages involved (including their runtimes
       //     to facilitate proper classpath calculation
       final GenerationDependencies genDeps = new GenerationDependencies(myOriginalInputModel, myControlEnv.getOptions().getParametersProvider());
-      GenerationStatus generationStatus = new GenerationStatus(myOriginalInputModel, allOutputModels, genDeps, myLogger.getErrorCount() > 0, gentargetByOutputModel);
+      GenerationStatus generationStatus = new GenerationStatus(myOriginalInputModel, allOutputModels, genDeps, myLogger.getErrorCount() > 0);
       generationStatus.setCrossModelEnvironment(myControlEnv.getCrossModelEnvironment());
       generationStatus.setEmployedLanguages(myEmployedLanguages);
       return generationStatus;
