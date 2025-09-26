@@ -72,6 +72,9 @@ public class TransientModelsModule extends SModuleBase implements TransientSModu
 
   private final Set<SModel> myPublished = new ConcurrentHashSet<>();
   private final ModelVault<TransientSModelDescriptor> myModelVault = new ModelVault<>();
+  // this is a quick hack to avoid unloading output model when 'save transients' is OFF as it's going to get loaded back
+  // right away once TextGen tries to access it.
+  private final Set<SModelReference> myMarkedOutput = new HashSet<>();
 
   private final Map<String, GenerationTrace> myTraces = new HashMap<>();
 
@@ -175,6 +178,13 @@ public class TransientModelsModule extends SModuleBase implements TransientSModu
         // see same condition in makeRefsMature() cycle, above.
         continue;
       }
+      if (myMarkedOutput.contains(model.getReference())) {
+        continue;
+      }
+      // FIXME unloading a model discards its attributes (an old defect that we swap out nodes only, neither model imports nor attributes get serialized
+      //       and now that we use model attributes to pass generationTarget value, we truly need to care about attributes being persisted
+      //       Besides, keeping model loaded also helps to address lack of MA.read in TextGen, where ModuleStaleFileManager needs to access repositories of
+      //       both input and output models (now it doesn't access neither)
       unloadModel(model);
     }
     for (SModel model : myModelVault.modelsNotToPublish()) {
@@ -198,6 +208,14 @@ public class TransientModelsModule extends SModuleBase implements TransientSModu
     myModelVault.publish(modelReference);
     myComponent.decreaseKeptModels();
     return true;
+  }
+
+  // hints that the model is part of output collection (and likely doesn't need to get unloaded)
+  public void recordOutputModel(@NotNull SModelReference modelReference) {
+    assert isMyTransientModel(modelReference);
+    addModelToKeep(modelReference, true);
+    assert myModelVault.isPublished(modelReference);
+    myMarkedOutput.add(modelReference);
   }
 
   // to remove published model, one needs write access to a repository,

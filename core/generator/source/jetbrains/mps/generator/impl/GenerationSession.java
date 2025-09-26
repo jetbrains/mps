@@ -50,7 +50,6 @@ import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.generator.template.ITemplateGenerator;
 import jetbrains.mps.messages.MessageKind;
-import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
@@ -75,12 +74,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.function.Function;
@@ -215,7 +212,7 @@ class GenerationSession {
         // for *each* completed GP branch, keep model as it's the outcome we are going to process further
         if (output != null) {
           allOutputModels.add(output);
-          mySessionContext.getModule().addModelToKeep(output.getReference(), true);
+          mySessionContext.getModule().recordOutputModel(output.getReference());
         }
       }
 
