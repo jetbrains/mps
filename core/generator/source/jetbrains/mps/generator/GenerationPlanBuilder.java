@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,9 @@
 package jetbrains.mps.generator;
 
 import jetbrains.mps.generator.plan.CheckpointIdentity;
+import jetbrains.mps.generator.plan.ForkConditionBuilder;
 import jetbrains.mps.generator.plan.PlanIdentity;
+import jetbrains.mps.generator.plan.PlanParameterIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -136,8 +138,10 @@ public interface GenerationPlanBuilder {
 
   /**
    * Sets the generation target of a {@link #fork()}. Has no effect otherwise.
+   * @deprecated use {@link #withConditionSelector()} instead.
    * @param targetHint generation target
    */
+  @Deprecated(since = "2025.3", forRemoval = true)
   default void setGenerationTarget(String targetHint) {
     // NOP by default
   }
@@ -151,6 +155,44 @@ public interface GenerationPlanBuilder {
    */
   @NotNull
   ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity);
+
+  /**
+   * for a {@link #fork() forked} builder, may additionally specify a selector.
+   * <p>
+   *  Note, default implementation returns no-op builder just for the sake of API evolution, subclasses shall override with appropriate logic
+   * </p>
+   * @return a builder to create condition that activates this forked plan
+   * @since 2025.3
+   */
+  @NotNull
+  default ForkConditionBuilder withConditionSelector() {
+    return new ForkConditionBuilder() {
+      @Override
+      public ForkConditionBuilder and() {
+        return this;
+      }
+
+      @Override
+      public ForkConditionBuilder or() {
+        return this;
+      }
+
+      @Override
+      public ForkConditionBuilder not() {
+        return this;
+      }
+
+      @Override
+      public ForkConditionBuilder same(PlanParameterIdentity parameter, String value) {
+        return this;
+      }
+
+      @Override
+      public void complete() {
+
+      }
+    };
+  }
 
   /**
    * options of {@link #applyGenerators(Collection, BuilderOption...)}

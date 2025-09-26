@@ -44,6 +44,7 @@ import jetbrains.mps.generator.impl.plan.GenerationPlan;
 import jetbrains.mps.generator.impl.plan.MapCfgComparator;
 import jetbrains.mps.generator.impl.plan.ModelContentUtil;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
+import jetbrains.mps.generator.plan.ForkCondition;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.runtime.TemplateModule;
@@ -215,9 +216,6 @@ class GenerationSession {
         if (output != null) {
           allOutputModels.add(output);
           mySessionContext.getModule().addModelToKeep(output.getReference(), true);
-          if (branchInfo.generationTarget != null) {
-            ((ModelWithAttributes) output).setAttribute(GenerationTargetFacet.TARGET_MODEL_ATTR, branchInfo.generationTarget);
-          }
         }
       }
 
@@ -285,10 +283,9 @@ class GenerationSession {
     SModel currOutput = null;
     for (int stepIndex = 0; stepIndex < branchSteps.size(); stepIndex++, myMajorStep++) {
       Step planStep = branchSteps.get(stepIndex);
-      if (planStep instanceof Transform) {
-        Transform transformStep = (Transform) planStep;
+      if (planStep instanceof Transform transformStep) {
         final List<TemplateMappingConfiguration> mappingConfigurations = transformStep.getTransformations();
-        if (mappingConfigurations.size() >= 1) {
+        if (!mappingConfigurations.isEmpty()) {
           final TemplateMappingConfiguration first = mappingConfigurations.get(0);
           String n = GeneratorUtil.compactNamespace(first.getModel().getLongName());
           monitor.step(String.format("step %d (%s#%s%s)", myMajorStep+1, n, first.getName(), mappingConfigurations.size() == 1 ? "" : "..."));
@@ -312,6 +309,11 @@ class GenerationSession {
           //       another method initialized and generously didn't clean.
           lastBigTransformStepMappings.push(myStepArguments.mappingLabels.exposed());
         }
+        // FIXME this is a quick-n-dirty hack to get generation target attribute w/o keeping it explicitly in branchInfo;
+        //       shall come up with a reasonable strategy which attributes to copy and when or if I shall rather expose
+        //       ModelConfigurator from Fork step instead, and apply it at the end of a branch.
+        ModelWithAttributes cowa = (ModelWithAttributes) currOutput;
+        ((ModelWithAttributes) currInputModel).forEachAttribute(cowa::setAttribute);
         currInputModel = currOutput;
       } else if (planStep instanceof Checkpoint) {
         Checkpoint checkpointStep = (Checkpoint) planStep;
@@ -378,14 +380,12 @@ class GenerationSession {
         myStepArguments = null; // XXX what if there are few subsequent CPs (e.g. from different plans), why do we clear step arguments and
         // prevent other CPs from saving MLs?
         lastBigTransformStepMappings.clear();
-      } else if (planStep instanceof Fork) {
-        Fork forkStep = (Fork) planStep;
-        String generationTarget = forkStep.getGenerationTarget();
+      } else if (planStep instanceof Fork forkStep) {
+        ForkCondition forkCondition = forkStep.getCondition();
         // proceed with this fork if either:
-        //  - generation target is undefined
-        //  - otherwise, the original model's module has a facet of the corresponding type
-        // this saves the efforts of running generation on an optional fork
-        if (generationTarget != null && (myOriginalInputModel.getModule().getFacetOfType(generationTarget) == null)) {
+        //  - no selector/condition has been specified
+        //  - selector/condition is met
+        if (forkCondition != null && !forkCondition.test(mySessionContext)) {
           continue;
         }
         PlanBranchInfo bi = new PlanBranchInfo(++myBranchCounter);
@@ -394,6 +394,7 @@ class GenerationSession {
         // of the fork branch despite the fact it's just a clone of a model from parent/main branch and thus could have been kept there.
         bi.inputModel = cloneTransientModel(currInputModel, bi.serial);
         changeModelReference(bi.inputModel, createTransientModelReference(myMajorStep, myMinorStep + 100));
+        forkStep.configure(bi.inputModel);
         bi.branch = forkStep.getBranch();
         bi.majorStepAtFork = myMajorStep;
         bi.minorStepAtFork = myMinorStep + 100 + 1; // XXX +1 is sort of/mild hack, we'd like to see branch input model first, with its output next. With
@@ -401,7 +402,6 @@ class GenerationSession {
         bi.actualStateCopyOfLastBitTransformStepMappings = new ArrayList<>(lastBigTransformStepMappings);
         // bi.inputModel, clone of currInputModel, already has ORIGIN_TRACE values properly set, no need to do anything in fork().
         bi.transitionTrace = transitionTrace.fork();
-        bi.generationTarget = generationTarget;
         forkQueue.add(bi);
       }
     }

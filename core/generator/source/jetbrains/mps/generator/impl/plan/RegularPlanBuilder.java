@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.impl.plan;
 
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.generator.GenerationPlanBuilder;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.generator.ModelGenerationPlan.Checkpoint;
@@ -23,6 +24,7 @@ import jetbrains.mps.generator.ModelGenerationPlan.Step;
 import jetbrains.mps.generator.ModelGenerationPlan.Transform;
 import jetbrains.mps.generator.RigidGenerationPlan;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
+import jetbrains.mps.generator.plan.ForkCondition;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
@@ -32,6 +34,7 @@ import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -39,16 +42,20 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -304,9 +311,13 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     final ForkEntry forkStep = new ForkEntry();
     mySteps.add(forkStep);
     return new RegularPlanBuilder(myLanguageRegistry, myEngagedGenerators, myMessageHandler) {
+      @SuppressWarnings("removal")
       @Override
       public void setGenerationTarget(String targetHint) {
-        forkStep.myGenerationTarget = targetHint;
+        forkStep.myForkSelector = targetHint != null ? new ModuleFacetPresentLegacyForkCondition(targetHint) : null;
+        if (targetHint != null) {
+          forkStep.myForkModelAttributes.put(GenerationTargetFacet.TARGET_MODEL_ATTR, targetHint);
+        }
       }
       @NotNull
       @Override
@@ -563,7 +574,8 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
   private static class ForkEntry implements StepEntry {
     private List<StepEntry> mySteps = Collections.emptyList();
-    private String myGenerationTarget = null;
+    private ForkCondition myForkSelector = null;
+    private Map<String, String> myForkModelAttributes = new HashMap<>();
 
     public void steps(List<StepEntry> steps) {
       assert !steps.contains(this) : "Fork step shall not include itself";
@@ -589,7 +601,18 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     public void createStep(List<Step> steps) {
       final ArrayList<Step> branch = new ArrayList<>();
       mySteps.forEach(s -> s.createStep(branch));
-      steps.add(new Fork(branch, myGenerationTarget));
+      Consumer<SModel> f;
+      if (myForkModelAttributes.isEmpty()) {
+        f = null;
+      } else {
+        // FIXME need a separate class not to drag ForkEntry instance down to GP
+        f = mm -> {
+          if (mm instanceof ModelWithAttributes mwa) {
+            myForkModelAttributes.forEach(mwa::setAttribute);
+          }
+        };
+      }
+      steps.add(new Fork(branch, myForkSelector, f));
     }
   }
 }

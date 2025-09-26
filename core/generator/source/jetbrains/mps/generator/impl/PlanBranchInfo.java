@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import java.util.List;
   int majorStepAtFork;
   int minorStepAtFork;
   List<Step> branch;
-  String generationTarget;
 
   // just an identifier of a branch for later reference (e.g. distinguish models of different branches in UI)
   final int serial;

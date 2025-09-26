@@ -17,7 +17,9 @@ package jetbrains.mps.generator;
 
 import jetbrains.mps.generator.impl.RuleManager;
 import jetbrains.mps.generator.impl.TemplateSwitchGraph;
+import jetbrains.mps.generator.impl.plan.ModuleFacetPresentLegacyForkCondition;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
+import jetbrains.mps.generator.plan.ForkCondition;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
@@ -30,6 +32,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Is it a final breakdown of shall I treat list of TMC as a raw input and re-order them as appropriate?
@@ -154,23 +158,41 @@ public interface ModelGenerationPlan {
 
   final class Fork implements Step {
     private final List<Step> myBranch;
-    private String myGenerationTarget;
+    private final ForkCondition myForkSelector;
+    // FIXME introduce a dedicated interface e.g. ModelConfigurator, but for now Consumer is ok
+    private final Consumer<SModel> myModelConfigurator;
 
     public Fork(List<Step> branch) {
-      myBranch = branch;
+      this(branch, null, null);
     }
 
+    /**
+     * Use {@link Fork(List,ForkCondition)} instead
+     */
+    @Deprecated(since = "2025.3", forRemoval = true)
     public Fork(List<Step> branch, String generationTarget) {
-      this(branch);
-      myGenerationTarget = generationTarget;
+      this(branch, generationTarget != null ? new ModuleFacetPresentLegacyForkCondition(generationTarget) : null, null);
+    }
+
+    public Fork(List<Step> branch, @Nullable ForkCondition forkSelector, @Nullable Consumer<SModel> modelConfiguration) {
+      myBranch = branch;
+      myForkSelector = forkSelector;
+      myModelConfigurator = modelConfiguration;
     }
 
     public List<Step> getBranch() {
       return myBranch;
     }
 
-    public String getGenerationTarget() {
-      return myGenerationTarget;
+    @Nullable
+    public ForkCondition getCondition() {
+      return myForkSelector;
+    }
+
+    public void configure(@NotNull SModel model) {
+      if (myModelConfigurator != null) {
+        myModelConfigurator.accept(model);
+      }
     }
   }
 
