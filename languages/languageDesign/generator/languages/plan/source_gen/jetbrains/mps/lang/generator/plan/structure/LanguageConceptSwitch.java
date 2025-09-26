@@ -26,10 +26,13 @@ public final class LanguageConceptSwitch {
   public static final int InPlaceCheckpointSpec = 14;
   public static final int IncludePlan = 15;
   public static final int LanguageEntry = 16;
-  public static final int Plan = 17;
-  public static final int Step = 18;
-  public static final int TextDocLine = 19;
-  public static final int Transform = 20;
+  public static final int ParameterDeclaration = 17;
+  public static final int ParameterEquals = 18;
+  public static final int ParameterReference = 19;
+  public static final int Plan = 20;
+  public static final int Step = 21;
+  public static final int TextDocLine = 22;
+  public static final int Transform = 23;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L);
@@ -50,6 +53,9 @@ public final class LanguageConceptSwitch {
     builder.put(0x340cd07aed7ca161L, InPlaceCheckpointSpec);
     builder.put(0x336c2500000e1b2fL, IncludePlan);
     builder.put(0x100024c0a63c480fL, LanguageEntry);
+    builder.put(0x341184c0e35d75fdL, ParameterDeclaration);
+    builder.put(0x341184c0e35d7602L, ParameterEquals);
+    builder.put(0x341184c0e35d75ffL, ParameterReference);
     builder.put(0x19443180a20717fbL, Plan);
     builder.put(0x19443180a20717fcL, Step);
     builder.put(0x2913ee226f7cdcb5L, TextDocLine);

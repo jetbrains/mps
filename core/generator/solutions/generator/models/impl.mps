@@ -33,6 +33,7 @@
     <import index="80j5" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl(MPS.Generator/)" />
     <import index="av9" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.cache(MPS.Generator/)" />
     <import index="cgca" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.plan(MPS.Generator/)" />
+    <import index="572" ref="r:f0242f5b-17f4-4357-9e9f-366b134a4729(jetbrains.mps.lang.generator.plan.behavior)" />
     <import index="tp2b" ref="r:00000000-0000-4000-0000-011c8959033f(jetbrains.mps.lang.pattern.behavior)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
@@ -9758,6 +9759,7 @@
                 <node concept="37vLTw" id="7NlTw7DrLjx" role="37wK5m">
                   <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
                 </node>
+                <node concept="10Nm6u" id="z3dgY7Wr5e" role="37wK5m" />
                 <node concept="2OqwBi" id="7NlTw7DrLjy" role="37wK5m">
                   <node concept="3TrcHB" id="7NlTw7DrLjz" role="2OqNvi">
                     <ref role="3TsBF5" to="bjdw:1tYEJSwlxVa" resolve="gentarget" />
@@ -10922,6 +10924,20 @@
                       <node concept="37vLTw" id="2$rgQOfwuME" role="37wK5m">
                         <ref role="3cqZAo" node="2$rgQOfwuMw" resolve="branchPlan" />
                       </node>
+                      <node concept="2OqwBi" id="z3dgY7W4eP" role="37wK5m">
+                        <node concept="1PxgMI" id="z3dgY7VXHw" role="2Oq$k0">
+                          <property role="1BlNFB" value="true" />
+                          <node concept="chp4Y" id="z3dgY7VXHx" role="3oSUPX">
+                            <ref role="cht4Q" to="bjdw:2JQwL_F4Efb" resolve="Fork" />
+                          </node>
+                          <node concept="37vLTw" id="z3dgY7VXHy" role="1m5AlR">
+                            <ref role="3cqZAo" node="2$rgQOfwuMK" resolve="stepNode" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="z3dgY7WdU2" role="2OqNvi">
+                          <ref role="3Tt5mk" to="bjdw:1UCZ1x2IYvJ" resolve="filter" />
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="2$rgQOfwuMF" role="37wK5m">
                         <node concept="1PxgMI" id="2$rgQOfwuMG" role="2Oq$k0">
                           <property role="1BlNFB" value="true" />
@@ -10979,6 +10995,12 @@
           <ref role="ehGHo" to="bjdw:1_4co2y1LvV" resolve="Plan" />
         </node>
       </node>
+      <node concept="37vLTG" id="z3dgY7VeSE" role="3clF46">
+        <property role="TrG5h" value="forkSelector" />
+        <node concept="3Tqbb2" id="z3dgY7Vmir" role="1tU5fm">
+          <ref role="ehGHo" to="bjdw:1UCZ1x2IYvI" resolve="ForkSelector" />
+        </node>
+      </node>
       <node concept="37vLTG" id="1CAhW0wVnub" role="3clF46">
         <property role="TrG5h" value="gentarget" />
         <node concept="17QB3L" id="1CAhW0wVnuc" role="1tU5fm" />
@@ -10997,6 +11019,17 @@
               <node concept="liA8E" id="1CAhW0wVntN" role="2OqNvi">
                 <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder.fork()" resolve="fork" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="z3dgY7ZuyM" role="3cqZAp">
+          <node concept="1rXfSq" id="z3dgY7ZuyK" role="3clFbG">
+            <ref role="37wK5l" node="z3dgY7YOT2" resolve="feedForkCondition" />
+            <node concept="37vLTw" id="z3dgY7Z_0H" role="37wK5m">
+              <ref role="3cqZAo" node="1CAhW0wVntJ" resolve="branchBuilder" />
+            </node>
+            <node concept="37vLTw" id="z3dgY7ZL7T" role="37wK5m">
+              <ref role="3cqZAo" node="z3dgY7VeSE" resolve="forkSelector" />
             </node>
           </node>
         </node>
@@ -11055,6 +11088,127 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2tJIrI" id="z3dgY7YA6a" role="jymVt" />
+    <node concept="3clFb_" id="z3dgY7YOT2" role="jymVt">
+      <property role="TrG5h" value="feedForkCondition" />
+      <node concept="37vLTG" id="z3dgY7YVAT" role="3clF46">
+        <property role="TrG5h" value="branchBuilder" />
+        <node concept="3uibUv" id="z3dgY7YVAU" role="1tU5fm">
+          <ref role="3uigEE" to="ap4t:~GenerationPlanBuilder" resolve="GenerationPlanBuilder" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="z3dgY7Z9JD" role="3clF46">
+        <property role="TrG5h" value="forkSelector" />
+        <node concept="3Tqbb2" id="z3dgY7Z9JE" role="1tU5fm">
+          <ref role="ehGHo" to="bjdw:1UCZ1x2IYvI" resolve="ForkSelector" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="z3dgY7YOT5" role="3clF47">
+        <node concept="3clFbJ" id="z3dgY7WHqJ" role="3cqZAp">
+          <node concept="3clFbS" id="z3dgY7WHqL" role="3clFbx">
+            <node concept="3cpWs6" id="z3dgY80ONf" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="z3dgY80BVz" role="3clFbw">
+            <node concept="37vLTw" id="z3dgY7WNOa" role="3uHU7B">
+              <ref role="3cqZAo" node="z3dgY7Z9JD" resolve="forkSelector" />
+            </node>
+            <node concept="10Nm6u" id="z3dgY7X25F" role="3uHU7w" />
+          </node>
+        </node>
+        <node concept="3cpWs8" id="z3dgY7Xtbb" role="3cqZAp">
+          <node concept="3cpWsn" id="z3dgY7Xtbc" role="3cpWs9">
+            <property role="TrG5h" value="fcb" />
+            <node concept="3uibUv" id="z3dgY7XsqW" role="1tU5fm">
+              <ref role="3uigEE" to="cgca:~ForkConditionBuilder" resolve="ForkConditionBuilder" />
+            </node>
+            <node concept="2OqwBi" id="z3dgY7Xtbd" role="33vP2m">
+              <node concept="37vLTw" id="z3dgY7Xtbe" role="2Oq$k0">
+                <ref role="3cqZAo" node="z3dgY7YVAT" resolve="branchBuilder" />
+              </node>
+              <node concept="liA8E" id="z3dgY7Xtbf" role="2OqNvi">
+                <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder.withConditionSelector()" resolve="withConditionSelector" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="z3dgY7Y4ne" role="3cqZAp">
+          <node concept="3clFbS" id="z3dgY7Y4ng" role="3clFbx">
+            <node concept="3cpWs8" id="z3dgY81LBv" role="3cqZAp">
+              <node concept="3cpWsn" id="z3dgY81LBw" role="3cpWs9">
+                <property role="TrG5h" value="spe" />
+                <node concept="3Tqbb2" id="z3dgY81KQ0" role="1tU5fm">
+                  <ref role="ehGHo" to="bjdw:3ghxc3znno2" resolve="ParameterEquals" />
+                </node>
+                <node concept="1PxgMI" id="z3dgY81LBx" role="33vP2m">
+                  <node concept="chp4Y" id="z3dgY81LBy" role="3oSUPX">
+                    <ref role="cht4Q" to="bjdw:3ghxc3znno2" resolve="ParameterEquals" />
+                  </node>
+                  <node concept="37vLTw" id="z3dgY81LBz" role="1m5AlR">
+                    <ref role="3cqZAo" node="z3dgY7Z9JD" resolve="forkSelector" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="z3dgY811GY" role="3cqZAp">
+              <node concept="2OqwBi" id="z3dgY817M7" role="3clFbG">
+                <node concept="37vLTw" id="z3dgY811GW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="z3dgY7Xtbc" resolve="fcb" />
+                </node>
+                <node concept="liA8E" id="z3dgY81fDY" role="2OqNvi">
+                  <ref role="37wK5l" to="cgca:~ForkConditionBuilder.same(jetbrains.mps.generator.plan.PlanParameterIdentity,java.lang.String)" resolve="same" />
+                  <node concept="1rXfSq" id="z3dgY84R$2" role="37wK5m">
+                    <ref role="37wK5l" node="z3dgY84gq0" resolve="toParameterIdentity" />
+                    <node concept="2OqwBi" id="z3dgY84pSS" role="37wK5m">
+                      <node concept="2OqwBi" id="z3dgY82Ttz" role="2Oq$k0">
+                        <node concept="37vLTw" id="z3dgY82_AB" role="2Oq$k0">
+                          <ref role="3cqZAo" node="z3dgY81LBw" resolve="spe" />
+                        </node>
+                        <node concept="3TrEf2" id="z3dgY8301V" role="2OqNvi">
+                          <ref role="3Tt5mk" to="bjdw:3ghxc3znno4" resolve="parameter" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="z3dgY84yBn" role="2OqNvi">
+                        <ref role="3Tt5mk" to="bjdw:3ghxc3znno0" resolve="declaration" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="z3dgY83jLL" role="37wK5m">
+                    <node concept="37vLTw" id="z3dgY83dUZ" role="2Oq$k0">
+                      <ref role="3cqZAo" node="z3dgY81LBw" resolve="spe" />
+                    </node>
+                    <node concept="3TrcHB" id="z3dgY83qpe" role="2OqNvi">
+                      <ref role="3TsBF5" to="bjdw:3ghxc3znno5" resolve="value" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="z3dgY7YiF5" role="3clFbw">
+            <node concept="37vLTw" id="z3dgY7Ycbf" role="2Oq$k0">
+              <ref role="3cqZAo" node="z3dgY7Z9JD" resolve="forkSelector" />
+            </node>
+            <node concept="1mIQ4w" id="z3dgY7Ypci" role="2OqNvi">
+              <node concept="chp4Y" id="z3dgY7YvAi" role="cj9EA">
+                <ref role="cht4Q" to="bjdw:3ghxc3znno2" resolve="ParameterEquals" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="z3dgY83HEW" role="3cqZAp">
+          <node concept="2OqwBi" id="z3dgY83NMn" role="3clFbG">
+            <node concept="37vLTw" id="z3dgY83HEU" role="2Oq$k0">
+              <ref role="3cqZAo" node="z3dgY7Xtbc" resolve="fcb" />
+            </node>
+            <node concept="liA8E" id="z3dgY83VNH" role="2OqNvi">
+              <ref role="37wK5l" to="cgca:~ForkConditionBuilder.complete()" resolve="complete" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="z3dgY7YI4s" role="1B3o_S" />
+      <node concept="3cqZAl" id="z3dgY7YOKv" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="274NGw8PC0w" role="jymVt" />
     <node concept="3clFb_" id="274NGw8PHc0" role="jymVt">
@@ -11386,6 +11540,38 @@
         <property role="TrG5h" value="le" />
         <node concept="3Tqbb2" id="2exa1Fz$pX7" role="1tU5fm">
           <ref role="ehGHo" to="bjdw:1009c2Af4wf" resolve="LanguageEntry" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="z3dgY842eK" role="jymVt" />
+    <node concept="2YIFZL" id="z3dgY84gq0" role="jymVt">
+      <property role="TrG5h" value="toParameterIdentity" />
+      <node concept="3clFbS" id="z3dgY84gq3" role="3clF47">
+        <node concept="3cpWs6" id="4qrcaktMDrr" role="3cqZAp">
+          <node concept="2ShNRf" id="4qrcaktMDts" role="3cqZAk">
+            <node concept="1pGfFk" id="4qrcaktMNoc" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="tft2:~TrivialParameterIdentity.&lt;init&gt;(java.lang.String)" resolve="TrivialParameterIdentity" />
+              <node concept="2OqwBi" id="z3dgY85bHv" role="37wK5m">
+                <node concept="37vLTw" id="z3dgY855Be" role="2Oq$k0">
+                  <ref role="3cqZAo" node="z3dgY84xWt" resolve="pd" />
+                </node>
+                <node concept="2qgKlT" id="z3dgY85iiA" role="2OqNvi">
+                  <ref role="37wK5l" to="572:3ghxc3znnoq" resolve="qualifiedName" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="z3dgY8490g" role="1B3o_S" />
+      <node concept="3uibUv" id="z3dgY84oCg" role="3clF45">
+        <ref role="3uigEE" to="cgca:~PlanParameterIdentity" resolve="PlanParameterIdentity" />
+      </node>
+      <node concept="37vLTG" id="z3dgY84xWt" role="3clF46">
+        <property role="TrG5h" value="pd" />
+        <node concept="3Tqbb2" id="z3dgY84xWs" role="1tU5fm">
+          <ref role="ehGHo" to="bjdw:3ghxc3znnnX" resolve="ParameterDeclaration" />
         </node>
       </node>
     </node>

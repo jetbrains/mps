@@ -26,6 +26,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_InPlaceCheckpointSpec;
   private ConceptPresentation props_IncludePlan;
   private ConceptPresentation props_LanguageEntry;
+  private ConceptPresentation props_ParameterDeclaration;
+  private ConceptPresentation props_ParameterEquals;
+  private ConceptPresentation props_ParameterReference;
   private ConceptPresentation props_Plan;
   private ConceptPresentation props_Step;
   private ConceptPresentation props_TextDocLine;
@@ -163,6 +166,27 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LanguageEntry = cpb.create();
         }
         return props_LanguageEntry;
+      case LanguageConceptSwitch.ParameterDeclaration:
+        if (props_ParameterDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ParameterDeclaration = cpb.create();
+        }
+        return props_ParameterDeclaration;
+      case LanguageConceptSwitch.ParameterEquals:
+        if (props_ParameterEquals == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ParameterEquals");
+          props_ParameterEquals = cpb.create();
+        }
+        return props_ParameterEquals;
+      case LanguageConceptSwitch.ParameterReference:
+        if (props_ParameterReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x341184c0e35d75ffL, 0x341184c0e35d7600L, "declaration", "", "");
+          props_ParameterReference = cpb.create();
+        }
+        return props_ParameterReference;
       case LanguageConceptSwitch.Plan:
         if (props_Plan == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL);
