@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -135,7 +135,7 @@ public class SNodeUtil {
    */
   @NotNull
   public static Iterable<SNode> getDescendants(@NotNull Iterable<SNode> roots) {
-    return new ConcatNodesIterable(roots);
+    return new NodesIterable(roots);
   }
 
   private static class DescendantsIterable implements Iterable<SNode> {
@@ -164,23 +164,14 @@ public class SNodeUtil {
   }
 
   private static class NodesIterable implements Iterable<SNode> {
-    private final SModel mySModel;
-
-    public NodesIterable(SModel sModel) {
-      mySModel = sModel;
-    }
-
-    @NotNull
-    @Override
-    public Iterator<SNode> iterator() {
-      return new NodesIterator(mySModel.getRootNodes().iterator());
-    }
-  }
-
-  private static class ConcatNodesIterable implements Iterable<SNode> {
+    // 'roots' in a sense "topmost nodes for descendants", not "model's roots"
     private final Iterable<SNode> myRoots;
 
-    public ConcatNodesIterable(Iterable<SNode> roots) {
+    public NodesIterable(SModel sModel) {
+      this(sModel.getRootNodes());
+    }
+
+    public NodesIterable(Iterable<SNode> roots) {
       myRoots = roots;
     }
 
@@ -229,7 +220,7 @@ public class SNodeUtil {
 
     private Iterator<SNode> getIterForNextRoot() {
       if (!myRoots.hasNext()) {
-        return Collections.<SNode>emptyList().iterator();
+        return Collections.emptyIterator();
       }
 
       SNode next = myRoots.next();

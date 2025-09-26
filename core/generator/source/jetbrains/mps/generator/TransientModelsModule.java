@@ -43,6 +43,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -416,7 +417,7 @@ public class TransientModelsModule extends SModuleBase implements TransientSModu
         // Note, here I assume 'm' holds nodes only, no imports or used languages (MDU does).
         // new ModelDependencyUpdate(this).updateUsedLanguages().updateImportedModels(repository);
         final ModelDependencyScanner mds = new ModelDependencyScanner();
-        mds.crossModelReferences(true).usedLanguages(true).walk(m.getRootNodes());
+        mds.crossModelReferences(true).usedLanguages(true).walk(SNodeUtil.getDescendants(m.getRootNodes()));
         for (SLanguage language : mds.getUsedLanguages()) {
           m.addLanguage(language);
           // XXX see ModelDependencyUpdate#updateImportedModels() for further questions/rant
