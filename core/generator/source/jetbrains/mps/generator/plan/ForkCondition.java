@@ -9,6 +9,8 @@ public interface ForkCondition {
   /**
    * PROVISIONAL API, DO NOT USE OUTSIDE OF MPS.
    * LIKELY TO GET CHANGED
+   * I suppose, current input model won't hurt here (in addition to original input available from GSC)
    */
   boolean test(GenerationSessionContext context);
+  // FIXME decide what about multi-thread access
 }

@@ -25,6 +25,7 @@ import jetbrains.mps.generator.ModelGenerationPlan.Transform;
 import jetbrains.mps.generator.RigidGenerationPlan;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.generator.plan.ForkCondition;
+import jetbrains.mps.generator.plan.ForkConditionBuilder;
 import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
@@ -314,11 +315,20 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
       @SuppressWarnings("removal")
       @Override
       public void setGenerationTarget(String targetHint) {
-        forkStep.myForkSelector = targetHint != null ? new ModuleFacetPresentLegacyForkCondition(targetHint) : null;
+        // if myForkSelector has been initialized using withFConditionSelector().complete(), do not overwrite with this legacy support value
+        if (forkStep.myForkSelector == null) {
+          forkStep.selector(targetHint != null ? new ModuleFacetPresentLegacyForkCondition(targetHint) : null);
+        }
         if (targetHint != null) {
           forkStep.myForkModelAttributes.put(GenerationTargetFacet.TARGET_MODEL_ATTR, targetHint);
         }
       }
+
+      @Override
+      public @NotNull ForkConditionBuilder withConditionSelector() {
+        return new ConditionBuilder(forkStep::selector);
+      }
+
       @NotNull
       @Override
       public ModelGenerationPlan wrapUp(@NotNull PlanIdentity planIdentity) {
@@ -613,6 +623,10 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         };
       }
       steps.add(new Fork(branch, myForkSelector, f));
+    }
+
+    void selector(ForkCondition condition) {
+      myForkSelector = condition;
     }
   }
 }
