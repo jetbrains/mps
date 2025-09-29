@@ -728,9 +728,12 @@
       <node concept="3Tm1VV" id="5F8tIkv_LL" role="1B3o_S" />
       <node concept="10P_77" id="5F8tIkv_LM" role="1tU5fm" />
     </node>
-    <node concept="3tTeZs" id="5F8tIkv_LN" role="jymVt">
-      <property role="3tTeZt" value="&lt;description&gt;" />
-      <ref role="3tTeZr" to="slm6:1_lSsE3RFpE" resolve="description" />
+    <node concept="3tYpXE" id="3ijtl5lj6cL" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Copies icons' descriptions into the newuiLayers child, which allows the user to tune the definitions for light/dark themes." />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="3ijtl5lj6cN" role="1B3o_S" />
+      <node concept="17QB3L" id="3ijtl5lj6cO" role="1tU5fm" />
     </node>
     <node concept="q3mfD" id="5F8tIkv_LO" role="jymVt">
       <property role="TrG5h" value="execute" />

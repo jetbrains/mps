@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TextIconCopyOldIntoNewIconLayerDescription extends MigrationScriptBase {
-  private final String description = "TextIconCopyOldIntoNewIconLayerDescription";
+  private final String description = "Copies icons' descriptions into the newuiLayers child, which allows the user to tune the definitions for light/dark themes.";
   public String getCaption() {
     return description;
   }
