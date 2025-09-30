@@ -235,9 +235,8 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
 
   @Override
   protected void doubleClick(@NotNull MPSTreeNode nodeToClick) {
-    if (nodeToClick instanceof NonRootTestTreeNode) {
-      NonRootTestTreeNode treeNode = (NonRootTestTreeNode) nodeToClick;
-      new EditorNavigator(myProject).shallFocus(true).shallSelect(treeNode.isLeaf()).open(treeNode.getTestNode().getNodePointer());
+    if (nodeToClick instanceof NonRootTestTreeNode && ((NonRootTestTreeNode) nodeToClick).getNavigateTarget() != null) {
+      new EditorNavigator(myProject).shallFocus(true).shallSelect(nodeToClick.isLeaf()).open(((NonRootTestTreeNode) nodeToClick).getNavigateTarget());
     } else {
       super.doubleClick(nodeToClick);
     }
