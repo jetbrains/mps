@@ -93,7 +93,6 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
-      <concept id="1224500764161" name="jetbrains.mps.baseLanguage.structure.BitwiseAndExpression" flags="nn" index="pVHWs" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
         <property id="5279705229678483899" name="value" index="2$xPTl" />
@@ -2160,8 +2159,8 @@
                     <node concept="3fqX7Q" id="2ZbjobgmYPu" role="3uHU7w">
                       <node concept="1rXfSq" id="2ZbjobgmYPv" role="3fr31v">
                         <ref role="37wK5l" node="2ZbjobgABUk" resolve="isPassed" />
-                        <node concept="2GrUjf" id="2ZbjobgBNC0" role="37wK5m">
-                          <ref role="2Gs0qQ" node="xTUx3LnOV3" resolve="method" />
+                        <node concept="37vLTw" id="79O$Sm$9NEz" role="37wK5m">
+                          <ref role="3cqZAo" node="xTUx3LnOUf" resolve="methodTreeNode" />
                         </node>
                       </node>
                     </node>
@@ -2174,8 +2173,8 @@
                     </node>
                     <node concept="1rXfSq" id="2ZbjobgDYMH" role="37vLTx">
                       <ref role="37wK5l" node="2ZbjobgABUk" resolve="isPassed" />
-                      <node concept="2GrUjf" id="2ZbjobgE0uJ" role="37wK5m">
-                        <ref role="2Gs0qQ" node="xTUx3LnOV3" resolve="method" />
+                      <node concept="37vLTw" id="79O$Sm$9Vdh" role="37wK5m">
+                        <ref role="3cqZAo" node="xTUx3LnOUf" resolve="methodTreeNode" />
                       </node>
                     </node>
                   </node>
@@ -2205,8 +2204,8 @@
                 <node concept="3fqX7Q" id="2ZbjobgmVWf" role="3uHU7w">
                   <node concept="1rXfSq" id="2ZbjobgmXoq" role="3fr31v">
                     <ref role="37wK5l" node="2ZbjobgABUk" resolve="isPassed" />
-                    <node concept="2GrUjf" id="2ZbjobgBYPW" role="37wK5m">
-                      <ref role="2Gs0qQ" node="36vIONTtPwH" resolve="testCase" />
+                    <node concept="37vLTw" id="79O$Sm$a7MR" role="37wK5m">
+                      <ref role="3cqZAo" node="36vIONTtPul" resolve="testCaseTreeNode" />
                     </node>
                   </node>
                 </node>
@@ -2346,8 +2345,13 @@
               <ref role="3uigEE" node="36vIONTtRjI" resolve="TestState" />
             </node>
             <node concept="3EllGN" id="7uaFES0hv0i" role="33vP2m">
-              <node concept="37vLTw" id="7uaFES0hv0j" role="3ElVtu">
-                <ref role="3cqZAo" node="36vIONTtPmu" resolve="node" />
+              <node concept="2OqwBi" id="79O$Sm$9_MP" role="3ElVtu">
+                <node concept="37vLTw" id="7uaFES0hv0j" role="2Oq$k0">
+                  <ref role="3cqZAo" node="36vIONTtPmu" resolve="uiNode" />
+                </node>
+                <node concept="liA8E" id="79O$Sm$9EPz" role="2OqNvi">
+                  <ref role="37wK5l" node="Hl1mFRwbGz" resolve="getTestNode" />
+                </node>
               </node>
               <node concept="37vLTw" id="7uaFES0hv0O" role="3ElQJh">
                 <ref role="3cqZAo" node="2ZbjobgMxXN" resolve="myTests2State" />
@@ -2368,9 +2372,9 @@
         </node>
       </node>
       <node concept="37vLTG" id="36vIONTtPmu" role="3clF46">
-        <property role="TrG5h" value="node" />
+        <property role="TrG5h" value="uiNode" />
         <node concept="3uibUv" id="2Zbjobg$RbY" role="1tU5fm">
-          <ref role="3uigEE" to="sfqd:56tRMpP_ej7" resolve="ITestNodeWrapper" />
+          <ref role="3uigEE" node="36vIONTtQMh" resolve="NonRootTestTreeNode" />
         </node>
         <node concept="2AHcQZ" id="2ZbjobgmR01" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -9561,37 +9565,15 @@
                   </node>
                 </node>
               </node>
-              <node concept="pVHWs" id="2ZbjobgUCH2" role="3clFbw">
-                <node concept="2ZW3vV" id="2ZbjobgUFTh" role="3uHU7B">
-                  <node concept="3uibUv" id="2ZbjobgUGeq" role="2ZW6by">
-                    <ref role="3uigEE" node="36vIONTtQMh" resolve="NonRootTestTreeNode" />
+              <node concept="3fqX7Q" id="2ZbjobgLKhK" role="3clFbw">
+                <node concept="2OqwBi" id="2ZbjobgLKhM" role="3fr31v">
+                  <node concept="37vLTw" id="2ZbjobgLKhN" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2ZbjobgFE8b" resolve="myTree" />
                   </node>
-                  <node concept="37vLTw" id="2ZbjobgUE4G" role="2ZW6bz">
-                    <ref role="3cqZAo" node="36vIONTtQxP" resolve="node" />
-                  </node>
-                </node>
-                <node concept="3fqX7Q" id="2ZbjobgLKhK" role="3uHU7w">
-                  <node concept="2OqwBi" id="2ZbjobgLKhM" role="3fr31v">
-                    <node concept="37vLTw" id="2ZbjobgLKhN" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2ZbjobgFE8b" resolve="myTree" />
-                    </node>
-                    <node concept="liA8E" id="2ZbjobgLKhO" role="2OqNvi">
-                      <ref role="37wK5l" node="2ZbjobgABUk" resolve="isPassed" />
-                      <node concept="2OqwBi" id="2ZbjobgU$DZ" role="37wK5m">
-                        <node concept="liA8E" id="2ZbjobgUL5I" role="2OqNvi">
-                          <ref role="37wK5l" node="Hl1mFRwbGz" resolve="getTestNode" />
-                        </node>
-                        <node concept="1eOMI4" id="2ZbjobgUJnd" role="2Oq$k0">
-                          <node concept="10QFUN" id="2ZbjobgUGAH" role="1eOMHV">
-                            <node concept="3uibUv" id="2ZbjobgUHWN" role="10QFUM">
-                              <ref role="3uigEE" node="36vIONTtQMh" resolve="NonRootTestTreeNode" />
-                            </node>
-                            <node concept="37vLTw" id="2ZbjobgUx1x" role="10QFUP">
-                              <ref role="3cqZAo" node="36vIONTtQxP" resolve="node" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
+                  <node concept="liA8E" id="2ZbjobgLKhO" role="2OqNvi">
+                    <ref role="37wK5l" node="2ZbjobgABUk" resolve="isPassed" />
+                    <node concept="37vLTw" id="79O$Sm$alZP" role="37wK5m">
+                      <ref role="3cqZAo" node="36vIONTtQy7" resolve="leaf" />
                     </node>
                   </node>
                 </node>
@@ -9657,19 +9639,12 @@
               </node>
               <node concept="liA8E" id="2ZbjobgV2TR" role="2OqNvi">
                 <ref role="37wK5l" node="2ZbjobgABUk" resolve="isPassed" />
-                <node concept="2OqwBi" id="2ZbjobgV2TS" role="37wK5m">
-                  <node concept="1eOMI4" id="2ZbjobgV2TT" role="2Oq$k0">
-                    <node concept="10QFUN" id="2ZbjobgV2TU" role="1eOMHV">
-                      <node concept="3uibUv" id="2ZbjobgV2TV" role="10QFUM">
-                        <ref role="3uigEE" node="36vIONTtQMh" resolve="NonRootTestTreeNode" />
-                      </node>
-                      <node concept="37vLTw" id="2ZbjobgV2TW" role="10QFUP">
-                        <ref role="3cqZAo" node="36vIONTtQyD" resolve="node" />
-                      </node>
-                    </node>
+                <node concept="10QFUN" id="2ZbjobgV2TU" role="37wK5m">
+                  <node concept="3uibUv" id="2ZbjobgV2TV" role="10QFUM">
+                    <ref role="3uigEE" node="36vIONTtQMh" resolve="NonRootTestTreeNode" />
                   </node>
-                  <node concept="liA8E" id="2ZbjobgV2TX" role="2OqNvi">
-                    <ref role="37wK5l" node="Hl1mFRwbGz" resolve="getTestNode" />
+                  <node concept="37vLTw" id="2ZbjobgV2TW" role="10QFUP">
+                    <ref role="3cqZAo" node="36vIONTtQyD" resolve="node" />
                   </node>
                 </node>
               </node>

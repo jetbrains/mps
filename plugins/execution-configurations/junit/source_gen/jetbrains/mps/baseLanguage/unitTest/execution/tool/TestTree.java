@@ -206,12 +206,12 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
       testCaseTreeNode.removeAllChildren();
       for (ITestNodeWrapper method : ListSequence.fromList(MapSequence.fromMap(myTestCase2MethodsMap).get(testCase))) {
         TestMethodTreeNode methodTreeNode = (TestMethodTreeNode) getUINodeByModelNode(method);
-        if (!(hidePassed) || !(isPassed(method))) {
+        if (!(hidePassed) || !(isPassed(methodTreeNode))) {
           testCaseTreeNode.add(methodTreeNode);
         }
-        allTestMethodsPassed &= isPassed(method);
+        allTestMethodsPassed &= isPassed(methodTreeNode);
       }
-      if (!(hidePassed) || !(isPassed(testCase))) {
+      if (!(hidePassed) || !(isPassed(testCaseTreeNode))) {
         myRoot.add(testCaseTreeNode);
       }
       allTestCasesPassed &= allTestMethodsPassed;
@@ -228,8 +228,8 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     return MapSequence.fromMap(myTests2State).any((it) -> it.value() != TestState.PASSED);
   }
 
-  /*package*/ boolean isPassed(@NotNull ITestNodeWrapper node) {
-    TestState state = MapSequence.fromMap(myTests2State).get(node);
+  /*package*/ boolean isPassed(@NotNull NonRootTestTreeNode uiNode) {
+    TestState state = MapSequence.fromMap(myTests2State).get(uiNode.getTestNode());
     return state == TestState.PASSED;
   }
 

@@ -23,7 +23,7 @@ public class FailedTestOccurrenceNavigator extends BaseTestOccurenceNavigator {
       if (leaf == null) {
         return false;
       }
-      if (node instanceof NonRootTestTreeNode & !(myTree.isPassed(((NonRootTestTreeNode) node).getTestNode()))) {
+      if (!(myTree.isPassed(leaf))) {
         return true;
       }
       node = leaf;
@@ -35,6 +35,6 @@ public class FailedTestOccurrenceNavigator extends BaseTestOccurenceNavigator {
     if (!(node instanceof NonRootTestTreeNode)) {
       return false;
     }
-    return !(myTree.isPassed(((NonRootTestTreeNode) node).getTestNode()));
+    return !(myTree.isPassed((NonRootTestTreeNode) node));
   }
 }
