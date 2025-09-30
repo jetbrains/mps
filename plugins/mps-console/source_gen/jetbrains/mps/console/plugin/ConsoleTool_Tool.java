@@ -37,7 +37,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(nodeId = "2960931074096488202", model = "r:12d1fcfd-d198-4520-8b28-436d7e8a8ae6(jetbrains.mps.console.plugin)")
 public class ConsoleTool_Tool extends BaseTabbedProjectTool {
-  private static final Icon ICON = MPSIcons.ToolWindows.OpenTerminal_13x13;
+  private static final Icon ICON = MPSIcons.ToolWindows.Console;
   private List<BaseConsoleTab> myTabs = ListSequence.fromList(new ArrayList<BaseConsoleTab>());
   private MPSProject myMPSProject;
   private Project myIdeaProject;

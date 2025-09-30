@@ -1721,8 +1721,8 @@
       </node>
     </node>
     <node concept="1GtWCo" id="2$nlLZbW9FE" role="1nVCmq">
-      <node concept="10M0yZ" id="2$nlLZbW9P$" role="1GtWoa">
-        <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.OpenTerminal_13x13" resolve="OpenTerminal_13x13" />
+      <node concept="10M0yZ" id="1W7CC7pNScP" role="1GtWoa">
+        <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.Console" resolve="Console" />
         <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
       </node>
     </node>

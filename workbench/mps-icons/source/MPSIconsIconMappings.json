@@ -98,7 +98,8 @@
     "toolWindows": {
       "cellExplorer.svg": "toolWindows/cellExplorer.png",
       "default.svg": "toolWindows/default.png",
-      "modelChecker.svg": "toolWindows/modelChecker.png"
+      "modelChecker.svg": "toolWindows/modelChecker.png",
+      "typeTraceView.svg": "toolWindows/typeTraceView.png"
     }
   }
 }

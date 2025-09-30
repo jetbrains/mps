@@ -17,7 +17,6 @@ package jetbrains.mps.icons;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ui.IconManager;
-import com.intellij.ui.LayeredIcon;
 
 import javax.swing.Icon;
 
@@ -153,6 +152,8 @@ public class MPSIcons {
     public static final Icon ModelChecker = load("/toolWindows/modelChecker.png");
     // Copy of icons.TerminalIcons#OpenTerminal_13x13 from terminal plugin
     public static final Icon OpenTerminal_13x13 = load("/toolWindows/OpenTerminal_13x13.svg");
+    public static final Icon Console = load("/toolWindows/OpenTerminal_13x13.svg");
+    public static final Icon terminal = load("/toolWindows/terminal.svg");
     public static final Icon TypeTraceView = load("/toolWindows/typeTraceView.png");
     public static final Icon CellExplorer = load("/toolWindows/cellExplorer.png");
   }
