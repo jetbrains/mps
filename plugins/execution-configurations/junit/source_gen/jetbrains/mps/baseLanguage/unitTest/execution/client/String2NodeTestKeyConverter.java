@@ -7,17 +7,16 @@ import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import jetbrains.mps.baselanguage.unitTest.execution.TestRawKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
-import org.jetbrains.annotations.NotNull;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.baselanguage.unitTest.execution.TestCaseStringKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baselanguage.unitTest.execution.TestMethodStringKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * The conversion from the raw test case/method represenation (ie strings or TestRawKey)
@@ -28,28 +27,26 @@ import org.jetbrains.annotations.Nullable;
 @Singleton
 /*package*/ final class String2NodeTestKeyConverter {
   private static final Logger LOG = Logger.getLogger(String2NodeTestKeyConverter.class);
-  private final Map<TestRawKey, TestNodeKey> myKeyMapping;
+  private final Map<TestRawKey, TestNodeKey> myKeyMapping = MapSequence.fromMap(new HashMap<>());
+  private final Map<ITestNodeWrapper, TestNodeKey> myWrapper2NodeKey = MapSequence.fromMap(new HashMap<>());
 
   /*package*/ String2NodeTestKeyConverter(@NotNull Map<ITestNodeWrapper, List<ITestNodeWrapper>> testCase2TestMethodMap) {
-    myKeyMapping = buildKeyMapping(testCase2TestMethodMap);
-  }
-
-  @NotNull
-  private static Map<TestRawKey, TestNodeKey> buildKeyMapping(@NotNull Map<ITestNodeWrapper, List<ITestNodeWrapper>> tCase2TMethodMap) {
-    Map<TestRawKey, TestNodeKey> result = MapSequence.fromMap(new HashMap<TestRawKey, TestNodeKey>());
-    for (ITestNodeWrapper testCaseNode : SetSequence.fromSet(MapSequence.fromMap(tCase2TMethodMap).keySet())) {
+    for (ITestNodeWrapper testCaseNode : SetSequence.fromSet(MapSequence.fromMap(testCase2TestMethodMap).keySet())) {
       assert testCaseNode.isTestCase();
       TestCaseStringKey rawKey = new TestCaseStringKey(testCaseNode.getFqName());
-      MapSequence.fromMap(result).put(rawKey, new TestCaseNodeKey(testCaseNode));
-      List<ITestNodeWrapper> methodNodes = MapSequence.fromMap(tCase2TMethodMap).get(testCaseNode);
+      TestCaseNodeKey keyA = new TestCaseNodeKey(testCaseNode);
+      MapSequence.fromMap(myKeyMapping).put(rawKey, keyA);
+      MapSequence.fromMap(myWrapper2NodeKey).put(testCaseNode, keyA);
+      List<ITestNodeWrapper> methodNodes = MapSequence.fromMap(testCase2TestMethodMap).get(testCaseNode);
       for (ITestNodeWrapper testMethodNode : ListSequence.fromList(methodNodes)) {
         assert !(testMethodNode.isTestCase());
 
         TestMethodStringKey rawMethodKey = new TestMethodStringKey(testCaseNode.getFqName(), testMethodNode.getName());
-        MapSequence.fromMap(result).put(rawMethodKey, new TestMethodNodeKey(testMethodNode));
+        TestMethodNodeKey keyB = new TestMethodNodeKey(testMethodNode);
+        MapSequence.fromMap(myKeyMapping).put(rawMethodKey, keyB);
+        MapSequence.fromMap(myWrapper2NodeKey).put(testMethodNode, keyB);
       }
     }
-    return result;
   }
 
   @NotNull
@@ -68,19 +65,7 @@ import org.jetbrains.annotations.Nullable;
     return key;
   }
 
-  @Nullable
-  /*package*/ ITestNodeWrapper getTestCaseNodeByString(@NotNull String fqName) {
-    TestRawKey rawKey = new TestCaseStringKey(fqName);
-    TestNodeKey nodeKey = convert(rawKey);
-    assert nodeKey instanceof TestCaseNodeKey;
-    return nodeKey.getNode();
-  }
-
-  @Nullable
-  /*package*/ ITestNodeWrapper getTestCaseNodeByString(@NotNull String fqName, @NotNull String methodName) {
-    TestRawKey rawKey = new TestMethodStringKey(fqName, methodName);
-    TestNodeKey nodeKey = convert(rawKey);
-    assert nodeKey instanceof TestMethodNodeKey;
-    return nodeKey.getNode();
+  /*package*/ TestNodeKey reverseLookup(ITestNodeWrapper nw) {
+    return MapSequence.fromMap(myWrapper2NodeKey).get(nw);
   }
 }

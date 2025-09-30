@@ -5,17 +5,15 @@ package jetbrains.mps.baseLanguage.unitTest.execution.tool;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import com.intellij.openapi.Disposable;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestStateListener;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
-import org.jetbrains.mps.annotations.Immutable;
+import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
-import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.util.Disposer;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -36,11 +34,10 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 public class TestTree extends MPSTree implements Disposable, TestStateListener {
   private RootTestTreeNode myRoot;
 
-  @NotNull
   private final Project myProject;
   private final TestTreeIconRepainter myAnimator;
-  @Immutable
-  private final Map<ITestNodeWrapper, List<ITestNodeWrapper>> myTestCase2MethodsMap;
+  private final TestRunState myTestSession;
+
   private final Map<ITestNodeWrapper, TestTreeNode> myNode2UINodeMap;
 
   /**
@@ -50,9 +47,10 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
 
   public TestTree(@NotNull TestRunState state, @NotNull Project project, Disposable disposable) {
     Disposer.register(disposable, this);
-    myTestCase2MethodsMap = state.getTestsMap();
-    myNode2UINodeMap = buildModelUIMapping();
     myProject = project;
+    myTestSession = state;
+    // apparently, we reuse UI elements, although not clear why
+    myNode2UINodeMap = buildModelUIMapping(state);
     myAnimator = new TestTreeIconRepainter(this);
   }
 
@@ -60,13 +58,16 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     return myRoot;
   }
 
-  private Map<ITestNodeWrapper, TestTreeNode> buildModelUIMapping() {
+  private static Map<ITestNodeWrapper, TestTreeNode> buildModelUIMapping(TestRunState state) {
     Map<ITestNodeWrapper, TestTreeNode> result = MapSequence.fromMap(new LinkedHashMap<ITestNodeWrapper, TestTreeNode>(16, (float) 0.75, false));
-    for (ITestNodeWrapper testCase : MapSequence.fromMap(myTestCase2MethodsMap).keySet()) {
-      MapSequence.fromMap(result).put(testCase, new TestCaseTreeNode(testCase));
-      Iterable<ITestNodeWrapper> testMethods = testCase.getTestMethods();
-      for (ITestNodeWrapper testMethod : Sequence.fromIterable(testMethods)) {
-        MapSequence.fromMap(result).put(testMethod, new TestMethodTreeNode(testMethod));
+    Map<ITestNodeWrapper, List<ITestNodeWrapper>> container2method = state.getTestsMap();
+
+    for (ITestNodeWrapper testCase : MapSequence.fromMap(container2method).keySet()) {
+      assert testCase.isTestCase();
+      MapSequence.fromMap(result).put(testCase, new TestCaseTreeNode(state.keyForTest(testCase)));
+      for (ITestNodeWrapper testMethod : ListSequence.fromList(MapSequence.fromMap(container2method).get(testCase))) {
+        assert !(testMethod.isTestCase());
+        MapSequence.fromMap(result).put(testMethod, new TestMethodTreeNode(state.keyForTest(testMethod)));
       }
     }
     return result;
@@ -164,8 +165,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     if (!(testNode.isTestCase())) {
       return ListSequence.fromList(new LinkedList<ITestNodeWrapper>());
     }
-    Iterable<ITestNodeWrapper> testMethods = MapSequence.fromMap(myTestCase2MethodsMap).get(testNode);
-    return Sequence.fromIterable(testMethods).toList();
+    return MapSequence.fromMap(myTestSession.getTestsMap()).get(testNode);
   }
 
   @NotNull
@@ -197,14 +197,17 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     boolean allTestCasesPassed = true;
     if (myRoot != null) {
       myRoot.removeAllChildren();
+      // FIXME why removeAllChildren if we re-create root anyway?!
     }
     this.myRoot = new RootTestTreeNode();
-    for (ITestNodeWrapper testCase : SetSequence.fromSet(MapSequence.fromMap(myTestCase2MethodsMap).keySet())) {
+    Map<ITestNodeWrapper, List<ITestNodeWrapper>> container2method = myTestSession.getTestsMap();
+
+    for (ITestNodeWrapper testCase : SetSequence.fromSet(MapSequence.fromMap(container2method).keySet())) {
       assert testCase != null;
       boolean allTestMethodsPassed = true;
       TestCaseTreeNode testCaseTreeNode = (TestCaseTreeNode) getUINodeByModelNode(testCase);
       testCaseTreeNode.removeAllChildren();
-      for (ITestNodeWrapper method : ListSequence.fromList(MapSequence.fromMap(myTestCase2MethodsMap).get(testCase))) {
+      for (ITestNodeWrapper method : ListSequence.fromList(MapSequence.fromMap(container2method).get(testCase))) {
         TestMethodTreeNode methodTreeNode = (TestMethodTreeNode) getUINodeByModelNode(method);
         if (!(hidePassed) || !(isPassed(methodTreeNode))) {
           testCaseTreeNode.add(methodTreeNode);

@@ -3107,6 +3107,47 @@
         <ref role="2AI5Lk" to="lhc4:~ImmutableReturn" resolve="ImmutableReturn" />
       </node>
     </node>
+    <node concept="2tJIrI" id="79O$Sm$ryMe" role="jymVt" />
+    <node concept="3clFb_" id="79O$Sm$rNNv" role="jymVt">
+      <property role="TrG5h" value="keyForTest" />
+      <node concept="3clFbS" id="79O$Sm$rNNy" role="3clF47">
+        <node concept="3cpWs6" id="79O$Sm$rXYq" role="3cqZAp">
+          <node concept="2OqwBi" id="79O$Sm$s7KZ" role="3cqZAk">
+            <node concept="37vLTw" id="79O$Sm$s3ZW" role="2Oq$k0">
+              <ref role="3cqZAo" node="2ZbjobgvcaJ" resolve="myConverter" />
+            </node>
+            <node concept="liA8E" id="79O$Sm$scEO" role="2OqNvi">
+              <ref role="37wK5l" node="79O$Sm$rkzC" resolve="reverseLookup" />
+              <node concept="37vLTw" id="79O$Sm$sgcl" role="37wK5m">
+                <ref role="3cqZAo" node="79O$Sm$rSrL" resolve="nw" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="79O$Sm$rHcF" role="1B3o_S" />
+      <node concept="3uibUv" id="79O$Sm$rN4v" role="3clF45">
+        <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
+      </node>
+      <node concept="37vLTG" id="79O$Sm$rSrL" role="3clF46">
+        <property role="TrG5h" value="nw" />
+        <node concept="3uibUv" id="79O$Sm$rSrK" role="1tU5fm">
+          <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="79O$Sm$sjLT" role="lGtFl">
+        <node concept="TZ5HA" id="79O$Sm$sjLU" role="TZ5H$">
+          <node concept="1dT_AC" id="79O$Sm$sjLV" role="1dT_Ay">
+            <property role="1dT_AB" value="PROVISIONAL, I'd like to hide ITestNodeWrapper and replace it with an object that holds state of a specific test within the session" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="79O$Sm$srXz" role="TZ5H$">
+          <node concept="1dT_AC" id="79O$Sm$srX$" role="1dT_Ay">
+            <property role="1dT_AB" value="(including TestState), but for transition, need to stick to TestNodeKey now" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="7B_GGkKFvtb" role="jymVt" />
     <node concept="3clFb_" id="7B_GGkKFCvn" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -8967,79 +9008,37 @@
           <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
         </node>
       </node>
+      <node concept="2ShNRf" id="79O$Sm$qVfC" role="33vP2m">
+        <node concept="3rGOSV" id="79O$Sm$qYpK" role="2ShVmc" />
+      </node>
+    </node>
+    <node concept="312cEg" id="79O$Sm$qIB4" role="jymVt">
+      <property role="TrG5h" value="myWrapper2NodeKey" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="79O$Sm$qHXP" role="1B3o_S" />
+      <node concept="3rvAFt" id="79O$Sm$qIvQ" role="1tU5fm">
+        <node concept="3uibUv" id="79O$Sm$qJ9_" role="3rvQeY">
+          <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
+        </node>
+        <node concept="3uibUv" id="79O$Sm$qJj6" role="3rvSg0">
+          <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="79O$Sm$qJwU" role="33vP2m">
+        <node concept="3rGOSV" id="79O$Sm$qQtr" role="2ShVmc" />
+      </node>
     </node>
     <node concept="2tJIrI" id="2ZbjobguwJ6" role="jymVt" />
     <node concept="3clFbW" id="2ZbjobgtNJE" role="jymVt">
       <node concept="3cqZAl" id="2ZbjobgtNJF" role="3clF45" />
       <node concept="3clFbS" id="2ZbjobgtNJH" role="3clF47">
-        <node concept="3clFbF" id="2Zbjobgux86" role="3cqZAp">
-          <node concept="37vLTI" id="2ZbjobguxA1" role="3clFbG">
-            <node concept="1rXfSq" id="2Zbjobgv9PI" role="37vLTx">
-              <ref role="37wK5l" node="2ZbjobguxCX" resolve="buildKeyMapping" />
-              <node concept="37vLTw" id="2Zbjobgv9Sg" role="37wK5m">
-                <ref role="3cqZAo" node="2ZbjobguwHM" resolve="testCase2TestMethodMap" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="2Zbjobgux85" role="37vLTJ">
-              <ref role="3cqZAo" node="2ZbjobguwLX" resolve="myKeyMapping" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="2ZbjobguwHM" role="3clF46">
-        <property role="TrG5h" value="testCase2TestMethodMap" />
-        <node concept="3rvAFt" id="2ZbjobguwHJ" role="1tU5fm">
-          <node concept="3uibUv" id="2ZbjobguwI6" role="3rvQeY">
-            <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
-          </node>
-          <node concept="_YKpA" id="2ZbjobguwIg" role="3rvSg0">
-            <node concept="3uibUv" id="2ZbjobguwIr" role="_ZDj9">
-              <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="2Zbjobgux7r" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="2ZbjobguxA8" role="jymVt" />
-    <node concept="2YIFZL" id="2ZbjobguxCX" role="jymVt">
-      <property role="TrG5h" value="buildKeyMapping" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="2ZbjobguxD0" role="3clF47">
-        <node concept="3cpWs8" id="2ZbjobguxI7" role="3cqZAp">
-          <node concept="3cpWsn" id="2ZbjobguxIa" role="3cpWs9">
-            <property role="TrG5h" value="result" />
-            <node concept="3rvAFt" id="2ZbjobguxI4" role="1tU5fm">
-              <node concept="3uibUv" id="2ZbjobguxIo" role="3rvQeY">
-                <ref role="3uigEE" to="lxc5:2ZbjobguwR7" resolve="TestRawKey" />
-              </node>
-              <node concept="3uibUv" id="2ZbjobguxIy" role="3rvSg0">
-                <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
-              </node>
-            </node>
-            <node concept="2ShNRf" id="2ZbjobguxKd" role="33vP2m">
-              <node concept="3rGOSV" id="2Zbjobguy6D" role="2ShVmc">
-                <node concept="3uibUv" id="2Zbjobguy72" role="3rHrn6">
-                  <ref role="3uigEE" to="lxc5:2ZbjobguwR7" resolve="TestRawKey" />
-                </node>
-                <node concept="3uibUv" id="2Zbjobguy7c" role="3rHtpV">
-                  <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="2Gpval" id="2ZbjobguOhV" role="3cqZAp">
           <node concept="2GrKxI" id="2ZbjobguOhX" role="2Gsz3X">
             <property role="TrG5h" value="testCaseNode" />
           </node>
           <node concept="2OqwBi" id="2ZbjobguOXm" role="2GsD0m">
             <node concept="37vLTw" id="2ZbjobguOka" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ZbjobguxEe" resolve="tCase2TMethodMap" />
+              <ref role="3cqZAo" node="2ZbjobguwHM" resolve="testCase2TestMethodMap" />
             </node>
             <node concept="3lbrtF" id="2ZbjobguPHJ" role="2OqNvi" />
           </node>
@@ -9075,22 +9074,48 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2ZbjobguSm9" role="3cqZAp">
-              <node concept="37vLTI" id="2ZbjobguTfP" role="3clFbG">
-                <node concept="2ShNRf" id="2ZbjobgxAzP" role="37vLTx">
-                  <node concept="1pGfFk" id="2ZbjobgxBrF" role="2ShVmc">
+            <node concept="3cpWs8" id="79O$Sm$rc1U" role="3cqZAp">
+              <node concept="3cpWsn" id="79O$Sm$rc1V" role="3cpWs9">
+                <property role="TrG5h" value="keyA" />
+                <node concept="3uibUv" id="79O$Sm$rbRU" role="1tU5fm">
+                  <ref role="3uigEE" to="tpnd:2ZbjobgtRG2" resolve="TestCaseNodeKey" />
+                </node>
+                <node concept="2ShNRf" id="79O$Sm$rc1W" role="33vP2m">
+                  <node concept="1pGfFk" id="79O$Sm$rc1X" role="2ShVmc">
                     <ref role="37wK5l" to="tpnd:2ZbjobgtRG7" resolve="TestCaseNodeKey" />
-                    <node concept="2GrUjf" id="2ZbjobgxBsZ" role="37wK5m">
+                    <node concept="2GrUjf" id="79O$Sm$rc1Y" role="37wK5m">
                       <ref role="2Gs0qQ" node="2ZbjobguOhX" resolve="testCaseNode" />
                     </node>
                   </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2ZbjobguSm9" role="3cqZAp">
+              <node concept="37vLTI" id="2ZbjobguTfP" role="3clFbG">
+                <node concept="37vLTw" id="79O$Sm$rc1Z" role="37vLTx">
+                  <ref role="3cqZAo" node="79O$Sm$rc1V" resolve="keyA" />
                 </node>
                 <node concept="3EllGN" id="2ZbjobguSYH" role="37vLTJ">
                   <node concept="37vLTw" id="2ZbjobguT2q" role="3ElVtu">
                     <ref role="3cqZAo" node="2ZbjobguDBY" resolve="rawKey" />
                   </node>
                   <node concept="37vLTw" id="2ZbjobguSm7" role="3ElQJh">
-                    <ref role="3cqZAo" node="2ZbjobguxIa" resolve="result" />
+                    <ref role="3cqZAo" node="2ZbjobguwLX" resolve="myKeyMapping" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="79O$Sm$r971" role="3cqZAp">
+              <node concept="37vLTI" id="79O$Sm$rbG5" role="3clFbG">
+                <node concept="37vLTw" id="79O$Sm$rf5c" role="37vLTx">
+                  <ref role="3cqZAo" node="79O$Sm$rc1V" resolve="keyA" />
+                </node>
+                <node concept="3EllGN" id="79O$Sm$raot" role="37vLTJ">
+                  <node concept="2GrUjf" id="79O$Sm$raFq" role="3ElVtu">
+                    <ref role="2Gs0qQ" node="2ZbjobguOhX" resolve="testCaseNode" />
+                  </node>
+                  <node concept="37vLTw" id="79O$Sm$r96Z" role="3ElQJh">
+                    <ref role="3cqZAo" node="79O$Sm$qIB4" resolve="myWrapper2NodeKey" />
                   </node>
                 </node>
               </node>
@@ -9108,7 +9133,7 @@
                     <ref role="2Gs0qQ" node="2ZbjobguOhX" resolve="testCaseNode" />
                   </node>
                   <node concept="37vLTw" id="2Zbjobgv7uA" role="3ElQJh">
-                    <ref role="3cqZAo" node="2ZbjobguxEe" resolve="tCase2TMethodMap" />
+                    <ref role="3cqZAo" node="2ZbjobguwHM" resolve="testCase2TestMethodMap" />
                   </node>
                 </node>
               </node>
@@ -9163,6 +9188,22 @@
                     </node>
                   </node>
                 </node>
+                <node concept="3cpWs8" id="79O$Sm$rfif" role="3cqZAp">
+                  <node concept="3cpWsn" id="79O$Sm$rfig" role="3cpWs9">
+                    <property role="TrG5h" value="keyB" />
+                    <node concept="3uibUv" id="79O$Sm$rfcp" role="1tU5fm">
+                      <ref role="3uigEE" to="tpnd:2ZbjobgtRHn" resolve="TestMethodNodeKey" />
+                    </node>
+                    <node concept="2ShNRf" id="79O$Sm$rfih" role="33vP2m">
+                      <node concept="1pGfFk" id="79O$Sm$rfii" role="2ShVmc">
+                        <ref role="37wK5l" to="tpnd:2ZbjobgtRHv" resolve="TestMethodNodeKey" />
+                        <node concept="2GrUjf" id="79O$Sm$rfij" role="37wK5m">
+                          <ref role="2Gs0qQ" node="2Zbjobgv6Fp" resolve="testMethodNode" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
                 <node concept="3clFbF" id="2ZbjobguzeF" role="3cqZAp">
                   <node concept="37vLTI" id="2ZbjobguSia" role="3clFbG">
                     <node concept="3EllGN" id="2ZbjobguDyM" role="37vLTJ">
@@ -9170,15 +9211,25 @@
                         <ref role="3cqZAo" node="2ZbjobguKRi" resolve="rawMethodKey" />
                       </node>
                       <node concept="37vLTw" id="2ZbjobguzeE" role="3ElQJh">
-                        <ref role="3cqZAo" node="2ZbjobguxIa" resolve="result" />
+                        <ref role="3cqZAo" node="2ZbjobguwLX" resolve="myKeyMapping" />
                       </node>
                     </node>
-                    <node concept="2ShNRf" id="2ZbjobgxBHn" role="37vLTx">
-                      <node concept="1pGfFk" id="2ZbjobgxC9z" role="2ShVmc">
-                        <ref role="37wK5l" to="tpnd:2ZbjobgtRHv" resolve="TestMethodNodeKey" />
-                        <node concept="2GrUjf" id="2ZbjobgxCsK" role="37wK5m">
-                          <ref role="2Gs0qQ" node="2Zbjobgv6Fp" resolve="testMethodNode" />
-                        </node>
+                    <node concept="37vLTw" id="79O$Sm$rfik" role="37vLTx">
+                      <ref role="3cqZAo" node="79O$Sm$rfig" resolve="keyB" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="79O$Sm$rfXS" role="3cqZAp">
+                  <node concept="37vLTI" id="79O$Sm$rhNv" role="3clFbG">
+                    <node concept="37vLTw" id="79O$Sm$ri4e" role="37vLTx">
+                      <ref role="3cqZAo" node="79O$Sm$rfig" resolve="keyB" />
+                    </node>
+                    <node concept="3EllGN" id="79O$Sm$rgGx" role="37vLTJ">
+                      <node concept="2GrUjf" id="79O$Sm$rh0M" role="3ElVtu">
+                        <ref role="2Gs0qQ" node="2Zbjobgv6Fp" resolve="testMethodNode" />
+                      </node>
+                      <node concept="37vLTw" id="79O$Sm$rfXQ" role="3ElQJh">
+                        <ref role="3cqZAo" node="79O$Sm$qIB4" resolve="myWrapper2NodeKey" />
                       </node>
                     </node>
                   </node>
@@ -9187,39 +9238,22 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2Zbjobgu$PW" role="3cqZAp">
-          <node concept="37vLTw" id="2Zbjobgv9AW" role="3cqZAk">
-            <ref role="3cqZAo" node="2ZbjobguxIa" resolve="result" />
-          </node>
-        </node>
       </node>
-      <node concept="3Tm6S6" id="2ZbjobguxBQ" role="1B3o_S" />
-      <node concept="37vLTG" id="2ZbjobguxEe" role="3clF46">
-        <property role="TrG5h" value="tCase2TMethodMap" />
-        <node concept="3rvAFt" id="2ZbjobguxEf" role="1tU5fm">
-          <node concept="3uibUv" id="2ZbjobguxEg" role="3rvQeY">
+      <node concept="37vLTG" id="2ZbjobguwHM" role="3clF46">
+        <property role="TrG5h" value="testCase2TestMethodMap" />
+        <node concept="3rvAFt" id="2ZbjobguwHJ" role="1tU5fm">
+          <node concept="3uibUv" id="2ZbjobguwI6" role="3rvQeY">
             <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
           </node>
-          <node concept="_YKpA" id="2ZbjobguxEh" role="3rvSg0">
-            <node concept="3uibUv" id="2ZbjobguxEi" role="_ZDj9">
+          <node concept="_YKpA" id="2ZbjobguwIg" role="3rvSg0">
+            <node concept="3uibUv" id="2ZbjobguwIr" role="_ZDj9">
               <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
             </node>
           </node>
         </node>
-        <node concept="2AHcQZ" id="2ZbjobguxEj" role="2AJF6D">
+        <node concept="2AHcQZ" id="2Zbjobgux7r" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
-      </node>
-      <node concept="3rvAFt" id="2ZbjobguxI_" role="3clF45">
-        <node concept="3uibUv" id="2ZbjobguxIA" role="3rvQeY">
-          <ref role="3uigEE" to="lxc5:2ZbjobguwR7" resolve="TestRawKey" />
-        </node>
-        <node concept="3uibUv" id="2ZbjobguxIB" role="3rvSg0">
-          <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2Zbjobgv9B0" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="2tJIrI" id="2Zbjobgva1d" role="jymVt" />
@@ -9362,159 +9396,28 @@
         <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
       </node>
     </node>
-    <node concept="2tJIrI" id="2ZbjobgxwXP" role="jymVt" />
-    <node concept="3clFb_" id="2Zbjobgxx3C" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getTestCaseNodeByString" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="2Zbjobgxx3F" role="3clF47">
-        <node concept="3cpWs8" id="2Zbjobgxxms" role="3cqZAp">
-          <node concept="3cpWsn" id="2Zbjobgxxmt" role="3cpWs9">
-            <property role="TrG5h" value="rawKey" />
-            <node concept="3uibUv" id="2Zbjobgxxmu" role="1tU5fm">
-              <ref role="3uigEE" to="lxc5:2ZbjobguwR7" resolve="TestRawKey" />
+    <node concept="2tJIrI" id="79O$Sm$rke2" role="jymVt" />
+    <node concept="3clFb_" id="79O$Sm$rkzC" role="jymVt">
+      <property role="TrG5h" value="reverseLookup" />
+      <node concept="3uibUv" id="79O$Sm$rl5M" role="3clF45">
+        <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
+      </node>
+      <node concept="3clFbS" id="79O$Sm$rkzF" role="3clF47">
+        <node concept="3clFbF" id="79O$Sm$rlMz" role="3cqZAp">
+          <node concept="3EllGN" id="79O$Sm$rmz8" role="3clFbG">
+            <node concept="37vLTw" id="79O$Sm$rmNL" role="3ElVtu">
+              <ref role="3cqZAo" node="79O$Sm$rlyp" resolve="nw" />
             </node>
-            <node concept="2ShNRf" id="2ZbjobgxxnK" role="33vP2m">
-              <node concept="1pGfFk" id="2Zbjobgxzty" role="2ShVmc">
-                <ref role="37wK5l" to="lxc5:2ZbjobgpQWv" resolve="TestCaseStringKey" />
-                <node concept="37vLTw" id="2ZbjobgxzwV" role="37wK5m">
-                  <ref role="3cqZAo" node="2ZbjobgxxjM" resolve="fqName" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="2ZbjobgxzIn" role="3cqZAp">
-          <node concept="3cpWsn" id="2ZbjobgxzIo" role="3cpWs9">
-            <property role="TrG5h" value="nodeKey" />
-            <node concept="3uibUv" id="2ZbjobgxzIk" role="1tU5fm">
-              <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
-            </node>
-            <node concept="1rXfSq" id="2ZbjobgxzIp" role="33vP2m">
-              <ref role="37wK5l" node="2ZbjobgvaaI" resolve="convert" />
-              <node concept="37vLTw" id="2ZbjobgxzIq" role="37wK5m">
-                <ref role="3cqZAo" node="2Zbjobgxxmt" resolve="rawKey" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1gVbGN" id="2Zbjobgx$kC" role="3cqZAp">
-          <node concept="2ZW3vV" id="2Zbjobgx_xX" role="1gVkn0">
-            <node concept="3uibUv" id="2Zbjobgx_yi" role="2ZW6by">
-              <ref role="3uigEE" to="tpnd:2ZbjobgtRG2" resolve="TestCaseNodeKey" />
-            </node>
-            <node concept="37vLTw" id="2Zbjobgx$m7" role="2ZW6bz">
-              <ref role="3cqZAo" node="2ZbjobgxzIo" resolve="nodeKey" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="2ZbjobgxzK_" role="3cqZAp">
-          <node concept="2OqwBi" id="2Zbjobgx$0u" role="3cqZAk">
-            <node concept="37vLTw" id="2ZbjobgxzM0" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ZbjobgxzIo" resolve="nodeKey" />
-            </node>
-            <node concept="liA8E" id="2Zbjobgx$gH" role="2OqNvi">
-              <ref role="37wK5l" to="tpnd:2ZbjobgtRJJ" resolve="getNode" />
+            <node concept="37vLTw" id="79O$Sm$rlMy" role="3ElQJh">
+              <ref role="3cqZAo" node="79O$Sm$qIB4" resolve="myWrapper2NodeKey" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="2Zbjobgxx1B" role="3clF45">
-        <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
-      </node>
-      <node concept="2AHcQZ" id="2Zbjobgxx5$" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="37vLTG" id="2ZbjobgxxjM" role="3clF46">
-        <property role="TrG5h" value="fqName" />
-        <node concept="17QB3L" id="2ZbjobgxxjL" role="1tU5fm" />
-        <node concept="2AHcQZ" id="2Zbjobgx$j4" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="2Zbjobgx_C3" role="jymVt" />
-    <node concept="3clFb_" id="2Zbjobgx_yl" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getTestCaseNodeByString" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="2Zbjobgx_ym" role="3clF47">
-        <node concept="3cpWs8" id="2Zbjobgx_yn" role="3cqZAp">
-          <node concept="3cpWsn" id="2Zbjobgx_yo" role="3cpWs9">
-            <property role="TrG5h" value="rawKey" />
-            <node concept="3uibUv" id="2Zbjobgx_yp" role="1tU5fm">
-              <ref role="3uigEE" to="lxc5:2ZbjobguwR7" resolve="TestRawKey" />
-            </node>
-            <node concept="2ShNRf" id="2Zbjobgx_yq" role="33vP2m">
-              <node concept="1pGfFk" id="2Zbjobgx_yr" role="2ShVmc">
-                <ref role="37wK5l" to="lxc5:1XbiPVzvbLB" resolve="TestMethodStringKey" />
-                <node concept="37vLTw" id="2Zbjobgx_ys" role="37wK5m">
-                  <ref role="3cqZAo" node="2Zbjobgx_yG" resolve="fqName" />
-                </node>
-                <node concept="37vLTw" id="2Zbjobgx_IJ" role="37wK5m">
-                  <ref role="3cqZAo" node="2Zbjobgx_GZ" resolve="methodName" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="2Zbjobgx_yt" role="3cqZAp">
-          <node concept="3cpWsn" id="2Zbjobgx_yu" role="3cpWs9">
-            <property role="TrG5h" value="nodeKey" />
-            <node concept="3uibUv" id="2Zbjobgx_yv" role="1tU5fm">
-              <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
-            </node>
-            <node concept="1rXfSq" id="2Zbjobgx_yw" role="33vP2m">
-              <ref role="37wK5l" node="2ZbjobgvaaI" resolve="convert" />
-              <node concept="37vLTw" id="2Zbjobgx_yx" role="37wK5m">
-                <ref role="3cqZAo" node="2Zbjobgx_yo" resolve="rawKey" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1gVbGN" id="2Zbjobgx_yy" role="3cqZAp">
-          <node concept="2ZW3vV" id="2Zbjobgx_yz" role="1gVkn0">
-            <node concept="3uibUv" id="2ZbjobgxAwm" role="2ZW6by">
-              <ref role="3uigEE" to="tpnd:2ZbjobgtRHn" resolve="TestMethodNodeKey" />
-            </node>
-            <node concept="37vLTw" id="2Zbjobgx_y_" role="2ZW6bz">
-              <ref role="3cqZAo" node="2Zbjobgx_yu" resolve="nodeKey" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="2Zbjobgx_yA" role="3cqZAp">
-          <node concept="2OqwBi" id="2Zbjobgx_yB" role="3cqZAk">
-            <node concept="37vLTw" id="2Zbjobgx_yC" role="2Oq$k0">
-              <ref role="3cqZAo" node="2Zbjobgx_yu" resolve="nodeKey" />
-            </node>
-            <node concept="liA8E" id="2Zbjobgx_yD" role="2OqNvi">
-              <ref role="37wK5l" to="tpnd:2ZbjobgtRJJ" resolve="getNode" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3uibUv" id="2Zbjobgx_yE" role="3clF45">
-        <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
-      </node>
-      <node concept="2AHcQZ" id="2Zbjobgx_yF" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="37vLTG" id="2Zbjobgx_yG" role="3clF46">
-        <property role="TrG5h" value="fqName" />
-        <node concept="17QB3L" id="2Zbjobgx_yH" role="1tU5fm" />
-        <node concept="2AHcQZ" id="2Zbjobgx_yI" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="2Zbjobgx_GZ" role="3clF46">
-        <property role="TrG5h" value="methodName" />
-        <node concept="17QB3L" id="2Zbjobgx_H0" role="1tU5fm" />
-        <node concept="2AHcQZ" id="2Zbjobgx_H1" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      <node concept="37vLTG" id="79O$Sm$rlyp" role="3clF46">
+        <property role="TrG5h" value="nw" />
+        <node concept="3uibUv" id="79O$Sm$rlyo" role="1tU5fm">
+          <ref role="3uigEE" node="56tRMpP_ej7" resolve="ITestNodeWrapper" />
         </node>
       </node>
     </node>

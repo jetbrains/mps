@@ -293,6 +293,14 @@ public final class TestRunState {
     return Collections.unmodifiableMap(myTestCase2MethodsMap);
   }
 
+  /**
+   * PROVISIONAL, I'd like to hide ITestNodeWrapper and replace it with an object that holds state of a specific test within the session
+   * (including TestState), but for transition, need to stick to TestNodeKey now
+   */
+  public TestNodeKey keyForTest(ITestNodeWrapper nw) {
+    return myConverter.reverseLookup(nw);
+  }
+
   @TestOnly
   public int getCompletedTests() {
     return myInnerData.myCompletedTests;

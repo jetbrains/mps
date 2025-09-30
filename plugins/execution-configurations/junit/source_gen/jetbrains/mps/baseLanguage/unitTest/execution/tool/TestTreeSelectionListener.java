@@ -6,7 +6,6 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreePath;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKeyFactory;
 
 public class TestTreeSelectionListener implements TreeSelectionListener {
   private final StatisticsTableModel myStatisticsModel;
@@ -29,7 +28,7 @@ public class TestTreeSelectionListener implements TreeSelectionListener {
     Object obj = path.getLastPathComponent();
     if (obj instanceof NonRootTestTreeNode) {
       NonRootTestTreeNode treeNode = (NonRootTestTreeNode) obj;
-      newKey = TestNodeKeyFactory.wrap(treeNode.getTestNode());
+      newKey = treeNode.testKey();
     }
     myOutputComponent.setFilter(newKey);
     myStatisticsModel.setFilter(newKey);
