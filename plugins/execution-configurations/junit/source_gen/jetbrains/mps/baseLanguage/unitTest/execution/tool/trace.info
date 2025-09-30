@@ -2550,75 +2550,63 @@
   </root>
   <root nodeRef="r:b8ee28ea-da10-4cf4-a569-7570d5d6d2df(jetbrains.mps.baseLanguage.unitTest.execution.tool)/3575782568432727054">
     <file name="TestTreeSelectionListener.java">
-      <node id="3575782568432727055" at="13,0,14,0" concept="6" trace="myFreeSelectionModel" />
-      <node id="3575782568432727058" at="14,0,15,0" concept="6" trace="myStatisticsModel" />
-      <node id="3575782568432727061" at="15,0,16,0" concept="6" trace="myOutputComponent" />
-      <node id="3575782568432727069" at="17,121,18,52" concept="5" />
-      <node id="3575782568432727077" at="18,52,19,35" concept="5" />
-      <node id="3575782568432727083" at="19,35,20,40" concept="5" />
-      <node id="3575782568432727104" at="25,50,26,13" concept="11" />
-      <node id="3575782568432727110" at="27,5,28,60" concept="10" />
-      <node id="3575782568432727120" at="29,23,30,13" concept="11" />
-      <node id="3443931564297812712" at="31,5,32,30" concept="10" />
-      <node id="3575782568432727132" at="32,30,33,45" concept="10" />
-      <node id="3575782568432727140" at="34,45,35,63" concept="10" />
-      <node id="3443931564297814980" at="35,63,36,63" concept="5" />
-      <node id="3575782568432727178" at="37,5,38,40" concept="5" />
-      <node id="3575782568432727186" at="38,40,39,40" concept="5" />
-      <node id="3575782568432727102" at="24,54,27,5" concept="8" />
-      <node id="3575782568432727118" at="28,60,31,5" concept="8" />
-      <node id="3575782568432727138" at="33,45,37,5" concept="8" />
-      <node id="3575782568432727065" at="17,0,22,0" concept="3" trace="TestTreeSelectionListener#(Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestTree;Ljetbrains/mps/baseLanguage/unitTest/execution/tool/StatisticsTableModel;Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestOutputContainer;)V" />
-      <node id="3575782568432727096" at="23,0,41,0" concept="9" trace="valueChanged#(Ljavax/swing/event/TreeSelectionEvent;)V" />
-      <scope id="3575782568432727103" at="25,50,26,13" />
-      <scope id="3575782568432727119" at="29,23,30,13" />
-      <scope id="3575782568432727139" at="34,45,36,63">
+      <node id="3575782568432727058" at="12,0,13,0" concept="6" trace="myStatisticsModel" />
+      <node id="3575782568432727061" at="13,0,14,0" concept="6" trace="myOutputComponent" />
+      <node id="3575782568432727077" at="15,106,16,35" concept="5" />
+      <node id="3575782568432727083" at="16,35,17,40" concept="5" />
+      <node id="3575782568432727110" at="21,54,22,52" concept="10" />
+      <node id="8247379019819541216" at="23,23,24,40" concept="5" />
+      <node id="8247379019819561233" at="24,40,25,40" concept="5" />
+      <node id="3575782568432727120" at="25,40,26,13" concept="11" />
+      <node id="3443931564297812712" at="27,5,28,30" concept="10" />
+      <node id="3575782568432727132" at="28,30,29,45" concept="10" />
+      <node id="3575782568432727140" at="30,45,31,63" concept="10" />
+      <node id="3443931564297814980" at="31,63,32,63" concept="5" />
+      <node id="3575782568432727178" at="33,5,34,40" concept="5" />
+      <node id="3575782568432727186" at="34,40,35,40" concept="5" />
+      <node id="3575782568432727065" at="15,0,19,0" concept="3" trace="TestTreeSelectionListener#(Ljetbrains/mps/baseLanguage/unitTest/execution/tool/StatisticsTableModel;Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestOutputContainer;)V" />
+      <node id="3575782568432727138" at="29,45,33,5" concept="8" />
+      <node id="3575782568432727118" at="22,52,27,5" concept="8" />
+      <node id="3575782568432727096" at="20,0,37,0" concept="9" trace="valueChanged#(Ljavax/swing/event/TreeSelectionEvent;)V" />
+      <scope id="3575782568432727068" at="15,106,17,40" />
+      <scope id="3575782568432727139" at="30,45,32,63">
         <var name="treeNode" id="3575782568432727141" />
       </scope>
-      <scope id="3575782568432727068" at="17,121,20,40" />
-      <scope id="3575782568432727065" at="17,0,22,0">
+      <scope id="3575782568432727119" at="23,23,26,13" />
+      <scope id="3575782568432727065" at="15,0,19,0">
         <var name="outputComponent" id="3575782568432727093" />
         <var name="statistics" id="3575782568432727091" />
-        <var name="tree" id="3575782568432727089" />
       </scope>
-      <scope id="3575782568432727101" at="24,54,39,40">
+      <scope id="3575782568432727101" at="21,54,35,40">
         <var name="newKey" id="3443931564297812713" />
         <var name="obj" id="3575782568432727133" />
         <var name="path" id="3575782568432727111" />
       </scope>
-      <scope id="3575782568432727096" at="23,0,41,0">
+      <scope id="3575782568432727096" at="20,0,37,0">
         <var name="event" id="3575782568432727099" />
       </scope>
-      <unit id="3575782568432727054" at="12,0,42,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.TestTreeSelectionListener" />
+      <unit id="3575782568432727054" at="11,0,38,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.TestTreeSelectionListener" />
     </file>
   </root>
   <root nodeRef="r:b8ee28ea-da10-4cf4-a569-7570d5d6d2df(jetbrains.mps.baseLanguage.unitTest.execution.tool)/3575782568432727194">
     <file name="TestTreeRootMouseListener.java">
-      <node id="3575782568432727195" at="9,0,10,0" concept="6" trace="myStatisticsModel" />
-      <node id="3575782568432727198" at="10,0,11,0" concept="6" trace="myOutputComponent" />
-      <node id="3575782568432727201" at="11,0,12,0" concept="6" trace="myTreeComponent" />
-      <node id="3575782568432727215" at="13,121,14,35" concept="5" />
-      <node id="3575782568432727221" at="14,35,15,40" concept="5" />
-      <node id="3575782568432727227" at="15,40,16,27" concept="5" />
-      <node id="3575782568432727242" at="21,181,22,13" concept="11" />
-      <node id="3575782568432727256" at="23,5,24,38" concept="5" />
-      <node id="3575782568432727264" at="24,38,25,38" concept="5" />
-      <node id="3575782568432727272" at="25,38,26,37" concept="5" />
-      <node id="3575782568432727240" at="20,46,23,5" concept="8" />
-      <node id="3575782568432727205" at="13,0,18,0" concept="3" trace="TestTreeRootMouseListener#(Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestTree;Ljetbrains/mps/baseLanguage/unitTest/execution/tool/StatisticsTableModel;Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestOutputContainer;)V" />
-      <node id="3575782568432727234" at="19,0,28,0" concept="9" trace="mouseClicked#(Ljava/awt/event/MouseEvent;)V" />
-      <scope id="3575782568432727241" at="21,181,22,13" />
-      <scope id="3575782568432727214" at="13,121,16,27" />
-      <scope id="3575782568432727205" at="13,0,18,0">
-        <var name="outputComponent" id="3575782568432727210" />
-        <var name="statistics" id="3575782568432727208" />
+      <node id="3575782568432727201" at="9,0,10,0" concept="6" trace="myTreeComponent" />
+      <node id="3575782568432727227" at="11,51,12,27" concept="5" />
+      <node id="3575782568432727242" at="17,181,18,13" concept="11" />
+      <node id="3575782568432727272" at="19,5,20,37" concept="5" />
+      <node id="3575782568432727205" at="11,0,14,0" concept="3" trace="TestTreeRootMouseListener#(Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestTree;)V" />
+      <node id="3575782568432727240" at="16,46,19,5" concept="8" />
+      <node id="3575782568432727234" at="15,0,22,0" concept="9" trace="mouseClicked#(Ljava/awt/event/MouseEvent;)V" />
+      <scope id="3575782568432727214" at="11,51,12,27" />
+      <scope id="3575782568432727241" at="17,181,18,13" />
+      <scope id="3575782568432727205" at="11,0,14,0">
         <var name="tree" id="3575782568432727206" />
       </scope>
-      <scope id="3575782568432727239" at="20,46,26,37" />
-      <scope id="3575782568432727234" at="19,0,28,0">
+      <scope id="3575782568432727239" at="16,46,20,37" />
+      <scope id="3575782568432727234" at="15,0,22,0">
         <var name="event" id="3575782568432727237" />
       </scope>
-      <unit id="3575782568432727194" at="8,0,29,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.TestTreeRootMouseListener" />
+      <unit id="3575782568432727194" at="8,0,23,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.TestTreeRootMouseListener" />
     </file>
   </root>
   <root nodeRef="r:b8ee28ea-da10-4cf4-a569-7570d5d6d2df(jetbrains.mps.baseLanguage.unitTest.execution.tool)/3575782568432727278">
@@ -3102,9 +3090,9 @@
       <node id="8321286824326262403" at="77,76,78,53" concept="5" />
       <node id="8321286824326262421" at="78,53,79,61" concept="5" />
       <node id="2254978909346642811" at="79,61,80,33" concept="5" />
-      <node id="8321286824326262430" at="80,33,81,135" concept="5" />
-      <node id="8321286824326262439" at="81,135,82,127" concept="5" />
-      <node id="2254978909346661507" at="82,127,83,27" concept="5" />
+      <node id="8321286824326262430" at="80,33,81,118" concept="5" />
+      <node id="8321286824326262439" at="81,118,82,85" concept="5" />
+      <node id="2254978909346661507" at="82,85,83,27" concept="5" />
       <node id="8321286824326262448" at="83,27,84,0" concept="13" />
       <node id="8321286824326262460" at="84,0,85,48" concept="10" />
       <node id="8321286824326262466" at="85,48,86,55" concept="5" />

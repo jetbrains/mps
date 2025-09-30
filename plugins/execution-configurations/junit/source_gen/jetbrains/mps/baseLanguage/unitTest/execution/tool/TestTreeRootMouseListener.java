@@ -6,13 +6,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class TestTreeRootMouseListener extends MouseAdapter {
-  private final StatisticsTableModel myStatisticsModel;
-  private final TestOutputContainer myOutputComponent;
   private final TestTree myTreeComponent;
 
-  public TestTreeRootMouseListener(TestTree tree, StatisticsTableModel statistics, TestOutputContainer outputComponent) {
-    myStatisticsModel = statistics;
-    myOutputComponent = outputComponent;
+  public TestTreeRootMouseListener(TestTree tree) {
     myTreeComponent = tree;
   }
 
@@ -21,8 +17,6 @@ public class TestTreeRootMouseListener extends MouseAdapter {
     if (myTreeComponent.getPathForRow(myTreeComponent.getRowForLocation(event.getX(), event.getY())) != null || myTreeComponent.getClosestPathForLocation(0, event.getY()) != null) {
       return;
     }
-    myOutputComponent.setFilter(null);
-    myStatisticsModel.setFilter(null);
     myTreeComponent.clearSelection();
   }
 }

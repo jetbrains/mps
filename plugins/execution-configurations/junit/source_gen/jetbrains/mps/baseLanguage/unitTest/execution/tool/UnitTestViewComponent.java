@@ -78,8 +78,8 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     myProgressLineComponent = new TestProgressLine();
     myTestOutputContainer = new TestOutputContainer(console);
     myTestOutputContainer.init();
-    myTreeComponent.addTreeSelectionListener(new TestTreeSelectionListener(myTreeComponent, myStatisticsModel, myTestOutputContainer));
-    myTreeComponent.addMouseListener(new TestTreeRootMouseListener(myTreeComponent, myStatisticsModel, myTestOutputContainer));
+    myTreeComponent.addTreeSelectionListener(new TestTreeSelectionListener(myStatisticsModel, myTestOutputContainer));
+    myTreeComponent.addMouseListener(new TestTreeRootMouseListener(myTreeComponent));
     myTreeComponent.init();
 
     Splitter leftSplitter = new Splitter(false);

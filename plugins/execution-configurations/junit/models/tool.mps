@@ -13695,14 +13695,6 @@
     <node concept="3uibUv" id="36vIONTtRgR" role="EKbjA">
       <ref role="3uigEE" to="gsia:~TreeSelectionListener" resolve="TreeSelectionListener" />
     </node>
-    <node concept="312cEg" id="36vIONTtRgf" role="jymVt">
-      <property role="TrG5h" value="myFreeSelectionModel" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="36vIONTtRgg" role="1B3o_S" />
-      <node concept="3uibUv" id="36vIONTtRgh" role="1tU5fm">
-        <ref role="3uigEE" to="rgfa:~TreeSelectionModel" resolve="TreeSelectionModel" />
-      </node>
-    </node>
     <node concept="312cEg" id="36vIONTtRgi" role="jymVt">
       <property role="TrG5h" value="myStatisticsModel" />
       <property role="3TUv4t" value="true" />
@@ -13724,21 +13716,6 @@
       <node concept="3cqZAl" id="36vIONTtRgq" role="3clF45" />
       <node concept="3Tm1VV" id="36vIONTtRgr" role="1B3o_S" />
       <node concept="3clFbS" id="36vIONTtRgs" role="3clF47">
-        <node concept="3clFbF" id="36vIONTtRgt" role="3cqZAp">
-          <node concept="37vLTI" id="36vIONTtRgu" role="3clFbG">
-            <node concept="2OqwBi" id="36vIONTtRgv" role="37vLTx">
-              <node concept="37vLTw" id="2BHiRxgmG6R" role="2Oq$k0">
-                <ref role="3cqZAo" node="36vIONTtRgL" resolve="tree" />
-              </node>
-              <node concept="liA8E" id="36vIONTtRgx" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~JTree.getSelectionModel()" resolve="getSelectionModel" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="2BHiRxeuyWU" role="37vLTJ">
-              <ref role="3cqZAo" node="36vIONTtRgf" resolve="myFreeSelectionModel" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="36vIONTtRg_" role="3cqZAp">
           <node concept="37vLTI" id="36vIONTtRgA" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxgldxo" role="37vLTx">
@@ -13758,12 +13735,6 @@
               <ref role="3cqZAo" node="36vIONTtRgl" resolve="myOutputComponent" />
             </node>
           </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="36vIONTtRgL" role="3clF46">
-        <property role="TrG5h" value="tree" />
-        <node concept="3uibUv" id="36vIONTtRgM" role="1tU5fm">
-          <ref role="3uigEE" node="36vIONTtPlt" resolve="TestTree" />
         </node>
       </node>
       <node concept="37vLTG" id="36vIONTtRgN" role="3clF46">
@@ -13791,13 +13762,13 @@
         </node>
       </node>
       <node concept="3clFbS" id="36vIONTtRgX" role="3clF47">
-        <node concept="3clFbJ" id="36vIONTtRgY" role="3cqZAp">
-          <node concept="3clFbS" id="36vIONTtRgZ" role="3clFbx">
-            <node concept="3cpWs6" id="36vIONTtRh0" role="3cqZAp" />
-          </node>
-          <node concept="3clFbC" id="36vIONTtRh1" role="3clFbw">
-            <node concept="10Nm6u" id="36vIONTtRh2" role="3uHU7w" />
-            <node concept="2OqwBi" id="36vIONTtRh3" role="3uHU7B">
+        <node concept="3cpWs8" id="36vIONTtRh6" role="3cqZAp">
+          <node concept="3cpWsn" id="36vIONTtRh7" role="3cpWs9">
+            <property role="TrG5h" value="path" />
+            <node concept="3uibUv" id="36vIONTtRh8" role="1tU5fm">
+              <ref role="3uigEE" to="rgfa:~TreePath" resolve="TreePath" />
+            </node>
+            <node concept="2OqwBi" id="36vIONTtRh3" role="33vP2m">
               <node concept="37vLTw" id="2BHiRxghfIJ" role="2Oq$k0">
                 <ref role="3cqZAo" node="36vIONTtRgV" resolve="event" />
               </node>
@@ -13807,24 +13778,30 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="36vIONTtRh6" role="3cqZAp">
-          <node concept="3cpWsn" id="36vIONTtRh7" role="3cpWs9">
-            <property role="TrG5h" value="path" />
-            <node concept="3uibUv" id="36vIONTtRh8" role="1tU5fm">
-              <ref role="3uigEE" to="rgfa:~TreePath" resolve="TreePath" />
-            </node>
-            <node concept="2OqwBi" id="36vIONTtRh9" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeuW2V" role="2Oq$k0">
-                <ref role="3cqZAo" node="36vIONTtRgf" resolve="myFreeSelectionModel" />
-              </node>
-              <node concept="liA8E" id="36vIONTtRhd" role="2OqNvi">
-                <ref role="37wK5l" to="rgfa:~TreeSelectionModel.getSelectionPath()" resolve="getSelectionPath" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="36vIONTtRhe" role="3cqZAp">
           <node concept="3clFbS" id="36vIONTtRhf" role="3clFbx">
+            <node concept="3clFbF" id="79O$Sm$mAbw" role="3cqZAp">
+              <node concept="2OqwBi" id="79O$Sm$mAyL" role="3clFbG">
+                <node concept="37vLTw" id="79O$Sm$mAbu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="36vIONTtRgl" resolve="myOutputComponent" />
+                </node>
+                <node concept="liA8E" id="79O$Sm$mAU5" role="2OqNvi">
+                  <ref role="37wK5l" node="36vIONTtQoP" resolve="setFilter" />
+                  <node concept="10Nm6u" id="79O$Sm$mBEi" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="79O$Sm$mF4h" role="3cqZAp">
+              <node concept="2OqwBi" id="79O$Sm$mFvd" role="3clFbG">
+                <node concept="37vLTw" id="79O$Sm$mF4f" role="2Oq$k0">
+                  <ref role="3cqZAo" node="36vIONTtRgi" resolve="myStatisticsModel" />
+                </node>
+                <node concept="liA8E" id="79O$Sm$mFUO" role="2OqNvi">
+                  <ref role="37wK5l" node="36vIONTtQJV" resolve="setFilter" />
+                  <node concept="10Nm6u" id="79O$Sm$mGFW" role="37wK5m" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs6" id="36vIONTtRhg" role="3cqZAp" />
           </node>
           <node concept="3clFbC" id="36vIONTtRhh" role="3clFbw">
@@ -13945,22 +13922,6 @@
     <node concept="3uibUv" id="36vIONTtRj1" role="1zkMxy">
       <ref role="3uigEE" to="hyam:~MouseAdapter" resolve="MouseAdapter" />
     </node>
-    <node concept="312cEg" id="36vIONTtRir" role="jymVt">
-      <property role="TrG5h" value="myStatisticsModel" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="36vIONTtRis" role="1B3o_S" />
-      <node concept="3uibUv" id="36vIONTtRit" role="1tU5fm">
-        <ref role="3uigEE" node="36vIONTtQD6" resolve="StatisticsTableModel" />
-      </node>
-    </node>
-    <node concept="312cEg" id="36vIONTtRiu" role="jymVt">
-      <property role="TrG5h" value="myOutputComponent" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="36vIONTtRiv" role="1B3o_S" />
-      <node concept="3uibUv" id="36vIONTtRiw" role="1tU5fm">
-        <ref role="3uigEE" node="36vIONTtQaI" resolve="TestOutputContainer" />
-      </node>
-    </node>
     <node concept="312cEg" id="36vIONTtRix" role="jymVt">
       <property role="TrG5h" value="myTreeComponent" />
       <property role="3TUv4t" value="true" />
@@ -13977,41 +13938,9 @@
           <ref role="3uigEE" node="36vIONTtPlt" resolve="TestTree" />
         </node>
       </node>
-      <node concept="37vLTG" id="36vIONTtRiC" role="3clF46">
-        <property role="TrG5h" value="statistics" />
-        <node concept="3uibUv" id="36vIONTtRiD" role="1tU5fm">
-          <ref role="3uigEE" node="36vIONTtQD6" resolve="StatisticsTableModel" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="36vIONTtRiE" role="3clF46">
-        <property role="TrG5h" value="outputComponent" />
-        <node concept="3uibUv" id="36vIONTtRiF" role="1tU5fm">
-          <ref role="3uigEE" node="36vIONTtQaI" resolve="TestOutputContainer" />
-        </node>
-      </node>
       <node concept="3cqZAl" id="36vIONTtRiG" role="3clF45" />
       <node concept="3Tm1VV" id="36vIONTtRiH" role="1B3o_S" />
       <node concept="3clFbS" id="36vIONTtRiI" role="3clF47">
-        <node concept="3clFbF" id="36vIONTtRiJ" role="3cqZAp">
-          <node concept="37vLTI" id="36vIONTtRiK" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxgmLrz" role="37vLTx">
-              <ref role="3cqZAo" node="36vIONTtRiC" resolve="statistics" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxeujZ6" role="37vLTJ">
-              <ref role="3cqZAo" node="36vIONTtRir" resolve="myStatisticsModel" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="36vIONTtRiP" role="3cqZAp">
-          <node concept="37vLTI" id="36vIONTtRiQ" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxgkWrW" role="37vLTx">
-              <ref role="3cqZAo" node="36vIONTtRiE" resolve="outputComponent" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxeuDiU" role="37vLTJ">
-              <ref role="3cqZAo" node="36vIONTtRiu" resolve="myOutputComponent" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="36vIONTtRiV" role="3cqZAp">
           <node concept="37vLTI" id="36vIONTtRiW" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxgmjRd" role="37vLTx">
@@ -14097,28 +14026,6 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="36vIONTtRjo" role="3cqZAp">
-          <node concept="2OqwBi" id="36vIONTtRjp" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuQcd" role="2Oq$k0">
-              <ref role="3cqZAo" node="36vIONTtRiu" resolve="myOutputComponent" />
-            </node>
-            <node concept="liA8E" id="36vIONTtRjt" role="2OqNvi">
-              <ref role="37wK5l" node="36vIONTtQoP" resolve="setFilter" />
-              <node concept="10Nm6u" id="36vIONTtRju" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="36vIONTtRjw" role="3cqZAp">
-          <node concept="2OqwBi" id="36vIONTtRjx" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuQv0" role="2Oq$k0">
-              <ref role="3cqZAo" node="36vIONTtRir" resolve="myStatisticsModel" />
-            </node>
-            <node concept="liA8E" id="36vIONTtRj_" role="2OqNvi">
-              <ref role="37wK5l" node="36vIONTtQJV" resolve="setFilter" />
-              <node concept="10Nm6u" id="36vIONTtRjA" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -15247,9 +15154,6 @@
               <node concept="2ShNRf" id="7dV9$tm6IUx" role="37wK5m">
                 <node concept="1pGfFk" id="7dV9$tm6IUy" role="2ShVmc">
                   <ref role="37wK5l" node="36vIONTtRgp" resolve="TestTreeSelectionListener" />
-                  <node concept="37vLTw" id="2BHiRxeun7b" role="37wK5m">
-                    <ref role="3cqZAo" node="7dV9$tm6ISV" resolve="myTreeComponent" />
-                  </node>
                   <node concept="37vLTw" id="1XbiPVzGmYr" role="37wK5m">
                     <ref role="3cqZAo" node="1XbiPVzGatE" resolve="myStatisticsModel" />
                   </node>
@@ -15276,12 +15180,6 @@
                   <ref role="37wK5l" node="36vIONTtRi_" resolve="TestTreeRootMouseListener" />
                   <node concept="37vLTw" id="2BHiRxeuKkC" role="37wK5m">
                     <ref role="3cqZAo" node="7dV9$tm6ISV" resolve="myTreeComponent" />
-                  </node>
-                  <node concept="37vLTw" id="1XbiPVzGoe4" role="37wK5m">
-                    <ref role="3cqZAo" node="1XbiPVzGatE" resolve="myStatisticsModel" />
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxeudBF" role="37wK5m">
-                    <ref role="3cqZAo" node="7dV9$tm6ISS" resolve="myTestOutputContainer" />
                   </node>
                 </node>
               </node>
