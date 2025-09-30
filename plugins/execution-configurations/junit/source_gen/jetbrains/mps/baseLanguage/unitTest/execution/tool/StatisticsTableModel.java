@@ -16,11 +16,9 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.TestStateListener;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.event.TableModelEvent;
@@ -37,7 +35,7 @@ public class StatisticsTableModel implements TableModel {
 
   public StatisticsTableModel(TestRunState state) {
     myState = state;
-    initFromTests(state.getTestsMap());
+    initFromTests(state);
     myTestStateListener = new TestStateListener() {
       @Override
       public void onTestStart(TestNodeEvent event) {
@@ -88,13 +86,8 @@ public class StatisticsTableModel implements TableModel {
 
       @Override
       public void onTermination(TerminationTestEvent event) {
-        {
-          Iterator<TestMethodNodeKey> notRunTest_it = ListSequence.fromList(event.getNotRanTests()).iterator();
-          TestMethodNodeKey notRunTest_var;
-          while (notRunTest_it.hasNext()) {
-            notRunTest_var = notRunTest_it.next();
-            onLooseTest(notRunTest_var, event.isTerminatedCorrectly());
-          }
+        for (TestMethodNodeKey notRunTest : ListSequence.fromList(event.getNotRanTests())) {
+          onLooseTest(notRunTest, event.isTerminatedCorrectly());
         }
       }
 
@@ -116,20 +109,20 @@ public class StatisticsTableModel implements TableModel {
     myState.removeListener(myTestStateListener);
   }
 
-  private void initFromTests(Map<ITestNodeWrapper, List<ITestNodeWrapper>> tests) {
+  private void initFromTests(TestRunState testSession) {
+
     myRows = ListSequence.fromList(new ArrayList<TestStatisticsRow>());
     TotalRow totalRow = new TotalRow();
     ListSequence.fromList(myRows).addElement(totalRow);
     MapSequence.fromMap(myNodeKey2RowMap).clear();
-    for (ITestNodeWrapper testCase : SetSequence.fromSet(MapSequence.fromMap(tests).keySet())) {
-      TestCaseNodeKey testCaseKey = new TestCaseNodeKey(testCase);
+    for (ITestNodeWrapper testCase : SetSequence.fromSet(MapSequence.fromMap(testSession.getTestsMap()).keySet())) {
+      TestNodeKey testCaseKey = testSession.keyForTest(testCase);
       TestCaseRow testCaseRow = new TestCaseRow(testCaseKey);
       totalRow.addRow(testCaseRow);
       ListSequence.fromList(myRows).addElement(testCaseRow);
       MapSequence.fromMap(myNodeKey2RowMap).put(testCaseKey, testCaseRow);
-      for (ITestNodeWrapper testMethod : ListSequence.fromList(MapSequence.fromMap(tests).get(testCase))) {
-        TestMethodNodeKey methodKey = new TestMethodNodeKey(testMethod);
-        TestMethodRow testMethodRow = new TestMethodRow(methodKey);
+      for (TestNodeKey methodKey : ListSequence.fromList(testSession.childrenOf(testCaseKey))) {
+        TestMethodRow testMethodRow = new TestMethodRow((TestMethodNodeKey) methodKey);
         testCaseRow.addRow(testMethodRow);
         ListSequence.fromList(myRows).addElement(testMethodRow);
         MapSequence.fromMap(myNodeKey2RowMap).put(methodKey, testMethodRow);

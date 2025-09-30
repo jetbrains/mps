@@ -19,7 +19,7 @@ public final class TestNodeEvent {
   private final TestNodeKey myTestNodeKey;
   private final TestRawEvent myRawEvent;
 
-  public TestNodeEvent(@NotNull TestRawEvent rawEvent, TestNodeKey nodeKey) {
+  public TestNodeEvent(@NotNull TestRawEvent rawEvent, @NotNull TestNodeKey nodeKey) {
     myTestNodeKey = nodeKey;
     myRawEvent = rawEvent;
   }
@@ -53,13 +53,7 @@ public final class TestNodeEvent {
 
   @NotNull
   public TestType getTestType() {
-    if (myTestNodeKey instanceof TestCaseNodeKey) {
-      return TestType.TESTCASE;
-    } else if (myTestNodeKey instanceof TestMethodNodeKey) {
-      return TestType.METHOD;
-    }
-    assert false;
-    return null;
+    return myTestNodeKey.getType();
   }
 
   public boolean isTestCaseEvent() {

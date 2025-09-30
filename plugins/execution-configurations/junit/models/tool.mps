@@ -481,14 +481,6 @@
       <concept id="1165595910856" name="jetbrains.mps.baseLanguage.collections.structure.GetLastOperation" flags="nn" index="1yVyf7" />
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
-      <concept id="9042586985346099698" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachStatement" flags="nn" index="1_o_46">
-        <child id="9042586985346099734" name="forEach" index="1_o_by" />
-      </concept>
-      <concept id="9042586985346099733" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachPair" flags="ng" index="1_o_bx">
-        <child id="9042586985346099778" name="variable" index="1_o_aQ" />
-        <child id="9042586985346099735" name="input" index="1_o_bz" />
-      </concept>
-      <concept id="9042586985346099736" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable" flags="ng" index="1_o_bG" />
       <concept id="1240824834947" name="jetbrains.mps.baseLanguage.collections.structure.ValueAccessOperation" flags="nn" index="3AV6Ez" />
       <concept id="1240825616499" name="jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation" flags="nn" index="3AY5_j" />
       <concept id="1197932370469" name="jetbrains.mps.baseLanguage.collections.structure.MapElement" flags="nn" index="3EllGN">
@@ -496,9 +488,6 @@
         <child id="1197932525128" name="key" index="3ElVtu" />
       </concept>
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
-      <concept id="8293956702609956630" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariableReference" flags="nn" index="3M$PaV">
-        <reference id="8293956702609966325" name="variable" index="3M$S_o" />
-      </concept>
       <concept id="1522217801069396578" name="jetbrains.mps.baseLanguage.collections.structure.FoldLeftOperation" flags="nn" index="1MD8d$">
         <child id="1522217801069421796" name="seed" index="1MDeny" />
       </concept>
@@ -10180,13 +10169,8 @@
         <node concept="3clFbF" id="1KUoCipvx8Z" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyyZZG" role="3clFbG">
             <ref role="37wK5l" node="36vIONTtQHd" resolve="initFromTests" />
-            <node concept="2OqwBi" id="1KUoCipvx91" role="37wK5m">
-              <node concept="37vLTw" id="2BHiRxgm6aL" role="2Oq$k0">
-                <ref role="3cqZAo" node="36vIONTtQGm" resolve="state" />
-              </node>
-              <node concept="liA8E" id="1KUoCipvx93" role="2OqNvi">
-                <ref role="37wK5l" to="sfqd:56tRMpP_fho" resolve="getTestsMap" />
-              </node>
+            <node concept="37vLTw" id="2BHiRxgm6aL" role="37wK5m">
+              <ref role="3cqZAo" node="36vIONTtQGm" resolve="state" />
             </node>
           </node>
         </node>
@@ -10584,37 +10568,35 @@
                     <node concept="3Tm1VV" id="2ZbjobgIV0b" role="1B3o_S" />
                     <node concept="3cqZAl" id="2ZbjobgIV0c" role="3clF45" />
                     <node concept="3clFbS" id="2ZbjobgIV0e" role="3clF47">
-                      <node concept="1_o_46" id="2ZbjobgIW74" role="3cqZAp">
-                        <node concept="1_o_bx" id="2ZbjobgIW75" role="1_o_by">
-                          <node concept="1_o_bG" id="2ZbjobgIW76" role="1_o_aQ">
-                            <property role="TrG5h" value="notRunTest" />
-                          </node>
-                          <node concept="2OqwBi" id="2ZbjobgJ3DA" role="1_o_bz">
-                            <node concept="37vLTw" id="2ZbjobgJ3f2" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2ZbjobgIWZ1" resolve="event" />
-                            </node>
-                            <node concept="liA8E" id="2ZbjobgJ3RY" role="2OqNvi">
-                              <ref role="37wK5l" to="tpnd:2ZbjobgnMbS" resolve="getNotRanTests" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3clFbS" id="2ZbjobgIW78" role="2LFqv$">
-                          <node concept="3clFbF" id="2ZbjobgJi_f" role="3cqZAp">
-                            <node concept="1rXfSq" id="2ZbjobgJi_e" role="3clFbG">
+                      <node concept="2Gpval" id="79O$Sm$VCX9" role="3cqZAp">
+                        <node concept="3clFbS" id="79O$Sm$VCXg" role="2LFqv$">
+                          <node concept="3clFbF" id="79O$Sm$VCXh" role="3cqZAp">
+                            <node concept="1rXfSq" id="79O$Sm$VCXi" role="3clFbG">
                               <ref role="37wK5l" node="36vIONTtQFV" resolve="onLooseTest" />
-                              <node concept="3M$PaV" id="2ZbjobgJiVR" role="37wK5m">
-                                <ref role="3M$S_o" node="2ZbjobgIW76" resolve="notRunTest" />
+                              <node concept="2GrUjf" id="79O$Sm$VCXo" role="37wK5m">
+                                <ref role="2Gs0qQ" node="79O$Sm$VCXn" resolve="notRunTest" />
                               </node>
-                              <node concept="2OqwBi" id="2ZbjobgJjHq" role="37wK5m">
-                                <node concept="37vLTw" id="2ZbjobgJjk6" role="2Oq$k0">
+                              <node concept="2OqwBi" id="79O$Sm$VCXk" role="37wK5m">
+                                <node concept="37vLTw" id="79O$Sm$VCXl" role="2Oq$k0">
                                   <ref role="3cqZAo" node="2ZbjobgIWZ1" resolve="event" />
                                 </node>
-                                <node concept="liA8E" id="2ZbjobgJjVR" role="2OqNvi">
+                                <node concept="liA8E" id="79O$Sm$VCXm" role="2OqNvi">
                                   <ref role="37wK5l" to="tpnd:2ZbjobgnMfY" resolve="isTerminatedCorrectly" />
                                 </node>
                               </node>
                             </node>
                           </node>
+                        </node>
+                        <node concept="2OqwBi" id="79O$Sm$VCXd" role="2GsD0m">
+                          <node concept="37vLTw" id="79O$Sm$VCXe" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2ZbjobgIWZ1" resolve="event" />
+                          </node>
+                          <node concept="liA8E" id="79O$Sm$VCXf" role="2OqNvi">
+                            <ref role="37wK5l" to="tpnd:2ZbjobgnMbS" resolve="getNotRanTests" />
+                          </node>
+                        </node>
+                        <node concept="2GrKxI" id="79O$Sm$VCXn" role="2Gsz3X">
+                          <property role="TrG5h" value="notRunTest" />
                         </node>
                       </node>
                     </node>
@@ -10753,6 +10735,7 @@
       <node concept="3cqZAl" id="36vIONTtQHe" role="3clF45" />
       <node concept="3Tm6S6" id="36vIONTtQHf" role="1B3o_S" />
       <node concept="3clFbS" id="36vIONTtQHg" role="3clF47">
+        <node concept="3clFbH" id="79O$Sm$UloI" role="3cqZAp" />
         <node concept="3clFbF" id="36vIONTtQHh" role="3cqZAp">
           <node concept="37vLTI" id="36vIONTtQHi" role="3clFbG">
             <node concept="2ShNRf" id="36vIONTtQHj" role="37vLTx">
@@ -10805,8 +10788,13 @@
             <property role="TrG5h" value="testCase" />
           </node>
           <node concept="2OqwBi" id="36vIONTtQHH" role="2GsD0m">
-            <node concept="37vLTw" id="2BHiRxgm7Zp" role="2Oq$k0">
-              <ref role="3cqZAo" node="36vIONTtQIK" resolve="tests" />
+            <node concept="2OqwBi" id="79O$Sm$UA1n" role="2Oq$k0">
+              <node concept="37vLTw" id="2BHiRxgm7Zp" role="2Oq$k0">
+                <ref role="3cqZAo" node="79O$Sm$UoB8" resolve="testSession" />
+              </node>
+              <node concept="liA8E" id="79O$Sm$UBzG" role="2OqNvi">
+                <ref role="37wK5l" to="sfqd:56tRMpP_fho" resolve="getTestsMap" />
+              </node>
             </node>
             <node concept="3lbrtF" id="36vIONTtQHJ" role="2OqNvi" />
           </node>
@@ -10815,12 +10803,15 @@
               <node concept="3cpWsn" id="2ZbjobgJJf7" role="3cpWs9">
                 <property role="TrG5h" value="testCaseKey" />
                 <node concept="3uibUv" id="2ZbjobgJJeG" role="1tU5fm">
-                  <ref role="3uigEE" to="tpnd:2ZbjobgtRG2" resolve="TestCaseNodeKey" />
+                  <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
                 </node>
-                <node concept="2ShNRf" id="2ZbjobgJJf8" role="33vP2m">
-                  <node concept="1pGfFk" id="2ZbjobgJJf9" role="2ShVmc">
-                    <ref role="37wK5l" to="tpnd:2ZbjobgtRG7" resolve="TestCaseNodeKey" />
-                    <node concept="2GrUjf" id="2ZbjobgJJfa" role="37wK5m">
+                <node concept="2OqwBi" id="79O$Sm$UG$r" role="33vP2m">
+                  <node concept="37vLTw" id="79O$Sm$UFjQ" role="2Oq$k0">
+                    <ref role="3cqZAo" node="79O$Sm$UoB8" resolve="testSession" />
+                  </node>
+                  <node concept="liA8E" id="79O$Sm$UHLh" role="2OqNvi">
+                    <ref role="37wK5l" to="sfqd:79O$Sm$rNNv" resolve="keyForTest" />
+                    <node concept="2GrUjf" id="79O$Sm$UKQI" role="37wK5m">
                       <ref role="2Gs0qQ" node="36vIONTtQHG" resolve="testCase" />
                     </node>
                   </node>
@@ -10885,25 +10876,9 @@
             </node>
             <node concept="2Gpval" id="36vIONTtQIb" role="3cqZAp">
               <node concept="2GrKxI" id="36vIONTtQIc" role="2Gsz3X">
-                <property role="TrG5h" value="testMethod" />
+                <property role="TrG5h" value="methodKey" />
               </node>
               <node concept="3clFbS" id="36vIONTtQId" role="2LFqv$">
-                <node concept="3cpWs8" id="2ZbjobgJJJ$" role="3cqZAp">
-                  <node concept="3cpWsn" id="2ZbjobgJJJ_" role="3cpWs9">
-                    <property role="TrG5h" value="methodKey" />
-                    <node concept="3uibUv" id="2ZbjobgJJIm" role="1tU5fm">
-                      <ref role="3uigEE" to="tpnd:2ZbjobgtRHn" resolve="TestMethodNodeKey" />
-                    </node>
-                    <node concept="2ShNRf" id="2ZbjobgJJJA" role="33vP2m">
-                      <node concept="1pGfFk" id="2ZbjobgJJJB" role="2ShVmc">
-                        <ref role="37wK5l" to="tpnd:2ZbjobgtRHv" resolve="TestMethodNodeKey" />
-                        <node concept="2GrUjf" id="2ZbjobgJJJC" role="37wK5m">
-                          <ref role="2Gs0qQ" node="36vIONTtQIc" resolve="testMethod" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="3cpWs8" id="36vIONTtQIe" role="3cqZAp">
                   <node concept="3cpWsn" id="36vIONTtQIf" role="3cpWs9">
                     <property role="TrG5h" value="testMethodRow" />
@@ -10913,8 +10888,13 @@
                     <node concept="2ShNRf" id="36vIONTtQIh" role="33vP2m">
                       <node concept="1pGfFk" id="36vIONTtQIi" role="2ShVmc">
                         <ref role="37wK5l" node="36vIONTtQS8" resolve="TestMethodRow" />
-                        <node concept="37vLTw" id="2ZbjobgJJJD" role="37wK5m">
-                          <ref role="3cqZAo" node="2ZbjobgJJJ_" resolve="methodKey" />
+                        <node concept="10QFUN" id="79O$Sm$ViS9" role="37wK5m">
+                          <node concept="3uibUv" id="79O$Sm$Vlm1" role="10QFUM">
+                            <ref role="3uigEE" to="tpnd:2ZbjobgtRHn" resolve="TestMethodNodeKey" />
+                          </node>
+                          <node concept="2GrUjf" id="79O$Sm$VbIk" role="10QFUP">
+                            <ref role="2Gs0qQ" node="36vIONTtQIc" resolve="methodKey" />
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -10951,8 +10931,8 @@
                       <ref role="3cqZAo" node="36vIONTtQIf" resolve="testMethodRow" />
                     </node>
                     <node concept="3EllGN" id="2ZbjobgJFlP" role="37vLTJ">
-                      <node concept="37vLTw" id="2ZbjobgJKga" role="3ElVtu">
-                        <ref role="3cqZAo" node="2ZbjobgJJJ_" resolve="methodKey" />
+                      <node concept="2GrUjf" id="79O$Sm$Vn6e" role="3ElVtu">
+                        <ref role="2Gs0qQ" node="36vIONTtQIc" resolve="methodKey" />
                       </node>
                       <node concept="37vLTw" id="2BHiRxeukwc" role="3ElQJh">
                         <ref role="3cqZAo" node="36vIONTtQGZ" resolve="myNodeKey2RowMap" />
@@ -10961,12 +10941,15 @@
                   </node>
                 </node>
               </node>
-              <node concept="3EllGN" id="36vIONTtQID" role="2GsD0m">
-                <node concept="2GrUjf" id="36vIONTtQIE" role="3ElVtu">
-                  <ref role="2Gs0qQ" node="36vIONTtQHG" resolve="testCase" />
+              <node concept="2OqwBi" id="79O$Sm$UUMd" role="2GsD0m">
+                <node concept="37vLTw" id="79O$Sm$UTtN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="79O$Sm$UoB8" resolve="testSession" />
                 </node>
-                <node concept="37vLTw" id="2BHiRxgld_t" role="3ElQJh">
-                  <ref role="3cqZAo" node="36vIONTtQIK" resolve="tests" />
+                <node concept="liA8E" id="79O$Sm$UVVE" role="2OqNvi">
+                  <ref role="37wK5l" to="sfqd:79O$Sm$K1FJ" resolve="childrenOf" />
+                  <node concept="37vLTw" id="79O$Sm$UZ8Q" role="37wK5m">
+                    <ref role="3cqZAo" node="2ZbjobgJJf7" resolve="testCaseKey" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -10978,17 +10961,10 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="36vIONTtQIK" role="3clF46">
-        <property role="TrG5h" value="tests" />
-        <node concept="3rvAFt" id="36vIONTtQIL" role="1tU5fm">
-          <node concept="3uibUv" id="36vIONTtQIM" role="3rvQeY">
-            <ref role="3uigEE" to="sfqd:56tRMpP_ej7" resolve="ITestNodeWrapper" />
-          </node>
-          <node concept="_YKpA" id="36vIONTtQIN" role="3rvSg0">
-            <node concept="3uibUv" id="36vIONTtQIO" role="_ZDj9">
-              <ref role="3uigEE" to="sfqd:56tRMpP_ej7" resolve="ITestNodeWrapper" />
-            </node>
-          </node>
+      <node concept="37vLTG" id="79O$Sm$UoB8" role="3clF46">
+        <property role="TrG5h" value="testSession" />
+        <node concept="3uibUv" id="79O$Sm$UoB7" role="1tU5fm">
+          <ref role="3uigEE" to="sfqd:56tRMpP_f5M" resolve="TestRunState" />
         </node>
       </node>
     </node>
@@ -13574,7 +13550,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="36vIONTtR1V" role="1B3o_S" />
       <node concept="3uibUv" id="2ZbjobgHNG0" role="1tU5fm">
-        <ref role="3uigEE" to="tpnd:2ZbjobgtRG2" resolve="TestCaseNodeKey" />
+        <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
       </node>
     </node>
     <node concept="2tJIrI" id="2ZbjobgHxa7" role="jymVt" />
@@ -13589,7 +13565,7 @@
               <ref role="3cqZAo" node="36vIONTtR2k" resolve="key" />
             </node>
             <node concept="liA8E" id="36vIONTtR24" role="2OqNvi">
-              <ref role="37wK5l" to="tpnd:2ZbjobgtRGj" resolve="getTestCaseFqName" />
+              <ref role="37wK5l" to="lxc5:2ZbjobgruKR" resolve="getTestCaseFqName" />
             </node>
           </node>
           <node concept="2OqwBi" id="6cEFRXIyEmJ" role="37wK5m">
@@ -13607,7 +13583,7 @@
                       <ref role="3cqZAo" node="36vIONTtR2k" resolve="key" />
                     </node>
                     <node concept="liA8E" id="2ZbjobgHOYh" role="2OqNvi">
-                      <ref role="37wK5l" to="tpnd:2ZbjobgtZz3" resolve="getNode" />
+                      <ref role="37wK5l" to="tpnd:2ZbjobgtRJJ" resolve="getNode" />
                     </node>
                   </node>
                   <node concept="liA8E" id="6cEFRXIyEmQ" role="2OqNvi">
@@ -13635,7 +13611,7 @@
       <node concept="37vLTG" id="36vIONTtR2k" role="3clF46">
         <property role="TrG5h" value="key" />
         <node concept="3uibUv" id="2ZbjobgHNO1" role="1tU5fm">
-          <ref role="3uigEE" to="tpnd:2ZbjobgtRG2" resolve="TestCaseNodeKey" />
+          <ref role="3uigEE" to="tpnd:2ZbjobgtRJf" resolve="TestNodeKey" />
         </node>
         <node concept="2AHcQZ" id="2ZbjobgHRtr" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />

@@ -78,6 +78,7 @@ public final class TestRunState {
     }
     for (ITestNodeWrapper testCase : MapSequence.fromMap(myTestCase2MethodsMap).keySet()) {
       for (ITestNodeWrapper testMethod : getMethodsForTestCase(testCase)) {
+        // XXX can't use keyForTest() here as this method runs from inside cons, when myConverter hasn't been initialized yet
         ListSequence.fromList(myInnerData.myTestMethodsLeftToRun).addElement(new TestMethodNodeKey(testMethod));
       }
     }
