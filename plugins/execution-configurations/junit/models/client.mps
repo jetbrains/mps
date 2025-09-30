@@ -3238,6 +3238,11 @@
           <property role="1dT_AB" value="probable fix: store the state for each test here (not in TestTree for instance), since we use the state notion at least in TestTree, TestProgressLine (and TestStatisticsTable)" />
         </node>
       </node>
+      <node concept="TZ5HA" id="79O$Sm$jLJl" role="TZ5H$">
+        <node concept="1dT_AC" id="79O$Sm$jLJm" role="1dT_Ay">
+          <property role="1dT_AB" value="XXX ^^^ this is very confusing now, as TestTreeNode.getState() is in use along with TestRunState in BaseMPSTestProxy" />
+        </node>
+      </node>
     </node>
     <node concept="2AHcQZ" id="1XbiPVzrszh" role="2AJF6D">
       <ref role="2AI5Lk" to="lhc4:~Mutable" resolve="Mutable" />

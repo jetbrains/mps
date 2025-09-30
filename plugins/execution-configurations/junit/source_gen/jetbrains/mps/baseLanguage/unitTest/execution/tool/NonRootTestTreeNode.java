@@ -17,7 +17,9 @@ public abstract class NonRootTestTreeNode extends TestTreeNode {
     myNodePointer = test.getNodePointer();
     // XXX why do we care about UO when there's getTestNode() we use anyway
     setUserObject(test);
-    setNodeIdentifier(myNodePointer.toString());
+    // we use nodeIdentifier of a tree element in BaseMPSTestProxy subclasses for #getLocationUrl(),
+    // which seem to serve the only purpose to copy string representation of a test into clipboard
+    setNodeIdentifier(test.getFqName());
     setText(test.getName());
   }
 

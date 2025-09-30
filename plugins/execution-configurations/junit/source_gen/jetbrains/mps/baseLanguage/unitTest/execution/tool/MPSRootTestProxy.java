@@ -4,12 +4,14 @@ package jetbrains.mps.baseLanguage.unitTest.execution.tool;
 
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
-import java.util.function.Supplier;
 import org.jetbrains.annotations.Nullable;
 
 public class MPSRootTestProxy extends BaseMPSTestProxy {
-  public MPSRootTestProxy(@NotNull TestRunState runState, @NotNull Supplier<TestState> currentState) {
-    super(runState, currentState);
+  private final RootTestTreeNode myTreeNode;
+
+  public MPSRootTestProxy(@NotNull RootTestTreeNode treeNode, @NotNull TestRunState runState) {
+    super(runState);
+    myTreeNode = treeNode;
   }
 
   @Override
@@ -21,5 +23,11 @@ public class MPSRootTestProxy extends BaseMPSTestProxy {
   @Override
   public String getLocationUrl() {
     return "<ROOT>";
+  }
+
+
+  @Override
+  protected TestState getState() {
+    return myTreeNode.getState();
   }
 }

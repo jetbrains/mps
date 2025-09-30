@@ -37,6 +37,7 @@ import org.jetbrains.annotations.TestOnly;
  * fix mutability by implementing TestStateListener in all listeners
  * 
  * probable fix: store the state for each test here (not in TestTree for instance), since we use the state notion at least in TestTree, TestProgressLine (and TestStatisticsTable)
+ * XXX ^^^ this is very confusing now, as TestTreeNode.getState() is in use along with TestRunState in BaseMPSTestProxy
  */
 @Mutable
 public final class TestRunState {

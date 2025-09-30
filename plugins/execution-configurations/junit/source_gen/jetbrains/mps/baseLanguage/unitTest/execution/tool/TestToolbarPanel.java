@@ -14,7 +14,6 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.execution.testframework.export.ExportTestResultsAction;
-import java.util.function.Supplier;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.icons.AllIcons;
@@ -78,12 +77,7 @@ public class TestToolbarPanel extends JPanel {
 
   private MPSRootTestProxy buildIJTree() {
     final RootTestTreeNode mpsRootTreeNode = myTree.getRoot();
-    MPSRootTestProxy root = new MPSRootTestProxy(myTestState, new Supplier<TestState>() {
-      @Override
-      public TestState get() {
-        return mpsRootTreeNode.getState();
-      }
-    });
+    MPSRootTestProxy root = new MPSRootTestProxy(mpsRootTreeNode, myTestState);
     for (MPSTreeNode testCase : mpsRootTreeNode.getChildren()) {
       doTestCase(root, testCase);
     }
@@ -93,12 +87,7 @@ public class TestToolbarPanel extends JPanel {
   private void doTestCase(MPSRootTestProxy root, MPSTreeNode testCase) {
     assert testCase instanceof TestCaseTreeNode;
     final TestCaseTreeNode mpsTestCaseTreeNode = (TestCaseTreeNode) testCase;
-    MPSClassTestProxy classTestProxy = new MPSClassTestProxy(mpsTestCaseTreeNode.getTestNode(), myTestState, new Supplier<TestState>() {
-      @Override
-      public TestState get() {
-        return mpsTestCaseTreeNode.getState();
-      }
-    });
+    MPSClassTestProxy classTestProxy = new MPSClassTestProxy(mpsTestCaseTreeNode, myTestState);
     root.addChild(classTestProxy);
     for (MPSTreeNode testMethod : mpsTestCaseTreeNode.getChildren()) {
       doMethod(classTestProxy, testMethod);
@@ -109,12 +98,7 @@ public class TestToolbarPanel extends JPanel {
     assert testMethod instanceof TestMethodTreeNode;
     final TestMethodTreeNode mpsTestMethodTreeNode = (TestMethodTreeNode) testMethod;
     assert (mpsTestMethodTreeNode.isLeaf());
-    classTestProxy.addChild(new MPSMethodTestProxy(mpsTestMethodTreeNode.getTestNode(), myTestState, new Supplier<TestState>() {
-      @Override
-      public TestState get() {
-        return mpsTestMethodTreeNode.getState();
-      }
-    }));
+    classTestProxy.addChild(new MPSMethodTestProxy(mpsTestMethodTreeNode, myTestState));
   }
 
   private ToggleAction createHidePassedAction() {

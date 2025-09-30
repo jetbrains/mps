@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.unitTest.execution.tool;
 
 import com.intellij.execution.testframework.AbstractTestProxy;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
-import java.util.function.Supplier;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
@@ -17,15 +16,17 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.testframework.TestConsoleProperties;
 
 public abstract class BaseMPSTestProxy extends AbstractTestProxy {
-  private final TestRunState myRunState;
-  private final Supplier<TestState> myState;
+  private final TestRunState myTestSession;
   private final List<BaseMPSTestProxy> myChildren = new ArrayList<BaseMPSTestProxy>();
   private BaseMPSTestProxy myParent = null;
 
-  public BaseMPSTestProxy(@NotNull TestRunState runState, @NotNull Supplier<TestState> state) {
-    myRunState = runState;
-    myState = state;
+  public BaseMPSTestProxy(@NotNull TestRunState runState) {
+    myTestSession = runState;
+    // XXX node, TestTree keeps state of a test and duplicates it in TestTreeNode, which instances
+    //    subclasses use to implement getState() method. Perhaps, can get a single point of TestState origin?
   }
+
+  protected abstract TestState getState();
 
   public final void addChild(@NotNull BaseMPSTestProxy proxy) {
     proxy.setParent(this);
@@ -61,7 +62,7 @@ public abstract class BaseMPSTestProxy extends AbstractTestProxy {
 
   @Override
   public final boolean isInterrupted() {
-    return new TestStateInfoAdapter(myState.get()).wasTerminated();
+    return new TestStateInfoAdapter(getState()).wasTerminated();
   }
 
   @Override
@@ -71,12 +72,12 @@ public abstract class BaseMPSTestProxy extends AbstractTestProxy {
 
   @Override
   public boolean isIgnored() {
-    return new TestStateInfoAdapter(myState.get()).getMagnitude() == TestStateInfo.Magnitude.IGNORED_INDEX;
+    return new TestStateInfoAdapter(getState()).getMagnitude() == TestStateInfo.Magnitude.IGNORED_INDEX;
   }
 
   @Override
   public int getMagnitude() {
-    return new TestStateInfoAdapter(myState.get()).getMagnitude().getValue();
+    return new TestStateInfoAdapter(getState()).getMagnitude().getValue();
   }
 
   @Override
@@ -96,12 +97,12 @@ public abstract class BaseMPSTestProxy extends AbstractTestProxy {
 
   @Override
   public final boolean isInProgress() {
-    return !(myRunState.isTerminated());
+    return !(myTestSession.isTerminated());
   }
 
   @Override
   public final boolean isPassed() {
-    return myState.get() == TestState.PASSED;
+    return getState() == TestState.PASSED;
   }
 
   @Override
