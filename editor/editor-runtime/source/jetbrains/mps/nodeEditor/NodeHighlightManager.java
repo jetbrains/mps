@@ -16,8 +16,8 @@
 package jetbrains.mps.nodeEditor;
 
 import com.intellij.util.containers.SortedList;
+import jetbrains.mps.editor.runtime.HighlightUsageEditorMessage;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
@@ -167,7 +167,11 @@ public class NodeHighlightManager implements EditorMessageOwner {
   }
 
   private void getMessagesFromDescendants(SNode nodeWithoutCell, List<SimpleEditorMessage> messages) {
-    messages.addAll(myMessagesToNodes.getBySecond(nodeWithoutCell));
+    for (SimpleEditorMessage simpleEditorMessage : myMessagesToNodes.getBySecond(nodeWithoutCell)) {
+      if (!(simpleEditorMessage instanceof HighlightUsageEditorMessage)) {
+        messages.add(simpleEditorMessage);
+      }
+    }
     for (SNode child : nodeWithoutCell.getChildren()) {
       EditorCell cellForChild = myEditor.findNodeCell(child);
       if (cellForChild == null) {

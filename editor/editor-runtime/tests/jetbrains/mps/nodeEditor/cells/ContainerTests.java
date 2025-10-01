@@ -337,6 +337,11 @@ public class ContainerTests<T> extends AbstractContainerParameterizedTest<T> {
     }
 
     @Override
+    public SNode getContextualNode() {
+      return null;
+    }
+
+    @Override
     public void putUserObject(Object key, Object value) {
       myUserObjects.put(key, value);
     }

@@ -152,12 +152,12 @@ public class HighlightUsagesSupport {
       SNode referenceNode = ref.getSourceNode();
       SNode referenceRoot = referenceNode.getContainingRoot();
       if (referenceRoot == editedRoot && referenceNode != selectedCellNode && hm.getMessagesFor(referenceNode, highlightMessagesOwner).isEmpty()) {
-        hm.mark(referenceNode, color, "usage", emo);
+        hm.mark(new HighlightUsageEditorMessage(nodeToHighlight, referenceNode, color, "usage", emo));
       }
     }
 
     if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot && hm.getMessagesFor(nodeToHighlight, highlightMessagesOwner).isEmpty()) {
-      hm.mark(nodeToHighlight, color, "usage", emo);
+      hm.mark(new HighlightUsageEditorMessage(nodeToHighlight, nodeToHighlight, color, "usage", emo));
     }
   }
 

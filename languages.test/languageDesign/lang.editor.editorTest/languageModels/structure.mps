@@ -2068,5 +2068,59 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
+  <node concept="1TIwiD" id="NoEJjOIP51">
+    <property role="EcuMT" value="925677692479295809" />
+    <property role="TrG5h" value="ETTransition" />
+    <property role="3GE5qa" value="stateMachine" />
+    <property role="34LRSv" value="testTransition" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3eZ5PbHfmdS" role="1TKVEi">
+      <property role="IQ2ns" value="3728724661421040504" />
+      <property role="20kJfa" value="from" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="NoEJjOIP52" resolve="ETState" />
+    </node>
+    <node concept="1TJgyj" id="3eZ5PbHfmdT" role="1TKVEi">
+      <property role="IQ2ns" value="3728724661421040505" />
+      <property role="20kJfa" value="to" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="NoEJjOIP52" resolve="ETState" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="NoEJjOIP52">
+    <property role="EcuMT" value="925677692479295810" />
+    <property role="3GE5qa" value="stateMachine" />
+    <property role="TrG5h" value="ETState" />
+    <property role="34LRSv" value="testState" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="NoEJjOKD$r" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="NoEJjOKD_f">
+    <property role="EcuMT" value="925677692479773007" />
+    <property role="3GE5qa" value="stateMachine" />
+    <property role="TrG5h" value="ETMachine" />
+    <property role="34LRSv" value="TestStateMachine" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="NoEJjOKD_g" role="1TKVEi">
+      <property role="IQ2ns" value="925677692479773008" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="states" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="NoEJjOIP52" resolve="ETState" />
+    </node>
+    <node concept="1TJgyj" id="NoEJjOKD_h" role="1TKVEi">
+      <property role="IQ2ns" value="925677692479773009" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="transitions" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="NoEJjOIP51" resolve="ETTransition" />
+    </node>
+    <node concept="PrWs8" id="NoEJjOKD_j" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
 </model>
 

@@ -93,6 +93,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   private EditorCell_Collection myParent = null;
   private SNode myNode;
   private SNodeId myNodeId;
+  private SNode myContextualNode;
   private SubstituteInfo mySubstituteInfo;
   private TransformationMenuLookup myTransformationMenuLookup;
   private final TIntObjectHashMap<CellAction> myActionMap = new TIntObjectHashMap<>();
@@ -122,6 +123,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   protected EditorCell_Basic(@NotNull EditorContext editorContext, SNode node) {
     myEditorContext = editorContext;
     myNode = node;
+    myContextualNode = node;
     myNodeId = node == null ? null : node.getNodeId();
   }
 
@@ -225,9 +227,20 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   }
 
   public final void setSNode(@NotNull SNode node) {
+    myContextualNode = node;
+    setSemanticNode(node);
+  }
+
+  public final void setSemanticNode(@NotNull SNode node) {
     myNode = node;
     myNodeId = node.getNodeId();
     updateCommandGroupId();
+  }
+
+  @Nullable
+  @Override
+  public SNode getContextualNode() {
+    return myContextualNode;
   }
 
   @NotNull
