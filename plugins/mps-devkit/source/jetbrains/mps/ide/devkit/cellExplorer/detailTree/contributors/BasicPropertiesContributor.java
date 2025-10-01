@@ -57,6 +57,12 @@ public class BasicPropertiesContributor implements CellTreeContributor {
         basicProperties.property(GlobalIconManager.getInstance().getIconFor(node), "node", toString(node));
       });
     }
+    SNode contextualNode = cell.getContextualNode();
+    if (contextualNode != null) {
+      cell.getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        basicProperties.property(GlobalIconManager.getInstance().getIconFor(contextualNode), "contextualNode", toString(contextualNode));
+      });
+    }
 
     basicProperties
         .property("id", cell.getCellId())

@@ -174,6 +174,15 @@
       <concept id="2399036385470202575" name="jetbrains.mps.lang.editor.editorTest.structure.ClassReference" flags="ng" index="3AuPgI">
         <reference id="2399036385470202794" name="class" index="3AuPlb" />
       </concept>
+      <concept id="925677692479773007" name="jetbrains.mps.lang.editor.editorTest.structure.ETMachine" flags="ng" index="3S6zeV">
+        <child id="925677692479773008" name="states" index="3S6ze$" />
+        <child id="925677692479773009" name="transitions" index="3S6ze_" />
+      </concept>
+      <concept id="925677692479295809" name="jetbrains.mps.lang.editor.editorTest.structure.ETTransition" flags="ng" index="3SoZIP">
+        <reference id="3728724661421040504" name="from" index="3uwBgE" />
+        <reference id="3728724661421040505" name="to" index="3uwBgF" />
+      </concept>
+      <concept id="925677692479295810" name="jetbrains.mps.lang.editor.editorTest.structure.ETState" flags="ng" index="3SoZIQ" />
     </language>
   </registry>
   <node concept="LiM7Y" id="1m4mhq0kl_$">
@@ -2484,6 +2493,25 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="3S6zeV" id="NoEJjOPVk8">
+    <property role="TrG5h" value="HighlightingTest" />
+    <node concept="3SoZIQ" id="NoEJjOPVk9" role="3S6ze$">
+      <property role="TrG5h" value="Alpha" />
+    </node>
+    <node concept="3SoZIQ" id="NoEJjOPVka" role="3S6ze$">
+      <property role="TrG5h" value="Beta" />
+    </node>
+    <node concept="3SoZIQ" id="NoEJjOPVkb" role="3S6ze$">
+      <property role="TrG5h" value="Gama" />
+    </node>
+    <node concept="3SoZIQ" id="NoEJjOPVkc" role="3S6ze$">
+      <property role="TrG5h" value="Delta" />
+    </node>
+    <node concept="3SoZIP" id="5sFEBjowUHF" role="3S6ze_">
+      <ref role="3uwBgE" node="NoEJjOPVk9" resolve="Alpha" />
+      <ref role="3uwBgF" node="NoEJjOPVka" resolve="Beta" />
     </node>
   </node>
 </model>

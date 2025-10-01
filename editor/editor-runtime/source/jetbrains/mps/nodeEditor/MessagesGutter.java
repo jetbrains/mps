@@ -29,6 +29,7 @@ import com.intellij.util.containers.SortedList;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
+import jetbrains.mps.editor.runtime.HighlightUsageEditorMessage;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -231,6 +232,9 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
           if (!GutterMark.isValid(message, myEditorComponent)) {
             continue;
           }
+          if (!isApplicable(message)) {
+            continue;
+          }
           msgBounds.setBounds(xx, calculateY(message, areaRatio), ww, calculateHeight(message, areaRatio));
           GutterMark mark = new GutterMark(message, adjustBounds(message, msgBounds));
 
@@ -266,6 +270,10 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
         }
       }
     });
+  }
+
+  private boolean isApplicable(SimpleEditorMessage message) {
+    return !(message instanceof HighlightUsageEditorMessage em) || em.acceptCell(em.getCellInBothWays(myEditorComponent), myEditorComponent);
   }
 
   private MergingUpdateQueue getUpdateQueue() {
@@ -459,10 +467,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       if (message == null || message.getColor() == null) {
         return false;
       }
-      if (message instanceof EditorMessage && !((EditorMessage) message).isValid(editorComponent)) {
-        return false;
-      }
-      return true;
+      return !(message instanceof EditorMessage) || ((EditorMessage) message).isValid(editorComponent);
     }
 
     GutterMark(SimpleEditorMessage message, Rectangle bounds) {

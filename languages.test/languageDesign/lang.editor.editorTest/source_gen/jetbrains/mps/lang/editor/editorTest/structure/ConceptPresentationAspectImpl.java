@@ -55,6 +55,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DeleteWrapperChild;
   private ConceptPresentation props_DeleteWrapperRoot;
   private ConceptPresentation props_DocumentationTestAttribute;
+  private ConceptPresentation props_ETMachine;
+  private ConceptPresentation props_ETState;
+  private ConceptPresentation props_ETTransition;
   private ConceptPresentation props_FactoryElement;
   private ConceptPresentation props_FactoryNode;
   private ConceptPresentation props_FactoryTop;
@@ -479,6 +482,27 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DocumentationTestAttribute = cpb.create();
         }
         return props_DocumentationTestAttribute;
+      case LanguageConceptSwitch.ETMachine:
+        if (props_ETMachine == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ETMachine = cpb.create();
+        }
+        return props_ETMachine;
+      case LanguageConceptSwitch.ETState:
+        if (props_ETState == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ETState = cpb.create();
+        }
+        return props_ETState;
+      case LanguageConceptSwitch.ETTransition:
+        if (props_ETTransition == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("testTransition");
+          props_ETTransition = cpb.create();
+        }
+        return props_ETTransition;
       case LanguageConceptSwitch.FactoryElement:
         if (props_FactoryElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
