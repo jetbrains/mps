@@ -388,8 +388,8 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="liA8E" id="2Zbjobgu00x" role="2OqNvi">
-                      <ref role="37wK5l" node="2ZbjobgtZz3" resolve="getNode" />
+                    <node concept="2OwXpG" id="71IvHYbMbPc" role="2OqNvi">
+                      <ref role="2Oxat5" node="2ZbjobgtZkt" resolve="myNode" />
                     </node>
                   </node>
                 </node>

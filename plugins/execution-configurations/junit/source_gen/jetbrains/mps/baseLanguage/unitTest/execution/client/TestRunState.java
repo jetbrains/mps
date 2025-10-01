@@ -14,11 +14,11 @@ import org.jetbrains.mps.annotations.Immutable;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
+import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
 import jetbrains.mps.baselanguage.unitTest.execution.TestRawEvent;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import org.jetbrains.mps.annotations.Internal;
 import jetbrains.mps.baseLanguage.unitTest.execution.TerminationTestEvent;
 import com.intellij.openapi.util.Key;
@@ -51,44 +51,38 @@ public final class TestRunState {
 
   private final String2NodeTestKeyConverter myConverter;
 
-  private final List<ITestNodeWrapper> myTestsWithProblems = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
+  private final List<TestNodeKey> myTestsWithProblems = ListSequence.fromList(new ArrayList<>());
 
   /**
    * to remove
    */
   private final TestRunData myInnerData = new TestRunData();
 
-  private void processTestCases(List<ITestNodeWrapper> tests) {
+
+  public TestRunState(@NotNull List<ITestNodeWrapper> tests) {
     for (ITestNodeWrapper testCase : ListSequence.fromList(tests).where((it) -> it.isTestCase())) {
       MapSequence.fromMap(myTestCase2MethodsMap).put(testCase, ListSequence.fromListWithValues(new ArrayList<ITestNodeWrapper>(), testCase.getTestMethods()));
     }
-  }
-
-  private void processTestMethods(List<ITestNodeWrapper> tests) {
     for (ITestNodeWrapper testMethod : ListSequence.fromList(tests).where((it) -> !(it.isTestCase()))) {
       ITestNodeWrapper enclosingTestCase = testMethod.getTestCase();
-      List<ITestNodeWrapper> currentTestMethods = getMethodsForTestCase(enclosingTestCase);
+      List<ITestNodeWrapper> currentTestMethods = MapSequence.fromMap(myTestCase2MethodsMap).get(enclosingTestCase);
       if (currentTestMethods == null) {
         currentTestMethods = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
+        MapSequence.fromMap(myTestCase2MethodsMap).put(enclosingTestCase, currentTestMethods);
       }
       if (!(ListSequence.fromList(currentTestMethods).contains(testMethod))) {
         ListSequence.fromList(currentTestMethods).addElement(testMethod);
       }
-      MapSequence.fromMap(myTestCase2MethodsMap).put(enclosingTestCase, currentTestMethods);
     }
+    myConverter = new String2NodeTestKeyConverter(myTestCase2MethodsMap);
     for (ITestNodeWrapper testCase : MapSequence.fromMap(myTestCase2MethodsMap).keySet()) {
-      for (ITestNodeWrapper testMethod : getMethodsForTestCase(testCase)) {
-        // XXX can't use keyForTest() here as this method runs from inside cons, when myConverter hasn't been initialized yet
-        ListSequence.fromList(myInnerData.myTestMethodsLeftToRun).addElement(new TestMethodNodeKey(testMethod));
+      for (ITestNodeWrapper testMethod : MapSequence.fromMap(myTestCase2MethodsMap).get(testCase)) {
+        // == keyForTest(), just don't want to use public method from within a cons
+        // FIXME remove cast, revisit myTestMethodsLeftToRun (do we need to keep track of these?
+        ListSequence.fromList(myInnerData.myTestMethodsLeftToRun).addElement((TestMethodNodeKey) myConverter.reverseLookup(testMethod));
       }
     }
-  }
-
-  public TestRunState(@NotNull List<ITestNodeWrapper> tests) {
-    processTestCases(tests);
-    processTestMethods(tests);
     myInnerData.myTotalTests = ListSequence.fromList(myInnerData.myTestMethodsLeftToRun).count();
-    myConverter = new String2NodeTestKeyConverter(myTestCase2MethodsMap);
   }
 
   private void notifyUpdateListeners() {
@@ -162,7 +156,7 @@ public final class TestRunState {
    */
   private int getCurrentEventTestsCount(@NotNull TestNodeEvent nodeEvent) {
     if (nodeEvent.isTestCaseEvent()) {
-      return ListSequence.fromList(getMethodsForTestCase(nodeEvent.getTestKey().getNode())).count();
+      return ListSequence.fromList(childrenOf(nodeEvent.getTestKey())).count();
     } else {
       return 1;
     }
@@ -174,17 +168,17 @@ public final class TestRunState {
    * 
    * it is to be replaced with the honest state recording like we can see currently in the TestTree implementation
    */
-  private int getCurrentNotProblemTestsCount(@NotNull TestNodeEvent nodeEvent) {
-    ITestNodeWrapper node = nodeEvent.getTestKey().getNode();
-    if (ListSequence.fromList(myTestsWithProblems).contains(node)) {
+  private int getCurrentNotProblemTestsCount(@NotNull TestNodeEvent ignoredOrFailedEvent) {
+    TestNodeKey testKey = ignoredOrFailedEvent.getTestKey();
+    if (ListSequence.fromList(myTestsWithProblems).contains(testKey)) {
       return 0;
     }
-    ListSequence.fromList(myTestsWithProblems).addElement(node);
-    if (nodeEvent.isTestCaseEvent()) {
+    ListSequence.fromList(myTestsWithProblems).addElement(testKey);
+    if (ignoredOrFailedEvent.isTestCaseEvent()) {
       int result = 0;
-      for (ITestNodeWrapper method : ListSequence.fromList(getMethodsForTestCase(node))) {
+      for (TestNodeKey method : ListSequence.fromList(childrenOf(testKey))) {
         if (!(ListSequence.fromList(myTestsWithProblems).contains(method))) {
-          ListSequence.fromList(myTestsWithProblems).addElement(node);
+          ListSequence.fromList(myTestsWithProblems).addElement(method);
           ++result;
         }
       }
@@ -195,9 +189,6 @@ public final class TestRunState {
     }
   }
 
-  private List<ITestNodeWrapper> getMethodsForTestCase(ITestNodeWrapper node) {
-    return MapSequence.fromMap(myTestCase2MethodsMap).get(node);
-  }
 
   public void onTestIgnored(TestRawEvent event) {
     log("test ignored : ");
@@ -300,7 +291,7 @@ public final class TestRunState {
 
   public List<TestNodeKey> childrenOf(TestNodeKey test) {
     if (test instanceof TestCaseNodeKey) {
-      return ListSequence.fromList(getMethodsForTestCase(test.getNode())).select((it) -> keyForTest(it)).toList();
+      return ListSequence.fromList(MapSequence.fromMap(myTestCase2MethodsMap).get(test.getNode())).select((it) -> keyForTest(it)).toList();
     }
     return ListSequence.fromList(new LinkedList<>());
   }

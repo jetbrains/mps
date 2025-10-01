@@ -44,7 +44,7 @@ public final class TestCaseNodeKey implements TestNodeKey {
   @Override
   public boolean equals(Object object) {
     if (object instanceof TestCaseNodeKey) {
-      return myNode.equals(((TestCaseNodeKey) object).getNode());
+      return myNode.equals(((TestCaseNodeKey) object).myNode);
     }
     return false;
   }
