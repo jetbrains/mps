@@ -12,7 +12,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 
-@GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/1059163906024450461", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
+@GeneratedClass(nodeId = "1059163906024450461", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class HighlightUsageEditorMessage extends DefaultEditorMessage {
 
   private final SNode nodeAtCaret;
