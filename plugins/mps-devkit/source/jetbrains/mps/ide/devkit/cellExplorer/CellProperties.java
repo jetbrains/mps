@@ -20,6 +20,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -39,6 +40,8 @@ public class CellProperties {
   private final String myCellKind;
   private final String myCellText;
   private final Icon myIcon;
+  private final String myCellContextualNode;
+  private final Icon myContextualNodeIcon;
 
   public CellProperties(EditorCell cell) {
     if (cell instanceof EditorCell_Label) {
@@ -54,20 +57,35 @@ public class CellProperties {
     myCellID = cell.getCellId();
     myCellRole = "" + (cell.getSRole() == null ? "" : cell.getSRole().getName());
 
-    final SNode cellSNode = cell.getSNode();
-    if (cellSNode != null) {
-      String name = cellSNode.getName() != null ? cellSNode.getName() : "<no name>";
-      myCellSNode = String.format("%s (%s) [%s]", name, cellSNode.getConcept().getQualifiedName(), cellSNode.getNodeId());
-      myIcon = GlobalIconManager.getInstance().getIconFor(cellSNode);
-    } else {
-      myCellSNode = "no node";
-      myIcon = null;
-    }
+    Pair<String, Icon> p = computeLabelAndIcon(cell.getSNode());
+    myCellSNode = p.o1;
+    myIcon = p.o2;
+    Pair<String, Icon> q = computeLabelAndIcon(cell.getContextualNode());
+    myCellContextualNode = q.o1;
+    myContextualNodeIcon = q.o2;
+
     if (cell.getParent() != null) {
       myCellNumber = String.valueOf(IterableUtil.indexOf(cell.getParent(), cell));
     } else {
       myCellNumber = null;
     }
+  }
+
+  private Pair<String, Icon> computeLabelAndIcon(SNode node) {
+    if (node != null) {
+      String name = node.getName() != null ? node.getName() : "<no name>";
+      return new Pair<>(String.format("%s (%s) [%s]", name, node.getConcept().getQualifiedName(), node.getNodeId()), GlobalIconManager.getInstance().getIconFor(node));
+    } else {
+      return new Pair<>("no node", null);
+    }
+  }
+
+  public String getCellContextualNode() {
+    return myCellContextualNode;
+  }
+
+  public Icon getContextualNodeIcon() {
+    return myContextualNodeIcon;
   }
 
   public Icon getNodeIcon() {

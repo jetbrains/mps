@@ -119,7 +119,7 @@ public abstract class SReferenceCellProvider extends AbstractEditorBuilder imple
     if (!(rootCell instanceof EditorCell_Basic) || semanticNode == null) {
       return;
     }
-    ((EditorCell_Basic) rootCell).setSNode(semanticNode);
+    ((EditorCell_Basic) rootCell).setSemanticNode(semanticNode);
     if (rootCell instanceof EditorCell_Collection) {
       for (EditorCell nextChild : ((EditorCell_Collection) rootCell)) {
         if (!nextChild.isBig()) {

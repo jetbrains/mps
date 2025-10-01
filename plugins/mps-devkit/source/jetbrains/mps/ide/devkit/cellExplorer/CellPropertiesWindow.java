@@ -47,12 +47,14 @@ public class CellPropertiesWindow extends JFrame {
     String cellRole = cellProperties.getCellRole();
     String cellSNode = cellProperties.getCellSNode();
     Icon icon = cellProperties.getNodeIcon();
+    String cellContextualNode = cellProperties.getCellContextualNode();
+    Icon contextualNodeIcon = cellProperties.getContextualNodeIcon();
 
     setLayout(new BorderLayout());
 
     JPanel outerPanel = new JPanel(new GridLayout(1,1,0,10));
 
-    JPanel panel = new JPanel(new GridLayout(10, 2, 10, 20));
+    JPanel panel = new JPanel(new GridLayout(11, 2, 10, 20));
     panel.setBorder(new EmptyBorder(10,5,5,5));
 
     Font f = panel.getFont();
@@ -67,6 +69,7 @@ public class CellPropertiesWindow extends JFrame {
     panel.add(new JLabel("Effective width:")).setFont(bold);panel.add(new JLabel(cellEffectiveWidth));
     panel.add(new JLabel("Number in collection:")).setFont(bold);panel.add(new JLabel(cellNumber));
     panel.add(new JLabel("SNode:")).setFont(bold);panel.add(new JLabel(cellSNode, icon, SwingConstants.LEFT));
+    panel.add(new JLabel("ContextualNode:")).setFont(bold);panel.add(new JLabel(cellContextualNode, contextualNodeIcon, SwingConstants.LEFT));
     panel.add(new JLabel("Is Root Cell:")).setFont(bold);panel.add(new JLabel(isRootCell));
 
     outerPanel.add(panel);

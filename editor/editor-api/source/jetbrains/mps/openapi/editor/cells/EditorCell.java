@@ -215,6 +215,14 @@ public interface EditorCell {
   @Nullable
   SNode getSNode();
 
+  /**
+   * In case this cell was constructed from properties of another node (e.g. a reference target node in CellModel_RefCell), this method returns that contextual node.
+   *
+   * @return the node whose properties were used to construct the cell.
+   */
+  @Nullable
+  SNode getContextualNode();
+
   void putUserObject(Object key, Object value);
 
   Object getUserObject(Object key);
