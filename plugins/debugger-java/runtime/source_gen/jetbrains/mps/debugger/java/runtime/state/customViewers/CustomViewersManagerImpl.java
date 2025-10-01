@@ -153,19 +153,21 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
   }
 
   public synchronized void setValueWrapper(@NotNull IValueProxy value, @NotNull ValueWrapperFactory factory, @NotNull DebugSession session) {
-    if (!(value instanceof IObjectValueProxy)) {
+    if (value instanceof INullValueProxy) {
       return;
     }
-    Map<Long, String> objectIdToFactory = MapSequence.fromMap(myObjectIdToFactory).get(session);
-    if (objectIdToFactory == null) {
-      objectIdToFactory = MapSequence.fromMap(new HashMap<Long, String>());
-      MapSequence.fromMap(myObjectIdToFactory).put(session, objectIdToFactory);
-    }
-    String oldFactory = MapSequence.fromMap(objectIdToFactory).get(getValueId(value));
-    String newFactory = factory.getClass().getName();
-    if (!(Objects.equals(oldFactory, newFactory))) {
-      MapSequence.fromMap(objectIdToFactory).put(getValueId(value), newFactory);
-      session.refresh();
+    if (value instanceof IObjectValueProxy) {
+      Map<Long, String> objectIdToFactory = MapSequence.fromMap(myObjectIdToFactory).get(session);
+      if (objectIdToFactory == null) {
+        objectIdToFactory = MapSequence.fromMap(new HashMap<Long, String>());
+        MapSequence.fromMap(myObjectIdToFactory).put(session, objectIdToFactory);
+      }
+      String oldFactory = MapSequence.fromMap(objectIdToFactory).get(getValueId(value));
+      String newFactory = factory.getClass().getName();
+      if (!(Objects.equals(oldFactory, newFactory))) {
+        MapSequence.fromMap(objectIdToFactory).put(getValueId(value), newFactory);
+        session.refresh();
+      }
     }
   }
   public static CustomViewersManagerImpl getInstanceImpl() {
