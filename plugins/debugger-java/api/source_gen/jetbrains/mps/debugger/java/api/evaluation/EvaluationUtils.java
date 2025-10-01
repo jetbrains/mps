@@ -67,7 +67,7 @@ public abstract class EvaluationUtils {
   @NotNull
   public abstract IObjectValueProxy boxValue(PrimitiveValueProxy primitiveValueProxy, ThreadReference threadReference) throws EvaluationException;
   public abstract PrimitiveValueProxy unboxValue(IObjectValueProxy valueProxy, ThreadReference threadReference) throws EvaluationException;
-  public abstract String getStringPresentation(@NotNull Value value, ThreadReference reference);
+  public abstract String getStringPresentation(Value value, ThreadReference reference);
 
   public static EvaluationUtils getInstance() {
     return ApplicationManager.getApplication().getService(EvaluationUtils.class);

@@ -894,9 +894,6 @@
         <node concept="3uibUv" id="PEcGPiCWiM" role="1tU5fm">
           <ref role="3uigEE" to="frkw:~Value" resolve="Value" />
         </node>
-        <node concept="2AHcQZ" id="PEcGPiCWiP" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
       </node>
       <node concept="37vLTG" id="PEcGPiDo38" role="3clF46">
         <property role="TrG5h" value="reference" />

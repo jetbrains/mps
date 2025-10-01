@@ -388,8 +388,11 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
     throw new UnsupportedOperationException("Cant unbox value of type" + type);
   }
   @Override
-  public String getStringPresentation(@NotNull final Value value, @NotNull final ThreadReference threadReference) {
+  public String getStringPresentation(final Value value, @NotNull final ThreadReference threadReference) {
     assertEvaluating();
+    if (value == null) {
+      return "null";
+    }
     try {
       return MirrorUtil.getInstance().getJavaValue(value).toString();
     } catch (UnsupportedOperationException e) {
