@@ -54,6 +54,9 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
     return rv;
   }
   /*package*/ static SModelReference toModelReference_id1Bs_61$mvvu(@NotNull SNode __thisNode__) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.modelId$ZPnc))) {
+      return null;
+    }
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     SModelId mid = pf.createModelId(SPropertyOperations.getString(__thisNode__, PROPS.modelId$ZPnc));
     SModuleReference moduleRef = ((SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$$Lia) == null) ? null : ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.moduleRef$$Lia)));
@@ -108,6 +111,9 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {
