@@ -60,35 +60,38 @@ public final class InterpretedPlanProvider implements ModelGenerationPlan.Provid
     myPlanModelRepo = planModelRepo;
   }
 
+  // BAD API. PROVISIONAL
+  /*package*/ GenPlanTranslator discover() {
+    if (myPlanModelRef != null) {
+      final SModel planModel = myPlanModelRef.resolve(myPlanModelRepo);
+      if (planModel == null) {
+        return null;
+      }
+      return GenPlanTranslator.fromGenPlanModel(planModel);
+    }
+    if (myPlanNodeRef != null) {
+      SNode planOrContribNode = myPlanNodeRef.resolve(myPlanModelRepo);
+      return planOrContribNode == null ? null : GenPlanTranslator.fromPlanOrContributionNode(planOrContribNode);
+    }
+    return null;
+
+  }
+
+
+
   @Nullable
   @Override
   public ModelGenerationPlan getPlan(@NotNull SModel model) {
-    SNode planDecl = getPlanNode();
-    if (planDecl == null) {
+    GenPlanTranslator gpt = discover();
+    if (gpt == null) {
       return null;
     }
-    myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Interpreted plan from node %s", planDecl.getPresentation()), planDecl.getReference(), null));
-    GenPlanTranslator gpt = new GenPlanTranslator(planDecl);
+    myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Interpreted plan \"%s\"", gpt.getPlanIdentity().getName()), myPlanModelRef != null ? myPlanModelRef : myPlanNodeRef, null));
     // FIXME in fact, shall respect additional languages passed through GenerationParametersProviderEx.getAdditionalLanguages(SModel), like
     // original GenerationPlan did. However, it's rarely (if ever) used feature and contemporary GPs replace it completely, so I do not bother.
     EngagedGeneratorCollector egc = new EngagedGeneratorCollector(myLanguageRegistry, model);
     RegularPlanBuilder planBuilder = new RegularPlanBuilder(myLanguageRegistry, egc.getGenerators(), myMessageHandler);
     gpt.feed(planBuilder);
     return planBuilder.wrapUp(gpt.getPlanIdentity());
-  }
-
-  @Nullable
-  /*package*/ SNode getPlanNode() {
-    if (myPlanModelRef != null) {
-      final SModel planModel = myPlanModelRef.resolve(myPlanModelRepo);
-      if (planModel == null) {
-        return null;
-      }
-      return planModel.getRootNodes().iterator().next();
-    }
-    if (myPlanNodeRef != null) {
-      return myPlanNodeRef.resolve(myPlanModelRepo);
-    }
-    return null;
   }
 }

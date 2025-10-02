@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myTransform__BehaviorDescriptor = new Transform__BehaviorDescriptor();
+  private final BHDescriptor myPlanContribution__BehaviorDescriptor = new PlanContribution__BehaviorDescriptor();
   private final BHDescriptor myParameterDeclaration__BehaviorDescriptor = new ParameterDeclaration__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
@@ -25,10 +26,12 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 0:
         return myParameterDeclaration__BehaviorDescriptor;
       case 1:
+        return myPlanContribution__BehaviorDescriptor;
+      case 2:
         return myTransform__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x341184c0e35d75fdL), MetaIdFactory.conceptId(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x341184c0e35d75fdL), MetaIdFactory.conceptId(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1cc6e9754a7aa3f9L), MetaIdFactory.conceptId(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L)).seal();
 }

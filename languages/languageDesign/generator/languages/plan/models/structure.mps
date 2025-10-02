@@ -89,6 +89,10 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="forkAs" />
       <ref role="20lvS9" node="1tYEJSwlxTv" resolve="ForkAs" />
+      <node concept="asaX9" id="1N6UnlaCOOz" role="lGtFl">
+        <property role="YLPcu" value="2025.3" />
+        <property role="YLQ7P" value="Replaced with PlanContribution" />
+      </node>
     </node>
     <node concept="PrWs8" id="1_4co2y1LvX" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -392,6 +396,10 @@
     <node concept="t5JxF" id="1tYEJSwlxTT" role="lGtFl">
       <property role="t5JxN" value="Marks a plan as a fork of another plan with specific generation target" />
     </node>
+    <node concept="asaX9" id="1N6UnlaCOOy" role="lGtFl">
+      <property role="YLPcu" value="2025.3" />
+      <property role="YLQ7P" value="Replaced with a PlanContribution concept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="3ghxc3znnnX">
     <property role="EcuMT" value="3751925928559474173" />
@@ -460,6 +468,31 @@
     </node>
     <node concept="PrWs8" id="21u4r8PxhAN" role="PzmwI">
       <ref role="PrY4T" to="tp25:7c$ruAHVa5N" resolve="GeneratorIdentity" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1N6UnlauEfT">
+    <property role="EcuMT" value="2073601368420688889" />
+    <property role="TrG5h" value="PlanContribution" />
+    <property role="19KtqR" value="true" />
+    <property role="3GE5qa" value="fork" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1N6UnlauEfU" role="1TKVEi">
+      <property role="IQ2ns" value="2073601368420688890" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="filter" />
+      <ref role="20lvS9" node="1UCZ1x2IYvI" resolve="ForkSelector" />
+    </node>
+    <node concept="1TJgyj" id="1N6UnlauEfV" role="1TKVEi">
+      <property role="IQ2ns" value="2073601368420688891" />
+      <property role="20kJfa" value="plan" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="1_4co2y1LvV" resolve="Plan" />
+      <node concept="t5JxF" id="1N6UnlaCOO_" role="lGtFl">
+        <property role="t5JxN" value="Plan for a forked branch (provided 'filter', if any, allows branching)" />
+      </node>
+    </node>
+    <node concept="t5JxF" id="1N6UnlaCOOw" role="lGtFl">
+      <property role="t5JxN" value="Mechanism to conditionally fork a transformation process without touching original plan(s). &quot;Contribution&quot; here means &quot;to a whole GP process&quot;, rather than &quot;to a specific plan&quot;" />
     </node>
   </node>
 </model>

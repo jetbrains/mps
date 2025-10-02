@@ -37,6 +37,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptParameterEquals = createDescriptorForParameterEquals();
   /*package*/ final ConceptDescriptor myConceptParameterReference = createDescriptorForParameterReference();
   /*package*/ final ConceptDescriptor myConceptPlan = createDescriptorForPlan();
+  /*package*/ final ConceptDescriptor myConceptPlanContribution = createDescriptorForPlanContribution();
   /*package*/ final ConceptDescriptor myConceptStep = createDescriptorForStep();
   /*package*/ final ConceptDescriptor myConceptTextDocLine = createDescriptorForTextDocLine();
   /*package*/ final ConceptDescriptor myConceptTransform = createDescriptorForTransform();
@@ -58,7 +59,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptApplyGenerators, myConceptCheckpoint, myConceptCheckpointDeclaration, myConceptCheckpointSpecification, myConceptCheckpointSynchronization, myConceptConceptListSelector, myConceptDeclaredCheckpointSpec, myConceptDocumentationLine, myConceptDocumentationStep, myConceptFork, myConceptForkAs, myConceptForkSelector, myConceptGeneratorModulePointer, myConceptInPlaceCheckpointRefSpec, myConceptInPlaceCheckpointSpec, myConceptIncludePlan, myConceptLanguageEntry, myConceptParameterDeclaration, myConceptParameterEquals, myConceptParameterReference, myConceptPlan, myConceptStep, myConceptTextDocLine, myConceptTransform);
+    return Arrays.asList(myConceptApplyGenerators, myConceptCheckpoint, myConceptCheckpointDeclaration, myConceptCheckpointSpecification, myConceptCheckpointSynchronization, myConceptConceptListSelector, myConceptDeclaredCheckpointSpec, myConceptDocumentationLine, myConceptDocumentationStep, myConceptFork, myConceptForkAs, myConceptForkSelector, myConceptGeneratorModulePointer, myConceptInPlaceCheckpointRefSpec, myConceptInPlaceCheckpointSpec, myConceptIncludePlan, myConceptLanguageEntry, myConceptParameterDeclaration, myConceptParameterEquals, myConceptParameterReference, myConceptPlan, myConceptPlanContribution, myConceptStep, myConceptTextDocLine, myConceptTransform);
   }
 
   @Override
@@ -107,6 +108,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptParameterReference;
       case LanguageConceptSwitch.Plan:
         return myConceptPlan;
+      case LanguageConceptSwitch.PlanContribution:
+        return myConceptPlanContribution;
       case LanguageConceptSwitch.Step:
         return myConceptStep;
       case LanguageConceptSwitch.TextDocLine:
@@ -326,6 +329,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("steps", 0x19443180a2071807L).target(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fcL).optional(false).ordered(true).multiple(true).origin("1820634577908471815").done();
     b.aggregate("forkAs", 0x177eaafe20582162L).target(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x177eaafe20561e5fL).optional(true).ordered(true).multiple(false).origin("1692978518378946914").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPlanContribution() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.generator.plan", "PlanContribution", 0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1cc6e9754a7aa3f9L);
+    b.class_(false, false, true);
+    b.origin("r:4a23ef0d-9c2f-48a6-8597-fbdd5b11f792(jetbrains.mps.lang.generator.plan.structure)/2073601368420688889");
+    b.version(3);
+    b.associate("plan", 0x1cc6e9754a7aa3fbL).target(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL).optional(false).origin("2073601368420688891").done();
+    b.aggregate("filter", 0x1cc6e9754a7aa3faL).target(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1ea8fc1842bbe7eeL).optional(true).ordered(true).multiple(false).origin("2073601368420688890").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForStep() {

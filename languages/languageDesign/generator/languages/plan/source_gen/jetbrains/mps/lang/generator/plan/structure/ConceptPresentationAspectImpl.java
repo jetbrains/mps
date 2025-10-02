@@ -30,6 +30,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ParameterEquals;
   private ConceptPresentation props_ParameterReference;
   private ConceptPresentation props_Plan;
+  private ConceptPresentation props_PlanContribution;
   private ConceptPresentation props_Step;
   private ConceptPresentation props_TextDocLine;
   private ConceptPresentation props_Transform;
@@ -117,6 +118,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ForkAs:
         if (props_ForkAs == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("fork as");
           props_ForkAs = cpb.create();
         }
@@ -189,12 +191,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_ParameterReference;
       case LanguageConceptSwitch.Plan:
         if (props_Plan == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL);
+          cpb.deprecateAggregation(0x177eaafe20582162L, "forkAs");
           cpb.shortDesc("Sequence of transformation steps");
           cpb.presentationByName();
           props_Plan = cpb.create();
         }
         return props_Plan;
+      case LanguageConceptSwitch.PlanContribution:
+        if (props_PlanContribution == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1cc6e9754a7aa3f9L, 0x1cc6e9754a7aa3fbL, "plan", "", "");
+          props_PlanContribution = cpb.create();
+        }
+        return props_PlanContribution;
       case LanguageConceptSwitch.Step:
         if (props_Step == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

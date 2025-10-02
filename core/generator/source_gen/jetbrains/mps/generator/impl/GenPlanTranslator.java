@@ -10,12 +10,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.GenerationPlanBuilder;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
@@ -28,8 +28,8 @@ import jetbrains.mps.generator.impl.plan.TrivialParameterIdentity;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 /**
@@ -42,6 +42,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class GenPlanTranslator {
   private final SNode myPlanDeclaration;
   private final PlanIdentity myPlanIdentity;
+  private final SNode myForkCondition;
+  private final boolean myContributedPlan;
+  private final boolean mySelfContribution;
 
   /**
    * 
@@ -51,11 +54,38 @@ public final class GenPlanTranslator {
   @Nullable
   public static GenPlanTranslator fromGenPlanModel(@NotNull SModel gpm) {
     SNode pn = ListSequence.fromList(SModelOperations.roots(gpm, CONCEPTS.Plan$X1)).first();
-    return (pn == null ? null : new GenPlanTranslator(pn));
+    SNode pc = ListSequence.fromList(SModelOperations.roots(gpm, CONCEPTS.PlanContribution$jf)).first();
+    if (pn == null) {
+      if (pc == null) {
+        return null;
+      }
+      return new GenPlanTranslator(SLinkOperations.getTarget(pc, LINKS.plan$pCW1), SLinkOperations.getTarget(pc, LINKS.filter$pCH0), true, false);
+    }
+    if (pc == null) {
+      if ((SLinkOperations.getTarget(pn, LINKS.forkAs$K6gO) != null)) {
+        // transitional code to handle existing case with ForkAs (used to be dedicated call feedMulti(), now under general feed())
+        return new GenPlanTranslator(pn, null, true, true);
+      }
+      return new GenPlanTranslator(pn);
+    }
+    assert pn != null && pc != null;
+    if (SLinkOperations.getTarget(pc, LINKS.plan$pCW1) == pn) {
+      return new GenPlanTranslator(pn, SLinkOperations.getTarget(pc, LINKS.filter$pCH0), true, true);
+    }
+    //  FIXME provide few GPT instances, perhaps? Could produce separate GPT for Plan and for PlanContribution, and then match GPT comparing getPlanIdentity()
+    //       e.g. if a "contributed" plan comes from one devkit, and instruction how to "contribute" it from another
+    throw new IllegalStateException("Scenario with node<Plan> and node<PlanContribution> pointing to another plan is not supported at the moment");
   }
 
-  @Deprecated(forRemoval = true)
-  public static SNode getForkOwner(SNode maybeFork) {
+  @Nullable
+  public static GenPlanTranslator fromPlanOrContributionNode(@NotNull SNode planOrContrib) {
+    if (SNodeOperations.isInstanceOf(planOrContrib, CONCEPTS.Plan$X1)) {
+      return new GenPlanTranslator(SNodeOperations.cast(planOrContrib, CONCEPTS.Plan$X1));
+    }
+    if (SNodeOperations.isInstanceOf(planOrContrib, CONCEPTS.PlanContribution$jf)) {
+      SNode pc = SNodeOperations.cast(planOrContrib, CONCEPTS.PlanContribution$jf);
+      return new GenPlanTranslator(SLinkOperations.getTarget(pc, LINKS.plan$pCW1), SLinkOperations.getTarget(pc, LINKS.filter$pCH0), true, false);
+    }
     return null;
   }
 
@@ -64,9 +94,30 @@ public final class GenPlanTranslator {
   }
 
   public GenPlanTranslator(@NotNull SNode planDeclaration) {
+    this(planDeclaration, null, false, false);
+  }
+
+  private GenPlanTranslator(@NotNull SNode planDeclaration, @Nullable SNode condition, boolean contributedPlan, boolean selfContribution) {
     myPlanDeclaration = planDeclaration;
     myPlanIdentity = new PlanIdentity(SPropertyOperations.getString(myPlanDeclaration, PROPS.name$MnvL));
+    myForkCondition = condition;
+    myContributedPlan = contributedPlan;
+    mySelfContribution = selfContribution;
   }
+
+  public boolean contributedPlan() {
+    return myContributedPlan;
+  }
+
+  /**
+   * PROVISIONAL, indicates Plan and its PlanContribution come together, TO BE CHANGED
+   *      The idea is to allow both GP and contribution of another GP from a same model, using selfContributed() as indication
+   *      whether to respect one or both
+   */
+  public boolean selfContributed() {
+    return contributedPlan() && mySelfContribution;
+  }
+
 
   public PlanIdentity getPlanIdentity() {
     return myPlanIdentity;
@@ -78,20 +129,16 @@ public final class GenPlanTranslator {
    * @return {@code this} for convenience
    */
   public GenPlanTranslator feed(@NotNull GenerationPlanBuilder planBuilder) {
-    return feedSteps(planBuilder);
-  }
-
-  /**
-   * A variant of {@link jetbrains.mps.generator.impl.GenPlanTranslator#feed(GenerationPlanBuilder) } for when there are a bunch of interconnected plans to be processed.
-   */
-  public GenPlanTranslator feedMulti(GenerationPlanBuilder planBuilder) {
-    if ((SLinkOperations.getTarget(myPlanDeclaration, LINKS.forkAs$K6gO) != null)) {
-      buildFork(planBuilder, myPlanDeclaration, null, SPropertyOperations.getString(SLinkOperations.getTarget(myPlanDeclaration, LINKS.forkAs$K6gO), PROPS.gentarget$4yRi));
+    if (myContributedPlan) {
+      // XXX I wonder as long as we sometimes need to do explicit fork() from outside anyway, perhaps, shall
+      //    introduce separate feedAsBranch(GPB) and keep logic there. OTOH, seems I'll need to figure out value of myContributedPlan anyway, why not to use it here?
+      buildFork(planBuilder, myPlanDeclaration, myForkCondition, SPropertyOperations.getString(SLinkOperations.getTarget(myPlanDeclaration, LINKS.forkAs$K6gO), PROPS.gentarget$4yRi));
       return this;
+    } else {
+      return feedSteps(planBuilder);
     }
-
-    return feedSteps(planBuilder);
   }
+
   private GenPlanTranslator feedSteps(GenerationPlanBuilder planBuilder) {
     ArrayList<SModuleReference> generators = new ArrayList<SModuleReference>();
     for (SNode stepNode : SLinkOperations.getChildren(myPlanDeclaration, LINKS.steps$Xwbb)) {
@@ -219,6 +266,7 @@ public final class GenPlanTranslator {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Plan$X1 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, "jetbrains.mps.lang.generator.plan.structure.Plan");
+    /*package*/ static final SConcept PlanContribution$jf = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1cc6e9754a7aa3f9L, "jetbrains.mps.lang.generator.plan.structure.PlanContribution");
     /*package*/ static final SConcept Checkpoint$ZV = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, "jetbrains.mps.lang.generator.plan.structure.Checkpoint");
     /*package*/ static final SConcept Transform$a_ = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, "jetbrains.mps.lang.generator.plan.structure.Transform");
     /*package*/ static final SInterfaceConcept LanguageIdentity$cN = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L, "jetbrains.mps.lang.smodel.structure.LanguageIdentity");
@@ -238,6 +286,8 @@ public final class GenPlanTranslator {
   }
 
   private static final class LINKS {
+    /*package*/ static final SReferenceLink plan$pCW1 = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1cc6e9754a7aa3f9L, 0x1cc6e9754a7aa3fbL, "plan");
+    /*package*/ static final SContainmentLink filter$pCH0 = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x1cc6e9754a7aa3f9L, 0x1cc6e9754a7aa3faL, "filter");
     /*package*/ static final SContainmentLink forkAs$K6gO = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a20717fbL, 0x177eaafe20582162L, "forkAs");
     /*package*/ static final SContainmentLink cpSpec$v7$t = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
     /*package*/ static final SContainmentLink languages$AUhz = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");

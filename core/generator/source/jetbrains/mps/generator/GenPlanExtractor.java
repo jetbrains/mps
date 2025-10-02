@@ -16,6 +16,7 @@
 package jetbrains.mps.generator;
 
 import jetbrains.mps.generator.GenerationOptions.OptionsBuilder;
+import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
@@ -141,7 +142,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
   private ModelGenerationPlan planFromDevKitImpl(SModel model) {
     // plans associated directly with devkit property has higher precedence than plans coming from DevKit's facets plan providers
     ArrayList<ModelGenerationPlan.Provider> facetAssociatedPlan = new ArrayList<>();
-    ArrayList<ModelGenerationPlan.Provider> directPlan = new ArrayList<>();
+    ArrayList<PlanProviderInfo> directPlan = new ArrayList<>();
     for (SModuleReference dkRef : ((SModelInternal) model).importedDevkits()) {
       if (myDevkitToPlan.containsKey(dkRef)) {
         final PlanProviderInfo rv = myDevkitToPlan.get(dkRef);
@@ -150,7 +151,7 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           continue;
         }
         if (rv.isDirect) {
-          directPlan.add(rv.provider);
+          directPlan.add(rv);
         } else {
           facetAssociatedPlan.add(rv.provider);
           // FALL-THROUGH, continue;
@@ -161,15 +162,22 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
           continue;
         }
         DevKit devkit = (DevKit) dkModule;
-        ModelGenerationPlan.Provider mgpProvider;
+        ;
         final SModelReference dkPlan;
         if (devkit.getModuleDescriptor() != null && (dkPlan = devkit.getModuleDescriptor().getAssociatedGenPlan()) != null) {
           myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has associated plan %s", devkit.getModuleName(), dkPlan.getName()), dkPlan, null));
-          mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, dkPlan, myRepository);
-          myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, true));
-          directPlan.add(mgpProvider);
+          InterpretedPlanProvider mgpProvider = new InterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, dkPlan, myRepository);
+          GenPlanTranslator gpt = mgpProvider.discover();
+          if (gpt == null) {
+            myMessageHandler.handle(Message.error(GenPlanExtractor.class, String.format("Failed to discover plan %s", dkPlan.getName()), dkPlan, null));
+            myDevkitToPlan.put(dkRef, null);
+            continue;
+          }
+          PlanProviderInfo ppi = new PlanProviderInfo(mgpProvider, true, gpt.contributedPlan());
+          myDevkitToPlan.put(dkRef, ppi);
+          directPlan.add(ppi);
         } else {
-          mgpProvider = fromModuleFacets(devkit);
+          ModelGenerationPlan.Provider mgpProvider = fromModuleFacets(devkit);
           if (mgpProvider != null) {
             myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Devkit %s has module facet that provides generation plans", devkit.getModuleName()), devkit.getModuleReference(), null));
             myDevkitToPlan.put(dkRef, new PlanProviderInfo(mgpProvider, false));
@@ -181,13 +189,21 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
       }
     }
     if (directPlan.size() == 1) {
-      return directPlan.get(0).getPlan(model);
+      return directPlan.getFirst().provider.getPlan(model);
     }
     else if (directPlan.size() > 1) {
       // construct the composite provider
-      CompositeInterpretedPlanProvider planProvider =
-          new CompositeInterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler, directPlan);
-      return planProvider.getPlan(model);
+      ArrayList<GenPlanTranslator> first = new ArrayList<>();
+      ArrayList<GenPlanTranslator> second = new ArrayList<>();
+      for (PlanProviderInfo ppi : directPlan) {
+        // perhaps, doesn't need ppi.myContributed, as long as I access GPT here anyway. FIXME refactor earlier IPP.discover() code, move it here
+        if (ppi.myContributed) {
+          second.add(((InterpretedPlanProvider) ppi.provider).discover());
+        } else {
+          first.add(((InterpretedPlanProvider) ppi.provider).discover());
+        }
+      }
+      return new CompositeInterpretedPlanProvider(LanguageRegistry.getInstance(myRepository), myMessageHandler).build(first, second, model);
     }
     for (ModelGenerationPlan.Provider p : facetAssociatedPlan) {
       // we can get here only if there's no GP directly associated with any imported devkit
@@ -237,10 +253,16 @@ public final class GenPlanExtractor implements ModelGenerationPlan.Provider {
   static final class PlanProviderInfo {
     final boolean isDirect; // true if MGP is associated with a devkit directly, false if comes through facets
     final ModelGenerationPlan.Provider provider;
+    final boolean myContributed; // if there's dedicated PlanContribution to advise how/when to add a plan
 
     PlanProviderInfo(ModelGenerationPlan.Provider p, boolean direct) {
+      this(p, direct, false);
+    }
+
+    PlanProviderInfo(ModelGenerationPlan.Provider p, boolean direct, boolean contributed) {
       isDirect = direct;
       provider = p;
+      myContributed = contributed;
     }
   }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="73bh92jdckhl9pshlpn2ffyk7khqjog">
-  <files names="BehaviorAspectDescriptor.java:ParameterDeclaration__BehaviorDescriptor.java:Transform__BehaviorDescriptor.java" />
+<product version="3" modelHash="-7mylwa2qtu6vannla6vu6fv6vrazy3y">
+  <files names="BehaviorAspectDescriptor.java:ParameterDeclaration__BehaviorDescriptor.java:PlanContribution__BehaviorDescriptor.java:Transform__BehaviorDescriptor.java" />
 </product>
 

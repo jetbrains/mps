@@ -1,84 +1,68 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.generator;
 
-import jetbrains.mps.generator.ModelGenerationPlan.Provider;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import jetbrains.mps.generator.impl.plan.RegularPlanBuilder;
+import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * @author Fedor Isakov
+ * Builds aggregated GP based on several plans (represented as GenPlanTranslator)
  */
-public class CompositeInterpretedPlanProvider implements ModelGenerationPlan.Provider {
+class CompositeInterpretedPlanProvider {
 
   private final LanguageRegistry myLanguageRegistry;
   private final IMessageHandler myMessageHandler;
-  private final Collection<Provider> myProviders;
 
-  public CompositeInterpretedPlanProvider(LanguageRegistry languageRegistry, IMessageHandler messageHandler, Collection<Provider> providers) {
+  CompositeInterpretedPlanProvider(LanguageRegistry languageRegistry, IMessageHandler messageHandler) {
     myLanguageRegistry = languageRegistry;
     myMessageHandler = messageHandler;
-    myProviders = providers;
   }
 
 
   @Nullable
-  @Override
-  public ModelGenerationPlan getPlan(@NotNull SModel model) {
-    // mostly copied from InterpretedPlanProvider with changes reflecting multiple plan nodes
-    Collection<SNode> planNodes = collectPlanNodes(new ArrayList<>());
-    if (planNodes.isEmpty()) {
+  public ModelGenerationPlan build(List<GenPlanTranslator> needsForks, List<GenPlanTranslator> handlesForks, @NotNull SModel model) {
+    if (needsForks.isEmpty() && handlesForks.isEmpty()) {
       return null;
     }
-    LinkedList<SNode> sortedPlanNodes = new LinkedList<>();
-    for (SNode planDecl : planNodes) {
-      myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Interpreted plan from node %s", planDecl.getPresentation()), planDecl.getReference(), null));
-
-      String forkGenerationTarget = GenPlanTranslator.getForkGenerationTarget(planDecl);
-      if (forkGenerationTarget != null) {
-        myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Destination target of a fork: %s", forkGenerationTarget), planDecl.getReference(), null));
-        sortedPlanNodes.addFirst(planDecl);
-      } else {
-        sortedPlanNodes.add(planDecl);
-      }
-    }
+    String s1 = needsForks.stream().map(GenPlanTranslator::getPlanIdentity).map(PlanIdentity::getName).collect(Collectors.joining(","));
+    String s2 = handlesForks.stream().map(GenPlanTranslator::getPlanIdentity).map(PlanIdentity::getName).collect(Collectors.joining(","));
+    myMessageHandler.handle(Message.info(GenPlanExtractor.class, String.format("Composite plan of [%s] and contributions [%s]", s1, s2), null, null));
+    // next is mostly copied from InterpretedPlanProvider with changes reflecting multiple plan nodes
+    //
     // FIXME in fact, shall respect additional languages passed through GenerationParametersProviderEx.getAdditionalLanguages(SModel), like
     // original GenerationPlan did. However, it's rarely (if ever) used feature and contemporary GPs replace it completely, so I do not bother.
     EngagedGeneratorCollector egc = new EngagedGeneratorCollector(myLanguageRegistry, model);
     RegularPlanBuilder planBuilder = new RegularPlanBuilder(myLanguageRegistry, egc.getGenerators(), myMessageHandler);
 
-    GenPlanTranslator gpt = null;
-    for (SNode planNode : sortedPlanNodes) {
-      gpt = new GenPlanTranslator(planNode);
-      gpt.feedMulti(planBuilder);
+    Iterator<GenPlanTranslator> it = needsForks.iterator();
+    GenPlanTranslator primary = it.next();
+    // second and the rest GPs we got without explicit PlanContribution information get implicit, unconditional fork step here
+    while (it.hasNext()) {
+      GenerationPlanBuilder forkBuilder = planBuilder.fork();
+      GenPlanTranslator next = it.next();
+      next.feed(forkBuilder);
+      forkBuilder.wrapUp(next.getPlanIdentity());
     }
-    // because forks come first, the last gpt has the correct (whole plan's) identity
-    return planBuilder.wrapUp(gpt.getPlanIdentity());
-  }
 
-  private Collection<SNode> collectPlanNodes(Collection<SNode> planNodes) {
-    for (Provider provider : myProviders) {
-      if (provider instanceof InterpretedPlanProvider) {
-        SNode planNode = ((InterpretedPlanProvider) provider).getPlanNode();
-        if (planNode != null) {
-          planNodes.add(planNode);
-        }
-      }
+    for (GenPlanTranslator gpt : handlesForks) {
+      // assuming this gpt does fork() as its first action, otherwise primary plan could get corrupted
+      gpt.feed(planBuilder);
     }
-    return planNodes;
-  }
 
+    primary.feed(planBuilder);
+    return planBuilder.wrapUp(primary.getPlanIdentity());
+  }
 }
