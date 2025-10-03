@@ -222,7 +222,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/builders/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/core.doc/jetbrains.mps.lang.core.doc/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../languages/util/core.doc/jetbrains.mps.lang.doctext/runtime/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/core.text/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/util/execution/util/source_gen" isTestSource="false" />
