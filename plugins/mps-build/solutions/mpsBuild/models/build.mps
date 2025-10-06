@@ -42404,6 +42404,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="1pTa$zxSVrL" role="3bR37C">
+          <node concept="3bR9La" id="1pTa$zxSVrN" role="1SiIV1">
+            <ref role="3bR37D" node="35ZzpQIfz5j" resolve="jetbrains.mps.generator.extensions" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3LEwk6" id="2lLpEGo12wV" role="3989C9">

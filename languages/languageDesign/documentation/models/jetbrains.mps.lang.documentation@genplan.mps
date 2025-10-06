@@ -6,7 +6,9 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="3" />
   </languages>
-  <imports />
+  <imports>
+    <import index="mmew" ref="r:bbd3ef6f-ab29-4c9e-9a9f-3a8ff6ffef86(jetbrains.mps.generator.extensions)" />
+  </imports>
   <registry>
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
       <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
@@ -21,6 +23,17 @@
       </concept>
       <concept id="1820634577908471810" name="jetbrains.mps.lang.generator.plan.structure.Transform" flags="ng" index="2VgMA2">
         <child id="1152961914448142326" name="entries" index="2Qf7GQ" />
+      </concept>
+      <concept id="2073601368420688889" name="jetbrains.mps.lang.generator.plan.structure.PlanContribution" flags="ng" index="1mJ4Ec">
+        <reference id="2073601368420688891" name="plan" index="1mJ4Ee" />
+        <child id="2073601368420688890" name="filter" index="1mJ4Ef" />
+      </concept>
+      <concept id="3751925928559474175" name="jetbrains.mps.lang.generator.plan.structure.ParameterReference" flags="ng" index="3njf4Z">
+        <reference id="3751925928559474176" name="declaration" index="3njfb0" />
+      </concept>
+      <concept id="3751925928559474178" name="jetbrains.mps.lang.generator.plan.structure.ParameterEquals" flags="ng" index="3njfb2">
+        <property id="3751925928559474181" name="value" index="3njfb5" />
+        <child id="3751925928559474180" name="parameter" index="3njfb4" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -53,6 +66,15 @@
     </node>
     <node concept="Rabix" id="6RmmpomCHge" role="R9CIs">
       <property role="RabgO" value="documentation" />
+    </node>
+  </node>
+  <node concept="1mJ4Ec" id="1pTa$zxQH0p">
+    <ref role="1mJ4Ee" node="2iKjvgosNNj" resolve="DocumentationPlan" />
+    <node concept="3njfb2" id="1pTa$zxRTv2" role="1mJ4Ef">
+      <property role="3njfb5" value="documentation" />
+      <node concept="3njf4Z" id="1pTa$zxRTv3" role="3njfb4">
+        <ref role="3njfb0" to="mmew:4jPJr_qBRKv" resolve="module-facet" />
+      </node>
     </node>
   </node>
 </model>

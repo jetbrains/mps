@@ -10,6 +10,9 @@
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
+  <dependencies>
+    <dependency reexport="false">1e63b60e-8f90-46a4-b04d-b53ab55b7feb(jetbrains.mps.generator.extensions)</dependency>
+  </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />
     <language slang="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" version="0" />
@@ -21,6 +24,7 @@
     <language slang="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" version="0" />
   </languageVersions>
   <dependencyVersions>
+    <module reference="1e63b60e-8f90-46a4-b04d-b53ab55b7feb(jetbrains.mps.generator.extensions)" version="0" />
     <module reference="f0aec392-47e3-40ae-a843-4519e73ec102(jetbrains.mps.lang.documentation.genplan)" version="0" />
   </dependencyVersions>
 </solution>

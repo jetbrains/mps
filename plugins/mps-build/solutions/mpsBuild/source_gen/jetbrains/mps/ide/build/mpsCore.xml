@@ -447,7 +447,9 @@
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.documentation.genplan.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.lang.documentation.genplan.jar/META-INF/module.xml">
       <module namespace="jetbrains.mps.lang.documentation.genplan" type="solution" uuid="f0aec392-47e3-40ae-a843-4519e73ec102">
-        <dependencies />
+        <dependencies>
+          <module ref="1e63b60e-8f90-46a4-b04d-b53ab55b7feb(jetbrains.mps.generator.extensions)" kind="cl" />
+        </dependencies>
         <uses />
         <classpath>
           <entry path="." />
@@ -2083,7 +2085,10 @@
       <src>
         <path location="${mps_home}/languages/languageDesign/documentation/source_gen" />
       </src>
-      <classpath refid="path.jdk.classpath" />
+      <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.generator.extensions.jar" />
+        <path refid="path.jdk.classpath" />
+      </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.documentation.genplan">
       <fileset dir="${mps_home}/languages/languageDesign/documentation/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
