@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,18 +44,15 @@ import java.util.function.Supplier;
  * @author Artem Tikhomirov
  */
 public class BareNodeReader {
-  protected final Supplier<SModelReference> myModelReference;
   protected final ModelInputStream myIn;
 
+  @Deprecated(forRemoval = true, since = "2025.3")
   public BareNodeReader(@NotNull Supplier<SModelReference> localModelRef, @NotNull ModelInputStream is) {
-    myModelReference = localModelRef;
-    myIn = is;
+    this(is);
   }
 
   public BareNodeReader(@NotNull ModelInputStream is) {
-    this(() -> {
-      throw new UnsupportedOperationException();
-    }, is);
+    myIn = is;
   }
 
   /**
@@ -131,11 +128,11 @@ public class BareNodeReader {
     }
   }
 
-  protected void readReference(SReferenceLink sref, SNode node) throws IOException {
+  protected void readReference(SReferenceLink sref, final SNode node) throws IOException {
     int kind = myIn.readByte();
     assert kind >= 1 && kind <= 3;
     SNodeId targetNodeId = kind == 1 ? myIn.readNodeId() : null;
-    DynamicReferenceOrigin origin = kind == 3 ? new DynamicReferenceOrigin(myIn.readNodePointer(), myIn.readNodePointer()) : null;
+    final DynamicReferenceOrigin origin = kind == 3 ? new DynamicReferenceOrigin(myIn.readNodePointer(), myIn.readNodePointer()) : null;
     int targetModelKind = myIn.readByte();
     assert targetModelKind == BareNodeWriter.REF_OTHER_MODEL || targetModelKind == BareNodeWriter.REF_THIS_MODEL;
     final SModelReference modelRef;
@@ -143,12 +140,12 @@ public class BareNodeReader {
       modelRef = myIn.readModelReference();
       externalNodeReferenceRead(modelRef, targetNodeId);
     } else {
-      modelRef = myModelReference.get();
+      modelRef = null;
       localNodeReferenceRead(targetNodeId);
     }
-    String resolveInfo = myIn.readString();
+    final String resolveInfo = myIn.readString();
     if (kind == 1) {
-      node.setReference(sref, ResolveInfo.of(new SNodePointer(modelRef, targetNodeId), resolveInfo));
+      node.setReference(sref, modelRef != null ? ResolveInfo.of(new SNodePointer(modelRef, targetNodeId), resolveInfo) : ResolveInfo.of(targetNodeId, resolveInfo));
     } else //noinspection ConstantConditions
       if (kind == 2) {
         node.setReference(sref, ResolveInfo.of(resolveInfo));

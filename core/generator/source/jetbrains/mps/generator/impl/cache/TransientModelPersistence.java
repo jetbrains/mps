@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,15 +33,13 @@ import java.util.List;
 /*package*/ class TransientModelPersistence {
 
   private static final int VERSION = 6;
-  private final SModelReference myModelReference;
 
-  public TransientModelPersistence(@NotNull SModelReference modelReference) {
-    this.myModelReference = modelReference;
+  public TransientModelPersistence() {
   }
 
-  public void saveModel(List<SNode> roots, ModelOutputStream os) throws IOException {
+  public void saveModel(@NotNull SModelReference modelReference, List<SNode> roots, ModelOutputStream os) throws IOException {
     os.writeInt(VERSION);
-    new BareNodeWriter(myModelReference::equals, os, true).writeNodes(roots);
+    new BareNodeWriter(modelReference::equals, os, true).writeNodes(roots);
   }
 
   public List<SNode> loadModel(ModelInputStream is) throws IOException {
@@ -49,7 +47,7 @@ import java.util.List;
     if (version != VERSION) {
       return null;
     }
-    return new BareNodeReader(() -> myModelReference, is).readChildren(null);
+    return new BareNodeReader(is).readChildren(null);
   }
 
 }

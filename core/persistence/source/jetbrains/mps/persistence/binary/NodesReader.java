@@ -36,8 +36,17 @@ public final class NodesReader extends BareNodeReader {
   private Collection<SNodeId> myExternalRefs;
   private Collection<SNodeId> myLocalRefs;
 
+  @Deprecated(forRemoval = true, since = "2025.3")
   public NodesReader(@NotNull SModelReference modelReference, @NotNull ModelInputStream is, ReadHelper readHelper) {
-    super(() -> modelReference, is);
+    super(is);
+    myReadHelper = readHelper;
+  }
+
+  /**
+   * @since 2025.3
+   */
+  public NodesReader(@NotNull ModelInputStream is, ReadHelper readHelper) {
+    super(is);
     myReadHelper = readHelper;
   }
 

@@ -185,7 +185,7 @@ public final class BinaryPersistence {
       ReadHelper rh = bp.loadModelProperties(mis);
       rh.requestInterfaceOnly(interfaceOnly);
 
-      NodesReader reader = new NodesReader(modelHeader.getModelReference(), mis, rh);
+      NodesReader reader = new NodesReader(mis, rh);
       reader.readNodesInto(model);
       return new ModelLoadResult(model, reader.hasSkippedNodes() ? ModelLoadingState.INTERFACE_LOADED : ModelLoadingState.FULLY_LOADED);
     } finally {
@@ -465,7 +465,7 @@ public final class BinaryPersistence {
         consumer.instances(cid);
       }
       readHelper.requestInterfaceOnly(false);
-      final NodesReader reader = new NodesReader(modelHeader.getModelReference(), mis, readHelper);
+      final NodesReader reader = new NodesReader(mis, readHelper);
       HashSet<SNodeId> externalNodes = new HashSet<>();
       HashSet<SNodeId> localNodes = new HashSet<>();
       reader.collectExternalTargets(externalNodes);

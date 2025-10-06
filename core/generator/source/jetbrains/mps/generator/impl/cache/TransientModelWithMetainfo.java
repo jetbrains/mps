@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,10 +36,10 @@ public class TransientModelWithMetainfo {
 
   public static final String CONDITIONALS_ID = "";
 
-  private SModelReference myReference;
-  private List<SNode> myRoots;
-  private Map<SNodeId, SNodeId> myRootToOriginal;
-  private Map<SNodeId, MappingsMemento> myMappingsMemento;
+  private final SModelReference myReference;
+  private final List<SNode> myRoots;
+  private final Map<SNodeId, SNodeId> myRootToOriginal;
+  private final Map<SNodeId, MappingsMemento> myMappingsMemento;
 
   public TransientModelWithMetainfo(SModelReference reference, List<SNode> roots) {
     myReference = reference;
@@ -83,7 +83,7 @@ public class TransientModelWithMetainfo {
   }
 
   public void save(ModelOutputStream os) throws IOException {
-    new TransientModelPersistence(myReference).saveModel(myRoots, os);
+    new TransientModelPersistence().saveModel(myReference, myRoots, os);
     saveMetainfo(os);
   }
 
@@ -124,7 +124,7 @@ public class TransientModelWithMetainfo {
 
 
   public static TransientModelWithMetainfo load(ModelInputStream is, SModelReference modelReference) throws IOException {
-    List<SNode> roots = new TransientModelPersistence(modelReference).loadModel(is);
+    List<SNode> roots = new TransientModelPersistence().loadModel(is);
     TransientModelWithMetainfo result = new TransientModelWithMetainfo(modelReference, roots);
     result.loadMetainfo(is);
     return result;
