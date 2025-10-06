@@ -775,6 +775,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
     @Override
     public void modelAdded(SModule module, SModel model) {
+      super.modelAdded(module, model);
       forEachFile(module, f -> updateFrom(f, true));
     }
 
