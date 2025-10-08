@@ -32,6 +32,8 @@ import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
@@ -152,13 +154,34 @@ public class HighlightUsagesSupport {
       SNode referenceNode = ref.getSourceNode();
       SNode referenceRoot = referenceNode.getContainingRoot();
       if (referenceRoot == editedRoot && referenceNode != selectedCellNode && hm.getMessagesFor(referenceNode, highlightMessagesOwner).isEmpty()) {
-        hm.mark(new HighlightUsageEditorMessage(nodeToHighlight, referenceNode, color, "usage", emo));
+        EditorCell cell = myEC.findNodeCell(referenceNode, true);
+        if (isReferenceToNodeVisible(cell, nodeToHighlight, referenceNode)) {
+          hm.mark(referenceNode, color, "usage", emo);
+        }
       }
     }
 
     if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot && hm.getMessagesFor(nodeToHighlight, highlightMessagesOwner).isEmpty()) {
-      hm.mark(new HighlightUsageEditorMessage(nodeToHighlight, nodeToHighlight, color, "usage", emo));
+      hm.mark(nodeToHighlight, color, "usage", emo);
     }
+  }
+
+  private boolean isReferenceToNodeVisible(EditorCell cell, SNode node, SNode referenceNode) {
+    if (cell == null || cell.getSNode() != referenceNode) {
+      return false;
+    }
+    if (cell.getContextualNode() == node) {
+      return true;
+    }
+    if (cell instanceof EditorCell_Collection) {
+      EditorCell_Collection collection = (EditorCell_Collection) cell;
+      for (EditorCell child : Sequence.fromIterable(collection)) {
+        if (isReferenceToNodeVisible(child, node, referenceNode)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   @Nullable
