@@ -10389,6 +10389,31 @@
         <property role="pLAjc" value="ctrl" />
       </node>
     </node>
+    <node concept="Zd509" id="6ZAxAckaean" role="Zd508">
+      <ref role="1bYAoF" node="5SnwAr0vAm_" resolve="ShowReflectiveEditor" />
+      <node concept="pLAjd" id="6ZAxAckaeao" role="Zd501">
+        <property role="pLAjc" value="ctrl" />
+        <property role="pLAjf" value="VK_BACK_SLASH" />
+      </node>
+    </node>
+    <node concept="Zd509" id="6ZAxAckaeap" role="Zd508">
+      <ref role="1bYAoF" node="1wo9YwOHLtB" resolve="ShowReflectiveEditorsForSubtree" />
+      <node concept="pLAjd" id="6ZAxAckaeaq" role="Zd501">
+        <property role="pLAjc" value="ctrl+alt" />
+        <property role="pLAjf" value="VK_BACK_SLASH" />
+      </node>
+    </node>
+    <node concept="Zd509" id="6ZAxAckaear" role="Zd508">
+      <ref role="1bYAoF" node="1XfowaweGRd" resolve="ShowRegularEditor" />
+      <node concept="pLAjd" id="6ZAxAckarZs" role="Zd501">
+        <property role="pLAjc" value="ctrl" />
+        <property role="pLAjf" value="VK_BACK_SLASH" />
+      </node>
+      <node concept="pLAjd" id="6ZAxAckarZw" role="Zd501">
+        <property role="pLAjc" value="ctrl+alt" />
+        <property role="pLAjf" value="VK_BACK_SLASH" />
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="3Ps9wDHYw7A">
     <property role="ngHcd" value="F" />

@@ -213,13 +213,17 @@
     </action>
     <action id="jetbrains.mps.ide.editor.actions.ShowReflectiveEditor_Action" class="jetbrains.mps.ide.editor.actions.ShowReflectiveEditor_Action">
       <keyboard-shortcut first-keystroke="ctrl OPEN_BRACKET" keymap="$default" />
+      <keyboard-shortcut first-keystroke="ctrl BACK_SLASH" keymap="Mac OS X 10.5+" />
     </action>
     <action id="jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action" class="jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action">
       <keyboard-shortcut first-keystroke="ctrl shift OPEN_BRACKET" keymap="$default" />
+      <keyboard-shortcut first-keystroke="ctrl alt BACK_SLASH" keymap="Mac OS X 10.5+" />
     </action>
     <action id="jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action" class="jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action">
       <keyboard-shortcut first-keystroke="ctrl CLOSE_BRACKET" keymap="$default" />
       <keyboard-shortcut first-keystroke="ctrl shift CLOSE_BRACKET" keymap="$default" />
+      <keyboard-shortcut first-keystroke="ctrl BACK_SLASH" keymap="Mac OS X 10.5+" />
+      <keyboard-shortcut first-keystroke="ctrl alt BACK_SLASH" keymap="Mac OS X 10.5+" />
     </action>
     <action id="jetbrains.mps.ide.editor.actions.ShowSuppressedErrors_Action" class="jetbrains.mps.ide.editor.actions.ShowSuppressedErrors_Action"></action>
     <action id="jetbrains.mps.ide.editor.actions.ShowSurroundWithIntentions_Action" class="jetbrains.mps.ide.editor.actions.ShowSurroundWithIntentions_Action">
