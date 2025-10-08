@@ -81,6 +81,7 @@
     <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)" />
     <import index="rbkg" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api.extension(org.junit.junit5/)" />
     <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
+    <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="f3o1" ref="r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -7754,6 +7755,47 @@
               </node>
             </node>
             <node concept="37vLTw" id="4Rb4I4dmMqJ" role="37wK5m">
+              <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="3ZoPMW3emYM" role="3cqZAp">
+          <node concept="1PaTwC" id="3ZoPMW3emYN" role="1aUNEU">
+            <node concept="3oM_SD" id="3ZoPMW3emYO" role="1PaTwD">
+              <property role="3oM_SC" value="ensure" />
+            </node>
+            <node concept="3oM_SD" id="3ZoPMW3ensX" role="1PaTwD">
+              <property role="3oM_SC" value="VFS" />
+            </node>
+            <node concept="3oM_SD" id="3ZoPMW3entv" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="3ZoPMW3enu0" role="1PaTwD">
+              <property role="3oM_SC" value="refreshed" />
+            </node>
+            <node concept="3oM_SD" id="3ZoPMW3enuL" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="3ZoPMW3envi" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3ZoPMW3enw3" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3ZoPMW3egSy" role="3cqZAp">
+          <node concept="2YIFZM" id="3ZoPMW3ei4J" role="3clFbG">
+            <ref role="37wK5l" to="jlff:~VfsUtil.markDirtyAndRefresh(boolean,boolean,boolean,java.io.File...)" resolve="markDirtyAndRefresh" />
+            <ref role="1Pybhc" to="jlff:~VfsUtil" resolve="VfsUtil" />
+            <node concept="3clFbT" id="3ZoPMW3eiKL" role="37wK5m" />
+            <node concept="3clFbT" id="3ZoPMW3ejL4" role="37wK5m">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="3clFbT" id="3ZoPMW3ekzN" role="37wK5m">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="37vLTw" id="3ZoPMW3elNE" role="37wK5m">
               <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
             </node>
           </node>
