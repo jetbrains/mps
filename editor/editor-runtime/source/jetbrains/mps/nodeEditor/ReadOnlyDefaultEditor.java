@@ -29,11 +29,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
-public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
-  private static final Logger LOG = Logger.getLogger(ReadOnlyDefaultEditor.class);
+public class ReadOnlyDefaultEditor extends DefaultEditor {
 
   public ReadOnlyDefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot) {
-    super(concept, reflectiveRoot);
+    super(concept, reflectiveRoot, true);
   }
 
   @Override
@@ -54,57 +53,10 @@ public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
 
     for (SNode child : getNode().getChildren()) {
       SContainmentLink containmentLink = child.getContainmentLink();
-      assert containmentLink != null : "Null meta-containmentLink returned for the child of node: " + getNode() + ", child: " + child;
       if (containmentLink.getOwner().equals(SNodeUtil.concept_BaseConcept)) {
         addContainmentLink(containmentLink);
       }
     }
   }
-
-  @Override
-  protected void addPropertyCell(final SProperty property) {
-    EditorCell_Property cell = new EditorCell_Property(getEditorContext(), new ModelAccessor.ReadOnly() {
-      public String getText() {
-        return getNode().getProperty(property);
-      }
-    }, getNode());
-    cell.setEditable(false);
-    cell.setCellId("property_" + property);
-    addCell(cell);
-  }
-
-  @Override
-  protected void addChildCell(SContainmentLink link) {
-    for (SNode child : getNode().getChildren(link)) {
-      EditorCell nodeCell = getUpdateSession().updateChildNodeCell(child);
-      addCell(nodeCell);
-      setIndent(nodeCell);
-      addNewLine();
-    }
-  }
-
-  @Override
-  protected void addReferenceCell(final SReferenceLink referenceLink) {
-    SReference reference = getNode().getReference(referenceLink);
-    if (reference == null) {
-      addLabel("<no target>");
-      return;
-    }
-    final SNode referentNode = reference.getTargetNode();
-    if (referentNode == null) {
-      String resolveInfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
-      String myErrorText = resolveInfo != null ? resolveInfo : "?" + referenceLink.getName() + "?";
-      EditorCell_Error errorCell = new EditorCell_Error(getEditorContext(), getNode(), myErrorText);
-      errorCell.setCellId("error_" + referenceLink.getName());
-      addCell(errorCell);
-      return;
-    }
-    if (referentNode.getModel() == null) {
-      LOG.error("Reference to node which is not inside model. Node: " + referentNode, referentNode);
-    }
-    EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> createReferentEditorCell(getEditorContext(), referenceLink, referentNode), referentNode, referenceLink);
-    setSemanticNodeToCells(cell, getNode());
-    cell.setCellId("reference_" + referenceLink.getName());
-    addCell(cell);
-  }
+  
 }

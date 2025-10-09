@@ -29,11 +29,14 @@ import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode.DeleteDirection;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteOnErrorSReference;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteSReference;
+import jetbrains.mps.nodeEditor.cellActions.CellAction_InsertIntoCollection;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cellMenu.BooleanSPropertySubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.DefaultSChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SReferenceSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
@@ -68,8 +71,15 @@ import org.jetbrains.mps.openapi.model.SReference;
  */
 public class DefaultEditor extends AbstractDefaultEditor {
 
+  private final boolean myReadOnly;
+
   public DefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot) {
+    this(concept, reflectiveRoot, false);
+  }
+
+  public DefaultEditor(@NotNull SConcept concept, boolean reflectiveRoot, boolean readOnly) {
     super(concept, reflectiveRoot);
+    myReadOnly = readOnly;
   }
 
   protected void init() {
@@ -99,20 +109,24 @@ public class DefaultEditor extends AbstractDefaultEditor {
     getCellFactory().pushCellContext();
     try {
       getCellFactory().setPropertyInfo(new SPropertyInfo(getNode(), property));
-      EditorCell_Property editorCell = new EditorCell_Property(getEditorContext(), new SPropertyAccessor(getNode(), property, false, false), getNode());
+      EditorCell_Property editorCell = new EditorCell_Property(getEditorContext(), new SPropertyAccessor(getNode(), property, myReadOnly, false), getNode());
       getUpdateSession().registerCleanDependency(editorCell, new Pair<>(new SNodePointer(getNode()), property.getName()));
       editorCell.setDefaultText("<no " + property.getName() + ">");
       if (editorCell.getCellId() == null) {
         editorCell.setCellId("property_" + property);
       }
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSPropertyOrNode(getNode(), property, DeleteDirection.FORWARD));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSPropertyOrNode(getNode(), property, DeleteDirection.BACKWARD));
-      final SDataType type = property.getType();
-      if (type == SPrimitiveTypes.BOOLEAN) {
-        editorCell.setSubstituteInfo(new BooleanSPropertySubstituteInfo(getNode(), property, getEditorContext()));
-      }
-      if (type instanceof SEnumeration) {
-        editorCell.setSubstituteInfo(new EnumSPropertySubstituteInfo(getNode(), property, getEditorContext()));
+      if (myReadOnly) {
+        editorCell.setEditable(false);
+      } else {
+        editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSPropertyOrNode(getNode(), property, DeleteDirection.FORWARD));
+        editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSPropertyOrNode(getNode(), property, DeleteDirection.BACKWARD));
+        final SDataType type = property.getType();
+        if (type == SPrimitiveTypes.BOOLEAN) {
+          editorCell.setSubstituteInfo(new BooleanSPropertySubstituteInfo(getNode(), property, getEditorContext()));
+        }
+        if (type instanceof SEnumeration) {
+          editorCell.setSubstituteInfo(new EnumSPropertySubstituteInfo(getNode(), property, getEditorContext()));
+        }
       }
       addCellWithRole(IterableUtils.first(AttributeOperations.getPropertyAttributes(getNode(), property)), AttributeKind.PROPERTY, editorCell);
       if (editorCell.getCellContext() == null) {
@@ -126,55 +140,14 @@ public class DefaultEditor extends AbstractDefaultEditor {
   @Override
   protected void addChildCell(final SContainmentLink link) {
     if (link.isMultiple()) {
-      AbstractCellListHandler handler = new ListHandler(getNode(), link, getEditorContext());
+      AbstractCellListHandler handler = new MyListHandler(getNode(), link, getEditorContext());
       EditorCell editorCell = handler.createCells(new CellLayout_Indent(), false);
       editorCell.setSRole(handler.getElementSRole());
       addStyle(editorCell, StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE);
       setIndent(editorCell);
       addCell(editorCell);
     } else {
-      SingleRoleCellProvider provider = new SingleRoleCellProvider(link, getEditorContext()) {
-
-        @Override
-        protected EditorCell createEmptyCell() {
-
-          getCellFactory().pushCellContext();
-          getCellFactory().setNodeLocation(new FromParentAndLink(getNode(), myContainmentLink));
-          try {
-            EditorCell emptyCell = super.createEmptyCell();
-            emptyCell.setSubstituteInfo(new DefaultSChildSubstituteInfo(getNode(), link, getEditorContext()));
-            emptyCell.setSRole(link);
-            emptyCell.setCellId("empty_" + link.getName());
-            return emptyCell;
-          } finally {
-            getCellFactory().popCellContext();
-          }
-        }
-
-        @Override
-        public EditorCell createChildCell(SNode child) {
-          getCellFactory().pushCellContext();
-          getCellFactory().setNodeLocation(new FromNode(child));
-          try {
-            EditorCell cell = super.createChildCell(child);
-            cell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), myContainmentLink, child));
-            cell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), myContainmentLink, child));
-            cell.setSubstituteInfo(new DefaultSChildSubstituteInfo(getNode(), child, link, getEditorContext()));
-            if (cell.getSRole() == null) {
-              cell.setSRole(link);
-            }
-            return cell;
-          } finally {
-            getCellFactory().popCellContext();
-          }
-        }
-
-        @NotNull
-        @Override
-        public SNode getNode() {
-          return DefaultEditor.this.getNode();
-        }
-      };
+      SingleRoleCellProvider provider = new MyCellProvider(link, getEditorContext());
       EditorCell cell = provider.createCell();
       setIndent(cell);
       addCell(cell);
@@ -200,10 +173,12 @@ public class DefaultEditor extends AbstractDefaultEditor {
         CellUtil.setupIDeprecatableStyles(referentNode, cell);
         setSemanticNodeToCells(cell, getNode());
 
-        //todo rewrite cell actions
-        cell.setAction(CellActionType.DELETE, new CellAction_DeleteSReference(getNode(), referenceLink));
-        cell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSReference(getNode(), referenceLink));
-        cell.setSubstituteInfo(new SReferenceSubstituteInfo(cell, referenceLink));
+        if (!myReadOnly) {
+          //todo rewrite cell actions
+          cell.setAction(CellActionType.DELETE, new CellAction_DeleteSReference(getNode(), referenceLink));
+          cell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSReference(getNode(), referenceLink));
+          cell.setSubstituteInfo(new SReferenceSubstituteInfo(cell, referenceLink));
+        }
         if (cell.getCellId() == null) {
           cell.setCellId("reference_" + referenceLink.getName());
         }
@@ -220,15 +195,19 @@ public class DefaultEditor extends AbstractDefaultEditor {
                                                                 new EditorCell_Constant(getEditorContext(), getNode(), "") :
                                                                 new EditorCell_Error(getEditorContext(), getNode(), noTargetText);
     noRefCell.setText("");
-    noRefCell.setEditable(true);
+    noRefCell.setEditable(!myReadOnly);
     noRefCell.setDefaultText(noTargetText);
 
-    noRefCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getNode(), DeleteDirection.FORWARD));
-    noRefCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(getNode(), DeleteDirection.BACKWARD));
+    if (!myReadOnly) {
+      noRefCell.setAction(CellActionType.DELETE, new CellAction_DeleteEasily(getNode(), DeleteDirection.FORWARD));
+      noRefCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteEasily(getNode(), DeleteDirection.BACKWARD));
+    }
 
     noRefCell.setCellId("empty_" + referenceLink.getName());
     noRefCell.setReferenceCell(true);
-    noRefCell.setSubstituteInfo(new SReferenceSubstituteInfo(noRefCell, referenceLink));
+    if (!myReadOnly) {
+      noRefCell.setSubstituteInfo(new SReferenceSubstituteInfo(noRefCell, referenceLink));
+    }
     noRefCell.setSRole(referenceLink);
 
     setIndent(noRefCell);
@@ -270,20 +249,90 @@ public class DefaultEditor extends AbstractDefaultEditor {
     return null;
   }
 
-  private static class ListHandler extends RefNodeListHandler {
+
+  private class MyCellProvider extends SingleRoleCellProvider {
+
+      public MyCellProvider(SContainmentLink link, EditorContext context) {
+        super(link, context);
+      }
+
+      @Override
+      protected EditorCell createEmptyCell() {
+        getCellFactory().pushCellContext();
+        getCellFactory().setNodeLocation(new FromParentAndLink(getNode(), myContainmentLink));
+        try {
+          EditorCell emptyCell = super.createEmptyCell();
+          if (!myReadOnly) {
+            emptyCell.setSubstituteInfo(new DefaultSChildSubstituteInfo(getNode(), myContainmentLink, getEditorContext()));
+          }
+          emptyCell.setSRole(myContainmentLink);
+          emptyCell.setCellId("empty_" + myContainmentLink.getName());
+          return emptyCell;
+        } finally {
+          getCellFactory().popCellContext();
+        }
+      }
+
+      @Override
+      public EditorCell createChildCell(SNode child) {
+        getCellFactory().pushCellContext();
+        getCellFactory().setNodeLocation(new FromNode(child));
+        try {
+          EditorCell cell = super.createChildCell(child);
+          if (!myReadOnly) {
+            cell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), myContainmentLink, child));
+            cell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), myContainmentLink, child));
+            cell.setSubstituteInfo(new DefaultSChildSubstituteInfo(getNode(), child, myContainmentLink, getEditorContext()));
+          }
+          if (cell.getSRole() == null) {
+            cell.setSRole(myContainmentLink);
+          }
+          return cell;
+        } finally {
+          getCellFactory().popCellContext();
+        }
+      }
+      
+      @NotNull
+      @Override
+      public SNode getNode() {
+        return DefaultEditor.this.getNode();
+      }
+  }
+
+  private class MyListHandler extends RefNodeListHandler {
 
     private final SContainmentLink myLink;
     private final SNode myOwnerNode;
 
-    ListHandler(SNode ownerNode, SContainmentLink link, EditorContext context) {
+    MyListHandler(SNode ownerNode, SContainmentLink link, EditorContext context) {
       super(context);
       myLink = link;
       myOwnerNode = ownerNode;
     }
 
+    @Override
+    public EditorCell_Collection createCells(CellLayout cellLayout) {
+      // FIXME overridden to optionally make collection readonly, better to refactor the superclass's implementation
+      myListEditorCell_Collection = EditorCell_Collection.create(getEditorContext(), getNode(), cellLayout, this);
+      myListEditorCell_Collection.setSelectable(false);
+
+      createInnerCells();
+
+      if (!myReadOnly) {
+        // add insert/insert-before actions
+        myListEditorCell_Collection.setAction(CellActionType.INSERT, new CellAction_InsertIntoCollection(this, false));
+        myListEditorCell_Collection.setAction(CellActionType.INSERT_BEFORE, new CellAction_InsertIntoCollection(this, true));
+      }
+
+      return myListEditorCell_Collection;
+    }
+
     public EditorCell createNodeCell(SNode elementNode) {
       EditorCell elementCell = getUpdateSession().updateChildNodeCell(elementNode);
-      this.installElementCellActions(getNode(), elementNode, elementCell);
+      if (!myReadOnly) {
+        this.installElementCellActions(getNode(), elementNode, elementCell);
+      }
       return elementCell;
     }
 
@@ -307,7 +356,9 @@ public class DefaultEditor extends AbstractDefaultEditor {
       getCellFactory().setNodeLocation(new FromParentAndLink(getNode(), myLink));
       try {
         EditorCell emptyCell = super.createEmptyCell();
-        this.installElementCellActions(getNode(), null, emptyCell);
+        if (!myReadOnly) {
+          this.installElementCellActions(getNode(), null, emptyCell);
+        }
         return emptyCell;
       } finally {
         getCellFactory().popCellContext();
