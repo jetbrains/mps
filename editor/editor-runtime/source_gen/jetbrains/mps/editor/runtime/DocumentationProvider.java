@@ -92,7 +92,7 @@ public class DocumentationProvider {
     if (referenceLink != null) {
       return SLinkOperations.getTarget(contextNode, referenceLink);
 
-    } else if (property != null) {
+    } else if (property != null && property.getSourceNode() != null) {
       return property.getSourceNode().resolve(repository);
 
     } else {
