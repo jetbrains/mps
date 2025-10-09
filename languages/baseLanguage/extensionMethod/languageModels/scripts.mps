@@ -161,7 +161,7 @@
     <property role="_Wzho" value="Convert ExtensionMethodCall to Local" />
     <property role="TrG5h" value="ConvertExtensionMethodCallToLocal" />
     <node concept="_XfAh" id="6xkNu_iwnGd" role="_YvDr">
-      <property role="_XH9r" value="ConvertLocalInstanceMethodCall" />
+      <property role="_XH9r" value="Converts a call to an extension method with a local call (removes 'this')" />
       <property role="1iWc8x" value="true" />
       <ref role="_XDHR" to="tpee:hwliAcM" resolve="InstanceMethodCallOperation" />
       <node concept="_ZGcI" id="6xkNu_iwnGe" role="_XPhp">
