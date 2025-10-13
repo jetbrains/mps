@@ -225,7 +225,7 @@ public class TextGen_Facet extends IFacet.Stub {
 
               // configure
               TextGenSettings tgs = mpsProject.getComponent(TextGenSettings.class);
-              final boolean _generateDebugInfo = (vars(pa.global()).generateDebugInfo() == null && tgs.isGenerateDebugInfo()) || vars(pa.global()).generateDebugInfo();
+              final boolean _generateDebugInfo = (vars(pa.global()).generateDebugInfo() == null ? tgs.isGenerateDebugInfo() : vars(pa.global()).generateDebugInfo());
               final long timeoutSeconds = tgs.getPerModelTimeout().toSeconds();
 
               final ProgressMonitor subProgress_u0a0b = progressMonitor.subTask(1000);
