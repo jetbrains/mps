@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="b4qoc0up9fe6rg9oraqj8yasqvvhjzc">
+<product version="3" modelHash="-9ietxprpf6m0r9avcgqkv4dta5w1ne5">
   <files names="ExtensionDescriptor.java:FacetAspectDescriptor.java:FacetManifest.java:GenTaskImpl.java:Generate_Facet.java:ModuleStaleFileManager.java:ResourceDeltaCollector.java:RetainedUtil.java:TextGenOutcomeResource.java:TextGen_Facet.java" />
 </product>
 
