@@ -46,9 +46,16 @@ public class CheckingUtil {
     if (node == lValue) {
       return true;
     }
+
     SNode parent = SNodeOperations.getParent(node);
-    if (parent == lValue && (boolean) Expression__BehaviorDescriptor.isChildAssignedInAssignment_id79$CF9VcmHc.invoke(SNodeOperations.as(parent, CONCEPTS.Expression$mB), node)) {
-      return true;
+    SNode child = node;
+    while ((boolean) Expression__BehaviorDescriptor.isChildAssignedInAssignment_id79$CF9VcmHc.invoke(SNodeOperations.as(parent, CONCEPTS.Expression$mB), child)) {
+      if (parent == lValue) {
+        return true;
+      } else {
+        child = parent;
+        parent = SNodeOperations.getParent(parent);
+      }
     }
     return false;
   }
