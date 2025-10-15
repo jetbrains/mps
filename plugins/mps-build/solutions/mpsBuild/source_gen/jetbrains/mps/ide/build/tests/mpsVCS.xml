@@ -157,6 +157,16 @@
         <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.dvcs.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.log.impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.dvcs.impl.shared.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.dvcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.exec.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.frontend.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.lang.actions.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.lang.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.impl.shared.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.log.graph.impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.log.graph.jar" />
+        <fileset file="${artifacts.IDEA}/lib/modules/intellij.platform.vcs.log.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />

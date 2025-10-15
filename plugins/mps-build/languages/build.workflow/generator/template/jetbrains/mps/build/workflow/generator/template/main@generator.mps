@@ -3874,6 +3874,16 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pNNFK" id="784ypGm0Axy" role="3o6s8t">
+                <property role="qg3DV" value="true" />
+                <property role="2pNNFO" value="include" />
+                <node concept="2pNUuL" id="784ypGm0Axz" role="2pNNFR">
+                  <property role="2pNUuO" value="name" />
+                  <node concept="2pMdtt" id="784ypGm0Ax$" role="2pMdts">
+                    <property role="2pMdty" value="module-intellij.libraries.asm.jar" />
+                  </node>
+                </node>
+              </node>
               <node concept="2pNNFK" id="1Mjrj7j4BBw" role="3o6s8t">
                 <property role="qg3DV" value="true" />
                 <property role="2pNNFO" value="include" />

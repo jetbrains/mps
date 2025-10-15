@@ -16,6 +16,7 @@
       <include name="3rd-party.jar" />
       <include name="3rd-party-rt.jar" />
       <include name="util-8.jar" />
+      <include name="module-intellij.libraries.asm.jar" />
       <include name="forms*.jar" />
     </fileset>
     <fileset dir="${idea_home}/plugins/java/lib">
@@ -60,7 +61,7 @@
   </path>
   
   <path id="path.java.library.objectweb.asm">
-    <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
+    <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
   </path>
   
   <path id="path.java.library.org.jdom">

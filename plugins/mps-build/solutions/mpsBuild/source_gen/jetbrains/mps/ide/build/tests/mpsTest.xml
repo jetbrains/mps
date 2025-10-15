@@ -36,6 +36,7 @@
       <include name="3rd-party.jar" />
       <include name="3rd-party-rt.jar" />
       <include name="util-8.jar" />
+      <include name="module-intellij.libraries.asm.jar" />
       <include name="forms*.jar" />
     </fileset>
     <fileset dir="${idea_home}/plugins/java/lib">
