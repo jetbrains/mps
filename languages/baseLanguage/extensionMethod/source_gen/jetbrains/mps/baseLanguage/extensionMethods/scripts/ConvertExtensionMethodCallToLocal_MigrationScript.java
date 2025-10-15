@@ -29,11 +29,11 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
-        return "Converts a call to an extension method with a local call (removes 'this')";
+        return "Remove 'this' - convert a call to an extension method to a local call";
       }
       @Override
       public String getAdditionalInfo() {
-        return "Converts a call to an extension method with a local call (removes 'this')";
+        return "Remove 'this' - convert a call to an extension method to a local call";
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
