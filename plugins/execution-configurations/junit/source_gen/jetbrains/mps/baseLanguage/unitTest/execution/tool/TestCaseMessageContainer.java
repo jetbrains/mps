@@ -56,7 +56,9 @@ public class TestCaseMessageContainer extends MessageContainerBase<MethodMessage
     if (currentTestNode != null) {
       TestNodeKey.Relation match = currentTestNode.match(myTestCaseNode);
       return match == TestNodeKey.Relation.SAME || match == TestNodeKey.Relation.PARTOF;
+    } else {
+      // always accept events without a test node at the top level
+      return myTestCaseNode == null;
     }
-    return false;
   }
 }
