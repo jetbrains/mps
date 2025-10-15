@@ -5196,6 +5196,19 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="7O7k1lNNuoV" role="3bR37C">
+          <node concept="1BurEX" id="7O7k1lNNuoW" role="1SiIV1">
+            <node concept="398BVA" id="7O7k1lNNuoX" role="1BurEY">
+              <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+              <node concept="2Ry0Ak" id="7O7k1lNNuv4" role="iGT6I">
+                <property role="2Ry0Am" value="lib.jar" />
+              </node>
+            </node>
+            <node concept="3yrxFa" id="7O7k1lNNuoZ" role="2gdwQb">
+              <ref role="3yrxFb" node="4SADOBb5p5j" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="6U$p2g0pj3R" role="2G$12L">
         <property role="BnDLt" value="true" />

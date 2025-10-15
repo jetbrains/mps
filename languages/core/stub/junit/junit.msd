@@ -4,12 +4,19 @@
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="junit4.jar" />
+      <sourceRoot location="lib.jar" />
+      <PackageScope>
+        <include prefix="junit."/>
+        <include prefix="org.junit."/>
+        <include prefix="org.hamcrest."/>
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
       <library location="${platform_lib}/junit4.jar" />
+      <library location="${platform_lib}/lib.jar" />
     </facet>
   </facets>
   <sourcePath />
