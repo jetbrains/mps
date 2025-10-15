@@ -21,13 +21,9 @@
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="g51k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.cells(MPS.Editor/)" />
     <import index="rlg8" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.highlighter(MPS.Editor/)" />
-    <import index="yah0" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.history(MPS.IDEA/)" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" />
-    <import index="7g4e" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.vcsUtil(MPS.IDEA/)" />
-    <import index="8voc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.annotate(MPS.IDEA/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
-    <import index="jlcu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs(MPS.IDEA/)" />
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="jmi8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
@@ -85,9 +81,13 @@
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="j86o" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl(jetbrains.mps.vcs.idea.stubs/)" />
     <import index="cyi7" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes.ui(jetbrains.mps.vcs.idea.stubs/)" />
-    <import index="yah1" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.history(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="yah0" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.history(jetbrains.mps.vcs.idea.stubs/)" />
     <import index="de5p" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.actions(jetbrains.mps.vcs.idea.stubs/)" />
     <import index="e0ho" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.vcs.log.impl(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="jlcu" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs(MPS.IDEA.Modules/)" />
+    <import index="8voc" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.annotate(MPS.IDEA.Modules/)" />
+    <import index="yah1" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.history(MPS.IDEA.Modules/)" />
+    <import index="7g4e" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.vcsUtil(MPS.IDEA.Modules/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -865,7 +865,7 @@
             <node concept="2OqwBi" id="7i97z0YtvRU" role="37vLTx">
               <node concept="2OqwBi" id="7i97z0YtvRV" role="2Oq$k0">
                 <node concept="liA8E" id="7i97z0YtvRW" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getMessageBus()" resolve="getMessageBus" />
+                  <ref role="37wK5l" to="4nm9:~Project.getMessageBus()" resolve="getMessageBus" />
                 </node>
                 <node concept="37vLTw" id="7i97z0Yv82L" role="2Oq$k0">
                   <ref role="3cqZAo" node="7i97z0Yv7ce" resolve="project" />
@@ -4086,14 +4086,14 @@
                         <node concept="2OqwBi" id="4zPruQLukD5" role="33vP2m">
                           <node concept="2OqwBi" id="4zPruQLukD6" role="2Oq$k0">
                             <node concept="liA8E" id="4zPruQLukDa" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                             </node>
                             <node concept="37vLTw" id="4zPruQLuv8_" role="2Oq$k0">
                               <ref role="3cqZAo" node="4zPruQLulMQ" resolve="revision" />
                             </node>
                           </node>
                           <node concept="liA8E" id="4zPruQLukDb" role="2OqNvi">
-                            <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                            <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
                           </node>
                         </node>
                       </node>
@@ -4165,7 +4165,7 @@
         <property role="TrG5h" value="revision" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="4zPruQLulMP" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
     </node>
@@ -5220,11 +5220,11 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="1HYau0fbHCa" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                             </node>
                           </node>
                           <node concept="liA8E" id="1HYau0fbNLQ" role="2OqNvi">
-                            <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                            <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
                           </node>
                         </node>
                         <node concept="Xl_RD" id="1HYau0f01sD" role="37wK5m">
@@ -5322,11 +5322,11 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="1HYau0fc2TB" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                             </node>
                           </node>
                           <node concept="liA8E" id="1HYau0fc6Lq" role="2OqNvi">
-                            <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                            <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
                           </node>
                         </node>
                         <node concept="Xl_RD" id="1HYau0f01ti" role="37wK5m">
@@ -5991,7 +5991,7 @@
       <property role="TrG5h" value="myRevisionsToNumbers" />
       <node concept="3rvAFt" id="5Gymoc4p$ze" role="1tU5fm">
         <node concept="3uibUv" id="5oWc8mxVybH" role="3rvQeY">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
         <node concept="10Oyi0" id="5Gymoc4p$zU" role="3rvSg0" />
       </node>
@@ -5999,7 +5999,7 @@
       <node concept="2ShNRf" id="5Gymoc4p$$c" role="33vP2m">
         <node concept="3rGOSV" id="5Gymoc4p$$d" role="2ShVmc">
           <node concept="3uibUv" id="5oWc8mxVySI" role="3rHrn6">
-            <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+            <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
           </node>
           <node concept="10Oyi0" id="5Gymoc4p$$f" role="3rHtpV" />
         </node>
@@ -6050,7 +6050,7 @@
             <property role="TrG5h" value="revisions" />
             <node concept="_YKpA" id="2Vo1v_KOUIN" role="1tU5fm">
               <node concept="3uibUv" id="2Vo1v_KOVvx" role="_ZDj9">
-                <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+                <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
               </node>
             </node>
             <node concept="2OqwBi" id="2Vo1v_KOWbu" role="33vP2m">
@@ -6133,7 +6133,7 @@
             <node concept="2ShNRf" id="2Vo1v_KP42j" role="37vLTx">
               <node concept="3rGOSV" id="2Vo1v_KP42k" role="2ShVmc">
                 <node concept="3uibUv" id="2Vo1v_KP42l" role="3rHrn6">
-                  <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+                  <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
                 </node>
                 <node concept="10Oyi0" id="2Vo1v_KP42m" role="3rHtpV" />
               </node>
@@ -6206,7 +6206,7 @@
         <property role="TrG5h" value="revisions" />
         <node concept="_YKpA" id="2Vo1v_KP1LW" role="1tU5fm">
           <node concept="3uibUv" id="2Vo1v_KP2Eo" role="_ZDj9">
-            <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+            <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
           </node>
         </node>
       </node>
@@ -7976,7 +7976,7 @@
             <node concept="17QB3L" id="7OXN7mb$1i4" role="1tU5fm" />
             <node concept="2OqwBi" id="7OXN7mb$2Dj" role="33vP2m">
               <node concept="liA8E" id="3m3XyaE$_1f" role="2OqNvi">
-                <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getAuthor()" resolve="getAuthor" />
+                <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getAuthor()" resolve="getAuthor" />
               </node>
               <node concept="2OqwBi" id="3m3XyaE$$xD" role="2Oq$k0">
                 <node concept="liA8E" id="3m3XyaE$$K_" role="2OqNvi">
@@ -8202,11 +8202,11 @@
               <node concept="3cpWsn" id="6STmDFFdzD9" role="3cpWs9">
                 <property role="TrG5h" value="currentRevision" />
                 <node concept="3uibUv" id="6STmDFFdzDa" role="1tU5fm">
-                  <ref role="3uigEE" to="yah0:~CurrentRevision" resolve="CurrentRevision" />
+                  <ref role="3uigEE" to="yah1:~CurrentRevision" resolve="CurrentRevision" />
                 </node>
                 <node concept="2ShNRf" id="6STmDFFeaTH" role="33vP2m">
                   <node concept="1pGfFk" id="6STmDFFeaTI" role="2ShVmc">
-                    <ref role="37wK5l" to="yah0:~CurrentRevision.&lt;init&gt;(com.intellij.openapi.vfs.VirtualFile,com.intellij.openapi.vcs.history.VcsRevisionNumber)" resolve="CurrentRevision" />
+                    <ref role="37wK5l" to="yah1:~CurrentRevision.&lt;init&gt;(com.intellij.openapi.vfs.VirtualFile,com.intellij.openapi.vcs.history.VcsRevisionNumber)" resolve="CurrentRevision" />
                     <node concept="2OqwBi" id="5Lno_XH7C0I" role="37wK5m">
                       <node concept="37vLTw" id="6STmDFFeaTJ" role="2Oq$k0">
                         <ref role="3cqZAo" node="5Y_dPLMoWFD" resolve="myCommitsGraph" />
@@ -8220,7 +8220,7 @@
                         <node concept="1Y3b0j" id="6STmDFFeaTM" role="YeSDq">
                           <property role="2bfB8j" value="true" />
                           <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                          <ref role="1Y3XeK" to="yah0:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
+                          <ref role="1Y3XeK" to="yah1:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
                           <node concept="3Tm1VV" id="6STmDFFeaTN" role="1B3o_S" />
                           <node concept="3clFb_" id="6STmDFFeaTO" role="jymVt">
                             <property role="TrG5h" value="compareTo" />
@@ -8229,7 +8229,7 @@
                             <node concept="37vLTG" id="6STmDFFeaTR" role="3clF46">
                               <property role="TrG5h" value="p0" />
                               <node concept="3uibUv" id="6STmDFFeaTS" role="1tU5fm">
-                                <ref role="3uigEE" to="yah0:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
+                                <ref role="3uigEE" to="yah1:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
                               </node>
                             </node>
                             <node concept="3clFbS" id="6STmDFFeaTT" role="3clF47">
@@ -8386,7 +8386,7 @@
         <property role="TrG5h" value="revisions" />
         <node concept="_YKpA" id="41u046V7JPs" role="1tU5fm">
           <node concept="3uibUv" id="41u046V7OFl" role="_ZDj9">
-            <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+            <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
           </node>
         </node>
       </node>
@@ -10144,7 +10144,7 @@
           <node concept="37vLTw" id="7OXN7mb$5qv" role="37wK5m">
             <ref role="3cqZAo" node="7OXN7mb$5qa" resolve="editorAnnotation" />
           </node>
-          <node concept="10M0yZ" id="7OXN7mb$5QV" role="37wK5m">
+          <node concept="10M0yZ" id="7IlkgnuUr9i" role="37wK5m">
             <ref role="3cqZAo" to="8voc:~LineAnnotationAspect.REVISION" resolve="REVISION" />
             <ref role="1PxDUh" to="8voc:~LineAnnotationAspect" resolve="LineAnnotationAspect" />
           </node>
@@ -10168,7 +10168,7 @@
             <node concept="2OqwBi" id="7OXN7mb$_9_" role="2Oq$k0">
               <node concept="2OqwBi" id="7OXN7mb$_9A" role="2Oq$k0">
                 <node concept="liA8E" id="3m3XyaE$JBn" role="2OqNvi">
-                  <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                  <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                 </node>
                 <node concept="2OqwBi" id="3m3XyaE$Jdm" role="2Oq$k0">
                   <node concept="liA8E" id="3m3XyaE$JmY" role="2OqNvi">
@@ -10180,7 +10180,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="7OXN7mb$_9D" role="2OqNvi">
-                <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
               </node>
             </node>
             <node concept="liA8E" id="7OXN7mb$_9E" role="2OqNvi">
@@ -10613,7 +10613,7 @@
             <property role="TrG5h" value="revisions" />
             <node concept="_YKpA" id="1gvS7Qj0wO$" role="1tU5fm">
               <node concept="3uibUv" id="1gvS7Qj0wO_" role="_ZDj9">
-                <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+                <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
               </node>
             </node>
           </node>
@@ -11155,7 +11155,7 @@
               <node concept="3cpWsn" id="tU0$taZ9G2" role="3cpWs9">
                 <property role="TrG5h" value="number" />
                 <node concept="3uibUv" id="tU0$taZ9G3" role="1tU5fm">
-                  <ref role="3uigEE" to="yah0:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
+                  <ref role="3uigEE" to="yah1:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
                 </node>
                 <node concept="2OqwBi" id="tU0$taZaBS" role="33vP2m">
                   <node concept="2OqwBi" id="tU0$taZaoC" role="2Oq$k0">
@@ -11167,7 +11167,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="tU0$taZaQO" role="2OqNvi">
-                    <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                    <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                   </node>
                 </node>
               </node>
@@ -11194,7 +11194,7 @@
                             <ref role="3cqZAo" node="tU0$taZ9G2" resolve="number" />
                           </node>
                           <node concept="liA8E" id="tU0$taZcnp" role="2OqNvi">
-                            <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                            <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="tU0$taZcWE" role="37wK5m">
@@ -11453,8 +11453,8 @@
       <node concept="3clFbS" id="7H$wjRQN2tc" role="3clF47">
         <node concept="3clFbF" id="7H$wjRQN4LM" role="3cqZAp">
           <node concept="2YIFZM" id="7H$wjRQN4LO" role="3clFbG">
-            <ref role="37wK5l" to="yah1:~VcsCachingHistory.collect(com.intellij.openapi.vcs.AbstractVcs,com.intellij.openapi.vcs.FilePath,com.intellij.openapi.vcs.history.VcsRevisionNumber)" resolve="collect" />
-            <ref role="1Pybhc" to="yah1:~VcsCachingHistory" resolve="VcsCachingHistory" />
+            <ref role="37wK5l" to="yah0:~VcsCachingHistory.collect(com.intellij.openapi.vcs.AbstractVcs,com.intellij.openapi.vcs.FilePath,com.intellij.openapi.vcs.history.VcsRevisionNumber)" resolve="collect" />
+            <ref role="1Pybhc" to="yah0:~VcsCachingHistory" resolve="VcsCachingHistory" />
             <node concept="37vLTw" id="7H$wjRQN4LP" role="37wK5m">
               <ref role="3cqZAo" node="55zwzn2DFX5" resolve="myActiveVcs" />
             </node>
@@ -11472,7 +11472,7 @@
       <node concept="3Tm6S6" id="7H$wjRQN05c" role="1B3o_S" />
       <node concept="_YKpA" id="7H$wjRQN22Q" role="3clF45">
         <node concept="3uibUv" id="7H$wjRQN2oM" role="_ZDj9">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
       <node concept="3uibUv" id="7H$wjRQN54_" role="Sfmx6">
@@ -11605,7 +11605,7 @@
           <node concept="3cpWsn" id="3m3XyaE$FP5" role="3cpWs9">
             <property role="TrG5h" value="revision" />
             <node concept="3uibUv" id="3m3XyaE$FP6" role="1tU5fm">
-              <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+              <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
             </node>
             <node concept="2OqwBi" id="3m3XyaE$GK7" role="33vP2m">
               <node concept="37vLTw" id="3m3XyaE$GtD" role="2Oq$k0">
@@ -11704,7 +11704,7 @@
                 <node concept="37vLTI" id="6QZNBbmZJsk" role="3clFbG">
                   <node concept="2OqwBi" id="6QZNBbmZLMK" role="37vLTx">
                     <node concept="liA8E" id="6QZNBbmZLRy" role="2OqNvi">
-                      <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
+                      <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
                     </node>
                     <node concept="37vLTw" id="3m3XyaE$I9n" role="2Oq$k0">
                       <ref role="3cqZAo" node="3m3XyaE$FP5" resolve="revision" />
@@ -14832,7 +14832,7 @@
       <node concept="3Tm6S6" id="5uC3ja$9qKE" role="1B3o_S" />
       <node concept="_YKpA" id="5uC3ja$9Boq" role="1tU5fm">
         <node concept="3uibUv" id="5uC3ja$9FNI" role="_ZDj9">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
     </node>
@@ -14855,7 +14855,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="6HqUq9m1XFb" role="1B3o_S" />
       <node concept="3uibUv" id="6HqUq9m2siu" role="1tU5fm">
-        <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+        <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
       </node>
       <node concept="2AHcQZ" id="6HqUq9mfvpt" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -15042,14 +15042,14 @@
         <property role="TrG5h" value="revisions" />
         <node concept="_YKpA" id="5uC3ja$9mMX" role="1tU5fm">
           <node concept="3uibUv" id="5uC3ja$9n1E" role="_ZDj9">
-            <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+            <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
           </node>
         </node>
       </node>
       <node concept="37vLTG" id="6HqUq9m0$sr" role="3clF46">
         <property role="TrG5h" value="revision" />
         <node concept="3uibUv" id="6HqUq9m0P7f" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
         <node concept="2AHcQZ" id="6HqUq9mfTHC" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -16214,7 +16214,7 @@
                               <ref role="3cqZAo" node="6HqUq9m2z3d" resolve="myRevision" />
                             </node>
                             <node concept="liA8E" id="5Y_dPLM_ySa" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                             </node>
                           </node>
                           <node concept="2OqwBi" id="5Y_dPLM$Rwn" role="3uHU7B">
@@ -16227,7 +16227,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="5Y_dPLM$Rwr" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                             </node>
                           </node>
                         </node>
@@ -18714,7 +18714,7 @@
       <node concept="3Tm1VV" id="1jG3ZCaL_tr" role="1B3o_S" />
       <node concept="_YKpA" id="1jG3ZCaL_ts" role="3clF45">
         <node concept="3uibUv" id="1jG3ZCaL_tt" role="_ZDj9">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
     </node>
@@ -18885,7 +18885,7 @@
                         <node concept="3clFbF" id="3iaws4RzoQa" role="3cqZAp">
                           <node concept="2OqwBi" id="3iaws4RzKQA" role="3clFbG">
                             <node concept="liA8E" id="3iaws4RzVy6" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getAuthor()" resolve="getAuthor" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getAuthor()" resolve="getAuthor" />
                             </node>
                             <node concept="2OqwBi" id="3iaws4Rzuh$" role="2Oq$k0">
                               <node concept="liA8E" id="3iaws4RzBia" role="2OqNvi">
@@ -18922,7 +18922,7 @@
               <node concept="2WmjW8" id="3iaws4RyUXP" role="2OqNvi">
                 <node concept="2OqwBi" id="3iaws4R_XBz" role="25WWJ7">
                   <node concept="liA8E" id="3iaws4RA8FP" role="2OqNvi">
-                    <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getAuthor()" resolve="getAuthor" />
+                    <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getAuthor()" resolve="getAuthor" />
                   </node>
                   <node concept="2OqwBi" id="3iaws4R_Grz" role="2Oq$k0">
                     <node concept="liA8E" id="3iaws4R_QEl" role="2OqNvi">
@@ -20131,7 +20131,7 @@
                 <ref role="3cqZAo" node="CLCVuHrjua" resolve="revision" />
               </node>
               <node concept="liA8E" id="2z3_BUP77VQ" role="2OqNvi">
-                <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
               </node>
             </node>
             <node concept="37vLTw" id="1jG3ZCb5nsh" role="37wK5m">
@@ -20153,7 +20153,7 @@
       <node concept="37vLTG" id="CLCVuHrjua" role="3clF46">
         <property role="TrG5h" value="revision" />
         <node concept="3uibUv" id="1HQGCN8DakW" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
     </node>
@@ -20295,11 +20295,11 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="23VhocmxYS" role="2OqNvi">
-                  <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                  <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                 </node>
               </node>
               <node concept="liA8E" id="23VhocmxYT" role="2OqNvi">
-                <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
               </node>
             </node>
           </node>
@@ -20381,11 +20381,11 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="23VhocxrM8" role="2OqNvi">
-                                <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                                <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                               </node>
                             </node>
                             <node concept="liA8E" id="23VhocxKY8" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
                             </node>
                           </node>
                           <node concept="liA8E" id="23Vhocyqs0" role="2OqNvi">
@@ -20856,11 +20856,11 @@
                               <ref role="3cqZAo" node="7GdQgoXwKpF" resolve="revision" />
                             </node>
                             <node concept="liA8E" id="6PVY$JZguPp" role="2OqNvi">
-                              <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                              <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
                             </node>
                           </node>
                           <node concept="liA8E" id="6PVY$JZguPq" role="2OqNvi">
-                            <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                            <ref role="37wK5l" to="yah1:~VcsRevisionNumber.asString()" resolve="asString" />
                           </node>
                         </node>
                         <node concept="liA8E" id="6PVY$JZguPr" role="2OqNvi">
@@ -21264,7 +21264,7 @@
       <node concept="37vLTG" id="7GdQgoXwKpF" role="3clF46">
         <property role="TrG5h" value="revision" />
         <node concept="3uibUv" id="7GdQgoXwKpE" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
     </node>
@@ -21447,7 +21447,7 @@
                         <ref role="3cqZAo" node="7GdQgoXzACs" resolve="revision" />
                       </node>
                       <node concept="liA8E" id="5Lno_XGzXHN" role="2OqNvi">
-                        <ref role="37wK5l" to="yah0:~VcsFileContent.loadContent()" resolve="loadContent" />
+                        <ref role="37wK5l" to="yah1:~VcsFileContent.loadContent()" resolve="loadContent" />
                       </node>
                     </node>
                   </node>
@@ -21488,7 +21488,7 @@
       <node concept="37vLTG" id="7GdQgoXzACs" role="3clF46">
         <property role="TrG5h" value="revision" />
         <node concept="3uibUv" id="7GdQgoXzACt" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
       </node>
       <node concept="3Tm6S6" id="7GdQgoXzACr" role="1B3o_S" />
@@ -21720,7 +21720,7 @@
                   <ref role="37wK5l" to="33ny:~Date.compareTo(java.util.Date)" resolve="compareTo" />
                   <node concept="2OqwBi" id="5vQ$xCoUWsD" role="37wK5m">
                     <node concept="liA8E" id="4aYE7KcUPI7" role="2OqNvi">
-                      <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
+                      <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
                     </node>
                     <node concept="2OqwBi" id="4aYE7KcUNEB" role="2Oq$k0">
                       <node concept="37vLTw" id="5vQ$xCoUWsF" role="2Oq$k0">
@@ -21734,7 +21734,7 @@
                 </node>
                 <node concept="2OqwBi" id="5vQ$xCoUPT1" role="2Oq$k0">
                   <node concept="liA8E" id="5vQ$xCoUPT2" role="2OqNvi">
-                    <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
+                    <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
                   </node>
                   <node concept="37vLTw" id="5vQ$xCoUPT3" role="2Oq$k0">
                     <ref role="3cqZAo" node="5vQ$xCoT2te" resolve="revision" />
@@ -21763,7 +21763,7 @@
       <node concept="37vLTG" id="5vQ$xCoT2te" role="3clF46">
         <property role="TrG5h" value="revision" />
         <node concept="3uibUv" id="5vQ$xCoT2td" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+          <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
         </node>
         <node concept="2AHcQZ" id="5vQ$xCoVuJM" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -22123,7 +22123,7 @@
                 <ref role="37wK5l" to="33ny:~Date.compareTo(java.util.Date)" resolve="compareTo" />
                 <node concept="2OqwBi" id="3W5qyJLrslh" role="37wK5m">
                   <node concept="liA8E" id="3W5qyJLrsli" role="2OqNvi">
-                    <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
+                    <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
                   </node>
                   <node concept="1rXfSq" id="4aYE7Kd8_my" role="2Oq$k0">
                     <ref role="37wK5l" node="5vQ$xCpgP_Y" resolve="getRevision" />
@@ -22132,7 +22132,7 @@
               </node>
               <node concept="2OqwBi" id="3W5qyJLrslk" role="2Oq$k0">
                 <node concept="liA8E" id="3W5qyJLrsll" role="2OqNvi">
-                  <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
+                  <ref role="37wK5l" to="yah1:~VcsRevisionDescription.getRevisionDate()" resolve="getRevisionDate" />
                 </node>
                 <node concept="2OqwBi" id="3W5qyJLrslm" role="2Oq$k0">
                   <node concept="37vLTw" id="3W5qyJLrsln" role="2Oq$k0">
@@ -22271,7 +22271,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="5vQ$xCpgPA3" role="3clF45">
-        <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+        <ref role="3uigEE" to="yah1:~VcsFileRevision" resolve="VcsFileRevision" />
       </node>
       <node concept="2AHcQZ" id="5vQ$xCpgPA4" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />

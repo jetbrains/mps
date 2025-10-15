@@ -59,6 +59,8 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="nvd4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.repository(MPS.OpenAPI/)" />
     <import index="1038" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="1039" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.changes(MPS.IDEA.Modules/)" />
+    <import index="jlcv" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs(MPS.IDEA.Modules/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -1333,8 +1335,8 @@
                       <ref role="3uigEE" to="1038:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
                     </node>
                     <node concept="2YIFZM" id="58EREyZPCuh" role="10QFUP">
-                      <ref role="37wK5l" to="1037:~ChangeListManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-                      <ref role="1Pybhc" to="1037:~ChangeListManager" resolve="ChangeListManager" />
+                      <ref role="37wK5l" to="1039:~ChangeListManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                      <ref role="1Pybhc" to="1039:~ChangeListManager" resolve="ChangeListManager" />
                       <node concept="37vLTw" id="58EREyZPKiK" role="37wK5m">
                         <ref role="3cqZAo" node="58EREyZPyGY" resolve="myProject" />
                       </node>
@@ -2702,11 +2704,11 @@
                 <property role="TrG5h" value="clManager" />
                 <property role="3TUv4t" value="true" />
                 <node concept="3uibUv" id="Jpw4evI0O4" role="1tU5fm">
-                  <ref role="3uigEE" to="1037:~ChangeListManager" resolve="ChangeListManager" />
+                  <ref role="3uigEE" to="1039:~ChangeListManager" resolve="ChangeListManager" />
                 </node>
                 <node concept="2YIFZM" id="Jpw4evI2V2" role="33vP2m">
-                  <ref role="37wK5l" to="1037:~ChangeListManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-                  <ref role="1Pybhc" to="1037:~ChangeListManager" resolve="ChangeListManager" />
+                  <ref role="37wK5l" to="1039:~ChangeListManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                  <ref role="1Pybhc" to="1039:~ChangeListManager" resolve="ChangeListManager" />
                   <node concept="37vLTw" id="Jpw4evI2V3" role="37wK5m">
                     <ref role="3cqZAo" node="7HnJnLuDv0z" resolve="myProject" />
                   </node>
@@ -2884,7 +2886,7 @@
                 <property role="TrG5h" value="ex" />
                 <node concept="nSUau" id="xvs04dIfLU" role="1tU5fm">
                   <node concept="3uibUv" id="6E4VEGZQxD_" role="nSUat">
-                    <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+                    <ref role="3uigEE" to="jlcv:~VcsException" resolve="VcsException" />
                   </node>
                 </node>
               </node>
@@ -2923,14 +2925,14 @@
                 <node concept="3cpWsn" id="2bNoq9f5JjL" role="3cpWs9">
                   <property role="TrG5h" value="change" />
                   <node concept="3uibUv" id="2bNoq9f5JjE" role="1tU5fm">
-                    <ref role="3uigEE" to="1037:~Change" resolve="Change" />
+                    <ref role="3uigEE" to="1039:~Change" resolve="Change" />
                   </node>
                   <node concept="2OqwBi" id="2bNoq9f5JjM" role="33vP2m">
                     <node concept="37vLTw" id="Jpw4evHRYX" role="2Oq$k0">
                       <ref role="3cqZAo" node="Jpw4evH_ka" resolve="clManager" />
                     </node>
                     <node concept="liA8E" id="2bNoq9f5JjO" role="2OqNvi">
-                      <ref role="37wK5l" to="1037:~ChangeListManager.getChange(com.intellij.openapi.vfs.VirtualFile)" resolve="getChange" />
+                      <ref role="37wK5l" to="1039:~ChangeListManager.getChange(com.intellij.openapi.vfs.VirtualFile)" resolve="getChange" />
                       <node concept="37vLTw" id="2bNoq9f5JjP" role="37wK5m">
                         <ref role="3cqZAo" node="2F$QDg9Evf9" resolve="file" />
                       </node>
@@ -2984,14 +2986,14 @@
                 <node concept="3cpWsn" id="2bNoq9f5K4l" role="3cpWs9">
                   <property role="TrG5h" value="beforeRevision" />
                   <node concept="3uibUv" id="2bNoq9f5K4g" role="1tU5fm">
-                    <ref role="3uigEE" to="1037:~ContentRevision" resolve="ContentRevision" />
+                    <ref role="3uigEE" to="1039:~ContentRevision" resolve="ContentRevision" />
                   </node>
                   <node concept="2OqwBi" id="2bNoq9f5K4m" role="33vP2m">
                     <node concept="37vLTw" id="2bNoq9f5K4n" role="2Oq$k0">
                       <ref role="3cqZAo" node="2bNoq9f5JjL" resolve="change" />
                     </node>
                     <node concept="liA8E" id="2bNoq9f5K4o" role="2OqNvi">
-                      <ref role="37wK5l" to="1037:~Change.getBeforeRevision()" resolve="getBeforeRevision" />
+                      <ref role="37wK5l" to="1039:~Change.getBeforeRevision()" resolve="getBeforeRevision" />
                     </node>
                   </node>
                 </node>
@@ -3028,7 +3030,7 @@
               <node concept="3clFbJ" id="tOur21PBVT" role="3cqZAp">
                 <node concept="2ZW3vV" id="tOur21PJK3" role="3clFbw">
                   <node concept="3uibUv" id="tOur21PLh7" role="2ZW6by">
-                    <ref role="3uigEE" to="1037:~ByteBackedContentRevision" resolve="ByteBackedContentRevision" />
+                    <ref role="3uigEE" to="1039:~ByteBackedContentRevision" resolve="ByteBackedContentRevision" />
                   </node>
                   <node concept="37vLTw" id="2bNoq9f5L9y" role="2ZW6bz">
                     <ref role="3cqZAo" node="2bNoq9f5K4l" resolve="beforeRevision" />
@@ -3038,12 +3040,12 @@
                   <node concept="3cpWs6" id="tOur21PMM3" role="3cqZAp">
                     <node concept="2OqwBi" id="tOur21PTAw" role="3cqZAk">
                       <node concept="liA8E" id="tOur21PWIe" role="2OqNvi">
-                        <ref role="37wK5l" to="1037:~ByteBackedContentRevision.getContentAsBytes()" resolve="getContentAsBytes" />
+                        <ref role="37wK5l" to="1039:~ByteBackedContentRevision.getContentAsBytes()" resolve="getContentAsBytes" />
                       </node>
                       <node concept="1eOMI4" id="tOur21PRH5" role="2Oq$k0">
                         <node concept="10QFUN" id="tOur21PRH2" role="1eOMHV">
                           <node concept="3uibUv" id="tOur21PRH7" role="10QFUM">
-                            <ref role="3uigEE" to="1037:~ByteBackedContentRevision" resolve="ByteBackedContentRevision" />
+                            <ref role="3uigEE" to="1039:~ByteBackedContentRevision" resolve="ByteBackedContentRevision" />
                           </node>
                           <node concept="37vLTw" id="2bNoq9f5LgD" role="10QFUP">
                             <ref role="3cqZAo" node="2bNoq9f5K4l" resolve="beforeRevision" />
@@ -3064,7 +3066,7 @@
                             <ref role="3cqZAo" node="2bNoq9f5K4l" resolve="beforeRevision" />
                           </node>
                           <node concept="liA8E" id="6ww30Znl2t$" role="2OqNvi">
-                            <ref role="37wK5l" to="1037:~ContentRevision.getContent()" resolve="getContent" />
+                            <ref role="37wK5l" to="1039:~ContentRevision.getContent()" resolve="getContent" />
                           </node>
                         </node>
                       </node>
@@ -3126,7 +3128,7 @@
         <node concept="37vLTG" id="Jpw4evH_ka" role="3clF46">
           <property role="TrG5h" value="clManager" />
           <node concept="3uibUv" id="Jpw4evHBoF" role="1tU5fm">
-            <ref role="3uigEE" to="1037:~ChangeListManager" resolve="ChangeListManager" />
+            <ref role="3uigEE" to="1039:~ChangeListManager" resolve="ChangeListManager" />
           </node>
         </node>
         <node concept="10Q1$e" id="6ww30Znl0P1" role="3clF45">

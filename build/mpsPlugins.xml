@@ -851,6 +851,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -908,6 +914,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -973,6 +985,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1032,6 +1050,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.closures.jar" />
@@ -1101,6 +1125,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1162,6 +1192,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1221,6 +1257,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.classifiers.jar" />
@@ -1290,6 +1332,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.baseLanguage.lightweightdsl.jar" />
@@ -1354,6 +1402,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.closures.jar" />
@@ -1421,6 +1475,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -1485,6 +1545,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -1540,6 +1606,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

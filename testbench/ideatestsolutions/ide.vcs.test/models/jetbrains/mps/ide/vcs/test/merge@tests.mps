@@ -14,11 +14,9 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
-    <import index="18nx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.checkin(MPS.IDEA/)" />
     <import index="btf5" ref="r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
-    <import index="epdg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.rollback(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
@@ -34,12 +32,10 @@
     <import index="lcr" ref="r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="2eq1" ref="r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)" />
-    <import index="qv1t" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl.projectlevelman(MPS.IDEA/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="1037" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes(MPS.IDEA/)" />
     <import index="d94j" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.workbench.actions.model(MPS.Workbench/)" />
     <import index="jlcu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs(MPS.IDEA/)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
@@ -55,14 +51,18 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
-    <import index="j86o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl(MPS.IDEA/)" />
     <import index="l8al" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.commands(jetbrains.mps.git4idea.stubs/)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
-    <import index="1038" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes(jetbrains.mps.vcs.idea.stubs/)" />
-    <import index="qv1u" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl.projectlevelman(jetbrains.mps.vcs.idea.stubs/)" />
-    <import index="j86p" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="1037" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.changes(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="qv1t" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl.projectlevelman(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="j86o" ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b/java:com.intellij.openapi.vcs.impl(jetbrains.mps.vcs.idea.stubs/)" />
+    <import index="1038" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.changes(MPS.IDEA.Modules/)" />
+    <import index="jlcv" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs(MPS.IDEA.Modules/)" />
+    <import index="epdg" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.rollback(MPS.IDEA.Modules/)" />
+    <import index="qv1u" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.impl.projectlevelman(MPS.IDEA.Modules/)" implicit="true" />
+    <import index="18nx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.checkin(MPS.IDEA/)" implicit="true" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -727,7 +727,7 @@
       <property role="TrG5h" value="myChangeListManager" />
       <node concept="3Tmbuc" id="7HgS$Vk38ek" role="1B3o_S" />
       <node concept="3uibUv" id="5xKkC$6gQRf" role="1tU5fm">
-        <ref role="3uigEE" to="1038:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
+        <ref role="3uigEE" to="1037:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
       </node>
     </node>
     <node concept="312cEg" id="3oUomEoMJrS" role="jymVt">
@@ -741,7 +741,7 @@
       <property role="TrG5h" value="myGitVcs" />
       <node concept="3Tmbuc" id="7HgS$Vk3cFb" role="1B3o_S" />
       <node concept="3uibUv" id="3oUomEoMJtp" role="1tU5fm">
-        <ref role="3uigEE" to="jlcu:~AbstractVcs" resolve="AbstractVcs" />
+        <ref role="3uigEE" to="jlcv:~AbstractVcs" resolve="AbstractVcs" />
       </node>
     </node>
     <node concept="2tJIrI" id="1oVBfwt1ipJ" role="jymVt" />
@@ -996,14 +996,14 @@
         <node concept="3clFbF" id="4g0Mut8_Kgy" role="3cqZAp">
           <node concept="2OqwBi" id="4g0Mut8_KKB" role="3clFbG">
             <node concept="2YIFZM" id="4g0Mut8_Khm" role="2Oq$k0">
-              <ref role="37wK5l" to="1037:~VcsDirtyScopeManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <ref role="1Pybhc" to="1037:~VcsDirtyScopeManager" resolve="VcsDirtyScopeManager" />
+              <ref role="37wK5l" to="1038:~VcsDirtyScopeManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="1038:~VcsDirtyScopeManager" resolve="VcsDirtyScopeManager" />
               <node concept="37vLTw" id="4g0Mut8_Krp" role="37wK5m">
                 <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
               </node>
             </node>
             <node concept="liA8E" id="4g0Mut8_Som" role="2OqNvi">
-              <ref role="37wK5l" to="1037:~VcsDirtyScopeManager.markEverythingDirty()" resolve="markEverythingDirty" />
+              <ref role="37wK5l" to="1038:~VcsDirtyScopeManager.markEverythingDirty()" resolve="markEverythingDirty" />
             </node>
           </node>
         </node>
@@ -1013,7 +1013,7 @@
               <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
             </node>
             <node concept="liA8E" id="4g0Mut8A69N" role="2OqNvi">
-              <ref role="37wK5l" to="1038:~ChangeListManagerImpl.ensureUpToDate()" resolve="ensureUpToDate" />
+              <ref role="37wK5l" to="1037:~ChangeListManagerImpl.ensureUpToDate()" resolve="ensureUpToDate" />
             </node>
           </node>
         </node>
@@ -1321,8 +1321,8 @@
               <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
             </node>
             <node concept="2YIFZM" id="5xKkC$6gRy3" role="37vLTx">
-              <ref role="1Pybhc" to="1038:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
-              <ref role="37wK5l" to="1038:~ChangeListManagerImpl.getInstanceImpl(com.intellij.openapi.project.Project)" resolve="getInstanceImpl" />
+              <ref role="1Pybhc" to="1037:~ChangeListManagerImpl" resolve="ChangeListManagerImpl" />
+              <ref role="37wK5l" to="1037:~ChangeListManagerImpl.getInstanceImpl(com.intellij.openapi.project.Project)" resolve="getInstanceImpl" />
               <node concept="37vLTw" id="2BHiRxeukm9" role="37wK5m">
                 <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
               </node>
@@ -1384,14 +1384,14 @@
             </node>
             <node concept="2OqwBi" id="3oUomEoMJu6" role="37vLTx">
               <node concept="2YIFZM" id="3oUomEoMJu7" role="2Oq$k0">
-                <ref role="1Pybhc" to="qv1u:~AllVcses" resolve="AllVcses" />
-                <ref role="37wK5l" to="qv1u:~AllVcses.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="qv1t:~AllVcses" resolve="AllVcses" />
+                <ref role="37wK5l" to="qv1t:~AllVcses.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                 <node concept="37vLTw" id="2BHiRxeuyOo" role="37wK5m">
                   <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
                 </node>
               </node>
               <node concept="liA8E" id="3oUomEoMJu9" role="2OqNvi">
-                <ref role="37wK5l" to="qv1t:~AllVcsesI.getByName(java.lang.String)" resolve="getByName" />
+                <ref role="37wK5l" to="qv1u:~AllVcsesI.getByName(java.lang.String)" resolve="getByName" />
                 <node concept="Xl_RD" id="3oUomEoMJua" role="37wK5m">
                   <property role="Xl_RC" value="Git" />
                 </node>
@@ -1445,8 +1445,8 @@
           <node concept="1rXfSq" id="4hiugqyz9v_" role="3clFbG">
             <ref role="37wK5l" node="xjl$fQR0hX" resolve="setAutoaddPolicy" />
             <node concept="Rm8GO" id="xjl$fQR0im" role="37wK5m">
-              <ref role="1Px2BO" to="jlcu:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
-              <ref role="Rm8GQ" to="jlcu:~VcsShowConfirmationOption$Value.DO_NOTHING_SILENTLY" resolve="DO_NOTHING_SILENTLY" />
+              <ref role="1Px2BO" to="jlcv:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
+              <ref role="Rm8GQ" to="jlcv:~VcsShowConfirmationOption$Value.DO_NOTHING_SILENTLY" resolve="DO_NOTHING_SILENTLY" />
             </node>
           </node>
         </node>
@@ -1539,11 +1539,11 @@
                 <property role="3TUv4t" value="true" />
                 <property role="TrG5h" value="projectVcsManager" />
                 <node concept="3uibUv" id="5qjuzPoksoc" role="1tU5fm">
-                  <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                  <ref role="3uigEE" to="jlcv:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
                 </node>
                 <node concept="2YIFZM" id="5qjuzPokFqE" role="33vP2m">
-                  <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                  <ref role="1Pybhc" to="jlcv:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                  <ref role="37wK5l" to="jlcv:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                   <node concept="37vLTw" id="5qjuzPokFqF" role="37wK5m">
                     <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
                   </node>
@@ -1556,7 +1556,7 @@
                   <ref role="3cqZAo" node="5qjuzPoksoa" resolve="projectVcsManager" />
                 </node>
                 <node concept="3uibUv" id="5qjuzPokMzT" role="2ZW6by">
-                  <ref role="3uigEE" to="j86p:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
+                  <ref role="3uigEE" to="j86o:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
                 </node>
               </node>
               <node concept="3clFbS" id="5qjuzPoksok" role="3clFbx">
@@ -1568,12 +1568,12 @@
                           <ref role="3cqZAo" node="5qjuzPoksoa" resolve="projectVcsManager" />
                         </node>
                         <node concept="3uibUv" id="5qjuzPoksop" role="10QFUM">
-                          <ref role="3uigEE" to="j86p:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
+                          <ref role="3uigEE" to="j86o:~ProjectLevelVcsManagerImpl" resolve="ProjectLevelVcsManagerImpl" />
                         </node>
                       </node>
                     </node>
                     <node concept="liA8E" id="5qjuzPokOug" role="2OqNvi">
-                      <ref role="37wK5l" to="j86p:~ProjectLevelVcsManagerImpl.waitForInitialized()" resolve="waitForInitialized" />
+                      <ref role="37wK5l" to="j86o:~ProjectLevelVcsManagerImpl.waitForInitialized()" resolve="waitForInitialized" />
                     </node>
                   </node>
                 </node>
@@ -1640,7 +1640,7 @@
               <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
             </node>
             <node concept="liA8E" id="4g0Mut8AUue" role="2OqNvi">
-              <ref role="37wK5l" to="1038:~ChangeListManagerImpl.waitEverythingDoneInTestMode()" resolve="waitEverythingDoneInTestMode" />
+              <ref role="37wK5l" to="1037:~ChangeListManagerImpl.waitEverythingDoneInTestMode()" resolve="waitEverythingDoneInTestMode" />
             </node>
           </node>
         </node>
@@ -1792,7 +1792,7 @@
       <node concept="37vLTG" id="xjl$fQR0hW" role="3clF46">
         <property role="TrG5h" value="value" />
         <node concept="3uibUv" id="xjl$fQR0i0" role="1tU5fm">
-          <ref role="3uigEE" to="jlcu:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
+          <ref role="3uigEE" to="jlcv:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
         </node>
       </node>
       <node concept="3clFbS" id="xjl$fQR0i1" role="3clF47">
@@ -1800,11 +1800,11 @@
           <node concept="3cpWsn" id="xjl$fQR0hV" role="3cpWs9">
             <property role="TrG5h" value="vcsManager" />
             <node concept="3uibUv" id="xjl$fQR0i3" role="1tU5fm">
-              <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+              <ref role="3uigEE" to="jlcv:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
             </node>
             <node concept="2YIFZM" id="xjl$fQR0i4" role="33vP2m">
-              <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-              <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="jlcv:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+              <ref role="37wK5l" to="jlcv:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
               <node concept="37vLTw" id="2BHiRxeumuR" role="37wK5m">
                 <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
               </node>
@@ -1818,10 +1818,10 @@
                 <ref role="3cqZAo" node="xjl$fQR0hV" resolve="vcsManager" />
               </node>
               <node concept="liA8E" id="xjl$fQR0ia" role="2OqNvi">
-                <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getStandardConfirmation(com.intellij.openapi.vcs.VcsConfiguration$StandardConfirmation,com.intellij.openapi.vcs.AbstractVcs)" resolve="getStandardConfirmation" />
-                <node concept="Rm8GO" id="xjl$fQR0ib" role="37wK5m">
-                  <ref role="1Px2BO" to="jlcu:~VcsConfiguration$StandardConfirmation" resolve="VcsConfiguration.StandardConfirmation" />
-                  <ref role="Rm8GQ" to="jlcu:~VcsConfiguration$StandardConfirmation.ADD" resolve="ADD" />
+                <ref role="37wK5l" to="jlcv:~ProjectLevelVcsManager.getStandardConfirmation(com.intellij.openapi.vcs.VcsConfiguration$StandardConfirmation,com.intellij.openapi.vcs.AbstractVcs)" resolve="getStandardConfirmation" />
+                <node concept="Rm8GO" id="7ua3Cx2EWn$" role="37wK5m">
+                  <ref role="Rm8GQ" to="jlcv:~VcsConfiguration$StandardConfirmation.ADD" resolve="ADD" />
+                  <ref role="1Px2BO" to="jlcv:~VcsConfiguration$StandardConfirmation" resolve="VcsConfiguration.StandardConfirmation" />
                 </node>
                 <node concept="37vLTw" id="2BHiRxeut4Z" role="37wK5m">
                   <ref role="3cqZAo" node="3oUomEoMJtn" resolve="myGitVcs" />
@@ -1829,7 +1829,7 @@
               </node>
             </node>
             <node concept="liA8E" id="xjl$fQR0id" role="2OqNvi">
-              <ref role="37wK5l" to="jlcu:~VcsShowConfirmationOption.setValue(com.intellij.openapi.vcs.VcsShowConfirmationOption$Value)" resolve="setValue" />
+              <ref role="37wK5l" to="jlcv:~VcsShowConfirmationOption.setValue(com.intellij.openapi.vcs.VcsShowConfirmationOption$Value)" resolve="setValue" />
               <node concept="37vLTw" id="2BHiRxgm84k" role="37wK5m">
                 <ref role="3cqZAo" node="xjl$fQR0hW" resolve="value" />
               </node>
@@ -2391,14 +2391,14 @@
           <node concept="3cpWsn" id="7HgS$VjMeL1" role="3cpWs9">
             <property role="TrG5h" value="modelFileChange" />
             <node concept="3uibUv" id="7HgS$VjMeL2" role="1tU5fm">
-              <ref role="3uigEE" to="1037:~Change" resolve="Change" />
+              <ref role="3uigEE" to="1038:~Change" resolve="Change" />
             </node>
             <node concept="2OqwBi" id="7HgS$VjMeL3" role="33vP2m">
               <node concept="37vLTw" id="7HgS$VjMeL4" role="2Oq$k0">
                 <ref role="3cqZAo" node="3oUomEoMAZS" resolve="myChangeListManager" />
               </node>
               <node concept="liA8E" id="7HgS$VjMeL5" role="2OqNvi">
-                <ref role="37wK5l" to="1038:~ChangeListManagerImpl.getChange(com.intellij.openapi.vfs.VirtualFile)" resolve="getChange" />
+                <ref role="37wK5l" to="1037:~ChangeListManagerImpl.getChange(com.intellij.openapi.vfs.VirtualFile)" resolve="getChange" />
                 <node concept="37vLTw" id="13_Xm7whLV2" role="37wK5m">
                   <ref role="3cqZAo" node="7HgS$Vkatzs" resolve="modelFile" />
                 </node>
@@ -2429,13 +2429,13 @@
                 <property role="TrG5h" value="exceptions" />
                 <node concept="_YKpA" id="7HgS$VjMeLa" role="1tU5fm">
                   <node concept="3uibUv" id="7HgS$VjMeLb" role="_ZDj9">
-                    <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+                    <ref role="3uigEE" to="jlcv:~VcsException" resolve="VcsException" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="7HgS$VjMeLc" role="33vP2m">
                   <node concept="Tc6Ow" id="7HgS$VjMeLd" role="2ShVmc">
                     <node concept="3uibUv" id="7HgS$VjMeLe" role="HW$YZ">
-                      <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+                      <ref role="3uigEE" to="jlcv:~VcsException" resolve="VcsException" />
                     </node>
                   </node>
                 </node>
@@ -2452,7 +2452,7 @@
                     <ref role="3cqZAo" node="3oUomEoMJtn" resolve="myGitVcs" />
                   </node>
                   <node concept="liA8E" id="4g0Mut8AyT$" role="2OqNvi">
-                    <ref role="37wK5l" to="jlcu:~AbstractVcs.getRollbackEnvironment()" resolve="getRollbackEnvironment" />
+                    <ref role="37wK5l" to="jlcv:~AbstractVcs.getRollbackEnvironment()" resolve="getRollbackEnvironment" />
                   </node>
                 </node>
               </node>
@@ -2483,9 +2483,9 @@
                   <node concept="37vLTw" id="7HgS$VjMeLn" role="37wK5m">
                     <ref role="3cqZAo" node="7HgS$VjMeL9" resolve="exceptions" />
                   </node>
-                  <node concept="10M0yZ" id="7HgS$VjMeLo" role="37wK5m">
-                    <ref role="1PxDUh" to="epdg:~RollbackProgressListener" resolve="RollbackProgressListener" />
+                  <node concept="10M0yZ" id="7ua3Cx2F8bT" role="37wK5m">
                     <ref role="3cqZAo" to="epdg:~RollbackProgressListener.EMPTY" resolve="EMPTY" />
+                    <ref role="1PxDUh" to="epdg:~RollbackProgressListener" resolve="RollbackProgressListener" />
                   </node>
                 </node>
               </node>
@@ -11340,14 +11340,14 @@
                 <node concept="3clFbF" id="4DNDPQS2Lg5" role="3cqZAp">
                   <node concept="2OqwBi" id="4DNDPQS2Lg6" role="3clFbG">
                     <node concept="2YIFZM" id="4DNDPQS2Lg7" role="2Oq$k0">
-                      <ref role="1Pybhc" to="1037:~VcsDirtyScopeManager" resolve="VcsDirtyScopeManager" />
-                      <ref role="37wK5l" to="1037:~VcsDirtyScopeManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                      <ref role="1Pybhc" to="1038:~VcsDirtyScopeManager" resolve="VcsDirtyScopeManager" />
+                      <ref role="37wK5l" to="1038:~VcsDirtyScopeManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                       <node concept="37vLTw" id="56cvcsnGGmq" role="37wK5m">
                         <ref role="3cqZAo" node="56cvcsnEV9K" resolve="myProject" />
                       </node>
                     </node>
                     <node concept="liA8E" id="4DNDPQS2Lg9" role="2OqNvi">
-                      <ref role="37wK5l" to="1037:~VcsDirtyScopeManager.fileDirty(com.intellij.openapi.vfs.VirtualFile)" resolve="fileDirty" />
+                      <ref role="37wK5l" to="1038:~VcsDirtyScopeManager.fileDirty(com.intellij.openapi.vfs.VirtualFile)" resolve="fileDirty" />
                       <node concept="37vLTw" id="2BHiRxgkWpO" role="37wK5m">
                         <ref role="3cqZAo" node="4DNDPQS2KT5" resolve="file" />
                       </node>
@@ -11906,7 +11906,7 @@
             <node concept="3cpWsn" id="3oUomEoMJvM" role="3cpWs9">
               <property role="TrG5h" value="change" />
               <node concept="3uibUv" id="3oUomEoMJvN" role="1tU5fm">
-                <ref role="3uigEE" to="1037:~Change" resolve="Change" />
+                <ref role="3uigEE" to="1038:~Change" resolve="Change" />
               </node>
               <node concept="2OqwBi" id="3oUomEoMJvO" role="33vP2m">
                 <node concept="37vLTw" id="2BHiRxeun40" role="2Oq$k0">
@@ -12078,7 +12078,7 @@
                 <property role="TrG5h" value="e" />
                 <node concept="nSUau" id="xvs04dIv04" role="1tU5fm">
                   <node concept="3uibUv" id="4DNDPQS2LQ0" role="nSUat">
-                    <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+                    <ref role="3uigEE" to="jlcv:~VcsException" resolve="VcsException" />
                   </node>
                 </node>
               </node>
@@ -12158,7 +12158,7 @@
           </node>
         </node>
         <node concept="3uibUv" id="6hwF4wZOzAN" role="Sfmx6">
-          <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+          <ref role="3uigEE" to="jlcv:~VcsException" resolve="VcsException" />
         </node>
         <node concept="2AHcQZ" id="6hwF4wZOzAU" role="2AJF6D">
           <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />
@@ -12175,8 +12175,8 @@
           <node concept="1rXfSq" id="4hiugqyzeUO" role="3clFbG">
             <ref role="37wK5l" node="xjl$fQR0hX" resolve="setAutoaddPolicy" />
             <node concept="Rm8GO" id="xjl$fQR0AW" role="37wK5m">
-              <ref role="1Px2BO" to="jlcu:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
-              <ref role="Rm8GQ" to="jlcu:~VcsShowConfirmationOption$Value.DO_ACTION_SILENTLY" resolve="DO_ACTION_SILENTLY" />
+              <ref role="1Px2BO" to="jlcv:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
+              <ref role="Rm8GQ" to="jlcv:~VcsShowConfirmationOption$Value.DO_ACTION_SILENTLY" resolve="DO_ACTION_SILENTLY" />
             </node>
           </node>
         </node>
@@ -12360,8 +12360,8 @@
           <node concept="1rXfSq" id="4hiugqyz7Es" role="3clFbG">
             <ref role="37wK5l" node="xjl$fQR0hX" resolve="setAutoaddPolicy" />
             <node concept="Rm8GO" id="xjl$fQR0AX" role="37wK5m">
-              <ref role="1Px2BO" to="jlcu:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
-              <ref role="Rm8GQ" to="jlcu:~VcsShowConfirmationOption$Value.DO_NOTHING_SILENTLY" resolve="DO_NOTHING_SILENTLY" />
+              <ref role="1Px2BO" to="jlcv:~VcsShowConfirmationOption$Value" resolve="VcsShowConfirmationOption.Value" />
+              <ref role="Rm8GQ" to="jlcv:~VcsShowConfirmationOption$Value.DO_NOTHING_SILENTLY" resolve="DO_NOTHING_SILENTLY" />
             </node>
           </node>
         </node>
@@ -13259,7 +13259,7 @@
         <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
       </node>
       <node concept="3uibUv" id="6hwF4wZOzB8" role="Sfmx6">
-        <ref role="3uigEE" to="jlcu:~VcsException" resolve="VcsException" />
+        <ref role="3uigEE" to="jlcv:~VcsException" resolve="VcsException" />
       </node>
       <node concept="2AHcQZ" id="6hwF4wZOzBh" role="2AJF6D">
         <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />

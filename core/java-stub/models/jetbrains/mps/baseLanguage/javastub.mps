@@ -22,8 +22,6 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
-    <import index="k8ye" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm(jetbrains.mps.java.stub/)" />
-    <import index="dd86" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.tree(jetbrains.mps.java.stub/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="i290" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.java.stub(MPS.Core/)" />
@@ -44,6 +42,8 @@
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="dd86" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:org.jetbrains.org.objectweb.asm.tree(MPS.IDEA.Modules/)" />
+    <import index="k8ye" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:org.jetbrains.org.objectweb.asm(MPS.IDEA.Modules/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -3342,9 +3342,9 @@
                           <ref role="2Oxat5" to="dd86:~InnerClassNode.access" resolve="access" />
                         </node>
                       </node>
-                      <node concept="10M0yZ" id="3Eq_PkM9HOO" role="3uHU7w">
-                        <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                      <node concept="10M0yZ" id="2Cp6PEmTsFZ" role="3uHU7w">
                         <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PROTECTED" resolve="ACC_PROTECTED" />
+                        <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                       </node>
                     </node>
                   </node>
@@ -3369,9 +3369,9 @@
                           <ref role="2Oxat5" to="dd86:~InnerClassNode.access" resolve="access" />
                         </node>
                       </node>
-                      <node concept="10M0yZ" id="3Eq_PkM9I9A" role="3uHU7w">
-                        <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                      <node concept="10M0yZ" id="2Cp6PEmToY9" role="3uHU7w">
                         <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PRIVATE" resolve="ACC_PRIVATE" />
+                        <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                       </node>
                     </node>
                   </node>
@@ -16510,9 +16510,9 @@
                 <node concept="37vLTw" id="6i5nc29sCaJ" role="3uHU7B">
                   <ref role="3cqZAo" node="6i5nc29sCau" resolve="flag" />
                 </node>
-                <node concept="10M0yZ" id="6i5nc29t60Y" role="3uHU7w">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmTvb8" role="3uHU7w">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_ENUM" resolve="ACC_ENUM" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
               </node>
             </node>
@@ -16536,9 +16536,9 @@
                 <node concept="37vLTw" id="6i5nc29sCaU" role="3uHU7B">
                   <ref role="3cqZAo" node="6i5nc29sCau" resolve="flag" />
                 </node>
-                <node concept="10M0yZ" id="6i5nc29t62U" role="3uHU7w">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmTvbh" role="3uHU7w">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_INTERFACE" resolve="ACC_INTERFACE" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
               </node>
             </node>

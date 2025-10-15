@@ -7,11 +7,11 @@
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="tuzk" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.signature(jetbrains.mps.java.stub/)" />
-    <import index="dd86" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.tree(jetbrains.mps.java.stub/)" />
-    <import index="k8ye" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm(jetbrains.mps.java.stub/)" />
     <import index="emwx" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.lang.model(JDK/)" />
     <import index="1ltj" ref="r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)" />
+    <import index="dd86" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:org.jetbrains.org.objectweb.asm.tree(MPS.IDEA.Modules/)" />
+    <import index="k8ye" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:org.jetbrains.org.objectweb.asm(MPS.IDEA.Modules/)" />
+    <import index="tuzk" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:org.jetbrains.org.objectweb.asm.signature(MPS.IDEA.Modules/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2347,9 +2347,9 @@
           <node concept="3y3z36" id="6hYzBiUOuJZ" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuK0" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuK1" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuK2" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn3efq" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_VARARGS" resolve="ACC_VARARGS" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuK3" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuK4" role="2OqNvi">
@@ -2377,9 +2377,9 @@
           <node concept="3y3z36" id="6hYzBiUOuKe" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuKf" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuKg" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuKh" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn1STQ" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PRIVATE" resolve="ACC_PRIVATE" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuKi" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuKj" role="2OqNvi">
@@ -2407,9 +2407,9 @@
           <node concept="3y3z36" id="6hYzBiUOuKt" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuKu" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuKv" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuKw" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn39Z0" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PUBLIC" resolve="ACC_PUBLIC" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuKx" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuKy" role="2OqNvi">
@@ -2585,9 +2585,9 @@
           <node concept="3y3z36" id="6hYzBiUOuLV" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuLW" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuLX" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuLY" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn3iw3" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_ABSTRACT" resolve="ACC_ABSTRACT" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuLZ" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuM0" role="2OqNvi">
@@ -2615,9 +2615,9 @@
           <node concept="3y3z36" id="6hYzBiUOuMa" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuMb" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuMc" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuMd" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn1Xzz" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_BRIDGE" resolve="ACC_BRIDGE" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuMe" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuMf" role="2OqNvi">
@@ -2645,9 +2645,9 @@
           <node concept="3y3z36" id="XZeAgvHXBu" role="3cqZAk">
             <node concept="1eOMI4" id="XZeAgvHXBv" role="3uHU7B">
               <node concept="pVHWs" id="XZeAgvHXBw" role="1eOMHV">
-                <node concept="10M0yZ" id="XZeAgvHXBx" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn3EiY" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_SYNTHETIC" resolve="ACC_SYNTHETIC" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="XZeAgvHXBy" role="3uHU7w">
                   <node concept="2OwXpG" id="XZeAgvHXBz" role="2OqNvi">
@@ -2675,9 +2675,9 @@
           <node concept="3y3z36" id="5N7M5_4enHk" role="3cqZAk">
             <node concept="1eOMI4" id="5N7M5_4enHl" role="3uHU7B">
               <node concept="pVHWs" id="5N7M5_4enHm" role="1eOMHV">
-                <node concept="10M0yZ" id="5N7M5_4enHn" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEn2DCj" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_SYNCHRONIZED" resolve="ACC_SYNCHRONIZED" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="5N7M5_4enHo" role="3uHU7w">
                   <node concept="2OwXpG" id="5N7M5_4enHp" role="2OqNvi">
@@ -3718,9 +3718,9 @@
           <node concept="3y3z36" id="6hYzBiUOuSb" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuSc" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuSd" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuSe" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmWdcE" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PRIVATE" resolve="ACC_PRIVATE" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuSf" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuSg" role="2OqNvi">
@@ -3748,9 +3748,9 @@
           <node concept="3y3z36" id="6hYzBiUOuSq" role="3cqZAk">
             <node concept="1eOMI4" id="6hYzBiUOuSr" role="3uHU7B">
               <node concept="pVHWs" id="6hYzBiUOuSs" role="1eOMHV">
-                <node concept="10M0yZ" id="6hYzBiUOuSt" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmWd5g" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PUBLIC" resolve="ACC_PUBLIC" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="6hYzBiUOuSu" role="3uHU7w">
                   <node concept="2OwXpG" id="6hYzBiUOuSv" role="2OqNvi">
@@ -3896,9 +3896,9 @@
           <node concept="3y3z36" id="7BvXxp$JjlX" role="3cqZAk">
             <node concept="1eOMI4" id="7BvXxp$JjlY" role="3uHU7B">
               <node concept="pVHWs" id="7BvXxp$JjlZ" role="1eOMHV">
-                <node concept="10M0yZ" id="7BvXxp$Jjm0" role="3uHU7B">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmWd9t" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_FINAL" resolve="ACC_FINAL" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
                 <node concept="2OqwBi" id="7BvXxp$Jjm1" role="3uHU7w">
                   <node concept="2OwXpG" id="7BvXxp$Jjm2" role="2OqNvi">
@@ -3956,7 +3956,7 @@
           <node concept="3y3z36" id="3NQd03fFfrv" role="3cqZAk">
             <node concept="1eOMI4" id="3NQd03fFfrw" role="3uHU7B">
               <node concept="pVHWs" id="3NQd03fFfrx" role="1eOMHV">
-                <node concept="10M0yZ" id="3NQd03fFgpi" role="3uHU7B">
+                <node concept="10M0yZ" id="2Cp6PEmWd5p" role="3uHU7B">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_SYNTHETIC" resolve="ACC_SYNTHETIC" />
                   <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
@@ -4895,9 +4895,9 @@
             </node>
           </node>
           <node concept="3KbdKl" id="6hYzBiUOv0o" role="3KbHQx">
-            <node concept="10M0yZ" id="6hYzBiUOv0p" role="3Kbmr1">
-              <ref role="1PxDUh" to="k8ye:~Type" resolve="Type" />
+            <node concept="10M0yZ" id="2Cp6PEmWlJI" role="3Kbmr1">
               <ref role="3cqZAo" to="k8ye:~Type.ARRAY" resolve="ARRAY" />
+              <ref role="1PxDUh" to="k8ye:~Type" resolve="Type" />
             </node>
             <node concept="3clFbS" id="6hYzBiUOv0q" role="3Kbo56">
               <node concept="9aQIb" id="6hYzBiUOv0r" role="3cqZAp">
@@ -8391,7 +8391,7 @@
               <ref role="3cqZAo" node="6hYzBiUOvv1" resolve="myNode" />
             </node>
             <node concept="2ShNRf" id="6hYzBiUOvvS" role="37vLTx">
-              <node concept="1pGfFk" id="6hYzBiUOvvT" role="2ShVmc">
+              <node concept="1pGfFk" id="2Cp6PEmVeaf" role="2ShVmc">
                 <ref role="37wK5l" to="dd86:~ClassNode.&lt;init&gt;()" resolve="ClassNode" />
               </node>
             </node>
@@ -8410,9 +8410,9 @@
                     <ref role="3cqZAo" node="6hYzBiUOvv1" resolve="myNode" />
                   </node>
                   <node concept="pVOtf" id="7sAt0z3f$8X" role="37wK5m">
-                    <node concept="10M0yZ" id="1wxNQgEU1Wr" role="3uHU7w">
-                      <ref role="1PxDUh" to="k8ye:~ClassReader" resolve="ClassReader" />
+                    <node concept="10M0yZ" id="2Cp6PEmVsER" role="3uHU7w">
                       <ref role="3cqZAo" to="k8ye:~ClassReader.SKIP_FRAMES" resolve="SKIP_FRAMES" />
+                      <ref role="1PxDUh" to="k8ye:~ClassReader" resolve="ClassReader" />
                     </node>
                     <node concept="1eOMI4" id="7ZQX3Te_6$T" role="3uHU7B">
                       <node concept="3K4zz7" id="7ZQX3Te_6M7" role="1eOMHV">
@@ -8423,9 +8423,9 @@
                           <ref role="3cqZAo" node="7ZQX3Te_4UH" resolve="needParamNames" />
                         </node>
                         <node concept="pVOtf" id="7sAt0z3fzPi" role="3K4GZi">
-                          <node concept="10M0yZ" id="6hYzBiUOvw2" role="3uHU7B">
-                            <ref role="1PxDUh" to="k8ye:~ClassReader" resolve="ClassReader" />
+                          <node concept="10M0yZ" id="2Cp6PEmVsGp" role="3uHU7B">
                             <ref role="3cqZAo" to="k8ye:~ClassReader.SKIP_CODE" resolve="SKIP_CODE" />
+                            <ref role="1PxDUh" to="k8ye:~ClassReader" resolve="ClassReader" />
                           </node>
                           <node concept="10M0yZ" id="6hYzBiUOvw3" role="3uHU7w">
                             <ref role="3cqZAo" to="k8ye:~ClassReader.SKIP_DEBUG" resolve="SKIP_DEBUG" />
@@ -9499,9 +9499,9 @@
                     <ref role="3cqZAo" node="6hYzBiUOvv1" resolve="myNode" />
                   </node>
                 </node>
-                <node concept="10M0yZ" id="6hYzBiUOv$U" role="3uHU7w">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmVsGF" role="3uHU7w">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_ABSTRACT" resolve="ACC_ABSTRACT" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
               </node>
             </node>
@@ -9559,9 +9559,9 @@
                     <ref role="3cqZAo" node="6hYzBiUOvv1" resolve="myNode" />
                   </node>
                 </node>
-                <node concept="10M0yZ" id="6hYzBiUOv_9" role="3uHU7w">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmVsF0" role="3uHU7w">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_PUBLIC" resolve="ACC_PUBLIC" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
               </node>
             </node>
@@ -9589,9 +9589,9 @@
                     <ref role="3cqZAo" node="6hYzBiUOvv1" resolve="myNode" />
                   </node>
                 </node>
-                <node concept="10M0yZ" id="6hYzBiUOv_o" role="3uHU7w">
-                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                <node concept="10M0yZ" id="2Cp6PEmVsF9" role="3uHU7w">
                   <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_FINAL" resolve="ACC_FINAL" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
                 </node>
               </node>
             </node>

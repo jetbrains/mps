@@ -31,6 +31,7 @@
       <include name="3rd-party.jar" />
       <include name="3rd-party-rt.jar" />
       <include name="util-8.jar" />
+      <include name="module-intellij.libraries.asm.jar" />
       <include name="forms*.jar" />
     </fileset>
     <fileset dir="${idea_home}/plugins/java/lib">
@@ -576,6 +577,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -633,6 +640,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.mps}/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
@@ -690,6 +703,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mps}/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
@@ -757,6 +776,12 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.gson.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.miglayout.swing.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
+        <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.aspect-generator.jar" />

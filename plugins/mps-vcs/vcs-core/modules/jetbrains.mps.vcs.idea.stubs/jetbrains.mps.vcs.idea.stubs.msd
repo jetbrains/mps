@@ -3,9 +3,19 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${platform_lib}/modules" type="java_classes">
-      <sourceRoot location="intellij.platform.vcs.impl.jar" />
       <sourceRoot location="intellij.platform.vcs.dvcs.impl.jar" />
+      <sourceRoot location="intellij.platform.vcs.dvcs.impl.shared.jar" />
+      <sourceRoot location="intellij.platform.vcs.dvcs.jar" />
+      <sourceRoot location="intellij.platform.vcs.impl.exec.jar" />
+      <sourceRoot location="intellij.platform.vcs.impl.frontend.jar" />
+      <sourceRoot location="intellij.platform.vcs.impl.jar" />
+      <sourceRoot location="intellij.platform.vcs.impl.lang.actions.jar" />
+      <sourceRoot location="intellij.platform.vcs.impl.lang.jar" />
+      <sourceRoot location="intellij.platform.vcs.impl.shared.jar" />
+      <sourceRoot location="intellij.platform.vcs.log.graph.impl.jar" />
+      <sourceRoot location="intellij.platform.vcs.log.graph.jar" />
       <sourceRoot location="intellij.platform.vcs.log.impl.jar" />
+      <sourceRoot location="intellij.platform.vcs.log.jar" />
       <PackageScope skip-private="false">
         <include prefix="com.intellij." />
       </PackageScope>
@@ -13,13 +23,24 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.jar" />
       <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.impl.shared.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.exec.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.frontend.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.lang.actions.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.lang.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.shared.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.log.graph.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.log.graph.jar" />
       <library location="${platform_lib}/modules/intellij.platform.vcs.log.impl.jar" />
+      <library location="${platform_lib}/modules/intellij.platform.vcs.log.jar" />
     </facet>
   </facets>
   <dependencies>
     <dependency reexport="false">498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)</dependency>
+    <dependency reexport="false">b00f36f0-49b7-456c-8405-740447ebb192(MPS.IDEA.Modules)</dependency>
   </dependencies>
   <languageVersions />
 </solution>
