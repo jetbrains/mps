@@ -9221,7 +9221,7 @@
     <node concept="2tJIrI" id="6dkZ8D0IXAA" role="jymVt" />
     <node concept="3clFb_" id="3krW$SwdKRG" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getHelpID" />
+      <property role="TrG5h" value="getHelpId" />
       <property role="DiZV1" value="false" />
       <node concept="3Tmbuc" id="3krW$SwdKRH" role="1B3o_S" />
       <node concept="3uibUv" id="3krW$SwdKRJ" role="3clF45">

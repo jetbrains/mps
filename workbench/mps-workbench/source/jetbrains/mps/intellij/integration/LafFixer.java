@@ -19,13 +19,11 @@ import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ConfigImportHelper;
+import com.intellij.openapi.application.InitialConfigImportState;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.util.ui.StartupUiUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.ApiStatus.Internal;
 
 
@@ -79,7 +77,7 @@ final class LafFixer {
     }
     @Override
     public void welcomeScreenDisplayed() {
-      if (ConfigImportHelper.isFirstSession() && !ConfigImportHelper.isConfigImported()) {
+      if (InitialConfigImportState.isFirstSession() && !InitialConfigImportState.isConfigImported()) {
         EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
         if (editorColorsManager instanceof PersistentStateComponent) {
           ((PersistentStateComponent<?>) editorColorsManager).noStateLoaded();

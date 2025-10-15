@@ -63,14 +63,7 @@ public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
   }
 
   @Override
-  public String getCommandName() {
-    return CMD_NAME;
-  }
-
-  @Override
   public boolean isHeadless() {
     return true;
   }
-
-  private static final String CMD_NAME = "mps-inspect"; // important for that to end with 'inspect' see com.intellij.idea.Main
 }

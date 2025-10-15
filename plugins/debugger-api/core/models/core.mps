@@ -1053,7 +1053,7 @@
                   <ref role="3cqZAo" node="4U88gsho6nF" resolve="myProject" />
                 </node>
                 <node concept="liA8E" id="4U88gsho6fm" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getMessageBus()" resolve="getMessageBus" />
+                  <ref role="37wK5l" to="4nm9:~Project.getMessageBus()" resolve="getMessageBus" />
                 </node>
               </node>
               <node concept="liA8E" id="4U88gsho6fn" role="2OqNvi">

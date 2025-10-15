@@ -1012,7 +1012,7 @@
       <node id="3459283717709378278" at="76,0,79,0" concept="10" trace="getStep#()Ljetbrains/mps/ide/migration/wizard/BaseStep;" />
       <node id="6781485246382122887" at="19,0,23,0" concept="3" trace="MigrationWizard#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/ide/migration/wizard/MigrationSession;)V" />
       <node id="4022063101753957485" at="39,0,43,0" concept="10" trace="isAutoAdjustable#()Z" />
-      <node id="3826918725743218156" at="80,0,84,0" concept="10" trace="getHelpID#()Ljava/lang/String;" />
+      <node id="3826918725743218156" at="80,0,84,0" concept="10" trace="getHelpId#()Ljava/lang/String;" />
       <node id="5602361519477964917" at="85,0,89,0" concept="10" trace="getDimensionServiceKey#()Ljava/lang/String;" />
       <node id="4698343510313940373" at="50,53,55,5" concept="9" />
       <node id="6648029969640514870" at="62,0,68,0" concept="10" trace="doNextAction#()V" />
