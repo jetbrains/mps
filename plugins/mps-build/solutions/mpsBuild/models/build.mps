@@ -2572,6 +2572,9 @@
             <node concept="1bldCd" id="6IZ_b08t0mF" role="39821P">
               <ref role="3$exzV" node="1ia2VB5guYy" resolve="MPS.IDEA" />
             </node>
+            <node concept="1bldCd" id="6Mwky1B4umx" role="39821P">
+              <ref role="3$exzV" node="uqqfP8JWSl" resolve="MPS.IDEA.Modules" />
+            </node>
             <node concept="1bldCd" id="1OSlDLmrG9E" role="39821P">
               <ref role="3$exzV" node="1TaHNgiIbIQ" resolve="MPS.Core" />
             </node>
