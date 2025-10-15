@@ -107,6 +107,7 @@
         <dependencies>
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="b00f36f0-49b7-456c-8405-740447ebb192(MPS.IDEA.Modules)" kind="cl" />
           <module ref="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b(jetbrains.mps.vcs.idea.stubs)" kind="cl" />
         </dependencies>
         <uses />
@@ -125,11 +126,22 @@
       <module namespace="jetbrains.mps.vcs.idea.stubs" type="solution" uuid="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b">
         <dependencies>
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="b00f36f0-49b7-456c-8405-740447ebb192(MPS.IDEA.Modules)" kind="cl" />
         </dependencies>
         <uses />
         <library jar="/lib/modules/intellij.platform.vcs.impl.jar" />
         <library jar="/lib/modules/intellij.platform.vcs.dvcs.impl.jar" />
         <library jar="/lib/modules/intellij.platform.vcs.log.impl.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.dvcs.impl.shared.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.dvcs.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.exec.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.frontend.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.lang.actions.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.lang.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.impl.shared.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.log.graph.impl.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.log.graph.jar" />
+        <library jar="/lib/modules/intellij.platform.vcs.log.jar" />
         <sources jar="." descriptor="jetbrains.mps.vcs.idea.stubs.msd" />
       </module>
     </echoxml>
