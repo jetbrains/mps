@@ -76,5 +76,6 @@
     <orderEntry type="module" module-name="vfs-tracking" scope="TEST" />
     <orderEntry type="module" module-name="mps-kotlin" scope="TEST" />
     <orderEntry type="module" module-name="mps-refactoring" scope="TEST" />
+    <orderEntry type="module" module-name="mps-make-plugin" />
   </component>
 </module>
