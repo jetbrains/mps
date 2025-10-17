@@ -28,7 +28,7 @@
     <notificationGroup id="Saving Transient Models Is On" displayType="BALLOON" isLogByDefault="false"/>
     <statusBarWidgetFactory implementation="jetbrains.mps.ide.make.actions.TransientModelsWidget$Factory" id="SaveTransientModels" order="after VfsRefresh"/>
 
-    <postStartupActivity implementation="jetbrains.mps.ide.make.actions.TransientModelsProjectActivity"/>
+    <backgroundPostStartupActivity implementation="jetbrains.mps.ide.make.actions.TransientModelsProjectActivity"/>
     
     <advancedSetting id="mps.make.include.dependencies" default="true"
                      groupKey="advanced.settings.group.mps.make" bundle="messages.MPSIdeBundle"/>
