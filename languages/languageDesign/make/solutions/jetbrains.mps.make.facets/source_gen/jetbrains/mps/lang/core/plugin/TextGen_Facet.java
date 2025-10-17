@@ -32,6 +32,7 @@ import java.util.Collection;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.messages.Message;
+import jetbrains.mps.internal.make.runtime.util.NotificationMessage;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.project.Project;
@@ -202,8 +203,8 @@ public class TextGen_Facet extends IFacet.Stub {
                   if (msfm == null) {
                     monitor.reportFeedback(new IFeedback.WARNING(String.valueOf(String.format("no output location for %s, skipped", model.getName()))));
                     String moduleName = inputData.module().getModuleName();
-                    Message msg = new Message(MessageKind.WARNING, "Make", "Make could not save files generated from " + moduleName + ". Does this module define generation facets?");
-                    msg.setHintObject("[NOTIFICATION]");
+                    Message msg = new NotificationMessage(MessageKind.WARNING, "Make could not save files generated from " + moduleName + ". Does this module define generation facets?");
+                    msg.setHintObject(inputData.module().getModuleReference());
                     monitor.reportFeedback(new IFeedback.MESSAGE(msg));
                     continue;
                   }

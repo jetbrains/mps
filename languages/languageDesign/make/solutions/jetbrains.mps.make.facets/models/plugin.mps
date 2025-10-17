@@ -1047,13 +1047,10 @@
                             <node concept="2ShNRf" id="yMIAu2f8vC" role="33vP2m">
                               <node concept="1pGfFk" id="yMIAu2f8vD" role="2ShVmc">
                                 <property role="373rjd" value="true" />
-                                <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.String,java.lang.String)" resolve="Message" />
+                                <ref role="37wK5l" to="rk9m:4L2t6z8JVmR" resolve="NotificationMessage" />
                                 <node concept="Rm8GO" id="yMIAu2f8vE" role="37wK5m">
                                   <ref role="Rm8GQ" to="et5u:~MessageKind.WARNING" resolve="WARNING" />
                                   <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
-                                </node>
-                                <node concept="Xl_RD" id="yMIAu2f8vF" role="37wK5m">
-                                  <property role="Xl_RC" value="Make" />
                                 </node>
                                 <node concept="3cpWs3" id="yMIAu2f8vG" role="37wK5m">
                                   <node concept="Xl_RD" id="yMIAu2f8vH" role="3uHU7w">
@@ -1079,8 +1076,18 @@
                             </node>
                             <node concept="liA8E" id="yMIAu2fbnS" role="2OqNvi">
                               <ref role="37wK5l" to="et5u:~Message.setHintObject(java.lang.Object)" resolve="setHintObject" />
-                              <node concept="Xl_RD" id="4n7If0BV78f" role="37wK5m">
-                                <property role="Xl_RC" value="[NOTIFICATION]" />
+                              <node concept="2OqwBi" id="4L2t6z8Krcc" role="37wK5m">
+                                <node concept="2OqwBi" id="4L2t6z8Kom7" role="2Oq$k0">
+                                  <node concept="37vLTw" id="4L2t6z8Kom8" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="4o1_qbM_yhD" resolve="inputData" />
+                                  </node>
+                                  <node concept="2sxana" id="4L2t6z8Kom9" role="2OqNvi">
+                                    <ref role="2sxfKC" to="fn29:1Xl3kQ1uad_" resolve="module" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="4L2t6z8Kskl" role="2OqNvi">
+                                  <ref role="37wK5l" to="lui2:~SModule.getModuleReference()" resolve="getModuleReference" />
+                                </node>
                               </node>
                             </node>
                           </node>

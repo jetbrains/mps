@@ -46,6 +46,7 @@
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="fnpx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.notification(MPS.IDEA/)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -4061,19 +4062,23 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2OqwBi" id="4n7If0BVKf7" role="3clFbw">
-                  <node concept="Xl_RD" id="4n7If0BVz6c" role="2Oq$k0">
-                    <property role="Xl_RC" value="[NOTIFICATION]" />
+                <node concept="2ZW3vV" id="4L2t6z8MLIm" role="3clFbw">
+                  <node concept="3uibUv" id="4L2t6z8MQKV" role="2ZW6by">
+                    <ref role="3uigEE" to="rk9m:4L2t6z8JxPJ" resolve="NotificationMessage" />
                   </node>
-                  <node concept="liA8E" id="4n7If0BVR5P" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                    <node concept="2OqwBi" id="4n7If0BW3Rm" role="37wK5m">
-                      <node concept="37vLTw" id="4n7If0BW3Rn" role="2Oq$k0">
-                        <ref role="3cqZAo" node="yMIAu2ekqr" resolve="fdk" />
+                  <node concept="2OqwBi" id="4n7If0BW3Rm" role="2ZW6bz">
+                    <node concept="1eOMI4" id="4L2t6z8KRVE" role="2Oq$k0">
+                      <node concept="10QFUN" id="4L2t6z8KRVD" role="1eOMHV">
+                        <node concept="37vLTw" id="4L2t6z8KRVC" role="10QFUP">
+                          <ref role="3cqZAo" node="yMIAu2ekqr" resolve="fdk" />
+                        </node>
+                        <node concept="3uibUv" id="4L2t6z8KYGS" role="10QFUM">
+                          <ref role="3uigEE" to="i9so:3MQtXko2auV" resolve="IFeedback.MESSAGE" />
+                        </node>
                       </node>
-                      <node concept="liA8E" id="4n7If0BW3Ro" role="2OqNvi">
-                        <ref role="37wK5l" to="i9so:3MQtXko2bGl" resolve="getSource" />
-                      </node>
+                    </node>
+                    <node concept="liA8E" id="4n7If0BW3Ro" role="2OqNvi">
+                      <ref role="37wK5l" to="i9so:4L2t6z8Lamh" resolve="getIMessage" />
                     </node>
                   </node>
                 </node>

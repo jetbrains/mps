@@ -17,6 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
@@ -360,7 +361,7 @@
       <node id="7671590834967130757" at="77,0,91,0" concept="10" trace="recordFilesToKeep#(Ljetbrains/mps/internal/make/runtime/util/FilesDelta;)V" />
       <node id="3251655328352893975" at="49,198,66,9" concept="9" />
       <node id="3251655328352893973" at="48,0,67,7" concept="8" />
-      <node id="3251655328352893948" at="43,94,68,5" concept="19" />
+      <node id="3251655328352893948" at="43,94,68,5" concept="20" />
       <node id="3251655328352893871" at="38,0,72,0" concept="10" trace="collectFilesToDelete#()Ljava/util/List;" />
       <scope id="3251655328352894007" at="55,45,56,20" />
       <scope id="3251655328352894029" at="58,49,59,79" />
@@ -521,7 +522,7 @@
       <node id="845951845164083670" at="61,9,62,20" concept="12" />
       <node id="7471912399447726403" at="69,40,70,18" concept="12" />
       <node id="7471912399447726406" at="71,5,72,51" concept="12" />
-      <node id="505174985642750407" at="77,43,78,43" concept="17" />
+      <node id="505174985642750407" at="77,43,78,43" concept="18" />
       <node id="3647894154990676402" at="79,5,80,43" concept="11" />
       <node id="3647894154990554068" at="81,30,82,45" concept="12" />
       <node id="3647894154990640587" at="83,40,84,45" concept="12" />
@@ -529,14 +530,14 @@
       <node id="7165817627838168930" at="86,0,87,54" concept="13" />
       <node id="3647894154990705924" at="87,54,88,55" concept="11" />
       <node id="3647894154990740750" at="89,36,90,64" concept="12" />
-      <node id="8246051429696308132" at="91,5,92,41" concept="17" />
+      <node id="8246051429696308132" at="91,5,92,41" concept="18" />
       <node id="7471912399447726349" at="97,65,98,36" concept="5" />
       <node id="7471912399447726363" at="99,47,100,39" concept="5" />
       <node id="3251655328353369173" at="101,76,102,39" concept="5" />
       <node id="6067326609049463893" at="104,7,105,16" concept="12" />
       <node id="3713683100998432353" at="108,44,109,62" concept="13" />
       <node id="3713683100998434548" at="109,62,110,45" concept="13" />
-      <node id="3461159877638393487" at="111,36,112,43" concept="17" />
+      <node id="3461159877638393487" at="111,36,112,43" concept="18" />
       <node id="3647894154990601969" at="113,5,114,0" concept="14" />
       <node id="739009749240938419" at="114,0,115,76" concept="11" />
       <node id="3713683100998611379" at="115,76,116,81" concept="13" />
@@ -576,7 +577,7 @@
       <node id="7940134192409103863" at="31,0,35,0" concept="10" trace="isEmpty#()Z" />
       <node id="739009749241046549" at="131,92,135,11" concept="9" />
       <node id="3713683100998509446" at="45,0,50,0" concept="10" trace="stale#(Ljetbrains/mps/vfs/IFile;)V" />
-      <node id="845951845164083661" at="56,61,61,9" concept="18" />
+      <node id="845951845164083661" at="56,61,61,9" concept="19" />
       <node id="3647894154990553000" at="80,43,85,5" concept="9" />
       <node id="3713683100998580052" at="118,67,123,7" concept="9" />
       <node id="6067326609049463886" at="67,0,74,0" concept="10" trace="acceptVisitor#(Ljetbrains/mps/make/delta/IDeltaVisitor;)Z" />
@@ -768,6 +769,18 @@
       <unit id="5105453120349025843" at="12,0,55,0" name="jetbrains.mps.internal.make.runtime.util.SmartWrapper" />
     </file>
   </root>
+  <root nodeRef="r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/5495082488738749807">
+    <file name="NotificationMessage.java">
+      <node id="5495082488738854336" at="12,61,13,22" concept="17" />
+      <node id="5495082488738854327" at="12,0,15,0" concept="2" trace="NotificationMessage#(Ljetbrains/mps/messages/MessageKind;Ljava/lang/String;)V" />
+      <scope id="5495082488738854335" at="12,61,13,22" />
+      <scope id="5495082488738854327" at="12,0,15,0">
+        <var name="kind" id="5495082488738854331" />
+        <var name="text" id="5495082488738854333" />
+      </scope>
+      <unit id="5495082488738749807" at="9,0,17,0" name="jetbrains.mps.internal.make.runtime.util.NotificationMessage" />
+    </file>
+  </root>
   <root nodeRef="r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/6106640680373200863">
     <file name="DirUtil.java">
       <node id="6106640680373201055" at="17,0,18,0" concept="15" trace="URL" />
@@ -791,7 +804,7 @@
       <node id="3647894154990785950" at="63,33,64,14" concept="1" />
       <node id="3647894154990788149" at="66,28,67,29" concept="5" />
       <node id="3647894154990790720" at="69,5,70,84" concept="12" />
-      <node id="6106640680373214587" at="73,38,74,59" concept="17" />
+      <node id="6106640680373214587" at="73,38,74,59" concept="18" />
       <node id="6106640680373214611" at="76,43,77,16" concept="12" />
       <node id="6106640680373214672" at="78,5,79,39" concept="11" />
       <node id="6106640680373214693" at="80,53,81,21" concept="5" />

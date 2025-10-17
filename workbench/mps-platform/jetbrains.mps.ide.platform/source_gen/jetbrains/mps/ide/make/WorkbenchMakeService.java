@@ -65,6 +65,7 @@ import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.internal.make.runtime.util.NotificationMessage;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 
@@ -433,7 +434,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     @Override
     public void reportFeedback(IFeedback fdk) {
       if (fdk instanceof IFeedback.MESSAGE && myMpsProject instanceof MPSProject) {
-        if ("[NOTIFICATION]".equals(fdk.getSource())) {
+        if (((IFeedback.MESSAGE) fdk).getIMessage() instanceof NotificationMessage) {
           Notification notification = new Notification("jetbrains.mps.make", fdk.getMessage(), NotificationType.WARNING);
           notification.notify(((MPSProject) myMpsProject).getProject());
         }

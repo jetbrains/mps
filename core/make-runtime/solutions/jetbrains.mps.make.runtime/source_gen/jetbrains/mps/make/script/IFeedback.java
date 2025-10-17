@@ -42,6 +42,9 @@ public interface IFeedback {
     public MESSAGE(IMessage message) {
       this.msg = message;
     }
+    public IMessage getIMessage() {
+      return msg;
+    }
     @Override
     public String getMessage() {
       return msg.getText();
