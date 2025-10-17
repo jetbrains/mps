@@ -64,6 +64,9 @@ import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
 import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
+import jetbrains.mps.project.MPSProject;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
 
 /**
  * IDEA App Service, its instance is registered into MakeServiceComponent CC from activator of [mps-platform]/j.m.ide.platform
@@ -414,10 +417,28 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         }
         @Override
         public void reportFeedback(IFeedback fdbk) {
-          new MessageFeedbackStrategy(mh).reportFeedback(fdbk);
+          new NotificationFeedbackStrategy(mh, makeSession.getProject()).reportFeedback(fdbk);
         }
       };
       this.jobMon = confMon;
+    }
+  }
+
+  private static class NotificationFeedbackStrategy extends MessageFeedbackStrategy {
+    private final jetbrains.mps.project.Project myMpsProject;
+    public NotificationFeedbackStrategy(IMessageHandler handler, jetbrains.mps.project.Project mpsProject) {
+      super(handler);
+      myMpsProject = mpsProject;
+    }
+    @Override
+    public void reportFeedback(IFeedback fdk) {
+      if (fdk instanceof IFeedback.MESSAGE && myMpsProject instanceof MPSProject) {
+        if ("[NOTIFICATION]".equals(fdk.getSource())) {
+          Notification notification = new Notification("jetbrains.mps.make", fdk.getMessage(), NotificationType.WARNING);
+          notification.notify(((MPSProject) myMpsProject).getProject());
+        }
+      }
+      super.reportFeedback(fdk);
     }
   }
   private static boolean isNotEmptyString(String str) {

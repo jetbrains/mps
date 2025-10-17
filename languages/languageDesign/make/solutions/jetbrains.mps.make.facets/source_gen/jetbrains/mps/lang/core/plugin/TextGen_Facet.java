@@ -31,6 +31,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Collection;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.text.TextGeneratorEngine;
@@ -199,6 +201,10 @@ public class TextGen_Facet extends IFacet.Stub {
                   // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
                   if (msfm == null) {
                     monitor.reportFeedback(new IFeedback.WARNING(String.valueOf(String.format("no output location for %s, skipped", model.getName()))));
+                    String moduleName = inputData.module().getModuleName();
+                    Message msg = new Message(MessageKind.WARNING, "Make", "Make could not save files generated from " + moduleName + ". Does this module define generation facets?");
+                    msg.setHintObject("[NOTIFICATION]");
+                    monitor.reportFeedback(new IFeedback.MESSAGE(msg));
                     continue;
                   }
                   if (inputData.getValue(MakeKeys.CLEAN_MAKE)) {

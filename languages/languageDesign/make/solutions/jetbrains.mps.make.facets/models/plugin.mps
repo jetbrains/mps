@@ -1017,6 +1017,80 @@
                             </node>
                           </node>
                         </node>
+                        <node concept="3cpWs8" id="FBqgn61bH4" role="3cqZAp">
+                          <node concept="3cpWsn" id="FBqgn61bH5" role="3cpWs9">
+                            <property role="TrG5h" value="moduleName" />
+                            <node concept="3uibUv" id="FBqgn61bq1" role="1tU5fm">
+                              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                            </node>
+                            <node concept="2OqwBi" id="FBqgn61bH6" role="33vP2m">
+                              <node concept="2OqwBi" id="FBqgn61bH7" role="2Oq$k0">
+                                <node concept="37vLTw" id="FBqgn61bH8" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4o1_qbM_yhD" resolve="inputData" />
+                                </node>
+                                <node concept="2sxana" id="FBqgn61bH9" role="2OqNvi">
+                                  <ref role="2sxfKC" to="fn29:1Xl3kQ1uad_" resolve="module" />
+                                </node>
+                              </node>
+                              <node concept="liA8E" id="FBqgn61bHa" role="2OqNvi">
+                                <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3cpWs8" id="yMIAu2f8vA" role="3cqZAp">
+                          <node concept="3cpWsn" id="yMIAu2f8vB" role="3cpWs9">
+                            <property role="TrG5h" value="msg" />
+                            <node concept="3uibUv" id="yMIAu2cNDA" role="1tU5fm">
+                              <ref role="3uigEE" to="et5u:~Message" resolve="Message" />
+                            </node>
+                            <node concept="2ShNRf" id="yMIAu2f8vC" role="33vP2m">
+                              <node concept="1pGfFk" id="yMIAu2f8vD" role="2ShVmc">
+                                <property role="373rjd" value="true" />
+                                <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.String,java.lang.String)" resolve="Message" />
+                                <node concept="Rm8GO" id="yMIAu2f8vE" role="37wK5m">
+                                  <ref role="Rm8GQ" to="et5u:~MessageKind.WARNING" resolve="WARNING" />
+                                  <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
+                                </node>
+                                <node concept="Xl_RD" id="yMIAu2f8vF" role="37wK5m">
+                                  <property role="Xl_RC" value="Make" />
+                                </node>
+                                <node concept="3cpWs3" id="yMIAu2f8vG" role="37wK5m">
+                                  <node concept="Xl_RD" id="yMIAu2f8vH" role="3uHU7w">
+                                    <property role="Xl_RC" value=". Does this module define generation facets?" />
+                                  </node>
+                                  <node concept="3cpWs3" id="yMIAu2f8vI" role="3uHU7B">
+                                    <node concept="Xl_RD" id="yMIAu2f8vJ" role="3uHU7B">
+                                      <property role="Xl_RC" value="Make could not save files generated from " />
+                                    </node>
+                                    <node concept="37vLTw" id="yMIAu2f8vK" role="3uHU7w">
+                                      <ref role="3cqZAo" node="FBqgn61bH5" resolve="moduleName" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="yMIAu2f9m8" role="3cqZAp">
+                          <node concept="2OqwBi" id="yMIAu2f9Z7" role="3clFbG">
+                            <node concept="37vLTw" id="yMIAu2f9m6" role="2Oq$k0">
+                              <ref role="3cqZAo" node="yMIAu2f8vB" resolve="msg" />
+                            </node>
+                            <node concept="liA8E" id="yMIAu2fbnS" role="2OqNvi">
+                              <ref role="37wK5l" to="et5u:~Message.setHintObject(java.lang.Object)" resolve="setHintObject" />
+                              <node concept="Xl_RD" id="4n7If0BV78f" role="37wK5m">
+                                <property role="Xl_RC" value="[NOTIFICATION]" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="1daRAt" id="FBqgn60yE1" role="3cqZAp">
+                          <property role="1daRAr" value="5uScuQ2wMwG/MESSAGE" />
+                          <node concept="37vLTw" id="yMIAu2f8vL" role="1daK9t">
+                            <ref role="3cqZAo" node="yMIAu2f8vB" resolve="msg" />
+                          </node>
+                        </node>
                         <node concept="3N13vt" id="6eeqGPaoHN_" role="3cqZAp" />
                       </node>
                       <node concept="3clFbC" id="ecq2nQOAxP" role="3clFbw">

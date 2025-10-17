@@ -108,6 +108,8 @@
     <registryKey key="mps.module.visibility.mask.always" defaultValue="false" description="MPS: always use visibility mask to show modules" restartRequired="false"/>
     <registryKey key="mps.module.rename.show.details" defaultValue="false" description="MPS: Rename Module Dialog to show extra details" restartRequired="false"/>
     <registryKey key="mps.module.rename.related.ignore" defaultValue="false" description="MPS: Rename Module Dialog to ignore 'related' modules" restartRequired="false"/>
+
+    <notificationGroup id="jetbrains.mps.make"  displayType="STICKY_BALLOON" isLogByDefault="true" />
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
