@@ -71,13 +71,7 @@ public class TransientModelsWidget implements StatusBarWidget, CustomStatusBarWi
           boolean saveTransientModels = myGenerationSettings.isSaveTransientModels();
           myGenerationSettings.setSaveTransientModels(!(saveTransientModels));
           // settings shall dispatch change notification for appropriate UI element to get updated
-        } else if (e.isPopupTrigger() || MouseEvent.BUTTON2 == e.getButton()) {
-          WidgetSettingsPanel panel = new WidgetSettingsPanel();
-          Dimension dimension = panel.getPreferredSize();
-          Point point = new Point(0, 0);
-          point = new Point(point.x - dimension.width, point.y - dimension.height);
-          panel.showComponent(new RelativePoint(e.getComponent(), point));
-        }
+        } 
       }
     };
   }
