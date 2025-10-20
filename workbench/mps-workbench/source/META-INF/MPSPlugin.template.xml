@@ -6,6 +6,7 @@
 
   <module value="com.intellij.modules.mps"/>
   <module value="com.intellij.modules.all"/>
+  <module value="com.intellij.modules.xml"/>
 
   <xi:include href="/META-INF/IdeTipsAndTricks.xml"/>
   <xi:include href="/META-INF/PlatformLangPlugin.xml"/>
