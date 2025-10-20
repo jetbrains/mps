@@ -30,7 +30,6 @@ import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
 import jetbrains.mps.generator.impl.RoleValidation.Status;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
 import jetbrains.mps.generator.impl.plan.ModelCheckpoints;
-import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.reference.DynamicReferenceUpdate;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.PostponedReferenceUpdate;
@@ -50,7 +49,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.runtime.TemplateRootMappingRule;
 import jetbrains.mps.generator.runtime.TemplateRule;
-import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.template.DefaultQueryExecutionContext;
 import jetbrains.mps.generator.template.QueryExecutionContext;
 import jetbrains.mps.generator.trace.LabelTrace;
@@ -129,27 +127,6 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   private final ArrayList<EmployedLanguageCollector> myLanguageCollectors = new ArrayList<>();
   private final Object myAuxEnvPartsLock = new Object();
   private final ArrayList<SLanguage> myEmployedLanguages = new ArrayList<>();
-
-  static final class StepArguments {
-    public final GenPlanActiveStep planStep;
-    public final GenerationTrace genTrace;
-    public final GeneratorMappings mappingLabels;
-    public final TransitionTrace transitionTrace;
-    public final GeneratorQueryProvider.Source querySource;
-    public final RoleValidation roleValidation;
-    public final IPerformanceTracer performanceTrace;
-
-    public StepArguments(GenPlanActiveStep planStep, GenerationTrace genTrace, GeneratorMappings mapLabels,
-        TransitionTrace transitionTrace, GeneratorQueryProvider.Source gqps, RoleValidation roleValidator, IPerformanceTracer perfTrace) {
-      this.planStep = planStep;
-      this.genTrace = genTrace;
-      this.mappingLabels = mapLabels;
-      this.transitionTrace = transitionTrace;
-      this.querySource = gqps;
-      this.roleValidation = roleValidator;
-      this.performanceTrace = perfTrace;
-    }
-  }
 
   public TemplateGenerator(GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, StepArguments stepArgs) {
     super(operationContext, inputModel, outputModel, stepArgs.mappingLabels, stepArgs.querySource, stepArgs.roleValidation);
