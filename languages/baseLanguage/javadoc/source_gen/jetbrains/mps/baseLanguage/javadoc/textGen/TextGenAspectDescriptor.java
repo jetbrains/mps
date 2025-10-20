@@ -31,6 +31,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new CodeInlineDocTag_TextGen();
       case LanguageConceptSwitch.CodeSnippet:
         return new CodeSnippet_TextGen();
+      case LanguageConceptSwitch.CodeSnippetText:
+        return new CodeSnippetText_TextGen();
       case LanguageConceptSwitch.CommentLine:
         return new CommentLine_TextGen();
       case LanguageConceptSwitch.DeprecatedBlockDocTag:

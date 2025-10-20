@@ -20,6 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ClassifierDocReference;
   private ConceptPresentation props_CodeInlineDocTag;
   private ConceptPresentation props_CodeSnippet;
+  private ConceptPresentation props_CodeSnippetText;
   private ConceptPresentation props_CommentLine;
   private ConceptPresentation props_CommentLinePart;
   private ConceptPresentation props_DeprecatedBlockDocTag;
@@ -65,6 +66,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.BaseDocComment:
         if (props_BaseDocComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L);
+          cpb.deprecateAggregation(0x757ba20a4c87f96eL, "body");
           cpb.deprecateAggregation(0x4a3c146b7faeeb32L, "author");
           cpb.deprecateAggregation(0x757ba20a4c87f962L, "since");
           cpb.deprecateAggregation(0x757ba20a4c87f963L, "version");
@@ -123,10 +125,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CodeSnippet:
         if (props_CodeSnippet == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("CodeSnippet");
           props_CodeSnippet = cpb.create();
         }
         return props_CodeSnippet;
+      case LanguageConceptSwitch.CodeSnippetText:
+        if (props_CodeSnippetText == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CodeSnippetText");
+          props_CodeSnippetText = cpb.create();
+        }
+        return props_CodeSnippetText;
       case LanguageConceptSwitch.CommentLine:
         if (props_CommentLine == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -142,7 +152,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_CommentLinePart;
       case LanguageConceptSwitch.DeprecatedBlockDocTag:
         if (props_DeprecatedBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L);
+          cpb.deprecateAggregation(0x250631c6c859e113L, "text");
           cpb.rawPresentation("@deprecated");
           props_DeprecatedBlockDocTag = cpb.create();
         }

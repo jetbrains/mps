@@ -29,6 +29,8 @@ public class InsertAnEmptyCommentLineAfterEnter {
         SNode line = SNodeFactoryOperations.createNewNode(CONCEPTS.CommentLine$hJ, null);
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.BaseDocComment$bU), LINKS.body$OAGp)).addElement(line);
         SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
+        SNodeFactoryOperations.addNewChild(SNodeOperations.cast(node, CONCEPTS.BaseDocComment$bU), LINKS.commentBody$fIEQ, null);
+
       }
 
     };
@@ -84,5 +86,6 @@ public class InsertAnEmptyCommentLineAfterEnter {
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
     /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink commentBody$fIEQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x6475d1cc79f5556bL, "commentBody");
   }
 }

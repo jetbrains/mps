@@ -24,6 +24,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptClassifierDocReference = createDescriptorForClassifierDocReference();
   /*package*/ final ConceptDescriptor myConceptCodeInlineDocTag = createDescriptorForCodeInlineDocTag();
   /*package*/ final ConceptDescriptor myConceptCodeSnippet = createDescriptorForCodeSnippet();
+  /*package*/ final ConceptDescriptor myConceptCodeSnippetText = createDescriptorForCodeSnippetText();
   /*package*/ final ConceptDescriptor myConceptCommentLine = createDescriptorForCommentLine();
   /*package*/ final ConceptDescriptor myConceptCommentLinePart = createDescriptorForCommentLinePart();
   /*package*/ final ConceptDescriptor myConceptDeprecatedBlockDocTag = createDescriptorForDeprecatedBlockDocTag();
@@ -57,12 +58,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
+    deps.employedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
+    deps.aggregatedLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAuthorBlockDocTag, myConceptBaseBlockDocTag, myConceptBaseDocComment, myConceptBaseDocReference, myConceptBaseInlineDocTag, myConceptBaseParameterReference, myConceptBaseVariableDocReference, myConceptClassifierDocComment, myConceptClassifierDocReference, myConceptCodeInlineDocTag, myConceptCodeSnippet, myConceptCommentLine, myConceptCommentLinePart, myConceptDeprecatedBlockDocTag, myConceptDocMethodParameterReference, myConceptDocTypeParameterReference, myConceptEmptyBlockDocTag, myConceptFieldDocComment, myConceptFieldDocReference, myConceptHTMLElement, myConceptInheritDocInlineDocTag, myConceptInlineTagCommentLinePart, myConceptLinkInlineDocTag, myConceptMethodDocComment, myConceptMethodDocReference, myConceptParameterBlockDocTag, myConceptReturnBlockDocTag, myConceptSeeBlockDocTag, myConceptSinceBlockDocTag, myConceptStaticFieldDocReference, myConceptTextCommentLinePart, myConceptThrowsBlockDocTag, myConceptValueInlineDocTag, myConceptVersionBlockDocTag);
+    return Arrays.asList(myConceptAuthorBlockDocTag, myConceptBaseBlockDocTag, myConceptBaseDocComment, myConceptBaseDocReference, myConceptBaseInlineDocTag, myConceptBaseParameterReference, myConceptBaseVariableDocReference, myConceptClassifierDocComment, myConceptClassifierDocReference, myConceptCodeInlineDocTag, myConceptCodeSnippet, myConceptCodeSnippetText, myConceptCommentLine, myConceptCommentLinePart, myConceptDeprecatedBlockDocTag, myConceptDocMethodParameterReference, myConceptDocTypeParameterReference, myConceptEmptyBlockDocTag, myConceptFieldDocComment, myConceptFieldDocReference, myConceptHTMLElement, myConceptInheritDocInlineDocTag, myConceptInlineTagCommentLinePart, myConceptLinkInlineDocTag, myConceptMethodDocComment, myConceptMethodDocReference, myConceptParameterBlockDocTag, myConceptReturnBlockDocTag, myConceptSeeBlockDocTag, myConceptSinceBlockDocTag, myConceptStaticFieldDocReference, myConceptTextCommentLinePart, myConceptThrowsBlockDocTag, myConceptValueInlineDocTag, myConceptVersionBlockDocTag);
   }
 
   @Override
@@ -91,6 +95,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptCodeInlineDocTag;
       case LanguageConceptSwitch.CodeSnippet:
         return myConceptCodeSnippet;
+      case LanguageConceptSwitch.CodeSnippetText:
+        return myConceptCodeSnippetText;
       case LanguageConceptSwitch.CommentLine:
         return myConceptCommentLine;
       case LanguageConceptSwitch.CommentLinePart:
@@ -171,9 +177,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     // extends: jetbrains.mps.lang.core.structure.NodeAttribute
     b.super_(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5349172909345501395");
     b.version(3);
     b.aggregate("body", 0x757ba20a4c87f96eL).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL).optional(true).ordered(true).multiple(true).origin("8465538089690331502").done();
+    b.aggregate("commentBody", 0x6475d1cc79f5556bL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("7238922652217595243").done();
     b.aggregate("tags", 0x4ab5c2019ddc99f3L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL).optional(true).ordered(true).multiple(true).origin("5383422241790532083").done();
     b.aggregate("author", 0x4a3c146b7faeeb32L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL).optional(true).ordered(true).multiple(true).origin("5349172909345532722").done();
     b.aggregate("since", 0x757ba20a4c87f962L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL).optional(true).ordered(true).multiple(true).origin("8465538089690331490").done();
@@ -255,6 +264,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("statement", 0x2398cefbc26369e1L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L).optional(true).ordered(true).multiple(true).origin("2565027568480905697").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForCodeSnippetText() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "CodeSnippetText", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.Line
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L);
+    b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5085607816282918865");
+    b.version(3);
+    b.aggregate("statement", 0x4693b55d3c7e4fd2L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L).optional(true).ordered(true).multiple(true).origin("5085607816282918866").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForCommentLine() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "CommentLine", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL);
     b.class_(false, false, false);
@@ -277,7 +296,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690331492");
     b.version(3);
-    b.aggregate("text", 0x250631c6c859e113L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL).optional(false).ordered(true).multiple(false).origin("2667874559098216723").done();
+    b.aggregate("comment", 0x4693b55d3c85881aL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(false).origin("5085607816283392026").done();
+    b.aggregate("text", 0x250631c6c859e113L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL).optional(true).ordered(true).multiple(false).origin("2667874559098216723").done();
     b.alias("@deprecated");
     return b.create();
   }

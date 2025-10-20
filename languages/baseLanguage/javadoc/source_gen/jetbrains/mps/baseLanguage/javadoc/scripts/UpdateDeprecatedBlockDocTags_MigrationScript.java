@@ -38,6 +38,7 @@ public final class UpdateDeprecatedBlockDocTags_MigrationScript extends BaseMigr
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNodeFactoryOperations.setNewChild(node, LINKS.text$c2BW, null);
+        SNodeFactoryOperations.setNewChild(node, LINKS.comment$8pLM, null);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -58,5 +59,6 @@ public final class UpdateDeprecatedBlockDocTags_MigrationScript extends BaseMigr
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink text$c2BW = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink comment$8pLM = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x4693b55d3c85881aL, "comment");
   }
 }

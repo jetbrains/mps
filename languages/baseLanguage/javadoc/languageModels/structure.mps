@@ -7,12 +7,14 @@
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
       <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
         <reference id="6054523464627965081" name="concept" index="trN6q" />
@@ -73,6 +75,14 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="8465538089690331502" />
       <ref role="20lvS9" node="7lVCwDcxZ_G" resolve="CommentLine" />
+      <node concept="asaX9" id="6hPOsLTXx2A" role="lGtFl" />
+    </node>
+    <node concept="1TJgyj" id="6hPOsLTXllF" role="1TKVEi">
+      <property role="IQ2ns" value="7238922652217595243" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="commentBody" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
     </node>
     <node concept="1TJgyj" id="4EPKw6tR9BN" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -135,6 +145,12 @@
     </node>
     <node concept="PrWs8" id="7Qt73fkj9CO" role="PzmwI">
       <ref role="PrY4T" to="tpck:hOwnYed" resolve="IDeprecatable" />
+    </node>
+    <node concept="PrWs8" id="6hPOsLU1BXf" role="PzmwI">
+      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
+    </node>
+    <node concept="PrWs8" id="6hPOsLU3j2j" role="PzmwI">
+      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
     </node>
   </node>
   <node concept="1TIwiD" id="4CW56HZFI4X">
@@ -222,12 +238,18 @@
     <property role="34LRSv" value="@deprecated" />
     <property role="EcuMT" value="8465538089690331492" />
     <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <node concept="1TJgyj" id="4qjHlOWxowq" role="1TKVEi">
+      <property role="IQ2ns" value="5085607816283392026" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="comment" />
+      <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
+    </node>
     <node concept="1TJgyj" id="2k6csr8mu4j" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="text" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2667874559098216723" />
       <ref role="20lvS9" node="7lVCwDcxZ_G" resolve="CommentLine" />
+      <node concept="asaX9" id="4qjHlOWxowr" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="7lVCwDcxZ_G">
@@ -533,6 +555,9 @@
       <property role="IQ2ns" value="2565027568480905697" />
       <ref role="20lvS9" to="tpee:fzclF8l" resolve="Statement" />
     </node>
+    <node concept="asaX9" id="4qjHlOWxMB3" role="lGtFl">
+      <property role="YLQ7P" value="Use CodeSnippetText" />
+    </node>
   </node>
   <node concept="1TIwiD" id="46AFNipTj1v">
     <property role="R5$K7" value="false" />
@@ -593,6 +618,19 @@
     <property role="TrG5h" value="EmptyBlockDocTag" />
     <property role="EcuMT" value="4948473272651335344" />
     <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+  </node>
+  <node concept="1TIwiD" id="4qjHlOWv$Zh">
+    <property role="TrG5h" value="CodeSnippetText" />
+    <property role="3GE5qa" value="tag" />
+    <property role="EcuMT" value="5085607816282918865" />
+    <ref role="1TJDcQ" to="zqge:2cLqkTm6J5A" resolve="Line" />
+    <node concept="1TJgyj" id="4qjHlOWv$Zi" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="statement" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="5085607816282918866" />
+      <ref role="20lvS9" to="tpee:fzclF8l" resolve="Statement" />
+    </node>
   </node>
 </model>
 

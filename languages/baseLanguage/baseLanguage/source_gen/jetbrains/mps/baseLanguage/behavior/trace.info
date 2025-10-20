@@ -17461,7 +17461,7 @@
       <node id="4080244415086512770" at="68,98,69,1532" concept="12" />
       <node id="8362517669638582158" at="71,102,72,940" concept="12" />
       <node id="6978502240659630124" at="76,110,77,213" concept="5" />
-      <node id="6978502240659633575" at="78,282,79,42" concept="5" />
+      <node id="6978502240659633575" at="78,379,79,42" concept="5" />
       <node id="1225207612515" at="84,79,85,53" concept="11" />
       <node id="1225207612520" at="85,53,86,98" concept="5" />
       <node id="1225207612527" at="86,98,87,36" concept="5" />
@@ -17494,19 +17494,20 @@
       <node id="1224848545824" at="164,0,165,0" concept="15" trace="annotation$12Ek" />
       <node id="1224848545824" at="165,0,166,0" concept="15" trace="annotation$K49I" />
       <node id="1224848545824" at="166,0,167,0" concept="15" trace="tags$stUD" />
-      <node id="1224848545824" at="167,0,168,0" concept="15" trace="body$OAGp" />
-      <node id="1224848545824" at="168,0,169,0" concept="15" trace="smodelAttribute$KJ43" />
-      <node id="1224848545824" at="172,0,173,0" concept="15" trace="name$MnvL" />
-      <node id="1224848545824" at="176,0,177,0" concept="15" trace="HasAnnotation$Dg" />
-      <node id="1224848545824" at="177,0,178,0" concept="15" trace="BaseMethodDeclaration$kD" />
-      <node id="1224848545824" at="178,0,179,0" concept="15" trace="MethodDocComment$HI" />
-      <node id="1224848545824" at="179,0,180,0" concept="15" trace="DeprecatedBlockDocTag$8n" />
-      <node id="1224848545824" at="180,0,181,0" concept="15" trace="FieldDeclaration$ie" />
-      <node id="1224848545824" at="181,0,182,0" concept="15" trace="FieldDocComment$wl" />
-      <node id="1224848545824" at="182,0,183,0" concept="15" trace="StaticFieldDeclaration$jR" />
-      <node id="1224848545824" at="183,0,184,0" concept="15" trace="Classifier$Ix" />
-      <node id="1224848545824" at="184,0,185,0" concept="15" trace="ClassifierDocComment$mh" />
-      <node id="1224848545824" at="185,0,186,0" concept="15" trace="IDeprecatable$2W" />
+      <node id="1224848545824" at="167,0,168,0" concept="15" trace="commentBody$fIEQ" />
+      <node id="1224848545824" at="168,0,169,0" concept="15" trace="body$OAGp" />
+      <node id="1224848545824" at="169,0,170,0" concept="15" trace="smodelAttribute$KJ43" />
+      <node id="1224848545824" at="173,0,174,0" concept="15" trace="name$MnvL" />
+      <node id="1224848545824" at="177,0,178,0" concept="15" trace="HasAnnotation$Dg" />
+      <node id="1224848545824" at="178,0,179,0" concept="15" trace="BaseMethodDeclaration$kD" />
+      <node id="1224848545824" at="179,0,180,0" concept="15" trace="MethodDocComment$HI" />
+      <node id="1224848545824" at="180,0,181,0" concept="15" trace="DeprecatedBlockDocTag$8n" />
+      <node id="1224848545824" at="181,0,182,0" concept="15" trace="FieldDeclaration$ie" />
+      <node id="1224848545824" at="182,0,183,0" concept="15" trace="FieldDocComment$wl" />
+      <node id="1224848545824" at="183,0,184,0" concept="15" trace="StaticFieldDeclaration$jR" />
+      <node id="1224848545824" at="184,0,185,0" concept="15" trace="Classifier$Ix" />
+      <node id="1224848545824" at="185,0,186,0" concept="15" trace="ClassifierDocComment$mh" />
+      <node id="1224848545824" at="186,0,187,0" concept="15" trace="IDeprecatable$2W" />
       <node id="1224848545824" at="48,0,50,0" concept="16" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1224848545824" at="74,0,76,0" concept="16" trace="markDeprecated_id6Va_BJexupi#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1224848545824" at="82,0,84,0" concept="16" trace="unmarkDeprecated_id6Va_BJex$aE#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -17542,7 +17543,7 @@
       <scope id="9119725621034578736" at="61,143,62,22" />
       <scope id="4080244415086500459" at="68,98,69,1532" />
       <scope id="8362517669638582068" at="71,102,72,940" />
-      <scope id="6978502240659630153" at="78,282,79,42" />
+      <scope id="6978502240659630153" at="78,379,79,42" />
       <scope id="1224848545824" at="104,114,105,21" />
       <scope id="1224848545824" at="111,26,112,56" />
       <scope id="1224848545824" at="115,13,116,60" />
@@ -17626,10 +17627,10 @@
         <var name="node" id="1224848545824" />
         <var name="parameters" id="1224848545824" />
       </scope>
-      <unit id="1224848545824" at="171,0,174,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor$PROPS" />
-      <unit id="1224848545824" at="163,0,170,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor$LINKS" />
-      <unit id="1224848545824" at="175,0,187,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor$CONCEPTS" />
-      <unit id="1224848545824" at="34,0,188,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor" />
+      <unit id="1224848545824" at="172,0,175,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor$PROPS" />
+      <unit id="1224848545824" at="163,0,171,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor$LINKS" />
+      <unit id="1224848545824" at="176,0,188,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor$CONCEPTS" />
+      <unit id="1224848545824" at="34,0,189,0" name="jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/1225271178070">
@@ -29268,24 +29269,28 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/5473688454857849122">
     <file name="DeprecationUtil.java">
-      <node id="5473688454857854439" at="21,70,22,104" concept="11" />
-      <node id="649933975386251086" at="22,104,23,105" concept="11" />
-      <node id="649933975386251094" at="23,105,24,60" concept="5" />
-      <node id="5473688454857863189" at="24,60,25,19" concept="12" />
-      <node id="5473688454857849122" at="29,0,30,0" concept="15" trace="tags$stUD" />
-      <node id="5473688454857849122" at="30,0,31,0" concept="15" trace="text$c2BW" />
-      <node id="5473688454857849122" at="34,0,35,0" concept="15" trace="DeprecatedBlockDocTag$8n" />
-      <node id="5473688454857854020" at="21,0,27,0" concept="16" trace="createDocComment#(Lorg/jetbrains/mps/openapi/language/SConcept;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="5473688454857854023" at="21,70,25,19">
+      <node id="5473688454857854439" at="22,70,23,104" concept="11" />
+      <node id="649933975386251086" at="23,104,24,105" concept="11" />
+      <node id="649933975386251094" at="24,105,25,60" concept="5" />
+      <node id="5085607816285017585" at="25,60,26,76" concept="11" />
+      <node id="5085607816283971192" at="26,76,27,239" concept="5" />
+      <node id="5473688454857863189" at="27,239,28,19" concept="12" />
+      <node id="5473688454857849122" at="32,0,33,0" concept="15" trace="tags$stUD" />
+      <node id="5473688454857849122" at="33,0,34,0" concept="15" trace="text$c2BW" />
+      <node id="5473688454857849122" at="34,0,35,0" concept="15" trace="comment$8pLM" />
+      <node id="5473688454857849122" at="38,0,39,0" concept="15" trace="DeprecatedBlockDocTag$8n" />
+      <node id="5473688454857854020" at="22,0,30,0" concept="16" trace="createDocComment#(Lorg/jetbrains/mps/openapi/language/SConcept;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5473688454857854023" at="22,70,28,19">
         <var name="comment" id="5473688454857854442" />
+        <var name="line" id="5085607816285017586" />
         <var name="tag" id="649933975386251087" />
       </scope>
-      <scope id="5473688454857854020" at="21,0,27,0">
+      <scope id="5473688454857854020" at="22,0,30,0">
         <var name="commentConcept" id="5473688454857859279" />
       </scope>
-      <unit id="5473688454857849122" at="33,0,36,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$CONCEPTS" />
-      <unit id="5473688454857849122" at="28,0,32,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$LINKS" />
-      <unit id="5473688454857849122" at="13,0,37,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil" />
+      <unit id="5473688454857849122" at="37,0,40,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$CONCEPTS" />
+      <unit id="5473688454857849122" at="31,0,36,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$LINKS" />
+      <unit id="5473688454857849122" at="14,0,41,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/559597157502843524">
