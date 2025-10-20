@@ -251,6 +251,12 @@
       <ref role="20lvS9" node="7lVCwDcxZ_G" resolve="CommentLine" />
       <node concept="asaX9" id="4qjHlOWxowr" role="lGtFl" />
     </node>
+    <node concept="PrWs8" id="4qjHlOWQ7IW" role="PzmwI">
+      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
+    </node>
+    <node concept="PrWs8" id="4qjHlOWSFff" role="PzmwI">
+      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7lVCwDcxZ_G">
     <property role="TrG5h" value="CommentLine" />
@@ -623,7 +629,8 @@
     <property role="TrG5h" value="CodeSnippetText" />
     <property role="3GE5qa" value="tag" />
     <property role="EcuMT" value="5085607816282918865" />
-    <ref role="1TJDcQ" to="zqge:2cLqkTm6J5A" resolve="Line" />
+    <property role="34LRSv" value="{{ code }}" />
+    <ref role="1TJDcQ" to="zqge:8D0iRqSPVB" resolve="TextElement" />
     <node concept="1TJgyj" id="4qjHlOWv$Zi" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="statement" />

@@ -267,11 +267,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForCodeSnippetText() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "CodeSnippetText", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.text.structure.Line
-    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L);
+    // extends: jetbrains.mps.lang.text.structure.TextElement
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5085607816282918865");
     b.version(3);
     b.aggregate("statement", 0x4693b55d3c7e4fd2L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L).optional(true).ordered(true).multiple(true).origin("5085607816282918866").done();
+    b.alias("{{ code }}");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCommentLine() {
@@ -294,6 +295,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
     b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690331492");
     b.version(3);
     b.aggregate("comment", 0x4693b55d3c85881aL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(false).origin("5085607816283392026").done();

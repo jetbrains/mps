@@ -5,13 +5,23 @@ package jetbrains.mps.lang.text.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Line_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.indent();
+    if (!((boolean) IHoldLines__BehaviorDescriptor.enforceExternalIndentation_id4qjHlOWQ7Jg.invoke(SNodeOperations.getNodeAncestor(ctx.getPrimaryInput(), CONCEPTS.IHoldLines$ky, false, false)))) {
+      tgs.indent();
+    }
     tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(ctx.getPrimaryInput()));
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IHoldLines$ky = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L, "jetbrains.mps.lang.text.structure.IHoldLines");
   }
 }

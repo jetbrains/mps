@@ -133,7 +133,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CodeSnippetText:
         if (props_CodeSnippetText == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("CodeSnippetText");
+          cpb.rawPresentation("{{ code }}");
           props_CodeSnippetText = cpb.create();
         }
         return props_CodeSnippetText;

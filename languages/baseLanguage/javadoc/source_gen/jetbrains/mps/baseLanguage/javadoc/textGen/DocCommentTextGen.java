@@ -7,7 +7,6 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.behavior.BaseDocComment__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
@@ -31,7 +30,7 @@ public abstract class DocCommentTextGen {
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$fIEQ)).visitAll((line) -> {
         tgs.newLine();
         DocCommentTextGen.javadocIndent(ctx);
-        tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(line));
+        generateLine.handleLine(line, ctx);
       });
       tgs.newLine();
     }
