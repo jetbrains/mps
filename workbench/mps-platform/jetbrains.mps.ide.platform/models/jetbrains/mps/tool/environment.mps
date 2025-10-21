@@ -473,11 +473,8 @@
           <node concept="3cpWsn" id="7RQMtR$hEgM" role="3cpWs9">
             <property role="TrG5h" value="errors" />
             <node concept="_YKpA" id="2VpW0qBl95D" role="1tU5fm">
-              <node concept="3uibUv" id="2VpW0qBl95E" role="_ZDj9">
-                <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
-                <node concept="3uibUv" id="2VpW0qBl95F" role="11_B2D">
-                  <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
-                </node>
+              <node concept="3uibUv" id="7z47wMIFOth" role="_ZDj9">
+                <ref role="3uigEE" to="ctgy:~PluginLoadingError" resolve="PluginLoadingError" />
               </node>
             </node>
             <node concept="2ShNRf" id="7RQMtR$hEgN" role="33vP2m">
@@ -509,7 +506,7 @@
                       <ref role="3cqZAo" node="7RQMtR$hTt8" resolve="err" />
                     </node>
                     <node concept="liA8E" id="7RQMtR$iqac" role="2OqNvi">
-                      <ref role="37wK5l" to="82uw:~Supplier.get()" resolve="get" />
+                      <ref role="37wK5l" to="ctgy:~PluginLoadingError.getHtmlMessage()" resolve="getHtmlMessage" />
                     </node>
                   </node>
                 </node>
@@ -519,11 +516,8 @@
           </node>
           <node concept="3cpWsn" id="7RQMtR$hTt8" role="1Duv9x">
             <property role="TrG5h" value="err" />
-            <node concept="3uibUv" id="2VpW0qBlgd4" role="1tU5fm">
-              <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
-              <node concept="3uibUv" id="2VpW0qBlgd5" role="11_B2D">
-                <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
-              </node>
+            <node concept="3uibUv" id="7z47wMIFTwY" role="1tU5fm">
+              <ref role="3uigEE" to="ctgy:~PluginLoadingError" resolve="PluginLoadingError" />
             </node>
           </node>
           <node concept="37vLTw" id="7RQMtR$hTtd" role="1DdaDG">

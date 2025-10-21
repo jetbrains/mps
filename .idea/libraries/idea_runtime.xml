@@ -5,7 +5,6 @@
       <root url="jar://$PROJECT_DIR$/lib/external-system-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/externalProcess-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/rd.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/bouncy-castle.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/opentelemetry.jar!/" />
     </CLASSES>
     <JAVADOC />

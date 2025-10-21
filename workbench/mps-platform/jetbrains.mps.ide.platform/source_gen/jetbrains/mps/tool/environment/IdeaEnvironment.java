@@ -7,8 +7,7 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.util.PlatformUtils;
 import java.util.List;
-import java.util.function.Supplier;
-import com.intellij.openapi.util.text.HtmlChunk;
+import com.intellij.ide.plugins.PluginLoadingError;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.ide.plugins.PluginManagerCore;
@@ -79,10 +78,10 @@ public final class IdeaEnvironment extends EnvironmentBase {
     createIdeaApplication();
 
     // this is the only way currently to access the plugin loading errors 
-    List<Supplier<HtmlChunk>> errors = ListSequence.fromListWithValues(new ArrayList<>(), PluginManagerCore.INSTANCE.getAndClearPluginLoadingErrors());
-    for (Supplier<HtmlChunk> err : errors) {
+    List<PluginLoadingError> errors = ListSequence.fromListWithValues(new ArrayList<>(), PluginManagerCore.INSTANCE.getAndClearPluginLoadingErrors());
+    for (PluginLoadingError err : errors) {
       if (LOG.isErrorLevel()) {
-        LOG.error("" + err.get().toString());
+        LOG.error("" + err.getHtmlMessage().toString());
       }
     }
 

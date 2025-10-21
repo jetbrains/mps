@@ -128,6 +128,7 @@
       <root url="jar://$PROJECT_DIR$/lib/module-intellij.platform.vcs.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/module-intellij.xml.parser.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/module-intellij.libraries.cglib.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/module-intellij.libraries.kotlinx.collections.immutable.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/module-intellij.libraries.kotlinx.serialization.core.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/module-intellij.libraries.kotlinx.serialization.json.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/module-intellij.libraries.xerces.jar!/" />

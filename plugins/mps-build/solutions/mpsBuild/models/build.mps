@@ -44579,11 +44579,53 @@
     <node concept="26EafG" id="5NH7I925f8S" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.asm.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmTy" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.asm.tools.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTz" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.automaton.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmT$" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.blockmap.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmT_" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.bouncy.castle.pgp.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTA" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.bouncy.castle.provider.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925fdX" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.caffeine.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925foW" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.cglib.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTB" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.classgraph.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTC" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.cli.parser.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTD" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.cli.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTE" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.codec.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTF" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.compress.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTG" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.imaging.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTH" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.io.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTI" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.lang3.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTJ" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.commons.logging.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925fz5" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.fastutil.jar" />
@@ -44597,14 +44639,29 @@
     <node concept="26EafG" id="5NH7I925gan" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.hash4j.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmTK" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.hdr.histogram.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTL" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.http.client.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925glL" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.icu4j.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTM" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.imgscalr.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTN" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.ini4j.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925gzH" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.ion.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925gIG" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.jackson.databind.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTO" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jackson.dataformat.yaml.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925gXT" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.jackson.jar" />
@@ -44615,11 +44672,62 @@
     <node concept="26EafG" id="5NH7I925hnE" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.jackson.module.kotlin.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmTP" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.java.websocket.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTQ" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.javax.annotation.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTR" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jaxen.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTS" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jbr.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTT" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jcef.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTU" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jcip.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTV" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jediterm.core.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTW" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jediterm.ui.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTX" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jettison.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTY" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jsonpath.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmTZ" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jsoup.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmU0" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jsvg.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmU1" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jvm.native.trusted.roots.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmU2" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.jzlib.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925hxN" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.kotlin.reflect.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmU3" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.collections.immutable.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925hFW" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.coroutines.slf4j.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmU7" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.datetime.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmU8" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.html.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925hUI" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.io.jar" />
@@ -44629,6 +44737,12 @@
     </node>
     <node concept="26EafG" id="5NH7I925ije" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.serialization.json.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUa" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.kotlinx.serialization.protobuf.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUb" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.kryo5.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925itn" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.ktor.client.cio.jar" />
@@ -44648,23 +44762,56 @@
     <node concept="26EafG" id="5NH7I925jqc" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.lz4.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmUc" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.markdown.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925jBH" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.miglayout.swing.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925jK_" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.mvstore.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmUd" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.oro.matcher.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925jUI" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.proxy.vole.jar" />
     </node>
+    <node concept="26EafG" id="4D_SZizVmUe" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.pty4j.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUf" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.rd.text.jar" />
+    </node>
     <node concept="26EafG" id="5NH7I925k4R" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.rhino.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUg" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.snakeyaml.engine.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUh" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.snakeyaml.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUi" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.sshj.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUj" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.stream.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUk" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.velocity.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925khy" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.winp.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925ksW" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.xerces.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUl" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.xstream.jar" />
+    </node>
+    <node concept="26EafG" id="4D_SZizVmUm" role="26Ea7d">
+      <property role="26EafJ" value="lib/module-intellij.libraries.xtext.xbase.jar" />
     </node>
     <node concept="26EafG" id="5NH7I925k$z" role="26Ea7d">
       <property role="26EafJ" value="lib/module-intellij.libraries.xz.jar" />
