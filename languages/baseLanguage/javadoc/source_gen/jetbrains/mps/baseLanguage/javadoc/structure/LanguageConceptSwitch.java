@@ -20,7 +20,7 @@ public final class LanguageConceptSwitch {
   public static final int ClassifierDocReference = 8;
   public static final int CodeInlineDocTag = 9;
   public static final int CodeSnippet = 10;
-  public static final int CodeSnippetText = 11;
+  public static final int CodeSnippetTextElement = 11;
   public static final int CommentLine = 12;
   public static final int CommentLinePart = 13;
   public static final int DeprecatedBlockDocTag = 14;
@@ -30,20 +30,22 @@ public final class LanguageConceptSwitch {
   public static final int FieldDocComment = 18;
   public static final int FieldDocReference = 19;
   public static final int HTMLElement = 20;
-  public static final int InheritDocInlineDocTag = 21;
-  public static final int InlineTagCommentLinePart = 22;
-  public static final int LinkInlineDocTag = 23;
-  public static final int MethodDocComment = 24;
-  public static final int MethodDocReference = 25;
-  public static final int ParameterBlockDocTag = 26;
-  public static final int ReturnBlockDocTag = 27;
-  public static final int SeeBlockDocTag = 28;
-  public static final int SinceBlockDocTag = 29;
-  public static final int StaticFieldDocReference = 30;
-  public static final int TextCommentLinePart = 31;
-  public static final int ThrowsBlockDocTag = 32;
-  public static final int ValueInlineDocTag = 33;
-  public static final int VersionBlockDocTag = 34;
+  public static final int HTMLElementTextElement = 21;
+  public static final int IHoldCommentLines = 22;
+  public static final int InheritDocInlineDocTag = 23;
+  public static final int InlineTagCommentLinePart = 24;
+  public static final int LinkInlineDocTag = 25;
+  public static final int MethodDocComment = 26;
+  public static final int MethodDocReference = 27;
+  public static final int ParameterBlockDocTag = 28;
+  public static final int ReturnBlockDocTag = 29;
+  public static final int SeeBlockDocTag = 30;
+  public static final int SinceBlockDocTag = 31;
+  public static final int StaticFieldDocReference = 32;
+  public static final int TextCommentLinePart = 33;
+  public static final int ThrowsBlockDocTag = 34;
+  public static final int ValueInlineDocTag = 35;
+  public static final int VersionBlockDocTag = 36;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L);
@@ -58,7 +60,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x1ec532ec2531d2e4L, ClassifierDocReference);
     builder.put(0x1ec532ec252a7b73L, CodeInlineDocTag);
     builder.put(0x2398cefbc261e3ffL, CodeSnippet);
-    builder.put(0x4693b55d3c7e4fd1L, CodeSnippetText);
+    builder.put(0x4693b55d3c7e4fd1L, CodeSnippetTextElement);
     builder.put(0x757ba20a4c87f96cL, CommentLine);
     builder.put(0x7c7f5b2f31990286L, CommentLinePart);
     builder.put(0x757ba20a4c87f964L, DeprecatedBlockDocTag);
@@ -68,6 +70,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x5ed0d79d7dc44bf2L, FieldDocComment);
     builder.put(0x1ec532ec252c9a28L, FieldDocReference);
     builder.put(0x5bc4aa08e154b399L, HTMLElement);
+    builder.put(0x4693b55d3db92dd2L, HTMLElementTextElement);
+    builder.put(0x4693b55d3da98b10L, IHoldCommentLines);
     builder.put(0x41a6af3499e5305fL, InheritDocInlineDocTag);
     builder.put(0x7c7f5b2f31990289L, InlineTagCommentLinePart);
     builder.put(0x235789022a5d3a2fL, LinkInlineDocTag);

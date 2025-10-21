@@ -31,8 +31,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new CodeInlineDocTag_TextGen();
       case LanguageConceptSwitch.CodeSnippet:
         return new CodeSnippet_TextGen();
-      case LanguageConceptSwitch.CodeSnippetText:
-        return new CodeSnippetText_TextGen();
+      case LanguageConceptSwitch.CodeSnippetTextElement:
+        return new CodeSnippetTextElement_TextGen();
       case LanguageConceptSwitch.CommentLine:
         return new CommentLine_TextGen();
       case LanguageConceptSwitch.DeprecatedBlockDocTag:
@@ -45,6 +45,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new FieldDocReference_TextGen();
       case LanguageConceptSwitch.HTMLElement:
         return new HTMLElement_TextGen();
+      case LanguageConceptSwitch.HTMLElementTextElement:
+        return new HTMLElementTextElement_TextGen();
       case LanguageConceptSwitch.InheritDocInlineDocTag:
         return new InheritDocInlineDocTag_TextGen();
       case LanguageConceptSwitch.InlineTagCommentLinePart:

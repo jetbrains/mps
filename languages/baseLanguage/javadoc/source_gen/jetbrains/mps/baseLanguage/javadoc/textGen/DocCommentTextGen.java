@@ -26,11 +26,11 @@ public abstract class DocCommentTextGen {
     tgs.indent();
     tgs.append("/**");
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$fIEQ)).isNotEmpty()) {
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$fIEQ)).visitAll((line) -> {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).isNotEmpty()) {
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).visitAll((line) -> {
         tgs.newLine();
         DocCommentTextGen.javadocIndent(ctx);
-        generateLine.handleLine(line, ctx);
+        DocumentationLines.handleLine(line, ctx);
       });
       tgs.newLine();
     } else {
@@ -91,7 +91,7 @@ public abstract class DocCommentTextGen {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentBody$fIEQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x6475d1cc79f5556bL, "commentBody");
+    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
     /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
     /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
     /*package*/ static final SContainmentLink author$lgjQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4a3c146b7faeeb32L, "author");

@@ -32,6 +32,9 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
+        <child id="1169127546356" name="extends" index="PrDN$" />
+      </concept>
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -69,13 +72,6 @@
     <property role="TrG5h" value="BaseDocComment" />
     <property role="EcuMT" value="5349172909345501395" />
     <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
-    <node concept="1TJgyj" id="6hPOsLTXllF" role="1TKVEi">
-      <property role="IQ2ns" value="7238922652217595243" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="commentBody" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
-    </node>
     <node concept="1TJgyj" id="4EPKw6tR9BN" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="tags" />
@@ -146,11 +142,8 @@
     <node concept="PrWs8" id="7Qt73fkj9CO" role="PzmwI">
       <ref role="PrY4T" to="tpck:hOwnYed" resolve="IDeprecatable" />
     </node>
-    <node concept="PrWs8" id="6hPOsLU1BXf" role="PzmwI">
-      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
-    </node>
-    <node concept="PrWs8" id="6hPOsLU3j2j" role="PzmwI">
-      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
+    <node concept="PrWs8" id="4qjHlOXEwLU" role="PzmwI">
+      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
     </node>
   </node>
   <node concept="1TIwiD" id="4CW56HZFI4X">
@@ -262,12 +255,6 @@
     <property role="TrG5h" value="CommentLine" />
     <property role="EcuMT" value="8465538089690331500" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="4qjHlOXh1n4" role="1TKVEi">
-      <property role="IQ2ns" value="5085607816295880132" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="line" />
-      <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
-    </node>
     <node concept="1TJgyj" id="7LZmMWLAgad" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="part" />
@@ -275,12 +262,6 @@
       <property role="IQ2ns" value="8970989240999019149" />
       <ref role="20lvS9" node="7LZmMWLAga6" resolve="CommentLinePart" />
       <node concept="asaX9" id="4qjHlOXh1n2" role="lGtFl" />
-    </node>
-    <node concept="PrWs8" id="4qjHlOXh4fz" role="PzmwI">
-      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
-    </node>
-    <node concept="PrWs8" id="4qjHlOXh4f$" role="PzmwI">
-      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
     </node>
   </node>
   <node concept="1TIwiD" id="7lVCwDc$5Ya">
@@ -631,6 +612,7 @@
       <property role="IQ2nx" value="6612597108003615642" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="asaX9" id="4qjHlOXIiRp" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="4iGwz$GTsqK">
     <property role="3GE5qa" value="tag" />
@@ -639,7 +621,7 @@
     <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
   </node>
   <node concept="1TIwiD" id="4qjHlOWv$Zh">
-    <property role="TrG5h" value="CodeSnippetText" />
+    <property role="TrG5h" value="CodeSnippetTextElement" />
     <property role="3GE5qa" value="tag" />
     <property role="EcuMT" value="5085607816282918865" />
     <property role="34LRSv" value="{{ code }}" />
@@ -650,6 +632,39 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="5085607816282918866" />
       <ref role="20lvS9" to="tpee:fzclF8l" resolve="Statement" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4qjHlOXEoGg">
+    <property role="EcuMT" value="5085607816302529296" />
+    <property role="TrG5h" value="IHoldCommentLines" />
+    <node concept="1TJgyj" id="4qjHlOXEoKN" role="1TKVEi">
+      <property role="IQ2ns" value="5085607816302529587" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="commentBody" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
+    </node>
+    <node concept="PrWs8" id="4qjHlOXEoGh" role="PrDN$">
+      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
+    </node>
+    <node concept="PrWs8" id="4qjHlOXEoKM" role="PrDN$">
+      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4qjHlOXIiRi">
+    <property role="TrG5h" value="HTMLElementTextElement" />
+    <property role="3GE5qa" value="tag" />
+    <property role="EcuMT" value="5085607816303554002" />
+    <property role="34LRSv" value="&lt;/&gt;" />
+    <property role="R4oN_" value="JavaDoc html Tag" />
+    <ref role="1TJDcQ" to="zqge:8D0iRqSPVB" resolve="TextElement" />
+    <node concept="1TJgyi" id="4qjHlOXIiRl" role="1TKVEl">
+      <property role="TrG5h" value="name" />
+      <property role="IQ2nx" value="5085607816303554005" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="4qjHlOXIiRm" role="PzmwI">
+      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
     </node>
   </node>
 </model>

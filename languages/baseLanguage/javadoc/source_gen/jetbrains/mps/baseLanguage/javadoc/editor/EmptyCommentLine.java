@@ -49,7 +49,6 @@ public class EmptyCommentLine extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewChild(SNodeOperations.cast(node, CONCEPTS.CommentLine$hJ), LINKS.line$6aUz, CONCEPTS.Line$yC);
       SNodeFactoryOperations.addNewChild(SNodeOperations.cast(node, CONCEPTS.CommentLine$hJ), LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
     }
     public String getKeyStroke() {
@@ -59,12 +58,10 @@ public class EmptyCommentLine extends KeyMapImpl {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept CommentLine$hJ = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
-    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
     /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$6aUz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x4693b55d3d4415c4L, "line");
     /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 }

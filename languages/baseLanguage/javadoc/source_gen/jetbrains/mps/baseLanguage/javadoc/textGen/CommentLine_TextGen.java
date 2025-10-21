@@ -26,13 +26,9 @@ public class CommentLine_TextGen extends TextGenDescriptorBase {
         tgs.appendNode(item);
       }
     }
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$6aUz) != null)) {
-      generateLine.handleLine(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$6aUz), ctx);
-    }
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
-    /*package*/ static final SContainmentLink line$6aUz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x4693b55d3d4415c4L, "line");
   }
 }

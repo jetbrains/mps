@@ -6,20 +6,18 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.baseLanguage.javadoc.editor.NodeCaretPair;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import jetbrains.mps.baseLanguage.javadoc.editor.NodeCaretPair;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,20 +28,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
 
-  public static final SMethod<Boolean> enforceExternalIndentation_id4qjHlOWQ7Jg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("enforceExternalIndentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816288828368L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<NodeCaretPair> tryMergeToRight_idooaTF_3fF3 = new SMethodBuilder<NodeCaretPair>(new SJavaCompoundTypeImpl(NodeCaretPair.class)).name("tryMergeToRight").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(439148907936414403L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
   public static final SMethod<String> buildCommentText_id7Qt73fl2z8k = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9051421835027690004L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
-  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, tryMergeToRight_idooaTF_3fF3, buildCommentText_id7Qt73fl2z8k, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(tryMergeToRight_idooaTF_3fF3, buildCommentText_id7Qt73fl2z8k);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean enforceExternalIndentation_id4qjHlOWQ7Jg(@NotNull SNode __thisNode__) {
-    return true;
-  }
   /*package*/ static NodeCaretPair tryMergeToRight_idooaTF_3fF3(@NotNull SNode __thisNode__, int index) {
     if (index >= 0 && index + 1 < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).count() && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb) && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index + 1), CONCEPTS.TextCommentLinePart$Eb)) {
       SNode leftPart = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).getElement(index), CONCEPTS.TextCommentLinePart$Eb);
@@ -57,13 +49,7 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static String buildCommentText_id7Qt73fl2z8k(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", (String s, SNode it) -> s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it)) + Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.line$6aUz));
-  }
-  /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.line$6aUz));
-  }
-  /*package*/ static void addLine_id7q4YwcerggR(@NotNull SNode __thisNode__, SNode l) {
-    Line__BehaviorDescriptor.merge_id1YnOZxALrLu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.line$6aUz), l);
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$QuzQ)).foldLeft("", (String s, SNode it) -> s + CommentLinePart__BehaviorDescriptor.buildCommentText_id7Qt73fl2F3N.invoke(it));
   }
 
   /*package*/ CommentLine__BehaviorDescriptor() {
@@ -82,16 +68,9 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) enforceExternalIndentation_id4qjHlOWQ7Jg(node));
-      case 1:
         return (T) ((NodeCaretPair) tryMergeToRight_idooaTF_3fF3(node, ((int) (Integer) parameters[0])));
-      case 2:
+      case 1:
         return (T) ((String) buildCommentText_id7Qt73fl2z8k(node));
-      case 3:
-        return (T) ((List<SNode>) getLines_id6GJhO0n1Xys(node));
-      case 4:
-        addLine_id7q4YwcerggR(node, (SNode) parameters[0]);
-        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -126,7 +105,6 @@ public final class CommentLine__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
-    /*package*/ static final SContainmentLink line$6aUz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x4693b55d3d4415c4L, "line");
   }
 
   private static final class CONCEPTS {

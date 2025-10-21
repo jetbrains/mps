@@ -10,7 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class CodeSnippetText_TextGen extends TextGenDescriptorBase {
+public class CodeSnippetTextElement_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);

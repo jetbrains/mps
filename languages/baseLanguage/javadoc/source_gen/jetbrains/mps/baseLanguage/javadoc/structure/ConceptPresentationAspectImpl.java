@@ -20,7 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ClassifierDocReference;
   private ConceptPresentation props_CodeInlineDocTag;
   private ConceptPresentation props_CodeSnippet;
-  private ConceptPresentation props_CodeSnippetText;
+  private ConceptPresentation props_CodeSnippetTextElement;
   private ConceptPresentation props_CommentLine;
   private ConceptPresentation props_CommentLinePart;
   private ConceptPresentation props_DeprecatedBlockDocTag;
@@ -30,6 +30,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_FieldDocComment;
   private ConceptPresentation props_FieldDocReference;
   private ConceptPresentation props_HTMLElement;
+  private ConceptPresentation props_HTMLElementTextElement;
+  private ConceptPresentation props_IHoldCommentLines;
   private ConceptPresentation props_InheritDocInlineDocTag;
   private ConceptPresentation props_InlineTagCommentLinePart;
   private ConceptPresentation props_LinkInlineDocTag;
@@ -130,13 +132,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CodeSnippet = cpb.create();
         }
         return props_CodeSnippet;
-      case LanguageConceptSwitch.CodeSnippetText:
-        if (props_CodeSnippetText == null) {
+      case LanguageConceptSwitch.CodeSnippetTextElement:
+        if (props_CodeSnippetTextElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("{{ code }}");
-          props_CodeSnippetText = cpb.create();
+          props_CodeSnippetTextElement = cpb.create();
         }
-        return props_CodeSnippetText;
+        return props_CodeSnippetTextElement;
       case LanguageConceptSwitch.CommentLine:
         if (props_CommentLine == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL);
@@ -197,10 +199,25 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.HTMLElement:
         if (props_HTMLElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("HTMLElement");
           props_HTMLElement = cpb.create();
         }
         return props_HTMLElement;
+      case LanguageConceptSwitch.HTMLElementTextElement:
+        if (props_HTMLElementTextElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("JavaDoc html Tag");
+          cpb.rawPresentation("</>");
+          props_HTMLElementTextElement = cpb.create();
+        }
+        return props_HTMLElementTextElement;
+      case LanguageConceptSwitch.IHoldCommentLines:
+        if (props_IHoldCommentLines == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IHoldCommentLines = cpb.create();
+        }
+        return props_IHoldCommentLines;
       case LanguageConceptSwitch.InheritDocInlineDocTag:
         if (props_InheritDocInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

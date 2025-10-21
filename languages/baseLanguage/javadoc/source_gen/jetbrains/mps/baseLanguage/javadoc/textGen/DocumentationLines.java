@@ -11,12 +11,12 @@ import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public abstract class generateLine extends DocCommentTextGen {
+public abstract class DocumentationLines extends DocCommentTextGen {
   public static void handleLine(SNode line, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     boolean first = true;
     for (SNode w : Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(line)) {
-      if (SNodeOperations.isInstanceOf(w, CONCEPTS.CodeSnippetText$I3)) {
+      if (SNodeOperations.isInstanceOf(w, CONCEPTS.CodeSnippetTextElement$I3) || SNodeOperations.isInstanceOf(w, CONCEPTS.HTMLElementTextElement$Wi)) {
         tgs.appendNode(w);
       } else {
         String textualRepresentation = TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(w);
@@ -33,6 +33,7 @@ public abstract class generateLine extends DocCommentTextGen {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CodeSnippetText$I3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetText");
+    /*package*/ static final SConcept CodeSnippetTextElement$I3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetTextElement");
+    /*package*/ static final SConcept HTMLElementTextElement$Wi = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElementTextElement");
   }
 }

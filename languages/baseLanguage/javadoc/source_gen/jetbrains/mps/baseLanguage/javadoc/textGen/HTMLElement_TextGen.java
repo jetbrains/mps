@@ -9,9 +9,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class HTMLElement_TextGen extends TextGenDescriptorBase {
   @Override
@@ -34,11 +34,11 @@ public class HTMLElement_TextGen extends TextGenDescriptorBase {
     }
   }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink line$Psfe = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
-  }
-
   private static final class PROPS {
     /*package*/ static final SProperty name$Ps0d = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink line$Psfe = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
   }
 }

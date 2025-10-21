@@ -21,8 +21,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public final class CodeSnippetText__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetText");
+public final class CodeSnippetTextElement__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetTextElement");
 
   public static final SMethod<String> getTextualRepresentation_idfB3l81it7u = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147594039774L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
@@ -35,7 +35,7 @@ public final class CodeSnippetText__BehaviorDescriptor extends BaseBHDescriptor 
     return "Code snippet: " + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$BQHd)).select((it) -> (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it)).foldLeft("", (String s, String it) -> it + "\n");
   }
 
-  /*package*/ CodeSnippetText__BehaviorDescriptor() {
+  /*package*/ CodeSnippetTextElement__BehaviorDescriptor() {
   }
 
   @Override
