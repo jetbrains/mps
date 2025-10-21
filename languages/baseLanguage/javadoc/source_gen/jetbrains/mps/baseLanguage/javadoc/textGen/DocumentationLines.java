@@ -7,10 +7,12 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.text.behavior.IndentedPoint__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public abstract class DocumentationLines extends DocCommentTextGen {
   public static void handleLine(SNode line, final TextGenContext ctx) {
@@ -28,6 +30,9 @@ public abstract class DocumentationLines extends DocCommentTextGen {
       tgs.append("" + position);
       tgs.append(". ");
     }
+    if (SNodeOperations.isInstanceOf(line, CONCEPTS.Header$d7)) {
+      tgs.append("<" + ("H" + SPropertyOperations.getEnum(SNodeOperations.as(line, CONCEPTS.Header$d7), PROPS.level$YKTp) + ">"));
+    }
     for (SNode w : Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(line)) {
       if (SNodeOperations.isInstanceOf(w, CONCEPTS.CodeSnippetTextElement$I3) || SNodeOperations.isInstanceOf(w, CONCEPTS.HTMLElementTextElement$Wi) || SNodeOperations.isInstanceOf(w, CONCEPTS.InlineTagCommentTextElement$48)) {
         tgs.appendNode(w);
@@ -43,13 +48,21 @@ public abstract class DocumentationLines extends DocCommentTextGen {
         }
       }
     }
+    if (SNodeOperations.isInstanceOf(line, CONCEPTS.Header$d7)) {
+      tgs.append("</" + ("H" + SPropertyOperations.getEnum(SNodeOperations.as(line, CONCEPTS.Header$d7), PROPS.level$YKTp) + ">"));
+    }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BulletLine$ef = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xf2f8c94a6f2a8faL, "jetbrains.mps.lang.text.structure.BulletLine");
     /*package*/ static final SConcept NumberedLine$k0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
+    /*package*/ static final SConcept Header$d7 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header");
     /*package*/ static final SConcept InlineTagCommentTextElement$48 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement");
     /*package*/ static final SConcept CodeSnippetTextElement$I3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetTextElement");
     /*package*/ static final SConcept HTMLElementTextElement$Wi = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElementTextElement");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty level$YKTp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, 0x6cb23f222fb47b9dL, "level");
   }
 }

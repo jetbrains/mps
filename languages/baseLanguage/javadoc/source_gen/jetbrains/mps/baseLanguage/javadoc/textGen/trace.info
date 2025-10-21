@@ -897,63 +897,72 @@
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/5085607816289874814">
     <file name="DocumentationLines.java">
-      <node id="5085607816289930592" at="16,71,17,55" concept="6" />
-      <node id="1225762468881895725" at="17,55,18,25" concept="6" />
-      <node id="5085607816309913033" at="19,69,20,148" concept="6" />
-      <node id="5085607816309914253" at="20,148,21,31" concept="1" />
-      <node id="5085607816309871792" at="21,31,22,23" concept="1" />
-      <node id="5085607816309915547" at="24,71,25,150" concept="6" />
-      <node id="5085607816309919376" at="25,150,26,152" concept="6" />
-      <node id="5085607816309917456" at="26,152,27,31" concept="1" />
-      <node id="5085607816309934716" at="27,31,28,32" concept="1" />
-      <node id="5085607816309873716" at="28,32,29,23" concept="1" />
-      <node id="5085607816289951721" at="32,227,33,26" concept="1" />
-      <node id="1225762468792351134" at="34,14,35,119" concept="6" />
-      <node id="1225762468881902271" at="36,20,37,24" concept="1" />
-      <node id="5085607816289980922" at="38,16,39,26" concept="1" />
-      <node id="5085607816289985216" at="41,84,42,102" concept="1" />
-      <node id="5085607816289874814" at="49,0,50,0" concept="10" trace="BulletLine$ef" />
-      <node id="5085607816289874814" at="50,0,51,0" concept="10" trace="NumberedLine$k0" />
-      <node id="5085607816289874814" at="51,0,52,0" concept="10" trace="InlineTagCommentTextElement$48" />
-      <node id="5085607816289874814" at="52,0,53,0" concept="10" trace="CodeSnippetTextElement$I3" />
-      <node id="5085607816289874814" at="53,0,54,0" concept="10" trace="HTMLElementTextElement$Wi" />
-      <node id="1225762468881903820" at="38,14,40,9" concept="0" />
-      <node id="1225762468792352499" at="40,9,43,9" concept="4" />
-      <node id="5085607816309867063" at="18,25,23,5" concept="4" />
-      <node id="1225762468881900826" at="35,119,40,9" concept="4" />
-      <node id="5085607816309873713" at="23,5,30,5" concept="4" />
-      <node id="5085607816289953042" at="34,12,44,7" concept="0" />
-      <node id="5085607816289945433" at="31,88,44,7" concept="4" />
-      <node id="2642648362195081163" at="30,5,45,5" concept="3" />
-      <node id="5085607816289930592" at="16,0,47,0" concept="11" trace="handleLine#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="5085607816289945435" at="32,227,33,26" />
-      <scope id="1225762468881900828" at="36,20,37,24" />
-      <scope id="1225762468881903821" at="38,16,39,26" />
-      <scope id="1225762468792352501" at="41,84,42,102" />
-      <scope id="5085607816309867065" at="19,69,22,23">
+      <node id="5085607816289930592" at="18,71,19,55" concept="6" />
+      <node id="1225762468881895725" at="19,55,20,25" concept="6" />
+      <node id="5085607816309913033" at="21,69,22,148" concept="6" />
+      <node id="5085607816309914253" at="22,148,23,31" concept="1" />
+      <node id="5085607816309871792" at="23,31,24,23" concept="1" />
+      <node id="5085607816309915547" at="26,71,27,150" concept="6" />
+      <node id="5085607816309919376" at="27,150,28,152" concept="6" />
+      <node id="5085607816309917456" at="28,152,29,31" concept="1" />
+      <node id="5085607816309934716" at="29,31,30,32" concept="1" />
+      <node id="5085607816309873716" at="30,32,31,23" concept="1" />
+      <node id="5085607816311740985" at="33,65,34,130" concept="1" />
+      <node id="5085607816289951721" at="37,227,38,26" concept="1" />
+      <node id="1225762468792351134" at="39,14,40,119" concept="6" />
+      <node id="1225762468881902271" at="41,20,42,24" concept="1" />
+      <node id="5085607816289980922" at="43,16,44,26" concept="1" />
+      <node id="5085607816289985216" at="46,84,47,102" concept="1" />
+      <node id="5085607816311776265" at="51,65,52,131" concept="1" />
+      <node id="5085607816289874814" at="57,0,58,0" concept="10" trace="BulletLine$ef" />
+      <node id="5085607816289874814" at="58,0,59,0" concept="10" trace="NumberedLine$k0" />
+      <node id="5085607816289874814" at="59,0,60,0" concept="10" trace="Header$d7" />
+      <node id="5085607816289874814" at="60,0,61,0" concept="10" trace="InlineTagCommentTextElement$48" />
+      <node id="5085607816289874814" at="61,0,62,0" concept="10" trace="CodeSnippetTextElement$I3" />
+      <node id="5085607816289874814" at="62,0,63,0" concept="10" trace="HTMLElementTextElement$Wi" />
+      <node id="5085607816289874814" at="66,0,67,0" concept="10" trace="level$YKTp" />
+      <node id="1225762468881903820" at="43,14,45,9" concept="0" />
+      <node id="5085607816311740966" at="32,5,35,5" concept="4" />
+      <node id="1225762468792352499" at="45,9,48,9" concept="4" />
+      <node id="5085607816311776262" at="50,5,53,5" concept="4" />
+      <node id="5085607816309867063" at="20,25,25,5" concept="4" />
+      <node id="1225762468881900826" at="40,119,45,9" concept="4" />
+      <node id="5085607816309873713" at="25,5,32,5" concept="4" />
+      <node id="5085607816289953042" at="39,12,49,7" concept="0" />
+      <node id="5085607816289945433" at="36,88,49,7" concept="4" />
+      <node id="2642648362195081163" at="35,5,50,5" concept="3" />
+      <node id="5085607816289930592" at="18,0,55,0" concept="11" trace="handleLine#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="5085607816311740967" at="33,65,34,130" />
+      <scope id="5085607816289945435" at="37,227,38,26" />
+      <scope id="1225762468881900828" at="41,20,42,24" />
+      <scope id="1225762468881903821" at="43,16,44,26" />
+      <scope id="1225762468792352501" at="46,84,47,102" />
+      <scope id="5085607816311776263" at="51,65,52,131" />
+      <scope id="5085607816309867065" at="21,69,24,23">
         <var name="indentString" id="5085607816309913034" />
       </scope>
-      <scope id="5085607816309873714" at="24,71,29,23">
+      <scope id="5085607816309873714" at="26,71,31,23">
         <var name="indentString" id="5085607816309915548" />
         <var name="position" id="5085607816309919377" />
       </scope>
-      <scope id="5085607816289953043" at="34,14,43,9">
+      <scope id="5085607816289953043" at="39,14,48,9">
         <var name="textualRepresentation" id="1225762468792351135" />
       </scope>
-      <scope id="2642648362195081164" at="31,88,44,7" />
-      <scope id="2642648362195081163" at="30,5,45,5">
+      <scope id="2642648362195081164" at="36,88,49,7" />
+      <scope id="2642648362195081163" at="35,5,50,5">
         <var name="w" id="2642648362195081172" />
       </scope>
-      <scope id="5085607816289930592" at="16,71,45,5">
+      <scope id="5085607816289930592" at="18,71,53,5">
         <var name="first" id="1225762468881895728" />
         <var name="tgs" id="5085607816289930592" />
       </scope>
-      <scope id="5085607816289930592" at="16,0,47,0">
+      <scope id="5085607816289930592" at="18,0,55,0">
         <var name="ctx" id="5085607816289930592" />
         <var name="line" id="5085607816289935029" />
       </scope>
-      <unit id="5085607816289874814" at="48,0,55,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DocumentationLines$CONCEPTS" />
-      <unit id="5085607816289874814" at="15,0,56,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DocumentationLines" />
+      <unit id="5085607816289874814" at="65,0,68,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DocumentationLines$PROPS" />
+      <unit id="5085607816289874814" at="56,0,64,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DocumentationLines$CONCEPTS" />
+      <unit id="5085607816289874814" at="17,0,69,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DocumentationLines" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/5085607816303684616">
