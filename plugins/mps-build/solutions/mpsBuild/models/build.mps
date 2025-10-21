@@ -652,42 +652,42 @@
       <node concept="25yagZ" id="2HlAODiAk1a" role="PiKyV">
         <node concept="3yqu4x" id="2HlAODiAk1b" role="25yagT">
           <node concept="3yrxFa" id="2HlAODiAk1c" role="3yqu4I">
-            <ref role="3yrxFb" node="6qbFrjAQrYk" />
+            <ref role="3yrxFb" node="muHOnHl4yN" />
           </node>
         </node>
       </node>
       <node concept="25yagZ" id="2HlAODiAkdh" role="PiKyV">
         <node concept="3yqu4x" id="2HlAODiAkdi" role="25yagT">
           <node concept="3yrxFa" id="2HlAODiAkdj" role="3yqu4I">
-            <ref role="3yrxFb" node="784ypGmhhT8" />
+            <ref role="3yrxFb" node="muHOnHl4yB" />
           </node>
         </node>
       </node>
       <node concept="25yagZ" id="7F4u5z1cOvd" role="PiKyV">
         <node concept="3yqu4x" id="7F4u5z1cOve" role="25yagT">
           <node concept="3yrxFa" id="7F4u5z1cOvf" role="3yqu4I">
-            <ref role="3yrxFb" node="7F4u5z11s4k" />
+            <ref role="3yrxFb" node="muHOnHl4xF" />
           </node>
         </node>
       </node>
       <node concept="25yagZ" id="2HlAODiAkdk" role="PiKyV">
         <node concept="3yqu4x" id="2HlAODiAkdl" role="25yagT">
           <node concept="3yrxFa" id="2HlAODiAkdm" role="3yqu4I">
-            <ref role="3yrxFb" node="784ypGmhpuf" />
+            <ref role="3yrxFb" node="muHOnHl4wS" />
           </node>
         </node>
       </node>
       <node concept="25yagZ" id="7F4u5z1mO9L" role="PiKyV">
         <node concept="3yqu4x" id="7F4u5z1mO9M" role="25yagT">
           <node concept="3yrxFa" id="7F4u5z1mO9N" role="3yqu4I">
-            <ref role="3yrxFb" node="7F4u5z1mO9I" />
+            <ref role="3yrxFb" node="muHOnHl4wV" />
           </node>
         </node>
       </node>
       <node concept="25yagZ" id="2HlAODiAkdn" role="PiKyV">
         <node concept="3yqu4x" id="2HlAODiAkdo" role="25yagT">
           <node concept="3yrxFa" id="2HlAODiAkdp" role="3yqu4I">
-            <ref role="3yrxFb" node="784ypGmhsv4" />
+            <ref role="3yrxFb" node="muHOnHl4ww" />
           </node>
         </node>
       </node>
@@ -27737,45 +27737,402 @@
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="6qbFrjAQrYk" role="39821P">
-        <node concept="3_J27D" id="6qbFrjAQrYl" role="13uQ07">
-          <node concept="3Mxwew" id="6qbFrjAQu0X" role="3MwsjC">
+      <node concept="13uQ2_" id="muHOnHl4yQ" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yR" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yS" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.aalto.xml.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yN" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yO" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yP" role="3MwsjC">
             <property role="3MwjfP" value="module-intellij.libraries.asm.jar" />
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="784ypGmhhT8" role="39821P">
-        <node concept="3_J27D" id="784ypGmhhT9" role="13uQ07">
-          <node concept="3Mxwew" id="784ypGmhhTa" role="3MwsjC">
+      <node concept="13uQ2_" id="muHOnHl4yK" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yL" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yM" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.caffeine.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yH" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yI" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yJ" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.cglib.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yE" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yF" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yG" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.fastutil.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yB" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yC" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yD" role="3MwsjC">
             <property role="3MwjfP" value="module-intellij.libraries.gson.jar" />
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="7F4u5z11s4k" role="39821P">
-        <node concept="3_J27D" id="7F4u5z11s4l" role="13uQ07">
-          <node concept="3Mxwew" id="7F4u5z11s4m" role="3MwsjC">
+      <node concept="13uQ2_" id="muHOnHl4y$" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4y_" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yA" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.guava.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yx" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yy" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yz" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.hash4j.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yu" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yv" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yw" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.icu4j.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yr" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4ys" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yt" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.ion.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yo" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yp" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yq" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.jackson.databind.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yl" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4ym" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yn" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.jackson.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yi" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yj" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yk" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.jackson.jr.objects.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yf" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yg" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yh" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.jackson.module.kotlin.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4yc" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4yd" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4ye" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.kotlin.reflect.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4y9" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4ya" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4yb" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.kotlinx.coroutines.slf4j.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4y6" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4y7" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4y8" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.kotlinx.io.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4y3" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4y4" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4y5" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.kotlinx.serialization.core.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4y0" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4y1" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4y2" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.kotlinx.serialization.json.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xX" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xY" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xZ" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.ktor.client.cio.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xU" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xV" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xW" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.ktor.client.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xR" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xS" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xT" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.ktor.io.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xO" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xP" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xQ" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.ktor.network.tls.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xL" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xM" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xN" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.ktor.utils.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xI" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xJ" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xK" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.lz4.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xF" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xG" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xH" role="3MwsjC">
             <property role="3MwjfP" value="module-intellij.libraries.miglayout.swing.jar" />
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="784ypGmhpuf" role="39821P">
-        <node concept="3_J27D" id="784ypGmhpug" role="13uQ07">
-          <node concept="3Mxwew" id="784ypGmhpuh" role="3MwsjC">
-            <property role="3MwjfP" value="module-intellij.platform.vcs.jar" />
+      <node concept="13uQ2_" id="muHOnHl4xC" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xD" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xE" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.mvstore.jar" />
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="7F4u5z1mO9I" role="39821P">
-        <node concept="3_J27D" id="7F4u5z1mO9J" role="13uQ07">
-          <node concept="3Mxwew" id="7F4u5z1mO9K" role="3MwsjC">
+      <node concept="13uQ2_" id="muHOnHl4x_" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xA" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xB" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.proxy.vole.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xy" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xz" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4x$" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.rhino.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xv" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xw" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xx" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.winp.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xs" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xt" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xu" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.xerces.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xp" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xq" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xr" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.libraries.xz.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xm" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xn" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xo" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.debugger.impl.rpc.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xj" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xk" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xl" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.debugger.impl.shared.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xg" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xh" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xi" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.eel.impl.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xd" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xe" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xf" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.find.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4xa" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4xb" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4xc" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.managed.cache.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4x7" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4x8" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4x9" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.polySymbols.backend.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4x4" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4x5" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4x6" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.polySymbols.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4x1" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4x2" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4x3" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.rpc.topics.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wY" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wZ" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4x0" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.scopes.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wV" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wW" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wX" role="3MwsjC">
             <property role="3MwjfP" value="module-intellij.platform.vcs.core.jar" />
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="784ypGmhsv4" role="39821P">
-        <node concept="3_J27D" id="784ypGmhsv5" role="13uQ07">
-          <node concept="3Mxwew" id="784ypGmhsv6" role="3MwsjC">
+      <node concept="13uQ2_" id="muHOnHl4wS" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wT" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wU" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.vcs.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wP" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wQ" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wR" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.platform.vcs.shared.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wM" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wN" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wO" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.regexp.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wJ" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wK" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wL" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.analysis.impl.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wG" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wH" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wI" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.analysis.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wD" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wE" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wF" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.dom.impl.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wA" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wB" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wC" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.dom.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wz" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4w$" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4w_" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.impl.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4ww" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wx" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wy" role="3MwsjC">
             <property role="3MwjfP" value="module-intellij.xml.parser.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wt" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wu" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wv" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.psi.impl.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wq" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wr" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4ws" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.psi.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wn" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wo" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wp" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.structureView.impl.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wk" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wl" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wm" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.structureView.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4wh" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wi" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wj" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.syntax.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="muHOnHl4we" role="39821P">
+        <node concept="3_J27D" id="muHOnHl4wf" role="13uQ07">
+          <node concept="3Mxwew" id="muHOnHl4wg" role="3MwsjC">
+            <property role="3MwjfP" value="module-intellij.xml.ui.common.jar" />
           </node>
         </node>
       </node>
@@ -56236,7 +56593,7 @@
       <node concept="25yagZ" id="6FsijxbeNU_" role="PiKyV">
         <node concept="3yqu4x" id="6FsijxbeNUA" role="25yagT">
           <node concept="3yrxFa" id="6FsijxbeNUB" role="3yqu4I">
-            <ref role="3yrxFb" node="6qbFrjAQrYk" />
+            <ref role="3yrxFb" node="muHOnHl4yN" />
           </node>
         </node>
       </node>
