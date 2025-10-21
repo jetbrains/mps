@@ -29,6 +29,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ClassifierDocReference_TextGen();
       case LanguageConceptSwitch.CodeInlineDocTag:
         return new CodeInlineDocTag_TextGen();
+      case LanguageConceptSwitch.CodeInlineDocTagTE:
+        return new CodeInlineDocTagTE_TextGen();
       case LanguageConceptSwitch.CodeSnippet:
         return new CodeSnippet_TextGen();
       case LanguageConceptSwitch.CodeSnippetTextElement:
@@ -49,10 +51,16 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new HTMLElementTextElement_TextGen();
       case LanguageConceptSwitch.InheritDocInlineDocTag:
         return new InheritDocInlineDocTag_TextGen();
+      case LanguageConceptSwitch.InheritDocInlineDocTagTE:
+        return new InheritDocInlineDocTagTE_TextGen();
       case LanguageConceptSwitch.InlineTagCommentLinePart:
         return new InlineTagCommentLinePart_TextGen();
+      case LanguageConceptSwitch.InlineTagCommentTextElement:
+        return new InlineTagCommentTextElement_TextGen();
       case LanguageConceptSwitch.LinkInlineDocTag:
         return new LinkInlineDocTag_TextGen();
+      case LanguageConceptSwitch.LinkInlineDocTagTE:
+        return new LinkInlineDocTagTE_TextGen();
       case LanguageConceptSwitch.MethodDocComment:
         return new MethodDocComment_TextGen();
       case LanguageConceptSwitch.MethodDocReference:
@@ -73,6 +81,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ThrowsBlockDocTag_TextGen();
       case LanguageConceptSwitch.ValueInlineDocTag:
         return new ValueInlineDocTag_TextGen();
+      case LanguageConceptSwitch.ValueInlineDocTagTE:
+        return new ValueInlineDocTagTE_TextGen();
       case LanguageConceptSwitch.VersionBlockDocTag:
         return new VersionBlockDocTag_TextGen();
     }

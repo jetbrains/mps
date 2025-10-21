@@ -14,11 +14,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BaseDocComment;
   private ConceptPresentation props_BaseDocReference;
   private ConceptPresentation props_BaseInlineDocTag;
+  private ConceptPresentation props_BaseInlineDocTagTE;
   private ConceptPresentation props_BaseParameterReference;
   private ConceptPresentation props_BaseVariableDocReference;
   private ConceptPresentation props_ClassifierDocComment;
   private ConceptPresentation props_ClassifierDocReference;
   private ConceptPresentation props_CodeInlineDocTag;
+  private ConceptPresentation props_CodeInlineDocTagTE;
   private ConceptPresentation props_CodeSnippet;
   private ConceptPresentation props_CodeSnippetTextElement;
   private ConceptPresentation props_CommentLine;
@@ -33,8 +35,11 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_HTMLElementTextElement;
   private ConceptPresentation props_IHoldCommentLines;
   private ConceptPresentation props_InheritDocInlineDocTag;
+  private ConceptPresentation props_InheritDocInlineDocTagTE;
   private ConceptPresentation props_InlineTagCommentLinePart;
+  private ConceptPresentation props_InlineTagCommentTextElement;
   private ConceptPresentation props_LinkInlineDocTag;
+  private ConceptPresentation props_LinkInlineDocTagTE;
   private ConceptPresentation props_MethodDocComment;
   private ConceptPresentation props_MethodDocReference;
   private ConceptPresentation props_ParameterBlockDocTag;
@@ -45,6 +50,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TextCommentLinePart;
   private ConceptPresentation props_ThrowsBlockDocTag;
   private ConceptPresentation props_ValueInlineDocTag;
+  private ConceptPresentation props_ValueInlineDocTagTE;
   private ConceptPresentation props_VersionBlockDocTag;
 
   @Override
@@ -86,9 +92,16 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.BaseInlineDocTag:
         if (props_BaseInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           props_BaseInlineDocTag = cpb.create();
         }
         return props_BaseInlineDocTag;
+      case LanguageConceptSwitch.BaseInlineDocTagTE:
+        if (props_BaseInlineDocTagTE == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_BaseInlineDocTagTE = cpb.create();
+        }
+        return props_BaseInlineDocTagTE;
       case LanguageConceptSwitch.BaseParameterReference:
         if (props_BaseParameterReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -119,11 +132,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CodeInlineDocTag:
         if (props_CodeInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("code piece");
           cpb.rawPresentation("code");
           props_CodeInlineDocTag = cpb.create();
         }
         return props_CodeInlineDocTag;
+      case LanguageConceptSwitch.CodeInlineDocTagTE:
+        if (props_CodeInlineDocTagTE == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("code piece");
+          cpb.rawPresentation("code");
+          props_CodeInlineDocTagTE = cpb.create();
+        }
+        return props_CodeInlineDocTagTE;
       case LanguageConceptSwitch.CodeSnippet:
         if (props_CodeSnippet == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -142,6 +164,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CommentLine:
         if (props_CommentLine == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL);
+          cpb.deprecated(true);
           cpb.deprecateAggregation(0x7c7f5b2f3199028dL, "part");
           cpb.rawPresentation("CommentLine");
           props_CommentLine = cpb.create();
@@ -150,6 +173,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CommentLinePart:
         if (props_CommentLinePart == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           props_CommentLinePart = cpb.create();
         }
         return props_CommentLinePart;
@@ -221,26 +245,52 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.InheritDocInlineDocTag:
         if (props_InheritDocInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("inherit doc from parent");
           cpb.rawPresentation("inheritDoc");
           props_InheritDocInlineDocTag = cpb.create();
         }
         return props_InheritDocInlineDocTag;
+      case LanguageConceptSwitch.InheritDocInlineDocTagTE:
+        if (props_InheritDocInlineDocTagTE == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("inherit doc from parent");
+          cpb.rawPresentation("inheritDoc");
+          props_InheritDocInlineDocTagTE = cpb.create();
+        }
+        return props_InheritDocInlineDocTagTE;
       case LanguageConceptSwitch.InlineTagCommentLinePart:
         if (props_InlineTagCommentLinePart == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("InlineTagCommentLinePart");
           props_InlineTagCommentLinePart = cpb.create();
         }
         return props_InlineTagCommentLinePart;
+      case LanguageConceptSwitch.InlineTagCommentTextElement:
+        if (props_InlineTagCommentTextElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("InlineTagCommentTextElement");
+          props_InlineTagCommentTextElement = cpb.create();
+        }
+        return props_InlineTagCommentTextElement;
       case LanguageConceptSwitch.LinkInlineDocTag:
         if (props_LinkInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("link to type or member");
           cpb.rawPresentation("link");
           props_LinkInlineDocTag = cpb.create();
         }
         return props_LinkInlineDocTag;
+      case LanguageConceptSwitch.LinkInlineDocTagTE:
+        if (props_LinkInlineDocTagTE == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("link to type or member");
+          cpb.rawPresentation("link");
+          props_LinkInlineDocTagTE = cpb.create();
+        }
+        return props_LinkInlineDocTagTE;
       case LanguageConceptSwitch.MethodDocComment:
         if (props_MethodDocComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L);
@@ -296,6 +346,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TextCommentLinePart:
         if (props_TextCommentLinePart == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("TextCommentLinePart");
           props_TextCommentLinePart = cpb.create();
         }
@@ -310,11 +361,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ValueInlineDocTag:
         if (props_ValueInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("constant value");
           cpb.rawPresentation("value");
           props_ValueInlineDocTag = cpb.create();
         }
         return props_ValueInlineDocTag;
+      case LanguageConceptSwitch.ValueInlineDocTagTE:
+        if (props_ValueInlineDocTagTE == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("constant value");
+          cpb.rawPresentation("value");
+          props_ValueInlineDocTagTE = cpb.create();
+        }
+        return props_ValueInlineDocTagTE;
       case LanguageConceptSwitch.VersionBlockDocTag:
         if (props_VersionBlockDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
