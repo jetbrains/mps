@@ -460,7 +460,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.lang.text.structure.TextElement
     b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
-    b.parent(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5085607816306582224");
     b.version(3);
     b.aggregate("tag", 0x4693b55d3de762d1L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de7bde9L).optional(false).ordered(true).multiple(false).origin("5085607816306582225").done();

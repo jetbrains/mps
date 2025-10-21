@@ -67,18 +67,18 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     new CommentTagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseInlineDocTag_cellMenu_43bwnt_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseInlineDocTagTE_cellMenu_43bwnt_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
-  public static class ReplaceWith_BaseInlineDocTag_cellMenu_43bwnt_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_BaseInlineDocTag_cellMenu_43bwnt_a0a0() {
+  public static class ReplaceWith_BaseInlineDocTagTE_cellMenu_43bwnt_a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
+    public ReplaceWith_BaseInlineDocTagTE_cellMenu_43bwnt_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.BaseInlineDocTag$x3;
+      return CONCEPTS.BaseInlineDocTagTE$ai;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "BaseInlineDocTag" + ")", new SNodePointer("r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)", "5085607816306645577"));
+      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "BaseInlineDocTagTE" + ")", new SNodePointer("r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)", "5085607816306645577"));
     }
   }
   private EditorCell createRefNodeList_0() {
@@ -157,7 +157,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseInlineDocTag$x3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e838L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseInlineDocTag");
+    /*package*/ static final SConcept BaseInlineDocTagTE$ai = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de7bde9L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseInlineDocTagTE");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 

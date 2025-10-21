@@ -47,6 +47,7 @@
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
+      <concept id="6089045305654894366" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default" flags="ng" index="2kknPJ" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
       <concept id="1237308012275" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem" flags="ln" index="ljvvj" />
@@ -233,6 +234,12 @@
       <concept id="5624877018226900666" name="jetbrains.mps.lang.editor.structure.TransformationMenu" flags="ng" index="3ICUPy" />
       <concept id="5624877018228267058" name="jetbrains.mps.lang.editor.structure.ITransformationMenu" flags="ngI" index="3INCJE">
         <child id="1638911550608572412" name="sections" index="IW6Ez" />
+      </concept>
+      <concept id="6684862045052272180" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_NodeToWrap" flags="ng" index="3N4pyC" />
+      <concept id="6684862045052059649" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_WrapperHandler" flags="ig" index="3N5aqt" />
+      <concept id="6684862045052059291" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Wrapper" flags="ng" index="3N5dw7">
+        <child id="6089045305655104958" name="reference" index="2klrvf" />
+        <child id="6684862045053873740" name="handler" index="3Na0zg" />
       </concept>
       <concept id="6918029743850363446" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_sourceNode" flags="ng" index="1NM5Pg" />
       <concept id="6918029743850363447" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_targetNode" flags="ng" index="1NM5Ph" />
@@ -10198,7 +10205,7 @@
     <node concept="3EZMnI" id="4qjHlOXU0CX" role="2wV5jI">
       <node concept="PMmxH" id="4qjHlOXU0CY" role="3EZMnx">
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
-        <ref role="1ERwB7" node="2eoNJJ2nsMq" resolve="ValueInlineDocTag_Actions" />
+        <ref role="1ERwB7" node="4qjHlOXU0G7" resolve="ValueInlineDocTag_ActionsTE" />
         <ref role="1k5W1q" node="6nHreUlWi7H" resolve="CommentTag" />
         <node concept="OXEIz" id="4qjHlOXU0CZ" role="P5bDN">
           <node concept="UkePV" id="4qjHlOXU0D0" role="OY2wv">
@@ -10263,7 +10270,7 @@
         <ref role="1k5W1q" node="6nHreUlWi7H" resolve="CommentTag" />
         <node concept="OXEIz" id="4qjHlOXU5D8" role="P5bDN">
           <node concept="UkePV" id="4qjHlOXU5D9" role="OY2wv">
-            <ref role="Ul1FP" to="m373:62wYidULuwS" resolve="BaseInlineDocTag" />
+            <ref role="Ul1FP" to="m373:4qjHlOXTVRD" resolve="BaseInlineDocTagTE" />
           </node>
         </node>
       </node>
@@ -10283,7 +10290,7 @@
         <ref role="1k5W1q" node="6nHreUlWi7H" resolve="CommentTag" />
         <node concept="OXEIz" id="4qjHlOXU6zv" role="P5bDN">
           <node concept="UkePV" id="4qjHlOXU6zw" role="OY2wv">
-            <ref role="Ul1FP" to="m373:62wYidULuwS" resolve="BaseInlineDocTag" />
+            <ref role="Ul1FP" to="m373:4qjHlOXTVRD" resolve="BaseInlineDocTagTE" />
           </node>
         </node>
       </node>
@@ -10292,9 +10299,55 @@
       </node>
       <node concept="3F2HdR" id="4qjHlOXU6zy" role="3EZMnx">
         <ref role="1NtTu8" to="m373:4qjHlOXEoKN" resolve="commentBody" />
-        <node concept="l2Vlx" id="4qjHlOXU6zz" role="2czzBx" />
+        <node concept="2iRkQZ" id="4qjHlOY3HFQ" role="2czzBx" />
       </node>
       <node concept="l2Vlx" id="4qjHlOXU6zA" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="22mcaB" id="4qjHlOXW9x6">
+    <ref role="aqKnT" to="m373:4qjHlOXTQbg" resolve="InlineTagCommentTextElement" />
+    <node concept="22hDWj" id="4qjHlOXW9x7" role="22hAXT" />
+    <node concept="3N5dw7" id="4qjHlOXW9x9" role="3ft7WO">
+      <node concept="3N5aqt" id="4qjHlOXW9xa" role="3Na0zg">
+        <node concept="3clFbS" id="4qjHlOXW9xb" role="2VODD2">
+          <node concept="3cpWs8" id="4qjHlOXWi$Y" role="3cqZAp">
+            <node concept="3cpWsn" id="4qjHlOXWi$Z" role="3cpWs9">
+              <property role="TrG5h" value="inlineTagTextElement" />
+              <node concept="3Tqbb2" id="4qjHlOXWi$_" role="1tU5fm">
+                <ref role="ehGHo" to="m373:4qjHlOXTQbg" resolve="InlineTagCommentTextElement" />
+              </node>
+              <node concept="2ShNRf" id="4qjHlOXWi_0" role="33vP2m">
+                <node concept="2fJWfE" id="4qjHlOXWi_1" role="2ShVmc">
+                  <node concept="3Tqbb2" id="4qjHlOXWi_2" role="3zrR0E">
+                    <ref role="ehGHo" to="m373:4qjHlOXTQbg" resolve="InlineTagCommentTextElement" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="4qjHlOXWabq" role="3cqZAp">
+            <node concept="37vLTI" id="4qjHlOXWjVp" role="3clFbG">
+              <node concept="3N4pyC" id="4qjHlOXWjYg" role="37vLTx" />
+              <node concept="2OqwBi" id="4qjHlOXWiVI" role="37vLTJ">
+                <node concept="37vLTw" id="4qjHlOXWi_3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4qjHlOXWi$Z" resolve="inlineTagTextElement" />
+                </node>
+                <node concept="3TrEf2" id="4qjHlOXWjeN" role="2OqNvi">
+                  <ref role="3Tt5mk" to="m373:4qjHlOXTQbh" resolve="tag" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="4qjHlOXWkxj" role="3cqZAp">
+            <node concept="37vLTw" id="4qjHlOXWkzk" role="3cqZAk">
+              <ref role="3cqZAo" node="4qjHlOXWi$Z" resolve="inlineTagTextElement" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2kknPJ" id="4qjHlOXW9zS" role="2klrvf">
+        <ref role="2ZyFGn" to="m373:4qjHlOXTVRD" resolve="BaseInlineDocTagTE" />
+      </node>
     </node>
   </node>
 </model>

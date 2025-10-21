@@ -67,7 +67,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     new CommentTagStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    ValueInlineDocTag_Actions.setCellActions(editorCell, myNode, getEditorContext());
+    ValueInlineDocTag_ActionsTE.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_BaseInlineDocTagTE_cellMenu_74x7zr_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }

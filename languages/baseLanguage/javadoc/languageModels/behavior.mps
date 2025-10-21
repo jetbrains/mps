@@ -3011,7 +3011,7 @@
       <node concept="3clFbS" id="4qjHlOXU2pM" role="3clF47">
         <node concept="3clFbF" id="4qjHlOXU2pP" role="3cqZAp">
           <node concept="Xl_RD" id="4qjHlOXU2pO" role="3clFbG">
-            <property role="Xl_RC" value="" />
+            <property role="Xl_RC" value="inheritDoc" />
           </node>
         </node>
       </node>

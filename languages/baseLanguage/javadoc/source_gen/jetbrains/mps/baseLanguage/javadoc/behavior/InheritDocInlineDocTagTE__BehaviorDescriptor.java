@@ -28,7 +28,7 @@ public final class InheritDocInlineDocTagTE__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static String buildCommentText_id4qjHlOXTWlm(@NotNull SNode __thisNode__) {
-    return "";
+    return "inheritDoc";
   }
 
   /*package*/ InheritDocInlineDocTagTE__BehaviorDescriptor() {
