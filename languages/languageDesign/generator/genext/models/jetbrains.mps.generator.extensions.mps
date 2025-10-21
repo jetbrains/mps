@@ -4,6 +4,7 @@
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="3" />
+    <use id="98b646bc-88d3-4578-a7f8-6ba9693eb7d4" name="jetbrains.mps.lang.generator.plan.bl" version="0" />
   </languages>
   <imports>
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
@@ -42,9 +43,6 @@
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -94,7 +92,6 @@
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -120,6 +117,11 @@
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
       <concept id="3751925928559474173" name="jetbrains.mps.lang.generator.plan.structure.ParameterDeclaration" flags="ng" index="3njf4X">
         <property id="3751925928559522063" name="description" index="3njVnf" />
+      </concept>
+    </language>
+    <language id="98b646bc-88d3-4578-a7f8-6ba9693eb7d4" name="jetbrains.mps.lang.generator.plan.bl">
+      <concept id="2933797630832237781" name="jetbrains.mps.lang.generator.plan.bl.structure.ParameterIdentityExpression" flags="ng" index="2k5qQN">
+        <reference id="2933797630832238873" name="declaration" index="2k5p1Z" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -217,16 +219,10 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="35ZzpQIfrqo" role="1B3o_S" />
       <node concept="3uibUv" id="35ZzpQIfoMl" role="1tU5fm">
-        <ref role="3uigEE" to="tft2:~TrivialParameterIdentity" resolve="TrivialParameterIdentity" />
+        <ref role="3uigEE" to="cgca:~PlanParameterIdentity" resolve="PlanParameterIdentity" />
       </node>
-      <node concept="2ShNRf" id="35ZzpQIfpz2" role="33vP2m">
-        <node concept="1pGfFk" id="35ZzpQIfpz3" role="2ShVmc">
-          <property role="373rjd" value="true" />
-          <ref role="37wK5l" to="tft2:~TrivialParameterIdentity.&lt;init&gt;(java.lang.String)" resolve="TrivialParameterIdentity" />
-          <node concept="Xl_RD" id="35ZzpQIfpz4" role="37wK5m">
-            <property role="Xl_RC" value="jetbrains.mps.generator.extensions.module-facet" />
-          </node>
-        </node>
+      <node concept="2k5qQN" id="2yQWmqWLyCp" role="33vP2m">
+        <ref role="2k5p1Z" node="4jPJr_qBRKv" resolve="module-facet" />
       </node>
     </node>
     <node concept="2tJIrI" id="4jPJr_qAQBz" role="jymVt" />
