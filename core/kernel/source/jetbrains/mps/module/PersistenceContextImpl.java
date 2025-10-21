@@ -12,6 +12,7 @@ import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 import java.util.function.Function;
@@ -32,6 +33,11 @@ public final class PersistenceContextImpl implements ModulePersistenceContext {
   private PersistenceContextImpl(AbstractModule am) {
     myMacroHelper = MacrosFactory.forModule(am);
     myFileSystem = am.getDescriptorFile() == null ? null : am.getDescriptorFile().getFileSystem();
+  }
+
+  private PersistenceContextImpl(MacroHelper macroHelper, FileSystem fileSystem) {
+    myMacroHelper = macroHelper;
+    myFileSystem = fileSystem;
   }
 
   public static MacroHelper macroHelper(@Nullable ModulePersistenceContext context) {
@@ -73,4 +79,7 @@ public final class PersistenceContextImpl implements ModulePersistenceContext {
     return new PersistenceContextImpl(module);
   }
 
+  public static ModulePersistenceContext basic(@NotNull MacroHelper macroHelper, @NotNull FileSystem fs) {
+    return new PersistenceContextImpl(macroHelper, fs);
+  }
 }

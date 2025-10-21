@@ -17,14 +17,36 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.vfs.IFile;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import org.jetbrains.mps.openapi.module.SModuleFacet;
-import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import jetbrains.mps.module.PersistenceContextImpl;
+import jetbrains.mps.util.MacroHelper;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import jetbrains.mps.persistence.MementoImpl;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import java.util.Set;
+import java.util.HashSet;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import javax.lang.model.SourceVersion;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class PullGeneratorUpFromLanguage_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -87,42 +109,84 @@ public class PullGeneratorUpFromLanguage_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final MPSProject myProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     final ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myProject);
-    Generator generator = (Generator) event.getData(MPSCommonDataKeys.MODULE);
+    final Generator generator = (Generator) event.getData(MPSCommonDataKeys.MODULE);
     final GeneratorDescriptor md = generator.getModuleDescriptor();
     final Language sourceLanguage = (Language) repoFacade.getModule(md.getSourceLanguage());
     final String virtualFolder = myProject.getVirtualFolder(sourceLanguage);
-    final IFile generatorModuleLocation = generator.getOutputPath().getParent();
-    ArrayList<ModelRoot> modelRoots = new ArrayList<>();
-    ArrayList<SModuleFacet> moduleFacets = new ArrayList<>();
-    generator.getModelRoots().forEach(modelRoots::add);
-    generator.getFacets().forEach(moduleFacets::add);
+    IFile generatorOutputRoot = generator.getOutputPath();
+    ArrayList<ModelRootDescriptor> modelRoots = new ArrayList<>();
+    ArrayList<ModuleFacetDescriptor> moduleFacets = new ArrayList<>();
+    // get File values of facets and model roots serialized in full (not "shrank" with any macro).
+    final ModulePersistenceContext mpc = PersistenceContextImpl.basic(new MacroHelper.MacroNoHelper(), myProject.getFileSystem());
+    for (ModelRoot mr : generator.getModelRoots()) {
+      MementoImpl m = new MementoImpl();
+      mr.save(m, mpc);
+      modelRoots.add(new ModelRootDescriptor(mr.getType(), m));
+    }
+    for (SModuleFacet mf : generator.getFacets()) {
+      MementoImpl m = new MementoImpl();
+      mf.save(m, mpc);
+      moduleFacets.add(new ModuleFacetDescriptor(mf.getFacetType(), m));
+    }
+    // if this generator lives in an empty language, try to guess extended language to serve as 'source' one
+    SModuleReference anotherSourceLanguage = null;
+    if (ListSequence.fromList(SModelOperations.roots(SModuleOperations.getAspect(sourceLanguage, "structure"), null)).isEmpty()) {
+      final Set<SModuleReference> extendedLanguages = new HashSet<>(sourceLanguage.getExtendedLanguageRefs());
+      extendedLanguages.remove(PersistenceFacade.getInstance().createModuleReference("ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)"));
+      if (!(extendedLanguages.isEmpty())) {
+        for (SModel tm : generator.getModels(SModelStereotype::isGeneratorModel)) {
+          Iterable<SNode> transformedConcepts = SLinkOperations.collect(SLinkOperations.collectMany(SModelOperations.roots(tm, CONCEPTS.MappingConfiguration$7j), LINKS.reductionMappingRule$epW2), LINKS.applicableConcept$Hpnk);
+          Iterable<SModuleReference> transformedLanguages = Sequence.fromIterable(transformedConcepts).select((it) -> SNodeOperations.getModel(it)).distinct().select((it) -> it.getModule().getModuleReference()).distinct();
+          SModuleReference transformedExtendedLang = Sequence.fromIterable(transformedLanguages).findFirst((p1) -> extendedLanguages.contains(p1));
+          if (transformedExtendedLang != null) {
+            anotherSourceLanguage = transformedExtendedLang;
+            break;
+          }
+        }
+      }
+      // XXX would be nice to check if sourceLanguage is of no value at all (i.e. other aspects are empty as well), and remove it. Left as an exercise for future.
+    }
     //  see NewGeneratorDialog
-    myProject.removeModule(event.getData(MPSCommonDataKeys.MODULE));
+    myProject.removeModule(generator);
+    if (anotherSourceLanguage != null) {
+      md.setSourceLanguage(anotherSourceLanguage);
+    }
     sourceLanguage.getModuleDescriptor().getGenerators().remove(md);
     sourceLanguage.setChanged();
     md.standaloneModule(true);
     md.clearModelRootDescriptors();
-    // facets and model roots from a disposed module get their File values serialized in full (not "shrank" with any macro).
-    // Once they get loaded back, they point to same proper location (no macro to resolve), and get serialized with a new ${module} location
-    // on eventual save(). 
-    for (ModelRoot mr : modelRoots) {
-      MementoImpl m = new MementoImpl();
-      mr.save(m);
-      md.getModelRootDescriptors().add(new ModelRootDescriptor(mr.getType(), m));
-    }
     md.clearModuleFacetDescriptors();
-    for (SModuleFacet mf : moduleFacets) {
-      MementoImpl m = new MementoImpl();
-      mf.save(m);
-      md.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(mf.getFacetType(), m));
+    // ????? Once they get loaded back, they point to same proper location (no macro to resolve), and get serialized with a new ${module} location
+    // on eventual save(). -- is it still true? Perhaps, shall use custom MacroHelper that translates path to a new ${module}-relative location???
+    md.getModelRootDescriptors().addAll(modelRoots);
+    md.getModuleFacetDescriptors().addAll(moduleFacets);
+    // XXX need a naming convention for generator module names, here's some basic approach
+    //    perhaps, if alias is not empty, shall just use source language name + alias, regardless of hash?
+    final String generatorModuleFileName;
+    final int hashInName = md.getNamespace().indexOf('#');
+    if (md.getAlias() != null && hashInName > 0 && SourceVersion.isName(NameUtil.longNameFromNamespaceAndShortName(md.getNamespace().substring(0, hashInName), md.getAlias()))) {
+      generatorModuleFileName = NameUtil.longNameFromNamespaceAndShortName(md.getNamespace().substring(0, hashInName), md.getAlias());
+    } else {
+      generatorModuleFileName = md.getNamespace().replace("#", "");
     }
-    // FIXME need a naming convention for generator module names 
-    IFile moduleFile = generatorModuleLocation.findChild(md.getNamespace().replace("#", "") + MPSExtentions.DOT_GENERATOR);
+    IFile moduleFile = generatorOutputRoot.getParent().findChild(generatorModuleFileName + MPSExtentions.DOT_GENERATOR);
     SModule gm = repoFacade.instantiate(md, moduleFile);
     myProject.addModule(gm);
     new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), repoFacade.getRepository()).update(gm);
     sourceLanguage.save();
+    // unfortunately, there's no simple way to update md.outputPath value (which is likely ${module}/generator/source_gen by default), therefore,
+    // set original IFIle and let subsequent save() shrink it to a proper value.
+    ((Generator) gm).setOutputPath(generatorOutputRoot);
     ((Generator) gm).save();
     myProject.setVirtualFolder(gm, virtualFolder);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink reductionMappingRule$epW2 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fca310cd5L, "reductionMappingRule");
+    /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 }

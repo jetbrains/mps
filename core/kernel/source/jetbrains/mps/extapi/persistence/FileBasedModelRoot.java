@@ -22,8 +22,6 @@ import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
-import jetbrains.mps.util.MacroHelper.MacroNoHelper;
-import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
@@ -204,8 +202,9 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       return;
     }
     // detached model root instance (no module) likely shall not shrink paths at all - use of global variables
-    // would be of no help once memento populates another root instance
-    final MacroHelper mh = getModule() == null ? new MacroNoHelper() : MacrosFactory.forModule(getModule());
+    // would be of no help once memento populates another root instance. However, here we rely on caller to pass
+    // proper MacroHelper - after all, caller might have better idea what's needed.
+    final MacroHelper mh = PersistenceContextImpl.macroHelper(context);
     if (myContentDir != null) {
       memento.put(CONTENT_PATH, myContentDir.shrink(mh));
     }
