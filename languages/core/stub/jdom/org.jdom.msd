@@ -2,7 +2,7 @@
 <solution name="org.jdom" uuid="f647e48e-4568-4f4c-b48a-1546492c6a2e" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="util-8.jar" />
       <PackageScope skip-private="true">
         <include prefix="org.jdom" />
@@ -12,7 +12,7 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
-      <library location="${platform_lib}/util-8.jar" />
+      <library location="${mps_home}/lib//util-8.jar" />
     </facet>
   </facets>
   <sourcePath />

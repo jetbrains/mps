@@ -2,7 +2,7 @@
 <solution name="JAXB" uuid="72acac8d-4dd3-4bac-a8ea-ee97162c24e8" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="jaxb-api.jar" />
       <sourceRoot location="jaxb-runtime.jar" />
       <PackageScope>
@@ -15,8 +15,8 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/jaxb-api.jar" />
-      <library location="${platform_lib}/jaxb-runtime.jar" />
+      <library location="${mps_home}/lib//jaxb-api.jar" />
+      <library location="${mps_home}/lib//jaxb-runtime.jar" />
     </facet>
   </facets>
   <sourcePath />

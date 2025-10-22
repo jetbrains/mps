@@ -2,7 +2,7 @@
 <solution name="Eclipse.ECJ" uuid="eb57df31-1cf1-45a8-9e5c-fb583b442849" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="lib.jar" />
       <PackageScope>
         <include prefix="org.eclipse.jdt."/>
@@ -11,7 +11,7 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/lib.jar" />
+      <library location="${mps_home}/lib/lib.jar" />
     </facet>
   </facets>
   <sourcePath />

@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.spellchecker.idea.stubs" uuid="9979803b-18d3-440b-8a74-99cec41fc78e" moduleVersion="0">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}/modules" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/modules" type="java_classes">
       <sourceRoot location="intellij.spellchecker.jar" />
       <sourceRoot location="intellij.spellchecker.xml.jar" />
       <PackageScope skip-private="false">
@@ -12,8 +12,8 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/modules/intellij.spellchecker.jar" />
-      <library location="${platform_lib}/modules/intellij.spellchecker.xml.jar" />
+      <library location="${mps_home}/lib/modules/intellij.spellchecker.jar" />
+      <library location="${mps_home}/lib/modules/intellij.spellchecker.xml.jar" />
     </facet>
   </facets>
   <dependencies>

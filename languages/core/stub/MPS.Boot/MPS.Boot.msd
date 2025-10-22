@@ -12,7 +12,7 @@
        FIXME in fact, I don't feel MPS.Boot shall expose any IDEA classes. Instead, only own [boot-util]
              classes have to be exposed, hiding use of IDEA counterparts.
     -->
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="util-8.jar" />
       <sourceRoot location="util_rt.jar" />
       <PackageScope skip-private="false">
@@ -23,8 +23,8 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/util-8.jar" />
-      <library location="${platform_lib}/util_rt.jar" />
+      <library location="${mps_home}/lib/util-8.jar" />
+      <library location="${mps_home}/lib/util_rt.jar" />
     </facet>
   </facets>
   <sourcePath />

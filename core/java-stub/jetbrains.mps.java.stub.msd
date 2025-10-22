@@ -5,7 +5,7 @@
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="util-8.jar" />
       <PackageScope skip-private="false">
         <include prefix="org.jetbrains.org.objectweb.asm." />
@@ -16,7 +16,7 @@
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
       <library location="${module}/classes" />
-      <library location="${platform_lib}/util-8.jar" />
+      <library location="${mps_home}/lib/util-8.jar" />
     </facet>
   </facets>
   <dependencies>

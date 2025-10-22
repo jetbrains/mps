@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.vcs.idea.stubs" uuid="f35cbfcb-ea50-4f20-9d5c-c765fbd8fd3b">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}/modules" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/modules" type="java_classes">
       <sourceRoot location="intellij.platform.vcs.dvcs.impl.jar" />
       <sourceRoot location="intellij.platform.vcs.dvcs.impl.shared.jar" />
       <sourceRoot location="intellij.platform.vcs.dvcs.jar" />
@@ -23,19 +23,19 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.impl.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.impl.shared.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.dvcs.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.exec.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.frontend.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.lang.actions.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.lang.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.impl.shared.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.log.graph.impl.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.log.graph.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.log.impl.jar" />
-      <library location="${platform_lib}/modules/intellij.platform.vcs.log.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.dvcs.impl.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.dvcs.impl.shared.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.dvcs.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.impl.exec.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.impl.frontend.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.impl.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.impl.lang.actions.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.impl.lang.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.impl.shared.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.log.graph.impl.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.log.graph.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.log.impl.jar" />
+      <library location="${mps_home}/lib/modules/intellij.platform.vcs.log.jar" />
     </facet>
   </facets>
   <dependencies>

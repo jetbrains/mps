@@ -2,13 +2,13 @@
 <solution name="Ant" uuid="847a3235-09f9-403c-b6a9-1c294a212e92" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}/ant/lib" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/ant/lib" type="java_classes">
       <sourceRoot location="ant.jar" />
     </modelRoot>
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/ant/lib/ant.jar" />
+      <library location="${mps_home}/lib/ant/lib/ant.jar" />
     </facet>
   </facets>
   <sourcePath />

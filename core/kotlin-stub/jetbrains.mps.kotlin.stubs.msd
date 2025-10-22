@@ -5,7 +5,7 @@
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="kotlin-metadata-jvm-2.1.0.jar" />
       <sourceRoot location="mps-persistence.jar" />
       <PackageScope skip-private="true">
@@ -18,7 +18,7 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
-      <library location="${platform_lib}/kotlin-metadata-jvm-2.1.0.jar" />
+      <library location="${mps_home}/lib/kotlin-metadata-jvm-2.1.0.jar" />
     </facet>
   </facets>
   <dependencies>

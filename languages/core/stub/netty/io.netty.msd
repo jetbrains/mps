@@ -2,7 +2,7 @@
 <solution name="io.netty" uuid="6c563085-e123-4aaf-be88-fb88e02f8282" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="util-8.jar" />
       <PackageScope skip-private="true">
         <include prefix="io.netty." />
@@ -11,7 +11,7 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/util-8.jar" />
+      <library location="${mps_home}/lib//util-8.jar" />
     </facet>
   </facets>
   <sourcePath />

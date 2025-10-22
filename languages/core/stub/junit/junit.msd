@@ -2,7 +2,7 @@
 <solution name="JUnit" uuid="49808fad-9d41-4b96-83fa-9231640f6b2b" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="junit4.jar" />
       <sourceRoot location="lib.jar" />
       <PackageScope>
@@ -15,8 +15,8 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
-      <library location="${platform_lib}/junit4.jar" />
-      <library location="${platform_lib}/lib.jar" />
+      <library location="${mps_home}/lib//junit4.jar" />
+      <library location="${mps_home}/lib//lib.jar" />
     </facet>
   </facets>
   <sourcePath />
