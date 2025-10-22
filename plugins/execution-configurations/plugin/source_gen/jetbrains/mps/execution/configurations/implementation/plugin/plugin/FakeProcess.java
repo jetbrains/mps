@@ -53,6 +53,11 @@ public class FakeProcess extends Process {
   }
 
   @Override
+  public long pid() {
+    return -1L;
+  }
+
+  @Override
   public void destroy() {
     if (myDestroyed) {
       if (LOG.isErrorLevel()) {
