@@ -1182,11 +1182,9 @@
         <fileset file="${artifacts.mps}/lib/mps-generator.jar" />
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -1215,6 +1213,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -1268,11 +1268,9 @@
         <fileset file="${artifacts.mps}/lib/mps-generator.jar" />
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -1292,6 +1290,8 @@
         <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.runtime.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -1398,12 +1398,10 @@
         <fileset file="${artifacts.mps}/lib/mps-generator.jar" />
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -1443,6 +1441,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.junit5.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -1500,12 +1500,10 @@
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.pattern.testLang" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -1544,6 +1542,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -1597,11 +1597,9 @@
         <fileset file="${artifacts.mps}/lib/mps-generator.jar" />
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -1633,6 +1631,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -1690,11 +1690,9 @@
         <fileset file="${basedir}/plugins/mps-testing/languages/bl.unittest.lib/lib/hamcrest-library-1.3.jar" />
         <fileset file="${basedir}/plugins/mps-testing/languages/bl.unittest.lib/lib/jmock-2.8.2.jar" />
         <fileset file="${basedir}/plugins/mps-testing/languages/bl.unittest.lib/lib/jmock-junit4-2.8.2.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -1723,6 +1721,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -1854,8 +1854,6 @@
         <fileset file="${artifacts.mps}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mps}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.closures.jar" />
@@ -1864,6 +1862,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />
@@ -2208,12 +2208,10 @@
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.transformation.test.inputLang" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -2241,6 +2239,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="apiguardian-api-1.1.2.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-api-5.13.4.jar" />
         <fileset dir="${artifacts.mps}/plugins/mps-junit5/lib" includes="junit-jupiter-engine-5.13.4.jar" />

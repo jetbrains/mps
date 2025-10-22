@@ -10,7 +10,6 @@
   <property name="version" value="${version.major}.${version.minor}${version.bugfixNr}${version.eap}" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
-  <property name="platform_lib" location="${basedir}/lib" />
   <property name="lib_ext" location="${basedir}/lib/ext" />
   <property name="kotlinc_home" location="${mps_home}/plugins/mps-kotlin/kotlinc" />
   <property name="artifacts.mpsTrueBootstrap" location="${build.dir}/artifacts/mpsTrueBootstrap" />
@@ -16795,7 +16794,6 @@
       </jvmargs>
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
-      <macro name="platform_lib" path="${platform_lib}" />
       <macro name="lib_ext" path="${lib_ext}" />
       <macro name="kotlinc_home" path="${kotlinc_home}" />
     </generate>

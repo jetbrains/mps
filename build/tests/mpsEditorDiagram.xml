@@ -451,12 +451,10 @@
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.editor.diagram.testLanguage" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
-        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
+        <fileset file="${artifacts.IDEA}/lib/lib.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
@@ -486,6 +484,8 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
+        <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset dir="${artifacts.mps}/plugins/jetpad/lib" includes="base-1.0.0-jvm6.jar" />
         <fileset dir="${artifacts.mps}/plugins/jetpad/lib" includes="base-projectional-1.0.0-jvm6.jar" />
         <fileset dir="${artifacts.mps}/plugins/jetpad/lib" includes="cell-1.0.0-jvm6.jar" />
