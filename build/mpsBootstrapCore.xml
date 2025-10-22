@@ -28040,6 +28040,16 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.generator.plan" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
+        <fileset file="${mps_home}/lib/app.jar" />
+        <fileset file="${mps_home}/lib/lib.jar" />
+        <fileset file="${mps_home}/lib/testFramework.jar" />
+        <fileset file="${mps_home}/lib/stats.jar" />
+        <fileset file="${mps_home}/lib/platform-loader.jar" />
+        <fileset file="${mps_home}/lib/util.jar" />
+        <fileset file="${mps_home}/lib/util-8.jar" />
+        <fileset file="${mps_home}/lib/util_rt.jar" />
+        <fileset file="${mps_home}/lib/jps-model.jar" />
+        <fileset file="${mps_home}/lib/forms_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <path refid="path.jdk.classpath" />
