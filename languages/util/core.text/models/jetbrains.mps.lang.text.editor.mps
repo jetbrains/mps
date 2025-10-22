@@ -5554,13 +5554,13 @@
                     <node concept="2Xjw5R" id="4qjHlOWQg4k" role="2OqNvi">
                       <node concept="1xMEDy" id="4qjHlOWQg4l" role="1xVPHs">
                         <node concept="chp4Y" id="4qjHlOWQg4m" role="ri$Ld">
-                          <ref role="cht4Q" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
+                          <ref role="cht4Q" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="2qgKlT" id="4qjHlOWQg4n" role="2OqNvi">
-                    <ref role="37wK5l" to="vdrq:4qjHlOWQ7Jg" resolve="enforceIndentation" />
+                    <ref role="37wK5l" to="vdrq:4qjHlOWQ7Jg" resolve="enforceExternalIndentation" />
                   </node>
                 </node>
               </node>

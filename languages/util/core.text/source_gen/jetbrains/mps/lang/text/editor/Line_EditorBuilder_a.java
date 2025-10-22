@@ -63,7 +63,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_78ent8_a0a() {
-    return !((boolean) IHoldLines__BehaviorDescriptor.enforceExternalIndentation_id4qjHlOWQ7Jg.invoke(SNodeOperations.getNodeAncestor(myNode, CONCEPTS.IHoldComment$Sr, false, false)));
+    return !((boolean) IHoldLines__BehaviorDescriptor.enforceExternalIndentation_id4qjHlOWQ7Jg.invoke(SNodeOperations.getNodeAncestor(myNode, CONCEPTS.IHoldLines$ky, false, false)));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " ");
@@ -182,7 +182,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IHoldComment$Sr = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL, "jetbrains.mps.lang.text.structure.IHoldComment");
+    /*package*/ static final SInterfaceConcept IHoldLines$ky = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L, "jetbrains.mps.lang.text.structure.IHoldLines");
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 
