@@ -57,9 +57,11 @@ public class TransientModelsNotification {
   /*package*/ void updateWidgetLater() {
     ThreadUtils.runInUIThreadNoWait(() -> {
       StatusBar statusBar = WindowManager.getInstance().getStatusBar(myProject.getProject());
-      StatusBarWidget widget = statusBar.getWidget("SaveTransientModels");
-      if (widget instanceof TransientModelsWidget) {
-        ((TransientModelsWidget) widget).update();
+      if (statusBar != null) {
+        StatusBarWidget widget = statusBar.getWidget("SaveTransientModels");
+        if (widget instanceof TransientModelsWidget) {
+          ((TransientModelsWidget) widget).update();
+        }
       }
     });
   }
