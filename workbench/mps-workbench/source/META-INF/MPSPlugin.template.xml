@@ -77,6 +77,10 @@
     <statistics.counterUsagesCollector implementationClass="com.intellij.platform.whatsNew.reaction.ReactionCollector"/>
     <statistics.counterUsagesCollector implementationClass="com.intellij.platform.whatsNew.collectors.WhatsNewCounterUsageCollector"/>
 
+    <applicationService serviceInterface="com.intellij.platform.ide.customization.ExternalProductResourceUrls"
+                        serviceImplementation="jetbrains.mps.intellij.integration.MPSExternalResourceUrls"
+                        overrides="true"/>
+
     <registryKey defaultValue="false" description="Whats new test mode" key="whats.new.test.mode" restartRequired="false" />
   </extensions>
   <actions resource-bundle="messages.ActionsBundle">
