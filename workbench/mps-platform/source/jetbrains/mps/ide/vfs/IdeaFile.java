@@ -698,7 +698,7 @@ public class IdeaFile implements IFile, CachingFile {
   @Override
   public void addListener(@NotNull FileListener listener) {
     if (isInZipArchive()) {
-      LOG.warning("There might be a problem when adding file listener for the files inside the archive: '" + getPath() + "'");
+      LOG.debug("There might be a problem when adding file listener for the files inside the archive: '" + getPath() + "'");
     }
     getFileSystem().addListener(FileListenerAdapter.adapt(this, listener));
   }
