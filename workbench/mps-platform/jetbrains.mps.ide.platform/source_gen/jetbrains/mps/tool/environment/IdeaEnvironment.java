@@ -26,6 +26,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
+import com.intellij.openapi.vfs.VfsUtil;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.testFramework.IndexingTestUtil;
@@ -216,6 +217,10 @@ public final class IdeaEnvironment extends EnvironmentBase {
       };
       // for ant tests we run with the flag, which disables the checks
       VfsRootAccess.allowRootAccess(disposable0, projectFile.getAbsolutePath());
+    }
+    if (testMode) {
+      // ensure VFS is refreshed on the project directory
+      VfsUtil.markDirtyAndRefresh(false, true, true, projectFile.getParentFile());
     }
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
     if (testMode) {

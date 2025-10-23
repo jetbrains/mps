@@ -12,7 +12,6 @@ import jetbrains.mps.util.NameUtil;
 import java.io.File;
 import java.nio.file.Files;
 import jetbrains.mps.util.FileUtil;
-import com.intellij.openapi.vfs.VfsUtil;
 import org.junit.jupiter.api.AfterEach;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -46,8 +45,6 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
     File tempDir = Files.createTempDirectory(dirPrefix).toFile();
     projectTempDir = tempDir.getCanonicalPath();
     FileUtil.copyDir(new File(projectSourcePath), tempDir);
-    // ensure VFS is refreshed on the project
-    VfsUtil.markDirtyAndRefresh(false, true, true, tempDir);
     project = myEnvironment.openProject(tempDir);
   }
 
