@@ -5241,6 +5241,643 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="k06EmA3rFW" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rFX" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rFT" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rFU" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rFV" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.asm.tools.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rG1" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rG2" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rFY" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rFZ" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rG0" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.automaton.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rG6" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rG7" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rG3" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rG4" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rG5" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.blockmap.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGb" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGc" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rG8" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rG9" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGa" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.bouncy.castle.pgp.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGg" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGh" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGd" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGe" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGf" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.bouncy.castle.provider.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGr" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGs" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGo" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGp" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGq" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.classgraph.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGw" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGx" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGt" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGu" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGv" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.cli.parser.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rG_" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGA" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGy" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGz" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rG$" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.cli.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGE" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGF" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGB" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGC" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGD" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.codec.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGJ" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGK" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGG" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGH" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGI" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.compress.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGO" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGP" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGL" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGM" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGN" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.imaging.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGT" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGU" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGQ" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGR" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGS" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.io.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rGY" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rGZ" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rGV" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rGW" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rGX" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.lang3.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rH3" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rH4" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rH0" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rH1" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rH2" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.commons.logging.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rHk" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rHl" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rHh" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rHi" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rHj" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.hdr.histogram.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rHp" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rHq" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rHm" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rHn" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rHo" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.http.client.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rHx" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rHy" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rHu" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rHv" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rHw" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.imgscalr.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rHA" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rHB" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rHz" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rH$" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rH_" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.ini4j.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rHL" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rHM" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rHI" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rHJ" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rHK" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jackson.dataformat.yaml.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rHZ" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rI0" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rHW" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rHX" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rHY" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.java.websocket.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rI4" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rI5" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rI1" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rI2" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rI3" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.javax.annotation.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rI9" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIa" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rI6" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rI7" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rI8" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jaxen.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIe" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIf" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIb" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIc" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rId" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jbr.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIj" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIk" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIg" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIh" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIi" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jcef.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIo" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIp" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIl" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIm" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIn" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jcip.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIt" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIu" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIq" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIr" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIs" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jediterm.core.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIy" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIz" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIv" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIw" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIx" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jediterm.ui.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIB" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIC" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rI$" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rI_" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIA" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jettison.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIG" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIH" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rID" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIE" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIF" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jsonpath.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIL" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIM" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rII" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIJ" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIK" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jsoup.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIQ" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIR" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIN" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIO" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIP" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jsvg.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rIV" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rIW" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIS" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIT" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIU" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jvm.native.trusted.roots.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJ0" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rJ1" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rIX" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rIY" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rIZ" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.jzlib.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJ8" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rJ9" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rJ5" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rJ6" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rJ7" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.kotlinx.collections.immutable.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJg" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rJh" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rJd" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rJe" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rJf" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.kotlinx.datetime.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJl" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rJm" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rJi" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rJj" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rJk" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.kotlinx.html.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJz" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rJ$" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rJw" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rJx" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rJy" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.kotlinx.serialization.protobuf.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJC" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rJD" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rJ_" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rJA" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rJB" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.kryo5.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rJZ" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rK0" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rJW" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rJX" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rJY" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.markdown.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKa" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKb" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rK7" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rK8" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rK9" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.oro.matcher.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKi" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKj" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKf" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKg" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKh" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.pty4j.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKn" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKo" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKk" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKl" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKm" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.rd.text.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKv" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKw" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKs" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKt" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKu" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.snakeyaml.engine.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rK$" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rK_" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKx" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKy" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKz" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.snakeyaml.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKD" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKE" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKA" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKB" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKC" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.sshj.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKI" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKJ" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKF" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKG" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKH" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.stream.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKN" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKO" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKK" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKL" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKM" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.velocity.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rKY" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rKZ" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rKV" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rKW" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rKX" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.xstream.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="k06EmA3rL3" role="3bR37C">
+          <node concept="1BurEX" id="k06EmA3rL4" role="1SiIV1">
+            <node concept="398BVA" id="k06EmA3rL0" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="k06EmA3rL1" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="k06EmA3rL2" role="2Ry0An">
+                  <property role="2Ry0Am" value="module-intellij.libraries.xtext.xbase.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="HHlBn9$wJ2" role="2G$12L">
         <property role="TrG5h" value="org.jdom" />
