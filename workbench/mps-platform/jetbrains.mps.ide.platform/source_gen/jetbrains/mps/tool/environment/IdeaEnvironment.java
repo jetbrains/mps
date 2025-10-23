@@ -220,7 +220,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
     }
     if (testMode) {
       // ensure VFS is refreshed on the project directory
-      VfsUtil.markDirtyAndRefresh(false, true, true, projectFile.getParentFile());
+      VfsUtil.markDirtyAndRefresh(false, true, true, projectFile);
     }
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
     if (testMode) {

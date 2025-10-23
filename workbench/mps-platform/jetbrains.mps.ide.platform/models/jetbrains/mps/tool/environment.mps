@@ -2035,13 +2035,8 @@
                 <node concept="3clFbT" id="3ZoPMW3ekzN" role="37wK5m">
                   <property role="3clFbU" value="true" />
                 </node>
-                <node concept="2OqwBi" id="k06Em_UDg0" role="37wK5m">
-                  <node concept="37vLTw" id="k06Em_UryK" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6rx4kZDk5DI" resolve="projectFile" />
-                  </node>
-                  <node concept="liA8E" id="k06Em_UPZA" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~File.getParentFile()" resolve="getParentFile" />
-                  </node>
+                <node concept="37vLTw" id="k06Em_UryK" role="37wK5m">
+                  <ref role="3cqZAo" node="6rx4kZDk5DI" resolve="projectFile" />
                 </node>
               </node>
             </node>
