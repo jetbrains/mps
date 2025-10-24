@@ -19,8 +19,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public final class AuthorBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, "jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag");
+public final class SinceBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, "jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag");
 
   public static final SMethod<Void> appendText_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
@@ -30,10 +30,10 @@ public final class AuthorBlockDocTag__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static void appendText_id2pw9ZXKThR2(@NotNull SNode __thisNode__, String text) {
-    SPropertyOperations.assign(__thisNode__, PROPS.text$sEPS, SPropertyOperations.getString(__thisNode__, PROPS.text$sEPS) + "\n" + text);
+    SPropertyOperations.assign(__thisNode__, PROPS.text$$ome, SPropertyOperations.getString(__thisNode__, PROPS.text$$ome) + "\n" + text);
   }
 
-  /*package*/ AuthorBlockDocTag__BehaviorDescriptor() {
+  /*package*/ SinceBlockDocTag__BehaviorDescriptor() {
   }
 
   @Override
@@ -81,6 +81,6 @@ public final class AuthorBlockDocTag__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$sEPS = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, 0x4a3c146b7faeeb9aL, "text");
+    /*package*/ static final SProperty text$$ome = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, 0x757ba20a4c87ddafL, "text");
   }
 }

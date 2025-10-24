@@ -19,8 +19,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public final class AuthorBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, "jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag");
+public final class SeeBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL, "jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag");
 
   public static final SMethod<Void> appendText_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
@@ -30,10 +30,10 @@ public final class AuthorBlockDocTag__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static void appendText_id2pw9ZXKThR2(@NotNull SNode __thisNode__, String text) {
-    SPropertyOperations.assign(__thisNode__, PROPS.text$sEPS, SPropertyOperations.getString(__thisNode__, PROPS.text$sEPS) + "\n" + text);
+    SPropertyOperations.assign(__thisNode__, PROPS.text$f7yH, SPropertyOperations.getString(__thisNode__, PROPS.text$f7yH) + "\n" + text);
   }
 
-  /*package*/ AuthorBlockDocTag__BehaviorDescriptor() {
+  /*package*/ SeeBlockDocTag__BehaviorDescriptor() {
   }
 
   @Override
@@ -81,6 +81,6 @@ public final class AuthorBlockDocTag__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$sEPS = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, 0x4a3c146b7faeeb9aL, "text");
+    /*package*/ static final SProperty text$f7yH = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL, 0x1ec532ec252ca3acL, "text");
   }
 }

@@ -66,7 +66,6 @@ import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSource;
-import jetbrains.mps.persistence.FilePerRootDataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import org.jetbrains.annotations.Nullable;
@@ -171,7 +170,7 @@ public class JavaToMpsConverter {
         }
         myMessageHandler.handle(msg);
       } catch (IOException e) {
-        myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("IO error when converting (java->mps) file %s", file.getName())).setException(e));
+        myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("IO error when converting (java->mps) file %s", file.???())).setException(e));
       }
     }
 
@@ -181,7 +180,7 @@ public class JavaToMpsConverter {
 
     myModelAccess.runWriteAction(() -> {
       if (myModule instanceof AbstractModule) {
-        ((AbstractModule) myModule).addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
+        ((AbstractModule) myModule).???(PersistenceFacade.???().???("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
         // otherwise, expect module(if e.g. TempModule2 that collects deps)/caller(who knows how to add imports to its module) to deal with it
       }
 
@@ -361,15 +360,15 @@ public class JavaToMpsConverter {
     if (pkg == null) {
       // default package (i.e. none), bad
       if (!(wasDefaultPkg)) {
-        myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("default package is not supported in java source directory input (first such file in dir: %s)", file.getName())));
+        myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("default package is not supported in java source directory input (first such file in dir: %s)", file.???())));
         wasDefaultPkg = true;
       }
       return;
     }
 
-    IFile dir = file.getParent();
+    IFile dir = file.???();
     if (!(checkPackageMatchesSourceDirectory(pkg, dir))) {
-      myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("package %s doesn't match directory %s (in file %s)", pkg, dir.getPath(), file.getName())));
+      myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("package %s doesn't match directory %s (in file %s)", pkg, dir.???(), file.???())));
       return;
     }
 
@@ -972,7 +971,7 @@ public class JavaToMpsConverter {
         DataSourceFactoryFromName dataSourceFactory = new MyDataSourceFactory(pkgDir);
         ModelFactory modelFactory = myModelFactoryService.getDefaultModelFactory(dataSourceFactory.getType());
         SModelName newModelName = new SModelName(pkgFqName);
-        modelDescr = modelRoot.createModel(newModelName, sourceRoot, dataSourceFactory, modelFactory);
+        modelDescr = modelRoot.???(newModelName, sourceRoot, dataSourceFactory, modelFactory);
       } catch (ModelCannotBeCreatedException e) {
         myMessageHandler.handle(new Message(MessageKind.ERROR, "Failed to create model " + pkgFqName, e.getMessage()));
         return null;
@@ -983,7 +982,7 @@ public class JavaToMpsConverter {
         myMessageHandler.handle(new Message(MessageKind.ERROR, "Failed to find model root to create model in"));
         return null;
       }
-      modelDescr = modelRoot.createModel(pkgFqName);
+      modelDescr = modelRoot.???(pkgFqName);
     }
 
     if (modelDescr == null) {
@@ -1004,7 +1003,7 @@ public class JavaToMpsConverter {
     @NotNull
     @Override
     public DataSource create(@NotNull SModelName name, @NotNull SourceRoot sourceRoot) {
-      return new FilePerRootDataSource(myPkgDir);
+      return new (myPkgDir);
     }
 
     @NotNull
@@ -1017,7 +1016,7 @@ public class JavaToMpsConverter {
   @Nullable
   private ModelRoot getFirstRootToCreateModel(SModelName packageName) {
     for (ModelRoot root : Sequence.fromIterable(myModule.getModelRoots())) {
-      if (root.canCreateModel(packageName)) {
+      if (root.???(packageName)) {
         return root;
       }
     }
@@ -1032,7 +1031,7 @@ public class JavaToMpsConverter {
         continue;
       }
       for (SourceRoot sourceRoot : ListSequence.fromList(((DefaultModelRoot) modelRoot).getSourceRoots(SourceRootKinds.SOURCES))) {
-        if (FileUtil.isSubPath(sourceRoot.getPath(), dir.getPath())) {
+        if (FileUtil.isSubPath(sourceRoot.getPath(), dir.???())) {
           return MultiTuple.<DefaultModelRoot,SourceRoot>from(((DefaultModelRoot) modelRoot), sourceRoot);
         }
       }
@@ -1044,7 +1043,7 @@ public class JavaToMpsConverter {
     String pathPostfix = NameUtil.pathFromNamespace(pkg);
     // pathFromNamespace returns system-dependent path
     // while IdeaFile.getPath() returns system-independent
-    String sourceDirSysDep = NameUtil.toSystemDependentPath(sourceDir.getPath());
+    String sourceDirSysDep = NameUtil.toSystemDependentPath(sourceDir.???());
     return sourceDirSysDep.endsWith(pathPostfix);
   }
 
