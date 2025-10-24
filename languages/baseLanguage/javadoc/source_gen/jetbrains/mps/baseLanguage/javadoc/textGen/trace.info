@@ -1147,29 +1147,40 @@
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/7983358747957286919">
     <file name="DeprecatedBlockDocTag_TextGen.java">
-      <node id="7983358747957286919" at="14,54,15,55" concept="6" />
-      <node id="7983358747957287453" at="15,55,16,18" concept="1" />
-      <node id="7983358747957287454" at="16,18,17,41" concept="1" />
-      <node id="7983358747957287456" at="17,41,18,31" concept="1" />
-      <node id="5085607816289989235" at="19,89,20,111" concept="1" />
-      <node id="5085607816288747768" at="22,88,23,90" concept="1" />
-      <node id="7983358747957286919" at="29,0,30,0" concept="10" trace="comment$IhdF" />
-      <node id="7983358747957286919" at="30,0,31,0" concept="10" trace="text$c2BW" />
-      <node id="5085607816288747765" at="21,12,24,7" concept="4" />
-      <node id="5085607816297591006" at="21,10,25,5" concept="0" />
-      <node id="5085607816288744010" at="18,31,25,5" concept="4" />
-      <node id="7983358747957286919" at="13,0,27,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="5085607816288744012" at="19,89,20,111" />
-      <scope id="5085607816288747766" at="22,88,23,90" />
-      <scope id="5085607816297591007" at="21,12,24,7" />
-      <scope id="7983358747957286919" at="14,54,25,5">
+      <node id="7983358747957286919" at="16,54,17,55" concept="6" />
+      <node id="7983358747957287453" at="17,55,18,18" concept="1" />
+      <node id="7983358747957287454" at="18,18,19,41" concept="1" />
+      <node id="7983358747957287456" at="19,41,20,31" concept="1" />
+      <node id="2765254149267770175" at="21,121,22,70" concept="6" />
+      <node id="2765254149267778580" at="24,33,25,24" concept="1" />
+      <node id="2765254149267771853" at="25,24,26,47" concept="1" />
+      <node id="2765254149267779235" at="26,47,27,37" concept="1" />
+      <node id="5085607816289989235" at="28,9,29,47" concept="1" />
+      <node id="2765254149268583463" at="29,47,30,32" concept="1" />
+      <node id="5085607816288747768" at="33,88,34,90" concept="1" />
+      <node id="7983358747957286919" at="40,0,41,0" concept="10" trace="commentBody$sIzh" />
+      <node id="7983358747957286919" at="41,0,42,0" concept="10" trace="text$c2BW" />
+      <node id="5085607816288747765" at="32,12,35,7" concept="4" />
+      <node id="5085607816297591006" at="32,10,36,5" concept="0" />
+      <node id="2765254149267770889" at="23,122,28,9" concept="4" />
+      <node id="2765254149267742144" at="22,70,31,9" concept="1" />
+      <node id="5085607816288744010" at="20,31,36,5" concept="4" />
+      <node id="7983358747957286919" at="15,0,38,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="5085607816288747766" at="33,88,34,90" />
+      <scope id="2765254149267770891" at="24,33,27,37" />
+      <scope id="5085607816297591007" at="32,12,35,7" />
+      <scope id="2765254149267764669" at="23,122,30,32" />
+      <scope id="5085607816288744012" at="21,121,31,9">
+        <var name="firstLine" id="2765254149267770178" />
+      </scope>
+      <scope id="7983358747957286919" at="16,54,36,5">
         <var name="tgs" id="7983358747957286919" />
       </scope>
-      <scope id="7983358747957286919" at="13,0,27,0">
+      <scope id="7983358747957286919" at="15,0,38,0">
         <var name="ctx" id="7983358747957286919" />
       </scope>
-      <unit id="7983358747957286919" at="28,0,32,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DeprecatedBlockDocTag_TextGen$LINKS" />
-      <unit id="7983358747957286919" at="12,0,33,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DeprecatedBlockDocTag_TextGen" />
+      <unit id="7983358747957286919" at="39,0,43,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DeprecatedBlockDocTag_TextGen$LINKS" />
+      <unit id="7983358747957286919" at="14,0,44,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.DeprecatedBlockDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="7983358747957286919" at="40,55,41,51" concept="7" />

@@ -15,6 +15,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -26,8 +28,9 @@ public final class IHoldCommentLines__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> enforceExternalIndentation_id4qjHlOWQ7Jg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("enforceExternalIndentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816288828368L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> representLinesAsText_id2pw9ZXKQIYx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representLinesAsText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269024673L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, representLinesAsText_id2pw9ZXKQIYx);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,6 +43,9 @@ public final class IHoldCommentLines__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static void addLine_id7q4YwcerggR(@NotNull SNode __thisNode__, SNode l) {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentBody$sIzh)).addElement(l);
+  }
+  /*package*/ static String representLinesAsText_id2pw9ZXKQIYx(@NotNull SNode __thisNode__) {
+    return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentBody$sIzh)).select((it) -> (String) Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(it)), "\n");
   }
 
   /*package*/ IHoldCommentLines__BehaviorDescriptor() {
@@ -64,6 +70,8 @@ public final class IHoldCommentLines__BehaviorDescriptor extends BaseBHDescripto
       case 2:
         addLine_id7q4YwcerggR(node, (SNode) parameters[0]);
         return null;
+      case 3:
+        return (T) ((String) representLinesAsText_id2pw9ZXKQIYx(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

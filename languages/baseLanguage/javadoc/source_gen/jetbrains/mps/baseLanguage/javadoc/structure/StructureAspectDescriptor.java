@@ -337,10 +337,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
     b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
-    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
+    b.parent(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690331492");
     b.version(3);
-    b.aggregate("comment", 0x4693b55d3d5e0465L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(false).origin("5085607816297579621").done();
     b.aggregate("text", 0x250631c6c859e113L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL).optional(true).ordered(true).multiple(false).origin("2667874559098216723").done();
     b.alias("@deprecated");
     return b.create();
