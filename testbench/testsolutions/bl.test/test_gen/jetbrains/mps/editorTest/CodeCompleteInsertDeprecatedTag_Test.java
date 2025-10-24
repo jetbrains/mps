@@ -35,7 +35,7 @@ public class CodeCompleteInsertDeprecatedTag_Test extends BaseTransformationTest
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307800150421", "1287827457545539130");
+      initEditorComponent("1702509307800150421", "6000415065517664711");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("@dep");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));

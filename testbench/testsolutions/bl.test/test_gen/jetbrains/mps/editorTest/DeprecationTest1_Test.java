@@ -33,7 +33,7 @@ public class DeprecationTest1_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("992603586001643455", "1287827457558896776");
+      initEditorComponent("992603586001643455", "6000415065517152185");
       invokeIntention("jetbrains.mps.baseLanguage.intentions.MakeDeprecated_Intention", myStart.getNode());
     }
   }
