@@ -13772,7 +13772,7 @@
         <node concept="3clFbS" id="1eZSuKdSqMo" role="3clFbx">
           <node concept="2MkqsV" id="7vXIE_IQ8hF" role="3cqZAp">
             <node concept="Xl_RD" id="7vXIE_IQ8hH" role="2MkJ7o">
-              <property role="Xl_RC" value="Shall specify repository to look up model at" />
+              <property role="Xl_RC" value="Repository for looking up model must be provided" />
             </node>
             <node concept="1YBJjd" id="7vXIE_IQ8hI" role="1urrMF">
               <ref role="1YBMHb" node="1eZSuKdSqLF" resolve="modelRefExpr" />
