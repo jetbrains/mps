@@ -280,7 +280,6 @@ public class JavaParser {
           SNode tag = extractJavadocBlockTag(text, doc);
           if (tag != null) {
             ListSequence.fromList(SLinkOperations.getChildren(doc, LINKS.tags$stUD)).addElement(tag);
-            currentTag = tag;
           } else {
             if (currentTag == null) {
               SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));

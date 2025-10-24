@@ -17,7 +17,7 @@ public class JavaConvertUtil {
     Set<IFile> result = SetSequence.fromSet(new HashSet<IFile>());
 
     for (IFile entry : Sequence.fromIterable(onlyLeaves(filesAndDirs))) {
-      if (entry.???()) {
+      if (entry.isDirectory()) {
         for (IFile file : ListSequence.fromList(IFileUtil.getAllFiles(entry))) {
           if (accept(file)) {
             SetSequence.fromSet(result).addElement(file);
@@ -32,7 +32,7 @@ public class JavaConvertUtil {
 
   private static boolean accept(IFile file) {
     // called only for files, not dirs
-    return file.???().endsWith(".java");
+    return file.getName().endsWith(".java");
   }
 
   /**
@@ -42,11 +42,11 @@ public class JavaConvertUtil {
    * E.g. we select dir 'parent' and its 2 files out of 10. Only the 2 files will be taken
    */
   private static Iterable<IFile> onlyLeaves(Iterable<IFile> all) {
-    Set<IFile> dirs = SetSequence.fromSetWithValues(new HashSet<IFile>(), Sequence.fromIterable(all).where((it) -> it.???()));
+    Set<IFile> dirs = SetSequence.fromSetWithValues(new HashSet<IFile>(), Sequence.fromIterable(all).where((it) -> it.isDirectory()));
     Set<IFile> excluded = SetSequence.fromSet(new HashSet<IFile>());
 
     for (IFile item : Sequence.fromIterable(all)) {
-      IFile parent = item.???();
+      IFile parent = item.getParent();
       if (SetSequence.fromSet(dirs).contains(parent)) {
         SetSequence.fromSet(excluded).addElement(parent);
       }
