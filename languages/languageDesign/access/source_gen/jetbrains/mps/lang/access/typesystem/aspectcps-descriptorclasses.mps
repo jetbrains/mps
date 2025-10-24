@@ -542,7 +542,7 @@
                           <uo k="s:originTrace" v="n:1705896275416798531" />
                         </node>
                         <node concept="Xl_RD" id="24" role="37wK5m">
-                          <property role="Xl_RC" value="Shall specify a repository to lock" />
+                          <property role="Xl_RC" value="Repository must be specified" />
                           <uo k="s:originTrace" v="n:1705896275416798530" />
                         </node>
                         <node concept="Xl_RD" id="25" role="37wK5m">

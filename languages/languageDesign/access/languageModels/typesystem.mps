@@ -233,7 +233,7 @@
         <node concept="3clFbS" id="1eZSuKdVoFz" role="3clFbx">
           <node concept="2MkqsV" id="1uGzTZfSll0" role="3cqZAp">
             <node concept="Xl_RD" id="1uGzTZfSll2" role="2MkJ7o">
-              <property role="Xl_RC" value="Shall specify a repository to lock" />
+              <property role="Xl_RC" value="Repository must be specified" />
             </node>
             <node concept="1YBJjd" id="1uGzTZfSll3" role="1urrMF">
               <ref role="1YBMHb" node="1eZSuKdVoFu" resolve="baseExecuteCommandStatement" />

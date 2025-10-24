@@ -23,7 +23,7 @@ public class check_BaseExecuteCommandStatement_NonTypesystemRule extends Abstrac
     if ((SLinkOperations.getTarget(baseExecuteCommandStatement, LINKS.repo$aWtf) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseExecuteCommandStatement, "Shall specify a repository to lock", "r:aad06b20-0a6a-42d7-81b8-671529c6126a(jetbrains.mps.lang.access.typesystem)", "1705896275416798528", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseExecuteCommandStatement, "Repository must be specified", "r:aad06b20-0a6a-42d7-81b8-671529c6126a(jetbrains.mps.lang.access.typesystem)", "1705896275416798528", null, errorTarget);
       }
     }
   }
