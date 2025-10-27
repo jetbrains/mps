@@ -204,7 +204,7 @@ public abstract class BaseTool {
   }
 
   public void registerLater() {
-    ThreadUtils.runInUIThreadNoWait(() -> {
+    ApplicationManager.getApplication().invokeLater(() -> {
       final Project project = getProject();
       if (project.isDisposed() || this.myIsDisposed) {
         return;
