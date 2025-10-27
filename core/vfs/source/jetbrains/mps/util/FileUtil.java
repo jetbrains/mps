@@ -38,6 +38,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -143,25 +144,20 @@ public class FileUtil {
     return true;
   }
 
-  public static void copyFileChecked(File f, File to) throws IOException {
-    FileInputStream is = new FileInputStream(f);
+  public static void copyFileChecked(File from, File to) throws IOException {
+    java.nio.file.Path source = from.toPath();
+    java.nio.file.Path toPath = to.toPath();
 
-    File target;
-    if (to.isDirectory()) {
-      target = new File(to, f.getName());
-    } else {
-      target = to;
+    java.nio.file.Path target = Files.isDirectory(toPath)
+                  ? toPath.resolve(from.getName())
+                  : toPath;
+
+    java.nio.file.Path parent = target.getParent();
+    if (parent != null) {
+      Files.createDirectories(parent);
     }
 
-    if (!to.getParentFile().exists()) {
-      to.getParentFile().mkdirs();
-    }
-
-    OutputStream os = new FileOutputStream(target);
-    os.write(ReadUtil.read(is));
-
-    is.close();
-    os.close();
+    Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
   }
 
   //[MM] this does not return canonical path either
