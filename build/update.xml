@@ -555,5 +555,14 @@
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
+    <channel id="MPS253EAP" name="MPS 2025.3" status="eap"
+             url="https://www.jetbrains.com/mps/nextversion"
+             feedback="http://youtrack.jetbrains.net/issues/MPS"
+             majorVersion="2025" minorVersoin="3">
+      <build number="253.27864.84" version="2025.3 EAP1">
+        <message>JetBrains MPS 2025.3 EAP1 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+      </build>
+    </channel>
   </product>
 </products>
