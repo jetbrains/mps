@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 import org.junit.platform.launcher.TestIdentifier;
 import org.junit.platform.engine.TestExecutionResult;
+import com.intellij.testFramework.TestLoggerFactory;
 import jetbrains.mps.tool.common.WorkerCallback;
 
 public class FailureDetector implements TestExecutionListener {
@@ -17,6 +18,7 @@ public class FailureDetector implements TestExecutionListener {
     if (testExecutionResult.getStatus() == TestExecutionResult.Status.FAILED) {
       errors.add("Test failure: " + testIdentifier.getDisplayName() + " " + testExecutionResult.toString());
     }
+    TestLoggerFactory.onTestFinished(testExecutionResult.getStatus() == TestExecutionResult.Status.SUCCESSFUL, testIdentifier.getDisplayName());
   }
 
   public boolean hasFailures() {

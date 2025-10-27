@@ -40,6 +40,7 @@
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="canb" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.support.store(org.junit.junit5/)" />
+    <import index="anz6" ref="320a7d92-2f09-4a63-9adc-ee2fc4d9ea30/java:com.intellij.testFramework(MPS.IDEA.testFramework/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2553,6 +2554,34 @@
                     </node>
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="k06EmAk231" role="3cqZAp">
+          <node concept="2YIFZM" id="2cUAfn2YJZ6" role="3clFbG">
+            <ref role="37wK5l" to="anz6:~TestLoggerFactory.onTestFinished(boolean,java.lang.String)" resolve="onTestFinished" />
+            <ref role="1Pybhc" to="anz6:~TestLoggerFactory" resolve="TestLoggerFactory" />
+            <node concept="3clFbC" id="2cUAfn2YJZ7" role="37wK5m">
+              <node concept="Rm8GO" id="2cUAfn2YJZ8" role="3uHU7w">
+                <ref role="Rm8GQ" to="n4ib:~TestExecutionResult$Status.SUCCESSFUL" resolve="SUCCESSFUL" />
+                <ref role="1Px2BO" to="n4ib:~TestExecutionResult$Status" resolve="TestExecutionResult.Status" />
+              </node>
+              <node concept="2OqwBi" id="2cUAfn2YJZ9" role="3uHU7B">
+                <node concept="37vLTw" id="2cUAfn2YJZa" role="2Oq$k0">
+                  <ref role="3cqZAo" node="HwplGLO0uV" resolve="testExecutionResult" />
+                </node>
+                <node concept="liA8E" id="2cUAfn2YJZb" role="2OqNvi">
+                  <ref role="37wK5l" to="n4ib:~TestExecutionResult.getStatus()" resolve="getStatus" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="2cUAfn2YJZc" role="37wK5m">
+              <node concept="37vLTw" id="2cUAfn2YJZd" role="2Oq$k0">
+                <ref role="3cqZAo" node="HwplGLO0uT" resolve="testIdentifier" />
+              </node>
+              <node concept="liA8E" id="2cUAfn2YJZe" role="2OqNvi">
+                <ref role="37wK5l" to="bws1:~TestIdentifier.getDisplayName()" resolve="getDisplayName" />
               </node>
             </node>
           </node>
