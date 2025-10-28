@@ -4,7 +4,7 @@ package jetbrains.mps.ide.depanalyzer.actions;
 
 import jetbrains.mps.plugins.tool.GeneratedTool;
 import javax.swing.Icon;
-import com.intellij.icons.AllIcons;
+import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.depanalyzer.DependenciesPanel;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
 public class AnalyzeDependencies_Tool extends GeneratedTool {
-  private static final Icon ICON = AllIcons.Toolwindows.ToolWindowInspection;
+  private static final Icon ICON = MPSIcons.ToolWindows.DependencyAnalyzer;
   private DependenciesPanel myDependenciesPanel;
   private MPSProject myProject;
   public AnalyzeDependencies_Tool(Project project) {

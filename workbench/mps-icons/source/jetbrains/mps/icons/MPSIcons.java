@@ -156,6 +156,7 @@ public class MPSIcons {
     public static final Icon terminal = load("/toolWindows/terminal.svg");
     public static final Icon TypeTraceView = load("/toolWindows/typeTraceView.png");
     public static final Icon CellExplorer = load("/toolWindows/cellExplorer.png");
+    public static final Icon DependencyAnalyzer = load("/toolWindows/dependencyAnalyzer.svg");
   }
 
   public static final Icon MPS16x16 = load("/mps_16.svg");

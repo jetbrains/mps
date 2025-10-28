@@ -39,6 +39,7 @@
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="9oh" ref="r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)" />
+    <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
   </imports>
   <registry>
@@ -2479,9 +2480,9 @@
       </node>
     </node>
     <node concept="1GtWCo" id="6S5fI02CGA_" role="1nVCmq">
-      <node concept="10M0yZ" id="7TKpiq41Put" role="1GtWoa">
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowInspection" resolve="ToolWindowInspection" />
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
+      <node concept="10M0yZ" id="4mt8TTpwLCW" role="1GtWoa">
+        <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.DependencyAnalyzer" resolve="DependencyAnalyzer" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
       </node>
     </node>
     <node concept="2xpOpl" id="7TKpiq41QYo" role="uR5co">
