@@ -33,6 +33,7 @@ import com.intellij.openapi.progress.Task.Modal;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.ui.UiUtils;
 import com.intellij.openapi.util.DimensionService;
 import com.intellij.ui.BrowserHyperlinkListener;
 import com.intellij.ui.HideableDecorator;
@@ -62,6 +63,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.HyperlinkEvent;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.Dimension;
@@ -220,15 +223,30 @@ public class BlameDialog extends DialogWrapper {
     agreementPanel.add(myShareDataAgreementCheck, constraints);
 
     myShareDataAgreement = new JEditorPane(UIUtil.HTML_MIME, "");
-    updateDataUsageAgreementText();
     myShareDataAgreement.setEditable(false);
     myShareDataAgreement.setBackground(UIUtil.getPanelBackground());
     myShareDataAgreement.addHyperlinkListener(new BrowserHyperlinkListener());
     myShareDataAgreement.setBorder(JBUI.Borders.empty());
     myShareDataAgreement.setFocusable(false);
+//    final Font font = UISettings.getInstance().getFontFace() != null
+//                      ? new Font(UISettings.getInstance().getFontFace(), Font.PLAIN, UISettings.getInstance().getFontSize()) : UIUtil.getLabelFont();
+    final Font font = UIUtil.getLabelFont();
+    // Build CSS rule using that font
+    String bodyRule = String.format(
+        "body { font-family: %s; font-size: %dpt; }",
+        font.getFamily(),
+        font.getSize()
+    );
+    // Retrieve the StyleSheet used by the editor kit
+    HTMLEditorKit kit = (HTMLEditorKit) myShareDataAgreement.getEditorKit();
+    StyleSheet styleSheet = kit.getStyleSheet();
+    styleSheet.addRule(bodyRule);
+    myShareDataAgreement.setEditorKit(kit);
+    updateDataUsageAgreementText();
+
     constraints = getConstraints(0);
     constraints.setColumn(1);
-    constraints.setAnchor(GridConstraints.ANCHOR_NORTHWEST);
+    constraints.setAnchor(GridConstraints.ANCHOR_WEST);
     agreementPanel.add(myShareDataAgreement, constraints);
 
     constraints = getConstraints(0);
@@ -242,12 +260,8 @@ public class BlameDialog extends DialogWrapper {
   }
 
   private void updateDataUsageAgreementText() {
-    final Font font = UISettings.getInstance().getFontFace() != null
-                      ? new Font(UISettings.getInstance().getFontFace(), Font.PLAIN, UISettings.getInstance().getFontSize()) : UIUtil.getLabelFont();
-    final String signedInAgreement =
-        String.format(IdeBundle.message("blame.dialog.agreement"), font.getFamily());
-    final String anonymousAgreement =
-        String.format(IdeBundle.message("blame.dialog.agreement.anonymous"), font.getFamily());
+    final String signedInAgreement = IdeBundle.message("blame.dialog.agreement");
+    final String anonymousAgreement = IdeBundle.message("blame.dialog.agreement.anonymous");
 
     myShareDataAgreement.setText(myToken != null ? signedInAgreement : anonymousAgreement);
   }
