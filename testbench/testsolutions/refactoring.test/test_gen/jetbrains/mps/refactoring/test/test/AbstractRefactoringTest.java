@@ -12,6 +12,8 @@ import jetbrains.mps.util.NameUtil;
 import java.io.File;
 import java.nio.file.Files;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.make.MakeServiceComponent;
+import java.time.Duration;
 import org.junit.jupiter.api.AfterEach;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -46,6 +48,10 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
     projectTempDir = tempDir.getCanonicalPath();
     FileUtil.copyDir(new File(projectSourcePath), tempDir);
     project = myEnvironment.openProject(tempDir);
+    MakeServiceComponent makesvc = project.getComponent(MakeServiceComponent.class);
+    while (makesvc != null && makesvc.isSessionActive()) {
+      Thread.currentThread().sleep(Duration.ofMillis(200));
+    }
   }
 
   @AfterEach

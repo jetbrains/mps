@@ -82,6 +82,7 @@
     <import index="rbkg" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api.extension(org.junit.junit5/)" />
     <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
+    <import index="28m1" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.time(JDK/)" />
     <import index="f3o1" ref="r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -96,6 +97,9 @@
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
+      <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
+        <child id="1076505808688" name="condition" index="2$JKZa" />
+      </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
@@ -117,6 +121,7 @@
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
+      <concept id="5763944538902644732" name="jetbrains.mps.baseLanguage.structure.StaticMethodCallOperation" flags="ng" index="2PDubS" />
       <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
@@ -256,6 +261,7 @@
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -272,6 +278,7 @@
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
         <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
@@ -7774,6 +7781,63 @@
                   <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
                 </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="482kRw$55$s" role="3cqZAp">
+          <node concept="3cpWsn" id="482kRw$55$t" role="3cpWs9">
+            <property role="TrG5h" value="makesvc" />
+            <node concept="3uibUv" id="482kRw$54RT" role="1tU5fm">
+              <ref role="3uigEE" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
+            </node>
+            <node concept="2OqwBi" id="482kRw$55$u" role="33vP2m">
+              <node concept="37vLTw" id="482kRw$55$v" role="2Oq$k0">
+                <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
+              </node>
+              <node concept="liA8E" id="482kRw$55$w" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="482kRw$55$x" role="37wK5m">
+                  <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2$JKZl" id="482kRw$6lE6" role="3cqZAp">
+          <node concept="3clFbS" id="482kRw$6lEh" role="2LFqv$">
+            <node concept="3clFbF" id="482kRw$6mI1" role="3cqZAp">
+              <node concept="2OqwBi" id="482kRw$6nVj" role="3clFbG">
+                <node concept="2YIFZM" id="482kRw$6nlY" role="2Oq$k0">
+                  <ref role="37wK5l" to="wyt6:~Thread.currentThread()" resolve="currentThread" />
+                  <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
+                </node>
+                <node concept="2PDubS" id="482kRw$6oxy" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Thread.sleep(java.time.Duration)" resolve="sleep" />
+                  <node concept="2YIFZM" id="482kRw$6Uvs" role="37wK5m">
+                    <ref role="37wK5l" to="28m1:~Duration.ofMillis(long)" resolve="ofMillis" />
+                    <ref role="1Pybhc" to="28m1:~Duration" resolve="Duration" />
+                    <node concept="3cmrfG" id="482kRw$6V1n" role="37wK5m">
+                      <property role="3cmrfH" value="200" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="482kRw$6lEj" role="2$JKZa">
+            <node concept="2OqwBi" id="482kRw$6lEk" role="3uHU7w">
+              <node concept="37vLTw" id="482kRw$6lEl" role="2Oq$k0">
+                <ref role="3cqZAo" node="482kRw$55$t" resolve="makesvc" />
+              </node>
+              <node concept="liA8E" id="482kRw$6lEm" role="2OqNvi">
+                <ref role="37wK5l" to="hfuk:IIVxgkMGh8" resolve="isSessionActive" />
+              </node>
+            </node>
+            <node concept="3y3z36" id="482kRw$6lEn" role="3uHU7B">
+              <node concept="37vLTw" id="482kRw$6lEo" role="3uHU7B">
+                <ref role="3cqZAo" node="482kRw$55$t" resolve="makesvc" />
+              </node>
+              <node concept="10Nm6u" id="482kRw$6lEp" role="3uHU7w" />
             </node>
           </node>
         </node>
