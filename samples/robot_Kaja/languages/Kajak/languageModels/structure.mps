@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
+    <devkit ref="c9983bff-58c7-4465-88f7-3d854bbf1736(jetbrains.mps.devkit.documentation)" />
   </languages>
   <imports>
     <import index="4fqr" ref="r:fa713d69-08ea-4732-b1f2-cb07f9e103ef(jetbrains.mps.execution.util.structure)" />
@@ -36,6 +37,16 @@
       <concept id="5112823507789885989" name="jetbrains.mps.lang.resources.structure.DarkTargetThemes" flags="ng" index="1NSlv1" />
       <concept id="1860120738943552477" name="jetbrains.mps.lang.resources.structure.ColorLiteral" flags="ng" index="3PKj8D">
         <property id="1860120738943552481" name="val" index="3PKj8l" />
+      </concept>
+    </language>
+    <language id="d304f247-4944-479d-ac8b-972b953bcdfe" name="jetbrains.mps.lang.doctext">
+      <concept id="747542936069611173" name="jetbrains.mps.lang.doctext.structure.DocText" flags="ng" index="3W_X3N">
+        <child id="4404258161274814728" name="lines" index="2WYp1Y" />
+      </concept>
+    </language>
+    <language id="343f8205-dc88-465b-9c5b-ce46b5f1c193" name="jetbrains.mps.lang.core.doc">
+      <concept id="4293932951803486388" name="jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation" flags="ng" index="3207RK">
+        <child id="2217810310728609106" name="text" index="SU_fC" />
       </concept>
     </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -81,9 +92,18 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -92,6 +112,35 @@
     <property role="TrG5h" value="Script" />
     <property role="EcuMT" value="3265739055509559110" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4cHSTLII57U" role="1TKVEi">
+      <property role="IQ2ns" value="4840775435505127930" />
+      <property role="20kJfa" value="ref" />
+      <ref role="20lvS9" node="2Pif5TcL5t6" resolve="Script" />
+    </node>
+    <node concept="3207RK" id="4cHSTLII57I" role="lGtFl">
+      <node concept="3W_X3N" id="4cHSTLII57K" role="SU_fC">
+        <node concept="1PaTwC" id="4cHSTLII57M" role="2WYp1Y">
+          <node concept="3oM_SD" id="4cHSTLII57N" role="1PaTwD">
+            <property role="3oM_SC" value="fdk" />
+          </node>
+          <node concept="3oM_SD" id="4cHSTLII57O" role="1PaTwD">
+            <property role="3oM_SC" value="lkdfj" />
+          </node>
+          <node concept="3oM_SD" id="4cHSTLII57Q" role="1PaTwD">
+            <property role="3oM_SC" value="lksjf" />
+          </node>
+          <node concept="3oM_SD" id="4cHSTLII57R" role="1PaTwD">
+            <property role="3oM_SC" value="kls" />
+          </node>
+          <node concept="3oM_SD" id="4cHSTLII57S" role="1PaTwD">
+            <property role="3oM_SC" value="f" />
+          </node>
+          <node concept="3oM_SD" id="4cHSTLII57T" role="1PaTwD">
+            <property role="3oM_SC" value="lkdjsf" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="1TJgyj" id="2Pif5TcL5tc" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="body" />

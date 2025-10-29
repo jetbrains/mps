@@ -11,6 +11,6 @@ import com.intellij.openapi.wm.ToolWindowAnchor;
 public class DocumentationTool_Tool extends BaseTabbedProjectTool {
   private static final Icon ICON = AllIcons.Toolwindows.Documentation;
   public DocumentationTool_Tool(Project project) {
-    super(project, "Doc", null, ICON, ToolWindowAnchor.RIGHT, true);
+    super(project, "Documentation", null, ICON, ToolWindowAnchor.RIGHT, true);
   }
 }
