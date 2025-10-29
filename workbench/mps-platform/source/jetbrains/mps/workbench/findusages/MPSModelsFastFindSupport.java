@@ -71,6 +71,8 @@ import java.util.stream.Collectors;
 // FIXME utilize project to deal with dumb mode and use project's FS to get VirtualFile for an IFile
 public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposable {
 
+  static final Logger LOG = Logger.getLogger(MPSModelsFastFindSupport.class);
+  
   public static final class Plug extends MPSProjectActivity {
     @Override
     public void runActivity(@NotNull Project project) {
@@ -251,6 +253,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
       try (AccessToken unused = SlowOperations.allowSlowOperations("mps.find-usage")) {
         matchingFiles = MPSModelsIndexer.getContainingFiles(entry, allFiles);
       } catch (ProcessCanceledException | IndexNotReadyException ex) {
+        LOG.warning("Can't find usage for element " + elem, ex);
         fileMatchFailedAtLeastOnce = true;
         matchingFiles = Collections.emptyList();
       }
