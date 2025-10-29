@@ -112,11 +112,6 @@
     <property role="TrG5h" value="Script" />
     <property role="EcuMT" value="3265739055509559110" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="4cHSTLII57U" role="1TKVEi">
-      <property role="IQ2ns" value="4840775435505127930" />
-      <property role="20kJfa" value="ref" />
-      <ref role="20lvS9" node="2Pif5TcL5t6" resolve="Script" />
-    </node>
     <node concept="3207RK" id="4cHSTLII57I" role="lGtFl">
       <node concept="3W_X3N" id="4cHSTLII57K" role="SU_fC">
         <node concept="1PaTwC" id="4cHSTLII57M" role="2WYp1Y">
