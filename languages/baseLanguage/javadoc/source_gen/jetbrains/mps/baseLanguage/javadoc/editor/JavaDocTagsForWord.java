@@ -158,6 +158,17 @@ public class JavaDocTagsForWord extends SubstituteMenuBase {
         public IconResource getIcon(@NotNull String pattern) {
           return defaultIconForParameter(myParameterObject, pattern);
         }
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return canExecute_internal(pattern, false);
+        }
+        @Override
+        public boolean canExecuteStrictly(@NotNull String pattern) {
+          return canExecute_internal(pattern, true);
+        }
+        public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
+          return (SNodeOperations.getNodeAncestor(_context.getCurrentTargetNode(), CONCEPTS.BaseDocComment$bU, false, false) != null);
+        }
       }
     }
 

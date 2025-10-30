@@ -204,21 +204,24 @@
       <node id="1287827457544781813" at="148,64,149,77" concept="9" />
       <node id="1287827457544781813" at="153,67,154,80" concept="9" />
       <node id="1287827457544781813" at="158,62,159,69" concept="9" />
-      <node id="1287827457544567576" at="167,0,168,0" concept="12" trace="Word$Dn" />
-      <node id="1287827457544567576" at="168,0,169,0" concept="12" trace="BaseDocComment$bU" />
-      <node id="1287827457544567576" at="169,0,170,0" concept="12" trace="ClassifierDocComment$mh" />
-      <node id="1287827457544567576" at="170,0,171,0" concept="12" trace="MethodDocComment$HI" />
-      <node id="1287827457544567576" at="171,0,172,0" concept="12" trace="AuthorBlockDocTag$jR" />
-      <node id="1287827457544567576" at="172,0,173,0" concept="12" trace="SinceBlockDocTag$KR" />
-      <node id="1287827457544567576" at="173,0,174,0" concept="12" trace="VersionBlockDocTag$wp" />
-      <node id="1287827457544567576" at="174,0,175,0" concept="12" trace="IBLDeprecatable$ah" />
-      <node id="1287827457544567576" at="175,0,176,0" concept="12" trace="DeprecatedBlockDocTag$8n" />
-      <node id="1287827457544567576" at="176,0,177,0" concept="12" trace="SeeBlockDocTag$fI" />
-      <node id="1287827457544567576" at="177,0,178,0" concept="12" trace="ParameterBlockDocTag$ie" />
-      <node id="1287827457544567576" at="178,0,179,0" concept="12" trace="ThrowsBlockDocTag$bu" />
-      <node id="1287827457544567576" at="179,0,180,0" concept="12" trace="ReturnBlockDocTag$KD" />
-      <node id="1287827457544567576" at="183,0,184,0" concept="12" trace="tags$stUD" />
-      <node id="1287827457544567576" at="187,0,188,0" concept="12" trace="value$zQr_" />
+      <node id="1287827457544781813" at="162,60,163,53" concept="9" />
+      <node id="1287827457544781813" at="166,68,167,52" concept="9" />
+      <node id="7134894838729243842" at="169,87,170,134" concept="9" />
+      <node id="1287827457544567576" at="178,0,179,0" concept="12" trace="Word$Dn" />
+      <node id="1287827457544567576" at="179,0,180,0" concept="12" trace="BaseDocComment$bU" />
+      <node id="1287827457544567576" at="180,0,181,0" concept="12" trace="ClassifierDocComment$mh" />
+      <node id="1287827457544567576" at="181,0,182,0" concept="12" trace="MethodDocComment$HI" />
+      <node id="1287827457544567576" at="182,0,183,0" concept="12" trace="AuthorBlockDocTag$jR" />
+      <node id="1287827457544567576" at="183,0,184,0" concept="12" trace="SinceBlockDocTag$KR" />
+      <node id="1287827457544567576" at="184,0,185,0" concept="12" trace="VersionBlockDocTag$wp" />
+      <node id="1287827457544567576" at="185,0,186,0" concept="12" trace="IBLDeprecatable$ah" />
+      <node id="1287827457544567576" at="186,0,187,0" concept="12" trace="DeprecatedBlockDocTag$8n" />
+      <node id="1287827457544567576" at="187,0,188,0" concept="12" trace="SeeBlockDocTag$fI" />
+      <node id="1287827457544567576" at="188,0,189,0" concept="12" trace="ParameterBlockDocTag$ie" />
+      <node id="1287827457544567576" at="189,0,190,0" concept="12" trace="ThrowsBlockDocTag$bu" />
+      <node id="1287827457544567576" at="190,0,191,0" concept="12" trace="ReturnBlockDocTag$KD" />
+      <node id="1287827457544567576" at="194,0,195,0" concept="12" trace="tags$stUD" />
+      <node id="1287827457544567576" at="198,0,199,0" concept="12" trace="value$zQr_" />
       <node id="1287827457544567576" at="36,0,39,0" concept="1" trace="JavaDocTagsForWord#()V" />
       <node id="1287827457544781813" at="48,0,51,0" concept="1" trace="SMP_Param_r0ckpe_a#()V" />
       <node id="1287827457544781813" at="71,0,74,0" concept="1" trace="SMP_Action_r0ckpe_a0#(Ljava/lang/String;)V" />
@@ -231,9 +234,12 @@
       <node id="1287827457545006200" at="125,11,128,11" concept="6" />
       <node id="1287827457545006219" at="128,11,131,11" concept="6" />
       <node id="1287827457545006248" at="134,45,137,11" concept="6" />
+      <node id="1287827457544781813" at="169,0,172,0" concept="7" trace="canExecute_internal#(Ljava/lang/String;Z)Z" />
       <node id="1287827457544781813" at="84,0,88,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
       <node id="1287827457545006116" at="112,11,116,11" concept="6" />
       <node id="1287827457544781813" at="142,0,146,0" concept="7" trace="createInformation#(Ljava/lang/String;)Ljetbrains/mps/editor/runtime/completion/CompletionItemInformation;" />
+      <node id="1287827457544781813" at="161,0,165,0" concept="7" trace="canExecute#(Ljava/lang/String;)Z" />
+      <node id="1287827457544781813" at="165,0,169,0" concept="7" trace="canExecuteStrictly#(Ljava/lang/String;)Z" />
       <node id="1287827457544781813" at="51,0,56,0" concept="7" trace="createItems#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
       <node id="1287827457544781813" at="89,0,94,0" concept="7" trace="resetTraceInfo#()V" />
       <node id="1287827457544781813" at="146,0,151,0" concept="7" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
@@ -262,6 +268,9 @@
       <scope id="1287827457544781813" at="148,64,149,77" />
       <scope id="1287827457544781813" at="153,67,154,80" />
       <scope id="1287827457544781813" at="158,62,159,69" />
+      <scope id="1287827457544781813" at="162,60,163,53" />
+      <scope id="1287827457544781813" at="166,68,167,52" />
+      <scope id="1287827457544781813" at="169,87,170,134" />
       <scope id="1287827457544781813" at="84,52,86,29" />
       <scope id="1287827457545006117" at="113,65,115,230" />
       <scope id="1287827457544567576" at="36,0,39,0" />
@@ -279,10 +288,20 @@
       <scope id="1287827457544781813" at="89,43,92,165">
         <var name="description" id="1287827457544781813" />
       </scope>
+      <scope id="1287827457544781813" at="169,0,172,0">
+        <var name="pattern" id="1287827457544781813" />
+        <var name="strictly" id="1287827457544781813" />
+      </scope>
       <scope id="1287827457544781813" at="84,0,88,0">
         <var name="context" id="1287827457544781813" />
       </scope>
       <scope id="1287827457544781813" at="142,0,146,0">
+        <var name="pattern" id="1287827457544781813" />
+      </scope>
+      <scope id="1287827457544781813" at="161,0,165,0">
+        <var name="pattern" id="1287827457544781813" />
+      </scope>
+      <scope id="1287827457544781813" at="165,0,169,0">
         <var name="pattern" id="1287827457544781813" />
       </scope>
       <scope id="1287827457544781813" at="51,0,56,0">
@@ -320,13 +339,13 @@
       <scope id="1287827457544781813" at="95,0,141,0">
         <var name="pattern" id="1287827457544781813" />
       </scope>
-      <unit id="1287827457544567576" at="182,0,185,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$LINKS" />
-      <unit id="1287827457544567576" at="186,0,189,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$PROPS" />
-      <unit id="1287827457544567576" at="166,0,181,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$CONCEPTS" />
-      <unit id="1287827457544781813" at="82,0,162,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$SMP_Param_r0ckpe_a$SMP_Action_r0ckpe_a0$Item" />
-      <unit id="1287827457544781813" at="69,0,163,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$SMP_Param_r0ckpe_a$SMP_Action_r0ckpe_a0" />
-      <unit id="1287827457544781813" at="47,0,165,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$SMP_Param_r0ckpe_a" />
-      <unit id="1287827457544567576" at="35,0,190,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord" />
+      <unit id="1287827457544567576" at="193,0,196,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$LINKS" />
+      <unit id="1287827457544567576" at="197,0,200,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$PROPS" />
+      <unit id="1287827457544567576" at="177,0,192,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$CONCEPTS" />
+      <unit id="1287827457544781813" at="82,0,173,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$SMP_Param_r0ckpe_a$SMP_Action_r0ckpe_a0$Item" />
+      <unit id="1287827457544781813" at="69,0,174,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$SMP_Param_r0ckpe_a$SMP_Action_r0ckpe_a0" />
+      <unit id="1287827457544781813" at="47,0,176,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord$SMP_Param_r0ckpe_a" />
+      <unit id="1287827457544567576" at="35,0,201,0" name="jetbrains.mps.baseLanguage.javadoc.editor.JavaDocTagsForWord" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/1741258697587168103">
