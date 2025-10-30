@@ -42,7 +42,31 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
   public void applyRule(final SNode methodRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Wait for target type to be inferred within target type. Here the method reference type is necessary so more freedom can be given to parent node that need to infer child. 
     // In the case the parent really want a concrete type before inferring, this type allows to use a shallow when concrete
-    //  { 
+    /*
+        id[ { 
+  final SNode shallowChildType = id[ [ TypeCheckingContext ] typeCheckingContext.typeOf(<actualArgument>, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "7134894838745353763", true) ]; 
+  [ TypeCheckingContext ] typeCheckingContext.whenConcrete(shallowChildType, ( ) -> void { 
+    // Types that need inference   
+    if (InferenceHelper.isInferredFromContext([ TypeCheckingContext ] typeCheckingContext.getExpandedNode([ SNode ] shallowChildType))) { 
+      id[ { 
+  SNode _nodeToCheck_1029348928467 = id[ methodRef ]; 
+  EquationInfo _info_12389875345 = new  EquationInfo(_nodeToCheck_1029348928467, null, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "7134894838745353724", 0, null); 
+  [ TypeCheckingContext ] typeCheckingContext.createLessThanInequality((SNode) [ TypeCheckingContext ] typeCheckingContext.getExpandedNode([ SNode ] shallowChildType), (SNode) _quotation_createNode_7gf7o9_a1a0c0a0b0b0a1a0b0c0b(), false, true, _info_12389875345); 
+} ] 
+    } else { 
+      // Other types, we may use a non shallow when concrete in this case to get more details  
+      id[ { 
+  final SNode concreteType = [ TypeCheckingContext ] typeCheckingContext.getExpandedNode([ SNode ] shallowChildType); 
+  [ TypeCheckingContext ] typeCheckingContext.whenConcrete(concreteType, ( ) -> void { 
+    // Fully concrete type if necessary  
+  }, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "7134894838745353751", false, false); 
+} ] 
+    } 
+  }, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "7134894838745353711", true, false); 
+} ]  
+
+    */
+
     final SNode internalType_typevar_8014486391912031404 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = methodRef;

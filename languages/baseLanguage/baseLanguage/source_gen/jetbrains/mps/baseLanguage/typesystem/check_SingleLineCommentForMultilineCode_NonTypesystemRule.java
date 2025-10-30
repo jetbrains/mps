@@ -26,7 +26,7 @@ public class check_SingleLineCommentForMultilineCode_NonTypesystemRule extends A
     Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(singleLineComment, LINKS.line$9eiT), LINKS.elements$_j45), CONCEPTS.NodeWrapperElement$c8)).where((it) -> TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(it).contains("\n")).visitAll((it) -> {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "A multi-line piece of code cannot be part of a single-line comment.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7134894838730794438", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(singleLineComment, "A multi-line piece of code cannot be part of a single-line comment.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7134894838730794438", null, errorTarget);
       }
     });
   }

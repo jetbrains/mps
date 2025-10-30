@@ -48,7 +48,7 @@ public class ClosureDataFlow_Test extends BaseTransformationTest {
       initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
-        // check getAnnotatedNode(string):node<> error messages
+        // check  getAnnotatedNode("method")  error messages
       });
     }
     public void test_ErrorMessagesCheck2501421320959199348() throws Exception {
