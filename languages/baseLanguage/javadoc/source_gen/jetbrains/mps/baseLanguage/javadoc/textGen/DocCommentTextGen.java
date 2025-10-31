@@ -5,9 +5,9 @@ package jetbrains.mps.baseLanguage.javadoc.textGen;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.javadoc.behavior.BaseDocComment__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
@@ -22,26 +22,20 @@ public abstract class DocCommentTextGen {
     tgs.indent();
     tgs.append(" * ");
   }
-  public static void commentLineInBaseBlockDocTagWithText(SNode node, String orText, final int indent, final TextGenContext ctx) {
+  public static void commentLineInBaseBlockDocTagWithText(SNode node, final int indent, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).isNotEmpty()) {
-      final Wrappers._boolean firstLine = new Wrappers._boolean(true);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).visitAll((it) -> {
-        if (!(firstLine.value)) {
-          tgs.newLine();
-          DocCommentTextGen.javadocIndent(ctx);
-          for (int i = 0; i < indent; i++) {
-            tgs.append(" ");
-          }
+    final Wrappers._boolean firstLine = new Wrappers._boolean(true);
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).visitAll((it) -> {
+      if (!(firstLine.value)) {
+        tgs.newLine();
+        DocCommentTextGen.javadocIndent(ctx);
+        for (int i = 0; i < indent; i++) {
+          tgs.append(" ");
         }
-        DocumentationLines.handleLine(it, ctx);
-        firstLine.value = false;
-      });
-    } else {
-      if ((orText != null && orText.length() > 0)) {
-        tgs.append(orText);
       }
-    }
+      DocumentationLines.handleLine(it, ctx);
+      firstLine.value = false;
+    });
   }
   public static void docCommentStart(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);

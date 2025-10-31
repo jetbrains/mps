@@ -5,9 +5,12 @@ package jetbrains.mps.baseLanguage.javadoc.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ReturnBlockDocTag_TextGen extends TextGenDescriptorBase {
   @Override
@@ -16,8 +19,15 @@ public class ReturnBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@return ");
-    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$eo0d), 8, ctx);
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
+      DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), 8, ctx);
+    } else {
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$eo0d));
+    }
+  }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
   }
 
   private static final class PROPS {
