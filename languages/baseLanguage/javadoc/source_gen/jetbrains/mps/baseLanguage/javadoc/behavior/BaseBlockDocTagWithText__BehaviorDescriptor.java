@@ -13,25 +13,32 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public final class EmptyBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L, "jetbrains.mps.baseLanguage.javadoc.structure.EmptyBlockDocTag");
+public final class BaseBlockDocTagWithText__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText");
 
   public static final SMethod<Void> appendTextLine_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendTextLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendTextLine_id2pw9ZXKThR2);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
+    SNode line = SLinkOperations.addNewChild(__thisNode__, LINKS.commentBody$sIzh, null);
+    Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(line, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
   }
 
   /*package*/ static void appendTextLine_id2pw9ZXKThR2(@NotNull SNode __thisNode__, String text) {
-    throw new IllegalArgumentException("EmptyBlockDocTag::appendText is not supposed to be ever called.");
+    SNode line = SLinkOperations.addNewChild(__thisNode__, LINKS.commentBody$sIzh, null);
+    Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
   }
 
-  /*package*/ EmptyBlockDocTag__BehaviorDescriptor() {
+  /*package*/ BaseBlockDocTagWithText__BehaviorDescriptor() {
   }
 
   @Override
@@ -76,5 +83,9 @@ public final class EmptyBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
   }
 }

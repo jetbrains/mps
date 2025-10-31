@@ -20,7 +20,7 @@ public class ThrowsBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.append("@throws ");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.exceptionType$7VDs));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$w_DI));
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$w_DI), ctx);
   }
 
   private static final class LINKS {

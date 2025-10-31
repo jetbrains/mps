@@ -20,7 +20,8 @@ public class ParameterBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.append("@param ");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.parameter$eWDw));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$99vK));
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$99vK), ctx);
+
   }
 
   private static final class LINKS {

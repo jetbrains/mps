@@ -5,38 +5,24 @@ package jetbrains.mps.baseLanguage.javadoc.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class DeprecatedBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
 
-  public static final SMethod<Void> appendText_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendText_id2pw9ZXKThR2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SNode line = SLinkOperations.addNewChild(__thisNode__, LINKS.commentBody$sIzh, null);
-    Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(line, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
   }
 
-  /*package*/ static void appendText_id2pw9ZXKThR2(@NotNull SNode __thisNode__, String text) {
-    SNode line = SLinkOperations.addNewChild(__thisNode__, LINKS.commentBody$sIzh, null);
-    Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
-  }
 
   /*package*/ DeprecatedBlockDocTag__BehaviorDescriptor() {
   }
@@ -53,9 +39,6 @@ public final class DeprecatedBlockDocTag__BehaviorDescriptor extends BaseBHDescr
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        appendText_id2pw9ZXKThR2(node, (String) parameters[0]);
-        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -83,9 +66,5 @@ public final class DeprecatedBlockDocTag__BehaviorDescriptor extends BaseBHDescr
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
   }
 }

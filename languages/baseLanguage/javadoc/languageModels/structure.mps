@@ -159,11 +159,12 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@author" />
     <property role="EcuMT" value="5349172909345530174" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyi" id="4CW56HZFIIq" role="1TKVEl">
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="5349172909345532826" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR841p" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="4CW56HZFIGO">
@@ -206,11 +207,12 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@version" />
     <property role="EcuMT" value="8465538089690324384" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyi" id="7lVCwDcxXQx" role="1TKVEl">
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="8465538089690324385" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR83$x" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="7lVCwDcxXQH">
@@ -218,11 +220,12 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@since" />
     <property role="EcuMT" value="8465538089690324397" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyi" id="7lVCwDcxXQJ" role="1TKVEl">
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="8465538089690324399" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR7ZT0" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="7lVCwDcxZ_$">
@@ -230,19 +233,13 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@deprecated" />
     <property role="EcuMT" value="8465538089690331492" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyj" id="2k6csr8mu4j" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="text" />
       <property role="IQ2ns" value="2667874559098216723" />
       <ref role="20lvS9" node="7lVCwDcxZ_G" resolve="CommentLine" />
       <node concept="asaX9" id="4qjHlOWxowr" role="lGtFl" />
-    </node>
-    <node concept="PrWs8" id="4qjHlOWQ7IW" role="PzmwI">
-      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
-    </node>
-    <node concept="PrWs8" id="4qjHlOWSFff" role="PzmwI">
-      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
     </node>
   </node>
   <node concept="1TIwiD" id="7lVCwDcxZ_G">
@@ -264,7 +261,7 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@param" />
     <property role="EcuMT" value="8465538089690881930" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyj" id="5VgPTPXJCrF" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="parameter" />
@@ -276,6 +273,7 @@
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="8465538089690881934" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR841n" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="55c3QxKjG9K">
@@ -283,7 +281,7 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@throws" />
     <property role="EcuMT" value="5858074156537397872" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyj" id="5VgPTPXJnrT" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="exceptionType" />
@@ -295,6 +293,7 @@
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="5858074156537397874" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR7ZSZ" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="55c3QxKk96e">
@@ -302,11 +301,12 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@return" />
     <property role="EcuMT" value="5858074156537516430" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyi" id="55c3QxKk96f" role="1TKVEl">
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="5858074156537516431" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR841k" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="5VgPTPXJCrn">
@@ -482,7 +482,7 @@
     <property role="3GE5qa" value="tag" />
     <property role="34LRSv" value="@see" />
     <property role="EcuMT" value="2217234381367190443" />
-    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <ref role="1TJDcQ" node="15yMAZR881B" resolve="BaseBlockDocTagWithText" />
     <node concept="1TJgyj" id="1V5cIK_baeU" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="reference" />
@@ -494,6 +494,7 @@
       <property role="TrG5h" value="text" />
       <property role="IQ2nx" value="2217234381367190444" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="15yMAZR7Py9" role="lGtFl" />
     </node>
   </node>
   <node concept="1TIwiD" id="1V5cIK_ctbj">
@@ -749,6 +750,16 @@
       <ref role="20lvS9" node="1V5cIK_b9CA" resolve="BaseDocReference" />
     </node>
     <node concept="PrWs8" id="4qjHlOXU6b5" role="PzmwI">
+      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="15yMAZR881B">
+    <property role="EcuMT" value="1252786228598702183" />
+    <property role="3GE5qa" value="tag" />
+    <property role="TrG5h" value="BaseBlockDocTagWithText" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
+    <node concept="PrWs8" id="15yMAZR881C" role="PzmwI">
       <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
     </node>
   </node>

@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_AuthorBlockDocTag;
   private ConceptPresentation props_BaseBlockDocTag;
+  private ConceptPresentation props_BaseBlockDocTagWithText;
   private ConceptPresentation props_BaseDocComment;
   private ConceptPresentation props_BaseDocReference;
   private ConceptPresentation props_BaseInlineDocTag;
@@ -60,7 +61,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     switch (structureDescriptor.internalIndex(c)) {
       case LanguageConceptSwitch.AuthorBlockDocTag:
         if (props_AuthorBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL);
+          cpb.deprecateProperty(0x4a3c146b7faeeb9aL, "text");
           cpb.rawPresentation("@author");
           props_AuthorBlockDocTag = cpb.create();
         }
@@ -71,6 +73,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BaseBlockDocTag = cpb.create();
         }
         return props_BaseBlockDocTag;
+      case LanguageConceptSwitch.BaseBlockDocTagWithText:
+        if (props_BaseBlockDocTagWithText == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_BaseBlockDocTagWithText = cpb.create();
+        }
+        return props_BaseBlockDocTagWithText;
       case LanguageConceptSwitch.BaseDocComment:
         if (props_BaseDocComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L);
@@ -310,28 +318,32 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_MethodDocReference;
       case LanguageConceptSwitch.ParameterBlockDocTag:
         if (props_ParameterBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL);
+          cpb.deprecateProperty(0x757ba20a4c905f8eL, "text");
           cpb.rawPresentation("@param");
           props_ParameterBlockDocTag = cpb.create();
         }
         return props_ParameterBlockDocTag;
       case LanguageConceptSwitch.ReturnBlockDocTag:
         if (props_ReturnBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL);
+          cpb.deprecateProperty(0x514c0f687050918fL, "text");
           cpb.rawPresentation("@return");
           props_ReturnBlockDocTag = cpb.create();
         }
         return props_ReturnBlockDocTag;
       case LanguageConceptSwitch.SeeBlockDocTag:
         if (props_SeeBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL);
+          cpb.deprecateProperty(0x1ec532ec252ca3acL, "text");
           cpb.rawPresentation("@see");
           props_SeeBlockDocTag = cpb.create();
         }
         return props_SeeBlockDocTag;
       case LanguageConceptSwitch.SinceBlockDocTag:
         if (props_SinceBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL);
+          cpb.deprecateProperty(0x757ba20a4c87ddafL, "text");
           cpb.rawPresentation("@since");
           props_SinceBlockDocTag = cpb.create();
         }
@@ -353,7 +365,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_TextCommentLinePart;
       case LanguageConceptSwitch.ThrowsBlockDocTag:
         if (props_ThrowsBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L);
+          cpb.deprecateProperty(0x514c0f68704ec272L, "text");
           cpb.rawPresentation("@throws");
           props_ThrowsBlockDocTag = cpb.create();
         }
@@ -377,7 +390,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_ValueInlineDocTagTE;
       case LanguageConceptSwitch.VersionBlockDocTag:
         if (props_VersionBlockDocTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L);
+          cpb.deprecateProperty(0x757ba20a4c87dda1L, "text");
           cpb.rawPresentation("@version");
           props_VersionBlockDocTag = cpb.create();
         }

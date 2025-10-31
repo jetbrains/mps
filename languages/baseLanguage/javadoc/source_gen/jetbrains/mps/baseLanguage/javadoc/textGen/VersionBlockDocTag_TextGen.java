@@ -16,7 +16,8 @@ public class VersionBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@version ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$$fSd));
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$$fSd), ctx);
+
   }
 
   private static final class PROPS {

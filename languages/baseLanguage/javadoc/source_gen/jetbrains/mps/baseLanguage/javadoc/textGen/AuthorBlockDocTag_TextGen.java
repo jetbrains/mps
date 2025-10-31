@@ -16,7 +16,7 @@ public class AuthorBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@author ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$sEPS));
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$sEPS), ctx);
   }
 
   private static final class PROPS {

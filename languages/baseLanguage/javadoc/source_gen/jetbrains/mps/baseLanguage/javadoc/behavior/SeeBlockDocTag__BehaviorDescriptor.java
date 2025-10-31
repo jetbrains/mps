@@ -5,33 +5,24 @@ package jetbrains.mps.baseLanguage.javadoc.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SeeBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL, "jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag");
 
-  public static final SMethod<Void> appendText_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendText_id2pw9ZXKThR2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void appendText_id2pw9ZXKThR2(@NotNull SNode __thisNode__, String text) {
-    SPropertyOperations.assign(__thisNode__, PROPS.text$f7yH, SPropertyOperations.getString(__thisNode__, PROPS.text$f7yH) + "\n" + text);
-  }
 
   /*package*/ SeeBlockDocTag__BehaviorDescriptor() {
   }
@@ -48,9 +39,6 @@ public final class SeeBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 0:
-        appendText_id2pw9ZXKThR2(node, (String) parameters[0]);
-        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -78,9 +66,5 @@ public final class SeeBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty text$f7yH = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL, 0x1ec532ec252ca3acL, "text");
   }
 }

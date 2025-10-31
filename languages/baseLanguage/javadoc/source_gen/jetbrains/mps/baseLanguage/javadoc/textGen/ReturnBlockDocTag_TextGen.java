@@ -16,7 +16,8 @@ public class ReturnBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@return ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$eo0d));
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$eo0d), ctx);
+
   }
 
   private static final class PROPS {

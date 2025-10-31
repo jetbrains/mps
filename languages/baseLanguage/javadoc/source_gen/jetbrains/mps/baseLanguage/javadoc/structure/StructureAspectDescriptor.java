@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAuthorBlockDocTag = createDescriptorForAuthorBlockDocTag();
   /*package*/ final ConceptDescriptor myConceptBaseBlockDocTag = createDescriptorForBaseBlockDocTag();
+  /*package*/ final ConceptDescriptor myConceptBaseBlockDocTagWithText = createDescriptorForBaseBlockDocTagWithText();
   /*package*/ final ConceptDescriptor myConceptBaseDocComment = createDescriptorForBaseDocComment();
   /*package*/ final ConceptDescriptor myConceptBaseDocReference = createDescriptorForBaseDocReference();
   /*package*/ final ConceptDescriptor myConceptBaseInlineDocTag = createDescriptorForBaseInlineDocTag();
@@ -74,7 +75,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAuthorBlockDocTag, myConceptBaseBlockDocTag, myConceptBaseDocComment, myConceptBaseDocReference, myConceptBaseInlineDocTag, myConceptBaseInlineDocTagTE, myConceptBaseParameterReference, myConceptBaseVariableDocReference, myConceptClassifierDocComment, myConceptClassifierDocReference, myConceptCodeInlineDocTag, myConceptCodeInlineDocTagTE, myConceptCodeSnippet, myConceptCodeSnippetTextElement, myConceptCommentLine, myConceptCommentLinePart, myConceptDeprecatedBlockDocTag, myConceptDocMethodParameterReference, myConceptDocTypeParameterReference, myConceptEmptyBlockDocTag, myConceptFieldDocComment, myConceptFieldDocReference, myConceptHTMLElement, myConceptHTMLElementTextElement, myConceptIHoldCommentLines, myConceptInheritDocInlineDocTag, myConceptInheritDocInlineDocTagTE, myConceptInlineTagCommentLinePart, myConceptInlineTagCommentTextElement, myConceptLinkInlineDocTag, myConceptLinkInlineDocTagTE, myConceptMethodDocComment, myConceptMethodDocReference, myConceptParameterBlockDocTag, myConceptReturnBlockDocTag, myConceptSeeBlockDocTag, myConceptSinceBlockDocTag, myConceptStaticFieldDocReference, myConceptTextCommentLinePart, myConceptThrowsBlockDocTag, myConceptValueInlineDocTag, myConceptValueInlineDocTagTE, myConceptVersionBlockDocTag);
+    return Arrays.asList(myConceptAuthorBlockDocTag, myConceptBaseBlockDocTag, myConceptBaseBlockDocTagWithText, myConceptBaseDocComment, myConceptBaseDocReference, myConceptBaseInlineDocTag, myConceptBaseInlineDocTagTE, myConceptBaseParameterReference, myConceptBaseVariableDocReference, myConceptClassifierDocComment, myConceptClassifierDocReference, myConceptCodeInlineDocTag, myConceptCodeInlineDocTagTE, myConceptCodeSnippet, myConceptCodeSnippetTextElement, myConceptCommentLine, myConceptCommentLinePart, myConceptDeprecatedBlockDocTag, myConceptDocMethodParameterReference, myConceptDocTypeParameterReference, myConceptEmptyBlockDocTag, myConceptFieldDocComment, myConceptFieldDocReference, myConceptHTMLElement, myConceptHTMLElementTextElement, myConceptIHoldCommentLines, myConceptInheritDocInlineDocTag, myConceptInheritDocInlineDocTagTE, myConceptInlineTagCommentLinePart, myConceptInlineTagCommentTextElement, myConceptLinkInlineDocTag, myConceptLinkInlineDocTagTE, myConceptMethodDocComment, myConceptMethodDocReference, myConceptParameterBlockDocTag, myConceptReturnBlockDocTag, myConceptSeeBlockDocTag, myConceptSinceBlockDocTag, myConceptStaticFieldDocReference, myConceptTextCommentLinePart, myConceptThrowsBlockDocTag, myConceptValueInlineDocTag, myConceptValueInlineDocTagTE, myConceptVersionBlockDocTag);
   }
 
   @Override
@@ -85,6 +86,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAuthorBlockDocTag;
       case LanguageConceptSwitch.BaseBlockDocTag:
         return myConceptBaseBlockDocTag;
+      case LanguageConceptSwitch.BaseBlockDocTagWithText:
+        return myConceptBaseBlockDocTagWithText;
       case LanguageConceptSwitch.BaseDocComment:
         return myConceptBaseDocComment;
       case LanguageConceptSwitch.BaseDocReference:
@@ -180,8 +183,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAuthorBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "AuthorBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5349172909345530174");
     b.version(3);
     b.property("text", 0x4a3c146b7faeeb9aL).type(PrimitiveTypeId.STRING).origin("5349172909345532826").done();
@@ -192,6 +195,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "BaseBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
     b.class_(false, true, false);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5349172909345530173");
+    b.version(3);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForBaseBlockDocTagWithText() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "BaseBlockDocTagWithText", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
+    b.class_(false, true, false);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    b.parent(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L);
+    b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/1252786228598702183");
     b.version(3);
     return b.create();
   }
@@ -334,10 +347,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDeprecatedBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "DeprecatedBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
-    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
-    b.parent(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690331492");
     b.version(3);
     b.aggregate("text", 0x250631c6c859e113L).target(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL).optional(true).ordered(true).multiple(false).origin("2667874559098216723").done();
@@ -514,8 +525,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForParameterBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "ParameterBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690881930");
     b.version(3);
     b.property("text", 0x757ba20a4c905f8eL).type(PrimitiveTypeId.STRING).origin("8465538089690881934").done();
@@ -526,8 +537,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForReturnBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "ReturnBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f687050918eL);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5858074156537516430");
     b.version(3);
     b.property("text", 0x514c0f687050918fL).type(PrimitiveTypeId.STRING).origin("5858074156537516431").done();
@@ -537,8 +548,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSeeBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "SeeBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252ca3abL);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/2217234381367190443");
     b.version(3);
     b.property("text", 0x1ec532ec252ca3acL).type(PrimitiveTypeId.STRING).origin("2217234381367190444").done();
@@ -549,8 +560,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSinceBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "SinceBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690324397");
     b.version(3);
     b.property("text", 0x757ba20a4c87ddafL).type(PrimitiveTypeId.STRING).origin("8465538089690324399").done();
@@ -580,8 +591,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForThrowsBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "ThrowsBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/5858074156537397872");
     b.version(3);
     b.property("text", 0x514c0f68704ec272L).type(PrimitiveTypeId.STRING).origin("5858074156537397874").done();
@@ -614,8 +625,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForVersionBlockDocTag() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "VersionBlockDocTag", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L);
     b.class_(false, false, false);
-    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag
-    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L);
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/8465538089690324384");
     b.version(3);
     b.property("text", 0x757ba20a4c87dda1L).type(PrimitiveTypeId.STRING).origin("8465538089690324385").done();
