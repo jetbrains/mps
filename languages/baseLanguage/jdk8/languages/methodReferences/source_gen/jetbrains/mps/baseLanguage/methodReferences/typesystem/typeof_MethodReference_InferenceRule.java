@@ -43,7 +43,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
     // Wait for target type to be inferred within target type. Here the method reference type is necessary so more freedom can be given to parent node that need to infer child. 
     // In the case the parent really want a concrete type before inferring, this type allows to use a shallow when concrete
     /*
-        id[ { 
+       '''id[ { 
   final SNode shallowChildType = id[ [ TypeCheckingContext ] typeCheckingContext.typeOf(<actualArgument>, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "7134894838745353763", true) ]; 
   [ TypeCheckingContext ] typeCheckingContext.whenConcrete(shallowChildType, ( ) -> void { 
     // Types that need inference   
@@ -63,7 +63,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
 } ] 
     } 
   }, "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "7134894838745353711", true, false); 
-} ]  
+} ]''' 
 
     */
 

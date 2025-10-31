@@ -380,7 +380,7 @@
       <node id="6585624606750917549" at="18,69,19,31" concept="7" />
       <node id="6585624606750917554" at="19,31,20,122" concept="5" />
       <node id="6585624606750917563" at="20,122,21,0" concept="8" />
-      <node id="6585624606750917564" at="21,0,22,128" concept="7" />
+      <node id="6585624606750917564" at="21,0,22,122" concept="7" />
       <node id="6585624606750917589" at="26,78,27,22" concept="6" />
       <node id="6585624606750917596" at="28,9,29,86" concept="7" />
       <node id="6585624606750917600" at="29,86,30,79" concept="7" />
@@ -394,7 +394,7 @@
       <node id="7949486109744211602" at="36,69,44,6" concept="6" />
       <node id="6585624606750917581" at="24,0,33,0" concept="4" trace="isExcluded#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7949486109744211137" at="36,0,46,0" concept="10" trace="getConstructorsScope#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/scope/Scope;" />
-      <node id="6585624606750917575" at="22,128,33,6" concept="6" />
+      <node id="6585624606750917575" at="22,122,33,6" concept="6" />
       <node id="6585624606750914575" at="18,0,35,0" concept="10" trace="getDefaultConstructorScope#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/scope/Scope;" />
       <scope id="6585624606750917588" at="26,78,27,22" />
       <scope id="7949486109744211616" at="39,45,42,263">

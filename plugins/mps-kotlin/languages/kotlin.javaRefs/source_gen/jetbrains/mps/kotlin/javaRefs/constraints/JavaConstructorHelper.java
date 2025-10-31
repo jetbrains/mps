@@ -19,7 +19,7 @@ public class JavaConstructorHelper {
     // TODO visibility handling
     Scope classifiers = ClassifierScopes.getReachableClassifiersScope(SNodeOperations.getModel(contextNode), null, false);
 
-    // Filter according to default constructor, see  ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(node<>):Scope
+    // Filter according to default constructor, see  '''ClassifierScopes.getVisibleClassifiersWithDefaultConstructors()'''
     return new FilteringScope(classifiers) {
       @Override
       public boolean isExcluded(SNode node) {

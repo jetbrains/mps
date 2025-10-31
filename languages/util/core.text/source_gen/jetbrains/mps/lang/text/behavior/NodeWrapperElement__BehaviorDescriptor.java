@@ -39,7 +39,7 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
-    final String[] result = new String[]{BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$KGJq))};
+    final String[] result = new String[]{"'''" + trim_ciopfq_a0a0a0a0a8(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$KGJq))) + "'''"};
 
     try {
       final Runnable r = new Runnable() {
@@ -54,7 +54,7 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
               EditorCell cell = editorComponent.getRootCell();
               if (cell != null) {
                 TextBuilder text = cell.renderText();
-                result[0] = text.getText();
+                result[0] = "'''" + trim_ciopfq_a0a0a1a3a0a0a0a1a0a0a0a0c0i(text.getText()) + "'''";
               }
             }
           });
@@ -122,6 +122,12 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  public static String trim_ciopfq_a0a0a0a0a8(String str) {
+    return (str == null ? null : str.trim());
+  }
+  public static String trim_ciopfq_a0a0a1a3a0a0a0a1a0a0a0a0c0i(String str) {
+    return (str == null ? null : str.trim());
   }
 
   private static final class LINKS {

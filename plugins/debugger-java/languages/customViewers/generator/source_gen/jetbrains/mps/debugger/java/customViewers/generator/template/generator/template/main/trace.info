@@ -287,8 +287,8 @@
   <root nodeRef="r:74318496-5622-4eb9-9978-1789536164b2(jetbrains.mps.debugger.java.customViewers.generator.template.generator.template.main@generator)/264293128390891134">
     <file name="QueriesGenerated.java">
       <node id="8272709587709775452" at="195,275,196,145" concept="5" />
-      <node id="8272709587709734344" at="196,145,197,70" concept="5" />
-      <node id="8321799582438670158" at="197,70,198,52" concept="0" />
+      <node id="8272709587709734344" at="196,145,197,74" concept="5" />
+      <node id="8321799582438670158" at="197,74,198,52" concept="0" />
       <node id="264293128390891134" at="240,14,241,56" concept="0" />
       <node id="264293128390891134" at="258,15,259,58" concept="0" />
       <node id="264293128390891134" at="259,58,260,17" concept="4" />

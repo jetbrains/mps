@@ -42,7 +42,7 @@ public class TestCompletionCustomization_ContextMatcher_EditingChildPropertyAndL
       EditorTestUtil.runWithCompletionStyling(() -> {
         invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
         NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-        // actions are hidden by ChildWithPropertyAndLink_Customization
+        // actions are hidden by '''ChildWithPropertyAndLink_Customization'''
         Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 0);
         pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
         invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
