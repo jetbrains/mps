@@ -22,7 +22,7 @@ public abstract class DocCommentTextGen {
     tgs.indent();
     tgs.append(" * ");
   }
-  public static void commentLineInBaseBlockDocTagWithText(SNode node, String orText, final TextGenContext ctx) {
+  public static void commentLineInBaseBlockDocTagWithText(SNode node, String orText, final int indent, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).isNotEmpty()) {
       final Wrappers._boolean firstLine = new Wrappers._boolean(true);
@@ -30,7 +30,9 @@ public abstract class DocCommentTextGen {
         if (!(firstLine.value)) {
           tgs.newLine();
           DocCommentTextGen.javadocIndent(ctx);
-          tgs.append("            ");
+          for (int i = 0; i < indent; i++) {
+            tgs.append(" ");
+          }
         }
         DocumentationLines.handleLine(it, ctx);
         firstLine.value = false;

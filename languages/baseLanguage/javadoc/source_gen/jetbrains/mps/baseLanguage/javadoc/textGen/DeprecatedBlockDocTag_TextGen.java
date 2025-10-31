@@ -17,7 +17,7 @@ public class DeprecatedBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@deprecated ");
-    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.text$c2BW)), ctx);
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), CommentLine__BehaviorDescriptor.buildCommentText_id7Qt73fl2z8k.invoke(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.text$c2BW)), 12, ctx);
   }
 
   private static final class LINKS {

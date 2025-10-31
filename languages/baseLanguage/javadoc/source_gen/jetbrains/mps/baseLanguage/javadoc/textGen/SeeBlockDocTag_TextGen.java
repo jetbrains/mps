@@ -20,7 +20,7 @@ public class SeeBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.append("@see ");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.reference$ffKg));
     tgs.append(" ");
-    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$f7yH), ctx);
+    DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$f7yH), 14, ctx);
   }
 
   private static final class LINKS {
