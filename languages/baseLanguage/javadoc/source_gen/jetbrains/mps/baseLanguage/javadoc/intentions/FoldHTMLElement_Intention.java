@@ -51,17 +51,17 @@ public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor
 
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String name = (isEmptyString(SPropertyOperations.getString(node, PROPS.name$Ps0d)) ? "..." : SPropertyOperations.getString(node, PROPS.name$Ps0d));
-      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).isEmpty() ? String.format(Locale.getDefault(), "Convert to <%s></%s>", name, name) : String.format(Locale.getDefault(), "Convert to <%s />", name));
+      String name = (isEmptyString(SPropertyOperations.getString(node, PROPS.name$jYiJ)) ? "..." : SPropertyOperations.getString(node, PROPS.name$jYiJ));
+      return (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).isEmpty() ? String.format(Locale.getDefault(), "Convert to <%s></%s>", name, name) : String.format(Locale.getDefault(), "Convert to <%s />", name));
     }
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).isEmpty()) {
-        SNodeFactoryOperations.addNewChild(node, LINKS.line$Psfe, null);
-        editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).first());
+      if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).isEmpty()) {
+        SNodeFactoryOperations.addNewChild(node, LINKS.commentBody$sIzh, null);
+        editorContext.selectWRTFocusPolicy(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).first());
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.line$Psfe)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).clear();
       }
     }
 
@@ -83,10 +83,10 @@ public final class FoldHTMLElement_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$Ps0d = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
+    /*package*/ static final SProperty name$jYiJ = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, 0x4693b55d3db92dd5L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$Psfe = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
+    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
   }
 }
