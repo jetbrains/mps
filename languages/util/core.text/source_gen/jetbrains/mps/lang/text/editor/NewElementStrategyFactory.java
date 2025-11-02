@@ -85,7 +85,11 @@ public class NewElementStrategyFactory {
       } else {
         // No new line should be created, create a default node in the closest ancestor collection
         SAbstractConcept c = SNodeOperations.getContainingLink(lineContainer).getTargetConcept();
-        SNodeOperations.insertNextSiblingChild(lineContainer, SNodeFactoryOperations.createNewNode(c, null));
+        if (c.isAbstract()) {
+          SNodeOperations.insertNextSiblingChild(lineContainer, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
+        } else {
+          SNodeOperations.insertNextSiblingChild(lineContainer, SNodeFactoryOperations.createNewNode(c, null));
+        }
       }
     }
 
