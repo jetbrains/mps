@@ -18,7 +18,7 @@ public class LinkInlineDocTagTE_TextGen extends TextGenDescriptorBase {
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.reference$Bpyd));
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
       tgs.append(" ");
-      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 5, ctx);
+      DocumentationLines.handleLine(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).first(), ctx);
     }
   }
 

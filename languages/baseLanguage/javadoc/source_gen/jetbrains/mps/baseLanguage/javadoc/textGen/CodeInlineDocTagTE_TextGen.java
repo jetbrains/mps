@@ -16,7 +16,7 @@ public class CodeInlineDocTagTE_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("code ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 5, ctx);
+      DocumentationLines.handleLine(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).first(), ctx);
     }
   }
 
