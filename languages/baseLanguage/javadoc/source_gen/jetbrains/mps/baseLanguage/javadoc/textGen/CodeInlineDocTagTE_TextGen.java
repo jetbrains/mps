@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.javadoc.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -15,12 +14,12 @@ public class CodeInlineDocTagTE_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("code ");
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocumentationLines.handleLine(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).first(), ctx);
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.commentBody$_6eD) != null)) {
+      DocumentationLines.handleLine(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.commentBody$_6eD), ctx);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
+    /*package*/ static final SContainmentLink commentBody$_6eD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cf949a05L, 0x60be0671cf949f82L, "commentBody");
   }
 }

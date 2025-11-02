@@ -34,15 +34,15 @@ public abstract class DocumentationLines extends DocCommentTextGen {
       tgs.append("<" + ("H" + SPropertyOperations.getEnum(SNodeOperations.as(line, CONCEPTS.Header$d7), PROPS.level$YKTp) + ">"));
     }
     for (SNode w : Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(line)) {
+      if (first) {
+        first = false;
+      } else {
+        tgs.append(" ");
+      }
       if (SNodeOperations.isInstanceOf(w, CONCEPTS.CodeSnippetTextElement$I3) || SNodeOperations.isInstanceOf(w, CONCEPTS.HTMLElementTextElement$Wi) || SNodeOperations.isInstanceOf(w, CONCEPTS.InlineTagCommentTextElement$48)) {
         tgs.appendNode(w);
       } else {
         String textualRepresentation = TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(w);
-        if (first) {
-          first = false;
-        } else {
-          tgs.append(" ");
-        }
         if ((textualRepresentation != null && textualRepresentation.length() > 0)) {
           if (SNodeOperations.isInstanceOf(w, CONCEPTS.Word$Dn)) {
             boolean isBold = SPropertyOperations.getBoolean(SNodeOperations.as(w, CONCEPTS.Word$Dn), PROPS.bold$SBR1);

@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class CodeInlineDocTagTE__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de82b71L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE");
@@ -29,11 +29,12 @@ public final class CodeInlineDocTagTE__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(buildCommentText_id4qjHlOXTWlm);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
+    SLinkOperations.setNewChild(__thisNode__, LINKS.commentBody$_6eD, CONCEPTS.Line$yC);
   }
 
   /*package*/ static String buildCommentText_id4qjHlOXTWlm(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentBody$sIzh)).isNotEmpty()) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.commentBody$sIzh)).select((it) -> (String) Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(it)).foldLeft("code: ", (String s, String it) -> s + "\n" + it);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.commentBody$_6eD) != null)) {
+      return "code: " + Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.commentBody$_6eD));
     } else {
       return "code:\n";
     }
@@ -86,6 +87,10 @@ public final class CodeInlineDocTagTE__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
+    /*package*/ static final SContainmentLink commentBody$_6eD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cf949a05L, 0x60be0671cf949f82L, "commentBody");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 }

@@ -730,7 +730,7 @@
     <property role="EcuMT" value="5085607816306633585" />
     <ref role="1TJDcQ" node="4qjHlOXTVRD" resolve="BaseInlineDocTagTE" />
     <node concept="PrWs8" id="4qjHlOXU2Ou" role="PzmwI">
-      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
+      <ref role="PrY4T" node="62Y1B7f_9C5" resolve="IHoldSingleCommentLine" />
     </node>
   </node>
   <node concept="1TIwiD" id="4qjHlOXU6b2">
@@ -750,7 +750,7 @@
       <ref role="20lvS9" node="1V5cIK_b9CA" resolve="BaseDocReference" />
     </node>
     <node concept="PrWs8" id="4qjHlOXU6b5" role="PzmwI">
-      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
+      <ref role="PrY4T" node="62Y1B7f_9C5" resolve="IHoldSingleCommentLine" />
     </node>
   </node>
   <node concept="1TIwiD" id="15yMAZR881B">
@@ -761,6 +761,22 @@
     <ref role="1TJDcQ" node="4CW56HZFI4X" resolve="BaseBlockDocTag" />
     <node concept="PrWs8" id="15yMAZR881C" role="PzmwI">
       <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="62Y1B7f_9C5">
+    <property role="EcuMT" value="6971016359099800069" />
+    <property role="TrG5h" value="IHoldSingleCommentLine" />
+    <node concept="1TJgyj" id="62Y1B7f_9Y2" role="1TKVEi">
+      <property role="IQ2ns" value="6971016359099801474" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="commentBody" />
+      <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
+    </node>
+    <node concept="PrWs8" id="62Y1B7f_9JY" role="PrDN$">
+      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
+    </node>
+    <node concept="PrWs8" id="62Y1B7f_9OU" role="PrDN$">
+      <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
     </node>
   </node>
 </model>

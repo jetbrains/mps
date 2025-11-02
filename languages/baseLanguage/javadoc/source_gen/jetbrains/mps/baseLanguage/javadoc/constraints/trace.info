@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,62,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,64,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)/2217234381367188403">
@@ -464,6 +464,79 @@
       <unit id="6832197706140671703" at="37,17,46,7" name="jetbrains.mps.baseLanguage.javadoc.constraints.DocTypeParameterReference_Constraints$RD1$1" />
       <unit id="6832197706140671703" at="30,0,49,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.DocTypeParameterReference_Constraints$RD1" />
       <unit id="6832197706140671702" at="24,0,60,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.DocTypeParameterReference_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)/6971016359099863007">
+    <file name="IHoldSingleCommentLine_Constraints.java">
+      <node id="6971016359099863007" at="25,96,26,59" concept="10" />
+      <node id="6971016359099863007" at="29,128,30,133" concept="4" />
+      <node id="6971016359099863007" at="30,133,31,0" concept="7" />
+      <node id="6971016359099863007" at="32,55,33,72" concept="1" />
+      <node id="6971016359099863007" at="34,9,35,0" concept="7" />
+      <node id="6971016359099863007" at="35,0,36,22" concept="5" />
+      <node id="6971016359099863007" at="41,130,42,161" concept="4" />
+      <node id="6971016359099863007" at="42,161,43,0" concept="7" />
+      <node id="6971016359099863007" at="44,55,45,74" concept="1" />
+      <node id="6971016359099863007" at="46,9,47,0" concept="7" />
+      <node id="6971016359099863007" at="47,0,48,22" concept="5" />
+      <node id="6971016359100285067" at="53,128,54,151" concept="5" />
+      <node id="6971016359099863856" at="56,149,57,224" concept="5" />
+      <node id="6971016359099863007" at="59,0,60,0" concept="8" trace="canBeParentBreakingPoint" />
+      <node id="6971016359099863007" at="60,0,61,0" concept="8" trace="canBeAncestorBreakingPoint" />
+      <node id="6971016359099863007" at="63,0,64,0" concept="8" trace="IHoldSingleCommentLine$qy" />
+      <node id="6971016359099863007" at="64,0,65,0" concept="8" trace="Line$yC" />
+      <node id="6971016359099863007" at="65,0,66,0" concept="8" trace="HtmlTag$VL" />
+      <node id="6971016359099863007" at="66,0,67,0" concept="8" trace="TextNodeReference$Ml" />
+      <node id="6971016359099863007" at="70,0,71,0" concept="8" trace="commentBody$_6eD" />
+      <node id="6971016359099863007" at="31,0,34,9" concept="2" />
+      <node id="6971016359099863007" at="43,0,46,9" concept="2" />
+      <node id="6971016359099863007" at="53,0,56,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="6971016359099863007" at="56,0,59,0" concept="9" trace="staticCanBeAnAncestor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="6971016359099863007" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="6971016359099863007" at="40,0,50,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeAncestor;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="6971016359099863007" at="26,59,38,7" concept="1" />
+      <node id="6971016359099863007" at="38,7,50,7" concept="1" />
+      <node id="6971016359099863007" at="25,0,52,0" concept="0" trace="IHoldSingleCommentLine_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <scope id="6971016359099863007" at="32,55,33,72" />
+      <scope id="6971016359099863007" at="44,55,45,74" />
+      <scope id="6971016359100284844" at="53,128,54,151" />
+      <scope id="6971016359099863547" at="56,149,57,224" />
+      <scope id="6971016359099863007" at="53,0,56,0">
+        <var name="childConcept" id="6971016359099863007" />
+        <var name="childNode" id="6971016359099863007" />
+        <var name="link" id="6971016359099863007" />
+        <var name="node" id="6971016359099863007" />
+      </scope>
+      <scope id="6971016359099863007" at="56,0,59,0">
+        <var name="childConcept" id="6971016359099863007" />
+        <var name="childNode" id="6971016359099863007" />
+        <var name="link" id="6971016359099863007" />
+        <var name="node" id="6971016359099863007" />
+        <var name="parentNode" id="6971016359099863007" />
+      </scope>
+      <scope id="6971016359099863007" at="29,128,36,22">
+        <var name="result" id="6971016359099863007" />
+      </scope>
+      <scope id="6971016359099863007" at="41,130,48,22">
+        <var name="result" id="6971016359099863007" />
+      </scope>
+      <scope id="6971016359099863007" at="28,0,38,0">
+        <var name="checkingNodeContext" id="6971016359099863007" />
+        <var name="context" id="6971016359099863007" />
+      </scope>
+      <scope id="6971016359099863007" at="40,0,50,0">
+        <var name="checkingNodeContext" id="6971016359099863007" />
+        <var name="context" id="6971016359099863007" />
+      </scope>
+      <scope id="6971016359099863007" at="25,96,50,7" />
+      <scope id="6971016359099863007" at="25,0,52,0">
+        <var name="initContext" id="6971016359099863007" />
+      </scope>
+      <unit id="6971016359099863007" at="69,0,72,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.IHoldSingleCommentLine_Constraints$LINKS" />
+      <unit id="6971016359099863007" at="62,0,68,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.IHoldSingleCommentLine_Constraints$CONCEPTS" />
+      <unit id="6971016359099863007" at="27,23,38,5" name="jetbrains.mps.baseLanguage.javadoc.constraints.IHoldSingleCommentLine_Constraints$1" />
+      <unit id="6971016359099863007" at="39,25,50,5" name="jetbrains.mps.baseLanguage.javadoc.constraints.IHoldSingleCommentLine_Constraints$2" />
+      <unit id="6971016359099863007" at="24,0,73,0" name="jetbrains.mps.baseLanguage.javadoc.constraints.IHoldSingleCommentLine_Constraints" />
     </file>
   </root>
   <root nodeRef="r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)/7134894838729204014">
