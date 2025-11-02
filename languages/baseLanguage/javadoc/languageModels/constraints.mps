@@ -589,7 +589,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="2eoNJJ2iWF4">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1M2myG" to="m373:62wYidULuwV" resolve="ValueInlineDocTag" />
     <node concept="9SLcT" id="147CB3QsUjo" role="9SGkU">
       <node concept="3clFbS" id="147CB3QsUjp" role="2VODD2">

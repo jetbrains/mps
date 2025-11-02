@@ -7,7 +7,6 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -18,18 +17,8 @@ public class LinkInlineDocTagTE_TextGen extends TextGenDescriptorBase {
     tgs.append("link ");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.reference$Bpyd));
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).count() == 1) {
-        tgs.append(" ");
-        for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)) {
-          tgs.appendNode(item);
-        }
-      } else {
-        ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).visitAll((it) -> {
-          tgs.newLine();
-          DocCommentTextGen.javadocIndent(ctx);
-          tgs.appendNode(it);
-        });
-      }
+      tgs.append(" ");
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 5, ctx);
     }
   }
 

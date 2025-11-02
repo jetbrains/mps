@@ -7,7 +7,6 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -17,9 +16,7 @@ public class CodeInlineDocTagTE_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("code ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)) {
-        tgs.appendNode(item);
-      }
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 5, ctx);
     }
   }
 

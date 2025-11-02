@@ -20,7 +20,7 @@ public class AuthorBlockDocTag_TextGen extends TextGenDescriptorBase {
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@author ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), 8, ctx);
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 8, ctx);
     } else {
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$sEPS));
     }

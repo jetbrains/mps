@@ -956,7 +956,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="5J4Ewzxp26c">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:5J4Ewzxlbep" resolve="HTMLElement" />
     <node concept="13hLZK" id="5J4Ewzxp26d" role="13h7CW">
       <node concept="3clFbS" id="5J4Ewzxp26e" role="2VODD2">
@@ -2101,7 +2101,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="7Qt73fl4hx3">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:62wYidULuwS" resolve="BaseInlineDocTag" />
     <node concept="13i0hz" id="7Qt73fl50wX" role="13h7CS">
       <property role="TrG5h" value="buildCommentText" />
@@ -2116,7 +2116,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="7Qt73fl50yD">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:1V5cIK_aBHN" resolve="CodeInlineDocTag" />
     <node concept="13hLZK" id="7Qt73fl50yE" role="13h7CW">
       <node concept="3clFbS" id="7Qt73fl50yF" role="2VODD2" />
@@ -2217,7 +2217,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="7Qt73fl56Pz">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:46AFNipTj1v" resolve="InheritDocInlineDocTag" />
     <node concept="13hLZK" id="7Qt73fl56P$" role="13h7CW">
       <node concept="3clFbS" id="7Qt73fl56P_" role="2VODD2" />
@@ -2237,7 +2237,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="7Qt73fl56UO">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:62wYidULuwV" resolve="ValueInlineDocTag" />
     <node concept="13hLZK" id="7Qt73fl56UP" role="13h7CW">
       <node concept="3clFbS" id="7Qt73fl56UQ" role="2VODD2" />
@@ -2265,7 +2265,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="7Qt73fl58x2">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:2dnyg8EnjCJ" resolve="LinkInlineDocTag" />
     <node concept="13hLZK" id="7Qt73fl58x3" role="13h7CW">
       <node concept="3clFbS" id="7Qt73fl58x4" role="2VODD2" />
@@ -2393,7 +2393,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="7Qt73fl7cfI">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="13h7C2" to="m373:2eoNJJ2oufZ" resolve="CodeSnippet" />
     <node concept="13hLZK" id="7Qt73fl7cfJ" role="13h7CW">
       <node concept="3clFbS" id="7Qt73fl7cfK" role="2VODD2" />

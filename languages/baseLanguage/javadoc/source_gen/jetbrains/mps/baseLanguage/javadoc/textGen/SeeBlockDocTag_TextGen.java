@@ -22,7 +22,7 @@ public class SeeBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.reference$ffKg));
     tgs.append(" ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), 14, ctx);
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 14, ctx);
     } else {
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$f7yH));
     }

@@ -25,7 +25,7 @@ public class ThrowsBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.exceptionType$7VDs));
     tgs.append(" ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), 9 + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.exceptionType$7VDs), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), PROPS.name$MnvL).length(), ctx);
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 9 + SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.exceptionType$7VDs), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), PROPS.name$MnvL).length(), ctx);
     } else {
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$w_DI));
     }

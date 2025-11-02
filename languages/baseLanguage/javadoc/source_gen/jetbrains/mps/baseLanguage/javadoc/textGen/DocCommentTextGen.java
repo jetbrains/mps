@@ -22,7 +22,7 @@ public abstract class DocCommentTextGen {
     tgs.indent();
     tgs.append(" * ");
   }
-  public static void commentLineInBaseBlockDocTagWithText(SNode node, final int indent, final TextGenContext ctx) {
+  public static void commentLineInDocTagWithText(SNode node, final int indent, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     final Wrappers._boolean firstLine = new Wrappers._boolean(true);
     ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentBody$sIzh)).visitAll((it) -> {

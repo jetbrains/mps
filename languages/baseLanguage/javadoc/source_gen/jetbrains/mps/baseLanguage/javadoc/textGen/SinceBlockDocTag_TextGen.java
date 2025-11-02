@@ -20,7 +20,7 @@ public class SinceBlockDocTag_TextGen extends TextGenDescriptorBase {
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@since ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), 7, ctx);
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 7, ctx);
     } else {
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$$ome));
     }

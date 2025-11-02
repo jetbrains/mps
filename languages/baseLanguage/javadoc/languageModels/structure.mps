@@ -416,7 +416,7 @@
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="BaseInlineDocTag" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="EcuMT" value="6962838954693748792" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="asaX9" id="4qjHlOXUaEs" role="lGtFl" />
@@ -426,7 +426,7 @@
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="constant value" />
     <property role="TrG5h" value="ValueInlineDocTag" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="34LRSv" value="value" />
     <property role="EcuMT" value="6962838954693748795" />
     <ref role="1TJDcQ" node="62wYidULuwS" resolve="BaseInlineDocTag" />
@@ -443,7 +443,7 @@
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="code piece" />
     <property role="TrG5h" value="CodeInlineDocTag" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="34LRSv" value="code" />
     <property role="EcuMT" value="2217234381367049075" />
     <ref role="1TJDcQ" node="62wYidULuwS" resolve="BaseInlineDocTag" />
@@ -526,7 +526,7 @@
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="link to type or member" />
     <property role="TrG5h" value="LinkInlineDocTag" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="34LRSv" value="link" />
     <property role="EcuMT" value="2546654756694997551" />
     <ref role="1TJDcQ" node="62wYidULuwS" resolve="BaseInlineDocTag" />
@@ -548,7 +548,7 @@
   </node>
   <node concept="1TIwiD" id="2eoNJJ2oufZ">
     <property role="TrG5h" value="CodeSnippet" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="EcuMT" value="2565027568480805887" />
     <ref role="1TJDcQ" node="7lVCwDcxZ_G" resolve="CommentLine" />
     <node concept="1TJgyj" id="2eoNJJ2oQBx" role="1TKVEi">
@@ -567,7 +567,7 @@
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="inherit doc from parent" />
     <property role="TrG5h" value="InheritDocInlineDocTag" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="34LRSv" value="inheritDoc" />
     <property role="EcuMT" value="4730661099054379103" />
     <ref role="1TJDcQ" node="62wYidULuwS" resolve="BaseInlineDocTag" />
@@ -601,7 +601,7 @@
   </node>
   <node concept="1TIwiD" id="5J4Ewzxlbep">
     <property role="TrG5h" value="HTMLElement" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <property role="EcuMT" value="6612597108003615641" />
     <ref role="1TJDcQ" node="7LZmMWLAga6" resolve="CommentLinePart" />
     <node concept="1TJgyj" id="5J4Ewzxlber" role="1TKVEi">

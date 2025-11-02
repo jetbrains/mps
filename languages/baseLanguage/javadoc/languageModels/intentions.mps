@@ -1785,7 +1785,7 @@
   </node>
   <node concept="2S6QgY" id="5J4EwzxpGnu">
     <property role="TrG5h" value="FoldHTMLElement" />
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="2ZfgGC" to="m373:5J4Ewzxlbep" resolve="HTMLElement" />
     <node concept="2S6ZIM" id="5J4EwzxpGnv" role="2ZfVej">
       <node concept="3clFbS" id="5J4EwzxpGnw" role="2VODD2">

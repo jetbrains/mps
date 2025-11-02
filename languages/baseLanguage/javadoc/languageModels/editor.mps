@@ -4167,7 +4167,7 @@
     <node concept="3Tm1VV" id="5r8Mhsq0yPs" role="1B3o_S" />
   </node>
   <node concept="24kQdi" id="62wYidULuBl">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:62wYidULuwV" resolve="ValueInlineDocTag" />
     <node concept="3EZMnI" id="62wYidULuBn" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhYaC" role="3EZMnx">
@@ -4194,7 +4194,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="1V5cIK_aBO3">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:1V5cIK_aBHN" resolve="CodeInlineDocTag" />
     <node concept="3EZMnI" id="1V5cIK_aBO5" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY2q" role="3EZMnx">
@@ -4388,7 +4388,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="1V5cIK_fDMK">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:62wYidULuwS" resolve="BaseInlineDocTag" />
     <node concept="1xolST" id="1V5cIK_fFkL" role="2wV5jI">
       <property role="1xolSY" value="..." />
@@ -4620,7 +4620,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="2dnyg8EnjCP">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:2dnyg8EnjCJ" resolve="LinkInlineDocTag" />
     <node concept="3EZMnI" id="2dnyg8EnjCR" role="2wV5jI">
       <node concept="PMmxH" id="2wdLO7KhY38" role="3EZMnx">
@@ -4644,6 +4644,7 @@
   </node>
   <node concept="1h_SRR" id="2eoNJJ2nsMq">
     <property role="TrG5h" value="ValueInlineDocTag_Actions" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1h_SK9" to="m373:62wYidULuwV" resolve="ValueInlineDocTag" />
     <node concept="1hA7zw" id="2eoNJJ2nsSr" role="1h_SK8">
       <property role="1hAc7j" value="g_hAjs4/right_transform_action_id" />
@@ -4665,7 +4666,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="2eoNJJ2oQCo">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:2eoNJJ2oufZ" resolve="CodeSnippet" />
     <node concept="3EZMnI" id="2eoNJJ2oQIr" role="2wV5jI">
       <node concept="l2Vlx" id="2eoNJJ2oQIt" role="2iSdaV" />
@@ -4699,7 +4700,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="46AFNipTj1z">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:46AFNipTj1v" resolve="InheritDocInlineDocTag" />
     <node concept="PMmxH" id="2wdLO7KhY5K" role="2wV5jI">
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
@@ -4760,7 +4761,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="5J4Ewzxlbet">
-    <property role="3GE5qa" value="tag" />
+    <property role="3GE5qa" value="tag.deprecated" />
     <ref role="1XX52x" to="m373:5J4Ewzxlbep" resolve="HTMLElement" />
     <node concept="1QoScp" id="5J4Ewzxplnv" role="2wV5jI">
       <property role="1QpmdY" value="true" />

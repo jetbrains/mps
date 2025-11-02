@@ -23,7 +23,7 @@ public class ParameterBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.parameter$eWDw));
     tgs.append(" ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentBody$sIzh)).isNotEmpty()) {
-      DocCommentTextGen.commentLineInBaseBlockDocTagWithText(ctx.getPrimaryInput(), 8 + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.parameter$eWDw), LINKS.param$eUNL), PROPS.name$MnvL).length(), ctx);
+      DocCommentTextGen.commentLineInDocTagWithText(ctx.getPrimaryInput(), 8 + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.parameter$eWDw), LINKS.param$eUNL), PROPS.name$MnvL).length(), ctx);
     } else {
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$99vK));
     }
