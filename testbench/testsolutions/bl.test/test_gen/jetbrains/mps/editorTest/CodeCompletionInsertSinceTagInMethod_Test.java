@@ -35,7 +35,7 @@ public class CodeCompletionInsertSinceTagInMethod_Test extends BaseTransformatio
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307802431745", "1702509307802432499");
+      initEditorComponent("1702509307802431745", "6971016359096494044");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("@sinc");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));

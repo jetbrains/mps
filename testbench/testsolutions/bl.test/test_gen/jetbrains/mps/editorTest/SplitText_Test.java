@@ -33,7 +33,7 @@ public class SplitText_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307801834912", "1702509307801977466");
+      initEditorComponent("1702509307801834912", "6971016359097059583");
       invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
     }
   }

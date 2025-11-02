@@ -33,7 +33,7 @@ public class JoinText_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307802119326", "1702509307802119338");
+      initEditorComponent("1702509307802119326", "6971016359097059367");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
     }
   }

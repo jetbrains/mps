@@ -10,6 +10,8 @@ import jetbrains.mps.lang.test.runtime.TestParametersCacheBuilder;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 
 @MPSLaunch
 public class InsertAuthorTag_Test extends BaseTransformationTest {
@@ -33,8 +35,12 @@ public class InsertAuthorTag_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307799107665", "1702509307799130374");
-      typeString("@author a");
+      initEditorComponent("1702509307799107665", "6971016359097054901");
+      typeString("@author");
+      invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+      pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
+      typeString("a");
+
     }
   }
 }

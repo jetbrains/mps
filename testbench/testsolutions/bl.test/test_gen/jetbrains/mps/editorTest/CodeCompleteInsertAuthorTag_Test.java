@@ -35,7 +35,7 @@ public class CodeCompleteInsertAuthorTag_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307799307188", "1702509307799588581");
+      initEditorComponent("1702509307799307188", "6971016359097058681");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("@auth");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));

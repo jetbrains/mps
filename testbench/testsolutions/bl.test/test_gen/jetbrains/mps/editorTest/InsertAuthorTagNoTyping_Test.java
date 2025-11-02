@@ -35,8 +35,9 @@ public class InsertAuthorTagNoTyping_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307799868409", "1702509307799868418");
+      initEditorComponent("1702509307799868409", "6971016359097377507");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+      typeString("a");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       typeString("a");
     }

@@ -33,7 +33,7 @@ public class DeleteAuthorTag_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1702509307801693121", "1702509307801693130");
+      initEditorComponent("1702509307801693121", "6971016359097059070");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
     }
   }
