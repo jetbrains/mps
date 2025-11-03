@@ -14712,6 +14712,30 @@
                             </node>
                           </node>
                         </node>
+                        <node concept="3clFbF" id="7394TVRkWcf" role="3cqZAp">
+                          <node concept="2OqwBi" id="7394TVRkWch" role="3clFbG">
+                            <node concept="liA8E" id="7394TVRkWci" role="2OqNvi">
+                              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
+                              <node concept="1bVj0M" id="7394TVRkWcj" role="37wK5m">
+                                <node concept="3clFbS" id="7394TVRkWck" role="1bW5cS">
+                                  <node concept="3clFbF" id="7394TVRkWcl" role="3cqZAp">
+                                    <node concept="1rXfSq" id="7394TVRkWcm" role="3clFbG">
+                                      <ref role="37wK5l" node="7394TVRcjME" resolve="updateRootsPresentation" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="2OqwBi" id="7394TVRkWcn" role="2Oq$k0">
+                              <node concept="37vLTw" id="7394TVRkWco" role="2Oq$k0">
+                                <ref role="3cqZAo" node="QicWNw6BM2" resolve="myRepo" />
+                              </node>
+                              <node concept="liA8E" id="7394TVRkWcp" role="2OqNvi">
+                                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -15439,6 +15463,66 @@
       <node concept="3uibUv" id="7yCf_dgMyW_" role="3clF45">
         <ref role="3uigEE" node="7yCf_dgMysn" resolve="DiffModelTree.TreeNode" />
       </node>
+    </node>
+    <node concept="2tJIrI" id="6LhKZJ7jIvo" role="jymVt" />
+    <node concept="3clFb_" id="6LhKZJ7jifN" role="jymVt">
+      <property role="TrG5h" value="updateRootPresentation" />
+      <node concept="37vLTG" id="6LhKZJ7jzD2" role="3clF46">
+        <property role="TrG5h" value="rootId" />
+        <node concept="3uibUv" id="6LhKZJ7jzD3" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
+        </node>
+        <node concept="2AHcQZ" id="6LhKZJ7jzD4" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6LhKZJ7jifQ" role="3clF47">
+        <node concept="3clFbF" id="6LhKZJ7k2oE" role="3cqZAp">
+          <node concept="1rXfSq" id="6LhKZJ7k2oD" role="3clFbG">
+            <ref role="37wK5l" node="42hl10VHaP6" resolve="updateRootCustomPresentation" />
+            <node concept="1rXfSq" id="6LhKZJ7knV1" role="37wK5m">
+              <ref role="37wK5l" node="42hl10VHaPW" resolve="findRootNode" />
+              <node concept="37vLTw" id="6LhKZJ7kBrK" role="37wK5m">
+                <ref role="3cqZAo" node="6LhKZJ7jzD2" resolve="rootId" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6LhKZJ7j2Xm" role="1B3o_S" />
+      <node concept="3cqZAl" id="6LhKZJ7jh9c" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="7394TVRcjME" role="jymVt">
+      <property role="TrG5h" value="updateRootsPresentation" />
+      <node concept="3clFbS" id="7394TVRcjMH" role="3clF47">
+        <node concept="3clFbF" id="55QMn4zqYE3" role="3cqZAp">
+          <node concept="2OqwBi" id="55QMn4zr477" role="3clFbG">
+            <node concept="37vLTw" id="55QMn4zqYE1" role="2Oq$k0">
+              <ref role="3cqZAo" node="42hl10VHaRn" resolve="myRootNodes" />
+            </node>
+            <node concept="2es0OD" id="55QMn4zr8t2" role="2OqNvi">
+              <node concept="1bVj0M" id="55QMn4zr8t4" role="23t8la">
+                <node concept="3clFbS" id="55QMn4zr8t5" role="1bW5cS">
+                  <node concept="3clFbF" id="55QMn4zrgJe" role="3cqZAp">
+                    <node concept="1rXfSq" id="55QMn4zrgJd" role="3clFbG">
+                      <ref role="37wK5l" node="42hl10VHaP6" resolve="updateRootCustomPresentation" />
+                      <node concept="37vLTw" id="55QMn4zrnas" role="37wK5m">
+                        <ref role="3cqZAo" node="55QMn4zr8t6" resolve="it" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="gl6BB" id="55QMn4zr8t6" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="55QMn4zr8t7" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7394TVRcaN6" role="1B3o_S" />
+      <node concept="3cqZAl" id="7394TVRcgTY" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="QicWNw5MhD" role="jymVt" />
     <node concept="3clFb_" id="2alxbCQ_nmZ" role="jymVt">

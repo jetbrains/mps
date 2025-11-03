@@ -75,6 +75,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
         } else {
           onSelectRoot(node[0].getRootId());
         }
+        myRepo.getModelAccess().runReadAction(() -> updateRootsPresentation());
       }
     });
   }
@@ -136,13 +137,20 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     return modelNode;
   }
 
+  public void updateRootPresentation(@Nullable SNodeId rootId) {
+    updateRootCustomPresentation(findRootNode(rootId));
+  }
+  public void updateRootsPresentation() {
+    ListSequence.fromList(myRootNodes).visitAll((it) -> updateRootCustomPresentation(it));
+  }
+
   public void setSelected(@Nullable SNodeId rootId) {
     // FIXME there's hidden assumption that null rootId means 'select model properties changes'
     //      because MetadataTeeeNode is RootTreeNode with null rootId
     // todo: find path by rootId
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      RootTreeNode node = as_5x0uld_a0a0a4a71(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a4a02(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -199,7 +207,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     return ListSequence.fromList(myRootNodes).getElement(index).myRootId;
   }
   public String getNameForRoot(@Nullable SNodeId nodeId) {
-    return check_5x0uld_a0a33(findRootNode(nodeId), this);
+    return check_5x0uld_a0a63(findRootNode(nodeId), this);
   }
   @Nullable
   @Override
@@ -326,7 +334,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       return myTextStyle;
     }
   }
-  private static String check_5x0uld_a0a33(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
+  private static String check_5x0uld_a0a63(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getText();
     }
@@ -335,7 +343,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_5x0uld_a0a0a4a71(Object o, Class<T> type) {
+  private static <T> T as_5x0uld_a0a0a4a02(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
