@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="TypesystemDescriptor.java">
-      <unit at="8,0,32,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.TypesystemDescriptor" />
+      <unit at="8,0,36,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.TypesystemDescriptor" />
     </file>
   </root>
   <root nodeRef="r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)/1370556966538806711">
@@ -286,6 +286,61 @@
       </scope>
       <unit id="174203568773653589" at="41,0,44,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule$CONCEPTS" />
       <unit id="174203568773653589" at="20,0,45,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_BaseDocCommentDuplication_NonTypesystemRule" />
+    </file>
+  </root>
+  <root nodeRef="r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)/4909470761029759495">
+    <file name="TypesystemDescriptor.java">
+      <node id="4909470761029759495" at="30,5,31,102" concept="5" />
+      <node id="4909470761029759495" at="31,102,32,55" concept="2" />
+      <node id="4909470761029759495" at="29,5,33,5" concept="0" />
+      <scope id="4909470761029759495" at="30,5,32,55">
+        <var name="nonTypesystemRule" id="4909470761029759495" />
+      </scope>
+    </file>
+    <file name="check_ValueInlineDocTagTE_NonTypesystemRule.java">
+      <node id="4909470761029770448" at="28,7,29,66" concept="5" />
+      <node id="4909470761029770448" at="29,66,30,298" concept="5" />
+      <node id="4909470761029759495" at="34,50,35,43" concept="6" />
+      <node id="4909470761029759495" at="37,68,38,102" concept="6" />
+      <node id="4909470761029759495" at="40,30,41,17" concept="6" />
+      <node id="4909470761029759495" at="45,0,46,0" concept="7" trace="variableReference$voEd" />
+      <node id="4909470761029759495" at="46,0,47,0" concept="7" trace="declaration$Ptq3" />
+      <node id="4909470761029759495" at="50,0,51,0" concept="7" trace="StaticFieldDocReference$sH" />
+      <node id="4909470761029759495" at="51,0,52,0" concept="7" trace="FieldDocReference$tM" />
+      <node id="4909470761029759495" at="52,0,53,0" concept="7" trace="ValueInlineDocTagTE$LX" />
+      <node id="4909470761029759495" at="56,0,57,0" concept="7" trace="isFinal$gvTP" />
+      <node id="4909470761029759495" at="24,0,26,0" concept="1" trace="check_ValueInlineDocTagTE_NonTypesystemRule#()V" />
+      <node id="4909470761029759495" at="34,0,37,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="4909470761029759495" at="37,0,40,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="4909470761029759495" at="40,0,43,0" concept="4" trace="overrides#()Z" />
+      <node id="4909470761029770448" at="27,391,31,7" concept="0" />
+      <node id="4909470761029759646" at="26,132,32,5" concept="3" />
+      <node id="4909470761029759495" at="26,0,34,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="4909470761029759495" at="24,56,24,56" />
+      <scope id="4909470761029759495" at="34,50,35,43" />
+      <scope id="4909470761029759495" at="37,68,38,102" />
+      <scope id="4909470761029759495" at="40,30,41,17" />
+      <scope id="4909470761029759495" at="24,0,26,0" />
+      <scope id="4909470761029770448" at="28,7,30,298">
+        <var name="_reporter_2309309498" id="4909470761029770448" />
+        <var name="errorTarget" id="4909470761029770448" />
+      </scope>
+      <scope id="4909470761029759495" at="34,0,37,0" />
+      <scope id="4909470761029759495" at="37,0,40,0">
+        <var name="argument" id="4909470761029759495" />
+      </scope>
+      <scope id="4909470761029759495" at="40,0,43,0" />
+      <scope id="4909470761029759648" at="27,391,31,7" />
+      <scope id="4909470761029759496" at="26,132,32,5" />
+      <scope id="4909470761029759495" at="26,0,34,0">
+        <var name="status" id="4909470761029759495" />
+        <var name="typeCheckingContext" id="4909470761029759495" />
+        <var name="valueInlineDocTagTE" id="4909470761029759495" />
+      </scope>
+      <unit id="4909470761029759495" at="55,0,58,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ValueInlineDocTagTE_NonTypesystemRule$PROPS" />
+      <unit id="4909470761029759495" at="44,0,48,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ValueInlineDocTagTE_NonTypesystemRule$LINKS" />
+      <unit id="4909470761029759495" at="49,0,54,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ValueInlineDocTagTE_NonTypesystemRule$CONCEPTS" />
+      <unit id="4909470761029759495" at="23,0,59,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ValueInlineDocTagTE_NonTypesystemRule" />
     </file>
   </root>
 </debug-info>

@@ -12,6 +12,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -488,6 +489,71 @@
     <node concept="1YaCAy" id="1c5c$MIZ6i_" role="1YuTPh">
       <property role="TrG5h" value="classifierDocReference" />
       <ref role="1YaFvo" to="m373:1V5cIK_ctb$" resolve="ClassifierDocReference" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="4gxWqlam787">
+    <property role="TrG5h" value="check_ValueInlineDocTagTE" />
+    <property role="3GE5qa" value="tag" />
+    <node concept="3clFbS" id="4gxWqlam788" role="18ibNy">
+      <node concept="3clFbJ" id="4gxWqlam7au" role="3cqZAp">
+        <node concept="22lmx$" id="4gxWqlamarY" role="3clFbw">
+          <node concept="3fqX7Q" id="4gxWqlameml" role="3uHU7w">
+            <node concept="2OqwBi" id="4gxWqlamemn" role="3fr31v">
+              <node concept="2OqwBi" id="4gxWqlamemo" role="2Oq$k0">
+                <node concept="1PxgMI" id="4gxWqlamemp" role="2Oq$k0">
+                  <property role="1BlNFB" value="true" />
+                  <node concept="chp4Y" id="4gxWqlamemq" role="3oSUPX">
+                    <ref role="cht4Q" to="m373:5CSG7KHrnLV" resolve="StaticFieldDocReference" />
+                  </node>
+                  <node concept="2OqwBi" id="4gxWqlamemr" role="1m5AlR">
+                    <node concept="1YBJjd" id="4gxWqlamems" role="2Oq$k0">
+                      <ref role="1YBMHb" node="4gxWqlam78a" resolve="valueInlineDocTagTE" />
+                    </node>
+                    <node concept="3TrEf2" id="4gxWqlamemt" role="2OqNvi">
+                      <ref role="3Tt5mk" to="m373:4qjHlOXU0CU" resolve="variableReference" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3TrEf2" id="4gxWqlamemu" role="2OqNvi">
+                  <ref role="3Tt5mk" to="m373:5CSG7KHrnM6" resolve="staticFieldDeclaration" />
+                </node>
+              </node>
+              <node concept="3TrcHB" id="4gxWqlamemv" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:h7TUv0c" resolve="isFinal" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4gxWqlam9q5" role="3uHU7B">
+            <node concept="2OqwBi" id="4gxWqlam7nG" role="2Oq$k0">
+              <node concept="1YBJjd" id="4gxWqlam7d$" role="2Oq$k0">
+                <ref role="1YBMHb" node="4gxWqlam78a" resolve="valueInlineDocTagTE" />
+              </node>
+              <node concept="3TrEf2" id="4gxWqlam9dc" role="2OqNvi">
+                <ref role="3Tt5mk" to="m373:4qjHlOXU0CU" resolve="variableReference" />
+              </node>
+            </node>
+            <node concept="1mIQ4w" id="4gxWqlam9E0" role="2OqNvi">
+              <node concept="chp4Y" id="4gxWqlam9Ip" role="cj9EA">
+                <ref role="cht4Q" to="m373:1V5cIK_b9CC" resolve="FieldDocReference" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="4gxWqlam7aw" role="3clFbx">
+          <node concept="2MkqsV" id="4gxWqlam9Ng" role="3cqZAp">
+            <node concept="Xl_RD" id="4gxWqlam9Oo" role="2MkJ7o">
+              <property role="Xl_RC" value="The @value inline tag can only refer to static final fields." />
+            </node>
+            <node concept="1YBJjd" id="4gxWqlama2A" role="1urrMF">
+              <ref role="1YBMHb" node="4gxWqlam78a" resolve="valueInlineDocTagTE" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4gxWqlam78a" role="1YuTPh">
+      <property role="TrG5h" value="valueInlineDocTagTE" />
+      <ref role="1YaFvo" to="m373:4qjHlOXU0CT" resolve="ValueInlineDocTagTE" />
     </node>
   </node>
 </model>

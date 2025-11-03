@@ -176,7 +176,7 @@ public class JavaParser {
       String desc = trim_9quruo_a0a1a9a6(matcher.group(2));
       if ((desc != null && desc.length() > 0)) {
         BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-        BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+        parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
       }
       foundTag = tag;
     }
@@ -185,7 +185,7 @@ public class JavaParser {
       String desc = trim_9quruo_a0a1a01a6(matcher.group(2));
       if ((desc != null && desc.length() > 0)) {
         BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-        BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+        parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
       }
       foundTag = tag;
     }
@@ -215,7 +215,7 @@ public class JavaParser {
           String desc = (indexOfSpace != -1 ? trim_9quruo_a0a0c0c0c0l0g(content.substring(indexOfSpace)) : "");
           if ((desc != null && desc.length() > 0)) {
             BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-            BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+            parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
           }
         }
       }
@@ -226,7 +226,7 @@ public class JavaParser {
       String desc = trim_9quruo_a0a1a21a6(matcher.group(2));
       if ((desc != null && desc.length() > 0)) {
         BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-        BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+        parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
       }
       foundTag = tag;
     }
@@ -235,7 +235,7 @@ public class JavaParser {
       String desc = trim_9quruo_a0a1a31a6(matcher.group(2));
       if ((desc != null && desc.length() > 0)) {
         BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-        BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+        parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
       }
       foundTag = tag;
     }
@@ -252,7 +252,7 @@ public class JavaParser {
           String desc = (indexOfSpace != -1 ? trim_9quruo_a0a0d0c0c0o0g(content.substring(indexOfSpace)) : "");
           if ((desc != null && desc.length() > 0)) {
             BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-            BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+            parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
           }
         }
       }
@@ -276,7 +276,7 @@ public class JavaParser {
           String desc = (indexOfSpace != -1 ? trim_9quruo_a0a0c0c0c0p0g(content.substring(indexOfSpace)) : "");
           if ((desc != null && desc.length() > 0)) {
             BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-            BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+            parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
           }
         }
       }
@@ -287,11 +287,101 @@ public class JavaParser {
       String desc = trim_9quruo_a0a1a61a6(matcher.group(2));
       if ((desc != null && desc.length() > 0)) {
         BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
-        BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), desc);
+        parseCommentLineDetectInlineTags(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.commentBody$sIzh)).first(), desc);
       }
       foundTag = tag;
     }
     return foundTag;
+  }
+
+  private void parseCommentLineDetectInlineTags(SNode line, String text) {
+    String textToProcess = text;
+    while ((textToProcess != null && textToProcess.length() > 0)) {
+      int startPosition = textToProcess.indexOf("{@");
+      if (startPosition != -1) {
+        String prefix = textToProcess.substring(0, startPosition);
+        String suffix = textToProcess.substring(startPosition);
+        int endPosition = suffix.indexOf("}");
+        if (endPosition != -1) {
+          String tagBody = suffix.substring(0, endPosition);
+          String rest = (suffix.length() > tagBody.length() + 1 ? suffix.substring(endPosition + 1) : "");
+          BHReflection.invoke0(line, CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), prefix);
+          textToProcess = rest;
+          SNode element = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement"));
+          SNode tag = null;
+          if (tagBody.startsWith("{@inheritDoc") && tagBody.length() >= 12) {
+            tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de8265aL, "jetbrains.mps.baseLanguage.javadoc.structure.InheritDocInlineDocTagTE"));
+          }
+          if (tagBody.startsWith("{@value ") && tagBody.length() > 8) {
+            tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de80a39L, "jetbrains.mps.baseLanguage.javadoc.structure.ValueInlineDocTagTE"));
+            String referenceText = tagBody.substring(9);
+            SLinkOperations.setTarget(SNodeOperations.as(tag, CONCEPTS.ValueInlineDocTagTE$LX), LINKS.variableReference$voEd, SNodeOperations.as(resolveReferenceForTag(referenceText), CONCEPTS.BaseVariableDocReference$L8));
+          }
+          if (tagBody.startsWith("{@literal ") && tagBody.length() > 10) {
+            tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cfb80405L, "jetbrains.mps.baseLanguage.javadoc.structure.LiteralInlineDocTagTE"));
+            BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.LiteralInlineDocTagTE$ZL), LINKS.commentBody$_6eD), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
+            BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.LiteralInlineDocTagTE$ZL), LINKS.commentBody$_6eD), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), tagBody.substring(10));
+          }
+          if (tagBody.startsWith("{@code ") && tagBody.length() > 7) {
+            tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de82b71L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE"));
+            BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.CodeInlineDocTagTE$LL), LINKS.commentBody$_6eD), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
+            BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.CodeInlineDocTagTE$LL), LINKS.commentBody$_6eD), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), tagBody.substring(7));
+          }
+          if (tagBody.startsWith("{@link ") && tagBody.length() > 7) {
+            tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE"));
+            String linkBody = tagBody.substring(7);
+            String linkReference = "";
+            int positionOfSpace = linkBody.indexOf(" ");
+            if (positionOfSpace != -1 && linkBody.length() > positionOfSpace + 1) {
+              linkReference = linkBody.substring(0, positionOfSpace);
+              final String linkDesc = linkBody.substring(positionOfSpace + 1);
+              BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.LinkInlineDocTagTE$NH), LINKS.commentBody$_6eD), CONCEPTS.Line$yC, SMethodIdV2.create("removeTextElementAt", 1094247804558425274L, 0x4e4bd60a2247ebcfL), ((int) 0));
+              BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.LinkInlineDocTagTE$NH), LINKS.commentBody$_6eD), CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), linkDesc);
+            } else {
+              linkReference = linkBody;
+            }
+            SLinkOperations.setTarget(SNodeOperations.as(tag, CONCEPTS.LinkInlineDocTagTE$NH), LINKS.reference$Bpyd, resolveReferenceForTag(linkReference));
+          }
+          SLinkOperations.setTarget(element, LINKS.tag$axJH, tag);
+          if (tag == null) {
+            // fallback to string if the tag cannot be recognized
+            BHReflection.invoke0(line, CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), tagBody + "}");
+          } else {
+            BHReflection.invoke0(line, CONCEPTS.Line$yC, SMethodIdV2.create("addTextElement", 1094247804558695750L, 0x4e4bd60a2247ebcfL), element);
+          }
+        } else {
+          // end '}' was not found on the line
+          BHReflection.invoke0(line, CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), textToProcess);
+          textToProcess = "";
+        }
+      } else {
+        // no inline tag found
+        BHReflection.invoke0(line, CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), textToProcess);
+        textToProcess = "";
+      }
+    }
+  }
+
+  private SNode resolveReferenceForTag(String refString) {
+    if ((refString != null && refString.length() > 0)) {
+      ResolveInfo ri = ResolveInfo.of(refString);
+      if (refString.contains("#")) {
+        if (refString.contains("(")) {
+          SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference"));
+          ref.setReference(LINKS.methodDeclaration$z_UH, ri);
+          return ref;
+        } else {
+          SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a28L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocReference"));
+          ref.setReference(LINKS.declaration$Ptq3, ri);
+          return ref;
+        }
+      } else {
+        SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference"));
+        ref.setReference(LINKS.classifier$AhRH, ri);
+        return ref;
+      }
+    }
+    return null;
   }
 
   public void attachComments(char[] source, ASTConverter converter, RecordedParsingInformation parseInfo) {
@@ -326,12 +416,12 @@ public class JavaParser {
             ListSequence.fromList(SLinkOperations.getChildren(doc, LINKS.tags$stUD)).addElement(tag);
             currentTag = tag;
           } else {
+            SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+            parseCommentLineDetectInlineTags(commentLine, ((text == null ? null : text.trim())));
             if (currentTag == null) {
-              SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-              BHReflection.invoke0(commentLine, CONCEPTS.Line$yC, SMethodIdV2.create("parseAndAppendText", 7068855900723867743L, 0x4e4bd60a2247ebcfL), ((text == null ? null : text.trim())));
               ListSequence.fromList(SLinkOperations.getChildren(doc, LINKS.commentBody$sIzh)).addElement(commentLine);
             } else {
-              BHReflection.invoke0(currentTag, CONCEPTS.BaseBlockDocTag$jo, SMethodIdV2.create("appendTextLine", 2765254149269691842L, 0x499b506ae254f5c8L), ((text == null ? null : text.trim())));
+              ListSequence.fromList(SLinkOperations.getChildren(currentTag, LINKS.commentBody$sIzh)).addElement(commentLine);
             }
           }
         }
@@ -563,7 +653,11 @@ public class JavaParser {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept DocTypeParameterReference$Qk = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86dbL, "jetbrains.mps.baseLanguage.javadoc.structure.DocTypeParameterReference");
     /*package*/ static final SConcept DocMethodParameterReference$OR = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L, "jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference");
-    /*package*/ static final SConcept BaseBlockDocTag$jo = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL, "jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag");
+    /*package*/ static final SConcept ValueInlineDocTagTE$LX = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de80a39L, "jetbrains.mps.baseLanguage.javadoc.structure.ValueInlineDocTagTE");
+    /*package*/ static final SConcept BaseVariableDocReference$L8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4d316b5973d644c2L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseVariableDocReference");
+    /*package*/ static final SConcept LiteralInlineDocTagTE$ZL = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cfb80405L, "jetbrains.mps.baseLanguage.javadoc.structure.LiteralInlineDocTagTE");
+    /*package*/ static final SConcept CodeInlineDocTagTE$LL = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de82b71L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE");
+    /*package*/ static final SConcept LinkInlineDocTagTE$NH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE");
     /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
     /*package*/ static final SConcept MultiLineComment$_e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment");
   }
@@ -579,6 +673,10 @@ public class JavaParser {
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink parameter$eWDw = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, 0x5ed0d79d7dbe86ebL, "parameter");
     /*package*/ static final SReferenceLink param$eUNL = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d7L, 0x5ed0d79d7dbe86dcL, "param");
+    /*package*/ static final SContainmentLink variableReference$voEd = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de80a39L, 0x4693b55d3de80a3aL, "variableReference");
+    /*package*/ static final SContainmentLink commentBody$_6eD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cf949a05L, 0x60be0671cf949f82L, "commentBody");
+    /*package*/ static final SContainmentLink reference$Bpyd = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, 0x4693b55d3de862c3L, "reference");
+    /*package*/ static final SContainmentLink tag$axJH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, 0x4693b55d3de762d1L, "tag");
     /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
     /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
     /*package*/ static final SContainmentLink entries$neZo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
