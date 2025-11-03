@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.EditableModelDescriptor;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
@@ -21,13 +22,14 @@ import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import java.util.function.BiConsumer;
 
 /**
  * Merge model has to be EditableSModel for now (there's otherwise dubious use of isChanged status),
  * however, rest of the EditableSModel API is superfluous for the merge model.
  */
 @GeneratedClass(nodeId = "1549936565245931290", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
-public final class MergeTemporaryModel extends EditableModelDescriptor implements PersistenceVersionAware, EditableSModel, GeneratableSModel {
+public final class MergeTemporaryModel extends EditableModelDescriptor implements PersistenceVersionAware, EditableSModel, ModelWithAttributes, GeneratableSModel {
   private final boolean myReadOnly;
 
   public MergeTemporaryModel(SModelReference modelRef, boolean readonly) {
@@ -127,5 +129,25 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
       return Boolean.parseBoolean(((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(GeneratableSModel.DO_NOT_GENERATE));
     }
     return false;
+  }
+  @Override
+  public void setAttribute(@NotNull String key, @Nullable String value) {
+    if (getModelData() instanceof DefaultSModel) {
+      ((DefaultSModel) getModelData()).getSModelHeader().setOptionalProperty(key, value);
+    }
+  }
+  @Nullable
+  @Override
+  public String getAttribute(@NotNull String key) {
+    if (getModelData() instanceof DefaultSModel) {
+      return ((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(key);
+    }
+    return null;
+  }
+  @Override
+  public void forEachAttribute(@NotNull BiConsumer<String, String> action) {
+    if (getModelData() instanceof DefaultSModel) {
+      ((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperties().forEach(action);
+    }
   }
 }
