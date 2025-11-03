@@ -16,6 +16,9 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
         <reference id="6054523464627965081" name="concept" index="trN6q" />
       </concept>
@@ -789,6 +792,20 @@
     <ref role="1TJDcQ" node="4qjHlOXTVRD" resolve="BaseInlineDocTagTE" />
     <node concept="PrWs8" id="62Y1B7fI0tS" role="PzmwI">
       <ref role="PrY4T" node="62Y1B7f_9C5" resolve="IHoldSingleCommentLine" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2$fX1z_mC3a">
+    <property role="EcuMT" value="2958851867970011338" />
+    <property role="3GE5qa" value="reference" />
+    <property role="TrG5h" value="ImportedDocReference" />
+    <ref role="1TJDcQ" node="1V5cIK_b9CA" resolve="BaseDocReference" />
+    <node concept="1TJgyi" id="2$fX1z_mCfY" role="1TKVEl">
+      <property role="IQ2nx" value="2958851867970012158" />
+      <property role="TrG5h" value="refText" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="t5JxF" id="6Z_3t234vOo" role="lGtFl">
+      <property role="t5JxN" value="A fallback reference when parsing javadoc tags that cannot be decided what the should refer to" />
     </node>
   </node>
 </model>

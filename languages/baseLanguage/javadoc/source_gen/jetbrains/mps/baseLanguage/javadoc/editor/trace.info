@@ -26,7 +26,7 @@
       <unit at="25,0,69,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocMethodParameterReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,179,0" name="jetbrains.mps.baseLanguage.javadoc.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,181,0" name="jetbrains.mps.baseLanguage.javadoc.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PresentationProviders.java">
       <unit at="20,0,23,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$PROPS" />
@@ -543,8 +543,8 @@
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/1741258697587190277">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587190277" at="130,101,131,108" concept="9" />
-      <scope id="1741258697587190277" at="130,101,131,108" />
+      <node id="1741258697587190277" at="132,101,133,108" concept="9" />
+      <scope id="1741258697587190277" at="132,101,133,108" />
     </file>
     <file name="TextCommentLinePart_ApplySideTransforms.java">
       <node id="1741258697587190277" at="27,52,28,361" concept="14" />
@@ -3759,6 +3759,77 @@
       <unit id="289993964865038871" at="31,15,103,5" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_ActionMap$1" />
       <unit id="289993964866747619" at="106,15,244,5" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_ActionMap$2" />
       <unit id="289993964865038870" at="28,0,315,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_ActionMap" />
+    </file>
+  </root>
+  <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/2958851867970017845">
+    <file name="ImportedDocReference_Editor.java">
+      <node id="2958851867970017845" at="11,79,12,86" concept="9" />
+      <node id="2958851867970017845" at="11,0,14,0" concept="7" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="2958851867970017845" at="11,79,12,86" />
+      <scope id="2958851867970017845" at="11,0,14,0">
+        <var name="editorContext" id="2958851867970017845" />
+        <var name="node" id="2958851867970017845" />
+      </scope>
+      <unit id="2958851867970017845" at="10,0,15,0" name="jetbrains.mps.baseLanguage.javadoc.editor.ImportedDocReference_Editor" />
+    </file>
+    <file name="ImportedDocReference_EditorBuilder_a.java">
+      <node id="2958851867970017845" at="32,100,33,19" concept="14" />
+      <node id="2958851867970017845" at="33,19,34,18" concept="2" />
+      <node id="2958851867970017845" at="39,26,40,18" concept="9" />
+      <node id="2958851867970017845" at="43,39,44,30" concept="9" />
+      <node id="2958851867970017973" at="47,41,48,39" concept="2" />
+      <node id="2958851867970017973" at="49,9,50,52" concept="8" />
+      <node id="2958851867970017973" at="50,52,51,76" concept="2" />
+      <node id="2958851867970017973" at="51,76,52,149" concept="8" />
+      <node id="2958851867970017973" at="52,149,53,48" concept="2" />
+      <node id="2958851867970017973" at="53,48,54,47" concept="2" />
+      <node id="2958851867970017973" at="54,47,55,30" concept="2" />
+      <node id="2958851867970017973" at="55,30,56,33" concept="2" />
+      <node id="2958851867970017973" at="56,33,57,36" concept="8" />
+      <node id="2958851867970032616" at="57,36,58,49" concept="2" />
+      <node id="2958851867970017973" at="58,49,59,42" concept="2" />
+      <node id="2958851867970017973" at="59,42,60,86" concept="2" />
+      <node id="2958851867970017973" at="60,86,61,33" concept="2" />
+      <node id="2958851867970017973" at="61,33,62,155" concept="8" />
+      <node id="2958851867970017973" at="62,155,63,208" concept="8" />
+      <node id="2958851867970017973" at="64,74,65,89" concept="8" />
+      <node id="2958851867970017973" at="65,89,66,145" concept="9" />
+      <node id="2958851867970017973" at="67,12,68,24" concept="9" />
+      <node id="2958851867970017973" at="69,15,70,40" concept="2" />
+      <node id="2958851867970017845" at="75,0,76,0" concept="12" trace="refText$Rv7B" />
+      <node id="2958851867970017845" at="79,0,80,0" concept="12" trace="PropertyAttribute$Gb" />
+      <node id="2958851867970017845" at="29,0,31,0" concept="3" trace="myNode" />
+      <node id="2958851867970017845" at="43,0,46,0" concept="7" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2958851867970017845" at="32,0,36,0" concept="1" trace="ImportedDocReference_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2958851867970017845" at="37,0,42,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2958851867970017973" at="63,208,68,24" concept="6" />
+      <node id="2958851867970017973" at="48,39,71,5" concept="15" />
+      <node id="2958851867970017973" at="47,0,73,0" concept="7" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="2958851867970017845" at="39,26,40,18" />
+      <scope id="2958851867970017845" at="43,39,44,30" />
+      <scope id="2958851867970017973" at="69,15,70,40" />
+      <scope id="2958851867970017845" at="32,100,34,18" />
+      <scope id="2958851867970017973" at="64,74,66,145">
+        <var name="manager" id="2958851867970017973" />
+      </scope>
+      <scope id="2958851867970017845" at="43,0,46,0" />
+      <scope id="2958851867970017845" at="32,0,36,0">
+        <var name="context" id="2958851867970017845" />
+        <var name="node" id="2958851867970017845" />
+      </scope>
+      <scope id="2958851867970017845" at="37,0,42,0" />
+      <scope id="2958851867970017973" at="49,9,68,24">
+        <var name="currentPropertyAttributes" id="2958851867970017973" />
+        <var name="editorCell" id="2958851867970017973" />
+        <var name="property" id="2958851867970017973" />
+        <var name="propertyAttributes" id="2958851867970017973" />
+        <var name="style" id="2958851867970017973" />
+      </scope>
+      <scope id="2958851867970017973" at="47,41,71,5" />
+      <scope id="2958851867970017973" at="47,0,73,0" />
+      <unit id="2958851867970017845" at="74,0,77,0" name="jetbrains.mps.baseLanguage.javadoc.editor.ImportedDocReference_EditorBuilder_a$PROPS" />
+      <unit id="2958851867970017845" at="78,0,81,0" name="jetbrains.mps.baseLanguage.javadoc.editor.ImportedDocReference_EditorBuilder_a$CONCEPTS" />
+      <unit id="2958851867970017845" at="28,0,82,0" name="jetbrains.mps.baseLanguage.javadoc.editor.ImportedDocReference_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/325007218873813974">

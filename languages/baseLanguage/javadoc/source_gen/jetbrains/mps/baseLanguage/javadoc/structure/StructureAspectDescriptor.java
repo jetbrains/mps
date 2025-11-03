@@ -40,6 +40,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptHTMLElementTextElement = createDescriptorForHTMLElementTextElement();
   /*package*/ final ConceptDescriptor myConceptIHoldCommentLines = createDescriptorForIHoldCommentLines();
   /*package*/ final ConceptDescriptor myConceptIHoldSingleCommentLine = createDescriptorForIHoldSingleCommentLine();
+  /*package*/ final ConceptDescriptor myConceptImportedDocReference = createDescriptorForImportedDocReference();
   /*package*/ final ConceptDescriptor myConceptInheritDocInlineDocTag = createDescriptorForInheritDocInlineDocTag();
   /*package*/ final ConceptDescriptor myConceptInheritDocInlineDocTagTE = createDescriptorForInheritDocInlineDocTagTE();
   /*package*/ final ConceptDescriptor myConceptInlineTagCommentLinePart = createDescriptorForInlineTagCommentLinePart();
@@ -77,7 +78,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAuthorBlockDocTag, myConceptBaseBlockDocTag, myConceptBaseBlockDocTagWithText, myConceptBaseDocComment, myConceptBaseDocReference, myConceptBaseInlineDocTag, myConceptBaseInlineDocTagTE, myConceptBaseParameterReference, myConceptBaseVariableDocReference, myConceptClassifierDocComment, myConceptClassifierDocReference, myConceptCodeInlineDocTag, myConceptCodeInlineDocTagTE, myConceptCodeSnippet, myConceptCodeSnippetTextElement, myConceptCommentLine, myConceptCommentLinePart, myConceptDeprecatedBlockDocTag, myConceptDocMethodParameterReference, myConceptDocTypeParameterReference, myConceptEmptyBlockDocTag, myConceptFieldDocComment, myConceptFieldDocReference, myConceptHTMLElement, myConceptHTMLElementTextElement, myConceptIHoldCommentLines, myConceptIHoldSingleCommentLine, myConceptInheritDocInlineDocTag, myConceptInheritDocInlineDocTagTE, myConceptInlineTagCommentLinePart, myConceptInlineTagCommentTextElement, myConceptLinkInlineDocTag, myConceptLinkInlineDocTagTE, myConceptLiteralInlineDocTagTE, myConceptMethodDocComment, myConceptMethodDocReference, myConceptParameterBlockDocTag, myConceptReturnBlockDocTag, myConceptSeeBlockDocTag, myConceptSinceBlockDocTag, myConceptStaticFieldDocReference, myConceptTextCommentLinePart, myConceptThrowsBlockDocTag, myConceptValueInlineDocTag, myConceptValueInlineDocTagTE, myConceptVersionBlockDocTag);
+    return Arrays.asList(myConceptAuthorBlockDocTag, myConceptBaseBlockDocTag, myConceptBaseBlockDocTagWithText, myConceptBaseDocComment, myConceptBaseDocReference, myConceptBaseInlineDocTag, myConceptBaseInlineDocTagTE, myConceptBaseParameterReference, myConceptBaseVariableDocReference, myConceptClassifierDocComment, myConceptClassifierDocReference, myConceptCodeInlineDocTag, myConceptCodeInlineDocTagTE, myConceptCodeSnippet, myConceptCodeSnippetTextElement, myConceptCommentLine, myConceptCommentLinePart, myConceptDeprecatedBlockDocTag, myConceptDocMethodParameterReference, myConceptDocTypeParameterReference, myConceptEmptyBlockDocTag, myConceptFieldDocComment, myConceptFieldDocReference, myConceptHTMLElement, myConceptHTMLElementTextElement, myConceptIHoldCommentLines, myConceptIHoldSingleCommentLine, myConceptImportedDocReference, myConceptInheritDocInlineDocTag, myConceptInheritDocInlineDocTagTE, myConceptInlineTagCommentLinePart, myConceptInlineTagCommentTextElement, myConceptLinkInlineDocTag, myConceptLinkInlineDocTagTE, myConceptLiteralInlineDocTagTE, myConceptMethodDocComment, myConceptMethodDocReference, myConceptParameterBlockDocTag, myConceptReturnBlockDocTag, myConceptSeeBlockDocTag, myConceptSinceBlockDocTag, myConceptStaticFieldDocReference, myConceptTextCommentLinePart, myConceptThrowsBlockDocTag, myConceptValueInlineDocTag, myConceptValueInlineDocTagTE, myConceptVersionBlockDocTag);
   }
 
   @Override
@@ -138,6 +139,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIHoldCommentLines;
       case LanguageConceptSwitch.IHoldSingleCommentLine:
         return myConceptIHoldSingleCommentLine;
+      case LanguageConceptSwitch.ImportedDocReference:
+        return myConceptImportedDocReference;
       case LanguageConceptSwitch.InheritDocInlineDocTag:
         return myConceptInheritDocInlineDocTag;
       case LanguageConceptSwitch.InheritDocInlineDocTagTE:
@@ -450,6 +453,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/6971016359099800069");
     b.version(3);
     b.aggregate("commentBody", 0x60be0671cf949f82L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(false).origin("6971016359099801474").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForImportedDocReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.javadoc", "ImportedDocReference", 0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x290ff418e55a80caL);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.baseLanguage.javadoc.structure.BaseDocReference
+    b.super_(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a26L);
+    b.origin("r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)/2958851867970011338");
+    b.version(3);
+    b.property("refText", 0x290ff418e55a83feL).type(PrimitiveTypeId.STRING).origin("2958851867970012158").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInheritDocInlineDocTag() {

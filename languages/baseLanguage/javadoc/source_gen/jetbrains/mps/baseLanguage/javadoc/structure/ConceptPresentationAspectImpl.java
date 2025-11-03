@@ -36,6 +36,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_HTMLElementTextElement;
   private ConceptPresentation props_IHoldCommentLines;
   private ConceptPresentation props_IHoldSingleCommentLine;
+  private ConceptPresentation props_ImportedDocReference;
   private ConceptPresentation props_InheritDocInlineDocTag;
   private ConceptPresentation props_InheritDocInlineDocTagTE;
   private ConceptPresentation props_InlineTagCommentLinePart;
@@ -258,6 +259,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IHoldSingleCommentLine = cpb.create();
         }
         return props_IHoldSingleCommentLine;
+      case LanguageConceptSwitch.ImportedDocReference:
+        if (props_ImportedDocReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ImportedDocReference");
+          props_ImportedDocReference = cpb.create();
+        }
+        return props_ImportedDocReference;
       case LanguageConceptSwitch.InheritDocInlineDocTag:
         if (props_InheritDocInlineDocTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

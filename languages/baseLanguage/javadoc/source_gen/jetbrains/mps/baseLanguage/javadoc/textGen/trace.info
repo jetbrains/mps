@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TextGenAspectDescriptor.java">
-      <unit at="12,0,95,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.TextGenAspectDescriptor" />
+      <unit at="12,0,97,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.TextGenAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/2099616960330110596">
@@ -55,6 +55,26 @@
     <file name="TextGenAspectDescriptor.java">
       <node id="2099616960330110596" at="48,45,49,41" concept="7" />
       <scope id="2099616960330110596" at="48,45,49,41" />
+    </file>
+  </root>
+  <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/2958851867970032680">
+    <file name="ImportedDocReference_TextGen.java">
+      <node id="2958851867970032680" at="14,54,15,55" concept="6" />
+      <node id="2958851867970038934" at="15,55,16,89" concept="1" />
+      <node id="2958851867970032680" at="20,0,21,0" concept="10" trace="refText$Rv7B" />
+      <node id="2958851867970032680" at="13,0,18,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="2958851867970032680" at="14,54,16,89">
+        <var name="tgs" id="2958851867970032680" />
+      </scope>
+      <scope id="2958851867970032680" at="13,0,18,0">
+        <var name="ctx" id="2958851867970032680" />
+      </scope>
+      <unit id="2958851867970032680" at="19,0,22,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.ImportedDocReference_TextGen$PROPS" />
+      <unit id="2958851867970032680" at="12,0,23,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.ImportedDocReference_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="2958851867970032680" at="52,54,53,50" concept="7" />
+      <scope id="2958851867970032680" at="52,54,53,50" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/3249499558395742069">
@@ -140,14 +160,14 @@
       <unit id="4021391592914129117" at="16,0,59,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.MethodDocComment_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592914129117" at="66,50,67,46" concept="7" />
-      <scope id="4021391592914129117" at="66,50,67,46" />
+      <node id="4021391592914129117" at="68,50,69,46" concept="7" />
+      <scope id="4021391592914129117" at="68,50,69,46" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592914689930">
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592914689930" at="88,52,89,48" concept="7" />
-      <scope id="4021391592914689930" at="88,52,89,48" />
+      <node id="4021391592914689930" at="90,52,91,48" concept="7" />
+      <scope id="4021391592914689930" at="90,52,91,48" />
     </file>
     <file name="VersionBlockDocTag_TextGen.java">
       <node id="4021391592914689930" at="17,54,18,55" concept="6" />
@@ -230,8 +250,8 @@
       <unit id="4021391592914931248" at="15,0,37,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.SinceBlockDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592914931248" at="76,50,77,46" concept="7" />
-      <scope id="4021391592914931248" at="76,50,77,46" />
+      <node id="4021391592914931248" at="78,50,79,46" concept="7" />
+      <scope id="4021391592914931248" at="78,50,79,46" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592914931259">
@@ -263,8 +283,8 @@
       <unit id="4021391592914931259" at="15,0,40,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.SeeBlockDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592914931259" at="74,48,75,44" concept="7" />
-      <scope id="4021391592914931259" at="74,48,75,44" />
+      <node id="4021391592914931259" at="76,48,77,44" concept="7" />
+      <scope id="4021391592914931259" at="76,48,77,44" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592914931272">
@@ -298,14 +318,14 @@
       <unit id="4021391592914931272" at="16,0,43,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.ParameterBlockDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592914931272" at="70,54,71,50" concept="7" />
-      <scope id="4021391592914931272" at="70,54,71,50" />
+      <node id="4021391592914931272" at="72,54,73,50" concept="7" />
+      <scope id="4021391592914931272" at="72,54,73,50" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592915003850">
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592915003850" at="82,51,83,47" concept="7" />
-      <scope id="4021391592915003850" at="82,51,83,47" />
+      <node id="4021391592915003850" at="84,51,85,47" concept="7" />
+      <scope id="4021391592915003850" at="84,51,85,47" />
     </file>
     <file name="ThrowsBlockDocTag_TextGen.java">
       <node id="4021391592915003850" at="20,54,21,55" concept="6" />
@@ -376,8 +396,8 @@
       <unit id="4021391592915417821" at="20,0,52,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.MethodDocReference_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592915417821" at="68,52,69,48" concept="7" />
-      <scope id="4021391592915417821" at="68,52,69,48" />
+      <node id="4021391592915417821" at="70,52,71,48" concept="7" />
+      <scope id="4021391592915417821" at="70,52,71,48" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592915737408">
@@ -448,8 +468,8 @@
       <unit id="4021391592915878383" at="17,0,38,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.StaticFieldDocReference_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592915878383" at="78,57,79,53" concept="7" />
-      <scope id="4021391592915878383" at="78,57,79,53" />
+      <node id="4021391592915878383" at="80,57,81,53" concept="7" />
+      <scope id="4021391592915878383" at="80,57,81,53" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592916003644">
@@ -757,8 +777,8 @@
       <unit id="4021391592916758726" at="15,0,37,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.ReturnBlockDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592916758726" at="72,51,73,47" concept="7" />
-      <scope id="4021391592916758726" at="72,51,73,47" />
+      <node id="4021391592916758726" at="74,51,75,47" concept="7" />
+      <scope id="4021391592916758726" at="74,51,75,47" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592916798918">
@@ -777,8 +797,8 @@
       <unit id="4021391592916798918" at="12,0,23,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.TextCommentLinePart_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592916798918" at="80,53,81,49" concept="7" />
-      <scope id="4021391592916798918" at="80,53,81,49" />
+      <node id="4021391592916798918" at="82,53,83,49" concept="7" />
+      <scope id="4021391592916798918" at="82,53,83,49" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592916798988">
@@ -799,8 +819,8 @@
       <unit id="4021391592916798988" at="12,0,25,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.InlineTagCommentLinePart_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592916798988" at="56,58,57,54" concept="7" />
-      <scope id="4021391592916798988" at="56,58,57,54" />
+      <node id="4021391592916798988" at="58,58,59,54" concept="7" />
+      <scope id="4021391592916798988" at="58,58,59,54" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592916799006">
@@ -843,8 +863,8 @@
       <unit id="4021391592916879658" at="9,0,16,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.InheritDocInlineDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592916879658" at="52,56,53,52" concept="7" />
-      <scope id="4021391592916879658" at="52,56,53,52" />
+      <node id="4021391592916879658" at="54,56,55,52" concept="7" />
+      <scope id="4021391592916879658" at="54,56,55,52" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592916879718">
@@ -874,14 +894,14 @@
       <unit id="4021391592916879718" at="14,0,33,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.LinkInlineDocTag_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592916879718" at="60,50,61,46" concept="7" />
-      <scope id="4021391592916879718" at="60,50,61,46" />
+      <node id="4021391592916879718" at="62,50,63,46" concept="7" />
+      <scope id="4021391592916879718" at="62,50,63,46" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/4021391592916960592">
     <file name="TextGenAspectDescriptor.java">
-      <node id="4021391592916960592" at="84,51,85,47" concept="7" />
-      <scope id="4021391592916960592" at="84,51,85,47" />
+      <node id="4021391592916960592" at="86,51,87,47" concept="7" />
+      <scope id="4021391592916960592" at="86,51,87,47" />
     </file>
     <file name="ValueInlineDocTag_TextGen.java">
       <node id="4021391592916960592" at="14,54,15,55" concept="6" />
@@ -1160,14 +1180,14 @@
       <unit id="5085607816306593889" at="12,0,25,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.InlineTagCommentTextElement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="5085607816306593889" at="58,61,59,57" concept="7" />
-      <scope id="5085607816306593889" at="58,61,59,57" />
+      <node id="5085607816306593889" at="60,61,61,57" concept="7" />
+      <scope id="5085607816306593889" at="60,61,61,57" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/5085607816306629787">
     <file name="TextGenAspectDescriptor.java">
-      <node id="5085607816306629787" at="86,53,87,49" concept="7" />
-      <scope id="5085607816306629787" at="86,53,87,49" />
+      <node id="5085607816306629787" at="88,53,89,49" concept="7" />
+      <scope id="5085607816306629787" at="88,53,89,49" />
     </file>
     <file name="ValueInlineDocTagTE_TextGen.java">
       <node id="5085607816306629787" at="14,54,15,55" concept="6" />
@@ -1202,8 +1222,8 @@
       <unit id="5085607816306633528" at="9,0,16,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.InheritDocInlineDocTagTE_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="5085607816306633528" at="54,58,55,54" concept="7" />
-      <scope id="5085607816306633528" at="54,58,55,54" />
+      <node id="5085607816306633528" at="56,58,57,54" concept="7" />
+      <scope id="5085607816306633528" at="56,58,57,54" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/5085607816306644559">
@@ -1279,8 +1299,8 @@
       <unit id="5085607816306664235" at="13,0,36,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.LinkInlineDocTagTE_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="5085607816306664235" at="62,52,63,48" concept="7" />
-      <scope id="5085607816306664235" at="62,52,63,48" />
+      <node id="5085607816306664235" at="64,52,65,48" concept="7" />
+      <scope id="5085607816306664235" at="64,52,65,48" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/6971016359102146638">
@@ -1317,8 +1337,8 @@
       <unit id="6971016359102146638" at="13,0,35,0" name="jetbrains.mps.baseLanguage.javadoc.textGen.LiteralInlineDocTagTE_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6971016359102146638" at="64,55,65,51" concept="7" />
-      <scope id="6971016359102146638" at="64,55,65,51" />
+      <node id="6971016359102146638" at="66,55,67,51" concept="7" />
+      <scope id="6971016359102146638" at="66,55,67,51" />
     </file>
   </root>
   <root nodeRef="r:84fe4b11-ad68-47d5-a834-0274798d73f7(jetbrains.mps.baseLanguage.javadoc.textGen)/7983358747957286919">
