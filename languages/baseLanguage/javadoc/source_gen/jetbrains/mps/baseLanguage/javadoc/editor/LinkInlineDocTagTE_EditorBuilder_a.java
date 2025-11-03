@@ -188,7 +188,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       }
     }
     protected String getNoTargetText() {
-      return "<no commentBody>";
+      return "";
     }
   }
 
