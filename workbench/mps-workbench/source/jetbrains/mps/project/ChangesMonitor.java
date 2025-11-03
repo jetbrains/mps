@@ -22,6 +22,7 @@ import jetbrains.mps.generator.ModelGenerationStatusListener;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.project.MissionControl.Impl;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.validation.ModelValidator;
 import jetbrains.mps.project.validation.ValidationUtil;
@@ -51,6 +52,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
@@ -186,10 +188,13 @@ import java.util.function.Predicate;
       return MissionControlRefreshRequest.NONE;
     }
 
+    long timeSlot = TimeUnit.MILLISECONDS.toNanos(Impl.DEFAULT_DELAY / 3);
+    long timeToBreak = System.nanoTime() + timeSlot;
+
     RefreshRequestBuilder requestBuilder = null;
     for(SObject next; (next = myUpdatesQueue.poll()) != null;) {
       requestBuilder = buildRefreshRequest(next, requestBuilder);
-      if (progressIndicator.isCanceled()) {
+      if (progressIndicator.isCanceled() || System.nanoTime() > timeToBreak ) {
         break;
       }
     }

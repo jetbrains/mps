@@ -155,7 +155,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     EdtExecutorService.getScheduledExecutorInstance()
                       .schedule(() -> {
                         if (!callback.isDone()) {
-                          ProgressManager.getInstance().run(new Backgroundable(getProject(), "Busy", false) {
+                          Backgroundable selectTask = new Backgroundable(getProject(), "Busy", false) {
                             @Override
                             public void run(@NotNull ProgressIndicator indicator) {
                               indicator.setIndeterminate(true);
@@ -168,9 +168,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
                                 }
                               }
                             }
-                          });
+                          };
+                          selectTask.queue();
                         }
-                      }, 1100, TimeUnit.MILLISECONDS );
+                      }, 2000, TimeUnit.MILLISECONDS );
 
     return callback;
   }
