@@ -26,11 +26,11 @@ import java.util.regex.Matcher;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.eclipse.jdt.internal.core.util.RecordedParsingInformation;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.jetbrains.annotations.Nullable;
 import java.util.Set;
@@ -349,30 +349,44 @@ public class JavaParser {
 
   private SNode resolveReferenceForTag(String refString, boolean staticFieldReference) {
     if ((refString != null && refString.length() > 0)) {
-      ResolveInfo ri = ResolveInfo.of(refString);
       if (staticFieldReference) {
+        ResolveInfo ri = ResolveInfo.of(extractPartAfterLastHash(refString));
         SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5a38b07c2d6d7c7bL, "jetbrains.mps.baseLanguage.javadoc.structure.StaticFieldDocReference"));
         ref.setReference(LINKS.declaration$Ptq3, ri);
         return ref;
       }
 
-      if (refString.contains("#")) {
-        if (refString.contains("(")) {
-          SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference"));
-          ref.setReference(LINKS.methodDeclaration$z_UH, ri);
-          return ref;
-        } else {
-          SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a28L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocReference"));
-          ref.setReference(LINKS.declaration$Ptq3, ri);
-          return ref;
-        }
-      } else {
-        SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference"));
-        ref.setReference(LINKS.classifier$AhRH, ri);
+      if (refString.contains("(")) {
+        String actualRefString = extractPartAfterLastHash(refString);
+        int indexOf = actualRefString.indexOf("(");
+        actualRefString = (indexOf != -1 ? actualRefString.substring(0, indexOf) : actualRefString);
+        ResolveInfo ri = ResolveInfo.of(actualRefString);
+        SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference"));
+        ref.setReference(LINKS.methodDeclaration$z_UH, ri);
         return ref;
+      } else {
+        if (!(refString.contains("#"))) {
+          // Heuristics to find class name or a nested class name relying on capital letters starting class names, lower-case letters to start package names
+          Pattern pattern = Pattern.compile("(\\.[A-Z].*|^[A-Z].*)");
+          Matcher matcher = pattern.matcher(refString);
+          if (matcher.find()) {
+            String actualClassName = matcher.group(0);
+            ResolveInfo ri = ResolveInfo.of((actualClassName.startsWith(".") && actualClassName.length() > 1 ? actualClassName.substring(1) : actualClassName));
+            SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference"));
+            ref.setReference(LINKS.classifier$AhRH, ri);
+            return ref;
+          }
+        }
+        SNode docRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x290ff418e55a80caL, "jetbrains.mps.baseLanguage.javadoc.structure.ImportedDocReference"));
+        SPropertyOperations.assign(docRef, PROPS.refText$Rv7B, refString);
+        return docRef;
       }
     }
     return null;
+  }
+  private String extractPartAfterLastHash(String refString) {
+    int lastIndexOf = refString.lastIndexOf("#");
+    return (lastIndexOf != -1 && refString.length() > lastIndexOf + 1 ? refString.substring(lastIndexOf + 1) : refString);
   }
 
   public void attachComments(char[] source, ASTConverter converter, RecordedParsingInformation parseInfo) {
@@ -675,6 +689,7 @@ public class JavaParser {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty refText$Rv7B = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x290ff418e55a80caL, 0x290ff418e55a83feL, "refText");
     /*package*/ static final SProperty onDemand$Gmdi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
     /*package*/ static final SProperty static$JAuQ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static");
     /*package*/ static final SProperty tokens$J1uk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
