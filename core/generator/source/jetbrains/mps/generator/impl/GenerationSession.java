@@ -198,11 +198,13 @@ class GenerationSession {
       majorBranch.transitionTrace = transitionTrace;
       forkQueue.add(majorBranch);
       myGenerationPlan.configure(currInputModel);
+      majorBranch.xxxProvisionalPostConfigure = myGenerationPlan::configure;
       while (!forkQueue.isEmpty()) {
         PlanBranchInfo branchInfo = forkQueue.removeFirst();
         SModel output = processGenPlanBranch(branchInfo, forkQueue, monitor);
         // for *each* completed GP branch, keep model as it's the outcome we are going to process further
         if (output != null) {
+          branchInfo.xxxProvisionalPostConfigure.accept(output);
           allOutputModels.add(output);
           mySessionContext.getModule().recordOutputModel(output.getReference());
         }
@@ -383,7 +385,10 @@ class GenerationSession {
         bi.inputModel = cloneTransientModel(currInputModel, bi.serial);
         changeModelReference(bi.inputModel, createTransientModelReference(majorStep, minorStep + 100));
         // FIXME what if there are 2 subsequent Fork steps - each get same stereotype (major_minor)
+        //
         forkStep.configure(bi.inputModel);
+        // FIXME as long as cloned transient models don't keep model attributes, re-instate them once again once branch is closed
+        bi.xxxProvisionalPostConfigure = forkStep::configure;
         bi.branch = forkStep.getBranch();
         bi.majorStepAtFork = majorStep;
         bi.minorStepAtFork = minorStep + 100 + 1; // XXX +1 is sort of/mild hack, we'd like to see branch input model first, with its output next. With

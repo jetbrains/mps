@@ -19,6 +19,7 @@ import jetbrains.mps.generator.ModelGenerationPlan.Step;
 import org.jetbrains.mps.openapi.model.SModel;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Sequence of plan steps to transform an input model and to produce an output model
@@ -30,6 +31,7 @@ import java.util.List;
   int majorStepAtFork;
   int minorStepAtFork;
   List<Step> branch;
+  Consumer<SModel> xxxProvisionalPostConfigure;
 
   // just an identifier of a branch for later reference (e.g. distinguish models of different branches in UI)
   final int serial;
