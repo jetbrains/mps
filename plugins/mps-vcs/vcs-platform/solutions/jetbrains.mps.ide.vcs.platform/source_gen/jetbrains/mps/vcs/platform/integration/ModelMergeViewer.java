@@ -51,10 +51,10 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
 
   private MergeModelsPanel myPanel;
 
-  public ModelMergeViewer(MergeContext context, TextMergeRequest request, SModel base, SModel mine, SModel repo, boolean fixReferences) {
+  public ModelMergeViewer(MergeContext context, TextMergeRequest request, SModel base, SModel mine, SModel repo, boolean doNotShowMetadata, boolean fixReferences) {
     myMergeContext = context;
     myMergeRequest = request;
-    myPanel = new MergeModelsPanel(context.getProject(), base, mine, repo, request, fixReferences);
+    myPanel = new MergeModelsPanel(context.getProject(), base, mine, repo, request, doNotShowMetadata, fixReferences);
   }
 
   @Nullable
@@ -88,7 +88,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
             mi.copyEmployedDevKitsFrom(repoModel);
           });
         }
-        final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, ms.isPerRootPersistence());
+        final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, ms.isPerRootPersistenceRoot(), ms.isPerRootPersistence());
 
         ISaveMergedModel saver = new ISaveMergedModel() {
           public boolean save(MergeModelsPanel parent, final SModel resultModel) {

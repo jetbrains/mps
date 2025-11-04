@@ -61,6 +61,7 @@ import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 @GeneratedClass(nodeId = "2657001694103488033", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeModelsPanel extends JPanel {
@@ -95,7 +96,7 @@ public class MergeModelsPanel extends JPanel {
   private List<DiffEditorTitleCustomizer> myTitleCustomizers;
 
 
-  public MergeModelsPanel(Project project, final SModel baseModel, final SModel mineModel, final SModel repoModel, TextMergeRequest request, final boolean fixReferences) {
+  public MergeModelsPanel(Project project, final SModel baseModel, final SModel mineModel, final SModel repoModel, TextMergeRequest request, boolean doNotShowMetadata, final boolean fixReferences) {
     super(new BorderLayout());
     myProject = project;
     myContentTitles = (List<String>) MergeUtil.notNullizeContentTitles(request.getContentTitles());
@@ -115,7 +116,7 @@ public class MergeModelsPanel extends JPanel {
     myMetadataModels = new ModelLot(repo);
     // create metamodels before renaming the models in order to avoid problems
     // with stereotypes like in MPS-32651 and MPS-33991
-    if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
+    if (!(doNotShowMetadata) && ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
       // XXX is there need for project repo read - we do access models of a merge session, but aren't they come detached?
       myProjectRepository.getModelAccess().runReadAction(() -> {
         BiFunction<SModelReference, SModel, MergeTemporaryModel> mmFactory = (mp, m) -> {
@@ -517,7 +518,7 @@ public class MergeModelsPanel extends JPanel {
     }
     @Override
     protected Iterable<SNodeId> getAffectedRoots() {
-      return myMergeSession.getAffectedRoots();
+      return (myMetadataMergeSession == null ? Sequence.fromIterable(myMergeSession.getAffectedRoots()).where(new NotNullWhereFilter()) : myMergeSession.getAffectedRoots());
     }
     @Override
     protected boolean isMultipleRootNames() {
