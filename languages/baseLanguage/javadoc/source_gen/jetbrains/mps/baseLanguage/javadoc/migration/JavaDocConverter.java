@@ -138,6 +138,7 @@ public class JavaDocConverter {
         List<SNode> newLines = convertCommentLinesToLines(ListSequence.fromList(new ArrayList<SNode>()));
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).clear();
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(newLines));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.text$c2BW));
         return;
       }
     }
@@ -175,6 +176,10 @@ public class JavaDocConverter {
       noneMatched = false;
       text = SPropertyOperations.getString(SNodeOperations.as(tag, CONCEPTS.VersionBlockDocTag$wp), PROPS.text$$fSd);
       SPropertyOperations.assign(SNodeOperations.as(tag, CONCEPTS.VersionBlockDocTag$wp), PROPS.text$$fSd, "");
+    }
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.EmptyBlockDocTag$U4)) {
+      noneMatched = false;
+      return;
     }
     if (noneMatched) {
       throw new IllegalArgumentException("Cannot convert an unknown BaseBlockDocTag " + tag);
@@ -231,6 +236,7 @@ public class JavaDocConverter {
     /*package*/ static final SConcept SinceBlockDocTag$KR = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87ddadL, "jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag");
     /*package*/ static final SConcept ThrowsBlockDocTag$bu = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
     /*package*/ static final SConcept VersionBlockDocTag$wp = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L, "jetbrains.mps.baseLanguage.javadoc.structure.VersionBlockDocTag");
+    /*package*/ static final SConcept EmptyBlockDocTag$U4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L, "jetbrains.mps.baseLanguage.javadoc.structure.EmptyBlockDocTag");
     /*package*/ static final SConcept BaseBlockDocTagWithText$HC = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText");
   }
 

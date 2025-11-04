@@ -264,6 +264,7 @@
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
+      <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
@@ -2886,6 +2887,25 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3clFbF" id="4KShyVFD3tV" role="3cqZAp">
+                    <node concept="2OqwBi" id="4KShyVFD6NO" role="3clFbG">
+                      <node concept="2OqwBi" id="4KShyVFD3tX" role="2Oq$k0">
+                        <node concept="1PxgMI" id="4KShyVFD3tY" role="2Oq$k0">
+                          <property role="1BlNFB" value="true" />
+                          <node concept="chp4Y" id="4KShyVFD3tZ" role="3oSUPX">
+                            <ref role="cht4Q" to="m373:7lVCwDcxZ_$" resolve="DeprecatedBlockDocTag" />
+                          </node>
+                          <node concept="37vLTw" id="4KShyVFD3u0" role="1m5AlR">
+                            <ref role="3cqZAo" node="6P3_ffutOY3" resolve="tag" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="4KShyVFD3u1" role="2OqNvi">
+                          <ref role="3Tt5mk" to="m373:2k6csr8mu4j" resolve="text" />
+                        </node>
+                      </node>
+                      <node concept="3YRAZt" id="4KShyVFD7Dj" role="2OqNvi" />
+                    </node>
+                  </node>
                   <node concept="3cpWs6" id="6P3_ffuwWHy" role="3cqZAp" />
                 </node>
                 <node concept="2OqwBi" id="6P3_ffuwtJF" role="3clFbw">
@@ -3262,6 +3282,14 @@
                   </node>
                 </node>
               </node>
+            </node>
+          </node>
+          <node concept="1_3QMl" id="4KShyVFDnjj" role="1_3QMm">
+            <node concept="3gn64h" id="4KShyVFDnjl" role="3Kbmr1">
+              <ref role="3gnhBz" to="m373:4iGwz$GTsqK" resolve="EmptyBlockDocTag" />
+            </node>
+            <node concept="3clFbS" id="4KShyVFDnjn" role="3Kbo56">
+              <node concept="3cpWs6" id="4KShyVFDoqB" role="3cqZAp" />
             </node>
           </node>
         </node>
