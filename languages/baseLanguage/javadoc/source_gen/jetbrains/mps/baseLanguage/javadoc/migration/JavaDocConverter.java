@@ -90,6 +90,9 @@ public class JavaDocConverter {
         }
         firstOnLine.value = false;
       });
+      if (ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).isEmpty()) {
+        Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, "");
+      }
       return line;
     });
     return Sequence.fromIterable(lines).toList();
@@ -135,7 +138,7 @@ public class JavaDocConverter {
       noneMatched = false;
       SNode oldLine = SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.text$c2BW);
       if ((oldLine != null)) {
-        List<SNode> newLines = convertCommentLinesToLines(ListSequence.fromList(new ArrayList<SNode>()));
+        List<SNode> newLines = convertCommentLinesToLines(ListSequence.fromListAndArray(new ArrayList<SNode>(), oldLine));
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).clear();
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(newLines));
         SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.text$c2BW));
@@ -184,13 +187,10 @@ public class JavaDocConverter {
     if (noneMatched) {
       throw new IllegalArgumentException("Cannot convert an unknown BaseBlockDocTag " + tag);
     }
-    if ((text != null && text.length() > 0)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).clear();
-      SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).addElement(line);
-    }
-
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).clear();
+    SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+    Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).addElement(line);
   }
 
   private static final class LINKS {
@@ -210,6 +210,7 @@ public class JavaDocConverter {
     /*package*/ static final SContainmentLink line$Psfe = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
     /*package*/ static final SContainmentLink tag$FQF = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, 0x60a0f9237ac5e9c8L, "tag");
     /*package*/ static final SContainmentLink tag$axJH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, 0x4693b55d3de762d1L, "tag");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
     /*package*/ static final SContainmentLink line$ymTj = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252a7b73L, 0x2b1cb7939650a121L, "line");
     /*package*/ static final SContainmentLink commentBody$_6eD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cf949a05L, 0x60be0671cf949f82L, "commentBody");
     /*package*/ static final SContainmentLink reference$Bpyd = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, 0x4693b55d3de862c3L, "reference");
