@@ -6,7 +6,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
-import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -14,6 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -59,7 +59,6 @@ public class JavaDocConverter {
     ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).clear();
   }
   public static List<SNode> convertCommentLinesToLines(List<SNode> commentLines) {
-    List<SNode> allLines = ListSequence.fromList(new ArrayList<SNode>());
     Iterable<SNode> lines = ListSequence.fromList(commentLines).select((commentLine) -> {
       final SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
       ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$QuzQ)).visitAll((part) -> {
@@ -89,7 +88,7 @@ public class JavaDocConverter {
       });
       return line;
     });
-    return ListSequence.fromList(allLines).addSequence(Sequence.fromIterable(lines));
+    return Sequence.fromIterable(lines).toList();
   }
   private static SNode convertInlineTag(SNode oldTag) {
     SAbstractConcept cncpt = SNodeOperations.getConcept(oldTag);
