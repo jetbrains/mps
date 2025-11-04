@@ -51,6 +51,7 @@
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
       </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
@@ -71,7 +72,6 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
-      <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="1225271546410" name="jetbrains.mps.baseLanguage.structure.TrimOperation" flags="nn" index="17S1cR" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
@@ -138,6 +138,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -325,6 +326,7 @@
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
       <concept id="1201792049884" name="jetbrains.mps.baseLanguage.collections.structure.TranslateOperation" flags="nn" index="3goQfb" />
       <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
+      <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
@@ -2166,6 +2168,34 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="3clFbJ" id="oo$Cq1YDn0" role="3cqZAp">
+                        <node concept="3clFbS" id="oo$Cq1YDn2" role="3clFbx">
+                          <node concept="3clFbF" id="oo$Cq1YSZt" role="3cqZAp">
+                            <node concept="2OqwBi" id="oo$Cq1YTOn" role="3clFbG">
+                              <node concept="37vLTw" id="oo$Cq1YSZr" role="2Oq$k0">
+                                <ref role="3cqZAo" node="6P3_ffuqbiM" resolve="line" />
+                              </node>
+                              <node concept="2qgKlT" id="oo$Cq1YVy4" role="2OqNvi">
+                                <ref role="37wK5l" to="vdrq:68pBJP34v1v" resolve="parseAndAppendText" />
+                                <node concept="Xl_RD" id="oo$Cq1YWkH" role="37wK5m">
+                                  <property role="Xl_RC" value="" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="oo$Cq1YLEr" role="3clFbw">
+                          <node concept="2OqwBi" id="oo$Cq1YGZ5" role="2Oq$k0">
+                            <node concept="37vLTw" id="oo$Cq1YG8i" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6P3_ffuqbjZ" resolve="commentLine" />
+                            </node>
+                            <node concept="3Tsc0h" id="oo$Cq1YIEt" role="2OqNvi">
+                              <ref role="3TtcxE" to="m373:7LZmMWLAgad" resolve="part" />
+                            </node>
+                          </node>
+                          <node concept="1v1jN8" id="oo$Cq1YRXh" role="2OqNvi" />
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="6P3_ffuqbiR" role="3cqZAp">
                         <node concept="2OqwBi" id="6P3_ffuqbiS" role="3clFbG">
                           <node concept="2OqwBi" id="6P3_ffuqbiT" role="2Oq$k0">
@@ -2241,10 +2271,10 @@
                                             </node>
                                           </node>
                                         </node>
-                                        <node concept="2OqwBi" id="oo$CpZF$d0" role="3clFbw">
-                                          <node concept="17RvpY" id="oo$CpZFCjh" role="2OqNvi" />
-                                          <node concept="37vLTw" id="oo$CpZFGK5" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="oo$CpZFGJY" resolve="value" />
+                                        <node concept="3y3z36" id="oo$Cq1XtvN" role="3clFbw">
+                                          <node concept="10Nm6u" id="oo$Cq1Xuxo" role="3uHU7w" />
+                                          <node concept="37vLTw" id="oo$Cq1XrHS" role="3uHU7B">
+                                            <ref role="3cqZAo" node="4KShyVDPvga" resolve="text" />
                                           </node>
                                         </node>
                                       </node>

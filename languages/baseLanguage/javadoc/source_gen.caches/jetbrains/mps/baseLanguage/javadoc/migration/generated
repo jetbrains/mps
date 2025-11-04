@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9ykd368tvboggjcbmiqcn39ehf8gxtd">
+<product version="3" modelHash="-3h1pdffbp9w6ov584ophkdqgdtyz5ng">
   <files names="JavaDocConverter.java:MigrationDescriptor.java:MoveDocTagsIntoTagsChildCollection.java:Pattern_fgay1s_a0a5.java:UpdateDeprecatedBlockDocTags.java:UpdateJavadocToTextLanguage.java" />
 </product>
 
