@@ -9,6 +9,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
+import jetbrains.mps.project.EditableFilteringScope;
+import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,9 +38,12 @@ public class UpdateJavadocToTextLanguage extends MigrationScriptBase {
   }
   @Override
   public Iterable<Problem> check(SModule m) {
-    Iterable<SModel> models = m.getModels();
-    Iterable<SNode> instances = Sequence.fromIterable(models).ofType(SModel.class).translate((it) -> SModelOperations.nodes(it, CONCEPTS.CommentLine$hJ));
-    return Sequence.fromIterable(instances).select((it) -> new DeprecatedConceptNotMigratedProblem(it));
+    {
+      SearchScope scope_j3qr52_a0f = CommandUtil.createScope(m);
+      final SearchScope scope_j3qr52_a0f_0 = new EditableFilteringScope(scope_j3qr52_a0f);
+      QueryExecutionContext context = () -> scope_j3qr52_a0f_0;
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CommentLine$hJ, false)).select((it) -> new DeprecatedConceptNotMigratedProblem(it));
+    }
   }
   public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"), 2);
