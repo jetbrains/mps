@@ -8,10 +8,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -61,12 +62,14 @@ public class JavaDocConverter {
   public static List<SNode> convertCommentLinesToLines(List<SNode> commentLines) {
     Iterable<SNode> lines = ListSequence.fromList(commentLines).select((commentLine) -> {
       final SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+      final Wrappers._boolean firstOnLine = new Wrappers._boolean(true);
       ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$QuzQ)).visitAll((part) -> {
         SAbstractConcept cncpt = SNodeOperations.getConcept(part);
         boolean noneMatched = true;
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TextCommentLinePart$Eb)) {
           noneMatched = false;
-          Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd));
+          String text = SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd);
+          Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, (firstOnLine.value ? text : ((text == null ? null : text.trim()))));
         }
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.HTMLElement$SD)) {
           noneMatched = false;
@@ -85,6 +88,7 @@ public class JavaDocConverter {
         }
         if (noneMatched) {
         }
+        firstOnLine.value = false;
       });
       return line;
     });
