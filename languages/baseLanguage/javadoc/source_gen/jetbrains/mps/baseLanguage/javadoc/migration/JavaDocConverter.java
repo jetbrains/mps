@@ -125,10 +125,7 @@ public class JavaDocConverter {
       SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE"));
       SLinkOperations.setTarget(tag, LINKS.reference$Bpyd, SLinkOperations.getTarget(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.reference$AFth));
       List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.line$27GN));
-      SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).foldLeft(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line")), (s, it) -> {
-        Line__BehaviorDescriptor.merge_id1YnOZxALrLu.invoke(s, it);
-        return s;
-      }));
+      SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
       return tag;
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ValueInlineDocTag$yw)) {
