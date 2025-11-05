@@ -72,9 +72,13 @@ public class JavaDocConverter {
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TextCommentLinePart$Eb)) {
           noneMatched = false;
           String text = SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd);
-          String value = (firstOnLine.value ? text : ((text == null ? null : text.trim())));
           if (text != null) {
+            String value = (firstOnLine.value ? text : ((text == null ? null : text.trim())));
             Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, value);
+          } else {
+            if ((SNodeOperations.getNextSibling(part) == null)) {
+              Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, "");
+            }
           }
         }
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.HTMLElement$SD)) {
