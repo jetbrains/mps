@@ -96,7 +96,7 @@ public class RefactoringProcessor {
       }
       if (Sequence.fromIterable(MapSequence.fromMap(finalStateMap).values()).contains(null)) {
         if (LOG.isErrorLevel()) {
-          LOG.error("Refactoring was interruped. Final state is null for initial state '" + MapSequence.fromMap(finalStateMap).findFirst((it) -> it.value() == null).key());
+          LOG.error("Refactoring was interrupted. Final state is null for initial state '" + MapSequence.fromMap(finalStateMap).findFirst((it) -> it.value() == null).key());
         }
         return null;
       }

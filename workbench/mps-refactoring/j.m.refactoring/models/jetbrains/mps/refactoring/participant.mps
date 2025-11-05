@@ -5071,7 +5071,7 @@
                           <node concept="3AY5_j" id="2q4uhJjViEE" role="2OqNvi" />
                         </node>
                         <node concept="Xl_RD" id="2q4uhJjUWmj" role="3uHU7B">
-                          <property role="Xl_RC" value="Refactoring was interruped. Final state is null for initial state '" />
+                          <property role="Xl_RC" value="Refactoring was interrupted. Final state is null for initial state '" />
                         </node>
                       </node>
                     </node>
