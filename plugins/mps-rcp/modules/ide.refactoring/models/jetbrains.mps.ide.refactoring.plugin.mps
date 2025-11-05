@@ -135,6 +135,12 @@
         <child id="6938053545825381649" name="titleExpression" index="2BLOvx" />
         <child id="6938053545825381651" name="disposeTabClosure" index="2BLOvz" />
       </concept>
+      <concept id="1512255007353869535" name="jetbrains.mps.lang.plugin.structure.ActionReference" flags="ln" index="2JRCWP">
+        <reference id="1512255007353869536" name="actionDeclaration" index="2JRCWa" />
+      </concept>
+      <concept id="1512255007353869532" name="jetbrains.mps.lang.plugin.structure.NonDumbAwareActions" flags="ng" index="2JRCWQ">
+        <child id="1512255007353869533" name="actions" index="2JRCWR" />
+      </concept>
       <concept id="1205679047295" name="jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration" flags="ig" index="2S4$dB" />
       <concept id="1205681243813" name="jetbrains.mps.lang.plugin.structure.IsApplicableBlock" flags="in" index="2ScWuX" />
       <concept id="6547237850567458268" name="jetbrains.mps.lang.plugin.structure.BaseToolDeclaration" flags="ng" index="2XNcJY">
@@ -6955,6 +6961,30 @@
         <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.Default" resolve="Default" />
         <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
       </node>
+    </node>
+  </node>
+  <node concept="2JRCWQ" id="2CCG0gwalEN">
+    <property role="TrG5h" value="IndexSensitive" />
+    <node concept="2JRCWP" id="2CCG0gwalEO" role="2JRCWR">
+      <ref role="2JRCWa" node="hSPYZl3" resolve="DeleteNode" />
+    </node>
+    <node concept="2JRCWP" id="2CCG0gwalEP" role="2JRCWR">
+      <ref role="2JRCWa" node="6YK8y67o2Yu" resolve="MoveModel" />
+    </node>
+    <node concept="2JRCWP" id="2CCG0gwalEQ" role="2JRCWR">
+      <ref role="2JRCWa" node="I5wdVHTn$t" resolve="MoveNodes" />
+    </node>
+    <node concept="2JRCWP" id="2CCG0gwalER" role="2JRCWR">
+      <ref role="2JRCWa" node="5VIEYrBjMRo" resolve="RenameModel" />
+    </node>
+    <node concept="2JRCWP" id="2CCG0gwalES" role="2JRCWR">
+      <ref role="2JRCWa" node="3fhZBTge84q" resolve="RenameModule" />
+    </node>
+    <node concept="2JRCWP" id="2CCG0gwalET" role="2JRCWR">
+      <ref role="2JRCWa" node="7BBQIYkR45T" resolve="RenameNode" />
+    </node>
+    <node concept="2JRCWP" id="2CCG0gwalEU" role="2JRCWR">
+      <ref role="2JRCWa" node="7BBQIYkR4kU" resolve="SafeDelete" />
     </node>
   </node>
 </model>
