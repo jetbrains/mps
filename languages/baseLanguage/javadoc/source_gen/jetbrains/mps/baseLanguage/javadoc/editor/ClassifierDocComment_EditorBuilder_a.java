@@ -109,7 +109,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     editorCell.setCellId("Constant_q2jz9e_a0a");
     Style style = new StyleImpl();
     new CommentStyleClass(this).apply(style, editorCell);
-    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, _StyleParameter_QueryFunction_q2jz9e_a0a0a());
+    style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     if (nodeCondition_q2jz9e_a0a0()) {
       editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_RECURSIVELY);
@@ -117,9 +117,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     RemoveDocComment.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
-  }
-  private boolean _StyleParameter_QueryFunction_q2jz9e_a0a0a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.body$OAGp)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.commentBody$sIzh)).isNotEmpty();
   }
   private boolean nodeCondition_q2jz9e_a0a0() {
     return SLinkOperations.getChildren(myNode, LINKS.commentBody$sIzh) == null || ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.commentBody$sIzh)).isEmpty();
