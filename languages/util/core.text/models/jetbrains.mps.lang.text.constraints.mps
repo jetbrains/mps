@@ -93,7 +93,7 @@
   </node>
   <node concept="1M2fIO" id="1fIPsahQsER">
     <property role="3GE5qa" value="doc" />
-    <ref role="1M2myG" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
+    <ref role="1M2myG" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
     <node concept="9SQb8" id="1fIPsahQsES" role="9SGkC">
       <node concept="3clFbS" id="1fIPsahQsET" role="2VODD2">
         <node concept="3clFbF" id="1fIPsahQsJI" role="3cqZAp">

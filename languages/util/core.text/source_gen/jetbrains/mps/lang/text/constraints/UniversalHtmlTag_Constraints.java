@@ -18,9 +18,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class MultilineHtmlTag_Constraints extends BaseConstraintsDescriptor {
-  /*package*/ MultilineHtmlTag_Constraints(ConstraintsDescriptorInitContext initContext) {
-    super(CONCEPTS.MultilineHtmlTag$qm, initContext);
+public class UniversalHtmlTag_Constraints extends BaseConstraintsDescriptor {
+  /*package*/ UniversalHtmlTag_Constraints(ConstraintsDescriptorInitContext initContext) {
+    super(CONCEPTS.UniversalHtmlTag$qm, initContext);
     setCanBeAncestor(new ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean>() {
       @NotNull
       public Boolean invoke(@NotNull ConstraintContext_CanBeAncestor context, @Nullable CheckingNodeContext checkingNodeContext) {
@@ -41,7 +41,7 @@ public class MultilineHtmlTag_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeAncestorBreakingPoint = new SNodePointer("r:cbe13337-6410-4c91-b1b0-2837bdd7e4a8(jetbrains.mps.lang.text.constraints)", "1436320362825108152");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MultilineHtmlTag$qm = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag");
+    /*package*/ static final SConcept UniversalHtmlTag$qm = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.UniversalHtmlTag");
     /*package*/ static final SConcept SingleLineHtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
   }
 }

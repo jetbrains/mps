@@ -91,7 +91,7 @@ public class JavaDocConverter {
         }
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.HTMLElement$SD)) {
           noneMatched = false;
-          SNode textElement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag"));
+          SNode textElement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.UniversalHtmlTag"));
           SPropertyOperations.assign(textElement, PROPS.name$feV5, SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), PROPS.name$Ps0d));
           ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.body$r6l0)).clear();
           ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.body$r6l0)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), LINKS.line$Psfe))));

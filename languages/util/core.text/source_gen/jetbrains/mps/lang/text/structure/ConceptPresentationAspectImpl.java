@@ -21,7 +21,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IndentedPoint;
   private ConceptPresentation props_Letter;
   private ConceptPresentation props_Line;
-  private ConceptPresentation props_MultilineHtmlTag;
   private ConceptPresentation props_NodeWrapperElement;
   private ConceptPresentation props_NodeWrapperTextualElement;
   private ConceptPresentation props_NumberedLine;
@@ -32,6 +31,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TextElement;
   private ConceptPresentation props_TextNodeReference;
   private ConceptPresentation props_TextualElement;
+  private ConceptPresentation props_UniversalHtmlTag;
   private ConceptPresentation props_UrlTextualElement;
   private ConceptPresentation props_Word;
 
@@ -118,14 +118,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Line = cpb.create();
         }
         return props_Line;
-      case LanguageConceptSwitch.MultilineHtmlTag:
-        if (props_MultilineHtmlTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("html tag");
-          cpb.rawPresentation("</>");
-          props_MultilineHtmlTag = cpb.create();
-        }
-        return props_MultilineHtmlTag;
       case LanguageConceptSwitch.NodeWrapperElement:
         if (props_NodeWrapperElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -197,6 +189,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TextualElement = cpb.create();
         }
         return props_TextualElement;
+      case LanguageConceptSwitch.UniversalHtmlTag:
+        if (props_UniversalHtmlTag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("html tag");
+          cpb.rawPresentation("</>");
+          props_UniversalHtmlTag = cpb.create();
+        }
+        return props_UniversalHtmlTag;
       case LanguageConceptSwitch.UrlTextualElement:
         if (props_UrlTextualElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

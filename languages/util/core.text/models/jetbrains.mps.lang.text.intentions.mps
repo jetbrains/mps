@@ -3081,7 +3081,7 @@
   <node concept="2S6QgY" id="5J4EwzxpGnu">
     <property role="TrG5h" value="FoldHTMLElement" />
     <property role="3GE5qa" value="doc" />
-    <ref role="2ZfgGC" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
+    <ref role="2ZfgGC" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
     <node concept="2S6ZIM" id="5J4EwzxpGnv" role="2ZfVej">
       <node concept="3clFbS" id="5J4EwzxpGnw" role="2VODD2">
         <node concept="3cpWs8" id="5J4Ewzxq26s" role="3cqZAp">

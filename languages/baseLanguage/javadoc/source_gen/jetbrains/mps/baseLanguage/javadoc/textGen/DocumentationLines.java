@@ -110,8 +110,8 @@ public abstract class DocumentationLines extends DocCommentTextGen {
         if (textualRepresentation != null) {
           if (SNodeOperations.isInstanceOf(w, CONCEPTS.Word$Dn)) {
             DocumentationLines.handleWord(SNodeOperations.as(w, CONCEPTS.Word$Dn), ctx);
-          } else if (SNodeOperations.isInstanceOf(w, CONCEPTS.MultilineHtmlTag$qm)) {
-            DocumentationLines.handleHtmlTag(SNodeOperations.as(w, CONCEPTS.MultilineHtmlTag$qm), ctx);
+          } else if (SNodeOperations.isInstanceOf(w, CONCEPTS.UniversalHtmlTag$qm)) {
+            DocumentationLines.handleHtmlTag(SNodeOperations.as(w, CONCEPTS.UniversalHtmlTag$qm), ctx);
           } else {
             tgs.append(textualRepresentation);
           }
@@ -146,6 +146,6 @@ public abstract class DocumentationLines extends DocCommentTextGen {
     /*package*/ static final SConcept InlineTagCommentTextElement$48 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement");
     /*package*/ static final SConcept CodeSnippetTextElement$I3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetTextElement");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept MultilineHtmlTag$qm = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag");
+    /*package*/ static final SConcept UniversalHtmlTag$qm = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.UniversalHtmlTag");
   }
 }

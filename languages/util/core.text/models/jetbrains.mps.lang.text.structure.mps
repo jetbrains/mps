@@ -476,7 +476,7 @@
   <node concept="1TIwiD" id="1fIPsahQswt">
     <property role="EcuMT" value="1436320362825107485" />
     <property role="3GE5qa" value="doc" />
-    <property role="TrG5h" value="MultilineHtmlTag" />
+    <property role="TrG5h" value="UniversalHtmlTag" />
     <property role="34LRSv" value="&lt;/&gt;" />
     <property role="R4oN_" value="html tag" />
     <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />

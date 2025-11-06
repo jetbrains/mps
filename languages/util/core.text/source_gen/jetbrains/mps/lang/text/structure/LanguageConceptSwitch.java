@@ -21,17 +21,17 @@ public final class LanguageConceptSwitch {
   public static final int IndentedPoint = 9;
   public static final int Letter = 10;
   public static final int Line = 11;
-  public static final int MultilineHtmlTag = 12;
-  public static final int NodeWrapperElement = 13;
-  public static final int NodeWrapperTextualElement = 14;
-  public static final int NumberedLine = 15;
-  public static final int NumberedPoint = 16;
-  public static final int Paragraph = 17;
-  public static final int SingleLineHtmlTag = 18;
-  public static final int Text = 19;
-  public static final int TextElement = 20;
-  public static final int TextNodeReference = 21;
-  public static final int TextualElement = 22;
+  public static final int NodeWrapperElement = 12;
+  public static final int NodeWrapperTextualElement = 13;
+  public static final int NumberedLine = 14;
+  public static final int NumberedPoint = 15;
+  public static final int Paragraph = 16;
+  public static final int SingleLineHtmlTag = 17;
+  public static final int Text = 18;
+  public static final int TextElement = 19;
+  public static final int TextNodeReference = 20;
+  public static final int TextualElement = 21;
+  public static final int UniversalHtmlTag = 22;
   public static final int UrlTextualElement = 23;
   public static final int Word = 24;
 
@@ -49,7 +49,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x46ded40cf13ae6c4L, IndentedPoint);
     builder.put(0x7ee31bf598f4ac1dL, Letter);
     builder.put(0x2331694e561af166L, Line);
-    builder.put(0x13eed5c291d9c81dL, MultilineHtmlTag);
     builder.put(0x2b7b49e536031fe9L, NodeWrapperElement);
     builder.put(0x2c99af34e20dcb4fL, NodeWrapperTextualElement);
     builder.put(0x603abc0b9c5e5042L, NumberedLine);
@@ -60,6 +59,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x229012ddae35ee7L, TextElement);
     builder.put(0x6cc063b139472ce7L, TextNodeReference);
     builder.put(0x2c99af34e20d9cfbL, TextualElement);
+    builder.put(0x13eed5c291d9c81dL, UniversalHtmlTag);
     builder.put(0x739f6249ff2c0691L, UrlTextualElement);
     builder.put(0x229012ddae35f04L, Word);
     myIndex = builder.seal();

@@ -4562,7 +4562,7 @@
         <property role="TrG5h" value="tag" />
         <uo k="s:originTrace" v="n:1436320362827701709" />
         <node concept="3Tqbb2" id="iO" role="1tU5fm">
-          <ref role="ehGHo" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
+          <ref role="ehGHo" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
           <uo k="s:originTrace" v="n:1436320362827701708" />
         </node>
       </node>
@@ -5552,7 +5552,7 @@
                             <node concept="1mIQ4w" id="nk" role="2OqNvi">
                               <uo k="s:originTrace" v="n:1436320362827690194" />
                               <node concept="chp4Y" id="nl" role="cj9EA">
-                                <ref role="cht4Q" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
+                                <ref role="cht4Q" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
                                 <uo k="s:originTrace" v="n:1436320362827691099" />
                               </node>
                             </node>
@@ -5573,7 +5573,7 @@
                                   <property role="1BlNFB" value="true" />
                                   <uo k="s:originTrace" v="n:1436320362827699866" />
                                   <node concept="chp4Y" id="nr" role="3oSUPX">
-                                    <ref role="cht4Q" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
+                                    <ref role="cht4Q" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
                                     <uo k="s:originTrace" v="n:1436320362827700787" />
                                   </node>
                                   <node concept="37vLTw" id="ns" role="1m5AlR">

@@ -32,7 +32,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIndentedPoint = createDescriptorForIndentedPoint();
   /*package*/ final ConceptDescriptor myConceptLetter = createDescriptorForLetter();
   /*package*/ final ConceptDescriptor myConceptLine = createDescriptorForLine();
-  /*package*/ final ConceptDescriptor myConceptMultilineHtmlTag = createDescriptorForMultilineHtmlTag();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperElement = createDescriptorForNodeWrapperElement();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperTextualElement = createDescriptorForNodeWrapperTextualElement();
   /*package*/ final ConceptDescriptor myConceptNumberedLine = createDescriptorForNumberedLine();
@@ -43,6 +42,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptTextElement = createDescriptorForTextElement();
   /*package*/ final ConceptDescriptor myConceptTextNodeReference = createDescriptorForTextNodeReference();
   /*package*/ final ConceptDescriptor myConceptTextualElement = createDescriptorForTextualElement();
+  /*package*/ final ConceptDescriptor myConceptUniversalHtmlTag = createDescriptorForUniversalHtmlTag();
   /*package*/ final ConceptDescriptor myConceptUrlTextualElement = createDescriptorForUrlTextualElement();
   /*package*/ final ConceptDescriptor myConceptWord = createDescriptorForWord();
   /*package*/ final EnumerationDescriptor myEnumerationHeaderEnum = new EnumerationDescriptor_HeaderEnum();
@@ -63,7 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptIHoldComment, myConceptIHoldDocumentation, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptMultilineHtmlTag, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptSingleLineHtmlTag, myConceptText, myConceptTextElement, myConceptTextNodeReference, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
+    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptIHoldComment, myConceptIHoldDocumentation, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptSingleLineHtmlTag, myConceptText, myConceptTextElement, myConceptTextNodeReference, myConceptTextualElement, myConceptUniversalHtmlTag, myConceptUrlTextualElement, myConceptWord);
   }
 
   @Override
@@ -94,8 +94,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptLetter;
       case LanguageConceptSwitch.Line:
         return myConceptLine;
-      case LanguageConceptSwitch.MultilineHtmlTag:
-        return myConceptMultilineHtmlTag;
       case LanguageConceptSwitch.NodeWrapperElement:
         return myConceptNodeWrapperElement;
       case LanguageConceptSwitch.NodeWrapperTextualElement:
@@ -116,6 +114,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptTextNodeReference;
       case LanguageConceptSwitch.TextualElement:
         return myConceptTextualElement;
+      case LanguageConceptSwitch.UniversalHtmlTag:
+        return myConceptUniversalHtmlTag;
       case LanguageConceptSwitch.UrlTextualElement:
         return myConceptUrlTextualElement;
       case LanguageConceptSwitch.Word:
@@ -241,18 +241,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForMultilineHtmlTag() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "MultilineHtmlTag", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.text.structure.TextElement
-    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
-    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1436320362825107485");
-    b.version(3);
-    b.property("name", 0x13eed5c291d9c81eL).type(PrimitiveTypeId.STRING).origin("1436320362825107486").done();
-    b.aggregate("body", 0x13eed5c291d9ce33L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("1436320362825109043").done();
-    b.alias("</>");
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForNodeWrapperElement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "NodeWrapperElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L);
     b.class_(false, false, false);
@@ -362,6 +350,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771262715");
     b.version(3);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForUniversalHtmlTag() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "UniversalHtmlTag", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.TextElement
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1436320362825107485");
+    b.version(3);
+    b.property("name", 0x13eed5c291d9c81eL).type(PrimitiveTypeId.STRING).origin("1436320362825107486").done();
+    b.aggregate("body", 0x13eed5c291d9ce33L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("1436320362825109043").done();
+    b.alias("</>");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForUrlTextualElement() {

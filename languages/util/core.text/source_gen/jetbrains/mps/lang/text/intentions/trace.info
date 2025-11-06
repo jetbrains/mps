@@ -20,7 +20,7 @@
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/1158917983708319690">
     <file name="IntentionsDescriptor.java">
-      <node id="1158917983708319690" at="79,60,80,56" concept="3" />
+      <node id="1158917983708319690" at="72,60,73,56" concept="3" />
       <node id="1158917983708319690" at="115,46,116,42" concept="3" />
     </file>
     <file name="MakeParagraph_Intention.java">
@@ -93,7 +93,7 @@
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/1491601438749911194">
     <file name="IntentionsDescriptor.java">
-      <node id="1491601438749911194" at="80,56,81,50" concept="3" />
+      <node id="1491601438749911194" at="73,56,74,50" concept="3" />
       <node id="1491601438749911194" at="116,42,117,36" concept="3" />
     </file>
     <file name="MakeUrl_Intention.java">
@@ -357,7 +357,7 @@
       <unit id="2217810310722409234" at="29,0,105,0" name="jetbrains.mps.lang.text.intentions.ConvertToHeader1_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2217810310722409234" at="63,51,64,59" concept="3" />
+      <node id="2217810310722409234" at="56,51,57,59" concept="3" />
       <node id="2217810310722409234" at="122,44,123,46" concept="3" />
     </file>
   </root>
@@ -445,7 +445,7 @@
       <unit id="2217810310723093481" at="29,0,105,0" name="jetbrains.mps.lang.text.intentions.ConvertToHeader2_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2217810310723093481" at="65,59,66,59" concept="3" />
+      <node id="2217810310723093481" at="58,59,59,59" concept="3" />
       <node id="2217810310723093481" at="124,46,125,46" concept="3" />
     </file>
   </root>
@@ -533,13 +533,13 @@
       <unit id="2217810310723096608" at="29,0,105,0" name="jetbrains.mps.lang.text.intentions.ConvertToHeader3_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2217810310723096608" at="64,59,65,59" concept="3" />
+      <node id="2217810310723096608" at="57,59,58,59" concept="3" />
       <node id="2217810310723096608" at="123,46,124,46" concept="3" />
     </file>
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/2642648362195546611">
     <file name="IntentionsDescriptor.java">
-      <node id="2642648362195546611" at="60,47,61,57" concept="3" />
+      <node id="2642648362195546611" at="53,47,54,57" concept="3" />
       <node id="2642648362195546611" at="118,35,119,44" concept="3" />
     </file>
     <file name="MakeBulletLine_Intention.java">
@@ -624,7 +624,7 @@
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/2642648362195549758">
     <file name="IntentionsDescriptor.java">
-      <node id="2642648362195549758" at="61,57,62,59" concept="3" />
+      <node id="2642648362195549758" at="54,57,55,59" concept="3" />
       <node id="2642648362195549758" at="119,44,120,46" concept="3" />
     </file>
     <file name="MakeNumberedLine_Intention.java">
@@ -709,7 +709,7 @@
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/2642648362195553706">
     <file name="IntentionsDescriptor.java">
-      <node id="2642648362195553706" at="62,59,63,51" concept="3" />
+      <node id="2642648362195553706" at="55,59,56,51" concept="3" />
       <node id="2642648362195553706" at="120,46,121,38" concept="3" />
     </file>
     <file name="MakeLine_Intention.java">
@@ -888,13 +888,13 @@
       <unit id="2642648362196386008" at="29,0,116,0" name="jetbrains.mps.lang.text.intentions.ConvertToLines_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2642648362196386008" at="53,62,54,57" concept="3" />
+      <node id="2642648362196386008" at="46,62,47,57" concept="3" />
       <node id="2642648362196386008" at="121,38,122,44" concept="3" />
     </file>
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/2961584428745758058">
     <file name="IntentionsDescriptor.java">
-      <node id="2961584428745758058" at="77,65,78,58" concept="3" />
+      <node id="2961584428745758058" at="70,65,71,58" concept="3" />
       <node id="2961584428745758058" at="111,51,112,44" concept="3" />
     </file>
     <file name="MakeBulletPoint_Intention.java">
@@ -1025,7 +1025,7 @@
       <unit id="3213792450771388834" at="22,0,77,0" name="jetbrains.mps.lang.text.intentions.InsertNodeWrapper_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3213792450771388834" at="75,47,76,60" concept="3" />
+      <node id="3213792450771388834" at="68,47,69,60" concept="3" />
       <node id="3213792450771388834" at="108,53,109,46" concept="3" />
     </file>
   </root>
@@ -1113,7 +1113,7 @@
       <unit id="3383338848074478747" at="29,0,105,0" name="jetbrains.mps.lang.text.intentions.ConvertToHeader4_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3383338848074478747" at="66,59,67,59" concept="3" />
+      <node id="3383338848074478747" at="59,59,60,59" concept="3" />
       <node id="3383338848074478747" at="125,46,126,46" concept="3" />
     </file>
   </root>
@@ -1201,7 +1201,7 @@
       <unit id="3383338848074497754" at="29,0,105,0" name="jetbrains.mps.lang.text.intentions.ConvertToHeader5_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3383338848074497754" at="67,59,68,59" concept="3" />
+      <node id="3383338848074497754" at="60,59,61,59" concept="3" />
       <node id="3383338848074497754" at="126,46,127,46" concept="3" />
     </file>
   </root>
@@ -1289,7 +1289,7 @@
       <unit id="3383338848074502794" at="29,0,105,0" name="jetbrains.mps.lang.text.intentions.ConvertToHeader6_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3383338848074502794" at="68,59,69,59" concept="3" />
+      <node id="3383338848074502794" at="61,59,62,59" concept="3" />
       <node id="3383338848074502794" at="127,46,128,46" concept="3" />
     </file>
   </root>
@@ -1677,13 +1677,13 @@
       <unit id="6612597108004799966" at="25,0,93,0" name="jetbrains.mps.lang.text.intentions.FoldHTMLElement_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="6612597108004799966" at="45,47,46,58" concept="3" />
+      <node id="6612597108004799966" at="80,47,81,58" concept="3" />
       <node id="6612597108004799966" at="130,56,131,45" concept="3" />
     </file>
   </root>
   <root nodeRef="r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)/6746006958027551993">
     <file name="IntentionsDescriptor.java">
-      <node id="6746006958027551993" at="78,58,79,60" concept="3" />
+      <node id="6746006958027551993" at="71,58,72,60" concept="3" />
       <node id="6746006958027551993" at="114,48,115,46" concept="3" />
     </file>
     <file name="MakeNumberedPoint_Intention.java">
@@ -1853,7 +1853,7 @@
       <unit id="7333760206680794107" at="29,0,117,0" name="jetbrains.mps.lang.text.intentions.ConvertToParagraphs_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7333760206680794107" at="52,47,53,62" concept="3" />
+      <node id="7333760206680794107" at="45,47,46,62" concept="3" />
       <node id="7333760206680794107" at="109,46,110,48" concept="3" />
     </file>
   </root>
@@ -1916,7 +1916,7 @@
       <unit id="8331485905611982491" at="22,0,77,0" name="jetbrains.mps.lang.text.intentions.InsertUrlIntoParagraph_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="8331485905611982491" at="76,60,77,65" concept="3" />
+      <node id="8331485905611982491" at="69,60,70,65" concept="3" />
       <node id="8331485905611982491" at="110,48,111,51" concept="3" />
     </file>
   </root>

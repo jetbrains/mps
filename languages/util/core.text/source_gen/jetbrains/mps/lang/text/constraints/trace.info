@@ -16,7 +16,7 @@
     </file>
   </root>
   <root nodeRef="r:cbe13337-6410-4c91-b1b0-2837bdd7e4a8(jetbrains.mps.lang.text.constraints)/1436320362825108151">
-    <file name="MultilineHtmlTag_Constraints.java">
+    <file name="UniversalHtmlTag_Constraints.java">
       <node id="1436320362825108151" at="22,90,23,53" concept="9" />
       <node id="1436320362825108151" at="26,130,27,161" concept="4" />
       <node id="1436320362825108151" at="27,161,28,0" concept="6" />
@@ -25,13 +25,13 @@
       <node id="1436320362825108151" at="32,0,33,22" concept="5" />
       <node id="1436320362825108462" at="38,149,39,121" concept="5" />
       <node id="1436320362825108151" at="41,0,42,0" concept="7" trace="canBeAncestorBreakingPoint" />
-      <node id="1436320362825108151" at="44,0,45,0" concept="7" trace="MultilineHtmlTag$qm" />
+      <node id="1436320362825108151" at="44,0,45,0" concept="7" trace="UniversalHtmlTag$qm" />
       <node id="1436320362825108151" at="45,0,46,0" concept="7" trace="SingleLineHtmlTag$VL" />
       <node id="1436320362825108151" at="28,0,31,9" concept="2" />
       <node id="1436320362825108151" at="38,0,41,0" concept="8" trace="staticCanBeAnAncestor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="1436320362825108151" at="25,0,35,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeAncestor;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1436320362825108151" at="23,53,35,7" concept="1" />
-      <node id="1436320362825108151" at="22,0,37,0" concept="0" trace="MultilineHtmlTag_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <node id="1436320362825108151" at="22,0,37,0" concept="0" trace="UniversalHtmlTag_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
       <scope id="1436320362825108151" at="29,55,30,74" />
       <scope id="1436320362825108153" at="38,149,39,121" />
       <scope id="1436320362825108151" at="38,0,41,0">
@@ -52,9 +52,9 @@
       <scope id="1436320362825108151" at="22,0,37,0">
         <var name="initContext" id="1436320362825108151" />
       </scope>
-      <unit id="1436320362825108151" at="43,0,47,0" name="jetbrains.mps.lang.text.constraints.MultilineHtmlTag_Constraints$CONCEPTS" />
-      <unit id="1436320362825108151" at="24,25,35,5" name="jetbrains.mps.lang.text.constraints.MultilineHtmlTag_Constraints$1" />
-      <unit id="1436320362825108151" at="21,0,48,0" name="jetbrains.mps.lang.text.constraints.MultilineHtmlTag_Constraints" />
+      <unit id="1436320362825108151" at="43,0,47,0" name="jetbrains.mps.lang.text.constraints.UniversalHtmlTag_Constraints$CONCEPTS" />
+      <unit id="1436320362825108151" at="24,25,35,5" name="jetbrains.mps.lang.text.constraints.UniversalHtmlTag_Constraints$1" />
+      <unit id="1436320362825108151" at="21,0,48,0" name="jetbrains.mps.lang.text.constraints.UniversalHtmlTag_Constraints" />
     </file>
   </root>
   <root nodeRef="r:cbe13337-6410-4c91-b1b0-2837bdd7e4a8(jetbrains.mps.lang.text.constraints)/3213792450771263382">
