@@ -24,7 +24,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBulletPoint = createDescriptorForBulletPoint();
   /*package*/ final ConceptDescriptor myConceptEmptyParagraphLetter = createDescriptorForEmptyParagraphLetter();
   /*package*/ final ConceptDescriptor myConceptHeader = createDescriptorForHeader();
-  /*package*/ final ConceptDescriptor myConceptHtmlTag = createDescriptorForHtmlTag();
   /*package*/ final ConceptDescriptor myConceptIHoldComment = createDescriptorForIHoldComment();
   /*package*/ final ConceptDescriptor myConceptIHoldDocumentation = createDescriptorForIHoldDocumentation();
   /*package*/ final ConceptDescriptor myConceptIHoldLines = createDescriptorForIHoldLines();
@@ -33,11 +32,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIndentedPoint = createDescriptorForIndentedPoint();
   /*package*/ final ConceptDescriptor myConceptLetter = createDescriptorForLetter();
   /*package*/ final ConceptDescriptor myConceptLine = createDescriptorForLine();
+  /*package*/ final ConceptDescriptor myConceptMultilineHtmlTag = createDescriptorForMultilineHtmlTag();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperElement = createDescriptorForNodeWrapperElement();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperTextualElement = createDescriptorForNodeWrapperTextualElement();
   /*package*/ final ConceptDescriptor myConceptNumberedLine = createDescriptorForNumberedLine();
   /*package*/ final ConceptDescriptor myConceptNumberedPoint = createDescriptorForNumberedPoint();
   /*package*/ final ConceptDescriptor myConceptParagraph = createDescriptorForParagraph();
+  /*package*/ final ConceptDescriptor myConceptSingleLineHtmlTag = createDescriptorForSingleLineHtmlTag();
   /*package*/ final ConceptDescriptor myConceptText = createDescriptorForText();
   /*package*/ final ConceptDescriptor myConceptTextElement = createDescriptorForTextElement();
   /*package*/ final ConceptDescriptor myConceptTextNodeReference = createDescriptorForTextNodeReference();
@@ -62,7 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptHtmlTag, myConceptIHoldComment, myConceptIHoldDocumentation, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextNodeReference, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
+    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptIHoldComment, myConceptIHoldDocumentation, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptMultilineHtmlTag, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptSingleLineHtmlTag, myConceptText, myConceptTextElement, myConceptTextNodeReference, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
   }
 
   @Override
@@ -77,8 +78,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptEmptyParagraphLetter;
       case LanguageConceptSwitch.Header:
         return myConceptHeader;
-      case LanguageConceptSwitch.HtmlTag:
-        return myConceptHtmlTag;
       case LanguageConceptSwitch.IHoldComment:
         return myConceptIHoldComment;
       case LanguageConceptSwitch.IHoldDocumentation:
@@ -95,6 +94,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptLetter;
       case LanguageConceptSwitch.Line:
         return myConceptLine;
+      case LanguageConceptSwitch.MultilineHtmlTag:
+        return myConceptMultilineHtmlTag;
       case LanguageConceptSwitch.NodeWrapperElement:
         return myConceptNodeWrapperElement;
       case LanguageConceptSwitch.NodeWrapperTextualElement:
@@ -105,6 +106,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptNumberedPoint;
       case LanguageConceptSwitch.Paragraph:
         return myConceptParagraph;
+      case LanguageConceptSwitch.SingleLineHtmlTag:
+        return myConceptSingleLineHtmlTag;
       case LanguageConceptSwitch.Text:
         return myConceptText;
       case LanguageConceptSwitch.TextElement:
@@ -170,18 +173,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/7832392118012508876");
     b.version(3);
     b.property("level", 0x6cb23f222fb47b9dL).type(MetaIdFactory.dataTypeId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L)).origin("7832392118012509085").done();
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForHtmlTag() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "HtmlTag", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.text.structure.TextElement
-    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
-    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/809653093352985574");
-    b.version(3);
-    b.property("tagName", 0x5c842a42c54b10b6L).type(PrimitiveTypeId.STRING).origin("6666499814681415862").done();
-    b.aggregate("content", 0x16838b3fce9a4922L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(false).origin("1622293396948928802").done();
-    b.alias("tag");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIHoldComment() {
@@ -250,6 +241,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForMultilineHtmlTag() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "MultilineHtmlTag", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.TextElement
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1436320362825107485");
+    b.version(3);
+    b.property("name", 0x13eed5c291d9c81eL).type(PrimitiveTypeId.STRING).origin("1436320362825107486").done();
+    b.aggregate("body", 0x13eed5c291d9ce33L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("1436320362825109043").done();
+    b.alias("</>");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForNodeWrapperElement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "NodeWrapperElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L);
     b.class_(false, false, false);
@@ -308,6 +311,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139364510");
     b.version(3);
     b.aggregate("letters", 0x7ee31bf598f4eddfL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL).optional(true).ordered(true).multiple(true).origin("9143182410139364831").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSingleLineHtmlTag() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "SingleLineHtmlTag", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.text.structure.TextElement
+    b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/809653093352985574");
+    b.version(3);
+    b.property("tagName", 0x5c842a42c54b10b6L).type(PrimitiveTypeId.STRING).origin("6666499814681415862").done();
+    b.aggregate("content", 0x16838b3fce9a4922L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(false).origin("1622293396948928802").done();
+    b.alias("tag");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForText() {

@@ -23,19 +23,19 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class HtmlTag_SubstituteMenu extends SubstituteMenuBase {
-  public HtmlTag_SubstituteMenu() {
-    super(false, new EditorMenuDescriptorBase("default substitute menu for " + "HtmlTag", new SNodePointer("r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)", "6161925337873937591")));
+public class SingleLineHtmlTag_SubstituteMenu extends SubstituteMenuBase {
+  public SingleLineHtmlTag_SubstituteMenu() {
+    super(false, new EditorMenuDescriptorBase("default substitute menu for " + "SingleLineHtmlTag", new SNodePointer("r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)", "6161925337873937591")));
   }
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_pd4wr8_a(), CONCEPTS.HtmlTag$VL));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vhun4i_a(), CONCEPTS.SingleLineHtmlTag$VL));
     return result;
   }
 
-  private class SMP_Action_pd4wr8_a extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_vhun4i_a extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -47,7 +47,7 @@ public class HtmlTag_SubstituteMenu extends SubstituteMenuBase {
     private class Item extends DefaultSubstituteMenuItem {
       private final SubstituteMenuContext _context;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.HtmlTag$VL, context);
+        super(CONCEPTS.SingleLineHtmlTag$VL, context);
         _context = context;
       }
 
@@ -59,7 +59,7 @@ public class HtmlTag_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.HtmlTag"));
+        SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag"));
         SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(tag, LINKS.content$ybyu), LINKS.elements$_j45, null);
         return tag;
       }
@@ -73,7 +73,7 @@ public class HtmlTag_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.HtmlTag");
+    /*package*/ static final SConcept SingleLineHtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
   }
 
   private static final class LINKS {

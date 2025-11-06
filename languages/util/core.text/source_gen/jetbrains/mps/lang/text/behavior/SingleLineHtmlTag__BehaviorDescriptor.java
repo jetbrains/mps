@@ -22,8 +22,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public final class HtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.HtmlTag");
+public final class SingleLineHtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
 
   public static final SMethod<String> getTextualRepresentation_idfB3l81it7u = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147594039774L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
@@ -41,7 +41,7 @@ public final class HtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
     return returnString;
   }
 
-  /*package*/ HtmlTag__BehaviorDescriptor() {
+  /*package*/ SingleLineHtmlTag__BehaviorDescriptor() {
   }
 
   @Override

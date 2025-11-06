@@ -105,6 +105,18 @@ public class TextStyles_StyleSheet {
       return str != null && str.length() > 0;
     }
   }
+  public static class MarkupTagStyleClass extends AbstractStyleClass {
+    public MarkupTagStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.gray));
+      style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD_ITALIC);
+    }
+
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IHoldComment$Sr = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL, "jetbrains.mps.lang.text.structure.IHoldComment");

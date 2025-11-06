@@ -448,9 +448,9 @@
   <node concept="1TIwiD" id="GWtNbsAtfA">
     <property role="EcuMT" value="809653093352985574" />
     <property role="3GE5qa" value="doc" />
-    <property role="TrG5h" value="HtmlTag" />
+    <property role="TrG5h" value="SingleLineHtmlTag" />
     <property role="34LRSv" value="tag" />
-    <property role="R4oN_" value="html tag" />
+    <property role="R4oN_" value="single line html tag" />
     <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />
     <node concept="1TJgyj" id="1q3yNZeA$$y" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -471,6 +471,26 @@
     <node concept="3MrDgS" id="3fm7HO1ENRO" role="lGtFl" />
     <node concept="t5JxF" id="3fm7HO1ENRP" role="lGtFl">
       <property role="t5JxN" value="Flag to trick the comment style for Words" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1fIPsahQswt">
+    <property role="EcuMT" value="1436320362825107485" />
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="MultilineHtmlTag" />
+    <property role="34LRSv" value="&lt;/&gt;" />
+    <property role="R4oN_" value="html tag" />
+    <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />
+    <node concept="1TJgyj" id="1fIPsahQsSN" role="1TKVEi">
+      <property role="IQ2ns" value="1436320362825109043" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="body" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2cLqkTm6J5A" resolve="Line" />
+    </node>
+    <node concept="1TJgyi" id="1fIPsahQswu" role="1TKVEl">
+      <property role="IQ2nx" value="1436320362825107486" />
+      <property role="TrG5h" value="name" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
 </model>

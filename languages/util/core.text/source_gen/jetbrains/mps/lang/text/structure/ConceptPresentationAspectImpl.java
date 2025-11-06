@@ -13,7 +13,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BulletPoint;
   private ConceptPresentation props_EmptyParagraphLetter;
   private ConceptPresentation props_Header;
-  private ConceptPresentation props_HtmlTag;
   private ConceptPresentation props_IHoldComment;
   private ConceptPresentation props_IHoldDocumentation;
   private ConceptPresentation props_IHoldLines;
@@ -22,11 +21,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IndentedPoint;
   private ConceptPresentation props_Letter;
   private ConceptPresentation props_Line;
+  private ConceptPresentation props_MultilineHtmlTag;
   private ConceptPresentation props_NodeWrapperElement;
   private ConceptPresentation props_NodeWrapperTextualElement;
   private ConceptPresentation props_NumberedLine;
   private ConceptPresentation props_NumberedPoint;
   private ConceptPresentation props_Paragraph;
+  private ConceptPresentation props_SingleLineHtmlTag;
   private ConceptPresentation props_Text;
   private ConceptPresentation props_TextElement;
   private ConceptPresentation props_TextNodeReference;
@@ -67,14 +68,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Header = cpb.create();
         }
         return props_Header;
-      case LanguageConceptSwitch.HtmlTag:
-        if (props_HtmlTag == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("html tag");
-          cpb.rawPresentation("tag");
-          props_HtmlTag = cpb.create();
-        }
-        return props_HtmlTag;
       case LanguageConceptSwitch.IHoldComment:
         if (props_IHoldComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -125,6 +118,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Line = cpb.create();
         }
         return props_Line;
+      case LanguageConceptSwitch.MultilineHtmlTag:
+        if (props_MultilineHtmlTag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("html tag");
+          cpb.rawPresentation("</>");
+          props_MultilineHtmlTag = cpb.create();
+        }
+        return props_MultilineHtmlTag;
       case LanguageConceptSwitch.NodeWrapperElement:
         if (props_NodeWrapperElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -162,6 +163,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Paragraph = cpb.create();
         }
         return props_Paragraph;
+      case LanguageConceptSwitch.SingleLineHtmlTag:
+        if (props_SingleLineHtmlTag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("single line html tag");
+          cpb.rawPresentation("tag");
+          props_SingleLineHtmlTag = cpb.create();
+        }
+        return props_SingleLineHtmlTag;
       case LanguageConceptSwitch.Text:
         if (props_Text == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

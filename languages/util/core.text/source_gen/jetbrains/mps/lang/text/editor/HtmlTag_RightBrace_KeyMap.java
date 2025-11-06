@@ -36,7 +36,7 @@ public class HtmlTag_RightBrace_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.HtmlTag$VL))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.SingleLineHtmlTag$VL))) {
         return false;
       }
       return true;
@@ -54,6 +54,6 @@ public class HtmlTag_RightBrace_KeyMap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.HtmlTag");
+    /*package*/ static final SConcept SingleLineHtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
   }
 }
