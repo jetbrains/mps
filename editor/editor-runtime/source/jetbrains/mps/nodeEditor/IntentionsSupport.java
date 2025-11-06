@@ -27,7 +27,6 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.ui.awt.RelativePoint;
 import jetbrains.mps.editor.intentions.IntentionMenuProducer;
-import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.intentions.IntentionsManager;
@@ -43,6 +42,7 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
 import javax.swing.AbstractAction;
@@ -168,13 +168,18 @@ public class IntentionsSupport {
     myMenuProducer = menuProducer;
   }
 
+  private boolean intentionsDisabled() {
+    SNode selectedNode = myEditor.getSelectedNode();
+    SModel model = selectedNode == null ? null : selectedNode.getModel();
+    return myEditor.isReadOnly() || model == null || SModelOperations.isReadOnly(model);
+  }
+
   private void checkAndShowMenu() {
     getModelAccess().runReadAction(() -> {
       if (isInconsistentEditor()) {
         return;
       }
-      final SModel model = myEditor.getSelectedNode() == null ? null : myEditor.getSelectedNode().getModel();
-      if (ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor) || model == null || SModelOperations.isReadOnly(model)) {
+      if (intentionsDisabled()) {
         return;
       }
 
@@ -308,7 +313,7 @@ public class IntentionsSupport {
         final boolean[] forceReturn = {false};
         ApplicationManager.getApplication().invokeAndWait(
             () -> myEditor.getRepository().getModelAccess().runReadAction(
-                () -> forceReturn[0] = isInconsistentEditor() || ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor)));
+                () -> forceReturn[0] = isInconsistentEditor() || intentionsDisabled()));
 
         if (forceReturn[0]) {
           return;
@@ -335,7 +340,7 @@ public class IntentionsSupport {
         }
 
         getModelAccess().runReadInEDT(() -> {
-          if (isInconsistentEditor() || ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor) || myStopRequested) {
+          if (isInconsistentEditor() || intentionsDisabled() || myStopRequested) {
             return;
           }
 
