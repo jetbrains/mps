@@ -2435,12 +2435,12 @@
                                         <node concept="3cpWsn" id="6P3_ffuqbjw" role="3cpWs9">
                                           <property role="TrG5h" value="textElement" />
                                           <node concept="3Tqbb2" id="6P3_ffuqbjx" role="1tU5fm">
-                                            <ref role="ehGHo" to="m373:4qjHlOXIiRi" resolve="HTMLElementTextElement" />
+                                            <ref role="ehGHo" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
                                           </node>
                                           <node concept="2ShNRf" id="6P3_ffuqbjy" role="33vP2m">
                                             <node concept="3zrR0B" id="6P3_ffuqbjz" role="2ShVmc">
                                               <node concept="3Tqbb2" id="6P3_ffuqbj$" role="3zrR0E">
-                                                <ref role="ehGHo" to="m373:4qjHlOXIiRi" resolve="HTMLElementTextElement" />
+                                                <ref role="ehGHo" to="zqge:1fIPsahQswt" resolve="MultilineHtmlTag" />
                                               </node>
                                             </node>
                                           </node>
@@ -2479,7 +2479,7 @@
                                               <ref role="3cqZAo" node="6P3_ffuqbjw" resolve="textElement" />
                                             </node>
                                             <node concept="3Tsc0h" id="6P3_ffuqHBR" role="2OqNvi">
-                                              <ref role="3TtcxE" to="m373:4qjHlOXEoKN" resolve="commentBody" />
+                                              <ref role="3TtcxE" to="zqge:1fIPsahQsSN" resolve="body" />
                                             </node>
                                           </node>
                                           <node concept="2Kehj3" id="6P3_ffuqQiA" role="2OqNvi" />
@@ -2492,7 +2492,7 @@
                                               <ref role="3cqZAo" node="6P3_ffuqbjw" resolve="textElement" />
                                             </node>
                                             <node concept="3Tsc0h" id="6P3_ffuqTKH" role="2OqNvi">
-                                              <ref role="3TtcxE" to="m373:4qjHlOXEoKN" resolve="commentBody" />
+                                              <ref role="3TtcxE" to="zqge:1fIPsahQsSN" resolve="body" />
                                             </node>
                                           </node>
                                           <node concept="X8dFx" id="6P3_ffur1o_" role="2OqNvi">

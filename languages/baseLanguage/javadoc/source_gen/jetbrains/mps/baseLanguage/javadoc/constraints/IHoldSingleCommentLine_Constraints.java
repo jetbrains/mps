@@ -54,7 +54,7 @@ public class IHoldSingleCommentLine_Constraints extends BaseConstraintsDescripto
     return !(Objects.equals(link, LINKS.commentBody$_6eD)) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.Line$yC);
   }
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.HtmlTag$VL)) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.TextNodeReference$Ml));
+    return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.SingleLineHtmlTag$VL)) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.TextNodeReference$Ml));
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "6971016359100284843");
   private static final SNodePointer canBeAncestorBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "6971016359099863546");
@@ -62,7 +62,7 @@ public class IHoldSingleCommentLine_Constraints extends BaseConstraintsDescripto
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IHoldSingleCommentLine$qy = MetaAdapterFactory.getInterfaceConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cf949a05L, "jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
-    /*package*/ static final SConcept HtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.HtmlTag");
+    /*package*/ static final SConcept SingleLineHtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
     /*package*/ static final SConcept TextNodeReference$Ml = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, "jetbrains.mps.lang.text.structure.TextNodeReference");
   }
 

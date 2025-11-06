@@ -5,16 +5,80 @@ package jetbrains.mps.baseLanguage.javadoc.textGen;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.text.behavior.IndentedPoint__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public abstract class DocumentationLines extends DocCommentTextGen {
+  public static void handleHtmlTag(SNode tag, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    if (ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).isEmpty()) {
+      tgs.append("<");
+      tgs.append(SPropertyOperations.getString(tag, PROPS.name$feV5));
+      tgs.append(" />");
+    } else {
+      tgs.append("<");
+      tgs.append(SPropertyOperations.getString(tag, PROPS.name$feV5));
+      tgs.append(">");
+      boolean multiLine = ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).count() > 1;
+      if (multiLine) {
+        ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).visitAll((it) -> {
+          tgs.newLine();
+          DocCommentTextGen.javadocIndent(ctx);
+          DocumentationLines.handleLine(it, ctx);
+        });
+        tgs.newLine();
+        DocCommentTextGen.javadocIndent(ctx);
+      } else {
+        ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).visitAll((it) -> DocumentationLines.handleLine(it, ctx));
+      }
+      tgs.append("</");
+      tgs.append(SPropertyOperations.getString(tag, PROPS.name$feV5));
+      tgs.append(">");
+    }
+  }
+  public static void handleWord(SNode word, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    boolean isBold = SPropertyOperations.getBoolean(word, PROPS.bold$SBR1);
+    boolean isItalic = SPropertyOperations.getBoolean(word, PROPS.italic$SC$4);
+    boolean isUnderline = SPropertyOperations.getBoolean(word, PROPS.underlined$SQS1);
+    boolean isUrl = isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$SIrt));
+    if (isUrl) {
+      tgs.append("<a href=\"");
+      tgs.append(SPropertyOperations.getString(word, PROPS.url$SIrt));
+      tgs.append("\">");
+    }
+    if (isUnderline) {
+      tgs.append("<u>");
+    }
+    if (isBold) {
+      tgs.append("<b>");
+    }
+    if (isItalic) {
+      tgs.append("<i>");
+    }
+    tgs.append(TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(word));
+    if (isItalic) {
+      tgs.append("</i>");
+    }
+    if (isBold) {
+      tgs.append("</b>");
+    }
+    if (isUnderline) {
+      tgs.append("</u>");
+    }
+    if (isUrl) {
+      tgs.append("</a>");
+    }
+  }
   public static void handleLine(SNode line, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     boolean first = true;
@@ -45,37 +109,9 @@ public abstract class DocumentationLines extends DocCommentTextGen {
         String textualRepresentation = TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(w);
         if (textualRepresentation != null) {
           if (SNodeOperations.isInstanceOf(w, CONCEPTS.Word$Dn)) {
-            boolean isBold = SPropertyOperations.getBoolean(SNodeOperations.as(w, CONCEPTS.Word$Dn), PROPS.bold$SBR1);
-            boolean isItalic = SPropertyOperations.getBoolean(SNodeOperations.as(w, CONCEPTS.Word$Dn), PROPS.italic$SC$4);
-            boolean isUnderline = SPropertyOperations.getBoolean(SNodeOperations.as(w, CONCEPTS.Word$Dn), PROPS.underlined$SQS1);
-            boolean isUrl = isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(w, CONCEPTS.Word$Dn), PROPS.url$SIrt));
-            if (isUrl) {
-              tgs.append("<a href=\"");
-              tgs.append(SPropertyOperations.getString(SNodeOperations.as(w, CONCEPTS.Word$Dn), PROPS.url$SIrt));
-              tgs.append("\">");
-            }
-            if (isUnderline) {
-              tgs.append("<u>");
-            }
-            if (isBold) {
-              tgs.append("<b>");
-            }
-            if (isItalic) {
-              tgs.append("<i>");
-            }
-            tgs.append(textualRepresentation);
-            if (isItalic) {
-              tgs.append("</i>");
-            }
-            if (isBold) {
-              tgs.append("</b>");
-            }
-            if (isUnderline) {
-              tgs.append("</u>");
-            }
-            if (isUrl) {
-              tgs.append("</a>");
-            }
+            DocumentationLines.handleWord(SNodeOperations.as(w, CONCEPTS.Word$Dn), ctx);
+          } else if (SNodeOperations.isInstanceOf(w, CONCEPTS.MultilineHtmlTag$qm)) {
+            DocumentationLines.handleHtmlTag(SNodeOperations.as(w, CONCEPTS.MultilineHtmlTag$qm), ctx);
           } else {
             tgs.append(textualRepresentation);
           }
@@ -90,6 +126,19 @@ public abstract class DocumentationLines extends DocCommentTextGen {
     return str != null && str.length() > 0;
   }
 
+  private static final class PROPS {
+    /*package*/ static final SProperty name$feV5 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, 0x13eed5c291d9c81eL, "name");
+    /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
+    /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
+    /*package*/ static final SProperty underlined$SQS1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty level$YKTp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, 0x6cb23f222fb47b9dL, "level");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink body$r6l0 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, 0x13eed5c291d9ce33L, "body");
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept BulletLine$ef = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xf2f8c94a6f2a8faL, "jetbrains.mps.lang.text.structure.BulletLine");
     /*package*/ static final SConcept NumberedLine$k0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
@@ -98,13 +147,6 @@ public abstract class DocumentationLines extends DocCommentTextGen {
     /*package*/ static final SConcept CodeSnippetTextElement$I3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetTextElement");
     /*package*/ static final SConcept HTMLElementTextElement$Wi = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElementTextElement");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty level$YKTp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, 0x6cb23f222fb47b9dL, "level");
-    /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
-    /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
-    /*package*/ static final SProperty underlined$SQS1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
-    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SConcept MultilineHtmlTag$qm = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag");
   }
 }

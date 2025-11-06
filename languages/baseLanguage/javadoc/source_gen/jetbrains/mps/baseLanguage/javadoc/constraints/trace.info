@@ -229,10 +229,10 @@
       <node id="5085607816306428471" at="30,55,31,74" concept="1" />
       <node id="5085607816306428471" at="32,9,33,0" concept="7" />
       <node id="5085607816306428471" at="33,0,34,22" concept="5" />
-      <node id="5085607816306428891" at="39,149,40,224" concept="5" />
+      <node id="5085607816306428891" at="39,149,40,234" concept="5" />
       <node id="5085607816306428471" at="42,0,43,0" concept="8" trace="canBeAncestorBreakingPoint" />
       <node id="5085607816306428471" at="45,0,46,0" concept="8" trace="IHoldCommentLines$zu" />
-      <node id="5085607816306428471" at="46,0,47,0" concept="8" trace="HtmlTag$VL" />
+      <node id="5085607816306428471" at="46,0,47,0" concept="8" trace="SingleLineHtmlTag$VL" />
       <node id="5085607816306428471" at="47,0,48,0" concept="8" trace="TextNodeReference$Ml" />
       <node id="5085607816306428471" at="29,0,32,9" concept="2" />
       <node id="5085607816306428471" at="39,0,42,0" concept="9" trace="staticCanBeAnAncestor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -240,7 +240,7 @@
       <node id="5085607816306428471" at="24,54,36,7" concept="1" />
       <node id="5085607816306428471" at="23,0,38,0" concept="0" trace="IHoldCommentLines_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
       <scope id="5085607816306428471" at="30,55,31,74" />
-      <scope id="5085607816306428473" at="39,149,40,224" />
+      <scope id="5085607816306428473" at="39,149,40,234" />
       <scope id="5085607816306428471" at="39,0,42,0">
         <var name="childConcept" id="5085607816306428471" />
         <var name="childNode" id="5085607816306428471" />
@@ -524,12 +524,12 @@
       <node id="6971016359099863007" at="46,9,47,0" concept="7" />
       <node id="6971016359099863007" at="47,0,48,22" concept="5" />
       <node id="6971016359100285067" at="53,128,54,151" concept="5" />
-      <node id="6971016359099863856" at="56,149,57,224" concept="5" />
+      <node id="6971016359099863856" at="56,149,57,234" concept="5" />
       <node id="6971016359099863007" at="59,0,60,0" concept="8" trace="canBeParentBreakingPoint" />
       <node id="6971016359099863007" at="60,0,61,0" concept="8" trace="canBeAncestorBreakingPoint" />
       <node id="6971016359099863007" at="63,0,64,0" concept="8" trace="IHoldSingleCommentLine$qy" />
       <node id="6971016359099863007" at="64,0,65,0" concept="8" trace="Line$yC" />
-      <node id="6971016359099863007" at="65,0,66,0" concept="8" trace="HtmlTag$VL" />
+      <node id="6971016359099863007" at="65,0,66,0" concept="8" trace="SingleLineHtmlTag$VL" />
       <node id="6971016359099863007" at="66,0,67,0" concept="8" trace="TextNodeReference$Ml" />
       <node id="6971016359099863007" at="70,0,71,0" concept="8" trace="commentBody$_6eD" />
       <node id="6971016359099863007" at="31,0,34,9" concept="2" />
@@ -544,7 +544,7 @@
       <scope id="6971016359099863007" at="32,55,33,72" />
       <scope id="6971016359099863007" at="44,55,45,74" />
       <scope id="6971016359100284844" at="53,128,54,151" />
-      <scope id="6971016359099863547" at="56,149,57,224" />
+      <scope id="6971016359099863547" at="56,149,57,234" />
       <scope id="6971016359099863007" at="53,0,56,0">
         <var name="childConcept" id="6971016359099863007" />
         <var name="childNode" id="6971016359099863007" />

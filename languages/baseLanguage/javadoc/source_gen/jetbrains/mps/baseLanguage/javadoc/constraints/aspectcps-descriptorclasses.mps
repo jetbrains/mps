@@ -4807,7 +4807,7 @@
                 <node concept="2Zo12i" id="kp" role="2OqNvi">
                   <uo k="s:originTrace" v="n:5085607816306433501" />
                   <node concept="chp4Y" id="kq" role="2Zo12j">
-                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
+                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="SingleLineHtmlTag" />
                     <uo k="s:originTrace" v="n:5085607816306433502" />
                   </node>
                 </node>
@@ -5463,7 +5463,7 @@
                 <node concept="2Zo12i" id="nc" role="2OqNvi">
                   <uo k="s:originTrace" v="n:6971016359099863861" />
                   <node concept="chp4Y" id="nd" role="2Zo12j">
-                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
+                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="SingleLineHtmlTag" />
                     <uo k="s:originTrace" v="n:6971016359099863862" />
                   </node>
                 </node>

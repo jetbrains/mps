@@ -91,10 +91,10 @@ public class JavaDocConverter {
         }
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.HTMLElement$SD)) {
           noneMatched = false;
-          SNode textElement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElementTextElement"));
+          SNode textElement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag"));
           SPropertyOperations.assign(textElement, PROPS.name$jYiJ, SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), PROPS.name$Ps0d));
-          ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.commentBody$sIzh)).clear();
-          ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), LINKS.line$Psfe))));
+          ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.body$r6l0)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.body$r6l0)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), LINKS.line$Psfe))));
           Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(line, textElement);
         }
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.InlineTagCommentLinePart$F9)) {
@@ -219,6 +219,7 @@ public class JavaDocConverter {
     /*package*/ static final SContainmentLink commentBody$sIzh = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, 0x4693b55d3da98c33L, "commentBody");
     /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
     /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink body$r6l0 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, 0x13eed5c291d9ce33L, "body");
     /*package*/ static final SContainmentLink line$Psfe = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
     /*package*/ static final SContainmentLink tag$FQF = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, 0x60a0f9237ac5e9c8L, "tag");
     /*package*/ static final SContainmentLink tag$axJH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, 0x4693b55d3de762d1L, "tag");
