@@ -92,7 +92,7 @@ public class JavaDocConverter {
         if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.HTMLElement$SD)) {
           noneMatched = false;
           SNode textElement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag"));
-          SPropertyOperations.assign(textElement, PROPS.name$jYiJ, SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), PROPS.name$Ps0d));
+          SPropertyOperations.assign(textElement, PROPS.name$feV5, SPropertyOperations.getString(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), PROPS.name$Ps0d));
           ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.body$r6l0)).clear();
           ListSequence.fromList(SLinkOperations.getChildren(textElement, LINKS.body$r6l0)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(part, CONCEPTS.HTMLElement$SD), LINKS.line$Psfe))));
           Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(line, textElement);
@@ -256,7 +256,7 @@ public class JavaDocConverter {
 
   private static final class PROPS {
     /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
-    /*package*/ static final SProperty name$jYiJ = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, 0x4693b55d3db92dd5L, "name");
+    /*package*/ static final SProperty name$feV5 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, 0x13eed5c291d9c81eL, "name");
     /*package*/ static final SProperty name$Ps0d = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
     /*package*/ static final SProperty text$sEPS = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, 0x4a3c146b7faeeb9aL, "text");
     /*package*/ static final SProperty text$99vK = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c905f8aL, 0x757ba20a4c905f8eL, "text");

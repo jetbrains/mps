@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-tof10r4b44gzfpuutb8a0r3t3bz5yv">
-  <files names="AddAuthorBlockDocTag_Intention.java:AddClassifierDocComment_Intention.java:AddDeprecatedBlockDocTag_Intention.java:AddFieldDocComment_Intention.java:AddMethodDocComment_Intention.java:AddParameterBlockDocTag_Intention.java:AddReturnBlockTag_Intention.java:AddSeeBlockTag_Intention.java:AddSinceBlockDocTag_Intention.java:AddStaticFieldDocComment_Intention.java:AddThrowBlockDocTag_Intention.java:AddVersionBlockTagDoc_Intention.java:BlockDocTagHelper.java:DocCommentHelper.java:FoldHTMLElement_Intention.java:IntentionsDescriptor.java:OrganizeTags_Intention.java" />
+<product version="3" modelHash="5654d6w0tusvztyhmao3wwsheahogyi">
+  <files names="AddAuthorBlockDocTag_Intention.java:AddClassifierDocComment_Intention.java:AddDeprecatedBlockDocTag_Intention.java:AddFieldDocComment_Intention.java:AddMethodDocComment_Intention.java:AddParameterBlockDocTag_Intention.java:AddReturnBlockTag_Intention.java:AddSeeBlockTag_Intention.java:AddSinceBlockDocTag_Intention.java:AddStaticFieldDocComment_Intention.java:AddThrowBlockDocTag_Intention.java:AddVersionBlockTagDoc_Intention.java:BlockDocTagHelper.java:DocCommentHelper.java:IntentionsDescriptor.java:OrganizeTags_Intention.java" />
 </product>
 

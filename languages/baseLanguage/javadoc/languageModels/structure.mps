@@ -661,22 +661,6 @@
       <ref role="PrY4T" to="zqge:1zevWKa0GFG" resolve="IHoldComment" />
     </node>
   </node>
-  <node concept="1TIwiD" id="4qjHlOXIiRi">
-    <property role="TrG5h" value="HTMLElementTextElement" />
-    <property role="3GE5qa" value="tag" />
-    <property role="EcuMT" value="5085607816303554002" />
-    <property role="34LRSv" value="&lt;/&gt;" />
-    <property role="R4oN_" value="JavaDoc html Tag" />
-    <ref role="1TJDcQ" to="zqge:8D0iRqSPVB" resolve="TextElement" />
-    <node concept="1TJgyi" id="4qjHlOXIiRl" role="1TKVEl">
-      <property role="TrG5h" value="name" />
-      <property role="IQ2nx" value="5085607816303554005" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-    <node concept="PrWs8" id="4qjHlOXIiRm" role="PzmwI">
-      <ref role="PrY4T" node="4qjHlOXEoGg" resolve="IHoldCommentLines" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="4qjHlOXTQbg">
     <property role="TrG5h" value="InlineTagCommentTextElement" />
     <property role="EcuMT" value="5085607816306582224" />

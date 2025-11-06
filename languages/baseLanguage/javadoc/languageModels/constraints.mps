@@ -750,7 +750,7 @@
                 <node concept="2DD5aU" id="4qjHlOXThRs" role="2Oq$k0" />
                 <node concept="2Zo12i" id="4qjHlOXThRt" role="2OqNvi">
                   <node concept="chp4Y" id="4qjHlOXThRu" role="2Zo12j">
-                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
+                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="SingleLineHtmlTag" />
                   </node>
                 </node>
               </node>
@@ -846,30 +846,6 @@
       </node>
     </node>
   </node>
-  <node concept="1M2fIO" id="6c4fgQOfIVt">
-    <property role="3GE5qa" value="tag" />
-    <ref role="1M2myG" to="m373:4qjHlOXIiRi" resolve="HTMLElementTextElement" />
-    <node concept="9S07l" id="6c4fgQOfIVu" role="9Vyp8">
-      <node concept="3clFbS" id="6c4fgQOfIVv" role="2VODD2">
-        <node concept="3clFbF" id="6c4fgQOfJ0k" role="3cqZAp">
-          <node concept="2OqwBi" id="6c4fgQOfJ0l" role="3clFbG">
-            <node concept="2OqwBi" id="6c4fgQOfJ0m" role="2Oq$k0">
-              <node concept="nLn13" id="6c4fgQOfJ0n" role="2Oq$k0" />
-              <node concept="2Xjw5R" id="6c4fgQOfJ0o" role="2OqNvi">
-                <node concept="1xMEDy" id="6c4fgQOfJ0p" role="1xVPHs">
-                  <node concept="chp4Y" id="6c4fgQOfJ0q" role="ri$Ld">
-                    <ref role="cht4Q" to="m373:4CW56HZFB3j" resolve="BaseDocComment" />
-                  </node>
-                </node>
-                <node concept="1xIGOp" id="6c4fgQOfJ0r" role="1xVPHs" />
-              </node>
-            </node>
-            <node concept="3x8VRR" id="6c4fgQOfJ0s" role="2OqNvi" />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="1M2fIO" id="6c4fgQOfQrj">
     <property role="3GE5qa" value="tag" />
     <ref role="1M2myG" to="m373:4qjHlOWv$Zh" resolve="CodeSnippetTextElement" />
@@ -905,7 +881,7 @@
                 <node concept="2DD5aU" id="62Y1B7f_pcO" role="2Oq$k0" />
                 <node concept="2Zo12i" id="62Y1B7f_pcP" role="2OqNvi">
                   <node concept="chp4Y" id="62Y1B7f_pcQ" role="2Zo12j">
-                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
+                    <ref role="cht4Q" to="zqge:GWtNbsAtfA" resolve="SingleLineHtmlTag" />
                   </node>
                 </node>
               </node>

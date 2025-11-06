@@ -47,8 +47,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new FieldDocReference_TextGen();
       case LanguageConceptSwitch.HTMLElement:
         return new HTMLElement_TextGen();
-      case LanguageConceptSwitch.HTMLElementTextElement:
-        return new HTMLElementTextElement_TextGen();
       case LanguageConceptSwitch.ImportedDocReference:
         return new ImportedDocReference_TextGen();
       case LanguageConceptSwitch.InheritDocInlineDocTag:

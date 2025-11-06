@@ -67,20 +67,13 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 4:
         if (true) {
           // concept
-          intentions = new IntentionFactory[1];
-          intentions[0] = new FoldHTMLElement_Intention();
-        }
-        break;
-      case 5:
-        if (true) {
-          // concept
           intentions = new IntentionFactory[3];
           intentions[0] = new AddParameterBlockDocTag_Intention();
           intentions[1] = new AddReturnBlockTag_Intention();
           intentions[2] = new AddThrowBlockDocTag_Intention();
         }
         break;
-      case 6:
+      case 5:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
@@ -96,7 +89,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[14];
+    IntentionFactory[] rv = new IntentionFactory[13];
     rv[0] = new AddMethodDocComment_Intention();
     rv[1] = new AddAuthorBlockDocTag_Intention();
     rv[2] = new AddSinceBlockDocTag_Intention();
@@ -107,11 +100,10 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[7] = new AddClassifierDocComment_Intention();
     rv[8] = new AddSeeBlockTag_Intention();
     rv[9] = new AddStaticFieldDocComment_Intention();
-    rv[10] = new FoldHTMLElement_Intention();
-    rv[11] = new AddThrowBlockDocTag_Intention();
-    rv[12] = new AddDeprecatedBlockDocTag_Intention();
-    rv[13] = new OrganizeTags_Intention();
+    rv[10] = new AddThrowBlockDocTag_Intention();
+    rv[11] = new AddDeprecatedBlockDocTag_Intention();
+    rv[12] = new OrganizeTags_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL)).seal();
 }

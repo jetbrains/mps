@@ -33,7 +33,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_FieldDocComment;
   private ConceptPresentation props_FieldDocReference;
   private ConceptPresentation props_HTMLElement;
-  private ConceptPresentation props_HTMLElementTextElement;
   private ConceptPresentation props_IHoldCommentLines;
   private ConceptPresentation props_IHoldSingleCommentLine;
   private ConceptPresentation props_ImportedDocReference;
@@ -239,14 +238,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HTMLElement = cpb.create();
         }
         return props_HTMLElement;
-      case LanguageConceptSwitch.HTMLElementTextElement:
-        if (props_HTMLElementTextElement == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("JavaDoc html Tag");
-          cpb.rawPresentation("</>");
-          props_HTMLElementTextElement = cpb.create();
-        }
-        return props_HTMLElementTextElement;
       case LanguageConceptSwitch.IHoldCommentLines:
         if (props_IHoldCommentLines == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

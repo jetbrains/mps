@@ -103,7 +103,7 @@ public abstract class DocumentationLines extends DocCommentTextGen {
       } else {
         tgs.append(" ");
       }
-      if (SNodeOperations.isInstanceOf(w, CONCEPTS.CodeSnippetTextElement$I3) || SNodeOperations.isInstanceOf(w, CONCEPTS.HTMLElementTextElement$Wi) || SNodeOperations.isInstanceOf(w, CONCEPTS.InlineTagCommentTextElement$48)) {
+      if (SNodeOperations.isInstanceOf(w, CONCEPTS.CodeSnippetTextElement$I3) || SNodeOperations.isInstanceOf(w, CONCEPTS.InlineTagCommentTextElement$48)) {
         tgs.appendNode(w);
       } else {
         String textualRepresentation = TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(w);
@@ -145,7 +145,6 @@ public abstract class DocumentationLines extends DocCommentTextGen {
     /*package*/ static final SConcept Header$d7 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header");
     /*package*/ static final SConcept InlineTagCommentTextElement$48 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de762d0L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement");
     /*package*/ static final SConcept CodeSnippetTextElement$I3 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3c7e4fd1L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeSnippetTextElement");
-    /*package*/ static final SConcept HTMLElementTextElement$Wi = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3db92dd2L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElementTextElement");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept MultilineHtmlTag$qm = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag");
   }
