@@ -13,14 +13,15 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SingleLineHtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
@@ -30,6 +31,8 @@ public final class SingleLineHtmlTag__BehaviorDescriptor extends BaseBHDescripto
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l81it7u);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
+    SNode l = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+    SLinkOperations.setTarget(__thisNode__, LINKS.content$ybyu, l);
   }
 
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
@@ -87,12 +90,12 @@ public final class SingleLineHtmlTag__BehaviorDescriptor extends BaseBHDescripto
     return CONCEPT;
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty tagName$YfpN = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x5c842a42c54b10b6L, "tagName");
-  }
-
   private static final class LINKS {
     /*package*/ static final SContainmentLink content$ybyu = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x16838b3fce9a4922L, "content");
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty tagName$YfpN = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x5c842a42c54b10b6L, "tagName");
   }
 }

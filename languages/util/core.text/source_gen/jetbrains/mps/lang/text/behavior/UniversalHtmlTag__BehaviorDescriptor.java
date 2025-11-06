@@ -23,8 +23,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public final class MultilineHtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.MultilineHtmlTag");
+public final class UniversalHtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, "jetbrains.mps.lang.text.structure.UniversalHtmlTag");
 
   public static final SMethod<String> getTextualRepresentation_idfB3l81it7u = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147594039774L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
@@ -42,7 +42,7 @@ public final class MultilineHtmlTag__BehaviorDescriptor extends BaseBHDescriptor
     return "<" + SPropertyOperations.getString(__thisNode__, PROPS.name$feV5) + ">" + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.body$r6l0)).foldLeft("", (s, it) -> s + (((s != null && s.length() > 0) ? "\n" : "")) + Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(it)) + "</" + SPropertyOperations.getString(__thisNode__, PROPS.name$feV5) + ">";
   }
 
-  /*package*/ MultilineHtmlTag__BehaviorDescriptor() {
+  /*package*/ UniversalHtmlTag__BehaviorDescriptor() {
   }
 
   @Override

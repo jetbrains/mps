@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class MultilineHtmlTag_Editor extends DefaultNodeEditor {
+public class UniversalHtmlTag_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new MultilineHtmlTag_EditorBuilder_a(editorContext, node).createCell();
+    return new UniversalHtmlTag_EditorBuilder_a(editorContext, node).createCell();
   }
 }

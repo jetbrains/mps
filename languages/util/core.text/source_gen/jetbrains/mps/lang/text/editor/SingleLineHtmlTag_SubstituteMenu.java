@@ -18,10 +18,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SingleLineHtmlTag_SubstituteMenu extends SubstituteMenuBase {
   public SingleLineHtmlTag_SubstituteMenu() {
@@ -60,24 +57,18 @@ public class SingleLineHtmlTag_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag"));
-        SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(tag, LINKS.content$ybyu), LINKS.elements$_j45, null);
         return tag;
       }
 
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return "</";
+        return "<>";
       }
     }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SingleLineHtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink content$ybyu = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x16838b3fce9a4922L, "content");
-    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

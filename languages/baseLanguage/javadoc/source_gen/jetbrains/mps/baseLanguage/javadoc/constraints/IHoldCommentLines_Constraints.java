@@ -37,13 +37,12 @@ public class IHoldCommentLines_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.SingleLineHtmlTag$VL)) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.TextNodeReference$Ml));
+    return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.TextNodeReference$Ml));
   }
   private static final SNodePointer canBeAncestorBreakingPoint = new SNodePointer("r:28bcf003-0004-46b6-9fe7-2093e7fb1368(jetbrains.mps.baseLanguage.javadoc.constraints)", "5085607816306428472");
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IHoldCommentLines$zu = MetaAdapterFactory.getInterfaceConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3da98b10L, "jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines");
-    /*package*/ static final SConcept SingleLineHtmlTag$VL = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, "jetbrains.mps.lang.text.structure.SingleLineHtmlTag");
     /*package*/ static final SConcept TextNodeReference$Ml = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, "jetbrains.mps.lang.text.structure.TextNodeReference");
   }
 }

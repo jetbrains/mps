@@ -5,20 +5,36 @@ package jetbrains.mps.baseLanguage.javadoc.textGen;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.text.behavior.IndentedPoint__BehaviorDescriptor;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public abstract class DocumentationLines extends DocCommentTextGen {
-  public static void handleHtmlTag(SNode tag, final TextGenContext ctx) {
+  public static void handleSingleLineHtmlTag(SNode tag, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    if (isEmptyString(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(SLinkOperations.getTarget(tag, LINKS.content$ybyu)))) {
+      tgs.append("<");
+      tgs.append(SPropertyOperations.getString(tag, PROPS.tagName$YfpN));
+      tgs.append(" />");
+    } else {
+      tgs.append("<");
+      tgs.append(SPropertyOperations.getString(tag, PROPS.tagName$YfpN));
+      tgs.append(">");
+      DocumentationLines.handleLine(SLinkOperations.getTarget(tag, LINKS.content$ybyu), ctx);
+      tgs.append("</");
+      tgs.append(SPropertyOperations.getString(tag, PROPS.tagName$YfpN));
+      tgs.append(">");
+    }
+  }
+  public static void handleUniversalHtmlTag(SNode tag, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).isEmpty()) {
       tgs.append("<");
@@ -38,7 +54,7 @@ public abstract class DocumentationLines extends DocCommentTextGen {
         tgs.newLine();
         DocCommentTextGen.javadocIndent(ctx);
       } else {
-        ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).visitAll((it) -> DocumentationLines.handleLine(it, ctx));
+        DocumentationLines.handleLine(ListSequence.fromList(SLinkOperations.getChildren(tag, LINKS.body$r6l0)).first(), ctx);
       }
       tgs.append("</");
       tgs.append(SPropertyOperations.getString(tag, PROPS.name$feV5));
@@ -111,7 +127,7 @@ public abstract class DocumentationLines extends DocCommentTextGen {
           if (SNodeOperations.isInstanceOf(w, CONCEPTS.Word$Dn)) {
             DocumentationLines.handleWord(SNodeOperations.as(w, CONCEPTS.Word$Dn), ctx);
           } else if (SNodeOperations.isInstanceOf(w, CONCEPTS.UniversalHtmlTag$qm)) {
-            DocumentationLines.handleHtmlTag(SNodeOperations.as(w, CONCEPTS.UniversalHtmlTag$qm), ctx);
+            DocumentationLines.handleUniversalHtmlTag(SNodeOperations.as(w, CONCEPTS.UniversalHtmlTag$qm), ctx);
           } else {
             tgs.append(textualRepresentation);
           }
@@ -122,11 +138,15 @@ public abstract class DocumentationLines extends DocCommentTextGen {
       tgs.append("</" + ("H" + SPropertyOperations.getEnum(SNodeOperations.as(line, CONCEPTS.Header$d7), PROPS.level$YKTp) + ">"));
     }
   }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.isEmpty();
+  }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty tagName$YfpN = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x5c842a42c54b10b6L, "tagName");
     /*package*/ static final SProperty name$feV5 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, 0x13eed5c291d9c81eL, "name");
     /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
     /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
@@ -136,6 +156,7 @@ public abstract class DocumentationLines extends DocCommentTextGen {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink content$ybyu = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x16838b3fce9a4922L, "content");
     /*package*/ static final SContainmentLink body$r6l0 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x13eed5c291d9c81dL, 0x13eed5c291d9ce33L, "body");
   }
 
