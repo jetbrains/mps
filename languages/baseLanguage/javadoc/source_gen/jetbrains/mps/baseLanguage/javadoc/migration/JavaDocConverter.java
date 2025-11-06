@@ -5,13 +5,13 @@ package jetbrains.mps.baseLanguage.javadoc.migration;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
@@ -54,10 +54,16 @@ public class JavaDocConverter {
     }
   }
   public static void convertBaseDocCommentToLangText(SNode comment) {
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(comment, LINKS.body$OAGp))));
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).visitAll((blockTag) -> convertBlockTag(blockTag));
-    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).clear();
+    if (ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).isEmpty()) {
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(comment, LINKS.body$OAGp))));
+      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).clear();
+    }
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).visitAll((blockTag) -> {
+      if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(blockTag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).isEmpty()) {
+        convertBlockTag(blockTag);
+      }
+    });
   }
   public static List<SNode> convertCommentLinesToLines(List<SNode> commentLines) {
     Iterable<SNode> lines = ListSequence.fromList(commentLines).select((commentLine) -> {
@@ -228,6 +234,7 @@ public class JavaDocConverter {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseBlockDocTagWithText$HC = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText");
     /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
     /*package*/ static final SConcept HTMLElement$SD = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement");
     /*package*/ static final SConcept InlineTagCommentLinePart$F9 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart");
@@ -244,7 +251,6 @@ public class JavaDocConverter {
     /*package*/ static final SConcept ThrowsBlockDocTag$bu = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x514c0f68704ec270L, "jetbrains.mps.baseLanguage.javadoc.structure.ThrowsBlockDocTag");
     /*package*/ static final SConcept VersionBlockDocTag$wp = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L, "jetbrains.mps.baseLanguage.javadoc.structure.VersionBlockDocTag");
     /*package*/ static final SConcept EmptyBlockDocTag$U4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L, "jetbrains.mps.baseLanguage.javadoc.structure.EmptyBlockDocTag");
-    /*package*/ static final SConcept BaseBlockDocTagWithText$HC = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1162ca6ff7208067L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTagWithText");
   }
 
   private static final class PROPS {
