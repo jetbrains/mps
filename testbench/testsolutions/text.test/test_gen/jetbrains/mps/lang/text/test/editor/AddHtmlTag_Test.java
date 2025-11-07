@@ -37,7 +37,7 @@ public class AddHtmlTag_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("2907926987767643701", "2907926987767643707");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      typeString("</");
+      typeString("</>");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
 
     }
