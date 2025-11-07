@@ -25604,6 +25604,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="6c4fgQQ011w" role="3bR37C">
+          <node concept="3bR9La" id="6c4fgQQ011x" role="1SiIV1">
+            <ref role="3bR37D" node="3MI1gu0QouH" resolve="jetbrains.mps.editor.runtime" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="3knW2ZMLWvv" role="3989C9">
