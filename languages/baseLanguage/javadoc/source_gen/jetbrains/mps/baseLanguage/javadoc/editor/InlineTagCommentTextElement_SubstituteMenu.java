@@ -12,13 +12,15 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
+import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.editor.menus.substitute.WrapperSubstituteMenuPart;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuItemWrapper;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -36,12 +38,53 @@ public class InlineTagCommentTextElement_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cf7uv7_a(), CONCEPTS.InlineTagCommentTextElement$48));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cf7uv7_a(), CONCEPTS.InlineTagCommentTextElement$48));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cf7uv7_b(), CONCEPTS.InlineTagCommentTextElement$48));
     return result;
   }
 
-  private class SMP_Wrap_cf7uv7_a extends WrapperSubstituteMenuPart {
-    private SMP_Wrap_cf7uv7_a() {
+  private class SMP_Action_cf7uv7_a extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      item.resetTraceInfo();
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.InlineTagCommentTextElement$48, context);
+        _context = context;
+      }
+
+      /*package*/ void resetTraceInfo() {
+        String description = "Substitute item: " + getMatchingText("");
+        updateTraceInfo(description, new SNodePointer("r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)", "3968445000223629833"));
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode inlineTagTextElement = SNodeFactoryOperations.createNewNode(CONCEPTS.InlineTagCommentTextElement$48, null);
+        return inlineTagTextElement;
+      }
+
+      @Nullable
+      @Override
+      public String getDescriptionText(@NotNull String pattern) {
+        return "Inline javadoc tag";
+      }
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "{@";
+      }
+    }
+  }
+  private class SMP_Wrap_cf7uv7_b extends WrapperSubstituteMenuPart {
+    private SMP_Wrap_cf7uv7_b() {
       super(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "BaseInlineDocTagTE", new SNodePointer("r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)", "5085607816307185737")));
     }
 
