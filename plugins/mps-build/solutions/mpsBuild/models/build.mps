@@ -11645,6 +11645,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="17vi3Zq5H89" role="3bR37C">
+          <node concept="1Busua" id="17vi3Zq5H8a" role="1SiIV1">
+            <ref role="1Busuk" node="3HV74$ebibC" resolve="jetbrains.mps.lang.text" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6L25" role="2G$12L">
         <property role="BnDLt" value="true" />
