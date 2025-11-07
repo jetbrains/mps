@@ -478,7 +478,11 @@
             <property role="3oM_SC" value="" />
           </node>
           <node concept="1Vtdud" id="1E1X3WHsAw$" role="1PaTwD">
-            <node concept="1VuVX$" id="1E1X3WHsAw_" role="1Vtduc" />
+            <node concept="1VuVX$" id="1E1X3WHsAw_" role="1Vtduc">
+              <node concept="1RlsK7" id="6RIiYER_2nw" role="1VuVXB">
+                <ref role="YTMYt" node="4OLqP_NPzXl" resolve="SOME_CONSTANT" />
+              </node>
+            </node>
           </node>
           <node concept="3oM_SD" id="1E1X3WHsAwA" role="1PaTwD">
             <property role="3oM_SC" value="" />
