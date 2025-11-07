@@ -33,8 +33,7 @@ public class CutFieldComment_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("537222088368712800", "537222088368738109");
-      invokeAction("$Cut");
+      initEditorComponent("537222088368712800", "7921352266065693999");
       invokeAction("$Cut");
       invokeAction("$Cut");
     }

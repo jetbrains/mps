@@ -34,7 +34,7 @@ public class PreviousDeprecationTest3_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("1287827457547498861", "1287827457547498876");
+      initEditorComponent("1287827457547498861", "7921352266065725033");
       EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
