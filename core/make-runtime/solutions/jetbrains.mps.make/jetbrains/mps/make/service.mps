@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -233,20 +233,16 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
       <concept id="8465538089690324397" name="jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag" flags="ng" index="TZ7YB">
         <property id="8465538089690324399" name="text" index="TZ7Y_" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -636,19 +632,136 @@
         <ref role="3uigEE" to="i9so:4TqQgK0rdP4" resolve="IConfigMonitor.Stub" />
       </node>
       <node concept="3UR2Jj" id="7UozGIER2_G" role="lGtFl">
-        <node concept="TZ5HA" id="7UozGIER2_H" role="TZ5H$">
-          <node concept="1dT_AC" id="7UozGIER2_I" role="1dT_Ay">
-            <property role="1dT_AB" value="Reasonable defaults when no IScriptController is supplied by client" />
+        <node concept="1PaTwC" id="1E1X3WHs_cy" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_cz" role="1PaTwD">
+            <property role="3oM_SC" value="Reasonable" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_c$" role="1PaTwD">
+            <property role="3oM_SC" value="defaults" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_c_" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cA" role="1PaTwD">
+            <property role="3oM_SC" value="no" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cB" role="1PaTwD">
+            <property role="3oM_SC" value="IScriptController" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cC" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cD" role="1PaTwD">
+            <property role="3oM_SC" value="supplied" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cE" role="1PaTwD">
+            <property role="3oM_SC" value="by" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cF" role="1PaTwD">
+            <property role="3oM_SC" value="client" />
           </node>
         </node>
-        <node concept="TZ5HA" id="5Pnc_qQv2$D" role="TZ5H$">
-          <node concept="1dT_AC" id="5Pnc_qQv2$E" role="1dT_Ay">
-            <property role="1dT_AB" value="I'm not certain there's great value in this distinct subclass of IConfigMonitor.Stub, perhaps, could move everything in there." />
+        <node concept="1PaTwC" id="1E1X3WHs_cG" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_cH" role="1PaTwD">
+            <property role="3oM_SC" value="I'm" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cI" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cJ" role="1PaTwD">
+            <property role="3oM_SC" value="certain" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cK" role="1PaTwD">
+            <property role="3oM_SC" value="there's" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cL" role="1PaTwD">
+            <property role="3oM_SC" value="great" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cM" role="1PaTwD">
+            <property role="3oM_SC" value="value" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cN" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cO" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cP" role="1PaTwD">
+            <property role="3oM_SC" value="distinct" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cQ" role="1PaTwD">
+            <property role="3oM_SC" value="subclass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cR" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cS" role="1PaTwD">
+            <property role="3oM_SC" value="IConfigMonitor.Stub," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cT" role="1PaTwD">
+            <property role="3oM_SC" value="perhaps," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cU" role="1PaTwD">
+            <property role="3oM_SC" value="could" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cV" role="1PaTwD">
+            <property role="3oM_SC" value="move" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cW" role="1PaTwD">
+            <property role="3oM_SC" value="everything" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cX" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_cY" role="1PaTwD">
+            <property role="3oM_SC" value="there." />
           </node>
         </node>
-        <node concept="TZ5HA" id="5Pnc_qQv2$J" role="TZ5H$">
-          <node concept="1dT_AC" id="5Pnc_qQv2$K" role="1dT_Ay">
-            <property role="1dT_AB" value="Just don't understand why Stub.relayQuery is different, and whether we care to report feedback always." />
+        <node concept="1PaTwC" id="1E1X3WHs_cZ" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_d0" role="1PaTwD">
+            <property role="3oM_SC" value="Just" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d1" role="1PaTwD">
+            <property role="3oM_SC" value="don't" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d2" role="1PaTwD">
+            <property role="3oM_SC" value="understand" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d3" role="1PaTwD">
+            <property role="3oM_SC" value="why" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d4" role="1PaTwD">
+            <property role="3oM_SC" value="Stub.relayQuery" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d5" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d6" role="1PaTwD">
+            <property role="3oM_SC" value="different," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d7" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d8" role="1PaTwD">
+            <property role="3oM_SC" value="whether" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_d9" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_da" role="1PaTwD">
+            <property role="3oM_SC" value="care" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_db" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_dc" role="1PaTwD">
+            <property role="3oM_SC" value="report" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_dd" role="1PaTwD">
+            <property role="3oM_SC" value="feedback" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_de" role="1PaTwD">
+            <property role="3oM_SC" value="always." />
           </node>
         </node>
       </node>
@@ -748,7 +861,12 @@
       </node>
       <node concept="P$JXv" id="4uO1VCfEPL$" role="lGtFl">
         <node concept="TZ7YB" id="4uO1VCfEQ39" role="3nqlJM">
-          <property role="TZ7Y_" value="2023.2" />
+          <property role="TZ7Y_" value="" />
+          <node concept="1PaTwC" id="1E1X3WHs_df" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_dg" role="1PaTwD">
+              <property role="3oM_SC" value="2023.2" />
+            </node>
+          </node>
         </node>
       </node>
     </node>

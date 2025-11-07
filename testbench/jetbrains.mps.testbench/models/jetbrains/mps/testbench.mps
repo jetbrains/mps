@@ -2,7 +2,7 @@
 <model ref="r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -203,26 +203,22 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
       </concept>
       <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
         <reference id="2217234381367530213" name="classifier" index="VXe09" />
       </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306647746" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE" flags="ng" index="1VuXuv">
+        <child id="5085607816306647747" name="reference" index="1VuXuu" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -250,41 +246,109 @@
     </node>
     <node concept="3Tm1VV" id="4_TMdeLkPNS" role="1B3o_S" />
     <node concept="3UR2Jj" id="4_TMdeLkPRT" role="lGtFl">
-      <node concept="TZ5HA" id="4_TMdeLkPSE" role="TZ5H$">
-        <node concept="1dT_AC" id="4_TMdeLkPSF" role="1dT_Ay">
-          <property role="1dT_AB" value="Integrates with TeamCity's statistics. Contribute statistical values with teamcity-info.xml" />
+      <node concept="1PaTwC" id="1E1X3WHsDHC" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDHD" role="1PaTwD">
+          <property role="3oM_SC" value="Integrates" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHE" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHF" role="1PaTwD">
+          <property role="3oM_SC" value="TeamCity's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHG" role="1PaTwD">
+          <property role="3oM_SC" value="statistics." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHH" role="1PaTwD">
+          <property role="3oM_SC" value="Contribute" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHI" role="1PaTwD">
+          <property role="3oM_SC" value="statistical" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHJ" role="1PaTwD">
+          <property role="3oM_SC" value="values" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHK" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHL" role="1PaTwD">
+          <property role="3oM_SC" value="teamcity-info.xml" />
         </node>
       </node>
-      <node concept="TZ5HA" id="2$EeqAz1p0W" role="TZ5H$">
-        <node concept="1dT_AC" id="2$EeqAz1p0X" role="1dT_Ay">
-          <property role="1dT_AB" value="To use, add a field annotated with " />
+      <node concept="1PaTwC" id="1E1X3WHsDHM" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDHN" role="1PaTwD">
+          <property role="3oM_SC" value="To" />
         </node>
-        <node concept="1dT_AA" id="2$EeqAz1p1m" role="1dT_Ay">
-          <node concept="92FcH" id="2$EeqAz1p1s" role="qph3F">
-            <node concept="VXe08" id="2$EeqAz1$RK" role="92FcQ">
+        <node concept="3oM_SD" id="1E1X3WHsDHO" role="1PaTwD">
+          <property role="3oM_SC" value="use," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHP" role="1PaTwD">
+          <property role="3oM_SC" value="add" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHQ" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHR" role="1PaTwD">
+          <property role="3oM_SC" value="field" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHS" role="1PaTwD">
+          <property role="3oM_SC" value="annotated" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDHT" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="1Vtdud" id="1E1X3WHsDHU" role="1PaTwD">
+          <node concept="1VuXuv" id="1E1X3WHsDHV" role="1Vtduc">
+            <node concept="VXe08" id="2$EeqAz1$RK" role="1VuXuu">
               <ref role="VXe09" to="rjhg:~Rule" resolve="Rule" />
             </node>
-            <node concept="TZ5HA" id="2$EeqAz1p1w" role="2XjZqd" />
+            <node concept="1PaTwC" id="1E1X3WHsDHY" role="2JaDBN">
+              <node concept="3oM_SD" id="1E1X3WHsDHZ" role="1PaTwD">
+                <property role="3oM_SC" value="" />
+              </node>
+            </node>
           </node>
         </node>
-        <node concept="1dT_AC" id="2$EeqAz1p1l" role="1dT_Ay">
-          <property role="1dT_AB" value=" or " />
+        <node concept="3oM_SD" id="1E1X3WHsDI0" role="1PaTwD">
+          <property role="3oM_SC" value="or" />
         </node>
-        <node concept="1dT_AA" id="2$EeqAz1_GH" role="1dT_Ay">
-          <node concept="92FcH" id="2$EeqAz1_GS" role="qph3F">
-            <node concept="VXe08" id="2$EeqAz1FsI" role="92FcQ">
+        <node concept="1Vtdud" id="1E1X3WHsDI1" role="1PaTwD">
+          <node concept="1VuXuv" id="1E1X3WHsDI2" role="1Vtduc">
+            <node concept="VXe08" id="2$EeqAz1FsI" role="1VuXuu">
               <ref role="VXe09" to="rjhg:~ClassRule" resolve="ClassRule" />
             </node>
-            <node concept="TZ5HA" id="2$EeqAz1_GW" role="2XjZqd" />
+            <node concept="1PaTwC" id="1E1X3WHsDI5" role="2JaDBN">
+              <node concept="3oM_SD" id="1E1X3WHsDI6" role="1PaTwD">
+                <property role="3oM_SC" value="" />
+              </node>
+            </node>
           </node>
         </node>
-        <node concept="1dT_AC" id="2$EeqAz1_GG" role="1dT_Ay">
-          <property role="1dT_AB" value=" to your test" />
+        <node concept="3oM_SD" id="1E1X3WHsDI7" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDI8" role="1PaTwD">
+          <property role="3oM_SC" value="your" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDI9" role="1PaTwD">
+          <property role="3oM_SC" value="test" />
         </node>
       </node>
-      <node concept="TZ5HA" id="2$EeqAz1p0_" role="TZ5H$">
-        <node concept="1dT_AC" id="2$EeqAz1p0A" role="1dT_Ay">
-          <property role="1dT_AB" value="Evgeny Gryaznov, Oct 7, 2010" />
+      <node concept="1PaTwC" id="1E1X3WHsDIa" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDIb" role="1PaTwD">
+          <property role="3oM_SC" value="Evgeny" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDIc" role="1PaTwD">
+          <property role="3oM_SC" value="Gryaznov," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDId" role="1PaTwD">
+          <property role="3oM_SC" value="Oct" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDIe" role="1PaTwD">
+          <property role="3oM_SC" value="7," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDIf" role="1PaTwD">
+          <property role="3oM_SC" value="2010" />
         </node>
       </node>
     </node>

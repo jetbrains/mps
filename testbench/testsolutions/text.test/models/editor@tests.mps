@@ -139,7 +139,7 @@
       <concept id="7836372964445990119" name="jetbrains.mps.lang.text.structure.TextNodeReference" flags="ng" index="1lxOXm">
         <reference id="491191292298774843" name="reference" index="2SUGrr" />
       </concept>
-      <concept id="809653093352985574" name="jetbrains.mps.lang.text.structure.HtmlTag" flags="ng" index="3nDqjk" />
+      <concept id="809653093352985574" name="jetbrains.mps.lang.text.structure.SingleLineHtmlTag" flags="ng" index="3nDqjk" />
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
         <property id="6328114375520539774" name="bold" index="1X82S1" />

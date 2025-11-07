@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -243,17 +243,13 @@
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -2035,9 +2031,21 @@
       </node>
       <node concept="3clFbS" id="2p1v3tOadt3" role="3clF47" />
       <node concept="P$JXv" id="2p1v3tOadv4" role="lGtFl">
-        <node concept="TZ5HA" id="2p1v3tOadw4" role="TZ5H$">
-          <node concept="1dT_AC" id="2p1v3tOadw5" role="1dT_Ay">
-            <property role="1dT_AB" value="URL to pass to ClassLoader.getResource()" />
+        <node concept="1PaTwC" id="1E1X3WHswrI" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswrJ" role="1PaTwD">
+            <property role="3oM_SC" value="URL" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrK" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrL" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrM" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrN" role="1PaTwD">
+            <property role="3oM_SC" value="ClassLoader.getResource()" />
           </node>
         </node>
       </node>
@@ -3853,9 +3861,51 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="596iGVEsKj1" role="lGtFl">
-      <node concept="TZ5HA" id="596iGVEsKj2" role="TZ5H$">
-        <node concept="1dT_AC" id="596iGVEsKj3" role="1dT_Ay">
-          <property role="1dT_AB" value="Better to make it an Exception, but currently behavior lang does not support checked exceptions" />
+      <node concept="1PaTwC" id="1E1X3WHswru" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswrv" role="1PaTwD">
+          <property role="3oM_SC" value="Better" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrw" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrx" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswry" role="1PaTwD">
+          <property role="3oM_SC" value="it" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrz" role="1PaTwD">
+          <property role="3oM_SC" value="an" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswr$" role="1PaTwD">
+          <property role="3oM_SC" value="Exception," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswr_" role="1PaTwD">
+          <property role="3oM_SC" value="but" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrA" role="1PaTwD">
+          <property role="3oM_SC" value="currently" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrB" role="1PaTwD">
+          <property role="3oM_SC" value="behavior" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrC" role="1PaTwD">
+          <property role="3oM_SC" value="lang" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrD" role="1PaTwD">
+          <property role="3oM_SC" value="does" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrE" role="1PaTwD">
+          <property role="3oM_SC" value="not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrF" role="1PaTwD">
+          <property role="3oM_SC" value="support" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrG" role="1PaTwD">
+          <property role="3oM_SC" value="checked" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswrH" role="1PaTwD">
+          <property role="3oM_SC" value="exceptions" />
         </node>
       </node>
     </node>
@@ -4158,9 +4208,42 @@
         </node>
       </node>
       <node concept="P$JXv" id="6cky_RDKU3D" role="lGtFl">
-        <node concept="TZ5HA" id="6cky_RDKU3E" role="TZ5H$">
-          <node concept="1dT_AC" id="6cky_RDKU3F" role="1dT_Ay">
-            <property role="1dT_AB" value="Tests whether the provided theme kind matches the one set in this.targetThemeKind." />
+        <node concept="1PaTwC" id="1E1X3WHswrO" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswrP" role="1PaTwD">
+            <property role="3oM_SC" value="Tests" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrQ" role="1PaTwD">
+            <property role="3oM_SC" value="whether" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrR" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrS" role="1PaTwD">
+            <property role="3oM_SC" value="provided" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrT" role="1PaTwD">
+            <property role="3oM_SC" value="theme" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrU" role="1PaTwD">
+            <property role="3oM_SC" value="kind" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrV" role="1PaTwD">
+            <property role="3oM_SC" value="matches" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrW" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrX" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrY" role="1PaTwD">
+            <property role="3oM_SC" value="set" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrZ" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws0" role="1PaTwD">
+            <property role="3oM_SC" value="this.targetThemeKind." />
           </node>
         </node>
       </node>
@@ -4213,23 +4296,184 @@
         </node>
       </node>
       <node concept="P$JXv" id="6cky_RDKUdk" role="lGtFl">
-        <node concept="TZ5HA" id="6cky_RDKUdl" role="TZ5H$">
-          <node concept="1dT_AC" id="6cky_RDKUdm" role="1dT_Ay">
-            <property role="1dT_AB" value="Indicates whether this layer mandates different images for light and dark themes." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="6cky_RDKVdJ" role="TZ5H$">
-          <node concept="1dT_AC" id="6cky_RDKVdK" role="1dT_Ay">
-            <property role="1dT_AB" value="Only layers not bound to any specific theme kind (this.targetThemeKind == null) that also contain at least one" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="6cky_RDKWxD" role="TZ5H$">
-          <node concept="1dT_AC" id="6cky_RDKWxE" role="1dT_Ay">
-            <property role="1dT_AB" value="instance of JBColorLiteral will influence differently icons for both light and dark themes." />
-          </node>
-        </node>
         <node concept="x79VA" id="6cky_RDKUdn" role="3nqlJM">
-          <property role="x79VB" value="true, if this layer will be displayed differently in light and dark themes." />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHswsJ" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswsK" role="1PaTwD">
+              <property role="3oM_SC" value="true," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsL" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsM" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsN" role="1PaTwD">
+              <property role="3oM_SC" value="layer" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsO" role="1PaTwD">
+              <property role="3oM_SC" value="will" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsP" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsQ" role="1PaTwD">
+              <property role="3oM_SC" value="displayed" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsR" role="1PaTwD">
+              <property role="3oM_SC" value="differently" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsS" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsT" role="1PaTwD">
+              <property role="3oM_SC" value="light" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsU" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsV" role="1PaTwD">
+              <property role="3oM_SC" value="dark" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswsW" role="1PaTwD">
+              <property role="3oM_SC" value="themes." />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsws1" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsws2" role="1PaTwD">
+            <property role="3oM_SC" value="Indicates" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws3" role="1PaTwD">
+            <property role="3oM_SC" value="whether" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws4" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws5" role="1PaTwD">
+            <property role="3oM_SC" value="layer" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws6" role="1PaTwD">
+            <property role="3oM_SC" value="mandates" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws7" role="1PaTwD">
+            <property role="3oM_SC" value="different" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws8" role="1PaTwD">
+            <property role="3oM_SC" value="images" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws9" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsa" role="1PaTwD">
+            <property role="3oM_SC" value="light" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsb" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsc" role="1PaTwD">
+            <property role="3oM_SC" value="dark" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsd" role="1PaTwD">
+            <property role="3oM_SC" value="themes." />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswse" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswsf" role="1PaTwD">
+            <property role="3oM_SC" value="Only" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsg" role="1PaTwD">
+            <property role="3oM_SC" value="layers" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsh" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsi" role="1PaTwD">
+            <property role="3oM_SC" value="bound" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsj" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsk" role="1PaTwD">
+            <property role="3oM_SC" value="any" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsl" role="1PaTwD">
+            <property role="3oM_SC" value="specific" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsm" role="1PaTwD">
+            <property role="3oM_SC" value="theme" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsn" role="1PaTwD">
+            <property role="3oM_SC" value="kind" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswso" role="1PaTwD">
+            <property role="3oM_SC" value="(this.targetThemeKind" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsp" role="1PaTwD">
+            <property role="3oM_SC" value="==" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsq" role="1PaTwD">
+            <property role="3oM_SC" value="null)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsr" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswss" role="1PaTwD">
+            <property role="3oM_SC" value="also" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswst" role="1PaTwD">
+            <property role="3oM_SC" value="contain" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsu" role="1PaTwD">
+            <property role="3oM_SC" value="at" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsv" role="1PaTwD">
+            <property role="3oM_SC" value="least" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsw" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswsx" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswsy" role="1PaTwD">
+            <property role="3oM_SC" value="instance" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsz" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws$" role="1PaTwD">
+            <property role="3oM_SC" value="JBColorLiteral" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsws_" role="1PaTwD">
+            <property role="3oM_SC" value="will" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsA" role="1PaTwD">
+            <property role="3oM_SC" value="influence" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsB" role="1PaTwD">
+            <property role="3oM_SC" value="differently" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsC" role="1PaTwD">
+            <property role="3oM_SC" value="icons" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsD" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsE" role="1PaTwD">
+            <property role="3oM_SC" value="both" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsF" role="1PaTwD">
+            <property role="3oM_SC" value="light" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsG" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsH" role="1PaTwD">
+            <property role="3oM_SC" value="dark" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswsI" role="1PaTwD">
+            <property role="3oM_SC" value="themes." />
+          </node>
         </node>
       </node>
     </node>

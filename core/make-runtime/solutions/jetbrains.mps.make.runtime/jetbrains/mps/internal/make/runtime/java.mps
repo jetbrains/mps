@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -234,6 +234,9 @@
       <concept id="8465538089690881930" name="jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag" flags="ng" index="TUZQ0">
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
+      </concept>
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -1703,21 +1706,87 @@
       </node>
       <node concept="P$JXv" id="m01hLNx81" role="lGtFl">
         <node concept="TUZQ0" id="m01hLNx84" role="3nqlJM">
-          <property role="TUZQ4" value="added streams are reported to this delta" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="m01hLNx86" role="zr_5Q">
             <ref role="zr_51" node="m01hLMl36" resolve="delta" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHs$Xl" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$Xm" role="1PaTwD">
+              <property role="3oM_SC" value="added" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xn" role="1PaTwD">
+              <property role="3oM_SC" value="streams" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xo" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xp" role="1PaTwD">
+              <property role="3oM_SC" value="reported" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xq" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xr" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xs" role="1PaTwD">
+              <property role="3oM_SC" value="delta" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="m01hLNx87" role="3nqlJM">
-          <property role="TUZQ4" value="file created by simple names are relative to this directory" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="m01hLNx89" role="zr_5Q">
             <ref role="zr_51" node="m01hLMk6q" resolve="outputDir" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHs$Xt" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$Xu" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xv" role="1PaTwD">
+              <property role="3oM_SC" value="created" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xw" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xx" role="1PaTwD">
+              <property role="3oM_SC" value="simple" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xy" role="1PaTwD">
+              <property role="3oM_SC" value="names" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xz" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$X$" role="1PaTwD">
+              <property role="3oM_SC" value="relative" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$X_" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$XA" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$XB" role="1PaTwD">
+              <property role="3oM_SC" value="directory" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="m01hLNx8a" role="3nqlJM">
-          <property role="TUZQ4" value="holds file contents" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="m01hLNx8c" role="zr_5Q">
             <ref role="zr_51" node="m01hLMk6s" resolve="fileProcessor" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHs$XC" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$XD" role="1PaTwD">
+              <property role="3oM_SC" value="holds" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$XE" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$XF" role="1PaTwD">
+              <property role="3oM_SC" value="contents" />
+            </node>
           </node>
         </node>
       </node>

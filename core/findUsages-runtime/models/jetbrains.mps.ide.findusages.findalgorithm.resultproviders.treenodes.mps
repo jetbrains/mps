@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="g4jo" ref="r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)" />
@@ -195,16 +195,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -343,9 +337,33 @@
       <ref role="3uigEE" to="g4jo:J2bOg02GFE" resolve="IResultProvider" />
     </node>
     <node concept="3UR2Jj" id="7rEOvdELAWS" role="lGtFl">
-      <node concept="TZ5HA" id="7rEOvdELAXg" role="TZ5H$">
-        <node concept="1dT_AC" id="7rEOvdELAXh" role="1dT_Ay">
-          <property role="1dT_AB" value="NOTE: all nodes except UnionNode MUST have &lt;2 children" />
+      <node concept="1PaTwC" id="1E1X3WHszmC" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHszmD" role="1PaTwD">
+          <property role="3oM_SC" value="NOTE:" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmE" role="1PaTwD">
+          <property role="3oM_SC" value="all" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmF" role="1PaTwD">
+          <property role="3oM_SC" value="nodes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmG" role="1PaTwD">
+          <property role="3oM_SC" value="except" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmH" role="1PaTwD">
+          <property role="3oM_SC" value="UnionNode" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmI" role="1PaTwD">
+          <property role="3oM_SC" value="MUST" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmJ" role="1PaTwD">
+          <property role="3oM_SC" value="have" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmK" role="1PaTwD">
+          <property role="3oM_SC" value="&lt;2" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszmL" role="1PaTwD">
+          <property role="3oM_SC" value="children" />
         </node>
       </node>
     </node>

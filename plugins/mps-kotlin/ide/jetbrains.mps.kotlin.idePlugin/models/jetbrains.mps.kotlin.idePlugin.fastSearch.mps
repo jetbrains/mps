@@ -2,7 +2,7 @@
 <model ref="r:839db98b-6aa7-4fd6-a3a0-c413dbdb3e27(jetbrains.mps.kotlin.idePlugin.fastSearch)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -173,16 +173,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
       <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
@@ -2588,34 +2582,220 @@
     </node>
     <node concept="3Tm1VV" id="7qDCdpGd80J" role="1B3o_S" />
     <node concept="3UR2Jj" id="7qDCdpGdhPB" role="lGtFl">
-      <node concept="TZ5HA" id="7qDCdpGdhPC" role="TZ5H$">
-        <node concept="1dT_AC" id="7qDCdpGdhPD" role="1dT_Ay">
-          <property role="1dT_AB" value="Simplified implementation of kotlin visitor, which only collect references and concepts in the data." />
+      <node concept="1PaTwC" id="1E1X3WHsCjv" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCjw" role="1PaTwD">
+          <property role="3oM_SC" value="Simplified" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjx" role="1PaTwD">
+          <property role="3oM_SC" value="implementation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjy" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjz" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCj$" role="1PaTwD">
+          <property role="3oM_SC" value="visitor," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCj_" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjA" role="1PaTwD">
+          <property role="3oM_SC" value="only" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjB" role="1PaTwD">
+          <property role="3oM_SC" value="collect" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjC" role="1PaTwD">
+          <property role="3oM_SC" value="references" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjD" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjE" role="1PaTwD">
+          <property role="3oM_SC" value="concepts" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjF" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjG" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjH" role="1PaTwD">
+          <property role="3oM_SC" value="data." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7qDCdpG_Vul" role="TZ5H$">
-        <node concept="1dT_AC" id="7qDCdpG_Vum" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+      <node concept="1PaTwC" id="1E1X3WHsCjI" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCjJ" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7qDCdpG_Vur" role="TZ5H$">
-        <node concept="1dT_AC" id="7qDCdpG_Vus" role="1dT_Ay">
-          <property role="1dT_AB" value="It contains several visitors to handle any kind of kotlin construct. The purpose of these visitor is only" />
+      <node concept="1PaTwC" id="1E1X3WHsCjK" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCjL" role="1PaTwD">
+          <property role="3oM_SC" value="It" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjM" role="1PaTwD">
+          <property role="3oM_SC" value="contains" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjN" role="1PaTwD">
+          <property role="3oM_SC" value="several" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjO" role="1PaTwD">
+          <property role="3oM_SC" value="visitors" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjP" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjQ" role="1PaTwD">
+          <property role="3oM_SC" value="handle" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjR" role="1PaTwD">
+          <property role="3oM_SC" value="any" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjS" role="1PaTwD">
+          <property role="3oM_SC" value="kind" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjT" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjU" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjV" role="1PaTwD">
+          <property role="3oM_SC" value="construct." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjW" role="1PaTwD">
+          <property role="3oM_SC" value="The" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjX" role="1PaTwD">
+          <property role="3oM_SC" value="purpose" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjY" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCjZ" role="1PaTwD">
+          <property role="3oM_SC" value="these" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk0" role="1PaTwD">
+          <property role="3oM_SC" value="visitor" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk1" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk2" role="1PaTwD">
+          <property role="3oM_SC" value="only" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7qDCdpG_XXx" role="TZ5H$">
-        <node concept="1dT_AC" id="7qDCdpG_XXy" role="1dT_Ay">
-          <property role="1dT_AB" value="to reach the type instances and annotations, which are the only concepts there that emit references." />
+      <node concept="1PaTwC" id="1E1X3WHsCk3" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCk4" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk5" role="1PaTwD">
+          <property role="3oM_SC" value="reach" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk6" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk7" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk8" role="1PaTwD">
+          <property role="3oM_SC" value="instances" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk9" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCka" role="1PaTwD">
+          <property role="3oM_SC" value="annotations," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkb" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkc" role="1PaTwD">
+          <property role="3oM_SC" value="are" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkd" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCke" role="1PaTwD">
+          <property role="3oM_SC" value="only" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkf" role="1PaTwD">
+          <property role="3oM_SC" value="concepts" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkg" role="1PaTwD">
+          <property role="3oM_SC" value="there" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkh" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCki" role="1PaTwD">
+          <property role="3oM_SC" value="emit" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkj" role="1PaTwD">
+          <property role="3oM_SC" value="references." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7qDCdpGA0sD" role="TZ5H$">
-        <node concept="1dT_AC" id="7qDCdpGA0sE" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+      <node concept="1PaTwC" id="1E1X3WHsCkk" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCkl" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7qDCdpGA0sP" role="TZ5H$">
-        <node concept="1dT_AC" id="7qDCdpGA0sQ" role="1dT_Ay">
-          <property role="1dT_AB" value="Each visitor has a single instance and reports to the module indexer (they can be reused several times)." />
+      <node concept="1PaTwC" id="1E1X3WHsCkm" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCkn" role="1PaTwD">
+          <property role="3oM_SC" value="Each" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCko" role="1PaTwD">
+          <property role="3oM_SC" value="visitor" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkp" role="1PaTwD">
+          <property role="3oM_SC" value="has" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkq" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkr" role="1PaTwD">
+          <property role="3oM_SC" value="single" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCks" role="1PaTwD">
+          <property role="3oM_SC" value="instance" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkt" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCku" role="1PaTwD">
+          <property role="3oM_SC" value="reports" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkv" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkw" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkx" role="1PaTwD">
+          <property role="3oM_SC" value="module" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCky" role="1PaTwD">
+          <property role="3oM_SC" value="indexer" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkz" role="1PaTwD">
+          <property role="3oM_SC" value="(they" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk$" role="1PaTwD">
+          <property role="3oM_SC" value="can" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCk_" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkA" role="1PaTwD">
+          <property role="3oM_SC" value="reused" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkB" role="1PaTwD">
+          <property role="3oM_SC" value="several" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCkC" role="1PaTwD">
+          <property role="3oM_SC" value="times)." />
         </node>
       </node>
     </node>

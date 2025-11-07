@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -169,20 +169,14 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1966870290083281362" name="jetbrains.mps.lang.smodel.structure.EnumMember_NameOperation" flags="ng" index="24Tkf9" />
@@ -477,9 +471,27 @@
     <node concept="2YIFZL" id="2YaiBal1ror" role="jymVt">
       <property role="TrG5h" value="getLinkDeclarationTarget" />
       <node concept="P$JXv" id="Blrb2vEyfL" role="lGtFl">
-        <node concept="TZ5HA" id="Blrb2vEyfM" role="TZ5H$">
-          <node concept="1dT_AC" id="Blrb2vEyfN" role="1dT_Ay">
-            <property role="1dT_AB" value="TODO: think of moving jetbrains.mps.lang.editor.generator.internal into MPS" />
+        <node concept="1PaTwC" id="1E1X3WHsAeo" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAep" role="1PaTwD">
+            <property role="3oM_SC" value="TODO:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAeq" role="1PaTwD">
+            <property role="3oM_SC" value="think" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAer" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAes" role="1PaTwD">
+            <property role="3oM_SC" value="moving" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAet" role="1PaTwD">
+            <property role="3oM_SC" value="jetbrains.mps.lang.editor.generator.internal" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAeu" role="1PaTwD">
+            <property role="3oM_SC" value="into" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAev" role="1PaTwD">
+            <property role="3oM_SC" value="MPS" />
           </node>
         </node>
       </node>
@@ -601,9 +613,24 @@
     </node>
     <node concept="3Tm1VV" id="11BHxZ7C54U" role="1B3o_S" />
     <node concept="3UR2Jj" id="11BHxZ7C60M" role="lGtFl">
-      <node concept="TZ5HA" id="11BHxZ7C60N" role="TZ5H$">
-        <node concept="1dT_AC" id="11BHxZ7C60O" role="1dT_Ay">
-          <property role="1dT_AB" value="TODO: Import layout logic into MPS" />
+      <node concept="1PaTwC" id="1E1X3WHsAdY" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAdZ" role="1PaTwD">
+          <property role="3oM_SC" value="TODO:" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAe0" role="1PaTwD">
+          <property role="3oM_SC" value="Import" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAe1" role="1PaTwD">
+          <property role="3oM_SC" value="layout" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAe2" role="1PaTwD">
+          <property role="3oM_SC" value="logic" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAe3" role="1PaTwD">
+          <property role="3oM_SC" value="into" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAe4" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
         </node>
       </node>
     </node>
@@ -980,9 +1007,36 @@
       </node>
       <node concept="P$JXv" id="1KKa9$gaf4x" role="lGtFl">
         <node concept="TZ5HI" id="1KKa9$gaf4y" role="3nqlJM">
-          <node concept="TZ5HA" id="1KKa9$gaf4z" role="3HnX3l">
-            <node concept="1dT_AC" id="1KKa9$gaf_G" role="1dT_Ay">
-              <property role="1dT_AB" value="just instantiate the class directly, it's no longer a service/component" />
+          <node concept="1PaTwC" id="1E1X3WHsAew" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAex" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAey" role="1PaTwD">
+              <property role="3oM_SC" value="instantiate" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAez" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAe$" role="1PaTwD">
+              <property role="3oM_SC" value="class" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAe_" role="1PaTwD">
+              <property role="3oM_SC" value="directly," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAeA" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAeB" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAeC" role="1PaTwD">
+              <property role="3oM_SC" value="longer" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAeD" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAeE" role="1PaTwD">
+              <property role="3oM_SC" value="service/component" />
             </node>
           </node>
         </node>
@@ -1006,9 +1060,60 @@
     <node concept="3Tm1VV" id="11BHxZ7C7LX" role="1B3o_S" />
     <node concept="3UR2Jj" id="14vDHf9wo7C" role="lGtFl">
       <node concept="TZ5HI" id="14vDHf9wo7D" role="3nqlJM">
-        <node concept="TZ5HA" id="14vDHf9wo7E" role="3HnX3l">
-          <node concept="1dT_AC" id="14vDHf9woRg" role="1dT_Ay">
-            <property role="1dT_AB" value="not in use in MPS, not of a great value as an API anyway (LanguageRegistry.withAvailableAspects(,EditorAspectDescriptor.class,) does the trick" />
+        <node concept="1PaTwC" id="1E1X3WHsAe5" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAe6" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAe7" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAe8" role="1PaTwD">
+            <property role="3oM_SC" value="use" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAe9" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAea" role="1PaTwD">
+            <property role="3oM_SC" value="MPS," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAeb" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAec" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAed" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAee" role="1PaTwD">
+            <property role="3oM_SC" value="great" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAef" role="1PaTwD">
+            <property role="3oM_SC" value="value" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAeg" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAeh" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAei" role="1PaTwD">
+            <property role="3oM_SC" value="API" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAej" role="1PaTwD">
+            <property role="3oM_SC" value="anyway" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAek" role="1PaTwD">
+            <property role="3oM_SC" value="(LanguageRegistry.withAvailableAspects(,EditorAspectDescriptor.class,)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAel" role="1PaTwD">
+            <property role="3oM_SC" value="does" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAem" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAen" role="1PaTwD">
+            <property role="3oM_SC" value="trick" />
           </node>
         </node>
       </node>

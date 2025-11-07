@@ -7,7 +7,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -203,19 +203,15 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
       <concept id="8465538089690324397" name="jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag" flags="ng" index="TZ7YB">
         <property id="8465538089690324399" name="text" index="TZ7Y_" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -1923,9 +1919,30 @@
     </node>
     <node concept="3Tm1VV" id="7k6J8c3tHYQ" role="1B3o_S" />
     <node concept="3UR2Jj" id="6OrnGrbdDnZ" role="lGtFl">
-      <node concept="TZ5HA" id="6OrnGrbdDo0" role="TZ5H$">
-        <node concept="1dT_AC" id="6OrnGrbdDo1" role="1dT_Ay">
-          <property role="1dT_AB" value="use the ClassifierMethodsHierarchyChecker idea instead of this class" />
+      <node concept="1PaTwC" id="1E1X3WHsAmV" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAmW" role="1PaTwD">
+          <property role="3oM_SC" value="use" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAmX" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAmY" role="1PaTwD">
+          <property role="3oM_SC" value="ClassifierMethodsHierarchyChecker" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAmZ" role="1PaTwD">
+          <property role="3oM_SC" value="idea" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAn0" role="1PaTwD">
+          <property role="3oM_SC" value="instead" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAn1" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAn2" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAn3" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
         </node>
       </node>
     </node>
@@ -2397,7 +2414,12 @@
     <node concept="3Tm1VV" id="3Ssq9B$jp8q" role="1B3o_S" />
     <node concept="3UR2Jj" id="3Ssq9B$k9Lg" role="lGtFl">
       <node concept="TZ7YB" id="3Ssq9B$k9LH" role="3nqlJM">
-        <property role="TZ7Y_" value="2024.2" />
+        <property role="TZ7Y_" value="" />
+        <node concept="1PaTwC" id="1E1X3WHsAn4" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAn5" role="1PaTwD">
+            <property role="3oM_SC" value="2024.2" />
+          </node>
+        </node>
       </node>
     </node>
   </node>

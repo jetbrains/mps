@@ -8,7 +8,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="3" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="2787ae0c-1f54-4fbf-b0b7-caf2b5beecbc(jetbrains.mps.devkit.aspect.migration)" />
   </languages>
   <imports>
@@ -117,16 +117,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl">
       <concept id="8880393040217246788" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance" flags="ig" index="ffn8J">
@@ -660,9 +654,30 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="7eHFHBMvUyk" role="lGtFl">
-      <node concept="TZ5HA" id="7eHFHBMvUyl" role="TZ5H$">
-        <node concept="1dT_AC" id="7eHFHBMvUym" role="1dT_Ay">
-          <property role="1dT_AB" value="This was copied from Structure Language's migration (v2)" />
+      <node concept="1PaTwC" id="1E1X3WHsxiL" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxiM" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiN" role="1PaTwD">
+          <property role="3oM_SC" value="was" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiO" role="1PaTwD">
+          <property role="3oM_SC" value="copied" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiP" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiQ" role="1PaTwD">
+          <property role="3oM_SC" value="Structure" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiR" role="1PaTwD">
+          <property role="3oM_SC" value="Language's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiS" role="1PaTwD">
+          <property role="3oM_SC" value="migration" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxiT" role="1PaTwD">
+          <property role="3oM_SC" value="(v2)" />
         </node>
       </node>
     </node>

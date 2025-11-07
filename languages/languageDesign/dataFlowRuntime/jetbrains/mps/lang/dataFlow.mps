@@ -5,7 +5,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
@@ -212,34 +212,30 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="8465538089690324397" name="jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag" flags="ng" index="TZ7YB">
         <property id="8465538089690324399" name="text" index="TZ7Y_" />
       </concept>
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306647746" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE" flags="ng" index="1VuXuv">
+        <child id="5085607816306647747" name="reference" index="1VuXuu" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
@@ -365,20 +361,24 @@
       <node concept="3Tm1VV" id="4mpxoQud12h" role="1B3o_S" />
       <node concept="P$JXv" id="4OKSZMF07Uw" role="lGtFl">
         <node concept="TZ5HI" id="4OKSZMF1aC7" role="3nqlJM">
-          <node concept="TZ5HA" id="4OKSZMF1aC8" role="3HnX3l">
-            <node concept="1dT_AC" id="4OKSZMF1aC9" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
+          <node concept="1PaTwC" id="1E1X3WHsAzz" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAz$" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
             </node>
-            <node concept="1dT_AA" id="4OKSZMF1aCa" role="1dT_Ay">
-              <node concept="92FcH" id="4OKSZMF1aCb" role="qph3F">
-                <node concept="TZ5HA" id="4OKSZMF1aCc" role="2XjZqd" />
-                <node concept="VXe0Z" id="4OKSZMF1aCd" role="92FcQ">
+            <node concept="1Vtdud" id="1E1X3WHsAz_" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHsAzA" role="1Vtduc">
+                <node concept="VXe0Z" id="4OKSZMF1aCd" role="1VuXuu">
                   <ref role="VXe0S" node="4OKSZMEZ3OG" resolve="MPSProgramBuilder" />
+                </node>
+                <node concept="1PaTwC" id="1E1X3WHsAzD" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHsAzE" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
                 </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="4OKSZMF1aCe" role="1dT_Ay">
-              <property role="1dT_AB" value="" />
+            <node concept="3oM_SD" id="1E1X3WHsAzF" role="1PaTwD">
+              <property role="3oM_SC" value="" />
             </node>
           </node>
         </node>
@@ -436,20 +436,24 @@
       <node concept="3Tm1VV" id="4mpxoQud1v6" role="1B3o_S" />
       <node concept="P$JXv" id="4OKSZMF072P" role="lGtFl">
         <node concept="TZ5HI" id="4OKSZMF18cQ" role="3nqlJM">
-          <node concept="TZ5HA" id="4OKSZMF18cR" role="3HnX3l">
-            <node concept="1dT_AC" id="4OKSZMF18cS" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
+          <node concept="1PaTwC" id="1E1X3WHsAzG" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAzH" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
             </node>
-            <node concept="1dT_AA" id="4OKSZMF18cT" role="1dT_Ay">
-              <node concept="92FcH" id="4OKSZMF18cU" role="qph3F">
-                <node concept="TZ5HA" id="4OKSZMF18cV" role="2XjZqd" />
-                <node concept="VXe0Z" id="4OKSZMF18cW" role="92FcQ">
+            <node concept="1Vtdud" id="1E1X3WHsAzI" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHsAzJ" role="1Vtduc">
+                <node concept="VXe0Z" id="4OKSZMF18cW" role="1VuXuu">
                   <ref role="VXe0S" node="4OKSZMEZ3OG" resolve="MPSProgramBuilder" />
+                </node>
+                <node concept="1PaTwC" id="1E1X3WHsAzM" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHsAzN" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
                 </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="4OKSZMF18cX" role="1dT_Ay">
-              <property role="1dT_AB" value="" />
+            <node concept="3oM_SD" id="1E1X3WHsAzO" role="1PaTwD">
+              <property role="3oM_SC" value="" />
             </node>
           </node>
         </node>
@@ -519,20 +523,24 @@
       </node>
       <node concept="P$JXv" id="4OKSZMF02pU" role="lGtFl">
         <node concept="TZ5HI" id="4OKSZMF16g6" role="3nqlJM">
-          <node concept="TZ5HA" id="4OKSZMF16g7" role="3HnX3l">
-            <node concept="1dT_AC" id="4OKSZMF16g8" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
+          <node concept="1PaTwC" id="1E1X3WHsAzP" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAzQ" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
             </node>
-            <node concept="1dT_AA" id="4OKSZMF16g9" role="1dT_Ay">
-              <node concept="92FcH" id="4OKSZMF16ga" role="qph3F">
-                <node concept="TZ5HA" id="4OKSZMF16gb" role="2XjZqd" />
-                <node concept="VXe0Z" id="4OKSZMF16gc" role="92FcQ">
+            <node concept="1Vtdud" id="1E1X3WHsAzR" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHsAzS" role="1Vtduc">
+                <node concept="VXe0Z" id="4OKSZMF16gc" role="1VuXuu">
                   <ref role="VXe0S" node="4OKSZMEZ3OG" resolve="MPSProgramBuilder" />
+                </node>
+                <node concept="1PaTwC" id="1E1X3WHsAzV" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHsAzW" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
                 </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="4OKSZMF16gd" role="1dT_Ay">
-              <property role="1dT_AB" value="" />
+            <node concept="3oM_SD" id="1E1X3WHsAzX" role="1PaTwD">
+              <property role="3oM_SC" value="" />
             </node>
           </node>
         </node>
@@ -615,20 +623,24 @@
       </node>
       <node concept="P$JXv" id="4OKSZMEZY6d" role="lGtFl">
         <node concept="TZ5HI" id="4OKSZMEZY6e" role="3nqlJM">
-          <node concept="TZ5HA" id="4OKSZMEZY6f" role="3HnX3l">
-            <node concept="1dT_AC" id="4OKSZMF15uf" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
+          <node concept="1PaTwC" id="1E1X3WHsAzY" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAzZ" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
             </node>
-            <node concept="1dT_AA" id="4OKSZMF15uh" role="1dT_Ay">
-              <node concept="92FcH" id="4OKSZMF15uS" role="qph3F">
-                <node concept="TZ5HA" id="4OKSZMF15uU" role="2XjZqd" />
-                <node concept="VXe0Z" id="4OKSZMF15DZ" role="92FcQ">
+            <node concept="1Vtdud" id="1E1X3WHsA$0" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHsA$1" role="1Vtduc">
+                <node concept="VXe0Z" id="4OKSZMF15DZ" role="1VuXuu">
                   <ref role="VXe0S" node="4OKSZMEZ3OG" resolve="MPSProgramBuilder" />
+                </node>
+                <node concept="1PaTwC" id="1E1X3WHsA$4" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHsA$5" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
                 </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="4OKSZMF15ug" role="1dT_Ay">
-              <property role="1dT_AB" value="" />
+            <node concept="3oM_SD" id="1E1X3WHsA$6" role="1PaTwD">
+              <property role="3oM_SC" value="" />
             </node>
           </node>
         </node>
@@ -748,9 +760,21 @@
       </node>
       <node concept="P$JXv" id="4OKSZMEZ109" role="lGtFl">
         <node concept="TZ5HI" id="4OKSZMEZ10a" role="3nqlJM">
-          <node concept="TZ5HA" id="4OKSZMEZ10b" role="3HnX3l">
-            <node concept="1dT_AC" id="4OKSZMEZ3Fr" role="1dT_Ay">
-              <property role="1dT_AB" value="use alternative that takes ComponentHost" />
+          <node concept="1PaTwC" id="1E1X3WHsA$7" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsA$8" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$9" role="1PaTwD">
+              <property role="3oM_SC" value="alternative" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$a" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$b" role="1PaTwD">
+              <property role="3oM_SC" value="takes" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$c" role="1PaTwD">
+              <property role="3oM_SC" value="ComponentHost" />
             </node>
           </node>
         </node>
@@ -828,7 +852,12 @@
       </node>
       <node concept="P$JXv" id="4OKSZMEZcZ9" role="lGtFl">
         <node concept="TZ7YB" id="4OKSZMEZe2o" role="3nqlJM">
-          <property role="TZ7Y_" value="2025.1" />
+          <property role="TZ7Y_" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsA$d" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsA$e" role="1PaTwD">
+              <property role="3oM_SC" value="2025.1" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -1384,14 +1413,104 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="7q5dBpSdq1s" role="lGtFl">
-      <node concept="TZ5HA" id="7q5dBpSdq1t" role="TZ5H$">
-        <node concept="1dT_AC" id="7q5dBpSdq1u" role="1dT_Ay">
-          <property role="1dT_AB" value="XXX likely, we need a factory for MPSProgramBuilder registered as a CoreComponent, so that we can supply proper LanguageRegistry instance " />
+      <node concept="1PaTwC" id="1E1X3WHsAz1" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAz2" role="1PaTwD">
+          <property role="3oM_SC" value="XXX" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz3" role="1PaTwD">
+          <property role="3oM_SC" value="likely," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz4" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz5" role="1PaTwD">
+          <property role="3oM_SC" value="need" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz6" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz7" role="1PaTwD">
+          <property role="3oM_SC" value="factory" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz8" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAz9" role="1PaTwD">
+          <property role="3oM_SC" value="MPSProgramBuilder" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAza" role="1PaTwD">
+          <property role="3oM_SC" value="registered" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzb" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzc" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzd" role="1PaTwD">
+          <property role="3oM_SC" value="CoreComponent," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAze" role="1PaTwD">
+          <property role="3oM_SC" value="so" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzf" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzg" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzh" role="1PaTwD">
+          <property role="3oM_SC" value="can" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzi" role="1PaTwD">
+          <property role="3oM_SC" value="supply" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzj" role="1PaTwD">
+          <property role="3oM_SC" value="proper" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzk" role="1PaTwD">
+          <property role="3oM_SC" value="LanguageRegistry" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzl" role="1PaTwD">
+          <property role="3oM_SC" value="instance" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7q5dBpSdqws" role="TZ5H$">
-        <node concept="1dT_AC" id="7q5dBpSdqwt" role="1dT_Ay">
-          <property role="1dT_AB" value="in here without need to force clients to care about proper context." />
+      <node concept="1PaTwC" id="1E1X3WHsAzm" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAzn" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzo" role="1PaTwD">
+          <property role="3oM_SC" value="here" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzp" role="1PaTwD">
+          <property role="3oM_SC" value="without" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzq" role="1PaTwD">
+          <property role="3oM_SC" value="need" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzr" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzs" role="1PaTwD">
+          <property role="3oM_SC" value="force" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzt" role="1PaTwD">
+          <property role="3oM_SC" value="clients" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzu" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzv" role="1PaTwD">
+          <property role="3oM_SC" value="care" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzw" role="1PaTwD">
+          <property role="3oM_SC" value="about" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzx" role="1PaTwD">
+          <property role="3oM_SC" value="proper" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAzy" role="1PaTwD">
+          <property role="3oM_SC" value="context." />
         </node>
       </node>
     </node>
@@ -2199,31 +2318,69 @@
       </node>
       <node concept="P$JXv" id="3D2zx$UvTuO" role="lGtFl">
         <node concept="TZ5HI" id="3D2zx$UvTuP" role="3nqlJM">
-          <node concept="TZ5HA" id="3D2zx$UvTuQ" role="3HnX3l">
-            <node concept="1dT_AC" id="3D2zx$UvU5t" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
+          <node concept="1PaTwC" id="1E1X3WHsA$f" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsA$g" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
             </node>
-            <node concept="1dT_AA" id="3D2zx$UvUbQ" role="1dT_Ay">
-              <node concept="92FcH" id="3D2zx$UvUbS" role="qph3F">
-                <node concept="TZ5HA" id="3D2zx$UvUbU" role="2XjZqd" />
-                <node concept="VXe0Z" id="3D2zx$UvUmZ" role="92FcQ">
+            <node concept="1Vtdud" id="1E1X3WHsA$h" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHsA$i" role="1Vtduc">
+                <node concept="VXe0Z" id="3D2zx$UvUmZ" role="1VuXuu">
                   <ref role="VXe0S" node="3D2zx$UvQGk" resolve="MPSProgramFactory" />
                 </node>
-              </node>
-            </node>
-            <node concept="1dT_AC" id="3D2zx$UvUbP" role="1dT_Ay">
-              <property role="1dT_AB" value=" instead, or " />
-            </node>
-            <node concept="1dT_AA" id="3D2zx$UvUyt" role="1dT_Ay">
-              <node concept="92FcH" id="3D2zx$UvUz4" role="qph3F">
-                <node concept="TZ5HA" id="3D2zx$UvUz6" role="2XjZqd" />
-                <node concept="VXe0Z" id="3D2zx$UvUI9" role="92FcQ">
-                  <ref role="VXe0S" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
+                <node concept="1PaTwC" id="1E1X3WHsA$l" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHsA$m" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
                 </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="3D2zx$UvUys" role="1dT_Ay">
-              <property role="1dT_AB" value=" to get pre-initialized instance if you don't need specific modes" />
+            <node concept="3oM_SD" id="1E1X3WHsA$n" role="1PaTwD">
+              <property role="3oM_SC" value="instead," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$o" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="1Vtdud" id="1E1X3WHsA$p" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHsA$q" role="1Vtduc">
+                <node concept="VXe0Z" id="3D2zx$UvUI9" role="1VuXuu">
+                  <ref role="VXe0S" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
+                </node>
+                <node concept="1PaTwC" id="1E1X3WHsA$t" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHsA$u" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$v" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$w" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$x" role="1PaTwD">
+              <property role="3oM_SC" value="pre-initialized" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$y" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$z" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$$" role="1PaTwD">
+              <property role="3oM_SC" value="you" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$_" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$A" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$B" role="1PaTwD">
+              <property role="3oM_SC" value="specific" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsA$C" role="1PaTwD">
+              <property role="3oM_SC" value="modes" />
             </node>
           </node>
         </node>

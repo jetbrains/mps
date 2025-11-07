@@ -7,7 +7,7 @@
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
   </languages>
@@ -194,16 +194,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
@@ -611,19 +605,148 @@
       <ref role="3uigEE" to="1ltj:3X3rDwN7qLn" resolve="ClassifierLoader" />
     </node>
     <node concept="3UR2Jj" id="4vxAdYG16M5" role="lGtFl">
-      <node concept="TZ5HA" id="4vxAdYG16M6" role="TZ5H$">
-        <node concept="1dT_AC" id="4vxAdYG16M7" role="1dT_Ay">
-          <property role="1dT_AB" value="This utility allows to load a java class similarly to how java stubs proceed. It allows on top of that to" />
+      <node concept="1PaTwC" id="1E1X3WHs$Ve" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs$Vf" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vg" role="1PaTwD">
+          <property role="3oM_SC" value="utility" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vh" role="1PaTwD">
+          <property role="3oM_SC" value="allows" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vi" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vj" role="1PaTwD">
+          <property role="3oM_SC" value="load" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vk" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vl" role="1PaTwD">
+          <property role="3oM_SC" value="java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vm" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vn" role="1PaTwD">
+          <property role="3oM_SC" value="similarly" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vo" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vp" role="1PaTwD">
+          <property role="3oM_SC" value="how" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vq" role="1PaTwD">
+          <property role="3oM_SC" value="java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vr" role="1PaTwD">
+          <property role="3oM_SC" value="stubs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vs" role="1PaTwD">
+          <property role="3oM_SC" value="proceed." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vt" role="1PaTwD">
+          <property role="3oM_SC" value="It" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vu" role="1PaTwD">
+          <property role="3oM_SC" value="allows" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vv" role="1PaTwD">
+          <property role="3oM_SC" value="on" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vw" role="1PaTwD">
+          <property role="3oM_SC" value="top" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vx" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vy" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Vz" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
         </node>
       </node>
-      <node concept="TZ5HA" id="4vxAdYG1bDr" role="TZ5H$">
-        <node concept="1dT_AC" id="4vxAdYG1bDs" role="1dT_Ay">
-          <property role="1dT_AB" value="refer to both kotlin and java constructs, using VisitorContext API (updateClassifier(node, VisitorContext, Function)" />
+      <node concept="1PaTwC" id="1E1X3WHs$V$" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs$V_" role="1PaTwD">
+          <property role="3oM_SC" value="refer" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VA" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VB" role="1PaTwD">
+          <property role="3oM_SC" value="both" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VC" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VD" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VE" role="1PaTwD">
+          <property role="3oM_SC" value="java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VF" role="1PaTwD">
+          <property role="3oM_SC" value="constructs," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VG" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VH" role="1PaTwD">
+          <property role="3oM_SC" value="VisitorContext" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VI" role="1PaTwD">
+          <property role="3oM_SC" value="API" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VJ" role="1PaTwD">
+          <property role="3oM_SC" value="(updateClassifier(node," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VK" role="1PaTwD">
+          <property role="3oM_SC" value="VisitorContext," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VL" role="1PaTwD">
+          <property role="3oM_SC" value="Function)" />
         </node>
       </node>
-      <node concept="TZ5HA" id="4vxAdYG1$ub" role="TZ5H$">
-        <node concept="1dT_AC" id="4vxAdYG1$uc" role="1dT_Ay">
-          <property role="1dT_AB" value="needs to be called instead of the parent updateClassifier method for that)." />
+      <node concept="1PaTwC" id="1E1X3WHs$VM" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs$VN" role="1PaTwD">
+          <property role="3oM_SC" value="needs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VO" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VP" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VQ" role="1PaTwD">
+          <property role="3oM_SC" value="called" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VR" role="1PaTwD">
+          <property role="3oM_SC" value="instead" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VS" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VT" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VU" role="1PaTwD">
+          <property role="3oM_SC" value="parent" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VV" role="1PaTwD">
+          <property role="3oM_SC" value="updateClassifier" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VW" role="1PaTwD">
+          <property role="3oM_SC" value="method" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VX" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$VY" role="1PaTwD">
+          <property role="3oM_SC" value="that)." />
         </node>
       </node>
     </node>
@@ -2051,14 +2174,89 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="4vxAdYG1AQv" role="lGtFl">
-      <node concept="TZ5HA" id="4vxAdYG1AQw" role="TZ5H$">
-        <node concept="1dT_AC" id="4vxAdYG1AQx" role="1dT_Ay">
-          <property role="1dT_AB" value="Loads deeply java content from a class file. This extends regular ClassifierUpdater to use VisitorContext API and" />
+      <node concept="1PaTwC" id="1E1X3WHs$VZ" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs$W0" role="1PaTwD">
+          <property role="3oM_SC" value="Loads" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W1" role="1PaTwD">
+          <property role="3oM_SC" value="deeply" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W2" role="1PaTwD">
+          <property role="3oM_SC" value="java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W3" role="1PaTwD">
+          <property role="3oM_SC" value="content" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W4" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W5" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W6" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W7" role="1PaTwD">
+          <property role="3oM_SC" value="file." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W8" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$W9" role="1PaTwD">
+          <property role="3oM_SC" value="extends" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wa" role="1PaTwD">
+          <property role="3oM_SC" value="regular" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wb" role="1PaTwD">
+          <property role="3oM_SC" value="ClassifierUpdater" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wc" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wd" role="1PaTwD">
+          <property role="3oM_SC" value="use" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$We" role="1PaTwD">
+          <property role="3oM_SC" value="VisitorContext" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wf" role="1PaTwD">
+          <property role="3oM_SC" value="API" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wg" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
         </node>
       </node>
-      <node concept="TZ5HA" id="4vxAdYG1DCf" role="TZ5H$">
-        <node concept="1dT_AC" id="4vxAdYG1DCg" role="1dT_Ay">
-          <property role="1dT_AB" value="create references to either kotlin or java declarations when necessary." />
+      <node concept="1PaTwC" id="1E1X3WHs$Wh" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs$Wi" role="1PaTwD">
+          <property role="3oM_SC" value="create" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wj" role="1PaTwD">
+          <property role="3oM_SC" value="references" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wk" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wl" role="1PaTwD">
+          <property role="3oM_SC" value="either" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wm" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wn" role="1PaTwD">
+          <property role="3oM_SC" value="or" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wo" role="1PaTwD">
+          <property role="3oM_SC" value="java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wp" role="1PaTwD">
+          <property role="3oM_SC" value="declarations" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wq" role="1PaTwD">
+          <property role="3oM_SC" value="when" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs$Wr" role="1PaTwD">
+          <property role="3oM_SC" value="necessary." />
         </node>
       </node>
     </node>

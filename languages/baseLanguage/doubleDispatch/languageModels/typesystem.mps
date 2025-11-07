@@ -172,16 +172,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
@@ -2405,9 +2399,48 @@
     </node>
     <node concept="3Tm1VV" id="5WzrsV0ymOc" role="1B3o_S" />
     <node concept="3UR2Jj" id="5WzrsV0ymOU" role="lGtFl">
-      <node concept="TZ5HA" id="5WzrsV0ymOV" role="TZ5H$">
-        <node concept="1dT_AC" id="5WzrsV0ymOW" role="1dT_Ay">
-          <property role="1dT_AB" value="This describes a group of related dispatch methods, i.e. which dispatch to each other" />
+      <node concept="1PaTwC" id="1E1X3WHswcs" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswct" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcu" role="1PaTwD">
+          <property role="3oM_SC" value="describes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcv" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcw" role="1PaTwD">
+          <property role="3oM_SC" value="group" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcx" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcy" role="1PaTwD">
+          <property role="3oM_SC" value="related" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcz" role="1PaTwD">
+          <property role="3oM_SC" value="dispatch" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswc$" role="1PaTwD">
+          <property role="3oM_SC" value="methods," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswc_" role="1PaTwD">
+          <property role="3oM_SC" value="i.e." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcA" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcB" role="1PaTwD">
+          <property role="3oM_SC" value="dispatch" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcC" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcD" role="1PaTwD">
+          <property role="3oM_SC" value="each" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswcE" role="1PaTwD">
+          <property role="3oM_SC" value="other" />
         </node>
       </node>
     </node>

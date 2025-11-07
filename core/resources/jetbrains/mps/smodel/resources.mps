@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -242,8 +242,10 @@
       <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -251,19 +253,14 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
-        <child id="3106559687488741665" name="line" index="2Xj1qM" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306633585" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE" flags="ng" index="1VuTSG" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -271,6 +268,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -375,9 +380,89 @@
       </node>
       <node concept="P$JXv" id="713BH0SCemV" role="lGtFl">
         <node concept="TUZQ0" id="713BH0SCemY" role="3nqlJM">
-          <property role="TUZQ4" value="models to break down by module to constitute a MResource. Only models that satisfy 'are subject to generation' criteria (see {@link GenerationFacade} are taken into account." />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="713BH0SCen0" role="zr_5Q">
             <ref role="zr_51" node="6zsZmIC0WqN" resolve="models" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHs_g2" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_g3" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g4" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g5" role="1PaTwD">
+              <property role="3oM_SC" value="break" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g6" role="1PaTwD">
+              <property role="3oM_SC" value="down" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g7" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g8" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g9" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_ga" role="1PaTwD">
+              <property role="3oM_SC" value="constitute" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gb" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gc" role="1PaTwD">
+              <property role="3oM_SC" value="MResource." />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gd" role="1PaTwD">
+              <property role="3oM_SC" value="Only" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_ge" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gf" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gg" role="1PaTwD">
+              <property role="3oM_SC" value="satisfy" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gh" role="1PaTwD">
+              <property role="3oM_SC" value="'are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gi" role="1PaTwD">
+              <property role="3oM_SC" value="subject" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gj" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gk" role="1PaTwD">
+              <property role="3oM_SC" value="generation'" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gl" role="1PaTwD">
+              <property role="3oM_SC" value="criteria" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gm" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gn" role="1PaTwD">
+              <property role="3oM_SC" value="{@link" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_go" role="1PaTwD">
+              <property role="3oM_SC" value="GenerationFacade}" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gp" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gq" role="1PaTwD">
+              <property role="3oM_SC" value="taken" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gr" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gs" role="1PaTwD">
+              <property role="3oM_SC" value="account." />
+            </node>
           </node>
         </node>
       </node>
@@ -450,9 +535,89 @@
       </node>
       <node concept="P$JXv" id="2O5mK2f2EfT" role="lGtFl">
         <node concept="TUZQ0" id="2O5mK2f2EfU" role="3nqlJM">
-          <property role="TUZQ4" value="models to break down by module to constitute a MResource. Only models that satisfy 'are subject to generation' criteria (see {@link GenerationFacade} are taken into account." />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="2O5mK2f2EfV" role="zr_5Q">
             <ref role="zr_51" node="2O5mK2f2Efv" resolve="models" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHs_gt" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_gu" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gv" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gw" role="1PaTwD">
+              <property role="3oM_SC" value="break" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gx" role="1PaTwD">
+              <property role="3oM_SC" value="down" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gy" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gz" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g$" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_g_" role="1PaTwD">
+              <property role="3oM_SC" value="constitute" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gA" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gB" role="1PaTwD">
+              <property role="3oM_SC" value="MResource." />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gC" role="1PaTwD">
+              <property role="3oM_SC" value="Only" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gD" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gE" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gF" role="1PaTwD">
+              <property role="3oM_SC" value="satisfy" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gG" role="1PaTwD">
+              <property role="3oM_SC" value="'are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gH" role="1PaTwD">
+              <property role="3oM_SC" value="subject" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gI" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gJ" role="1PaTwD">
+              <property role="3oM_SC" value="generation'" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gK" role="1PaTwD">
+              <property role="3oM_SC" value="criteria" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gL" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gM" role="1PaTwD">
+              <property role="3oM_SC" value="{@link" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gN" role="1PaTwD">
+              <property role="3oM_SC" value="GenerationFacade}" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gO" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gP" role="1PaTwD">
+              <property role="3oM_SC" value="taken" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gQ" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_gR" role="1PaTwD">
+              <property role="3oM_SC" value="account." />
+            </node>
           </node>
         </node>
       </node>
@@ -493,21 +658,96 @@
         <ref role="3uigEE" node="6gLh390EkrJ" resolve="ModelsToResources" />
       </node>
       <node concept="P$JXv" id="35A2TU_Apl1" role="lGtFl">
-        <node concept="TZ5HA" id="35A2TU_Apl2" role="TZ5H$">
-          <node concept="1dT_AC" id="35A2TU_Apl3" role="1dT_Ay">
-            <property role="1dT_AB" value="Occasionally, we need to override default 'can generate a model' criteria, e.g. when one needs to transform a model that is not " />
+        <node concept="1PaTwC" id="1E1X3WHs_gS" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_gT" role="1PaTwD">
+            <property role="3oM_SC" value="Occasionally," />
           </node>
-          <node concept="1dT_AA" id="35A2TU_Ap$f" role="1dT_Ay">
-            <node concept="VVOAv" id="35A2TU_Axh4" role="qph3F">
-              <node concept="TZ5HA" id="35A2TU_Axh8" role="2Xj1qM">
-                <node concept="1dT_AC" id="35A2TU_Axhm" role="1dT_Ay">
-                  <property role="1dT_AB" value="GeneratableSModel" />
+          <node concept="3oM_SD" id="1E1X3WHs_gU" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_gV" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_gW" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_gX" role="1PaTwD">
+            <property role="3oM_SC" value="override" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_gY" role="1PaTwD">
+            <property role="3oM_SC" value="default" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_gZ" role="1PaTwD">
+            <property role="3oM_SC" value="'can" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h0" role="1PaTwD">
+            <property role="3oM_SC" value="generate" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h1" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h2" role="1PaTwD">
+            <property role="3oM_SC" value="model'" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h3" role="1PaTwD">
+            <property role="3oM_SC" value="criteria," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h4" role="1PaTwD">
+            <property role="3oM_SC" value="e.g." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h5" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h6" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h7" role="1PaTwD">
+            <property role="3oM_SC" value="needs" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h8" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_h9" role="1PaTwD">
+            <property role="3oM_SC" value="transform" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ha" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_hb" role="1PaTwD">
+            <property role="3oM_SC" value="model" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_hc" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_hd" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_he" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHs_hf" role="1PaTwD">
+            <node concept="1VuTSG" id="1E1X3WHs_hg" role="1Vtduc">
+              <node concept="1PaTwC" id="1E1X3WHs_hj" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHs_hk" role="1PaTwD">
+                  <property role="3oM_SC" value="GeneratableSModel" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="1dT_AC" id="35A2TU_Ap$e" role="1dT_Ay">
-            <property role="1dT_AB" value=", like temporary or transient" />
+          <node concept="3oM_SD" id="1E1X3WHs_hl" role="1PaTwD">
+            <property role="3oM_SC" value="," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_hm" role="1PaTwD">
+            <property role="3oM_SC" value="like" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_hn" role="1PaTwD">
+            <property role="3oM_SC" value="temporary" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ho" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_hp" role="1PaTwD">
+            <property role="3oM_SC" value="transient" />
           </node>
         </node>
       </node>
@@ -1468,19 +1708,130 @@
       <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
     </node>
     <node concept="3UR2Jj" id="72EPOrtLl3p" role="lGtFl">
-      <node concept="TZ5HA" id="72EPOrtLl3q" role="TZ5H$">
-        <node concept="1dT_AC" id="72EPOrtLl3r" role="1dT_Ay">
-          <property role="1dT_AB" value="Clean-up activity wrapped as a make resource to get passed between targets." />
+      <node concept="1PaTwC" id="1E1X3WHs_fn" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_fo" role="1PaTwD">
+          <property role="3oM_SC" value="Clean-up" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fp" role="1PaTwD">
+          <property role="3oM_SC" value="activity" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fq" role="1PaTwD">
+          <property role="3oM_SC" value="wrapped" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fr" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fs" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ft" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fu" role="1PaTwD">
+          <property role="3oM_SC" value="resource" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fv" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fw" role="1PaTwD">
+          <property role="3oM_SC" value="get" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fx" role="1PaTwD">
+          <property role="3oM_SC" value="passed" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fy" role="1PaTwD">
+          <property role="3oM_SC" value="between" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fz" role="1PaTwD">
+          <property role="3oM_SC" value="targets." />
         </node>
       </node>
-      <node concept="TZ5HA" id="72EPOrtLl3$" role="TZ5H$">
-        <node concept="1dT_AC" id="72EPOrtLl3_" role="1dT_Ay">
-          <property role="1dT_AB" value="Comes handy when a task allocates a resource that needs to survive few make steps" />
+      <node concept="1PaTwC" id="1E1X3WHs_f$" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_f_" role="1PaTwD">
+          <property role="3oM_SC" value="Comes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fA" role="1PaTwD">
+          <property role="3oM_SC" value="handy" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fB" role="1PaTwD">
+          <property role="3oM_SC" value="when" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fC" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fD" role="1PaTwD">
+          <property role="3oM_SC" value="task" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fE" role="1PaTwD">
+          <property role="3oM_SC" value="allocates" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fF" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fG" role="1PaTwD">
+          <property role="3oM_SC" value="resource" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fH" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fI" role="1PaTwD">
+          <property role="3oM_SC" value="needs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fJ" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fK" role="1PaTwD">
+          <property role="3oM_SC" value="survive" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fL" role="1PaTwD">
+          <property role="3oM_SC" value="few" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fM" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fN" role="1PaTwD">
+          <property role="3oM_SC" value="steps" />
         </node>
       </node>
-      <node concept="TZ5HA" id="72EPOrtLl3E" role="TZ5H$">
-        <node concept="1dT_AC" id="72EPOrtLl3F" role="1dT_Ay">
-          <property role="1dT_AB" value="(e.g. transient models of generator), but need clean-up once make process is over" />
+      <node concept="1PaTwC" id="1E1X3WHs_fO" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_fP" role="1PaTwD">
+          <property role="3oM_SC" value="(e.g." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fQ" role="1PaTwD">
+          <property role="3oM_SC" value="transient" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fR" role="1PaTwD">
+          <property role="3oM_SC" value="models" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fS" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fT" role="1PaTwD">
+          <property role="3oM_SC" value="generator)," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fU" role="1PaTwD">
+          <property role="3oM_SC" value="but" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fV" role="1PaTwD">
+          <property role="3oM_SC" value="need" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fW" role="1PaTwD">
+          <property role="3oM_SC" value="clean-up" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fX" role="1PaTwD">
+          <property role="3oM_SC" value="once" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fY" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_fZ" role="1PaTwD">
+          <property role="3oM_SC" value="process" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_g0" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_g1" role="1PaTwD">
+          <property role="3oM_SC" value="over" />
         </node>
       </node>
     </node>

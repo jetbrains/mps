@@ -829,13 +829,13 @@
       </node>
     </node>
     <node concept="3aamgX" id="5IuJnEMXeM5" role="3acgRq">
-      <ref role="30HIoZ" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
+      <ref role="30HIoZ" to="zqge:GWtNbsAtfA" resolve="SingleLineHtmlTag" />
       <node concept="j$656" id="5IuJnEMXg3u" role="1lVwrX">
         <ref role="v9R2y" node="5IuJnEMX2N3" resolve="reduce_HtmlTag" />
       </node>
     </node>
     <node concept="3aamgX" id="1fIPsai0VL$" role="3acgRq">
-      <ref role="30HIoZ" to="zqge:1fIPsahQswt" resolve="MarkupTag" />
+      <ref role="30HIoZ" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
       <node concept="j$656" id="1fIPsai0VL_" role="1lVwrX">
         <ref role="v9R2y" node="1fIPsai0WC_" resolve="reduce_MarkupTag" />
       </node>
@@ -13014,7 +13014,7 @@
   <node concept="13MO4I" id="5IuJnEMX2N3">
     <property role="3GE5qa" value="reduce_md" />
     <property role="TrG5h" value="reduce_HtmlTag" />
-    <ref role="3gUMe" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
+    <ref role="3gUMe" to="zqge:GWtNbsAtfA" resolve="SingleLineHtmlTag" />
     <node concept="1T5XQC" id="5IuJnEMXpc6" role="13RCb5">
       <node concept="2pNNFK" id="5IuJnEMXpc7" role="1T5Xju">
         <property role="2pNNFO" value="a" />
@@ -13057,7 +13057,7 @@
   <node concept="13MO4I" id="1fIPsai0WC_">
     <property role="3GE5qa" value="reduce_md" />
     <property role="TrG5h" value="reduce_MarkupTag" />
-    <ref role="3gUMe" to="zqge:1fIPsahQswt" resolve="MarkupTag" />
+    <ref role="3gUMe" to="zqge:1fIPsahQswt" resolve="UniversalHtmlTag" />
     <node concept="1T5XQC" id="1fIPsai0WCA" role="13RCb5">
       <node concept="2pNNFK" id="1fIPsai0WCB" role="1T5Xju">
         <property role="2pNNFO" value="a" />

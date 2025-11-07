@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
   </languages>
   <imports>
@@ -241,15 +241,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
@@ -588,9 +582,51 @@
         </node>
       </node>
       <node concept="P$JXv" id="3yV2h2COVDV" role="lGtFl">
-        <node concept="TZ5HA" id="3yV2h2COVDW" role="TZ5H$">
-          <node concept="1dT_AC" id="3yV2h2COVDX" role="1dT_Ay">
-            <property role="1dT_AB" value="Remove spaces from within the word, create separate words for each chunk of no-space characters" />
+        <node concept="1PaTwC" id="1E1X3WHswx5" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswx6" role="1PaTwD">
+            <property role="3oM_SC" value="Remove" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswx7" role="1PaTwD">
+            <property role="3oM_SC" value="spaces" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswx8" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswx9" role="1PaTwD">
+            <property role="3oM_SC" value="within" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxa" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxb" role="1PaTwD">
+            <property role="3oM_SC" value="word," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxc" role="1PaTwD">
+            <property role="3oM_SC" value="create" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxd" role="1PaTwD">
+            <property role="3oM_SC" value="separate" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxe" role="1PaTwD">
+            <property role="3oM_SC" value="words" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxf" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxg" role="1PaTwD">
+            <property role="3oM_SC" value="each" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxh" role="1PaTwD">
+            <property role="3oM_SC" value="chunk" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxi" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxj" role="1PaTwD">
+            <property role="3oM_SC" value="no-space" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswxk" role="1PaTwD">
+            <property role="3oM_SC" value="characters" />
           </node>
         </node>
       </node>

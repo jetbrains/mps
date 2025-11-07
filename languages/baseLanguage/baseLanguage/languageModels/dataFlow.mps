@@ -8,7 +8,7 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
   <imports>
@@ -284,15 +284,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow">
@@ -8388,9 +8382,18 @@
       </node>
       <node concept="3Tm1VV" id="42hKkhwwGED" role="1B3o_S" />
       <node concept="P$JXv" id="42hKkhw$yxS" role="lGtFl">
-        <node concept="TZ5HA" id="42hKkhw$yxT" role="TZ5H$">
-          <node concept="1dT_AC" id="42hKkhw$yxU" role="1dT_Ay">
-            <property role="1dT_AB" value="Does not call isCompileTimeConstantValue()" />
+        <node concept="1PaTwC" id="1E1X3WHsvRq" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsvRr" role="1PaTwD">
+            <property role="3oM_SC" value="Does" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsvRs" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsvRt" role="1PaTwD">
+            <property role="3oM_SC" value="call" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsvRu" role="1PaTwD">
+            <property role="3oM_SC" value="isCompileTimeConstantValue()" />
           </node>
         </node>
       </node>
@@ -8800,9 +8803,18 @@
       </node>
       <node concept="3Tm1VV" id="2okrWkj3I7R" role="1B3o_S" />
       <node concept="P$JXv" id="2okrWkj3I7S" role="lGtFl">
-        <node concept="TZ5HA" id="2okrWkj3I7T" role="TZ5H$">
-          <node concept="1dT_AC" id="2okrWkj3I7U" role="1dT_Ay">
-            <property role="1dT_AB" value="Does not call isCompileTimeConstantValue()" />
+        <node concept="1PaTwC" id="1E1X3WHsvRv" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsvRw" role="1PaTwD">
+            <property role="3oM_SC" value="Does" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsvRx" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsvRy" role="1PaTwD">
+            <property role="3oM_SC" value="call" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsvRz" role="1PaTwD">
+            <property role="3oM_SC" value="isCompileTimeConstantValue()" />
           </node>
         </node>
       </node>

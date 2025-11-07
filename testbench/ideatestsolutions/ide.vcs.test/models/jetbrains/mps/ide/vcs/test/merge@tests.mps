@@ -9,7 +9,7 @@
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -360,7 +360,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -368,13 +367,10 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
@@ -2867,9 +2863,15 @@
   <node concept="312cEu" id="oJ77aNIJob">
     <property role="TrG5h" value="MergeTest" />
     <node concept="3UR2Jj" id="7HgS$VkefCk" role="lGtFl">
-      <node concept="TZ5HA" id="7HgS$VkefCl" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkefCm" role="1dT_Ay">
-          <property role="1dT_AB" value="Tests merge algorithm" />
+      <node concept="1PaTwC" id="1E1X3WHsDEa" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDEb" role="1PaTwD">
+          <property role="3oM_SC" value="Tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEc" role="1PaTwD">
+          <property role="3oM_SC" value="merge" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEd" role="1PaTwD">
+          <property role="3oM_SC" value="algorithm" />
         </node>
       </node>
     </node>
@@ -5794,9 +5796,48 @@
       <node concept="3Tm6S6" id="6pjhMZUVnmc" role="1B3o_S" />
       <node concept="H_c77" id="6pjhMZUVnmd" role="1tU5fm" />
       <node concept="z59LJ" id="6pjhMZUVy7L" role="lGtFl">
-        <node concept="TZ5HA" id="6pjhMZUVy7M" role="TZ5H$">
-          <node concept="1dT_AC" id="6pjhMZUVy7N" role="1dT_Ay">
-            <property role="1dT_AB" value="Detached clone of jetbrains.mps.ide.vcs.test.testModel model. We use it to match against changes in myTestMode" />
+        <node concept="1PaTwC" id="1E1X3WHsDFm" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDFn" role="1PaTwD">
+            <property role="3oM_SC" value="Detached" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFo" role="1PaTwD">
+            <property role="3oM_SC" value="clone" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFp" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFq" role="1PaTwD">
+            <property role="3oM_SC" value="jetbrains.mps.ide.vcs.test.testModel" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFr" role="1PaTwD">
+            <property role="3oM_SC" value="model." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFs" role="1PaTwD">
+            <property role="3oM_SC" value="We" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFt" role="1PaTwD">
+            <property role="3oM_SC" value="use" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFu" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFv" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFw" role="1PaTwD">
+            <property role="3oM_SC" value="match" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFx" role="1PaTwD">
+            <property role="3oM_SC" value="against" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFy" role="1PaTwD">
+            <property role="3oM_SC" value="changes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFz" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDF$" role="1PaTwD">
+            <property role="3oM_SC" value="myTestMode" />
           </node>
         </node>
       </node>
@@ -5807,9 +5848,54 @@
       <node concept="3Tm6S6" id="6pjhMZUTqoH" role="1B3o_S" />
       <node concept="H_c77" id="6pjhMZUTisF" role="1tU5fm" />
       <node concept="z59LJ" id="6pjhMZUV_rP" role="lGtFl">
-        <node concept="TZ5HA" id="6pjhMZUV_rQ" role="TZ5H$">
-          <node concept="1dT_AC" id="6pjhMZUV_rR" role="1dT_Ay">
-            <property role="1dT_AB" value="Detached clone of jetbrains.mps.ide.vcs.test.testModel model, initially identical to myReferenceModel, and the one being modified by tests." />
+        <node concept="1PaTwC" id="1E1X3WHsDF_" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDFA" role="1PaTwD">
+            <property role="3oM_SC" value="Detached" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFB" role="1PaTwD">
+            <property role="3oM_SC" value="clone" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFC" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFD" role="1PaTwD">
+            <property role="3oM_SC" value="jetbrains.mps.ide.vcs.test.testModel" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFE" role="1PaTwD">
+            <property role="3oM_SC" value="model," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFF" role="1PaTwD">
+            <property role="3oM_SC" value="initially" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFG" role="1PaTwD">
+            <property role="3oM_SC" value="identical" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFH" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFI" role="1PaTwD">
+            <property role="3oM_SC" value="myReferenceModel," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFJ" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFK" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFL" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFM" role="1PaTwD">
+            <property role="3oM_SC" value="being" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFN" role="1PaTwD">
+            <property role="3oM_SC" value="modified" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFO" role="1PaTwD">
+            <property role="3oM_SC" value="by" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFP" role="1PaTwD">
+            <property role="3oM_SC" value="tests." />
           </node>
         </node>
       </node>
@@ -5824,9 +5910,30 @@
         <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
       </node>
       <node concept="z59LJ" id="6pjhMZUV_Ys" role="lGtFl">
-        <node concept="TZ5HA" id="6pjhMZUV_Yt" role="TZ5H$">
-          <node concept="1dT_AC" id="6pjhMZUV_Yu" role="1dT_Ay">
-            <property role="1dT_AB" value="A root node from myTestModel we deal with." />
+        <node concept="1PaTwC" id="1E1X3WHsDFQ" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDFR" role="1PaTwD">
+            <property role="3oM_SC" value="A" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFS" role="1PaTwD">
+            <property role="3oM_SC" value="root" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFT" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFU" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFV" role="1PaTwD">
+            <property role="3oM_SC" value="myTestModel" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFW" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFX" role="1PaTwD">
+            <property role="3oM_SC" value="deal" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDFY" role="1PaTwD">
+            <property role="3oM_SC" value="with." />
           </node>
         </node>
       </node>
@@ -10182,14 +10289,50 @@
       <ref role="3uigEE" node="2FxQamhcX1N" resolve="ChangesTestBase" />
     </node>
     <node concept="3UR2Jj" id="7HgS$VkcW7b" role="lGtFl">
-      <node concept="TZ5HA" id="7HgS$VkcW7c" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkcW7d" role="1dT_Ay">
-          <property role="1dT_AB" value="These tests check correctness of diff algorithm" />
+      <node concept="1PaTwC" id="1E1X3WHsDEe" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDEf" role="1PaTwD">
+          <property role="3oM_SC" value="These" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEg" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEh" role="1PaTwD">
+          <property role="3oM_SC" value="check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEi" role="1PaTwD">
+          <property role="3oM_SC" value="correctness" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEj" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEk" role="1PaTwD">
+          <property role="3oM_SC" value="diff" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEl" role="1PaTwD">
+          <property role="3oM_SC" value="algorithm" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7HgS$VkcWva" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkcWvb" role="1dT_Ay">
-          <property role="1dT_AB" value="todo: add tests for model metadata changes" />
+      <node concept="1PaTwC" id="1E1X3WHsDEm" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDEn" role="1PaTwD">
+          <property role="3oM_SC" value="todo:" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEo" role="1PaTwD">
+          <property role="3oM_SC" value="add" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEp" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEq" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEr" role="1PaTwD">
+          <property role="3oM_SC" value="model" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEs" role="1PaTwD">
+          <property role="3oM_SC" value="metadata" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEt" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
         </node>
       </node>
     </node>
@@ -10936,11 +11079,37 @@
       <ref role="3uigEE" node="2FxQamhcX1N" resolve="ChangesTestBase" />
     </node>
     <node concept="3UR2Jj" id="7HgS$VkcY71" role="lGtFl">
-      <node concept="TZ5HA" id="7HgS$VkcY72" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkcYw8" role="1dT_Ay">
-          <property role="1dT_AB" value="These tests check that incremental changes building works well with " />
+      <node concept="1PaTwC" id="1E1X3WHsDEu" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDEv" role="1PaTwD">
+          <property role="3oM_SC" value="These" />
         </node>
-        <node concept="1dT_AC" id="7HgS$VkcY73" role="1dT_Ay" />
+        <node concept="3oM_SD" id="1E1X3WHsDEw" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEx" role="1PaTwD">
+          <property role="3oM_SC" value="check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEy" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEz" role="1PaTwD">
+          <property role="3oM_SC" value="incremental" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDE$" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDE_" role="1PaTwD">
+          <property role="3oM_SC" value="building" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEA" role="1PaTwD">
+          <property role="3oM_SC" value="works" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEB" role="1PaTwD">
+          <property role="3oM_SC" value="well" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEC" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
       </node>
     </node>
   </node>
@@ -11743,15 +11912,97 @@
       </node>
       <node concept="P$JXv" id="4SyTannWNvE" role="lGtFl">
         <node concept="TUZQ0" id="4SyTannWNvH" role="3nqlJM">
-          <property role="TUZQ4" value="is runnable with work wait to finish, must call {@link ChangesManagerTestWaitHelper#waitCompleted()}" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4SyTannWNvJ" role="zr_5Q">
             <ref role="zr_51" node="3oUomEoN5mp" resolve="waitScheduling" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsDFZ" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsDG0" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG1" role="1PaTwD">
+              <property role="3oM_SC" value="runnable" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG2" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG3" role="1PaTwD">
+              <property role="3oM_SC" value="work" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG4" role="1PaTwD">
+              <property role="3oM_SC" value="wait" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG5" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG6" role="1PaTwD">
+              <property role="3oM_SC" value="finish," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG7" role="1PaTwD">
+              <property role="3oM_SC" value="must" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG8" role="1PaTwD">
+              <property role="3oM_SC" value="call" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDG9" role="1PaTwD">
+              <property role="3oM_SC" value="{@link" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGa" role="1PaTwD">
+              <property role="3oM_SC" value="ChangesManagerTestWaitHelper#waitCompleted()}" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="4SyTannWNvK" role="3nqlJM">
-          <property role="TUZQ4" value="time to wait for runnable to be finished in milliseconds, -1 for wait until myWaitCompleted" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4SyTannWNvM" role="zr_5Q">
             <ref role="zr_51" node="4SyTannWiq9" resolve="timeout" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsDGb" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsDGc" role="1PaTwD">
+              <property role="3oM_SC" value="time" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGd" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGe" role="1PaTwD">
+              <property role="3oM_SC" value="wait" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGf" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGg" role="1PaTwD">
+              <property role="3oM_SC" value="runnable" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGh" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGi" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGj" role="1PaTwD">
+              <property role="3oM_SC" value="finished" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGk" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGl" role="1PaTwD">
+              <property role="3oM_SC" value="milliseconds," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGm" role="1PaTwD">
+              <property role="3oM_SC" value="-1" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGn" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGo" role="1PaTwD">
+              <property role="3oM_SC" value="wait" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGp" role="1PaTwD">
+              <property role="3oM_SC" value="until" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDGq" role="1PaTwD">
+              <property role="3oM_SC" value="myWaitCompleted" />
+            </node>
           </node>
         </node>
       </node>
@@ -13270,16 +13521,66 @@
       <ref role="3uigEE" node="2FxQamhcX1N" resolve="ChangesTestBase" />
     </node>
     <node concept="3UR2Jj" id="7HgS$VkcXB$" role="lGtFl">
-      <node concept="TZ5HA" id="7HgS$VkcXB_" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkcY3D" role="1dT_Ay">
-          <property role="1dT_AB" value="These tests check that incremental changes building works well with VCS (commit, reset, rollback) " />
+      <node concept="1PaTwC" id="1E1X3WHsDED" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDEE" role="1PaTwD">
+          <property role="3oM_SC" value="These" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEF" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEG" role="1PaTwD">
+          <property role="3oM_SC" value="check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEH" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEI" role="1PaTwD">
+          <property role="3oM_SC" value="incremental" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEJ" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEK" role="1PaTwD">
+          <property role="3oM_SC" value="building" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEL" role="1PaTwD">
+          <property role="3oM_SC" value="works" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEM" role="1PaTwD">
+          <property role="3oM_SC" value="well" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEN" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEO" role="1PaTwD">
+          <property role="3oM_SC" value="VCS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEP" role="1PaTwD">
+          <property role="3oM_SC" value="(commit," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEQ" role="1PaTwD">
+          <property role="3oM_SC" value="reset," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDER" role="1PaTwD">
+          <property role="3oM_SC" value="rollback)" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7HgS$VkcY3G" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkcY3H" role="1dT_Ay">
-          <property role="1dT_AB" value="and model operations (create, delete)" />
+      <node concept="1PaTwC" id="1E1X3WHsDES" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDET" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
         </node>
-        <node concept="1dT_AC" id="7HgS$VkcXBA" role="1dT_Ay" />
+        <node concept="3oM_SD" id="1E1X3WHsDEU" role="1PaTwD">
+          <property role="3oM_SC" value="model" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEV" role="1PaTwD">
+          <property role="3oM_SC" value="operations" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEW" role="1PaTwD">
+          <property role="3oM_SC" value="(create," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDEX" role="1PaTwD">
+          <property role="3oM_SC" value="delete)" />
+        </node>
       </node>
     </node>
   </node>
@@ -14647,9 +14948,57 @@
       <ref role="3uigEE" node="2FxQamhcX1N" resolve="ChangesTestBase" />
     </node>
     <node concept="3UR2Jj" id="7HgS$VkcWBY" role="lGtFl">
-      <node concept="TZ5HA" id="7HgS$VkcWBZ" role="TZ5H$">
-        <node concept="1dT_AC" id="7HgS$VkcWC0" role="1dT_Ay">
-          <property role="1dT_AB" value="[Mihail Muhin] I'm not sure what these are about, these tests were just copied from old ChangesManagerTest" />
+      <node concept="1PaTwC" id="1E1X3WHsDEY" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDEZ" role="1PaTwD">
+          <property role="3oM_SC" value="[Mihail" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF0" role="1PaTwD">
+          <property role="3oM_SC" value="Muhin]" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF1" role="1PaTwD">
+          <property role="3oM_SC" value="I'm" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF2" role="1PaTwD">
+          <property role="3oM_SC" value="not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF3" role="1PaTwD">
+          <property role="3oM_SC" value="sure" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF4" role="1PaTwD">
+          <property role="3oM_SC" value="what" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF5" role="1PaTwD">
+          <property role="3oM_SC" value="these" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF6" role="1PaTwD">
+          <property role="3oM_SC" value="are" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF7" role="1PaTwD">
+          <property role="3oM_SC" value="about," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF8" role="1PaTwD">
+          <property role="3oM_SC" value="these" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDF9" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFa" role="1PaTwD">
+          <property role="3oM_SC" value="were" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFb" role="1PaTwD">
+          <property role="3oM_SC" value="just" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFc" role="1PaTwD">
+          <property role="3oM_SC" value="copied" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFd" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFe" role="1PaTwD">
+          <property role="3oM_SC" value="old" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFf" role="1PaTwD">
+          <property role="3oM_SC" value="ChangesManagerTest" />
         </node>
       </node>
     </node>
@@ -18951,9 +19300,21 @@
       <ref role="3uigEE" node="2FxQamhcX1N" resolve="ChangesTestBase" />
     </node>
     <node concept="3UR2Jj" id="4SF3E1ruisR" role="lGtFl">
-      <node concept="TZ5HA" id="4SF3E1ruisS" role="TZ5H$">
-        <node concept="1dT_AC" id="4SF3E1ruisT" role="1dT_Ay">
-          <property role="1dT_AB" value="Check correctness of diff algorithm" />
+      <node concept="1PaTwC" id="1E1X3WHsDFg" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDFh" role="1PaTwD">
+          <property role="3oM_SC" value="Check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFi" role="1PaTwD">
+          <property role="3oM_SC" value="correctness" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFj" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFk" role="1PaTwD">
+          <property role="3oM_SC" value="diff" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDFl" role="1PaTwD">
+          <property role="3oM_SC" value="algorithm" />
         </node>
       </node>
     </node>

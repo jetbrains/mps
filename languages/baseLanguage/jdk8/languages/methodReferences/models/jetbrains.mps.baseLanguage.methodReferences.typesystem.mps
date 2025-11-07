@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -193,15 +193,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -4976,9 +4970,30 @@
         </node>
       </node>
       <node concept="P$JXv" id="1IbMXAaPk_x" role="lGtFl">
-        <node concept="TZ5HA" id="1IbMXAaPk_y" role="TZ5H$">
-          <node concept="1dT_AC" id="1IbMXAaPk_z" role="1dT_Ay">
-            <property role="1dT_AB" value="Expands generics of the given type if applicable" />
+        <node concept="1PaTwC" id="1E1X3WHswe7" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswe8" role="1PaTwD">
+            <property role="3oM_SC" value="Expands" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswe9" role="1PaTwD">
+            <property role="3oM_SC" value="generics" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswea" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweb" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswec" role="1PaTwD">
+            <property role="3oM_SC" value="given" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswed" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswee" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswef" role="1PaTwD">
+            <property role="3oM_SC" value="applicable" />
           </node>
         </node>
       </node>
@@ -5460,19 +5475,112 @@
         <ref role="2AI5Lk" to="tpd5:hq1Hpmb" resolve="InferenceMethod" />
       </node>
       <node concept="P$JXv" id="2TzDyIbLJAE" role="lGtFl">
-        <node concept="TZ5HA" id="2TzDyIbLJAF" role="TZ5H$">
-          <node concept="1dT_AC" id="2TzDyIbLJAG" role="1dT_Ay">
-            <property role="1dT_AB" value="Collect generic substitutions of the type, if any, on classifiers ensure the type parameters are able to be inferred." />
+        <node concept="1PaTwC" id="1E1X3WHsweg" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsweh" role="1PaTwD">
+            <property role="3oM_SC" value="Collect" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswei" role="1PaTwD">
+            <property role="3oM_SC" value="generic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswej" role="1PaTwD">
+            <property role="3oM_SC" value="substitutions" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswek" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswel" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswem" role="1PaTwD">
+            <property role="3oM_SC" value="type," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswen" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweo" role="1PaTwD">
+            <property role="3oM_SC" value="any," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswep" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweq" role="1PaTwD">
+            <property role="3oM_SC" value="classifiers" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswer" role="1PaTwD">
+            <property role="3oM_SC" value="ensure" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswes" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswet" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweu" role="1PaTwD">
+            <property role="3oM_SC" value="parameters" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswev" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswew" role="1PaTwD">
+            <property role="3oM_SC" value="able" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswex" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswey" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswez" role="1PaTwD">
+            <property role="3oM_SC" value="inferred." />
           </node>
         </node>
-        <node concept="TZ5HA" id="2TzDyIbLKhF" role="TZ5H$">
-          <node concept="1dT_AC" id="2TzDyIbLKhG" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
+        <node concept="1PaTwC" id="1E1X3WHswe$" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswe_" role="1PaTwD">
+            <property role="3oM_SC" value="" />
           </node>
         </node>
-        <node concept="TZ5HA" id="2TzDyIbLJHl" role="TZ5H$">
-          <node concept="1dT_AC" id="2TzDyIbLJHm" role="1dT_Ay">
-            <property role="1dT_AB" value="In case of same classifier inserted multiple times, the best matching value is computed" />
+        <node concept="1PaTwC" id="1E1X3WHsweA" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsweB" role="1PaTwD">
+            <property role="3oM_SC" value="In" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweC" role="1PaTwD">
+            <property role="3oM_SC" value="case" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweD" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweE" role="1PaTwD">
+            <property role="3oM_SC" value="same" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweF" role="1PaTwD">
+            <property role="3oM_SC" value="classifier" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweG" role="1PaTwD">
+            <property role="3oM_SC" value="inserted" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweH" role="1PaTwD">
+            <property role="3oM_SC" value="multiple" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweI" role="1PaTwD">
+            <property role="3oM_SC" value="times," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweJ" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweK" role="1PaTwD">
+            <property role="3oM_SC" value="best" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweL" role="1PaTwD">
+            <property role="3oM_SC" value="matching" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweM" role="1PaTwD">
+            <property role="3oM_SC" value="value" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweN" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsweO" role="1PaTwD">
+            <property role="3oM_SC" value="computed" />
           </node>
         </node>
       </node>

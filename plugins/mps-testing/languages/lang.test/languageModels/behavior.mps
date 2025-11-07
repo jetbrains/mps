@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
@@ -253,32 +253,26 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
-        <child id="3106559687488741665" name="line" index="2Xj1qM" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306633585" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE" flags="ng" index="1VuTSG" />
+      <concept id="5085607816306647746" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE" flags="ng" index="1VuXuv">
+        <child id="5085607816306647747" name="reference" index="1VuXuu" />
       </concept>
     </language>
     <language id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes">
@@ -648,7 +642,11 @@
       </node>
       <node concept="P$JXv" id="2sePq$_siKQ" role="lGtFl">
         <node concept="TZ5HI" id="2sePq$_siKR" role="3nqlJM">
-          <node concept="TZ5HA" id="2sePq$_siKS" role="3HnX3l" />
+          <node concept="1PaTwC" id="1E1X3WHszbr" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHszbs" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -1103,25 +1101,29 @@
       </node>
       <node concept="3Tm1VV" id="hJrszxZ" role="1B3o_S" />
       <node concept="P$JXv" id="143xXLdi2bw" role="lGtFl">
-        <node concept="TZ5HA" id="143xXLdi2gp" role="TZ5H$">
-          <node concept="1dT_AC" id="143xXLdi2gq" role="1dT_Ay">
-            <property role="1dT_AB" value="use " />
+        <node concept="TZ5HI" id="143xXLdi2bx" role="3nqlJM">
+          <node concept="1PaTwC" id="1E1X3WHszbA" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHszbB" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
           </node>
-          <node concept="1dT_AA" id="143xXLdif0w" role="1dT_Ay">
-            <node concept="VVOAv" id="143xXLdif0L" role="qph3F">
-              <node concept="TZ5HA" id="143xXLdif0N" role="2Xj1qM">
-                <node concept="1dT_AC" id="143xXLdig2Z" role="1dT_Ay">
-                  <property role="1dT_AB" value="ITestAnnotationsContainer.canAddTestAnnotation()" />
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHszbt" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHszbu" role="1PaTwD">
+            <property role="3oM_SC" value="use" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHszbv" role="1PaTwD">
+            <node concept="1VuTSG" id="1E1X3WHszbw" role="1Vtduc">
+              <node concept="1PaTwC" id="1E1X3WHszbz" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHszb$" role="1PaTwD">
+                  <property role="3oM_SC" value="ITestAnnotationsContainer.canAddTestAnnotation()" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="1dT_AC" id="143xXLdif0v" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
+          <node concept="3oM_SD" id="1E1X3WHszb_" role="1PaTwD">
+            <property role="3oM_SC" value="" />
           </node>
-        </node>
-        <node concept="TZ5HI" id="143xXLdi2bx" role="3nqlJM">
-          <node concept="TZ5HA" id="143xXLdi2by" role="3HnX3l" />
         </node>
       </node>
       <node concept="2AHcQZ" id="143xXLdi2bF" role="2AJF6D">
@@ -1162,23 +1164,27 @@
       </node>
       <node concept="P$JXv" id="41knGUSGcYY" role="lGtFl">
         <node concept="TZ5HI" id="41knGUSGcYZ" role="3nqlJM">
-          <node concept="TZ5HA" id="41knGUSGcZ0" role="3HnX3l" />
-        </node>
-        <node concept="TZ5HA" id="41knGUSI9YN" role="TZ5H$">
-          <node concept="1dT_AC" id="41knGUSI9YO" role="1dT_Ay">
-            <property role="1dT_AB" value="Use " />
+          <node concept="1PaTwC" id="1E1X3WHszbL" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHszbM" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
           </node>
-          <node concept="1dT_AA" id="41knGUSIa4g" role="1dT_Ay">
-            <node concept="VVOAv" id="41knGUSIa_v" role="qph3F">
-              <node concept="TZ5HA" id="41knGUSIaCl" role="2Xj1qM">
-                <node concept="1dT_AC" id="41knGUSIaDQ" role="1dT_Ay">
-                  <property role="1dT_AB" value="calcAccessNode() " />
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHszbC" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHszbD" role="1PaTwD">
+            <property role="3oM_SC" value="Use" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHszbE" role="1PaTwD">
+            <node concept="1VuTSG" id="1E1X3WHszbF" role="1Vtduc">
+              <node concept="1PaTwC" id="1E1X3WHszbI" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHszbJ" role="1PaTwD">
+                  <property role="3oM_SC" value="calcAccessNode()" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="1dT_AC" id="41knGUSIa4f" role="1dT_Ay">
-            <property role="1dT_AB" value="." />
+          <node concept="3oM_SD" id="1E1X3WHszbK" role="1PaTwD">
+            <property role="3oM_SC" value="." />
           </node>
         </node>
       </node>
@@ -1655,20 +1661,27 @@
       </node>
       <node concept="P$JXv" id="5g7DxxpaSXS" role="lGtFl">
         <node concept="TZ5HI" id="5g7DxxpaSXT" role="3nqlJM">
-          <node concept="TZ5HA" id="5g7DxxpaSXU" role="3HnX3l">
-            <node concept="1dT_AC" id="5g7DxxpaT0l" role="1dT_Ay">
-              <property role="1dT_AB" value=" use " />
+          <node concept="1PaTwC" id="1E1X3WHszbN" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHszbO" role="1PaTwD">
+              <property role="3oM_SC" value="" />
             </node>
-            <node concept="1dT_AA" id="5g7DxxpaT0o" role="1dT_Ay">
-              <node concept="92FcH" id="5g7DxxpaT0u" role="qph3F">
-                <node concept="VXe0Z" id="5g7DxxpaYhp" role="92FcQ">
+            <node concept="3oM_SD" id="1E1X3WHszbP" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="1Vtdud" id="1E1X3WHszbQ" role="1PaTwD">
+              <node concept="1VuXuv" id="1E1X3WHszbR" role="1Vtduc">
+                <node concept="VXe0Z" id="5g7DxxpaYhp" role="1VuXuu">
                   <ref role="VXe0S" node="5g7DxxpaP55" resolve="setupSelection" />
                 </node>
-                <node concept="TZ5HA" id="5g7DxxpaT0y" role="2XjZqd" />
+                <node concept="1PaTwC" id="1E1X3WHszbU" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHszbV" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="5g7DxxpaT0n" role="1dT_Ay">
-              <property role="1dT_AB" value=" instead" />
+            <node concept="3oM_SD" id="1E1X3WHszbW" role="1PaTwD">
+              <property role="3oM_SC" value="instead" />
             </node>
           </node>
         </node>

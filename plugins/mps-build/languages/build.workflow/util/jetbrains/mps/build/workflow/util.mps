@@ -2,7 +2,7 @@
 <model ref="r:a2048a3e-d79c-4d25-ab38-9294b02bd901(jetbrains.mps.build.workflow.util)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -126,16 +126,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -189,9 +183,30 @@
     <property role="TrG5h" value="XmlSignature" />
     <node concept="3Tm1VV" id="75uV$1s0VPD" role="1B3o_S" />
     <node concept="3UR2Jj" id="75uV$1s0VQ0" role="lGtFl">
-      <node concept="TZ5HA" id="75uV$1s0VQ1" role="TZ5H$">
-        <node concept="1dT_AC" id="75uV$1s0VQ2" role="1dT_Ay">
-          <property role="1dT_AB" value="Process only default xml elements (XmlElement) and attributes." />
+      <node concept="1PaTwC" id="1E1X3WHswYA" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswYB" role="1PaTwD">
+          <property role="3oM_SC" value="Process" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYC" role="1PaTwD">
+          <property role="3oM_SC" value="only" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYD" role="1PaTwD">
+          <property role="3oM_SC" value="default" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYE" role="1PaTwD">
+          <property role="3oM_SC" value="xml" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYF" role="1PaTwD">
+          <property role="3oM_SC" value="elements" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYG" role="1PaTwD">
+          <property role="3oM_SC" value="(XmlElement)" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYH" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswYI" role="1PaTwD">
+          <property role="3oM_SC" value="attributes." />
         </node>
       </node>
     </node>

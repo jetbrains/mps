@@ -6,7 +6,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="i9so" ref="r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)" />
@@ -141,16 +141,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet">
       <concept id="8703512757937156087" name="jetbrains.mps.make.facet.structure.TargetReferenceExpression" flags="nn" index="29r_a">
@@ -1027,24 +1021,147 @@
     </node>
     <node concept="3Tm1VV" id="7UozGIENo9f" role="1B3o_S" />
     <node concept="3UR2Jj" id="7UozGIENGuY" role="lGtFl">
-      <node concept="TZ5HA" id="7UozGIENGuZ" role="TZ5H$">
-        <node concept="1dT_AC" id="7UozGIENGv0" role="1dT_Ay">
-          <property role="1dT_AB" value="Single facility that knows which properties of Generate facet to initialize." />
+      <node concept="1PaTwC" id="1E1X3WHs_bL" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_bM" role="1PaTwD">
+          <property role="3oM_SC" value="Single" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bN" role="1PaTwD">
+          <property role="3oM_SC" value="facility" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bO" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bP" role="1PaTwD">
+          <property role="3oM_SC" value="knows" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bQ" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bR" role="1PaTwD">
+          <property role="3oM_SC" value="properties" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bS" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bT" role="1PaTwD">
+          <property role="3oM_SC" value="Generate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bU" role="1PaTwD">
+          <property role="3oM_SC" value="facet" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bV" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bW" role="1PaTwD">
+          <property role="3oM_SC" value="initialize." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7UozGIENGYp" role="TZ5H$">
-        <node concept="1dT_AC" id="7UozGIENGYq" role="1dT_Ay">
-          <property role="1dT_AB" value="Now takes all the values from MakeSession, but may get additional methods to set" />
+      <node concept="1PaTwC" id="1E1X3WHs_bX" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_bY" role="1PaTwD">
+          <property role="3oM_SC" value="Now" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bZ" role="1PaTwD">
+          <property role="3oM_SC" value="takes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c0" role="1PaTwD">
+          <property role="3oM_SC" value="all" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c1" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c2" role="1PaTwD">
+          <property role="3oM_SC" value="values" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c3" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c4" role="1PaTwD">
+          <property role="3oM_SC" value="MakeSession," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c5" role="1PaTwD">
+          <property role="3oM_SC" value="but" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c6" role="1PaTwD">
+          <property role="3oM_SC" value="may" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c7" role="1PaTwD">
+          <property role="3oM_SC" value="get" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c8" role="1PaTwD">
+          <property role="3oM_SC" value="additional" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_c9" role="1PaTwD">
+          <property role="3oM_SC" value="methods" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ca" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cb" role="1PaTwD">
+          <property role="3oM_SC" value="set" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7UozGIENGYy" role="TZ5H$">
-        <node concept="1dT_AC" id="7UozGIENGYz" role="1dT_Ay">
-          <property role="1dT_AB" value="values explicitly (e.g. cleanMake for those longing for rebuild only)." />
+      <node concept="1PaTwC" id="1E1X3WHs_cc" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_cd" role="1PaTwD">
+          <property role="3oM_SC" value="values" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ce" role="1PaTwD">
+          <property role="3oM_SC" value="explicitly" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cf" role="1PaTwD">
+          <property role="3oM_SC" value="(e.g." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cg" role="1PaTwD">
+          <property role="3oM_SC" value="cleanMake" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ch" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ci" role="1PaTwD">
+          <property role="3oM_SC" value="those" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cj" role="1PaTwD">
+          <property role="3oM_SC" value="longing" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ck" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cl" role="1PaTwD">
+          <property role="3oM_SC" value="rebuild" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cm" role="1PaTwD">
+          <property role="3oM_SC" value="only)." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7UozGIENGYH" role="TZ5H$">
-        <node concept="1dT_AC" id="7UozGIENGYI" role="1dT_Ay">
-          <property role="1dT_AB" value="Perhaps, this it should be MakeSession's responsibility to set properties." />
+      <node concept="1PaTwC" id="1E1X3WHs_cn" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_co" role="1PaTwD">
+          <property role="3oM_SC" value="Perhaps," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cp" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cq" role="1PaTwD">
+          <property role="3oM_SC" value="it" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cr" role="1PaTwD">
+          <property role="3oM_SC" value="should" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cs" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ct" role="1PaTwD">
+          <property role="3oM_SC" value="MakeSession's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cu" role="1PaTwD">
+          <property role="3oM_SC" value="responsibility" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cv" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cw" role="1PaTwD">
+          <property role="3oM_SC" value="set" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_cx" role="1PaTwD">
+          <property role="3oM_SC" value="properties." />
         </node>
       </node>
     </node>

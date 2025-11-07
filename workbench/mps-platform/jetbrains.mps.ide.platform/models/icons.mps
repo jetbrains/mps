@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
@@ -241,15 +241,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
@@ -3006,14 +3000,74 @@
       </node>
       <node concept="3Tm6S6" id="1Ib63V_gkgX" role="1B3o_S" />
       <node concept="P$JXv" id="1Ib63V_gkh7" role="lGtFl">
-        <node concept="TZ5HA" id="1Ib63V_gkh8" role="TZ5H$">
-          <node concept="1dT_AC" id="1Ib63V_gkh9" role="1dT_Ay">
-            <property role="1dT_AB" value="Just a copy of IconResource.isAlreadyReloaded() to eliminate excessive dependencies of IconResource class" />
+        <node concept="1PaTwC" id="1E1X3WHsE28" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsE29" role="1PaTwD">
+            <property role="3oM_SC" value="Just" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2a" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2b" role="1PaTwD">
+            <property role="3oM_SC" value="copy" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2c" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2d" role="1PaTwD">
+            <property role="3oM_SC" value="IconResource.isAlreadyReloaded()" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2e" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2f" role="1PaTwD">
+            <property role="3oM_SC" value="eliminate" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2g" role="1PaTwD">
+            <property role="3oM_SC" value="excessive" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2h" role="1PaTwD">
+            <property role="3oM_SC" value="dependencies" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2i" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2j" role="1PaTwD">
+            <property role="3oM_SC" value="IconResource" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2k" role="1PaTwD">
+            <property role="3oM_SC" value="class" />
           </node>
         </node>
-        <node concept="TZ5HA" id="1Ib63V_gkha" role="TZ5H$">
-          <node concept="1dT_AC" id="1Ib63V_gkhb" role="1dT_Ay">
-            <property role="1dT_AB" value="The method shall be removed along with isLegacy() branch, above." />
+        <node concept="1PaTwC" id="1E1X3WHsE2l" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsE2m" role="1PaTwD">
+            <property role="3oM_SC" value="The" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2n" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2o" role="1PaTwD">
+            <property role="3oM_SC" value="shall" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2p" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2q" role="1PaTwD">
+            <property role="3oM_SC" value="removed" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2r" role="1PaTwD">
+            <property role="3oM_SC" value="along" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2s" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2t" role="1PaTwD">
+            <property role="3oM_SC" value="isLegacy()" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2u" role="1PaTwD">
+            <property role="3oM_SC" value="branch," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2v" role="1PaTwD">
+            <property role="3oM_SC" value="above." />
           </node>
         </node>
       </node>
@@ -3181,9 +3235,39 @@
       </node>
       <node concept="3Tm1VV" id="3RymrDRZjZA" role="1B3o_S" />
       <node concept="P$JXv" id="4zG7rycKrnh" role="lGtFl">
-        <node concept="TZ5HA" id="4zG7rycKrni" role="TZ5H$">
-          <node concept="1dT_AC" id="4zG7rycKrnj" role="1dT_Ay">
-            <property role="1dT_AB" value="resource parameter has the same contract as the Class.getResource(String)'s parameter \n" />
+        <node concept="1PaTwC" id="1E1X3WHsE2w" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsE2x" role="1PaTwD">
+            <property role="3oM_SC" value="resource" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2y" role="1PaTwD">
+            <property role="3oM_SC" value="parameter" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2z" role="1PaTwD">
+            <property role="3oM_SC" value="has" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2$" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2_" role="1PaTwD">
+            <property role="3oM_SC" value="same" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2A" role="1PaTwD">
+            <property role="3oM_SC" value="contract" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2B" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2C" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2D" role="1PaTwD">
+            <property role="3oM_SC" value="Class.getResource(String)'s" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2E" role="1PaTwD">
+            <property role="3oM_SC" value="parameter" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE2F" role="1PaTwD">
+            <property role="3oM_SC" value="\n" />
           </node>
         </node>
       </node>

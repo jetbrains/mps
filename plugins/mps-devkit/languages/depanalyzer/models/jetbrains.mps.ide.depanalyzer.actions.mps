@@ -11,7 +11,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
@@ -308,15 +308,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
@@ -1907,9 +1901,12 @@
         <node concept="10P_77" id="1O8DjCqJsJl" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="1O8DjCqJc1D" role="lGtFl">
-        <node concept="TZ5HA" id="1O8DjCqJc1E" role="TZ5H$">
-          <node concept="1dT_AC" id="1O8DjCqJc1F" role="1dT_Ay">
-            <property role="1dT_AB" value="requires EDT" />
+        <node concept="1PaTwC" id="1E1X3WHsBWz" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBW$" role="1PaTwD">
+            <property role="3oM_SC" value="requires" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBW_" role="1PaTwD">
+            <property role="3oM_SC" value="EDT" />
           </node>
         </node>
       </node>
@@ -2102,19 +2099,133 @@
       </node>
       <node concept="10P_77" id="1O8DjCqDUAn" role="3clF45" />
       <node concept="P$JXv" id="1O8DjCqEe$p" role="lGtFl">
-        <node concept="TZ5HA" id="1O8DjCqEe$q" role="TZ5H$">
-          <node concept="1dT_AC" id="1O8DjCqEe$r" role="1dT_Ay">
-            <property role="1dT_AB" value="requires model read" />
+        <node concept="1PaTwC" id="1E1X3WHsBWA" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBWB" role="1PaTwD">
+            <property role="3oM_SC" value="requires" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWC" role="1PaTwD">
+            <property role="3oM_SC" value="model" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWD" role="1PaTwD">
+            <property role="3oM_SC" value="read" />
           </node>
         </node>
-        <node concept="TZ5HA" id="1O8DjCqHeSU" role="TZ5H$">
-          <node concept="1dT_AC" id="1O8DjCqHeSV" role="1dT_Ay">
-            <property role="1dT_AB" value="at the moment, may run for a noticeable time without progress reporting. I'd like to fix this by stop fast once any external ref found, but" />
+        <node concept="1PaTwC" id="1E1X3WHsBWE" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBWF" role="1PaTwD">
+            <property role="3oM_SC" value="at" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWG" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWH" role="1PaTwD">
+            <property role="3oM_SC" value="moment," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWI" role="1PaTwD">
+            <property role="3oM_SC" value="may" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWJ" role="1PaTwD">
+            <property role="3oM_SC" value="run" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWK" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWL" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWM" role="1PaTwD">
+            <property role="3oM_SC" value="noticeable" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWN" role="1PaTwD">
+            <property role="3oM_SC" value="time" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWO" role="1PaTwD">
+            <property role="3oM_SC" value="without" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWP" role="1PaTwD">
+            <property role="3oM_SC" value="progress" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWQ" role="1PaTwD">
+            <property role="3oM_SC" value="reporting." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWR" role="1PaTwD">
+            <property role="3oM_SC" value="I'd" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWS" role="1PaTwD">
+            <property role="3oM_SC" value="like" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWT" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWU" role="1PaTwD">
+            <property role="3oM_SC" value="fix" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWV" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWW" role="1PaTwD">
+            <property role="3oM_SC" value="by" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWX" role="1PaTwD">
+            <property role="3oM_SC" value="stop" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWY" role="1PaTwD">
+            <property role="3oM_SC" value="fast" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBWZ" role="1PaTwD">
+            <property role="3oM_SC" value="once" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX0" role="1PaTwD">
+            <property role="3oM_SC" value="any" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX1" role="1PaTwD">
+            <property role="3oM_SC" value="external" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX2" role="1PaTwD">
+            <property role="3oM_SC" value="ref" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX3" role="1PaTwD">
+            <property role="3oM_SC" value="found," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX4" role="1PaTwD">
+            <property role="3oM_SC" value="but" />
           </node>
         </node>
-        <node concept="TZ5HA" id="1O8DjCqHpIu" role="TZ5H$">
-          <node concept="1dT_AC" id="1O8DjCqHpIv" role="1dT_Ay">
-            <property role="1dT_AB" value="if I don't manage to do that, perhaps, shall pass ProgressMonitor here" />
+        <node concept="1PaTwC" id="1E1X3WHsBX5" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBX6" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX7" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX8" role="1PaTwD">
+            <property role="3oM_SC" value="don't" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX9" role="1PaTwD">
+            <property role="3oM_SC" value="manage" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXa" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXb" role="1PaTwD">
+            <property role="3oM_SC" value="do" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXc" role="1PaTwD">
+            <property role="3oM_SC" value="that," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXd" role="1PaTwD">
+            <property role="3oM_SC" value="perhaps," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXe" role="1PaTwD">
+            <property role="3oM_SC" value="shall" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXf" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXg" role="1PaTwD">
+            <property role="3oM_SC" value="ProgressMonitor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXh" role="1PaTwD">
+            <property role="3oM_SC" value="here" />
           </node>
         </node>
       </node>

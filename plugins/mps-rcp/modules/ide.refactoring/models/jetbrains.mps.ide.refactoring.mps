@@ -8,7 +8,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
   </languages>
   <imports>
@@ -292,17 +292,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
       <concept id="2217234381367188008" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocReference" flags="ng" index="VUqz4" />
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
@@ -310,11 +303,14 @@
       <concept id="5562345046718956738" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseVariableDocReference" flags="ng" index="YTMYr">
         <reference id="5562345046718956740" name="declaration" index="YTMYt" />
       </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306647746" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE" flags="ng" index="1VuXuv">
+        <child id="5085607816306647747" name="reference" index="1VuXuu" />
       </concept>
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
@@ -2773,36 +2769,131 @@
       <node concept="3Tm6S6" id="4xnDkoPp6yp" role="1B3o_S" />
       <node concept="3cqZAl" id="4xnDkoPp7pt" role="3clF45" />
       <node concept="P$JXv" id="1tgX706vO2r" role="lGtFl">
-        <node concept="TZ5HA" id="1tgX706vO2s" role="TZ5H$">
-          <node concept="1dT_AC" id="1tgX706vO2t" role="1dT_Ay">
-            <property role="1dT_AB" value="Have to update info panel after initialization in " />
+        <node concept="1PaTwC" id="1E1X3WHsCz3" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsCz4" role="1PaTwD">
+            <property role="3oM_SC" value="Have" />
           </node>
-          <node concept="1dT_AA" id="1tgX706vQ3h" role="1dT_Ay">
-            <node concept="92FcH" id="1tgX706vQ3v" role="qph3F">
-              <node concept="TZ5HA" id="1tgX706vQ3x" role="2XjZqd" />
-              <node concept="VXe0Z" id="1tgX706wlal" role="92FcQ">
+          <node concept="3oM_SD" id="1E1X3WHsCz5" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCz6" role="1PaTwD">
+            <property role="3oM_SC" value="update" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCz7" role="1PaTwD">
+            <property role="3oM_SC" value="info" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCz8" role="1PaTwD">
+            <property role="3oM_SC" value="panel" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCz9" role="1PaTwD">
+            <property role="3oM_SC" value="after" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCza" role="1PaTwD">
+            <property role="3oM_SC" value="initialization" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzb" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHsCzc" role="1PaTwD">
+            <node concept="1VuXuv" id="1E1X3WHsCzd" role="1Vtduc">
+              <node concept="VXe0Z" id="1tgX706wlal" role="1VuXuu">
                 <ref role="VXe0S" node="4xnDkoPm4Wd" resolve="createCenterPanel" />
               </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="1tgX706vQ3g" role="1dT_Ay">
-            <property role="1dT_AB" value=", because last one happens in super constructor before " />
-          </node>
-          <node concept="1dT_AA" id="1tgX706wqyX" role="1dT_Ay">
-            <node concept="92FcH" id="1tgX706wqzg" role="qph3F">
-              <node concept="TZ5HA" id="1tgX706wqzi" role="2XjZqd" />
-              <node concept="VUqz4" id="1tgX706wyBW" role="92FcQ">
-                <ref role="YTMYt" node="29N7xYwTGoV" resolve="myModule" />
+              <node concept="1PaTwC" id="1E1X3WHsCzg" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHsCzh" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
               </node>
             </node>
           </node>
-          <node concept="1dT_AC" id="1tgX706wqyW" role="1dT_Ay">
-            <property role="1dT_AB" value=" is set." />
+          <node concept="3oM_SD" id="1E1X3WHsCzi" role="1PaTwD">
+            <property role="3oM_SC" value="," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzj" role="1PaTwD">
+            <property role="3oM_SC" value="because" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzk" role="1PaTwD">
+            <property role="3oM_SC" value="last" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzl" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzm" role="1PaTwD">
+            <property role="3oM_SC" value="happens" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzn" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzo" role="1PaTwD">
+            <property role="3oM_SC" value="super" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzp" role="1PaTwD">
+            <property role="3oM_SC" value="constructor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzq" role="1PaTwD">
+            <property role="3oM_SC" value="before" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHsCzr" role="1PaTwD">
+            <node concept="1VuXuv" id="1E1X3WHsCzs" role="1Vtduc">
+              <node concept="VUqz4" id="1tgX706wyBW" role="1VuXuu">
+                <ref role="YTMYt" node="29N7xYwTGoV" resolve="myModule" />
+              </node>
+              <node concept="1PaTwC" id="1E1X3WHsCzv" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHsCzw" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzx" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzy" role="1PaTwD">
+            <property role="3oM_SC" value="set." />
           </node>
         </node>
-        <node concept="TZ5HA" id="4$oa5rtvZMy" role="TZ5H$">
-          <node concept="1dT_AC" id="4$oa5rtvZMz" role="1dT_Ay">
-            <property role="1dT_AB" value="i.e. infamous init() in cons call design defect. Perhaps, shall not use RenameDialog superclass?" />
+        <node concept="1PaTwC" id="1E1X3WHsCzz" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsCz$" role="1PaTwD">
+            <property role="3oM_SC" value="i.e." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCz_" role="1PaTwD">
+            <property role="3oM_SC" value="infamous" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzA" role="1PaTwD">
+            <property role="3oM_SC" value="init()" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzB" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzC" role="1PaTwD">
+            <property role="3oM_SC" value="cons" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzD" role="1PaTwD">
+            <property role="3oM_SC" value="call" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzE" role="1PaTwD">
+            <property role="3oM_SC" value="design" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzF" role="1PaTwD">
+            <property role="3oM_SC" value="defect." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzG" role="1PaTwD">
+            <property role="3oM_SC" value="Perhaps," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzH" role="1PaTwD">
+            <property role="3oM_SC" value="shall" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzI" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzJ" role="1PaTwD">
+            <property role="3oM_SC" value="use" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzK" role="1PaTwD">
+            <property role="3oM_SC" value="RenameDialog" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCzL" role="1PaTwD">
+            <property role="3oM_SC" value="superclass?" />
           </node>
         </node>
       </node>

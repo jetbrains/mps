@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="515552c7-fcc0-4ab4-9789-2f3c49344e85" name="jetbrains.mps.baseLanguage.varVariable" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -230,18 +230,12 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -2875,9 +2869,39 @@
       <property role="13i0it" value="false" />
       <ref role="13i0hy" to="vbkb:57YmpYyL8F1" resolve="fetchDependencies" />
       <node concept="P$JXv" id="3WZD5LHqZPc" role="lGtFl">
-        <node concept="TZ5HA" id="3WZD5LHqZPd" role="TZ5H$">
-          <node concept="1dT_AC" id="3WZD5LHqZPe" role="1dT_Ay">
-            <property role="1dT_AB" value="Looks through all the dependencies and using the given visible artifacts" />
+        <node concept="1PaTwC" id="1E1X3WHswC0" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswC1" role="1PaTwD">
+            <property role="3oM_SC" value="Looks" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC2" role="1PaTwD">
+            <property role="3oM_SC" value="through" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC3" role="1PaTwD">
+            <property role="3oM_SC" value="all" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC4" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC5" role="1PaTwD">
+            <property role="3oM_SC" value="dependencies" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC6" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC7" role="1PaTwD">
+            <property role="3oM_SC" value="using" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC8" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswC9" role="1PaTwD">
+            <property role="3oM_SC" value="given" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCa" role="1PaTwD">
+            <property role="3oM_SC" value="visible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCb" role="1PaTwD">
+            <property role="3oM_SC" value="artifacts" />
           </node>
         </node>
       </node>
@@ -4458,9 +4482,27 @@
         </node>
       </node>
       <node concept="P$JXv" id="3ZROizBOVVm" role="lGtFl">
-        <node concept="TZ5HA" id="3ZROizBOVVV" role="TZ5H$">
-          <node concept="1dT_AC" id="3ZROizBOVVW" role="1dT_Ay">
-            <property role="1dT_AB" value="records the artifacts for the given dependency" />
+        <node concept="1PaTwC" id="1E1X3WHswCc" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswCd" role="1PaTwD">
+            <property role="3oM_SC" value="records" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCe" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCf" role="1PaTwD">
+            <property role="3oM_SC" value="artifacts" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCg" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCh" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCi" role="1PaTwD">
+            <property role="3oM_SC" value="given" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswCj" role="1PaTwD">
+            <property role="3oM_SC" value="dependency" />
           </node>
         </node>
       </node>
@@ -11368,9 +11410,27 @@
       </node>
       <node concept="P$JXv" id="6OtXG9KfX44" role="lGtFl">
         <node concept="TZ5HI" id="6OtXG9KfX45" role="3nqlJM">
-          <node concept="TZ5HA" id="6OtXG9KfX46" role="3HnX3l">
-            <node concept="1dT_AC" id="6OtXG9KfXfe" role="1dT_Ay">
-              <property role="1dT_AB" value="looks at next-sibling, use managedGenerators link instead" />
+          <node concept="1PaTwC" id="1E1X3WHswCk" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswCl" role="1PaTwD">
+              <property role="3oM_SC" value="looks" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswCm" role="1PaTwD">
+              <property role="3oM_SC" value="at" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswCn" role="1PaTwD">
+              <property role="3oM_SC" value="next-sibling," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswCo" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswCp" role="1PaTwD">
+              <property role="3oM_SC" value="managedGenerators" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswCq" role="1PaTwD">
+              <property role="3oM_SC" value="link" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswCr" role="1PaTwD">
+              <property role="3oM_SC" value="instead" />
             </node>
           </node>
         </node>

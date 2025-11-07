@@ -5,7 +5,7 @@
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -102,15 +102,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -153,6 +147,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -391,29 +393,146 @@
         <ref role="2AI5Lk" to="ncw5:~Hack" resolve="Hack" />
       </node>
       <node concept="P$JXv" id="2mL_UKGkpFS" role="lGtFl">
-        <node concept="TZ5HA" id="2mL_UKGkpFT" role="TZ5H$">
-          <node concept="1dT_AC" id="2mL_UKGkpFU" role="1dT_Ay">
-            <property role="1dT_AB" value="unfortunately the knowledge about possible composite RuleAndMessage in the language 'rulesAndMessages'" />
+        <node concept="1PaTwC" id="1E1X3WHswgm" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswgn" role="1PaTwD">
+            <property role="3oM_SC" value="unfortunately" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgo" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgp" role="1PaTwD">
+            <property role="3oM_SC" value="knowledge" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgq" role="1PaTwD">
+            <property role="3oM_SC" value="about" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgr" role="1PaTwD">
+            <property role="3oM_SC" value="possible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgs" role="1PaTwD">
+            <property role="3oM_SC" value="composite" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgt" role="1PaTwD">
+            <property role="3oM_SC" value="RuleAndMessage" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgu" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgv" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgw" role="1PaTwD">
+            <property role="3oM_SC" value="language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgx" role="1PaTwD">
+            <property role="3oM_SC" value="'rulesAndMessages'" />
           </node>
         </node>
-        <node concept="TZ5HA" id="2mL_UKGkpGY" role="TZ5H$">
-          <node concept="1dT_AC" id="2mL_UKGkpGZ" role="1dT_Ay">
-            <property role="1dT_AB" value="has found its way up here" />
+        <node concept="1PaTwC" id="1E1X3WHswgy" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswgz" role="1PaTwD">
+            <property role="3oM_SC" value="has" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswg$" role="1PaTwD">
+            <property role="3oM_SC" value="found" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswg_" role="1PaTwD">
+            <property role="3oM_SC" value="its" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgA" role="1PaTwD">
+            <property role="3oM_SC" value="way" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgB" role="1PaTwD">
+            <property role="3oM_SC" value="up" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgC" role="1PaTwD">
+            <property role="3oM_SC" value="here" />
           </node>
         </node>
-        <node concept="TZ5HA" id="2mL_UKGkpHe" role="TZ5H$">
-          <node concept="1dT_AC" id="2mL_UKGkpHf" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
+        <node concept="1PaTwC" id="1E1X3WHswgD" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswgE" role="1PaTwD">
+            <property role="3oM_SC" value="" />
           </node>
         </node>
-        <node concept="TZ5HA" id="2mL_UKGkpHm" role="TZ5H$">
-          <node concept="1dT_AC" id="2mL_UKGkpHn" role="1dT_Ay">
-            <property role="1dT_AB" value="apparently, RuleWithMessage is closer to extending Rule than simply aggregating it" />
+        <node concept="1PaTwC" id="1E1X3WHswgF" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswgG" role="1PaTwD">
+            <property role="3oM_SC" value="apparently," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgH" role="1PaTwD">
+            <property role="3oM_SC" value="RuleWithMessage" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgI" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgJ" role="1PaTwD">
+            <property role="3oM_SC" value="closer" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgK" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgL" role="1PaTwD">
+            <property role="3oM_SC" value="extending" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgM" role="1PaTwD">
+            <property role="3oM_SC" value="Rule" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgN" role="1PaTwD">
+            <property role="3oM_SC" value="than" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgO" role="1PaTwD">
+            <property role="3oM_SC" value="simply" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgP" role="1PaTwD">
+            <property role="3oM_SC" value="aggregating" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgQ" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
           </node>
         </node>
-        <node concept="TZ5HA" id="2mL_UKGkpHO" role="TZ5H$">
-          <node concept="1dT_AC" id="2mL_UKGkpHP" role="1dT_Ay">
-            <property role="1dT_AB" value="the clients of this method prove this close connection between the concepts Rule and RuleWithMessage." />
+        <node concept="1PaTwC" id="1E1X3WHswgR" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswgS" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgT" role="1PaTwD">
+            <property role="3oM_SC" value="clients" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgU" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgV" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgW" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgX" role="1PaTwD">
+            <property role="3oM_SC" value="prove" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgY" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswgZ" role="1PaTwD">
+            <property role="3oM_SC" value="close" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh0" role="1PaTwD">
+            <property role="3oM_SC" value="connection" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh1" role="1PaTwD">
+            <property role="3oM_SC" value="between" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh2" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh3" role="1PaTwD">
+            <property role="3oM_SC" value="concepts" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh4" role="1PaTwD">
+            <property role="3oM_SC" value="Rule" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh5" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswh6" role="1PaTwD">
+            <property role="3oM_SC" value="RuleWithMessage." />
           </node>
         </node>
       </node>

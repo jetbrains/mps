@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -180,15 +180,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -1077,14 +1071,80 @@
         </node>
       </node>
       <node concept="P$JXv" id="7I3kEDGOVnU" role="lGtFl">
-        <node concept="TZ5HA" id="7I3kEDGOVnV" role="TZ5H$">
-          <node concept="1dT_AC" id="7I3kEDGOVnW" role="1dT_Ay">
-            <property role="1dT_AB" value="TODO reorganize facets in the project: we must not look at SolutionKind here" />
+        <node concept="1PaTwC" id="1E1X3WHswnY" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswnZ" role="1PaTwD">
+            <property role="3oM_SC" value="TODO" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo0" role="1PaTwD">
+            <property role="3oM_SC" value="reorganize" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo1" role="1PaTwD">
+            <property role="3oM_SC" value="facets" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo2" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo3" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo4" role="1PaTwD">
+            <property role="3oM_SC" value="project:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo5" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo6" role="1PaTwD">
+            <property role="3oM_SC" value="must" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo7" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo8" role="1PaTwD">
+            <property role="3oM_SC" value="look" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswo9" role="1PaTwD">
+            <property role="3oM_SC" value="at" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswoa" role="1PaTwD">
+            <property role="3oM_SC" value="SolutionKind" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswob" role="1PaTwD">
+            <property role="3oM_SC" value="here" />
           </node>
         </node>
-        <node concept="TZ5HA" id="7I3kEDGOVM8" role="TZ5H$">
-          <node concept="1dT_AC" id="7I3kEDGOVM9" role="1dT_Ay">
-            <property role="1dT_AB" value="probably it makes sense to declare all facets only in languages" />
+        <node concept="1PaTwC" id="1E1X3WHswoc" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswod" role="1PaTwD">
+            <property role="3oM_SC" value="probably" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswoe" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswof" role="1PaTwD">
+            <property role="3oM_SC" value="makes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswog" role="1PaTwD">
+            <property role="3oM_SC" value="sense" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswoh" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswoi" role="1PaTwD">
+            <property role="3oM_SC" value="declare" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswoj" role="1PaTwD">
+            <property role="3oM_SC" value="all" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswok" role="1PaTwD">
+            <property role="3oM_SC" value="facets" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswol" role="1PaTwD">
+            <property role="3oM_SC" value="only" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswom" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswon" role="1PaTwD">
+            <property role="3oM_SC" value="languages" />
           </node>
         </node>
       </node>

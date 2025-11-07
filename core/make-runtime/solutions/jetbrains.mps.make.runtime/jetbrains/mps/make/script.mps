@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -242,26 +242,18 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
       <concept id="8465538089690324397" name="jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag" flags="ng" index="TZ7YB">
         <property id="8465538089690324399" name="text" index="TZ7Y_" />
-      </concept>
-      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
-        <child id="3106559687488741665" name="line" index="2Xj1qM" />
       </concept>
       <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
         <reference id="2217234381367530213" name="classifier" index="VXe09" />
@@ -269,13 +261,17 @@
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306633585" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE" flags="ng" index="1VuTSG" />
+      <concept id="5085607816306647746" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE" flags="ng" index="1VuXuv">
+        <child id="5085607816306647747" name="reference" index="1VuXuu" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -576,16 +572,38 @@
         <ref role="3uigEE" to="hfuk:7yGn3z4N4Nd" resolve="MakeSession" />
       </node>
       <node concept="P$JXv" id="5Pnc_qQuhX6" role="lGtFl">
-        <node concept="TZ5HA" id="5Pnc_qQuhX7" role="TZ5H$">
-          <node concept="1dT_AC" id="5Pnc_qQuhX8" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
+        <node concept="TZ7YB" id="5Pnc_qQuinU" role="3nqlJM">
+          <property role="TZ7Y_" value="" />
+          <node concept="1PaTwC" id="1E1X3WHs_bD" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_bE" role="1PaTwD">
+              <property role="3oM_SC" value="2017.2" />
+            </node>
           </node>
         </node>
-        <node concept="TZ7YB" id="5Pnc_qQuinU" role="3nqlJM">
-          <property role="TZ7Y_" value="2017.2" />
-        </node>
         <node concept="x79VA" id="5Pnc_qQuhX9" role="3nqlJM">
-          <property role="x79VB" value="active session, never {@code null}" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHs_bF" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_bG" role="1PaTwD">
+              <property role="3oM_SC" value="active" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_bH" role="1PaTwD">
+              <property role="3oM_SC" value="session," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_bI" role="1PaTwD">
+              <property role="3oM_SC" value="never" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_bJ" role="1PaTwD">
+              <property role="3oM_SC" value="{@code" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_bK" role="1PaTwD">
+              <property role="3oM_SC" value="null}" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHs_bB" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_bC" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
         </node>
       </node>
     </node>
@@ -2779,77 +2797,642 @@
         <ref role="3uigEE" node="4231y0oKQyu" resolve="IScriptController" />
       </node>
       <node concept="3UR2Jj" id="3rCIVT6G4kr" role="lGtFl">
-        <node concept="TZ5HA" id="3rCIVT6G4ks" role="TZ5H$">
-          <node concept="1dT_AC" id="3rCIVT6G4kt" role="1dT_Ay">
-            <property role="1dT_AB" value="Session-sensitive controller." />
+        <node concept="1PaTwC" id="1E1X3WHs_7C" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_7D" role="1PaTwD">
+            <property role="3oM_SC" value="Session-sensitive" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7E" role="1PaTwD">
+            <property role="3oM_SC" value="controller." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3rCIVT6G4zc" role="TZ5H$">
-          <node concept="1dT_AC" id="3rCIVT6G4zd" role="1dT_Ay">
-            <property role="1dT_AB" value="The idea was, imo, to keep controller session-independent, but I can't find a way to pass MakeSession to individual" />
+        <node concept="1PaTwC" id="1E1X3WHs_7F" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_7G" role="1PaTwD">
+            <property role="3oM_SC" value="The" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7H" role="1PaTwD">
+            <property role="3oM_SC" value="idea" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7I" role="1PaTwD">
+            <property role="3oM_SC" value="was," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7J" role="1PaTwD">
+            <property role="3oM_SC" value="imo," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7K" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7L" role="1PaTwD">
+            <property role="3oM_SC" value="keep" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7M" role="1PaTwD">
+            <property role="3oM_SC" value="controller" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7N" role="1PaTwD">
+            <property role="3oM_SC" value="session-independent," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7O" role="1PaTwD">
+            <property role="3oM_SC" value="but" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7P" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7Q" role="1PaTwD">
+            <property role="3oM_SC" value="can't" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7R" role="1PaTwD">
+            <property role="3oM_SC" value="find" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7S" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7T" role="1PaTwD">
+            <property role="3oM_SC" value="way" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7U" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7V" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7W" role="1PaTwD">
+            <property role="3oM_SC" value="MakeSession" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7X" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7Y" role="1PaTwD">
+            <property role="3oM_SC" value="individual" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3rCIVT6G4zi" role="TZ5H$">
-          <node concept="1dT_AC" id="3rCIVT6G4zj" role="1dT_Ay">
-            <property role="1dT_AB" value="targets without this change. Alternative is to change IScript, but it doesn't suggest a mechanism to pass MakeSession furher" />
+        <node concept="1PaTwC" id="1E1X3WHs_7Z" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_80" role="1PaTwD">
+            <property role="3oM_SC" value="targets" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_81" role="1PaTwD">
+            <property role="3oM_SC" value="without" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_82" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_83" role="1PaTwD">
+            <property role="3oM_SC" value="change." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_84" role="1PaTwD">
+            <property role="3oM_SC" value="Alternative" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_85" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_86" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_87" role="1PaTwD">
+            <property role="3oM_SC" value="change" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_88" role="1PaTwD">
+            <property role="3oM_SC" value="IScript," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_89" role="1PaTwD">
+            <property role="3oM_SC" value="but" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8a" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8b" role="1PaTwD">
+            <property role="3oM_SC" value="doesn't" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8c" role="1PaTwD">
+            <property role="3oM_SC" value="suggest" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8d" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8e" role="1PaTwD">
+            <property role="3oM_SC" value="mechanism" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8f" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8g" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8h" role="1PaTwD">
+            <property role="3oM_SC" value="MakeSession" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8i" role="1PaTwD">
+            <property role="3oM_SC" value="furher" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3rCIVT6G4LX" role="TZ5H$">
-          <node concept="1dT_AC" id="3rCIVT6G4LY" role="1dT_Ay">
-            <property role="1dT_AB" value="to the task's IJob, while IJobMonitor of the controller does. Now, I need a make session there, and don't want to spend time with IScript refactoring." />
+        <node concept="1PaTwC" id="1E1X3WHs_8j" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_8k" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8l" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8m" role="1PaTwD">
+            <property role="3oM_SC" value="task's" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8n" role="1PaTwD">
+            <property role="3oM_SC" value="IJob," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8o" role="1PaTwD">
+            <property role="3oM_SC" value="while" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8p" role="1PaTwD">
+            <property role="3oM_SC" value="IJobMonitor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8q" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8r" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8s" role="1PaTwD">
+            <property role="3oM_SC" value="controller" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8t" role="1PaTwD">
+            <property role="3oM_SC" value="does." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8u" role="1PaTwD">
+            <property role="3oM_SC" value="Now," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8v" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8w" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8x" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8y" role="1PaTwD">
+            <property role="3oM_SC" value="make" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8z" role="1PaTwD">
+            <property role="3oM_SC" value="session" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8$" role="1PaTwD">
+            <property role="3oM_SC" value="there," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8_" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8A" role="1PaTwD">
+            <property role="3oM_SC" value="don't" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8B" role="1PaTwD">
+            <property role="3oM_SC" value="want" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8C" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8D" role="1PaTwD">
+            <property role="3oM_SC" value="spend" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8E" role="1PaTwD">
+            <property role="3oM_SC" value="time" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8F" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8G" role="1PaTwD">
+            <property role="3oM_SC" value="IScript" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8H" role="1PaTwD">
+            <property role="3oM_SC" value="refactoring." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3rCIVT6G4M7" role="TZ5H$">
-          <node concept="1dT_AC" id="3rCIVT6G4M8" role="1dT_Ay">
-            <property role="1dT_AB" value="XXX Nevertheless consider alternative IScript implementation with a mechanism to pass MakeSession to tasks. Script is truly session-sensitive, after all." />
+        <node concept="1PaTwC" id="1E1X3WHs_8I" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_8J" role="1PaTwD">
+            <property role="3oM_SC" value="XXX" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8K" role="1PaTwD">
+            <property role="3oM_SC" value="Nevertheless" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8L" role="1PaTwD">
+            <property role="3oM_SC" value="consider" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8M" role="1PaTwD">
+            <property role="3oM_SC" value="alternative" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8N" role="1PaTwD">
+            <property role="3oM_SC" value="IScript" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8O" role="1PaTwD">
+            <property role="3oM_SC" value="implementation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8P" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8Q" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8R" role="1PaTwD">
+            <property role="3oM_SC" value="mechanism" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8S" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8T" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8U" role="1PaTwD">
+            <property role="3oM_SC" value="MakeSession" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8V" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8W" role="1PaTwD">
+            <property role="3oM_SC" value="tasks." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8X" role="1PaTwD">
+            <property role="3oM_SC" value="Script" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8Y" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_8Z" role="1PaTwD">
+            <property role="3oM_SC" value="truly" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_90" role="1PaTwD">
+            <property role="3oM_SC" value="session-sensitive," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_91" role="1PaTwD">
+            <property role="3oM_SC" value="after" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_92" role="1PaTwD">
+            <property role="3oM_SC" value="all." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3rCIVT6Gjh8" role="TZ5H$">
-          <node concept="1dT_AC" id="3rCIVT6Gjh9" role="1dT_Ay">
-            <property role="1dT_AB" value="    Even then this class makes sense with generic code to employ " />
+        <node concept="1PaTwC" id="1E1X3WHs_93" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_94" role="1PaTwD">
+            <property role="3oM_SC" value="" />
           </node>
-          <node concept="1dT_AA" id="3rCIVT6GjhT" role="1dT_Ay">
-            <node concept="92FcH" id="3rCIVT6GjhZ" role="qph3F">
-              <node concept="TZ5HA" id="3rCIVT6Gji1" role="2XjZqd" />
-              <node concept="VXe08" id="3rCIVT6GkTy" role="92FcQ">
+          <node concept="3oM_SD" id="1E1X3WHs_95" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_96" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_97" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_98" role="1PaTwD">
+            <property role="3oM_SC" value="Even" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_99" role="1PaTwD">
+            <property role="3oM_SC" value="then" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9a" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9b" role="1PaTwD">
+            <property role="3oM_SC" value="class" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9c" role="1PaTwD">
+            <property role="3oM_SC" value="makes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9d" role="1PaTwD">
+            <property role="3oM_SC" value="sense" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9e" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9f" role="1PaTwD">
+            <property role="3oM_SC" value="generic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9g" role="1PaTwD">
+            <property role="3oM_SC" value="code" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9h" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9i" role="1PaTwD">
+            <property role="3oM_SC" value="employ" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHs_9j" role="1PaTwD">
+            <node concept="1VuXuv" id="1E1X3WHs_9k" role="1Vtduc">
+              <node concept="VXe08" id="3rCIVT6GkTy" role="1VuXuu">
                 <ref role="VXe09" node="3rCIVT6F9HK" resolve="PropertyPoolInitializer" />
               </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="3rCIVT6GjhS" role="1dT_Ay">
-            <property role="1dT_AB" value=" to set up tasks." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="671CX74nJFT" role="TZ5H$">
-          <node concept="1dT_AC" id="671CX74nJFU" role="1dT_Ay">
-            <property role="1dT_AB" value="    To pass MakeSession with Script, I can utilize the fact that MakeSession creates IScript in its " />
-          </node>
-          <node concept="1dT_AA" id="671CX74nOfW" role="1dT_Ay">
-            <node concept="VVOAv" id="671CX74nOg2" role="qph3F">
-              <node concept="TZ5HA" id="671CX74nOg4" role="2Xj1qM">
-                <node concept="1dT_AC" id="671CX74nOg8" role="1dT_Ay">
-                  <property role="1dT_AB" value="toScript(ScriptBuilder)" />
+              <node concept="1PaTwC" id="1E1X3WHs_9n" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHs_9o" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="1dT_AC" id="671CX74nOfV" role="1dT_Ay">
-            <property role="1dT_AB" value=" method. Script would further" />
+          <node concept="3oM_SD" id="1E1X3WHs_9p" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9q" role="1PaTwD">
+            <property role="3oM_SC" value="set" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9r" role="1PaTwD">
+            <property role="3oM_SC" value="up" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9s" role="1PaTwD">
+            <property role="3oM_SC" value="tasks." />
           </node>
         </node>
-        <node concept="TZ5HA" id="671CX74nOi8" role="TZ5H$">
-          <node concept="1dT_AC" id="671CX74nOi9" role="1dT_Ay">
-            <property role="1dT_AB" value="    to ITarget.createJob(), and pass MakeSession in there (if supported. Could even introduce createJob(MakeSession)). The reason I stick to" />
+        <node concept="1PaTwC" id="1E1X3WHs_9t" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_9u" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9v" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9w" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9x" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9y" role="1PaTwD">
+            <property role="3oM_SC" value="To" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9z" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9$" role="1PaTwD">
+            <property role="3oM_SC" value="MakeSession" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9_" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9A" role="1PaTwD">
+            <property role="3oM_SC" value="Script," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9B" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9C" role="1PaTwD">
+            <property role="3oM_SC" value="can" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9D" role="1PaTwD">
+            <property role="3oM_SC" value="utilize" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9E" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9F" role="1PaTwD">
+            <property role="3oM_SC" value="fact" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9G" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9H" role="1PaTwD">
+            <property role="3oM_SC" value="MakeSession" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9I" role="1PaTwD">
+            <property role="3oM_SC" value="creates" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9J" role="1PaTwD">
+            <property role="3oM_SC" value="IScript" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9K" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9L" role="1PaTwD">
+            <property role="3oM_SC" value="its" />
+          </node>
+          <node concept="1Vtdud" id="1E1X3WHs_9M" role="1PaTwD">
+            <node concept="1VuTSG" id="1E1X3WHs_9N" role="1Vtduc">
+              <node concept="1PaTwC" id="1E1X3WHs_9Q" role="2JaDBN">
+                <node concept="3oM_SD" id="1E1X3WHs_9R" role="1PaTwD">
+                  <property role="3oM_SC" value="toScript(ScriptBuilder)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9S" role="1PaTwD">
+            <property role="3oM_SC" value="method." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9T" role="1PaTwD">
+            <property role="3oM_SC" value="Script" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9U" role="1PaTwD">
+            <property role="3oM_SC" value="would" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9V" role="1PaTwD">
+            <property role="3oM_SC" value="further" />
           </node>
         </node>
-        <node concept="TZ5HA" id="671CX74nOga" role="TZ5H$">
-          <node concept="1dT_AC" id="671CX74nOgb" role="1dT_Ay">
-            <property role="1dT_AB" value="    IJobMonitor is that (a) once IProgress is history, there'd be nothing in IJobMonitor, (b) IJobMonitor gives clear scope when one could ask for session (with alternative approach," />
+        <node concept="1PaTwC" id="1E1X3WHs_9W" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_9X" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9Y" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_9Z" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a0" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a1" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a2" role="1PaTwD">
+            <property role="3oM_SC" value="ITarget.createJob()," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a3" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a4" role="1PaTwD">
+            <property role="3oM_SC" value="pass" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a5" role="1PaTwD">
+            <property role="3oM_SC" value="MakeSession" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a6" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a7" role="1PaTwD">
+            <property role="3oM_SC" value="there" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a8" role="1PaTwD">
+            <property role="3oM_SC" value="(if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a9" role="1PaTwD">
+            <property role="3oM_SC" value="supported." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aa" role="1PaTwD">
+            <property role="3oM_SC" value="Could" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ab" role="1PaTwD">
+            <property role="3oM_SC" value="even" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ac" role="1PaTwD">
+            <property role="3oM_SC" value="introduce" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ad" role="1PaTwD">
+            <property role="3oM_SC" value="createJob(MakeSession))." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ae" role="1PaTwD">
+            <property role="3oM_SC" value="The" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_af" role="1PaTwD">
+            <property role="3oM_SC" value="reason" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ag" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ah" role="1PaTwD">
+            <property role="3oM_SC" value="stick" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ai" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
           </node>
         </node>
-        <node concept="TZ5HA" id="671CX74nOk9" role="TZ5H$">
-          <node concept="1dT_AC" id="671CX74nOka" role="1dT_Ay">
-            <property role="1dT_AB" value="    where IJob is configured, scope and presence of the session would be implicit)." />
+        <node concept="1PaTwC" id="1E1X3WHs_aj" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_ak" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_al" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_am" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_an" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ao" role="1PaTwD">
+            <property role="3oM_SC" value="IJobMonitor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ap" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aq" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ar" role="1PaTwD">
+            <property role="3oM_SC" value="(a)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_as" role="1PaTwD">
+            <property role="3oM_SC" value="once" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_at" role="1PaTwD">
+            <property role="3oM_SC" value="IProgress" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_au" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_av" role="1PaTwD">
+            <property role="3oM_SC" value="history," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aw" role="1PaTwD">
+            <property role="3oM_SC" value="there'd" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ax" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_ay" role="1PaTwD">
+            <property role="3oM_SC" value="nothing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_az" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a$" role="1PaTwD">
+            <property role="3oM_SC" value="IJobMonitor," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_a_" role="1PaTwD">
+            <property role="3oM_SC" value="(b)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aA" role="1PaTwD">
+            <property role="3oM_SC" value="IJobMonitor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aB" role="1PaTwD">
+            <property role="3oM_SC" value="gives" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aC" role="1PaTwD">
+            <property role="3oM_SC" value="clear" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aD" role="1PaTwD">
+            <property role="3oM_SC" value="scope" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aE" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aF" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aG" role="1PaTwD">
+            <property role="3oM_SC" value="could" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aH" role="1PaTwD">
+            <property role="3oM_SC" value="ask" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aI" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aJ" role="1PaTwD">
+            <property role="3oM_SC" value="session" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aK" role="1PaTwD">
+            <property role="3oM_SC" value="(with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aL" role="1PaTwD">
+            <property role="3oM_SC" value="alternative" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aM" role="1PaTwD">
+            <property role="3oM_SC" value="approach," />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHs_aN" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_aO" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aP" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aQ" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aR" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aS" role="1PaTwD">
+            <property role="3oM_SC" value="where" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aT" role="1PaTwD">
+            <property role="3oM_SC" value="IJob" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aU" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aV" role="1PaTwD">
+            <property role="3oM_SC" value="configured," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aW" role="1PaTwD">
+            <property role="3oM_SC" value="scope" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aX" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aY" role="1PaTwD">
+            <property role="3oM_SC" value="presence" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_aZ" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_b0" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_b1" role="1PaTwD">
+            <property role="3oM_SC" value="session" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_b2" role="1PaTwD">
+            <property role="3oM_SC" value="would" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_b3" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_b4" role="1PaTwD">
+            <property role="3oM_SC" value="implicit)." />
           </node>
         </node>
       </node>
@@ -5005,36 +5588,92 @@
     </node>
     <node concept="3Tm1VV" id="3rCIVT6F9HL" role="1B3o_S" />
     <node concept="3UR2Jj" id="3rCIVT6F9Ia" role="lGtFl">
-      <node concept="TZ5HA" id="3rCIVT6F9Ib" role="TZ5H$">
-        <node concept="1dT_AC" id="3rCIVT6F9Ic" role="1dT_Ay">
-          <property role="1dT_AB" value="Code that takes " />
+      <node concept="1PaTwC" id="1E1X3WHs_b5" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_b6" role="1PaTwD">
+          <property role="3oM_SC" value="Code" />
         </node>
-        <node concept="1dT_AA" id="3rCIVT6F9Io" role="1dT_Ay">
-          <node concept="92FcH" id="3rCIVT6F9Iu" role="qph3F">
-            <node concept="TZ5HA" id="3rCIVT6F9Iw" role="2XjZqd" />
-            <node concept="VXe08" id="3rCIVT6FbjZ" role="92FcQ">
+        <node concept="3oM_SD" id="1E1X3WHs_b7" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_b8" role="1PaTwD">
+          <property role="3oM_SC" value="takes" />
+        </node>
+        <node concept="1Vtdud" id="1E1X3WHs_b9" role="1PaTwD">
+          <node concept="1VuXuv" id="1E1X3WHs_ba" role="1Vtduc">
+            <node concept="VXe08" id="3rCIVT6FbjZ" role="1VuXuu">
               <ref role="VXe09" node="5XvfMqim0Fp" resolve="IPropertiesPool" />
             </node>
-          </node>
-        </node>
-        <node concept="1dT_AC" id="3rCIVT6F9In" role="1dT_Ay">
-          <property role="1dT_AB" value=" and feeds it with property values actual for Make session." />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="3rCIVT6FbxW" role="TZ5H$">
-        <node concept="1dT_AC" id="3rCIVT6FbxX" role="1dT_Ay">
-          <property role="1dT_AB" value="It's auxiliary interface to help implement " />
-        </node>
-        <node concept="1dT_AA" id="3rCIVT6Fc3u" role="1dT_Ay">
-          <node concept="92FcH" id="3rCIVT6Fc3$" role="qph3F">
-            <node concept="TZ5HA" id="3rCIVT6Fc3A" role="2XjZqd" />
-            <node concept="VXe0Z" id="3rCIVT6Fh19" role="92FcQ">
-              <ref role="VXe0S" node="70hZ3jyJvfD" resolve="setup" />
+            <node concept="1PaTwC" id="1E1X3WHs_bd" role="2JaDBN">
+              <node concept="3oM_SD" id="1E1X3WHs_be" role="1PaTwD">
+                <property role="3oM_SC" value="" />
+              </node>
             </node>
           </node>
         </node>
-        <node concept="1dT_AC" id="3rCIVT6Fc3t" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+        <node concept="3oM_SD" id="1E1X3WHs_bf" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bg" role="1PaTwD">
+          <property role="3oM_SC" value="feeds" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bh" role="1PaTwD">
+          <property role="3oM_SC" value="it" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bi" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bj" role="1PaTwD">
+          <property role="3oM_SC" value="property" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bk" role="1PaTwD">
+          <property role="3oM_SC" value="values" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bl" role="1PaTwD">
+          <property role="3oM_SC" value="actual" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bm" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bn" role="1PaTwD">
+          <property role="3oM_SC" value="Make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bo" role="1PaTwD">
+          <property role="3oM_SC" value="session." />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="1E1X3WHs_bp" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_bq" role="1PaTwD">
+          <property role="3oM_SC" value="It's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_br" role="1PaTwD">
+          <property role="3oM_SC" value="auxiliary" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bs" role="1PaTwD">
+          <property role="3oM_SC" value="interface" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bt" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bu" role="1PaTwD">
+          <property role="3oM_SC" value="help" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bv" role="1PaTwD">
+          <property role="3oM_SC" value="implement" />
+        </node>
+        <node concept="1Vtdud" id="1E1X3WHs_bw" role="1PaTwD">
+          <node concept="1VuXuv" id="1E1X3WHs_bx" role="1Vtduc">
+            <node concept="VXe0Z" id="3rCIVT6Fh19" role="1VuXuu">
+              <ref role="VXe0S" node="70hZ3jyJvfD" resolve="setup" />
+            </node>
+            <node concept="1PaTwC" id="1E1X3WHs_b$" role="2JaDBN">
+              <node concept="3oM_SD" id="1E1X3WHs_b_" role="1PaTwD">
+                <property role="3oM_SC" value="" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_bA" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
     </node>

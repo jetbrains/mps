@@ -7,7 +7,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="sfqd" ref="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)" />
@@ -388,17 +388,13 @@
       </concept>
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -619,9 +615,9 @@
         <node concept="32Fmki" id="2ZbjobgMG3l" role="2ShVmc" />
       </node>
       <node concept="z59LJ" id="2ZbjobgQhsH" role="lGtFl">
-        <node concept="TZ5HA" id="2ZbjobgQhsI" role="TZ5H$">
-          <node concept="1dT_AC" id="2ZbjobgQhsJ" role="1dT_Ay">
-            <property role="1dT_AB" value="ordered!" />
+        <node concept="1PaTwC" id="1E1X3WHsBzp" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBzq" role="1PaTwD">
+            <property role="3oM_SC" value="ordered!" />
           </node>
         </node>
       </node>
@@ -1594,9 +1590,54 @@
         </node>
       </node>
       <node concept="P$JXv" id="VBQraX3xWt" role="lGtFl">
-        <node concept="TZ5HA" id="VBQraX3xWu" role="TZ5H$">
-          <node concept="1dT_AC" id="VBQraX3xWv" role="1dT_Ay">
-            <property role="1dT_AB" value="updates test node for the passed &amp; ignored states which have a different parent-children TestState relation" />
+        <node concept="1PaTwC" id="1E1X3WHsBzY" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBzZ" role="1PaTwD">
+            <property role="3oM_SC" value="updates" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$0" role="1PaTwD">
+            <property role="3oM_SC" value="test" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$1" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$2" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$3" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$4" role="1PaTwD">
+            <property role="3oM_SC" value="passed" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$5" role="1PaTwD">
+            <property role="3oM_SC" value="&amp;" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$6" role="1PaTwD">
+            <property role="3oM_SC" value="ignored" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$7" role="1PaTwD">
+            <property role="3oM_SC" value="states" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$8" role="1PaTwD">
+            <property role="3oM_SC" value="which" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$9" role="1PaTwD">
+            <property role="3oM_SC" value="have" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$a" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$b" role="1PaTwD">
+            <property role="3oM_SC" value="different" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$c" role="1PaTwD">
+            <property role="3oM_SC" value="parent-children" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$d" role="1PaTwD">
+            <property role="3oM_SC" value="TestState" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$e" role="1PaTwD">
+            <property role="3oM_SC" value="relation" />
           </node>
         </node>
       </node>
@@ -2311,9 +2352,30 @@
     </node>
     <node concept="2tJIrI" id="2ZbjobgpNyH" role="jymVt" />
     <node concept="3UR2Jj" id="2ZbjobggXBl" role="lGtFl">
-      <node concept="TZ5HA" id="2ZbjobggXBm" role="TZ5H$">
-        <node concept="1dT_AC" id="2ZbjobggXBn" role="1dT_Ay">
-          <property role="1dT_AB" value="we need to remove string association aka TestNameMap" />
+      <node concept="1PaTwC" id="1E1X3WHsByL" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsByM" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByN" role="1PaTwD">
+          <property role="3oM_SC" value="need" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByO" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByP" role="1PaTwD">
+          <property role="3oM_SC" value="remove" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByQ" role="1PaTwD">
+          <property role="3oM_SC" value="string" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByR" role="1PaTwD">
+          <property role="3oM_SC" value="association" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByS" role="1PaTwD">
+          <property role="3oM_SC" value="aka" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByT" role="1PaTwD">
+          <property role="3oM_SC" value="TestNameMap" />
         </node>
       </node>
     </node>
@@ -6920,19 +6982,106 @@
         <property role="3cmrfH" value="10000" />
       </node>
       <node concept="z59LJ" id="4e85Rl_$hLy" role="lGtFl">
-        <node concept="TZ5HA" id="4e85Rl_$hLz" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_$hL$" role="1dT_Ay">
-            <property role="1dT_AB" value="here I found a logic as follows." />
+        <node concept="1PaTwC" id="1E1X3WHsBzr" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBzs" role="1PaTwD">
+            <property role="3oM_SC" value="here" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzt" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzu" role="1PaTwD">
+            <property role="3oM_SC" value="found" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzv" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzw" role="1PaTwD">
+            <property role="3oM_SC" value="logic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzx" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzy" role="1PaTwD">
+            <property role="3oM_SC" value="follows." />
           </node>
         </node>
-        <node concept="TZ5HA" id="4e85Rl_$hLF" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_$hLG" role="1dT_Ay">
-            <property role="1dT_AB" value="if there are too many messages we start dumping them to disk, in the temp folder." />
+        <node concept="1PaTwC" id="1E1X3WHsBzz" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBz$" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBz_" role="1PaTwD">
+            <property role="3oM_SC" value="there" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzA" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzB" role="1PaTwD">
+            <property role="3oM_SC" value="too" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzC" role="1PaTwD">
+            <property role="3oM_SC" value="many" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzD" role="1PaTwD">
+            <property role="3oM_SC" value="messages" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzE" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzF" role="1PaTwD">
+            <property role="3oM_SC" value="start" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzG" role="1PaTwD">
+            <property role="3oM_SC" value="dumping" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzH" role="1PaTwD">
+            <property role="3oM_SC" value="them" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzI" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzJ" role="1PaTwD">
+            <property role="3oM_SC" value="disk," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzK" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzL" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzM" role="1PaTwD">
+            <property role="3oM_SC" value="temp" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzN" role="1PaTwD">
+            <property role="3oM_SC" value="folder." />
           </node>
         </node>
-        <node concept="TZ5HA" id="4e85Rl_$hLL" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_$hLM" role="1dT_Ay">
-            <property role="1dT_AB" value="the same logic applies in the test idea framework" />
+        <node concept="1PaTwC" id="1E1X3WHsBzO" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBzP" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzQ" role="1PaTwD">
+            <property role="3oM_SC" value="same" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzR" role="1PaTwD">
+            <property role="3oM_SC" value="logic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzS" role="1PaTwD">
+            <property role="3oM_SC" value="applies" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzT" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzU" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzV" role="1PaTwD">
+            <property role="3oM_SC" value="test" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzW" role="1PaTwD">
+            <property role="3oM_SC" value="idea" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBzX" role="1PaTwD">
+            <property role="3oM_SC" value="framework" />
           </node>
         </node>
       </node>
@@ -9109,14 +9258,50 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="4e85Rl_FXDy" role="lGtFl">
-      <node concept="TZ5HA" id="4e85Rl_FXDz" role="TZ5H$">
-        <node concept="1dT_AC" id="4e85Rl_FXD$" role="1dT_Ay">
-          <property role="1dT_AB" value="todo no reflection of ignore/assumptions/skipped tests whatsoever" />
+      <node concept="1PaTwC" id="1E1X3WHsByU" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsByV" role="1PaTwD">
+          <property role="3oM_SC" value="todo" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByW" role="1PaTwD">
+          <property role="3oM_SC" value="no" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByX" role="1PaTwD">
+          <property role="3oM_SC" value="reflection" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByY" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsByZ" role="1PaTwD">
+          <property role="3oM_SC" value="ignore/assumptions/skipped" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz0" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz1" role="1PaTwD">
+          <property role="3oM_SC" value="whatsoever" />
         </node>
       </node>
-      <node concept="TZ5HA" id="4e85Rl_FXDF" role="TZ5H$">
-        <node concept="1dT_AC" id="4e85Rl_FXDG" role="1dT_Ay">
-          <property role="1dT_AB" value="the prototype is the idea test tool" />
+      <node concept="1PaTwC" id="1E1X3WHsBz2" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsBz3" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz4" role="1PaTwD">
+          <property role="3oM_SC" value="prototype" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz5" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz6" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz7" role="1PaTwD">
+          <property role="3oM_SC" value="idea" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz8" role="1PaTwD">
+          <property role="3oM_SC" value="test" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBz9" role="1PaTwD">
+          <property role="3oM_SC" value="tool" />
         </node>
       </node>
     </node>
@@ -16860,15 +17045,68 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
       <node concept="P$JXv" id="4e85Rl_z1K6" role="lGtFl">
-        <node concept="TZ5HA" id="4e85Rl_z1K7" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_z1K8" role="1dT_Ay">
-            <property role="1dT_AB" value="places a new message after parsing the text event" />
-          </node>
-        </node>
         <node concept="x0GOo" id="4e85Rl_C5tN" role="3nqlJM">
-          <property role="x0GOq" value="iff #accepts is not true for the given event" />
+          <property role="x0GOq" value="" />
           <node concept="3uibUv" id="4e85Rl_C5CL" role="zrq5$">
             <ref role="3uigEE" node="4e85Rl_C5iw" resolve="MessagesContainer.EventIsNotAcceptedException" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsB$p" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsB$q" role="1PaTwD">
+              <property role="3oM_SC" value="iff" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$r" role="1PaTwD">
+              <property role="3oM_SC" value="#accepts" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$s" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$t" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$u" role="1PaTwD">
+              <property role="3oM_SC" value="true" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$v" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$w" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$x" role="1PaTwD">
+              <property role="3oM_SC" value="given" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsB$y" role="1PaTwD">
+              <property role="3oM_SC" value="event" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsB$f" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsB$g" role="1PaTwD">
+            <property role="3oM_SC" value="places" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$h" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$i" role="1PaTwD">
+            <property role="3oM_SC" value="new" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$j" role="1PaTwD">
+            <property role="3oM_SC" value="message" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$k" role="1PaTwD">
+            <property role="3oM_SC" value="after" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$l" role="1PaTwD">
+            <property role="3oM_SC" value="parsing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$m" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$n" role="1PaTwD">
+            <property role="3oM_SC" value="text" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$o" role="1PaTwD">
+            <property role="3oM_SC" value="event" />
           </node>
         </node>
       </node>
@@ -16907,14 +17145,47 @@
       <node concept="3Tm1VV" id="36vIONTtQcT" role="1B3o_S" />
       <node concept="3clFbS" id="36vIONTtQcU" role="3clF47" />
       <node concept="P$JXv" id="4e85Rl_yFLp" role="lGtFl">
-        <node concept="TZ5HA" id="4e85Rl_yFLq" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_yFLr" role="1dT_Ay">
-            <property role="1dT_AB" value="defines whether this message container accepts the test event" />
+        <node concept="1PaTwC" id="1E1X3WHsB$z" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsB$$" role="1PaTwD">
+            <property role="3oM_SC" value="defines" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$_" role="1PaTwD">
+            <property role="3oM_SC" value="whether" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$A" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$B" role="1PaTwD">
+            <property role="3oM_SC" value="message" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$C" role="1PaTwD">
+            <property role="3oM_SC" value="container" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$D" role="1PaTwD">
+            <property role="3oM_SC" value="accepts" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$E" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$F" role="1PaTwD">
+            <property role="3oM_SC" value="test" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$G" role="1PaTwD">
+            <property role="3oM_SC" value="event" />
           </node>
         </node>
-        <node concept="TZ5HA" id="4e85Rl_$ckL" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_$ckM" role="1dT_Ay">
-            <property role="1dT_AB" value="the relation is transitive" />
+        <node concept="1PaTwC" id="1E1X3WHsB$H" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsB$I" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$J" role="1PaTwD">
+            <property role="3oM_SC" value="relation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$K" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$L" role="1PaTwD">
+            <property role="3oM_SC" value="transitive" />
           </node>
         </node>
       </node>
@@ -17364,9 +17635,48 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
       <node concept="P$JXv" id="4e85Rl_Csws" role="lGtFl">
-        <node concept="TZ5HA" id="4e85Rl_Cswt" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_Cswu" role="1dT_Ay">
-            <property role="1dT_AB" value="the contract is the same as for #addMessage: the method #accepts(textEvent) must return true" />
+        <node concept="1PaTwC" id="1E1X3WHsB$M" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsB$N" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$O" role="1PaTwD">
+            <property role="3oM_SC" value="contract" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$P" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$Q" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$R" role="1PaTwD">
+            <property role="3oM_SC" value="same" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$S" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$T" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$U" role="1PaTwD">
+            <property role="3oM_SC" value="#addMessage:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$V" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$W" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$X" role="1PaTwD">
+            <property role="3oM_SC" value="#accepts(textEvent)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$Y" role="1PaTwD">
+            <property role="3oM_SC" value="must" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB$Z" role="1PaTwD">
+            <property role="3oM_SC" value="return" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_0" role="1PaTwD">
+            <property role="3oM_SC" value="true" />
           </node>
         </node>
       </node>
@@ -17657,9 +17967,48 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="4e85Rl_z0JN" role="lGtFl">
-      <node concept="TZ5HA" id="4e85Rl_z0JO" role="TZ5H$">
-        <node concept="1dT_AC" id="4e85Rl_z0JP" role="1dT_Ay">
-          <property role="1dT_AB" value="A message which also has children and defines a recursive logic of text printing" />
+      <node concept="1PaTwC" id="1E1X3WHsBza" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsBzb" role="1PaTwD">
+          <property role="3oM_SC" value="A" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzc" role="1PaTwD">
+          <property role="3oM_SC" value="message" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzd" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBze" role="1PaTwD">
+          <property role="3oM_SC" value="also" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzf" role="1PaTwD">
+          <property role="3oM_SC" value="has" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzg" role="1PaTwD">
+          <property role="3oM_SC" value="children" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzh" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzi" role="1PaTwD">
+          <property role="3oM_SC" value="defines" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzj" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzk" role="1PaTwD">
+          <property role="3oM_SC" value="recursive" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzl" role="1PaTwD">
+          <property role="3oM_SC" value="logic" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzm" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzn" role="1PaTwD">
+          <property role="3oM_SC" value="text" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBzo" role="1PaTwD">
+          <property role="3oM_SC" value="printing" />
         </node>
       </node>
     </node>
@@ -20334,9 +20683,39 @@
       </node>
       <node concept="3clFbS" id="36vIONTtQcK" role="3clF47" />
       <node concept="P$JXv" id="4e85Rl_FZsI" role="lGtFl">
-        <node concept="TZ5HA" id="4e85Rl_FZsJ" role="TZ5H$">
-          <node concept="1dT_AC" id="4e85Rl_FZsK" role="1dT_Ay">
-            <property role="1dT_AB" value="true iff it has something to print under the given filter" />
+        <node concept="1PaTwC" id="1E1X3WHsB_1" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsB_2" role="1PaTwD">
+            <property role="3oM_SC" value="true" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_3" role="1PaTwD">
+            <property role="3oM_SC" value="iff" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_4" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_5" role="1PaTwD">
+            <property role="3oM_SC" value="has" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_6" role="1PaTwD">
+            <property role="3oM_SC" value="something" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_7" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_8" role="1PaTwD">
+            <property role="3oM_SC" value="print" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_9" role="1PaTwD">
+            <property role="3oM_SC" value="under" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_a" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_b" role="1PaTwD">
+            <property role="3oM_SC" value="given" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsB_c" role="1PaTwD">
+            <property role="3oM_SC" value="filter" />
           </node>
         </node>
       </node>

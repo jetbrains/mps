@@ -2,7 +2,7 @@
 <model ref="r:eed7a462-d012-4d9f-b223-97987e5d1cb3(jetbrains.mps.vcs.changesmanager.tree.features)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -138,16 +138,10 @@
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -156,6 +150,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -451,14 +453,59 @@
     <property role="1sVAO0" value="true" />
     <node concept="3Tm1VV" id="4oT3Lbm4LXG" role="1B3o_S" />
     <node concept="3UR2Jj" id="4oT3Lbm4LZN" role="lGtFl">
-      <node concept="TZ5HA" id="4oT3Lbm4LZO" role="TZ5H$">
-        <node concept="1dT_AC" id="4oT3Lbm4LZP" role="1dT_Ay">
-          <property role="1dT_AB" value="Feature is either node, node's property, node's reference, node's property list," />
+      <node concept="1PaTwC" id="1E1X3WHsDkI" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDkJ" role="1PaTwD">
+          <property role="3oM_SC" value="Feature" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkK" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkL" role="1PaTwD">
+          <property role="3oM_SC" value="either" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkM" role="1PaTwD">
+          <property role="3oM_SC" value="node," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkN" role="1PaTwD">
+          <property role="3oM_SC" value="node's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkO" role="1PaTwD">
+          <property role="3oM_SC" value="property," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkP" role="1PaTwD">
+          <property role="3oM_SC" value="node's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkQ" role="1PaTwD">
+          <property role="3oM_SC" value="reference," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkR" role="1PaTwD">
+          <property role="3oM_SC" value="node's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkS" role="1PaTwD">
+          <property role="3oM_SC" value="property" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkT" role="1PaTwD">
+          <property role="3oM_SC" value="list," />
         </node>
       </node>
-      <node concept="TZ5HA" id="4oT3Lbm4LZQ" role="TZ5H$">
-        <node concept="1dT_AC" id="4oT3Lbm4LZR" role="1dT_Ay">
-          <property role="1dT_AB" value="or node's reference list (see subclasses)" />
+      <node concept="1PaTwC" id="1E1X3WHsDkU" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDkV" role="1PaTwD">
+          <property role="3oM_SC" value="or" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkW" role="1PaTwD">
+          <property role="3oM_SC" value="node's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkX" role="1PaTwD">
+          <property role="3oM_SC" value="reference" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkY" role="1PaTwD">
+          <property role="3oM_SC" value="list" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDkZ" role="1PaTwD">
+          <property role="3oM_SC" value="(see" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDl0" role="1PaTwD">
+          <property role="3oM_SC" value="subclasses)" />
         </node>
       </node>
     </node>

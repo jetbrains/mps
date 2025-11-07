@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -226,20 +226,16 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="8465538089690881930" name="jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag" flags="ng" index="TUZQ0">
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
@@ -2521,14 +2517,37 @@
     </node>
     <node concept="3UR2Jj" id="4d7ZCcwOtR9" role="lGtFl">
       <node concept="TUZQ0" id="4d7ZCcwOtRe" role="3nqlJM">
-        <property role="TUZQ4" value="location breakpoint type" />
+        <property role="TUZQ4" value="" />
         <node concept="zr_56" id="4d7ZCcwOtRf" role="zr_5Q">
           <ref role="zr_51" node="4d7ZCcwOtR6" resolve="L" />
         </node>
+        <node concept="1PaTwC" id="1E1X3WHsAPF" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAPG" role="1PaTwD">
+            <property role="3oM_SC" value="location" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAPH" role="1PaTwD">
+            <property role="3oM_SC" value="breakpoint" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAPI" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+        </node>
       </node>
-      <node concept="TZ5HA" id="650dotal$m0" role="TZ5H$">
-        <node concept="1dT_AC" id="650dotal$m1" role="1dT_Ay">
-          <property role="1dT_AB" value="Base/shared implementation for BreakpointEditorIntegration service" />
+      <node concept="1PaTwC" id="1E1X3WHsAP_" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAPA" role="1PaTwD">
+          <property role="3oM_SC" value="Base/shared" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPB" role="1PaTwD">
+          <property role="3oM_SC" value="implementation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPC" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPD" role="1PaTwD">
+          <property role="3oM_SC" value="BreakpointEditorIntegration" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPE" role="1PaTwD">
+          <property role="3oM_SC" value="service" />
         </node>
       </node>
     </node>
@@ -2586,9 +2605,45 @@
     </node>
     <node concept="3Tm1VV" id="650dota6Oco" role="1B3o_S" />
     <node concept="3UR2Jj" id="650dota7zop" role="lGtFl">
-      <node concept="TZ5HA" id="650dota7zoq" role="TZ5H$">
-        <node concept="1dT_AC" id="650dota7zor" role="1dT_Ay">
-          <property role="1dT_AB" value="IDEA service that captures different BP UI handling in Big MPS vs MPS-as-IDEA-plugin" />
+      <node concept="1PaTwC" id="1E1X3WHsAPJ" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAPK" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPL" role="1PaTwD">
+          <property role="3oM_SC" value="service" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPM" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPN" role="1PaTwD">
+          <property role="3oM_SC" value="captures" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPO" role="1PaTwD">
+          <property role="3oM_SC" value="different" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPP" role="1PaTwD">
+          <property role="3oM_SC" value="BP" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPQ" role="1PaTwD">
+          <property role="3oM_SC" value="UI" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPR" role="1PaTwD">
+          <property role="3oM_SC" value="handling" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPS" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPT" role="1PaTwD">
+          <property role="3oM_SC" value="Big" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPU" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPV" role="1PaTwD">
+          <property role="3oM_SC" value="vs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAPW" role="1PaTwD">
+          <property role="3oM_SC" value="MPS-as-IDEA-plugin" />
         </node>
       </node>
     </node>

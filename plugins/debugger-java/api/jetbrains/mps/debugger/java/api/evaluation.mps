@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -225,7 +225,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -233,13 +232,10 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -254,6 +250,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -1234,31 +1238,93 @@
         <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
       </node>
       <node concept="P$JXv" id="4jzwNwQQ6g_" role="lGtFl">
-        <node concept="TZ5HA" id="4jzwNwQQ6gA" role="TZ5H$">
-          <node concept="1dT_AC" id="4jzwNwQQ6gB" role="1dT_Ay">
-            <property role="1dT_AB" value="Do something and convert jdi exceptions to evaluation exception" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="4jzwNwQQ6gC" role="3nqlJM">
-          <property role="TUZQ4" value="what to invoke" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4jzwNwQQ6gD" role="zr_5Q">
             <ref role="zr_51" node="46sxDGTfnXG" resolve="invocatable" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsATd" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATe" role="1PaTwD">
+              <property role="3oM_SC" value="what" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATf" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATg" role="1PaTwD">
+              <property role="3oM_SC" value="invoke" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="4jzwNwQQ6gE" role="3nqlJM">
-          <property role="TUZQ4" value="result" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_56" id="4jzwNwQQ6gF" role="zr_5Q">
             <ref role="zr_51" node="46sxDGTfnXE" resolve="T" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsATh" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATi" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
         </node>
         <node concept="x0GOo" id="4jzwNwQQ6gG" role="3nqlJM">
-          <property role="x0GOq" value="wrapper of the original exception" />
+          <property role="x0GOq" value="" />
           <node concept="3uibUv" id="4jzwNwQQ6gH" role="zrq5$">
             <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsATj" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATk" role="1PaTwD">
+              <property role="3oM_SC" value="wrapper" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATl" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATm" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATn" role="1PaTwD">
+              <property role="3oM_SC" value="original" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATo" role="1PaTwD">
+              <property role="3oM_SC" value="exception" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="4jzwNwQQ6gI" role="3nqlJM">
-          <property role="x79VB" value="result" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsATp" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATq" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsAT3" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAT4" role="1PaTwD">
+            <property role="3oM_SC" value="Do" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT5" role="1PaTwD">
+            <property role="3oM_SC" value="something" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT6" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT7" role="1PaTwD">
+            <property role="3oM_SC" value="convert" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT8" role="1PaTwD">
+            <property role="3oM_SC" value="jdi" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT9" role="1PaTwD">
+            <property role="3oM_SC" value="exceptions" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATa" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATb" role="1PaTwD">
+            <property role="3oM_SC" value="evaluation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATc" role="1PaTwD">
+            <property role="3oM_SC" value="exception" />
+          </node>
         </node>
       </node>
     </node>
@@ -1407,36 +1473,134 @@
         </node>
       </node>
       <node concept="P$JXv" id="4jzwNwQQ6Yw" role="lGtFl">
-        <node concept="TZ5HA" id="4jzwNwQQ6Yx" role="TZ5H$">
-          <node concept="1dT_AC" id="4jzwNwQQ6Yy" role="1dT_Ay">
-            <property role="1dT_AB" value="When we need to call something from ui which throws evaluation exception." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="4jzwNwQQ6YE" role="TZ5H$">
-          <node concept="1dT_AC" id="4jzwNwQQ6YF" role="1dT_Ay">
-            <property role="1dT_AB" value="For example when we update the tree." />
-          </node>
-        </node>
         <node concept="TUZQ0" id="4jzwNwQQ6Yz" role="3nqlJM">
-          <property role="TUZQ4" value="the action to invoke" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4jzwNwQQ6Y$" role="zr_5Q">
             <ref role="zr_51" node="4jzwNwQQ6hi" resolve="invocatable" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsATK" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATL" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATM" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATN" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATO" role="1PaTwD">
+              <property role="3oM_SC" value="invoke" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="4jzwNwQQ6Y_" role="3nqlJM">
-          <property role="TUZQ4" value="value to return in case of failure" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4jzwNwQQ6YA" role="zr_5Q">
             <ref role="zr_51" node="4jzwNwQQ6kh" resolve="failure" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsATP" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATQ" role="1PaTwD">
+              <property role="3oM_SC" value="value" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATR" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATS" role="1PaTwD">
+              <property role="3oM_SC" value="return" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATT" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATU" role="1PaTwD">
+              <property role="3oM_SC" value="case" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATV" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsATW" role="1PaTwD">
+              <property role="3oM_SC" value="failure" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="4jzwNwQQ6YB" role="3nqlJM">
-          <property role="TUZQ4" value="result" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_56" id="4jzwNwQQ6YC" role="zr_5Q">
             <ref role="zr_51" node="4jzwNwQQ6hg" resolve="T" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsATX" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsATY" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="4jzwNwQQ6YD" role="3nqlJM">
-          <property role="x79VB" value="result" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsATZ" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAU0" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsATr" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsATs" role="1PaTwD">
+            <property role="3oM_SC" value="When" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATt" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATu" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATv" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATw" role="1PaTwD">
+            <property role="3oM_SC" value="call" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATx" role="1PaTwD">
+            <property role="3oM_SC" value="something" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATy" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATz" role="1PaTwD">
+            <property role="3oM_SC" value="ui" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT$" role="1PaTwD">
+            <property role="3oM_SC" value="which" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAT_" role="1PaTwD">
+            <property role="3oM_SC" value="throws" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATA" role="1PaTwD">
+            <property role="3oM_SC" value="evaluation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATB" role="1PaTwD">
+            <property role="3oM_SC" value="exception." />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsATC" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsATD" role="1PaTwD">
+            <property role="3oM_SC" value="For" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATE" role="1PaTwD">
+            <property role="3oM_SC" value="example" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATF" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATG" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATH" role="1PaTwD">
+            <property role="3oM_SC" value="update" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATI" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsATJ" role="1PaTwD">
+            <property role="3oM_SC" value="tree." />
+          </node>
         </node>
       </node>
     </node>
@@ -1449,15 +1613,47 @@
         <property role="TrG5h" value="T" />
       </node>
       <node concept="3UR2Jj" id="4jzwNwQQ6gw" role="lGtFl">
-        <node concept="TZ5HA" id="4jzwNwQQ6gx" role="TZ5H$">
-          <node concept="1dT_AC" id="4jzwNwQQ6gy" role="1dT_Ay">
-            <property role="1dT_AB" value="Something that can throw one of jdi exceptions or EvaluationException" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="4jzwNwQQ6gz" role="3nqlJM">
-          <property role="TUZQ4" value="result" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_56" id="4jzwNwQQ6g$" role="zr_5Q">
             <ref role="zr_51" node="46sxDGTfnGm" resolve="T" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsARE" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsARF" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsARv" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsARw" role="1PaTwD">
+            <property role="3oM_SC" value="Something" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARx" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARy" role="1PaTwD">
+            <property role="3oM_SC" value="can" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARz" role="1PaTwD">
+            <property role="3oM_SC" value="throw" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAR$" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAR_" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARA" role="1PaTwD">
+            <property role="3oM_SC" value="jdi" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARB" role="1PaTwD">
+            <property role="3oM_SC" value="exceptions" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARC" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARD" role="1PaTwD">
+            <property role="3oM_SC" value="EvaluationException" />
           </node>
         </node>
       </node>
@@ -1495,15 +1691,32 @@
         <property role="TrG5h" value="T" />
       </node>
       <node concept="3UR2Jj" id="4jzwNwQQ6h5" role="lGtFl">
-        <node concept="TZ5HA" id="4jzwNwQQ6h6" role="TZ5H$">
-          <node concept="1dT_AC" id="4jzwNwQQ6h7" role="1dT_Ay">
-            <property role="1dT_AB" value="Something that can throw EvaluationException" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="4jzwNwQQ6h8" role="3nqlJM">
-          <property role="TUZQ4" value="result" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_56" id="4jzwNwQQ6h9" role="zr_5Q">
             <ref role="zr_51" node="4jzwNwQQ6gV" resolve="T" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsARM" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsARN" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsARG" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsARH" role="1PaTwD">
+            <property role="3oM_SC" value="Something" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARI" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARJ" role="1PaTwD">
+            <property role="3oM_SC" value="can" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARK" role="1PaTwD">
+            <property role="3oM_SC" value="throw" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARL" role="1PaTwD">
+            <property role="3oM_SC" value="EvaluationException" />
           </node>
         </node>
       </node>
@@ -1537,15 +1750,53 @@
         </node>
       </node>
       <node concept="3UR2Jj" id="4jzwNwQQ6gJ" role="lGtFl">
-        <node concept="TZ5HA" id="4jzwNwQQ6gK" role="TZ5H$">
-          <node concept="1dT_AC" id="4jzwNwQQ6gL" role="1dT_Ay">
-            <property role="1dT_AB" value="Some action which also has information about thread reference where it happenes." />
-          </node>
-        </node>
         <node concept="TUZQ0" id="4jzwNwQQ6gM" role="3nqlJM">
-          <property role="TUZQ4" value="result" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_56" id="4jzwNwQQ6gN" role="zr_5Q">
             <ref role="zr_51" node="46sxDGTfnGr" resolve="T" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsAS1" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAS2" role="1PaTwD">
+              <property role="3oM_SC" value="result" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsARO" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsARP" role="1PaTwD">
+            <property role="3oM_SC" value="Some" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARQ" role="1PaTwD">
+            <property role="3oM_SC" value="action" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARR" role="1PaTwD">
+            <property role="3oM_SC" value="which" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARS" role="1PaTwD">
+            <property role="3oM_SC" value="also" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsART" role="1PaTwD">
+            <property role="3oM_SC" value="has" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARU" role="1PaTwD">
+            <property role="3oM_SC" value="information" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARV" role="1PaTwD">
+            <property role="3oM_SC" value="about" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARW" role="1PaTwD">
+            <property role="3oM_SC" value="thread" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARX" role="1PaTwD">
+            <property role="3oM_SC" value="reference" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARY" role="1PaTwD">
+            <property role="3oM_SC" value="where" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsARZ" role="1PaTwD">
+            <property role="3oM_SC" value="it" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAS0" role="1PaTwD">
+            <property role="3oM_SC" value="happenes." />
           </node>
         </node>
       </node>
@@ -1850,14 +2101,50 @@
       <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
     </node>
     <node concept="3UR2Jj" id="46sxDGTfp$I" role="lGtFl">
-      <node concept="TZ5HA" id="46sxDGTfp$J" role="TZ5H$">
-        <node concept="1dT_AC" id="46sxDGTfp$K" role="1dT_Ay">
-          <property role="1dT_AB" value="Usually wraps com.sun.jdi.InvalidStackFrameException thrown in newInstance expression because thread has been resumed." />
+      <node concept="1PaTwC" id="1E1X3WHsAS3" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAS4" role="1PaTwD">
+          <property role="3oM_SC" value="Usually" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAS5" role="1PaTwD">
+          <property role="3oM_SC" value="wraps" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAS6" role="1PaTwD">
+          <property role="3oM_SC" value="com.sun.jdi.InvalidStackFrameException" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAS7" role="1PaTwD">
+          <property role="3oM_SC" value="thrown" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAS8" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAS9" role="1PaTwD">
+          <property role="3oM_SC" value="newInstance" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASa" role="1PaTwD">
+          <property role="3oM_SC" value="expression" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASb" role="1PaTwD">
+          <property role="3oM_SC" value="because" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASc" role="1PaTwD">
+          <property role="3oM_SC" value="thread" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASd" role="1PaTwD">
+          <property role="3oM_SC" value="has" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASe" role="1PaTwD">
+          <property role="3oM_SC" value="been" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASf" role="1PaTwD">
+          <property role="3oM_SC" value="resumed." />
         </node>
       </node>
-      <node concept="TZ5HA" id="46sxDGTfp$L" role="TZ5H$">
-        <node concept="1dT_AC" id="46sxDGTfp$M" role="1dT_Ay">
-          <property role="1dT_AB" value="see MPS-9268" />
+      <node concept="1PaTwC" id="1E1X3WHsASg" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsASh" role="1PaTwD">
+          <property role="3oM_SC" value="see" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASi" role="1PaTwD">
+          <property role="3oM_SC" value="MPS-9268" />
         </node>
       </node>
     </node>
@@ -2105,14 +2392,56 @@
       <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
     </node>
     <node concept="3UR2Jj" id="46sxDGTfp$N" role="lGtFl">
-      <node concept="TZ5HA" id="46sxDGTfp$O" role="TZ5H$">
-        <node concept="1dT_AC" id="46sxDGTfp$P" role="1dT_Ay">
-          <property role="1dT_AB" value="Wraps com.sun.jdi.InvocationException." />
+      <node concept="1PaTwC" id="1E1X3WHsASj" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsASk" role="1PaTwD">
+          <property role="3oM_SC" value="Wraps" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASl" role="1PaTwD">
+          <property role="3oM_SC" value="com.sun.jdi.InvocationException." />
         </node>
       </node>
-      <node concept="TZ5HA" id="46sxDGTfp$Q" role="TZ5H$">
-        <node concept="1dT_AC" id="46sxDGTfp$R" role="1dT_Ay">
-          <property role="1dT_AB" value="Thrown to indicate an exception occurred in an invoked method within the target VM." />
+      <node concept="1PaTwC" id="1E1X3WHsASm" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsASn" role="1PaTwD">
+          <property role="3oM_SC" value="Thrown" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASo" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASp" role="1PaTwD">
+          <property role="3oM_SC" value="indicate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASq" role="1PaTwD">
+          <property role="3oM_SC" value="an" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASr" role="1PaTwD">
+          <property role="3oM_SC" value="exception" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASs" role="1PaTwD">
+          <property role="3oM_SC" value="occurred" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASt" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASu" role="1PaTwD">
+          <property role="3oM_SC" value="an" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASv" role="1PaTwD">
+          <property role="3oM_SC" value="invoked" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASw" role="1PaTwD">
+          <property role="3oM_SC" value="method" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASx" role="1PaTwD">
+          <property role="3oM_SC" value="within" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASy" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASz" role="1PaTwD">
+          <property role="3oM_SC" value="target" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAS$" role="1PaTwD">
+          <property role="3oM_SC" value="VM." />
         </node>
       </node>
     </node>
@@ -2504,9 +2833,69 @@
       <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
     </node>
     <node concept="3UR2Jj" id="46sxDGTfp$B" role="lGtFl">
-      <node concept="TZ5HA" id="46sxDGTfp$C" role="TZ5H$">
-        <node concept="1dT_AC" id="46sxDGTfp$D" role="1dT_Ay">
-          <property role="1dT_AB" value="Thrown when we can not find a class, method or field user whants to evaluate -- so users expression is invalid." />
+      <node concept="1PaTwC" id="1E1X3WHsAS_" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsASA" role="1PaTwD">
+          <property role="3oM_SC" value="Thrown" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASB" role="1PaTwD">
+          <property role="3oM_SC" value="when" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASC" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASD" role="1PaTwD">
+          <property role="3oM_SC" value="can" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASE" role="1PaTwD">
+          <property role="3oM_SC" value="not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASF" role="1PaTwD">
+          <property role="3oM_SC" value="find" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASG" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASH" role="1PaTwD">
+          <property role="3oM_SC" value="class," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASI" role="1PaTwD">
+          <property role="3oM_SC" value="method" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASJ" role="1PaTwD">
+          <property role="3oM_SC" value="or" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASK" role="1PaTwD">
+          <property role="3oM_SC" value="field" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASL" role="1PaTwD">
+          <property role="3oM_SC" value="user" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASM" role="1PaTwD">
+          <property role="3oM_SC" value="whants" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASN" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASO" role="1PaTwD">
+          <property role="3oM_SC" value="evaluate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASP" role="1PaTwD">
+          <property role="3oM_SC" value="--" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASQ" role="1PaTwD">
+          <property role="3oM_SC" value="so" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASR" role="1PaTwD">
+          <property role="3oM_SC" value="users" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASS" role="1PaTwD">
+          <property role="3oM_SC" value="expression" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAST" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASU" role="1PaTwD">
+          <property role="3oM_SC" value="invalid." />
         </node>
       </node>
     </node>
@@ -2590,9 +2979,27 @@
       <ref role="3uigEE" node="46sxDGTfogQ" resolve="EvaluationException" />
     </node>
     <node concept="3UR2Jj" id="4jzwNwQQ8An" role="lGtFl">
-      <node concept="TZ5HA" id="4jzwNwQQ8Ao" role="TZ5H$">
-        <node concept="1dT_AC" id="4jzwNwQQ8Ap" role="1dT_Ay">
-          <property role="1dT_AB" value="Thrown when some runtime jdi exception occures" />
+      <node concept="1PaTwC" id="1E1X3WHsASV" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsASW" role="1PaTwD">
+          <property role="3oM_SC" value="Thrown" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASX" role="1PaTwD">
+          <property role="3oM_SC" value="when" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASY" role="1PaTwD">
+          <property role="3oM_SC" value="some" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsASZ" role="1PaTwD">
+          <property role="3oM_SC" value="runtime" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAT0" role="1PaTwD">
+          <property role="3oM_SC" value="jdi" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAT1" role="1PaTwD">
+          <property role="3oM_SC" value="exception" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAT2" role="1PaTwD">
+          <property role="3oM_SC" value="occures" />
         </node>
       </node>
     </node>

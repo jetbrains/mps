@@ -4,7 +4,7 @@
   <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="0" />
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <use id="515552c7-fcc0-4ab4-9789-2f3c49344e85" name="jetbrains.mps.baseLanguage.varVariable" version="0" />
@@ -223,16 +223,10 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -608,9 +602,33 @@
         </node>
       </node>
       <node concept="z59LJ" id="2yYXHtlg6p3" role="lGtFl">
-        <node concept="TZ5HA" id="2yYXHtlg6p4" role="TZ5H$">
-          <node concept="1dT_AC" id="2yYXHtlg6p5" role="1dT_Ay">
-            <property role="1dT_AB" value="Strong keywords that cannot be used as identifiers (sorted)" />
+        <node concept="1PaTwC" id="1E1X3WHsytD" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsytE" role="1PaTwD">
+            <property role="3oM_SC" value="Strong" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytF" role="1PaTwD">
+            <property role="3oM_SC" value="keywords" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytG" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytH" role="1PaTwD">
+            <property role="3oM_SC" value="cannot" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytI" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytJ" role="1PaTwD">
+            <property role="3oM_SC" value="used" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytK" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytL" role="1PaTwD">
+            <property role="3oM_SC" value="identifiers" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytM" role="1PaTwD">
+            <property role="3oM_SC" value="(sorted)" />
           </node>
         </node>
       </node>
@@ -626,9 +644,24 @@
         <property role="Xl_RC" value="_a-zA-Z" />
       </node>
       <node concept="z59LJ" id="213J8cgUGbC" role="lGtFl">
-        <node concept="TZ5HA" id="213J8cgUGbD" role="TZ5H$">
-          <node concept="1dT_AC" id="213J8cgUGbE" role="1dT_Ay">
-            <property role="1dT_AB" value="TODO add support for unicode characters" />
+        <node concept="1PaTwC" id="1E1X3WHsytN" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsytO" role="1PaTwD">
+            <property role="3oM_SC" value="TODO" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytP" role="1PaTwD">
+            <property role="3oM_SC" value="add" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytQ" role="1PaTwD">
+            <property role="3oM_SC" value="support" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytR" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytS" role="1PaTwD">
+            <property role="3oM_SC" value="unicode" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytT" role="1PaTwD">
+            <property role="3oM_SC" value="characters" />
           </node>
         </node>
       </node>
@@ -2897,9 +2930,33 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="5pwU7dGvNkm" role="lGtFl">
-      <node concept="TZ5HA" id="5pwU7dGvNkn" role="TZ5H$">
-        <node concept="1dT_AC" id="5pwU7dGvNko" role="1dT_Ay">
-          <property role="1dT_AB" value="Same as constructors scope but only include annotation classes" />
+      <node concept="1PaTwC" id="1E1X3WHsytv" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsytw" role="1PaTwD">
+          <property role="3oM_SC" value="Same" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsytx" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsyty" role="1PaTwD">
+          <property role="3oM_SC" value="constructors" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsytz" role="1PaTwD">
+          <property role="3oM_SC" value="scope" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsyt$" role="1PaTwD">
+          <property role="3oM_SC" value="but" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsyt_" role="1PaTwD">
+          <property role="3oM_SC" value="only" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsytA" role="1PaTwD">
+          <property role="3oM_SC" value="include" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsytB" role="1PaTwD">
+          <property role="3oM_SC" value="annotation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsytC" role="1PaTwD">
+          <property role="3oM_SC" value="classes" />
         </node>
       </node>
     </node>

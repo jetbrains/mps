@@ -8,7 +8,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="kdsm" ref="r:4d5ec8ef-7006-453c-a8cf-f9897337b08c(jetbrains.mps.kotlin.api.extension)" />
@@ -111,15 +111,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -131,6 +125,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -194,19 +196,106 @@
         <ref role="3uigEE" to="kdsm:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
       </node>
       <node concept="P$JXv" id="42NctsY_wBR" role="lGtFl">
-        <node concept="TZ5HA" id="42NctsY_wBS" role="TZ5H$">
-          <node concept="1dT_AC" id="42NctsY_wBT" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns an available instance of Kotlin typesystem handle. If null is returned, either the" />
+        <node concept="1PaTwC" id="1E1X3WHsyHH" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyHI" role="1PaTwD">
+            <property role="3oM_SC" value="Returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHJ" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHK" role="1PaTwD">
+            <property role="3oM_SC" value="available" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHL" role="1PaTwD">
+            <property role="3oM_SC" value="instance" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHM" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHN" role="1PaTwD">
+            <property role="3oM_SC" value="Kotlin" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHO" role="1PaTwD">
+            <property role="3oM_SC" value="typesystem" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHP" role="1PaTwD">
+            <property role="3oM_SC" value="handle." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHQ" role="1PaTwD">
+            <property role="3oM_SC" value="If" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHR" role="1PaTwD">
+            <property role="3oM_SC" value="null" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHS" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHT" role="1PaTwD">
+            <property role="3oM_SC" value="returned," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHU" role="1PaTwD">
+            <property role="3oM_SC" value="either" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHV" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
           </node>
         </node>
-        <node concept="TZ5HA" id="42NctsY_EI1" role="TZ5H$">
-          <node concept="1dT_AC" id="42NctsY_EI2" role="1dT_Ay">
-            <property role="1dT_AB" value="extension point has not been populated (missing plugin?) or the plugged-in typesystems are" />
+        <node concept="1PaTwC" id="1E1X3WHsyHW" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyHX" role="1PaTwD">
+            <property role="3oM_SC" value="extension" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHY" role="1PaTwD">
+            <property role="3oM_SC" value="point" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyHZ" role="1PaTwD">
+            <property role="3oM_SC" value="has" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI0" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI1" role="1PaTwD">
+            <property role="3oM_SC" value="been" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI2" role="1PaTwD">
+            <property role="3oM_SC" value="populated" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI3" role="1PaTwD">
+            <property role="3oM_SC" value="(missing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI4" role="1PaTwD">
+            <property role="3oM_SC" value="plugin?)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI5" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI6" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI7" role="1PaTwD">
+            <property role="3oM_SC" value="plugged-in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI8" role="1PaTwD">
+            <property role="3oM_SC" value="typesystems" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI9" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
           </node>
         </node>
-        <node concept="TZ5HA" id="42NctsY_Mz7" role="TZ5H$">
-          <node concept="1dT_AC" id="42NctsY_Mz8" role="1dT_Ay">
-            <property role="1dT_AB" value="unavailable (eg. coderules is off)" />
+        <node concept="1PaTwC" id="1E1X3WHsyIa" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyIb" role="1PaTwD">
+            <property role="3oM_SC" value="unavailable" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIc" role="1PaTwD">
+            <property role="3oM_SC" value="(eg." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyId" role="1PaTwD">
+            <property role="3oM_SC" value="coderules" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIe" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIf" role="1PaTwD">
+            <property role="3oM_SC" value="off)" />
           </node>
         </node>
       </node>
@@ -234,9 +323,36 @@
       <node concept="3Tm1VV" id="3E2609Yk_Df" role="1B3o_S" />
       <node concept="10P_77" id="3E2609YkZGo" role="3clF45" />
       <node concept="P$JXv" id="3E2609Yk_Dh" role="lGtFl">
-        <node concept="TZ5HA" id="3E2609YkCWn" role="TZ5H$">
-          <node concept="1dT_AC" id="3E2609YkCWo" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns true if an available Kotlin typesystem handler is present." />
+        <node concept="1PaTwC" id="1E1X3WHsyIg" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyIh" role="1PaTwD">
+            <property role="3oM_SC" value="Returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIi" role="1PaTwD">
+            <property role="3oM_SC" value="true" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIj" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIk" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIl" role="1PaTwD">
+            <property role="3oM_SC" value="available" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIm" role="1PaTwD">
+            <property role="3oM_SC" value="Kotlin" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIn" role="1PaTwD">
+            <property role="3oM_SC" value="typesystem" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIo" role="1PaTwD">
+            <property role="3oM_SC" value="handler" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIp" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIq" role="1PaTwD">
+            <property role="3oM_SC" value="present." />
           </node>
         </node>
       </node>
@@ -321,14 +437,71 @@
         <property role="TrG5h" value="T" />
       </node>
       <node concept="P$JXv" id="42NctsY_Sh2" role="lGtFl">
-        <node concept="TZ5HA" id="42NctsY_Sh3" role="TZ5H$">
-          <node concept="1dT_AC" id="42NctsY_Sh4" role="1dT_Ay">
-            <property role="1dT_AB" value="Computes a value depending on the presence of an available typesystem. Computation of both results are lazy" />
+        <node concept="1PaTwC" id="1E1X3WHsyIr" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyIs" role="1PaTwD">
+            <property role="3oM_SC" value="Computes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIt" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIu" role="1PaTwD">
+            <property role="3oM_SC" value="value" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIv" role="1PaTwD">
+            <property role="3oM_SC" value="depending" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIw" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIx" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIy" role="1PaTwD">
+            <property role="3oM_SC" value="presence" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIz" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI$" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyI_" role="1PaTwD">
+            <property role="3oM_SC" value="available" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIA" role="1PaTwD">
+            <property role="3oM_SC" value="typesystem." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIB" role="1PaTwD">
+            <property role="3oM_SC" value="Computation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIC" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyID" role="1PaTwD">
+            <property role="3oM_SC" value="both" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIE" role="1PaTwD">
+            <property role="3oM_SC" value="results" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIF" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIG" role="1PaTwD">
+            <property role="3oM_SC" value="lazy" />
           </node>
         </node>
-        <node concept="TZ5HA" id="42NctsYA63B" role="TZ5H$">
-          <node concept="1dT_AC" id="42NctsYA63C" role="1dT_Ay">
-            <property role="1dT_AB" value="(only in appropriate case)." />
+        <node concept="1PaTwC" id="1E1X3WHsyIH" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyII" role="1PaTwD">
+            <property role="3oM_SC" value="(only" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIJ" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIK" role="1PaTwD">
+            <property role="3oM_SC" value="appropriate" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIL" role="1PaTwD">
+            <property role="3oM_SC" value="case)." />
           </node>
         </node>
       </node>
@@ -408,9 +581,39 @@
         <property role="TrG5h" value="T" />
       </node>
       <node concept="P$JXv" id="42NctsY_YXO" role="lGtFl">
-        <node concept="TZ5HA" id="42NctsY_YXP" role="TZ5H$">
-          <node concept="1dT_AC" id="42NctsY_YXQ" role="1dT_Ay">
-            <property role="1dT_AB" value="Computes a value depending on the presence of an available typesystem." />
+        <node concept="1PaTwC" id="1E1X3WHsyIM" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyIN" role="1PaTwD">
+            <property role="3oM_SC" value="Computes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIO" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIP" role="1PaTwD">
+            <property role="3oM_SC" value="value" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIQ" role="1PaTwD">
+            <property role="3oM_SC" value="depending" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIR" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIS" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIT" role="1PaTwD">
+            <property role="3oM_SC" value="presence" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIU" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIV" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIW" role="1PaTwD">
+            <property role="3oM_SC" value="available" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyIX" role="1PaTwD">
+            <property role="3oM_SC" value="typesystem." />
           </node>
         </node>
       </node>

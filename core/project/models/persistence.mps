@@ -7,7 +7,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="7a2w" ref="r:10bf3684-5fb2-4fa0-9dd9-1d05589df2e9(jetbrains.mps.util.xml)" />
@@ -260,7 +260,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -268,13 +267,10 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="132aa4d8-a3f7-441c-a7eb-3fce23492c6a" name="jetbrains.mps.baseLanguage.builders">
       <concept id="7057666463730155278" name="jetbrains.mps.baseLanguage.builders.structure.BuilderCreator" flags="nn" index="g8Q5f" />
@@ -3920,9 +3916,30 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="33oJVYhh4bm" role="lGtFl">
-      <node concept="TZ5HA" id="33oJVYhh4bn" role="TZ5H$">
-        <node concept="1dT_AC" id="33oJVYhh4bo" role="1dT_Ay">
-          <property role="1dT_AB" value="XML/DOM persistence for a descriptor of Generator module " />
+      <node concept="1PaTwC" id="1E1X3WHs_e7" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_e8" role="1PaTwD">
+          <property role="3oM_SC" value="XML/DOM" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_e9" role="1PaTwD">
+          <property role="3oM_SC" value="persistence" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ea" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_eb" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ec" role="1PaTwD">
+          <property role="3oM_SC" value="descriptor" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ed" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ee" role="1PaTwD">
+          <property role="3oM_SC" value="Generator" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ef" role="1PaTwD">
+          <property role="3oM_SC" value="module" />
         </node>
       </node>
     </node>
@@ -5349,9 +5366,30 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="33oJVYhmjY2" role="lGtFl">
-      <node concept="TZ5HA" id="33oJVYhmjY3" role="TZ5H$">
-        <node concept="1dT_AC" id="33oJVYhmjY4" role="1dT_Ay">
-          <property role="1dT_AB" value="XML/DOM persistence for a descriptor of Language module " />
+      <node concept="1PaTwC" id="1E1X3WHs_eg" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_eh" role="1PaTwD">
+          <property role="3oM_SC" value="XML/DOM" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ei" role="1PaTwD">
+          <property role="3oM_SC" value="persistence" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ej" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ek" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_el" role="1PaTwD">
+          <property role="3oM_SC" value="descriptor" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_em" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_en" role="1PaTwD">
+          <property role="3oM_SC" value="Language" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_eo" role="1PaTwD">
+          <property role="3oM_SC" value="module" />
         </node>
       </node>
     </node>
@@ -8159,9 +8197,15 @@
         <property role="Xl_RC" value="MPSProject" />
       </node>
       <node concept="z59LJ" id="3WnEHxCNT2q" role="lGtFl">
-        <node concept="TZ5HA" id="3WnEHxCNT2r" role="TZ5H$">
-          <node concept="1dT_AC" id="3WnEHxCNT2s" role="1dT_Ay">
-            <property role="1dT_AB" value="Value of StandaloneMPSProject.@State.name" />
+        <node concept="1PaTwC" id="1E1X3WHs_ey" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_ez" role="1PaTwD">
+            <property role="3oM_SC" value="Value" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_e$" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_e_" role="1PaTwD">
+            <property role="3oM_SC" value="StandaloneMPSProject.@State.name" />
           </node>
         </node>
       </node>
@@ -8468,9 +8512,35 @@
       </node>
       <node concept="P$JXv" id="3WnEHxCMbK0" role="lGtFl">
         <node concept="TUZQ0" id="3WnEHxCMbOd" role="3nqlJM">
-          <property role="TUZQ4" value="root of the project (location where .mps/ resides)" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="3WnEHxCMbQE" role="zr_5Q">
             <ref role="zr_51" node="3WnEHxCM6Nu" resolve="projectDir" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHs_eA" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_eB" role="1PaTwD">
+              <property role="3oM_SC" value="root" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eC" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eD" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eE" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eF" role="1PaTwD">
+              <property role="3oM_SC" value="(location" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eG" role="1PaTwD">
+              <property role="3oM_SC" value="where" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eH" role="1PaTwD">
+              <property role="3oM_SC" value=".mps/" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_eI" role="1PaTwD">
+              <property role="3oM_SC" value="resides)" />
+            </node>
           </node>
         </node>
       </node>
@@ -10326,9 +10396,30 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="33oJVYhgDdw" role="lGtFl">
-      <node concept="TZ5HA" id="33oJVYhgDdx" role="TZ5H$">
-        <node concept="1dT_AC" id="33oJVYhgDdy" role="1dT_Ay">
-          <property role="1dT_AB" value="XML/DOM persistence for a descriptor of Solution module" />
+      <node concept="1PaTwC" id="1E1X3WHs_ep" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_eq" role="1PaTwD">
+          <property role="3oM_SC" value="XML/DOM" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_er" role="1PaTwD">
+          <property role="3oM_SC" value="persistence" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_es" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_et" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_eu" role="1PaTwD">
+          <property role="3oM_SC" value="descriptor" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ev" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ew" role="1PaTwD">
+          <property role="3oM_SC" value="Solution" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ex" role="1PaTwD">
+          <property role="3oM_SC" value="module" />
         </node>
       </node>
     </node>

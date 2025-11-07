@@ -470,7 +470,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -478,11 +477,8 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
@@ -4188,19 +4184,116 @@
       </node>
       <node concept="3Tqbb2" id="13gAna02XRH" role="3clF45" />
       <node concept="P$JXv" id="13gAna0315j" role="lGtFl">
-        <node concept="TZ5HA" id="13gAna0315k" role="TZ5H$">
-          <node concept="1dT_AC" id="13gAna0315l" role="1dT_Ay">
-            <property role="1dT_AB" value="Finds the closest ancestor (inclusive) that is a member of a collection" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="13gAna08Us2" role="3nqlJM">
-          <property role="TUZQ4" value="The Line for which the container should be found" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="13gAna08Utw" role="zr_5Q">
             <ref role="zr_51" node="13gAna08TIc" resolve="currentLine" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsw_U" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw_V" role="1PaTwD">
+              <property role="3oM_SC" value="The" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw_W" role="1PaTwD">
+              <property role="3oM_SC" value="Line" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw_X" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw_Y" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw_Z" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA0" role="1PaTwD">
+              <property role="3oM_SC" value="container" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA1" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA2" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA3" role="1PaTwD">
+              <property role="3oM_SC" value="found" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="13gAna0315m" role="3nqlJM">
-          <property role="x79VB" value="This or the closest ancestor in a multiple cardinality containment link" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHswA4" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswA5" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA6" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA7" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA8" role="1PaTwD">
+              <property role="3oM_SC" value="closest" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA9" role="1PaTwD">
+              <property role="3oM_SC" value="ancestor" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAa" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAb" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAc" role="1PaTwD">
+              <property role="3oM_SC" value="multiple" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAd" role="1PaTwD">
+              <property role="3oM_SC" value="cardinality" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAe" role="1PaTwD">
+              <property role="3oM_SC" value="containment" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAf" role="1PaTwD">
+              <property role="3oM_SC" value="link" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsw_H" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw_I" role="1PaTwD">
+            <property role="3oM_SC" value="Finds" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_J" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_K" role="1PaTwD">
+            <property role="3oM_SC" value="closest" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_L" role="1PaTwD">
+            <property role="3oM_SC" value="ancestor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_M" role="1PaTwD">
+            <property role="3oM_SC" value="(inclusive)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_N" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_O" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_P" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_Q" role="1PaTwD">
+            <property role="3oM_SC" value="member" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_R" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_S" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw_T" role="1PaTwD">
+            <property role="3oM_SC" value="collection" />
+          </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="13gAna02XR3" role="1B3o_S" />
@@ -4323,19 +4416,110 @@
         <ref role="ehGHo" to="7vgx:2YAlhTEkjW" resolve="HtmlLine" />
       </node>
       <node concept="P$JXv" id="13gAna05iiB" role="lGtFl">
-        <node concept="TZ5HA" id="13gAna05iiC" role="TZ5H$">
-          <node concept="1dT_AC" id="13gAna05iiD" role="1dT_Ay">
-            <property role="1dT_AB" value="Retrieves the actual Line from a line container" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="13gAna05iiE" role="3nqlJM">
-          <property role="TUZQ4" value="The closest ancestor (inclusive) of this that is a member of a collection" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="13gAna05iiG" role="zr_5Q">
             <ref role="zr_51" node="13gAna058ge" resolve="lineContainer" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHswAp" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswAq" role="1PaTwD">
+              <property role="3oM_SC" value="The" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAr" role="1PaTwD">
+              <property role="3oM_SC" value="closest" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAs" role="1PaTwD">
+              <property role="3oM_SC" value="ancestor" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAt" role="1PaTwD">
+              <property role="3oM_SC" value="(inclusive)" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAu" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAv" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAw" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAx" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAy" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAz" role="1PaTwD">
+              <property role="3oM_SC" value="member" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA$" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswA_" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAA" role="1PaTwD">
+              <property role="3oM_SC" value="collection" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="13gAna05iiH" role="3nqlJM">
-          <property role="x79VB" value="The Line contained in the container, can be null" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHswAB" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswAC" role="1PaTwD">
+              <property role="3oM_SC" value="The" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAD" role="1PaTwD">
+              <property role="3oM_SC" value="Line" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAE" role="1PaTwD">
+              <property role="3oM_SC" value="contained" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAF" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAG" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAH" role="1PaTwD">
+              <property role="3oM_SC" value="container," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAI" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAJ" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswAK" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswAg" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswAh" role="1PaTwD">
+            <property role="3oM_SC" value="Retrieves" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAi" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAj" role="1PaTwD">
+            <property role="3oM_SC" value="actual" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAk" role="1PaTwD">
+            <property role="3oM_SC" value="Line" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAl" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAm" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAn" role="1PaTwD">
+            <property role="3oM_SC" value="line" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAo" role="1PaTwD">
+            <property role="3oM_SC" value="container" />
+          </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="13gAna058fp" role="1B3o_S" />
@@ -4407,26 +4591,183 @@
       </node>
       <node concept="3cqZAl" id="13gAna03484" role="3clF45" />
       <node concept="P$JXv" id="13gAna03czB" role="lGtFl">
-        <node concept="TZ5HA" id="13gAna03czC" role="TZ5H$">
-          <node concept="1dT_AC" id="13gAna03czD" role="1dT_Ay">
-            <property role="1dT_AB" value="Creates a new line container on the appropriate level of containment as a clone, then replaces the actual Line" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="13gAna03cVI" role="TZ5H$">
-          <node concept="1dT_AC" id="13gAna03cVJ" role="1dT_Ay">
-            <property role="1dT_AB" value="in that clone with the desired new line" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="13gAna03czE" role="3nqlJM">
-          <property role="TUZQ4" value="The closest ancestor (inclusive) of this that is a member of a collection" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="13gAna03czG" role="zr_5Q">
             <ref role="zr_51" node="13gAna034dG" resolve="lineContainer" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHswBe" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswBf" role="1PaTwD">
+              <property role="3oM_SC" value="The" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBg" role="1PaTwD">
+              <property role="3oM_SC" value="closest" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBh" role="1PaTwD">
+              <property role="3oM_SC" value="ancestor" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBi" role="1PaTwD">
+              <property role="3oM_SC" value="(inclusive)" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBj" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBk" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBl" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBm" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBn" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBo" role="1PaTwD">
+              <property role="3oM_SC" value="member" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBp" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBq" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBr" role="1PaTwD">
+              <property role="3oM_SC" value="collection" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="13gAna03czH" role="3nqlJM">
-          <property role="TUZQ4" value="The line that should be added as the next Line following this Line" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="13gAna03czJ" role="zr_5Q">
             <ref role="zr_51" node="13gAna034gU" resolve="newLine" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHswBs" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswBt" role="1PaTwD">
+              <property role="3oM_SC" value="The" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBu" role="1PaTwD">
+              <property role="3oM_SC" value="line" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBv" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBw" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBx" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBy" role="1PaTwD">
+              <property role="3oM_SC" value="added" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBz" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswB$" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswB_" role="1PaTwD">
+              <property role="3oM_SC" value="next" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBA" role="1PaTwD">
+              <property role="3oM_SC" value="Line" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBB" role="1PaTwD">
+              <property role="3oM_SC" value="following" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBC" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswBD" role="1PaTwD">
+              <property role="3oM_SC" value="Line" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswAL" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswAM" role="1PaTwD">
+            <property role="3oM_SC" value="Creates" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAN" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAO" role="1PaTwD">
+            <property role="3oM_SC" value="new" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAP" role="1PaTwD">
+            <property role="3oM_SC" value="line" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAQ" role="1PaTwD">
+            <property role="3oM_SC" value="container" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAR" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAS" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAT" role="1PaTwD">
+            <property role="3oM_SC" value="appropriate" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAU" role="1PaTwD">
+            <property role="3oM_SC" value="level" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAV" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAW" role="1PaTwD">
+            <property role="3oM_SC" value="containment" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAX" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAY" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswAZ" role="1PaTwD">
+            <property role="3oM_SC" value="clone," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB0" role="1PaTwD">
+            <property role="3oM_SC" value="then" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB1" role="1PaTwD">
+            <property role="3oM_SC" value="replaces" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB2" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB3" role="1PaTwD">
+            <property role="3oM_SC" value="actual" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB4" role="1PaTwD">
+            <property role="3oM_SC" value="Line" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswB5" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswB6" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB7" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB8" role="1PaTwD">
+            <property role="3oM_SC" value="clone" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswB9" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswBa" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswBb" role="1PaTwD">
+            <property role="3oM_SC" value="desired" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswBc" role="1PaTwD">
+            <property role="3oM_SC" value="new" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswBd" role="1PaTwD">
+            <property role="3oM_SC" value="line" />
           </node>
         </node>
       </node>

@@ -2,7 +2,7 @@
 <model ref="r:15a53890-cd48-425f-9829-419e5561b668(jetbrains.mps.lang.constraints.rules.main@generator)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <devkit ref="a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)" />
   </languages>
@@ -265,15 +265,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
@@ -637,14 +631,56 @@
             <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
           </node>
           <node concept="P$JXv" id="2mL_UKGqfAE" role="lGtFl">
-            <node concept="TZ5HA" id="2mL_UKGqh1z" role="TZ5H$">
-              <node concept="1dT_AC" id="2mL_UKGqh1$" role="1dT_Ay">
-                <property role="1dT_AB" value="null is an allowed value" />
+            <node concept="1PaTwC" id="1E1X3WHswg4" role="1Vez_I">
+              <node concept="3oM_SD" id="1E1X3WHswg5" role="1PaTwD">
+                <property role="3oM_SC" value="null" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswg6" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswg7" role="1PaTwD">
+                <property role="3oM_SC" value="an" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswg8" role="1PaTwD">
+                <property role="3oM_SC" value="allowed" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswg9" role="1PaTwD">
+                <property role="3oM_SC" value="value" />
               </node>
             </node>
-            <node concept="TZ5HA" id="2mL_UKGqhei" role="TZ5H$">
-              <node concept="1dT_AC" id="2mL_UKGqhej" role="1dT_Ay">
-                <property role="1dT_AB" value="though null is also returned if the def is not defined" />
+            <node concept="1PaTwC" id="1E1X3WHswga" role="1Vez_I">
+              <node concept="3oM_SD" id="1E1X3WHswgb" role="1PaTwD">
+                <property role="3oM_SC" value="though" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgc" role="1PaTwD">
+                <property role="3oM_SC" value="null" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgd" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswge" role="1PaTwD">
+                <property role="3oM_SC" value="also" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgf" role="1PaTwD">
+                <property role="3oM_SC" value="returned" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgg" role="1PaTwD">
+                <property role="3oM_SC" value="if" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgh" role="1PaTwD">
+                <property role="3oM_SC" value="the" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgi" role="1PaTwD">
+                <property role="3oM_SC" value="def" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgj" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgk" role="1PaTwD">
+                <property role="3oM_SC" value="not" />
+              </node>
+              <node concept="3oM_SD" id="1E1X3WHswgl" role="1PaTwD">
+                <property role="3oM_SC" value="defined" />
               </node>
             </node>
           </node>

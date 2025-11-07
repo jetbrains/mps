@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
@@ -151,16 +151,10 @@
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -168,6 +162,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -399,9 +401,15 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="7rEOvdELBmt" role="lGtFl">
-      <node concept="TZ5HA" id="7rEOvdELBmC" role="TZ5H$">
-        <node concept="1dT_AC" id="7rEOvdELBmD" role="1dT_Ay">
-          <property role="1dT_AB" value="@author Artem Tikhomirov" />
+      <node concept="1PaTwC" id="1E1X3WHszvk" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHszvl" role="1PaTwD">
+          <property role="3oM_SC" value="@author" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvm" role="1PaTwD">
+          <property role="3oM_SC" value="Artem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvn" role="1PaTwD">
+          <property role="3oM_SC" value="Tikhomirov" />
         </node>
       </node>
     </node>
@@ -660,14 +668,44 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="7rEOvdELBka" role="lGtFl">
-      <node concept="TZ5HA" id="7rEOvdELBkk" role="TZ5H$">
-        <node concept="1dT_AC" id="7rEOvdELBkl" role="1dT_Ay">
-          <property role="1dT_AB" value="Replacement for {@code jetbrains.mps.ide.findusages.model.holders.ModuleHolder} that doesn't force SModule resolution" />
+      <node concept="1PaTwC" id="1E1X3WHszvo" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHszvp" role="1PaTwD">
+          <property role="3oM_SC" value="Replacement" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvq" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvr" role="1PaTwD">
+          <property role="3oM_SC" value="{@code" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvs" role="1PaTwD">
+          <property role="3oM_SC" value="jetbrains.mps.ide.findusages.model.holders.ModuleHolder}" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvt" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvu" role="1PaTwD">
+          <property role="3oM_SC" value="doesn't" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvv" role="1PaTwD">
+          <property role="3oM_SC" value="force" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvw" role="1PaTwD">
+          <property role="3oM_SC" value="SModule" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvx" role="1PaTwD">
+          <property role="3oM_SC" value="resolution" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7rEOvdELBkm" role="TZ5H$">
-        <node concept="1dT_AC" id="7rEOvdELBkn" role="1dT_Ay">
-          <property role="1dT_AB" value="@author Artem Tikhomirov" />
+      <node concept="1PaTwC" id="1E1X3WHszvy" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHszvz" role="1PaTwD">
+          <property role="3oM_SC" value="@author" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszv$" role="1PaTwD">
+          <property role="3oM_SC" value="Artem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszv_" role="1PaTwD">
+          <property role="3oM_SC" value="Tikhomirov" />
         </node>
       </node>
     </node>
@@ -1877,14 +1915,68 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="7rEOvdELBBz" role="lGtFl">
-      <node concept="TZ5HA" id="7rEOvdELBBF" role="TZ5H$">
-        <node concept="1dT_AC" id="7rEOvdELBBG" role="1dT_Ay">
-          <property role="1dT_AB" value="IHolder generic enough to hold any object. It's up to IFinder implementation to deal with actual value." />
+      <node concept="1PaTwC" id="1E1X3WHszvA" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHszvB" role="1PaTwD">
+          <property role="3oM_SC" value="IHolder" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvC" role="1PaTwD">
+          <property role="3oM_SC" value="generic" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvD" role="1PaTwD">
+          <property role="3oM_SC" value="enough" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvE" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvF" role="1PaTwD">
+          <property role="3oM_SC" value="hold" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvG" role="1PaTwD">
+          <property role="3oM_SC" value="any" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvH" role="1PaTwD">
+          <property role="3oM_SC" value="object." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvI" role="1PaTwD">
+          <property role="3oM_SC" value="It's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvJ" role="1PaTwD">
+          <property role="3oM_SC" value="up" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvK" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvL" role="1PaTwD">
+          <property role="3oM_SC" value="IFinder" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvM" role="1PaTwD">
+          <property role="3oM_SC" value="implementation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvN" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvO" role="1PaTwD">
+          <property role="3oM_SC" value="deal" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvP" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvQ" role="1PaTwD">
+          <property role="3oM_SC" value="actual" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvR" role="1PaTwD">
+          <property role="3oM_SC" value="value." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7rEOvdELBBH" role="TZ5H$">
-        <node concept="1dT_AC" id="7rEOvdELBBI" role="1dT_Ay">
-          <property role="1dT_AB" value="@author Artem Tikhomirov" />
+      <node concept="1PaTwC" id="1E1X3WHszvS" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHszvT" role="1PaTwD">
+          <property role="3oM_SC" value="@author" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvU" role="1PaTwD">
+          <property role="3oM_SC" value="Artem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHszvV" role="1PaTwD">
+          <property role="3oM_SC" value="Tikhomirov" />
         </node>
       </node>
     </node>

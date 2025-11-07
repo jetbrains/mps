@@ -12,7 +12,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="iqmz" ref="r:6bc4612e-813e-4efa-8244-77b9a4da8b36(jetbrains.mps.internal.make.runtime.java)" />
@@ -354,16 +354,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp" />
@@ -3668,19 +3662,226 @@
       <node concept="3Tm6S6" id="2Uikw0KoleM" role="1B3o_S" />
     </node>
     <node concept="3UR2Jj" id="6ETkb2hbRZ2" role="lGtFl">
-      <node concept="TZ5HA" id="6ETkb2hbRZ3" role="TZ5H$">
-        <node concept="1dT_AC" id="6ETkb2hbRZ4" role="1dT_Ay">
-          <property role="1dT_AB" value="This is a callback for mps-idea integration plugin, responsible for actions in MPS Project. There's IProjectHandler in the IDEA instance, remote object we can ask for activities in IDEA project." />
+      <node concept="1PaTwC" id="1E1X3WHsC0$" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsC0_" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0A" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0B" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0C" role="1PaTwD">
+          <property role="3oM_SC" value="callback" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0D" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0E" role="1PaTwD">
+          <property role="3oM_SC" value="mps-idea" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0F" role="1PaTwD">
+          <property role="3oM_SC" value="integration" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0G" role="1PaTwD">
+          <property role="3oM_SC" value="plugin," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0H" role="1PaTwD">
+          <property role="3oM_SC" value="responsible" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0I" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0J" role="1PaTwD">
+          <property role="3oM_SC" value="actions" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0K" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0L" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0M" role="1PaTwD">
+          <property role="3oM_SC" value="Project." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0N" role="1PaTwD">
+          <property role="3oM_SC" value="There's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0O" role="1PaTwD">
+          <property role="3oM_SC" value="IProjectHandler" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0P" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0Q" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0R" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0S" role="1PaTwD">
+          <property role="3oM_SC" value="instance," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0T" role="1PaTwD">
+          <property role="3oM_SC" value="remote" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0U" role="1PaTwD">
+          <property role="3oM_SC" value="object" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0V" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0W" role="1PaTwD">
+          <property role="3oM_SC" value="can" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0X" role="1PaTwD">
+          <property role="3oM_SC" value="ask" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0Y" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC0Z" role="1PaTwD">
+          <property role="3oM_SC" value="activities" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC10" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC11" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC12" role="1PaTwD">
+          <property role="3oM_SC" value="project." />
         </node>
       </node>
-      <node concept="TZ5HA" id="6ETkb2hfsKJ" role="TZ5H$">
-        <node concept="1dT_AC" id="6ETkb2hfsKK" role="1dT_Ay">
-          <property role="1dT_AB" value="There are few actions available from IDEA project that navigate to MPS project counterparts, and to support these, this MPSProjectIDEHandler is registered in IProjectHandler for each started MPS project" />
+      <node concept="1PaTwC" id="1E1X3WHsC13" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsC14" role="1PaTwD">
+          <property role="3oM_SC" value="There" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC15" role="1PaTwD">
+          <property role="3oM_SC" value="are" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC16" role="1PaTwD">
+          <property role="3oM_SC" value="few" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC17" role="1PaTwD">
+          <property role="3oM_SC" value="actions" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC18" role="1PaTwD">
+          <property role="3oM_SC" value="available" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC19" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1a" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1b" role="1PaTwD">
+          <property role="3oM_SC" value="project" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1c" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1d" role="1PaTwD">
+          <property role="3oM_SC" value="navigate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1e" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1f" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1g" role="1PaTwD">
+          <property role="3oM_SC" value="project" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1h" role="1PaTwD">
+          <property role="3oM_SC" value="counterparts," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1i" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1j" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1k" role="1PaTwD">
+          <property role="3oM_SC" value="support" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1l" role="1PaTwD">
+          <property role="3oM_SC" value="these," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1m" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1n" role="1PaTwD">
+          <property role="3oM_SC" value="MPSProjectIDEHandler" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1o" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1p" role="1PaTwD">
+          <property role="3oM_SC" value="registered" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1q" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1r" role="1PaTwD">
+          <property role="3oM_SC" value="IProjectHandler" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1s" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1t" role="1PaTwD">
+          <property role="3oM_SC" value="each" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1u" role="1PaTwD">
+          <property role="3oM_SC" value="started" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1v" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1w" role="1PaTwD">
+          <property role="3oM_SC" value="project" />
         </node>
       </node>
-      <node concept="TZ5HA" id="6ETkb2hi2QC" role="TZ5H$">
-        <node concept="1dT_AC" id="6ETkb2hi2QD" role="1dT_Ay">
-          <property role="1dT_AB" value="so that IDEA project actions could navigate to MPS nodes from source files." />
+      <node concept="1PaTwC" id="1E1X3WHsC1x" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsC1y" role="1PaTwD">
+          <property role="3oM_SC" value="so" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1z" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1$" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1_" role="1PaTwD">
+          <property role="3oM_SC" value="project" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1A" role="1PaTwD">
+          <property role="3oM_SC" value="actions" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1B" role="1PaTwD">
+          <property role="3oM_SC" value="could" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1C" role="1PaTwD">
+          <property role="3oM_SC" value="navigate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1D" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1E" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1F" role="1PaTwD">
+          <property role="3oM_SC" value="nodes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1G" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1H" role="1PaTwD">
+          <property role="3oM_SC" value="source" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC1I" role="1PaTwD">
+          <property role="3oM_SC" value="files." />
         </node>
       </node>
     </node>

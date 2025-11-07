@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
@@ -253,16 +253,10 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest">
       <concept id="3298469228705179778" name="jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest" flags="ng" index="2UguNb" />
@@ -3486,9 +3480,21 @@
       </node>
       <node concept="3Tm1VV" id="2cKUqfNXRYO" role="1B3o_S" />
       <node concept="z59LJ" id="3ofMfJ4ZLxR" role="lGtFl">
-        <node concept="TZ5HA" id="3ofMfJ4ZLxS" role="TZ5H$">
-          <node concept="1dT_AC" id="3ofMfJ4ZLxT" role="1dT_Ay">
-            <property role="1dT_AB" value="should be changed to ModelPersistence.firstSupportedVersion" />
+        <node concept="1PaTwC" id="1E1X3WHsDLE" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDLF" role="1PaTwD">
+            <property role="3oM_SC" value="should" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDLG" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDLH" role="1PaTwD">
+            <property role="3oM_SC" value="changed" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDLI" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDLJ" role="1PaTwD">
+            <property role="3oM_SC" value="ModelPersistence.firstSupportedVersion" />
           </node>
         </node>
       </node>
@@ -4410,19 +4416,82 @@
     </node>
     <node concept="2tJIrI" id="WyclBLQANY" role="jymVt" />
     <node concept="3UR2Jj" id="2cKUqfNXMmQ" role="lGtFl">
-      <node concept="TZ5HA" id="3ofMfJ4ZKbb" role="TZ5H$">
-        <node concept="1dT_AC" id="3ofMfJ4ZKbc" role="1dT_Ay">
-          <property role="1dT_AB" value="This is test class for _supported_ persistences. " />
+      <node concept="1PaTwC" id="1E1X3WHsDLf" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDLg" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLh" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLi" role="1PaTwD">
+          <property role="3oM_SC" value="test" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLj" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLk" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLl" role="1PaTwD">
+          <property role="3oM_SC" value="_supported_" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLm" role="1PaTwD">
+          <property role="3oM_SC" value="persistences." />
         </node>
       </node>
-      <node concept="TZ5HA" id="3ofMfJ4ZKi$" role="TZ5H$">
-        <node concept="1dT_AC" id="3ofMfJ4ZKi_" role="1dT_Ay">
-          <property role="1dT_AB" value="Note the difference between supported persistence and vcs persistence." />
+      <node concept="1PaTwC" id="1E1X3WHsDLn" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDLo" role="1PaTwD">
+          <property role="3oM_SC" value="Note" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLp" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLq" role="1PaTwD">
+          <property role="3oM_SC" value="difference" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLr" role="1PaTwD">
+          <property role="3oM_SC" value="between" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLs" role="1PaTwD">
+          <property role="3oM_SC" value="supported" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLt" role="1PaTwD">
+          <property role="3oM_SC" value="persistence" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLu" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLv" role="1PaTwD">
+          <property role="3oM_SC" value="vcs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLw" role="1PaTwD">
+          <property role="3oM_SC" value="persistence." />
         </node>
       </node>
-      <node concept="TZ5HA" id="3ofMfJ4ZKpN" role="TZ5H$">
-        <node concept="1dT_AC" id="3ofMfJ4ZKpO" role="1dT_Ay">
-          <property role="1dT_AB" value="For info, read doc comments in ModelPersistence/VCSPersistenceSupport classes" />
+      <node concept="1PaTwC" id="1E1X3WHsDLx" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDLy" role="1PaTwD">
+          <property role="3oM_SC" value="For" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLz" role="1PaTwD">
+          <property role="3oM_SC" value="info," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDL$" role="1PaTwD">
+          <property role="3oM_SC" value="read" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDL_" role="1PaTwD">
+          <property role="3oM_SC" value="doc" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLA" role="1PaTwD">
+          <property role="3oM_SC" value="comments" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLB" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLC" role="1PaTwD">
+          <property role="3oM_SC" value="ModelPersistence/VCSPersistenceSupport" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDLD" role="1PaTwD">
+          <property role="3oM_SC" value="classes" />
         </node>
       </node>
     </node>

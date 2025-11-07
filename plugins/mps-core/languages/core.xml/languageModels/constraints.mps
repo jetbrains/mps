@@ -2,7 +2,7 @@
 <model ref="r:edc2e1a3-c4ab-4f36-a908-e29e4c77f1bb(jetbrains.mps.core.xml.constraints)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
@@ -187,7 +187,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -195,11 +194,8 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -358,20 +354,64 @@
         <node concept="17QB3L" id="5M4a$b5iKot" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5iKWI" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5iKWJ" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKWO" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5M4a$b5iKWP" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKWQ" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;Name&quot;" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="5M4a$b5iKWL" role="3nqlJM">
-          <property role="TUZQ4" value="string to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="5M4a$b5iKWM" role="zr_5Q">
             <ref role="zr_51" node="5M4a$b5iKos" resolve="s" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxe7" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxe8" role="1PaTwD">
+              <property role="3oM_SC" value="string" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxe9" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxea" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxdS" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxdT" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxdU" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxdV" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxdW" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxdX" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxdY" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxdZ" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe0" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe1" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe2" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe3" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxe4" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxe5" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe6" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;Name&quot;" />
           </node>
         </node>
       </node>
@@ -782,20 +822,64 @@
         <node concept="10Oyi0" id="5M4a$b5iKPz" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5iKSY" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5iKSZ" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKT0" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5M4a$b5iKT5" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKT7" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;NameStartChar&quot;" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="5M4a$b5iKT1" role="3nqlJM">
-          <property role="TUZQ4" value="character to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="5M4a$b5iKT2" role="zr_5Q">
             <ref role="zr_51" node="5M4a$b5iKoA" resolve="c" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxeq" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxer" role="1PaTwD">
+              <property role="3oM_SC" value="character" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxes" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxet" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxeb" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxec" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxed" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxee" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxef" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeg" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeh" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxei" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxej" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxek" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxel" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxem" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxen" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxeo" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxep" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;NameStartChar&quot;" />
           </node>
         </node>
       </node>
@@ -977,20 +1061,64 @@
         <node concept="10Oyi0" id="5M4a$b5iKTd" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5iKUP" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5iKUQ" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKUV" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5M4a$b5iKUW" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKUX" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;NameChar&quot;" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="5M4a$b5iKUS" role="3nqlJM">
-          <property role="TUZQ4" value="character to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="5M4a$b5iKUT" role="zr_5Q">
             <ref role="zr_51" node="5M4a$b5iKTc" resolve="c" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxeH" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxeI" role="1PaTwD">
+              <property role="3oM_SC" value="character" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxeJ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxeK" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxeu" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxev" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxew" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxex" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxey" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxez" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe$" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxe_" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeA" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeB" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeC" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeD" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxeE" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxeF" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeG" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;NameChar&quot;" />
           </node>
         </node>
       </node>
@@ -1056,20 +1184,64 @@
         <node concept="17QB3L" id="5M4a$b5iKX1" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5iKXL" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5iKXM" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKXR" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.6 Processing Instructions" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5M4a$b5iKXS" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKXT" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;PITarget&quot;" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="5M4a$b5iKXO" role="3nqlJM">
-          <property role="TUZQ4" value="target name to check" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="5M4a$b5iKXP" role="zr_5Q">
             <ref role="zr_51" node="5M4a$b5iKX0" resolve="target" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxeZ" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxf0" role="1PaTwD">
+              <property role="3oM_SC" value="target" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxf1" role="1PaTwD">
+              <property role="3oM_SC" value="name" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxf2" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxf3" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxeL" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxeM" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeN" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeO" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeP" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeQ" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeR" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeS" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeT" role="1PaTwD">
+            <property role="3oM_SC" value="2.6" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeU" role="1PaTwD">
+            <property role="3oM_SC" value="Processing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeV" role="1PaTwD">
+            <property role="3oM_SC" value="Instructions" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxeW" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxeX" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxeY" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;PITarget&quot;" />
           </node>
         </node>
       </node>
@@ -1219,20 +1391,88 @@
         <node concept="10Oyi0" id="5M4a$b5iKYH" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5iKYJ" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5iKYK" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKYL" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.2 Characters" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5M4a$b5iKYP" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKYQ" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;Char&quot;: any Unicode character, excluding the surrogate blocks, FFFE, and FFFF." />
-          </node>
-        </node>
         <node concept="TUZQ0" id="5M4a$b5iKYM" role="3nqlJM">
-          <property role="TUZQ4" value="character to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="5M4a$b5iKYN" role="zr_5Q">
             <ref role="zr_51" node="5M4a$b5iKYG" resolve="c" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxfr" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxfs" role="1PaTwD">
+              <property role="3oM_SC" value="character" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxft" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxfu" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxf4" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxf5" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxf6" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxf7" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxf8" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxf9" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfa" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfb" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfc" role="1PaTwD">
+            <property role="3oM_SC" value="2.2" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfd" role="1PaTwD">
+            <property role="3oM_SC" value="Characters" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxfe" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxff" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfg" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;Char&quot;:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfh" role="1PaTwD">
+            <property role="3oM_SC" value="any" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfi" role="1PaTwD">
+            <property role="3oM_SC" value="Unicode" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfj" role="1PaTwD">
+            <property role="3oM_SC" value="character," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfk" role="1PaTwD">
+            <property role="3oM_SC" value="excluding" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfl" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfm" role="1PaTwD">
+            <property role="3oM_SC" value="surrogate" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfn" role="1PaTwD">
+            <property role="3oM_SC" value="blocks," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfo" role="1PaTwD">
+            <property role="3oM_SC" value="FFFE," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfp" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfq" role="1PaTwD">
+            <property role="3oM_SC" value="FFFF." />
           </node>
         </node>
       </node>
@@ -1307,9 +1547,36 @@
         <node concept="17QB3L" id="5M4a$b5jlA0" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5jlAO" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5jlAP" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5jlAQ" role="1dT_Ay">
-            <property role="1dT_AB" value="Checks if all characters in a string are xml chars." />
+        <node concept="1PaTwC" id="1E1X3WHsxfv" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxfw" role="1PaTwD">
+            <property role="3oM_SC" value="Checks" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfx" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfy" role="1PaTwD">
+            <property role="3oM_SC" value="all" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfz" role="1PaTwD">
+            <property role="3oM_SC" value="characters" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxf$" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxf_" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfA" role="1PaTwD">
+            <property role="3oM_SC" value="string" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfB" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfC" role="1PaTwD">
+            <property role="3oM_SC" value="xml" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfD" role="1PaTwD">
+            <property role="3oM_SC" value="chars." />
           </node>
         </node>
       </node>
@@ -1416,15 +1683,50 @@
         <node concept="17QB3L" id="YkdwFgihKP" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="YkdwFgihMC" role="lGtFl">
-        <node concept="TZ5HA" id="YkdwFgihNM" role="TZ5H$">
-          <node concept="1dT_AC" id="YkdwFgihN2" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.4 Character Data and Markup" />
+        <node concept="1PaTwC" id="1E1X3WHsxfE" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxfF" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
           </node>
-          <node concept="1dT_AC" id="YkdwFgihNN" role="1dT_Ay" />
+          <node concept="3oM_SD" id="1E1X3WHsxfG" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfH" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfI" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfJ" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfK" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfL" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfM" role="1PaTwD">
+            <property role="3oM_SC" value="2.4" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfN" role="1PaTwD">
+            <property role="3oM_SC" value="Character" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfO" role="1PaTwD">
+            <property role="3oM_SC" value="Data" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfP" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfQ" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
         </node>
-        <node concept="TZ5HA" id="YkdwFgihNO" role="TZ5H$">
-          <node concept="1dT_AC" id="YkdwFgihNP" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;CharData&quot;" />
+        <node concept="1PaTwC" id="1E1X3WHsxfR" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxfS" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfT" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;CharData&quot;" />
           </node>
         </node>
       </node>
@@ -1575,20 +1877,64 @@
         <node concept="17QB3L" id="6A8NbxeffFP" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="6A8NbxeffFQ" role="lGtFl">
-        <node concept="TZ5HA" id="6A8NbxeffFR" role="TZ5H$">
-          <node concept="1dT_AC" id="6A8NbxeffFS" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
+        <node concept="1PaTwC" id="1E1X3WHsxfU" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxfV" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
           </node>
-          <node concept="1dT_AC" id="6A8NbxeffFT" role="1dT_Ay" />
-        </node>
-        <node concept="TZ5HA" id="6A8NbxeffFU" role="TZ5H$">
-          <node concept="1dT_AC" id="6A8NbxeffFV" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;White Space&quot;" />
+          <node concept="3oM_SD" id="1E1X3WHsxfW" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfX" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfY" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxfZ" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg0" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg1" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg2" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg3" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg4" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg5" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
           </node>
         </node>
-        <node concept="TZ5HA" id="6A8NbxeffI7" role="TZ5H$">
-          <node concept="1dT_AC" id="6A8NbxeffI9" role="1dT_Ay">
-            <property role="1dT_AB" value="Empty string is allowed" />
+        <node concept="1PaTwC" id="1E1X3WHsxg6" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxg7" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg8" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;White" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxg9" role="1PaTwD">
+            <property role="3oM_SC" value="Space&quot;" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxga" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxgb" role="1PaTwD">
+            <property role="3oM_SC" value="Empty" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgc" role="1PaTwD">
+            <property role="3oM_SC" value="string" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgd" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxge" role="1PaTwD">
+            <property role="3oM_SC" value="allowed" />
           </node>
         </node>
       </node>
@@ -1738,20 +2084,82 @@
         <node concept="17QB3L" id="5M4a$b5iKYp" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="5M4a$b5iKYw" role="lGtFl">
-        <node concept="TZ5HA" id="5M4a$b5iKYx" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKYy" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.5 Comments" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="5M4a$b5iKYA" role="TZ5H$">
-          <node concept="1dT_AC" id="5M4a$b5iKYB" role="1dT_Ay">
-            <property role="1dT_AB" value="Token &quot;Comment&quot;: ((Char - '-') | ('-' (Char - '-')))*" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="5M4a$b5iKYz" role="3nqlJM">
-          <property role="TUZQ4" value="string to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="5M4a$b5iKY$" role="zr_5Q">
             <ref role="zr_51" node="5M4a$b5iKYo" resolve="text" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxg$" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxg_" role="1PaTwD">
+              <property role="3oM_SC" value="string" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxgA" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxgB" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxgf" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxgg" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgh" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgi" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgj" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgk" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgl" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgm" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgn" role="1PaTwD">
+            <property role="3oM_SC" value="2.5" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgo" role="1PaTwD">
+            <property role="3oM_SC" value="Comments" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxgp" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxgq" role="1PaTwD">
+            <property role="3oM_SC" value="Token" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgr" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;Comment&quot;:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgs" role="1PaTwD">
+            <property role="3oM_SC" value="((Char" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgt" role="1PaTwD">
+            <property role="3oM_SC" value="-" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgu" role="1PaTwD">
+            <property role="3oM_SC" value="'-')" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgv" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgw" role="1PaTwD">
+            <property role="3oM_SC" value="('-'" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgx" role="1PaTwD">
+            <property role="3oM_SC" value="(Char" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgy" role="1PaTwD">
+            <property role="3oM_SC" value="-" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgz" role="1PaTwD">
+            <property role="3oM_SC" value="'-')))*" />
           </node>
         </node>
       </node>
@@ -1904,24 +2312,112 @@
         <node concept="17QB3L" id="1Qs9WekX7q5" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="1Qs9WekX7q6" role="lGtFl">
-        <node concept="TZ5HA" id="1Qs9WekX7q7" role="TZ5H$">
-          <node concept="1dT_AC" id="1Qs9WekX7q8" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1Qs9WekX7q9" role="TZ5H$">
-          <node concept="1dT_AC" id="1Qs9WekX7qa" role="1dT_Ay">
-            <property role="1dT_AB" value="SystemLiteral ::= ('&quot;' [^&quot;]* '&quot;') | (&quot;'&quot; [^']* &quot;'&quot;)" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="1Qs9WekX7qb" role="3nqlJM">
-          <property role="TUZQ4" value="id to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="1Qs9WekX7qc" role="zr_5Q">
             <ref role="zr_51" node="1Qs9WekX7q4" resolve="id" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsxgY" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxgZ" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh0" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh1" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="1Qs9WekX7qd" role="3nqlJM">
-          <property role="x79VB" value="whether id is valid system id stinrg" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsxh2" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxh3" role="1PaTwD">
+              <property role="3oM_SC" value="whether" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh4" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh5" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh6" role="1PaTwD">
+              <property role="3oM_SC" value="valid" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh7" role="1PaTwD">
+              <property role="3oM_SC" value="system" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh8" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh9" role="1PaTwD">
+              <property role="3oM_SC" value="stinrg" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxgC" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxgD" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgE" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgF" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgG" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgH" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgI" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgJ" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgK" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgL" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgM" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgN" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxgO" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxgP" role="1PaTwD">
+            <property role="3oM_SC" value="SystemLiteral" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgQ" role="1PaTwD">
+            <property role="3oM_SC" value="::=" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgR" role="1PaTwD">
+            <property role="3oM_SC" value="('&quot;'" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgS" role="1PaTwD">
+            <property role="3oM_SC" value="[^&quot;]*" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgT" role="1PaTwD">
+            <property role="3oM_SC" value="'&quot;')" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgU" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgV" role="1PaTwD">
+            <property role="3oM_SC" value="(&quot;'&quot;" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgW" role="1PaTwD">
+            <property role="3oM_SC" value="[^']*" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxgX" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;'&quot;)" />
+          </node>
         </node>
       </node>
     </node>
@@ -2004,24 +2500,118 @@
         <node concept="17QB3L" id="1Qs9WekX59N" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="1Qs9WekX59Q" role="lGtFl">
-        <node concept="TZ5HA" id="1Qs9WekX59R" role="TZ5H$">
-          <node concept="1dT_AC" id="1Qs9WekX59S" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1Qs9WekX59Z" role="TZ5H$">
-          <node concept="1dT_AC" id="1Qs9WekX5a0" role="1dT_Ay">
-            <property role="1dT_AB" value="PubidLiteral ::= '&quot;' PubidChar* '&quot;' | &quot;'&quot; (PubidChar - &quot;'&quot;)* &quot;'&quot;" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="1Qs9WekX59T" role="3nqlJM">
-          <property role="TUZQ4" value="id to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="1Qs9WekX59U" role="zr_5Q">
             <ref role="zr_51" node="1Qs9WekX59M" resolve="id" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsxhy" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxhz" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh$" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxh_" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="1Qs9WekX59V" role="3nqlJM">
-          <property role="x79VB" value="whether id is valid public id stinrg" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsxhA" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxhB" role="1PaTwD">
+              <property role="3oM_SC" value="whether" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxhC" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxhD" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxhE" role="1PaTwD">
+              <property role="3oM_SC" value="valid" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxhF" role="1PaTwD">
+              <property role="3oM_SC" value="public" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxhG" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxhH" role="1PaTwD">
+              <property role="3oM_SC" value="stinrg" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxha" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxhb" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhc" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhd" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhe" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhf" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhg" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhh" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhi" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhj" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhk" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhl" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxhm" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxhn" role="1PaTwD">
+            <property role="3oM_SC" value="PubidLiteral" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxho" role="1PaTwD">
+            <property role="3oM_SC" value="::=" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhp" role="1PaTwD">
+            <property role="3oM_SC" value="'&quot;'" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhq" role="1PaTwD">
+            <property role="3oM_SC" value="PubidChar*" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhr" role="1PaTwD">
+            <property role="3oM_SC" value="'&quot;'" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhs" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxht" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;'&quot;" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhu" role="1PaTwD">
+            <property role="3oM_SC" value="(PubidChar" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhv" role="1PaTwD">
+            <property role="3oM_SC" value="-" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhw" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;'&quot;)*" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhx" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;'&quot;" />
+          </node>
         </node>
       </node>
     </node>
@@ -2360,24 +2950,118 @@
         <node concept="10Oyi0" id="1Qs9WekX59G" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="1Qs9WekX5a1" role="lGtFl">
-        <node concept="TZ5HA" id="1Qs9WekX5a2" role="TZ5H$">
-          <node concept="1dT_AC" id="1Qs9WekX5a3" role="1dT_Ay">
-            <property role="1dT_AB" value="Extensible Markup Language (XML) 1.0 (Fifth Edition): 2.3 Common Syntactic Constructs" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1Qs9WekX5a7" role="TZ5H$">
-          <node concept="1dT_AC" id="1Qs9WekX5a8" role="1dT_Ay">
-            <property role="1dT_AB" value="PubidChar ::= #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="1Qs9WekX5a4" role="3nqlJM">
-          <property role="TUZQ4" value="character to test" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="1Qs9WekX5a5" role="zr_5Q">
             <ref role="zr_51" node="1Qs9WekX59E" resolve="c" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsxi6" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxi7" role="1PaTwD">
+              <property role="3oM_SC" value="character" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxi8" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxi9" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="1Qs9WekX5a6" role="3nqlJM">
-          <property role="x79VB" value="whether character is valid public id character" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsxia" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxib" role="1PaTwD">
+              <property role="3oM_SC" value="whether" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxic" role="1PaTwD">
+              <property role="3oM_SC" value="character" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxid" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxie" role="1PaTwD">
+              <property role="3oM_SC" value="valid" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxif" role="1PaTwD">
+              <property role="3oM_SC" value="public" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxig" role="1PaTwD">
+              <property role="3oM_SC" value="id" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsxih" role="1PaTwD">
+              <property role="3oM_SC" value="character" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxhI" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxhJ" role="1PaTwD">
+            <property role="3oM_SC" value="Extensible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhK" role="1PaTwD">
+            <property role="3oM_SC" value="Markup" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhL" role="1PaTwD">
+            <property role="3oM_SC" value="Language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhM" role="1PaTwD">
+            <property role="3oM_SC" value="(XML)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhN" role="1PaTwD">
+            <property role="3oM_SC" value="1.0" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhO" role="1PaTwD">
+            <property role="3oM_SC" value="(Fifth" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhP" role="1PaTwD">
+            <property role="3oM_SC" value="Edition):" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhQ" role="1PaTwD">
+            <property role="3oM_SC" value="2.3" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhR" role="1PaTwD">
+            <property role="3oM_SC" value="Common" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhS" role="1PaTwD">
+            <property role="3oM_SC" value="Syntactic" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhT" role="1PaTwD">
+            <property role="3oM_SC" value="Constructs" />
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsxhU" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxhV" role="1PaTwD">
+            <property role="3oM_SC" value="PubidChar" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhW" role="1PaTwD">
+            <property role="3oM_SC" value="::=" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhX" role="1PaTwD">
+            <property role="3oM_SC" value="#x20" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhY" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxhZ" role="1PaTwD">
+            <property role="3oM_SC" value="#xD" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi0" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi1" role="1PaTwD">
+            <property role="3oM_SC" value="#xA" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi2" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi3" role="1PaTwD">
+            <property role="3oM_SC" value="[a-zA-Z0-9]" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi4" role="1PaTwD">
+            <property role="3oM_SC" value="|" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi5" role="1PaTwD">
+            <property role="3oM_SC" value="[-'()+,./:=?;!*#@$_%]" />
+          </node>
         </node>
       </node>
     </node>
@@ -2415,9 +3099,30 @@
         <node concept="17QB3L" id="1q3yNZeAMp1" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="1q3yNZeAMp2" role="lGtFl">
-        <node concept="TZ5HA" id="1q3yNZeAMp3" role="TZ5H$">
-          <node concept="1dT_AC" id="1q3yNZeAMpv" role="1dT_Ay">
-            <property role="1dT_AB" value="Checks if string is a valid CDATA content" />
+        <node concept="1PaTwC" id="1E1X3WHsxii" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxij" role="1PaTwD">
+            <property role="3oM_SC" value="Checks" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxik" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxil" role="1PaTwD">
+            <property role="3oM_SC" value="string" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxim" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxin" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxio" role="1PaTwD">
+            <property role="3oM_SC" value="valid" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxip" role="1PaTwD">
+            <property role="3oM_SC" value="CDATA" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiq" role="1PaTwD">
+            <property role="3oM_SC" value="content" />
           </node>
         </node>
       </node>
@@ -2555,14 +3260,59 @@
         </node>
       </node>
       <node concept="P$JXv" id="2EZ251fZsVh" role="lGtFl">
-        <node concept="TZ5HA" id="2EZ251fZsVi" role="TZ5H$">
-          <node concept="1dT_AC" id="2EZ251fZsVj" role="1dT_Ay">
-            <property role="1dT_AB" value="Well-formedness constraint: Entity Declared." />
+        <node concept="1PaTwC" id="1E1X3WHsxir" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxis" role="1PaTwD">
+            <property role="3oM_SC" value="Well-formedness" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxit" role="1PaTwD">
+            <property role="3oM_SC" value="constraint:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiu" role="1PaTwD">
+            <property role="3oM_SC" value="Entity" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiv" role="1PaTwD">
+            <property role="3oM_SC" value="Declared." />
           </node>
         </node>
-        <node concept="TZ5HA" id="2EZ251fZsVl" role="TZ5H$">
-          <node concept="1dT_AC" id="2EZ251fZsVm" role="1dT_Ay">
-            <property role="1dT_AB" value="need not declare any of the following entities: amp, lt, gt, apos, quot." />
+        <node concept="1PaTwC" id="1E1X3WHsxiw" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsxix" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiy" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiz" role="1PaTwD">
+            <property role="3oM_SC" value="declare" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi$" role="1PaTwD">
+            <property role="3oM_SC" value="any" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxi_" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiA" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiB" role="1PaTwD">
+            <property role="3oM_SC" value="following" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiC" role="1PaTwD">
+            <property role="3oM_SC" value="entities:" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiD" role="1PaTwD">
+            <property role="3oM_SC" value="amp," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiE" role="1PaTwD">
+            <property role="3oM_SC" value="lt," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiF" role="1PaTwD">
+            <property role="3oM_SC" value="gt," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiG" role="1PaTwD">
+            <property role="3oM_SC" value="apos," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsxiH" role="1PaTwD">
+            <property role="3oM_SC" value="quot." />
           </node>
         </node>
       </node>

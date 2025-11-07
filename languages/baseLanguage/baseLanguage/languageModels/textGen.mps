@@ -2,7 +2,7 @@
 <model ref="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
@@ -262,16 +262,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="b83431fe-5c8f-40bc-8a36-65e25f4dd253" name="jetbrains.mps.lang.textGen">
       <concept id="8931911391946696733" name="jetbrains.mps.lang.textGen.structure.ExtensionDeclaration" flags="in" index="9MYSb" />
@@ -13932,14 +13926,77 @@
     </node>
     <node concept="3Tm1VV" id="23Rh9MB7813" role="1B3o_S" />
     <node concept="3UR2Jj" id="23Rh9MB7ifz" role="lGtFl">
-      <node concept="TZ5HA" id="23Rh9MB7if$" role="TZ5H$">
-        <node concept="1dT_AC" id="23Rh9MB7if_" role="1dT_Ay">
-          <property role="1dT_AB" value="Common context for any Classifier TextUnit (top-level), manages imports for shorter names and tracks dependencies " />
+      <node concept="1PaTwC" id="1E1X3WHsvR$" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsvR_" role="1PaTwD">
+          <property role="3oM_SC" value="Common" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRA" role="1PaTwD">
+          <property role="3oM_SC" value="context" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRB" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRC" role="1PaTwD">
+          <property role="3oM_SC" value="any" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRD" role="1PaTwD">
+          <property role="3oM_SC" value="Classifier" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRE" role="1PaTwD">
+          <property role="3oM_SC" value="TextUnit" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRF" role="1PaTwD">
+          <property role="3oM_SC" value="(top-level)," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRG" role="1PaTwD">
+          <property role="3oM_SC" value="manages" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRH" role="1PaTwD">
+          <property role="3oM_SC" value="imports" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRI" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRJ" role="1PaTwD">
+          <property role="3oM_SC" value="shorter" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRK" role="1PaTwD">
+          <property role="3oM_SC" value="names" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRL" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRM" role="1PaTwD">
+          <property role="3oM_SC" value="tracks" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRN" role="1PaTwD">
+          <property role="3oM_SC" value="dependencies" />
         </node>
       </node>
-      <node concept="TZ5HA" id="23Rh9MB7ih_" role="TZ5H$">
-        <node concept="1dT_AC" id="23Rh9MB7ihA" role="1dT_Ay">
-          <property role="1dT_AB" value="to facilitate further creation of bl dependencies file" />
+      <node concept="1PaTwC" id="1E1X3WHsvRO" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsvRP" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRQ" role="1PaTwD">
+          <property role="3oM_SC" value="facilitate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRR" role="1PaTwD">
+          <property role="3oM_SC" value="further" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRS" role="1PaTwD">
+          <property role="3oM_SC" value="creation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRT" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRU" role="1PaTwD">
+          <property role="3oM_SC" value="bl" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRV" role="1PaTwD">
+          <property role="3oM_SC" value="dependencies" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvRW" role="1PaTwD">
+          <property role="3oM_SC" value="file" />
         </node>
       </node>
     </node>

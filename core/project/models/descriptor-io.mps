@@ -4,7 +4,7 @@
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
@@ -196,27 +196,22 @@
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
-        <child id="3106559687488741665" name="line" index="2Xj1qM" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306633585" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE" flags="ng" index="1VuTSG" />
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -493,21 +488,36 @@
       </node>
       <node concept="P$JXv" id="6nRwuNsmgDS" role="lGtFl">
         <node concept="TZ5HI" id="6nRwuNsmgDT" role="3nqlJM">
-          <node concept="TZ5HA" id="6nRwuNsmgDU" role="3HnX3l">
-            <node concept="1dT_AC" id="6nRwuNsmgEn" role="1dT_Ay">
-              <property role="1dT_AB" value="It's " />
+          <node concept="1PaTwC" id="1E1X3WHs_dT" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_dU" role="1PaTwD">
+              <property role="3oM_SC" value="It's" />
             </node>
-            <node concept="1dT_AA" id="6nRwuNsmgEq" role="1dT_Ay">
-              <node concept="VVOAv" id="6nRwuNsmgEw" role="qph3F">
-                <node concept="TZ5HA" id="6nRwuNsmgEy" role="2Xj1qM">
-                  <node concept="1dT_AC" id="6nRwuNsmgEA" role="1dT_Ay">
-                    <property role="1dT_AB" value="CoreComponent" />
+            <node concept="1Vtdud" id="1E1X3WHs_dV" role="1PaTwD">
+              <node concept="1VuTSG" id="1E1X3WHs_dW" role="1Vtduc">
+                <node concept="1PaTwC" id="1E1X3WHs_dZ" role="2JaDBN">
+                  <node concept="3oM_SD" id="1E1X3WHs_e0" role="1PaTwD">
+                    <property role="3oM_SC" value="CoreComponent" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="1dT_AC" id="6nRwuNsmgEp" role="1dT_Ay">
-              <property role="1dT_AB" value=", obtain proper instance though platform" />
+            <node concept="3oM_SD" id="1E1X3WHs_e1" role="1PaTwD">
+              <property role="3oM_SC" value="," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_e2" role="1PaTwD">
+              <property role="3oM_SC" value="obtain" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_e3" role="1PaTwD">
+              <property role="3oM_SC" value="proper" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_e4" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_e5" role="1PaTwD">
+              <property role="3oM_SC" value="though" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_e6" role="1PaTwD">
+              <property role="3oM_SC" value="platform" />
             </node>
           </node>
         </node>
@@ -553,14 +563,101 @@
       <ref role="3uigEE" to="wyuk:~CoreComponent" resolve="CoreComponent" />
     </node>
     <node concept="3UR2Jj" id="BotMu7Oogf" role="lGtFl">
-      <node concept="TZ5HA" id="BotMu7Oogg" role="TZ5H$">
-        <node concept="1dT_AC" id="BotMu7Oogh" role="1dT_Ay">
-          <property role="1dT_AB" value="Now it's CoreComponent, although without any relevant code to justify single instance / component status." />
+      <node concept="1PaTwC" id="1E1X3WHs_dh" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_di" role="1PaTwD">
+          <property role="3oM_SC" value="Now" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dj" role="1PaTwD">
+          <property role="3oM_SC" value="it's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dk" role="1PaTwD">
+          <property role="3oM_SC" value="CoreComponent," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dl" role="1PaTwD">
+          <property role="3oM_SC" value="although" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dm" role="1PaTwD">
+          <property role="3oM_SC" value="without" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dn" role="1PaTwD">
+          <property role="3oM_SC" value="any" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_do" role="1PaTwD">
+          <property role="3oM_SC" value="relevant" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dp" role="1PaTwD">
+          <property role="3oM_SC" value="code" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dq" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dr" role="1PaTwD">
+          <property role="3oM_SC" value="justify" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_ds" role="1PaTwD">
+          <property role="3oM_SC" value="single" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dt" role="1PaTwD">
+          <property role="3oM_SC" value="instance" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_du" role="1PaTwD">
+          <property role="3oM_SC" value="/" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dv" role="1PaTwD">
+          <property role="3oM_SC" value="component" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dw" role="1PaTwD">
+          <property role="3oM_SC" value="status." />
         </node>
       </node>
-      <node concept="TZ5HA" id="BotMu7OoRC" role="TZ5H$">
-        <node concept="1dT_AC" id="BotMu7OoRD" role="1dT_Ay">
-          <property role="1dT_AB" value="Perhaps, if we add configuration mechanism to plug other module persistence, CC would make more sense." />
+      <node concept="1PaTwC" id="1E1X3WHs_dx" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_dy" role="1PaTwD">
+          <property role="3oM_SC" value="Perhaps," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dz" role="1PaTwD">
+          <property role="3oM_SC" value="if" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_d$" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_d_" role="1PaTwD">
+          <property role="3oM_SC" value="add" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dA" role="1PaTwD">
+          <property role="3oM_SC" value="configuration" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dB" role="1PaTwD">
+          <property role="3oM_SC" value="mechanism" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dC" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dD" role="1PaTwD">
+          <property role="3oM_SC" value="plug" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dE" role="1PaTwD">
+          <property role="3oM_SC" value="other" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dF" role="1PaTwD">
+          <property role="3oM_SC" value="module" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dG" role="1PaTwD">
+          <property role="3oM_SC" value="persistence," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dH" role="1PaTwD">
+          <property role="3oM_SC" value="CC" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dI" role="1PaTwD">
+          <property role="3oM_SC" value="would" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dJ" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dK" role="1PaTwD">
+          <property role="3oM_SC" value="more" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dL" role="1PaTwD">
+          <property role="3oM_SC" value="sense." />
         </node>
       </node>
     </node>
@@ -708,9 +805,24 @@
       <node concept="3clFbS" id="7JoHvF0sCul" role="3clF47" />
     </node>
     <node concept="3UR2Jj" id="7JoHvF0sCyb" role="lGtFl">
-      <node concept="TZ5HA" id="7JoHvF0sCyc" role="TZ5H$">
-        <node concept="1dT_AC" id="7JoHvF0sCyd" role="1dT_Ay">
-          <property role="1dT_AB" value="XXX does this class worth existence?" />
+      <node concept="1PaTwC" id="1E1X3WHs_dM" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHs_dN" role="1PaTwD">
+          <property role="3oM_SC" value="XXX" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dO" role="1PaTwD">
+          <property role="3oM_SC" value="does" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dP" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dQ" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dR" role="1PaTwD">
+          <property role="3oM_SC" value="worth" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHs_dS" role="1PaTwD">
+          <property role="3oM_SC" value="existence?" />
         </node>
       </node>
     </node>

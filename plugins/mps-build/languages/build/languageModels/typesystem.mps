@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -157,16 +157,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
@@ -2384,29 +2378,143 @@
     </node>
     <node concept="3Tm1VV" id="3PMETvlDJXP" role="1B3o_S" />
     <node concept="3UR2Jj" id="3PMETvlWUgu" role="lGtFl">
-      <node concept="TZ5HA" id="3PMETvlWUgv" role="TZ5H$">
-        <node concept="1dT_AC" id="3PMETvlWUgw" role="1dT_Ay">
-          <property role="1dT_AB" value="kotlinc_home has been introduced to be used along with the withKotlin flag. As kotlin compiler" />
+      <node concept="1PaTwC" id="1E1X3WHswZj" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswZk" role="1PaTwD">
+          <property role="3oM_SC" value="kotlinc_home" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZl" role="1PaTwD">
+          <property role="3oM_SC" value="has" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZm" role="1PaTwD">
+          <property role="3oM_SC" value="been" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZn" role="1PaTwD">
+          <property role="3oM_SC" value="introduced" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZo" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZp" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZq" role="1PaTwD">
+          <property role="3oM_SC" value="used" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZr" role="1PaTwD">
+          <property role="3oM_SC" value="along" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZs" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZt" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZu" role="1PaTwD">
+          <property role="3oM_SC" value="withKotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZv" role="1PaTwD">
+          <property role="3oM_SC" value="flag." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZw" role="1PaTwD">
+          <property role="3oM_SC" value="As" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZx" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZy" role="1PaTwD">
+          <property role="3oM_SC" value="compiler" />
         </node>
       </node>
-      <node concept="TZ5HA" id="3PMETvlWUhG" role="TZ5H$">
-        <node concept="1dT_AC" id="3PMETvlWUhH" role="1dT_Ay">
-          <property role="1dT_AB" value="location may differ depending on the current setting this folder variable allows to specify that." />
+      <node concept="1PaTwC" id="1E1X3WHswZz" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswZ$" role="1PaTwD">
+          <property role="3oM_SC" value="location" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZ_" role="1PaTwD">
+          <property role="3oM_SC" value="may" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZA" role="1PaTwD">
+          <property role="3oM_SC" value="differ" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZB" role="1PaTwD">
+          <property role="3oM_SC" value="depending" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZC" role="1PaTwD">
+          <property role="3oM_SC" value="on" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZD" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZE" role="1PaTwD">
+          <property role="3oM_SC" value="current" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZF" role="1PaTwD">
+          <property role="3oM_SC" value="setting" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZG" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZH" role="1PaTwD">
+          <property role="3oM_SC" value="folder" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZI" role="1PaTwD">
+          <property role="3oM_SC" value="variable" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZJ" role="1PaTwD">
+          <property role="3oM_SC" value="allows" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZK" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZL" role="1PaTwD">
+          <property role="3oM_SC" value="specify" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZM" role="1PaTwD">
+          <property role="3oM_SC" value="that." />
         </node>
       </node>
-      <node concept="TZ5HA" id="3PMETvlWUj2" role="TZ5H$">
-        <node concept="1dT_AC" id="3PMETvlWUj3" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+      <node concept="1PaTwC" id="1E1X3WHswZN" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswZO" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
-      <node concept="TZ5HA" id="3PMETvlWUjc" role="TZ5H$">
-        <node concept="1dT_AC" id="3PMETvlWUjd" role="1dT_Ay">
-          <property role="1dT_AB" value="Expected known paths would be $mps_home/plugins/mps-kotlin (custom kotlin plugin for mps)" />
+      <node concept="1PaTwC" id="1E1X3WHswZP" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHswZQ" role="1PaTwD">
+          <property role="3oM_SC" value="Expected" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZR" role="1PaTwD">
+          <property role="3oM_SC" value="known" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZS" role="1PaTwD">
+          <property role="3oM_SC" value="paths" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZT" role="1PaTwD">
+          <property role="3oM_SC" value="would" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZU" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZV" role="1PaTwD">
+          <property role="3oM_SC" value="$mps_home/plugins/mps-kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZW" role="1PaTwD">
+          <property role="3oM_SC" value="(custom" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZX" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZY" role="1PaTwD">
+          <property role="3oM_SC" value="plugin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHswZZ" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsx00" role="1PaTwD">
+          <property role="3oM_SC" value="mps)" />
         </node>
       </node>
-      <node concept="TZ5HA" id="3PMETvlWUnN" role="TZ5H$">
-        <node concept="1dT_AC" id="3PMETvlWUnO" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+      <node concept="1PaTwC" id="1E1X3WHsx01" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsx02" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
     </node>

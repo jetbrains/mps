@@ -10,7 +10,7 @@
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="515552c7-fcc0-4ab4-9789-2f3c49344e85" name="jetbrains.mps.baseLanguage.varVariable" version="0" />
   </languages>
@@ -264,7 +264,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -272,11 +271,8 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -3129,9 +3125,45 @@
         </node>
       </node>
       <node concept="P$JXv" id="5sdg7HBVTIS" role="lGtFl">
-        <node concept="TZ5HA" id="5sdg7HBVTIT" role="TZ5H$">
-          <node concept="1dT_AC" id="5sdg7HBVTIU" role="1dT_Ay">
-            <property role="1dT_AB" value="Fill parameter node with parameter data, and returns type id for the parameter" />
+        <node concept="1PaTwC" id="1E1X3WHs$Ws" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs$Wt" role="1PaTwD">
+            <property role="3oM_SC" value="Fill" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$Wu" role="1PaTwD">
+            <property role="3oM_SC" value="parameter" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$Wv" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$Ww" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$Wx" role="1PaTwD">
+            <property role="3oM_SC" value="parameter" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$Wy" role="1PaTwD">
+            <property role="3oM_SC" value="data," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$Wz" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$W$" role="1PaTwD">
+            <property role="3oM_SC" value="returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$W_" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$WA" role="1PaTwD">
+            <property role="3oM_SC" value="id" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$WB" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$WC" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$WD" role="1PaTwD">
+            <property role="3oM_SC" value="parameter" />
           </node>
         </node>
       </node>
@@ -5819,13 +5851,71 @@
       <node concept="3Tm6S6" id="6UHH8fyjP$P" role="1B3o_S" />
       <node concept="P$JXv" id="6UHH8fyjP_2" role="lGtFl">
         <node concept="TUZQ0" id="6UHH8fyjP_5" role="3nqlJM">
-          <property role="TUZQ4" value="type on which to process annotations" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="6UHH8fyjP_6" role="zr_5Q">
             <ref role="zr_51" node="6UHH8fyjP$R" resolve="type" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHs$WE" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$WF" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WG" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WH" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WI" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WJ" role="1PaTwD">
+              <property role="3oM_SC" value="process" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WK" role="1PaTwD">
+              <property role="3oM_SC" value="annotations" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="6UHH8fyjP_7" role="3nqlJM">
-          <property role="x79VB" value="true if the provided annotation name has been found in type annotations" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHs$WL" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$WM" role="1PaTwD">
+              <property role="3oM_SC" value="true" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WN" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WO" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WP" role="1PaTwD">
+              <property role="3oM_SC" value="provided" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WQ" role="1PaTwD">
+              <property role="3oM_SC" value="annotation" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WR" role="1PaTwD">
+              <property role="3oM_SC" value="name" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WS" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WT" role="1PaTwD">
+              <property role="3oM_SC" value="been" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WU" role="1PaTwD">
+              <property role="3oM_SC" value="found" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WV" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WW" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$WX" role="1PaTwD">
+              <property role="3oM_SC" value="annotations" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -7121,21 +7211,82 @@
         <node concept="3Tqbb2" id="4s8_snvmcra" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="4s8_snvnM9j" role="lGtFl">
-        <node concept="TZ5HA" id="4s8_snvnM9k" role="TZ5H$">
-          <node concept="1dT_AC" id="4s8_snvnM9l" role="1dT_Ay">
-            <property role="1dT_AB" value="Insert annotation read from AnnotationExtension into the annotated node." />
-          </node>
-        </node>
         <node concept="TUZQ0" id="4s8_snvnM9m" role="3nqlJM">
-          <property role="TUZQ4" value="object returned from visitExtensions(AnnotationExtension.type)" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4s8_snvnM9o" role="zr_5Q">
             <ref role="zr_51" node="4s8_snvm5b$" resolve="annotations" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHs$X8" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$X9" role="1PaTwD">
+              <property role="3oM_SC" value="object" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xa" role="1PaTwD">
+              <property role="3oM_SC" value="returned" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xb" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xc" role="1PaTwD">
+              <property role="3oM_SC" value="visitExtensions(AnnotationExtension.type)" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="4s8_snvnM9p" role="3nqlJM">
-          <property role="TUZQ4" value="node to append annotations to, if applicable" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="4s8_snvnM9r" role="zr_5Q">
             <ref role="zr_51" node="4s8_snvm7cv" resolve="node" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHs$Xd" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs$Xe" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xf" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xg" role="1PaTwD">
+              <property role="3oM_SC" value="append" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xh" role="1PaTwD">
+              <property role="3oM_SC" value="annotations" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xi" role="1PaTwD">
+              <property role="3oM_SC" value="to," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xj" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs$Xk" role="1PaTwD">
+              <property role="3oM_SC" value="applicable" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHs$WY" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs$WZ" role="1PaTwD">
+            <property role="3oM_SC" value="Insert" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X0" role="1PaTwD">
+            <property role="3oM_SC" value="annotation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X1" role="1PaTwD">
+            <property role="3oM_SC" value="read" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X2" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X3" role="1PaTwD">
+            <property role="3oM_SC" value="AnnotationExtension" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X4" role="1PaTwD">
+            <property role="3oM_SC" value="into" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X5" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X6" role="1PaTwD">
+            <property role="3oM_SC" value="annotated" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs$X7" role="1PaTwD">
+            <property role="3oM_SC" value="node." />
           </node>
         </node>
       </node>

@@ -6,7 +6,7 @@
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="-1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -192,15 +192,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -1826,9 +1820,36 @@
         </node>
       </node>
       <node concept="P$JXv" id="3v7fNhWgIj7" role="lGtFl">
-        <node concept="TZ5HA" id="3v7fNhWgIj8" role="TZ5H$">
-          <node concept="1dT_AC" id="3v7fNhWgIj9" role="1dT_Ay">
-            <property role="1dT_AB" value="custom BL expression to node builder initializer (NodeBuilderExpression or NodeBuilderNode)" />
+        <node concept="1PaTwC" id="1E1X3WHswqY" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswqZ" role="1PaTwD">
+            <property role="3oM_SC" value="custom" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr0" role="1PaTwD">
+            <property role="3oM_SC" value="BL" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr1" role="1PaTwD">
+            <property role="3oM_SC" value="expression" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr2" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr3" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr4" role="1PaTwD">
+            <property role="3oM_SC" value="builder" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr5" role="1PaTwD">
+            <property role="3oM_SC" value="initializer" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr6" role="1PaTwD">
+            <property role="3oM_SC" value="(NodeBuilderExpression" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr7" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswr8" role="1PaTwD">
+            <property role="3oM_SC" value="NodeBuilderNode)" />
           </node>
         </node>
       </node>
@@ -1941,9 +1962,33 @@
         </node>
       </node>
       <node concept="P$JXv" id="3v7fNhWBaya" role="lGtFl">
-        <node concept="TZ5HA" id="3v7fNhWBayb" role="TZ5H$">
-          <node concept="1dT_AC" id="3v7fNhWBayc" role="1dT_Ay">
-            <property role="1dT_AB" value="node builder initializer (NodeBuilderExpression or NodeBuilderNode) to BL expression" />
+        <node concept="1PaTwC" id="1E1X3WHswr9" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswra" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrb" role="1PaTwD">
+            <property role="3oM_SC" value="builder" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrc" role="1PaTwD">
+            <property role="3oM_SC" value="initializer" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrd" role="1PaTwD">
+            <property role="3oM_SC" value="(NodeBuilderExpression" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswre" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrf" role="1PaTwD">
+            <property role="3oM_SC" value="NodeBuilderNode)" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrg" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrh" role="1PaTwD">
+            <property role="3oM_SC" value="BL" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswri" role="1PaTwD">
+            <property role="3oM_SC" value="expression" />
           </node>
         </node>
       </node>
@@ -4008,9 +4053,24 @@
         </node>
       </node>
       <node concept="P$JXv" id="3v7fNhWiSmR" role="lGtFl">
-        <node concept="TZ5HA" id="3v7fNhWiSmS" role="TZ5H$">
-          <node concept="1dT_AC" id="3v7fNhWiSmT" role="1dT_Ay">
-            <property role="1dT_AB" value="quoted node to node builder initializer" />
+        <node concept="1PaTwC" id="1E1X3WHswrj" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswrk" role="1PaTwD">
+            <property role="3oM_SC" value="quoted" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrl" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrm" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrn" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswro" role="1PaTwD">
+            <property role="3oM_SC" value="builder" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswrp" role="1PaTwD">
+            <property role="3oM_SC" value="initializer" />
           </node>
         </node>
       </node>

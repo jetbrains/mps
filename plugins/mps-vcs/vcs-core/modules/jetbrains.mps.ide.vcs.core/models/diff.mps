@@ -12,7 +12,7 @@
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="btf5" ref="r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)" />
@@ -300,16 +300,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
       <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
@@ -3158,9 +3152,54 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="735o_gm7Lhn" role="lGtFl">
-      <node concept="TZ5HA" id="735o_gm7Lho" role="TZ5H$">
-        <node concept="1dT_AC" id="735o_gm7Lhp" role="1dT_Ay">
-          <property role="1dT_AB" value="Collects changes of a model as a whole, including &quot;metadata&quot; changes (i.e. imports) and structure changes" />
+      <node concept="1PaTwC" id="1E1X3WHsDoH" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDoI" role="1PaTwD">
+          <property role="3oM_SC" value="Collects" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoJ" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoK" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoL" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoM" role="1PaTwD">
+          <property role="3oM_SC" value="model" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoN" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoO" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoP" role="1PaTwD">
+          <property role="3oM_SC" value="whole," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoQ" role="1PaTwD">
+          <property role="3oM_SC" value="including" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoR" role="1PaTwD">
+          <property role="3oM_SC" value="&quot;metadata&quot;" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoS" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoT" role="1PaTwD">
+          <property role="3oM_SC" value="(i.e." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoU" role="1PaTwD">
+          <property role="3oM_SC" value="imports)" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoV" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoW" role="1PaTwD">
+          <property role="3oM_SC" value="structure" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDoX" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
         </node>
       </node>
     </node>
@@ -15439,9 +15478,36 @@
       <ref role="3uigEE" node="25TBtyrxUex" resolve="NodeChangesBuilder" />
     </node>
     <node concept="3UR2Jj" id="735o_gm7XDK" role="lGtFl">
-      <node concept="TZ5HA" id="735o_gm7XDL" role="TZ5H$">
-        <node concept="1dT_AC" id="735o_gm7XDM" role="1dT_Ay">
-          <property role="1dT_AB" value="Changes in a node hierarchy with respect to moved nodes." />
+      <node concept="1PaTwC" id="1E1X3WHsDoY" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDoZ" role="1PaTwD">
+          <property role="3oM_SC" value="Changes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp0" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp1" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp2" role="1PaTwD">
+          <property role="3oM_SC" value="node" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp3" role="1PaTwD">
+          <property role="3oM_SC" value="hierarchy" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp4" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp5" role="1PaTwD">
+          <property role="3oM_SC" value="respect" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp6" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp7" role="1PaTwD">
+          <property role="3oM_SC" value="moved" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp8" role="1PaTwD">
+          <property role="3oM_SC" value="nodes." />
         </node>
       </node>
     </node>
@@ -26356,9 +26422,54 @@
     </node>
     <node concept="3Tm1VV" id="25TBtyrxUey" role="1B3o_S" />
     <node concept="3UR2Jj" id="735o_glOSn6" role="lGtFl">
-      <node concept="TZ5HA" id="735o_glOSn7" role="TZ5H$">
-        <node concept="1dT_AC" id="735o_glOSn8" role="1dT_Ay">
-          <property role="1dT_AB" value="FIXME get back to this code and figure out what's the difference between BasicNodeCHangesBuilder and StructChangeSetBuilder???!?" />
+      <node concept="1PaTwC" id="1E1X3WHsDp9" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDpa" role="1PaTwD">
+          <property role="3oM_SC" value="FIXME" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpb" role="1PaTwD">
+          <property role="3oM_SC" value="get" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpc" role="1PaTwD">
+          <property role="3oM_SC" value="back" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpd" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpe" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpf" role="1PaTwD">
+          <property role="3oM_SC" value="code" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpg" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDph" role="1PaTwD">
+          <property role="3oM_SC" value="figure" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpi" role="1PaTwD">
+          <property role="3oM_SC" value="out" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpj" role="1PaTwD">
+          <property role="3oM_SC" value="what's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpk" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpl" role="1PaTwD">
+          <property role="3oM_SC" value="difference" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpm" role="1PaTwD">
+          <property role="3oM_SC" value="between" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpn" role="1PaTwD">
+          <property role="3oM_SC" value="BasicNodeCHangesBuilder" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpo" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpp" role="1PaTwD">
+          <property role="3oM_SC" value="StructChangeSetBuilder???!?" />
         </node>
       </node>
     </node>
@@ -28593,9 +28704,60 @@
     </node>
     <node concept="2tJIrI" id="735o_gl4$QS" role="jymVt" />
     <node concept="3UR2Jj" id="735o_glJs9b" role="lGtFl">
-      <node concept="TZ5HA" id="735o_glJx9Q" role="TZ5H$">
-        <node concept="1dT_AC" id="735o_glJx9R" role="1dT_Ay">
-          <property role="1dT_AB" value="Groups children of a node per aggregation link (with respect to commented-out nodes) and provides few convenience methods" />
+      <node concept="1PaTwC" id="1E1X3WHsDpq" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDpr" role="1PaTwD">
+          <property role="3oM_SC" value="Groups" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDps" role="1PaTwD">
+          <property role="3oM_SC" value="children" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpt" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpu" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpv" role="1PaTwD">
+          <property role="3oM_SC" value="node" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpw" role="1PaTwD">
+          <property role="3oM_SC" value="per" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpx" role="1PaTwD">
+          <property role="3oM_SC" value="aggregation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpy" role="1PaTwD">
+          <property role="3oM_SC" value="link" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpz" role="1PaTwD">
+          <property role="3oM_SC" value="(with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp$" role="1PaTwD">
+          <property role="3oM_SC" value="respect" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDp_" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpA" role="1PaTwD">
+          <property role="3oM_SC" value="commented-out" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpB" role="1PaTwD">
+          <property role="3oM_SC" value="nodes)" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpC" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpD" role="1PaTwD">
+          <property role="3oM_SC" value="provides" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpE" role="1PaTwD">
+          <property role="3oM_SC" value="few" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpF" role="1PaTwD">
+          <property role="3oM_SC" value="convenience" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDpG" role="1PaTwD">
+          <property role="3oM_SC" value="methods" />
         </node>
       </node>
     </node>

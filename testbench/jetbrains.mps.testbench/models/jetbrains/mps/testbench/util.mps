@@ -2,7 +2,7 @@
 <model ref="r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -253,7 +253,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -261,13 +260,10 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -295,9 +291,18 @@
       <ref role="3uigEE" node="4_TMdeLkOPS" resolve="Output" />
     </node>
     <node concept="3UR2Jj" id="4_TMdeLkOOg" role="lGtFl">
-      <node concept="TZ5HA" id="4_TMdeLkOPQ" role="TZ5H$">
-        <node concept="1dT_AC" id="4_TMdeLkOPR" role="1dT_Ay">
-          <property role="1dT_AB" value="fyodor, Sep 8, 2010" />
+      <node concept="1PaTwC" id="1E1X3WHsDKc" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDKd" role="1PaTwD">
+          <property role="3oM_SC" value="fyodor," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKe" role="1PaTwD">
+          <property role="3oM_SC" value="Sep" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKf" role="1PaTwD">
+          <property role="3oM_SC" value="8," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKg" role="1PaTwD">
+          <property role="3oM_SC" value="2010" />
         </node>
       </node>
     </node>
@@ -3331,14 +3336,98 @@
       </node>
       <node concept="3Tm1VV" id="4lRieqsI4V2" role="1B3o_S" />
       <node concept="3UR2Jj" id="4lRieqsIlXE" role="lGtFl">
-        <node concept="TZ5HA" id="4lRieqsIlXF" role="TZ5H$">
-          <node concept="1dT_AC" id="4lRieqsIlXG" role="1dT_Ay">
-            <property role="1dT_AB" value="Corresponds to Level enum from j.m.lang.test language, the one employed in LogEvent" />
+        <node concept="1PaTwC" id="1E1X3WHsDKh" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDKi" role="1PaTwD">
+            <property role="3oM_SC" value="Corresponds" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKj" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKk" role="1PaTwD">
+            <property role="3oM_SC" value="Level" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKl" role="1PaTwD">
+            <property role="3oM_SC" value="enum" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKm" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKn" role="1PaTwD">
+            <property role="3oM_SC" value="j.m.lang.test" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKo" role="1PaTwD">
+            <property role="3oM_SC" value="language," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKp" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKq" role="1PaTwD">
+            <property role="3oM_SC" value="one" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKr" role="1PaTwD">
+            <property role="3oM_SC" value="employed" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKs" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKt" role="1PaTwD">
+            <property role="3oM_SC" value="LogEvent" />
           </node>
         </node>
-        <node concept="TZ5HA" id="4lRieqsQBME" role="TZ5H$">
-          <node concept="1dT_AC" id="4lRieqsQBMF" role="1dT_Ay">
-            <property role="1dT_AB" value="Come in the order of the enum declaration, not in the order of log4j Level int values (reversed)." />
+        <node concept="1PaTwC" id="1E1X3WHsDKu" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDKv" role="1PaTwD">
+            <property role="3oM_SC" value="Come" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKw" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKx" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKy" role="1PaTwD">
+            <property role="3oM_SC" value="order" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKz" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDK$" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDK_" role="1PaTwD">
+            <property role="3oM_SC" value="enum" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKA" role="1PaTwD">
+            <property role="3oM_SC" value="declaration," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKB" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKC" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKD" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKE" role="1PaTwD">
+            <property role="3oM_SC" value="order" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKF" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKG" role="1PaTwD">
+            <property role="3oM_SC" value="log4j" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKH" role="1PaTwD">
+            <property role="3oM_SC" value="Level" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKI" role="1PaTwD">
+            <property role="3oM_SC" value="int" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKJ" role="1PaTwD">
+            <property role="3oM_SC" value="values" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsDKK" role="1PaTwD">
+            <property role="3oM_SC" value="(reversed)." />
           </node>
         </node>
       </node>
@@ -3370,9 +3459,12 @@
           </node>
         </node>
         <node concept="P$JXv" id="6pLVEngNbS$" role="lGtFl">
-          <node concept="TZ5HA" id="6pLVEngNbS_" role="TZ5H$">
-            <node concept="1dT_AC" id="6pLVEngNbSA" role="1dT_Ay">
-              <property role="1dT_AB" value="e.g. DEBUG.lessSevereThan(INFO)" />
+          <node concept="1PaTwC" id="1E1X3WHsDL0" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsDL1" role="1PaTwD">
+              <property role="3oM_SC" value="e.g." />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDL2" role="1PaTwD">
+              <property role="3oM_SC" value="DEBUG.lessSevereThan(INFO)" />
             </node>
           </node>
         </node>
@@ -3642,9 +3734,33 @@
       <ref role="3uigEE" node="4_TMdeLkOPS" resolve="Output" />
     </node>
     <node concept="3UR2Jj" id="4_TMdeLkP21" role="lGtFl">
-      <node concept="TZ5HA" id="4_TMdeLkP2E" role="TZ5H$">
-        <node concept="1dT_AC" id="4_TMdeLkP2F" role="1dT_Ay">
-          <property role="1dT_AB" value="Mechanism to treat certain log error messages as 'expected'" />
+      <node concept="1PaTwC" id="1E1X3WHsDKL" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDKM" role="1PaTwD">
+          <property role="3oM_SC" value="Mechanism" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKN" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKO" role="1PaTwD">
+          <property role="3oM_SC" value="treat" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKP" role="1PaTwD">
+          <property role="3oM_SC" value="certain" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKQ" role="1PaTwD">
+          <property role="3oM_SC" value="log" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKR" role="1PaTwD">
+          <property role="3oM_SC" value="error" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKS" role="1PaTwD">
+          <property role="3oM_SC" value="messages" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKT" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKU" role="1PaTwD">
+          <property role="3oM_SC" value="'expected'" />
         </node>
       </node>
     </node>
@@ -3899,9 +4015,44 @@
       <node concept="3Tm1VV" id="4_TMdeLkOY_" role="1B3o_S" />
       <node concept="P$JXv" id="6pLVEngJK0T" role="lGtFl">
         <node concept="TUZQ0" id="6pLVEngJK0W" role="3nqlJM">
-          <property role="TUZQ4" value="messages with severity less than specified are not considered as 'unexpected'" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="6pLVEngJK0Y" role="zr_5Q">
             <ref role="zr_51" node="6pLVEngJJJH" resolve="watchLevel" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsDL3" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsDL4" role="1PaTwD">
+              <property role="3oM_SC" value="messages" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDL5" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDL6" role="1PaTwD">
+              <property role="3oM_SC" value="severity" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDL7" role="1PaTwD">
+              <property role="3oM_SC" value="less" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDL8" role="1PaTwD">
+              <property role="3oM_SC" value="than" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDL9" role="1PaTwD">
+              <property role="3oM_SC" value="specified" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDLa" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDLb" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDLc" role="1PaTwD">
+              <property role="3oM_SC" value="considered" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDLd" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsDLe" role="1PaTwD">
+              <property role="3oM_SC" value="'unexpected'" />
+            </node>
           </node>
         </node>
       </node>
@@ -4821,9 +4972,18 @@
       <ref role="3uigEE" node="4_TMdeLkOPS" resolve="Output" />
     </node>
     <node concept="3UR2Jj" id="4_TMdeLkPcw" role="lGtFl">
-      <node concept="TZ5HA" id="4_TMdeLkPcE" role="TZ5H$">
-        <node concept="1dT_AC" id="4_TMdeLkPcF" role="1dT_Ay">
-          <property role="1dT_AB" value="fyodor, Aug 18, 2010" />
+      <node concept="1PaTwC" id="1E1X3WHsDKV" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDKW" role="1PaTwD">
+          <property role="3oM_SC" value="fyodor," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKX" role="1PaTwD">
+          <property role="3oM_SC" value="Aug" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKY" role="1PaTwD">
+          <property role="3oM_SC" value="18," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDKZ" role="1PaTwD">
+          <property role="3oM_SC" value="2010" />
         </node>
       </node>
     </node>

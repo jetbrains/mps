@@ -4,7 +4,7 @@
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -218,20 +218,14 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
@@ -2043,7 +2037,11 @@
       </node>
       <node concept="P$JXv" id="2sePq$_siIA" role="lGtFl">
         <node concept="TZ5HI" id="2sePq$_siIB" role="3nqlJM">
-          <node concept="TZ5HA" id="2sePq$_siIC" role="3HnX3l" />
+          <node concept="1PaTwC" id="1E1X3WHswth" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswti" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -2123,7 +2121,11 @@
       </node>
       <node concept="P$JXv" id="2sePq$_siIH" role="lGtFl">
         <node concept="TZ5HI" id="2sePq$_siII" role="3nqlJM">
-          <node concept="TZ5HA" id="2sePq$_siIJ" role="3HnX3l" />
+          <node concept="1PaTwC" id="1E1X3WHswtj" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswtk" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -3381,9 +3383,21 @@
       </node>
       <node concept="3clFbS" id="5zEkxuKhyRt" role="3clF47" />
       <node concept="P$JXv" id="19B7r2JaIR" role="lGtFl">
-        <node concept="TZ5HA" id="19B7r2JaIS" role="TZ5H$">
-          <node concept="1dT_AC" id="19B7r2JaIT" role="1dT_Ay">
-            <property role="1dT_AB" value="Must return an Attribute sub-concept" />
+        <node concept="1PaTwC" id="1E1X3WHswtl" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswtm" role="1PaTwD">
+            <property role="3oM_SC" value="Must" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtn" role="1PaTwD">
+            <property role="3oM_SC" value="return" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswto" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtp" role="1PaTwD">
+            <property role="3oM_SC" value="Attribute" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtq" role="1PaTwD">
+            <property role="3oM_SC" value="sub-concept" />
           </node>
         </node>
       </node>
@@ -8552,9 +8566,39 @@
     <node concept="3Tm1VV" id="2ytHpS0AKp5" role="1B3o_S" />
     <node concept="3UR2Jj" id="2ytHpS0AKpQ" role="lGtFl">
       <node concept="TZ5HI" id="2ytHpS0AKpR" role="3nqlJM">
-        <node concept="TZ5HA" id="2ytHpS0AKpS" role="3HnX3l">
-          <node concept="1dT_AC" id="2ytHpS0AKq9" role="1dT_Ay">
-            <property role="1dT_AB" value="should be used only between 3.4 and 3.5 for migration purposes" />
+        <node concept="1PaTwC" id="1E1X3WHswt5" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswt6" role="1PaTwD">
+            <property role="3oM_SC" value="should" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswt7" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswt8" role="1PaTwD">
+            <property role="3oM_SC" value="used" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswt9" role="1PaTwD">
+            <property role="3oM_SC" value="only" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswta" role="1PaTwD">
+            <property role="3oM_SC" value="between" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtb" role="1PaTwD">
+            <property role="3oM_SC" value="3.4" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtc" role="1PaTwD">
+            <property role="3oM_SC" value="and" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtd" role="1PaTwD">
+            <property role="3oM_SC" value="3.5" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswte" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtf" role="1PaTwD">
+            <property role="3oM_SC" value="migration" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswtg" role="1PaTwD">
+            <property role="3oM_SC" value="purposes" />
           </node>
         </node>
       </node>

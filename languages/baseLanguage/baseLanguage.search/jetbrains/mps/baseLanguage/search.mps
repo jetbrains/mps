@@ -9,7 +9,7 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
@@ -216,14 +216,9 @@
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -1993,9 +1988,96 @@
       </node>
       <node concept="P$JXv" id="7fMiRhdrrLp" role="lGtFl">
         <node concept="TZ5HI" id="7fMiRhdrrLq" role="3nqlJM">
-          <node concept="TZ5HA" id="7fMiRhdrrLr" role="3HnX3l">
-            <node concept="1dT_AC" id="7fMiRhdrrTG" role="1dT_Ay">
-              <property role="1dT_AB" value="until we refactor our model indexer not to rely on IDEA's FileBasedIndex (which forces us to stick to their contract of VF and Project), use alternative that takes Project instance" />
+          <node concept="1PaTwC" id="1E1X3WHsAmm" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAmn" role="1PaTwD">
+              <property role="3oM_SC" value="until" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmo" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmp" role="1PaTwD">
+              <property role="3oM_SC" value="refactor" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmq" role="1PaTwD">
+              <property role="3oM_SC" value="our" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmr" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAms" role="1PaTwD">
+              <property role="3oM_SC" value="indexer" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmt" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmu" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmv" role="1PaTwD">
+              <property role="3oM_SC" value="rely" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmw" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmx" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA's" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmy" role="1PaTwD">
+              <property role="3oM_SC" value="FileBasedIndex" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmz" role="1PaTwD">
+              <property role="3oM_SC" value="(which" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAm$" role="1PaTwD">
+              <property role="3oM_SC" value="forces" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAm_" role="1PaTwD">
+              <property role="3oM_SC" value="us" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmA" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmB" role="1PaTwD">
+              <property role="3oM_SC" value="stick" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmC" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmD" role="1PaTwD">
+              <property role="3oM_SC" value="their" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmE" role="1PaTwD">
+              <property role="3oM_SC" value="contract" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmF" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmG" role="1PaTwD">
+              <property role="3oM_SC" value="VF" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmH" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmI" role="1PaTwD">
+              <property role="3oM_SC" value="Project)," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmJ" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmK" role="1PaTwD">
+              <property role="3oM_SC" value="alternative" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmL" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmM" role="1PaTwD">
+              <property role="3oM_SC" value="takes" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmN" role="1PaTwD">
+              <property role="3oM_SC" value="Project" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmO" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
             </node>
           </node>
         </node>
@@ -2289,9 +2371,21 @@
       </node>
       <node concept="P$JXv" id="8i5A5YNJWY" role="lGtFl">
         <node concept="TZ5HI" id="8i5A5YNJWZ" role="3nqlJM">
-          <node concept="TZ5HA" id="8i5A5YNJX0" role="3HnX3l">
-            <node concept="1dT_AC" id="8i5A5YNKuF" role="1dT_Ay">
-              <property role="1dT_AB" value="it's CoreComponent, access through ComponentHost" />
+          <node concept="1PaTwC" id="1E1X3WHsAmP" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsAmQ" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmR" role="1PaTwD">
+              <property role="3oM_SC" value="CoreComponent," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmS" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmT" role="1PaTwD">
+              <property role="3oM_SC" value="through" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsAmU" role="1PaTwD">
+              <property role="3oM_SC" value="ComponentHost" />
             </node>
           </node>
         </node>

@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -281,16 +281,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings">
       <concept id="2722628536111969416" name="jetbrains.mps.execution.settings.structure.GridBagConstraints" flags="nn" index="1rwKMM">
@@ -4372,14 +4366,53 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="1DeqbSMJ8fU" role="lGtFl">
-      <node concept="TZ5HA" id="1DeqbSMJ8fV" role="TZ5H$">
-        <node concept="1dT_AC" id="1DeqbSMJ8fW" role="1dT_Ay">
-          <property role="1dT_AB" value="This class was split up without thinking, just to make something work quickly." />
+      <node concept="1PaTwC" id="1E1X3WHsBNM" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsBNN" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNO" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNP" role="1PaTwD">
+          <property role="3oM_SC" value="was" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNQ" role="1PaTwD">
+          <property role="3oM_SC" value="split" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNR" role="1PaTwD">
+          <property role="3oM_SC" value="up" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNS" role="1PaTwD">
+          <property role="3oM_SC" value="without" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNT" role="1PaTwD">
+          <property role="3oM_SC" value="thinking," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNU" role="1PaTwD">
+          <property role="3oM_SC" value="just" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNV" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNW" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNX" role="1PaTwD">
+          <property role="3oM_SC" value="something" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNY" role="1PaTwD">
+          <property role="3oM_SC" value="work" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBNZ" role="1PaTwD">
+          <property role="3oM_SC" value="quickly." />
         </node>
       </node>
-      <node concept="TZ5HA" id="1DeqbSMJ8Xa" role="TZ5H$">
-        <node concept="1dT_AC" id="1DeqbSMJ8Xb" role="1dT_Ay">
-          <property role="1dT_AB" value="TODO: refactor" />
+      <node concept="1PaTwC" id="1E1X3WHsBO0" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsBO1" role="1PaTwD">
+          <property role="3oM_SC" value="TODO:" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsBO2" role="1PaTwD">
+          <property role="3oM_SC" value="refactor" />
         </node>
       </node>
     </node>

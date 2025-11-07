@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="rk9m" ref="r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)" />
@@ -206,18 +206,12 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -1139,20 +1133,101 @@
       </node>
       <node concept="P$JXv" id="3Ch7xrbZJ_V" role="lGtFl">
         <node concept="TZ5HI" id="3Ch7xrbZJ_W" role="3nqlJM">
-          <node concept="TZ5HA" id="3Ch7xrbZJ_X" role="3HnX3l">
-            <node concept="1dT_AC" id="3Ch7xrcbKtY" role="1dT_Ay">
-              <property role="1dT_AB" value="use alternative with SLanguage" />
+          <node concept="1PaTwC" id="1E1X3WHs_6T" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_6U" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_6V" role="1PaTwD">
+              <property role="3oM_SC" value="alternative" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_6W" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_6X" role="1PaTwD">
+              <property role="3oM_SC" value="SLanguage" />
             </node>
           </node>
         </node>
-        <node concept="TZ5HA" id="3Ch7xrcbK_C" role="TZ5H$">
-          <node concept="1dT_AC" id="3Ch7xrcbK_D" role="1dT_Ay">
-            <property role="1dT_AB" value="FIXME I wonder if we can register IFacet.Name instead (with ModuleRuntime/LanguageRuntime or identity thereof)" />
+        <node concept="1PaTwC" id="1E1X3WHs_6t" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_6u" role="1PaTwD">
+            <property role="3oM_SC" value="FIXME" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6v" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6w" role="1PaTwD">
+            <property role="3oM_SC" value="wonder" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6x" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6y" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6z" role="1PaTwD">
+            <property role="3oM_SC" value="can" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6$" role="1PaTwD">
+            <property role="3oM_SC" value="register" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6_" role="1PaTwD">
+            <property role="3oM_SC" value="IFacet.Name" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6A" role="1PaTwD">
+            <property role="3oM_SC" value="instead" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6B" role="1PaTwD">
+            <property role="3oM_SC" value="(with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6C" role="1PaTwD">
+            <property role="3oM_SC" value="ModuleRuntime/LanguageRuntime" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6D" role="1PaTwD">
+            <property role="3oM_SC" value="or" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6E" role="1PaTwD">
+            <property role="3oM_SC" value="identity" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6F" role="1PaTwD">
+            <property role="3oM_SC" value="thereof)" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3Ch7xrcbN8C" role="TZ5H$">
-          <node concept="1dT_AC" id="3Ch7xrcbN8D" role="1dT_Ay">
-            <property role="1dT_AB" value="to get IFacet instance only when there's true need (i.e. language use)" />
+        <node concept="1PaTwC" id="1E1X3WHs_6G" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_6H" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6I" role="1PaTwD">
+            <property role="3oM_SC" value="get" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6J" role="1PaTwD">
+            <property role="3oM_SC" value="IFacet" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6K" role="1PaTwD">
+            <property role="3oM_SC" value="instance" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6L" role="1PaTwD">
+            <property role="3oM_SC" value="only" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6M" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6N" role="1PaTwD">
+            <property role="3oM_SC" value="there's" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6O" role="1PaTwD">
+            <property role="3oM_SC" value="true" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6P" role="1PaTwD">
+            <property role="3oM_SC" value="need" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6Q" role="1PaTwD">
+            <property role="3oM_SC" value="(i.e." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6R" role="1PaTwD">
+            <property role="3oM_SC" value="language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_6S" role="1PaTwD">
+            <property role="3oM_SC" value="use)" />
           </node>
         </node>
       </node>
@@ -1939,9 +2014,51 @@
       </node>
       <node concept="P$JXv" id="3Ch7xrbZB22" role="lGtFl">
         <node concept="TZ5HI" id="3Ch7xrbZB23" role="3nqlJM">
-          <node concept="TZ5HA" id="3Ch7xrbZB24" role="3HnX3l">
-            <node concept="1dT_AC" id="3Ch7xrbZC5$" role="1dT_Ay">
-              <property role="1dT_AB" value="use alternative that takes SLanguage, it's bad idea to use name to identify a module" />
+          <node concept="1PaTwC" id="1E1X3WHs_6Y" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_6Z" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_70" role="1PaTwD">
+              <property role="3oM_SC" value="alternative" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_71" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_72" role="1PaTwD">
+              <property role="3oM_SC" value="takes" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_73" role="1PaTwD">
+              <property role="3oM_SC" value="SLanguage," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_74" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_75" role="1PaTwD">
+              <property role="3oM_SC" value="bad" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_76" role="1PaTwD">
+              <property role="3oM_SC" value="idea" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_77" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_78" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_79" role="1PaTwD">
+              <property role="3oM_SC" value="name" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7a" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7b" role="1PaTwD">
+              <property role="3oM_SC" value="identify" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7c" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7d" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
             </node>
           </node>
         </node>
@@ -2442,9 +2559,42 @@
         </node>
       </node>
       <node concept="P$JXv" id="3Ch7xrcdvVN" role="lGtFl">
-        <node concept="TZ5HA" id="3Ch7xrcdvVO" role="TZ5H$">
-          <node concept="1dT_AC" id="3Ch7xrcdvVP" role="1dT_Ay">
-            <property role="1dT_AB" value="Unlike legacy getFacetsForLanguage(String), looks up facets for the language in the LanguageRegistry" />
+        <node concept="1PaTwC" id="1E1X3WHs_7e" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHs_7f" role="1PaTwD">
+            <property role="3oM_SC" value="Unlike" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7g" role="1PaTwD">
+            <property role="3oM_SC" value="legacy" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7h" role="1PaTwD">
+            <property role="3oM_SC" value="getFacetsForLanguage(String)," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7i" role="1PaTwD">
+            <property role="3oM_SC" value="looks" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7j" role="1PaTwD">
+            <property role="3oM_SC" value="up" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7k" role="1PaTwD">
+            <property role="3oM_SC" value="facets" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7l" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7m" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7n" role="1PaTwD">
+            <property role="3oM_SC" value="language" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7o" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7p" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHs_7q" role="1PaTwD">
+            <property role="3oM_SC" value="LanguageRegistry" />
           </node>
         </node>
       </node>
@@ -2474,9 +2624,42 @@
       </node>
       <node concept="P$JXv" id="3Ch7xrciAHB" role="lGtFl">
         <node concept="TZ5HI" id="3Ch7xrciAHC" role="3nqlJM">
-          <node concept="TZ5HA" id="3Ch7xrciAHD" role="3HnX3l">
-            <node concept="1dT_AC" id="3Ch7xrciDf7" role="1dT_Ay">
-              <property role="1dT_AB" value="not bad per se, just beware it gives explicitly registered facets only." />
+          <node concept="1PaTwC" id="1E1X3WHs_7r" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHs_7s" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7t" role="1PaTwD">
+              <property role="3oM_SC" value="bad" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7u" role="1PaTwD">
+              <property role="3oM_SC" value="per" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7v" role="1PaTwD">
+              <property role="3oM_SC" value="se," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7w" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7x" role="1PaTwD">
+              <property role="3oM_SC" value="beware" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7y" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7z" role="1PaTwD">
+              <property role="3oM_SC" value="gives" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7$" role="1PaTwD">
+              <property role="3oM_SC" value="explicitly" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7_" role="1PaTwD">
+              <property role="3oM_SC" value="registered" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7A" role="1PaTwD">
+              <property role="3oM_SC" value="facets" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHs_7B" role="1PaTwD">
+              <property role="3oM_SC" value="only." />
             </node>
           </node>
         </node>

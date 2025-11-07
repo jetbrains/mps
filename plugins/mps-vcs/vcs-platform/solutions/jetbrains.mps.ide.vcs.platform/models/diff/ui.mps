@@ -11,7 +11,7 @@
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
   </languages>
   <imports>
@@ -381,16 +381,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -20616,9 +20610,30 @@
       <node concept="3cqZAl" id="5$O_bu7v2Lc" role="3clF45" />
     </node>
     <node concept="3UR2Jj" id="5$O_bu7v5wz" role="lGtFl">
-      <node concept="TZ5HA" id="5$O_bu7v5w$" role="TZ5H$">
-        <node concept="1dT_AC" id="5$O_bu7v5w_" role="1dT_Ay">
-          <property role="1dT_AB" value="Most of this class copied from IDEA's VcsSelectionHistoryDialog" />
+      <node concept="1PaTwC" id="1E1X3WHsD$g" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsD$h" role="1PaTwD">
+          <property role="3oM_SC" value="Most" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$i" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$j" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$k" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$l" role="1PaTwD">
+          <property role="3oM_SC" value="copied" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$m" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$n" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsD$o" role="1PaTwD">
+          <property role="3oM_SC" value="VcsSelectionHistoryDialog" />
         </node>
       </node>
     </node>
@@ -22520,9 +22535,66 @@
       </node>
       <node concept="3Tm6S6" id="F8s4TbO7c3" role="1B3o_S" />
       <node concept="3UR2Jj" id="gkhJ4LkYwe" role="lGtFl">
-        <node concept="TZ5HA" id="gkhJ4LkYwf" role="TZ5H$">
-          <node concept="1dT_AC" id="gkhJ4LkYwg" role="1dT_Ay">
-            <property role="1dT_AB" value="Abstraction of a set of nodes we are interested. At the moment we are limited to a root node only" />
+        <node concept="1PaTwC" id="1E1X3WHsD$p" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsD$q" role="1PaTwD">
+            <property role="3oM_SC" value="Abstraction" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$r" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$s" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$t" role="1PaTwD">
+            <property role="3oM_SC" value="set" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$u" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$v" role="1PaTwD">
+            <property role="3oM_SC" value="nodes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$w" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$x" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$y" role="1PaTwD">
+            <property role="3oM_SC" value="interested." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$z" role="1PaTwD">
+            <property role="3oM_SC" value="At" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$$" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$_" role="1PaTwD">
+            <property role="3oM_SC" value="moment" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$A" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$B" role="1PaTwD">
+            <property role="3oM_SC" value="are" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$C" role="1PaTwD">
+            <property role="3oM_SC" value="limited" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$D" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$E" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$F" role="1PaTwD">
+            <property role="3oM_SC" value="root" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$G" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$H" role="1PaTwD">
+            <property role="3oM_SC" value="only" />
           </node>
         </node>
       </node>
@@ -22990,9 +23062,54 @@
       </node>
       <node concept="3Tm6S6" id="F8s4TbPbVW" role="1B3o_S" />
       <node concept="3UR2Jj" id="F8s4TbPyl0" role="lGtFl">
-        <node concept="TZ5HA" id="F8s4TbPyl1" role="TZ5H$">
-          <node concept="1dT_AC" id="F8s4TbPyl2" role="1dT_Ay">
-            <property role="1dT_AB" value="I don't care about line numbers but changes inside a node's range from version to version" />
+        <node concept="1PaTwC" id="1E1X3WHsD$I" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsD$J" role="1PaTwD">
+            <property role="3oM_SC" value="I" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$K" role="1PaTwD">
+            <property role="3oM_SC" value="don't" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$L" role="1PaTwD">
+            <property role="3oM_SC" value="care" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$M" role="1PaTwD">
+            <property role="3oM_SC" value="about" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$N" role="1PaTwD">
+            <property role="3oM_SC" value="line" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$O" role="1PaTwD">
+            <property role="3oM_SC" value="numbers" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$P" role="1PaTwD">
+            <property role="3oM_SC" value="but" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$Q" role="1PaTwD">
+            <property role="3oM_SC" value="changes" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$R" role="1PaTwD">
+            <property role="3oM_SC" value="inside" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$S" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$T" role="1PaTwD">
+            <property role="3oM_SC" value="node's" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$U" role="1PaTwD">
+            <property role="3oM_SC" value="range" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$V" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$W" role="1PaTwD">
+            <property role="3oM_SC" value="version" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$X" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsD$Y" role="1PaTwD">
+            <property role="3oM_SC" value="version" />
           </node>
         </node>
       </node>

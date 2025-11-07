@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
@@ -189,20 +189,14 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
@@ -4572,11 +4566,46 @@
     </node>
     <node concept="3Tm1VV" id="7Qab_gm9Nkm" role="1B3o_S" />
     <node concept="3UR2Jj" id="4eMCRjSN$u7" role="lGtFl">
-      <node concept="TZ5HA" id="4eMCRjSN$u8" role="TZ5H$">
-        <node concept="1dT_AC" id="4eMCRjSN$Sh" role="1dT_Ay">
-          <property role="1dT_AB" value="This class is mostly generated with the &quot;UpdateRuntimeUtil&quot; script (method fallbackRuntimeClassifier() is hand-crafted)." />
+      <node concept="1PaTwC" id="1E1X3WHsw8K" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsw8L" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
         </node>
-        <node concept="1dT_AC" id="4eMCRjSN$u9" role="1dT_Ay" />
+        <node concept="3oM_SD" id="1E1X3WHsw8M" role="1PaTwD">
+          <property role="3oM_SC" value="class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8N" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8O" role="1PaTwD">
+          <property role="3oM_SC" value="mostly" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8P" role="1PaTwD">
+          <property role="3oM_SC" value="generated" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8Q" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8R" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8S" role="1PaTwD">
+          <property role="3oM_SC" value="&quot;UpdateRuntimeUtil&quot;" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8T" role="1PaTwD">
+          <property role="3oM_SC" value="script" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8U" role="1PaTwD">
+          <property role="3oM_SC" value="(method" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8V" role="1PaTwD">
+          <property role="3oM_SC" value="fallbackRuntimeClassifier()" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8W" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsw8X" role="1PaTwD">
+          <property role="3oM_SC" value="hand-crafted)." />
+        </node>
       </node>
     </node>
   </node>
@@ -5326,24 +5355,144 @@
         <ref role="3uigEE" node="5YrKoZhDRmA" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
       </node>
       <node concept="P$JXv" id="5YrKoZhDTeH" role="lGtFl">
-        <node concept="TZ5HA" id="5YrKoZhDTeI" role="TZ5H$">
-          <node concept="1dT_AC" id="5YrKoZhDTeJ" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns an instance method of the classifier. If this method signature is not unique (two different methods in the" />
+        <node concept="1PaTwC" id="1E1X3WHsw8Y" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw8Z" role="1PaTwD">
+            <property role="3oM_SC" value="Returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw90" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw91" role="1PaTwD">
+            <property role="3oM_SC" value="instance" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw92" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw93" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw94" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw95" role="1PaTwD">
+            <property role="3oM_SC" value="classifier." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw96" role="1PaTwD">
+            <property role="3oM_SC" value="If" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw97" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw98" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw99" role="1PaTwD">
+            <property role="3oM_SC" value="signature" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9a" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9b" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9c" role="1PaTwD">
+            <property role="3oM_SC" value="unique" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9d" role="1PaTwD">
+            <property role="3oM_SC" value="(two" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9e" role="1PaTwD">
+            <property role="3oM_SC" value="different" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9f" role="1PaTwD">
+            <property role="3oM_SC" value="methods" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9g" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9h" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
           </node>
         </node>
-        <node concept="TZ5HA" id="5YrKoZhDTeK" role="TZ5H$">
-          <node concept="1dT_AC" id="5YrKoZhDTeL" role="1dT_Ay">
-            <property role="1dT_AB" value="class, therefore not a functional interface), an error message is also provided." />
+        <node concept="1PaTwC" id="1E1X3WHsw9i" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw9j" role="1PaTwD">
+            <property role="3oM_SC" value="class," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9k" role="1PaTwD">
+            <property role="3oM_SC" value="therefore" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9l" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9m" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9n" role="1PaTwD">
+            <property role="3oM_SC" value="functional" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9o" role="1PaTwD">
+            <property role="3oM_SC" value="interface)," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9p" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9q" role="1PaTwD">
+            <property role="3oM_SC" value="error" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9r" role="1PaTwD">
+            <property role="3oM_SC" value="message" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9s" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9t" role="1PaTwD">
+            <property role="3oM_SC" value="also" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9u" role="1PaTwD">
+            <property role="3oM_SC" value="provided." />
           </node>
         </node>
-        <node concept="TZ5HA" id="5YrKoZhDTeM" role="TZ5H$">
-          <node concept="1dT_AC" id="5YrKoZhDTeN" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
+        <node concept="1PaTwC" id="1E1X3WHsw9v" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw9w" role="1PaTwD">
+            <property role="3oM_SC" value="" />
           </node>
         </node>
-        <node concept="TZ5HA" id="5YrKoZhDTeO" role="TZ5H$">
-          <node concept="1dT_AC" id="5YrKoZhDTeP" role="1dT_Ay">
-            <property role="1dT_AB" value="A method could be returned even if the error message is provided." />
+        <node concept="1PaTwC" id="1E1X3WHsw9x" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw9y" role="1PaTwD">
+            <property role="3oM_SC" value="A" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9z" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9$" role="1PaTwD">
+            <property role="3oM_SC" value="could" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9_" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9A" role="1PaTwD">
+            <property role="3oM_SC" value="returned" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9B" role="1PaTwD">
+            <property role="3oM_SC" value="even" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9C" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9D" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9E" role="1PaTwD">
+            <property role="3oM_SC" value="error" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9F" role="1PaTwD">
+            <property role="3oM_SC" value="message" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9G" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw9H" role="1PaTwD">
+            <property role="3oM_SC" value="provided." />
           </node>
         </node>
       </node>
@@ -5402,9 +5551,15 @@
       </node>
       <node concept="P$JXv" id="5s7IH9yk$z3" role="lGtFl">
         <node concept="TZ5HI" id="5YrKoZhFv09" role="3nqlJM">
-          <node concept="TZ5HA" id="5YrKoZhFv0a" role="3HnX3l">
-            <node concept="1dT_AC" id="5YrKoZhFvfM" role="1dT_Ay">
-              <property role="1dT_AB" value="replaced by getClassifierFunctionalMethod" />
+          <node concept="1PaTwC" id="1E1X3WHsw9I" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw9J" role="1PaTwD">
+              <property role="3oM_SC" value="replaced" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw9K" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw9L" role="1PaTwD">
+              <property role="3oM_SC" value="getClassifierFunctionalMethod" />
             </node>
           </node>
         </node>

@@ -6,7 +6,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
@@ -292,19 +292,13 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1204834851141" name="jetbrains.mps.lang.smodel.structure.PoundExpression" flags="ng" index="25Kdxt">
@@ -10484,11 +10478,18 @@
     </node>
     <node concept="3UR2Jj" id="2KMWrOYBhCa" role="lGtFl">
       <node concept="TZ5HI" id="2KMWrOYBhCb" role="3nqlJM">
-        <node concept="TZ5HA" id="2KMWrOYBhCc" role="3HnX3l" />
+        <node concept="1PaTwC" id="1E1X3WHsDqd" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDqe" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
+        </node>
       </node>
-      <node concept="TZ5HA" id="2KMWrOYBicC" role="TZ5H$">
-        <node concept="1dT_AC" id="2KMWrOYBicD" role="1dT_Ay">
-          <property role="1dT_AB" value="Use MergeSession.MergeSessionFullState" />
+      <node concept="1PaTwC" id="1E1X3WHsDqa" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDqb" role="1PaTwD">
+          <property role="3oM_SC" value="Use" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqc" role="1PaTwD">
+          <property role="3oM_SC" value="MergeSession.MergeSessionFullState" />
         </node>
       </node>
     </node>
@@ -11416,14 +11417,89 @@
       <ref role="3uigEE" to="w1kc:~EditableModelDescriptor" resolve="EditableModelDescriptor" />
     </node>
     <node concept="3UR2Jj" id="jzhoHG4sqV" role="lGtFl">
-      <node concept="TZ5HA" id="jzhoHG4sqW" role="TZ5H$">
-        <node concept="1dT_AC" id="jzhoHG4sqX" role="1dT_Ay">
-          <property role="1dT_AB" value="Merge model has to be EditableSModel for now (there's otherwise dubious use of isChanged status)," />
+      <node concept="1PaTwC" id="1E1X3WHsDqf" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDqg" role="1PaTwD">
+          <property role="3oM_SC" value="Merge" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqh" role="1PaTwD">
+          <property role="3oM_SC" value="model" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqi" role="1PaTwD">
+          <property role="3oM_SC" value="has" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqj" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqk" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDql" role="1PaTwD">
+          <property role="3oM_SC" value="EditableSModel" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqm" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqn" role="1PaTwD">
+          <property role="3oM_SC" value="now" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqo" role="1PaTwD">
+          <property role="3oM_SC" value="(there's" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqp" role="1PaTwD">
+          <property role="3oM_SC" value="otherwise" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqq" role="1PaTwD">
+          <property role="3oM_SC" value="dubious" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqr" role="1PaTwD">
+          <property role="3oM_SC" value="use" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqs" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqt" role="1PaTwD">
+          <property role="3oM_SC" value="isChanged" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqu" role="1PaTwD">
+          <property role="3oM_SC" value="status)," />
         </node>
       </node>
-      <node concept="TZ5HA" id="jzhoHG4wjy" role="TZ5H$">
-        <node concept="1dT_AC" id="jzhoHG4wjz" role="1dT_Ay">
-          <property role="1dT_AB" value="however, rest of the EditableSModel API is superfluous for the merge model." />
+      <node concept="1PaTwC" id="1E1X3WHsDqv" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDqw" role="1PaTwD">
+          <property role="3oM_SC" value="however," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqx" role="1PaTwD">
+          <property role="3oM_SC" value="rest" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqy" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqz" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDq$" role="1PaTwD">
+          <property role="3oM_SC" value="EditableSModel" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDq_" role="1PaTwD">
+          <property role="3oM_SC" value="API" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqA" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqB" role="1PaTwD">
+          <property role="3oM_SC" value="superfluous" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqC" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqD" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqE" role="1PaTwD">
+          <property role="3oM_SC" value="merge" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqF" role="1PaTwD">
+          <property role="3oM_SC" value="model." />
         </node>
       </node>
     </node>
@@ -18710,9 +18786,24 @@
       <node concept="3Tm1VV" id="568jgXHtJHh" role="1B3o_S" />
     </node>
     <node concept="3UR2Jj" id="568jgXHsNjo" role="lGtFl">
-      <node concept="TZ5HA" id="568jgXHsNjp" role="TZ5H$">
-        <node concept="1dT_AC" id="568jgXHsNjq" role="1dT_Ay">
-          <property role="1dT_AB" value="Collection of related models, managed together" />
+      <node concept="1PaTwC" id="1E1X3WHsDqG" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDqH" role="1PaTwD">
+          <property role="3oM_SC" value="Collection" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqI" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqJ" role="1PaTwD">
+          <property role="3oM_SC" value="related" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqK" role="1PaTwD">
+          <property role="3oM_SC" value="models," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqL" role="1PaTwD">
+          <property role="3oM_SC" value="managed" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDqM" role="1PaTwD">
+          <property role="3oM_SC" value="together" />
         </node>
       </node>
     </node>

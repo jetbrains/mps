@@ -6,7 +6,7 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -215,16 +215,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
@@ -13848,19 +13842,100 @@
     <property role="3GE5qa" value="members" />
     <property role="TrG5h" value="IncompleteMemberHelper" />
     <node concept="3UR2Jj" id="3$ZGCDjqry2" role="lGtFl">
-      <node concept="TZ5HA" id="3$ZGCDjqrB6" role="TZ5H$">
-        <node concept="1dT_AC" id="3$ZGCDjqrB7" role="1dT_Ay">
-          <property role="1dT_AB" value="Beatiful!" />
+      <node concept="1PaTwC" id="1E1X3WHsvwE" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsvwF" role="1PaTwD">
+          <property role="3oM_SC" value="Beatiful!" />
         </node>
       </node>
-      <node concept="TZ5HA" id="3$ZGCDjqrC8" role="TZ5H$">
-        <node concept="1dT_AC" id="3$ZGCDjqrC9" role="1dT_Ay">
-          <property role="1dT_AB" value="just saying that all the properties must be migrated to modifiers and Modifiers must get the #getAttributedObjects" />
+      <node concept="1PaTwC" id="1E1X3WHsvwG" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsvwH" role="1PaTwD">
+          <property role="3oM_SC" value="just" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwI" role="1PaTwD">
+          <property role="3oM_SC" value="saying" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwJ" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwK" role="1PaTwD">
+          <property role="3oM_SC" value="all" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwL" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwM" role="1PaTwD">
+          <property role="3oM_SC" value="properties" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwN" role="1PaTwD">
+          <property role="3oM_SC" value="must" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwO" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwP" role="1PaTwD">
+          <property role="3oM_SC" value="migrated" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwQ" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwR" role="1PaTwD">
+          <property role="3oM_SC" value="modifiers" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwS" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwT" role="1PaTwD">
+          <property role="3oM_SC" value="Modifiers" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwU" role="1PaTwD">
+          <property role="3oM_SC" value="must" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwV" role="1PaTwD">
+          <property role="3oM_SC" value="get" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwW" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvwX" role="1PaTwD">
+          <property role="3oM_SC" value="#getAttributedObjects" />
         </node>
       </node>
-      <node concept="TZ5HA" id="3$ZGCDjqrDb" role="TZ5H$">
-        <node concept="1dT_AC" id="3$ZGCDjqrDc" role="1dT_Ay">
-          <property role="1dT_AB" value="which returns whether it could be attached to field, method, class, etc" />
+      <node concept="1PaTwC" id="1E1X3WHsvwY" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsvwZ" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx0" role="1PaTwD">
+          <property role="3oM_SC" value="returns" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx1" role="1PaTwD">
+          <property role="3oM_SC" value="whether" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx2" role="1PaTwD">
+          <property role="3oM_SC" value="it" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx3" role="1PaTwD">
+          <property role="3oM_SC" value="could" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx4" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx5" role="1PaTwD">
+          <property role="3oM_SC" value="attached" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx6" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx7" role="1PaTwD">
+          <property role="3oM_SC" value="field," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx8" role="1PaTwD">
+          <property role="3oM_SC" value="method," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvx9" role="1PaTwD">
+          <property role="3oM_SC" value="class," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsvxa" role="1PaTwD">
+          <property role="3oM_SC" value="etc" />
         </node>
       </node>
     </node>

@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -315,16 +315,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet">
       <concept id="8703512757937156087" name="jetbrains.mps.make.facet.structure.TargetReferenceExpression" flags="nn" index="29r_a">
@@ -4471,14 +4465,68 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="5Pnc_qQmCXD" role="lGtFl">
-      <node concept="TZ5HA" id="5Pnc_qQmCXE" role="TZ5H$">
-        <node concept="1dT_AC" id="5Pnc_qQmCXF" role="1dT_Ay">
-          <property role="1dT_AB" value="Simplistic make service tailored for MPS own tests" />
+      <node concept="1PaTwC" id="1E1X3WHsDGz" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDG$" role="1PaTwD">
+          <property role="3oM_SC" value="Simplistic" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDG_" role="1PaTwD">
+          <property role="3oM_SC" value="make" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGA" role="1PaTwD">
+          <property role="3oM_SC" value="service" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGB" role="1PaTwD">
+          <property role="3oM_SC" value="tailored" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGC" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGD" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGE" role="1PaTwD">
+          <property role="3oM_SC" value="own" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGF" role="1PaTwD">
+          <property role="3oM_SC" value="tests" />
         </node>
       </node>
-      <node concept="TZ5HA" id="6CCHl8GAhaj" role="TZ5H$">
-        <node concept="1dT_AC" id="6CCHl8GAhak" role="1dT_Ay">
-          <property role="1dT_AB" value="XXX pretty much identical to BuildMakeService, do we care to keep both?" />
+      <node concept="1PaTwC" id="1E1X3WHsDGG" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDGH" role="1PaTwD">
+          <property role="3oM_SC" value="XXX" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGI" role="1PaTwD">
+          <property role="3oM_SC" value="pretty" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGJ" role="1PaTwD">
+          <property role="3oM_SC" value="much" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGK" role="1PaTwD">
+          <property role="3oM_SC" value="identical" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGL" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGM" role="1PaTwD">
+          <property role="3oM_SC" value="BuildMakeService," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGN" role="1PaTwD">
+          <property role="3oM_SC" value="do" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGO" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGP" role="1PaTwD">
+          <property role="3oM_SC" value="care" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGQ" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGR" role="1PaTwD">
+          <property role="3oM_SC" value="keep" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGS" role="1PaTwD">
+          <property role="3oM_SC" value="both?" />
         </node>
       </node>
     </node>
@@ -5307,9 +5355,30 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="r94OK97GiL" role="lGtFl">
-      <node concept="TZ5HA" id="r94OK97GiM" role="TZ5H$">
-        <node concept="1dT_AC" id="r94OK97GiN" role="1dT_Ay">
-          <property role="1dT_AB" value="todo: extract common part from ProjectTest and BaseCheckModulesTest" />
+      <node concept="1PaTwC" id="1E1X3WHsDGT" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDGU" role="1PaTwD">
+          <property role="3oM_SC" value="todo:" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGV" role="1PaTwD">
+          <property role="3oM_SC" value="extract" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGW" role="1PaTwD">
+          <property role="3oM_SC" value="common" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGX" role="1PaTwD">
+          <property role="3oM_SC" value="part" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGY" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDGZ" role="1PaTwD">
+          <property role="3oM_SC" value="ProjectTest" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDH0" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDH1" role="1PaTwD">
+          <property role="3oM_SC" value="BaseCheckModulesTest" />
         </node>
       </node>
     </node>

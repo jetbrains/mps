@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -170,15 +170,11 @@
         <child id="6832197706140448505" name="exceptionType" index="zrq5$" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
@@ -1323,15 +1319,38 @@
       </node>
       <node concept="3Tm1VV" id="hGCsH4Q" role="1B3o_S" />
       <node concept="P$JXv" id="2hj6Qpwp32b" role="lGtFl">
-        <node concept="TZ5HA" id="2hj6Qpwp32c" role="TZ5H$">
-          <node concept="1dT_AC" id="2hj6Qpwp32d" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
-          </node>
-        </node>
         <node concept="x0GOo" id="2hj6Qpwp3bd" role="3nqlJM">
-          <property role="x0GOq" value="if the {@link EditingUtil#getEditedProperty(SNode, EditorCell)} == null" />
+          <property role="x0GOq" value="" />
           <node concept="3uibUv" id="2hj6Qpwp3bZ" role="zrq5$">
             <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHswmi" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswmj" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmk" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswml" role="1PaTwD">
+              <property role="3oM_SC" value="{@link" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmm" role="1PaTwD">
+              <property role="3oM_SC" value="EditingUtil#getEditedProperty(SNode," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmn" role="1PaTwD">
+              <property role="3oM_SC" value="EditorCell)}" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmo" role="1PaTwD">
+              <property role="3oM_SC" value="==" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmp" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswmg" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswmh" role="1PaTwD">
+            <property role="3oM_SC" value="" />
           </node>
         </node>
       </node>

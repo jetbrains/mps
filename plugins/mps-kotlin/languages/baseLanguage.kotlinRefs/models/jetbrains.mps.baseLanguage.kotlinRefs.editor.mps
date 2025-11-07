@@ -4,7 +4,7 @@
   <languages>
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -295,23 +295,20 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
       <concept id="2217234381367190443" name="jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag" flags="ng" index="VUp57">
+        <property id="2217234381367190444" name="text" index="VUp50" />
         <child id="2217234381367190458" name="reference" index="VUp5m" />
       </concept>
       <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
         <reference id="2217234381367530213" name="classifier" index="VXe09" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
       <concept id="5979988948250981289" name="jetbrains.mps.lang.actions.structure.SNodeCreatorAndInitializer" flags="nn" index="2fJWfE" />
@@ -1405,8 +1402,12 @@
       </node>
       <node concept="P$JXv" id="1t03WazmCVM" role="lGtFl">
         <node concept="VUp57" id="1t03WazmD9N" role="3nqlJM">
+          <property role="VUp50" value="" />
           <node concept="VXe08" id="1d2BQ0ZbqTJ" role="VUp5m">
             <ref role="VXe09" to="tpen:7i0B12v90qz" resolve="MethodArgumentsUtil" />
+          </node>
+          <node concept="1PaTwC" id="1E1X3WHsxkG" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsxkH" role="1PaTwD" />
           </node>
         </node>
       </node>
@@ -1420,9 +1421,66 @@
     <node concept="2tJIrI" id="1t03WazmCzf" role="jymVt" />
     <node concept="3Tm1VV" id="1t03WazmCa_" role="1B3o_S" />
     <node concept="3UR2Jj" id="1t03WazmCjq" role="lGtFl">
-      <node concept="TZ5HA" id="1t03WazmCjr" role="TZ5H$">
-        <node concept="1dT_AC" id="1t03WazmCjs" role="1dT_Ay">
-          <property role="1dT_AB" value="Set of methods copying behavior of BL method call (that cant be applied to Kotlin because of different method concepts)" />
+      <node concept="1PaTwC" id="1E1X3WHsxkn" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxko" role="1PaTwD">
+          <property role="3oM_SC" value="Set" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkp" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkq" role="1PaTwD">
+          <property role="3oM_SC" value="methods" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkr" role="1PaTwD">
+          <property role="3oM_SC" value="copying" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxks" role="1PaTwD">
+          <property role="3oM_SC" value="behavior" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkt" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxku" role="1PaTwD">
+          <property role="3oM_SC" value="BL" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkv" role="1PaTwD">
+          <property role="3oM_SC" value="method" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkw" role="1PaTwD">
+          <property role="3oM_SC" value="call" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkx" role="1PaTwD">
+          <property role="3oM_SC" value="(that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxky" role="1PaTwD">
+          <property role="3oM_SC" value="cant" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkz" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxk$" role="1PaTwD">
+          <property role="3oM_SC" value="applied" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxk_" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkA" role="1PaTwD">
+          <property role="3oM_SC" value="Kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkB" role="1PaTwD">
+          <property role="3oM_SC" value="because" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkC" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkD" role="1PaTwD">
+          <property role="3oM_SC" value="different" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkE" role="1PaTwD">
+          <property role="3oM_SC" value="method" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkF" role="1PaTwD">
+          <property role="3oM_SC" value="concepts)" />
         </node>
       </node>
     </node>

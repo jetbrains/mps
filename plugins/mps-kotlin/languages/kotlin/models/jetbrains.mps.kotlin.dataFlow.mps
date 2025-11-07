@@ -259,15 +259,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7fa12e9c-b949-4976-b4fa-19accbc320b4" name="jetbrains.mps.lang.dataFlow">
@@ -2455,14 +2449,65 @@
         <node concept="3Tqbb2" id="54yJJ4ys42R" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="4eBTF68Ro6L" role="lGtFl">
-        <node concept="TZ5HA" id="4eBTF68Ro6M" role="TZ5H$">
-          <node concept="1dT_AC" id="4eBTF68Ro6N" role="1dT_Ay">
-            <property role="1dT_AB" value="If the given node is a variable reference compatible with local inference, returns the variable declaration," />
+        <node concept="1PaTwC" id="1E1X3WHsytU" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsytV" role="1PaTwD">
+            <property role="3oM_SC" value="If" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytW" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytX" role="1PaTwD">
+            <property role="3oM_SC" value="given" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytY" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsytZ" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu0" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu1" role="1PaTwD">
+            <property role="3oM_SC" value="variable" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu2" role="1PaTwD">
+            <property role="3oM_SC" value="reference" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu3" role="1PaTwD">
+            <property role="3oM_SC" value="compatible" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu4" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu5" role="1PaTwD">
+            <property role="3oM_SC" value="local" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu6" role="1PaTwD">
+            <property role="3oM_SC" value="inference," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu7" role="1PaTwD">
+            <property role="3oM_SC" value="returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu8" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyu9" role="1PaTwD">
+            <property role="3oM_SC" value="variable" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyua" role="1PaTwD">
+            <property role="3oM_SC" value="declaration," />
           </node>
         </node>
-        <node concept="TZ5HA" id="4eBTF68RoeD" role="TZ5H$">
-          <node concept="1dT_AC" id="4eBTF68RoeE" role="1dT_Ay">
-            <property role="1dT_AB" value="otherwise, returns null." />
+        <node concept="1PaTwC" id="1E1X3WHsyub" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsyuc" role="1PaTwD">
+            <property role="3oM_SC" value="otherwise," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyud" role="1PaTwD">
+            <property role="3oM_SC" value="returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsyue" role="1PaTwD">
+            <property role="3oM_SC" value="null." />
           </node>
         </node>
       </node>

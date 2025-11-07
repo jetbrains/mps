@@ -2,7 +2,7 @@
 <model ref="r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)">
   <persistence version="9" />
   <languages>
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -180,16 +180,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -199,29 +193,121 @@
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
+      </concept>
+    </language>
   </registry>
   <node concept="3HP615" id="46sxDGTfnwG">
     <property role="TrG5h" value="IValueProxy" />
     <node concept="3Tm1VV" id="46sxDGTfnwI" role="1B3o_S" />
     <node concept="3UR2Jj" id="46sxDGTfp$F" role="lGtFl">
-      <node concept="TZ5HA" id="46sxDGTfp$G" role="TZ5H$">
-        <node concept="1dT_AC" id="46sxDGTfp$H" role="1dT_Ay">
-          <property role="1dT_AB" value="Proxy for jdi values that allows to do operations with it." />
+      <node concept="1PaTwC" id="1E1X3WHsAU1" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAU2" role="1PaTwD">
+          <property role="3oM_SC" value="Proxy" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU3" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU4" role="1PaTwD">
+          <property role="3oM_SC" value="jdi" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU5" role="1PaTwD">
+          <property role="3oM_SC" value="values" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU6" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU7" role="1PaTwD">
+          <property role="3oM_SC" value="allows" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU8" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU9" role="1PaTwD">
+          <property role="3oM_SC" value="do" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUa" role="1PaTwD">
+          <property role="3oM_SC" value="operations" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUb" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUc" role="1PaTwD">
+          <property role="3oM_SC" value="it." />
         </node>
       </node>
-      <node concept="TZ5HA" id="6OGoYT55yeC" role="TZ5H$">
-        <node concept="1dT_AC" id="6OGoYT55yeD" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+      <node concept="1PaTwC" id="1E1X3WHsAUd" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAUe" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
-      <node concept="TZ5HA" id="6OGoYT55yeq" role="TZ5H$">
-        <node concept="1dT_AC" id="6OGoYT55yer" role="1dT_Ay">
-          <property role="1dT_AB" value="some meaningless comment from old times:" />
+      <node concept="1PaTwC" id="1E1X3WHsAUf" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAUg" role="1PaTwD">
+          <property role="3oM_SC" value="some" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUh" role="1PaTwD">
+          <property role="3oM_SC" value="meaningless" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUi" role="1PaTwD">
+          <property role="3oM_SC" value="comment" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUj" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUk" role="1PaTwD">
+          <property role="3oM_SC" value="old" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUl" role="1PaTwD">
+          <property role="3oM_SC" value="times:" />
         </node>
       </node>
-      <node concept="TZ5HA" id="6OGoYT55yew" role="TZ5H$">
-        <node concept="1dT_AC" id="6OGoYT55yex" role="1dT_Ay">
-          <property role="1dT_AB" value="This solution was introduced as the easiest of the two adequate solutions of MPS-9041" />
+      <node concept="1PaTwC" id="1E1X3WHsAUm" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAUn" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUo" role="1PaTwD">
+          <property role="3oM_SC" value="solution" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUp" role="1PaTwD">
+          <property role="3oM_SC" value="was" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUq" role="1PaTwD">
+          <property role="3oM_SC" value="introduced" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUr" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUs" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUt" role="1PaTwD">
+          <property role="3oM_SC" value="easiest" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUu" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUv" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUw" role="1PaTwD">
+          <property role="3oM_SC" value="two" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUx" role="1PaTwD">
+          <property role="3oM_SC" value="adequate" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUy" role="1PaTwD">
+          <property role="3oM_SC" value="solutions" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAUz" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAU$" role="1PaTwD">
+          <property role="3oM_SC" value="MPS-9041" />
         </node>
       </node>
     </node>

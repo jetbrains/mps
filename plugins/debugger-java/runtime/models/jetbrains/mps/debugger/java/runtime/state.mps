@@ -5,7 +5,7 @@
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
@@ -227,17 +227,11 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -1648,9 +1642,39 @@
         </node>
       </node>
       <node concept="P$JXv" id="3UdBmwRqkRq" role="lGtFl">
-        <node concept="TZ5HA" id="3UdBmwRqkRr" role="TZ5H$">
-          <node concept="1dT_AC" id="3UdBmwRqkRs" role="1dT_Ay">
-            <property role="1dT_AB" value="This constructor is called when user selects some thread from ui" />
+        <node concept="1PaTwC" id="1E1X3WHsAXW" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAXX" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAXY" role="1PaTwD">
+            <property role="3oM_SC" value="constructor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAXZ" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY0" role="1PaTwD">
+            <property role="3oM_SC" value="called" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY1" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY2" role="1PaTwD">
+            <property role="3oM_SC" value="user" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY3" role="1PaTwD">
+            <property role="3oM_SC" value="selects" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY4" role="1PaTwD">
+            <property role="3oM_SC" value="some" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY5" role="1PaTwD">
+            <property role="3oM_SC" value="thread" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY6" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAY7" role="1PaTwD">
+            <property role="3oM_SC" value="ui" />
           </node>
         </node>
       </node>
@@ -2805,9 +2829,39 @@
         </node>
       </node>
       <node concept="P$JXv" id="3L_P6qKH8jB" role="lGtFl">
-        <node concept="TZ5HA" id="3L_P6qKH8jC" role="TZ5H$">
-          <node concept="1dT_AC" id="3L_P6qKH8jD" role="1dT_Ay">
-            <property role="1dT_AB" value="This constructor is called when user selects some thread from ui" />
+        <node concept="1PaTwC" id="1E1X3WHsAY8" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAY9" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYa" role="1PaTwD">
+            <property role="3oM_SC" value="constructor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYb" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYc" role="1PaTwD">
+            <property role="3oM_SC" value="called" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYd" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYe" role="1PaTwD">
+            <property role="3oM_SC" value="user" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYf" role="1PaTwD">
+            <property role="3oM_SC" value="selects" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYg" role="1PaTwD">
+            <property role="3oM_SC" value="some" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYh" role="1PaTwD">
+            <property role="3oM_SC" value="thread" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYi" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYj" role="1PaTwD">
+            <property role="3oM_SC" value="ui" />
           </node>
         </node>
       </node>
@@ -2982,9 +3036,39 @@
         </node>
       </node>
       <node concept="P$JXv" id="3L_P6qKH8kK" role="lGtFl">
-        <node concept="TZ5HA" id="3L_P6qKH8kL" role="TZ5H$">
-          <node concept="1dT_AC" id="3L_P6qKH8kM" role="1dT_Ay">
-            <property role="1dT_AB" value="This constructor is called when user selects some frame from ui" />
+        <node concept="1PaTwC" id="1E1X3WHsAYk" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsAYl" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYm" role="1PaTwD">
+            <property role="3oM_SC" value="constructor" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYn" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYo" role="1PaTwD">
+            <property role="3oM_SC" value="called" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYp" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYq" role="1PaTwD">
+            <property role="3oM_SC" value="user" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYr" role="1PaTwD">
+            <property role="3oM_SC" value="selects" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYs" role="1PaTwD">
+            <property role="3oM_SC" value="some" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYt" role="1PaTwD">
+            <property role="3oM_SC" value="frame" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYu" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsAYv" role="1PaTwD">
+            <property role="3oM_SC" value="ui" />
           </node>
         </node>
       </node>
@@ -3818,9 +3902,21 @@
       <ref role="3uigEE" node="3L_P6qKH8fi" resolve="JavaUiStateImpl" />
     </node>
     <node concept="3UR2Jj" id="3L_P6qKH8sK" role="lGtFl">
-      <node concept="TZ5HA" id="3L_P6qKH8sL" role="TZ5H$">
-        <node concept="1dT_AC" id="3L_P6qKH8sM" role="1dT_Ay">
-          <property role="1dT_AB" value="No context (i.e. not paused)" />
+      <node concept="1PaTwC" id="1E1X3WHsAXQ" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsAXR" role="1PaTwD">
+          <property role="3oM_SC" value="No" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAXS" role="1PaTwD">
+          <property role="3oM_SC" value="context" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAXT" role="1PaTwD">
+          <property role="3oM_SC" value="(i.e." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAXU" role="1PaTwD">
+          <property role="3oM_SC" value="not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsAXV" role="1PaTwD">
+          <property role="3oM_SC" value="paused)" />
         </node>
       </node>
     </node>

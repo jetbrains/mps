@@ -8,7 +8,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="6lvu" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.cellMenu(MPS.Editor/)" />
@@ -235,15 +235,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -3239,9 +3233,78 @@
       <node concept="3Tmbuc" id="5nQpa4sUAsX" role="1B3o_S" />
       <node concept="3cqZAl" id="5nQpa4sUB1_" role="3clF45" />
       <node concept="P$JXv" id="1ogZZHUV9$1" role="lGtFl">
-        <node concept="TZ5HA" id="1ogZZHUV9$2" role="TZ5H$">
-          <node concept="1dT_AC" id="1ogZZHUV9$3" role="1dT_Ay">
-            <property role="1dT_AB" value="FIXME protected method invoked from a cons is a bad pattern (e.g. subclasses may face uninitilized final fields if overide this method), please redesign!" />
+        <node concept="1PaTwC" id="1E1X3WHsBYE" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBYF" role="1PaTwD">
+            <property role="3oM_SC" value="FIXME" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYG" role="1PaTwD">
+            <property role="3oM_SC" value="protected" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYH" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYI" role="1PaTwD">
+            <property role="3oM_SC" value="invoked" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYJ" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYK" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYL" role="1PaTwD">
+            <property role="3oM_SC" value="cons" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYM" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYN" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYO" role="1PaTwD">
+            <property role="3oM_SC" value="bad" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYP" role="1PaTwD">
+            <property role="3oM_SC" value="pattern" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYQ" role="1PaTwD">
+            <property role="3oM_SC" value="(e.g." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYR" role="1PaTwD">
+            <property role="3oM_SC" value="subclasses" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYS" role="1PaTwD">
+            <property role="3oM_SC" value="may" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYT" role="1PaTwD">
+            <property role="3oM_SC" value="face" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYU" role="1PaTwD">
+            <property role="3oM_SC" value="uninitilized" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYV" role="1PaTwD">
+            <property role="3oM_SC" value="final" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYW" role="1PaTwD">
+            <property role="3oM_SC" value="fields" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYX" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYY" role="1PaTwD">
+            <property role="3oM_SC" value="overide" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYZ" role="1PaTwD">
+            <property role="3oM_SC" value="this" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBZ0" role="1PaTwD">
+            <property role="3oM_SC" value="method)," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBZ1" role="1PaTwD">
+            <property role="3oM_SC" value="please" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBZ2" role="1PaTwD">
+            <property role="3oM_SC" value="redesign!" />
           </node>
         </node>
       </node>

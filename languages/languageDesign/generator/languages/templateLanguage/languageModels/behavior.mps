@@ -6,7 +6,7 @@
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="41f8da2b-a34a-4d66-950d-f1091bdb451f(jetbrains.mps.devkit.aspect.behavior)" />
   </languages>
   <imports>
@@ -224,7 +224,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -232,14 +231,9 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -2654,7 +2648,11 @@
       </node>
       <node concept="P$JXv" id="5UJTmNZqi7R" role="lGtFl">
         <node concept="TZ5HI" id="5UJTmNZqi7S" role="3nqlJM">
-          <node concept="TZ5HA" id="5UJTmNZqi7T" role="3HnX3l" />
+          <node concept="1PaTwC" id="1E1X3WHswlI" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswlJ" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="5UJTmNZqi7U" role="2AJF6D">
@@ -8051,25 +8049,112 @@
         <node concept="3Tqbb2" id="2vVmcK3rI2Y" role="1tU5fm" />
       </node>
       <node concept="P$JXv" id="2vVmcK3ubku" role="lGtFl">
-        <node concept="TZ5HA" id="2vVmcK3ubkv" role="TZ5H$">
-          <node concept="1dT_AC" id="2vVmcK3ubkw" role="1dT_Ay">
-            <property role="1dT_AB" value="Find the parent node macro from the given parent node" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="2vVmcK3ubkx" role="3nqlJM">
-          <property role="TUZQ4" value="node to find parent macro from" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="2vVmcK3ubkz" role="zr_5Q">
             <ref role="zr_51" node="2vVmcK3rI2Z" resolve="parent" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHswlV" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswlW" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswlX" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswlY" role="1PaTwD">
+              <property role="3oM_SC" value="find" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswlZ" role="1PaTwD">
+              <property role="3oM_SC" value="parent" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm0" role="1PaTwD">
+              <property role="3oM_SC" value="macro" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm1" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="2vVmcK3udza" role="3nqlJM">
-          <property role="TUZQ4" value="concept of the macro to find" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="2vVmcK3ud$x" role="zr_5Q">
             <ref role="zr_51" node="2vVmcK3ucxY" resolve="macroConcept" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHswm2" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswm3" role="1PaTwD">
+              <property role="3oM_SC" value="concept" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm4" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm5" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm6" role="1PaTwD">
+              <property role="3oM_SC" value="macro" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm7" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswm8" role="1PaTwD">
+              <property role="3oM_SC" value="find" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="2vVmcK3ubk$" role="3nqlJM">
-          <property role="x79VB" value="node macro of the given concept" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHswm9" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHswma" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmb" role="1PaTwD">
+              <property role="3oM_SC" value="macro" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmc" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmd" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswme" role="1PaTwD">
+              <property role="3oM_SC" value="given" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHswmf" role="1PaTwD">
+              <property role="3oM_SC" value="concept" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHswlK" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswlL" role="1PaTwD">
+            <property role="3oM_SC" value="Find" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlM" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlN" role="1PaTwD">
+            <property role="3oM_SC" value="parent" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlO" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlP" role="1PaTwD">
+            <property role="3oM_SC" value="macro" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlQ" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlR" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlS" role="1PaTwD">
+            <property role="3oM_SC" value="given" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlT" role="1PaTwD">
+            <property role="3oM_SC" value="parent" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswlU" role="1PaTwD">
+            <property role="3oM_SC" value="node" />
+          </node>
         </node>
       </node>
     </node>

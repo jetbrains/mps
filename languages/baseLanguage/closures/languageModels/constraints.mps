@@ -5,7 +5,7 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -220,7 +220,6 @@
         <reference id="6832197706140518108" name="param" index="zr_51" />
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
@@ -228,11 +227,8 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage">
@@ -2751,25 +2747,139 @@
       </node>
       <node concept="3Tm1VV" id="hTOTHCD" role="1B3o_S" />
       <node concept="P$JXv" id="16Lp5Pci5c3" role="lGtFl">
-        <node concept="TZ5HA" id="16Lp5Pci5c4" role="TZ5H$">
-          <node concept="1dT_AC" id="16Lp5Pci5c5" role="1dT_Ay">
-            <property role="1dT_AB" value="Return a bound type version of the copied input type." />
-          </node>
-        </node>
         <node concept="TUZQ0" id="16Lp5Pci5c6" role="3nqlJM">
-          <property role="TUZQ4" value="type to copy as bound" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="16Lp5Pci5c8" role="zr_5Q">
             <ref role="zr_51" node="hwaVhP1" resolve="type" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsw52" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw53" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw54" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw55" role="1PaTwD">
+              <property role="3oM_SC" value="copy" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw56" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw57" role="1PaTwD">
+              <property role="3oM_SC" value="bound" />
+            </node>
+          </node>
         </node>
         <node concept="TUZQ0" id="16Lp5Pci5c9" role="3nqlJM">
-          <property role="TUZQ4" value="true if the type is covariant (? extends), otherwise the type would be contravariant (? super)" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="16Lp5Pci5cb" role="zr_5Q">
             <ref role="zr_51" node="hwaVhP3" resolve="covariant" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsw58" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw59" role="1PaTwD">
+              <property role="3oM_SC" value="true" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5a" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5b" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5c" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5d" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5e" role="1PaTwD">
+              <property role="3oM_SC" value="covariant" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5f" role="1PaTwD">
+              <property role="3oM_SC" value="(?" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5g" role="1PaTwD">
+              <property role="3oM_SC" value="extends)," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5h" role="1PaTwD">
+              <property role="3oM_SC" value="otherwise" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5i" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5j" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5k" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5l" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5m" role="1PaTwD">
+              <property role="3oM_SC" value="contravariant" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5n" role="1PaTwD">
+              <property role="3oM_SC" value="(?" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5o" role="1PaTwD">
+              <property role="3oM_SC" value="super)" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="16Lp5Pci5cc" role="3nqlJM">
-          <property role="x79VB" value="copy of the type as bound" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsw5p" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw5q" role="1PaTwD">
+              <property role="3oM_SC" value="copy" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5r" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5s" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5t" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5u" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5v" role="1PaTwD">
+              <property role="3oM_SC" value="bound" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsw4R" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw4S" role="1PaTwD">
+            <property role="3oM_SC" value="Return" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4T" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4U" role="1PaTwD">
+            <property role="3oM_SC" value="bound" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4V" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4W" role="1PaTwD">
+            <property role="3oM_SC" value="version" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4X" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4Y" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw4Z" role="1PaTwD">
+            <property role="3oM_SC" value="copied" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw50" role="1PaTwD">
+            <property role="3oM_SC" value="input" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw51" role="1PaTwD">
+            <property role="3oM_SC" value="type." />
+          </node>
         </node>
       </node>
     </node>
@@ -2939,19 +3049,122 @@
         </node>
       </node>
       <node concept="P$JXv" id="16Lp5Pci6Fw" role="lGtFl">
-        <node concept="TZ5HA" id="16Lp5Pci6Fx" role="TZ5H$">
-          <node concept="1dT_AC" id="16Lp5Pci6Fy" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns an unbounded version of the type. This is not designed to handled multiple bound level (eg. ? super ? super T)" />
-          </node>
-        </node>
         <node concept="TUZQ0" id="16Lp5Pci6Fz" role="3nqlJM">
-          <property role="TUZQ4" value="possibly bounded type" />
+          <property role="TUZQ4" value="" />
           <node concept="zr_55" id="16Lp5Pci6F_" role="zr_5Q">
             <ref role="zr_51" node="hwak6FH" resolve="type" />
           </node>
+          <node concept="1PaTwC" id="1E1X3WHsw5R" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw5S" role="1PaTwD">
+              <property role="3oM_SC" value="possibly" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5T" role="1PaTwD">
+              <property role="3oM_SC" value="bounded" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5U" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+          </node>
         </node>
         <node concept="x79VA" id="16Lp5Pci6FA" role="3nqlJM">
-          <property role="x79VB" value="copy of the type, or it's bound if applicable" />
+          <property role="x79VB" value="" />
+          <node concept="1PaTwC" id="1E1X3WHsw5V" role="1Vez_I">
+            <node concept="3oM_SD" id="1E1X3WHsw5W" role="1PaTwD">
+              <property role="3oM_SC" value="copy" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5X" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5Y" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw5Z" role="1PaTwD">
+              <property role="3oM_SC" value="type," />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw60" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw61" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw62" role="1PaTwD">
+              <property role="3oM_SC" value="bound" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw63" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="1E1X3WHsw64" role="1PaTwD">
+              <property role="3oM_SC" value="applicable" />
+            </node>
+          </node>
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsw5w" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsw5x" role="1PaTwD">
+            <property role="3oM_SC" value="Returns" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5y" role="1PaTwD">
+            <property role="3oM_SC" value="an" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5z" role="1PaTwD">
+            <property role="3oM_SC" value="unbounded" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5$" role="1PaTwD">
+            <property role="3oM_SC" value="version" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5_" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5A" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5B" role="1PaTwD">
+            <property role="3oM_SC" value="type." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5C" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5D" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5E" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5F" role="1PaTwD">
+            <property role="3oM_SC" value="designed" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5G" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5H" role="1PaTwD">
+            <property role="3oM_SC" value="handled" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5I" role="1PaTwD">
+            <property role="3oM_SC" value="multiple" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5J" role="1PaTwD">
+            <property role="3oM_SC" value="bound" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5K" role="1PaTwD">
+            <property role="3oM_SC" value="level" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5L" role="1PaTwD">
+            <property role="3oM_SC" value="(eg." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5M" role="1PaTwD">
+            <property role="3oM_SC" value="?" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5N" role="1PaTwD">
+            <property role="3oM_SC" value="super" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5O" role="1PaTwD">
+            <property role="3oM_SC" value="?" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5P" role="1PaTwD">
+            <property role="3oM_SC" value="super" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsw5Q" role="1PaTwD">
+            <property role="3oM_SC" value="T)" />
+          </node>
         </node>
       </node>
     </node>

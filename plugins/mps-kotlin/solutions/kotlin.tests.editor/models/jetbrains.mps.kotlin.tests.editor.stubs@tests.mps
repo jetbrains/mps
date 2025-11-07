@@ -6,7 +6,7 @@
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
   </languages>
@@ -156,22 +156,19 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
       <concept id="2217234381367190443" name="jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag" flags="ng" index="VUp57">
+        <property id="2217234381367190444" name="text" index="VUp50" />
         <child id="2217234381367190458" name="reference" index="VUp5m" />
       </concept>
       <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
         <reference id="2217234381367530213" name="classifier" index="VXe09" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
       <concept id="1171931690126" name="jetbrains.mps.baseLanguage.unitTest.structure.TestMethod" flags="ig" index="3s$Bmu">
@@ -576,9 +573,18 @@
         <node concept="17QB3L" id="1h3cSlxw$MU" role="3clF45" />
       </node>
       <node concept="3UR2Jj" id="1h3cSlxwneX" role="lGtFl">
-        <node concept="TZ5HA" id="1h3cSlxwneY" role="TZ5H$">
-          <node concept="1dT_AC" id="1h3cSlxwneZ" role="1dT_Ay">
-            <property role="1dT_AB" value="Previous implementation of FunctionIdBuilder" />
+        <node concept="1PaTwC" id="1E1X3WHsCmB" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsCmC" role="1PaTwD">
+            <property role="3oM_SC" value="Previous" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCmD" role="1PaTwD">
+            <property role="3oM_SC" value="implementation" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCmE" role="1PaTwD">
+            <property role="3oM_SC" value="of" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsCmF" role="1PaTwD">
+            <property role="3oM_SC" value="FunctionIdBuilder" />
           </node>
         </node>
       </node>
@@ -2259,19 +2265,66 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="1h3cSlxE05q" role="lGtFl">
-      <node concept="TZ5HA" id="1h3cSlxE05r" role="TZ5H$">
-        <node concept="1dT_AC" id="1h3cSlxE05s" role="1dT_Ay">
-          <property role="1dT_AB" value="Test for MPS-35026 fix/stub migration. It ensures the references to anterior IDs remain valid." />
-        </node>
-      </node>
       <node concept="VUp57" id="1h3cSlxF6UT" role="3nqlJM">
+        <property role="VUp50" value="" />
         <node concept="VXe08" id="1h3cSlxF8wr" role="VUp5m">
           <ref role="VXe09" to="22au:~KotlinStringBasedNodeIdMap" resolve="KotlinStringBasedNodeIdMap" />
         </node>
+        <node concept="1PaTwC" id="1E1X3WHsCmV" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsCmW" role="1PaTwD" />
+        </node>
       </node>
       <node concept="VUp57" id="1h3cSlxFbQO" role="3nqlJM">
+        <property role="VUp50" value="" />
         <node concept="VXe08" id="1h3cSlxFfa5" role="VUp5m">
           <ref role="VXe09" to="22au:~KtFunctionNodeId" resolve="KtFunctionNodeId" />
+        </node>
+        <node concept="1PaTwC" id="1E1X3WHsCmX" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsCmY" role="1PaTwD" />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="1E1X3WHsCmG" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsCmH" role="1PaTwD">
+          <property role="3oM_SC" value="Test" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmI" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmJ" role="1PaTwD">
+          <property role="3oM_SC" value="MPS-35026" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmK" role="1PaTwD">
+          <property role="3oM_SC" value="fix/stub" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmL" role="1PaTwD">
+          <property role="3oM_SC" value="migration." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmM" role="1PaTwD">
+          <property role="3oM_SC" value="It" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmN" role="1PaTwD">
+          <property role="3oM_SC" value="ensures" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmO" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmP" role="1PaTwD">
+          <property role="3oM_SC" value="references" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmQ" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmR" role="1PaTwD">
+          <property role="3oM_SC" value="anterior" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmS" role="1PaTwD">
+          <property role="3oM_SC" value="IDs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmT" role="1PaTwD">
+          <property role="3oM_SC" value="remain" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsCmU" role="1PaTwD">
+          <property role="3oM_SC" value="valid." />
         </node>
       </node>
     </node>

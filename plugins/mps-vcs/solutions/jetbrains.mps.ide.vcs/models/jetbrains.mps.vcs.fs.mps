@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
@@ -131,19 +131,15 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345530174" name="jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag" flags="ng" index="P$Jll">
         <property id="5349172909345532826" name="text" index="P$JZL" />
       </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -501,28 +497,111 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="24kmG9GcmTz" role="lGtFl">
-      <node concept="TZ5HA" id="24kmG9GcmT$" role="TZ5H$">
-        <node concept="1dT_AC" id="24kmG9GcmT_" role="1dT_Ay">
-          <property role="1dT_AB" value="The problem is described here" />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="24kmG9Gcn0h" role="TZ5H$">
-        <node concept="1dT_AC" id="24kmG9Gcn0i" role="1dT_Ay">
-          <property role="1dT_AB" value="&lt;a href=&quot;https://youtrack.jetbrains.com/issue/IDEA-229699/&gt;" />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="24kmG9GcmX$" role="TZ5H$">
-        <node concept="1dT_AC" id="24kmG9GcmX_" role="1dT_Ay">
-          <property role="1dT_AB" value="Provisionally, we are going to add all the external vcs roots to vfs." />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="24kmG9Gd3Y5" role="TZ5H$">
-        <node concept="1dT_AC" id="24kmG9Gd3Y6" role="1dT_Ay">
-          <property role="1dT_AB" value="The original issue must be fixed using something like fsnotifier" />
-        </node>
-      </node>
       <node concept="P$Jll" id="24kmG9Gcn5x" role="3nqlJM">
-        <property role="P$JZL" value="apyshkin" />
+        <property role="P$JZL" value="" />
+        <node concept="1PaTwC" id="1E1X3WHsDlz" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsDl$" role="1PaTwD">
+            <property role="3oM_SC" value="apyshkin" />
+          </node>
+        </node>
+      </node>
+      <node concept="1PaTwC" id="1E1X3WHsDl1" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDl2" role="1PaTwD">
+          <property role="3oM_SC" value="The" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDl3" role="1PaTwD">
+          <property role="3oM_SC" value="problem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDl4" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDl5" role="1PaTwD">
+          <property role="3oM_SC" value="described" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDl6" role="1PaTwD">
+          <property role="3oM_SC" value="here" />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="1E1X3WHsDl7" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDl8" role="1PaTwD">
+          <property role="3oM_SC" value="&lt;a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDl9" role="1PaTwD">
+          <property role="3oM_SC" value="href=&quot;https://youtrack.jetbrains.com/issue/IDEA-229699/&gt;" />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="1E1X3WHsDla" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDlb" role="1PaTwD">
+          <property role="3oM_SC" value="Provisionally," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlc" role="1PaTwD">
+          <property role="3oM_SC" value="we" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDld" role="1PaTwD">
+          <property role="3oM_SC" value="are" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDle" role="1PaTwD">
+          <property role="3oM_SC" value="going" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlf" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlg" role="1PaTwD">
+          <property role="3oM_SC" value="add" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlh" role="1PaTwD">
+          <property role="3oM_SC" value="all" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDli" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlj" role="1PaTwD">
+          <property role="3oM_SC" value="external" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlk" role="1PaTwD">
+          <property role="3oM_SC" value="vcs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDll" role="1PaTwD">
+          <property role="3oM_SC" value="roots" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlm" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDln" role="1PaTwD">
+          <property role="3oM_SC" value="vfs." />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="1E1X3WHsDlo" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDlp" role="1PaTwD">
+          <property role="3oM_SC" value="The" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlq" role="1PaTwD">
+          <property role="3oM_SC" value="original" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlr" role="1PaTwD">
+          <property role="3oM_SC" value="issue" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDls" role="1PaTwD">
+          <property role="3oM_SC" value="must" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlt" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlu" role="1PaTwD">
+          <property role="3oM_SC" value="fixed" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlv" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlw" role="1PaTwD">
+          <property role="3oM_SC" value="something" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDlx" role="1PaTwD">
+          <property role="3oM_SC" value="like" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDly" role="1PaTwD">
+          <property role="3oM_SC" value="fsnotifier" />
+        </node>
       </node>
     </node>
   </node>

@@ -11,7 +11,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context" version="0" />
     <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <use id="515552c7-fcc0-4ab4-9789-2f3c49344e85" name="jetbrains.mps.baseLanguage.varVariable" version="0" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
@@ -198,16 +198,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
       <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
@@ -1507,14 +1501,89 @@
     <node concept="2tJIrI" id="6e74p5eUFeX" role="jymVt" />
     <node concept="2tJIrI" id="6e74p5eUFfi" role="jymVt" />
     <node concept="3UR2Jj" id="6e74p5eUEAR" role="lGtFl">
-      <node concept="TZ5HA" id="6e74p5eUEAS" role="TZ5H$">
-        <node concept="1dT_AC" id="6e74p5eUEAT" role="1dT_Ay">
-          <property role="1dT_AB" value="VisibleClassConstructorsScope does not allow protected members to be accessed from kotlin classes" />
+      <node concept="1PaTwC" id="1E1X3WHsxle" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxlf" role="1PaTwD">
+          <property role="3oM_SC" value="VisibleClassConstructorsScope" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlg" role="1PaTwD">
+          <property role="3oM_SC" value="does" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlh" role="1PaTwD">
+          <property role="3oM_SC" value="not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxli" role="1PaTwD">
+          <property role="3oM_SC" value="allow" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlj" role="1PaTwD">
+          <property role="3oM_SC" value="protected" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlk" role="1PaTwD">
+          <property role="3oM_SC" value="members" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxll" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlm" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxln" role="1PaTwD">
+          <property role="3oM_SC" value="accessed" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlo" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlp" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlq" role="1PaTwD">
+          <property role="3oM_SC" value="classes" />
         </node>
       </node>
-      <node concept="TZ5HA" id="6e74p5eV5X2" role="TZ5H$">
-        <node concept="1dT_AC" id="6e74p5eV5X3" role="1dT_Ay">
-          <property role="1dT_AB" value="(only some very specific BL concepts in specific settings). This allows to filter them in." />
+      <node concept="1PaTwC" id="1E1X3WHsxlr" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxls" role="1PaTwD">
+          <property role="3oM_SC" value="(only" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlt" role="1PaTwD">
+          <property role="3oM_SC" value="some" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlu" role="1PaTwD">
+          <property role="3oM_SC" value="very" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlv" role="1PaTwD">
+          <property role="3oM_SC" value="specific" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlw" role="1PaTwD">
+          <property role="3oM_SC" value="BL" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlx" role="1PaTwD">
+          <property role="3oM_SC" value="concepts" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxly" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlz" role="1PaTwD">
+          <property role="3oM_SC" value="specific" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl$" role="1PaTwD">
+          <property role="3oM_SC" value="settings)." />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl_" role="1PaTwD">
+          <property role="3oM_SC" value="This" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlA" role="1PaTwD">
+          <property role="3oM_SC" value="allows" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlB" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlC" role="1PaTwD">
+          <property role="3oM_SC" value="filter" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlD" role="1PaTwD">
+          <property role="3oM_SC" value="them" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxlE" role="1PaTwD">
+          <property role="3oM_SC" value="in." />
         </node>
       </node>
     </node>

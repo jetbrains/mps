@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -129,16 +129,10 @@
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="7400021826771268254" name="jetbrains.mps.lang.smodel.structure.SNodePointerType" flags="ig" index="2sp9CU" />
@@ -191,9 +185,33 @@
     </node>
     <node concept="2tJIrI" id="2_89xr1KtLO" role="jymVt" />
     <node concept="3UR2Jj" id="4rvPz7uNqwW" role="lGtFl">
-      <node concept="TZ5HA" id="4rvPz7uNqwX" role="TZ5H$">
-        <node concept="1dT_AC" id="4rvPz7uNqwY" role="1dT_Ay">
-          <property role="1dT_AB" value="Class for classType, which may include similar types (Unit...)" />
+      <node concept="1PaTwC" id="1E1X3WHsxGO" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxGP" role="1PaTwD">
+          <property role="3oM_SC" value="Class" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGQ" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGR" role="1PaTwD">
+          <property role="3oM_SC" value="classType," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGS" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGT" role="1PaTwD">
+          <property role="3oM_SC" value="may" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGU" role="1PaTwD">
+          <property role="3oM_SC" value="include" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGV" role="1PaTwD">
+          <property role="3oM_SC" value="similar" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGW" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxGX" role="1PaTwD">
+          <property role="3oM_SC" value="(Unit...)" />
         </node>
       </node>
     </node>
@@ -576,19 +594,82 @@
     </node>
     <node concept="3Tm1VV" id="6GqgvHqhqpB" role="1B3o_S" />
     <node concept="3UR2Jj" id="6GqgvHqjKL4" role="lGtFl">
-      <node concept="TZ5HA" id="6GqgvHqjKL5" role="TZ5H$">
-        <node concept="1dT_AC" id="6GqgvHqjKL6" role="1dT_Ay">
-          <property role="1dT_AB" value="Objects used to compare types regardless of their actual implementation." />
+      <node concept="1PaTwC" id="1E1X3WHsxGY" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxGZ" role="1PaTwD">
+          <property role="3oM_SC" value="Objects" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH0" role="1PaTwD">
+          <property role="3oM_SC" value="used" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH1" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH2" role="1PaTwD">
+          <property role="3oM_SC" value="compare" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH3" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH4" role="1PaTwD">
+          <property role="3oM_SC" value="regardless" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH5" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH6" role="1PaTwD">
+          <property role="3oM_SC" value="their" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH7" role="1PaTwD">
+          <property role="3oM_SC" value="actual" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH8" role="1PaTwD">
+          <property role="3oM_SC" value="implementation." />
         </node>
       </node>
-      <node concept="TZ5HA" id="4rvPz7uNqxP" role="TZ5H$">
-        <node concept="1dT_AC" id="4rvPz7uNqxQ" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+      <node concept="1PaTwC" id="1E1X3WHsxH9" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxHa" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
-      <node concept="TZ5HA" id="4rvPz7uNqy3" role="TZ5H$">
-        <node concept="1dT_AC" id="4rvPz7uNqy4" role="1dT_Ay">
-          <property role="1dT_AB" value="Should implement equals and hashCode to be used in maps and in comparisons." />
+      <node concept="1PaTwC" id="1E1X3WHsxHb" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxHc" role="1PaTwD">
+          <property role="3oM_SC" value="Should" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHd" role="1PaTwD">
+          <property role="3oM_SC" value="implement" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHe" role="1PaTwD">
+          <property role="3oM_SC" value="equals" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHf" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHg" role="1PaTwD">
+          <property role="3oM_SC" value="hashCode" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHh" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHi" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHj" role="1PaTwD">
+          <property role="3oM_SC" value="used" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHk" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHl" role="1PaTwD">
+          <property role="3oM_SC" value="maps" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHm" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHn" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHo" role="1PaTwD">
+          <property role="3oM_SC" value="comparisons." />
         </node>
       </node>
     </node>
@@ -621,9 +702,42 @@
     </node>
     <node concept="2tJIrI" id="2_89xr1KyzX" role="jymVt" />
     <node concept="3UR2Jj" id="69RFwVHeNUF" role="lGtFl">
-      <node concept="TZ5HA" id="69RFwVHeNUG" role="TZ5H$">
-        <node concept="1dT_AC" id="69RFwVHeNUH" role="1dT_Ay">
-          <property role="1dT_AB" value="Type that cannot be matched in a simple way to another type" />
+      <node concept="1PaTwC" id="1E1X3WHsxHp" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxHq" role="1PaTwD">
+          <property role="3oM_SC" value="Type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHr" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHs" role="1PaTwD">
+          <property role="3oM_SC" value="cannot" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHt" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHu" role="1PaTwD">
+          <property role="3oM_SC" value="matched" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHv" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHw" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHx" role="1PaTwD">
+          <property role="3oM_SC" value="simple" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHy" role="1PaTwD">
+          <property role="3oM_SC" value="way" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxHz" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH$" role="1PaTwD">
+          <property role="3oM_SC" value="another" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxH_" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
         </node>
       </node>
     </node>

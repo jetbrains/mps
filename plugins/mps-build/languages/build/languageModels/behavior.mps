@@ -4,7 +4,7 @@
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -254,15 +254,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
@@ -2154,9 +2148,48 @@
       <property role="TrG5h" value="getRelativePath" />
       <property role="13i0it" value="true" />
       <node concept="P$JXv" id="7ro1ZztyW5i" role="lGtFl">
-        <node concept="TZ5HA" id="7ro1ZztyW5j" role="TZ5H$">
-          <node concept="1dT_AC" id="7ro1ZztyW5k" role="1dT_Ay">
-            <property role="1dT_AB" value="Relative path in ant script which serves as a unique id inside a script." />
+        <node concept="1PaTwC" id="1E1X3WHswYK" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswYL" role="1PaTwD">
+            <property role="3oM_SC" value="Relative" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYM" role="1PaTwD">
+            <property role="3oM_SC" value="path" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYN" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYO" role="1PaTwD">
+            <property role="3oM_SC" value="ant" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYP" role="1PaTwD">
+            <property role="3oM_SC" value="script" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYQ" role="1PaTwD">
+            <property role="3oM_SC" value="which" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYR" role="1PaTwD">
+            <property role="3oM_SC" value="serves" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYS" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYT" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYU" role="1PaTwD">
+            <property role="3oM_SC" value="unique" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYV" role="1PaTwD">
+            <property role="3oM_SC" value="id" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYW" role="1PaTwD">
+            <property role="3oM_SC" value="inside" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYX" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswYY" role="1PaTwD">
+            <property role="3oM_SC" value="script." />
           </node>
         </node>
       </node>
@@ -2187,14 +2220,62 @@
         </node>
       </node>
       <node concept="P$JXv" id="7ro1ZztyW59" role="lGtFl">
-        <node concept="TZ5HA" id="7ro1ZztyW5a" role="TZ5H$">
-          <node concept="1dT_AC" id="7ro1ZztyW5f" role="1dT_Ay">
-            <property role="1dT_AB" value="Relative path used for generation. By default same as getRelativePath." />
+        <node concept="1PaTwC" id="1E1X3WHswYZ" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswZ0" role="1PaTwD">
+            <property role="3oM_SC" value="Relative" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ1" role="1PaTwD">
+            <property role="3oM_SC" value="path" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ2" role="1PaTwD">
+            <property role="3oM_SC" value="used" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ3" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ4" role="1PaTwD">
+            <property role="3oM_SC" value="generation." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ5" role="1PaTwD">
+            <property role="3oM_SC" value="By" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ6" role="1PaTwD">
+            <property role="3oM_SC" value="default" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ7" role="1PaTwD">
+            <property role="3oM_SC" value="same" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ8" role="1PaTwD">
+            <property role="3oM_SC" value="as" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZ9" role="1PaTwD">
+            <property role="3oM_SC" value="getRelativePath." />
           </node>
         </node>
-        <node concept="TZ5HA" id="7ro1ZztyW5g" role="TZ5H$">
-          <node concept="1dT_AC" id="7ro1ZztyW5h" role="1dT_Ay">
-            <property role="1dT_AB" value="Differs from relative path for paths inside archives." />
+        <node concept="1PaTwC" id="1E1X3WHswZa" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHswZb" role="1PaTwD">
+            <property role="3oM_SC" value="Differs" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZc" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZd" role="1PaTwD">
+            <property role="3oM_SC" value="relative" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZe" role="1PaTwD">
+            <property role="3oM_SC" value="path" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZf" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZg" role="1PaTwD">
+            <property role="3oM_SC" value="paths" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZh" role="1PaTwD">
+            <property role="3oM_SC" value="inside" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHswZi" role="1PaTwD">
+            <property role="3oM_SC" value="archives." />
           </node>
         </node>
       </node>

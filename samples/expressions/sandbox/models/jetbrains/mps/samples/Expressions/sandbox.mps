@@ -5,7 +5,7 @@
   <languages>
     <use id="7e282943-fc6b-4900-ada5-34c0024cc4f4" name="jetbrains.mps.samples.Expressions" version="0" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports />
@@ -27,16 +27,10 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7e282943-fc6b-4900-ada5-34c0024cc4f4" name="jetbrains.mps.samples.Expressions">
       <concept id="2073504467210944676" name="jetbrains.mps.samples.Expressions.structure.SimpleMathFloatConstant" flags="ng" index="2$zt7R">
@@ -86,6 +80,14 @@
       </concept>
       <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
         <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -161,24 +163,168 @@
     </node>
     <node concept="3Tm1VV" id="1N6$leS8Rfa" role="1B3o_S" />
     <node concept="3UR2Jj" id="7ux8w67aNA5" role="lGtFl">
-      <node concept="TZ5HA" id="7ux8w67aNA6" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aNA7" role="1dT_Ay">
-          <property role="1dT_AB" value="Illustrates type inference using a dedicated simplified expression language." />
+      <node concept="1PaTwC" id="1E1X3WHsDA7" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDA8" role="1PaTwD">
+          <property role="3oM_SC" value="Illustrates" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDA9" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAa" role="1PaTwD">
+          <property role="3oM_SC" value="inference" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAb" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAc" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAd" role="1PaTwD">
+          <property role="3oM_SC" value="dedicated" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAe" role="1PaTwD">
+          <property role="3oM_SC" value="simplified" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAf" role="1PaTwD">
+          <property role="3oM_SC" value="expression" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAg" role="1PaTwD">
+          <property role="3oM_SC" value="language." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7ux8w67aNS0" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aNS1" role="1dT_Ay">
-          <property role="1dT_AB" value="Check types of the variables by inspecting their type - right-click " />
+      <node concept="1PaTwC" id="1E1X3WHsDAh" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDAi" role="1PaTwD">
+          <property role="3oM_SC" value="Check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAj" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAk" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAl" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAm" role="1PaTwD">
+          <property role="3oM_SC" value="variables" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAn" role="1PaTwD">
+          <property role="3oM_SC" value="by" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAo" role="1PaTwD">
+          <property role="3oM_SC" value="inspecting" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAp" role="1PaTwD">
+          <property role="3oM_SC" value="their" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAq" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAr" role="1PaTwD">
+          <property role="3oM_SC" value="-" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAs" role="1PaTwD">
+          <property role="3oM_SC" value="right-click" />
         </node>
       </node>
-      <node concept="TZ5HA" id="7jGRdu8060n" role="TZ5H$">
-        <node concept="1dT_AC" id="7jGRdu8060o" role="1dT_Ay">
-          <property role="1dT_AB" value="and in the context menu invoke &quot;Language Debug -&gt; Show Type&quot; (Control/Cmd + Shift + P)." />
+      <node concept="1PaTwC" id="1E1X3WHsDAt" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDAu" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAv" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAw" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAx" role="1PaTwD">
+          <property role="3oM_SC" value="context" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAy" role="1PaTwD">
+          <property role="3oM_SC" value="menu" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAz" role="1PaTwD">
+          <property role="3oM_SC" value="invoke" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDA$" role="1PaTwD">
+          <property role="3oM_SC" value="&quot;Language" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDA_" role="1PaTwD">
+          <property role="3oM_SC" value="Debug" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAA" role="1PaTwD">
+          <property role="3oM_SC" value="-&gt;" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAB" role="1PaTwD">
+          <property role="3oM_SC" value="Show" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAC" role="1PaTwD">
+          <property role="3oM_SC" value="Type&quot;" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAD" role="1PaTwD">
+          <property role="3oM_SC" value="(Control/Cmd" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAE" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAF" role="1PaTwD">
+          <property role="3oM_SC" value="Shift" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAG" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAH" role="1PaTwD">
+          <property role="3oM_SC" value="P)." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7ux8w67aNRH" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aNRI" role="1dT_Ay">
-          <property role="1dT_AB" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
+      <node concept="1PaTwC" id="1E1X3WHsDAI" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDAJ" role="1PaTwD">
+          <property role="3oM_SC" value="You" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAK" role="1PaTwD">
+          <property role="3oM_SC" value="may" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAL" role="1PaTwD">
+          <property role="3oM_SC" value="also" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAM" role="1PaTwD">
+          <property role="3oM_SC" value="debug" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAN" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAO" role="1PaTwD">
+          <property role="3oM_SC" value="typesystem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAP" role="1PaTwD">
+          <property role="3oM_SC" value="engine" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAQ" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAR" role="1PaTwD">
+          <property role="3oM_SC" value="Type-system" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAS" role="1PaTwD">
+          <property role="3oM_SC" value="Trace" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAT" role="1PaTwD">
+          <property role="3oM_SC" value="-" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAU" role="1PaTwD">
+          <property role="3oM_SC" value="Control/Cmd" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAV" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAW" role="1PaTwD">
+          <property role="3oM_SC" value="Shift" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAX" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDAY" role="1PaTwD">
+          <property role="3oM_SC" value="X." />
         </node>
       </node>
     </node>
@@ -205,19 +351,130 @@
     </node>
     <node concept="3Tm1VV" id="2ZHT8fspstr" role="1B3o_S" />
     <node concept="3UR2Jj" id="7ux8w67aNZ0" role="lGtFl">
-      <node concept="TZ5HA" id="7ux8w67aNZr" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aNZs" role="1dT_Ay">
-          <property role="1dT_AB" value="Illustrates type inference using a dedicated simplified expression language." />
+      <node concept="1PaTwC" id="1E1X3WHsDAZ" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDB0" role="1PaTwD">
+          <property role="3oM_SC" value="Illustrates" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB1" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB2" role="1PaTwD">
+          <property role="3oM_SC" value="inference" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB3" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB4" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB5" role="1PaTwD">
+          <property role="3oM_SC" value="dedicated" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB6" role="1PaTwD">
+          <property role="3oM_SC" value="simplified" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB7" role="1PaTwD">
+          <property role="3oM_SC" value="expression" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB8" role="1PaTwD">
+          <property role="3oM_SC" value="language." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7ux8w67aNZt" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aNZu" role="1dT_Ay">
-          <property role="1dT_AB" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
+      <node concept="1PaTwC" id="1E1X3WHsDB9" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDBa" role="1PaTwD">
+          <property role="3oM_SC" value="Check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBb" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBc" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBd" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBe" role="1PaTwD">
+          <property role="3oM_SC" value="variables" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBf" role="1PaTwD">
+          <property role="3oM_SC" value="by" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBg" role="1PaTwD">
+          <property role="3oM_SC" value="inspecting" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBh" role="1PaTwD">
+          <property role="3oM_SC" value="their" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBi" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBj" role="1PaTwD">
+          <property role="3oM_SC" value="-" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBk" role="1PaTwD">
+          <property role="3oM_SC" value="Control/Cmd" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBl" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBm" role="1PaTwD">
+          <property role="3oM_SC" value="Shift" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBn" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBo" role="1PaTwD">
+          <property role="3oM_SC" value="T." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7ux8w67aNZv" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aNZw" role="1dT_Ay">
-          <property role="1dT_AB" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
+      <node concept="1PaTwC" id="1E1X3WHsDBp" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDBq" role="1PaTwD">
+          <property role="3oM_SC" value="You" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBr" role="1PaTwD">
+          <property role="3oM_SC" value="may" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBs" role="1PaTwD">
+          <property role="3oM_SC" value="also" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBt" role="1PaTwD">
+          <property role="3oM_SC" value="debug" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBu" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBv" role="1PaTwD">
+          <property role="3oM_SC" value="typesystem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBw" role="1PaTwD">
+          <property role="3oM_SC" value="engine" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBx" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBy" role="1PaTwD">
+          <property role="3oM_SC" value="Type-system" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBz" role="1PaTwD">
+          <property role="3oM_SC" value="Trace" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB$" role="1PaTwD">
+          <property role="3oM_SC" value="-" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDB_" role="1PaTwD">
+          <property role="3oM_SC" value="Control/Cmd" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBA" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBB" role="1PaTwD">
+          <property role="3oM_SC" value="Shift" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBC" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBD" role="1PaTwD">
+          <property role="3oM_SC" value="X." />
         </node>
       </node>
     </node>
@@ -243,19 +500,130 @@
     </node>
     <node concept="3Tm1VV" id="2ZHT8fspsJB" role="1B3o_S" />
     <node concept="3UR2Jj" id="7ux8w67aO0p" role="lGtFl">
-      <node concept="TZ5HA" id="7ux8w67aO0T" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aO0U" role="1dT_Ay">
-          <property role="1dT_AB" value="Illustrates type inference using a dedicated simplified expression language." />
+      <node concept="1PaTwC" id="1E1X3WHsDBE" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDBF" role="1PaTwD">
+          <property role="3oM_SC" value="Illustrates" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBG" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBH" role="1PaTwD">
+          <property role="3oM_SC" value="inference" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBI" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBJ" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBK" role="1PaTwD">
+          <property role="3oM_SC" value="dedicated" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBL" role="1PaTwD">
+          <property role="3oM_SC" value="simplified" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBM" role="1PaTwD">
+          <property role="3oM_SC" value="expression" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBN" role="1PaTwD">
+          <property role="3oM_SC" value="language." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7ux8w67aO0V" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aO0W" role="1dT_Ay">
-          <property role="1dT_AB" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
+      <node concept="1PaTwC" id="1E1X3WHsDBO" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDBP" role="1PaTwD">
+          <property role="3oM_SC" value="Check" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBQ" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBR" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBS" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBT" role="1PaTwD">
+          <property role="3oM_SC" value="variables" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBU" role="1PaTwD">
+          <property role="3oM_SC" value="by" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBV" role="1PaTwD">
+          <property role="3oM_SC" value="inspecting" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBW" role="1PaTwD">
+          <property role="3oM_SC" value="their" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBX" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBY" role="1PaTwD">
+          <property role="3oM_SC" value="-" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDBZ" role="1PaTwD">
+          <property role="3oM_SC" value="Control/Cmd" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC0" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC1" role="1PaTwD">
+          <property role="3oM_SC" value="Shift" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC2" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC3" role="1PaTwD">
+          <property role="3oM_SC" value="T." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7ux8w67aO0X" role="TZ5H$">
-        <node concept="1dT_AC" id="7ux8w67aO0Y" role="1dT_Ay">
-          <property role="1dT_AB" value="You may also debug the typesystem engine using Type-system Trace - Control/Cmd + Shift + X." />
+      <node concept="1PaTwC" id="1E1X3WHsDC4" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsDC5" role="1PaTwD">
+          <property role="3oM_SC" value="You" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC6" role="1PaTwD">
+          <property role="3oM_SC" value="may" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC7" role="1PaTwD">
+          <property role="3oM_SC" value="also" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC8" role="1PaTwD">
+          <property role="3oM_SC" value="debug" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDC9" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCa" role="1PaTwD">
+          <property role="3oM_SC" value="typesystem" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCb" role="1PaTwD">
+          <property role="3oM_SC" value="engine" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCc" role="1PaTwD">
+          <property role="3oM_SC" value="using" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCd" role="1PaTwD">
+          <property role="3oM_SC" value="Type-system" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCe" role="1PaTwD">
+          <property role="3oM_SC" value="Trace" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCf" role="1PaTwD">
+          <property role="3oM_SC" value="-" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCg" role="1PaTwD">
+          <property role="3oM_SC" value="Control/Cmd" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCh" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCi" role="1PaTwD">
+          <property role="3oM_SC" value="Shift" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCj" role="1PaTwD">
+          <property role="3oM_SC" value="+" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsDCk" role="1PaTwD">
+          <property role="3oM_SC" value="X." />
         </node>
       </node>
     </node>

@@ -4,7 +4,7 @@
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -225,22 +225,17 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
-        <child id="3106559687488741665" name="line" index="2Xj1qM" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
+        <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
       </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
+      <concept id="5085607816306582224" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentTextElement" flags="ng" index="1Vtdud">
+        <child id="5085607816306582225" name="tag" index="1Vtduc" />
+      </concept>
+      <concept id="5085607816306633585" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE" flags="ng" index="1VuTSG" />
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
@@ -2590,9 +2585,39 @@
     </node>
     <node concept="2tJIrI" id="1GJIRee0N2P" role="jymVt" />
     <node concept="3UR2Jj" id="26mUjU3gkBf" role="lGtFl">
-      <node concept="TZ5HA" id="26mUjU3gkBg" role="TZ5H$">
-        <node concept="1dT_AC" id="26mUjU3gkBh" role="1dT_Ay">
-          <property role="1dT_AB" value="Allow to explore type hierarchy of Java type as kotlin types" />
+      <node concept="1PaTwC" id="1E1X3WHsxkK" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxkL" role="1PaTwD">
+          <property role="3oM_SC" value="Allow" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkM" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkN" role="1PaTwD">
+          <property role="3oM_SC" value="explore" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkO" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkP" role="1PaTwD">
+          <property role="3oM_SC" value="hierarchy" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkQ" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkR" role="1PaTwD">
+          <property role="3oM_SC" value="Java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkS" role="1PaTwD">
+          <property role="3oM_SC" value="type" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkT" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkU" role="1PaTwD">
+          <property role="3oM_SC" value="kotlin" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkV" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
         </node>
       </node>
     </node>
@@ -5668,21 +5693,48 @@
     </node>
     <node concept="2tJIrI" id="9QjKR7AJW5" role="jymVt" />
     <node concept="3UR2Jj" id="65_8Gi1nzsn" role="lGtFl">
-      <node concept="TZ5HA" id="65_8Gi1nzso" role="TZ5H$">
-        <node concept="1dT_AC" id="65_8Gi1nzsp" role="1dT_Ay">
-          <property role="1dT_AB" value="Alternative implementation of java types explorer that does not require " />
+      <node concept="1PaTwC" id="1E1X3WHsxkW" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsxkX" role="1PaTwD">
+          <property role="3oM_SC" value="Alternative" />
         </node>
-        <node concept="1dT_AA" id="65_8Gi1nzAo" role="1dT_Ay">
-          <node concept="VVOAv" id="65_8Gi1nzAN" role="qph3F">
-            <node concept="TZ5HA" id="65_8Gi1nzAP" role="2Xj1qM">
-              <node concept="1dT_AC" id="65_8Gi1nzBe" role="1dT_Ay">
-                <property role="1dT_AB" value="MembersPopulatingContext" />
+        <node concept="3oM_SD" id="1E1X3WHsxkY" role="1PaTwD">
+          <property role="3oM_SC" value="implementation" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxkZ" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl0" role="1PaTwD">
+          <property role="3oM_SC" value="java" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl1" role="1PaTwD">
+          <property role="3oM_SC" value="types" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl2" role="1PaTwD">
+          <property role="3oM_SC" value="explorer" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl3" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl4" role="1PaTwD">
+          <property role="3oM_SC" value="does" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl5" role="1PaTwD">
+          <property role="3oM_SC" value="not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsxl6" role="1PaTwD">
+          <property role="3oM_SC" value="require" />
+        </node>
+        <node concept="1Vtdud" id="1E1X3WHsxl7" role="1PaTwD">
+          <node concept="1VuTSG" id="1E1X3WHsxl8" role="1Vtduc">
+            <node concept="1PaTwC" id="1E1X3WHsxlb" role="2JaDBN">
+              <node concept="3oM_SD" id="1E1X3WHsxlc" role="1PaTwD">
+                <property role="3oM_SC" value="MembersPopulatingContext" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="1dT_AC" id="65_8Gi1nzAn" role="1dT_Ay">
-          <property role="1dT_AB" value="" />
+        <node concept="3oM_SD" id="1E1X3WHsxld" role="1PaTwD">
+          <property role="3oM_SC" value="" />
         </node>
       </node>
     </node>

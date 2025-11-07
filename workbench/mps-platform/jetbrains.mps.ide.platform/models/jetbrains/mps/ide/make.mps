@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
@@ -306,16 +306,10 @@
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -468,9 +462,60 @@
         <ref role="3uigEE" to="guwi:~File" resolve="File" />
       </node>
       <node concept="z59LJ" id="4DiVYcGjH9c" role="lGtFl">
-        <node concept="TZ5HA" id="4DiVYcGjH9d" role="TZ5H$">
-          <node concept="1dT_AC" id="4DiVYcGjH9e" role="1dT_Ay">
-            <property role="1dT_AB" value="File that indicates the service to be up, will get deleted on dispose. Used for kotlin compiler options." />
+        <node concept="1PaTwC" id="1E1X3WHsE3l" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsE3m" role="1PaTwD">
+            <property role="3oM_SC" value="File" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3n" role="1PaTwD">
+            <property role="3oM_SC" value="that" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3o" role="1PaTwD">
+            <property role="3oM_SC" value="indicates" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3p" role="1PaTwD">
+            <property role="3oM_SC" value="the" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3q" role="1PaTwD">
+            <property role="3oM_SC" value="service" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3r" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3s" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3t" role="1PaTwD">
+            <property role="3oM_SC" value="up," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3u" role="1PaTwD">
+            <property role="3oM_SC" value="will" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3v" role="1PaTwD">
+            <property role="3oM_SC" value="get" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3w" role="1PaTwD">
+            <property role="3oM_SC" value="deleted" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3x" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3y" role="1PaTwD">
+            <property role="3oM_SC" value="dispose." />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3z" role="1PaTwD">
+            <property role="3oM_SC" value="Used" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3$" role="1PaTwD">
+            <property role="3oM_SC" value="for" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3_" role="1PaTwD">
+            <property role="3oM_SC" value="kotlin" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3A" role="1PaTwD">
+            <property role="3oM_SC" value="compiler" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsE3B" role="1PaTwD">
+            <property role="3oM_SC" value="options." />
           </node>
         </node>
       </node>
@@ -4118,9 +4163,48 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="1aDdKrsIhp8" role="lGtFl">
-      <node concept="TZ5HA" id="1aDdKrsIhp9" role="TZ5H$">
-        <node concept="1dT_AC" id="1aDdKrsIhpa" role="1dT_Ay">
-          <property role="1dT_AB" value="IDEA App Service, its instance is registered into MakeServiceComponent CC from activator of [mps-platform]/j.m.ide.platform" />
+      <node concept="1PaTwC" id="1E1X3WHsE2G" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsE2H" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2I" role="1PaTwD">
+          <property role="3oM_SC" value="App" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2J" role="1PaTwD">
+          <property role="3oM_SC" value="Service," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2K" role="1PaTwD">
+          <property role="3oM_SC" value="its" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2L" role="1PaTwD">
+          <property role="3oM_SC" value="instance" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2M" role="1PaTwD">
+          <property role="3oM_SC" value="is" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2N" role="1PaTwD">
+          <property role="3oM_SC" value="registered" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2O" role="1PaTwD">
+          <property role="3oM_SC" value="into" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2P" role="1PaTwD">
+          <property role="3oM_SC" value="MakeServiceComponent" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2Q" role="1PaTwD">
+          <property role="3oM_SC" value="CC" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2R" role="1PaTwD">
+          <property role="3oM_SC" value="from" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2S" role="1PaTwD">
+          <property role="3oM_SC" value="activator" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2T" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2U" role="1PaTwD">
+          <property role="3oM_SC" value="[mps-platform]/j.m.ide.platform" />
         </node>
       </node>
     </node>
@@ -5147,14 +5231,80 @@
       </node>
     </node>
     <node concept="3UR2Jj" id="2Eb$RRpA7v2" role="lGtFl">
-      <node concept="TZ5HA" id="2Eb$RRpA7v3" role="TZ5H$">
-        <node concept="1dT_AC" id="2Eb$RRpA7v4" role="1dT_Ay">
-          <property role="1dT_AB" value="CoreMakeTask that tracks state changes as it progresses and let you get outcome in non-blocking, IFuture way" />
+      <node concept="1PaTwC" id="1E1X3WHsE2V" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsE2W" role="1PaTwD">
+          <property role="3oM_SC" value="CoreMakeTask" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2X" role="1PaTwD">
+          <property role="3oM_SC" value="that" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2Y" role="1PaTwD">
+          <property role="3oM_SC" value="tracks" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE2Z" role="1PaTwD">
+          <property role="3oM_SC" value="state" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE30" role="1PaTwD">
+          <property role="3oM_SC" value="changes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE31" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE32" role="1PaTwD">
+          <property role="3oM_SC" value="it" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE33" role="1PaTwD">
+          <property role="3oM_SC" value="progresses" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE34" role="1PaTwD">
+          <property role="3oM_SC" value="and" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE35" role="1PaTwD">
+          <property role="3oM_SC" value="let" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE36" role="1PaTwD">
+          <property role="3oM_SC" value="you" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE37" role="1PaTwD">
+          <property role="3oM_SC" value="get" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE38" role="1PaTwD">
+          <property role="3oM_SC" value="outcome" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE39" role="1PaTwD">
+          <property role="3oM_SC" value="in" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3a" role="1PaTwD">
+          <property role="3oM_SC" value="non-blocking," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3b" role="1PaTwD">
+          <property role="3oM_SC" value="IFuture" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3c" role="1PaTwD">
+          <property role="3oM_SC" value="way" />
         </node>
       </node>
-      <node concept="TZ5HA" id="2Eb$RRpAch6" role="TZ5H$">
-        <node concept="1dT_AC" id="2Eb$RRpAch7" role="1dT_Ay">
-          <property role="1dT_AB" value="Not supposed to be re-executed, runs once." />
+      <node concept="1PaTwC" id="1E1X3WHsE3d" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsE3e" role="1PaTwD">
+          <property role="3oM_SC" value="Not" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3f" role="1PaTwD">
+          <property role="3oM_SC" value="supposed" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3g" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3h" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3i" role="1PaTwD">
+          <property role="3oM_SC" value="re-executed," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3j" role="1PaTwD">
+          <property role="3oM_SC" value="runs" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsE3k" role="1PaTwD">
+          <property role="3oM_SC" value="once." />
         </node>
       </node>
     </node>

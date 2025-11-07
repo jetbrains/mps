@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -266,16 +266,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="4497478346159780083" name="jetbrains.mps.lang.smodel.structure.LanguageRefExpression" flags="ng" index="pHN19">
@@ -3564,19 +3558,136 @@
       <node concept="3cqZAl" id="7Z8mn0jsK$x" role="3clF45" />
     </node>
     <node concept="3UR2Jj" id="7Z8mn0jsMIM" role="lGtFl">
-      <node concept="TZ5HA" id="7Z8mn0jsMYZ" role="TZ5H$">
-        <node concept="1dT_AC" id="7Z8mn0jsMZ0" role="1dT_Ay">
-          <property role="1dT_AB" value="Will be gone when I implement find usages for source stubs." />
+      <node concept="1PaTwC" id="1E1X3WHsC7C" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsC7D" role="1PaTwD">
+          <property role="3oM_SC" value="Will" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7E" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7F" role="1PaTwD">
+          <property role="3oM_SC" value="gone" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7G" role="1PaTwD">
+          <property role="3oM_SC" value="when" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7H" role="1PaTwD">
+          <property role="3oM_SC" value="I" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7I" role="1PaTwD">
+          <property role="3oM_SC" value="implement" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7J" role="1PaTwD">
+          <property role="3oM_SC" value="find" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7K" role="1PaTwD">
+          <property role="3oM_SC" value="usages" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7L" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7M" role="1PaTwD">
+          <property role="3oM_SC" value="source" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7N" role="1PaTwD">
+          <property role="3oM_SC" value="stubs." />
         </node>
       </node>
-      <node concept="TZ5HA" id="7Z8mn0jsMZ1" role="TZ5H$">
-        <node concept="1dT_AC" id="7Z8mn0jsMZ2" role="1dT_Ay">
-          <property role="1dT_AB" value="For now MPS seems to do the default thing: goes through the model nodes which turns out to be very slow" />
+      <node concept="1PaTwC" id="1E1X3WHsC7O" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsC7P" role="1PaTwD">
+          <property role="3oM_SC" value="For" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7Q" role="1PaTwD">
+          <property role="3oM_SC" value="now" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7R" role="1PaTwD">
+          <property role="3oM_SC" value="MPS" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7S" role="1PaTwD">
+          <property role="3oM_SC" value="seems" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7T" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7U" role="1PaTwD">
+          <property role="3oM_SC" value="do" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7V" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7W" role="1PaTwD">
+          <property role="3oM_SC" value="default" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7X" role="1PaTwD">
+          <property role="3oM_SC" value="thing:" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7Y" role="1PaTwD">
+          <property role="3oM_SC" value="goes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC7Z" role="1PaTwD">
+          <property role="3oM_SC" value="through" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC80" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC81" role="1PaTwD">
+          <property role="3oM_SC" value="model" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC82" role="1PaTwD">
+          <property role="3oM_SC" value="nodes" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC83" role="1PaTwD">
+          <property role="3oM_SC" value="which" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC84" role="1PaTwD">
+          <property role="3oM_SC" value="turns" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC85" role="1PaTwD">
+          <property role="3oM_SC" value="out" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC86" role="1PaTwD">
+          <property role="3oM_SC" value="to" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC87" role="1PaTwD">
+          <property role="3oM_SC" value="be" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC88" role="1PaTwD">
+          <property role="3oM_SC" value="very" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC89" role="1PaTwD">
+          <property role="3oM_SC" value="slow" />
         </node>
       </node>
-      <node concept="TZ5HA" id="4bJcJMOYoam" role="TZ5H$">
-        <node concept="1dT_AC" id="4bJcJMOYoan" role="1dT_Ay">
-          <property role="1dT_AB" value="FWI, Installed into PersistenceRegistry with a help of ModuleActivator code" />
+      <node concept="1PaTwC" id="1E1X3WHsC8a" role="1Vez_I">
+        <node concept="3oM_SD" id="1E1X3WHsC8b" role="1PaTwD">
+          <property role="3oM_SC" value="FWI," />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8c" role="1PaTwD">
+          <property role="3oM_SC" value="Installed" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8d" role="1PaTwD">
+          <property role="3oM_SC" value="into" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8e" role="1PaTwD">
+          <property role="3oM_SC" value="PersistenceRegistry" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8f" role="1PaTwD">
+          <property role="3oM_SC" value="with" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8g" role="1PaTwD">
+          <property role="3oM_SC" value="a" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8h" role="1PaTwD">
+          <property role="3oM_SC" value="help" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8i" role="1PaTwD">
+          <property role="3oM_SC" value="of" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8j" role="1PaTwD">
+          <property role="3oM_SC" value="ModuleActivator" />
+        </node>
+        <node concept="3oM_SD" id="1E1X3WHsC8k" role="1PaTwD">
+          <property role="3oM_SC" value="code" />
         </node>
       </node>
     </node>

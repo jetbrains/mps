@@ -16,7 +16,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -506,15 +506,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="8465538089690331502" name="body" index="TZ5H$" />
-      </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
+        <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
       </concept>
     </language>
     <language id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl">
@@ -13460,13 +13454,45 @@
       <node concept="3cqZAl" id="8qS5$SalM" role="3clF45" />
       <node concept="3Tmbuc" id="8qS5$SalN" role="1B3o_S" />
       <node concept="P$JXv" id="8qS5$SalO" role="lGtFl">
-        <node concept="TZ5HA" id="8qS5$SalP" role="TZ5H$">
-          <node concept="1dT_AC" id="8qS5$SalQ" role="1dT_Ay">
-            <property role="1dT_AB" value="This method will be called on pressing &quot;Refactor&quot; button in dialog." />
+        <node concept="1PaTwC" id="1E1X3WHsBXw" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBXx" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXy" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXz" role="1PaTwD">
+            <property role="3oM_SC" value="will" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX$" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBX_" role="1PaTwD">
+            <property role="3oM_SC" value="called" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXA" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXB" role="1PaTwD">
+            <property role="3oM_SC" value="pressing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXC" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;Refactor&quot;" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXD" role="1PaTwD">
+            <property role="3oM_SC" value="button" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXE" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXF" role="1PaTwD">
+            <property role="3oM_SC" value="dialog." />
           </node>
         </node>
-        <node concept="TZ5HA" id="8qS5$SalR" role="TZ5H$">
-          <node concept="1dT_AC" id="8qS5$SalS" role="1dT_Ay" />
+        <node concept="1PaTwC" id="1E1X3WHsBXG" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBXH" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
         </node>
       </node>
       <node concept="3clFbS" id="8qS5$SalT" role="3clF47">
@@ -15750,13 +15776,45 @@
       <node concept="3cqZAl" id="3UdhnxHuoQl" role="3clF45" />
       <node concept="3Tmbuc" id="3UdhnxHuoQm" role="1B3o_S" />
       <node concept="P$JXv" id="3UdhnxHuoQn" role="lGtFl">
-        <node concept="TZ5HA" id="3UdhnxHuoQo" role="TZ5H$">
-          <node concept="1dT_AC" id="3UdhnxHuoQp" role="1dT_Ay">
-            <property role="1dT_AB" value="This method will be called on pressing &quot;Refactor&quot; button in dialog." />
+        <node concept="1PaTwC" id="1E1X3WHsBXI" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBXJ" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXK" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXL" role="1PaTwD">
+            <property role="3oM_SC" value="will" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXM" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXN" role="1PaTwD">
+            <property role="3oM_SC" value="called" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXO" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXP" role="1PaTwD">
+            <property role="3oM_SC" value="pressing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXQ" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;Refactor&quot;" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXR" role="1PaTwD">
+            <property role="3oM_SC" value="button" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXS" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXT" role="1PaTwD">
+            <property role="3oM_SC" value="dialog." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3UdhnxHuoQq" role="TZ5H$">
-          <node concept="1dT_AC" id="3UdhnxHuoQr" role="1dT_Ay" />
+        <node concept="1PaTwC" id="1E1X3WHsBXU" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBXV" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
         </node>
       </node>
       <node concept="3clFbS" id="3UdhnxHuoQs" role="3clF47">
@@ -17505,14 +17563,86 @@
         <ref role="3uigEE" to="z60i:~HeadlessException" resolve="HeadlessException" />
       </node>
       <node concept="P$JXv" id="3LDnrFiiXMr" role="lGtFl">
-        <node concept="TZ5HA" id="3LDnrFiiXMs" role="TZ5H$">
-          <node concept="1dT_AC" id="3LDnrFiiXMt" role="1dT_Ay">
-            <property role="1dT_AB" value="FIXME why not regular NodeChooserDialog, why dedicated class with custom tree?" />
+        <node concept="1PaTwC" id="1E1X3WHsBXW" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBXX" role="1PaTwD">
+            <property role="3oM_SC" value="FIXME" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXY" role="1PaTwD">
+            <property role="3oM_SC" value="why" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBXZ" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY0" role="1PaTwD">
+            <property role="3oM_SC" value="regular" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY1" role="1PaTwD">
+            <property role="3oM_SC" value="NodeChooserDialog," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY2" role="1PaTwD">
+            <property role="3oM_SC" value="why" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY3" role="1PaTwD">
+            <property role="3oM_SC" value="dedicated" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY4" role="1PaTwD">
+            <property role="3oM_SC" value="class" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY5" role="1PaTwD">
+            <property role="3oM_SC" value="with" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY6" role="1PaTwD">
+            <property role="3oM_SC" value="custom" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBY7" role="1PaTwD">
+            <property role="3oM_SC" value="tree?" />
           </node>
         </node>
-        <node concept="TZ5HA" id="3LDnrFijQ$8" role="TZ5H$">
-          <node concept="1dT_AC" id="3LDnrFijQ$9" role="1dT_Ay">
-            <property role="1dT_AB" value="FIXME we use project here to access repository, although outer code uses repository from EditorContext" />
+        <node concept="1PaTwC" id="1E1X3WHsBY8" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBY9" role="1PaTwD">
+            <property role="3oM_SC" value="FIXME" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYa" role="1PaTwD">
+            <property role="3oM_SC" value="we" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYb" role="1PaTwD">
+            <property role="3oM_SC" value="use" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYc" role="1PaTwD">
+            <property role="3oM_SC" value="project" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYd" role="1PaTwD">
+            <property role="3oM_SC" value="here" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYe" role="1PaTwD">
+            <property role="3oM_SC" value="to" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYf" role="1PaTwD">
+            <property role="3oM_SC" value="access" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYg" role="1PaTwD">
+            <property role="3oM_SC" value="repository," />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYh" role="1PaTwD">
+            <property role="3oM_SC" value="although" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYi" role="1PaTwD">
+            <property role="3oM_SC" value="outer" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYj" role="1PaTwD">
+            <property role="3oM_SC" value="code" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYk" role="1PaTwD">
+            <property role="3oM_SC" value="uses" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYl" role="1PaTwD">
+            <property role="3oM_SC" value="repository" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYm" role="1PaTwD">
+            <property role="3oM_SC" value="from" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYn" role="1PaTwD">
+            <property role="3oM_SC" value="EditorContext" />
           </node>
         </node>
       </node>
@@ -23523,13 +23653,45 @@
       <node concept="3cqZAl" id="3UdhnxHunCS" role="3clF45" />
       <node concept="3Tmbuc" id="3UdhnxHunCT" role="1B3o_S" />
       <node concept="P$JXv" id="3UdhnxHunCU" role="lGtFl">
-        <node concept="TZ5HA" id="3UdhnxHunCV" role="TZ5H$">
-          <node concept="1dT_AC" id="3UdhnxHunCW" role="1dT_Ay">
-            <property role="1dT_AB" value="This method will be called on pressing &quot;Refactor&quot; button in dialog." />
+        <node concept="1PaTwC" id="1E1X3WHsBYo" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBYp" role="1PaTwD">
+            <property role="3oM_SC" value="This" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYq" role="1PaTwD">
+            <property role="3oM_SC" value="method" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYr" role="1PaTwD">
+            <property role="3oM_SC" value="will" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYs" role="1PaTwD">
+            <property role="3oM_SC" value="be" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYt" role="1PaTwD">
+            <property role="3oM_SC" value="called" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYu" role="1PaTwD">
+            <property role="3oM_SC" value="on" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYv" role="1PaTwD">
+            <property role="3oM_SC" value="pressing" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYw" role="1PaTwD">
+            <property role="3oM_SC" value="&quot;Refactor&quot;" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYx" role="1PaTwD">
+            <property role="3oM_SC" value="button" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYy" role="1PaTwD">
+            <property role="3oM_SC" value="in" />
+          </node>
+          <node concept="3oM_SD" id="1E1X3WHsBYz" role="1PaTwD">
+            <property role="3oM_SC" value="dialog." />
           </node>
         </node>
-        <node concept="TZ5HA" id="3UdhnxHunCX" role="TZ5H$">
-          <node concept="1dT_AC" id="3UdhnxHunCY" role="1dT_Ay" />
+        <node concept="1PaTwC" id="1E1X3WHsBY$" role="1Vez_I">
+          <node concept="3oM_SD" id="1E1X3WHsBY_" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
         </node>
       </node>
       <node concept="3clFbS" id="3UdhnxHunCZ" role="3clF47">
