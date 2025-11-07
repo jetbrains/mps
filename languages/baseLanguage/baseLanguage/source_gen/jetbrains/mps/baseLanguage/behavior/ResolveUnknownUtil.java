@@ -349,7 +349,7 @@ public final class ResolveUnknownUtil {
       SNode cls = findClass(x, className);
       if ((cls != null)) {
 
-        return MultiTuple.from(cls, p + 1);
+        return MultiTuple.<SNode,Integer>from(cls, p + 1);
       }
     }
 

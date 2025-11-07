@@ -57,7 +57,7 @@ public class LongestCommonSubsequenceFinder<E> {
       int j = ListSequence.fromList(myB).count();
       while (i > 0 && j > 0) {
         if (EqualUtil.equals(ListSequence.fromList(myA).getElement(i - 1), ListSequence.fromList(myB).getElement(j - 1))) {
-          ListSequence.fromList(indices).addElement(MultiTuple.from(i - 1, j - 1));
+          ListSequence.fromList(indices).addElement(MultiTuple.<Integer,Integer>from(i - 1, j - 1));
           i--;
           j--;
         } else {

@@ -29,7 +29,7 @@ public class ABC<TT> {
   }
   /**
    * The quick {@inheritDoc} brown fox {@code <no code>} over t{he lazy dog.
-   * And then... {@link jetbrains.mps.baseLanguage.javadoc.sandbox.sandbox.ABC#SOME_CONSTANT}  {@value} 
+   * And then... {@link jetbrains.mps.baseLanguage.javadoc.sandbox.sandbox.ABC#SOME_CONSTANT}  {@value jetbrains.mps.baseLanguage.javadoc.sandbox.sandbox.ABC#SOME_CONSTANT} 
    * Blah {@value java.awt.GridBagConstraints#NORTH} blah
    * 
    * 

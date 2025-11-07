@@ -211,7 +211,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       runWithinCommand(() -> {
         SNode added = ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child")));
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).contains(added));
-        Assert.assertEquals((Object) (ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count() - 1), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).indexOf(added)));
+        Assert.assertEquals(Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count() - 1), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).indexOf(added)));
         Assert.assertEquals(getAnnotatedNode("root"), SNodeOperations.getParent(added));
       });
     }
@@ -283,7 +283,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
         int initialSize = ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count();
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).contains(getAnnotatedNode("child2")));
         ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).removeWhere((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(getAnnotatedNode("child2"), PROPS.name$MnvL)));
-        Assert.assertEquals((Object) (initialSize - 1), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count()));
+        Assert.assertEquals(Integer.valueOf(initialSize - 1), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count()));
         Assert.assertFalse(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).contains(getAnnotatedNode("child2")));
         Assert.assertNull(SNodeOperations.getParent(getAnnotatedNode("child2")));
       });
@@ -296,7 +296,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
         SNode toInsert = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child"));
         int index = 1;
         ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).insertElement(index, toInsert);
-        Assert.assertEquals((Object) (initialSize + 1), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count()));
+        Assert.assertEquals(Integer.valueOf(initialSize + 1), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).count()));
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).contains(toInsert));
         Assert.assertEquals(Integer.valueOf(index), Integer.valueOf(ListSequence.fromList(SLinkOperations.getChildren(getAnnotatedNode("root"), LINKS.child_1_n$IYmu)).indexOf(toInsert)));
       });
