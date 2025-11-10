@@ -85,12 +85,12 @@ public class GenerateTask extends MpsLoadTask {
     String v;
     //  this is a hack and provisional way to get MPS-36481 moving
     if ((v = getProject().getProperty(PROPERTY_LOG_CONFIG_FILE)) != null) {
-      JvmArgs a = new JvmArgs();
+      JvmArgs a = new JvmArgs(false);
       // Could have used PathManager.PROPERTY_LOG_CONFIG_FILE, consumed by LogInitializer.init(), but I find generic JUL property more universal
       a.addConfiguredArg(new Arg(String.format("-Djava.util.logging.config.file=%s", v)));
       addConfiguredJvmArgs(a);
     } else if ((v = getProject().getProperty(PROPERTY_LOG_DIR)) != null) {
-      JvmArgs a = new JvmArgs();
+      JvmArgs a = new JvmArgs(false);
       // PathManager.PROPERTY_LOG_PATH to make LogInitializer.init() use of PM.getLogPath() happy. Once/if we get rid of IDEA's PathManager, shall change this code, too.
       a.addConfiguredArg(new Arg(String.format("-Didea.log.path=%s", v)));
       addConfiguredJvmArgs(a);
