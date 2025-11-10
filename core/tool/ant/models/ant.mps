@@ -281,6 +281,7 @@
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
+      <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
         <property id="1200397540847" name="charConstant" index="1XhdNS" />
@@ -1036,16 +1037,6 @@
         <node concept="17QB3L" id="2uUiGxAaMIB" role="11_B2D" />
       </node>
       <node concept="3Tm6S6" id="3ufQioQQtfk" role="1B3o_S" />
-      <node concept="2YIFZM" id="3ufQioQQtfl" role="33vP2m">
-        <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-        <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
-        <node concept="Xl_RD" id="3ufQioQQtfn" role="37wK5m">
-          <property role="Xl_RC" value="-Xmx512m" />
-        </node>
-        <node concept="Xl_RD" id="3ufQioQQtfp" role="37wK5m">
-          <property role="Xl_RC" value="-XX:+HeapDumpOnOutOfMemoryError" />
-        </node>
-      </node>
     </node>
     <node concept="312cEg" id="3ufQioQQtfq" role="jymVt">
       <property role="TrG5h" value="myDefaultArgsPatterns" />
@@ -1056,22 +1047,97 @@
         <node concept="17QB3L" id="2uUiGxAaMEJ" role="11_B2D" />
       </node>
       <node concept="3Tm6S6" id="3ufQioQQtft" role="1B3o_S" />
-      <node concept="2YIFZM" id="3ufQioQQtfu" role="33vP2m">
-        <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-        <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
-        <node concept="Xl_RD" id="3ufQioQQtfw" role="37wK5m">
-          <property role="Xl_RC" value="-Xmx" />
-        </node>
-        <node concept="Xl_RD" id="3ufQioQQtfy" role="37wK5m">
-          <property role="Xl_RC" value="HeapDumpOnOutOfMemoryError" />
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="1OjIqd7UP7p" role="jymVt" />
     <node concept="3clFbW" id="3ufQioQQtfz" role="jymVt">
       <node concept="3Tm1VV" id="3ufQioQQtf$" role="1B3o_S" />
       <node concept="3cqZAl" id="3ufQioQQtf_" role="3clF45" />
-      <node concept="3clFbS" id="3ufQioQQtfA" role="3clF47" />
+      <node concept="3clFbS" id="3ufQioQQtfA" role="3clF47">
+        <node concept="1VxSAg" id="3qR_aJYtdzz" role="3cqZAp">
+          <ref role="37wK5l" node="3qR_aJYt6GB" resolve="JvmArgs" />
+          <node concept="3clFbT" id="3qR_aJYtd_t" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3qR_aJYtdC8" role="jymVt" />
+    <node concept="3clFbW" id="3qR_aJYt6GB" role="jymVt">
+      <node concept="3Tm1VV" id="3qR_aJYt6GC" role="1B3o_S" />
+      <node concept="3cqZAl" id="3qR_aJYt6GD" role="3clF45" />
+      <node concept="3clFbS" id="3qR_aJYt6GE" role="3clF47">
+        <node concept="3clFbJ" id="3qR_aJYt94R" role="3cqZAp">
+          <node concept="37vLTw" id="3qR_aJYt97Q" role="3clFbw">
+            <ref role="3cqZAo" node="3qR_aJYt8W4" resolve="withDefaults" />
+          </node>
+          <node concept="3clFbS" id="3qR_aJYt94T" role="3clFbx">
+            <node concept="3clFbF" id="3qR_aJYt9iL" role="3cqZAp">
+              <node concept="37vLTI" id="3qR_aJYtakH" role="3clFbG">
+                <node concept="37vLTw" id="3qR_aJYt9iK" role="37vLTJ">
+                  <ref role="3cqZAo" node="3ufQioQQtfh" resolve="myDefaultArgs" />
+                </node>
+                <node concept="2YIFZM" id="3qR_aJYtapQ" role="37vLTx">
+                  <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
+                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+                  <node concept="Xl_RD" id="3qR_aJYtapR" role="37wK5m">
+                    <property role="Xl_RC" value="-Xmx512m" />
+                  </node>
+                  <node concept="Xl_RD" id="3qR_aJYtapS" role="37wK5m">
+                    <property role="Xl_RC" value="-XX:+HeapDumpOnOutOfMemoryError" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="3qR_aJYtbTQ" role="3cqZAp">
+              <node concept="37vLTI" id="3qR_aJYtdhs" role="3clFbG">
+                <node concept="37vLTw" id="3qR_aJYtbTO" role="37vLTJ">
+                  <ref role="3cqZAo" node="3ufQioQQtfq" resolve="myDefaultArgsPatterns" />
+                </node>
+                <node concept="2YIFZM" id="3ufQioQQtfu" role="37vLTx">
+                  <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
+                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+                  <node concept="Xl_RD" id="3ufQioQQtfw" role="37wK5m">
+                    <property role="Xl_RC" value="-Xmx" />
+                  </node>
+                  <node concept="Xl_RD" id="3ufQioQQtfy" role="37wK5m">
+                    <property role="Xl_RC" value="HeapDumpOnOutOfMemoryError" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="9aQIb" id="3qR_aJYtgw6" role="9aQIa">
+            <node concept="3clFbS" id="3qR_aJYtgw7" role="9aQI4">
+              <node concept="3clFbF" id="3qR_aJYthQ$" role="3cqZAp">
+                <node concept="37vLTI" id="3qR_aJYthQ_" role="3clFbG">
+                  <node concept="37vLTw" id="3qR_aJYthQA" role="37vLTJ">
+                    <ref role="3cqZAo" node="3ufQioQQtfh" resolve="myDefaultArgs" />
+                  </node>
+                  <node concept="2YIFZM" id="3qR_aJYtj0K" role="37vLTx">
+                    <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+                    <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="3qR_aJYtjpE" role="3cqZAp">
+                <node concept="37vLTI" id="3qR_aJYtlt8" role="3clFbG">
+                  <node concept="37vLTw" id="3qR_aJYtjpC" role="37vLTJ">
+                    <ref role="3cqZAo" node="3ufQioQQtfq" resolve="myDefaultArgsPatterns" />
+                  </node>
+                  <node concept="2YIFZM" id="3qR_aJYtl_H" role="37vLTx">
+                    <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+                    <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3qR_aJYt8W4" role="3clF46">
+        <property role="TrG5h" value="withDefaults" />
+        <node concept="10P_77" id="3qR_aJYt8W3" role="1tU5fm" />
+      </node>
     </node>
     <node concept="3clFb_" id="3ufQioQQtfB" role="jymVt">
       <property role="1EzhhJ" value="false" />

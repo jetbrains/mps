@@ -8,15 +8,27 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.ArrayList;
 
 @GeneratedClass(nodeId = "4003657351907890119", model = "r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)")
 public final class JvmArgs extends DataType {
   private final Set<String> myArgs = new HashSet<String>();
-  private final List<String> myDefaultArgs = Arrays.asList("-Xmx512m", "-XX:+HeapDumpOnOutOfMemoryError");
-  private final List<String> myDefaultArgsPatterns = Arrays.asList("-Xmx", "HeapDumpOnOutOfMemoryError");
+  private final List<String> myDefaultArgs;
+  private final List<String> myDefaultArgsPatterns;
 
   public JvmArgs() {
+    this(true);
+  }
+
+  public JvmArgs(boolean withDefaults) {
+    if (withDefaults) {
+      myDefaultArgs = Arrays.asList("-Xmx512m", "-XX:+HeapDumpOnOutOfMemoryError");
+      myDefaultArgsPatterns = Arrays.asList("-Xmx", "HeapDumpOnOutOfMemoryError");
+    } else {
+      myDefaultArgs = Collections.emptyList();
+      myDefaultArgsPatterns = Collections.emptyList();
+    }
   }
   public void addConfiguredArg(Arg arg) {
     myArgs.add(arg.getValue());
