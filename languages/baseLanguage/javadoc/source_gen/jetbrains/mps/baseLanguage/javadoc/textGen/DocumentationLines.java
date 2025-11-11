@@ -103,28 +103,21 @@ public abstract class DocumentationLines extends DocCommentTextGen {
     boolean needToAddEndTag = false;
     if (SNodeOperations.isInstanceOf(line, CONCEPTS.IndentedPoint$BF)) {
       // Each indented line inserts a list start tag as well as the end tag for itself, if needed 
+      // The first item of a bullet list or a sublist may start arbitrarily indented
+      // Numbered lines and bullet lines with identical indentation belong to different lists
       int myIndentation = SPropertyOperations.getInteger(SNodeOperations.as(line, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp);
       isNumberedPoint = SNodeOperations.isInstanceOf(line, CONCEPTS.NumberedLine$k0);
       if ((SNodeOperations.getPrevSibling(line) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(line), CONCEPTS.IndentedPoint$BF)) {
         SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(line), CONCEPTS.IndentedPoint$BF);
-        if (SPropertyOperations.getInteger(previousLine, PROPS.indentation$8ZOp) < myIndentation || (SPropertyOperations.getInteger(previousLine, PROPS.indentation$8ZOp) == myIndentation && !(Objects.equals(SNodeOperations.getConcept(SNodeOperations.getPrevSibling(line)), SNodeOperations.getConcept(line))))) {
+        if (SPropertyOperations.getInteger(previousLine, PROPS.indentation$8ZOp) < myIndentation || (SPropertyOperations.getInteger(previousLine, PROPS.indentation$8ZOp) == myIndentation && !(Objects.equals(SNodeOperations.getConcept(SNodeOperations.getPrevSibling(line)), SNodeOperations.getConcept(line)))) || (SPropertyOperations.getInteger(previousLine, PROPS.indentation$8ZOp) > myIndentation && DocumentationLines.isFirstOnThisLevelOfIndentation(SNodeOperations.as(line, CONCEPTS.IndentedPoint$BF), ctx))) {
           needToAddStartTag = true;
         }
       } else {
         needToAddStartTag = true;
       }
 
-      if ((SNodeOperations.getNextSibling(line) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(line), CONCEPTS.IndentedPoint$BF)) {
-        SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(line), CONCEPTS.IndentedPoint$BF);
-        if (SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) < myIndentation || (SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) == myIndentation && !(Objects.equals(SNodeOperations.getConcept(SNodeOperations.getNextSibling(line)), SNodeOperations.getConcept(line))))) {
-          needToAddEndTag = true;
-        }
-      } else {
-        needToAddEndTag = true;
-      }
-      String openListTag = (isNumberedPoint ? "<ol>" : "<ul>");
       if (needToAddStartTag) {
-        tgs.append(openListTag);
+        tgs.append((isNumberedPoint ? "<ol>" : "<ul>"));
       }
       tgs.append("<li>");
     }
@@ -157,13 +150,53 @@ public abstract class DocumentationLines extends DocCommentTextGen {
       tgs.append("</" + ("H" + SPropertyOperations.getEnum(SNodeOperations.as(line, CONCEPTS.Header$d7), PROPS.level$YKTp) + ">"));
     }
     if (SNodeOperations.isInstanceOf(line, CONCEPTS.IndentedPoint$BF)) {
+      int myIndentation = SPropertyOperations.getInteger(SNodeOperations.as(line, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp);
+      SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(line), CONCEPTS.IndentedPoint$BF);
+      if ((nextLine != null)) {
+        if (SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) < myIndentation || (SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) == myIndentation && !(Objects.equals(SNodeOperations.getConcept(SNodeOperations.getNextSibling(line)), SNodeOperations.getConcept(line))))) {
+          needToAddEndTag = true;
+        }
+      } else {
+        needToAddEndTag = true;
+      }
+
       tgs.append("<li>");
-      String closeListTag = (isNumberedPoint ? "</ol>" : "</ul>");
       if (needToAddEndTag) {
-        tgs.append(closeListTag);
+        tgs.append((isNumberedPoint ? "</ol>" : "</ul>"));
+      }
+
+      // Close all unfinished <ol> and <ul> lists above the current line
+      // By 'unfinished' the items that are followed by items of deeper indentation and never items of the same indentation
+      SNode current = SNodeOperations.as(line, CONCEPTS.IndentedPoint$BF);
+      int rightMargin = myIndentation;
+      int leftMargin = (nextLine != null ? SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) : 0);
+
+      while (SPropertyOperations.getInteger(current, PROPS.indentation$8ZOp) > leftMargin && SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(current), CONCEPTS.IndentedPoint$BF)) {
+        current = SNodeOperations.as(SNodeOperations.getPrevSibling(current), CONCEPTS.IndentedPoint$BF);
+        if ((SPropertyOperations.getInteger(current, PROPS.indentation$8ZOp) > leftMargin || (SPropertyOperations.getInteger(current, PROPS.indentation$8ZOp) == leftMargin && !(Objects.equals(SNodeOperations.getConcept(current), SNodeOperations.getConcept(nextLine))))) && SPropertyOperations.getInteger(current, PROPS.indentation$8ZOp) < rightMargin && DocumentationLines.isLastOnThisLevelOfIndentation(current, ctx)) {
+          tgs.append((SNodeOperations.isInstanceOf(current, CONCEPTS.NumberedLine$k0) ? "</ol>" : "</ul>"));
+          rightMargin = SPropertyOperations.getInteger(current, PROPS.indentation$8ZOp);
+        }
       }
     }
-
+  }
+  protected static boolean isFirstOnThisLevelOfIndentation(SNode currentLine, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    SNode prev = SNodeOperations.getPrevSibling(currentLine);
+    while (SNodeOperations.isInstanceOf(prev, CONCEPTS.IndentedPoint$BF) && SPropertyOperations.getInteger(SNodeOperations.as(prev, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) > SPropertyOperations.getInteger(currentLine, PROPS.indentation$8ZOp)) {
+      prev = SNodeOperations.getPrevSibling(prev);
+    }
+    SNode prevLine = SNodeOperations.as(prev, CONCEPTS.IndentedPoint$BF);
+    return prevLine == null || SPropertyOperations.getInteger(prevLine, PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(currentLine, PROPS.indentation$8ZOp) || (SPropertyOperations.getInteger(prevLine, PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(currentLine, PROPS.indentation$8ZOp) && !(Objects.equals(SNodeOperations.getConcept(prev), SNodeOperations.getConcept(currentLine))));
+  }
+  protected static boolean isLastOnThisLevelOfIndentation(SNode currentLine, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    SNode next = SNodeOperations.getNextSibling(currentLine);
+    while (SNodeOperations.isInstanceOf(next, CONCEPTS.IndentedPoint$BF) && SPropertyOperations.getInteger(SNodeOperations.as(next, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) > SPropertyOperations.getInteger(currentLine, PROPS.indentation$8ZOp)) {
+      next = SNodeOperations.getNextSibling(next);
+    }
+    SNode nextLine = SNodeOperations.as(next, CONCEPTS.IndentedPoint$BF);
+    return nextLine == null || SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(currentLine, PROPS.indentation$8ZOp) || (SPropertyOperations.getInteger(nextLine, PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(currentLine, PROPS.indentation$8ZOp) && !(Objects.equals(SNodeOperations.getConcept(next), SNodeOperations.getConcept(currentLine))));
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
