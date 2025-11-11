@@ -16,7 +16,6 @@
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
 import com.intellij.icons.AllIcons.Actions;
-import com.intellij.icons.AllIcons.Modules;
 import com.intellij.ui.DarculaColors;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
@@ -175,7 +174,7 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
       }
     }
     if (!myModelRootEntry.isValid()) {
-      myHeader.setBackground(JBColor.PINK);
+      myHeader.setBackground(new JBColor(new  Color(255, 220, 220, 250), new Color(0xd6, 0x4d, 0x5b, 100)));
     }
   }
 
