@@ -22,7 +22,9 @@ import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.FileActions_ActionGroup;
 import jetbrains.mps.ide.actions.FolderActions_ActionGroup;
 import jetbrains.mps.ide.actions.GeneratorActions_ActionGroup;
+import jetbrains.mps.ide.actions.GeneratorNewActions_ActionGroup;
 import jetbrains.mps.ide.actions.LanguageActions_ActionGroup;
+import jetbrains.mps.ide.actions.LanguageNewActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
@@ -40,6 +42,7 @@ import jetbrains.mps.ide.projectPane.fileSystem.nodes.AbstractFileTreeNode;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.FileTreeNode;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.FolderTreeNode;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.ModuleTreeNode;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
 import jetbrains.mps.ide.ui.smodel.PropertyTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferenceTreeNode;
@@ -97,10 +100,8 @@ public class ProjectPaneActionGroups {
   public static final String PROJECT_NEW_ACTIONS = ProjectNewActions_ActionGroup.ID;
   public static final String SOLUTION_NEW_ACTIONS = SolutionNewActions_ActionGroup.ID;
 
-  // FIXME hardcoded action ID
-  public static final String LANGUAGE_NEW_ACTIONS = "jetbrains.mps.ide.devkit.actions.LanguageNewActions_ActionGroup";
-  // FIXME hardcoded action ID
-  public static final String GENERATOR_NEW_ACTIONS = "jetbrains.mps.ide.devkit.actions.GeneratorNewActions_ActionGroup";
+  public static final String LANGUAGE_NEW_ACTIONS = LanguageNewActions_ActionGroup.ID;
+  public static final String GENERATOR_NEW_ACTIONS = GeneratorNewActions_ActionGroup.ID;
 
   public static final String CREATE_ROOT_ACTIONS = CreateRootNode_ActionGroup.ID;
 
@@ -155,12 +156,10 @@ public class ProjectPaneActionGroups {
   }
 
   public static ActionGroup getQuickCreateGroup(Object value) {
-    if (value instanceof MPSProject) {
+    if (value instanceof MPSProject || value instanceof Modules) {
       return ActionUtils.getGroup(PROJECT_NEW_ACTIONS);
-    } else if (value instanceof Nodes) {
-      return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
     }
-    if (value instanceof SModel || value instanceof SNode) {
+    if (value instanceof SModel || value instanceof SNode || value instanceof Nodes) {
       return ActionUtils.getGroup(CREATE_ROOT_ACTIONS);
     }
     if (value instanceof Solution) {
