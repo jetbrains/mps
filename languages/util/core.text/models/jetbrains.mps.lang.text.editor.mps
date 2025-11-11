@@ -144,6 +144,7 @@
         <child id="1220975211821" name="query" index="17MNgL" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
+      <concept id="1186413799158" name="jetbrains.mps.lang.editor.structure.BracketColorStyleClassItem" flags="ln" index="VLuvy" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
         <child id="1223387335081" name="query" index="3n$kyP" />
@@ -2391,6 +2392,9 @@
         <node concept="3vyZuw" id="6n6K0Pj944H" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
+        <node concept="VLuvy" id="7U0Pg9EeaHe" role="3F10Kt">
+          <property role="Vb096" value="6cZGtrcKCoS/black" />
+        </node>
         <node concept="2iRkQZ" id="6n6K0Pj944I" role="2iSdaV" />
         <node concept="3F2HdR" id="7Vz6ZmoXM29" role="3EZMnx">
           <ref role="1NtTu8" to="zqge:7Vz6ZmoXHtS" resolve="paragraphs" />
@@ -2416,6 +2420,9 @@
         <ref role="1ERwB7" node="5vhYBWEXT8I" resolve="Text_Delete_ActionMap" />
         <node concept="3vyZuw" id="3xhyJYa48N8" role="3F10Kt">
           <property role="VOm3f" value="true" />
+        </node>
+        <node concept="VLuvy" id="7U0Pg9EeazP" role="3F10Kt">
+          <property role="Vb096" value="6cZGtrcKCoS/black" />
         </node>
         <node concept="2iRkQZ" id="3xhyJYa5ZBN" role="2iSdaV" />
         <node concept="3F2HdR" id="3xhyJYa45ZM" role="3EZMnx">
