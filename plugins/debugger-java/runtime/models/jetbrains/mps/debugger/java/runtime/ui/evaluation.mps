@@ -75,6 +75,9 @@
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
+      <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
+        <property id="5279705229678483899" name="value" index="2$xPTl" />
+      </concept>
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
       </concept>
@@ -155,9 +158,6 @@
       <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -880,60 +880,46 @@
           </node>
         </node>
         <node concept="3clFbH" id="6ra8WUbIhwN" role="3cqZAp" />
-        <node concept="3cpWs8" id="6klnWqotMO7" role="3cqZAp">
-          <node concept="3cpWsn" id="6klnWqotMO8" role="3cpWs9">
-            <property role="TrG5h" value="splitPane" />
-            <node concept="3uibUv" id="6klnWqotMO9" role="1tU5fm">
-              <ref role="3uigEE" to="dxuu:~JSplitPane" resolve="JSplitPane" />
+        <node concept="3cpWs8" id="3yfqE643tLU" role="3cqZAp">
+          <node concept="3cpWsn" id="3yfqE643tLT" role="3cpWs9">
+            <property role="TrG5h" value="splitter" />
+            <node concept="3uibUv" id="3yfqE643tLV" role="1tU5fm">
+              <ref role="3uigEE" to="jkm4:~Splitter" resolve="Splitter" />
             </node>
-            <node concept="2ShNRf" id="6klnWqotMOa" role="33vP2m">
-              <node concept="1pGfFk" id="6klnWqotMOb" role="2ShVmc">
-                <ref role="37wK5l" to="dxuu:~JSplitPane.&lt;init&gt;(int)" resolve="JSplitPane" />
-                <node concept="10M0yZ" id="6klnWqotMOc" role="37wK5m">
-                  <ref role="1PxDUh" to="dxuu:~JSplitPane" resolve="JSplitPane" />
-                  <ref role="3cqZAo" to="dxuu:~JSplitPane.VERTICAL_SPLIT" resolve="VERTICAL_SPLIT" />
+            <node concept="2ShNRf" id="3yfqE643vnf" role="33vP2m">
+              <node concept="1pGfFk" id="3yfqE643vn$" role="2ShVmc">
+                <ref role="37wK5l" to="jkm4:~Splitter.&lt;init&gt;(boolean)" resolve="Splitter" />
+                <node concept="3clFbT" id="3yfqE643vn_" role="37wK5m">
+                  <property role="3clFbU" value="true" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="UBDTEaeTx$" role="3cqZAp">
-          <node concept="2OqwBi" id="UBDTEaeTxA" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTrBN" role="2Oq$k0">
-              <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
+        <node concept="3clFbF" id="3yfqE643tLY" role="3cqZAp">
+          <node concept="2OqwBi" id="3yfqE643xUm" role="3clFbG">
+            <node concept="37vLTw" id="3yfqE643vnJ" role="2Oq$k0">
+              <ref role="3cqZAo" node="3yfqE643tLT" resolve="splitter" />
             </node>
-            <node concept="liA8E" id="UBDTEaeTxE" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JSplitPane.setResizeWeight(double)" resolve="setResizeWeight" />
-              <node concept="3b6qkQ" id="UBDTEaeTxG" role="37wK5m">
-                <property role="$nhwW" value="0.8" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6klnWqotMOd" role="3cqZAp">
-          <node concept="2OqwBi" id="6klnWqotMOe" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTxkK" role="2Oq$k0">
-              <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
-            </node>
-            <node concept="liA8E" id="6klnWqotMOg" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JSplitPane.setTopComponent(java.awt.Component)" resolve="setTopComponent" />
-              <node concept="37vLTw" id="2BHiRxeuFK8" role="37wK5m">
+            <node concept="liA8E" id="3yfqE643xUn" role="2OqNvi">
+              <ref role="37wK5l" to="jkm4:~Splitter.setFirstComponent(javax.swing.JComponent)" resolve="setFirstComponent" />
+              <node concept="37vLTw" id="3yfqE643xUo" role="37wK5m">
                 <ref role="3cqZAo" node="N5Kj01sBBz" resolve="myEditor" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6klnWqotMOr" role="3cqZAp">
-          <node concept="2OqwBi" id="6klnWqotMOs" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTyar" role="2Oq$k0">
-              <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
+        <node concept="3clFbF" id="3yfqE643tM1" role="3cqZAp">
+          <node concept="2OqwBi" id="3yfqE643y4A" role="3clFbG">
+            <node concept="37vLTw" id="3yfqE643vnS" role="2Oq$k0">
+              <ref role="3cqZAo" node="3yfqE643tLT" resolve="splitter" />
             </node>
-            <node concept="liA8E" id="6klnWqotMOu" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JSplitPane.setBottomComponent(java.awt.Component)" resolve="setBottomComponent" />
-              <node concept="2ShNRf" id="6klnWqotMOv" role="37wK5m">
-                <node concept="1pGfFk" id="6klnWqotMOw" role="2ShVmc">
+            <node concept="liA8E" id="3yfqE643y4B" role="2OqNvi">
+              <ref role="37wK5l" to="jkm4:~Splitter.setSecondComponent(javax.swing.JComponent)" resolve="setSecondComponent" />
+              <node concept="2ShNRf" id="3yfqE643DJO" role="37wK5m">
+                <node concept="1pGfFk" id="3yfqE643DJP" role="2ShVmc">
                   <ref role="37wK5l" to="qqrq:~JBScrollPane.&lt;init&gt;(java.awt.Component)" resolve="JBScrollPane" />
-                  <node concept="37vLTw" id="2BHiRxeufOk" role="37wK5m">
+                  <node concept="37vLTw" id="3yfqE643DJQ" role="37wK5m">
                     <ref role="3cqZAo" node="6ra8WUbIhvf" resolve="myTree" />
                   </node>
                 </node>
@@ -941,12 +927,37 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="6klnWqotMOy" role="3cqZAp" />
-        <node concept="3clFbF" id="6klnWqotMON" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyyYh6" role="3clFbG">
+        <node concept="3clFbF" id="3yfqE643tM4" role="3cqZAp">
+          <node concept="2OqwBi" id="3yfqE643wXG" role="3clFbG">
+            <node concept="37vLTw" id="3yfqE643vnE" role="2Oq$k0">
+              <ref role="3cqZAo" node="3yfqE643tLT" resolve="splitter" />
+            </node>
+            <node concept="liA8E" id="3yfqE643wXH" role="2OqNvi">
+              <ref role="37wK5l" to="jkm4:~Splitter.setDividerWidth(int)" resolve="setDividerWidth" />
+              <node concept="3cmrfG" id="3yfqE643wXI" role="37wK5m">
+                <property role="3cmrfH" value="5" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2sRxuM1gfm1" role="3cqZAp">
+          <node concept="2OqwBi" id="2sRxuM1giAD" role="3clFbG">
+            <node concept="37vLTw" id="2sRxuM1gflZ" role="2Oq$k0">
+              <ref role="3cqZAo" node="3yfqE643tLT" resolve="splitter" />
+            </node>
+            <node concept="liA8E" id="2sRxuM1gnld" role="2OqNvi">
+              <ref role="37wK5l" to="jkm4:~Splitter.setProportion(float)" resolve="setProportion" />
+              <node concept="2$xPTn" id="2sRxuM1gvQN" role="37wK5m">
+                <property role="2$xPTl" value="0.2f" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3yfqE643Lb3" role="3cqZAp">
+          <node concept="1rXfSq" id="3yfqE643Lb1" role="3clFbG">
             <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
-            <node concept="37vLTw" id="3GM_nagTvpK" role="37wK5m">
-              <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
+            <node concept="37vLTw" id="3yfqE643Q6x" role="37wK5m">
+              <ref role="3cqZAo" node="3yfqE643tLT" resolve="splitter" />
             </node>
           </node>
         </node>

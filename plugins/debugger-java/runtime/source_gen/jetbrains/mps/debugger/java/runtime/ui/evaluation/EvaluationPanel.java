@@ -10,7 +10,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 import org.jetbrains.mps.openapi.model.SNode;
-import javax.swing.JSplitPane;
+import com.intellij.openapi.ui.Splitter;
 import com.intellij.ui.components.JBScrollPane;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
@@ -42,12 +42,12 @@ public class EvaluationPanel extends EvaluationUi {
       myTree.updateLocation(myDebugSession.getUiState().getThread().getThread());
     }
 
-    JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-    splitPane.setResizeWeight(0.8);
-    splitPane.setTopComponent(myEditor);
-    splitPane.setBottomComponent(new JBScrollPane(myTree));
-
-    add(splitPane);
+    Splitter splitter = new Splitter(true);
+    splitter.setFirstComponent(myEditor);
+    splitter.setSecondComponent(new JBScrollPane(myTree));
+    splitter.setDividerWidth(5);
+    splitter.setProportion(0.2f);
+    add(splitter);
 
     myEditor.registerKeyboardAction(new AbstractAction() {
       @Override
