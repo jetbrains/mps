@@ -49,9 +49,12 @@ public class PasteAsJavaDocAndAttach_Action extends BaseAction {
     if (ReadOnlyUtil.isSelectionReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")))) {
       return false;
     }
-    SNode nextSibling = SNodeOperations.getNextSibling(SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.PlaceholderMember$s8, true, false));
+    SNode commentable = PasteAsJavaDocAndAttach_Action.this.findNextCommentable(((SNode) MapSequence.fromMap(_params).get("anchorNode")), _params);
+    if ((commentable == null)) {
+      return false;
+    }
 
-    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.Classifier$Ix, true, false) != null) && JavaPaster.isStringOnlyDataAvailableInClipboard() && (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.BaseMethodDeclaration$kD) || SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.StaticFieldDeclaration$jR));
+    return (SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.Classifier$Ix, true, false) != null) && JavaPaster.isStringOnlyDataAvailableInClipboard();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -97,7 +100,7 @@ public class PasteAsJavaDocAndAttach_Action extends BaseAction {
       ProgressMonitorAdapter monitor = new ProgressMonitorAdapter(ProgressManager.getInstance().getProgressIndicator());
       monitor.start(IdeBundle.message("actions.pasteAsJavaDoc.progressTitle"), 5);
       try {
-        SNode nextSibling = SNodeOperations.getNextSibling(SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.PlaceholderMember$s8, true, false));
+        SNode nextSibling = PasteAsJavaDocAndAttach_Action.this.findNextCommentable(((SNode) MapSequence.fromMap(_params).get("anchorNode")), _params);
         SNode comment = null;
         if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.BaseMethodDeclaration$kD)) {
           comment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(SNodeOperations.as(nextSibling, CONCEPTS.BaseMethodDeclaration$kD));
@@ -120,6 +123,13 @@ public class PasteAsJavaDocAndAttach_Action extends BaseAction {
             comment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.as(nextSibling, CONCEPTS.StaticFieldDeclaration$jR));
           }
         }
+        if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.Classifier$Ix)) {
+          comment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(SNodeOperations.as(nextSibling, CONCEPTS.Classifier$Ix));
+          if ((comment == null)) {
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).set(SNodeOperations.as(nextSibling, CONCEPTS.Classifier$Ix), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment")));
+            comment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(SNodeOperations.as(nextSibling, CONCEPTS.Classifier$Ix));
+          }
+        }
         SNode doc = comment;
         if ((doc != null)) {
           SModelInternal model = (SModelInternal) ((SNode) MapSequence.fromMap(_params).get("anchorNode")).getModel();
@@ -135,15 +145,32 @@ public class PasteAsJavaDocAndAttach_Action extends BaseAction {
       }
     }, IdeBundle.message("actions.pasteAsJavaDoc.progressTitle"), false, ideaProject);
   }
+  private SNode findNextCommentable(SNode anchorNode, final Map<String, Object> _params) {
+    if (PasteAsJavaDocAndAttach_Action.this.isCommentable(anchorNode, _params)) {
+      return anchorNode;
+    }
+    SNode currentPlaceholder = SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("anchorNode"))), CONCEPTS.PlaceholderMember$s8, true, false);
+    while ((currentPlaceholder != null)) {
+      SNode next = SNodeOperations.getNextSibling(currentPlaceholder);
+      if (PasteAsJavaDocAndAttach_Action.this.isCommentable(next, _params)) {
+        return next;
+      }
+      currentPlaceholder = SNodeOperations.as(next, CONCEPTS.PlaceholderMember$s8);
+    }
+    return null;
+  }
+  private boolean isCommentable(SNode currentNode, final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(currentNode, CONCEPTS.Classifier$Ix) || SNodeOperations.isInstanceOf(currentNode, CONCEPTS.BaseMethodDeclaration$kD) || SNodeOperations.isInstanceOf(currentNode, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(currentNode, CONCEPTS.StaticFieldDeclaration$jR);
+  }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
-    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept FieldDocComment$wl = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
     /*package*/ static final SConcept ClassifierDocComment$mh = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
+    /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
   }
 }
