@@ -26,6 +26,8 @@ import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.SModelInternal;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -120,6 +122,12 @@ public class PasteAsJavaDocAndAttach_Action extends BaseAction {
         }
         SNode doc = comment;
         if ((doc != null)) {
+          SModelInternal model = (SModelInternal) ((SNode) MapSequence.fromMap(_params).get("anchorNode")).getModel();
+          SLanguage javadocLang = MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc");
+          if (!(model.importedLanguageIds().contains(javadocLang))) {
+            model.addLanguage(javadocLang);
+          }
+
           new JavaPaster().pasteJavaDoc(comment, (SNodeOperations.isInstanceOf(doc, CONCEPTS.ClassifierDocComment$mh) ? FeatureKind.CLASS : FeatureKind.CLASS_CONTENT), ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), monitor, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
         }
       } finally {
