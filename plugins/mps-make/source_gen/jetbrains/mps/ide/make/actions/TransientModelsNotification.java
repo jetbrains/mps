@@ -86,7 +86,7 @@ public class TransientModelsNotification {
     if (!(sp.getGenerationSettings().isSaveTransientModels()) || !(TransientModelBalloonDisplayer.isPopupShown())) {
       return;
     }
-    ThreadUtils.runInUIThreadNoWait(() -> ProjectPane.getInstance(myProject).selectTransientsFolder());
+    ThreadUtils.runInUIThreadNoWait(() -> ProjectPane.getInstance(myProject).expandTransientsFolder());
   }
 
   private class MyMakeNotificationListener implements IMakeNotificationListener {

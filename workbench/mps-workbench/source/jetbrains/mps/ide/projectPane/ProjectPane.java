@@ -47,7 +47,6 @@ import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor.TabChangedListener;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
 import jetbrains.mps.ide.projectView.MPSProjectViewState;
@@ -374,18 +373,16 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   }
 
   /**
-   * A hackish way to select and expand the "checkpoints and transients models" folder. See MPS-38077
+   * A hackish way to expand the "checkpoints and transients models" folder. See MPS-38077, MPS-39258
    */
   @Deprecated
-  public void selectTransientsFolder() {
+  public void expandTransientsFolder() {
     TreeModel model = getTree().getModel();
     Object o = TreeUtil.nodeChildren(model.getRoot(), model).find(n -> isTransientsFolderNode(TreeUtil.getUserObject(n)));
-    TreeNode toSelect = o instanceof TreeNode ? (TreeNode) o : null;
-    if (toSelect != null) {
-      TreePath path = TreeUtil.getPath((TreeNode) model.getRoot(), toSelect);
+    TreeNode toExpand = o instanceof TreeNode ? (TreeNode) o : null;
+    if (toExpand != null) {
+      TreePath path = TreeUtil.getPath((TreeNode) model.getRoot(), toExpand);
       getTree().expandPath(path);
-      TreeUtil.selectInTree((DefaultMutableTreeNode) toSelect, true, getTree());
-      getTree().scrollPathToVisible(path);
     }
   }
 
