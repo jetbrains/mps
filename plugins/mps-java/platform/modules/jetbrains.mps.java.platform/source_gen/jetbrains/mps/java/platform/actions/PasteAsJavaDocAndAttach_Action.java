@@ -36,7 +36,7 @@ public class PasteAsJavaDocAndAttach_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public PasteAsJavaDocAndAttach_Action() {
-    super("Paste as JavaDoc for Field/Method", "", ICON);
+    super("Paste as JavaDoc", "Parses and pastes javadoc and attaches it to the following method/field/class definition's javadoc", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
   }

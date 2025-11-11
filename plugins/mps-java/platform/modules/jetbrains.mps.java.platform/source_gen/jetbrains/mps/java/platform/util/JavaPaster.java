@@ -148,6 +148,9 @@ public class JavaPaster {
               SNode containingDocComment = SNodeOperations.getNodeAncestor(anchor, CONCEPTS.BaseDocComment$bU, true, false);
               // The line could be inside a tag
               SNode containingDocLine = SNodeOperations.getNodeAncestor(anchor, CONCEPTS.Line$yC, true, false);
+              if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(containingDocLine), CONCEPTS.BaseInlineDocTagTE$ai)) {
+                containingDocLine = null;
+              }
               SNode parsedDocComment = null;
               switch (featureKind) {
                 case CLASS:
@@ -165,7 +168,7 @@ public class JavaPaster {
               if ((containingDocLine != null)) {
                 final Wrappers._T<SNode> current = new Wrappers._T<SNode>(containingDocLine);
                 ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)).visitAll((it) -> current.value = SNodeOperations.insertNextSiblingChild(current.value, it));
-                if (Objects.equals(trim_9qv3ps_a0a2a7a0a0a0a0a0a0a0o0e0j(((String) BHReflection.invoke0(containingDocLine, CONCEPTS.Line$yC, SMethodIdV2.create("representAsText", 2642648362195081154L, 0x4e4bd60a2247ebcfL)))), "")) {
+                if (Objects.equals(trim_9qv3ps_a0a2a8a0a0a0a0a0a0a0o0e0j(((String) BHReflection.invoke0(containingDocLine, CONCEPTS.Line$yC, SMethodIdV2.create("representAsText", 2642648362195081154L, 0x4e4bd60a2247ebcfL)))), "")) {
                   SNodeOperations.deleteNode(containingDocLine);
                 }
               } else {
@@ -280,7 +283,7 @@ public class JavaPaster {
   public static boolean isStringOnlyDataAvailableInClipboard() {
     return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SNodeClip.NODE));
   }
-  public static String trim_9qv3ps_a0a2a7a0a0a0a0a0a0a0o0e0j(String str) {
+  public static String trim_9qv3ps_a0a2a8a0a0a0a0a0a0a0o0e0j(String str) {
     return (str == null ? null : str.trim());
   }
 
@@ -288,6 +291,7 @@ public class JavaPaster {
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept BaseInlineDocTagTE$ai = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de7bde9L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseInlineDocTagTE");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept ClassifierDocComment$mh = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");

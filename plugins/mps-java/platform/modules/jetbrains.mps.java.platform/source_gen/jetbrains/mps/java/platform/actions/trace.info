@@ -1253,8 +1253,8 @@
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/5911618274379156010">
     <file name="PasteAsJavaDocAndAttach_Action.java">
       <node id="5911618274379156010" at="36,0,37,0" concept="14" trace="ICON" />
-      <node id="5911618274379156010" at="38,43,39,57" concept="16" />
-      <node id="5911618274379156010" at="39,57,40,35" concept="4" />
+      <node id="5911618274379156010" at="38,43,39,138" concept="16" />
+      <node id="5911618274379156010" at="39,138,40,35" concept="4" />
       <node id="5911618274379156010" at="40,35,41,57" concept="4" />
       <node id="5911618274379156010" at="44,32,45,16" concept="11" />
       <node id="5911618274379171489" at="49,124,50,19" concept="11" />
@@ -5867,8 +5867,8 @@
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/7365802527008014080">
     <file name="PasteAsJavaDoc_Action.java">
       <node id="7365802527008014080" at="33,0,34,0" concept="14" trace="ICON" />
-      <node id="7365802527008014080" at="35,34,36,40" concept="16" />
-      <node id="7365802527008014080" at="36,40,37,35" concept="4" />
+      <node id="7365802527008014080" at="35,34,36,119" concept="16" />
+      <node id="7365802527008014080" at="36,119,37,35" concept="4" />
       <node id="7365802527008014080" at="37,35,38,44" concept="4" />
       <node id="7365802527008014080" at="41,32,42,16" concept="11" />
       <node id="7365802527008014155" at="46,124,47,19" concept="11" />

@@ -22072,6 +22072,7 @@
     <property role="2uzpH1" value="Paste as JavaDoc" />
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
+    <property role="1WHSii" value="Parses and pastes javadoc and inserts it into the javadoc comment at the cursor" />
     <node concept="1DS2jV" id="6oS__XzZbW1" role="1NuT2Z">
       <property role="TrG5h" value="anchorNode" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.NODE" resolve="NODE" />
@@ -22418,9 +22419,10 @@
   <node concept="sE7Ow" id="58ainZs4WCE">
     <property role="TrG5h" value="PasteAsJavaDocAndAttach" />
     <property role="3GE5qa" value="Actions" />
-    <property role="2uzpH1" value="Paste as JavaDoc for Field/Method" />
+    <property role="2uzpH1" value="Paste as JavaDoc" />
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2yk/editorCommand" />
+    <property role="1WHSii" value="Parses and pastes javadoc and attaches it to the following method/field/class definition's javadoc" />
     <node concept="1DS2jV" id="58ainZs4WCF" role="1NuT2Z">
       <property role="TrG5h" value="anchorNode" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.NODE" resolve="NODE" />

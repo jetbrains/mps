@@ -33,7 +33,7 @@ public class PasteAsJavaDoc_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public PasteAsJavaDoc_Action() {
-    super("Paste as JavaDoc", "", ICON);
+    super("Paste as JavaDoc", "Parses and pastes javadoc and inserts it into the javadoc comment at the cursor", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
   }
