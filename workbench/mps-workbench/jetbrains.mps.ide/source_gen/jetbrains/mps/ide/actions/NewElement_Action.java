@@ -9,13 +9,18 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.ui.content.ContentManager;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
@@ -28,6 +33,7 @@ public class NewElement_Action extends BaseAction {
     super("New...", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
+    updateInBackground(true);
     this.addPlace(null);
   }
   @Override
@@ -36,7 +42,19 @@ public class NewElement_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((Object) MapSequence.fromMap(_params).get("value")) != null || ((ActionGroup) MapSequence.fromMap(_params).get("group")) != null;
+    if (((Object) MapSequence.fromMap(_params).get("userObject")) != null) {
+      return ((Object) MapSequence.fromMap(_params).get("value")) != null || ((ActionGroup) MapSequence.fromMap(_params).get("group")) != null;
+    } else if (((ContentManager) MapSequence.fromMap(_params).get("manager")) != null) {
+      // we're in some tool
+      Object delegate = ActionManager.getInstance().getAction("NewElementFile");
+      if (delegate instanceof AnAction) {
+        ((AnAction) delegate).update(event);
+        return event.getPresentation().isEnabled();
+      } else {
+        return false;
+      }
+    }
+    return false;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -48,18 +66,27 @@ public class NewElement_Action extends BaseAction {
       return false;
     }
     {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
       }
     }
     {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("mpsProject", p);
+    }
+    {
+      ContentManager p = event.getData(PlatformDataKeys.CONTENT_MANAGER);
+      MapSequence.fromMap(_params).put("manager", p);
+    }
+    {
+      Object p = event.getData(MPSCommonDataKeys.USER_OBJECT);
+      MapSequence.fromMap(_params).put("userObject", p);
+    }
+    {
       Object p = event.getData(MPSCommonDataKeys.VALUE);
       MapSequence.fromMap(_params).put("value", p);
-      if (p == null) {
-        return false;
-      }
     }
     {
       ActionGroup p = event.getData(MPSEditorDataKeys.EDITOR_CREATE_GROUP);
@@ -69,14 +96,21 @@ public class NewElement_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ActionGroup group = (((Object) MapSequence.fromMap(_params).get("value")) != null ? ProjectPaneActionGroups.getQuickCreateGroup(((Object) MapSequence.fromMap(_params).get("value"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
+    if (((Object) MapSequence.fromMap(_params).get("userObject")) != null) {
+      ActionGroup group = (((Object) MapSequence.fromMap(_params).get("value")) != null ? ProjectPaneActionGroups.getQuickCreateGroup(((Object) MapSequence.fromMap(_params).get("value"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
 
-    if (group != null) {
-      Presentation pres = new Presentation();
-      AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
-      ActionUtils.updateGroup(group, e);
-      ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
-      popup.showInBestPositionFor(event.getDataContext());
+      if (group != null) {
+        Presentation pres = new Presentation();
+        AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
+        ActionUtils.updateGroup(group, e);
+        ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
+        popup.showInBestPositionFor(event.getDataContext());
+      }
+    } else if (((ContentManager) MapSequence.fromMap(_params).get("manager")) != null) {
+      Object delegate = ActionManager.getInstance().getAction("NewElementFile");
+      if (delegate instanceof AnAction) {
+        ((AnAction) delegate).actionPerformed(event);
+      }
     }
   }
 }
