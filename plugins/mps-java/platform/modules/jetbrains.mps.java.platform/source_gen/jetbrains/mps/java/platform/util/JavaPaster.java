@@ -21,10 +21,10 @@ import jetbrains.mps.ide.IdeBundle;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.smodel.ModelImports;
@@ -165,14 +165,16 @@ public class JavaPaster {
               if ((parsedDocComment == null)) {
                 return;
               }
+              // Skip an initial empty line, if present
+              List<SNode> pastedLines = (isNotEmptyString(trim_9qv3ps_a0a0a0j0a0a0a0a0a0a0a41a4a9(((String) BHReflection.invoke0(ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)).first(), CONCEPTS.Line$yC, SMethodIdV2.create("representAsText", 2642648362195081154L, 0x4e4bd60a2247ebcfL))))) && ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)).count() > 1 ? SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh) : ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)).subListSequence(1, ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)).count()));
               if ((containingDocLine != null)) {
                 final Wrappers._T<SNode> current = new Wrappers._T<SNode>(containingDocLine);
-                ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)).visitAll((it) -> current.value = SNodeOperations.insertNextSiblingChild(current.value, it));
-                if (Objects.equals(trim_9qv3ps_a0a2a8a0a0a0a0a0a0a0o0e0j(((String) BHReflection.invoke0(containingDocLine, CONCEPTS.Line$yC, SMethodIdV2.create("representAsText", 2642648362195081154L, 0x4e4bd60a2247ebcfL)))), "")) {
+                ListSequence.fromList(pastedLines).visitAll((it) -> current.value = SNodeOperations.insertNextSiblingChild(current.value, it));
+                if (Objects.equals(trim_9qv3ps_a0a2a01a0a0a0a0a0a0a0o0e0j(((String) BHReflection.invoke0(containingDocLine, CONCEPTS.Line$yC, SMethodIdV2.create("representAsText", 2642648362195081154L, 0x4e4bd60a2247ebcfL)))), "")) {
                   SNodeOperations.deleteNode(containingDocLine);
                 }
               } else {
-                ListSequence.fromList(SLinkOperations.getChildren(containingDocComment, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.commentBody$sIzh)));
+                ListSequence.fromList(SLinkOperations.getChildren(containingDocComment, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(pastedLines));
               }
               ListSequence.fromList(SLinkOperations.getChildren(containingDocComment, LINKS.tags$stUD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(parsedDocComment, LINKS.tags$stUD)));
               pastingSubtask.advance(1);
@@ -283,7 +285,13 @@ public class JavaPaster {
   public static boolean isStringOnlyDataAvailableInClipboard() {
     return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SNodeClip.NODE));
   }
-  public static String trim_9qv3ps_a0a2a8a0a0a0a0a0a0a0o0e0j(String str) {
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
+  public static String trim_9qv3ps_a0a0a0j0a0a0a0a0a0a0a41a4a9(String str) {
+    return (str == null ? null : str.trim());
+  }
+  public static String trim_9qv3ps_a0a2a01a0a0a0a0a0a0a0o0e0j(String str) {
     return (str == null ? null : str.trim());
   }
 
