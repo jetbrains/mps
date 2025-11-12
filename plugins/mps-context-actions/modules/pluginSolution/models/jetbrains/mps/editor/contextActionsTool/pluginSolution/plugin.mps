@@ -1347,17 +1347,29 @@
                 <ref role="37wK5l" to="jkny:~ToolWindow.isVisible()" resolve="isVisible" />
               </node>
             </node>
-            <node concept="2OqwBi" id="7QdCAWP43nW" role="3uHU7B">
-              <node concept="2XshWL" id="5pPNcuYIxsM" role="2OqNvi">
-                <ref role="2WH_rO" node="5pPNcuYHtnW" resolve="hasBeenRegistered" />
-              </node>
-              <node concept="1eOMI4" id="5pPNcuYI0M3" role="2Oq$k0">
-                <node concept="10QFUN" id="5pPNcuYHMjO" role="1eOMHV">
-                  <node concept="1xUVSX" id="5pPNcuYHRFi" role="10QFUM">
-                    <ref role="1xYkEM" node="5tr7YH$U35C" resolve="ContextActionsTool" />
-                  </node>
-                  <node concept="37vLTw" id="7QdCAWP3YVZ" role="10QFUP">
+            <node concept="1Wc70l" id="7jT9uK48wQL" role="3uHU7B">
+              <node concept="3fqX7Q" id="7jT9uK48Qee" role="3uHU7B">
+                <node concept="2OqwBi" id="7jT9uK48Qeg" role="3fr31v">
+                  <node concept="37vLTw" id="7jT9uK48Qeh" role="2Oq$k0">
                     <ref role="3cqZAo" node="4kYnSKvcGHR" resolve="myTool" />
+                  </node>
+                  <node concept="liA8E" id="7jT9uK48Qei" role="2OqNvi">
+                    <ref role="37wK5l" to="71xd:~BaseTool.isDisposed()" resolve="isDisposed" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="7QdCAWP43nW" role="3uHU7w">
+                <node concept="2XshWL" id="5pPNcuYIxsM" role="2OqNvi">
+                  <ref role="2WH_rO" node="5pPNcuYHtnW" resolve="hasBeenRegistered" />
+                </node>
+                <node concept="1eOMI4" id="5pPNcuYI0M3" role="2Oq$k0">
+                  <node concept="10QFUN" id="5pPNcuYHMjO" role="1eOMHV">
+                    <node concept="1xUVSX" id="5pPNcuYHRFi" role="10QFUM">
+                      <ref role="1xYkEM" node="5tr7YH$U35C" resolve="ContextActionsTool" />
+                    </node>
+                    <node concept="37vLTw" id="7QdCAWP3YVZ" role="10QFUP">
+                      <ref role="3cqZAo" node="4kYnSKvcGHR" resolve="myTool" />
+                    </node>
                   </node>
                 </node>
               </node>

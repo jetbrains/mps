@@ -417,6 +417,10 @@ public abstract class BaseTool {
   public void init(Project project) {
   }
 
+  public boolean isDisposed() {
+    return myIsDisposed;
+  }
+
   public void dispose() {
     this.myIsDisposed = true;
     // FIXME what's the contract for this method? Seems that it's only BaseProjectPlugin that cares to invoke it.

@@ -83,7 +83,7 @@ public class ToolComponent extends JComponent {
   }
 
   public boolean isToolVisible() {
-    return ((ContextActionsTool_Tool) myTool).hasBeenRegistered() && check_cnbxua_a0a0q(myTool.getToolWindow());
+    return !(myTool.isDisposed()) && ((ContextActionsTool_Tool) myTool).hasBeenRegistered() && check_cnbxua_a0a0q(myTool.getToolWindow());
   }
 
   /**
