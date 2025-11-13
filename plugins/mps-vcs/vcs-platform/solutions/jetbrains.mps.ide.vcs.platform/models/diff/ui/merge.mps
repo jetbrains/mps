@@ -61,6 +61,7 @@
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="cttk" ref="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
+    <import index="kip1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.nodefs(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -8056,6 +8057,15 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3UUTBtqVPiu" role="jymVt" />
+    <node concept="312cEg" id="6n7JwfqXl$o" role="jymVt">
+      <property role="TrG5h" value="myCustomRepoFiles" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3UUTBtqVXIO" role="1B3o_S" />
+      <node concept="3uibUv" id="6n7JwfqXh3p" role="1tU5fm">
+        <ref role="3uigEE" to="kip1:~FileSystemRepoBridge" resolve="FileSystemRepoBridge" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="2zzNdx1Qj5e" role="jymVt" />
     <node concept="2tJIrI" id="2jv$fqwKriE" role="jymVt" />
     <node concept="3clFbW" id="2jv$fqwD$pu" role="jymVt">
@@ -8487,6 +8497,27 @@
             <node concept="2YIFZM" id="568jgXHtwdx" role="33vP2m">
               <ref role="37wK5l" to="cttk:5F0lsbynlQK" resolve="createPlainRegistrationRepo" />
               <ref role="1Pybhc" to="cttk:5F0lsbynlOq" resolve="RepositoryFacade" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6n7JwfqXAml" role="3cqZAp">
+          <node concept="37vLTI" id="6n7JwfqXEW6" role="3clFbG">
+            <node concept="2ShNRf" id="6n7JwfqXKMO" role="37vLTx">
+              <node concept="1pGfFk" id="6n7JwfqYBP$" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="kip1:~FileSystemRepoBridge.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="FileSystemRepoBridge" />
+                <node concept="2OqwBi" id="3UUTBtqVGan" role="37wK5m">
+                  <node concept="37vLTw" id="3UUTBtqVEHn" role="2Oq$k0">
+                    <ref role="3cqZAo" node="568jgXHtb6T" resolve="repo" />
+                  </node>
+                  <node concept="liA8E" id="3UUTBtqVHuu" role="2OqNvi">
+                    <ref role="37wK5l" to="cttk:5F0lsbynmm$" resolve="get" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="6n7JwfqXAmj" role="37vLTJ">
+              <ref role="3cqZAo" node="6n7JwfqXl$o" resolve="myCustomRepoFiles" />
             </node>
           </node>
         </node>
@@ -10482,6 +10513,16 @@
                   <ref role="37wK5l" node="2jv$fqwevnK" resolve="dispose" />
                 </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6n7JwfqYVEi" role="3cqZAp">
+          <node concept="2OqwBi" id="6n7JwfqZ17h" role="3clFbG">
+            <node concept="37vLTw" id="6n7JwfqYVEg" role="2Oq$k0">
+              <ref role="3cqZAo" node="6n7JwfqXl$o" resolve="myCustomRepoFiles" />
+            </node>
+            <node concept="liA8E" id="6n7JwfqZfY9" role="2OqNvi">
+              <ref role="37wK5l" to="kip1:~FileSystemRepoBridge.close()" resolve="close" />
             </node>
           </node>
         </node>

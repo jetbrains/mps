@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.project.MPSProject;
  * Bridge {@link com.intellij.openapi.vfs.VirtualFileSystem} and {@linkplain jetbrains.mps.project.MPSProject mps project's}
  * {@linkplain jetbrains.mps.project.Project#getRepository() repository}.
  * <p>Used to be a project component, now {@link MPSProject} initializes one explicitly</p>
+ * @see FileSystemRepoBridge
  * @author Artem Tikhomirov
  * @since 3.4
  */

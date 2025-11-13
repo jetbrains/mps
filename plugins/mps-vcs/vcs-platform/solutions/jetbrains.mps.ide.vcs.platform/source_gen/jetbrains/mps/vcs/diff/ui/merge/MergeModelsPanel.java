@@ -22,6 +22,7 @@ import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions;
 import com.intellij.diff.DiffEditorTitleCustomizer;
+import jetbrains.mps.nodefs.FileSystemRepoBridge;
 import com.intellij.diff.merge.TextMergeRequest;
 import java.awt.BorderLayout;
 import com.intellij.diff.merge.MergeUtil;
@@ -95,6 +96,8 @@ public class MergeModelsPanel extends JPanel {
 
   private List<DiffEditorTitleCustomizer> myTitleCustomizers;
 
+  private final FileSystemRepoBridge myCustomRepoFiles;
+
 
   public MergeModelsPanel(Project project, final SModel baseModel, final SModel mineModel, final SModel repoModel, TextMergeRequest request, boolean doNotShowMetadata, final boolean fixReferences) {
     super(new BorderLayout());
@@ -113,6 +116,7 @@ public class MergeModelsPanel extends JPanel {
 
     // XXX once we use distinct repo for both MergeSessions, shall use this repo for all read/write operations
     RepositoryFacade repo = RepositoryFacade.createPlainRegistrationRepo();
+    myCustomRepoFiles = new FileSystemRepoBridge(repo.get());
     myMetadataModels = new ModelLot(repo);
     // create metamodels before renaming the models in order to avoid problems
     // with stereotypes like in MPS-32651 and MPS-33991
@@ -258,6 +262,7 @@ public class MergeModelsPanel extends JPanel {
     if (myMergeRootsPane != null) {
       myMergeRootsPane.dispose();
     }
+    myCustomRepoFiles.close();
   }
 
   private SModel getResultModelWithFixedId() {
