@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,14 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionPopupMenu;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataSink;
-import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.UiDataProvider;
+import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
+import com.intellij.openapi.actionSystem.impl.SimpleDataContext.Builder;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
@@ -53,7 +55,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.workbench.action.ActionUtils;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -719,13 +720,26 @@ public final class LeftEditorHighlighter extends JComponent implements UiDataPro
       AnAction action = iconRenderer.getClickAction();
       if (e.getButton() == MouseEvent.BUTTON1 && action != null) {
         if (e.getID() == MouseEvent.MOUSE_CLICKED) {
-          final DataContext dc = new LeftEditorHighlighterDataContext(myEditorComponent, iconRenderer);
-          @SuppressWarnings("UseOfClone")
-          final Presentation presentation = action.getTemplatePresentation().clone();
-          AnActionEvent actionEvent = new AnActionEvent(e, dc, ICON_AREA, presentation, ActionManager.getInstance(), e.getModifiersEx());
+          final DataContext dcEditor = DataManager.getInstance().getDataContext(myEditorComponent);;
+          Builder dcBuilder = SimpleDataContext.builder().setParent(dcEditor);
+          EditorCell nodeCell = iconRenderer.getNodeCell(myEditorComponent);
+          dcBuilder.add(MPSEditorDataKeys.EDITOR_CELL, nodeCell);
+          SNode selectedNode = nodeCell == null ? null : nodeCell.getSNode();
+          if (selectedNode != null) {
+            // Revisit, next comment comes from legacy DataContext impl, not sure if it's still valid (watch for model access errors):
+            // this context is not accessible to IDEA's PreCachedDataContext, don't bother with model access.
+            dcBuilder.add(MPSCommonDataKeys.NODE, selectedNode);
+            // XXX not sure if I need this here unless MPS actions start using SNodeActionData, not MPSCommonDataKeys.NODE;
+            //     nevertheless, doesn't hurt to keep this code here for future use.
+            dcBuilder.add(SNodeActionData.KEY, SNodeActionData.from(selectedNode.getReference()));
+          }
+          AnActionEvent actionEvent = AnActionEvent.createEvent(action, dcBuilder.build(), null, ICON_AREA, ActionUiKind.POPUP, e);
+          // XXX perhaps, shall stick to ActionManager.tryToExecute(), yet not clear how to extend DataContext in this case
           action.update(actionEvent);
-          // XXX I wonder why we ignore the fact action might declare it's disabled during update()
-          action.actionPerformed(actionEvent);
+          if (actionEvent.getPresentation().isEnabled()) {
+            // assume action could declare it's disabled during update()
+            action.actionPerformed(actionEvent);
+          }
         }
         e.consume();
       }
@@ -845,34 +859,5 @@ public final class LeftEditorHighlighter extends JComponent implements UiDataPro
       }
     }
     return null;
-  }
-
-  private static class LeftEditorHighlighterDataContext implements DataContext {
-    private final DataContext myEditorDataContext;
-    private final SNode mySelectedNode;
-    private final EditorCell myNodeCell;
-
-    public LeftEditorHighlighterDataContext(@NotNull EditorComponent editorComponent, EditorMessageIconRenderer renderer) {
-      myEditorDataContext = DataManager.getInstance().getDataContext(editorComponent);
-      myNodeCell = renderer.getNodeCell(editorComponent);
-      mySelectedNode = myNodeCell == null ? null : myNodeCell.getSNode();
-    }
-
-    @Override
-    public Object getData(@NotNull @NonNls String dataId) {
-      if (SNodeActionData.KEY.is(dataId) && mySelectedNode != null) {
-        // XXX not sure I need this here unless MPS actions start using SNodeActionData, not MPSCommonDataKeys.NODE;
-        //     nevertheless, doesn't hurt to keep this code here for future use.
-        return SNodeActionData.from(mySelectedNode.getReference());
-      }
-      if (MPSCommonDataKeys.NODE.is(dataId)) {
-        // this context is not accessible to IDEA's PreCachedDataContext, don't bother with model access.
-        return mySelectedNode;
-      }
-      if (MPSEditorDataKeys.EDITOR_CELL.is(dataId)) {
-        return myNodeCell;
-      }
-      return myEditorDataContext.getData(dataId);
-    }
   }
 }
