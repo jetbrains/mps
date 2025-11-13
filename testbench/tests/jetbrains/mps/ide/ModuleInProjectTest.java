@@ -18,6 +18,7 @@ package jetbrains.mps.ide;
 import com.intellij.configurationStore.StoreReloadManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestUtil;
@@ -72,6 +73,7 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
   @After
   public void after() {
     final VirtualFile projectDir = ProjectUtil.guessProjectDir(myProject.getProject());
+    DumbService.getInstance(myProject.getProject()).waitForSmartMode();
     myEnv.closeProject(myProject);
     if (!SAVE_PROJECT) {
       ApplicationManager.getApplication().invokeLater(() -> ApplicationManager.getApplication().runWriteAction(() -> {
