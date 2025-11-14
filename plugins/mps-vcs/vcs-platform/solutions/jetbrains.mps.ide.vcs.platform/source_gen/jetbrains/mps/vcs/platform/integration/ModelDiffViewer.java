@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import java.util.ArrayList;
 import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.contents.EmptyContent;
 import jetbrains.mps.vfs.tracking.ModelDiffContent;
@@ -73,11 +72,9 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       rootId = request.getUserData(DIFF_SHOW_ROOTID);
       models = ListSequence.fromList(contents).select((it) -> ModelDiffViewer.getModel(mpsProject, it, type)).toList();
     }
-    List<String> titles = ListSequence.fromList(new ArrayList<String>());
-    ListSequence.fromList(titles).addSequence(ListSequence.fromList(request.getContentTitles()));
 
     boolean showTree = DIFF_SHOW_TREE.get(request, !(perRootPersistence));
-    myViewer = new ModelDifferenceViewer(mpsProject, models, titles, showTree, perRootPersistence);
+    myViewer = new ModelDifferenceViewer(context, request, this, models, showTree, perRootPersistence);
     myViewer.showDiff(showTree, rootId, request.getUserData(DIFF_NAVIGATE_TO));
   }
 

@@ -68,7 +68,6 @@ public class DiffEditor implements EditorMessageOwner {
   private boolean myIsInspectorShown;
   private final MainEditorComponent myMainEditorComponent;
   private final MyInspectorEditorComponent myInspectorComponent;
-  private String myTitle;
   private final JComponent myTitleComponent;
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private final MPSProject myMpsProject;
@@ -80,7 +79,6 @@ public class DiffEditor implements EditorMessageOwner {
     myMpsProject = project;
     myRightToLeft = rightToLeft;
     myIsInspectorShown = isInspectorShown;
-    myTitle = contentTitle;
     // FIXME provisional fix for MPS-38868, with metamodel change nodes residing in own repo, can't rely on project repo
     //      however, would like to get back here and ensure repository is more explicit
     final SRepository repo4EC;
@@ -156,19 +154,6 @@ public class DiffEditor implements EditorMessageOwner {
     }
     myIsInspectorShown = show;
     myPanel.setSecondComponent((show ? getBottomComponent() : null));
-  }
-
-  public void setTitle(String newTitle) {
-    if ((newTitle == null && myTitle == null) || (myTitle != null && myTitle.equals(newTitle))) {
-      return;
-    }
-    myTitle = newTitle;
-    updateTitleComponent();
-  }
-
-  private void updateTitleComponent() {
-    ((JLabel) myTitleComponent).setText(((myTitle == null || myTitle.length() == 0) ? " " : myTitle));
-    myTitleComponent.repaint();
   }
 
   public JComponent getTitleComponent() {

@@ -11,6 +11,8 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup;
 import javax.swing.JPanel;
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.diff.FrameDiffTool;
+import com.intellij.diff.requests.ContentDiffRequest;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -19,6 +21,7 @@ import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.SModelOperations;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
@@ -26,11 +29,11 @@ import com.intellij.ui.JBSplitter;
 import com.intellij.diff.tools.util.DiffSplitter;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import javax.swing.JComponent;
+import com.intellij.diff.util.DiffUtil;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -73,6 +76,8 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private JPanel myPanel;
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, INSPECTOR_SHOWN_BY_DEFAULT);
 
+  private final FrameDiffTool.DiffViewer myDiffViewer;
+  private final ContentDiffRequest myDiffRequest;
   private final List<ModelChangeSet> myChangeSets;
   private final List<ModelChangeSet> myMetadataChangeSets;
   private final List<SModel> myModels;
@@ -88,17 +93,19 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
 
 
-  public RootDifferencePaneBase(MPSProject project, SNodeId rootId, boolean isMetadataView, List<String> titles, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets) {
+  public RootDifferencePaneBase(MPSProject project, SNodeId rootId, boolean isMetadataView, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets, @NotNull ContentDiffRequest request, @NotNull FrameDiffTool.DiffViewer diffViewer) {
+    myDiffRequest = request;
+    myDiffViewer = diffViewer;
     myIsMetadataView = isMetadataView;
     myRootId = rootId;
     myMpsProject = project;
-    assert ListSequence.fromList(models).count() == ListSequence.fromList(titles).count();
+    assert ListSequence.fromList(models).count() == request.getContentTitles().size();
     assert ListSequence.fromList(models).count() > 1;
     myModels = models;
     myMetaModels = metadataModels;
     myChangeSets = changeSets;
     myMetadataChangeSets = metadataChangeSets;
-    myDiffEditorsGroup = createEditorsGroup((isMetadataView ? metadataModels : models), titles);
+    myDiffEditorsGroup = createEditorsGroup((isMetadataView ? metadataModels : models), request.getContentTitles());
     myPanel = createPanel();
     myMainChangeGroupLayouts = createChangeGroupLayouts(false);
     myMainLayout = createTripleLayout(false);
@@ -140,7 +147,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   protected abstract JPanel createPanel();
 
   protected List<JComponent> getTitles() {
-    return ListSequence.fromList(getEditors()).select((it) -> it.getTitleComponent()).toList();
+    return DiffUtil.createSimpleTitles(myDiffViewer, myDiffRequest);
   }
 
   protected DefaultActionGroup createActionGroup(boolean isEditable) {

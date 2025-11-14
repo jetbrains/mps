@@ -171,11 +171,6 @@ public class StructDifferencePane implements PropertyChangeListener {
     return Arrays.asList(myOldEditor.getTitleComponent(), myNewEditor.getTitleComponent());
   }
 
-  /*package*/ void setEditorTitles(String before, String after) {
-    myOldEditor.setTitle(before);
-    myNewEditor.setTitle(after);
-  }
-
   private void createActionGroup() {
     myActionGroup = new DefaultActionGroup();
     myActionGroup.addAll(myTraverser.previousAction(), myTraverser.nextAction());

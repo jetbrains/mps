@@ -4,6 +4,8 @@ package jetbrains.mps.vcs.diff.ui;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.diff.requests.ContentDiffRequest;
+import com.intellij.diff.FrameDiffTool;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -26,6 +28,8 @@ import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.diff.DiffContext;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import javax.swing.JScrollPane;
@@ -62,8 +66,9 @@ import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 
 @GeneratedClass(nodeId = "6410246949269566016", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class ModelDifferenceViewer implements DataProvider {
+  private final ContentDiffRequest myDiffRequest;
+  private final FrameDiffTool.DiffViewer myDiffViewer;
   private final MPSProject myProject;
-  private final List<String> myTitles;
   private final List<SModel> myModels;
   private List<SModel> myMetadataModels;
   private List<ModelChangeSet> myChangeSets;
@@ -86,9 +91,10 @@ public class ModelDifferenceViewer implements DataProvider {
   private final Collection<SModel> myRegisteredModels = CollectionSequence.fromCollection(new ArrayList<SModel>());
 
 
-  public ModelDifferenceViewer(MPSProject project, @NotNull List<SModel> models, List<String> titles, boolean showTree, final boolean perRootPersistence) {
-    myProject = project;
-    myTitles = titles;
+  public ModelDifferenceViewer(@NotNull DiffContext context, @NotNull ContentDiffRequest request, @NotNull FrameDiffTool.DiffViewer diffViewer, @NotNull List<SModel> models, boolean showTree, final boolean perRootPersistence) {
+    myDiffRequest = request;
+    myDiffViewer = diffViewer;
+    myProject = ProjectHelper.fromIdeaProject(context.getProject());
     myModels = models;
     myEditable = isModelEditable(ListSequence.fromList(myModels).getElement(1));
     // register models in repository and create changeset
@@ -104,14 +110,14 @@ public class ModelDifferenceViewer implements DataProvider {
       myChangeSets = buildChangeSets(myModels, trackMovedNodes);
       myMetadataChangeSets = buildChangeSets(myMetadataModels, trackMovedNodes);
     });
-    myDiffRegistry = CurrentDifferenceRegistry.getInstance(project.getProject());
+    myDiffRegistry = CurrentDifferenceRegistry.getInstance(myProject.getProject());
     addModelDiffListeners(ListSequence.fromList(myModels).concat(ListSequence.fromList(myMetadataModels)));
 
     // create panels
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
     myPanel.setSecondComponent(myNoRootPanel);
     if (showTree) {
-      myTree = new ModelDifferenceTree(project.getRepository());
+      myTree = new ModelDifferenceTree(myProject.getRepository());
       myTree.withModelName(myModels);
       JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myTree);
       scrollPane.setViewportBorder(IdeBorderFactory.createBorder());
@@ -282,7 +288,7 @@ public class ModelDifferenceViewer implements DataProvider {
       boolean isMetadataView = rootId == null;
       SNodeId nodeId = (isMetadataView ? ListSequence.fromList(SModelOperations.roots(ListSequence.fromList(myMetadataChangeSets).getElement(0).getOldModel(), null)).first().getNodeId() : rootId);
       if (myRootDifferencePane == null) {
-        myRootDifferencePane = (isThreePanelDiff() ? new ThreeSideRootDifferencePane(myProject, nodeId, isMetadataView, myTitles, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets) : new TwoSideRootDifferencePane(myProject, nodeId, isMetadataView, myTitles, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets));
+        myRootDifferencePane = (isThreePanelDiff() ? new ThreeSideRootDifferencePane(myProject, nodeId, isMetadataView, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets, myDiffRequest, myDiffViewer) : new TwoSideRootDifferencePane(myProject, nodeId, isMetadataView, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets, myDiffRequest, myDiffViewer));
         attachRootDifferencePane(myRootDifferencePane);
         myRootDifferencePane.navigateInitial(null);
       } else {
@@ -449,10 +455,10 @@ public class ModelDifferenceViewer implements DataProvider {
     }
     private void rehighlight() {
       ApplicationManager.getApplication().invokeLater(() -> syncMetadataChanges());
-      check_b117w_a1a4dd(myRootDifferencePane);
+      check_b117w_a1a4ed(myRootDifferencePane);
     }
   }
-  private static void check_b117w_a1a4dd(RootDifferencePane checkedDotOperand) {
+  private static void check_b117w_a1a4ed(RootDifferencePane checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.rehighlightInReadAction(true);
     }

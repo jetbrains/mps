@@ -9,11 +9,13 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.diff.requests.ContentDiffRequest;
+import com.intellij.diff.FrameDiffTool;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.vcs.diff.merge.MovesAwareMergeConflictsBuilder;
@@ -33,8 +35,8 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
   private ChangeConflictsBuilder myConflictsBuilder;
 
 
-  /*package*/ ThreeSideRootDifferencePane(MPSProject mpsProject, SNodeId rootId, boolean isMetadataView, List<String> titles, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets) {
-    super(mpsProject, rootId, isMetadataView, titles, models, metadataModels, changeSets, metadataChangeSets);
+  /*package*/ ThreeSideRootDifferencePane(MPSProject mpsProject, SNodeId rootId, boolean isMetadataView, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets, @NotNull ContentDiffRequest request, @NotNull FrameDiffTool.DiffViewer diffViewer) {
+    super(mpsProject, rootId, isMetadataView, models, metadataModels, changeSets, metadataChangeSets, request, diffViewer);
     if (getMyChangeSet() != null && getRepoChangeSet() != null) {
       myConflictsBuilder = createConflictsBuilder(getMyChangeSet(), getRepoChangeSet());
     }
@@ -69,13 +71,6 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 
   private DiffEditor getRepoEditor() {
     return ListSequence.fromList(getEditors()).getElement(2);
-  }
-
-  @Override
-  public void setEditorTitles(String[] titles) {
-    getMyEditor().setTitle(titles[0]);
-    getBaseEditor().setTitle(titles[1]);
-    getRepoEditor().setTitle(titles[2]);
   }
 
   @Override

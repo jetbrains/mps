@@ -8,6 +8,9 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.diff.requests.ContentDiffRequest;
+import com.intellij.diff.FrameDiffTool;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -22,8 +25,8 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 @GeneratedClass(nodeId = "5939348756325699563", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class TwoSideRootDifferencePane extends RootDifferencePaneBase {
 
-  /*package*/ TwoSideRootDifferencePane(MPSProject project, SNodeId rootId, boolean isMetadataView, List<String> titles, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets) {
-    super(project, rootId, isMetadataView, titles, models, metadataModels, changeSets, metadataChangeSets);
+  /*package*/ TwoSideRootDifferencePane(MPSProject project, SNodeId rootId, boolean isMetadataView, List<SModel> models, List<SModel> metadataModels, List<ModelChangeSet> changeSets, List<ModelChangeSet> metadataChangeSets, @NotNull ContentDiffRequest request, @NotNull FrameDiffTool.DiffViewer diffViewer) {
+    super(project, rootId, isMetadataView, models, metadataModels, changeSets, metadataChangeSets, request, diffViewer);
   }
 
   @Override
@@ -51,12 +54,6 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 
   private DiffEditor getNewEditor() {
     return ListSequence.fromList(getEditors()).getElement(1);
-  }
-
-  @Override
-  public void setEditorTitles(String[] titles) {
-    getOldEditor().setTitle(titles[0]);
-    getNewEditor().setTitle(titles[1]);
   }
 
   private SModel getOldModel() {
