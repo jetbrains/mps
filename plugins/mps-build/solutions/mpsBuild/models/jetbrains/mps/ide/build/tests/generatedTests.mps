@@ -1062,6 +1062,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="15HoS4$rlTm" role="3bR37C">
+          <node concept="3bR9La" id="15HoS4$rlTn" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:7Kfy9QB6L2N" resolve="jetbrains.mps.baseLanguage.tuples.runtime" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="13uUGR" id="7CPkROrbWlR" role="1l3spa">
