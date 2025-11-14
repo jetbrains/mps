@@ -10,15 +10,12 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.IconCreationUtil;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import com.intellij.ui.LayeredIcon;
-import javax.swing.ImageIcon;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,9 +27,8 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541333312L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<String> getNewuiResourceId_id1$fQzw7$LYY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778964414L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
-  /*package*/ static final SMethod<Void> processLayers_id2xAJZV4smYU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("processLayers").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2911225310079971258L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(IconCreationUtil.DrawContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY, processLayers_id2xAJZV4smYU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -46,14 +42,6 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
     } else {
       return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
     }
-  }
-  /*package*/ static void processLayers_id2xAJZV4smYU(@NotNull SAbstractConcept __thisConcept__, List<SNode> layers, IconCreationUtil.DrawContext dc) {
-    // todo copy layered icon into core
-    LayeredIcon res = new LayeredIcon(ListSequence.fromList(layers).count());
-    for (SNode layer : ListSequence.fromList(layers)) {
-      res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(layers).indexOf(layer));
-    }
-    res.paintIcon(null, dc.g, 0, 0);
   }
 
   /*package*/ TextIcon__BehaviorDescriptor() {
@@ -87,9 +75,6 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 2:
-        processLayers_id2xAJZV4smYU(concept, (List<SNode>) parameters[0], (IconCreationUtil.DrawContext) parameters[1]);
-        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
