@@ -14,6 +14,8 @@ import java.nio.file.Files;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.make.MakeServiceComponent;
 import java.time.Duration;
+import com.intellij.openapi.project.DumbService;
+import jetbrains.mps.project.MPSProject;
 import org.junit.jupiter.api.AfterEach;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -52,6 +54,7 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
     while (makesvc != null && makesvc.isSessionActive()) {
       Thread.currentThread().sleep(Duration.ofMillis(200));
     }
+    DumbService.getInstance(((MPSProject) project).getProject()).waitForSmartMode();
   }
 
   @AfterEach

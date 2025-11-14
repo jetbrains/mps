@@ -83,7 +83,8 @@
     <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="28m1" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.time(JDK/)" />
-    <import index="f3o1" ref="r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)" implicit="true" />
+    <import index="f3o1" ref="r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)" />
+    <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -227,6 +228,9 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -7838,6 +7842,32 @@
                 <ref role="3cqZAo" node="482kRw$55$t" resolve="makesvc" />
               </node>
               <node concept="10Nm6u" id="482kRw$6lEp" role="3uHU7w" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5P6aWXNjDay" role="3cqZAp">
+          <node concept="2OqwBi" id="5P6aWXNjOTW" role="3clFbG">
+            <node concept="2YIFZM" id="5P6aWXNjO8W" role="2Oq$k0">
+              <ref role="1Pybhc" to="4nm9:~DumbService" resolve="DumbService" />
+              <ref role="37wK5l" to="4nm9:~DumbService.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <node concept="2OqwBi" id="5P6aWXNjQmm" role="37wK5m">
+                <node concept="1eOMI4" id="5P6aWXNjT0D" role="2Oq$k0">
+                  <node concept="10QFUN" id="5P6aWXNjT0C" role="1eOMHV">
+                    <node concept="37vLTw" id="5P6aWXNjT0B" role="10QFUP">
+                      <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
+                    </node>
+                    <node concept="3uibUv" id="5P6aWXNjTMS" role="10QFUM">
+                      <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="5P6aWXNjUO7" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="5P6aWXNjOTX" role="2OqNvi">
+              <ref role="37wK5l" to="4nm9:~DumbService.waitForSmartMode()" resolve="waitForSmartMode" />
             </node>
           </node>
         </node>
