@@ -5,16 +5,20 @@ package jetbrains.mps.vcs.diff.ui.merge;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.project.DumbAware;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 
 @GeneratedClass(nodeId = "708166622413811180", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeNonConflictingRoots extends BaseAction implements DumbAware {
-  private MergeModelsPanel myDialog;
+  private final MergeModelsPanel myDialog;
+
   public MergeNonConflictingRoots(MergeModelsPanel dialog) {
     super("Automatically Merge Non-Conflicting Roots", null, MergeModelsPanel.APPLY_NON_CONFLICTS);
     myDialog = dialog;
+    updateInBackground(true);
     setDisableOnNoProject(false);
+    setActionAccess(ActionAccess.NONE);
   }
   @Override
   protected void doExecute(AnActionEvent event, Map<String, Object> map) {

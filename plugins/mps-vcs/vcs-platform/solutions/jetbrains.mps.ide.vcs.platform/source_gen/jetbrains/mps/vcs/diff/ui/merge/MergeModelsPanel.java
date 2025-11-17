@@ -249,7 +249,7 @@ public class MergeModelsPanel extends JPanel {
       return false;
     }
     if (result == MergeConfirmation.RESOLVE_AUTOMATICALLY) {
-      myProjectRepository.getModelAccess().executeCommand(() -> mergeNonConflictingRoots());
+      mergeNonConflictingRoots();
     }
     if (saveModel(getResultModelWithFixedId())) {
       unregisterModels();
@@ -369,11 +369,14 @@ public class MergeModelsPanel extends JPanel {
   }
 
   public void mergeNonConflictingRoots() {
-    myMergeSession.applyChanges(getApplicableChangesInNonConflictingRoots());
-    if (myMetadataMergeSession != null) {
-      myMetadataMergeSession.applyChanges(getApplicableChangesInMetadata());
-      applyMetadataChanges();
-    }
+    // XXX perhaps, shall use UndoRunnable with better name, or stick to writeAction?
+    myProjectRepository.getModelAccess().executeCommand(() -> {
+      myMergeSession.applyChanges(getApplicableChangesInNonConflictingRoots());
+      if (myMetadataMergeSession != null) {
+        myMetadataMergeSession.applyChanges(getApplicableChangesInMetadata());
+        applyMetadataChanges();
+      }
+    });
   }
 
   public boolean hasNonConflictingRoots() {

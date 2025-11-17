@@ -2178,11 +2178,13 @@
     </node>
     <node concept="312cEg" id="BjUsE2KQRH" role="jymVt">
       <property role="TrG5h" value="myDialog" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="2jv$fqxbCLR" role="1tU5fm">
         <ref role="3uigEE" node="2jv$fqwD$ox" resolve="MergeModelsPanel" />
       </node>
       <node concept="3Tm6S6" id="BjUsE2KQRI" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="jXlC_gZaiH" role="jymVt" />
     <node concept="3clFbW" id="BjUsE2KQRK" role="jymVt">
       <node concept="3cqZAl" id="BjUsE2KQRL" role="3clF45" />
       <node concept="3Tm1VV" id="BjUsE2KQRM" role="1B3o_S" />
@@ -2208,10 +2210,27 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="jXlC_gZ00o" role="3cqZAp">
+          <node concept="1rXfSq" id="jXlC_gZ00m" role="3clFbG">
+            <ref role="37wK5l" to="7bx7:~BaseAction.updateInBackground(boolean)" resolve="updateInBackground" />
+            <node concept="3clFbT" id="jXlC_gZ1dM" role="37wK5m">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="BjUsE2KQRW" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyyZ2P" role="3clFbG">
             <ref role="37wK5l" to="7bx7:~BaseAction.setDisableOnNoProject(boolean)" resolve="setDisableOnNoProject" />
             <node concept="3clFbT" id="BjUsE2KQRY" role="37wK5m" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="jXlC_gZ7uS" role="3cqZAp">
+          <node concept="1rXfSq" id="jXlC_gZ7uQ" role="3clFbG">
+            <ref role="37wK5l" to="7bx7:~BaseAction.setActionAccess(jetbrains.mps.workbench.action.ActionAccess)" resolve="setActionAccess" />
+            <node concept="10M0yZ" id="jXlC_gZa58" role="37wK5m">
+              <ref role="3cqZAo" to="7bx7:~ActionAccess.NONE" resolve="NONE" />
+              <ref role="1PxDUh" to="7bx7:~ActionAccess" resolve="ActionAccess" />
+            </node>
           </node>
         </node>
       </node>
@@ -10420,28 +10439,9 @@
           <property role="TyiWK" value="false" />
           <property role="TyiWL" value="true" />
           <node concept="3clFbS" id="4qk_0lIuvUY" role="3clFbx">
-            <node concept="3clFbF" id="4qk_0lIz_3_" role="3cqZAp">
-              <node concept="2OqwBi" id="4qk_0lIz_4Q" role="3clFbG">
-                <node concept="2OqwBi" id="4tEWdMGJtwt" role="2Oq$k0">
-                  <node concept="37vLTw" id="4tEWdMGJsXA" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
-                  </node>
-                  <node concept="liA8E" id="4tEWdMGJurj" role="2OqNvi">
-                    <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4qk_0lIz_iU" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
-                  <node concept="1bVj0M" id="4qk_0lIz_K_" role="37wK5m">
-                    <node concept="3clFbS" id="4qk_0lIz_KA" role="1bW5cS">
-                      <node concept="3clFbF" id="4qk_0lIuvUZ" role="3cqZAp">
-                        <node concept="1rXfSq" id="4qk_0lIuvV0" role="3clFbG">
-                          <ref role="37wK5l" node="2jv$fqwD$$6" resolve="mergeNonConflictingRoots" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
+            <node concept="3clFbF" id="4qk_0lIuvUZ" role="3cqZAp">
+              <node concept="1rXfSq" id="4qk_0lIuvV0" role="3clFbG">
+                <ref role="37wK5l" node="2jv$fqwD$$6" resolve="mergeNonConflictingRoots" />
               </node>
             </node>
           </node>
@@ -11562,43 +11562,102 @@
       <node concept="3cqZAl" id="2jv$fqwD$$7" role="3clF45" />
       <node concept="3Tm1VV" id="2jv$fqwD$$8" role="1B3o_S" />
       <node concept="3clFbS" id="2jv$fqwD$$9" role="3clF47">
-        <node concept="3clFbF" id="2jv$fqwD$$a" role="3cqZAp">
-          <node concept="2OqwBi" id="2jv$fqwD$$b" role="3clFbG">
-            <node concept="liA8E" id="2jv$fqwD$$c" role="2OqNvi">
-              <ref role="37wK5l" to="bmv6:3$YpntjF4oh" resolve="applyChanges" />
-              <node concept="1rXfSq" id="2jv$fqwD$$d" role="37wK5m">
-                <ref role="37wK5l" node="2jv$fqwD$zD" resolve="getApplicableChangesInNonConflictingRoots" />
-              </node>
+        <node concept="3SKdUt" id="jXlC_h1k4j" role="3cqZAp">
+          <node concept="1PaTwC" id="jXlC_h1k4k" role="1aUNEU">
+            <node concept="3oM_SD" id="jXlC_h1oU9" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
             </node>
-            <node concept="37vLTw" id="2jv$fqwD$$e" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+            <node concept="3oM_SD" id="jXlC_h1oUZ" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="jXlC_h1oXx" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPCG" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPDy" role="1PaTwD">
+              <property role="3oM_SC" value="UndoRunnable" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPFY" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPH4" role="1PaTwD">
+              <property role="3oM_SC" value="better" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPIa" role="1PaTwD">
+              <property role="3oM_SC" value="name," />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPJ0" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPJ1" role="1PaTwD">
+              <property role="3oM_SC" value="stick" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPK7" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="63NfSAAPPK8" role="1PaTwD">
+              <property role="3oM_SC" value="writeAction?" />
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2jv$fqwD$$f" role="3cqZAp">
-          <node concept="3y3z36" id="2jv$fqwD$$g" role="3clFbw">
-            <node concept="10Nm6u" id="2jv$fqwD$$h" role="3uHU7w" />
-            <node concept="37vLTw" id="2jv$fqwD$$i" role="3uHU7B">
-              <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="2jv$fqwD$$j" role="3clFbx">
-            <node concept="3clFbF" id="2jv$fqwD$$k" role="3cqZAp">
-              <node concept="2OqwBi" id="2jv$fqwD$$l" role="3clFbG">
-                <node concept="liA8E" id="2jv$fqwD$$m" role="2OqNvi">
-                  <ref role="37wK5l" to="bmv6:3$YpntjF4oh" resolve="applyChanges" />
-                  <node concept="1rXfSq" id="2jv$fqwD$$n" role="37wK5m">
-                    <ref role="37wK5l" node="2jv$fqwD$zX" resolve="getApplicableChangesInMetadata" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="2jv$fqwD$$o" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
-                </node>
+        <node concept="3clFbF" id="4qk_0lIz_3_" role="3cqZAp">
+          <node concept="2OqwBi" id="4qk_0lIz_4Q" role="3clFbG">
+            <node concept="2OqwBi" id="4tEWdMGJtwt" role="2Oq$k0">
+              <node concept="37vLTw" id="4tEWdMGJsXA" role="2Oq$k0">
+                <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
+              </node>
+              <node concept="liA8E" id="4tEWdMGJurj" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
               </node>
             </node>
-            <node concept="3clFbF" id="2jv$fqwD$$p" role="3cqZAp">
-              <node concept="1rXfSq" id="2jv$fqwD$$q" role="3clFbG">
-                <ref role="37wK5l" node="2jv$fqwD$_T" resolve="applyMetadataChanges" />
+            <node concept="liA8E" id="4qk_0lIz_iU" role="2OqNvi">
+              <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
+              <node concept="1bVj0M" id="4qk_0lIz_K_" role="37wK5m">
+                <node concept="3clFbS" id="4qk_0lIz_KA" role="1bW5cS">
+                  <node concept="3clFbF" id="2jv$fqwD$$a" role="3cqZAp">
+                    <node concept="2OqwBi" id="2jv$fqwD$$b" role="3clFbG">
+                      <node concept="liA8E" id="2jv$fqwD$$c" role="2OqNvi">
+                        <ref role="37wK5l" to="bmv6:3$YpntjF4oh" resolve="applyChanges" />
+                        <node concept="1rXfSq" id="2jv$fqwD$$d" role="37wK5m">
+                          <ref role="37wK5l" node="2jv$fqwD$zD" resolve="getApplicableChangesInNonConflictingRoots" />
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="2jv$fqwD$$e" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbJ" id="2jv$fqwD$$f" role="3cqZAp">
+                    <node concept="3y3z36" id="2jv$fqwD$$g" role="3clFbw">
+                      <node concept="10Nm6u" id="2jv$fqwD$$h" role="3uHU7w" />
+                      <node concept="37vLTw" id="2jv$fqwD$$i" role="3uHU7B">
+                        <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="2jv$fqwD$$j" role="3clFbx">
+                      <node concept="3clFbF" id="2jv$fqwD$$k" role="3cqZAp">
+                        <node concept="2OqwBi" id="2jv$fqwD$$l" role="3clFbG">
+                          <node concept="liA8E" id="2jv$fqwD$$m" role="2OqNvi">
+                            <ref role="37wK5l" to="bmv6:3$YpntjF4oh" resolve="applyChanges" />
+                            <node concept="1rXfSq" id="2jv$fqwD$$n" role="37wK5m">
+                              <ref role="37wK5l" node="2jv$fqwD$zX" resolve="getApplicableChangesInMetadata" />
+                            </node>
+                          </node>
+                          <node concept="37vLTw" id="2jv$fqwD$$o" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbF" id="2jv$fqwD$$p" role="3cqZAp">
+                        <node concept="1rXfSq" id="2jv$fqwD$$q" role="3clFbG">
+                          <ref role="37wK5l" node="2jv$fqwD$_T" resolve="applyMetadataChanges" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
