@@ -2079,25 +2079,27 @@
     <property role="TrG5h" value="ResetState" />
     <property role="3GE5qa" value="actions" />
     <node concept="3Tm1VV" id="BjUsE2KR6Y" role="1B3o_S" />
-    <node concept="3uibUv" id="BjUsE2KR7g" role="1zkMxy">
-      <ref role="3uigEE" to="7bx7:~BaseAction" resolve="BaseAction" />
+    <node concept="3uibUv" id="jXlC_gUUcU" role="1zkMxy">
+      <ref role="3uigEE" to="qkt:~AnAction" resolve="AnAction" />
     </node>
     <node concept="3uibUv" id="3m6vHQ0jWU8" role="EKbjA">
       <ref role="3uigEE" to="4nm9:~DumbAware" resolve="DumbAware" />
     </node>
     <node concept="312cEg" id="BjUsE2KR6V" role="jymVt">
       <property role="TrG5h" value="myMergeModelsDialog" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="2jv$fqxbo6s" role="1tU5fm">
         <ref role="3uigEE" node="2jv$fqwD$ox" resolve="MergeModelsPanel" />
       </node>
       <node concept="3Tm6S6" id="BjUsE2KR6W" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="jXlC_gUUVK" role="jymVt" />
     <node concept="3clFbW" id="BjUsE2KR6Z" role="jymVt">
       <node concept="3cqZAl" id="BjUsE2KR70" role="3clF45" />
       <node concept="3Tm1VV" id="BjUsE2KR71" role="1B3o_S" />
       <node concept="3clFbS" id="BjUsE2KR72" role="3clF47">
         <node concept="XkiVB" id="BjUsE2KR73" role="3cqZAp">
-          <ref role="37wK5l" to="7bx7:~BaseAction.&lt;init&gt;(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="BaseAction" />
+          <ref role="37wK5l" to="qkt:~AnAction.&lt;init&gt;(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="AnAction" />
           <node concept="Xl_RD" id="BjUsE2KR74" role="37wK5m">
             <property role="Xl_RC" value="Reset Merge State" />
           </node>
@@ -2117,10 +2119,12 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="BjUsE2KR7b" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyzjYe" role="3clFbG">
-            <ref role="37wK5l" to="7bx7:~BaseAction.setDisableOnNoProject(boolean)" resolve="setDisableOnNoProject" />
-            <node concept="3clFbT" id="BjUsE2KR7d" role="37wK5m" />
+        <node concept="3clFbF" id="jXlC_gUWJk" role="3cqZAp">
+          <node concept="1rXfSq" id="jXlC_gUWJi" role="3clFbG">
+            <ref role="37wK5l" to="qkt:~AnAction.setEnabledInModalContext(boolean)" resolve="setEnabledInModalContext" />
+            <node concept="3clFbT" id="jXlC_gUXWM" role="37wK5m">
+              <property role="3clFbU" value="true" />
+            </node>
           </node>
         </node>
       </node>
@@ -2131,27 +2135,21 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="BjUsE2KR7h" role="jymVt">
-      <property role="TrG5h" value="doExecute" />
-      <node concept="3Tmbuc" id="BjUsE2KR7i" role="1B3o_S" />
-      <node concept="3cqZAl" id="BjUsE2KR7j" role="3clF45" />
-      <node concept="37vLTG" id="BjUsE2KR7k" role="3clF46">
+    <node concept="2tJIrI" id="jXlC_gUYfb" role="jymVt" />
+    <node concept="3clFb_" id="jXlC_gUYyr" role="jymVt">
+      <property role="TrG5h" value="actionPerformed" />
+      <node concept="3Tm1VV" id="jXlC_gUYys" role="1B3o_S" />
+      <node concept="3cqZAl" id="jXlC_gUYyv" role="3clF45" />
+      <node concept="37vLTG" id="jXlC_gUYyw" role="3clF46">
         <property role="TrG5h" value="event" />
-        <node concept="3uibUv" id="BjUsE2KR7l" role="1tU5fm">
+        <node concept="3uibUv" id="jXlC_gUYyx" role="1tU5fm">
           <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
         </node>
-      </node>
-      <node concept="37vLTG" id="BjUsE2KR7m" role="3clF46">
-        <property role="TrG5h" value="map" />
-        <node concept="3uibUv" id="BjUsE2KR7n" role="1tU5fm">
-          <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-          <node concept="17QB3L" id="BjUsE2KR7o" role="11_B2D" />
-          <node concept="3uibUv" id="BjUsE2KR7p" role="11_B2D">
-            <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-          </node>
+        <node concept="2AHcQZ" id="jXlC_gUYyy" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="3clFbS" id="BjUsE2KR7q" role="3clF47">
+      <node concept="3clFbS" id="jXlC_gUYyz" role="3clF47">
         <node concept="3clFbF" id="BjUsE2KR7r" role="3cqZAp">
           <node concept="2OqwBi" id="BjUsE2KR7s" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeunmS" role="2Oq$k0">
@@ -2163,7 +2161,7 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="3tYsUK_S7i_" role="2AJF6D">
+      <node concept="2AHcQZ" id="jXlC_gUYy$" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -12376,37 +12374,60 @@
       <node concept="3cqZAl" id="2jv$fqwD$Dl" role="3clF45" />
       <node concept="3Tm1VV" id="2jv$fqwD$Dm" role="1B3o_S" />
       <node concept="3clFbS" id="2jv$fqwD$Dn" role="3clF47">
-        <node concept="3clFbF" id="2jv$fqwD$Do" role="3cqZAp">
-          <node concept="2OqwBi" id="2jv$fqwD$Dp" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuSnn" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-            </node>
-            <node concept="liA8E" id="2jv$fqwD$Dr" role="2OqNvi">
-              <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
-              <node concept="37vLTw" id="2jv$fqwD$Ds" role="37wK5m">
-                <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
+        <node concept="3clFbF" id="jXlC_gVJDL" role="3cqZAp">
+          <node concept="2OqwBi" id="jXlC_gW28k" role="3clFbG">
+            <node concept="2OqwBi" id="jXlC_gVPWo" role="2Oq$k0">
+              <node concept="37vLTw" id="jXlC_gVJDJ" role="2Oq$k0">
+                <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
+              </node>
+              <node concept="liA8E" id="jXlC_gVW_S" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="2jv$fqwD$Dt" role="3cqZAp">
-          <node concept="3y3z36" id="2jv$fqwD$Du" role="3clFbw">
-            <node concept="10Nm6u" id="2jv$fqwD$Dv" role="3uHU7w" />
-            <node concept="37vLTw" id="2jv$fqwD$Dw" role="3uHU7B">
-              <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="2jv$fqwD$Dx" role="3clFbx">
-            <node concept="3clFbF" id="2jv$fqwD$Dy" role="3cqZAp">
-              <node concept="2OqwBi" id="2jv$fqwD$Dz" role="3clFbG">
-                <node concept="liA8E" id="2jv$fqwD$D$" role="2OqNvi">
-                  <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
-                  <node concept="37vLTw" id="2jv$fqwD$D_" role="37wK5m">
-                    <ref role="3cqZAo" node="2jv$fqwD$oS" resolve="myMetadataInitialState" />
+            <node concept="liA8E" id="jXlC_gW7f4" role="2OqNvi">
+              <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
+              <node concept="1bVj0M" id="jXlC_gWlJ3" role="37wK5m">
+                <node concept="3clFbS" id="jXlC_gWlJ6" role="1bW5cS">
+                  <node concept="9aQIb" id="jXlC_gWzGK" role="3cqZAp">
+                    <node concept="3clFbS" id="jXlC_gWzGL" role="9aQI4">
+                      <node concept="3clFbF" id="2jv$fqwD$Do" role="3cqZAp">
+                        <node concept="2OqwBi" id="2jv$fqwD$Dp" role="3clFbG">
+                          <node concept="37vLTw" id="2BHiRxeuSnn" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                          </node>
+                          <node concept="liA8E" id="2jv$fqwD$Dr" role="2OqNvi">
+                            <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
+                            <node concept="37vLTw" id="2jv$fqwD$Ds" role="37wK5m">
+                              <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbJ" id="2jv$fqwD$Dt" role="3cqZAp">
+                        <node concept="3y3z36" id="2jv$fqwD$Du" role="3clFbw">
+                          <node concept="10Nm6u" id="2jv$fqwD$Dv" role="3uHU7w" />
+                          <node concept="37vLTw" id="2jv$fqwD$Dw" role="3uHU7B">
+                            <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
+                          </node>
+                        </node>
+                        <node concept="3clFbS" id="2jv$fqwD$Dx" role="3clFbx">
+                          <node concept="3clFbF" id="2jv$fqwD$Dy" role="3cqZAp">
+                            <node concept="2OqwBi" id="2jv$fqwD$Dz" role="3clFbG">
+                              <node concept="liA8E" id="2jv$fqwD$D$" role="2OqNvi">
+                                <ref role="37wK5l" to="bmv6:2KMWrOXq2tx" resolve="restoreFullState" />
+                                <node concept="37vLTw" id="2jv$fqwD$D_" role="37wK5m">
+                                  <ref role="3cqZAo" node="2jv$fqwD$oS" resolve="myMetadataInitialState" />
+                                </node>
+                              </node>
+                              <node concept="37vLTw" id="2jv$fqwD$DA" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                   </node>
-                </node>
-                <node concept="37vLTw" id="2jv$fqwD$DA" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
                 </node>
               </node>
             </node>

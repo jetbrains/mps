@@ -433,10 +433,12 @@ public class MergeModelsPanel extends JPanel {
   }
 
   public void resetState() {
-    myMergeSession.restoreFullState(myInitialState);
-    if (myMetadataMergeSession != null) {
-      myMetadataMergeSession.restoreFullState(myMetadataInitialState);
-    }
+    myProjectRepository.getModelAccess().runWriteAction(() -> {
+      myMergeSession.restoreFullState(myInitialState);
+      if (myMetadataMergeSession != null) {
+        myMetadataMergeSession.restoreFullState(myMetadataInitialState);
+      }
+    });
     rebuildLater();
   }
 

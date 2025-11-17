@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ public interface ActionAccess {
   class CommandProjectAccess implements ActionAccess {
     @Override
     public void runWithAccess(AnActionEvent event, Runnable execute) {
-      ProjectHelper.getModelAccess(event.getData(CommonDataKeys.PROJECT)).executeCommand(new UndoRunnable.Base(event.getPresentation().getText(), null) {
+      ProjectHelper.getModelAccess(AnAction.getEventProject(event)).executeCommand(new UndoRunnable.Base(event.getPresentation().getText(), null) {
         @Override
         public void run() {
           execute.run();
@@ -83,7 +83,7 @@ public interface ActionAccess {
     }
     @Override
     public boolean collectAccessData(AnActionEvent event) {
-      return event.getData(CommonDataKeys.PROJECT) != null;
+      return AnAction.getEventProject(event) != null;
     }
   }
 
@@ -95,7 +95,8 @@ public interface ActionAccess {
     public void runWithAccess(AnActionEvent event, Runnable execute) {
       Project project = AnAction.getEventProject(event);
       if (project != null && !project.isDisposed()) {
-        Logger.getLogger(ActionAccess.class).warning(String.format("Action %s needs a command but is enabled for executing without project.", getClass().getName()));
+        Logger.getLogger(ActionAccess.class).warning(String.format("Action %s needs a command but is enabled for executing without project.",
+                                                                   event.getPresentation().getText()));
         ProjectHelper.getModelAccess(project).executeCommand(new UndoRunnable.Base(event.getPresentation().getText(), null) {
           @Override
           public void run() {
@@ -103,7 +104,7 @@ public interface ActionAccess {
           }
         });
       } else {
-        Logger.getLogger(ActionAccess.class).error(String.format("Action %s needs a command but is executed without project.", getClass().getName()));
+        Logger.getLogger(ActionAccess.class).error(String.format("Action %s needs a command but is executed without project.", event.getPresentation().getText()));
         // Present implementation of openapi.ModelAccess in global repository doesn't support commands,
         // thus we run it as a mere write action
         MPSCoreComponents.getInstance().getModuleRepository().getModelAccess().runWriteAction(execute);
@@ -125,7 +126,7 @@ public interface ActionAccess {
   class ReadProjectAccess implements ActionAccess {
     @Override
     public void runWithAccess(AnActionEvent event, Runnable execute) {
-      ProjectHelper.getModelAccess(event.getData(CommonDataKeys.PROJECT)).runReadAction(execute);
+      ProjectHelper.getModelAccess(AnAction.getEventProject(event)).runReadAction(execute);
     }
     @Override
     public boolean isMakeCompatible() {
@@ -133,7 +134,7 @@ public interface ActionAccess {
     }
     @Override
     public boolean collectAccessData(AnActionEvent event) {
-      return event.getData(CommonDataKeys.PROJECT) != null;
+      return AnAction.getEventProject(event) != null;
     }
   }
 }
