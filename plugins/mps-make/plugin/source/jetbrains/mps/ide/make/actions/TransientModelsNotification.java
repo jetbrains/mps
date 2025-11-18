@@ -104,7 +104,9 @@ public class TransientModelsNotification {
     @Override
     public void sessionClosed(MakeNotification notification) {
       mySessionJustOpened = false;
-      selectTransientsFolderLater();
+      if (myProject == notification.getProject()) {
+        selectTransientsFolderLater();
+      }
     }
   }
 
