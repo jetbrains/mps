@@ -36,16 +36,19 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_PropertyValues;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
-import java.util.ArrayList;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -58,7 +61,6 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class UnderlinedStyleClassItem_EditorBuilder_a extends AbstractEditorBuilder {
@@ -129,7 +131,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no underlined>");
       editorCell.setCellId("property_underlined");
-      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new UnderlinedStyleClassItem_underlined_cellMenu_4fi5xp_a0c0(), new UnderlinedStyleClassItem_generic_cellMenu_4fi5xp_b0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new UnderlinedStyleClassItem_generic_cellMenu_4fi5xp_a0c0(), new UnderlinedStyleClassItem_generic_cellMenu_4fi5xp_b0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where((it) -> Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property));
@@ -142,25 +144,27 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
-  public static class UnderlinedStyleClassItem_underlined_cellMenu_4fi5xp_a0c0 extends AbstractCellMenuPart_PropertyValues {
-    public UnderlinedStyleClassItem_underlined_cellMenu_4fi5xp_a0c0() {
-    }
-    @Override
-    public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-      return ListSequence.fromList(super.createActions(cellContext, editorContext)).select((action) -> {
-        return (SubstituteAction) new NodeSubstituteActionWrapper(action) {
-          @Override
-          public EditorMenuTraceInfo getEditorMenuTraceInfo() {
-            EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
-            result.setDescriptor(new EditorMenuDescriptorBase("property postfix values", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1676468925319120275")));
-            return result;
-          }
-        };
-      }).toList();
+  public static class UnderlinedStyleClassItem_generic_cellMenu_4fi5xp_a0c0 extends AbstractCellMenuPart_Generic_Group {
+    public UnderlinedStyleClassItem_generic_cellMenu_4fi5xp_a0c0() {
     }
 
-    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
-      return ListSequence.fromListAndArray(new ArrayList<String>(), "0", "1", "2");
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+      return SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1074bc650e6L, "jetbrains.mps.lang.editor.structure.UnderlineStyle"));
+
+    }
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
+    }
+    private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      SPropertyOperations.assignEnum(node, PROPS.underlined$90c$, parameterObject);
+    }
+    protected boolean isReferentPresentation() {
+      return false;
+    }
+
+    @Override
+    protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
+      return new EditorMenuDescriptorBase("generic group with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "5329082089172707645"));
     }
   }
   public static class UnderlinedStyleClassItem_generic_cellMenu_4fi5xp_b0c0 extends AbstractCellMenuPart_Generic_Item {
