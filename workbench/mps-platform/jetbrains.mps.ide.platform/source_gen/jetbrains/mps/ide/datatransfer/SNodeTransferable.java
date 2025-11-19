@@ -34,7 +34,6 @@ public class SNodeTransferable implements Transferable {
 
   public SNodeTransferable(List<SNode> nodes, String text) {
     myPasteData = saveNodes(nodes, null);
-    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
     mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
@@ -47,7 +46,6 @@ public class SNodeTransferable implements Transferable {
 
   public SNodeTransferable(@NotNull List<SNode> nodes, String text, Map<SNode, Set<SNode>> nodesAndAttributes) {
     myPasteData = saveNodes(nodes, nodesAndAttributes);
-    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
     mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
@@ -65,7 +63,6 @@ public class SNodeTransferable implements Transferable {
     // not as reference (as I would expect). See TestAutoresolve_Variable test for sample code.
     saveText(text);
     myPasteData = saveNodes(Collections.singletonList(node), null);
-    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
     mySupportedDataFlavors.add(SNodeClip.NODE);
     mySNodeReference = node.getReference();
     mySupportedDataFlavors.add(SNodeClip.NODEREF);
@@ -83,14 +80,7 @@ public class SNodeTransferable implements Transferable {
   @Override
   public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
     if (isDataFlavorSupported(flavor)) {
-      if (SModelDataFlavor.sNode.equals(flavor)) {
-        // FIXME for transition period of 1 release we still support this flavor, and keep [ide.platform]SNodeTransferable
-        //      in Clipboard. I'm not aware of clients using SNodeTransferable directly, and generally there's no need to,
-        //      and the code will be removed after 2025.1
-        //      Perhaps, we shall replace SNodeTransferable with another Transferable implementation (SNodeClip?), which
-        //      won't be part of [ide.platform], not to drag complete IDEA platform just for the sake of Clipboard operations.
-        return this;
-      } else if (SNodeClip.NODEREF.equals(flavor)) {
+      if (SNodeClip.NODEREF.equals(flavor)) {
         return mySNodeReference;
       } else if (SNodeClip.NODE.equals(flavor)) {
         return createNodeData();
