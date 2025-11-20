@@ -2,6 +2,13 @@
 <project version="4">
   <component name="MPSProject">
     <projectModules>
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang1DevKit/jetbrains.mps.samples.generator_demo.DemoLang1DevKit.devkit" folder="" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang2DevKit/jetbrains.mps.samples.generator_demo.DemoLang2DevKit.devkit" folder="" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang3DevKit/jetbrains.mps.samples.generator_demo.DemoLang3DevKit.devkit" folder="" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang4DevKit/jetbrains.mps.samples.generator_demo.DemoLang4DevKit.devkit" folder="" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang5DevKit/jetbrains.mps.samples.generator_demo.DemoLang5DevKit.devkit" folder="" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang6DevKit/jetbrains.mps.samples.generator_demo.DemoLang6DevKit.devkit" folder="" />
+      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang7DevKit/jetbrains.mps.samples.generator_demo.DemoLang7DevKit.devkit" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/demoLang1/jetbrains.mps.samples.generator_demo.demoLang1.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/demoLang2/jetbrains.mps.samples.generator_demo.demoLang2.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/demoLang3/jetbrains.mps.samples.generator_demo.demoLang3.mpl" folder="" />
@@ -9,8 +16,9 @@
       <modulePath path="$PROJECT_DIR$/languages/demoLang5/jetbrains.mps.samples.generator_demo.demoLang5.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/demoLang6/jetbrains.mps.samples.generator_demo.demoLang6.mpl" folder="" />
       <modulePath path="$PROJECT_DIR$/languages/demoLang7/jetbrains.mps.samples.generator_demo.demoLang7.mpl" folder="" />
+      <modulePath path="$PROJECT_DIR$/solutions/jetbrains.mps.samples.generator_demo.gen_plans/jetbrains.mps.samples.generator_demo.gen_plans.msd" folder="" />
       <modulePath path="$PROJECT_DIR$/solutions/test_models/jetbrains.mps.samples.generator_demo.test_models.msd" folder="" />
-      <modulePath path="$PROJECT_DIR$/../sampleXML/languages/sampleXML/jetbrains.mps.sampleXML.mpl" folder="" />
+      <modulePath path="${mps_home}/samples/sampleXML/languages/sampleXML/jetbrains.mps.sampleXML.mpl" folder="" />
     </projectModules>
   </component>
 </project>
