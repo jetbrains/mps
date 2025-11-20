@@ -33,11 +33,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.lang.plugin.behavior.ActionDeclaration__BehaviorDescriptor;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.DataContext;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.openapi.actionSystem.DataKey;
+import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import jetbrains.mps.ide.actions.MPSActionPlaces;
 
 public class IdeCommandUtil {
   public static void make(final Project project, final Iterable<? extends SModel> models, final Iterable<? extends SModule> modules, final boolean wholeProject, final boolean dirtyOnly, final boolean depClosure) {
@@ -145,14 +152,31 @@ public class IdeCommandUtil {
     return result;
   }
 
+  /**
+   * 
+   * 
+   * @deprecated requires {@code node//} in the template
+   */
+  @Deprecated(since = "2025.3", forRemoval = true)
   public static void callAction(final SNode actionDeclaration, final Map<String, Object> parameters) {
     AnAction action = ActionManager.getInstance().getAction(ActionDeclaration__BehaviorDescriptor.getActionId_id2JiSCAPXEb8.invoke(actionDeclaration));
-    ActionUtils.updateAndPerformAction(action, ActionUtils.createEvent(ActionPlaces.UNKNOWN, new DataContext() {
-      @Nullable
-      public Object getData(@NonNls String key) {
-        return MapSequence.fromMap(parameters).get(key);
+    ActionUtil.performAction(action, ActionUtils.createEvent(ActionPlaces.UNKNOWN, DataContext.EMPTY_CONTEXT));
+  }
+
+  public static void invokeActionUI(@NotNull Project mpsProject, @NotNull final String actionId, @Nullable Map<DataKey<?>, Object> parameters) {
+    AnAction action = ActionManager.getInstance().getAction(actionId);
+    SimpleDataContext.Builder dcBuilder = SimpleDataContext.builder();
+    if (mpsProject instanceof MPSProject) {
+      dcBuilder.add(MPSCommonDataKeys.MPS_PROJECT, (MPSProject) mpsProject);
+      dcBuilder.add(MPSCommonDataKeys.PROJECT, ((MPSProject) mpsProject).getProject());
+    }
+    if (parameters != null) {
+      for (DataKey<?> k : MapSequence.fromMap(parameters).keySet()) {
+        dcBuilder.add((DataKey<Object>) k, MapSequence.fromMap(parameters).get(k));
       }
-    }));
+    }
+    AnActionEvent event = ActionUtils.createEvent(MPSActionPlaces.MPS_CONSOLE_TOOL, dcBuilder.build());
+    ActionUtil.performAction(action, event);
   }
 
   private static void check_nf7729_a2a0a0a0a0c0a0a4(List<IFile> checkedDotOperand, Consumer<IFile> deleteIfFile) {

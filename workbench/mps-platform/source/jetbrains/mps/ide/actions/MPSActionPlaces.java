@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.actions;
 
@@ -21,4 +21,6 @@ public abstract class MPSActionPlaces extends ActionPlaces {
   // XXX I wonder if ActionPlaces.INTENTION_MENU is the best choice, or I'd rather go with a custom value
   //     getPopupPlace("MPS.Editor.Intentions.Popup");
   public static final String MPS_EDITOR_INTENTIONS_POPUP = ActionPlaces.INTENTION_MENU;
+
+  public static final String MPS_CONSOLE_TOOL = "mps.ConsoleTool";
 }

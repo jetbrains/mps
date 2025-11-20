@@ -57302,11 +57302,6 @@
         <property role="TrG5h" value="jetbrains.mps.console.scripts#1734392475490224704" />
         <property role="3LESm3" value="b372f31d-dc58-46b6-ad0b-2e1b2e187b9d" />
         <property role="ZpmtF" value="true" />
-        <node concept="1SiIV0" id="WMsS6mDlHW" role="3bR37C">
-          <node concept="3bR9La" id="WMsS6mDlHX" role="1SiIV1">
-            <ref role="3bR37D" node="3ZgZ1njKuFL" resolve="jetbrains.mps.lang.smodel.query" />
-          </node>
-        </node>
         <node concept="1BupzO" id="73GUf$umt1R" role="3bR31x">
           <property role="3ZfqAx" value="generator/template" />
           <property role="1Hdu6h" value="true" />
@@ -57648,11 +57643,6 @@
           <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
-      <node concept="1SiIV0" id="2rpbYG7qBji" role="3bR37C">
-        <node concept="3bR9La" id="2rpbYG7qBjj" role="1SiIV1">
-          <ref role="3bR37D" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
-        </node>
-      </node>
       <node concept="1SiIV0" id="22o5mI4OAF7" role="3bR37C">
         <node concept="3bR9La" id="22o5mI4OAF8" role="1SiIV1">
           <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
@@ -57823,6 +57813,11 @@
             <node concept="3qWCbU" id="73GUf$umt3I" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="2F48K2YdYTJ" role="3bR37C">
+          <node concept="3bR9La" id="2F48K2YdYTK" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L8K" resolve="jetbrains.mps.lang.plugin" />
           </node>
         </node>
       </node>

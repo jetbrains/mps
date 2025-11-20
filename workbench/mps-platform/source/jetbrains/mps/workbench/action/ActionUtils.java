@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,17 +21,17 @@ import com.intellij.ide.ui.customization.CustomActionsSchema;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.event.InputEvent;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -77,19 +77,16 @@ public class ActionUtils {
   }
 
   public static AnActionEvent createEvent(String place, DataContext context) {
-    return new AnActionEvent(null, context, place, new Presentation(), ActionManager.getInstance(), 0);
+    return AnActionEvent.createEvent(context, null, place, ActionUiKind.NONE, null);
   }
 
   public static AnActionEvent createEvent(InputEvent ie) {
     DataContext dataContext = DataManager.getInstance().getDataContext(ie.getComponent());
-    return new AnActionEvent(ie, dataContext, ActionPlaces.UNKNOWN, new Presentation(), ActionManager.getInstance(), 0);
+    return AnActionEvent.createEvent(dataContext, null, ActionPlaces.UNKNOWN, ActionUiKind.NONE, ie);
   }
 
   public static void updateAndPerformAction(AnAction action, AnActionEvent event) {
-    action.update(event);
-    if (event.getPresentation().isEnabled()) {
-      action.actionPerformed(event);
-    }
+    ActionUtil.performAction(action, event);
   }
 
   public static @NotNull List<AnAction> getChildren(@NotNull ActionGroup container) {
