@@ -581,7 +581,9 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
 //          events.add(new VFilePropertyChangeEvent(mySource, changedFile, VirtualFile.PROP_NAME, oldName, newName, false));
 //        }
 //      }
-      ApplicationManager.getApplication().assertWriteAccessAllowed(); // used to be in DeprecatedVirtualFileSystem.fireXXX methods
+      // not that we care a lot about specific MA for the notification, more of a tribute to legacy code.
+      // still, doesn't hurt to notice the moment we start dispatching events not under exclusive model access.
+      mySource.getRepository().getModelAccess().checkWriteAccess();
       myEventPublisher.beforeDelete(new ArrayList<>(deletedFiles));
 
       for (MPSNodeVirtualFile deletedFile : deletedFiles) {
