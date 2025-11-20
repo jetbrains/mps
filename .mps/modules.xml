@@ -45,13 +45,6 @@
       <modulePath path="$PROJECT_DIR$/core/tool/environment/jetbrains.mps.core.tool.environment.msd" folder="core.tool" />
       <modulePath path="$PROJECT_DIR$/core/typesystemEngine/solutions/jetbrains.mps.typesystemEngine/jetbrains.mps.typesystemEngine.msd" folder="core.aspects.typesystem" />
       <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.devkit.documentation/jetbrains.mps.devkit.documentation.devkit" folder="core.devkits" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang1DevKit/jetbrains.mps.samples.generator_demo.DemoLang1DevKit.devkit" folder="samples.generatorDemo" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang2DevKit/jetbrains.mps.samples.generator_demo.DemoLang2DevKit.devkit" folder="samples.generatorDemo" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang3DevKit/jetbrains.mps.samples.generator_demo.DemoLang3DevKit.devkit" folder="samples.generatorDemo" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang4DevKit/jetbrains.mps.samples.generator_demo.DemoLang4DevKit.devkit" folder="samples.generatorDemo" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang5DevKit/jetbrains.mps.samples.generator_demo.DemoLang5DevKit.devkit" folder="samples.generatorDemo" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang6DevKit/jetbrains.mps.samples.generator_demo.DemoLang6DevKit.devkit" folder="samples.generatorDemo" />
-      <modulePath path="$PROJECT_DIR$/devkits/jetbrains.mps.samples.generator_demo.DemoLang7DevKit/jetbrains.mps.samples.generator_demo.DemoLang7DevKit.devkit" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/editor/actions-runtime/jetbrains.mps.actions.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/editor/editing-runtime/jetbrains.mps.editing.runtime.msd" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" folder="core.aspects.editor" />
@@ -461,6 +454,13 @@
       <modulePath path="$PROJECT_DIR$/samples/fixedLengthReader/readerFramework/readerFramework.msd" folder="samples" />
       <modulePath path="$PROJECT_DIR$/samples/formulaLanguage/language/jetbrains.mps.samples.formulaLanguage.mpl" folder="samples" />
       <modulePath path="$PROJECT_DIR$/samples/formulaLanguage/runtime/jetbrains.mps.samples.formula.runtime.msd" folder="samples" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang1DevKit/jetbrains.mps.samples.generator_demo.DemoLang1DevKit.devkit" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang2DevKit/jetbrains.mps.samples.generator_demo.DemoLang2DevKit.devkit" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang3DevKit/jetbrains.mps.samples.generator_demo.DemoLang3DevKit.devkit" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang4DevKit/jetbrains.mps.samples.generator_demo.DemoLang4DevKit.devkit" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang5DevKit/jetbrains.mps.samples.generator_demo.DemoLang5DevKit.devkit" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang6DevKit/jetbrains.mps.samples.generator_demo.DemoLang6DevKit.devkit" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/devkits/jetbrains.mps.samples.generator_demo.DemoLang7DevKit/jetbrains.mps.samples.generator_demo.DemoLang7DevKit.devkit" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/languages/demoLang1/jetbrains.mps.samples.generator_demo.demoLang1.mpl" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/languages/demoLang2/jetbrains.mps.samples.generator_demo.demoLang2.mpl" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/languages/demoLang3/jetbrains.mps.samples.generator_demo.demoLang3.mpl" folder="samples.generatorDemo" />
@@ -468,6 +468,7 @@
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/languages/demoLang5/jetbrains.mps.samples.generator_demo.demoLang5.mpl" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/languages/demoLang6/jetbrains.mps.samples.generator_demo.demoLang6.mpl" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/languages/demoLang7/jetbrains.mps.samples.generator_demo.demoLang7.mpl" folder="samples.generatorDemo" />
+      <modulePath path="$PROJECT_DIR$/samples/generator_demo/solutions/jetbrains.mps.samples.generator_demo.gen_plans/jetbrains.mps.samples.generator_demo.gen_plans.msd" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/generator_demo/solutions/test_models/jetbrains.mps.samples.generator_demo.test_models.msd" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/samples/heating/jetbrains.mps.samples.heating.tabular/jetbrains.mps.samples.heating.tabular.mpl" folder="samples.heating" />
       <modulePath path="$PROJECT_DIR$/samples/heating/jetbrains.mps.samples.heating/jetbrains.mps.samples.heating.mpl" folder="samples.heating" />
@@ -557,7 +558,6 @@
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.build/jetbrains.mps.samples.xmlPersistence.build.msd" folder="samples.persistence" />
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence.ideaPlugin/jetbrains.mps.samples.xmlPersistence.ideaPlugin.msd" folder="samples.persistence" />
       <modulePath path="$PROJECT_DIR$/samples/xmlPersistence/languages/jetbrains.mps.samples.xmlPersistence/jetbrains.mps.samples.xmlPersistence.msd" folder="samples.persistence" />
-      <modulePath path="$PROJECT_DIR$/solutions/jetbrains.mps.samples.generator_demo.gen_plans/jetbrains.mps.samples.generator_demo.gen_plans.msd" folder="samples.generatorDemo" />
       <modulePath path="$PROJECT_DIR$/testbench/ideatestsolutions/ide.vcs.test/jetbrains.mps.ide.vcs.test.msd" folder="platform.vcs.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/jetbrains.mps.build.mps.testModules/jetbrains.mps.build.mps.testModules.msd" folder="plugins.build" />
       <modulePath path="$PROJECT_DIR$/testbench/jetbrains.mps.testbench.make/jetbrains.mps.testbench.make.msd" folder="testbench" />
