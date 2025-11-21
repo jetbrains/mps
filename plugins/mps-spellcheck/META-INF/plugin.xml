@@ -15,5 +15,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.editor\.spellcheck.*"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.spellchecker.*"/>
   </extensions>
 </idea-plugin>
