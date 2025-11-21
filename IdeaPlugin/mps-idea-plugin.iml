@@ -101,5 +101,6 @@
     <orderEntry type="module" module-name="vcs-platform" />
     <orderEntry type="module" module-name="mps-refactoring" />
     <orderEntry type="library" name="jps-build-test" level="project" />
+    <orderEntry type="library" name="jps-builders" level="project" />
   </component>
 </module>
