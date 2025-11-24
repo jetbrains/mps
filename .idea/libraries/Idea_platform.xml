@@ -162,8 +162,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
-      <root url="jar://$PROJECT_DIR$/lib/app.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
     </SOURCES>
   </library>
 </component>

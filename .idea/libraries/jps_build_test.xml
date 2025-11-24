@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/lib/jps/jps-build-test.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
+    </SOURCES>
   </library>
 </component>
