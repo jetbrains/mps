@@ -22,6 +22,7 @@ import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -188,6 +189,10 @@ public class ModelGenerationStatusManager implements CoreComponent {
         toNotify.add(m);
       }
     }
+    notifyChanged(toNotify);
+  }
+
+  private void notifyChanged(List<SModel> toNotify) {
     if (toNotify.isEmpty()) {
       return;
     }
@@ -210,6 +215,8 @@ public class ModelGenerationStatusManager implements CoreComponent {
    * NOTE, if nobody have asked for a status of a model with the given cacheFile, no notifications would get dispatched.
    */
   public void invalidateData(IFile cacheFile) {
+    // Note, invalidateCacheForFile() *removes* information about model from the cache, subsequent invalidateData(model) won't
+    // work as it would treat model as untracked
     SModelReference mr = myModelHashCache.invalidateCacheForFile(cacheFile);
     if (mr != null) {
       // XXX Likely, shall not notify immediately - not sure if it's appropriate to grab model read now.
@@ -220,7 +227,7 @@ public class ModelGenerationStatusManager implements CoreComponent {
       repository.getModelAccess().runReadAction(() -> {
         SModel model = mr.resolve(repository);
         if (model != null) {
-          invalidateData(Collections.singleton(model));
+          notifyChanged(Collections.singletonList(model));
         }
       });
     }
@@ -232,7 +239,8 @@ public class ModelGenerationStatusManager implements CoreComponent {
    */
   public void discard(Iterable<? extends SModel> models) {
     models.forEach(myModelHashCache::discard);
-    invalidateData(models);
+    // note, discard() removes entry about the model from the cache, invalidateData(model) then would consider the model as untracked
+    notifyChanged(IterableUtil.asList(models));
   }
 
   public void addGenerationStatusListener(ModelGenerationStatusListener l) {
