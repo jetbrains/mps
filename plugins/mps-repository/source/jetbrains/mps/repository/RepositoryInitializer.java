@@ -1,22 +1,12 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.repository;
 
+import com.intellij.ide.AppLifecycleListener;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.BaseComponent;
+import com.intellij.util.concurrency.AppJavaExecutorUtil;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.AdditionalLibrariesManager;
@@ -29,15 +19,18 @@ import jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
+import kotlinx.coroutines.CoroutineScope;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public final class RepositoryInitializingComponent implements BaseComponent {
+/**
+ * Migrated from {@linkplain jetbrains.mps.repository.RepositoryInitializingComponent}
+ */
+public class RepositoryInitializer implements Disposable {
   private final List<LibraryContributor> myContributors = new ArrayList<>();
 
-  public RepositoryInitializingComponent() {
+  @SuppressWarnings("UnstableApiUsage")
+  public RepositoryInitializer(CoroutineScope coroutineScope) {
     ApplicationManager.getApplication().getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
     final ApplicationPluginManager apm = ApplicationManager.getApplication().getService(ApplicationPluginManager.class);
     if (apm == null) {
@@ -46,6 +39,13 @@ public final class RepositoryInitializingComponent implements BaseComponent {
       // Not sure about ide plugin, though. Seems safe just to init APM here, prior to any contribution processing.
       throw new IllegalStateException("ApplicationPluginManager has to get initialized prior to contributing other modules");
     }
+
+    AppJavaExecutorUtil.executeOnPooledIoThread(coroutineScope, this::initComponent);
+  }
+
+  @Override
+  public void dispose() {
+    disposeComponent();
   }
 
   /**
@@ -67,9 +67,7 @@ public final class RepositoryInitializingComponent implements BaseComponent {
     return vfsManager.getFileSystem(PathManager.isFromSources() ? VFSManager.FILE_FS : VFSManager.JAVA_IO_FILE_FS);
   }
 
-
-  @Override
-  public void initComponent() {
+  protected void initComponent() {
     IFileSystem fs = getFS();
     myContributors.add(new BootstrapLibraryContributor(fs));
     if (PathManager.isFromSources()) {
@@ -79,11 +77,9 @@ public final class RepositoryInitializingComponent implements BaseComponent {
     myContributors.add(AdditionalLibrariesManager.getInstance().createContributor(fs));
     LibraryInitializer libraryInitializer = MPSCoreComponents.getInstance().getLibraryInitializer();
     libraryInitializer.load(myContributors);
-
   }
 
-  @Override
-  public void disposeComponent() {
+  protected void disposeComponent() {
     LibraryInitializer libraryInitializer = MPSCoreComponents.getInstance().getLibraryInitializer();
     libraryInitializer.unload(myContributors);
     myContributors.clear();
