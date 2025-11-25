@@ -57,8 +57,8 @@ public class JavaDocConverter {
     if (ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).isEmpty()) {
       ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).clear();
       ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(comment, LINKS.body$OAGp))));
-      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).clear();
     }
+    ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).clear();
     ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).visitAll((blockTag) -> {
       if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(blockTag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).isEmpty()) {
         convertBlockTag(blockTag);
@@ -123,7 +123,9 @@ public class JavaDocConverter {
       noneMatched = false;
       SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de82b71L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE"));
       List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.CodeInlineDocTag$Gw), LINKS.line$ymTj));
-      SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
+      if ((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SLinkOperations.getTarget(tag, LINKS.commentBody$_6eD))) {
+        SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
+      }
       return tag;
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.LinkInlineDocTag$lF)) {
@@ -131,13 +133,17 @@ public class JavaDocConverter {
       SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE"));
       SLinkOperations.setTarget(tag, LINKS.reference$Bpyd, SLinkOperations.getTarget(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.reference$AFth));
       List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.line$27GN));
-      SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
+      if ((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SLinkOperations.getTarget(tag, LINKS.commentBody$_6eD))) {
+        SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
+      }
       return tag;
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ValueInlineDocTag$yw)) {
       noneMatched = false;
       SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de80a39L, "jetbrains.mps.baseLanguage.javadoc.structure.ValueInlineDocTagTE"));
-      SLinkOperations.setTarget(tag, LINKS.variableReference$voEd, SLinkOperations.getTarget(SNodeOperations.as(oldTag, CONCEPTS.ValueInlineDocTag$yw), LINKS.variableReference$ASK4));
+      if ((SLinkOperations.getTarget(tag, LINKS.variableReference$voEd) == null)) {
+        SLinkOperations.setTarget(tag, LINKS.variableReference$voEd, SLinkOperations.getTarget(SNodeOperations.as(oldTag, CONCEPTS.ValueInlineDocTag$yw), LINKS.variableReference$ASK4));
+      }
       return tag;
     }
     throw new IllegalArgumentException("Cannot convert an unknown BaseInlineDocTag " + oldTag);
@@ -149,13 +155,13 @@ public class JavaDocConverter {
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.DeprecatedBlockDocTag$8n)) {
       noneMatched = false;
       SNode oldLine = SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.text$c2BW);
-      if ((oldLine != null)) {
+      if ((oldLine != null) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).isEmpty()) {
         List<SNode> newLines = convertCommentLinesToLines(ListSequence.fromListAndArray(new ArrayList<SNode>(), oldLine));
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).clear();
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(newLines));
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.text$c2BW));
-        return;
       }
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.as(tag, CONCEPTS.DeprecatedBlockDocTag$8n), LINKS.text$c2BW));
+      return;
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AuthorBlockDocTag$jR)) {
       noneMatched = false;
@@ -199,10 +205,12 @@ public class JavaDocConverter {
     if (noneMatched) {
       throw new IllegalArgumentException("Cannot convert an unknown BaseBlockDocTag " + tag);
     }
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).clear();
-    SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-    Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).addElement(line);
+    if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).isEmpty()) {
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).clear();
+      SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+      Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).addElement(line);
+    }
   }
 
   private static final class LINKS {
