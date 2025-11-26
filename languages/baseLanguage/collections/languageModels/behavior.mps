@@ -849,6 +849,74 @@
     <node concept="13hLZK" id="hEwJaUm" role="13h7CW">
       <node concept="3clFbS" id="hEwJaUn" role="2VODD2" />
     </node>
+    <node concept="13i0hz" id="6NYgDMy$Qzs" role="13h7CS">
+      <property role="TrG5h" value="operandCanBeNull" />
+      <ref role="13i0hy" to="tpek:hWYZ0eEN6z" resolve="operandCanBeNull" />
+      <node concept="3Tm1VV" id="6NYgDMy$Qzt" role="1B3o_S" />
+      <node concept="3clFbS" id="6NYgDMy$Qzy" role="3clF47">
+        <node concept="3SKdUt" id="6NYgDMy$QHz" role="3cqZAp">
+          <node concept="1PaTwC" id="6NYgDMy$QH$" role="1aUNEU">
+            <node concept="3oM_SD" id="6NYgDMy$QH_" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QKE" role="1PaTwD">
+              <property role="3oM_SC" value="feel" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QKW" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QLi" role="1PaTwD">
+              <property role="3oM_SC" value="long" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QLj" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QNR" role="1PaTwD">
+              <property role="3oM_SC" value="Sequence.USE_NULL_SEQUENCE" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QOt" role="1PaTwD">
+              <property role="3oM_SC" value="==" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QP3" role="1PaTwD">
+              <property role="3oM_SC" value="true," />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QQp" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QRf" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QRg" role="1PaTwD">
+              <property role="3oM_SC" value="never" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QSF" role="1PaTwD">
+              <property role="3oM_SC" value="face" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QT1" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QTB" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QVX" role="1PaTwD">
+              <property role="3oM_SC" value="operand" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QWN" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="6NYgDMy$QTS" role="1PaTwD">
+              <property role="3oM_SC" value="sequence.operation" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6NYgDMy$QGr" role="3cqZAp">
+          <node concept="3clFbT" id="6NYgDMy$QGq" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="6NYgDMy$Qzz" role="3clF45" />
+    </node>
   </node>
   <node concept="13h7C7" id="hEwJehQ">
     <property role="3GE5qa" value="list" />
