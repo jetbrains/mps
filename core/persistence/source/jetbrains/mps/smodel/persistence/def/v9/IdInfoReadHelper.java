@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -118,7 +118,10 @@ class IdInfoReadHelper {
     SConceptId conceptId = myIdEncoder.parseConceptId(myActualLang.getLanguageId(), id);
     myActualConcept = myMetaRegistry.registerConcept(conceptId, name);
     myActualConcept.parseImplementationKind(nodeInfo);
-    if (myActualConcept.isInterfaceConcept()) {
+    Boolean mmic; // XXX provisional code for MPS-39248, perhaps, shall stay for a year or two to migrate old projects
+    // and then just expect proper concept flags. OTOH, could be reasonable to look up actual concept kind, and MMIP is a
+    // legitimate way to perform this lookup.
+    if (myActualConcept.isInterfaceConcept() || ((mmic = myMetaInfoProvider.isInterfaceConcept(conceptId)) != null && mmic)) {
       // unlike ReadHelper in Binary persistence, no need for myActualConcept.markInterfaceConcept() as it's part of parseImplementationKind()
       final SInterfaceConcept ccc = MetaAdapterFactory.getInterfaceConcept(conceptId, name);
       myConceptMO = ccc;
