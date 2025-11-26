@@ -10,12 +10,10 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -38,58 +36,12 @@ public class check_LinkDeclaration_NonTypesystemRule extends AbstractNonTypesyst
       return;
     }
     SNode declaringConcept = SNodeOperations.getNodeAncestor(linkToCheck, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
-    List<SNode> supers = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(declaringConcept);
-    ListSequence.fromList(supers).addElement(declaringConcept);
-    Iterable<SNode> linksInSupers = ListSequence.fromList(supers).translate((concept) -> {
-      return (Iterable<SNode>) () -> {
-        return new YieldingIterator<SNode>() {
-          private int __CP__ = 0;
-          protected boolean moveToNext() {
-__loop__:
-            do {
-__switch__:
-              switch (this.__CP__) {
-                case -1:
-                  assert false : "Internal error";
-                  return false;
-                case 4:
-                  this._4_link_it = ListSequence.fromList(_3_links).iterator();
-                case 5:
-                  if (!(this._4_link_it.hasNext())) {
-                    this.__CP__ = 1;
-                    break;
-                  }
-                  this._4_link = this._4_link_it.next();
-                  this.__CP__ = 6;
-                  break;
-                case 7:
-                  this.__CP__ = 5;
-                  this.yield(_4_link);
-                  return true;
-                case 0:
-                  this._3_links = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$YU1f);
-                  this.__CP__ = 4;
-                  break;
-                case 6:
-                  this.__CP__ = 7;
-                  break;
-                default:
-                  break __loop__;
-              }
-            } while (true);
-            return false;
-          }
-          private List<SNode> _3_links;
-          private SNode _4_link;
-          private Iterator<SNode> _4_link_it;
-        };
-      };
-    });
-    for (SNode link : Sequence.fromIterable(linksInSupers)) {
+    List<SNode> allLinks = Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(declaringConcept, ((boolean) true)), LINKS.linkDeclaration$YU1f)).toList();
+    for (SNode link : ListSequence.fromList(allLinks)) {
       if (linkToCheck != link && SPropertyOperations.getString(linkToCheck, PROPS.role$Nsjf).equals(SPropertyOperations.getString(link, PROPS.role$Nsjf)) && SLinkOperations.getTarget(linkToCheck, LINKS.specializedLink$7ZCN) != link) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "link '" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212181840083", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, String.format("link '%s' is already declared in %s", SPropertyOperations.getString(link, PROPS.role$Nsjf), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(link, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212181840083", null, errorTarget);
         }
       }
     }
@@ -97,12 +49,12 @@ __switch__:
       if (SEnumOperations.isMember(SPropertyOperations.getEnum(linkToCheck, PROPS.metaClass$PeKc), 0xfc6f4e95b8L)) {
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$cxYK);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "reference cannot be unordered", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2395585628928851523", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "association link cannot be unordered", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2395585628928851523", null, errorTarget);
         }
       } else {
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$cxYK);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "unordered link should be multiple", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2395585628928560440", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(linkToCheck, "aggregation link with cardinality 1 should be unordered", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2395585628928560440", null, errorTarget);
         }
       }
     }
