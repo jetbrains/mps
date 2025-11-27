@@ -122,8 +122,8 @@ public class JavaDocConverter {
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.CodeInlineDocTag$Gw)) {
       noneMatched = false;
       SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de82b71L, "jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTagTE"));
-      List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.CodeInlineDocTag$Gw), LINKS.line$ymTj));
       if ((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SLinkOperations.getTarget(tag, LINKS.commentBody$_6eD))) {
+        List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.CodeInlineDocTag$Gw), LINKS.line$ymTj));
         SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
       }
       return tag;
@@ -132,8 +132,8 @@ public class JavaDocConverter {
       noneMatched = false;
       SNode tag = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE"));
       SLinkOperations.setTarget(tag, LINKS.reference$Bpyd, SLinkOperations.getTarget(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.reference$AFth));
-      List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.line$27GN));
       if ((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SLinkOperations.getTarget(tag, LINKS.commentBody$_6eD))) {
+        List<SNode> convertedLines = convertCommentLinesToLines(SLinkOperations.getChildren(SNodeOperations.as(oldTag, CONCEPTS.LinkInlineDocTag$lF), LINKS.line$27GN));
         SLinkOperations.setTarget(tag, LINKS.commentBody$_6eD, ListSequence.fromList(convertedLines).first());
       }
       return tag;
