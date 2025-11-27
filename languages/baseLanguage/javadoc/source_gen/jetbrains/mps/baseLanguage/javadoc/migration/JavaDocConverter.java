@@ -55,7 +55,6 @@ public class JavaDocConverter {
   }
   public static void convertBaseDocCommentToLangText(SNode comment) {
     if (ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).isEmpty()) {
-      ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).clear();
       ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.commentBody$sIzh)).addSequence(ListSequence.fromList(convertCommentLinesToLines(SLinkOperations.getChildren(comment, LINKS.body$OAGp))));
     }
     ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.body$OAGp)).clear();
@@ -206,7 +205,6 @@ public class JavaDocConverter {
       throw new IllegalArgumentException("Cannot convert an unknown BaseBlockDocTag " + tag);
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).isEmpty()) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).clear();
       SNode line = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
       Line__BehaviorDescriptor.parseAndAppendText_id68pBJP34v1v.invoke(line, text);
       ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(tag, CONCEPTS.BaseBlockDocTagWithText$HC), LINKS.commentBody$sIzh)).addElement(line);
