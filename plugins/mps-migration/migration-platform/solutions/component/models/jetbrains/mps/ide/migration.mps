@@ -10131,6 +10131,36 @@
       </node>
     </node>
     <node concept="2tJIrI" id="4biA4YBpqrV" role="jymVt" />
+    <node concept="3clFb_" id="1yS0HRGYd8Z" role="jymVt">
+      <property role="TrG5h" value="execute" />
+      <node concept="3Tm1VV" id="1yS0HRGYd94" role="1B3o_S" />
+      <node concept="3cqZAl" id="1yS0HRGYd95" role="3clF45" />
+      <node concept="37vLTG" id="1yS0HRGYd96" role="3clF46">
+        <property role="TrG5h" value="pm" />
+        <node concept="3uibUv" id="1yS0HRGYd97" role="1tU5fm">
+          <ref role="3uigEE" to="bdll:~CleanupProjectMigration" resolve="CleanupProjectMigration" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1yS0HRGYd99" role="3clF47">
+        <node concept="3clFbF" id="1yS0HRGYosj" role="3cqZAp">
+          <node concept="2OqwBi" id="1yS0HRGYqpl" role="3clFbG">
+            <node concept="37vLTw" id="1yS0HRGYosf" role="2Oq$k0">
+              <ref role="3cqZAo" node="1yS0HRGYd96" resolve="pm" />
+            </node>
+            <node concept="liA8E" id="1yS0HRGYw7r" role="2OqNvi">
+              <ref role="37wK5l" to="bdll:~ProjectMigration.execute(jetbrains.mps.project.Project)" resolve="execute" />
+              <node concept="37vLTw" id="1yS0HRGYzs0" role="37wK5m">
+                <ref role="3cqZAo" node="4biA4YBp4Zi" resolve="myProject" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1yS0HRGYd9a" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1yS0HRGYBAA" role="jymVt" />
     <node concept="3clFb_" id="3bMTD0ECobs" role="jymVt">
       <property role="TrG5h" value="executeMigrationScript" />
       <property role="DiZV1" value="false" />

@@ -37,7 +37,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
     if (!(Objects.equals(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$PeKc), SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, "link '" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "' hase incorrect metaclass - specialized link '" + SPropertyOperations.getString(specializedLink, PROPS.role$Nsjf) + "' is of '" + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$PeKc)) + "' metaclass", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2854075155749508006", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, String.format("wrong metaclass for link '%s', specialized link '%s' is '%s'", SPropertyOperations.getString(link, PROPS.role$Nsjf), SPropertyOperations.getString(specializedLink, PROPS.role$Nsjf), SEnumOperations.getMemberName0(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$PeKc))), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2854075155749508006", null, errorTarget);
       }
     }
 

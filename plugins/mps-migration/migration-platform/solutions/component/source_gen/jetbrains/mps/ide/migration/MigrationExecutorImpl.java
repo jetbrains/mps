@@ -16,6 +16,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.ide.migration.util.MigrationDataUtil;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.migration.global.ProjectMigration;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -68,6 +69,11 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   }
   @Override
   public void execute(ProjectMigration pm) {
+    pm.execute(myProject);
+  }
+
+  @Override
+  public void execute(CleanupProjectMigration pm) {
     pm.execute(myProject);
   }
 

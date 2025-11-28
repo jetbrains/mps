@@ -10317,26 +10317,11 @@
                   <node concept="3oM_SD" id="29gL9LWxUM2" role="1PaTwD">
                     <property role="3oM_SC" value="have" />
                   </node>
-                  <node concept="3oM_SD" id="29gL9LWxUMb" role="1PaTwD">
+                  <node concept="3oM_SD" id="koLduWKeW3" role="1PaTwD">
                     <property role="3oM_SC" value="saved." />
                   </node>
-                  <node concept="3oM_SD" id="6Fie5N$UVWn" role="1PaTwD">
-                    <property role="3oM_SC" value="Not" />
-                  </node>
-                  <node concept="3oM_SD" id="6Fie5N$UVWX" role="1PaTwD">
-                    <property role="3oM_SC" value="sure" />
-                  </node>
-                  <node concept="3oM_SD" id="6Fie5N$UVX9" role="1PaTwD">
-                    <property role="3oM_SC" value="if" />
-                  </node>
-                  <node concept="3oM_SD" id="6Fie5N$UVXm" role="1PaTwD">
-                    <property role="3oM_SC" value="need" />
-                  </node>
-                  <node concept="3oM_SD" id="6Fie5N$UVX$" role="1PaTwD">
-                    <property role="3oM_SC" value="EDT," />
-                  </node>
-                  <node concept="3oM_SD" id="Ez9hPA3IEi" role="1PaTwD">
-                    <property role="3oM_SC" value="definitely" />
+                  <node concept="3oM_SD" id="koLduWKeZh" role="1PaTwD">
+                    <property role="3oM_SC" value="Definitely" />
                   </node>
                   <node concept="3oM_SD" id="Ez9hPA3IGR" role="1PaTwD">
                     <property role="3oM_SC" value="doesn't" />
@@ -10346,6 +10331,61 @@
                   </node>
                   <node concept="3oM_SD" id="Ez9hPA3IN1" role="1PaTwD">
                     <property role="3oM_SC" value="write." />
+                  </node>
+                </node>
+              </node>
+              <node concept="3SKdUt" id="koLduWKy07" role="3cqZAp">
+                <node concept="1PaTwC" id="koLduWKy08" role="1aUNEU">
+                  <node concept="3oM_SD" id="koLduWKy09" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKy0c" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKy0e" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWK_U0" role="1PaTwD">
+                    <property role="3oM_SC" value="Used" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWK_Wa" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWK_Wb" role="1PaTwD">
+                    <property role="3oM_SC" value="work" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWK_Yd" role="1PaTwD">
+                    <property role="3oM_SC" value="w/o" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWK_Z4" role="1PaTwD">
+                    <property role="3oM_SC" value="EDT," />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA0g" role="1PaTwD">
+                    <property role="3oM_SC" value="but" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA1s" role="1PaTwD">
+                    <property role="3oM_SC" value="since" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA2j" role="1PaTwD">
+                    <property role="3oM_SC" value="2025.3" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA3v" role="1PaTwD">
+                    <property role="3oM_SC" value="save" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKAaU" role="1PaTwD">
+                    <property role="3oM_SC" value="hangs" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA6G" role="1PaTwD">
+                    <property role="3oM_SC" value="if" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA8I" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWKA94" role="1PaTwD">
+                    <property role="3oM_SC" value="in" />
+                  </node>
+                  <node concept="3oM_SD" id="koLduWLCUz" role="1PaTwD">
+                    <property role="3oM_SC" value="EDT(MPS-39172)" />
                   </node>
                 </node>
               </node>
@@ -10404,9 +10444,24 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="29gL9LWxyWY" role="3cqZAp">
-                <node concept="1rXfSq" id="29gL9LWxyWW" role="3clFbG">
-                  <ref role="37wK5l" node="2LcGAftrxkR" resolve="saveProject" />
+              <node concept="3clFbF" id="EaerqL22tX" role="3cqZAp">
+                <node concept="2OqwBi" id="EaerqL269V" role="3clFbG">
+                  <node concept="2YIFZM" id="EaerqL22tZ" role="2Oq$k0">
+                    <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                    <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                  </node>
+                  <node concept="liA8E" id="EaerqL2c1f" role="2OqNvi">
+                    <ref role="37wK5l" to="bd8o:~Application.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
+                    <node concept="1bVj0M" id="EaerqL2y09" role="37wK5m">
+                      <node concept="3clFbS" id="EaerqL2y0c" role="1bW5cS">
+                        <node concept="3clFbF" id="EaerqL2_ff" role="3cqZAp">
+                          <node concept="1rXfSq" id="29gL9LWxyWW" role="3clFbG">
+                            <ref role="37wK5l" node="2LcGAftrxkR" resolve="saveProject" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
               <node concept="3clFbF" id="3c6oXHAqX2e" role="3cqZAp">

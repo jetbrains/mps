@@ -25,8 +25,9 @@ public final class SequenceOperation__BehaviorDescriptor extends BaseBHDescripto
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation");
 
   public static final SMethod<SNode> getLeft_idhEwJaTR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877497463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<Boolean> operandCanBeNull_idhWYZ0eEN6z = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("operandCanBeNull").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(323410281720656291L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeft_idhEwJaTR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeft_idhEwJaTR, operandCanBeNull_idhWYZ0eEN6z);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -35,6 +36,10 @@ public final class SequenceOperation__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static SNode getLeft_idhEwJaTR(@NotNull SNode __thisNode__) {
     SNode operand = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
     return operand;
+  }
+  /*package*/ static boolean operandCanBeNull_idhWYZ0eEN6z(@NotNull SNode __thisNode__) {
+    // I feel as long as Sequence.USE_NULL_SEQUENCE == true, we shall never face null for operand in sequence.operation
+    return true;
   }
 
   /*package*/ SequenceOperation__BehaviorDescriptor() {
@@ -54,6 +59,8 @@ public final class SequenceOperation__BehaviorDescriptor extends BaseBHDescripto
     switch (methodIndex) {
       case 0:
         return (T) ((SNode) getLeft_idhEwJaTR(node));
+      case 1:
+        return (T) ((Boolean) operandCanBeNull_idhWYZ0eEN6z(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -40,7 +40,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
     if (propInConcept != null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "property '" + SPropertyOperations.getString(prop, PROPS.name$MnvL) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, String.format("property '%s' is already declared in %s", SPropertyOperations.getString(prop, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
       }
       return;
     }
@@ -50,7 +50,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
     if ((node != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "similar property '" + SPropertyOperations.getString(node, PROPS.name$MnvL) + "' is declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "576141512674073565", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, String.format("similar property '%s' is declared in %s", SPropertyOperations.getString(node, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "576141512674073565", null, errorTarget);
       }
     }
   }

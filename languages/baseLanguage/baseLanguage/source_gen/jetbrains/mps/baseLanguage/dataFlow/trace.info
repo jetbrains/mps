@@ -1146,7 +1146,7 @@
       <node id="7564982745305751627" at="45,43,46,18" concept="10" />
       <node id="3906759656538347729" at="48,44,49,18" concept="10" />
       <node id="3791846458263577268" at="51,220,52,74" concept="9" />
-      <node id="3906759656536788592" at="53,330,54,113" concept="10" />
+      <node id="3906759656536788592" at="53,211,54,113" concept="10" />
       <node id="3906759656538255856" at="56,5,57,16" concept="10" />
       <node id="7564982745305749384" at="60,43,61,18" concept="10" />
       <node id="741163781874002084" at="63,335,64,79" concept="9" />
@@ -1188,8 +1188,8 @@
       <node id="3906759656537229091" at="147,16,148,0" concept="12" />
       <node id="1265678854311165373" at="152,0,153,0" concept="13" trace="leftExpression$sEj" />
       <node id="1265678854311165373" at="153,0,154,0" concept="13" trace="rightExpression$nvX" />
-      <node id="1265678854311165373" at="154,0,155,0" concept="13" trace="operation$gs9E" />
-      <node id="1265678854311165373" at="155,0,156,0" concept="13" trace="operand$w6IR" />
+      <node id="1265678854311165373" at="154,0,155,0" concept="13" trace="operand$w6IR" />
+      <node id="1265678854311165373" at="155,0,156,0" concept="13" trace="operation$gs9E" />
       <node id="1265678854311165373" at="156,0,157,0" concept="13" trace="baseMethodDeclaration$pyYw" />
       <node id="1265678854311165373" at="157,0,158,0" concept="13" trace="actualArgument$pzdx" />
       <node id="1265678854311165373" at="158,0,159,0" concept="13" trace="parameter$5xBj" />
@@ -1202,19 +1202,18 @@
       <node id="1265678854311165373" at="165,0,166,0" concept="13" trace="variableDeclaration$N1XG" />
       <node id="1265678854311165373" at="169,0,170,0" concept="13" trace="NullLiteral$QQ" />
       <node id="1265678854311165373" at="170,0,171,0" concept="13" trace="DotExpression$yW" />
-      <node id="1265678854311165373" at="171,0,172,0" concept="13" trace="GetSizeOperation$A_" />
-      <node id="1265678854311165373" at="172,0,173,0" concept="13" trace="IMethodCall$M9" />
-      <node id="1265678854311165373" at="173,0,174,0" concept="13" trace="INamedConcept$Kd" />
-      <node id="1265678854311165373" at="174,0,175,0" concept="13" trace="Expression$mB" />
-      <node id="1265678854311165373" at="175,0,176,0" concept="13" trace="EqualsExpression$MF" />
-      <node id="1265678854311165373" at="176,0,177,0" concept="13" trace="IfStatement$Q4" />
-      <node id="1265678854311165373" at="177,0,178,0" concept="13" trace="WhileStatement$Ay" />
-      <node id="1265678854311165373" at="178,0,179,0" concept="13" trace="DoWhileStatement$9p" />
-      <node id="1265678854311165373" at="179,0,180,0" concept="13" trace="ForStatement$qV" />
-      <node id="1265678854311165373" at="180,0,181,0" concept="13" trace="BinaryOperation$W1" />
-      <node id="1265678854311165373" at="181,0,182,0" concept="13" trace="NotEqualsExpression$aX" />
-      <node id="1265678854311165373" at="182,0,183,0" concept="13" trace="VariableReference$TC" />
-      <node id="1265678854311165373" at="186,0,187,0" concept="13" trace="name$MnvL" />
+      <node id="1265678854311165373" at="171,0,172,0" concept="13" trace="IMethodCall$M9" />
+      <node id="1265678854311165373" at="172,0,173,0" concept="13" trace="INamedConcept$Kd" />
+      <node id="1265678854311165373" at="173,0,174,0" concept="13" trace="Expression$mB" />
+      <node id="1265678854311165373" at="174,0,175,0" concept="13" trace="EqualsExpression$MF" />
+      <node id="1265678854311165373" at="175,0,176,0" concept="13" trace="IfStatement$Q4" />
+      <node id="1265678854311165373" at="176,0,177,0" concept="13" trace="WhileStatement$Ay" />
+      <node id="1265678854311165373" at="177,0,178,0" concept="13" trace="DoWhileStatement$9p" />
+      <node id="1265678854311165373" at="178,0,179,0" concept="13" trace="ForStatement$qV" />
+      <node id="1265678854311165373" at="179,0,180,0" concept="13" trace="BinaryOperation$W1" />
+      <node id="1265678854311165373" at="180,0,181,0" concept="13" trace="NotEqualsExpression$aX" />
+      <node id="1265678854311165373" at="181,0,182,0" concept="13" trace="VariableReference$TC" />
+      <node id="1265678854311165373" at="185,0,186,0" concept="13" trace="name$MnvL" />
       <node id="1265678854311165375" at="32,0,34,0" concept="2" trace="NullableUtil#()V" />
       <node id="741163781874558573" at="80,22,82,17" concept="1" />
       <node id="1265678854311176045" at="35,54,38,5" concept="7" />
@@ -1257,7 +1256,7 @@
       <scope id="1265678854311176078" at="39,126,40,73" />
       <scope id="7564982745305751626" at="45,43,46,18" />
       <scope id="3791846458263577276" at="48,44,49,18" />
-      <scope id="3791846458263577274" at="53,330,54,113" />
+      <scope id="3791846458263577274" at="53,211,54,113" />
       <scope id="7564982745305749383" at="60,43,61,18" />
       <scope id="741163781874514420" at="78,86,79,165" />
       <scope id="741163781874558574" at="80,24,81,53" />
@@ -1343,10 +1342,10 @@
         <var name="source" id="3906759656537078022" />
         <var name="state" id="3906759656537084218" />
       </scope>
-      <unit id="1265678854311165373" at="185,0,188,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil$PROPS" />
+      <unit id="1265678854311165373" at="184,0,187,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil$PROPS" />
+      <unit id="1265678854311165373" at="168,0,183,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil$CONCEPTS" />
       <unit id="1265678854311165373" at="151,0,167,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil$LINKS" />
-      <unit id="1265678854311165373" at="168,0,184,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil$CONCEPTS" />
-      <unit id="1265678854311165373" at="31,0,189,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil" />
+      <unit id="1265678854311165373" at="31,0,188,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1383888600185289441">

@@ -7,6 +7,7 @@ import jetbrains.mps.logging.Logger;
 import com.intellij.history.LocalHistoryAction;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.util.Status;
 import java.util.List;
@@ -28,7 +29,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.migration.MigrationRunnable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
@@ -86,9 +86,10 @@ public class MigrationTask {
     } finally {
       mySession.completed();
       // XXX saveProject() shall follow session.completed() which may alter
-      //     MigrationProperties we need to have saved. Not sure if need EDT, definitely doesn't need write.
+      //     MigrationProperties we need to have saved. Definitely doesn't need write.
+      //    Used to work w/o EDT, but since 2025.3 save hangs if not in EDT(MPS-39172)
       // FIXME I hate that we call saveProject() for each step and that it uses internal IDEA stuff.
-      saveProject();
+      ApplicationManager.getApplication().invokeAndWait(() -> saveProject());
       pm.done();
       // yeah, and I hate this enableFFU, too!
       PersistenceRegistry.getInstance().enableFastFindUsages();
