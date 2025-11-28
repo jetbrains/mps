@@ -269,10 +269,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
           pt_var = pt_it.next();
           pn_var = pn_it.next();
           pa_var = pa_it.next();
-          if (!(ac.isStatic()) && c.getGenericParameterTypes().get(0) == pt_var) {
-            continue;
-          }
-
           instance(CONCEPTS.ParameterDeclaration$RG);
           getTypeByASMType(pt_var);
           addAnnotationsToParameter(pa_var);
@@ -457,7 +453,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     } else if (type instanceof ASMTypeVariable) {
       instance(CONCEPTS.TypeVariableReference$WL);
       // usages handled on upper level as for resolve we should load model
-      // another variant is just to search for occurence in the same model
+      // another variant is just to search for occurrence in the same model
     } else if (type instanceof ASMClassType) {
       ASMClassType c = (ASMClassType) type;
       instance(CONCEPTS.ClassifierType$bL);
