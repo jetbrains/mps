@@ -46,7 +46,7 @@ import java.io.File;
  * (model root removal).
  * 2. The MPSModuleLevelBuilder accepts all possible file extensions which is presumably wrong and needs to be revised. [MPS-21786]
  */
-@TestDataPath(value = "$PROJECT_ROOT/mps-core/jps-plugin/testResources/testMake")
+@TestDataPath(value = "$PROJECT_ROOT/IdeaPlugin/mps-core/jps-plugin/testResources/testMake")
 public abstract class MpsJpsModelsEnvironmentTestCase extends MpsJpsBuildTestCaseWithEnvironment<JpsTestBean, JpsTestModelsEnvironment> {
 
   protected abstract void doTest(@TestDataFile @NonNls @NotNull String inputFileTestName);
@@ -103,7 +103,7 @@ public abstract class MpsJpsModelsEnvironmentTestCase extends MpsJpsBuildTestCas
   @NonNls
   @Override
   protected final String getTestDataRootPath() {
-    return "mps-core/jps-plugin/testResources/testMake";
+    return "testResources/testMake";
   }
 
   protected final String getTestDataFilePath(String testName, @NonNls String ext) {

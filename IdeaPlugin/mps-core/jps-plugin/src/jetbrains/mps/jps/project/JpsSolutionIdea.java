@@ -20,12 +20,20 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
 import jetbrains.mps.jps.build.MPSCompilerUtil;
 import jetbrains.mps.jps.model.JpsMPSRepositoryFacade;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.FilePerRootDataSource;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.ProjectPaths;
 import org.jetbrains.jps.incremental.CompileContext;
@@ -44,9 +52,13 @@ import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -58,6 +70,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * danilla 12/10/12
  */
 public class JpsSolutionIdea extends Solution {
+  private final static Logger LOG = Logger.getLogger(AbstractModule.class);
 
   private JpsModule myModule;
   private Set<ModelRoot> myContributedModelRoots;
@@ -159,7 +172,7 @@ public class JpsSolutionIdea extends Solution {
     }
 
     List<ModelRoot> sum = new ArrayList<ModelRoot>();
-    for (ModelRoot mr : super.loadRoots()) {
+    for (ModelRoot mr : primLoadRoots()) {
       sum.add(mr);
     }
 
@@ -167,4 +180,35 @@ public class JpsSolutionIdea extends Solution {
 
     return sum;
   }
+
+  /**
+   * A workaround for {@linkplain PersistenceContextImpl} not being up to the task in case descriptor *file* is null. 
+   */
+  @SuppressWarnings("removal")
+  private Iterable<ModelRoot> primLoadRoots() {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    if (descriptor == null) {
+      return Collections.emptyList();
+    }
+
+    List<ModelRoot> result = new ArrayList<>();
+    final ModulePersistenceContext mpc = PersistenceContextImpl.basic(new MacroNoHelper(), jetbrains.mps.vfs.FileSystem.getInstance());
+    for (ModelRootDescriptor modelRoot : descriptor.getModelRootDescriptors()) {
+      try {
+        ModelRootFactory modelRootFactory = PersistenceFacade.getInstance().getModelRootFactory(modelRoot.getType());
+        if (modelRootFactory == null) {
+          LOG.error("Unknown model root type: `" + modelRoot.getType() + "'. Requested by: " + this);
+          continue;
+        }
+
+        ModelRoot root = modelRootFactory.create();
+        root.load(modelRoot.getMemento(), mpc);
+        result.add(root);
+      } catch (Exception e) {
+        LOG.error("Error loading models from root with type: `" + modelRoot.getType() + "'. Requested by: " + this, e);
+      }
+    }
+    return result;
+  }
+
 }

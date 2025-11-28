@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/classes" />
+    <output-test url="file://$MODULE_DIR$/testclasses" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/tests/psiProject/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/common/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-java/scopes/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/mps-core/jps-plugin/testSrc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mps-core/jps-plugin/testSrc" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/src_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/testSrc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-java/sourceStubs/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-vcs/source" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/mps-java/testSrc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mps-java/testSrc" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/blProject/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-java/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-core/jps-plugin/src" isTestSource="false" />
@@ -20,6 +22,9 @@
       <sourceFolder url="file://$MODULE_DIR$/mps-java/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-migration/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/mps-testing/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mps-core/jps-plugin/testResources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/mps-core/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/mps-java/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -102,5 +107,6 @@
     <orderEntry type="module" module-name="mps-refactoring" />
     <orderEntry type="library" name="jps-build-test" level="project" />
     <orderEntry type="library" name="jps-builders" level="project" />
+    <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
   </component>
 </module>

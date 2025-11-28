@@ -60,9 +60,11 @@
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-httpsupport/mps-httpsupport.iml" filepath="$PROJECT_DIR$/plugins/mps-httpsupport/mps-httpsupport.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/workbench/mps-icons/mps-icons.iml" filepath="$PROJECT_DIR$/workbench/mps-icons/mps-icons.iml" group="workbench/platform" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/mps-idea-integration.iml" filepath="$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/mps-idea-integration.iml" group="plugins/ideaIntegration" />
-      <module fileurl="file://$PROJECT_DIR$/IdeaPlugin/mps-idea-plugin.iml" filepath="$PROJECT_DIR$/IdeaPlugin/mps-idea-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/core/mps-java-core.iml" filepath="$PROJECT_DIR$/plugins/mps-java/core/mps-java-core.iml" group="plugins/java" />
+      <module fileurl="file://$PROJECT_DIR$/IdeaPlugin/mps-java/jps-plugin/mps-java-jps-plugin.iml" filepath="$PROJECT_DIR$/IdeaPlugin/mps-java/jps-plugin/mps-java-jps-plugin.iml" group="jps" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/platform/mps-java-platform.iml" filepath="$PROJECT_DIR$/plugins/mps-java/platform/mps-java-platform.iml" group="plugins/java" />
+      <module fileurl="file://$PROJECT_DIR$/IdeaPlugin/mps-core/common/mps-jps-common.iml" filepath="$PROJECT_DIR$/IdeaPlugin/mps-core/common/mps-jps-common.iml" group="jps" />
+      <module fileurl="file://$PROJECT_DIR$/IdeaPlugin/mps-core/jps-plugin/mps-jps-plugin.iml" filepath="$PROJECT_DIR$/IdeaPlugin/mps-core/jps-plugin/mps-jps-plugin.iml" group="jps" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-kotlin/mps-kotlin.iml" filepath="$PROJECT_DIR$/plugins/mps-kotlin/mps-kotlin.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-make/plugin/mps-make-plugin.iml" filepath="$PROJECT_DIR$/plugins/mps-make/plugin/mps-make-plugin.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-memtool/mps-memtool.iml" filepath="$PROJECT_DIR$/plugins/mps-memtool/mps-memtool.iml" group="plugins" />

@@ -70,6 +70,7 @@ public abstract class MpsIncrementalMakeTestCase extends MpsJpsModelsEnvironment
     myProjectDescriptor = createProjectDescriptor(new BuildLoggingManager(projectLogger));
     try {
       BuildResult result = doTestIncrementalBuild(myProjectDescriptor);
+      assertTrue("Build failed", result.isSuccessful());
 
       final String expectedLog = loadExpectedFileContent(testDataFilePath);
       assertLogAsExpected(projectLogger.toString(), expectedLog);
@@ -167,6 +168,15 @@ public abstract class MpsIncrementalMakeTestCase extends MpsJpsModelsEnvironment
         pathsToLog.add(trim(FileUtil.toSystemIndependentName(file.getCanonicalPath())));
       }
       logEvent(new LogEvent(pathsToLog, EventKind.COMPILED, builderName));
+    }
+    
+    @Override
+    public void logCompiledPaths(@NotNull Collection<String> paths, String builderId, String description) {
+      ArrayList<String> pathsToLog = new ArrayList<>();
+      for (String path : paths) {
+        pathsToLog.add(trim(FileUtil.toSystemIndependentName(path)));
+      }
+      logEvent(new LogEvent(pathsToLog, EventKind.COMPILED, builderId));
     }
 
     private void logEvent(LogEvent event) {

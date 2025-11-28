@@ -118,12 +118,7 @@ public abstract class MpsJpsBuildTestCase extends JpsBuildTestCase {
     super.setUp();
     myBuildParams.clear();
   }
-
-  @Override
-  protected JpsSdk<JpsDummyElement> addJdk(String name) {
-    return super.addJdk(name,null);
-  }
-
+  
   @Override
   protected void tearDown() throws Exception {
     File projectDir = getOrCreateProjectDir();

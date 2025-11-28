@@ -9,30 +9,17 @@
       <sourceFolder url="file://$MODULE_DIR$/testSrc" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/testResources" type="java-test-resource" />
     </content>
-    <orderEntry type="jdk" jdkName="IDEA IC" jdkType="IDEA JDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="mps-common" />
+    <orderEntry type="library" name="Annotations" level="project" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="library" name="MPS runtime" level="project" />
+    <orderEntry type="library" name="jps-builders" level="project" />
+    <orderEntry type="module" module-name="mps-jps-common" />
+    <orderEntry type="module" module-name="mps-ant" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
+    <orderEntry type="library" scope="TEST" name="jps-build-test" level="project" />
+    <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
     <orderEntry type="module" module-name="mps-java-jps-plugin" scope="TEST" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$APPLICATION_HOME_DIR$/plugins/devkit/lib/devkit-jps.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="mps-tool" level="project" />
-    <orderEntry type="library" name="mps-collections" level="project" />
-    <orderEntry type="library" name="mps-platform" level="project" />
-    <orderEntry type="library" name="mps-closures" level="project" />
-    <orderEntry type="library" name="mps-tuples" level="project" />
-    <orderEntry type="library" scope="TEST" name="jpsPlatformTests" level="project" />
-    <orderEntry type="library" scope="TEST" name="mps-behavior-api" level="project" />
-    <orderEntry type="library" scope="TEST" name="mps-behavior-runtime" level="project" />
-    <orderEntry type="library" scope="TEST" name="mps-boot-util" level="project" />
-    <orderEntry type="library" scope="TEST" name="mps-project-check" level="project" />
-    <orderEntry type="library" scope="TEST" name="mps-editor-api" level="project" />
-    <orderEntry type="library" name="ideaJavaPlugin" level="project" />
   </component>
 </module>

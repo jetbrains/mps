@@ -23,7 +23,7 @@ public class MpsRebuildChangedModel extends MpsIncrementalChangeModelTestCase {
   @NotNull
   @Override
   protected BuildResult doTestIncrementalBuild(@NotNull ProjectDescriptor projectDescriptor) {
-    rebuildAll();
+    rebuildAllModules();
     change();
     return doMake(true);
   }
