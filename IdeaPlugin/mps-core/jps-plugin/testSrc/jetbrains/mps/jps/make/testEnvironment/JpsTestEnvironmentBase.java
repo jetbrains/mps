@@ -34,7 +34,7 @@ import java.io.File;
 
 public abstract class JpsTestEnvironmentBase<B extends MpsBean> implements TestEnvironment<B> {
   @NonNls
-  public static final String[] MPS_LANGUAGE_LOCATIONS = {"mps-core/languages"};
+  public static final String[] MPS_LANGUAGE_LOCATIONS = {"core", "editor", "languages", "plugins", "workbench"};
 
   protected final MpsJpsBuildTestCase myTestCase;
 
