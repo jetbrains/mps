@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
  */
 public class ProjectDirFinder {
   @NonNls
-  private final static String OUR_PROJECT_NAME = "IdeaPlugin";
+  private final static String OUR_PROJECT_NAME = "MPS";
   @NonNls
   private final static ResourceBundle BUNDLE = ResourceBundle.getBundle("jetbrains.mps.idea.core.MPSCoreBundle");
 
@@ -49,6 +49,9 @@ public class ProjectDirFinder {
   }
 
   private boolean isProjectRoot(@NotNull File file) {
-    return file.getAbsolutePath().endsWith(OUR_PROJECT_NAME);
+    if (!file.isDirectory()) return false;
+    File dotIdea = new File(file, ".idea");
+    if (!dotIdea.exists() || !dotIdea.isDirectory()) return false;
+    return new File(dotIdea, "icon.png").exists(); 
   }
 }
