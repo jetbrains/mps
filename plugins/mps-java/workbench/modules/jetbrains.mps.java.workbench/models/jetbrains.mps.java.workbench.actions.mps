@@ -3047,8 +3047,8 @@
                                               </node>
                                             </node>
                                             <node concept="2pIyA9" id="wCH7Eoi1wp" role="2OqNvi">
-                                              <node concept="1pGfFk" id="wCH7Eoi1zh" role="2ShVmc">
-                                                <ref role="37wK5l" to="z1c3:~Project$ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="Project.ProjectScope" />
+                                              <node concept="1pGfFk" id="jOH__74pMb" role="2ShVmc">
+                                                <ref role="37wK5l" to="z1c3:~Project$ProjectScope.&lt;init&gt;()" resolve="Project.ProjectScope" />
                                               </node>
                                             </node>
                                           </node>

@@ -437,7 +437,7 @@
                   <node concept="1Y3b0j" id="2juexGD4Cdr" role="YeSDq">
                     <property role="2bfB8j" value="true" />
                     <ref role="1Y3XeK" to="jkm4:~DialogWrapper$DialogWrapperAction" resolve="DialogWrapper.DialogWrapperAction" />
-                    <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(com.intellij.openapi.ui.DialogWrapper,java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
+                    <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
                     <node concept="Xl_RD" id="2juexGD4Cd$" role="37wK5m">
                       <property role="Xl_RC" value="Evaluate" />
                     </node>
@@ -478,7 +478,7 @@
                   <node concept="1Y3b0j" id="2juexGD4CdR" role="YeSDq">
                     <property role="2bfB8j" value="true" />
                     <ref role="1Y3XeK" to="jkm4:~DialogWrapper$DialogWrapperAction" resolve="DialogWrapper.DialogWrapperAction" />
-                    <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(com.intellij.openapi.ui.DialogWrapper,java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
+                    <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
                     <node concept="Xl_RD" id="2juexGD4Ce0" role="37wK5m">
                       <property role="Xl_RC" value="Watch" />
                     </node>
@@ -532,7 +532,7 @@
                   <node concept="1Y3b0j" id="2juexGD4Ceq" role="YeSDq">
                     <property role="2bfB8j" value="true" />
                     <ref role="1Y3XeK" to="jkm4:~DialogWrapper$DialogWrapperAction" resolve="DialogWrapper.DialogWrapperAction" />
-                    <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(com.intellij.openapi.ui.DialogWrapper,java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
+                    <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
                     <node concept="Xl_RD" id="2juexGD4Cey" role="37wK5m">
                       <property role="Xl_RC" value="Close" />
                     </node>
