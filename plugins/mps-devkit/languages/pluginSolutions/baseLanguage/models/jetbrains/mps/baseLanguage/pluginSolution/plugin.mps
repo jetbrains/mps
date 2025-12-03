@@ -10904,7 +10904,7 @@
         <node concept="3Tm1VV" id="3UdhnxHurqP" role="1B3o_S" />
         <node concept="3clFbS" id="3UdhnxHurqQ" role="3clF47">
           <node concept="XkiVB" id="3UdhnxHurqR" role="3cqZAp">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(com.intellij.openapi.ui.DialogWrapper,java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
             <node concept="2OqwBi" id="3UdhnxHurqS" role="37wK5m">
               <node concept="37vLTw" id="2BHiRxglyJB" role="2Oq$k0">
                 <ref role="3cqZAo" node="3UdhnxHurqZ" resolve="value" />
@@ -16028,8 +16028,8 @@
                                             </node>
                                           </node>
                                           <node concept="2pIyA9" id="psC2_anp4S" role="2OqNvi">
-                                            <node concept="1pGfFk" id="psC2_anpWo" role="2ShVmc">
-                                              <ref role="37wK5l" to="z1c4:~Project$ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="Project.ProjectScope" />
+                                            <node concept="1pGfFk" id="7iEbus2KQpw" role="2ShVmc">
+                                              <ref role="37wK5l" to="z1c4:~Project$ProjectScope.&lt;init&gt;()" resolve="Project.ProjectScope" />
                                             </node>
                                           </node>
                                         </node>
@@ -16262,8 +16262,8 @@
                                             </node>
                                           </node>
                                           <node concept="2pIyA9" id="6o1U_cwzbPj" role="2OqNvi">
-                                            <node concept="1pGfFk" id="6o1U_cwzcCe" role="2ShVmc">
-                                              <ref role="37wK5l" to="z1c4:~Project$ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="Project.ProjectScope" />
+                                            <node concept="1pGfFk" id="7iEbus2KS7g" role="2ShVmc">
+                                              <ref role="37wK5l" to="z1c4:~Project$ProjectScope.&lt;init&gt;()" resolve="Project.ProjectScope" />
                                             </node>
                                           </node>
                                         </node>
@@ -16548,7 +16548,7 @@
         <node concept="3Tm1VV" id="3UdhnxHuoQC" role="1B3o_S" />
         <node concept="3clFbS" id="3UdhnxHuoQD" role="3clF47">
           <node concept="XkiVB" id="3UdhnxHuoQE" role="3cqZAp">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(com.intellij.openapi.ui.DialogWrapper,java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
+            <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
             <node concept="Xl_RD" id="3UdhnxHuoQF" role="37wK5m">
               <property role="Xl_RC" value="Preview" />
             </node>
@@ -17354,7 +17354,7 @@
                 <node concept="1Y3b0j" id="3UdhnxHuoLm" role="YeSDq">
                   <property role="2bfB8j" value="true" />
                   <ref role="1Y3XeK" to="jkm4:~DialogWrapper$DialogWrapperAction" resolve="DialogWrapper.DialogWrapperAction" />
-                  <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(com.intellij.openapi.ui.DialogWrapper,java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
+                  <ref role="37wK5l" to="jkm4:~DialogWrapper$DialogWrapperAction.&lt;init&gt;(java.lang.String)" resolve="DialogWrapper.DialogWrapperAction" />
                   <node concept="3Tm1VV" id="3UdhnxHuoLn" role="1B3o_S" />
                   <node concept="Xl_RD" id="3UdhnxHuoL_" role="37wK5m">
                     <property role="Xl_RC" value="Ignore" />

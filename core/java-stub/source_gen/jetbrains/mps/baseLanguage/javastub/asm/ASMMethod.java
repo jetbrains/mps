@@ -5,52 +5,69 @@ package jetbrains.mps.baseLanguage.javastub.asm;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.org.objectweb.asm.tree.MethodNode;
 import java.util.List;
-import org.jetbrains.org.objectweb.asm.Type;
 import java.util.Collections;
+import org.jetbrains.org.objectweb.asm.Type;
 import java.util.ArrayList;
+import org.jetbrains.org.objectweb.asm.Opcodes;
 import org.jetbrains.org.objectweb.asm.tree.AnnotationNode;
 import org.jetbrains.org.objectweb.asm.tree.LocalVariableNode;
 import java.util.Arrays;
+import java.util.Objects;
 import javax.lang.model.SourceVersion;
-import org.jetbrains.org.objectweb.asm.Opcodes;
 import java.util.Comparator;
 
 @GeneratedClass(nodeId = "7241381882860005690", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMMethod {
   private MethodNode myMethod;
-  private ASMType myReturnType;
-  private ASMType myGenericReturnType;
-  private List<ASMTypeVariable> myTypeVariables;
-  private List<ASMType> myParameterTypes;
-  private List<ASMType> myGenericParameterTypes;
-  private List<String> myParameterNames;
-  private List<List<ASMAnnotation>> myParameterAnnotations;
-  private List<ASMType> myExceptions;
+  private final ASMType myReturnType;
+  private final ASMType myGenericReturnType;
+  private final List<ASMTypeVariable> myTypeVariables;
+  private final List<ASMType> myParameterTypes;
+  private final List<ASMType> myGenericParameterTypes;
+  private final List<String> myParameterNames;
+  private final List<List<ASMAnnotation>> myParameterAnnotations;
+  private final List<ASMType> myExceptions;
   private List<ASMAnnotation> myAnnotations;
-  private Object myAnnotationDefault;
+  private final Object myAnnotationDefault;
+
   /*package*/ ASMMethod(MethodNode method) {
     myMethod = method;
-    myReturnType = TypeUtil.fromType(Type.getReturnType(method.desc));
     if (method.signature != null) {
-      myTypeVariables = ((List<ASMTypeVariable>) ((List) Collections.unmodifiableList(TypeUtil.getFormalTypeParameters(method.signature))));
+      myTypeVariables = Collections.<ASMTypeVariable>unmodifiableList(TypeUtil.getFormalTypeParameters(method.signature));
     } else {
-      myTypeVariables = ((List<ASMTypeVariable>) ((List) Collections.emptyList()));
+      myTypeVariables = Collections.<ASMTypeVariable>emptyList();
     }
+    myReturnType = TypeUtil.fromType(Type.getReturnType(method.desc));
     if (method.signature != null) {
       myGenericReturnType = TypeUtil.getReturnType(method.signature);
     } else {
       myGenericReturnType = myReturnType;
     }
     Type[] argumentTypes = Type.getArgumentTypes(method.desc);
-    myParameterTypes = (argumentTypes.length > 0 ? new ArrayList<ASMType>(argumentTypes.length) : ((List<ASMType>) ((List) Collections.emptyList())));
-    for (Type t : argumentTypes) {
-      myParameterTypes.add(TypeUtil.fromType(t));
+    myParameterTypes = (argumentTypes.length > 0 ? new ArrayList<ASMType>(argumentTypes.length) : Collections.<ASMType>emptyList());
+    int paramIndexOffset;
+    if (method.parameters != null && method.parameters.size() == argumentTypes.length) {
+      int i = 0;
+      while (i < argumentTypes.length && (method.parameters.get(i).access & (Opcodes.ACC_MANDATED | Opcodes.ACC_SYNTHETIC)) != 0) {
+        i++;
+      }
+      // FWIW, for some weird reason, valueOf(String) in enum doesn't bear 'synthetic' attribute (access = 0x9, static private), but
+      //     its String parameter IS ACC_MANDATED. See #isGeneratedEnumMember(), below, to see how do we handle this case.
+      paramIndexOffset = i;
+    } else {
+      paramIndexOffset = 0;
     }
+    for (int i = paramIndexOffset; i < argumentTypes.length; i++) {
+      myParameterTypes.add(TypeUtil.fromType(argumentTypes[i]));
+    }
+
     if (method.signature != null) {
       myGenericParameterTypes = TypeUtil.getParameterTypes(method.signature);
     } else {
       myGenericParameterTypes = myParameterTypes;
     }
+    // assert myParameterTypes.size() == myGenericParameterTypes.size()
+
     // with isEmpty==true it's a very strange situation, though this happens as shown in
     // http://youtrack.jetbrains.com/issue/MPS-19080
     if (isVarArg() && !(myGenericParameterTypes.isEmpty())) {
@@ -70,8 +87,11 @@ public class ASMMethod {
     myParameterAnnotations = new ArrayList<List<ASMAnnotation>>(myParameterTypes.size());
     for (int i = 0; i < myParameterTypes.size(); i++) {
       List<ASMAnnotation> annotations = null;
+      // myParameterTypes correspond to sub-list of parameter types encoded in Method's descriptor (starting from paramIndexOffset), however, according to
+      // 4.7.18. The RuntimeVisibleParameterAnnotations Attribute
+      // visibleParameterAnnotation field includes values for explicitly declared parameters, therefore we don't offset i by paramIndexOffset here
       if (myMethod.visibleParameterAnnotations != null && myMethod.visibleParameterAnnotations[i] != null) {
-        for (AnnotationNode an : (List<AnnotationNode>) myMethod.visibleParameterAnnotations[i]) {
+        for (AnnotationNode an : myMethod.visibleParameterAnnotations[i]) {
           if (annotations == null) {
             annotations = new ArrayList<ASMAnnotation>();
           }
@@ -79,14 +99,14 @@ public class ASMMethod {
         }
       }
       if (myMethod.invisibleParameterAnnotations != null && myMethod.invisibleParameterAnnotations[i] != null) {
-        for (AnnotationNode an : (List<AnnotationNode>) myMethod.invisibleParameterAnnotations[i]) {
+        for (AnnotationNode an : myMethod.invisibleParameterAnnotations[i]) {
           if (annotations == null) {
             annotations = new ArrayList<ASMAnnotation>();
           }
           annotations.add(new ASMAnnotation(an));
         }
       }
-      myParameterAnnotations.add((annotations == null ? ((List<ASMAnnotation>) ((List) Collections.emptyList())) : annotations));
+      myParameterAnnotations.add((annotations == null ? Collections.<ASMAnnotation>emptyList() : annotations));
     }
     List<ASMType> exceptions = new ArrayList<ASMType>(0);
     if (method.signature != null) {
@@ -95,6 +115,7 @@ public class ASMMethod {
     if (!(exceptions.isEmpty())) {
       myExceptions = exceptions;
     } else {
+      // sic, see JVMS21, 4.7.9.1. Signatures
       myExceptions = new ArrayList<ASMType>(myMethod.exceptions.size());
       for (String s : (List<String>) myMethod.exceptions) {
         myExceptions.add(new ASMClassType(s.replace('/', '.')));
@@ -122,22 +143,32 @@ public class ASMMethod {
         myParameterNames.add("p" + i);
       }
       if (method.localVariables != null && myParameterTypes.size() <= method.localVariables.size()) {
-        // 'this' comes first for instance methods
-        final int offset = (isStatic() ? 0 : 1);
         LocalVariableNode[] a = method.localVariables.toArray(new LocalVariableNode[0]);
         // entries in local variable table may come in any order, and their index not strictly +1. 
         Arrays.sort(a, new ByOrderInStackFrame());
-        // assume first myParameterType.size() elements correspond to method arguments (including implicit 'this' in case of instance method)
+        // 'this' comes first for instance methods
+        int offset = (isStatic() ? 0 : 1);
+        // besides, there could be 'this$0' for a cons of non-static inner class (which we likely have accounted for with paramIndexOffset, along with 'this', in myParameterTypes)
+        // note, 'this$0' for outer instance is not mandatory, if there are no uses of outside class, there could be just 'this' in a cons of a non-static inner class
+        // Therefore, here we try to find first local variable with a type matching that of first explicit parameter
+        // Note, myParameterTypes[0] corresponds to argumentTypes[paramIndexOffset]
+        final String firstDeclaredParamDescriptor = argumentTypes[paramIndexOffset].getDescriptor();
+        for (; offset < argumentTypes.length && offset < a.length; offset++) {
+          if (Objects.equals(a[offset].desc, firstDeclaredParamDescriptor)) {
+            break;
+          }
+        }
+        // assume first myParameterType.size() elements correspond to method arguments (excluding implicit 'this' in case of instance method)
         for (int i = offset, j = 0, x = myParameterTypes.size(); i < a.length && j < x; i++, j++) {
           if (SourceVersion.isIdentifier(a[i].name)) {
             myParameterNames.set(j, a[i].name);
           }
         }
       }
+    } else {
+      myParameterNames = Collections.<String>emptyList();
     }
-    if (method.annotationDefault != null) {
-      myAnnotationDefault = ASMAnnotation.processValue(method.annotationDefault);
-    }
+    myAnnotationDefault = (method.annotationDefault != null ? ASMAnnotation.processValue(method.annotationDefault) : null);
   }
   public Object getAnnotationDefault() {
     return myAnnotationDefault;
@@ -197,7 +228,7 @@ public class ASMMethod {
     return myGenericReturnType;
   }
   public List<ASMAnnotation> getAnnotations() {
-    return (myAnnotations == null ? ((List<ASMAnnotation>) ((List) Collections.emptyList())) : Collections.unmodifiableList(myAnnotations));
+    return (myAnnotations == null ? Collections.<ASMAnnotation>emptyList() : Collections.unmodifiableList(myAnnotations));
   }
   public List<ASMType> getParameterTypes() {
     return Collections.unmodifiableList(myParameterTypes);
@@ -206,13 +237,30 @@ public class ASMMethod {
     return Collections.unmodifiableList(myGenericParameterTypes);
   }
   public List<String> getParameterNames() {
-    return ((myParameterNames == null ? ((List<String>) ((List) Collections.emptyList())) : Collections.unmodifiableList(myParameterNames)));
+    return Collections.unmodifiableList(myParameterNames);
   }
   public List<List<ASMAnnotation>> getParameterAnnotations() {
     return Collections.unmodifiableList(myParameterAnnotations);
   }
   public List<ASMType> getExceptionTypes() {
     return Collections.unmodifiableList(myExceptions);
+  }
+
+  /*package*/ static boolean isGeneratedEnumMember(MethodNode method) {
+    // pre: method belongs to ClassNode with ACC_ENUM
+    // Note, the need for this method stems from the fact these methods are not denoted as 'synthetic' in .class, while parameter of valuesOf is ACC_MANDATED (a kind we generally ignore)
+    final int f = Opcodes.ACC_STATIC | Opcodes.ACC_PRIVATE;
+    if ((method.access & f) != f) {
+      return false;
+    }
+    if ("values".equals(method.name) && (method.parameters == null || method.parameters.isEmpty())) {
+      return true;
+    }
+    if ("valueOf".equals(method.name) && method.parameters != null && method.parameters.size() == 1) {
+      Type[] parameterTypes = Type.getArgumentTypes(method.desc);
+      return parameterTypes.length == 1 && String.class.getName().equals(parameterTypes[0].getClassName());
+    }
+    return false;
   }
 
   private static class ByOrderInStackFrame implements Comparator<LocalVariableNode> {

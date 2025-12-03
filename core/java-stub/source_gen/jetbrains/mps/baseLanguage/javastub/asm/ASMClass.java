@@ -11,10 +11,10 @@ import org.jetbrains.org.objectweb.asm.signature.SignatureReader;
 import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.tree.FieldNode;
+import jetbrains.mps.baseLanguage.javastub.ClassifierKind;
 import org.jetbrains.org.objectweb.asm.tree.MethodNode;
 import org.jetbrains.org.objectweb.asm.tree.AnnotationNode;
 import org.jetbrains.org.objectweb.asm.Opcodes;
-import jetbrains.mps.baseLanguage.javastub.ClassifierKind;
 import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 
 @GeneratedClass(nodeId = "7241381882860009362", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
@@ -83,10 +83,18 @@ public class ASMClass {
       List<ASMFormalTypeParameter> formalTypeParameters = TypeUtil.getFormalTypeParameters(myNode.signature);
       myTypeVariables = new ArrayList<ASMTypeVariable>(formalTypeParameters);
     }
-    for (FieldNode fn : (List<FieldNode>) myNode.fields) {
+    for (FieldNode fn : myNode.fields) {
       myFields.add(new ASMField(fn));
     }
-    for (MethodNode mn : (List<MethodNode>) myNode.methods) {
+    final boolean isEnumClass = ClassifierKind.getClassifierKind(myNode.access) == ClassifierKind.ENUM;
+    for (MethodNode mn : myNode.methods) {
+      if (isEnumClass && ASMMethod.isGeneratedEnumMember(mn)) {
+        // May recognize generated enum methods as part of isCompilerGenerated(), just find it less effective. First, not trivial to confirm it is Enum owner.
+        // Second, would need access to MN (which is part of ASMMethod ATM, but would cease to, soon) or at least descriptor string to extract ACC_MANDATED parameter.
+        // Third, seems that we throw away isCompilerGenerated() methods anyway, why bother creating them then?
+        continue;
+      }
+      // XXX I wonder why don't we check synthetic field right away and skip MN if yes, and instead do isSynthetic check later?
       ASMMethod am = new ASMMethod(mn);
       if (am.isConstructor()) {
         myConstructors.add(am);

@@ -269,10 +269,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
           pt_var = pt_it.next();
           pn_var = pn_it.next();
           pa_var = pa_it.next();
-          if (!(ac.isStatic()) && c.getGenericParameterTypes().get(0) == pt_var) {
-            continue;
-          }
-
           instance(CONCEPTS.ParameterDeclaration$RG);
           getTypeByASMType(pt_var);
           addAnnotationsToParameter(pa_var);
@@ -308,10 +304,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       if (!(m.isStatic())) {
         continue;
       }
+      // XXX ClassifierUpdater.updateStaticMethod checks for isSynthetic(), why don't we check it here?
       if (m.isCompilerGenerated()) {
-        continue;
-      }
-      if (kind == ClassifierKind.ENUM && isGeneratedEnumMethod(m)) {
         continue;
       }
 
@@ -346,16 +340,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     for (ASMAnnotation annotation : m.getAnnotations()) {
       createAnnotation(annotation);
     }
-  }
-  private boolean isGeneratedEnumMethod(ASMMethod m) {
-    if (m.getName().equals("values") && m.getParameterTypes().isEmpty()) {
-      return true;
-    }
-    if (m.getName().equals("valueOf") && m.getParameterTypes().size() == 1 && m.getParameterTypes().get(0) instanceof ASMClassType) {
-      ASMClassType type = (ASMClassType) m.getParameterTypes().get(0);
-      return type.getName().equals("java.lang.String");
-    }
-    return false;
   }
   protected void createVisibility(ASMMethod m) {
     if (m.isPublic()) {
@@ -457,7 +441,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     } else if (type instanceof ASMTypeVariable) {
       instance(CONCEPTS.TypeVariableReference$WL);
       // usages handled on upper level as for resolve we should load model
-      // another variant is just to search for occurence in the same model
+      // another variant is just to search for occurrence in the same model
     } else if (type instanceof ASMClassType) {
       ASMClassType c = (ASMClassType) type;
       instance(CONCEPTS.ClassifierType$bL);
