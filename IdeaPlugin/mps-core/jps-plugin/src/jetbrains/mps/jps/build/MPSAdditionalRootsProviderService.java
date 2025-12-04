@@ -72,7 +72,7 @@ public class MPSAdditionalRootsProviderService extends AdditionalRootsProviderSe
   }
 
   private static void addGeneratedSourcesRoot(List<JavaSourceRootDescriptor> result, ModuleBuildTarget buildTarget, final File file) {
-    result.add(new JavaSourceRootDescriptor(file, buildTarget, true, false, "", Collections.<File>emptySet()));
+    result.add(new MPSSourceRootDescriptor(file, buildTarget, true, false, "", Collections.<File>emptySet()));
   }
 
   private static final TObjectHashingStrategy<File> FILE_HASHING_STRATEGY =
