@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.org.objectweb.asm.ClassReader;
-import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMInnerClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.LazySNode;
@@ -39,7 +39,7 @@ public class ClassifierLoader {
   private final boolean myOnlyPublic;
   protected final IFile myFile;
   protected ClassReader myClassReader;
-  protected InnerClassNode myInnerClassDescriptor;
+  protected ASMInnerClass myInnerClassDescriptor;
   private final ASMNodeIdFactory myNodeIdFactory;
 
   public ClassifierLoader(IFile file, boolean onlyPublic, boolean skipPrivate) {
@@ -64,7 +64,7 @@ public class ClassifierLoader {
     myNodeIdFactory = nodeIdFactory;
   }
 
-  protected ClassifierLoader(IFile file, ClassifierLoader outer, InnerClassNode innerClassStruct) {
+  protected ClassifierLoader(IFile file, ClassifierLoader outer, ASMInnerClass innerClassStruct) {
     this(file, outer.myOnlyPublic, outer.mySkipPrivate, outer.myNodeIdFactory);
     myInnerClassDescriptor = innerClassStruct;
   }
@@ -81,7 +81,7 @@ public class ClassifierLoader {
     final SNodeId nodeId = myNodeIdFactory.classId(className);
     final String shortName;
     if (myInnerClassDescriptor != null) {
-      shortName = myInnerClassDescriptor.innerName;
+      shortName = myInnerClassDescriptor.getInnerName();
     } else {
       // well, here's a bit of non-necessary assumption that we use ClassifierLoader in a particular way (i.e. start with top-level classes and 
       // read inner classes through #createChildClassifierLoader(). If necessary, can support reading inner class right away by always using 
@@ -115,64 +115,39 @@ public class ClassifierLoader {
     if (myInnerClassDescriptor != null) {
       // static, protected, private are accessible from inner class structure only,
       // JLS 4.7.6, table 4.8
-      boolean isStatic = (myInnerClassDescriptor.access & Opcodes.ACC_STATIC) != 0;
-      boolean isProtected = (myInnerClassDescriptor.access & Opcodes.ACC_PROTECTED) != 0;
-      boolean isPrivate = (myInnerClassDescriptor.access & Opcodes.ACC_PRIVATE) != 0;
       // public, final, abstract are taken from the class, JLS 4.1, table 4.1
-      SPropertyOperations.assign(rv, PROPS.nonStatic$aWW8, !(isStatic));
-      if (isProtected) {
-        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createProtectedVisibility_eoyrbu_a0a0h0m0o());
-      } else if (isPrivate) {
-        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createPrivateVisibility_eoyrbu_a0a0a7a21a41());
+      SPropertyOperations.assign(rv, PROPS.nonStatic$aWW8, !(myInnerClassDescriptor.isStatic()));
+      if (myInnerClassDescriptor.isProtected()) {
+        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createProtectedVisibility_eoyrbu_a0a0e0m0o());
+      } else if (myInnerClassDescriptor.isPrivate()) {
+        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createPrivateVisibility_eoyrbu_a0a0a4a21a41());
       }
     }
     return rv;
   }
 
   protected Iterable<ClassifierLoader> getInnerClassifiers(ASMClass ac) {
-    List<InnerClassNode> innerClasses = ac.getInnerClasses();
+    List<ASMInnerClass> innerClasses = ac.getInnerClasses();
     if (innerClasses.isEmpty()) {
       return Collections.emptyList();
     }
-    String outerName = myClassReader.getClassName();
     IFile parent = myFile.getParent();
     ArrayList<ClassifierLoader> rv = new ArrayList<ClassifierLoader>(innerClasses.size());
-    for (InnerClassNode cn : innerClasses) {
-      String name = cn.name;
-      if (name == null) {
-        // I doubt this could ever happen
-        continue;
-      }
-      if (cn.innerName == null) {
-        // JVM spec, 4.7.6, inner_name_index - anonymous classes have no inner name
-        continue;
-      }
-      if ((cn.access & Opcodes.ACC_SYNTHETIC) != 0) {
+    for (ASMInnerClass cn : innerClasses) {
+      if (mySkipPrivate && cn.isPrivate()) {
         continue;
       }
 
-      boolean isPrivate = (cn.access & Opcodes.ACC_PRIVATE) != 0;
-      if (isPrivate && mySkipPrivate) {
-        continue;
-      }
-
-      if (!(outerName.equals(cn.outerName))) {
-        continue;
-      }
-
-      int index = name.lastIndexOf('/');
+      String fileName = cn.getName();
+      int index = fileName.lastIndexOf('/');
       if (index != -1) {
-        name = name.substring(index + 1);
+        fileName = fileName.substring(index + 1);
       }
 
-      ClassifierLoader inner = createChildClassifierLoader(parent, name, cn);
+      ClassifierLoader inner = new ClassifierLoader(parent.findChild(fileName + ".class"), this, cn);
       rv.add(inner);
     }
     return rv;
-  }
-
-  protected ClassifierLoader createChildClassifierLoader(IFile parent, String name, InnerClassNode cn) {
-    return new ClassifierLoader(parent.findChild(name + ".class"), this, cn);
   }
 
   public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier) {
@@ -204,11 +179,11 @@ public class ClassifierLoader {
   public ClassReader getClassReader() {
     return this.myClassReader;
   }
-  private static SNode createProtectedVisibility_eoyrbu_a0a0h0m0o() {
+  private static SNode createProtectedVisibility_eoyrbu_a0a0e0m0o() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProtectedVisibility$hr);
     return n0.getResult();
   }
-  private static SNode createPrivateVisibility_eoyrbu_a0a0a7a21a41() {
+  private static SNode createPrivateVisibility_eoyrbu_a0a0a4a21a41() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$l0);
     return n0.getResult();
   }

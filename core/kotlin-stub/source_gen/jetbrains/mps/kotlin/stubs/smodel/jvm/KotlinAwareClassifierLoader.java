@@ -5,7 +5,7 @@ package jetbrains.mps.kotlin.stubs.smodel.jvm;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.baseLanguage.javastub.ClassifierLoader;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMInnerClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.stubs.smodel.metadata.KtReadContext;
 import java.util.function.Function;
@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  */
 @GeneratedClass(nodeId = "3833041373521027993", model = "r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)")
 public class KotlinAwareClassifierLoader extends ClassifierLoader {
-  protected KotlinAwareClassifierLoader(IFile file, ClassifierLoader outer, InnerClassNode innerClassStruct) {
+  protected KotlinAwareClassifierLoader(IFile file, ClassifierLoader outer, ASMInnerClass innerClassStruct) {
     super(file, outer, innerClassStruct);
   }
 
@@ -37,18 +37,24 @@ public class KotlinAwareClassifierLoader extends ClassifierLoader {
     ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withCompilerInjectedMembers(false).build());
     Documentation doc = docSupplier.apply(ac);
     new KotlinAwareClassifierUpdater(ac, true, doc, visitorContext).update(classifier);
-    for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {
-      SNode inner = innerLoader.createClassifier();
+    IFile parent = myFile.getParent();
+    for (ASMInnerClass cn : ac.getInnerClasses()) {
+      if (cn.isPrivate()) {
+        // I didn't expose mySkipPrivate as I see KotlinAwareClassifierUpdater forces skipPrivate==true, above
+        continue;
+      }
+      String fileName = cn.getName();
+      int index = fileName.lastIndexOf('/');
+      if (index != -1) {
+        fileName = fileName.substring(index + 1);
+      }
+      KotlinAwareClassifierLoader kl = new KotlinAwareClassifierLoader(parent.findChild(fileName + ".class"), this, cn);
+      SNode inner = kl.createClassifier();
       if (inner != null) {
         ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.member$L_2d)).addElement(inner);
-        ((KotlinAwareClassifierLoader) innerLoader).updateClassifier(inner, visitorContext, docSupplier);
+        kl.updateClassifier(inner, visitorContext, docSupplier);
       }
     }
-  }
-
-  @Override
-  protected ClassifierLoader createChildClassifierLoader(IFile parent, String name, InnerClassNode cn) {
-    return new KotlinAwareClassifierLoader(parent.findChild(name + ".class"), this, cn);
   }
 
   private static final class LINKS {

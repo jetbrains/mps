@@ -4,12 +4,13 @@ package jetbrains.mps.baseLanguage.javastub.asm;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
-import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 import java.util.ArrayList;
 import org.jetbrains.org.objectweb.asm.ClassReader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.org.objectweb.asm.tree.ClassNode;
 import java.util.Collections;
+import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
+import java.util.Objects;
 import org.jetbrains.org.objectweb.asm.signature.SignatureReader;
 import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 import org.jetbrains.org.objectweb.asm.tree.FieldNode;
@@ -22,14 +23,14 @@ import org.jetbrains.org.objectweb.asm.Opcodes;
 public class ASMClass {
   private final String myName;
   private final int myAccess;
-  private final List<InnerClassNode> myInnerClasses;
-  private List<ASMTypeVariable> myTypeVariables;
-  private List<ASMType> myGenericInterfaces;
+  private final List<ASMInnerClass> myInnerClasses;
+  private final List<ASMTypeVariable> myTypeVariables;
+  private final ASMType myGenericSuperclass;
+  private final List<ASMType> myGenericInterfaces;
   private final List<ASMField> myFields = new ArrayList<ASMField>();
   private final List<ASMMethod> myMethods = new ArrayList<ASMMethod>();
   private final List<ASMMethod> myConstructors = new ArrayList<ASMMethod>();
-  private List<ASMAnnotation> myAnnotations;
-  private ASMType myGenericSuperclass;
+  private final List<ASMAnnotation> myAnnotations;
   /**
    * 
    * 
@@ -54,12 +55,37 @@ public class ASMClass {
       myName = null;
       myAccess = reader.getAccess();
       myInnerClasses = Collections.emptyList();
+      myTypeVariables = Collections.emptyList();
+      myGenericSuperclass = null;
+      myGenericInterfaces = Collections.emptyList();
+      myAnnotations = Collections.emptyList();
       return;
     }
     myName = classNode.name;
     myAccess = classNode.access;
-    // FIXME poor design, ASMClass shall not expose low-level elements, refactor
-    myInnerClasses = classNode.innerClasses;
+    {
+      ArrayList<ASMInnerClass> ic = new ArrayList<>(classNode.innerClasses.size());
+      for (InnerClassNode cn : classNode.innerClasses) {
+        String name = cn.name;
+        if (name == null) {
+          // I doubt this could ever happen
+          continue;
+        }
+        if (cn.innerName == null) {
+          // JVM spec, 4.7.6, inner_name_index - anonymous classes have no inner name
+          continue;
+        }
+        if (ASMInnerClass.isSynthetic(cn)) {
+          continue;
+        }
+        if (!(Objects.equals(classNode.name, cn.outerName))) {
+          // this check goes deep into ClassifierLoader history, although don't quite see a reason for it
+          continue;
+        }
+        ic.add(new ASMInnerClass(cn));
+      }
+      myInnerClasses = (ic.isEmpty() ? Collections.<ASMInnerClass>emptyList() : Collections.unmodifiableList(ic));
+    }
     if (classNode.signature != null) {
       SignatureReader signReader = new SignatureReader(classNode.signature);
       final TypeUtil.TypeBuilderVisitor[] superclassVisitor = new TypeUtil.TypeBuilderVisitor[1];
@@ -78,26 +104,24 @@ public class ASMClass {
           return v;
         }
       });
-      if (superclassVisitor[0] != null) {
-        myGenericSuperclass = superclassVisitor[0].getResult();
-      }
-      if (interfaceVisitors.size() > 0) {
-        myGenericInterfaces = new ArrayList<ASMType>(interfaceVisitors.size());
+      myGenericSuperclass = (superclassVisitor[0] != null ? superclassVisitor[0].getResult() : null);
+      if (!(interfaceVisitors.isEmpty())) {
+        ArrayList<ASMType> ii = new ArrayList<>(interfaceVisitors.size());
         for (TypeUtil.TypeBuilderVisitor v : interfaceVisitors) {
-          myGenericInterfaces.add(v.getResult());
+          ii.add(v.getResult());
         }
+        myGenericInterfaces = Collections.unmodifiableList(ii);
       } else {
         myGenericInterfaces = Collections.emptyList();
       }
     } else {
-      if (classNode.superName != null) {
-        myGenericSuperclass = new ASMClassType(classNode.superName.replace('/', '.'));
-      }
-      if (classNode.interfaces != null && classNode.interfaces.size() > 0) {
-        myGenericInterfaces = new ArrayList<ASMType>(classNode.interfaces.size());
+      myGenericSuperclass = (classNode.superName != null ? new ASMClassType(classNode.superName.replace('/', '.')) : null);
+      if (!(classNode.interfaces.isEmpty())) {
+        ArrayList<ASMType> ii = new ArrayList<>(classNode.interfaces.size());
         for (String intfc : classNode.interfaces) {
-          myGenericInterfaces.add(new ASMClassType(intfc.replace('/', '.')));
+          ii.add(new ASMClassType(intfc.replace('/', '.')));
         }
+        myGenericInterfaces = Collections.unmodifiableList(ii);
       } else {
         myGenericInterfaces = Collections.emptyList();
       }
@@ -105,7 +129,9 @@ public class ASMClass {
     if (classNode.signature != null) {
       // XXX why not part of node.signature parsing along with superclass/interfaces, above?!
       List<ASMFormalTypeParameter> formalTypeParameters = TypeUtil.getFormalTypeParameters(classNode.signature);
-      myTypeVariables = new ArrayList<ASMTypeVariable>(formalTypeParameters);
+      myTypeVariables = Collections.<ASMTypeVariable>unmodifiableList(formalTypeParameters);
+    } else {
+      myTypeVariables = Collections.emptyList();
     }
     for (FieldNode fn : classNode.fields) {
       if (options.skipSyntheticFields && ASMField.isSynthetic(fn)) {
@@ -136,20 +162,20 @@ public class ASMClass {
       }
     }
     if (classNode.visibleAnnotations != null || classNode.invisibleAnnotations != null) {
-      int size = ((classNode.visibleAnnotations != null ? classNode.visibleAnnotations.size() : 0)) + ((classNode.invisibleAnnotations != null ? classNode.invisibleAnnotations.size() : 0));
-      myAnnotations = new ArrayList<ASMAnnotation>(size);
+      ArrayList<ASMAnnotation> ll = new ArrayList<>();
       if (classNode.visibleAnnotations != null) {
-        for (AnnotationNode an : (List<AnnotationNode>) classNode.visibleAnnotations) {
-          ASMAnnotation aa = new ASMAnnotation(an);
-          myAnnotations.add(aa);
+        for (AnnotationNode an : classNode.visibleAnnotations) {
+          ll.add(new ASMAnnotation(an));
         }
       }
       if (classNode.invisibleAnnotations != null) {
-        for (AnnotationNode an : (List<AnnotationNode>) classNode.invisibleAnnotations) {
-          ASMAnnotation aa = new ASMAnnotation(an);
-          myAnnotations.add(aa);
+        for (AnnotationNode an : classNode.invisibleAnnotations) {
+          ll.add(new ASMAnnotation(an));
         }
       }
+      myAnnotations = Collections.unmodifiableList(ll);
+    } else {
+      myAnnotations = Collections.emptyList();
     }
   }
 
@@ -166,7 +192,7 @@ public class ASMClass {
     return (myAccess & Opcodes.ACC_FINAL) != 0;
   }
   public boolean isDeprecated() {
-    return (Opcodes.ACC_DEPRECATED & myAccess) != 0;
+    return (myAccess & Opcodes.ACC_DEPRECATED) != 0;
   }
   public ClassifierKind getClassifierKind() {
     return ClassifierKind.getClassifierKind(myAccess);
@@ -180,17 +206,20 @@ public class ASMClass {
     }
     return myName.replace('/', '.');
   }
-  public List<InnerClassNode> getInnerClasses() {
+  /**
+   * Nested classes, excluding anonymous (ASMInnerClass.innerName != null)
+   */
+  public List<ASMInnerClass> getInnerClasses() {
     return myInnerClasses;
   }
   public List<ASMTypeVariable> getTypeParameters() {
-    return (myTypeVariables == null ? Collections.<ASMTypeVariable>emptyList() : Collections.unmodifiableList(myTypeVariables));
+    return myTypeVariables;
   }
   public List<ASMType> getGenericInterfaces() {
-    return (myGenericInterfaces == null ? Collections.<ASMType>emptyList() : Collections.unmodifiableList(myGenericInterfaces));
+    return myGenericInterfaces;
   }
   public List<ASMAnnotation> getAnnotations() {
-    return (myAnnotations == null ? Collections.<ASMAnnotation>emptyList() : Collections.unmodifiableList(myAnnotations));
+    return myAnnotations;
   }
   public ASMType getGenericSuperclass() {
     return myGenericSuperclass;
