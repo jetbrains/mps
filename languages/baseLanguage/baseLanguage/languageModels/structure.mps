@@ -3494,6 +3494,9 @@
     <node concept="PrWs8" id="8AYOKVCLcu" role="PzmwI">
       <ref role="PrY4T" to="tpck:8AYOKVCAP5" resolve="IStubForAnotherConcept" />
     </node>
+    <node concept="PrWs8" id="1fHXwSduO_k" role="PzmwI">
+      <ref role="PrY4T" node="7iXGM7xVw13" resolve="ISkipsReturn" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4jccBOGDsG8">
     <property role="TrG5h" value="OperationAssignmentExpression" />
