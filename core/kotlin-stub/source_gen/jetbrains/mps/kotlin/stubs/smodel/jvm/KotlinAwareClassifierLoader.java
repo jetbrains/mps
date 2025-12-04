@@ -33,7 +33,8 @@ public class KotlinAwareClassifierLoader extends ClassifierLoader {
   }
 
   public void updateClassifier(SNode classifier, KtReadContext visitorContext, Function<ASMClass, Documentation> docSupplier) {
-    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withSyntheticMembers(false).build());
+    // XXX perhaps, Kotlin is the place where we could make use of at least some compiler-injected methods?
+    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withCompilerInjectedMembers(false).build());
     Documentation doc = docSupplier.apply(ac);
     new KotlinAwareClassifierUpdater(ac, true, doc, visitorContext).update(classifier);
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {

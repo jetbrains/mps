@@ -69,6 +69,7 @@ public class ClassifierUpdater {
   public ClassifierUpdater(ASMClass asmClass, boolean skipPrivate, ReferenceFactory handler, @Nullable Documentation doc, @Nullable ASMNodeIdFactory nodeIdFactory) {
     // we treat skipPrivate here as 'hide implementation details', thus only public and protected
     // members are visible if skipPrivate == true (i.e. those visible to outer code)
+    // FIXME, likely, skipPrivate shall be part of ASMClass parsing options, so that here we just transform whatever ASMClass presents us with.
     mySkipPrivate = skipPrivate;
     myHandler = handler;
     myParsedClass = asmClass;
@@ -244,9 +245,7 @@ public class ClassifierUpdater {
       if (field.isStatic()) {
         continue;
       }
-      if (field.isSynthetic()) {
-        continue;
-      }
+
       SNode decl = _quotation_createNode_ol94f8_a0d0a0cb(null, myNodeFactory.createId(field), createVisibility(field), getTypeByASMType(field.getGenericType(), null, cls), field.getName());
       for (ASMAnnotation annotation : field.getAnnotations()) {
         ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$K49I)).addElement(createAnnotation(annotation));
@@ -272,17 +271,14 @@ public class ClassifierUpdater {
       if (!(field.isStatic())) {
         continue;
       }
-      if (field.isSynthetic()) {
-        continue;
-      }
       if (field.isEnumConstant()) {
         SNode enumClass = SNodeOperations.cast(cls, CONCEPTS.EnumClass$Vk);
-        SNode ecd = _quotation_createNode_ol94f8_a0b0d0a0db(null, myNodeFactory.createId(field), field.getName());
+        SNode ecd = _quotation_createNode_ol94f8_a0b0c0a0db(null, myNodeFactory.createId(field), field.getName());
         updateFieldJavadoc(ecd, field);
 
         ListSequence.fromList(SLinkOperations.getChildren(enumClass, LINKS.enumConstant$qtgW)).addElement(ecd);
       } else {
-        SNode decl = _quotation_createNode_ol94f8_a0a0a3a0a92(null, myNodeFactory.createId(field), createVisibility(field), getTypeByASMType(field.getGenericType(), null, cls), field.getName());
+        SNode decl = _quotation_createNode_ol94f8_a0a0a2a0a92(null, myNodeFactory.createId(field), createVisibility(field), getTypeByASMType(field.getGenericType(), null, cls), field.getName());
         for (ASMAnnotation annotation : field.getAnnotations()) {
           ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$K49I)).addElement(createAnnotation(annotation));
         }
@@ -340,14 +336,11 @@ public class ClassifierUpdater {
   }
   private void updateConstructors(final SNode cls) {
     for (ASMMethod c : myParsedClass.getDeclaredConstructors()) {
-      if (c.isSynthetic()) {
-        continue;
-      }
       if (shallSkip(c)) {
         continue;
       }
 
-      SNode constructor = _quotation_createNode_ol94f8_a0d0a0kb(null, myNodeFactory.createId(c), createVisibility(c), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")), SPropertyOperations.getString(cls, PROPS.name$MnvL));
+      SNode constructor = _quotation_createNode_ol94f8_a0c0a0kb(null, myNodeFactory.createId(c), createVisibility(c), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")), SPropertyOperations.getString(cls, PROPS.name$MnvL));
 
       for (ASMAnnotation annotation : c.getAnnotations()) {
         ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.annotation$K49I)).addElement(createAnnotation(annotation));
@@ -357,7 +350,7 @@ public class ClassifierUpdater {
         BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(constructor)), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484584656L, 0x5745e3015c8914d3L), constructor);
       }
       for (ASMTypeVariable tv : c.getTypeParameters()) {
-        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.typeVariableDeclaration$Lipp)).addElement(_quotation_createNode_ol94f8_a0a0a8a0a63(tv.getName()));
+        ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.typeVariableDeclaration$Lipp)).addElement(_quotation_createNode_ol94f8_a0a0a7a0a63(tv.getName()));
       }
 
       {
@@ -371,7 +364,7 @@ public class ClassifierUpdater {
           pt_var = pt_it.next();
           pn_var = pn_it.next();
           pa_var = pa_it.next();
-          SNode pd = _quotation_createNode_ol94f8_a0a0k0a0kb(getTypeByASMType(pt_var, constructor, cls), pn_var);
+          SNode pd = _quotation_createNode_ol94f8_a0a0j0a0kb(getTypeByASMType(pt_var, constructor, cls), pn_var);
           addAnnotationsToParameter(pd, pa_var);
           ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$5xBj)).addElement(pd);
         }
@@ -405,9 +398,6 @@ public class ClassifierUpdater {
       if (m.isStatic() || shallSkip(m)) {
         continue;
       }
-      if (m.isSynthetic() || m.isBridge() || m.isCompilerGenerated()) {
-        continue;
-      }
 
       SNode md = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"));
       ((jetbrains.mps.smodel.SNode) md).setId(myNodeFactory.createId(m));
@@ -425,9 +415,6 @@ public class ClassifierUpdater {
   private void updateStaticMethods(SNode cls) {
     for (ASMMethod m : myParsedClass.getDeclaredMethods()) {
       if (!(m.isStatic()) || shallSkip(m)) {
-        continue;
-      }
-      if (m.isSynthetic() || m.isCompilerGenerated()) {
         continue;
       }
 
@@ -763,7 +750,7 @@ public class ClassifierUpdater {
     }
     return quotedNode_6;
   }
-  private static SNode _quotation_createNode_ol94f8_a0a0a3a0a92(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5) {
+  private static SNode _quotation_createNode_ol94f8_a0a0a2a0a92(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5) {
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
     SNode quotedNode_8 = null;
@@ -780,7 +767,7 @@ public class ClassifierUpdater {
     }
     return quotedNode_6;
   }
-  private static SNode _quotation_createNode_ol94f8_a0b0d0a0db(Object parameter_1, Object parameter_2, Object parameter_3) {
+  private static SNode _quotation_createNode_ol94f8_a0b0c0a0db(Object parameter_1, Object parameter_2, Object parameter_3) {
     SNode quotedNode_4 = null;
     SNodeBuilder nb = new SNodeBuilder((SModel) parameter_1, (SNodeId) parameter_2).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc367388b3L, "EnumConstantDeclaration"));
     quotedNode_4 = nb.getResult();
@@ -819,7 +806,7 @@ public class ClassifierUpdater {
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ol94f8_a0d0a0kb(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5) {
+  private static SNode _quotation_createNode_ol94f8_a0c0a0kb(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5) {
     SNode quotedNode_6 = null;
     SNode quotedNode_7 = null;
     SNode quotedNode_8 = null;
@@ -840,14 +827,14 @@ public class ClassifierUpdater {
     }
     return quotedNode_6;
   }
-  private static SNode _quotation_createNode_ol94f8_a0a0a8a0a63(Object parameter_1) {
+  private static SNode _quotation_createNode_ol94f8_a0a0a7a0a63(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1024639ed74L, "TypeVariableDeclaration"));
     quotedNode_2 = nb.getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_ol94f8_a0a0k0a0kb(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_ol94f8_a0a0j0a0kb(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));

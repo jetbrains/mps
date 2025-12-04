@@ -218,6 +218,7 @@ public final class ASMMethod {
     return myName.equals("<init>");
   }
   public boolean isCompilerGenerated() {
+    // note, static alternative has slightly different perspective on what 'compiler-generated' means
     return myName.startsWith("access$") || myName.equals("<clinit>") || myName.startsWith("lambda$") || myName.startsWith("$deserializeLambda");
   }
   public List<ASMTypeVariable> getTypeParameters() {
@@ -267,6 +268,20 @@ public final class ASMMethod {
 
   /*package*/ static boolean isSynthetic(MethodNode method) {
     return (method.access & Opcodes.ACC_SYNTHETIC) != 0;
+  }
+  /**
+   * compiler-injected == not present in source code.
+   * XXX perhaps, isGeneratedEnumMember shall be part of this detection logic as well
+   */
+  /*package*/ static boolean isCompilerInjected(MethodNode method) {
+    final int bs = Opcodes.ACC_SYNTHETIC | Opcodes.ACC_BRIDGE;
+    if ((method.access & bs) != 0) {
+      return true;
+    }
+    // Note, according to JVMS (4.7.8), as I read it, <clinit> isn't necessarily denoted as synthetic, therefore have to check name here
+    // Here, I don't see any reason to check for other names, like #isCompilerGenerated(), above. Those methods have to be denoted ACC_SYNTHETIC, imo.
+    final int ps = Opcodes.ACC_PRIVATE | Opcodes.ACC_STATIC;
+    return (method.access & ps) != 0 && Objects.equals(method.name, "<clinit>");
   }
 
   private static class ByOrderInStackFrame implements Comparator<LocalVariableNode> {

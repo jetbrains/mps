@@ -365,6 +365,61 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3Eq_PkM6JJU" role="3clF47">
+        <node concept="3SKdUt" id="3b7viGstEUg" role="3cqZAp">
+          <node concept="1PaTwC" id="3b7viGstEUh" role="1aUNEU">
+            <node concept="3oM_SD" id="3b7viGstEUi" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFvB" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFwI" role="1PaTwD">
+              <property role="3oM_SC" value="Kotlin" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFxO" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFyU" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFyV" role="1PaTwD">
+              <property role="3oM_SC" value="place" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFyW" role="1PaTwD">
+              <property role="3oM_SC" value="where" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstF$i" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstF$j" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstF_p" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstF_E" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFAw" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFAL" role="1PaTwD">
+              <property role="3oM_SC" value="at" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFB2" role="1PaTwD">
+              <property role="3oM_SC" value="least" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFBS" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFCY" role="1PaTwD">
+              <property role="3oM_SC" value="compiler-injected" />
+            </node>
+            <node concept="3oM_SD" id="3b7viGstFHj" role="1PaTwD">
+              <property role="3oM_SC" value="methods?" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="3Eq_PkM8bmr" role="3cqZAp">
           <node concept="3cpWsn" id="3Eq_PkM8bms" role="3cpWs9">
             <property role="TrG5h" value="ac" />
@@ -392,7 +447,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="3b7viGsotee" role="2OqNvi">
-                      <ref role="37wK5l" to="45y3:3b7viGsgNIN" resolve="withSyntheticMembers" />
+                      <ref role="37wK5l" to="45y3:3b7viGsq3ZS" resolve="withCompilerInjectedMembers" />
                       <node concept="3clFbT" id="3b7viGsovka" role="37wK5m" />
                     </node>
                   </node>

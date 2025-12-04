@@ -37,7 +37,7 @@ public class ASMClass {
    */
   @Deprecated
   public ASMClass(ClassReader reader, boolean needParamNames) {
-    this(reader, new ClassReaderOptions.Builder().withMethodParameters(true).withSyntheticMembers(true).build());
+    this(reader, new ClassReaderOptions.Builder().withMethodParameters(true).withCompilerInjectedMembers(true).withSyntheticMembers(true).build());
   }
 
   /**
@@ -115,6 +115,9 @@ public class ASMClass {
     }
     final boolean isEnumClass = ClassifierKind.getClassifierKind(classNode.access) == ClassifierKind.ENUM;
     for (MethodNode mn : classNode.methods) {
+      if (options.skipCompilerInjectedMethods && ASMMethod.isCompilerInjected(mn)) {
+        continue;
+      }
       if (options.skipSyntheticMethods && ASMMethod.isSynthetic(mn)) {
         continue;
       }

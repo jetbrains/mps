@@ -278,12 +278,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       if (m.isStatic()) {
         continue;
       }
-      if (m.isBridge()) {
-        continue;
-      }
-      if (m.isCompilerGenerated()) {
-        continue;
-      }
 
       instance(CONCEPTS.InstanceMethodDeclaration$39);
       createVisibility(m);
@@ -293,9 +287,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private void updateStaticMethods(ASMClass ac, ClassifierKind kind) {
     for (ASMMethod m : ac.getDeclaredMethods()) {
       if (!(m.isStatic())) {
-        continue;
-      }
-      if (m.isCompilerGenerated()) {
         continue;
       }
 

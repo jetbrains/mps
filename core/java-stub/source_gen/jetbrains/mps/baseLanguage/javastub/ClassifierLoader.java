@@ -177,7 +177,7 @@ public class ClassifierLoader {
 
   public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier) {
     assert myClassReader != null;
-    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withSyntheticMembers(false).build());
+    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withCompilerInjectedMembers(false).build());
     Documentation doc = docSupplier.apply(ac);
     new ClassifierUpdater(ac, mySkipPrivate, refFactory, doc, myNodeIdFactory).update(classifier);
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {

@@ -9,11 +9,13 @@ public final class ClassReaderOptions {
   public final boolean skipSyntheticMethods;
   public final boolean skipSyntheticFields;
   public final boolean needMethodParameters;
+  public final boolean skipCompilerInjectedMethods;
 
-  private ClassReaderOptions(boolean needMethodParameters, boolean skipSyntheticFields, boolean skipSyntheticMethods) {
+  private ClassReaderOptions(boolean needMethodParameters, boolean skipSyntheticFields, boolean skipSyntheticMethods, boolean skipCompilerInjectedMethods) {
     this.needMethodParameters = needMethodParameters;
     this.skipSyntheticFields = skipSyntheticFields;
     this.skipSyntheticMethods = skipSyntheticMethods;
+    this.skipCompilerInjectedMethods = skipCompilerInjectedMethods;
   }
 
   public static Builder builder() {
@@ -24,22 +26,36 @@ public final class ClassReaderOptions {
     private boolean myNeedMethodParameters;
     private boolean myNeedSyntheticMethods;
     private boolean myNeedSyntheticFields;
+    private boolean myNeedCompilerInjectedMembers;
 
     public Builder withMethodParameters(boolean needMethodParameters) {
       myNeedMethodParameters = needMethodParameters;
       return this;
     }
 
+    /**
+     * Whether to include methods/fields with {@code ACC_SYNTHETIC}} access flag
+     */
     public Builder withSyntheticMembers(boolean needSyntheticMembers) {
       myNeedSyntheticMethods = needSyntheticMembers;
       myNeedSyntheticFields = needSyntheticMembers;
       return this;
     }
 
+    /**
+     * Whether to include methods/fields not present in a source code but injected by compiler.
+     * These include those denoted with {@code ACC_SYNTHETIC} or {@code ACC_BRIDGE} access flag, {@link jetbrains.mps.baseLanguage.javastub.asm.ClassReaderOptions.Builder#withSyntheticMembers(boolean)} 
+     * Also, generated methods like {@code <clinit>} and alike.
+     */
+    public Builder withCompilerInjectedMembers(boolean needCompilerInjectedMembers) {
+      myNeedCompilerInjectedMembers = needCompilerInjectedMembers;
+      return withSyntheticMembers(needCompilerInjectedMembers);
+    }
+
 
 
     public ClassReaderOptions build() {
-      return new ClassReaderOptions(myNeedMethodParameters, !(myNeedSyntheticFields), !(myNeedSyntheticMethods));
+      return new ClassReaderOptions(myNeedMethodParameters, !(myNeedSyntheticFields), !(myNeedSyntheticMethods), !(myNeedCompilerInjectedMembers));
     }
   }
 }

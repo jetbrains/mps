@@ -34,7 +34,9 @@ public class JavaStubIdIndexer implements IdIndexer {
     try {
       ClassReader reader;
       reader = new ClassReader(bytes);
-      ASMClass ac = new ASMClass(reader, ClassReaderOptions.builder().withMethodParameters(false).withSyntheticMembers(false).build());
+      // XXX I wonder if there's a reason to index private members of stub classes, as they can't get referenced anyway. If yes,
+      //  shall refactor skipPrivate of ClassifierUpdater and move skipPrivate option to ClassReaderOptions of ASMClass 
+      ASMClass ac = new ASMClass(reader, ClassReaderOptions.builder().withMethodParameters(false).withCompilerInjectedMembers(false).build());
       // FWIW, here used to be failed check to ignore anonymous classes. I see no reason to ignore usages from within anonymous classes.
       ClassifierCacher updater = new ClassifierCacher();
       updater.updateClassifier(ac);
