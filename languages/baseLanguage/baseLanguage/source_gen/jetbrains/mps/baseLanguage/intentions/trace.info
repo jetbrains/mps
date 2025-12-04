@@ -3261,134 +3261,169 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)/1224168785803">
     <file name="AddFieldForUnUsedParameter_Intention.java">
-      <node id="1224168785803" at="36,0,37,0" concept="6" trace="myCachedExecutable" />
-      <node id="1224168785803" at="38,49,39,146" concept="16" />
-      <node id="1224168785803" at="43,35,44,40" concept="11" />
-      <node id="1224168785803" at="48,35,49,17" concept="11" />
-      <node id="1224168785803" at="53,37,54,105" concept="5" />
-      <node id="1224168785803" at="55,5,56,30" concept="11" />
-      <node id="1224168829449" at="63,87,64,46" concept="11" />
-      <node id="1224168900845" at="68,78,69,98" concept="10" />
-      <node id="1570762105196821318" at="69,98,70,121" concept="10" />
-      <node id="1570762105197163860" at="70,121,71,83" concept="12" />
-      <node id="1570762105196925447" at="71,83,72,568" concept="10" />
-      <node id="1570762105197174741" at="72,568,73,0" concept="13" />
-      <node id="1224168950233" at="73,0,74,93" concept="10" />
-      <node id="1224168962724" at="74,93,75,206" concept="5" />
-      <node id="1224168975893" at="75,206,76,132" concept="5" />
-      <node id="2379392359824279026" at="76,132,77,66" concept="5" />
-      <node id="1570762105196674548" at="77,66,78,169" concept="10" />
-      <node id="1570762105196686233" at="79,36,80,215" concept="5" />
-      <node id="2124680654498002996" at="81,14,82,221" concept="5" />
-      <node id="1224169060438" at="83,7,84,103" concept="10" />
-      <node id="1224169072097" at="84,103,85,96" concept="10" />
-      <node id="1224169094562" at="85,96,86,75" concept="5" />
-      <node id="1224169207916" at="87,20,88,105" concept="10" />
-      <node id="1224170388870" at="88,105,89,80" concept="5" />
-      <node id="1224170254560" at="89,80,90,95" concept="10" />
-      <node id="1224170275454" at="90,95,91,136" concept="5" />
-      <node id="1224170336954" at="91,136,92,76" concept="5" />
-      <node id="1224169134945" at="92,76,93,69" concept="5" />
-      <node id="1570762105196944299" at="94,14,95,99" concept="10" />
-      <node id="1570762105196969116" at="95,99,96,83" concept="5" />
-      <node id="1570762105196935149" at="96,83,97,69" concept="5" />
-      <node id="1224169259370" at="98,7,99,97" concept="10" />
-      <node id="1224169276862" at="99,97,100,80" concept="5" />
-      <node id="1224169172844" at="100,80,101,67" concept="5" />
-      <node id="1224169324249" at="101,67,102,167" concept="5" />
-      <node id="1224168785803" at="107,55,108,21" concept="11" />
-      <node id="1224168785803" at="109,7,110,18" concept="11" />
-      <node id="1239781457994" at="114,112,115,21" concept="11" />
-      <node id="1239781425006" at="116,7,117,110" concept="10" />
-      <node id="1224171259848" at="117,110,118,119" concept="10" />
-      <node id="1224171269433" at="118,119,119,67" concept="11" />
-      <node id="1224168785803" at="124,48,125,55" concept="11" />
-      <node id="1224168785803" at="131,0,132,0" concept="14" trace="ClassConcept$bK" />
-      <node id="1224168785803" at="132,0,133,0" concept="14" trace="BaseMethodDeclaration$kD" />
-      <node id="1224168785803" at="133,0,134,0" concept="14" trace="AssignmentExpression$SE" />
-      <node id="1224168785803" at="134,0,135,0" concept="14" trace="DotExpression$yW" />
-      <node id="1224168785803" at="135,0,136,0" concept="14" trace="ThisExpression$$o" />
-      <node id="1224168785803" at="136,0,137,0" concept="14" trace="FieldReferenceOperation$fU" />
-      <node id="1224168785803" at="137,0,138,0" concept="14" trace="FieldDeclaration$ie" />
-      <node id="1224168785803" at="138,0,139,0" concept="14" trace="ConstructorDeclaration$yG" />
-      <node id="1224168785803" at="139,0,140,0" concept="14" trace="ExpressionStatement$O8" />
-      <node id="1224168785803" at="140,0,141,0" concept="14" trace="VariableReference$TC" />
-      <node id="1224168785803" at="144,0,145,0" concept="14" trace="body$5xQk" />
-      <node id="1224168785803" at="145,0,146,0" concept="14" trace="statement$53DE" />
-      <node id="1224168785803" at="146,0,147,0" concept="14" trace="lValue$splI" />
-      <node id="1224168785803" at="147,0,148,0" concept="14" trace="operand$w6IR" />
-      <node id="1224168785803" at="148,0,149,0" concept="14" trace="operation$gs9E" />
-      <node id="1224168785803" at="149,0,150,0" concept="14" trace="type$a1UY" />
-      <node id="1224168785803" at="150,0,151,0" concept="14" trace="member$L_2d" />
-      <node id="1224168785803" at="151,0,152,0" concept="14" trace="expression$5L7M" />
-      <node id="1224168785803" at="152,0,153,0" concept="14" trace="fieldDeclaration$H7Ag" />
-      <node id="1224168785803" at="153,0,154,0" concept="14" trace="variableDeclaration$N1XG" />
-      <node id="1224168785803" at="154,0,155,0" concept="14" trace="rValue$spNK" />
-      <node id="1224168785803" at="158,0,159,0" concept="14" trace="name$MnvL" />
-      <node id="1224168785803" at="159,0,160,0" concept="14" trace="isFinal$gvTP" />
-      <node id="1224168785803" at="59,0,61,0" concept="2" trace="IntentionImplementation#()V" />
-      <node id="1570762105196794704" at="81,12,83,7" concept="0" />
-      <node id="1224168785803" at="38,0,41,0" concept="2" trace="AddFieldForUnUsedParameter_Intention#()V" />
-      <node id="1224168785803" at="52,99,55,5" concept="8" />
-      <node id="1224168785803" at="106,86,109,7" concept="8" />
-      <node id="1239781436426" at="113,93,116,7" concept="8" />
-      <node id="1224168785803" at="42,0,46,0" concept="9" trace="getPresentation#()Ljava/lang/String;" />
-      <node id="1224168785803" at="47,0,51,0" concept="9" trace="isSurroundWith#()Z" />
-      <node id="1224168785803" at="62,0,66,0" concept="9" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
-      <node id="1570762105196935098" at="94,12,98,7" concept="0" />
-      <node id="1224168785803" at="123,0,127,0" concept="9" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
-      <node id="1570762105196670804" at="78,169,83,7" concept="8" />
-      <node id="1224168785803" at="52,0,58,0" concept="9" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
-      <node id="1224168785803" at="105,0,112,0" concept="9" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="1224168785803" at="113,0,121,0" concept="9" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="1570762105196916605" at="86,75,98,7" concept="8" />
-      <node id="1224168785803" at="67,0,104,0" concept="9" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <scope id="1224168785803" at="59,38,59,38" />
-      <scope id="1224168785803" at="38,49,39,146" />
-      <scope id="1224168785803" at="43,35,44,40" />
-      <scope id="1224168785803" at="48,35,49,17" />
-      <scope id="1224168785803" at="53,37,54,105" />
-      <scope id="1224168785805" at="63,87,64,46" />
-      <scope id="1570762105196670806" at="79,36,80,215" />
-      <scope id="1570762105196794705" at="81,14,82,221" />
-      <scope id="1224168785803" at="107,55,108,21" />
-      <scope id="1239781436427" at="114,112,115,21" />
-      <scope id="1224168785803" at="124,48,125,55" />
-      <scope id="1224168785803" at="59,0,61,0" />
-      <scope id="1224168785803" at="38,0,41,0" />
-      <scope id="1570762105196935099" at="94,14,97,69">
+      <node id="1224168785803" at="37,0,38,0" concept="6" trace="myCachedExecutable" />
+      <node id="1224168785803" at="39,49,40,146" concept="16" />
+      <node id="1224168785803" at="44,35,45,40" concept="11" />
+      <node id="1224168785803" at="49,35,50,17" concept="11" />
+      <node id="1224168785803" at="54,37,55,105" concept="5" />
+      <node id="1224168785803" at="56,5,57,30" concept="11" />
+      <node id="1224168829449" at="64,87,65,46" concept="11" />
+      <node id="1224168900845" at="69,78,70,98" concept="10" />
+      <node id="1570762105196821318" at="70,98,71,121" concept="10" />
+      <node id="1570762105197163860" at="71,121,72,83" concept="12" />
+      <node id="1570762105196925447" at="72,83,73,676" concept="10" />
+      <node id="1570762105197174741" at="73,676,74,0" concept="13" />
+      <node id="1224168950233" at="74,0,75,93" concept="10" />
+      <node id="1224168962724" at="75,93,76,206" concept="5" />
+      <node id="1224168975893" at="76,206,77,132" concept="5" />
+      <node id="2379392359824279026" at="77,132,78,145" concept="5" />
+      <node id="1570762105196674548" at="78,145,79,169" concept="10" />
+      <node id="1570762105196686233" at="80,36,81,215" concept="5" />
+      <node id="2124680654498002996" at="82,14,83,221" concept="5" />
+      <node id="1224169060438" at="84,7,85,103" concept="10" />
+      <node id="1224169072097" at="85,103,86,96" concept="10" />
+      <node id="1224169094562" at="86,96,87,75" concept="5" />
+      <node id="1224169207916" at="88,20,89,105" concept="10" />
+      <node id="1224170388870" at="89,105,90,80" concept="5" />
+      <node id="1224170254560" at="90,80,91,95" concept="10" />
+      <node id="1224170275454" at="91,95,92,136" concept="5" />
+      <node id="1224170336954" at="92,136,93,76" concept="5" />
+      <node id="1224169134945" at="93,76,94,69" concept="5" />
+      <node id="1570762105196944299" at="95,14,96,99" concept="10" />
+      <node id="1570762105196969116" at="96,99,97,83" concept="5" />
+      <node id="1570762105196935149" at="97,83,98,69" concept="5" />
+      <node id="1224169259370" at="99,7,100,97" concept="10" />
+      <node id="1224169276862" at="100,97,101,80" concept="5" />
+      <node id="1224169172844" at="101,80,102,67" concept="5" />
+      <node id="6620955700775246007" at="102,67,103,26" concept="10" />
+      <node id="6620955700775279380" at="105,134,106,19" concept="3" />
+      <node id="6620955700775290993" at="107,9,108,173" concept="10" />
+      <node id="6620955700775353702" at="109,258,110,86" concept="12" />
+      <node id="6620955700775321909" at="110,86,111,22" concept="5" />
+      <node id="6620955700775347216" at="114,27,115,69" concept="5" />
+      <node id="6620955700775423274" at="117,98,118,92" concept="12" />
+      <node id="1224169324249" at="118,92,119,171" concept="5" />
+      <node id="6620955700775578791" at="120,165,121,115" concept="12" />
+      <node id="6620955700775572411" at="121,115,122,149" concept="5" />
+      <node id="6620955700775604126" at="123,16,124,95" concept="12" />
+      <node id="6620955700775598021" at="124,95,125,177" concept="5" />
+      <node id="6620955700775085948" at="127,7,128,0" concept="13" />
+      <node id="1224168785803" at="133,55,134,21" concept="11" />
+      <node id="1224168785803" at="135,7,136,18" concept="11" />
+      <node id="1239781457994" at="140,112,141,21" concept="11" />
+      <node id="1239781425006" at="142,7,143,110" concept="10" />
+      <node id="1224171259848" at="143,110,144,119" concept="10" />
+      <node id="1224171269433" at="144,119,145,67" concept="11" />
+      <node id="1224168785803" at="150,48,151,55" concept="11" />
+      <node id="1224168785803" at="157,0,158,0" concept="14" trace="ClassConcept$bK" />
+      <node id="1224168785803" at="158,0,159,0" concept="14" trace="BaseMethodDeclaration$kD" />
+      <node id="1224168785803" at="159,0,160,0" concept="14" trace="ExpressionStatement$O8" />
+      <node id="1224168785803" at="160,0,161,0" concept="14" trace="AssignmentExpression$SE" />
+      <node id="1224168785803" at="161,0,162,0" concept="14" trace="DotExpression$yW" />
+      <node id="1224168785803" at="162,0,163,0" concept="14" trace="ThisExpression$$o" />
+      <node id="1224168785803" at="163,0,164,0" concept="14" trace="FieldReferenceOperation$fU" />
+      <node id="1224168785803" at="164,0,165,0" concept="14" trace="FieldDeclaration$ie" />
+      <node id="1224168785803" at="165,0,166,0" concept="14" trace="ConstructorDeclaration$yG" />
+      <node id="1224168785803" at="166,0,167,0" concept="14" trace="VariableReference$TC" />
+      <node id="1224168785803" at="167,0,168,0" concept="14" trace="ParameterDeclaration$RG" />
+      <node id="1224168785803" at="168,0,169,0" concept="14" trace="ReturnStatement$lt" />
+      <node id="1224168785803" at="172,0,173,0" concept="14" trace="body$5xQk" />
+      <node id="1224168785803" at="173,0,174,0" concept="14" trace="statement$53DE" />
+      <node id="1224168785803" at="174,0,175,0" concept="14" trace="expression$5L7M" />
+      <node id="1224168785803" at="175,0,176,0" concept="14" trace="lValue$splI" />
+      <node id="1224168785803" at="176,0,177,0" concept="14" trace="operand$w6IR" />
+      <node id="1224168785803" at="177,0,178,0" concept="14" trace="operation$gs9E" />
+      <node id="1224168785803" at="178,0,179,0" concept="14" trace="type$a1UY" />
+      <node id="1224168785803" at="179,0,180,0" concept="14" trace="member$L_2d" />
+      <node id="1224168785803" at="180,0,181,0" concept="14" trace="fieldDeclaration$H7Ag" />
+      <node id="1224168785803" at="181,0,182,0" concept="14" trace="variableDeclaration$N1XG" />
+      <node id="1224168785803" at="182,0,183,0" concept="14" trace="rValue$spNK" />
+      <node id="1224168785803" at="186,0,187,0" concept="14" trace="name$MnvL" />
+      <node id="1224168785803" at="187,0,188,0" concept="14" trace="isFinal$gvTP" />
+      <node id="1224168785803" at="60,0,62,0" concept="2" trace="IntentionImplementation#()V" />
+      <node id="1570762105196794704" at="82,12,84,7" concept="0" />
+      <node id="1224168785803" at="39,0,42,0" concept="2" trace="AddFieldForUnUsedParameter_Intention#()V" />
+      <node id="1224168785803" at="53,99,56,5" concept="8" />
+      <node id="6620955700775266368" at="104,197,107,9" concept="8" />
+      <node id="6620955700775596404" at="123,14,126,9" concept="0" />
+      <node id="1224168785803" at="132,86,135,7" concept="8" />
+      <node id="1239781436426" at="139,93,142,7" concept="8" />
+      <node id="1224168785803" at="43,0,47,0" concept="9" trace="getPresentation#()Ljava/lang/String;" />
+      <node id="1224168785803" at="48,0,52,0" concept="9" trace="isSurroundWith#()Z" />
+      <node id="1224168785803" at="63,0,67,0" concept="9" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
+      <node id="1570762105196935098" at="95,12,99,7" concept="0" />
+      <node id="6620955700775294898" at="108,173,112,9" concept="8" />
+      <node id="1224168785803" at="149,0,153,0" concept="9" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="1570762105196670804" at="79,169,84,7" concept="8" />
+      <node id="1224168785803" at="53,0,59,0" concept="9" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
+      <node id="1224168785803" at="131,0,138,0" concept="9" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="1224168785803" at="139,0,147,0" concept="9" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="6620955700775258109" at="103,26,113,7" concept="7" />
+      <node id="6620955700775404910" at="116,14,126,9" concept="8" />
+      <node id="6620955700775349877" at="116,12,127,7" concept="0" />
+      <node id="1570762105196916605" at="87,75,99,7" concept="8" />
+      <node id="6620955700775335542" at="113,7,127,7" concept="8" />
+      <node id="1224168785803" at="68,0,130,0" concept="9" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <scope id="1224168785803" at="60,38,60,38" />
+      <scope id="1224168785803" at="39,49,40,146" />
+      <scope id="1224168785803" at="44,35,45,40" />
+      <scope id="1224168785803" at="49,35,50,17" />
+      <scope id="1224168785803" at="54,37,55,105" />
+      <scope id="1224168785805" at="64,87,65,46" />
+      <scope id="1570762105196670806" at="80,36,81,215" />
+      <scope id="1570762105196794705" at="82,14,83,221" />
+      <scope id="6620955700775266370" at="105,134,106,19" />
+      <scope id="6620955700775335544" at="114,27,115,69" />
+      <scope id="1224168785803" at="133,55,134,21" />
+      <scope id="1239781436427" at="140,112,141,21" />
+      <scope id="1224168785803" at="150,48,151,55" />
+      <scope id="1224168785803" at="60,0,62,0" />
+      <scope id="6620955700775294900" at="109,258,111,22" />
+      <scope id="6620955700775404912" at="117,98,119,171" />
+      <scope id="6620955700775570693" at="120,165,122,149" />
+      <scope id="6620955700775596405" at="123,16,125,177" />
+      <scope id="1224168785803" at="39,0,42,0" />
+      <scope id="1570762105196935099" at="95,14,98,69">
         <var name="fieldRef" id="1570762105196944305" />
       </scope>
-      <scope id="1224168785803" at="42,0,46,0" />
-      <scope id="1224168785803" at="47,0,51,0" />
-      <scope id="1224168785803" at="52,99,56,30" />
-      <scope id="1224168785803" at="62,0,66,0">
+      <scope id="1224168785803" at="43,0,47,0" />
+      <scope id="1224168785803" at="48,0,52,0" />
+      <scope id="1224168785803" at="53,99,57,30" />
+      <scope id="1224168785803" at="63,0,67,0">
         <var name="editorContext" id="1224168785803" />
         <var name="node" id="1224168785803" />
       </scope>
-      <scope id="1224168785803" at="106,86,110,18" />
-      <scope id="1224168785803" at="123,0,127,0" />
-      <scope id="1224168785803" at="52,0,58,0">
+      <scope id="1224168785803" at="132,86,136,18" />
+      <scope id="1224168785803" at="149,0,153,0" />
+      <scope id="1224168785803" at="53,0,59,0">
         <var name="context" id="1224168785803" />
         <var name="node" id="1224168785803" />
       </scope>
-      <scope id="1570762105196916607" at="87,20,93,69">
+      <scope id="1570762105196916607" at="88,20,94,69">
         <var name="fieldRef" id="1224169207917" />
         <var name="leftPart" id="1224170254561" />
       </scope>
-      <scope id="1224171255923" at="113,93,119,67">
+      <scope id="1224171255923" at="139,93,145,67">
         <var name="parent" id="1239781425007" />
         <var name="unusedAssignments" id="1224171259849" />
       </scope>
-      <scope id="1224168785803" at="105,0,112,0">
+      <scope id="1224168785803" at="131,0,138,0">
         <var name="editorContext" id="1224168785803" />
         <var name="node" id="1224168785803" />
       </scope>
-      <scope id="1224168785803" at="113,0,121,0">
+      <scope id="6620955700775258112" at="104,197,112,9">
+        <var name="v" id="6620955700775290994" />
+      </scope>
+      <scope id="1224168785803" at="139,0,147,0">
         <var name="editorContext" id="1224168785803" />
         <var name="node" id="1224168785803" />
       </scope>
-      <scope id="1224168785807" at="68,78,102,167">
+      <scope id="6620955700775258109" at="103,26,113,7">
+        <var name="es" id="6620955700775258113" />
+      </scope>
+      <scope id="6620955700775349878" at="116,14,126,9" />
+      <scope id="1224168785807" at="69,78,128,0">
+        <var name="anchor" id="6620955700775246010" />
         <var name="clazz" id="1224168900846" />
         <var name="contextMethodDecl" id="1570762105196821319" />
         <var name="expr" id="1224169072098" />
@@ -3398,15 +3433,15 @@
         <var name="paramRef" id="1224169259371" />
         <var name="useThis" id="1570762105196925450" />
       </scope>
-      <scope id="1224168785803" at="67,0,104,0">
+      <scope id="1224168785803" at="68,0,130,0">
         <var name="editorContext" id="1224168785803" />
         <var name="node" id="1224168785803" />
       </scope>
-      <unit id="1224168785803" at="157,0,161,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$PROPS" />
-      <unit id="1224168785803" at="130,0,142,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$CONCEPTS" />
-      <unit id="1224168785803" at="143,0,156,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$LINKS" />
-      <unit id="1224168785803" at="58,0,129,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$IntentionImplementation" />
-      <unit id="1224168785803" at="35,0,162,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention" />
+      <unit id="1224168785803" at="185,0,189,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$PROPS" />
+      <unit id="1224168785803" at="171,0,184,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$LINKS" />
+      <unit id="1224168785803" at="156,0,170,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$CONCEPTS" />
+      <unit id="1224168785803" at="59,0,155,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$IntentionImplementation" />
+      <unit id="1224168785803" at="36,0,190,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1224168785803" at="324,47,325,69" concept="5" />
