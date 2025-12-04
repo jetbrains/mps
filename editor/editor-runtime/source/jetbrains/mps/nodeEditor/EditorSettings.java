@@ -23,6 +23,7 @@ import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.ex.util.EditorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.NewUI;
 import com.intellij.util.xmlb.annotations.Transient;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorSettings.MyState;
@@ -310,7 +311,19 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
   }
 
   public Color getLeftHighlighterBackgroundColor() {
-    return getECM() == null ? DEFAULT_LEFT_HIGHLIGHTER_BACKGROUND_COLOR : getECM().getGlobalScheme().getColor(EditorColors.GUTTER_BACKGROUND);
+    EditorColorsManager ecm = getECM();
+    if (ecm == null) {
+      return EditorColorsManager.getInstance().getGlobalScheme().getDefaultBackground();
+    }
+    // Logic taken from IJPL-26457 fix
+    Color color;
+    if (NewUI.isEnabled()) {
+      color = ecm.getGlobalScheme().getColor(EditorColors.EDITOR_GUTTER_BACKGROUND);
+    } else {
+      color = ecm.getGlobalScheme().getColor(EditorColors.GUTTER_BACKGROUND);
+      color = color != null ? color : EditorColors.GUTTER_BACKGROUND.getDefaultColor();
+    }
+    return color != null ? color : EditorColorsManager.getInstance().getGlobalScheme().getDefaultBackground();
   }
 
   public Color getLeftHighlighterTearLineColor() {
