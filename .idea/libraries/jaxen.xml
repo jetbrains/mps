@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jaxen">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/module-intellij.libraries.jaxen.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -32,5 +32,6 @@
     </orderEntry>
     <orderEntry type="module" module-name="platform" />
     <orderEntry type="library" name="org.jdom" level="project" />
+    <orderEntry type="library" name="jaxen" level="project" />
   </component>
 </module>
