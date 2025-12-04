@@ -84,4 +84,8 @@ public class ASMField {
   public List<ASMAnnotation> getAnnotations() {
     return (myAnnotations == null ? Collections.<ASMAnnotation>emptyList() : Collections.unmodifiableList(myAnnotations));
   }
+
+  /*package*/ static boolean isSynthetic(FieldNode field) {
+    return (field.access & Opcodes.ACC_SYNTHETIC) != 0;
+  }
 }

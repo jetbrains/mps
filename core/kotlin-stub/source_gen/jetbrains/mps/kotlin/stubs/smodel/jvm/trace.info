@@ -17,58 +17,58 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)/3833041373521027993">
     <file name="KotlinAwareClassifierLoader.java">
-      <node id="3833041373529684457" at="26,110,27,41" concept="14" />
-      <node id="3833041373529679506" at="30,91,31,41" concept="14" />
-      <node id="4222853992782280091" at="34,127,35,52" concept="8" />
-      <node id="5320503426751421321" at="35,52,36,46" concept="8" />
-      <node id="4222853992782280097" at="36,46,37,87" concept="3" />
-      <node id="4222853992782977031" at="38,66,39,51" concept="8" />
-      <node id="4222853992782977039" at="40,26,41,108" concept="3" />
-      <node id="4222853992782977046" at="41,108,42,105" concept="3" />
-      <node id="3833041373529663840" at="48,104,49,88" concept="9" />
-      <node id="3833041373521027993" at="53,0,54,0" concept="12" trace="member$L_2d" />
-      <node id="3833041373529679510" at="26,0,29,0" concept="2" trace="KotlinAwareClassifierLoader#(Ljetbrains/mps/vfs/IFile;Ljetbrains/mps/baseLanguage/javastub/ClassifierLoader;Lorg/jetbrains/org/objectweb/asm/tree/InnerClassNode;)V" />
-      <node id="3833041373529679447" at="30,0,33,0" concept="2" trace="KotlinAwareClassifierLoader#(Ljetbrains/mps/vfs/IFile;ZZ)V" />
-      <node id="4222853992782977037" at="39,51,43,7" concept="6" />
-      <node id="3833041373529660017" at="47,0,51,0" concept="7" trace="createChildClassifierLoader#(Ljetbrains/mps/vfs/IFile;Ljava/lang/String;Lorg/jetbrains/org/objectweb/asm/tree/InnerClassNode;)Ljetbrains/mps/baseLanguage/javastub/ClassifierLoader;" />
-      <node id="4222853992782977029" at="37,87,44,5" concept="5" />
-      <node id="4222853992781904887" at="34,0,46,0" concept="7" trace="updateClassifier#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/stubs/smodel/metadata/KtReadContext;Ljava/util/function/Function;)V" />
-      <scope id="3833041373529679532" at="26,110,27,41" />
-      <scope id="3833041373529679505" at="30,91,31,41" />
-      <scope id="3833041373529660038" at="48,104,49,88" />
-      <scope id="4222853992782977038" at="40,26,42,105" />
-      <scope id="3833041373529679510" at="26,0,29,0">
+      <node id="3833041373529684457" at="27,110,28,41" concept="14" />
+      <node id="3833041373529679506" at="31,91,32,41" concept="14" />
+      <node id="4222853992782280091" at="35,127,36,139" concept="8" />
+      <node id="5320503426751421321" at="36,139,37,46" concept="8" />
+      <node id="4222853992782280097" at="37,46,38,87" concept="3" />
+      <node id="4222853992782977031" at="39,66,40,51" concept="8" />
+      <node id="4222853992782977039" at="41,26,42,108" concept="3" />
+      <node id="4222853992782977046" at="42,108,43,105" concept="3" />
+      <node id="3833041373529663840" at="49,104,50,88" concept="9" />
+      <node id="3833041373521027993" at="54,0,55,0" concept="12" trace="member$L_2d" />
+      <node id="3833041373529679510" at="27,0,30,0" concept="2" trace="KotlinAwareClassifierLoader#(Ljetbrains/mps/vfs/IFile;Ljetbrains/mps/baseLanguage/javastub/ClassifierLoader;Lorg/jetbrains/org/objectweb/asm/tree/InnerClassNode;)V" />
+      <node id="3833041373529679447" at="31,0,34,0" concept="2" trace="KotlinAwareClassifierLoader#(Ljetbrains/mps/vfs/IFile;ZZ)V" />
+      <node id="4222853992782977037" at="40,51,44,7" concept="6" />
+      <node id="3833041373529660017" at="48,0,52,0" concept="7" trace="createChildClassifierLoader#(Ljetbrains/mps/vfs/IFile;Ljava/lang/String;Lorg/jetbrains/org/objectweb/asm/tree/InnerClassNode;)Ljetbrains/mps/baseLanguage/javastub/ClassifierLoader;" />
+      <node id="4222853992782977029" at="38,87,45,5" concept="5" />
+      <node id="4222853992781904887" at="35,0,47,0" concept="7" trace="updateClassifier#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/stubs/smodel/metadata/KtReadContext;Ljava/util/function/Function;)V" />
+      <scope id="3833041373529679532" at="27,110,28,41" />
+      <scope id="3833041373529679505" at="31,91,32,41" />
+      <scope id="3833041373529660038" at="49,104,50,88" />
+      <scope id="4222853992782977038" at="41,26,43,105" />
+      <scope id="3833041373529679510" at="27,0,30,0">
         <var name="file" id="3833041373529679526" />
         <var name="innerClassStruct" id="3833041373529679530" />
         <var name="outer" id="3833041373529679528" />
       </scope>
-      <scope id="3833041373529679447" at="30,0,33,0">
+      <scope id="3833041373529679447" at="31,0,34,0">
         <var name="file" id="3833041373529679499" />
         <var name="onlyPublic" id="3833041373529679501" />
         <var name="skipPrivate" id="3833041373529679503" />
       </scope>
-      <scope id="3833041373529660017" at="47,0,51,0">
+      <scope id="3833041373529660017" at="48,0,52,0">
         <var name="cn" id="3833041373529660036" />
         <var name="name" id="3833041373529660034" />
         <var name="parent" id="3833041373529660032" />
       </scope>
-      <scope id="4222853992782977030" at="38,66,43,7">
+      <scope id="4222853992782977030" at="39,66,44,7">
         <var name="inner" id="4222853992782977032" />
       </scope>
-      <scope id="4222853992782977029" at="37,87,44,5">
+      <scope id="4222853992782977029" at="38,87,45,5">
         <var name="innerLoader" id="4222853992782977055" />
       </scope>
-      <scope id="4222853992781904890" at="34,127,44,5">
+      <scope id="4222853992781904890" at="35,127,45,5">
         <var name="ac" id="4222853992782280092" />
         <var name="doc" id="5320503426751421322" />
       </scope>
-      <scope id="4222853992781904887" at="34,0,46,0">
+      <scope id="4222853992781904887" at="35,0,47,0">
         <var name="classifier" id="3833041373529145159" />
         <var name="docSupplier" id="8643037841688326612" />
         <var name="visitorContext" id="3833041373529113428" />
       </scope>
-      <unit id="3833041373521027993" at="52,0,55,0" name="jetbrains.mps.kotlin.stubs.smodel.jvm.KotlinAwareClassifierLoader$LINKS" />
-      <unit id="3833041373521027993" at="24,0,56,0" name="jetbrains.mps.kotlin.stubs.smodel.jvm.KotlinAwareClassifierLoader" />
+      <unit id="3833041373521027993" at="53,0,56,0" name="jetbrains.mps.kotlin.stubs.smodel.jvm.KotlinAwareClassifierLoader$LINKS" />
+      <unit id="3833041373521027993" at="25,0,57,0" name="jetbrains.mps.kotlin.stubs.smodel.jvm.KotlinAwareClassifierLoader" />
     </file>
   </root>
   <root nodeRef="r:bdaa2532-d0d0-46ce-8145-d47be9b807a4(jetbrains.mps.kotlin.stubs.smodel.jvm)/3833041373521274818">

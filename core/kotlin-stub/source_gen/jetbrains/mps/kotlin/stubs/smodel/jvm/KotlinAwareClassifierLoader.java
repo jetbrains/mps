@@ -11,6 +11,7 @@ import jetbrains.mps.kotlin.stubs.smodel.metadata.KtReadContext;
 import java.util.function.Function;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.baseLanguage.javastub.Documentation;
+import jetbrains.mps.baseLanguage.javastub.asm.ClassReaderOptions;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -32,7 +33,7 @@ public class KotlinAwareClassifierLoader extends ClassifierLoader {
   }
 
   public void updateClassifier(SNode classifier, KtReadContext visitorContext, Function<ASMClass, Documentation> docSupplier) {
-    ASMClass ac = new ASMClass(myClassReader, true);
+    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withSyntheticMembers(false).build());
     Documentation doc = docSupplier.apply(ac);
     new KotlinAwareClassifierUpdater(ac, true, doc, visitorContext).update(classifier);
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {

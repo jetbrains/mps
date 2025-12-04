@@ -373,12 +373,32 @@
             </node>
             <node concept="2ShNRf" id="3Eq_PkM8bmu" role="33vP2m">
               <node concept="1pGfFk" id="3Eq_PkM8bmv" role="2ShVmc">
-                <ref role="37wK5l" to="45y3:6hYzBiUOvvI" resolve="ASMClass" />
+                <ref role="37wK5l" to="45y3:3b7viGsh0uo" resolve="ASMClass" />
                 <node concept="37vLTw" id="3Eq_PkM8btW" role="37wK5m">
                   <ref role="3cqZAo" to="1ltj:3Eq_PkM71kX" resolve="myClassReader" />
                 </node>
-                <node concept="3clFbT" id="7ZQX3Te_qaU" role="37wK5m">
-                  <property role="3clFbU" value="true" />
+                <node concept="2OqwBi" id="3b7viGsoztt" role="37wK5m">
+                  <node concept="2OqwBi" id="3b7viGsor0$" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3b7viGsohyP" role="2Oq$k0">
+                      <node concept="2YIFZM" id="3b7viGsofWo" role="2Oq$k0">
+                        <ref role="37wK5l" to="45y3:3b7viGsloDm" resolve="builder" />
+                        <ref role="1Pybhc" to="45y3:3b7viGsgJ6E" resolve="ClassReaderOptions" />
+                      </node>
+                      <node concept="liA8E" id="3b7viGsojOr" role="2OqNvi">
+                        <ref role="37wK5l" to="45y3:3b7viGsgKp3" resolve="withMethodParameters" />
+                        <node concept="3clFbT" id="3b7viGsonSF" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="3b7viGsotee" role="2OqNvi">
+                      <ref role="37wK5l" to="45y3:3b7viGsgNIN" resolve="withSyntheticMembers" />
+                      <node concept="3clFbT" id="3b7viGsovka" role="37wK5m" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3b7viGsoAEH" role="2OqNvi">
+                    <ref role="37wK5l" to="45y3:3b7viGsgLkX" resolve="build" />
+                  </node>
                 </node>
               </node>
             </node>

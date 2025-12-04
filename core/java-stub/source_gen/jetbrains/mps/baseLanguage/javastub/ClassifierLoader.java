@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import jetbrains.mps.java.stub.ReferenceFactory;
 import java.util.function.Function;
+import jetbrains.mps.baseLanguage.javastub.asm.ClassReaderOptions;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.io.InputStream;
 import jetbrains.mps.util.ReadUtil;
@@ -176,7 +177,7 @@ public class ClassifierLoader {
 
   public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier) {
     assert myClassReader != null;
-    ASMClass ac = new ASMClass(myClassReader, true);
+    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withSyntheticMembers(false).build());
     Documentation doc = docSupplier.apply(ac);
     new ClassifierUpdater(ac, mySkipPrivate, refFactory, doc, myNodeIdFactory).update(classifier);
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {

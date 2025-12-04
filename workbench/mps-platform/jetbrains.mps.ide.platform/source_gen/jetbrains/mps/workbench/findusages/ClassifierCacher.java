@@ -193,9 +193,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       if (field.isStatic()) {
         continue;
       }
-      if (field.isSynthetic()) {
-        continue;
-      }
       instance(CONCEPTS.FieldDeclaration$ie);
       createVisibility(field);
       getTypeByASMType(field.getGenericType());
@@ -207,9 +204,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private void updateStaticFields(ASMClass ac) {
     for (ASMField field : ac.getDeclaredFields()) {
       if (!(field.isStatic())) {
-        continue;
-      }
-      if (field.isSynthetic()) {
         continue;
       }
       if (field.isEnumConstant()) {
@@ -246,9 +240,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
   private void updateConstructors(ASMClass ac) {
     for (ASMMethod c : ac.getDeclaredConstructors()) {
-      if (c.isSynthetic()) {
-        continue;
-      }
 
       instance(CONCEPTS.ConstructorDeclaration$yG);
       createVisibility(c);
@@ -304,7 +295,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       if (!(m.isStatic())) {
         continue;
       }
-      // XXX ClassifierUpdater.updateStaticMethod checks for isSynthetic(), why don't we check it here?
       if (m.isCompilerGenerated()) {
         continue;
       }

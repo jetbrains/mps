@@ -12,6 +12,7 @@ import com.intellij.util.indexing.FileContent;
 import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.ClassReader;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
+import jetbrains.mps.baseLanguage.javastub.asm.ClassReaderOptions;
 
 /**
  * StubModelsFastFindSupport accesses indexed values we create here (through IdIndex.NAME, this class being contributor to the index)
@@ -33,7 +34,7 @@ public class JavaStubIdIndexer implements IdIndexer {
     try {
       ClassReader reader;
       reader = new ClassReader(bytes);
-      ASMClass ac = new ASMClass(reader, false);
+      ASMClass ac = new ASMClass(reader, ClassReaderOptions.builder().withMethodParameters(false).withSyntheticMembers(false).build());
       // FWIW, here used to be failed check to ignore anonymous classes. I see no reason to ignore usages from within anonymous classes.
       ClassifierCacher updater = new ClassifierCacher();
       updater.updateClassifier(ac);

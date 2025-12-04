@@ -7,6 +7,7 @@ import java.util.List;
 import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 import java.util.ArrayList;
 import org.jetbrains.org.objectweb.asm.ClassReader;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.org.objectweb.asm.tree.ClassNode;
 import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.signature.SignatureReader;
@@ -29,11 +30,25 @@ public class ASMClass {
   private final List<ASMMethod> myConstructors = new ArrayList<ASMMethod>();
   private List<ASMAnnotation> myAnnotations;
   private ASMType myGenericSuperclass;
-
+  /**
+   * 
+   * 
+   * @deprecated use alternative that takes {@code ClassReaderOptions)
+   */
+  @Deprecated
   public ASMClass(ClassReader reader, boolean needParamNames) {
+    this(reader, new ClassReaderOptions.Builder().withMethodParameters(true).withSyntheticMembers(true).build());
+  }
+
+  /**
+   * 
+   * 
+   * @since 2026.1
+   */
+  public ASMClass(@NotNull ClassReader reader, @NotNull ClassReaderOptions options) {
     final ClassNode classNode = new ClassNode();
     try {
-      reader.accept(classNode, ((needParamNames ? 0 : ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG)) | ClassReader.SKIP_FRAMES);
+      reader.accept(classNode, ((options.needMethodParameters ? 0 : ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG)) | ClassReader.SKIP_FRAMES);
     } catch (RuntimeException e) {
       // see MPS-17590
       myName = null;
@@ -93,10 +108,16 @@ public class ASMClass {
       myTypeVariables = new ArrayList<ASMTypeVariable>(formalTypeParameters);
     }
     for (FieldNode fn : classNode.fields) {
+      if (options.skipSyntheticFields && ASMField.isSynthetic(fn)) {
+        continue;
+      }
       myFields.add(new ASMField(fn));
     }
     final boolean isEnumClass = ClassifierKind.getClassifierKind(classNode.access) == ClassifierKind.ENUM;
     for (MethodNode mn : classNode.methods) {
+      if (options.skipSyntheticMethods && ASMMethod.isSynthetic(mn)) {
+        continue;
+      }
       if (isEnumClass && ASMMethod.isGeneratedEnumMember(mn)) {
         // May recognize generated enum methods as part of isCompilerGenerated(), just find it less effective. First, not trivial to confirm it is Enum owner.
         // Second, would need access to MN (which is part of ASMMethod ATM, but would cease to, soon) or at least descriptor string to extract ACC_MANDATED parameter.
@@ -128,6 +149,7 @@ public class ASMClass {
       }
     }
   }
+
   public boolean isAbstract() {
     return (myAccess & Opcodes.ACC_ABSTRACT) != 0;
   }

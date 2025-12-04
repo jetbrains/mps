@@ -265,6 +265,10 @@ public final class ASMMethod {
     return false;
   }
 
+  /*package*/ static boolean isSynthetic(MethodNode method) {
+    return (method.access & Opcodes.ACC_SYNTHETIC) != 0;
+  }
+
   private static class ByOrderInStackFrame implements Comparator<LocalVariableNode> {
     @Override
     public int compare(LocalVariableNode n1, LocalVariableNode n2) {

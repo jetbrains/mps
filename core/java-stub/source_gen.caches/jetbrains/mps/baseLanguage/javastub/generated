@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5l2id358pll6yivm60cqx6qh73ttnxb">
+<product version="3" modelHash="-eec58jrtx9okgziru741ris4ctvk6d2">
   <files names="ASMModelLoader.java:ASMNodeId.java:ASMNodeIdFactory.java:ClassifierKind.java:ClassifierLoader.java:ClassifierUpdater.java:Documentation.java:JavadocSupplier.java:MethodSignature.java:SingleZipWithJavaSources.java" />
 </product>
 
