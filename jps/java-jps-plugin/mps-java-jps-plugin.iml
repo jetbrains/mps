@@ -9,9 +9,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="MPS runtime" level="project" />
     <orderEntry type="module" module-name="mps-jps-common" />
     <orderEntry type="module" module-name="mps-java-core" />
     <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="module" module-name="kernel" />
   </component>
 </module>

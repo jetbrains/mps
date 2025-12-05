@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.jps.model;
 
-import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
+//import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
@@ -380,7 +380,8 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
 
   private void initMPS() {
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-    myPlatform.install(new MPSBaseLanguage());
+    // FIXME what's this for?
+//    myPlatform.install(new MPSBaseLanguage());
   }
 
   private void disposeMPS() {
