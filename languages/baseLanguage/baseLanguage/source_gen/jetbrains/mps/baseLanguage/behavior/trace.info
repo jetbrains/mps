@@ -29271,26 +29271,24 @@
     <file name="DeprecationUtil.java">
       <node id="5473688454857854439" at="22,70,23,104" concept="11" />
       <node id="649933975386251086" at="23,104,24,105" concept="11" />
-      <node id="649933975386251094" at="24,105,25,60" concept="5" />
-      <node id="5085607816285017585" at="25,60,26,80" concept="11" />
-      <node id="5085607816283971192" at="26,80,27,239" concept="5" />
-      <node id="5473688454857863189" at="27,239,28,19" concept="12" />
-      <node id="5473688454857849122" at="32,0,33,0" concept="15" trace="tags$stUD" />
-      <node id="5473688454857849122" at="33,0,34,0" concept="15" trace="text$c2BW" />
-      <node id="5473688454857849122" at="34,0,35,0" concept="15" trace="commentBody$sIzh" />
-      <node id="5473688454857849122" at="38,0,39,0" concept="15" trace="DeprecatedBlockDocTag$8n" />
-      <node id="5473688454857854020" at="22,0,30,0" concept="16" trace="createDocComment#(Lorg/jetbrains/mps/openapi/language/SConcept;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="5473688454857854023" at="22,70,28,19">
+      <node id="5085607816285017585" at="24,105,25,80" concept="11" />
+      <node id="5085607816283971192" at="25,80,26,239" concept="5" />
+      <node id="5473688454857863189" at="26,239,27,19" concept="12" />
+      <node id="5473688454857849122" at="31,0,32,0" concept="15" trace="tags$stUD" />
+      <node id="5473688454857849122" at="32,0,33,0" concept="15" trace="commentBody$sIzh" />
+      <node id="5473688454857849122" at="36,0,37,0" concept="15" trace="DeprecatedBlockDocTag$8n" />
+      <node id="5473688454857854020" at="22,0,29,0" concept="16" trace="createDocComment#(Lorg/jetbrains/mps/openapi/language/SConcept;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5473688454857854023" at="22,70,27,19">
         <var name="comment" id="5473688454857854442" />
         <var name="line" id="5085607816285017586" />
         <var name="tag" id="649933975386251087" />
       </scope>
-      <scope id="5473688454857854020" at="22,0,30,0">
+      <scope id="5473688454857854020" at="22,0,29,0">
         <var name="commentConcept" id="5473688454857859279" />
       </scope>
-      <unit id="5473688454857849122" at="37,0,40,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$CONCEPTS" />
-      <unit id="5473688454857849122" at="31,0,36,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$LINKS" />
-      <unit id="5473688454857849122" at="14,0,41,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil" />
+      <unit id="5473688454857849122" at="35,0,38,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$CONCEPTS" />
+      <unit id="5473688454857849122" at="30,0,34,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil$LINKS" />
+      <unit id="5473688454857849122" at="14,0,39,0" name="jetbrains.mps.baseLanguage.behavior.DeprecationUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/559597157502843524">
