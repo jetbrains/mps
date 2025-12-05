@@ -9,4 +9,10 @@ public class ASMSuperType extends ASMBoundedType {
   public ASMSuperType(ASMType bound) {
     super(bound);
   }
+
+
+  @Override
+  public String toString() {
+    return "? super " + getBound();
+  }
 }

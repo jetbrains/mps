@@ -9,4 +9,10 @@ public class ASMExtendsType extends ASMBoundedType {
   public ASMExtendsType(ASMType bound) {
     super(bound);
   }
+
+
+  @Override
+  public String toString() {
+    return "? extends " + getBound();
+  }
 }

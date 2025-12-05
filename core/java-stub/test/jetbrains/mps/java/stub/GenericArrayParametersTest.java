@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMSuperType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType;
+import jetbrains.mps.baseLanguage.javastub.asm.ClassReaderOptions;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -64,7 +65,7 @@ public class GenericArrayParametersTest {
     final InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream(testDataCN);
     // ASMModelLoader
     ClassReader cr = new ClassReader(resourceAsStream);
-    ASMClass ac = new ASMClass(cr, false);
+    ASMClass ac = new ASMClass(cr, ClassReaderOptions.builder().build());
     final ASMField aaaField = ac.getDeclaredFields().stream().filter(f -> "AAA".equals(f.getName())).findFirst().orElse(null);
     final ASMField bbbField = ac.getDeclaredFields().stream().filter(f -> "BBB".equals(f.getName())).findFirst().orElse(null);
     final ASMField cccField = ac.getDeclaredFields().stream().filter(f -> "CCC".equals(f.getName())).findFirst().orElse(null);

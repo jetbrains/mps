@@ -26,23 +26,23 @@
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/3275604661365085736">
     <file name="ASMBoundedType.java">
       <node id="7241381882860008822" at="9,0,10,0" concept="6" trace="myBound" />
-      <node id="7241381882860008830" at="10,40,11,20" concept="5" />
-      <node id="7241381882860008840" at="13,29,14,19" concept="12" />
-      <node id="3275604661365124362" at="16,39,17,20" concept="5" />
-      <node id="7241381882860008825" at="10,0,13,0" concept="3" trace="ASMBoundedType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860008836" at="13,0,16,0" concept="10" trace="getBound#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="3275604661365124254" at="16,0,19,0" concept="10" trace="setBound#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <scope id="7241381882860008829" at="10,40,11,20" />
-      <scope id="7241381882860008839" at="13,29,14,19" />
-      <scope id="3275604661365124257" at="16,39,17,20" />
-      <scope id="7241381882860008825" at="10,0,13,0">
+      <node id="7241381882860008830" at="11,40,12,20" concept="5" />
+      <node id="7241381882860008840" at="14,29,15,19" concept="12" />
+      <node id="3275604661365124362" at="17,39,18,20" concept="5" />
+      <node id="7241381882860008825" at="11,0,14,0" concept="3" trace="ASMBoundedType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860008836" at="14,0,17,0" concept="10" trace="getBound#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="3275604661365124254" at="17,0,20,0" concept="10" trace="setBound#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <scope id="7241381882860008829" at="11,40,12,20" />
+      <scope id="7241381882860008839" at="14,29,15,19" />
+      <scope id="3275604661365124257" at="17,39,18,20" />
+      <scope id="7241381882860008825" at="11,0,14,0">
         <var name="bound" id="7241381882860008827" />
       </scope>
-      <scope id="7241381882860008836" at="13,0,16,0" />
-      <scope id="3275604661365124254" at="16,0,19,0">
+      <scope id="7241381882860008836" at="14,0,17,0" />
+      <scope id="3275604661365124254" at="17,0,20,0">
         <var name="bound" id="3275604661365124474" />
       </scope>
-      <unit id="3275604661365085736" at="7,0,21,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMBoundedType" />
+      <unit id="3275604661365085736" at="7,0,22,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMBoundedType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/3659030846373032362">
@@ -291,17 +291,21 @@
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860002146">
     <file name="ASMArrayType.java">
       <node id="7241381882860002149" at="9,0,10,0" concept="6" trace="myElementType" />
-      <node id="7241381882860002156" at="10,49,11,32" concept="5" />
-      <node id="7241381882860002166" at="13,35,14,25" concept="12" />
-      <node id="7241381882860002152" at="10,0,13,0" concept="3" trace="ASMArrayType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860002162" at="13,0,16,0" concept="10" trace="getElementType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <scope id="7241381882860002155" at="10,49,11,32" />
-      <scope id="7241381882860002165" at="13,35,14,25" />
-      <scope id="7241381882860002152" at="10,0,13,0">
+      <node id="7241381882860002156" at="11,49,12,32" concept="5" />
+      <node id="7241381882860002166" at="14,35,15,25" concept="12" />
+      <node id="7294802991536324367" at="19,28,20,48" concept="12" />
+      <node id="7241381882860002152" at="11,0,14,0" concept="3" trace="ASMArrayType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860002162" at="14,0,17,0" concept="10" trace="getElementType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7294802991536322907" at="18,0,22,0" concept="10" trace="toString#()Ljava/lang/String;" />
+      <scope id="7241381882860002155" at="11,49,12,32" />
+      <scope id="7241381882860002165" at="14,35,15,25" />
+      <scope id="7294802991536322911" at="19,28,20,48" />
+      <scope id="7241381882860002152" at="11,0,14,0">
         <var name="elementType" id="7241381882860002153" />
       </scope>
-      <scope id="7241381882860002162" at="13,0,16,0" />
-      <unit id="7241381882860002146" at="7,0,17,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMArrayType" />
+      <scope id="7241381882860002162" at="14,0,17,0" />
+      <scope id="7294802991536322907" at="18,0,22,0" />
+      <unit id="7241381882860002146" at="7,0,23,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMArrayType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860002170">
@@ -954,10 +958,14 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007300">
     <file name="ASMUnboundedType.java">
+      <node id="7294802991536244047" at="14,28,15,15" concept="12" />
       <node id="7241381882860007303" at="9,0,11,0" concept="3" trace="ASMUnboundedType#()V" />
+      <node id="7294802991536244040" at="13,0,17,0" concept="10" trace="toString#()Ljava/lang/String;" />
       <scope id="7241381882860007305" at="9,29,9,29" />
+      <scope id="7294802991536244044" at="14,28,15,15" />
       <scope id="7241381882860007303" at="9,0,11,0" />
-      <unit id="7241381882860007300" at="7,0,12,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType" />
+      <scope id="7294802991536244040" at="13,0,17,0" />
+      <unit id="7241381882860007300" at="7,0,18,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007306">
@@ -1427,12 +1435,16 @@
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008734">
     <file name="ASMSuperType.java">
       <node id="3275604661365124884" at="9,38,10,17" concept="17" />
+      <node id="7294802991536245434" at="15,28,16,35" concept="12" />
       <node id="3275604661365124846" at="9,0,12,0" concept="3" trace="ASMSuperType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7294802991536245426" at="14,0,18,0" concept="10" trace="toString#()Ljava/lang/String;" />
       <scope id="3275604661365124850" at="9,38,10,17" />
+      <scope id="7294802991536245431" at="15,28,16,35" />
       <scope id="3275604661365124846" at="9,0,12,0">
         <var name="bound" id="3275604661365124858" />
       </scope>
-      <unit id="7241381882860008734" at="7,0,13,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMSuperType" />
+      <scope id="7294802991536245426" at="14,0,18,0" />
+      <unit id="7241381882860008734" at="7,0,19,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMSuperType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008759">
@@ -1463,12 +1475,16 @@
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008819">
     <file name="ASMExtendsType.java">
       <node id="3275604661365124657" at="9,40,10,17" concept="17" />
+      <node id="7294802991536254483" at="15,28,16,37" concept="12" />
       <node id="3275604661365124618" at="9,0,12,0" concept="3" trace="ASMExtendsType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7294802991536254475" at="14,0,18,0" concept="10" trace="toString#()Ljava/lang/String;" />
       <scope id="3275604661365124622" at="9,40,10,17" />
+      <scope id="7294802991536254480" at="15,28,16,37" />
       <scope id="3275604661365124618" at="9,0,12,0">
         <var name="bound" id="3275604661365124630" />
       </scope>
-      <unit id="7241381882860008819" at="7,0,13,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMExtendsType" />
+      <scope id="7294802991536254475" at="14,0,18,0" />
+      <unit id="7241381882860008819" at="7,0,19,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMExtendsType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860009267">

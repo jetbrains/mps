@@ -6,11 +6,17 @@ import jetbrains.mps.annotations.GeneratedClass;
 
 @GeneratedClass(nodeId = "7241381882860002146", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 public class ASMArrayType extends ASMType {
-  private ASMType myElementType;
+  private final ASMType myElementType;
+
   /*package*/ ASMArrayType(ASMType elementType) {
     myElementType = elementType;
   }
   public ASMType getElementType() {
     return myElementType;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(myElementType) + "[]";
   }
 }
