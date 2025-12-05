@@ -30134,7 +30134,6 @@
   </node>
   <node concept="2S6QgY" id="5EmmRHxWf3C">
     <property role="TrG5h" value="ToggleIndividualBinExpressionLineStyle" />
-    <property role="2ZfUl0" value="true" />
     <ref role="2ZfgGC" to="tpee:fJuHJVf" resolve="BinaryOperation" />
     <node concept="2S6ZIM" id="5EmmRHxWf3D" role="2ZfVej">
       <node concept="3clFbS" id="5EmmRHxWf3E" role="2VODD2">
@@ -30180,19 +30179,6 @@
               <node concept="3TrcHB" id="5EmmRHxWhKX" role="2OqNvi">
                 <ref role="3TsBF5" to="tpee:5EmmRHxVMVF" resolve="isMultiline" />
               </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="zTJ1e" id="5EmmRHxWfIT" role="2ZfVeg">
-      <node concept="3clFbS" id="5EmmRHxWfIU" role="2VODD2">
-        <node concept="3clFbF" id="5EmmRHxWfNP" role="3cqZAp">
-          <node concept="17R0WA" id="5EmmRHxWfNQ" role="3clFbG">
-            <node concept="2Sf5sV" id="5EmmRHxWfNR" role="3uHU7w" />
-            <node concept="2OqwBi" id="5EmmRHxWfNS" role="3uHU7B">
-              <node concept="zTJq_" id="5EmmRHxWfNT" role="2Oq$k0" />
-              <node concept="1mfA1w" id="5EmmRHxWfNU" role="2OqNvi" />
             </node>
           </node>
         </node>

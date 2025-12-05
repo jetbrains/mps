@@ -14,8 +14,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.BinaryOperation__BehaviorDescriptor;
-import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -24,7 +22,7 @@ public final class ToggleIndividualBinExpressionLineStyle_Intention extends Abst
   private Collection<IntentionExecutable> myCachedExecutable;
 
   public ToggleIndividualBinExpressionLineStyle_Intention() {
-    super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "6527505295402397928"));
+    super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "6527505295402397928"));
   }
 
   @Override
@@ -62,9 +60,6 @@ public final class ToggleIndividualBinExpressionLineStyle_Intention extends Abst
       if (!(isApplicableToNode(node, editorContext))) {
         return false;
       }
-      if (editorContext.getSelectedNode() != node && !(isVisibleInChild(node, editorContext.getSelectedNode(), editorContext))) {
-        return false;
-      }
       return true;
     }
 
@@ -72,9 +67,6 @@ public final class ToggleIndividualBinExpressionLineStyle_Intention extends Abst
       return (boolean) BinaryOperation__BehaviorDescriptor.canBeMultiline_id5EmmRHy2ZwK.invoke(node);
     }
 
-    private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-      return Objects.equals(SNodeOperations.getParent(childNode), node);
-    }
 
     @Override
     public IntentionDescriptor getDescriptor() {
