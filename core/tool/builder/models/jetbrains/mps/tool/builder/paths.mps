@@ -15,6 +15,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
+    <import index="vqh0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.make(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1297,6 +1298,9 @@
         </node>
       </node>
       <node concept="17QB3L" id="1a_CTtY7St8" role="3clF45" />
+      <node concept="2AHcQZ" id="6zl63s_$rLN" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="3clFb_" id="1a_CTtY7St9" role="jymVt">
       <property role="TrG5h" value="toLocalCachePath" />
@@ -1349,6 +1353,9 @@
         </node>
       </node>
       <node concept="17QB3L" id="1a_CTtY7Stv" role="3clF45" />
+      <node concept="2AHcQZ" id="6zl63s_$t93" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="3clFb_" id="1a_CTtY7Stw" role="jymVt">
       <property role="TrG5h" value="toLocal" />
@@ -1475,6 +1482,9 @@
         </node>
       </node>
     </node>
+    <node concept="3uibUv" id="6zl63s_$pc3" role="EKbjA">
+      <ref role="3uigEE" to="vqh0:~LocalPathConverter" resolve="LocalPathConverter" />
+    </node>
   </node>
   <node concept="312cEu" id="1a_CTtY8r7r">
     <property role="TrG5h" value="OutputPathRedirects" />
@@ -1502,10 +1512,10 @@
       <node concept="10P_77" id="1a_CTtY8r7_" role="1tU5fm" />
     </node>
     <node concept="312cEg" id="1a_CTtY8r7A" role="jymVt">
-      <property role="TrG5h" value="moduleOutputPaths" />
+      <property role="TrG5h" value="localPathConverter" />
       <node concept="3Tm6S6" id="1a_CTtY8r7B" role="1B3o_S" />
       <node concept="3uibUv" id="1a_CTtY8r7C" role="1tU5fm">
-        <ref role="3uigEE" node="1a_CTtY7Sq1" resolve="ModuleOutputPaths" />
+        <ref role="3uigEE" to="vqh0:~LocalPathConverter" resolve="LocalPathConverter" />
       </node>
     </node>
     <node concept="2tJIrI" id="5XpMupmn3y" role="jymVt" />
@@ -1513,7 +1523,7 @@
       <node concept="37vLTG" id="1a_CTtY8r7E" role="3clF46">
         <property role="TrG5h" value="outputPaths" />
         <node concept="3uibUv" id="1a_CTtY8r7F" role="1tU5fm">
-          <ref role="3uigEE" node="1a_CTtY7Sq1" resolve="ModuleOutputPaths" />
+          <ref role="3uigEE" to="vqh0:~LocalPathConverter" resolve="LocalPathConverter" />
         </node>
       </node>
       <node concept="37vLTG" id="1a_CTtY8r7G" role="3clF46">
@@ -1579,7 +1589,7 @@
             <node concept="2OqwBi" id="1a_CTtY8r89" role="37vLTJ">
               <node concept="Xjq3P" id="1a_CTtY8r8a" role="2Oq$k0" />
               <node concept="2OwXpG" id="1a_CTtY8r8b" role="2OqNvi">
-                <ref role="2Oxat5" node="1a_CTtY8r7A" resolve="moduleOutputPaths" />
+                <ref role="2Oxat5" node="1a_CTtY8r7A" resolve="localPathConverter" />
               </node>
             </node>
             <node concept="37vLTw" id="1a_CTtY8r8c" role="37vLTx">
@@ -1708,7 +1718,7 @@
       <node concept="37vLTG" id="4X38$5e1Q52" role="3clF46">
         <property role="TrG5h" value="outputPaths" />
         <node concept="3uibUv" id="4X38$5e1Q53" role="1tU5fm">
-          <ref role="3uigEE" node="1a_CTtY7Sq1" resolve="ModuleOutputPaths" />
+          <ref role="3uigEE" to="vqh0:~LocalPathConverter" resolve="LocalPathConverter" />
         </node>
       </node>
       <node concept="37vLTG" id="4X38$5e1Q54" role="3clF46">
@@ -1796,7 +1806,7 @@
             <node concept="2OqwBi" id="4X38$5e1Q5x" role="37vLTJ">
               <node concept="Xjq3P" id="4X38$5e1Q5y" role="2Oq$k0" />
               <node concept="2OwXpG" id="4X38$5e1Q5z" role="2OqNvi">
-                <ref role="2Oxat5" node="1a_CTtY8r7A" resolve="moduleOutputPaths" />
+                <ref role="2Oxat5" node="1a_CTtY8r7A" resolve="localPathConverter" />
               </node>
             </node>
             <node concept="37vLTw" id="4X38$5e1Q5$" role="37vLTx">
@@ -1994,10 +2004,10 @@
                 <node concept="17QB3L" id="1a_CTtY8r92" role="1tU5fm" />
                 <node concept="2OqwBi" id="1a_CTtY8r93" role="33vP2m">
                   <node concept="37vLTw" id="1a_CTtY8r94" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1a_CTtY8r7A" resolve="moduleOutputPaths" />
+                    <ref role="3cqZAo" node="1a_CTtY8r7A" resolve="localPathConverter" />
                   </node>
                   <node concept="liA8E" id="1a_CTtY8r95" role="2OqNvi">
-                    <ref role="37wK5l" node="1a_CTtY7SsM" resolve="toLocalPath" />
+                    <ref role="37wK5l" to="vqh0:~LocalPathConverter.toLocalPath(java.lang.String)" resolve="toLocalPath" />
                     <node concept="2OqwBi" id="4fMXdiUI6gW" role="37wK5m">
                       <node concept="37vLTw" id="2BHiRxglRGI" role="2Oq$k0">
                         <ref role="3cqZAo" node="1a_CTtY8r8T" resolve="f" />
@@ -2185,10 +2195,10 @@
                 <node concept="17QB3L" id="1a_CTtY8r9z" role="1tU5fm" />
                 <node concept="2OqwBi" id="1a_CTtY8r9$" role="33vP2m">
                   <node concept="37vLTw" id="1a_CTtY8r9_" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1a_CTtY8r7A" resolve="moduleOutputPaths" />
+                    <ref role="3cqZAo" node="1a_CTtY8r7A" resolve="localPathConverter" />
                   </node>
                   <node concept="liA8E" id="1a_CTtY8r9A" role="2OqNvi">
-                    <ref role="37wK5l" node="1a_CTtY7St9" resolve="toLocalCachePath" />
+                    <ref role="37wK5l" to="vqh0:~LocalPathConverter.toLocalCachePath(java.lang.String)" resolve="toLocalCachePath" />
                     <node concept="2OqwBi" id="4fMXdiUIcLt" role="37wK5m">
                       <node concept="37vLTw" id="2BHiRxgmBq8" role="2Oq$k0">
                         <ref role="3cqZAo" node="4fMXdiUIbiX" resolve="f" />
@@ -2309,9 +2319,15 @@
           </node>
         </node>
       </node>
+      <node concept="2AHcQZ" id="58umyjE1TbX" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="3uibUv" id="10Uj_trkvTo" role="EKbjA">
       <ref role="3uigEE" node="10Uj_trkvQk" resolve="IRedirects" />
+    </node>
+    <node concept="3uibUv" id="58umyjE1SCZ" role="EKbjA">
+      <ref role="3uigEE" to="vqh0:~OutputRedirects" resolve="OutputRedirects" />
     </node>
   </node>
   <node concept="3HP615" id="10Uj_trkvQk">

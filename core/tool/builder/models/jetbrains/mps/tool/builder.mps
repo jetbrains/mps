@@ -36,6 +36,9 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="dr5r" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.logging(JDK/)" />
     <import index="v9gs" ref="r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)" />
+    <import index="h7yj" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.make.service(MPS.Core/)" />
+    <import index="hhlx" ref="r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)" />
+    <import index="o53r" ref="r:ab35dba0-4d05-45fe-8a07-0916d087799f(jetbrains.mps.tool.builder.paths)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -5465,6 +5468,170 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="3w1$bnwEZ3R" role="1B3o_S" />
+  </node>
+  <node concept="312cEu" id="6zl63s_AW9d">
+    <property role="TrG5h" value="BuildMakeServiceProvider" />
+    <node concept="2tJIrI" id="6zl63s_AYyw" role="jymVt" />
+    <node concept="3Tm1VV" id="6zl63s_AW9e" role="1B3o_S" />
+    <node concept="3uibUv" id="6zl63s_AYtd" role="EKbjA">
+      <ref role="3uigEE" to="vqh0:~MakeServiceProvider" resolve="MakeServiceProvider" />
+    </node>
+    <node concept="3clFb_" id="6zl63s_AYC2" role="jymVt">
+      <property role="TrG5h" value="getName" />
+      <node concept="3Tm1VV" id="6zl63s_AYC3" role="1B3o_S" />
+      <node concept="3uibUv" id="6zl63s_AYC5" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="6zl63s_AYC6" role="3clF47">
+        <node concept="3clFbF" id="6zl63s_AZnE" role="3cqZAp">
+          <node concept="Xl_RD" id="6zl63s_AZnD" role="3clFbG">
+            <property role="Xl_RC" value="BuildMakeService" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6zl63s_AYC7" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6zl63s_B6er" role="jymVt" />
+    <node concept="3clFb_" id="6zl63s_AYCa" role="jymVt">
+      <property role="TrG5h" value="createMakeService" />
+      <node concept="3Tm1VV" id="6zl63s_AYCb" role="1B3o_S" />
+      <node concept="3uibUv" id="6zl63s_AYCd" role="3clF45">
+        <ref role="3uigEE" to="h7yj:~AbstractMakeService" resolve="AbstractMakeService" />
+      </node>
+      <node concept="3clFbS" id="6zl63s_AYCe" role="3clF47">
+        <node concept="3clFbF" id="6zl63s_B1_T" role="3cqZAp">
+          <node concept="2ShNRf" id="6zl63s_B1_R" role="3clFbG">
+            <node concept="1pGfFk" id="6zl63s_B5VK" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="hhlx:KL8Aqll49c" resolve="BuildMakeService" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6zl63s_AYCf" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6zl63s_B6qf" role="jymVt" />
+    <node concept="3clFb_" id="6zl63s_AYCi" role="jymVt">
+      <property role="TrG5h" value="getMakeSessionConfig" />
+      <node concept="3Tm1VV" id="6zl63s_AYCj" role="1B3o_S" />
+      <node concept="3uibUv" id="6zl63s_AYCl" role="3clF45">
+        <ref role="3uigEE" to="vqh0:~MakeSessionConfig" resolve="MakeSessionConfig" />
+      </node>
+      <node concept="37vLTG" id="6zl63s_AYCm" role="3clF46">
+        <property role="TrG5h" value="redirects" />
+        <node concept="3uibUv" id="6zl63s_AYCn" role="1tU5fm">
+          <ref role="3uigEE" to="vqh0:~OutputRedirects" resolve="OutputRedirects" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6zl63s_AYCo" role="3clF47">
+        <node concept="3clFbF" id="6zl63s_B6Wu" role="3cqZAp">
+          <node concept="2ShNRf" id="6zl63s_B6Wo" role="3clFbG">
+            <node concept="1pGfFk" id="6zl63s_B861" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="hhlx:10Uj_treOiX" resolve="ReducedMakeFacetConfiguration" />
+              <node concept="37vLTw" id="6zl63s_B8lA" role="37wK5m">
+                <ref role="3cqZAo" node="6zl63s_AYCm" resolve="redirects" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6zl63s_AYCp" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6zl63s_B6A3" role="jymVt" />
+    <node concept="3clFb_" id="6zl63s_AYCs" role="jymVt">
+      <property role="TrG5h" value="getLocalPathConverter" />
+      <node concept="3Tm1VV" id="6zl63s_AYCt" role="1B3o_S" />
+      <node concept="3uibUv" id="6zl63s_AYCv" role="3clF45">
+        <ref role="3uigEE" to="vqh0:~LocalPathConverter" resolve="LocalPathConverter" />
+      </node>
+      <node concept="37vLTG" id="6zl63s_AYCw" role="3clF46">
+        <property role="TrG5h" value="modules" />
+        <node concept="3uibUv" id="6zl63s_AYCx" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
+          <node concept="3uibUv" id="6zl63s_AYCy" role="11_B2D">
+            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbS" id="6zl63s_AYCz" role="3clF47">
+        <node concept="3clFbF" id="6zl63s_B8Qh" role="3cqZAp">
+          <node concept="2ShNRf" id="6zl63s_B8Qb" role="3clFbG">
+            <node concept="1pGfFk" id="6zl63s_Bc0n" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="o53r:1a_CTtY7Sqn" resolve="ModuleOutputPaths" />
+              <node concept="37vLTw" id="6zl63s_BcUO" role="37wK5m">
+                <ref role="3cqZAo" node="6zl63s_AYCw" resolve="modules" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6zl63s_AYC$" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6zl63s_B8$o" role="jymVt" />
+    <node concept="3clFb_" id="6zl63s_AYCB" role="jymVt">
+      <property role="TrG5h" value="getOutputRedirects" />
+      <node concept="3Tm1VV" id="6zl63s_AYCC" role="1B3o_S" />
+      <node concept="3uibUv" id="6zl63s_AYCE" role="3clF45">
+        <ref role="3uigEE" to="vqh0:~OutputRedirects" resolve="OutputRedirects" />
+      </node>
+      <node concept="37vLTG" id="6zl63s_AYCF" role="3clF46">
+        <property role="TrG5h" value="outputPaths" />
+        <node concept="3uibUv" id="6zl63s_AYCG" role="1tU5fm">
+          <ref role="3uigEE" to="vqh0:~LocalPathConverter" resolve="LocalPathConverter" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6zl63s_AYCH" role="3clF46">
+        <property role="TrG5h" value="outputRoot" />
+        <node concept="3uibUv" id="6zl63s_AYCI" role="1tU5fm">
+          <ref role="3uigEE" to="guwi:~File" resolve="File" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6zl63s_AYCJ" role="3clF46">
+        <property role="TrG5h" value="cachesOutputRoot" />
+        <node concept="3uibUv" id="6zl63s_AYCK" role="1tU5fm">
+          <ref role="3uigEE" to="guwi:~File" resolve="File" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6zl63s_AYCL" role="3clF46">
+        <property role="TrG5h" value="useTransientOutput" />
+        <node concept="10P_77" id="6zl63s_AYCM" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="6zl63s_AYCN" role="3clF47">
+        <node concept="3clFbF" id="6zl63s_BedU" role="3cqZAp">
+          <node concept="2ShNRf" id="6zl63s_BedS" role="3clFbG">
+            <node concept="1pGfFk" id="6zl63s_Bfql" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="o53r:1a_CTtY8r7D" resolve="OutputPathRedirects" />
+              <node concept="37vLTw" id="6zl63s_BfEq" role="37wK5m">
+                <ref role="3cqZAo" node="6zl63s_AYCF" resolve="outputPaths" />
+              </node>
+              <node concept="37vLTw" id="6zl63s_BgcD" role="37wK5m">
+                <ref role="3cqZAo" node="6zl63s_AYCH" resolve="outputRoot" />
+              </node>
+              <node concept="37vLTw" id="6zl63s_BgEk" role="37wK5m">
+                <ref role="3cqZAo" node="6zl63s_AYCJ" resolve="cachesOutputRoot" />
+              </node>
+              <node concept="37vLTw" id="6zl63s_Bhgq" role="37wK5m">
+                <ref role="3cqZAo" node="6zl63s_AYCL" resolve="useTransientOutput" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6zl63s_AYCO" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
 </model>
 

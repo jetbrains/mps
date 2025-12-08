@@ -1152,7 +1152,7 @@
     <node concept="312cEg" id="10Uj_treWxJ" role="jymVt">
       <property role="TrG5h" value="outputPathRedirects" />
       <node concept="3uibUv" id="10Uj_trkzLO" role="1tU5fm">
-        <ref role="3uigEE" to="o53r:10Uj_trkvQk" resolve="IRedirects" />
+        <ref role="3uigEE" to="vqh0:~OutputRedirects" resolve="OutputRedirects" />
       </node>
       <node concept="3Tm6S6" id="10Uj_treWxK" role="1B3o_S" />
     </node>
@@ -1215,7 +1215,7 @@
       <node concept="37vLTG" id="10Uj_treWi3" role="3clF46">
         <property role="TrG5h" value="pathRedirects" />
         <node concept="3uibUv" id="10Uj_trkxZa" role="1tU5fm">
-          <ref role="3uigEE" to="o53r:10Uj_trkvQk" resolve="IRedirects" />
+          <ref role="3uigEE" to="vqh0:~OutputRedirects" resolve="OutputRedirects" />
         </node>
       </node>
       <node concept="3cqZAl" id="10Uj_treOiY" role="3clF45" />
@@ -1443,6 +1443,9 @@
           <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
         </node>
       </node>
+      <node concept="2AHcQZ" id="6zl63s__s7q" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="3clFb_" id="10Uj_trfaYe" role="jymVt">
       <property role="TrG5h" value="getWrittenFiles" />
@@ -1459,6 +1462,9 @@
       </node>
       <node concept="_YKpA" id="10Uj_trfbdS" role="3clF45">
         <node concept="17QB3L" id="10Uj_trfbj$" role="_ZDj9" />
+      </node>
+      <node concept="2AHcQZ" id="34Epnb617$" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="2sankzhe07e" role="jymVt">
@@ -1477,6 +1483,9 @@
       <node concept="_YKpA" id="2sankzhe07l" role="3clF45">
         <node concept="17QB3L" id="2sankzhe07m" role="_ZDj9" />
       </node>
+      <node concept="2AHcQZ" id="34Epnb62zz" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="3clFb_" id="10Uj_trffBr" role="jymVt">
       <property role="TrG5h" value="getDeletedFiles" />
@@ -1493,6 +1502,9 @@
       </node>
       <node concept="_YKpA" id="10Uj_trffRe" role="3clF45">
         <node concept="17QB3L" id="10Uj_trffU6" role="_ZDj9" />
+      </node>
+      <node concept="2AHcQZ" id="34Epnb63TQ" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="2sankzhi5jh" role="jymVt">
@@ -1516,6 +1528,9 @@
       <node concept="37vLTG" id="2sankzhi5$q" role="3clF46">
         <property role="TrG5h" value="filePath" />
         <node concept="17QB3L" id="2sankzhi5$p" role="1tU5fm" />
+      </node>
+      <node concept="2AHcQZ" id="34Epnb64Sj" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="71egOude_KR" role="jymVt">
@@ -1824,7 +1839,7 @@
                                     <ref role="3cqZAo" node="10Uj_treWxJ" resolve="outputPathRedirects" />
                                   </node>
                                   <node concept="liA8E" id="71egOude_Pa" role="2OqNvi">
-                                    <ref role="37wK5l" to="o53r:10Uj_trkvTx" resolve="getRedirect" />
+                                    <ref role="37wK5l" to="vqh0:~OutputRedirects.getRedirect(jetbrains.mps.vfs.IFile)" resolve="getRedirect" />
                                     <node concept="37vLTw" id="2BHiRxglMGD" role="37wK5m">
                                       <ref role="3cqZAo" node="71egOude_P5" resolve="f" />
                                     </node>
@@ -1862,8 +1877,17 @@
       <node concept="3uibUv" id="71egOude_Pg" role="3clF45">
         <ref role="3uigEE" to="i9so:4231y0oKQyu" resolve="IScriptController" />
       </node>
+      <node concept="2AHcQZ" id="6zl63s__qiW" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
     <node concept="2tJIrI" id="10Uj_treOj2" role="jymVt" />
+    <node concept="3uibUv" id="6zl63s__lDy" role="EKbjA">
+      <ref role="3uigEE" to="vqh0:~MakeSessionConfig" resolve="MakeSessionConfig" />
+    </node>
+    <node concept="3uibUv" id="6zl63s__ori" role="EKbjA">
+      <ref role="3uigEE" to="vqh0:~MakeSessionFiles" resolve="MakeSessionFiles" />
+    </node>
   </node>
   <node concept="312cEu" id="3GGnItM97js">
     <property role="TrG5h" value="GeneratorWorker" />
