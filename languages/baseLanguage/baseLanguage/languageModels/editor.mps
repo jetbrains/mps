@@ -69809,14 +69809,27 @@
         <node concept="3clFbS" id="6XWv8xDf6hd" role="2VODD2">
           <node concept="3clFbF" id="6XWv8xDf8fA" role="3cqZAp">
             <node concept="1Wc70l" id="5UrdC9CJmot" role="3clFbG">
-              <node concept="2OqwBi" id="6XWv8xDf8XR" role="3uHU7B">
-                <node concept="2OqwBi" id="6XWv8xDf8sd" role="2Oq$k0">
-                  <node concept="0IXxy" id="6XWv8xDf8f_" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="6XWv8xDf8$U" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+              <node concept="1Wc70l" id="6ONqauTjzbv" role="3uHU7B">
+                <node concept="2OqwBi" id="6XWv8xDf8XR" role="3uHU7B">
+                  <node concept="2OqwBi" id="6XWv8xDf8sd" role="2Oq$k0">
+                    <node concept="0IXxy" id="6XWv8xDf8f_" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="6XWv8xDf8$U" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+                    </node>
+                  </node>
+                  <node concept="3x8VRR" id="6XWv8xDf9e7" role="2OqNvi" />
+                </node>
+                <node concept="2ZW3vV" id="6ONqauTj$sc" role="3uHU7w">
+                  <node concept="3uibUv" id="6ONqauTjSHN" role="2ZW6by">
+                    <ref role="3uigEE" to="f4zo:~EditorCell_Label" resolve="EditorCell_Label" />
+                  </node>
+                  <node concept="2OqwBi" id="6ONqauTj$6h" role="2ZW6bz">
+                    <node concept="1Q80Hx" id="6ONqauTj$6i" role="2Oq$k0" />
+                    <node concept="liA8E" id="6ONqauTj$6j" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getContextCell()" resolve="getContextCell" />
+                    </node>
                   </node>
                 </node>
-                <node concept="3x8VRR" id="6XWv8xDf9e7" role="2OqNvi" />
               </node>
               <node concept="3clFbC" id="5UrdC9CJzhr" role="3uHU7w">
                 <node concept="3cmrfG" id="5UrdC9CJzZL" role="3uHU7w">

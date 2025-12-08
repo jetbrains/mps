@@ -33,7 +33,7 @@ public class DeleteVisibility {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.visibility$Yyua) != null) && ((EditorCell_Label) editorContext.getContextCell()).getText().length() == 0;
+        return (SLinkOperations.getTarget(node, LINKS.visibility$Yyua) != null) && editorContext.getContextCell() instanceof EditorCell_Label && ((EditorCell_Label) editorContext.getContextCell()).getText().length() == 0;
       }
 
     };
