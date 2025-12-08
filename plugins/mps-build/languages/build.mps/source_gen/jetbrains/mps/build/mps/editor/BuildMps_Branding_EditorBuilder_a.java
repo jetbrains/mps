@@ -37,6 +37,9 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.nodeEditor.cells.ModelAccessor;
+import com.intellij.openapi.application.ApplicationInfo;
+import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.editor.BaseStyleSheet_StyleSheet.CommentStyleClass;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -903,6 +906,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_15());
+    editorCell.addEditorCell(createReadOnlyModelAccessor_0());
     editorCell.addEditorCell(createRefNode_8());
     editorCell.addEditorCell(createConstant_16());
     editorCell.addEditorCell(createRefNode_9());
@@ -917,15 +921,32 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
+  private EditorCell createReadOnlyModelAccessor_0() {
+    EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
+      public String getText() {
+        String baseVersion = ApplicationInfo.getInstance().getBuild().asStringWithoutProductCodeAndSnapshot();
+        return "(in format XX-" + baseVersion + ".yyy) ";
+      }
+    }, myNode);
+    editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
+    editorCell.setAction(CellActionType.BACKSPACE, EmptyCellAction.getInstance());
+    editorCell.setCellId("ReadOnlyModelAccessor_1x254q_b1d1a");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.READ_ONLY, true);
+    style.set(StyleAttributes.EDITABLE, false);
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    return editorCell;
+  }
   private EditorCell createRefNode_8() {
-    SingleRoleCellProvider provider = new buildNumberSingleRoleHandler_1x254q_b1d1a(myNode, LINKS.buildNumber$9UFJ, getEditorContext());
+    SingleRoleCellProvider provider = new buildNumberSingleRoleHandler_1x254q_c1d1a(myNode, LINKS.buildNumber$9UFJ, getEditorContext());
     return provider.createCell();
   }
-  private static class buildNumberSingleRoleHandler_1x254q_b1d1a extends SingleRoleCellProvider {
+  private static class buildNumberSingleRoleHandler_1x254q_c1d1a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public buildNumberSingleRoleHandler_1x254q_b1d1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public buildNumberSingleRoleHandler_1x254q_c1d1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -977,7 +998,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_16() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "date");
-    editorCell.setCellId("Constant_1x254q_c1d1a");
+    editorCell.setCellId("Constant_1x254q_d1d1a");
     Style style = new StyleImpl();
     new keywordStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -985,14 +1006,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_9() {
-    SingleRoleCellProvider provider = new buildDateSingleRoleHandler_1x254q_d1d1a(myNode, LINKS.buildDate$1vkb, getEditorContext());
+    SingleRoleCellProvider provider = new buildDateSingleRoleHandler_1x254q_e1d1a(myNode, LINKS.buildDate$1vkb, getEditorContext());
     return provider.createCell();
   }
-  private static class buildDateSingleRoleHandler_1x254q_d1d1a extends SingleRoleCellProvider {
+  private static class buildDateSingleRoleHandler_1x254q_e1d1a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public buildDateSingleRoleHandler_1x254q_d1d1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public buildDateSingleRoleHandler_1x254q_e1d1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
