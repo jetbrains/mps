@@ -25,7 +25,6 @@
         "forms_rt.jar",
         "groovy.jar",
         "idea_rt.jar",
-        "java-impl.jar",
         "javac2.jar",
         "javax.activation.jar",
         "javax.annotation-api.jar",

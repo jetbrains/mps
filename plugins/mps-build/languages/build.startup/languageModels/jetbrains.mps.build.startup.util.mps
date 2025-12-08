@@ -211,17 +211,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="2pJPED" id="1_9JKOQn0c8" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="1_9JKOQn0c9" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="1_9JKOQn0ca" role="28ntcv">
-                    <node concept="Xl_RD" id="1_9JKOQn0cb" role="WxPPp">
-                      <property role="Xl_RC" value="lib/java-impl.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="2pJPED" id="3rleFKvpGXM" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpGXN" role="2pJxcM">
