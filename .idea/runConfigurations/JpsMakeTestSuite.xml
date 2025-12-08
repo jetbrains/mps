@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="JpsMakeTestSuite" type="JUnit" factoryName="JUnit" folderName="Tests from IDEA Project" nameIsGenerated="true">
-    <module name="mps-jps-plugin" />
+    <module name="testbench" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="jetbrains.mps.jps.make.tests.*" />
