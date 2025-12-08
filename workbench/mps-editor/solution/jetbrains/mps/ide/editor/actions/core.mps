@@ -377,16 +377,12 @@
                 </node>
                 <node concept="liA8E" id="6G33IkaAPCq" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
-                  <node concept="2YIFZM" id="2itmi5iAtwd" role="37wK5m">
-                    <ref role="37wK5l" to="zdap:~StringUtil.escapeXml(java.lang.String)" resolve="escapeXml" />
-                    <ref role="1Pybhc" to="zdap:~StringUtil" resolve="StringUtil" />
-                    <node concept="2OqwBi" id="6G33IkaAPCr" role="37wK5m">
-                      <node concept="37vLTw" id="3GM_nagTtnJ" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6G33IkaAPCK" resolve="message" />
-                      </node>
-                      <node concept="liA8E" id="6G33IkaAPCt" role="2OqNvi">
-                        <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage()" resolve="getMessage" />
-                      </node>
+                  <node concept="2OqwBi" id="lL4XQkY3_W" role="37wK5m">
+                    <node concept="37vLTw" id="lL4XQkY3_X" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6G33IkaAPCK" resolve="message" />
+                    </node>
+                    <node concept="liA8E" id="lL4XQkY3_Y" role="2OqNvi">
+                      <ref role="37wK5l" to="kpve:~SimpleEditorMessage.getMessage()" resolve="getMessage" />
                     </node>
                   </node>
                 </node>
