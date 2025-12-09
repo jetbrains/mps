@@ -107,7 +107,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withDefaultPlugins() {
-    return withCorePlugin().withTestingPlugin().withMakePlugin();
+    return withCorePlugin().withRepositoryPlugin().withTestingPlugin().withMakePlugin();
   }
 
   public EnvironmentConfig withVcsPlugin() {
@@ -120,6 +120,10 @@ public class EnvironmentConfig {
 
   public EnvironmentConfig withCorePlugin() {
     return addDistributedPlugin("mps-core", "jetbrains.mps.core");
+  }
+
+  public EnvironmentConfig withRepositoryPlugin() {
+    return addDistributedPlugin("mps-repository", "jetbrains.mps.repository");
   }
 
   public EnvironmentConfig withIDEPlugin() {

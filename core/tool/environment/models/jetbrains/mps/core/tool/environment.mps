@@ -2109,8 +2109,13 @@
         <node concept="3cpWs6" id="3oGpQhnFvdS" role="3cqZAp">
           <node concept="2OqwBi" id="2btCvgzGaeQ" role="3cqZAk">
             <node concept="2OqwBi" id="2btCvgzG7mH" role="2Oq$k0">
-              <node concept="1rXfSq" id="3oGpQhnFwHD" role="2Oq$k0">
-                <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
+              <node concept="2OqwBi" id="16v2a1850Tv" role="2Oq$k0">
+                <node concept="1rXfSq" id="3oGpQhnFwHD" role="2Oq$k0">
+                  <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
+                </node>
+                <node concept="liA8E" id="16v2a1852RX" role="2OqNvi">
+                  <ref role="37wK5l" node="16v2a184MZE" resolve="withRepositoryPlugin" />
+                </node>
               </node>
               <node concept="liA8E" id="2btCvgzG8Er" role="2OqNvi">
                 <ref role="37wK5l" node="2btCvgzFoBq" resolve="withTestingPlugin" />
@@ -2219,6 +2224,31 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5jpAAQ6WDgQ" role="jymVt" />
+    <node concept="3clFb_" id="16v2a184MZE" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="withRepositoryPlugin" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="16v2a184MZF" role="3clF47">
+        <node concept="3cpWs6" id="16v2a184MZG" role="3cqZAp">
+          <node concept="1rXfSq" id="16v2a184WFe" role="3cqZAk">
+            <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+            <node concept="Xl_RD" id="16v2a184MZM" role="37wK5m">
+              <property role="Xl_RC" value="mps-repository" />
+            </node>
+            <node concept="Xl_RD" id="16v2a184MZN" role="37wK5m">
+              <property role="Xl_RC" value="jetbrains.mps.repository" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="16v2a184MZO" role="1B3o_S" />
+      <node concept="3uibUv" id="16v2a184MZP" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="16v2a184MZD" role="jymVt" />
     <node concept="3clFb_" id="5jpAAQ6WBiG" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="withIDEPlugin" />
