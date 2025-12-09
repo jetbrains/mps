@@ -48,6 +48,7 @@ import java.util.ArrayList;
   }
 
   /*package*/ List<ASMFormalTypeParameter> result() {
+    assert myName == null : "complete() first";
     return myResult;
   }
 

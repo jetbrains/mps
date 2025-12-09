@@ -12,7 +12,6 @@ import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 import java.util.Objects;
 import org.jetbrains.org.objectweb.asm.signature.SignatureReader;
-import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 import org.jetbrains.org.objectweb.asm.tree.FieldNode;
 import jetbrains.mps.baseLanguage.javastub.ClassifierKind;
 import org.jetbrains.org.objectweb.asm.tree.MethodNode;
@@ -87,34 +86,18 @@ public class ASMClass {
       myInnerClasses = (ic.isEmpty() ? Collections.<ASMInnerClass>emptyList() : Collections.unmodifiableList(ic));
     }
     if (classNode.signature != null) {
-      SignatureReader signReader = new SignatureReader(classNode.signature);
-      final TypeUtil.TypeBuilderVisitor[] superclassVisitor = new TypeUtil.TypeBuilderVisitor[1];
-      final ArrayList<TypeUtil.TypeBuilderVisitor> interfaceVisitors = new ArrayList<TypeUtil.TypeBuilderVisitor>(4);
-      signReader.accept(new SignatureVisitorAdapter() {
-        @Override
-        public SignatureVisitor visitSuperclass() {
-          assert superclassVisitor[0] == null : "didn't expect more than 1 superclass";
-          superclassVisitor[0] = new TypeUtil.TypeBuilderVisitor();
-          return superclassVisitor[0];
-        }
-        @Override
-        public SignatureVisitor visitInterface() {
-          TypeUtil.TypeBuilderVisitor v = new TypeUtil.TypeBuilderVisitor();
-          interfaceVisitors.add(v);
-          return v;
-        }
-      });
-      myGenericSuperclass = (superclassVisitor[0] != null ? superclassVisitor[0].getResult() : null);
-      if (!(interfaceVisitors.isEmpty())) {
-        ArrayList<ASMType> ii = new ArrayList<>(interfaceVisitors.size());
-        for (TypeUtil.TypeBuilderVisitor v : interfaceVisitors) {
-          ii.add(v.getResult());
-        }
-        myGenericInterfaces = Collections.unmodifiableList(ii);
+      ClassSignatureVisitor csv = new ClassSignatureVisitor();
+      new SignatureReader(classNode.signature).accept(csv);
+      myGenericSuperclass = (csv.myGenericSuperclass.size() == 1 ? csv.myGenericSuperclass.getFirst() : null);
+      if (!(csv.myGenericInterfaces.isEmpty())) {
+        myGenericInterfaces = Collections.unmodifiableList(new ArrayList<>(csv.myGenericInterfaces));
       } else {
         myGenericInterfaces = Collections.emptyList();
       }
+      // it's unlikely there are no type parameters provided there's signature (why would it be generic class then, right?)
+      myTypeVariables = Collections.<ASMTypeVariable>unmodifiableList(csv.myTypeParams.result());
     } else {
+      // XXX no idea why we don't make distinction generic vs regular elements like we do e.g. for a method/field
       myGenericSuperclass = (classNode.superName != null ? new ASMClassType(classNode.superName.replace('/', '.')) : null);
       if (!(classNode.interfaces.isEmpty())) {
         ArrayList<ASMType> ii = new ArrayList<>(classNode.interfaces.size());
@@ -125,12 +108,6 @@ public class ASMClass {
       } else {
         myGenericInterfaces = Collections.emptyList();
       }
-    }
-    if (classNode.signature != null) {
-      // XXX why not part of node.signature parsing along with superclass/interfaces, above?!
-      List<ASMFormalTypeParameter> formalTypeParameters = TypeUtil.getFormalTypeParameters(classNode.signature);
-      myTypeVariables = Collections.<ASMTypeVariable>unmodifiableList(formalTypeParameters);
-    } else {
       myTypeVariables = Collections.emptyList();
     }
     for (FieldNode fn : classNode.fields) {

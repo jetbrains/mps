@@ -5,10 +5,11 @@ package jetbrains.mps.baseLanguage.javastub.asm;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import org.jetbrains.org.objectweb.asm.tree.MethodNode;
-import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import org.jetbrains.org.objectweb.asm.Opcodes;
+import org.jetbrains.org.objectweb.asm.signature.SignatureReader;
 import org.jetbrains.org.objectweb.asm.tree.AnnotationNode;
 import org.jetbrains.org.objectweb.asm.tree.LocalVariableNode;
 import java.util.Arrays;
@@ -34,17 +35,7 @@ public final class ASMMethod {
   /*package*/ ASMMethod(MethodNode method) {
     myName = method.name;
     myAccess = method.access;
-    if (method.signature != null) {
-      myTypeVariables = Collections.<ASMTypeVariable>unmodifiableList(TypeUtil.getFormalTypeParameters(method.signature));
-    } else {
-      myTypeVariables = Collections.<ASMTypeVariable>emptyList();
-    }
     myReturnType = TypeUtil.fromType(Type.getReturnType(method.desc));
-    if (method.signature != null) {
-      myGenericReturnType = TypeUtil.getReturnType(method.signature);
-    } else {
-      myGenericReturnType = myReturnType;
-    }
     Type[] argumentTypes = Type.getArgumentTypes(method.desc);
     myParameterTypes = (argumentTypes.length > 0 ? new ArrayList<ASMType>(argumentTypes.length) : Collections.<ASMType>emptyList());
     int paramIndexOffset;
@@ -62,12 +53,23 @@ public final class ASMMethod {
     for (int i = paramIndexOffset; i < argumentTypes.length; i++) {
       myParameterTypes.add(TypeUtil.fromType(argumentTypes[i]));
     }
-
+    final List<ASMType> exceptions;
     if (method.signature != null) {
-      myGenericParameterTypes = TypeUtil.getParameterTypes(method.signature);
+      final MethodSignatureVisitor msv = new MethodSignatureVisitor();
+      new SignatureReader(method.signature).accept(msv);
+      myGenericReturnType = msv.myReturnType;
+      myGenericParameterTypes = new ArrayList<>(msv.myParameters);
+      List<ASMFormalTypeParameter> formalTypeParams = msv.myTypeParams.result();
+      // unlike generic class, seems that method may not necessarily have formal type parameters but still get signature
+      myTypeVariables = (formalTypeParams.isEmpty() ? Collections.<ASMTypeVariable>emptyList() : Collections.<ASMTypeVariable>unmodifiableList(formalTypeParams));
+      exceptions = (msv.myExceptions.isEmpty() ? Collections.<ASMType>emptyList() : new ArrayList<>(msv.myExceptions));
     } else {
+      myGenericReturnType = myReturnType;
       myGenericParameterTypes = myParameterTypes;
+      myTypeVariables = Collections.<ASMTypeVariable>emptyList();
+      exceptions = Collections.emptyList();
     }
+
     // assert myParameterTypes.size() == myGenericParameterTypes.size()
 
     // with isEmpty==true it's a very strange situation, though this happens as shown in
@@ -109,10 +111,6 @@ public final class ASMMethod {
         }
       }
       myParameterAnnotations.add((annotations == null ? Collections.<ASMAnnotation>emptyList() : annotations));
-    }
-    List<ASMType> exceptions = new ArrayList<ASMType>(0);
-    if (method.signature != null) {
-      exceptions = TypeUtil.getExceptionTypes(method.signature);
     }
     if (!(exceptions.isEmpty())) {
       myExceptions = exceptions;

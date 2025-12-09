@@ -5,15 +5,14 @@ package jetbrains.mps.baseLanguage.javastub.asm;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.org.objectweb.asm.Type;
 import org.jetbrains.org.objectweb.asm.signature.SignatureReader;
-import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 import java.util.List;
-import java.util.Collections;
-import java.util.ArrayList;
 import java.util.function.Consumer;
+import java.util.ArrayList;
+import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
 
 @GeneratedClass(nodeId = "7241381882860007306", model = "r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)")
 /*package*/ class TypeUtil {
-  /*package*/ TypeUtil() {
+  private TypeUtil() {
   }
   /*package*/ static ASMType fromDescriptor(String desc) {
     return TypeUtil.fromType(Type.getType(desc));
@@ -51,94 +50,6 @@ import java.util.function.Consumer;
       default:
     }
     return null;
-  }
-  /*package*/ static ASMType getReturnType(String signature) {
-    if (signature == null) {
-      return null;
-    }
-    SignatureReader reader = new SignatureReader(signature);
-    final TypeBuilderVisitor builder = new TypeBuilderVisitor();
-    reader.accept(new SignatureVisitorAdapter() {
-      @Override
-      public SignatureVisitor visitReturnType() {
-        return builder;
-      }
-    });
-    return builder.getResult();
-  }
-  /*package*/ static List<ASMType> getParameterTypes(String signature) {
-    if (signature == null) {
-      return Collections.emptyList();
-    }
-    SignatureReader reader = new SignatureReader(signature);
-    final List<TypeBuilderVisitor> visitors = new ArrayList<TypeBuilderVisitor>();
-    reader.accept(new SignatureVisitorAdapter() {
-      @Override
-      public SignatureVisitor visitParameterType() {
-        TypeBuilderVisitor v = new TypeBuilderVisitor();
-        visitors.add(v);
-        return v;
-      }
-    });
-    List<ASMType> types = new ArrayList<ASMType>(visitors.size());
-    for (TypeBuilderVisitor v : visitors) {
-      types.add(v.getResult());
-    }
-    return types;
-  }
-  public static List<ASMFormalTypeParameter> getFormalTypeParameters(String signature) {
-    if (signature == null) {
-      return Collections.emptyList();
-    }
-
-    final FormalTypeParameterBuilder typeParams = new FormalTypeParameterBuilder();
-
-    SignatureReader reader = new SignatureReader(signature);
-    reader.accept(new SignatureVisitorAdapter() {
-      @Override
-      public void visitFormalTypeParameter(String name) {
-        typeParams.next(name);
-      }
-      @Override
-      public SignatureVisitor visitClassBound() {
-        return new TypeBuilderVisitor(typeParams::classBound);
-      }
-      @Override
-      public SignatureVisitor visitInterfaceBound() {
-        return new TypeBuilderVisitor(typeParams::interfaceBound);
-      }
-      @Override
-      public SignatureVisitor visitReturnType() {
-        typeParams.complete();
-        return super.visitReturnType();
-      }
-      @Override
-      public SignatureVisitor visitSuperclass() {
-        typeParams.complete();
-        return super.visitSuperclass();
-      }
-    });
-    return typeParams.result();
-  }
-  public static List<ASMType> getExceptionTypes(String signature) {
-    if (signature == null) {
-      return Collections.emptyList();
-    }
-    SignatureReader reader = new SignatureReader(signature);
-    final List<TypeBuilderVisitor> visitors = new ArrayList<TypeBuilderVisitor>();
-    reader.accept(new SignatureVisitorAdapter() {
-      @Override
-      public SignatureVisitor visitExceptionType() {
-        TypeBuilderVisitor v = new TypeBuilderVisitor();
-        visitors.add(v);
-        return v;
-      }
-    });
-    final List<ASMType> types = new ArrayList<ASMType>(visitors.size());
-    for (TypeBuilderVisitor v : visitors) {
-      types.add(v.getResult());
-    }
-    return types;
   }
   public static ASMType getFieldType(String signature) {
     if (signature == null) {
