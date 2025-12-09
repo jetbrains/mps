@@ -37022,6 +37022,11 @@
             <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
           </node>
         </node>
+        <node concept="1SiIV0" id="7XxeqvCzQJU" role="3bR37C">
+          <node concept="3bR9La" id="7XxeqvCzQJV" role="1SiIV1">
+            <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="3X9rC2XIG0s" role="2G$12L">
         <property role="BnDLt" value="true" />
