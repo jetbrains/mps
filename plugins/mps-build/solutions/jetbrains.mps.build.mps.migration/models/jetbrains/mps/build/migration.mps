@@ -410,17 +410,22 @@
                 </node>
               </node>
               <node concept="3cpWs6" id="5P325eDvoL0" role="3cqZAp">
-                <node concept="2OqwBi" id="5P325eDvoL1" role="3cqZAk">
-                  <node concept="2OqwBi" id="5P325eDvoL2" role="2Oq$k0">
-                    <node concept="37vLTw" id="5P325eDvoL3" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5P325eDv7oO" resolve="withBootstrapLibraries" />
+                <node concept="2OqwBi" id="1iVy5Y$IyCL" role="3cqZAk">
+                  <node concept="2OqwBi" id="5P325eDvoL1" role="2Oq$k0">
+                    <node concept="2OqwBi" id="5P325eDvoL2" role="2Oq$k0">
+                      <node concept="37vLTw" id="5P325eDvoL3" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5P325eDv7oO" resolve="withBootstrapLibraries" />
+                      </node>
+                      <node concept="liA8E" id="5P325eDvoL4" role="2OqNvi">
+                        <ref role="37wK5l" to="79ha:6BLo1MgrFYe" resolve="withCorePlugin" />
+                      </node>
                     </node>
-                    <node concept="liA8E" id="5P325eDvoL4" role="2OqNvi">
-                      <ref role="37wK5l" to="79ha:6BLo1MgrFYe" resolve="withCorePlugin" />
+                    <node concept="liA8E" id="5P325eDvoL5" role="2OqNvi">
+                      <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="5P325eDvoL5" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:4asrSzSFl5Q" resolve="withMigrationPlugin" />
+                  <node concept="liA8E" id="1iVy5Y$I_Dy" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:16v2a184MZE" resolve="withRepositoryPlugin" />
                   </node>
                 </node>
               </node>

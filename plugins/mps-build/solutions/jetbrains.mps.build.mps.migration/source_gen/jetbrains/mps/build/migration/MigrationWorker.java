@@ -50,7 +50,7 @@ public class MigrationWorker extends WorkerBase {
       return withBootstrapLibraries.withAutomaticPluginDiscovery();
     } else {
       // for mysterious reasons, lang.migration.util is part of mps-core plugin
-      return withBootstrapLibraries.withCorePlugin().withMigrationPlugin();
+      return withBootstrapLibraries.withCorePlugin().withMigrationPlugin().withRepositoryPlugin();
     }
   }
 
