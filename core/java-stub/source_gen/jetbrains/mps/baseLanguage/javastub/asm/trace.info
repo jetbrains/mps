@@ -309,18 +309,28 @@
       <node id="7241381882860002187" at="12,36,13,18" concept="5" />
       <node id="7241381882860002197" at="15,27,16,18" concept="12" />
       <node id="7241381882860002205" at="19,28,20,30" concept="12" />
+      <node id="273696541078570416" at="24,25,25,29" concept="12" />
+      <node id="273696541078576053" at="28,37,29,101" concept="12" />
       <node id="7241381882860002182" at="12,0,15,0" concept="3" trace="ASMClassType#(Ljava/lang/String;)V" />
       <node id="7241381882860002193" at="15,0,18,0" concept="10" trace="getName#()Ljava/lang/String;" />
       <node id="7241381882860002201" at="18,0,22,0" concept="10" trace="toString#()Ljava/lang/String;" />
+      <node id="273696541078567589" at="23,0,27,0" concept="10" trace="hashCode#()I" />
+      <node id="273696541078567598" at="27,0,31,0" concept="10" trace="equals#(Ljava/lang/Object;)Z" />
       <scope id="7241381882860002186" at="12,36,13,18" />
       <scope id="7241381882860002196" at="15,27,16,18" />
       <scope id="7241381882860002204" at="19,28,20,30" />
+      <scope id="273696541078567594" at="24,25,25,29" />
+      <scope id="273696541078567604" at="28,37,29,101" />
       <scope id="7241381882860002182" at="12,0,15,0">
         <var name="name" id="7241381882860002184" />
       </scope>
       <scope id="7241381882860002193" at="15,0,18,0" />
       <scope id="7241381882860002201" at="18,0,22,0" />
-      <unit id="7241381882860002170" at="7,0,23,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMClassType" />
+      <scope id="273696541078567589" at="23,0,27,0" />
+      <scope id="273696541078567598" at="27,0,31,0">
+        <var name="obj" id="273696541078567602" />
+      </scope>
+      <unit id="7241381882860002170" at="7,0,32,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMClassType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860005690">

@@ -490,6 +490,91 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="fcnoRjfruI" role="jymVt" />
+    <node concept="3clFb_" id="fcnoRjfrE_" role="jymVt">
+      <property role="TrG5h" value="hashCode" />
+      <node concept="3Tm1VV" id="fcnoRjfrEA" role="1B3o_S" />
+      <node concept="10Oyi0" id="fcnoRjfrED" role="3clF45" />
+      <node concept="3clFbS" id="fcnoRjfrEE" role="3clF47">
+        <node concept="3clFbF" id="fcnoRjfsmK" role="3cqZAp">
+          <node concept="2OqwBi" id="fcnoRjfsLP" role="3clFbG">
+            <node concept="37vLTw" id="fcnoRjfsmH" role="2Oq$k0">
+              <ref role="3cqZAo" node="6hYzBiUOtI3" resolve="myName" />
+            </node>
+            <node concept="liA8E" id="fcnoRjftdi" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.hashCode()" resolve="hashCode" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="fcnoRjfrEF" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="fcnoRjfrEI" role="jymVt">
+      <property role="TrG5h" value="equals" />
+      <node concept="3Tm1VV" id="fcnoRjfrEJ" role="1B3o_S" />
+      <node concept="10P_77" id="fcnoRjfrEL" role="3clF45" />
+      <node concept="37vLTG" id="fcnoRjfrEM" role="3clF46">
+        <property role="TrG5h" value="obj" />
+        <node concept="3uibUv" id="fcnoRjfrEN" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="fcnoRjfrEO" role="3clF47">
+        <node concept="3clFbF" id="fcnoRjftIP" role="3cqZAp">
+          <node concept="1Wc70l" id="fcnoRjfzMJ" role="3clFbG">
+            <node concept="1Wc70l" id="fcnoRjfvD9" role="3uHU7B">
+              <node concept="3y3z36" id="fcnoRjfum$" role="3uHU7B">
+                <node concept="37vLTw" id="fcnoRjftIO" role="3uHU7B">
+                  <ref role="3cqZAo" node="fcnoRjfrEM" resolve="obj" />
+                </node>
+                <node concept="10Nm6u" id="fcnoRjfuvI" role="3uHU7w" />
+              </node>
+              <node concept="3clFbC" id="fcnoRjfxBZ" role="3uHU7w">
+                <node concept="2OqwBi" id="fcnoRjfw04" role="3uHU7B">
+                  <node concept="37vLTw" id="fcnoRjfvN7" role="2Oq$k0">
+                    <ref role="3cqZAo" node="fcnoRjfrEM" resolve="obj" />
+                  </node>
+                  <node concept="liA8E" id="fcnoRjfwf8" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
+                  </node>
+                </node>
+                <node concept="1rXfSq" id="fcnoRjfxUW" role="3uHU7w">
+                  <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="fcnoRjfA$g" role="3uHU7w">
+              <node concept="37vLTw" id="fcnoRjfA8K" role="2Oq$k0">
+                <ref role="3cqZAo" node="6hYzBiUOtI3" resolve="myName" />
+              </node>
+              <node concept="liA8E" id="fcnoRjfB13" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                <node concept="2OqwBi" id="fcnoRjf$Ur" role="37wK5m">
+                  <node concept="1eOMI4" id="fcnoRjfzZ8" role="2Oq$k0">
+                    <node concept="10QFUN" id="fcnoRjfzZ5" role="1eOMHV">
+                      <node concept="3uibUv" id="fcnoRjf$e_" role="10QFUM">
+                        <ref role="3uigEE" node="6hYzBiUOtHU" resolve="ASMClassType" />
+                      </node>
+                      <node concept="37vLTw" id="fcnoRjf$w_" role="10QFUP">
+                        <ref role="3cqZAo" node="fcnoRjfrEM" resolve="obj" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OwXpG" id="fcnoRjf_Bf" role="2OqNvi">
+                    <ref role="2Oxat5" node="6hYzBiUOtI3" resolve="myName" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="fcnoRjfrEP" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="6hYzBiUOu$U">
     <property role="TrG5h" value="ASMMethod" />

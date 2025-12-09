@@ -220,6 +220,17 @@ public class ParameterizedInnerClassTest {
 
     public class Inner4<C> {
       private C c;
+
+      Inner4() {
+
+      }
+
+      Inner4(A a, C c) {
+      }
+
+      public C getC_withA(A a) {
+        return c;
+      }
     }
   }
 
@@ -232,6 +243,10 @@ public class ParameterizedInnerClassTest {
 
     public class Inner3<B> {
       public B b;
+
+      public B getB() {
+        return b;
+      }
     }
   }
 

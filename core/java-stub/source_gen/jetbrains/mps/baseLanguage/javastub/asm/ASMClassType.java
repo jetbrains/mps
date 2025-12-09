@@ -19,4 +19,13 @@ public class ASMClassType extends ASMType {
   public String toString() {
     return "(" + myName + ")";
   }
+
+  @Override
+  public int hashCode() {
+    return myName.hashCode();
+  }
+  @Override
+  public boolean equals(Object obj) {
+    return obj != null && obj.getClass() == getClass() && myName.equals(((ASMClassType) obj).myName);
+  }
 }
