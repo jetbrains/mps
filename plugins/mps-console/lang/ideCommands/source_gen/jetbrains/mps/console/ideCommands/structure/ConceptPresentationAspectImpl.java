@@ -16,6 +16,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CallActionExpression;
   private ConceptPresentation props_Clean;
   private ConceptPresentation props_ClickableGenerator;
+  private ConceptPresentation props_ClickableModel;
+  private ConceptPresentation props_ClickableModule;
   private ConceptPresentation props_ClickableNode;
   private ConceptPresentation props_GlobalScope;
   private ConceptPresentation props_GlobalStatisticTarget;
@@ -91,6 +93,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ClickableGenerator = cpb.create();
         }
         return props_ClickableGenerator;
+      case LanguageConceptSwitch.ClickableModel:
+        if (props_ClickableModel == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ClickableModel");
+          props_ClickableModel = cpb.create();
+        }
+        return props_ClickableModel;
+      case LanguageConceptSwitch.ClickableModule:
+        if (props_ClickableModule == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ClickableModule");
+          props_ClickableModule = cpb.create();
+        }
+        return props_ClickableModule;
       case LanguageConceptSwitch.ClickableNode:
         if (props_ClickableNode == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

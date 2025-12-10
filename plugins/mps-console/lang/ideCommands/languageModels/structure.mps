@@ -415,5 +415,43 @@
       <ref role="PrY4T" to="eynw:22lVekVIvmK" resolve="IClickable" />
     </node>
   </node>
+  <node concept="1TIwiD" id="4z_aNpaOOWd">
+    <property role="EcuMT" value="5252652052581142285" />
+    <property role="3GE5qa" value="response" />
+    <property role="TrG5h" value="ClickableModel" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="4z_aNpaOP2Q" role="PzmwI">
+      <ref role="PrY4T" to="eynw:22lVekVIvmK" resolve="IClickable" />
+    </node>
+    <node concept="1TJgyj" id="4z_aNpaOP4x" role="1TKVEi">
+      <property role="IQ2ns" value="5252652052581142817" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="target" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="dvox:7PoJpZpMbrj" resolve="ModelIdentity" />
+    </node>
+    <node concept="t5JxF" id="4z_aNpaOPjJ" role="lGtFl">
+      <property role="t5JxN" value="Navigation to a model" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4z_aNpaP9tH">
+    <property role="EcuMT" value="5252652052581226349" />
+    <property role="3GE5qa" value="response" />
+    <property role="TrG5h" value="ClickableModule" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="4z_aNpaP9$n" role="1TKVEi">
+      <property role="IQ2ns" value="5252652052581226775" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="target" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="dvox:_GDk1qZ2J9" resolve="ModuleIdentity" />
+    </node>
+    <node concept="PrWs8" id="4z_aNpaP9zx" role="PzmwI">
+      <ref role="PrY4T" to="eynw:22lVekVIvmK" resolve="IClickable" />
+    </node>
+    <node concept="t5JxF" id="2fbYQgSq4sa" role="lGtFl">
+      <property role="t5JxN" value="Navigation to a module" />
+    </node>
+  </node>
 </model>
 

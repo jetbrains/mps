@@ -30,6 +30,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.modelapi.behavior.NodePointer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.lang.modelapi.behavior.ModelPointer__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.lang.modelapi.behavior.ModulePointer__BehaviorDescriptor;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import jetbrains.mps.console.ideCommands.util.PartitioningHelper;
 import jetbrains.mps.generator.impl.plan.GenerationPlan;
@@ -77,6 +81,16 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
           if (m.getHintObject() instanceof SNodeReference) {
             SNode cn = SModelOperations.createNewNode(model, null, CONCEPTS.ClickableNode$L0);
             SLinkOperations.setTarget(cn, LINKS.target$IMmQ, NodePointer__BehaviorDescriptor.create_id4nxIQVL$eu9.invoke(SNodeOperations.asSConcept(CONCEPTS.NodePointer$6k), model, (SNodeReference) m.getHintObject()));
+            SPropertyOperations.assign(cn, PROPS.text$2Jks, m.getText());
+            console.addNode(cn);
+          } else if (m.getHintObject() instanceof SModelReference) {
+            SNode cn = SModelOperations.createNewNode(model, null, CONCEPTS.ClickableModel$WT);
+            SLinkOperations.setTarget(cn, LINKS.target$mHw0, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2LQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), model, (SModelReference) m.getHintObject()));
+            SPropertyOperations.assign(cn, PROPS.text$2Jks, m.getText());
+            console.addNode(cn);
+          } else if (m.getHintObject() instanceof SModuleReference) {
+            SNode cn = SModelOperations.createNewNode(model, null, CONCEPTS.ClickableModule$On);
+            SLinkOperations.setTarget(cn, LINKS.target$VdBI, ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$7i), model, (SModuleReference) m.getHintObject()));
             SPropertyOperations.assign(cn, PROPS.text$2Jks, m.getText());
             console.addNode(cn);
           } else {
@@ -163,11 +177,17 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class LINKS {
     /*package*/ static final SContainmentLink targetModel$AZJC = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
     /*package*/ static final SContainmentLink target$IMmQ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, 0x72ed699ef9552c2dL, "target");
+    /*package*/ static final SContainmentLink target$mHw0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x48e52b364ad34f0dL, 0x48e52b364ad35121L, "target");
+    /*package*/ static final SContainmentLink target$VdBI = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x48e52b364ad4976dL, 0x48e52b364ad49917L, "target");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClickableNode$L0 = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, "jetbrains.mps.console.ideCommands.structure.ClickableNode");
     /*package*/ static final SConcept NodePointer$6k = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer");
+    /*package*/ static final SConcept ClickableModel$WT = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x48e52b364ad34f0dL, "jetbrains.mps.console.ideCommands.structure.ClickableModel");
+    /*package*/ static final SConcept ModelPointer$6N = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+    /*package*/ static final SConcept ClickableModule$On = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x48e52b364ad4976dL, "jetbrains.mps.console.ideCommands.structure.ClickableModule");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 
   private static final class PROPS {
