@@ -14,7 +14,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import javax.swing.JComponent;
 
 public class ContextActionsTool_Tool extends GeneratedTool {
-  private static final Icon ICON = IconContainer.ICON0;
+  private static final Icon ICON = null;
   private ToolComponent myComponent;
   private ToolController myController;
   private boolean hasBeenRegistered;
