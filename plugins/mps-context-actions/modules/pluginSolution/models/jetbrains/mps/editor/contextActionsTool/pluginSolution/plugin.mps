@@ -53,24 +53,6 @@
     <import index="sn11" ref="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)" />
   </imports>
   <registry>
-    <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="2756621024541681841" name="jetbrains.mps.lang.resources.structure.Primitive" flags="ng" index="1irPi6">
-        <child id="1860120738943552529" name="fillColor" index="3PKjn_" />
-      </concept>
-      <concept id="2756621024541681849" name="jetbrains.mps.lang.resources.structure.Text" flags="ng" index="1irPie">
-        <property id="2756621024541681854" name="text" index="1irPi9" />
-        <child id="1860120738943552534" name="color" index="3PKjny" />
-      </concept>
-      <concept id="2756621024541674821" name="jetbrains.mps.lang.resources.structure.TextIcon" flags="ng" index="1irR5M">
-        <property id="1358878980655415353" name="iconId" index="2$rrk2" />
-        <child id="8984883884167239995" name="newuiLayers" index="2rmM5M" />
-      </concept>
-      <concept id="2756621024541675104" name="jetbrains.mps.lang.resources.structure.Circle" flags="ng" index="1irR9n" />
-      <concept id="5112823507791946452" name="jetbrains.mps.lang.resources.structure.JBColorLiteral" flags="ng" index="1NKcsK">
-        <property id="5112823507791948452" name="darkThemeVal" index="1NKcX0" />
-        <property id="5112823507791948451" name="lightThemeVal" index="1NKcX7" />
-      </concept>
-    </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
       <concept id="1203071677434" name="jetbrains.mps.lang.plugin.structure.ToolDeclaration" flags="ng" index="sEfby">
         <child id="1214307129846" name="getComponentBlock" index="2Um5zG" />
@@ -87,7 +69,6 @@
         <child id="8096638938275469614" name="toolInitBlock" index="uR5cp" />
         <child id="6547237850567462848" name="methodDeclaration" index="2XNbBy" />
         <child id="6547237850567462849" name="fieldDeclaration" index="2XNbBz" />
-        <child id="6791676465872004185" name="toolIcon" index="1nVCmq" />
       </concept>
       <concept id="1208528650020" name="jetbrains.mps.lang.plugin.structure.ToolType" flags="in" index="1xUVSX">
         <reference id="1208529537963" name="tool" index="1xYkEM" />
@@ -743,22 +724,6 @@
           <node concept="37vLTw" id="3zNPfWNAwar" role="3cqZAk">
             <ref role="3cqZAo" node="3zNPfWNAwa8" resolve="gearActionGroup" />
           </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1irR5M" id="3m7FUTFn34r" role="1nVCmq">
-      <property role="2$rrk2" value="1" />
-      <node concept="1irR9n" id="3m7FUTFn3xg" role="2rmM5M">
-        <node concept="1NKcsK" id="3m7FUTFn3xC" role="3PKjn_">
-          <property role="1NKcX7" value="bbbbbb" />
-          <property role="1NKcX0" value="444444" />
-        </node>
-      </node>
-      <node concept="1irPie" id="2W$OB9xQadH" role="2rmM5M">
-        <property role="1irPi9" value="A" />
-        <node concept="1NKcsK" id="2W$OB9xQae6" role="3PKjny">
-          <property role="1NKcX7" value="000000" />
-          <property role="1NKcX0" value="ffffff" />
         </node>
       </node>
     </node>
