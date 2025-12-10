@@ -17,6 +17,8 @@ import java.util.function.Function;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.java.stub.StubReferenceFactory;
 import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -63,12 +65,20 @@ public final class ASMModelLoader {
   public Collection<SModelReference> completeModel(SModel partialModel, SModelData completeModelData, Function<ASMClass, Documentation> docSupplier) {
     try {
       StubReferenceFactory refFactory = new StubReferenceFactory(myModule, partialModel, SModelStereotype.JAVA_STUB);
-      ASMNodeIdFactory nodeIdFactory = new ASMNodeIdFactory(100);
+      ASMNodeIdFactory nodeIdFactory = new ASMNodeIdFactory(500);
+      ASMClassType.Factory ctf = new ASMClassType.Factory();
+      ctf.record("java.util.List");
+      ctf.record("java.util.Map");
+      ctf.record("java.util.Set");
+      ctf.record("java.util.Collection");
+      ctf.record(NotNull.class.getName());
+      ctf.record(Nullable.class.getName());
+      ctf.record(SNode.class.getName());
       for (IFile classfile : getTopClassFiles()) {
         ClassifierLoader rootLoader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate, nodeIdFactory);
         SNode c = rootLoader.createClassifier();
         if (c != null) {
-          rootLoader.updateClassifier(c, refFactory, docSupplier);
+          rootLoader.updateClassifier(c, refFactory, docSupplier, ctf);
           completeModelData.addRootNode(c);
         }
       }

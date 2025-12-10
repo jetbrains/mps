@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.ArrayList;
 import jetbrains.mps.java.stub.ReferenceFactory;
 import java.util.function.Function;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
 import jetbrains.mps.baseLanguage.javastub.asm.ClassReaderOptions;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.io.InputStream;
@@ -46,7 +48,7 @@ public class ClassifierLoader {
     this(file, onlyPublic, skipPrivate, new ASMNodeIdFactory(100));
   }
 
-  public ClassifierLoader(IFile file, boolean onlyPublic, boolean skipPrivate, ASMNodeIdFactory nodeIdFactory) {
+  /*package*/ ClassifierLoader(IFile file, boolean onlyPublic, boolean skipPrivate, ASMNodeIdFactory nodeIdFactory) {
     mySkipPrivate = skipPrivate;
     myOnlyPublic = onlyPublic;
     myFile = file;
@@ -150,16 +152,20 @@ public class ClassifierLoader {
     return rv;
   }
 
-  public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier) {
+  public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier, @Nullable ASMClassType.Factory classTypeFactory) {
     assert myClassReader != null;
-    ASMClass ac = new ASMClass(myClassReader, ClassReaderOptions.builder().withMethodParameters(true).withCompilerInjectedMembers(false).build());
+    ClassReaderOptions.Builder crob = ClassReaderOptions.builder().withMethodParameters(true).withCompilerInjectedMembers(false);
+    if (classTypeFactory != null) {
+      crob.with(classTypeFactory);
+    }
+    ASMClass ac = new ASMClass(myClassReader, crob.build());
     Documentation doc = docSupplier.apply(ac);
     new ClassifierUpdater(ac, mySkipPrivate, refFactory, doc, myNodeIdFactory).update(classifier);
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {
       SNode inner = innerLoader.createClassifier();
       if (inner != null) {
         ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.member$L_2d)).addElement(inner);
-        innerLoader.updateClassifier(inner, refFactory, docSupplier);
+        innerLoader.updateClassifier(inner, refFactory, docSupplier, classTypeFactory);
       }
     }
   }
