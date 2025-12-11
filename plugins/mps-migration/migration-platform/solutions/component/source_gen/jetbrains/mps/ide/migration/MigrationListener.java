@@ -38,7 +38,7 @@ public interface MigrationListener {
    */
   static Iterable<MigrationListener> instances(Project mpsProject) {
     ArrayList<MigrationListener> rv = new ArrayList<>();
-    mpsProject.getComponent(LanguageRegistry.class).withAvailableExtensions(MigrationListener.class, new ModuleRuntime.Extension.MatchRequest() {}, rv::add);
+    mpsProject.getComponent(LanguageRegistry.class).withAvailableExtensions(MigrationListener.class, ModuleRuntime.Extension.all(), rv::add);
     return rv;
   }
 }

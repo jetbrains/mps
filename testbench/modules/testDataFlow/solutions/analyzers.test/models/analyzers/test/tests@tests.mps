@@ -62,9 +62,6 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
-      <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
-        <child id="1182160096073" name="cls" index="YeSDq" />
-      </concept>
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -144,9 +141,6 @@
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
-      <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
-        <reference id="1170346070688" name="classifier" index="1Y3XeK" />
-      </concept>
     </language>
     <language id="3ac033a0-bffa-48e3-a843-a40cbdd89859" name="testExtendingAnalyzer">
       <concept id="1417601170173058089" name="testExtendingAnalyzer.structure.NullSafeDotExpression" flags="ng" index="3QYSzD" />
@@ -379,16 +373,9 @@
               <node concept="3VsKOn" id="4OKSZMEY9f4" role="37wK5m">
                 <ref role="3VsUkX" to="aplb:2ULNtK16PUg" resolve="MPSProgramFactory" />
               </node>
-              <node concept="2ShNRf" id="4OKSZMEY9lX" role="37wK5m">
-                <node concept="YeOm9" id="4OKSZMEYaS3" role="2ShVmc">
-                  <node concept="1Y3b0j" id="4OKSZMEYaS6" role="YeSDq">
-                    <property role="2bfB8j" value="true" />
-                    <property role="373rjd" value="true" />
-                    <ref role="1Y3XeK" to="ze1i:~ModuleRuntime$Extension$MatchRequest" resolve="ModuleRuntime.Extension.MatchRequest" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3Tm1VV" id="4OKSZMEYaS7" role="1B3o_S" />
-                  </node>
-                </node>
+              <node concept="2YIFZM" id="5XuETmHuk78" role="37wK5m">
+                <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.any()" resolve="any" />
+                <ref role="1Pybhc" to="ze1i:~ModuleRuntime$Extension" resolve="ModuleRuntime.Extension" />
               </node>
               <node concept="1bVj0M" id="4OKSZMEYblM" role="37wK5m">
                 <node concept="gl6BB" id="4OKSZMEYblX" role="1bW2Oz">

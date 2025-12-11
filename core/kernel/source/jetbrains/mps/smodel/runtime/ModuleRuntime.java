@@ -266,6 +266,13 @@ public final class ModuleRuntime {
    * @since 2023.3
    */
   public interface Extension<T> {
+    static MatchRequest any() {
+      return new MatchRequest() {};
+    }
+    static MatchRequest all() {
+      return new MatchRequest() {};
+    }
+
     interface MatchRequest {
       // e.g. something simple as Tags(=Set<String>) and intersection/contains (extSet.allOf(((Tags)matchRequest).tagsAsSet()),
     }

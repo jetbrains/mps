@@ -86,7 +86,7 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
 
     public MPSProgramFactory factory() {
       final AtomicReference<MPSProgramFactory> rv = new AtomicReference<>(null);
-      myProject.getComponent(LanguageRegistry.class).withAvailableExtensions(MPSProgramFactory.class, new ModuleRuntime.Extension.MatchRequest() {}, (f) -> rv.set(f));
+      myProject.getComponent(LanguageRegistry.class).withAvailableExtensions(MPSProgramFactory.class, ModuleRuntime.Extension.any(), (f) -> rv.set(f));
       return rv.get();
     }
   }

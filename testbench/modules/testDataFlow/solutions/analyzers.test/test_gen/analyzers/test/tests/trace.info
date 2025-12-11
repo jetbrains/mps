@@ -77,8 +77,8 @@
       <node id="2955426575106005468" at="81,30,82,90" concept="3" />
       <node id="2955426575106005475" at="82,90,83,135" concept="1" />
       <node id="5562196214142256374" at="87,40,88,80" concept="3" />
-      <node id="5562196214142234927" at="88,80,89,167" concept="1" />
-      <node id="5562196214142267665" at="89,167,90,22" concept="4" />
+      <node id="5562196214142234927" at="88,80,89,151" concept="1" />
+      <node id="5562196214142267665" at="89,151,90,22" concept="4" />
       <node id="2955426575105884966" at="95,0,96,0" concept="6" trace="child$G3Ei" />
       <node id="2955426575105884966" at="32,0,34,0" concept="6" trace="ourParametersCacheExtension" />
       <node id="2955426575105884966" at="35,0,38,0" concept="0" trace="TestProgramWithModeSpecified_Test#()V" />
@@ -129,7 +129,6 @@
       <scope id="2955426575105885032" at="79,0,86,0" />
       <scope id="2955426575105885002" at="63,0,71,0" />
       <scope id="4383142553201250610" at="71,0,79,0" />
-      <unit id="5562196214142250502" at="89,106,89,147" name="analyzers.test.tests.TestProgramWithModeSpecified_Test$TestBody$1" />
       <unit id="2955426575105884966" at="94,0,97,0" name="analyzers.test.tests.TestProgramWithModeSpecified_Test$LINKS" />
       <unit id="2955426575105884966" at="52,0,93,0" name="analyzers.test.tests.TestProgramWithModeSpecified_Test$TestBody" />
       <unit id="2955426575105884966" at="30,0,98,0" name="analyzers.test.tests.TestProgramWithModeSpecified_Test" />

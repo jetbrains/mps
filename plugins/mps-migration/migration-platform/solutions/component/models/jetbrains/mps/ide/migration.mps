@@ -20686,16 +20686,9 @@
               <node concept="3VsKOn" id="53z0DK9GzEQ" role="37wK5m">
                 <ref role="3VsUkX" node="1st5UDpZXwq" resolve="MigrationListener" />
               </node>
-              <node concept="2ShNRf" id="4OKSZMEY9lX" role="37wK5m">
-                <node concept="YeOm9" id="4OKSZMEYaS3" role="2ShVmc">
-                  <node concept="1Y3b0j" id="4OKSZMEYaS6" role="YeSDq">
-                    <property role="2bfB8j" value="true" />
-                    <property role="373rjd" value="true" />
-                    <ref role="1Y3XeK" to="ze1i:~ModuleRuntime$Extension$MatchRequest" resolve="ModuleRuntime.Extension.MatchRequest" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3Tm1VV" id="4OKSZMEYaS7" role="1B3o_S" />
-                  </node>
-                </node>
+              <node concept="2YIFZM" id="5XuETmHut_$" role="37wK5m">
+                <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.all()" resolve="all" />
+                <ref role="1Pybhc" to="ze1i:~ModuleRuntime$Extension" resolve="ModuleRuntime.Extension" />
               </node>
               <node concept="37Ijox" id="53z0DK9GRex" role="37wK5m">
                 <ref role="37Ijqf" to="33ny:~ArrayList.add(java.lang.Object)" resolve="add" />
