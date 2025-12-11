@@ -22,17 +22,17 @@ import java.util.ArrayList;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import org.jetbrains.mps.openapi.module.SRepository;
-import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Status;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.ide.migration.ModuleVersionUpdate;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
@@ -135,38 +135,19 @@ public interface MigrationSession {
       return SetSequence.fromSet(myRequiredSteps).contains(stepKind);
     }
 
-    /**
-     * takes model read to let AppliedScript.toBeExecutedImmediately() to access module dependencies/used languages
-     */
-    protected Collection<ScriptApplied> nextStepModuleImpl() {
-      final SRepository repo = getProject().getRepository();
-      return repo.getModelAccess().computeReadAction(new Supplier<Collection<ScriptApplied>>() {
-        public Collection<ScriptApplied> get() {
-          return CollectionSequence.fromCollection(getModuleMigrations()).select(new _FunctionTypes._return_P1_E0<Collection<ScriptApplied>, AppliedScript>() {
-            public Collection<ScriptApplied> invoke(AppliedScript it) {
-              return it.toBeExecutedImmediately(repo);
-            }
-          }).findFirst(new _FunctionTypes._return_P1_E0<Boolean, Collection<ScriptApplied>>() {
-            public Boolean invoke(Collection<ScriptApplied> it) {
-              return CollectionSequence.fromCollection(it).isNotEmpty();
-            }
-          });
-        }
-      });
-    }
 
     @Nullable
     @Override
     public MigrationRunnable nextStepModule() {
-      final Collection<ScriptApplied> sa = nextStepModuleImpl();
-      if (sa == null || CollectionSequence.fromCollection(sa).isEmpty()) {
+      final SRepository repo = getProject().getRepository();
+      // take model read to let AppliedScript.toBeExecutedImmediately() to access module dependencies/used languages; remove once no longer use legacy ScriptApplied
+      final AppliedScript as = repo.getModelAccess().computeReadAction(() -> CollectionSequence.fromCollection(getModuleMigrations()).findFirst((it) -> it.scriptPresent() && CollectionSequence.fromCollection(it.toBeExecutedImmediately(repo)).isNotEmpty()));
+      if (as == null) {
         return null;
       }
+      assert as.scriptPresent();
 
-      // FIXME shall use existing script instance from AppliedScript, but as long as we use legacy ScriptApplied here,
-      //      it holds necessary script instance (null shall not happen if pre-check passed). 
-      //     Nevertheless, shall switch to AS and take its caption.
-      final String caption = CollectionSequence.fromCollection(sa).first().getScriptInstance().getCaption();
+      final String caption = as.caption();
       return new MigrationRunnable() {
         @NotNull
         @Override
@@ -178,16 +159,22 @@ public interface MigrationSession {
         @Override
         public Status run(ProgressMonitor progress) {
           try {
-            Collection<ScriptApplied> toApply = sa;
-            do {
-              for (ScriptApplied s : CollectionSequence.fromCollection(toApply)) {
-                progress.step(String.format("%s [%s]", caption, NameUtil.compactNamespace(s.getModuleReference().getModuleName())));
-                ListSequence.fromList(myWereRun).addElement(s);
-                getExecutor().execute(s);
-                progress.advance(1);
+            // FWIW, we are inside model write here
+            Iterable<SModuleReference> toApply = as.affectedModules();
+            for (SModuleReference s : Sequence.fromIterable(toApply)) {
+              progress.step(String.format("%s [%s]", caption, NameUtil.compactNamespace(s.getModuleName())));
+              SModule resolvedModule = s.resolve(repo);
+              if (resolvedModule == null) {
+                // it's an error provided we built AppliedScript correctly
+                Logger.getLogger(MigrationSession.class).error(String.format("Missing module %s associated with script %s", s.getModuleName(), as.caption()));
+                continue;
               }
-              toApply = nextStepModuleImpl();
-            } while (toApply != null && CollectionSequence.fromCollection(toApply).isNotEmpty());
+              ScriptApplied<BaseScriptReference> sa = as.asLegacy(resolvedModule);
+              // XXX why we record 'were run' *before* actual execution attempt (which may fail with an exception)?
+              ListSequence.fromList(myWereRun).addElement(sa);
+              getExecutor().execute(sa);
+              progress.advance(1);
+            }
           } catch (Throwable ex) {
             Logger.getLogger(MigrationSession.class).error(String.format("Failed to execute module step %s", getDescription()), ex);
             return new Status.ERROR(ex.getMessage());

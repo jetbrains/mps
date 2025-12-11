@@ -64,6 +64,19 @@ public abstract class AppliedScript {
     return ListSequence.fromList(myLegacyValues).ofType(ScriptApplied.class);
   }
 
+  /**
+   * provisional code for legacy use of SA in MigrationExecutor
+   */
+  public ScriptApplied<BaseScriptReference> asLegacy(@NotNull SModule module) {
+    if (!(ListSequence.fromList(myModules).contains(module.getModuleReference()))) {
+      throw new IllegalArgumentException(String.format("Module '%s' not assigned for the script '%s'", module.getModuleName(), caption()));
+    }
+    if (scriptPresent()) {
+      return new ScriptApplied<>(module, myScript);
+    }
+    return new ScriptApplied<>(module, myScriptRef);
+  }
+
   public Iterable<SModuleReference> affectedModules() {
     return myModules;
   }
