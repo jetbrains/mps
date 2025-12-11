@@ -22,23 +22,20 @@ public abstract class AppliedScript {
   private final BaseScriptReference myScriptRef;
   protected BaseScript myScript;
   private final List<SModuleReference> myModules;
-  private final List<ScriptApplied<BaseScriptReference>> myLegacyValues;
 
   /**
    * use solely for scenarios when there's no script instance, iow represents broken migration scenario
    */
-  public AppliedScript(@NotNull final BaseScriptReference scriptRef, Iterable<SModule> affectedModules) {
+  public AppliedScript(@NotNull BaseScriptReference scriptRef, Iterable<SModule> affectedModules) {
     myScriptRef = scriptRef;
     myScript = null;
     myModules = Sequence.fromIterable(affectedModules).select((this0) -> this0.getModuleReference()).toList();
-    myLegacyValues = Sequence.fromIterable(affectedModules).select((it) -> new ScriptApplied<BaseScriptReference>(it, scriptRef)).toList();
   }
 
-  public AppliedScript(@NotNull final BaseScript script, Iterable<SModule> affectedModules) {
+  public AppliedScript(@NotNull BaseScript script, Iterable<SModule> affectedModules) {
     myScriptRef = script.getReference();
     myScript = script;
     myModules = Sequence.fromIterable(affectedModules).select((this0) -> this0.getModuleReference()).toList();
-    myLegacyValues = Sequence.fromIterable(affectedModules).select((it) -> new ScriptApplied<BaseScriptReference>(it, script)).toList();
   }
 
   @NotNull
@@ -55,10 +52,6 @@ public abstract class AppliedScript {
   }
 
   public abstract void refreshScriptInstances(Project mpsProject);
-
-  public Iterable<ScriptApplied> asLegacy() {
-    return ListSequence.fromList(myLegacyValues).ofType(ScriptApplied.class);
-  }
 
   /**
    * provisional code for legacy use of SA in MigrationExecutor
