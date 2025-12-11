@@ -7,7 +7,13 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.lang.migration.runtime.base.BaseScript;
 import org.jetbrains.mps.openapi.module.SModule;
+import java.util.ArrayList;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleRuntime;
 
+/**
+ * Register implementations with {@code ModuleRuntime.ActivatorContext#extension(MigrationListener.class,...)} 
+ */
 @GeneratedClass(nodeId = "1665513457618769946", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public interface MigrationListener {
   default void migrationBatchStarted(Project project) {
@@ -23,5 +29,16 @@ public interface MigrationListener {
   default void migrationScriptStarted(BaseScript script, SModule module, Project project) {
   }
   default void migrationScriptEnded(BaseScript script, SModule module, Project project) {
+  }
+
+  /**
+   * Access registered listeners
+   * 
+   * @since 2026.1
+   */
+  static Iterable<MigrationListener> instances(Project mpsProject) {
+    ArrayList<MigrationListener> rv = new ArrayList<>();
+    mpsProject.getComponent(LanguageRegistry.class).withAvailableExtensions(MigrationListener.class, new ModuleRuntime.Extension.MatchRequest() {}, rv::add);
+    return rv;
   }
 }

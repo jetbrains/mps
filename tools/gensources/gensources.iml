@@ -799,9 +799,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-make/source_gen" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions">
-      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions/migration.listener/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions/migration.workbench/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions/migration.listener/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions/migration.workbench/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-modelchecker/solution">

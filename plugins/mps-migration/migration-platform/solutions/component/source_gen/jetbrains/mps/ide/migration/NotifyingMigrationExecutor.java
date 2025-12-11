@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
-import jetbrains.mps.smodel.structure.ExtensionPoint;
 
 @GeneratedClass(nodeId = "7423808107305764555", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class NotifyingMigrationExecutor implements MigrationExecutor {
@@ -48,6 +47,6 @@ public class NotifyingMigrationExecutor implements MigrationExecutor {
   }
 
   protected Iterable<MigrationListener> listeners() {
-    return new ExtensionPoint<MigrationListener>("jetbrains.mps.migration.listener.MigrationListenerEP").getObjects();
+    return MigrationListener.instances(myProject);
   }
 }

@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.ide.migration.MigrationListener;
-import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.Project;
 import com.intellij.history.LocalHistory;
@@ -166,7 +165,7 @@ public class MigrationTask {
       }
     }
 
-    Iterable<MigrationListener> seq = new ExtensionPoint<MigrationListener>("jetbrains.mps.migration.listener.MigrationListenerEP").getObjects();
+    Iterable<MigrationListener> seq = MigrationListener.instances(mySession.getProject());
     Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchStarted(mySession.getProject()));
     try {
       // from here, we don't ignore errors

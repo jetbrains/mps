@@ -62,7 +62,6 @@
     <import index="bdll" ref="a5b1c28d-abeb-49a6-a58c-559039616d64/java:jetbrains.mps.migration.global(jetbrains.mps.migration.component/)" />
     <import index="gbvg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.border(MPS.IDEA/)" />
     <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" />
-    <import index="ozmc" ref="r:9e07290b-999d-4e6b-8a40-240d8213c439(jetbrains.mps.migration.listener.plugin)" />
     <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
   </imports>
   <registry>
@@ -323,12 +322,6 @@
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
       </concept>
-    </language>
-    <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
-      <concept id="6626851894249711936" name="jetbrains.mps.lang.extension.structure.ExtensionPointExpression" flags="nn" index="2O5UvJ">
-        <reference id="6626851894249712469" name="extensionPoint" index="2O5UnU" />
-      </concept>
-      <concept id="3175313036448560967" name="jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation" flags="nn" index="SfwO_" />
     </language>
     <language id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access">
       <concept id="8974276187400348173" name="jetbrains.mps.lang.access.structure.CommandClosureLiteral" flags="nn" index="1QHqEC" />
@@ -11201,11 +11194,17 @@
                 <ref role="3uigEE" to="bim2:1st5UDpZXwq" resolve="MigrationListener" />
               </node>
             </node>
-            <node concept="2OqwBi" id="5nOoJmH34BI" role="33vP2m">
-              <node concept="2O5UvJ" id="5nOoJmH34BJ" role="2Oq$k0">
-                <ref role="2O5UnU" to="ozmc:luUOiTqgF8" resolve="MigrationListenerEP" />
+            <node concept="2YIFZM" id="53z0DK9IS39" role="33vP2m">
+              <ref role="37wK5l" to="bim2:53z0DK9I_vo" resolve="instances" />
+              <ref role="1Pybhc" to="bim2:1st5UDpZXwq" resolve="MigrationListener" />
+              <node concept="2OqwBi" id="53z0DK9IX5G" role="37wK5m">
+                <node concept="37vLTw" id="53z0DK9IX5H" role="2Oq$k0">
+                  <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
+                </node>
+                <node concept="liA8E" id="53z0DK9IX5I" role="2OqNvi">
+                  <ref role="37wK5l" node="4hH4xQoNqF2" resolve="getProject" />
+                </node>
               </node>
-              <node concept="SfwO_" id="5nOoJmH34BK" role="2OqNvi" />
             </node>
           </node>
         </node>

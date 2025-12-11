@@ -396,7 +396,6 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.tests.misc/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-make/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mps-migration/solutions/migration.listener/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-migration/solutions/migration.workbench/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-modelchecker/solution/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-project-migrations/solution/source_gen" includeSubdirectories="true" />
