@@ -6131,8 +6131,16 @@
         <node concept="raruj" id="6GoDrz8MKbH" role="lGtFl" />
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1r" role="2DRAPQ">
-        <property role="2DPR8u" value="  ]" />
+        <property role="2DPR8u" value="  ]," />
         <node concept="raruj" id="6GoDrz8MKbI" role="lGtFl" />
+      </node>
+      <node concept="2DRAP_" id="2Rq8xwQAl_a" role="2DRAPQ">
+        <property role="2DPR8u" value="  &quot;bundledPlugins&quot;: [" />
+        <node concept="raruj" id="2Rq8xwQApT0" role="lGtFl" />
+      </node>
+      <node concept="2DRAP_" id="2Rq8xwQAnJD" role="2DRAPQ">
+        <property role="2DPR8u" value="  ]" />
+        <node concept="raruj" id="2Rq8xwQApT1" role="lGtFl" />
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1s" role="2DRAPQ">
         <property role="2DPR8u" value="}" />

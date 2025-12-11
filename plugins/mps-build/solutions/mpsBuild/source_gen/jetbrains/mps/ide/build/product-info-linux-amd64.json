@@ -257,5 +257,7 @@
       ],
       "mainClass": "jetbrains.mps.Launcher"
     }
+  ],
+  "bundledPlugins": [
   ]
 }
