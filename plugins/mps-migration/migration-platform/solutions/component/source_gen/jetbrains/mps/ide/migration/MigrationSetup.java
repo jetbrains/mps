@@ -50,8 +50,10 @@ public class MigrationSetup {
       msc.fillFor(module);
       rsc.fillFor(module);
     }
-    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(msc.result(mpsProject)));
-    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(rsc.result(mpsProject)));
+    ModuleMigrationSequence moduleMigrations = new ModuleMigrationSequence();
+    msc.reportInto(moduleMigrations, mpsProject);
+    rsc.reportInto(moduleMigrations, mpsProject);
+    ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(moduleMigrations.toList()));
 
     // FIXME MigrationScriptCollector walks hierarchy of LR, and can report missing LR. 
     //      Guess, we'd better track broken LR hierarchy in addition to broken deps/imports, and have it as an extra value to check here
@@ -86,7 +88,7 @@ public class MigrationSetup {
   }
 
   /**
-   * language migrations for a set of modules configured by instance creator
+   * language migrations for a set of modules configured by instance creator in a **proper/desired** execution order
    */
   public Collection<AppliedScript> getModuleMigrations() {
     return myModuleMigrations;

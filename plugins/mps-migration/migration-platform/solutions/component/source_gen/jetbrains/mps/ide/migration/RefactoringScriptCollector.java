@@ -15,13 +15,9 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.AbstractModule;
 import java.util.ArrayList;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collections;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 @GeneratedClass(nodeId = "1520098040411279238", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
@@ -57,24 +53,24 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
     }
   }
 
-  /*package*/ List<AppliedScript> result(Project mpsProject) {
-    final List<AppliedScript> rv = ListSequence.fromList(new ArrayList<AppliedScript>());
+  /*package*/ void reportInto(ModuleMigrationSequence mseq, Project mpsProject) {
     for (RefactoringScriptReference sr : SetSequence.fromSet(myGroupedByScript.keySet())) {
       RefactoringScript rs = RefactoringScriptReference.resolve(mpsProject.getRepository(), sr);
       if (rs != null) {
-        ListSequence.fromList(rv).addElement(new AppliedRefacroringScript(rs, myGroupedByScript.get(sr)));
+        mseq.record(rs.getReference(), new AppliedRefactoringScript(rs, myGroupedByScript.get(sr)), rs.getExecuteAfter());
       } else {
-        ListSequence.fromList(rv).addElement(new AppliedRefacroringScript(sr, myGroupedByScript.get(sr)));
+        // XXX I don't understand the reason to record missing script, it's unlikely there are refactoring scripts at all, why bother
+        //    to create RefactoringScriptReference pointing to non-existent scripts?
+        mseq.record(sr, new AppliedRefactoringScript(sr, myGroupedByScript.get(sr)), null);
       }
     }
-    return rv;
   }
 
-  private static class AppliedRefacroringScript extends AppliedScript {
-    /*package*/ AppliedRefacroringScript(RefactoringScriptReference rsr, Iterable<SModule> modules) {
+  private static class AppliedRefactoringScript extends AppliedScript {
+    /*package*/ AppliedRefactoringScript(RefactoringScriptReference rsr, Iterable<SModule> modules) {
       super(rsr, modules);
     }
-    /*package*/ AppliedRefacroringScript(RefactoringScript rs, Iterable<SModule> modules) {
+    /*package*/ AppliedRefactoringScript(RefactoringScript rs, Iterable<SModule> modules) {
       super(rs, modules);
     }
 
@@ -85,30 +81,28 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
     }
 
     @Override
-    public Collection<ScriptApplied> toBeExecutedImmediately(final SRepository repo) {
-      if (!(scriptPresent())) {
-        // not assert, see MigrationScriptCollector
-        return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toList();
+    public AppliedScript.ApplyState ready(@NotNull SModule module) {
+      assert scriptPresent();
+      final AbstractModule moduleToMigrate = (AbstractModule) module;
+      // FIXME dependency version extraction shall be through SModuleReference
+      int v = Math.max(0, moduleToMigrate.getDependencyVersion(scriptReference().getModule(module.getRepository()), false));
+      if (v != scriptReference().getFromVersion()) {
+        return (v < scriptReference().getFromVersion() ? AppliedScript.ApplyState.ErrorState : AppliedScript.ApplyState.AlreadyMigrated);
       }
-      final RefactoringScriptReference sr = scriptReference();
-      return Sequence.fromIterable(asLegacy()).where(new _FunctionTypes._return_P1_E0<Boolean, ScriptApplied>() {
-        public Boolean invoke(ScriptApplied sa) {
-          final AbstractModule moduleToMigrate = (AbstractModule) sa.getModule(repo);
-          // FIXME dependency version extraction shall be through SModuleReference
-          int v = Math.max(0, moduleToMigrate.getDependencyVersion(sr.getModule(repo), false));
-          if (v != sr.getFromVersion()) {
-            return false;
-          }
-          return Sequence.fromIterable(((RefactoringScript) myScript).getExecuteAfter()).all((s) -> !(needsToBeApplied(s, moduleToMigrate)));
-        }
-      }).toList();
+      final Iterable<SModuleReference> deps = SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).select((this0) -> this0.getModuleReference());
+      // FIXME quite stupid, imo, extra check if language/module of a RS is part of module dependencies - provided we built
+      //      set of modules to migrate *based on* actual dependencies. Shall remove, just keep for 1 commit for historical records.
+      if (Sequence.fromIterable(((RefactoringScript) myScript).getExecuteAfter()).where((it) -> Sequence.fromIterable(deps).contains(it.getModuleReference())).all((s) -> !(needsToBeApplied(s, moduleToMigrate)))) {
+        return AppliedScript.ApplyState.GoodToGo;
+      } else {
+        return AppliedScript.ApplyState.NeedsDependencies;
+      }
     }
 
-    private boolean needsToBeApplied(RefactoringScriptReference ref, SModule m) {
-      if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).select((this0) -> this0.getModuleReference()).contains(ref.getModuleReference()))) {
-        return false;
-      }
-      int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(m.getRepository()), false));
+    private static boolean needsToBeApplied(RefactoringScriptReference ref, AbstractModule m) {
+      int dv = Math.max(0, m.getDependencyVersion(ref.getModule(m.getRepository()), false));
+      // means we have recorded dependency with a version older than the one from the script we need to run before, i.e.
+      // we assume it hasn't run yet for our module. However, with the way we order scripts in ModuleMigrationSequence, we shall not get here
       return dv <= ref.getFromVersion();
     }
 

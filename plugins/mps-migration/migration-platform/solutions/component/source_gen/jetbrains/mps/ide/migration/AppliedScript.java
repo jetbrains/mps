@@ -10,8 +10,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
@@ -56,8 +54,6 @@ public abstract class AppliedScript {
     return (myScript != null ? myScript.getCaption() : "");
   }
 
-  public abstract Collection<ScriptApplied> toBeExecutedImmediately(SRepository repo);
-
   public abstract void refreshScriptInstances(Project mpsProject);
 
   public Iterable<ScriptApplied> asLegacy() {
@@ -77,7 +73,16 @@ public abstract class AppliedScript {
     return new ScriptApplied<>(module, myScriptRef);
   }
 
+  public abstract ApplyState ready(@NotNull SModule module);
+
   public Iterable<SModuleReference> affectedModules() {
     return myModules;
+  }
+
+  public enum ApplyState {
+    GoodToGo(),
+    AlreadyMigrated(),
+    NeedsDependencies(),
+    ErrorState()
   }
 }

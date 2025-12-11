@@ -34,9 +34,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import java.util.Collection;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -160,15 +160,10 @@ import jetbrains.mps.migration.global.MigrationOptions;
         MigrationScript script = ListSequence.fromList(getModuleMig()).getElement(si);
         assert ListSequence.fromList(mm).isNotEmpty() : "odd test configuration with no modules for script " + script;
         ListSequence.fromList(res).addElement(new AppliedScript(script, mm) {
+
           @Override
-          public Collection<ScriptApplied> toBeExecutedImmediately(SRepository repo) {
-            // XXX here we rely on fact asLegacy gives same ScriptApplied values again and again, and when they get executed and recorded in passedM, 
-            //    we can safely use except. 
-            return Sequence.fromIterable(asLegacy()).subtract(ListSequence.fromList(passedM)).sort(new _FunctionTypes._return_P1_E0<Comparable<?>, ScriptApplied>() {
-              public Comparable<?> invoke(ScriptApplied it) {
-                return ((MigrationScriptReference) it.getScriptReference()).getFromVersion();
-              }
-            }, true).toList();
+          public AppliedScript.ApplyState ready(@NotNull SModule module) {
+            return AppliedScript.ApplyState.GoodToGo;
           }
 
           @Override

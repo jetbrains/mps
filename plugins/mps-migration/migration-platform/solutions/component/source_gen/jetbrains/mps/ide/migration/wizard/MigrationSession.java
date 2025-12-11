@@ -21,16 +21,18 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.ide.migration.MigrationExecutor;
+import java.util.ArrayDeque;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Status;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
@@ -135,17 +137,29 @@ public interface MigrationSession {
       return SetSequence.fromSet(myRequiredSteps).contains(stepKind);
     }
 
-
+    private ArrayDeque<AppliedScript> myModuleMigrationSequence;
     @Nullable
     @Override
     public MigrationRunnable nextStepModule() {
       final SRepository repo = getProject().getRepository();
-      // take model read to let AppliedScript.toBeExecutedImmediately() to access module dependencies/used languages; remove once no longer use legacy ScriptApplied
-      final AppliedScript as = repo.getModelAccess().computeReadAction(() -> CollectionSequence.fromCollection(getModuleMigrations()).findFirst((it) -> it.scriptPresent() && CollectionSequence.fromCollection(it.toBeExecutedImmediately(repo)).isNotEmpty()));
-      if (as == null) {
+      if (myModuleMigrationSequence == null) {
+        // this is a weird way to deal with nextStepModule() api, which should take AS, but now is (), and I don't want to refactor this ATM
+        myModuleMigrationSequence = new ArrayDeque<>();
+        myModuleMigrationSequence.addAll(getModuleMigrations());
+      }
+      while (!(myModuleMigrationSequence.isEmpty())) {
+        AppliedScript next = myModuleMigrationSequence.peekFirst();
+        if (next.scriptPresent() && Sequence.fromIterable(next.affectedModules()).isNotEmpty()) {
+          break;
+        }
+        myModuleMigrationSequence.removeFirst();
+      }
+      if (myModuleMigrationSequence.isEmpty()) {
         return null;
       }
+      final AppliedScript as = myModuleMigrationSequence.removeFirst();
       assert as.scriptPresent();
+      assert Sequence.fromIterable(as.affectedModules()).isNotEmpty();
 
       final String caption = as.caption();
       return new MigrationRunnable() {
@@ -161,20 +175,40 @@ public interface MigrationSession {
           try {
             // FWIW, we are inside model write here
             Iterable<SModuleReference> toApply = as.affectedModules();
-            for (SModuleReference s : Sequence.fromIterable(toApply)) {
-              progress.step(String.format("%s [%s]", caption, NameUtil.compactNamespace(s.getModuleName())));
-              SModule resolvedModule = s.resolve(repo);
-              if (resolvedModule == null) {
-                // it's an error provided we built AppliedScript correctly
-                Logger.getLogger(MigrationSession.class).error(String.format("Missing module %s associated with script %s", s.getModuleName(), as.caption()));
-                continue;
+            do {
+              List<SModuleReference> delayed = ListSequence.fromList(new ArrayList<>());
+              boolean depsPossiblyChanged = false;
+              for (SModuleReference s : Sequence.fromIterable(toApply)) {
+                progress.step(String.format("%s [%s]", caption, NameUtil.compactNamespace(s.getModuleName())));
+                SModule resolvedModule = s.resolve(repo);
+                if (resolvedModule == null) {
+                  // it's an error provided we built AppliedScript correctly
+                  Logger.getLogger(MigrationSession.class).error(String.format("Missing module %s associated with script %s", s.getModuleName(), as.caption()));
+                  continue;
+                }
+                AppliedScript.ApplyState applyState = as.ready(resolvedModule);
+                if (applyState == AppliedScript.ApplyState.GoodToGo) {
+                  ScriptApplied<BaseScriptReference> sa = as.asLegacy(resolvedModule);
+                  // XXX why we record 'were run' *before* actual execution attempt (which may fail with an exception)?
+                  ListSequence.fromList(myWereRun).addElement(sa);
+                  depsPossiblyChanged = true;
+                  getExecutor().execute(sa);
+                  progress.advance(1);
+                } else if (applyState == AppliedScript.ApplyState.AlreadyMigrated) {
+                  continue;
+                } else if (applyState == AppliedScript.ApplyState.NeedsDependencies) {
+                  ListSequence.fromList(delayed).addElement(s);
+                } else {
+                  // error state, ignore the module for now.
+                  Logger.getLogger(MigrationSession.class).error(String.format("Unexpected state of module %s when applying script %s", s.getModuleName(), as.caption()));
+                }
               }
-              ScriptApplied<BaseScriptReference> sa = as.asLegacy(resolvedModule);
-              // XXX why we record 'were run' *before* actual execution attempt (which may fail with an exception)?
-              ListSequence.fromList(myWereRun).addElement(sa);
-              getExecutor().execute(sa);
-              progress.advance(1);
-            }
+              if (depsPossiblyChanged) {
+                toApply = delayed;
+              } else if (ListSequence.fromList(delayed).isNotEmpty()) {
+                Logger.getLogger(MigrationSession.class).error(String.format("Dependencies of modules %s were not satisfied while applying script %s, modules ignored", IterableUtils.join(ListSequence.fromList(delayed).select((it) -> it.getModuleName()), ","), as.caption()));
+              }
+            } while (!(Sequence.fromIterable(toApply).isEmpty()));
           } catch (Throwable ex) {
             Logger.getLogger(MigrationSession.class).error(String.format("Failed to execute module step %s", getDescription()), ex);
             return new Status.ERROR(ex.getMessage());

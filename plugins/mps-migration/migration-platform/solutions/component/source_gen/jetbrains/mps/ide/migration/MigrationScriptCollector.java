@@ -15,16 +15,12 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import java.util.ArrayList;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collections;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(nodeId = "1520098040411268050", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
@@ -77,18 +73,15 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
     });
   }
 
-  /*package*/ List<AppliedScript> result(Project mpsProject) {
-    final List<AppliedScript> rv = ListSequence.fromList(new ArrayList<AppliedScript>());
-
+  /*package*/ void reportInto(ModuleMigrationSequence mseq, Project mpsProject) {
     for (MigrationScriptReference sr : SetSequence.fromSet(myGroupedByScript.keySet())) {
       MigrationScript ms = MigrationScriptReference.resolve(myLanguageRegistry, sr);
       if (ms != null) {
-        ListSequence.fromList(rv).addElement(new AppliedLanguageScript(ms, myGroupedByScript.get(sr)));
+        mseq.record(ms.getReference(), new AppliedLanguageScript(ms, myGroupedByScript.get(sr)), ms.executeAfter());
       } else {
-        ListSequence.fromList(rv).addElement(new AppliedLanguageScript(sr, myGroupedByScript.get(sr)));
+        mseq.record(sr, new AppliedLanguageScript(sr, myGroupedByScript.get(sr)), null);
       }
     }
-    return rv;
   }
 
   private static class AppliedLanguageScript extends AppliedScript {
@@ -106,32 +99,22 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
     }
 
     @Override
-    public Collection<ScriptApplied> toBeExecutedImmediately(final SRepository repo) {
-      if (!(scriptPresent())) {
-        // Can't be assert. Although we are not supposed to run when there AS without script instance,
-        // we may face this scenario when refreshScriptInstances() after project migrations invalidated
-        return Sequence.fromIterable(Sequence.fromIterable(Collections.<ScriptApplied>emptyList())).toList();
+    public AppliedScript.ApplyState ready(@NotNull final SModule moduleToMigrate) {
+      assert scriptPresent();
+      final int v = MigrationModuleUtil.getUsedLanguageVersion(moduleToMigrate, scriptReference().getLanguage());
+      if (v != scriptReference().getFromVersion()) {
+        return (v < scriptReference().getFromVersion() ? AppliedScript.ApplyState.ErrorState : AppliedScript.ApplyState.AlreadyMigrated);
       }
-      final MigrationScriptReference sr = scriptReference();
-      return Sequence.fromIterable(asLegacy()).where(new _FunctionTypes._return_P1_E0<Boolean, ScriptApplied>() {
-        public Boolean invoke(ScriptApplied sa) {
-          final SModule moduleToMigrate = sa.getModule(repo);
+      // shall not happen, provided we ordered AS in ModuleMigrationSequence
+      if (Sequence.fromIterable(((MigrationScript) myScript).executeAfter()).any((s) -> needsToBeApplied(s, moduleToMigrate))) {
+        return AppliedScript.ApplyState.NeedsDependencies;
+      }
 
-          final int v = MigrationModuleUtil.getUsedLanguageVersion(moduleToMigrate, sr.getLanguage());
-          if (v != sr.getFromVersion()) {
-            return false;
-          }
-          if (Sequence.fromIterable(((MigrationScript) myScript).executeAfter()).any((s) -> needsToBeApplied(s, moduleToMigrate))) {
-            return false;
-          }
-
-          final Set<SModule> moduleDependencies = MigrationModuleUtil.getModuleDependencies(moduleToMigrate);
-          if (Sequence.fromIterable(((MigrationScript) myScript).requiresData()).any((final MigrationScriptReference s) -> SetSequence.fromSet(moduleDependencies).any((dep) -> needsToBeApplied(s, dep)))) {
-            return false;
-          }
-          return true;
-        }
-      }).toList();
+      final Set<SModule> moduleDependencies = MigrationModuleUtil.getModuleDependencies(moduleToMigrate);
+      if (Sequence.fromIterable(((MigrationScript) myScript).requiresData()).any((final MigrationScriptReference s) -> SetSequence.fromSet(moduleDependencies).any((dep) -> needsToBeApplied(s, dep)))) {
+        return AppliedScript.ApplyState.NeedsDependencies;
+      }
+      return AppliedScript.ApplyState.GoodToGo;
     }
 
     private static boolean needsToBeApplied(MigrationScriptReference ref, SModule m) {
