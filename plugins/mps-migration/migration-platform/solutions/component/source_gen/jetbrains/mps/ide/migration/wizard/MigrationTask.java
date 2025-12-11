@@ -185,8 +185,9 @@ public class MigrationTask {
     }
 
     // todo move from here to migration annotations
-    if (findNotMigrated(monitor.subTask(15, SubProgressKind.REPLACING))) {
-      throw new PostCheckError(mySession.getProject(), mySession.getExecutedModuleMigrations(), false, mySession.getChecker());
+    List<AppliedScript> executedMigrations = mySession.getExecutedModuleMigrations();
+    if (findNotMigrated(monitor.subTask(15, SubProgressKind.REPLACING), executedMigrations)) {
+      throw new PostCheckError(mySession.getProject(), executedMigrations, false, mySession.getChecker());
     }
     monitor.done();
   }
@@ -454,11 +455,11 @@ public class MigrationTask {
     return success.get();
   }
 
-  private boolean findNotMigrated(ProgressMonitor m) {
+  private boolean findNotMigrated(ProgressMonitor m, List<AppliedScript> toCheck) {
     final Wrappers._boolean haveNotMigrated = new Wrappers._boolean(false);
     // FIXME each time we use checker from within a session, it can take already executed migrations internally
     //      the only scenario to address is use of MigrationCheckerImpl independently
-    mySession.getChecker().findNotMigrated(m, mySession.getExecutedModuleMigrations(), new Processor<Problem>() {
+    mySession.getChecker().findNotMigrated(m, toCheck, new Processor<Problem>() {
       public boolean process(Problem p) {
         haveNotMigrated.value = true;
         return false;

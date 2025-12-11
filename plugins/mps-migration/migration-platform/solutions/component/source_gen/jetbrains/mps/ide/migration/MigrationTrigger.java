@@ -46,9 +46,6 @@ import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.Processor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
@@ -346,16 +343,9 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
       ListSequence.fromList(modules).addSequence(Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)));
       // we're in model read here, safe to instantiate MigrationSetup
       MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
-      // limit to migrations; guess, assumption here is 'refactoring' scripts are not mandatory
-      Iterable<ScriptApplied> checks = CollectionSequence.fromCollection(migrationSetup.getModuleMigrations()).where((it) -> it.scriptReference() instanceof MigrationScriptReference).translate(new _FunctionTypes._return_P1_E0<Iterable<ScriptApplied>, AppliedScript>() {
-        public Iterable<ScriptApplied> invoke(AppliedScript it) {
-          return it.asLegacy();
-        }
-      });
       progress.advance(3);
 
-      // FIXME 'checks' argument is odd; and we'd rather check scriptPresent() first, to make sure there're migrations for language versions in use
-      new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), checks, new Processor<Problem>() {
+      new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), migrationSetup.getModuleMigrations(), new Processor<Problem>() {
         public boolean process(Problem p) {
           ListSequence.fromList(problems).addElement(p);
           return ListSequence.fromList(problems).count() < 1000;

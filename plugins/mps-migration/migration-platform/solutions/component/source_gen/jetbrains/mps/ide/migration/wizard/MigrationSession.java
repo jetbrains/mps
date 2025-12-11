@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.migration.MigrationRunnable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.List;
-import jetbrains.mps.ide.migration.ScriptApplied;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -30,6 +29,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -70,7 +70,7 @@ public interface MigrationSession {
 
   void setError(MigrationError errors);
 
-  List<ScriptApplied> getExecutedModuleMigrations();
+  List<AppliedScript> getExecutedModuleMigrations();
 
 
   /**
@@ -82,10 +82,10 @@ public interface MigrationSession {
   abstract class MigrationSessionBase implements MigrationSession {
     private Object myStage = null;
     private MigrationError myErrors = null;
-    protected final Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationStepKind>());
-    private final Set<ProjectMigration> myExecutedInSession = SetSequence.fromSet(new HashSet<ProjectMigration>());
+    protected final Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<>());
+    private final Set<ProjectMigration> myExecutedInSession = SetSequence.fromSet(new HashSet<>());
     private final MigrationOptions myOptions = new MigrationOptions();
-    private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
+    private final List<AppliedScript> myWereRun = ListSequence.fromList(new ArrayList<>());
 
     public MigrationSessionBase() {
     }
@@ -113,7 +113,7 @@ public interface MigrationSession {
 
 
     @Override
-    public List<ScriptApplied> getExecutedModuleMigrations() {
+    public List<AppliedScript> getExecutedModuleMigrations() {
       return myWereRun;
     }
 
@@ -175,6 +175,10 @@ public interface MigrationSession {
           try {
             // FWIW, we are inside model write here
             Iterable<SModuleReference> toApply = as.affectedModules();
+            // XXX why we record 'were run' *before* actual execution attempt (which may fail with an exception)?
+            // Perhaps, this helps with findNotMigrated scenario?
+            ListSequence.fromList(myWereRun).addElement(as);
+
             do {
               List<SModuleReference> delayed = ListSequence.fromList(new ArrayList<>());
               boolean depsPossiblyChanged = false;
@@ -189,8 +193,6 @@ public interface MigrationSession {
                 AppliedScript.ApplyState applyState = as.ready(resolvedModule);
                 if (applyState == AppliedScript.ApplyState.GoodToGo) {
                   ScriptApplied<BaseScriptReference> sa = as.asLegacy(resolvedModule);
-                  // XXX why we record 'were run' *before* actual execution attempt (which may fail with an exception)?
-                  ListSequence.fromList(myWereRun).addElement(sa);
                   depsPossiblyChanged = true;
                   getExecutor().execute(sa);
                   progress.advance(1);
@@ -203,6 +205,7 @@ public interface MigrationSession {
                   Logger.getLogger(MigrationSession.class).error(String.format("Unexpected state of module %s when applying script %s", s.getModuleName(), as.caption()));
                 }
               }
+              toApply = null;
               if (depsPossiblyChanged) {
                 toApply = delayed;
               } else if (ListSequence.fromList(delayed).isNotEmpty()) {

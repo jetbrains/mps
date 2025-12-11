@@ -54,13 +54,6 @@ public class ScriptApplied<T extends BaseScriptReference> {
     return myScript;
   }
 
-  /**
-   * internal implementation facility to deal with reloading of original classloaders
-   */
-  /*package*/ void updateScriptInstance(BaseScript script) {
-    myScript = script;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {

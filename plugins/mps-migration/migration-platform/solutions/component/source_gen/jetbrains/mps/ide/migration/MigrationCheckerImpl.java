@@ -36,13 +36,13 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.progress.ProgressMonitorDecorator;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.migration.runtime.base.MigrateManually;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -158,22 +158,14 @@ public class MigrationCheckerImpl implements MigrationChecker {
     });
   }
   @Override
-  public void findNotMigrated(final ProgressMonitor m, final Iterable<ScriptApplied> migrationsToCheck, final Processor<Problem> processor) {
+  public void findNotMigrated(final ProgressMonitor m, final Iterable<AppliedScript> migrationsToCheck, final Processor<Problem> processor) {
+    // here we do not assume AS come with scriptPresent() or not
+
     // FIXME MigrationTrigger calls this with model read. What about MigrationTask and PostCheckError cases?
     myProject.getRepository().getModelAccess().runReadAction(() -> {
-      // FIXME MigrationTrigger got AppliedScript with all necessary groupings already!
-      Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).select(new _FunctionTypes._return_P1_E0<SModule, ScriptApplied>() {
-        public SModule invoke(ScriptApplied it) {
-          return it.getModule(myProject.getRepository());
-        }
-      }).distinct();
-      Iterable<ScriptApplied> migrations = Sequence.fromIterable(migrationsToCheck).where(new _FunctionTypes._return_P1_E0<Boolean, ScriptApplied>() {
-        public Boolean invoke(ScriptApplied it) {
-          return it.getScriptReference() instanceof MigrationScriptReference;
-        }
-      });
+      Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).translate((it) -> it.affectedModules()).distinct().select((it) -> it.resolve(myProject.getRepository())).where(new NotNullWhereFilter());
 
-      m.start("Finding not migrated code...", Sequence.fromIterable(modules).count() + Sequence.fromIterable(migrations).count() * 10);
+      m.start("Finding not migrated code...", Sequence.fromIterable(modules).count() + Sequence.fromIterable(migrationsToCheck).count() * 10);
 
       for (SModule module : Sequence.fromIterable(modules)) {
         for (SModel mm : module.getModels()) {
@@ -190,13 +182,15 @@ public class MigrationCheckerImpl implements MigrationChecker {
         m.advance(1);
       }
 
+      // limit to migrations; guess, assumption here is 'refactoring' scripts are not mandatory
       // todo show only annotations left by our run migrations
-      for (ScriptApplied sa : Sequence.fromIterable(migrations)) {
-        // I assume we got ScriptApplied instances are those with the script instance
-        for (Problem p : Sequence.fromIterable(((MigrationScript) sa.getScriptInstance()).check(sa.getModule(myProject.getRepository())))) {
-          if (!(processor.process(p))) {
-            m.done();
-            return;
+      for (AppliedScript as : Sequence.fromIterable(migrationsToCheck).where((it) -> it.scriptPresent() && it.scriptReference() instanceof MigrationScriptReference)) {
+        for (SModule module : Sequence.fromIterable(as.affectedModules()).select((it) -> it.resolve(myProject.getRepository())).where(new NotNullWhereFilter())) {
+          for (Problem p : Sequence.fromIterable(((MigrationScript) as.asLegacy(module).getScriptInstance()).check(module))) {
+            if (!(processor.process(p))) {
+              m.done();
+              return;
+            }
           }
         }
         m.advance(10);

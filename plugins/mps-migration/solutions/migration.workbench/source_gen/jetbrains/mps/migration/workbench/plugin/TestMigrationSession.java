@@ -80,7 +80,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
       processor.process(new UnresolvedReferenceReportItem(ref.value, null));
     }
     @Override
-    public void findNotMigrated(ProgressMonitor m, Iterable<ScriptApplied> toCheck, Processor<Problem> processor) {
+    public void findNotMigrated(ProgressMonitor m, Iterable<AppliedScript> toCheck, Processor<Problem> processor) {
       // todo
     }
   };

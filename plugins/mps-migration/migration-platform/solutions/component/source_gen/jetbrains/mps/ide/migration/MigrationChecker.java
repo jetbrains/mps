@@ -15,5 +15,5 @@ public interface MigrationChecker {
   void checkMigrations(ProgressMonitor m, Processor<AppliedScript> processor);
   void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor);
   void checkProject(ProgressMonitor m, Processor<IssueKindReportItem> processor);
-  void findNotMigrated(ProgressMonitor m, Iterable<ScriptApplied> toCheck, Processor<Problem> processor);
+  void findNotMigrated(ProgressMonitor m, Iterable<AppliedScript> toCheck, Processor<Problem> processor);
 }
