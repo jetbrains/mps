@@ -103,7 +103,7 @@ public abstract class MpsJpsModelsEnvironmentTestCase extends MpsJpsBuildTestCas
   @NonNls
   @Override
   protected final String getTestDataRootPath() {
-    return "jps/testMake";
+    return "testbench/jps/testMake";
   }
 
   protected final String getTestDataFilePath(String testName, @NonNls String ext) {
