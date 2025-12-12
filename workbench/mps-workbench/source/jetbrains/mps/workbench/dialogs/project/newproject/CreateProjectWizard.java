@@ -16,7 +16,6 @@
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.ide.GeneralSettings;
-import com.intellij.ide.JavaUiBundle;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -505,7 +504,8 @@ public final class CreateProjectWizard extends DialogWrapper {
     myOptions.setStorageScheme(false);
 
     // Copy/paste from com.intellij.ide.impl.NewProjectUtil#createNewProject(AbstractProjectWizard)
-    String title = JavaUiBundle.message("project.new.wizard.progress.title");
+    // FIXME extract to message bundle
+    String title = "Initialization \\u2026"; // JavaUiBundle.message("project.new.wizard.progress.title");
     Runnable warmUp = () -> ProjectManager.getInstance().getDefaultProject();  // warm-up components
     boolean proceed = ProgressManager.getInstance().runProcessWithProgressSynchronously(warmUp, title, true, null);
     if (proceed) {
