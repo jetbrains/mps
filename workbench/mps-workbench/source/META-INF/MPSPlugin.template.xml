@@ -141,42 +141,6 @@
                         serviceImplementation="jetbrains.mps.intellij.integration.MPSRecentProjectsManagerBase"
                         overrides="true" preload="notHeadless"/>
 
-    <!-- Start of same registrations as in JavaPlugin.xml TODO: check applicability in MPS -->
-    <applicationService serviceInterface="com.intellij.openapi.projectRoots.ProjectJdkTable"
-                        serviceImplementation="com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl"
-                        overrides="true"/>
-
-    <applicationService serviceInterface="com.intellij.execution.runners.ProcessProxyFactory"
-                        serviceImplementation="com.intellij.execution.runners.ProcessProxyFactoryImpl"/>
-
-    <applicationService serviceImplementation="com.intellij.debugger.settings.NodeRendererSettings"/>
-    <applicationService serviceImplementation="com.intellij.debugger.settings.ViewsGeneralSettings"/>
-    <applicationService serviceImplementation="com.intellij.debugger.settings.DebuggerSettings"/>
-    <applicationService serviceImplementation="com.intellij.refactoring.JavaRefactoringSettings"/>
-    <projectService serviceImplementation="com.intellij.debugger.settings.DebuggerProjectSettings"/>
-    <applicationService serviceImplementation="com.intellij.debugger.settings.ThreadsViewSettings"/>
-    <applicationService serviceImplementation="com.intellij.debugger.settings.TraceSettings"/>
-    <projectService serviceInterface="com.intellij.debugger.ui.HotSwapUI" serviceImplementation="com.intellij.debugger.ui.HotSwapUIImpl"/>
-    <projectService serviceInterface="com.intellij.debugger.DebuggerManager" serviceImplementation="com.intellij.debugger.impl.DebuggerManagerImpl"/>
-
-    <statistics.counterUsagesCollector groupId="java.find.usages" version="1"/>
-    <statistics.counterUsagesCollector groupId="java.extract.method" version="1"/>
-    <statistics.applicationUsagesCollector implementation="com.intellij.debugger.settings.DebuggerSettingsStatisticsCollector"/>
-    <statistics.applicationUsagesCollector implementation="com.intellij.refactoring.JavaRefactoringUsageCollector"/>
-
-    <applicationService serviceInterface="com.intellij.packaging.elements.PackagingElementFactory"
-                        serviceImplementation="com.intellij.packaging.impl.elements.PackagingElementFactoryImpl"/>
-
-    <applicationService serviceInterface="com.intellij.openapi.roots.ui.OrderEntryAppearanceService"
-                        serviceImplementation="com.intellij.openapi.roots.ui.OrderEntryAppearanceServiceImpl"/>
-
-    <projectService serviceInterface="com.intellij.packaging.artifacts.ArtifactPointerManager"
-                    serviceImplementation="com.intellij.packaging.impl.artifacts.ArtifactPointerManagerImpl"/>
-    <projectService serviceInterface="com.intellij.packaging.impl.artifacts.ArtifactBySourceFileFinder"
-                    serviceImplementation="com.intellij.packaging.impl.artifacts.ArtifactBySourceFileFinderImpl"/>
-    <applicationService serviceImplementation="com.intellij.packaging.impl.artifacts.InvalidArtifactType"/>
-    <!-- End of same registrations as in JavaPlugin.xml -->
-
     <!-- Global Code Style -->
     <projectConfigurable parentId="preferences.sourceCode" displayName="MPS" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" />
     <projectConfigurable groupId="build" groupWeight="110" instance="jetbrains.mps.ide.compiler.CompilerSettingsConfigurable" order="after project"
@@ -234,12 +198,12 @@
 
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.caches.IndexableRootCalculator"/>
 
-    <sdkType implementation="com.intellij.openapi.projectRoots.impl.JavaSdkImpl"/>
-    <applicationService serviceInterface="com.intellij.openapi.projectRoots.DefaultJdkConfigurator"
-                        serviceImplementation="com.intellij.openapi.projectRoots.impl.DefaultJdkConfiguratorImpl"/>
-    <orderRootType implementation="com.intellij.openapi.roots.JavadocOrderRootType"/>
+<!--    <sdkType implementation="com.intellij.openapi.projectRoots.impl.JavaSdkImpl"/>-->
+<!--    <applicationService serviceInterface="com.intellij.openapi.projectRoots.DefaultJdkConfigurator"-->
+<!--                        serviceImplementation="com.intellij.openapi.projectRoots.impl.DefaultJdkConfiguratorImpl"/>-->
+<!--    <orderRootType implementation="com.intellij.openapi.roots.JavadocOrderRootType"/>-->
 
-    <dynamicActionConfigurationCustomizer  implementation="jetbrains.mps.ide.projectPane.ProjectPaneActionsCustomizer"/>
+<!--    <dynamicActionConfigurationCustomizer  implementation="jetbrains.mps.ide.projectPane.ProjectPaneActionsCustomizer"/>-->
   </extensions>
 
   <actions>

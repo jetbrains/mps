@@ -28,9 +28,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <appStarter id="mps-inspect" implementation="jetbrains.mps.tool.environment.MPSHeadlessPlatformStarter"/>
 
-    <!-- This is needed for JDK solution loading. Is better to be replaced by lazy loading. Also a possible solution is to load JDK solution with IO FS -->
-    <virtualFileSystem implementationClass="com.intellij.openapi.vfs.impl.jrt.JrtFileSystemImpl" key="jrt" physical="true"/>
-
     <projectConfigurable parentId="build"   displayName="Project Settings" instance="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesPrefsPage"
                          id="project.options.prefs.page" nonDefaultProject="true" groupWeight="-10"/>
     <applicationConfigurable parentId="build" groupWeight="150" instance="jetbrains.mps.smodel.ModelValidationConfigurable" id="preferences.modelValidationSettings" displayName="Model Validation"/>
@@ -40,8 +37,6 @@
 
     <virtualFileSystem implementationClass="jetbrains.mps.workbench.languagesFs.MPSLanguagesVirtualFileSystem" key="mpslang" physical="true"/>
 
-    <fileType extensions="java" hashBangs="java" name="JAVA" language="JAVA" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaFileType"/>
-    <fileType extensions="class" name="CLASS" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaClassFileType"/>
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
