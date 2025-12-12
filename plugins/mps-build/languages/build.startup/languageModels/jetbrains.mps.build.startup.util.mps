@@ -904,6 +904,1172 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="2Rq8xwQWbxG" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbxH" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbxI" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbxJ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.aalto.xml.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbxK" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbxL" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbxM" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbxN" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.asm.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbxO" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbxP" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbxQ" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbxR" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.asm.tools.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbxS" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbxT" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbxU" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbxV" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.automaton.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbxW" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbxX" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbxY" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbxZ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.blockmap.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWby0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWby1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWby2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWby3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.bouncy.castle.pgp.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWby4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWby5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWby6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWby7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.bouncy.castle.provider.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWby8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWby9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbya" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyb" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.caffeine.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyc" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyd" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbye" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyf" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.cglib.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyg" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyh" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyi" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyj" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.classgraph.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyk" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyl" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbym" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyn" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.cli.parser.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyo" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyp" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyq" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyr" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.cli.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbys" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyt" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyu" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyv" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.codec.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyw" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyx" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyy" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyz" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.compress.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWby$" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWby_" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyA" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyB" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.imaging.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyC" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyD" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyE" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyF" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.io.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyG" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyH" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyI" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyJ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.lang3.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyK" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyL" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyM" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyN" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.commons.logging.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyO" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyP" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyQ" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyR" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.fastutil.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyS" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyT" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyU" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyV" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.gson.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbyW" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbyX" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbyY" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbyZ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.guava.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbz0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbz1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbz2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbz3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.hash4j.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbz4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbz5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbz6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbz7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.hdr.histogram.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbz8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbz9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbza" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzb" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.http.client.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzc" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzd" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbze" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzf" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.icu4j.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzg" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzh" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzi" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzj" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.imgscalr.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzk" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzl" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzm" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzn" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ini4j.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzo" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzp" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzq" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzr" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ion.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzs" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzt" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzu" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzv" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jackson.databind.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzw" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzx" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzy" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzz" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jackson.dataformat.yaml.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbz$" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbz_" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzA" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzB" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jackson.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzC" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzD" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzE" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzF" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jackson.jr.objects.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzG" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzH" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzI" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzJ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jackson.module.kotlin.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzK" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzL" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzM" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzN" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.java.websocket.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzO" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzP" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzQ" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzR" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.javax.annotation.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzS" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzT" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzU" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzV" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jaxen.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbzW" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbzX" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbzY" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbzZ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jbr.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jcef.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jcip.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$a" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$b" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jediterm.core.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$c" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$d" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$e" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$f" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jediterm.ui.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$g" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$h" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$i" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$j" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jettison.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$k" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$l" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$m" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$n" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jsonpath.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$o" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$p" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$q" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$r" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jsoup.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$s" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$t" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$u" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$v" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jsvg.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$w" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$x" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$y" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$z" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jvm.native.trusted.roots.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$$" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$_" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$A" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$B" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.jzlib.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$C" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$D" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$E" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$F" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlin.reflect.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$G" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$H" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$I" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$J" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.collections.immutable.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$K" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$L" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$M" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$N" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.coroutines.slf4j.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$O" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$P" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$Q" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$R" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.datetime.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$S" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$T" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$U" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$V" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.html.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb$W" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb$X" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb$Y" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb$Z" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.io.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.serialization.core.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.serialization.json.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_a" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_b" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kotlinx.serialization.protobuf.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_c" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_d" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_e" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_f" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.kryo5.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_g" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_h" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_i" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_j" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ktor.client.cio.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_k" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_l" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_m" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_n" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ktor.client.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_o" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_p" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_q" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_r" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ktor.io.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_s" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_t" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_u" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_v" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ktor.network.tls.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_w" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_x" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_y" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_z" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.ktor.utils.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_$" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb__" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_A" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_B" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.lz4.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_C" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_D" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_E" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_F" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.markdown.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_G" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_H" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_I" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_J" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.miglayout.swing.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_K" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_L" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_M" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_N" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.mvstore.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_O" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_P" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_Q" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_R" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.oro.matcher.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_S" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_T" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_U" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_V" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.proxy.vole.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWb_W" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWb_X" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWb_Y" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWb_Z" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.pty4j.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbA0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbA1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbA2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbA3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.rd.text.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbA4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbA5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbA6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbA7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.rhino.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbA8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbA9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAa" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAb" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.snakeyaml.engine.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAc" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAd" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAe" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAf" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.snakeyaml.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAg" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAh" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAi" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAj" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.sshj.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAk" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAl" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAm" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAn" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.stream.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAo" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAp" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAq" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAr" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.velocity.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAs" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAt" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAu" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAv" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.winp.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAw" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAx" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAy" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAz" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.xerces.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbA$" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbA_" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAA" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAB" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.xstream.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAC" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAD" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAE" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAF" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.xtext.xbase.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAG" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAH" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAI" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAJ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.libraries.xz.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAK" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAL" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAM" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAN" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.debugger.impl.rpc.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAO" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAP" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAQ" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAR" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.debugger.impl.shared.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAS" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAT" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAU" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAV" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.eel.impl.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbAW" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbAX" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbAY" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbAZ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.find.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbB0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbB1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbB2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbB3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.managed.cache.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbB4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbB5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbB6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbB7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.polySymbols.backend.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbB8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbB9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBa" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBb" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.polySymbols.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBc" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBd" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBe" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBf" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.rpc.topics.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBg" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBh" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBi" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBj" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.scopes.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBk" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBl" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBm" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBn" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.vcs.core.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBo" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBp" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBq" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBr" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.vcs.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBs" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBt" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBu" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBv" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.platform.vcs.shared.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBw" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBx" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBy" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBz" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.regexp.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbB$" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbB_" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBA" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBB" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.analysis.impl.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBC" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBD" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBE" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBF" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.analysis.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBG" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBH" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBI" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBJ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.dom.impl.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBK" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBL" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBM" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBN" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.dom.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBO" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBP" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBQ" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBR" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.impl.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBS" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBT" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBU" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBV" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.parser.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbBW" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbBX" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbBY" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbBZ" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.psi.impl.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbC0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbC1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbC2" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbC3" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.psi.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbC4" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbC5" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbC6" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbC7" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.structureView.impl.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbC8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbC9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbCa" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbCb" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.structureView.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbCc" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbCd" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbCe" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbCf" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.syntax.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="2Rq8xwQWbCg" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="2Rq8xwQWbCh" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="2Rq8xwQWbCi" role="28ntcv">
+                    <node concept="Xl_RD" id="2Rq8xwQWbCj" role="WxPPp">
+                      <property role="Xl_RC" value="lib/module-intellij.xml.ui.common.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
           <node concept="2pIpSj" id="3rleFKvpH1a" role="2pJxcM">
