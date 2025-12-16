@@ -945,19 +945,9 @@
             <node concept="2ShNRf" id="3yHXoEBNyPx" role="33vP2m">
               <node concept="1pGfFk" id="3yHXoEBNyPy" role="2ShVmc">
                 <ref role="37wK5l" to="7e8u:~TreeMessage.&lt;init&gt;(java.awt.Color,java.lang.String,jetbrains.mps.ide.ui.tree.TreeMessageOwner)" resolve="TreeMessage" />
-                <node concept="2ShNRf" id="7K7yXoRkBc9" role="37wK5m">
-                  <node concept="1pGfFk" id="7K7yXoRkKuu" role="2ShVmc">
-                    <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
-                    <node concept="3cmrfG" id="13IhfvDUXwP" role="37wK5m">
-                      <property role="3cmrfH" value="128" />
-                    </node>
-                    <node concept="3cmrfG" id="13IhfvDUVG6" role="37wK5m">
-                      <property role="3cmrfH" value="0" />
-                    </node>
-                    <node concept="3cmrfG" id="13IhfvDV1aB" role="37wK5m">
-                      <property role="3cmrfH" value="0" />
-                    </node>
-                  </node>
+                <node concept="10M0yZ" id="7QoASCbDzgd" role="37wK5m">
+                  <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                  <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
                 </node>
                 <node concept="Xl_RD" id="3yHXoEBNyP$" role="37wK5m">
                   <property role="Xl_RC" value="module with dependency cycle" />

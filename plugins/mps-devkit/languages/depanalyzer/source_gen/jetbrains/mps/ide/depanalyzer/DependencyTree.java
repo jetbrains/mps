@@ -12,7 +12,6 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.ide.ui.tree.TreeMessage;
 import jetbrains.mps.nodeEditor.MPSColors;
-import java.awt.Color;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.util.Condition;
@@ -76,7 +75,7 @@ public class DependencyTree extends MPSTree implements DataProvider {
 
   private void populate(MPSTreeNode root, Iterable<DepLink> allDependencies) {
     final TreeMessage DEPENDENCY_CYCLE = new TreeMessage(MPSColors.RED, "dependency cycle", null);
-    final TreeMessage HAS_CYCLE = new TreeMessage(new Color(128, 0, 0), "module with dependency cycle", null);
+    final TreeMessage HAS_CYCLE = new TreeMessage(MPSColors.RED, "module with dependency cycle", null);
     final TreeMessage BOOTSTRAP_DEPENDENCY = new TreeMessage(MPSColors.RED, "language with bootstrap dependency", null);
 
     Iterable<SModuleReference> sortedModules = Sequence.fromIterable(allDependencies).select((it) -> it.module).distinct().sort((it) -> it.getModuleName(), true);
