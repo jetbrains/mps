@@ -538,29 +538,38 @@
       </build>
     </channel>
     <channel id="MPS252EAP" name="MPS 2025.2" status="eap"
-             url="https://www.jetbrains.com/mps/download"
+             url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2025" minorVersoin="2">
       <build number="252.26199.587" version="2025.2.1">
         <message>JetBrains MPS 2025.2.1 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+        <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
     <channel id="MPS252" name="MPS 2025.2" status="release"
-             url="https://www.jetbrains.com/mps/download"
+             url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2025" minorVersoin="2">
       <build number="252.26199.587" version="2025.2.1">
         <message>JetBrains MPS 2025.2.1 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+        <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
     <channel id="MPS253EAP" name="MPS 2025.3" status="eap"
-             url="https://www.jetbrains.com/mps/nextversion"
+             url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2025" minorVersoin="3">
-      <build number="253.28294.372" version="2025.3 RC1">
-        <message>JetBrains MPS 2025.3 RC1 is now available.</message>
+      <build number="253.28294.432" version="2025.3">
+        <message>JetBrains MPS 2025.3 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+      </build>
+    </channel>
+    <channel id="MPS253" name="MPS 2025.3" status="release"
+             url="https://www.jetbrains.com/mps/download"
+             feedback="http://youtrack.jetbrains.net/issues/MPS"
+             majorVersion="2025" minorVersoin="3">
+      <build number="253.28294.432" version="2025.3">
+        <message>JetBrains MPS 2025.3 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
