@@ -36,6 +36,7 @@ import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
+import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
@@ -102,17 +103,21 @@ public final class ModulesMiner {
    */
   @NotNull
   public ModulesMiner collectModules(IFile file) {
+    return collectModules(file, null);
+  }
+
+  public ModulesMiner collectModules(IFile file, String virtualFolder) {
     LOG.debug("Reading modules from " + file);
     if (shallIgnore(file)) {
       return this;
     }
     if (file.isDirectory()) {
-      readModuleDescriptorsFromFolder(file);
+      readModuleDescriptorsFromFolder(file, virtualFolder);
     } else {
       if (IFileUtil.isJarFile(file)) {
-        readModuleDescriptorsFromJarFile(file);
+        readModuleDescriptorsFromJarFile(file, virtualFolder);
       } else {
-        readModuleDescriptorsFromRegularFile(file);
+        readModuleDescriptorsFromRegularFile(file, virtualFolder);
       }
     }
     return this;
@@ -131,7 +136,7 @@ public final class ModulesMiner {
   }
 
 
-  private boolean trySourceModuleDescriptorsFromFile(IFile file) {
+  private boolean trySourceModuleDescriptorsFromFile(IFile file, String virtualFolder) {
     assert !file.isDirectory();
     if (!isSourceModule(file)) {
       return false;
@@ -144,7 +149,7 @@ public final class ModulesMiner {
       }
 
       processExcludes(file, moduleDescriptor);
-      fillOutcome(new ModuleHandle(file, moduleDescriptor), true);
+      fillOutcome(new ModuleHandle(file, moduleDescriptor, virtualFolder), true, virtualFolder);
       return true; // unlike other tryXXX methods, here we make sure descriptor actually read
       // because of .iml files (see DescriptorIOFacade) that are treated as solution module and thus break
       // readModuleDescriptorsFromFolder assumption of a single descriptor per dir.
@@ -159,7 +164,7 @@ public final class ModulesMiner {
    * deployment descriptor, collection of modules (under modules/) and deployed jars.
    * Dives into nested folders unless the folder is home for unjarred deployed module or modules/ collection
    */
-  private void readModuleDescriptorsFromFolder(IFile folder) {
+  private void readModuleDescriptorsFromFolder(IFile folder, String virtualFolder) {
     assert folder.isDirectory();
     if (shallIgnore(folder)) {
       // files and folders are collected prior to processing of descriptor excludes,
@@ -182,7 +187,7 @@ public final class ModulesMiner {
 
     boolean sourceModuleFound = false;
     for (IFile f : files) {
-      if (trySourceModuleDescriptorsFromFile(f)) {
+      if (trySourceModuleDescriptorsFromFile(f, virtualFolder)) {
         sourceModuleFound = true;
         // XXX Generally, I shall not expect more than 1 module descriptor per directory, and shall break loop here.
         //     However, it's not true for e.g. devkits/, where few devkit descriptors reside
@@ -194,13 +199,13 @@ public final class ModulesMiner {
       // don't expect nested module collections or deployed modules nested into another module
       //
       // folder/modules/module-folder-x
-      if (tryReadFromModulesDir(folder, folder.findChild(MODULES_DIR))) {
+      if (tryReadFromModulesDir(folder, folder.findChild(MODULES_DIR), virtualFolder)) {
         // no need to process nested jars or folders under 'modules/' if we discovered 'group of modules' there,
         // but still need to look into sibling folders/jars
         folders.removeIf(f -> MODULES_DIR.equals(f.getName()));
       } else {
         // folder/META-INF/module.xml
-        if (tryModuleFromDeploymentDescriptor(folder, folder.findChild(META_INF).findChild(MODULE_XML))) {
+        if (tryModuleFromDeploymentDescriptor(folder, folder.findChild(META_INF).findChild(MODULE_XML), virtualFolder)) {
           // no need to process nested jars or folders
           return;
         }
@@ -211,13 +216,15 @@ public final class ModulesMiner {
       // do not look into jars under a folder with either META-INF/ or modules/ they are likely auxiliary.
       for (IFile f : files) {
         if (IFileUtil.isJarFile(f)) {
-          readModuleDescriptorsFromJarFile(f);
+          readModuleDescriptorsFromJarFile(f, virtualFolder);
         }
       }
     }
     // It's possible to have extra module under module-folder, i.e. module-folder/module2-folder/descriptor-file2,
     // e.g. baseLanguage/bl.mpl and baseLanguage/solutions/
-    folders.forEach(this::readModuleDescriptorsFromFolder);
+    for (IFile iFile : folders) {
+      readModuleDescriptorsFromFolder(iFile, virtualFolder);
+    }
   }
 
   /**
@@ -238,15 +245,15 @@ public final class ModulesMiner {
    *
    * @param jarFile {@code folder/module.name.jar} from the sample layouts above.
    */
-  private void readModuleDescriptorsFromJarFile(IFile jarFile) {
+  private void readModuleDescriptorsFromJarFile(IFile jarFile, String virtualFolder) {
     assert IFileUtil.isJarFile(jarFile);
     try {
       IFile jarFileRoot = IFileUtil.stepIntoJar(jarFile);
 
-      if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.findChild(META_INF).findChild(MODULE_XML))) {
+      if (tryModuleFromDeploymentDescriptor(jarFile, jarFileRoot.findChild(META_INF).findChild(MODULE_XML), virtualFolder)) {
         return;
       }
-      tryReadFromModulesDir(jarFile, jarFileRoot.findChild(MODULES_DIR));
+      tryReadFromModulesDir(jarFile, jarFileRoot.findChild(MODULES_DIR), virtualFolder);
     } catch (Exception e) {
       LOG.error("Can't read modules in " + jarFile, e);
     }
@@ -262,7 +269,7 @@ public final class ModulesMiner {
    * @param moduleXml path to META-INF/module.xml
    * @return true if module found under the {@code moduleHome}
    */
-  private boolean tryModuleFromDeploymentDescriptor(IFile moduleHome, IFile moduleXml) {
+  private boolean tryModuleFromDeploymentDescriptor(IFile moduleHome, IFile moduleXml, String virtualFolder) {
     try {
       if (!moduleXml.exists() || moduleXml.isDirectory()) {
         return false;
@@ -276,7 +283,7 @@ public final class ModulesMiner {
       // we don't dive into deployed modules (no nested modules at deployment), nothing to exclude.
       // well, technically we can still exclude sources and library locations (could be outside a module), but generally
       // when discovering deployed modules, we don't expect code to look into unexpected, nested layouts
-      fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor), false);
+      fillOutcome(new ModuleHandle(moduleXml, moduleDescriptor, virtualFolder), false, virtualFolder);
       // even if we didn't succeed to read a module, presence of META-INF/module.xml prevents processing of any other possible
       // module location under moduleHome
       return true;
@@ -301,14 +308,14 @@ public final class ModulesMiner {
    * @param bundleHome root location for collection of modules (jar or a directory)
    * @return {@code true} if module collection found under bundle home
    */
-  private boolean tryReadFromModulesDir(IFile bundleHome, IFile modulesDir) {
+  private boolean tryReadFromModulesDir(IFile bundleHome, IFile modulesDir, String virtualFolder) {
     if (modulesDir.exists() && modulesDir.isDirectory()) {
       boolean moduleInGroup = false;
       for (IFile child : modulesDir.getChildren()) {
         if (child.isDirectory()) {
           // perhaps, we could allow nested directories in tryReadModuleDescriptor, but at the moment
           // we expect 1 level of directories only (XXX what about mps/testbench/modules/aaa.test/languages - disjunction of RVs would help).
-          moduleInGroup |= tryReadModuleDescriptorInModulesGroup(bundleHome, child);
+          moduleInGroup |= tryReadModuleDescriptorInModulesGroup(bundleHome, child, virtualFolder);
           // XXX may collect folders without modules and dig into them, with e.g. readModuleDescriptorsFromFolder(), just need to pass bundleHome there
         }
         // expect no descriptors under modules/
@@ -323,14 +330,14 @@ public final class ModulesMiner {
    *
    * @return {@code true} if module descriptor found under bundle home
    */
-  private boolean tryReadModuleDescriptorInModulesGroup(IFile bundleHome, IFile moduleHomeDir) {
+  private boolean tryReadModuleDescriptorInModulesGroup(IFile bundleHome, IFile moduleHomeDir, String virtualFolder) {
     assert moduleHomeDir.isDirectory();
     for (IFile child : moduleHomeDir.getChildren()) {
       if (child.isDirectory()) {
         continue;
       }
       // XXX now we ignore deployment descriptors here, is it desired?
-      if (trySourceModuleDescriptorsFromFile(child)) {
+      if (trySourceModuleDescriptorsFromFile(child, virtualFolder)) {
         // There used to be a hack in JavaModuleFacetImpl.getClassPath():
         // >>>
         // Solution(s) bundled into single jar with classes (both from hand-written and generated sources) at the root.
@@ -361,14 +368,14 @@ public final class ModulesMiner {
     return false;
   }
 
-  private void fillOutcome(ModuleHandle moduleHandle, boolean isSourceNotDeployment) {
+  private void fillOutcome(ModuleHandle moduleHandle, boolean isSourceNotDeployment, String virtualFolder) {
     myOutcome.add(moduleHandle);
     // Deployed Language and Generator modules have their own DD now, and their modules either listed (almost) directly, in GenerateTask (till the moment
     // build language does this in the proper way for <generate> task), or SLibrary(dir) gives them when walks languages/ fs location.
     // The only case when we need to extract generators out from language's MD is when we walk non-deployed module sources.
     if (isSourceNotDeployment && moduleHandle.getDescriptor() instanceof LanguageDescriptor) {
       for (GeneratorDescriptor gd : ((LanguageDescriptor) moduleHandle.getDescriptor()).getGenerators()) {
-        myOutcome.add(new ModuleHandle(moduleHandle.getFile(), gd));
+        myOutcome.add(new ModuleHandle(moduleHandle.getFile(), gd, virtualFolder));
       }
     }
   }
@@ -380,7 +387,7 @@ public final class ModulesMiner {
    * Updates excludes and outcome state of this miner.
    * Expects file (not directory) as an input.
    */
-  private void readModuleDescriptorsFromRegularFile(IFile file) {
+  private void readModuleDescriptorsFromRegularFile(IFile file, String virtualFolder) {
     String filePath = file.getPath();
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
@@ -390,9 +397,9 @@ public final class ModulesMiner {
         // Instead, assume META-INF/module.xml is at the root of a module location (which if generally the case).
         moduleHome = file.getParent().getParent();
       }
-      tryModuleFromDeploymentDescriptor(moduleHome, file);
+      tryModuleFromDeploymentDescriptor(moduleHome, file, virtualFolder);
     } else {
-      trySourceModuleDescriptorsFromFile(file);
+      trySourceModuleDescriptorsFromFile(file, virtualFolder);
     }
   }
 
@@ -722,16 +729,26 @@ public final class ModulesMiner {
   @Immutable
   public static final class ModuleHandle {
     private final IFile myFile;
+    private final String myVirtualFolder;
     private final ModuleDescriptor myDescriptor;
 
     public ModuleHandle(@NotNull IFile file, @Nullable ModuleDescriptor descriptor) {
+      this(file, descriptor, null);
+    }
+
+    public ModuleHandle(@NotNull IFile file, @Nullable ModuleDescriptor descriptor, String virtualFolder) {
       myFile = file;
       myDescriptor = descriptor;
+      myVirtualFolder = StringUtil.emptyIfNull(virtualFolder);
     }
 
     @NotNull
     public IFile getFile() {
       return myFile;
+    }
+
+    public String getVirtualFolder() {
+      return myVirtualFolder;
     }
 
     @Nullable
