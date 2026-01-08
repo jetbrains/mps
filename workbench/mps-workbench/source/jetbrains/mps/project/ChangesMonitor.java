@@ -378,23 +378,17 @@ import java.util.function.Predicate;
   private class MyLoadingListener implements ProjectModuleLoadingListener {
 
     @Override
-    public void moduleLoaded(ModulePath modulePath, @NotNull SModule module) {
-      cacheModuleReference(modulePath.getFile(), module.getModuleReference());
+    public void moduleLoaded(@NotNull SModule module, IFile descriptorFile) {
+      cacheModuleReference(descriptorFile, module.getModuleReference());
       enqueueAllModulesInProject();
     }
 
     @Override
-    public void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
+    public void moduleRemoved(@NotNull SModule module, IFile descriptorFile) {
       enqueueAllModulesInProject();
-      clearModuleReference(modulePath.getFile(), module.getModuleReference());
+      clearModuleReference(descriptorFile, module.getModuleReference());
       myMessagesContainer.clearMessages(module);
     }
-
-    @Override
-    public void moduleNotFound(@NotNull ModulePath modulePath) {}
-
-    @Override
-    public void moduleTypeIsUnknown(@NotNull ModulePath modulePath) {}
   }
 
   private class MyGenerationStatusListener implements ModelGenerationStatusListener {

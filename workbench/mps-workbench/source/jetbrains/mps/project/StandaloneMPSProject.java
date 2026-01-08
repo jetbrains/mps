@@ -23,17 +23,21 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.InvalidDataException;
+import com.intellij.platform.backend.workspace.GlobalWorkspaceModelCache;
+import com.intellij.platform.backend.workspace.WorkspaceModel;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
+import jetbrains.mps.project.structure.project.ProjectDescriptor.Builder;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.tracking.ModelStorageProblemsListener;
+import kotlin.Unit;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +51,7 @@ import java.io.IOException;
  * Note for AP from MM: at least I've added a difference in how module file changes are handled.
  *
  * It must save/load its state only via the platform methods #saveState, #loadState
- * The project may be changed externally via addModule/removeModule methods,
+ * The project may be changed externally via addModuleEntry/removeModule methods,
  *
  * ProjectDescriptor of the Project is supposed to be always in sync with the project state.
  *
@@ -127,11 +131,13 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   @NotNull
   @Deprecated(since = "3.3", forRemoval = true)
   public ProjectDescriptor getProjectDescriptor() {
-    final ProjectDescriptor pd = new ProjectDescriptor(getName());
+    Builder builder = new Builder(getName());
     // read access here is just a way to guard myModuleLoader (in allModulePaths) changes from a write action (e.g. update())
     // perhaps, shall introduce a separate lock, rather than use MA.
-    getModelAccess().runReadAction(() -> allModulePaths().forEach(pd::addModulePath));
-    return pd;
+    getModelAccess().runReadAction(() -> {
+      forEachModuleEntry(builder::addModuleEntry);
+    });
+    return builder.build();
   }
 
   // todo remove
@@ -156,7 +162,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
         progressIndicator.setText2("Loading project modules");
       }
       getModelAccess().runWriteAction(() -> {
-        loadModules(myProjectDescriptor.getModulePaths());
+        reloadProject(myProjectDescriptor);
         myProjectDescriptor = null; // indicate it's all in RT now.
       });
       if (progressIndicator != null) {

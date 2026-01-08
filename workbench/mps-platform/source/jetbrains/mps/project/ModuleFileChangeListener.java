@@ -75,13 +75,13 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
       moduleDelta.deletedFiles().forEach(f -> f.removeListener(myRedispatchListener));
 
       moduleDelta.gone().forEach((mRef, file) -> {
-        ModulePath path = myMpsProject.getPath(mRef);
+        IFile path = myMpsProject.getModuleDescriptorFile(mRef);
         if (path != null) {
           moduleNotFound(path);
         }
         SModule resolved = mRef.resolve(repo);
         if (resolved != null) {
-          myMpsProject.removeModule0(resolved);
+          myMpsProject.removeModule0(resolved, null);
         }
         // removeModule0, above, doesn't fire ProjectModuleLoadingListener.moduleRemoved, tell tracker there's no longer module in the file
         myProjectModulesAndFiles.forget(file, mRef);
@@ -138,8 +138,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
   }
 
   @Override
-  public void moduleLoaded(ModulePath modulePath, @NotNull SModule module) {
-    final IFile file = modulePath.getFile();
+  public void moduleLoaded(@NotNull SModule module, IFile file) {
     // FIXME I'd love to use `file = file.stepUpToArchive()` here not to add listeners inside archives, but this change require careful fix in other
     //       places ModuleFileTracker is used (especially in update/#buildDeltaFor()
     boolean needListener = !myProjectModulesAndFiles.isAnyModuleTrackedFor(file);
@@ -152,8 +151,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
   }
 
   @Override
-  public void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
-    final IFile file = modulePath.getFile();
+  public void moduleRemoved(@NotNull SModule module, IFile file) {
     myProjectModulesAndFiles.forget(file, module);
     if (!myProjectModulesAndFiles.isAnyModuleTrackedFor(file)) {
       // if there are few modules in a file, removal of one of them shall not leave us here without notifications for others.
@@ -162,11 +160,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
   }
 
   @Override
-  public void moduleNotFound(@NotNull final ModulePath modulePath) {
-    modulePath.getFile().addListener(myMissingFileListener);
-  }
-
-  @Override
-  public void moduleTypeIsUnknown(@NotNull ModulePath modulePath) {
+  public void moduleNotFound(@NotNull final IFile descriptorFile) {
+    descriptorFile.addListener(myMissingFileListener);
   }
 }
