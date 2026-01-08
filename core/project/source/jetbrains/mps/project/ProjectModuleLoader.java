@@ -18,11 +18,14 @@ package jetbrains.mps.project;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
@@ -34,9 +37,12 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
 import java.util.stream.Stream;
@@ -60,57 +66,141 @@ import java.util.stream.Stream;
 /*package*/ final class ProjectModuleLoader {
   private static final Logger LOG = Logger.getLogger(ProjectModuleLoader.class);
 
-  private final ProjectBase myProject;
+  public class Update {
+
+    private final ProjectBase myProject;
+    private final Set<IFile> myDroppedDescriptorFiles;
+    private final Collection<ModuleHandle> myDiscoveredModuleHandles;
+
+    private Update(ProjectBase project, Set<IFile> droppedDescriptorFiles, Collection<ModuleHandle> discoveredModuleHandles) {
+      myProject = project;
+      myDroppedDescriptorFiles = droppedDescriptorFiles;
+      myDiscoveredModuleHandles = discoveredModuleHandles;
+    }
+
+    /*package*/ void doUpdate() {
+      LOG.info("Loading modules...");
+      clearErrorsBuffer();
+
+      removeDroppedModules(myDroppedDescriptorFiles, myProject);
+
+      // we treat as a new complete set of project modules, we can forget those we didn't manage to load last time
+//      myBrokenModules.clear();
+
+      int loadedModules = loadDiscoveredModules(myDiscoveredModuleHandles, myProject);
+
+      LOG.info(String.format("Modules are loaded: %d new; %d removed", loadedModules, myDroppedDescriptorFiles.size()));
+    }
+
+  }
+  
+  private enum ModuleStateChange {
+    INTRODUCED,
+    DROPPED,
+    CHANGED_FOLDER,
+  }
+
+  /*
+   * Must not be modified directly.
+   */
+  private static class Entry {
+    private IFile descriptorFile;
+    private String virtualFolder;
+    private SModuleReference moduleReference;
+  }
+
+  //  private final ProjectBase myProject;
   private final List<ProjectModuleLoadingListener> myListeners = new CopyOnWriteArrayList<>();
   private final List<String> myErrors = new ArrayList<>();
 
-  private final Map<SModuleReference, ModulePath> myModuleToPathMap = new LinkedHashMap<>();
-  private final List<ModulePath> myBrokenModules = new ArrayList<>();
+  // internal state
+  private final Map<SModuleReference, Entry> myModuleReferenceToEntry = new HashMap<>();
 
-  ProjectModuleLoader(@NotNull ProjectBase project) {
-    myProject = project;
+  /*
+   * This operation may not be implemented very efficiently, since it's impossible to build
+   * a reliable index of IFile -> Entry mappings.
+   */
+  private List<Entry> select(@NotNull Set<IFile> files) {
+    return myModuleReferenceToEntry.values().stream().filter(e -> files.contains(e.descriptorFile)).toList();
+  }
+
+  private Optional<Entry> select(@NotNull SModuleReference ref) {
+    if (myModuleReferenceToEntry.containsKey(ref)) {
+      return Optional.of(myModuleReferenceToEntry.get(ref));
+    }
+    return Optional.empty();
+  }
+
+  private Stream<Entry> selectAll() {
+    return myModuleReferenceToEntry.values().stream();
+  }
+
+  /*
+   * Primary key is ref.
+   * Descriptor file is not a part of PK, since there may be >1 modules in a single file,
+   * and the file object, i.e. path, may not be unique (consider /var/... and /private/var/... pointing to the same file).
+   */
+  private void insertOrUpdate(SModuleReference ref, @NotNull IFile file, String virtualFolder) {
+    Entry refEntry = ref != null ? myModuleReferenceToEntry.get(ref) : null;
+    Entry entry = refEntry;
+    if (entry == null) {
+      entry = new Entry();
+    }
+    if (ref == null) {
+      if (entry.moduleReference != null) {
+        myModuleReferenceToEntry.remove(entry.moduleReference);
+      }
+    }
+    entry.descriptorFile = file;
+    entry.virtualFolder = StringUtil.emptyIfNull(virtualFolder);
+    entry.moduleReference = ref;
+
+    if (entry.moduleReference != null) {
+      myModuleReferenceToEntry.put(entry.moduleReference, entry);
+    }
+  }
+
+  private void drop(SModuleReference ref) {
+    if (ref != null) {
+      myModuleReferenceToEntry.remove(ref);
+    }
+  }
+
+  ProjectModuleLoader() {
   }
 
   @Nullable
-  final ModulePath getPath(@NotNull SModuleReference mRef) {
-    return myModuleToPathMap.get(mRef);
+  @Deprecated
+  /*package*/ final ModulePath getPath(@NotNull SModuleReference mRef) {
+    return select(mRef).map(e -> new ModulePath(e.descriptorFile, e.virtualFolder)).orElse(null);
   }
 
-  Collection<SModuleReference> activeModules() {
-    return myModuleToPathMap.keySet();
+  @Nullable
+  /*package*/ IFile getDescriptorFile(SModuleReference ref) {
+    return select(ref).map(e -> e.descriptorFile).orElse(null);
   }
 
-  Stream<ModulePath> allPaths() {
-    return Stream.concat(myModuleToPathMap.values().stream(), myBrokenModules.stream());
+  @Nullable
+  /*package*/ String getVirtualFolder(SModuleReference ref) {
+    return select(ref).map(e -> e.virtualFolder).orElse(null);
   }
 
-  // return modules known to the loader that are not among newModulePaths
-  private Collection<Pair<ModulePath, SModuleReference>> getRemovedModules(Collection<ModulePath> newModulePaths) {
-    ArrayList<Pair<ModulePath, SModuleReference>> removedModules = new ArrayList<>();
-    for (Map.Entry<SModuleReference,ModulePath> e : myModuleToPathMap.entrySet()) {
-      ModulePath oldModulePath = e.getValue();
-      final SModuleReference oldModule = e.getKey();
-      if (!newModulePaths.contains(oldModulePath)) {
-        removedModules.add(new Pair<>(oldModulePath, oldModule));
-      }
-    }
-    return removedModules;
+  /*package*/ Collection<SModuleReference> activeModules() {
+    return selectAll()
+              .map(e -> e.moduleReference)
+              .toList();
   }
 
-  // active/known modules
-  private boolean containsPath(@NotNull ModulePath modulePath) {
-    return myModuleToPathMap.containsValue(modulePath);
+  /*package*/ Collection<Pair<IFile, String>> allFiles() {
+    return selectAll()
+              .map(e -> new Pair<>(e.descriptorFile, e.virtualFolder))
+              .toList();
   }
 
-  private List<ModulePath> getPathsToLoad(Collection<ModulePath> newModulePaths) {
-    List<ModulePath> pathsToLoad = new ArrayList<>();
-    for (ModulePath newModulePath : newModulePaths) {
-      if (!containsPath(newModulePath)) {
-        // FIXME shall we check not only loaded modules but also broken? Likely not, we need to try to load any module that is not known
-        pathsToLoad.add(newModulePath);
-      }
-    }
-    return pathsToLoad;
+  @Deprecated
+  /*package*/ Stream<ModulePath> allPaths() {
+    return selectAll()
+              .map(e -> new ModulePath(e.descriptorFile, e.virtualFolder));
   }
 
   @NotNull
@@ -118,53 +208,97 @@ import java.util.stream.Stream;
     return String.join(System.getProperty("line.separator"), myErrors);
   }
 
-  /**
-   * updates module paths in the project.
-   * expects model write for project repository
-   */
-  void updatePathsInProject(final Collection<ModulePath> newModulePaths) {
-    LOG.info("Loading modules...");
-    clearErrorsBuffer();
+  /*package*/ Update reloadProjectModules(ProjectBase project, @NotNull ProjectDescriptor projectDescriptor) {
+    Map<IFile, Pair<ModuleStateChange, String>> diff = buildDiff(projectDescriptor);
+    Set<IFile> dropped = new HashSet<>();
+    List<Pair<IFile, String>> introduced = new ArrayList<>();
+    for (Map.Entry<IFile, Pair<ModuleStateChange, String>> e : diff.entrySet()) {
+      IFile file = e.getKey();
+      ModuleStateChange value = e.getValue().o1;
+      switch (value) {
+        case DROPPED -> dropped.add(file);
+        // one of the modules might change its virtual folder but not the location
+        // in this case we need to remove that module from project and insert it again
+        case CHANGED_FOLDER -> {
+          dropped.add(file);
+          introduced.add(new Pair<>(file, e.getValue().o2));
+        }
+        case INTRODUCED -> introduced.add(new Pair<>(file, e.getValue().o2));
+      }
+    }
+    return new Update(project, dropped, discoverModules(project, introduced));
+  }
 
-    // Note the order which matters (the case is when the modules.xml is updated from the FS directly --
-    // one of the modules might change its virtual folder but not the location
-    // in this case we need to remove that module from project and insert it again
-    final Collection<Pair<ModulePath, SModuleReference>> removedModules = getRemovedModules(newModulePaths);
-    removeAbsentModules(removedModules);
-
-    // we treat as a new complete set of project modules, we can forget those we didn't manage to load last time
-    myBrokenModules.clear();
-    final List<ModulePath> pathsToLoad = getPathsToLoad(newModulePaths);
-    int loadedModules = loadNewPaths(pathsToLoad);
-
-    LOG.info(String.format("Modules are loaded: %d new; %d removed", loadedModules, removedModules.size()));
+  private Map<IFile, Pair<ModuleStateChange, String>> buildDiff(ProjectDescriptor projectDescriptor) {
+    HashMap<IFile, String> fileToFolder = new HashMap<>();
+    allFiles().forEach(p -> fileToFolder.put(p.o1, p.o2));
+    Map<IFile, Pair<ModuleStateChange, String>> diff = new HashMap<>();
+    projectDescriptor.forEachEntry((file, folder) -> {
+      if (fileToFolder.containsKey(file)) {
+        if (!Objects.equals(fileToFolder.get(file), folder)) {
+          diff.put(file, new Pair<>(ModuleStateChange.CHANGED_FOLDER, folder));
+        }
+      } else {
+        diff.put(file, new Pair<>(ModuleStateChange.INTRODUCED, folder));
+      }
+    });
+    for (Map.Entry<IFile, String> e : fileToFolder.entrySet()) {
+      if (!fileToFolder.containsKey(e.getKey())) {
+        diff.put(e.getKey(), new Pair<>(ModuleStateChange.DROPPED, null));
+      }
+    }
+    return diff;
   }
 
   /**
    * @return the number of successfully loaded modules
    */
-  private int loadNewPaths(final List<ModulePath> pathsToLoad) {
-    final ModulesMiner modulesMiner = new ModulesMiner(myProject.getPlatform());
-    final Map<IFile, ModulePath> fileToPath = new HashMap<>();
-    for (ModulePath modulePath : pathsToLoad) {
+  private int loadDiscoveredModules(Collection<ModuleHandle> collectedModules, ProjectBase project) {
+    // at the moment, MRF is not capable to register a generator sooner that its language. To make sure no generator comes first,
+    // there's sorter in MM.
+    ModuleInstanceFactory moduleFactory = new ModuleRepositoryFacade(project);
+    // XXX This code resembles ProjectModulesFiller (ProjectStrategyBase). Do we need to keep them separate?
+    int loadedModules = 0;
+    for (ModuleHandle handle: collectedModules) {
+      IFile descriptorFile = handle.getFile();
+      ModuleDescriptor descriptorObject = handle.getDescriptor();
+      if (descriptorObject != null) {
+        SModule module = moduleFactory.instantiate(descriptorObject, descriptorFile);
+        // it's quite tempting, indeed, to move project update (i.e. addModuleEntry) into listener ProjectModuleLoadingListener.moduleLoaded
+        // just need to sort out ModuleLoader and Project relationship.
+
+        project.associateWithProjectRepo(module);
+        attachModule(module, descriptorFile, handle.getVirtualFolder());
+        ++loadedModules;
+      } else {
+        error(String.format("Can't load module from %s. Unknown file type.", descriptorFile.getPath()));
+        fireModuleTypeIsUnknown(descriptorFile);
+        insertOrUpdate(null, descriptorFile, null);
+      }
+    }
+    return loadedModules;
+  }
+
+  private @NotNull Collection<ModuleHandle> discoverModules(ProjectBase project, List<Pair<IFile, String>> pathsToLoad) {
+    final ModulesMiner modulesMiner = new ModulesMiner(project.getPlatform());
+    for (Pair<IFile, String> p : pathsToLoad) {
+      IFile descriptorFile = p.o1;
       try {
-        IFile descriptorFile = modulePath.getFile();
         if (descriptorFile.exists()) {
           // there could be more than 1 module collected from a single file
           // XXX in fact, we know we reference individual descriptor files here, and don't need all facilities of MM, like
           //    collecting 'excluded' locations (necessary for recursive discovery). Even support for deployed module discovery
           //    might be superfluous here (OTOH, might be a nice feature if we want to compose a project with deployed modules)
           //    Perhaps, shall use specific discovery method or introduce a mode/flag to avoid unnecessary processing of MD values
-          modulesMiner.collectModules(descriptorFile);
-          // if there's more than 1 modulePath with the same IFile, I don't care, fine with the last one
-          fileToPath.put(descriptorFile, modulePath);
+          modulesMiner.collectModules(descriptorFile, p.o2);
         } else {
           error(String.format("Can't load module from %s. File doesn't exist.", descriptorFile.getPath()));
-          fireModuleNotFound(modulePath);
-          myBrokenModules.add(modulePath);
+          fireModuleNotFound(descriptorFile);
+          insertOrUpdate(null, descriptorFile, null);
         }
       } catch (PathFormatException e) {
-        myBrokenModules.add(modulePath);
+        insertOrUpdate(null, descriptorFile, null);
+
         // fixme apyshkin
         Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
         if (matcher.find()) {
@@ -174,72 +308,72 @@ import java.util.stream.Stream;
         }
       }
     }
-    int loadedModules = 0;
-    // at the moment, MRF is not capable to register a generator sooner that its language. To make sure no generator comes first,
-    // there's sorter in MM.
-    ModuleInstanceFactory moduleFactory = new ModuleRepositoryFacade(myProject);
-    // XXX This code resembles ProjectModulesFiller (ProjectStrategyBase). Do we need to keep them separate?
-    for (ModuleHandle handle : modulesMiner.getCollectedModules()) {
-      // I expect modulePath to be non null even for language-owned generators (they share same descriptor file)
-      ModulePath modulePath = fileToPath.get(handle.getFile());
-      if (handle.getDescriptor() != null) {
-        SModule module = moduleFactory.instantiate(handle.getDescriptor(), handle.getFile());
-        // it's quite tempting, indeed, to move project update (i.e. addModule) into listener ProjectModuleLoadingListener.moduleLoaded
-        // just need to sort out ModuleLoader and Project relationship.
-
-        myProject.associateWithProjectRepo(module);
-        record(module, modulePath);
-        ++loadedModules;
-      } else {
-        error(String.format("Can't load module from %s. Unknown file type.", handle.getFile().getPath()));
-        fireModuleTypeIsUnknown(modulePath);
-        myBrokenModules.add(modulePath);
-      }
-    }
-    return loadedModules;
+    return modulesMiner.getCollectedModules();
   }
-
+  
   // needs model write
-  private void removeAbsentModules(final Collection<Pair<ModulePath, SModuleReference>> removedModules) {
-    final SRepository projectRepo = myProject.getRepository();
-    for (Pair<ModulePath, SModuleReference> p : removedModules) {
+  private void removeDroppedModules(Set<IFile> detached, ProjectBase project) {
+    final SRepository projectRepo = project.getRepository();
+    select(detached).forEach( e -> {
       // XXX I wonder is project.getScope().resolve isn't a better alternative (provided I fix its linear
       //     search implementation. I do care about modules belonging to the project only, scope seems to be fair
       //     alternative to a repository which may provide access to foreign modules.
-      final SModule oldModule = p.o2.resolve(projectRepo);
+      final SModule oldModule = e.moduleReference.resolve(projectRepo);
       if (oldModule == null) {
-        LOG.error(String.format("Module %s (%s) not found in the project repository", p.o2.getModuleName(), p.o1));
-        continue;
+        LOG.error(String.format("Module %s (%s) not found in the project repository", e.moduleReference.getModuleName(), e.descriptorFile));
       }
-      // fire event with module still attached to a project repo
-      forget(oldModule, p.o1);
-      // checkProjectIsOwner=false: assume all modules we track here are with ModulePath and do belong to the project
-      myProject.dissociateFromProjectRepo(oldModule, false);
-    }
+      else {
+        // fire event with module still attached to a project repo
+        detachModule(oldModule, e.descriptorFile);
+        // checkProjectIsOwner=false: assume all modules we track here are with ModulePath and do belong to the project
+        project.dissociateFromProjectRepo(oldModule, false);
+      }
+    });
   }
 
   @Nullable
-  ModulePath unloaded(@NotNull SModuleReference moduleReference) {
-    final ModulePath mp = myModuleToPathMap.remove(moduleReference);
-    if (mp != null && !myBrokenModules.contains(mp)) {
-      myBrokenModules.add(mp);
-    }
-    return mp;
+  @Deprecated
+  /*package*/ ModulePath unloaded(@NotNull SModuleReference moduleReference) {
+    Pair<IFile, String> p = dropIfAttached(moduleReference);
+    return p != null ? new ModulePath(p.o1, p.o2) : null;
   }
 
   // FIXME seems reasonable to
-  void forget(@NotNull SModule module, @NotNull ModulePath modulePath) {
-    myModuleToPathMap.remove(module.getModuleReference(), modulePath);
-    myBrokenModules.remove(modulePath);
-    fireModuleRemoved(modulePath, module);
+  @Deprecated
+  /*package*/ void forget(@NotNull SModule module, @NotNull ModulePath modulePath) {
+    detachModule(module, modulePath.getFile());
   }
 
   // XXX the method dispatches moduleLoaded event with SModule instance, but as long as the only thing from the module needed there is SModuleReference,
   // we don't care if the module is registered in a repo or not. FIXME update listener to take SModuleReference instead
-  void record(@NotNull SModule module, @NotNull ModulePath modulePath) {
-    myModuleToPathMap.put(module.getModuleReference(), modulePath);
-    myBrokenModules.remove(modulePath);
-    fireModuleLoaded(modulePath, module);
+  @Deprecated
+  /*package*/ void record(@NotNull SModule module, @NotNull ModulePath modulePath) {
+    attachModule(module, modulePath.getFile(), modulePath.getVirtualFolder());
+  }
+
+  /*
+   * Reverse-engineered contract:
+   *  - if there is an entry with ATTACHED state for this module ref, return the corresponding file-virtualFolder pair
+   *    but first mark it as INVALID by dropping it from the map
+   *  - otherwise return null
+   */
+  @Nullable
+  /*package*/ Pair<IFile, String> dropIfAttached(SModuleReference ref) {
+    if (ref == null) {
+      return null;
+    }
+    Entry e = myModuleReferenceToEntry.remove(ref);
+    return e != null ? new Pair<>(e.descriptorFile, e.virtualFolder) : null;
+  }
+
+  /*package*/ void attachModule(@NotNull SModule module, @NotNull IFile descriptorFile, String virtualFolder) {
+    insertOrUpdate(module.getModuleReference(), descriptorFile, virtualFolder);
+    fireModuleLoaded(module, descriptorFile);
+  }
+
+  /*package*/ void detachModule(@NotNull SModule module, @NotNull IFile descriptorFile) {
+    drop(module.getModuleReference());
+    fireModuleRemoved(module, descriptorFile);
   }
 
   private void clearErrorsBuffer() {
@@ -262,35 +396,31 @@ import java.util.stream.Stream;
     myListeners.remove(listener);
   }
 
-  private void fireModuleNotFound(ModulePath modulePath) {
+  private void fireModuleNotFound(IFile file) {
     for (ProjectModuleLoadingListener listener : myListeners) {
-      listener.moduleNotFound(modulePath);
+      listener.moduleNotFound(file);
     }
   }
 
-  private void fireModuleTypeIsUnknown(ModulePath modulePath) {
+  private void fireModuleTypeIsUnknown(IFile file) {
     for (ProjectModuleLoadingListener listener : myListeners) {
-      listener.moduleTypeIsUnknown(modulePath);
+      listener.moduleTypeIsUnknown(file);
     }
   }
 
-  private void fireModuleRemoved(ModulePath modulePath, SModule module) {
+  private void fireModuleRemoved(SModule module, IFile file) {
     for (ProjectModuleLoadingListener listener : myListeners) {
-      listener.moduleRemoved(modulePath, module);
+      listener.moduleRemoved(module, file);
     }
   }
 
-  private void fireModuleLoaded(ModulePath modulePath, SModule module) {
+  private void fireModuleLoaded(SModule module, @NotNull IFile file) {
     for (ProjectModuleLoadingListener listener : myListeners) {
-      listener.moduleLoaded(modulePath, module);
+      listener.moduleLoaded(module, file);
     }
   }
 
   /*package*/ void setVirtualFolder(SModuleReference moduleReference, String newFolder) {
-    final ModulePath modulePath = myModuleToPathMap.get(moduleReference);
-    if (modulePath != null) {
-      ModulePath newPath = modulePath.withVirtualFolder(newFolder);
-      myModuleToPathMap.put(moduleReference, newPath);
-    }
+    select(moduleReference).ifPresent(e -> e.virtualFolder = StringUtil.emptyIfNull(newFolder));
   }
 }

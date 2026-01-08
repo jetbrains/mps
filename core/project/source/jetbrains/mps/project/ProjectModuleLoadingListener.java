@@ -16,6 +16,7 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -28,11 +29,40 @@ import org.jetbrains.mps.openapi.module.SModule;
  * Created by apyshkin on 11/5/15.
  */
 interface ProjectModuleLoadingListener {
-  void moduleLoaded(ModulePath modulePath, @NotNull SModule module);
 
-  void moduleRemoved(ModulePath modulePath, @NotNull SModule module);
+  @SuppressWarnings("deprecation")
+  default void moduleLoaded(SModule module, IFile descriptorFile) {
+    moduleLoaded(new ModulePath(descriptorFile, ""), module);
+  }
 
-  void moduleNotFound(@NotNull ModulePath modulePath);
+  @SuppressWarnings("deprecation")
+  default void moduleRemoved(SModule module, IFile descriptorFile) {
+    moduleRemoved(new ModulePath(descriptorFile, ""), module);
+  }
 
-  void moduleTypeIsUnknown(@NotNull ModulePath modulePath);
+  @SuppressWarnings("deprecation")
+  default void moduleNotFound(IFile descriptorFile) {
+    moduleNotFound(new ModulePath(descriptorFile, ""));
+  }
+
+  @SuppressWarnings("deprecation")
+  default void moduleTypeIsUnknown(IFile descriptorFile) {
+    moduleTypeIsUnknown(new ModulePath(descriptorFile, ""));
+  }
+
+  @Deprecated
+  default void moduleLoaded(ModulePath modulePath, @NotNull SModule module) {
+  }
+
+  @Deprecated
+  default void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
+  }
+
+  @Deprecated
+  default void moduleNotFound(@NotNull ModulePath modulePath) {
+  }
+
+  @Deprecated
+  default void moduleTypeIsUnknown(@NotNull ModulePath modulePath) {
+  }
 }

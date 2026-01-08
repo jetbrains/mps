@@ -20,13 +20,15 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.project.ProjectModuleLoader.Update;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.Hack;
+import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
 /**
@@ -77,7 +80,7 @@ public abstract class ProjectBase extends Project {
   // FIXME refactor other subclasses and pass boolean initDefaultRepo == true|false
   protected ProjectBase(String name, @NotNull ComponentHost mpsPlatform, boolean unusedJustIndicatorOfNoRepository) {
     super(name);
-    myModuleLoader = new ProjectModuleLoader(this); // fixme: avoid
+    myModuleLoader = new ProjectModuleLoader(); // fixme: avoid
     myPlatform = mpsPlatform;
     // the only reason I keep the field is to manifest we register/unregister project instance into the same PM instance
     myProjectManager = mpsPlatform.findComponent(ProjectManager.class);
@@ -89,12 +92,26 @@ public abstract class ProjectBase extends Project {
   }
 
   @Nullable
+  @Deprecated
   /*package*/ final ModulePath getPath(@NotNull SModuleReference mRef) {
     return myModuleLoader.getPath(mRef);
   }
 
+  /*package*/ IFile getModuleDescriptorFile(SModuleReference ref) {
+    return myModuleLoader.getDescriptorFile(ref);
+  }
+
+  /*package*/ String getModuleVirtualFolder(SModuleReference ref) {
+    return myModuleLoader.getVirtualFolder(ref);
+  }
+
+  @Deprecated
   protected final Stream<ModulePath> allModulePaths() {
     return myModuleLoader.allPaths();
+  }
+
+  protected final void forEachModuleEntry(@NotNull BiConsumer<IFile, String> consumer) {
+    myModuleLoader.allFiles().forEach(p -> consumer.accept(p.o1, p.o2));
   }
 
   // all project modules, including language-hosted generators, are registered with a project as owner.
@@ -126,18 +143,17 @@ public abstract class ProjectBase extends Project {
   public final void addModule(@NotNull SModule module) {
     IFile descriptorFile = module instanceof AbstractModule ? ((AbstractModule) module).getDescriptorFile() : null;
     if (descriptorFile != null) {
-      final ModulePath modulePath = new ModulePath(descriptorFile, null);
-      final ModulePath existing = getPath(module.getModuleReference());
+      final IFile existing = getModuleDescriptorFile(module.getModuleReference());
       if (existing != null) {
   //      throw new IllegalArgumentException(module + " is already in the " + this); todo enable after MPS-24400
-        LOG.warning(String.format("Project %s already tracks module %s under %s; provided %s ignored", this, module.getModuleReference(), existing, modulePath));
+        LOG.warning(String.format("Project %s already tracks module %s under %s; provided %s ignored", this, module.getModuleReference(), existing, descriptorFile));
         return;
       }
       // FIXME investigate why MP was not recorded for Language-owned Generators.
       //  Other than notification dispatch in removeModule(), is there any trouble?
       //  Beware, ProjectModuleFileChangeListener may need attention.
       //  It seems to work with MP being announced for a Generator (seen live), but thorough check won't hurt.
-      myModuleLoader.record(module, modulePath);
+      myModuleLoader.attachModule(module, descriptorFile, null);
       // project repository listeners may consult project.isProjectModule(moduleAdded), treat module being added as one from the project
       associateWithProjectRepo(module);
     } else {
@@ -155,11 +171,11 @@ public abstract class ProjectBase extends Project {
    */
   @Override
   public final void removeModule(@NotNull SModule module) {
-    final ModulePath modulePath = removeModule0(module);
-    // client code can ask us to forget Generator module owned by a Language. We don't keep ModulePath for these
-    if (modulePath != null) {
-      myModuleLoader.forget(module, modulePath);
-    }
+    removeModule0(module,
+                  (file, folder) ->
+                      // client code can ask us to forget Generator module owned by a Language. We don't keep ModulePath for these
+                      myModuleLoader.detachModule(module, file)
+                   );
   }
 
   /**
@@ -169,23 +185,34 @@ public abstract class ProjectBase extends Project {
    */
   @Internal
   @Nullable
+  @Deprecated
   /*package*/ final ModulePath removeModule0(@NotNull SModule module) {
     // modulePath could be null for Generator modules sharing mpl descriptor file with their Language
-    final ModulePath modulePath = myModuleLoader.unloaded(module.getModuleReference());
+    final Reference<ModulePath> modulePath = new Reference<>(null);
+    removeModule0(module, (file, folder) -> modulePath.set(new ModulePath(file, folder)));
+    return modulePath.get();
+  }
+
+  /*package*/ final void removeModule0(@NotNull SModule module, @Nullable BiConsumer<IFile, String> continuation) {
+    Pair<IFile, String> fileToFolder = myModuleLoader.dropIfAttached(module.getModuleReference());
     if (module instanceof Language) {
       // Project tracks Generator modules by denoting itself as 'owner' of the module in a repository.
-      // E.g. ProjectModulesFiller tells project to addModule(Generator), and it eventually gets down to associateWithProjectRepo().
+      // E.g. ProjectModulesFiller tells project to addModuleEntry(Generator), and it eventually gets down to associateWithProjectRepo().
       // Though a great deal has been done to let Generator modules to live without their Language module present, I still keep this code
       // to unregister Language-owned generators along with the language as I'm too afraid to make the change and to dissociate supplied module only.
       Collection<Generator> ownedGenerators = ((Language) module).getOwnedGenerators();
       for (Generator g : ownedGenerators) {
-        myModuleLoader.unloaded(g.getModuleReference());
+        myModuleLoader.dropIfAttached(g.getModuleReference());
         dissociateFromProjectRepo(g, false);
       }
     }
-
-    dissociateFromProjectRepo(module, modulePath == null);
-    return modulePath;
+    // fileToFolder object can be null in case the module had already been invalidated _before_ this invocation
+    // in that case, the guard that checks if the module is owned by the project repo prevents a nasty exception
+    // how clever is that...
+    dissociateFromProjectRepo(module, fileToFolder == null);
+    if (fileToFolder != null && continuation != null) {
+      continuation.accept(fileToFolder.o1, fileToFolder.o2);
+    }
   }
 
   @NotNull
@@ -217,14 +244,14 @@ public abstract class ProjectBase extends Project {
    */
   @Override
   public boolean isProjectModule(@NotNull SModule module) {
-    if (getPath(module.getModuleReference()) != null) {
+    if (getModuleDescriptorFile(module.getModuleReference()) != null) {
       return true;
     }
     // FIXME now myModuleLoader keeps ModulePath for each module, including Generator one, next code is no longer necessary
     if (module instanceof Generator) {
       // could be a generator owned by a language. Standalone generators from project would be discovered by getPath().
       final GeneratorDescriptor gmd = ((Generator) module).getModuleDescriptor();
-      return !gmd.isStandaloneModule() && getPath(gmd.getSourceLanguage()) != null;
+      return !gmd.isStandaloneModule() && getModuleDescriptorFile(gmd.getSourceLanguage()) != null;
     }
     return false;
   }
@@ -246,13 +273,19 @@ public abstract class ProjectBase extends Project {
    * filling libraries and projects with modules externally seems to me the best solution
    * Requires model write
    */
-  @Hack
-  protected final void loadModules(@NotNull Collection<ModulePath> modulePaths) {
-    // FIXME present approach is unfortunate, as it's impossible to split module discovery (ModulesMiner for a path, and even up to SModule instantiation)
-    //       from its registration in a project/its repo. First step could be initiated in parallel with project startup and done in non-UI thread. Even
-    //       actual registration of the modules could be done in a project repo write w/o EDT access. It's only UI update that MAY (not necessarily SHALL)
-    //       require EDT (with new project model, perhaps, even this might be no longer a requirement).
-    myModuleLoader.updatePathsInProject(modulePaths);
+//  @Hack
+//  @Deprecated
+//  protected final void loadModules(@NotNull Collection<ModulePath> modulePaths) {
+//    // FIXME present approach is unfortunate, as it's impossible to split module discovery (ModulesMiner for a path, and even up to SModule instantiation)
+//    //       from its registration in a project/its repo. First step could be initiated in parallel with project startup and done in non-UI thread. Even
+//    //       actual registration of the modules could be done in a project repo write w/o EDT access. It's only UI update that MAY (not necessarily SHALL)
+//    //       require EDT (with new project model, perhaps, even this might be no longer a requirement).
+//    myModuleLoader.updatePathsInProject(modulePaths);
+//  }
+
+  protected final void reloadProject(@NotNull ProjectDescriptor projectDescriptor) {
+    Update update = myModuleLoader.reloadProjectModules(this, projectDescriptor);
+    update.doUpdate();
   }
 
   /**
@@ -298,8 +331,8 @@ public abstract class ProjectBase extends Project {
    */
   @NotNull
   public String getVirtualFolder(@NotNull SModule module) {
-    final ModulePath mp = getPath(module.getModuleReference());
-    return mp == null ? "" : mp.getVirtualFolder();
+    final String folder = getModuleVirtualFolder(module.getModuleReference());
+    return folder == null ? "" : folder;
   }
 
   /**
@@ -310,8 +343,8 @@ public abstract class ProjectBase extends Project {
     // Used to live in StandaloneMPSProject. I don't see why it's restricted to that one, provided any
     // ProjectBase derivative knows about ModulePath and its virtual folder.
     final SModuleReference moduleReference = module.getModuleReference();
-    ModulePath modulePath = getPath(moduleReference);
-    if (modulePath != null) {
+    IFile descriptorFile = getModuleDescriptorFile(moduleReference);
+    if (descriptorFile != null) {
       myModuleLoader.setVirtualFolder(moduleReference, newFolder);
     } else {
       LOG.warning(String.format("Could not set virtual folder for the module %s, module could not be found", module));

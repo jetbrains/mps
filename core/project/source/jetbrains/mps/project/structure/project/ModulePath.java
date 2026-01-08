@@ -27,8 +27,11 @@ import java.util.Objects;
  * AP todo: get rid of it, stop persisting, build ui tree having only the file structure
  * path representation in the project tree, needs to be persisted
  * equal iff both keys are equal
+ *
+ * @deprecated use a {@code Pair<IFile,String>}
  */
 @Immutable
+@Deprecated
 public final class ModulePath {
   private final IFile myPath;
   private final String myVirtualFolder; // virtual folder, optional, never null
