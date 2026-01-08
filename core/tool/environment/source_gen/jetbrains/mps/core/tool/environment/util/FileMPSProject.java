@@ -45,10 +45,10 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @Override
   public void save() {
     try {
-      MacroHelper helper = createMacroHelper();
-      ProjectDescriptor pd = new ProjectDescriptor(getName());
-      allModulePaths().forEach(pd::addModulePath);
-      new ProjectDescriptorPersistence(projectHome(), helper).saveToFile(pd);
+      ProjectDescriptor.Builder builder = new ProjectDescriptor.Builder(getName());
+      forEachModuleEntry(builder::addModuleEntry);
+      ProjectDescriptor pd = builder.build();
+      new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).saveToFile(pd);
     } catch (IOException ex) {
       // FIXME log or report otherwise
       ex.printStackTrace();
@@ -65,7 +65,7 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   protected void update() {
     getModelAccess().runWriteAction(() -> {
       ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
-      loadModules(pd.getModulePaths());
+      reloadProject(pd);
     });
   }
 

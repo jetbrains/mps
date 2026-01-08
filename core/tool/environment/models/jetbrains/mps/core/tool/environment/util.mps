@@ -745,14 +745,31 @@
             </node>
           </node>
           <node concept="3clFbS" id="3WnEHxCP63C" role="1zxBo7">
-            <node concept="3cpWs8" id="3RkWhWCOZPE" role="3cqZAp">
-              <node concept="3cpWsn" id="3RkWhWCOZPF" role="3cpWs9">
-                <property role="TrG5h" value="helper" />
-                <node concept="3uibUv" id="3RkWhWCOZPG" role="1tU5fm">
-                  <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
+            <node concept="3cpWs8" id="5V7k9JTbtE0" role="3cqZAp">
+              <node concept="3cpWsn" id="5V7k9JTbtE1" role="3cpWs9">
+                <property role="TrG5h" value="builder" />
+                <node concept="3uibUv" id="5V7k9JTbtda" role="1tU5fm">
+                  <ref role="3uigEE" to="y8s3:~ProjectDescriptor$Builder" resolve="ProjectDescriptor.Builder" />
                 </node>
-                <node concept="1rXfSq" id="3RkWhWCOZR_" role="33vP2m">
-                  <ref role="37wK5l" node="3RkWhWCOXmb" resolve="createMacroHelper" />
+                <node concept="2ShNRf" id="5V7k9JTbtE2" role="33vP2m">
+                  <node concept="1pGfFk" id="5V7k9JTbtE3" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="y8s3:~ProjectDescriptor$Builder.&lt;init&gt;(java.lang.String)" resolve="ProjectDescriptor.Builder" />
+                    <node concept="1rXfSq" id="5V7k9JTbtE4" role="37wK5m">
+                      <ref role="37wK5l" to="z1c3:~Project.getName()" resolve="getName" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5V7k9JTbsPY" role="3cqZAp">
+              <node concept="1rXfSq" id="5V7k9JTbsPW" role="3clFbG">
+                <ref role="37wK5l" to="z1c3:~ProjectBase.forEachModuleEntry(java.util.function.BiConsumer)" resolve="forEachModuleEntry" />
+                <node concept="37Ijox" id="5V7k9JTbvqK" role="37wK5m">
+                  <ref role="37Ijqf" to="y8s3:~ProjectDescriptor$Builder.addModuleEntry(jetbrains.mps.vfs.IFile,java.lang.String)" resolve="addModuleEntry" />
+                  <node concept="37vLTw" id="5V7k9JTbuFr" role="wWaWy">
+                    <ref role="3cqZAo" node="5V7k9JTbtE1" resolve="builder" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -762,29 +779,12 @@
                 <node concept="3uibUv" id="6wBM5jhYytU" role="1tU5fm">
                   <ref role="3uigEE" to="y8s3:~ProjectDescriptor" resolve="ProjectDescriptor" />
                 </node>
-                <node concept="2ShNRf" id="6wBM5jhYzVa" role="33vP2m">
-                  <node concept="1pGfFk" id="6wBM5jhYAZT" role="2ShVmc">
-                    <property role="373rjd" value="true" />
-                    <ref role="37wK5l" to="y8s3:~ProjectDescriptor.&lt;init&gt;(java.lang.String)" resolve="ProjectDescriptor" />
-                    <node concept="1rXfSq" id="6wBM5jhYByu" role="37wK5m">
-                      <ref role="37wK5l" to="z1c3:~Project.getName()" resolve="getName" />
-                    </node>
+                <node concept="2OqwBi" id="5V7k9JTbzk2" role="33vP2m">
+                  <node concept="37vLTw" id="5V7k9JTbyQX" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5V7k9JTbtE1" resolve="builder" />
                   </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="6wBM5jhYCrq" role="3cqZAp">
-              <node concept="2OqwBi" id="6wBM5jhYEHg" role="3clFbG">
-                <node concept="1rXfSq" id="6wBM5jhYCro" role="2Oq$k0">
-                  <ref role="37wK5l" to="z1c3:~ProjectBase.allModulePaths()" resolve="allModulePaths" />
-                </node>
-                <node concept="liA8E" id="6wBM5jhYG_w" role="2OqNvi">
-                  <ref role="37wK5l" to="1ctc:~Stream.forEach(java.util.function.Consumer)" resolve="forEach" />
-                  <node concept="37Ijox" id="6wBM5jhYI0N" role="37wK5m">
-                    <ref role="37Ijqf" to="y8s3:~ProjectDescriptor.addModulePath(jetbrains.mps.project.structure.project.ModulePath)" resolve="addModulePath" />
-                    <node concept="37vLTw" id="6wBM5jhYHkP" role="wWaWy">
-                      <ref role="3cqZAo" node="6wBM5jhYytT" resolve="pd" />
-                    </node>
+                  <node concept="liA8E" id="5V7k9JTb$4t" role="2OqNvi">
+                    <ref role="37wK5l" to="y8s3:~ProjectDescriptor$Builder.build()" resolve="build" />
                   </node>
                 </node>
               </node>
@@ -797,8 +797,8 @@
                     <node concept="1rXfSq" id="3WnEHxCPpty" role="37wK5m">
                       <ref role="37wK5l" node="3WnEHxCPgo1" resolve="projectHome" />
                     </node>
-                    <node concept="37vLTw" id="3RkWhWCP0u8" role="37wK5m">
-                      <ref role="3cqZAo" node="3RkWhWCOZPF" resolve="helper" />
+                    <node concept="1rXfSq" id="5V7k9JTb_Dc" role="37wK5m">
+                      <ref role="37wK5l" node="3RkWhWCOXmb" resolve="createMacroHelper" />
                     </node>
                   </node>
                 </node>
@@ -879,16 +879,11 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbF" id="6wBM5jhYWid" role="3cqZAp">
-                    <node concept="1rXfSq" id="6wBM5jhYWib" role="3clFbG">
-                      <ref role="37wK5l" to="z1c3:~ProjectBase.loadModules(java.util.Collection)" resolve="loadModules" />
-                      <node concept="2OqwBi" id="6wBM5jhYX$e" role="37wK5m">
-                        <node concept="37vLTw" id="6wBM5jhYWT2" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6wBM5jhYSN4" resolve="pd" />
-                        </node>
-                        <node concept="liA8E" id="6wBM5jhYYfR" role="2OqNvi">
-                          <ref role="37wK5l" to="y8s3:~ProjectDescriptor.getModulePaths()" resolve="getModulePaths" />
-                        </node>
+                  <node concept="3clFbF" id="5V7k9JTbcz$" role="3cqZAp">
+                    <node concept="1rXfSq" id="5V7k9JTbczy" role="3clFbG">
+                      <ref role="37wK5l" to="z1c3:~ProjectBase.reloadProject(jetbrains.mps.project.structure.project.ProjectDescriptor)" resolve="reloadProject" />
+                      <node concept="37vLTw" id="5V7k9JTbdvB" role="37wK5m">
+                        <ref role="3cqZAo" node="6wBM5jhYSN4" resolve="pd" />
                       </node>
                     </node>
                   </node>

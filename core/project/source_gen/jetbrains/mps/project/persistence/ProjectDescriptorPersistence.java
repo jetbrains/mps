@@ -87,18 +87,17 @@ public class ProjectDescriptorPersistence {
   public ProjectDescriptor load(@Nullable Element root) {
     // XXX is it intentional that we don't read project name from persistence?
     final String name = myProjectDir.getName();
-    ProjectDescriptor descriptor = new ProjectDescriptor(name);
+    ProjectDescriptor.Builder builder = new ProjectDescriptor.Builder(name);
     if (root == null) {
-      return descriptor;
+      return builder.build();
     }
-    ProjectDescriptor result_jnk9az_a4a91 = descriptor;
+    ProjectDescriptor.Builder result_jnk9az_a4a91 = builder;
     for (Element moduleElement : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, PROJECT_MODULES_TAG), MODULE_PATH_TAG))) {
       String path = myMacroHelper.expandPath(moduleElement.getAttributeValue(PATH_TAG));
       String virtualFolder = moduleElement.getAttributeValue(FOLDER_TAG);
-      ModulePath modulePath = new ModulePath(myProjectDir.getFS().getFile(path), virtualFolder);
-      result_jnk9az_a4a91.addModulePath(modulePath);
+      result_jnk9az_a4a91.addModuleEntry(myProjectDir.getFS().getFile(path), virtualFolder);
     }
-    return descriptor;
+    return builder.build();
   }
 
   @NotNull

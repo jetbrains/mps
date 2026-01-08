@@ -9111,16 +9111,16 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="3v_OXaS43iH" role="3cqZAp">
-          <node concept="3cpWsn" id="3v_OXaS43iI" role="3cpWs9">
-            <property role="TrG5h" value="descriptor" />
-            <node concept="3uibUv" id="3v_OXaS43iJ" role="1tU5fm">
-              <ref role="3uigEE" to="y8s3:~ProjectDescriptor" resolve="ProjectDescriptor" />
+        <node concept="3cpWs8" id="1P3ZeBoKZXc" role="3cqZAp">
+          <node concept="3cpWsn" id="1P3ZeBoKZXd" role="3cpWs9">
+            <property role="TrG5h" value="builder" />
+            <node concept="3uibUv" id="1P3ZeBoKZXe" role="1tU5fm">
+              <ref role="3uigEE" to="y8s3:~ProjectDescriptor$Builder" resolve="ProjectDescriptor.Builder" />
             </node>
-            <node concept="2ShNRf" id="3v_OXaS43x0" role="33vP2m">
-              <node concept="1pGfFk" id="3v_OXaS43H3" role="2ShVmc">
-                <ref role="37wK5l" to="y8s3:~ProjectDescriptor.&lt;init&gt;(java.lang.String)" resolve="ProjectDescriptor" />
-                <node concept="37vLTw" id="15VbAzME2a$" role="37wK5m">
+            <node concept="2ShNRf" id="1P3ZeBoL2BD" role="33vP2m">
+              <node concept="1pGfFk" id="1P3ZeBoL2Bw" role="2ShVmc">
+                <ref role="37wK5l" to="y8s3:~ProjectDescriptor$Builder.&lt;init&gt;(java.lang.String)" resolve="ProjectDescriptor.Builder" />
+                <node concept="37vLTw" id="1P3ZeBoL3M1" role="37wK5m">
                   <ref role="3cqZAo" node="15VbAzME1Go" resolve="name" />
                 </node>
               </node>
@@ -9130,8 +9130,13 @@
         <node concept="3clFbJ" id="15VbAzME2VP" role="3cqZAp">
           <node concept="3clFbS" id="15VbAzME2VR" role="3clFbx">
             <node concept="3cpWs6" id="15VbAzME3Ii" role="3cqZAp">
-              <node concept="37vLTw" id="15VbAzME3IF" role="3cqZAk">
-                <ref role="3cqZAo" node="3v_OXaS43iI" resolve="descriptor" />
+              <node concept="2OqwBi" id="1P3ZeBoL7o3" role="3cqZAk">
+                <node concept="37vLTw" id="15VbAzME3IF" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1P3ZeBoKZXd" resolve="builder" />
+                </node>
+                <node concept="liA8E" id="1P3ZeBoL8PM" role="2OqNvi">
+                  <ref role="37wK5l" to="y8s3:~ProjectDescriptor$Builder.build()" resolve="build" />
+                </node>
               </node>
             </node>
           </node>
@@ -9144,7 +9149,7 @@
         </node>
         <node concept="1$nAam" id="IMUMWuHQZ1" role="3cqZAp">
           <node concept="37vLTw" id="2BHiRxglqMA" role="1$nAal">
-            <ref role="3cqZAo" node="3v_OXaS43iI" resolve="descriptor" />
+            <ref role="3cqZAo" node="1P3ZeBoKZXd" resolve="builder" />
           </node>
           <node concept="3clFbS" id="IMUMWuHQZ3" role="GGjiV">
             <node concept="2Gpval" id="IMUMWuHQZk" role="3cqZAp">
@@ -9194,45 +9199,29 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs8" id="IMUMWuHQZu" role="3cqZAp">
-                  <node concept="3cpWsn" id="IMUMWuHQZv" role="3cpWs9">
-                    <property role="TrG5h" value="modulePath" />
-                    <node concept="3uibUv" id="15VbAzME4Ty" role="1tU5fm">
-                      <ref role="3uigEE" to="y8s3:~ModulePath" resolve="ModulePath" />
-                    </node>
-                    <node concept="2ShNRf" id="IMUMWuHQZx" role="33vP2m">
-                      <node concept="1pGfFk" id="IMUMWuHQZy" role="2ShVmc">
-                        <ref role="37wK5l" to="y8s3:~ModulePath.&lt;init&gt;(jetbrains.mps.vfs.IFile,java.lang.String)" resolve="ModulePath" />
-                        <node concept="2OqwBi" id="3WnEHxCQgfL" role="37wK5m">
-                          <node concept="2OqwBi" id="3WnEHxCQeJP" role="2Oq$k0">
-                            <node concept="37vLTw" id="3WnEHxCQe8P" role="2Oq$k0">
-                              <ref role="3cqZAo" node="3v_OXaS3ZEG" resolve="myProjectDir" />
-                            </node>
-                            <node concept="liA8E" id="3WnEHxCQfFM" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFile.getFS()" resolve="getFS" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="3WnEHxCQgOb" role="2OqNvi">
-                            <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                            <node concept="37vLTw" id="3WnEHxCQhIP" role="37wK5m">
-                              <ref role="3cqZAo" node="15VbAzME5St" resolve="path" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="37vLTw" id="15VbAzME7w_" role="37wK5m">
-                          <ref role="3cqZAo" node="15VbAzME6ep" resolve="virtualFolder" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="3clFbF" id="IMUMWuHQZS" role="3cqZAp">
                   <node concept="2OqwBi" id="IMUMWuHQZU" role="3clFbG">
                     <node concept="1bf8Ab" id="IMUMWuHQZV" role="2Oq$k0" />
                     <node concept="liA8E" id="IMUMWuHQZW" role="2OqNvi">
-                      <ref role="37wK5l" to="y8s3:~ProjectDescriptor.addModulePath(jetbrains.mps.project.structure.project.ModulePath)" resolve="addModulePath" />
-                      <node concept="37vLTw" id="3GM_nagTw3p" role="37wK5m">
-                        <ref role="3cqZAo" node="IMUMWuHQZv" resolve="modulePath" />
+                      <ref role="37wK5l" to="y8s3:~ProjectDescriptor$Builder.addModuleEntry(jetbrains.mps.vfs.IFile,java.lang.String)" resolve="addModuleEntry" />
+                      <node concept="2OqwBi" id="1P3ZeBoLf$9" role="37wK5m">
+                        <node concept="2OqwBi" id="1P3ZeBoLf$a" role="2Oq$k0">
+                          <node concept="37vLTw" id="1P3ZeBoLf$b" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3v_OXaS3ZEG" resolve="myProjectDir" />
+                          </node>
+                          <node concept="liA8E" id="1P3ZeBoLf$c" role="2OqNvi">
+                            <ref role="37wK5l" to="3ju5:~IFile.getFS()" resolve="getFS" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="1P3ZeBoLf$d" role="2OqNvi">
+                          <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
+                          <node concept="37vLTw" id="1P3ZeBoLf$e" role="37wK5m">
+                            <ref role="3cqZAo" node="15VbAzME5St" resolve="path" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="1P3ZeBoLiC4" role="37wK5m">
+                        <ref role="3cqZAo" node="15VbAzME6ep" resolve="virtualFolder" />
                       </node>
                     </node>
                   </node>
@@ -9259,13 +9248,18 @@
           </node>
           <node concept="2tVtrs" id="IMUMWuHR30" role="GIGjv">
             <node concept="3uibUv" id="IMUMWuHR31" role="2tVtrt">
-              <ref role="3uigEE" to="y8s3:~ProjectDescriptor" resolve="ProjectDescriptor" />
+              <ref role="3uigEE" to="y8s3:~ProjectDescriptor$Builder" resolve="ProjectDescriptor.Builder" />
             </node>
           </node>
         </node>
         <node concept="3cpWs6" id="3v_OXaS46u9" role="3cqZAp">
-          <node concept="37vLTw" id="3v_OXaS46V7" role="3cqZAk">
-            <ref role="3cqZAo" node="3v_OXaS43iI" resolve="descriptor" />
+          <node concept="2OqwBi" id="1P3ZeBoLlW8" role="3cqZAk">
+            <node concept="37vLTw" id="3v_OXaS46V7" role="2Oq$k0">
+              <ref role="3cqZAo" node="1P3ZeBoKZXd" resolve="builder" />
+            </node>
+            <node concept="liA8E" id="1P3ZeBoLnv7" role="2OqNvi">
+              <ref role="37wK5l" to="y8s3:~ProjectDescriptor$Builder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>

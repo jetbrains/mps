@@ -104,21 +104,20 @@ import java.util.Comparator;
   public void saveTo(MPSProject project) {
     ProjectDescriptor existingPD = load(project);
 
-    HashSet<IFile> matched = new HashSet<>();
-    ProjectDescriptor newPD = new ProjectDescriptor(project.getName());
-    for (ModulePath mp : existingPD.getModulePaths()) {
-      IFile file = mp.getFile();
+    final HashSet<IFile> matched = new HashSet<>();
+    final ProjectDescriptor.Builder builder = new ProjectDescriptor.Builder(project.getName());
+    existingPD.forEachEntry((file, folder) -> {
       // keep those known both in project and in our set intact (copy same ModulePath)
       if (known(file)) {
         matched.add(file);
-        newPD.addModulePath(mp);
+        builder.addModuleEntry(file, folder);
       }
-    }
+    });
     // those we didn't see to match are new, add them. The rest in existingPD are thrown away
     Predicate<IFile> matchedPredicate = matched::contains;
-    myModules.stream().filter(matchedPredicate.negate()).map(ModulePath::new).forEach(newPD::addModulePath);
+    myModules.stream().filter(matchedPredicate.negate()).forEach((file) -> builder.addModuleEntry(file, ""));
     // FIXME perhaps, we shall just write the file down and let IDEA pick up the changes?
-    ((StandaloneMPSProject) project).setProjectDescriptor(newPD);
+    ((StandaloneMPSProject) project).setProjectDescriptor(builder.build());
   }
 
   private final Comparator<IFile> PATH_COMPARATOR = Comparator.comparing(IFile::getPath);
