@@ -151,9 +151,21 @@
 }, {
   "name" : "Compose Multiplatform",
   "url" : "https://github.com/JetBrains/compose-multiplatform",
-  "version" : "1.9.0-beta03",
+  "version" : "1.9.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/compose-multiplatform/blob/master/LICENSE.txt"
+}, {
+  "name" : "Compose Runtime",
+  "url" : "https://source.android.com/",
+  "version" : "1.9.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:LICENSE.txt"
+}, {
+  "name" : "Compose Runtime Saveable Desktop",
+  "url" : "https://source.android.com/",
+  "version" : "1.9.4",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:LICENSE.txt"
 }, {
   "name" : "Eclipse JDT Core",
   "url" : "https://www.eclipse.org/jdt/core/index.php",
