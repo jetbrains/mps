@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.module.SModule;
  *
  * Created by apyshkin on 11/5/15.
  */
-interface ProjectModuleLoadingListener {
+public interface ProjectModuleLoadingListener {
 
   @SuppressWarnings("deprecation")
   default void moduleLoaded(SModule module, IFile descriptorFile) {
