@@ -37,7 +37,6 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
@@ -148,16 +147,15 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(4)) {
-      // null - no error, true - must stop, false - can ignore
-      boolean errors = checkModels(monitor.subTask(10, SubProgressKind.REPLACING));
-      if (errors) {
-        final PreCheckError preCheckError = new PreCheckError(mySession, errors);
+      final PreCheckError preCheckError = PreCheckError.prepare(mySession, monitor.subTask(10, SubProgressKind.REPLACING));
+      if (preCheckError.hasErrors()) {
         if (myHaltOnFailedPrecheck) {
           throw preCheckError;
         } else {
           if (LOG.isWarningLevel()) {
             LOG.warning("Migration pre-check has failed, ignoring...");
           }
+          // FIXME likely don't need explicit read here
           mySession.getProject().getModelAccess().runReadAction(() -> preCheckError.logProblems(new LogHandler(Logger.getLogger(MigrationTask.class))));
         }
       }
@@ -323,15 +321,6 @@ public class MigrationTask {
       return true;
     });
     return res;
-  }
-
-  private boolean checkModels(ProgressMonitor m) {
-    final Wrappers._boolean hasErrors = new Wrappers._boolean(false);
-    mySession.getChecker().checkProject(m, (IssueKindReportItem p) -> {
-      hasErrors.value = true;
-      return false;
-    });
-    return hasErrors.value;
   }
 
   private void runVersionsUpdate(final ProgressMonitor m) {

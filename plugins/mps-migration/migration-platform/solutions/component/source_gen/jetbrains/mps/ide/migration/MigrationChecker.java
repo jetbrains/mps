@@ -12,8 +12,20 @@ import jetbrains.mps.lang.migration.runtime.base.Problem;
 
 @GeneratedClass(nodeId = "605495270532748015", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public interface MigrationChecker {
+  /**
+   * FIXME bad api
+   *     in fact, we check that executable scripts for *unspecified* set of migrations are present and could get executed
+   */
   void checkMigrations(ProgressMonitor m, Processor<AppliedScript> processor);
+  /**
+   * FIXME bad api, pair of SModule, really?
+   */
   void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor);
+  /**
+   * FIXME bad api, implicit assumption
+   *   (a) we run migration on a whole project (while specific session, which is the origin for checker, could be limited to a subset of project modules;
+   *   (b) check here is for module dependencies and broken references inside models.                     
+   */
   void checkProject(ProgressMonitor m, Processor<IssueKindReportItem> processor);
   void findNotMigrated(ProgressMonitor m, Iterable<AppliedScript> toCheck, Processor<Problem> processor);
 }
