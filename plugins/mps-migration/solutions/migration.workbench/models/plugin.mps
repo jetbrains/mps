@@ -6502,28 +6502,34 @@
             <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <ref role="1Y3XeK" to="bim2:xB9FQhi9bJ" resolve="MigrationChecker" />
             <node concept="3Tm1VV" id="4biA4YBv2dw" role="1B3o_S" />
-            <node concept="3clFb_" id="4biA4YBv2dx" role="jymVt">
-              <property role="1EzhhJ" value="false" />
-              <property role="2aFKle" value="false" />
-              <property role="TrG5h" value="checkMigrations" />
-              <node concept="37vLTG" id="4biA4YBv2dy" role="3clF46">
-                <property role="TrG5h" value="m" />
-                <node concept="3uibUv" id="4biA4YBv2dz" role="1tU5fm">
-                  <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
-                </node>
-              </node>
-              <node concept="37vLTG" id="4biA4YBv2d$" role="3clF46">
-                <property role="TrG5h" value="processor" />
-                <node concept="3uibUv" id="4biA4YBv2d_" role="1tU5fm">
-                  <ref role="3uigEE" to="yyf4:~Processor" resolve="Processor" />
-                  <node concept="3uibUv" id="4biA4YBv2dA" role="11_B2D">
+            <node concept="3clFb_" id="EG0U$tI4qy" role="jymVt">
+              <property role="TrG5h" value="checkMigrationScripts" />
+              <node concept="37vLTG" id="EG0U$tI4qz" role="3clF46">
+                <property role="TrG5h" value="scripts" />
+                <node concept="A3Dl8" id="EG0U$tI4q$" role="1tU5fm">
+                  <node concept="3uibUv" id="EG0U$tI4q_" role="A3Ik2">
                     <ref role="3uigEE" to="bim2:3xQJezs$iyQ" resolve="AppliedScript" />
                   </node>
                 </node>
               </node>
-              <node concept="3Tm1VV" id="4biA4YBv2dB" role="1B3o_S" />
-              <node concept="3cqZAl" id="4biA4YBv2dC" role="3clF45" />
-              <node concept="3clFbS" id="4biA4YBv2dD" role="3clF47">
+              <node concept="37vLTG" id="EG0U$tI4qA" role="3clF46">
+                <property role="TrG5h" value="pm" />
+                <node concept="3uibUv" id="EG0U$tI4qB" role="1tU5fm">
+                  <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
+                </node>
+              </node>
+              <node concept="37vLTG" id="EG0U$tI4qC" role="3clF46">
+                <property role="TrG5h" value="processor" />
+                <node concept="3uibUv" id="EG0U$tI4qD" role="1tU5fm">
+                  <ref role="3uigEE" to="yyf4:~Processor" resolve="Processor" />
+                  <node concept="3uibUv" id="EG0U$tI4qE" role="11_B2D">
+                    <ref role="3uigEE" to="bim2:3xQJezs$iyQ" resolve="AppliedScript" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3Tm1VV" id="EG0U$tI4qG" role="1B3o_S" />
+              <node concept="3cqZAl" id="EG0U$tI4qH" role="3clF45" />
+              <node concept="3clFbS" id="EG0U$tI4r6" role="3clF47">
                 <node concept="3clFbJ" id="4biA4YBv2dE" role="3cqZAp">
                   <node concept="3clFbS" id="4biA4YBv2dF" role="3clFbx">
                     <node concept="3cpWs6" id="4biA4YBv2dG" role="3cqZAp" />
@@ -6545,13 +6551,13 @@
                 <node concept="3clFbF" id="4biA4YBv2e2" role="3cqZAp">
                   <node concept="2OqwBi" id="4biA4YBv2e3" role="3clFbG">
                     <node concept="37vLTw" id="4biA4YBv2e4" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4biA4YBv2d$" resolve="processor" />
+                      <ref role="3cqZAo" node="EG0U$tI4qC" resolve="processor" />
                     </node>
                     <node concept="liA8E" id="4biA4YBv2e5" role="2OqNvi">
                       <ref role="37wK5l" to="yyf4:~Processor.process(java.lang.Object)" resolve="process" />
                       <node concept="2OqwBi" id="3sU4a6ar_Vh" role="37wK5m">
-                        <node concept="1rXfSq" id="3sU4a6arx6O" role="2Oq$k0">
-                          <ref role="37wK5l" node="4WgzjbQSS$q" resolve="getModuleMigrations" />
+                        <node concept="37vLTw" id="EG0U$tIy0N" role="2Oq$k0">
+                          <ref role="3cqZAo" node="EG0U$tI4qz" resolve="scripts" />
                         </node>
                         <node concept="1uHKPH" id="3sU4a6arEes" role="2OqNvi" />
                       </node>
@@ -6559,7 +6565,7 @@
                   </node>
                 </node>
               </node>
-              <node concept="2AHcQZ" id="3sU4a6anPvf" role="2AJF6D">
+              <node concept="2AHcQZ" id="EG0U$tI4r7" role="2AJF6D">
                 <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
               </node>
             </node>

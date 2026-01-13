@@ -6,13 +6,13 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.Processor;
-import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import java.util.Collection;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.HashSet;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -50,27 +50,35 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @GeneratedClass(nodeId = "605495270532938240", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationCheckerImpl implements MigrationChecker {
   private final Project myProject;
-  private final MigrationSetup myManager;
 
+  /**
+   * 
+   * 
+   * @deprecated use alternative w/o MigrationSetup
+   */
+  @Deprecated
   public MigrationCheckerImpl(Project p, MigrationSetup manager) {
     // FIXME MigrationSetup is an initial set of migrations for a project/set of modules, and is in use in checkMigrations() only
     //      implying checker knows about specific migrations. However, findNotMigrated() takes specific (sub-?)set of migrations
     //      to check, and checkProject(), OTOH, ignores MigrationSetup and its modules. Would be great to have a consistency here.
     myProject = p;
-    myManager = manager;
+  }
+
+  public MigrationCheckerImpl(Project p) {
+    myProject = p;
   }
 
   @Override
-  public void checkMigrations(ProgressMonitor m, Processor<AppliedScript> processor) {
-    m.start("Checking migrations consistency...", 1);
-    Collection<AppliedScript> scripts = myManager.getModuleMigrations();
-    for (AppliedScript problem : CollectionSequence.fromCollection(scripts).where((it) -> !(it.scriptPresent()))) {
+  public void checkMigrationScripts(Iterable<AppliedScript> scripts, ProgressMonitor pm, Processor<AppliedScript> processor) {
+    pm.start("Checking migrations consistency...", 1);
+    for (AppliedScript problem : Sequence.fromIterable(scripts).where((it) -> !(it.scriptPresent()))) {
       if (!(processor.process(problem))) {
         break;
       }
     }
-    m.done();
+    pm.done();
   }
+
   @Override
   public void checkLibs(ProgressMonitor m, final Processor<Pair<SModule, SModule>> processor) {
     m.start("Checking dependencies...", 1);
@@ -164,7 +172,8 @@ public class MigrationCheckerImpl implements MigrationChecker {
   public void findNotMigrated(final ProgressMonitor m, final Iterable<AppliedScript> migrationsToCheck, final Processor<Problem> processor) {
     // here we do not assume AS come with scriptPresent() or not
 
-    // FIXME MigrationTrigger calls this with model read. What about MigrationTask and PostCheckError cases?
+    // FIXME MigrationTrigger calls this with model read. However, PostCheckError.prepare seems to be invoked w/o ano model access; need consistency
+    //      and no hidden assumptions about specific repo
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).translate((it) -> it.affectedModules()).distinct().select((it) -> it.resolve(myProject.getRepository())).where(new NotNullWhereFilter());
 

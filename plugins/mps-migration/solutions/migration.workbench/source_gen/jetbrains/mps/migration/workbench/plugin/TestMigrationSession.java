@@ -10,10 +10,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.ide.migration.MigrationChecker;
+import jetbrains.mps.ide.migration.AppliedScript;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.Processor;
-import jetbrains.mps.ide.migration.AppliedScript;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -23,7 +23,6 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
@@ -53,11 +52,11 @@ import jetbrains.mps.migration.global.MigrationOptions;
   private final List<ScriptApplied> passedM = ListSequence.fromList(new ArrayList<ScriptApplied>());
   private final MigrationChecker myChecker = new MigrationChecker() {
     @Override
-    public void checkMigrations(ProgressMonitor m, Processor<AppliedScript> processor) {
+    public void checkMigrationScripts(Iterable<AppliedScript> scripts, ProgressMonitor pm, Processor<AppliedScript> processor) {
       if (mySettings.preError != 2) {
         return;
       }
-      processor.process(CollectionSequence.fromCollection(getModuleMigrations()).first());
+      processor.process(Sequence.fromIterable(scripts).first());
     }
     public void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor) {
       // todo

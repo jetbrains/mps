@@ -13,10 +13,9 @@ import jetbrains.mps.lang.migration.runtime.base.Problem;
 @GeneratedClass(nodeId = "605495270532748015", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public interface MigrationChecker {
   /**
-   * FIXME bad api
-   *     in fact, we check that executable scripts for *unspecified* set of migrations are present and could get executed
+   * Gives external code a chance to check if scripts we are about to apply are fine (e.g. classes present and executable)
    */
-  void checkMigrations(ProgressMonitor m, Processor<AppliedScript> processor);
+  void checkMigrationScripts(Iterable<AppliedScript> scripts, ProgressMonitor pm, Processor<AppliedScript> processor);
   /**
    * FIXME bad api, pair of SModule, really?
    */

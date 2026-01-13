@@ -56,7 +56,7 @@ public class AntTaskExecutionUtil {
 
     // XXX MigrationSetup needs model read, though this looks odd, indeed.
     MigrationSetup setup = project.getModelAccess().computeReadAction(() -> new MigrationSetup(project));
-    MigrationSession session = new MigrationSessionImpl(project, setup, new MigrationCheckerImpl(project, setup), tracingExecutor, true, true, true);
+    MigrationSession session = new MigrationSessionImpl(project, setup, new MigrationCheckerImpl(project), tracingExecutor, true, true, true);
 
     rv.set(Boolean.TRUE);
 

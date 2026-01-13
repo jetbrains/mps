@@ -8862,6 +8862,7 @@
         <node concept="3cpWs8" id="EG0U$tBN6n" role="3cqZAp">
           <node concept="3cpWsn" id="EG0U$tBN6o" role="3cpWs9">
             <property role="TrG5h" value="res" />
+            <property role="3TUv4t" value="true" />
             <node concept="_YKpA" id="EG0U$tBN6p" role="1tU5fm">
               <node concept="3uibUv" id="EG0U$tBN6q" role="_ZDj9">
                 <ref role="3uigEE" to="bim2:3xQJezs$iyQ" resolve="AppliedScript" />
@@ -8883,7 +8884,15 @@
               </node>
             </node>
             <node concept="liA8E" id="EG0U$tBN6y" role="2OqNvi">
-              <ref role="37wK5l" to="bim2:xB9FQhiR$4" resolve="checkMigrations" />
+              <ref role="37wK5l" to="bim2:EG0U$tGU0B" resolve="checkMigrationScripts" />
+              <node concept="2OqwBi" id="EG0U$tIUpO" role="37wK5m">
+                <node concept="37vLTw" id="EG0U$tIU6o" role="2Oq$k0">
+                  <ref role="3cqZAo" node="EG0U$tBH$y" resolve="session" />
+                </node>
+                <node concept="liA8E" id="EG0U$tIUJy" role="2OqNvi">
+                  <ref role="37wK5l" node="48vNO9iw0lH" resolve="getModuleMigrations" />
+                </node>
+              </node>
               <node concept="37vLTw" id="EG0U$tBN6z" role="37wK5m">
                 <ref role="3cqZAo" node="EG0U$tBLFw" resolve="pm" />
               </node>

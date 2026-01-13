@@ -343,7 +343,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
       MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
       progress.advance(3);
 
-      new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), migrationSetup.getModuleMigrations(), new Processor<Problem>() {
+      new MigrationCheckerImpl(myMpsProject).findNotMigrated(progress.subTask(7), migrationSetup.getModuleMigrations(), new Processor<Problem>() {
         public boolean process(Problem p) {
           ListSequence.fromList(problems).addElement(p);
           return ListSequence.fromList(problems).count() < 1000;

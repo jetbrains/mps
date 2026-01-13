@@ -51,7 +51,7 @@ public class MigrationsMissingError extends MigrationError {
 
   /*package*/ static MigrationsMissingError prepare(MigrationSession session, ProgressMonitor pm) {
     final List<AppliedScript> res = ListSequence.fromList(new ArrayList<>());
-    session.getChecker().checkMigrations(pm, (it) -> {
+    session.getChecker().checkMigrationScripts(session.getModuleMigrations(), pm, (it) -> {
       ListSequence.fromList(res).addElement(it);
       return true;
     });
