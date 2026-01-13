@@ -53,6 +53,9 @@ public class MigrationCheckerImpl implements MigrationChecker {
   private final MigrationSetup myManager;
 
   public MigrationCheckerImpl(Project p, MigrationSetup manager) {
+    // FIXME MigrationSetup is an initial set of migrations for a project/set of modules, and is in use in checkMigrations() only
+    //      implying checker knows about specific migrations. However, findNotMigrated() takes specific (sub-?)set of migrations
+    //      to check, and checkProject(), OTOH, ignores MigrationSetup and its modules. Would be great to have a consistency here.
     myProject = p;
     myManager = manager;
   }

@@ -339,8 +339,6 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
     final List<IssueKindReportItem> problems = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
     repos.getModelAccess().runReadAction(() -> {
       progress.start("Pre-Update Check", 10);
-      final List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-      ListSequence.fromList(modules).addSequence(Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)));
       // we're in model read here, safe to instantiate MigrationSetup
       MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
       progress.advance(3);
