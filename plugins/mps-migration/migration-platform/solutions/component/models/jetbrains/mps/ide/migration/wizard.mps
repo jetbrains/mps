@@ -9690,11 +9690,6 @@
     <property role="TrG5h" value="PostCheckError" />
     <property role="2bfB8j" value="true" />
     <property role="3GE5qa" value="2_migrate.errors" />
-    <node concept="312cEg" id="78xBDbKaRKL" role="jymVt">
-      <property role="TrG5h" value="myHaveBadCode" />
-      <node concept="3Tm6S6" id="78xBDbKaRKM" role="1B3o_S" />
-      <node concept="10P_77" id="78xBDbKaRKO" role="1tU5fm" />
-    </node>
     <node concept="312cEg" id="2LHmEReYrKH" role="jymVt">
       <property role="TrG5h" value="myMigrationsToCheck" />
       <node concept="3Tm6S6" id="2LHmEReYrKI" role="1B3o_S" />
@@ -9706,6 +9701,7 @@
     </node>
     <node concept="312cEg" id="2gVk20sKHhi" role="jymVt">
       <property role="TrG5h" value="myChecker" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="2gVk20sKHhj" role="1B3o_S" />
       <node concept="3uibUv" id="2gVk20sKHhl" role="1tU5fm">
         <ref role="3uigEE" to="bim2:xB9FQhi9bJ" resolve="MigrationChecker" />
@@ -9714,16 +9710,6 @@
     <node concept="2tJIrI" id="5$2ALroRZoQ" role="jymVt" />
     <node concept="3clFbW" id="2htE_P_Nqy3" role="jymVt">
       <node concept="3clFbS" id="2htE_P_Nqy4" role="3clF47">
-        <node concept="3clFbF" id="78xBDbKaRKP" role="3cqZAp">
-          <node concept="37vLTI" id="78xBDbKaRKR" role="3clFbG">
-            <node concept="37vLTw" id="78xBDbKaRKU" role="37vLTJ">
-              <ref role="3cqZAo" node="78xBDbKaRKL" resolve="myHaveBadCode" />
-            </node>
-            <node concept="37vLTw" id="78xBDbKaRKV" role="37vLTx">
-              <ref role="3cqZAo" node="78xBDbKa4xD" resolve="haveBadCode" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2LHmEReYrKM" role="3cqZAp">
           <node concept="37vLTI" id="2LHmEReYrKO" role="3clFbG">
             <node concept="37vLTw" id="2LHmEReYrKR" role="37vLTJ">
@@ -9760,10 +9746,6 @@
             <ref role="3uigEE" to="bim2:3xQJezs$iyQ" resolve="AppliedScript" />
           </node>
         </node>
-      </node>
-      <node concept="37vLTG" id="78xBDbKa4xD" role="3clF46">
-        <property role="TrG5h" value="haveBadCode" />
-        <node concept="10P_77" id="78xBDbKa4MV" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="2gVk20sKBwj" role="3clF46">
         <property role="TrG5h" value="checker" />
@@ -9814,49 +9796,28 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="5$2ALroS7J9" role="3cqZAp">
-          <node concept="3clFbS" id="5$2ALroS7Jb" role="3clFbx">
-            <node concept="3clFbF" id="5$2ALroS8EY" role="3cqZAp">
-              <node concept="d57v9" id="5$2ALroS9zi" role="3clFbG">
-                <node concept="37vLTw" id="5$2ALroS8EW" role="37vLTJ">
-                  <ref role="3cqZAo" node="5$2ALroS74w" resolve="res" />
-                </node>
-                <node concept="Xl_RD" id="5$2ALroSeaa" role="37vLTx">
-                  <property role="Xl_RC" value="Problems will be shown in Model Checker tool when the project is loaded." />
-                </node>
+        <node concept="3clFbF" id="5$2ALroSgUO" role="3cqZAp">
+          <node concept="d57v9" id="5$2ALroShdO" role="3clFbG">
+            <node concept="3cpWs3" id="5$2ALroSiIL" role="37vLTx">
+              <node concept="Xl_RD" id="5$2ALroSiX9" role="3uHU7w">
+                <property role="Xl_RC" value="Places to be changed manually will be shown in Model Checker tool after the project is loaded.\n" />
+              </node>
+              <node concept="Xl_RD" id="5$2ALroShM3" role="3uHU7B">
+                <property role="Xl_RC" value="Some code can't be migrated automatically and should be changed manually.\n" />
               </node>
             </node>
+            <node concept="37vLTw" id="5$2ALroSgUN" role="37vLTJ">
+              <ref role="3cqZAo" node="5$2ALroS74w" resolve="res" />
+            </node>
           </node>
-          <node concept="37vLTw" id="78xBDbKaSOG" role="3clFbw">
-            <ref role="3cqZAo" node="78xBDbKaRKL" resolve="myHaveBadCode" />
-          </node>
-          <node concept="9aQIb" id="5$2ALroSgom" role="9aQIa">
-            <node concept="3clFbS" id="5$2ALroSgon" role="9aQI4">
-              <node concept="3clFbF" id="5$2ALroSgUO" role="3cqZAp">
-                <node concept="d57v9" id="5$2ALroShdO" role="3clFbG">
-                  <node concept="3cpWs3" id="5$2ALroSiIL" role="37vLTx">
-                    <node concept="Xl_RD" id="5$2ALroSiX9" role="3uHU7w">
-                      <property role="Xl_RC" value="Places to be changed manually will be shown in Model Checker tool after the project is loaded.\n" />
-                    </node>
-                    <node concept="Xl_RD" id="5$2ALroShM3" role="3uHU7B">
-                      <property role="Xl_RC" value="Some code can't be migrated automatically and should be changed manually.\n" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="5$2ALroSgUN" role="37vLTJ">
-                    <ref role="3cqZAo" node="5$2ALroS74w" resolve="res" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="5$2ALroTBhC" role="3cqZAp">
-                <node concept="d57v9" id="5$2ALroTB$G" role="3clFbG">
-                  <node concept="Xl_RD" id="5$2ALroTBN3" role="37vLTx">
-                    <property role="Xl_RC" value="You can re-run search for not migrated code at any time by choosing MainMenu-&gt;Migrations-&gt;Run Pre-Update Check" />
-                  </node>
-                  <node concept="37vLTw" id="5$2ALroTBhA" role="37vLTJ">
-                    <ref role="3cqZAo" node="5$2ALroS74w" resolve="res" />
-                  </node>
-                </node>
-              </node>
+        </node>
+        <node concept="3clFbF" id="5$2ALroTBhC" role="3cqZAp">
+          <node concept="d57v9" id="5$2ALroTB$G" role="3clFbG">
+            <node concept="Xl_RD" id="5$2ALroTBN3" role="37vLTx">
+              <property role="Xl_RC" value="You can re-run search for not migrated code at any time by choosing MainMenu-&gt;Migrations-&gt;Run Pre-Update Check" />
+            </node>
+            <node concept="37vLTw" id="5$2ALroTBhA" role="37vLTJ">
+              <ref role="3cqZAo" node="5$2ALroS74w" resolve="res" />
             </node>
           </node>
         </node>
@@ -11594,7 +11555,6 @@
                   <node concept="37vLTw" id="1DEdo3xDJW_" role="37wK5m">
                     <ref role="3cqZAo" node="1DEdo3xDJWx" resolve="executedMigrations" />
                   </node>
-                  <node concept="3clFbT" id="78xBDbKa5od" role="37wK5m" />
                   <node concept="2OqwBi" id="2gVk20sKRp8" role="37wK5m">
                     <node concept="37vLTw" id="2gVk20sKR2m" role="2Oq$k0">
                       <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
