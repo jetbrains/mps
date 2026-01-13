@@ -39,8 +39,6 @@ import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.project.AbstractModule;
-import org.jetbrains.mps.openapi.util.Processor;
-import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 
@@ -185,9 +183,9 @@ public class MigrationTask {
     }
 
     // todo move from here to migration annotations
-    List<AppliedScript> executedMigrations = mySession.getExecutedModuleMigrations();
-    if (findNotMigrated(monitor.subTask(15, SubProgressKind.REPLACING), executedMigrations)) {
-      throw new PostCheckError(mySession.getProject(), executedMigrations, false, mySession.getChecker());
+    PostCheckError pe = PostCheckError.prepare(mySession, monitor.subTask(15, SubProgressKind.REPLACING));
+    if (pe.hasNonMigratedModules()) {
+      throw pe;
     }
     monitor.done();
   }
@@ -453,19 +451,6 @@ public class MigrationTask {
     }
 
     return success.get();
-  }
-
-  private boolean findNotMigrated(ProgressMonitor m, List<AppliedScript> toCheck) {
-    final Wrappers._boolean haveNotMigrated = new Wrappers._boolean(false);
-    // FIXME each time we use checker from within a session, it can take already executed migrations internally
-    //      the only scenario to address is use of MigrationCheckerImpl independently
-    mySession.getChecker().findNotMigrated(m, toCheck, new Processor<Problem>() {
-      public boolean process(Problem p) {
-        haveNotMigrated.value = true;
-        return false;
-      }
-    });
-    return haveNotMigrated.value;
   }
 
   private int moduleStepsCount() {
