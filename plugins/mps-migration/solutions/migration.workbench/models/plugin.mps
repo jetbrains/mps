@@ -6750,14 +6750,8 @@
                 <property role="TrG5h" value="processor" />
                 <node concept="3uibUv" id="4biA4YBv2ek" role="1tU5fm">
                   <ref role="3uigEE" to="yyf4:~Processor" resolve="Processor" />
-                  <node concept="3uibUv" id="4biA4YBv2el" role="11_B2D">
-                    <ref role="3uigEE" to="18ew:~Pair" resolve="Pair" />
-                    <node concept="3uibUv" id="4biA4YBv2em" role="11_B2D">
-                      <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-                    </node>
-                    <node concept="3uibUv" id="4biA4YBv2en" role="11_B2D">
-                      <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-                    </node>
+                  <node concept="3uibUv" id="13dI_iSzZqa" role="11_B2D">
+                    <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
                   </node>
                 </node>
               </node>
@@ -6997,15 +6991,7 @@
                           <ref role="3cqZAo" node="2$iyr2g6mkY" resolve="s" />
                         </node>
                         <node concept="liA8E" id="4biA4YBuFCa" role="2OqNvi">
-                          <ref role="37wK5l" to="bim2:4EpASiE1I7R" resolve="getModule" />
-                          <node concept="2OqwBi" id="4EpASiE4rw3" role="37wK5m">
-                            <node concept="37vLTw" id="4EpASiE4qG8" role="2Oq$k0">
-                              <ref role="3cqZAo" node="5pUhUVGMybv" resolve="myProject" />
-                            </node>
-                            <node concept="liA8E" id="4EpASiE4scf" role="2OqNvi">
-                              <ref role="37wK5l" to="z1c4:~Project.getRepository()" resolve="getRepository" />
-                            </node>
-                          </node>
+                          <ref role="37wK5l" to="bim2:13dI_iSKfGQ" resolve="getModule" />
                         </node>
                       </node>
                     </node>

@@ -38,11 +38,11 @@ public class NotifyingMigrationExecutor implements MigrationExecutor {
   @Override
   public void execute(final ScriptApplied s) {
     Iterable<MigrationListener> seq = listeners();
-    Sequence.fromIterable(seq).visitAll((it) -> it.migrationScriptStarted(s.getScriptInstance(), s.getModule(myProject.getRepository()), myProject));
+    Sequence.fromIterable(seq).visitAll((it) -> it.migrationScriptStarted(s.getScriptInstance(), s.getModule(), myProject));
     try {
       myDelegate.execute(s);
     } finally {
-      Sequence.fromIterable(seq).visitAll((it) -> it.migrationScriptEnded(s.getScriptInstance(), s.getModule(myProject.getRepository()), myProject));
+      Sequence.fromIterable(seq).visitAll((it) -> it.migrationScriptEnded(s.getScriptInstance(), s.getModule(), myProject));
     }
   }
 

@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.Processor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -58,7 +57,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
       processor.process(Sequence.fromIterable(scripts).first());
     }
     @Override
-    public void checkDependencies(Iterable<SModule> modules, ProgressMonitor m, Processor<Pair<SModule, SModule>> processor) {
+    public void checkDependencies(Iterable<SModule> modules, ProgressMonitor m, Processor<IssueKindReportItem> processor) {
       // todo
     }
     @Override
@@ -84,7 +83,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
   private final MigrationExecutor myExecutor = new MigrationExecutor() {
     @Override
     public void execute(ScriptApplied s) {
-      s.getScriptInstance().execute(s.getModule(myProject.getRepository()));
+      s.getScriptInstance().execute(s.getModule());
       ListSequence.fromList(passedM).addElement(s);
     }
     @Override
