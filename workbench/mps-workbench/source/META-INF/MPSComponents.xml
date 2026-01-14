@@ -8,13 +8,6 @@
   <xi:include href="/META-INF/MPSEditor.xml"/>
   <xi:include href="/META-INF/MPSUI.xml"/>
   
-  <project-components>
-    <component>
-      <interface-class>jetbrains.mps.project.MPSProject</interface-class>
-      <implementation-class>jetbrains.mps.project.StandaloneMPSProject</implementation-class>
-    </component>
-  </project-components>
-
   <extensions defaultExtensionNs="com.intellij">
     <appStarter id="mps-inspect" implementation="jetbrains.mps.tool.environment.MPSHeadlessPlatformStarter"/>
 
@@ -32,8 +25,11 @@
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
     <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
     <postStartupActivity implementation="jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot" />
-    <postStartupActivity implementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Activity" />
     <projectService serviceImplementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager"/>
+    <postStartupActivity implementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Activity" />
+    <projectService serviceInterface="jetbrains.mps.project.MPSProject"
+            serviceImplementation="jetbrains.mps.project.StandaloneMPSProject"/>
+    <postStartupActivity implementation="jetbrains.mps.project.StandaloneMPSProject$Activity" />
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.TabRootNodesTracker"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.FileStatusChangeListener"/>
@@ -84,6 +80,7 @@
 
   <applicationListeners>
     <listener class="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Listener" topic="com.intellij.openapi.project.ProjectCloseListener"/>
+    <listener class="jetbrains.mps.project.StandaloneMPSProject$Listener" topic="com.intellij.openapi.project.ProjectCloseListener"/>
     <listener class="jetbrains.mps.intellij.integration.LafFixer$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.ide.blame.IntelliJReporterReplacer" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.intellij.integration.LoggerLevelOverride" topic="com.intellij.ide.AppLifecycleListener"/>

@@ -22,16 +22,17 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectCloseListener;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.platform.backend.workspace.GlobalWorkspaceModelCache;
 import com.intellij.platform.backend.workspace.WorkspaceModel;
+import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
-import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.project.structure.project.ProjectDescriptor.Builder;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
@@ -41,8 +42,6 @@ import kotlin.Unit;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.IOException;
 
@@ -62,6 +61,21 @@ import java.io.IOException;
   storages = @Storage("modules.xml")
 )
 public class StandaloneMPSProject extends MPSProject implements PersistentStateComponent<Element> {
+
+  public static class Activity extends MPSProjectActivity {
+    @Override
+    public void runActivity(@NotNull Project project) {
+      project.getService(MPSProject.class).projectOpened();
+    }
+  }
+
+  public static class Listener implements ProjectCloseListener {
+    @Override
+    public void projectClosed(@NotNull Project p) {
+      p.getService(MPSProject.class).projectClosed();
+    }
+  }
+
   private static final Logger LOG = Logger.getLogger(StandaloneMPSProject.class);
   private ModuleFileChangeListener myListener;
   private final VFSManager myManager;
@@ -115,16 +129,16 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   }
 
   @Override
-  public void initComponent() {
-    super.initComponent();
+  public void projectOpened() {
+    super.projectOpened();
     new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
   }
 
   @Override
-  public void disposeComponent() {
+  public void projectClosed() {
     new RepoListenerRegistrar(getRepository(), myProblemsListener).detach();
     removeListener(myListener);
-    super.disposeComponent();
+    super.projectClosed();
   }
 
   // todo remove; project descriptor is its internal substance which represents the persistence data

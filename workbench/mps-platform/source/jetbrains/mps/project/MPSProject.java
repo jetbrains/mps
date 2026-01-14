@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.project;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
@@ -35,24 +35,26 @@ import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.tracking.ConflictResolverImpl;
+import kotlin.Unit;
 import org.jdom.JDOMException;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Represents a project based on the idea platform project
- * Used in the idea plugin
  * <p>
  * fixme introduce a project<->library relation on this particular level (AP)
  */
-public class MPSProject extends ProjectBase implements FileBasedProject, ProjectComponent {
+public abstract class MPSProject extends ProjectBase implements FileBasedProject, Disposable {
+
   private final com.intellij.openapi.project.Project myProject;
   private final IdeaFileSystem myProjectFileSystem;
 
@@ -77,18 +79,35 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   }
 
   @Override
-  public void initComponent() {
-    // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
-    myFileSystemBridge = new FileSystemProjectBridge(this);
-    // FWIW, there's OnReloadingUndoCleaner (at least) that depends on this bridge present for a project
-    myFileSystemBridge.projectOpened();
+  public void projectOpened() {
+    if (myFileSystemBridge == null) {
+      // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
+      myFileSystemBridge = new FileSystemProjectBridge(this);
+      // FWIW, there's OnReloadingUndoCleaner (at least) that depends on this bridge present for a project
+      myFileSystemBridge.projectOpened();
+    }
+    super.projectOpened();
   }
 
-  public void disposeComponent() {
+  @Override
+  public void projectClosed() {
+    super.projectClosed();
+  }
+
+  @Override
+  public void dispose() {
+    super.dispose();
+  }
+
+  @Override
+  protected synchronized void destroy() {
+    if (isDisposed()) {
+      return;
+    }
     myFileSystemBridge.projectClosed();
     myFileSystemBridge = null;
     ((ProjectRepository) getRepository()).setConflictResolver(null);
-    dispose();
+    super.destroy();
   }
 
   @NotNull
@@ -100,13 +119,6 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
       throw new IllegalArgumentException("The project url is null (default project?)");
     }
     return new File(presentableUrl);
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Project";
   }
 
   /**
@@ -136,15 +148,6 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
       return null;
     }
     return project.getComponent(MPSProject.class);
-  }
-
-  /**
-   * closing the project if it has not already been closed
-   */
-  @Override
-  public void dispose() {
-    // FIXME remove override
-    super.dispose();
   }
 
   @Override

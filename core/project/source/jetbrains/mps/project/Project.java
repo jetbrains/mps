@@ -41,7 +41,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
   private final ProjectScope myScope = new ProjectScope();
   private ProjectRepository myRepository;
 
-  private boolean myDisposed;
+  private volatile boolean myDisposed;
 
   // IMPORTANT. Subclasses shall invoke either use other cons or #initRepository(ProjectRepository) right after construction.
   //            I know it's ugly, just can't make final fields in two classes that demand each other, and got other important tasks at hand
@@ -210,6 +210,16 @@ public abstract class Project implements MPSModuleOwner, IProject {
    * closes and disposes the project
    */
   public void dispose() {
+    destroy();
+  }
+
+  /**
+   * Must be called on project closing
+   */
+  protected synchronized void destroy() {
+    if (myDisposed) {
+      return;
+    }
     // FIXME what does 'removeModule' mean here?!
     getRepository().getModelAccess().runWriteAction(() -> getProjectModules().forEach(this::removeModule));
     myRepository.dispose();
