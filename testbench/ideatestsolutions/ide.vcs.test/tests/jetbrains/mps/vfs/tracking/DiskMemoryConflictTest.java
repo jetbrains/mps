@@ -18,6 +18,7 @@ package jetbrains.mps.vfs.tracking;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
+import com.intellij.testFramework.IndexingTestUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
@@ -64,6 +65,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -147,6 +149,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
     attachConflictResolver();
     IFile existingFile = getFileSystem().findExistingFile(getModelFile().getAbsolutePath());
     Assume.assumeNotNull(existingFile);
+    IndexingTestUtil.waitUntilIndexesAreReady(getMPSProject().getProject());
   }
 
   @NotNull
