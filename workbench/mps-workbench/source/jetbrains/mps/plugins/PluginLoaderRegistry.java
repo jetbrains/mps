@@ -551,7 +551,7 @@ public class PluginLoaderRegistry implements Disposable {
     private void addContributors(Set<PluginContributor> contributorsToAdd, ProgressMonitor monitor) {
       contributorsToAdd.removeAll(myCurrentContributors);
       LOG.debug("Loading " + contributorsToAdd.size() + " new contributors to " + myCurrentLoaders.size() + " current loaders");
-      loadContributors(contributorsToAdd, myCurrentLoaders, monitor.subTask(1));
+      loadContributors(contributorsToAdd, new HashSet<>(myCurrentLoaders), monitor.subTask(1));
       myCurrentContributors.addAll(contributorsToAdd);
     }
 
@@ -559,7 +559,7 @@ public class PluginLoaderRegistry implements Disposable {
       Set<PluginContributor> factories = new LinkedHashSet<>(getContributorsFromExtPoint());
       factories.removeAll(myCurrentContributors);
       LOG.debug("Loading " + factories.size() + " Factories");
-      loadContributors(factories, myCurrentLoaders, monitor.subTask(1));
+      loadContributors(factories, new HashSet<>(myCurrentLoaders), monitor.subTask(1));
       myCurrentContributors.addAll(factories);
     }
 
@@ -573,7 +573,7 @@ public class PluginLoaderRegistry implements Disposable {
     private void removeContributors(Set<PluginContributor> contributorsToRemove, ProgressMonitor monitor) {
       contributorsToRemove.retainAll(myCurrentContributors); // just a precaution
       LOG.debug("Unloading " + contributorsToRemove.size() + " contributors from " + myCurrentLoaders.size() + " current loaders");
-      unloadContributors(contributorsToRemove, myCurrentLoaders, monitor.subTask(1));
+      unloadContributors(contributorsToRemove, new HashSet<>(myCurrentLoaders), monitor.subTask(1));
       myCurrentContributors.removeAll(contributorsToRemove);
     }
 
