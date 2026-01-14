@@ -10,8 +10,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 /**
  * Collection of modules with a script to apply to them.
@@ -51,20 +51,17 @@ public abstract class AppliedScript {
     return (myScript != null ? myScript.getCaption() : "");
   }
 
-  public abstract void refreshScriptInstances(Project mpsProject);
-
   /**
-   * provisional code for legacy use of SA in MigrationExecutor
+   * 
+   * 
+   * @return null iff !scriptPresent()
    */
-  public ScriptApplied<BaseScriptReference> asLegacy(@NotNull SModule module) {
-    if (!(ListSequence.fromList(myModules).contains(module.getModuleReference()))) {
-      throw new IllegalArgumentException(String.format("Module '%s' not assigned for the script '%s'", module.getModuleName(), caption()));
-    }
-    if (scriptPresent()) {
-      return new ScriptApplied<>(module, myScript);
-    }
-    return new ScriptApplied<>(module, myScriptRef);
+  @Nullable
+  public BaseScript getScriptInstance() {
+    return myScript;
   }
+
+  public abstract void refreshScriptInstances(Project mpsProject);
 
   public abstract ApplyState ready(@NotNull SModule module);
 

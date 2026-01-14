@@ -30,7 +30,6 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.ide.migration.ScriptApplied;
-import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
@@ -192,7 +191,7 @@ public interface MigrationSession {
                 }
                 AppliedScript.ApplyState applyState = as.ready(resolvedModule);
                 if (applyState == AppliedScript.ApplyState.GoodToGo) {
-                  ScriptApplied<BaseScriptReference> sa = as.asLegacy(resolvedModule);
+                  ScriptApplied sa = new ScriptApplied(resolvedModule, as.getScriptInstance());
                   depsPossiblyChanged = true;
                   getExecutor().execute(sa);
                   progress.advance(1);

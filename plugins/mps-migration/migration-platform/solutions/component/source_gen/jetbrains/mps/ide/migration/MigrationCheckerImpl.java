@@ -198,7 +198,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
       // todo show only annotations left by our run migrations
       for (AppliedScript as : Sequence.fromIterable(migrationsToCheck).where((it) -> it.scriptPresent() && it.scriptReference() instanceof MigrationScriptReference)) {
         for (SModule module : Sequence.fromIterable(as.affectedModules()).select((it) -> it.resolve(myProject.getRepository())).where(new NotNullWhereFilter())) {
-          for (Problem p : Sequence.fromIterable(((MigrationScript) as.asLegacy(module).getScriptInstance()).check(module))) {
+          for (Problem p : Sequence.fromIterable(((MigrationScript) as.getScriptInstance()).check(module))) {
             if (!(processor.process(p))) {
               m.done();
               return;

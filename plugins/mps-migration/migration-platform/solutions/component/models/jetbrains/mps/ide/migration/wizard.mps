@@ -6583,18 +6583,21 @@
                                           <property role="TrG5h" value="sa" />
                                           <node concept="3uibUv" id="5Iyrq0KdiyB" role="1tU5fm">
                                             <ref role="3uigEE" to="bim2:6fMyXCHDaRA" resolve="ScriptApplied" />
-                                            <node concept="3uibUv" id="5Iyrq0KdiyE" role="11_B2D">
-                                              <ref role="3uigEE" to="6f4m:6fMyXCHoD9H" resolve="BaseScriptReference" />
-                                            </node>
                                           </node>
-                                          <node concept="2OqwBi" id="5Iyrq0KdwMB" role="33vP2m">
-                                            <node concept="37vLTw" id="5Iyrq0KdwMC" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="7pDtExTCzz9" resolve="as" />
-                                            </node>
-                                            <node concept="liA8E" id="5Iyrq0KdwMD" role="2OqNvi">
-                                              <ref role="37wK5l" to="bim2:5Iyrq0K6LXZ" resolve="asLegacy" />
-                                              <node concept="37vLTw" id="5Iyrq0KdwME" role="37wK5m">
+                                          <node concept="2ShNRf" id="13dI_iSGefK" role="33vP2m">
+                                            <node concept="1pGfFk" id="13dI_iSGvCv" role="2ShVmc">
+                                              <property role="373rjd" value="true" />
+                                              <ref role="37wK5l" to="bim2:3xQJezt_h0_" resolve="ScriptApplied" />
+                                              <node concept="37vLTw" id="13dI_iSGASp" role="37wK5m">
                                                 <ref role="3cqZAo" node="5Iyrq0KaJL8" resolve="resolvedModule" />
+                                              </node>
+                                              <node concept="2OqwBi" id="13dI_iSGR6h" role="37wK5m">
+                                                <node concept="37vLTw" id="13dI_iSGNu2" role="2Oq$k0">
+                                                  <ref role="3cqZAo" node="7pDtExTCzz9" resolve="as" />
+                                                </node>
+                                                <node concept="liA8E" id="13dI_iSGUfS" role="2OqNvi">
+                                                  <ref role="37wK5l" to="bim2:13dI_iSFZlC" resolve="getScriptInstance" />
+                                                </node>
                                               </node>
                                             </node>
                                           </node>

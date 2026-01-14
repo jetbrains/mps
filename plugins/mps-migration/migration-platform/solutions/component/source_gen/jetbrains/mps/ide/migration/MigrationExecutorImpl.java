@@ -77,7 +77,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     pm.execute(myProject);
   }
 
-  private void executeMigrationScript(ScriptApplied<MigrationScriptReference> sa) {
+  private void executeMigrationScript(ScriptApplied sa) {
     MigrationScript script = (MigrationScript) sa.getScriptInstance();
     AbstractModule module = ((AbstractModule) sa.getModule(myProject.getRepository()));
     SLanguage fromLanguage = script.getReference().getLanguage();
@@ -109,8 +109,8 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     module.setChanged();
   }
 
-  private void executeRefactoringScript(ScriptApplied<RefactoringScriptReference> sa) {
-    RefactoringScriptReference rLog = sa.getScriptReference();
+  private void executeRefactoringScript(ScriptApplied sa) {
+    RefactoringScriptReference rLog = (RefactoringScriptReference) sa.getScriptReference();
     final AbstractModule module = ((AbstractModule) sa.getModule(myProject.getRepository()));
     SModule fromModule = rLog.getModule(myProject.getRepository());
     int importedVersion = MigrationModuleUtil.getDependencyVersion(module, fromModule);
