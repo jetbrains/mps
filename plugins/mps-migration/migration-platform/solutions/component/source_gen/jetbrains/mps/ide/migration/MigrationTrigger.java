@@ -297,17 +297,16 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
           if (myPostponedState.get() == null || force) {
             boolean hasSomethingToApply = newState.hasSomethingToApply();
             if (hasSomethingToApply) {
-              final Tuples._2<MigrationResult, MigrationError> result = runMigration(migrationSetup);
+              Tuples._2<MigrationResult, MigrationError> result = runMigration(migrationSetup);
               if (result._0() == MigrationResult.POSTPONED) {
                 myPostponedState.set(newState);
                 myNotifications.showRequired(migrationSetup);
               } else if (result._0() == MigrationResult.FINISHED_WITH_ERRORS) {
                 ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
-                  public void run(@NotNull final ProgressIndicator progressIndicator) {
-                    myMpsProject.getRepository().getModelAccess().runReadAction(() -> {
-                      List<IssueKindReportItem> problems = Sequence.fromIterable(result._1().getProblems(progressIndicator)).toList();
-                      showProblems(problems);
-                    });
+                  public void run(@NotNull ProgressIndicator progressIndicator) {
+                    // in fact, getProblems doesn't use progress indicator ATM, perhaps, shall drop it altogether?
+                    List<IssueKindReportItem> problems = Sequence.fromIterable(result._1().getProblems(progressIndicator)).toList();
+                    showProblems(problems);
                   }
                 });
                 myPostponedState.set(newState);
@@ -369,7 +368,10 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   }
 
   private void showProblems(final List<IssueKindReportItem> problems) {
-    ApplicationManager.getApplication().invokeLater(() -> myMpsProject.getRepository().getModelAccess().runReadAction(() -> myIssueReporter.showProblems(problems)), ModalityState.nonModal());
+    ApplicationManager.getApplication().invokeLater(() -> {
+      // XXX why do we assume myIssueReporter needs RA for *project* repo to show issues?!
+      myMpsProject.getRepository().getModelAccess().runReadAction(() -> myIssueReporter.showProblems(problems));
+    }, ModalityState.nonModal());
   }
 
   private enum MigrationResult {

@@ -62,16 +62,8 @@ public class AntTaskExecutionUtil {
 
     MigrationTask task = new MigrationTask(session, haltOnPrecheckFailure, haltOnDependencyError) {
       @Override
-      protected void error(@NotNull final MigrationError error) {
-        if (LOG.isErrorLevel()) {
-          LOG.error("Migration pre-check failed, stopping...");
-        }
-        if (LOG.isErrorLevel()) {
-          LOG.error(error.getMessage());
-        }
-        // FIXME migration error that expects model read - very nice, indeed.
-        project.getRepository().getModelAccess().runReadAction(() -> error.logProblems(new LogHandler(Logger.getLogger(AntTaskExecutionUtil.class))));
-
+      protected void error(@NotNull MigrationError error) {
+        logProblems("Migration pre-check failed, stopping...", error, new LogHandler(Logger.getLogger(AntTaskExecutionUtil.class)));
         rv.set(Boolean.FALSE);
       }
     };
