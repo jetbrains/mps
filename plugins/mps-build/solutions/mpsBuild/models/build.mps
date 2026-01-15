@@ -10342,11 +10342,6 @@
             <ref role="3bR37D" node="3MI1gu0QouH" resolve="jetbrains.mps.editor.runtime" />
           </node>
         </node>
-        <node concept="1SiIV0" id="3$ZLRFq4nJy" role="3bR37C">
-          <node concept="3bR9La" id="3$ZLRFq4nJz" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="44zGK_1qHRm" role="3bR37C">
           <node concept="3bR9La" id="44zGK_1qHRn" role="1SiIV1">
             <ref role="3bR37D" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
