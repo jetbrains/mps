@@ -54,7 +54,6 @@
     <import index="pz2c" ref="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)" />
     <import index="2u9v" ref="r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
-    <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" />
     <import index="tpfp" ref="r:00000000-0000-4000-0000-011c89590519(jetbrains.mps.baseLanguage.regexp.jetbrains.mps.regexp.accessory)" />
     <import index="1i04" ref="r:3270011d-8b2d-4938-8dff-d256a759e017(jetbrains.mps.lang.behavior.structure)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
@@ -13101,6 +13100,15 @@
       </node>
       <node concept="VechU" id="hT0KxlW" role="3F10Kt">
         <property role="Vb096" value="fLJRk5B/darkGray" />
+      </node>
+    </node>
+    <node concept="14StLt" id="LU8F6GyzzW" role="V601i">
+      <property role="TrG5h" value="GrayOut" />
+      <node concept="VechU" id="6t_vhrzKeD" role="3F10Kt">
+        <property role="Vb096" value="fLJRk5A/lightGray" />
+      </node>
+      <node concept="1I8cUB" id="LU8F6G_O63" role="3F10Kt">
+        <property role="Vb096" value="fLJRk5A/lightGray" />
       </node>
     </node>
   </node>
@@ -72605,7 +72613,7 @@
         </node>
       </node>
       <node concept="3EZMnI" id="5pbfqymgJz7" role="3EZMnx">
-        <ref role="1k5W1q" to="tpch:LU8F6GyzzW" resolve="GrayOut" />
+        <ref role="1k5W1q" node="LU8F6GyzzW" resolve="GrayOut" />
         <node concept="3F0ifn" id="5pbfqymgJz8" role="3EZMnx">
           <property role="3F0ifm" value="&lt;" />
           <ref role="1k5W1q" node="i18cmFm" resolve="BaseAngleBracket" />

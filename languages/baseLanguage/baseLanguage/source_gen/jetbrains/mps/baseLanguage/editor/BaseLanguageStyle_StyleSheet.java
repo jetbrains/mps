@@ -667,6 +667,18 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
   }
+  public static class GrayOutStyleClass extends AbstractStyleClass {
+    public GrayOutStyleClass(EditorBuilderEnvironment builderEnv) {
+      super(builderEnv);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.lightGray));
+      style.set(StyleAttributes.NULL_TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.lightGray));
+    }
+
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IComment$KY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
