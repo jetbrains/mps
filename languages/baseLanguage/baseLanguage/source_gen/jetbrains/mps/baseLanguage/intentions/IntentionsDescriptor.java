@@ -41,9 +41,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept
-          intentions = new IntentionFactory[2];
-          intentions[0] = new ConvertToClosure_Intention();
-          intentions[1] = new RemoveTVDInAnonymousClass_Intention();
+          intentions = new IntentionFactory[1];
+          intentions[0] = new RemoveTVDInAnonymousClass_Intention();
         }
         break;
       case 2:
@@ -449,7 +448,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[115];
+    IntentionFactory[] rv = new IntentionFactory[114];
     rv[0] = new AddCastStatement_Intention();
     rv[1] = new SplitStringIntoConcatenation_Intention();
     rv[2] = new SplitIntoDeclarationAndAssignment_Intention();
@@ -518,53 +517,52 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[65] = new SurroundWithIfElseClause_Intention();
     rv[66] = new AddTypeParameters_Intention();
     rv[67] = new ToggleMethodSynchronized_Intention();
-    rv[68] = new ConvertToClosure_Intention();
-    rv[69] = new UnwrapElse_Intention();
-    rv[70] = new RemoveTVDInAnonymousClass_Intention();
-    rv[71] = new SplitIf_Intention();
-    rv[72] = new ConvertIfConditionToTernaryOperator_Intention();
-    rv[73] = new AddModifiers_Intention();
-    rv[74] = new AddOverrideAnnotation_Intention();
-    rv[75] = new RemoveStaticFieldModifier_Intention();
-    rv[76] = new AddStaticFieldModifier_Intention();
-    rv[77] = new ToggleMethodStatic_Intention();
-    rv[78] = new MakeStaticFieldVolatile_Intention();
-    rv[79] = new MakeStaticFieldTransient_Intention();
-    rv[80] = new OrToAndAndBack_Intention();
-    rv[81] = new SwapTernaryBranches_Intention();
-    rv[82] = new SwitchToCustomPropertyImplementation_Intention();
-    rv[83] = new SwitchToDefaultPropertyImplementation_Intention();
-    rv[84] = new SwitchToCustomConstructorPropertyImplementation_Intention();
-    rv[85] = new CleanUnmatchedParentheses_Intention();
-    rv[86] = new ComputeWholeExpressionValue_Intention();
-    rv[87] = new ComputeExpressionValue_Intention();
-    rv[88] = new JoinVariableDeclarationAndInitializer_Intention();
-    rv[89] = new AutoSpacing_Intention();
-    rv[90] = new UnwrapUnnecessaryElse_Intention();
-    rv[91] = new SurroundWithPassByRef_Intention();
-    rv[92] = new FixMissingDefaultConstructor_Intention();
-    rv[93] = new CreateMethodFromUsage_Intention();
-    rv[94] = new CreateRootClassFromUsage_Intention();
-    rv[95] = new UpdateCommentToSingleLineStructure_Intention();
-    rv[96] = new ToggleMethodDefault_Intention();
-    rv[97] = new UnwrapBlockStatement_Intention();
-    rv[98] = new SurroundWithTypeCastInParens_Intention();
-    rv[99] = new UnwrapStatementList_Intention();
-    rv[100] = new MoveUpIntoIfBranches_Intention();
-    rv[101] = new MergeFollowingSingleLineCommentsIntoMultilineComment_Intention();
-    rv[102] = new MakeMultiline_Intention();
-    rv[103] = new MakeSingleline_Intention();
-    rv[104] = new SwitchToImplicitTypeArgs_Intention();
-    rv[105] = new RemoveCastExpr_Intention();
-    rv[106] = new ToggleIndividualDotExpressionLineStyle_Intention();
-    rv[107] = new SetMultilineDotExpressionLineStyle_Intention();
-    rv[108] = new SetSinglelineDotExpressionLineStyle_Intention();
-    rv[109] = new StringFormat_Intention();
-    rv[110] = new StringPlusToFormat_Intention();
-    rv[111] = new LocalVarToField_Intention();
-    rv[112] = new ReplaceFieldWithProperty_Intention();
-    rv[113] = new ReplacePropertyWithField_Intention();
-    rv[114] = new ToggleIndividualBinExpressionLineStyle_Intention();
+    rv[68] = new UnwrapElse_Intention();
+    rv[69] = new RemoveTVDInAnonymousClass_Intention();
+    rv[70] = new SplitIf_Intention();
+    rv[71] = new ConvertIfConditionToTernaryOperator_Intention();
+    rv[72] = new AddModifiers_Intention();
+    rv[73] = new AddOverrideAnnotation_Intention();
+    rv[74] = new RemoveStaticFieldModifier_Intention();
+    rv[75] = new AddStaticFieldModifier_Intention();
+    rv[76] = new ToggleMethodStatic_Intention();
+    rv[77] = new MakeStaticFieldVolatile_Intention();
+    rv[78] = new MakeStaticFieldTransient_Intention();
+    rv[79] = new OrToAndAndBack_Intention();
+    rv[80] = new SwapTernaryBranches_Intention();
+    rv[81] = new SwitchToCustomPropertyImplementation_Intention();
+    rv[82] = new SwitchToDefaultPropertyImplementation_Intention();
+    rv[83] = new SwitchToCustomConstructorPropertyImplementation_Intention();
+    rv[84] = new CleanUnmatchedParentheses_Intention();
+    rv[85] = new ComputeWholeExpressionValue_Intention();
+    rv[86] = new ComputeExpressionValue_Intention();
+    rv[87] = new JoinVariableDeclarationAndInitializer_Intention();
+    rv[88] = new AutoSpacing_Intention();
+    rv[89] = new UnwrapUnnecessaryElse_Intention();
+    rv[90] = new SurroundWithPassByRef_Intention();
+    rv[91] = new FixMissingDefaultConstructor_Intention();
+    rv[92] = new CreateMethodFromUsage_Intention();
+    rv[93] = new CreateRootClassFromUsage_Intention();
+    rv[94] = new UpdateCommentToSingleLineStructure_Intention();
+    rv[95] = new ToggleMethodDefault_Intention();
+    rv[96] = new UnwrapBlockStatement_Intention();
+    rv[97] = new SurroundWithTypeCastInParens_Intention();
+    rv[98] = new UnwrapStatementList_Intention();
+    rv[99] = new MoveUpIntoIfBranches_Intention();
+    rv[100] = new MergeFollowingSingleLineCommentsIntoMultilineComment_Intention();
+    rv[101] = new MakeMultiline_Intention();
+    rv[102] = new MakeSingleline_Intention();
+    rv[103] = new SwitchToImplicitTypeArgs_Intention();
+    rv[104] = new RemoveCastExpr_Intention();
+    rv[105] = new ToggleIndividualDotExpressionLineStyle_Intention();
+    rv[106] = new SetMultilineDotExpressionLineStyle_Intention();
+    rv[107] = new SetSinglelineDotExpressionLineStyle_Intention();
+    rv[108] = new StringFormat_Intention();
+    rv[109] = new StringPlusToFormat_Intention();
+    rv[110] = new LocalVarToField_Intention();
+    rv[111] = new ReplaceFieldWithProperty_Intention();
+    rv[112] = new ReplacePropertyWithField_Intention();
+    rv[113] = new ToggleIndividualBinExpressionLineStyle_Intention();
     return Arrays.asList(rv);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b9245fc5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL)).seal();

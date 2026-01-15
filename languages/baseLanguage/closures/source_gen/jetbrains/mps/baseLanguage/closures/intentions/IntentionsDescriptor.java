@@ -35,17 +35,24 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new ToggleMultiLine_Intention();
+          intentions[0] = new ConvertToClosure_Intention();
         }
         break;
       case 1:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new add_throws_to_FunctionType_Intention();
+          intentions[0] = new ToggleMultiLine_Intention();
         }
         break;
       case 2:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new add_throws_to_FunctionType_Intention();
+        }
+        break;
+      case 3:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
@@ -61,11 +68,12 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[3];
+    IntentionFactory[] rv = new IntentionFactory[4];
     rv[0] = new add_throws_to_FunctionType_Intention();
     rv[1] = new replace_invokeOperation_with_compactInvoke_Intention();
     rv[2] = new ToggleMultiLine_Intention();
+    rv[3] = new ConvertToClosure_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x11d67349093L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x11d67349093L)).seal();
 }
