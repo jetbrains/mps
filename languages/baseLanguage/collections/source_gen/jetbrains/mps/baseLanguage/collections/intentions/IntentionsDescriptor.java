@@ -71,8 +71,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 5:
         if (true) {
           // concept
-          intentions = new IntentionFactory[1];
+          intentions = new IntentionFactory[2];
           intentions[0] = new ConvertForeachStatementToForEach_Intention();
+          intentions[1] = new ReplaceForEachLoopWithIndexedLoop_Intention();
         }
         break;
       case 6:
@@ -86,24 +87,31 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new RemoveAllSetElementsOperation_replace_Intention();
+          intentions[0] = new AlterStatementListContainer_Intention();
         }
         break;
       case 8:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new RemoveSetElementOperation_replace_Intention();
+          intentions[0] = new RemoveAllSetElementsOperation_replace_Intention();
         }
         break;
       case 9:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new add_sequence_initializer_Intention();
+          intentions[0] = new RemoveSetElementOperation_replace_Intention();
         }
         break;
       case 10:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new add_sequence_initializer_Intention();
+        }
+        break;
+      case 11:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
@@ -119,7 +127,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[13];
+    IntentionFactory[] rv = new IntentionFactory[15];
     rv[0] = new ConvertForEachStatementToForeachStatement_Intention();
     rv[1] = new CreateInitializer_Intention();
     rv[2] = new add_init_values_Intention();
@@ -133,7 +141,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[10] = new RemoveAllSetElementsOperation_replace_Intention();
     rv[11] = new ConvertForeachStatementToForEach_Intention();
     rv[12] = new ConvertToMultiForeach_Intention();
+    rv[13] = new AlterStatementListContainer_Intention();
+    rv[14] = new ReplaceForEachLoopWithIndexedLoop_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d969dca87L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9514ebd8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d969dca87L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d9514ebd8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116dbb34f2dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d96b14ae4L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d968cae32L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d14c97b16L), MetaIdFactory.conceptId(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4838d33L)).seal();
 }

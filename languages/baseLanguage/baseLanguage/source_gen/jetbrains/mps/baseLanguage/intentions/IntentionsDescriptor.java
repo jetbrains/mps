@@ -201,53 +201,45 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new ReplaceForEachLoopWithIndexedLoop_Intention();
+          intentions[0] = new CreateSetAccessor_Intention();
         }
         break;
       case 21:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new CreateSetAccessor_Intention();
+          intentions[0] = new AddAnnotation_Intention();
         }
         break;
       case 22:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new AddAnnotation_Intention();
+          intentions[0] = new MakeDeprecated_Intention();
         }
         break;
       case 23:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
-          intentions[0] = new MakeDeprecated_Intention();
+          intentions[0] = new UnwrapStatementList_Intention();
         }
         break;
       case 24:
-        if (true) {
-          // concept
-          intentions = new IntentionFactory[2];
-          intentions[0] = new AlterStatementListContainer_Intention();
-          intentions[1] = new UnwrapStatementList_Intention();
-        }
-        break;
-      case 25:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new SwitchToImplicitTypeArgs_Intention();
         }
         break;
-      case 26:
+      case 25:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddTypeParameters_Intention();
         }
         break;
-      case 27:
+      case 26:
         if (true) {
           // concept
           intentions = new IntentionFactory[12];
@@ -265,7 +257,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[11] = new UnwrapUnnecessaryElse_Intention();
         }
         break;
-      case 28:
+      case 27:
         if (true) {
           // concept
           intentions = new IntentionFactory[2];
@@ -273,7 +265,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new FilpEqualsIntention_Intention();
         }
         break;
-      case 29:
+      case 28:
         if (true) {
           // concept
           intentions = new IntentionFactory[4];
@@ -283,28 +275,28 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[3] = new ToggleMethodDefault_Intention();
         }
         break;
-      case 30:
+      case 29:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new SpecifyClass_Intention();
         }
         break;
-      case 31:
+      case 30:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new SplitIntoDeclarationAndAssignment_Intention();
         }
         break;
-      case 32:
+      case 31:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new LocalVarToField_Intention();
         }
         break;
-      case 33:
+      case 32:
         if (true) {
           // concept
           intentions = new IntentionFactory[2];
@@ -312,21 +304,21 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new ToggleMethodStatic_Intention();
         }
         break;
-      case 34:
+      case 33:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new MakeSingleline_Intention();
         }
         break;
-      case 35:
+      case 34:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFieldForUnUsedParameter_Intention();
         }
         break;
-      case 36:
+      case 35:
         if (true) {
           // concept
           intentions = new IntentionFactory[2];
@@ -334,7 +326,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new StringPlusToFormat_Intention();
         }
         break;
-      case 37:
+      case 36:
         if (true) {
           // concept
           intentions = new IntentionFactory[4];
@@ -344,7 +336,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[3] = new ReplacePropertyWithField_Intention();
         }
         break;
-      case 38:
+      case 37:
         if (true) {
           // concept
           intentions = new IntentionFactory[3];
@@ -353,7 +345,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[2] = new MakeMultiline_Intention();
         }
         break;
-      case 39:
+      case 38:
         if (true) {
           // concept
           intentions = new IntentionFactory[14];
@@ -373,7 +365,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[13] = new MoveUpIntoIfBranches_Intention();
         }
         break;
-      case 40:
+      case 39:
         if (true) {
           // concept
           intentions = new IntentionFactory[3];
@@ -382,21 +374,21 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[2] = new MakeStaticFieldTransient_Intention();
         }
         break;
-      case 41:
+      case 40:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new StringFormat_Intention();
         }
         break;
-      case 42:
+      case 41:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new SplitStringIntoConcatenation_Intention();
         }
         break;
-      case 43:
+      case 42:
         if (true) {
           // concept
           intentions = new IntentionFactory[2];
@@ -404,35 +396,35 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new SwapTernaryBranches_Intention();
         }
         break;
-      case 44:
+      case 43:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateReferenceOnClass_Intention();
         }
         break;
-      case 45:
+      case 44:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRuntimeExceptionToMethodSignature_Intention();
         }
         break;
-      case 46:
+      case 45:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToArrayType_Intention();
         }
         break;
-      case 47:
+      case 46:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFinalModifierToAny_Intention();
         }
         break;
-      case 48:
+      case 47:
         if (true) {
           // concept
           intentions = new IntentionFactory[3];
@@ -441,7 +433,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[2] = new MakeParameterFinal_Intention();
         }
         break;
-      case 49:
+      case 48:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
@@ -457,7 +449,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[117];
+    IntentionFactory[] rv = new IntentionFactory[115];
     rv[0] = new AddCastStatement_Intention();
     rv[1] = new SplitStringIntoConcatenation_Intention();
     rv[2] = new SplitIntoDeclarationAndAssignment_Intention();
@@ -471,111 +463,109 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[10] = new ReplaceAssertWithIf_Intention();
     rv[11] = new ReplaceForLoopWithWhileLoop_Intention();
     rv[12] = new FilpEqualsIntention_Intention();
-    rv[13] = new ReplaceForEachLoopWithIndexedLoop_Intention();
-    rv[14] = new ExpandBoolean_Intention();
-    rv[15] = new AddRuntimeExceptionToMethodSignature_Intention();
-    rv[16] = new ReplaceBlockWithItsContent_Intention();
-    rv[17] = new MoveInitializerToConstructor_Intention();
-    rv[18] = new MergeStringConcatenation_Intention();
-    rv[19] = new CreateSetAccessor_Intention();
-    rv[20] = new MakeGeneric_Intention();
-    rv[21] = new AddFinalModifierToAny_Intention();
-    rv[22] = new AddElsifClause_Intention();
-    rv[23] = new ElsifTransform_Intention();
-    rv[24] = new ElsifSwapWithMain_Intention();
-    rv[25] = new ConvertClassCreatorToAnonimous_Intention();
-    rv[26] = new CreateReferenceOnClass_Intention();
-    rv[27] = new ConvertElseToElseIf_Intention();
-    rv[28] = new ConvertAssignmentToVariableDeclaration_Intention();
-    rv[29] = new MakeDeprecated_Intention();
-    rv[30] = new AddFieldForUnUsedParameter_Intention();
-    rv[31] = new ConvertToArrayType_Intention();
-    rv[32] = new RemoveArrayType_Intention();
-    rv[33] = new MakeClassAbstract_Intention();
-    rv[34] = new SpecifyClass_Intention();
-    rv[35] = new AddThrows_Intention();
-    rv[36] = new ToggleBLMethodAbstract_Intention();
-    rv[37] = new IterateOverIterable_Intention();
-    rv[38] = new ToggleMethodFinal_Intention();
-    rv[39] = new MakeFieldVolatile_Intention();
-    rv[40] = new MakeClassAbstractFromMethod_Intention();
-    rv[41] = new ChangeStaticInInner_Intention();
-    rv[42] = new MakeClassFinal_Intention();
-    rv[43] = new MakeParameterFinal_Intention();
-    rv[44] = new ConvertToReturnStatement_Intention();
-    rv[45] = new ConvertElsifToNewIfStatement_Intention();
-    rv[46] = new CreateInternalLabel_Intention();
-    rv[47] = new MakeOneLiner_Intention();
-    rv[48] = new MakeMultiLiner_Intention();
-    rv[49] = new UsedefaultLayout_Intention();
-    rv[50] = new SurroundWithIf_Intention();
-    rv[51] = new SurroundWithIfElse_Intention();
-    rv[52] = new SurroundWithWhile_Intention();
-    rv[53] = new SurroundWithDoWhile_Intention();
-    rv[54] = new SurroundWithFor_Intention();
-    rv[55] = new SurroundStatementsWithForEach_Intention();
-    rv[56] = new SurroundWithTryCatch_Intention();
-    rv[57] = new SurroundWithTryFinally_Intention();
-    rv[58] = new SurroundWithTryCatchFinally_Intention();
-    rv[59] = new SurroundWithSynchronized_Intention();
-    rv[60] = new SurroundWithBrackets_Intention();
-    rv[61] = new MakeFieldTransient_Intention();
-    rv[62] = new SurroundWithParenthesis_Intention();
-    rv[63] = new SurroundWithTypeCast_Intention();
-    rv[64] = new SurroundWithNegation_Intention();
-    rv[65] = new SurroundWithIfClause_Intention();
-    rv[66] = new SurroundWithIfElseClause_Intention();
-    rv[67] = new AddTypeParameters_Intention();
-    rv[68] = new ToggleMethodSynchronized_Intention();
-    rv[69] = new ConvertToClosure_Intention();
-    rv[70] = new UnwrapElse_Intention();
-    rv[71] = new RemoveTVDInAnonymousClass_Intention();
-    rv[72] = new SplitIf_Intention();
-    rv[73] = new ConvertIfConditionToTernaryOperator_Intention();
-    rv[74] = new AddModifiers_Intention();
-    rv[75] = new AddOverrideAnnotation_Intention();
-    rv[76] = new AlterStatementListContainer_Intention();
-    rv[77] = new RemoveStaticFieldModifier_Intention();
-    rv[78] = new AddStaticFieldModifier_Intention();
-    rv[79] = new ToggleMethodStatic_Intention();
-    rv[80] = new MakeStaticFieldVolatile_Intention();
-    rv[81] = new MakeStaticFieldTransient_Intention();
-    rv[82] = new OrToAndAndBack_Intention();
-    rv[83] = new SwapTernaryBranches_Intention();
-    rv[84] = new SwitchToCustomPropertyImplementation_Intention();
-    rv[85] = new SwitchToDefaultPropertyImplementation_Intention();
-    rv[86] = new SwitchToCustomConstructorPropertyImplementation_Intention();
-    rv[87] = new CleanUnmatchedParentheses_Intention();
-    rv[88] = new ComputeWholeExpressionValue_Intention();
-    rv[89] = new ComputeExpressionValue_Intention();
-    rv[90] = new JoinVariableDeclarationAndInitializer_Intention();
-    rv[91] = new AutoSpacing_Intention();
-    rv[92] = new UnwrapUnnecessaryElse_Intention();
-    rv[93] = new SurroundWithPassByRef_Intention();
-    rv[94] = new FixMissingDefaultConstructor_Intention();
-    rv[95] = new CreateMethodFromUsage_Intention();
-    rv[96] = new CreateRootClassFromUsage_Intention();
-    rv[97] = new UpdateCommentToSingleLineStructure_Intention();
-    rv[98] = new ToggleMethodDefault_Intention();
-    rv[99] = new UnwrapBlockStatement_Intention();
-    rv[100] = new SurroundWithTypeCastInParens_Intention();
-    rv[101] = new UnwrapStatementList_Intention();
-    rv[102] = new MoveUpIntoIfBranches_Intention();
-    rv[103] = new MergeFollowingSingleLineCommentsIntoMultilineComment_Intention();
-    rv[104] = new MakeMultiline_Intention();
-    rv[105] = new MakeSingleline_Intention();
-    rv[106] = new SwitchToImplicitTypeArgs_Intention();
-    rv[107] = new RemoveCastExpr_Intention();
-    rv[108] = new ToggleIndividualDotExpressionLineStyle_Intention();
-    rv[109] = new SetMultilineDotExpressionLineStyle_Intention();
-    rv[110] = new SetSinglelineDotExpressionLineStyle_Intention();
-    rv[111] = new StringFormat_Intention();
-    rv[112] = new StringPlusToFormat_Intention();
-    rv[113] = new LocalVarToField_Intention();
-    rv[114] = new ReplaceFieldWithProperty_Intention();
-    rv[115] = new ReplacePropertyWithField_Intention();
-    rv[116] = new ToggleIndividualBinExpressionLineStyle_Intention();
+    rv[13] = new ExpandBoolean_Intention();
+    rv[14] = new AddRuntimeExceptionToMethodSignature_Intention();
+    rv[15] = new ReplaceBlockWithItsContent_Intention();
+    rv[16] = new MoveInitializerToConstructor_Intention();
+    rv[17] = new MergeStringConcatenation_Intention();
+    rv[18] = new CreateSetAccessor_Intention();
+    rv[19] = new MakeGeneric_Intention();
+    rv[20] = new AddFinalModifierToAny_Intention();
+    rv[21] = new AddElsifClause_Intention();
+    rv[22] = new ElsifTransform_Intention();
+    rv[23] = new ElsifSwapWithMain_Intention();
+    rv[24] = new ConvertClassCreatorToAnonimous_Intention();
+    rv[25] = new CreateReferenceOnClass_Intention();
+    rv[26] = new ConvertElseToElseIf_Intention();
+    rv[27] = new ConvertAssignmentToVariableDeclaration_Intention();
+    rv[28] = new MakeDeprecated_Intention();
+    rv[29] = new AddFieldForUnUsedParameter_Intention();
+    rv[30] = new ConvertToArrayType_Intention();
+    rv[31] = new RemoveArrayType_Intention();
+    rv[32] = new MakeClassAbstract_Intention();
+    rv[33] = new SpecifyClass_Intention();
+    rv[34] = new AddThrows_Intention();
+    rv[35] = new ToggleBLMethodAbstract_Intention();
+    rv[36] = new IterateOverIterable_Intention();
+    rv[37] = new ToggleMethodFinal_Intention();
+    rv[38] = new MakeFieldVolatile_Intention();
+    rv[39] = new MakeClassAbstractFromMethod_Intention();
+    rv[40] = new ChangeStaticInInner_Intention();
+    rv[41] = new MakeClassFinal_Intention();
+    rv[42] = new MakeParameterFinal_Intention();
+    rv[43] = new ConvertToReturnStatement_Intention();
+    rv[44] = new ConvertElsifToNewIfStatement_Intention();
+    rv[45] = new CreateInternalLabel_Intention();
+    rv[46] = new MakeOneLiner_Intention();
+    rv[47] = new MakeMultiLiner_Intention();
+    rv[48] = new UsedefaultLayout_Intention();
+    rv[49] = new SurroundWithIf_Intention();
+    rv[50] = new SurroundWithIfElse_Intention();
+    rv[51] = new SurroundWithWhile_Intention();
+    rv[52] = new SurroundWithDoWhile_Intention();
+    rv[53] = new SurroundWithFor_Intention();
+    rv[54] = new SurroundStatementsWithForEach_Intention();
+    rv[55] = new SurroundWithTryCatch_Intention();
+    rv[56] = new SurroundWithTryFinally_Intention();
+    rv[57] = new SurroundWithTryCatchFinally_Intention();
+    rv[58] = new SurroundWithSynchronized_Intention();
+    rv[59] = new SurroundWithBrackets_Intention();
+    rv[60] = new MakeFieldTransient_Intention();
+    rv[61] = new SurroundWithParenthesis_Intention();
+    rv[62] = new SurroundWithTypeCast_Intention();
+    rv[63] = new SurroundWithNegation_Intention();
+    rv[64] = new SurroundWithIfClause_Intention();
+    rv[65] = new SurroundWithIfElseClause_Intention();
+    rv[66] = new AddTypeParameters_Intention();
+    rv[67] = new ToggleMethodSynchronized_Intention();
+    rv[68] = new ConvertToClosure_Intention();
+    rv[69] = new UnwrapElse_Intention();
+    rv[70] = new RemoveTVDInAnonymousClass_Intention();
+    rv[71] = new SplitIf_Intention();
+    rv[72] = new ConvertIfConditionToTernaryOperator_Intention();
+    rv[73] = new AddModifiers_Intention();
+    rv[74] = new AddOverrideAnnotation_Intention();
+    rv[75] = new RemoveStaticFieldModifier_Intention();
+    rv[76] = new AddStaticFieldModifier_Intention();
+    rv[77] = new ToggleMethodStatic_Intention();
+    rv[78] = new MakeStaticFieldVolatile_Intention();
+    rv[79] = new MakeStaticFieldTransient_Intention();
+    rv[80] = new OrToAndAndBack_Intention();
+    rv[81] = new SwapTernaryBranches_Intention();
+    rv[82] = new SwitchToCustomPropertyImplementation_Intention();
+    rv[83] = new SwitchToDefaultPropertyImplementation_Intention();
+    rv[84] = new SwitchToCustomConstructorPropertyImplementation_Intention();
+    rv[85] = new CleanUnmatchedParentheses_Intention();
+    rv[86] = new ComputeWholeExpressionValue_Intention();
+    rv[87] = new ComputeExpressionValue_Intention();
+    rv[88] = new JoinVariableDeclarationAndInitializer_Intention();
+    rv[89] = new AutoSpacing_Intention();
+    rv[90] = new UnwrapUnnecessaryElse_Intention();
+    rv[91] = new SurroundWithPassByRef_Intention();
+    rv[92] = new FixMissingDefaultConstructor_Intention();
+    rv[93] = new CreateMethodFromUsage_Intention();
+    rv[94] = new CreateRootClassFromUsage_Intention();
+    rv[95] = new UpdateCommentToSingleLineStructure_Intention();
+    rv[96] = new ToggleMethodDefault_Intention();
+    rv[97] = new UnwrapBlockStatement_Intention();
+    rv[98] = new SurroundWithTypeCastInParens_Intention();
+    rv[99] = new UnwrapStatementList_Intention();
+    rv[100] = new MoveUpIntoIfBranches_Intention();
+    rv[101] = new MergeFollowingSingleLineCommentsIntoMultilineComment_Intention();
+    rv[102] = new MakeMultiline_Intention();
+    rv[103] = new MakeSingleline_Intention();
+    rv[104] = new SwitchToImplicitTypeArgs_Intention();
+    rv[105] = new RemoveCastExpr_Intention();
+    rv[106] = new ToggleIndividualDotExpressionLineStyle_Intention();
+    rv[107] = new SetMultilineDotExpressionLineStyle_Intention();
+    rv[108] = new SetSinglelineDotExpressionLineStyle_Intention();
+    rv[109] = new StringFormat_Intention();
+    rv[110] = new StringPlusToFormat_Intention();
+    rv[111] = new LocalVarToField_Intention();
+    rv[112] = new ReplaceFieldWithProperty_Intention();
+    rv[113] = new ReplacePropertyWithField_Intention();
+    rv[114] = new ToggleIndividualBinExpressionLineStyle_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b9245fc5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b9245fc5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL)).seal();
 }
