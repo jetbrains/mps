@@ -10352,11 +10352,6 @@
             <ref role="3bR37D" node="7Kfy9QB6KZ6" resolve="jetbrains.mps.baseLanguage.blTypes" />
           </node>
         </node>
-        <node concept="1SiIV0" id="zGnF5b0miO" role="3bR37C">
-          <node concept="3bR9La" id="zGnF5b0miP" role="1SiIV1">
-            <ref role="3bR37D" node="1CtrbKI23Wm" resolve="jetbrains.mps.lang.migration" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1dsbP8r1tJH" role="3bR37C">
           <node concept="3bR9La" id="1dsbP8r1tJI" role="1SiIV1">
             <ref role="3bR37D" node="1dsbP8r1gfD" resolve="jetbrains.mps.baseLanguage.references.runtime" />
