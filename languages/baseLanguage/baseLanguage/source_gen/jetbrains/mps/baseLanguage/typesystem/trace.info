@@ -27427,18 +27427,17 @@
       <node id="6709363801298844623" at="80,0,81,0" concept="16" trace="elementType$KpjL" />
       <node id="6709363801298844623" at="84,0,85,0" concept="16" trace="WildCardType$uV" />
       <node id="6709363801298844623" at="85,0,86,0" concept="16" trace="ClassifierType$bL" />
-      <node id="6709363801298844623" at="86,0,87,0" concept="16" trace="NamedTupleType$DW" />
-      <node id="6709363801298844623" at="87,0,88,0" concept="16" trace="TypeVariableReference$WL" />
-      <node id="6709363801298844623" at="88,0,89,0" concept="16" trace="AbstractContainerType$t4" />
-      <node id="6709363801298844623" at="89,0,90,0" concept="16" trace="SequenceType$_s" />
-      <node id="6709363801298844623" at="90,0,91,0" concept="16" trace="ListType$LR" />
-      <node id="6709363801298844623" at="91,0,92,0" concept="16" trace="MapType$h0" />
-      <node id="6709363801298844623" at="92,0,93,0" concept="16" trace="LinkedListType$qf" />
-      <node id="6709363801298844623" at="93,0,94,0" concept="16" trace="SortedMapType$AZ" />
-      <node id="6709363801298844623" at="94,0,95,0" concept="16" trace="MappingType$ni" />
-      <node id="6709363801298844623" at="95,0,96,0" concept="16" trace="SetType$g6" />
-      <node id="6709363801298844623" at="96,0,97,0" concept="16" trace="SortedSetType$7K" />
-      <node id="6709363801298844623" at="97,0,98,0" concept="16" trace="ArrayCreatorWithInitializer$Bs" />
+      <node id="6709363801298844623" at="86,0,87,0" concept="16" trace="TypeVariableReference$WL" />
+      <node id="6709363801298844623" at="87,0,88,0" concept="16" trace="AbstractContainerType$t4" />
+      <node id="6709363801298844623" at="88,0,89,0" concept="16" trace="SequenceType$_s" />
+      <node id="6709363801298844623" at="89,0,90,0" concept="16" trace="ListType$LR" />
+      <node id="6709363801298844623" at="90,0,91,0" concept="16" trace="MapType$h0" />
+      <node id="6709363801298844623" at="91,0,92,0" concept="16" trace="LinkedListType$qf" />
+      <node id="6709363801298844623" at="92,0,93,0" concept="16" trace="SortedMapType$AZ" />
+      <node id="6709363801298844623" at="93,0,94,0" concept="16" trace="MappingType$ni" />
+      <node id="6709363801298844623" at="94,0,95,0" concept="16" trace="SetType$g6" />
+      <node id="6709363801298844623" at="95,0,96,0" concept="16" trace="SortedSetType$7K" />
+      <node id="6709363801298844623" at="96,0,97,0" concept="16" trace="ArrayCreatorWithInitializer$Bs" />
       <node id="6709363801298844623" at="26,0,28,0" concept="3" trace="genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule#()V" />
       <node id="6709363801298844623" at="67,0,70,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6709363801298844623" at="70,0,73,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -27449,7 +27448,7 @@
       <node id="6709363801298845812" at="59,102,63,9" concept="1" />
       <node id="6709363801298845810" at="58,82,64,7" concept="10" />
       <node id="6709363801298845700" at="31,138,38,9" concept="10" />
-      <node id="6709363801298845698" at="30,425,39,7" concept="9" />
+      <node id="6709363801298845698" at="30,292,39,7" concept="9" />
       <node id="6709363801298845766" at="50,10,65,5" concept="1" />
       <node id="6709363801298845696" at="29,107,65,5" concept="10" />
       <node id="6709363801298844623" at="28,0,67,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
@@ -27484,8 +27483,8 @@
       <scope id="6709363801298845811" at="59,102,63,9" />
       <scope id="6709363801298845701" at="32,75,37,17" />
       <scope id="6709363801298845699" at="31,138,38,9" />
-      <scope id="6709363801298845697" at="30,425,39,7" />
-      <scope id="6709363801298845698" at="30,425,39,7">
+      <scope id="6709363801298845697" at="30,292,39,7" />
+      <scope id="6709363801298845698" at="30,292,39,7">
         <var name="p" id="6709363801298845711" />
       </scope>
       <scope id="6709363801298845767" at="50,12,64,7">
@@ -27500,8 +27499,8 @@
         <var name="typeCheckingContext" id="6709363801298844623" />
       </scope>
       <unit id="6709363801298844623" at="77,0,82,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule$LINKS" />
-      <unit id="6709363801298844623" at="83,0,99,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule$CONCEPTS" />
-      <unit id="6709363801298844623" at="25,0,100,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule" />
+      <unit id="6709363801298844623" at="83,0,98,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule$CONCEPTS" />
+      <unit id="6709363801298844623" at="25,0,99,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/6735953169129845225">
@@ -34119,8 +34118,7 @@
       <node id="8918460683225653166" at="93,0,94,0" concept="16" trace="SortedSetType$7K" />
       <node id="8918460683225653166" at="94,0,95,0" concept="16" trace="WildCardType$uV" />
       <node id="8918460683225653166" at="95,0,96,0" concept="16" trace="ClassifierType$bL" />
-      <node id="8918460683225653166" at="96,0,97,0" concept="16" trace="NamedTupleType$DW" />
-      <node id="8918460683225653166" at="97,0,98,0" concept="16" trace="ArrayCreator$bz" />
+      <node id="8918460683225653166" at="96,0,97,0" concept="16" trace="ArrayCreator$bz" />
       <node id="8918460683225653166" at="26,0,28,0" concept="3" trace="genericArrayCreatorsAreIllegal_NonTypesystemRule#()V" />
       <node id="8918460683225653166" at="67,0,70,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8918460683225653166" at="70,0,73,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -34131,7 +34129,7 @@
       <node id="6709363801295662800" at="59,102,63,9" concept="1" />
       <node id="6709363801296418555" at="58,82,64,7" concept="10" />
       <node id="3859452893139470762" at="31,138,38,9" concept="10" />
-      <node id="3859452893139470752" at="30,425,39,7" concept="9" />
+      <node id="3859452893139470752" at="30,292,39,7" concept="9" />
       <node id="6709363801296417958" at="50,10,65,5" concept="1" />
       <node id="8918460683225653184" at="29,92,65,5" concept="10" />
       <node id="8918460683225653166" at="28,0,67,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
@@ -34166,10 +34164,10 @@
       <scope id="6709363801296418556" at="59,102,63,9" />
       <scope id="3859452893139470763" at="32,75,37,17" />
       <scope id="3859452893139470753" at="31,138,38,9" />
-      <scope id="3859452893139470752" at="30,425,39,7">
+      <scope id="3859452893139470752" at="30,292,39,7">
         <var name="p" id="3859452893139470755" />
       </scope>
-      <scope id="8918460683225653185" at="30,425,39,7" />
+      <scope id="8918460683225653185" at="30,292,39,7" />
       <scope id="6709363801296417959" at="50,12,64,7">
         <var name="bannedArrayTypes" id="6709363801296418896" />
       </scope>
@@ -34182,8 +34180,8 @@
         <var name="typeCheckingContext" id="8918460683225653166" />
       </scope>
       <unit id="8918460683225653166" at="77,0,82,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsAreIllegal_NonTypesystemRule$LINKS" />
-      <unit id="8918460683225653166" at="83,0,99,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsAreIllegal_NonTypesystemRule$CONCEPTS" />
-      <unit id="8918460683225653166" at="25,0,100,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsAreIllegal_NonTypesystemRule" />
+      <unit id="8918460683225653166" at="83,0,98,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsAreIllegal_NonTypesystemRule$CONCEPTS" />
+      <unit id="8918460683225653166" at="25,0,99,0" name="jetbrains.mps.baseLanguage.typesystem.genericArrayCreatorsAreIllegal_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8945315740752657245">

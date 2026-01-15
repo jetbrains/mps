@@ -29,6 +29,35 @@ public class GenericNamedTuples_Test {
     Assert.assertSame(1, x);
     Assert.assertEquals("abc", y);
   }
+  @Test
+  public void test_genericTupleArray() throws Exception {
+    // this test captures present state, I'm not ready to claim it's 100% correct
+    Pair<String, Integer> pp = new Pair<String, Integer>("Y", 3);
+
+    Pair<String, Integer>[] ap = new Pair[2];
+    Pair<String, Integer>[] a1 = new Pair[4];
+    Pair[] a2 = new Pair<?, ?>[4];
+    // for some reason, array initializer works for Pair[] type but not (first,second)[] or (first,second)<String,Integer>[]
+    Pair[] a3 = {pp, new Pair<String, Integer>("X", 1), pp};
+
+    ap[0] = new Pair<String, Integer>("X", 1);
+    ap[1] = pp;
+
+    a1[0] = pp;
+    a1[1] = ap[0];
+
+    a2[0] = a1[1];
+    a2[1] = a1[0];
+
+    Assert.assertEquals(Integer.valueOf(3), ap[1].second());
+    Assert.assertEquals(Integer.valueOf(1), a1[1].second());
+    Assert.assertEquals("X", a1[1].first());
+    Assert.assertNull(a1[2]);
+    Assert.assertEquals(Integer.valueOf(1), a2[0].second());
+    Assert.assertNull(a2[2]);
+    Assert.assertEquals(Integer.valueOf(3), a3[0].second());
+    Assert.assertEquals(Integer.valueOf(1), a3[1].second());
+  }
   public Pair<String, String> pairOfStrings() {
     return new Pair<String, String>("X", "Y");
   }

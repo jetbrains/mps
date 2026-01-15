@@ -32,6 +32,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new GenericTupleArrayWithInit_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new GenericTupleTupleArray_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_NamedTupleDeclaration_extends_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }

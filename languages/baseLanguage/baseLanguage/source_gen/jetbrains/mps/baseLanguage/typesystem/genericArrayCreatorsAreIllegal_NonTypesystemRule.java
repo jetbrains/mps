@@ -27,7 +27,7 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
   }
   public void applyRule(final SNode arrayCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode componentType = SLinkOperations.getTarget(arrayCreator, LINKS.componentType$SJjq);
-    if ((SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.ClassifierType$bL) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.NamedTupleType$DW)) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isNotEmpty()) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isNotEmpty()) {
       for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)) {
         if (!(SNodeOperations.isInstanceOf(p, CONCEPTS.WildCardType$uV))) {
           {
@@ -93,7 +93,6 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
     /*package*/ static final SConcept SortedSetType$7K = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType");
     /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept NamedTupleType$DW = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
     /*package*/ static final SConcept ArrayCreator$bz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, "jetbrains.mps.baseLanguage.structure.ArrayCreator");
   }
 }

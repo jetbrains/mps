@@ -683,16 +683,43 @@
       <node id="4265636116363074300" at="26,32,27,32" concept="5" />
       <node id="1239977286033" at="28,5,29,28" concept="5" />
       <node id="1239977290885" at="29,28,30,34" concept="5" />
-      <node id="1240073873703" at="32,47,33,46" concept="12" />
-      <node id="1240073848853" at="32,0,35,0" concept="10" trace="pairOfStrings#()Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;" />
+      <node id="2675087449876486073" at="33,57,34,81" concept="13" />
+      <node id="2675087449861526604" at="34,81,35,65" concept="11" />
+      <node id="2675087449876425362" at="35,65,36,0" concept="14" />
+      <node id="2675087449861541622" at="36,0,37,45" concept="11" />
+      <node id="2675087449861549662" at="37,45,38,45" concept="11" />
+      <node id="2675087449861569397" at="38,45,39,34" concept="11" />
+      <node id="2675087449876503435" at="39,34,40,124" concept="13" />
+      <node id="2675087449876440312" at="40,124,41,60" concept="11" />
+      <node id="2675087449876178345" at="41,60,42,0" concept="14" />
+      <node id="2675087449876448582" at="42,0,43,46" concept="5" />
+      <node id="2675087449876474662" at="43,46,44,15" concept="5" />
+      <node id="2675087449876447821" at="44,15,45,0" concept="14" />
+      <node id="2675087449876178788" at="45,0,46,15" concept="5" />
+      <node id="2675087449876187209" at="46,15,47,18" concept="5" />
+      <node id="2675087449876187816" at="47,18,48,0" concept="14" />
+      <node id="2675087449876193307" at="48,0,49,18" concept="5" />
+      <node id="2675087449876203062" at="49,18,50,18" concept="5" />
+      <node id="2675087449876178614" at="50,18,51,0" concept="14" />
+      <node id="2675087449876173904" at="51,0,52,60" concept="5" />
+      <node id="2675087449876208986" at="52,60,53,60" concept="5" />
+      <node id="2675087449876213031" at="53,60,54,44" concept="5" />
+      <node id="2675087449876211099" at="54,44,55,29" concept="5" />
+      <node id="2675087449876209740" at="55,29,56,60" concept="5" />
+      <node id="2675087449876211727" at="56,60,57,29" concept="5" />
+      <node id="2675087449876488650" at="57,29,58,60" concept="5" />
+      <node id="2675087449876494480" at="58,60,59,60" concept="5" />
+      <node id="1240073873703" at="61,47,62,46" concept="12" />
+      <node id="1240073848853" at="61,0,64,0" concept="10" trace="pairOfStrings#()Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_0;" />
       <node id="1239977231412" at="23,13,28,5" concept="1" />
       <node id="1239977032461" at="10,0,19,0" concept="10" trace="test_pair#()V" />
       <node id="1239977136862" at="19,0,32,0" concept="10" trace="test_pairToIndexedTuple#()V" />
-      <scope id="1240073848856" at="32,47,33,46" />
+      <node id="2675087449871099116" at="32,0,61,0" concept="10" trace="test_genericTupleArray#()V" />
+      <scope id="1240073848856" at="61,47,62,46" />
       <scope id="1239977231412" at="24,5,27,32">
         <var name="_tmp_quuzte_d0b0" id="1239977231412" />
       </scope>
-      <scope id="1240073848853" at="32,0,35,0" />
+      <scope id="1240073848853" at="61,0,64,0" />
       <scope id="1239977032463" at="11,44,17,40">
         <var name="pair" id="1239977080198" />
       </scope>
@@ -703,7 +730,15 @@
         <var name="y" id="1239977244349" />
       </scope>
       <scope id="1239977136862" at="19,0,32,0" />
-      <unit id="1239977019775" at="9,0,36,0" name="jetbrains.mps.baseLanguage.tuples.test.GenericNamedTuples_Test" />
+      <scope id="2675087449871099119" at="33,57,59,60">
+        <var name="a1" id="2675087449861549663" />
+        <var name="a2" id="2675087449861569398" />
+        <var name="a3" id="2675087449876440313" />
+        <var name="ap" id="2675087449861541623" />
+        <var name="pp" id="2675087449861526607" />
+      </scope>
+      <scope id="2675087449871099116" at="32,0,61,0" />
+      <unit id="1239977019775" at="9,0,65,0" name="jetbrains.mps.baseLanguage.tuples.test.GenericNamedTuples_Test" />
     </file>
   </root>
   <root nodeRef="r:76e159e6-4560-4446-8a14-1eeae92b1a00(jetbrains.mps.baseLanguage.tuples.test)/1239977036413">

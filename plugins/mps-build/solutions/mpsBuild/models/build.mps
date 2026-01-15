@@ -10256,11 +10256,6 @@
             <ref role="3bR37D" node="7Kfy9QB6KYw" resolve="jetbrains.mps.baseLanguage.search" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2a9bszgrv1d" role="3bR37C">
-          <node concept="3bR9La" id="2a9bszgrv1c" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L2F" resolve="jetbrains.mps.baseLanguage.tuples" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="2a9bszgrv1f" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgrv1e" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6KYK" resolve="jetbrains.mps.baseLanguage.util" />
