@@ -44,6 +44,9 @@
         <reference id="1239560595302" name="componentDeclaration" index="2r$qp6" />
         <child id="1239560837729" name="value" index="2r_lH1" />
       </concept>
+      <concept id="1239576519914" name="jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentAccessOperation" flags="nn" index="2sxana">
+        <reference id="1239576542472" name="component" index="2sxfKC" />
+      </concept>
     </language>
     <language id="5dc5fc0d-37ef-4782-8192-8b5ce1f69f80" name="jetbrains.mps.baseLanguage.extensionMethods">
       <concept id="8022092943110829337" name="jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer" flags="ng" index="a7sou">
@@ -16333,97 +16336,6 @@
     </node>
     <node concept="3Tm1VV" id="pYvMZHPxPI" role="1B3o_S" />
   </node>
-  <node concept="312cEu" id="pYvMZHP$Uy">
-    <property role="TrG5h" value="GenericNamedTuple_Test" />
-    <node concept="2fD8I5" id="4hbslJHwv_Z" role="jymVt">
-      <property role="TrG5h" value="NamedTuple" />
-      <node concept="2lGYhJ" id="4hbslJHwy12" role="2pHZQ9">
-        <property role="TrG5h" value="first" />
-        <node concept="16syzq" id="4hbslJHxns0" role="2lK19J">
-          <ref role="16sUi3" node="4hbslJHxgY5" resolve="T" />
-        </node>
-      </node>
-      <node concept="2lGYhJ" id="4hbslJHwyxO" role="2pHZQ9">
-        <property role="TrG5h" value="second" />
-        <node concept="16syzq" id="4hbslJHxovz" role="2lK19J">
-          <ref role="16sUi3" node="4hbslJHxkqQ" resolve="U" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="4hbslJHwvA0" role="1B3o_S" />
-      <node concept="16euLQ" id="4hbslJHxgY5" role="16eVyc">
-        <property role="TrG5h" value="T" />
-      </node>
-      <node concept="16euLQ" id="4hbslJHxkqQ" role="16eVyc">
-        <property role="TrG5h" value="U" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="4hbslJHwbcw" role="jymVt">
-      <property role="TrG5h" value="mps15175" />
-      <node concept="3clFbS" id="4hbslJHwbcz" role="3clF47">
-        <node concept="3SKdUt" id="pYvMZHP_0$" role="3cqZAp">
-          <node concept="1PaTwC" id="pYvMZHP_0_" role="1aUNEU">
-            <node concept="3oM_SD" id="pYvMZHP_1q" role="1PaTwD">
-              <property role="3oM_SC" value="MPS-15175" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4hbslJHwZVC" role="3cqZAp">
-          <node concept="3cpWsn" id="4hbslJHwZVD" role="3cpWs9">
-            <property role="TrG5h" value="seq" />
-            <node concept="A3Dl8" id="4hbslJHwL1r" role="1tU5fm">
-              <node concept="3uibUv" id="4hbslJHxuJ9" role="A3Ik2">
-                <ref role="3uigEE" node="4hbslJHwv_Z" resolve="GenericNamedTuple_Test.NamedTuple" />
-                <node concept="3uibUv" id="4hbslJHxuJa" role="11_B2D">
-                  <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
-                </node>
-                <node concept="3uibUv" id="4hbslJHxuJb" role="11_B2D">
-                  <ref role="3uigEE" to="wyt6:~Double" resolve="Double" />
-                </node>
-              </node>
-            </node>
-            <node concept="2ShNRf" id="4hbslJHwZVE" role="33vP2m">
-              <node concept="kMnCb" id="4hbslJHwZVF" role="2ShVmc">
-                <node concept="3uibUv" id="4hbslJHwZVG" role="kMuH3">
-                  <ref role="3uigEE" node="4hbslJHwv_Z" resolve="GenericNamedTuple_Test.NamedTuple" />
-                  <node concept="3uibUv" id="4hbslJHxqQF" role="11_B2D">
-                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
-                  </node>
-                  <node concept="3uibUv" id="4hbslJHxs91" role="11_B2D">
-                    <ref role="3uigEE" to="wyt6:~Double" resolve="Double" />
-                  </node>
-                </node>
-                <node concept="1bVj0M" id="4hbslJHwZVH" role="kMx8a">
-                  <node concept="3clFbS" id="4hbslJHwZVI" role="1bW5cS">
-                    <node concept="2n63Yl" id="4hbslJHwZVJ" role="3cqZAp">
-                      <node concept="2ry78W" id="4hbslJHwZVK" role="2n6tg2">
-                        <ref role="2ryb1Q" node="4hbslJHwv_Z" resolve="GenericNamedTuple_Test.NamedTuple" />
-                        <node concept="2r$n1x" id="4hbslJHwZVL" role="2r_Bvh">
-                          <ref role="2r$qp6" node="4hbslJHwy12" resolve="first" />
-                          <node concept="3cmrfG" id="4hbslJHwZVM" role="2r_lH1">
-                            <property role="3cmrfH" value="2" />
-                          </node>
-                        </node>
-                        <node concept="2r$n1x" id="4hbslJHwZVN" role="2r_Bvh">
-                          <ref role="2r$qp6" node="4hbslJHwyxO" resolve="second" />
-                          <node concept="3b6qkQ" id="4hbslJHwZVO" role="2r_lH1">
-                            <property role="$nhwW" value="3.4" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="4hbslJHw8Rv" role="1B3o_S" />
-      <node concept="3cqZAl" id="4hbslJHw8Zs" role="3clF45" />
-    </node>
-    <node concept="2tJIrI" id="pYvMZHP$Vc" role="jymVt" />
-    <node concept="3Tm1VV" id="pYvMZHP$Uz" role="1B3o_S" />
-  </node>
   <node concept="apGqk" id="4hbslJHu5oE">
     <property role="TrG5h" value="ExtensionMethod_Declaration" />
     <property role="3GE5qa" value="extensionMethod" />
@@ -18339,6 +18251,123 @@
               <node concept="liA8E" id="1MjNio5Vi_2" role="2OqNvi">
                 <ref role="37wK5l" to="33ny:~Optional.get()" resolve="get" />
               </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="3s_ewN" id="2kvOtN84TZI">
+    <property role="3s_ewP" value="GenericNamedTuple" />
+    <node concept="2fD8I5" id="2kvOtN84U9_" role="jymVt">
+      <property role="TrG5h" value="NamedTuple" />
+      <node concept="2lGYhJ" id="2kvOtN84U9A" role="2pHZQ9">
+        <property role="TrG5h" value="first" />
+        <node concept="16syzq" id="2kvOtN84U9B" role="2lK19J">
+          <ref role="16sUi3" node="2kvOtN84U9F" resolve="T" />
+        </node>
+      </node>
+      <node concept="2lGYhJ" id="2kvOtN84U9C" role="2pHZQ9">
+        <property role="TrG5h" value="second" />
+        <node concept="16syzq" id="2kvOtN84U9D" role="2lK19J">
+          <ref role="16sUi3" node="2kvOtN84U9G" resolve="U" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2kvOtN84U9E" role="1B3o_S" />
+      <node concept="16euLQ" id="2kvOtN84U9F" role="16eVyc">
+        <property role="TrG5h" value="T" />
+      </node>
+      <node concept="16euLQ" id="2kvOtN84U9G" role="16eVyc">
+        <property role="TrG5h" value="U" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="2kvOtN84TZJ" role="1B3o_S" />
+    <node concept="3s_gsd" id="2kvOtN84TZK" role="3s_ewO">
+      <node concept="3s$Bmu" id="2kvOtN84UbC" role="3s_gse">
+        <property role="3s$Bm0" value="mps15175" />
+        <node concept="3cqZAl" id="2kvOtN84UbD" role="3clF45" />
+        <node concept="3Tm1VV" id="2kvOtN84UbE" role="1B3o_S" />
+        <node concept="3clFbS" id="2kvOtN84UbF" role="3clF47">
+          <node concept="3cpWs8" id="4hbslJHwZVC" role="3cqZAp">
+            <node concept="3cpWsn" id="4hbslJHwZVD" role="3cpWs9">
+              <property role="TrG5h" value="seq" />
+              <node concept="A3Dl8" id="4hbslJHwL1r" role="1tU5fm">
+                <node concept="3uibUv" id="4hbslJHxuJ9" role="A3Ik2">
+                  <ref role="3uigEE" node="2kvOtN84U9_" resolve="GenericNamedTuple_Test.NamedTuple" />
+                  <node concept="3uibUv" id="4hbslJHxuJa" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                  </node>
+                  <node concept="3uibUv" id="4hbslJHxuJb" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Double" resolve="Double" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2ShNRf" id="4hbslJHwZVE" role="33vP2m">
+                <node concept="kMnCb" id="4hbslJHwZVF" role="2ShVmc">
+                  <node concept="3uibUv" id="4hbslJHwZVG" role="kMuH3">
+                    <ref role="3uigEE" node="2kvOtN84U9_" resolve="GenericNamedTuple_Test.NamedTuple" />
+                    <node concept="3uibUv" id="4hbslJHxqQF" role="11_B2D">
+                      <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                    </node>
+                    <node concept="3uibUv" id="4hbslJHxs91" role="11_B2D">
+                      <ref role="3uigEE" to="wyt6:~Double" resolve="Double" />
+                    </node>
+                  </node>
+                  <node concept="1bVj0M" id="4hbslJHwZVH" role="kMx8a">
+                    <node concept="3clFbS" id="4hbslJHwZVI" role="1bW5cS">
+                      <node concept="2n63Yl" id="4hbslJHwZVJ" role="3cqZAp">
+                        <node concept="2ry78W" id="4hbslJHwZVK" role="2n6tg2">
+                          <ref role="2ryb1Q" node="2kvOtN84U9_" resolve="GenericNamedTuple_Test.NamedTuple" />
+                          <node concept="2r$n1x" id="4hbslJHwZVL" role="2r_Bvh">
+                            <ref role="2r$qp6" node="2kvOtN84U9A" resolve="first" />
+                            <node concept="3cmrfG" id="4hbslJHwZVM" role="2r_lH1">
+                              <property role="3cmrfH" value="2" />
+                            </node>
+                          </node>
+                          <node concept="2r$n1x" id="4hbslJHwZVN" role="2r_Bvh">
+                            <ref role="2r$qp6" node="2kvOtN84U9C" resolve="second" />
+                            <node concept="3b6qkQ" id="4hbslJHwZVO" role="2r_lH1">
+                              <property role="$nhwW" value="3.4" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3vlDli" id="2kvOtN84Z2Y" role="3cqZAp">
+            <node concept="3cmrfG" id="2kvOtN84Ze4" role="3tpDZB">
+              <property role="3cmrfH" value="2" />
+            </node>
+            <node concept="2OqwBi" id="2kvOtN84XAx" role="3tpDZA">
+              <node concept="2OqwBi" id="2kvOtN84VIU" role="2Oq$k0">
+                <node concept="37vLTw" id="2kvOtN84VxL" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4hbslJHwZVD" resolve="seq" />
+                </node>
+                <node concept="1uHKPH" id="2kvOtN84WCb" role="2OqNvi" />
+              </node>
+              <node concept="2sxana" id="2kvOtN84YWd" role="2OqNvi">
+                <ref role="2sxfKC" node="2kvOtN84U9A" resolve="first" />
+              </node>
+            </node>
+          </node>
+          <node concept="3vlDli" id="2kvOtN84Zp2" role="3cqZAp">
+            <node concept="2OqwBi" id="2kvOtN84Zp4" role="3tpDZA">
+              <node concept="2OqwBi" id="2kvOtN84Zp5" role="2Oq$k0">
+                <node concept="37vLTw" id="2kvOtN84Zp6" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4hbslJHwZVD" resolve="seq" />
+                </node>
+                <node concept="1uHKPH" id="2kvOtN84Zp7" role="2OqNvi" />
+              </node>
+              <node concept="2sxana" id="2kvOtN84Zp8" role="2OqNvi">
+                <ref role="2sxfKC" node="2kvOtN84U9C" resolve="second" />
+              </node>
+            </node>
+            <node concept="3b6qkQ" id="2kvOtN84Zt$" role="3tpDZB">
+              <property role="$nhwW" value="3.4" />
             </node>
           </node>
         </node>
