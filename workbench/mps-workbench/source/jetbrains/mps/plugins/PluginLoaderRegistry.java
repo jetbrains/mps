@@ -33,6 +33,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.ProjectFrameHelper;
 import com.intellij.util.EventDispatcher;
+import com.intellij.util.concurrency.Semaphore;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.messages.Topic;
 import jetbrains.mps.core.platform.Platform;
@@ -67,6 +68,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Represents a single class loading listener to trigger the plugin reload in
@@ -79,6 +81,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class PluginLoaderRegistry implements Disposable {
   private static final Logger LOG = Logger.getLogger(PluginLoaderRegistry.class);
+
+  public static final int SEMAPHORE_WAIT_TIMEOUT = 100; // ms
+
+  private final Semaphore myUpdateSemaphore = new Semaphore();
 
   private final SchedulingUpdateListener myClassesListener = new SchedulingUpdateListener();
   private final Set<PluginContributor> myCurrentContributors = new LinkedHashSet<>();
@@ -113,7 +119,18 @@ public class PluginLoaderRegistry implements Disposable {
     myAppInitialized.set(true);
     // XXX invoked from ApplicationInitializedListener which "doesn't guarantee EDT", but OTOH doesn't
     //     guarantee NOT EDT, while run() here asserts !EDT
-    new UpdatingTask(null).run(new EmptyProgressIndicator());
+    if (!myUpdateSemaphore.waitFor(SEMAPHORE_WAIT_TIMEOUT)) {
+      // reschedule the task
+      LOG.debug("congestion on semaphore", new Throwable("Semaphore wait timeout exceeded"));
+      ApplicationManager.getApplication().invokeLater(() -> update());
+      return;
+    }
+    myUpdateSemaphore.down();
+    try {
+      new UpdatingTask(null).run(new EmptyProgressIndicator());
+    } finally {
+      myUpdateSemaphore.up();
+    }
   }
 
   private Set<PluginContributor> createPluginContributors(Collection<ModuleRuntime> modules) {
@@ -332,10 +349,23 @@ public class PluginLoaderRegistry implements Disposable {
       final ProgressIndicator globalProgressIndicator = ProgressManager.getGlobalProgressIndicator();
       // no idea which executor/thread pool to use, e.g. seen uses of AppExecutorUtil.getAppExecutorService()
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
-        // we need to get out of application read since it is impossible to #invokeAndWait from read, lets postpone
-        LOG.debug("running the task later");
-        // trying to pass the current indicator, for example this helps us to reload plugins within the global project open indicator
-        runTask(globalProgressIndicator);
+        if (!myUpdateSemaphore.waitFor(SEMAPHORE_WAIT_TIMEOUT)) {
+          // reschedule the task
+          // undo flag set
+          myUpdateIsScheduledInEDT.set(false);
+          LOG.debug("congestion on semaphore", new Throwable("Semaphore wait timeout exceeded"));
+          ApplicationManager.getApplication().invokeLater(() -> update());
+          return;
+        };
+        myUpdateSemaphore.down();
+        try {
+          // we need to get out of application read since it is impossible to #invokeAndWait from read, lets postpone
+          LOG.debug("running the task later");
+          // trying to pass the current indicator, for example this helps us to reload plugins within the global project open indicator
+          runTask(globalProgressIndicator);
+        } finally {
+          myUpdateSemaphore.up();
+        }
       });
     }
   }
@@ -351,12 +381,23 @@ public class PluginLoaderRegistry implements Disposable {
       update();
     } else {
       ThreadUtils.assertEDT();
-      UpdatingTask task = new UpdatingTask(null);
       if (isAppLoaded()) {
-        // here we are also when #disposeComponent is called in AppPlManager
-        // async will not do, the app will be disposed then, so sync update with a good old UI freeze
-        myUpdateIsScheduledInEDT.set(true);
-        task.update(new EmptyProgressMonitor());
+        if (!myUpdateSemaphore.waitFor(SEMAPHORE_WAIT_TIMEOUT)) {
+          // reschedule the task
+          LOG.debug("force update failed: congestion on semaphore", new Throwable("Semaphore wait timeout exceeded"));
+          ApplicationManager.getApplication().invokeLater(() -> update());
+          return;
+        }
+        myUpdateSemaphore.down();
+        try {
+          UpdatingTask task = new UpdatingTask(null);
+          // here we are also when #disposeComponent is called in AppPlManager
+          // async will not do, the app will be disposed then, so sync update with a good old UI freeze
+          myUpdateIsScheduledInEDT.set(true);
+          task.update(new EmptyProgressMonitor());
+        } finally {
+          myUpdateSemaphore.up();
+        }
       } else {
         // here we are on any not first project open
         update();
