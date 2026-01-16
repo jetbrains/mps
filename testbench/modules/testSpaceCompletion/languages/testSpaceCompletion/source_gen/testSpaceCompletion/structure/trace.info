@@ -13,7 +13,7 @@
       <unit at="11,0,78,0" name="testSpaceCompletion.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,40,0" name="testSpaceCompletion.structure.LanguageConceptSwitch" />
+      <unit at="12,0,48,0" name="testSpaceCompletion.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,138,0" name="testSpaceCompletion.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="3586175963764952689" at="25,38,31,26" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3586175963764952689" at="12,0,13,0" concept="6" trace="TABC" />
-      <node id="3586175963764952689" at="21,116,22,43" concept="0" />
+      <node id="3586175963764952689" at="14,0,15,0" concept="6" trace="TABC" />
+      <node id="3586175963764952689" at="23,116,24,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3586175963764952689" at="15,0,16,0" concept="1" trace="myConceptTABC" />
@@ -69,8 +69,8 @@
       <scope id="3586175963764954956" at="32,40,38,28" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3586175963764954956" at="13,0,14,0" concept="6" trace="TABCDE" />
-      <node id="3586175963764954956" at="22,43,23,45" concept="0" />
+      <node id="3586175963764954956" at="15,0,16,0" concept="6" trace="TABCDE" />
+      <node id="3586175963764954956" at="24,43,25,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3586175963764954956" at="16,0,17,0" concept="1" trace="myConceptTABCDE" />
@@ -105,8 +105,8 @@
       <scope id="3586175963764954964" at="46,41,52,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3586175963764954964" at="15,0,16,0" concept="6" trace="TABCDEG" />
-      <node id="3586175963764954964" at="24,46,25,46" concept="0" />
+      <node id="3586175963764954964" at="17,0,18,0" concept="6" trace="TABCDEG" />
+      <node id="3586175963764954964" at="26,46,27,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3586175963764954964" at="18,0,19,0" concept="1" trace="myConceptTABCDEG" />
@@ -141,8 +141,8 @@
       <scope id="3586175963764954968" at="39,41,45,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3586175963764954968" at="14,0,15,0" concept="6" trace="TABCDEF" />
-      <node id="3586175963764954968" at="23,45,24,46" concept="0" />
+      <node id="3586175963764954968" at="16,0,17,0" concept="6" trace="TABCDEF" />
+      <node id="3586175963764954968" at="25,45,26,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3586175963764954968" at="17,0,18,0" concept="1" trace="myConceptTABCDEF" />
@@ -177,8 +177,8 @@
       <scope id="7653661050353915512" at="53,41,59,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7653661050353915512" at="16,0,17,0" concept="6" trace="TABCEEG" />
-      <node id="7653661050353915512" at="25,46,26,46" concept="0" />
+      <node id="7653661050353915512" at="18,0,19,0" concept="6" trace="TABCEEG" />
+      <node id="7653661050353915512" at="27,46,28,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7653661050353915512" at="19,0,20,0" concept="1" trace="myConceptTABCEEG" />
@@ -213,8 +213,8 @@
       <scope id="8933061889659252101" at="60,38,66,26" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8933061889659252101" at="17,0,18,0" concept="6" trace="TBAC" />
-      <node id="8933061889659252101" at="26,46,27,43" concept="0" />
+      <node id="8933061889659252101" at="19,0,20,0" concept="6" trace="TBAC" />
+      <node id="8933061889659252101" at="28,46,29,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8933061889659252101" at="20,0,21,0" concept="1" trace="myConceptTBAC" />
@@ -249,8 +249,8 @@
       <scope id="8933061889659259091" at="67,38,73,26" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8933061889659259091" at="18,0,19,0" concept="6" trace="TBCA" />
-      <node id="8933061889659259091" at="27,43,28,43" concept="0" />
+      <node id="8933061889659259091" at="20,0,21,0" concept="6" trace="TBCA" />
+      <node id="8933061889659259091" at="29,43,30,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8933061889659259091" at="21,0,22,0" concept="1" trace="myConceptTBCA" />

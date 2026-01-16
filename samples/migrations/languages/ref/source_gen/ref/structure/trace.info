@@ -12,7 +12,7 @@
       <unit at="11,0,39,0" name="ref.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="ref.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="ref.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,72,0" name="ref.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="7709929535540647757" at="27,49,34,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7709929535540647757" at="13,0,14,0" concept="5" trace="OldComponentRef" />
-      <node id="7709929535540647757" at="17,54,18,54" concept="0" />
+      <node id="7709929535540647757" at="15,0,16,0" concept="5" trace="OldComponentRef" />
+      <node id="7709929535540647757" at="19,54,20,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7709929535540647757" at="16,0,17,0" concept="1" trace="myConceptOldComponentRef" />
@@ -68,8 +68,8 @@
       <scope id="7709929535540733641" at="20,49,26,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7709929535540733641" at="12,0,13,0" concept="5" trace="NewComponentRef" />
-      <node id="7709929535540733641" at="16,116,17,54" concept="0" />
+      <node id="7709929535540733641" at="14,0,15,0" concept="5" trace="NewComponentRef" />
+      <node id="7709929535540733641" at="18,116,19,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7709929535540733641" at="15,0,16,0" concept="1" trace="myConceptNewComponentRef" />

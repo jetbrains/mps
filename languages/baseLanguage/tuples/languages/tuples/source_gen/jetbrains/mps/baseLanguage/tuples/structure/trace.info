@@ -16,7 +16,7 @@
       <unit at="8,0,12,0" name="jetbrains.mps.baseLanguage.tuples.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,46,0" name="jetbrains.mps.baseLanguage.tuples.structure.LanguageConceptSwitch" />
+      <unit at="12,0,54,0" name="jetbrains.mps.baseLanguage.tuples.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="17,0,204,0" name="jetbrains.mps.baseLanguage.tuples.structure.StructureAspectDescriptor" />
@@ -37,8 +37,8 @@
       <scope id="1238852151516" at="44,50,51,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1238852151516" at="14,0,15,0" concept="6" trace="IndexedTupleType" />
-      <node id="1238852151516" at="26,68,27,50" concept="0" />
+      <node id="1238852151516" at="16,0,17,0" concept="6" trace="IndexedTupleType" />
+      <node id="1238852151516" at="28,68,29,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1238852151516" at="20,0,21,0" concept="1" trace="myConceptIndexedTupleType" />
@@ -77,8 +77,8 @@
       <scope id="1238853782547" at="28,53,35,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1238853782547" at="12,0,13,0" concept="6" trace="IndexedTupleLiteral" />
-      <node id="1238853782547" at="24,116,25,53" concept="0" />
+      <node id="1238853782547" at="14,0,15,0" concept="6" trace="IndexedTupleLiteral" />
+      <node id="1238853782547" at="26,116,27,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1238853782547" at="18,0,19,0" concept="1" trace="myConceptIndexedTupleLiteral" />
@@ -117,8 +117,8 @@
       <scope id="1238857743184" at="36,68,43,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1238857743184" at="13,0,14,0" concept="6" trace="IndexedTupleMemberAccessExpression" />
-      <node id="1238857743184" at="25,53,26,68" concept="0" />
+      <node id="1238857743184" at="15,0,16,0" concept="6" trace="IndexedTupleMemberAccessExpression" />
+      <node id="1238857743184" at="27,53,28,68" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1238857743184" at="19,0,20,0" concept="1" trace="myConceptIndexedTupleMemberAccessExpression" />
@@ -158,8 +158,8 @@
       <scope id="1239360506533" at="80,55,88,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1239360506533" at="19,0,20,0" concept="6" trace="NamedTupleDeclaration" />
-      <node id="1239360506533" at="31,62,32,55" concept="0" />
+      <node id="1239360506533" at="21,0,22,0" concept="6" trace="NamedTupleDeclaration" />
+      <node id="1239360506533" at="33,62,34,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1239360506533" at="25,0,26,0" concept="1" trace="myConceptNamedTupleDeclaration" />
@@ -199,8 +199,8 @@
       <scope id="1239462176079" at="66,64,72,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1239462176079" at="17,0,18,0" concept="6" trace="NamedTupleComponentDeclaration" />
-      <node id="1239462176079" at="29,68,30,64" concept="0" />
+      <node id="1239462176079" at="19,0,20,0" concept="6" trace="NamedTupleComponentDeclaration" />
+      <node id="1239462176079" at="31,68,32,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1239462176079" at="23,0,24,0" concept="1" trace="myConceptNamedTupleComponentDeclaration" />
@@ -240,8 +240,8 @@
       <scope id="1239531918181" at="97,48,104,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1239531918181" at="21,0,22,0" concept="6" trace="NamedTupleType" />
-      <node id="1239531918181" at="33,51,34,48" concept="0" />
+      <node id="1239531918181" at="23,0,24,0" concept="6" trace="NamedTupleType" />
+      <node id="1239531918181" at="35,51,36,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1239531918181" at="27,0,28,0" concept="1" trace="myConceptNamedTupleType" />
@@ -280,8 +280,8 @@
       <scope id="1239559992092" at="89,51,96,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1239559992092" at="20,0,21,0" concept="6" trace="NamedTupleLiteral" />
-      <node id="1239559992092" at="32,55,33,51" concept="0" />
+      <node id="1239559992092" at="22,0,23,0" concept="6" trace="NamedTupleLiteral" />
+      <node id="1239559992092" at="34,55,35,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1239559992092" at="26,0,27,0" concept="1" trace="myConceptNamedTupleLiteral" />
@@ -318,8 +318,8 @@
       <scope id="1239560581441" at="73,62,79,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1239560581441" at="18,0,19,0" concept="6" trace="NamedTupleComponentReference" />
-      <node id="1239560581441" at="30,64,31,62" concept="0" />
+      <node id="1239560581441" at="20,0,21,0" concept="6" trace="NamedTupleComponentReference" />
+      <node id="1239560581441" at="32,64,33,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1239560581441" at="24,0,25,0" concept="1" trace="myConceptNamedTupleComponentReference" />
@@ -353,8 +353,8 @@
       <scope id="1239576519914" at="59,68,65,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1239576519914" at="16,0,17,0" concept="6" trace="NamedTupleComponentAccessOperation" />
-      <node id="1239576519914" at="28,70,29,68" concept="0" />
+      <node id="1239576519914" at="18,0,19,0" concept="6" trace="NamedTupleComponentAccessOperation" />
+      <node id="1239576519914" at="30,70,31,68" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1239576519914" at="22,0,23,0" concept="1" trace="myConceptNamedTupleComponentAccessOperation" />
@@ -389,8 +389,8 @@
       <scope id="4070820740695140043" at="52,65,58,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4070820740695140043" at="15,0,16,0" concept="6" trace="LocalVariableDeclarationInTuple" />
-      <node id="4070820740695140043" at="27,50,28,70" concept="0" />
+      <node id="4070820740695140043" at="17,0,18,0" concept="6" trace="LocalVariableDeclarationInTuple" />
+      <node id="4070820740695140043" at="29,50,30,70" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4070820740695140043" at="21,0,22,0" concept="1" trace="myConceptLocalVariableDeclarationInTuple" />

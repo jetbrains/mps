@@ -13,7 +13,7 @@
       <unit at="11,0,64,0" name="jetbrains.mps.lang.editor.forms.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,36,0" name="jetbrains.mps.lang.editor.forms.structure.LanguageConceptSwitch" />
+      <unit at="12,0,44,0" name="jetbrains.mps.lang.editor.forms.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="17,0,121,0" name="jetbrains.mps.lang.editor.forms.structure.StructureAspectDescriptor" />
@@ -34,8 +34,8 @@
       <scope id="1340057216891283515" at="45,49,52,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1340057216891283515" at="15,0,16,0" concept="6" trace="CheckboxUI_Text" />
-      <node id="1340057216891283515" at="22,58,23,54" concept="0" />
+      <node id="1340057216891283515" at="17,0,18,0" concept="6" trace="CheckboxUI_Text" />
+      <node id="1340057216891283515" at="24,58,25,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1340057216891283515" at="21,0,22,0" concept="1" trace="myConceptCheckboxUI_Text" />
@@ -72,8 +72,8 @@
       <scope id="1801654740563842010" at="23,52,28,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1801654740563842010" at="12,0,13,0" concept="6" trace="AbstractCheckboxUI" />
-      <node id="1801654740563842010" at="19,116,20,57" concept="0" />
+      <node id="1801654740563842010" at="14,0,15,0" concept="6" trace="AbstractCheckboxUI" />
+      <node id="1801654740563842010" at="21,116,22,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1801654740563842010" at="18,0,19,0" concept="1" trace="myConceptAbstractCheckboxUI" />
@@ -106,8 +106,8 @@
       <scope id="312429380032619384" at="29,52,36,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="312429380032619384" at="13,0,14,0" concept="6" trace="CellModel_Checkbox" />
-      <node id="312429380032619384" at="20,57,21,56" concept="0" />
+      <node id="312429380032619384" at="15,0,16,0" concept="6" trace="CellModel_Checkbox" />
+      <node id="312429380032619384" at="22,57,23,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="312429380032619384" at="19,0,20,0" concept="1" trace="myConceptCellModel_Checkbox" />
@@ -146,8 +146,8 @@
       <scope id="312429380032720646" at="53,56,59,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="312429380032720646" at="16,0,17,0" concept="6" trace="StubCellModel_Checkbox" />
-      <node id="312429380032720646" at="23,54,24,60" concept="0" />
+      <node id="312429380032720646" at="18,0,19,0" concept="6" trace="StubCellModel_Checkbox" />
+      <node id="312429380032720646" at="25,54,26,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="312429380032720646" at="22,0,23,0" concept="1" trace="myConceptStubCellModel_Checkbox" />
@@ -183,8 +183,8 @@
       <scope id="7024409093146622323" at="37,53,44,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7024409093146622323" at="14,0,15,0" concept="6" trace="CheckboxUI_Platform" />
-      <node id="7024409093146622323" at="21,56,22,58" concept="0" />
+      <node id="7024409093146622323" at="16,0,17,0" concept="6" trace="CheckboxUI_Platform" />
+      <node id="7024409093146622323" at="23,56,24,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7024409093146622323" at="20,0,21,0" concept="1" trace="myConceptCheckboxUI_Platform" />

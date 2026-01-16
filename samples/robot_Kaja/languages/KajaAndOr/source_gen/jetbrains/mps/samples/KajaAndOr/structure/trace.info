@@ -13,7 +13,7 @@
       <unit at="11,0,45,0" name="jetbrains.mps.samples.KajaAndOr.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,32,0" name="jetbrains.mps.samples.KajaAndOr.structure.LanguageConceptSwitch" />
+      <unit at="12,0,40,0" name="jetbrains.mps.samples.KajaAndOr.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,88,0" name="jetbrains.mps.samples.KajaAndOr.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="1904811872814253578" at="21,37,27,25" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1904811872814253578" at="12,0,13,0" concept="6" trace="And" />
-      <node id="1904811872814253578" at="17,116,18,42" concept="0" />
+      <node id="1904811872814253578" at="14,0,15,0" concept="6" trace="And" />
+      <node id="1904811872814253578" at="19,116,20,42" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1904811872814253578" at="15,0,16,0" concept="1" trace="myConceptAnd" />
@@ -69,8 +69,8 @@
       <scope id="1904811872814253755" at="34,36,40,24" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1904811872814253755" at="14,0,15,0" concept="6" trace="Or" />
-      <node id="1904811872814253755" at="19,54,20,41" concept="0" />
+      <node id="1904811872814253755" at="16,0,17,0" concept="6" trace="Or" />
+      <node id="1904811872814253755" at="21,54,22,41" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1904811872814253755" at="17,0,18,0" concept="1" trace="myConceptOr" />
@@ -104,8 +104,8 @@
       <scope id="1904811872814253785" at="28,49,33,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1904811872814253785" at="13,0,14,0" concept="6" trace="LogicalOperator" />
-      <node id="1904811872814253785" at="18,42,19,54" concept="0" />
+      <node id="1904811872814253785" at="15,0,16,0" concept="6" trace="LogicalOperator" />
+      <node id="1904811872814253785" at="20,42,21,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1904811872814253785" at="16,0,17,0" concept="1" trace="myConceptLogicalOperator" />

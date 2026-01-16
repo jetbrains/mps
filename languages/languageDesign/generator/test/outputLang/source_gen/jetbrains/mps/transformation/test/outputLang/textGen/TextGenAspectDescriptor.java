@@ -10,8 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TextGenAspectDescriptor extends TextGenAspectBase {
   private final LanguageConceptSwitch myIndex = new LanguageConceptSwitch();
@@ -43,7 +45,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     }
   }
   private static String getFileName_OutputRoot(SNode node) {
-    return node.getName();
+    return SPropertyOperations.getString(node, PROPS.name$MnvL);
+
   }
   private static String getFileExtension_OutputRoot(SNode node) {
     return null;
@@ -51,5 +54,9 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept OutputRoot$PZ = MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x116455d922fL, "jetbrains.mps.transformation.test.outputLang.structure.OutputRoot");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

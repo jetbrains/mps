@@ -12,7 +12,7 @@
       <unit at="11,0,46,0" name="jetbrains.mps.samples.highlevel.simpleStructure.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,32,0" name="jetbrains.mps.samples.highlevel.simpleStructure.structure.LanguageConceptSwitch" />
+      <unit at="12,0,40,0" name="jetbrains.mps.samples.highlevel.simpleStructure.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,81,0" name="jetbrains.mps.samples.highlevel.simpleStructure.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="3778147542048210862" at="28,59,34,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3778147542048210862" at="13,0,14,0" concept="5" trace="SimplePropertyDeclaration" />
-      <node id="3778147542048210862" at="18,63,19,64" concept="0" />
+      <node id="3778147542048210862" at="15,0,16,0" concept="5" trace="SimplePropertyDeclaration" />
+      <node id="3778147542048210862" at="20,63,21,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3778147542048210862" at="16,0,17,0" concept="1" trace="myConceptSimplePropertyDeclaration" />
@@ -66,8 +66,8 @@
       <scope id="3778147542048210888" at="35,60,41,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3778147542048210888" at="14,0,15,0" concept="5" trace="StructureAspectDeclaration" />
-      <node id="3778147542048210888" at="19,64,20,65" concept="0" />
+      <node id="3778147542048210888" at="16,0,17,0" concept="5" trace="StructureAspectDeclaration" />
+      <node id="3778147542048210888" at="21,64,22,65" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3778147542048210888" at="17,0,18,0" concept="1" trace="myConceptStructureAspectDeclaration" />
@@ -100,8 +100,8 @@
       <scope id="5048321718505638460" at="21,58,27,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5048321718505638460" at="12,0,13,0" concept="5" trace="SimpleConceptDeclaration" />
-      <node id="5048321718505638460" at="17,116,18,63" concept="0" />
+      <node id="5048321718505638460" at="14,0,15,0" concept="5" trace="SimpleConceptDeclaration" />
+      <node id="5048321718505638460" at="19,116,20,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5048321718505638460" at="15,0,16,0" concept="1" trace="myConceptSimpleConceptDeclaration" />

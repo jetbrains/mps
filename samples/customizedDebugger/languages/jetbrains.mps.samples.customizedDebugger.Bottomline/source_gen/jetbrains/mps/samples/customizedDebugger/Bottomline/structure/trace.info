@@ -12,7 +12,7 @@
       <unit at="11,0,38,0" name="jetbrains.mps.samples.customizedDebugger.Bottomline.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.samples.customizedDebugger.Bottomline.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.samples.customizedDebugger.Bottomline.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,78,0" name="jetbrains.mps.samples.customizedDebugger.Bottomline.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="567241428659643824" at="20,49,26,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="567241428659643824" at="12,0,13,0" concept="5" trace="MessageSequence" />
-      <node id="567241428659643824" at="16,116,17,53" concept="0" />
+      <node id="567241428659643824" at="14,0,15,0" concept="5" trace="MessageSequence" />
+      <node id="567241428659643824" at="18,116,19,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="567241428659643824" at="16,0,17,0" concept="1" trace="myConceptMessageSequence" />
@@ -70,8 +70,8 @@
       <scope id="567241428659643876" at="27,47,33,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="567241428659643876" at="13,0,14,0" concept="5" trace="OutputMessage" />
-      <node id="567241428659643876" at="17,53,18,51" concept="0" />
+      <node id="567241428659643876" at="15,0,16,0" concept="5" trace="OutputMessage" />
+      <node id="567241428659643876" at="19,53,20,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="567241428659643876" at="17,0,18,0" concept="1" trace="myConceptOutputMessage" />

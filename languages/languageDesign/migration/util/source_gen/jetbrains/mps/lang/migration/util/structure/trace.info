@@ -12,7 +12,7 @@
       <unit at="11,0,38,0" name="jetbrains.mps.lang.migration.util.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.lang.migration.util.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.lang.migration.util.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,72,0" name="jetbrains.mps.lang.migration.util.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="3211321119092784894" at="27,44,33,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3211321119092784894" at="13,0,14,0" concept="5" trace="StringData" />
-      <node id="3211321119092784894" at="17,47,18,49" concept="0" />
+      <node id="3211321119092784894" at="15,0,16,0" concept="5" trace="StringData" />
+      <node id="3211321119092784894" at="19,47,20,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3211321119092784894" at="17,0,18,0" concept="1" trace="myConceptStringData" />
@@ -66,8 +66,8 @@
       <scope id="7417095922908669705" at="20,42,26,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7417095922908669705" at="12,0,13,0" concept="5" trace="StepData" />
-      <node id="7417095922908669705" at="16,116,17,47" concept="0" />
+      <node id="7417095922908669705" at="14,0,15,0" concept="5" trace="StepData" />
+      <node id="7417095922908669705" at="18,116,19,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7417095922908669705" at="16,0,17,0" concept="1" trace="myConceptStepData" />

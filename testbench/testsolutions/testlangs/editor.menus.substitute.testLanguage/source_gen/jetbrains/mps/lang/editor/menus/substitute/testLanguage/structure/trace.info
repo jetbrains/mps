@@ -17,7 +17,7 @@
       <unit at="11,0,622,0" name="jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,178,0" name="jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,186,0" name="jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="18,0,996,0" name="jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.StructureAspectDescriptor" />
@@ -37,8 +37,8 @@
       <scope id="1892012100483551196" at="558,70,564,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1892012100483551196" at="79,0,80,0" concept="8" trace="TestSubstitute_IncludeDifferentMenus" />
-      <node id="1892012100483551196" at="157,79,158,75" concept="1" />
+      <node id="1892012100483551196" at="81,0,82,0" concept="8" trace="TestSubstitute_IncludeDifferentMenus" />
+      <node id="1892012100483551196" at="159,79,160,75" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1892012100483551196" at="86,0,87,0" concept="2" trace="myConceptTestSubstitute_IncludeDifferentMenus" />
@@ -70,8 +70,8 @@
       <scope id="1892012100483553581" at="604,67,610,55" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1892012100483553581" at="86,0,87,0" concept="8" trace="TestSubstitute_WrapDifferentMenus" />
-      <node id="1892012100483553581" at="164,64,165,72" concept="1" />
+      <node id="1892012100483553581" at="88,0,89,0" concept="8" trace="TestSubstitute_WrapDifferentMenus" />
+      <node id="1892012100483553581" at="166,64,167,72" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1892012100483553581" at="93,0,94,0" concept="2" trace="myConceptTestSubstitute_WrapDifferentMenus" />
@@ -103,8 +103,8 @@
       <scope id="2935000035741542015" at="369,70,375,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2935000035741542015" at="52,0,53,0" concept="8" trace="TestSubstituteExceptionWrapMenuChild" />
-      <node id="2935000035741542015" at="130,81,131,75" concept="1" />
+      <node id="2935000035741542015" at="54,0,55,0" concept="8" trace="TestSubstituteExceptionWrapMenuChild" />
+      <node id="2935000035741542015" at="132,81,133,75" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2935000035741542015" at="59,0,60,0" concept="2" trace="myConceptTestSubstituteExceptionWrapMenuChild" />
@@ -136,8 +136,8 @@
       <scope id="3262439767570552768" at="376,73,382,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3262439767570552768" at="53,0,54,0" concept="8" trace="TestSubstituteGrandChildWithConstraints" />
-      <node id="3262439767570552768" at="131,75,132,78" concept="1" />
+      <node id="3262439767570552768" at="55,0,56,0" concept="8" trace="TestSubstituteGrandChildWithConstraints" />
+      <node id="3262439767570552768" at="133,75,134,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3262439767570552768" at="60,0,61,0" concept="2" trace="myConceptTestSubstituteGrandChildWithConstraints" />
@@ -169,8 +169,8 @@
       <scope id="3553171620717635849" at="426,85,432,73" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3553171620717635849" at="60,0,61,0" concept="8" trace="TestSubstituteParentPropertyAndReference_Subconcept" />
-      <node id="3553171620717635849" at="138,78,139,90" concept="1" />
+      <node id="3553171620717635849" at="62,0,63,0" concept="8" trace="TestSubstituteParentPropertyAndReference_Subconcept" />
+      <node id="3553171620717635849" at="140,78,141,90" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3553171620717635849" at="67,0,68,0" concept="2" trace="myConceptTestSubstituteParentPropertyAndReference_Subconcept" />
@@ -206,8 +206,8 @@
       <scope id="368966953912091576" at="474,69,480,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="368966953912091576" at="67,0,68,0" concept="8" trace="TestSubstituteSpecialChildAttribute" />
-      <node id="368966953912091576" at="145,65,146,73" concept="1" />
+      <node id="368966953912091576" at="69,0,70,0" concept="8" trace="TestSubstituteSpecialChildAttribute" />
+      <node id="368966953912091576" at="147,65,148,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="368966953912091576" at="74,0,75,0" concept="2" trace="myConceptTestSubstituteSpecialChildAttribute" />
@@ -241,8 +241,8 @@
       <scope id="4085424218237852311" at="188,65,194,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4085424218237852311" at="26,0,27,0" concept="8" trace="TestSubstituteChildToSpecialize" />
-      <node id="4085424218237852311" at="104,79,105,70" concept="1" />
+      <node id="4085424218237852311" at="28,0,29,0" concept="8" trace="TestSubstituteChildToSpecialize" />
+      <node id="4085424218237852311" at="106,79,107,70" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4085424218237852311" at="33,0,34,0" concept="2" trace="myConceptTestSubstituteChildToSpecialize" />
@@ -274,8 +274,8 @@
       <scope id="4085424218237852312" at="467,60,473,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4085424218237852312" at="66,0,67,0" concept="8" trace="TestSubstituteSpecialChild" />
-      <node id="4085424218237852312" at="144,92,145,65" concept="1" />
+      <node id="4085424218237852312" at="68,0,69,0" concept="8" trace="TestSubstituteSpecialChild" />
+      <node id="4085424218237852312" at="146,92,147,65" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4085424218237852312" at="73,0,74,0" concept="2" trace="myConceptTestSubstituteSpecialChild" />
@@ -311,8 +311,8 @@
       <scope id="4085424218237852313" at="481,61,487,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4085424218237852313" at="68,0,69,0" concept="8" trace="TestSubstituteSpecialParent" />
-      <node id="4085424218237852313" at="146,73,147,66" concept="1" />
+      <node id="4085424218237852313" at="70,0,71,0" concept="8" trace="TestSubstituteSpecialParent" />
+      <node id="4085424218237852313" at="148,73,149,66" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4085424218237852313" at="75,0,76,0" concept="2" trace="myConceptTestSubstituteSpecialParent" />
@@ -404,8 +404,8 @@
       <scope id="4572725119287324734" at="578,55,584,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324734" at="82,0,83,0" concept="8" trace="TestSubstitute_Parent" />
-      <node id="4572725119287324734" at="160,63,161,60" concept="1" />
+      <node id="4572725119287324734" at="84,0,85,0" concept="8" trace="TestSubstitute_Parent" />
+      <node id="4572725119287324734" at="162,63,163,60" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324734" at="89,0,90,0" concept="2" trace="myConceptTestSubstitute_Parent" />
@@ -442,8 +442,8 @@
       <scope id="4572725119287324736" at="572,58,577,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324736" at="81,0,82,0" concept="8" trace="TestSubstitute_Interface" />
-      <node id="4572725119287324736" at="159,74,160,63" concept="1" />
+      <node id="4572725119287324736" at="83,0,84,0" concept="8" trace="TestSubstitute_Interface" />
+      <node id="4572725119287324736" at="161,74,162,63" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324736" at="88,0,89,0" concept="2" trace="myConceptTestSubstitute_Interface" />
@@ -476,8 +476,8 @@
       <scope id="4572725119287324737" at="585,62,590,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324737" at="83,0,84,0" concept="8" trace="TestSubstitute_SubInterface1" />
-      <node id="4572725119287324737" at="161,60,162,67" concept="1" />
+      <node id="4572725119287324737" at="85,0,86,0" concept="8" trace="TestSubstitute_SubInterface1" />
+      <node id="4572725119287324737" at="163,60,164,67" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324737" at="90,0,91,0" concept="2" trace="myConceptTestSubstitute_SubInterface1" />
@@ -509,8 +509,8 @@
       <scope id="4572725119287324738" at="591,62,596,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324738" at="84,0,85,0" concept="8" trace="TestSubstitute_SubInterface2" />
-      <node id="4572725119287324738" at="162,67,163,67" concept="1" />
+      <node id="4572725119287324738" at="86,0,87,0" concept="8" trace="TestSubstitute_SubInterface2" />
+      <node id="4572725119287324738" at="164,67,165,67" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324738" at="91,0,92,0" concept="2" trace="myConceptTestSubstitute_SubInterface2" />
@@ -543,8 +543,8 @@
       <scope id="4572725119287324743" at="597,59,603,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324743" at="85,0,86,0" concept="8" trace="TestSubstitute_Subconcept" />
-      <node id="4572725119287324743" at="163,67,164,64" concept="1" />
+      <node id="4572725119287324743" at="87,0,88,0" concept="8" trace="TestSubstitute_Subconcept" />
+      <node id="4572725119287324743" at="165,67,166,64" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324743" at="92,0,93,0" concept="2" trace="myConceptTestSubstitute_Subconcept" />
@@ -576,8 +576,8 @@
       <scope id="4572725119287324826" at="565,69,571,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324826" at="80,0,81,0" concept="8" trace="TestSubstitute_IncludeSameMenuTwice" />
-      <node id="4572725119287324826" at="158,75,159,74" concept="1" />
+      <node id="4572725119287324826" at="82,0,83,0" concept="8" trace="TestSubstitute_IncludeSameMenuTwice" />
+      <node id="4572725119287324826" at="160,75,161,74" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324826" at="87,0,88,0" concept="2" trace="myConceptTestSubstitute_IncludeSameMenuTwice" />
@@ -609,8 +609,8 @@
       <scope id="4572725119287324829" at="611,66,617,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4572725119287324829" at="87,0,88,0" concept="8" trace="TestSubstitute_WrapSameMenuTwice" />
-      <node id="4572725119287324829" at="165,72,166,71" concept="1" />
+      <node id="4572725119287324829" at="89,0,90,0" concept="8" trace="TestSubstitute_WrapSameMenuTwice" />
+      <node id="4572725119287324829" at="167,72,168,71" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4572725119287324829" at="94,0,95,0" concept="2" trace="myConceptTestSubstitute_WrapSameMenuTwice" />
@@ -642,8 +642,8 @@
       <scope id="4616565815313104460" at="412,63,418,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4616565815313104460" at="58,0,59,0" concept="8" trace="TestSubstituteParentOfWrapper" />
-      <node id="4616565815313104460" at="136,82,137,68" concept="1" />
+      <node id="4616565815313104460" at="60,0,61,0" concept="8" trace="TestSubstituteParentOfWrapper" />
+      <node id="4616565815313104460" at="138,82,139,68" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4616565815313104460" at="65,0,66,0" concept="2" trace="myConceptTestSubstituteParentOfWrapper" />
@@ -676,8 +676,8 @@
       <scope id="4616565815313123083" at="544,55,550,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4616565815313123083" at="77,0,78,0" concept="8" trace="TestSubstituteWrapper" />
-      <node id="4616565815313123083" at="155,76,156,60" concept="1" />
+      <node id="4616565815313123083" at="79,0,80,0" concept="8" trace="TestSubstituteWrapper" />
+      <node id="4616565815313123083" at="157,76,158,60" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4616565815313123083" at="84,0,85,0" concept="2" trace="myConceptTestSubstituteWrapper" />
@@ -713,8 +713,8 @@
       <scope id="4616565815313123084" at="168,62,174,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4616565815313123084" at="23,0,24,0" concept="8" trace="TestSubstituteChildOfWrapper" />
-      <node id="4616565815313123084" at="101,65,102,67" concept="1" />
+      <node id="4616565815313123084" at="25,0,26,0" concept="8" trace="TestSubstituteChildOfWrapper" />
+      <node id="4616565815313123084" at="103,65,104,67" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4616565815313123084" at="30,0,31,0" concept="2" trace="myConceptTestSubstituteChildOfWrapper" />
@@ -747,8 +747,8 @@
       <scope id="4695456347262392706" at="551,74,557,62" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4695456347262392706" at="78,0,79,0" concept="8" trace="TestSubstitute_IncludeDefaultAndNullMenu" />
-      <node id="4695456347262392706" at="156,60,157,79" concept="1" />
+      <node id="4695456347262392706" at="80,0,81,0" concept="8" trace="TestSubstitute_IncludeDefaultAndNullMenu" />
+      <node id="4695456347262392706" at="158,60,159,79" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4695456347262392706" at="85,0,86,0" concept="2" trace="myConceptTestSubstitute_IncludeDefaultAndNullMenu" />
@@ -780,8 +780,8 @@
       <scope id="476103360378640385" at="419,74,425,62" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="476103360378640385" at="59,0,60,0" concept="8" trace="TestSubstituteParentPropertyAndReference" />
-      <node id="476103360378640385" at="137,68,138,78" concept="1" />
+      <node id="476103360378640385" at="61,0,62,0" concept="8" trace="TestSubstituteParentPropertyAndReference" />
+      <node id="476103360378640385" at="139,68,140,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="476103360378640385" at="66,0,67,0" concept="2" trace="myConceptTestSubstituteParentPropertyAndReference" />
@@ -829,8 +829,8 @@
       <scope id="4930188782568019923" at="405,77,411,65" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4930188782568019923" at="57,0,58,0" concept="8" trace="TestSubstituteParentForChildrenWithAttibute" />
-      <node id="4930188782568019923" at="135,59,136,82" concept="1" />
+      <node id="4930188782568019923" at="59,0,60,0" concept="8" trace="TestSubstituteParentForChildrenWithAttibute" />
+      <node id="4930188782568019923" at="137,59,138,82" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4930188782568019923" at="64,0,65,0" concept="2" trace="myConceptTestSubstituteParentForChildrenWithAttibute" />
@@ -863,8 +863,8 @@
       <scope id="4930188782568019924" at="195,65,201,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4930188782568019924" at="27,0,28,0" concept="8" trace="TestSubstituteChildWithAttibute" />
-      <node id="4930188782568019924" at="105,70,106,70" concept="1" />
+      <node id="4930188782568019924" at="29,0,30,0" concept="8" trace="TestSubstituteChildWithAttibute" />
+      <node id="4930188782568019924" at="107,70,108,70" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4930188782568019924" at="34,0,35,0" concept="2" trace="myConceptTestSubstituteChildWithAttibute" />
@@ -897,8 +897,8 @@
       <scope id="4930188782568019925" at="126,75,132,63" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4930188782568019925" at="17,0,18,0" concept="8" trace="TestSubstituteAttribute_TransparentEditor" />
-      <node id="4930188782568019925" at="95,76,96,80" concept="1" />
+      <node id="4930188782568019925" at="19,0,20,0" concept="8" trace="TestSubstituteAttribute_TransparentEditor" />
+      <node id="4930188782568019925" at="97,76,98,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4930188782568019925" at="24,0,25,0" concept="2" trace="myConceptTestSubstituteAttribute_TransparentEditor" />
@@ -932,8 +932,8 @@
       <scope id="4930188782568019926" at="119,71,125,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4930188782568019926" at="16,0,17,0" concept="8" trace="TestSubstituteAttribute_RegularEditor" />
-      <node id="4930188782568019926" at="94,85,95,76" concept="1" />
+      <node id="4930188782568019926" at="18,0,19,0" concept="8" trace="TestSubstituteAttribute_RegularEditor" />
+      <node id="4930188782568019926" at="96,85,97,76" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4930188782568019926" at="23,0,24,0" concept="2" trace="myConceptTestSubstituteAttribute_RegularEditor" />
@@ -967,8 +967,8 @@
       <scope id="4930188782568019927" at="133,71,139,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4930188782568019927" at="18,0,19,0" concept="8" trace="TestSubstituteAttribute_WithReference" />
-      <node id="4930188782568019927" at="96,80,97,76" concept="1" />
+      <node id="4930188782568019927" at="20,0,21,0" concept="8" trace="TestSubstituteAttribute_WithReference" />
+      <node id="4930188782568019927" at="98,80,99,76" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4930188782568019927" at="25,0,26,0" concept="2" trace="myConceptTestSubstituteAttribute_WithReference" />
@@ -1003,8 +1003,8 @@
       <scope id="5511779000991169825" at="355,73,361,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5511779000991169825" at="50,0,51,0" concept="8" trace="TestSubstituteExceptionSubconceptsChild" />
-      <node id="5511779000991169825" at="128,95,129,78" concept="1" />
+      <node id="5511779000991169825" at="52,0,53,0" concept="8" trace="TestSubstituteExceptionSubconceptsChild" />
+      <node id="5511779000991169825" at="130,95,131,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5511779000991169825" at="57,0,58,0" concept="2" trace="myConceptTestSubstituteExceptionSubconceptsChild" />
@@ -1036,8 +1036,8 @@
       <scope id="5511779000991248674" at="362,76,368,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5511779000991248674" at="51,0,52,0" concept="8" trace="TestSubstituteExceptionSubconceptsSubChild" />
-      <node id="5511779000991248674" at="129,78,130,81" concept="1" />
+      <node id="5511779000991248674" at="53,0,54,0" concept="8" trace="TestSubstituteExceptionSubconceptsSubChild" />
+      <node id="5511779000991248674" at="131,78,132,81" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5511779000991248674" at="58,0,59,0" concept="2" trace="myConceptTestSubstituteExceptionSubconceptsSubChild" />
@@ -1071,8 +1071,8 @@
       <scope id="705057939849506458" at="440,69,446,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849506458" at="62,0,63,0" concept="8" trace="TestSubstituteParentWithConstraints" />
-      <node id="705057939849506458" at="140,70,141,73" concept="1" />
+      <node id="705057939849506458" at="64,0,65,0" concept="8" trace="TestSubstituteParentWithConstraints" />
+      <node id="705057939849506458" at="142,70,143,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849506458" at="69,0,70,0" concept="2" trace="myConceptTestSubstituteParentWithConstraints" />
@@ -1109,8 +1109,8 @@
       <scope id="705057939849506459" at="107,76,112,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849506459" at="14,0,15,0" concept="8" trace="TestSubstituteAbstractChildWithConstraints" />
-      <node id="705057939849506459" at="92,82,93,80" concept="1" />
+      <node id="705057939849506459" at="16,0,17,0" concept="8" trace="TestSubstituteAbstractChildWithConstraints" />
+      <node id="705057939849506459" at="94,82,95,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849506459" at="21,0,22,0" concept="2" trace="myConceptTestSubstituteAbstractChildWithConstraints" />
@@ -1143,8 +1143,8 @@
       <scope id="705057939849542067" at="209,69,215,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849542067" at="29,0,30,0" concept="8" trace="TestSubstituteChildWithConstraints2" />
-      <node id="705057939849542067" at="107,73,108,73" concept="1" />
+      <node id="705057939849542067" at="31,0,32,0" concept="8" trace="TestSubstituteChildWithConstraints2" />
+      <node id="705057939849542067" at="109,73,110,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849542067" at="36,0,37,0" concept="2" trace="myConceptTestSubstituteChildWithConstraints2" />
@@ -1179,8 +1179,8 @@
       <scope id="705057939849542068" at="202,69,208,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849542068" at="28,0,29,0" concept="8" trace="TestSubstituteChildWithConstraints1" />
-      <node id="705057939849542068" at="106,70,107,73" concept="1" />
+      <node id="705057939849542068" at="30,0,31,0" concept="8" trace="TestSubstituteChildWithConstraints1" />
+      <node id="705057939849542068" at="108,70,109,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849542068" at="35,0,36,0" concept="2" trace="myConceptTestSubstituteChildWithConstraints1" />
@@ -1215,8 +1215,8 @@
       <scope id="705057939849665992" at="216,69,222,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849665992" at="30,0,31,0" concept="8" trace="TestSubstituteChildWithConstraints3" />
-      <node id="705057939849665992" at="108,73,109,73" concept="1" />
+      <node id="705057939849665992" at="32,0,33,0" concept="8" trace="TestSubstituteChildWithConstraints3" />
+      <node id="705057939849665992" at="110,73,111,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849665992" at="37,0,38,0" concept="2" trace="myConceptTestSubstituteChildWithConstraints3" />
@@ -1250,8 +1250,8 @@
       <scope id="705057939849877127" at="236,76,242,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849877127" at="33,0,34,0" concept="8" trace="TestSubstituteChildWithConstraintsWrapper1" />
-      <node id="705057939849877127" at="111,78,112,80" concept="1" />
+      <node id="705057939849877127" at="35,0,36,0" concept="8" trace="TestSubstituteChildWithConstraintsWrapper1" />
+      <node id="705057939849877127" at="113,78,114,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849877127" at="40,0,41,0" concept="2" trace="myConceptTestSubstituteChildWithConstraintsWrapper1" />
@@ -1286,8 +1286,8 @@
       <scope id="705057939849877128" at="229,74,235,62" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849877128" at="32,0,33,0" concept="8" trace="TestSubstituteChildWithConstraintsToWrap" />
-      <node id="705057939849877128" at="110,87,111,78" concept="1" />
+      <node id="705057939849877128" at="34,0,35,0" concept="8" trace="TestSubstituteChildWithConstraintsToWrap" />
+      <node id="705057939849877128" at="112,87,113,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849877128" at="39,0,40,0" concept="2" trace="myConceptTestSubstituteChildWithConstraintsToWrap" />
@@ -1318,8 +1318,8 @@
       <scope id="705057939849964251" at="223,83,228,71" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849964251" at="31,0,32,0" concept="8" trace="TestSubstituteChildWithConstraintsAbstractWrapper" />
-      <node id="705057939849964251" at="109,73,110,87" concept="1" />
+      <node id="705057939849964251" at="33,0,34,0" concept="8" trace="TestSubstituteChildWithConstraintsAbstractWrapper" />
+      <node id="705057939849964251" at="111,73,112,87" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849964251" at="38,0,39,0" concept="2" trace="myConceptTestSubstituteChildWithConstraintsAbstractWrapper" />
@@ -1351,8 +1351,8 @@
       <scope id="705057939849964258" at="243,76,249,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939849964258" at="34,0,35,0" concept="8" trace="TestSubstituteChildWithConstraintsWrapper2" />
-      <node id="705057939849964258" at="112,80,113,80" concept="1" />
+      <node id="705057939849964258" at="36,0,37,0" concept="8" trace="TestSubstituteChildWithConstraintsWrapper2" />
+      <node id="705057939849964258" at="114,80,115,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939849964258" at="41,0,42,0" concept="2" trace="myConceptTestSubstituteChildWithConstraintsWrapper2" />
@@ -1387,8 +1387,8 @@
       <scope id="705057939850009742" at="250,76,256,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="705057939850009742" at="35,0,36,0" concept="8" trace="TestSubstituteChildWithConstraintsWrapper3" />
-      <node id="705057939850009742" at="113,80,114,80" concept="1" />
+      <node id="705057939850009742" at="37,0,38,0" concept="8" trace="TestSubstituteChildWithConstraintsWrapper3" />
+      <node id="705057939850009742" at="115,80,116,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="705057939850009742" at="42,0,43,0" concept="2" trace="myConceptTestSubstituteChildWithConstraintsWrapper3" />
@@ -1423,8 +1423,8 @@
       <scope id="7153261420283491153" at="327,63,333,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283491153" at="46,0,47,0" concept="8" trace="TestSubstituteExceptionParent" />
-      <node id="7153261420283491153" at="124,80,125,68" concept="1" />
+      <node id="7153261420283491153" at="48,0,49,0" concept="8" trace="TestSubstituteExceptionParent" />
+      <node id="7153261420283491153" at="126,80,127,68" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283491153" at="53,0,54,0" concept="2" trace="myConceptTestSubstituteExceptionParent" />
@@ -1470,8 +1470,8 @@
       <scope id="7153261420283491154" at="264,81,270,69" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283491154" at="37,0,38,0" concept="8" trace="TestSubstituteExceptionActionCanSubstituteChild" />
-      <node id="7153261420283491154" at="115,76,116,86" concept="1" />
+      <node id="7153261420283491154" at="39,0,40,0" concept="8" trace="TestSubstituteExceptionActionCanSubstituteChild" />
+      <node id="7153261420283491154" at="117,76,118,86" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283491154" at="44,0,45,0" concept="2" trace="myConceptTestSubstituteExceptionActionCanSubstituteChild" />
@@ -1503,8 +1503,8 @@
       <scope id="7153261420283525764" at="285,80,291,68" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283525764" at="40,0,41,0" concept="8" trace="TestSubstituteExceptionActionMatchingTextChild" />
-      <node id="7153261420283525764" at="118,77,119,85" concept="1" />
+      <node id="7153261420283525764" at="42,0,43,0" concept="8" trace="TestSubstituteExceptionActionMatchingTextChild" />
+      <node id="7153261420283525764" at="120,77,121,85" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283525764" at="47,0,48,0" concept="2" trace="myConceptTestSubstituteExceptionActionMatchingTextChild" />
@@ -1536,8 +1536,8 @@
       <scope id="7153261420283532666" at="271,83,277,71" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283532666" at="38,0,39,0" concept="8" trace="TestSubstituteExceptionActionDescriptionTextChild" />
-      <node id="7153261420283532666" at="116,86,117,88" concept="1" />
+      <node id="7153261420283532666" at="40,0,41,0" concept="8" trace="TestSubstituteExceptionActionDescriptionTextChild" />
+      <node id="7153261420283532666" at="118,86,119,88" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283532666" at="45,0,46,0" concept="2" trace="myConceptTestSubstituteExceptionActionDescriptionTextChild" />
@@ -1569,8 +1569,8 @@
       <scope id="7153261420283537506" at="278,72,284,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283537506" at="39,0,40,0" concept="8" trace="TestSubstituteExceptionActionIconChild" />
-      <node id="7153261420283537506" at="117,88,118,77" concept="1" />
+      <node id="7153261420283537506" at="41,0,42,0" concept="8" trace="TestSubstituteExceptionActionIconChild" />
+      <node id="7153261420283537506" at="119,88,120,77" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283537506" at="46,0,47,0" concept="2" trace="myConceptTestSubstituteExceptionActionIconChild" />
@@ -1602,8 +1602,8 @@
       <scope id="7153261420283544412" at="292,72,298,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283544412" at="41,0,42,0" concept="8" trace="TestSubstituteExceptionActionTypeChild" />
-      <node id="7153261420283544412" at="119,85,120,77" concept="1" />
+      <node id="7153261420283544412" at="43,0,44,0" concept="8" trace="TestSubstituteExceptionActionTypeChild" />
+      <node id="7153261420283544412" at="121,85,122,77" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283544412" at="48,0,49,0" concept="2" trace="myConceptTestSubstituteExceptionActionTypeChild" />
@@ -1636,8 +1636,8 @@
       <scope id="7153261420283556355" at="306,67,312,55" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283556355" at="43,0,44,0" concept="8" trace="TestSubstituteExceptionGroupChild" />
-      <node id="7153261420283556355" at="121,78,122,72" concept="1" />
+      <node id="7153261420283556355" at="45,0,46,0" concept="8" trace="TestSubstituteExceptionGroupChild" />
+      <node id="7153261420283556355" at="123,78,124,72" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283556355" at="50,0,51,0" concept="2" trace="myConceptTestSubstituteExceptionGroupChild" />
@@ -1669,8 +1669,8 @@
       <scope id="7153261420283568693" at="299,73,305,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283568693" at="42,0,43,0" concept="8" trace="TestSubstituteExceptionConceptListChild" />
-      <node id="7153261420283568693" at="120,77,121,78" concept="1" />
+      <node id="7153261420283568693" at="44,0,45,0" concept="8" trace="TestSubstituteExceptionConceptListChild" />
+      <node id="7153261420283568693" at="122,77,123,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283568693" at="49,0,50,0" concept="2" trace="myConceptTestSubstituteExceptionConceptListChild" />
@@ -1702,8 +1702,8 @@
       <scope id="7153261420283586526" at="313,73,319,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283586526" at="44,0,45,0" concept="8" trace="TestSubstituteExceptionIncludeMenuChild" />
-      <node id="7153261420283586526" at="122,72,123,78" concept="1" />
+      <node id="7153261420283586526" at="46,0,47,0" concept="8" trace="TestSubstituteExceptionIncludeMenuChild" />
+      <node id="7153261420283586526" at="124,72,125,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283586526" at="51,0,52,0" concept="2" trace="myConceptTestSubstituteExceptionIncludeMenuChild" />
@@ -1735,8 +1735,8 @@
       <scope id="7153261420283593657" at="320,75,326,63" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283593657" at="45,0,46,0" concept="8" trace="TestSubstituteExceptionParameterizedChild" />
-      <node id="7153261420283593657" at="123,78,124,80" concept="1" />
+      <node id="7153261420283593657" at="47,0,48,0" concept="8" trace="TestSubstituteExceptionParameterizedChild" />
+      <node id="7153261420283593657" at="125,78,126,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283593657" at="52,0,53,0" concept="2" trace="myConceptTestSubstituteExceptionParameterizedChild" />
@@ -1768,8 +1768,8 @@
       <scope id="7153261420283598731" at="341,83,347,71" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283598731" at="48,0,49,0" concept="8" trace="TestSubstituteExceptionReferenceMatchingTextChild" />
-      <node id="7153261420283598731" at="126,91,127,88" concept="1" />
+      <node id="7153261420283598731" at="50,0,51,0" concept="8" trace="TestSubstituteExceptionReferenceMatchingTextChild" />
+      <node id="7153261420283598731" at="128,91,129,88" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283598731" at="55,0,56,0" concept="2" trace="myConceptTestSubstituteExceptionReferenceMatchingTextChild" />
@@ -1802,8 +1802,8 @@
       <scope id="7153261420283606253" at="348,90,354,78" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283606253" at="49,0,50,0" concept="8" trace="TestSubstituteExceptionReferenceVisibleMatchingTextChild" />
-      <node id="7153261420283606253" at="127,88,128,95" concept="1" />
+      <node id="7153261420283606253" at="51,0,52,0" concept="8" trace="TestSubstituteExceptionReferenceVisibleMatchingTextChild" />
+      <node id="7153261420283606253" at="129,88,130,95" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283606253" at="56,0,57,0" concept="2" trace="myConceptTestSubstituteExceptionReferenceVisibleMatchingTextChild" />
@@ -1836,8 +1836,8 @@
       <scope id="7153261420283609298" at="334,86,340,74" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283609298" at="47,0,48,0" concept="8" trace="TestSubstituteExceptionReferenceDescriptionTextChild" />
-      <node id="7153261420283609298" at="125,68,126,91" concept="1" />
+      <node id="7153261420283609298" at="49,0,50,0" concept="8" trace="TestSubstituteExceptionReferenceDescriptionTextChild" />
+      <node id="7153261420283609298" at="127,68,128,91" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283609298" at="54,0,55,0" concept="2" trace="myConceptTestSubstituteExceptionReferenceDescriptionTextChild" />
@@ -1870,8 +1870,8 @@
       <scope id="7432042996948844006" at="453,76,459,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7432042996948844006" at="64,0,65,0" concept="8" trace="TestSubstituteSmartRef_WithoutExplicitMenu" />
-      <node id="7432042996948844006" at="142,71,143,81" concept="1" />
+      <node id="7432042996948844006" at="66,0,67,0" concept="8" trace="TestSubstituteSmartRef_WithoutExplicitMenu" />
+      <node id="7432042996948844006" at="144,71,145,81" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7432042996948844006" at="71,0,72,0" concept="2" trace="myConceptTestSubstituteSmartRef_WithoutExplicitMenu" />
@@ -1904,8 +1904,8 @@
       <scope id="7432042996949147798" at="181,74,187,62" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7432042996949147798" at="25,0,26,0" concept="8" trace="TestSubstituteChildToReferenceSubconcept" />
-      <node id="7432042996949147798" at="103,63,104,79" concept="1" />
+      <node id="7432042996949147798" at="27,0,28,0" concept="8" trace="TestSubstituteChildToReferenceSubconcept" />
+      <node id="7432042996949147798" at="105,63,106,79" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7432042996949147798" at="32,0,33,0" concept="2" trace="myConceptTestSubstituteChildToReferenceSubconcept" />
@@ -1939,8 +1939,8 @@
       <scope id="7432042996949579847" at="460,87,466,75" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7432042996949579847" at="65,0,66,0" concept="8" trace="TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept" />
-      <node id="7432042996949579847" at="143,81,144,92" concept="1" />
+      <node id="7432042996949579847" at="67,0,68,0" concept="8" trace="TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept" />
+      <node id="7432042996949579847" at="145,81,146,92" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7432042996949579847" at="72,0,73,0" concept="2" trace="myConceptTestSubstituteSmartRef_WithoutExplicitMenu_Subconcept" />
@@ -1976,8 +1976,8 @@
       <scope id="8289277620556838113" at="383,83,390,71" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8289277620556838113" at="54,0,55,0" concept="8" trace="TestSubstituteGrandChildWithConstraintsProhibited" />
-      <node id="8289277620556838113" at="132,78,133,88" concept="1" />
+      <node id="8289277620556838113" at="56,0,57,0" concept="8" trace="TestSubstituteGrandChildWithConstraintsProhibited" />
+      <node id="8289277620556838113" at="134,78,135,88" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8289277620556838113" at="61,0,62,0" concept="2" trace="myConceptTestSubstituteGrandChildWithConstraintsProhibited" />
@@ -2011,8 +2011,8 @@
       <scope id="8292814565107675822" at="537,71,543,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8292814565107675822" at="76,0,77,0" concept="8" trace="TestSubstituteToWrapFromTransformMenu" />
-      <node id="8292814565107675822" at="154,77,155,76" concept="1" />
+      <node id="8292814565107675822" at="78,0,79,0" concept="8" trace="TestSubstituteToWrapFromTransformMenu" />
+      <node id="8292814565107675822" at="156,77,157,76" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8292814565107675822" at="83,0,84,0" concept="2" trace="myConceptTestSubstituteToWrapFromTransformMenu" />
@@ -2045,8 +2045,8 @@
       <scope id="8477852555558591227" at="94,80,100,68" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8477852555558591227" at="12,0,13,0" concept="8" trace="TestConceptForMenuParameterizedByPrimitiveType" />
-      <node id="8477852555558591227" at="90,116,91,85" concept="1" />
+      <node id="8477852555558591227" at="14,0,15,0" concept="8" trace="TestConceptForMenuParameterizedByPrimitiveType" />
+      <node id="8477852555558591227" at="92,116,93,85" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8477852555558591227" at="19,0,20,0" concept="2" trace="myConceptTestConceptForMenuParameterizedByPrimitiveType" />
@@ -2078,8 +2078,8 @@
       <scope id="8629363476786100059" at="488,63,494,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8629363476786100059" at="69,0,70,0" concept="8" trace="TestSubstituteSpecialSubChild" />
-      <node id="8629363476786100059" at="147,66,148,68" concept="1" />
+      <node id="8629363476786100059" at="71,0,72,0" concept="8" trace="TestSubstituteSpecialSubChild" />
+      <node id="8629363476786100059" at="149,66,150,68" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8629363476786100059" at="76,0,77,0" concept="2" trace="myConceptTestSubstituteSpecialSubChild" />
@@ -2112,8 +2112,8 @@
       <scope id="8998492695587434685" at="398,54,404,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587434685" at="56,0,57,0" concept="8" trace="TestSubstituteParent" />
-      <node id="8998492695587434685" at="134,73,135,59" concept="1" />
+      <node id="8998492695587434685" at="58,0,59,0" concept="8" trace="TestSubstituteParent" />
+      <node id="8998492695587434685" at="136,73,137,59" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587434685" at="63,0,64,0" concept="2" trace="myConceptTestSubstituteParent" />
@@ -2176,8 +2176,8 @@
       <scope id="8998492695587434686" at="140,53,146,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587434686" at="19,0,20,0" concept="8" trace="TestSubstituteChild" />
-      <node id="8998492695587434686" at="97,76,98,58" concept="1" />
+      <node id="8998492695587434686" at="21,0,22,0" concept="8" trace="TestSubstituteChild" />
+      <node id="8998492695587434686" at="99,76,100,58" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587434686" at="26,0,27,0" concept="2" trace="myConceptTestSubstituteChild" />
@@ -2212,8 +2212,8 @@
       <scope id="8998492695587451560" at="495,57,501,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587451560" at="70,0,71,0" concept="8" trace="TestSubstituteSubChild1" />
-      <node id="8998492695587451560" at="148,68,149,62" concept="1" />
+      <node id="8998492695587451560" at="72,0,73,0" concept="8" trace="TestSubstituteSubChild1" />
+      <node id="8998492695587451560" at="150,68,151,62" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587451560" at="77,0,78,0" concept="2" trace="myConceptTestSubstituteSubChild1" />
@@ -2248,8 +2248,8 @@
       <scope id="8998492695587451561" at="502,57,508,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587451561" at="71,0,72,0" concept="8" trace="TestSubstituteSubChild2" />
-      <node id="8998492695587451561" at="149,62,150,62" concept="1" />
+      <node id="8998492695587451561" at="73,0,74,0" concept="8" trace="TestSubstituteSubChild2" />
+      <node id="8998492695587451561" at="151,62,152,62" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587451561" at="78,0,79,0" concept="2" trace="myConceptTestSubstituteSubChild2" />
@@ -2283,8 +2283,8 @@
       <scope id="8998492695587451562" at="530,72,536,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587451562" at="75,0,76,0" concept="8" trace="TestSubstituteToWrapFromSubstituteMenu" />
-      <node id="8998492695587451562" at="153,84,154,77" concept="1" />
+      <node id="8998492695587451562" at="77,0,78,0" concept="8" trace="TestSubstituteToWrapFromSubstituteMenu" />
+      <node id="8998492695587451562" at="155,84,156,77" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587451562" at="82,0,83,0" concept="2" trace="myConceptTestSubstituteToWrapFromSubstituteMenu" />
@@ -2317,8 +2317,8 @@
       <scope id="8998492695587451566" at="523,79,529,67" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587451566" at="74,0,75,0" concept="8" trace="TestSubstituteSubChildSmartReference_WithMenu" />
-      <node id="8998492695587451566" at="152,78,153,84" concept="1" />
+      <node id="8998492695587451566" at="76,0,77,0" concept="8" trace="TestSubstituteSubChildSmartReference_WithMenu" />
+      <node id="8998492695587451566" at="154,78,155,84" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587451566" at="81,0,82,0" concept="2" trace="myConceptTestSubstituteSubChildSmartReference_WithMenu" />
@@ -2353,8 +2353,8 @@
       <scope id="8998492695587451568" at="257,71,263,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695587451568" at="36,0,37,0" concept="8" trace="TestSubstituteConceptChildToReference" />
-      <node id="8998492695587451568" at="114,80,115,76" concept="1" />
+      <node id="8998492695587451568" at="38,0,39,0" concept="8" trace="TestSubstituteConceptChildToReference" />
+      <node id="8998492695587451568" at="116,80,117,76" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695587451568" at="43,0,44,0" concept="2" trace="myConceptTestSubstituteConceptChildToReference" />
@@ -2387,8 +2387,8 @@
       <scope id="8998492695591110495" at="433,65,439,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8998492695591110495" at="61,0,62,0" concept="8" trace="TestSubstituteParentToReference" />
-      <node id="8998492695591110495" at="139,90,140,70" concept="1" />
+      <node id="8998492695591110495" at="63,0,64,0" concept="8" trace="TestSubstituteParentToReference" />
+      <node id="8998492695591110495" at="141,90,142,70" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8998492695591110495" at="68,0,69,0" concept="2" trace="myConceptTestSubstituteParentToReference" />
@@ -2422,8 +2422,8 @@
       <scope id="9067909425367276827" at="447,66,452,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9067909425367276827" at="63,0,64,0" concept="8" trace="TestSubstituteSmartRef_Interface" />
-      <node id="9067909425367276827" at="141,73,142,71" concept="1" />
+      <node id="9067909425367276827" at="65,0,66,0" concept="8" trace="TestSubstituteSmartRef_Interface" />
+      <node id="9067909425367276827" at="143,73,144,71" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9067909425367276827" at="70,0,71,0" concept="2" trace="myConceptTestSubstituteSmartRef_Interface" />
@@ -2455,8 +2455,8 @@
       <scope id="9151323058739046798" at="175,58,180,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9151323058739046798" at="24,0,25,0" concept="8" trace="TestSubstituteChildSuper" />
-      <node id="9151323058739046798" at="102,67,103,63" concept="1" />
+      <node id="9151323058739046798" at="26,0,27,0" concept="8" trace="TestSubstituteChildSuper" />
+      <node id="9151323058739046798" at="104,67,105,63" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9151323058739046798" at="31,0,32,0" concept="2" trace="myConceptTestSubstituteChildSuper" />
@@ -2488,8 +2488,8 @@
       <scope id="9151323058739046901" at="161,60,167,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9151323058739046901" at="22,0,23,0" concept="8" trace="TestSubstituteChildBrother" />
-      <node id="9151323058739046901" at="100,75,101,65" concept="1" />
+      <node id="9151323058739046901" at="24,0,25,0" concept="8" trace="TestSubstituteChildBrother" />
+      <node id="9151323058739046901" at="102,75,103,65" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9151323058739046901" at="29,0,30,0" concept="2" trace="myConceptTestSubstituteChildBrother" />
@@ -2524,8 +2524,8 @@
       <scope id="9174907873152552257" at="391,68,397,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873152552257" at="55,0,56,0" concept="8" trace="TestSubstituteNotSubconceptOfChild" />
-      <node id="9174907873152552257" at="133,88,134,73" concept="1" />
+      <node id="9174907873152552257" at="57,0,58,0" concept="8" trace="TestSubstituteNotSubconceptOfChild" />
+      <node id="9174907873152552257" at="135,88,136,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873152552257" at="62,0,63,0" concept="2" trace="myConceptTestSubstituteNotSubconceptOfChild" />
@@ -2556,8 +2556,8 @@
       <scope id="9174907873152812907" at="101,77,106,65" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873152812907" at="13,0,14,0" concept="8" trace="TestSubstituteAbstractChildAmbigousPosition" />
-      <node id="9174907873152812907" at="91,85,92,82" concept="1" />
+      <node id="9174907873152812907" at="15,0,16,0" concept="8" trace="TestSubstituteAbstractChildAmbigousPosition" />
+      <node id="9174907873152812907" at="93,85,94,82" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873152812907" at="20,0,21,0" concept="2" trace="myConceptTestSubstituteAbstractChildAmbigousPosition" />
@@ -2590,8 +2590,8 @@
       <scope id="9174907873152872226" at="113,80,118,68" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873152872226" at="15,0,16,0" concept="8" trace="TestSubstituteAbstractSubChildAmbigousPosition" />
-      <node id="9174907873152872226" at="93,80,94,85" concept="1" />
+      <node id="9174907873152872226" at="17,0,18,0" concept="8" trace="TestSubstituteAbstractSubChildAmbigousPosition" />
+      <node id="9174907873152872226" at="95,80,96,85" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873152872226" at="22,0,23,0" concept="2" trace="myConceptTestSubstituteAbstractSubChildAmbigousPosition" />
@@ -2623,8 +2623,8 @@
       <scope id="9174907873152961484" at="147,70,153,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873152961484" at="20,0,21,0" concept="8" trace="TestSubstituteChildAmbigousPosition1" />
-      <node id="9174907873152961484" at="98,58,99,75" concept="1" />
+      <node id="9174907873152961484" at="22,0,23,0" concept="8" trace="TestSubstituteChildAmbigousPosition1" />
+      <node id="9174907873152961484" at="100,58,101,75" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873152961484" at="27,0,28,0" concept="2" trace="myConceptTestSubstituteChildAmbigousPosition1" />
@@ -2659,8 +2659,8 @@
       <scope id="9174907873152962435" at="154,70,160,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873152962435" at="21,0,22,0" concept="8" trace="TestSubstituteChildAmbigousPosition2" />
-      <node id="9174907873152962435" at="99,75,100,75" concept="1" />
+      <node id="9174907873152962435" at="23,0,24,0" concept="8" trace="TestSubstituteChildAmbigousPosition2" />
+      <node id="9174907873152962435" at="101,75,102,75" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873152962435" at="28,0,29,0" concept="2" trace="myConceptTestSubstituteChildAmbigousPosition2" />
@@ -2695,8 +2695,8 @@
       <scope id="9174907873153018648" at="509,73,515,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873153018648" at="72,0,73,0" concept="8" trace="TestSubstituteSubChildAmbigousPosition1" />
-      <node id="9174907873153018648" at="150,62,151,78" concept="1" />
+      <node id="9174907873153018648" at="74,0,75,0" concept="8" trace="TestSubstituteSubChildAmbigousPosition1" />
+      <node id="9174907873153018648" at="152,62,153,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873153018648" at="79,0,80,0" concept="2" trace="myConceptTestSubstituteSubChildAmbigousPosition1" />
@@ -2731,8 +2731,8 @@
       <scope id="9174907873153018649" at="516,73,522,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9174907873153018649" at="73,0,74,0" concept="8" trace="TestSubstituteSubChildAmbigousPosition2" />
-      <node id="9174907873153018649" at="151,78,152,78" concept="1" />
+      <node id="9174907873153018649" at="75,0,76,0" concept="8" trace="TestSubstituteSubChildAmbigousPosition2" />
+      <node id="9174907873153018649" at="153,78,154,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9174907873153018649" at="80,0,81,0" concept="2" trace="myConceptTestSubstituteSubChildAmbigousPosition2" />

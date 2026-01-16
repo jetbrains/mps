@@ -12,7 +12,7 @@
       <unit at="11,0,70,0" name="jetbrains.mps.lang.descriptor.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,38,0" name="jetbrains.mps.lang.descriptor.structure.LanguageConceptSwitch" />
+      <unit at="12,0,46,0" name="jetbrains.mps.lang.descriptor.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,117,0" name="jetbrains.mps.lang.descriptor.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="3713096702806017032" at="24,47,30,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3713096702806017032" at="12,0,13,0" concept="5" trace="ActivatorUnit" />
-      <node id="3713096702806017032" at="20,116,21,52" concept="0" />
+      <node id="3713096702806017032" at="14,0,15,0" concept="5" trace="ActivatorUnit" />
+      <node id="3713096702806017032" at="22,116,23,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3713096702806017032" at="16,0,17,0" concept="1" trace="myConceptActivatorUnit" />
@@ -65,8 +65,8 @@
       <scope id="3919235298192590467" at="37,53,43,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3919235298192590467" at="14,0,15,0" concept="5" trace="GeneratorDescriptor" />
-      <node id="3919235298192590467" at="22,55,23,58" concept="0" />
+      <node id="3919235298192590467" at="16,0,17,0" concept="5" trace="GeneratorDescriptor" />
+      <node id="3919235298192590467" at="24,55,25,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3919235298192590467" at="18,0,19,0" concept="1" trace="myConceptGeneratorDescriptor" />
@@ -100,8 +100,8 @@
       <scope id="5100536058472628033" at="44,58,50,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5100536058472628033" at="15,0,16,0" concept="5" trace="GeneratorInternal_Aspect" />
-      <node id="5100536058472628033" at="23,58,24,63" concept="0" />
+      <node id="5100536058472628033" at="17,0,18,0" concept="5" trace="GeneratorInternal_Aspect" />
+      <node id="5100536058472628033" at="25,58,26,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5100536058472628033" at="19,0,20,0" concept="1" trace="myConceptGeneratorInternal_Aspect" />
@@ -134,8 +134,8 @@
       <scope id="6901428176731553243" at="31,50,36,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6901428176731553243" at="13,0,14,0" concept="5" trace="AspectDescriptor" />
-      <node id="6901428176731553243" at="21,52,22,55" concept="0" />
+      <node id="6901428176731553243" at="15,0,16,0" concept="5" trace="AspectDescriptor" />
+      <node id="6901428176731553243" at="23,52,24,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6901428176731553243" at="17,0,18,0" concept="1" trace="myConceptAspectDescriptor" />
@@ -168,8 +168,8 @@
       <scope id="844304638793200936" at="58,49,65,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="844304638793200936" at="17,0,18,0" concept="5" trace="ModuleActivator" />
-      <node id="844304638793200936" at="25,57,26,53" concept="0" />
+      <node id="844304638793200936" at="19,0,20,0" concept="5" trace="ModuleActivator" />
+      <node id="844304638793200936" at="27,57,28,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="844304638793200936" at="21,0,22,0" concept="1" trace="myConceptModuleActivator" />
@@ -202,8 +202,8 @@
       <scope id="9020561928507175845" at="51,52,57,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9020561928507175845" at="16,0,17,0" concept="5" trace="LanguageDescriptor" />
-      <node id="9020561928507175845" at="24,63,25,57" concept="0" />
+      <node id="9020561928507175845" at="18,0,19,0" concept="5" trace="LanguageDescriptor" />
+      <node id="9020561928507175845" at="26,63,27,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9020561928507175845" at="20,0,21,0" concept="1" trace="myConceptLanguageDescriptor" />

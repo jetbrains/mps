@@ -12,8 +12,9 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TextGenAspectDescriptor.java">
-      <unit at="52,0,55,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.TextGenAspectDescriptor$CONCEPTS" />
-      <unit at="16,0,56,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.TextGenAspectDescriptor" />
+      <unit at="55,0,58,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.TextGenAspectDescriptor$CONCEPTS" />
+      <unit at="59,0,62,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.TextGenAspectDescriptor$PROPS" />
+      <unit at="18,0,63,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.TextGenAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:693133de-361e-42b8-8c1a-31635bf5e4ff(jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen)/4174052498195937226">
@@ -44,28 +45,29 @@
       <unit id="4174052498195937226" at="15,0,37,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.Specification_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4174052498195937226" at="28,47,29,43" concept="6" />
-      <node id="4174052498195937226" at="37,64,38,55" concept="5" />
-      <node id="4174052498195937226" at="38,55,39,58" concept="5" />
-      <node id="4174052498195937226" at="39,58,40,84" concept="1" />
-      <node id="4174052498195937226" at="40,84,41,17" concept="0" />
-      <node id="4174052498195937226" at="45,63,46,26" concept="6" />
-      <node id="4174052498195937784" at="48,68,49,18" concept="6" />
-      <node id="4174052498195937226" at="45,0,48,0" concept="9" trace="getFileName_Specification#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="4174052498195937226" at="48,0,51,0" concept="9" trace="getFileExtension_Specification#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="4174052498195937226" at="36,58,42,7" concept="3" />
-      <scope id="4174052498195937226" at="28,47,29,43" />
-      <scope id="4174052498195937226" at="45,63,46,26" />
-      <scope id="4174052498195937226" at="48,68,49,18" />
-      <scope id="4174052498195937226" at="45,0,48,0">
+      <node id="4174052498195937226" at="30,47,31,43" concept="6" />
+      <node id="4174052498195937226" at="39,64,40,55" concept="5" />
+      <node id="4174052498195937226" at="40,55,41,58" concept="5" />
+      <node id="4174052498195937226" at="41,58,42,84" concept="1" />
+      <node id="4174052498195937226" at="42,84,43,17" concept="0" />
+      <node id="4174052498195937226" at="47,63,48,64" concept="6" />
+      <node id="4174052498195937226" at="48,64,49,0" concept="7" />
+      <node id="4174052498195937784" at="51,68,52,18" concept="6" />
+      <node id="4174052498195937226" at="51,0,54,0" concept="9" trace="getFileExtension_Specification#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4174052498195937226" at="47,0,51,0" concept="9" trace="getFileName_Specification#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="4174052498195937226" at="38,58,44,7" concept="3" />
+      <scope id="4174052498195937226" at="30,47,31,43" />
+      <scope id="4174052498195937226" at="51,68,52,18" />
+      <scope id="4174052498195937226" at="47,63,49,0" />
+      <scope id="4174052498195937226" at="51,0,54,0">
         <var name="node" id="4174052498195937226" />
       </scope>
-      <scope id="4174052498195937226" at="48,0,51,0">
-        <var name="node" id="4174052498195937226" />
-      </scope>
-      <scope id="4174052498195937226" at="37,64,41,17">
+      <scope id="4174052498195937226" at="39,64,43,17">
         <var name="ext" id="4174052498195937226" />
         <var name="fname" id="4174052498195937226" />
+      </scope>
+      <scope id="4174052498195937226" at="47,0,51,0">
+        <var name="node" id="4174052498195937226" />
       </scope>
     </file>
   </root>
@@ -122,8 +124,8 @@
       <unit id="4174052498195944692" at="18,0,67,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.textGen.Entry_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4174052498195944692" at="26,39,27,35" concept="6" />
-      <scope id="4174052498195944692" at="26,39,27,35" />
+      <node id="4174052498195944692" at="28,39,29,35" concept="6" />
+      <scope id="4174052498195944692" at="28,39,29,35" />
     </file>
   </root>
 </debug-info>

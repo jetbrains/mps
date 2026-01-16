@@ -12,7 +12,7 @@
       <unit at="11,0,62,0" name="jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,36,0" name="jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.LanguageConceptSwitch" />
+      <unit at="12,0,44,0" name="jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,106,0" name="jetbrains.mps.traceInfo.testWeavingInterpreted.data.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="6186432342008318668" at="51,45,57,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6186432342008318668" at="16,0,17,0" concept="5" trace="RootConcept" />
-      <node id="6186432342008318668" at="23,60,24,50" concept="0" />
+      <node id="6186432342008318668" at="18,0,19,0" concept="5" trace="RootConcept" />
+      <node id="6186432342008318668" at="25,60,26,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6186432342008318668" at="19,0,20,0" concept="1" trace="myConceptRootConcept" />
@@ -70,8 +70,8 @@
       <scope id="6186432342008329114" at="30,55,36,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6186432342008329114" at="13,0,14,0" concept="5" trace="ChildConceptWeaveEach" />
-      <node id="6186432342008329114" at="20,56,21,60" concept="0" />
+      <node id="6186432342008329114" at="15,0,16,0" concept="5" trace="ChildConceptWeaveEach" />
+      <node id="6186432342008329114" at="22,56,23,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6186432342008329114" at="16,0,17,0" concept="1" trace="myConceptChildConceptWeaveEach" />
@@ -104,8 +104,8 @@
       <scope id="6186432342008329116" at="23,51,29,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6186432342008329116" at="12,0,13,0" concept="5" trace="ChildConceptWeave" />
-      <node id="6186432342008329116" at="19,116,20,56" concept="0" />
+      <node id="6186432342008329116" at="14,0,15,0" concept="5" trace="ChildConceptWeave" />
+      <node id="6186432342008329116" at="21,116,22,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6186432342008329116" at="15,0,16,0" concept="1" trace="myConceptChildConceptWeave" />
@@ -138,8 +138,8 @@
       <scope id="6186432342008533337" at="44,55,50,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6186432342008533337" at="15,0,16,0" concept="5" trace="ChildConceptWeaveMany" />
-      <node id="6186432342008533337" at="22,64,23,60" concept="0" />
+      <node id="6186432342008533337" at="17,0,18,0" concept="5" trace="ChildConceptWeaveMany" />
+      <node id="6186432342008533337" at="24,64,25,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6186432342008533337" at="18,0,19,0" concept="1" trace="myConceptChildConceptWeaveMany" />
@@ -172,8 +172,8 @@
       <scope id="6186432342008533347" at="37,59,43,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6186432342008533347" at="14,0,15,0" concept="5" trace="ChildConceptWeaveEachMany" />
-      <node id="6186432342008533347" at="21,60,22,64" concept="0" />
+      <node id="6186432342008533347" at="16,0,17,0" concept="5" trace="ChildConceptWeaveEachMany" />
+      <node id="6186432342008533347" at="23,60,24,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6186432342008533347" at="17,0,18,0" concept="1" trace="myConceptChildConceptWeaveEachMany" />

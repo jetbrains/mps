@@ -17,7 +17,7 @@
       <unit at="11,0,94,0" name="jetbrains.mps.lang.editor.multiple.testLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,44,0" name="jetbrains.mps.lang.editor.multiple.testLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,52,0" name="jetbrains.mps.lang.editor.multiple.testLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="18,0,188,0" name="jetbrains.mps.lang.editor.multiple.testLanguage.structure.StructureAspectDescriptor" />
@@ -37,8 +37,8 @@
       <scope id="1217012833662041875" at="48,72,54,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1217012833662041875" at="15,0,16,0" concept="8" trace="MultipleEditorsTestEditorComponentRoot" />
-      <node id="1217012833662041875" at="26,88,27,77" concept="1" />
+      <node id="1217012833662041875" at="17,0,18,0" concept="8" trace="MultipleEditorsTestEditorComponentRoot" />
+      <node id="1217012833662041875" at="28,88,29,77" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1217012833662041875" at="22,0,23,0" concept="2" trace="myConceptMultipleEditorsTestEditorComponentRoot" />
@@ -74,8 +74,8 @@
       <scope id="1217012833662065273" at="34,73,40,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1217012833662065273" at="13,0,14,0" concept="8" trace="MultipleEditorsTestEditorComponentChild" />
-      <node id="1217012833662065273" at="24,63,25,78" concept="1" />
+      <node id="1217012833662065273" at="15,0,16,0" concept="8" trace="MultipleEditorsTestEditorComponentChild" />
+      <node id="1217012833662065273" at="26,63,27,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1217012833662065273" at="20,0,21,0" concept="2" trace="myConceptMultipleEditorsTestEditorComponentChild" />
@@ -165,8 +165,8 @@
       <scope id="5861024100072045177" at="76,64,82,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5861024100072045177" at="19,0,20,0" concept="8" trace="MultipleEditorsTestRefNodeRoot" />
-      <node id="5861024100072045177" at="30,73,31,69" concept="1" />
+      <node id="5861024100072045177" at="21,0,22,0" concept="8" trace="MultipleEditorsTestRefNodeRoot" />
+      <node id="5861024100072045177" at="32,73,33,69" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5861024100072045177" at="26,0,27,0" concept="2" trace="myConceptMultipleEditorsTestRefNodeRoot" />
@@ -204,8 +204,8 @@
       <scope id="6420745394459388008" at="41,83,47,71" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6420745394459388008" at="14,0,15,0" concept="8" trace="MultipleEditorsTestEditorComponentChildSubconcept" />
-      <node id="6420745394459388008" at="25,78,26,88" concept="1" />
+      <node id="6420745394459388008" at="16,0,17,0" concept="8" trace="MultipleEditorsTestEditorComponentChildSubconcept" />
+      <node id="6420745394459388008" at="27,78,28,88" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6420745394459388008" at="21,0,22,0" concept="2" trace="myConceptMultipleEditorsTestEditorComponentChildSubconcept" />
@@ -240,8 +240,8 @@
       <scope id="6655351613569888021" at="83,57,89,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6655351613569888021" at="20,0,21,0" concept="8" trace="MultipleEditorsTestRoot" />
-      <node id="6655351613569888021" at="31,69,32,62" concept="1" />
+      <node id="6655351613569888021" at="22,0,23,0" concept="8" trace="MultipleEditorsTestRoot" />
+      <node id="6655351613569888021" at="33,69,34,62" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6655351613569888021" at="27,0,28,0" concept="2" trace="myConceptMultipleEditorsTestRoot" />
@@ -281,8 +281,8 @@
       <scope id="6655351613569889729" at="27,58,33,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6655351613569889729" at="12,0,13,0" concept="8" trace="MultipleEditorsTestChild" />
-      <node id="6655351613569889729" at="23,116,24,63" concept="1" />
+      <node id="6655351613569889729" at="14,0,15,0" concept="8" trace="MultipleEditorsTestChild" />
+      <node id="6655351613569889729" at="25,116,26,63" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6655351613569889729" at="19,0,20,0" concept="2" trace="myConceptMultipleEditorsTestChild" />
@@ -318,8 +318,8 @@
       <scope id="7279578193768898412" at="69,68,75,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7279578193768898412" at="18,0,19,0" concept="8" trace="MultipleEditorsTestRefNodeListRoot" />
-      <node id="7279578193768898412" at="29,74,30,73" concept="1" />
+      <node id="7279578193768898412" at="20,0,21,0" concept="8" trace="MultipleEditorsTestRefNodeListRoot" />
+      <node id="7279578193768898412" at="31,74,32,73" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7279578193768898412" at="25,0,26,0" concept="2" trace="myConceptMultipleEditorsTestRefNodeListRoot" />
@@ -357,8 +357,8 @@
       <scope id="8572332134193782048" at="62,69,68,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8572332134193782048" at="17,0,18,0" concept="8" trace="MultipleEditorsTestMostSpecificRoot" />
-      <node id="8572332134193782048" at="28,75,29,74" concept="1" />
+      <node id="8572332134193782048" at="19,0,20,0" concept="8" trace="MultipleEditorsTestMostSpecificRoot" />
+      <node id="8572332134193782048" at="30,75,31,74" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8572332134193782048" at="24,0,25,0" concept="2" trace="myConceptMultipleEditorsTestMostSpecificRoot" />
@@ -391,8 +391,8 @@
       <scope id="8572332134193783053" at="55,70,61,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8572332134193783053" at="16,0,17,0" concept="8" trace="MultipleEditorsTestMostSpecificChild" />
-      <node id="8572332134193783053" at="27,77,28,75" concept="1" />
+      <node id="8572332134193783053" at="18,0,19,0" concept="8" trace="MultipleEditorsTestMostSpecificChild" />
+      <node id="8572332134193783053" at="29,77,30,75" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8572332134193783053" at="23,0,24,0" concept="2" trace="myConceptMultipleEditorsTestMostSpecificChild" />

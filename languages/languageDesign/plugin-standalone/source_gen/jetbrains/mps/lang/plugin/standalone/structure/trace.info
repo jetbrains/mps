@@ -16,7 +16,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.plugin.standalone.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,50,0" name="jetbrains.mps.lang.plugin.standalone.structure.LanguageConceptSwitch" />
+      <unit at="12,0,58,0" name="jetbrains.mps.lang.plugin.standalone.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="17,0,222,0" name="jetbrains.mps.lang.plugin.standalone.structure.StructureAspectDescriptor" />
@@ -37,8 +37,8 @@
       <scope id="3418954410726344423" at="73,58,80,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3418954410726344423" at="18,0,19,0" concept="6" trace="PlatformAccessExpression" />
-      <node id="3418954410726344423" at="32,63,33,63" concept="0" />
+      <node id="3418954410726344423" at="20,0,21,0" concept="6" trace="PlatformAccessExpression" />
+      <node id="3418954410726344423" at="34,63,35,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3418954410726344423" at="24,0,25,0" concept="1" trace="myConceptPlatformAccessExpression" />
@@ -73,8 +73,8 @@
       <scope id="481983775135178819" at="89,59,95,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178819" at="20,0,21,0" concept="6" trace="ProjectPluginDisposeBlock" />
-      <node id="481983775135178819" at="34,62,35,63" concept="0" />
+      <node id="481983775135178819" at="22,0,23,0" concept="6" trace="ProjectPluginDisposeBlock" />
+      <node id="481983775135178819" at="36,62,37,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178819" at="26,0,27,0" concept="1" trace="myConceptProjectPluginDisposeBlock" />
@@ -110,8 +110,8 @@
       <scope id="481983775135178825" at="96,56,102,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178825" at="21,0,22,0" concept="6" trace="ProjectPluginInitBlock" />
-      <node id="481983775135178825" at="35,63,36,60" concept="0" />
+      <node id="481983775135178825" at="23,0,24,0" concept="6" trace="ProjectPluginInitBlock" />
+      <node id="481983775135178825" at="37,63,38,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178825" at="27,0,28,0" concept="1" trace="myConceptProjectPluginInitBlock" />
@@ -147,8 +147,8 @@
       <scope id="481983775135178831" at="52,55,58,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178831" at="15,0,16,0" concept="6" trace="ApplicationPluginType" />
-      <node id="481983775135178831" at="29,64,30,59" concept="0" />
+      <node id="481983775135178831" at="17,0,18,0" concept="6" trace="ApplicationPluginType" />
+      <node id="481983775135178831" at="31,64,32,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178831" at="21,0,22,0" concept="1" trace="myConceptApplicationPluginType" />
@@ -186,8 +186,8 @@
       <scope id="481983775135178834" at="81,58,88,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178834" at="19,0,20,0" concept="6" trace="ProjectPluginDeclaration" />
-      <node id="481983775135178834" at="33,63,34,62" concept="0" />
+      <node id="481983775135178834" at="21,0,22,0" concept="6" trace="ProjectPluginDeclaration" />
+      <node id="481983775135178834" at="35,63,36,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178834" at="25,0,26,0" concept="1" trace="myConceptProjectPluginDeclaration" />
@@ -225,8 +225,8 @@
       <scope id="481983775135178840" at="30,62,37,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178840" at="12,0,13,0" concept="6" trace="ApplicationPluginDeclaration" />
-      <node id="481983775135178840" at="26,116,27,66" concept="0" />
+      <node id="481983775135178840" at="14,0,15,0" concept="6" trace="ApplicationPluginDeclaration" />
+      <node id="481983775135178840" at="28,116,29,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178840" at="18,0,19,0" concept="1" trace="myConceptApplicationPluginDeclaration" />
@@ -263,8 +263,8 @@
       <scope id="481983775135178846" at="38,63,44,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178846" at="13,0,14,0" concept="6" trace="ApplicationPluginDisposeBlock" />
-      <node id="481983775135178846" at="27,66,28,67" concept="0" />
+      <node id="481983775135178846" at="15,0,16,0" concept="6" trace="ApplicationPluginDisposeBlock" />
+      <node id="481983775135178846" at="29,66,30,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178846" at="19,0,20,0" concept="1" trace="myConceptApplicationPluginDisposeBlock" />
@@ -300,8 +300,8 @@
       <scope id="481983775135178851" at="45,60,51,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178851" at="14,0,15,0" concept="6" trace="ApplicationPluginInitBlock" />
-      <node id="481983775135178851" at="28,67,29,64" concept="0" />
+      <node id="481983775135178851" at="16,0,17,0" concept="6" trace="ApplicationPluginInitBlock" />
+      <node id="481983775135178851" at="30,67,31,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178851" at="20,0,21,0" concept="1" trace="myConceptApplicationPluginInitBlock" />
@@ -337,8 +337,8 @@
       <scope id="481983775135178856" at="103,51,109,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="481983775135178856" at="22,0,23,0" concept="6" trace="ProjectPluginType" />
-      <node id="481983775135178856" at="36,60,37,55" concept="0" />
+      <node id="481983775135178856" at="24,0,25,0" concept="6" trace="ProjectPluginType" />
+      <node id="481983775135178856" at="38,60,39,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="481983775135178856" at="28,0,29,0" concept="1" trace="myConceptProjectPluginType" />
@@ -375,8 +375,8 @@
       <scope id="681855071694758165" at="66,59,72,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="681855071694758165" at="17,0,18,0" concept="6" trace="GetToolInProjectOperation" />
-      <node id="681855071694758165" at="31,79,32,63" concept="0" />
+      <node id="681855071694758165" at="19,0,20,0" concept="6" trace="GetToolInProjectOperation" />
+      <node id="681855071694758165" at="33,79,34,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="681855071694758165" at="23,0,24,0" concept="1" trace="myConceptGetToolInProjectOperation" />
@@ -412,8 +412,8 @@
       <scope id="681855071694758168" at="59,75,65,63" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="681855071694758168" at="16,0,17,0" concept="6" trace="GetPreferencesComponentInProjectOperation" />
-      <node id="681855071694758168" at="30,59,31,79" concept="0" />
+      <node id="681855071694758168" at="18,0,19,0" concept="6" trace="GetPreferencesComponentInProjectOperation" />
+      <node id="681855071694758168" at="32,59,33,79" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="681855071694758168" at="22,0,23,0" concept="1" trace="myConceptGetPreferencesComponentInProjectOperation" />
@@ -449,8 +449,8 @@
       <scope id="7520713872864775836" at="110,60,116,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7520713872864775836" at="23,0,24,0" concept="6" trace="StandalonePluginDescriptor" />
-      <node id="7520713872864775836" at="37,55,38,65" concept="0" />
+      <node id="7520713872864775836" at="25,0,26,0" concept="6" trace="StandalonePluginDescriptor" />
+      <node id="7520713872864775836" at="39,55,40,65" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7520713872864775836" at="29,0,30,0" concept="1" trace="myConceptStandalonePluginDescriptor" />

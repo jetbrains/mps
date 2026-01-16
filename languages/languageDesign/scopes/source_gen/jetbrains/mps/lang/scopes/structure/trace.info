@@ -13,7 +13,7 @@
       <unit at="11,0,53,0" name="jetbrains.mps.lang.scopes.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,34,0" name="jetbrains.mps.lang.scopes.structure.LanguageConceptSwitch" />
+      <unit at="12,0,42,0" name="jetbrains.mps.lang.scopes.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,106,0" name="jetbrains.mps.lang.scopes.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="2995585510566823808" at="43,54,48,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2995585510566823808" at="15,0,16,0" concept="6" trace="UniformScopeProvider" />
-      <node id="2995585510566823808" at="21,50,22,59" concept="0" />
+      <node id="2995585510566823808" at="17,0,18,0" concept="6" trace="UniformScopeProvider" />
+      <node id="2995585510566823808" at="23,50,24,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2995585510566823808" at="20,0,21,0" concept="1" trace="myConceptUniformScopeProvider" />
@@ -66,8 +66,8 @@
       <scope id="8077936094962850237" at="29,68,35,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8077936094962850237" at="13,0,14,0" concept="6" trace="CompositeWithParentScopeExpression" />
-      <node id="8077936094962850237" at="19,57,20,73" concept="0" />
+      <node id="8077936094962850237" at="15,0,16,0" concept="6" trace="CompositeWithParentScopeExpression" />
+      <node id="8077936094962850237" at="21,57,22,73" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8077936094962850237" at="18,0,19,0" concept="1" trace="myConceptCompositeWithParentScopeExpression" />
@@ -104,8 +104,8 @@
       <scope id="8077936094962911282" at="36,45,42,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8077936094962911282" at="14,0,15,0" concept="6" trace="ParentScope" />
-      <node id="8077936094962911282" at="20,73,21,50" concept="0" />
+      <node id="8077936094962911282" at="16,0,17,0" concept="6" trace="ParentScope" />
+      <node id="8077936094962911282" at="22,73,23,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8077936094962911282" at="19,0,20,0" concept="1" trace="myConceptParentScope" />
@@ -141,8 +141,8 @@
       <scope id="8077936094962944991" at="22,52,28,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8077936094962944991" at="12,0,13,0" concept="6" trace="ComeFromExpression" />
-      <node id="8077936094962944991" at="18,116,19,57" concept="0" />
+      <node id="8077936094962944991" at="14,0,15,0" concept="6" trace="ComeFromExpression" />
+      <node id="8077936094962944991" at="20,116,21,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8077936094962944991" at="17,0,18,0" concept="1" trace="myConceptComeFromExpression" />

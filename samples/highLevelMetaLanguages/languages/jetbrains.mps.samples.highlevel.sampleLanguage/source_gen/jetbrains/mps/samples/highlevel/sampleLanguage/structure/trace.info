@@ -12,7 +12,7 @@
       <unit at="11,0,38,0" name="jetbrains.mps.samples.highlevel.sampleLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.samples.highlevel.sampleLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.samples.highlevel.sampleLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,73,0" name="jetbrains.mps.samples.highlevel.sampleLanguage.structure.StructureAspectDescriptor" />
@@ -42,10 +42,10 @@
       <scope id="3778147542048941585" at="27,40,33,28" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3778147542048941592" at="12,0,13,0" concept="5" trace="Car" />
-      <node id="3778147542048941585" at="13,0,14,0" concept="5" trace="Person" />
-      <node id="3778147542048941592" at="16,116,17,42" concept="0" />
-      <node id="3778147542048941585" at="17,42,18,45" concept="0" />
+      <node id="3778147542048941592" at="14,0,15,0" concept="5" trace="Car" />
+      <node id="3778147542048941585" at="15,0,16,0" concept="5" trace="Person" />
+      <node id="3778147542048941592" at="18,116,19,42" concept="0" />
+      <node id="3778147542048941585" at="19,42,20,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3778147542048941592" at="17,0,18,0" concept="1" trace="myConceptCar" />

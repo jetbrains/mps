@@ -13,7 +13,7 @@
       <unit at="11,0,47,0" name="jetbrains.mps.samples.xmlLiterals.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,32,0" name="jetbrains.mps.samples.xmlLiterals.structure.LanguageConceptSwitch" />
+      <unit at="12,0,40,0" name="jetbrains.mps.samples.xmlLiterals.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,95,0" name="jetbrains.mps.samples.xmlLiterals.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="9152904044274328259" at="36,44,42,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9152904044274328259" at="14,0,15,0" concept="6" trace="XmlLiteral" />
-      <node id="9152904044274328259" at="19,48,20,49" concept="0" />
+      <node id="9152904044274328259" at="16,0,17,0" concept="6" trace="XmlLiteral" />
+      <node id="9152904044274328259" at="21,48,22,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9152904044274328259" at="19,0,20,0" concept="1" trace="myConceptXmlLiteral" />
@@ -71,8 +71,8 @@
       <scope id="9152904044274469601" at="29,43,35,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9152904044274469601" at="13,0,14,0" concept="6" trace="TextMacro" />
-      <node id="9152904044274469601" at="18,51,19,48" concept="0" />
+      <node id="9152904044274469601" at="15,0,16,0" concept="6" trace="TextMacro" />
+      <node id="9152904044274469601" at="20,51,21,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9152904044274469601" at="18,0,19,0" concept="1" trace="myConceptTextMacro" />
@@ -109,8 +109,8 @@
       <scope id="9152904044274518122" at="21,46,28,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="9152904044274518122" at="12,0,13,0" concept="6" trace="ElementMacro" />
-      <node id="9152904044274518122" at="17,116,18,51" concept="0" />
+      <node id="9152904044274518122" at="14,0,15,0" concept="6" trace="ElementMacro" />
+      <node id="9152904044274518122" at="19,116,20,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="9152904044274518122" at="17,0,18,0" concept="1" trace="myConceptElementMacro" />

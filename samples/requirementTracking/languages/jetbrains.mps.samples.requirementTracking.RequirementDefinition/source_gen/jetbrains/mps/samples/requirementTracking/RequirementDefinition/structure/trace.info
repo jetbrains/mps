@@ -12,7 +12,7 @@
       <unit at="11,0,38,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,74,0" name="jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="4174052498195727591" at="27,47,33,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4174052498195727591" at="13,0,14,0" concept="5" trace="Specification" />
-      <node id="4174052498195727591" at="17,44,18,52" concept="0" />
+      <node id="4174052498195727591" at="15,0,16,0" concept="5" trace="Specification" />
+      <node id="4174052498195727591" at="19,44,20,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4174052498195727591" at="17,0,18,0" concept="1" trace="myConceptSpecification" />
@@ -67,8 +67,8 @@
       <scope id="4174052498195727595" at="20,39,26,27" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4174052498195727595" at="12,0,13,0" concept="5" trace="Entry" />
-      <node id="4174052498195727595" at="16,115,17,44" concept="0" />
+      <node id="4174052498195727595" at="14,0,15,0" concept="5" trace="Entry" />
+      <node id="4174052498195727595" at="18,115,19,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4174052498195727595" at="16,0,17,0" concept="1" trace="myConceptEntry" />

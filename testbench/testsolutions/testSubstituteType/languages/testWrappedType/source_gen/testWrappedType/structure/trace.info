@@ -13,7 +13,7 @@
       <unit at="11,0,37,0" name="testWrappedType.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="testWrappedType.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="testWrappedType.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="17,0,79,0" name="testWrappedType.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="1252378774017430204" at="27,45,32,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1252378774017430204" at="13,0,14,0" concept="6" trace="WrapperType" />
-      <node id="1252378774017430204" at="17,52,18,50" concept="0" />
+      <node id="1252378774017430204" at="15,0,16,0" concept="6" trace="WrapperType" />
+      <node id="1252378774017430204" at="19,52,20,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1252378774017430204" at="19,0,20,0" concept="1" trace="myConceptWrapperType" />
@@ -69,8 +69,8 @@
       <scope id="1252378774017430315" at="20,47,26,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1252378774017430315" at="12,0,13,0" concept="6" trace="TypeWithUnits" />
-      <node id="1252378774017430315" at="16,116,17,52" concept="0" />
+      <node id="1252378774017430315" at="14,0,15,0" concept="6" trace="TypeWithUnits" />
+      <node id="1252378774017430315" at="18,116,19,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1252378774017430315" at="18,0,19,0" concept="1" trace="myConceptTypeWithUnits" />

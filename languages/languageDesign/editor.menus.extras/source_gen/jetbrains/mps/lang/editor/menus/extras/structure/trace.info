@@ -13,7 +13,7 @@
       <unit at="11,0,58,0" name="jetbrains.mps.lang.editor.menus.extras.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,34,0" name="jetbrains.mps.lang.editor.menus.extras.structure.LanguageConceptSwitch" />
+      <unit at="12,0,42,0" name="jetbrains.mps.lang.editor.menus.extras.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,106,0" name="jetbrains.mps.lang.editor.menus.extras.structure.StructureAspectDescriptor" />
@@ -34,8 +34,8 @@
       <scope id="2319156231054332300" at="38,69,45,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2319156231054332300" at="14,0,15,0" concept="6" trace="TransformationMenuPart_PluginAction" />
-      <node id="2319156231054332300" at="20,71,21,74" concept="0" />
+      <node id="2319156231054332300" at="16,0,17,0" concept="6" trace="TransformationMenuPart_PluginAction" />
+      <node id="2319156231054332300" at="22,71,23,74" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2319156231054332300" at="17,0,18,0" concept="1" trace="myConceptTransformationMenuPart_PluginAction" />
@@ -73,8 +73,8 @@
       <scope id="2468431357014363369" at="22,76,29,64" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2468431357014363369" at="12,0,13,0" concept="6" trace="QueryFunctionParameter_IntentionExecutable" />
-      <node id="2468431357014363369" at="18,116,19,81" concept="0" />
+      <node id="2468431357014363369" at="14,0,15,0" concept="6" trace="QueryFunctionParameter_IntentionExecutable" />
+      <node id="2468431357014363369" at="20,116,21,81" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2468431357014363369" at="15,0,16,0" concept="1" trace="myConceptQueryFunctionParameter_IntentionExecutable" />
@@ -110,8 +110,8 @@
       <scope id="2926686622729992785" at="30,66,37,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2926686622729992785" at="13,0,14,0" concept="6" trace="TransformationMenuPart_Intention" />
-      <node id="2926686622729992785" at="19,81,20,71" concept="0" />
+      <node id="2926686622729992785" at="15,0,16,0" concept="6" trace="TransformationMenuPart_Intention" />
+      <node id="2926686622729992785" at="21,81,22,71" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2926686622729992785" at="16,0,17,0" concept="1" trace="myConceptTransformationMenuPart_Intention" />
@@ -149,8 +149,8 @@
       <scope id="4736696158595695479" at="46,68,53,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4736696158595695479" at="15,0,16,0" concept="6" trace="TransformationMenuPart_Refactoring" />
-      <node id="4736696158595695479" at="21,74,22,73" concept="0" />
+      <node id="4736696158595695479" at="17,0,18,0" concept="6" trace="TransformationMenuPart_Refactoring" />
+      <node id="4736696158595695479" at="23,74,24,73" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4736696158595695479" at="18,0,19,0" concept="1" trace="myConceptTransformationMenuPart_Refactoring" />

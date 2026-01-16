@@ -12,7 +12,7 @@
       <unit at="11,0,30,0" name="jetbrains.mps.persistence.transients.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,28,0" name="jetbrains.mps.persistence.transients.structure.LanguageConceptSwitch" />
+      <unit at="12,0,36,0" name="jetbrains.mps.persistence.transients.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,64,0" name="jetbrains.mps.persistence.transients.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="3385567232448674926" at="19,35,25,23" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3385567232448674926" at="12,0,13,0" concept="5" trace="C" />
-      <node id="3385567232448674926" at="15,116,16,40" concept="0" />
+      <node id="3385567232448674926" at="14,0,15,0" concept="5" trace="C" />
+      <node id="3385567232448674926" at="17,116,18,40" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3385567232448674926" at="16,0,17,0" concept="1" trace="myConceptC" />

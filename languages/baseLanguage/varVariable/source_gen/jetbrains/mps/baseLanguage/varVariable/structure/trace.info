@@ -13,7 +13,7 @@
       <unit at="11,0,39,0" name="jetbrains.mps.baseLanguage.varVariable.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.baseLanguage.varVariable.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.baseLanguage.varVariable.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,78,0" name="jetbrains.mps.baseLanguage.varVariable.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="1177714083117" at="20,41,26,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1177714083117" at="12,0,13,0" concept="6" trace="VarType" />
-      <node id="1177714083117" at="16,116,17,41" concept="0" />
+      <node id="1177714083117" at="14,0,15,0" concept="6" trace="VarType" />
+      <node id="1177714083117" at="18,116,19,41" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1177714083117" at="17,0,18,0" concept="1" trace="myConceptVarType" />
@@ -71,8 +71,8 @@
       <scope id="1236693300889" at="27,56,34,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1236693300889" at="13,0,14,0" concept="6" trace="VarVariableDeclaration" />
-      <node id="1236693300889" at="17,41,18,56" concept="0" />
+      <node id="1236693300889" at="15,0,16,0" concept="6" trace="VarVariableDeclaration" />
+      <node id="1236693300889" at="19,41,20,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1236693300889" at="18,0,19,0" concept="1" trace="myConceptVarVariableDeclaration" />

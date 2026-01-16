@@ -13,7 +13,7 @@
       <unit at="11,0,123,0" name="jetbrains.mps.baseLanguage.classifiers.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,52,0" name="jetbrains.mps.baseLanguage.classifiers.structure.LanguageConceptSwitch" />
+      <unit at="12,0,60,0" name="jetbrains.mps.baseLanguage.classifiers.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,221,0" name="jetbrains.mps.baseLanguage.classifiers.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="1029302639053433191" at="37,51,43,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1029302639053433191" at="13,0,14,0" concept="6" trace="DefaultClassifier" />
-      <node id="1029302639053433191" at="28,52,29,55" concept="0" />
+      <node id="1029302639053433191" at="15,0,16,0" concept="6" trace="DefaultClassifier" />
+      <node id="1029302639053433191" at="30,52,31,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1029302639053433191" at="18,0,19,0" concept="1" trace="myConceptDefaultClassifier" />
@@ -67,8 +67,8 @@
       <scope id="1205751982837" at="79,45,84,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205751982837" at="19,0,20,0" concept="6" trace="IClassifier" />
-      <node id="1205751982837" at="34,55,35,45" concept="0" />
+      <node id="1205751982837" at="21,0,22,0" concept="6" trace="IClassifier" />
+      <node id="1205751982837" at="36,55,37,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205751982837" at="24,0,25,0" concept="1" trace="myConceptIClassifier" />
@@ -102,8 +102,8 @@
       <scope id="1205752032448" at="91,41,96,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205752032448" at="21,0,22,0" concept="6" trace="IMember" />
-      <node id="1205752032448" at="36,49,37,41" concept="0" />
+      <node id="1205752032448" at="23,0,24,0" concept="6" trace="IMember" />
+      <node id="1205752032448" at="38,49,39,41" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205752032448" at="26,0,27,0" concept="1" trace="myConceptIMember" />
@@ -137,8 +137,8 @@
       <scope id="1205752174734" at="85,49,90,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205752174734" at="20,0,21,0" concept="6" trace="IClassifierPart" />
-      <node id="1205752174734" at="35,45,36,49" concept="0" />
+      <node id="1205752174734" at="22,0,23,0" concept="6" trace="IClassifierPart" />
+      <node id="1205752174734" at="37,45,38,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205752174734" at="25,0,26,0" concept="1" trace="myConceptIClassifierPart" />
@@ -171,8 +171,8 @@
       <scope id="1205752633985" at="111,58,118,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205752633985" at="24,0,25,0" concept="6" trace="ThisClassifierExpression" />
-      <node id="1205752633985" at="39,58,40,58" concept="0" />
+      <node id="1205752633985" at="26,0,27,0" concept="6" trace="ThisClassifierExpression" />
+      <node id="1205752633985" at="41,58,42,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205752633985" at="29,0,30,0" concept="1" trace="myConceptThisClassifierExpression" />
@@ -209,8 +209,8 @@
       <scope id="1205752813637" at="31,52,36,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205752813637" at="12,0,13,0" concept="6" trace="BaseClassifierType" />
-      <node id="1205752813637" at="27,116,28,52" concept="0" />
+      <node id="1205752813637" at="14,0,15,0" concept="6" trace="BaseClassifierType" />
+      <node id="1205752813637" at="29,116,30,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205752813637" at="17,0,18,0" concept="1" trace="myConceptBaseClassifierType" />
@@ -245,8 +245,8 @@
       <scope id="1205752906494" at="72,55,78,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205752906494" at="18,0,19,0" concept="6" trace="DefaultClassifierType" />
-      <node id="1205752906494" at="33,68,34,55" concept="0" />
+      <node id="1205752906494" at="20,0,21,0" concept="6" trace="DefaultClassifierType" />
+      <node id="1205752906494" at="35,68,36,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205752906494" at="23,0,24,0" concept="1" trace="myConceptDefaultClassifierType" />
@@ -281,8 +281,8 @@
       <scope id="1205756064662" at="97,50,102,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205756064662" at="22,0,23,0" concept="6" trace="IMemberOperation" />
-      <node id="1205756064662" at="37,41,38,50" concept="0" />
+      <node id="1205756064662" at="24,0,25,0" concept="6" trace="IMemberOperation" />
+      <node id="1205756064662" at="39,41,40,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205756064662" at="27,0,28,0" concept="1" trace="myConceptIMemberOperation" />
@@ -318,8 +318,8 @@
       <scope id="1205769003971" at="65,68,71,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205769003971" at="17,0,18,0" concept="6" trace="DefaultClassifierMethodDeclaration" />
-      <node id="1205769003971" at="32,70,33,68" concept="0" />
+      <node id="1205769003971" at="19,0,20,0" concept="6" trace="DefaultClassifierMethodDeclaration" />
+      <node id="1205769003971" at="34,70,35,68" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205769003971" at="22,0,23,0" concept="1" trace="myConceptDefaultClassifierMethodDeclaration" />
@@ -354,8 +354,8 @@
       <scope id="1205769149993" at="58,70,64,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1205769149993" at="16,0,17,0" concept="6" trace="DefaultClassifierMethodCallOperation" />
-      <node id="1205769149993" at="31,67,32,70" concept="0" />
+      <node id="1205769149993" at="18,0,19,0" concept="6" trace="DefaultClassifierMethodCallOperation" />
+      <node id="1205769149993" at="33,67,34,70" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1205769149993" at="21,0,22,0" concept="1" trace="myConceptDefaultClassifierMethodCallOperation" />
@@ -390,8 +390,8 @@
       <scope id="1213999088275" at="51,67,57,55" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1213999088275" at="15,0,16,0" concept="6" trace="DefaultClassifierFieldDeclaration" />
-      <node id="1213999088275" at="30,71,31,67" concept="0" />
+      <node id="1213999088275" at="17,0,18,0" concept="6" trace="DefaultClassifierFieldDeclaration" />
+      <node id="1213999088275" at="32,71,33,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1213999088275" at="20,0,21,0" concept="1" trace="myConceptDefaultClassifierFieldDeclaration" />
@@ -426,8 +426,8 @@
       <scope id="1213999117680" at="44,71,50,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1213999117680" at="14,0,15,0" concept="6" trace="DefaultClassifierFieldAccessOperation" />
-      <node id="1213999117680" at="29,55,30,71" concept="0" />
+      <node id="1213999117680" at="16,0,17,0" concept="6" trace="DefaultClassifierFieldAccessOperation" />
+      <node id="1213999117680" at="31,55,32,71" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1213999117680" at="19,0,20,0" concept="1" trace="myConceptDefaultClassifierFieldAccessOperation" />
@@ -462,8 +462,8 @@
       <scope id="1217433449852" at="103,58,110,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1217433449852" at="23,0,24,0" concept="6" trace="SuperClassifierExpresson" />
-      <node id="1217433449852" at="38,50,39,58" concept="0" />
+      <node id="1217433449852" at="25,0,26,0" concept="6" trace="SuperClassifierExpresson" />
+      <node id="1217433449852" at="40,50,41,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1217433449852" at="28,0,29,0" concept="1" trace="myConceptSuperClassifierExpresson" />

@@ -17,7 +17,7 @@
       <unit at="11,0,167,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,64,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,72,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="18,0,291,0" name="jetbrains.mps.lang.editor.menus.style.testLanguage.structure.StructureAspectDescriptor" />
@@ -87,8 +87,8 @@
       <scope id="4639084645851051085" at="156,77,162,65" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4639084645851051085" at="30,0,31,0" concept="8" trace="TestCompletionCustomization_RootToReference" />
-      <node id="4639084645851051085" at="51,82,52,82" concept="1" />
+      <node id="4639084645851051085" at="32,0,33,0" concept="8" trace="TestCompletionCustomization_RootToReference" />
+      <node id="4639084645851051085" at="53,82,54,82" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4639084645851051085" at="37,0,38,0" concept="2" trace="myConceptTestCompletionCustomization_RootToReference" />
@@ -122,8 +122,8 @@
       <scope id="4639084645851051086" at="76,78,82,66" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4639084645851051086" at="18,0,19,0" concept="8" trace="TestCompletionCustomization_ChildToReference" />
-      <node id="4639084645851051086" at="39,92,40,83" concept="1" />
+      <node id="4639084645851051086" at="20,0,21,0" concept="8" trace="TestCompletionCustomization_ChildToReference" />
+      <node id="4639084645851051086" at="41,92,42,83" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4639084645851051086" at="25,0,26,0" concept="2" trace="myConceptTestCompletionCustomization_ChildToReference" />
@@ -155,8 +155,8 @@
       <scope id="4639084645851198798" at="129,95,134,83" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4639084645851198798" at="26,0,27,0" concept="8" trace="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
-      <node id="4639084645851198798" at="47,90,48,100" concept="1" />
+      <node id="4639084645851198798" at="28,0,29,0" concept="8" trace="TestCompletionCustomization_ContextMatcherChildInMatchingLink" />
+      <node id="4639084645851198798" at="49,90,50,100" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4639084645851198798" at="33,0,34,0" concept="2" trace="myConceptTestCompletionCustomization_ContextMatcherChildInMatchingLink" />
@@ -188,8 +188,8 @@
       <scope id="4639084645851198803" at="37,83,43,71" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4639084645851198803" at="12,0,13,0" concept="8" trace="TestCompletionCustomization_ChildInLinkNoPriority" />
-      <node id="4639084645851198803" at="33,116,34,88" concept="1" />
+      <node id="4639084645851198803" at="14,0,15,0" concept="8" trace="TestCompletionCustomization_ChildInLinkNoPriority" />
+      <node id="4639084645851198803" at="35,116,36,88" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4639084645851198803" at="19,0,20,0" concept="2" trace="myConceptTestCompletionCustomization_ChildInLinkNoPriority" />
@@ -224,8 +224,8 @@
       <scope id="4639084645851198804" at="44,85,50,73" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4639084645851198804" at="13,0,14,0" concept="8" trace="TestCompletionCustomization_ChildInLinkWithPriority" />
-      <node id="4639084645851198804" at="34,88,35,90" concept="1" />
+      <node id="4639084645851198804" at="15,0,16,0" concept="8" trace="TestCompletionCustomization_ChildInLinkWithPriority" />
+      <node id="4639084645851198804" at="36,88,37,90" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4639084645851198804" at="20,0,21,0" concept="2" trace="myConceptTestCompletionCustomization_ChildInLinkWithPriority" />
@@ -260,8 +260,8 @@
       <scope id="4639084645853153301" at="135,93,141,81" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4639084645853153301" at="27,0,28,0" concept="8" trace="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
-      <node id="4639084645853153301" at="48,100,49,98" concept="1" />
+      <node id="4639084645853153301" at="29,0,30,0" concept="8" trace="TestCompletionCustomization_ContextMatcherChildToSubstitute" />
+      <node id="4639084645853153301" at="50,100,51,98" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4639084645853153301" at="34,0,35,0" concept="2" trace="myConceptTestCompletionCustomization_ContextMatcherChildToSubstitute" />
@@ -294,8 +294,8 @@
       <scope id="5310043668061067463" at="142,86,148,74" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668061067463" at="28,0,29,0" concept="8" trace="TestCompletionCustomization_ParentTestContextMatcher" />
-      <node id="5310043668061067463" at="49,98,50,91" concept="1" />
+      <node id="5310043668061067463" at="30,0,31,0" concept="8" trace="TestCompletionCustomization_ParentTestContextMatcher" />
+      <node id="5310043668061067463" at="51,98,52,91" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668061067463" at="35,0,36,0" concept="2" trace="myConceptTestCompletionCustomization_ParentTestContextMatcher" />
@@ -343,8 +343,8 @@
       <scope id="5310043668061067666" at="57,77,63,65" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668061067666" at="15,0,16,0" concept="8" trace="TestCompletionCustomization_ChildNoPriority" />
-      <node id="5310043668061067666" at="36,78,37,82" concept="1" />
+      <node id="5310043668061067666" at="17,0,18,0" concept="8" trace="TestCompletionCustomization_ChildNoPriority" />
+      <node id="5310043668061067666" at="38,78,39,82" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668061067666" at="22,0,23,0" concept="2" trace="myConceptTestCompletionCustomization_ChildNoPriority" />
@@ -379,8 +379,8 @@
       <scope id="5310043668061067667" at="83,79,89,67" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668061067667" at="19,0,20,0" concept="8" trace="TestCompletionCustomization_ChildWithPriority" />
-      <node id="5310043668061067667" at="40,83,41,84" concept="1" />
+      <node id="5310043668061067667" at="21,0,22,0" concept="8" trace="TestCompletionCustomization_ChildWithPriority" />
+      <node id="5310043668061067667" at="42,83,43,84" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668061067667" at="26,0,27,0" concept="2" trace="myConceptTestCompletionCustomization_ChildWithPriority" />
@@ -414,8 +414,8 @@
       <scope id="5310043668062336190" at="51,73,56,61" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668062336190" at="14,0,15,0" concept="8" trace="TestCompletionCustomization_ChildNoMenu" />
-      <node id="5310043668062336190" at="35,90,36,78" concept="1" />
+      <node id="5310043668062336190" at="16,0,17,0" concept="8" trace="TestCompletionCustomization_ChildNoMenu" />
+      <node id="5310043668062336190" at="37,90,38,78" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668062336190" at="21,0,22,0" concept="2" trace="myConceptTestCompletionCustomization_ChildNoMenu" />
@@ -447,8 +447,8 @@
       <scope id="5310043668062444204" at="70,87,75,75" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668062444204" at="17,0,18,0" concept="8" trace="TestCompletionCustomization_ChildSimpleSubstituteMenu" />
-      <node id="5310043668062444204" at="38,99,39,92" concept="1" />
+      <node id="5310043668062444204" at="19,0,20,0" concept="8" trace="TestCompletionCustomization_ChildSimpleSubstituteMenu" />
+      <node id="5310043668062444204" at="40,99,41,92" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668062444204" at="24,0,25,0" concept="2" trace="myConceptTestCompletionCustomization_ChildSimpleSubstituteMenu" />
@@ -480,8 +480,8 @@
       <scope id="5310043668062994153" at="64,94,69,82" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668062994153" at="16,0,17,0" concept="8" trace="TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
-      <node id="5310043668062994153" at="37,82,38,99" concept="1" />
+      <node id="5310043668062994153" at="18,0,19,0" concept="8" trace="TestCompletionCustomization_ChildParameterizedSubstituteMenu" />
+      <node id="5310043668062994153" at="39,82,40,99" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668062994153" at="23,0,24,0" concept="2" trace="myConceptTestCompletionCustomization_ChildParameterizedSubstituteMenu" />
@@ -513,8 +513,8 @@
       <scope id="5310043668063045800" at="97,85,102,73" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668063045800" at="21,0,22,0" concept="8" trace="TestCompletionCustomization_ChildWrapSubstituteMenu" />
-      <node id="5310043668063045800" at="42,91,43,90" concept="1" />
+      <node id="5310043668063045800" at="23,0,24,0" concept="8" trace="TestCompletionCustomization_ChildWrapSubstituteMenu" />
+      <node id="5310043668063045800" at="44,91,45,90" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668063045800" at="28,0,29,0" concept="2" trace="myConceptTestCompletionCustomization_ChildWrapSubstituteMenu" />
@@ -547,8 +547,8 @@
       <scope id="5310043668063045852" at="103,75,108,63" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668063045852" at="22,0,23,0" concept="8" trace="TestCompletionCustomization_ConceptToWrap" />
-      <node id="5310043668063045852" at="43,90,44,80" concept="1" />
+      <node id="5310043668063045852" at="24,0,25,0" concept="8" trace="TestCompletionCustomization_ConceptToWrap" />
+      <node id="5310043668063045852" at="45,90,46,80" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668063045852" at="29,0,30,0" concept="2" trace="myConceptTestCompletionCustomization_ConceptToWrap" />
@@ -580,8 +580,8 @@
       <scope id="5310043668063045853" at="116,87,122,75" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668063045853" at="24,0,25,0" concept="8" trace="TestCompletionCustomization_ConceptToWrapWithPriority" />
-      <node id="5310043668063045853" at="45,90,46,92" concept="1" />
+      <node id="5310043668063045853" at="26,0,27,0" concept="8" trace="TestCompletionCustomization_ConceptToWrapWithPriority" />
+      <node id="5310043668063045853" at="47,90,48,92" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668063045853" at="31,0,32,0" concept="2" trace="myConceptTestCompletionCustomization_ConceptToWrapWithPriority" />
@@ -616,8 +616,8 @@
       <scope id="5310043668063045854" at="109,85,115,73" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668063045854" at="23,0,24,0" concept="8" trace="TestCompletionCustomization_ConceptToWrapNoPriority" />
-      <node id="5310043668063045854" at="44,80,45,90" concept="1" />
+      <node id="5310043668063045854" at="25,0,26,0" concept="8" trace="TestCompletionCustomization_ConceptToWrapNoPriority" />
+      <node id="5310043668063045854" at="46,80,47,90" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668063045854" at="30,0,31,0" concept="2" trace="myConceptTestCompletionCustomization_ConceptToWrapNoPriority" />
@@ -651,8 +651,8 @@
       <scope id="5310043668063055324" at="123,85,128,73" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5310043668063055324" at="25,0,26,0" concept="8" trace="TestCompletionCustomization_ContextMatcherBaseChild" />
-      <node id="5310043668063055324" at="46,92,47,90" concept="1" />
+      <node id="5310043668063055324" at="27,0,28,0" concept="8" trace="TestCompletionCustomization_ContextMatcherBaseChild" />
+      <node id="5310043668063055324" at="48,92,49,90" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5310043668063055324" at="32,0,33,0" concept="2" trace="myConceptTestCompletionCustomization_ContextMatcherBaseChild" />
@@ -684,8 +684,8 @@
       <scope id="7595250613974050272" at="90,86,96,74" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7595250613974050272" at="20,0,21,0" concept="8" trace="TestCompletionCustomization_ChildWithPropertyAndLink" />
-      <node id="7595250613974050272" at="41,84,42,91" concept="1" />
+      <node id="7595250613974050272" at="22,0,23,0" concept="8" trace="TestCompletionCustomization_ChildWithPropertyAndLink" />
+      <node id="7595250613974050272" at="43,84,44,91" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7595250613974050272" at="27,0,28,0" concept="2" trace="myConceptTestCompletionCustomization_ChildWithPropertyAndLink" />
@@ -719,8 +719,8 @@
       <scope id="8199816903239730016" at="149,77,155,65" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8199816903239730016" at="29,0,30,0" concept="8" trace="TestCompletionCustomization_ParentTestStyle" />
-      <node id="8199816903239730016" at="50,91,51,82" concept="1" />
+      <node id="8199816903239730016" at="31,0,32,0" concept="8" trace="TestCompletionCustomization_ParentTestStyle" />
+      <node id="8199816903239730016" at="52,91,53,82" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8199816903239730016" at="36,0,37,0" concept="2" trace="myConceptTestCompletionCustomization_ParentTestStyle" />

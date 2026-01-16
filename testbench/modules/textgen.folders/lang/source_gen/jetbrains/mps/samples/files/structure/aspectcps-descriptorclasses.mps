@@ -68,6 +68,7 @@
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
@@ -262,11 +263,11 @@
           <node concept="3cpWsn" id="r" role="3cpWs9">
             <property role="TrG5h" value="structureDescriptor" />
             <node concept="3uibUv" id="s" role="1tU5fm">
-              <ref role="3uigEE" node="3_" resolve="StructureAspectDescriptor" />
+              <ref role="3uigEE" node="3S" resolve="StructureAspectDescriptor" />
             </node>
             <node concept="10QFUN" id="t" role="33vP2m">
               <node concept="3uibUv" id="u" role="10QFUM">
-                <ref role="3uigEE" node="3_" resolve="StructureAspectDescriptor" />
+                <ref role="3uigEE" node="3S" resolve="StructureAspectDescriptor" />
               </node>
               <node concept="2OqwBi" id="v" role="10QFUP">
                 <node concept="37vLTw" id="w" role="2Oq$k0">
@@ -288,7 +289,7 @@
               <ref role="3cqZAo" node="r" resolve="structureDescriptor" />
             </node>
             <node concept="liA8E" id="D" role="2OqNvi">
-              <ref role="37wK5l" node="3S" resolve="internalIndex" />
+              <ref role="37wK5l" node="4b" resolve="internalIndex" />
               <node concept="37vLTw" id="E" role="37wK5m">
                 <ref role="3cqZAo" node="i" resolve="c" />
               </node>
@@ -562,7 +563,7 @@
       <node concept="39e2AG" id="2d" role="39e3Y0">
         <property role="2mV_xN" value="true" />
         <node concept="39e2AT" id="2e" role="39e2AY">
-          <ref role="39e2AS" node="3I" resolve="StructureAspectDescriptor" />
+          <ref role="39e2AS" node="41" resolve="StructureAspectDescriptor" />
         </node>
       </node>
     </node>
@@ -575,8 +576,8 @@
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myIndex" />
       <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="2s" role="1B3o_S" />
-      <node concept="3uibUv" id="2t" role="1tU5fm">
+      <node concept="3Tm6S6" id="2v" role="1B3o_S" />
+      <node concept="3uibUv" id="2w" role="1tU5fm">
         <ref role="3uigEE" to="ksn4:~LanguageConceptIndex" resolve="LanguageConceptIndex" />
       </node>
     </node>
@@ -585,9 +586,9 @@
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="Entity" />
-      <node concept="3Tm1VV" id="2u" role="1B3o_S" />
-      <node concept="10Oyi0" id="2v" role="1tU5fm" />
-      <node concept="3cmrfG" id="2w" role="33vP2m">
+      <node concept="3Tm1VV" id="2x" role="1B3o_S" />
+      <node concept="10Oyi0" id="2y" role="1tU5fm" />
+      <node concept="3cmrfG" id="2z" role="33vP2m">
         <property role="3cmrfH" value="0" />
       </node>
     </node>
@@ -596,9 +597,9 @@
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="File" />
-      <node concept="3Tm1VV" id="2x" role="1B3o_S" />
-      <node concept="10Oyi0" id="2y" role="1tU5fm" />
-      <node concept="3cmrfG" id="2z" role="33vP2m">
+      <node concept="3Tm1VV" id="2$" role="1B3o_S" />
+      <node concept="10Oyi0" id="2_" role="1tU5fm" />
+      <node concept="3cmrfG" id="2A" role="33vP2m">
         <property role="3cmrfH" value="1" />
       </node>
     </node>
@@ -607,9 +608,9 @@
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="File2" />
-      <node concept="3Tm1VV" id="2$" role="1B3o_S" />
-      <node concept="10Oyi0" id="2_" role="1tU5fm" />
-      <node concept="3cmrfG" id="2A" role="33vP2m">
+      <node concept="3Tm1VV" id="2B" role="1B3o_S" />
+      <node concept="10Oyi0" id="2C" role="1tU5fm" />
+      <node concept="3cmrfG" id="2D" role="33vP2m">
         <property role="3cmrfH" value="2" />
       </node>
     </node>
@@ -618,111 +619,111 @@
       <property role="2dld4O" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="Folder" />
-      <node concept="3Tm1VV" id="2B" role="1B3o_S" />
-      <node concept="10Oyi0" id="2C" role="1tU5fm" />
-      <node concept="3cmrfG" id="2D" role="33vP2m">
+      <node concept="3Tm1VV" id="2E" role="1B3o_S" />
+      <node concept="10Oyi0" id="2F" role="1tU5fm" />
+      <node concept="3cmrfG" id="2G" role="33vP2m">
         <property role="3cmrfH" value="3" />
       </node>
     </node>
     <node concept="2tJIrI" id="2l" role="jymVt" />
     <node concept="3clFbW" id="2m" role="jymVt">
-      <node concept="3cqZAl" id="2E" role="3clF45" />
-      <node concept="3Tm1VV" id="2F" role="1B3o_S" />
-      <node concept="3clFbS" id="2G" role="3clF47">
-        <node concept="3cpWs8" id="2H" role="3cqZAp">
-          <node concept="3cpWsn" id="2N" role="3cpWs9">
+      <node concept="3cqZAl" id="2H" role="3clF45" />
+      <node concept="3Tm1VV" id="2I" role="1B3o_S" />
+      <node concept="3clFbS" id="2J" role="3clF47">
+        <node concept="3cpWs8" id="2K" role="3cqZAp">
+          <node concept="3cpWsn" id="2Q" role="3cpWs9">
             <property role="TrG5h" value="builder" />
-            <node concept="3uibUv" id="2O" role="1tU5fm">
+            <node concept="3uibUv" id="2R" role="1tU5fm">
               <ref role="3uigEE" to="ksn4:~LanguageConceptIndexBuilder" resolve="LanguageConceptIndexBuilder" />
             </node>
-            <node concept="2ShNRf" id="2P" role="33vP2m">
-              <node concept="1pGfFk" id="2Q" role="2ShVmc">
+            <node concept="2ShNRf" id="2S" role="33vP2m">
+              <node concept="1pGfFk" id="2T" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="11gdke" id="2R" role="37wK5m">
+                <node concept="11gdke" id="2U" role="37wK5m">
                   <property role="11gdj1" value="9e34de6fa11f4866L" />
                 </node>
-                <node concept="11gdke" id="2S" role="37wK5m">
+                <node concept="11gdke" id="2V" role="37wK5m">
                   <property role="11gdj1" value="a52c3e2e545d3d90L" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2I" role="3cqZAp">
-          <node concept="2OqwBi" id="2T" role="3clFbG">
-            <node concept="37vLTw" id="2U" role="2Oq$k0">
-              <ref role="3cqZAo" node="2N" resolve="builder" />
+        <node concept="3clFbF" id="2L" role="3cqZAp">
+          <node concept="2OqwBi" id="2W" role="3clFbG">
+            <node concept="37vLTw" id="2X" role="2Oq$k0">
+              <ref role="3cqZAo" node="2Q" resolve="builder" />
             </node>
-            <node concept="liA8E" id="2V" role="2OqNvi">
+            <node concept="liA8E" id="2Y" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="11gdke" id="2W" role="37wK5m">
+              <node concept="11gdke" id="2Z" role="37wK5m">
                 <property role="11gdj1" value="3b29e241360a204eL" />
               </node>
-              <node concept="37vLTw" id="2X" role="37wK5m">
+              <node concept="37vLTw" id="30" role="37wK5m">
                 <ref role="3cqZAo" node="2h" resolve="Entity" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2J" role="3cqZAp">
-          <node concept="2OqwBi" id="2Y" role="3clFbG">
-            <node concept="37vLTw" id="2Z" role="2Oq$k0">
-              <ref role="3cqZAo" node="2N" resolve="builder" />
+        <node concept="3clFbF" id="2M" role="3cqZAp">
+          <node concept="2OqwBi" id="31" role="3clFbG">
+            <node concept="37vLTw" id="32" role="2Oq$k0">
+              <ref role="3cqZAo" node="2Q" resolve="builder" />
             </node>
-            <node concept="liA8E" id="30" role="2OqNvi">
+            <node concept="liA8E" id="33" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="11gdke" id="31" role="37wK5m">
+              <node concept="11gdke" id="34" role="37wK5m">
                 <property role="11gdj1" value="3b29e241360a2058L" />
               </node>
-              <node concept="37vLTw" id="32" role="37wK5m">
+              <node concept="37vLTw" id="35" role="37wK5m">
                 <ref role="3cqZAo" node="2i" resolve="File" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2K" role="3cqZAp">
-          <node concept="2OqwBi" id="33" role="3clFbG">
-            <node concept="37vLTw" id="34" role="2Oq$k0">
-              <ref role="3cqZAo" node="2N" resolve="builder" />
+        <node concept="3clFbF" id="2N" role="3cqZAp">
+          <node concept="2OqwBi" id="36" role="3clFbG">
+            <node concept="37vLTw" id="37" role="2Oq$k0">
+              <ref role="3cqZAo" node="2Q" resolve="builder" />
             </node>
-            <node concept="liA8E" id="35" role="2OqNvi">
+            <node concept="liA8E" id="38" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="11gdke" id="36" role="37wK5m">
+              <node concept="11gdke" id="39" role="37wK5m">
                 <property role="11gdj1" value="32e7e3e1f3d0e288L" />
               </node>
-              <node concept="37vLTw" id="37" role="37wK5m">
+              <node concept="37vLTw" id="3a" role="37wK5m">
                 <ref role="3cqZAo" node="2j" resolve="File2" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2L" role="3cqZAp">
-          <node concept="2OqwBi" id="38" role="3clFbG">
-            <node concept="37vLTw" id="39" role="2Oq$k0">
-              <ref role="3cqZAo" node="2N" resolve="builder" />
+        <node concept="3clFbF" id="2O" role="3cqZAp">
+          <node concept="2OqwBi" id="3b" role="3clFbG">
+            <node concept="37vLTw" id="3c" role="2Oq$k0">
+              <ref role="3cqZAo" node="2Q" resolve="builder" />
             </node>
-            <node concept="liA8E" id="3a" role="2OqNvi">
+            <node concept="liA8E" id="3d" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="11gdke" id="3b" role="37wK5m">
+              <node concept="11gdke" id="3e" role="37wK5m">
                 <property role="11gdj1" value="3b29e241360a2055L" />
               </node>
-              <node concept="37vLTw" id="3c" role="37wK5m">
+              <node concept="37vLTw" id="3f" role="37wK5m">
                 <ref role="3cqZAo" node="2k" resolve="Folder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2M" role="3cqZAp">
-          <node concept="37vLTI" id="3d" role="3clFbG">
-            <node concept="2OqwBi" id="3e" role="37vLTx">
-              <node concept="37vLTw" id="3g" role="2Oq$k0">
-                <ref role="3cqZAo" node="2N" resolve="builder" />
+        <node concept="3clFbF" id="2P" role="3cqZAp">
+          <node concept="37vLTI" id="3g" role="3clFbG">
+            <node concept="2OqwBi" id="3h" role="37vLTx">
+              <node concept="37vLTw" id="3j" role="2Oq$k0">
+                <ref role="3cqZAo" node="2Q" resolve="builder" />
               </node>
-              <node concept="liA8E" id="3h" role="2OqNvi">
+              <node concept="liA8E" id="3k" role="2OqNvi">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.seal()" resolve="seal" />
               </node>
             </node>
-            <node concept="37vLTw" id="3f" role="37vLTJ">
+            <node concept="37vLTw" id="3i" role="37vLTJ">
               <ref role="3cqZAo" node="2g" resolve="myIndex" />
             </node>
           </node>
@@ -732,25 +733,25 @@
     <node concept="2tJIrI" id="2n" role="jymVt" />
     <node concept="3clFb_" id="2o" role="jymVt">
       <property role="TrG5h" value="index" />
-      <node concept="10Oyi0" id="3i" role="3clF45" />
-      <node concept="3clFbS" id="3j" role="3clF47">
-        <node concept="3cpWs6" id="3l" role="3cqZAp">
-          <node concept="2OqwBi" id="3m" role="3cqZAk">
-            <node concept="37vLTw" id="3n" role="2Oq$k0">
+      <node concept="10Oyi0" id="3l" role="3clF45" />
+      <node concept="3clFbS" id="3m" role="3clF47">
+        <node concept="3cpWs6" id="3o" role="3cqZAp">
+          <node concept="2OqwBi" id="3p" role="3cqZAk">
+            <node concept="37vLTw" id="3q" role="2Oq$k0">
               <ref role="3cqZAo" node="2g" resolve="myIndex" />
             </node>
-            <node concept="liA8E" id="3o" role="2OqNvi">
+            <node concept="liA8E" id="3r" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndex.index(jetbrains.mps.smodel.adapter.ids.SConceptId)" resolve="index" />
-              <node concept="37vLTw" id="3p" role="37wK5m">
-                <ref role="3cqZAo" node="3k" resolve="cid" />
+              <node concept="37vLTw" id="3s" role="37wK5m">
+                <ref role="3cqZAo" node="3n" resolve="cid" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="3k" role="3clF46">
+      <node concept="37vLTG" id="3n" role="3clF46">
         <property role="TrG5h" value="cid" />
-        <node concept="3uibUv" id="3q" role="1tU5fm">
+        <node concept="3uibUv" id="3t" role="1tU5fm">
           <ref role="3uigEE" to="e8bb:~SConceptId" resolve="SConceptId" />
         </node>
       </node>
@@ -758,955 +759,1001 @@
     <node concept="2tJIrI" id="2p" role="jymVt" />
     <node concept="3clFb_" id="2q" role="jymVt">
       <property role="TrG5h" value="index" />
-      <node concept="10Oyi0" id="3r" role="3clF45" />
-      <node concept="3Tm1VV" id="3s" role="1B3o_S" />
-      <node concept="3clFbS" id="3t" role="3clF47">
-        <node concept="3cpWs6" id="3v" role="3cqZAp">
-          <node concept="2OqwBi" id="3w" role="3cqZAk">
-            <node concept="37vLTw" id="3x" role="2Oq$k0">
+      <node concept="10Oyi0" id="3u" role="3clF45" />
+      <node concept="3Tm1VV" id="3v" role="1B3o_S" />
+      <node concept="3clFbS" id="3w" role="3clF47">
+        <node concept="3cpWs6" id="3z" role="3cqZAp">
+          <node concept="2OqwBi" id="3$" role="3cqZAk">
+            <node concept="37vLTw" id="3_" role="2Oq$k0">
               <ref role="3cqZAo" node="2g" resolve="myIndex" />
             </node>
-            <node concept="liA8E" id="3y" role="2OqNvi">
+            <node concept="liA8E" id="3A" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="index" />
-              <node concept="37vLTw" id="3z" role="37wK5m">
-                <ref role="3cqZAo" node="3u" resolve="concept" />
+              <node concept="37vLTw" id="3B" role="37wK5m">
+                <ref role="3cqZAo" node="3x" resolve="concept" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="3u" role="3clF46">
+      <node concept="37vLTG" id="3x" role="3clF46">
         <property role="TrG5h" value="concept" />
-        <node concept="3uibUv" id="3$" role="1tU5fm">
+        <node concept="3uibUv" id="3C" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
         </node>
       </node>
+      <node concept="2AHcQZ" id="3y" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
-    <node concept="3Tm1VV" id="2r" role="1B3o_S" />
+    <node concept="2tJIrI" id="2r" role="jymVt" />
+    <node concept="3Tm1VV" id="2s" role="1B3o_S" />
+    <node concept="3uibUv" id="2t" role="EKbjA">
+      <ref role="3uigEE" to="ksn4:~ConceptIndex" resolve="ConceptIndex" />
+    </node>
+    <node concept="3clFb_" id="2u" role="jymVt">
+      <property role="TrG5h" value="index" />
+      <node concept="3Tm1VV" id="3D" role="1B3o_S" />
+      <node concept="10Oyi0" id="3E" role="3clF45" />
+      <node concept="37vLTG" id="3F" role="3clF46">
+        <property role="TrG5h" value="c" />
+        <node concept="3uibUv" id="3J" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+        </node>
+        <node concept="2AHcQZ" id="3K" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3G" role="3clF46">
+        <property role="TrG5h" value="missingValue" />
+        <node concept="10Oyi0" id="3L" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="3H" role="3clF47">
+        <node concept="3cpWs6" id="3M" role="3cqZAp">
+          <node concept="2OqwBi" id="3N" role="3cqZAk">
+            <node concept="37vLTw" id="3O" role="2Oq$k0">
+              <ref role="3cqZAo" node="2g" resolve="myIndex" />
+            </node>
+            <node concept="liA8E" id="3P" role="2OqNvi">
+              <ref role="37wK5l" to="ksn4:~LanguageConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept,int)" resolve="index" />
+              <node concept="37vLTw" id="3Q" role="37wK5m">
+                <ref role="3cqZAo" node="3F" resolve="c" />
+              </node>
+              <node concept="37vLTw" id="3R" role="37wK5m">
+                <ref role="3cqZAo" node="3G" resolve="missingValue" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3I" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
-  <node concept="312cEu" id="3_">
+  <node concept="312cEu" id="3S">
     <property role="TrG5h" value="StructureAspectDescriptor" />
-    <node concept="3uibUv" id="3A" role="1zkMxy">
+    <node concept="3uibUv" id="3T" role="1zkMxy">
       <ref role="3uigEE" to="ze1i:~BaseStructureAspectDescriptor" resolve="BaseStructureAspectDescriptor" />
     </node>
-    <node concept="312cEg" id="3B" role="jymVt">
+    <node concept="312cEg" id="3U" role="jymVt">
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="myConceptEntity" />
-      <node concept="3uibUv" id="3Y" role="1tU5fm">
+      <node concept="3uibUv" id="4h" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
-      <node concept="1rXfSq" id="3Z" role="33vP2m">
-        <ref role="37wK5l" node="3U" resolve="createDescriptorForEntity" />
+      <node concept="1rXfSq" id="4i" role="33vP2m">
+        <ref role="37wK5l" node="4d" resolve="createDescriptorForEntity" />
       </node>
     </node>
-    <node concept="312cEg" id="3C" role="jymVt">
+    <node concept="312cEg" id="3V" role="jymVt">
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="myConceptFile" />
-      <node concept="3uibUv" id="40" role="1tU5fm">
+      <node concept="3uibUv" id="4j" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
-      <node concept="1rXfSq" id="41" role="33vP2m">
-        <ref role="37wK5l" node="3V" resolve="createDescriptorForFile" />
+      <node concept="1rXfSq" id="4k" role="33vP2m">
+        <ref role="37wK5l" node="4e" resolve="createDescriptorForFile" />
       </node>
     </node>
-    <node concept="312cEg" id="3D" role="jymVt">
+    <node concept="312cEg" id="3W" role="jymVt">
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="myConceptFile2" />
-      <node concept="3uibUv" id="42" role="1tU5fm">
+      <node concept="3uibUv" id="4l" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
-      <node concept="1rXfSq" id="43" role="33vP2m">
-        <ref role="37wK5l" node="3W" resolve="createDescriptorForFile2" />
+      <node concept="1rXfSq" id="4m" role="33vP2m">
+        <ref role="37wK5l" node="4f" resolve="createDescriptorForFile2" />
       </node>
     </node>
-    <node concept="312cEg" id="3E" role="jymVt">
+    <node concept="312cEg" id="3X" role="jymVt">
       <property role="eg7rD" value="false" />
       <property role="34CwA1" value="false" />
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="myConceptFolder" />
-      <node concept="3uibUv" id="44" role="1tU5fm">
+      <node concept="3uibUv" id="4n" role="1tU5fm">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
-      <node concept="1rXfSq" id="45" role="33vP2m">
-        <ref role="37wK5l" node="3X" resolve="createDescriptorForFolder" />
+      <node concept="1rXfSq" id="4o" role="33vP2m">
+        <ref role="37wK5l" node="4g" resolve="createDescriptorForFolder" />
       </node>
     </node>
-    <node concept="312cEg" id="3F" role="jymVt">
+    <node concept="312cEg" id="3Y" role="jymVt">
       <property role="TrG5h" value="myIndexSwitch" />
       <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="46" role="1B3o_S" />
-      <node concept="3uibUv" id="47" role="1tU5fm">
+      <node concept="3Tm6S6" id="4p" role="1B3o_S" />
+      <node concept="3uibUv" id="4q" role="1tU5fm">
         <ref role="3uigEE" node="2f" resolve="LanguageConceptSwitch" />
       </node>
     </node>
-    <node concept="3Tm1VV" id="3G" role="1B3o_S" />
-    <node concept="2tJIrI" id="3H" role="jymVt" />
-    <node concept="3clFbW" id="3I" role="jymVt">
-      <node concept="3cqZAl" id="48" role="3clF45" />
-      <node concept="3Tm1VV" id="49" role="1B3o_S" />
-      <node concept="3clFbS" id="4a" role="3clF47">
-        <node concept="3clFbF" id="4b" role="3cqZAp">
-          <node concept="37vLTI" id="4c" role="3clFbG">
-            <node concept="2ShNRf" id="4d" role="37vLTx">
-              <node concept="1pGfFk" id="4f" role="2ShVmc">
+    <node concept="3Tm1VV" id="3Z" role="1B3o_S" />
+    <node concept="2tJIrI" id="40" role="jymVt" />
+    <node concept="3clFbW" id="41" role="jymVt">
+      <node concept="3cqZAl" id="4r" role="3clF45" />
+      <node concept="3Tm1VV" id="4s" role="1B3o_S" />
+      <node concept="3clFbS" id="4t" role="3clF47">
+        <node concept="3clFbF" id="4u" role="3cqZAp">
+          <node concept="37vLTI" id="4v" role="3clFbG">
+            <node concept="2ShNRf" id="4w" role="37vLTx">
+              <node concept="1pGfFk" id="4y" role="2ShVmc">
                 <ref role="37wK5l" node="2m" resolve="LanguageConceptSwitch" />
               </node>
             </node>
-            <node concept="37vLTw" id="4e" role="37vLTJ">
-              <ref role="3cqZAo" node="3F" resolve="myIndexSwitch" />
+            <node concept="37vLTw" id="4x" role="37vLTJ">
+              <ref role="3cqZAo" node="3Y" resolve="myIndexSwitch" />
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="3J" role="jymVt" />
-    <node concept="2tJIrI" id="3K" role="jymVt" />
-    <node concept="3clFb_" id="3L" role="jymVt">
+    <node concept="2tJIrI" id="42" role="jymVt" />
+    <node concept="2tJIrI" id="43" role="jymVt" />
+    <node concept="3clFb_" id="44" role="jymVt">
       <property role="TrG5h" value="reportDependencies" />
-      <node concept="3Tm1VV" id="4g" role="1B3o_S" />
-      <node concept="3cqZAl" id="4h" role="3clF45" />
-      <node concept="37vLTG" id="4i" role="3clF46">
+      <node concept="3Tm1VV" id="4z" role="1B3o_S" />
+      <node concept="3cqZAl" id="4$" role="3clF45" />
+      <node concept="37vLTG" id="4_" role="3clF46">
         <property role="TrG5h" value="deps" />
-        <node concept="3uibUv" id="4l" role="1tU5fm">
+        <node concept="3uibUv" id="4C" role="1tU5fm">
           <ref role="3uigEE" to="ze1i:~StructureAspectDescriptor$Dependencies" resolve="StructureAspectDescriptor.Dependencies" />
         </node>
       </node>
-      <node concept="3clFbS" id="4j" role="3clF47">
-        <node concept="3clFbF" id="4m" role="3cqZAp">
-          <node concept="2OqwBi" id="4n" role="3clFbG">
-            <node concept="37vLTw" id="4o" role="2Oq$k0">
-              <ref role="3cqZAo" node="4i" resolve="deps" />
+      <node concept="3clFbS" id="4A" role="3clF47">
+        <node concept="3clFbF" id="4D" role="3cqZAp">
+          <node concept="2OqwBi" id="4E" role="3clFbG">
+            <node concept="37vLTw" id="4F" role="2Oq$k0">
+              <ref role="3cqZAo" node="4_" resolve="deps" />
             </node>
-            <node concept="liA8E" id="4p" role="2OqNvi">
+            <node concept="liA8E" id="4G" role="2OqNvi">
               <ref role="37wK5l" to="ze1i:~StructureAspectDescriptor$Dependencies.extendedLanguage(long,long,java.lang.String)" resolve="extendedLanguage" />
-              <node concept="11gdke" id="4q" role="37wK5m">
+              <node concept="11gdke" id="4H" role="37wK5m">
                 <property role="11gdj1" value="ceab519525ea4f22L" />
               </node>
-              <node concept="11gdke" id="4r" role="37wK5m">
+              <node concept="11gdke" id="4I" role="37wK5m">
                 <property role="11gdj1" value="9b92103b95ca8c0cL" />
               </node>
-              <node concept="Xl_RD" id="4s" role="37wK5m">
+              <node concept="Xl_RD" id="4J" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.lang.core" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="4k" role="2AJF6D">
+      <node concept="2AHcQZ" id="4B" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="3M" role="jymVt" />
-    <node concept="3clFb_" id="3N" role="jymVt">
+    <node concept="2tJIrI" id="45" role="jymVt" />
+    <node concept="3clFb_" id="46" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="od$2w" value="false" />
       <property role="TrG5h" value="getDescriptors" />
       <property role="DiZV1" value="false" />
-      <node concept="3clFbS" id="4t" role="3clF47">
-        <node concept="3cpWs6" id="4x" role="3cqZAp">
-          <node concept="2YIFZM" id="4y" role="3cqZAk">
+      <node concept="3clFbS" id="4K" role="3clF47">
+        <node concept="3cpWs6" id="4O" role="3cqZAp">
+          <node concept="2YIFZM" id="4P" role="3cqZAk">
             <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
             <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
-            <node concept="37vLTw" id="4z" role="37wK5m">
-              <ref role="3cqZAo" node="3B" resolve="myConceptEntity" />
+            <node concept="37vLTw" id="4Q" role="37wK5m">
+              <ref role="3cqZAo" node="3U" resolve="myConceptEntity" />
             </node>
-            <node concept="37vLTw" id="4$" role="37wK5m">
-              <ref role="3cqZAo" node="3C" resolve="myConceptFile" />
+            <node concept="37vLTw" id="4R" role="37wK5m">
+              <ref role="3cqZAo" node="3V" resolve="myConceptFile" />
             </node>
-            <node concept="37vLTw" id="4_" role="37wK5m">
-              <ref role="3cqZAo" node="3D" resolve="myConceptFile2" />
+            <node concept="37vLTw" id="4S" role="37wK5m">
+              <ref role="3cqZAo" node="3W" resolve="myConceptFile2" />
             </node>
-            <node concept="37vLTw" id="4A" role="37wK5m">
-              <ref role="3cqZAo" node="3E" resolve="myConceptFolder" />
+            <node concept="37vLTw" id="4T" role="37wK5m">
+              <ref role="3cqZAo" node="3X" resolve="myConceptFolder" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="4u" role="1B3o_S" />
-      <node concept="3uibUv" id="4v" role="3clF45">
+      <node concept="3Tm1VV" id="4L" role="1B3o_S" />
+      <node concept="3uibUv" id="4M" role="3clF45">
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
-        <node concept="3uibUv" id="4B" role="11_B2D">
+        <node concept="3uibUv" id="4U" role="11_B2D">
           <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="4w" role="2AJF6D">
+      <node concept="2AHcQZ" id="4N" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="3O" role="jymVt" />
-    <node concept="3clFb_" id="3P" role="jymVt">
+    <node concept="2tJIrI" id="47" role="jymVt" />
+    <node concept="3clFb_" id="48" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDescriptor" />
       <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="4C" role="1B3o_S" />
-      <node concept="37vLTG" id="4D" role="3clF46">
+      <node concept="3Tm1VV" id="4V" role="1B3o_S" />
+      <node concept="37vLTG" id="4W" role="3clF46">
         <property role="TrG5h" value="id" />
-        <node concept="3uibUv" id="4I" role="1tU5fm">
+        <node concept="3uibUv" id="51" role="1tU5fm">
           <ref role="3uigEE" to="e8bb:~SConceptId" resolve="SConceptId" />
         </node>
       </node>
-      <node concept="3clFbS" id="4E" role="3clF47">
-        <node concept="3KaCP$" id="4J" role="3cqZAp">
-          <node concept="3KbdKl" id="4K" role="3KbHQx">
-            <node concept="3clFbS" id="4Q" role="3Kbo56">
-              <node concept="3cpWs6" id="4S" role="3cqZAp">
-                <node concept="37vLTw" id="4T" role="3cqZAk">
-                  <ref role="3cqZAo" node="3B" resolve="myConceptEntity" />
+      <node concept="3clFbS" id="4X" role="3clF47">
+        <node concept="3KaCP$" id="52" role="3cqZAp">
+          <node concept="3KbdKl" id="53" role="3KbHQx">
+            <node concept="3clFbS" id="59" role="3Kbo56">
+              <node concept="3cpWs6" id="5b" role="3cqZAp">
+                <node concept="37vLTw" id="5c" role="3cqZAk">
+                  <ref role="3cqZAo" node="3U" resolve="myConceptEntity" />
                 </node>
               </node>
             </node>
-            <node concept="10M0yZ" id="4R" role="3Kbmr1">
+            <node concept="10M0yZ" id="5a" role="3Kbmr1">
               <ref role="1PxDUh" node="2f" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="2h" resolve="Entity" />
             </node>
           </node>
-          <node concept="3KbdKl" id="4L" role="3KbHQx">
-            <node concept="3clFbS" id="4U" role="3Kbo56">
-              <node concept="3cpWs6" id="4W" role="3cqZAp">
-                <node concept="37vLTw" id="4X" role="3cqZAk">
-                  <ref role="3cqZAo" node="3C" resolve="myConceptFile" />
+          <node concept="3KbdKl" id="54" role="3KbHQx">
+            <node concept="3clFbS" id="5d" role="3Kbo56">
+              <node concept="3cpWs6" id="5f" role="3cqZAp">
+                <node concept="37vLTw" id="5g" role="3cqZAk">
+                  <ref role="3cqZAo" node="3V" resolve="myConceptFile" />
                 </node>
               </node>
             </node>
-            <node concept="10M0yZ" id="4V" role="3Kbmr1">
+            <node concept="10M0yZ" id="5e" role="3Kbmr1">
               <ref role="1PxDUh" node="2f" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="2i" resolve="File" />
             </node>
           </node>
-          <node concept="3KbdKl" id="4M" role="3KbHQx">
-            <node concept="3clFbS" id="4Y" role="3Kbo56">
-              <node concept="3cpWs6" id="50" role="3cqZAp">
-                <node concept="37vLTw" id="51" role="3cqZAk">
-                  <ref role="3cqZAo" node="3D" resolve="myConceptFile2" />
+          <node concept="3KbdKl" id="55" role="3KbHQx">
+            <node concept="3clFbS" id="5h" role="3Kbo56">
+              <node concept="3cpWs6" id="5j" role="3cqZAp">
+                <node concept="37vLTw" id="5k" role="3cqZAk">
+                  <ref role="3cqZAo" node="3W" resolve="myConceptFile2" />
                 </node>
               </node>
             </node>
-            <node concept="10M0yZ" id="4Z" role="3Kbmr1">
+            <node concept="10M0yZ" id="5i" role="3Kbmr1">
               <ref role="1PxDUh" node="2f" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="2j" resolve="File2" />
             </node>
           </node>
-          <node concept="3KbdKl" id="4N" role="3KbHQx">
-            <node concept="3clFbS" id="52" role="3Kbo56">
-              <node concept="3cpWs6" id="54" role="3cqZAp">
-                <node concept="37vLTw" id="55" role="3cqZAk">
-                  <ref role="3cqZAo" node="3E" resolve="myConceptFolder" />
+          <node concept="3KbdKl" id="56" role="3KbHQx">
+            <node concept="3clFbS" id="5l" role="3Kbo56">
+              <node concept="3cpWs6" id="5n" role="3cqZAp">
+                <node concept="37vLTw" id="5o" role="3cqZAk">
+                  <ref role="3cqZAo" node="3X" resolve="myConceptFolder" />
                 </node>
               </node>
             </node>
-            <node concept="10M0yZ" id="53" role="3Kbmr1">
+            <node concept="10M0yZ" id="5m" role="3Kbmr1">
               <ref role="1PxDUh" node="2f" resolve="LanguageConceptSwitch" />
               <ref role="3cqZAo" node="2k" resolve="Folder" />
             </node>
           </node>
-          <node concept="2OqwBi" id="4O" role="3KbGdf">
-            <node concept="37vLTw" id="56" role="2Oq$k0">
-              <ref role="3cqZAo" node="3F" resolve="myIndexSwitch" />
+          <node concept="2OqwBi" id="57" role="3KbGdf">
+            <node concept="37vLTw" id="5p" role="2Oq$k0">
+              <ref role="3cqZAo" node="3Y" resolve="myIndexSwitch" />
             </node>
-            <node concept="liA8E" id="57" role="2OqNvi">
+            <node concept="liA8E" id="5q" role="2OqNvi">
               <ref role="37wK5l" node="2o" resolve="index" />
-              <node concept="37vLTw" id="58" role="37wK5m">
-                <ref role="3cqZAo" node="4D" resolve="id" />
+              <node concept="37vLTw" id="5r" role="37wK5m">
+                <ref role="3cqZAo" node="4W" resolve="id" />
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="4P" role="3Kb1Dw">
-            <node concept="3cpWs6" id="59" role="3cqZAp">
-              <node concept="10Nm6u" id="5a" role="3cqZAk" />
+          <node concept="3clFbS" id="58" role="3Kb1Dw">
+            <node concept="3cpWs6" id="5s" role="3cqZAp">
+              <node concept="10Nm6u" id="5t" role="3cqZAk" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="4F" role="3clF45">
+      <node concept="3uibUv" id="4Y" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
-      <node concept="2AHcQZ" id="4G" role="2AJF6D">
+      <node concept="2AHcQZ" id="4Z" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
-      <node concept="2AHcQZ" id="4H" role="2AJF6D">
+      <node concept="2AHcQZ" id="50" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
-    <node concept="2tJIrI" id="3Q" role="jymVt" />
-    <node concept="2tJIrI" id="3R" role="jymVt" />
-    <node concept="3clFb_" id="3S" role="jymVt">
+    <node concept="2tJIrI" id="49" role="jymVt" />
+    <node concept="2tJIrI" id="4a" role="jymVt" />
+    <node concept="3clFb_" id="4b" role="jymVt">
       <property role="TrG5h" value="internalIndex" />
-      <node concept="10Oyi0" id="5b" role="3clF45" />
-      <node concept="3clFbS" id="5c" role="3clF47">
-        <node concept="3cpWs6" id="5e" role="3cqZAp">
-          <node concept="2OqwBi" id="5f" role="3cqZAk">
-            <node concept="37vLTw" id="5g" role="2Oq$k0">
-              <ref role="3cqZAo" node="3F" resolve="myIndexSwitch" />
+      <node concept="10Oyi0" id="5u" role="3clF45" />
+      <node concept="3clFbS" id="5v" role="3clF47">
+        <node concept="3cpWs6" id="5x" role="3cqZAp">
+          <node concept="2OqwBi" id="5y" role="3cqZAk">
+            <node concept="37vLTw" id="5z" role="2Oq$k0">
+              <ref role="3cqZAo" node="3Y" resolve="myIndexSwitch" />
             </node>
-            <node concept="liA8E" id="5h" role="2OqNvi">
+            <node concept="liA8E" id="5$" role="2OqNvi">
               <ref role="37wK5l" node="2q" resolve="index" />
-              <node concept="37vLTw" id="5i" role="37wK5m">
-                <ref role="3cqZAo" node="5d" resolve="c" />
+              <node concept="37vLTw" id="5_" role="37wK5m">
+                <ref role="3cqZAo" node="5w" resolve="c" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="5d" role="3clF46">
+      <node concept="37vLTG" id="5w" role="3clF46">
         <property role="TrG5h" value="c" />
-        <node concept="3uibUv" id="5j" role="1tU5fm">
+        <node concept="3uibUv" id="5A" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="3T" role="jymVt" />
-    <node concept="2YIFZL" id="3U" role="jymVt">
+    <node concept="2tJIrI" id="4c" role="jymVt" />
+    <node concept="2YIFZL" id="4d" role="jymVt">
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createDescriptorForEntity" />
-      <node concept="3clFbS" id="5k" role="3clF47">
-        <node concept="3cpWs8" id="5n" role="3cqZAp">
-          <node concept="3cpWsn" id="5t" role="3cpWs9">
+      <node concept="3clFbS" id="5B" role="3clF47">
+        <node concept="3cpWs8" id="5E" role="3cqZAp">
+          <node concept="3cpWsn" id="5K" role="3cpWs9">
             <property role="TrG5h" value="b" />
-            <node concept="3uibUv" id="5u" role="1tU5fm">
+            <node concept="3uibUv" id="5L" role="1tU5fm">
               <ref role="3uigEE" to="bzg8:~ConceptDescriptorBuilder2" resolve="ConceptDescriptorBuilder2" />
             </node>
-            <node concept="2ShNRf" id="5v" role="33vP2m">
-              <node concept="1pGfFk" id="5w" role="2ShVmc">
+            <node concept="2ShNRf" id="5M" role="33vP2m">
+              <node concept="1pGfFk" id="5N" role="2ShVmc">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.&lt;init&gt;(java.lang.String,java.lang.String,long,long,long)" resolve="ConceptDescriptorBuilder2" />
-                <node concept="Xl_RD" id="5x" role="37wK5m">
+                <node concept="Xl_RD" id="5O" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.samples.files" />
                 </node>
-                <node concept="Xl_RD" id="5y" role="37wK5m">
+                <node concept="Xl_RD" id="5P" role="37wK5m">
                   <property role="Xl_RC" value="Entity" />
                 </node>
-                <node concept="11gdke" id="5z" role="37wK5m">
+                <node concept="11gdke" id="5Q" role="37wK5m">
                   <property role="11gdj1" value="9e34de6fa11f4866L" />
                 </node>
-                <node concept="11gdke" id="5$" role="37wK5m">
+                <node concept="11gdke" id="5R" role="37wK5m">
                   <property role="11gdj1" value="a52c3e2e545d3d90L" />
                 </node>
-                <node concept="11gdke" id="5_" role="37wK5m">
+                <node concept="11gdke" id="5S" role="37wK5m">
                   <property role="11gdj1" value="3b29e241360a204eL" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5o" role="3cqZAp">
-          <node concept="2OqwBi" id="5A" role="3clFbG">
-            <node concept="37vLTw" id="5B" role="2Oq$k0">
-              <ref role="3cqZAo" node="5t" resolve="b" />
+        <node concept="3clFbF" id="5F" role="3cqZAp">
+          <node concept="2OqwBi" id="5T" role="3clFbG">
+            <node concept="37vLTw" id="5U" role="2Oq$k0">
+              <ref role="3cqZAo" node="5K" resolve="b" />
             </node>
-            <node concept="liA8E" id="5C" role="2OqNvi">
+            <node concept="liA8E" id="5V" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.class_(boolean,boolean,boolean)" resolve="class_" />
-              <node concept="3clFbT" id="5D" role="37wK5m" />
-              <node concept="3clFbT" id="5E" role="37wK5m">
+              <node concept="3clFbT" id="5W" role="37wK5m" />
+              <node concept="3clFbT" id="5X" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
-              <node concept="3clFbT" id="5F" role="37wK5m" />
+              <node concept="3clFbT" id="5Y" role="37wK5m" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5p" role="3cqZAp">
-          <node concept="2OqwBi" id="5G" role="3clFbG">
-            <node concept="37vLTw" id="5H" role="2Oq$k0">
-              <ref role="3cqZAo" node="5t" resolve="b" />
+        <node concept="3clFbF" id="5G" role="3cqZAp">
+          <node concept="2OqwBi" id="5Z" role="3clFbG">
+            <node concept="37vLTw" id="60" role="2Oq$k0">
+              <ref role="3cqZAo" node="5K" resolve="b" />
             </node>
-            <node concept="liA8E" id="5I" role="2OqNvi">
+            <node concept="liA8E" id="61" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.parent(long,long,long)" resolve="parent" />
-              <node concept="11gdke" id="5J" role="37wK5m">
+              <node concept="11gdke" id="62" role="37wK5m">
                 <property role="11gdj1" value="ceab519525ea4f22L" />
               </node>
-              <node concept="11gdke" id="5K" role="37wK5m">
+              <node concept="11gdke" id="63" role="37wK5m">
                 <property role="11gdj1" value="9b92103b95ca8c0cL" />
               </node>
-              <node concept="11gdke" id="5L" role="37wK5m">
+              <node concept="11gdke" id="64" role="37wK5m">
                 <property role="11gdj1" value="110396eaaa4L" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5q" role="3cqZAp">
-          <node concept="2OqwBi" id="5M" role="3clFbG">
-            <node concept="37vLTw" id="5N" role="2Oq$k0">
-              <ref role="3cqZAo" node="5t" resolve="b" />
+        <node concept="3clFbF" id="5H" role="3cqZAp">
+          <node concept="2OqwBi" id="65" role="3clFbG">
+            <node concept="37vLTw" id="66" role="2Oq$k0">
+              <ref role="3cqZAo" node="5K" resolve="b" />
             </node>
-            <node concept="liA8E" id="5O" role="2OqNvi">
+            <node concept="liA8E" id="67" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
-              <node concept="Xl_RD" id="5P" role="37wK5m">
+              <node concept="Xl_RD" id="68" role="37wK5m">
                 <property role="Xl_RC" value="r:7941fa10-49cc-4b8d-a644-440c04f37cf8(jetbrains.mps.samples.files.structure)/4263187291990270030" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5r" role="3cqZAp">
-          <node concept="2OqwBi" id="5Q" role="3clFbG">
-            <node concept="37vLTw" id="5R" role="2Oq$k0">
-              <ref role="3cqZAo" node="5t" resolve="b" />
+        <node concept="3clFbF" id="5I" role="3cqZAp">
+          <node concept="2OqwBi" id="69" role="3clFbG">
+            <node concept="37vLTw" id="6a" role="2Oq$k0">
+              <ref role="3cqZAo" node="5K" resolve="b" />
             </node>
-            <node concept="liA8E" id="5S" role="2OqNvi">
+            <node concept="liA8E" id="6b" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
-              <node concept="3cmrfG" id="5T" role="37wK5m">
+              <node concept="3cmrfG" id="6c" role="37wK5m">
                 <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="5s" role="3cqZAp">
-          <node concept="2OqwBi" id="5U" role="3cqZAk">
-            <node concept="37vLTw" id="5V" role="2Oq$k0">
-              <ref role="3cqZAo" node="5t" resolve="b" />
+        <node concept="3cpWs6" id="5J" role="3cqZAp">
+          <node concept="2OqwBi" id="6d" role="3cqZAk">
+            <node concept="37vLTw" id="6e" role="2Oq$k0">
+              <ref role="3cqZAo" node="5K" resolve="b" />
             </node>
-            <node concept="liA8E" id="5W" role="2OqNvi">
+            <node concept="liA8E" id="6f" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.create()" resolve="create" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="5l" role="1B3o_S" />
-      <node concept="3uibUv" id="5m" role="3clF45">
+      <node concept="3Tm6S6" id="5C" role="1B3o_S" />
+      <node concept="3uibUv" id="5D" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
     </node>
-    <node concept="2YIFZL" id="3V" role="jymVt">
+    <node concept="2YIFZL" id="4e" role="jymVt">
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createDescriptorForFile" />
-      <node concept="3clFbS" id="5X" role="3clF47">
-        <node concept="3cpWs8" id="60" role="3cqZAp">
-          <node concept="3cpWsn" id="68" role="3cpWs9">
+      <node concept="3clFbS" id="6g" role="3clF47">
+        <node concept="3cpWs8" id="6j" role="3cqZAp">
+          <node concept="3cpWsn" id="6r" role="3cpWs9">
             <property role="TrG5h" value="b" />
-            <node concept="3uibUv" id="69" role="1tU5fm">
+            <node concept="3uibUv" id="6s" role="1tU5fm">
               <ref role="3uigEE" to="bzg8:~ConceptDescriptorBuilder2" resolve="ConceptDescriptorBuilder2" />
             </node>
-            <node concept="2ShNRf" id="6a" role="33vP2m">
-              <node concept="1pGfFk" id="6b" role="2ShVmc">
+            <node concept="2ShNRf" id="6t" role="33vP2m">
+              <node concept="1pGfFk" id="6u" role="2ShVmc">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.&lt;init&gt;(java.lang.String,java.lang.String,long,long,long)" resolve="ConceptDescriptorBuilder2" />
-                <node concept="Xl_RD" id="6c" role="37wK5m">
+                <node concept="Xl_RD" id="6v" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.samples.files" />
                 </node>
-                <node concept="Xl_RD" id="6d" role="37wK5m">
+                <node concept="Xl_RD" id="6w" role="37wK5m">
                   <property role="Xl_RC" value="File" />
                 </node>
-                <node concept="11gdke" id="6e" role="37wK5m">
+                <node concept="11gdke" id="6x" role="37wK5m">
                   <property role="11gdj1" value="9e34de6fa11f4866L" />
                 </node>
-                <node concept="11gdke" id="6f" role="37wK5m">
+                <node concept="11gdke" id="6y" role="37wK5m">
                   <property role="11gdj1" value="a52c3e2e545d3d90L" />
                 </node>
-                <node concept="11gdke" id="6g" role="37wK5m">
+                <node concept="11gdke" id="6z" role="37wK5m">
                   <property role="11gdj1" value="3b29e241360a2058L" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="61" role="3cqZAp">
-          <node concept="2OqwBi" id="6h" role="3clFbG">
-            <node concept="37vLTw" id="6i" role="2Oq$k0">
-              <ref role="3cqZAo" node="68" resolve="b" />
+        <node concept="3clFbF" id="6k" role="3cqZAp">
+          <node concept="2OqwBi" id="6$" role="3clFbG">
+            <node concept="37vLTw" id="6_" role="2Oq$k0">
+              <ref role="3cqZAo" node="6r" resolve="b" />
             </node>
-            <node concept="liA8E" id="6j" role="2OqNvi">
+            <node concept="liA8E" id="6A" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.class_(boolean,boolean,boolean)" resolve="class_" />
-              <node concept="3clFbT" id="6k" role="37wK5m" />
-              <node concept="3clFbT" id="6l" role="37wK5m" />
-              <node concept="3clFbT" id="6m" role="37wK5m">
+              <node concept="3clFbT" id="6B" role="37wK5m" />
+              <node concept="3clFbT" id="6C" role="37wK5m" />
+              <node concept="3clFbT" id="6D" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="62" role="3cqZAp">
-          <node concept="1PaTwC" id="6n" role="1aUNEU">
-            <node concept="3oM_SD" id="6o" role="1PaTwD">
+        <node concept="3SKdUt" id="6l" role="3cqZAp">
+          <node concept="1PaTwC" id="6E" role="1aUNEU">
+            <node concept="3oM_SD" id="6F" role="1PaTwD">
               <property role="3oM_SC" value="extends:" />
             </node>
-            <node concept="3oM_SD" id="6p" role="1PaTwD">
+            <node concept="3oM_SD" id="6G" role="1PaTwD">
               <property role="3oM_SC" value="jetbrains.mps.samples.files.structure.Entity" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="63" role="3cqZAp">
-          <node concept="15s5l7" id="6q" role="lGtFl">
+        <node concept="3clFbF" id="6m" role="3cqZAp">
+          <node concept="15s5l7" id="6H" role="lGtFl">
             <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: wrong number of parameters&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/5948132024743462708]&quot;;" />
             <property role="huDt6" value="Error: wrong number of parameters" />
           </node>
-          <node concept="2OqwBi" id="6r" role="3clFbG">
-            <node concept="37vLTw" id="6s" role="2Oq$k0">
-              <ref role="3cqZAo" node="68" resolve="b" />
+          <node concept="2OqwBi" id="6I" role="3clFbG">
+            <node concept="37vLTw" id="6J" role="2Oq$k0">
+              <ref role="3cqZAo" node="6r" resolve="b" />
             </node>
-            <node concept="liA8E" id="6t" role="2OqNvi">
+            <node concept="liA8E" id="6K" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="11gdke" id="6u" role="37wK5m">
+              <node concept="11gdke" id="6L" role="37wK5m">
                 <property role="11gdj1" value="9e34de6fa11f4866L" />
               </node>
-              <node concept="11gdke" id="6v" role="37wK5m">
+              <node concept="11gdke" id="6M" role="37wK5m">
                 <property role="11gdj1" value="a52c3e2e545d3d90L" />
               </node>
-              <node concept="11gdke" id="6w" role="37wK5m">
+              <node concept="11gdke" id="6N" role="37wK5m">
                 <property role="11gdj1" value="3b29e241360a204eL" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="64" role="3cqZAp">
-          <node concept="2OqwBi" id="6x" role="3clFbG">
-            <node concept="37vLTw" id="6y" role="2Oq$k0">
-              <ref role="3cqZAo" node="68" resolve="b" />
+        <node concept="3clFbF" id="6n" role="3cqZAp">
+          <node concept="2OqwBi" id="6O" role="3clFbG">
+            <node concept="37vLTw" id="6P" role="2Oq$k0">
+              <ref role="3cqZAo" node="6r" resolve="b" />
             </node>
-            <node concept="liA8E" id="6z" role="2OqNvi">
+            <node concept="liA8E" id="6Q" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
-              <node concept="Xl_RD" id="6$" role="37wK5m">
+              <node concept="Xl_RD" id="6R" role="37wK5m">
                 <property role="Xl_RC" value="r:7941fa10-49cc-4b8d-a644-440c04f37cf8(jetbrains.mps.samples.files.structure)/4263187291990270040" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="65" role="3cqZAp">
-          <node concept="2OqwBi" id="6_" role="3clFbG">
-            <node concept="37vLTw" id="6A" role="2Oq$k0">
-              <ref role="3cqZAo" node="68" resolve="b" />
+        <node concept="3clFbF" id="6o" role="3cqZAp">
+          <node concept="2OqwBi" id="6S" role="3clFbG">
+            <node concept="37vLTw" id="6T" role="2Oq$k0">
+              <ref role="3cqZAo" node="6r" resolve="b" />
             </node>
-            <node concept="liA8E" id="6B" role="2OqNvi">
+            <node concept="liA8E" id="6U" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
-              <node concept="3cmrfG" id="6C" role="37wK5m">
+              <node concept="3cmrfG" id="6V" role="37wK5m">
                 <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="66" role="3cqZAp">
-          <node concept="2OqwBi" id="6D" role="3clFbG">
-            <node concept="2OqwBi" id="6E" role="2Oq$k0">
-              <node concept="2OqwBi" id="6G" role="2Oq$k0">
-                <node concept="2OqwBi" id="6I" role="2Oq$k0">
-                  <node concept="37vLTw" id="6K" role="2Oq$k0">
-                    <ref role="3cqZAo" node="68" resolve="b" />
+        <node concept="3clFbF" id="6p" role="3cqZAp">
+          <node concept="2OqwBi" id="6W" role="3clFbG">
+            <node concept="2OqwBi" id="6X" role="2Oq$k0">
+              <node concept="2OqwBi" id="6Z" role="2Oq$k0">
+                <node concept="2OqwBi" id="71" role="2Oq$k0">
+                  <node concept="37vLTw" id="73" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6r" resolve="b" />
                   </node>
-                  <node concept="liA8E" id="6L" role="2OqNvi">
+                  <node concept="liA8E" id="74" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.property(java.lang.String,long)" resolve="property" />
-                    <node concept="Xl_RD" id="6M" role="37wK5m">
+                    <node concept="Xl_RD" id="75" role="37wK5m">
                       <property role="Xl_RC" value="text" />
                     </node>
-                    <node concept="11gdke" id="6N" role="37wK5m">
+                    <node concept="11gdke" id="76" role="37wK5m">
                       <property role="11gdj1" value="3b29e241360a205aL" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="6J" role="2OqNvi">
+                <node concept="liA8E" id="72" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
-                  <node concept="Rm8GO" id="6O" role="37wK5m">
+                  <node concept="Rm8GO" id="77" role="37wK5m">
                     <ref role="Rm8GQ" to="e8bb:~PrimitiveTypeId.STRING" resolve="STRING" />
                     <ref role="1Px2BO" to="e8bb:~PrimitiveTypeId" resolve="PrimitiveTypeId" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="6H" role="2OqNvi">
+              <node concept="liA8E" id="70" role="2OqNvi">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.origin(java.lang.String)" resolve="origin" />
-                <node concept="Xl_RD" id="6P" role="37wK5m">
+                <node concept="Xl_RD" id="78" role="37wK5m">
                   <property role="Xl_RC" value="4263187291990270042" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="6F" role="2OqNvi">
+            <node concept="liA8E" id="6Y" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.done()" resolve="done" />
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="67" role="3cqZAp">
-          <node concept="2OqwBi" id="6Q" role="3cqZAk">
-            <node concept="37vLTw" id="6R" role="2Oq$k0">
-              <ref role="3cqZAo" node="68" resolve="b" />
+        <node concept="3cpWs6" id="6q" role="3cqZAp">
+          <node concept="2OqwBi" id="79" role="3cqZAk">
+            <node concept="37vLTw" id="7a" role="2Oq$k0">
+              <ref role="3cqZAo" node="6r" resolve="b" />
             </node>
-            <node concept="liA8E" id="6S" role="2OqNvi">
+            <node concept="liA8E" id="7b" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.create()" resolve="create" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="5Y" role="1B3o_S" />
-      <node concept="3uibUv" id="5Z" role="3clF45">
+      <node concept="3Tm6S6" id="6h" role="1B3o_S" />
+      <node concept="3uibUv" id="6i" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
     </node>
-    <node concept="2YIFZL" id="3W" role="jymVt">
+    <node concept="2YIFZL" id="4f" role="jymVt">
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createDescriptorForFile2" />
-      <node concept="3clFbS" id="6T" role="3clF47">
-        <node concept="3cpWs8" id="6W" role="3cqZAp">
-          <node concept="3cpWsn" id="74" role="3cpWs9">
+      <node concept="3clFbS" id="7c" role="3clF47">
+        <node concept="3cpWs8" id="7f" role="3cqZAp">
+          <node concept="3cpWsn" id="7n" role="3cpWs9">
             <property role="TrG5h" value="b" />
-            <node concept="3uibUv" id="75" role="1tU5fm">
+            <node concept="3uibUv" id="7o" role="1tU5fm">
               <ref role="3uigEE" to="bzg8:~ConceptDescriptorBuilder2" resolve="ConceptDescriptorBuilder2" />
             </node>
-            <node concept="2ShNRf" id="76" role="33vP2m">
-              <node concept="1pGfFk" id="77" role="2ShVmc">
+            <node concept="2ShNRf" id="7p" role="33vP2m">
+              <node concept="1pGfFk" id="7q" role="2ShVmc">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.&lt;init&gt;(java.lang.String,java.lang.String,long,long,long)" resolve="ConceptDescriptorBuilder2" />
-                <node concept="Xl_RD" id="78" role="37wK5m">
+                <node concept="Xl_RD" id="7r" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.samples.files" />
                 </node>
-                <node concept="Xl_RD" id="79" role="37wK5m">
+                <node concept="Xl_RD" id="7s" role="37wK5m">
                   <property role="Xl_RC" value="File2" />
                 </node>
-                <node concept="11gdke" id="7a" role="37wK5m">
+                <node concept="11gdke" id="7t" role="37wK5m">
                   <property role="11gdj1" value="9e34de6fa11f4866L" />
                 </node>
-                <node concept="11gdke" id="7b" role="37wK5m">
+                <node concept="11gdke" id="7u" role="37wK5m">
                   <property role="11gdj1" value="a52c3e2e545d3d90L" />
                 </node>
-                <node concept="11gdke" id="7c" role="37wK5m">
+                <node concept="11gdke" id="7v" role="37wK5m">
                   <property role="11gdj1" value="32e7e3e1f3d0e288L" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6X" role="3cqZAp">
-          <node concept="2OqwBi" id="7d" role="3clFbG">
-            <node concept="37vLTw" id="7e" role="2Oq$k0">
-              <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3clFbF" id="7g" role="3cqZAp">
+          <node concept="2OqwBi" id="7w" role="3clFbG">
+            <node concept="37vLTw" id="7x" role="2Oq$k0">
+              <ref role="3cqZAo" node="7n" resolve="b" />
             </node>
-            <node concept="liA8E" id="7f" role="2OqNvi">
+            <node concept="liA8E" id="7y" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.class_(boolean,boolean,boolean)" resolve="class_" />
-              <node concept="3clFbT" id="7g" role="37wK5m" />
-              <node concept="3clFbT" id="7h" role="37wK5m" />
-              <node concept="3clFbT" id="7i" role="37wK5m">
+              <node concept="3clFbT" id="7z" role="37wK5m" />
+              <node concept="3clFbT" id="7$" role="37wK5m" />
+              <node concept="3clFbT" id="7_" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6Y" role="3cqZAp">
-          <node concept="2OqwBi" id="7j" role="3clFbG">
-            <node concept="37vLTw" id="7k" role="2Oq$k0">
-              <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3clFbF" id="7h" role="3cqZAp">
+          <node concept="2OqwBi" id="7A" role="3clFbG">
+            <node concept="37vLTw" id="7B" role="2Oq$k0">
+              <ref role="3cqZAo" node="7n" resolve="b" />
             </node>
-            <node concept="liA8E" id="7l" role="2OqNvi">
+            <node concept="liA8E" id="7C" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.parent(long,long,long)" resolve="parent" />
-              <node concept="11gdke" id="7m" role="37wK5m">
+              <node concept="11gdke" id="7D" role="37wK5m">
                 <property role="11gdj1" value="ceab519525ea4f22L" />
               </node>
-              <node concept="11gdke" id="7n" role="37wK5m">
+              <node concept="11gdke" id="7E" role="37wK5m">
                 <property role="11gdj1" value="9b92103b95ca8c0cL" />
               </node>
-              <node concept="11gdke" id="7o" role="37wK5m">
+              <node concept="11gdke" id="7F" role="37wK5m">
                 <property role="11gdj1" value="110396eaaa4L" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6Z" role="3cqZAp">
-          <node concept="2OqwBi" id="7p" role="3clFbG">
-            <node concept="37vLTw" id="7q" role="2Oq$k0">
-              <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3clFbF" id="7i" role="3cqZAp">
+          <node concept="2OqwBi" id="7G" role="3clFbG">
+            <node concept="37vLTw" id="7H" role="2Oq$k0">
+              <ref role="3cqZAo" node="7n" resolve="b" />
             </node>
-            <node concept="liA8E" id="7r" role="2OqNvi">
+            <node concept="liA8E" id="7I" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
-              <node concept="Xl_RD" id="7s" role="37wK5m">
+              <node concept="Xl_RD" id="7J" role="37wK5m">
                 <property role="Xl_RC" value="r:7941fa10-49cc-4b8d-a644-440c04f37cf8(jetbrains.mps.samples.files.structure)/3668150981114258056" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="70" role="3cqZAp">
-          <node concept="2OqwBi" id="7t" role="3clFbG">
-            <node concept="37vLTw" id="7u" role="2Oq$k0">
-              <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3clFbF" id="7j" role="3cqZAp">
+          <node concept="2OqwBi" id="7K" role="3clFbG">
+            <node concept="37vLTw" id="7L" role="2Oq$k0">
+              <ref role="3cqZAo" node="7n" resolve="b" />
             </node>
-            <node concept="liA8E" id="7v" role="2OqNvi">
+            <node concept="liA8E" id="7M" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
-              <node concept="3cmrfG" id="7w" role="37wK5m">
+              <node concept="3cmrfG" id="7N" role="37wK5m">
                 <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="71" role="3cqZAp">
-          <node concept="2OqwBi" id="7x" role="3clFbG">
-            <node concept="2OqwBi" id="7y" role="2Oq$k0">
-              <node concept="2OqwBi" id="7$" role="2Oq$k0">
-                <node concept="2OqwBi" id="7A" role="2Oq$k0">
-                  <node concept="37vLTw" id="7C" role="2Oq$k0">
-                    <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3clFbF" id="7k" role="3cqZAp">
+          <node concept="2OqwBi" id="7O" role="3clFbG">
+            <node concept="2OqwBi" id="7P" role="2Oq$k0">
+              <node concept="2OqwBi" id="7R" role="2Oq$k0">
+                <node concept="2OqwBi" id="7T" role="2Oq$k0">
+                  <node concept="37vLTw" id="7V" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7n" resolve="b" />
                   </node>
-                  <node concept="liA8E" id="7D" role="2OqNvi">
+                  <node concept="liA8E" id="7W" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.property(java.lang.String,long)" resolve="property" />
-                    <node concept="Xl_RD" id="7E" role="37wK5m">
+                    <node concept="Xl_RD" id="7X" role="37wK5m">
                       <property role="Xl_RC" value="path" />
                     </node>
-                    <node concept="11gdke" id="7F" role="37wK5m">
+                    <node concept="11gdke" id="7Y" role="37wK5m">
                       <property role="11gdj1" value="32e7e3e1f3d0e28bL" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="7B" role="2OqNvi">
+                <node concept="liA8E" id="7U" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
-                  <node concept="Rm8GO" id="7G" role="37wK5m">
+                  <node concept="Rm8GO" id="7Z" role="37wK5m">
                     <ref role="Rm8GQ" to="e8bb:~PrimitiveTypeId.STRING" resolve="STRING" />
                     <ref role="1Px2BO" to="e8bb:~PrimitiveTypeId" resolve="PrimitiveTypeId" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="7_" role="2OqNvi">
+              <node concept="liA8E" id="7S" role="2OqNvi">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.origin(java.lang.String)" resolve="origin" />
-                <node concept="Xl_RD" id="7H" role="37wK5m">
+                <node concept="Xl_RD" id="80" role="37wK5m">
                   <property role="Xl_RC" value="3668150981114258059" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="7z" role="2OqNvi">
+            <node concept="liA8E" id="7Q" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.done()" resolve="done" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="72" role="3cqZAp">
-          <node concept="2OqwBi" id="7I" role="3clFbG">
-            <node concept="2OqwBi" id="7J" role="2Oq$k0">
-              <node concept="2OqwBi" id="7L" role="2Oq$k0">
-                <node concept="2OqwBi" id="7N" role="2Oq$k0">
-                  <node concept="37vLTw" id="7P" role="2Oq$k0">
-                    <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3clFbF" id="7l" role="3cqZAp">
+          <node concept="2OqwBi" id="81" role="3clFbG">
+            <node concept="2OqwBi" id="82" role="2Oq$k0">
+              <node concept="2OqwBi" id="84" role="2Oq$k0">
+                <node concept="2OqwBi" id="86" role="2Oq$k0">
+                  <node concept="37vLTw" id="88" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7n" resolve="b" />
                   </node>
-                  <node concept="liA8E" id="7Q" role="2OqNvi">
+                  <node concept="liA8E" id="89" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.property(java.lang.String,long)" resolve="property" />
-                    <node concept="Xl_RD" id="7R" role="37wK5m">
+                    <node concept="Xl_RD" id="8a" role="37wK5m">
                       <property role="Xl_RC" value="text" />
                     </node>
-                    <node concept="11gdke" id="7S" role="37wK5m">
+                    <node concept="11gdke" id="8b" role="37wK5m">
                       <property role="11gdj1" value="32e7e3e1f3d0e28dL" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="7O" role="2OqNvi">
+                <node concept="liA8E" id="87" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.type(jetbrains.mps.smodel.adapter.ids.STypeId)" resolve="type" />
-                  <node concept="Rm8GO" id="7T" role="37wK5m">
+                  <node concept="Rm8GO" id="8c" role="37wK5m">
                     <ref role="Rm8GQ" to="e8bb:~PrimitiveTypeId.STRING" resolve="STRING" />
                     <ref role="1Px2BO" to="e8bb:~PrimitiveTypeId" resolve="PrimitiveTypeId" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="7M" role="2OqNvi">
+              <node concept="liA8E" id="85" role="2OqNvi">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.origin(java.lang.String)" resolve="origin" />
-                <node concept="Xl_RD" id="7U" role="37wK5m">
+                <node concept="Xl_RD" id="8d" role="37wK5m">
                   <property role="Xl_RC" value="3668150981114258061" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="7K" role="2OqNvi">
+            <node concept="liA8E" id="83" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$PropertyBuilder.done()" resolve="done" />
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="73" role="3cqZAp">
-          <node concept="2OqwBi" id="7V" role="3cqZAk">
-            <node concept="37vLTw" id="7W" role="2Oq$k0">
-              <ref role="3cqZAo" node="74" resolve="b" />
+        <node concept="3cpWs6" id="7m" role="3cqZAp">
+          <node concept="2OqwBi" id="8e" role="3cqZAk">
+            <node concept="37vLTw" id="8f" role="2Oq$k0">
+              <ref role="3cqZAo" node="7n" resolve="b" />
             </node>
-            <node concept="liA8E" id="7X" role="2OqNvi">
+            <node concept="liA8E" id="8g" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.create()" resolve="create" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="6U" role="1B3o_S" />
-      <node concept="3uibUv" id="6V" role="3clF45">
+      <node concept="3Tm6S6" id="7d" role="1B3o_S" />
+      <node concept="3uibUv" id="7e" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
     </node>
-    <node concept="2YIFZL" id="3X" role="jymVt">
+    <node concept="2YIFZL" id="4g" role="jymVt">
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createDescriptorForFolder" />
-      <node concept="3clFbS" id="7Y" role="3clF47">
-        <node concept="3cpWs8" id="81" role="3cqZAp">
-          <node concept="3cpWsn" id="89" role="3cpWs9">
+      <node concept="3clFbS" id="8h" role="3clF47">
+        <node concept="3cpWs8" id="8k" role="3cqZAp">
+          <node concept="3cpWsn" id="8s" role="3cpWs9">
             <property role="TrG5h" value="b" />
-            <node concept="3uibUv" id="8a" role="1tU5fm">
+            <node concept="3uibUv" id="8t" role="1tU5fm">
               <ref role="3uigEE" to="bzg8:~ConceptDescriptorBuilder2" resolve="ConceptDescriptorBuilder2" />
             </node>
-            <node concept="2ShNRf" id="8b" role="33vP2m">
-              <node concept="1pGfFk" id="8c" role="2ShVmc">
+            <node concept="2ShNRf" id="8u" role="33vP2m">
+              <node concept="1pGfFk" id="8v" role="2ShVmc">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.&lt;init&gt;(java.lang.String,java.lang.String,long,long,long)" resolve="ConceptDescriptorBuilder2" />
-                <node concept="Xl_RD" id="8d" role="37wK5m">
+                <node concept="Xl_RD" id="8w" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.samples.files" />
                 </node>
-                <node concept="Xl_RD" id="8e" role="37wK5m">
+                <node concept="Xl_RD" id="8x" role="37wK5m">
                   <property role="Xl_RC" value="Folder" />
                 </node>
-                <node concept="11gdke" id="8f" role="37wK5m">
+                <node concept="11gdke" id="8y" role="37wK5m">
                   <property role="11gdj1" value="9e34de6fa11f4866L" />
                 </node>
-                <node concept="11gdke" id="8g" role="37wK5m">
+                <node concept="11gdke" id="8z" role="37wK5m">
                   <property role="11gdj1" value="a52c3e2e545d3d90L" />
                 </node>
-                <node concept="11gdke" id="8h" role="37wK5m">
+                <node concept="11gdke" id="8$" role="37wK5m">
                   <property role="11gdj1" value="3b29e241360a2055L" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="82" role="3cqZAp">
-          <node concept="2OqwBi" id="8i" role="3clFbG">
-            <node concept="37vLTw" id="8j" role="2Oq$k0">
-              <ref role="3cqZAo" node="89" resolve="b" />
+        <node concept="3clFbF" id="8l" role="3cqZAp">
+          <node concept="2OqwBi" id="8_" role="3clFbG">
+            <node concept="37vLTw" id="8A" role="2Oq$k0">
+              <ref role="3cqZAo" node="8s" resolve="b" />
             </node>
-            <node concept="liA8E" id="8k" role="2OqNvi">
+            <node concept="liA8E" id="8B" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.class_(boolean,boolean,boolean)" resolve="class_" />
-              <node concept="3clFbT" id="8l" role="37wK5m" />
-              <node concept="3clFbT" id="8m" role="37wK5m" />
-              <node concept="3clFbT" id="8n" role="37wK5m">
+              <node concept="3clFbT" id="8C" role="37wK5m" />
+              <node concept="3clFbT" id="8D" role="37wK5m" />
+              <node concept="3clFbT" id="8E" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="83" role="3cqZAp">
-          <node concept="1PaTwC" id="8o" role="1aUNEU">
-            <node concept="3oM_SD" id="8p" role="1PaTwD">
+        <node concept="3SKdUt" id="8m" role="3cqZAp">
+          <node concept="1PaTwC" id="8F" role="1aUNEU">
+            <node concept="3oM_SD" id="8G" role="1PaTwD">
               <property role="3oM_SC" value="extends:" />
             </node>
-            <node concept="3oM_SD" id="8q" role="1PaTwD">
+            <node concept="3oM_SD" id="8H" role="1PaTwD">
               <property role="3oM_SC" value="jetbrains.mps.samples.files.structure.Entity" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="84" role="3cqZAp">
-          <node concept="15s5l7" id="8r" role="lGtFl">
+        <node concept="3clFbF" id="8n" role="3cqZAp">
+          <node concept="15s5l7" id="8I" role="lGtFl">
             <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: wrong number of parameters&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/5948132024743462708]&quot;;" />
             <property role="huDt6" value="Error: wrong number of parameters" />
           </node>
-          <node concept="2OqwBi" id="8s" role="3clFbG">
-            <node concept="37vLTw" id="8t" role="2Oq$k0">
-              <ref role="3cqZAo" node="89" resolve="b" />
+          <node concept="2OqwBi" id="8J" role="3clFbG">
+            <node concept="37vLTw" id="8K" role="2Oq$k0">
+              <ref role="3cqZAo" node="8s" resolve="b" />
             </node>
-            <node concept="liA8E" id="8u" role="2OqNvi">
+            <node concept="liA8E" id="8L" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="11gdke" id="8v" role="37wK5m">
+              <node concept="11gdke" id="8M" role="37wK5m">
                 <property role="11gdj1" value="9e34de6fa11f4866L" />
               </node>
-              <node concept="11gdke" id="8w" role="37wK5m">
+              <node concept="11gdke" id="8N" role="37wK5m">
                 <property role="11gdj1" value="a52c3e2e545d3d90L" />
               </node>
-              <node concept="11gdke" id="8x" role="37wK5m">
+              <node concept="11gdke" id="8O" role="37wK5m">
                 <property role="11gdj1" value="3b29e241360a204eL" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="85" role="3cqZAp">
-          <node concept="2OqwBi" id="8y" role="3clFbG">
-            <node concept="37vLTw" id="8z" role="2Oq$k0">
-              <ref role="3cqZAo" node="89" resolve="b" />
+        <node concept="3clFbF" id="8o" role="3cqZAp">
+          <node concept="2OqwBi" id="8P" role="3clFbG">
+            <node concept="37vLTw" id="8Q" role="2Oq$k0">
+              <ref role="3cqZAo" node="8s" resolve="b" />
             </node>
-            <node concept="liA8E" id="8$" role="2OqNvi">
+            <node concept="liA8E" id="8R" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.origin(java.lang.String)" resolve="origin" />
-              <node concept="Xl_RD" id="8_" role="37wK5m">
+              <node concept="Xl_RD" id="8S" role="37wK5m">
                 <property role="Xl_RC" value="r:7941fa10-49cc-4b8d-a644-440c04f37cf8(jetbrains.mps.samples.files.structure)/4263187291990270037" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="86" role="3cqZAp">
-          <node concept="2OqwBi" id="8A" role="3clFbG">
-            <node concept="37vLTw" id="8B" role="2Oq$k0">
-              <ref role="3cqZAo" node="89" resolve="b" />
+        <node concept="3clFbF" id="8p" role="3cqZAp">
+          <node concept="2OqwBi" id="8T" role="3clFbG">
+            <node concept="37vLTw" id="8U" role="2Oq$k0">
+              <ref role="3cqZAo" node="8s" resolve="b" />
             </node>
-            <node concept="liA8E" id="8C" role="2OqNvi">
+            <node concept="liA8E" id="8V" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.version(int)" resolve="version" />
-              <node concept="3cmrfG" id="8D" role="37wK5m">
+              <node concept="3cmrfG" id="8W" role="37wK5m">
                 <property role="3cmrfH" value="3" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="87" role="3cqZAp">
-          <node concept="2OqwBi" id="8E" role="3clFbG">
-            <node concept="2OqwBi" id="8F" role="2Oq$k0">
-              <node concept="2OqwBi" id="8H" role="2Oq$k0">
-                <node concept="2OqwBi" id="8J" role="2Oq$k0">
-                  <node concept="2OqwBi" id="8L" role="2Oq$k0">
-                    <node concept="2OqwBi" id="8N" role="2Oq$k0">
-                      <node concept="2OqwBi" id="8P" role="2Oq$k0">
-                        <node concept="37vLTw" id="8R" role="2Oq$k0">
-                          <ref role="3cqZAo" node="89" resolve="b" />
+        <node concept="3clFbF" id="8q" role="3cqZAp">
+          <node concept="2OqwBi" id="8X" role="3clFbG">
+            <node concept="2OqwBi" id="8Y" role="2Oq$k0">
+              <node concept="2OqwBi" id="90" role="2Oq$k0">
+                <node concept="2OqwBi" id="92" role="2Oq$k0">
+                  <node concept="2OqwBi" id="94" role="2Oq$k0">
+                    <node concept="2OqwBi" id="96" role="2Oq$k0">
+                      <node concept="2OqwBi" id="98" role="2Oq$k0">
+                        <node concept="37vLTw" id="9a" role="2Oq$k0">
+                          <ref role="3cqZAo" node="8s" resolve="b" />
                         </node>
-                        <node concept="liA8E" id="8S" role="2OqNvi">
+                        <node concept="liA8E" id="9b" role="2OqNvi">
                           <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.aggregate(java.lang.String,long)" resolve="aggregate" />
-                          <node concept="Xl_RD" id="8T" role="37wK5m">
+                          <node concept="Xl_RD" id="9c" role="37wK5m">
                             <property role="Xl_RC" value="children" />
                           </node>
-                          <node concept="11gdke" id="8U" role="37wK5m">
+                          <node concept="11gdke" id="9d" role="37wK5m">
                             <property role="11gdj1" value="3b29e241360a204fL" />
                           </node>
                         </node>
                       </node>
-                      <node concept="liA8E" id="8Q" role="2OqNvi">
+                      <node concept="liA8E" id="99" role="2OqNvi">
                         <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.target(long,long,long)" resolve="target" />
-                        <node concept="11gdke" id="8V" role="37wK5m">
+                        <node concept="11gdke" id="9e" role="37wK5m">
                           <property role="11gdj1" value="9e34de6fa11f4866L" />
                         </node>
-                        <node concept="11gdke" id="8W" role="37wK5m">
+                        <node concept="11gdke" id="9f" role="37wK5m">
                           <property role="11gdj1" value="a52c3e2e545d3d90L" />
                         </node>
-                        <node concept="11gdke" id="8X" role="37wK5m">
+                        <node concept="11gdke" id="9g" role="37wK5m">
                           <property role="11gdj1" value="3b29e241360a204eL" />
                         </node>
                       </node>
                     </node>
-                    <node concept="liA8E" id="8O" role="2OqNvi">
+                    <node concept="liA8E" id="97" role="2OqNvi">
                       <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.optional(boolean)" resolve="optional" />
-                      <node concept="3clFbT" id="8Y" role="37wK5m">
+                      <node concept="3clFbT" id="9h" role="37wK5m">
                         <property role="3clFbU" value="true" />
                       </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="8M" role="2OqNvi">
+                  <node concept="liA8E" id="95" role="2OqNvi">
                     <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.ordered(boolean)" resolve="ordered" />
-                    <node concept="3clFbT" id="8Z" role="37wK5m">
+                    <node concept="3clFbT" id="9i" role="37wK5m">
                       <property role="3clFbU" value="true" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="8K" role="2OqNvi">
+                <node concept="liA8E" id="93" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.multiple(boolean)" resolve="multiple" />
-                  <node concept="3clFbT" id="90" role="37wK5m">
+                  <node concept="3clFbT" id="9j" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="8I" role="2OqNvi">
+              <node concept="liA8E" id="91" role="2OqNvi">
                 <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.origin(java.lang.String)" resolve="origin" />
-                <node concept="Xl_RD" id="91" role="37wK5m">
+                <node concept="Xl_RD" id="9k" role="37wK5m">
                   <property role="Xl_RC" value="4263187291990270031" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="8G" role="2OqNvi">
+            <node concept="liA8E" id="8Z" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AggregationLinkBuilder.done()" resolve="done" />
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="88" role="3cqZAp">
-          <node concept="2OqwBi" id="92" role="3cqZAk">
-            <node concept="37vLTw" id="93" role="2Oq$k0">
-              <ref role="3cqZAo" node="89" resolve="b" />
+        <node concept="3cpWs6" id="8r" role="3cqZAp">
+          <node concept="2OqwBi" id="9l" role="3cqZAk">
+            <node concept="37vLTw" id="9m" role="2Oq$k0">
+              <ref role="3cqZAo" node="8s" resolve="b" />
             </node>
-            <node concept="liA8E" id="94" role="2OqNvi">
+            <node concept="liA8E" id="9n" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.create()" resolve="create" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="7Z" role="1B3o_S" />
-      <node concept="3uibUv" id="80" role="3clF45">
+      <node concept="3Tm6S6" id="8i" role="1B3o_S" />
+      <node concept="3uibUv" id="8j" role="3clF45">
         <ref role="3uigEE" to="ze1i:~ConceptDescriptor" resolve="ConceptDescriptor" />
       </node>
     </node>

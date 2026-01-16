@@ -13,7 +13,7 @@
       <unit at="11,0,85,0" name="testAnnotatedType.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,42,0" name="testAnnotatedType.structure.LanguageConceptSwitch" />
+      <unit at="12,0,50,0" name="testAnnotatedType.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="17,0,159,0" name="testAnnotatedType.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="1470921783545323247" at="61,49,67,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1470921783545323247" at="17,0,18,0" concept="6" trace="PrimNumConstant" />
-      <node id="1470921783545323247" at="27,51,28,54" concept="0" />
+      <node id="1470921783545323247" at="19,0,20,0" concept="6" trace="PrimNumConstant" />
+      <node id="1470921783545323247" at="29,51,30,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1470921783545323247" at="23,0,24,0" concept="1" trace="myConceptPrimNumConstant" />
@@ -70,8 +70,8 @@
       <scope id="1470921783545455334" at="33,48,39,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1470921783545455334" at="13,0,14,0" concept="6" trace="PrimDoubleType" />
-      <node id="1470921783545455334" at="23,56,24,53" concept="0" />
+      <node id="1470921783545455334" at="15,0,16,0" concept="6" trace="PrimDoubleType" />
+      <node id="1470921783545455334" at="25,56,26,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1470921783545455334" at="19,0,20,0" concept="1" trace="myConceptPrimDoubleType" />
@@ -107,8 +107,8 @@
       <scope id="6405009306797629598" at="47,45,53,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6405009306797629598" at="15,0,16,0" concept="6" trace="PrimIntType" />
-      <node id="6405009306797629598" at="25,52,26,50" concept="0" />
+      <node id="6405009306797629598" at="17,0,18,0" concept="6" trace="PrimIntType" />
+      <node id="6405009306797629598" at="27,52,28,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6405009306797629598" at="21,0,22,0" concept="1" trace="myConceptPrimIntType" />
@@ -144,8 +144,8 @@
       <scope id="6405009306797629932" at="74,54,80,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6405009306797629932" at="19,0,20,0" concept="6" trace="SubstituteAnnotation" />
-      <node id="6405009306797629932" at="29,47,30,59" concept="0" />
+      <node id="6405009306797629932" at="21,0,22,0" concept="6" trace="SubstituteAnnotation" />
+      <node id="6405009306797629932" at="31,47,32,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6405009306797629932" at="25,0,26,0" concept="1" trace="myConceptSubstituteAnnotation" />
@@ -180,8 +180,8 @@
       <scope id="6405009306797650364" at="68,42,73,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6405009306797650364" at="18,0,19,0" concept="6" trace="PrimType" />
-      <node id="6405009306797650364" at="28,54,29,47" concept="0" />
+      <node id="6405009306797650364" at="20,0,21,0" concept="6" trace="PrimType" />
+      <node id="6405009306797650364" at="30,54,31,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6405009306797650364" at="24,0,25,0" concept="1" trace="myConceptPrimType" />
@@ -216,8 +216,8 @@
       <scope id="6405009306797650365" at="40,47,46,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6405009306797650365" at="14,0,15,0" concept="6" trace="PrimFloatType" />
-      <node id="6405009306797650365" at="24,53,25,52" concept="0" />
+      <node id="6405009306797650365" at="16,0,17,0" concept="6" trace="PrimFloatType" />
+      <node id="6405009306797650365" at="26,53,27,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6405009306797650365" at="20,0,21,0" concept="1" trace="myConceptPrimFloatType" />
@@ -253,8 +253,8 @@
       <scope id="6405009306797650375" at="26,51,32,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6405009306797650375" at="12,0,13,0" concept="6" trace="PresenceCondition" />
-      <node id="6405009306797650375" at="22,116,23,56" concept="0" />
+      <node id="6405009306797650375" at="14,0,15,0" concept="6" trace="PresenceCondition" />
+      <node id="6405009306797650375" at="24,116,25,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6405009306797650375" at="18,0,19,0" concept="1" trace="myConceptPresenceCondition" />
@@ -287,8 +287,8 @@
       <scope id="8675420879155410165" at="54,46,60,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8675420879155410165" at="16,0,17,0" concept="6" trace="PrimLongType" />
-      <node id="8675420879155410165" at="26,50,27,51" concept="0" />
+      <node id="8675420879155410165" at="18,0,19,0" concept="6" trace="PrimLongType" />
+      <node id="8675420879155410165" at="28,50,29,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8675420879155410165" at="22,0,23,0" concept="1" trace="myConceptPrimLongType" />

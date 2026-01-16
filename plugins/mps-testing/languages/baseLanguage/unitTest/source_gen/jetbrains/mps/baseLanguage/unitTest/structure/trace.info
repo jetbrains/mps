@@ -16,7 +16,7 @@
       <unit at="8,0,12,0" name="jetbrains.mps.baseLanguage.unitTest.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,66,0" name="jetbrains.mps.baseLanguage.unitTest.structure.LanguageConceptSwitch" />
+      <unit at="12,0,74,0" name="jetbrains.mps.baseLanguage.unitTest.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="18,0,336,0" name="jetbrains.mps.baseLanguage.unitTest.structure.StructureAspectDescriptor" />
@@ -36,8 +36,8 @@
       <scope id="1171931690126" at="159,44,165,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171931690126" at="30,0,31,0" concept="6" trace="TestMethod" />
-      <node id="1171931690126" at="52,52,53,44" concept="0" />
+      <node id="1171931690126" at="32,0,33,0" concept="6" trace="TestMethod" />
+      <node id="1171931690126" at="54,52,55,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171931690126" at="37,0,38,0" concept="1" trace="myConceptTestMethod" />
@@ -74,8 +74,8 @@
       <scope id="1171931851043" at="94,43,101,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171931851043" at="20,0,21,0" concept="6" trace="BTestCase" />
-      <node id="1171931851043" at="42,44,43,43" concept="0" />
+      <node id="1171931851043" at="22,0,23,0" concept="6" trace="BTestCase" />
+      <node id="1171931851043" at="44,44,45,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171931851043" at="27,0,28,0" concept="1" trace="myConceptBTestCase" />
@@ -115,8 +115,8 @@
       <scope id="1171931858461" at="166,48,172,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171931858461" at="31,0,32,0" concept="6" trace="TestMethodList" />
-      <node id="1171931858461" at="53,44,54,48" concept="0" />
+      <node id="1171931858461" at="33,0,34,0" concept="6" trace="TestMethodList" />
+      <node id="1171931858461" at="55,44,56,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171931858461" at="38,0,39,0" concept="1" trace="myConceptTestMethodList" />
@@ -149,8 +149,8 @@
       <scope id="1171978097730" at="45,46,51,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171978097730" at="13,0,14,0" concept="6" trace="AssertEquals" />
-      <node id="1171978097730" at="35,48,36,46" concept="0" />
+      <node id="1171978097730" at="15,0,16,0" concept="6" trace="AssertEquals" />
+      <node id="1171978097730" at="37,48,38,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171978097730" at="20,0,21,0" concept="1" trace="myConceptAssertEquals" />
@@ -186,8 +186,8 @@
       <scope id="1171981022339" at="87,44,93,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171981022339" at="19,0,20,0" concept="6" trace="AssertTrue" />
-      <node id="1171981022339" at="41,46,42,44" concept="0" />
+      <node id="1171981022339" at="21,0,22,0" concept="6" trace="AssertTrue" />
+      <node id="1171981022339" at="43,46,44,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171981022339" at="26,0,27,0" concept="1" trace="myConceptAssertTrue" />
@@ -224,8 +224,8 @@
       <scope id="1171983834376" at="52,45,58,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171983834376" at="14,0,15,0" concept="6" trace="AssertFalse" />
-      <node id="1171983834376" at="36,46,37,45" concept="0" />
+      <node id="1171983834376" at="16,0,17,0" concept="6" trace="AssertFalse" />
+      <node id="1171983834376" at="38,46,39,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171983834376" at="21,0,22,0" concept="1" trace="myConceptAssertFalse" />
@@ -262,8 +262,8 @@
       <scope id="1171985735491" at="73,44,79,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1171985735491" at="17,0,18,0" concept="6" trace="AssertSame" />
-      <node id="1171985735491" at="39,46,40,44" concept="0" />
+      <node id="1171985735491" at="19,0,20,0" concept="6" trace="AssertSame" />
+      <node id="1171985735491" at="41,46,42,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1171985735491" at="24,0,25,0" concept="1" trace="myConceptAssertSame" />
@@ -299,8 +299,8 @@
       <scope id="1172017222794" at="115,38,121,26" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1172017222794" at="23,0,24,0" concept="6" trace="Fail" />
-      <node id="1172017222794" at="45,51,46,38" concept="0" />
+      <node id="1172017222794" at="25,0,26,0" concept="6" trace="Fail" />
+      <node id="1172017222794" at="47,51,48,38" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1172017222794" at="30,0,31,0" concept="1" trace="myConceptFail" />
@@ -336,8 +336,8 @@
       <scope id="1172028177041" at="66,46,72,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1172028177041" at="16,0,17,0" concept="6" trace="AssertIsNull" />
-      <node id="1172028177041" at="38,54,39,46" concept="0" />
+      <node id="1172028177041" at="18,0,19,0" concept="6" trace="AssertIsNull" />
+      <node id="1172028177041" at="40,54,41,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1172028177041" at="23,0,24,0" concept="1" trace="myConceptAssertIsNull" />
@@ -374,8 +374,8 @@
       <scope id="1172069869612" at="80,46,86,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1172069869612" at="18,0,19,0" concept="6" trace="AssertThrows" />
-      <node id="1172069869612" at="40,44,41,46" concept="0" />
+      <node id="1172069869612" at="20,0,21,0" concept="6" trace="AssertThrows" />
+      <node id="1172069869612" at="42,44,43,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1172069869612" at="25,0,26,0" concept="1" trace="myConceptAssertThrows" />
@@ -413,8 +413,8 @@
       <scope id="1172073500303" at="140,41,146,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1172073500303" at="27,0,28,0" concept="6" trace="Message" />
-      <node id="1172073500303" at="49,43,50,41" concept="0" />
+      <node id="1172073500303" at="29,0,30,0" concept="6" trace="Message" />
+      <node id="1172073500303" at="51,43,52,41" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1172073500303" at="34,0,35,0" concept="1" trace="myConceptMessage" />
@@ -447,8 +447,8 @@
       <scope id="1172075514136" at="147,47,152,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1172075514136" at="28,0,29,0" concept="6" trace="MessageHolder" />
-      <node id="1172075514136" at="50,41,51,47" concept="0" />
+      <node id="1172075514136" at="30,0,31,0" concept="6" trace="MessageHolder" />
+      <node id="1172075514136" at="52,41,53,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1172075514136" at="35,0,36,0" concept="1" trace="myConceptMessageHolder" />
@@ -487,8 +487,8 @@
       <scope id="1215620452633" at="134,43,139,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1215620452633" at="26,0,27,0" concept="6" trace="ITestable" />
-      <node id="1215620452633" at="48,45,49,43" concept="0" />
+      <node id="1215620452633" at="28,0,29,0" concept="6" trace="ITestable" />
+      <node id="1215620452633" at="50,45,51,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1215620452633" at="33,0,34,0" concept="1" trace="myConceptITestable" />
@@ -521,8 +521,8 @@
       <scope id="1216130694486" at="122,43,127,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1216130694486" at="24,0,25,0" concept="6" trace="ITestCase" />
-      <node id="1216130694486" at="46,38,47,43" concept="0" />
+      <node id="1216130694486" at="26,0,27,0" concept="6" trace="ITestCase" />
+      <node id="1216130694486" at="48,38,49,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1216130694486" at="31,0,32,0" concept="1" trace="myConceptITestCase" />
@@ -556,8 +556,8 @@
       <scope id="1216134482493" at="128,45,133,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1216134482493" at="25,0,26,0" concept="6" trace="ITestMethod" />
-      <node id="1216134482493" at="47,43,48,45" concept="0" />
+      <node id="1216134482493" at="27,0,28,0" concept="6" trace="ITestMethod" />
+      <node id="1216134482493" at="49,43,50,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1216134482493" at="32,0,33,0" concept="1" trace="myConceptITestMethod" />
@@ -590,8 +590,8 @@
       <scope id="7080278351417106679" at="59,49,65,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7080278351417106679" at="15,0,16,0" concept="6" trace="AssertIsNotNull" />
-      <node id="7080278351417106679" at="37,45,38,54" concept="0" />
+      <node id="7080278351417106679" at="17,0,18,0" concept="6" trace="AssertIsNotNull" />
+      <node id="7080278351417106679" at="39,45,40,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7080278351417106679" at="22,0,23,0" concept="1" trace="myConceptAssertIsNotNull" />
@@ -628,8 +628,8 @@
       <scope id="8243879142738608185" at="102,44,108,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8243879142738608185" at="21,0,22,0" concept="6" trace="BeforeTest" />
-      <node id="8243879142738608185" at="43,43,44,49" concept="0" />
+      <node id="8243879142738608185" at="23,0,24,0" concept="6" trace="BeforeTest" />
+      <node id="8243879142738608185" at="45,43,46,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8243879142738608185" at="28,0,29,0" concept="1" trace="myConceptBeforeTest" />
@@ -665,8 +665,8 @@
       <scope id="8243879142738613213" at="38,43,44,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8243879142738613213" at="12,0,13,0" concept="6" trace="AfterTest" />
-      <node id="8243879142738613213" at="34,116,35,48" concept="0" />
+      <node id="8243879142738613213" at="14,0,15,0" concept="6" trace="AfterTest" />
+      <node id="8243879142738613213" at="36,116,37,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8243879142738613213" at="19,0,20,0" concept="1" trace="myConceptAfterTest" />
@@ -701,8 +701,8 @@
       <scope id="8243879142738615226" at="153,47,158,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8243879142738615226" at="29,0,30,0" concept="6" trace="PrepareMethod" />
-      <node id="8243879142738615226" at="51,47,52,52" concept="0" />
+      <node id="8243879142738615226" at="31,0,32,0" concept="6" trace="PrepareMethod" />
+      <node id="8243879142738615226" at="53,47,54,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8243879142738615226" at="36,0,37,0" concept="1" trace="myConceptPrepareMethod" />
@@ -736,8 +736,8 @@
       <scope id="8427750732757990717" at="109,46,114,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8427750732757990717" at="22,0,23,0" concept="6" trace="BinaryAssert" />
-      <node id="8427750732757990717" at="44,49,45,51" concept="0" />
+      <node id="8427750732757990717" at="24,0,25,0" concept="6" trace="BinaryAssert" />
+      <node id="8427750732757990717" at="46,49,47,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8427750732757990717" at="29,0,30,0" concept="1" trace="myConceptBinaryAssert" />

@@ -13,7 +13,7 @@
       <unit at="11,0,93,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,44,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.LanguageConceptSwitch" />
+      <unit at="12,0,52,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,170,0" name="jetbrains.mps.lang.feedback.problem.structural.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="1135569809051362833" at="27,50,32,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1135569809051362833" at="12,0,13,0" concept="6" trace="InConceptProblem" />
-      <node id="1135569809051362833" at="23,116,24,54" concept="0" />
+      <node id="1135569809051362833" at="14,0,15,0" concept="6" trace="InConceptProblem" />
+      <node id="1135569809051362833" at="25,116,26,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1135569809051362833" at="15,0,16,0" concept="1" trace="myConceptInConceptProblem" />
@@ -74,8 +74,8 @@
       <scope id="1640022677634386488" at="47,60,53,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1640022677634386488" at="15,0,16,0" concept="6" trace="MissingRefInConceptProblem" />
-      <node id="1640022677634386488" at="26,70,27,65" concept="0" />
+      <node id="1640022677634386488" at="17,0,18,0" concept="6" trace="MissingRefInConceptProblem" />
+      <node id="1640022677634386488" at="28,70,29,65" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1640022677634386488" at="18,0,19,0" concept="1" trace="myConceptMissingRefInConceptProblem" />
@@ -110,8 +110,8 @@
       <scope id="2554379189374329844" at="33,62,39,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2554379189374329844" at="13,0,14,0" concept="6" trace="MissingChildInConceptProblem" />
-      <node id="2554379189374329844" at="24,54,25,67" concept="0" />
+      <node id="2554379189374329844" at="15,0,16,0" concept="6" trace="MissingChildInConceptProblem" />
+      <node id="2554379189374329844" at="26,54,27,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2554379189374329844" at="16,0,17,0" concept="1" trace="myConceptMissingChildInConceptProblem" />
@@ -146,8 +146,8 @@
       <scope id="2559059706675257210" at="61,64,67,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2559059706675257210" at="17,0,18,0" concept="6" trace="NoChildInObligatoryRoleProblem" />
-      <node id="2559059706675257210" at="28,74,29,69" concept="0" />
+      <node id="2559059706675257210" at="19,0,20,0" concept="6" trace="NoChildInObligatoryRoleProblem" />
+      <node id="2559059706675257210" at="30,74,31,69" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2559059706675257210" at="20,0,21,0" concept="1" trace="myConceptNoChildInObligatoryRoleProblem" />
@@ -182,8 +182,8 @@
       <scope id="5724083730281438001" at="40,65,46,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5724083730281438001" at="14,0,15,0" concept="6" trace="MissingPropertyInConceptProblem" />
-      <node id="5724083730281438001" at="25,67,26,70" concept="0" />
+      <node id="5724083730281438001" at="16,0,17,0" concept="6" trace="MissingPropertyInConceptProblem" />
+      <node id="5724083730281438001" at="27,67,28,70" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5724083730281438001" at="17,0,18,0" concept="1" trace="myConceptMissingPropertyInConceptProblem" />
@@ -218,8 +218,8 @@
       <scope id="5741876244398306563" at="68,62,74,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5741876244398306563" at="18,0,19,0" concept="6" trace="NoRefInObligatoryRoleProblem" />
-      <node id="5741876244398306563" at="29,69,30,67" concept="0" />
+      <node id="5741876244398306563" at="20,0,21,0" concept="6" trace="NoRefInObligatoryRoleProblem" />
+      <node id="5741876244398306563" at="31,69,32,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5741876244398306563" at="21,0,22,0" concept="1" trace="myConceptNoRefInObligatoryRoleProblem" />
@@ -254,8 +254,8 @@
       <scope id="5741876244398306564" at="54,69,60,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5741876244398306564" at="16,0,17,0" concept="6" trace="MultipleChildrenInSingleRoleProblem" />
-      <node id="5741876244398306564" at="27,65,28,74" concept="0" />
+      <node id="5741876244398306564" at="18,0,19,0" concept="6" trace="MultipleChildrenInSingleRoleProblem" />
+      <node id="5741876244398306564" at="29,65,30,74" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5741876244398306564" at="19,0,20,0" concept="1" trace="myConceptMultipleChildrenInSingleRoleProblem" />
@@ -290,8 +290,8 @@
       <scope id="7574732359718311403" at="75,61,81,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7574732359718311403" at="19,0,20,0" concept="6" trace="TargetConceptIncorrectChild" />
-      <node id="7574732359718311403" at="30,67,31,66" concept="0" />
+      <node id="7574732359718311403" at="21,0,22,0" concept="6" trace="TargetConceptIncorrectChild" />
+      <node id="7574732359718311403" at="32,67,33,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7574732359718311403" at="22,0,23,0" concept="1" trace="myConceptTargetConceptIncorrectChild" />
@@ -326,8 +326,8 @@
       <scope id="7574732359718312109" at="82,59,88,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7574732359718312109" at="20,0,21,0" concept="6" trace="TargetConceptIncorrectRef" />
-      <node id="7574732359718312109" at="31,66,32,64" concept="0" />
+      <node id="7574732359718312109" at="22,0,23,0" concept="6" trace="TargetConceptIncorrectRef" />
+      <node id="7574732359718312109" at="33,66,34,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7574732359718312109" at="23,0,24,0" concept="1" trace="myConceptTargetConceptIncorrectRef" />

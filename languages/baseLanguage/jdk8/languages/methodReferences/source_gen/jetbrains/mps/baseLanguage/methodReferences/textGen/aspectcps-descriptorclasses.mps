@@ -8,9 +8,9 @@
   <imports>
     <import index="inpi" ref="r:8e8d2f5b-8180-4bd8-a248-cc98dab91e9d(jetbrains.mps.baseLanguage.methodReferences.textGen)" />
     <import index="kpbf" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text.impl(MPS.TextGen/)" />
+    <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="yfwt" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text.rt(MPS.TextGen/)" />
     <import index="2fxp" ref="r:16cd282d-53e2-4052-ab76-e79ac3d76bc8(jetbrains.mps.baseLanguage.methodReferences.behavior)" />
-    <import index="tpcf" ref="r:00000000-0000-4000-0000-011c89590293(jetbrains.mps.lang.structure.generator_new.baseLanguage@generator)" />
     <import index="506t" ref="r:fb901294-dad1-4c59-9c99-640743319fff(jetbrains.mps.baseLanguage.methodReferences.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -807,13 +807,13 @@
       <node concept="3Tm6S6" id="2R" role="1B3o_S" />
       <node concept="2eloPW" id="2S" role="1tU5fm">
         <property role="2ely0U" value="jetbrains.mps.baseLanguage.methodReferences.structure.LanguageConceptSwitch" />
-        <ref role="3uigEE" to="tpcf:1OW7rNmnulT" resolve="LanguageConceptSwitch" />
+        <ref role="3uigEE" to="ksn4:~ConceptIndex" resolve="ConceptIndex" />
       </node>
       <node concept="2ShNRf" id="2T" role="33vP2m">
         <node concept="xCZzO" id="2U" role="2ShVmc">
           <property role="xCZzQ" value="jetbrains.mps.baseLanguage.methodReferences.structure.LanguageConceptSwitch" />
           <node concept="3uibUv" id="2V" role="xCZzL">
-            <ref role="3uigEE" to="tpcf:1OW7rNmnulT" resolve="LanguageConceptSwitch" />
+            <ref role="3uigEE" to="ksn4:~ConceptIndex" resolve="ConceptIndex" />
           </node>
         </node>
       </node>
@@ -854,7 +854,7 @@
               <ref role="3cqZAo" node="2J" resolve="myIndex" />
             </node>
             <node concept="liA8E" id="3e" role="2OqNvi">
-              <ref role="37wK5l" to="tpcf:1OW7rNmnuDr" resolve="index" />
+              <ref role="37wK5l" to="ksn4:~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="index" />
               <node concept="37vLTw" id="3f" role="37wK5m">
                 <ref role="3cqZAo" node="31" resolve="concept" />
               </node>

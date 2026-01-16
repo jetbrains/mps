@@ -12,7 +12,7 @@
       <unit at="11,0,39,0" name="jetbrains.mps.lang.rulesAndMessages.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.lang.rulesAndMessages.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.lang.rulesAndMessages.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,77,0" name="jetbrains.mps.lang.rulesAndMessages.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="315923949160549991" at="27,49,34,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="315923949160549991" at="13,0,14,0" concept="5" trace="RuleWithMessage" />
-      <node id="315923949160549991" at="17,59,18,53" concept="0" />
+      <node id="315923949160549991" at="15,0,16,0" concept="5" trace="RuleWithMessage" />
+      <node id="315923949160549991" at="19,59,20,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="315923949160549991" at="16,0,17,0" concept="1" trace="myConceptRuleWithMessage" />
@@ -70,8 +70,8 @@
       <scope id="315923949160550017" at="20,55,26,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="315923949160550017" at="12,0,13,0" concept="5" trace="InlineMessageProvider" />
-      <node id="315923949160550017" at="16,116,17,59" concept="0" />
+      <node id="315923949160550017" at="14,0,15,0" concept="5" trace="InlineMessageProvider" />
+      <node id="315923949160550017" at="18,116,19,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="315923949160550017" at="15,0,16,0" concept="1" trace="myConceptInlineMessageProvider" />

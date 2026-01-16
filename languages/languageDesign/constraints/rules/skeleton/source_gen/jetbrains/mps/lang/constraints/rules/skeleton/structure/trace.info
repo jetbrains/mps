@@ -15,7 +15,7 @@
       <unit at="8,0,12,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,34,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.LanguageConceptSwitch" />
+      <unit at="12,0,42,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,98,0" name="jetbrains.mps.lang.constraints.rules.skeleton.structure.StructureAspectDescriptor" />
@@ -38,8 +38,8 @@
       <scope id="1867733327984720090" at="41,54,50,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1867733327984720090" at="15,0,16,0" concept="5" trace="RulesConstraintsRoot" />
-      <node id="1867733327984720090" at="21,49,22,59" concept="0" />
+      <node id="1867733327984720090" at="17,0,18,0" concept="5" trace="RulesConstraintsRoot" />
+      <node id="1867733327984720090" at="23,49,24,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1867733327984720090" at="18,0,19,0" concept="1" trace="myConceptRulesConstraintsRoot" />
@@ -75,8 +75,8 @@
       <scope id="1867733327984720096" at="22,39,27,27" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1867733327984720096" at="12,0,13,0" concept="5" trace="Block" />
-      <node id="1867733327984720096" at="18,116,19,44" concept="0" />
+      <node id="1867733327984720096" at="14,0,15,0" concept="5" trace="Block" />
+      <node id="1867733327984720096" at="20,116,21,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1867733327984720096" at="15,0,16,0" concept="1" trace="myConceptBlock" />
@@ -109,8 +109,8 @@
       <scope id="1867733327985055562" at="34,44,40,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1867733327985055562" at="14,0,15,0" concept="5" trace="RulesBlock" />
-      <node id="1867733327985055562" at="20,54,21,49" concept="0" />
+      <node id="1867733327985055562" at="16,0,17,0" concept="5" trace="RulesBlock" />
+      <node id="1867733327985055562" at="22,54,23,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1867733327985055562" at="17,0,18,0" concept="1" trace="myConceptRulesBlock" />
@@ -145,8 +145,8 @@
       <scope id="1867733327985055568" at="28,49,33,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1867733327985055568" at="13,0,14,0" concept="5" trace="RuleBlockMember" />
-      <node id="1867733327985055568" at="19,44,20,54" concept="0" />
+      <node id="1867733327985055568" at="15,0,16,0" concept="5" trace="RuleBlockMember" />
+      <node id="1867733327985055568" at="21,44,22,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1867733327985055568" at="16,0,17,0" concept="1" trace="myConceptRuleBlockMember" />

@@ -12,7 +12,7 @@
       <unit at="11,0,62,0" name="jetbrains.mps.lang.css.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,36,0" name="jetbrains.mps.lang.css.structure.LanguageConceptSwitch" />
+      <unit at="12,0,44,0" name="jetbrains.mps.lang.css.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,111,0" name="jetbrains.mps.lang.css.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="8766879755154978087" at="37,41,43,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8766879755154978087" at="14,0,15,0" concept="5" trace="CssFile" />
-      <node id="8766879755154978087" at="21,58,22,46" concept="0" />
+      <node id="8766879755154978087" at="16,0,17,0" concept="5" trace="CssFile" />
+      <node id="8766879755154978087" at="23,58,24,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8766879755154978087" at="18,0,19,0" concept="1" trace="myConceptCssFile" />
@@ -68,8 +68,8 @@
       <scope id="8766879755154978539" at="44,44,50,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8766879755154978539" at="15,0,16,0" concept="5" trace="CssRuleset" />
-      <node id="8766879755154978539" at="22,46,23,49" concept="0" />
+      <node id="8766879755154978539" at="17,0,18,0" concept="5" trace="CssRuleset" />
+      <node id="8766879755154978539" at="24,46,25,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8766879755154978539" at="19,0,20,0" concept="1" trace="myConceptCssRuleset" />
@@ -104,8 +104,8 @@
       <scope id="8766879755154978797" at="51,45,57,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8766879755154978797" at="16,0,17,0" concept="5" trace="CssSelector" />
-      <node id="8766879755154978797" at="23,49,24,50" concept="0" />
+      <node id="8766879755154978797" at="18,0,19,0" concept="5" trace="CssSelector" />
+      <node id="8766879755154978797" at="25,49,26,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8766879755154978797" at="20,0,21,0" concept="1" trace="myConceptCssSelector" />
@@ -139,8 +139,8 @@
       <scope id="8766879755154979136" at="23,48,29,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8766879755154979136" at="12,0,13,0" concept="5" trace="CssDeclaration" />
-      <node id="8766879755154979136" at="19,116,20,53" concept="0" />
+      <node id="8766879755154979136" at="14,0,15,0" concept="5" trace="CssDeclaration" />
+      <node id="8766879755154979136" at="21,116,22,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8766879755154979136" at="16,0,17,0" concept="1" trace="myConceptCssDeclaration" />
@@ -175,8 +175,8 @@
       <scope id="8766879755154979815" at="30,53,36,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8766879755154979815" at="13,0,14,0" concept="5" trace="CssDeclarationBlock" />
-      <node id="8766879755154979815" at="20,53,21,58" concept="0" />
+      <node id="8766879755154979815" at="15,0,16,0" concept="5" trace="CssDeclarationBlock" />
+      <node id="8766879755154979815" at="22,53,23,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8766879755154979815" at="17,0,18,0" concept="1" trace="myConceptCssDeclarationBlock" />

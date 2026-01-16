@@ -13,7 +13,7 @@
       <unit at="11,0,251,0" name="jetbrains.mps.core.xml.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,82,0" name="jetbrains.mps.core.xml.structure.LanguageConceptSwitch" />
+      <unit at="12,0,90,0" name="jetbrains.mps.core.xml.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="21,0,436,0" name="jetbrains.mps.core.xml.structure.StructureAspectDescriptor" />
@@ -34,8 +34,8 @@
       <scope id="1622293396948952339" at="217,41,224,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1622293396948952339" at="36,0,37,0" concept="6" trace="XmlText" />
-      <node id="1622293396948952339" at="66,56,67,46" concept="0" />
+      <node id="1622293396948952339" at="38,0,39,0" concept="6" trace="XmlText" />
+      <node id="1622293396948952339" at="68,56,69,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1622293396948952339" at="46,0,47,0" concept="1" trace="myConceptXmlText" />
@@ -72,8 +72,8 @@
       <scope id="1622293396949036126" at="101,48,107,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1622293396949036126" at="20,0,21,0" concept="6" trace="XmlCommentLine" />
-      <node id="1622293396949036126" at="50,49,51,53" concept="0" />
+      <node id="1622293396949036126" at="22,0,23,0" concept="6" trace="XmlCommentLine" />
+      <node id="1622293396949036126" at="52,49,53,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1622293396949036126" at="30,0,31,0" concept="1" trace="myConceptXmlCommentLine" />
@@ -108,8 +108,8 @@
       <scope id="1622293396949069645" at="144,46,151,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1622293396949069645" at="26,0,27,0" concept="6" trace="XmlEntityRef" />
-      <node id="1622293396949069645" at="56,49,57,51" concept="0" />
+      <node id="1622293396949069645" at="28,0,29,0" concept="6" trace="XmlEntityRef" />
+      <node id="1622293396949069645" at="58,49,59,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1622293396949069645" at="36,0,37,0" concept="1" trace="myConceptXmlEntityRef" />
@@ -144,8 +144,8 @@
       <scope id="2133624044437631294" at="182,41,187,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2133624044437631294" at="31,0,32,0" concept="6" trace="XmlPart" />
-      <node id="2133624044437631294" at="61,54,62,46" concept="0" />
+      <node id="2133624044437631294" at="33,0,34,0" concept="6" trace="XmlPart" />
+      <node id="2133624044437631294" at="63,54,64,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2133624044437631294" at="41,0,42,0" concept="1" trace="myConceptXmlPart" />
@@ -178,8 +178,8 @@
       <scope id="2133624044437669768" at="65,54,70,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2133624044437669768" at="15,0,16,0" concept="6" trace="XmlBasePrologElement" />
-      <node id="2133624044437669768" at="45,53,46,59" concept="0" />
+      <node id="2133624044437669768" at="17,0,18,0" concept="6" trace="XmlBasePrologElement" />
+      <node id="2133624044437669768" at="47,53,48,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2133624044437669768" at="25,0,26,0" concept="1" trace="myConceptXmlBasePrologElement" />
@@ -212,8 +212,8 @@
       <scope id="2133624044437898907" at="122,55,129,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2133624044437898907" at="23,0,24,0" concept="6" trace="XmlDoctypeDeclaration" />
-      <node id="2133624044437898907" at="53,53,54,60" concept="0" />
+      <node id="2133624044437898907" at="25,0,26,0" concept="6" trace="XmlDoctypeDeclaration" />
+      <node id="2133624044437898907" at="55,53,56,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2133624044437898907" at="33,0,34,0" concept="1" trace="myConceptXmlDoctypeDeclaration" />
@@ -250,8 +250,8 @@
       <scope id="2133624044438029119" at="160,47,166,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2133624044438029119" at="28,0,29,0" concept="6" trace="XmlExternalId" />
-      <node id="2133624044438029119" at="58,56,59,52" concept="0" />
+      <node id="2133624044438029119" at="30,0,31,0" concept="6" trace="XmlExternalId" />
+      <node id="2133624044438029119" at="60,56,61,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2133624044438029119" at="38,0,39,0" concept="1" trace="myConceptXmlExternalId" />
@@ -287,8 +287,8 @@
       <scope id="2301667890727559839" at="209,51,216,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2301667890727559839" at="35,0,36,0" concept="6" trace="XmlSingleLineText" />
-      <node id="2301667890727559839" at="65,55,66,56" concept="0" />
+      <node id="2301667890727559839" at="37,0,38,0" concept="6" trace="XmlSingleLineText" />
+      <node id="2301667890727559839" at="67,55,68,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2301667890727559839" at="45,0,46,0" concept="1" trace="myConceptXmlSingleLineText" />
@@ -324,8 +324,8 @@
       <scope id="3080189811177199750" at="78,44,85,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3080189811177199750" at="17,0,18,0" concept="6" trace="XmlCharRef" />
-      <node id="3080189811177199750" at="47,47,48,49" concept="0" />
+      <node id="3080189811177199750" at="19,0,20,0" concept="6" trace="XmlCharRef" />
+      <node id="3080189811177199750" at="49,47,50,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3080189811177199750" at="27,0,28,0" concept="1" trace="myConceptXmlCharRef" />
@@ -363,8 +363,8 @@
       <scope id="3080189811177215998" at="86,49,93,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3080189811177215998" at="18,0,19,0" concept="6" trace="XmlCharRefValue" />
-      <node id="3080189811177215998" at="48,49,49,54" concept="0" />
+      <node id="3080189811177215998" at="20,0,21,0" concept="6" trace="XmlCharRefValue" />
+      <node id="3080189811177215998" at="50,49,51,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3080189811177215998" at="28,0,29,0" concept="1" trace="myConceptXmlCharRefValue" />
@@ -402,8 +402,8 @@
       <scope id="3080189811177426492" at="174,49,181,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3080189811177426492" at="30,0,31,0" concept="6" trace="XmlNoSpaceValue" />
-      <node id="3080189811177426492" at="60,46,61,54" concept="0" />
+      <node id="3080189811177426492" at="32,0,33,0" concept="6" trace="XmlNoSpaceValue" />
+      <node id="3080189811177426492" at="62,46,63,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3080189811177426492" at="40,0,41,0" concept="1" trace="myConceptXmlNoSpaceValue" />
@@ -449,8 +449,8 @@
       <scope id="5228786488744996718" at="114,48,121,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5228786488744996718" at="22,0,23,0" concept="6" trace="XmlDeclaration" />
-      <node id="5228786488744996718" at="52,49,53,53" concept="0" />
+      <node id="5228786488744996718" at="24,0,25,0" concept="6" trace="XmlDeclaration" />
+      <node id="5228786488744996718" at="54,49,55,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5228786488744996718" at="32,0,33,0" concept="1" trace="myConceptXmlDeclaration" />
@@ -492,8 +492,8 @@
       <scope id="6666499814681299051" at="108,44,113,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681299051" at="21,0,22,0" concept="6" trace="XmlContent" />
-      <node id="6666499814681299051" at="51,53,52,49" concept="0" />
+      <node id="6666499814681299051" at="23,0,24,0" concept="6" trace="XmlContent" />
+      <node id="6666499814681299051" at="53,53,54,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681299051" at="31,0,32,0" concept="1" trace="myConceptXmlContent" />
@@ -524,8 +524,8 @@
       <scope id="6666499814681299053" at="59,48,64,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681299053" at="14,0,15,0" concept="6" trace="XmlBaseElement" />
-      <node id="6666499814681299053" at="44,55,45,53" concept="0" />
+      <node id="6666499814681299053" at="16,0,17,0" concept="6" trace="XmlBaseElement" />
+      <node id="6666499814681299053" at="46,55,47,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681299053" at="24,0,25,0" concept="1" trace="myConceptXmlBaseElement" />
@@ -559,8 +559,8 @@
       <scope id="6666499814681299057" at="196,43,202,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681299057" at="33,0,34,0" concept="6" trace="XmlProlog" />
-      <node id="6666499814681299057" at="63,63,64,48" concept="0" />
+      <node id="6666499814681299057" at="35,0,36,0" concept="6" trace="XmlProlog" />
+      <node id="6666499814681299057" at="65,63,66,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681299057" at="43,0,44,0" concept="1" trace="myConceptXmlProlog" />
@@ -594,8 +594,8 @@
       <scope id="6666499814681299061" at="188,58,195,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681299061" at="32,0,33,0" concept="6" trace="XmlProcessingInstruction" />
-      <node id="6666499814681299061" at="62,46,63,63" concept="0" />
+      <node id="6666499814681299061" at="34,0,35,0" concept="6" trace="XmlProcessingInstruction" />
+      <node id="6666499814681299061" at="64,46,65,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681299061" at="42,0,43,0" concept="1" trace="myConceptXmlProcessingInstruction" />
@@ -632,8 +632,8 @@
       <scope id="6666499814681299064" at="94,44,100,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681299064" at="19,0,20,0" concept="6" trace="XmlComment" />
-      <node id="6666499814681299064" at="49,54,50,49" concept="0" />
+      <node id="6666499814681299064" at="21,0,22,0" concept="6" trace="XmlComment" />
+      <node id="6666499814681299064" at="51,54,52,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681299064" at="29,0,30,0" concept="1" trace="myConceptXmlComment" />
@@ -670,8 +670,8 @@
       <scope id="6666499814681299066" at="71,42,77,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681299066" at="16,0,17,0" concept="6" trace="XmlCDATA" />
-      <node id="6666499814681299066" at="46,59,47,47" concept="0" />
+      <node id="6666499814681299066" at="18,0,19,0" concept="6" trace="XmlCDATA" />
+      <node id="6666499814681299066" at="48,59,49,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681299066" at="26,0,27,0" concept="1" trace="myConceptXmlCDATA" />
@@ -707,8 +707,8 @@
       <scope id="6666499814681415858" at="137,44,143,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681415858" at="25,0,26,0" concept="6" trace="XmlElement" />
-      <node id="6666499814681415858" at="55,50,56,49" concept="0" />
+      <node id="6666499814681415858" at="27,0,28,0" concept="6" trace="XmlElement" />
+      <node id="6666499814681415858" at="57,50,58,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681415858" at="35,0,36,0" concept="1" trace="myConceptXmlElement" />
@@ -746,8 +746,8 @@
       <scope id="6666499814681415859" at="53,50,58,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681415859" at="13,0,14,0" concept="6" trace="XmlBaseAttribute" />
-      <node id="6666499814681415859" at="43,51,44,55" concept="0" />
+      <node id="6666499814681415859" at="15,0,16,0" concept="6" trace="XmlBaseAttribute" />
+      <node id="6666499814681415859" at="45,51,46,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681415859" at="23,0,24,0" concept="1" trace="myConceptXmlBaseAttribute" />
@@ -779,8 +779,8 @@
       <scope id="6666499814681447923" at="46,46,52,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681447923" at="12,0,13,0" concept="6" trace="XmlAttribute" />
-      <node id="6666499814681447923" at="42,116,43,51" concept="0" />
+      <node id="6666499814681447923" at="14,0,15,0" concept="6" trace="XmlAttribute" />
+      <node id="6666499814681447923" at="44,116,45,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681447923" at="22,0,23,0" concept="1" trace="myConceptXmlAttribute" />
@@ -817,8 +817,8 @@
       <scope id="6666499814681515200" at="167,41,173,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681515200" at="29,0,30,0" concept="6" trace="XmlFile" />
-      <node id="6666499814681515200" at="59,52,60,46" concept="0" />
+      <node id="6666499814681515200" at="31,0,32,0" concept="6" trace="XmlFile" />
+      <node id="6666499814681515200" at="61,52,62,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681515200" at="39,0,40,0" concept="1" trace="myConceptXmlFile" />
@@ -855,8 +855,8 @@
       <scope id="6666499814681541916" at="233,46,239,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681541916" at="38,0,39,0" concept="6" trace="XmlValuePart" />
-      <node id="6666499814681541916" at="68,51,69,51" concept="0" />
+      <node id="6666499814681541916" at="40,0,41,0" concept="6" trace="XmlValuePart" />
+      <node id="6666499814681541916" at="70,51,71,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681541916" at="48,0,49,0" concept="1" trace="myConceptXmlValuePart" />
@@ -889,8 +889,8 @@
       <scope id="6666499814681541919" at="225,46,232,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681541919" at="37,0,38,0" concept="6" trace="XmlTextValue" />
-      <node id="6666499814681541919" at="67,46,68,51" concept="0" />
+      <node id="6666499814681541919" at="39,0,40,0" concept="6" trace="XmlTextValue" />
+      <node id="6666499814681541919" at="69,46,70,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681541919" at="47,0,48,0" concept="1" trace="myConceptXmlTextValue" />
@@ -927,8 +927,8 @@
       <scope id="6666499814681541921" at="152,51,159,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6666499814681541921" at="27,0,28,0" concept="6" trace="XmlEntityRefValue" />
-      <node id="6666499814681541921" at="57,51,58,56" concept="0" />
+      <node id="6666499814681541921" at="29,0,30,0" concept="6" trace="XmlEntityRefValue" />
+      <node id="6666499814681541921" at="59,51,60,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6666499814681541921" at="37,0,38,0" concept="1" trace="myConceptXmlEntityRefValue" />
@@ -964,8 +964,8 @@
       <scope id="6786756355279841993" at="130,45,136,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6786756355279841993" at="24,0,25,0" concept="6" trace="XmlDocument" />
-      <node id="6786756355279841993" at="54,60,55,50" concept="0" />
+      <node id="6786756355279841993" at="26,0,27,0" concept="6" trace="XmlDocument" />
+      <node id="6786756355279841993" at="56,60,57,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6786756355279841993" at="34,0,35,0" concept="1" trace="myConceptXmlDocument" />
@@ -998,8 +998,8 @@
       <scope id="7604553062773674213" at="203,50,208,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7604553062773674213" at="34,0,35,0" concept="6" trace="XmlPrologElement" />
-      <node id="7604553062773674213" at="64,48,65,55" concept="0" />
+      <node id="7604553062773674213" at="36,0,37,0" concept="6" trace="XmlPrologElement" />
+      <node id="7604553062773674213" at="66,48,67,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7604553062773674213" at="44,0,45,0" concept="1" trace="myConceptXmlPrologElement" />
@@ -1034,8 +1034,8 @@
       <scope id="7604553062773750440" at="240,47,246,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7604553062773750440" at="39,0,40,0" concept="6" trace="XmlWhitespace" />
-      <node id="7604553062773750440" at="69,51,70,52" concept="0" />
+      <node id="7604553062773750440" at="41,0,42,0" concept="6" trace="XmlWhitespace" />
+      <node id="7604553062773750440" at="71,51,72,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7604553062773750440" at="49,0,50,0" concept="1" trace="myConceptXmlWhitespace" />

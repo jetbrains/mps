@@ -12,7 +12,7 @@
       <unit at="11,0,38,0" name="jetbrains.mps.samples.PropertyDefinition.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.samples.PropertyDefinition.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.samples.PropertyDefinition.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,74,0" name="jetbrains.mps.samples.PropertyDefinition.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="5586542675088787182" at="27,52,33,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5586542675088787182" at="13,0,14,0" concept="5" trace="PropertyCollection" />
-      <node id="5586542675088787182" at="17,47,18,57" concept="0" />
+      <node id="5586542675088787182" at="15,0,16,0" concept="5" trace="PropertyCollection" />
+      <node id="5586542675088787182" at="19,47,20,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5586542675088787182" at="17,0,18,0" concept="1" trace="myConceptPropertyCollection" />
@@ -68,8 +68,8 @@
       <scope id="5586542675088787185" at="20,42,26,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5586542675088787185" at="12,0,13,0" concept="5" trace="Property" />
-      <node id="5586542675088787185" at="16,116,17,47" concept="0" />
+      <node id="5586542675088787185" at="14,0,15,0" concept="5" trace="Property" />
+      <node id="5586542675088787185" at="18,116,19,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5586542675088787185" at="16,0,17,0" concept="1" trace="myConceptProperty" />

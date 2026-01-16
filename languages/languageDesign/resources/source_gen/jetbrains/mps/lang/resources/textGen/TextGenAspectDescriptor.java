@@ -45,6 +45,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     int dot = fn.lastIndexOf('.');
     return (dot > 0 ? fn.substring(0, dot) : fn);
 
+
   }
   private static String getFileExtension_GeneratedImage(SNode node) {
     String fn = SPropertyOperations.getString(node, PROPS.fileName$JiWl);

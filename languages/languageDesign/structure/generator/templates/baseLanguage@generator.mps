@@ -119,6 +119,7 @@
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
@@ -6146,7 +6147,11 @@
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
         </node>
       </node>
+      <node concept="2AHcQZ" id="1ke3apEsO1w" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="1ke3apEoiGa" role="jymVt" />
     <node concept="3Tm1VV" id="1OW7rNmnulU" role="1B3o_S" />
     <node concept="n94m4" id="1OW7rNmnulV" role="lGtFl" />
     <node concept="1ps_y7" id="7wjXRnKcz28" role="lGtFl">
@@ -6255,6 +6260,48 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="3uibUv" id="1ke3apEoi5J" role="EKbjA">
+      <ref role="3uigEE" to="ksn4:~ConceptIndex" resolve="ConceptIndex" />
+    </node>
+    <node concept="3clFb_" id="1ke3apEoiW9" role="jymVt">
+      <property role="TrG5h" value="index" />
+      <node concept="3Tm1VV" id="1ke3apEoiWb" role="1B3o_S" />
+      <node concept="10Oyi0" id="1ke3apEoiWd" role="3clF45" />
+      <node concept="37vLTG" id="1ke3apEoiWe" role="3clF46">
+        <property role="TrG5h" value="c" />
+        <node concept="3uibUv" id="1ke3apEoiWf" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+        </node>
+        <node concept="2AHcQZ" id="1ke3apEoiWg" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1ke3apEoiWh" role="3clF46">
+        <property role="TrG5h" value="missingValue" />
+        <node concept="10Oyi0" id="1ke3apEoiWi" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="1ke3apEoiWj" role="3clF47">
+        <node concept="3cpWs6" id="1ke3apEokZL" role="3cqZAp">
+          <node concept="2OqwBi" id="1ke3apEoq5Q" role="3cqZAk">
+            <node concept="37vLTw" id="1ke3apEopoO" role="2Oq$k0">
+              <ref role="3cqZAo" node="1OW7rNmnyOF" resolve="myIndex" />
+            </node>
+            <node concept="liA8E" id="1ke3apEor0T" role="2OqNvi">
+              <ref role="37wK5l" to="ksn4:~LanguageConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept,int)" resolve="index" />
+              <node concept="37vLTw" id="1ke3apEokZO" role="37wK5m">
+                <ref role="3cqZAo" node="1ke3apEoiWe" resolve="c" />
+              </node>
+              <node concept="37vLTw" id="1ke3apEokZP" role="37wK5m">
+                <ref role="3cqZAo" node="1ke3apEoiWh" resolve="missingValue" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1ke3apEoiWk" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

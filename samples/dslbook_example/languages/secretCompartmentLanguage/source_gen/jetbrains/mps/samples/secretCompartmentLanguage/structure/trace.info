@@ -12,7 +12,7 @@
       <unit at="11,0,78,0" name="jetbrains.mps.samples.secretCompartmentLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,40,0" name="jetbrains.mps.samples.secretCompartmentLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,48,0" name="jetbrains.mps.samples.secretCompartmentLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,138,0" name="jetbrains.mps.samples.secretCompartmentLanguage.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="1197149564476" at="46,46,52,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197149564476" at="15,0,16,0" concept="5" trace="StateMachine" />
-      <node id="1197149564476" at="24,39,25,46" concept="0" />
+      <node id="1197149564476" at="17,0,18,0" concept="5" trace="StateMachine" />
+      <node id="1197149564476" at="26,39,27,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197149564476" at="19,0,20,0" concept="1" trace="myConceptStateMachine" />
@@ -70,8 +70,8 @@
       <scope id="1197169363230" at="25,39,31,27" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197169363230" at="12,0,13,0" concept="5" trace="Event" />
-      <node id="1197169363230" at="21,116,22,39" concept="0" />
+      <node id="1197169363230" at="14,0,15,0" concept="5" trace="Event" />
+      <node id="1197169363230" at="23,116,24,39" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197169363230" at="16,0,17,0" concept="1" trace="myConceptEvent" />
@@ -106,8 +106,8 @@
       <scope id="1197170590231" at="39,39,45,27" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197170590231" at="14,0,15,0" concept="5" trace="State" />
-      <node id="1197170590231" at="23,45,24,39" concept="0" />
+      <node id="1197170590231" at="16,0,17,0" concept="5" trace="State" />
+      <node id="1197170590231" at="25,45,26,39" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197170590231" at="18,0,19,0" concept="1" trace="myConceptState" />
@@ -142,8 +142,8 @@
       <scope id="1197240155690" at="67,44,73,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197240155690" at="18,0,19,0" concept="5" trace="Transition" />
-      <node id="1197240155690" at="27,56,28,44" concept="0" />
+      <node id="1197240155690" at="20,0,21,0" concept="5" trace="Transition" />
+      <node id="1197240155690" at="29,56,30,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197240155690" at="22,0,23,0" concept="1" trace="myConceptTransition" />
@@ -177,8 +177,8 @@
       <scope id="1197246912613" at="53,50,59,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197246912613" at="16,0,17,0" concept="5" trace="StateMachineTest" />
-      <node id="1197246912613" at="25,46,26,50" concept="0" />
+      <node id="1197246912613" at="18,0,19,0" concept="5" trace="StateMachineTest" />
+      <node id="1197246912613" at="27,46,28,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197246912613" at="20,0,21,0" concept="1" trace="myConceptStateMachineTest" />
@@ -213,8 +213,8 @@
       <scope id="1197252718474" at="60,56,66,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197252718474" at="17,0,18,0" concept="5" trace="StateMachineTestMethod" />
-      <node id="1197252718474" at="26,50,27,56" concept="0" />
+      <node id="1197252718474" at="19,0,20,0" concept="5" trace="StateMachineTestMethod" />
+      <node id="1197252718474" at="28,50,29,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197252718474" at="21,0,22,0" concept="1" trace="myConceptStateMachineTestMethod" />
@@ -249,8 +249,8 @@
       <scope id="1197255776563" at="32,45,38,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1197255776563" at="13,0,14,0" concept="5" trace="HandleEvent" />
-      <node id="1197255776563" at="22,39,23,45" concept="0" />
+      <node id="1197255776563" at="15,0,16,0" concept="5" trace="HandleEvent" />
+      <node id="1197255776563" at="24,39,25,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1197255776563" at="17,0,18,0" concept="1" trace="myConceptHandleEvent" />

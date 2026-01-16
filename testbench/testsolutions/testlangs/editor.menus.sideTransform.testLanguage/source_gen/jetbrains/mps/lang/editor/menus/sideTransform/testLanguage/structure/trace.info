@@ -12,7 +12,7 @@
       <unit at="11,0,134,0" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,54,0" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,62,0" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,203,0" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="4091667478583506824" at="32,67,38,55" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4091667478583506824" at="12,0,13,0" concept="5" trace="TestSideTransform_NodeToReference" />
-      <node id="4091667478583506824" at="28,116,29,72" concept="0" />
+      <node id="4091667478583506824" at="14,0,15,0" concept="5" trace="TestSideTransform_NodeToReference" />
+      <node id="4091667478583506824" at="30,116,31,72" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4091667478583506824" at="15,0,16,0" concept="1" trace="myConceptTestSideTransform_NodeToReference" />
@@ -66,8 +66,8 @@
       <scope id="4091667478583507896" at="39,69,45,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4091667478583507896" at="13,0,14,0" concept="5" trace="TestSideTransform_NodeWithReference" />
-      <node id="4091667478583507896" at="29,72,30,74" concept="0" />
+      <node id="4091667478583507896" at="15,0,16,0" concept="5" trace="TestSideTransform_NodeWithReference" />
+      <node id="4091667478583507896" at="31,72,32,74" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4091667478583507896" at="16,0,17,0" concept="1" trace="myConceptTestSideTransform_NodeWithReference" />
@@ -101,8 +101,8 @@
       <scope id="6199005252790639398" at="46,56,52,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6199005252790639398" at="14,0,15,0" concept="5" trace="TestSideTransform_Root" />
-      <node id="6199005252790639398" at="30,74,31,61" concept="0" />
+      <node id="6199005252790639398" at="16,0,17,0" concept="5" trace="TestSideTransform_Root" />
+      <node id="6199005252790639398" at="32,74,33,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6199005252790639398" at="17,0,18,0" concept="1" trace="myConceptTestSideTransform_Root" />
@@ -137,8 +137,8 @@
       <scope id="6199005252790639399" at="53,62,59,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6199005252790639399" at="15,0,16,0" concept="5" trace="TestSideTransform_SimpleNode" />
-      <node id="6199005252790639399" at="31,61,32,67" concept="0" />
+      <node id="6199005252790639399" at="17,0,18,0" concept="5" trace="TestSideTransform_SimpleNode" />
+      <node id="6199005252790639399" at="33,61,34,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6199005252790639399" at="18,0,19,0" concept="1" trace="myConceptTestSideTransform_SimpleNode" />
@@ -171,8 +171,8 @@
       <scope id="7153261420283491153" at="109,62,115,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7153261420283491153" at="23,0,24,0" concept="5" trace="TestTransformExceptionParent" />
-      <node id="7153261420283491153" at="39,79,40,67" concept="0" />
+      <node id="7153261420283491153" at="25,0,26,0" concept="5" trace="TestTransformExceptionParent" />
+      <node id="7153261420283491153" at="41,79,42,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7153261420283491153" at="26,0,27,0" concept="1" trace="myConceptTestTransformExceptionParent" />
@@ -213,8 +213,8 @@
       <scope id="8955468859940915153" at="60,77,66,65" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915153" at="16,0,17,0" concept="5" trace="TestTransformExceptionActionCanExecuteChild" />
-      <node id="8955468859940915153" at="32,67,33,82" concept="0" />
+      <node id="8955468859940915153" at="18,0,19,0" concept="5" trace="TestTransformExceptionActionCanExecuteChild" />
+      <node id="8955468859940915153" at="34,67,35,82" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915153" at="19,0,20,0" concept="1" trace="myConceptTestTransformExceptionActionCanExecuteChild" />
@@ -246,8 +246,8 @@
       <scope id="8955468859940915190" at="67,82,73,70" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915190" at="17,0,18,0" concept="5" trace="TestTransformExceptionActionDescriptionTextChild" />
-      <node id="8955468859940915190" at="33,82,34,87" concept="0" />
+      <node id="8955468859940915190" at="19,0,20,0" concept="5" trace="TestTransformExceptionActionDescriptionTextChild" />
+      <node id="8955468859940915190" at="35,82,36,87" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915190" at="20,0,21,0" concept="1" trace="myConceptTestTransformExceptionActionDescriptionTextChild" />
@@ -279,8 +279,8 @@
       <scope id="8955468859940915191" at="81,71,87,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915191" at="19,0,20,0" concept="5" trace="TestTransformExceptionActionIconChild" />
-      <node id="8955468859940915191" at="35,77,36,76" concept="0" />
+      <node id="8955468859940915191" at="21,0,22,0" concept="5" trace="TestTransformExceptionActionIconChild" />
+      <node id="8955468859940915191" at="37,77,38,76" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915191" at="22,0,23,0" concept="1" trace="myConceptTestTransformExceptionActionIconChild" />
@@ -312,8 +312,8 @@
       <scope id="8955468859940915192" at="88,71,94,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915192" at="20,0,21,0" concept="5" trace="TestTransformExceptionActionTextChild" />
-      <node id="8955468859940915192" at="36,76,37,76" concept="0" />
+      <node id="8955468859940915192" at="22,0,23,0" concept="5" trace="TestTransformExceptionActionTextChild" />
+      <node id="8955468859940915192" at="38,76,39,76" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915192" at="23,0,24,0" concept="1" trace="myConceptTestTransformExceptionActionTextChild" />
@@ -345,8 +345,8 @@
       <scope id="8955468859940915194" at="74,72,80,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915194" at="18,0,19,0" concept="5" trace="TestTransformExceptionActionGroupChild" />
-      <node id="8955468859940915194" at="34,87,35,77" concept="0" />
+      <node id="8955468859940915194" at="20,0,21,0" concept="5" trace="TestTransformExceptionActionGroupChild" />
+      <node id="8955468859940915194" at="36,87,37,77" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915194" at="21,0,22,0" concept="1" trace="myConceptTestTransformExceptionActionGroupChild" />
@@ -378,8 +378,8 @@
       <scope id="8955468859940915195" at="95,72,101,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915195" at="21,0,22,0" concept="5" trace="TestTransformExceptionIncludeMenuChild" />
-      <node id="8955468859940915195" at="37,76,38,77" concept="0" />
+      <node id="8955468859940915195" at="23,0,24,0" concept="5" trace="TestTransformExceptionIncludeMenuChild" />
+      <node id="8955468859940915195" at="39,76,40,77" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915195" at="24,0,25,0" concept="1" trace="myConceptTestTransformExceptionIncludeMenuChild" />
@@ -411,8 +411,8 @@
       <scope id="8955468859940915197" at="102,74,108,62" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940915197" at="22,0,23,0" concept="5" trace="TestTransformExceptionParameterizedChild" />
-      <node id="8955468859940915197" at="38,77,39,79" concept="0" />
+      <node id="8955468859940915197" at="24,0,25,0" concept="5" trace="TestTransformExceptionParameterizedChild" />
+      <node id="8955468859940915197" at="40,77,41,79" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940915197" at="25,0,26,0" concept="1" trace="myConceptTestTransformExceptionParameterizedChild" />
@@ -444,8 +444,8 @@
       <scope id="8955468859940955001" at="116,68,122,56" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940955001" at="24,0,25,0" concept="5" trace="TestTransformExceptionSubmenuChild" />
-      <node id="8955468859940955001" at="40,67,41,73" concept="0" />
+      <node id="8955468859940955001" at="26,0,27,0" concept="5" trace="TestTransformExceptionSubmenuChild" />
+      <node id="8955468859940955001" at="42,67,43,73" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940955001" at="27,0,28,0" concept="1" trace="myConceptTestTransformExceptionSubmenuChild" />
@@ -477,8 +477,8 @@
       <scope id="8955468859940959912" at="123,79,129,67" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8955468859940959912" at="25,0,26,0" concept="5" trace="TestTransformExceptionWrapSubstituteMenuChild" />
-      <node id="8955468859940959912" at="41,73,42,84" concept="0" />
+      <node id="8955468859940959912" at="27,0,28,0" concept="5" trace="TestTransformExceptionWrapSubstituteMenuChild" />
+      <node id="8955468859940959912" at="43,73,44,84" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8955468859940959912" at="28,0,29,0" concept="1" trace="myConceptTestTransformExceptionWrapSubstituteMenuChild" />

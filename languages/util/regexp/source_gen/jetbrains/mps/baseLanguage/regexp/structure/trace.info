@@ -13,7 +13,7 @@
       <unit at="11,0,526,0" name="jetbrains.mps.baseLanguage.regexp.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,148,0" name="jetbrains.mps.baseLanguage.regexp.structure.LanguageConceptSwitch" />
+      <unit at="12,0,156,0" name="jetbrains.mps.baseLanguage.regexp.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="21,0,898,0" name="jetbrains.mps.baseLanguage.regexp.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="1174482743037" at="379,40,384,28" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174482743037" at="52,0,53,0" concept="6" trace="Regexp" />
-      <node id="1174482743037" at="115,48,116,40" concept="0" />
+      <node id="1174482743037" at="54,0,55,0" concept="6" trace="Regexp" />
+      <node id="1174482743037" at="117,48,118,40" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174482743037" at="62,0,63,0" concept="1" trace="myConceptRegexp" />
@@ -65,8 +65,8 @@
       <scope id="1174482753837" at="484,53,490,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174482753837" at="67,0,68,0" concept="6" trace="StringLiteralRegexp" />
-      <node id="1174482753837" at="130,44,131,53" concept="0" />
+      <node id="1174482753837" at="69,0,70,0" concept="6" trace="StringLiteralRegexp" />
+      <node id="1174482753837" at="132,44,133,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174482753837" at="77,0,78,0" concept="1" trace="myConceptStringLiteralRegexp" />
@@ -102,8 +102,8 @@
       <scope id="1174482769792" at="297,42,303,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174482769792" at="41,0,42,0" concept="6" trace="OrRegexp" />
-      <node id="1174482769792" at="104,59,105,42" concept="0" />
+      <node id="1174482769792" at="43,0,44,0" concept="6" trace="OrRegexp" />
+      <node id="1174482769792" at="106,59,107,42" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174482769792" at="51,0,52,0" concept="1" trace="myConceptOrRegexp" />
@@ -139,8 +139,8 @@
       <scope id="1174482804200" at="312,44,319,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174482804200" at="43,0,44,0" concept="6" trace="PlusRegexp" />
-      <node id="1174482804200" at="106,46,107,44" concept="0" />
+      <node id="1174482804200" at="45,0,46,0" concept="6" trace="PlusRegexp" />
+      <node id="1174482804200" at="108,46,109,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174482804200" at="53,0,54,0" concept="1" trace="myConceptPlusRegexp" />
@@ -176,8 +176,8 @@
       <scope id="1174482808826" at="476,44,483,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174482808826" at="66,0,67,0" concept="6" trace="StarRegexp" />
-      <node id="1174482808826" at="129,48,130,44" concept="0" />
+      <node id="1174482808826" at="68,0,69,0" concept="6" trace="StarRegexp" />
+      <node id="1174482808826" at="131,48,132,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174482808826" at="76,0,77,0" concept="1" trace="myConceptStarRegexp" />
@@ -212,8 +212,8 @@
       <scope id="1174483125581" at="385,51,391,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174483125581" at="53,0,54,0" concept="6" trace="RegexpDeclaration" />
-      <node id="1174483125581" at="116,40,117,51" concept="0" />
+      <node id="1174483125581" at="55,0,56,0" concept="6" trace="RegexpDeclaration" />
+      <node id="1174483125581" at="118,40,119,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174483125581" at="63,0,64,0" concept="1" trace="myConceptRegexpDeclaration" />
@@ -248,8 +248,8 @@
       <scope id="1174484562151" at="453,43,459,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174484562151" at="63,0,64,0" concept="6" trace="SeqRegexp" />
-      <node id="1174484562151" at="126,50,127,43" concept="0" />
+      <node id="1174484562151" at="65,0,66,0" concept="6" trace="SeqRegexp" />
+      <node id="1174484562151" at="128,50,129,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174484562151" at="73,0,74,0" concept="1" trace="myConceptSeqRegexp" />
@@ -283,8 +283,8 @@
       <scope id="1174485167097" at="87,46,92,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174485167097" at="13,0,14,0" concept="6" trace="BinaryRegexp" />
-      <node id="1174485167097" at="76,53,77,46" concept="0" />
+      <node id="1174485167097" at="15,0,16,0" concept="6" trace="BinaryRegexp" />
+      <node id="1174485167097" at="78,53,79,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174485167097" at="23,0,24,0" concept="1" trace="myConceptBinaryRegexp" />
@@ -319,8 +319,8 @@
       <scope id="1174485235885" at="509,45,514,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174485235885" at="71,0,72,0" concept="6" trace="UnaryRegexp" />
-      <node id="1174485235885" at="134,58,135,45" concept="0" />
+      <node id="1174485235885" at="73,0,74,0" concept="6" trace="UnaryRegexp" />
+      <node id="1174485235885" at="136,58,137,45" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174485235885" at="81,0,82,0" concept="1" trace="myConceptUnaryRegexp" />
@@ -356,8 +356,8 @@
       <scope id="1174491169200" at="304,46,311,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174491169200" at="42,0,43,0" concept="6" trace="ParensRegexp" />
-      <node id="1174491169200" at="105,42,106,46" concept="0" />
+      <node id="1174491169200" at="44,0,45,0" concept="6" trace="ParensRegexp" />
+      <node id="1174491169200" at="107,42,108,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174491169200" at="52,0,53,0" concept="1" trace="myConceptParensRegexp" />
@@ -393,8 +393,8 @@
       <scope id="1174510540317" at="138,56,144,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174510540317" at="20,0,21,0" concept="6" trace="InlineRegexpExpression" />
-      <node id="1174510540317" at="83,53,84,56" concept="0" />
+      <node id="1174510540317" at="22,0,23,0" concept="6" trace="InlineRegexpExpression" />
+      <node id="1174510540317" at="85,53,86,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174510540317" at="30,0,31,0" concept="1" trace="myConceptInlineRegexpExpression" />
@@ -435,8 +435,8 @@
       <scope id="1174512414484" at="236,54,243,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174512414484" at="33,0,34,0" concept="6" trace="MatchRegexpStatement" />
-      <node id="1174512414484" at="96,54,97,54" concept="0" />
+      <node id="1174512414484" at="35,0,36,0" concept="6" trace="MatchRegexpStatement" />
+      <node id="1174512414484" at="98,54,99,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174512414484" at="43,0,44,0" concept="1" trace="myConceptMatchRegexpStatement" />
@@ -475,8 +475,8 @@
       <scope id="1174552240608" at="371,48,378,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174552240608" at="51,0,52,0" concept="6" trace="QuestionRegexp" />
-      <node id="1174552240608" at="114,57,115,48" concept="0" />
+      <node id="1174552240608" at="53,0,54,0" concept="6" trace="QuestionRegexp" />
+      <node id="1174552240608" at="116,57,117,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174552240608" at="61,0,62,0" concept="1" trace="myConceptQuestionRegexp" />
@@ -510,8 +510,8 @@
       <scope id="1174554186090" at="497,51,502,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174554186090" at="69,0,70,0" concept="6" trace="SymbolClassRegexp" />
-      <node id="1174554186090" at="132,49,133,51" concept="0" />
+      <node id="1174554186090" at="71,0,72,0" concept="6" trace="SymbolClassRegexp" />
+      <node id="1174554186090" at="134,49,135,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174554186090" at="79,0,80,0" concept="1" trace="myConceptSymbolClassRegexp" />
@@ -547,8 +547,8 @@
       <scope id="1174554211468" at="335,59,342,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174554211468" at="46,0,47,0" concept="6" trace="PositiveSymbolClassRegexp" />
-      <node id="1174554211468" at="109,58,110,59" concept="0" />
+      <node id="1174554211468" at="48,0,49,0" concept="6" trace="PositiveSymbolClassRegexp" />
+      <node id="1174554211468" at="111,58,112,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174554211468" at="56,0,57,0" concept="1" trace="myConceptPositiveSymbolClassRegexp" />
@@ -584,8 +584,8 @@
       <scope id="1174554238051" at="289,59,296,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174554238051" at="40,0,41,0" concept="6" trace="NegativeSymbolClassRegexp" />
-      <node id="1174554238051" at="103,58,104,59" concept="0" />
+      <node id="1174554238051" at="42,0,43,0" concept="6" trace="NegativeSymbolClassRegexp" />
+      <node id="1174554238051" at="105,58,106,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174554238051" at="50,0,51,0" concept="1" trace="myConceptNegativeSymbolClassRegexp" />
@@ -620,8 +620,8 @@
       <scope id="1174554386384" at="343,66,349,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174554386384" at="47,0,48,0" concept="6" trace="PredefinedSymbolClassDeclaration" />
-      <node id="1174554386384" at="110,59,111,66" concept="0" />
+      <node id="1174554386384" at="49,0,50,0" concept="6" trace="PredefinedSymbolClassDeclaration" />
+      <node id="1174554386384" at="112,59,113,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174554386384" at="57,0,58,0" concept="1" trace="myConceptPredefinedSymbolClassDeclaration" />
@@ -655,8 +655,8 @@
       <scope id="1174554406855" at="364,57,370,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174554406855" at="50,0,51,0" concept="6" trace="PredefinedSymbolClasses" />
-      <node id="1174554406855" at="113,70,114,57" concept="0" />
+      <node id="1174554406855" at="52,0,53,0" concept="6" trace="PredefinedSymbolClasses" />
+      <node id="1174554406855" at="115,70,116,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174554406855" at="60,0,61,0" concept="1" trace="myConceptPredefinedSymbolClasses" />
@@ -690,8 +690,8 @@
       <scope id="1174555732504" at="350,61,356,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174555732504" at="48,0,49,0" concept="6" trace="PredefinedSymbolClassRegexp" />
-      <node id="1174555732504" at="111,66,112,61" concept="0" />
+      <node id="1174555732504" at="50,0,51,0" concept="6" trace="PredefinedSymbolClassRegexp" />
+      <node id="1174555732504" at="113,66,114,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174555732504" at="58,0,59,0" concept="1" trace="myConceptPredefinedSymbolClassRegexp" />
@@ -727,8 +727,8 @@
       <scope id="1174556813606" at="101,43,108,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174556813606" at="15,0,16,0" concept="6" trace="DotRegexp" />
-      <node id="1174556813606" at="78,58,79,43" concept="0" />
+      <node id="1174556813606" at="17,0,18,0" concept="6" trace="DotRegexp" />
+      <node id="1174556813606" at="80,58,81,43" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174556813606" at="25,0,26,0" concept="1" trace="myConceptDotRegexp" />
@@ -762,8 +762,8 @@
       <scope id="1174557861378" at="491,49,496,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174557861378" at="68,0,69,0" concept="6" trace="SymbolClassPart" />
-      <node id="1174557861378" at="131,53,132,49" concept="0" />
+      <node id="1174557861378" at="70,0,71,0" concept="6" trace="SymbolClassPart" />
+      <node id="1174557861378" at="133,53,134,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174557861378" at="78,0,79,0" concept="1" trace="myConceptSymbolClassPart" />
@@ -796,8 +796,8 @@
       <scope id="1174557878319" at="93,58,100,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174557878319" at="14,0,15,0" concept="6" trace="CharacterSymbolClassPart" />
-      <node id="1174557878319" at="77,46,78,58" concept="0" />
+      <node id="1174557878319" at="16,0,17,0" concept="6" trace="CharacterSymbolClassPart" />
+      <node id="1174557878319" at="79,46,80,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174557878319" at="24,0,25,0" concept="1" trace="myConceptCharacterSymbolClassPart" />
@@ -834,8 +834,8 @@
       <scope id="1174558301835" at="153,57,160,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174558301835" at="22,0,23,0" concept="6" trace="IntervalSymbolClassPart" />
-      <node id="1174558301835" at="85,61,86,57" concept="0" />
+      <node id="1174558301835" at="24,0,25,0" concept="6" trace="IntervalSymbolClassPart" />
+      <node id="1174558301835" at="87,61,88,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174558301835" at="32,0,33,0" concept="1" trace="myConceptIntervalSymbolClassPart" />
@@ -872,8 +872,8 @@
       <scope id="1174558792178" at="357,70,363,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174558792178" at="49,0,50,0" concept="6" trace="PredefinedSymbolClassSymbolClassPart" />
-      <node id="1174558792178" at="112,61,113,70" concept="0" />
+      <node id="1174558792178" at="51,0,52,0" concept="6" trace="PredefinedSymbolClassSymbolClassPart" />
+      <node id="1174558792178" at="114,61,115,70" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174558792178" at="59,0,60,0" concept="1" trace="myConceptPredefinedSymbolClassSymbolClassPart" />
@@ -909,8 +909,8 @@
       <scope id="1174564062919" at="214,51,221,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174564062919" at="30,0,31,0" concept="6" trace="MatchParensRegexp" />
-      <node id="1174564062919" at="93,44,94,51" concept="0" />
+      <node id="1174564062919" at="32,0,33,0" concept="6" trace="MatchParensRegexp" />
+      <node id="1174564062919" at="95,44,96,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174564062919" at="40,0,41,0" concept="1" trace="myConceptMatchParensRegexp" />
@@ -948,8 +948,8 @@
       <scope id="1174565027678" at="244,56,250,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174565027678" at="34,0,35,0" concept="6" trace="MatchVariableReference" />
-      <node id="1174565027678" at="97,54,98,56" concept="0" />
+      <node id="1174565027678" at="36,0,37,0" concept="6" trace="MatchVariableReference" />
+      <node id="1174565027678" at="99,54,100,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174565027678" at="44,0,45,0" concept="1" trace="myConceptMatchVariableReference" />
@@ -984,8 +984,8 @@
       <scope id="1174653354106" at="405,57,410,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174653354106" at="56,0,57,0" concept="6" trace="RegexpUsingConstruction" />
-      <node id="1174653354106" at="119,50,120,57" concept="0" />
+      <node id="1174653354106" at="58,0,59,0" concept="6" trace="RegexpUsingConstruction" />
+      <node id="1174653354106" at="121,50,122,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174653354106" at="66,0,67,0" concept="1" trace="myConceptRegexpUsingConstruction" />
@@ -1028,8 +1028,8 @@
       <scope id="1174655989549" at="432,61,438,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174655989549" at="60,0,61,0" concept="6" trace="ReplaceWithRegexpExpression" />
-      <node id="1174655989549" at="123,61,124,61" concept="0" />
+      <node id="1174655989549" at="62,0,63,0" concept="6" trace="ReplaceWithRegexpExpression" />
+      <node id="1174655989549" at="125,61,126,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174655989549" at="70,0,71,0" concept="1" trace="myConceptReplaceWithRegexpExpression" />
@@ -1067,8 +1067,8 @@
       <scope id="1174656254036" at="418,46,424,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174656254036" at="58,0,59,0" concept="6" trace="ReplaceBlock" />
-      <node id="1174656254036" at="121,41,122,46" concept="0" />
+      <node id="1174656254036" at="60,0,61,0" concept="6" trace="ReplaceBlock" />
+      <node id="1174656254036" at="123,41,124,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174656254036" at="68,0,69,0" concept="1" trace="myConceptReplaceBlock" />
@@ -1104,8 +1104,8 @@
       <scope id="1174660461415" at="177,48,184,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174660461415" at="25,0,26,0" concept="6" trace="LazyStarRegexp" />
-      <node id="1174660461415" at="88,52,89,48" concept="0" />
+      <node id="1174660461415" at="27,0,28,0" concept="6" trace="LazyStarRegexp" />
+      <node id="1174660461415" at="90,52,91,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174660461415" at="35,0,36,0" concept="1" trace="myConceptLazyStarRegexp" />
@@ -1141,8 +1141,8 @@
       <scope id="1174660505718" at="161,48,168,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174660505718" at="23,0,24,0" concept="6" trace="LazyPlusRegexp" />
-      <node id="1174660505718" at="86,57,87,48" concept="0" />
+      <node id="1174660505718" at="25,0,26,0" concept="6" trace="LazyPlusRegexp" />
+      <node id="1174660505718" at="88,57,89,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174660505718" at="33,0,34,0" concept="1" trace="myConceptLazyPlusRegexp" />
@@ -1178,8 +1178,8 @@
       <scope id="1174660533095" at="169,52,176,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174660533095" at="24,0,25,0" concept="6" trace="LazyQuestionRegexp" />
-      <node id="1174660533095" at="87,48,88,52" concept="0" />
+      <node id="1174660533095" at="26,0,27,0" concept="6" trace="LazyQuestionRegexp" />
+      <node id="1174660533095" at="89,48,90,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174660533095" at="34,0,35,0" concept="1" trace="myConceptLazyQuestionRegexp" />
@@ -1214,8 +1214,8 @@
       <scope id="1174662351725" at="411,41,417,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174662351725" at="57,0,58,0" concept="6" trace="Regexps" />
-      <node id="1174662351725" at="120,57,121,41" concept="0" />
+      <node id="1174662351725" at="59,0,60,0" concept="6" trace="Regexps" />
+      <node id="1174662351725" at="122,57,123,41" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174662351725" at="67,0,68,0" concept="1" trace="myConceptRegexps" />
@@ -1249,8 +1249,8 @@
       <scope id="1174662605354" at="392,66,398,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174662605354" at="54,0,55,0" concept="6" trace="RegexpDeclarationReferenceRegexp" />
-      <node id="1174662605354" at="117,51,118,66" concept="0" />
+      <node id="1174662605354" at="56,0,57,0" concept="6" trace="RegexpDeclarationReferenceRegexp" />
+      <node id="1174662605354" at="119,51,120,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174662605354" at="64,0,65,0" concept="1" trace="myConceptRegexpDeclarationReferenceRegexp" />
@@ -1286,8 +1286,8 @@
       <scope id="1174904166999" at="265,46,272,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174904166999" at="37,0,38,0" concept="6" trace="NTimesRegexp" />
-      <node id="1174904166999" at="100,72,101,46" concept="0" />
+      <node id="1174904166999" at="39,0,40,0" concept="6" trace="NTimesRegexp" />
+      <node id="1174904166999" at="102,72,103,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174904166999" at="47,0,48,0" concept="1" trace="myConceptNTimesRegexp" />
@@ -1324,8 +1324,8 @@
       <scope id="1174904442594" at="79,53,86,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174904442594" at="12,0,13,0" concept="6" trace="AtLeastNTimesRegexp" />
-      <node id="1174904442594" at="75,116,76,53" concept="0" />
+      <node id="1174904442594" at="14,0,15,0" concept="6" trace="AtLeastNTimesRegexp" />
+      <node id="1174904442594" at="77,116,78,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174904442594" at="22,0,23,0" concept="1" trace="myConceptAtLeastNTimesRegexp" />
@@ -1362,8 +1362,8 @@
       <scope id="1174904605806" at="130,53,137,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174904605806" at="19,0,20,0" concept="6" trace="FromNToMTimesRegexp" />
-      <node id="1174904605806" at="82,55,83,53" concept="0" />
+      <node id="1174904605806" at="21,0,22,0" concept="6" trace="FromNToMTimesRegexp" />
+      <node id="1174904605806" at="84,55,85,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174904605806" at="29,0,30,0" concept="1" trace="myConceptFromNToMTimesRegexp" />
@@ -1400,8 +1400,8 @@
       <scope id="1174906321267" at="320,57,326,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174906321267" at="44,0,45,0" concept="6" trace="PositiveLookAheadRegexp" />
-      <node id="1174906321267" at="107,44,108,57" concept="0" />
+      <node id="1174906321267" at="46,0,47,0" concept="6" trace="PositiveLookAheadRegexp" />
+      <node id="1174906321267" at="109,44,110,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174906321267" at="54,0,55,0" concept="1" trace="myConceptPositiveLookAheadRegexp" />
@@ -1437,8 +1437,8 @@
       <scope id="1174906468661" at="273,57,280,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174906468661" at="38,0,39,0" concept="6" trace="NegativeLookAheadRegexp" />
-      <node id="1174906468661" at="101,46,102,57" concept="0" />
+      <node id="1174906468661" at="40,0,41,0" concept="6" trace="NegativeLookAheadRegexp" />
+      <node id="1174906468661" at="103,46,104,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174906468661" at="48,0,49,0" concept="1" trace="myConceptNegativeLookAheadRegexp" />
@@ -1472,8 +1472,8 @@
       <scope id="1174906544517" at="208,44,213,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174906544517" at="29,0,30,0" concept="6" trace="LookRegexp" />
-      <node id="1174906544517" at="92,57,93,44" concept="0" />
+      <node id="1174906544517" at="31,0,32,0" concept="6" trace="LookRegexp" />
+      <node id="1174906544517" at="94,57,95,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174906544517" at="39,0,40,0" concept="1" trace="myConceptLookRegexp" />
@@ -1509,8 +1509,8 @@
       <scope id="1174906762287" at="327,58,334,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174906762287" at="45,0,46,0" concept="6" trace="PositiveLookBehindRegexp" />
-      <node id="1174906762287" at="108,57,109,58" concept="0" />
+      <node id="1174906762287" at="47,0,48,0" concept="6" trace="PositiveLookBehindRegexp" />
+      <node id="1174906762287" at="110,57,111,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174906762287" at="55,0,56,0" concept="1" trace="myConceptPositiveLookBehindRegexp" />
@@ -1546,8 +1546,8 @@
       <scope id="1174906790902" at="281,58,288,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174906790902" at="39,0,40,0" concept="6" trace="NegativeLookBehindRegexp" />
-      <node id="1174906790902" at="102,57,103,58" concept="0" />
+      <node id="1174906790902" at="41,0,42,0" concept="6" trace="NegativeLookBehindRegexp" />
+      <node id="1174906790902" at="104,57,105,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174906790902" at="49,0,50,0" concept="1" trace="myConceptNegativeLookBehindRegexp" />
@@ -1582,8 +1582,8 @@
       <scope id="1174909099093" at="251,62,257,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174909099093" at="35,0,36,0" concept="6" trace="MatchVariableReferenceRegexp" />
-      <node id="1174909099093" at="98,56,99,62" concept="0" />
+      <node id="1174909099093" at="37,0,38,0" concept="6" trace="MatchVariableReferenceRegexp" />
+      <node id="1174909099093" at="100,56,101,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174909099093" at="45,0,46,0" concept="1" trace="myConceptMatchVariableReferenceRegexp" />
@@ -1617,8 +1617,8 @@
       <scope id="1174919147781" at="399,50,404,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1174919147781" at="55,0,56,0" concept="6" trace="RegexpExpression" />
-      <node id="1174919147781" at="118,66,119,50" concept="0" />
+      <node id="1174919147781" at="57,0,58,0" concept="6" trace="RegexpExpression" />
+      <node id="1174919147781" at="120,66,121,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1174919147781" at="65,0,66,0" concept="1" trace="myConceptRegexpExpression" />
@@ -1653,8 +1653,8 @@
       <scope id="1175154849582" at="123,55,129,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1175154849582" at="18,0,19,0" concept="6" trace="ForEachMatchStatement" />
-      <node id="1175154849582" at="81,52,82,55" concept="0" />
+      <node id="1175154849582" at="20,0,21,0" concept="6" trace="ForEachMatchStatement" />
+      <node id="1175154849582" at="83,52,84,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1175154849582" at="28,0,29,0" concept="1" trace="myConceptForEachMatchStatement" />
@@ -1693,8 +1693,8 @@
       <scope id="1175161264766" at="193,49,200,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1175161264766" at="27,0,28,0" concept="6" trace="LineStartRegexp" />
-      <node id="1175161264766" at="90,47,91,49" concept="0" />
+      <node id="1175161264766" at="29,0,30,0" concept="6" trace="LineStartRegexp" />
+      <node id="1175161264766" at="92,47,93,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1175161264766" at="37,0,38,0" concept="1" trace="myConceptLineStartRegexp" />
@@ -1730,8 +1730,8 @@
       <scope id="1175161300324" at="185,47,192,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1175161300324" at="26,0,27,0" concept="6" trace="LineEndRegexp" />
-      <node id="1175161300324" at="89,48,90,47" concept="0" />
+      <node id="1175161300324" at="28,0,29,0" concept="6" trace="LineEndRegexp" />
+      <node id="1175161300324" at="91,48,92,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1175161300324" at="36,0,37,0" concept="1" trace="myConceptLineEndRegexp" />
@@ -1767,8 +1767,8 @@
       <scope id="1175164405556" at="460,49,467,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1175164405556" at="64,0,65,0" concept="6" trace="SplitExpression" />
-      <node id="1175164405556" at="127,43,128,49" concept="0" />
+      <node id="1175164405556" at="66,0,67,0" concept="6" trace="SplitExpression" />
+      <node id="1175164405556" at="129,43,130,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1175164405556" at="74,0,75,0" concept="1" trace="myConceptSplitExpression" />
@@ -1805,8 +1805,8 @@
       <scope id="1175169009571" at="116,52,122,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1175169009571" at="17,0,18,0" concept="6" trace="FindMatchStatement" />
-      <node id="1175169009571" at="80,58,81,52" concept="0" />
+      <node id="1175169009571" at="19,0,20,0" concept="6" trace="FindMatchStatement" />
+      <node id="1175169009571" at="82,58,83,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1175169009571" at="27,0,28,0" concept="1" trace="myConceptFindMatchStatement" />
@@ -1844,8 +1844,8 @@
       <scope id="1179357154354" at="222,55,228,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1179357154354" at="31,0,32,0" concept="6" trace="MatchRegexpExpression" />
-      <node id="1179357154354" at="94,51,95,55" concept="0" />
+      <node id="1179357154354" at="33,0,34,0" concept="6" trace="MatchRegexpExpression" />
+      <node id="1179357154354" at="96,51,97,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1179357154354" at="41,0,42,0" concept="1" trace="myConceptMatchRegexpExpression" />
@@ -1882,8 +1882,8 @@
       <scope id="1203415418648" at="515,56,521,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1203415418648" at="72,0,73,0" concept="6" trace="UnicodeCharacterRegexp" />
-      <node id="1203415418648" at="135,45,136,56" concept="0" />
+      <node id="1203415418648" at="74,0,75,0" concept="6" trace="UnicodeCharacterRegexp" />
+      <node id="1203415418648" at="137,45,138,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1203415418648" at="82,0,83,0" concept="1" trace="myConceptUnicodeCharacterRegexp" />
@@ -1925,8 +1925,8 @@
       <scope id="1220021842985" at="145,61,152,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1220021842985" at="21,0,22,0" concept="6" trace="IntersectionSymbolClassPart" />
-      <node id="1220021842985" at="84,56,85,61" concept="0" />
+      <node id="1220021842985" at="23,0,24,0" concept="6" trace="IntersectionSymbolClassPart" />
+      <node id="1220021842985" at="86,56,87,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1220021842985" at="31,0,32,0" concept="1" trace="myConceptIntersectionSymbolClassPart" />
@@ -1962,8 +1962,8 @@
       <scope id="1220356640633" at="503,58,508,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1220356640633" at="70,0,71,0" concept="6" trace="SymbolClassRegexpAndPart" />
-      <node id="1220356640633" at="133,51,134,58" concept="0" />
+      <node id="1220356640633" at="72,0,73,0" concept="6" trace="SymbolClassRegexpAndPart" />
+      <node id="1220356640633" at="135,51,136,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1220356640633" at="80,0,81,0" concept="1" trace="myConceptSymbolClassRegexpAndPart" />
@@ -1998,8 +1998,8 @@
       <scope id="1222256539755" at="468,48,475,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1222256539755" at="65,0,66,0" concept="6" trace="SplitOperation" />
-      <node id="1222256539755" at="128,49,129,48" concept="0" />
+      <node id="1222256539755" at="67,0,68,0" concept="6" trace="SplitOperation" />
+      <node id="1222256539755" at="130,49,131,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1222256539755" at="75,0,76,0" concept="1" trace="myConceptSplitOperation" />
@@ -2034,8 +2034,8 @@
       <scope id="1222260469397" at="229,54,235,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1222260469397" at="32,0,33,0" concept="6" trace="MatchRegexpOperation" />
-      <node id="1222260469397" at="95,55,96,54" concept="0" />
+      <node id="1222260469397" at="34,0,35,0" concept="6" trace="MatchRegexpOperation" />
+      <node id="1222260469397" at="97,55,98,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1222260469397" at="42,0,43,0" concept="1" trace="myConceptMatchRegexpOperation" />
@@ -2071,8 +2071,8 @@
       <scope id="1222260556146" at="439,60,446,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1222260556146" at="61,0,62,0" concept="6" trace="ReplaceWithRegexpOperation" />
-      <node id="1222260556146" at="124,61,125,60" concept="0" />
+      <node id="1222260556146" at="63,0,64,0" concept="6" trace="ReplaceWithRegexpOperation" />
+      <node id="1222260556146" at="126,61,127,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1222260556146" at="71,0,72,0" concept="1" trace="myConceptReplaceWithRegexpOperation" />
@@ -2108,8 +2108,8 @@
       <scope id="3796137614137086346" at="425,56,431,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3796137614137086346" at="59,0,60,0" concept="6" trace="ReplaceRegexpOperation" />
-      <node id="3796137614137086346" at="122,46,123,61" concept="0" />
+      <node id="3796137614137086346" at="61,0,62,0" concept="6" trace="ReplaceRegexpOperation" />
+      <node id="3796137614137086346" at="124,46,125,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3796137614137086346" at="69,0,70,0" concept="1" trace="myConceptReplaceRegexpOperation" />
@@ -2150,8 +2150,8 @@
       <scope id="3796137614137538892" at="201,52,207,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3796137614137538892" at="28,0,29,0" concept="6" trace="LiteralReplacement" />
-      <node id="3796137614137538892" at="91,49,92,57" concept="0" />
+      <node id="3796137614137538892" at="30,0,31,0" concept="6" trace="LiteralReplacement" />
+      <node id="3796137614137538892" at="93,49,94,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3796137614137538892" at="38,0,39,0" concept="1" trace="myConceptLiteralReplacement" />
@@ -2186,8 +2186,8 @@
       <scope id="3796137614137538894" at="258,67,264,55" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3796137614137538894" at="36,0,37,0" concept="6" trace="MatchVariableReferenceReplacement" />
-      <node id="3796137614137538894" at="99,62,100,72" concept="0" />
+      <node id="3796137614137538894" at="38,0,39,0" concept="6" trace="MatchVariableReferenceReplacement" />
+      <node id="3796137614137538894" at="101,62,102,72" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3796137614137538894" at="46,0,47,0" concept="1" trace="myConceptMatchVariableReferenceReplacement" />
@@ -2221,8 +2221,8 @@
       <scope id="3796137614137538898" at="447,45,452,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3796137614137538898" at="62,0,63,0" concept="6" trace="Replacement" />
-      <node id="3796137614137538898" at="125,60,126,50" concept="0" />
+      <node id="3796137614137538898" at="64,0,65,0" concept="6" trace="Replacement" />
+      <node id="3796137614137538898" at="127,60,128,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3796137614137538898" at="72,0,73,0" concept="1" trace="myConceptReplacement" />
@@ -2259,8 +2259,8 @@
       <scope id="6129327962763158517" at="109,53,115,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6129327962763158517" at="16,0,17,0" concept="6" trace="FindMatchExpression" />
-      <node id="6129327962763158517" at="79,43,80,58" concept="0" />
+      <node id="6129327962763158517" at="18,0,19,0" concept="6" trace="FindMatchExpression" />
+      <node id="6129327962763158517" at="81,43,82,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6129327962763158517" at="26,0,27,0" concept="1" trace="myConceptFindMatchExpression" />

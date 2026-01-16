@@ -13,7 +13,7 @@
       <unit at="11,0,289,0" name="jetbrains.mps.build.workflow.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,92,0" name="jetbrains.mps.build.workflow.structure.LanguageConceptSwitch" />
+      <unit at="12,0,100,0" name="jetbrains.mps.build.workflow.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,521,0" name="jetbrains.mps.build.workflow.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="144710003695346438" at="121,48,127,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="144710003695346438" at="22,0,23,0" concept="6" trace="BwfJavaLibrary" />
-      <node id="144710003695346438" at="57,56,58,52" concept="0" />
+      <node id="144710003695346438" at="24,0,25,0" concept="6" trace="BwfJavaLibrary" />
+      <node id="144710003695346438" at="59,56,60,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="144710003695346438" at="26,0,27,0" concept="1" trace="myConceptBwfJavaLibrary" />
@@ -71,8 +71,8 @@
       <scope id="144710003695507915" at="128,57,134,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="144710003695507915" at="23,0,24,0" concept="6" trace="BwfJavaLibraryReference" />
-      <node id="144710003695507915" at="58,52,59,61" concept="0" />
+      <node id="144710003695507915" at="25,0,26,0" concept="6" trace="BwfJavaLibraryReference" />
+      <node id="144710003695507915" at="60,52,61,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="144710003695507915" at="27,0,28,0" concept="1" trace="myConceptBwfJavaLibraryReference" />
@@ -108,8 +108,8 @@
       <scope id="2059109515400477499" at="72,55,78,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2059109515400477499" at="15,0,16,0" concept="6" trace="BwfAntTaskDeclaration" />
-      <node id="2059109515400477499" at="50,66,51,60" concept="0" />
+      <node id="2059109515400477499" at="17,0,18,0" concept="6" trace="BwfAntTaskDeclaration" />
+      <node id="2059109515400477499" at="52,66,53,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2059109515400477499" at="19,0,20,0" concept="1" trace="myConceptBwfAntTaskDeclaration" />
@@ -148,8 +148,8 @@
       <scope id="244868996532667532" at="79,48,85,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="244868996532667532" at="16,0,17,0" concept="6" trace="BwfCustomMacro" />
-      <node id="244868996532667532" at="51,60,52,52" concept="0" />
+      <node id="244868996532667532" at="18,0,19,0" concept="6" trace="BwfCustomMacro" />
+      <node id="244868996532667532" at="53,60,54,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="244868996532667532" at="20,0,21,0" concept="1" trace="myConceptBwfCustomMacro" />
@@ -185,8 +185,8 @@
       <scope id="2529023923283121115" at="190,57,196,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2529023923283121115" at="32,0,33,0" concept="6" trace="BwfProjectPartStatement" />
-      <node id="2529023923283121115" at="67,53,68,62" concept="0" />
+      <node id="2529023923283121115" at="34,0,35,0" concept="6" trace="BwfProjectPartStatement" />
+      <node id="2529023923283121115" at="69,53,70,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2529023923283121115" at="36,0,37,0" concept="1" trace="myConceptBwfProjectPartStatement" />
@@ -222,8 +222,8 @@
       <scope id="2529023923283158037" at="65,61,71,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2529023923283158037" at="14,0,15,0" concept="6" trace="BwfAntTaskBundleDeclaration" />
-      <node id="2529023923283158037" at="49,54,50,66" concept="0" />
+      <node id="2529023923283158037" at="16,0,17,0" concept="6" trace="BwfAntTaskBundleDeclaration" />
+      <node id="2529023923283158037" at="51,54,52,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2529023923283158037" at="18,0,19,0" concept="1" trace="myConceptBwfAntTaskBundleDeclaration" />
@@ -260,8 +260,8 @@
       <scope id="2769948622284546673" at="177,44,183,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284546673" at="30,0,31,0" concept="6" trace="BwfProject" />
-      <node id="2769948622284546673" at="65,55,66,49" concept="0" />
+      <node id="2769948622284546673" at="32,0,33,0" concept="6" trace="BwfProject" />
+      <node id="2769948622284546673" at="67,55,68,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284546673" at="34,0,35,0" concept="1" trace="myConceptBwfProject" />
@@ -300,8 +300,8 @@
       <scope id="2769948622284546675" at="218,41,224,29" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284546675" at="36,0,37,0" concept="6" trace="BwfTask" />
-      <node id="2769948622284546675" at="71,59,72,46" concept="0" />
+      <node id="2769948622284546675" at="38,0,39,0" concept="6" trace="BwfTask" />
+      <node id="2769948622284546675" at="73,59,74,46" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284546675" at="40,0,41,0" concept="1" trace="myConceptBwfTask" />
@@ -341,8 +341,8 @@
       <scope id="2769948622284546677" at="204,44,210,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284546677" at="34,0,35,0" concept="6" trace="BwfSubTask" />
-      <node id="2769948622284546677" at="69,51,70,49" concept="0" />
+      <node id="2769948622284546677" at="36,0,37,0" concept="6" trace="BwfSubTask" />
+      <node id="2769948622284546677" at="71,51,72,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284546677" at="38,0,39,0" concept="1" trace="myConceptBwfSubTask" />
@@ -380,8 +380,8 @@
       <scope id="2769948622284546695" at="184,48,189,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284546695" at="31,0,32,0" concept="6" trace="BwfProjectPart" />
-      <node id="2769948622284546695" at="66,49,67,53" concept="0" />
+      <node id="2769948622284546695" at="33,0,34,0" concept="6" trace="BwfProjectPart" />
+      <node id="2769948622284546695" at="68,49,69,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284546695" at="35,0,36,0" concept="1" trace="myConceptBwfProjectPart" />
@@ -413,8 +413,8 @@
       <scope id="2769948622284574294" at="225,51,231,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284574294" at="37,0,38,0" concept="6" trace="BwfTaskDependency" />
-      <node id="2769948622284574294" at="72,46,73,56" concept="0" />
+      <node id="2769948622284574294" at="39,0,40,0" concept="6" trace="BwfTaskDependency" />
+      <node id="2769948622284574294" at="74,46,75,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284574294" at="41,0,42,0" concept="1" trace="myConceptBwfTaskDependency" />
@@ -447,8 +447,8 @@
       <scope id="2769948622284605880" at="211,54,217,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284605880" at="35,0,36,0" concept="6" trace="BwfSubTaskDependency" />
-      <node id="2769948622284605880" at="70,49,71,59" concept="0" />
+      <node id="2769948622284605880" at="37,0,38,0" concept="6" trace="BwfSubTaskDependency" />
+      <node id="2769948622284605880" at="72,49,73,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284605880" at="39,0,40,0" concept="1" trace="myConceptBwfSubTaskDependency" />
@@ -481,8 +481,8 @@
       <scope id="2769948622284605979" at="197,46,203,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284605979" at="33,0,34,0" concept="6" trace="BwfStatement" />
-      <node id="2769948622284605979" at="68,62,69,51" concept="0" />
+      <node id="2769948622284605979" at="35,0,36,0" concept="6" trace="BwfStatement" />
+      <node id="2769948622284605979" at="70,62,71,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284605979" at="37,0,38,0" concept="1" trace="myConceptBwfStatement" />
@@ -515,8 +515,8 @@
       <scope id="2769948622284768359" at="58,49,64,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2769948622284768359" at="13,0,14,0" concept="6" trace="BwfAntStatement" />
-      <node id="2769948622284768359" at="48,56,49,54" concept="0" />
+      <node id="2769948622284768359" at="15,0,16,0" concept="6" trace="BwfAntStatement" />
+      <node id="2769948622284768359" at="50,56,51,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2769948622284768359" at="17,0,18,0" concept="1" trace="myConceptBwfAntStatement" />
@@ -552,8 +552,8 @@
       <scope id="3961775458390032824" at="254,45,260,33" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3961775458390032824" at="41,0,42,0" concept="6" trace="BwfTaskPart" />
-      <node id="3961775458390032824" at="76,60,77,50" concept="0" />
+      <node id="3961775458390032824" at="43,0,44,0" concept="6" trace="BwfTaskPart" />
+      <node id="3961775458390032824" at="78,60,79,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3961775458390032824" at="45,0,46,0" concept="1" trace="myConceptBwfTaskPart" />
@@ -592,8 +592,8 @@
       <scope id="4755209551904389307" at="135,47,141,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4755209551904389307" at="24,0,25,0" concept="6" trace="BwfJavaModule" />
-      <node id="4755209551904389307" at="59,61,60,52" concept="0" />
+      <node id="4755209551904389307" at="26,0,27,0" concept="6" trace="BwfJavaModule" />
+      <node id="4755209551904389307" at="61,61,62,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4755209551904389307" at="28,0,29,0" concept="1" trace="myConceptBwfJavaModule" />
@@ -645,8 +645,8 @@
       <scope id="4755209551904389316" at="142,56,148,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4755209551904389316" at="25,0,26,0" concept="6" trace="BwfJavaModuleReference" />
-      <node id="4755209551904389316" at="60,52,61,61" concept="0" />
+      <node id="4755209551904389316" at="27,0,28,0" concept="6" trace="BwfJavaModuleReference" />
+      <node id="4755209551904389316" at="62,52,63,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4755209551904389316" at="29,0,30,0" concept="1" trace="myConceptBwfJavaModuleReference" />
@@ -681,8 +681,8 @@
       <scope id="5423338990219630088" at="51,51,57,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5423338990219630088" at="12,0,13,0" concept="6" trace="BwfAntProjectPart" />
-      <node id="5423338990219630088" at="47,116,48,56" concept="0" />
+      <node id="5423338990219630088" at="14,0,15,0" concept="6" trace="BwfAntProjectPart" />
+      <node id="5423338990219630088" at="49,116,50,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5423338990219630088" at="16,0,17,0" concept="1" trace="myConceptBwfAntProjectPart" />
@@ -718,8 +718,8 @@
       <scope id="6520682027040940623" at="156,52,162,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6520682027040940623" at="27,0,28,0" concept="6" trace="BwfMacroListImport" />
-      <node id="6520682027040940623" at="62,47,63,57" concept="0" />
+      <node id="6520682027040940623" at="29,0,30,0" concept="6" trace="BwfMacroListImport" />
+      <node id="6520682027040940623" at="64,47,65,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6520682027040940623" at="31,0,32,0" concept="1" trace="myConceptBwfMacroListImport" />
@@ -755,8 +755,8 @@
       <scope id="6647099934206976110" at="108,51,113,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6647099934206976110" at="20,0,21,0" concept="6" trace="BwfJavaDependency" />
-      <node id="6647099934206976110" at="55,55,56,56" concept="0" />
+      <node id="6647099934206976110" at="22,0,23,0" concept="6" trace="BwfJavaDependency" />
+      <node id="6647099934206976110" at="57,55,58,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6647099934206976110" at="24,0,25,0" concept="1" trace="myConceptBwfJavaDependency" />
@@ -789,8 +789,8 @@
       <scope id="6647099934206976119" at="100,50,107,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6647099934206976119" at="19,0,20,0" concept="6" trace="BwfJavaClassPath" />
-      <node id="6647099934206976119" at="54,49,55,55" concept="0" />
+      <node id="6647099934206976119" at="21,0,22,0" concept="6" trace="BwfJavaClassPath" />
+      <node id="6647099934206976119" at="56,49,57,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6647099934206976119" at="23,0,24,0" concept="1" trace="myConceptBwfJavaClassPath" />
@@ -826,8 +826,8 @@
       <scope id="6647099934207069200" at="163,52,169,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6647099934207069200" at="28,0,29,0" concept="6" trace="BwfPathDeclaration" />
-      <node id="6647099934207069200" at="63,57,64,57" concept="0" />
+      <node id="6647099934207069200" at="30,0,31,0" concept="6" trace="BwfPathDeclaration" />
+      <node id="6647099934207069200" at="65,57,66,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6647099934207069200" at="32,0,33,0" concept="1" trace="myConceptBwfPathDeclaration" />
@@ -864,8 +864,8 @@
       <scope id="6647099934207069215" at="170,50,176,38" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6647099934207069215" at="29,0,30,0" concept="6" trace="BwfPathReference" />
-      <node id="6647099934207069215" at="64,57,65,55" concept="0" />
+      <node id="6647099934207069215" at="31,0,32,0" concept="6" trace="BwfPathReference" />
+      <node id="6647099934207069215" at="66,57,67,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6647099934207069215" at="33,0,34,0" concept="1" trace="myConceptBwfPathReference" />
@@ -902,8 +902,8 @@
       <scope id="687702229764893898" at="276,52,284,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="687702229764893898" at="44,0,45,0" concept="6" trace="XmlForeignRefValue" />
-      <node id="687702229764893898" at="79,56,80,56" concept="0" />
+      <node id="687702229764893898" at="46,0,47,0" concept="6" trace="XmlForeignRefValue" />
+      <node id="687702229764893898" at="81,56,82,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="687702229764893898" at="48,0,49,0" concept="1" trace="myConceptXmlForeignRefValue" />
@@ -939,8 +939,8 @@
       <scope id="6896005762093571400" at="149,42,155,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6896005762093571400" at="26,0,27,0" concept="6" trace="BwfMacro" />
-      <node id="6896005762093571400" at="61,61,62,47" concept="0" />
+      <node id="6896005762093571400" at="28,0,29,0" concept="6" trace="BwfMacro" />
+      <node id="6896005762093571400" at="63,61,64,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6896005762093571400" at="30,0,31,0" concept="1" trace="myConceptBwfMacro" />
@@ -980,8 +980,8 @@
       <scope id="7306485738221315929" at="114,51,120,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7306485738221315929" at="21,0,22,0" concept="6" trace="BwfJavaDescriptor" />
-      <node id="7306485738221315929" at="56,56,57,56" concept="0" />
+      <node id="7306485738221315929" at="23,0,24,0" concept="6" trace="BwfJavaDescriptor" />
+      <node id="7306485738221315929" at="58,56,59,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7306485738221315929" at="25,0,26,0" concept="1" trace="myConceptBwfJavaDescriptor" />
@@ -1016,8 +1016,8 @@
       <scope id="7306485738221391506" at="232,48,238,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7306485738221391506" at="38,0,39,0" concept="6" trace="BwfTaskLibrary" />
-      <node id="7306485738221391506" at="73,56,74,53" concept="0" />
+      <node id="7306485738221391506" at="40,0,41,0" concept="6" trace="BwfTaskLibrary" />
+      <node id="7306485738221391506" at="75,56,76,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7306485738221391506" at="42,0,43,0" concept="1" trace="myConceptBwfTaskLibrary" />
@@ -1053,8 +1053,8 @@
       <scope id="7306485738221471031" at="239,58,245,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7306485738221471031" at="39,0,40,0" concept="6" trace="BwfTaskLibraryDependency" />
-      <node id="7306485738221471031" at="74,53,75,63" concept="0" />
+      <node id="7306485738221471031" at="41,0,42,0" concept="6" trace="BwfTaskLibraryDependency" />
+      <node id="7306485738221471031" at="76,53,77,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7306485738221471031" at="43,0,44,0" concept="1" trace="myConceptBwfTaskLibraryDependency" />
@@ -1087,8 +1087,8 @@
       <scope id="7926701909975416091" at="93,44,99,32" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7926701909975416091" at="18,0,19,0" concept="6" trace="BwfFileSet" />
-      <node id="7926701909975416091" at="53,52,54,49" concept="0" />
+      <node id="7926701909975416091" at="20,0,21,0" concept="6" trace="BwfFileSet" />
+      <node id="7926701909975416091" at="55,52,56,49" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7926701909975416091" at="22,0,23,0" concept="1" trace="myConceptBwfFileSet" />
@@ -1122,8 +1122,8 @@
       <scope id="8206585334426832194" at="246,55,253,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8206585334426832194" at="40,0,41,0" concept="6" trace="BwfTaskMacroCondition" />
-      <node id="8206585334426832194" at="75,63,76,60" concept="0" />
+      <node id="8206585334426832194" at="42,0,43,0" concept="6" trace="BwfTaskMacroCondition" />
+      <node id="8206585334426832194" at="77,63,78,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8206585334426832194" at="44,0,45,0" concept="1" trace="myConceptBwfTaskMacroCondition" />
@@ -1158,8 +1158,8 @@
       <scope id="8292198017262926588" at="86,47,92,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8292198017262926588" at="17,0,18,0" concept="6" trace="BwfDependency" />
-      <node id="8292198017262926588" at="52,52,53,52" concept="0" />
+      <node id="8292198017262926588" at="19,0,20,0" concept="6" trace="BwfDependency" />
+      <node id="8292198017262926588" at="54,52,55,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8292198017262926588" at="21,0,22,0" concept="1" trace="myConceptBwfDependency" />
@@ -1193,8 +1193,8 @@
       <scope id="8817646574325010961" at="268,51,275,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8817646574325010961" at="43,0,44,0" concept="6" trace="BwfValueStatement" />
-      <node id="8817646574325010961" at="78,56,79,56" concept="0" />
+      <node id="8817646574325010961" at="45,0,46,0" concept="6" trace="BwfValueStatement" />
+      <node id="8817646574325010961" at="80,56,81,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8817646574325010961" at="47,0,48,0" concept="1" trace="myConceptBwfValueStatement" />
@@ -1230,8 +1230,8 @@
       <scope id="8817646574325011342" at="261,51,267,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8817646574325011342" at="42,0,43,0" concept="6" trace="BwfValueReference" />
-      <node id="8817646574325011342" at="77,50,78,56" concept="0" />
+      <node id="8817646574325011342" at="44,0,45,0" concept="6" trace="BwfValueReference" />
+      <node id="8817646574325011342" at="79,50,80,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8817646574325011342" at="46,0,47,0" concept="1" trace="myConceptBwfValueReference" />

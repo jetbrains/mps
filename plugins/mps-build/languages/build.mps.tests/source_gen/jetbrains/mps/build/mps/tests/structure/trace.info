@@ -13,7 +13,7 @@
       <unit at="11,0,79,0" name="jetbrains.mps.build.mps.tests.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,40,0" name="jetbrains.mps.build.mps.tests.structure.LanguageConceptSwitch" />
+      <unit at="12,0,48,0" name="jetbrains.mps.build.mps.tests.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,150,0" name="jetbrains.mps.build.mps.tests.structure.StructureAspectDescriptor" />
@@ -34,8 +34,8 @@
       <scope id="4005526075820600484" at="32,56,39,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4005526075820600484" at="13,0,14,0" concept="6" trace="BuildModuleTestsPlugin" />
-      <node id="4005526075820600484" at="22,65,23,61" concept="0" />
+      <node id="4005526075820600484" at="15,0,16,0" concept="6" trace="BuildModuleTestsPlugin" />
+      <node id="4005526075820600484" at="24,65,25,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4005526075820600484" at="18,0,19,0" concept="1" trace="myConceptBuildModuleTestsPlugin" />
@@ -71,8 +71,8 @@
       <scope id="4560297596904469355" at="47,58,53,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4560297596904469355" at="15,0,16,0" concept="6" trace="BuildMps_TestModuleGroup" />
-      <node id="4560297596904469355" at="24,58,25,63" concept="0" />
+      <node id="4560297596904469355" at="17,0,18,0" concept="6" trace="BuildMps_TestModuleGroup" />
+      <node id="4560297596904469355" at="26,58,27,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4560297596904469355" at="20,0,21,0" concept="1" trace="myConceptBuildMps_TestModuleGroup" />
@@ -107,8 +107,8 @@
       <scope id="4560297596904469357" at="25,60,31,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4560297596904469357" at="12,0,13,0" concept="6" trace="BuildAspect_MpsTestModules" />
-      <node id="4560297596904469357" at="21,116,22,65" concept="0" />
+      <node id="4560297596904469357" at="14,0,15,0" concept="6" trace="BuildAspect_MpsTestModules" />
+      <node id="4560297596904469357" at="23,116,24,65" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4560297596904469357" at="17,0,18,0" concept="1" trace="myConceptBuildAspect_MpsTestModules" />
@@ -148,8 +148,8 @@
       <scope id="4560297596904469361" at="54,62,59,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4560297596904469361" at="16,0,17,0" concept="6" trace="BuildMps_TestModules_Content" />
-      <node id="4560297596904469361" at="25,63,26,67" concept="0" />
+      <node id="4560297596904469361" at="18,0,19,0" concept="6" trace="BuildMps_TestModules_Content" />
+      <node id="4560297596904469361" at="27,63,28,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4560297596904469361" at="21,0,22,0" concept="1" trace="myConceptBuildMps_TestModules_Content" />
@@ -182,8 +182,8 @@
       <scope id="4560297596904469362" at="40,53,46,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4560297596904469362" at="14,0,15,0" concept="6" trace="BuildMps_TestModule" />
-      <node id="4560297596904469362" at="23,61,24,58" concept="0" />
+      <node id="4560297596904469362" at="16,0,17,0" concept="6" trace="BuildMps_TestModule" />
+      <node id="4560297596904469362" at="25,61,26,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4560297596904469362" at="19,0,20,0" concept="1" trace="myConceptBuildMps_TestModule" />
@@ -219,8 +219,8 @@
       <scope id="6593674873635848984" at="68,48,74,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6593674873635848984" at="18,0,19,0" concept="6" trace="RequiredPlugin" />
-      <node id="6593674873635848984" at="27,67,28,53" concept="0" />
+      <node id="6593674873635848984" at="20,0,21,0" concept="6" trace="RequiredPlugin" />
+      <node id="6593674873635848984" at="29,67,30,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6593674873635848984" at="23,0,24,0" concept="1" trace="myConceptRequiredPlugin" />
@@ -254,8 +254,8 @@
       <scope id="6593674873639474400" at="60,62,67,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6593674873639474400" at="17,0,18,0" concept="6" trace="BuildMps_TestModules_Options" />
-      <node id="6593674873639474400" at="26,67,27,67" concept="0" />
+      <node id="6593674873639474400" at="19,0,20,0" concept="6" trace="BuildMps_TestModules_Options" />
+      <node id="6593674873639474400" at="28,67,29,67" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6593674873639474400" at="22,0,23,0" concept="1" trace="myConceptBuildMps_TestModules_Options" />

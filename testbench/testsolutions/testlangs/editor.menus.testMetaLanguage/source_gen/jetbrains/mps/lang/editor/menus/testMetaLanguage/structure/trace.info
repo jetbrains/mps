@@ -13,7 +13,7 @@
       <unit at="11,0,82,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,40,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.LanguageConceptSwitch" />
+      <unit at="12,0,48,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,137,0" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="2710939522624389503" at="71,57,77,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2710939522624389503" at="18,0,19,0" concept="6" trace="TransformationMenu_Test" />
-      <node id="2710939522624389503" at="27,77,28,62" concept="0" />
+      <node id="2710939522624389503" at="20,0,21,0" concept="6" trace="TransformationMenu_Test" />
+      <node id="2710939522624389503" at="29,77,30,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2710939522624389503" at="21,0,22,0" concept="1" trace="myConceptTransformationMenu_Test" />
@@ -68,8 +68,8 @@
       <scope id="3743352646564481246" at="57,69,63,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3743352646564481246" at="16,0,17,0" concept="6" trace="TransformationLocation_WithFeatures" />
-      <node id="3743352646564481246" at="25,66,26,74" concept="0" />
+      <node id="3743352646564481246" at="18,0,19,0" concept="6" trace="TransformationLocation_WithFeatures" />
+      <node id="3743352646564481246" at="27,66,28,74" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3743352646564481246" at="19,0,20,0" concept="1" trace="myConceptTransformationLocation_WithFeatures" />
@@ -105,8 +105,8 @@
       <scope id="3743352646564998933" at="41,67,48,55" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3743352646564998933" at="14,0,15,0" concept="6" trace="TransformationFeature_Unavailable" />
-      <node id="3743352646564998933" at="23,69,24,72" concept="0" />
+      <node id="3743352646564998933" at="16,0,17,0" concept="6" trace="TransformationFeature_Unavailable" />
+      <node id="3743352646564998933" at="25,69,26,72" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3743352646564998933" at="17,0,18,0" concept="1" trace="myConceptTransformationFeature_Unavailable" />
@@ -142,8 +142,8 @@
       <scope id="4740302442485120029" at="25,64,32,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4740302442485120029" at="12,0,13,0" concept="6" trace="TransformationFeature_Optional" />
-      <node id="4740302442485120029" at="21,116,22,69" concept="0" />
+      <node id="4740302442485120029" at="14,0,15,0" concept="6" trace="TransformationFeature_Optional" />
+      <node id="4740302442485120029" at="23,116,24,69" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4740302442485120029" at="15,0,16,0" concept="1" trace="myConceptTransformationFeature_Optional" />
@@ -179,8 +179,8 @@
       <scope id="4740302442485123544" at="33,64,40,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4740302442485123544" at="13,0,14,0" concept="6" trace="TransformationFeature_Required" />
-      <node id="4740302442485123544" at="22,69,23,69" concept="0" />
+      <node id="4740302442485123544" at="15,0,16,0" concept="6" trace="TransformationFeature_Required" />
+      <node id="4740302442485123544" at="24,69,25,69" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4740302442485123544" at="16,0,17,0" concept="1" trace="myConceptTransformationFeature_Required" />
@@ -215,8 +215,8 @@
       <scope id="4740302442485168427" at="64,72,70,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4740302442485168427" at="17,0,18,0" concept="6" trace="TransformationLocation_WithoutFeatures" />
-      <node id="4740302442485168427" at="26,74,27,77" concept="0" />
+      <node id="4740302442485168427" at="19,0,20,0" concept="6" trace="TransformationLocation_WithoutFeatures" />
+      <node id="4740302442485168427" at="28,74,29,77" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4740302442485168427" at="20,0,21,0" concept="1" trace="myConceptTransformationLocation_WithoutFeatures" />
@@ -252,8 +252,8 @@
       <scope id="6436886136983394210" at="49,61,56,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6436886136983394210" at="15,0,16,0" concept="6" trace="TransformationLocation_Test" />
-      <node id="6436886136983394210" at="24,72,25,66" concept="0" />
+      <node id="6436886136983394210" at="17,0,18,0" concept="6" trace="TransformationLocation_Test" />
+      <node id="6436886136983394210" at="26,72,27,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6436886136983394210" at="18,0,19,0" concept="1" trace="myConceptTransformationLocation_Test" />

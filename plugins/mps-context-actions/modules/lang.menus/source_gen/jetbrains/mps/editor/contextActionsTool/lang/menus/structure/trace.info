@@ -13,7 +13,7 @@
       <unit at="11,0,65,0" name="jetbrains.mps.editor.contextActionsTool.lang.menus.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,36,0" name="jetbrains.mps.editor.contextActionsTool.lang.menus.structure.LanguageConceptSwitch" />
+      <unit at="12,0,44,0" name="jetbrains.mps.editor.contextActionsTool.lang.menus.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,118,0" name="jetbrains.mps.editor.contextActionsTool.lang.menus.structure.StructureAspectDescriptor" />
@@ -34,8 +34,8 @@
       <scope id="7291101478621922220" at="31,74,38,62" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7291101478621922220" at="13,0,14,0" concept="6" trace="QueryFunction_TransformationMenu_Tooltip" />
-      <node id="7291101478621922220" at="20,76,21,79" concept="0" />
+      <node id="7291101478621922220" at="15,0,16,0" concept="6" trace="QueryFunction_TransformationMenu_Tooltip" />
+      <node id="7291101478621922220" at="22,76,23,79" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7291101478621922220" at="18,0,19,0" concept="1" trace="myConceptQueryFunction_TransformationMenu_Tooltip" />
@@ -71,8 +71,8 @@
       <scope id="8954657570916342471" at="39,60,45,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8954657570916342471" at="14,0,15,0" concept="6" trace="TransformationFeature_Icon" />
-      <node id="8954657570916342471" at="21,79,22,65" concept="0" />
+      <node id="8954657570916342471" at="16,0,17,0" concept="6" trace="TransformationFeature_Icon" />
+      <node id="8954657570916342471" at="23,79,24,65" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8954657570916342471" at="19,0,20,0" concept="1" trace="myConceptTransformationFeature_Icon" />
@@ -109,8 +109,8 @@
       <scope id="8954657570916342474" at="23,71,30,59" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8954657570916342474" at="12,0,13,0" concept="6" trace="QueryFunction_TransformationMenu_Icon" />
-      <node id="8954657570916342474" at="19,116,20,76" concept="0" />
+      <node id="8954657570916342474" at="14,0,15,0" concept="6" trace="QueryFunction_TransformationMenu_Icon" />
+      <node id="8954657570916342474" at="21,116,22,76" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8954657570916342474" at="17,0,18,0" concept="1" trace="myConceptQueryFunction_TransformationMenu_Icon" />
@@ -146,8 +146,8 @@
       <scope id="8954657570916343205" at="46,63,52,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8954657570916343205" at="15,0,16,0" concept="6" trace="TransformationFeature_Tooltip" />
-      <node id="8954657570916343205" at="22,65,23,68" concept="0" />
+      <node id="8954657570916343205" at="17,0,18,0" concept="6" trace="TransformationFeature_Tooltip" />
+      <node id="8954657570916343205" at="24,65,25,68" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8954657570916343205" at="20,0,21,0" concept="1" trace="myConceptTransformationFeature_Tooltip" />
@@ -184,8 +184,8 @@
       <scope id="8954657570916343208" at="53,75,60,63" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8954657570916343208" at="16,0,17,0" concept="6" trace="TransformationLocation_ContextActionsTool" />
-      <node id="8954657570916343208" at="23,68,24,80" concept="0" />
+      <node id="8954657570916343208" at="18,0,19,0" concept="6" trace="TransformationLocation_ContextActionsTool" />
+      <node id="8954657570916343208" at="25,68,26,80" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8954657570916343208" at="21,0,22,0" concept="1" trace="myConceptTransformationLocation_ContextActionsTool" />

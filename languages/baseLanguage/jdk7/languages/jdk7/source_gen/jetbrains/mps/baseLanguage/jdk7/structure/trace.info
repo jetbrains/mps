@@ -13,7 +13,7 @@
       <unit at="11,0,31,0" name="jetbrains.mps.baseLanguage.jdk7.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,28,0" name="jetbrains.mps.baseLanguage.jdk7.structure.LanguageConceptSwitch" />
+      <unit at="12,0,36,0" name="jetbrains.mps.baseLanguage.jdk7.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,63,0" name="jetbrains.mps.baseLanguage.jdk7.structure.StructureAspectDescriptor" />
@@ -34,8 +34,8 @@
       <scope id="400642802549924137" at="19,55,26,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="400642802549924137" at="12,0,13,0" concept="6" trace="StringSwitchStatement" />
-      <node id="400642802549924137" at="15,116,16,59" concept="0" />
+      <node id="400642802549924137" at="14,0,15,0" concept="6" trace="StringSwitchStatement" />
+      <node id="400642802549924137" at="17,116,18,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="400642802549924137" at="17,0,18,0" concept="1" trace="myConceptStringSwitchStatement" />

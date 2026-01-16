@@ -81,7 +81,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     }
   }
   private static String getFileName_XmlFile(SNode node) {
-    return node.getName();
+    return SPropertyOperations.getString(node, PROPS.name$MnvL);
+
   }
   private static String getFileExtension_XmlFile(SNode node) {
     if (isEmptyString(SPropertyOperations.getString(node, PROPS.fileExtension$ey11))) {
@@ -99,6 +100,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty fileExtension$ey11 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x6abfad232d929dfbL, "fileExtension");
   }
 }

@@ -15,7 +15,7 @@
       <unit at="8,0,12,0" name="jetbrains.mps.lang.test.generator.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,42,0" name="jetbrains.mps.lang.test.generator.structure.LanguageConceptSwitch" />
+      <unit at="12,0,50,0" name="jetbrains.mps.lang.test.generator.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="15,0,155,0" name="jetbrains.mps.lang.test.generator.structure.StructureAspectDescriptor" />
@@ -36,8 +36,8 @@
       <scope id="554465258093187774" at="33,47,40,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="554465258093187774" at="13,0,14,0" concept="5" trace="GeneratorTest" />
-      <node id="554465258093187774" at="23,55,24,51" concept="0" />
+      <node id="554465258093187774" at="15,0,16,0" concept="5" trace="GeneratorTest" />
+      <node id="554465258093187774" at="25,55,26,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="554465258093187774" at="17,0,18,0" concept="1" trace="myConceptGeneratorTest" />
@@ -72,8 +72,8 @@
       <scope id="554465258093190250" at="57,46,62,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="554465258093190250" at="16,0,17,0" concept="5" trace="TestArgument" />
-      <node id="554465258093190250" at="26,56,27,50" concept="0" />
+      <node id="554465258093190250" at="18,0,19,0" concept="5" trace="TestArgument" />
+      <node id="554465258093190250" at="28,56,29,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="554465258093190250" at="20,0,21,0" concept="1" trace="myConceptTestArgument" />
@@ -109,8 +109,8 @@
       <scope id="554465258093190254" at="41,47,48,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="554465258093190254" at="14,0,15,0" concept="5" trace="ModelArgument" />
-      <node id="554465258093190254" at="24,51,25,51" concept="0" />
+      <node id="554465258093190254" at="16,0,17,0" concept="5" trace="ModelArgument" />
+      <node id="554465258093190254" at="26,51,27,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="554465258093190254" at="18,0,19,0" concept="1" trace="myConceptModelArgument" />
@@ -145,8 +145,8 @@
       <scope id="554465258093203543" at="69,62,76,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="554465258093203543" at="18,0,19,0" concept="5" trace="TransformationMatchAssertion" />
-      <node id="554465258093203543" at="28,51,29,66" concept="0" />
+      <node id="554465258093203543" at="20,0,21,0" concept="5" trace="TransformationMatchAssertion" />
+      <node id="554465258093203543" at="30,51,31,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="554465258093203543" at="22,0,23,0" concept="1" trace="myConceptTransformationMatchAssertion" />
@@ -181,8 +181,8 @@
       <scope id="554465258093203544" at="63,47,68,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="554465258093203544" at="17,0,18,0" concept="5" trace="TestAssertion" />
-      <node id="554465258093203544" at="27,50,28,51" concept="0" />
+      <node id="554465258093203544" at="19,0,20,0" concept="5" trace="TestAssertion" />
+      <node id="554465258093203544" at="29,50,30,51" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="554465258093203544" at="21,0,22,0" concept="1" trace="myConceptTestAssertion" />
@@ -216,8 +216,8 @@
       <scope id="554465258093203547" at="26,51,32,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="554465258093203547" at="12,0,13,0" concept="5" trace="ArgumentReference" />
-      <node id="554465258093203547" at="22,116,23,55" concept="0" />
+      <node id="554465258093203547" at="14,0,15,0" concept="5" trace="ArgumentReference" />
+      <node id="554465258093203547" at="24,116,25,55" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="554465258093203547" at="16,0,17,0" concept="1" trace="myConceptArgumentReference" />
@@ -251,8 +251,8 @@
       <scope id="6346338635721157081" at="77,66,84,54" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6346338635721157081" at="19,0,20,0" concept="5" trace="TransformationMatchManyAssertion" />
-      <node id="6346338635721157081" at="29,66,30,71" concept="0" />
+      <node id="6346338635721157081" at="21,0,22,0" concept="5" trace="TransformationMatchManyAssertion" />
+      <node id="6346338635721157081" at="31,66,32,71" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6346338635721157081" at="23,0,24,0" concept="1" trace="myConceptTransformationMatchManyAssertion" />
@@ -288,8 +288,8 @@
       <scope id="8945822034016668031" at="49,51,56,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8945822034016668031" at="15,0,16,0" concept="5" trace="ModelMatchOptions" />
-      <node id="8945822034016668031" at="25,51,26,56" concept="0" />
+      <node id="8945822034016668031" at="17,0,18,0" concept="5" trace="ModelMatchOptions" />
+      <node id="8945822034016668031" at="27,51,28,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8945822034016668031" at="19,0,20,0" concept="1" trace="myConceptModelMatchOptions" />

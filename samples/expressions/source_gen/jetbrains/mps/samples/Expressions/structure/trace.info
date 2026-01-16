@@ -13,7 +13,7 @@
       <unit at="11,0,209,0" name="jetbrains.mps.samples.Expressions.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,74,0" name="jetbrains.mps.samples.Expressions.structure.LanguageConceptSwitch" />
+      <unit at="12,0,82,0" name="jetbrains.mps.samples.Expressions.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="18,0,364,0" name="jetbrains.mps.samples.Expressions.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="2073504467207867403" at="110,54,115,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467207867403" at="22,0,23,0" concept="6" trace="SimpleMathExpression" />
-      <node id="2073504467207867403" at="48,60,49,59" concept="0" />
+      <node id="2073504467207867403" at="24,0,25,0" concept="6" trace="SimpleMathExpression" />
+      <node id="2073504467207867403" at="50,60,51,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467207867403" at="29,0,30,0" concept="1" trace="myConceptSimpleMathExpression" />
@@ -64,8 +64,8 @@
       <scope id="2073504467207869132" at="56,60,61,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467207869132" at="14,0,15,0" concept="6" trace="BinarySimpleMathExpression" />
-      <node id="2073504467207869132" at="40,69,41,65" concept="0" />
+      <node id="2073504467207869132" at="16,0,17,0" concept="6" trace="BinarySimpleMathExpression" />
+      <node id="2073504467207869132" at="42,69,43,65" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467207869132" at="21,0,22,0" concept="1" trace="myConceptBinarySimpleMathExpression" />
@@ -100,8 +100,8 @@
       <scope id="2073504467207935099" at="199,59,204,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467207935099" at="35,0,36,0" concept="6" trace="UnarySimpleMathExpression" />
-      <node id="2073504467207935099" at="61,56,62,64" concept="0" />
+      <node id="2073504467207935099" at="37,0,38,0" concept="6" trace="UnarySimpleMathExpression" />
+      <node id="2073504467207935099" at="63,56,64,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467207935099" at="42,0,43,0" concept="1" trace="myConceptUnarySimpleMathExpression" />
@@ -136,8 +136,8 @@
       <scope id="2073504467207935108" at="68,57,74,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467207935108" at="16,0,17,0" concept="6" trace="NotSimpleMathExpression" />
-      <node id="2073504467207935108" at="42,66,43,62" concept="0" />
+      <node id="2073504467207935108" at="18,0,19,0" concept="6" trace="NotSimpleMathExpression" />
+      <node id="2073504467207935108" at="44,66,45,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467207935108" at="23,0,24,0" concept="1" trace="myConceptNotSimpleMathExpression" />
@@ -171,8 +171,8 @@
       <scope id="2073504467207965605" at="62,61,67,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467207965605" at="15,0,16,0" concept="6" trace="LogicalSimpleMathExpression" />
-      <node id="2073504467207965605" at="41,65,42,66" concept="0" />
+      <node id="2073504467207965605" at="17,0,18,0" concept="6" trace="LogicalSimpleMathExpression" />
+      <node id="2073504467207965605" at="43,65,44,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467207965605" at="22,0,23,0" concept="1" trace="myConceptLogicalSimpleMathExpression" />
@@ -205,8 +205,8 @@
       <scope id="2073504467208085351" at="165,48,170,36" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208085351" at="30,0,31,0" concept="6" trace="SimpleMathType" />
-      <node id="2073504467208085351" at="56,59,57,53" concept="0" />
+      <node id="2073504467208085351" at="32,0,33,0" concept="6" trace="SimpleMathType" />
+      <node id="2073504467208085351" at="58,59,59,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208085351" at="37,0,38,0" concept="1" trace="myConceptSimpleMathType" />
@@ -238,8 +238,8 @@
       <scope id="2073504467208085352" at="96,55,102,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208085352" at="20,0,21,0" concept="6" trace="SimpleMathBooleanType" />
-      <node id="2073504467208085352" at="46,64,47,60" concept="0" />
+      <node id="2073504467208085352" at="22,0,23,0" concept="6" trace="SimpleMathBooleanType" />
+      <node id="2073504467208085352" at="48,64,49,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208085352" at="27,0,28,0" concept="1" trace="myConceptSimpleMathBooleanType" />
@@ -275,8 +275,8 @@
       <scope id="2073504467208335362" at="192,51,198,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208335362" at="34,0,35,0" concept="6" trace="SimpleMathWrapper" />
-      <node id="2073504467208335362" at="60,61,61,56" concept="0" />
+      <node id="2073504467208335362" at="36,0,37,0" concept="6" trace="SimpleMathWrapper" />
+      <node id="2073504467208335362" at="62,61,63,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208335362" at="41,0,42,0" concept="1" trace="myConceptSimpleMathWrapper" />
@@ -311,8 +311,8 @@
       <scope id="2073504467208490057" at="42,57,48,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208490057" at="12,0,13,0" concept="6" trace="AndSimpleMathExpression" />
-      <node id="2073504467208490057" at="38,116,39,62" concept="0" />
+      <node id="2073504467208490057" at="14,0,15,0" concept="6" trace="AndSimpleMathExpression" />
+      <node id="2073504467208490057" at="40,116,41,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208490057" at="19,0,20,0" concept="1" trace="myConceptAndSimpleMathExpression" />
@@ -347,8 +347,8 @@
       <scope id="2073504467208490058" at="75,56,81,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208490058" at="17,0,18,0" concept="6" trace="OrSimpleMathExpression" />
-      <node id="2073504467208490058" at="43,62,44,61" concept="0" />
+      <node id="2073504467208490058" at="19,0,20,0" concept="6" trace="OrSimpleMathExpression" />
+      <node id="2073504467208490058" at="45,62,46,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208490058" at="24,0,25,0" concept="1" trace="myConceptOrSimpleMathExpression" />
@@ -383,8 +383,8 @@
       <scope id="2073504467208536638" at="89,59,95,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208536638" at="19,0,20,0" concept="6" trace="SimpleMathBooleanConstant" />
-      <node id="2073504467208536638" at="45,58,46,64" concept="0" />
+      <node id="2073504467208536638" at="21,0,22,0" concept="6" trace="SimpleMathBooleanConstant" />
+      <node id="2073504467208536638" at="47,58,48,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208536638" at="26,0,27,0" concept="1" trace="myConceptSimpleMathBooleanConstant" />
@@ -419,8 +419,8 @@
       <scope id="2073504467208541194" at="130,59,136,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208541194" at="25,0,26,0" concept="6" trace="SimpleMathIntegerConstant" />
-      <node id="2073504467208541194" at="51,58,52,64" concept="0" />
+      <node id="2073504467208541194" at="27,0,28,0" concept="6" trace="SimpleMathIntegerConstant" />
+      <node id="2073504467208541194" at="53,58,54,64" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208541194" at="32,0,33,0" concept="1" trace="myConceptSimpleMathIntegerConstant" />
@@ -455,8 +455,8 @@
       <scope id="2073504467208542432" at="137,55,143,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208542432" at="26,0,27,0" concept="6" trace="SimpleMathIntegerType" />
-      <node id="2073504467208542432" at="52,64,53,60" concept="0" />
+      <node id="2073504467208542432" at="28,0,29,0" concept="6" trace="SimpleMathIntegerType" />
+      <node id="2073504467208542432" at="54,64,55,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208542432" at="33,0,34,0" concept="1" trace="myConceptSimpleMathIntegerType" />
@@ -491,8 +491,8 @@
       <scope id="2073504467208672407" at="49,64,55,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467208672407" at="13,0,14,0" concept="6" trace="ArithmeticSimpleMathExpression" />
-      <node id="2073504467208672407" at="39,62,40,69" concept="0" />
+      <node id="2073504467208672407" at="15,0,16,0" concept="6" trace="ArithmeticSimpleMathExpression" />
+      <node id="2073504467208672407" at="41,62,42,69" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467208672407" at="20,0,21,0" concept="1" trace="myConceptArithmeticSimpleMathExpression" />
@@ -528,8 +528,8 @@
       <scope id="2073504467209342143" at="178,58,184,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467209342143" at="32,0,33,0" concept="6" trace="SimpleMathVarDeclaration" />
-      <node id="2073504467209342143" at="58,68,59,63" concept="0" />
+      <node id="2073504467209342143" at="34,0,35,0" concept="6" trace="SimpleMathVarDeclaration" />
+      <node id="2073504467209342143" at="60,68,61,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467209342143" at="39,0,40,0" concept="1" trace="myConceptSimpleMathVarDeclaration" />
@@ -566,8 +566,8 @@
       <scope id="2073504467209348321" at="185,56,191,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467209348321" at="33,0,34,0" concept="6" trace="SimpleMathVarReference" />
-      <node id="2073504467209348321" at="59,63,60,61" concept="0" />
+      <node id="2073504467209348321" at="35,0,36,0" concept="6" trace="SimpleMathVarReference" />
+      <node id="2073504467209348321" at="61,63,62,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467209348321" at="40,0,41,0" concept="1" trace="myConceptSimpleMathVarReference" />
@@ -602,8 +602,8 @@
       <scope id="2073504467209504078" at="103,55,109,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467209504078" at="21,0,22,0" concept="6" trace="SimpleMathElementType" />
-      <node id="2073504467209504078" at="47,60,48,60" concept="0" />
+      <node id="2073504467209504078" at="23,0,24,0" concept="6" trace="SimpleMathElementType" />
+      <node id="2073504467209504078" at="49,60,50,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467209504078" at="28,0,29,0" concept="1" trace="myConceptSimpleMathElementType" />
@@ -638,8 +638,8 @@
       <scope id="2073504467209504611" at="158,54,164,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467209504611" at="29,0,30,0" concept="6" trace="SimpleMathNumberType" />
-      <node id="2073504467209504611" at="55,57,56,59" concept="0" />
+      <node id="2073504467209504611" at="31,0,32,0" concept="6" trace="SimpleMathNumberType" />
+      <node id="2073504467209504611" at="57,57,58,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467209504611" at="36,0,37,0" concept="1" trace="myConceptSimpleMathNumberType" />
@@ -674,8 +674,8 @@
       <scope id="2073504467209660554" at="151,52,157,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467209660554" at="28,0,29,0" concept="6" trace="SimpleMathLongType" />
-      <node id="2073504467209660554" at="54,61,55,57" concept="0" />
+      <node id="2073504467209660554" at="30,0,31,0" concept="6" trace="SimpleMathLongType" />
+      <node id="2073504467209660554" at="56,61,57,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467209660554" at="35,0,36,0" concept="1" trace="myConceptSimpleMathLongType" />
@@ -710,8 +710,8 @@
       <scope id="2073504467209943018" at="144,56,150,44" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467209943018" at="27,0,28,0" concept="6" trace="SimpleMathLongConstant" />
-      <node id="2073504467209943018" at="53,60,54,61" concept="0" />
+      <node id="2073504467209943018" at="29,0,30,0" concept="6" trace="SimpleMathLongConstant" />
+      <node id="2073504467209943018" at="55,60,56,61" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467209943018" at="34,0,35,0" concept="1" trace="myConceptSimpleMathLongConstant" />
@@ -746,8 +746,8 @@
       <scope id="2073504467210944062" at="123,53,129,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467210944062" at="24,0,25,0" concept="6" trace="SimpleMathFloatType" />
-      <node id="2073504467210944062" at="50,62,51,58" concept="0" />
+      <node id="2073504467210944062" at="26,0,27,0" concept="6" trace="SimpleMathFloatType" />
+      <node id="2073504467210944062" at="52,62,53,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467210944062" at="31,0,32,0" concept="1" trace="myConceptSimpleMathFloatType" />
@@ -782,8 +782,8 @@
       <scope id="2073504467210944676" at="116,57,122,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2073504467210944676" at="23,0,24,0" concept="6" trace="SimpleMathFloatConstant" />
-      <node id="2073504467210944676" at="49,59,50,62" concept="0" />
+      <node id="2073504467210944676" at="25,0,26,0" concept="6" trace="SimpleMathFloatConstant" />
+      <node id="2073504467210944676" at="51,59,52,62" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2073504467210944676" at="30,0,31,0" concept="1" trace="myConceptSimpleMathFloatConstant" />
@@ -818,8 +818,8 @@
       <scope id="8620208551721374838" at="171,63,177,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8620208551721374838" at="31,0,32,0" concept="6" trace="SimpleMathTypedVarDeclaration" />
-      <node id="8620208551721374838" at="57,53,58,68" concept="0" />
+      <node id="8620208551721374838" at="33,0,34,0" concept="6" trace="SimpleMathTypedVarDeclaration" />
+      <node id="8620208551721374838" at="59,53,60,68" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8620208551721374838" at="38,0,39,0" concept="1" trace="myConceptSimpleMathTypedVarDeclaration" />
@@ -854,8 +854,8 @@
       <scope id="930174696942536268" at="82,54,88,42" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="930174696942536268" at="18,0,19,0" concept="6" trace="SimpleMathAssignment" />
-      <node id="930174696942536268" at="44,61,45,58" concept="0" />
+      <node id="930174696942536268" at="20,0,21,0" concept="6" trace="SimpleMathAssignment" />
+      <node id="930174696942536268" at="46,61,47,58" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="930174696942536268" at="25,0,26,0" concept="1" trace="myConceptSimpleMathAssignment" />

@@ -13,7 +13,7 @@
       <unit at="11,0,46,0" name="org.jetbrains.mps.samples.Constants.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,32,0" name="org.jetbrains.mps.samples.Constants.structure.LanguageConceptSwitch" />
+      <unit at="12,0,40,0" name="org.jetbrains.mps.samples.Constants.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="16,0,90,0" name="org.jetbrains.mps.samples.Constants.structure.StructureAspectDescriptor" />
@@ -33,8 +33,8 @@
       <scope id="1494751830318912535" at="35,43,41,31" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1494751830318912535" at="14,0,15,0" concept="6" trace="Constants" />
-      <node id="1494751830318912535" at="19,56,20,48" concept="0" />
+      <node id="1494751830318912535" at="16,0,17,0" concept="6" trace="Constants" />
+      <node id="1494751830318912535" at="21,56,22,48" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1494751830318912535" at="19,0,20,0" concept="1" trace="myConceptConstants" />
@@ -69,8 +69,8 @@
       <scope id="1494751830318912537" at="21,42,27,30" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1494751830318912537" at="12,0,13,0" concept="6" trace="Constant" />
-      <node id="1494751830318912537" at="17,115,18,47" concept="0" />
+      <node id="1494751830318912537" at="14,0,15,0" concept="6" trace="Constant" />
+      <node id="1494751830318912537" at="19,115,20,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1494751830318912537" at="17,0,18,0" concept="1" trace="myConceptConstant" />
@@ -104,8 +104,8 @@
       <scope id="3990190717072393829" at="28,51,34,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3990190717072393829" at="13,0,14,0" concept="6" trace="ConstantReference" />
-      <node id="3990190717072393829" at="18,47,19,56" concept="0" />
+      <node id="3990190717072393829" at="15,0,16,0" concept="6" trace="ConstantReference" />
+      <node id="3990190717072393829" at="20,47,21,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3990190717072393829" at="18,0,19,0" concept="1" trace="myConceptConstantReference" />

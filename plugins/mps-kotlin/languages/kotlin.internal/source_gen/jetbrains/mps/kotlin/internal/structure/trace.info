@@ -12,7 +12,7 @@
       <unit at="11,0,38,0" name="jetbrains.mps.kotlin.internal.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,30,0" name="jetbrains.mps.kotlin.internal.structure.LanguageConceptSwitch" />
+      <unit at="12,0,38,0" name="jetbrains.mps.kotlin.internal.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="14,0,83,0" name="jetbrains.mps.kotlin.internal.structure.StructureAspectDescriptor" />
@@ -32,8 +32,8 @@
       <scope id="3181756179483562337" at="20,55,26,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3181756179483562337" at="12,0,13,0" concept="5" trace="GenericLeftExpression" />
-      <node id="3181756179483562337" at="16,116,17,60" concept="0" />
+      <node id="3181756179483562337" at="14,0,15,0" concept="5" trace="GenericLeftExpression" />
+      <node id="3181756179483562337" at="18,116,19,60" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="3181756179483562337" at="15,0,16,0" concept="1" trace="myConceptGenericLeftExpression" />
@@ -73,8 +73,8 @@
       <scope id="6573432175633983226" at="27,47,33,35" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6573432175633983226" at="13,0,14,0" concept="5" trace="TextReference" />
-      <node id="6573432175633983226" at="17,60,18,52" concept="0" />
+      <node id="6573432175633983226" at="15,0,16,0" concept="5" trace="TextReference" />
+      <node id="6573432175633983226" at="19,60,20,52" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6573432175633983226" at="16,0,17,0" concept="1" trace="myConceptTextReference" />

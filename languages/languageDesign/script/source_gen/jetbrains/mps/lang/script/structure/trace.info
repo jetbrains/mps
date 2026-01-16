@@ -20,7 +20,7 @@
       <unit at="8,0,12,0" name="jetbrains.mps.lang.script.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <unit at="10,0,60,0" name="jetbrains.mps.lang.script.structure.LanguageConceptSwitch" />
+      <unit at="12,0,68,0" name="jetbrains.mps.lang.script.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <unit at="20,0,302,0" name="jetbrains.mps.lang.script.structure.StructureAspectDescriptor" />
@@ -43,8 +43,8 @@
       <scope id="1177457067821" at="96,49,105,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1177457067821" at="21,0,22,0" concept="8" trace="MigrationScript" />
-      <node id="1177457067821" at="40,65,41,49" concept="1" />
+      <node id="1177457067821" at="23,0,24,0" concept="8" trace="MigrationScript" />
+      <node id="1177457067821" at="42,65,43,49" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1177457067821" at="30,0,31,0" concept="2" trace="myConceptMigrationScript" />
@@ -86,8 +86,8 @@
       <scope id="1177457850499" at="112,62,118,50" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1177457850499" at="23,0,24,0" concept="8" trace="MigrationScriptPart_Instance" />
-      <node id="1177457850499" at="42,58,43,62" concept="1" />
+      <node id="1177457850499" at="25,0,26,0" concept="8" trace="MigrationScriptPart_Instance" />
+      <node id="1177457850499" at="44,58,45,62" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1177457850499" at="32,0,33,0" concept="2" trace="myConceptMigrationScriptPart_Instance" />
@@ -128,8 +128,8 @@
       <scope id="1177458061340" at="119,72,125,60" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1177458061340" at="24,0,25,0" concept="8" trace="MigrationScriptPart_Instance_Predicate" />
-      <node id="1177458061340" at="43,62,44,72" concept="1" />
+      <node id="1177458061340" at="26,0,27,0" concept="8" trace="MigrationScriptPart_Instance_Predicate" />
+      <node id="1177458061340" at="45,62,46,72" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1177458061340" at="33,0,34,0" concept="2" trace="myConceptMigrationScriptPart_Instance_Predicate" />
@@ -165,8 +165,8 @@
       <scope id="1177458237937" at="133,58,139,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1177458237937" at="26,0,27,0" concept="8" trace="MigrationScriptPart_node" />
-      <node id="1177458237937" at="45,70,46,58" concept="1" />
+      <node id="1177458237937" at="28,0,29,0" concept="8" trace="MigrationScriptPart_node" />
+      <node id="1177458237937" at="47,70,48,58" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1177458237937" at="35,0,36,0" concept="2" trace="myConceptMigrationScriptPart_node" />
@@ -202,8 +202,8 @@
       <scope id="1177458491964" at="126,70,132,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1177458491964" at="25,0,26,0" concept="8" trace="MigrationScriptPart_Instance_Updater" />
-      <node id="1177458491964" at="44,72,45,70" concept="1" />
+      <node id="1177458491964" at="27,0,28,0" concept="8" trace="MigrationScriptPart_Instance_Updater" />
+      <node id="1177458491964" at="46,72,47,70" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1177458491964" at="34,0,35,0" concept="2" trace="myConceptMigrationScriptPart_Instance_Updater" />
@@ -239,8 +239,8 @@
       <scope id="2291767839159498115" at="61,59,67,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2291767839159498115" at="16,0,17,0" concept="8" trace="DirectMethodSpecification" />
-      <node id="2291767839159498115" at="35,68,36,64" concept="1" />
+      <node id="2291767839159498115" at="18,0,19,0" concept="8" trace="DirectMethodSpecification" />
+      <node id="2291767839159498115" at="37,68,38,64" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2291767839159498115" at="25,0,26,0" concept="2" trace="myConceptDirectMethodSpecification" />
@@ -275,8 +275,8 @@
       <scope id="2598676492883164205" at="89,60,95,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2598676492883164205" at="20,0,21,0" concept="8" trace="FactoryMigrationScriptPart" />
-      <node id="2598676492883164205" at="39,64,40,65" concept="1" />
+      <node id="2598676492883164205" at="22,0,23,0" concept="8" trace="FactoryMigrationScriptPart" />
+      <node id="2598676492883164205" at="41,64,42,65" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2598676492883164205" at="29,0,30,0" concept="2" trace="myConceptFactoryMigrationScriptPart" />
@@ -313,8 +313,8 @@
       <scope id="2598676492883244606" at="147,63,153,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2598676492883244606" at="28,0,29,0" concept="8" trace="WhitespaceMigrationScriptPart" />
-      <node id="2598676492883244606" at="47,50,48,68" concept="1" />
+      <node id="2598676492883244606" at="30,0,31,0" concept="8" trace="WhitespaceMigrationScriptPart" />
+      <node id="2598676492883244606" at="49,50,50,68" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2598676492883244606" at="37,0,38,0" concept="2" trace="myConceptWhitespaceMigrationScriptPart" />
@@ -400,8 +400,8 @@
       <scope id="4774682482449847011" at="82,59,88,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4774682482449847011" at="19,0,20,0" concept="8" trace="FQNameMethodSpecification" />
-      <node id="4774682482449847011" at="38,68,39,64" concept="1" />
+      <node id="4774682482449847011" at="21,0,22,0" concept="8" trace="FQNameMethodSpecification" />
+      <node id="4774682482449847011" at="40,68,41,64" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4774682482449847011" at="28,0,29,0" concept="2" trace="myConceptFQNameMethodSpecification" />
@@ -435,8 +435,8 @@
       <scope id="4774682482449869981" at="41,61,46,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="4774682482449869981" at="13,0,14,0" concept="8" trace="AbstractMethodSpecification" />
-      <node id="4774682482449869981" at="32,70,33,66" concept="1" />
+      <node id="4774682482449869981" at="15,0,16,0" concept="8" trace="AbstractMethodSpecification" />
+      <node id="4774682482449869981" at="34,70,35,66" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="4774682482449869981" at="22,0,23,0" concept="2" trace="myConceptAbstractMethodSpecification" />
@@ -467,8 +467,8 @@
       <scope id="5434557751112081978" at="35,65,40,53" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5434557751112081978" at="12,0,13,0" concept="8" trace="AbstractClassifierSpecification" />
-      <node id="5434557751112081978" at="31,115,32,70" concept="1" />
+      <node id="5434557751112081978" at="14,0,15,0" concept="8" trace="AbstractClassifierSpecification" />
+      <node id="5434557751112081978" at="33,115,34,70" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5434557751112081978" at="21,0,22,0" concept="2" trace="myConceptAbstractClassifierSpecification" />
@@ -500,8 +500,8 @@
       <scope id="5434557751112207651" at="54,63,60,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5434557751112207651" at="15,0,16,0" concept="8" trace="DirectClassifierSpecification" />
-      <node id="5434557751112207651" at="34,65,35,68" concept="1" />
+      <node id="5434557751112207651" at="17,0,18,0" concept="8" trace="DirectClassifierSpecification" />
+      <node id="5434557751112207651" at="36,65,37,68" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5434557751112207651" at="24,0,25,0" concept="2" trace="myConceptDirectClassifierSpecification" />
@@ -536,8 +536,8 @@
       <scope id="5434557751112207835" at="75,63,81,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5434557751112207835" at="18,0,19,0" concept="8" trace="FQNameClassifierSpecification" />
-      <node id="5434557751112207835" at="37,64,38,68" concept="1" />
+      <node id="5434557751112207835" at="20,0,21,0" concept="8" trace="FQNameClassifierSpecification" />
+      <node id="5434557751112207835" at="39,64,40,68" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5434557751112207835" at="27,0,28,0" concept="2" trace="myConceptFQNameClassifierSpecification" />
@@ -574,8 +574,8 @@
       <scope id="6655357163912204546" at="47,60,53,48" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6655357163912204546" at="14,0,15,0" concept="8" trace="CommentMigrationScriptPart" />
-      <node id="6655357163912204546" at="33,66,34,65" concept="1" />
+      <node id="6655357163912204546" at="16,0,17,0" concept="8" trace="CommentMigrationScriptPart" />
+      <node id="6655357163912204546" at="35,66,36,65" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6655357163912204546" at="23,0,24,0" concept="2" trace="myConceptCommentMigrationScriptPart" />
@@ -612,8 +612,8 @@
       <scope id="6655357163912246425" at="68,59,74,47" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6655357163912246425" at="17,0,18,0" concept="8" trace="ExtractInterfaceMigration" />
-      <node id="6655357163912246425" at="36,64,37,64" concept="1" />
+      <node id="6655357163912246425" at="19,0,20,0" concept="8" trace="ExtractInterfaceMigration" />
+      <node id="6655357163912246425" at="38,64,39,64" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6655357163912246425" at="26,0,27,0" concept="2" trace="myConceptExtractInterfaceMigration" />
@@ -652,8 +652,8 @@
       <scope id="6970965131508596229" at="106,53,111,41" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="6970965131508596229" at="22,0,23,0" concept="8" trace="MigrationScriptPart" />
-      <node id="6970965131508596229" at="41,49,42,58" concept="1" />
+      <node id="6970965131508596229" at="24,0,25,0" concept="8" trace="MigrationScriptPart" />
+      <node id="6970965131508596229" at="43,49,44,58" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="6970965131508596229" at="31,0,32,0" concept="2" trace="myConceptMigrationScriptPart" />
@@ -687,8 +687,8 @@
       <scope id="849077997121870276" at="140,46,146,34" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="849077997121870276" at="27,0,28,0" concept="8" trace="PullUpMethod" />
-      <node id="849077997121870276" at="46,58,47,50" concept="1" />
+      <node id="849077997121870276" at="29,0,30,0" concept="8" trace="PullUpMethod" />
+      <node id="849077997121870276" at="48,58,49,50" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="849077997121870276" at="36,0,37,0" concept="2" trace="myConceptPullUpMethod" />

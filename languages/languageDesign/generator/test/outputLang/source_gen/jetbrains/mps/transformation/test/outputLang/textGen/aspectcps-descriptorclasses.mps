@@ -9,8 +9,8 @@
     <import index="povf" ref="r:dc2197ed-ff7a-4789-9556-7ee196b8feae(jetbrains.mps.transformation.test.outputLang.textGen)" />
     <import index="kpbf" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text.impl(MPS.TextGen/)" />
     <import index="tq1l" ref="r:00000000-0000-4000-0000-011c89590605(jetbrains.mps.transformation.test.outputLang.structure)" />
+    <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="yfwt" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text.rt(MPS.TextGen/)" />
-    <import index="tpcf" ref="r:00000000-0000-4000-0000-011c89590293(jetbrains.mps.lang.structure.generator_new.baseLanguage@generator)" />
     <import index="ao3" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text(MPS.TextGen/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -78,6 +78,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1082485599094" name="ifFalseStatement" index="9aQIa" />
         <child id="1068580123160" name="condition" index="3clFbw" />
@@ -959,13 +960,13 @@
       <node concept="3Tm6S6" id="3A" role="1B3o_S" />
       <node concept="2eloPW" id="3B" role="1tU5fm">
         <property role="2ely0U" value="jetbrains.mps.transformation.test.outputLang.structure.LanguageConceptSwitch" />
-        <ref role="3uigEE" to="tpcf:1OW7rNmnulT" resolve="LanguageConceptSwitch" />
+        <ref role="3uigEE" to="ksn4:~ConceptIndex" resolve="ConceptIndex" />
       </node>
       <node concept="2ShNRf" id="3C" role="33vP2m">
         <node concept="xCZzO" id="3D" role="2ShVmc">
           <property role="xCZzQ" value="jetbrains.mps.transformation.test.outputLang.structure.LanguageConceptSwitch" />
           <node concept="3uibUv" id="3E" role="xCZzL">
-            <ref role="3uigEE" to="tpcf:1OW7rNmnulT" resolve="LanguageConceptSwitch" />
+            <ref role="3uigEE" to="ksn4:~ConceptIndex" resolve="ConceptIndex" />
           </node>
         </node>
       </node>
@@ -1006,7 +1007,7 @@
               <ref role="3cqZAo" node="3r" resolve="myIndex" />
             </node>
             <node concept="liA8E" id="3W" role="2OqNvi">
-              <ref role="37wK5l" to="tpcf:1OW7rNmnuDr" resolve="index" />
+              <ref role="37wK5l" to="ksn4:~ConceptIndex.index(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="index" />
               <node concept="37vLTw" id="3X" role="37wK5m">
                 <ref role="3cqZAo" node="3K" resolve="concept" />
               </node>
@@ -1191,15 +1192,16 @@
       <property role="TrG5h" value="getFileName_OutputRoot" />
       <node concept="3clFbS" id="4W" role="3clF47">
         <node concept="3cpWs6" id="50" role="3cqZAp">
-          <node concept="2OqwBi" id="51" role="3cqZAk">
-            <node concept="37vLTw" id="52" role="2Oq$k0">
+          <node concept="2OqwBi" id="52" role="3cqZAk">
+            <node concept="37vLTw" id="53" role="2Oq$k0">
               <ref role="3cqZAo" node="4Z" resolve="node" />
             </node>
-            <node concept="liA8E" id="53" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+            <node concept="3TrcHB" id="54" role="2OqNvi">
+              <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="51" role="3cqZAp" />
       </node>
       <node concept="3Tm6S6" id="4X" role="1B3o_S" />
       <node concept="3uibUv" id="4Y" role="3clF45">
@@ -1207,8 +1209,8 @@
       </node>
       <node concept="37vLTG" id="4Z" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="54" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+        <node concept="3Tqbb2" id="55" role="1tU5fm">
+          <ref role="ehGHo" to="tpck:h0TrEE$" resolve="INamedConcept" />
         </node>
       </node>
     </node>
@@ -1217,18 +1219,18 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_OutputRoot" />
-      <node concept="3clFbS" id="55" role="3clF47">
-        <node concept="3cpWs6" id="59" role="3cqZAp">
-          <node concept="10Nm6u" id="5a" role="3cqZAk" />
+      <node concept="3clFbS" id="56" role="3clF47">
+        <node concept="3cpWs6" id="5a" role="3cqZAp">
+          <node concept="10Nm6u" id="5b" role="3cqZAk" />
         </node>
       </node>
-      <node concept="3Tm6S6" id="56" role="1B3o_S" />
-      <node concept="3uibUv" id="57" role="3clF45">
+      <node concept="3Tm6S6" id="57" role="1B3o_S" />
+      <node concept="3uibUv" id="58" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="58" role="3clF46">
+      <node concept="37vLTG" id="59" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="5b" role="1tU5fm">
+        <node concept="3uibUv" id="5c" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
