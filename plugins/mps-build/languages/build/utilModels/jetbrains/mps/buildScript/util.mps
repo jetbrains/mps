@@ -503,6 +503,7 @@
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
       <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
+      <concept id="5699792037748043353" name="jetbrains.mps.baseLanguage.collections.structure.TestAddElementOperation" flags="nn" index="2oyXjL" />
       <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
         <child id="1151688676805" name="elementType" index="_ZDj9" />
       </concept>
@@ -5850,112 +5851,242 @@
       <property role="TrG5h" value="collectOnlyExternal" />
       <node concept="3cqZAl" id="3vW0fDNScdn" role="3clF45" />
       <node concept="3clFbS" id="3vW0fDNScdo" role="3clF47">
-        <node concept="1DcWWT" id="3vW0fDNScdr" role="3cqZAp">
-          <node concept="3cpWsn" id="3vW0fDNScds" role="1Duv9x">
-            <property role="TrG5h" value="layoutDependency" />
-            <node concept="3Tqbb2" id="3vW0fDNScdt" role="1tU5fm">
-              <ref role="ehGHo" to="3ior:6eCuTcwOX2$" resolve="BuildExternalLayoutDependency" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="3vW0fDNScdu" role="2LFqv$">
-            <node concept="3cpWs8" id="3vW0fDNScdv" role="3cqZAp">
-              <node concept="3cpWsn" id="3vW0fDNScdw" role="3cpWs9">
-                <property role="TrG5h" value="target" />
-                <node concept="3Tqbb2" id="3vW0fDNScdx" role="1tU5fm">
-                  <ref role="ehGHo" to="3ior:6eCuTcwObZ9" resolve="BuildExternalLayout" />
-                </node>
-                <node concept="2OqwBi" id="3vW0fDNScdy" role="33vP2m">
-                  <node concept="37vLTw" id="3vW0fDNScdz" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3vW0fDNScds" resolve="layoutDependency" />
-                  </node>
-                  <node concept="3TrEf2" id="3vW0fDNScd$" role="2OqNvi">
-                    <ref role="3Tt5mk" to="3ior:6eCuTcwOX2B" resolve="layout" />
-                  </node>
-                </node>
+        <node concept="3cpWs8" id="4fveNCO7mxn" role="3cqZAp">
+          <node concept="3cpWsn" id="4fveNCO7mxq" role="3cpWs9">
+            <property role="TrG5h" value="visited" />
+            <node concept="2hMVRd" id="4fveNCO7mxj" role="1tU5fm">
+              <node concept="3Tqbb2" id="4fveNCO7nEj" role="2hN53Y">
+                <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
               </node>
             </node>
-            <node concept="3clFbF" id="3vW0fDNScd_" role="3cqZAp">
-              <node concept="1rXfSq" id="3vW0fDNScdA" role="3clFbG">
-                <ref role="37wK5l" node="6eCuTcwOXw3" resolve="collectInExternalLayout" />
-                <node concept="37vLTw" id="3vW0fDNScdB" role="37wK5m">
-                  <ref role="3cqZAo" node="3vW0fDNScds" resolve="layoutDependency" />
-                </node>
-                <node concept="37vLTw" id="3vW0fDNScdC" role="37wK5m">
-                  <ref role="3cqZAo" node="3vW0fDNScdw" resolve="target" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="3vW0fDNScdD" role="1DdaDG">
-            <node concept="2OqwBi" id="3vW0fDNScdE" role="2Oq$k0">
-              <node concept="37vLTw" id="3vW0fDNScdF" role="2Oq$k0">
-                <ref role="3cqZAo" node="450ejGzgMJw" resolve="project" />
-              </node>
-              <node concept="3Tsc0h" id="3vW0fDNScdG" role="2OqNvi">
-                <ref role="3TtcxE" to="3ior:4RPz6WoY4C_" resolve="dependencies" />
-              </node>
-            </node>
-            <node concept="v3k3i" id="3vW0fDNScdH" role="2OqNvi">
-              <node concept="chp4Y" id="3vW0fDNScdI" role="v3oSu">
-                <ref role="cht4Q" to="3ior:6eCuTcwOX2$" resolve="BuildExternalLayoutDependency" />
-              </node>
+            <node concept="2ShNRf" id="4fveNCO7qdN" role="33vP2m">
+              <node concept="2i4dXS" id="4fveNCO7uLg" role="2ShVmc" />
             </node>
           </node>
         </node>
-        <node concept="1DcWWT" id="3vW0fDNScdJ" role="3cqZAp">
-          <node concept="2OqwBi" id="3vW0fDNScdK" role="1DdaDG">
-            <node concept="2OqwBi" id="3vW0fDNScdL" role="2Oq$k0">
-              <node concept="37vLTw" id="3vW0fDNScdM" role="2Oq$k0">
-                <ref role="3cqZAo" node="450ejGzgMJw" resolve="project" />
-              </node>
-              <node concept="3Tsc0h" id="3vW0fDNScdN" role="2OqNvi">
-                <ref role="3TtcxE" to="3ior:4RPz6WoY4C_" resolve="dependencies" />
-              </node>
+        <node concept="3clFbF" id="4fveNCO74ae" role="3cqZAp">
+          <node concept="1rXfSq" id="4fveNCO74ad" role="3clFbG">
+            <ref role="37wK5l" node="4fveNCO74a9" resolve="collectInProjectDependencies" />
+            <node concept="37vLTw" id="4fveNCO78M0" role="37wK5m">
+              <ref role="3cqZAo" node="450ejGzgMJw" resolve="project" />
             </node>
-            <node concept="v3k3i" id="3vW0fDNScdO" role="2OqNvi">
-              <node concept="chp4Y" id="3vW0fDNScdP" role="v3oSu">
-                <ref role="cht4Q" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="3vW0fDNScdQ" role="2LFqv$">
-            <node concept="3cpWs8" id="3vW0fDNScdR" role="3cqZAp">
-              <node concept="3cpWsn" id="3vW0fDNScdS" role="3cpWs9">
-                <property role="TrG5h" value="target" />
-                <node concept="3Tqbb2" id="3vW0fDNScdT" role="1tU5fm">
-                  <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
-                </node>
-                <node concept="2OqwBi" id="3vW0fDNScdU" role="33vP2m">
-                  <node concept="3TrEf2" id="3vW0fDNScdV" role="2OqNvi">
-                    <ref role="3Tt5mk" to="3ior:4RPz6WoY4C$" resolve="script" />
-                  </node>
-                  <node concept="37vLTw" id="3vW0fDNScdW" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3vW0fDNSce1" resolve="projectDependency" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="3vW0fDNScdX" role="3cqZAp">
-              <node concept="1rXfSq" id="3vW0fDNScdY" role="3clFbG">
-                <ref role="37wK5l" node="450ejGzgOnp" resolve="collectInProject" />
-                <node concept="37vLTw" id="3vW0fDNScdZ" role="37wK5m">
-                  <ref role="3cqZAo" node="3vW0fDNSce1" resolve="projectDependency" />
-                </node>
-                <node concept="37vLTw" id="3vW0fDNSce0" role="37wK5m">
-                  <ref role="3cqZAo" node="3vW0fDNScdS" resolve="target" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3cpWsn" id="3vW0fDNSce1" role="1Duv9x">
-            <property role="TrG5h" value="projectDependency" />
-            <node concept="3Tqbb2" id="3vW0fDNSce2" role="1tU5fm">
-              <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+            <node concept="37vLTw" id="4fveNCO87kX" role="37wK5m">
+              <ref role="3cqZAo" node="4fveNCO7mxq" resolve="visited" />
             </node>
           </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="3vW0fDNSce7" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="4fveNCO777o" role="jymVt" />
+    <node concept="3clFb_" id="4fveNCO74a9" role="jymVt">
+      <property role="TrG5h" value="collectInProjectDependencies" />
+      <node concept="3Tm6S6" id="4fveNCO74aa" role="1B3o_S" />
+      <node concept="3cqZAl" id="4fveNCO74ab" role="3clF45" />
+      <node concept="37vLTG" id="4fveNCO74a3" role="3clF46">
+        <property role="TrG5h" value="projectToVisit" />
+        <node concept="3Tqbb2" id="4fveNCO74a4" role="1tU5fm">
+          <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="4fveNCO7vU$" role="3clF46">
+        <property role="TrG5h" value="visited" />
+        <node concept="2hMVRd" id="4fveNCO7y1U" role="1tU5fm">
+          <node concept="3Tqbb2" id="4fveNCO7zi3" role="2hN53Y">
+            <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbS" id="4fveNCO749q" role="3clF47">
+        <node concept="3clFbJ" id="4fveNCO7Esd" role="3cqZAp">
+          <node concept="3clFbS" id="4fveNCO7Esf" role="3clFbx">
+            <node concept="3SKdUt" id="4fveNCO7X0c" role="3cqZAp">
+              <node concept="1PaTwC" id="4fveNCO7X0d" role="1aUNEU">
+                <node concept="3oM_SD" id="4fveNCO7X0j" role="1PaTwD">
+                  <property role="3oM_SC" value="A" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7X0k" role="1PaTwD">
+                  <property role="3oM_SC" value="cycle" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7X0m" role="1PaTwD">
+                  <property role="3oM_SC" value="-" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7YxU" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7YxV" role="1PaTwD">
+                  <property role="3oM_SC" value="way" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7YxW" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7Yyf" role="1PaTwD">
+                  <property role="3oM_SC" value="report," />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7Yyw" role="1PaTwD">
+                  <property role="3oM_SC" value="just" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7Yyx" role="1PaTwD">
+                  <property role="3oM_SC" value="avoid" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7Yz4" role="1PaTwD">
+                  <property role="3oM_SC" value="endless" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7Yzl" role="1PaTwD">
+                  <property role="3oM_SC" value="recursion" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="4fveNCO7STE" role="3cqZAp" />
+          </node>
+          <node concept="3fqX7Q" id="4fveNCO7R8Q" role="3clFbw">
+            <node concept="2OqwBi" id="4fveNCO7R8S" role="3fr31v">
+              <node concept="37vLTw" id="4fveNCO7R8T" role="2Oq$k0">
+                <ref role="3cqZAo" node="4fveNCO7vU$" resolve="visited" />
+              </node>
+              <node concept="2oyXjL" id="4fveNCO7R8U" role="2OqNvi">
+                <node concept="37vLTw" id="4fveNCO7R8V" role="25WWJ7">
+                  <ref role="3cqZAo" node="4fveNCO74a3" resolve="projectToVisit" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="4fveNCO7YzA" role="3cqZAp" />
+        <node concept="1DcWWT" id="4fveNCO749r" role="3cqZAp">
+          <node concept="3cpWsn" id="4fveNCO749s" role="1Duv9x">
+            <property role="TrG5h" value="layoutDependency" />
+            <node concept="3Tqbb2" id="4fveNCO749t" role="1tU5fm">
+              <ref role="ehGHo" to="3ior:6eCuTcwOX2$" resolve="BuildExternalLayoutDependency" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="4fveNCO749u" role="2LFqv$">
+            <node concept="3cpWs8" id="4fveNCO749v" role="3cqZAp">
+              <node concept="3cpWsn" id="4fveNCO749w" role="3cpWs9">
+                <property role="TrG5h" value="target" />
+                <node concept="3Tqbb2" id="4fveNCO749x" role="1tU5fm">
+                  <ref role="ehGHo" to="3ior:6eCuTcwObZ9" resolve="BuildExternalLayout" />
+                </node>
+                <node concept="2OqwBi" id="4fveNCO749y" role="33vP2m">
+                  <node concept="37vLTw" id="4fveNCO749z" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4fveNCO749s" resolve="layoutDependency" />
+                  </node>
+                  <node concept="3TrEf2" id="4fveNCO749$" role="2OqNvi">
+                    <ref role="3Tt5mk" to="3ior:6eCuTcwOX2B" resolve="layout" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4fveNCO749_" role="3cqZAp">
+              <node concept="1rXfSq" id="4fveNCO749A" role="3clFbG">
+                <ref role="37wK5l" node="6eCuTcwOXw3" resolve="collectInExternalLayout" />
+                <node concept="37vLTw" id="4fveNCO749B" role="37wK5m">
+                  <ref role="3cqZAo" node="4fveNCO749s" resolve="layoutDependency" />
+                </node>
+                <node concept="37vLTw" id="4fveNCO749C" role="37wK5m">
+                  <ref role="3cqZAo" node="4fveNCO749w" resolve="target" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4fveNCO749D" role="1DdaDG">
+            <node concept="2OqwBi" id="4fveNCO749E" role="2Oq$k0">
+              <node concept="37vLTw" id="4fveNCO74a5" role="2Oq$k0">
+                <ref role="3cqZAo" node="4fveNCO74a3" resolve="projectToVisit" />
+              </node>
+              <node concept="3Tsc0h" id="4fveNCO749G" role="2OqNvi">
+                <ref role="3TtcxE" to="3ior:4RPz6WoY4C_" resolve="dependencies" />
+              </node>
+            </node>
+            <node concept="v3k3i" id="4fveNCO749H" role="2OqNvi">
+              <node concept="chp4Y" id="4fveNCO749I" role="v3oSu">
+                <ref role="cht4Q" to="3ior:6eCuTcwOX2$" resolve="BuildExternalLayoutDependency" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="4fveNCO82Wp" role="3cqZAp" />
+        <node concept="1DcWWT" id="4fveNCO749J" role="3cqZAp">
+          <node concept="2OqwBi" id="4fveNCO749K" role="1DdaDG">
+            <node concept="2OqwBi" id="4fveNCO749L" role="2Oq$k0">
+              <node concept="37vLTw" id="4fveNCO74a6" role="2Oq$k0">
+                <ref role="3cqZAo" node="4fveNCO74a3" resolve="projectToVisit" />
+              </node>
+              <node concept="3Tsc0h" id="4fveNCO749N" role="2OqNvi">
+                <ref role="3TtcxE" to="3ior:4RPz6WoY4C_" resolve="dependencies" />
+              </node>
+            </node>
+            <node concept="v3k3i" id="4fveNCO749O" role="2OqNvi">
+              <node concept="chp4Y" id="4fveNCO749P" role="v3oSu">
+                <ref role="cht4Q" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="4fveNCO749Q" role="2LFqv$">
+            <node concept="3cpWs8" id="4fveNCO749R" role="3cqZAp">
+              <node concept="3cpWsn" id="4fveNCO749S" role="3cpWs9">
+                <property role="TrG5h" value="target" />
+                <node concept="3Tqbb2" id="4fveNCO749T" role="1tU5fm">
+                  <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+                </node>
+                <node concept="2OqwBi" id="4fveNCO749U" role="33vP2m">
+                  <node concept="3TrEf2" id="4fveNCO749V" role="2OqNvi">
+                    <ref role="3Tt5mk" to="3ior:4RPz6WoY4C$" resolve="script" />
+                  </node>
+                  <node concept="37vLTw" id="4fveNCO749W" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4fveNCO74a1" resolve="projectDependency" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4fveNCO749X" role="3cqZAp">
+              <node concept="1rXfSq" id="4fveNCO749Y" role="3clFbG">
+                <ref role="37wK5l" node="450ejGzgOnp" resolve="collectInProject" />
+                <node concept="37vLTw" id="4fveNCO749Z" role="37wK5m">
+                  <ref role="3cqZAo" node="4fveNCO74a1" resolve="projectDependency" />
+                </node>
+                <node concept="37vLTw" id="4fveNCO74a0" role="37wK5m">
+                  <ref role="3cqZAo" node="4fveNCO749S" resolve="target" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="4fveNCO7fW7" role="3cqZAp" />
+            <node concept="3SKdUt" id="4fveNCO7jdq" role="3cqZAp">
+              <node concept="1PaTwC" id="4fveNCO7jdr" role="1aUNEU">
+                <node concept="3oM_SD" id="4fveNCO7jds" role="1PaTwD">
+                  <property role="3oM_SC" value="Recurse" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7km6" role="1PaTwD">
+                  <property role="3oM_SC" value="into" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7km8" role="1PaTwD">
+                  <property role="3oM_SC" value="transitive" />
+                </node>
+                <node concept="3oM_SD" id="4fveNCO7km9" role="1PaTwD">
+                  <property role="3oM_SC" value="dependencies" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4fveNCO7cep" role="3cqZAp">
+              <node concept="1rXfSq" id="4fveNCO7cen" role="3clFbG">
+                <ref role="37wK5l" node="4fveNCO74a9" resolve="collectInProjectDependencies" />
+                <node concept="37vLTw" id="4fveNCO7ecr" role="37wK5m">
+                  <ref role="3cqZAo" node="4fveNCO749S" resolve="target" />
+                </node>
+                <node concept="37vLTw" id="4fveNCO81om" role="37wK5m">
+                  <ref role="3cqZAo" node="4fveNCO7vU$" resolve="visited" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWsn" id="4fveNCO74a1" role="1Duv9x">
+            <property role="TrG5h" value="projectDependency" />
+            <node concept="3Tqbb2" id="4fveNCO74a2" role="1tU5fm">
+              <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="4WwUR8hFekX" role="jymVt" />
     <node concept="3clFb_" id="2whOjLMobIM" role="jymVt">

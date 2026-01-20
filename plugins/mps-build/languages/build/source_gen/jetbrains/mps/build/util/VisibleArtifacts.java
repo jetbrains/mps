@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -30,13 +33,27 @@ public class VisibleArtifacts {
   }
 
   public void collectOnlyExternal() {
-    for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildExternalLayoutDependency$oL)) {
+    Set<SNode> visited = SetSequence.fromSet(new HashSet<>());
+    collectInProjectDependencies(project, visited);
+  }
+
+  private void collectInProjectDependencies(SNode projectToVisit, Set<SNode> visited) {
+    if (!(SetSequence.fromSet(visited).add(projectToVisit))) {
+      // A cycle - no way to report, just avoid endless recursion
+      return;
+    }
+
+    for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(projectToVisit, LINKS.dependencies$redY), CONCEPTS.BuildExternalLayoutDependency$oL)) {
       SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$GC7_);
       collectInExternalLayout(layoutDependency, target);
     }
-    for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)) {
+
+    for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(projectToVisit, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)) {
       SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$6Ehy);
       collectInProject(projectDependency, target);
+
+      // Recurse into transitive dependencies
+      collectInProjectDependencies(target, visited);
     }
   }
 

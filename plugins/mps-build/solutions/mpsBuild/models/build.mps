@@ -23253,11 +23253,6 @@
               <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
             </node>
           </node>
-          <node concept="1SiIV0" id="1scF1U0GCjK" role="3bR37C">
-            <node concept="3bR9La" id="1scF1U0GCjL" role="1SiIV1">
-              <ref role="3bR37D" node="7YI57w6K0hX" resolve="jetbrains.mps.lang.behavior#1225195312923" />
-            </node>
-          </node>
           <node concept="1BupzO" id="73GUf$ummMz" role="3bR31x">
             <property role="3ZfqAx" value="generator/baseLanguage" />
             <property role="1Hdu6h" value="true" />
@@ -23284,6 +23279,11 @@
               <node concept="3qWCbU" id="73GUf$ummM_" role="3LXTna">
                 <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
               </node>
+            </node>
+          </node>
+          <node concept="1SiIV0" id="1scF1U0GCjK" role="3bR37C">
+            <node concept="3bR9La" id="1scF1U0GCjL" role="1SiIV1">
+              <ref role="3bR37D" node="7YI57w6K0hX" resolve="jetbrains.mps.lang.behavior#1225195312923" />
             </node>
           </node>
         </node>
@@ -53088,6 +53088,9 @@
         </node>
       </node>
     </node>
+    <node concept="2sgV4H" id="3EuGU1IRcZo" role="1l3spa">
+      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
+    </node>
   </node>
   <node concept="1l3spW" id="25y4WSoTpRT">
     <property role="TrG5h" value="jetpad" />
@@ -55576,6 +55579,9 @@
         </node>
       </node>
     </node>
+    <node concept="2sgV4H" id="3EuGU1JfjDP" role="1l3spa">
+      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
+    </node>
   </node>
   <node concept="1l3spW" id="6pse5qHNfTX">
     <property role="2DA0ip" value="../../../../" />
@@ -56194,6 +56200,9 @@
     </node>
     <node concept="2sgV4H" id="6pse5qHNg7A" role="1l3spa">
       <ref role="1l3spb" node="2eDSGe9d1ot" resolve="mpsWorkbench" />
+    </node>
+    <node concept="2sgV4H" id="3EuGU1IRd0a" role="1l3spa">
+      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
     </node>
   </node>
   <node concept="1l3spW" id="77ZqjhZbMC7">
@@ -61358,6 +61367,9 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2sgV4H" id="3EuGU1IRcZF" role="1l3spa">
+      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
     </node>
   </node>
   <node concept="1l3spW" id="1fy59xXo9Yo">
