@@ -17,8 +17,10 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.Set;
+import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 @GeneratedClass(nodeId = "1520098040411268050", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class MigrationScriptCollector {
@@ -122,7 +124,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
         return AppliedScript.ApplyState.NeedsDependencies;
       }
 
-      final Set<SModule> moduleDependencies = MigrationModuleUtil.getModuleDependencies(moduleToMigrate);
+      Iterable<SModuleReference> moduleDeps = MigrationModuleUtil.getRecordedDependencyVersions(moduleToMigrate).keySet();
+      final Set<SModule> moduleDependencies = SetSequence.fromSetWithValues(new HashSet<>(), Sequence.fromIterable(moduleDeps).select((it) -> it.resolve(moduleToMigrate.getRepository())).where(new NotNullWhereFilter()));
       if (Sequence.fromIterable(((MigrationScript) myScript).requiresData()).any((final MigrationScriptReference s) -> SetSequence.fromSet(moduleDependencies).any((dep) -> needsToBeApplied(s, dep)))) {
         return AppliedScript.ApplyState.NeedsDependencies;
       }

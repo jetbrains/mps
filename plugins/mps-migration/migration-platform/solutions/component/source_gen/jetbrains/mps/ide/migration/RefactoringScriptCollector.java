@@ -9,10 +9,9 @@ import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import java.util.HashMap;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.AbstractModule;
 import java.util.ArrayList;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
@@ -29,22 +28,25 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   }
 
   /*package*/ void fillFor(SModule module) {
-    for (SModule dep : SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module))) {
-      if (!(dep instanceof Language)) {
-        // RefactoringLog lives in language's aspect model, no reason to process modules other than language
-        continue;
-      }
-      RefactoringScriptReference[] scripts = myModule2Scripts.get(dep.getModuleReference());
+    Map<SModuleReference, Integer> depVersions = MigrationModuleUtil.getRecordedDependencyVersions(module);
+    for (SModuleReference dep : SetSequence.fromSet(depVersions.keySet())) {
+      RefactoringScriptReference[] scripts = myModule2Scripts.get(dep);
       if (scripts == null) {
-        int currentDepVersion = ((Language) dep).getModuleVersion();
+        SModule lang = dep.resolve(module.getRepository());
+        if (!(lang instanceof Language)) {
+          // RefactoringLog lives in language's aspect model, no reason to process modules other than language
+          continue;
+        }
+        int currentDepVersion = ((Language) lang).getModuleVersion();
         currentDepVersion = Math.max(currentDepVersion, 0);
         scripts = new RefactoringScriptReference[currentDepVersion];
         for (int i = 0; i < currentDepVersion; i++) {
-          scripts[i] = new RefactoringScriptReference((Language) dep, i);
+          scripts[i] = new RefactoringScriptReference((Language) lang, i);
         }
-        myModule2Scripts.put(dep.getModuleReference(), scripts);
+        myModule2Scripts.put(dep, scripts);
       }
-      int ver = Math.max(((AbstractModule) module).getDependencyVersion(dep, false), 0);
+      // record the module for each non-migrated version up to the actual one
+      int ver = depVersions.get(dep);
 
       for (int i = ver; i < scripts.length; i++) {
         myGroupedByScript.computeIfAbsent(scripts[i], (RefactoringScriptReference k) -> new ArrayList<>()).add(module);
@@ -82,27 +84,33 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
     @Override
     public AppliedScript.ApplyState ready(@NotNull SModule module) {
       assert scriptPresent();
-      final AbstractModule moduleToMigrate = (AbstractModule) module;
-      // FIXME dependency version extraction shall be through SModuleReference
-      int v = Math.max(0, moduleToMigrate.getDependencyVersion(scriptReference().getModule(module.getRepository()), false));
+      final Map<SModuleReference, Integer> recordedDependencyVersions = MigrationModuleUtil.getRecordedDependencyVersions(module);
+      if (recordedDependencyVersions.isEmpty()) {
+        // XXX perhaps, another state, like NOTHING TO DO?
+        return AppliedScript.ApplyState.ErrorState;
+      }
+      if (!(recordedDependencyVersions.containsKey(scriptReference().getModuleReference()))) {
+        // perhaps, not an error. otoh, if we get that far, there should be a dependency, and missing value means something went wrong
+        return AppliedScript.ApplyState.ErrorState;
+      }
+      int v = recordedDependencyVersions.get(scriptReference().getModuleReference());
       if (v != scriptReference().getFromVersion()) {
         return (v < scriptReference().getFromVersion() ? AppliedScript.ApplyState.ErrorState : AppliedScript.ApplyState.AlreadyMigrated);
       }
-      final Iterable<SModuleReference> deps = SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).select((this0) -> this0.getModuleReference());
       // FIXME quite stupid, imo, extra check if language/module of a RS is part of module dependencies - provided we built
-      //      set of modules to migrate *based on* actual dependencies. Shall remove, just keep for 1 commit for historical records.
-      if (Sequence.fromIterable(((RefactoringScript) myScript).getExecuteAfter()).where((it) -> Sequence.fromIterable(deps).contains(it.getModuleReference())).all((s) -> !(needsToBeApplied(s, moduleToMigrate)))) {
+      //      set of modules to migrate *based on actual dependencies*. Shall remove, just keep for 1 commit for historical records.
+      if (Sequence.fromIterable(((RefactoringScript) myScript).getExecuteAfter()).where((it) -> recordedDependencyVersions.containsKey(it.getModuleReference())).all((s) -> {
+        // containsKey(), above, ensures there's a value in the map
+
+        // Next condition means we got a dependency with a version newer than the one of the script we need to run before, i.e.
+        // we assume we depend on a newer version of the module (where script was already present), or the script has been applied already
+        // However, with the way we order scripts in ModuleMigrationSequence, we shall see 'true' here always
+        return recordedDependencyVersions.get(s.getModuleReference()) > s.getFromVersion();
+      })) {
         return AppliedScript.ApplyState.GoodToGo;
       } else {
         return AppliedScript.ApplyState.NeedsDependencies;
       }
-    }
-
-    private static boolean needsToBeApplied(RefactoringScriptReference ref, AbstractModule m) {
-      int dv = Math.max(0, m.getDependencyVersion(ref.getModule(m.getRepository()), false));
-      // means we have recorded dependency with a version older than the one from the script we need to run before, i.e.
-      // we assume it hasn't run yet for our module. However, with the way we order scripts in ModuleMigrationSequence, we shall not get here
-      return dv <= ref.getFromVersion();
     }
 
     @Override

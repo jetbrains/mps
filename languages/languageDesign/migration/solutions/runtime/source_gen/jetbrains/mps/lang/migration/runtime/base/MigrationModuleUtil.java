@@ -9,17 +9,14 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
-import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
+import java.util.Map;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.AbstractModule;
-import java.util.Map;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import java.util.Collections;
-import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(nodeId = "5464540062512236006", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public class MigrationModuleUtil {
@@ -36,17 +33,18 @@ public class MigrationModuleUtil {
     return !(m instanceof DevKit) && !(m instanceof TempModule || m instanceof TempModule2);
   }
 
-  public static Set<SModule> getModuleDependencies(SModule module) {
-    Set<SModule> dependencies = SetSequence.fromSetWithValues(new HashSet<SModule>(), new GlobalModuleDependenciesManager(module).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE));
-    SetSequence.fromSet(dependencies).addElement(module);
-    return dependencies;
-  }
-
-  public static int getDependencyVersion(@NotNull SModule module, @NotNull SModule dependency) {
+  /**
+   * State of all module dependencies the moment they were recorded for a module
+   */
+  public static Map<SModuleReference, Integer> getRecordedDependencyVersions(@NotNull SModule module) {
     if (module instanceof AbstractModule) {
-      return ((AbstractModule) module).getDependencyVersion(dependency, false);
+      ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
+      if (md != null) {
+        return md.getDependencyVersions();
+      }
+      // fall through
     }
-    throw new IllegalArgumentException("We are able to work only with AbstractModule instances");
+    return Collections.emptyMap();
   }
 
   /**
@@ -62,7 +60,10 @@ public class MigrationModuleUtil {
     }
     return Collections.emptyMap();
   }
-  public static void putUsedLanguageVersion(@NotNull SModule module, @NotNull SLanguage usedLang, int version) {
+  /**
+   * Update version of a used language in the module's state
+   */
+  public static void recordUsedLanguageVersion(@NotNull SModule module, @NotNull SLanguage usedLang, int version) {
     if (module instanceof AbstractModule) {
       ((AbstractModule) module).getModuleDescriptor().getLanguageVersions().put(usedLang, version);
     } else {
@@ -70,7 +71,10 @@ public class MigrationModuleUtil {
     }
   }
 
-  public static void setDepVersion(SModule module, SModuleReference dependency, int version) {
+  /**
+   * Update version of a dependency in the module's state
+   */
+  public static void recordDependencyVersion(SModule module, SModuleReference dependency, int version) {
     ModuleDescriptor moduleDescriptor = ((AbstractModule) module).getModuleDescriptor();
     if (moduleDescriptor == null) {
       throw new IllegalArgumentException();
@@ -79,13 +83,24 @@ public class MigrationModuleUtil {
     ((AbstractModule) module).setChanged();
   }
 
-  public static boolean allDependenciesActual(SModule module) {
-    for (SModule dep : SetSequence.fromSet(getModuleDependencies(module))) {
-      int currentDepVersion = ((AbstractModule) dep).getModuleVersion();
-      int ver = getDependencyVersion(module, dep);
-      if (ver != currentDepVersion) {
+  public static boolean allRecordedDependenciesActual(SModule module) {
+    final Map<SModuleReference, Integer> depVersions = getRecordedDependencyVersions(module);
+    for (SModuleReference dep : SetSequence.fromSet(depVersions.keySet())) {
+      SModule am = dep.resolve(module.getRepository());
+      if (am == null) {
+        // in fact, it's not exactly "outdated" dependency, rather "broken", but for refactoring logs, a legacy functionality, doesn't make sense to fight for better reporting
         return false;
       }
+      if (am instanceof AbstractModule) {
+        // XXX provided refactoring scripts reside in Language modules only, and single use of the method in refactoring log participant, perhaps, could limit even further
+        //    to instanceof Language. However, method name doesn't reflect this, check every dependency
+        int currentVersion = ((AbstractModule) am).getModuleVersion();
+        int recordedVer = depVersions.get(dep);
+        if (recordedVer != currentVersion) {
+          return false;
+        }
+      }
+      // silently skip !AM, they are of no interest for us
     }
     return true;
   }

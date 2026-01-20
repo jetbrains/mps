@@ -92,7 +92,7 @@ public class MoveNodeRefactoringLogParticipant extends RefactoringParticipantBas
       return ListSequence.fromList(initialStates).select((it) -> ((List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>) ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>()))).toList();
     }
     for (SModule module : Sequence.fromIterable(searchScope.getModules())) {
-      if (MigrationModuleUtil.isModuleMigrateable(module) && !(MigrationModuleUtil.allDependenciesActual(module))) {
+      if (MigrationModuleUtil.isModuleMigrateable(module) && !(MigrationModuleUtil.allRecordedDependenciesActual(module))) {
         String message = "Module " + module + " requires migration. It is recommended to run migration first and then restart refactoring.";
         if (LOG.isErrorLevel()) {
           LOG.error(message);

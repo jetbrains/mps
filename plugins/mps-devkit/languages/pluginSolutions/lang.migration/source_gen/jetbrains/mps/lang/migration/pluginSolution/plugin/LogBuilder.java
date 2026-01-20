@@ -28,10 +28,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -96,15 +94,19 @@ public class LogBuilder {
       module.setModuleVersion(moduleVersion + 1);
 
       Iterable<SModule> modules = searchScope.getModules();
-      List<SModule> modulesToIncrementDependencyVersion = Sequence.fromIterable(modules).where((m) -> MigrationModuleUtil.isModuleMigrateable(m)).where((m) -> SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).contains(module)).toList();
-      for (SModule m : ListSequence.fromList(modulesToIncrementDependencyVersion)) {
-        int depVersion = MigrationModuleUtil.getDependencyVersion(m, module);
+      for (SModule m : Sequence.fromIterable(modules).where((m) -> MigrationModuleUtil.isModuleMigrateable(m))) {
+        final Map<SModuleReference, Integer> recordedDependencyVersions = MigrationModuleUtil.getRecordedDependencyVersions(m);
+        if (!(recordedDependencyVersions.containsKey(module.getModuleReference()))) {
+          continue;
+        }
+
+        int depVersion = recordedDependencyVersions.get(module.getModuleReference());
         if (moduleVersion != depVersion) {
           if (LOG.isErrorLevel()) {
-            LOG.error("Module " + m + " depends on module " + module + " with version " + depVersion + ", but current version is " + moduleVersion);
+            LOG.error(String.format("Module %s depends on module %s with version %d, but current version is %d", m, module, depVersion, moduleVersion));
           }
         } else {
-          MigrationModuleUtil.setDepVersion(m, module.getModuleReference(), moduleVersion + 1);
+          MigrationModuleUtil.recordDependencyVersion(m, module.getModuleReference(), moduleVersion + 1);
         }
       }
     });

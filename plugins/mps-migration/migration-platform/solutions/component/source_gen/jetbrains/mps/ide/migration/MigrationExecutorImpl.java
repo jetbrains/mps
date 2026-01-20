@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.ide.migration.util.MigrationDataUtil;
 import jetbrains.mps.lang.migration.runtime.base.BaseScript;
@@ -41,12 +40,15 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   protected Project myProject;
 
   private DataCollector myDataCollector = new DataCollector() {
-    public Map<SModule, SNode> collectData(SModule module, final MigrationScriptReference scriptReference) {
+    public Map<SModule, SNode> collectData(final SModule module, final MigrationScriptReference scriptReference) {
       final Map<SModule, SNode> requiredData = MapSequence.fromMap(new HashMap<SModule, SNode>());
-      SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).visitAll((it) -> {
-        SNode dataString = MigrationDataUtil.readData(it, scriptReference);
-        if (dataString != null) {
-          MapSequence.fromMap(requiredData).put(it, dataString);
+      MigrationModuleUtil.getRecordedDependencyVersions(module).keySet().forEach((it) -> {
+        // FIXME provided we keep versions against SModuleReference, we may need to reconsider DataCollector API or parameterise it with a project/repository to use to access SModule instances.
+        SModule mm = it.resolve(module.getRepository());
+        // XXX perhaps, shall log failed resolve()?
+        SNode data = (mm == null ? null : MigrationDataUtil.readData(mm, scriptReference));
+        if (data != null) {
+          MapSequence.fromMap(requiredData).put(mm, data);
         }
       });
       return requiredData;
@@ -92,7 +94,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     }
 
     int toVersion = usedVersion + 1;
-    MigrationModuleUtil.putUsedLanguageVersion(module, fromLanguage, toVersion);
+    MigrationModuleUtil.recordUsedLanguageVersion(module, fromLanguage, toVersion);
 
     for (SModel model : Sequence.fromIterable(module.getModels())) {
       if (model.isReadOnly()) {
@@ -114,8 +116,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
 
   private void executeRefactoringScript(RefactoringScript script, final SModule module) {
     RefactoringScriptReference rLog = script.getReference();
-    SModule fromModule = rLog.getModule(myProject.getRepository());
-    int importedVersion = MigrationModuleUtil.getDependencyVersion(module, fromModule);
+    int importedVersion = MigrationModuleUtil.getRecordedDependencyVersions(module).get(rLog.getModuleReference());
     importedVersion = Math.max(importedVersion, 0);
     assert importedVersion == rLog.getFromVersion();
 
@@ -132,7 +133,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
     refactoringSession.performAllRegistered();
 
     int toVersion = rLog.getFromVersion() + 1;
-    MigrationModuleUtil.setDepVersion(module, fromModule.getModuleReference(), toVersion);
+    MigrationModuleUtil.recordDependencyVersion(module, rLog.getModuleReference(), toVersion);
 
     // todo: versions in models
   }
