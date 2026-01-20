@@ -215,7 +215,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
   }
 
   private boolean allowCancel() {
-    return Messages.showYesNoDialog(getComponent().getRootPane(), DiffBundle.message("merge.dialog.exit.without.applying.changes.confirmation.message"), DiffBundle.message("cancel.visual.merge.dialog.title"), Messages.getQuestionIcon()) == Messages.YES;
+    return Messages.showYesNoDialog(DiffBundle.message("merge.dialog.exit.without.applying.changes.confirmation.message"), DiffBundle.message("cancel.visual.merge.dialog.title"), DiffBundle.message("button.discard.changes.and.do", DiffBundle.message("button.cancel.merge")), DiffBundle.message("button.continue.merge"), Messages.getQuestionIcon()) == Messages.YES;
   }
 
   @NotNull

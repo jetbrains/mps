@@ -69,6 +69,7 @@
     <import index="1037" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.changes(MPS.IDEA.Modules/)" />
     <import index="18nx" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.checkin(MPS.IDEA.Modules/)" />
     <import index="4zvo" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.ui(MPS.IDEA.Modules/)" />
+    <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -10287,15 +10288,7 @@
           <node concept="3clFbC" id="4qk_0lIseSr" role="3cqZAk">
             <node concept="2YIFZM" id="4qk_0lIsdfW" role="3uHU7B">
               <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
-              <ref role="37wK5l" to="jkm4:~Messages.showYesNoDialog(java.awt.Component,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showYesNoDialog" />
-              <node concept="2OqwBi" id="4qk_0lIsdfX" role="37wK5m">
-                <node concept="1rXfSq" id="4qk_0lIsdfY" role="2Oq$k0">
-                  <ref role="37wK5l" node="4qk_0lIli94" resolve="getComponent" />
-                </node>
-                <node concept="liA8E" id="4qk_0lIsdfZ" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JComponent.getRootPane()" resolve="getRootPane" />
-                </node>
-              </node>
+              <ref role="37wK5l" to="jkm4:~Messages.showYesNoDialog(java.lang.String,java.lang.String,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showYesNoDialog" />
               <node concept="2YIFZM" id="4qk_0lIsdg0" role="37wK5m">
                 <ref role="1Pybhc" to="ok99:~DiffBundle" resolve="DiffBundle" />
                 <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
@@ -10308,6 +10301,27 @@
                 <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
                 <node concept="Xl_RD" id="4qk_0lIsdg3" role="37wK5m">
                   <property role="Xl_RC" value="cancel.visual.merge.dialog.title" />
+                </node>
+              </node>
+              <node concept="2YIFZM" id="6lvN2qMIk8U" role="37wK5m">
+                <ref role="1Pybhc" to="ok99:~DiffBundle" resolve="DiffBundle" />
+                <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                <node concept="Xl_RD" id="6lvN2qMIk8V" role="37wK5m">
+                  <property role="Xl_RC" value="button.discard.changes.and.do" />
+                </node>
+                <node concept="2YIFZM" id="6lvN2qMIk8W" role="37wK5m">
+                  <ref role="1Pybhc" to="ok99:~DiffBundle" resolve="DiffBundle" />
+                  <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                  <node concept="Xl_RD" id="6lvN2qMIk8X" role="37wK5m">
+                    <property role="Xl_RC" value="button.cancel.merge" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2YIFZM" id="6lvN2qMIm8R" role="37wK5m">
+                <ref role="1Pybhc" to="ok99:~DiffBundle" resolve="DiffBundle" />
+                <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                <node concept="Xl_RD" id="6lvN2qMIm8S" role="37wK5m">
+                  <property role="Xl_RC" value="button.continue.merge" />
                 </node>
               </node>
               <node concept="2YIFZM" id="4qk_0lIsdg4" role="37wK5m">

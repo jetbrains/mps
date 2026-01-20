@@ -42,24 +42,25 @@ public class MergeConfirmation {
     return SAVE_AS_IS;
   }
   private static int showUnresolvedConflictsConfirmation(Component parent, int changes) {
-    String msg = String.format("You have %s left. You need to resolve them manually.\n" + "Close merge dialog and save model without remaining conflicts resolving?", NameUtil.formatNumericalString(changes, "unresolved conflicting change"));
-    if (Messages.showOkCancelDialog(parent, msg, "Unresolved Conflicting Changes", Messages.getWarningIcon()) == 0) {
+    String msg = String.format("You have %s left unprocessed.\n" + "Save only processed changes and mark the conflict resolved anyway?", NameUtil.formatNumericalString(changes, "unresolved conflicting change"));
+    if (Messages.showOkCancelDialog(parent, msg, "Unresolved Conflicting Changes", "Apply Processed Changes and Mark Resolved", "Continue Merge", Messages.getWarningIcon()) == 0) {
       return MergeConfirmation.SAVE_AS_IS;
     } else {
       return MergeConfirmation.RETURN;
     }
   }
   private static int showUnresolvedChangesConfirmation(Component parent, int changes) {
-    String message = String.format("You have %s left. You can resolve %s automatically.", NameUtil.formatNumericalString(changes, "unresolved change"), (changes > 1 ? "them" : "it"));
+    String message = String.format("You have %s left unprocessed. You can resolve %s automatically.", NameUtil.formatNumericalString(changes, "unresolved change"), (changes > 1 ? "them" : "it"));
     String title = "Unresolved Change" + ((changes > 1 ? "s" : ""));
-    int answer = Messages.showYesNoCancelDialog(parent, message, title, "Continue Merge", "Apply Changes and Mark Resolved", "Resolve Automatically and Exit", Messages.getWarningIcon());
-    if (answer == 0) {
-      return MergeConfirmation.RETURN;
-    } else if (answer == 1) {
+    int answer = Messages.showYesNoCancelDialog(parent, message, title, "Resolve Automatically and Exit", "Apply Processed Changes and Mark Resolved", "Continue Merge", Messages.getWarningIcon());
+    if (answer == Messages.YES) {
+      return MergeConfirmation.RESOLVE_AUTOMATICALLY;
+    } else if (answer == Messages.NO) {
       // Do nothing, leave unresolved changes as is
       return MergeConfirmation.SAVE_AS_IS;
     } else {
-      return MergeConfirmation.RESOLVE_AUTOMATICALLY;
+      // answer == Messages.CANCEL
+      return MergeConfirmation.RETURN;
     }
   }
 }

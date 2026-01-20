@@ -826,10 +826,10 @@
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <node concept="3cpWs3" id="BjUsE2KRgY" role="37wK5m">
                 <node concept="Xl_RD" id="BjUsE2KRgZ" role="3uHU7B">
-                  <property role="Xl_RC" value="You have %s left. You need to resolve them manually.\n" />
+                  <property role="Xl_RC" value="You have %s left unprocessed.\n" />
                 </node>
                 <node concept="Xl_RD" id="BjUsE2KRh0" role="3uHU7w">
-                  <property role="Xl_RC" value="Close merge dialog and save model without remaining conflicts resolving?" />
+                  <property role="Xl_RC" value="Save only processed changes and mark the conflict resolved anyway?" />
                 </node>
               </node>
               <node concept="2YIFZM" id="BjUsE2KRh1" role="37wK5m">
@@ -856,7 +856,7 @@
           </node>
           <node concept="3clFbC" id="BjUsE2KRh7" role="3clFbw">
             <node concept="2YIFZM" id="5yiqMy2PM6r" role="3uHU7B">
-              <ref role="37wK5l" to="jkm4:~Messages.showOkCancelDialog(java.awt.Component,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showOkCancelDialog" />
+              <ref role="37wK5l" to="jkm4:~Messages.showOkCancelDialog(java.awt.Component,java.lang.String,java.lang.String,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showOkCancelDialog" />
               <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
               <node concept="37vLTw" id="5yiqMy2PM6s" role="37wK5m">
                 <ref role="3cqZAo" node="BjUsE2KRhh" resolve="parent" />
@@ -866,6 +866,12 @@
               </node>
               <node concept="Xl_RD" id="5yiqMy2PM6u" role="37wK5m">
                 <property role="Xl_RC" value="Unresolved Conflicting Changes" />
+              </node>
+              <node concept="Xl_RD" id="1T405pOpXXG" role="37wK5m">
+                <property role="Xl_RC" value="Apply Processed Changes and Mark Resolved" />
+              </node>
+              <node concept="Xl_RD" id="1T405pOpX8t" role="37wK5m">
+                <property role="Xl_RC" value="Continue Merge" />
               </node>
               <node concept="2YIFZM" id="5yiqMy2PM6v" role="37wK5m">
                 <ref role="37wK5l" to="jkm4:~Messages.getWarningIcon()" resolve="getWarningIcon" />
@@ -922,7 +928,7 @@
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
               <node concept="Xl_RD" id="BjUsE2KRhx" role="37wK5m">
-                <property role="Xl_RC" value="You have %s left. You can resolve %s automatically." />
+                <property role="Xl_RC" value="You have %s left unprocessed. You can resolve %s automatically." />
               </node>
               <node concept="2YIFZM" id="BjUsE2KRhy" role="37wK5m">
                 <ref role="37wK5l" to="18ew:~NameUtil.formatNumericalString(int,java.lang.String)" resolve="formatNumericalString" />
@@ -998,14 +1004,14 @@
               <node concept="37vLTw" id="3GM_nagTrzo" role="37wK5m">
                 <ref role="3cqZAo" node="BjUsE2KRhG" resolve="title" />
               </node>
-              <node concept="Xl_RD" id="5yiqMy2PRtL" role="37wK5m">
-                <property role="Xl_RC" value="Continue Merge" />
-              </node>
-              <node concept="Xl_RD" id="5yiqMy2PRjG" role="37wK5m">
-                <property role="Xl_RC" value="Apply Changes and Mark Resolved" />
-              </node>
               <node concept="Xl_RD" id="5yiqMy2PQWJ" role="37wK5m">
                 <property role="Xl_RC" value="Resolve Automatically and Exit" />
+              </node>
+              <node concept="Xl_RD" id="5yiqMy2PRjG" role="37wK5m">
+                <property role="Xl_RC" value="Apply Processed Changes and Mark Resolved" />
+              </node>
+              <node concept="Xl_RD" id="5yiqMy2PRtL" role="37wK5m">
+                <property role="Xl_RC" value="Continue Merge" />
               </node>
               <node concept="2YIFZM" id="5yiqMy2PP8n" role="37wK5m">
                 <ref role="37wK5l" to="jkm4:~Messages.getWarningIcon()" resolve="getWarningIcon" />
@@ -1016,19 +1022,20 @@
         </node>
         <node concept="3clFbJ" id="BjUsE2KRhZ" role="3cqZAp">
           <node concept="3clFbS" id="BjUsE2KRi0" role="3clFbx">
-            <node concept="3cpWs6" id="BjUsE2KRif" role="3cqZAp">
-              <node concept="10M0yZ" id="BjUsE2KReE" role="3cqZAk">
+            <node concept="3cpWs6" id="BjUsE2KRi1" role="3cqZAp">
+              <node concept="10M0yZ" id="BjUsE2KReC" role="3cqZAk">
                 <ref role="1PxDUh" node="BjUsE2KReF" resolve="MergeConfirmation" />
-                <ref role="3cqZAo" node="BjUsE2KReG" resolve="RETURN" />
+                <ref role="3cqZAo" node="BjUsE2KReO" resolve="RESOLVE_AUTOMATICALLY" />
               </node>
             </node>
           </node>
           <node concept="3clFbC" id="BjUsE2KRi2" role="3clFbw">
-            <node concept="3cmrfG" id="BjUsE2KRi3" role="3uHU7w">
-              <property role="3cmrfH" value="0" />
-            </node>
             <node concept="37vLTw" id="3GM_nagTAKN" role="3uHU7B">
               <ref role="3cqZAo" node="BjUsE2KRhS" resolve="answer" />
+            </node>
+            <node concept="10M0yZ" id="2GSFnLofvZi" role="3uHU7w">
+              <ref role="3cqZAo" to="jkm4:~Messages.YES" resolve="YES" />
+              <ref role="1PxDUh" to="jkm4:~Messages" resolve="Messages" />
             </node>
           </node>
           <node concept="3eNFk2" id="BjUsE2KRi5" role="3eNLev">
@@ -1066,20 +1073,34 @@
               </node>
             </node>
             <node concept="3clFbC" id="BjUsE2KRia" role="3eO9$A">
-              <node concept="3cmrfG" id="BjUsE2KRib" role="3uHU7w">
-                <property role="3cmrfH" value="1" />
-              </node>
               <node concept="37vLTw" id="3GM_nagT$Uf" role="3uHU7B">
                 <ref role="3cqZAo" node="BjUsE2KRhS" resolve="answer" />
+              </node>
+              <node concept="10M0yZ" id="2GSFnLofzJo" role="3uHU7w">
+                <ref role="3cqZAo" to="jkm4:~Messages.NO" resolve="NO" />
+                <ref role="1PxDUh" to="jkm4:~Messages" resolve="Messages" />
               </node>
             </node>
           </node>
           <node concept="9aQIb" id="BjUsE2KRid" role="9aQIa">
             <node concept="3clFbS" id="BjUsE2KRie" role="9aQI4">
-              <node concept="3cpWs6" id="BjUsE2KRi1" role="3cqZAp">
-                <node concept="10M0yZ" id="BjUsE2KReC" role="3cqZAk">
+              <node concept="3SKdUt" id="2GSFnLof$Qi" role="3cqZAp">
+                <node concept="1PaTwC" id="2GSFnLof$Qj" role="1aUNEU">
+                  <node concept="3oM_SD" id="2GSFnLof$Qk" role="1PaTwD">
+                    <property role="3oM_SC" value="answer" />
+                  </node>
+                  <node concept="3oM_SD" id="2GSFnLof_jW" role="1PaTwD">
+                    <property role="3oM_SC" value="==" />
+                  </node>
+                  <node concept="3oM_SD" id="1jRXUntHlO" role="1PaTwD">
+                    <property role="3oM_SC" value="Messages.CANCEL" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="BjUsE2KRif" role="3cqZAp">
+                <node concept="10M0yZ" id="BjUsE2KReE" role="3cqZAk">
                   <ref role="1PxDUh" node="BjUsE2KReF" resolve="MergeConfirmation" />
-                  <ref role="3cqZAo" node="BjUsE2KReO" resolve="RESOLVE_AUTOMATICALLY" />
+                  <ref role="3cqZAo" node="BjUsE2KReG" resolve="RETURN" />
                 </node>
               </node>
             </node>
