@@ -29,15 +29,6 @@ public class VisibleArtifacts {
     this.project = project;
   }
 
-  public void collect(boolean localProjectOnly) {
-    if (!(localProjectOnly)) {
-      collectOnlyExternal();
-    }
-    // FIXME why do we need artifacts from this very project?! It dates back to 6404ac9c with no clear explanation why do we need it there.
-    //      I assume now we need modules of this project only in cases when localProjectOnly == true.
-    collectProjectArtifacts();
-  }
-
   public void collectOnlyExternal() {
     for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildExternalLayoutDependency$oL)) {
       SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$GC7_);
