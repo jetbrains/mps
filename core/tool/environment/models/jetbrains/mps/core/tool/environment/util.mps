@@ -188,11 +188,6 @@
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
-    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
-      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
-        <child id="1199569916463" name="body" index="1bW5cS" />
-      </concept>
-    </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="6971016359099800069" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine" flags="ngI" index="2JaDLO">
         <child id="6971016359099801474" name="commentBody" index="2JaDBN" />
@@ -846,6 +841,44 @@
       <node concept="3Tmbuc" id="6wBM5jhYLhb" role="1B3o_S" />
       <node concept="3cqZAl" id="6wBM5jhYLhd" role="3clF45" />
       <node concept="3clFbS" id="6wBM5jhYLhe" role="3clF47">
+        <node concept="3cpWs8" id="6wBM5jhYSN3" role="3cqZAp">
+          <node concept="3cpWsn" id="6wBM5jhYSN4" role="3cpWs9">
+            <property role="TrG5h" value="pd" />
+            <node concept="3uibUv" id="6wBM5jhYSp0" role="1tU5fm">
+              <ref role="3uigEE" to="y8s3:~ProjectDescriptor" resolve="ProjectDescriptor" />
+            </node>
+            <node concept="2OqwBi" id="6wBM5jhYSN5" role="33vP2m">
+              <node concept="liA8E" id="6wBM5jhYSNb" role="2OqNvi">
+                <ref role="37wK5l" to="gn4j:3WnEHxCMuT4" resolve="loadFromFile" />
+              </node>
+              <node concept="2ShNRf" id="3WnEHxCOCZP" role="2Oq$k0">
+                <node concept="1pGfFk" id="3WnEHxCOCZQ" role="2ShVmc">
+                  <ref role="37wK5l" to="gn4j:3WnEHxCM6Nt" resolve="ProjectDescriptorPersistence" />
+                  <node concept="1rXfSq" id="3WnEHxCPnw$" role="37wK5m">
+                    <ref role="37wK5l" node="3WnEHxCPgo1" resolve="projectHome" />
+                  </node>
+                  <node concept="1rXfSq" id="3WnEHxCOCZS" role="37wK5m">
+                    <ref role="37wK5l" node="3RkWhWCOXmb" resolve="createMacroHelper" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2kBlZPHo71E" role="3cqZAp">
+          <node concept="3cpWsn" id="2kBlZPHo71F" role="3cpWs9">
+            <property role="TrG5h" value="update" />
+            <node concept="3uibUv" id="2kBlZPHo49B" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
+            </node>
+            <node concept="1rXfSq" id="2kBlZPHo71G" role="33vP2m">
+              <ref role="37wK5l" to="z1c3:~ProjectBase.reloadProject(jetbrains.mps.project.structure.project.ProjectDescriptor)" resolve="reloadProject" />
+              <node concept="37vLTw" id="2kBlZPHo71H" role="37wK5m">
+                <ref role="3cqZAo" node="6wBM5jhYSN4" resolve="pd" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="6wBM5jhYNup" role="3cqZAp">
           <node concept="2OqwBi" id="6wBM5jhYNIk" role="3clFbG">
             <node concept="1rXfSq" id="6wBM5jhYNuo" role="2Oq$k0">
@@ -853,41 +886,8 @@
             </node>
             <node concept="liA8E" id="6wBM5jhYOr7" role="2OqNvi">
               <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
-              <node concept="1bVj0M" id="6wBM5jhYOZn" role="37wK5m">
-                <node concept="3clFbS" id="6wBM5jhYOZo" role="1bW5cS">
-                  <node concept="3cpWs8" id="6wBM5jhYSN3" role="3cqZAp">
-                    <node concept="3cpWsn" id="6wBM5jhYSN4" role="3cpWs9">
-                      <property role="TrG5h" value="pd" />
-                      <node concept="3uibUv" id="6wBM5jhYSp0" role="1tU5fm">
-                        <ref role="3uigEE" to="y8s3:~ProjectDescriptor" resolve="ProjectDescriptor" />
-                      </node>
-                      <node concept="2OqwBi" id="6wBM5jhYSN5" role="33vP2m">
-                        <node concept="liA8E" id="6wBM5jhYSNb" role="2OqNvi">
-                          <ref role="37wK5l" to="gn4j:3WnEHxCMuT4" resolve="loadFromFile" />
-                        </node>
-                        <node concept="2ShNRf" id="3WnEHxCOCZP" role="2Oq$k0">
-                          <node concept="1pGfFk" id="3WnEHxCOCZQ" role="2ShVmc">
-                            <ref role="37wK5l" to="gn4j:3WnEHxCM6Nt" resolve="ProjectDescriptorPersistence" />
-                            <node concept="1rXfSq" id="3WnEHxCPnw$" role="37wK5m">
-                              <ref role="37wK5l" node="3WnEHxCPgo1" resolve="projectHome" />
-                            </node>
-                            <node concept="1rXfSq" id="3WnEHxCOCZS" role="37wK5m">
-                              <ref role="37wK5l" node="3RkWhWCOXmb" resolve="createMacroHelper" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbF" id="5V7k9JTbcz$" role="3cqZAp">
-                    <node concept="1rXfSq" id="5V7k9JTbczy" role="3clFbG">
-                      <ref role="37wK5l" to="z1c3:~ProjectBase.reloadProject(jetbrains.mps.project.structure.project.ProjectDescriptor)" resolve="reloadProject" />
-                      <node concept="37vLTw" id="5V7k9JTbdvB" role="37wK5m">
-                        <ref role="3cqZAo" node="6wBM5jhYSN4" resolve="pd" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
+              <node concept="37vLTw" id="2kBlZPHo9ta" role="37wK5m">
+                <ref role="3cqZAo" node="2kBlZPHo71F" resolve="update" />
               </node>
             </node>
           </node>

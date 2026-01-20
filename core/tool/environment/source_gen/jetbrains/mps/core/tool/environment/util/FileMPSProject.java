@@ -63,10 +63,9 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
 
   @Override
   protected void update() {
-    getModelAccess().runWriteAction(() -> {
-      ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
-      reloadProject(pd);
-    });
+    ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
+    Runnable update = reloadProject(pd);
+    getModelAccess().runWriteAction(update);
   }
 
   @Override
