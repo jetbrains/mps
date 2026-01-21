@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -31,6 +32,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.project.Project;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -162,7 +164,18 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   public void addLanguage(@NotNull SLanguage language) {
     assertCanChange();
     jetbrains.mps.smodel.SModel md = getSModel();
-    if (md.addLanguage(language) && md.canFireEvent()) {
+    // FIXME where to take version value if not from deprecated method???
+    final int version = language.getLanguageVersion();
+    if (md.usedLanguages().contains(language) ) {
+      final int existingVersion = md.getLanguageImportVersion(language);
+      if (version == -1 || existingVersion <= version) {
+        return;
+      }
+      if (existingVersion != -1) {
+        throw new VersionMismatchException(null, this, language, existingVersion, version);
+      }
+    }
+    if (md.addLanguage(language, version) && md.canFireEvent()) {
       fireUsedLanguageAdded(language);
     }
   }
@@ -328,5 +341,15 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   public void changeNodeId(@NotNull SNodeId existingNodeId, @NotNull SNodeId newId) {
     assertCanChange();
     getSModel().changeNodeId(existingNodeId, newId);
+  }
+
+  static class VersionMismatchException extends RuntimeException {
+    VersionMismatchException(@Nullable Project p, org.jetbrains.mps.openapi.model.SModel modelDescriptor,
+                                    SLanguage language, Integer existingVersion, int version) {
+      super("Can't add language import with different version. Old version: %d; new version: %d; model: %s; language: %s".formatted(
+          existingVersion, version,
+          modelDescriptor.getName(),
+          language.getQualifiedName()));
+    }
   }
 }

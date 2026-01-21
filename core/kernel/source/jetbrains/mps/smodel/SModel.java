@@ -679,21 +679,8 @@ public class SModel implements SModelData, UpdateModeSupport {
    */
   @Deprecated(since = "2026.1", forRemoval = true)
   public boolean addLanguage(@NotNull SLanguage language) {
-    // FIXME where to take version value to put into myLanguagesIds if not from deprecated method???
-    final int version = language.getLanguageVersion();
-    Integer existingVersion = myLanguagesIds.get(language);
-    if (existingVersion != null) {
-      if (version == -1 || existingVersion <= version) {
-        return false;
-      }
-      if (existingVersion != -1) {
-        throw new VersionMismatchException(null, getModelDescriptor(), language, existingVersion, version);
-      }
-    }
-
-    setLanguageVersionInternal(language, version);
-    fireLanguageAddedEvent(language);
-    return true;
+    LOG.warnDeprecatedUse("Don't use implementation-level SModel.addLanguage()");
+    return addLanguage(language, -1);
   }
 
   /**
@@ -1009,14 +996,6 @@ public class SModel implements SModelData, UpdateModeSupport {
       result = 31 * result + myReferenceID;
       result = 31 * result + myUsedVersion;
       return result;
-    }
-  }
-
-  private static class VersionMismatchException extends RuntimeException {
-    public VersionMismatchException(@Nullable Project p, org.jetbrains.mps.openapi.model.SModel modelDescriptor,
-                                    SLanguage language, Integer existingVersion, int version) {
-      super( "Can't add language import with different version. Old version: " + existingVersion + "; new version: " + version +
-               "; model: " + modelDescriptor.getModelName() + "; language: " + language.getQualifiedName());
     }
   }
 }
