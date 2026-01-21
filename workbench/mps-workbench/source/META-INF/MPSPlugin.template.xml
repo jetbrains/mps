@@ -85,6 +85,7 @@
                         overrides="true"/>
 
     <registryKey defaultValue="false" description="Whats new test mode" key="whats.new.test.mode" restartRequired="false" />
+    <registryKey key="csat.survey.enabled" defaultValue="false" description="Enables periodic CSAT survey" overrides="true"/>
   </extensions>
   <actions resource-bundle="messages.ActionsBundle">
     <action id="WhatsNewAction" class="com.intellij.platform.whatsNew.WhatsNewAction" overrides="true"/>
