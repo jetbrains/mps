@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -412,7 +412,10 @@ public final class BinaryPersistence {
       SLanguageId id = new SLanguageId(is.readUUID());
       String name = is.readString();
       SLanguage l = MetaAdapterFactory.getLanguage(id, name);
-      myModelData.addLanguage(l);
+      // I see no reason to attempt guessing actual version number, after all, we don't migrate binary models ATM
+      //   nor it's reasonable to expect all referenced languages are present by this time
+      //   (i.e. SLanguage.getLanguageVersion() inside addLanguage() would give -1 anyway)
+      myModelData.addLanguage(l, -1);
     }
   }
 

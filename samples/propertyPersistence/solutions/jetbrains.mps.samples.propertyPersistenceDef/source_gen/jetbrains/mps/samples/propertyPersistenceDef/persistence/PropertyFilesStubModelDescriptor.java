@@ -32,8 +32,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import jetbrains.mps.util.FileUtil;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -73,8 +71,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
   private SModel readModel() throws ModelLoadException {
     SModel modelData = new DefaultSModel(this.getReference());
     processStreams(getSource().getSubStreams(), modelData);
-    modelData.addLanguage(PROPERTY_DEF_LANGUAGE);
-    modelData.setLanguageImportVersion(PROPERTY_DEF_LANGUAGE, PROPERTY_DEF_LANGUAGE_VERSION);
+    modelData.addLanguage(PROPERTY_DEF_LANGUAGE, PROPERTY_DEF_LANGUAGE_VERSION);
     return modelData;
   }
 
@@ -130,10 +127,6 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
     }
   }
 
-  @Override
-  public Collection<SLanguage> importedLanguageIds() {
-    return Collections.singleton(PROPERTY_DEF_LANGUAGE);
-  }
 
   @Override
   @NotNull

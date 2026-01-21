@@ -455,8 +455,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       SLanguageId langId = my_idEncoderField.parseLanguageId(attrs.getValue("id"));
       int langVersion = Integer.parseInt(attrs.getValue("version"));
       SLanguage lang = my_readHelperParam.getLanguage(langId, attrs.getValue("name"));
-      my_modelDataParam.addLanguage(lang);
-      my_modelDataParam.setLanguageImportVersion(lang, langVersion);
+      my_modelDataParam.addLanguage(lang, langVersion);
       return null;
     }
   }

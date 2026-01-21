@@ -51,6 +51,7 @@ public interface SModelInternal extends ModelWithDisposeInfo  {
    */
   @Deprecated(since = "2025.1", forRemoval = true)
   default void addModelListener(@NotNull SModelListener listener) {
+    // in MPS-extensions, there are few uses, most notable SM_RepositoryChangeTranslator, GlobalModelEventCollector and few others.
   }
 
   /**

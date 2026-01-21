@@ -2289,24 +2289,11 @@
                 <ref role="CQp62" node="5ZITOBbezFm" resolve="modelData" />
               </node>
               <node concept="liA8E" id="1AqOJynth2O" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~SModel.addLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="addLanguage" />
+                <ref role="37wK5l" to="w1kc:~SModel.addLanguage(org.jetbrains.mps.openapi.language.SLanguage,int)" resolve="addLanguage" />
                 <node concept="37vLTw" id="7jbRZXwpQmm" role="37wK5m">
                   <ref role="3cqZAo" node="7jbRZXwpQmg" resolve="lang" />
                 </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="7jbRZXwpPNt" role="3cqZAp">
-            <node concept="2OqwBi" id="7jbRZXwpPVS" role="3clFbG">
-              <node concept="CQp63" id="7jbRZXwpPNr" role="2Oq$k0">
-                <ref role="CQp62" node="5ZITOBbezFm" resolve="modelData" />
-              </node>
-              <node concept="liA8E" id="7jbRZXwpQ9t" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~SModel.setLanguageImportVersion(org.jetbrains.mps.openapi.language.SLanguage,int)" resolve="setLanguageImportVersion" />
-                <node concept="37vLTw" id="7jbRZXwpQVM" role="37wK5m">
-                  <ref role="3cqZAo" node="7jbRZXwpQmg" resolve="lang" />
-                </node>
-                <node concept="37vLTw" id="7jbRZXwpRax" role="37wK5m">
+                <node concept="37vLTw" id="6ixEaXJxULy" role="37wK5m">
                   <ref role="3cqZAo" node="4Kem6uXVLYn" resolve="langVersion" />
                 </node>
               </node>

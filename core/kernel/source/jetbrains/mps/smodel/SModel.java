@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -659,9 +659,8 @@ public class SModel implements SModelData, UpdateModeSupport {
     //       Either stop using this method, or fix it to respect devkit
     Integer res = myLanguagesIds.get(lang);
     if (res == null) {
-      LOG.error(
-          "Model " + getModelDescriptor().getModelName() + ": version for language " + lang.getQualifiedName() + " not found. Using last version instead.");
-      return lang.getLanguageVersion();
+      LOG.error("Model %s: version for language %s not found.".formatted(getModelDescriptor().getName(), lang.getQualifiedName()));
+      return -1;
     }
     return res;
   }
@@ -675,6 +674,10 @@ public class SModel implements SModelData, UpdateModeSupport {
     return false;
   }
 
+  /**
+   * @deprecated model can't guess which exact version of a used language it shall record, use {@link #addLanguage(SLanguage, int)} instead
+   */
+  @Deprecated(since = "2026.1", forRemoval = true)
   public boolean addLanguage(@NotNull SLanguage language) {
     // FIXME where to take version value to put into myLanguagesIds if not from deprecated method???
     final int version = language.getLanguageVersion();
@@ -688,6 +691,21 @@ public class SModel implements SModelData, UpdateModeSupport {
       }
     }
 
+    setLanguageVersionInternal(language, version);
+    fireLanguageAddedEvent(language);
+    return true;
+  }
+
+  /**
+   * Records a language usage with a provided version. If there's already an import of the language, does nothing.
+   * Use {@link #setLanguageImportVersion(SLanguage, int)} in case you need to update just the version.
+   * This method doesn't make any assumptions about the version (e.g. it's the actual one, or non-existent)
+   * @since 2026.1
+   */
+  public boolean addLanguage(@NotNull SLanguage language, int version) {
+    if (myLanguagesIds.containsKey(language)) {
+      return false;
+    }
     setLanguageVersionInternal(language, version);
     fireLanguageAddedEvent(language);
     return true;
@@ -904,8 +922,7 @@ public class SModel implements SModelData, UpdateModeSupport {
       to.addDevKit(mr);
     }
     for (SLanguage lang : usedLanguages()) {
-      to.addLanguage(lang);
-      to.setLanguageImportVersion(lang, getLanguageImportVersion(lang));
+      to.addLanguage(lang, getLanguageImportVersion(lang));
     }
     for (SLanguage mr : getLanguagesEngagedOnGeneration()) {
       to.addEngagedOnGenerationLanguage(mr);

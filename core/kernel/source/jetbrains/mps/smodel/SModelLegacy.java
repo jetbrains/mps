@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,13 +54,8 @@ public final class SModelLegacy {
   }
 
   public void addLanguage(SModuleReference ref) {
-    myModel.addLanguage(MetaAdapterFactory.getLanguage(ref));
-  }
-
-@Deprecated(since = "2019.2", forRemoval = true)
-  //use SModelInternal.addLanguage(SLanguage)
-  public void addLanguage(Language language) {
-    myModel.addLanguage(MetaAdapterByDeclaration.getLanguage(language));
+    // we don't care about specific version in a legacy model
+    myModel.addLanguage(MetaAdapterFactory.getLanguage(ref), -1);
   }
 
   public void addModelImport(org.jetbrains.mps.openapi.model.SModelReference ref, boolean firstVersion) {

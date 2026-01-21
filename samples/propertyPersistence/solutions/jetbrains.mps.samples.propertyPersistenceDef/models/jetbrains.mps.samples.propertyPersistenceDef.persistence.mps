@@ -1924,24 +1924,11 @@
               <ref role="3cqZAo" node="1nLyZqZ5lvi" resolve="modelData" />
             </node>
             <node concept="liA8E" id="7wwV855pC$l" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~SModel.addLanguage(org.jetbrains.mps.openapi.language.SLanguage)" resolve="addLanguage" />
+              <ref role="37wK5l" to="w1kc:~SModel.addLanguage(org.jetbrains.mps.openapi.language.SLanguage,int)" resolve="addLanguage" />
               <node concept="37vLTw" id="7wwV855pEwn" role="37wK5m">
                 <ref role="3cqZAo" node="1DJXmnO20D5" resolve="PROPERTY_DEF_LANGUAGE" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1DJXmnO1UzV" role="3cqZAp">
-          <node concept="2OqwBi" id="1DJXmnO1XnO" role="3clFbG">
-            <node concept="37vLTw" id="1DJXmnO1UzT" role="2Oq$k0">
-              <ref role="3cqZAo" node="1nLyZqZ5lvi" resolve="modelData" />
-            </node>
-            <node concept="liA8E" id="1DJXmnO20pI" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~SModel.setLanguageImportVersion(org.jetbrains.mps.openapi.language.SLanguage,int)" resolve="setLanguageImportVersion" />
-              <node concept="37vLTw" id="1DJXmnO28s8" role="37wK5m">
-                <ref role="3cqZAo" node="1DJXmnO20D5" resolve="PROPERTY_DEF_LANGUAGE" />
-              </node>
-              <node concept="37vLTw" id="1DJXmnO29cB" role="37wK5m">
+              <node concept="37vLTw" id="6ixEaXJxD$2" role="37wK5m">
                 <ref role="3cqZAo" node="1DJXmnO23Jy" resolve="PROPERTY_DEF_LANGUAGE_VERSION" />
               </node>
             </node>
@@ -2571,30 +2558,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="3urGXjh__Ma" role="jymVt" />
-    <node concept="3clFb_" id="1nLyZqZ54hD" role="jymVt">
-      <property role="TrG5h" value="importedLanguageIds" />
-      <node concept="3Tm1VV" id="1nLyZqZ54hE" role="1B3o_S" />
-      <node concept="3uibUv" id="1nLyZqZ54hF" role="3clF45">
-        <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
-        <node concept="3uibUv" id="1nLyZqZ54hG" role="11_B2D">
-          <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="1nLyZqZ54hH" role="3clF47">
-        <node concept="3clFbF" id="1nLyZqZ54hI" role="3cqZAp">
-          <node concept="2YIFZM" id="1nLyZqZ54hJ" role="3clFbG">
-            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-            <ref role="37wK5l" to="33ny:~Collections.singleton(java.lang.Object)" resolve="singleton" />
-            <node concept="37vLTw" id="1DJXmnO20D7" role="37wK5m">
-              <ref role="3cqZAo" node="1DJXmnO20D5" resolve="PROPERTY_DEF_LANGUAGE" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1nLyZqZ54hM" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="3urGXjh$hgR" role="jymVt" />
     <node concept="3clFb_" id="3PyP5yK7RYb" role="jymVt">
       <property role="TrG5h" value="getSource" />
