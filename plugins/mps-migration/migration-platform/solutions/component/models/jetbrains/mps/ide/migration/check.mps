@@ -338,7 +338,7 @@
           <node concept="3cpWs6" id="2htE_P_SIXI" role="3cqZAp">
             <node concept="2OqwBi" id="6I45OGz0qn1" role="3cqZAk">
               <node concept="Xl_RD" id="6I45OGz0i4$" role="2Oq$k0">
-                <property role="Xl_RC" value="The language %s does not provide migration from version %d. There are modules using some old version this language while current version is %d." />
+                <property role="Xl_RC" value="The language %s does not provide migration from version %d. There are modules using this old version." />
               </node>
               <node concept="2cAKMz" id="6I45OGz0qNx" role="2OqNvi">
                 <node concept="2OqwBi" id="1UfEnA_FyU$" role="2cAKU6">
@@ -355,14 +355,6 @@
                   </node>
                   <node concept="liA8E" id="6Z8qT6OVjWI" role="2OqNvi">
                     <ref role="37wK5l" to="6f4m:2RG318eWpZE" resolve="getFromVersion" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="6Z8qT6OVpTI" role="2cAKU6">
-                  <node concept="liA8E" id="6Z8qT6OVpTJ" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SLanguage.getLanguageVersion()" resolve="getLanguageVersion" />
-                  </node>
-                  <node concept="37vLTw" id="6I45OGz0zr5" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6I45OGz0zr0" resolve="l" />
                   </node>
                 </node>
               </node>

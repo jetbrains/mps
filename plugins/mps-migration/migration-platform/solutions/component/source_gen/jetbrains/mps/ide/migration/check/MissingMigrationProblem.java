@@ -27,7 +27,7 @@ public abstract class MissingMigrationProblem extends Problem<SModuleReference> 
     }
     public String getMessage() {
       SLanguage l = myScriptReference.getLanguage();
-      return String.format("The language %s does not provide migration from version %d. There are modules using some old version this language while current version is %d.", l.getQualifiedName(), myScriptReference.getFromVersion(), l.getLanguageVersion());
+      return String.format("The language %s does not provide migration from version %d. There are modules using this old version.", l.getQualifiedName(), myScriptReference.getFromVersion());
     }
   }
 
