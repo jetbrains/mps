@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,16 @@
 package jetbrains.mps.smodel.adapter.structure.language;
 
 import jetbrains.mps.smodel.adapter.structure.FormatException;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.smodel.runtime.ConceptDescriptor;
-import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptor;
-import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
-import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
-import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
+@SuppressWarnings("removal")
 public abstract class SLanguageAdapter implements SLanguage {
   public static final String ID_DELIM = ":";
   protected final String myLanguageFqName;
@@ -51,20 +43,7 @@ public abstract class SLanguageAdapter implements SLanguage {
     if (runtime == null) {
       return Collections.emptySet();
     }
-
-    StructureAspectDescriptor struc = getLanguageDescriptor().getAspect(StructureAspectDescriptor.class);
-    if (struc == null) {
-      return Collections.emptyList();
-    }
-    ArrayList<SAbstractConcept> result = new ArrayList<>();
-    for (ConceptDescriptor cd : struc.getDescriptors()) {
-      if (cd.isInterfaceConcept()) {
-        result.add(new SInterfaceConceptAdapterById(cd.getId(), cd.getConceptFqName()));
-      } else {
-        result.add(new SConceptAdapterById(cd.getId(), cd.getConceptFqName()));
-      }
-    }
-    return result;
+    return runtime.getConcepts();
   }
 
   @NotNull
@@ -74,26 +53,10 @@ public abstract class SLanguageAdapter implements SLanguage {
     if (runtime == null) {
       return Collections.emptySet();
     }
-
-    StructureAspectDescriptor structureAspect = getLanguageDescriptor().getAspect(StructureAspectDescriptor.class);
-    if (structureAspect == null) {
-      return Collections.emptyList();
-    }
-    ArrayList<SDataType> result = new ArrayList<>();
-    for (DataTypeDescriptor descriptor : structureAspect.getDataTypeDescriptors()) {
-      SDataType dataType = null;
-      if (descriptor instanceof EnumerationDescriptor) {
-        dataType = MetaAdapterFactory.getEnumeration(descriptor.getId(), descriptor.getName());
-      } else if (descriptor instanceof ConstrainedStringDatatypeDescriptor) {
-        dataType = MetaAdapterFactory.getConstrainedStringDataType(descriptor.getId(), descriptor.getName());
-      }
-      if (dataType != null) {
-        result.add(dataType);
-      }
-    }
-    return result;
+    return runtime.getDatatypes();
   }
 
+  @Override
   public int getLanguageVersion() {
     LanguageRuntime languageDescriptor = getLanguageDescriptor();
     if (languageDescriptor == null) {

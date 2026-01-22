@@ -11,22 +11,24 @@ import jetbrains.mps.icons.MPSIcons;
 import java.util.List;
 import jetbrains.mps.lang.generator.helper.GeneratorFragmentLookup;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.structure.behavior.IConceptAspect__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.ModelDependencyResolver;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.plugins.relations.CreateAspectContext;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.kernel.model.SModelUtil;
-import java.util.ArrayList;
 import jetbrains.mps.ide.dialogs.project.creation.NewGeneratorDialog;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -34,7 +36,6 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.ide.actions.MappingDialog;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -77,7 +78,26 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     return false;
   }
   public Iterable<SConcept> getAspectConcepts(final SNode node) {
-    List<SConcept> result = ConceptEditorHelper.getAvailableConceptAspects(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), node);
+    final SRepository repo = SNodeOperations.getModel(node).getRepository();
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repo);
+    List<SConcept> result = ListSequence.fromList(new ArrayList<>());
+    for (SAbstractConcept c : languageRegistry.getLanguage(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator")).getConcepts()) {
+      if (c.isAbstract()) {
+        continue;
+      }
+      if (!(c instanceof SConcept)) {
+        continue;
+      }
+      if (!(((SConcept) c).isRootable())) {
+        continue;
+      }
+      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(c), CONCEPTS.IConceptAspect$Z3))) {
+        continue;
+      }
+      if ((boolean) IConceptAspect__BehaviorDescriptor.canBeAppliedToNode_id7IH442d05tK.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(c, CONCEPTS.IConceptAspect$Z3)), node)) {
+        ListSequence.fromList(result).addElement(((SConcept) c));
+      }
+    }
     ListSequence.fromList(result).addElement(CONCEPTS.InlineTemplate_RuleConsequence$u9);
     ListSequence.fromList(result).addElement(CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i);
     boolean rootable = SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH) && SPropertyOperations.getBoolean((SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH)), PROPS.rootable$_9pz);
@@ -91,9 +111,8 @@ public class Generator_TabDescriptor extends RelationDescriptor {
         }
       }
       if (isNeedRootTemplate) {
-        final SRepository repo = SNodeOperations.getModel(node).getRepository();
-        for (SLanguage lang : new ModelDependencyResolver(LanguageRegistry.getInstance(repo), repo).usedLanguages(SNodeOperations.getModel(node))) {
-          for (SAbstractConcept importedConcept : lang.getConcepts()) {
+        for (SLanguage lang : new ModelDependencyResolver(languageRegistry, repo).usedLanguages(SNodeOperations.getModel(node))) {
+          for (SAbstractConcept importedConcept : languageRegistry.getLanguage(lang).getConcepts()) {
             if (importedConcept.isAbstract()) {
               continue;
             }
@@ -220,13 +239,13 @@ public class Generator_TabDescriptor extends RelationDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
     /*package*/ static final SConcept InlineTemplate_RuleConsequence$u9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
     /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$9i = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
     /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
     /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
-    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
     /*package*/ static final SConcept Reduction_MappingRule$9X = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }

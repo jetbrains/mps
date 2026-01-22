@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.BootstrapLanguages;
@@ -51,7 +50,6 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -218,9 +216,7 @@ public class CreateRootNodeGroup extends BaseGroup {
   }
 
   private void groupConceptsOfLanguage(LanguageRuntime from, SModel targetModel, List<SConcept> endorsed, List<SConcept> nonEndorsed) {
-    // FIXME use concepts from LR, not through SLanguage and statics!
-    //    lr.getAspect(StructureAspectDescriptor.class).getDescriptors()
-    for (SAbstractConcept c : from.getIdentity().getConcepts()) {
+    for (SAbstractConcept c : from.getConcepts()) {
       if (c.isAbstract() || !(c instanceof SConcept)) {
         continue;
       }

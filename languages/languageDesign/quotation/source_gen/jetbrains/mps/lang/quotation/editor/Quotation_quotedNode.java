@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -34,15 +33,15 @@ public class Quotation_quotedNode extends AbstractCellMenuComponent {
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      List<SAbstractConcept> result = ListSequence.fromList(new ArrayList<SAbstractConcept>());
-      LanguageRegistry lr = LanguageRegistry.getInstance(editorContext.getRepository());
-      for (SLanguage l : new SLanguageHierarchy(lr, SModelOperations.getAllLanguageImports(SNodeOperations.getModel(node))).getExtended()) {
-        for (SAbstractConcept c : l.getConcepts()) {
+      final List<SAbstractConcept> result = ListSequence.fromList(new ArrayList<>());
+      LanguageRegistry langRegistry = LanguageRegistry.getInstance(editorContext.getRepository());
+      langRegistry.withAvailableLanguages(new SLanguageHierarchy(langRegistry, SModelOperations.getAllLanguageImports(SNodeOperations.getModel(node))).getExtended().stream(), (lr) -> {
+        for (SAbstractConcept c : lr.getConcepts()) {
           if (!(c.isAbstract())) {
             ListSequence.fromList(result).addElement(c);
           }
         }
-      }
+      });
       return result;
 
     }

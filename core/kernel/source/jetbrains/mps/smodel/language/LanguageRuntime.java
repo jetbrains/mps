@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,18 @@ import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import jetbrains.mps.smodel.adapter.structure.concept.SInterfaceConceptAdapterById;
 import jetbrains.mps.smodel.runtime.AspectExtensionsAware;
+import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptor;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
@@ -88,6 +97,55 @@ public abstract class LanguageRuntime {
     ArrayList<GeneratorRuntime> rv = new ArrayList<>(4);
     populateRegisteredGenerators(rv);
     return rv;
+  }
+
+  /**
+   * @since 2026.1
+   */
+  public final Iterable<SAbstractConcept> getConcepts() {
+    // XXX placing this method here is not 100% perfect, LR doesn't need to care about specific aspects it may provide.
+    //     Better is to have smth like ConceptRegistry.getConcepts(SLanguage):list<SConcept>, where ConceptRegistry has access to
+    //     LanguageRegistry and could get LanguageRuntime. Yet it's better to have the method here than in SLanguage, which is identity-only code.
+    StructureAspectDescriptor struct = getAspect(StructureAspectDescriptor.class);
+    if (struct == null) {
+      return Collections.emptyList();
+    }
+    ArrayList<SAbstractConcept> result = new ArrayList<>();
+    for (ConceptDescriptor cd : struct.getDescriptors()) {
+      if (cd.isInterfaceConcept()) {
+        // FIXME perhaps, makes sense to use MetaAdapterFactory.getInterfaceConcept(getId(), cd.getId().getIdValue(), cd.getName()) instead,
+        //       and also could be with referenceValue == true to indicate this one comes from an actual LR, not from hardcoded values inside a model?
+        result.add(new SInterfaceConceptAdapterById(cd.getId(), cd.getConceptFqName()));
+      } else {
+        result.add(new SConceptAdapterById(cd.getId(), cd.getConceptFqName()));
+      }
+    }
+    return result;
+  }
+
+  /**
+   * @since 2026.1
+   */
+  public Iterable<SDataType> getDatatypes() {
+    StructureAspectDescriptor structureAspect = getAspect(StructureAspectDescriptor.class);
+    if (structureAspect == null) {
+      return Collections.emptyList();
+    }
+    ArrayList<SDataType> result = new ArrayList<>();
+    for (DataTypeDescriptor descriptor : structureAspect.getDataTypeDescriptors()) {
+      SDataType dataType = null;
+      // FIXME would be great to have S-entity construction code aligned with that in getConcepts(). Either both use factory or neither
+      if (descriptor instanceof EnumerationDescriptor) {
+        dataType = MetaAdapterFactory.getEnumeration(descriptor.getId(), descriptor.getName());
+      } else if (descriptor instanceof ConstrainedStringDatatypeDescriptor) {
+        dataType = MetaAdapterFactory.getConstrainedStringDataType(descriptor.getId(), descriptor.getName());
+      }
+      if (dataType != null) {
+        result.add(dataType);
+      }
+    }
+    return result;
+
   }
 
   /**

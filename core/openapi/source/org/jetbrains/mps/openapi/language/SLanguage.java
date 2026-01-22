@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+
+import java.util.Collections;
 
 /**
  * Reference to a deployed/run-time language.
@@ -40,14 +42,25 @@ public interface SLanguage {
 
   /**
    * All concepts defined in the language, empty if the language is invalid (missing).
+   * @deprecated Use of this method is discouraged, switch to {@code LanguageRuntime#getConcepts()}.
+   *             This method would stay functional for at least another year, and then start issuing warnings and later return empty
+   *             collection before being removed completely.
    */
-  Iterable<SAbstractConcept> getConcepts();
+  @Deprecated(since = "2026.1", forRemoval = true)
+  default Iterable<SAbstractConcept> getConcepts() {
+    return Collections.emptyList();
+  }
 
   /**
    * All datatypes defined in the language, empty if the language is invalid (missing).
+   * @deprecated Use of this method is discouraged, switch to {@code LanguageRuntime#getDatatypes()}.
+   *             This method would return empty collection in the coming releases (no known uses).
    */
+  @Deprecated(since = "2026.1", forRemoval = true)
   @NotNull
-  Iterable<SDataType> getDatatypes();
+  default Iterable<SDataType> getDatatypes() {
+    return Collections.emptyList();
+  }
 
   /**
    * The optional reference to a module containing the sources for the language. This is useful, for example, when showing
@@ -55,7 +68,9 @@ public interface SLanguage {
    * It may be null.
    */
   @Nullable
-  SModule getSourceModule();
+  default SModule getSourceModule() {
+    return null;
+  }
 
   /**
    * Reference to a module containing the sources for the language. This is useful, for example, when showing
@@ -71,8 +86,13 @@ public interface SLanguage {
    * will be able to work with it. E.g. generator can fail on generation of such a model.
    *
    * In MPS 3.2, version is changed only by adding language migrations.
+   * @deprecated Will be removed, use {@code LanguageRuntime#getVersion()} for an actual version of a deployed language,
+   *             or {@code Language#getLanguageVersion()} for sources.
    * @return non-negative version of the language, or -1 the version could not be deduced.
    */
-  @Deprecated //normally, one shouldn't have used it. If you had, switch to getting version from LanguageRuntime
-  int getLanguageVersion(); // FWIW, no uses in mbeddr
+  @Deprecated(forRemoval = true) //normally, one shouldn't have used it. If you had, switch to getting version from LanguageRuntime
+  default int getLanguageVersion() {
+    // FWIW, no uses in mbeddr, and 1 in MPS itself
+    return -1;
+  }
 }

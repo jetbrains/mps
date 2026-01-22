@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,6 @@ import org.jetbrains.mps.util.Condition;
 
 import java.awt.Component;
 import java.awt.Point;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -74,7 +73,7 @@ public final class CreateFromUsageUtil {
   }
 
   public static void showCreateNewRootMenu(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, @Nullable Consumer<SNode> newRootHandler,
-      @Nullable Condition<SConcept> conceptsFilter) {
+      @Nullable final Condition<SConcept> conceptsFilter) {
     final EditorCell selectedCell = editorContext.getSelectedCell();
     int x = selectedCell.getX();
     int y = selectedCell.getY();
@@ -85,25 +84,18 @@ public final class CreateFromUsageUtil {
     final DataContext dataContext = DataManager.getInstance().getDataContext(editorComponent, x, y);
     final SModel model = selectedCell.getSNode().getModel();
 
-    if (conceptsFilter == null) {
-      conceptsFilter = Condition.TRUE_CONDITION;
-    }
-
-    BaseGroup group = new BaseGroup("");
+    final BaseGroup group = new BaseGroup("");
     final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(editorContext.getRepository());
     ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
     Set<SLanguage> modelLanguages = new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(model)).getExtended();
-    SLanguage[] languages = modelLanguages.toArray(new SLanguage[0]);
-    Arrays.sort(languages, new ToStringComparator());
-    for (SLanguage language : languages) {
+    languageRegistry.withAvailableLanguages(modelLanguages.stream().sorted(new ToStringComparator()), lr -> {
       boolean hasChildren = false;
-      for (SAbstractConcept ac : language.getConcepts()) {
-        if (!(ac instanceof SConcept)) {
+      for (SAbstractConcept ac : lr.getConcepts()) {
+        if (!(ac instanceof SConcept concept)) {
           continue;
         }
         // FIXME similar code in CreateRootNodeGroup for ProjectPane
-        final SConcept concept = (SConcept) ac;
-        if (concept.isRootable() && conceptsFilter.met(concept)) {
+        if (concept.isRootable() && (conceptsFilter == null || conceptsFilter.met(concept))) {
           group.add(new AddNewRootAction(model, concept, newRootHandler));
           hasChildren = true;
         }
@@ -112,7 +104,7 @@ public final class CreateFromUsageUtil {
       if (hasChildren) {
         group.addSeparator();
       }
-    }
+    });
 
     ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup(IdeBundle.message("title.popup.new.element"),
         group, dataContext, JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);

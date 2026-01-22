@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -160,11 +160,11 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
   synchronized public SAbstractConcept getConceptByName(String conceptName) {
     if (myConceptByNameCache==null) {
       myConceptByNameCache = new HashMap<>();
-      for (SLanguage l : myLanguageRegistry.getAllLanguages()) {
-        for (SAbstractConcept c : l.getConcepts()) {
+      myLanguageRegistry.withAvailableLanguages(lr -> {
+        for (SAbstractConcept c : lr.getConcepts()) {
           myConceptByNameCache.put(c.getQualifiedName(),c);
         }
-      }
+      });
     }
 
     return myConceptByNameCache.getOrDefault(conceptName, new InvalidConcept(conceptName));
