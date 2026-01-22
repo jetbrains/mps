@@ -187,6 +187,13 @@ public abstract class ProjectBase extends Project {
   }
 
   /**
+   * Called after a module virtual folder is changed a result of calling {@link #setVirtualFolder}.
+   * Subclasses can update the internal state of the project to reflect the change.
+   */
+  protected void moduleUpdated(@NotNull IFile descriptorFile, String virtualFolder) {
+  }
+
+  /**
    * Called after a module is removed from the project as a result of calling {@link #removeModule}.
    * Subclasses can update the internal state of the project to reflect the removal of a module.
    */
@@ -362,6 +369,7 @@ public abstract class ProjectBase extends Project {
     IFile descriptorFile = getModuleDescriptorFile(moduleReference);
     if (descriptorFile != null) {
       myModuleLoader.setVirtualFolder(moduleReference, newFolder);
+      moduleUpdated(descriptorFile, newFolder);
     } else {
       LOG.warning(String.format("Could not set virtual folder for the module %s, module could not be found", module));
     }

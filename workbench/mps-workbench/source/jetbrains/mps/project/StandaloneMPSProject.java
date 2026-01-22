@@ -191,6 +191,15 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   }
 
   @Override
+  protected void moduleUpdated(@NotNull IFile descriptorFile, String newFolder) {
+    Builder builder = new Builder(getName());
+    myProjectDescriptor.forEachEntry((file, folder) -> {
+      builder.addModuleEntry(file, Objects.equals(descriptorFile, file) ? newFolder : folder);
+    });
+    myProjectDescriptor = builder.build();
+  }
+
+  @Override
   protected void moduleRemoved(@NotNull IFile descriptorFile) {
     Builder builder = new Builder(getName());
     myProjectDescriptor.forEachEntry((file, folder) -> {
