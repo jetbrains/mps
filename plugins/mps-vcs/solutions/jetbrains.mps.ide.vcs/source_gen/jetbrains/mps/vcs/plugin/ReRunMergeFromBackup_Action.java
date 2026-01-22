@@ -41,6 +41,7 @@ import com.intellij.diff.DiffRequestFactory;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.diff.DiffManager;
 import java.io.IOException;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import com.intellij.diff.InvalidDiffRequestException;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.vfs.IFile;
@@ -152,7 +153,7 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
         MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(((Project) MapSequence.fromMap(_params).get("project")), file.getFileType(), FileDocumentManager.getInstance().getDocument(file), contents, null, titles, null);
         DiffManager.getInstance().showMerge(((Project) MapSequence.fromMap(_params).get("project")), request);
         return;
-      } catch (IOException e) {
+      } catch (IOException | ModelReadException e) {
         if (LOG.isWarningLevel()) {
           LOG.warning("", e);
         }

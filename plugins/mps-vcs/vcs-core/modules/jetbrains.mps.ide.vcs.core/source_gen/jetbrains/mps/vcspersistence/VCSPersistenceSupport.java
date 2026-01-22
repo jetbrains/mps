@@ -15,21 +15,20 @@ import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.SModelHeader;
 import org.xml.sax.InputSource;
-import java.io.IOException;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.persistence.def.PersistenceVersionNotFoundException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.persistence.def.v4.IPersistenceWithReader;
 import jetbrains.mps.smodel.persistence.def.v4.IModelReader;
 import org.jdom.Document;
-import jetbrains.mps.smodel.SModel;
+import jetbrains.mps.util.JDOMUtil;
+import org.jdom.JDOMException;
+import java.io.IOException;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import java.io.ByteArrayInputStream;
-import jetbrains.mps.util.JDOMUtil;
-import org.jdom.JDOMException;
 import org.xml.sax.helpers.DefaultHandler;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -117,13 +116,11 @@ public class VCSPersistenceSupport {
   }
 
   @NotNull
-  public static SModelHeader loadDescriptor(InputSource source) throws IOException {
-    SModelHeader result = new SModelHeader();
-    parseAndHandleExceptions(source, new ModelPersistence.HeaderOnlyHandler(result), "model descriptor");
-    return result;
+  public static SModelHeader loadDescriptor(InputSource source) throws ModelReadException {
+    return ModelPersistence.loadDescriptor(source);
   }
 
-  /*package*/ static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull InputSource source, ModelLoadingState state) throws IOException, ModelReadException {
+  /*package*/ static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull InputSource source, ModelLoadingState state) throws ModelReadException {
     if (header.getPersistenceVersion() < 0) {
       throw new ModelReadException("Couldn't read model because of unknown persistence version", null);
     }
@@ -154,50 +151,41 @@ public class VCSPersistenceSupport {
       throw new PersistenceVersionNotFoundException(m);
     }
 
-    Document document = loadModelDocument(source);
-    return new ModelLoadResult((SModel) reader.readModel(document, header), ModelLoadingState.FULLY_LOADED);
+
+    try {
+      Document document = JDOMUtil.loadDocument(source);
+      return new ModelLoadResult(reader.readModel(document, header), ModelLoadingState.FULLY_LOADED);
+    } catch (JDOMException | IOException e) {
+      throw new ModelReadException(String.format("Exception loading model %s from %s", header.getModelReference(), source), e);
+    }
   }
 
   @Nullable
   public static List<LineContent> getLineToContentMap(byte[] content, boolean withValues) throws ModelReadException {
-    try {
-      SModelHeader header;
-      header = loadDescriptor(new InputSource(new ByteArrayInputStream(content)));
-      IModelPersistence mp = getPersistence(header.getPersistenceVersion());
-      if (mp == null) {
-        return null;
-      }
-
-      XMLSAXHandler<List<LineContent>> handler = mp.getAnnotateHandler(withValues, withValues);
-      if (handler == null) {
-        return null;
-      }
-
-      parseAndHandleExceptions(new InputSource(new ByteArrayInputStream(content)), handler, "line to content map");
-      return handler.getResult();
-    } catch (IOException e) {
-      throw new ModelReadException(e.toString(), e);
+    SModelHeader header;
+    header = loadDescriptor(new InputSource(new ByteArrayInputStream(content)));
+    IModelPersistence mp = getPersistence(header.getPersistenceVersion());
+    if (mp == null) {
+      return null;
     }
-  }
-  @NotNull
-  private static Document loadModelDocument(@NotNull InputSource source) throws IOException {
-    try {
-      return JDOMUtil.loadDocument(source);
-    } catch (JDOMException e) {
-      throw new IOException("Exception on loading model from " + source, e);
+
+    XMLSAXHandler<List<LineContent>> handler = mp.getAnnotateHandler(withValues, withValues);
+    if (handler == null) {
+      return null;
     }
+
+    parseAndHandleExceptions(new InputSource(new ByteArrayInputStream(content)), handler, "line to content map");
+    return handler.getResult();
   }
 
-  private static void parseAndHandleExceptions(InputSource source, DefaultHandler handler, String what) throws IOException {
+
+  private static void parseAndHandleExceptions(InputSource source, DefaultHandler handler, String what) throws ModelReadException {
     try {
       JDOMUtil.createSAXParser().parse(source, handler);
     } catch (BreakParseSAXException e) {
-      // used to break SAX parsing flow
-    } catch (ParserConfigurationException e) {
-      LOG.error(e.toString(), e);
-      throw new IOException(String.format("Couldn't read %s: %s", what, e.getMessage()), e);
-    } catch (SAXException | AssertionError e) {
-      throw new IOException(String.format("Couldn't read %s: %s", what, e.getMessage()), e);
+      // ignore, used to break SAX parsing flow
+    } catch (ParserConfigurationException | IOException | SAXException | AssertionError e) {
+      throw new ModelReadException(String.format("Couldn't read %s: %s", what, e.getMessage()), e);
     }
   }
 }

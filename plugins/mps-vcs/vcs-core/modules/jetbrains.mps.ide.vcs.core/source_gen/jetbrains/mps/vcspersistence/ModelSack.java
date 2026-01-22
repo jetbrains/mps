@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import java.io.IOException;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.persistence.ByteArrayInputSource;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
@@ -28,6 +27,7 @@ import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.project.MPSExtentions;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import java.io.IOException;
 import java.util.Collections;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
@@ -82,7 +82,7 @@ public class ModelSack {
           }
           // fallthrough, try new one, with detected MF
         }
-      } catch (ModelReadException | IOException ex) {
+      } catch (ModelReadException ex) {
         // ignore, try new persistence format
       }
     }
