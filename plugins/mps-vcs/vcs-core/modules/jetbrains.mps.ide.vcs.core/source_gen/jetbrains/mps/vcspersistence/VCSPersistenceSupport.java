@@ -30,8 +30,6 @@ import jetbrains.mps.smodel.persistence.lines.LineContent;
 import java.io.ByteArrayInputStream;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.JDOMException;
-import jetbrains.mps.smodel.DefaultSModel;
-import java.io.StringReader;
 import org.xml.sax.helpers.DefaultHandler;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,9 +44,9 @@ import org.xml.sax.SAXException;
  * create a new SModel from an old "model state".
  * 
  * The persistences here
- * 1. should not be fully-functional.
- * 2. can use any hacks to "load" the model.
- * 3. must "load" the SModel in "new format" (as if they were save by the last persistence, see below)
+ * <ol><li>should not be fully-functional.<li>
+ * <li>can use any hacks to "load" the model.<li>
+ * <li>must "load" the SModel in "new format" (as if they were save by the last persistence, see below)<li></ol>
  * 
  * E.g. if in some persistence we had only names of node's concepts, we are still able to remove SConceptByName in newer
  * MPS versions. The persistences here can use in-repo or even in-structure-models search to obtain concept ids for
@@ -187,17 +185,6 @@ public class VCSPersistenceSupport {
       return JDOMUtil.loadDocument(source);
     } catch (JDOMException e) {
       throw new IOException("Exception on loading model from " + source, e);
-    }
-  }
-
-  @NotNull
-  public static DefaultSModel readModel(@NotNull final String content, boolean interfaceOnly) throws ModelReadException {
-    try {
-      SModelHeader header = loadDescriptor(new InputSource(new StringReader(content)));
-      ModelLoadingState state = (interfaceOnly ? ModelLoadingState.INTERFACE_LOADED : ModelLoadingState.FULLY_LOADED);
-      return (DefaultSModel) readModel(header, new InputSource(new StringReader(content)), state).getModel();
-    } catch (IOException e) {
-      throw new ModelReadException(e.toString(), e);
     }
   }
 

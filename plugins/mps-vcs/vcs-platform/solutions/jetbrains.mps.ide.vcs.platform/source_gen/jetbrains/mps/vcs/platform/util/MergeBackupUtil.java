@@ -18,9 +18,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.util.ModelVersion;
 import jetbrains.mps.util.UnzipUtil;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.smodel.SModel;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 @GeneratedClass(nodeId = "6933307669479990701", model = "r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)")
@@ -91,21 +88,10 @@ public class MergeBackupUtil {
     FileUtil.delete(tmpdir);
     return models;
   }
-  @Nullable
-  public static SModel[] loadZippedModels(File zipfile, ModelVersion[] versions) throws IOException, ModelReadException {
-    String[] modelsAsText = MergeBackupUtil.loadZippedModelsAsText(zipfile, versions);
-    if (modelsAsText == null) {
-      return null;
-    }
-    SModel[] models = new SModel[modelsAsText.length];
-    for (int i = 0; i < models.length; i++) {
-      models[i] = VCSPersistenceSupport.readModel(modelsAsText[i], false);
-    }
-    return models;
-  }
   public static File chooseZipFileForModelFile(String defaultFileName) {
     // FIXME Please, please! Year 2015, two static classes, one set static fields of another?!
     // FIXME Oh, no, wait! It's year 2019 already, and the code is still there!?
+    // FIXME Wow, it's 2026, and still no attention. Perhaps, we have to preserve these artifacts now, to educate future generations?
     MergeDriverBackupUtil.setMergeBackupDirPath(getMergeBackupDirPath());
     // What was the reason to alter name of the backup file with model name?
     return MergeDriverBackupUtil.chooseZipFileForModelLongName(defaultFileName, null);
