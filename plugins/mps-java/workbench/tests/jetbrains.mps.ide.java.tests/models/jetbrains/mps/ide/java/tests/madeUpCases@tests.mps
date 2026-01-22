@@ -297,6 +297,7 @@
             <node concept="2YIFZM" id="4ackmjcdTtd" role="33vP2m">
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
+              <node concept="1jxXqW" id="1efzCSHCuTi" role="37wK5m" />
               <node concept="3xONca" id="6QGYGXhMIQa" role="37wK5m">
                 <ref role="3xOPvv" node="4ackmjcdTq3" resolve="SimpleClass" />
               </node>
@@ -340,6 +341,7 @@
             <node concept="2YIFZM" id="70HT6wFrG9p" role="33vP2m">
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
+              <node concept="1jxXqW" id="1efzCSHCuZZ" role="37wK5m" />
               <node concept="3xONca" id="70HT6wFrG9J" role="37wK5m">
                 <ref role="3xOPvv" node="70HT6wFrG9i" resolve="ClassMethods" />
               </node>
@@ -383,6 +385,7 @@
             <node concept="2YIFZM" id="70HT6wFrMqU" role="33vP2m">
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
+              <node concept="1jxXqW" id="1efzCSHCv98" role="37wK5m" />
               <node concept="3xONca" id="70HT6wFrXOE" role="37wK5m">
                 <ref role="3xOPvv" node="70HT6wFrXJg" resolve="ClassFields" />
               </node>
@@ -426,6 +429,7 @@
             <node concept="2YIFZM" id="66hA68pgQYm" role="33vP2m">
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
+              <node concept="1jxXqW" id="1efzCSHCvfo" role="37wK5m" />
               <node concept="3xONca" id="66hA68pgQYo" role="37wK5m">
                 <ref role="3xOPvv" node="66hA68pgQYn" resolve="TypeVars" />
               </node>
@@ -469,6 +473,7 @@
             <node concept="2YIFZM" id="1c0m78RQ2B0" role="33vP2m">
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
+              <node concept="1jxXqW" id="1efzCSHCvma" role="37wK5m" />
               <node concept="3xONca" id="1c0m78RQ2Uw" role="37wK5m">
                 <ref role="3xOPvv" node="1c0m78RQ2tV" resolve="OuterClassThis" />
               </node>
@@ -515,6 +520,7 @@
             <node concept="2YIFZM" id="1c0m78S6lVM" role="33vP2m">
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
+              <node concept="1jxXqW" id="1efzCSHCvt1" role="37wK5m" />
               <node concept="3xONca" id="1c0m78S6otb" role="37wK5m">
                 <ref role="3xOPvv" node="1c0m78S6ola" resolve="VarargMethods" />
               </node>
@@ -561,6 +567,7 @@
             <node concept="2YIFZM" id="4GNeZU7xTWb" role="33vP2m">
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
+              <node concept="1jxXqW" id="1efzCSHCvIM" role="37wK5m" />
               <node concept="3xONca" id="4GNeZU7xWrA" role="37wK5m">
                 <ref role="3xOPvv" node="4GNeZU7xV_l" resolve="MethodRefs" />
               </node>
@@ -605,6 +612,7 @@
             <node concept="2YIFZM" id="2s3iUbfs0hg" role="33vP2m">
               <ref role="37wK5l" to="wfc9:4ackmjcdTt1" resolve="generateCode" />
               <ref role="1Pybhc" to="wfc9:70HT6wFrGK4" resolve="JavaToMpsUtils" />
+              <node concept="1jxXqW" id="1efzCSHCvOO" role="37wK5m" />
               <node concept="3xONca" id="2s3iUbfs0ZG" role="37wK5m">
                 <ref role="3xOPvv" node="2s3iUbfs1hJ" resolve="DiamondOp" />
               </node>

@@ -5,6 +5,7 @@ package jetbrains.mps.ide.java.tests.utility;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.TextGeneratorEngine;
 import jetbrains.mps.java.core.newparser.JavaParser;
@@ -63,8 +64,8 @@ public class JavaToMpsUtils {
     return PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myRepo);
   }
 
-  public static String generateCode(SNode node) {
-    return TextGeneratorEngine.generateText(node);
+  public static String generateCode(Project mpsProject, SNode node) {
+    return TextGeneratorEngine.generateText(mpsProject.getPlatform(), node);
   }
 
   public void checkStringStubs(String code, SNode expected) {

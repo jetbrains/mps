@@ -38,6 +38,8 @@
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -512,13 +514,27 @@
       <node concept="17QB3L" id="4ackmjcdTt5" role="3clF45" />
       <node concept="3clFbS" id="4ackmjcdTt4" role="3clF47">
         <node concept="3cpWs6" id="3zeDBH5gWjO" role="3cqZAp">
-          <node concept="2YIFZM" id="3zeDBH5h9EG" role="3cqZAk">
-            <ref role="37wK5l" to="ao3:~TextGeneratorEngine.generateText(org.jetbrains.mps.openapi.model.SNode)" resolve="generateText" />
+          <node concept="2YIFZM" id="4KBetq2sr$a" role="3cqZAk">
+            <ref role="37wK5l" to="ao3:~TextGeneratorEngine.generateText(jetbrains.mps.components.ComponentHost,org.jetbrains.mps.openapi.model.SNode)" resolve="generateText" />
             <ref role="1Pybhc" to="ao3:~TextGeneratorEngine" resolve="TextGeneratorEngine" />
-            <node concept="37vLTw" id="3zeDBH5h9Sg" role="37wK5m">
+            <node concept="2OqwBi" id="1efzCSHCrU_" role="37wK5m">
+              <node concept="37vLTw" id="1efzCSHCrUA" role="2Oq$k0">
+                <ref role="3cqZAo" node="1efzCSHBA6s" resolve="mpsProject" />
+              </node>
+              <node concept="liA8E" id="1efzCSHCrUB" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="4KBetq2sr$b" role="37wK5m">
               <ref role="3cqZAo" node="4ackmjcdTt7" resolve="node" />
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1efzCSHBA6s" role="3clF46">
+        <property role="TrG5h" value="mpsProject" />
+        <node concept="3uibUv" id="1efzCSHCjOM" role="1tU5fm">
+          <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
       <node concept="37vLTG" id="4ackmjcdTt7" role="3clF46">

@@ -68,56 +68,56 @@ public class RoundTrip_Test extends BaseTransformationTest {
     public void test_Simple() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("SimpleClass"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("SimpleClass"));
         new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("SimpleClass"));
       });
     }
     public void test_Methods() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("ClassMethods"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("ClassMethods"));
         new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("ClassMethods"));
       });
     }
     public void test_Fields() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("ClassFields"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("ClassFields"));
         new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("ClassFields"));
       });
     }
     public void test_TypeVars() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("TypeVars"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("TypeVars"));
         new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getAnnotatedNode("TypeVars"));
       });
     }
     public void test_OuterClassThis() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("OuterClassThis"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("OuterClassThis"));
         new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("OuterClassThis"), false);
       });
     }
     public void test_VarargMethods() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("VarargMethods"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("VarargMethods"));
         new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("VarargMethods"), false);
       });
     }
     public void test_MethodReferences() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("MethodRefs"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("MethodRefs"));
         new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("MethodRefs"), false);
       });
     }
     public void test_DiamondOp() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        String genCode = JavaToMpsUtils.generateCode(getAnnotatedNode("DiamondOp"));
+        String genCode = JavaToMpsUtils.generateCode(myProject, getAnnotatedNode("DiamondOp"));
         new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getAnnotatedNode("DiamondOp"), false);
       });
     }

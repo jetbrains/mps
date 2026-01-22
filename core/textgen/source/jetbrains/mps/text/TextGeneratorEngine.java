@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.text;
 
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
@@ -33,8 +34,10 @@ import jetbrains.mps.text.impl.RegularTextUnit;
 import jetbrains.mps.text.impl.TextGenRegistry;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.util.NamedThreadFactory;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -155,15 +158,12 @@ public final class TextGeneratorEngine {
    * Assumes at least read access to node's repository
    * @param node starting input
    * @return either character data of the outcome, or an error message
+   * @deprecated use {@code new TextGeneratorEngine(...)#generateText(model)}. In utmost need, replace with {@link #generateText(ComponentHost, SNode)}
    */
+  @Deprecated(since = "2026.1", forRemoval = true)
   public static String generateText(SNode node) {
-    // First, try as single root of a model, to give a chance for file descriptors to populate text layout
-    // then, if fail, use the node directly.
-    // FIXME perhaps, TextGenModelOutline deserves a refactoring to tell sequence of SNode instead of SModel?
-    //       we could pass original node then, without need to make a copy in a distinct model
-    final SnapshotModelData modelData = new SnapshotModelData(new SModelReference(null, SModelId.generate(), "textgen"));
-    modelData.addRootNode(CopyUtil.copyAndPreserveId(node));
-    TrivialModelDescriptor model = new TrivialModelDescriptor(modelData);
+    // XXX uses in MPS-extensions and mbeddr tests
+    Logger.getLogger(TextGeneratorEngine.class).warnDeprecatedUse("Stop using TextGeneratorEngine.generateText(SNode), the method will be removed soon!");
     // FIXME needs access to ComponentHost
     final ComponentHost ch = new ComponentHost() {
       @Override
@@ -174,12 +174,31 @@ public final class TextGeneratorEngine {
         return null;
       }
     };
-    final List<TextUnit> textUnits = breakdownToUnits(model, ch);
+    return generateText(ch, node);
+  }
+
+  /**
+   * Internal API, do not use outside of MPS.
+   *
+   * @return text representation of a node as is a single root in a model
+   * @since 2026.1
+   */
+  @TestOnly
+  @ApiStatus.Internal
+  public static String generateText(@NotNull ComponentHost platform, @NotNull SNode node) {
+    // First, try as single root of a model, to give a chance for file descriptors to populate text layout
+    // then, if fail, use the node directly.
+    // FIXME perhaps, TextGenModelOutline deserves a refactoring to tell sequence of SNode instead of SModel?
+    //       we could pass original node then, without need to make a copy in a distinct model
+    final SnapshotModelData modelData = new SnapshotModelData(new SModelReference(null, SModelId.generate(), "textgen"));
+    modelData.addRootNode(CopyUtil.copyAndPreserveId(node));
+    TrivialModelDescriptor model = new TrivialModelDescriptor(modelData);
+    final List<TextUnit> textUnits = breakdownToUnits(model, platform);
     final TextUnit textUnit;
     if (textUnits.size() == 1) {
-      textUnit = textUnits.get(0);
+      textUnit = textUnits.getFirst();
     } else {
-      textUnit = new RegularTextUnit(node, "dummy.txt", null, null, ch);
+      textUnit = new RegularTextUnit(node, "dummy.txt", null, null, platform);
     }
 
     textUnit.generate();
