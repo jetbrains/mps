@@ -85,63 +85,67 @@
   </root>
   <root nodeRef="d43affd0-e5f9-482c-adc1-9400b73f2a8d/r:b2267b28-bfcc-40f1-8447-02c15480f0d2(jetbrains.mps.lang.classLike.pluginSolution/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin)/3402736933910154624">
     <file name="ClassLikes_ActionGroup.java">
-      <node id="3402736933910154624" at="34,0,35,0" concept="11" trace="ID" />
-      <node id="3402736933910154624" at="35,0,36,0" concept="3" trace="myPlaces" />
-      <node id="3402736933910154624" at="37,68,38,36" concept="13" />
-      <node id="3402736933910154624" at="38,36,39,25" concept="2" />
-      <node id="3402736933910154624" at="39,25,40,20" concept="2" />
-      <node id="3402736933910154624" at="42,45,43,16" concept="2" />
-      <node id="1910216689115792000" at="43,16,44,75" concept="7" />
-      <node id="3402736933910607751" at="45,54,46,13" concept="8" />
-      <node id="3402736933910618632" at="47,5,48,79" concept="7" />
-      <node id="3402736933910761984" at="48,79,49,444" concept="7" />
-      <node id="3402736933910782520" at="49,444,50,0" concept="10" />
-      <node id="3402736933910785349" at="51,55,52,96" concept="2" />
-      <node id="3402736933910154624" at="54,70,55,39" concept="2" />
-      <node id="3402736933910154624" at="58,81,59,109" concept="2" />
-      <node id="3402736933910154624" at="61,29,62,17" concept="8" />
-      <node id="3402736933910154624" at="66,0,67,0" concept="11" trace="DSLDescriptor$zD" />
-      <node id="3402736933910154624" at="70,0,71,0" concept="11" trace="preferredConcept$1q4V" />
-      <node id="3402736933910154624" at="74,0,75,0" concept="11" trace="rootable$_9pz" />
-      <node id="3402736933910605209" at="44,75,47,5" concept="5" />
-      <node id="3402736933910771378" at="50,0,53,5" concept="4" />
-      <node id="3402736933910154624" at="53,5,56,5" concept="4" />
-      <node id="3402736933910154624" at="58,0,61,0" concept="6" trace="addPlace#(Ljetbrains/mps/workbench/ActionPlace;Lorg/jetbrains/mps/util/Condition;)V" />
-      <node id="3402736933910154624" at="61,0,64,0" concept="6" trace="isStrict#()Z" />
-      <node id="3402736933910154624" at="37,0,42,0" concept="1" trace="ClassLikes_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <node id="3402736933910154624" at="42,0,58,0" concept="6" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
-      <scope id="3402736933910605212" at="45,54,46,13" />
-      <scope id="3402736933910771393" at="51,55,52,96" />
-      <scope id="3402736933910154624" at="54,70,55,39" />
-      <scope id="3402736933910154624" at="58,81,59,109" />
-      <scope id="3402736933910154624" at="61,29,62,17" />
-      <scope id="3402736933910154624" at="37,68,40,20" />
-      <scope id="3402736933910771378" at="50,0,53,5">
+      <node id="3402736933910154624" at="36,0,37,0" concept="11" trace="ID" />
+      <node id="3402736933910154624" at="37,0,38,0" concept="3" trace="myPlaces" />
+      <node id="3402736933910154624" at="39,68,40,36" concept="13" />
+      <node id="3402736933910154624" at="40,36,41,25" concept="2" />
+      <node id="3402736933910154624" at="41,25,42,20" concept="2" />
+      <node id="3402736933910154624" at="44,45,45,16" concept="2" />
+      <node id="1910216689115792000" at="45,16,46,75" concept="7" />
+      <node id="2282907355328219992" at="46,75,47,90" concept="7" />
+      <node id="3402736933910607751" at="48,76,49,13" concept="8" />
+      <node id="3402736933910618632" at="50,5,51,79" concept="7" />
+      <node id="2282907355328261113" at="51,79,52,56" concept="7" />
+      <node id="3402736933910761984" at="52,56,53,467" concept="7" />
+      <node id="3402736933910782520" at="53,467,54,0" concept="10" />
+      <node id="3402736933910785349" at="55,55,56,96" concept="2" />
+      <node id="3402736933910154624" at="58,70,59,39" concept="2" />
+      <node id="3402736933910154624" at="62,81,63,109" concept="2" />
+      <node id="3402736933910154624" at="65,29,66,17" concept="8" />
+      <node id="3402736933910154624" at="70,0,71,0" concept="11" trace="DSLDescriptor$zD" />
+      <node id="3402736933910154624" at="74,0,75,0" concept="11" trace="preferredConcept$1q4V" />
+      <node id="3402736933910154624" at="78,0,79,0" concept="11" trace="rootable$_9pz" />
+      <node id="3402736933910605209" at="47,90,50,5" concept="5" />
+      <node id="3402736933910771378" at="54,0,57,5" concept="4" />
+      <node id="3402736933910154624" at="57,5,60,5" concept="4" />
+      <node id="3402736933910154624" at="62,0,65,0" concept="6" trace="addPlace#(Ljetbrains/mps/workbench/ActionPlace;Lorg/jetbrains/mps/util/Condition;)V" />
+      <node id="3402736933910154624" at="65,0,68,0" concept="6" trace="isStrict#()Z" />
+      <node id="3402736933910154624" at="39,0,44,0" concept="1" trace="ClassLikes_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <node id="3402736933910154624" at="44,0,62,0" concept="6" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
+      <scope id="3402736933910605212" at="48,76,49,13" />
+      <scope id="3402736933910771393" at="55,55,56,96" />
+      <scope id="3402736933910154624" at="58,70,59,39" />
+      <scope id="3402736933910154624" at="62,81,63,109" />
+      <scope id="3402736933910154624" at="65,29,66,17" />
+      <scope id="3402736933910154624" at="39,68,42,20" />
+      <scope id="3402736933910771378" at="54,0,57,5">
         <var name="descr" id="3402736933910771383" />
       </scope>
-      <scope id="3402736933910154624" at="53,5,56,5">
+      <scope id="3402736933910154624" at="57,5,60,5">
         <var name="p" id="3402736933910154624" />
       </scope>
-      <scope id="3402736933910154624" at="58,0,61,0">
+      <scope id="3402736933910154624" at="62,0,65,0">
         <var name="cond" id="3402736933910154624" />
         <var name="place" id="3402736933910154624" />
       </scope>
-      <scope id="3402736933910154624" at="61,0,64,0" />
-      <scope id="3402736933910154624" at="37,0,42,0">
+      <scope id="3402736933910154624" at="65,0,68,0" />
+      <scope id="3402736933910154624" at="39,0,44,0">
         <var name="plugin" id="3402736933910154624" />
       </scope>
-      <scope id="3402736933910154624" at="42,45,56,5">
+      <scope id="3402736933910154624" at="44,45,60,5">
         <var name="descrs" id="3402736933910761985" />
         <var name="langs" id="3402736933910618633" />
         <var name="model" id="1910216689115792001" />
+        <var name="mpsProject" id="2282907355328219993" />
+        <var name="repo" id="2282907355328261114" />
       </scope>
-      <scope id="3402736933910154624" at="42,0,58,0">
+      <scope id="3402736933910154624" at="44,0,62,0">
         <var name="event" id="3402736933910154624" />
       </scope>
-      <unit id="3402736933910154624" at="65,0,68,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup$CONCEPTS" />
-      <unit id="3402736933910154624" at="69,0,72,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup$LINKS" />
-      <unit id="3402736933910154624" at="73,0,76,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup$PROPS" />
-      <unit id="3402736933910154624" at="33,0,77,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup" />
+      <unit id="3402736933910154624" at="69,0,72,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup$CONCEPTS" />
+      <unit id="3402736933910154624" at="73,0,76,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup$LINKS" />
+      <unit id="3402736933910154624" at="77,0,80,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup$PROPS" />
+      <unit id="3402736933910154624" at="35,0,81,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="3402736933910154624" at="29,13,30,47" concept="2" />

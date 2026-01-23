@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -34,10 +35,10 @@ public abstract class SubconceptsScope extends Scope {
 
   public abstract String getName(SNode child);
   public Iterable<SNode> getAvailableElements(@Nullable final String prefix) {
-    SRepository repository = model.getRepository();
+    final SRepository repository = model.getRepository();
     LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
     Collection<SLanguage> usedLanguages = new SLanguageHierarchy(languageRegistry, new ModelDependencyResolver(languageRegistry, repository).usedLanguages(model)).getExtended();
-    Iterable<SNode> allConcepts = CollectionSequence.fromCollection(usedLanguages).select((it) -> it.getSourceModule()).select((it) -> SModuleOperations.getAspect(it, "structure")).translate((it) -> SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA));
+    Iterable<SNode> allConcepts = CollectionSequence.fromCollection(usedLanguages).select((it) -> it.getSourceModuleReference().resolve(repository)).where(new NotNullWhereFilter()).select((it) -> SModuleOperations.getAspect(it, "structure")).translate((it) -> SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA));
     Iterable<SNode> subConcepts = Sequence.fromIterable(allConcepts).where((it) -> (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(it, concept));
     if (prefix == null || prefix.isEmpty()) {
       return subConcepts;

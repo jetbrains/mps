@@ -173,7 +173,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
     final String space = "&nbsp;";
     for (SLanguage langProblem : Sequence.fromIterable(sortedProblems).take(treshold)) {
       sb.append(space + space + "-");
-      boolean absent = langProblem.getSourceModule() == null;
+      boolean absent = langProblem.getSourceModuleReference().resolve(myMpsProject.getRepository()) == null;
       String langName = NameUtil.compactNamespace(langProblem.getQualifiedName());
       if (absent) {
         sb.append(langName);

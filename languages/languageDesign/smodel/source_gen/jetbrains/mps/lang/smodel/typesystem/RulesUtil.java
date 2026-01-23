@@ -357,7 +357,7 @@ public class RulesUtil {
     }
     return _quotation_createNode_yxkngc_a2a31();
   }
-  public static SNode conceptSourceNode(SAbstractConcept concept) {
+  private static SNode conceptSourceNode(SAbstractConcept concept) {
     SModule sourceModule = concept.getLanguage().getSourceModule();
     SNodeReference sourceNode = concept.getSourceNode();
     if (sourceModule != null && sourceNode != null) {
@@ -367,6 +367,7 @@ public class RulesUtil {
     }
   }
   public static SNode closestConceptNode(SAbstractConcept concept) {
+    // FIXME pass node<> here instead of concept<>, so that we can take repository from the node to find out concept's source
     if (concept == null) {
       return null;
     }
