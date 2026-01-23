@@ -110,7 +110,7 @@ public abstract class ProjectBase extends Project {
   }
 
   protected final void forEachModuleEntry(@NotNull BiConsumer<IFile, String> consumer) {
-    myModuleLoader.allFiles().forEach(p -> consumer.accept(p.o1, p.o2));
+    myModuleLoader.forEachModuleEntry(consumer);
   }
 
   // all project modules, including language-hosted generators, are registered with a project as owner.

@@ -44,6 +44,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.BiConsumer;
 import java.util.regex.Matcher;
 import java.util.stream.Stream;
 
@@ -59,7 +60,7 @@ import java.util.stream.Stream;
  * The state is managed by the inner class {@link Store}, which is a table indexed by {@link SModuleReference}.
  * <br>
  * Active modules are accessible via {@link #activeModules()}.
- * Method {@link #allFiles()} returns the list of all module descriptors currently loaded.
+ * Method {@link #forEachModuleEntry} can be used to iterate over all loaded module entries.
  * Errors detected by {@link #loadDiscoveredModules} are logged and made available via {@link #getErrors()},
  * and also reported via {@link ProjectModuleLoadingListener}.
  * <p>
@@ -222,10 +223,9 @@ import java.util.stream.Stream;
               .toList();
   }
 
-  /*package*/ Collection<Pair<IFile, String>> allFiles() {
-    return myStore.selectAll()
-              .map(e -> new Pair<>(e.descriptorFile, e.virtualFolder))
-              .toList();
+  /*package*/ void forEachModuleEntry(BiConsumer<IFile, String> descriptorFileToFolder) {
+    myStore.selectAll()
+          .forEach(e -> descriptorFileToFolder.accept(e.descriptorFile, e.virtualFolder));
   }
 
   @Deprecated
@@ -276,7 +276,7 @@ import java.util.stream.Stream;
 
   private Map<IFile, Pair<ModuleStateChange, String>> buildDiff(ProjectDescriptor projectDescriptor) {
     HashMap<IFile, String> fileToFolder = new HashMap<>();
-    allFiles().forEach(p -> fileToFolder.put(p.o1, p.o2));
+    forEachModuleEntry(fileToFolder::put);
     Map<IFile, Pair<ModuleStateChange, String>> diff = new HashMap<>();
     projectDescriptor.forEachEntry((file, folder) -> {
       if (fileToFolder.containsKey(file)) {
