@@ -16,9 +16,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
@@ -53,9 +50,6 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -164,13 +158,6 @@
       <property role="TrG5h" value="moveEnumProperty" />
       <property role="IQ2nx" value="8831258047753006375" />
       <ref role="AX2Wp" node="7EeVAu87IBm" resolve="MoveProperty_EnumerationDataType" />
-      <node concept="3l_iC" id="7EeVAu88aOC" role="lGtFl">
-        <node concept="1TJgyi" id="7EeVAu88aOD" role="3l_iP">
-          <property role="IQ2nx" value="8831258047752890835" />
-          <property role="TrG5h" value="moveEnumProperty" />
-          <ref role="AX2Wp" node="7EeVAu87IBm" resolve="MoveProperty_EnumerationDataType" />
-        </node>
-      </node>
     </node>
     <node concept="PrWs8" id="7EeVAu88Qou" role="PzmwI">
       <ref role="PrY4T" node="roGsVXGrb3" resolve="MovePropertySupercontainer" />
