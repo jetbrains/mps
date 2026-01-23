@@ -51,7 +51,7 @@ public class Template_reduce_HasPrevSiblingOperation extends TemplateDeclaration
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist4 = null;
-            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_145_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
+            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_142_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
             tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/4979433055039530169", context2);
             environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
           }

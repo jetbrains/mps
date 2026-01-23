@@ -31,10 +31,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeOf_EnumMemberReference_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
       InferenceRule_Runtime inferenceRule = new typeOf_LinkList_AddNewChildOperation_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -144,10 +140,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeof_EnumMember_PresentationOperation_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
-      InferenceRule_Runtime inferenceRule = new typeof_EnumMember_ValueOperation_Old_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {

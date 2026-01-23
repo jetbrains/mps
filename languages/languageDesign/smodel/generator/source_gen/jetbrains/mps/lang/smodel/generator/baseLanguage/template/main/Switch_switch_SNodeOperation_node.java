@@ -63,7 +63,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640457", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -77,7 +77,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -92,7 +92,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -107,7 +107,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_2(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -122,7 +122,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_3(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -137,7 +137,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_4(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_4(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -152,7 +152,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_5(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_5(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -167,7 +167,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_6(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_6(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -182,7 +182,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_7(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_7(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -208,7 +208,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_8(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_8(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -223,7 +223,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_9(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_9(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -238,7 +238,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_10(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_10(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -253,7 +253,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_11(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_11(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -298,14 +298,14 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro2, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640588", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_119_2(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_117_2(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
@@ -481,7 +481,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro3));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro3));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro3, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640629", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -503,7 +503,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro4));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro4, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640640", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -591,7 +591,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro5));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro5));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro5, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640663", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -613,7 +613,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro6));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro6, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640674", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -635,14 +635,14 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro7));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro7));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro7, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640685", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_119_8(new SourceSubstituteMacroNodeContext(context1, switchMacroRef1));
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_117_8(new SourceSubstituteMacroNodeContext(context1, switchMacroRef1));
             if (switchInput3 == null) {
               tlist3 = Collections.emptyList();
             } else {
@@ -675,7 +675,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_9(new SourceSubstituteMacroNodeContext(context1, copySrcMacro8));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_9(new SourceSubstituteMacroNodeContext(context1, copySrcMacro8));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro8, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640717", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -697,7 +697,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_10(new SourceSubstituteMacroNodeContext(context1, copySrcMacro9));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_10(new SourceSubstituteMacroNodeContext(context1, copySrcMacro9));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro9, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640728", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -711,7 +711,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_12(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_12(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -723,7 +723,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_11(new SourceSubstituteMacroNodeContext(context1, copySrcMacro10));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_11(new SourceSubstituteMacroNodeContext(context1, copySrcMacro10));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro10, "tpl/r:00000000-0000-4000-0000-011c89590303/6683433361386640739", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -737,7 +737,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_119_13(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_13(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -749,13 +749,13 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_12(new SourceSubstituteMacroNodeContext(context1, copySrcMacro11));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_12(new SourceSubstituteMacroNodeContext(context1, copySrcMacro11));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro11, "tpl/r:00000000-0000-4000-0000-011c89590303/3661776679763994176", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
-          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_119_13(new SourceSubstituteMacroNodeContext(context1, callMacro));
+          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_117_13(new SourceSubstituteMacroNodeContext(context1, callMacro));
           TemplateContext context2 = context1;
           context2 = context2.subContext(null, callInputNode3);
           if (callInputNode3 != null) {
@@ -783,7 +783,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_14(new SourceSubstituteMacroNodeContext(context1, copySrcMacro12));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_14(new SourceSubstituteMacroNodeContext(context1, copySrcMacro12));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro12, "tpl/r:00000000-0000-4000-0000-011c89590303/8329979535469194420", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -805,13 +805,13 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_15(new SourceSubstituteMacroNodeContext(context1, copySrcMacro13));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_15(new SourceSubstituteMacroNodeContext(context1, copySrcMacro13));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro13, "tpl/r:00000000-0000-4000-0000-011c89590303/383263754644354282", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
-          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_119_16(new SourceSubstituteMacroNodeContext(context1, copySrcMacro14));
+          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_117_16(new SourceSubstituteMacroNodeContext(context1, copySrcMacro14));
           tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro14, "tpl/r:00000000-0000-4000-0000-011c89590303/383263754644357110", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
@@ -833,7 +833,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_119_17(new SourceSubstituteMacroNodeContext(context1, copySrcMacro15));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_17(new SourceSubstituteMacroNodeContext(context1, copySrcMacro15));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro15, "tpl/r:00000000-0000-4000-0000-011c89590303/383263754644361628", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
