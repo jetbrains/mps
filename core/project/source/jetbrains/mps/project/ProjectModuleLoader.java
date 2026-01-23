@@ -25,7 +25,6 @@ import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
@@ -113,15 +112,17 @@ import java.util.stream.Stream;
     CHANGED_FOLDER,
   }
 
-  /*
-   * Must not be modified directly. Use Store#insertOrUpdate to update entries.
-   */
-  private static class Entry {
-    private IFile descriptorFile;
-    private String virtualFolder;
-    private SModuleReference moduleReference;
-  }
+  private record Entry (
+    SModuleReference moduleReference,
+    IFile descriptorFile,
+    String virtualFolder
+  ) {}
 
+  /*
+   * Primary key is ref.
+   * Descriptor file is not a part of PK, since there may be >1 modules in a single file,
+   * and the file object, i.e. path, may not be unique (consider /var/... and /private/var/... pointing to the same file).
+   */
   private static class Store {
     // internal state
     private final Map<SModuleReference, Entry> myModuleReferenceToEntry = new HashMap<>();
@@ -145,28 +146,12 @@ import java.util.stream.Stream;
       return myModuleReferenceToEntry.values().stream();
     }
 
-    /*
-     * Primary key is ref.
-     * Descriptor file is not a part of PK, since there may be >1 modules in a single file,
-     * and the file object, i.e. path, may not be unique (consider /var/... and /private/var/... pointing to the same file).
-     */
-    private void insertOrUpdate(SModuleReference ref, @NotNull IFile file, String virtualFolder) {
-      Entry entry = ref != null ? myModuleReferenceToEntry.get(ref) : null;
-      if (entry == null) {
-        entry = new Entry();
-      }
-      if (ref == null) {
-        if (entry.moduleReference != null) {
-          myModuleReferenceToEntry.remove(entry.moduleReference);
-        }
-      }
-      entry.descriptorFile = file;
-      entry.virtualFolder = StringUtil.emptyIfNull(virtualFolder);
-      entry.moduleReference = ref;
+    private void update(@NotNull SModuleReference ref, @NotNull IFile file, String virtualFolder) {
+      myModuleReferenceToEntry.put(ref, new Entry(ref, file, virtualFolder));
+    }
 
-      if (entry.moduleReference != null) {
-        myModuleReferenceToEntry.put(entry.moduleReference, entry);
-      }
+    private void update(@NotNull SModuleReference ref, String virtualFolder) {
+      myModuleReferenceToEntry.computeIfPresent(ref, (r, e) -> new Entry(ref, e.descriptorFile, virtualFolder));
     }
 
     private void drop(SModuleReference ref) {
@@ -214,7 +199,7 @@ import java.util.stream.Stream;
   }
 
   /*package*/ void setVirtualFolder(SModuleReference moduleReference, String newFolder) {
-    myStore.select(moduleReference).ifPresent(e -> e.virtualFolder = StringUtil.emptyIfNull(newFolder));
+    myStore.update(moduleReference, newFolder);
   }
 
   /*package*/ Collection<SModuleReference> activeModules() {
@@ -280,17 +265,17 @@ import java.util.stream.Stream;
     Map<IFile, Pair<ModuleStateChange, String>> diff = new HashMap<>();
     projectDescriptor.forEachEntry((file, folder) -> {
       if (fileToFolder.containsKey(file)) {
-        if (!Objects.equals(fileToFolder.get(file), folder)) {
+        String oldFolder = fileToFolder.remove(file);
+        if (!Objects.equals(oldFolder, folder)) {
           diff.put(file, new Pair<>(ModuleStateChange.CHANGED_FOLDER, folder));
         }
       } else {
         diff.put(file, new Pair<>(ModuleStateChange.INTRODUCED, folder));
       }
     });
-    for (Map.Entry<IFile, String> e : fileToFolder.entrySet()) {
-      if (!fileToFolder.containsKey(e.getKey())) {
-        diff.put(e.getKey(), new Pair<>(ModuleStateChange.DROPPED, null));
-      }
+    // fileToFolder contains dropped files at this point
+    for (IFile descriptorFile : fileToFolder.keySet()) {
+      diff.put(descriptorFile, new Pair<>(ModuleStateChange.DROPPED, null));
     }
     return diff;
   }
@@ -408,7 +393,7 @@ import java.util.stream.Stream;
   }
 
   /*package*/ void attachModule(@NotNull SModule module, @NotNull IFile descriptorFile, String virtualFolder) {
-    myStore.insertOrUpdate(module.getModuleReference(), descriptorFile, virtualFolder);
+    myStore.update(module.getModuleReference(), descriptorFile, virtualFolder);
     fireModuleLoaded(module, descriptorFile);
   }
 
