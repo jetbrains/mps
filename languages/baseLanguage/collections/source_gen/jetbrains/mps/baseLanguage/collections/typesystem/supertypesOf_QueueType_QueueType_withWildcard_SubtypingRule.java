@@ -27,9 +27,6 @@ public class supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule extends
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode _quotation_createNode_y0z7r7_a0a1() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

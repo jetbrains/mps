@@ -27,9 +27,6 @@ public class SimpleMathNumberType_subtypeOf_Element_SubtypingRule extends Subtyp
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createSimpleMathElementType_wcy28w_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathElementType$91);
     return n0.getResult();

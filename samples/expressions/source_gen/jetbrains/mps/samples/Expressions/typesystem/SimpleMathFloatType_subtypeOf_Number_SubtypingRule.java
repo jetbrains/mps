@@ -27,9 +27,6 @@ public class SimpleMathFloatType_subtypeOf_Number_SubtypingRule extends Subtypin
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createSimpleMathNumberType_mxid1z_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$ks);
     return n0.getResult();

@@ -27,9 +27,6 @@ public class BaseClassifierType_subtypeOf_Object_SubtypingRule extends Subtyping
   public boolean isWeak() {
     return true;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode _quotation_createNode_knfsey_a0a1() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));

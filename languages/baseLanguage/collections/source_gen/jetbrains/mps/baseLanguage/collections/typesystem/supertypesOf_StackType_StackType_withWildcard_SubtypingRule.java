@@ -27,9 +27,6 @@ public class supertypesOf_StackType_StackType_withWildcard_SubtypingRule extends
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode _quotation_createNode_p2tngs_a0a1() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

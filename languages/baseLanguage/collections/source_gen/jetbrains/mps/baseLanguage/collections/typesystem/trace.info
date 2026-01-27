@@ -12613,29 +12613,26 @@
       <node id="3524442294805830747" at="21,50,22,33" concept="10" />
       <node id="3524442294805830747" at="24,68,25,102" concept="10" />
       <node id="3524442294805830747" at="27,27,28,17" concept="10" />
-      <node id="3524442294805830747" at="30,39,31,16" concept="10" />
-      <node id="3524442294805834188" at="33,60,34,30" concept="8" />
-      <node id="3524442294805834188" at="34,30,35,30" concept="8" />
-      <node id="3524442294805834188" at="35,30,36,237" concept="8" />
-      <node id="3524442294805834188" at="36,237,37,34" concept="3" />
-      <node id="3524442294805834188" at="37,34,38,224" concept="8" />
-      <node id="3524442294805834188" at="38,224,39,35" concept="3" />
-      <node id="3524442294805834188" at="39,35,40,178" concept="3" />
-      <node id="3524442294805834188" at="40,178,41,24" concept="10" />
-      <node id="3524442294805830747" at="45,0,46,0" concept="13" trace="QueueType$iX" />
+      <node id="3524442294805834188" at="30,60,31,30" concept="8" />
+      <node id="3524442294805834188" at="31,30,32,30" concept="8" />
+      <node id="3524442294805834188" at="32,30,33,237" concept="8" />
+      <node id="3524442294805834188" at="33,237,34,34" concept="3" />
+      <node id="3524442294805834188" at="34,34,35,224" concept="8" />
+      <node id="3524442294805834188" at="35,224,36,35" concept="3" />
+      <node id="3524442294805834188" at="36,35,37,178" concept="3" />
+      <node id="3524442294805834188" at="37,178,38,24" concept="10" />
+      <node id="3524442294805830747" at="42,0,43,0" concept="13" trace="QueueType$iX" />
       <node id="3524442294805830747" at="16,0,18,0" concept="1" trace="supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule#()V" />
       <node id="3524442294805830747" at="18,0,21,0" concept="7" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3524442294805830747" at="21,0,24,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3524442294805830747" at="24,0,27,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3524442294805830747" at="27,0,30,0" concept="7" trace="isWeak#()Z" />
-      <node id="3524442294805830747" at="30,0,33,0" concept="7" trace="surelyKeepsConcept#()Z" />
-      <node id="3524442294805834188" at="33,0,43,0" concept="14" trace="_quotation_createNode_y0z7r7_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3524442294805834188" at="30,0,40,0" concept="14" trace="_quotation_createNode_y0z7r7_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="3524442294805830747" at="16,72,16,72" />
       <scope id="3524442294805830748" at="18,119,19,47" />
       <scope id="3524442294805830747" at="21,50,22,33" />
       <scope id="3524442294805830747" at="24,68,25,102" />
       <scope id="3524442294805830747" at="27,27,28,17" />
-      <scope id="3524442294805830747" at="30,39,31,16" />
       <scope id="3524442294805830747" at="16,0,18,0" />
       <scope id="3524442294805830747" at="18,0,21,0">
         <var name="queueType" id="3524442294805830747" />
@@ -12647,16 +12644,15 @@
         <var name="argument" id="3524442294805830747" />
       </scope>
       <scope id="3524442294805830747" at="27,0,30,0" />
-      <scope id="3524442294805830747" at="30,0,33,0" />
-      <scope id="3524442294805834188" at="33,60,41,24">
+      <scope id="3524442294805834188" at="30,60,38,24">
         <var name="nb" id="3524442294805834188" />
         <var name="nb1" id="3524442294805834188" />
         <var name="quotedNode_1" id="3524442294805834188" />
         <var name="quotedNode_2" id="3524442294805834188" />
       </scope>
-      <scope id="3524442294805834188" at="33,0,43,0" />
-      <unit id="3524442294805830747" at="44,0,47,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule$CONCEPTS" />
-      <unit id="3524442294805830747" at="15,0,48,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule" />
+      <scope id="3524442294805834188" at="30,0,40,0" />
+      <unit id="3524442294805830747" at="41,0,44,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule$CONCEPTS" />
+      <unit id="3524442294805830747" at="15,0,45,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/360223900469176654">
@@ -15251,29 +15247,26 @@
       <node id="6801639034384706562" at="21,50,22,33" concept="10" />
       <node id="6801639034384706562" at="24,68,25,102" concept="10" />
       <node id="6801639034384706562" at="27,27,28,17" concept="10" />
-      <node id="6801639034384706562" at="30,39,31,16" concept="10" />
-      <node id="6801639034384706565" at="33,60,34,30" concept="8" />
-      <node id="6801639034384706565" at="34,30,35,30" concept="8" />
-      <node id="6801639034384706565" at="35,30,36,237" concept="8" />
-      <node id="6801639034384706565" at="36,237,37,34" concept="3" />
-      <node id="6801639034384706565" at="37,34,38,224" concept="8" />
-      <node id="6801639034384706565" at="38,224,39,35" concept="3" />
-      <node id="6801639034384706565" at="39,35,40,178" concept="3" />
-      <node id="6801639034384706565" at="40,178,41,24" concept="10" />
-      <node id="6801639034384706562" at="45,0,46,0" concept="13" trace="DequeType$bp" />
+      <node id="6801639034384706565" at="30,60,31,30" concept="8" />
+      <node id="6801639034384706565" at="31,30,32,30" concept="8" />
+      <node id="6801639034384706565" at="32,30,33,237" concept="8" />
+      <node id="6801639034384706565" at="33,237,34,34" concept="3" />
+      <node id="6801639034384706565" at="34,34,35,224" concept="8" />
+      <node id="6801639034384706565" at="35,224,36,35" concept="3" />
+      <node id="6801639034384706565" at="36,35,37,178" concept="3" />
+      <node id="6801639034384706565" at="37,178,38,24" concept="10" />
+      <node id="6801639034384706562" at="42,0,43,0" concept="13" trace="DequeType$bp" />
       <node id="6801639034384706562" at="16,0,18,0" concept="1" trace="supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule#()V" />
       <node id="6801639034384706562" at="18,0,21,0" concept="7" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6801639034384706562" at="21,0,24,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6801639034384706562" at="24,0,27,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="6801639034384706562" at="27,0,30,0" concept="7" trace="isWeak#()Z" />
-      <node id="6801639034384706562" at="30,0,33,0" concept="7" trace="surelyKeepsConcept#()Z" />
-      <node id="6801639034384706565" at="33,0,43,0" concept="14" trace="_quotation_createNode_jf1pf8_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6801639034384706565" at="30,0,40,0" concept="14" trace="_quotation_createNode_jf1pf8_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="6801639034384706562" at="16,72,16,72" />
       <scope id="6801639034384706563" at="18,119,19,47" />
       <scope id="6801639034384706562" at="21,50,22,33" />
       <scope id="6801639034384706562" at="24,68,25,102" />
       <scope id="6801639034384706562" at="27,27,28,17" />
-      <scope id="6801639034384706562" at="30,39,31,16" />
       <scope id="6801639034384706562" at="16,0,18,0" />
       <scope id="6801639034384706562" at="18,0,21,0">
         <var name="dequeType" id="6801639034384706562" />
@@ -15285,16 +15278,15 @@
         <var name="argument" id="6801639034384706562" />
       </scope>
       <scope id="6801639034384706562" at="27,0,30,0" />
-      <scope id="6801639034384706562" at="30,0,33,0" />
-      <scope id="6801639034384706565" at="33,60,41,24">
+      <scope id="6801639034384706565" at="30,60,38,24">
         <var name="nb" id="6801639034384706565" />
         <var name="nb1" id="6801639034384706565" />
         <var name="quotedNode_1" id="6801639034384706565" />
         <var name="quotedNode_2" id="6801639034384706565" />
       </scope>
-      <scope id="6801639034384706565" at="33,0,43,0" />
-      <unit id="6801639034384706562" at="44,0,47,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule$CONCEPTS" />
-      <unit id="6801639034384706562" at="15,0,48,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule" />
+      <scope id="6801639034384706565" at="30,0,40,0" />
+      <unit id="6801639034384706562" at="41,0,44,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule$CONCEPTS" />
+      <unit id="6801639034384706562" at="15,0,45,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_DequeType_DequeType_withWildcard_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/6801639034384706572">
@@ -15520,29 +15512,26 @@
       <node id="6801639034384801580" at="21,50,22,33" concept="10" />
       <node id="6801639034384801580" at="24,68,25,102" concept="10" />
       <node id="6801639034384801580" at="27,27,28,17" concept="10" />
-      <node id="6801639034384801580" at="30,39,31,16" concept="10" />
-      <node id="6801639034384801583" at="33,60,34,30" concept="8" />
-      <node id="6801639034384801583" at="34,30,35,30" concept="8" />
-      <node id="6801639034384801583" at="35,30,36,237" concept="8" />
-      <node id="6801639034384801583" at="36,237,37,34" concept="3" />
-      <node id="6801639034384801583" at="37,34,38,224" concept="8" />
-      <node id="6801639034384801583" at="38,224,39,35" concept="3" />
-      <node id="6801639034384801583" at="39,35,40,178" concept="3" />
-      <node id="6801639034384801583" at="40,178,41,24" concept="10" />
-      <node id="6801639034384801580" at="45,0,46,0" concept="13" trace="StackType$C4" />
+      <node id="6801639034384801583" at="30,60,31,30" concept="8" />
+      <node id="6801639034384801583" at="31,30,32,30" concept="8" />
+      <node id="6801639034384801583" at="32,30,33,237" concept="8" />
+      <node id="6801639034384801583" at="33,237,34,34" concept="3" />
+      <node id="6801639034384801583" at="34,34,35,224" concept="8" />
+      <node id="6801639034384801583" at="35,224,36,35" concept="3" />
+      <node id="6801639034384801583" at="36,35,37,178" concept="3" />
+      <node id="6801639034384801583" at="37,178,38,24" concept="10" />
+      <node id="6801639034384801580" at="42,0,43,0" concept="13" trace="StackType$C4" />
       <node id="6801639034384801580" at="16,0,18,0" concept="1" trace="supertypesOf_StackType_StackType_withWildcard_SubtypingRule#()V" />
       <node id="6801639034384801580" at="18,0,21,0" concept="7" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6801639034384801580" at="21,0,24,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6801639034384801580" at="24,0,27,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="6801639034384801580" at="27,0,30,0" concept="7" trace="isWeak#()Z" />
-      <node id="6801639034384801580" at="30,0,33,0" concept="7" trace="surelyKeepsConcept#()Z" />
-      <node id="6801639034384801583" at="33,0,43,0" concept="14" trace="_quotation_createNode_p2tngs_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6801639034384801583" at="30,0,40,0" concept="14" trace="_quotation_createNode_p2tngs_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="6801639034384801580" at="16,72,16,72" />
       <scope id="6801639034384801581" at="18,119,19,47" />
       <scope id="6801639034384801580" at="21,50,22,33" />
       <scope id="6801639034384801580" at="24,68,25,102" />
       <scope id="6801639034384801580" at="27,27,28,17" />
-      <scope id="6801639034384801580" at="30,39,31,16" />
       <scope id="6801639034384801580" at="16,0,18,0" />
       <scope id="6801639034384801580" at="18,0,21,0">
         <var name="stackType" id="6801639034384801580" />
@@ -15554,16 +15543,15 @@
         <var name="argument" id="6801639034384801580" />
       </scope>
       <scope id="6801639034384801580" at="27,0,30,0" />
-      <scope id="6801639034384801580" at="30,0,33,0" />
-      <scope id="6801639034384801583" at="33,60,41,24">
+      <scope id="6801639034384801583" at="30,60,38,24">
         <var name="nb" id="6801639034384801583" />
         <var name="nb1" id="6801639034384801583" />
         <var name="quotedNode_1" id="6801639034384801583" />
         <var name="quotedNode_2" id="6801639034384801583" />
       </scope>
-      <scope id="6801639034384801583" at="33,0,43,0" />
-      <unit id="6801639034384801580" at="44,0,47,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_StackType_StackType_withWildcard_SubtypingRule$CONCEPTS" />
-      <unit id="6801639034384801580" at="15,0,48,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_StackType_StackType_withWildcard_SubtypingRule" />
+      <scope id="6801639034384801583" at="30,0,40,0" />
+      <unit id="6801639034384801580" at="41,0,44,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_StackType_StackType_withWildcard_SubtypingRule$CONCEPTS" />
+      <unit id="6801639034384801580" at="15,0,45,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_StackType_StackType_withWildcard_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/6801639034384806465">
@@ -16304,29 +16292,26 @@
       <node id="7886927014685056807" at="21,50,22,38" concept="10" />
       <node id="7886927014685056807" at="24,68,25,102" concept="10" />
       <node id="7886927014685056807" at="27,27,28,17" concept="10" />
-      <node id="7886927014685056807" at="30,39,31,16" concept="10" />
-      <node id="7886927014685056812" at="33,60,34,30" concept="8" />
-      <node id="7886927014685056812" at="34,30,35,30" concept="8" />
-      <node id="7886927014685056812" at="35,30,36,242" concept="8" />
-      <node id="7886927014685056812" at="36,242,37,34" concept="3" />
-      <node id="7886927014685056812" at="37,34,38,224" concept="8" />
-      <node id="7886927014685056812" at="38,224,39,35" concept="3" />
-      <node id="7886927014685056812" at="39,35,40,178" concept="3" />
-      <node id="7886927014685056812" at="40,178,41,24" concept="10" />
-      <node id="7886927014685056807" at="45,0,46,0" concept="13" trace="CollectionType$xH" />
+      <node id="7886927014685056812" at="30,60,31,30" concept="8" />
+      <node id="7886927014685056812" at="31,30,32,30" concept="8" />
+      <node id="7886927014685056812" at="32,30,33,242" concept="8" />
+      <node id="7886927014685056812" at="33,242,34,34" concept="3" />
+      <node id="7886927014685056812" at="34,34,35,224" concept="8" />
+      <node id="7886927014685056812" at="35,224,36,35" concept="3" />
+      <node id="7886927014685056812" at="36,35,37,178" concept="3" />
+      <node id="7886927014685056812" at="37,178,38,24" concept="10" />
+      <node id="7886927014685056807" at="42,0,43,0" concept="13" trace="CollectionType$xH" />
       <node id="7886927014685056807" at="16,0,18,0" concept="1" trace="supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRule#()V" />
       <node id="7886927014685056807" at="18,0,21,0" concept="7" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7886927014685056807" at="21,0,24,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7886927014685056807" at="24,0,27,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="7886927014685056807" at="27,0,30,0" concept="7" trace="isWeak#()Z" />
-      <node id="7886927014685056807" at="30,0,33,0" concept="7" trace="surelyKeepsConcept#()Z" />
-      <node id="7886927014685056812" at="33,0,43,0" concept="14" trace="_quotation_createNode_uxm5sv_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7886927014685056812" at="30,0,40,0" concept="14" trace="_quotation_createNode_uxm5sv_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="7886927014685056807" at="16,82,16,82" />
       <scope id="7886927014685056808" at="18,112,19,47" />
       <scope id="7886927014685056807" at="21,50,22,38" />
       <scope id="7886927014685056807" at="24,68,25,102" />
       <scope id="7886927014685056807" at="27,27,28,17" />
-      <scope id="7886927014685056807" at="30,39,31,16" />
       <scope id="7886927014685056807" at="16,0,18,0" />
       <scope id="7886927014685056807" at="18,0,21,0">
         <var name="ct" id="7886927014685056807" />
@@ -16338,16 +16323,15 @@
         <var name="argument" id="7886927014685056807" />
       </scope>
       <scope id="7886927014685056807" at="27,0,30,0" />
-      <scope id="7886927014685056807" at="30,0,33,0" />
-      <scope id="7886927014685056812" at="33,60,41,24">
+      <scope id="7886927014685056812" at="30,60,38,24">
         <var name="nb" id="7886927014685056812" />
         <var name="nb1" id="7886927014685056812" />
         <var name="quotedNode_1" id="7886927014685056812" />
         <var name="quotedNode_2" id="7886927014685056812" />
       </scope>
-      <scope id="7886927014685056812" at="33,0,43,0" />
-      <unit id="7886927014685056807" at="44,0,47,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRule$CONCEPTS" />
-      <unit id="7886927014685056807" at="15,0,48,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRule" />
+      <scope id="7886927014685056812" at="30,0,40,0" />
+      <unit id="7886927014685056807" at="41,0,44,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRule$CONCEPTS" />
+      <unit id="7886927014685056807" at="15,0,45,0" name="jetbrains.mps.baseLanguage.collections.typesystem.supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/7886927014685056817">

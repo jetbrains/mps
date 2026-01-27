@@ -27,9 +27,6 @@ public class PropertyPointer_supertypes_SubtypingRule extends SubtypingRule_Runt
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode _quotation_createNode_spf8l0_a0a1() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, "jetbrains.mps.lang.checkedName"), 0x433c3c31e7218f3eL, "PropertyRefType"));

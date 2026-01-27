@@ -30,9 +30,6 @@ public class super_RefScopeCT_SubtypingRule extends SubtypingRule_Runtime implem
   public boolean isWeak() {
     return true;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createClassifierType_4w2kth_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);

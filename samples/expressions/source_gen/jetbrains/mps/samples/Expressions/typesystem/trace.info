@@ -633,26 +633,23 @@
       <node id="2073504467209504627" at="21,50,22,44" concept="6" />
       <node id="2073504467209504627" at="24,68,25,102" concept="6" />
       <node id="2073504467209504627" at="27,27,28,17" concept="6" />
-      <node id="2073504467209504627" at="30,39,31,16" concept="6" />
-      <node id="2073504467209570045" at="33,66,34,81" concept="5" />
-      <node id="2073504467209570045" at="34,81,35,26" concept="6" />
-      <node id="2073504467209504627" at="39,0,40,0" concept="8" trace="SimpleMathNumberType$ks" />
-      <node id="2073504467209504627" at="40,0,41,0" concept="8" trace="SimpleMathElementType$91" />
+      <node id="2073504467209570045" at="30,66,31,81" concept="5" />
+      <node id="2073504467209570045" at="31,81,32,26" concept="6" />
+      <node id="2073504467209504627" at="36,0,37,0" concept="8" trace="SimpleMathNumberType$ks" />
+      <node id="2073504467209504627" at="37,0,38,0" concept="8" trace="SimpleMathElementType$91" />
       <node id="2073504467209504627" at="16,0,18,0" concept="1" trace="SimpleMathNumberType_subtypeOf_Element_SubtypingRule#()V" />
       <node id="2073504467209504627" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467209504627" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467209504627" at="24,0,27,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="2073504467209504627" at="27,0,30,0" concept="4" trace="isWeak#()Z" />
-      <node id="2073504467209504627" at="30,0,33,0" concept="4" trace="surelyKeepsConcept#()Z" />
-      <node id="2073504467209570045" at="33,0,37,0" concept="9" trace="createSimpleMathElementType_wcy28w_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2073504467209570045" at="30,0,34,0" concept="9" trace="createSimpleMathElementType_wcy28w_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="2073504467209504627" at="16,65,16,65" />
       <scope id="2073504467209504628" at="18,120,19,53" />
       <scope id="2073504467209504627" at="21,50,22,44" />
       <scope id="2073504467209504627" at="24,68,25,102" />
       <scope id="2073504467209504627" at="27,27,28,17" />
-      <scope id="2073504467209504627" at="30,39,31,16" />
       <scope id="2073504467209504627" at="16,0,18,0" />
-      <scope id="2073504467209570045" at="33,66,35,26">
+      <scope id="2073504467209570045" at="30,66,32,26">
         <var name="n0" id="2073504467209570045" />
       </scope>
       <scope id="2073504467209504627" at="18,0,21,0">
@@ -665,10 +662,9 @@
         <var name="argument" id="2073504467209504627" />
       </scope>
       <scope id="2073504467209504627" at="27,0,30,0" />
-      <scope id="2073504467209504627" at="30,0,33,0" />
-      <scope id="2073504467209570045" at="33,0,37,0" />
-      <unit id="2073504467209504627" at="38,0,42,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathNumberType_subtypeOf_Element_SubtypingRule$CONCEPTS" />
-      <unit id="2073504467209504627" at="15,0,43,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathNumberType_subtypeOf_Element_SubtypingRule" />
+      <scope id="2073504467209570045" at="30,0,34,0" />
+      <unit id="2073504467209504627" at="35,0,39,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathNumberType_subtypeOf_Element_SubtypingRule$CONCEPTS" />
+      <unit id="2073504467209504627" at="15,0,40,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathNumberType_subtypeOf_Element_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="2073504467209504627" at="88,5,89,103" concept="5" />
@@ -685,26 +681,23 @@
       <node id="2073504467209660703" at="21,50,22,42" concept="6" />
       <node id="2073504467209660703" at="24,68,25,102" concept="6" />
       <node id="2073504467209660703" at="27,27,28,17" concept="6" />
-      <node id="2073504467209660703" at="30,39,31,16" concept="6" />
-      <node id="2073504467209660719" at="33,64,34,79" concept="5" />
-      <node id="2073504467209660719" at="34,79,35,26" concept="6" />
-      <node id="2073504467209660703" at="39,0,40,0" concept="8" trace="SimpleMathLongType$4l" />
-      <node id="2073504467209660703" at="40,0,41,0" concept="8" trace="SimpleMathFloatType$xK" />
+      <node id="2073504467209660719" at="30,64,31,79" concept="5" />
+      <node id="2073504467209660719" at="31,79,32,26" concept="6" />
+      <node id="2073504467209660703" at="36,0,37,0" concept="8" trace="SimpleMathLongType$4l" />
+      <node id="2073504467209660703" at="37,0,38,0" concept="8" trace="SimpleMathFloatType$xK" />
       <node id="2073504467209660703" at="16,0,18,0" concept="1" trace="SimpleMathLongType_subtypeOf_Float_SubtypingRule#()V" />
       <node id="2073504467209660703" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467209660703" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467209660703" at="24,0,27,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="2073504467209660703" at="27,0,30,0" concept="4" trace="isWeak#()Z" />
-      <node id="2073504467209660703" at="30,0,33,0" concept="4" trace="surelyKeepsConcept#()Z" />
-      <node id="2073504467209660719" at="33,0,37,0" concept="9" trace="createSimpleMathFloatType_rmkbnt_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2073504467209660719" at="30,0,34,0" concept="9" trace="createSimpleMathFloatType_rmkbnt_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="2073504467209660703" at="16,61,16,61" />
       <scope id="2073504467209660704" at="18,118,19,51" />
       <scope id="2073504467209660703" at="21,50,22,42" />
       <scope id="2073504467209660703" at="24,68,25,102" />
       <scope id="2073504467209660703" at="27,27,28,17" />
-      <scope id="2073504467209660703" at="30,39,31,16" />
       <scope id="2073504467209660703" at="16,0,18,0" />
-      <scope id="2073504467209660719" at="33,64,35,26">
+      <scope id="2073504467209660719" at="30,64,32,26">
         <var name="n0" id="2073504467209660719" />
       </scope>
       <scope id="2073504467209660703" at="18,0,21,0">
@@ -717,10 +710,9 @@
         <var name="argument" id="2073504467209660703" />
       </scope>
       <scope id="2073504467209660703" at="27,0,30,0" />
-      <scope id="2073504467209660703" at="30,0,33,0" />
-      <scope id="2073504467209660719" at="33,0,37,0" />
-      <unit id="2073504467209660703" at="38,0,42,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathLongType_subtypeOf_Float_SubtypingRule$CONCEPTS" />
-      <unit id="2073504467209660703" at="15,0,43,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathLongType_subtypeOf_Float_SubtypingRule" />
+      <scope id="2073504467209660719" at="30,0,34,0" />
+      <unit id="2073504467209660703" at="35,0,39,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathLongType_subtypeOf_Float_SubtypingRule$CONCEPTS" />
+      <unit id="2073504467209660703" at="15,0,40,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathLongType_subtypeOf_Float_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="2073504467209660703" at="84,5,85,99" concept="5" />
@@ -792,26 +784,23 @@
       <node id="2073504467210017720" at="21,50,22,45" concept="6" />
       <node id="2073504467210017720" at="24,68,25,102" concept="6" />
       <node id="2073504467210017720" at="27,27,28,17" concept="6" />
-      <node id="2073504467210017720" at="30,39,31,16" concept="6" />
-      <node id="2073504467210017736" at="33,63,34,78" concept="5" />
-      <node id="2073504467210017736" at="34,78,35,26" concept="6" />
-      <node id="2073504467210017720" at="39,0,40,0" concept="8" trace="SimpleMathIntegerType$Eq" />
-      <node id="2073504467210017720" at="40,0,41,0" concept="8" trace="SimpleMathLongType$4l" />
+      <node id="2073504467210017736" at="30,63,31,78" concept="5" />
+      <node id="2073504467210017736" at="31,78,32,26" concept="6" />
+      <node id="2073504467210017720" at="36,0,37,0" concept="8" trace="SimpleMathIntegerType$Eq" />
+      <node id="2073504467210017720" at="37,0,38,0" concept="8" trace="SimpleMathLongType$4l" />
       <node id="2073504467210017720" at="16,0,18,0" concept="1" trace="SimpleMathIntegerType_subtypeOf_Long_SubtypingRule#()V" />
       <node id="2073504467210017720" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467210017720" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467210017720" at="24,0,27,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="2073504467210017720" at="27,0,30,0" concept="4" trace="isWeak#()Z" />
-      <node id="2073504467210017720" at="30,0,33,0" concept="4" trace="surelyKeepsConcept#()Z" />
-      <node id="2073504467210017736" at="33,0,37,0" concept="9" trace="createSimpleMathLongType_alq2vz_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2073504467210017736" at="30,0,34,0" concept="9" trace="createSimpleMathLongType_alq2vz_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="2073504467210017720" at="16,63,16,63" />
       <scope id="2073504467210017721" at="18,121,19,50" />
       <scope id="2073504467210017720" at="21,50,22,45" />
       <scope id="2073504467210017720" at="24,68,25,102" />
       <scope id="2073504467210017720" at="27,27,28,17" />
-      <scope id="2073504467210017720" at="30,39,31,16" />
       <scope id="2073504467210017720" at="16,0,18,0" />
-      <scope id="2073504467210017736" at="33,63,35,26">
+      <scope id="2073504467210017736" at="30,63,32,26">
         <var name="n0" id="2073504467210017736" />
       </scope>
       <scope id="2073504467210017720" at="18,0,21,0">
@@ -824,10 +813,9 @@
         <var name="argument" id="2073504467210017720" />
       </scope>
       <scope id="2073504467210017720" at="27,0,30,0" />
-      <scope id="2073504467210017720" at="30,0,33,0" />
-      <scope id="2073504467210017736" at="33,0,37,0" />
-      <unit id="2073504467210017720" at="38,0,42,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathIntegerType_subtypeOf_Long_SubtypingRule$CONCEPTS" />
-      <unit id="2073504467210017720" at="15,0,43,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathIntegerType_subtypeOf_Long_SubtypingRule" />
+      <scope id="2073504467210017736" at="30,0,34,0" />
+      <unit id="2073504467210017720" at="35,0,39,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathIntegerType_subtypeOf_Long_SubtypingRule$CONCEPTS" />
+      <unit id="2073504467210017720" at="15,0,40,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathIntegerType_subtypeOf_Long_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="2073504467210017720" at="76,5,77,101" concept="5" />
@@ -1121,26 +1109,23 @@
       <node id="2073504467210944275" at="21,50,22,43" concept="6" />
       <node id="2073504467210944275" at="24,68,25,102" concept="6" />
       <node id="2073504467210944275" at="27,27,28,17" concept="6" />
-      <node id="2073504467210944275" at="30,39,31,16" concept="6" />
-      <node id="2073504467210944554" at="33,65,34,80" concept="5" />
-      <node id="2073504467210944554" at="34,80,35,26" concept="6" />
-      <node id="2073504467210944275" at="39,0,40,0" concept="8" trace="SimpleMathFloatType$xK" />
-      <node id="2073504467210944275" at="40,0,41,0" concept="8" trace="SimpleMathNumberType$ks" />
+      <node id="2073504467210944554" at="30,65,31,80" concept="5" />
+      <node id="2073504467210944554" at="31,80,32,26" concept="6" />
+      <node id="2073504467210944275" at="36,0,37,0" concept="8" trace="SimpleMathFloatType$xK" />
+      <node id="2073504467210944275" at="37,0,38,0" concept="8" trace="SimpleMathNumberType$ks" />
       <node id="2073504467210944275" at="16,0,18,0" concept="1" trace="SimpleMathFloatType_subtypeOf_Number_SubtypingRule#()V" />
       <node id="2073504467210944275" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2073504467210944275" at="21,0,24,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2073504467210944275" at="24,0,27,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="2073504467210944275" at="27,0,30,0" concept="4" trace="isWeak#()Z" />
-      <node id="2073504467210944275" at="30,0,33,0" concept="4" trace="surelyKeepsConcept#()Z" />
-      <node id="2073504467210944554" at="33,0,37,0" concept="9" trace="createSimpleMathNumberType_mxid1z_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2073504467210944554" at="30,0,34,0" concept="9" trace="createSimpleMathNumberType_mxid1z_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="2073504467210944275" at="16,63,16,63" />
       <scope id="2073504467210944276" at="18,119,19,52" />
       <scope id="2073504467210944275" at="21,50,22,43" />
       <scope id="2073504467210944275" at="24,68,25,102" />
       <scope id="2073504467210944275" at="27,27,28,17" />
-      <scope id="2073504467210944275" at="30,39,31,16" />
       <scope id="2073504467210944275" at="16,0,18,0" />
-      <scope id="2073504467210944554" at="33,65,35,26">
+      <scope id="2073504467210944554" at="30,65,32,26">
         <var name="n0" id="2073504467210944554" />
       </scope>
       <scope id="2073504467210944275" at="18,0,21,0">
@@ -1153,10 +1138,9 @@
         <var name="argument" id="2073504467210944275" />
       </scope>
       <scope id="2073504467210944275" at="27,0,30,0" />
-      <scope id="2073504467210944275" at="30,0,33,0" />
-      <scope id="2073504467210944554" at="33,0,37,0" />
-      <unit id="2073504467210944275" at="38,0,42,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathFloatType_subtypeOf_Number_SubtypingRule$CONCEPTS" />
-      <unit id="2073504467210944275" at="15,0,43,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathFloatType_subtypeOf_Number_SubtypingRule" />
+      <scope id="2073504467210944554" at="30,0,34,0" />
+      <unit id="2073504467210944275" at="35,0,39,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathFloatType_subtypeOf_Number_SubtypingRule$CONCEPTS" />
+      <unit id="2073504467210944275" at="15,0,40,0" name="jetbrains.mps.samples.Expressions.typesystem.SimpleMathFloatType_subtypeOf_Number_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="2073504467210944275" at="72,5,73,101" concept="5" />

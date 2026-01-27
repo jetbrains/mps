@@ -101,25 +101,22 @@
       <node id="3232030656011773985" at="21,50,22,43" concept="8" />
       <node id="3232030656011773985" at="24,68,25,102" concept="8" />
       <node id="3232030656011773985" at="27,27,28,17" concept="8" />
-      <node id="3232030656011773985" at="30,39,31,16" concept="8" />
-      <node id="3232030656011774138" at="33,60,34,30" concept="7" />
-      <node id="3232030656011774138" at="34,30,35,235" concept="7" />
-      <node id="3232030656011774138" at="35,235,36,34" concept="3" />
-      <node id="3232030656011774138" at="36,34,37,24" concept="8" />
-      <node id="3232030656011773985" at="41,0,42,0" concept="9" trace="PropertyPointerType$Jt" />
+      <node id="3232030656011774138" at="30,60,31,30" concept="7" />
+      <node id="3232030656011774138" at="31,30,32,235" concept="7" />
+      <node id="3232030656011774138" at="32,235,33,34" concept="3" />
+      <node id="3232030656011774138" at="33,34,34,24" concept="8" />
+      <node id="3232030656011773985" at="38,0,39,0" concept="9" trace="PropertyPointerType$Jt" />
       <node id="3232030656011773985" at="16,0,18,0" concept="1" trace="PropertyPointer_supertypes_SubtypingRule#()V" />
       <node id="3232030656011773985" at="18,0,21,0" concept="6" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3232030656011773985" at="21,0,24,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3232030656011773985" at="24,0,27,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3232030656011773985" at="27,0,30,0" concept="6" trace="isWeak#()Z" />
-      <node id="3232030656011773985" at="30,0,33,0" concept="6" trace="surelyKeepsConcept#()Z" />
-      <node id="3232030656011774138" at="33,0,39,0" concept="10" trace="_quotation_createNode_spf8l0_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3232030656011774138" at="30,0,36,0" concept="10" trace="_quotation_createNode_spf8l0_a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="3232030656011773985" at="16,53,16,53" />
       <scope id="3232030656011773986" at="18,129,19,47" />
       <scope id="3232030656011773985" at="21,50,22,43" />
       <scope id="3232030656011773985" at="24,68,25,102" />
       <scope id="3232030656011773985" at="27,27,28,17" />
-      <scope id="3232030656011773985" at="30,39,31,16" />
       <scope id="3232030656011773985" at="16,0,18,0" />
       <scope id="3232030656011773985" at="18,0,21,0">
         <var name="propertyPointerType" id="3232030656011773985" />
@@ -131,14 +128,13 @@
         <var name="argument" id="3232030656011773985" />
       </scope>
       <scope id="3232030656011773985" at="27,0,30,0" />
-      <scope id="3232030656011773985" at="30,0,33,0" />
-      <scope id="3232030656011774138" at="33,60,37,24">
+      <scope id="3232030656011774138" at="30,60,34,24">
         <var name="nb" id="3232030656011774138" />
         <var name="quotedNode_1" id="3232030656011774138" />
       </scope>
-      <scope id="3232030656011774138" at="33,0,39,0" />
-      <unit id="3232030656011773985" at="40,0,43,0" name="jetbrains.mps.lang.checkedName.typesystem.PropertyPointer_supertypes_SubtypingRule$CONCEPTS" />
-      <unit id="3232030656011773985" at="15,0,44,0" name="jetbrains.mps.lang.checkedName.typesystem.PropertyPointer_supertypes_SubtypingRule" />
+      <scope id="3232030656011774138" at="30,0,36,0" />
+      <unit id="3232030656011773985" at="37,0,40,0" name="jetbrains.mps.lang.checkedName.typesystem.PropertyPointer_supertypes_SubtypingRule$CONCEPTS" />
+      <unit id="3232030656011773985" at="15,0,41,0" name="jetbrains.mps.lang.checkedName.typesystem.PropertyPointer_supertypes_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="3232030656011773985" at="28,5,29,91" concept="7" />

@@ -30,9 +30,6 @@ public class TemplatePersistentConfigurationTypeClassifier_SubtypingRule extends
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createClassifierType_ggkioq_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);

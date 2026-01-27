@@ -145,21 +145,18 @@
       <node id="3748798472489247351" at="25,50,26,43" concept="10" />
       <node id="3748798472489247351" at="28,68,29,102" concept="10" />
       <node id="3748798472489247351" at="31,27,32,17" concept="10" />
-      <node id="3748798472489247351" at="34,39,35,16" concept="10" />
-      <node id="3748798472489247351" at="39,0,40,0" concept="13" trace="targetType$3iY9" />
-      <node id="3748798472489247351" at="43,0,44,0" concept="13" trace="MethodReferenceType$Wb" />
+      <node id="3748798472489247351" at="36,0,37,0" concept="13" trace="targetType$3iY9" />
+      <node id="3748798472489247351" at="40,0,41,0" concept="13" trace="MethodReferenceType$Wb" />
       <node id="3748798472489247351" at="20,0,22,0" concept="2" trace="supertypeOf_MethodReferenceType_SubtypingRule#()V" />
       <node id="3748798472489247351" at="22,0,25,0" concept="7" trace="getSubOrSuperTypes#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljava/util/List;" />
       <node id="3748798472489247351" at="25,0,28,0" concept="7" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3748798472489247351" at="28,0,31,0" concept="7" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="3748798472489247351" at="31,0,34,0" concept="7" trace="isWeak#()Z" />
-      <node id="3748798472489247351" at="34,0,37,0" concept="7" trace="surelyKeepsConcept#()Z" />
       <scope id="3748798472489247351" at="20,58,20,58" />
       <scope id="3748798472489247352" at="22,136,23,131" />
       <scope id="3748798472489247351" at="25,50,26,43" />
       <scope id="3748798472489247351" at="28,68,29,102" />
       <scope id="3748798472489247351" at="31,27,32,17" />
-      <scope id="3748798472489247351" at="34,39,35,16" />
       <scope id="3748798472489247351" at="20,0,22,0" />
       <scope id="3748798472489247351" at="22,0,25,0">
         <var name="methodReferenceType" id="3748798472489247351" />
@@ -171,10 +168,9 @@
         <var name="argument" id="3748798472489247351" />
       </scope>
       <scope id="3748798472489247351" at="31,0,34,0" />
-      <scope id="3748798472489247351" at="34,0,37,0" />
-      <unit id="3748798472489247351" at="38,0,41,0" name="jetbrains.mps.baseLanguage.methodReferences.typesystem.supertypeOf_MethodReferenceType_SubtypingRule$LINKS" />
-      <unit id="3748798472489247351" at="42,0,45,0" name="jetbrains.mps.baseLanguage.methodReferences.typesystem.supertypeOf_MethodReferenceType_SubtypingRule$CONCEPTS" />
-      <unit id="3748798472489247351" at="19,0,46,0" name="jetbrains.mps.baseLanguage.methodReferences.typesystem.supertypeOf_MethodReferenceType_SubtypingRule" />
+      <unit id="3748798472489247351" at="35,0,38,0" name="jetbrains.mps.baseLanguage.methodReferences.typesystem.supertypeOf_MethodReferenceType_SubtypingRule$LINKS" />
+      <unit id="3748798472489247351" at="39,0,42,0" name="jetbrains.mps.baseLanguage.methodReferences.typesystem.supertypeOf_MethodReferenceType_SubtypingRule$CONCEPTS" />
+      <unit id="3748798472489247351" at="19,0,43,0" name="jetbrains.mps.baseLanguage.methodReferences.typesystem.supertypeOf_MethodReferenceType_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)/5046242729652316833">

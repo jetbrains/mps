@@ -31,9 +31,6 @@ public class supertypeOf_MethodReferenceType_SubtypingRule extends SubtypingRule
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink targetType$3iY9 = MetaAdapterFactory.getContainmentLink(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6f392ce92f1d3d32L, 0x6f392ce92f1d3d33L, "targetType");

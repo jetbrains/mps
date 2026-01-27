@@ -27,9 +27,6 @@ public class SimpleMathLongType_subtypeOf_Float_SubtypingRule extends SubtypingR
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createSimpleMathFloatType_rmkbnt_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$xK);
     return n0.getResult();

@@ -27,9 +27,6 @@ public class EditorIsSusbtypeOfEditor_SubtypingRule extends SubtypingRule_Runtim
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createSettingsEditorType_naixql_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$cc);
     return n0.getResult();

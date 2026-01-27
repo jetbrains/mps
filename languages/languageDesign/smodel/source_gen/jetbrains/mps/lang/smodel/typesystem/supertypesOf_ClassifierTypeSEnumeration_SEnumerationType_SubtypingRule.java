@@ -33,9 +33,6 @@ public class supertypesOf_ClassifierTypeSEnumeration_SEnumerationType_SubtypingR
   public boolean isWeak() {
     return true;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode _quotation_createNode_cmf3ms_a0a2() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x50352c802d81c423L, "SEnumerationType"));

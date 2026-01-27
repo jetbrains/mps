@@ -27,9 +27,6 @@ public class TemplatePersistentConfigurationTypeIsTemplatePersistentConfiguratio
   public boolean isWeak() {
     return true;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createTemplatePersistentConfigurationType_n8elw8_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$Qi);
     return n0.getResult();

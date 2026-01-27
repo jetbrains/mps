@@ -27,9 +27,6 @@ public class SimpleMathIntegerType_subtypeOf_Long_SubtypingRule extends Subtypin
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createSimpleMathLongType_alq2vz_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$4l);
     return n0.getResult();

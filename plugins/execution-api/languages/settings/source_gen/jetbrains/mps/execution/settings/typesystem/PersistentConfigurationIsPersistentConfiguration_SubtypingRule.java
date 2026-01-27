@@ -27,9 +27,6 @@ public class PersistentConfigurationIsPersistentConfiguration_SubtypingRule exte
   public boolean isWeak() {
     return true;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createPersistentConfigurationType_jh4ubp_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$MR);
     return n0.getResult();

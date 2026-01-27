@@ -27,9 +27,6 @@ public class supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRu
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode _quotation_createNode_uxm5sv_a0a1() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

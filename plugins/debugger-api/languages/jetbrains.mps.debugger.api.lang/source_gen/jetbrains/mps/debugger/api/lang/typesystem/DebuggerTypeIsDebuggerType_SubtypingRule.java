@@ -27,9 +27,6 @@ public class DebuggerTypeIsDebuggerType_SubtypingRule extends SubtypingRule_Runt
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createDebuggerType_ueeq0q_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$_e);
     return n0.getResult();

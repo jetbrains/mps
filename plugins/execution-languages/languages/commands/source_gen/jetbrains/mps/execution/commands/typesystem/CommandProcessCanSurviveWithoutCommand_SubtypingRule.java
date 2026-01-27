@@ -27,9 +27,6 @@ public class CommandProcessCanSurviveWithoutCommand_SubtypingRule extends Subtyp
   public boolean isWeak() {
     return false;
   }
-  public boolean surelyKeepsConcept() {
-    return true;
-  }
   private static SNode createCommandProcessType_6vbhke_a0a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CommandProcessType$eR);
     return n0.getResult();
