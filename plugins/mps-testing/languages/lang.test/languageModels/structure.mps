@@ -35,9 +35,7 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -849,17 +847,6 @@
     </node>
     <node concept="PrWs8" id="426cbTMe0db" role="PzmwI">
       <ref role="PrY4T" node="2wBFdLy7HeG" resolve="IReferenceAttachable" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="7scb9XJ6VZa">
-    <property role="3GE5qa" value="nodeOperation" />
-    <property role="TrG5h" value="NodeTypeSystemWarningCheckOperation" />
-    <property role="34LRSv" value="has typesystem warning" />
-    <property role="R4oN_" value="check for unknown typesystem warning" />
-    <property role="EcuMT" value="8578280453509464010" />
-    <ref role="1TJDcQ" node="4CT6QR8TxBp" resolve="NodeTypeSystemRuleCheckOperation" />
-    <node concept="asaX9" id="426cbTMe0dd" role="lGtFl">
-      <property role="YLQ7P" value="for typesystem equations use NodeTypeSystemErrorCheckOperation, for ordinary warnings use NodeWarningCheckOperation" />
     </node>
   </node>
   <node concept="1TIwiD" id="4CT6QR8TxBp">

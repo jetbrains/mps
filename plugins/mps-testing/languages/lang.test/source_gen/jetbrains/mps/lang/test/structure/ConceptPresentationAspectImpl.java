@@ -61,7 +61,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_NodeTypeSetCheckOperation;
   private ConceptPresentation props_NodeTypeSystemErrorCheckOperation;
   private ConceptPresentation props_NodeTypeSystemRuleCheckOperation;
-  private ConceptPresentation props_NodeTypeSystemWarningCheckOperation;
   private ConceptPresentation props_NodeUnknownErrorCheckOperation;
   private ConceptPresentation props_NodeUnknownWarningCheckOperation;
   private ConceptPresentation props_NodeWarningCheckOperation;
@@ -445,15 +444,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeTypeSystemRuleCheckOperation = cpb.create();
         }
         return props_NodeTypeSystemRuleCheckOperation;
-      case LanguageConceptSwitch.NodeTypeSystemWarningCheckOperation:
-        if (props_NodeTypeSystemWarningCheckOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("check for unknown typesystem warning");
-          cpb.presentationByName();
-          props_NodeTypeSystemWarningCheckOperation = cpb.create();
-        }
-        return props_NodeTypeSystemWarningCheckOperation;
       case LanguageConceptSwitch.NodeUnknownErrorCheckOperation:
         if (props_NodeUnknownErrorCheckOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

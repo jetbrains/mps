@@ -5,9 +5,9 @@ package jetbrains.mps.lang.test.behavior;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.errors.MessageStatus;
 
 public class NodeRuleFactory {
   private NodeReportItem reporter;
@@ -30,11 +30,7 @@ public class NodeRuleFactory {
   }
 
   private SNode createTypeSystemCheckOperation() {
-    if (reporter.getSeverity() == MessageStatus.ERROR) {
-      return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, "jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation"));
-    } else {
-      return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x770c2c9f6f1bbfcaL, "jetbrains.mps.lang.test.structure.NodeTypeSystemWarningCheckOperation"));
-    }
+    return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, "jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation"));
   }
 
   private SNode createConstraintsCheckOperation() {

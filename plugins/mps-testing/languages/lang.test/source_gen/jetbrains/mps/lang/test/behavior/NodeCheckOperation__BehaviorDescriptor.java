@@ -33,10 +33,9 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<SNode> getTestCase_idhGBgWVd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTestCase").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216134500045L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216136419751L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3607434973217685495L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  public static final SMethod<Boolean> expectsErrorsInside_id3efgZvcKrj8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3715262949175178440L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8206790888928401875L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_idhHOMYE$, getDefaultName_id7scb9XJdmH2, isMpsStartRequired_id2RMg39tmiFh, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, expectsErrorsInside_id3efgZvcKrj8, expectsErrorsInside_id77$odk0vlBj);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_idhHOMYE$, getDefaultName_id7scb9XJdmH2, isMpsStartRequired_id2RMg39tmiFh, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, expectsErrorsInside_id77$odk0vlBj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -61,12 +60,8 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
     SNode container = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.NodeOperationsContainer$aj);
     return SNodeOperations.getParent(container);
   }
-  @Deprecated(since = "2019.2", forRemoval = true)
-  /*package*/ static boolean expectsErrorsInside_id3efgZvcKrj8(@NotNull SNode __thisNode__) {
-    return true;
-  }
   /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, @NotNull NodeReportItem reportItem, SRepository ruleRepository, @Nullable ComponentHost host) {
-    return ((boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id3efgZvcKrj8.invoke(__thisNode__));
+    return true;
   }
 
   /*package*/ NodeCheckOperation__BehaviorDescriptor() {
@@ -95,8 +90,6 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
       case 5:
         return (T) ((SNode) getAnnotatedNode_id38gbJV0XvZR(node));
       case 6:
-        return (T) ((Boolean) expectsErrorsInside_id3efgZvcKrj8(node));
-      case 7:
         return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1], (ComponentHost) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
