@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -405,8 +406,19 @@ public class RulesUtil {
     if (mm == null || mm.getRepository() == null) {
       return null;
     }
-    // once switch users here, utilize repo to figure out declaration nodes for SConcept
-    return closestConceptNode(SNodeOperations.getConcept(node));
+    SAbstractConcept concept = SNodeOperations.getConcept(node);
+    // I assume concept here is SConcept, not SInterfaceConcept, as it's generally odd to have an instance of SInterfaceConcept in regular code
+    do {
+      SNodeReference conceptDeclaration = concept.getSourceNode();
+      SNode sourceNode = SPointerOperations.resolveNode(conceptDeclaration, mm.getRepository());
+      // generally, we shall not assume any source node is a node<ACD>, for a multi-layer declaration, node<ACD> could be an intermediate
+      //  transformation artifact of a complete stranger serving as original/source node
+      if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA)) {
+        return SNodeOperations.cast(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA);
+      }
+      concept = concept.getSuperConcept();
+    } while (concept != null);
+    return null;
   }
   private static SNode _quotation_createNode_yxkngc_b0a0a5a0() {
     SNode quotedNode_1 = null;
