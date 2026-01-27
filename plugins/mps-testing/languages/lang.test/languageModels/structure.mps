@@ -36,7 +36,6 @@
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
@@ -163,25 +162,6 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1214846370530" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="hFCa1uS">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CheckNodeForErrors" />
-    <property role="3GE5qa" value="asserts" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="34LRSv" value="check nodes error messages" />
-    <property role="EcuMT" value="1215075719096" />
-    <ref role="1TJDcQ" node="hFquTD4" resolve="AbstractNodeAssert" />
-    <node concept="1TJgyi" id="3fN3Qov$aYT" role="1TKVEl">
-      <property role="IQ2nx" value="3743352646565670841" />
-      <property role="TrG5h" value="includeSelf" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="asaX9" id="fM_JX6jvBC" role="lGtFl">
-      <property role="YLPcu" value="2019.2" />
-      <property role="YLQ7P" value="Use CheckNodeForErrorOperation" />
     </node>
   </node>
   <node concept="1TIwiD" id="hG1TMwX">

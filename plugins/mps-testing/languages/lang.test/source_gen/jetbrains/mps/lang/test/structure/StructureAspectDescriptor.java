@@ -31,7 +31,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBeforeTestsMethod = createDescriptorForBeforeTestsMethod();
   /*package*/ final ConceptDescriptor myConceptBootstrapActionReference = createDescriptorForBootstrapActionReference();
   /*package*/ final ConceptDescriptor myConceptCheckNodeForErrorMessagesOperation = createDescriptorForCheckNodeForErrorMessagesOperation();
-  /*package*/ final ConceptDescriptor myConceptCheckNodeForErrors = createDescriptorForCheckNodeForErrors();
   /*package*/ final ConceptDescriptor myConceptDragMouseStatement = createDescriptorForDragMouseStatement();
   /*package*/ final ConceptDescriptor myConceptEditorComponentExpression = createDescriptorForEditorComponentExpression();
   /*package*/ final ConceptDescriptor myConceptEditorOperation = createDescriptorForEditorOperation();
@@ -119,7 +118,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractNodeAssert, myConceptAbstractNodeErrorCheckOperation, myConceptAbstractNodeRuleCheckOperation, myConceptAbstractNodeWarningCheckOperation, myConceptAbstractTestNodeAnnotation, myConceptActionReference, myConceptAfterTestsMethod, myConceptAnonymousCellAnnotation, myConceptApplyQuickFix, myConceptAssertMatch, myConceptBeforeTestsMethod, myConceptBootstrapActionReference, myConceptCheckNodeForErrorMessagesOperation, myConceptCheckNodeForErrors, myConceptDragMouseStatement, myConceptEditorComponentExpression, myConceptEditorOperation, myConceptEditorTestCase, myConceptExpectedMessageContainer, myConceptExpressionContainer, myConceptINodesTestMethod, myConceptIReferenceAttachable, myConceptIRuleReference, myConceptITestAnnotationsContainer, myConceptIgnoreMigrationDataOption, myConceptInfoStatementReference, myConceptInvokeActionStatement, myConceptInvokeIntentionStatement, myConceptInvokeSurroundWithIntentionStatement, myConceptIsActionApplicableExpression, myConceptIsIntentionApplicableExpression, myConceptLogEvent, myConceptMPSActionReference, myConceptMigrationReference, myConceptMigrationTestCase, myConceptMigrationTestOption, myConceptMockAnnotation, myConceptMockScopeProvider, myConceptModelExpression, myConceptNamedNodeReference, myConceptNodeCheckOperation, myConceptNodeConstraintsErrorCheckOperation, myConceptNodeConstraintsWarningCheckOperation, myConceptNodeErrorCheckOperation, myConceptNodeExpectedTypeCheckOperation, myConceptNodeInfoCheckOperation, myConceptNodeOperationsContainer, myConceptNodeRuleCheckOperation, myConceptNodeTypeCheckOperation, myConceptNodeTypeSetCheckOperation, myConceptNodeTypeSystemErrorCheckOperation, myConceptNodeTypeSystemRuleCheckOperation, myConceptNodeTypeSystemWarningCheckOperation, myConceptNodeUnknownErrorCheckOperation, myConceptNodeUnknownWarningCheckOperation, myConceptNodeWarningCheckOperation, myConceptNodesTestCase, myConceptNodesTestMethod, myConceptPressKeyStatement, myConceptPressMouseStatement, myConceptProjectExpression, myConceptReportErrorStatementReference, myConceptScopeEntry, myConceptScopesExpectedNode, myConceptScopesTest, myConceptSimpleNodeTest, myConceptStableIdOption, myConceptSwitchToInspector, myConceptTestInfo, myConceptTestNode, myConceptTestNodeAnnotation, myConceptTestNodeReference, myConceptTestProjectAware, myConceptTypeKeyStatement, myConceptTypesystemEquationReference, myConceptUnknownRuleReference, myConceptUntypedExpression, myConceptWarningStatementReference);
+    return Arrays.asList(myConceptAbstractNodeAssert, myConceptAbstractNodeErrorCheckOperation, myConceptAbstractNodeRuleCheckOperation, myConceptAbstractNodeWarningCheckOperation, myConceptAbstractTestNodeAnnotation, myConceptActionReference, myConceptAfterTestsMethod, myConceptAnonymousCellAnnotation, myConceptApplyQuickFix, myConceptAssertMatch, myConceptBeforeTestsMethod, myConceptBootstrapActionReference, myConceptCheckNodeForErrorMessagesOperation, myConceptDragMouseStatement, myConceptEditorComponentExpression, myConceptEditorOperation, myConceptEditorTestCase, myConceptExpectedMessageContainer, myConceptExpressionContainer, myConceptINodesTestMethod, myConceptIReferenceAttachable, myConceptIRuleReference, myConceptITestAnnotationsContainer, myConceptIgnoreMigrationDataOption, myConceptInfoStatementReference, myConceptInvokeActionStatement, myConceptInvokeIntentionStatement, myConceptInvokeSurroundWithIntentionStatement, myConceptIsActionApplicableExpression, myConceptIsIntentionApplicableExpression, myConceptLogEvent, myConceptMPSActionReference, myConceptMigrationReference, myConceptMigrationTestCase, myConceptMigrationTestOption, myConceptMockAnnotation, myConceptMockScopeProvider, myConceptModelExpression, myConceptNamedNodeReference, myConceptNodeCheckOperation, myConceptNodeConstraintsErrorCheckOperation, myConceptNodeConstraintsWarningCheckOperation, myConceptNodeErrorCheckOperation, myConceptNodeExpectedTypeCheckOperation, myConceptNodeInfoCheckOperation, myConceptNodeOperationsContainer, myConceptNodeRuleCheckOperation, myConceptNodeTypeCheckOperation, myConceptNodeTypeSetCheckOperation, myConceptNodeTypeSystemErrorCheckOperation, myConceptNodeTypeSystemRuleCheckOperation, myConceptNodeTypeSystemWarningCheckOperation, myConceptNodeUnknownErrorCheckOperation, myConceptNodeUnknownWarningCheckOperation, myConceptNodeWarningCheckOperation, myConceptNodesTestCase, myConceptNodesTestMethod, myConceptPressKeyStatement, myConceptPressMouseStatement, myConceptProjectExpression, myConceptReportErrorStatementReference, myConceptScopeEntry, myConceptScopesExpectedNode, myConceptScopesTest, myConceptSimpleNodeTest, myConceptStableIdOption, myConceptSwitchToInspector, myConceptTestInfo, myConceptTestNode, myConceptTestNodeAnnotation, myConceptTestNodeReference, myConceptTestProjectAware, myConceptTypeKeyStatement, myConceptTypesystemEquationReference, myConceptUnknownRuleReference, myConceptUntypedExpression, myConceptWarningStatementReference);
   }
 
   @Override
@@ -152,8 +151,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBootstrapActionReference;
       case LanguageConceptSwitch.CheckNodeForErrorMessagesOperation:
         return myConceptCheckNodeForErrorMessagesOperation;
-      case LanguageConceptSwitch.CheckNodeForErrors:
-        return myConceptCheckNodeForErrors;
       case LanguageConceptSwitch.DragMouseStatement:
         return myConceptDragMouseStatement;
       case LanguageConceptSwitch.EditorComponentExpression:
@@ -439,18 +436,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("allowWarnings", 0xbd376db27cdbaaeL).type(PrimitiveTypeId.BOOLEAN).origin("852155438140865198").done();
     b.property("includeSelf", 0x33f30f661f8cdca2L).type(PrimitiveTypeId.BOOLEAN).origin("3743352646565420194").done();
     b.alias("for error messages");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForCheckNodeForErrors() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test", "CheckNodeForErrors", 0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ae82817b8L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.test.structure.AbstractNodeAssert
-    b.super_(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11ada7b9a44L);
-    b.origin("r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)/1215075719096");
-    b.version(3);
-    b.property("includeSelf", 0x33f30f661f90afb9L).type(PrimitiveTypeId.BOOLEAN).origin("3743352646565670841").done();
-    b.kind(ConceptKind.NORMAL, StaticScope.NONE);
-    b.alias("check nodes error messages");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDragMouseStatement() {

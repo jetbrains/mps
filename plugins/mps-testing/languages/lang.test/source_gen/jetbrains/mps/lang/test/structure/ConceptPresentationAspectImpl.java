@@ -23,7 +23,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BeforeTestsMethod;
   private ConceptPresentation props_BootstrapActionReference;
   private ConceptPresentation props_CheckNodeForErrorMessagesOperation;
-  private ConceptPresentation props_CheckNodeForErrors;
   private ConceptPresentation props_DragMouseStatement;
   private ConceptPresentation props_EditorComponentExpression;
   private ConceptPresentation props_EditorOperation;
@@ -180,14 +179,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CheckNodeForErrorMessagesOperation = cpb.create();
         }
         return props_CheckNodeForErrorMessagesOperation;
-      case LanguageConceptSwitch.CheckNodeForErrors:
-        if (props_CheckNodeForErrors == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.rawPresentation("check nodes error messages");
-          props_CheckNodeForErrors = cpb.create();
-        }
-        return props_CheckNodeForErrors;
       case LanguageConceptSwitch.DragMouseStatement:
         if (props_DragMouseStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

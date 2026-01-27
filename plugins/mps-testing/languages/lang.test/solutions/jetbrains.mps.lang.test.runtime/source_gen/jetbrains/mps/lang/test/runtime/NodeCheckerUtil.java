@@ -31,7 +31,6 @@ import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.checkers.ModelCheckerBuilder;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class NodeCheckerUtil {
   public static String nodeWithIdToString(final SNode node) {
@@ -77,16 +76,4 @@ public class NodeCheckerUtil {
     }, new EmptyProgressMonitor());
     return resultConsumer.getResult();
   }
-
-  /**
-   * works with node from original model
-   * 
-   * @deprecated in use as runtime for deprecated CheckNodeForErrors, won't be necessary once the concept gone.
-   */
-  @Deprecated
-  public static void checkNodeForErrorMessages(SNode node, boolean allowErrors, boolean allowWarnings, boolean includeSelf, @Nullable ComponentHost host, CheckExpectedMessageRunnable... excluded) {
-    Runnable checkErrorsAction = new CheckErrorMessagesRunnable(node, allowWarnings, allowErrors, host).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toList());
-    checkErrorsAction.run();
-  }
-
 }

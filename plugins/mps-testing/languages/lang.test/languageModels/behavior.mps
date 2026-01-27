@@ -41,11 +41,9 @@
     <import index="d6hs" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.item(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="tpd9" ref="r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)" />
-    <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
-    <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
     <import index="bm42" ref="r:83f25986-cdbc-469a-a327-db97a2ec5a39(jetbrains.mps.lang.constraints.rules.structure)" implicit="true" />
     <import index="buve" ref="r:306236c1-379e-4cee-b600-470a90233e2f(jetbrains.mps.lang.migration.behavior)" implicit="true" />
   </imports>
@@ -6966,27 +6964,6 @@
       <node concept="3clFbS" id="7jfLc8W17Ct" role="3clF47" />
       <node concept="3uibUv" id="7jfLc8W17CF" role="3clF45">
         <ref role="3uigEE" to="tp6m:62XJ9UeKEVr" resolve="CheckExpectedMessageRunnable" />
-      </node>
-    </node>
-  </node>
-  <node concept="13h7C7" id="2xO1A76oBI3">
-    <property role="3GE5qa" value="asserts" />
-    <ref role="13h7C2" to="tp5g:hFCa1uS" resolve="CheckNodeForErrors" />
-    <node concept="13hLZK" id="2xO1A76oBI4" role="13h7CW">
-      <node concept="3clFbS" id="2xO1A76oBI5" role="2VODD2">
-        <node concept="3clFbF" id="2xO1A76oGgE" role="3cqZAp">
-          <node concept="37vLTI" id="2xO1A76oHsc" role="3clFbG">
-            <node concept="3clFbT" id="2xO1A76oHsQ" role="37vLTx">
-              <property role="3clFbU" value="true" />
-            </node>
-            <node concept="2OqwBi" id="2xO1A76oGr8" role="37vLTJ">
-              <node concept="13iPFW" id="2xO1A76oGgD" role="2Oq$k0" />
-              <node concept="3TrcHB" id="2xO1A76oGDV" role="2OqNvi">
-                <ref role="3TsBF5" to="tp5g:3fN3Qov$aYT" resolve="includeSelf" />
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
     </node>
   </node>

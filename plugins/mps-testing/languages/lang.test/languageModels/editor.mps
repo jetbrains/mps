@@ -727,49 +727,6 @@
       </node>
     </node>
   </node>
-  <node concept="24kQdi" id="hFCbkSp">
-    <property role="3GE5qa" value="asserts" />
-    <ref role="1XX52x" to="tp5g:hFCa1uS" resolve="CheckNodeForErrors" />
-    <node concept="3EZMnI" id="3fN3Qov$nEB" role="6VMZX">
-      <node concept="3F0ifn" id="3fN3Qov$nEC" role="3EZMnx">
-        <property role="3F0ifm" value="include self:" />
-      </node>
-      <node concept="3F0A7n" id="3fN3Qov$nED" role="3EZMnx">
-        <property role="1O74Pk" value="true" />
-        <property role="1$x2rV" value="default" />
-        <property role="39s7Ar" value="false" />
-        <ref role="1NtTu8" to="tp5g:3fN3Qov$aYT" resolve="includeSelf" />
-        <node concept="ljvvj" id="3fN3Qov$nEE" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="l2Vlx" id="3fN3Qov$nEF" role="2iSdaV" />
-    </node>
-    <node concept="3EZMnI" id="hFCbniE" role="2wV5jI">
-      <node concept="3F0ifn" id="hFCboFx" role="3EZMnx">
-        <property role="3F0ifm" value="check" />
-        <ref role="1k5W1q" node="hGdEPg1" resolve="NodeOperation" />
-        <node concept="3nxI2P" id="fM_JX6jB47" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F1sOY" id="hFCbrOp" role="3EZMnx">
-        <ref role="1NtTu8" to="tp5g:hFqv8by" resolve="nodeToCheck" />
-      </node>
-      <node concept="3F0ifn" id="hFCbt_9" role="3EZMnx">
-        <property role="3F0ifm" value="error messages" />
-        <ref role="1k5W1q" node="hGdEPg1" resolve="NodeOperation" />
-        <node concept="3nxI2P" id="fM_JX6kiKU" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F0ifn" id="hFCbvVG" role="3EZMnx">
-        <property role="3F0ifm" value=";" />
-        <ref role="1k5W1q" to="tpen:hFDgi_W" resolve="Semicolon" />
-      </node>
-      <node concept="l2Vlx" id="i0NmqnO" role="2iSdaV" />
-    </node>
-  </node>
   <node concept="24kQdi" id="hG1TRPI">
     <property role="3GE5qa" value="nodeOperation" />
     <ref role="1XX52x" to="tp5g:hG1TMwX" resolve="NodeErrorCheckOperation" />
