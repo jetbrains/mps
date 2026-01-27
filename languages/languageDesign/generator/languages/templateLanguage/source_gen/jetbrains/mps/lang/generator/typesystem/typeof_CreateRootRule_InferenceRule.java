@@ -13,7 +13,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,7 +32,7 @@ public class typeof_CreateRootRule_InferenceRule extends AbstractInferenceRule_R
       {
         SNode _nodeToCheck_1029348928467 = nodeToCheck;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1200923779365", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_nbqazj_a0a0c0b0a0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(SLinkOperations.getTarget(nodeToCheck, LINKS.templateNode$vPtI)))), (SNode) _quotation_createNode_nbqazj_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$rz_i), LINKS.targetConcept$HW_R)), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_nbqazj_a0a0c0b0a0b(RulesUtil.closestConcept4NodeType(SLinkOperations.getTarget(nodeToCheck, LINKS.templateNode$vPtI))), (SNode) _quotation_createNode_nbqazj_a1a0c0b0a0b(SLinkOperations.getTarget(SLinkOperations.getTarget(nodeToCheck, LINKS.label$rz_i), LINKS.targetConcept$HW_R)), false, false, _info_12389875345);
       }
     }
   }

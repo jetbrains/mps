@@ -22,7 +22,7 @@ public class typeof_TestNodeReference_InferenceRule extends AbstractInferenceRul
   public typeof_TestNodeReference_InferenceRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode concept = RulesUtil.closestConceptNode(SNodeOperations.getConcept(SNodeOperations.getParent(SLinkOperations.getTarget(nodeToCheck, LINKS.declaration$hXIv))));
+    SNode concept = RulesUtil.closestConcept4NodeType(SNodeOperations.getParent(SLinkOperations.getTarget(nodeToCheck, LINKS.declaration$hXIv)));
     {
       SNode _nodeToCheck_1029348928467 = nodeToCheck;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "1210676536754", 0, null);

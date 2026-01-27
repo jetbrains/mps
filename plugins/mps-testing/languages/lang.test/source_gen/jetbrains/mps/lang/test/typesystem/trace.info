@@ -28,7 +28,7 @@
       </scope>
     </file>
     <file name="typeof_TestNodeReference_InferenceRule.java">
-      <node id="1210677002368" at="24,124,25,168" concept="6" />
+      <node id="1210677002368" at="24,124,25,145" concept="6" />
       <node id="1210676536754" at="26,5,27,53" concept="6" />
       <node id="1210676536754" at="27,53,28,194" concept="6" />
       <node id="1210676536754" at="28,194,29,282" concept="2" />
@@ -46,7 +46,7 @@
       <node id="1210676511811" at="32,0,35,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1210676511811" at="35,0,38,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1210676511811" at="38,0,41,0" concept="5" trace="overrides#()Z" />
-      <node id="1210676536754" at="25,168,30,5" concept="0" />
+      <node id="1210676536754" at="25,145,30,5" concept="0" />
       <node id="1210676830240" at="41,0,48,0" concept="11" trace="_quotation_createNode_4fdfzz_a1a0c0b0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1210676511811" at="24,0,32,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1210676511811" at="22,51,22,51" />

@@ -9,8 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
-import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -24,19 +22,22 @@ public class typeOf_CoerceExpression_InferenceRule extends AbstractInferenceRule
   public typeOf_CoerceExpression_InferenceRule() {
   }
   public void applyRule(final SNode coerceExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode concept;
-    SNode pattern = SLinkOperations.getTarget(coerceExpression, LINKS.pattern$Ovt6);
-    if (SNodeOperations.isInstanceOf(pattern, CONCEPTS.ConceptReference$14)) {
-      concept = SLinkOperations.getTarget(SNodeOperations.cast(pattern, CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
-    } else if (SNodeOperations.isInstanceOf(pattern, CONCEPTS.PatternCondition$zC)) {
-      concept = RulesUtil.closestConceptNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(SNodeOperations.cast(pattern, CONCEPTS.PatternCondition$zC), LINKS.pattern$mAF2)));
+    SNode condition = SLinkOperations.getTarget(coerceExpression, LINKS.pattern$Ovt6);
+    if (SNodeOperations.isInstanceOf(condition, CONCEPTS.ConceptReference$14)) {
+      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(condition, CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
+      {
+        SNode _nodeToCheck_1029348928467 = coerceExpression;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1195223916495", 0, null);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1195223916497", true), (SNode) _quotation_createNode_b5drln_a1a0c0b0b0b(concept), _info_12389875345);
+      }
+    } else if (SNodeOperations.isInstanceOf(condition, CONCEPTS.PatternCondition$zC)) {
+      {
+        SNode _nodeToCheck_1029348928467 = coerceExpression;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "5614273969196051882", 0, null);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "5614273969196051884", true), (SNode) typeCheckingContext.typeOf(condition, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "5614273969196052553", true), _info_12389875345);
+      }
     } else {
       return;
-    }
-    {
-      SNode _nodeToCheck_1029348928467 = coerceExpression;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1195223916495", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1195223916497", true), (SNode) _quotation_createNode_b5drln_a1a0c0d0b(concept), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -48,7 +49,7 @@ public class typeOf_CoerceExpression_InferenceRule extends AbstractInferenceRule
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_b5drln_a1a0c0d0b(Object parameter_1) {
+  private static SNode _quotation_createNode_b5drln_a1a0c0b0b0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
     quotedNode_2 = nb.getResult();
@@ -59,7 +60,6 @@ public class typeOf_CoerceExpression_InferenceRule extends AbstractInferenceRule
   private static final class LINKS {
     /*package*/ static final SContainmentLink pattern$Ovt6 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1127a2a14aeL, 0x1127a2e5034L, "pattern");
     /*package*/ static final SReferenceLink concept$zIbV = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
-    /*package*/ static final SContainmentLink pattern$mAF2 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
   }
 
   private static final class CONCEPTS {

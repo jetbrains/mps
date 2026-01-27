@@ -26,7 +26,7 @@ public class typeof_NodePointerArg_Identity_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = nodePointerArg;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3320646261221719938", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3320646261221719950", true), (SNode) createSNodePointerType_xw4dmd_a1a0c0b0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(target))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3320646261221719950", true), (SNode) createSNodePointerType_xw4dmd_a1a0c0b0b(RulesUtil.closestConcept4NodeType(target)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {

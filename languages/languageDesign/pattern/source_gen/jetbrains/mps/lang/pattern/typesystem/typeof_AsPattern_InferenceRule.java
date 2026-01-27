@@ -23,7 +23,7 @@ public class typeof_AsPattern_InferenceRule extends AbstractInferenceRule_Runtim
     {
       SNode _nodeToCheck_1029348928467 = nodeToCheck;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1202491123370", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1202491120336", true), (SNode) _quotation_createNode_62vjc3_a1a0c0a0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(SNodeOperations.getParent(nodeToCheck)))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1202491120336", true), (SNode) _quotation_createNode_62vjc3_a1a0c0a0b(RulesUtil.closestConcept4NodeType(SNodeOperations.getParent(nodeToCheck))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {

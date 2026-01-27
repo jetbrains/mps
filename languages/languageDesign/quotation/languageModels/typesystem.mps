@@ -218,7 +218,6 @@
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
-      <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -329,19 +328,16 @@
               <node concept="2c44tb" id="hqEkKwG" role="lGtFl">
                 <property role="2qtEX8" value="concept" />
                 <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
-                <node concept="2YIFZM" id="EDoXYs3ncC" role="2c44t1">
+                <node concept="2YIFZM" id="4RDU6R_Dh2J" role="2c44t1">
+                  <ref role="37wK5l" to="tpeq:4RDU6R_Aj3j" resolve="closestConcept4NodeType" />
                   <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
-                  <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
-                  <node concept="2OqwBi" id="hxx$OcJ" role="37wK5m">
-                    <node concept="2OqwBi" id="hxx$ZFW" role="2Oq$k0">
-                      <node concept="1YBJjd" id="EDoXYsbIWr" role="2Oq$k0">
-                        <ref role="1YBMHb" node="hqcaXL2" resolve="quotation" />
-                      </node>
-                      <node concept="3TrEf2" id="hqEkKwK" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tp3r:hqc44pq" resolve="quotedNode" />
-                      </node>
+                  <node concept="2OqwBi" id="4RDU6R_Dh2K" role="37wK5m">
+                    <node concept="1YBJjd" id="4RDU6R_Dh2L" role="2Oq$k0">
+                      <ref role="1YBMHb" node="hqcaXL2" resolve="quotation" />
                     </node>
-                    <node concept="2yIwOk" id="4L5lkpK4bgj" role="2OqNvi" />
+                    <node concept="3TrEf2" id="4RDU6R_Dh2M" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tp3r:hqc44pq" resolve="quotedNode" />
+                    </node>
                   </node>
                 </node>
               </node>

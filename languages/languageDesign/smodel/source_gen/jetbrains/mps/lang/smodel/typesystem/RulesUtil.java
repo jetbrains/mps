@@ -30,6 +30,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -358,6 +359,9 @@ public class RulesUtil {
     return _quotation_createNode_yxkngc_a2a31();
   }
   private static SNode conceptSourceNode(SAbstractConcept concept) {
+    if (concept == null) {
+      return null;
+    }
     SModule sourceModule = concept.getLanguage().getSourceModule();
     SNodeReference sourceNode = concept.getSourceNode();
     if (sourceModule != null && sourceNode != null) {
@@ -366,23 +370,43 @@ public class RulesUtil {
       return null;
     }
   }
+  /**
+   * 
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.smodel.typesystem.RulesUtil#closestConcept4NodeType(SNode)} instead, this method relies on global repository
+   */
+  @Deprecated(since = "2026.1", forRemoval = true)
   public static SNode closestConceptNode(SAbstractConcept concept) {
     // FIXME pass node<> here instead of concept<>, so that we can take repository from the node to find out concept's source
     if (concept == null) {
       return null;
     }
     SNode sourceNode = conceptSourceNode(concept);
-    if (concept instanceof SInterfaceConcept && sourceNode != null && SNodeOperations.as(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA) != null) {
+    if (concept instanceof SInterfaceConcept && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA)) {
       return SNodeOperations.cast(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA);
     }
     while (concept instanceof SConcept) {
-      SNode currentSourceNode = conceptSourceNode(concept);
-      if (currentSourceNode != null && SNodeOperations.as(currentSourceNode, CONCEPTS.AbstractConceptDeclaration$KA) != null) {
-        return SNodeOperations.as(currentSourceNode, CONCEPTS.AbstractConceptDeclaration$KA);
+      if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA)) {
+        return SNodeOperations.cast(sourceNode, CONCEPTS.AbstractConceptDeclaration$KA);
       }
       concept = ((SConcept) concept).getSuperConcept();
+      sourceNode = conceptSourceNode(concept);
     }
     return null;
+  }
+  /**
+   * Finds closest existing {@code node<AbstractConceptDeclaration} corresponding to one of concepts in {@code node.concept} hierarchy
+   * 
+   * 
+   * @return null if no AbstractConceptDeclaration is available or known for the node's concept.
+   */
+  public static SNode closestConcept4NodeType(SNode node) {
+    SModel mm = SNodeOperations.getModel(node);
+    if (mm == null || mm.getRepository() == null) {
+      return null;
+    }
+    // once switch users here, utilize repo to figure out declaration nodes for SConcept
+    return closestConceptNode(SNodeOperations.getConcept(node));
   }
   private static SNode _quotation_createNode_yxkngc_b0a0a5a0() {
     SNode quotedNode_1 = null;

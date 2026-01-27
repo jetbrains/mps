@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -22,10 +21,12 @@ public class typeOf_PatternCondition_InferenceRule extends AbstractInferenceRule
   public typeOf_PatternCondition_InferenceRule() {
   }
   public void applyRule(final SNode pc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    // FIXME why not typeof(pc.pattern.pattern) or even pc.pattern (though this one yields 
+    //      a classifier type, what a reason I can hardly understand, see typeof_PatternExpression
     {
       SNode _nodeToCheck_1029348928467 = pc;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981204949", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981204954", true), (SNode) _quotation_createNode_h31tef_a1a0c0a0b(RulesUtil.closestConceptNode(SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(pc, LINKS.pattern$mAF2), LINKS.pattern$GuFI), LINKS.quotedNode$ip4)))), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1223981204954", true), (SNode) _quotation_createNode_h31tef_a1a0c0c0b(RulesUtil.closestConcept4NodeType(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(pc, LINKS.pattern$mAF2), LINKS.pattern$GuFI), LINKS.quotedNode$ip4))), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -37,7 +38,7 @@ public class typeOf_PatternCondition_InferenceRule extends AbstractInferenceRule
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_h31tef_a1a0c0a0b(Object parameter_1) {
+  private static SNode _quotation_createNode_h31tef_a1a0c0c0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
     quotedNode_2 = nb.getResult();

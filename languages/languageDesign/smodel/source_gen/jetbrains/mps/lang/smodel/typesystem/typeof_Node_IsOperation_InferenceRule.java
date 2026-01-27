@@ -30,7 +30,7 @@ public class typeof_Node_IsOperation_InferenceRule extends AbstractInferenceRule
 
     // checking
     SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(op, LINKS.ref$yDrt), SNodeOperations.getModel(op).getRepository());
-    SNode targetConcept = RulesUtil.closestConceptNode(SNodeOperations.getConcept(target));
+    SNode targetConcept = RulesUtil.closestConcept4NodeType(target);
 
     final SNode ExpectedType_typevar_3661776679762944983 = typeCheckingContext.createNewRuntimeTypesVariable();
     RulesUtil.equate_inputNodePtrType(typeCheckingContext, op, typeCheckingContext.getRepresentative(ExpectedType_typevar_3661776679762944983));
