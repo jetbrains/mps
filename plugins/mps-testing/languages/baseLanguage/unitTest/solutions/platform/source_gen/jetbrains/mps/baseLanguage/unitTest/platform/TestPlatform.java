@@ -4,8 +4,6 @@ package jetbrains.mps.baseLanguage.unitTest.platform;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
@@ -14,6 +12,7 @@ import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import java.util.Optional;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
+import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 
@@ -24,57 +23,10 @@ import java.util.Collections;
 public class TestPlatform implements CoreComponent {
 
   private final LanguageRegistry myModuleRegistry;
-  private List<TestDiscoveryParticipant> myDiscoveryParticipants = new CopyOnWriteArrayList<>();
-  private List<TestSessionListener> myTestSessionListeners = new CopyOnWriteArrayList<>();
   private ConcurrentLinkedDeque<TestSession> myCurrentSession = new ConcurrentLinkedDeque<TestSession>();
 
-  /**
-   * Private to prevent instantiation.
-   */
   public TestPlatform(@NotNull LanguageRegistry moduleRegistry) {
     myModuleRegistry = moduleRegistry;
-  }
-
-  public void clear() {
-    // seems to be unused; remove together with myDiscoveryParticipants
-    myDiscoveryParticipants.clear();
-  }
-
-  /**
-   * 
-   * @deprecated Instead, use {@code extensions} registered through {@code ModuleRuntime.ActivatorContext} 
-   */
-  @Deprecated(since = "2025.3", forRemoval = true)
-  public synchronized void addTestDiscoveryParticipant(TestDiscoveryParticipant participant) {
-    // no uses in MPS, and external uses are quite unlikely, remove once 2025.3 is out
-    myDiscoveryParticipants.add(participant);
-  }
-
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated(since = "2025.3", forRemoval = true)
-  public synchronized void removeTestDiscoveryParticipant(TestDiscoveryParticipant participant) {
-    myDiscoveryParticipants.remove(participant);
-  }
-
-  /**
-   * 
-   * @deprecated Instead, use {@code extensions} registered through {@code ModuleRuntime.ActivatorContext} 
-   */
-  @Deprecated(since = "2025.3", forRemoval = true)
-  public void addTestSessionLisnener(TestSessionListener listener) {
-    myTestSessionListeners.add(listener);
-  }
-
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated(since = "2025.3", forRemoval = true)
-  public void removeTestSessionLisnener(TestSessionListener listener) {
-    myTestSessionListeners.remove(listener);
   }
 
   public TestDiscoveryParticipant getAggregateDiscoveryParticipant() {
@@ -99,14 +51,10 @@ public class TestPlatform implements CoreComponent {
 
   private void forEachSessionListener(Consumer<TestSessionListener> dispatch) {
     myModuleRegistry.withAvailableExtensions(TestSessionListener.class, new ModuleRuntime.Extension.MatchRequest() {}, dispatch);
-    // compatibility, remove once 2025.3 is out
-    myTestSessionListeners.forEach(dispatch);
   }
 
   private void forEachDiscoveryParticipant(Consumer<TestDiscoveryParticipant> consumer) {
     myModuleRegistry.withAvailableExtensions(TestDiscoveryParticipant.class, new ModuleRuntime.Extension.MatchRequest() {}, consumer);
-    // fallback to legacy registrations
-    myDiscoveryParticipants.forEach(consumer);
   }
 
 
