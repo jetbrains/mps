@@ -80,18 +80,14 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
 
   @Override
   public void projectOpened() {
-    if (myFileSystemBridge == null) {
-      // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
-      myFileSystemBridge = new FileSystemProjectBridge(this);
-      // FWIW, there's OnReloadingUndoCleaner (at least) that depends on this bridge present for a project
-      myFileSystemBridge.projectOpened();
-    }
+    initFileSystemBridge();
     super.projectOpened();
   }
 
   @Override
   public void projectClosed() {
     super.projectClosed();
+    destroyFileSystemBridge();
   }
 
   @Override
@@ -104,10 +100,25 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
     if (isDisposed()) {
       return;
     }
-    myFileSystemBridge.projectClosed();
-    myFileSystemBridge = null;
     ((ProjectRepository) getRepository()).setConflictResolver(null);
     super.destroy();
+  }
+
+  private void initFileSystemBridge() {
+    if (myFileSystemBridge == null) {
+      // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
+      myFileSystemBridge = new FileSystemProjectBridge(this);
+      // FWIW, there's OnReloadingUndoCleaner (at least) that depends on this bridge present for a project
+      myFileSystemBridge.projectOpened();
+    }
+  }
+
+  private void destroyFileSystemBridge() {
+    FileSystemProjectBridge fileSystemBridge = myFileSystemBridge;
+    if (fileSystemBridge != null) {
+      fileSystemBridge.projectClosed();
+      myFileSystemBridge = null;
+    }
   }
 
   @NotNull
