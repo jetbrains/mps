@@ -22,6 +22,7 @@ import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestUtil;
+import com.intellij.testFramework.VfsTestUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.tool.environment.Environment;
@@ -90,6 +91,7 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
     IFile projectFile = myProject.getFileSystem().getFile(getProjectRoot());
     projectFile.refresh(new DefaultCachingContext(true, true));
     TestUtil.reloadFiles(myProject.getProject());
+    VfsTestUtil.syncRefresh();
   }
 
   @NotNull
