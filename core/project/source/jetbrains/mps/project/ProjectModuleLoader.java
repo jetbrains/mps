@@ -256,6 +256,9 @@ import java.util.stream.Stream;
         case INTRODUCED -> introduced.add(new Pair<>(file, e.getValue().o2));
       }
     }
+    if (LOG.isDebugLevel()) {
+      LOG.debug("Dropped modules: " + dropped.size() + ", introduced modules: " + introduced.size());
+    }
     return new Update(project, dropped, discoverModules(project, introduced));
   }
 
@@ -306,7 +309,11 @@ import java.util.stream.Stream;
         }
       }
     }
-    return modulesMiner.getCollectedModules();
+    Collection<ModuleHandle> collectedModules = modulesMiner.getCollectedModules();
+    if (LOG.isDebugLevel()) {
+      LOG.debug("Collected modules: " + collectedModules.size());
+    }
+    return collectedModules;
   }
 
   // needs model write
@@ -325,6 +332,9 @@ import java.util.stream.Stream;
         detachModule(oldModule, e.descriptorFile);
         // checkProjectIsOwner=false: assume all modules we track here are with ModulePath and do belong to the project
         project.dissociateFromProjectRepo(oldModule, false);
+        if (LOG.isDebugLevel()) {
+          LOG.debug("Detached module: " + oldModule.getModuleName());
+        }
       }
     });
   }
@@ -348,6 +358,9 @@ import java.util.stream.Stream;
 
         project.associateWithProjectRepo(module);
         attachModule(module, descriptorFile, handle.getVirtualFolder());
+        if (LOG.isDebugLevel()) {
+          LOG.debug("Attached module: " + module.getModuleName());
+        }
         ++loadedModules;
       } else {
         error(String.format("Can't load module from %s. Unknown file type.", descriptorFile.getPath()));
