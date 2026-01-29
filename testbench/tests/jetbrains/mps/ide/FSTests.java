@@ -24,6 +24,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Reference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,6 +48,8 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     Reference<Solution> solutionRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, createNewDirInProject())));
     invokeInCommand(() -> solutionRef.set(new SolutionProducer( myProject).create(solutionName, createNewDirInProject())));
+    SModuleReference langModuleRef = langRef.get().getModuleReference();
+    SModuleReference solutionModuleRef = solutionRef.get().getModuleReference();
     saveProjectInTest();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
@@ -61,6 +64,11 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     });
     invokeInCommand(projectBackup::restoreFromBackup);
     refreshProjectRecursively();
+    // at this point both langRef and solutionRef may refer to unloaded modules; these references must be re-resolved
+    myProject.getModelAccess().runReadAction(() -> {
+      langRef.set((Language) langModuleRef.resolve(myProject.getRepository()));
+      solutionRef.set((Solution) solutionModuleRef.resolve(myProject.getRepository()));
+    });
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       @NotNull Solution solution = solutionRef.get();
@@ -76,6 +84,7 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
     invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, createNewDirInProject())));
+    SModuleReference langModuleRef = langRef.get().getModuleReference();
     saveProjectInTest();
     invokeInCommand(() -> {
       projectBackup.doBackup();
@@ -94,6 +103,10 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     saveProjectInTest();
     invokeInCommand(projectBackup::restoreFromBackup);
     refreshProjectRecursively();
+    // at this point langRef may refer to an unloaded module; the references must be re-resolved
+    myProject.getModelAccess().runReadAction(() -> {
+      langRef.set((Language) langModuleRef.resolve(myProject.getRepository()));
+    });
     invokeInCommand(() -> {
       Language lang = langRef.get();
       Assert.assertEquals(1, myProject.getProjectModules().size());
