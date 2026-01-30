@@ -10,6 +10,7 @@
   <dependencies>
     <plugin id="jetbrains.mps.core"/>
     <module name="intellij.spellchecker"/>
+    <plugin id="tanvd.grazi"/>
   </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">
