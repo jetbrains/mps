@@ -1650,6 +1650,6 @@
     <orderEntry type="module" module-name="mps-refactoring" />
     <orderEntry type="library" name="junit.platform.reporting" level="project" />
     <orderEntry type="module" module-name="mps-make-plugin" />
+    <orderEntry type="library" name="idea.grazie" level="project" />
   </component>
 </module>
-
