@@ -23,7 +23,6 @@
   <uses module="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt+dp" />
   <uses module="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt+dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-  <uses module="9b03a23f-f77b-4d3f-a743-d9a75a10c597(jetbrains.mps.grazie.stubs)" kind="dp" />
   <uses module="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />

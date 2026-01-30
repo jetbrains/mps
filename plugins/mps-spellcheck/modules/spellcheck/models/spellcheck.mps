@@ -42,10 +42,7 @@
     <import index="8vcu" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.jlanguage(jetbrains.mps.spellchecker.idea.stubs/)" />
     <import index="rqnh" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.utils(jetbrains.mps.spellchecker.idea.stubs/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
-    <import index="ni89" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:org.languagetool.chunking(jetbrains.mps.spellchecker.idea.stubs/)" />
-    <import index="vpi0" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.constant(JDK/)" />
-    <import index="m81" ref="9b03a23f-f77b-4d3f-a743-d9a75a10c597/java:com.intellij.grazie.detection(jetbrains.mps.grazie.stubs/)" />
-    <import index="8vcv" ref="9b03a23f-f77b-4d3f-a743-d9a75a10c597/java:com.intellij.grazie.jlanguage(jetbrains.mps.grazie.stubs/)" />
+    <import index="m81" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.detection(jetbrains.mps.spellchecker.idea.stubs/)" />
     <import index="neu9" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:ai.grazie.nlp.langs(jetbrains.mps.spellchecker.idea.stubs/)" implicit="true" />
   </imports>
   <registry>
@@ -3373,10 +3370,10 @@
           <node concept="3cpWsn" id="5AhI6VMvBrF" role="3cpWs9">
             <property role="TrG5h" value="nativeLanguage" />
             <node concept="3uibUv" id="5AhI6VMvBrG" role="1tU5fm">
-              <ref role="3uigEE" to="8vcv:~Lang" resolve="Lang" />
+              <ref role="3uigEE" to="8vcu:~Lang" resolve="Lang" />
             </node>
             <node concept="2OqwBi" id="5AhI6VMvBrH" role="33vP2m">
-              <node concept="10M0yZ" id="5AhI6VMvBrI" role="2Oq$k0">
+              <node concept="10M0yZ" id="4uQXGp6eiGe" role="2Oq$k0">
                 <ref role="3cqZAo" to="m81:~LangDetector.INSTANCE" resolve="INSTANCE" />
                 <ref role="1PxDUh" to="m81:~LangDetector" resolve="LangDetector" />
               </node>
@@ -3399,7 +3396,7 @@
                 <ref role="3cqZAo" node="5AhI6VMvBrF" resolve="nativeLanguage" />
               </node>
               <node concept="liA8E" id="5AhI6VMvHbH" role="2OqNvi">
-                <ref role="37wK5l" to="8vcv:~Lang.getShortDisplayName()" resolve="getShortDisplayName" />
+                <ref role="37wK5l" to="8vcu:~Lang.getShortDisplayName()" resolve="getShortDisplayName" />
               </node>
             </node>
             <node concept="3clFbC" id="5AhI6VMvDAF" role="3K4Cdx">
@@ -3441,7 +3438,7 @@
           <node concept="3cpWsn" id="5AhI6VMq7cs" role="3cpWs9">
             <property role="TrG5h" value="nativeLanguage" />
             <node concept="3uibUv" id="5AhI6VMq7ct" role="1tU5fm">
-              <ref role="3uigEE" to="8vcv:~Lang" resolve="Lang" />
+              <ref role="3uigEE" to="8vcu:~Lang" resolve="Lang" />
             </node>
             <node concept="2OqwBi" id="5AhI6VMq7cu" role="33vP2m">
               <node concept="10M0yZ" id="5AhI6VMq7cv" role="2Oq$k0">
@@ -3937,7 +3934,7 @@
       <node concept="37vLTG" id="5AhI6VMqQec" role="3clF46">
         <property role="TrG5h" value="nativeLanguage" />
         <node concept="3uibUv" id="5AhI6VMqR_t" role="1tU5fm">
-          <ref role="3uigEE" to="8vcv:~Lang" resolve="Lang" />
+          <ref role="3uigEE" to="8vcu:~Lang" resolve="Lang" />
         </node>
       </node>
     </node>
