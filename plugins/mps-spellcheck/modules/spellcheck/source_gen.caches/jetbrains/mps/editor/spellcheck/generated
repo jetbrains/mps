@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="aqtg4groc2vils3qb745n5h52rsz85g">
-  <files names="AddWordToDictionary_Action.java:CommentSpellChecker.java:SpellCheck_ProjectPluginPart.java:Spellcheck_ApplicationPlugin.java:Spellcheck_ProjectPlugin.java:WordsToDictionary_ActionGroup.java:startup.properties" />
+<product version="3" modelHash="6no7z5z5k6v7jfwzxdk8g4nuxlizpkw">
+  <files names="AddWordToDictionary_Action.java:CommentSpellChecker.java:NativeLanguageAnalyzer.java:NativeLanguageUtil.java:SpellCheck_ProjectPluginPart.java:Spellcheck_ApplicationPlugin.java:Spellcheck_ProjectPlugin.java:WordsToDictionary_ActionGroup.java:startup.properties" />
 </product>
 
