@@ -112,7 +112,8 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
     final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
     myGlobalRepoFiles = new RepositoryVirtualFiles(this, mpsPlatform.findComponent(MPSModuleRepository.class));
     myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
-    new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach();
+    ApplicationManager.getApplication().invokeLater(() ->
+      new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach());
     MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
     myEventPublisher = messageBus.syncPublisher(NODE_FS_CHANGES);
   }
