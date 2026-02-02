@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -120,6 +121,12 @@ public final class ConceptInfo extends BaseInfo implements Comparable<ConceptInf
   public boolean isImplementationWithStub() {
     // treat ImplementationWithStub without actual stub as mere Implementation
     return myKind == ConceptKind.IMPLEMENTATION_WITH_STUB && myStubCounterpart != null;
+  }
+
+  public boolean canServeAsAssociationTarget() {
+    // we treat concepts w/o GLOBAL/ROOT scope as those that could never be target of a persisted reference (i.e. generally one would not make a reference to
+    // body:StatementList)
+    return myScope != StaticScope.NONE || myKind == ConceptKind.INTERFACE;
   }
 
   /**

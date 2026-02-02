@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.NodeIdRecording;
 import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -90,7 +92,8 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
   @Override
   public IModelWriter getModelWriter(@NotNull MetaModelInfoProvider mmi, @Nullable ModelSaveOption... options) {
     final boolean keepUserObjects = UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options);
-    return new ModelWriter9(mmi, keepUserObjects);
+    final boolean skipNodeId4ScopeNone = NodeIdRecording.CONCEPT_SCOPE.present(options);
+    return new ModelWriter9(mmi, keepUserObjects, skipNodeId4ScopeNone);
   }
 
   @Override
@@ -101,7 +104,8 @@ public class ModelPersistence9 implements IModelPersistence, XMLPersistence {
     if (mmiProvider == null) {
       mmiProvider = new RegularMetaModelInfo();
     }
-    IdInfoReadHelper readHelper = new IdInfoReadHelper(mmiProvider, interfaceOnly, stripImplementation);
+    final boolean skipNodeId4ScopeNone = RuntimeFlags.nodeIdByConceptScope();
+    IdInfoReadHelper readHelper = new IdInfoReadHelper(mmiProvider, interfaceOnly, stripImplementation, skipNodeId4ScopeNone);
     DefaultSModel modelData = new DefaultSModel(header.getModelReference(), header);
     return new ModelReader9Handler(header, modelData, readHelper);
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,14 +55,16 @@ public class ModelWriter9 implements IModelWriter {
   public static final int VERSION = 9;
   private final MetaModelInfoProvider myMetaInfoProvider;
   private final UserObjectEncoder myUserObjectEncoder;
+  private final boolean mySkipNodeId4ScopeNone;
 
   private IdInfoRegistry myMetaInfo;
   private ImportsHelper myImportsHelper;
   private final IdEncoder myIdEncoder = new IdEncoder();
 
-  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider, boolean saveUserObjects) {
+  public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider, boolean saveUserObjects, boolean skipNodeId4ScopeNone) {
     myMetaInfoProvider = mmiProvider;
     myUserObjectEncoder = saveUserObjects ? new UserObjectEncoder() : null;
+    mySkipNodeId4ScopeNone = skipNodeId4ScopeNone;
   }
 
   @Override
@@ -257,7 +259,7 @@ public class ModelWriter9 implements IModelWriter {
     Element nodeElement = new Element(ModelPersistence9.NODE);
     final ConceptInfo conceptInfo = myMetaInfo.find(node.getConcept());
     nodeElement.setAttribute(ModelPersistence9.CONCEPT_ID, conceptInfo.getIndex());
-    if (conceptInfo.getScope() != StaticScope.NONE || conceptInfo.getKind() == jetbrains.mps.smodel.runtime.ConceptKind.INTERFACE) {
+    if (!mySkipNodeId4ScopeNone || conceptInfo.canServeAsAssociationTarget()) {
       // == IdInfoReadHelper.canBeAssociationTarget()
       nodeElement.setAttribute(ModelPersistence9.ID, myIdEncoder.toText(node.getNodeId()));
     }

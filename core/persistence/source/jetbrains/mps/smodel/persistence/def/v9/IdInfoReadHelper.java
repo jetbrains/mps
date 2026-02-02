@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,13 +74,19 @@ class IdInfoReadHelper {
   private final Map<String, SNodeId> myModelNodes = new HashMap<>(200);
   private final boolean myInterfaceOnly;
   private final boolean myStripImplementation;
+  private final boolean mySkipNodeId4ScopeNone;
 
   public IdInfoReadHelper(@NotNull MetaModelInfoProvider mmiProvider, boolean interfaceOnly, boolean stripImplementation) {
+    this(mmiProvider, interfaceOnly, stripImplementation, false);
+  }
+
+  public IdInfoReadHelper(@NotNull MetaModelInfoProvider mmiProvider, boolean interfaceOnly, boolean stripImplementation, boolean skipNodeId4ScopeNone) {
     myMetaInfoProvider = mmiProvider;
     myIdEncoder = new IdEncoder();
     myMetaRegistry = new IdInfoRegistry();
     myInterfaceOnly = interfaceOnly;
     myStripImplementation = stripImplementation;
+    mySkipNodeId4ScopeNone = skipNodeId4ScopeNone;
   }
 
   @NotNull
@@ -229,8 +235,7 @@ class IdInfoReadHelper {
     return myMetaRegistry.find(concept).isImplementationWithStub();
   }
   public boolean canBeAssociationTarget(@NotNull SConcept concept) {
-    ConceptInfo ci = myMetaRegistry.find(concept);
-    return ci.getScope() != StaticScope.NONE || ci.getKind() == ConceptKind.INTERFACE;
+    return !mySkipNodeId4ScopeNone || myMetaRegistry.find(concept).canServeAsAssociationTarget();
   }
 
   /**

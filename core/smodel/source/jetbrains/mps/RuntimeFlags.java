@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,8 @@ public final class RuntimeFlags {
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourLegacyLoadModels = null;
   private static Boolean ourCustomNodeIdentitySupport;
+  private static Boolean ourExperimentalScopedNodeId;
+
 
   private static Boolean ourLegacyCLDeps = null;
 
@@ -128,5 +130,12 @@ public final class RuntimeFlags {
       ourCustomNodeIdentitySupport = Boolean.getBoolean("mps.nodeuid");
     }
     return ourCustomNodeIdentitySupport;
+  }
+
+  public static boolean nodeIdByConceptScope() {
+    if (ourExperimentalScopedNodeId == null) {
+      ourExperimentalScopedNodeId = Boolean.getBoolean("mps.nodes.fakeid");
+    }
+    return ourExperimentalScopedNodeId;
   }
 }
