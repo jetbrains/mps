@@ -119,6 +119,13 @@ class IdInfoReadHelper {
     SConceptId conceptId = myIdEncoder.parseConceptId(myActualLang.getLanguageId(), id);
     myActualConcept = myMetaRegistry.registerConcept(conceptId, name);
     myActualConcept.parseImplementationKind(nodeInfo);
+    StaticScope mmss;
+    if (myActualConcept.getScope() == StaticScope.NONE && (mmss = myMetaInfoProvider.getScope(conceptId)) != StaticScope.NONE) {
+      assert mmss != null;
+      // "upgrade" static scope to match that of MMIP
+      myActualConcept.setImplementationKind(mmss, myActualConcept.getKind());
+    }
+
     Boolean mmic; // XXX provisional code for MPS-39248, perhaps, shall stay for a year or two to migrate old projects
     // and then just expect proper concept flags. OTOH, could be reasonable to look up actual concept kind, and MMIP is a
     // legitimate way to perform this lookup.
