@@ -203,8 +203,8 @@
       <node id="1087833241328" at="1087,71,1088,109" concept="1" />
       <node id="1087833241328" at="1088,109,1089,17" concept="1" />
       <node id="1167756362303" at="1089,17,1090,199" concept="1" />
-      <node id="1087833241328" at="1090,199,1091,57" concept="1" />
-      <node id="1087833241328" at="1091,57,1092,22" concept="6" />
+      <node id="1087833241328" at="1090,199,1091,59" concept="1" />
+      <node id="1087833241328" at="1091,59,1092,22" concept="6" />
       <node id="1087833241328" at="1082,0,1094,0" concept="9" trace="createDescriptorForPropertyMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1087833241328" at="281,47,282,38" />
       <scope id="1087833241328" at="1082,71,1092,22">
@@ -279,8 +279,8 @@
       <node id="1088761943574" at="1132,76,1133,109" concept="1" />
       <node id="1088761943574" at="1133,109,1134,17" concept="1" />
       <node id="1167770376702" at="1134,17,1135,194" concept="1" />
-      <node id="1088761943574" at="1135,194,1136,57" concept="1" />
-      <node id="1088761943574" at="1136,57,1137,22" concept="6" />
+      <node id="1088761943574" at="1135,194,1136,59" concept="1" />
+      <node id="1088761943574" at="1136,59,1137,22" concept="6" />
       <node id="1088761943574" at="1126,0,1139,0" concept="9" trace="createDescriptorForReferenceMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1088761943574" at="289,48,290,39" />
       <scope id="1088761943574" at="1126,72,1137,22">
@@ -532,8 +532,8 @@
       <node id="1114706874351" at="505,71,506,109" concept="1" />
       <node id="1114706874351" at="506,109,507,17" concept="1" />
       <node id="1168024447342" at="507,17,508,192" concept="1" />
-      <node id="1114706874351" at="508,192,509,57" concept="1" />
-      <node id="1114706874351" at="509,57,510,26" concept="1" />
+      <node id="1114706874351" at="508,192,509,59" concept="1" />
+      <node id="1114706874351" at="509,59,510,26" concept="1" />
       <node id="1114706874351" at="510,26,511,22" concept="6" />
       <node id="1114706874351" at="501,0,513,0" concept="9" trace="createDescriptorForCopySrcNodeMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1114706874351" at="181,50,182,41" />
@@ -571,8 +571,8 @@
       <node id="1114729360583" at="493,71,494,109" concept="1" />
       <node id="1114729360583" at="494,109,495,17" concept="1" />
       <node id="1168278589236" at="495,17,496,194" concept="1" />
-      <node id="1114729360583" at="496,194,497,57" concept="1" />
-      <node id="1114729360583" at="497,57,498,27" concept="1" />
+      <node id="1114729360583" at="496,194,497,59" concept="1" />
+      <node id="1114729360583" at="497,59,498,27" concept="1" />
       <node id="1114729360583" at="498,27,499,22" concept="6" />
       <node id="1114729360583" at="489,0,501,0" concept="9" trace="createDescriptorForCopySrcListMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1114729360583" at="179,50,180,41" />
@@ -611,8 +611,8 @@
       <node id="1118773211870" at="751,109,752,17" concept="1" />
       <node id="1167945861827" at="752,17,753,195" concept="1" />
       <node id="1194989344771" at="753,195,754,199" concept="1" />
-      <node id="1118773211870" at="754,199,755,57" concept="1" />
-      <node id="1118773211870" at="755,57,756,20" concept="1" />
+      <node id="1118773211870" at="754,199,755,59" concept="1" />
+      <node id="1118773211870" at="755,59,756,20" concept="1" />
       <node id="1118773211870" at="756,20,757,22" concept="6" />
       <node id="1118773211870" at="746,0,759,0" concept="9" trace="createDescriptorForIfMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1118773211870" at="227,41,228,32" />
@@ -652,8 +652,8 @@
       <node id="1118786554307" at="882,109,883,17" concept="1" />
       <node id="7430509679011668804" at="883,17,884,120" concept="1" />
       <node id="1167952069335" at="884,120,885,194" concept="1" />
-      <node id="1118786554307" at="885,194,886,57" concept="1" />
-      <node id="1118786554307" at="886,57,887,22" concept="1" />
+      <node id="1118786554307" at="885,194,886,59" concept="1" />
+      <node id="1118786554307" at="886,59,887,22" concept="1" />
       <node id="1118786554307" at="887,22,888,22" concept="6" />
       <node id="1118786554307" at="876,0,890,0" concept="9" trace="createDescriptorForLoopMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1118786554307" at="249,43,250,34" />
@@ -693,8 +693,8 @@
       <node id="1168281849769" at="943,17,944,192" concept="1" />
       <node id="1170725844563" at="944,192,945,191" concept="1" />
       <node id="1225229330048" at="945,191,946,195" concept="1" />
-      <node id="1131073187192" at="946,195,947,57" concept="1" />
-      <node id="1131073187192" at="947,57,948,25" concept="1" />
+      <node id="1131073187192" at="946,195,947,59" concept="1" />
+      <node id="1131073187192" at="947,59,948,25" concept="1" />
       <node id="1131073187192" at="948,25,949,22" concept="6" />
       <node id="1131073187192" at="937,0,951,0" concept="9" trace="createDescriptorForMapSrcNodeMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1131073187192" at="259,49,260,40" />
@@ -734,8 +734,8 @@
       <node id="1168291362368" at="907,17,908,194" concept="1" />
       <node id="1170871384825" at="908,194,909,191" concept="1" />
       <node id="1225229689103" at="909,191,910,195" concept="1" />
-      <node id="1133037731736" at="910,195,911,57" concept="1" />
-      <node id="1133037731736" at="911,57,912,26" concept="1" />
+      <node id="1133037731736" at="910,195,911,59" concept="1" />
+      <node id="1133037731736" at="911,59,912,26" concept="1" />
       <node id="1133037731736" at="912,26,913,22" concept="6" />
       <node id="1133037731736" at="901,0,915,0" concept="9" trace="createDescriptorForMapSrcListMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1133037731736" at="253,49,254,40" />
@@ -1298,8 +1298,8 @@
       <node id="1167951910403" at="1225,72,1226,71" concept="1" />
       <node id="1167951910403" at="1226,71,1227,109" concept="1" />
       <node id="1167951910403" at="1227,109,1228,17" concept="1" />
-      <node id="1167951910403" at="1228,17,1229,52" concept="1" />
-      <node id="1167951910403" at="1229,52,1230,21" concept="1" />
+      <node id="1167951910403" at="1228,17,1229,54" concept="1" />
+      <node id="1167951910403" at="1229,54,1230,21" concept="1" />
       <node id="1167951910403" at="1230,21,1231,22" concept="6" />
       <node id="1167951910403" at="1222,0,1233,0" concept="9" trace="createDescriptorForSourceSubstituteMacro_SourceNodesQuery#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1167951910403" at="305,72,306,63" />
@@ -1335,8 +1335,8 @@
       <node id="1168024337012" at="1214,72,1215,71" concept="1" />
       <node id="1168024337012" at="1215,71,1216,109" concept="1" />
       <node id="1168024337012" at="1216,109,1217,17" concept="1" />
-      <node id="1168024337012" at="1217,17,1218,52" concept="1" />
-      <node id="1168024337012" at="1218,52,1219,21" concept="1" />
+      <node id="1168024337012" at="1217,17,1218,54" concept="1" />
+      <node id="1168024337012" at="1218,54,1219,21" concept="1" />
       <node id="1168024337012" at="1219,21,1220,22" concept="6" />
       <node id="1168024337012" at="1211,0,1222,0" concept="9" trace="createDescriptorForSourceSubstituteMacro_SourceNodeQuery#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1168024337012" at="303,71,304,62" />
@@ -2274,8 +2274,8 @@
       <node id="1311078761699563726" at="833,70,834,115" concept="1" />
       <node id="1311078761699563726" at="834,115,835,17" concept="1" />
       <node id="1311078761699602381" at="835,17,836,209" concept="1" />
-      <node id="1311078761699563726" at="836,209,837,57" concept="1" />
-      <node id="1311078761699563726" at="837,57,838,24" concept="1" />
+      <node id="1311078761699563726" at="836,209,837,59" concept="1" />
+      <node id="1311078761699563726" at="837,59,838,24" concept="1" />
       <node id="1311078761699563726" at="838,24,839,22" concept="6" />
       <node id="1311078761699563726" at="829,0,841,0" concept="9" trace="createDescriptorForInsertMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1311078761699563726" at="241,45,242,36" />
@@ -2400,8 +2400,8 @@
       <node id="1510949579266781519" at="1333,76,1334,115" concept="1" />
       <node id="1510949579266781519" at="1334,115,1335,17" concept="1" />
       <node id="1510949579266801461" at="1335,17,1336,203" concept="1" />
-      <node id="1510949579266781519" at="1336,203,1337,57" concept="1" />
-      <node id="1510949579266781519" at="1337,57,1338,22" concept="1" />
+      <node id="1510949579266781519" at="1336,203,1337,59" concept="1" />
+      <node id="1510949579266781519" at="1337,59,1338,22" concept="1" />
       <node id="1510949579266781519" at="1338,22,1339,22" concept="6" />
       <node id="1510949579266781519" at="1328,0,1341,0" concept="9" trace="createDescriptorForTemplateCallMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1510949579266781519" at="325,51,326,42" />
@@ -2879,8 +2879,8 @@
       <node id="3118009927543452571" at="1505,70,1506,115" concept="1" />
       <node id="3118009927543452571" at="1506,115,1507,17" concept="1" />
       <node id="3118009927543452625" at="1507,17,1508,204" concept="1" />
-      <node id="3118009927543452571" at="1508,204,1509,57" concept="1" />
-      <node id="3118009927543452571" at="1509,57,1510,23" concept="1" />
+      <node id="3118009927543452571" at="1508,204,1509,59" concept="1" />
+      <node id="3118009927543452571" at="1509,59,1510,23" concept="1" />
       <node id="3118009927543452571" at="1510,23,1511,22" concept="6" />
       <node id="3118009927543452571" at="1501,0,1513,0" concept="9" trace="createDescriptorForTraceMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="3118009927543452571" at="355,44,356,35" />
@@ -2920,8 +2920,8 @@
       <node id="3462145372628083181" at="1577,17,1578,204" concept="1" />
       <node id="3462145372628083179" at="1578,204,1579,206" concept="1" />
       <node id="2614815860187382413" at="1579,206,1580,203" concept="1" />
-      <node id="3462145372628071891" at="1580,203,1581,57" concept="1" />
-      <node id="3462145372628071891" at="1581,57,1582,23" concept="1" />
+      <node id="3462145372628071891" at="1580,203,1581,59" concept="1" />
+      <node id="3462145372628071891" at="1581,59,1582,23" concept="1" />
       <node id="3462145372628071891" at="1582,23,1583,22" concept="6" />
       <node id="3462145372628071891" at="1571,0,1585,0" concept="9" trace="createDescriptorForWeaveMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="3462145372628071891" at="367,44,368,35" />
@@ -3614,8 +3614,8 @@
       <node id="5133195082121471908" at="857,115,858,17" concept="1" />
       <node id="3541437991299113739" at="858,17,859,199" concept="1" />
       <node id="3541437991299113741" at="859,199,860,199" concept="1" />
-      <node id="5133195082121471908" at="860,199,861,57" concept="1" />
-      <node id="5133195082121471908" at="861,57,862,23" concept="1" />
+      <node id="5133195082121471908" at="860,199,861,59" concept="1" />
+      <node id="5133195082121471908" at="861,59,862,23" concept="1" />
       <node id="5133195082121471908" at="862,23,863,22" concept="6" />
       <node id="5133195082121471908" at="852,0,865,0" concept="9" trace="createDescriptorForLabelMacro#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5133195082121471908" at="245,44,246,35" />
