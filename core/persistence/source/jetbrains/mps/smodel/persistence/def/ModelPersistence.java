@@ -33,7 +33,6 @@ import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.v9.ModelPersistence9;
-import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
@@ -58,7 +57,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * ModelPersistence handles all XML persistence versions supported by current MPS installation.
@@ -77,12 +75,12 @@ import java.util.List;
  * a new persistence introduced in current version.
  * NOTE this is not mandatory, we can support more than two versions.
  * <p/>
- * We can't support full functionality on all created persistences as the change
- * in persistence is actually made because of change in SModel. So, we can't
+ * We can't support full functionality on all created persistence versions as the change
+ * in persistence is actually made because of change in SModel. So, we can't save
  * actual SModel to a very old persistence or even read all the information
  * from old persistence into a new SModel. The good thing about that is that we
  * can "partially" support very old persistence versions where we might need such a support.
- * See VCSPersistenceSupport for an example.
+ * See {@code VCSPersistenceSupport} for an example.
  */
 public class ModelPersistence {
   private static final Logger LOG = Logger.getLogger(ModelPersistence.class);
@@ -226,33 +224,6 @@ public class ModelPersistence {
     } catch (IOException ex) {
       PersistenceProblem p = new PersistenceProblem(Kind.Save, "Failed to serialize XML document into stream", source.getLocation(), true);
       throw new ModelSaveException(p.getText(), Collections.singleton(p), ex);
-    }
-  }
-
-  /**
-   * Serialize model into xml, conformant to actual model's persistence version, if any, or current persistence version otherwise.
-   * The method doesn't update persistence version of the model (as it used to do)
-   * @deprecated fate of the method is uncertain. Does anyone need it? What for? If you care to keep it, stand up, otherwise
-   *             we remove it in coming releases
-   */
-  @NotNull
-  @Deprecated(since = "2021.2", forRemoval = true)
-  public static Document saveModel(@NotNull SModel sourceModel) {
-    // XXX is there need for the method? Who might care to get XML Document for a model except our own
-    //     implementation code (addressed by modelToXml() method)?
-    int persistenceVersion = -1;
-    if (sourceModel instanceof DefaultSModel) {
-      persistenceVersion = ((DefaultSModel) sourceModel).getSModelHeader().getPersistenceVersion();
-    }
-    if (persistenceVersion == -1 || !isSupported(persistenceVersion) || getPersistence(persistenceVersion) == null) {
-      persistenceVersion = ModelPersistence.LAST_VERSION;
-    }
-    try {
-      return modelToXml(sourceModel, persistenceVersion);
-    } catch (ModelSaveException ex) {
-      // XXX oh, really? Replace checked, openapi Exception with undocumented ISE?
-      LOG.error(ex.getMessage(), ex);
-      throw new IllegalStateException(ex);
     }
   }
 
