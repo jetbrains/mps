@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,6 @@ import java.util.List;
 class ReadHelper {
   private final IdInfoRegistry myMetaInfo;
   private final MetaModelInfoProvider myMetaInfoProvider;
-  private boolean myInterfaceOnly;
   private ConceptInfo myActualConcept;
   private SAbstractConcept myConceptMO;
   // TODO with indices being just a persistence position, shall use arrays instead
@@ -64,13 +63,6 @@ class ReadHelper {
   public ReadHelper(@NotNull MetaModelInfoProvider mmiProvider) {
     myMetaInfo = new IdInfoRegistry();
     myMetaInfoProvider = mmiProvider;
-  }
-  /**/void requestInterfaceOnly(boolean interfaceOnly) {
-    myInterfaceOnly = interfaceOnly;
-  }
-
-  public boolean isRequestedInterfaceOnly() {
-    return myInterfaceOnly;
   }
 
   public void withLanguage(SLanguageId lang, String name, int index) {
@@ -147,10 +139,9 @@ class ReadHelper {
     return myAggregations.get(index);
   }
 
-  public boolean isInterfacePart(@NotNull SConcept concept) {
-    return ConceptKind.INTERFACE == myMetaInfo.find(concept).getKind();
+  public ConceptInfo details(@NotNull SConcept concept) {
+    return myMetaInfo.find(concept);
   }
-
 
   /*package*/ List<SConceptId> getParticipatingConcepts() {
     ArrayList<SConceptId> rv = new ArrayList<>(100);

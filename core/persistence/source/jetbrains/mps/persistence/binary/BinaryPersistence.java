@@ -22,6 +22,7 @@ import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.NodeIdRecording;
 import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.registry.AggregationLinkInfo;
 import jetbrains.mps.persistence.registry.AssociationLinkInfo;
@@ -65,7 +66,6 @@ import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -117,12 +117,9 @@ public final class BinaryPersistence {
     if (dataSource.isReadOnly()) {
       throw new IOException(String.format("`%s' is read-only", dataSource.getLocation()));
     }
-    writeModel(model, dataSource.openOutputStream());
-  }
-  public static void writeModel(@NotNull SModel model, @NotNull OutputStream stream) throws IOException {
     ModelOutputStream os = null;
     try {
-      os = new ModelOutputStream(stream);
+      os = new ModelOutputStream(dataSource.openOutputStream());
       saveModel(model, os);
     } finally {
       FileUtil.closeFileSafe(os);
@@ -205,9 +202,8 @@ public final class BinaryPersistence {
       DefaultSModel model = new DefaultSModel(modelHeader.getModelReference(), modelHeader);
       BinaryPersistence bp = new BinaryPersistence(mmiProvider == null ? new RegularMetaModelInfo() : mmiProvider, model);
       ReadHelper rh = bp.loadModelProperties(mis, version);
-      rh.requestInterfaceOnly(interfaceOnly);
 
-      NodesReader reader = new NodesReader(mis, rh);
+      NodesReader reader = new NodesReader(mis, rh).requestInterfaceOnly(interfaceOnly).skipNodeId(false);
       reader.readNodesInto(model);
       return new ModelLoadResult(model, reader.hasSkippedNodes() ? ModelLoadingState.INTERFACE_LOADED : ModelLoadingState.FULLY_LOADED);
     } finally {
@@ -227,10 +223,12 @@ public final class BinaryPersistence {
     Collection<SNode> roots = IterableUtil.asCollection(model.getRootNodes());
     final NodesWriter nodeWriter = new NodesWriter(model.getReference(), os, meta);
     nodeWriter.keepUserObjects(UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options));
+    nodeWriter.skipNodeId(NodeIdRecording.CONCEPT_SCOPE.present(options));
     nodeWriter.writeNodes(roots);
   }
 
   private static void saveModel(SModel model, ModelOutputStream os) throws IOException {
+    // pretty much identical to writeModel(), above, with options == null.
     final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(model);
     BinaryPersistence bp = new BinaryPersistence(mmiProvider, model);
     IdInfoRegistry meta = bp.saveModelProperties(os);
@@ -521,8 +519,10 @@ public final class BinaryPersistence {
       for (SConceptId cid : readHelper.getParticipatingConcepts()) {
         consumer.instances(cid);
       }
-      readHelper.requestInterfaceOnly(false);
-      final NodesReader reader = new NodesReader(mis, readHelper);
+      // XXX in fact, whether skipNodeId is true or false depends on the way model got serialized, and we shall not assume any specific format here!
+      //     Unlike xml/v9 persistence, we can't just ignore node id field, binary persistence doesn't record any extra information about
+      //     node id presence ATM (either with a dedicated node tag or persistence version field)
+      final NodesReader reader = new NodesReader(mis, readHelper).requestInterfaceOnly(false).skipNodeId(false);
       HashSet<SNodeId> externalNodes = new HashSet<>();
       HashSet<SNodeId> localNodes = new HashSet<>();
       reader.collectExternalTargets(externalNodes);

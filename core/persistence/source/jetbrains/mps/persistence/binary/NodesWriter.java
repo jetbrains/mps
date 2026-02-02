@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import java.util.ArrayList;
 
 public final class NodesWriter extends BareNodeWriter {
   private final IdInfoRegistry myInfo;
+  private boolean mySkipNodeId4ScopeNone = false;
 
   public NodesWriter(@NotNull SModelReference modelReference, @NotNull ModelOutputStream os, @NotNull IdInfoRegistry idInfo) {
     super(modelReference::equals, os, true);
@@ -43,11 +44,18 @@ public final class NodesWriter extends BareNodeWriter {
     return this;
   }
 
+  public NodesWriter skipNodeId(boolean skipNodeId4ScopeNone) {
+    mySkipNodeId4ScopeNone = skipNodeId4ScopeNone;
+    return this;
+  }
+
   @Override
   protected void writeNodePrim(SNode node) throws IOException {
     ConceptInfo conceptInfo = myInfo.find(node.getConcept());
     myOut.writeShort(conceptInfo.getIntIndex());
-    myOut.writeNodeId(node.getNodeId());
+    if (!mySkipNodeId4ScopeNone || conceptInfo.canServeAsAssociationTarget()) {
+      myOut.writeNodeId(node.getNodeId());
+    }
     SContainmentLink roleInParent = node.getContainmentLink();
     myOut.writeShort(roleInParent == null ? -1 : myInfo.find(roleInParent).getIntIndex());
   }

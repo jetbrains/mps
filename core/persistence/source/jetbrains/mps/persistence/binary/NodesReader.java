@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.persistence.binary;
 
+import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.smodel.InterfaceSNode;
+import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.util.io.ModelInputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +37,9 @@ public final class NodesReader extends BareNodeReader {
   private boolean hasSkippedNodes = false;
   private Collection<SNodeId> myExternalRefs;
   private Collection<SNodeId> myLocalRefs;
+  private boolean myInterfaceOnly = false;
+  private boolean mySkipNodeId4ScopeNone = false;
+  private long myNodeCounter;
 
   @Deprecated(forRemoval = true, since = "2025.3")
   public NodesReader(@NotNull SModelReference modelReference, @NotNull ModelInputStream is, ReadHelper readHelper) {
@@ -48,6 +53,16 @@ public final class NodesReader extends BareNodeReader {
   public NodesReader(@NotNull ModelInputStream is, ReadHelper readHelper) {
     super(is);
     myReadHelper = readHelper;
+  }
+
+  public NodesReader requestInterfaceOnly(boolean interfaceOnly) {
+    myInterfaceOnly = interfaceOnly;
+    return this;
+  }
+
+  public NodesReader skipNodeId(boolean skipNodeId4ScopeNone) {
+    mySkipNodeId4ScopeNone = skipNodeId4ScopeNone;
+    return this;
   }
 
   /*package*/ void collectExternalTargets(@Nullable Collection<SNodeId> store) {
@@ -64,14 +79,20 @@ public final class NodesReader extends BareNodeReader {
   @Override
   protected SNode instantiate(@Nullable SNode parent) throws IOException {
     SConcept concept = myReadHelper.readConcept(myIn.readShort());
-    SNodeId nodeId = myIn.readNodeId();
+    SNodeId nodeId;
+    ConceptInfo conceptInfo = myReadHelper.details(concept);
+    if (!mySkipNodeId4ScopeNone || conceptInfo.canServeAsAssociationTarget() ) {
+      // == IdInfoReadHelper.canBeAssociationTarget() of xml/v9
+      nodeId = myIn.readNodeId();
+    } else {
+      nodeId = new jetbrains.mps.smodel.SNodeId.Regular(++myNodeCounter);
+    }
     SContainmentLink link = myReadHelper.readAggregation(myIn.readShort());
 
     boolean interfaceNode = false;
-    if (myReadHelper.isRequestedInterfaceOnly()) {
-      interfaceNode = myReadHelper.isInterfacePart(concept) || link == null;
+    if (myInterfaceOnly) {
+      interfaceNode = link == null || conceptInfo.getKind() == ConceptKind.INTERFACE;
     }
-    // TODO report if (nodeInfo != 0 && myEnv != null) .. myEnv.nodeRoleRead/conceptRead();
 
     jetbrains.mps.smodel.SNode node = interfaceNode ? new InterfaceSNode(concept, nodeId) : new jetbrains.mps.smodel.SNode(concept, nodeId);
 
