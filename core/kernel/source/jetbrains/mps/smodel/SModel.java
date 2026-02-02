@@ -954,7 +954,7 @@ public class SModel implements SModelData, UpdateModeSupport {
      */
     @Deprecated(since = "2026.1", forRemoval = true)
     public int getUsedVersion() {
-      // FIXME there's use in BinaryPersistence we shall remove in 2026.1 along with other BP format changes!!!
+      LOG.warnDeprecatedUse("Stop using SModel.ImportElement#getUsedVersion()!");
       return myUsedVersion;
     }
 

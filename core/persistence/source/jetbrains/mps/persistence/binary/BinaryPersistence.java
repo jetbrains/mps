@@ -249,7 +249,7 @@ public final class BinaryPersistence {
       loadUsedLanguagesV2(is);
       loadModuleRefList(is).stream().map(MetaAdapterFactory::getLanguage).forEach(myModelData::addEngagedOnGenerationLanguage);
       loadModuleRefList(is).forEach(myModelData::addDevKit);
-      loadImports(is).forEach(myModelData::addModelImport);
+      loadImports(is, version).forEach(myModelData::addModelImport);
     } else {
       assert version == STREAM_ID_V3;
       // next is just for future improvement of dependency recording w/o need to bump the version of the whole persistence
@@ -261,7 +261,7 @@ public final class BinaryPersistence {
       loadUsedLanguagesV3(is);
       loadEngagedOnGenerationLanguages(is);
       loadModuleRefList(is).forEach(myModelData::addDevKit);
-      loadImports(is).forEach(myModelData::addModelImport);
+      loadImports(is, version).forEach(myModelData::addModelImport);
     }
 
     assertSyncToken(is, MODEL_START);
@@ -490,16 +490,19 @@ public final class BinaryPersistence {
     os.writeInt(elements.size());
     for (ImportElement element : elements) {
       os.writeModelReference(element.getModelReference());
-      os.writeInt(element.getUsedVersion());
     }
   }
 
-  private static List<ImportElement> loadImports(ModelInputStream is) throws IOException {
+  private static List<ImportElement> loadImports(ModelInputStream is, int version) throws IOException {
     int size = is.readInt();
     List<ImportElement> result = new ArrayList<>();
     for (int i = 0; i < size; i++) {
       SModelReference ref = is.readModelReference();
-      result.add(new ImportElement(ref, -1, is.readInt()));
+      if (version == STREAM_ID_V2) {
+        // used to be version field of ImportElement
+        is.readInt();
+      }
+      result.add(new ImportElement(ref));
     }
     return result;
   }
