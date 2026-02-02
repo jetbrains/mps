@@ -245,6 +245,8 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   // XXX if this method is removed and replaced with the one with ModelSaveOption..., please make sure mmiProvider extraction from SModelHeader is there!
   @Override
   public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, UnsupportedDataSourceException {
+    // FIXME revisit, likely default in super is ok, just need to make sure persistenceVersion handling matches and
+    //       also may need to remove MP.saveModel() method, perhaps
     if (!(dataSource instanceof StreamDataSource)) {
       throw new UnsupportedDataSourceException(dataSource);
     }

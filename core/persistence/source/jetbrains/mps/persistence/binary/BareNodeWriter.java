@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,9 +91,7 @@ public class BareNodeWriter {
 
     writeProperties(node);
 
-    if (myWriteUserObjects) {
-      writeUserObjects(node);
-    }
+    writeUserObjects(node);
 
     writeReferences(node);
 
@@ -159,6 +157,10 @@ public class BareNodeWriter {
 
 
   protected void writeUserObjects(SNode node) throws IOException {
+    if (!myWriteUserObjects) {
+      myOut.writeShort(0);
+      return;
+    }
     final ArrayList<Object> knownUserObject = new ArrayList<>();
     for (Object key : node.getUserObjectKeys()) {
       Object value = node.getUserObject(key);

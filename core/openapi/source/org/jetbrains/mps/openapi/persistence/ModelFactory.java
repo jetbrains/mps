@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,8 +113,13 @@ public interface ModelFactory {
 
   /**
    * Saves the model to the provided data source in the factory-specific format (including conversion when needed).
+   * Note, use of this method is discouraged as it exposes {@code IOException},
+   * use {@link #save(SModel, DataSource, ModelSaveOption...)} instead.
+   * Not deprecated yet as there are quite some uses in MPS itself, although since 2020 there's better alternative
    */
-  void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, IOException;
+  default void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, IOException {
+    save(model, dataSource, new ModelSaveOption[0]);
+  }
 
   /**
    * Serialize the model to the provided data source in the factory-specific format with respect to options, if any

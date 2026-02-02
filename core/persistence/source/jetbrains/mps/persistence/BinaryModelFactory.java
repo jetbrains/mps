@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,11 +152,9 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
   }
 
   @Override
-  public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws IOException {
-    if (!(dataSource instanceof StreamDataSource)) {
-      throw new UnsupportedDataSourceException(dataSource);
-    }
-    BinaryPersistence.writeModel(((SModelBase) model).getSModel(), (StreamDataSource) dataSource);
+  public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, IOException {
+    // binary persistence used to save UO by default
+    save(model, dataSource, UserObjectsPersistence.DESIRED);
   }
 
   @Override
@@ -252,7 +250,10 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
     }
 
     @Override
-    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws IOException {
+    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException, IOException {
+      DefaultModelPersistence.checkSaveReadOnlyDataSource(getSource0());
+      // FIXME shall use BinaryModelFactory.save() instead
+      //noinspection removal
       BinaryPersistence.writeModel((jetbrains.mps.smodel.SModel) modelData, getSource0());
     }
   }

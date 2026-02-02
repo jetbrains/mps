@@ -113,10 +113,8 @@ public final class BinaryPersistence {
     }
   }
 
+  @Deprecated(forRemoval = true)
   public static void writeModel(@NotNull SModel model, @NotNull StreamDataSource dataSource) throws IOException {
-    if (dataSource.isReadOnly()) {
-      throw new IOException(String.format("`%s' is read-only", dataSource.getLocation()));
-    }
     ModelOutputStream os = null;
     try {
       os = new ModelOutputStream(dataSource.openOutputStream());
