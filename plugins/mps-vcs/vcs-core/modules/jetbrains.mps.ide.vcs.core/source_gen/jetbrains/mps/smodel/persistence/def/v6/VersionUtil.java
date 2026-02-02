@@ -6,9 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Map;
-import jetbrains.mps.smodel.SModel;
-import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
+import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodeLegacy;
@@ -19,34 +18,12 @@ public class VersionUtil {
   private static final Logger LOG = Logger.getLogger(VersionUtil.class);
   private static final char VERSION_SEPARATOR_CHAR = ':';
   private static final char MODEL_SEPARATOR_CHAR = '.';
-  private SModelReference myModelRef;
-  private Map<SModelReference, SModel.ImportElement> myImports;
+  private final SModelReference myModelRef;
+  private final Map<Integer, SModelReference> myImportByIx;
 
-  public String genImportIndex(SModel.ImportElement elem) {
-    return Integer.toString(elem.getReferenceID());
-  }
-  @NotNull
-  public String genReferenceString(@NotNull SModelReference ref, @NotNull String text, boolean usemodel) {
-    SModel.ImportElement impElem = myImports.get(ref);
-    if (impElem == null) {
-      LOG.error("model " + ref + " not found in imports");
-      return text;
-    }
-    StringBuilder result = new StringBuilder();
-    if (usemodel && !(myModelRef.equals(ref))) {
-      result.append(impElem.getReferenceID()).append(MODEL_SEPARATOR_CHAR);
-    }
-    result.append(text);
-    if (impElem.getUsedVersion() >= 0) {
-      result.append(VERSION_SEPARATOR_CHAR).append(impElem.getUsedVersion());
-    }
-    return result.toString();
-  }
-  private Map<Integer, SModel.ImportElement> myImportByIx;
   public VersionUtil(SModelReference modelRef) {
     myModelRef = modelRef;
-    myImports = new HashMap<SModelReference, SModel.ImportElement>();
-    myImportByIx = new HashMap<Integer, SModel.ImportElement>();
+    myImportByIx = new HashMap<>();
   }
   public void addImport(SModel model, String index, String modelUID, int version, boolean implicit) {
     if (modelUID == null) {
@@ -55,13 +32,12 @@ public class VersionUtil {
     }
     int ix = Integer.parseInt(index);
     SModelReference modelRef = VCSPersistenceUtil.createModelReference(modelUID);
-    SModel.ImportElement elem = new SModel.ImportElement(modelRef, ix, version);
-    myImports.put(modelRef, elem);
-    myImportByIx.put(ix, elem);
+    SModel.ImportElement elem = new SModel.ImportElement(modelRef);
+    myImportByIx.put(ix, modelRef);
     model.addModelImport(elem);
   }
   public SModelReference getSModelReference(int ix) {
-    return (ix == -1 ? myModelRef : myImportByIx.get(ix).getModelReference());
+    return (ix == -1 ? myModelRef : myImportByIx.get(ix));
   }
   private static class ParseResult {
     public int modelID;
@@ -70,14 +46,6 @@ public class VersionUtil {
   }
   private ParseResult parse(String src, boolean hasmodel) {
     ParseResult res = parseWithoutCheck(src, hasmodel);
-    // check integrity except concepts and attribute roles
-    if (hasmodel) {
-      // && !AttributeOperations.isOldAttributeRole(res.text)) { // todo: ? remove this persistence?
-      SModel.ImportElement elem = myImports.get(getSModelReference(res.modelID));
-      if (elem == null || res.version != myImports.get(getSModelReference(res.modelID)).getUsedVersion()) {
-        LOG.error("wrong version of " + src + ", model=" + getSModelReference(res.modelID) + ". Possible reason: merge conflict was not resolved.");
-      }
-    }
     return res;
   }
   private static ParseResult parseWithoutCheck(String src, boolean hasmodel) {

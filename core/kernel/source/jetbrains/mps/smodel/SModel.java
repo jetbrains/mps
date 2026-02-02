@@ -907,8 +907,8 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public static final class ImportElement {
     private SModelReference myModelReference;
-    private int myReferenceID;  // persistence related index
-    private int myUsedVersion;
+    private final int myReferenceID;  // persistence related index
+    private final int myUsedVersion;
 
     @Deprecated
     public ImportElement(SModelReference modelReference, int referenceID) {
@@ -932,19 +932,29 @@ public class SModel implements SModelData, UpdateModeSupport {
       return myModelReference;
     }
 
+    /**
+     * @deprecated not in use, to become no-op and fade away
+     */
+    @Deprecated(since = "2026.1", forRemoval = true)
     public void setModelReference(SModelReference modelReference) {
+      LOG.warnDeprecatedUse("Stop using SModel.ImportElement#setModelReference()!");
       myModelReference = modelReference;
     }
 
+    /**
+     * @deprecated not in use except for legacy code. once last use gone, remove
+     */
+    @Deprecated(since = "2026.1", forRemoval = true)
     public int getReferenceID() {
       return myReferenceID;
     }
 
-    public void setReferenceID(int referenceID) {
-      myReferenceID = referenceID;
-    }
-
+    /**
+     * @deprecated not in use except for legacy code. once last use gone, remove
+     */
+    @Deprecated(since = "2026.1", forRemoval = true)
     public int getUsedVersion() {
+      // FIXME there's use in BinaryPersistence we shall remove in 2026.1 along with other BP format changes!!!
       return myUsedVersion;
     }
 
