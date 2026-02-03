@@ -62,15 +62,20 @@
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
           <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
           <module ref="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="cl" />
+          <module ref="fe9d76d7-5809-45c9-ae28-a40915b4d6ff(jetbrains.mps.lang.checkedName)" kind="cl" />
+          <module ref="c0080a47-7e37-4558-bee9-9ae18e690549(jetbrains.mps.lang.extension)" kind="cl" />
           <module ref="9979803b-18d3-440b-8a74-99cec41fc78e(jetbrains.mps.spellchecker.idea.stubs)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:443f4c36-fcf5-4eb6-9500-8d06ed259e3e:jetbrains.mps.baseLanguage.classifiers" />
           <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
           <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:c7d5b9dd-a05f-4be2-bc73-f2e16994cc67:jetbrains.mps.baseLanguage.lightweightdsl" />
           <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:c0080a47-7e37-4558-bee9-9ae18e690549:jetbrains.mps.lang.extension" />
           <language id="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
           <language id="l:ef7bf5ac-d06c-4342-b11d-e42104eb9343:jetbrains.mps.lang.plugin.standalone" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
@@ -101,6 +106,32 @@
         <uses />
         <library jar="/lib/modules/intellij.spellchecker.jar" />
         <library jar="/lib/modules/intellij.spellchecker.xml.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.api.gateway.client.jvm.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.client.ktor.jvm.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.model.ner.jvm.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.model.swagger.annotations.jvm.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.model.tree.jvm.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.nlp.detect.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.rule.engine.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.spell.gec.engine.local.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.spell.hunspell.en.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.tasks.library.api.jvm.jar" />
+        <library jar="/plugins/grazie/lib/ai.grazie.tasks.library.model.jvm.jar" />
+        <library jar="/plugins/grazie/lib/com.carrotsearch-hppc.jar" />
+        <library jar="/plugins/grazie/lib/com.hankcs-aho-corasick-double-array-trie.jar" />
+        <library jar="/plugins/grazie/lib/com.vdurmont-emoji-java.jar" />
+        <library jar="/plugins/grazie/lib/grazie.jar" />
+        <library jar="/plugins/grazie/lib/javax.measure-unit-api.jar" />
+        <library jar="/plugins/grazie/lib/net.loomchild-segment.jar" />
+        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-fsa-builders.jar" />
+        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-fsa.jar" />
+        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-speller.jar" />
+        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-stemming.jar" />
+        <library jar="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-language-en.jar" />
+        <library jar="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
+        <library jar="/plugins/grazie/lib/org.json-json.jar" />
+        <library jar="/plugins/grazie/lib/tech.units-indriya.jar" />
+        <library jar="/plugins/grazie/lib/tech.uom.lib-uom-lib-common.jar" />
         <sources jar="." descriptor="jetbrains.mps.spellchecker.idea.stubs.msd" />
       </module>
     </echoxml>
@@ -154,6 +185,7 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.extension.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
@@ -226,6 +258,32 @@
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
         <fileset file="${mps_home}/lib/modules/intellij.spellchecker.jar" />
         <fileset file="${mps_home}/lib/modules/intellij.spellchecker.xml.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.api.gateway.client.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.client.ktor.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.model.ner.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.model.swagger.annotations.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.model.tree.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.nlp.detect.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.rule.engine.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.spell.gec.engine.local.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.spell.hunspell.en.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.tasks.library.api.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.tasks.library.model.jvm.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/com.carrotsearch-hppc.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/com.hankcs-aho-corasick-double-array-trie.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/com.vdurmont-emoji-java.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/grazie.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/javax.measure-unit-api.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/net.loomchild-segment.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-fsa-builders.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-fsa.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-speller.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-stemming.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-language-en.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/org.json-json.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/tech.units-indriya.jar" />
+        <fileset file="${mps_home}/plugins/grazie/lib/tech.uom.lib-uom-lib-common.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
@@ -246,8 +304,14 @@
         <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.checkedName.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.extension.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
       </classpath>
     </javac>
   </target>

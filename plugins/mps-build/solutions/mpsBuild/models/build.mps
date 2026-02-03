@@ -60922,6 +60922,500 @@
           </node>
         </node>
       </node>
+      <node concept="1SiIV0" id="409FCzytU2V" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU2W" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU2Q" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU2R" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU2S" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU2T" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU2U" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.api.gateway.client.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU32" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU33" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU2X" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU2Y" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU2Z" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU30" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU31" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.client.ktor.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU39" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3a" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU34" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU35" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU36" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU37" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU38" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.model.ner.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3g" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3h" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3b" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3c" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3d" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3e" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3f" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.model.swagger.annotations.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3n" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3o" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3i" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3j" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3k" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3l" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3m" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.model.tree.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3u" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3v" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3p" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3q" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3r" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3s" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3t" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.nlp.detect.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3_" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3A" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3w" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3x" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3y" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3z" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3$" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.rule.engine.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3G" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3H" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3B" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3C" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3D" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3E" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3F" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.spell.gec.engine.local.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3N" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3O" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3I" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3J" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3K" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3L" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3M" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.spell.hunspell.en.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU3U" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU3V" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3P" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3Q" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3R" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3S" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU3T" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.tasks.library.api.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU41" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU42" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU3W" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU3X" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU3Y" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU3Z" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU40" role="2Ry0An">
+                    <property role="2Ry0Am" value="ai.grazie.tasks.library.model.jvm.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU48" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU49" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU43" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU44" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU45" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU46" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU47" role="2Ry0An">
+                    <property role="2Ry0Am" value="com.carrotsearch-hppc.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4f" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4g" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4a" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4b" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4c" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4d" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4e" role="2Ry0An">
+                    <property role="2Ry0Am" value="com.hankcs-aho-corasick-double-array-trie.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4m" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4n" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4h" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4i" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4j" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4k" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4l" role="2Ry0An">
+                    <property role="2Ry0Am" value="com.vdurmont-emoji-java.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4t" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4u" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4o" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4p" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4q" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4r" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4s" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4$" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4_" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4v" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4w" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4x" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4y" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4z" role="2Ry0An">
+                    <property role="2Ry0Am" value="javax.measure-unit-api.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4F" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4G" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4A" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4B" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4C" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4D" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4E" role="2Ry0An">
+                    <property role="2Ry0Am" value="net.loomchild-segment.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4M" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4N" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4H" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4I" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4J" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4K" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4L" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.carrot2-morfologik-fsa-builders.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU4T" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU4U" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4O" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4P" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4Q" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4R" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4S" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.carrot2-morfologik-fsa.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU50" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU51" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU4V" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU4W" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU4X" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU4Y" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU4Z" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.carrot2-morfologik-speller.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU57" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU58" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU52" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU53" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU54" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU55" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU56" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.carrot2-morfologik-stemming.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5e" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU5f" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU59" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU5a" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU5b" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU5c" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU5d" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.jetbrains.intellij.deps.languagetool-language-en.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5l" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU5m" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU5g" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU5h" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU5i" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU5j" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU5k" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5s" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU5t" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU5n" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU5o" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU5p" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU5q" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU5r" role="2Ry0An">
+                    <property role="2Ry0Am" value="org.json-json.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5z" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU5$" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU5u" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU5v" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU5w" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU5x" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU5y" role="2Ry0An">
+                    <property role="2Ry0Am" value="tech.units-indriya.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5E" role="3bR37C">
+        <node concept="1BurEX" id="409FCzytU5F" role="1SiIV1">
+          <node concept="398BVA" id="409FCzytU5_" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="409FCzytU5A" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="409FCzytU5B" role="2Ry0An">
+                <property role="2Ry0Am" value="grazie" />
+                <node concept="2Ry0Ak" id="409FCzytU5C" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="409FCzytU5D" role="2Ry0An">
+                    <property role="2Ry0Am" value="tech.uom.lib-uom-lib-common.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="1E1JtA" id="3SKb_4JujfJ" role="3989C9">
       <property role="BnDLt" value="true" />
@@ -61019,6 +61513,16 @@
       <node concept="1SiIV0" id="6k1uIry0O6W" role="3bR37C">
         <node concept="3bR9La" id="6k1uIry0O6X" role="1SiIV1">
           <ref role="3bR37D" node="6k1uIrxXxBO" resolve="jetbrains.mps.spellchecker.idea.stubs" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5G" role="3bR37C">
+        <node concept="3bR9La" id="409FCzytU5H" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6L5O" resolve="jetbrains.mps.lang.extension" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="409FCzytU5I" role="3bR37C">
+        <node concept="3bR9La" id="409FCzytU5J" role="1SiIV1">
+          <ref role="3bR37D" node="4cWf37BbAnE" resolve="jetbrains.mps.lang.checkedName" />
         </node>
       </node>
     </node>
@@ -61202,6 +61706,474 @@
                     <property role="2Ry0Am" value="modules" />
                     <node concept="2Ry0Ak" id="Rwku8tK5eW" role="2Ry0An">
                       <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCaqw" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.api.gateway.client.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCaqx" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCaqy" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCaqz" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCa_n" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCaB$" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.api.gateway.client.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCO7O" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.client.ktor.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCO7P" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCO7Q" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCO7R" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCO7S" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCOeN" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.client.ktor.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOa4" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.model.ner.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCOa5" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOa6" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOa7" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOa8" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCOrZ" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.model.ner.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOaa" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.model.swagger.annotations.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCOab" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOac" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOad" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOae" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCOx_" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.model.swagger.annotations.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOag" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.model.tree.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCOah" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOai" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOaj" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOak" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCO_U" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.model.tree.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOam" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.nlp.detect.jar" />
+              <node concept="398BVA" id="409FCzyCOan" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOao" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOap" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaq" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCOLP" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.nlp.detect.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOas" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.rule.engine.jar" />
+              <node concept="398BVA" id="409FCzyCOat" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOau" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOav" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaw" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCOXK" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.rule.engine.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOay" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.spell.gec.engine.local.jar" />
+              <node concept="398BVA" id="409FCzyCOaz" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOa$" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOa_" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaA" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCP3m" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.spell.gec.engine.local.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOaC" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.spell.hunspell.en.jar" />
+              <node concept="398BVA" id="409FCzyCOaD" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOaE" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOaF" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaG" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCP7F" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.spell.hunspell.en.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOaI" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.tasks.library.api.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCOaJ" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOaK" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOaL" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaM" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPc0" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.tasks.library.api.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOaO" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/ai.grazie.tasks.library.model.jvm.jar" />
+              <node concept="398BVA" id="409FCzyCOaP" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOaQ" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOaR" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaS" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPgl" role="2Ry0An">
+                        <property role="2Ry0Am" value="ai.grazie.tasks.library.model.jvm.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOaU" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/com.carrotsearch-hppc.jar" />
+              <node concept="398BVA" id="409FCzyCOaV" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOaW" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOaX" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOaY" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPkE" role="2Ry0An">
+                        <property role="2Ry0Am" value="com.carrotsearch-hppc.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOb0" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/com.hankcs-aho-corasick-double-array-trie.jar" />
+              <node concept="398BVA" id="409FCzyCOb1" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOb2" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOb3" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOb4" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPoZ" role="2Ry0An">
+                        <property role="2Ry0Am" value="com.hankcs-aho-corasick-double-array-trie.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCOb6" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/com.vdurmont-emoji-java.jar" />
+              <node concept="398BVA" id="409FCzyCOb7" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCOb8" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCOb9" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCOba" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPtk" role="2Ry0An">
+                        <property role="2Ry0Am" value="com.vdurmont-emoji-java.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCObc" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/grazie.jar" />
+              <node concept="398BVA" id="409FCzyCObd" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCObe" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCObf" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCObg" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPxD" role="2Ry0An">
+                        <property role="2Ry0Am" value="grazie.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCObi" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/javax.measure-unit-api.jar" />
+              <node concept="398BVA" id="409FCzyCObj" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCObk" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCObl" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCObm" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCP_Y" role="2Ry0An">
+                        <property role="2Ry0Am" value="javax.measure-unit-api.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPEj" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/net.loomchild-segment.jar" />
+              <node concept="398BVA" id="409FCzyCPEk" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEl" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEm" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPEn" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPHp" role="2Ry0An">
+                        <property role="2Ry0Am" value="net.loomchild-segment.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPEp" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.carrot2-morfologik-fsa-builders.jar" />
+              <node concept="398BVA" id="409FCzyCPEq" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEr" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEs" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPEt" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPLI" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.carrot2-morfologik-fsa-builders.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPEv" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.carrot2-morfologik-fsa.jar" />
+              <node concept="398BVA" id="409FCzyCPEw" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEx" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEy" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPEz" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPQ3" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.carrot2-morfologik-fsa.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPE_" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.carrot2-morfologik-speller.jar" />
+              <node concept="398BVA" id="409FCzyCPEA" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEB" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEC" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPED" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPUo" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.carrot2-morfologik-speller.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPEF" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.carrot2-morfologik-stemming.jar" />
+              <node concept="398BVA" id="409FCzyCPEG" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEH" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEI" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPEJ" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCPYH" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.carrot2-morfologik-stemming.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPEL" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-language-en.jar" />
+              <node concept="398BVA" id="409FCzyCPEM" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEN" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEO" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPEP" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCQ32" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.jetbrains.intellij.deps.languagetool-language-en.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPER" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
+              <node concept="398BVA" id="409FCzyCPES" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPET" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPEU" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPEV" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCQ7n" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPEX" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/org.json-json.jar" />
+              <node concept="398BVA" id="409FCzyCPEY" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPEZ" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPF0" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPF1" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCQbG" role="2Ry0An">
+                        <property role="2Ry0Am" value="org.json-json.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPF3" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/tech.units-indriya.jar" />
+              <node concept="398BVA" id="409FCzyCPF4" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPF5" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPF6" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPF7" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCQg1" role="2Ry0An">
+                        <property role="2Ry0Am" value="tech.units-indriya.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="409FCzyCPF9" role="3yL2VB">
+              <property role="3yLZsk" value="/plugins/grazie/lib/tech.uom.lib-uom-lib-common.jar" />
+              <node concept="398BVA" id="409FCzyCPFa" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="409FCzyCPFb" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="409FCzyCPFc" role="2Ry0An">
+                    <property role="2Ry0Am" value="grazie" />
+                    <node concept="2Ry0Ak" id="409FCzyCPFd" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="409FCzyCQkm" role="2Ry0An">
+                        <property role="2Ry0Am" value="tech.uom.lib-uom-lib-common.jar" />
+                      </node>
                     </node>
                   </node>
                 </node>
