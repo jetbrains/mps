@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,19 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.smodel.SModelHeader;
-import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-
-import java.io.IOException;
 
 /**
  * Internal facility around ModelFactory which is aware of partial loading approach.
@@ -79,5 +77,8 @@ public abstract class LazyLoadFacility {
   @NotNull
   public abstract ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull ModelLoadingState state) throws ModelReadException;
 
-  public abstract void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException, IOException;
+  public void saveModel(@NotNull SModel modelData) throws ModelSaveException {
+    // XXX perhaps, shall take PersistenceVersionAware, not just SModel?
+    myModelFactory.save(modelData, mySource, new ModelSaveOption[0]);
+  }
 }

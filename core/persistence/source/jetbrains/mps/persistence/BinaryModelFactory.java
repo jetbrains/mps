@@ -242,11 +242,9 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
     }
 
     @Override
-    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException, IOException {
-      DefaultModelPersistence.checkSaveReadOnlyDataSource(getSource0());
-      // FIXME shall use BinaryModelFactory.save() instead
-      //noinspection removal
-      BinaryPersistence.writeModel((jetbrains.mps.smodel.SModel) modelData, getSource0());
+    public void saveModel(@NotNull SModel modelData) throws ModelSaveException {
+      // see MF.save(SModel, DataSource) for reasons to keep UO
+      getModelFactory().save(modelData, getSource0(), UserObjectsPersistence.DESIRED);
     }
   }
 }

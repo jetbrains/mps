@@ -113,17 +113,6 @@ public final class BinaryPersistence {
     }
   }
 
-  @Deprecated(forRemoval = true)
-  public static void writeModel(@NotNull SModel model, @NotNull StreamDataSource dataSource) throws IOException {
-    ModelOutputStream os = null;
-    try {
-      os = new ModelOutputStream(dataSource.openOutputStream());
-      saveModel(model, os);
-    } finally {
-      FileUtil.closeFileSafe(os);
-    }
-  }
-
   private static final int HEADER_START   = 0x91ABABA9;
   private static final int STREAM_ID_V1   = 0x00000300;
   private static final int STREAM_ID_V2   = 0x00000400;
@@ -223,16 +212,6 @@ public final class BinaryPersistence {
     nodeWriter.keepUserObjects(UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options));
     nodeWriter.skipNodeId(NodeIdRecording.CONCEPT_SCOPE.present(options));
     nodeWriter.writeNodes(roots);
-  }
-
-  private static void saveModel(SModel model, ModelOutputStream os) throws IOException {
-    // pretty much identical to writeModel(), above, with options == null.
-    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(model);
-    BinaryPersistence bp = new BinaryPersistence(mmiProvider, model);
-    IdInfoRegistry meta = bp.saveModelProperties(os);
-
-    Collection<SNode> roots = IterableUtil.asCollection(model.getRootNodes());
-    new NodesWriter(model.getReference(), os, meta).writeNodes(roots);
   }
 
   private BinaryPersistence(@NotNull MetaModelInfoProvider mmiProvider, SModel modelData) {

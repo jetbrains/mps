@@ -165,8 +165,9 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
       throw new UnsupportedDataSourceException(dataSource);
     }
 
-    FilePerRootFormatUtil.saveModel(((SModelBase) model).getSModel(), (MultiStreamDataSource) dataSource,
-        ModelPersistence.LAST_VERSION);
+    // FIXME, perhaps, ((PersistenceVersionAware) model).getPersistenceVersion(), not LAST_VERSION?
+    //        shall be consistent w/ DefaultModelPersistence, either always LAST or stick to actual and expect "force upgrade' option
+    FilePerRootFormatUtil.saveModel(((SModelBase) model).getSModel(), (MultiStreamDataSource) dataSource, ModelPersistence.LAST_VERSION);
   }
 
   @NotNull
@@ -303,11 +304,5 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     public ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull ModelLoadingState state) throws ModelReadException {
       return FilePerRootFormatUtil.readModel(header, getSource0(), state);
     }
-
-    @Override
-    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws IOException {
-      FilePerRootFormatUtil.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource0(), header.getPersistenceVersion());
-    }
   }
-
 }

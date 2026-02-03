@@ -257,7 +257,8 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     if (persistenceVersion == -1) {
       persistenceVersion = ModelPersistence.LAST_VERSION;
     }
-
+    // FIXME MP.saveModel() deduces ModelSaveOptions using MP.saveOptionsFor(SModelData). Can't use empty ModelSaveOptions[0] here,
+    //       shall refactor and come up with a logic similar to MP.saveOptionsFor()
     ModelPersistence.saveModel(((SModelBase) model).getSModel(), (StreamDataSource) dataSource, persistenceVersion);
   }
 
@@ -268,6 +269,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     checkSaveReadOnlyDataSource(dataSource);
 
     if (model instanceof PersistenceVersionAware) {
+      // FIXME I believe we shall not upgrade persistence version unless explicitly instructed to via ModelSaveOptions
       int persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
       // this save() method was introduced in v9 persistence aka LAST_VERSION, don't care to upgrade persistence version.
       // XXX note, this logic is valid unless there's v10!
@@ -276,7 +278,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
       }
     }
     try {
-      final IModelPersistence mpImpl = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION);
+      final IModelPersistence mpImpl = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION); // instead, stick to header.getPersistenceVersion(), unless it's -1!
       final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
       final IModelWriter modelWriter = mpImpl.getModelWriter(mmiProvider, options);
       Document document = modelWriter.saveModel(((SModelBase) model).getSModel());
@@ -373,8 +375,14 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
 
     @Override
-    public void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException {
-      ModelPersistence.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource0(), header.getPersistenceVersion());
+    public void saveModel(@NotNull SModel modelData) throws ModelSaveException {
+      // see #save(SMode, DataSource), above, for reasons I can't use default impl from super
+      // FIXME deduce ModelSaveOptions, use them here
+      try {
+        getModelFactory().save(modelData, getSource0());
+      } catch (IOException ex) {
+        throw new ModelSaveException(ex.getMessage(), Collections.emptySet(), ex);
+      }
     }
   }
 }

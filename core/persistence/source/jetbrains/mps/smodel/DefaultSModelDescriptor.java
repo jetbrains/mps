@@ -132,7 +132,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
       smodel.updateExternalReferences(getRepository());
     }
     final int versionBeforeSave = getPersistenceVersion();
-    myPersistence.saveModel(myHeader, smodel);
+    myPersistence.saveModel(this);
     //noinspection UnnecessaryLocalVariable
     final boolean upgraded = getPersistenceVersion()  > versionBeforeSave;
     return upgraded;
