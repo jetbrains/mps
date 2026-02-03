@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.vfs.tracking;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.project.Project;
 import com.intellij.testFramework.IndexingTestUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -28,14 +27,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectRepository;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.language.ConceptRegistry;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.testbench.ProjectCloneSupport;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
@@ -59,13 +55,11 @@ import org.jetbrains.mps.openapi.model.SaveOptions.SaveOptionsBuilder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -107,9 +101,6 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   private Environment myEnv;
   private ModelAccess myModelAccess;
   private SRepository myRepository;
-
-  private DefaultSModel myModelBackup;
-  private StreamDataSource myOriginalModelDataSource;
 
   private volatile DiskMemoryDialogExposer myExposer = (a, b, c, d) -> UserChoice.MEMORY_CHOSEN; // will be changed from test to test
   private ConflictResolverImpl myResolver;
@@ -177,11 +168,6 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
     myResolver.removeListener(myConflictListener);
     ((ProjectRepository) myRepository).setConflictResolver(null);
     ourProject.closeAndDelete();
-  }
-
-  @NotNull
-  private static Project getIJProject() {
-    return getMPSProject().getProject();
   }
 
   @Test
@@ -292,10 +278,6 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   private void waitForResolve() {
     myConflictListener.waitForResolve();
-  }
-
-  private Solution getSolution() {
-    return (Solution) PersistenceFacade.getInstance().createModuleReference("c0209407-bdbc-42e5-9368-04e272725dd0(simpleProject)").resolve(myRepository);
   }
 
   private EditableSModel getModel() {
@@ -456,36 +438,6 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   private IFileSystem getFileSystem() {
     return myEnv.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
-  }
-
-  /**
-   * fixme again please clone the project each time before test
-   */
-  private void restoreModel() {
-    //  Restore model
-    Future<Throwable> future = myModelAccess.executeCommandInEDT(() -> {
-      try {
-        try {
-          ModelPersistence.saveModel(myModelBackup, myOriginalModelDataSource, myModelBackup.getSModelHeader().getPersistenceVersion());
-        } catch (Exception e) {
-          e.printStackTrace();
-          return e;
-        }
-        getSolution().updateModelsSet();
-        getModel().reloadFromSource();
-      } catch (Throwable e) {
-        return e;
-      }
-      return null;
-    });
-    try {
-      Throwable throwable = future.get();
-      if (throwable != null) {
-        throw new RuntimeException(throwable);
-      }
-    } catch (InterruptedException | ExecutionException e) {
-      throw new RuntimeException(e);
-    }
   }
 
   private File getModelFile() {
