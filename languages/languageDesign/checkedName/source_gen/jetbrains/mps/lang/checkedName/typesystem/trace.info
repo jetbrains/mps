@@ -157,7 +157,7 @@
       </scope>
     </file>
     <file name="check_NamingPolicy_NonTypesystemRule.java">
-      <node id="6065410897617805959" at="28,117,29,87" concept="7" />
+      <node id="6065410897617805959" at="28,117,29,91" concept="7" />
       <node id="5352048278088169502" at="30,36,31,37" concept="9" />
       <node id="4844813484172611481" at="31,37,32,139" concept="7" />
       <node id="4844813484172611496" at="34,104,35,50" concept="7" />
@@ -236,7 +236,7 @@
       <node id="4844813484172611521" at="53,0,76,7" concept="4" />
       <node id="20439787738306443" at="98,7,121,7" concept="4" />
       <node id="1754721888975987826" at="77,10,122,5" concept="0" />
-      <node id="1754721888975909122" at="29,87,122,5" concept="5" />
+      <node id="1754721888975909122" at="29,91,122,5" concept="5" />
       <node id="4844813484172611479" at="28,0,124,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="4844813484172611479" at="26,49,26,49" />
       <scope id="4844813484172611524" at="55,82,56,19" />
@@ -523,9 +523,9 @@
   </root>
   <root nodeRef="r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)/6065410897616954705">
     <file name="ExtensionsHelper.java">
-      <node id="6065410897616954826" at="10,68,11,155" concept="8" />
-      <node id="6065410897616968656" at="10,0,13,0" concept="12" trace="retrieveNativeLangChecker#()Ljetbrains/mps/lang/core/pluginSolution/plugin/NativeLangChecker;" />
-      <scope id="6065410897616954800" at="10,68,11,155" />
+      <node id="6065410897616954826" at="10,72,11,155" concept="8" />
+      <node id="6065410897616968656" at="10,0,13,0" concept="12" trace="retrieveNativeLangChecker#()Ljetbrains/mps/lang/checkedName/plugin/NativeLangNameChecker;" />
+      <scope id="6065410897616954800" at="10,72,11,155" />
       <scope id="6065410897616968656" at="10,0,13,0" />
       <unit id="6065410897616954705" at="9,0,14,0" name="jetbrains.mps.lang.checkedName.typesystem.ExtensionsHelper" />
     </file>

@@ -7,7 +7,7 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.core.pluginSolution.plugin.NativeLangChecker;
+import jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker;
 import jetbrains.mps.lang.checkedName.behavior.ICheckedNamePolicy__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -26,7 +26,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   public check_NamingPolicy_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    NativeLangChecker nativeLangChecker = ExtensionsHelper.retrieveNativeLangChecker();
+    NativeLangNameChecker nativeLangChecker = ExtensionsHelper.retrieveNativeLangChecker();
     if (nativeLangChecker == null) {
       // Use hard-coded naming policy
       String warningMessage = "Naming policies violated: " + "all words except prepositions, articles and particles should be capitalized";

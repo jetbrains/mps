@@ -18,7 +18,7 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mjwp" ref="r:82ee0621-a317-4778-9ea5-72584de35a48(jetbrains.mps.lang.checkedName.behavior)" />
-    <import index="crsq" ref="r:58b9acd8-db32-428c-ac80-a2787e2bcd96(jetbrains.mps.lang.core.pluginSolution.plugin)" />
+    <import index="1cfl" ref="r:639857b1-56a4-40e4-875a-56d6ebe772b2(jetbrains.mps.lang.checkedName.plugin)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -279,7 +279,7 @@
         <node concept="3cpWsn" id="5gGELdhiIa8" role="3cpWs9">
           <property role="TrG5h" value="nativeLangChecker" />
           <node concept="3uibUv" id="5gGELdhiHKB" role="1tU5fm">
-            <ref role="3uigEE" to="crsq:5J0WEnGJGQc" resolve="NativeLangChecker" />
+            <ref role="3uigEE" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
           </node>
           <node concept="2YIFZM" id="5gGELdhiIa9" role="33vP2m">
             <ref role="37wK5l" node="5gGELdhfxJg" resolve="retrieveNativeLangChecker" />
@@ -562,7 +562,7 @@
                                   <ref role="3cqZAo" node="5gGELdhiIa8" resolve="nativeLangChecker" />
                                 </node>
                                 <node concept="liA8E" id="5gGELdhj486" role="2OqNvi">
-                                  <ref role="37wK5l" to="crsq:5J0WEnGJLtH" resolve="detectNativeLanguage" />
+                                  <ref role="37wK5l" to="1cfl:5J0WEnGJLtH" resolve="detectNativeLanguage" />
                                   <node concept="2OqwBi" id="5gGELdhj487" role="37wK5m">
                                     <node concept="37vLTw" id="5gGELdhj488" role="2Oq$k0">
                                       <ref role="3cqZAo" node="18Bu3JsfI6" resolve="s" />
@@ -623,7 +623,7 @@
                         <ref role="3cqZAo" node="5gGELdhiIa8" resolve="nativeLangChecker" />
                       </node>
                       <node concept="liA8E" id="5gGELdhj2YG" role="2OqNvi">
-                        <ref role="37wK5l" to="crsq:5J0WEnGJLKC" resolve="isProperlyCapitalized" />
+                        <ref role="37wK5l" to="1cfl:5J0WEnGJLKC" resolve="isProperlyCapitalized" />
                         <node concept="2OqwBi" id="5gGELdhj3rV" role="37wK5m">
                           <node concept="37vLTw" id="5gGELdhj39B" role="2Oq$k0">
                             <ref role="3cqZAo" node="18Bu3JsfI6" resolve="s" />
@@ -685,7 +685,7 @@
                                   <ref role="3cqZAo" node="5gGELdhiIa8" resolve="nativeLangChecker" />
                                 </node>
                                 <node concept="liA8E" id="5gGELdhj4j0" role="2OqNvi">
-                                  <ref role="37wK5l" to="crsq:5J0WEnGJLtH" resolve="detectNativeLanguage" />
+                                  <ref role="37wK5l" to="1cfl:5J0WEnGJLtH" resolve="detectNativeLanguage" />
                                   <node concept="2OqwBi" id="5gGELdhj4j1" role="37wK5m">
                                     <node concept="30WB0d" id="5gGELdhj9I8" role="2OqNvi" />
                                     <node concept="37vLTw" id="5gGELdhj4KB" role="2Oq$k0">
@@ -778,7 +778,7 @@
                         <ref role="3cqZAo" node="5gGELdhiIa8" resolve="nativeLangChecker" />
                       </node>
                       <node concept="liA8E" id="5gGELdhj3O9" role="2OqNvi">
-                        <ref role="37wK5l" to="crsq:5J0WEnGJLKC" resolve="isProperlyCapitalized" />
+                        <ref role="37wK5l" to="1cfl:5J0WEnGJLKC" resolve="isProperlyCapitalized" />
                         <node concept="2OqwBi" id="5gGELdhj3Oa" role="37wK5m">
                           <node concept="37vLTw" id="5gGELdhj3Ob" role="2Oq$k0">
                             <ref role="3cqZAo" node="18Bu3JrhuX" resolve="p" />
@@ -1199,7 +1199,7 @@
           <node concept="2OqwBi" id="5gGELdhfxNM" role="3clFbG">
             <node concept="2OqwBi" id="5gGELdhfxNN" role="2Oq$k0">
               <node concept="2O5UvJ" id="5gGELdhfxNO" role="2Oq$k0">
-                <ref role="2O5UnU" to="crsq:5J0WEnGJCXw" resolve="NativeLangCheckerEP" />
+                <ref role="2O5UnU" to="1cfl:5J0WEnGJCXw" resolve="NativeLangNameCheckerEP" />
               </node>
               <node concept="SfwO_" id="5gGELdhfxNP" role="2OqNvi" />
             </node>
@@ -1208,7 +1208,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="5gGELdhfxLH" role="3clF45">
-        <ref role="3uigEE" to="crsq:5J0WEnGJGQc" resolve="NativeLangChecker" />
+        <ref role="3uigEE" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
       </node>
     </node>
     <node concept="3Tm1VV" id="5gGELdhfuli" role="1B3o_S" />

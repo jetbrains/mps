@@ -7,10 +7,10 @@
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="1" />
   </languages>
   <imports>
-    <import index="crsq" ref="r:58b9acd8-db32-428c-ac80-a2787e2bcd96(jetbrains.mps.lang.core.pluginSolution.plugin)" />
     <import index="90d" ref="r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="fsdi" ref="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)" />
+    <import index="1cfl" ref="r:639857b1-56a4-40e4-875a-56d6ebe772b2(jetbrains.mps.lang.checkedName.plugin)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -96,7 +96,7 @@
   </registry>
   <node concept="1lYeZD" id="5J0WEnGMXmW">
     <property role="TrG5h" value="GrazieNativeLangChecker_extension" />
-    <ref role="1lYe$Y" to="crsq:5J0WEnGJCXw" resolve="NativeLangCheckerEP" />
+    <ref role="1lYe$Y" to="1cfl:5J0WEnGJCXw" resolve="NativeLangNameCheckerEP" />
     <node concept="3Tm1VV" id="5J0WEnGMXmX" role="1B3o_S" />
     <node concept="2tJIrI" id="5J0WEnGMXmY" role="jymVt" />
     <node concept="3tTeZs" id="4D6iSPOb_FS" role="jymVt">
@@ -119,7 +119,7 @@
               <node concept="1Y3b0j" id="5J0WEnGMXGy" role="YeSDq">
                 <property role="2bfB8j" value="true" />
                 <property role="373rjd" value="true" />
-                <ref role="1Y3XeK" to="crsq:5J0WEnGJGQc" resolve="NativeLangChecker" />
+                <ref role="1Y3XeK" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                 <node concept="3Tm1VV" id="5J0WEnGMXGz" role="1B3o_S" />
                 <node concept="3clFb_" id="5J0WEnGMXG$" role="jymVt">

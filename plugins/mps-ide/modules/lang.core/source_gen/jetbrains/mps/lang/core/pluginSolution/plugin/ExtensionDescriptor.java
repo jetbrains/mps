@@ -4,10 +4,9 @@ package jetbrains.mps.lang.core.pluginSolution.plugin;
 
 import jetbrains.mps.smodel.structure.DefaultExtensionDescriptor;
 import java.util.Arrays;
-import jetbrains.mps.smodel.structure.ExtensionPoint;
 
 public class ExtensionDescriptor extends DefaultExtensionDescriptor {
   public ExtensionDescriptor() {
-    super(Arrays.asList(new ExtensionPoint("jetbrains.mps.lang.core.pluginSolution.NativeLangCheckerEP")), Arrays.asList(new GeneratorCache_extension(), new UpdateReferencesParticipantBase.UpdateReferencesParticipant_extension(), new UpdateModelImports.UpdateModelImports_extension(), new RenameReferencesParticipant.RenameReferencesParticipant_extension()));
+    super(null, Arrays.asList(new GeneratorCache_extension(), new UpdateReferencesParticipantBase.UpdateReferencesParticipant_extension(), new UpdateModelImports.UpdateModelImports_extension(), new RenameReferencesParticipant.RenameReferencesParticipant_extension()));
   }
 }
