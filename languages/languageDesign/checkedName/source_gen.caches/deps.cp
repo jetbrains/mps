@@ -21,6 +21,7 @@
   <uses language="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
   <uses language="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
   <uses language="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" />
+  <uses language="l:c0080a47-7e37-4558-bee9-9ae18e690549:jetbrains.mps.lang.extension" />
   <uses language="l:ad93155d-79b2-4759-b10c-55123e763903:jetbrains.mps.lang.messages" />
   <uses language="l:90746344-04fd-4286-97d5-b46ae6a81709:jetbrains.mps.lang.migration" />
   <uses language="l:d4615e3b-d671-4ba9-af01-2b78369b0ba7:jetbrains.mps.lang.pattern" />
@@ -59,6 +60,7 @@
   <uses module="fe9d76d7-5809-45c9-ae28-a40915b4d6ff(jetbrains.mps.lang.checkedName)" kind="dp" />
   <uses module="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="rt+dp" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />
+  <uses module="3699ecc3-1807-448d-a272-a5acff79f168(jetbrains.mps.lang.core.pluginSolution)" kind="dp" />
   <uses module="9e9ef4e2-decf-4e97-bf80-9109e8b759bb(jetbrains.mps.lang.feedback.api)" kind="dp" />
   <uses module="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" kind="dp" />
   <uses module="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" kind="dp" />

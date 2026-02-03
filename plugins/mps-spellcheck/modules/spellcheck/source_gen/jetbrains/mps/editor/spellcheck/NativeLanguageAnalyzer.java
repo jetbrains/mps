@@ -17,7 +17,6 @@ import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 
 public class NativeLanguageAnalyzer {
   private static final Logger LOG = Logger.getLogger(NativeLanguageAnalyzer.class);
-
   public static String detectNativeLanguage(String text) {
     if ((text == null || text.length() == 0)) {
       return "Unknown";
@@ -97,7 +96,7 @@ public class NativeLanguageAnalyzer {
         }
       }
     } catch (IOException e) {
-      LOG.fatal("Failed to analyze text.", e);
+      LOG.fatal("Failed to analyze text. " + text, e);
     }
     return true;
   }

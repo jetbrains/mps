@@ -237,6 +237,7 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
+      <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -250,6 +251,9 @@
       </concept>
     </language>
     <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
+      <concept id="3729007189729192406" name="jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration" flags="ng" index="vrV6u">
+        <child id="8029776554053057803" name="objectType" index="luc8K" />
+      </concept>
       <concept id="6626851894249711936" name="jetbrains.mps.lang.extension.structure.ExtensionPointExpression" flags="nn" index="2O5UvJ">
         <reference id="6626851894249712469" name="extensionPoint" index="2O5UnU" />
       </concept>
@@ -4274,6 +4278,36 @@
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.Documentation" resolve="Documentation" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
       </node>
+    </node>
+  </node>
+  <node concept="3HP615" id="5J0WEnGJGQc">
+    <property role="TrG5h" value="NativeLangChecker" />
+    <node concept="3clFb_" id="5J0WEnGJLtH" role="jymVt">
+      <property role="TrG5h" value="detectNativeLanguage" />
+      <node concept="3clFbS" id="5J0WEnGJLtK" role="3clF47" />
+      <node concept="3Tm1VV" id="5J0WEnGJLtL" role="1B3o_S" />
+      <node concept="17QB3L" id="5J0WEnGJLtz" role="3clF45" />
+      <node concept="37vLTG" id="5J0WEnGJLJB" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="5J0WEnGJLJA" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5J0WEnGJLKC" role="jymVt">
+      <property role="TrG5h" value="isProperlyCapitalized" />
+      <node concept="3clFbS" id="5J0WEnGJLKD" role="3clF47" />
+      <node concept="3Tm1VV" id="5J0WEnGJLKE" role="1B3o_S" />
+      <node concept="10P_77" id="5J0WEnGJM8Y" role="3clF45" />
+      <node concept="37vLTG" id="5J0WEnGJLKG" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="5J0WEnGJLKH" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="5J0WEnGJGQd" role="1B3o_S" />
+  </node>
+  <node concept="vrV6u" id="5J0WEnGJCXw">
+    <property role="TrG5h" value="NativeLangCheckerEP" />
+    <node concept="3uibUv" id="5J0WEnGJMtK" role="luc8K">
+      <ref role="3uigEE" node="5J0WEnGJGQc" resolve="NativeLangChecker" />
     </node>
   </node>
 </model>

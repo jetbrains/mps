@@ -9,7 +9,6 @@
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="0" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -3347,7 +3346,6 @@
   </node>
   <node concept="312cEu" id="7pzI1FvZpLp">
     <property role="TrG5h" value="NativeLanguageAnalyzer" />
-    <node concept="2tJIrI" id="5AhI6VMvxuI" role="jymVt" />
     <node concept="2YIFZL" id="5AhI6VMvAvM" role="jymVt">
       <property role="TrG5h" value="detectNativeLanguage" />
       <node concept="3clFbS" id="5AhI6VMvAvP" role="3clF47">
@@ -3901,8 +3899,13 @@
             <node concept="3clFbS" id="5AhI6VMqQdZ" role="1zc67A">
               <node concept="RRSsy" id="5AhI6VMqQe0" role="3cqZAp">
                 <property role="RRSoG" value="gZ5eI4k/fatal" />
-                <node concept="Xl_RD" id="5AhI6VMqQe1" role="RRSoy">
-                  <property role="Xl_RC" value="Failed to analyze text." />
+                <node concept="3cpWs3" id="4D6iSPOckLf" role="RRSoy">
+                  <node concept="37vLTw" id="4D6iSPOclaA" role="3uHU7w">
+                    <ref role="3cqZAo" node="5AhI6VMqQea" resolve="text" />
+                  </node>
+                  <node concept="Xl_RD" id="5AhI6VMqQe1" role="3uHU7B">
+                    <property role="Xl_RC" value="Failed to analyze text. " />
+                  </node>
                 </node>
                 <node concept="37vLTw" id="5AhI6VMqQe2" role="RRSow">
                   <ref role="3cqZAo" node="5AhI6VMqQe3" resolve="e" />
