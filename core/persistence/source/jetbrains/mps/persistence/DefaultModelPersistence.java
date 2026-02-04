@@ -268,23 +268,32 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     // improved alternative to ModelPersistence.saveModel
     checkSaveReadOnlyDataSource(dataSource);
 
+    // next code is the same in FilePerRootModelFactory
+    int persistenceVersion = -1;
     if (model instanceof PersistenceVersionAware) {
-      // FIXME I believe we shall not upgrade persistence version unless explicitly instructed to via ModelSaveOptions
-      int persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
-      // this save() method was introduced in v9 persistence aka LAST_VERSION, don't care to upgrade persistence version.
-      // XXX note, this logic is valid unless there's v10!
-      if (persistenceVersion != ModelPersistence.LAST_VERSION) {
-        ((PersistenceVersionAware) model).setPersistenceVersion(ModelPersistence.LAST_VERSION);
-      }
+      persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
     }
+    if (persistenceVersion == -1) {
+      // if unspecified, use the latest
+      persistenceVersion = ModelPersistence.LAST_VERSION;
+    }
+    // TODO we shall not upgrade persistence version unless explicitly instructed to via ModelSaveOptions
+    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
+    final IModelPersistence mp = ModelPersistence.getPersistence(persistenceVersion);
+    if (mp == null) {
+      final String m = String.format("Unknown persistence version %d", persistenceVersion);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
+    }
+    IModelWriter mw = mp.getModelWriter(mmiProvider, options);
+    if (mw == null) {
+      final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
+    }
+    Document document = mw.saveModel(((SModelBase) model).getSModel());
     try {
-      final IModelPersistence mpImpl = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION); // instead, stick to header.getPersistenceVersion(), unless it's -1!
-      final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
-      final IModelWriter modelWriter = mpImpl.getModelWriter(mmiProvider, options);
-      Document document = modelWriter.saveModel(((SModelBase) model).getSModel());
       JDOMUtil.writeDocument(document, (StreamDataSource) dataSource);
-    } catch (Exception ex) {
-      throw new ModelSaveException(ex.getMessage(), Collections.emptySet(), ex);
+    } catch (IOException ex) {
+      throw new ModelSaveException("Failed to save model %s".formatted(model.getReference()), Collections.singleton(PersistenceProblem.errorSave(ex.getMessage(), dataSource)), ex);
     }
   }
 
