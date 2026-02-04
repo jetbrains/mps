@@ -232,12 +232,6 @@
         <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
       </concept>
     </language>
-    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
-      <concept id="6332851714983831325" name="jetbrains.mps.baseLanguage.logging.structure.MsgStatement" flags="ng" index="2xdQw9">
-        <property id="6332851714983843871" name="severity" index="2xdLsb" />
-        <child id="5721587534047265374" name="message" index="9lYJi" />
-      </concept>
-    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
@@ -321,12 +315,6 @@
       </node>
       <node concept="3clFbJ" id="1xq1$bo0J42" role="3cqZAp">
         <node concept="3clFbS" id="1xq1$bo0J44" role="3clFbx">
-          <node concept="2xdQw9" id="51B5bJ$_7sf" role="3cqZAp">
-            <property role="2xdLsb" value="gZ5fksE/warn" />
-            <node concept="Xl_RD" id="51B5bJ$_7sh" role="9lYJi">
-              <property role="Xl_RC" value="No native checker extension found ... " />
-            </node>
-          </node>
           <node concept="3SKdUt" id="4D6iSPObVwu" role="3cqZAp">
             <node concept="1PaTwC" id="4D6iSPObVwv" role="1aUNEU">
               <node concept="3oM_SD" id="4D6iSPObVww" role="1PaTwD">
@@ -1239,12 +1227,6 @@
             <node concept="3clFbT" id="51B5bJ$yNi3" role="33vP2m" />
           </node>
         </node>
-        <node concept="2xdQw9" id="51B5bJ$_biR" role="3cqZAp">
-          <property role="2xdLsb" value="gZ5fksE/warn" />
-          <node concept="Xl_RD" id="51B5bJ$_biT" role="9lYJi">
-            <property role="Xl_RC" value="Checking for checkers ... " />
-          </node>
-        </node>
         <node concept="3clFbF" id="51B5bJ$yLVP" role="3cqZAp">
           <node concept="2OqwBi" id="51B5bJ$yLVQ" role="3clFbG">
             <node concept="2YIFZM" id="51B5bJ$yLVR" role="2Oq$k0">
@@ -1269,17 +1251,6 @@
                   <node concept="2jxLKc" id="51B5bJ$yMyx" role="1tU5fm" />
                 </node>
                 <node concept="3clFbS" id="51B5bJ$yMy$" role="1bW5cS">
-                  <node concept="2xdQw9" id="51B5bJ$_abS" role="3cqZAp">
-                    <property role="2xdLsb" value="gZ5fksE/warn" />
-                    <node concept="3cpWs3" id="51B5bJ$_aPz" role="9lYJi">
-                      <node concept="37vLTw" id="51B5bJ$_aZL" role="3uHU7w">
-                        <ref role="3cqZAo" node="51B5bJ$yMyw" resolve="checker" />
-                      </node>
-                      <node concept="Xl_RD" id="51B5bJ$_abU" role="3uHU7B">
-                        <property role="Xl_RC" value="Got one ... " />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="3clFbF" id="51B5bJ$yNoG" role="3cqZAp">
                     <node concept="37vLTI" id="51B5bJ$yNVH" role="3clFbG">
                       <node concept="3clFbT" id="51B5bJ$yO0S" role="37vLTx">

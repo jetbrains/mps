@@ -4,7 +4,6 @@ package jetbrains.mps.lang.checkedName.typesystem;
 
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
@@ -12,11 +11,7 @@ import jetbrains.mps.smodel.runtime.ModuleRuntime;
 public class ExtensionsHelper {
   /*package*/ static boolean anyNativeLangCheckersInstalled(SRepository repository) {
     final Wrappers._boolean installed = new Wrappers._boolean(false);
-    LogContext.with(ExtensionsHelper.class, null, null, null).warning("Checking for checkers ... ");
-    LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.all(), (checker) -> {
-      LogContext.with(ExtensionsHelper.class, null, null, null).warning("Got one ... " + checker);
-      installed.value = true;
-    });
+    LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.all(), (checker) -> installed.value = true);
     return installed.value;
   }
   /*package*/ static boolean isProperlyCapitalized(SRepository repository, final String text) {

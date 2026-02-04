@@ -13,7 +13,6 @@ import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedTokenReadings;
 import java.io.IOException;
 import org.languagetool.AnalyzedToken;
-import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 
 public class NativeLanguageAnalyzer {
   private static final Logger LOG = Logger.getLogger(NativeLanguageAnalyzer.class);
@@ -126,11 +125,9 @@ public class NativeLanguageAnalyzer {
       return false;
     }
     List<AnalyzedToken> readings = token.getReadings();
-    LogContext.with(NativeLanguageAnalyzer.class, null, null, null).error("All tokens " + readings);
     for (AnalyzedToken analyzedToken : readings) {
       String tagDesc = analyzedToken.getPOSTag();
       NativeLanguageUtil.Category category = NativeLanguageUtil.getCategory(tagDesc, nativeLanguLang);
-      LogContext.with(NativeLanguageAnalyzer.class, null, null, null).error("Token " + tagDesc + ":***" + category);
       if (category != NativeLanguageUtil.Category.OTHER) {
         return true;
       }

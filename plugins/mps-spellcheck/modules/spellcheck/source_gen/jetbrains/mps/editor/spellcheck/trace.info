@@ -708,207 +708,211 @@
   </root>
   <root nodeRef="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)/5793622242861957547">
     <file name="ModuleActivator.java">
-      <node id="5793622242862167535" at="12,71,13,90" concept="4" />
-      <node id="4475567139869332441" at="13,90,14,114" concept="4" />
-      <node id="5793622242861964639" at="11,0,16,0" concept="9" trace="contribute#(Ljetbrains/mps/smodel/runtime/ModuleRuntime/ActivatorContext;)V" />
-      <scope id="5793622242861964647" at="12,71,14,114" />
-      <scope id="5793622242861964639" at="11,0,16,0">
+      <node id="5793622242862346412" at="11,0,12,0" concept="5" trace="componentHost" />
+      <node id="5793622242862351398" at="13,55,14,39" concept="4" />
+      <node id="4475567139869332441" at="18,71,19,114" concept="4" />
+      <node id="5793622242862351390" at="13,0,16,0" concept="2" trace="ModuleActivator#(Ljetbrains/mps/components/ComponentHost;)V" />
+      <node id="5793622242861964639" at="17,0,21,0" concept="9" trace="contribute#(Ljetbrains/mps/smodel/runtime/ModuleRuntime/ActivatorContext;)V" />
+      <scope id="5793622242862351394" at="13,55,14,39" />
+      <scope id="5793622242861964647" at="18,71,19,114" />
+      <scope id="5793622242862351390" at="13,0,16,0">
+        <var name="componentHost" id="5793622242862351397" />
+      </scope>
+      <scope id="5793622242861964639" at="17,0,21,0">
         <var name="ctx" id="5793622242861964644" />
       </scope>
-      <unit id="5793622242861957547" at="10,0,17,0" name="jetbrains.mps.editor.spellcheck.ModuleActivator" />
+      <unit id="5793622242861957547" at="10,0,22,0" name="jetbrains.mps.editor.spellcheck.ModuleActivator" />
     </file>
   </root>
   <root nodeRef="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)/8530864544736451673">
     <file name="NativeLanguageAnalyzer.java">
-      <node id="8530864544736451673" at="19,0,20,0" concept="14" trace="LOG" />
-      <node id="6454142527652919013" at="21,47,22,23" concept="11" />
-      <node id="6454142527652919018" at="23,5,24,62" concept="10" />
-      <node id="6454142527652923517" at="24,62,25,87" concept="11" />
-      <node id="6454142527651476245" at="29,47,30,18" concept="11" />
-      <node id="6454142527651476251" at="31,5,32,62" concept="10" />
-      <node id="6454142527651615698" at="34,11,35,58" concept="4" />
-      <node id="6454142527652351952" at="37,35,38,216" concept="4" />
-      <node id="6454142527652351957" at="39,9,40,20" concept="11" />
-      <node id="6454142527651476389" at="42,5,43,59" concept="11" />
-      <node id="6454142527651234454" at="47,47,48,18" concept="11" />
-      <node id="1754721888976999567" at="50,9,51,51" concept="10" />
-      <node id="6454142527652261250" at="51,51,52,61" concept="11" />
-      <node id="6454142527652741305" at="54,33,55,154" concept="4" />
-      <node id="6454142527652746811" at="56,7,57,18" concept="11" />
-      <node id="6454142527651668726" at="62,47,63,18" concept="11" />
-      <node id="6454142527651668731" at="64,5,65,0" concept="13" />
-      <node id="6454142527651668752" at="65,0,66,102" concept="10" />
-      <node id="6454142527651668762" at="67,9,68,67" concept="10" />
-      <node id="6454142527651668780" at="69,54,70,65" concept="12" />
-      <node id="6454142527651668788" at="70,65,71,27" concept="12" />
-      <node id="6454142527651668792" at="71,27,72,37" concept="10" />
-      <node id="6454142527651668803" at="73,66,74,41" concept="10" />
-      <node id="6454142527651668811" at="75,35,76,21" concept="3" />
-      <node id="6454142527651668816" at="78,53,79,43" concept="4" />
-      <node id="6454142527651668826" at="81,29,82,21" concept="3" />
-      <node id="6454142527651668828" at="83,11,84,0" concept="13" />
-      <node id="6454142527651668829" at="84,0,85,77" concept="10" />
-      <node id="6454142527651668835" at="85,77,86,42" concept="10" />
-      <node id="6454142527651668857" at="88,51,89,27" concept="11" />
-      <node id="6454142527651668850" at="92,51,93,27" concept="11" />
-      <node id="6454142527651668864" at="98,29,99,54" concept="4" />
-      <node id="6454142527651668870" at="100,5,101,16" concept="11" />
-      <node id="20439787738258279" at="105,67,106,35" concept="10" />
-      <node id="20439787738258282" at="106,35,107,80" concept="11" />
-      <node id="20439787738276390" at="111,52,112,19" concept="11" />
-      <node id="1754721888975576745" at="113,5,114,55" concept="10" />
-      <node id="1754721888975162754" at="115,50,116,49" concept="10" />
-      <node id="1754721888979585125" at="117,70,118,20" concept="11" />
-      <node id="20439787738276393" at="120,5,121,17" concept="11" />
-      <node id="1754721888979426743" at="125,52,126,19" concept="11" />
-      <node id="1754721888979426745" at="127,5,128,55" concept="10" />
-      <node id="1754721888979426752" at="128,55,129,100" concept="4" />
-      <node id="1754721888979426758" at="130,50,131,49" concept="10" />
-      <node id="1754721888979426764" at="131,49,132,102" concept="10" />
-      <node id="1754721888979426770" at="132,102,133,116" concept="4" />
-      <node id="1754721888979426780" at="134,58,135,20" concept="11" />
-      <node id="1754721888979426788" at="137,5,138,17" concept="11" />
-      <node id="6454142527652919011" at="20,58,23,5" concept="8" />
-      <node id="6454142527651476243" at="28,70,31,5" concept="8" />
-      <node id="6454142527652351952" at="36,44,39,9" concept="8" />
-      <node id="6454142527651205102" at="46,87,49,5" concept="8" />
-      <node id="6454142527652741305" at="53,42,56,7" concept="8" />
-      <node id="6454142527651668724" at="61,86,64,5" concept="8" />
-      <node id="6454142527651668809" at="74,41,77,11" concept="8" />
-      <node id="6454142527651668814" at="77,11,80,11" concept="8" />
-      <node id="6454142527651668824" at="80,11,83,11" concept="8" />
-      <node id="6454142527651668853" at="87,34,90,13" concept="8" />
-      <node id="6454142527651668846" at="91,18,94,13" concept="8" />
-      <node id="20439787738276386" at="110,91,113,5" concept="8" />
-      <node id="1754721888979461871" at="116,49,119,7" concept="8" />
-      <node id="1754721888979426732" at="124,93,127,5" concept="8" />
-      <node id="1754721888979426778" at="133,116,136,7" concept="8" />
-      <node id="6454142527651668844" at="91,16,95,11" concept="0" />
-      <node id="8530864544736672394" at="105,0,109,0" concept="15" trace="isIgnorable#(Lorg/languagetool/AnalyzedTokenReadings;)Z" />
-      <node id="1754721888975114883" at="114,55,120,5" concept="7" />
-      <node id="6454142527652915186" at="20,0,27,0" concept="15" trace="detectNativeLanguage#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="6454142527652751559" at="33,33,41,7" concept="18" />
-      <node id="1754721888979426756" at="129,100,137,5" concept="7" />
-      <node id="6454142527652736765" at="49,5,58,5" concept="18" />
-      <node id="6454142527651668842" at="86,42,95,11" concept="8" />
-      <node id="6454142527651562872" at="32,62,42,5" concept="8" />
-      <node id="8530864544736711808" at="110,0,123,0" concept="15" trace="isQuoteSymbol#(Lorg/languagetool/AnalyzedTokenReadings;Lcom/intellij/grazie/jlanguage/Lang;)Z" />
-      <node id="8530864544736469198" at="46,0,60,0" concept="15" trace="isActionDescProperlyCapitalized#(Ljava/lang/String;Ljava/lang/String;)Z" />
-      <node id="1754721888979426726" at="124,0,140,0" concept="15" trace="isToBeLowerCase#(Lorg/languagetool/AnalyzedTokenReadings;Lcom/intellij/grazie/jlanguage/Lang;)Z" />
-      <node id="6454142527651476241" at="28,0,45,0" concept="15" trace="isActionDescProperlyCapitalized#(Ljava/lang/String;)Z" />
-      <node id="6454142527651668796" at="72,37,96,9" concept="7" />
-      <node id="6454142527651668778" at="68,67,97,7" concept="7" />
-      <node id="6454142527651668760" at="66,102,100,5" concept="18" />
-      <node id="6454142527651668722" at="61,0,103,0" concept="15" trace="isDescProperlyCapitalized#(Ljava/lang/String;Lcom/intellij/grazie/jlanguage/Lang;)Z" />
-      <scope id="6454142527652919012" at="21,47,22,23" />
-      <scope id="6454142527651476244" at="29,47,30,18" />
-      <scope id="6454142527652751560" at="34,11,35,58" />
-      <scope id="6454142527652351952" at="37,35,38,216" />
-      <scope id="6454142527651205104" at="47,47,48,18" />
-      <scope id="6454142527652741305" at="54,33,55,154" />
-      <scope id="6454142527651668725" at="62,47,63,18" />
-      <scope id="6454142527651668810" at="75,35,76,21" />
-      <scope id="6454142527651668815" at="78,53,79,43" />
-      <scope id="6454142527651668825" at="81,29,82,21" />
-      <scope id="6454142527651668856" at="88,51,89,27" />
-      <scope id="6454142527651668849" at="92,51,93,27" />
-      <scope id="6454142527651668863" at="98,29,99,54" />
-      <scope id="20439787738276392" at="111,52,112,19" />
-      <scope id="1754721888979461873" at="117,70,118,20" />
-      <scope id="1754721888979426742" at="125,52,126,19" />
-      <scope id="1754721888979426779" at="134,58,135,20" />
-      <scope id="6454142527652736766" at="50,9,52,61">
+      <node id="8530864544736451673" at="18,0,19,0" concept="14" trace="LOG" />
+      <node id="6454142527652919013" at="20,47,21,23" concept="11" />
+      <node id="6454142527652919018" at="22,5,23,62" concept="10" />
+      <node id="6454142527652923517" at="23,62,24,87" concept="11" />
+      <node id="6454142527651476245" at="28,47,29,18" concept="11" />
+      <node id="6454142527651476251" at="30,5,31,62" concept="10" />
+      <node id="6454142527651615698" at="33,11,34,58" concept="4" />
+      <node id="6454142527652351952" at="36,35,37,216" concept="4" />
+      <node id="6454142527652351957" at="38,9,39,20" concept="11" />
+      <node id="6454142527651476389" at="41,5,42,59" concept="11" />
+      <node id="6454142527651234454" at="46,47,47,18" concept="11" />
+      <node id="1754721888976999567" at="49,9,50,51" concept="10" />
+      <node id="6454142527652261250" at="50,51,51,61" concept="11" />
+      <node id="6454142527652741305" at="53,33,54,154" concept="4" />
+      <node id="6454142527652746811" at="55,7,56,18" concept="11" />
+      <node id="6454142527651668726" at="61,47,62,18" concept="11" />
+      <node id="6454142527651668731" at="63,5,64,0" concept="13" />
+      <node id="6454142527651668752" at="64,0,65,102" concept="10" />
+      <node id="6454142527651668762" at="66,9,67,67" concept="10" />
+      <node id="6454142527651668780" at="68,54,69,65" concept="12" />
+      <node id="6454142527651668788" at="69,65,70,27" concept="12" />
+      <node id="6454142527651668792" at="70,27,71,37" concept="10" />
+      <node id="6454142527651668803" at="72,66,73,41" concept="10" />
+      <node id="6454142527651668811" at="74,35,75,21" concept="3" />
+      <node id="6454142527651668816" at="77,53,78,43" concept="4" />
+      <node id="6454142527651668826" at="80,29,81,21" concept="3" />
+      <node id="6454142527651668828" at="82,11,83,0" concept="13" />
+      <node id="6454142527651668829" at="83,0,84,77" concept="10" />
+      <node id="6454142527651668835" at="84,77,85,42" concept="10" />
+      <node id="6454142527651668857" at="87,51,88,27" concept="11" />
+      <node id="6454142527651668850" at="91,51,92,27" concept="11" />
+      <node id="6454142527651668864" at="97,29,98,54" concept="4" />
+      <node id="6454142527651668870" at="99,5,100,16" concept="11" />
+      <node id="20439787738258279" at="104,67,105,35" concept="10" />
+      <node id="20439787738258282" at="105,35,106,80" concept="11" />
+      <node id="20439787738276390" at="110,52,111,19" concept="11" />
+      <node id="1754721888975576745" at="112,5,113,55" concept="10" />
+      <node id="1754721888975162754" at="114,50,115,49" concept="10" />
+      <node id="1754721888979585125" at="116,70,117,20" concept="11" />
+      <node id="20439787738276393" at="119,5,120,17" concept="11" />
+      <node id="1754721888979426743" at="124,52,125,19" concept="11" />
+      <node id="1754721888979426745" at="126,5,127,55" concept="10" />
+      <node id="1754721888979426758" at="128,50,129,49" concept="10" />
+      <node id="1754721888979426764" at="129,49,130,102" concept="10" />
+      <node id="1754721888979426780" at="131,58,132,20" concept="11" />
+      <node id="1754721888979426788" at="134,5,135,17" concept="11" />
+      <node id="6454142527652919011" at="19,58,22,5" concept="8" />
+      <node id="6454142527651476243" at="27,70,30,5" concept="8" />
+      <node id="6454142527652351952" at="35,44,38,9" concept="8" />
+      <node id="6454142527651205102" at="45,87,48,5" concept="8" />
+      <node id="6454142527652741305" at="52,42,55,7" concept="8" />
+      <node id="6454142527651668724" at="60,86,63,5" concept="8" />
+      <node id="6454142527651668809" at="73,41,76,11" concept="8" />
+      <node id="6454142527651668814" at="76,11,79,11" concept="8" />
+      <node id="6454142527651668824" at="79,11,82,11" concept="8" />
+      <node id="6454142527651668853" at="86,34,89,13" concept="8" />
+      <node id="6454142527651668846" at="90,18,93,13" concept="8" />
+      <node id="20439787738276386" at="109,91,112,5" concept="8" />
+      <node id="1754721888979461871" at="115,49,118,7" concept="8" />
+      <node id="1754721888979426732" at="123,93,126,5" concept="8" />
+      <node id="1754721888979426778" at="130,102,133,7" concept="8" />
+      <node id="6454142527651668844" at="90,16,94,11" concept="0" />
+      <node id="8530864544736672394" at="104,0,108,0" concept="15" trace="isIgnorable#(Lorg/languagetool/AnalyzedTokenReadings;)Z" />
+      <node id="1754721888975114883" at="113,55,119,5" concept="7" />
+      <node id="6454142527652915186" at="19,0,26,0" concept="15" trace="detectNativeLanguage#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="1754721888979426756" at="127,55,134,5" concept="7" />
+      <node id="6454142527652751559" at="32,33,40,7" concept="18" />
+      <node id="6454142527652736765" at="48,5,57,5" concept="18" />
+      <node id="6454142527651668842" at="85,42,94,11" concept="8" />
+      <node id="6454142527651562872" at="31,62,41,5" concept="8" />
+      <node id="8530864544736711808" at="109,0,122,0" concept="15" trace="isQuoteSymbol#(Lorg/languagetool/AnalyzedTokenReadings;Lcom/intellij/grazie/jlanguage/Lang;)Z" />
+      <node id="8530864544736469198" at="45,0,59,0" concept="15" trace="isActionDescProperlyCapitalized#(Ljava/lang/String;Ljava/lang/String;)Z" />
+      <node id="1754721888979426726" at="123,0,137,0" concept="15" trace="isToBeLowerCase#(Lorg/languagetool/AnalyzedTokenReadings;Lcom/intellij/grazie/jlanguage/Lang;)Z" />
+      <node id="6454142527651476241" at="27,0,44,0" concept="15" trace="isActionDescProperlyCapitalized#(Ljava/lang/String;)Z" />
+      <node id="6454142527651668796" at="71,37,95,9" concept="7" />
+      <node id="6454142527651668778" at="67,67,96,7" concept="7" />
+      <node id="6454142527651668760" at="65,102,99,5" concept="18" />
+      <node id="6454142527651668722" at="60,0,102,0" concept="15" trace="isDescProperlyCapitalized#(Ljava/lang/String;Lcom/intellij/grazie/jlanguage/Lang;)Z" />
+      <scope id="6454142527652919012" at="20,47,21,23" />
+      <scope id="6454142527651476244" at="28,47,29,18" />
+      <scope id="6454142527652751560" at="33,11,34,58" />
+      <scope id="6454142527652351952" at="36,35,37,216" />
+      <scope id="6454142527651205104" at="46,47,47,18" />
+      <scope id="6454142527652741305" at="53,33,54,154" />
+      <scope id="6454142527651668725" at="61,47,62,18" />
+      <scope id="6454142527651668810" at="74,35,75,21" />
+      <scope id="6454142527651668815" at="77,53,78,43" />
+      <scope id="6454142527651668825" at="80,29,81,21" />
+      <scope id="6454142527651668856" at="87,51,88,27" />
+      <scope id="6454142527651668849" at="91,51,92,27" />
+      <scope id="6454142527651668863" at="97,29,98,54" />
+      <scope id="20439787738276392" at="110,52,111,19" />
+      <scope id="1754721888979461873" at="116,70,117,20" />
+      <scope id="1754721888979426742" at="124,52,125,19" />
+      <scope id="1754721888979426779" at="131,58,132,20" />
+      <scope id="6454142527652736766" at="49,9,51,61">
         <var name="nativeLanguage" id="1754721888976999568" />
       </scope>
-      <scope id="6454142527651668862" at="98,5,100,5">
+      <scope id="6454142527651668862" at="97,5,99,5">
         <var name="e" id="6454142527651668867" />
       </scope>
-      <scope id="8530864544736672397" at="105,67,107,80">
+      <scope id="8530864544736672397" at="104,67,106,80">
         <var name="word" id="20439787738258278" />
       </scope>
-      <scope id="6454142527651668852" at="87,34,90,13" />
-      <scope id="6454142527651668845" at="91,18,94,13" />
-      <scope id="6454142527652751564" at="36,44,40,20" />
-      <scope id="6454142527652736770" at="53,42,57,18" />
-      <scope id="8530864544736672394" at="105,0,109,0">
+      <scope id="6454142527651668852" at="86,34,89,13" />
+      <scope id="6454142527651668845" at="90,18,93,13" />
+      <scope id="6454142527652751564" at="35,44,39,20" />
+      <scope id="6454142527652736770" at="52,42,56,18" />
+      <scope id="8530864544736672394" at="104,0,108,0">
         <var name="token" id="8530864544736677540" />
       </scope>
-      <scope id="1754721888975114885" at="115,50,119,7">
+      <scope id="1754721888975114885" at="114,50,118,7">
         <var name="tagDesc" id="1754721888975162755" />
       </scope>
-      <scope id="6454142527652915189" at="20,58,25,87">
+      <scope id="6454142527652915189" at="19,58,24,87">
         <var name="nativeLanguage" id="6454142527652919019" />
       </scope>
-      <scope id="6454142527652751561" at="36,7,41,7">
+      <scope id="6454142527652751561" at="35,7,40,7">
         <var name="e" id="6454142527652751562" />
       </scope>
-      <scope id="6454142527652736767" at="53,5,58,5">
+      <scope id="6454142527652736767" at="52,5,57,5">
         <var name="e" id="6454142527652736768" />
       </scope>
-      <scope id="1754721888975114883" at="114,55,120,5">
-        <var name="analyzedToken" id="1754721888975114886" />
-      </scope>
-      <scope id="1754721888979426757" at="130,50,136,7">
+      <scope id="1754721888979426757" at="128,50,133,7">
         <var name="category" id="1754721888979426765" />
         <var name="tagDesc" id="1754721888979426759" />
       </scope>
-      <scope id="6454142527652915186" at="20,0,27,0">
+      <scope id="1754721888975114883" at="113,55,119,5">
+        <var name="analyzedToken" id="1754721888975114886" />
+      </scope>
+      <scope id="6454142527652915186" at="19,0,26,0">
         <var name="text" id="6454142527652918403" />
       </scope>
-      <scope id="6454142527651562874" at="33,33,41,7" />
-      <scope id="1754721888979426756" at="129,100,137,5">
+      <scope id="1754721888979426756" at="127,55,134,5">
         <var name="analyzedToken" id="1754721888979426785" />
       </scope>
-      <scope id="8530864544736711811" at="110,91,121,17">
+      <scope id="6454142527651562874" at="32,33,40,7" />
+      <scope id="8530864544736711811" at="109,91,120,17">
         <var name="readings" id="1754721888975576746" />
       </scope>
-      <scope id="8530864544736469201" at="46,87,58,5" />
-      <scope id="8530864544736711808" at="110,0,123,0">
+      <scope id="8530864544736469201" at="45,87,57,5" />
+      <scope id="1754721888979426727" at="123,93,135,17">
+        <var name="readings" id="1754721888979426746" />
+      </scope>
+      <scope id="8530864544736711808" at="109,0,122,0">
         <var name="nativeLanguLang" id="1754721888977244683" />
         <var name="token" id="8530864544736719029" />
       </scope>
-      <scope id="8530864544736469198" at="46,0,60,0">
+      <scope id="8530864544736469198" at="45,0,59,0">
         <var name="langCode" id="1754721888976935020" />
         <var name="text" id="8530864544736471082" />
       </scope>
-      <scope id="1754721888979426727" at="124,93,138,17">
-        <var name="readings" id="1754721888979426746" />
-      </scope>
-      <scope id="6454142527651476242" at="28,70,43,59">
-        <var name="nativeLanguage" id="6454142527651476252" />
-      </scope>
-      <scope id="1754721888979426726" at="124,0,140,0">
+      <scope id="1754721888979426726" at="123,0,137,0">
         <var name="nativeLanguLang" id="1754721888979426794" />
         <var name="token" id="1754721888979426792" />
       </scope>
-      <scope id="6454142527651476241" at="28,0,45,0">
+      <scope id="6454142527651476242" at="27,70,42,59">
+        <var name="nativeLanguage" id="6454142527651476252" />
+      </scope>
+      <scope id="6454142527651476241" at="27,0,44,0">
         <var name="text" id="6454142527651476393" />
       </scope>
-      <scope id="6454142527651668802" at="73,66,95,11">
+      <scope id="6454142527651668802" at="72,66,94,11">
         <var name="firstChar" id="6454142527651668836" />
         <var name="shouldBeLowerCase" id="6454142527651668830" />
         <var name="word" id="6454142527651668804" />
       </scope>
-      <scope id="6454142527651668796" at="72,37,96,9">
+      <scope id="6454142527651668796" at="71,37,95,9">
         <var name="token" id="6454142527651668800" />
       </scope>
-      <scope id="6454142527651668779" at="69,54,96,9">
+      <scope id="6454142527651668779" at="68,54,95,9">
         <var name="insideQuotes" id="6454142527651668793" />
       </scope>
-      <scope id="6454142527651668778" at="68,67,97,7">
+      <scope id="6454142527651668778" at="67,67,96,7">
         <var name="sentence" id="6454142527651668859" />
       </scope>
-      <scope id="6454142527651668761" at="67,9,97,7">
+      <scope id="6454142527651668761" at="66,9,96,7">
         <var name="analyzedText" id="6454142527651668763" />
       </scope>
-      <scope id="6454142527651668723" at="61,86,101,16">
+      <scope id="6454142527651668723" at="60,86,100,16">
         <var name="tool" id="6454142527651668753" />
       </scope>
-      <scope id="6454142527651668722" at="61,0,103,0">
+      <scope id="6454142527651668722" at="60,0,102,0">
         <var name="nativeLanguage" id="6454142527651668876" />
         <var name="text" id="6454142527651668874" />
       </scope>
-      <unit id="8530864544736451673" at="18,0,141,0" name="jetbrains.mps.editor.spellcheck.NativeLanguageAnalyzer" />
+      <unit id="8530864544736451673" at="17,0,138,0" name="jetbrains.mps.editor.spellcheck.NativeLanguageAnalyzer" />
     </file>
   </root>
 </debug-info>

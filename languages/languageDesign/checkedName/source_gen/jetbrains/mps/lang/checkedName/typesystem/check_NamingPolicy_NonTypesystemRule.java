@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.lang.checkedName.behavior.ICheckedNamePolicy__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -30,7 +29,6 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SRepository repository = SNodeOperations.getModel(node).getRepository();
     if (!(ExtensionsHelper.anyNativeLangCheckersInstalled(repository))) {
-      LogContext.with(check_NamingPolicy_NonTypesystemRule.class, null, null, null).warning("No native checker extension found ... ");
       // Use hard-coded naming policy
       String warningMessage = "Naming policies violated: " + "all words except prepositions, articles and particles should be capitalized";
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
