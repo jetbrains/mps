@@ -46,7 +46,6 @@ import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.persistence.def.v9.IdInfoCollector;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.io.ModelInputStream;
@@ -84,18 +83,20 @@ public final class BinaryPersistence {
 
   private final MetaModelInfoProvider myMetaInfoProvider;
   private final SModel myModelData;
+  /**
+   * To avoid introducing new version each time I need a subtle change in a format, especially the one that is a provisional/experimental,
+   * and to cover scenarios when read code shall be aware of specific way model has been persisted (i.e. not to attempt reading certain missing pieces).
+   * Note, it's a bitwise set of flags. I don't expect a lot of flags, hence byte, and if I need more, I could use one of the bits to indicate extended flags.
+   */
+  private final byte myPersistedCapabilities;
 
   public static SModelHeader readHeader(@NotNull StreamDataSource source) throws ModelReadException {
-    ModelInputStream mis = null;
-    try {
-      mis = new ModelInputStream(source.openInputStream());
+    try (ModelInputStream mis = new ModelInputStream(source.openInputStream())) {
       SModelHeader rv = new SModelHeader();
-      loadHeader(mis, rv);
+      loadHeader(mis, rv, null);
       return rv;
     } catch (IOException e) {
       throw new ModelReadException("Couldn't read model: " + e.getMessage(), e);
-    } finally {
-      FileUtil.closeFileSafe(mis);
     }
   }
 
@@ -127,9 +128,13 @@ public final class BinaryPersistence {
   private static final byte STUB_ID       = 0x13;
   private static final byte DEPENDENCY_V1 = 0x01;
 
+  private static final byte CAP_SKIP_NODE_ID = 0x01;
+  // XXX I wonder if it's reasonable to record the fact UO got serialized, as well.
+  // On one hand, can work w/o this information, on the other, isn't it about capabilities of the persistence format?
+
 
   // once we drop support for V2, may revert back to SModelHeader as return value
-  private static int loadHeader(ModelInputStream is, SModelHeader result) throws IOException {
+  private static int loadHeader(ModelInputStream is, SModelHeader result, byte[] capabilities) throws IOException {
     if (is.readInt() != HEADER_START) {
       throw new IOException("bad stream, no header");
     }
@@ -174,27 +179,36 @@ public final class BinaryPersistence {
       String value = is.readString();
       result.setOptionalProperty(key, value);
     }
+    if (streamId == STREAM_ID_V3) {
+      byte persistedCapabilities = is.readByte(); // always read the byte
+      if (capabilities != null) {
+        capabilities[0] = persistedCapabilities;
+      }
+    }
     assertSyncToken(is, HEADER_END);
     return streamId;
   }
 
   @NotNull
   private static ModelLoadResult loadModel(InputStream is, boolean interfaceOnly, @Nullable MetaModelInfoProvider mmiProvider) throws IOException {
-    ModelInputStream mis = null;
-    try {
-      mis = new ModelInputStream(is);
+    try (ModelInputStream mis = new ModelInputStream(is)) {
       SModelHeader modelHeader = new SModelHeader();
-      final int version = loadHeader(mis, modelHeader);
+      final byte[] capabilities = new byte[1];
+      final int version = loadHeader(mis, modelHeader, capabilities);
 
       DefaultSModel model = new DefaultSModel(modelHeader.getModelReference(), modelHeader);
-      BinaryPersistence bp = new BinaryPersistence(mmiProvider == null ? new RegularMetaModelInfo() : mmiProvider, model);
+      BinaryPersistence bp = new BinaryPersistence(mmiProvider == null ? new RegularMetaModelInfo() : mmiProvider, model, capabilities[0]);
       ReadHelper rh = bp.loadModelProperties(mis, version);
 
-      NodesReader reader = new NodesReader(mis, rh).requestInterfaceOnly(interfaceOnly).skipNodeId(false);
+      // FWIW, whether skipNodeId is true or false depends on the way model got serialized, and we can not assume any specific format here.
+      //     Unlike xml/v9 persistence, we can't just ignore node id field, that's why binary persistence records extra information about
+      //     node id presence (persistedCapabilities byte record in the header)
+      // Note, bp.isSkipNodeIdCap is not exactly the same as skipNodeId = true. We shall tell scenario when there are no node id written from
+      // scenarios when it is there, but we'd like to ignore it. I.e. recorded capability CAP_SKIP_NODE_ID is paramount. If there are node id
+      // we could still want to ignore them, creating temp id for scope=none concepts, just need to read/consume original node id anyway
+      NodesReader reader = new NodesReader(mis, rh).requestInterfaceOnly(interfaceOnly).skipNodeId(bp.isSkipNodeIdCap());
       reader.readNodesInto(model);
       return new ModelLoadResult(model, reader.hasSkippedNodes() ? ModelLoadingState.INTERFACE_LOADED : ModelLoadingState.FULLY_LOADED);
-    } finally {
-      FileUtil.closeFileSafe(mis);
     }
   }
 
@@ -204,19 +218,31 @@ public final class BinaryPersistence {
   public static void writeModel(org.jetbrains.mps.openapi.model.SModel model, ModelOutputStream os, ModelSaveOption... options) throws IOException {
     final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
 
-    BinaryPersistence bp = new BinaryPersistence(mmiProvider, ((SModelBase) model).getSModel());
+    byte cap = 0;
+    if (NodeIdRecording.CONCEPT_SCOPE.present(options)) {
+      cap |= CAP_SKIP_NODE_ID;
+    }
+    // XXX the only place we're not 100% sure model != null; perhaps, could check and react before BP fails with NPE from the inside?
+    BinaryPersistence bp = new BinaryPersistence(mmiProvider, ((SModelBase) model).getSModel(), cap);
     IdInfoRegistry meta = bp.saveModelProperties(os);
 
     Collection<SNode> roots = IterableUtil.asCollection(model.getRootNodes());
     final NodesWriter nodeWriter = new NodesWriter(model.getReference(), os, meta);
     nodeWriter.keepUserObjects(UserObjectsPersistence.DESIRED.present(options) || UserObjectsPersistence.REQUIRED.present(options));
-    nodeWriter.skipNodeId(NodeIdRecording.CONCEPT_SCOPE.present(options));
+    nodeWriter.skipNodeId(bp.isSkipNodeIdCap());
     nodeWriter.writeNodes(roots);
   }
 
-  private BinaryPersistence(@NotNull MetaModelInfoProvider mmiProvider, SModel modelData) {
+  private BinaryPersistence(@NotNull MetaModelInfoProvider mmiProvider, SModel modelData, byte capabilities) {
     myMetaInfoProvider = mmiProvider;
     myModelData = modelData;
+    // capabilities param eventually shall become a POJO/enum, rather than just tossing byte around
+    myPersistedCapabilities = capabilities;
+  }
+
+
+  /*package*/ boolean isSkipNodeIdCap() {
+    return (myPersistedCapabilities & CAP_SKIP_NODE_ID) != 0;
   }
 
   private ReadHelper loadModelProperties(ModelInputStream is, int version) throws IOException {
@@ -267,6 +293,7 @@ public final class BinaryPersistence {
     } else {
       os.writeShort(0);
     }
+    os.writeByte(myPersistedCapabilities);
     os.writeInt(HEADER_END);
 
     final IdInfoRegistry rv = saveRegistry(os);
@@ -485,13 +512,12 @@ public final class BinaryPersistence {
   }
 
   public static void index(InputStream content, final Callback consumer) throws IOException {
-    ModelInputStream mis = null;
-    try {
-      mis = new ModelInputStream(content);
+    try (ModelInputStream mis = new ModelInputStream(content)) {
       SModelHeader modelHeader = new SModelHeader();
-      final int version = loadHeader(mis, modelHeader);
+      final byte[] capabilities = new byte[1];
+      final int version = loadHeader(mis, modelHeader, capabilities);
       SModel model = new DefaultSModel(modelHeader.getModelReference(), modelHeader);
-      BinaryPersistence bp = new BinaryPersistence(new StuffedMetaModelInfo(new BaseMetaModelInfo()), model);
+      BinaryPersistence bp = new BinaryPersistence(new StuffedMetaModelInfo(new BaseMetaModelInfo()), model, capabilities[0]);
       final ReadHelper readHelper = bp.loadModelProperties(mis, version);
       for (ImportElement element : model.importedModels()) {
         consumer.imports(element.getModelReference());
@@ -499,10 +525,7 @@ public final class BinaryPersistence {
       for (SConceptId cid : readHelper.getParticipatingConcepts()) {
         consumer.instances(cid);
       }
-      // XXX in fact, whether skipNodeId is true or false depends on the way model got serialized, and we shall not assume any specific format here!
-      //     Unlike xml/v9 persistence, we can't just ignore node id field, binary persistence doesn't record any extra information about
-      //     node id presence ATM (either with a dedicated node tag or persistence version field)
-      final NodesReader reader = new NodesReader(mis, readHelper).requestInterfaceOnly(false).skipNodeId(false);
+      final NodesReader reader = new NodesReader(mis, readHelper).requestInterfaceOnly(false).skipNodeId(bp.isSkipNodeIdCap());
       HashSet<SNodeId> externalNodes = new HashSet<>();
       HashSet<SNodeId> localNodes = new HashSet<>();
       reader.collectExternalTargets(externalNodes);
@@ -514,8 +537,6 @@ public final class BinaryPersistence {
       for (SNodeId n : localNodes) {
         consumer.localNodeRef(n);
       }
-    } finally {
-      FileUtil.closeFileSafe(mis);
     }
   }
 
