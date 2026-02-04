@@ -139,54 +139,6 @@ public class FilePerRootFormatUtil {
     return headerHandler.getResult();
   }
 
-  private static int actualPersistenceVersion(int desiredPersistenceVersion) {
-    IModelPersistence modelPersistence = ModelPersistence.getPersistence(Math.max(desiredPersistenceVersion, ModelPersistence.FIRST_SUPPORTED_VERSION));
-    if (modelPersistence == null) {
-      modelPersistence = ModelPersistence.getPersistence(ModelPersistence.LAST_VERSION);
-    }
-    return modelPersistence.getVersion();
-  }
-
-  /**
-   * returns true if the content should be reloaded from storage after save
-   */
-  public static boolean saveModel(SModel modelData, MultiStreamDataSource source, int persistenceVersion) throws IOException {
-    persistenceVersion = actualPersistenceVersion(persistenceVersion);
-
-    // upgrade?
-    int oldVersion = persistenceVersion;
-    // FIXME shall use PersistenceVersionAware and openapi.SModel, not smodel.SModel impl here
-    if (modelData instanceof DefaultSModel) {
-      SModelHeader modelHeader = null;
-      DefaultSModel dsm = (DefaultSModel) modelData;
-      modelHeader = dsm.getSModelHeader();
-      oldVersion = modelHeader.getPersistenceVersion();
-      if (oldVersion != persistenceVersion) {
-        modelHeader.setPersistenceVersion(persistenceVersion);
-      }
-    }
-    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(modelData);
-
-    // save into JDOM
-    Map<String, Document> result = ModelPersistence.getPersistence(persistenceVersion).getModelWriter(mmiProvider).saveModelAsMultiStream(modelData);
-
-    // write to storage
-    Set<StreamDataSource> toRemove = new HashSet<>();
-    source.getSubStreams().filter(s -> !result.containsKey(s.getStreamName())).forEach(toRemove::add);
-
-    toRemove.stream().filter(DisposableDataSource.class::isInstance).map(DisposableDataSource.class::cast).forEach(DisposableDataSource::delete);
-
-    for (Entry<String, Document> entry : result.entrySet()) {
-      JDOMUtil.writeDocument(entry.getValue(), source, entry.getKey());
-    }
-
-    if (oldVersion != persistenceVersion) {
-      Logger.getLogger(FilePerRootFormatUtil.class).info("persistence upgraded: " + oldVersion + "->" + persistenceVersion + " " + modelData.getReference());
-      return true;
-    }
-    return false;
-  }
-
   /**
    * @deprecated replace with {@link jetbrains.mps.persistence.DataLocationAwareModelFactory#getNodeLocation(SNode)}
    */

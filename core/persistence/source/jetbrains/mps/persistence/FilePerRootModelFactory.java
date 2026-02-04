@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.extapi.persistence.DisposableDataSource;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.ModelDigestUtil;
@@ -34,9 +36,13 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
+import jetbrains.mps.smodel.persistence.def.IModelPersistence;
+import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.JDOMUtil;
+import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -51,6 +57,8 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
+import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
@@ -62,10 +70,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
@@ -160,14 +173,54 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
   }
 
   @Override
-  public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws IOException {
+  public void save(@NotNull SModel model, @NotNull DataSource dataSource, @Nullable ModelSaveOption... options) throws ModelSaveException {
     if (!supports(dataSource)) {
-      throw new UnsupportedDataSourceException(dataSource);
+      String m = String.format("Incompatible data source %s(%s) for model %s", dataSource.getType(), dataSource.getLocation(), model.getReference());
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
+    }
+    int persistenceVersion = -1;
+    if (model instanceof PersistenceVersionAware) {
+      persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
+    }
+    if (persistenceVersion == -1) {
+      // if unspecified, use the latest
+      persistenceVersion = ModelPersistence.LAST_VERSION;
+    }
+    // TODO upgrade persistence version if explicitly instructed to via ModelSaveOptions. Do it together with DefaultMP
+    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getSModel());
+
+    final IModelPersistence mp = ModelPersistence.getPersistence(persistenceVersion);
+    if (mp == null) {
+      // XXX same/similar logic is in ModelPersistence.modelToXml()
+      final String m = String.format("Unknown persistence version %d", persistenceVersion);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
     }
 
-    // FIXME, perhaps, ((PersistenceVersionAware) model).getPersistenceVersion(), not LAST_VERSION?
-    //        shall be consistent w/ DefaultModelPersistence, either always LAST or stick to actual and expect "force upgrade' option
-    FilePerRootFormatUtil.saveModel(((SModelBase) model).getSModel(), (MultiStreamDataSource) dataSource, ModelPersistence.LAST_VERSION);
+    IModelWriter mw = mp.getModelWriter(mmiProvider, options);
+    if (mw == null) {
+      // XXX same/similar logic is in ModelPersistence.modelToXml()
+      final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
+    }
+    // FIXME why on earth does ModelWriter take smodel.SModel?!
+    Map<String, Document> result = mw.saveModelAsMultiStream(((SModelBase) model).getSModel());
+
+    Set<StreamDataSource> toRemove = new HashSet<>();
+    ((MultiStreamDataSource) dataSource).getSubStreams().filter(s -> !result.containsKey(s.getStreamName())).forEach(toRemove::add);
+
+    toRemove.stream().filter(DisposableDataSource.class::isInstance).map(DisposableDataSource.class::cast).forEach(DisposableDataSource::delete);
+
+    ArrayList<SModel.Problem> writeIssues = new ArrayList<>();
+    for (Entry<String, Document> entry : result.entrySet()) {
+      try {
+        JDOMUtil.writeDocument(entry.getValue(), (MultiStreamDataSource) dataSource, entry.getKey());
+      } catch (IOException ex) {
+        writeIssues.add(PersistenceProblem.errorSave(ex.getMessage(), dataSource));
+      }
+    }
+    if (!writeIssues.isEmpty()) {
+      throw new ModelSaveException("Failed to persist individual streams of %s".formatted(model.getReference()), writeIssues);
+    }
   }
 
   @NotNull
