@@ -7,7 +7,9 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.lang.checkedName.behavior.ICheckedNamePolicy__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -26,8 +28,9 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   public check_NamingPolicy_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    NativeLangNameChecker nativeLangChecker = ExtensionsHelper.retrieveNativeLangChecker();
-    if (nativeLangChecker == null) {
+    SRepository repository = SNodeOperations.getModel(node).getRepository();
+    if (!(ExtensionsHelper.anyNativeLangCheckersInstalled(repository))) {
+      LogContext.with(check_NamingPolicy_NonTypesystemRule.class, null, null, null).warning("No native checker extension found ... ");
       // Use hard-coded naming policy
       String warningMessage = "Naming policies violated: " + "all words except prepositions, articles and particles should be capitalized";
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
@@ -77,8 +80,8 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
     } else {
       // Use grazie
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
-        if (!(nativeLangChecker.isProperlyCapitalized(SPropertyOperations.getString(s, PROPS.value$w7MM)))) {
-          String warningMessage = "Naming policies for " + nativeLangChecker.detectNativeLanguage(SPropertyOperations.getString(s, PROPS.value$w7MM)) + " language violated: " + "all words except prepositions, articles and particles should be capitalized.";
+        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)))) {
+          String warningMessage = "Naming policies for " + ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)) + " language violated: " + "all words except prepositions, articles and particles should be capitalized.";
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976032692", null, errorTarget);
@@ -100,8 +103,8 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
         if (SPropertyOperations.getString(p.getNode(), p.getProperty()) == null) {
           continue;
         }
-        if (!(nativeLangChecker.isProperlyCapitalized(SPropertyOperations.getString(p.getNode(), p.getProperty())))) {
-          String warningMessage = "Naming policies for " + nativeLangChecker.detectNativeLanguage(SPropertyOperations.getString(p.getNode(), p.getProperty())) + " language violated: " + "all words except prepositions, articles and particles should be capitalized; no leading and trailing whitespaces are allowed.";
+        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(p.getNode(), p.getProperty())))) {
+          String warningMessage = "Naming policies for " + ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(p.getNode(), p.getProperty())) + " language violated: " + "all words except prepositions, articles and particles should be capitalized; no leading and trailing whitespaces are allowed.";
           {
             final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976034414", null, errorTarget);

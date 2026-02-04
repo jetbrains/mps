@@ -42,6 +42,8 @@
     <import index="rqnh" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.utils(jetbrains.mps.spellchecker.idea.stubs/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="m81" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.detection(jetbrains.mps.spellchecker.idea.stubs/)" />
+    <import index="1cfl" ref="r:639857b1-56a4-40e4-875a-56d6ebe772b2(jetbrains.mps.lang.checkedName.plugin)" />
+    <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="neu9" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:ai.grazie.nlp.langs(jetbrains.mps.spellchecker.idea.stubs/)" implicit="true" />
   </imports>
   <registry>
@@ -133,6 +135,9 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -187,6 +192,7 @@
       </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -328,7 +334,15 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
+    </language>
+    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
@@ -5181,6 +5195,120 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1xq1$bo1Kx6" role="1B3o_S" />
+  </node>
+  <node concept="312cEu" id="51B5bJ$_oW4">
+    <property role="TrG5h" value="GrazieNativeLangExtension" />
+    <node concept="3Tm1VV" id="51B5bJ$_oW5" role="1B3o_S" />
+    <node concept="3uibUv" id="51B5bJ$_sa9" role="EKbjA">
+      <ref role="3uigEE" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+    </node>
+    <node concept="3clFb_" id="51B5bJ$_sb3" role="jymVt">
+      <property role="TrG5h" value="detectNativeLanguage" />
+      <node concept="3Tm1VV" id="51B5bJ$_sb5" role="1B3o_S" />
+      <node concept="17QB3L" id="51B5bJ$_sb6" role="3clF45" />
+      <node concept="37vLTG" id="51B5bJ$_sb7" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="51B5bJ$_sb8" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="51B5bJ$_sb9" role="3clF47">
+        <node concept="3clFbF" id="51B5bJ$_sy0" role="3cqZAp">
+          <node concept="2YIFZM" id="5J0WEnGMXGF" role="3clFbG">
+            <ref role="37wK5l" node="5AhI6VMvAvM" resolve="detectNativeLanguage" />
+            <ref role="1Pybhc" node="7pzI1FvZpLp" resolve="NativeLanguageAnalyzer" />
+            <node concept="37vLTw" id="5J0WEnGMXGG" role="37wK5m">
+              <ref role="3cqZAo" node="51B5bJ$_sb7" resolve="text" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="51B5bJ$_sba" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="51B5bJ$_sbd" role="jymVt">
+      <property role="TrG5h" value="isProperlyCapitalized" />
+      <node concept="3Tm1VV" id="51B5bJ$_sbf" role="1B3o_S" />
+      <node concept="10P_77" id="51B5bJ$_sbg" role="3clF45" />
+      <node concept="37vLTG" id="51B5bJ$_sbh" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="51B5bJ$_sbi" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="51B5bJ$_sbj" role="3clF47">
+        <node concept="3clFbF" id="5J0WEnGMXGP" role="3cqZAp">
+          <node concept="2YIFZM" id="5J0WEnGMXGQ" role="3clFbG">
+            <ref role="37wK5l" node="5AhI6VMq7ch" resolve="isActionDescProperlyCapitalized" />
+            <ref role="1Pybhc" node="7pzI1FvZpLp" resolve="NativeLanguageAnalyzer" />
+            <node concept="37vLTw" id="5J0WEnGMXGR" role="37wK5m">
+              <ref role="3cqZAo" node="51B5bJ$_sbh" resolve="text" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="51B5bJ$_sbk" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="51B5bJ$_G6F">
+    <property role="TrG5h" value="ModuleActivator" />
+    <node concept="3Tm1VV" id="51B5bJ$_G6G" role="1B3o_S" />
+    <node concept="3uibUv" id="51B5bJ$_Gr2" role="EKbjA">
+      <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="ModuleRuntime.Activator" />
+    </node>
+    <node concept="3clFb_" id="51B5bJ$_HPv" role="jymVt">
+      <property role="TrG5h" value="contribute" />
+      <node concept="3Tm1VV" id="51B5bJ$_HPx" role="1B3o_S" />
+      <node concept="3cqZAl" id="51B5bJ$_HPz" role="3clF45" />
+      <node concept="37vLTG" id="51B5bJ$_HP$" role="3clF46">
+        <property role="TrG5h" value="ctx" />
+        <node concept="3uibUv" id="51B5bJ$_HP_" role="1tU5fm">
+          <ref role="3uigEE" to="ze1i:~ModuleRuntime$ActivatorContext" resolve="ModuleRuntime.ActivatorContext" />
+        </node>
+        <node concept="2AHcQZ" id="51B5bJ$_HPA" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="51B5bJ$_HPB" role="3clF47">
+        <node concept="2xdQw9" id="51B5bJ$AvnJ" role="3cqZAp">
+          <property role="2xdLsb" value="gZ5fksE/warn" />
+          <node concept="Xl_RD" id="51B5bJ$AvnL" role="9lYJi">
+            <property role="Xl_RC" value="Contributing ... " />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3Ssq9B$kDfp" role="3cqZAp">
+          <node concept="2OqwBi" id="3Ssq9B$kDxo" role="3clFbG">
+            <node concept="37vLTw" id="3Ssq9B$kDfo" role="2Oq$k0">
+              <ref role="3cqZAo" node="51B5bJ$_HP$" resolve="ctx" />
+            </node>
+            <node concept="liA8E" id="3Ssq9B$kDDB" role="2OqNvi">
+              <ref role="37wK5l" to="ze1i:~ModuleRuntime$ActivatorContext.extension(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension)" resolve="extension" />
+              <node concept="3VsKOn" id="3Ssq9B$kDQv" role="37wK5m">
+                <ref role="3VsUkX" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+              </node>
+              <node concept="2YIFZM" id="3Ssq9B$lt7m" role="37wK5m">
+                <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.of(java.util.function.Supplier,java.lang.String...)" resolve="of" />
+                <ref role="1Pybhc" to="ze1i:~ModuleRuntime$Extension" resolve="ModuleRuntime.Extension" />
+                <node concept="1bVj0M" id="3Ssq9B$ltFo" role="37wK5m">
+                  <node concept="3clFbS" id="3Ssq9B$ltFu" role="1bW5cS">
+                    <node concept="3clFbF" id="3Ssq9B$lub8" role="3cqZAp">
+                      <node concept="2ShNRf" id="3Ssq9B$lub6" role="3clFbG">
+                        <node concept="HV5vD" id="3Ssq9B$luH1" role="2ShVmc">
+                          <property role="373rjd" value="true" />
+                          <ref role="HV5vE" node="51B5bJ$_oW4" resolve="GrazieNativeLangExtension" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="51B5bJ$_HPC" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
 </model>
 

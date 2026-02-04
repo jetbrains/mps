@@ -689,6 +689,35 @@
       <unit id="411797247021062466" at="14,0,65,0" name="jetbrains.mps.editor.spellcheck.AddWordToDictionary_Action" />
     </file>
   </root>
+  <root nodeRef="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)/5793622242861879044">
+    <file name="GrazieNativeLangExtension.java">
+      <node id="5793622242861893760" at="9,51,10,61" concept="11" />
+      <node id="6611551047436196661" at="13,53,14,72" concept="11" />
+      <node id="5793622242861892291" at="8,0,12,0" concept="9" trace="detectNativeLanguage#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="5793622242861892301" at="12,0,16,0" concept="9" trace="isProperlyCapitalized#(Ljava/lang/String;)Z" />
+      <scope id="5793622242861892297" at="9,51,10,61" />
+      <scope id="5793622242861892307" at="13,53,14,72" />
+      <scope id="5793622242861892291" at="8,0,12,0">
+        <var name="text" id="5793622242861892295" />
+      </scope>
+      <scope id="5793622242861892301" at="12,0,16,0">
+        <var name="text" id="5793622242861892305" />
+      </scope>
+      <unit id="5793622242861879044" at="7,0,17,0" name="jetbrains.mps.editor.spellcheck.GrazieNativeLangExtension" />
+    </file>
+  </root>
+  <root nodeRef="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)/5793622242861957547">
+    <file name="ModuleActivator.java">
+      <node id="5793622242862167535" at="12,71,13,90" concept="4" />
+      <node id="4475567139869332441" at="13,90,14,114" concept="4" />
+      <node id="5793622242861964639" at="11,0,16,0" concept="9" trace="contribute#(Ljetbrains/mps/smodel/runtime/ModuleRuntime/ActivatorContext;)V" />
+      <scope id="5793622242861964647" at="12,71,14,114" />
+      <scope id="5793622242861964639" at="11,0,16,0">
+        <var name="ctx" id="5793622242861964644" />
+      </scope>
+      <unit id="5793622242861957547" at="10,0,17,0" name="jetbrains.mps.editor.spellcheck.ModuleActivator" />
+    </file>
+  </root>
   <root nodeRef="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)/8530864544736451673">
     <file name="NativeLanguageAnalyzer.java">
       <node id="8530864544736451673" at="19,0,20,0" concept="14" trace="LOG" />
