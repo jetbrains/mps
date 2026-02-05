@@ -105,6 +105,7 @@ class MPSProperties : JetBrainsProductProperties() {
             layout.withProjectLibrary("Eclipse", LibraryPackMode.MERGED)
             layout.withProjectLibrary("JUnit4", LibraryPackMode.STANDALONE_MERGED)
             layout.withProjectLibrary("http-client", LibraryPackMode.MERGED)
+            layout.withProjectLibrary("hamcrest", LibraryPackMode.STANDALONE_MERGED)
             layout.withoutProjectLibrary("Ant")
             layout.withoutProjectLibrary("Gradle")
             layout.withProjectLibrary("maven-resolver-provider", LibraryPackMode.STANDALONE_MERGED)
