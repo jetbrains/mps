@@ -19,7 +19,7 @@
 }, {
   "name" : "Amazon Ion Java",
   "url" : "https://github.com/amazon-ion/ion-java",
-  "version" : "1.11.10",
+  "version" : "1.11.11",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/amazon-ion/ion-java/blob/master/LICENSE"
 }, {
@@ -157,19 +157,25 @@
 }, {
   "name" : "Compose Multiplatform",
   "url" : "https://github.com/JetBrains/compose-multiplatform",
-  "version" : "1.10.0-alpha01",
+  "version" : "1.10.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/compose-multiplatform/blob/master/LICENSE.txt"
 }, {
   "name" : "Compose Runtime",
   "url" : "https://source.android.com/",
-  "version" : "1.10.0-alpha02",
+  "version" : "1.10.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:LICENSE.txt"
+}, {
+  "name" : "Compose Runtime Retained",
+  "url" : "https://source.android.com/",
+  "version" : "1.10.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:LICENSE.txt"
 }, {
   "name" : "Compose Runtime Saveable Desktop",
   "url" : "https://source.android.com/",
-  "version" : "1.10.0-alpha02",
+  "version" : "1.10.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:LICENSE.txt"
 }, {
@@ -217,13 +223,13 @@
 }, {
   "name" : "Gson",
   "url" : "https://github.com/google/gson",
-  "version" : "2.13.1",
+  "version" : "2.13.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/gson/blob/master/LICENSE"
 }, {
   "name" : "Guava",
   "url" : "https://github.com/google/guava",
-  "version" : "33.4.8-jre",
+  "version" : "33.5.0-jre",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/guava/raw/master/LICENSE"
 }, {
@@ -271,7 +277,7 @@
 }, {
   "name" : "IntelliJ IDEA Test Discovery Agent",
   "url" : "https://github.com/JetBrains/intellij-coverage/tree/master/test-discovery",
-  "version" : "1.0.763",
+  "version" : "1.0.771",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/intellij-coverage/blob/master/LICENSE"
 }, {
@@ -289,7 +295,7 @@
 }, {
   "name" : "JCEF",
   "url" : "https://bitbucket.org/chromiumembedded/java-cef",
-  "version" : "137.0.17-gf354b0e-chromium-137.0.7151.104-api-1.20-253-b13",
+  "version" : "137.0.17-gf354b0e-chromium-137.0.7151.104-api-1.21-261-b50",
   "license" : "BSD 3-Clause",
   "licenseUrl" : "https://bitbucket.org/chromiumembedded/java-cef/src/master/LICENSE.txt"
 }, {
@@ -307,7 +313,7 @@
 }, {
   "name" : "JGit (Settings Sync and SettingsRepo)",
   "url" : "https://www.eclipse.org/jgit/",
-  "version" : "6.6.1.202309021850-r-jb-202407181518",
+  "version" : "6.6.1.202309021850-r-jb-202510311356",
   "license" : "Eclipse Distribution License 1.0",
   "licenseUrl" : "https://www.eclipse.org/org/documents/edl-v10.php"
 }, {
@@ -358,6 +364,30 @@
   "version" : "4.13.2",
   "license" : "EPL 1.0",
   "licenseUrl" : "https://junit.org/junit4/license.html"
+}, {
+  "name" : "JUnit5",
+  "url" : "https://junit.org/junit5/",
+  "version" : "5.13.4",
+  "license" : "EPL 2.0",
+  "licenseUrl" : "https://github.com/junit-team/junit5/blob/main/LICENSE.md"
+}, {
+  "name" : "JUnit5Jupiter",
+  "url" : "https://junit.org/junit5/",
+  "version" : "5.13.4",
+  "license" : "EPL 2.0",
+  "licenseUrl" : "https://github.com/junit-team/junit5/blob/main/LICENSE.md"
+}, {
+  "name" : "JUnit5Launcher",
+  "url" : "https://junit.org/junit5/",
+  "version" : "1.13.4",
+  "license" : "EPL 2.0",
+  "licenseUrl" : "https://github.com/junit-team/junit5/blob/main/LICENSE.md"
+}, {
+  "name" : "JUnit5Vintage",
+  "url" : "https://junit.org/junit5/",
+  "version" : "5.13.4",
+  "license" : "EPL 2.0",
+  "licenseUrl" : "https://github.com/junit-team/junit5/blob/main/LICENSE.md"
 }, {
   "name" : "Jackson",
   "url" : "https://github.com/FasterXML/jackson",
@@ -463,25 +493,31 @@
 }, {
   "name" : "Kotlin Coroutines for Guava",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.10.1-intellij-5",
+  "version" : "1.10.2-intellij-1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin Coroutines for JDK 8",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.10.1-intellij-5",
+  "version" : "1.10.2-intellij-1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin Coroutines for Slf4j",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.10.1-intellij-5",
+  "version" : "1.10.2-intellij-1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
+  "name" : "Kotlin Logging",
+  "url" : "https://github.com/oshai/kotlin-logging/",
+  "version" : "7.0.3",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/oshai/kotlin-logging/blob/master/LICENSE"
+}, {
   "name" : "Kotlin Standard Library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.2.20",
+  "version" : "2.3.20-RC2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -493,67 +529,55 @@
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.8.1",
+  "version" : "1.9.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.8.1",
+  "version" : "1.9.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.8.1",
+  "version" : "1.9.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.8.1",
+  "version" : "1.9.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin multiplatform / multi-format serialization",
   "url" : "https://github.com/Kotlin/kotlinx.serialization",
-  "version" : "1.8.1",
+  "version" : "1.9.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.serialization/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin reflection library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.2.20",
+  "version" : "2.3.20-RC2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
-  "name" : "Kryo5",
-  "url" : "https://github.com/EsotericSoftware/kryo",
-  "version" : "5.6.0",
-  "license" : "BSD 3-Clause",
-  "licenseUrl" : "https://github.com/EsotericSoftware/kryo/blob/master/LICENSE.md"
-}, {
   "name" : "Ktor Client Core",
   "url" : "https://github.com/ktorio/ktor/tree/main/ktor-client/ktor-client-core",
-  "version" : "3.1.3",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
-}, {
-  "name" : "Ktor Client OkHttp",
-  "url" : "https://github.com/ktorio/ktor/tree/main/ktor-client/ktor-client-okhttp",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "Language Tool (JetBrains's fork)",
   "url" : "https://github.com/JetBrains/languagetool",
-  "version" : "6.7.19",
+  "version" : "6.7.20",
   "license" : "LGPL 2.1",
   "licenseUrl" : "https://github.com/JetBrains/languagetool/blob/master/COPYING.txt"
 }, {
   "name" : "Language Tool (JetBrains's fork, English)",
   "url" : "https://github.com/JetBrains/languagetool",
-  "version" : "6.7.19",
+  "version" : "6.7.20",
   "license" : "LGPL 2.1",
   "licenseUrl" : "https://github.com/JetBrains/languagetool/blob/master/COPYING.txt"
 }, {
@@ -581,12 +605,6 @@
   "license" : "zlib/libpng",
   "licenseUrl" : "https://github.com/saulhidalgoaular/nanoxml/raw/master/LICENSE.txt"
 }, {
-  "name" : "OkHttp",
-  "url" : "https://square.github.io/okhttp/",
-  "version" : "5.0.0-alpha.14",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://square.github.io/okhttp/#license"
-}, {
   "name" : "Plexus Utils",
   "url" : "https://github.com/codehaus-plexus/plexus-utils",
   "version" : "3.5.1",
@@ -595,7 +613,7 @@
 }, {
   "name" : "Protocol Buffers",
   "url" : "https://developers.google.com/protocol-buffers",
-  "version" : "3.24.4-jb.2",
+  "version" : "3.25.5",
   "license" : "BSD 3-Clause",
   "licenseUrl" : "https://github.com/google/protobuf/blob/master/LICENSE"
 }, {
@@ -623,15 +641,21 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/roboto/blob/master/LICENSE"
 }, {
+  "name" : "Schema Kenerator",
+  "url" : "https://github.com/SMILEY4/schema-kenerator",
+  "version" : "2.2.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/SMILEY4/schema-kenerator/blob/develop/LICENSE"
+}, {
   "name" : "Skiko",
   "url" : "https://github.com/JetBrains/skiko/",
-  "version" : "0.9.24",
+  "version" : "0.9.37.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/skiko/blob/master/LICENSE"
 }, {
   "name" : "Skiko Runtime",
   "url" : "https://github.com/JetBrains/skiko/",
-  "version" : "0.9.24",
+  "version" : "0.9.37.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/skiko/blob/master/LICENSE"
 }, {
@@ -709,9 +733,15 @@
 }, {
   "name" : "aalto-xml",
   "url" : "https://github.com/FasterXML/aalto-xml/",
-  "version" : "1.3.3",
+  "version" : "1.3.4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/FasterXML/aalto-xml/blob/master/LICENSE"
+}, {
+  "name" : "batik",
+  "url" : "https://xmlgraphics.apache.org/batik/",
+  "version" : "1.16.0-35",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://xmlgraphics.apache.org/batik/license.html"
 }, {
   "name" : "blockmap",
   "url" : "https://github.com/JetBrains/plugin-blockmap-patches",
@@ -721,19 +751,19 @@
 }, {
   "name" : "bouncy-castle-pgp",
   "url" : "https://www.bouncycastle.org",
-  "version" : "1.81",
+  "version" : "1.83",
   "license" : "MIT",
   "licenseUrl" : "https://www.bouncycastle.org/license.html"
 }, {
   "name" : "bouncy-castle-provider",
   "url" : "https://www.bouncycastle.org",
-  "version" : "1.81",
+  "version" : "1.83",
   "license" : "MIT",
   "licenseUrl" : "https://www.bouncycastle.org/license.html"
 }, {
   "name" : "caffeine",
   "url" : "https://github.com/ben-manes/caffeine",
-  "version" : "3.2.2",
+  "version" : "3.2.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ben-manes/caffeine/blob/master/LICENSE"
 }, {
@@ -757,7 +787,7 @@
 }, {
   "name" : "fastutil",
   "url" : "https://github.com/vigna/fastutil",
-  "version" : "8.5.16-jb1",
+  "version" : "8.5.18-jb1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/vigna/fastutil/blob/master/LICENSE-2.0"
 }, {
@@ -799,7 +829,7 @@
 }, {
   "name" : "hash4j",
   "url" : "https://github.com/dynatrace-oss/hash4j",
-  "version" : "0.26.0",
+  "version" : "0.29.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/dynatrace-oss/hash4j/blob/main/LICENSE"
 }, {
@@ -833,6 +863,12 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/markdown/blob/master/LICENSE"
 }, {
+  "name" : "io.modelcontextprotocol.kotlin.sdk",
+  "url" : "https://github.com/modelcontextprotocol/kotlin-sdk/",
+  "version" : "0.8.1",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/modelcontextprotocol/kotlin-sdk/blob/master/LICENSE"
+}, {
   "name" : "jackson-jr-objects",
   "url" : "https://github.com/FasterXML/jackson-jr",
   "version" : "2.19.0",
@@ -847,13 +883,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.56",
+  "version" : "3.63",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.56",
+  "version" : "3.63",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -875,6 +911,12 @@
   "license" : "MIT",
   "licenseUrl" : "https://jsoup.org/license"
 }, {
+  "name" : "jspecify",
+  "url" : "https://github.com/jspecify/jspecify",
+  "version" : "1.0.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/jspecify/jspecify/blob/main/LICENSE"
+}, {
   "name" : "jsvg",
   "url" : "https://github.com/weisJ/jsvg",
   "version" : "1.3.0-jb.8",
@@ -887,15 +929,9 @@
   "license" : "BSD 3-Clause",
   "licenseUrl" : "https://github.com/ymnk/jzlib/raw/master/LICENSE.txt"
 }, {
-  "name" : "kotlin-codepoints",
-  "url" : "https://github.com/cketti/kotlin-codepoints",
-  "version" : "0.9.0",
-  "license" : "MIT",
-  "licenseUrl" : "https://github.com/cketti/kotlin-codepoints/blob/main/LICENSE"
-}, {
   "name" : "kotlin-metadata",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.2.20",
+  "version" : "2.3.20-RC2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -917,51 +953,57 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.html/blob/master/LICENSE"
 }, {
+  "name" : "kryo",
+  "url" : "https://github.com/EsotericSoftware/kryo",
+  "version" : "5.6.0",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://github.com/EsotericSoftware/kryo/blob/master/LICENSE.md"
+}, {
   "name" : "ktor-client-auth",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-cio-internal",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-content-negotiation",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-encoding",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-java",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-logging",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-serialization-kotlinx-json",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor.io TLS",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.1.3",
+  "version" : "3.3.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
@@ -1037,11 +1079,23 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/netty/netty/blob/4.1/LICENSE.txt"
 }, {
+  "name" : "netty-handler-proxy",
+  "url" : "https://netty.io",
+  "version" : "4.2.0.RC2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/netty/netty/blob/4.1/LICENSE.txt"
+}, {
   "name" : "ngram-slp",
   "url" : "https://github.com/SLP-team/SLP-Core",
   "version" : "0.0.3",
   "license" : "MIT",
   "licenseUrl" : "https://github.com/SLP-team/SLP-Core/blob/master/LICENSE"
+}, {
+  "name" : "opencsv",
+  "url" : "https://opencsv.sourceforge.net/",
+  "version" : "5.10",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://sourceforge.net/p/opencsv/source/ci/master/tree/LICENSE"
 }, {
   "name" : "opentelemetry",
   "url" : "https://opentelemetry.io/",
@@ -1055,11 +1109,23 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
+  "name" : "opentelemetry-exporter-sender-jdk",
+  "url" : "https://opentelemetry.io/",
+  "version" : "1.48.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
+}, {
   "name" : "opentelemetry-extension-kotlin",
   "url" : "https://opentelemetry.io/",
   "version" : "1.48.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
+}, {
+  "name" : "opentelemetry-sdk-autoconfigure-spi",
+  "url" : "https://opentelemetry.io/",
+  "version" : "1.48.0",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/open-telemetry/semantic-conventions-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-semconv",
   "url" : "https://opentelemetry.io/",
@@ -1081,7 +1147,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.13.11",
+  "version" : "0.13.12",
   "license" : "EPL 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {
@@ -1093,37 +1159,37 @@
 }, {
   "name" : "rd Swing integration",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-swing",
-  "version" : "2025.3.1",
+  "version" : "2026.1.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd core",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-core",
-  "version" : "2025.3.1",
+  "version" : "2026.1.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd framework",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-framework",
-  "version" : "2025.3.1",
+  "version" : "2026.1.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd generator",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-gen",
-  "version" : "2025.3.1",
+  "version" : "2026.1.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd text buffers",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-text",
-  "version" : "2025.3.1",
+  "version" : "2026.1.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "sa-jdwp",
   "url" : "https://github.com/JetBrains/jdk-sa-jdwp",
-  "version" : "1.24",
+  "version" : "1.25",
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://github.com/JetBrains/jdk-sa-jdwp/raw/master/LICENSE.txt"
 }, {
@@ -1151,6 +1217,12 @@
   "license" : "LGPL 2.1",
   "licenseUrl" : "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html"
 }, {
+  "name" : "toml4j",
+  "url" : "https://github.com/mwanji/toml4j",
+  "version" : "0.7.2",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/mwanji/toml4j/blob/master/LICENSE"
+}, {
   "name" : "unit-api",
   "url" : "https://github.com/unitsofmeasurement/unit-api",
   "version" : "1.0",
@@ -1168,6 +1240,12 @@
   "version" : "1.30.1",
   "license" : "MIT",
   "licenseUrl" : "https://github.com/jenkinsci/winp/blob/master/LICENSE.txt"
+}, {
+  "name" : "xml-apis-ext",
+  "url" : "https://xerces.apache.org/xml-commons/components/external/",
+  "version" : "1.3.04",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://svn.apache.org/viewvc/xerces/xml-commons/trunk/java/external/LICENSE?view=markup"
 }, {
   "name" : "xml-resolver",
   "url" : "https://xerces.apache.org/xml-commons/components/resolver/",
