@@ -15,20 +15,15 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
-import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
-import jetbrains.mps.persistence.MPSPersistence;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
-import jetbrains.mps.persistence.UserObjectsPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence.Indexer;
 import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -38,13 +33,9 @@ import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
-import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.persistence.ModelSaveException;
-import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.xml.sax.Attributes;
@@ -56,7 +47,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.Collections;
 
 /**
  * ModelPersistence handles all XML persistence versions supported by current MPS installation.
@@ -187,43 +177,6 @@ public class ModelPersistence {
     }
   }
 
-  /*
-   * NOTE, use of this method is discouraged, there are 2 uses in tests that shall get refactored to use ModelDataFactory, instead
-   * FIXME why on earth we pass SModelData here, not openapi.SModel?
-   */
-  @Deprecated(forRemoval = true)
-  public static DefaultSModel saveModel(@NotNull SModel model, @NotNull StreamDataSource source, int persistenceVersion) throws ModelSaveException {
-    LOG.debug("Saving model " + model.getReference() + " to " + source.getLocation());
-
-    if (source.isReadOnly()) {
-      throw new ModelSaveException(PersistenceProblem.errorSave(String.format("`%s' is read-only", source.getLocation()), source));
-    }
-
-    // save model
-    try {
-      IModelPersistence modelPersistence = getPersistence(persistenceVersion);
-      if (modelPersistence == null) {
-        final String m = String.format("Unknown persistence version %d", persistenceVersion);
-        PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);
-        throw new ModelSaveException(p);
-      }
-      final MetaModelInfoProvider mmiProvider = mmiProviderFor(model);
-      final ModelSaveOption[] opts = saveOptionsFor(model);
-      IModelWriter writer = modelPersistence.getModelWriter(mmiProvider, opts);
-      if (writer == null) {
-        final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
-        PersistenceProblem p = new PersistenceProblem(Kind.Save, m, String.valueOf(model.getReference()), true);
-        throw new ModelSaveException(m, Collections.singleton(p));
-      }
-      Document document = writer.saveModel(model);
-      JDOMUtil.writeDocument(document, source);
-    } catch (IOException ex) {
-      PersistenceProblem p = PersistenceProblem.errorSave("Failed to serialize XML document into stream", source);
-      throw new ModelSaveException(p.getText(), Collections.singleton(p), ex);
-    }
-    return null;
-  }
-
   /**
    * DO NOT USE THIS METHOD OUTSIDE OF MPS
    *
@@ -237,22 +190,6 @@ public class ModelPersistence {
     } else {
       return new RegularMetaModelInfo();
     }
-  }
-
-  /*
-   * perhaps, shall become part of DefaultModelPersistence class
-   */
-  @Nullable
-  public static ModelSaveOption[] saveOptionsFor(SModelData model) {
-    final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
-    if (header != null) {
-      if (RuntimeFlags.customNodeIdentitySupport()) {
-        return new UserObjectsPersistence[]{UserObjectsPersistence.DESIRED};
-      }
-      String value = header.getOptionalProperty(MPSPersistence.UO_MODEL_ATTRIBUTE);
-      return value != null ? new UserObjectsPersistence[]{UserObjectsPersistence.valueOf(value)} : null;
-    }
-    return null;
   }
 
   @NotNull

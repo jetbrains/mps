@@ -13,8 +13,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.smodel.ModelImports;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import jetbrains.mps.persistence.PersistenceUtil;
-import jetbrains.mps.smodel.persistence.def.ModelPersistence;
+import jetbrains.mps.persistence.PersistenceVersionAware;
 import org.junit.Assert;
 import java.util.List;
 import java.util.Comparator;
@@ -54,14 +55,15 @@ import java.util.Arrays;
     });
   }
 
-  /*package*/ void saveTestModelInPersistence(PersistenceUtil.InMemoryStreamDataSource dataSource, int persistence) {
+  /*package*/ byte[] getTestModelInPersistence(ModelFactory xmlMF, int persistence) {
+    PersistenceUtil.InMemoryStreamDataSource dataSource = new PersistenceUtil.InMemoryStreamDataSource();
     try {
-      // FIXME can't use trick with PVA here, as myTestModel is a TrivialModelDescriptor, unaware of persistence version, and there's no
-      // other way to specify persistence version ATM
-      ModelPersistence.saveModel(myTestModel.getSModel(), dataSource, persistence);
+      // JFTR, myTestModel is a TrivialModelDescriptor, unaware of any persistence version
+      xmlMF.save(myTestModel, dataSource, PersistenceVersionAware.SpecificVersion.of(persistence));
     } catch (Exception e) {
       Assert.fail("Exception during test. See log for details");
     }
+    return dataSource.getContentBytes();
   }
 
   /*package*/ SModelBase getTestModel() {

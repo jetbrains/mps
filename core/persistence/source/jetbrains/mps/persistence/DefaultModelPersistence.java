@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
@@ -245,7 +246,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
 
   @Override
   public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, UnsupportedDataSourceException {
-    save(model, dataSource, ModelPersistence.saveOptionsFor(((SModelBase) model).getSModel()));
+    save(model, dataSource, saveOptionsFor(((SModelBase) model).getSModel()));
   }
 
   @Override
@@ -370,6 +371,19 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     return mw;
   }
 
+  @Nullable
+  /*package*/ static ModelSaveOption[] saveOptionsFor(SModelData model) {
+    final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
+    if (header != null) {
+      if (RuntimeFlags.customNodeIdentitySupport()) {
+        return new UserObjectsPersistence[]{UserObjectsPersistence.DESIRED};
+      }
+      String value = header.getOptionalProperty(MPSPersistence.UO_MODEL_ATTRIBUTE);
+      return value != null ? new UserObjectsPersistence[]{UserObjectsPersistence.valueOf(value)} : null;
+    }
+    return null;
+  }
+
   private static class PersistenceFacility extends LazyLoadFacility {
     /*package*/ PersistenceFacility(DefaultModelPersistence modelFactory, StreamDataSource dataSource) {
       super(modelFactory, dataSource, true);
@@ -395,7 +409,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     @Override
     public void saveModel(@NotNull SModel modelData) throws ModelSaveException {
       // same as #save(SMode, DataSource), above, as I can't use default impl from super - need to detect proper options based on header values
-      getModelFactory().save(modelData, getSource0(), ModelPersistence.saveOptionsFor(((SModelBase) modelData).getSModel()));
+      getModelFactory().save(modelData, getSource0(), saveOptionsFor(((SModelBase) modelData).getSModel()));
     }
   }
 }

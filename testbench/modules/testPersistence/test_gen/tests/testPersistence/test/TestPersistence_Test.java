@@ -22,12 +22,12 @@ import jetbrains.mps.java.stub.JavaPackageNameStub;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.persistence.ByteArrayInputSource;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
-import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
@@ -110,10 +110,12 @@ public class TestPersistence_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         // tests write and read in each supported persistence, check that model is not changed after write/read cycle
         TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
+        final ModelFactoryService mfsvc = myProject.getComponent(ModelFactoryService.class);
+        final ModelFactory xmlMF = mfsvc.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
+        assert xmlMF != null;
+
         for (int i = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; i <= ModelPersistence.LAST_VERSION; ++i) {
-          PersistenceUtil.InMemoryStreamDataSource dataSource = new PersistenceUtil.InMemoryStreamDataSource();
-          helper.saveTestModelInPersistence(dataSource, i);
-          byte[] content = dataSource.getContentBytes();
+          byte[] content = helper.getTestModelInPersistence(xmlMF, i);
           SModelHeader mh = SModelHeader.create(i);
           mh.setModelReference(helper.getTestModel().getReference());
           // XXX not sure I understand the reason why readModel() and ModelLoadResult, while other methods use loadModel() and openapi.SModel?
@@ -136,11 +138,10 @@ public class TestPersistence_Test extends BaseTransformationTest {
         // tests that it's possible to upgrade to the latest persistence from any supported persistence
         for (int fromVersion = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; fromVersion < ModelPersistence.LAST_VERSION; fromVersion++) {
           // prepare data source in requested version
-          PersistenceUtil.InMemoryStreamDataSource notUpgradedData = new PersistenceUtil.InMemoryStreamDataSource();
-          helper.saveTestModelInPersistence(notUpgradedData, fromVersion);
+          byte[] notUpgradedData = helper.getTestModelInPersistence(xmlMF, fromVersion);
 
           // load model from source version
-          SModel notUpgradedModel = PersistenceUtil.loadModel(notUpgradedData.getContentBytes(), xmlMF);
+          SModel notUpgradedModel = PersistenceUtil.loadModel(notUpgradedData, xmlMF);
           Assert.assertNotNull(notUpgradedModel);
           assert notUpgradedModel != null;
           // TODO shall I check notUpgradedModel.getPersistenceVersion == fromVersion?!
