@@ -7,6 +7,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
+
 /**
  * @author Fedor Isakov
  */
@@ -23,7 +25,7 @@ public abstract class BaseProjectViewPaneWithAsyncSupport extends AbstractProjec
   public void updateFrom(Object element, boolean forceResort, boolean updateStructure) {
     if (element instanceof VirtualFile) {
       ProjectViewPaneSupport support = getAsyncSupport();
-      if (support != null) support.updateByFile((VirtualFile) element, updateStructure);
+      if (support != null) support.updateByFile((VirtualFile) element, updateStructure, Collections.emptyList());
     }
     super.updateFrom(element, forceResort, updateStructure);
   }
