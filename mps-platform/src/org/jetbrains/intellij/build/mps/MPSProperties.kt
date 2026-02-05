@@ -48,6 +48,7 @@ class MPSProperties : JetBrainsProductProperties() {
             "intellij.platform.ide.recentProjects",
             "intellij.platform.ide.util.netty",
             "intellij.platform.util.diff",
+            "intellij.platform.util.text.matching",
             "intellij.platform.syntax.psi",
             "intellij.json.syntax",
         )
