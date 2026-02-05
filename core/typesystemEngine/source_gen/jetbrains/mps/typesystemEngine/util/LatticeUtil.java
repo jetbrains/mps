@@ -4,60 +4,22 @@ package jetbrains.mps.typesystemEngine.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import java.util.Set;
 import java.util.Iterator;
 import java.util.HashSet;
 import java.util.List;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(nodeId = "1883223317720973623", model = "r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)")
-public class LatticeUtil {
+public final class LatticeUtil {
   public LatticeUtil() {
-  }
-  private static void processMeetsAndJoins(SNode node) {
-    {
-      final SNode joinType = node;
-      if (SNodeOperations.isInstanceOf(joinType, CONCEPTS.JoinType$re)) {
-        for (SNode child : SLinkOperations.getChildren(joinType, LINKS.argument$Iuyp)) {
-          processMeetsAndJoins(child);
-          {
-            final SNode childJoinType = child;
-            if (SNodeOperations.isInstanceOf(childJoinType, CONCEPTS.JoinType$re)) {
-              for (SNode grandChild : SLinkOperations.getChildren(childJoinType, LINKS.argument$Iuyp)) {
-                SNodeOperations.deleteNode(grandChild);
-                ListSequence.fromList(SLinkOperations.getChildren(joinType, LINKS.argument$Iuyp)).addElement(grandChild);
-              }
-              SNodeOperations.deleteNode(child);
-            }
-          }
-        }
-      }
-    }
-    {
-      final SNode meetType = node;
-      if (SNodeOperations.isInstanceOf(meetType, CONCEPTS.MeetType$ZG)) {
-        for (SNode child : SLinkOperations.getChildren(meetType, LINKS.argument$r2cT)) {
-          processMeetsAndJoins(child);
-          {
-            final SNode childMeetType = child;
-            if (SNodeOperations.isInstanceOf(childMeetType, CONCEPTS.MeetType$ZG)) {
-              for (SNode grandChild : SLinkOperations.getChildren(childMeetType, LINKS.argument$r2cT)) {
-                SNodeOperations.deleteNode(grandChild);
-                ListSequence.fromList(SLinkOperations.getChildren(meetType, LINKS.argument$r2cT)).addElement(grandChild);
-              }
-              SNodeOperations.deleteNode(child);
-            }
-          }
-        }
-      }
-    }
   }
   private static SNode join(SNode node1, SNode node2) {
     SNode joinType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType"));
@@ -163,15 +125,15 @@ public class LatticeUtil {
     return SLinkOperations.getChildren(SNodeOperations.as(join, CONCEPTS.JoinType$re), LINKS.argument$Iuyp);
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink argument$Iuyp = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SContainmentLink argument$r2cT = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept JoinType$re = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, "jetbrains.mps.lang.typesystem.structure.JoinType");
     /*package*/ static final SConcept MeetType$ZG = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, "jetbrains.mps.lang.typesystem.structure.MeetType");
     /*package*/ static final SConcept LowerBoundType$nl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
     /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$Iuyp = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
-    /*package*/ static final SContainmentLink argument$r2cT = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114b68ad132L, 0x114b68b040bL, "argument");
   }
 }
