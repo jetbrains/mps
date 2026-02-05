@@ -36,7 +36,6 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
-import jetbrains.mps.smodel.persistence.def.IModelPersistence;
 import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
@@ -178,31 +177,8 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
       String m = String.format("Incompatible data source %s(%s) for model %s", dataSource.getType(), dataSource.getLocation(), model.getReference());
       throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
     }
-    int persistenceVersion = -1;
-    if (model instanceof PersistenceVersionAware) {
-      persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
-    }
-    if (persistenceVersion == -1) {
-      // if unspecified, use the latest
-      persistenceVersion = ModelPersistence.LAST_VERSION;
-    }
-    // TODO upgrade persistence version if explicitly instructed to via ModelSaveOptions. Do it together with DefaultMP
-    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getSModel());
 
-    final IModelPersistence mp = ModelPersistence.getPersistence(persistenceVersion);
-    if (mp == null) {
-      // XXX same/similar logic is in ModelPersistence.modelToXml()
-      final String m = String.format("Unknown persistence version %d", persistenceVersion);
-      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
-    }
-
-    IModelWriter mw = mp.getModelWriter(mmiProvider, options);
-    if (mw == null) {
-      // XXX same/similar logic is in ModelPersistence.modelToXml()
-      final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
-      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
-    }
-    // FIXME why on earth does ModelWriter take smodel.SModel?!
+    IModelWriter mw = DefaultModelPersistence.deduceWriterVersion(model, dataSource, options);
     Map<String, Document> result = mw.saveModelAsMultiStream(((SModelBase) model).getSModel());
 
     Set<StreamDataSource> toRemove = new HashSet<>();

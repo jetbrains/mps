@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
+import jetbrains.mps.persistence.PersistenceVersionAware.SpecificVersion;
 import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
@@ -253,27 +254,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     // improved alternative to ModelPersistence.saveModel
     checkSaveReadOnlyDataSource(dataSource);
 
-    // next code is the same in FilePerRootModelFactory
-    int persistenceVersion = -1;
-    if (model instanceof PersistenceVersionAware) {
-      persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
-    }
-    if (persistenceVersion == -1) {
-      // if unspecified, use the latest
-      persistenceVersion = ModelPersistence.LAST_VERSION;
-    }
-    // TODO we shall not upgrade persistence version unless explicitly instructed to via ModelSaveOptions
-    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
-    final IModelPersistence mp = ModelPersistence.getPersistence(persistenceVersion);
-    if (mp == null) {
-      final String m = String.format("Unknown persistence version %d", persistenceVersion);
-      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
-    }
-    IModelWriter mw = mp.getModelWriter(mmiProvider, options);
-    if (mw == null) {
-      final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
-      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
-    }
+    IModelWriter mw = deduceWriterVersion(model, dataSource, options);
     Document document = mw.saveModel(((SModelBase) model).getSModel());
     try {
       JDOMUtil.writeDocument(document, (StreamDataSource) dataSource);
@@ -344,6 +325,49 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     if (dataSource.isReadOnly()) {
       throw new ModelSaveException(PersistenceProblem.errorSave(String.format("`%s' is read-only", dataSource.getLocation()), dataSource));
     }
+  }
+
+  /**
+   * Shared logic for xml persistence (both all-in-one stream and root-per-stream) to figure out persistence version to use and whether to upgrade it or not
+   */
+  @NotNull
+  /*package*/ static IModelWriter deduceWriterVersion(@NotNull SModel model, @NotNull DataSource dataSource, @Nullable ModelSaveOption... options) throws ModelSaveException {
+    // next code is the same in FilePerRootModelFactory
+    int persistenceVersion = -1;
+    if (model instanceof PersistenceVersionAware) {
+      persistenceVersion = ((PersistenceVersionAware) model).getPersistenceVersion();
+    }
+    // we shall not upgrade persistence version unless explicitly instructed to via ModelSaveOptions (SpecificVersion > than actual version)
+    SpecificVersion versionOption = SpecificVersion.find(options);
+    if (versionOption != null) {
+      if (persistenceVersion == -1) {
+        LOG.debug("Model %s without persistence version information is to be saved with version %d".formatted(model.getName(), versionOption.getVersion()));
+      } else if (persistenceVersion < versionOption.getVersion()) {
+        LOG.debug("Upgrading persistence of model %s: %d --> %d".formatted(model.getName(), persistenceVersion, versionOption.getVersion()));
+      } else if (persistenceVersion > versionOption.getVersion()) {
+        LOG.warning("Downgrading persistence of model %s: %d --> %d".formatted(model.getName(), persistenceVersion, versionOption.getVersion()));
+      }
+      persistenceVersion = versionOption.getVersion();
+    }
+    if (persistenceVersion == -1) {
+      // still unspecified, use the latest
+      persistenceVersion = ModelPersistence.LAST_VERSION;
+    }
+    final IModelPersistence mp = ModelPersistence.getPersistence(persistenceVersion);
+    if (mp == null) {
+      // XXX similar logic is in ModelPersistence.saveModel()
+      final String m = String.format(versionOption == null ? "Unknown persistence version %d" : "Bad requested persistence version %d", persistenceVersion);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
+    }
+    final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(((SModelBase) model).getModelData());
+    // FIXME why on earth does ModelWriter take smodel.SModel?!
+    IModelWriter mw = mp.getModelWriter(mmiProvider, options);
+    if (mw == null) {
+      // XXX same/similar logic is in ModelPersistence.saveModel()
+      final String m = String.format("Persistence has no writer. Version %d", persistenceVersion);
+      throw new ModelSaveException(PersistenceProblem.errorSave(m, dataSource));
+    }
+    return mw;
   }
 
   private static class PersistenceFacility extends LazyLoadFacility {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,14 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.smodel.persistence.def.ModelPersistence;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
+import org.jetbrains.mps.openapi.persistence.ModelSaveOption;
+
+import java.util.stream.Stream;
 
 /**
  * PROVISIONAL API
@@ -47,4 +54,44 @@ public interface PersistenceVersionAware extends SModel, LoadedStrategyAware {
    * @return persistence version number, or <code>-1</code> when undefined
    */
   int getPersistenceVersion();
+
+  /**
+   * Use this option for {@link org.jetbrains.mps.openapi.persistence.ModelFactory#load(DataSource, ModelLoadingOption...)} to indicate specific
+   * persistence version to use. Model factory shall fail if it doesn't support saving in this version.
+   * Note, this class is part of {@code PersistenceVersionAware} just for ease of discovery, it's not necessary for a model being saved to be
+   *    an instance of {@code PersistenceVersionAware}.
+   */
+  final class SpecificVersion implements ModelSaveOption {
+    private final int myVersion;
+
+    private SpecificVersion(int version) {
+      myVersion = version;
+    }
+
+    @Override
+    public boolean mandatory() {
+      return true;
+    }
+
+    public int getVersion() {
+      return myVersion;
+    }
+
+    public static SpecificVersion of(int version) {
+      // could have <ModelPersistence.FIRST_SUPPORTED_VERSION check here, but prefer to report a checked exception for that scenario
+      if (version < 0) {
+        // we treat -1 (extended to any negative number here) as "unspecified".
+        throw new IllegalArgumentException("Can't use negative value %d for persistence version".formatted(version));
+      }
+      return new SpecificVersion(version);
+    }
+    public static SpecificVersion latest() {
+      return new SpecificVersion(ModelPersistence.LAST_VERSION);
+    }
+
+    @Nullable
+    public static SpecificVersion find(ModelSaveOption... options) {
+      return options != null ? Stream.of(options).filter(SpecificVersion.class::isInstance).findAny().map(SpecificVersion.class::cast).orElse(null): null;
+    }
+  }
 }
