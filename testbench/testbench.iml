@@ -81,5 +81,6 @@
     <orderEntry type="module" module-name="mps-jps-plugin" scope="TEST" />
     <orderEntry type="module" module-name="mps-jps-common" scope="TEST" />
     <orderEntry type="module" module-name="mps-repository" scope="TEST" />
+    <orderEntry type="library" name="idea.grazie" level="project" />
   </component>
 </module>
