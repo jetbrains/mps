@@ -2,9 +2,7 @@
   <library name="jps-builders">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/plugins/java/lib/jps-builders.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/protobuf.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/java/lib/jps-builders-6.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/java/lib/aether-dependency-resolver.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/java/lib/jps-javac-extension.jar!/" />
     </CLASSES>
     <JAVADOC />

@@ -12,6 +12,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="hamcrest" level="project" />
     <orderEntry type="module" module-name="openapi" exported="" />
     <orderEntry type="module" module-name="smodel" exported="" />
     <orderEntry type="module" module-name="tuples-runtime" exported="" />
