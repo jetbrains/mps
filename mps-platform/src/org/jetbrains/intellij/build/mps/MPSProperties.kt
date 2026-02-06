@@ -37,20 +37,22 @@ class MPSProperties : JetBrainsProductProperties() {
         customCompatibleBuildRange = CompatibleBuildRange.RESTRICTED_TO_SAME_RELEASE
 
         productLayout.productImplementationModules = listOf(
-            "intellij.platform.starter",
             "intellij.idea.community.customization",
             "intellij.java.ide.resources",
-            "intellij.platform.whatsNew",
+            "intellij.json.syntax",
+            "intellij.platform.buildData",
             "intellij.platform.configurationStore.impl",
-            "intellij.platform.resources",
-            "intellij.platform.resources.en",
+            "intellij.platform.diagnostic.startUpPerformanceReporter",
             "intellij.platform.ide.codeinsight.inline",
             "intellij.platform.ide.recentProjects",
             "intellij.platform.ide.util.netty",
+            "intellij.platform.resources",
+            "intellij.platform.resources.en",
+            "intellij.platform.starter",
+            "intellij.platform.syntax.psi",
             "intellij.platform.util.diff",
             "intellij.platform.util.text.matching",
-            "intellij.platform.syntax.psi",
-            "intellij.json.syntax",
+            "intellij.platform.whatsNew",
         )
 
         productLayout.addPlatformSpec(javaCompiler)
