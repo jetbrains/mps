@@ -112,10 +112,6 @@
       <sourceRoot location="intellij.libraries.microba.jar" />
       <sourceRoot location="intellij.libraries.miglayout.swing.jar" />
       <sourceRoot location="intellij.libraries.mvstore.jar" />
-      <sourceRoot location="intellij.libraries.netty.buffer.jar" />
-      <sourceRoot location="intellij.libraries.netty.codec.compression.jar" />
-      <sourceRoot location="intellij.libraries.netty.codec.http.jar" />
-      <sourceRoot location="intellij.libraries.netty.handler.proxy.jar" />
       <sourceRoot location="intellij.libraries.opencsv.jar" />
       <sourceRoot location="intellij.libraries.oro.matcher.jar" />
       <sourceRoot location="intellij.libraries.plexus.utils.jar" />
@@ -385,10 +381,6 @@
       <library location="${mps_home}/lib/intellij.libraries.microba.jar" />
       <library location="${mps_home}/lib/intellij.libraries.miglayout.swing.jar" />
       <library location="${mps_home}/lib/intellij.libraries.mvstore.jar" />
-      <library location="${mps_home}/lib/intellij.libraries.netty.buffer.jar" />
-      <library location="${mps_home}/lib/intellij.libraries.netty.codec.compression.jar" />
-      <library location="${mps_home}/lib/intellij.libraries.netty.codec.http.jar" />
-      <library location="${mps_home}/lib/intellij.libraries.netty.handler.proxy.jar" />
       <library location="${mps_home}/lib/intellij.libraries.opencsv.jar" />
       <library location="${mps_home}/lib/intellij.libraries.oro.matcher.jar" />
       <library location="${mps_home}/lib/intellij.libraries.plexus.utils.jar" />

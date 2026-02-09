@@ -12,6 +12,11 @@
       <sourceRoot location="util_rt.jar" />
       <sourceRoot location="jps-model.jar" />
       <sourceRoot location="forms_rt.jar" />
+      <!-- originally in util-8.jar -->
+      <sourceRoot location="intellij.libraries.netty.buffer.jar" />
+      <sourceRoot location="intellij.libraries.netty.codec.compression.jar" />
+      <sourceRoot location="intellij.libraries.netty.codec.http.jar" />
+      <sourceRoot location="intellij.libraries.netty.handler.proxy.jar" />
       <!-- originally in app.jar -->
       <sourceRoot location="intellij.platform.analysis.impl.jar" />
       <sourceRoot location="intellij.platform.analysis.jar" />
@@ -89,6 +94,11 @@
       <library location="${mps_home}/lib//util_rt.jar" />
       <library location="${mps_home}/lib//jps-model.jar" />
       <library location="${mps_home}/lib//forms_rt.jar" />
+      <!-- originally in util-8.jar -->
+      <library location="${mps_home}/lib/intellij.libraries.netty.buffer.jar" />
+      <library location="${mps_home}/lib/intellij.libraries.netty.codec.compression.jar" />
+      <library location="${mps_home}/lib/intellij.libraries.netty.codec.http.jar" />
+      <library location="${mps_home}/lib/intellij.libraries.netty.handler.proxy.jar" />
       <!-- originally in app.jar -->
       <library location="${mps_home}/lib/intellij.platform.analysis.impl.jar" />
       <library location="${mps_home}/lib/intellij.platform.analysis.jar" />
