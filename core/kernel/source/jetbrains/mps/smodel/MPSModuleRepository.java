@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.repository.CommandListener;
@@ -55,7 +56,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   private static final Logger LOG = Logger.getLogger(MPSModuleRepository.class);
   private static MPSModuleRepository ourInstance;
 
-  private final GlobalModelAccess myGlobalModelAccess;
+  private final ModelAccess myGlobalModelAccess;
   private final CommandListener myCommandListener;
   private final CachingReferenceScopeHelper myScopeCache;
 
@@ -91,9 +92,9 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     return ourInstance;
   }
 
-  public MPSModuleRepository(SRepositoryRegistry repositoryRegistry) {
+  public MPSModuleRepository(SRepositoryRegistry repositoryRegistry, ModelAccess modelAccess) {
     super(repositoryRegistry);
-    myGlobalModelAccess = new GlobalModelAccess();
+    myGlobalModelAccess = modelAccess;
     myCommandListener = new CommandListener() {
       @Override
       public void commandStarted() {
@@ -298,7 +299,6 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   @Override
   public SModel getModel(@NotNull SModelId modelId) {
     if (modelId.isGloballyUnique()) {
-      //noinspection deprecation
       final SModel md = myModelRepository.getModelDescriptor(modelId);
       if (md == null) {
         final Collection<SModule> incompleteModules = myIncompleteModelLoad.detachedCopy();
@@ -340,8 +340,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     long beginTime = System.nanoTime();
     try {
       for (SModule module : getModules()) {
-        if (module instanceof EditableSModule) {
-          EditableSModule editableModule = (EditableSModule) module;
+        if (module instanceof EditableSModule editableModule) {
           if (editableModule.isChanged()) {
             editableModule.save();
           }

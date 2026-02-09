@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * This class represents a ModelAccess for cases when there is no available project in scope.
  * Therefore it lacks of some functionality: it does not support command execution.
@@ -28,8 +30,8 @@ package jetbrains.mps.smodel;
  */
 public class GlobalModelAccess extends ModelAccessBase {
 
-  public GlobalModelAccess() {
-    super(ModelAccess.instance());
+  public GlobalModelAccess(@NotNull org.jetbrains.mps.openapi.module.ModelAccess delegate) {
+    super(delegate);
   }
 
   @Override

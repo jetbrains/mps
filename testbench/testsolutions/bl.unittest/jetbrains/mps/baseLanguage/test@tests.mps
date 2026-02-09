@@ -2338,13 +2338,11 @@
             </node>
             <node concept="3clFbF" id="1KUoCipvD3U" role="3cqZAp">
               <node concept="2OqwBi" id="1KUoCipvD3V" role="3clFbG">
-                <node concept="2ShNRf" id="5piBd3sKHql" role="2Oq$k0">
-                  <node concept="1pGfFk" id="5piBd3sKIck" role="2ShVmc">
-                    <ref role="37wK5l" to="w1kc:~GlobalModelAccess.&lt;init&gt;()" resolve="GlobalModelAccess" />
-                  </node>
+                <node concept="37vLTw" id="7GkxKP_v$yR" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7GkxKP_vz8u" resolve="ma" />
                 </node>
                 <node concept="liA8E" id="1KUoCipvD3X" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~ModelAccessBase.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
+                  <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
                   <node concept="1bVj0M" id="1KUoCipvD3Y" role="37wK5m">
                     <node concept="3clFbS" id="1KUoCipvD3Z" role="1bW5cS">
                       <node concept="3clFbF" id="1KUoCipvD40" role="3cqZAp">
@@ -2379,6 +2377,12 @@
           </node>
           <node concept="7CXmI" id="hGZZ22K" role="lGtFl">
             <node concept="7OXhh" id="hGZZ4bq" role="7EUXB" />
+          </node>
+          <node concept="37vLTG" id="7GkxKP_vz8u" role="3clF46">
+            <property role="TrG5h" value="ma" />
+            <node concept="3uibUv" id="7GkxKP_vz8t" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~ModelAccess" resolve="ModelAccess" />
+            </node>
           </node>
         </node>
       </node>
@@ -3913,23 +3917,10 @@
               <node concept="10Nm6u" id="i2aoFGd" role="33vP2m" />
             </node>
           </node>
-          <node concept="3cpWs8" id="5piBd3sJKyr" role="3cqZAp">
-            <node concept="3cpWsn" id="5piBd3sJKys" role="3cpWs9">
-              <property role="TrG5h" value="modelAccess" />
-              <node concept="3uibUv" id="5piBd3sJKyt" role="1tU5fm">
-                <ref role="3uigEE" to="lui2:~ModelAccess" resolve="ModelAccess" />
-              </node>
-              <node concept="2ShNRf" id="5piBd3sJKFE" role="33vP2m">
-                <node concept="1pGfFk" id="5piBd3sJQNI" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~GlobalModelAccess.&lt;init&gt;()" resolve="GlobalModelAccess" />
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3clFbF" id="1KUoCipv$fb" role="3cqZAp">
             <node concept="2OqwBi" id="1KUoCipv$fc" role="3clFbG">
               <node concept="37vLTw" id="5piBd3sJK$1" role="2Oq$k0">
-                <ref role="3cqZAo" node="5piBd3sJKys" resolve="modelAccess" />
+                <ref role="3cqZAo" node="7GkxKP_vsl_" resolve="modelAccess" />
               </node>
               <node concept="liA8E" id="1KUoCipv$fe" role="2OqNvi">
                 <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
@@ -3991,6 +3982,12 @@
         <node concept="37vLTG" id="hSUXIvF" role="3clF46">
           <property role="TrG5h" value="param" />
           <node concept="17QB3L" id="4dKd5TsHqgE" role="1tU5fm" />
+        </node>
+        <node concept="37vLTG" id="7GkxKP_vsl_" role="3clF46">
+          <property role="TrG5h" value="modelAccess" />
+          <node concept="3uibUv" id="7GkxKP_vwvC" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~ModelAccess" resolve="ModelAccess" />
+          </node>
         </node>
         <node concept="7CXmI" id="hSUXT75" role="lGtFl">
           <node concept="7OXhh" id="hSUYsNc" role="7EUXB" />

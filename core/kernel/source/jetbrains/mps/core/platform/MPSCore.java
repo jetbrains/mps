@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,8 +37,10 @@ import jetbrains.mps.project.structure.LanguageDescriptorModelProvider;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
 import jetbrains.mps.smodel.Generator.GeneratorModelsAutoImports;
+import jetbrains.mps.smodel.GlobalModelAccess;
 import jetbrains.mps.smodel.Language.LanguageModelsAutoImports;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.SModelFileTracker;
@@ -129,7 +131,13 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myModuleFacetsRegistry = init(new FacetsRegistry());
 
     myRepositoryRegistry = init(new SRepositoryRegistry());
-    myModuleRepository = init(new MPSModuleRepository(myRepositoryRegistry));
+    // XXX would be great to pass MA instance here from outside (and stop using static MA.instance field for that), so that we
+    //     get proper MA configured according to the platform (IDE vs non-IDE). Alternatively, with a separate MA for project,
+    //     there could be own. non-shared MA instance for MPSModuleRepository)
+    @SuppressWarnings("removal")
+    GlobalModelAccess globalMA = new GlobalModelAccess(ModelAccess.instance());
+    // XXX note, there's use of `instanceof GMA` in mps-extensions code, they sort of account for scenario when actual repo comes with GMA
+    myModuleRepository = init(new MPSModuleRepository(myRepositoryRegistry, globalMA));
     myClassLoaderManager = init(new ClassLoaderManager(myModuleRepository));
 
     init(new SModelFileTracker.Plug(myRepositoryRegistry));
