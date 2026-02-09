@@ -52,7 +52,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public abstract class ModelAccess extends AbstractModelAccess implements org.jetbrains.mps.openapi.module.ModelAccess {
   protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
 
-  protected static ModelAccess ourInstance = newInstance();
+  private static ModelAccess ourInstance;
 
   /**
    * INTERNAL, TRANSITION CODE, DON'T USE!
@@ -77,7 +77,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
     return ourInstance;
   }
 
-  /*package*/ static void setInstance(@NotNull ModelAccess modelAccess) {
+  /*package*/ static void setInstance(@Nullable ModelAccess modelAccess) {
     ourInstance = modelAccess;
   }
 

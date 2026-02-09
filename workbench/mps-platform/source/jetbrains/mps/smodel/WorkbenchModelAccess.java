@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,6 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private final TryRunPlatformWriteHelper myPlatformWriteHelper;
   private final WorkbenchUndoHandler myUndoHandler;
   private final CancellableReadsManager myCancellableReads;
-  private final ModelAccess mySubstitutedModelAccess;
 
   private final CommandContextProvider myCommandContextProvider = new CommandContextProvider();
 
@@ -65,15 +64,12 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   }
 
   public WorkbenchModelAccess() {
-    // not allowing to substitute alien model accesses here
-    mySubstitutedModelAccess = instance();
-    assert mySubstitutedModelAccess instanceof DefaultModelAccess;
-    setInstance(this);
     myUndoHandler = new WorkbenchUndoHandler();
     myPlatformWriteHelper = new TryRunPlatformWriteHelper();
     myCancellableReads = new CancellableReadsManager();
     Disposer.register(this, myEDTExecutor);
     Disposer.register(this, myPlatformWriteHelper);
+    setInstance(this);
   }
 
   // implementation detail, public just to overcome package boundaries j.m.smodel and j.m.project
@@ -83,7 +79,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
   @Override
   public void dispose() {
-    setInstance(mySubstitutedModelAccess);
+    setInstance(null);
   }
 
   @Override
