@@ -36,6 +36,7 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.problems.ProblemListener;
+import com.intellij.ui.treeStructure.ProjectViewUpdateCause;
 import com.intellij.util.IJSwingUtilities;
 import com.intellij.util.concurrency.ThreadingAssertions;
 import com.intellij.util.messages.MessageBusConnection;
@@ -81,6 +82,7 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -292,7 +294,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     // This method can be called from different threads, however updateFromRoot()
     // merely adds an update to the update queue, and thus it's safe to invoke it
     // without runReadInEDT or runInUIThreadNoWait as it used to be.
-    updateFromRoot(true);
+    updateFromRoot(true, ProjectViewUpdateCause.VFS);
   }
 
   @Override

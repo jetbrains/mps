@@ -12,6 +12,42 @@
       <sourceRoot location="util_rt.jar" />
       <sourceRoot location="jps-model.jar" />
       <sourceRoot location="forms_rt.jar" />
+      <!-- originally in app.jar -->
+      <sourceRoot location="intellij.platform.analysis.impl.jar" />
+      <sourceRoot location="intellij.platform.analysis.jar" />
+      <sourceRoot location="intellij.platform.builtInServer.impl.jar" />
+      <sourceRoot location="intellij.platform.builtInServer.jar" />
+      <sourceRoot location="intellij.platform.core.impl.jar" />
+      <sourceRoot location="intellij.platform.core.jar" />
+      <sourceRoot location="intellij.platform.core.ui.jar" />
+      <sourceRoot location="intellij.platform.credentialStore.impl.jar" />
+      <sourceRoot location="intellij.platform.credentialStore.ui.jar" />
+      <sourceRoot location="intellij.platform.debugger.impl.jar" />
+      <sourceRoot location="intellij.platform.debugger.impl.shared.jar" />
+      <sourceRoot location="intellij.platform.debugger.impl.ui.jar" />
+      <sourceRoot location="intellij.platform.debugger.jar" />
+      <sourceRoot location="intellij.platform.diff.impl.jar" />
+      <sourceRoot location="intellij.platform.diff.jar" />
+      <sourceRoot location="intellij.platform.externalProcessAuthHelper.jar" />
+      <sourceRoot location="intellij.platform.externalSystem.dependencyUpdater.jar" />
+      <sourceRoot location="intellij.platform.externalSystem.impl.jar" />
+      <sourceRoot location="intellij.platform.externalSystem.jar" />
+      <sourceRoot location="intellij.platform.ide.concurrency.jar" />
+      <sourceRoot location="intellij.platform.ide.core.jar" />
+      <sourceRoot location="intellij.platform.ide.impl.jar" />
+      <sourceRoot location="intellij.platform.ide.jar" />
+      <sourceRoot location="intellij.platform.kernel.jar" />
+      <sourceRoot location="intellij.platform.lang.core.jar" />
+      <sourceRoot location="intellij.platform.lang.impl.jar" />
+      <sourceRoot location="intellij.platform.lang.jar" />
+      <sourceRoot location="intellij.platform.locking.impl.jar" />
+      <sourceRoot location="intellij.platform.projectModel.impl.jar" />
+      <sourceRoot location="intellij.platform.projectModel.jar" />
+      <sourceRoot location="intellij.platform.rpc.jar" />
+      <sourceRoot location="intellij.platform.smRunner.jar" />
+      <sourceRoot location="intellij.platform.todo.jar" />
+      <sourceRoot location="intellij.platform.util.ex.jar" />
+      <sourceRoot location="intellij.platform.util.ui.jar" />
       <!-- intentionally no stats.jar as we don't have any direct dependencies -->
       <PackageScope>
         <include prefix="com.intellij."/>
@@ -53,6 +89,42 @@
       <library location="${mps_home}/lib//util_rt.jar" />
       <library location="${mps_home}/lib//jps-model.jar" />
       <library location="${mps_home}/lib//forms_rt.jar" />
+      <!-- originally in app.jar -->
+      <library location="${mps_home}/lib/intellij.platform.analysis.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.analysis.jar" />
+      <library location="${mps_home}/lib/intellij.platform.builtInServer.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.builtInServer.jar" />
+      <library location="${mps_home}/lib/intellij.platform.core.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.core.jar" />
+      <library location="${mps_home}/lib/intellij.platform.core.ui.jar" />
+      <library location="${mps_home}/lib/intellij.platform.credentialStore.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.credentialStore.ui.jar" />
+      <library location="${mps_home}/lib/intellij.platform.debugger.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.debugger.impl.shared.jar" />
+      <library location="${mps_home}/lib/intellij.platform.debugger.impl.ui.jar" />
+      <library location="${mps_home}/lib/intellij.platform.debugger.jar" />
+      <library location="${mps_home}/lib/intellij.platform.diff.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.diff.jar" />
+      <library location="${mps_home}/lib/intellij.platform.externalProcessAuthHelper.jar" />
+      <library location="${mps_home}/lib/intellij.platform.externalSystem.dependencyUpdater.jar" />
+      <library location="${mps_home}/lib/intellij.platform.externalSystem.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.externalSystem.jar" />
+      <library location="${mps_home}/lib/intellij.platform.ide.concurrency.jar" />
+      <library location="${mps_home}/lib/intellij.platform.ide.core.jar" />
+      <library location="${mps_home}/lib/intellij.platform.ide.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.ide.jar" />
+      <library location="${mps_home}/lib/intellij.platform.kernel.jar" />
+      <library location="${mps_home}/lib/intellij.platform.lang.core.jar" />
+      <library location="${mps_home}/lib/intellij.platform.lang.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.lang.jar" />
+      <library location="${mps_home}/lib/intellij.platform.locking.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.projectModel.impl.jar" />
+      <library location="${mps_home}/lib/intellij.platform.projectModel.jar" />
+      <library location="${mps_home}/lib/intellij.platform.rpc.jar" />
+      <library location="${mps_home}/lib/intellij.platform.smRunner.jar" />
+      <library location="${mps_home}/lib/intellij.platform.todo.jar" />
+      <library location="${mps_home}/lib/intellij.platform.util.ex.jar" />
+      <library location="${mps_home}/lib/intellij.platform.util.ui.jar" />
     </facet>
   </facets>
   <sourcePath />
