@@ -73,7 +73,7 @@
   </path>
   
   <path id="path.java.library.kotlin-metadata">
-    <fileset file="${mps_home}/lib/kotlin-metadata-jvm-2.1.0.jar" />
+    <fileset file="${mps_home}/lib/kotlin-metadata-jvm-2.3.0.jar" />
   </path>
   
   <path id="path.java.library.kotlinx-metadata">
@@ -81,7 +81,7 @@
   </path>
   
   <path id="path.java.library.kotlin-compiler-client-embeddable">
-    <fileset file="${mps_home}/lib/kotlin-compiler-client-embeddable-2.1.0.jar" />
+    <fileset file="${mps_home}/lib/kotlin-compiler-client-embeddable-2.3.0.jar" />
   </path>
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
@@ -139,10 +139,10 @@
       <fileset dir="${build.tmp}/java/out/mps-tool-convertModels" />
     </jar>
     <copy todir="${build.layout}">
-      <fileset file="${mps_home}/lib/kotlin-compiler-client-embeddable-2.1.0.jar" />
+      <fileset file="${mps_home}/lib/kotlin-compiler-client-embeddable-2.3.0.jar" />
     </copy>
     <copy todir="${build.layout}">
-      <fileset file="${mps_home}/lib/kotlin-metadata-jvm-2.1.0.jar" />
+      <fileset file="${mps_home}/lib/kotlin-metadata-jvm-2.3.0.jar" />
     </copy>
     <copy todir="${build.layout}">
       <fileset file="${mps_home}/lib/kotlinx-metadata-klib-0.0.6.jar" />

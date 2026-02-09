@@ -109,9 +109,9 @@
     <copy file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" todir="${build.layout}/lib" />
-    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-metadata-jvm-2.1.0.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-metadata-jvm-2.3.0.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/kotlinx-metadata-klib-0.0.6.jar" todir="${build.layout}/lib" />
-    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.1.0.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.3.0.jar" todir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/mps-core.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar1" />
       <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar1" />
@@ -16976,7 +16976,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.1.0.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <path refid="path.java.library.javac2" />
@@ -17017,7 +17017,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.1.0.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <path refid="path.java.library.javac2" />

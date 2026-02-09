@@ -1144,7 +1144,7 @@
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
         </dependencies>
         <uses />
-        <library jar="../../lib/kotlin-stdlib-2.1.0.jar" />
+        <library jar="../../lib/kotlin-stdlib-2.3.0.jar" />
         <sources jar="." descriptor="jetbrains.mps.kotlin.stdlib.msd" />
       </module>
     </echoxml>
@@ -1194,10 +1194,10 @@
       <fileset file="${plugin_home}/lib/kotlin-builtins.jar" />
     </copy>
     <copy todir="${build.layout}/mps-kotlin/lib">
-      <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
+      <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0.jar" />
     </copy>
     <copy todir="${build.layout}/mps-kotlin/lib">
-      <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0-all.jar" />
+      <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0-all.jar" />
     </copy>
     <jar destfile="${build.layout}/mps-kotlin/lib/kotlin-ide.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/kotlinIde" />
@@ -1355,7 +1355,7 @@
         <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlin-metadata-jvm-2.1.0.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlin-metadata-jvm-2.3.0.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlinx-metadata-klib-0.0.6.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -1777,7 +1777,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.kotlinRefs" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin" />
-        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
@@ -1928,7 +1928,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin.internal" />
-        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
@@ -2002,7 +2002,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin.baseLanguage.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin.javaRefs" />
-        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
@@ -2089,7 +2089,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin.javaRefs" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel" />
-        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
@@ -2159,7 +2159,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
-        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
+        <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.3.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
