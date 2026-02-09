@@ -174,6 +174,9 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
+      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
+        <child id="1164991057263" name="throwable" index="YScLw" />
+      </concept>
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
         <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
@@ -1018,20 +1021,55 @@
             </node>
           </node>
           <node concept="3clFbS" id="1OIlcCD9DE4" role="3clFbx">
-            <node concept="3clFbF" id="1OIlcCD9Xj4" role="3cqZAp">
-              <node concept="37vLTI" id="1OIlcCDa16t" role="3clFbG">
-                <node concept="3y3z36" id="1OIlcCDaMIv" role="37vLTx">
-                  <node concept="10Nm6u" id="1OIlcCDaOAT" role="3uHU7w" />
-                  <node concept="2YIFZM" id="2JPK5VcaL_1" role="3uHU7B">
-                    <ref role="37wK5l" to="v6uv:~SpellCheckerManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-                    <ref role="1Pybhc" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
-                    <node concept="37vLTw" id="2JPK5VcaL_2" role="37wK5m">
-                      <ref role="3cqZAo" node="1OIlcCDascG" resolve="myProject" />
+            <node concept="3J1_TO" id="Kyv3Wh4jNv" role="3cqZAp">
+              <node concept="3uVAMA" id="Kyv3Wh56Ez" role="1zxBo5">
+                <node concept="XOnhg" id="Kyv3Wh56E$" role="1zc67B">
+                  <property role="TrG5h" value="e" />
+                  <node concept="nSUau" id="Kyv3Wh56E_" role="1tU5fm">
+                    <node concept="3uibUv" id="Kyv3Wh5bR6" role="nSUat">
+                      <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="1OIlcCD9Xj3" role="37vLTJ">
-                  <ref role="3cqZAo" node="1OIlcCD8X7Z" resolve="myEnabled" />
+                <node concept="3clFbS" id="Kyv3Wh56EA" role="1zc67A">
+                  <node concept="3clFbF" id="Kyv3Wh5j_f" role="3cqZAp">
+                    <node concept="37vLTI" id="Kyv3Wh5o$S" role="3clFbG">
+                      <node concept="3clFbT" id="Kyv3Wh5s7q" role="37vLTx" />
+                      <node concept="37vLTw" id="Kyv3Wh5j_e" role="37vLTJ">
+                        <ref role="3cqZAo" node="1OIlcCD8X7Z" resolve="myEnabled" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="YS8fn" id="Kyv3Wh5$7t" role="3cqZAp">
+                    <node concept="2ShNRf" id="13rX4VcBJgm" role="YScLw">
+                      <node concept="1pGfFk" id="13rX4VcCvKV" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
+                        <node concept="37vLTw" id="13rX4VcCyZU" role="37wK5m">
+                          <ref role="3cqZAo" node="Kyv3Wh56E$" resolve="e" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="Kyv3Wh4jNx" role="1zxBo7">
+                <node concept="3clFbF" id="Kyv3Wh4py$" role="3cqZAp">
+                  <node concept="37vLTI" id="Kyv3Wh4v$X" role="3clFbG">
+                    <node concept="3y3z36" id="Kyv3Wh4XTR" role="37vLTx">
+                      <node concept="10Nm6u" id="Kyv3Wh51oh" role="3uHU7w" />
+                      <node concept="2YIFZM" id="Kyv3Wh4EZC" role="3uHU7B">
+                        <ref role="37wK5l" to="v6uv:~SpellCheckerManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                        <ref role="1Pybhc" to="v6uv:~SpellCheckerManager" resolve="SpellCheckerManager" />
+                        <node concept="37vLTw" id="Kyv3Wh4Sp_" role="37wK5m">
+                          <ref role="3cqZAo" node="1OIlcCDascG" resolve="myProject" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="Kyv3Wh4pyy" role="37vLTJ">
+                      <ref role="3cqZAo" node="1OIlcCD8X7Z" resolve="myEnabled" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

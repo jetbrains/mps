@@ -52,7 +52,12 @@ public class CommentSpellChecker extends BaseEditorChecker {
 
   private boolean isEnabled() {
     if (myEnabled == null) {
-      myEnabled = SpellCheckerManager.getInstance(myProject) != null;
+      try {
+        myEnabled = SpellCheckerManager.getInstance(myProject) != null;
+      } catch (Exception e) {
+        myEnabled = false;
+        throw new RuntimeException(e);
+      }
     }
     return myEnabled.booleanValue();
   }
