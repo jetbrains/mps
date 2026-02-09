@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,9 @@ public class ProjectModelAccess extends ModelAccessBase {
     // DMA.executeCommand() would be here.
     // Another aspect that prevents me from implementing DMA's executeCommand here is the need to access commandActionDispatcher, which is protected to
     // hierarchy of 'true' MA (unlike this one, delegation-based, 'true' have locks and record/notify listeners)
+    // [2026] In fact, I believe the only reason to use delegateImpl() here is that we could get GlobalModelAccess instance here as a delegate, and simply
+    //        using getDelegate() will break any commands executed over project's repo (GMA doesn't support commands). What I need here is to support
+    //        listeners and notifications here so that don't need to expect any certain behavior from a delegate.
     delegateImpl().executeCommand(r);
   }
 
@@ -63,7 +66,7 @@ public class ProjectModelAccess extends ModelAccessBase {
     // we can get here either with p.getModelAccess() or through MA.instance().runCommandInEDT re-dispatch.
     // see #executeCommand(Runnable) above why we don't use myProject
     // Since this method have not been used through MA.instance(), we are free to implement it the way DMA would implement it, right here
-    SwingUtilities.invokeLater(() -> delegateImpl().executeCommand(r));
+    SwingUtilities.invokeLater(() -> executeCommand(r));
   }
 
   @Override

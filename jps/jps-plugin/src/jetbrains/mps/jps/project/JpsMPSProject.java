@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.jps.project;
 
@@ -9,7 +9,6 @@ import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.project.ProjectModelAccess;
 import jetbrains.mps.project.ProjectRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.model.JpsProject;
 
@@ -24,9 +23,10 @@ public class JpsMPSProject extends ProjectBase {
   public JpsMPSProject(@NotNull JpsProject project, @NotNull ComponentHost mpsPlatform) {
     super(project.getName(), mpsPlatform, false);
     myProject = project;
-    final ProjectModelAccess pma = new ProjectModelAccess(this, ModelAccess.instance());
+    MPSModuleRepository rootRepo = mpsPlatform.findComponent(MPSModuleRepository.class);
+    final ProjectModelAccess pma = new ProjectModelAccess(this, rootRepo.getModelAccess());
     ProjectRepository r = new ProjectRepository(this,
-                                                mpsPlatform.findComponent(MPSModuleRepository.class),
+                                                rootRepo,
                                                 mpsPlatform.findComponent(SRepositoryRegistry.class),
                                                 pma);
     r.init();
