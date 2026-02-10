@@ -372,57 +372,43 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private Runnable wrapTopCommandRunnable(Runnable r, MPSProject project) {
     // first, commandStarted notification is dispatched, then undo context set,
     // at the end, undo context is flushed, and then commandFinished() is dispatched.
-    // The start sequence used to be other way round, does it matter? If yes, can change to:
-    //    new UndoContextSetup(r, myCommandActionDispatcher.wrap(r), project) for notifications to go
-    // inside initialized undo context, just need to make sure UndoContextSetup receives the right Runnable instance (to check instanceof)
-    return myCommandActionDispatcher.wrap(new UndoContextSetup(r, project));
+    // The start sequence used to be other way round, does it matter?
+    UndoContext context;
+    if (r instanceof UndoContext) {
+      context = (UndoContext) r;
+    } else {
+      context = new DefaultUndoContext(project.getRepository());
+    }
+    return myCommandActionDispatcher.wrap(new UndoContextSetup(r, context));
   }
 
   /**
    * Responsible to prepare and cleanup undo context for the command. Has to run prior to any client-supplied command code, only for the very first command.
    * Shall get executed inside platform write and under model write lock.
+   * As long as executeCommand() runs a delegate directly in case of a nested command, undo-transparent is explicit
+   * about top-level, and async command is always top-level, we don't care about command nesting here.
    */
   @Immutable
   private final class UndoContextSetup implements Runnable {
     private final Runnable myCommand;
-    private final MPSProject myProject;
+    private final UndoContext myUndoContext;
 
-    /**
-     * IMPORTANT: Runnable instance has to be the one that came from an end-user, we look at optional interfaces it may implement!
-     */
-    UndoContextSetup(Runnable r, MPSProject project) {
+    UndoContextSetup(Runnable r, UndoContext uc){
       myCommand = r;
-      myProject = project;
+      myUndoContext = uc;
     }
 
     @Override
     public void run() {
-      // it seems that the only chance for CommandRunnable to be executed inside another CommandRunnable (hence, to expect myCommandLevel != 0)
-      // would be executeCommand() nested inside another executeCommand(). Undo-transparent is explicit about top-level, and async command is always top-level
-      // by design. Therefore, once executeCommand() runs a delegate directly in case of nested command, this runnable could become UndoContextSetupRunnable
-      // and get incCommandLevel (myCommandLevel == 0) responsibilities here
-      setUp();
+      checkWriteAccess();
+      // XXX pass MPSProject right to undoHandler, don't be shy
+      myUndoHandler.startCommand(myUndoContext);
       try {
         myCommand.run();
       } finally {
-        tearDown();
+        checkWriteAccess();
+        myUndoHandler.flushCommand();
       }
-    }
-    private void setUp() {
-      checkWriteAccess();
-      UndoContext context;
-      if (myCommand instanceof UndoContext) {
-        context = (UndoContext) myCommand;
-      } else {
-        context = new DefaultUndoContext(myProject.getRepository());
-      }
-      // XXX pass MPSProject right to undoHandler, don't be shy
-      myUndoHandler.startCommand(context);
-    }
-
-    private void tearDown() {
-      checkWriteAccess();
-      myUndoHandler.flushCommand();
     }
   }
 }
