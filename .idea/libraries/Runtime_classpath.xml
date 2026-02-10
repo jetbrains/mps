@@ -321,15 +321,8 @@
       <root url="jar://$PROJECT_DIR$/lib/jaxb-runtime.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jps-model.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/junit4.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-2.3.0-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-2.3.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-2.3.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-metadata-jvm-2.3.0-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-metadata-jvm-2.3.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-metadata-jvm-2.3.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-klib-0.0.6-javadoc.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-klib-0.0.6-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-klib-0.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-metadata-jvm-2.3.0-mps.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/maven-resolver-provider.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/nio-fs.jar!/" />
@@ -342,6 +335,7 @@
       <root url="jar://$PROJECT_DIR$/lib/util-8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/util.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/util_rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-klib-2.3.0-mps.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.platform.projectFrame.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.platform.welcomeScreen.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.platform.welcomeScreen.impl.jar!/" />
@@ -354,7 +348,6 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-metadata-jvm-2.3.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
     </SOURCES>
   </library>
