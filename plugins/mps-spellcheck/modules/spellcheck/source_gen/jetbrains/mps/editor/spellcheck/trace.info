@@ -23,11 +23,11 @@
   <root nodeRef="r:cea6effe-afb5-4a30-8eb3-bbd8e6e10770(jetbrains.mps.editor.spellcheck)/1754721888976177221">
     <file name="NativeLanguageUtil.java">
       <node id="1754721888976177699" at="19,45,20,28" concept="11" />
-      <node id="1754721888976248965" at="23,16,24,34" concept="11" />
-      <node id="1754721888976256025" at="25,16,26,32" concept="11" />
-      <node id="1754721888976257326" at="27,16,28,33" concept="11" />
-      <node id="1754721888976258664" at="29,16,30,33" concept="11" />
-      <node id="1754721888976260039" at="31,16,32,34" concept="11" />
+      <node id="1754721888976248965" at="23,21,24,34" concept="11" />
+      <node id="1754721888976256025" at="25,19,26,32" concept="11" />
+      <node id="1754721888976257326" at="27,20,28,33" concept="11" />
+      <node id="1754721888976258664" at="29,20,30,33" concept="11" />
+      <node id="1754721888976260039" at="31,21,32,34" concept="11" />
       <node id="1754721888976281325" at="33,14,34,30" concept="11" />
       <node id="1754721888976177712" at="39,27,40,30" concept="11" />
       <node id="1754721888976177718" at="42,27,43,34" concept="11" />
@@ -97,11 +97,11 @@
       <node id="1754721888976177786" at="98,0,119,0" concept="15" trace="mapFrench#(Ljava/lang/String;)Ljetbrains/mps/editor/spellcheck/NativeLanguageUtil/Category;" />
       <node id="1754721888976177734" at="53,0,77,0" concept="15" trace="mapDutch#(Ljava/lang/String;)Ljetbrains/mps/editor/spellcheck/NativeLanguageUtil/Category;" />
       <scope id="1754721888976177701" at="19,45,20,28" />
-      <scope id="1754721888976245284" at="23,16,24,34" />
-      <scope id="1754721888976256024" at="25,16,26,32" />
-      <scope id="1754721888976257325" at="27,16,28,33" />
-      <scope id="1754721888976258663" at="29,16,30,33" />
-      <scope id="1754721888976260038" at="31,16,32,34" />
+      <scope id="1754721888976245284" at="23,21,24,34" />
+      <scope id="1754721888976256024" at="25,19,26,32" />
+      <scope id="1754721888976257325" at="27,20,28,33" />
+      <scope id="1754721888976258663" at="29,20,30,33" />
+      <scope id="1754721888976260038" at="31,21,32,34" />
       <scope id="1754721888976277241" at="33,14,34,30" />
       <scope id="1754721888976177714" at="39,27,40,30" />
       <scope id="1754721888976177720" at="42,27,43,34" />

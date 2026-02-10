@@ -19,16 +19,16 @@ public class NativeLanguageUtil {
     if (posTag == null || posTag.isEmpty()) {
       return Category.OTHER;
     }
-    switch (lang.getIso().toString()) {
-      case "en":
+    switch (lang.getShortDisplayName()) {
+      case "English":
         return mapEnglish(posTag);
-      case "nl":
+      case "Dutch":
         return mapDutch(posTag);
-      case "de":
+      case "German":
         return mapGerman(posTag);
-      case "fr":
+      case "French":
         return mapFrench(posTag);
-      case "es":
+      case "Spanish":
         return mapSpanish(posTag);
       default:
         return Category.OTHER;

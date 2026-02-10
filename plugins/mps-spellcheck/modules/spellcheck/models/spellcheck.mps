@@ -46,7 +46,6 @@
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
-    <import index="neu9" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:ai.grazie.nlp.langs(jetbrains.mps.spellchecker.idea.stubs/)" implicit="true" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -4533,7 +4532,7 @@
         <node concept="3KaCP$" id="1xq1$bo1WTB" role="3cqZAp">
           <node concept="3KbdKl" id="1xq1$bo1ZFa" role="3KbHQx">
             <node concept="Xl_RD" id="1xq1$bo20wp" role="3Kbmr1">
-              <property role="Xl_RC" value="en" />
+              <property role="Xl_RC" value="English" />
             </node>
             <node concept="3clFbS" id="1xq1$bo218$" role="3Kbo56">
               <node concept="3cpWs6" id="1xq1$bo2225" role="3cqZAp">
@@ -4548,7 +4547,7 @@
           </node>
           <node concept="3KbdKl" id="1xq1$bo23Km" role="3KbHQx">
             <node concept="Xl_RD" id="1xq1$bo23Kn" role="3Kbmr1">
-              <property role="Xl_RC" value="nl" />
+              <property role="Xl_RC" value="Dutch" />
             </node>
             <node concept="3clFbS" id="1xq1$bo23Ko" role="3Kbo56">
               <node concept="3cpWs6" id="1xq1$bo23Kp" role="3cqZAp">
@@ -4563,7 +4562,7 @@
           </node>
           <node concept="3KbdKl" id="1xq1$bo244F" role="3KbHQx">
             <node concept="Xl_RD" id="1xq1$bo244G" role="3Kbmr1">
-              <property role="Xl_RC" value="de" />
+              <property role="Xl_RC" value="German" />
             </node>
             <node concept="3clFbS" id="1xq1$bo244H" role="3Kbo56">
               <node concept="3cpWs6" id="1xq1$bo244I" role="3cqZAp">
@@ -4578,7 +4577,7 @@
           </node>
           <node concept="3KbdKl" id="1xq1$bo24p_" role="3KbHQx">
             <node concept="Xl_RD" id="1xq1$bo24pA" role="3Kbmr1">
-              <property role="Xl_RC" value="fr" />
+              <property role="Xl_RC" value="French" />
             </node>
             <node concept="3clFbS" id="1xq1$bo24pB" role="3Kbo56">
               <node concept="3cpWs6" id="1xq1$bo24pC" role="3cqZAp">
@@ -4593,7 +4592,7 @@
           </node>
           <node concept="3KbdKl" id="1xq1$bo24J4" role="3KbHQx">
             <node concept="Xl_RD" id="1xq1$bo24J5" role="3Kbmr1">
-              <property role="Xl_RC" value="es" />
+              <property role="Xl_RC" value="Spanish" />
             </node>
             <node concept="3clFbS" id="1xq1$bo24J6" role="3Kbo56">
               <node concept="3cpWs6" id="1xq1$bo24J7" role="3cqZAp">
@@ -4606,17 +4605,12 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="1xq1$bo4gLr" role="3KbGdf">
-            <node concept="2OqwBi" id="1xq1$bo1Y0F" role="2Oq$k0">
-              <node concept="37vLTw" id="1xq1$bo1XqO" role="2Oq$k0">
-                <ref role="3cqZAo" node="1xq1$bo1KCp" resolve="lang" />
-              </node>
-              <node concept="liA8E" id="1xq1$bo1ZkR" role="2OqNvi">
-                <ref role="37wK5l" to="8vcu:~Lang.getIso()" resolve="getIso" />
-              </node>
+          <node concept="2OqwBi" id="1xq1$bo1Y0F" role="3KbGdf">
+            <node concept="37vLTw" id="1xq1$bo1XqO" role="2Oq$k0">
+              <ref role="3cqZAo" node="1xq1$bo1KCp" resolve="lang" />
             </node>
-            <node concept="liA8E" id="1xq1$bo4hPc" role="2OqNvi">
-              <ref role="37wK5l" to="neu9:~LanguageISO.toString()" resolve="toString" />
+            <node concept="liA8E" id="2wVzGkO25wb" role="2OqNvi">
+              <ref role="37wK5l" to="8vcu:~Lang.getShortDisplayName()" resolve="getShortDisplayName" />
             </node>
           </node>
           <node concept="3clFbS" id="1xq1$bo28VT" role="3Kb1Dw">
