@@ -16311,11 +16311,6 @@
             <ref role="3bR37D" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1HQHaHIMAd9" role="3bR37C">
-          <node concept="3bR9La" id="1HQHaHIMAda" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L1S" resolve="jetbrains.mps.baseLanguage.javadoc" />
-          </node>
-        </node>
         <node concept="1BupzO" id="73GUf$ummxH" role="3bR31x">
           <property role="3ZfqAx" value="languageModels" />
           <property role="1Hdu6h" value="true" />
@@ -16345,6 +16340,11 @@
             <node concept="3qWCbU" id="73GUf$ummxJ" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1HQHaHIMAd9" role="3bR37C">
+          <node concept="3bR9La" id="1HQHaHIMAda" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L1S" resolve="jetbrains.mps.baseLanguage.javadoc" />
           </node>
         </node>
         <node concept="1SiIV0" id="6JGJaKF3BTU" role="3bR37C">
@@ -46553,13 +46553,13 @@
       <property role="26EafJ" value="lib/kotlin-compiler-client-embeddable-2.3.0.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qCy" role="26Ea7d">
-      <property role="26EafJ" value="lib/kotlin-metadata-jvm-2.3.0.jar" />
+      <property role="26EafJ" value="lib/kotlin-metadata-jvm-2.3.0-mps.jar" />
     </node>
     <node concept="26EafG" id="ZaK_3oc$Bl" role="26Ea7d">
       <property role="26EafJ" value="lib/kotlinx-coroutines-slf4j-1.10.1-intellij.jar" />
     </node>
     <node concept="26EafG" id="3vFdno4LV98" role="26Ea7d">
-      <property role="26EafJ" value="lib/kotlinx-metadata-klib-0.0.6.jar" />
+      <property role="26EafJ" value="lib/kotlinx-metadata-klib-2.3.0-mps.jar" />
     </node>
     <node concept="26EafG" id="9nERkLKyHi" role="26Ea7d">
       <property role="26EafJ" value="lib/lib.jar" />
@@ -59170,7 +59170,7 @@
             <node concept="2Ry0Ak" id="6wLf4lx9D_g" role="iGT6I">
               <property role="2Ry0Am" value="lib" />
               <node concept="2Ry0Ak" id="6wLf4lx9D_j" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlin-metadata-jvm-2.3.0.jar" />
+                <property role="2Ry0Am" value="kotlin-metadata-jvm-2.3.0-mps.jar" />
               </node>
             </node>
           </node>
@@ -59185,8 +59185,8 @@
             <ref role="398BVh" node="6IJvZDkyhr7" resolve="mps_home" />
             <node concept="2Ry0Ak" id="2wylC1jULgF" role="iGT6I">
               <property role="2Ry0Am" value="lib" />
-              <node concept="2Ry0Ak" id="2wylC1jULt9" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlinx-metadata-klib-0.0.6.jar" />
+              <node concept="2Ry0Ak" id="21_BZqxJNL6" role="2Ry0An">
+                <property role="2Ry0Am" value="kotlinx-metadata-klib-2.3.0-mps.jar" />
               </node>
             </node>
           </node>
@@ -60361,7 +60361,7 @@
           <node concept="2Ry0Ak" id="2ZkYPo74Wvi" role="iGT6I">
             <property role="2Ry0Am" value="lib" />
             <node concept="2Ry0Ak" id="2ZkYPo74Wvl" role="2Ry0An">
-              <property role="2Ry0Am" value="kotlin-metadata-jvm-2.3.0.jar" />
+              <property role="2Ry0Am" value="kotlin-metadata-jvm-2.3.0-mps.jar" />
             </node>
           </node>
         </node>
@@ -60371,8 +60371,8 @@
           <ref role="398BVh" node="6IJvZDkyhr7" resolve="mps_home" />
           <node concept="2Ry0Ak" id="3vFdno4M8Oc" role="iGT6I">
             <property role="2Ry0Am" value="lib" />
-            <node concept="2Ry0Ak" id="3vFdno4M8Oe" role="2Ry0An">
-              <property role="2Ry0Am" value="kotlinx-metadata-klib-0.0.6.jar" />
+            <node concept="2Ry0Ak" id="21_BZqxJNLf" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlinx-metadata-klib-2.3.0-mps.jar" />
             </node>
           </node>
         </node>
@@ -62280,7 +62280,7 @@
             <node concept="2Ry0Ak" id="Rwku8tKkCa" role="iGT6I">
               <property role="2Ry0Am" value="lib" />
               <node concept="2Ry0Ak" id="Rwku8tKkCk" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlin-metadata-jvm-2.3.0.jar" />
+                <property role="2Ry0Am" value="kotlin-metadata-jvm-2.3.0-mps.jar" />
               </node>
             </node>
           </node>
@@ -62315,7 +62315,7 @@
             <node concept="2Ry0Ak" id="Rwku8tKkHK" role="iGT6I">
               <property role="2Ry0Am" value="lib" />
               <node concept="2Ry0Ak" id="Rwku8tKkIL" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlinx-metadata-klib-0.0.6.jar" />
+                <property role="2Ry0Am" value="kotlinx-metadata-klib-2.3.0-mps.jar" />
               </node>
             </node>
           </node>

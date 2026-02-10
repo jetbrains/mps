@@ -316,7 +316,7 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpGY8" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGY9" role="WxPPp">
-                      <property role="Xl_RC" value="lib/kotlin-metadata-jvm-2.3.0.jar" />
+                      <property role="Xl_RC" value="lib/kotlin-metadata-jvm-2.3.0-mps.jar" />
                     </node>
                   </node>
                 </node>
@@ -338,7 +338,7 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3vFdno4LUQx" role="28ntcv">
                     <node concept="Xl_RD" id="3vFdno4LUQy" role="WxPPp">
-                      <property role="Xl_RC" value="lib/kotlinx-metadata-klib-0.0.6.jar" />
+                      <property role="Xl_RC" value="lib/kotlinx-metadata-klib-2.3.0-mps.jar" />
                     </node>
                   </node>
                 </node>

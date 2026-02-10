@@ -57,11 +57,11 @@ public class DefaultStartupScript {
       SNodeBuilder n19 = n18.forSibling().init(CONCEPTS.ClassPathItem$TJ);
       n19.setProperty(PROPS.path$jtyZ, "lib/kotlin-compiler-client-embeddable-2.3.0.jar");
       SNodeBuilder n20 = n19.forSibling().init(CONCEPTS.ClassPathItem$TJ);
-      n20.setProperty(PROPS.path$jtyZ, "lib/kotlin-metadata-jvm-2.3.0.jar");
+      n20.setProperty(PROPS.path$jtyZ, "lib/kotlin-metadata-jvm-2.3.0-mps.jar");
       SNodeBuilder n21 = n20.forSibling().init(CONCEPTS.ClassPathItem$TJ);
       n21.setProperty(PROPS.path$jtyZ, "lib/kotlinx-coroutines-slf4j-1.10.1-intellij.jar");
       SNodeBuilder n22 = n21.forSibling().init(CONCEPTS.ClassPathItem$TJ);
-      n22.setProperty(PROPS.path$jtyZ, "lib/kotlinx-metadata-klib-0.0.6.jar");
+      n22.setProperty(PROPS.path$jtyZ, "lib/kotlinx-metadata-klib-2.3.0-mps.jar");
       SNodeBuilder n23 = n22.forSibling().init(CONCEPTS.ClassPathItem$TJ);
       n23.setProperty(PROPS.path$jtyZ, "lib/lib.jar");
       SNodeBuilder n24 = n23.forSibling().init(CONCEPTS.ClassPathItem$TJ);

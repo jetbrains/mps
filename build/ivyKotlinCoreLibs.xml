@@ -1,12 +1,12 @@
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
   <info organisation="org.jetbrains.mps" module="idea-platform"/>
   <dependencies>
-    <dependency org="org.jetbrains.kotlin" name="kotlin-metadata-jvm" rev="${kotlin.version}">
+    <dependency org="org.jetbrains.kotlin" name="kotlin-metadata-jvm" rev="${kotlin.metadata.version}">
       <artifact name="kotlin-metadata-jvm" ext="jar"/>
       <artifact name="kotlin-metadata-jvm" m:classifier="sources" ext="jar"/>
       <artifact name="kotlin-metadata-jvm" m:classifier="javadoc" ext="jar"/>
     </dependency>
-    <dependency org="org.jetbrains.kotlinx" name="kotlinx-metadata-klib" rev="${kotlinx.metadata.version}">
+    <dependency org="org.jetbrains.kotlinx" name="kotlinx-metadata-klib" rev="${kotlin.metadata.version}">
       <artifact name="kotlinx-metadata-klib" ext="jar"/>
       <artifact name="kotlinx-metadata-klib" m:classifier="sources" ext="jar"/>
       <artifact name="kotlinx-metadata-klib" m:classifier="javadoc" ext="jar"/>

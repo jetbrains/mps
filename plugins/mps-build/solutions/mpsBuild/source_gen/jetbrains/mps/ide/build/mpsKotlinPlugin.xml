@@ -1355,8 +1355,8 @@
         <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.platform.vcs.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/module-intellij.xml.parser.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlin-metadata-jvm-2.3.0.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlinx-metadata-klib-0.0.6.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlin-metadata-jvm-2.3.0-mps.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/kotlinx-metadata-klib-2.3.0-mps.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

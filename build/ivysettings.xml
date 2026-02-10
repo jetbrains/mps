@@ -26,9 +26,18 @@
     <url name="kotlin-compiler-releases">
       <artifact pattern="https://github.com/JetBrains/kotlin/releases/download/v[revision]/[artifact]-[revision].[ext]" />
     </url>
+    <!-- MPS-vendored kotlin-metadata -->
+    <url name="teamcity.jetbrains.com" >
+      <artifact pattern="https://teamcity.jetbrains.com/guestAuth/repository/download/MPS_20261_Distribution_KotlinMetadata/5882768.tcbuildid/[artifact]-[revision]-[classifier].[ext]"/>
+      <artifact pattern="https://teamcity.jetbrains.com/guestAuth/repository/download/MPS_20261_Distribution_KotlinMetadata/5882768.tcbuildid/[artifact]-[revision].[ext]"/>
+    </url>
   </resolvers>
   <modules>
     <!-- Kotlin compiler is the only artifact from github, it has its own url resolver (not in main chain) -->
     <module organisation="org.jetbrains.kotlin" name="kotlin-compiler-standalone-zip" resolver="kotlin-compiler-releases" />
+    <!-- MPS-vendored kotlinx-metadata-klib -->
+    <module organisation="org.jetbrains.kotlinx" name="kotlinx-metadata-klib" resolver="teamcity.jetbrains.com"/>
+    <!-- MPS-vendored kotlin-metadata-jvm -->
+    <module organisation="org.jetbrains.kotlin" name="kotlin-metadata-jvm" resolver="teamcity.jetbrains.com"/>
   </modules>
 </ivy-settings>
