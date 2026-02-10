@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
@@ -357,7 +358,7 @@ import java.util.stream.Stream;
         // just need to sort out ModuleLoader and Project relationship.
 
         project.associateWithProjectRepo(module);
-        attachModule(module, descriptorFile, handle.getVirtualFolder());
+        attachModule(module, descriptorFile, StringUtil.emptyIfNull(String.valueOf(handle.getUserData())));
         if (LOG.isDebugLevel()) {
           LOG.debug("Attached module: " + module.getModuleName());
         }
