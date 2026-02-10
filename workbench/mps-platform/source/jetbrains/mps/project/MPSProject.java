@@ -105,6 +105,7 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
   }
 
   private void initFileSystemBridge() {
+    assert myFileSystemBridge == null : "FileSystemProjectBridge should not be initialized more than once";
     if (myFileSystemBridge == null) {
       // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
       myFileSystemBridge = new FileSystemProjectBridge(this);
@@ -115,6 +116,7 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
 
   private void destroyFileSystemBridge() {
     FileSystemProjectBridge fileSystemBridge = myFileSystemBridge;
+    assert fileSystemBridge != null : "FileSystemProjectBridge should not be null during project destruction";
     if (fileSystemBridge != null) {
       fileSystemBridge.projectClosed();
       myFileSystemBridge = null;
