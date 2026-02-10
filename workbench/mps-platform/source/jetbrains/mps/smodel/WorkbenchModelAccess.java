@@ -102,7 +102,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
         // to assume we have read access
         new SharedReadModelAccessImpl(acquireSharedReadTokenNoCheck()).execute(myReadActionDispatcher.wrap(r));
       } else {
-        new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r)).run();
+        new LockRunnable(getReadLock(), myReadActionDispatcher, r).run();
       }
     }));
     myCancellableReads.removeIfCanCancel(r);
@@ -117,20 +117,13 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     }
     assertNotWriteFromRead();
     myCancellableReads.cancel();
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(r));
+    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), myWriteActionDispatcher, r);
     if (isInEDT()) {
       myPlatformWriteHelper.runWrite(new PlatformCancelBlock(lockRunnable));
     } else {
       ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     }
     sharedReadIsOver();
-  }
-
-  // to cease once clearRepositoryStateCache gone
-  // The easiest way is to have onActionStart (much like onCommandStart) and do it there
-  // Smartest way is to drop these caches altogether.
-  private Runnable wrapWithModelWriteDispatch(Runnable r) {
-    return myWriteActionDispatcher.wrap(r);
   }
 
   @Deprecated(since = "201", forRemoval = true)
@@ -185,7 +178,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
    */
   private boolean tryRead(final Runnable r) {
     // 1 ms is pretty short to be considered 'try'
-    final LockRunnable lockRunnable = new LockRunnable(getReadLock(), 1, myReadActionDispatcher.wrap(r));
+    final LockRunnable lockRunnable = new LockRunnable(getReadLock(), 1, myReadActionDispatcher, r);
     // XXX likely, shall try to grab IDEA's read lock much like tryWrite does
     ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     if (lockRunnable.wasExecuted()) {
@@ -204,7 +197,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       return false;
     }
 
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(r));
+    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, myWriteActionDispatcher, r);
 
     // XXX there's only 1 use of the method, and it's from EDT executor, are there any chance not to be in EDT here?
     assert isInEDT();
@@ -245,7 +238,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
     TaskTimer taskTimer = new TaskTimer();
     // tryWrite ensures our command runnable would be executed from a distinct thread and hence would be 'top' one
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
+    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, myWriteActionDispatcher, wrapTopCommandRunnable(r, project));
     RunWithOutcome<Object> computable = new RunWithOutcome<>((Callable<?>) () -> {
       myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
       return null;
@@ -292,8 +285,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
     String name = "MPS Execute Command", groupId = null;
     UndoConfirmationPolicy confirmUndo = UndoConfirmationPolicy.DO_NOT_REQUEST_CONFIRMATION;
-    if (r instanceof UndoRunnable) {
-      UndoRunnable ur = (UndoRunnable) r;
+    if (r instanceof UndoRunnable ur) {
       name = ur.getName();
       groupId = ur.getGroupId();
       if (ur.shallConfirmUndo()) {
@@ -320,7 +312,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
         throw new IllegalModelAccessException("Do not start a new command while start/finish notification for another command is in process");
       }
     } else {
-      final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(cmd));
+      final LockRunnable withModelLock = new LockRunnable(getWriteLock(), myWriteActionDispatcher, cmd);
       cmd = myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock((withModelLock)));
     }
     CommandProcessor.getInstance().executeCommand(project.getProject(), cmd, name, groupId, confirmUndo);
@@ -334,7 +326,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
     myCancellableReads.cancel();
 
-    final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
+    final LockRunnable withModelLock = new LockRunnable(getWriteLock(), myWriteActionDispatcher, wrapTopCommandRunnable(r, project));
     CommandProcessor.getInstance().runUndoTransparentAction(myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock(withModelLock)));
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.logging.Logger;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -29,22 +30,33 @@ import java.util.concurrent.locks.Lock;
 final class LockRunnable implements Runnable {
   private final Lock myLock;
   private final long myTimeoutMillis;
+  private final ActionDispatcher<?> myActionDispatcher;
   private final Runnable myDelegate;
   private boolean myDelegateExecuted;
 
   public LockRunnable(Lock lock, Runnable delegate) {
+    this(lock, -1, null, delegate);
+  }
+
+  public LockRunnable(Lock lock, @Nullable ActionDispatcher<?> actionDispatcher, Runnable delegate) {
     myLock = lock;
     myTimeoutMillis = -1;
+    myActionDispatcher = actionDispatcher;
     myDelegate = delegate;
   }
 
   public LockRunnable(Lock lock, long timeoutMillis, Runnable delegate) {
+    this(lock, timeoutMillis, null, delegate);
+  }
+
+  public LockRunnable(Lock lock, long timeoutMillis, @Nullable ActionDispatcher<?> actionDispatcher, Runnable delegate) {
     myLock = lock;
     myTimeoutMillis = timeoutMillis;
+    myActionDispatcher = actionDispatcher;
     myDelegate = delegate;
   }
 
-  @Override
+    @Override
   public void run() {
     myDelegateExecuted = false;
     try {
@@ -57,7 +69,11 @@ final class LockRunnable implements Runnable {
       }
       if (lockGranted) {
         try {
-          myDelegate.run();
+          if (myActionDispatcher != null) {
+            myActionDispatcher.dispatch(myDelegate);
+          } else {
+            myDelegate.run();
+          }
           myDelegateExecuted = true;
         } finally {
           myLock.unlock();
