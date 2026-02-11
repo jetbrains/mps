@@ -20,6 +20,7 @@ import jetbrains.mps.checkedName.PropertyReference;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -86,19 +87,26 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
         if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(s, PROPS.value$w7MM), nativeLanguageValue))) {
           String lang = ((nativeLanguageValue != null && nativeLanguageValue.length() > 0) ? nativeLanguageValue : ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)));
           String warningMessage = "Naming policies for " + lang + " language violated: " + "all words except prepositions, articles and particles should be capitalized.";
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976032692", null, errorTarget);
+          if (Objects.equals(lang, "English")) {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_literal_once_QuickFix", "1754721888976032695", false);
-              intentionProvider.putArgument("caption", "Fix String");
-              intentionProvider.putArgument("literal", s);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976032692", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_literal_once_QuickFix", "1754721888976032695", false);
+                intentionProvider.putArgument("caption", "Fix String");
+                intentionProvider.putArgument("literal", s);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "1754721888976032700", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
+          } else {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "1754721888976032700", false);
-              intentionProvider.putArgument("nodeToFix", node);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "7495798601073764707", null, errorTarget);
             }
           }
         }
@@ -110,19 +118,26 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
         if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(p.getNode(), p.getProperty()), nativeLanguageValue))) {
           String lang = ((nativeLanguageValue != null && nativeLanguageValue.length() > 0) ? nativeLanguageValue : ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(p.getNode(), p.getProperty())));
           String warningMessage = "Naming policies for " + lang + " language violated: " + "all words except prepositions, articles and particles should be capitalized; no leading and trailing whitespaces are allowed.";
-          {
-            final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976034414", null, errorTarget);
+          if (Objects.equals(lang, "English")) {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_property_once_QuickFix", "1754721888976034423", false);
-              intentionProvider.putArgument("caption", "Fix " + NameUtil.capitalize(p.getProperty().getName()));
-              intentionProvider.putArgument("property", p);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976034414", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_property_once_QuickFix", "1754721888976034423", false);
+                intentionProvider.putArgument("caption", "Fix " + NameUtil.capitalize(p.getProperty().getName()));
+                intentionProvider.putArgument("property", p);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "1754721888976034435", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
+          } else {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "1754721888976034435", false);
-              intentionProvider.putArgument("nodeToFix", node);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "7495798601073836408", null, errorTarget);
             }
           }
         }

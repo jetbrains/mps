@@ -8,6 +8,7 @@
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
@@ -23,8 +24,17 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv" />
+      <concept id="6054523464627964745" name="jetbrains.mps.lang.structure.structure.AttributeInfo_AttributedConcept" flags="ng" index="trNpa">
+        <reference id="6054523464627965081" name="concept" index="trN6q" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
+      </concept>
+      <concept id="2992811758677295509" name="jetbrains.mps.lang.structure.structure.AttributeInfo" flags="ng" index="M6xJ_">
+        <property id="7588428831955550663" name="role" index="Hh88m" />
+        <child id="7588428831947959310" name="attributed" index="EQaZv" />
+        <child id="7588428831955550186" name="multiple" index="HhnKV" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -178,6 +188,23 @@
       <property role="3tVfz5" value="2899067762785149228" />
       <property role="TrG5h" value="DANISH" />
       <property role="1L1pqM" value="Danish" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6w6rhNWQ3Gn">
+    <property role="EcuMT" value="7495798601073310487" />
+    <property role="TrG5h" value="UsedNativeLanguageForStringLiteral" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyi" id="6w6rhNWQ8DD" role="1TKVEl">
+      <property role="IQ2nx" value="7495798601073330793" />
+      <property role="TrG5h" value="nativeLanguage" />
+      <ref role="AX2Wp" node="2wVzGkOoAJ5" resolve="NativeLanguage" />
+    </node>
+    <node concept="M6xJ_" id="6w6rhNWQ3Go" role="lGtFl">
+      <property role="Hh88m" value="usedNativeLanguage" />
+      <node concept="tn0Fv" id="6w6rhNWQ3Gp" role="HhnKV" />
+      <node concept="trNpa" id="6w6rhNWQ3Gq" role="EQaZv">
+        <ref role="trN6q" to="tpee:f$Xl_Og" resolve="StringLiteral" />
+      </node>
     </node>
   </node>
 </model>

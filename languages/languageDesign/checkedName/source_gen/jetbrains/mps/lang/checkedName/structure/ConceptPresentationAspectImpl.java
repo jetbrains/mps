@@ -14,6 +14,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_PropertyPointerValueOperation;
   private ConceptPresentation props_PropertyRefExpression;
   private ConceptPresentation props_PropertyRefType;
+  private ConceptPresentation props_UsedNativeLanguageForStringLiteral;
 
   @Override
   @Nullable
@@ -56,6 +57,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PropertyRefType = cpb.create();
         }
         return props_PropertyRefType;
+      case LanguageConceptSwitch.UsedNativeLanguageForStringLiteral:
+        if (props_UsedNativeLanguageForStringLiteral == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("UsedNativeLanguageForStringLiteral");
+          props_UsedNativeLanguageForStringLiteral = cpb.create();
+        }
+        return props_UsedNativeLanguageForStringLiteral;
     }
     return null;
   }

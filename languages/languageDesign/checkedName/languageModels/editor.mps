@@ -23,6 +23,7 @@
       <concept id="1078939183254" name="jetbrains.mps.lang.editor.structure.CellModel_Component" flags="sg" stub="3162947552742194261" index="PMmxH">
         <reference id="1078939183255" name="editorComponent" index="PMmxG" />
       </concept>
+      <concept id="1149850725784" name="jetbrains.mps.lang.editor.structure.CellModel_AttributedNodeCell" flags="ng" index="2SsqMj" />
       <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
         <property id="1186403713874" name="color" index="Vb096" />
       </concept>
@@ -30,7 +31,12 @@
         <property id="1186403771423" name="style" index="Vbekb" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
+      <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
+        <property id="1186414551515" name="flag" index="VOm3f" />
+      </concept>
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
+      <concept id="1233758997495" name="jetbrains.mps.lang.editor.structure.PunctuationLeftStyleClassItem" flags="ln" index="11L4FC" />
+      <concept id="1233759184865" name="jetbrains.mps.lang.editor.structure.PunctuationRightStyleClassItem" flags="ln" index="11LMrY" />
       <concept id="1235999440492" name="jetbrains.mps.lang.editor.structure.HorizontalAlign" flags="ln" index="37jFXN">
         <property id="1235999920262" name="align" index="37lx6p" />
       </concept>
@@ -181,6 +187,32 @@
       <node concept="3F0A7n" id="2wVzGkOrZly" role="3EZMnx">
         <ref role="1NtTu8" to="4j10:2wVzGkOoH3Z" resolve="nativeLanguage" />
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6w6rhNWQ3Gr">
+    <ref role="1XX52x" to="4j10:6w6rhNWQ3Gn" resolve="UsedNativeLanguageForStringLiteral" />
+    <node concept="3EZMnI" id="6w6rhNWQ3Gt" role="2wV5jI">
+      <node concept="3F0ifn" id="6w6rhNWRzoZ" role="3EZMnx">
+        <property role="3F0ifm" value="&lt;" />
+        <node concept="11LMrY" id="6w6rhNWSNmH" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="6w6rhNWRzp3" role="3EZMnx">
+        <ref role="1NtTu8" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+        <ref role="1k5W1q" to="tpen:hshO_Yc" resolve="Comment" />
+        <node concept="11LMrY" id="6w6rhNWSNmI" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="2SsqMj" id="6w6rhNWQ3G$" role="3EZMnx" />
+      <node concept="3F0ifn" id="6w6rhNWRhz8" role="3EZMnx">
+        <property role="3F0ifm" value="&gt;" />
+        <node concept="11L4FC" id="6w6rhNWRnXI" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="6w6rhNWQ3Gw" role="2iSdaV" />
     </node>
   </node>
 </model>
