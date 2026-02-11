@@ -5,7 +5,7 @@ package jetbrains.mps.editor.spellcheck;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker;
+import jetbrains.mps.checkers.NativeLangNameChecker;
 
 public class ModuleActivator implements ModuleRuntime.Activator {
   private ComponentHost componentHost;

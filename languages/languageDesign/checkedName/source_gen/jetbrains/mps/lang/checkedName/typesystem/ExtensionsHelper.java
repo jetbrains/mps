@@ -5,7 +5,7 @@ package jetbrains.mps.lang.checkedName.typesystem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker;
+import jetbrains.mps.checkers.NativeLangNameChecker;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 
 public class ExtensionsHelper {

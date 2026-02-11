@@ -17,10 +17,10 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mjwp" ref="r:82ee0621-a317-4778-9ea5-72584de35a48(jetbrains.mps.lang.checkedName.behavior)" />
-    <import index="1cfl" ref="r:639857b1-56a4-40e4-875a-56d6ebe772b2(jetbrains.mps.lang.checkedName.plugin)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="wsw7" ref="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -1362,7 +1362,7 @@
             <node concept="liA8E" id="51B5bJ$yLVT" role="2OqNvi">
               <ref role="37wK5l" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
               <node concept="3VsKOn" id="51B5bJ$yLVU" role="37wK5m">
-                <ref role="3VsUkX" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+                <ref role="3VsUkX" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
               </node>
               <node concept="2YIFZM" id="51B5bJ$_k35" role="37wK5m">
                 <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.all()" resolve="all" />
@@ -1426,7 +1426,7 @@
             <node concept="liA8E" id="2wVzGkOBEfC" role="2OqNvi">
               <ref role="37wK5l" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
               <node concept="3VsKOn" id="2wVzGkOBEfD" role="37wK5m">
-                <ref role="3VsUkX" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+                <ref role="3VsUkX" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
               </node>
               <node concept="2YIFZM" id="2wVzGkOBEfE" role="37wK5m">
                 <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.any()" resolve="any" />
@@ -1448,7 +1448,7 @@
                           <ref role="3cqZAo" node="2wVzGkOBEfG" resolve="checker" />
                         </node>
                         <node concept="liA8E" id="2wVzGkOBEfO" role="2OqNvi">
-                          <ref role="37wK5l" to="1cfl:2wVzGkOB82s" resolve="isNativeLanguageInstalled" />
+                          <ref role="37wK5l" to="wsw7:2wVzGkOB82s" resolve="isNativeLanguageInstalled" />
                           <node concept="37vLTw" id="2wVzGkOBEfP" role="37wK5m">
                             <ref role="3cqZAo" node="2wVzGkOBEfV" resolve="languageName" />
                           </node>
@@ -1504,7 +1504,7 @@
             <node concept="liA8E" id="51B5bJ$$rbZ" role="2OqNvi">
               <ref role="37wK5l" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
               <node concept="3VsKOn" id="51B5bJ$$rc0" role="37wK5m">
-                <ref role="3VsUkX" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+                <ref role="3VsUkX" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
               </node>
               <node concept="2YIFZM" id="51B5bJ$$rc1" role="37wK5m">
                 <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.any()" resolve="any" />
@@ -1528,7 +1528,7 @@
                               <ref role="3cqZAo" node="51B5bJ$$rc3" resolve="checker" />
                             </node>
                             <node concept="liA8E" id="2wVzGkOpdMI" role="2OqNvi">
-                              <ref role="37wK5l" to="1cfl:2wVzGkOp5qm" resolve="isProperlyCapitalizedInLanguage" />
+                              <ref role="37wK5l" to="wsw7:2wVzGkOp5qm" resolve="isProperlyCapitalizedInLanguage" />
                               <node concept="37vLTw" id="2wVzGkOpdMJ" role="37wK5m">
                                 <ref role="3cqZAo" node="51B5bJ$$rPU" resolve="text" />
                               </node>
@@ -1558,7 +1558,7 @@
                                 <ref role="3cqZAo" node="51B5bJ$$rc3" resolve="checker" />
                               </node>
                               <node concept="liA8E" id="51B5bJ$$sOF" role="2OqNvi">
-                                <ref role="37wK5l" to="1cfl:5J0WEnGJLKC" resolve="isProperlyCapitalized" />
+                                <ref role="37wK5l" to="wsw7:5J0WEnGJLKC" resolve="isProperlyCapitalized" />
                                 <node concept="37vLTw" id="51B5bJ$$sWY" role="37wK5m">
                                   <ref role="3cqZAo" node="51B5bJ$$rPU" resolve="text" />
                                 </node>
@@ -1621,7 +1621,7 @@
             <node concept="liA8E" id="51B5bJ$x26t" role="2OqNvi">
               <ref role="37wK5l" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
               <node concept="3VsKOn" id="51B5bJ$x3Sc" role="37wK5m">
-                <ref role="3VsUkX" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+                <ref role="3VsUkX" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
               </node>
               <node concept="2YIFZM" id="51B5bJ$x822" role="37wK5m">
                 <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.any()" resolve="any" />
@@ -1643,7 +1643,7 @@
                           <ref role="3cqZAo" node="51B5bJ$$$HZ" resolve="checker" />
                         </node>
                         <node concept="liA8E" id="51B5bJ$$_Rv" role="2OqNvi">
-                          <ref role="37wK5l" to="1cfl:5J0WEnGJLtH" resolve="detectNativeLanguage" />
+                          <ref role="37wK5l" to="wsw7:5J0WEnGJLtH" resolve="detectNativeLanguage" />
                           <node concept="37vLTw" id="51B5bJ$$A0J" role="37wK5m">
                             <ref role="3cqZAo" node="51B5bJ$$$AI" resolve="text" />
                           </node>

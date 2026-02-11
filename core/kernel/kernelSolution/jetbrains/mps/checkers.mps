@@ -13471,5 +13471,54 @@
       </node>
     </node>
   </node>
+  <node concept="3HP615" id="5J0WEnGJGQc">
+    <property role="TrG5h" value="NativeLangNameChecker" />
+    <property role="3GE5qa" value="nativeLanguage" />
+    <node concept="3clFb_" id="5J0WEnGJLtH" role="jymVt">
+      <property role="TrG5h" value="detectNativeLanguage" />
+      <node concept="3clFbS" id="5J0WEnGJLtK" role="3clF47" />
+      <node concept="3Tm1VV" id="5J0WEnGJLtL" role="1B3o_S" />
+      <node concept="17QB3L" id="5J0WEnGJLtz" role="3clF45" />
+      <node concept="37vLTG" id="5J0WEnGJLJB" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="5J0WEnGJLJA" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="2wVzGkOB82s" role="jymVt">
+      <property role="TrG5h" value="isNativeLanguageInstalled" />
+      <node concept="3clFbS" id="2wVzGkOB82v" role="3clF47" />
+      <node concept="3Tm1VV" id="2wVzGkOB82w" role="1B3o_S" />
+      <node concept="10P_77" id="2wVzGkOB80V" role="3clF45" />
+      <node concept="37vLTG" id="2wVzGkOB8lR" role="3clF46">
+        <property role="TrG5h" value="languageName" />
+        <node concept="17QB3L" id="2wVzGkOB8lQ" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5J0WEnGJLKC" role="jymVt">
+      <property role="TrG5h" value="isProperlyCapitalized" />
+      <node concept="3clFbS" id="5J0WEnGJLKD" role="3clF47" />
+      <node concept="3Tm1VV" id="5J0WEnGJLKE" role="1B3o_S" />
+      <node concept="10P_77" id="5J0WEnGJM8Y" role="3clF45" />
+      <node concept="37vLTG" id="5J0WEnGJLKG" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="5J0WEnGJLKH" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="2wVzGkOp5qm" role="jymVt">
+      <property role="TrG5h" value="isProperlyCapitalizedInLanguage" />
+      <node concept="3clFbS" id="2wVzGkOp5qp" role="3clF47" />
+      <node concept="3Tm1VV" id="2wVzGkOp5qq" role="1B3o_S" />
+      <node concept="10P_77" id="2wVzGkOp5ps" role="3clF45" />
+      <node concept="37vLTG" id="2wVzGkOp5GY" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="2wVzGkOp5GX" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="2wVzGkOp5KR" role="3clF46">
+        <property role="TrG5h" value="languageName" />
+        <node concept="17QB3L" id="2wVzGkOp63G" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="5J0WEnGJGQd" role="1B3o_S" />
+  </node>
 </model>
 

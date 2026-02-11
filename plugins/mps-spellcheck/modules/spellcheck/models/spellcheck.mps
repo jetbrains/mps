@@ -42,11 +42,11 @@
     <import index="rqnh" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.utils(jetbrains.mps.spellchecker.idea.stubs/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="m81" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie.detection(jetbrains.mps.spellchecker.idea.stubs/)" />
-    <import index="1cfl" ref="r:639857b1-56a4-40e4-875a-56d6ebe772b2(jetbrains.mps.lang.checkedName.plugin)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="44q2" ref="9979803b-18d3-440b-8a74-99cec41fc78e/java:com.intellij.grazie(jetbrains.mps.spellchecker.idea.stubs/)" />
+    <import index="wsw7" ref="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -5875,8 +5875,8 @@
   <node concept="312cEu" id="51B5bJ$_oW4">
     <property role="TrG5h" value="GrazieNativeLangExtension" />
     <node concept="3Tm1VV" id="51B5bJ$_oW5" role="1B3o_S" />
-    <node concept="3uibUv" id="51B5bJ$_sa9" role="EKbjA">
-      <ref role="3uigEE" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+    <node concept="3uibUv" id="3NnQenVaCz$" role="EKbjA">
+      <ref role="3uigEE" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
     </node>
     <node concept="3clFb_" id="51B5bJ$_sb3" role="jymVt">
       <property role="TrG5h" value="detectNativeLanguage" />
@@ -6177,7 +6177,7 @@
             <node concept="liA8E" id="3Ssq9B$kDDB" role="2OqNvi">
               <ref role="37wK5l" to="ze1i:~ModuleRuntime$ActivatorContext.extension(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension)" resolve="extension" />
               <node concept="3VsKOn" id="3Ssq9B$kDQv" role="37wK5m">
-                <ref role="3VsUkX" to="1cfl:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+                <ref role="3VsUkX" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
               </node>
               <node concept="2YIFZM" id="3Ssq9B$lt7m" role="37wK5m">
                 <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.of(java.util.function.Supplier,java.lang.String...)" resolve="of" />
