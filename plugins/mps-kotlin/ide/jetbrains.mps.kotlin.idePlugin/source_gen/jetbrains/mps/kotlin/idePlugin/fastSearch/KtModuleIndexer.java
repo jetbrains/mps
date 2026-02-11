@@ -115,7 +115,7 @@ public class KtModuleIndexer {
       putConcepts(CONCEPTS.EnumEntry$ji);
     }
     indexType(klass.getInlineClassUnderlyingType());
-    indexExtensionsAnnotations(KtAnnotations.getAnnotations(klass));
+    indexExtensionsAnnotations(klass.getAnnotations());
   }
 
   public void indexType(KmType type) {
@@ -167,7 +167,7 @@ public class KtModuleIndexer {
       constructor.getValueParameters().forEach(this::indexValueParameter);
     }
 
-    indexExtensionsAnnotations(KtAnnotations.getAnnotations(constructor));
+    indexExtensionsAnnotations(constructor.getAnnotations());
   }
 
 
@@ -178,7 +178,7 @@ public class KtModuleIndexer {
 
     indexType(param.getType());
     indexType(param.getVarargElementType());
-    indexExtensionsAnnotations(KtAnnotations.getAnnotations(param));
+    indexExtensionsAnnotations(param.getAnnotations());
   }
 
   public void indexTypeParameter(KmTypeParameter typeParam) {
@@ -202,7 +202,7 @@ public class KtModuleIndexer {
       fun.getValueParameters().forEach(this::indexValueParameter);
     }
 
-    indexExtensionsAnnotations(KtAnnotations.getAnnotations(fun));
+    indexExtensionsAnnotations(fun.getAnnotations());
   }
 
   public void indexProperty(KmProperty prop) {
@@ -215,7 +215,7 @@ public class KtModuleIndexer {
     indexType(prop.getReceiverParameterType());
     indexType(prop.getReturnType());
 
-    indexExtensionsAnnotations(KtAnnotations.getAnnotations(prop));
+    indexExtensionsAnnotations(prop.getAnnotations());
   }
 
   public void indexTypeAlias(KmTypeAlias typeAlias) {

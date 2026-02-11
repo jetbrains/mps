@@ -146,7 +146,7 @@ public class KtClassParser {
     // TODO unhandled inline class underlying property (for value classes)
 
     // Finally, annotations
-    context.addAnnotations(KtAnnotations.getAnnotations(kmClass), node);
+    context.addAnnotations(kmClass.getAnnotations(), node);
 
     return node;
   }

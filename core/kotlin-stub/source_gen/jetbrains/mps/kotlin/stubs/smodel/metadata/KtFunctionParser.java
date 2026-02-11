@@ -53,7 +53,7 @@ public class KtFunctionParser {
       SLinkOperations.setTarget(node, LINKS.returnType$fGYV, KtTypeParser.parseType(fun.getReturnType(), context)._0());
     });
 
-    context.addAnnotations(KtAnnotations.getAnnotations(fun), node);
+    context.addAnnotations(fun.getAnnotations(), node);
 
     functionId.applyOn(node);
     return node;

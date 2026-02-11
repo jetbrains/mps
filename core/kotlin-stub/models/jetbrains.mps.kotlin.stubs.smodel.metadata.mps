@@ -1956,11 +1956,12 @@
             </node>
             <node concept="liA8E" id="4s8_snvoSSe" role="2OqNvi">
               <ref role="37wK5l" node="4s8_snvm2Uq" resolve="addAnnotations" />
-              <node concept="2YIFZM" id="4$ujTKD1ncS" role="37wK5m">
-                <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmClass)" resolve="getAnnotations" />
-                <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-                <node concept="37vLTw" id="4$ujTKD1qtr" role="37wK5m">
+              <node concept="2OqwBi" id="13QrEjfwGXd" role="37wK5m">
+                <node concept="37vLTw" id="13QrEjfwDge" role="2Oq$k0">
                   <ref role="3cqZAo" node="30flKNoqzaM" resolve="kmClass" />
+                </node>
+                <node concept="liA8E" id="13QrEjfwKGA" role="2OqNvi">
+                  <ref role="37wK5l" to="4324:~KmClass.getAnnotations()" resolve="getAnnotations" />
                 </node>
               </node>
               <node concept="37vLTw" id="4s8_snvp4H8" role="37wK5m">
@@ -2235,11 +2236,12 @@
             </node>
             <node concept="liA8E" id="4s8_snvFzAx" role="2OqNvi">
               <ref role="37wK5l" node="4s8_snvm2Uq" resolve="addAnnotations" />
-              <node concept="2YIFZM" id="4$ujTKD5Xsy" role="37wK5m">
-                <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmConstructor)" resolve="getAnnotations" />
-                <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-                <node concept="37vLTw" id="4$ujTKD5Xsz" role="37wK5m">
+              <node concept="2OqwBi" id="13QrEjfwQU0" role="37wK5m">
+                <node concept="37vLTw" id="13QrEjfwQzP" role="2Oq$k0">
                   <ref role="3cqZAo" node="4s8_snvER_z" resolve="constructor" />
+                </node>
+                <node concept="liA8E" id="13QrEjfwTqY" role="2OqNvi">
+                  <ref role="37wK5l" to="4324:~KmConstructor.getAnnotations()" resolve="getAnnotations" />
                 </node>
               </node>
               <node concept="37vLTw" id="4s8_snvFF5l" role="37wK5m">
@@ -2761,11 +2763,12 @@
             </node>
             <node concept="liA8E" id="4s8_snvYHCQ" role="2OqNvi">
               <ref role="37wK5l" node="4s8_snvm2Uq" resolve="addAnnotations" />
-              <node concept="2YIFZM" id="4$ujTKD63U5" role="37wK5m">
-                <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmFunction)" resolve="getAnnotations" />
-                <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-                <node concept="37vLTw" id="4$ujTKD63U6" role="37wK5m">
+              <node concept="2OqwBi" id="13QrEjfx2Qa" role="37wK5m">
+                <node concept="37vLTw" id="13QrEjfx0Sy" role="2Oq$k0">
                   <ref role="3cqZAo" node="4s8_snvSggC" resolve="fun" />
+                </node>
+                <node concept="liA8E" id="13QrEjfx4YC" role="2OqNvi">
+                  <ref role="37wK5l" to="4324:~KmFunction.getAnnotations()" resolve="getAnnotations" />
                 </node>
               </node>
               <node concept="37vLTw" id="4s8_snvYUJ0" role="37wK5m">
@@ -3085,11 +3088,12 @@
             </node>
             <node concept="liA8E" id="4s8_snvGxCh" role="2OqNvi">
               <ref role="37wK5l" node="4s8_snvm2Uq" resolve="addAnnotations" />
-              <node concept="2YIFZM" id="4$ujTKD66At" role="37wK5m">
-                <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmValueParameter)" resolve="getAnnotations" />
-                <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-                <node concept="37vLTw" id="4$ujTKD66Au" role="37wK5m">
+              <node concept="2OqwBi" id="13QrEjfxaGI" role="37wK5m">
+                <node concept="37vLTw" id="13QrEjfxaqi" role="2Oq$k0">
                   <ref role="3cqZAo" node="4s8_snvG0v6" resolve="valueParameter" />
+                </node>
+                <node concept="liA8E" id="13QrEjfxbFg" role="2OqNvi">
+                  <ref role="37wK5l" to="4324:~KmValueParameter.getAnnotations()" resolve="getAnnotations" />
                 </node>
               </node>
               <node concept="37vLTw" id="4s8_snvGzXi" role="37wK5m">
@@ -3668,11 +3672,12 @@
                           </node>
                           <node concept="liA8E" id="4s8_snvumNX" role="2OqNvi">
                             <ref role="37wK5l" node="4s8_snvm2Uq" resolve="addAnnotations" />
-                            <node concept="2YIFZM" id="4$ujTKD696l" role="37wK5m">
-                              <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmValueParameter)" resolve="getAnnotations" />
-                              <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-                              <node concept="37vLTw" id="4$ujTKD696m" role="37wK5m">
+                            <node concept="2OqwBi" id="13QrEjfxfwN" role="37wK5m">
+                              <node concept="37vLTw" id="13QrEjfxeae" role="2Oq$k0">
                                 <ref role="3cqZAo" node="4s8_snvtUFF" resolve="setterParameter" />
+                              </node>
+                              <node concept="liA8E" id="13QrEjfxiNB" role="2OqNvi">
+                                <ref role="37wK5l" to="4324:~KmValueParameter.getAnnotations()" resolve="getAnnotations" />
                               </node>
                             </node>
                             <node concept="37vLTw" id="4s8_snvuw7K" role="37wK5m">
@@ -3752,11 +3757,12 @@
                       </node>
                       <node concept="liA8E" id="4s8_snvuR47" role="2OqNvi">
                         <ref role="37wK5l" node="4s8_snvm2Uq" resolve="addAnnotations" />
-                        <node concept="2YIFZM" id="4$ujTKD6gje" role="37wK5m">
-                          <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmProperty)" resolve="getAnnotations" />
-                          <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-                          <node concept="37vLTw" id="4$ujTKD6gjf" role="37wK5m">
+                        <node concept="2OqwBi" id="13QrEjfxmiy" role="37wK5m">
+                          <node concept="37vLTw" id="13QrEjfxllD" role="2Oq$k0">
                             <ref role="3cqZAo" node="4s8_snvsSYx" resolve="property" />
+                          </node>
+                          <node concept="liA8E" id="13QrEjfxni4" role="2OqNvi">
+                            <ref role="37wK5l" to="4324:~KmProperty.getAnnotations()" resolve="getAnnotations" />
                           </node>
                         </node>
                         <node concept="37vLTw" id="4s8_snvRM2E" role="37wK5m">

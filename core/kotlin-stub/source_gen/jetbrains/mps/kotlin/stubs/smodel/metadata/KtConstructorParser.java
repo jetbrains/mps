@@ -35,7 +35,7 @@ public class KtConstructorParser {
       functionId.addArgument(KtParameterParser.parseParameter(param, paramNode, context));
     });
 
-    context.addAnnotations(KtAnnotations.getAnnotations(constructor), node);
+    context.addAnnotations(constructor.getAnnotations(), node);
 
     // Set id
     functionId.applyOn(node);

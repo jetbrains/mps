@@ -56,14 +56,14 @@ public class KtPropertyVisitor {
         SPropertyOperations.assign(parameter, PROPS.name$MnvL, setterParameter.getName());
         SLinkOperations.setTarget(parameter, LINKS.type$Nm_o, KtTypeParser.parseType(setterParameter.getType(), context)._0());
 
-        context.addAnnotations(KtAnnotations.getAnnotations(setterParameter), parameter);
+        context.addAnnotations(setterParameter.getAnnotations(), parameter);
       }
 
       // Return type
       SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.declaration$IdZv), LINKS.type$RmkT, KtTypeParser.parseType(property.getReturnType(), context)._0());
 
       // Annotations
-      context.addAnnotations(KtAnnotations.getAnnotations(property), node);
+      context.addAnnotations(property.getAnnotations(), node);
 
       // Id should be set that way as it possibly contains receiver type and type parameters
       String header = (receiverTypeId != null ? locationName + "#" + context.packageLocalName(receiverTypeId) : locationName);

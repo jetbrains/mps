@@ -44,7 +44,7 @@ public class KtParameterParser {
       typeId = type._1();
     }
 
-    context.addAnnotations(KtAnnotations.getAnnotations(valueParameter), node);
+    context.addAnnotations(valueParameter.getAnnotations(), node);
     return typeId;
   }
 

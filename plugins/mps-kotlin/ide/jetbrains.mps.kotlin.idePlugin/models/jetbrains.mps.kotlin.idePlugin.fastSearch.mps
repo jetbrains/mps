@@ -968,11 +968,12 @@
         <node concept="3clFbF" id="4Jt4Bnvx64j" role="3cqZAp">
           <node concept="1rXfSq" id="4Jt4Bnvx64l" role="3clFbG">
             <ref role="37wK5l" node="4Jt4BnvsdmV" resolve="indexExtensionsAnnotations" />
-            <node concept="2YIFZM" id="4$ujTKD5gM7" role="37wK5m">
-              <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmClass)" resolve="getAnnotations" />
-              <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-              <node concept="37vLTw" id="4$ujTKD5gM8" role="37wK5m">
+            <node concept="2OqwBi" id="1e5qvALWWRe" role="37wK5m">
+              <node concept="37vLTw" id="1e5qvALWP6e" role="2Oq$k0">
                 <ref role="3cqZAo" node="6mOpgvByNZU" resolve="klass" />
+              </node>
+              <node concept="liA8E" id="1e5qvALX4OK" role="2OqNvi">
+                <ref role="37wK5l" to="4324:~KmClass.getAnnotations()" resolve="getAnnotations" />
               </node>
             </node>
           </node>
@@ -1410,11 +1411,12 @@
         <node concept="3clFbF" id="4Jt4BnvwC7y" role="3cqZAp">
           <node concept="1rXfSq" id="4Jt4BnvwC7$" role="3clFbG">
             <ref role="37wK5l" node="4Jt4BnvsdmV" resolve="indexExtensionsAnnotations" />
-            <node concept="2YIFZM" id="4$ujTKD4wh5" role="37wK5m">
-              <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmConstructor)" resolve="getAnnotations" />
-              <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-              <node concept="37vLTw" id="4$ujTKD4wh6" role="37wK5m">
+            <node concept="2OqwBi" id="1e5qvALXjnE" role="37wK5m">
+              <node concept="37vLTw" id="1e5qvALXcqa" role="2Oq$k0">
                 <ref role="3cqZAo" node="4Jt4BnuWWLY" resolve="constructor" />
+              </node>
+              <node concept="liA8E" id="1e5qvALXt5n" role="2OqNvi">
+                <ref role="37wK5l" to="4324:~KmConstructor.getAnnotations()" resolve="getAnnotations" />
               </node>
             </node>
           </node>
@@ -1475,11 +1477,12 @@
         <node concept="3clFbF" id="4Jt4Bnvw7li" role="3cqZAp">
           <node concept="1rXfSq" id="4Jt4Bnvw7lk" role="3clFbG">
             <ref role="37wK5l" node="4Jt4BnvsdmV" resolve="indexExtensionsAnnotations" />
-            <node concept="2YIFZM" id="4$ujTKD44sD" role="37wK5m">
-              <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmValueParameter)" resolve="getAnnotations" />
-              <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-              <node concept="37vLTw" id="4$ujTKD44sE" role="37wK5m">
+            <node concept="2OqwBi" id="1e5qvALXBd_" role="37wK5m">
+              <node concept="37vLTw" id="1e5qvALX$O6" role="2Oq$k0">
                 <ref role="3cqZAo" node="4Jt4Bnv04lH" resolve="param" />
+              </node>
+              <node concept="liA8E" id="1e5qvALXV8Z" role="2OqNvi">
+                <ref role="37wK5l" to="4324:~KmValueParameter.getAnnotations()" resolve="getAnnotations" />
               </node>
             </node>
           </node>
@@ -1723,11 +1726,12 @@
         <node concept="3clFbF" id="4Jt4BnvvXgo" role="3cqZAp">
           <node concept="1rXfSq" id="4Jt4BnvvXgq" role="3clFbG">
             <ref role="37wK5l" node="4Jt4BnvsdmV" resolve="indexExtensionsAnnotations" />
-            <node concept="2YIFZM" id="4$ujTKD3E7L" role="37wK5m">
-              <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmFunction)" resolve="getAnnotations" />
-              <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-              <node concept="37vLTw" id="4$ujTKD3E7M" role="37wK5m">
+            <node concept="2OqwBi" id="1e5qvALY5aI" role="37wK5m">
+              <node concept="37vLTw" id="1e5qvALXYet" role="2Oq$k0">
                 <ref role="3cqZAo" node="6mOpgvBAXvK" resolve="fun" />
+              </node>
+              <node concept="liA8E" id="1e5qvALY9Z4" role="2OqNvi">
+                <ref role="37wK5l" to="4324:~KmFunction.getAnnotations()" resolve="getAnnotations" />
               </node>
             </node>
           </node>
@@ -1838,11 +1842,12 @@
         <node concept="3clFbF" id="4Jt4BnvtC91" role="3cqZAp">
           <node concept="1rXfSq" id="4Jt4BnvtC8Z" role="3clFbG">
             <ref role="37wK5l" node="4Jt4BnvsdmV" resolve="indexExtensionsAnnotations" />
-            <node concept="2YIFZM" id="4$ujTKD1ncS" role="37wK5m">
-              <ref role="37wK5l" to="w9z3:~KtAnnotations.getAnnotations(kotlin.metadata.KmProperty)" resolve="getAnnotations" />
-              <ref role="1Pybhc" to="w9z3:~KtAnnotations" resolve="KtAnnotations" />
-              <node concept="37vLTw" id="4$ujTKD1qtr" role="37wK5m">
+            <node concept="2OqwBi" id="1e5qvALYmJT" role="37wK5m">
+              <node concept="37vLTw" id="1e5qvALYhiq" role="2Oq$k0">
                 <ref role="3cqZAo" node="6mOpgvBE8h8" resolve="prop" />
+              </node>
+              <node concept="liA8E" id="1e5qvALYs8Y" role="2OqNvi">
+                <ref role="37wK5l" to="4324:~KmProperty.getAnnotations()" resolve="getAnnotations" />
               </node>
             </node>
           </node>

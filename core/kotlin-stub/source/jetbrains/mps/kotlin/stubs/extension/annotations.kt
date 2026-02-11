@@ -14,17 +14,3 @@ import kotlin.metadata.*
 val KmType.annotations
     get() = klib_annotations
 
-val KmClass.annotations
-    get() = klib_annotations
-
-val KmConstructor.annotations
-    get() = klib_annotations
-
-val KmValueParameter.annotations
-    get() = klib_annotations
-
-val KmFunction.annotations
-    get() = klib_annotations
-
-val KmProperty.annotations
-    get() = klib_annotations
