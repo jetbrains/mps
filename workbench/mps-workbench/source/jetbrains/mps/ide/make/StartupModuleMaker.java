@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,5 @@
  */
 package jetbrains.mps.ide.make;
 
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.util.MPSProjectActivity;
-
-public abstract class StartupModuleMaker extends MPSProjectActivity {
-  protected StartupModuleMaker() {
-
-  }
-  protected StartupModuleMaker(Project project) {
-  }
+public interface StartupModuleMaker {
 }

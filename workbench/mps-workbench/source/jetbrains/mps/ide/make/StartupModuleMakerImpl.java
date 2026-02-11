@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
@@ -55,7 +56,7 @@ import java.util.Collection;
 /**
  * Compiles all project modules at startup
  */
-public final class StartupModuleMakerImpl extends StartupModuleMaker implements StartupActivity.Background {
+public final class StartupModuleMakerImpl extends MPSProjectActivity implements StartupModuleMaker {
   private static final Logger LOG = Logger.getLogger(StartupModuleMakerImpl.class);
 
   private MPSProject myMPSProject;
