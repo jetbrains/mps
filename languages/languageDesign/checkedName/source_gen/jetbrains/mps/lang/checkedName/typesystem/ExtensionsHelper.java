@@ -14,9 +14,22 @@ public class ExtensionsHelper {
     LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.all(), (checker) -> installed.value = true);
     return installed.value;
   }
-  /*package*/ static boolean isProperlyCapitalized(SRepository repository, final String text) {
+
+  /*package*/ static boolean isNativeLanguageInstalled(SRepository repository, final String languageName) {
+    final Wrappers._boolean result = new Wrappers._boolean(false);
+    LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.any(), (checker) -> result.value = checker.isNativeLanguageInstalled(languageName));
+    return result.value;
+  }
+
+  /*package*/ static boolean isProperlyCapitalized(SRepository repository, final String text, final String languageName) {
     final Wrappers._boolean result = new Wrappers._boolean(true);
-    LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.any(), (checker) -> result.value = checker.isProperlyCapitalized(text));
+    LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.any(), (checker) -> {
+      if ((languageName != null && languageName.length() > 0)) {
+        result.value = checker.isProperlyCapitalizedInLanguage(text, languageName);
+      } else {
+        result.value = checker.isProperlyCapitalized(text);
+      }
+    });
     return result.value;
   }
 

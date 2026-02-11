@@ -18,6 +18,8 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.checkedName.PropertyReference;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -77,9 +79,13 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
       }
     } else {
       // Use grazie
+      SEnumerationLiteral nativeLanguageEnum = SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr);
+      String nativeLanguageValue = ((nativeLanguageEnum != null) && !(SEnumOperations.isMember(nativeLanguageEnum, 0x283b8ec534712e16L)) ? nativeLanguageEnum.getName() : null);
+
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
-        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)))) {
-          String warningMessage = "Naming policies for " + ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)) + " language violated: " + "all words except prepositions, articles and particles should be capitalized.";
+        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(s, PROPS.value$w7MM), nativeLanguageValue))) {
+          String lang = ((nativeLanguageValue != null && nativeLanguageValue.length() > 0) ? nativeLanguageValue : ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)));
+          String warningMessage = "Naming policies for " + lang + " language violated: " + "all words except prepositions, articles and particles should be capitalized.";
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976032692", null, errorTarget);
@@ -101,8 +107,9 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
         if (SPropertyOperations.getString(p.getNode(), p.getProperty()) == null) {
           continue;
         }
-        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(p.getNode(), p.getProperty())))) {
-          String warningMessage = "Naming policies for " + ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(p.getNode(), p.getProperty())) + " language violated: " + "all words except prepositions, articles and particles should be capitalized; no leading and trailing whitespaces are allowed.";
+        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(p.getNode(), p.getProperty()), nativeLanguageValue))) {
+          String lang = ((nativeLanguageValue != null && nativeLanguageValue.length() > 0) ? nativeLanguageValue : ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(p.getNode(), p.getProperty())));
+          String warningMessage = "Naming policies for " + lang + " language violated: " + "all words except prepositions, articles and particles should be capitalized; no leading and trailing whitespaces are allowed.";
           {
             final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "1754721888976034414", null, errorTarget);
@@ -134,6 +141,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
 
   private static final class PROPS {
     /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty nativeLanguage$lRMr = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x283b8ec53462d0ffL, "nativeLanguage");
   }
 
   private static final class CONCEPTS {

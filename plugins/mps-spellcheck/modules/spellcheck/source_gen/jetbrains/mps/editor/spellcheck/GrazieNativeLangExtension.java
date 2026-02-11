@@ -9,8 +9,32 @@ public class GrazieNativeLangExtension implements NativeLangNameChecker {
   public String detectNativeLanguage(String text) {
     return NativeLanguageAnalyzer.detectNativeLanguage(text);
   }
+
+  /**
+   * 
+   * 
+   * @param languageName The value must match a name of a constant in {@link com.intellij.grazie.jlanguage.Lang}
+   */
+  @Override
+  public boolean isNativeLanguageInstalled(String languageName) {
+    return NativeLanguageAnalyzer.isNativeLanguageInstalled(languageName);
+  }
+
+  /**
+   * Auto-detect the language used in 'text'
+   */
   @Override
   public boolean isProperlyCapitalized(String text) {
     return NativeLanguageAnalyzer.isActionDescProperlyCapitalized(text);
+  }
+
+  /**
+   * 
+   * 
+   * @param languageName The value must match a name of a constant in {@link com.intellij.grazie.jlanguage.Lang}
+   */
+  @Override
+  public boolean isProperlyCapitalizedInLanguage(String text, String languageName) {
+    return NativeLanguageAnalyzer.isActionDescProperlyCapitalized(text, languageName);
   }
 }

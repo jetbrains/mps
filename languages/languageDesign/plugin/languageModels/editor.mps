@@ -27,6 +27,7 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="tpfp" ref="r:00000000-0000-4000-0000-011c89590519(jetbrains.mps.baseLanguage.regexp.jetbrains.mps.regexp.accessory)" />
     <import index="y8j6" ref="r:d226432d-2ab7-4e39-8f05-f0fb5c65285d(jetbrains.mps.lang.plugin.enumMigration)" />
+    <import index="bkx5" ref="r:745da36c-6731-41a7-aad3-c0bff6ba51dd(jetbrains.mps.lang.checkedName.editor)" implicit="true" />
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" implicit="true" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -824,7 +825,11 @@
     <node concept="3EZMnI" id="5xxKcMGfQZa" role="6VMZX">
       <node concept="3EZMnI" id="hypbUGL" role="3EZMnx">
         <node concept="3F0ifn" id="hypbVn1" role="3EZMnx">
-          <property role="3F0ifm" value="isInternal:" />
+          <property role="3F0ifm" value="isInternal" />
+        </node>
+        <node concept="3F0ifn" id="6deib$lebo0" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="VPM3Z" id="6deib$lebo3" role="3F10Kt" />
         </node>
         <node concept="3F0A7n" id="hypbZ81" role="3EZMnx">
           <ref role="1NtTu8" to="tp4k:hypbKf4" resolve="isInternal" />
@@ -844,7 +849,11 @@
       <node concept="3EZMnI" id="5AGeKBrKA$n" role="3EZMnx">
         <node concept="VPM3Z" id="5AGeKBrKA$p" role="3F10Kt" />
         <node concept="3F0ifn" id="5AGeKBrKAGh" role="3EZMnx">
-          <property role="3F0ifm" value="update in background:" />
+          <property role="3F0ifm" value="update in background" />
+        </node>
+        <node concept="3F0ifn" id="6deib$lebnV" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="VPM3Z" id="6deib$lebnX" role="3F10Kt" />
         </node>
         <node concept="3F0A7n" id="5AGeKBrKAJA" role="3EZMnx">
           <ref role="1NtTu8" to="tp4k:5AGeKBrK9Cc" resolve="updateInBackground" />
@@ -853,12 +862,19 @@
       </node>
       <node concept="3EZMnI" id="5xxKcMGfQZd" role="3EZMnx">
         <node concept="3F0ifn" id="5xxKcMGfQZe" role="3EZMnx">
-          <property role="3F0ifm" value="register via plugin.xml:" />
+          <property role="3F0ifm" value="register via plugin.xml" />
+        </node>
+        <node concept="3F0ifn" id="6deib$lebnR" role="3EZMnx">
+          <property role="3F0ifm" value=":" />
+          <node concept="VPM3Z" id="6deib$lebnT" role="3F10Kt" />
         </node>
         <node concept="3F0A7n" id="5xxKcMGfQZf" role="3EZMnx">
           <ref role="1NtTu8" to="tp4k:5xxKcMGfQZ8" resolve="isPluginXmlGroup" />
         </node>
         <node concept="2iRfu4" id="5xxKcMGfQZg" role="2iSdaV" />
+      </node>
+      <node concept="PMmxH" id="2wVzGkOz$Xo" role="3EZMnx">
+        <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
       </node>
       <node concept="2iRkQZ" id="5xxKcMGfQZb" role="2iSdaV" />
     </node>
@@ -1048,6 +1064,9 @@
         </node>
         <node concept="2iRfu4" id="i2ICeGw" role="2iSdaV" />
       </node>
+    </node>
+    <node concept="PMmxH" id="2wVzGkOz_bd" role="6VMZX">
+      <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
     </node>
   </node>
   <node concept="24kQdi" id="hxK62HT">
@@ -1832,6 +1851,9 @@
         </node>
         <node concept="2iRfu4" id="i2ICeHb" role="2iSdaV" />
       </node>
+    </node>
+    <node concept="PMmxH" id="2wVzGkOzB0q" role="6VMZX">
+      <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
     </node>
   </node>
   <node concept="PKFIW" id="hGhYsyC">
@@ -2932,6 +2954,9 @@
         <node concept="2iRfu4" id="57l5h3Ls$8N" role="2iSdaV" />
       </node>
     </node>
+    <node concept="PMmxH" id="2wVzGkOz_bc" role="6VMZX">
+      <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
+    </node>
   </node>
   <node concept="24kQdi" id="6$2CuKCDA9v">
     <property role="3GE5qa" value="Tool.Operations" />
@@ -3880,6 +3905,9 @@
           <node concept="VPM3Z" id="RmlFTgVjaS" role="3F10Kt">
             <property role="VOm3f" value="false" />
           </node>
+          <node concept="37jFXN" id="6deib$lbRAb" role="3F10Kt">
+            <property role="37lx6p" value="hZ7kOz9/RIGHT" />
+          </node>
         </node>
         <node concept="3F0ifn" id="RmlFTgVj4i" role="3EZMnx">
           <property role="3F0ifm" value=":" />
@@ -3918,6 +3946,9 @@
             <property role="VOm3f" value="false" />
           </node>
         </node>
+      </node>
+      <node concept="PMmxH" id="2wVzGkOx4Ci" role="3EZMnx">
+        <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
       </node>
     </node>
   </node>
@@ -4159,6 +4190,9 @@
         </node>
         <node concept="2iRkQZ" id="3fOKOapZL8u" role="2iSdaV" />
       </node>
+    </node>
+    <node concept="PMmxH" id="2wVzGkOz_yE" role="6VMZX">
+      <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
     </node>
   </node>
   <node concept="24kQdi" id="4Ns790kXiYK">

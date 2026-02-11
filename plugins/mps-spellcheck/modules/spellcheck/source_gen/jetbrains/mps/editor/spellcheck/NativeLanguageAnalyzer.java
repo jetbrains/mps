@@ -6,6 +6,7 @@ import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.grazie.jlanguage.Lang;
 import com.intellij.grazie.detection.LangDetector;
+import com.intellij.grazie.GrazieConfig;
 import org.languagetool.JLanguageTool;
 import com.intellij.grazie.jlanguage.LangTool;
 import com.intellij.grazie.utils.TextStyleDomain;
@@ -17,6 +18,12 @@ import org.languagetool.AnalyzedToken;
 
 public class NativeLanguageAnalyzer {
   private static final Logger LOG = Logger.getLogger(NativeLanguageAnalyzer.class);
+
+  /**
+   * 
+   * 
+   * @return A short name of the detected language or 'Unknown'
+   */
   public static String detectNativeLanguage(String text) {
     // Application is null in AuditTypeSystem tests, which renders Grazie nonfunctional, so we do not call Grazie
     if ((text == null || text.length() == 0) || ApplicationManager.getApplication() == null) {
@@ -26,6 +33,24 @@ public class NativeLanguageAnalyzer {
     return (nativeLanguage == null ? "Unknown" : nativeLanguage.getShortDisplayName());
   }
 
+  /**
+   * 
+   * 
+   * @param languageName The value must match a name of a constant in {@link com.intellij.grazie.jlanguage.Lang}
+   */
+  public static boolean isNativeLanguageInstalled(String languageName) {
+    if ((languageName == null || languageName.length() == 0) || ApplicationManager.getApplication() == null) {
+      return true;
+    }
+    Lang nativeLanguage = Lang.valueOf(languageName);
+    return nativeLanguage != null && GrazieConfig.Companion.get().getEnabledLanguages().contains(nativeLanguage);
+  }
+
+  /**
+   * Uses the grammar rules of the language detected in 'text' to assign a semantic category to each word.
+   * Demands that prepositions, particles, articles and conjunctions are lower case, if they are not 
+   * the first word, other words must start with a capital letter.
+   */
   public static boolean isActionDescProperlyCapitalized(String text) {
     // Application is null in AuditTypeSystem tests, which renders Grazie nonfunctional, so we do not call Grazie
     if ((text == null || text.length() == 0) || ApplicationManager.getApplication() == null) {
@@ -45,16 +70,23 @@ public class NativeLanguageAnalyzer {
     return isDescProperlyCapitalized(text, nativeLanguage);
   }
 
-  public static boolean isActionDescProperlyCapitalized(String text, String langCode) {
-    if ((text == null || text.length() == 0)) {
+  /**
+   * Uses the grammar rules of the specified language to assign a semantic category to each word.
+   * Demands that prepositions, particles, articles and conjunctions are lower case, if they are not 
+   * the first word, other words must start with a capital letter.
+   * 
+   * @param languageName The value must match a name of a constant in {@link com.intellij.grazie.jlanguage.Lang}
+   */
+  public static boolean isActionDescProperlyCapitalized(String text, String languageName) {
+    if ((text == null || text.length() == 0) || (languageName == null || languageName.length() == 0) || ApplicationManager.getApplication() == null) {
       return true;
     }
     try {
-      Lang nativeLanguage = Lang.valueOf(langCode);
+      Lang nativeLanguage = Lang.valueOf(languageName);
       return isDescProperlyCapitalized(text, nativeLanguage);
     } catch (IllegalArgumentException e) {
       if (LOG.isWarningLevel()) {
-        LOG.warning(String.format("The specified %s native language support cannot be initialized. Capitalization check will be disabled.", langCode), e);
+        LOG.warning(String.format("The specified %s native language support cannot be initialized. Capitalization check will be disabled.", languageName), e);
       }
       return true;
     }

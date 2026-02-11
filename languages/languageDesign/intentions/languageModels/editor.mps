@@ -23,6 +23,7 @@
     <import index="9lvf" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" implicit="true" />
+    <import index="bkx5" ref="r:745da36c-6731-41a7-aad3-c0bff6ba51dd(jetbrains.mps.lang.checkedName.editor)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -1021,6 +1022,9 @@
         </node>
         <node concept="2iRfu4" id="5rGvd38Dc4A" role="2iSdaV" />
       </node>
+    </node>
+    <node concept="PMmxH" id="2wVzGkOx4qX" role="6VMZX">
+      <ref role="PMmxG" to="bkx5:2wVzGkOx4cc" resolve="NativeLanguageSelection" />
     </node>
   </node>
   <node concept="24kQdi" id="4d05DgI_pn">

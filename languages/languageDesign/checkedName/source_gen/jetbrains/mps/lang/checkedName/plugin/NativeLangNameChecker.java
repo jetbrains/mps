@@ -5,5 +5,7 @@ package jetbrains.mps.lang.checkedName.plugin;
 
 public interface NativeLangNameChecker {
   String detectNativeLanguage(String text);
+  boolean isNativeLanguageInstalled(String languageName);
   boolean isProperlyCapitalized(String text);
+  boolean isProperlyCapitalizedInLanguage(String text, String languageName);
 }

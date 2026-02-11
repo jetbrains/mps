@@ -4,12 +4,15 @@ package jetbrains.mps.lang.checkedName.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 
@@ -19,6 +22,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPropertyPointerValueOperation = createDescriptorForPropertyPointerValueOperation();
   /*package*/ final ConceptDescriptor myConceptPropertyRefExpression = createDescriptorForPropertyRefExpression();
   /*package*/ final ConceptDescriptor myConceptPropertyRefType = createDescriptorForPropertyRefType();
+  /*package*/ final EnumerationDescriptor myEnumerationNativeLanguage = new EnumerationDescriptor_NativeLanguage();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -56,6 +60,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+  @Override
+  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
+    return Arrays.asList(myEnumerationNativeLanguage);
+  }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
     return myIndexSwitch.index(c);
@@ -66,6 +74,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.origin("r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/4844813484172611384");
     b.version(3);
+    b.property("nativeLanguage", 0x283b8ec53462d0ffL).type(MetaIdFactory.dataTypeId(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x283b8ec534626bc5L)).origin("2899067762781638911").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPropertyPointerType() {

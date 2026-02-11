@@ -7,6 +7,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="c9d137c4-3259-44f8-80ff-33ab2b506ee4" name="jetbrains.mps.lang.util.order" version="0" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="2" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="3" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports />
@@ -60,6 +61,16 @@
         <node concept="17QB3L" id="5J0WEnGJLJA" role="1tU5fm" />
       </node>
     </node>
+    <node concept="3clFb_" id="2wVzGkOB82s" role="jymVt">
+      <property role="TrG5h" value="isNativeLanguageInstalled" />
+      <node concept="3clFbS" id="2wVzGkOB82v" role="3clF47" />
+      <node concept="3Tm1VV" id="2wVzGkOB82w" role="1B3o_S" />
+      <node concept="10P_77" id="2wVzGkOB80V" role="3clF45" />
+      <node concept="37vLTG" id="2wVzGkOB8lR" role="3clF46">
+        <property role="TrG5h" value="languageName" />
+        <node concept="17QB3L" id="2wVzGkOB8lQ" role="1tU5fm" />
+      </node>
+    </node>
     <node concept="3clFb_" id="5J0WEnGJLKC" role="jymVt">
       <property role="TrG5h" value="isProperlyCapitalized" />
       <node concept="3clFbS" id="5J0WEnGJLKD" role="3clF47" />
@@ -68,6 +79,20 @@
       <node concept="37vLTG" id="5J0WEnGJLKG" role="3clF46">
         <property role="TrG5h" value="text" />
         <node concept="17QB3L" id="5J0WEnGJLKH" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="2wVzGkOp5qm" role="jymVt">
+      <property role="TrG5h" value="isProperlyCapitalizedInLanguage" />
+      <node concept="3clFbS" id="2wVzGkOp5qp" role="3clF47" />
+      <node concept="3Tm1VV" id="2wVzGkOp5qq" role="1B3o_S" />
+      <node concept="10P_77" id="2wVzGkOp5ps" role="3clF45" />
+      <node concept="37vLTG" id="2wVzGkOp5GY" role="3clF46">
+        <property role="TrG5h" value="text" />
+        <node concept="17QB3L" id="2wVzGkOp5GX" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="2wVzGkOp5KR" role="3clF46">
+        <property role="TrG5h" value="languageName" />
+        <node concept="17QB3L" id="2wVzGkOp63G" role="1tU5fm" />
       </node>
     </node>
     <node concept="3Tm1VV" id="5J0WEnGJGQd" role="1B3o_S" />

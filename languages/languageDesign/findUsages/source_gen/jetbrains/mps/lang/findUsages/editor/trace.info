@@ -28,13 +28,20 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c89590359(jetbrains.mps.lang.findUsages.editor)/1197044909166">
     <file name="FinderDeclaration_Editor.java">
       <node id="1197044909166" at="11,79,12,83" concept="6" />
+      <node id="1197044909166" at="14,82,15,86" concept="6" />
       <node id="1197044909166" at="11,0,14,0" concept="4" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1197044909166" at="14,0,17,0" concept="4" trace="createInspectedCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="1197044909166" at="11,79,12,83" />
+      <scope id="1197044909166" at="14,82,15,86" />
       <scope id="1197044909166" at="11,0,14,0">
         <var name="editorContext" id="1197044909166" />
         <var name="node" id="1197044909166" />
       </scope>
-      <unit id="1197044909166" at="10,0,15,0" name="jetbrains.mps.lang.findUsages.editor.FinderDeclaration_Editor" />
+      <scope id="1197044909166" at="14,0,17,0">
+        <var name="editorContext" id="1197044909166" />
+        <var name="node" id="1197044909166" />
+      </scope>
+      <unit id="1197044909166" at="10,0,18,0" name="jetbrains.mps.lang.findUsages.editor.FinderDeclaration_Editor" />
     </file>
     <file name="FinderDeclaration_EditorBuilder_a.java">
       <node id="1197044909166" at="55,97,56,19" concept="11" />
@@ -948,6 +955,39 @@
       <unit id="1197044909166" at="615,0,669,0" name="jetbrains.mps.lang.findUsages.editor.FinderDeclaration_EditorBuilder_a$searchedNodesBlockSingleRoleHandler_m33ofg_n1b0" />
       <unit id="1197044909166" at="683,0,737,0" name="jetbrains.mps.lang.findUsages.editor.FinderDeclaration_EditorBuilder_a$categorizeBlockSingleRoleHandler_m33ofg_p1b0" />
       <unit id="1197044909166" at="51,0,770,0" name="jetbrains.mps.lang.findUsages.editor.FinderDeclaration_EditorBuilder_a" />
+    </file>
+    <file name="FinderDeclaration_InspectorBuilder_a.java">
+      <node id="1197044909166" at="16,100,17,19" concept="11" />
+      <node id="1197044909166" at="17,19,18,18" concept="1" />
+      <node id="1197044909166" at="23,26,24,18" concept="6" />
+      <node id="1197044909166" at="27,39,28,31" concept="6" />
+      <node id="2899067762784491846" at="31,42,32,144" concept="5" />
+      <node id="2899067762784491846" at="32,144,33,72" concept="5" />
+      <node id="2899067762784491846" at="34,26,35,27" concept="1" />
+      <node id="2899067762784491846" at="35,27,36,30" concept="1" />
+      <node id="2899067762784491846" at="37,5,38,22" concept="6" />
+      <node id="1197044909166" at="13,0,15,0" concept="2" trace="myNode" />
+      <node id="1197044909166" at="27,0,30,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1197044909166" at="16,0,20,0" concept="0" trace="FinderDeclaration_InspectorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2899067762784491846" at="33,72,37,5" concept="3" />
+      <node id="1197044909166" at="21,0,26,0" concept="4" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2899067762784491846" at="31,0,40,0" concept="4" trace="createComponent_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="1197044909166" at="23,26,24,18" />
+      <scope id="1197044909166" at="27,39,28,31" />
+      <scope id="1197044909166" at="16,100,18,18" />
+      <scope id="2899067762784491846" at="34,26,36,30" />
+      <scope id="1197044909166" at="27,0,30,0" />
+      <scope id="1197044909166" at="16,0,20,0">
+        <var name="context" id="1197044909166" />
+        <var name="node" id="1197044909166" />
+      </scope>
+      <scope id="1197044909166" at="21,0,26,0" />
+      <scope id="2899067762784491846" at="31,42,38,22">
+        <var name="bigCell" id="2899067762784491846" />
+        <var name="editorCell" id="2899067762784491846" />
+      </scope>
+      <scope id="2899067762784491846" at="31,0,40,0" />
+      <unit id="1197044909166" at="12,0,41,0" name="jetbrains.mps.lang.findUsages.editor.FinderDeclaration_InspectorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590359(jetbrains.mps.lang.findUsages.editor)/1200242474757">

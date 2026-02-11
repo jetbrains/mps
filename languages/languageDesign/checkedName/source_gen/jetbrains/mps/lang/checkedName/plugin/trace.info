@@ -9,14 +9,23 @@
   <root nodeRef="r:639857b1-56a4-40e4-875a-56d6ebe772b2(jetbrains.mps.lang.checkedName.plugin)/6611551047435341196">
     <file name="NativeLangNameChecker.java">
       <node id="6611551047435360109" at="7,0,8,0" concept="0" trace="detectNativeLanguage#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="6611551047435361320" at="8,0,9,0" concept="0" trace="isProperlyCapitalized#(Ljava/lang/String;)Z" />
+      <node id="2899067762785419420" at="8,0,9,0" concept="0" trace="isNativeLanguageInstalled#(Ljava/lang/String;)Z" />
+      <node id="6611551047435361320" at="9,0,10,0" concept="0" trace="isProperlyCapitalized#(Ljava/lang/String;)Z" />
+      <node id="2899067762781738646" at="10,0,11,0" concept="0" trace="isProperlyCapitalizedInLanguage#(Ljava/lang/String;Ljava/lang/String;)Z" />
       <scope id="6611551047435360109" at="7,0,8,0">
         <var name="text" id="6611551047435361255" />
       </scope>
-      <scope id="6611551047435361320" at="8,0,9,0">
+      <scope id="2899067762785419420" at="8,0,9,0">
+        <var name="languageName" id="2899067762785420663" />
+      </scope>
+      <scope id="6611551047435361320" at="9,0,10,0">
         <var name="text" id="6611551047435361324" />
       </scope>
-      <unit id="6611551047435341196" at="6,0,10,0" name="jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker" />
+      <scope id="2899067762781738646" at="10,0,11,0">
+        <var name="languageName" id="2899067762781740087" />
+        <var name="text" id="2899067762781739838" />
+      </scope>
+      <unit id="6611551047435341196" at="6,0,12,0" name="jetbrains.mps.lang.checkedName.plugin.NativeLangNameChecker" />
     </file>
   </root>
 </debug-info>
