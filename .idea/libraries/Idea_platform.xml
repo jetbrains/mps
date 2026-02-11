@@ -12,7 +12,6 @@
       <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-loader.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/nio-fs.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.emojipicker.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.grid.core.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.grid.csv.core.impl.jar!/" />
