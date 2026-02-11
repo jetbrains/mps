@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="4nc2es02laxh5erri1o7st5f4hk0gu6">
-  <files names="ExtensionDescriptor.java:NativeLangNameChecker.java" />
+<product version="3" modelHash="-rnch6as9driu3ls1pvm638x8lspr5i">
+  <files names="NativeLangNameChecker.java" />
 </product>
 
