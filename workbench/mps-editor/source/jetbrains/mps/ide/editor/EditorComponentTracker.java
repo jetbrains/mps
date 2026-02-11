@@ -1,11 +1,11 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.editor;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.editor.EditorComponentLifecycleListener;
 import jetbrains.mps.editor.EditorComponentTrackService;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
@@ -32,8 +32,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /*package*/ final class EditorComponentTracker implements EditorComponentTrackService {
   private final LinkedHashSet<EditorComponent> myEditorComponents = new LinkedHashSet<>();
   private final CopyOnWriteArrayList<EditorComponentLifecycleListener> myListeners = new CopyOnWriteArrayList<>();
+  private final ComponentHost myPlatform;
 
   private LanguageRegistryListener myReloadListener;
+
+  EditorComponentTracker(@NotNull ComponentHost mpsPlatform) {
+    myPlatform = mpsPlatform;
+  }
 
   @Override
   public void editorComponentCreated(@NotNull Project project, @NotNull EditorComponent editorComponent) {
@@ -147,6 +152,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
   @Nullable
   private LanguageRegistry getLanguageRegistry() {
-    return MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    return myPlatform.findComponent(LanguageRegistry.class);
   }
 }

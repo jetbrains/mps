@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.editor;
 
@@ -38,13 +38,15 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
 
   @Override
   public void init() {
-    myEditorComponentTracker = init(new EditorComponentTracker());
+    myEditorComponentTracker = init(new EditorComponentTracker(myPlatform));
     init(new EditorResolverComponent(myPlatform.findComponent(ResolverComponent.class)));
     init(new EditorCheckerComponent(myPlatform));
     myCaretManager = init(new IdeaCaretManager());
     myStyleRegistry = init(new StyleRegistryIdeaImpl());
     myExtensionRegistry = init(new EditorExtensionRegistryImpl());
 
+    // FIXME I highly doubt this is the proper place for this code! It has nothing to do with
+    //       initialization of core components of an editor subsystem
     final Keymap[] allKeymaps = KeymapManagerEx.getInstanceEx().getAllKeymaps();
     for (Keymap keymap : allKeymaps) {
       if (keymap.getShortcuts("EditorScrollToCenter").length > 0) {
