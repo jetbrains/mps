@@ -32,14 +32,6 @@ import java.util.List;
 public interface IProject extends org.jetbrains.mps.openapi.project.Project {
 
   /**
-   * Generic extension mechanism
-   * XXX likely, shall be part of openapi.project.Project interface
-   *
-   * @return component instance or <code>null</code> if no extension of specified kind found.
-   */
-  <T> T getComponent(Class<T> t);
-
-  /**
    * api for the external project change : adding the module to the project
    * FIXME explain what does 'add' and 'remove' mean. Is it about permanent, serialized change or just an association
    *       with project repo. If permanent, why Project.dispose() uses it to unregister project modules?
@@ -50,11 +42,4 @@ public interface IProject extends org.jetbrains.mps.openapi.project.Project {
    * api for the external project change : removing the module from the project
    */
   void removeModule(@NotNull SModule module);
-
-  /**
-   * @see org.jetbrains.mps.openapi.project.Project#getProjectModules()
-   */
-  @NotNull
-  @Override
-  List<SModule> getProjectModules(); // in use from mbeddr
 }

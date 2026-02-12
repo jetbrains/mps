@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="b567lvwuomcav2cmanyaoyirp8bmezn">
+<product version="3" modelHash="5po0uazfaa10heeziim6dtgw3ghhxjr">
   <files names="DefaultSettingsPathChooser.java:InProcessFlagPerScope.java:InProcessJBCheckBox.java:JUnitConfigurationEditorComponent.java:JUnitRunType.java:JUnitRunTypes.java:JUnitSettings_Configuration.java:JUnitSettings_Configuration_Editor.java:ModelChooser.java:ModelTestCollector.java:ModuleChooser.java:ModuleTestCollector.java:ProjectTestCollector.java:ScopeAndPanels.java:Synchronizer.java:TestCollector.java:TestListPanel.java:TestUtils.java" />
 </product>
 

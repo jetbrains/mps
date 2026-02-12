@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ import java.util.Set;
  * @author Artem Tikhomirov
  * @since 2020.3
  */
-@Service
+@Service(Service.Level.PROJECT)
 public final class NavigationService {
   private static final ProjectExtensionPointName<NavigationParticipant> POINT = new ProjectExtensionPointName<>("com.intellij.mps.gotoParticipant");
   private final Project myProject;

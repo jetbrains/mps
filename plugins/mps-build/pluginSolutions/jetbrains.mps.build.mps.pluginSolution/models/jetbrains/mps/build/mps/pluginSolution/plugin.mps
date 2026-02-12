@@ -90,6 +90,7 @@
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" />
     <import index="tgbt" ref="r:c70ee934-afb1-4c02-b6a9-1c4d1908a792(jetbrains.mps.lang.plugin.standalone.structure)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
+    <import index="jtsr" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.project(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -5135,7 +5136,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1eG7s_ezqCu" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~IProject.getProjectModules()" resolve="getProjectModules" />
+                    <ref role="37wK5l" to="jtsr:~Project.getProjectModules()" resolve="getProjectModules" />
                   </node>
                 </node>
               </node>
@@ -7328,7 +7329,7 @@
                       <node concept="Xjq3P" id="OqYxEjHsaE" role="2Oq$k0" />
                     </node>
                     <node concept="liA8E" id="OqYxEjHsaF" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~IProject.getProjectModules()" resolve="getProjectModules" />
+                      <ref role="37wK5l" to="jtsr:~Project.getProjectModules()" resolve="getProjectModules" />
                     </node>
                   </node>
                 </node>

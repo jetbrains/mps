@@ -5094,7 +5094,7 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
       <node concept="3uibUv" id="695k0NOyyfZ" role="1tU5fm">
-        <ref role="3uigEE" to="z1c3:~IProject" resolve="IProject" />
+        <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
       </node>
       <node concept="3Tm6S6" id="695k0NOx$6v" role="1B3o_S" />
     </node>
@@ -5340,8 +5340,15 @@
             <node concept="37vLTw" id="695k0NOx$Od" role="37vLTJ">
               <ref role="3cqZAo" node="695k0NOx$6s" resolve="myProject" />
             </node>
-            <node concept="37vLTw" id="695k0NOx$xD" role="37vLTx">
-              <ref role="3cqZAo" node="695k0NOx$xv" resolve="project" />
+            <node concept="1eOMI4" id="6jvOI$0y2KT" role="37vLTx">
+              <node concept="10QFUN" id="6jvOI$0y2KQ" role="1eOMHV">
+                <node concept="3uibUv" id="6jvOI$0y5IK" role="10QFUM">
+                  <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+                </node>
+                <node concept="37vLTw" id="695k0NOx$xD" role="10QFUP">
+                  <ref role="3cqZAo" node="695k0NOx$xv" resolve="project" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -6811,7 +6818,7 @@
                 <ref role="3cqZAo" node="695k0NOx$6s" resolve="myProject" />
               </node>
               <node concept="liA8E" id="5_KwrLBtBKg" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~IProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="5_KwrLBtBKh" role="37wK5m">
                   <ref role="3VsUkX" to="ends:~ModelFactoryService" resolve="ModelFactoryService" />
                 </node>

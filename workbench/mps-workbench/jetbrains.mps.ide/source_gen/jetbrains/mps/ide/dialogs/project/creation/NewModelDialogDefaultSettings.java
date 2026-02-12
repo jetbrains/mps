@@ -4,7 +4,7 @@ package jetbrains.mps.ide.dialogs.project.creation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.project.IProject;
+import jetbrains.mps.project.Project;
 import org.jetbrains.mps.openapi.module.SModule;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import javax.swing.JPanel;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import jetbrains.mps.project.IProject;
 import com.intellij.uiDesigner.core.GridConstraints;
 import javax.swing.JLabel;
 import javax.swing.DefaultComboBoxModel;
@@ -41,7 +42,7 @@ import jetbrains.mps.ide.IdeBundle;
 public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
   @NotNull
-  private final IProject myProject;
+  private final Project myProject;
 
   @NotNull
   private final SModule myModule;
@@ -68,7 +69,7 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
 
 
   public NewModelDialogDefaultSettings(IProject project, SModule module, NewModelDialogSettings.SettingsValidator validator, String modelName, String stereotype, boolean isStrictStereotype) {
-    myProject = project;
+    myProject = ((Project) project);
     myModule = module;
     myValidator = validator;
 

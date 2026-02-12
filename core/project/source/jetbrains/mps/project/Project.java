@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
   }
 
   /**
-   * Generic access MPS and IDEA components.
+   * Generic access to MPS and IDEA components/services.
    */
   public abstract <T> T getComponent(Class<T> t);
 
@@ -167,7 +167,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
    */
   @Deprecated(since = "2021.3", forRemoval = true)
   public final Iterable<SModel> getProjectModels() {
-    // uses in mbeddr!
+    // uses in mbeddr! - NOT ANYMORE. Just need to fix few last uses in MPS itself!
     List<SModel> result = new ArrayList<>();
 
     for (SModule module : getProjectModules()) {
