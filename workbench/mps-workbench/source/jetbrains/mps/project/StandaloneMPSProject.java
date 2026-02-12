@@ -124,7 +124,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
       // here, global macro helper is ok, as it's IDEA's responsibility to expand $PROJECT_DIR$ in modules.xml
       myProjectDescriptor = new ProjectDescriptorPersistence(projectFile, MacrosFactory.getGlobal()).load(state);
-      update();
+      // avoid blocking the thread on a read action
+      ApplicationManager.getApplication().invokeLater(this::update);
     }
   }
 
