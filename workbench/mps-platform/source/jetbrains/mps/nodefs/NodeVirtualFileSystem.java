@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -112,6 +112,8 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
     final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
     myGlobalRepoFiles = new RepositoryVirtualFiles(this, mpsPlatform.findComponent(MPSModuleRepository.class));
     myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
+    // FIXME likely something in ProjectManager.runWhenProjectReady(Runnable) would be more elegant.
+    //       Anyway, shall not use EDT here, when true intention is "some time later"
     ApplicationManager.getApplication().invokeLater(() ->
       new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach());
     MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();

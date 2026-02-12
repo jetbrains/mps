@@ -63,6 +63,13 @@
                     area="IDEA_PROJECT"/>
     <extensionPoint qualifiedName="jetbrains.mps.componentPluginFactory"
                     interface="jetbrains.mps.components.ComponentPluginFactory"/>
+    <extensionPoint
+                    qualifiedName="jetbrains.mps.project.lifecycleListener"
+                    beanClass="jetbrains.mps.project.ProjectLifecycleListener$Bean"
+                    dynamic="true">
+                    <with attribute="listenerClass" implements="jetbrains.mps.project.ProjectLifecycleListener"/>
+                    <with attribute="priority" implements="java.lang.Integer"/>
+    </extensionPoint>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">

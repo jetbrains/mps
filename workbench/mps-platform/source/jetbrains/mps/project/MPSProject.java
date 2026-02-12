@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,6 +57,7 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
 
   private final com.intellij.openapi.project.Project myProject;
   private final IdeaFileSystem myProjectFileSystem;
+  private final LifecycleEventDispatch myLifecycleEvents;
 
   private FileSystemProjectBridge myFileSystemBridge;
 
@@ -67,6 +68,7 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
     super(project.getName(), MPSCoreComponents.getInstance().getPlatform(), false);
     myProject = project;
     myProjectFileSystem = IdeaFileSystem.getInstance();
+    myLifecycleEvents = new LifecycleEventDispatch(this);
     project.getService(ProjectRootListenerComponent.class).boostProjectRead(myProjectFileSystem);
     Platform platform = MPSCoreComponents.getInstance().getPlatform();
     final MPSModuleRepository extRepo = platform.findComponent(MPSModuleRepository.class);
@@ -82,10 +84,12 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
   public void projectOpened() {
     initFileSystemBridge();
     super.projectOpened();
+    myLifecycleEvents.projectReady();
   }
 
   @Override
   public void projectClosed() {
+    myLifecycleEvents.projectDiscarded();
     super.projectClosed();
     destroyFileSystemBridge();
   }
@@ -173,8 +177,8 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
     if (clazz.getAnnotation(AccessAsPlatformService.class) != null) {
       rv = getProject().getService(clazz);
     } else {
-      //noinspection UnstableApiUsage
       // FIXME avoid calling ComponentManger.getComponent
+      //noinspection UnstableApiUsage,deprecation
       rv = getProject().getComponent(clazz);
     }
     // though would be great to support both components and services, I didn't find a reliable
