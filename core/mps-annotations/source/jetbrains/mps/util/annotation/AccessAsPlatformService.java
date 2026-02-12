@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.util.annotation;
 
@@ -19,7 +19,9 @@ import java.lang.annotation.Target;
  * registration happens in platform-specific code. Besides, doesn't make much sense for application Component/Service as these are
  * easy to replace with {@code CoreComponent}, therefore shall be employed for project services only.
  * </p>
- * <p>Once there are no more legacy components, [mps]Project.getComponent() could stick</p>
+ * <p>Once there are no more legacy components, [mps]Project.getComponent() could stick to getService() all the time</p>
+ *
+ * <p>Note, since 2026.1 (or even 2025.3) one could query service instances using legacy getComponent() API, likely, we don't need this marker anymore</p>
  *
  * @author Artem Tikhomirov
  * @since 2024.3

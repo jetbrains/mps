@@ -35,18 +35,15 @@ import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.tracking.ConflictResolverImpl;
-import kotlin.Unit;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Represents a project based on the idea platform project
@@ -164,8 +161,7 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
     if (project == null) {
       return null;
     }
-    // FIXME avoid calling ComponentManger.getComponent
-    return project.getComponent(MPSProject.class);
+    return project.getService(MPSProject.class);
   }
 
   @Override
@@ -173,22 +169,20 @@ public abstract class MPSProject extends ProjectBase implements FileBasedProject
     if (isDisposed()) {
       return null;
     }
-    T rv;
+    T rv = super.getComponent(clazz);
+    if (rv != null) {
+      return rv;
+    }
     if (clazz.getAnnotation(AccessAsPlatformService.class) != null) {
       rv = getProject().getService(clazz);
     } else {
-      // FIXME avoid calling ComponentManger.getComponent
+      // Until we refactor all legacy components in MPS, shall keep getComponent() here.
+      // FWIW, since Sep 2025 (25.3 or 26.1?), IDEA's getComponent() is capable of retrieving Service
+      // instances (0dfa726ef314e64252ca450c61fac73403b7710d), so we are ok to continue using getComponent() here,
+      // and, perhaps, shall drop AccessAsPlatformService marker
+      // This was not the case, IDEA used to logPluginError in ComponentManagerImpl.doGetService.
       //noinspection UnstableApiUsage,deprecation
       rv = getProject().getComponent(clazz);
-    }
-    // though would be great to support both components and services, I didn't find a reliable
-    // mechanism to detect whether supplied class is component or a service. Supplied interface may
-    // not be assignable to BaseComponent, only its implementation implements respective component
-    // interface (see EditorExtensionRegistry), and we may end up with getService for a component,
-    // which is not what IDEA tolerates (throws an exception, check
-    // logPluginError call in ComponentManagerImpl.doGetService).
-    if (rv == null) {
-      return super.getComponent(clazz);
     }
     return rv;
   }
