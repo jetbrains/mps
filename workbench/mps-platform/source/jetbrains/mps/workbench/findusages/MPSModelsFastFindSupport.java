@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,28 +15,23 @@
  */
 package jetbrains.mps.workbench.findusages;
 
-import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.AccessToken;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.StartupActivity;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.SlowOperations;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.findUsages.InstanceLookup;
 import jetbrains.mps.findUsages.ModelImportLookup;
 import jetbrains.mps.findUsages.NodeUsageLookup;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.util.FileUtil;
@@ -68,38 +63,41 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-// FIXME utilize project to deal with dumb mode and use project's FS to get VirtualFile for an IFile
-public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposable {
+// FIXME utilize project to deal with dumb mode
+public class MPSModelsFastFindSupport implements FindUsagesParticipant {
 
   static final Logger LOG = Logger.getLogger(MPSModelsFastFindSupport.class);
   
-  public static final class Plug extends MPSProjectActivity {
+  public static final class Plug implements ProjectLifecycleListener {
     @Override
-    public void runActivity(@NotNull Project project) {
-      final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-      if (mpsProject == null) {
-        return;
-      }
-      MPSCoreComponents mpsCoreComponents = MPSCoreComponents.getInstance();
-      final MPSModelsFastFindSupport ffs = new MPSModelsFastFindSupport(mpsProject, mpsCoreComponents);
-      //noinspection IncorrectParentDisposable
-      Disposer.register(project, ffs); // our plugin is not reloadable, it's ok to depend on project
-      // XXX need to find out if there's a way to tell IDEA the whole plugin is not subject for such checks
+    public void projectReady(@NotNull MPSProject project, @NotNull Context context) {
+      final MPSModelsFastFindSupport ffs = new MPSModelsFastFindSupport(project);
+      context.keep(MPSModelsFastFindSupport.class, ffs);
+    }
+
+    @Override
+    public void projectDiscarded(@NotNull MPSProject project, @NotNull Context context) {
+      // we used to rely on IDEA's Disposable to unregister ffs, but IDEA complains about project as parent disposable,
+      // which is odd - our plugin is not reloadable, it's ok to depend on project.
+      // I didn't find a way to tell IDEA the whole plugin is not subject for such checks, and now that we've got our own
+      // lifecycle listener, we don't need Disposable any longer.
+      MPSModelsFastFindSupport ffs = context.discard(MPSModelsFastFindSupport.class);
+      assert ffs != null : "No preserved instance on project discard";
+      ffs.dispose();
     }
   }
 
   private final ProjectModelFilter myModelFilter;
-  private final MPSCoreComponents myCoreComponents;
+  private final ComponentHost myCoreComponents;
 
-  private MPSModelsFastFindSupport(@NotNull MPSProject mpsProject, @NotNull MPSCoreComponents coreComponents) {
+  private MPSModelsFastFindSupport(@NotNull MPSProject mpsProject) {
     myModelFilter = new ProjectModelFilter(mpsProject);
-    myCoreComponents = coreComponents;
-    myCoreComponents.getPlatform().findComponent(PersistenceRegistry.class).addFindUsagesParticipant(this);
+    myCoreComponents = mpsProject.getPlatform();
+    myCoreComponents.findComponent(PersistenceRegistry.class).addFindUsagesParticipant(this);
   }
 
-  @Override
-  public void dispose() {
-    myCoreComponents.getPlatform().findComponent(PersistenceRegistry.class).removeFindUsagesParticipant(this);
+  /*package*/ void dispose() {
+    myCoreComponents.findComponent(PersistenceRegistry.class).removeFindUsagesParticipant(this);
   }
 
   @Override
@@ -250,6 +248,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
 
       Collection<VirtualFile> matchingFiles;
 
+      //noinspection UnstableApiUsage,deprecation
       try (AccessToken unused = SlowOperations.allowSlowOperations("mps.find-usage")) {
         matchingFiles = MPSModelsIndexer.getContainingFiles(entry, allFiles);
       } catch (ProcessCanceledException | IndexNotReadyException ex) {

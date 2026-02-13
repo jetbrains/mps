@@ -4,16 +4,12 @@ package jetbrains.mps.workbench.findusages;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.FindUsagesParticipant;
-import com.intellij.openapi.Disposable;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.workbench.ProjectModelFilter;
-import jetbrains.mps.ide.util.MPSProjectActivity;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.project.ProjectHelper;
-import com.intellij.openapi.util.Disposer;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Set;
@@ -50,6 +46,7 @@ import jetbrains.mps.vfs.QualifiedPath;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import java.util.Arrays;
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.psi.impl.cache.impl.id.IdIndex;
@@ -58,32 +55,31 @@ import com.intellij.openapi.project.IndexNotReadyException;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(nodeId = "2810982631457564914", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
-public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposable {
+public class StubModelsFastFindSupport implements FindUsagesParticipant {
   private static final Logger LOG = Logger.getLogger(StubModelsFastFindSupport.class);
   private final PersistenceRegistry myRegistry;
   private final ProjectModelFilter myModelFilter;
 
-  public static final class Plug extends MPSProjectActivity {
+  public static final class Plug implements ProjectLifecycleListener {
+    @Override
+    public void projectReady(@NotNull MPSProject project, @NotNull ProjectLifecycleListener.Context context) {
+      StubModelsFastFindSupport ffs = new StubModelsFastFindSupport(project);
+      context.keep(StubModelsFastFindSupport.class, ffs);
+    }
 
     @Override
-    public void runActivity(@NotNull Project project) {
-      MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-      if (mpsProject == null) {
-        return;
-      }
-      StubModelsFastFindSupport ffs = new StubModelsFastFindSupport(mpsProject);
-      Disposer.register(project, ffs);
+    public void projectDiscarded(@NotNull MPSProject project, @NotNull ProjectLifecycleListener.Context context) {
+      context.discard(StubModelsFastFindSupport.class).dispose();
     }
   }
 
-  private StubModelsFastFindSupport(MPSProject mpsProject) {
+  /*package*/ StubModelsFastFindSupport(MPSProject mpsProject) {
     myRegistry = mpsProject.getComponent(PersistenceRegistry.class);
     myModelFilter = new ProjectModelFilter(mpsProject);
     myRegistry.addFindUsagesParticipant(this);
   }
 
-  @Override
-  public void dispose() {
+  /*package*/ void dispose() {
     myRegistry.removeFindUsagesParticipant(this);
   }
 

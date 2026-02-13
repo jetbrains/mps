@@ -22,8 +22,6 @@
 
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
-    <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
-    <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
     <postStartupActivity implementation="jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot" />
     <projectService serviceImplementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager"/>
     <postStartupActivity implementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Activity" />
@@ -76,6 +74,7 @@
     <NodeEditorFactory implementation="jetbrains.mps.workbench.editors.TabsMPSEditorFactory"/>
     <nodeStructureViewProvider implementation="jetbrains.mps.workbench.structureview.NodeStructureViewProviderImpl"/>
     <editor.highlighter.contributor implementation="jetbrains.mps.ide.bookmark.BookmarkManager"/>
+    <project.lifecycleListener listenerClass="jetbrains.mps.ide.make.StartupModuleMakerImpl" priority="20"/>
   </extensions>
 
   <applicationListeners>

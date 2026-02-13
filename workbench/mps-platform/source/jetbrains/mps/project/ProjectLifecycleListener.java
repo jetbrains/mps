@@ -60,6 +60,10 @@ public interface ProjectLifecycleListener {
     // After all, proper client shall remove their stuff from the context once consumed.
   }
 
+  /**
+   * Implementation note: as long as listener's methods could get invoked from various threads, this object shall
+   * ensure proper synchronization
+   */
   interface Context {
     <T> void keep(@NotNull Class<T> key, @NotNull T value);
     @Nullable

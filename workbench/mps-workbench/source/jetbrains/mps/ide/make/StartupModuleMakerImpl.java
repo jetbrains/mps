@@ -24,15 +24,10 @@ import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.DumbModeTask;
 import com.intellij.openapi.project.DumbService;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.StartupActivity;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.icons.MPSIcons;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
@@ -41,7 +36,7 @@ import jetbrains.mps.make.kotlin.cache.JvmKotlinCompileCacheHandler;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.ProjectLibraryManager;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import jetbrains.mps.util.PathManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -56,18 +51,18 @@ import java.util.Collection;
 /**
  * Compiles all project modules at startup
  */
-public final class StartupModuleMakerImpl extends MPSProjectActivity implements StartupModuleMaker {
+public final class StartupModuleMakerImpl implements StartupModuleMaker, ProjectLifecycleListener {
   private static final Logger LOG = Logger.getLogger(StartupModuleMakerImpl.class);
 
   private MPSProject myMPSProject;
-  private MPSCoreComponents myComponents;
 
   public StartupModuleMakerImpl() {
   }
 
   @Override
-  public void runActivity(@NotNull final Project project) {
-    if (MakeServiceConfiguration.getInstance(project).isDisableMakeOnStartup()) {
+  public void projectReady(@NotNull MPSProject project, @NotNull Context context) {
+    myMPSProject = project;
+    if (MakeServiceConfiguration.getInstance(project.getProject()).isDisableMakeOnStartup()) {
       return;
     }
     if (ApplicationManager.getApplication().isUnitTestMode()) {
@@ -77,12 +72,7 @@ public final class StartupModuleMakerImpl extends MPSProjectActivity implements 
       // replacement for DummyStartupModuleMaker
       return;
     }
-    myMPSProject = ProjectHelper.fromIdeaProject(project);
-    // ProjectLibraryManager used to be cons parameter
-    @SuppressWarnings("unused")
-    final ProjectLibraryManager plm = ProjectLibraryManager.getInstance(project);
-    myComponents = MPSCoreComponents.getInstance();
-    DumbService.getInstance(project).queueTask(new DumbModeTask() {
+    DumbService.getInstance(project.getProject()).queueTask(new DumbModeTask() {
       @Override
       public @Nullable DumbModeTask tryMergeWith(@NotNull DumbModeTask taskFromQueue) {
         // there could be only one
@@ -130,7 +120,7 @@ public final class StartupModuleMakerImpl extends MPSProjectActivity implements 
       MPSCompilationResult cr = maker.make(monitor.subTask(2, SubProgressKind.REPLACING));
       if (cr.isOk()) {
         if (cr.isCompiledAnything()) {
-          final ClassLoaderManager clm = myComponents.getClassLoaderManager();
+          final ClassLoaderManager clm = myMPSProject.getComponent(ClassLoaderManager.class);
           myMPSProject.getModelAccess().runWriteAction(() -> clm.reloadModules(modules, monitor.subTask(1, SubProgressKind.REPLACING)));
         }
       } else {

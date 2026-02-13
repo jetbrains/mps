@@ -108,8 +108,6 @@
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.RootNodeNameIndex"/>
     <fileBasedIndex implementation="jetbrains.mps.workbench.index.PropertyValueIndex"/>
     <editorTabTitleProvider implementation="jetbrains.mps.fileTypes.MPSEditorTabTitleProvider"/>
-    <!-- XXX Does MPSModelsFastFindSupport need to be part of MPSCore.xml and not mps-workbench/source/META-INF/MPSComponents.xml? -->
-    <postStartupActivity implementation="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" />
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.MPSModelNavigationContributor" />
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.JavaStubNavigationContributor"/>
     <registryKey key="mps.module.visibility.mask.always" defaultValue="false" description="MPS: always use visibility mask to show modules" restartRequired="false"/>
@@ -122,5 +120,7 @@
   <extensions defaultExtensionNs="jetbrains.mps">
     <componentPluginFactory implementation="jetbrains.mps.baseLanguage.search.MPSBaseLanguage$Factory"/>
     <componentPluginFactory implementation="jetbrains.mps.persistence.ModelFactoryRegister$Factory" />
+    <project.lifecycleListener listenerClass="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" priority="100"/>
+    <project.lifecycleListener listenerClass="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" priority="100"/>
   </extensions>
 </idea-plugin>
