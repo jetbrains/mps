@@ -20,10 +20,12 @@ import jetbrains.mps.checkedName.PropertyReference;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
@@ -84,8 +86,16 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
       String nativeLanguageValue = ((nativeLanguageEnum != null) && !(SEnumOperations.isMember(nativeLanguageEnum, 0x283b8ec534712e16L)) ? nativeLanguageEnum.getName() : null);
 
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
-        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(s, PROPS.value$w7MM), nativeLanguageValue))) {
-          String lang = ((nativeLanguageValue != null && nativeLanguageValue.length() > 0) ? nativeLanguageValue : ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)));
+        String currentNativeLang = nativeLanguageValue;
+        if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.UsedNativeLanguageForStringLiteral$JJ).get(s) != null)) {
+          if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.UsedNativeLanguageForStringLiteral$JJ).get(s), PROPS.nativeLanguage$HnA0), 0x283b8ec534712e16L)) {
+            currentNativeLang = null;
+          } else {
+            currentNativeLang = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.UsedNativeLanguageForStringLiteral$JJ).get(s), PROPS.nativeLanguage$HnA0).getName();
+          }
+        }
+        if (!(ExtensionsHelper.isProperlyCapitalized(repository, SPropertyOperations.getString(s, PROPS.value$w7MM), currentNativeLang))) {
+          String lang = ((currentNativeLang != null && currentNativeLang.length() > 0) ? currentNativeLang : ExtensionsHelper.detectNativeLanguage(repository, SPropertyOperations.getString(s, PROPS.value$w7MM)));
           String warningMessage = "Naming policies for " + lang + " language violated: " + "all words except prepositions, articles and particles should be capitalized.";
           if (Objects.equals(lang, "English")) {
             {
@@ -157,9 +167,11 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   private static final class PROPS {
     /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
     /*package*/ static final SProperty nativeLanguage$lRMr = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x283b8ec53462d0ffL, "nativeLanguage");
+    /*package*/ static final SProperty nativeLanguage$HnA0 = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x68066d1cfcd83b17L, 0x68066d1cfcd88a69L, "nativeLanguage");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept UsedNativeLanguageForStringLiteral$JJ = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x68066d1cfcd83b17L, "jetbrains.mps.lang.checkedName.structure.UsedNativeLanguageForStringLiteral");
     /*package*/ static final SInterfaceConcept ICheckedNamePolicy$7R = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
   }
 }

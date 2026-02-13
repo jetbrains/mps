@@ -28,7 +28,7 @@ public class check_ExplicitNativeLangExists_NonTypesystemRule extends AbstractNo
       if (!(ExtensionsHelper.isNativeLanguageInstalled(repository, SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr).getName()))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, String.format("The requested language %s does not have the support installed. Go to Settings | Editor | Natural Languages to install it.", SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr).getPresentation()), "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "2899067762785623700", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(node, String.format("The requested language %s does not have the support installed. Go to Settings | Editor | Natural Languages to install it.", SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr).getPresentation()), "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "2318569469907323921", null, errorTarget);
         }
       }
     }

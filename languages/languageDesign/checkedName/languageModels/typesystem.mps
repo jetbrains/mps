@@ -185,9 +185,6 @@
         <child id="1175147624276" name="body" index="2sgrp5" />
       </concept>
       <concept id="1175147670730" name="jetbrains.mps.lang.typesystem.structure.SubtypingRule" flags="ig" index="2sgARr" />
-      <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
-        <child id="1175517851849" name="errorString" index="2MkJ7o" />
-      </concept>
       <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
       <concept id="1227107274859" name="jetbrains.mps.lang.typesystem.structure.PropertyNameTarget" flags="ng" index="2PiL5Q">
         <child id="1227107356659" name="propertySpec" index="2Pj4VI" />
@@ -272,6 +269,12 @@
         <reference id="1240170836027" name="enum" index="2ZWj4r" />
       </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
+      <concept id="6407023681583036853" name="jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier" flags="ng" index="3CFYIy">
+        <reference id="6407023681583036854" name="attributeConcept" index="3CFYIx" />
+      </concept>
+      <concept id="6407023681583031218" name="jetbrains.mps.lang.smodel.structure.AttributeAccess" flags="nn" index="3CFZ6_">
+        <child id="6407023681583036852" name="qualifier" index="3CFYIz" />
+      </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
         <property id="1238684351431" name="asCast" index="1BlNFB" />
       </concept>
@@ -649,6 +652,97 @@
             <node concept="3clFbH" id="2wVzGkOqNxf" role="3cqZAp" />
             <node concept="1DcWWT" id="18Bu3JsfHD" role="3cqZAp">
               <node concept="3clFbS" id="18Bu3JsfHE" role="2LFqv$">
+                <node concept="3cpWs8" id="6w6rhNWT40G" role="3cqZAp">
+                  <node concept="3cpWsn" id="6w6rhNWT40J" role="3cpWs9">
+                    <property role="TrG5h" value="currentNativeLang" />
+                    <node concept="17QB3L" id="6w6rhNWT40E" role="1tU5fm" />
+                    <node concept="37vLTw" id="6w6rhNWTqXJ" role="33vP2m">
+                      <ref role="3cqZAo" node="2wVzGkOqKoc" resolve="nativeLanguageValue" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbJ" id="6w6rhNWToIK" role="3cqZAp">
+                  <node concept="3clFbS" id="6w6rhNWToIM" role="3clFbx">
+                    <node concept="3clFbJ" id="6w6rhNWToTH" role="3cqZAp">
+                      <node concept="3clFbS" id="6w6rhNWToTJ" role="3clFbx">
+                        <node concept="3clFbF" id="6w6rhNWTpZ6" role="3cqZAp">
+                          <node concept="37vLTI" id="6w6rhNWTqtm" role="3clFbG">
+                            <node concept="10Nm6u" id="6w6rhNWTqt$" role="37vLTx" />
+                            <node concept="37vLTw" id="6w6rhNWTpZ5" role="37vLTJ">
+                              <ref role="3cqZAo" node="6w6rhNWT40J" resolve="currentNativeLang" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="6w6rhNWToTS" role="3clFbw">
+                        <node concept="2OqwBi" id="6w6rhNWToTT" role="2Oq$k0">
+                          <node concept="2OqwBi" id="6w6rhNWToTU" role="2Oq$k0">
+                            <node concept="37vLTw" id="6w6rhNWToTV" role="2Oq$k0">
+                              <ref role="3cqZAo" node="18Bu3JsfI6" resolve="s" />
+                            </node>
+                            <node concept="3CFZ6_" id="6w6rhNWToTW" role="2OqNvi">
+                              <node concept="3CFYIy" id="6w6rhNWToTX" role="3CFYIz">
+                                <ref role="3CFYIx" to="4j10:6w6rhNWQ3Gn" resolve="UsedNativeLanguageForStringLiteral" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3TrcHB" id="6w6rhNWToTY" role="2OqNvi">
+                            <ref role="3TsBF5" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+                          </node>
+                        </node>
+                        <node concept="21noJN" id="6w6rhNWToTZ" role="2OqNvi">
+                          <node concept="21nZrQ" id="6w6rhNWToU0" role="21noJM">
+                            <ref role="21nZrZ" to="4j10:2wVzGkOsiSm" resolve="Unspecified" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="9aQIb" id="6w6rhNWTpXv" role="9aQIa">
+                        <node concept="3clFbS" id="6w6rhNWTpXw" role="9aQI4">
+                          <node concept="3clFbF" id="6w6rhNWTp5D" role="3cqZAp">
+                            <node concept="37vLTI" id="6w6rhNWTpDM" role="3clFbG">
+                              <node concept="37vLTw" id="6w6rhNWTp5B" role="37vLTJ">
+                                <ref role="3cqZAo" node="6w6rhNWT40J" resolve="currentNativeLang" />
+                              </node>
+                              <node concept="2OqwBi" id="6w6rhNWTpDZ" role="37vLTx">
+                                <node concept="2OqwBi" id="6w6rhNWTpE0" role="2Oq$k0">
+                                  <node concept="2OqwBi" id="6w6rhNWTpE1" role="2Oq$k0">
+                                    <node concept="37vLTw" id="6w6rhNWTpE2" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="18Bu3JsfI6" resolve="s" />
+                                    </node>
+                                    <node concept="3CFZ6_" id="6w6rhNWTpE3" role="2OqNvi">
+                                      <node concept="3CFYIy" id="6w6rhNWTpE4" role="3CFYIz">
+                                        <ref role="3CFYIx" to="4j10:6w6rhNWQ3Gn" resolve="UsedNativeLanguageForStringLiteral" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="6w6rhNWTpE5" role="2OqNvi">
+                                    <ref role="3TsBF5" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="6w6rhNWTpE6" role="2OqNvi">
+                                  <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getName()" resolve="getName" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="6w6rhNWToN6" role="3clFbw">
+                    <node concept="2OqwBi" id="6w6rhNWToN7" role="2Oq$k0">
+                      <node concept="37vLTw" id="6w6rhNWToN8" role="2Oq$k0">
+                        <ref role="3cqZAo" node="18Bu3JsfI6" resolve="s" />
+                      </node>
+                      <node concept="3CFZ6_" id="6w6rhNWToN9" role="2OqNvi">
+                        <node concept="3CFYIy" id="6w6rhNWToNa" role="3CFYIz">
+                          <ref role="3CFYIx" to="4j10:6w6rhNWQ3Gn" resolve="UsedNativeLanguageForStringLiteral" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3x8VRR" id="6w6rhNWToNb" role="2OqNvi" />
+                  </node>
+                </node>
                 <node concept="3clFbJ" id="1xq1$bo1d3j" role="3cqZAp">
                   <node concept="3clFbS" id="1xq1$bo1d3F" role="3clFbx">
                     <node concept="3cpWs8" id="2wVzGkOqy_A" role="3cqZAp">
@@ -658,7 +752,7 @@
                         <node concept="3K4zz7" id="2wVzGkOq_H7" role="33vP2m">
                           <node concept="2OqwBi" id="2wVzGkOq$lS" role="3K4Cdx">
                             <node concept="37vLTw" id="2wVzGkOqzDu" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2wVzGkOqKoc" resolve="nativeLanguageValue" />
+                              <ref role="3cqZAo" node="6w6rhNWT40J" resolve="currentNativeLang" />
                             </node>
                             <node concept="17RvpY" id="2wVzGkOq_zx" role="2OqNvi" />
                           </node>
@@ -678,7 +772,7 @@
                             </node>
                           </node>
                           <node concept="37vLTw" id="2wVzGkOqNtg" role="3K4E3e">
-                            <ref role="3cqZAo" node="2wVzGkOqKoc" resolve="nativeLanguageValue" />
+                            <ref role="3cqZAo" node="6w6rhNWT40J" resolve="currentNativeLang" />
                           </node>
                         </node>
                       </node>
@@ -780,7 +874,7 @@
                         </node>
                       </node>
                       <node concept="37vLTw" id="2wVzGkOqPQn" role="37wK5m">
-                        <ref role="3cqZAo" node="2wVzGkOqKoc" resolve="nativeLanguageValue" />
+                        <ref role="3cqZAo" node="6w6rhNWT40J" resolve="currentNativeLang" />
                       </node>
                     </node>
                   </node>
@@ -1798,28 +1892,28 @@
           </node>
           <node concept="3clFbJ" id="2wVzGkOBTO2" role="3cqZAp">
             <node concept="3clFbS" id="2wVzGkOBTP7" role="3clFbx">
-              <node concept="2MkqsV" id="2wVzGkOBTUk" role="3cqZAp">
-                <node concept="2OqwBi" id="2wVzGkOBUjz" role="2MkJ7o">
-                  <node concept="Xl_RD" id="2wVzGkOBTUt" role="2Oq$k0">
+              <node concept="a7r0C" id="20HdEo8T4Kh" role="3cqZAp">
+                <node concept="2OqwBi" id="20HdEo8T4Kj" role="a7wSD">
+                  <node concept="Xl_RD" id="20HdEo8T4Kk" role="2Oq$k0">
                     <property role="Xl_RC" value="The requested language %s does not have the support installed. Go to Settings | Editor | Natural Languages to install it." />
                   </node>
-                  <node concept="2cAKMz" id="2wVzGkOBVby" role="2OqNvi">
-                    <node concept="2OqwBi" id="2wVzGkOBVc6" role="2cAKU6">
-                      <node concept="2OqwBi" id="2wVzGkOBVc7" role="2Oq$k0">
-                        <node concept="1YBJjd" id="2wVzGkOBVc8" role="2Oq$k0">
+                  <node concept="2cAKMz" id="20HdEo8T4Kl" role="2OqNvi">
+                    <node concept="2OqwBi" id="20HdEo8T4Km" role="2cAKU6">
+                      <node concept="2OqwBi" id="20HdEo8T4Kn" role="2Oq$k0">
+                        <node concept="1YBJjd" id="20HdEo8T4Ko" role="2Oq$k0">
                           <ref role="1YBMHb" node="2wVzGkOBzOE" resolve="node" />
                         </node>
-                        <node concept="3TrcHB" id="2wVzGkOBVc9" role="2OqNvi">
+                        <node concept="3TrcHB" id="20HdEo8T4Kp" role="2OqNvi">
                           <ref role="3TsBF5" to="4j10:2wVzGkOoH3Z" resolve="nativeLanguage" />
                         </node>
                       </node>
-                      <node concept="liA8E" id="2wVzGkOBVca" role="2OqNvi">
+                      <node concept="liA8E" id="20HdEo8T4Kq" role="2OqNvi">
                         <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getPresentation()" resolve="getPresentation" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="1YBJjd" id="2wVzGkOBVmq" role="1urrMF">
+                <node concept="1YBJjd" id="20HdEo8T4Kr" role="1urrMF">
                   <ref role="1YBMHb" node="2wVzGkOBzOE" resolve="node" />
                 </node>
               </node>
@@ -1853,6 +1947,150 @@
     <node concept="1YaCAy" id="2wVzGkOBzOE" role="1YuTPh">
       <property role="TrG5h" value="node" />
       <ref role="1YaFvo" to="4j10:4cWf37B8oWS" resolve="ICheckedNamePolicy" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="20HdEo8T4XN">
+    <property role="TrG5h" value="check_ExplicitNativeLangForStringExists" />
+    <node concept="3clFbS" id="20HdEo8T4XO" role="18ibNy">
+      <node concept="3cpWs8" id="20HdEo8T6DZ" role="3cqZAp">
+        <node concept="3cpWsn" id="20HdEo8T6E0" role="3cpWs9">
+          <property role="TrG5h" value="langAnnotation" />
+          <node concept="3Tqbb2" id="20HdEo8T6DV" role="1tU5fm">
+            <ref role="ehGHo" to="4j10:6w6rhNWQ3Gn" resolve="UsedNativeLanguageForStringLiteral" />
+          </node>
+          <node concept="2OqwBi" id="20HdEo8T6E1" role="33vP2m">
+            <node concept="1YBJjd" id="20HdEo8T6E2" role="2Oq$k0">
+              <ref role="1YBMHb" node="20HdEo8T4Yx" resolve="stringLiteral" />
+            </node>
+            <node concept="3CFZ6_" id="20HdEo8T6E3" role="2OqNvi">
+              <node concept="3CFYIy" id="20HdEo8T6E4" role="3CFYIz">
+                <ref role="3CFYIx" to="4j10:6w6rhNWQ3Gn" resolve="UsedNativeLanguageForStringLiteral" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="20HdEo8T71X" role="3cqZAp">
+        <node concept="3clFbS" id="20HdEo8T71Z" role="3clFbx">
+          <node concept="3cpWs6" id="20HdEo8Tadf" role="3cqZAp" />
+        </node>
+        <node concept="3clFbC" id="20HdEo8Ta69" role="3clFbw">
+          <node concept="10Nm6u" id="20HdEo8Tacs" role="3uHU7w" />
+          <node concept="37vLTw" id="20HdEo8T9Vf" role="3uHU7B">
+            <ref role="3cqZAo" node="20HdEo8T6E0" resolve="langAnnotation" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="20HdEo8T4XP" role="3cqZAp">
+        <node concept="1Wc70l" id="20HdEo8T4XQ" role="3clFbw">
+          <node concept="2OqwBi" id="20HdEo8T4XR" role="3uHU7B">
+            <node concept="2OqwBi" id="20HdEo8TbYs" role="2Oq$k0">
+              <node concept="37vLTw" id="20HdEo8TawZ" role="2Oq$k0">
+                <ref role="3cqZAo" node="20HdEo8T6E0" resolve="langAnnotation" />
+              </node>
+              <node concept="3TrcHB" id="20HdEo8Tchk" role="2OqNvi">
+                <ref role="3TsBF5" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+              </node>
+            </node>
+            <node concept="3x8VRR" id="20HdEo8T4XV" role="2OqNvi" />
+          </node>
+          <node concept="3fqX7Q" id="20HdEo8T4XW" role="3uHU7w">
+            <node concept="2OqwBi" id="20HdEo8T4XX" role="3fr31v">
+              <node concept="2OqwBi" id="20HdEo8Tclu" role="2Oq$k0">
+                <node concept="37vLTw" id="20HdEo8TaGa" role="2Oq$k0">
+                  <ref role="3cqZAo" node="20HdEo8T6E0" resolve="langAnnotation" />
+                </node>
+                <node concept="3TrcHB" id="20HdEo8Tcqy" role="2OqNvi">
+                  <ref role="3TsBF5" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+                </node>
+              </node>
+              <node concept="21noJN" id="20HdEo8T4Y1" role="2OqNvi">
+                <node concept="21nZrQ" id="20HdEo8T4Y2" role="21noJM">
+                  <ref role="21nZrZ" to="4j10:2wVzGkOsiSm" resolve="Unspecified" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="20HdEo8T4Y3" role="3clFbx">
+          <node concept="3cpWs8" id="20HdEo8T4Y4" role="3cqZAp">
+            <node concept="3cpWsn" id="20HdEo8T4Y5" role="3cpWs9">
+              <property role="TrG5h" value="repository" />
+              <node concept="3uibUv" id="20HdEo8T4Y6" role="1tU5fm">
+                <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+              </node>
+              <node concept="2OqwBi" id="20HdEo8T4Y7" role="33vP2m">
+                <node concept="2JrnkZ" id="20HdEo8T4Y8" role="2Oq$k0">
+                  <node concept="2OqwBi" id="20HdEo8T4Y9" role="2JrQYb">
+                    <node concept="1YBJjd" id="20HdEo8T4Ya" role="2Oq$k0">
+                      <ref role="1YBMHb" node="20HdEo8T4Yx" resolve="stringLiteral" />
+                    </node>
+                    <node concept="I4A8Y" id="20HdEo8T4Yb" role="2OqNvi" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="20HdEo8T4Yc" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="20HdEo8T4Yd" role="3cqZAp">
+            <node concept="3clFbS" id="20HdEo8T4Ye" role="3clFbx">
+              <node concept="a7r0C" id="20HdEo8T4Yf" role="3cqZAp">
+                <node concept="2OqwBi" id="20HdEo8T4Yg" role="a7wSD">
+                  <node concept="Xl_RD" id="20HdEo8T4Yh" role="2Oq$k0">
+                    <property role="Xl_RC" value="The requested language %s does not have the support installed. Go to Settings | Editor | Natural Languages to install it." />
+                  </node>
+                  <node concept="2cAKMz" id="20HdEo8T4Yi" role="2OqNvi">
+                    <node concept="2OqwBi" id="20HdEo8T4Yj" role="2cAKU6">
+                      <node concept="2OqwBi" id="20HdEo8T4Yk" role="2Oq$k0">
+                        <node concept="37vLTw" id="20HdEo8Td7H" role="2Oq$k0">
+                          <ref role="3cqZAo" node="20HdEo8T6E0" resolve="langAnnotation" />
+                        </node>
+                        <node concept="3TrcHB" id="20HdEo8T4Ym" role="2OqNvi">
+                          <ref role="3TsBF5" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="20HdEo8T4Yn" role="2OqNvi">
+                        <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getPresentation()" resolve="getPresentation" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="1YBJjd" id="20HdEo8T4Yo" role="1urrMF">
+                  <ref role="1YBMHb" node="20HdEo8T4Yx" resolve="stringLiteral" />
+                </node>
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="20HdEo8T4Yp" role="3clFbw">
+              <node concept="2YIFZM" id="20HdEo8T4Yq" role="3fr31v">
+                <ref role="37wK5l" node="2wVzGkOBEfu" resolve="isNativeLanguageInstalled" />
+                <ref role="1Pybhc" node="5gGELdhfulh" resolve="ExtensionsHelper" />
+                <node concept="37vLTw" id="20HdEo8T4Yr" role="37wK5m">
+                  <ref role="3cqZAo" node="20HdEo8T4Y5" resolve="repository" />
+                </node>
+                <node concept="2OqwBi" id="20HdEo8T4Ys" role="37wK5m">
+                  <node concept="2OqwBi" id="20HdEo8Tct6" role="2Oq$k0">
+                    <node concept="37vLTw" id="20HdEo8Tb6j" role="2Oq$k0">
+                      <ref role="3cqZAo" node="20HdEo8T6E0" resolve="langAnnotation" />
+                    </node>
+                    <node concept="3TrcHB" id="20HdEo8TcHi" role="2OqNvi">
+                      <ref role="3TsBF5" to="4j10:6w6rhNWQ8DD" resolve="nativeLanguage" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="20HdEo8T4Yw" role="2OqNvi">
+                    <ref role="37wK5l" to="c17a:~SEnumerationLiteral.getName()" resolve="getName" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="20HdEo8T4Yx" role="1YuTPh">
+      <property role="TrG5h" value="stringLiteral" />
+      <ref role="1YaFvo" to="tpee:f$Xl_Og" resolve="StringLiteral" />
     </node>
   </node>
 </model>
