@@ -679,10 +679,10 @@
       <node id="8247227603020563802" at="61,46,62,51" concept="11" />
       <node id="8247227603020560134" at="66,111,67,31" concept="11" />
       <node id="738510297333126631" at="67,31,68,72" concept="3" />
-      <node id="8247227603020560295" at="73,75,74,31" concept="11" />
-      <node id="738510297333106024" at="74,31,75,63" concept="10" />
-      <node id="8247227603020563773" at="79,57,80,31" concept="11" />
-      <node id="8247227603020555288" at="80,31,81,16" concept="10" />
+      <node id="8247227603020560295" at="72,75,73,31" concept="11" />
+      <node id="738510297333106024" at="73,31,74,63" concept="10" />
+      <node id="8247227603020563773" at="78,57,79,31" concept="11" />
+      <node id="8247227603020555288" at="79,31,80,16" concept="10" />
       <node id="897795129551228216" at="33,0,37,0" concept="2" trace="RunConfigurationProxy#(Ljetbrains/mps/execution/api/configurations/ConfigFactoryEnvoy;Lcom/intellij/openapi/project/Project;Ljetbrains/mps/execution/api/configurations/BaseMpsRunConfiguration;)V" />
       <node id="738510297333250632" at="50,0,54,0" concept="8" trace="canExecute#(Ljava/lang/String;)Z" />
       <node id="897795129551222084" at="55,0,59,0" concept="8" trace="readExternal#(Lorg/jdom/Element;)V" />
@@ -690,8 +690,8 @@
       <node id="897795129551222015" at="38,0,43,0" concept="8" trace="getConfigurationEditor#()Lcom/intellij/openapi/options/SettingsEditor;" />
       <node id="897795129551222121" at="44,0,49,0" concept="8" trace="getState#(Lcom/intellij/execution/Executor;Lcom/intellij/execution/runners/ExecutionEnvironment;)Lcom/intellij/execution/configurations/RunProfileState;" />
       <node id="8247227603020537389" at="65,0,70,0" concept="8" trace="checkConfiguration#(Ljetbrains/mps/execution/api/settings/PersistentConfigurationContext;)V" />
-      <node id="8247227603020548204" at="72,0,77,0" concept="8" trace="getEditor#()Ljetbrains/mps/execution/api/settings/SettingsEditorEx;" />
-      <node id="8247227603020555279" at="78,0,83,0" concept="8" trace="createCloneTemplate#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
+      <node id="8247227603020548204" at="71,0,76,0" concept="8" trace="getEditor#()Ljetbrains/mps/execution/api/settings/SettingsEditorEx;" />
+      <node id="8247227603020555279" at="77,0,82,0" concept="8" trace="createCloneTemplate#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
       <scope id="897795129551222022" at="40,78,41,47" />
       <scope id="897795129551222135" at="46,132,47,54" />
       <scope id="738510297333250643" at="51,48,52,45" />
@@ -699,8 +699,8 @@
       <scope id="897795129551222099" at="61,46,62,51" />
       <scope id="897795129551228220" at="33,117,35,26" />
       <scope id="8247227603020537398" at="66,111,68,72" />
-      <scope id="8247227603020548212" at="73,75,75,63" />
-      <scope id="8247227603020555285" at="79,57,81,16" />
+      <scope id="8247227603020548212" at="72,75,74,63" />
+      <scope id="8247227603020555285" at="78,57,80,16" />
       <scope id="897795129551228216" at="33,0,37,0">
         <var name="configFactory" id="897795129551235111" />
         <var name="delegate" id="897795129551448453" />
@@ -723,9 +723,9 @@
       <scope id="8247227603020537389" at="65,0,70,0">
         <var name="context" id="8247227603020537394" />
       </scope>
-      <scope id="8247227603020548204" at="72,0,77,0" />
-      <scope id="8247227603020555279" at="78,0,83,0" />
-      <unit id="897795129551221893" at="29,0,84,0" name="jetbrains.mps.execution.api.configurations.RunConfigurationProxy" />
+      <scope id="8247227603020548204" at="71,0,76,0" />
+      <scope id="8247227603020555279" at="77,0,82,0" />
+      <unit id="897795129551221893" at="29,0,83,0" name="jetbrains.mps.execution.api.configurations.RunConfigurationProxy" />
     </file>
   </root>
 </debug-info>

@@ -68,7 +68,6 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
     ((IPersistentConfiguration) myDelegate).checkConfiguration(context);
   }
 
-
   @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     // IPersistentConfiguration

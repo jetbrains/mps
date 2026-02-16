@@ -12,7 +12,8 @@ public interface IPersistentConfiguration extends JDOMExternalizable {
    * RunConfiguration.checkConfiguration, generified for PersistentConfigurationTemplate.
    * As long as RunConfiguration has access to context (like project), and PCT does not, a parameter was introduced to share context values.
    */
-  void checkConfiguration(PersistentConfigurationContext context) throws RuntimeConfigurationException;
+  default void checkConfiguration(PersistentConfigurationContext context) throws RuntimeConfigurationException {
+  }
   /**
    * This is what RunConfiguration.getConfigurationEditor does, generified for PersistentContfigurationTemplate.
    * There's no obvious value in SettingsEditorEx, though, shall I drop i?

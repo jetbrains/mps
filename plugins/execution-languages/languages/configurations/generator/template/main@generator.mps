@@ -61,6 +61,7 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="3767" ref="r:7f24d329-a444-4288-af92-f8ef91dfd241(jetbrains.mps.lang.resources.behavior)" />
+    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -2223,6 +2224,25 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
+      <node concept="2tJIrI" id="7s43K0tgnL6" role="jymVt" />
+      <node concept="3clFb_" id="4nPCR7KFTJy" role="jymVt">
+        <property role="TrG5h" value="clone" />
+        <node concept="3Tm1VV" id="4nPCR7KFTJz" role="1B3o_S" />
+        <node concept="3uibUv" id="4nPCR7KFTJ$" role="3clF45">
+          <ref role="3uigEE" node="_0hjroSWQY" resolve="RunConfigurationTemplateWeave" />
+        </node>
+        <node concept="3clFbS" id="4nPCR7KFTJ_" role="3clF47">
+          <node concept="3cpWs6" id="6tQ_GuWnsJU" role="3cqZAp">
+            <node concept="1rXfSq" id="6tQ_GuWn_1m" role="3cqZAk">
+              <ref role="37wK5l" to="w0gx:~Copyable.copy()" resolve="copy" />
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="4nPCR7KFTKT" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+        <node concept="raruj" id="7s43K0tgwsO" role="lGtFl" />
+      </node>
       <node concept="2tJIrI" id="qCQmZRUooy" role="jymVt" />
       <node concept="3clFb_" id="7WkE0gr9Ct" role="jymVt">
         <property role="TrG5h" value="createCloneTemplate" />
@@ -2756,6 +2776,12 @@
         <ref role="3uigEE" to="eibu:3oW7HLfqDgM" resolve="BaseMpsRunConfiguration" />
       </node>
       <node concept="3Tm1VV" id="_0hjroSWQZ" role="1B3o_S" />
+      <node concept="3uibUv" id="7s43K0tfA5L" role="EKbjA">
+        <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
+        <node concept="3uibUv" id="7s43K0tfGNd" role="11_B2D">
+          <ref role="3uigEE" node="_0hjroSWQY" resolve="RunConfigurationTemplateWeave" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="13MO4I" id="_0hjroTa4k">
