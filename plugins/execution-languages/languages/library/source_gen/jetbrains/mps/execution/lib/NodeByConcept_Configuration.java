@@ -82,18 +82,12 @@ public final class NodeByConcept_Configuration implements IPersistentConfigurati
   /*package*/ void setNode(@Nullable SNodeReference nodePtr) {
     this.setNodePointer((nodePtr == null ? null : PersistenceFacade.getInstance().asString(nodePtr)));
   }
-  @Override
-  @Deprecated
-  public NodeByConcept_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public NodeByConcept_Configuration copy() {
     NodeByConcept_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -111,26 +105,16 @@ public final class NodeByConcept_Configuration implements IPersistentConfigurati
     myState.myNodeText = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public String myNodePointer;
     public String myNodeText;
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.myNodePointer = myNodePointer;
-        state.myNodeText = myNodeText;
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(NodeByConcept_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.myNodePointer = myNodePointer;
+      state.myNodeText = myNodeText;
     }
   }
   public NodeByConcept_Configuration(SAbstractConcept concept, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> isValid) {
@@ -139,9 +123,11 @@ public final class NodeByConcept_Configuration implements IPersistentConfigurati
   }
   private final SAbstractConcept myConcept;
   private final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> myIsValid;
+  @Override
   public NodeByConcept_Configuration createCloneTemplate() {
     return new NodeByConcept_Configuration(myConcept, myIsValid);
   }
+  @Override
   public NodeByConcept_Configuration_Editor getEditor() {
     return new NodeByConcept_Configuration_Editor(myConcept, myIsValid);
   }

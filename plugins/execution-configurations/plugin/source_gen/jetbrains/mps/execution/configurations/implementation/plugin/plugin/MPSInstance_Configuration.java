@@ -10,20 +10,15 @@ import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.util.InvalidDataException;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 import java.io.File;
@@ -64,17 +59,11 @@ public final class MPSInstance_Configuration extends BaseMpsRunConfiguration imp
     }
   }
 
-  @Override
-  @Deprecated
-  public MPSInstance_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public MPSInstance_Configuration copy() {
     MPSInstance_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myMpsSettings = ((Copyable<MpsStartupSettings_Configuration>) myMpsSettings).copy();
     cloneTemplate.myPluginsSettings = ((Copyable<DeployPluginsSettings_Configuration>) myPluginsSettings).copy();
     return cloneTemplate;
@@ -101,26 +90,21 @@ public final class MPSInstance_Configuration extends BaseMpsRunConfiguration imp
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new MPSInstance_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<MPSInstance_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<MPSInstance_Configuration>) getEditor();
   }
+  @Override
+  public MPSInstance_Configuration clone() {
+    return copy();
+  }
+  @Override
   public MPSInstance_Configuration createCloneTemplate() {
     return (MPSInstance_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new MPSInstance_Configuration_Editor(myMpsSettings.getEditor(), myPluginsSettings.getEditor());
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

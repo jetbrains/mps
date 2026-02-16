@@ -41,10 +41,6 @@ import com.intellij.execution.configurations.RunProfileState;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
@@ -138,17 +134,11 @@ public final class Java_Configuration extends BaseMpsRunConfiguration implements
     }
     return false;
   }
-  @Override
-  @Deprecated
-  public Java_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public Java_Configuration copy() {
     Java_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myNode = ((Copyable<NodeBySeveralConcepts_Configuration>) myNode).copy();
     cloneTemplate.myRunParameters = ((Copyable<JavaRunParameters_Configuration>) myRunParameters).copy();
     return cloneTemplate;
@@ -175,26 +165,21 @@ public final class Java_Configuration extends BaseMpsRunConfiguration implements
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new Java_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<Java_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<Java_Configuration>) getEditor();
   }
+  @Override
+  public Java_Configuration clone() {
+    return copy();
+  }
+  @Override
   public Java_Configuration createCloneTemplate() {
     return (Java_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new Java_Configuration_Editor(myNode.getEditor(), myRunParameters.getEditor());
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

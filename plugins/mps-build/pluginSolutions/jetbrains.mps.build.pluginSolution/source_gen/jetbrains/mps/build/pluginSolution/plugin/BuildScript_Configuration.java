@@ -19,20 +19,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.util.InvalidDataException;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
@@ -93,17 +88,11 @@ public final class BuildScript_Configuration extends BaseMpsRunConfiguration imp
     }
   }
 
-  @Override
-  @Deprecated
-  public BuildScript_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public BuildScript_Configuration copy() {
     BuildScript_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myNodePointer = ((Copyable<NodeByConcept_Configuration>) myNodePointer).copy();
     cloneTemplate.mySettings = ((Copyable<AntSettings_Configuration>) mySettings).copy();
     return cloneTemplate;
@@ -130,26 +119,21 @@ public final class BuildScript_Configuration extends BaseMpsRunConfiguration imp
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new BuildScript_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<BuildScript_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<BuildScript_Configuration>) getEditor();
   }
+  @Override
+  public BuildScript_Configuration clone() {
+    return copy();
+  }
+  @Override
   public BuildScript_Configuration createCloneTemplate() {
     return (BuildScript_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new BuildScript_Configuration_Editor(myNodePointer.getEditor(), mySettings.getEditor());
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

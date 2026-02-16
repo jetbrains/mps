@@ -150,18 +150,12 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   private List<ITestNodeWrapper> collectTests(final MPSProject project) {
     return getJUnitRunType().collect(this, project);
   }
-  @Override
-  @Deprecated
-  public JUnitSettings_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public JUnitSettings_Configuration copy() {
     JUnitSettings_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -233,7 +227,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     myState.myRunType2InProcess = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public String myModelRef;
     public String myModuleRef;
     public boolean myInProcess = true;
@@ -246,46 +240,44 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     public int myRunType = JUnitRunTypes.PROJECT.ordinal();
     public InProcessFlagPerScope myRunType2InProcess = new InProcessFlagPerScope();
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.myModelRef = myModelRef;
-        state.myModuleRef = myModuleRef;
-        state.myInProcess = myInProcess;
-        state.myReuseCaches = myReuseCaches;
-        state.myOverrideCachesLocation = myOverrideCachesLocation;
-        state.myDebug = myDebug;
-        state.myCachesPath = myCachesPath;
-        if (myTestCases != null) {
-          state.myTestCases = myTestCases.copy();
-        }
-        if (myTestMethods != null) {
-          state.myTestMethods = myTestMethods.copy();
-        }
-        state.myRunType = myRunType;
-        if (myRunType2InProcess != null) {
-          state.myRunType2InProcess = myRunType2InProcess.copy();
-        }
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(JUnitSettings_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.myModelRef = myModelRef;
+      state.myModuleRef = myModuleRef;
+      state.myInProcess = myInProcess;
+      state.myReuseCaches = myReuseCaches;
+      state.myOverrideCachesLocation = myOverrideCachesLocation;
+      state.myDebug = myDebug;
+      state.myCachesPath = myCachesPath;
+      if (myTestCases != null) {
+        state.myTestCases = myTestCases.copy();
+      } else {
+        state.myTestCases = null;
+      }
+      if (myTestMethods != null) {
+        state.myTestMethods = myTestMethods.copy();
+      } else {
+        state.myTestMethods = null;
+      }
+      state.myRunType = myRunType;
+      if (myRunType2InProcess != null) {
+        state.myRunType2InProcess = myRunType2InProcess.copy();
+      } else {
+        state.myRunType2InProcess = null;
+      }
     }
   }
   public JUnitSettings_Configuration(Project project) {
     myProject = project;
   }
   private final Project myProject;
+  @Override
   public JUnitSettings_Configuration createCloneTemplate() {
     return new JUnitSettings_Configuration(myProject);
   }
+  @Override
   public JUnitSettings_Configuration_Editor getEditor() {
     return new JUnitSettings_Configuration_Editor(myProject);
   }

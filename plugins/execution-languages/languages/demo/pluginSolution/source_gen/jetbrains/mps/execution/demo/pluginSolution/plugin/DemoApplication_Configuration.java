@@ -15,20 +15,15 @@ import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.util.InvalidDataException;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
@@ -65,17 +60,11 @@ public final class DemoApplication_Configuration extends BaseMpsRunConfiguration
     }
   }
 
-  @Override
-  @Deprecated
-  public DemoApplication_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public DemoApplication_Configuration copy() {
     DemoApplication_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myNode = ((Copyable<NodeByConcept_Configuration>) myNode).copy();
     return cloneTemplate;
   }
@@ -95,26 +84,21 @@ public final class DemoApplication_Configuration extends BaseMpsRunConfiguration
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new DemoApplication_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<DemoApplication_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<DemoApplication_Configuration>) getEditor();
   }
+  @Override
+  public DemoApplication_Configuration clone() {
+    return copy();
+  }
+  @Override
   public DemoApplication_Configuration createCloneTemplate() {
     return (DemoApplication_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new DemoApplication_Configuration_Editor(myNode.getEditor());
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

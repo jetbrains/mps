@@ -59,18 +59,12 @@ public final class DeployPluginsSettings_Configuration implements IPersistentCon
   public List<SNodeReference> getPluginsListToDeploy() {
     return PointerUtils.clonableListToNodes(this.getPluginsToDeploy());
   }
-  @Override
-  @Deprecated
-  public DeployPluginsSettings_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public DeployPluginsSettings_Configuration copy() {
     DeployPluginsSettings_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -82,35 +76,29 @@ public final class DeployPluginsSettings_Configuration implements IPersistentCon
     myState.myPluginsToDeploy = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public ClonableList<String> myPluginsToDeploy = new ClonableList<String>();
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        if (myPluginsToDeploy != null) {
-          state.myPluginsToDeploy = myPluginsToDeploy.copy();
-        }
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(DeployPluginsSettings_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      if (myPluginsToDeploy != null) {
+        state.myPluginsToDeploy = myPluginsToDeploy.copy();
+      } else {
+        state.myPluginsToDeploy = null;
+      }
     }
   }
   public DeployPluginsSettings_Configuration(Project project) {
     myProject = project;
   }
   private final Project myProject;
+  @Override
   public DeployPluginsSettings_Configuration createCloneTemplate() {
     return new DeployPluginsSettings_Configuration(myProject);
   }
+  @Override
   public DeployPluginsSettings_Configuration_Editor getEditor() {
     return new DeployPluginsSettings_Configuration_Editor(myProject);
   }

@@ -77,18 +77,12 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
     }
     return sb.toString();
   }
-  @Override
-  @Deprecated
-  public MpsStartupSettings_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public MpsStartupSettings_Configuration copy() {
     MpsStartupSettings_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -112,35 +106,27 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
     myState.mySettingsPath = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public String myVmOptions = computeOpenedPackages() + "-DjbScreenMenuBar.enabled=true\n" + "-DjbScreenMenuBar.useStubItem=true\n" + "-Dintellij.platform.load.app.info.from.resources=true\n" + "-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader\n" + "-Dide.native.launcher=false\n" + "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$";
     public String myJrePath;
     public String mySettingsPath = getDefaultSettingsPath();
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.myVmOptions = myVmOptions;
-        state.myJrePath = myJrePath;
-        state.mySettingsPath = mySettingsPath;
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(MpsStartupSettings_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.myVmOptions = myVmOptions;
+      state.myJrePath = myJrePath;
+      state.mySettingsPath = mySettingsPath;
     }
   }
   public MpsStartupSettings_Configuration() {
   }
+  @Override
   public MpsStartupSettings_Configuration createCloneTemplate() {
     return new MpsStartupSettings_Configuration();
   }
+  @Override
   public MpsStartupSettings_Configuration_Editor getEditor() {
     return new MpsStartupSettings_Configuration_Editor();
   }

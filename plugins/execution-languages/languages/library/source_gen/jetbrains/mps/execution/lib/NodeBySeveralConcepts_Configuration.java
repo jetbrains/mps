@@ -95,18 +95,12 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
       return false;
     }) != null;
   }
-  @Override
-  @Deprecated
-  public NodeBySeveralConcepts_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public NodeBySeveralConcepts_Configuration copy() {
     NodeBySeveralConcepts_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -124,35 +118,27 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
     myState.myNodeText = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public String myNodePointer;
     public String myNodeText;
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.myNodePointer = myNodePointer;
-        state.myNodeText = myNodeText;
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(NodeBySeveralConcepts_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.myNodePointer = myNodePointer;
+      state.myNodeText = myNodeText;
     }
   }
   public NodeBySeveralConcepts_Configuration(List<NodesFilter> targets) {
     myTargets = targets;
   }
   private final List<NodesFilter> myTargets;
+  @Override
   public NodeBySeveralConcepts_Configuration createCloneTemplate() {
     return new NodeBySeveralConcepts_Configuration(myTargets);
   }
+  @Override
   public NodeBySeveralConcepts_Configuration_Editor getEditor() {
     return new NodeBySeveralConcepts_Configuration_Editor(myTargets);
   }

@@ -5,8 +5,6 @@ package jetbrains.mps.baseLanguage.execution.api;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
-import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
@@ -20,9 +18,6 @@ public final class JavaRunParameters_Configuration implements IPersistentConfigu
   @NotNull
   private MyState myState = new MyState();
 
-  @Override
-  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
-  }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -47,18 +42,12 @@ public final class JavaRunParameters_Configuration implements IPersistentConfigu
     }
     return userDir;
   }
-  @Override
-  @Deprecated
-  public JavaRunParameters_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public JavaRunParameters_Configuration copy() {
     JavaRunParameters_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -70,35 +59,29 @@ public final class JavaRunParameters_Configuration implements IPersistentConfigu
     myState.myJavaParameters = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public JavaRunParameters myJavaParameters = new JavaRunParameters(null, null, null, getDefaultWorkingDir(), false);
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        if (myJavaParameters != null) {
-          state.myJavaParameters = myJavaParameters.copy();
-        }
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(JavaRunParameters_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      if (myJavaParameters != null) {
+        state.myJavaParameters = myJavaParameters.copy();
+      } else {
+        state.myJavaParameters = null;
+      }
     }
   }
   public JavaRunParameters_Configuration(Project project) {
     myProject = project;
   }
   private final Project myProject;
+  @Override
   public JavaRunParameters_Configuration createCloneTemplate() {
     return new JavaRunParameters_Configuration(myProject);
   }
+  @Override
   public JavaRunParameters_Configuration_Editor getEditor() {
     return new JavaRunParameters_Configuration_Editor(myProject);
   }

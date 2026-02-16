@@ -6,8 +6,6 @@ import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
-import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
@@ -20,12 +18,7 @@ import com.intellij.execution.configurations.RunProfileState;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 
@@ -33,9 +26,6 @@ public final class Remote_Configuration extends BaseMpsRunConfiguration implemen
   @NotNull
   private MyState myState = new MyState();
 
-  @Override
-  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
-  }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -49,18 +39,12 @@ public final class Remote_Configuration extends BaseMpsRunConfiguration implemen
     XmlSerializer.deserializeInto(myState, element.getChildren().get(0));
   }
 
-  @Override
-  @Deprecated
-  public Remote_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public Remote_Configuration copy() {
     Remote_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -72,24 +56,14 @@ public final class Remote_Configuration extends BaseMpsRunConfiguration implemen
     myState.mySettings = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public RemoteConnectionSettings mySettings = new RemoteConnectionSettings("localhost", 5005);
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.mySettings = mySettings;
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(Remote_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.mySettings = mySettings;
     }
   }
   public Remote_Configuration(Project project, ConfigurationFactory factory, String name) {
@@ -99,26 +73,21 @@ public final class Remote_Configuration extends BaseMpsRunConfiguration implemen
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new Remote_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<Remote_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<Remote_Configuration>) getEditor();
   }
+  @Override
+  public Remote_Configuration clone() {
+    return copy();
+  }
+  @Override
   public Remote_Configuration createCloneTemplate() {
     return (Remote_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new Remote_Configuration_Editor();
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

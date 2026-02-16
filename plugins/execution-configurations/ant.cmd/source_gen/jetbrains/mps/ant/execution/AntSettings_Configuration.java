@@ -5,8 +5,6 @@ package jetbrains.mps.ant.execution;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
-import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
@@ -16,9 +14,6 @@ public final class AntSettings_Configuration implements IPersistentConfiguration
   @NotNull
   private MyState myState = new MyState();
 
-  @Override
-  public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
-  }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
     element.addContent(XmlSerializer.serialize(myState));
@@ -32,18 +27,12 @@ public final class AntSettings_Configuration implements IPersistentConfiguration
     XmlSerializer.deserializeInto(myState, element.getChildren().get(0));
   }
 
-  @Override
-  @Deprecated
-  public AntSettings_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public AntSettings_Configuration copy() {
     AntSettings_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     return cloneTemplate;
   }
 
@@ -67,35 +56,27 @@ public final class AntSettings_Configuration implements IPersistentConfiguration
     myState.myAntOptions = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public boolean myUseOtherAntLocation;
     public String myOtherAntLocation;
     public String myAntOptions;
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.myUseOtherAntLocation = myUseOtherAntLocation;
-        state.myOtherAntLocation = myOtherAntLocation;
-        state.myAntOptions = myAntOptions;
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(AntSettings_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.myUseOtherAntLocation = myUseOtherAntLocation;
+      state.myOtherAntLocation = myOtherAntLocation;
+      state.myAntOptions = myAntOptions;
     }
   }
   public AntSettings_Configuration() {
   }
+  @Override
   public AntSettings_Configuration createCloneTemplate() {
     return new AntSettings_Configuration();
   }
+  @Override
   public AntSettings_Configuration_Editor getEditor() {
     return new AntSettings_Configuration_Editor();
   }

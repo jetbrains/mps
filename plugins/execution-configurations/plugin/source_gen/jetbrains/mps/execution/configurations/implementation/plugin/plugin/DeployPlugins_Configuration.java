@@ -25,12 +25,7 @@ import com.intellij.execution.configurations.RunProfileState;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
-import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 
@@ -85,18 +80,12 @@ public final class DeployPlugins_Configuration extends BaseMpsRunConfiguration i
       }
     }
   }
-  @Override
-  @Deprecated
-  public DeployPlugins_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public DeployPlugins_Configuration copy() {
     DeployPlugins_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = myState.copy();
+    myState.copyInto(cloneTemplate);
     cloneTemplate.myPluginsSettings = ((Copyable<DeployPluginsSettings_Configuration>) myPluginsSettings).copy();
     return cloneTemplate;
   }
@@ -121,26 +110,16 @@ public final class DeployPlugins_Configuration extends BaseMpsRunConfiguration i
     myState.myRestartCurrentInstance = value;
   }
 
-  public final class MyState implements Copyable<MyState>, Cloneable {
+  public final class MyState {
     public boolean mySkipModulesLoading = true;
     public boolean myRestartCurrentInstance = true;
 
-    @Deprecated
-    @Override
-    public MyState clone() {
-      try {
-        MyState state = (MyState) super.clone();
-        state.mySkipModulesLoading = mySkipModulesLoading;
-        state.myRestartCurrentInstance = myRestartCurrentInstance;
-        return state;
-      } catch (CloneNotSupportedException ex) {
-        throw new IllegalStateException("Shall not happen", ex);
-      }
-    }
+    /*package*/ void copyInto(DeployPlugins_Configuration enclosingInstance) {
+      enclosingInstance.myState = enclosingInstance.new MyState();
+      final MyState state = enclosingInstance.myState;
 
-    @Override
-    public MyState copy() {
-      return clone();
+      state.mySkipModulesLoading = mySkipModulesLoading;
+      state.myRestartCurrentInstance = myRestartCurrentInstance;
     }
   }
   public DeployPlugins_Configuration(Project project, ConfigurationFactory factory, String name) {
@@ -150,26 +129,21 @@ public final class DeployPlugins_Configuration extends BaseMpsRunConfiguration i
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new DeployPlugins_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<DeployPlugins_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<DeployPlugins_Configuration>) getEditor();
   }
+  @Override
+  public DeployPlugins_Configuration clone() {
+    return copy();
+  }
+  @Override
   public DeployPlugins_Configuration createCloneTemplate() {
     return (DeployPlugins_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new DeployPlugins_Configuration_Editor(myPluginsSettings.getEditor());
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {

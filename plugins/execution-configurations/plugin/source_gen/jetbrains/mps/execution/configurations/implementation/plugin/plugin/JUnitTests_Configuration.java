@@ -24,17 +24,13 @@ import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
 import com.intellij.execution.configurations.RuntimeConfigurationError;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.RunProfileState;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.execution.configurations.ConfigurationPerRunnerSettings;
-import com.intellij.execution.runners.ProgramRunner;
-import com.intellij.execution.configurations.ConfigurationInfoProvider;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
@@ -109,17 +105,11 @@ public final class JUnitTests_Configuration extends BaseMpsRunConfiguration impl
       throw new RuntimeConfigurationError("There is already another instance running tests in-process. Only one instance is allowed to run in-process.");
     }
   }
-  @Override
-  @Deprecated
-  public JUnitTests_Configuration clone() {
-    return copy();
-  }
 
   @Override
+  @NotNull
   public JUnitTests_Configuration copy() {
     JUnitTests_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myJUnitSettings = ((Copyable<JUnitSettings_Configuration>) myJUnitSettings).copy();
     cloneTemplate.myJavaRunParameters = ((Copyable<JavaRunParameters_Configuration>) myJavaRunParameters).copy();
     cloneTemplate.myDeploySettings = ((Copyable<DeployPluginsSettings_Configuration>) myDeploySettings).copy();
@@ -153,26 +143,21 @@ public final class JUnitTests_Configuration extends BaseMpsRunConfiguration impl
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return new JUnitTests_Configuration_RunProfileState(this, executor, environment);
   }
-  @Nullable
-  public SettingsEditor<ConfigurationPerRunnerSettings> getRunnerSettingsEditor(ProgramRunner runner) {
-    return null;
-  }
-  public ConfigurationPerRunnerSettings createRunnerSettings(ConfigurationInfoProvider provider) {
-    return null;
-  }
+  @NotNull
   public SettingsEditorEx<JUnitTests_Configuration> getConfigurationEditor() {
     return (SettingsEditorEx<JUnitTests_Configuration>) getEditor();
   }
+  @Override
+  public JUnitTests_Configuration clone() {
+    return copy();
+  }
+  @Override
   public JUnitTests_Configuration createCloneTemplate() {
     return (JUnitTests_Configuration) super.clone();
   }
+  @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
     return new JUnitTests_Configuration_Editor(myJUnitSettings.getEditor(), myJavaRunParameters.getEditor(), myDeploySettings.getEditor());
-  }
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(() -> mpsProject);
   }
   @Override
   public boolean canExecute(String executorId) {
