@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,15 @@ package jetbrains.mps.ide.generator.index;
 
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.ID;
-import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.persistence.ModelDigestHelper.DigestProvider;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,16 +38,14 @@ import java.util.Map;
  * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
  * Again, here would be great to have indexing built on top of model layer, rather than vfs layer
  */
-public class IndexBasedModelDigest extends MPSProjectActivity {
+public class IndexBasedModelDigest implements ProjectLifecycleListener {
+  // this is just to keep instances in PLL context, as there's no promise same IBMD instance would serve as a listener,
+  // and we're bound to <T> T Context.keep(Class<T>) api.
+  private record Providers(BaseModelDigestProvider p1, BaseModelDigestProvider p2) {}
 
   @Override
-  public void runActivity(@NotNull Project project) {
-    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-    if (mpsProject == null) {
-      return;
-    }
-    final ComponentHost mpsPlaf = MPSCoreComponents.getInstance().getPlatform();
-    final ModelDigestHelper mdHelper = mpsPlaf.findComponent(ModelDigestHelper.class);
+  public void projectReady(@NotNull MPSProject mpsProject, @NotNull Context context) {
+    final ModelDigestHelper mdHelper = mpsProject.getComponent(ModelDigestHelper.class);
     if (mdHelper == null) {
       return;
     }
@@ -62,11 +55,21 @@ public class IndexBasedModelDigest extends MPSProjectActivity {
     final BaseModelDigestProvider p2 = new BaseModelDigestProvider(mpsProject, BinaryModelDigestIndex.NAME);
     mdHelper.addDigestProvider(p1);
     mdHelper.addDigestProvider(p2);
+    Providers p = new Providers(p1, p2);
+    context.keep(Providers.class, p);
+  }
 
-    Disposer.register(project, () -> {
-      mdHelper.removeDigestProvider(p2);
-      mdHelper.removeDigestProvider(p1);
-    });
+  @Override
+  public void projectDiscarded(@NotNull MPSProject project, @NotNull Context context) {
+    final ModelDigestHelper mdHelper = project.getComponent(ModelDigestHelper.class);
+    if (mdHelper == null) {
+      return;
+    }
+    Providers holder = context.discard(Providers.class);
+    if (holder != null) {
+      mdHelper.removeDigestProvider(holder.p1);
+      mdHelper.removeDigestProvider(holder.p2);
+    }
   }
 
   private static class BaseModelDigestProvider implements DigestProvider {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -43,7 +42,9 @@ import java.nio.file.Path;
  * The fix here is to markDirty with reloadChildren=true, I think that loading the children of .mps dir would be enough.
  * <p>
  *
- * AP
+ * <p>
+ *   Impl note: we don't care about MPSProject instance here, and keep using IDEA's post-startup activity.
+ * </p>>
  */
 public final class ProjectStoreDirAddToVFSSnapshot extends MPSProjectActivity {
 
