@@ -23,7 +23,6 @@
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
     <postStartupActivity implementation="jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot" />
     <projectService serviceImplementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager"/>
-    <postStartupActivity implementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Activity" />
     <projectService serviceInterface="jetbrains.mps.project.MPSProject"
             serviceImplementation="jetbrains.mps.project.StandaloneMPSProject"/>
     <postStartupActivity implementation="jetbrains.mps.project.StandaloneMPSProject$Activity" />
@@ -75,10 +74,10 @@
     <editor.highlighter.contributor implementation="jetbrains.mps.ide.bookmark.BookmarkManager"/>
     <project.lifecycleListener listenerClass="jetbrains.mps.ide.make.StartupModuleMakerImpl" priority="20"/>
     <project.lifecycleListener listenerClass="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" priority="100"/>
+    <project.lifecycleListener listenerClass="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Activity" priority="50"/>
   </extensions>
 
   <applicationListeners>
-    <listener class="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Listener" topic="com.intellij.openapi.project.ProjectCloseListener"/>
     <listener class="jetbrains.mps.project.StandaloneMPSProject$Listener" topic="com.intellij.openapi.project.ProjectCloseListener"/>
     <listener class="jetbrains.mps.intellij.integration.LafFixer$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.ide.blame.IntelliJReporterReplacer" topic="com.intellij.ide.AppLifecycleListener"/>
