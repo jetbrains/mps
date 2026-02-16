@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.project.ImportUtil;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -43,7 +43,7 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
     SNode res = SNodeFactoryOperations.createNewNode(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN)), null);
-    ImportUtil.addModelDepsByNode(futureModel.getRepository(), futureModel, res, false);
+    new ModelDependencyUpdate(futureModel, SNodeOperations.getNodeDescendants(res, null, true, new SAbstractConcept[]{})).updateUsedLanguages().updateImportedModels(futureModel.getRepository());
     return SNodeOperations.cast(res, CONCEPTS.ClassifierMember$At);
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull SNode __thisNode__, SNode cls) {

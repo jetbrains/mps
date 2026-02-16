@@ -48,7 +48,9 @@ import java.util.Collection;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.project.ImportUtil;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import java.awt.event.KeyEvent;
@@ -79,7 +81,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
@@ -291,7 +292,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   protected void addNodeImports(SNode node) {
-    ImportUtil.addModelDepsByNode(myProject.getRepository(), myModel, node, true);
+    // XXX if/when console model lives in its own repo, we shall use myModel.getRepository instead of project's
+    new ModelDependencyUpdate(myModel, SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{})).updateUsedLanguages().updateImportedModels(myProject.getRepository()).updateModuleDependencies(myProject.getRepository());
   }
 
   protected BaseAction registerKeyShortcut(BaseAction a, int key) {

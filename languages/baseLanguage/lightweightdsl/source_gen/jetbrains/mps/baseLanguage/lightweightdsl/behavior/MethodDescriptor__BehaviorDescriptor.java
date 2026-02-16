@@ -20,7 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.ImportUtil;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -44,16 +44,15 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
-    final SNode method = SNodeFactoryOperations.createNewNode(CONCEPTS.MethodInstance$jE, null);
+    final SNode method = SNodeFactoryOperations.createNewNode(futureModel, CONCEPTS.MethodInstance$jE, null);
     SPropertyOperations.assign(method, PROPS.name$MnvL, SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
     SLinkOperations.setTarget(method, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$HGTA)).select((it) -> (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(it, method)));
     SLinkOperations.setTarget(method, LINKS.returnType$5xoi, (SNodeOperations.isInstanceOf(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__), CONCEPTS.DependentTypeDescriptor$ny) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__), CONCEPTS.DependentTypeDescriptor$ny), method) : SNodeOperations.copyNode(MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(__thisNode__))));
     SLinkOperations.setTarget(method, LINKS.decl$QvLv, __thisNode__);
-
-    if (futureModel != null) {
-      ImportUtil.addModelDepsByNode(futureModel.getRepository(), futureModel, method, false);
-    }
+    // 1fc90995c6 fix suggests we could face futureModel == null here. However, I'd like to figure out
+    //          how come we pass null here, instead.
+    new ModelDependencyUpdate(futureModel, SNodeOperations.getNodeDescendants(method, null, true, new SAbstractConcept[]{})).updateUsedLanguages().updateImportedModels(futureModel.getRepository());
     return method;
   }
   /*package*/ static SNode getReturnType_id3m06Jgso0l8(@NotNull SNode __thisNode__) {
