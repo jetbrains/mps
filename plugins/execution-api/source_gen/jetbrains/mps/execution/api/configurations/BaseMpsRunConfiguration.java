@@ -4,13 +4,20 @@ package jetbrains.mps.execution.api.configurations;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.execution.configurations.RunConfigurationBase;
+import com.intellij.openapi.components.BaseState;
 import com.intellij.execution.configurations.LocatableConfiguration;
+import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.executors.DefaultRunExecutor;
+import com.intellij.execution.configurations.RuntimeConfigurationException;
+import jetbrains.mps.ide.project.ProjectHelper;
 
+/**
+ * FWIW, IDEA's RunConfiguration extends Clonable, therefore all subclasses shall account for clone() implementation
+ */
 @GeneratedClass(nodeId = "3908032508224771122", model = "r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)")
-public abstract class BaseMpsRunConfiguration extends RunConfigurationBase implements LocatableConfiguration {
+public abstract class BaseMpsRunConfiguration extends RunConfigurationBase<BaseState> implements LocatableConfiguration, IPersistentConfiguration {
   public BaseMpsRunConfiguration(Project project, ConfigurationFactory factory, String name) {
     super(project, factory, name);
   }
@@ -24,11 +31,18 @@ public abstract class BaseMpsRunConfiguration extends RunConfigurationBase imple
   @Override
   public String suggestedName() {
     String name = getName();
-    if (name == null) {
+    if (name.isEmpty()) {
       return this.getClass().toString();
     }
     return name;
   }
+
+  @Override
+  public void checkConfiguration() throws RuntimeConfigurationException {
+    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    checkConfiguration(() -> mpsProject);
+  }
+
 
   /**
    * MPS plugin part manages validity of configuration factories it provides according to MPS module/plugin/class reloading events.

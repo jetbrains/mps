@@ -13,11 +13,9 @@ import com.intellij.execution.configurations.RunProfileState;
 import com.intellij.execution.Executor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ExecutionException;
-import com.intellij.execution.configurations.RuntimeConfigurationException;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import org.jdom.Element;
+import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
+import com.intellij.execution.configurations.RuntimeConfigurationException;
 import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 
 /**
@@ -47,16 +45,6 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
   @Override
   public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment environment) throws ExecutionException {
     return myDelegate.getState(executor, environment);
-  }
-
-  @Override
-  public void checkConfiguration() throws RuntimeConfigurationException {
-    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    checkConfiguration(new PersistentConfigurationContext() {
-      public jetbrains.mps.project.Project getProject() {
-        return mpsProject;
-      }
-    });
   }
 
   @Override

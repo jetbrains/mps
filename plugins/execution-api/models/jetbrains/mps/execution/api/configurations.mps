@@ -37,6 +37,7 @@
     <import index="ic0f" ref="r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -360,9 +361,15 @@
     <node concept="3Tm1VV" id="3oW7HLfqDgY" role="1B3o_S" />
     <node concept="3uibUv" id="3oW7HLfqDgZ" role="1zkMxy">
       <ref role="3uigEE" to="dj99:~RunConfigurationBase" resolve="RunConfigurationBase" />
+      <node concept="3uibUv" id="BmqKuK_jHP" role="11_B2D">
+        <ref role="3uigEE" to="1m72:~BaseState" resolve="BaseState" />
+      </node>
     </node>
     <node concept="3uibUv" id="6xxD4C$B909" role="EKbjA">
       <ref role="3uigEE" to="dj99:~LocatableConfiguration" resolve="LocatableConfiguration" />
+    </node>
+    <node concept="3uibUv" id="BmqKuK_Wnx" role="EKbjA">
+      <ref role="3uigEE" to="ic0f:3oW7HLfqDqW" resolve="IPersistentConfiguration" />
     </node>
     <node concept="3clFbW" id="3oW7HLfqDh0" role="jymVt">
       <node concept="3cqZAl" id="3oW7HLfqDh1" role="3clF45" />
@@ -474,10 +481,12 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbC" id="5bxGBxaoRyk" role="3clFbw">
-            <node concept="10Nm6u" id="5bxGBxaoRyH" role="3uHU7w" />
-            <node concept="37vLTw" id="5bxGBxaoOE4" role="3uHU7B">
+          <node concept="2OqwBi" id="BmqKuK_nRB" role="3clFbw">
+            <node concept="37vLTw" id="5bxGBxaoOE4" role="2Oq$k0">
               <ref role="3cqZAo" node="5bxGBx9Vx1g" resolve="name" />
+            </node>
+            <node concept="liA8E" id="BmqKuK_oTL" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.isEmpty()" resolve="isEmpty" />
             </node>
           </node>
         </node>
@@ -491,6 +500,54 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="BmqKuK_vcP" role="jymVt" />
+    <node concept="3clFb_" id="qCQmZRUeJB" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="checkConfiguration" />
+      <property role="DiZV1" value="false" />
+      <property role="od$2w" value="false" />
+      <node concept="3Tm1VV" id="qCQmZRUeJC" role="1B3o_S" />
+      <node concept="3cqZAl" id="qCQmZRUeJE" role="3clF45" />
+      <node concept="3uibUv" id="qCQmZRUeJF" role="Sfmx6">
+        <ref role="3uigEE" to="dj99:~RuntimeConfigurationException" resolve="RuntimeConfigurationException" />
+      </node>
+      <node concept="3clFbS" id="qCQmZRUeJQ" role="3clF47">
+        <node concept="3cpWs8" id="qCQmZRUJNx" role="3cqZAp">
+          <node concept="3cpWsn" id="qCQmZRUJNy" role="3cpWs9">
+            <property role="TrG5h" value="mpsProject" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="qCQmZRUJNz" role="1tU5fm">
+              <ref role="3uigEE" to="z1c4:~Project" resolve="Project" />
+            </node>
+            <node concept="2YIFZM" id="qCQmZRUG01" role="33vP2m">
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+              <node concept="1rXfSq" id="qCQmZRUNG7" role="37wK5m">
+                <ref role="37wK5l" to="dj99:~RunConfigurationBase.getProject()" resolve="getProject" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="qCQmZRUyMM" role="3cqZAp">
+          <node concept="1rXfSq" id="qCQmZRUyML" role="3clFbG">
+            <ref role="37wK5l" to="ic0f:3oW7HLfqDqX" resolve="checkConfiguration" />
+            <node concept="1bVj0M" id="EkFhnBUdyG" role="37wK5m">
+              <node concept="3clFbS" id="qCQmZRUCXE" role="1bW5cS">
+                <node concept="3cpWs6" id="qCQmZRUEob" role="3cqZAp">
+                  <node concept="37vLTw" id="qCQmZRUPmP" role="3cqZAk">
+                    <ref role="3cqZAo" node="qCQmZRUJNy" resolve="mpsProject" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="qCQmZRUeJR" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="BmqKuK_vcQ" role="jymVt" />
     <node concept="2tJIrI" id="CZHNfvxzta" role="jymVt" />
     <node concept="3clFb_" id="CZHNfvxzVC" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -659,6 +716,49 @@
           <node concept="3oM_SD" id="1E1X3WHsB3p" role="1PaTwD">
             <property role="3oM_SC" value="non-functional." />
           </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="BmqKuKATy6" role="lGtFl">
+      <node concept="1PaTwC" id="BmqKuKATy7" role="1Vez_I">
+        <node concept="3oM_SD" id="BmqKuKATy8" role="1PaTwD">
+          <property role="3oM_SC" value="FWIW," />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAUv8" role="1PaTwD">
+          <property role="3oM_SC" value="IDEA's" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVvQ" role="1PaTwD">
+          <property role="3oM_SC" value="RunConfiguration" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVyo" role="1PaTwD">
+          <property role="3oM_SC" value="extends" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVyp" role="1PaTwD">
+          <property role="3oM_SC" value="Clonable," />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAV$4" role="1PaTwD">
+          <property role="3oM_SC" value="therefore" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAV$U" role="1PaTwD">
+          <property role="3oM_SC" value="all" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVAB" role="1PaTwD">
+          <property role="3oM_SC" value="subclasses" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVBt" role="1PaTwD">
+          <property role="3oM_SC" value="shall" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVBu" role="1PaTwD">
+          <property role="3oM_SC" value="account" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVCk" role="1PaTwD">
+          <property role="3oM_SC" value="for" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVDa" role="1PaTwD">
+          <property role="3oM_SC" value="clone()" />
+        </node>
+        <node concept="3oM_SD" id="BmqKuKAVEP" role="1PaTwD">
+          <property role="3oM_SC" value="implementation" />
         </node>
       </node>
     </node>
@@ -5935,70 +6035,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="LPAYBxYvlS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="79O2sWFPrrl" role="jymVt" />
-    <node concept="3clFb_" id="LPAYBxYvkX" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="checkConfiguration" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="3Tm1VV" id="LPAYBxYvkY" role="1B3o_S" />
-      <node concept="3cqZAl" id="LPAYBxYvl0" role="3clF45" />
-      <node concept="3uibUv" id="LPAYBxYvl1" role="Sfmx6">
-        <ref role="3uigEE" to="dj99:~RuntimeConfigurationException" resolve="RuntimeConfigurationException" />
-      </node>
-      <node concept="3clFbS" id="LPAYBxYvl2" role="3clF47">
-        <node concept="3cpWs8" id="79O2sWFPKps" role="3cqZAp">
-          <node concept="3cpWsn" id="79O2sWFPKpt" role="3cpWs9">
-            <property role="TrG5h" value="mpsProject" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="79O2sWFPKpr" role="1tU5fm">
-              <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
-            </node>
-            <node concept="2YIFZM" id="79O2sWFPKpu" role="33vP2m">
-              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
-              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-              <node concept="1rXfSq" id="79O2sWFPKpv" role="37wK5m">
-                <ref role="37wK5l" to="dj99:~RunConfigurationBase.getProject()" resolve="getProject" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="79O2sWFPLJa" role="3cqZAp">
-          <node concept="1rXfSq" id="79O2sWFPLJ7" role="3clFbG">
-            <ref role="37wK5l" node="79O2sWFPtSH" resolve="checkConfiguration" />
-            <node concept="2ShNRf" id="79O2sWFPNcq" role="37wK5m">
-              <node concept="YeOm9" id="79O2sWFQkVb" role="2ShVmc">
-                <node concept="1Y3b0j" id="79O2sWFQkVe" role="YeSDq">
-                  <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" to="ic0f:qCQmZRT2wq" resolve="PersistentConfigurationContext" />
-                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                  <node concept="3Tm1VV" id="79O2sWFQkVf" role="1B3o_S" />
-                  <node concept="3clFb_" id="79O2sWFQkVg" role="jymVt">
-                    <property role="1EzhhJ" value="false" />
-                    <property role="2aFKle" value="false" />
-                    <property role="TrG5h" value="getProject" />
-                    <node concept="3Tm1VV" id="79O2sWFQkVi" role="1B3o_S" />
-                    <node concept="3uibUv" id="79O2sWFQkVj" role="3clF45">
-                      <ref role="3uigEE" to="z1c4:~Project" resolve="Project" />
-                    </node>
-                    <node concept="3clFbS" id="79O2sWFQkVm" role="3clF47">
-                      <node concept="3clFbF" id="79O2sWFQmt0" role="3cqZAp">
-                        <node concept="37vLTw" id="79O2sWFQmsZ" role="3clFbG">
-                          <ref role="3cqZAo" node="79O2sWFPKpt" resolve="mpsProject" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="LPAYBxYvl3" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

@@ -42,13 +42,11 @@
     <import index="9mrk" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.executors(MPS.IDEA/)" />
     <import index="cjdg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.ui(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
-    <import index="e8no" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.containers(MPS.IDEA/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="uu3z" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="1oap" ref="r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)" />
     <import index="irxm" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.plugins.runconfigs(MPS.Workbench/)" />
-    <import index="zjj4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.impl(MPS.IDEA/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="eibu" ref="r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)" />
@@ -288,10 +286,10 @@
       <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="ln" index="29HgVG">
+      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="lg" index="29HgVG">
         <child id="1168024447342" name="sourceNodeQuery" index="3NFExx" />
       </concept>
-      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="ln" index="2b32R4">
+      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="lg" index="2b32R4">
         <child id="1168278589236" name="sourceNodesQuery" index="2P8S$" />
       </concept>
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
@@ -326,7 +324,7 @@
         <child id="1167087469900" name="conditionFunction" index="2VPoh3" />
       </concept>
       <concept id="1167087518662" name="jetbrains.mps.lang.generator.structure.CreateRootRule_Condition" flags="in" index="2VP$b9" />
-      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
+      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="lg" index="2ZBi8u" />
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
@@ -343,7 +341,7 @@
         <reference id="1168285871518" name="applicableConcept" index="3gUMe" />
         <child id="1092060348987" name="contentNode" index="13RCb5" />
       </concept>
-      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="ln" index="17Uvod">
+      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="lg" index="17Uvod">
         <child id="1167756362303" name="propertyValueFunction" index="3zH0cK" />
       </concept>
       <concept id="1087833466690" name="jetbrains.mps.lang.generator.structure.NodeMacro" flags="lg" index="17VmuZ">
@@ -370,19 +368,19 @@
       <concept id="1167756080639" name="jetbrains.mps.lang.generator.structure.PropertyMacro_GetPropertyValue" flags="in" index="3zFVjK" />
       <concept id="1167770111131" name="jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent" flags="in" index="3$xsQk" />
       <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
-      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
+      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="ig" index="3JmXsc" />
       <concept id="8900764248744213868" name="jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence" flags="lg" index="1Koe21">
         <child id="8900764248744213871" name="contentNode" index="1Koe22" />
       </concept>
-      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="in" index="3NFfHV" />
-      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="ig" index="3NFfHV" />
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="lg" index="1W57fq">
         <child id="1194989344771" name="alternativeConsequence" index="UU_$l" />
         <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
-      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
+      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="lg" index="1WS0z7">
         <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
       </concept>
-      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="ln" index="1ZhdrF">
+      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="lg" index="1ZhdrF">
         <child id="1167770376702" name="referentFunction" index="3$ytzL" />
       </concept>
     </language>
@@ -2015,7 +2013,7 @@
         <node concept="3Tm1VV" id="_0hjroSWQk" role="1B3o_S" />
         <node concept="3clFbS" id="_0hjroSWQl" role="3clF47">
           <node concept="XkiVB" id="_0hjroSWQm" role="3cqZAp">
-            <ref role="37wK5l" to="dj99:~RunConfigurationBase.&lt;init&gt;(com.intellij.openapi.project.Project,com.intellij.execution.configurations.ConfigurationFactory,java.lang.String)" resolve="RunConfigurationBase" />
+            <ref role="37wK5l" to="eibu:3oW7HLfqDh0" resolve="BaseMpsRunConfiguration" />
             <node concept="37vLTw" id="2BHiRxgm6p5" role="37wK5m">
               <ref role="3cqZAo" node="_0hjroSWQ5" resolve="project" />
             </node>
@@ -2041,11 +2039,8 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="_0hjroSWPD" role="1B3o_S" />
-      <node concept="3uibUv" id="_0hjroSWPO" role="1zkMxy">
-        <ref role="3uigEE" to="dj99:~RunConfigurationBase" resolve="RunConfigurationBase" />
-      </node>
-      <node concept="3uibUv" id="5knQ58o70Zm" role="EKbjA">
-        <ref role="3uigEE" to="ic0f:3oW7HLfqDqW" resolve="IPersistentConfiguration" />
+      <node concept="3uibUv" id="BmqKuK_RvG" role="1zkMxy">
+        <ref role="3uigEE" to="eibu:3oW7HLfqDgM" resolve="BaseMpsRunConfiguration" />
       </node>
     </node>
   </node>
@@ -2056,13 +2051,6 @@
       <property role="TrG5h" value="RunConfigurationTemplateWeave" />
       <property role="2bfB8j" value="true" />
       <property role="1sVAO0" value="true" />
-      <node concept="Wx3nA" id="1xo$tfixEGx" role="jymVt">
-        <property role="TrG5h" value="ICON" />
-        <node concept="3Tm6S6" id="1xo$tfixEGy" role="1B3o_S" />
-        <node concept="3uibUv" id="1xo$tfixEG$" role="1tU5fm">
-          <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
-        </node>
-      </node>
       <node concept="312cEg" id="5kMNzMX$aW4" role="jymVt">
         <property role="TrG5h" value="myConfiguration" />
         <node concept="3Tm6S6" id="5kMNzMX$aW5" role="1B3o_S" />
@@ -2171,53 +2159,7 @@
         </node>
         <node concept="raruj" id="_0hjroSWS3" role="lGtFl" />
       </node>
-      <node concept="2tJIrI" id="qCQmZRUvvh" role="jymVt" />
-      <node concept="3clFb_" id="_0hjroTa2C" role="jymVt">
-        <property role="TrG5h" value="getRunnerSettingsEditor" />
-        <node concept="3Tm1VV" id="_0hjroTa2D" role="1B3o_S" />
-        <node concept="3uibUv" id="_0hjroTa2E" role="3clF45">
-          <ref role="3uigEE" to="hq8m:~SettingsEditor" resolve="SettingsEditor" />
-          <node concept="3uibUv" id="2AXf4R3R$nX" role="11_B2D">
-            <ref role="3uigEE" to="dj99:~ConfigurationPerRunnerSettings" resolve="ConfigurationPerRunnerSettings" />
-          </node>
-        </node>
-        <node concept="37vLTG" id="_0hjroTa2G" role="3clF46">
-          <property role="TrG5h" value="runner" />
-          <node concept="3uibUv" id="_0hjroTa2H" role="1tU5fm">
-            <ref role="3uigEE" to="fhz7:~ProgramRunner" resolve="ProgramRunner" />
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="_0hjroTa2I" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-        <node concept="3clFbS" id="_0hjroTa2J" role="3clF47">
-          <node concept="3clFbF" id="_0hjroTa2K" role="3cqZAp">
-            <node concept="10Nm6u" id="_0hjroTa2L" role="3clFbG" />
-          </node>
-        </node>
-        <node concept="raruj" id="_0hjroTa2M" role="lGtFl" />
-      </node>
       <node concept="2tJIrI" id="qCQmZRUt7F" role="jymVt" />
-      <node concept="3clFb_" id="_0hjroTa2Y" role="jymVt">
-        <property role="TrG5h" value="createRunnerSettings" />
-        <node concept="3Tm1VV" id="_0hjroTa2Z" role="1B3o_S" />
-        <node concept="3uibUv" id="2AXf4R3R_yT" role="3clF45">
-          <ref role="3uigEE" to="dj99:~ConfigurationPerRunnerSettings" resolve="ConfigurationPerRunnerSettings" />
-        </node>
-        <node concept="37vLTG" id="_0hjroTa31" role="3clF46">
-          <property role="TrG5h" value="provider" />
-          <node concept="3uibUv" id="_0hjroTa32" role="1tU5fm">
-            <ref role="3uigEE" to="dj99:~ConfigurationInfoProvider" resolve="ConfigurationInfoProvider" />
-          </node>
-        </node>
-        <node concept="3clFbS" id="_0hjroTa33" role="3clF47">
-          <node concept="3clFbF" id="_0hjroTa34" role="3cqZAp">
-            <node concept="10Nm6u" id="_0hjroTa35" role="3clFbG" />
-          </node>
-        </node>
-        <node concept="raruj" id="_0hjroTa36" role="lGtFl" />
-      </node>
-      <node concept="2tJIrI" id="qCQmZRUqK6" role="jymVt" />
       <node concept="3clFb_" id="_0hjroTa3i" role="jymVt">
         <property role="TrG5h" value="getConfigurationEditor" />
         <node concept="3Tm1VV" id="_0hjroTa3j" role="1B3o_S" />
@@ -2277,6 +2219,9 @@
           </node>
         </node>
         <node concept="raruj" id="_0hjroTa3B" role="lGtFl" />
+        <node concept="2AHcQZ" id="BmqKuKBjDC" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
       </node>
       <node concept="2tJIrI" id="qCQmZRUooy" role="jymVt" />
       <node concept="3clFb_" id="7WkE0gr9Ct" role="jymVt">
@@ -2441,54 +2386,6 @@
         </node>
         <node concept="3Tm1VV" id="7WkE0grlhm" role="1B3o_S" />
         <node concept="raruj" id="7WkE0grlho" role="lGtFl" />
-      </node>
-      <node concept="2tJIrI" id="qCQmZRU7A3" role="jymVt" />
-      <node concept="3clFb_" id="qCQmZRUeJB" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="checkConfiguration" />
-        <property role="DiZV1" value="false" />
-        <property role="od$2w" value="false" />
-        <node concept="3Tm1VV" id="qCQmZRUeJC" role="1B3o_S" />
-        <node concept="3cqZAl" id="qCQmZRUeJE" role="3clF45" />
-        <node concept="3uibUv" id="qCQmZRUeJF" role="Sfmx6">
-          <ref role="3uigEE" to="dj99:~RuntimeConfigurationException" resolve="RuntimeConfigurationException" />
-        </node>
-        <node concept="3clFbS" id="qCQmZRUeJQ" role="3clF47">
-          <node concept="3cpWs8" id="qCQmZRUJNx" role="3cqZAp">
-            <node concept="3cpWsn" id="qCQmZRUJNy" role="3cpWs9">
-              <property role="TrG5h" value="mpsProject" />
-              <property role="3TUv4t" value="true" />
-              <node concept="3uibUv" id="qCQmZRUJNz" role="1tU5fm">
-                <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
-              </node>
-              <node concept="2YIFZM" id="qCQmZRUG01" role="33vP2m">
-                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
-                <node concept="1rXfSq" id="qCQmZRUNG7" role="37wK5m">
-                  <ref role="37wK5l" to="dj99:~RunConfigurationBase.getProject()" resolve="getProject" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="qCQmZRUyMM" role="3cqZAp">
-            <node concept="1rXfSq" id="qCQmZRUyML" role="3clFbG">
-              <ref role="37wK5l" to="ic0f:3oW7HLfqDqX" resolve="checkConfiguration" />
-              <node concept="1bVj0M" id="EkFhnBUdyG" role="37wK5m">
-                <node concept="3clFbS" id="qCQmZRUCXE" role="1bW5cS">
-                  <node concept="3cpWs6" id="qCQmZRUEob" role="3cqZAp">
-                    <node concept="37vLTw" id="qCQmZRUPmP" role="3cqZAk">
-                      <ref role="3cqZAo" node="qCQmZRUJNy" resolve="mpsProject" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="qCQmZRUeJR" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-        <node concept="raruj" id="qCQmZRUjGw" role="lGtFl" />
       </node>
       <node concept="2tJIrI" id="1T5iP2auwQC" role="jymVt" />
       <node concept="3clFb_" id="32w$AKAYO0i" role="jymVt">
@@ -2859,9 +2756,6 @@
         <ref role="3uigEE" to="eibu:3oW7HLfqDgM" resolve="BaseMpsRunConfiguration" />
       </node>
       <node concept="3Tm1VV" id="_0hjroSWQZ" role="1B3o_S" />
-      <node concept="3uibUv" id="5knQ58o70Zq" role="EKbjA">
-        <ref role="3uigEE" to="ic0f:3oW7HLfqDqW" resolve="IPersistentConfiguration" />
-      </node>
     </node>
   </node>
   <node concept="13MO4I" id="_0hjroTa4k">
