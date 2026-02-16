@@ -53,6 +53,7 @@ import java.util.Collections;
 public abstract class MPSProject extends ProjectBase implements FileBasedProject, Disposable {
 
   private final com.intellij.openapi.project.Project myProject;
+  @SuppressWarnings("removal")
   private final IdeaFileSystem myProjectFileSystem;
   private final LifecycleEventDispatch myLifecycleEvents;
 

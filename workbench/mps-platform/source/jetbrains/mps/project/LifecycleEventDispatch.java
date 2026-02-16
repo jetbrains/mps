@@ -52,6 +52,7 @@ final class LifecycleEventDispatch {
     Future<?> notify = ApplicationManager.getApplication().executeOnPooledThread(() -> ep.forEachExtensionSafe(this::gone));
     try {
       // I don't expect listeners to perform any heavy-duty tasks. The number is wild guess, though.
+      // Well, perhaps ProjectPluginManager could cause timeout here, as it needs to make sure plugin parts' dispose() goes in EDT.
       notify.get(5000, TimeUnit.MILLISECONDS);
     } catch (InterruptedException | ExecutionException ex) {
       Logger.getLogger(getClass()).error("Failed to dispatch 'project discarded' event", ex);

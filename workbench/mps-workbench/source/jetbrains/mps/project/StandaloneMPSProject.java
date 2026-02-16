@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,6 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectCloseListener;
 import com.intellij.openapi.util.InvalidDataException;
-import com.intellij.platform.backend.workspace.GlobalWorkspaceModelCache;
-import com.intellij.platform.backend.workspace.WorkspaceModel;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.logging.Logger;
@@ -38,7 +35,6 @@ import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.tracking.ModelStorageProblemsListener;
-import kotlin.Unit;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +68,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   public static class Listener implements ProjectCloseListener {
     @Override
-    public void projectClosed(@NotNull Project p) {
+    public void projectClosing(@NotNull Project p) {
+      // XXX there's no explicit contract for this notification, and I wonder what if it comes in EDT -
+      //     we could get into a deadlock with ProjectPluginManager and its lifecycle event to dispose all parts.
       p.getService(MPSProject.class).projectClosed();
     }
   }
