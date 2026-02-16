@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.editor;
 
@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
 
 /**
  * IDEA project service to track MPSFileNodeEditor and respective EditorComponents.
@@ -49,7 +48,8 @@ public final class EditorTrackService {
     myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
-  public void editorCreated(@NotNull final MPSFileNodeEditor editor) {
+  /*package*/ void editorCreated(@NotNull final MPSFileNodeEditor editor) {
+    myEditors.add(editor);
     Disposer.register(editor, () -> editorDisposed(editor));
     if (!myListenersActive) {
       activateListeners();
@@ -81,7 +81,7 @@ public final class EditorTrackService {
   private class RefreshEditors implements ModuleDeploymentListener {
     @Override
     public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
-      final List<MPSNodeVirtualFile> files = myEditors.stream().map(MPSFileNodeEditor::getFile).collect(Collectors.toList());
+      final List<MPSNodeVirtualFile> files = myEditors.stream().map(MPSFileNodeEditor::getFile).toList();
       if (files.isEmpty()) {
         return;
       }
@@ -96,6 +96,8 @@ public final class EditorTrackService {
         }
         FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
         files.forEach(manager::updateFilePresentation);
+        // XXX There's similar update logic in at least NodeEditorSModelChangeListener and TabRootNodesTracker, perhaps, there could be some
+        // shared/common approach not to trigger update from numerous places?
       });
     }
   }
