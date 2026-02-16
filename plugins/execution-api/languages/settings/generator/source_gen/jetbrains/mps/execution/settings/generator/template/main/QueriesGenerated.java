@@ -227,6 +227,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_2_12(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "PersistentPropertyToField");
   }
+  public static Object referenceMacro_GetReferent_2_13(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "PersistentPropertyToField");
+  }
   public static Object referenceMacro_GetReferent_4_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$Yx_P), "PersistentPropertyToField");
   }
@@ -337,7 +340,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:nonTemplateProps"))).isNotEmpty();
   }
   public static boolean ifMacro_Condition_2_8(final IfMacroContext _context) {
-    return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY), _quotation_createNode_x583g4_b0a0a19());
+    return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY), _quotation_createNode_x583g4_b0a0a29());
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$2twD) == null);
@@ -1137,29 +1140,30 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("5041115067675810347", new RTQ(14, "myPersistentProperty"));
     rtqMethods.put("5041115067675810387", new RTQ(15, "myPersistentProperty"));
     rtqMethods.put("5041115067675810398", new RTQ(16, "myPersistentProperty"));
-    rtqMethods.put("5041115067675810942", new RTQ(17, "myPersistentProperty"));
-    rtqMethods.put("5041115067675811035", new RTQ(18, null));
-    rtqMethods.put("5041115067675811048", new RTQ(19, null));
-    rtqMethods.put("4342433276614928678", new RTQ(20, "field"));
-    rtqMethods.put("5041115067675811187", new RTQ(21, "myEditor"));
-    rtqMethods.put("5041115067675811178", new RTQ(22, "editor"));
-    rtqMethods.put("5041115067675811214", new RTQ(23, "myField"));
-    rtqMethods.put("5041115067675811205", new RTQ(24, "field"));
-    rtqMethods.put("5041115067675811288", new RTQ(25, "myTemplate"));
-    rtqMethods.put("5041115067675811306", new RTQ(26, "PersistentConfigurationTemplateWeave"));
-    rtqMethods.put("5041115067675811316", new RTQ(27, "SettingsEditorEx"));
-    rtqMethods.put("5041115067675811328", new RTQ(28, "PersistentConfigurationTemplateWeave.PersistentConfigurationEditorTemplate"));
-    rtqMethods.put("5041115067675811339", new RTQ(29, "myConfiguration"));
-    rtqMethods.put("5041115067675811374", new RTQ(30, "myTemplate"));
-    rtqMethods.put("5041115067675811421", new RTQ(31, "name"));
-    rtqMethods.put("5041115067675811430", new RTQ(32, "myField"));
-    rtqMethods.put("5041115067675811493", new RTQ(33, null));
-    rtqMethods.put("5041115067675811557", new RTQ(34, "applyTo"));
-    rtqMethods.put("5041115067675811569", new RTQ(35, null));
-    rtqMethods.put("5041115067675932687", new RTQ(36, "setPersistentProperty"));
-    rtqMethods.put("5041115067675939293", new RTQ(37, "method"));
-    rtqMethods.put("203908296139451945", new RTQ(38, "IPersistentConfiguration"));
-    rtqMethods.put("203908296139284728", new RTQ(39, "IPersistentConfiguration"));
+    rtqMethods.put("5900842019146771078", new RTQ(17, "myPersistentProperty"));
+    rtqMethods.put("5041115067675810942", new RTQ(18, "myPersistentProperty"));
+    rtqMethods.put("5041115067675811035", new RTQ(19, null));
+    rtqMethods.put("5041115067675811048", new RTQ(20, null));
+    rtqMethods.put("4342433276614928678", new RTQ(21, "field"));
+    rtqMethods.put("5041115067675811187", new RTQ(22, "myEditor"));
+    rtqMethods.put("5041115067675811178", new RTQ(23, "editor"));
+    rtqMethods.put("5041115067675811214", new RTQ(24, "myField"));
+    rtqMethods.put("5041115067675811205", new RTQ(25, "field"));
+    rtqMethods.put("5041115067675811288", new RTQ(26, "myTemplate"));
+    rtqMethods.put("5041115067675811306", new RTQ(27, "PersistentConfigurationTemplateWeave"));
+    rtqMethods.put("5041115067675811316", new RTQ(28, "SettingsEditorEx"));
+    rtqMethods.put("5041115067675811328", new RTQ(29, "PersistentConfigurationTemplateWeave.PersistentConfigurationEditorTemplate"));
+    rtqMethods.put("5041115067675811339", new RTQ(30, "myConfiguration"));
+    rtqMethods.put("5041115067675811374", new RTQ(31, "myTemplate"));
+    rtqMethods.put("5041115067675811421", new RTQ(32, "name"));
+    rtqMethods.put("5041115067675811430", new RTQ(33, "myField"));
+    rtqMethods.put("5041115067675811493", new RTQ(34, null));
+    rtqMethods.put("5041115067675811557", new RTQ(35, "applyTo"));
+    rtqMethods.put("5041115067675811569", new RTQ(36, null));
+    rtqMethods.put("5041115067675932687", new RTQ(37, "setPersistentProperty"));
+    rtqMethods.put("5041115067675939293", new RTQ(38, "method"));
+    rtqMethods.put("203908296139451945", new RTQ(39, "IPersistentConfiguration"));
+    rtqMethods.put("203908296139284728", new RTQ(40, "IPersistentConfiguration"));
   }
   @NotNull
   @Override
@@ -1211,50 +1215,52 @@ public class QueriesGenerated extends QueryProviderBase {
         case 16:
           return QueriesGenerated.referenceMacro_GetReferent_2_12(ctx);
         case 17:
-          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_2_13(ctx);
         case 18:
-          return QueriesGenerated.referenceMacro_GetReferent_9_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
         case 19:
-          return QueriesGenerated.referenceMacro_GetReferent_10_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_9_0(ctx);
         case 20:
-          return QueriesGenerated.referenceMacro_GetReferent_13_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_10_0(ctx);
         case 21:
-          return QueriesGenerated.referenceMacro_GetReferent_13_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_0(ctx);
         case 22:
-          return QueriesGenerated.referenceMacro_GetReferent_13_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_1(ctx);
         case 23:
-          return QueriesGenerated.referenceMacro_GetReferent_13_3(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_2(ctx);
         case 24:
-          return QueriesGenerated.referenceMacro_GetReferent_13_4(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_3(ctx);
         case 25:
-          return QueriesGenerated.referenceMacro_GetReferent_15_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_13_4(ctx);
         case 26:
-          return QueriesGenerated.referenceMacro_GetReferent_15_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_0(ctx);
         case 27:
-          return QueriesGenerated.referenceMacro_GetReferent_15_2(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_1(ctx);
         case 28:
-          return QueriesGenerated.referenceMacro_GetReferent_15_3(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_2(ctx);
         case 29:
-          return QueriesGenerated.referenceMacro_GetReferent_15_4(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_3(ctx);
         case 30:
-          return QueriesGenerated.referenceMacro_GetReferent_15_5(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_4(ctx);
         case 31:
-          return QueriesGenerated.referenceMacro_GetReferent_16_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_15_5(ctx);
         case 32:
-          return QueriesGenerated.referenceMacro_GetReferent_16_1(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_16_0(ctx);
         case 33:
-          return QueriesGenerated.referenceMacro_GetReferent_18_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_16_1(ctx);
         case 34:
-          return QueriesGenerated.referenceMacro_GetReferent_20_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_18_0(ctx);
         case 35:
-          return QueriesGenerated.referenceMacro_GetReferent_21_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_20_0(ctx);
         case 36:
-          return QueriesGenerated.referenceMacro_GetReferent_22_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_21_0(ctx);
         case 37:
-          return QueriesGenerated.referenceMacro_GetReferent_23_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_22_0(ctx);
         case 38:
-          return QueriesGenerated.referenceMacro_GetReferent_25_0(ctx);
+          return QueriesGenerated.referenceMacro_GetReferent_23_0(ctx);
         case 39:
+          return QueriesGenerated.referenceMacro_GetReferent_25_0(ctx);
+        case 40:
           return QueriesGenerated.referenceMacro_GetReferent_26_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1289,7 +1295,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_b0a0a19() {
+  private static SNode _quotation_createNode_x583g4_b0a0a29() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();

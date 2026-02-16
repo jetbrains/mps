@@ -41,6 +41,7 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="7282214966977214052" name="jetbrains.mps.baseLanguage.structure.NestedNewExpression" flags="ng" index="2pIyA9" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
@@ -91,6 +92,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -1635,7 +1639,6 @@
     <property role="1EXbeo" value="true" />
     <node concept="312cEg" id="4nPCR7KFTGe" role="jymVt">
       <property role="TrG5h" value="myState" />
-      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="4nPCR7KFTGf" role="1tU5fm">
         <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
       </node>
@@ -2262,13 +2265,8 @@
             </node>
             <node concept="liA8E" id="7s43K0toBda" role="2OqNvi">
               <ref role="37wK5l" node="4nPCR7KFTC5" resolve="copyInto" />
-              <node concept="2OqwBi" id="1htmYMkBb4L" role="37wK5m">
-                <node concept="37vLTw" id="1htmYMkBb4M" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1htmYMkBb4a" resolve="cloneTemplate" />
-                </node>
-                <node concept="2OwXpG" id="1htmYMkBb4N" role="2OqNvi">
-                  <ref role="2Oxat5" node="4nPCR7KFTGe" resolve="myState" />
-                </node>
+              <node concept="37vLTw" id="1htmYMkBb4M" role="37wK5m">
+                <ref role="3cqZAo" node="1htmYMkBb4a" resolve="cloneTemplate" />
               </node>
             </node>
           </node>
@@ -2725,6 +2723,47 @@
       <node concept="3clFb_" id="4nPCR7KFTC5" role="jymVt">
         <property role="TrG5h" value="copyInto" />
         <node concept="3clFbS" id="4nPCR7KFTC8" role="3clF47">
+          <node concept="3clFbF" id="57$08PEUKXm" role="3cqZAp">
+            <node concept="37vLTI" id="57$08PEUZd0" role="3clFbG">
+              <node concept="2OqwBi" id="57$08PEURgT" role="37vLTJ">
+                <node concept="37vLTw" id="57$08PEUKXk" role="2Oq$k0">
+                  <ref role="3cqZAo" node="57$08PETV6J" resolve="enclosingInstance" />
+                </node>
+                <node concept="2OwXpG" id="57$08PEUV$s" role="2OqNvi">
+                  <ref role="2Oxat5" node="4nPCR7KFTGe" resolve="myState" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="57$08PEUxof" role="37vLTx">
+                <node concept="37vLTw" id="57$08PEUsL$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="57$08PETV6J" resolve="enclosingInstance" />
+                </node>
+                <node concept="2pIyA9" id="57$08PEU_9Y" role="2OqNvi">
+                  <node concept="HV5vD" id="57$08PEUCy1" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="HV5vE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="57$08PETRbq" role="3cqZAp">
+            <node concept="3cpWsn" id="57$08PETRbt" role="3cpWs9">
+              <property role="TrG5h" value="state" />
+              <property role="3TUv4t" value="true" />
+              <node concept="3uibUv" id="7s43K0tnGIU" role="1tU5fm">
+                <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+              </node>
+              <node concept="2OqwBi" id="57$08PEW2CP" role="33vP2m">
+                <node concept="37vLTw" id="57$08PEW2CQ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="57$08PETV6J" resolve="enclosingInstance" />
+                </node>
+                <node concept="2OwXpG" id="57$08PEW2CR" role="2OqNvi">
+                  <ref role="2Oxat5" node="4nPCR7KFTGe" resolve="myState" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="57$08PETNNB" role="3cqZAp" />
           <node concept="3clFbJ" id="4nPCR7KFTCe" role="3cqZAp">
             <node concept="3clFbS" id="4nPCR7KFTCf" role="3clFbx">
               <node concept="3clFbF" id="4nPCR7KFTCg" role="3cqZAp">
@@ -2756,7 +2795,7 @@
                   </node>
                   <node concept="2OqwBi" id="4nPCR7KFTCt" role="37vLTJ">
                     <node concept="37vLTw" id="3GM_nagTsJg" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7s43K0tnGIV" resolve="state" />
+                      <ref role="3cqZAo" node="57$08PETRbt" resolve="state" />
                     </node>
                     <node concept="2OwXpG" id="4nPCR7KFTCv" role="2OqNvi">
                       <ref role="2Oxat5" node="4nPCR7KFTBE" resolve="myPersistentProperty" />
@@ -2861,7 +2900,7 @@
                     </node>
                     <node concept="2OqwBi" id="4nPCR7KFTDr" role="37vLTJ">
                       <node concept="37vLTw" id="3GM_nagTtHX" role="2Oq$k0">
-                        <ref role="3cqZAo" node="7s43K0tnGIV" resolve="state" />
+                        <ref role="3cqZAo" node="57$08PETRbt" resolve="state" />
                       </node>
                       <node concept="2OwXpG" id="4nPCR7KFTDt" role="2OqNvi">
                         <ref role="2Oxat5" node="4nPCR7KFTBE" resolve="myPersistentProperty" />
@@ -2888,15 +2927,49 @@
                 </node>
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="37vLTG" id="7s43K0tnGIV" role="3clF46">
-          <property role="TrG5h" value="state" />
-          <node concept="3uibUv" id="7s43K0tnGIU" role="1tU5fm">
-            <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+            <node concept="9aQIb" id="57$08PEWcZm" role="9aQIa">
+              <node concept="3clFbS" id="57$08PEWcZn" role="9aQI4">
+                <node concept="3clFbF" id="57$08PEWiDP" role="3cqZAp">
+                  <node concept="37vLTI" id="57$08PEWiDR" role="3clFbG">
+                    <node concept="10Nm6u" id="57$08PEWrrc" role="37vLTx" />
+                    <node concept="2OqwBi" id="57$08PEWiE3" role="37vLTJ">
+                      <node concept="37vLTw" id="57$08PEWiE4" role="2Oq$k0">
+                        <ref role="3cqZAo" node="57$08PETRbt" resolve="state" />
+                      </node>
+                      <node concept="2OwXpG" id="57$08PEWiE5" role="2OqNvi">
+                        <ref role="2Oxat5" node="4nPCR7KFTBE" resolve="myPersistentProperty" />
+                        <node concept="1ZhdrF" id="57$08PEWiE6" role="lGtFl">
+                          <property role="2qtEX8" value="fieldDeclaration" />
+                          <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1197029447546/1197029500499" />
+                          <node concept="3$xsQk" id="57$08PEWiE7" role="3$ytzL">
+                            <node concept="3clFbS" id="57$08PEWiE8" role="2VODD2">
+                              <node concept="3clFbF" id="57$08PEWiE9" role="3cqZAp">
+                                <node concept="2OqwBi" id="57$08PEWiEa" role="3clFbG">
+                                  <node concept="1iwH7S" id="57$08PEWiEb" role="2Oq$k0" />
+                                  <node concept="1iwH70" id="57$08PEWiEc" role="2OqNvi">
+                                    <ref role="1iwH77" node="4xfklJ6jB4J" resolve="PersistentPropertyToField" />
+                                    <node concept="30H73N" id="57$08PEWiEd" role="1iwH7V" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3cqZAl" id="7s43K0tnTnb" role="3clF45" />
+        <node concept="37vLTG" id="57$08PETV6J" role="3clF46">
+          <property role="TrG5h" value="enclosingInstance" />
+          <node concept="3uibUv" id="57$08PETV6I" role="1tU5fm">
+            <ref role="3uigEE" node="4nPCR7KFTBC" resolve="PersistentConfiguration_Template" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3Tm1VV" id="4nPCR7KFTDE" role="1B3o_S" />
