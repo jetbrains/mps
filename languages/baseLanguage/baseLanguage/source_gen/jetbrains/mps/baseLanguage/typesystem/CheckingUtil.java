@@ -35,6 +35,10 @@ public class CheckingUtil {
   }
 
   public static boolean isAssigned(SNode node) {
+    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseCommentAttribute$nv, false, false) != null)) {
+      return false;
+    }
+
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AbstractUnaryNumberOperation$Q6) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.UnaryMinus$na)) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractUnaryNumberOperation$Q6), LINKS.expression$uRUg) == node) {
       return true;
     }
@@ -155,6 +159,7 @@ public class CheckingUtil {
   private static final class CONCEPTS {
     /*package*/ static final SConcept UnaryMinus$na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
     /*package*/ static final SConcept AbstractUnaryNumberOperation$Q6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
     /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
