@@ -22,7 +22,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPropertyPointerValueOperation = createDescriptorForPropertyPointerValueOperation();
   /*package*/ final ConceptDescriptor myConceptPropertyRefExpression = createDescriptorForPropertyRefExpression();
   /*package*/ final ConceptDescriptor myConceptPropertyRefType = createDescriptorForPropertyRefType();
-  /*package*/ final ConceptDescriptor myConceptUsedNativeLanguageForStringLiteral = createDescriptorForUsedNativeLanguageForStringLiteral();
   /*package*/ final EnumerationDescriptor myEnumerationNativeLanguage = new EnumerationDescriptor_NativeLanguage();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -34,13 +33,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptICheckedNamePolicy, myConceptPropertyPointerType, myConceptPropertyPointerValueOperation, myConceptPropertyRefExpression, myConceptPropertyRefType, myConceptUsedNativeLanguageForStringLiteral);
+    return Arrays.asList(myConceptICheckedNamePolicy, myConceptPropertyPointerType, myConceptPropertyPointerValueOperation, myConceptPropertyRefExpression, myConceptPropertyRefType);
   }
 
   @Override
@@ -57,8 +55,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptPropertyRefExpression;
       case LanguageConceptSwitch.PropertyRefType:
         return myConceptPropertyRefType;
-      case LanguageConceptSwitch.UsedNativeLanguageForStringLiteral:
-        return myConceptUsedNativeLanguageForStringLiteral;
       default:
         return null;
     }
@@ -124,16 +120,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("propRef");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForUsedNativeLanguageForStringLiteral() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.checkedName", "UsedNativeLanguageForStringLiteral", 0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x68066d1cfcd83b17L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.lang.core.structure.NodeAttribute
-    b.super_(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
-    b.origin("r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/7495798601073310487");
-    b.version(3);
-    b.property("nativeLanguage", 0x68066d1cfcd88a69L).type(MetaIdFactory.dataTypeId(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x283b8ec534626bc5L)).origin("7495798601073330793").done();
     return b.create();
   }
 }

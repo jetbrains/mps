@@ -4816,7 +4816,7 @@
         </node>
       </node>
       <node concept="37vLTG" id="1xq1$bo5P8b" role="3clF46">
-        <property role="TrG5h" value="nativeLanguLang" />
+        <property role="TrG5h" value="nativeLang" />
         <node concept="3uibUv" id="1xq1$bo5Ri_" role="1tU5fm">
           <ref role="3uigEE" to="8vcu:~Lang" resolve="Lang" />
         </node>
@@ -4919,7 +4919,7 @@
                     <ref role="3cqZAo" node="1xq1$boe9R7" resolve="tagDesc" />
                   </node>
                   <node concept="37vLTw" id="1xq1$boe9Rh" role="37wK5m">
-                    <ref role="3cqZAo" node="1xq1$boe9RE" resolve="nativeLanguLang" />
+                    <ref role="3cqZAo" node="1xq1$boe9RE" resolve="nativeLang" />
                   </node>
                 </node>
               </node>
@@ -4991,7 +4991,7 @@
         </node>
       </node>
       <node concept="37vLTG" id="1xq1$boe9RE" role="3clF46">
-        <property role="TrG5h" value="nativeLanguLang" />
+        <property role="TrG5h" value="nativeLang" />
         <node concept="3uibUv" id="1xq1$boe9RF" role="1tU5fm">
           <ref role="3uigEE" to="8vcu:~Lang" resolve="Lang" />
         </node>

@@ -25,6 +25,10 @@ public class check_ExplicitNativeLangExists_NonTypesystemRule extends AbstractNo
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr) != null) && !(SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr), 0x283b8ec534712e16L))) {
       SRepository repository = SNodeOperations.getModel(node).getRepository();
+      if (!(ExtensionsHelper.anyNativeLangCheckersInstalled(repository))) {
+        return;
+      }
+
       if (!(ExtensionsHelper.isNativeLanguageInstalled(repository, SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr).getName()))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();

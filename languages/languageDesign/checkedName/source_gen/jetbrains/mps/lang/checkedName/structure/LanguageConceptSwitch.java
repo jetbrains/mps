@@ -16,7 +16,6 @@ public final class LanguageConceptSwitch implements ConceptIndex {
   public static final int PropertyPointerValueOperation = 2;
   public static final int PropertyRefExpression = 3;
   public static final int PropertyRefType = 4;
-  public static final int UsedNativeLanguageForStringLiteral = 5;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL);
@@ -25,7 +24,6 @@ public final class LanguageConceptSwitch implements ConceptIndex {
     builder.put(0x78b4a5a6b846d5abL, PropertyPointerValueOperation);
     builder.put(0x433c3c31e7218f39L, PropertyRefExpression);
     builder.put(0x433c3c31e7218f3eL, PropertyRefType);
-    builder.put(0x68066d1cfcd83b17L, UsedNativeLanguageForStringLiteral);
     myIndex = builder.seal();
   }
 

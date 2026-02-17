@@ -141,7 +141,7 @@ public class NativeLanguageAnalyzer {
     return word.trim().isEmpty() || token.isWhitespace() || token.isFieldCode();
   }
 
-  private static boolean isQuoteSymbol(AnalyzedTokenReadings token, Lang nativeLanguLang) {
+  private static boolean isQuoteSymbol(AnalyzedTokenReadings token, Lang nativeLang) {
     if (token == null || token.getStartPos() == 0) {
       return false;
     }
@@ -155,14 +155,14 @@ public class NativeLanguageAnalyzer {
     return false;
   }
 
-  private static boolean isToBeLowerCase(AnalyzedTokenReadings token, Lang nativeLanguLang) {
+  private static boolean isToBeLowerCase(AnalyzedTokenReadings token, Lang nativeLang) {
     if (token == null || token.getStartPos() == 0) {
       return false;
     }
     List<AnalyzedToken> readings = token.getReadings();
     for (AnalyzedToken analyzedToken : readings) {
       String tagDesc = analyzedToken.getPOSTag();
-      NativeLanguageUtil.Category category = NativeLanguageUtil.getCategory(tagDesc, nativeLanguLang);
+      NativeLanguageUtil.Category category = NativeLanguageUtil.getCategory(tagDesc, nativeLang);
       if (category != NativeLanguageUtil.Category.OTHER) {
         return true;
       }
