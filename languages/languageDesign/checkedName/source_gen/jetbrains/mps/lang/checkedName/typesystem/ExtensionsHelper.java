@@ -15,6 +15,12 @@ public class ExtensionsHelper {
     return installed.value;
   }
 
+  /*package*/ static boolean anyNativeLangDictionaryInstalled(SRepository repository) {
+    final Wrappers._boolean result = new Wrappers._boolean(false);
+    LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.any(), (checker) -> result.value = checker.isAnyNativeLanguageInstalled());
+    return result.value;
+  }
+
   /*package*/ static boolean isNativeLanguageInstalled(SRepository repository, final String languageName) {
     final Wrappers._boolean result = new Wrappers._boolean(false);
     LanguageRegistry.getInstance(repository).withAvailableExtensions(NativeLangNameChecker.class, ModuleRuntime.Extension.any(), (checker) -> result.value = checker.isNativeLanguageInstalled(languageName));

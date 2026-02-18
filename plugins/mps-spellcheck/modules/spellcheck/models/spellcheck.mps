@@ -3496,7 +3496,7 @@
         <node concept="3cpWs6" id="5AhI6VMvCxX" role="3cqZAp">
           <node concept="3K4zz7" id="5AhI6VMvEfE" role="3cqZAk">
             <node concept="Xl_RD" id="5AhI6VMvEo4" role="3K4E3e">
-              <property role="Xl_RC" value="Unknown" />
+              <property role="Xl_RC" value="English" />
             </node>
             <node concept="2OqwBi" id="5AhI6VMvFWt" role="3K4GZi">
               <node concept="37vLTw" id="5AhI6VMvEI4" role="2Oq$k0">
@@ -3547,18 +3547,77 @@
             <node concept="3oM_SD" id="2wVzGkOAGm5" role="1PaTwD">
               <property role="3oM_SC" value="detected" />
             </node>
-            <node concept="3oM_SD" id="2wVzGkOAGm6" role="1PaTwD">
-              <property role="3oM_SC" value="language" />
+            <node concept="3oM_SD" id="7XQszvNfqU7" role="1PaTwD">
+              <property role="3oM_SC" value="language," />
             </node>
-            <node concept="3oM_SD" id="2wVzGkOAGmn" role="1PaTwD">
-              <property role="3oM_SC" value="or" />
+            <node concept="3oM_SD" id="7XQszvNfqUo" role="1PaTwD">
+              <property role="3oM_SC" value="defaults" />
             </node>
-            <node concept="3oM_SD" id="2wVzGkOAGmC" role="1PaTwD">
-              <property role="3oM_SC" value="'Unknown'" />
+            <node concept="3oM_SD" id="7XQszvNfqUT" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="7XQszvNfqVa" role="1PaTwD">
+              <property role="3oM_SC" value="English," />
+            </node>
+            <node concept="3oM_SD" id="7XQszvNfqVF" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="7XQszvNfqVW" role="1PaTwD">
+              <property role="3oM_SC" value="unknown" />
             </node>
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2tJIrI" id="7HqAUaLuDhF" role="jymVt" />
+    <node concept="2YIFZL" id="7HqAUaLuBpo" role="jymVt">
+      <property role="TrG5h" value="isAnyNativeLanguageInstalled" />
+      <node concept="3clFbS" id="7HqAUaLuBpp" role="3clF47">
+        <node concept="3clFbJ" id="7HqAUaLuBpq" role="3cqZAp">
+          <node concept="3clFbS" id="7HqAUaLuBpr" role="3clFbx">
+            <node concept="3cpWs6" id="7HqAUaLuBps" role="3cqZAp">
+              <node concept="3clFbT" id="7HqAUaLuBpt" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="7HqAUaLuBpy" role="3clFbw">
+            <node concept="10Nm6u" id="7HqAUaLuBpz" role="3uHU7w" />
+            <node concept="2YIFZM" id="7HqAUaLuBp$" role="3uHU7B">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7HqAUaLuBpE" role="3cqZAp">
+          <node concept="3eOSWO" id="7HqAUaLuJgJ" role="3cqZAk">
+            <node concept="3cmrfG" id="7HqAUaLuJjy" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+            <node concept="2OqwBi" id="7HqAUaLuBpJ" role="3uHU7B">
+              <node concept="2OqwBi" id="7HqAUaLuBpK" role="2Oq$k0">
+                <node concept="2OqwBi" id="7HqAUaLuBpL" role="2Oq$k0">
+                  <node concept="10M0yZ" id="7HqAUaLuBpM" role="2Oq$k0">
+                    <ref role="3cqZAo" to="44q2:~GrazieConfig.Companion" resolve="Companion" />
+                    <ref role="1PxDUh" to="44q2:~GrazieConfig" resolve="GrazieConfig" />
+                  </node>
+                  <node concept="liA8E" id="7HqAUaLuBpN" role="2OqNvi">
+                    <ref role="37wK5l" to="44q2:~GrazieConfig$Companion.get()" resolve="get" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="7HqAUaLuBpO" role="2OqNvi">
+                  <ref role="37wK5l" to="44q2:~GrazieConfig$State.getEnabledLanguages()" resolve="getEnabledLanguages" />
+                </node>
+              </node>
+              <node concept="liA8E" id="7HqAUaLuHAC" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~Set.size()" resolve="size" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="7HqAUaLuBpR" role="3clF45" />
+      <node concept="3Tm1VV" id="7HqAUaLuBpU" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5AhI6VMvHjg" role="jymVt" />
     <node concept="2YIFZL" id="2wVzGkOBbph" role="jymVt">
@@ -5902,6 +5961,23 @@
       </node>
     </node>
     <node concept="2tJIrI" id="2wVzGkOB8R5" role="jymVt" />
+    <node concept="3clFb_" id="7HqAUaLuAlZ" role="jymVt">
+      <property role="TrG5h" value="isAnyNativeLanguageInstalled" />
+      <node concept="3Tm1VV" id="7HqAUaLuAm1" role="1B3o_S" />
+      <node concept="10P_77" id="7HqAUaLuAm2" role="3clF45" />
+      <node concept="3clFbS" id="7HqAUaLuAm3" role="3clF47">
+        <node concept="3clFbF" id="7HqAUaLvdnn" role="3cqZAp">
+          <node concept="2YIFZM" id="7HqAUaLvdwQ" role="3clFbG">
+            <ref role="37wK5l" node="7HqAUaLuBpo" resolve="isAnyNativeLanguageInstalled" />
+            <ref role="1Pybhc" node="7pzI1FvZpLp" resolve="NativeLanguageAnalyzer" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7HqAUaLuAm4" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7HqAUaLvdE2" role="jymVt" />
     <node concept="3clFb_" id="2wVzGkOB8yo" role="jymVt">
       <property role="TrG5h" value="isNativeLanguageInstalled" />
       <node concept="3Tm1VV" id="2wVzGkOB8yq" role="1B3o_S" />

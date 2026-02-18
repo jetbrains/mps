@@ -31,10 +31,10 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SRepository repository = SNodeOperations.getModel(node).getRepository();
-    if (!(ExtensionsHelper.anyNativeLangCheckersInstalled(repository))) {
+    if (!(ExtensionsHelper.anyNativeLangCheckersInstalled(repository)) || !(ExtensionsHelper.anyNativeLangDictionaryInstalled(repository))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "No native language checkers are installed. A Grazie-based capitalization check cannot be performed. Resorting to simplified English hard-coded rules.", "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "5466682370042004812", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(node, "No native language checkers or dictionaries are installed. Go to Settings | Editor | Natural Languages to install them. A Grazie-based capitalization check cannot be performed. Resorting to simplified English hard-coded rules.", "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "5466682370042004812", null, errorTarget);
       }
       // Use hard-coded naming policy
       String warningMessage = "Naming policies violated: " + "all words except prepositions, articles and particles should be capitalized";

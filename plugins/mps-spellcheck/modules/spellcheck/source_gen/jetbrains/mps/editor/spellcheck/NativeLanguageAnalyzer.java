@@ -22,7 +22,7 @@ public class NativeLanguageAnalyzer {
   /**
    * 
    * 
-   * @return A short name of the detected language or 'Unknown'
+   * @return A short name of the detected language, defaults to English, if unknown
    */
   public static String detectNativeLanguage(String text) {
     // Application is null in AuditTypeSystem tests, which renders Grazie nonfunctional, so we do not call Grazie
@@ -30,7 +30,14 @@ public class NativeLanguageAnalyzer {
       return "Unknown";
     }
     Lang nativeLanguage = LangDetector.INSTANCE.getLang(text);
-    return (nativeLanguage == null ? "Unknown" : nativeLanguage.getShortDisplayName());
+    return (nativeLanguage == null ? "English" : nativeLanguage.getShortDisplayName());
+  }
+
+  public static boolean isAnyNativeLanguageInstalled() {
+    if (ApplicationManager.getApplication() == null) {
+      return true;
+    }
+    return GrazieConfig.Companion.get().getEnabledLanguages().size() > 0;
   }
 
   /**

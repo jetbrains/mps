@@ -25,6 +25,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -341,7 +342,7 @@
         <node concept="3clFbS" id="1xq1$bo0J44" role="3clFbx">
           <node concept="Dpp1Q" id="4JtzErufClc" role="3cqZAp">
             <node concept="Xl_RD" id="4JtzErufEp6" role="Dpw9R">
-              <property role="Xl_RC" value="No native language checkers are installed. A Grazie-based capitalization check cannot be performed. Resorting to simplified English hard-coded rules." />
+              <property role="Xl_RC" value="No native language checkers or dictionaries are installed. Go to Settings | Editor | Natural Languages to install them. A Grazie-based capitalization check cannot be performed. Resorting to simplified English hard-coded rules." />
             </node>
             <node concept="1YBJjd" id="4JtzErufEuJ" role="1urrMF">
               <ref role="1YBMHb" node="4cWf37B8oZW" resolve="node" />
@@ -1033,12 +1034,23 @@
             </node>
           </node>
         </node>
-        <node concept="3fqX7Q" id="51B5bJ$$SWw" role="3clFbw">
-          <node concept="2YIFZM" id="51B5bJ$$SWy" role="3fr31v">
-            <ref role="37wK5l" node="51B5bJ$yLVN" resolve="anyNativeLangCheckersInstalled" />
-            <ref role="1Pybhc" node="5gGELdhfulh" resolve="ExtensionsHelper" />
-            <node concept="37vLTw" id="51B5bJ$$SWz" role="37wK5m">
-              <ref role="3cqZAo" node="51B5bJ$$n0W" resolve="repository" />
+        <node concept="22lmx$" id="7HqAUaLvrCz" role="3clFbw">
+          <node concept="3fqX7Q" id="7HqAUaLvvPa" role="3uHU7w">
+            <node concept="2YIFZM" id="7HqAUaLvCtH" role="3fr31v">
+              <ref role="37wK5l" node="7HqAUaLvfK6" resolve="anyNativeLangDictionaryInstalled" />
+              <ref role="1Pybhc" node="5gGELdhfulh" resolve="ExtensionsHelper" />
+              <node concept="37vLTw" id="7HqAUaLvGCD" role="37wK5m">
+                <ref role="3cqZAo" node="51B5bJ$$n0W" resolve="repository" />
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="51B5bJ$$SWw" role="3uHU7B">
+            <node concept="2YIFZM" id="51B5bJ$$SWy" role="3fr31v">
+              <ref role="37wK5l" node="51B5bJ$yLVN" resolve="anyNativeLangCheckersInstalled" />
+              <ref role="1Pybhc" node="5gGELdhfulh" resolve="ExtensionsHelper" />
+              <node concept="37vLTw" id="51B5bJ$$SWz" role="37wK5m">
+                <ref role="3cqZAo" node="51B5bJ$$n0W" resolve="repository" />
+              </node>
             </node>
           </node>
         </node>
@@ -1485,6 +1497,75 @@
       </node>
     </node>
     <node concept="2tJIrI" id="6deib$l9ia$" role="jymVt" />
+    <node concept="2YIFZL" id="7HqAUaLvfK6" role="jymVt">
+      <property role="TrG5h" value="anyNativeLangDictionaryInstalled" />
+      <node concept="3clFbS" id="7HqAUaLvfK7" role="3clF47">
+        <node concept="3cpWs8" id="7HqAUaLvfK8" role="3cqZAp">
+          <node concept="3cpWsn" id="7HqAUaLvfK9" role="3cpWs9">
+            <property role="TrG5h" value="result" />
+            <node concept="10P_77" id="7HqAUaLvfKa" role="1tU5fm" />
+            <node concept="3clFbT" id="7HqAUaLvfKb" role="33vP2m" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="7HqAUaLvfKc" role="3cqZAp">
+          <node concept="2OqwBi" id="7HqAUaLvfKd" role="3clFbG">
+            <node concept="2YIFZM" id="7HqAUaLvfKe" role="2Oq$k0">
+              <ref role="37wK5l" to="vndm:~LanguageRegistry.getInstance(org.jetbrains.mps.openapi.module.SRepository)" resolve="getInstance" />
+              <ref role="1Pybhc" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
+              <node concept="37vLTw" id="7HqAUaLvfKf" role="37wK5m">
+                <ref role="3cqZAo" node="7HqAUaLvfKx" resolve="repository" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7HqAUaLvfKg" role="2OqNvi">
+              <ref role="37wK5l" to="vndm:~LanguageRegistry.withAvailableExtensions(java.lang.Class,jetbrains.mps.smodel.runtime.ModuleRuntime$Extension$MatchRequest,java.util.function.Consumer)" resolve="withAvailableExtensions" />
+              <node concept="3VsKOn" id="7HqAUaLvfKh" role="37wK5m">
+                <ref role="3VsUkX" to="wsw7:5J0WEnGJGQc" resolve="NativeLangNameChecker" />
+              </node>
+              <node concept="2YIFZM" id="7HqAUaLvfKi" role="37wK5m">
+                <ref role="37wK5l" to="ze1i:~ModuleRuntime$Extension.any()" resolve="any" />
+                <ref role="1Pybhc" to="ze1i:~ModuleRuntime$Extension" resolve="ModuleRuntime.Extension" />
+              </node>
+              <node concept="1bVj0M" id="7HqAUaLvfKj" role="37wK5m">
+                <node concept="gl6BB" id="7HqAUaLvfKk" role="1bW2Oz">
+                  <property role="TrG5h" value="checker" />
+                  <node concept="2jxLKc" id="7HqAUaLvfKl" role="1tU5fm" />
+                </node>
+                <node concept="3clFbS" id="7HqAUaLvfKm" role="1bW5cS">
+                  <node concept="3clFbF" id="7HqAUaLvfKn" role="3cqZAp">
+                    <node concept="37vLTI" id="7HqAUaLvfKo" role="3clFbG">
+                      <node concept="37vLTw" id="7HqAUaLvfKp" role="37vLTJ">
+                        <ref role="3cqZAo" node="7HqAUaLvfK9" resolve="result" />
+                      </node>
+                      <node concept="2OqwBi" id="7HqAUaLvfKq" role="37vLTx">
+                        <node concept="37vLTw" id="7HqAUaLvfKr" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7HqAUaLvfKk" resolve="checker" />
+                        </node>
+                        <node concept="liA8E" id="7HqAUaLvfKs" role="2OqNvi">
+                          <ref role="37wK5l" to="wsw7:7HqAUaLuAdZ" resolve="isAnyNativeLanguageInstalled" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7HqAUaLvfKu" role="3cqZAp">
+          <node concept="37vLTw" id="7HqAUaLvfKv" role="3cqZAk">
+            <ref role="3cqZAo" node="7HqAUaLvfK9" resolve="result" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="7HqAUaLvfKw" role="3clF45" />
+      <node concept="37vLTG" id="7HqAUaLvfKx" role="3clF46">
+        <property role="TrG5h" value="repository" />
+        <node concept="3uibUv" id="7HqAUaLvfKy" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7HqAUaLvffX" role="jymVt" />
     <node concept="2YIFZL" id="2wVzGkOBEfu" role="jymVt">
       <property role="TrG5h" value="isNativeLanguageInstalled" />
       <node concept="3clFbS" id="2wVzGkOBEfv" role="3clF47">

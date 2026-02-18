@@ -7,6 +7,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 @GeneratedClass(nodeId = "6611551047435341196", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public interface NativeLangNameChecker {
   String detectNativeLanguage(String text);
+  boolean isAnyNativeLanguageInstalled();
   boolean isNativeLanguageInstalled(String languageName);
   boolean isProperlyCapitalized(String text);
   boolean isProperlyCapitalizedInLanguage(String text, String languageName);

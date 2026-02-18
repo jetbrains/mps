@@ -10,6 +10,11 @@ public class GrazieNativeLangExtension implements NativeLangNameChecker {
     return NativeLanguageAnalyzer.detectNativeLanguage(text);
   }
 
+  @Override
+  public boolean isAnyNativeLanguageInstalled() {
+    return NativeLanguageAnalyzer.isAnyNativeLanguageInstalled();
+  }
+
   /**
    * 
    * 
