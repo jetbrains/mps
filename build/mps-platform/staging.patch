@@ -1,0 +1,41 @@
+Index: community/mps/build/build/build.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/community/mps/build/build/build.xml b/community/mps/build/build/build.xml
+--- a/community/mps/build/build/build.xml	(revision 8fb1a5193c30bc79c9345d6df72a05717adb698a)
++++ b/community/mps/build/build/build.xml	(revision 269de5b67d8da4300fb4c575903ead6809b7fa06)
+@@ -41,6 +41,8 @@
+     <apply.patch file="${basedir}/patches/MPS-38229.patch"/>
+     <apply.patch file="${basedir}/patches/MPS-38534-WelcomeScreenPromotions_for251.patch"/>
+     <apply.patch file="${basedir}/patches/WindowsDistribution.patch"/>
++    <!-- After patching the platform build looks for .mps project folder instead of .idea -->
++    <symlink link="${platform.root}/.mps" resource="${platform.root}/.idea"/>
+   </target>
+
+   <!-- Raw JPS build of modules and plugins required by MPS -->
+Index: community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
+--- a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(revision 269de5b67d8da4300fb4c575903ead6809b7fa06)
++++ b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(date 1770822952073)
+@@ -59,6 +59,7 @@
+             "intellij.platform.ide.recentProjects",
+             "intellij.platform.ide.util.netty",
+             "intellij.platform.util.diff",
++            "intellij.platform.util.text.matching",
+             "intellij.platform.syntax.psi",
+             "intellij.json.syntax",
+         )
+@@ -114,6 +115,7 @@
+             layout.withProjectLibrary("Eclipse", LibraryPackMode.MERGED)
+             layout.withProjectLibrary("JUnit4", LibraryPackMode.STANDALONE_MERGED)
+             layout.withProjectLibrary("http-client", LibraryPackMode.MERGED)
++            layout.withProjectLibrary("hamcrest", LibraryPackMode.STANDALONE_MERGED)
+             layout.withoutProjectLibrary("Ant")
+             layout.withoutProjectLibrary("Gradle")
+             layout.withProjectLibrary("maven-resolver-provider", LibraryPackMode.STANDALONE_MERGED)
