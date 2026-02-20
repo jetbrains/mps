@@ -301,6 +301,7 @@
       <root url="jar://$PROJECT_DIR$/lib/intellij.xml.structureView.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.xml.syntax.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.xml.ui.common.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij.platform.projectFrame.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
