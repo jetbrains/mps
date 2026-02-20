@@ -21,9 +21,20 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
---- a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(revision 269de5b67d8da4300fb4c575903ead6809b7fa06)
-+++ b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(date 1770822952073)
-@@ -59,6 +59,7 @@
+--- a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(revision 642c8f968340ce631dd786a63a60c9308ed3e5a3)
++++ b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(date 1771583441670)
+@@ -51,14 +51,18 @@
+             "intellij.platform.starter",
+             "intellij.idea.community.customization",
+             "intellij.java.ide.resources",
++            "intellij.platform.buildData",
+             "intellij.platform.whatsNew",
+             "intellij.platform.configurationStore.impl",
++            "intellij.platform.diagnostic.startUpPerformanceReporter",
++            "intellij.platform.jps.build.javac.rt",
+             "intellij.platform.resources",
+             "intellij.platform.resources.en",
+             "intellij.platform.ide.codeinsight.inline",
              "intellij.platform.ide.recentProjects",
              "intellij.platform.ide.util.netty",
              "intellij.platform.util.diff",
@@ -31,7 +42,7 @@ diff --git a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSPropert
              "intellij.platform.syntax.psi",
              "intellij.json.syntax",
          )
-@@ -114,6 +115,7 @@
+@@ -114,6 +118,7 @@
              layout.withProjectLibrary("Eclipse", LibraryPackMode.MERGED)
              layout.withProjectLibrary("JUnit4", LibraryPackMode.STANDALONE_MERGED)
              layout.withProjectLibrary("http-client", LibraryPackMode.MERGED)
