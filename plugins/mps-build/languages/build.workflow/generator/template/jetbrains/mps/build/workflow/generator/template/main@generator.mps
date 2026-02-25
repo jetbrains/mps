@@ -229,10 +229,10 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="ln" index="29HgVG">
+      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="lg" index="29HgVG">
         <child id="1168024447342" name="sourceNodeQuery" index="3NFExx" />
       </concept>
-      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="ln" index="2b32R4">
+      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="lg" index="2b32R4">
         <child id="1168278589236" name="sourceNodesQuery" index="2P8S$" />
       </concept>
       <concept id="1202776937179" name="jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence" flags="lg" index="b5Tf3" />
@@ -279,7 +279,7 @@
         <child id="1195158637244" name="caseConsequence" index="150oIE" />
       </concept>
       <concept id="1225228973247" name="jetbrains.mps.lang.generator.structure.MapSrcMacro_PostMapperFunction" flags="in" index="15lBmy" />
-      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="ln" index="17Uvod">
+      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="lg" index="17Uvod">
         <child id="1167756362303" name="propertyValueFunction" index="3zH0cK" />
       </concept>
       <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
@@ -289,7 +289,7 @@
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
         <reference id="1167514355421" name="template" index="3lhOvi" />
       </concept>
-      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="ln" index="1pdMLZ">
+      <concept id="1131073187192" name="jetbrains.mps.lang.generator.structure.MapSrcNodeMacro" flags="lg" index="1pdMLZ">
         <child id="1168281849769" name="sourceNodeQuery" index="31$UT" />
         <child id="1225229330048" name="postMapperFunction" index="15mYut" />
       </concept>
@@ -314,7 +314,7 @@
       <concept id="1167756221419" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_templatePropertyValue" flags="nn" index="3zGtF$" />
       <concept id="1167770111131" name="jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent" flags="in" index="3$xsQk" />
       <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
-      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
+      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="ig" index="3JmXsc" />
       <concept id="8900764248744213868" name="jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence" flags="lg" index="1Koe21">
         <child id="8900764248744213871" name="contentNode" index="1Koe22" />
       </concept>
@@ -322,15 +322,15 @@
         <child id="1805153994416556314" name="pattern" index="1N7Fz$" />
         <child id="1805153994416516024" name="ruleConsequence" index="1N7XD6" />
       </concept>
-      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="in" index="3NFfHV" />
-      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="ig" index="3NFfHV" />
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="lg" index="1W57fq">
         <child id="1194989344771" name="alternativeConsequence" index="UU_$l" />
         <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
-      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
+      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="lg" index="1WS0z7">
         <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
       </concept>
-      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="ln" index="1ZhdrF">
+      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="lg" index="1ZhdrF">
         <child id="1167770376702" name="referentFunction" index="3$ytzL" />
       </concept>
     </language>
@@ -3844,23 +3844,13 @@
                   <property role="2pMdty" value="${idea_home}/lib" />
                 </node>
               </node>
-              <node concept="2pNNFK" id="1Mjrj7j4BBn" role="3o6s8t">
+              <node concept="2pNNFK" id="1SteVkE_aOq" role="3o6s8t">
                 <property role="qg3DV" value="true" />
                 <property role="2pNNFO" value="include" />
-                <node concept="2pNUuL" id="1Mjrj7j4BBo" role="2pNNFR">
+                <node concept="2pNUuL" id="1SteVkE_aOr" role="2pNNFR">
                   <property role="2pNUuO" value="name" />
-                  <node concept="2pMdtt" id="1Mjrj7j4BBA" role="2pMdts">
-                    <property role="2pMdty" value="3rd-party.jar" />
-                  </node>
-                </node>
-              </node>
-              <node concept="2pNNFK" id="7gLCykubni_" role="3o6s8t">
-                <property role="qg3DV" value="true" />
-                <property role="2pNNFO" value="include" />
-                <node concept="2pNUuL" id="7gLCykubniA" role="2pNNFR">
-                  <property role="2pNUuO" value="name" />
-                  <node concept="2pMdtt" id="7gLCykubniB" role="2pMdts">
-                    <property role="2pMdty" value="3rd-party-rt.jar" />
+                  <node concept="2pMdtt" id="1SteVkE_aOs" role="2pMdts">
+                    <property role="2pMdty" value="javac2.jar" />
                   </node>
                 </node>
               </node>
@@ -3891,25 +3881,6 @@
                   <property role="2pNUuO" value="name" />
                   <node concept="2pMdtt" id="1Mjrj7j4BBD" role="2pMdts">
                     <property role="2pMdty" value="forms*.jar" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="2pNNFK" id="1SteVkE_aOn" role="10O6PF">
-              <property role="2pNNFO" value="fileset" />
-              <node concept="2pNUuL" id="1SteVkE_aOo" role="2pNNFR">
-                <property role="2pNUuO" value="dir" />
-                <node concept="2pMdtt" id="1SteVkE_aOp" role="2pMdts">
-                  <property role="2pMdty" value="${idea_home}/plugins/java/lib" />
-                </node>
-              </node>
-              <node concept="2pNNFK" id="1SteVkE_aOq" role="3o6s8t">
-                <property role="qg3DV" value="true" />
-                <property role="2pNNFO" value="include" />
-                <node concept="2pNUuL" id="1SteVkE_aOr" role="2pNNFR">
-                  <property role="2pNUuO" value="name" />
-                  <node concept="2pMdtt" id="1SteVkE_aOs" role="2pMdts">
-                    <property role="2pMdty" value="javac2.jar" />
                   </node>
                 </node>
               </node>
