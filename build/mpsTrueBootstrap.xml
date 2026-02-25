@@ -13,14 +13,9 @@
   
   <path id="path.javac2.classpath">
     <fileset dir="${idea_home}/lib">
-      <include name="3rd-party.jar" />
-      <include name="3rd-party-rt.jar" />
-      <include name="util-8.jar" />
-      <include name="module-intellij.libraries.asm.jar" />
-      <include name="forms*.jar" />
-    </fileset>
-    <fileset dir="${idea_home}/plugins/java/lib">
       <include name="javac2.jar" />
+      <include name="intellij.libraries.asm.jar" />
+      <include name="util-8.jar" />
     </fileset>
   </path>
   
