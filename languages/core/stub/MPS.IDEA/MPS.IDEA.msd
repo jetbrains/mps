@@ -86,16 +86,16 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${mps_home}/lib//app.jar" />
-      <library location="${mps_home}/lib//lib.jar" />
-      <library location="${mps_home}/lib//testFramework.jar" /> <!-- c.i.testFramework.TestApplicationManager in IdeaEnvironment -->
-      <library location="${mps_home}/lib//stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
-      <library location="${mps_home}/lib//platform-loader.jar" />
-      <library location="${mps_home}/lib//util.jar" />
-      <library location="${mps_home}/lib//util-8.jar" />
-      <library location="${mps_home}/lib//util_rt.jar" />
-      <library location="${mps_home}/lib//jps-model.jar" />
-      <library location="${mps_home}/lib//forms_rt.jar" />
+      <library location="${mps_home}/lib/app.jar" />
+      <library location="${mps_home}/lib/lib.jar" />
+      <library location="${mps_home}/lib/testFramework.jar" /> <!-- c.i.testFramework.TestApplicationManager in IdeaEnvironment -->
+      <library location="${mps_home}/lib/stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
+      <library location="${mps_home}/lib/platform-loader.jar" />
+      <library location="${mps_home}/lib/util.jar" />
+      <library location="${mps_home}/lib/util-8.jar" />
+      <library location="${mps_home}/lib/util_rt.jar" />
+      <library location="${mps_home}/lib/jps-model.jar" />
+      <library location="${mps_home}/lib/forms_rt.jar" />
       <!-- originally in lib.jar -->
       <library location="${mps_home}/lib/hamcrest.jar" />
       <!-- originally in util-8.jar -->
@@ -103,6 +103,9 @@
       <library location="${mps_home}/lib/intellij.libraries.netty.codec.compression.jar" />
       <library location="${mps_home}/lib/intellij.libraries.netty.codec.http.jar" />
       <library location="${mps_home}/lib/intellij.libraries.netty.handler.proxy.jar" />
+      <!-- dependency of classes in app.jar -->
+      <library location="${mps_home}/lib/intellij.libraries.kotlinx.coroutines.core.jar" />
+      <library location="${mps_home}/lib/intellij.libraries.kotlinx.collections.immutable.jar" />
       <!-- originally in app.jar -->
       <library location="${mps_home}/lib/intellij.platform.analysis.impl.jar" />
       <library location="${mps_home}/lib/intellij.platform.analysis.jar" />
