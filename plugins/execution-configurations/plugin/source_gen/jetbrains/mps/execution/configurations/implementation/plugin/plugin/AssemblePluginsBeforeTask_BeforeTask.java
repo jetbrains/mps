@@ -35,8 +35,9 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.execution.ui.actions.CloseAction;
 import com.intellij.execution.ExecutionManager;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 import jetbrains.mps.util.FileUtil;
 
@@ -82,10 +83,10 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       }
 
       final Wrappers._T<DeployScript> script = new Wrappers._T<DeployScript>();
-      final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
+      final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
       final Project projectFinal = project;
 
-      ApplicationManager.getApplication().invokeAndWait(() -> mpsProject.getModelAccess().executeCommand(() -> script.value = new DeployScript(mpsProject, myPlugins)), ModalityState.NON_MODAL);
+      ApplicationManager.getApplication().invokeAndWait(() -> mpsProject.getModelAccess().executeCommand(() -> script.value = new DeployScript(mpsProject, myPlugins)), ModalityState.nonModal());
 
       String assembleScriptLocation = script.value.make();
       if ((assembleScriptLocation == null || assembleScriptLocation.length() == 0)) {
@@ -97,7 +98,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       }
 
       final ConsoleView[] console = new ConsoleView[1];
-      ApplicationManager.getApplication().invokeAndWait(() -> console[0] = ConsoleCreator.createConsoleView(project, false), ModalityState.NON_MODAL);
+      ApplicationManager.getApplication().invokeAndWait(() -> console[0] = ConsoleCreator.createConsoleView(project, false), ModalityState.nonModal());
       console[0].addMessageFilter(new StandaloneMPSStackTraceFilter(project));
 
       final Wrappers._T<ProcessHandler> process = new Wrappers._T<ProcessHandler>();
@@ -131,7 +132,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
         group.add(pinAction);
         group.add(new CloseAction(executor, descriptor, projectFinal));
         ExecutionManager.getInstance(projectFinal).getContentManager().showRunContent(executor, descriptor);
-        pinAction.actionPerformed(new AnActionEvent(null, actionToolbar.getToolbarDataContext(), ActionPlaces.RUNNER_TOOLBAR, new Presentation(), ActionManager.getInstance(), 0));
+        ActionUtil.performAction(pinAction, AnActionEvent.createEvent(actionToolbar.getToolbarDataContext(), null, ActionPlaces.RUNNER_TOOLBAR, ActionUiKind.TOOLBAR, null));
       }, ModalityState.defaultModalityState());
 
       int exitCode = ProcessHandlerBuilder.startAndWait(process.value);

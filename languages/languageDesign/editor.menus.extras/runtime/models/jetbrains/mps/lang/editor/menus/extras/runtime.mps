@@ -23,6 +23,7 @@
     <import index="nddn" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.intentions(MPS.Editor/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="8rsk" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem.ex(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -121,9 +122,6 @@
         <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
-      <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
-        <property id="1068580320021" name="value" index="3cmrfH" />
-      </concept>
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
@@ -1199,16 +1197,15 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="7GARn1zPosE" role="3cqZAp">
-          <node concept="2OqwBi" id="7GARn1zPoAB" role="3clFbG">
-            <node concept="37vLTw" id="7GARn1zPosD" role="2Oq$k0">
+        <node concept="3clFbF" id="uQX0k0NV6u" role="3cqZAp">
+          <node concept="2YIFZM" id="uQX0k0NVnW" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.updateAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="updateAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="37vLTw" id="uQX0k0NVLS" role="37wK5m">
               <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
             </node>
-            <node concept="liA8E" id="7GARn1zPoHW" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
-              <node concept="37vLTw" id="$EISvd2$xU" role="37wK5m">
-                <ref role="3cqZAo" node="$EISvd2$xS" resolve="event" />
-              </node>
+            <node concept="37vLTw" id="uQX0k0NWuI" role="37wK5m">
+              <ref role="3cqZAo" node="$EISvd2$xS" resolve="event" />
             </node>
           </node>
         </node>
@@ -1248,16 +1245,15 @@
         </node>
       </node>
       <node concept="3clFbS" id="20Jj4S2Cl4V" role="3clF47">
-        <node concept="3clFbF" id="20Jj4S2Cv1j" role="3cqZAp">
-          <node concept="2OqwBi" id="20Jj4S2Cv99" role="3clFbG">
-            <node concept="37vLTw" id="20Jj4S2Cv1h" role="2Oq$k0">
+        <node concept="3clFbF" id="uQX0k0NQLv" role="3cqZAp">
+          <node concept="2YIFZM" id="uQX0k0NRvB" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="37vLTw" id="uQX0k0NS0L" role="37wK5m">
               <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
             </node>
-            <node concept="liA8E" id="20Jj4S2CvmU" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-              <node concept="1rXfSq" id="7GARn1zPpdp" role="37wK5m">
-                <ref role="37wK5l" node="7GARn1zPoLr" resolve="createAnActionEventWithTemplatePresentation" />
-              </node>
+            <node concept="1rXfSq" id="7GARn1zPpdp" role="37wK5m">
+              <ref role="37wK5l" node="7GARn1zPoLr" resolve="createAnActionEventWithTemplatePresentation" />
             </node>
           </node>
         </node>
@@ -1310,38 +1306,25 @@
           </node>
         </node>
         <node concept="3cpWs6" id="7GARn1zPoLn" role="3cqZAp">
-          <node concept="2ShNRf" id="7GARn1zPoLd" role="3cqZAk">
-            <node concept="1pGfFk" id="7GARn1zPoLe" role="2ShVmc">
-              <ref role="37wK5l" to="qkt:~AnActionEvent.&lt;init&gt;(java.awt.event.InputEvent,com.intellij.openapi.actionSystem.DataContext,java.lang.String,com.intellij.openapi.actionSystem.Presentation,com.intellij.openapi.actionSystem.ActionManager,int)" resolve="AnActionEvent" />
-              <node concept="10Nm6u" id="7GARn1zPoLf" role="37wK5m" />
-              <node concept="37vLTw" id="7GARn1zPoLg" role="37wK5m">
-                <ref role="3cqZAo" node="7GARn1zPoKY" resolve="dataContext" />
-              </node>
-              <node concept="10M0yZ" id="7GARn1zPoLh" role="37wK5m">
-                <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
-              </node>
-              <node concept="2OqwBi" id="4NH0zSyKIhT" role="37wK5m">
-                <node concept="2OqwBi" id="7GARn1zPoLi" role="2Oq$k0">
-                  <node concept="37vLTw" id="7GARn1zPoLj" role="2Oq$k0">
-                    <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
-                  </node>
-                  <node concept="liA8E" id="7GARn1zPoLk" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnAction.getTemplatePresentation()" resolve="getTemplatePresentation" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4NH0zSyKILt" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~Presentation.clone()" resolve="clone" />
-                </node>
-              </node>
-              <node concept="2YIFZM" id="7GARn1zPoLl" role="37wK5m">
-                <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-              </node>
-              <node concept="3cmrfG" id="7GARn1zPoLm" role="37wK5m">
-                <property role="3cmrfH" value="0" />
-              </node>
+          <node concept="2YIFZM" id="uQX0k0NHnp" role="3cqZAk">
+            <ref role="37wK5l" to="qkt:~AnActionEvent.createEvent(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.DataContext,com.intellij.openapi.actionSystem.Presentation,java.lang.String,com.intellij.openapi.actionSystem.ActionUiKind,java.awt.event.InputEvent)" resolve="createEvent" />
+            <ref role="1Pybhc" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+            <node concept="37vLTw" id="uQX0k0NJcO" role="37wK5m">
+              <ref role="3cqZAo" node="20Jj4S2CjU1" resolve="myAction" />
             </node>
+            <node concept="37vLTw" id="uQX0k0NHSk" role="37wK5m">
+              <ref role="3cqZAo" node="7GARn1zPoKY" resolve="dataContext" />
+            </node>
+            <node concept="10Nm6u" id="uQX0k0NKlE" role="37wK5m" />
+            <node concept="10M0yZ" id="7GARn1zPoLh" role="37wK5m">
+              <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
+              <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
+            </node>
+            <node concept="10M0yZ" id="uQX0k0NNoG" role="37wK5m">
+              <ref role="3cqZAo" to="qkt:~ActionUiKind.NONE" resolve="NONE" />
+              <ref role="1PxDUh" to="qkt:~ActionUiKind" resolve="ActionUiKind" />
+            </node>
+            <node concept="10Nm6u" id="uQX0k0NJyB" role="37wK5m" />
           </node>
         </node>
       </node>

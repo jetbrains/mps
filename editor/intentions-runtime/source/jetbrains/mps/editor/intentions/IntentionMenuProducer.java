@@ -1,16 +1,19 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.editor.intentions;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Constraints;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.intentions.IntentionsManager;
@@ -172,7 +175,8 @@ public class IntentionMenuProducer {
       if (presentation.getIcon() == null) {
         presentation.setIcon(Icons.REAL_INTENTION);
       }
-      action.update(new AnActionEvent(null, dataContext, "", presentation, ActionManager.getInstance(), 0));
+      // FIXME if the code above doesn't work, shall I use null for presentation, perhaps? Could I make it work?
+      ActionUtil.updateAction(action, AnActionEvent.createEvent(dataContext, presentation, ActionPlaces.UNKNOWN, ActionUiKind.NONE, null));
       if (presentation.isVisible()) {
         actions.add(action);
       }

@@ -120,6 +120,7 @@
     <import index="8ig8" ref="r:c3f8847b-5450-45d4-8ef0-445954b1dc9e(jetbrains.mps.ide.platform)" />
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
+    <import index="8rsk" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem.ex(MPS.IDEA/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -10440,10 +10441,10 @@
             <node concept="3uibUv" id="3YA7anLOaxU" role="1tU5fm">
               <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
             </node>
-            <node concept="2YIFZM" id="3YA7anLOaxV" role="33vP2m">
+            <node concept="2YIFZM" id="uQX0k0KJmW" role="33vP2m">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-              <ref role="37wK5l" to="alof:~ProjectHelper.toMPSProject(com.intellij.openapi.project.Project)" resolve="toMPSProject" />
-              <node concept="21ER0p" id="3YA7anLOaxW" role="37wK5m" />
+              <node concept="21ER0p" id="uQX0k0KJmX" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -10509,9 +10510,9 @@
                   </node>
                 </node>
               </node>
-              <node concept="10M0yZ" id="2izc3YkB_AN" role="37wK5m">
-                <ref role="1PxDUh" to="bd8o:~ModalityState" resolve="ModalityState" />
-                <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
+              <node concept="2YIFZM" id="uQX0k0KLf$" role="37wK5m">
+                <ref role="37wK5l" to="bd8o:~ModalityState.nonModal()" resolve="nonModal" />
+                <ref role="1Pybhc" to="bd8o:~ModalityState" resolve="ModalityState" />
               </node>
             </node>
           </node>
@@ -10613,9 +10614,9 @@
                   </node>
                 </node>
               </node>
-              <node concept="10M0yZ" id="59dmSAWa_T0" role="37wK5m">
-                <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
-                <ref role="1PxDUh" to="bd8o:~ModalityState" resolve="ModalityState" />
+              <node concept="2YIFZM" id="uQX0k0KM3w" role="37wK5m">
+                <ref role="37wK5l" to="bd8o:~ModalityState.nonModal()" resolve="nonModal" />
+                <ref role="1Pybhc" to="bd8o:~ModalityState" resolve="ModalityState" />
               </node>
             </node>
           </node>
@@ -11083,43 +11084,34 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbF" id="1T5iP2a6r0Q" role="3cqZAp">
-                    <node concept="2OqwBi" id="1T5iP2a6rwX" role="3clFbG">
-                      <node concept="37vLTw" id="1T5iP2a6r0O" role="2Oq$k0">
+                  <node concept="3clFbF" id="uQX0k0LoLx" role="3cqZAp">
+                    <node concept="2YIFZM" id="uQX0k0Lq$M" role="3clFbG">
+                      <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+                      <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+                      <node concept="37vLTw" id="uQX0k0LrxM" role="37wK5m">
                         <ref role="3cqZAo" node="1T5iP2a6pxw" resolve="pinAction" />
                       </node>
-                      <node concept="liA8E" id="1T5iP2a6sfr" role="2OqNvi">
-                        <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-                        <node concept="2ShNRf" id="1T5iP2a6sFF" role="37wK5m">
-                          <node concept="1pGfFk" id="1T5iP2a6N9H" role="2ShVmc">
-                            <ref role="37wK5l" to="qkt:~AnActionEvent.&lt;init&gt;(java.awt.event.InputEvent,com.intellij.openapi.actionSystem.DataContext,java.lang.String,com.intellij.openapi.actionSystem.Presentation,com.intellij.openapi.actionSystem.ActionManager,int)" resolve="AnActionEvent" />
-                            <node concept="10Nm6u" id="1T5iP2a6NA8" role="37wK5m" />
-                            <node concept="2OqwBi" id="1T5iP2a6SgW" role="37wK5m">
-                              <node concept="37vLTw" id="1T5iP2a6RPw" role="2Oq$k0">
-                                <ref role="3cqZAo" node="qri2St2AfG" resolve="actionToolbar" />
-                              </node>
-                              <node concept="liA8E" id="1T5iP2a6SUV" role="2OqNvi">
-                                <ref role="37wK5l" to="qkt:~ActionToolbar.getToolbarDataContext()" resolve="getToolbarDataContext" />
-                              </node>
-                            </node>
-                            <node concept="10M0yZ" id="1T5iP2a6PLL" role="37wK5m">
-                              <ref role="3cqZAo" to="qkt:~ActionPlaces.RUNNER_TOOLBAR" resolve="RUNNER_TOOLBAR" />
-                              <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                            </node>
-                            <node concept="2ShNRf" id="1T5iP2a6Tph" role="37wK5m">
-                              <node concept="1pGfFk" id="1T5iP2a6Vzh" role="2ShVmc">
-                                <ref role="37wK5l" to="qkt:~Presentation.&lt;init&gt;()" resolve="Presentation" />
-                              </node>
-                            </node>
-                            <node concept="2YIFZM" id="1T5iP2a6WYk" role="37wK5m">
-                              <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                              <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-                            </node>
-                            <node concept="3cmrfG" id="1T5iP2a6XTT" role="37wK5m">
-                              <property role="3cmrfH" value="0" />
-                            </node>
+                      <node concept="2YIFZM" id="uQX0k0KSzE" role="37wK5m">
+                        <ref role="37wK5l" to="qkt:~AnActionEvent.createEvent(com.intellij.openapi.actionSystem.DataContext,com.intellij.openapi.actionSystem.Presentation,java.lang.String,com.intellij.openapi.actionSystem.ActionUiKind,java.awt.event.InputEvent)" resolve="createEvent" />
+                        <ref role="1Pybhc" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        <node concept="2OqwBi" id="1T5iP2a6SgW" role="37wK5m">
+                          <node concept="37vLTw" id="1T5iP2a6RPw" role="2Oq$k0">
+                            <ref role="3cqZAo" node="qri2St2AfG" resolve="actionToolbar" />
+                          </node>
+                          <node concept="liA8E" id="1T5iP2a6SUV" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~ActionToolbar.getToolbarDataContext()" resolve="getToolbarDataContext" />
                           </node>
                         </node>
+                        <node concept="10Nm6u" id="uQX0k0KUXB" role="37wK5m" />
+                        <node concept="10M0yZ" id="1T5iP2a6PLL" role="37wK5m">
+                          <ref role="3cqZAo" to="qkt:~ActionPlaces.RUNNER_TOOLBAR" resolve="RUNNER_TOOLBAR" />
+                          <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
+                        </node>
+                        <node concept="10M0yZ" id="uQX0k0L2_K" role="37wK5m">
+                          <ref role="3cqZAo" to="qkt:~ActionUiKind.TOOLBAR" resolve="TOOLBAR" />
+                          <ref role="1PxDUh" to="qkt:~ActionUiKind" resolve="ActionUiKind" />
+                        </node>
+                        <node concept="10Nm6u" id="uQX0k0KYtD" role="37wK5m" />
                       </node>
                     </node>
                   </node>

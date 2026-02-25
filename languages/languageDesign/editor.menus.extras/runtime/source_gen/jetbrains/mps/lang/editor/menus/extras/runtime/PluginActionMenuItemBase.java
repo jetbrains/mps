@@ -8,11 +8,12 @@ import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.ide.DataManager;
 import java.awt.Component;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 
 public class PluginActionMenuItemBase extends ActionItemBase {
   protected final TransformationMenuContext _context;
@@ -32,17 +33,17 @@ public class PluginActionMenuItemBase extends ActionItemBase {
   @Override
   public boolean canExecute(@NotNull String pattern) {
     AnActionEvent event = createAnActionEventWithTemplatePresentation();
-    myAction.update(event);
+    ActionUtil.updateAction(myAction, event);
     return event.getPresentation().isEnabled();
   }
 
   @Override
   public void execute(@NotNull String pattern) {
-    myAction.actionPerformed(createAnActionEventWithTemplatePresentation());
+    ActionUtil.performAction(myAction, createAnActionEventWithTemplatePresentation());
   }
 
   private AnActionEvent createAnActionEventWithTemplatePresentation() {
     DataContext dataContext = DataManager.getInstance().getDataContext((Component) _context.getEditorContext().getEditorComponent());
-    return new AnActionEvent(null, dataContext, ActionPlaces.UNKNOWN, myAction.getTemplatePresentation().clone(), ActionManager.getInstance(), 0);
+    return AnActionEvent.createEvent(myAction, dataContext, null, ActionPlaces.UNKNOWN, ActionUiKind.NONE, null);
   }
 }

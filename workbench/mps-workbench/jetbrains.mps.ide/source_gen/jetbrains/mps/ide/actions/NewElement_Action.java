@@ -12,14 +12,13 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
-import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.ui.popup.ListPopup;
@@ -48,7 +47,7 @@ public class NewElement_Action extends BaseAction {
       // we're in some tool
       Object delegate = ActionManager.getInstance().getAction("NewElementFile");
       if (delegate instanceof AnAction) {
-        ((AnAction) delegate).update(event);
+        ActionUtil.updateAction((AnAction) delegate, event);
         return event.getPresentation().isEnabled();
       } else {
         return false;
@@ -71,10 +70,6 @@ public class NewElement_Action extends BaseAction {
       if (p == null) {
         return false;
       }
-    }
-    {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
     }
     {
       ContentManager p = event.getData(PlatformDataKeys.CONTENT_MANAGER);
@@ -100,8 +95,7 @@ public class NewElement_Action extends BaseAction {
       ActionGroup group = (((Object) MapSequence.fromMap(_params).get("value")) != null ? ProjectPaneActionGroups.getQuickCreateGroup(((Object) MapSequence.fromMap(_params).get("value"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
 
       if (group != null) {
-        Presentation pres = new Presentation();
-        AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
+        AnActionEvent e = AnActionEvent.createEvent(event.getDataContext(), null, ActionPlaces.UNKNOWN, event.getUiKind(), event.getInputEvent());
         ActionUtils.updateGroup(group, e);
         ListPopup popup = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
         popup.showInBestPositionFor(event.getDataContext());
@@ -109,7 +103,7 @@ public class NewElement_Action extends BaseAction {
     } else if (((ContentManager) MapSequence.fromMap(_params).get("manager")) != null) {
       Object delegate = ActionManager.getInstance().getAction("NewElementFile");
       if (delegate instanceof AnAction) {
-        ((AnAction) delegate).actionPerformed(event);
+        ActionUtil.performAction((AnAction) delegate, event);
       }
     }
   }

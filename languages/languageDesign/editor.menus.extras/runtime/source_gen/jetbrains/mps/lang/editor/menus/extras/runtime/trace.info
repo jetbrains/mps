@@ -42,46 +42,46 @@
   </root>
   <root nodeRef="r:a3b5964c-2d88-4fe7-9fde-b377ee252f13(jetbrains.mps.lang.editor.menus.extras.runtime)/2319156231054374702">
     <file name="PluginActionMenuItemBase.java">
-      <node id="2319156231054376006" at="18,0,19,0" concept="3" trace="_context" />
-      <node id="2319156231054376577" at="19,0,20,0" concept="3" trace="myAction" />
-      <node id="2319156231054380170" at="21,87,22,23" concept="2" />
-      <node id="2319156231054380180" at="22,23,23,22" concept="2" />
-      <node id="2319156231054377506" at="28,46,29,56" concept="8" />
-      <node id="660546487298181239" at="33,54,34,72" concept="7" />
-      <node id="8874023590561154858" at="34,72,35,27" concept="2" />
-      <node id="660546487298191746" at="35,27,36,47" concept="8" />
-      <node id="2319156231054422099" at="40,48,41,76" concept="2" />
-      <node id="8874023590561156157" at="44,71,45,133" concept="7" />
-      <node id="8874023590561156183" at="45,133,46,146" concept="8" />
-      <node id="2319156231054380162" at="21,0,25,0" concept="1" trace="PluginActionMenuItemBase#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;Lcom/intellij/openapi/actionSystem/AnAction;)V" />
-      <node id="2319156231054381364" at="39,0,43,0" concept="6" trace="execute#(Ljava/lang/String;)V" />
-      <node id="8874023590561156187" at="44,0,48,0" concept="6" trace="createAnActionEventWithTemplatePresentation#()Lcom/intellij/openapi/actionSystem/AnActionEvent;" />
-      <node id="2319156231054376814" at="26,0,31,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="8874023590561153577" at="32,0,38,0" concept="6" trace="canExecute#(Ljava/lang/String;)Z" />
-      <scope id="2319156231054376821" at="28,46,29,56" />
-      <scope id="2319156231054381371" at="40,48,41,76" />
-      <scope id="2319156231054380166" at="21,87,23,22" />
-      <scope id="8874023590561156154" at="44,71,46,146">
+      <node id="2319156231054376006" at="19,0,20,0" concept="3" trace="_context" />
+      <node id="2319156231054376577" at="20,0,21,0" concept="3" trace="myAction" />
+      <node id="2319156231054380170" at="22,87,23,23" concept="2" />
+      <node id="2319156231054380180" at="23,23,24,22" concept="2" />
+      <node id="2319156231054377506" at="29,46,30,56" concept="8" />
+      <node id="660546487298181239" at="34,54,35,72" concept="7" />
+      <node id="555899906352460190" at="35,72,36,45" concept="2" />
+      <node id="660546487298191746" at="36,45,37,47" concept="8" />
+      <node id="555899906352442463" at="41,48,42,86" concept="2" />
+      <node id="8874023590561156157" at="45,71,46,133" concept="7" />
+      <node id="8874023590561156183" at="46,133,47,113" concept="8" />
+      <node id="2319156231054380162" at="22,0,26,0" concept="1" trace="PluginActionMenuItemBase#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;Lcom/intellij/openapi/actionSystem/AnAction;)V" />
+      <node id="2319156231054381364" at="40,0,44,0" concept="6" trace="execute#(Ljava/lang/String;)V" />
+      <node id="8874023590561156187" at="45,0,49,0" concept="6" trace="createAnActionEventWithTemplatePresentation#()Lcom/intellij/openapi/actionSystem/AnActionEvent;" />
+      <node id="2319156231054376814" at="27,0,32,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="8874023590561153577" at="33,0,39,0" concept="6" trace="canExecute#(Ljava/lang/String;)Z" />
+      <scope id="2319156231054376821" at="29,46,30,56" />
+      <scope id="2319156231054381371" at="41,48,42,86" />
+      <scope id="2319156231054380166" at="22,87,24,22" />
+      <scope id="8874023590561156154" at="45,71,47,113">
         <var name="dataContext" id="8874023590561156158" />
       </scope>
-      <scope id="8874023590561153584" at="33,54,36,47">
+      <scope id="8874023590561153584" at="34,54,37,47">
         <var name="event" id="660546487298181240" />
       </scope>
-      <scope id="2319156231054380162" at="21,0,25,0">
+      <scope id="2319156231054380162" at="22,0,26,0">
         <var name="action" id="2319156231054380179" />
         <var name="context" id="2319156231054380169" />
       </scope>
-      <scope id="2319156231054381364" at="39,0,43,0">
+      <scope id="2319156231054381364" at="40,0,44,0">
         <var name="pattern" id="2319156231054381368" />
       </scope>
-      <scope id="8874023590561156187" at="44,0,48,0" />
-      <scope id="2319156231054376814" at="26,0,31,0">
+      <scope id="8874023590561156187" at="45,0,49,0" />
+      <scope id="2319156231054376814" at="27,0,32,0">
         <var name="pattern" id="2319156231054376819" />
       </scope>
-      <scope id="8874023590561153577" at="32,0,38,0">
+      <scope id="8874023590561153577" at="33,0,39,0">
         <var name="pattern" id="8874023590561153581" />
       </scope>
-      <unit id="2319156231054374702" at="17,0,49,0" name="jetbrains.mps.lang.editor.menus.extras.runtime.PluginActionMenuItemBase" />
+      <unit id="2319156231054374702" at="18,0,50,0" name="jetbrains.mps.lang.editor.menus.extras.runtime.PluginActionMenuItemBase" />
     </file>
   </root>
   <root nodeRef="r:a3b5964c-2d88-4fe7-9fde-b377ee252f13(jetbrains.mps.lang.editor.menus.extras.runtime)/4736696158595708593">

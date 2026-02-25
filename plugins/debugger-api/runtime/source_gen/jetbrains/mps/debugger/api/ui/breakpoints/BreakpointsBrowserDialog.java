@@ -38,11 +38,14 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.ide.DataManager;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import com.intellij.ide.DataManager;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import java.awt.event.WindowAdapter;
@@ -332,7 +335,9 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     return new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        action.actionPerformed(createEvent(action));
+        DataContext dataContext = DataManager.getInstance().getDataContext(BreakpointsBrowserDialog.this.getContentPane());
+        // XXX I wonder if I could use ActionEvent to get InputEvent for the factory method, below
+        ActionUtil.performAction(action, AnActionEvent.createEvent(action, dataContext, null, ActionPlaces.UNKNOWN, ActionUiKind.NONE, null));
       }
     };
   }
@@ -360,9 +365,6 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
         }
       });
     }
-  }
-  private AnActionEvent createEvent(AnAction action) {
-    return new AnActionEvent(null, DataManager.getInstance().getDataContext(this.getContentPane()), ActionPlaces.UNKNOWN, action.getTemplatePresentation(), ActionManager.getInstance(), 0);
   }
   private void openNode(IBreakpoint breakpoint, boolean focus, boolean select) {
     if (!(breakpoint instanceof ILocationBreakpoint)) {
