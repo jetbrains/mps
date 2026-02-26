@@ -16,7 +16,6 @@
 package jetbrains.mps.ide.ui.dialogs.properties.tables.models;
 
 import com.intellij.util.ui.ItemRemovable;
-import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tables.items.DependenciesTableItem;
 import jetbrains.mps.ide.ui.dialogs.properties.tables.items.DependenciesTableItem.ModuleType;
 import jetbrains.mps.project.structure.modules.Dependency;
@@ -37,9 +36,6 @@ import java.util.List;
  */
 public abstract class DependTableModel extends AbstractTableModel implements ItemRemovable {
   protected List<DependenciesTableItem> myTableItems = new ArrayList<>();
-
-  private final String myExportColumnName = PropertiesBundle.message("mps.properties.configurable.tablemodel.dependency.column.export");
-  private final String myRoleColumnName = PropertiesBundle.message("mps.properties.configurable.tablemodel.dependency.column.scope");
 
   public DependTableModel() {
   }
@@ -86,15 +82,6 @@ public abstract class DependTableModel extends AbstractTableModel implements Ite
   @Override
   public int getColumnCount() {
     return 3;
-  }
-
-  @Override
-  public String getColumnName(int column) {
-    if(column == this.getRoleColumnIndex())
-      return myRoleColumnName;
-    if(column == this.getExportColumnIndex())
-      return myExportColumnName;
-    return "";
   }
 
   @Override

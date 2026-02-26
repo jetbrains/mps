@@ -163,6 +163,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.text.DefaultFormatter;
+import javax.swing.tree.TreeNode;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -622,22 +623,23 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
 
   public class ModuleDependenciesTab extends DependenciesTab {
-    private ModuleDependTableModel myTableModel;
+    private final ModuleDependTableModel myTableModel = new ModuleDependTableModel();
 
     @Override
     public void init() {
+      myTableModel.init(myMPSProject.getRepository(), myModuleDescriptor);
       super.init();
       setTableContentIsLoading(true);
     }
 
     @Override
     public boolean isModified() {
-      return myTableModel.isModified();
+      return myTableModel.isModified(myModuleDescriptor);
     }
 
     @Override
     public void apply() {
-      myTableModel.apply();
+      myTableModel.apply(myModuleDescriptor);
     }
 
 
@@ -652,10 +654,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected DependTableModel getDependTableModel() {
-      if (myTableModel == null) {
-        myTableModel = new ModuleDependTableModel(myMPSProject.getRepository(), myModuleDescriptor);
-        myTableModel.init();
-      }
       return myTableModel;
     }
 
@@ -806,11 +804,11 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       }
 
       private boolean isLangToLang(DependenciesTableItem item) {
-        return myTableModel.getSource() instanceof LanguageDescriptor && item.getModuleType() == ModuleType.LANGUAGE;
+        return myModuleDescriptor instanceof LanguageDescriptor && item.getModuleType() == ModuleType.LANGUAGE;
       }
 
       private boolean isGenToGen(DependenciesTableItem item) {
-        return myTableModel.getSource() instanceof GeneratorDescriptor && item.getModuleType() == ModuleType.GENERATOR;
+        return myModuleDescriptor instanceof GeneratorDescriptor && item.getModuleType() == ModuleType.GENERATOR;
       }
     }
   }
@@ -1228,8 +1226,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         }
 
         private boolean noCheckedChildren(CheckedTreeNode node) {
-          List<CheckedTreeNode> children = (List) Collections.list(node.children());
-          for (CheckedTreeNode child : children) {
+          Stream<CheckedTreeNode> children = Collections.list(node.children()).stream().filter(CheckedTreeNode.class::isInstance).map(CheckedTreeNode.class::cast);
+          for (CheckedTreeNode child : children.toList()) {
             if (noCheckedChildren(child) && !child.isChecked()) {
               node.remove(child);
               child.removeFromParent();

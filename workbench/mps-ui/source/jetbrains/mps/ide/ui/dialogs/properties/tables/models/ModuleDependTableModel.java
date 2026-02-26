@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.tables.models;
 
+import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tables.items.DependenciesTableItem;
 import jetbrains.mps.ide.ui.dialogs.properties.tables.items.DependenciesTableItem.ModuleType;
 import jetbrains.mps.project.structure.modules.Dependency;
@@ -25,36 +26,27 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.ui.Modifiable;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public final class ModuleDependTableModel extends DependTableModel {
-  private final SRepository myRepository;
-  private final ModuleDescriptor myItem;
+  private boolean myIsForDevkit; // kill me for column index management using this
 
-  public ModuleDependTableModel(@NotNull SRepository repository, ModuleDescriptor descriptor) {
-    myRepository = repository;
-    myItem = descriptor;
+  public ModuleDependTableModel() {
   }
 
-  public ModuleDescriptor getSource() {
-    return myItem;
-  }
-
-  public void init() {
-    if(!(myItem instanceof DevkitDescriptor)) {
-      myRepository.getModelAccess().runReadAction(() -> {
-        for(Dependency dependency : myItem.getDependencies()) {
+  public void init(SRepository repository, ModuleDescriptor md) {
+    if(!(md instanceof DevkitDescriptor)) {
+      repository.getModelAccess().runReadAction(() -> {
+        for(Dependency dependency : md.getDependencies()) {
           SModuleReference moduleReference = dependency.getModuleRef();
-          final SModule module = moduleReference.resolve(myRepository);
+          final SModule module = moduleReference.resolve(repository);
           if(module instanceof Language) {
             addLanguageItem(dependency);
           } else if(module instanceof Generator) {
@@ -67,23 +59,17 @@ public final class ModuleDependTableModel extends DependTableModel {
       });
     }
 
-    if(myItem instanceof LanguageDescriptor) {
-      LanguageDescriptor languageDescriptor = (LanguageDescriptor) myItem;
-
+    if (md instanceof LanguageDescriptor languageDescriptor) {
       for(SModuleReference moduleReference : languageDescriptor.getExtendedLanguages()) {
         addLanguageItem(new Dependency(moduleReference, SDependencyScope.EXTENDS));
       }
     }
-    else if(myItem instanceof GeneratorDescriptor) {
-      GeneratorDescriptor generatorDescriptor = (GeneratorDescriptor) myItem;
-
+    else if (md instanceof GeneratorDescriptor generatorDescriptor) {
       for(SModuleReference moduleReference : generatorDescriptor.getDepGenerators()) {
         addGeneratorItem(new Dependency(moduleReference, SDependencyScope.EXTENDS));
       }
     }
-    else if(myItem instanceof DevkitDescriptor) {
-      DevkitDescriptor devkitDescriptor = (DevkitDescriptor) myItem;
-
+    else if (md instanceof DevkitDescriptor devkitDescriptor) {
       for(SModuleReference moduleReference : devkitDescriptor.getExtendedDevkits()) {
         addDevkitItem(new Dependency(moduleReference, SDependencyScope.EXTENDS));
       }
@@ -95,30 +81,27 @@ public final class ModuleDependTableModel extends DependTableModel {
       for(SModuleReference moduleReference : devkitDescriptor.getExportedSolutions()) {
         addSolutionItem(new Dependency(moduleReference, SDependencyScope.EXTENDS));
       }
+      myIsForDevkit = true;
     }
   }
 
-  public boolean isModified() {
+  public boolean isModified(ModuleDescriptor md) {
     boolean equals = true;
 
-    if(!(myItem instanceof DevkitDescriptor)) {
+    if(!(md instanceof DevkitDescriptor)) {
       final Set<Dependency> newDeps = getDependencies();
-      equals = myItem.getDependencies().containsAll(newDeps) && newDeps.containsAll(myItem.getDependencies());
+      equals = md.getDependencies().containsAll(newDeps) && newDeps.containsAll(md.getDependencies());
     }
 
-    if(myItem instanceof LanguageDescriptor) {
-      LanguageDescriptor languageDescriptor = (LanguageDescriptor) myItem;
+    if (md instanceof LanguageDescriptor languageDescriptor) {
       equals = equals && languageDescriptor.getExtendedLanguages().containsAll(getExtendedModules()) && getExtendedModules().containsAll(languageDescriptor.getExtendedLanguages());
     }
-    else if(myItem instanceof SolutionDescriptor) {
+    else if (md instanceof SolutionDescriptor) {
     }
-    else if(myItem instanceof GeneratorDescriptor) {
-      GeneratorDescriptor generatorDescriptor = (GeneratorDescriptor) myItem;
+    else if (md instanceof GeneratorDescriptor generatorDescriptor) {
       equals = equals && generatorDescriptor.getDepGenerators().containsAll(getExtendedModules()) && getExtendedModules().containsAll(generatorDescriptor.getDepGenerators());
     }
-    else if(myItem instanceof DevkitDescriptor) {
-      DevkitDescriptor devkitDescriptor = (DevkitDescriptor) myItem;
-
+    else if (md instanceof DevkitDescriptor devkitDescriptor) {
       equals &= devkitDescriptor.getExtendedDevkits().containsAll(getModulesByType(ModuleType.DEVKIT));
       equals &= getModulesByType(ModuleType.DEVKIT).containsAll(devkitDescriptor.getExtendedDevkits());
 
@@ -132,35 +115,29 @@ public final class ModuleDependTableModel extends DependTableModel {
     return !equals;
   }
 
-  public void apply() {
+  public void apply(ModuleDescriptor md) {
 
-    if(!(myItem instanceof DevkitDescriptor)) {
-      final Collection<Dependency> deps = myItem.getDependencies();
+    if (!(md instanceof DevkitDescriptor)) {
+      final Collection<Dependency> deps = md.getDependencies();
       deps.clear();
       // getDependencies() gives access to internal table state (which we keep using same
       // Dependency class), copy() prevents scenario when one hits apply, receives changes
-      // in myItem.getDependencies, then modifies scope or re-export and hits cancel - for
+      // in md.getDependencies, then modifies scope or re-export and hits cancel - for
       // the second change not to get into result.
       getDependencies().stream().map(Dependency::copy).forEach(deps::add);
     }
 
-    if(myItem instanceof LanguageDescriptor) {
-      LanguageDescriptor languageDescriptor = (LanguageDescriptor) myItem;
-
+    if (md instanceof LanguageDescriptor languageDescriptor) {
       languageDescriptor.getExtendedLanguages().clear();
       languageDescriptor.getExtendedLanguages().addAll(getExtendedModules());
     }
-    else if(myItem instanceof SolutionDescriptor) {
+    else if (md instanceof SolutionDescriptor) {
     }
-    else if(myItem instanceof GeneratorDescriptor) {
-      GeneratorDescriptor generatorDescriptor = (GeneratorDescriptor) myItem;
-
+    else if (md instanceof GeneratorDescriptor generatorDescriptor) {
       generatorDescriptor.getDepGenerators().clear();
       generatorDescriptor.getDepGenerators().addAll(getExtendedModules());
     }
-    else if(myItem instanceof DevkitDescriptor) {
-      DevkitDescriptor devkitDescriptor = (DevkitDescriptor) myItem;
-
+    else if(md instanceof DevkitDescriptor devkitDescriptor) {
       devkitDescriptor.getExtendedDevkits().clear();
       devkitDescriptor.getExtendedDevkits().addAll(getModulesByType(ModuleType.DEVKIT));
 
@@ -212,40 +189,38 @@ public final class ModuleDependTableModel extends DependTableModel {
 
   @Override
   public String getColumnName(int column) {
-    if (getItemColumnIndex() == column) {
-      return "Module";
+    if (column == this.getRoleColumnIndex()) {
+      return PropertiesBundle.message("module.dependencies.column.scope");
+    } else if (column == this.getExportColumnIndex()) {
+      return PropertiesBundle.message("module.dependencies.column.export");
+    } else if (column == getItemColumnIndex()) {
+      return PropertiesBundle.message("module.dependencies.column.module");
     }
-    return super.getColumnName(column);
+    return "";
   }
 
   @Override
   public int getColumnCount() {
-    if(myItem instanceof DevkitDescriptor) return 2;
-    return super.getColumnCount();
+    return myIsForDevkit ? 2 : super.getColumnCount();
   }
 
   @Override
   public int getRoleColumnIndex() {
-    if(myItem instanceof DevkitDescriptor) return -1;
-    return super.getRoleColumnIndex();
+    return myIsForDevkit ? -1 : super.getRoleColumnIndex();
   }
 
   @Override
   public int getItemColumnIndex() {
-    if(myItem instanceof DevkitDescriptor) return 0;
-    return super.getItemColumnIndex();
+    return myIsForDevkit ? 0 : super.getItemColumnIndex();
   }
 
   @Override
   public int getExportColumnIndex() {
-    if(myItem instanceof DevkitDescriptor) return -1;
-    return super.getExportColumnIndex();
+    return myIsForDevkit ? -1 : super.getExportColumnIndex();
   }
 
   @Override
   public boolean isCellEditable(int rowIndex, int columnIndex) {
-    if(columnIndex == getRoleColumnIndex())
-      return true;
-    return super.isCellEditable(rowIndex, columnIndex);
+    return columnIndex == getRoleColumnIndex() || super.isCellEditable(rowIndex, columnIndex);
   }
 }
