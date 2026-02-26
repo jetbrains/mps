@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,20 +30,25 @@ import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.ui.Modifiable;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class ModuleDependTableModel extends DependTableModel<ModuleDescriptor> {
+public final class ModuleDependTableModel extends DependTableModel {
   private final SRepository myRepository;
+  private final ModuleDescriptor myItem;
 
   public ModuleDependTableModel(@NotNull SRepository repository, ModuleDescriptor descriptor) {
-    super(descriptor);
     myRepository = repository;
+    myItem = descriptor;
   }
 
-  @Override
+  public ModuleDescriptor getSource() {
+    return myItem;
+  }
+
   public void init() {
     if(!(myItem instanceof DevkitDescriptor)) {
       myRepository.getModelAccess().runReadAction(() -> {
@@ -93,7 +98,6 @@ public class ModuleDependTableModel extends DependTableModel<ModuleDescriptor> {
     }
   }
 
-  @Override
   public boolean isModified() {
     boolean equals = true;
 
@@ -128,7 +132,6 @@ public class ModuleDependTableModel extends DependTableModel<ModuleDescriptor> {
     return !equals;
   }
 
-  @Override
   public void apply() {
 
     if(!(myItem instanceof DevkitDescriptor)) {
@@ -201,7 +204,7 @@ public class ModuleDependTableModel extends DependTableModel<ModuleDescriptor> {
   private Set<SModuleReference> getModulesByType(ModuleType type) {
     Set<SModuleReference> set = new LinkedHashSet<>();
     for(DependenciesTableItem tableItem : myTableItems)
-      if(tableItem.getModuleType().equals(type))
+      if(tableItem.getModuleType() == type)
         set.add(tableItem.getItem().getModuleRef());
 
     return set;

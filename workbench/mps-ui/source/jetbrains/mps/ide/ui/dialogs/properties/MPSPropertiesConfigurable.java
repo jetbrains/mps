@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,10 @@ import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonShortcuts;
+import com.intellij.openapi.actionSystem.ShortcutProvider;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.ui.ComboBoxTableRenderer;
@@ -37,7 +40,6 @@ import com.intellij.ui.SpeedSearchComparator;
 import com.intellij.ui.TabbedPaneWrapper;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.ToolbarDecorator;
-import com.intellij.ui.ToolbarDecorator.ElementActionButton;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -267,10 +269,6 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     });
   }
 
-  @Override
-  public void reset() {
-  }
-
   public final Disposable getDisposable() {
     return myDisposable;
   }
@@ -304,7 +302,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   }
 
 
-  public abstract class CommonTab extends BaseTab {
+  public abstract static class CommonTab extends BaseTab {
 
     protected JTextField myTextFieldName;
 
@@ -379,8 +377,6 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   }
 
   public abstract class DependenciesTab extends BaseTab {
-
-    protected DependTableModel myDependTableModel;
     private JBTable myDependenciesTable;
 
     public DependenciesTab() {
@@ -404,8 +400,8 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       myDependenciesTable.setAutoscrolls(true);
       myDependenciesTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-      myDependTableModel = getDependTableModel();
-      myDependenciesTable.setModel(myDependTableModel);
+      final DependTableModel tableModel = getDependTableModel();
+      myDependenciesTable.setModel(tableModel);
 
       myDependenciesTable.setDefaultRenderer(DependenciesTableItem.class, getTableCellRender());
       myDependenciesTable.setDefaultRenderer(Boolean.class, new BooleanTableCellRenderer());
@@ -415,20 +411,20 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
 
       TableColumn column;
-      if (myDependTableModel.getExportColumnIndex() >= 0) {
-        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(myDependTableModel.getExportColumnIndex());
+      if (tableModel.getExportColumnIndex() >= 0) {
+        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(tableModel.getExportColumnIndex());
         column.setMinWidth(20);
         column.setPreferredWidth(70);
         column.setMaxWidth(70);
       }
-      if (myDependTableModel.getRoleColumnIndex() >= 0) {
-        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(myDependTableModel.getRoleColumnIndex());
+      if (tableModel.getRoleColumnIndex() >= 0) {
+        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(tableModel.getRoleColumnIndex());
         column.setMinWidth(80);
         column.setPreferredWidth(130);
         column.setMaxWidth(200);
       }
-      if (myDependTableModel.getItemColumnIndex() >= 0) {
-        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(myDependTableModel.getItemColumnIndex());
+      if (tableModel.getItemColumnIndex() >= 0) {
+        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(tableModel.getItemColumnIndex());
         column.setPreferredWidth(250);
       }
 
@@ -437,7 +433,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       decorator.setAddAction(getAnActionButtonRunnable()).setRemoveAction(new RemoveEntryAction(myDependenciesTable) {
         @Override
         protected boolean confirmRemove(int row) {
-          return DependenciesTab.this.confirmRemove(myDependTableModel.getValueAt(row, myDependTableModel.getItemColumnIndex()));
+          return DependenciesTab.this.confirmRemove(tableModel.getValueAt(row, tableModel.getItemColumnIndex()));
         }
       });
       FindActionButton findActionButton = getFindAnAction(myDependenciesTable);
@@ -460,7 +456,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
       setTabComponent(dependenciesTab);
 
-      new TableColumnSearch(myDependenciesTable, myDependTableModel.getItemColumnIndex()).setComparator(new SpeedSearchComparator(false, true));
+      new TableColumnSearch(myDependenciesTable, tableModel.getItemColumnIndex()).setComparator(new SpeedSearchComparator(false, true));
     }
 
     /*package*/ void setTableContentIsLoading(boolean isLoading) {
@@ -479,16 +475,6 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     @Nullable
     protected FindActionButton getFindAnAction(JBTable table) {
       return null;
-    }
-
-    @Override
-    public boolean isModified() {
-      return myDependTableModel.isModified();
-    }
-
-    @Override
-    public void apply() {
-      myDependTableModel.apply();
     }
 
     protected abstract AnActionButtonRunnable getAnActionButtonRunnable();
@@ -586,25 +572,28 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
   }
 
-  public abstract static class FindActionButton extends ElementActionButton {
-    protected final JBTable myTable;
+  public static final class FindActionButton extends AnAction implements ShortcutProvider {
+    private final Runnable myAction;
 
-    public FindActionButton(JBTable table) {
-      myTable = table;
-      this.getTemplatePresentation().setIcon(Actions.Find);
-      this.getTemplatePresentation().setText(PropertiesBundle.message("model.dependencies.find.text"));
-      setEnabled(true);
-      setVisible(true);
+    public FindActionButton(@NotNull Runnable action) {
+      super(PropertiesBundle.message("model.dependencies.find.text"), null, Actions.Find);
+      myAction = action;
     }
 
+    @NotNull
     @Override
-    public @NotNull ActionUpdateThread getActionUpdateThread() {
+    public ActionUpdateThread getActionUpdateThread() {
       return ActionUpdateThread.EDT;
     }
 
     @Override
     public ShortcutSet getShortcut() {
       return CommonShortcuts.getFind();
+    }
+
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+      myAction.run();
     }
   }
 

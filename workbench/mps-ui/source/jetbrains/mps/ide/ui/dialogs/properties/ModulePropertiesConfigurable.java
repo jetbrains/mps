@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -172,6 +172,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
@@ -423,7 +424,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         final FileChooserDescriptor outputPathsChooserDescriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
         InsertPathAction.addTo(myGenOut, outputPathsChooserDescriptor);
         outputPathsChooserDescriptor.setHideIgnored(false);
-        BrowseFilesListener listener = new BrowseFilesListener(myGenOut, "", "", outputPathsChooserDescriptor);
+        BrowseFilesListener listener = new BrowseFilesListener(myGenOut, outputPathsChooserDescriptor);
         FieldPanel genOutPath = new FieldPanel(myGenOut, null, null, listener, EmptyRunnable.getInstance());
         FileChooserFactory.getInstance().installFileCompletion(genOutPath.getTextField(), outputPathsChooserDescriptor, true, null);
 
@@ -621,6 +622,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
 
   public class ModuleDependenciesTab extends DependenciesTab {
+    private ModuleDependTableModel myTableModel;
 
     @Override
     public void init() {
@@ -628,20 +630,33 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       setTableContentIsLoading(true);
     }
 
+    @Override
+    public boolean isModified() {
+      return myTableModel.isModified();
+    }
+
+    @Override
+    public void apply() {
+      myTableModel.apply();
+    }
+
+
     /*package*/ List<DependenciesTableItem> getActualDependencies() {
-      int x = myDependTableModel.getRowCount();
+      int x = myTableModel.getRowCount();
       ArrayList<DependenciesTableItem> rv = new ArrayList<>(x);
       for (int i = 0; i < x; i++) {
-        rv.add(myDependTableModel.getValueAt(i));
+        rv.add(myTableModel.getValueAt(i));
       }
       return rv;
     }
 
     @Override
     protected DependTableModel getDependTableModel() {
-      final ModuleDependTableModel rv = new ModuleDependTableModel(myMPSProject.getRepository(), myModuleDescriptor);
-      rv.init();
-      return rv;
+      if (myTableModel == null) {
+        myTableModel = new ModuleDependTableModel(myMPSProject.getRepository(), myModuleDescriptor);
+        myTableModel.init();
+      }
+      return myTableModel;
     }
 
     @Override
@@ -674,15 +689,15 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
               dep = new Dependency(moduleReference, SDependencyScope.DEFAULT, false);
             }
             if (module instanceof Language) {
-              myDependTableModel.addLanguageItem(dep);
+              myTableModel.addLanguageItem(dep);
             } else if (module instanceof Generator) {
-              myDependTableModel.addGeneratorItem(dep);
+              myTableModel.addGeneratorItem(dep);
             } else if (module instanceof Solution) {
-              myDependTableModel.addSolutionItem(dep);
+              myTableModel.addSolutionItem(dep);
             } else if (module instanceof DevKit) {
-              myDependTableModel.addDevkitItem(dep);
+              myTableModel.addDevkitItem(dep);
             } else {
-              myDependTableModel.addUnspecifiedItem(dep);
+              myTableModel.addUnspecifiedItem(dep);
             }
           } // foreach moduleReference
         });
@@ -705,7 +720,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             // XXX not quite nice as the same module may be imported twice, as a regular dependency as well as 'extends',
             // here we don't tell one from another and warn both. Would be better to refactor StateTableCellRenderer to give more
             // info about table row (access to underlying table value?)
-            boolean isExtendsDep = ((ModuleDependTableModel) myDependTableModel).getExtendedModules().contains(importRef);
+            boolean isExtendsDep = myTableModel.getExtendedModules().contains(importRef);
             return isExtendsDep && !scanTask.getExtendsSet().contains(moduleImport.getModuleReference());
           }, DependencyCellState.SUPERFLUOUS_EXTENDS);
         }
@@ -717,7 +732,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
                               !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
               DependencyCellState.UNUSED);
         }
-        myDependTableModel.fireTableDataChanged();
+        myTableModel.fireTableDataChanged();
         ModuleDependenciesTab.this.setTableContentIsLoading(false);
       };
       // invokeLater(Runnable) uses ModalityState.defaultModalityState() which is non-model when invoked from non-EDT thread
@@ -729,37 +744,31 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Nullable
     @Override
-    protected FindActionButton getFindAnAction(JBTable table) {
-      return new FindActionButton(table) {
-        @Override
-        public void actionPerformed(AnActionEvent e) {
-          List<SModuleReference> modules = new ArrayList<>();
-          for (int i : myTable.getSelectedRows()) {
-            final DependenciesTableItem valueAt = myDependTableModel.getValueAt(i);
-            modules.add(valueAt.getItem().getModuleRef());
-          }
-          findModuleUsages(modules);
+    protected FindActionButton getFindAnAction(final JBTable table) {
+      return new FindActionButton(() -> {
+        List<SModuleReference> modules = new ArrayList<>();
+        for (int i : table.getSelectedRows()) {
+          final DependenciesTableItem valueAt = myTableModel.getValueAt(i);
+          modules.add(valueAt.getItem().getModuleRef());
         }
-      };
+        findModuleUsages(modules);
+      });
     }
 
     private class DependenciesTableCellEditor extends DefaultCellEditor {
       public DependenciesTableCellEditor() {
-        super(new ComboBox());
+        super(new ComboBox<SDependencyScope>());
       }
 
       @Override
       public Component getTableCellEditorComponent(final JTable table, Object value, boolean isSelected, int row, int column) {
-        final JComboBox combo = (JComboBox) super.getTableCellEditorComponent(table, value, isSelected, row, column);
+        final JComboBox<SDependencyScope> combo = (JComboBox<SDependencyScope>) super.getTableCellEditorComponent(table, value, isSelected, row, column);
         combo.removeAllItems();
         if (row < 0 || row >= table.getModel().getRowCount()) {
           return combo;
         }
-        DependenciesTableItem rowItem = myDependTableModel.getValueAt(row);
-        List<SDependencyScope> items = getItemsForCell(rowItem);
-        for (Object o : items) {
-          combo.addItem(o);
-        }
+        DependenciesTableItem rowItem = myTableModel.getValueAt(row);
+        getItemsForCell(rowItem).forEach(combo::addItem);
         combo.setSelectedItem(rowItem.getItem().getScope());
 
         // MPS-22987 As we don't know height of editor before creation, we need to update row height and return it back after
@@ -797,11 +806,11 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       }
 
       private boolean isLangToLang(DependenciesTableItem item) {
-        return myDependTableModel.getSource() instanceof LanguageDescriptor && item.getModuleType().equals(ModuleType.LANGUAGE);
+        return myTableModel.getSource() instanceof LanguageDescriptor && item.getModuleType() == ModuleType.LANGUAGE;
       }
 
       private boolean isGenToGen(DependenciesTableItem item) {
-        return myDependTableModel.getSource() instanceof GeneratorDescriptor && item.getModuleType().equals(ModuleType.GENERATOR);
+        return myTableModel.getSource() instanceof GeneratorDescriptor && item.getModuleType() == ModuleType.GENERATOR;
       }
     }
   }
@@ -847,16 +856,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         for (SModuleReference reference : list) {
           myRuntimeTableModel.addItem(reference);
         }
-      }).setRemoveAction(new RemoveEntryAction(runtimeTable)).addExtraAction(new FindActionButton(runtimeTable) {
-        @Override
-        public void actionPerformed(AnActionEvent e) {
-          List<SModuleReference> modules = new ArrayList<>();
-          for (int row : runtimeTable.getSelectedRows()) {
-            modules.add(myRuntimeTableModel.getValueAt(row));
-          }
-          findModuleUsages(modules);
-        }
-      });
+      }).setRemoveAction(new RemoveEntryAction(runtimeTable));
+      decorator.addExtraAction(new FindActionButton(() -> findModuleUsages(Arrays.stream(runtimeTable.getSelectedRows()).mapToObj(myRuntimeTableModel::getValueAt).toList())));
       if (myIsReadOnly) {
         final AnActionButtonUpdater disableEdit = (u) -> false;
         decorator.setAddActionUpdater(disableEdit);
@@ -902,16 +903,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         for (SModelReference reference : list) {
           myAccessoriesModelsTableModel.addItem(reference);
         }
-      }).setRemoveAction(new RemoveEntryAction(accessoriesTable)).addExtraAction(new FindActionButton(accessoriesTable) {
-        @Override
-        public void actionPerformed(AnActionEvent e) {
-          List<SModelReference> models = new ArrayList<>();
-          for (int row : accessoriesTable.getSelectedRows()) {
-            models.add(myAccessoriesModelsTableModel.getValueAt(row));
-          }
-          findModelUsages(models);
-        }
-      });
+      }).setRemoveAction(new RemoveEntryAction(accessoriesTable));
+      decorator.addExtraAction(new FindActionButton(() -> findModelUsages(Arrays.stream(accessoriesTable.getSelectedRows()).mapToObj(myAccessoriesModelsTableModel::getValueAt).toList())));
       if (myIsReadOnly) {
         final AnActionButtonUpdater disableEdit = (u) -> false;
         decoratorForAccessories.setAddActionUpdater(disableEdit);
@@ -1096,16 +1089,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     }
 
     @Override
-    protected ToolbarDecorator createToolbar(JBTable usedLangsTable) {
-      ToolbarDecorator decorator = super.createToolbar(usedLangsTable);
-      decorator.addExtraAction(new FindActionButton(usedLangsTable) {
-        @Override
-        public void actionPerformed(AnActionEvent e) {
-          final List<SLanguage> languages = getSelectedLanguages();
-          findLanguageUsages(languages);
-        }
-      });
-      return decorator;
+    protected ToolbarDecorator createToolbar(JBTable table) {
+      return super.createToolbar(table).addExtraAction(new FindActionButton(() -> findLanguageUsages(getSelectedLanguages())));
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.items.DependenciesTableIte
 import jetbrains.mps.ide.ui.dialogs.properties.tables.items.DependenciesTableItem.ModuleType;
 import jetbrains.mps.project.structure.modules.Dependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
-import org.jetbrains.mps.openapi.ui.Modifiable;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -35,17 +34,14 @@ import java.util.List;
  * both classes into one (as well as ModuleDependenciesTab and DependenciesTab). Alternative is to refactor DTM and DT, (e.g. to
  * split DT.getDependTableModel() into create and get, so that subclasses can override getDependTableModel with correct return type
  * to use own model without explicit casts; to move ModuleType out from DependenciesTableItem, etc)
- * @param <T> WTF?
  */
-public abstract class DependTableModel<T> extends AbstractTableModel implements ItemRemovable, Modifiable {
+public abstract class DependTableModel extends AbstractTableModel implements ItemRemovable {
   protected List<DependenciesTableItem> myTableItems = new ArrayList<>();
-  protected T myItem;
 
   private final String myExportColumnName = PropertiesBundle.message("mps.properties.configurable.tablemodel.dependency.column.export");
   private final String myRoleColumnName = PropertiesBundle.message("mps.properties.configurable.tablemodel.dependency.column.scope");
 
-  public DependTableModel(T item) {
-    myItem = item;
+  public DependTableModel() {
   }
   
   public void addItem(DependenciesTableItem item) {
@@ -75,10 +71,6 @@ public abstract class DependTableModel<T> extends AbstractTableModel implements 
 
   public void addUnspecifiedItem(Dependency dep) {
     addItem(new DependenciesTableItem(dep).setModuleType(ModuleType.UNSPECIFIED));
-  }
-
-  public T getSource() {
-    return myItem;
   }
 
   @Override

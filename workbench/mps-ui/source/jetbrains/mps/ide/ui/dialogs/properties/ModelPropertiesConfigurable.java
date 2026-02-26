@@ -286,12 +286,10 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         protected boolean confirmRemove(int row) {
           return ModelDependenciesComponent.this.confirmRemove(importedModelsTable.getValueAt(row, 0));
         }
-      }).addExtraAction(myFindActionButton = new FindActionButton(importedModelsTable) {
-        @Override
-        public void actionPerformed(AnActionEvent e) {
+      }).addExtraAction(myFindActionButton = new FindActionButton(() -> {
           final SearchScope scope = new ModelsScope(myModelDescriptor);
           final List<SModelReference> modelReferences = new ArrayList<>();
-          for (int i : myTable.getSelectedRows()) {
+          for (int i : importedModelsTable.getSelectedRows()) {
             modelReferences.add(myImportedModels.getValueAt(i));
           }
           final SearchQuery query = new SearchQuery(new ModelsHolder(modelReferences), scope);
@@ -299,7 +297,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
           showUsageImpl(query, provider);
           forceCancelCloseDialog();
         }
-      }).addExtraAction(new AnAction(PropertiesBundle.message("model.dependencies.unused"), null, MPSIcons.General.ModelChecker) {
+      )).addExtraAction(new AnAction(PropertiesBundle.message("model.dependencies.unused"), null, MPSIcons.General.ModelChecker) {
 
         @Override
         public @NotNull ActionUpdateThread getActionUpdateThread() {
@@ -439,12 +437,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         decorator.setRemoveActionUpdater(disableEdit);
       }
 
-      decorator.addExtraAction(new FindActionButton(usedLangsTable) {
-        @Override
-        public void actionPerformed(@NotNull AnActionEvent e) {
-          findUsages(getSelectedLanguages());
-        }
-      });
+      decorator.addExtraAction(new FindActionButton(() -> findUsages(getSelectedLanguages())));
 
       final AnAction removeUnusedLang = new AnAction(PropertiesBundle.message("model.usedlanugages.unused"), null, General.ModelChecker) {
 

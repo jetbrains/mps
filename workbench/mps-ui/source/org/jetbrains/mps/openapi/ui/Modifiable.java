@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,5 +22,6 @@ public interface Modifiable {
   void init();
   boolean isModified();
   void apply();
+  // FIXME WTF?!?
   default void unapply(){};
 }
