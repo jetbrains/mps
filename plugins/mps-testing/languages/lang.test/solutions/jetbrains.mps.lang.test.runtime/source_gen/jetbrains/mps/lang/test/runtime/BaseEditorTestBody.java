@@ -336,6 +336,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   protected void invokeAction(final String actionId) throws InvocationTargetException, InterruptedException {
     final AnAction action = ActionManager.getInstance().getAction(actionId);
+    // XXX likely shall use ActionUtil.performAction() or ActionManager.tryToExecute(), see MPS-39549, yet I'm afraid to dive into this now (in case any test goes sideways)
     runUndoableInEDTAndWait(() -> action.actionPerformed(createEvent()));
   }
 

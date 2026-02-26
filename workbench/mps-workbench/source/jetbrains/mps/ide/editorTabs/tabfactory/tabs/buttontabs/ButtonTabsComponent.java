@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,16 +19,18 @@ import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUiKind;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
+import com.intellij.openapi.actionSystem.toolbarLayout.ToolbarLayoutStrategy;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
 import jetbrains.mps.ide.editorTabs.tabfactory.tabs.BaseTabsComponent;
 import jetbrains.mps.ide.editorTabs.tabfactory.tabs.TabEditorLayout;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
-import jetbrains.mps.workbench.action.ActionUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -89,7 +91,7 @@ public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
 
   @Override
   public void updateTabs() {
-    // Emulate old behaviour - always update
+    // Emulate old behavior - always update
     final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNodeRef;
     updateTabs(Collections.singletonList(reference));
   }
@@ -133,7 +135,7 @@ public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
     }
     ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.EDITOR_TOOLBAR, group, true);
     actionToolbar.setTargetComponent(null);
-    actionToolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
+    actionToolbar.setLayoutStrategy(ToolbarLayoutStrategy.WRAP_STRATEGY);
     myToolbar = actionToolbar;
     setContent(myToolbar.getComponent());
     if (getEditedNode() != null) {
@@ -180,8 +182,7 @@ public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
 
   private void performTabAction(AnAction tabAction) {
     final DataContext context = DataManager.getInstance().getDataContext(getComponent());
-    AnActionEvent event = ActionUtils.createEvent(ActionPlaces.UNKNOWN, context);
-    tabAction.actionPerformed(event);
+    ActionUtil.performAction(tabAction, AnActionEvent.createEvent(tabAction, context, null, ActionPlaces.UNKNOWN, ActionUiKind.NONE, null));
   }
 
   @Override

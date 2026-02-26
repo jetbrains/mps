@@ -9,6 +9,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 
@@ -35,7 +36,7 @@ public class GoToAction_Action extends BaseAction {
       return false;
     }
 
-    GoToAction_Action.this.action.update(event);
+    ActionUtil.updateAction(GoToAction_Action.this.action, event);
     return GoToAction_Action.this.action.getTemplatePresentation().isEnabledAndVisible();
   }
   @Override
@@ -45,7 +46,7 @@ public class GoToAction_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.popup.action");
-    GoToAction_Action.this.action.actionPerformed(event);
+    ActionUtil.performAction(GoToAction_Action.this.action, event);
   }
   @NotNull
   public String getActionId() {

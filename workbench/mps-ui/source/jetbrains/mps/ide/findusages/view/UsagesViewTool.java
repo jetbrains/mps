@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext.Builder;
 import com.intellij.openapi.application.ApplicationManager;
@@ -469,7 +470,7 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
 
       // XXX consider ActionManager.tryToExecute(), just need a mechanism to alter DataContext
       AnAction action = ActionManager.getInstance().getAction(MPSActions.FIND_USAGES_WITH_DIALOG_ACTION);
-      action.actionPerformed(e.withDataContext(dc));
+      ActionUtil.performAction(action, e.withDataContext(dc));
     }
   }
 

@@ -17704,18 +17704,17 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3oS0mv1G9We" role="3cqZAp">
-          <node concept="2OqwBi" id="3oS0mv1G9Wi" role="3clFbG">
-            <node concept="2OqwBi" id="3oS0mv1G9Wf" role="2Oq$k0">
+        <node concept="3clFbF" id="5yproddXYYV" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddXZ2I" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="3oS0mv1G9Wf" role="37wK5m">
               <node concept="2WthIp" id="3oS0mv1G9Wg" role="2Oq$k0" />
               <node concept="2BZ7hE" id="3oS0mv1G9Wh" role="2OqNvi">
                 <ref role="2WH_rO" node="3oS0mv1G9VW" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="3oS0mv1G9Wm" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-              <node concept="tl45R" id="3oS0mv1G9Wn" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddXZai" role="37wK5m" />
           </node>
         </node>
       </node>
@@ -17805,18 +17804,17 @@
           </node>
         </node>
         <node concept="3clFbH" id="6$S_rzv4k89" role="3cqZAp" />
-        <node concept="3clFbF" id="3oS0mv1G9W4" role="3cqZAp">
-          <node concept="2OqwBi" id="3oS0mv1G9W8" role="3clFbG">
-            <node concept="2OqwBi" id="3oS0mv1G9W5" role="2Oq$k0">
+        <node concept="3clFbF" id="5yproddXVmn" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddXVCK" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.updateAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="updateAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="3oS0mv1G9W5" role="37wK5m">
               <node concept="2WthIp" id="3oS0mv1G9W6" role="2Oq$k0" />
               <node concept="2BZ7hE" id="3oS0mv1G9W7" role="2OqNvi">
                 <ref role="2WH_rO" node="3oS0mv1G9VW" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="3oS0mv1G9Wc" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
-              <node concept="tl45R" id="3oS0mv1G9Wd" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddXW4U" role="37wK5m" />
           </node>
         </node>
         <node concept="3clFbF" id="4$lKlQJe8$U" role="3cqZAp">
@@ -18379,36 +18377,34 @@
     </node>
     <node concept="tnohg" id="3oS0mv1G9Xc" role="tncku">
       <node concept="3clFbS" id="3oS0mv1G9Xd" role="2VODD2">
-        <node concept="3clFbF" id="3oS0mv1G9XC" role="3cqZAp">
-          <node concept="2OqwBi" id="3oS0mv1G9XG" role="3clFbG">
-            <node concept="2OqwBi" id="3oS0mv1G9XD" role="2Oq$k0">
-              <node concept="2WthIp" id="3oS0mv1G9XE" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="3oS0mv1G9XF" role="2OqNvi">
+        <node concept="3clFbF" id="5yproddY0B3" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddY0Fs" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="5yproddY0Ft" role="37wK5m">
+              <node concept="2WthIp" id="5yproddY0Fu" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="5yproddY0Fv" role="2OqNvi">
                 <ref role="2WH_rO" node="3oS0mv1G9Xh" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="3oS0mv1G9XK" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-              <node concept="tl45R" id="3oS0mv1G9XL" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddY0Fw" role="37wK5m" />
           </node>
         </node>
       </node>
     </node>
     <node concept="tkhdA" id="3oS0mv1G9Xs" role="tmbBb">
       <node concept="3clFbS" id="3oS0mv1G9Xt" role="2VODD2">
-        <node concept="3clFbF" id="3oS0mv1G9Xu" role="3cqZAp">
-          <node concept="2OqwBi" id="3oS0mv1G9Xy" role="3clFbG">
-            <node concept="2OqwBi" id="3oS0mv1G9Xv" role="2Oq$k0">
-              <node concept="2WthIp" id="3oS0mv1G9Xw" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="3oS0mv1G9Xx" role="2OqNvi">
+        <node concept="3clFbF" id="5yproddY0u8" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddY0u9" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.updateAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="updateAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="5yproddY0ua" role="37wK5m">
+              <node concept="2WthIp" id="5yproddY0ub" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="5yproddY0uc" role="2OqNvi">
                 <ref role="2WH_rO" node="3oS0mv1G9Xh" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="3oS0mv1G9XA" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
-              <node concept="tl45R" id="3oS0mv1G9XB" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddY0ud" role="37wK5m" />
           </node>
         </node>
       </node>
@@ -19059,36 +19055,34 @@
     </node>
     <node concept="tnohg" id="3oS0mv1GbMB" role="tncku">
       <node concept="3clFbS" id="3oS0mv1GbMC" role="2VODD2">
-        <node concept="3clFbF" id="3oS0mv1GbMD" role="3cqZAp">
-          <node concept="2OqwBi" id="3oS0mv1GbME" role="3clFbG">
-            <node concept="2OqwBi" id="3oS0mv1GbMF" role="2Oq$k0">
+        <node concept="3clFbF" id="5yproddXRAV" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddXRDD" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="3oS0mv1GbMF" role="37wK5m">
               <node concept="2WthIp" id="3oS0mv1GbMG" role="2Oq$k0" />
               <node concept="2BZ7hE" id="3oS0mv1GbMH" role="2OqNvi">
                 <ref role="2WH_rO" node="3oS0mv1GbMw" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="3oS0mv1GbMI" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-              <node concept="tl45R" id="3oS0mv1GbMJ" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddXSNa" role="37wK5m" />
           </node>
         </node>
       </node>
     </node>
     <node concept="tkhdA" id="3oS0mv1GbMK" role="tmbBb">
       <node concept="3clFbS" id="3oS0mv1GbML" role="2VODD2">
-        <node concept="3clFbF" id="3oS0mv1GbMM" role="3cqZAp">
-          <node concept="2OqwBi" id="3oS0mv1GbMN" role="3clFbG">
-            <node concept="2OqwBi" id="3oS0mv1GbMO" role="2Oq$k0">
-              <node concept="2WthIp" id="3oS0mv1GbMP" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="3oS0mv1GbMQ" role="2OqNvi">
+        <node concept="3clFbF" id="5yproddXPP4" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddXPSY" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.updateAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="updateAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="5yproddXQes" role="37wK5m">
+              <node concept="2WthIp" id="5yproddXPXI" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="5yproddXR8s" role="2OqNvi">
                 <ref role="2WH_rO" node="3oS0mv1GbMw" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="3oS0mv1GbMR" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
-              <node concept="tl45R" id="3oS0mv1GbMS" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddXQFs" role="37wK5m" />
           </node>
         </node>
       </node>
@@ -20019,18 +20013,17 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4mmGoAAuZs$" role="3cqZAp">
-          <node concept="2OqwBi" id="4mmGoAAuZs_" role="3clFbG">
-            <node concept="2OqwBi" id="4mmGoAAuZsA" role="2Oq$k0">
-              <node concept="2WthIp" id="4mmGoAAuZsB" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="4mmGoAAuZsC" role="2OqNvi">
+        <node concept="3clFbF" id="5yproddY05h" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddY0aS" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="5yproddY0aT" role="37wK5m">
+              <node concept="2WthIp" id="5yproddY0aU" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="5yproddY0aV" role="2OqNvi">
                 <ref role="2WH_rO" node="4mmGoAAuZsr" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="4mmGoAAuZsD" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-              <node concept="tl45R" id="4mmGoAAuZsE" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddY0aW" role="37wK5m" />
           </node>
         </node>
       </node>
@@ -20084,18 +20077,17 @@
           </node>
         </node>
         <node concept="3clFbH" id="3zY2KvK2IoT" role="3cqZAp" />
-        <node concept="3clFbF" id="4mmGoAAuZsI" role="3cqZAp">
-          <node concept="2OqwBi" id="4mmGoAAuZsJ" role="3clFbG">
-            <node concept="2OqwBi" id="4mmGoAAuZsK" role="2Oq$k0">
-              <node concept="2WthIp" id="4mmGoAAuZsL" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="4mmGoAAuZsM" role="2OqNvi">
+        <node concept="3clFbF" id="5yproddXZLG" role="3cqZAp">
+          <node concept="2YIFZM" id="5yproddXZLH" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.updateAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="updateAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="2OqwBi" id="5yproddXZLI" role="37wK5m">
+              <node concept="2WthIp" id="5yproddXZLJ" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="5yproddXZLK" role="2OqNvi">
                 <ref role="2WH_rO" node="4mmGoAAuZsr" resolve="action" />
               </node>
             </node>
-            <node concept="liA8E" id="4mmGoAAuZsN" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~AnAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
-              <node concept="tl45R" id="4mmGoAAuZsO" role="37wK5m" />
-            </node>
+            <node concept="tl45R" id="5yproddXZLL" role="37wK5m" />
           </node>
         </node>
         <node concept="3clFbF" id="3zY2KvK2Ip1" role="3cqZAp">
@@ -33494,17 +33486,16 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="4ME5CBaC34b" role="3cqZAp">
-                <node concept="2OqwBi" id="4ME5CBaC34c" role="3clFbG">
-                  <node concept="2ShNRf" id="4ME5CBaC34d" role="2Oq$k0">
-                    <node concept="1pGfFk" id="4ME5CBaC34e" role="2ShVmc">
+              <node concept="3clFbF" id="5yproddXI43" role="3cqZAp">
+                <node concept="2YIFZM" id="5yproddXI8E" role="3clFbG">
+                  <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+                  <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+                  <node concept="2ShNRf" id="5yproddXIaN" role="37wK5m">
+                    <node concept="1pGfFk" id="5yproddXIaO" role="2ShVmc">
                       <ref role="37wK5l" to="be1c:~AnalyzeStacktraceAction.&lt;init&gt;()" resolve="AnalyzeStacktraceAction" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="4ME5CBaC34f" role="2OqNvi">
-                    <ref role="37wK5l" to="be1c:~AnalyzeStacktraceAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-                    <node concept="tl45R" id="4ME5CBaC34g" role="37wK5m" />
-                  </node>
+                  <node concept="tl45R" id="5yproddXIdZ" role="37wK5m" />
                 </node>
               </node>
             </node>

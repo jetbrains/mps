@@ -27,8 +27,9 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.ide.DataManager;
-import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionUiKind;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.core.behavior.IGenericComment__BehaviorDescriptor;
@@ -93,10 +94,8 @@ public class TodoViewer extends JPanel {
     searchTodoAction.setRunOptions(FindUtils.makeProvider(new TodoFinder()), new SearchQuery(new GenericHolder<Project>(myProject), scope.value));
     myUsagesView.setCustomNodeRepresentator(new MyNodeRepresentator());
     DataContext dataContext = DataManager.getInstance().getDataContext(myUsagesView.getComponent());
-    // no idea why clone(), just copied from AnActionEvent.createFromAnAction()
-    Presentation presentation = searchTodoAction.getTemplatePresentation().clone();
-    AnActionEvent actionEvent = AnActionEvent.createFromInputEvent(null, ActionPlaces.TODO_VIEW_TOOLBAR, presentation, dataContext, false, true);
-    searchTodoAction.actionPerformed(actionEvent);
+    AnActionEvent actionEvent = AnActionEvent.createEvent(searchTodoAction, dataContext, null, ActionPlaces.TODO_VIEW_TOOLBAR, ActionUiKind.TOOLBAR, null);
+    ActionUtil.performAction(searchTodoAction, actionEvent);
     getTool().openToolLater(true);
   }
   public static class MyNodeRepresentator extends NodeRepresentatorBase<SNode> {

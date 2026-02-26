@@ -15,6 +15,7 @@ import com.intellij.diagnostic.IdeErrorsDialog;
 import com.intellij.unscramble.AnalyzeStacktraceUtil;
 import java.io.StringWriter;
 import java.io.PrintWriter;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.unscramble.AnalyzeStacktraceAction;
 
 @GeneratedClass(nodeId = "4221956679900513437", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -78,7 +79,7 @@ public class AnalyzeStacktrace_Action extends BaseAction {
       AnalyzeStacktraceUtil.addConsole(((Project) MapSequence.fromMap(_params).get("project")), null, "<Stacktrace>", writer.toString());
     } else {
       // Reuse platform action
-      new AnalyzeStacktraceAction().actionPerformed(event);
+      ActionUtil.performAction(new AnalyzeStacktraceAction(), event);
     }
   }
   @NotNull

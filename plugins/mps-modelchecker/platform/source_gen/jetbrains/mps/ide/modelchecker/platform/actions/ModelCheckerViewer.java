@@ -41,7 +41,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.SearchTask;
-import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.NodeRepresentatorBase;
@@ -182,7 +182,7 @@ public class ModelCheckerViewer extends JPanel {
   }
 
   private void doReCheck() {
-    myCheckAction.actionPerformed(AnActionEvent.createFromInputEvent(myCheckAction, null, ActionPlaces.UNKNOWN));
+    ActionUtil.performAction(myCheckAction, ActionUtil.createEmptyEvent());
   }
   public void dispose() {
     myUsagesView.dispose();

@@ -9,6 +9,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -33,7 +34,7 @@ public class FileDelete_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    FileDelete_Action.this.action.update(event);
+    ActionUtil.updateAction(FileDelete_Action.this.action, event);
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -58,7 +59,7 @@ public class FileDelete_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    FileDelete_Action.this.action.actionPerformed(event);
+    ActionUtil.performAction(FileDelete_Action.this.action, event);
   }
   @NotNull
   public String getActionId() {

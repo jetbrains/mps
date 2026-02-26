@@ -67,6 +67,7 @@
     <import index="4zvo" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.ui(MPS.IDEA.Modules/)" />
     <import index="jlcu" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs(MPS.IDEA.Modules/)" />
     <import index="1037" ref="b00f36f0-49b7-456c-8405-740447ebb192/java:com.intellij.openapi.vcs.changes(MPS.IDEA.Modules/)" />
+    <import index="8rsk" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem.ex(MPS.IDEA/)" />
     <import index="r791" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.text(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -8183,25 +8184,16 @@
       <node concept="3cqZAl" id="3pNk_u$eEI7" role="3clF45" />
       <node concept="3Tm6S6" id="3pNk_u$eHII" role="1B3o_S" />
       <node concept="3clFbS" id="3pNk_u$eEI9" role="3clF47">
-        <node concept="3clFbF" id="3pNk_u$0cWJ" role="3cqZAp">
-          <node concept="2OqwBi" id="3pNk_u$0dHj" role="3clFbG">
-            <node concept="37vLTw" id="3pNk_u$0cWH" role="2Oq$k0">
+        <node concept="3clFbF" id="5yprode0K69" role="3cqZAp">
+          <node concept="2YIFZM" id="5yprode0SUw" role="3clFbG">
+            <ref role="37wK5l" to="8rsk:~ActionUtil.performAction(com.intellij.openapi.actionSystem.AnAction,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="performAction" />
+            <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
+            <node concept="37vLTw" id="5yprode0YJi" role="37wK5m">
               <ref role="3cqZAo" node="2RCLviz0hXd" resolve="myCheckAction" />
             </node>
-            <node concept="liA8E" id="3pNk_u$0eEC" role="2OqNvi">
-              <ref role="37wK5l" to="ngmm:~UsagesView$RerunAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-              <node concept="2YIFZM" id="3pNk_u$0Tjh" role="37wK5m">
-                <ref role="1Pybhc" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
-                <ref role="37wK5l" to="qkt:~AnActionEvent.createFromInputEvent(com.intellij.openapi.actionSystem.AnAction,java.awt.event.InputEvent,java.lang.String)" resolve="createFromInputEvent" />
-                <node concept="37vLTw" id="3pNk_u$0TxG" role="37wK5m">
-                  <ref role="3cqZAo" node="2RCLviz0hXd" resolve="myCheckAction" />
-                </node>
-                <node concept="10Nm6u" id="3pNk_u$0TJy" role="37wK5m" />
-                <node concept="10M0yZ" id="3pNk_u$0TYJ" role="37wK5m">
-                  <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
-                </node>
-              </node>
+            <node concept="2YIFZM" id="5yprode19Ow" role="37wK5m">
+              <ref role="37wK5l" to="8rsk:~ActionUtil.createEmptyEvent()" resolve="createEmptyEvent" />
+              <ref role="1Pybhc" to="8rsk:~ActionUtil" resolve="ActionUtil" />
             </node>
           </node>
         </node>

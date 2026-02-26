@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,9 @@ package jetbrains.mps.ide.ui.dialogs.properties;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.ui.AnActionButton;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SpeedSearchComparator;
@@ -57,7 +58,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
-import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
@@ -233,7 +233,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
               PropertiesBundle.message("model.dependencies.delete.text"), PropertiesBundle.message("model.dependencies.delete.warningText")) {
             @Override
             public void doViewAction() {
-              myFindActionButton.actionPerformed(null);
+              ActionUtil.performAction(myFindActionButton, ActionUtil.createEmptyEvent());
             }
           };
           viewUsagesDeleteDialog.show();
@@ -258,9 +258,12 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
 
       importedModelsTable.setModel(myImportedModels);
 
+      // FIXME seems that I no longer need SMode instances, at least for cellState checks, perhaps, could stick to SModelReferences
+      //       and no resolve (unless necessary e.g. for a model icon)
       ModelTableCellRender cellRender = new ModelTableCellRender(myMPSProject.getRepository());
       cellRender.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
-      cellRender.addCellState(m -> !VisibilityUtil.isVisible(myModelDescriptor.getModule(), m), DependencyCellState.NOT_IN_SCOPE);
+      final VisibilityUtil vu = VisibilityUtil.forModule(myModelDescriptor.getModule());
+      cellRender.addCellState(m -> !vu.isVisible(m), DependencyCellState.NOT_IN_SCOPE);
       final Set<SModelReference> actualCrossModelRefs = getActualCrossModelReferences();
       cellRender.addCellState(m -> !actualCrossModelRefs.contains(m.getReference()), DependencyCellState.UNUSED);
       importedModelsTable.setDefaultRenderer(SModelReference.class, cellRender);
@@ -296,16 +299,16 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
           showUsageImpl(query, provider);
           forceCancelCloseDialog();
         }
-      }).addExtraAction(new AnActionButton(PropertiesBundle.message("model.dependencies.unused"), MPSIcons.General.ModelChecker) {
+      }).addExtraAction(new AnAction(PropertiesBundle.message("model.dependencies.unused"), null, MPSIcons.General.ModelChecker) {
 
         @Override
         public @NotNull ActionUpdateThread getActionUpdateThread() {
-          return ActionUpdateThread.EDT;
+          return ActionUpdateThread.BGT;
         }
 
         @Override
-        public boolean isEnabled() {
-          return super.isEnabled() && anyModelNotUsed();
+        public void update(@NotNull AnActionEvent e) {
+          e.getPresentation().setEnabled(anyModelNotUsed());
         }
 
         private boolean anyModelNotUsed() {
@@ -438,15 +441,15 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
 
       decorator.addExtraAction(new FindActionButton(usedLangsTable) {
         @Override
-        public void actionPerformed(AnActionEvent e) {
+        public void actionPerformed(@NotNull AnActionEvent e) {
           findUsages(getSelectedLanguages());
         }
       });
 
-      final AnActionButton removeUnusedLang = new AnActionButton(PropertiesBundle.message("model.usedlanugages.unused"), General.ModelChecker) {
+      final AnAction removeUnusedLang = new AnAction(PropertiesBundle.message("model.usedlanugages.unused"), null, General.ModelChecker) {
 
         @Override
-        public void actionPerformed(AnActionEvent e) {
+        public void actionPerformed(@NotNull AnActionEvent e) {
           myMPSProject.getModelAccess().runReadAction(() -> {
             boolean anyRemoved = false;
             for (int row = myUsedLangsTable.getRowCount() - 1; row >= 0; row--) {
@@ -463,11 +466,15 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         }
 
         @Override
+        public void update(@NotNull AnActionEvent e) {
+          e.getPresentation().setEnabled(!myIsReadOnly);
+        }
+
+        @Override
         public @NotNull ActionUpdateThread getActionUpdateThread() {
-          return ActionUpdateThread.EDT;
+          return ActionUpdateThread.BGT;
         }
       };
-      removeUnusedLang.setEnabled(!myIsReadOnly);
       decorator.addExtraAction(removeUnusedLang);
       return decorator;
     }

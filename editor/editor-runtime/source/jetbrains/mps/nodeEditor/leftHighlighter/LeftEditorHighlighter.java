@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.UiDataProvider;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext.Builder;
 import com.intellij.openapi.application.ApplicationManager;
@@ -735,10 +736,10 @@ public final class LeftEditorHighlighter extends JComponent implements UiDataPro
           }
           AnActionEvent actionEvent = AnActionEvent.createEvent(action, dcBuilder.build(), null, ICON_AREA, ActionUiKind.POPUP, e);
           // XXX perhaps, shall stick to ActionManager.tryToExecute(), yet not clear how to extend DataContext in this case
-          action.update(actionEvent);
+          ActionUtil.updateAction(action,actionEvent);
           if (actionEvent.getPresentation().isEnabled()) {
             // assume action could declare it's disabled during update()
-            action.actionPerformed(actionEvent);
+            ActionUtil.performAction(action, actionEvent);
           }
         }
         e.consume();
