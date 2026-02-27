@@ -1,21 +1,16 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectCloseListener;
-import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
@@ -28,9 +23,13 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * A listener for SModel changes that updates file presentation in the editor.
+ * Quite similar to TabRootNodesTracker, which is tailored for tabbed editors. It's a single instance, in use from MPSFileNodeEditor,
+ *  active as long as there are MPS Editors (both tabbed and regular)
+ * <p>
  * Collect change events and call com.intellij.openapi.fileEditor.FileEditorManager#updateFilePresentation(com.intellij.openapi.vfs.VirtualFile)
  * For the pattern see com.intellij.openapi.fileEditor.impl.FileEditorPsiTreeChangeListener
  *
@@ -38,33 +37,36 @@ import java.util.HashSet;
  */
 class NodeEditorSModelChangeListener extends SRepositoryContentAdapter implements Disposable {
 
-  public static class Activity extends MPSProjectActivity {
-    @Override
-    public void runActivity(@NotNull final Project project) {
-      final NodeEditorSModelChangeListener listener = new NodeEditorSModelChangeListener(project);
-      class ListenerDisposer implements ProjectCloseListener {
-        @Override
-        public void projectClosed(@NotNull Project p) {
-          if (p == project) {
-            Disposer.dispose(listener);
-          }
-        }
-      }
-      ApplicationManager.getApplication().getMessageBus()
-                        .connect(listener)
-                        .subscribe(ProjectCloseListener.TOPIC, new ListenerDisposer());
-    }
+  static NodeEditorSModelChangeListener getInstance(@NotNull jetbrains.mps.project.Project mpsProject) {
+    final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
+    return ideaProject == null ? null : ideaProject.getService(NodeEditorSModelChangeListener.class);
   }
 
   private final Collection<SNodeReference> myEditedRoots = new HashSet<>();
 
-  private final @Nullable MPSProject myMPSProject;
+  private final MPSProject myMPSProject;
   private final Project myProject;
+  private final AtomicInteger myUseCount = new AtomicInteger(0);
 
   public NodeEditorSModelChangeListener(com.intellij.openapi.project.Project project) {
-    myMPSProject = ProjectHelper.fromIdeaProject(project);
+    // getInstance() is invoked the moment MPSProject is already up and running
+    myMPSProject = ProjectHelper.fromIdeaProjectOrFail(project);
     myProject = project;
     attachRepoListener();
+  }
+
+  void oneUp() {
+    // ATM, no external listener for the changes collected, we handle them right here; this method is merely to actually use the service
+    // not that I think this is the way to go, just a first step down the refactoring road
+    if (myUseCount.incrementAndGet() == 1) {
+      attachRepoListener();
+    }
+  }
+
+  void oneDown() {
+    if (myUseCount.decrementAndGet() == 0) {
+      detachRepoListener();
+    }
   }
 
   @Override
@@ -74,15 +76,11 @@ class NodeEditorSModelChangeListener extends SRepositoryContentAdapter implement
   }
 
   private void attachRepoListener() {
-    if (myMPSProject != null) {
-      new RepoListenerRegistrar(myMPSProject.getRepository(), this).attach();
-    }
+    new RepoListenerRegistrar(myMPSProject.getRepository(), this).attach();
   }
 
   private void detachRepoListener() {
-    if (myMPSProject != null) {
-      new RepoListenerRegistrar(myMPSProject.getRepository(), this).detach();
-    }
+    new RepoListenerRegistrar(myMPSProject.getRepository(), this).detach();
   }
 
   @Override
@@ -116,16 +114,12 @@ class NodeEditorSModelChangeListener extends SRepositoryContentAdapter implement
 
   @Override
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {
-    if (event.getNode() != null) {
-      myEditedRoots.add(event.getNode().getContainingRoot().getReference());
-    }
+    myEditedRoots.add(event.getNode().getContainingRoot().getReference());
   }
 
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
-    if (event.getNode() != null) {
-      myEditedRoots.add(event.getNode().getContainingRoot().getReference());
-    }
+    myEditedRoots.add(event.getNode().getContainingRoot().getReference());
   }
 
   @Override

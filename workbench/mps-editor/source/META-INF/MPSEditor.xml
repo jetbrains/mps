@@ -46,7 +46,7 @@
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent" />
     <projectService serviceImplementation="jetbrains.mps.ide.editor.EditorTrackService" />
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager"/>
-    <postStartupActivity implementation="jetbrains.mps.ide.editor.NodeEditorSModelChangeListener$Activity"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.NodeEditorSModelChangeListener"/>
 
     <projectService serviceInterface="jetbrains.mps.ide.search.SearchHistoryStorage" serviceImplementation="jetbrains.mps.nodeEditor.SearchHistoryComponent"/>
 

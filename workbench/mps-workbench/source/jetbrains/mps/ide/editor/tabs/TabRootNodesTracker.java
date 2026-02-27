@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -187,6 +186,10 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
       }
     }
     myChangedRoots.clear();
+    // There's a difference in a way myEditedRoots get handled here and in similar code in NodeEditorSModelChangeListener
+    // Here, we look for a tabbed editor with a tab for changed root. Then, update presentation of an editor that corresponds to
+    // the *main* node. In NodeEditorSModelChangeListener, there's no information about nodes edited in tabs, all we can do
+    // is to find our VFs for a changed node, and refresh an editor for that node, if any.
     if (!myEditedRoots.isEmpty()) {
       NodeVirtualFileSystem nvfs = NodeVirtualFileSystem.getInstance();
       for (TabsComponent tabsComponent : myTabsComponents) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -239,6 +239,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   @Override
   public void dispose() {
+    NodeEditorSModelChangeListener.getInstance(myProject).oneDown();
     if (myNodeEditor != null) {
       myNodeEditor.dispose();
     }
@@ -277,6 +278,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   }
 
   private void initEditor() {
+    NodeEditorSModelChangeListener.getInstance(myProject).oneUp();
     recreateEditor(myNodeEditor != null ? getState(FileEditorStateLevel.FULL).getEditorState() : null);
   }
 
