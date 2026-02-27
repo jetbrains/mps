@@ -30468,6 +30468,34 @@
           </node>
         </node>
       </node>
+      <node concept="398223" id="6HgHv5Pid5H" role="39821P">
+        <node concept="3_J27D" id="6HgHv5Pid5J" role="Nbhlr">
+          <node concept="3Mxwew" id="6HgHv5Pid5M" role="3MwsjC">
+            <property role="3MwjfP" value="grazie" />
+          </node>
+        </node>
+        <node concept="398223" id="6HgHv5Pid5N" role="39821P">
+          <node concept="3_J27D" id="6HgHv5Pid5O" role="Nbhlr">
+            <node concept="3Mxwew" id="6HgHv5Pid5Q" role="3MwsjC">
+              <property role="3MwjfP" value="lib" />
+            </node>
+          </node>
+          <node concept="13uQ2_" id="6HgHv5Pid5R" role="39821P">
+            <node concept="3_J27D" id="6HgHv5Pid5S" role="13uQ07">
+              <node concept="3Mxwew" id="6HgHv5Pid5T" role="3MwsjC">
+                <property role="3MwjfP" value="grazie.jar" />
+              </node>
+            </node>
+          </node>
+          <node concept="13uQ2_" id="6HgHv5PidBv" role="39821P">
+            <node concept="3_J27D" id="6HgHv5PidBx" role="13uQ07">
+              <node concept="3Mxwew" id="6HgHv5PidBz" role="3MwsjC">
+                <property role="3MwjfP" value="org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1l3spW" id="3IKDaVZnIjX">
