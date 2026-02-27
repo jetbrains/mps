@@ -25,7 +25,7 @@ import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.actionSystem.impl.ActionButton;
 import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.ui.ShadowAction;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vcs.FileStatusManager;
@@ -54,7 +54,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -263,7 +263,9 @@ public class TabbedEditor extends BaseNodeEditor {
 
   /*package*/ void updateProperties() {
     final com.intellij.openapi.project.Project project = ((MPSProject) myProject).getProject();
-    FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+    FileEditorManager manager = FileEditorManager.getInstance(project);
+    // FIXME how come we react to a property change in a currently edited node, and don't use smth like MPSFileNodeEditor.getFile()?
+    //       And why on Earth we duplicate activities of TabRootNodesTracker?
     VirtualFile virtualFile = manager.getCurrentFile();
     if (virtualFile != null) {
       FileStatusManager.getInstance(project).fileStatusChanged(virtualFile);
@@ -298,7 +300,7 @@ public class TabbedEditor extends BaseNodeEditor {
     return result;
   }
 
-  private class MyNameListener extends SNodeChangeListenerAdapter {
+  private class MyNameListener implements SNodeChangeListener {
     private SModel myLastAttachModel;
 
     synchronized void attach(@Nullable SModel model) {

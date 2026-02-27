@@ -239,7 +239,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   @Override
   public void dispose() {
-    NodeEditorSModelChangeListener.getInstance(myProject).oneDown();
+    NodeEditorSModelChangeListener.getInstance(myProject).oneDown(this);
     if (myNodeEditor != null) {
       myNodeEditor.dispose();
     }
@@ -278,7 +278,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   }
 
   private void initEditor() {
-    NodeEditorSModelChangeListener.getInstance(myProject).oneUp();
+    NodeEditorSModelChangeListener.getInstance(myProject).oneUp(this);
     recreateEditor(myNodeEditor != null ? getState(FileEditorStateLevel.FULL).getEditorState() : null);
   }
 

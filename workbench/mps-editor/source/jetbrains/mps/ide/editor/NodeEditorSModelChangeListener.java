@@ -4,10 +4,15 @@
 package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.ex.DocumentEx;
+import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +28,8 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * A listener for SModel changes that updates file presentation in the editor.
@@ -46,25 +52,24 @@ class NodeEditorSModelChangeListener extends SRepositoryContentAdapter implement
 
   private final MPSProject myMPSProject;
   private final Project myProject;
-  private final AtomicInteger myUseCount = new AtomicInteger(0);
+  private final List<MPSFileNodeEditor> myEditors = new CopyOnWriteArrayList<>();
 
   public NodeEditorSModelChangeListener(com.intellij.openapi.project.Project project) {
     // getInstance() is invoked the moment MPSProject is already up and running
     myMPSProject = ProjectHelper.fromIdeaProjectOrFail(project);
     myProject = project;
-    attachRepoListener();
   }
 
-  void oneUp() {
-    // ATM, no external listener for the changes collected, we handle them right here; this method is merely to actually use the service
-    // not that I think this is the way to go, just a first step down the refactoring road
-    if (myUseCount.incrementAndGet() == 1) {
+  void oneUp(MPSFileNodeEditor editor) {
+    if (myEditors.isEmpty()) {
       attachRepoListener();
     }
+    myEditors.add(editor);
   }
 
-  void oneDown() {
-    if (myUseCount.decrementAndGet() == 0) {
+  void oneDown(MPSFileNodeEditor editor) {
+    myEditors.remove(editor);
+    if (myEditors.isEmpty()) {
       detachRepoListener();
     }
   }
@@ -129,15 +134,33 @@ class NodeEditorSModelChangeListener extends SRepositoryContentAdapter implement
 
   @Override
   public void commandFinished(SRepository repository) {
-    if (!myEditedRoots.isEmpty()) {
-      FileEditorManager editorManager = FileEditorManager.getInstance(myProject);
-      NodeVirtualFileSystem nvfs = NodeVirtualFileSystem.getInstance();
-      for (SNodeReference editedRoot : myEditedRoots) {
-        nvfs.lookupVirtualFile(myMPSProject.getRepository(), editedRoot).ifPresent((vfile) -> {
-          if (editorManager.getAllEditors(vfile).length != 0) {
-            editorManager.updateFilePresentation(vfile);
+    if (myEditedRoots.isEmpty()) {
+      return;
+    }
+    final FileDocumentManager dm = FileDocumentManager.getInstance();
+    final FileEditorManager editorManager = FileEditorManager.getInstance(myProject);
+    final long modificationStamp = LocalTimeCounter.currentTime();
+    for (MPSFileNodeEditor editor : myEditors) {
+      // there's 1 document for a regular editor, while tabbed editor may show multiple documents
+      // each document has MPSNodeVirtualFile, for a tabbed editor only one matching the 'main' one of MPSFIleNodeEditor.getFile()
+      boolean editorNeedsUpdate = false;
+      for (Document doc : editor.getDocuments()) {
+        VirtualFile vf = dm.getFile(doc);
+        if (vf instanceof MPSNodeVirtualFile nvf) {
+          if (myEditedRoots.contains(nvf.getSNodePointer())) {
+            editorNeedsUpdate = true;
+            if (doc instanceof DocumentEx docEx) {
+              // even if there's simultaneous VF.setModificationStamp() (e.g. in NodeVirtualFileSystem.updateModificationStamp()),
+              // document gets unique modification time here (currentTime() is a counter)
+              docEx.setModificationStamp(modificationStamp);
+              // XXX I wonder if I shall use FileDocumentManagerImpl.markDocumentUnsaved() here, to avoid custom MPSFileDocumentManagerImpl
+              //     subclass which is there just to ignore unsaved documents
+            }
           }
-        });
+        }
+      }
+      if (editorNeedsUpdate) {
+        editorManager.updateFilePresentation(editor.getFile());
       }
     }
   }
