@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,33 +16,31 @@
 package jetbrains.mps.ide.editor.tabs;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
-import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Listener for file changes specific to tabbed editors (VCS changes).
- * Listener is shared between multiple editors (one for project) and available as a project service.
+ * <p>Listener for file changes specific to tabbed editors (VCS changes).</p>
+ * FIXME need to get same logic for regular (non-tabbed) editors, too. However, to move this code into [mps-editor],
+ *       shall address dependency from TabsComponent first. OTOH, perhaps, for regular editors all necessary
+ *       updates are performed natively by IDEA?
+ * <p>Listener is shared between multiple editors (one for project) and available as a project service.</p>
  */
 class FileStatusChangeListener implements FileStatusListener, Disposable {
-  private final Project myProject;
-  private final com.intellij.openapi.project.Project myIdeaProject;
-  private final Map<SNodeReference, Collection<TabsComponent>> myNodeRef2TabsComponents = new HashMap<>();
+  private final MPSProject myProject;
+  private final List<TabsComponent> myTabComponents = new CopyOnWriteArrayList<>();
 
   @Nullable
   static FileStatusChangeListener getInstance(Project mpsProject) {
@@ -51,47 +49,33 @@ class FileStatusChangeListener implements FileStatusListener, Disposable {
   }
 
   public FileStatusChangeListener(com.intellij.openapi.project.Project project) {
-    myIdeaProject = project;
-    myProject = ProjectHelper.fromIdeaProject(project);
+    myProject = ProjectHelper.fromIdeaProjectOrFail(project);
+    // we don't attach FileStatusListener via MessageBus as we need this listener only when there's MPS Editors
     // TODO: Verify correct Disposable used
-    FileStatusManager.getInstance(myIdeaProject).addFileStatusListener(this, this);
+    FileStatusManager.getInstance(project).addFileStatusListener(this, this);
   }
 
   @Override
   public void dispose() {
-    myNodeRef2TabsComponents.clear();
+    myTabComponents.clear();
   }
 
-  /*package*/ void addTabsComponent(TabsComponent tabsComponent, @NotNull SNodeReference baseNode) {
-    final Collection<TabsComponent> tabsComponents = myNodeRef2TabsComponents.putIfAbsent(baseNode, new ArrayList<>(Collections.singletonList(tabsComponent)));
-    if (tabsComponents != null) {
-      tabsComponents.add(tabsComponent);
-    }
+  /*package*/ void addTabsComponent(TabsComponent tabsComponent) {
+    myTabComponents.add(tabsComponent);
   }
 
-  /*package*/ void removeTabsComponent(TabsComponent tabsComponent, @NotNull SNodeReference baseNode) {
-    final Collection<TabsComponent> tabsComponents = myNodeRef2TabsComponents.get(baseNode);
-    if (tabsComponents == null || tabsComponents.size() == 1) {
-      myNodeRef2TabsComponents.remove(baseNode);
-    } else {
-      tabsComponents.remove(tabsComponent);
-    }
+  /*package*/ void removeTabsComponent(TabsComponent tabsComponent) {
+    myTabComponents.remove(tabsComponent);
   }
 
-  private void updateTabColorsLater(SNodeReference reference) {
-    if (myProject != null) {
-      for (TabsComponent tabsComponent: myNodeRef2TabsComponents.get(reference)) {
-        myProject.getModelAccess().runReadInEDT(tabsComponent::updateTabColors);
-      }
-    }
+  private void updateTabColorsLater(final TabsComponent tc) {
+    myProject.getModelAccess().runReadInEDT(tc::updateTabColors);
   }
 
   @Override
   public void fileStatusesChanged() {
     // Sometimes this doesn't work fast enough, but handles multiple files change, like adding to VCS
-    for (SNodeReference reference: myNodeRef2TabsComponents.keySet()) {
-      updateTabColorsLater(reference);
-    }
+    myTabComponents.forEach(this::updateTabColorsLater);
   }
 
   @Override
@@ -101,16 +85,10 @@ class FileStatusChangeListener implements FileStatusListener, Disposable {
       return;
     }
     final SNodeReference np = ((MPSNodeVirtualFile) virtualFile).getSNodePointer();
-    if (!myNodeRef2TabsComponents.containsKey(np)) {
-      return;
-    }
-    VirtualFile vfp = virtualFile.getParent();
-    final VirtualFile projectDir = ProjectUtil.guessProjectDir(myIdeaProject);
-    // Not quite certain there's a reason to check for project/ancestor, provided we do
-    // have tab for the node. Indeed, we might have noticed a change in another project, but is
-    // it that important to save extra updateTabColorsLater()? 6df275a2 doesn't shed any light.
-    if (vfp != null && projectDir != null && VfsUtilCore.isAncestor(projectDir, vfp, false)) {
-      updateTabColorsLater(np);
-    }
+    // np is not necessarily the main node we've opened TabbedEditor for, could be any of its aspect.
+    myTabComponents.stream().filter(tc -> tc.hasEditorFor(np)).forEach(this::updateTabColorsLater);
+    // FWIW, here used to be an odd code to check project as ancestor (dating back to 6df275a2). However, as this class
+    // is project listener and keeps track of TabsComponents specific to the given project only, I doubt there's any reason
+    // whatsoever to keep this check
   }
 }
