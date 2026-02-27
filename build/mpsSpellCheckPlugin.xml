@@ -104,32 +104,8 @@
         <uses />
         <library jar="/lib/modules/intellij.spellchecker.jar" />
         <library jar="/lib/modules/intellij.spellchecker.xml.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.api.gateway.client.jvm.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.client.ktor.jvm.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.model.ner.jvm.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.model.swagger.annotations.jvm.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.model.tree.jvm.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.nlp.detect.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.rule.engine.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.spell.gec.engine.local.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.spell.hunspell.en.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.tasks.library.api.jvm.jar" />
-        <library jar="/plugins/grazie/lib/ai.grazie.tasks.library.model.jvm.jar" />
-        <library jar="/plugins/grazie/lib/com.carrotsearch-hppc.jar" />
-        <library jar="/plugins/grazie/lib/com.hankcs-aho-corasick-double-array-trie.jar" />
-        <library jar="/plugins/grazie/lib/com.vdurmont-emoji-java.jar" />
         <library jar="/plugins/grazie/lib/grazie.jar" />
-        <library jar="/plugins/grazie/lib/javax.measure-unit-api.jar" />
-        <library jar="/plugins/grazie/lib/net.loomchild-segment.jar" />
-        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-fsa-builders.jar" />
-        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-fsa.jar" />
-        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-speller.jar" />
-        <library jar="/plugins/grazie/lib/org.carrot2-morfologik-stemming.jar" />
-        <library jar="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-language-en.jar" />
         <library jar="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
-        <library jar="/plugins/grazie/lib/org.json-json.jar" />
-        <library jar="/plugins/grazie/lib/tech.units-indriya.jar" />
-        <library jar="/plugins/grazie/lib/tech.uom.lib-uom-lib-common.jar" />
         <sources jar="." descriptor="jetbrains.mps.spellchecker.idea.stubs.msd" />
       </module>
     </echoxml>
@@ -256,32 +232,8 @@
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
         <fileset file="${mps_home}/lib/modules/intellij.spellchecker.jar" />
         <fileset file="${mps_home}/lib/modules/intellij.spellchecker.xml.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.api.gateway.client.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.client.ktor.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.model.ner.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.model.swagger.annotations.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.model.tree.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.nlp.detect.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.rule.engine.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.spell.gec.engine.local.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.spell.hunspell.en.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.tasks.library.api.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/ai.grazie.tasks.library.model.jvm.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/com.carrotsearch-hppc.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/com.hankcs-aho-corasick-double-array-trie.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/com.vdurmont-emoji-java.jar" />
         <fileset file="${mps_home}/plugins/grazie/lib/grazie.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/javax.measure-unit-api.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/net.loomchild-segment.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-fsa-builders.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-fsa.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-speller.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/org.carrot2-morfologik-stemming.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-language-en.jar" />
         <fileset file="${mps_home}/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/org.json-json.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/tech.units-indriya.jar" />
-        <fileset file="${mps_home}/plugins/grazie/lib/tech.uom.lib-uom-lib-common.jar" />
         <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/lib/app-client.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />

@@ -67,7 +67,7 @@
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/4481132555457191249">
     <file name="mpsSpellCheckPlugin.xml">
-      <unit id="4481132555457191249" at="1,0,320,10" name="jetbrains.mps.ide.build.mpsSpellCheckPlugin" />
+      <unit id="4481132555457191249" at="1,0,272,10" name="jetbrains.mps.ide.build.mpsSpellCheckPlugin" />
     </file>
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/5412100053808926057">
