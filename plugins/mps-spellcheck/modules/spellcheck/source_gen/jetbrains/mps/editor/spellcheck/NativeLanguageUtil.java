@@ -63,9 +63,6 @@ public class NativeLanguageUtil {
     if (tag.startsWith("VRZ")) {
       return Category.PREPOSITION;
     }
-    if (tag.startsWith("BYW")) {
-      return Category.CONJUNCTION;
-    }
     if (tag.startsWith("VGW")) {
       return Category.CONJUNCTION;
     }
