@@ -54,6 +54,7 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
@@ -335,7 +336,9 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   private void flushEDTEvents() throws InvocationTargetException, InterruptedException {
     // wait for all events currently in EDT queue
     // FIXME why not App.invokeAndWait+dispatchAllEventsInIdeEventQueue as IdeaEnv does it?
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
+    // XXX FWIW, attempt to use TU.runInUIThreadAndWait() leads to flaky errors in diagram tests (!= property values).
+    //         etbrains.mps.lang.editor.diagram.tests.***ResizeNode_***_Tes
+    SwingUtilities.invokeAndWait(new Runnable() {
       @Override
       public void run() {
         // empty task
