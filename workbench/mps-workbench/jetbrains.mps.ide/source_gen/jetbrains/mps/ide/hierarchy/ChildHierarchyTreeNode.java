@@ -39,9 +39,9 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
     // XXX didn't find any registry key ending with "hierarchy-tree" (Registry... -> "ide.slow.operations.assertion")
     //    likely it's no-op (no indication of registration in 2e891798 either)
     try (AccessToken unused = SlowOperations.allowSlowOperations("hierarchy-tree")) {
+      updateIcon();
       //  FIXME we still use cached SNode instance here, as tree node's user object
       SNode node = (SNode) getUserObject();
-      updateIcon(node);
       List<SNode> descendants = new ArrayList<SNode>(myHierarchyTree.getAbstractChildren(node, myVisited));
       descendants.sort(Comparator.comparing(new Function<SNode, String>() {
         public String apply(SNode node) {
@@ -69,9 +69,10 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
     }
   }
 
-  private void updateIcon(SNode node) {
+  private void updateIcon() {
     // this method is invoked once, after AbstractHierarchyTree got a chance to set this treeNode's icon to a proper one. Here we just need to update it.
-    if (this.myHierarchyTree.getActiveTreeNode() != null && node.getReference().equals(this.myHierarchyTree.getActiveTreeNode().getNodeReference())) {
+    if (this.myHierarchyTree.getActiveTreeNode() != null && getNodeReference().equals(this.myHierarchyTree.getActiveTreeNode().getNodeReference())) {
+      // XXX ^^^ isn't it the same as getActiveTreeNode() == this?!?!
       // Use same approach as in platform for indicate searched node
       // see com.intellij.ide.hierarchy.HierarchyNodeDescriptor#installIcon(javax.swing.Icon, boolean)
       // FWIW, in 2025 IDEA uses blue dot, not arrow
