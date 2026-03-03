@@ -13,13 +13,15 @@ import javax.swing.tree.TreePath;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.ide.icons.GlobalIconManager;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.ide.ui.util.NodeAttributesUtil;
 import java.awt.font.TextAttribute;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.ArrayList;
@@ -40,11 +42,11 @@ public abstract class AbstractHierarchyTree extends MPSTree {
   protected boolean myIsParentHierarchy;
   protected boolean myOnlyInOneModel;
   protected boolean myShowGeneratorModels;
-  protected final SRepository myRepostitory;
+  protected final SRepository myRepository;
   private HierarchyTreeNode myTreeNode;
 
-  public AbstractHierarchyTree(SRepository repostitory) {
-    myRepostitory = repostitory;
+  public AbstractHierarchyTree(SRepository repository) {
+    myRepository = repository;
   }
 
   /**
@@ -104,12 +106,12 @@ public abstract class AbstractHierarchyTree extends MPSTree {
 
   @Override
   protected void doInit(MPSTreeNode node, Runnable runnable) {
-    super.doInit(node, new ModelReadRunnable(myRepostitory.getModelAccess(), runnable));
+    super.doInit(node, new ModelReadRunnable(myRepository.getModelAccess(), runnable));
   }
 
   @Override
   protected void runRebuildAction(Runnable rebuildAction, boolean saveExpansion) {
-    super.runRebuildAction(new ModelReadRunnable(myRepostitory.getModelAccess(), rebuildAction), saveExpansion);
+    super.runRebuildAction(new ModelReadRunnable(myRepository.getModelAccess(), rebuildAction), saveExpansion);
   }
 
   @Override
@@ -122,15 +124,18 @@ public abstract class AbstractHierarchyTree extends MPSTree {
 
   /**
    * Override if you need to control text displayed for a node in a hierarchy.
-   * By default, uses node's name, if any.
+   * By default, uses node's UI presentation
    */
   protected String nodePresentation(SNode n) {
-    String name = n.getName();
+    String name = SNodeOperations.present(n);
     return (name == null ? "no name" : name);
   }
 
   public void setNodePresentation(HierarchyTreeNode treeNode, SNode n) {
     treeNode.setText(nodePresentation(n));
+    treeNode.setIcon(GlobalIconManager.getInstance().getIconFor(n));
+    treeNode.setAdditionalText(SModelOperations.getModelName(SNodeOperations.getModel(n)));
+
     if (NodeAttributesUtil.isDeprecatedNode(n)) {
       treeNode.addFontAttribute(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
     }
@@ -179,7 +184,7 @@ public abstract class AbstractHierarchyTree extends MPSTree {
     return result;
   }
   protected MPSTreeNode rebuildParentHierarchy() {
-    ArrayList<SNode> parentHierarchy = new ArrayList<SNode>();
+    ArrayList<SNode> parentHierarchy = new ArrayList<>();
     SNode parentDeclaration = myHierarchyNode;
     while (parentDeclaration != null) {
       parentHierarchy.add(parentDeclaration);

@@ -83,7 +83,7 @@ public class ConceptHierarchyTree extends AbstractHierarchyTree {
 
   private void buildCaches() {
     MapSequence.fromMap(myChildrenCache).clear();
-    Iterable<Language> languages = new ModuleRepositoryFacade(myRepostitory).getAllModules(Language.class);
+    Iterable<Language> languages = new ModuleRepositoryFacade(myRepository).getAllModules(Language.class);
     Iterable<SModel> structures = Sequence.fromIterable(languages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter());
     Iterable<SNode> concepts = Sequence.fromIterable(structures).translate((it) -> SModelOperations.roots(it, CONCEPTS.AbstractConceptDeclaration$KA));
     Sequence.fromIterable(concepts).visitAll((final SNode child) -> {

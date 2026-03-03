@@ -8,8 +8,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.ide.icons.GlobalIconManager;
 
 @GeneratedClass(nodeId = "5797068448049410624", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
 public class HierarchyTreeNode extends MPSTreeNode {
@@ -17,15 +15,12 @@ public class HierarchyTreeNode extends MPSTreeNode {
 
   public HierarchyTreeNode(@NotNull SNode declaration) {
     super(declaration);
+    // FWIW, now we're almost ready to pass node-ptr here, just need to fix getUserObject() uses
     //  note, for node<> coming from typesystem (hung in the air), pointer likely to be null/null
     myNodeRef = SNodeOperations.getPointer(declaration);
-    String name = declaration.getName();
-    setText((name == null ? "no name" : name));
     setNodeIdentifier(declaration.getNodeId().toString());
     setToggleClickCount(-1);
     setAutoExpandable(false);
-    setAdditionalText(SModelOperations.getModelName(SNodeOperations.getModel(declaration)));
-    setIcon(GlobalIconManager.getInstance().getIconFor(declaration));
   }
 
   @NotNull

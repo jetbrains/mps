@@ -15,7 +15,6 @@ import java.util.function.Function;
 import jetbrains.mps.ide.messages.Icons;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.LayeredIcon;
-import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.icons.AllIcons;
 
 @GeneratedClass(nodeId = "5797068448049410628", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
@@ -28,7 +27,6 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
     super(declaration);
     myHierarchyTree = tree;
     myVisited = new HashSet<SNode>(visited);
-    updateIcon(declaration);
   }
 
   @Override
@@ -38,6 +36,8 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
 
   @Override
   protected void doInit() {
+    // XXX didn't find any registry key ending with "hierarchy-tree" (Registry... -> "ide.slow.operations.assertion")
+    //    likely it's no-op (no indication of registration in 2e891798 either)
     try (AccessToken unused = SlowOperations.allowSlowOperations("hierarchy-tree")) {
       //  FIXME we still use cached SNode instance here, as tree node's user object
       SNode node = (SNode) getUserObject();
@@ -45,7 +45,7 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
       List<SNode> descendants = new ArrayList<SNode>(myHierarchyTree.getAbstractChildren(node, myVisited));
       descendants.sort(Comparator.comparing(new Function<SNode, String>() {
         public String apply(SNode node) {
-          return node.getPresentation();
+          return myHierarchyTree.nodePresentation(node);
         }
       }, Comparator.nullsFirst(Comparator.naturalOrder())));
       Set<SNode> visited = new HashSet<SNode>(myVisited);
@@ -70,11 +70,13 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
   }
 
   private void updateIcon(SNode node) {
+    // this method is invoked once, after AbstractHierarchyTree got a chance to set this treeNode's icon to a proper one. Here we just need to update it.
     if (this.myHierarchyTree.getActiveTreeNode() != null && node.getReference().equals(this.myHierarchyTree.getActiveTreeNode().getNodeReference())) {
       // Use same approach as in platform for indicate searched node
       // see com.intellij.ide.hierarchy.HierarchyNodeDescriptor#installIcon(javax.swing.Icon, boolean)
+      // FWIW, in 2025 IDEA uses blue dot, not arrow
       LayeredIcon icon = new LayeredIcon(2);
-      icon.setIcon(GlobalIconManager.getInstance().getIconFor(node), 0);
+      icon.setIcon(getIcon(), 0);
       icon.setIcon(AllIcons.Actions.Forward, 1, -AllIcons.Actions.Forward.getIconWidth() / 2, 0);
       setIcon(icon);
     }
@@ -87,6 +89,7 @@ public class ChildHierarchyTreeNode extends HierarchyTreeNode {
 
   @Override
   protected void doUpdate() {
+    // I believe this method is never invoked in various hierarchy views
     this.removeAllChildren();
     myInitialized = false;
   }

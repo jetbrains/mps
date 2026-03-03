@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import javax.swing.JComponent;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SupertypesTree extends AbstractHierarchyTree {
+public final class SupertypesTree extends AbstractHierarchyTree {
   private final Project myProject;
   private boolean myShowOnlyStrong = false;
 
@@ -49,6 +49,8 @@ public class SupertypesTree extends AbstractHierarchyTree {
   @Override
   protected String nodePresentation(SNode n) {
     // nodes coming from within typesystem (like ClassifierType) rarely have names. Here, we resort to detailed presentation.
+    // XXX with super.nodePresentation() using node.presentation now, is it still necessary to override?
+    // Can't I fix RuntimeTypeVariable.getPresenation() instead?
     return PresentationManager.toString(n);
   }
 
