@@ -252,7 +252,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   }
 
   public void runCommand(final Runnable runnable) {
-    runTestInEDT(() -> project.getRepository().getModelAccess().executeCommand(() -> runnable.run()));
+    runTestInEDT(() -> project.getModelAccess().executeCommand(runnable));
   }
 
   public void runTestInEDT(final Runnable runnable) {

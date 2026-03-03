@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,9 @@ public class EmptyTabsComponent implements TabsComponent {
 
   @Override
   public List<Document> getAllEditedDocuments() {
-    return Collections.singletonList(MPSUndoUtil.getDoc(myProject.getRepository(), myNode));
+    // see NodeEditor for explanation
+    Document doc = MPSUndoUtil.getDoc(myProject.getRepository(), myNode);
+    return doc != null ? Collections.singletonList(doc) : Collections.emptyList();
   }
 
   @Override

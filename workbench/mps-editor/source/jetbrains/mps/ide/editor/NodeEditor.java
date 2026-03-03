@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.editor.Document;
 import jetbrains.mps.ide.undo.MPSUndoUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.project.Project;
@@ -40,7 +41,17 @@ public class NodeEditor extends BaseNodeEditor {
   @Override
   public List<Document> getAllEditedDocuments() {
     final MPSNodeVirtualFile virtualFile = getCurrentEditorComponent().getVirtualFile();
-    return virtualFile != null ? Collections.singletonList(MPSUndoUtil.getDoc(virtualFile)) : Collections.emptyList();
+    if (virtualFile == null) {
+      return Collections.emptyList();
+    }
+    Document doc = MPSUndoUtil.getDoc(virtualFile);
+    if (doc == null) {
+      // although doc == null is unlikely for regular scenarios, there are still chances to get here
+      // e.g. when MPSNodeVirtualFile has been deleted (and, therefore, invalidated and vf.isValid() == false, which is what FileDocumentManager checks)
+      Logger.getLogger(getClass()).warning("No document for file %s, invalid file?".formatted(virtualFile));
+      return Collections.emptyList();
+    }
+    return Collections.singletonList(doc);
   }
 
   @Override

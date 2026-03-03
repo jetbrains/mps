@@ -52,7 +52,7 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
     project = myEnvironment.openProject(tempDir);
     MakeServiceComponent makesvc = project.getComponent(MakeServiceComponent.class);
     while (makesvc != null && makesvc.isSessionActive()) {
-      Thread.currentThread().sleep(Duration.ofMillis(200));
+      Thread.sleep(Duration.ofMillis(200));
     }
     DumbService.getInstance(((MPSProject) project).getProject()).waitForSmartMode();
   }

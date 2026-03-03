@@ -81,7 +81,6 @@
     <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)" />
     <import index="rbkg" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api.extension(org.junit.junit5/)" />
     <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
-    <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="28m1" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.time(JDK/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="f3o1" ref="r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)" implicit="true" />
@@ -123,7 +122,6 @@
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
-      <concept id="5763944538902644732" name="jetbrains.mps.baseLanguage.structure.StaticMethodCallOperation" flags="ng" index="2PDubS" />
       <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
@@ -6001,27 +5999,21 @@
             <ref role="37wK5l" node="4t_FjFzYbed" resolve="runTestInEDT" />
             <node concept="1bVj0M" id="4t_FjF$0GkC" role="37wK5m">
               <node concept="3clFbS" id="4t_FjF$0GkD" role="1bW5cS">
-                <node concept="1QHqEO" id="4t_FjF$0Gv0" role="3cqZAp">
-                  <node concept="1QHqEC" id="4t_FjF$0Gv1" role="1QHqEI">
-                    <node concept="3clFbS" id="4t_FjF$0Gv2" role="1bW5cS">
-                      <node concept="3clFbF" id="4t_FjF$0HZ9" role="3cqZAp">
-                        <node concept="2OqwBi" id="4t_FjF$0IzS" role="3clFbG">
-                          <node concept="37vLTw" id="4t_FjF$0HZ8" role="2Oq$k0">
-                            <ref role="3cqZAo" node="5dt5FDZHmK4" resolve="runnable" />
-                          </node>
-                          <node concept="liA8E" id="4t_FjF$0J1g" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
-                          </node>
-                        </node>
+                <node concept="3clFbF" id="3$QNyuzFUt6" role="3cqZAp">
+                  <node concept="2OqwBi" id="3$QNyuzG4kV" role="3clFbG">
+                    <node concept="2OqwBi" id="4t_FjF$0GUW" role="2Oq$k0">
+                      <node concept="37vLTw" id="4t_FjF$0GBV" role="2Oq$k0">
+                        <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
+                      </node>
+                      <node concept="liA8E" id="3$QNyuzGqdo" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
                       </node>
                     </node>
-                  </node>
-                  <node concept="2OqwBi" id="4t_FjF$0GUW" role="ukAjM">
-                    <node concept="37vLTw" id="4t_FjF$0GBV" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
-                    </node>
-                    <node concept="liA8E" id="4t_FjF$0HDJ" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                    <node concept="liA8E" id="3$QNyuzGz5m" role="2OqNvi">
+                      <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
+                      <node concept="37vLTw" id="3$QNyuzGH5X" role="37wK5m">
+                        <ref role="3cqZAo" node="5dt5FDZHmK4" resolve="runnable" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -7811,19 +7803,14 @@
         <node concept="2$JKZl" id="482kRw$6lE6" role="3cqZAp">
           <node concept="3clFbS" id="482kRw$6lEh" role="2LFqv$">
             <node concept="3clFbF" id="482kRw$6mI1" role="3cqZAp">
-              <node concept="2OqwBi" id="482kRw$6nVj" role="3clFbG">
-                <node concept="2YIFZM" id="482kRw$6nlY" role="2Oq$k0">
-                  <ref role="37wK5l" to="wyt6:~Thread.currentThread()" resolve="currentThread" />
-                  <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
-                </node>
-                <node concept="2PDubS" id="482kRw$6oxy" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Thread.sleep(java.time.Duration)" resolve="sleep" />
-                  <node concept="2YIFZM" id="482kRw$6Uvs" role="37wK5m">
-                    <ref role="37wK5l" to="28m1:~Duration.ofMillis(long)" resolve="ofMillis" />
-                    <ref role="1Pybhc" to="28m1:~Duration" resolve="Duration" />
-                    <node concept="3cmrfG" id="482kRw$6V1n" role="37wK5m">
-                      <property role="3cmrfH" value="200" />
-                    </node>
+              <node concept="2YIFZM" id="3$QNyuzHIlv" role="3clFbG">
+                <ref role="37wK5l" to="wyt6:~Thread.sleep(java.time.Duration)" resolve="sleep" />
+                <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
+                <node concept="2YIFZM" id="482kRw$6Uvs" role="37wK5m">
+                  <ref role="37wK5l" to="28m1:~Duration.ofMillis(long)" resolve="ofMillis" />
+                  <ref role="1Pybhc" to="28m1:~Duration" resolve="Duration" />
+                  <node concept="3cmrfG" id="482kRw$6V1n" role="37wK5m">
+                    <property role="3cmrfH" value="200" />
                   </node>
                 </node>
               </node>
