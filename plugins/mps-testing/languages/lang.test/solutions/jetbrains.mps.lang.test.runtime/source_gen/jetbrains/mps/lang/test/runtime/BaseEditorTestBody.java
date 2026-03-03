@@ -54,7 +54,6 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
@@ -90,38 +89,23 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     if (LOG.isInfoLevel()) {
       LOG.info("Initializing editor");
     }
-    final Throwable[] ts = new Throwable[1];
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      @Override
-      public void run() {
-        try {
-          BaseEditorTestBody.this.doInitEditor(before, after);
-        } catch (Throwable t) {
-          ts[0] = t;
-        }
-      }
-    });
-    if (ts[0] != null) {
-      throw new RuntimeException("Exception while initializing the editor", ts[0]);
+    final Exception ex = ThreadUtils.runInUIThreadAndWait(() -> BaseEditorTestBody.this.doInitEditor(before, after));
+    if (ex != null) {
+      throw new RuntimeException("Exception while initializing the editor", ex);
     }
     try {
       flushEDTEvents();
-    } catch (InvocationTargetException e) {
-      ts[0] = e;
-    } catch (InterruptedException e) {
-      ts[0] = e;
-    }
-    if (ts[0] != null) {
-      throw new RuntimeException("Exception while initializing the editor", ts[0]);
+    } catch (InvocationTargetException | InterruptedException e) {
+      throw new RuntimeException("Exception while initializing the editor", e);
     }
     return myCurrentEditorComponent;
   }
 
-  private void doInitEditor(final String before, final String after) throws Exception {
+  private void doInitEditor(final String before, final String after) {
     myProject.getModelAccess().runWriteAction(() -> {
       ArrayList<String> toCopy = new ArrayList<>();
       toCopy.add(before);
-      if (!(after.equals(""))) {
+      if (!("".equals(after))) {
         toCopy.add(after);
       }
       prepareTestNodes(toCopy.toArray(new String[toCopy.size()]));
@@ -131,7 +115,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
       if (myStart == null) {
         throw new IllegalStateException("Cannot find cell reference in the test case 'before'");
       }
-      if (!(after.equals(""))) {
+      if (!("".equals(after))) {
         myResult = getNodeById(after);
         myFinish = findCellReference(getRealNodeById(after));
       }
@@ -189,44 +173,41 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   public void testMethod() throws Throwable {
     CachingAppender appender = installAppender();
+    final Exception cleanupException;
+    final UncleanTestExecutionException ute;
     try {
       testMethodImpl();
       checkAssertion();
+    } finally {
       dispose();
       appender.sealEvents();
       if (appender.isNotEmpty()) {
-        throw new UncleanTestExecutionException(appender);
+        ute = new UncleanTestExecutionException(appender);
+      } else {
+        ute = null;
       }
-    } finally {
       uninstallAppender(appender);
-      final Throwable[] ts = new Throwable[1];
-      myProject.getModelAccess().runWriteInEDT(() -> {
-        try {
-          UndoManagerImpl undoManager = (UndoManagerImpl) UndoManager.getInstance(ProjectHelper.toIdeaProject(myProject));
-          MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), BaseEditorTestBody.this.myBefore);
-          undoManager.clearUndoRedoQueueInTests(file);
-        } catch (Throwable t) {
-          ts[0] = t;
-        }
-      });
-      if (ts[0] != null) {
-        throw new RuntimeException("Failure during editor test execution", ts[0]);
-      }
+      cleanupException = ThreadUtils.runInUIThreadAndWait(new ModelWriteRunnable(myProject.getRepository(), () -> {
+        UndoManagerImpl undoManager = (UndoManagerImpl) UndoManager.getInstance(ProjectHelper.toIdeaProject(myProject));
+        MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), BaseEditorTestBody.this.myBefore);
+        undoManager.clearUndoRedoQueueInTests(file);
+      }));
+    }
+    if (cleanupException != null) {
+      throw new RuntimeException("Failure during editor test execution", cleanupException);
+    }
+    if (ute != null) {
+      throw ute;
     }
   }
 
   private void dispose() throws InterruptedException, InvocationTargetException {
-    final Throwable[] ts = new Throwable[1];
-    ThreadUtils.runInUIThreadAndWait(() -> myProject.getModelAccess().runWriteAction(() -> {
-      try {
-        myFileNodeEditor.dispose();
-        myFileNodeEditor = null;
-      } catch (Throwable t) {
-        ts[0] = t;
-      }
+    Exception ex = ThreadUtils.runInUIThreadAndWait(new ModelWriteRunnable(myProject.getModelAccess(), () -> {
+      myFileNodeEditor.dispose();
+      myFileNodeEditor = null;
     }));
-    if (ts[0] != null) {
-      throw new RuntimeException("Failure during test disposal", ts[0]);
+    if (ex != null) {
+      throw new RuntimeException("Failure during test disposal", ex);
     }
   }
 
@@ -353,9 +334,8 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   private void flushEDTEvents() throws InvocationTargetException, InterruptedException {
     // wait for all events currently in EDT queue
-    // FIXME why SwingUtilities here and ThreadUtils in other methods?
     // FIXME why not App.invokeAndWait+dispatchAllEventsInIdeEventQueue as IdeaEnv does it?
-    SwingUtilities.invokeAndWait(new Runnable() {
+    ThreadUtils.runInUIThreadAndWait(new Runnable() {
       @Override
       public void run() {
         // empty task
