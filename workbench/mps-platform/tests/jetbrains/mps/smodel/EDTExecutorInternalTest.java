@@ -17,8 +17,8 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.EDTExecutor.Task;
-import jetbrains.mps.smodel.EDTExecutor.TaskIsOutdated;
+import jetbrains.mps.smodel.EDTExecutorInternal.Task;
+import jetbrains.mps.smodel.EDTExecutorInternal.TaskIsOutdated;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;

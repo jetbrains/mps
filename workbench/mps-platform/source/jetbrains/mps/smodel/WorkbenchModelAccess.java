@@ -44,7 +44,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private static final int WAIT_FOR_WRITE_LOCK_MILLIS = 200;
   private static final String IDEA_WRITE_LOCK_FAIL = "Failed to acquire the IDEA write lock after having waited for %.3f s";
 
-  private final EDTExecutor myEDTExecutor = new EDTExecutor();
+  private final EDTExecutorInternal myEDTExecutor = new EDTExecutorInternal();
   private final TryRunPlatformWriteHelper myPlatformWriteHelper;
   private final WorkbenchUndoHandler myUndoHandler;
   private final CancellableReadsManager myCancellableReads;
@@ -130,7 +130,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   @Internal
   public void forceFlush() {
     // XXX in fact, just _schedules_ a flush, is it what clients expect?
-    myEDTExecutor.forceFlush();
+    myEDTExecutor.forceScheduleFlushEDT();
   }
 
   @Override
@@ -168,11 +168,11 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   /*package*/ void runCommandInEDT_(@NotNull final Runnable r, @NotNull final MPSProject project) {
     myCancellableReads.cancel(); // see runWriteInEDT above
     // beware, anonymous class, not lambda, as I need to use `this` inside, pointing to the right instance.
-    EDTExecutor.Task t = new EDTExecutor.Task() {
+    EDTExecutorInternal.Task t = new EDTExecutorInternal.Task() {
       @Override
-      public boolean tryRun() throws EDTExecutor.TaskIsOutdated {
+      public boolean tryRun() throws EDTExecutorInternal.TaskIsOutdated {
         if (project.isDisposed()) {
-          throw new EDTExecutor.TaskIsOutdated("Task %s is outdated; the reason is %s is disposed".formatted(this, project));
+          throw new EDTExecutorInternal.TaskIsOutdated("Task %s is outdated; the reason is %s is disposed".formatted(this, project));
         }
         return tryWriteInCommand(r, project);
       }

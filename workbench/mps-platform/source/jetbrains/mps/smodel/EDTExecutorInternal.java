@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ import com.intellij.util.ReflectionUtil;
 import com.intellij.util.concurrency.AppExecutorUtil;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.EDTExecutor.Task;
-import jetbrains.mps.smodel.EDTExecutor.TaskIsOutdated;
 import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.TestOnly;
@@ -39,14 +37,19 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
-
 /**
-* Manages the tasks queue; allowing concurrently to add new tasks and flushing the old ones.
+ * Thread-safe
+ * <p>
+ * Invokes read/write/command task asynchronously on the EDT thread. Literally the essence is in the {@code myTaskQueue}
+ * field which contains all the tasks in the order of invocation {@link #scheduleTask(Task)} method
+ * </p>
+ * Manages the tasks queue; allowing concurrently to add new tasks and flushing the old ones.
  * <ol>
  * <li> Tasks might come from various threads, they are added to the *tasks queue*
  * <li> Every time the task is the first one in the queue the #flush is initiated.
- * <li> The flush procedure is executed asynchronously on the EDT (via the {@link TransactionGuard#submitTransactionLater(Disposable, Runnable)})
+ * <li> The flush procedure is executed asynchronously on the EDT
+ * <li> We use  {@link TransactionGuardImpl#wrapLaterInvocation(Runnable, ModalityState)} hack to ensure task execution
+ *      in EDT regardless of actual modality state
  * </ol>
  * Property: The order of execution is equal to the order of tasks' scheduling
  *
@@ -54,6 +57,8 @@ import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
  */
 final class EDTExecutorInternal implements Disposable {
   private static final Logger LOG = Logger.getLogger(EDTExecutorInternal.class);
+  private static final long MAX_SINGLE_EXECUTION_TIME_MS = 100;
+  private static final int QUEUE_MAX_EXPECTED_VALUE = 1000;
 
   // ATM, we use to ensure sequential scheduleTask() and existing checkTheContract() calls.
   // Also, there's a condition to help #flushEvents detect "tasks processed" state, based on the same lock.
@@ -145,6 +150,9 @@ final class EDTExecutorInternal implements Disposable {
     }
   }
 
+  /**
+   *  Note, this method (unlike {@link #flushTasks()}) merely schedules a flush and returns immediately.
+   */
   @Internal
   /*package*/ void forceScheduleFlushEDT() {
     if (LOG.isTraceLevel()) {
@@ -238,8 +246,8 @@ final class EDTExecutorInternal implements Disposable {
   private void warnIfQueueIsTooLarge() {
     // we're in EDT now, and don't expect the queue to decrease in size
     int queueSize = myTaskQueue.size();
-    if (queueSize > EDTExecutor.QUEUE_MAX_EXPECTED_VALUE) {
-      LOG.warning("Tasks queue size is %d which is above the expected %d".formatted(queueSize, EDTExecutor.QUEUE_MAX_EXPECTED_VALUE));
+    if (queueSize > QUEUE_MAX_EXPECTED_VALUE) {
+      LOG.warning("Tasks queue size is %d which is above the expected %d".formatted(queueSize, QUEUE_MAX_EXPECTED_VALUE));
     } else {
       LOG.trace("flushing the queue with %d tasks in it".formatted(queueSize));
     }
@@ -279,6 +287,10 @@ final class EDTExecutorInternal implements Disposable {
     return taskPassed;
   }
 
+  /**
+   * flushes the queue until at some moment it appears to be empty
+   * Note, this method waits for the task queue to become empty
+   */
   void flushTasks() {
     if (ThreadUtils.isInEDT()) {
       throw new IllegalStateException("Current Thread is EDT : possible deadlock");
@@ -323,6 +335,16 @@ final class EDTExecutorInternal implements Disposable {
     // XXX I wonder where this contract comes from. Disposable doesn't explicitly guarantee EDT, does it?
     assert ThreadUtils.isInEDT();
     myDisposed = true;
+  }
+
+  interface Task {
+    boolean tryRun() throws TaskIsOutdated;
+  }
+
+  static final class TaskIsOutdated extends Exception {
+    TaskIsOutdated(@NotNull String reason) {
+      super(reason);
+    }
   }
 
   private record CloseableLock(Lock myDelegate) implements AutoCloseable {
