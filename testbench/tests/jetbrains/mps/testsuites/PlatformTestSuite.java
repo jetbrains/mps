@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import org.junit.runners.model.RunnerBuilder;
  */
 @RunWith(PlatformTestSuite.class)
 @Suite.SuiteClasses({
-    jetbrains.mps.smodel.EDTExecutorInternalTest.class,
+    jetbrains.mps.smodel.EDTExecutorTest.class,
     jetbrains.mps.environment.IdeaEnvironmentTest.class,
     jetbrains.mps.classloading.DeploymentConcurrencyTest.class,
     jetbrains.mps.vfs.tracking.DiskMemoryConflictTest.class,

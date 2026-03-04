@@ -55,8 +55,8 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  * @author apyshkin
  */
-final class EDTExecutorInternal implements Disposable {
-  private static final Logger LOG = Logger.getLogger(EDTExecutorInternal.class);
+final class EDTExecutor implements Disposable {
+  private static final Logger LOG = Logger.getLogger(EDTExecutor.class);
   private static final long MAX_SINGLE_EXECUTION_TIME_MS = 100;
   private static final int QUEUE_MAX_EXPECTED_VALUE = 1000;
 
@@ -70,7 +70,7 @@ final class EDTExecutorInternal implements Disposable {
   /**
    * _concurrent_ queue of runnable to get executed in EDT.
    * elements are added only in the {@code EDTExecutor#scheduleTask(Task)}
-   * elements are removed in the EDT only in the {@link EDTExecutorInternal#tryToRunTopTask()}
+   * elements are removed in the EDT only in the {@link EDTExecutor#tryToRunTopTask()}
    */
   private final Deque<Task> myTaskQueue = new ConcurrentLinkedDeque<>();
   /*
@@ -311,7 +311,7 @@ final class EDTExecutorInternal implements Disposable {
   /**
    * A standard idiom: waiting for a condition to happen (here: wait until the tasks queue is empty)
    * Note, there's no guarantee that by return of the method the queue is still empty.
-   * Triggered by {@link EDTExecutorInternal#signalQueueBecameEmpty()}
+   * Triggered by {@link EDTExecutor#signalQueueBecameEmpty()}
    */
   private void waitForQueueToBeEmpty() {
     // note, use of myLock here doesn't prevent additions to the queue, as await() down there releases the lock

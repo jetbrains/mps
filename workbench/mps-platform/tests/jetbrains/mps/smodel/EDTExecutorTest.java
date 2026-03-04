@@ -17,8 +17,8 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.smodel.EDTExecutorInternal.Task;
-import jetbrains.mps.smodel.EDTExecutorInternal.TaskIsOutdated;
+import jetbrains.mps.smodel.EDTExecutor.Task;
+import jetbrains.mps.smodel.EDTExecutor.TaskIsOutdated;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
@@ -45,8 +45,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author apyshkin
  * @since 28/03/2020
  */
-public class EDTExecutorInternalTest {
-  private final static Logger LOG = Logger.getLogger(EDTExecutorInternalTest.class);
+public class EDTExecutorTest {
+  private final static Logger LOG = Logger.getLogger(EDTExecutorTest.class);
 
   private final static long TIME_OUT_MS = 60000;
 
@@ -61,7 +61,7 @@ public class EDTExecutorInternalTest {
   public static void setup() {
     // Though we don't explicitly use messages of the logger, we still need them reported - if the test fails,
     // it's the only way to find out why.
-    executorImplLogger = Logger.getLogger(EDTExecutorInternal.class);
+    executorImplLogger = Logger.getLogger(EDTExecutor.class);
     executorImplLogger.enableTrace();
   }
 
@@ -75,10 +75,10 @@ public class EDTExecutorInternalTest {
   @Test
   public void firstTaskInvokesFlush() throws InterruptedException {
     LOG.info("My thread is " + Thread.currentThread());
-    EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
+    EDTExecutor edtExecutor = new EDTExecutor();
     ExecutorService pool = Executors.newFixedThreadPool(1);
     Semaphore semaphore = new Semaphore(0);
-    Collection<Callable<Object>> taskList = asTaskList(edtExecutorInternal, Collections.singleton(new MyTask() {
+    Collection<Callable<Object>> taskList = asTaskList(edtExecutor, Collections.singleton(new MyTask() {
       @Override
       public boolean tryRun() throws TaskIsOutdated {
         boolean b = super.tryRun();
@@ -89,12 +89,12 @@ public class EDTExecutorInternalTest {
 
     pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
 
-    Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
+    Assert.assertTrue("Contract is broken", edtExecutor.checkTheContract());
     boolean success = semaphore.tryAcquire(2000, TimeUnit.MILLISECONDS);
     Assert.assertTrue("Could not execute the task", success);
-    Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
+    Assert.assertTrue("Contract is broken", edtExecutor.checkTheContract());
     TimeUnit.MILLISECONDS.sleep(1000);
-    Assert.assertFalse("The flush is still scheduled", edtExecutorInternal.isFlushScheduled());
+    Assert.assertFalse("The flush is still scheduled", edtExecutor.isFlushScheduled());
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
   }
 
@@ -124,16 +124,16 @@ public class EDTExecutorInternalTest {
 
   private void doFlushTest(int nThreads, long timeoutMillis, List<MyTask> tasks) throws InterruptedException {
     LOG.info("My thread is " + Thread.currentThread());
-    EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
+    EDTExecutor edtExecutor = new EDTExecutor();
     ExecutorService pool = Executors.newFixedThreadPool(nThreads);
-    pool.invokeAll(asTaskList(edtExecutorInternal, tasks), timeoutMillis, TimeUnit.MILLISECONDS);
-    Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
+    pool.invokeAll(asTaskList(edtExecutor, tasks), timeoutMillis, TimeUnit.MILLISECONDS);
+    Assert.assertTrue("Contract is broken", edtExecutor.checkTheContract());
 
-    edtExecutorInternal.flushTasks(); // the main thing
+    edtExecutor.flushTasks(); // the main thing
 
     tasks.forEach(t -> Assert.assertTrue("Could not execute the task", t.getExecResult()));
-    Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
-    Assert.assertFalse("The flush is still scheduled", edtExecutorInternal.isFlushScheduled());
+    Assert.assertTrue("Contract is broken", edtExecutor.checkTheContract());
+    Assert.assertFalse("The flush is still scheduled", edtExecutor.isFlushScheduled());
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
   }
 
@@ -145,12 +145,12 @@ public class EDTExecutorInternalTest {
     return Arrays.asList(tt);
   }
 
-  private static Collection<Callable<Object>> asTaskList(EDTExecutorInternal edtExecutorInternal, Collection<? extends Task> tasks) {
+  private static Collection<Callable<Object>> asTaskList(EDTExecutor edtExecutor, Collection<? extends Task> tasks) {
     Collection<Callable<Object>> taskList = new ArrayList<>();
     for (Task task : tasks) {
       taskList.add(() -> {
-        edtExecutorInternal.scheduleTask(task);
-        Assert.assertTrue("Flush must be scheduled now", edtExecutorInternal.isFlushScheduled());
+        edtExecutor.scheduleTask(task);
+        Assert.assertTrue("Flush must be scheduled now", edtExecutor.isFlushScheduled());
         return null;
       });
     }
@@ -166,7 +166,7 @@ public class EDTExecutorInternalTest {
 //    LogManager.getLogger(EDTExecutorInternal.class).setLevel(Level.TRACE);
 //    LOG.removeAllAppenders();
 //    LOG.addAppender(new ConsoleAppender(new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN)));
-    EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
+    EDTExecutor edtExecutor = new EDTExecutor();
     int nThreads = Runtime.getRuntime().availableProcessors();
     ExecutorService pool = Executors.newFixedThreadPool(nThreads);
     Collection<Callable<Boolean>> taskList = new ArrayList<>();
@@ -177,7 +177,7 @@ public class EDTExecutorInternalTest {
       final int finalIter = iter;
       taskList.add(() -> {
         if (deadlockDetected.get()) return false;
-        edtExecutorInternal.scheduleTask(() -> {
+        edtExecutor.scheduleTask(() -> {
           int kth = random.nextInt(10);
           LOG.info("Iteration #" + finalIter + ": the " + kth + "-th fibonacci number is: " + fib(kth) + " (" + Thread.currentThread() + ")");
           return true;
@@ -193,7 +193,7 @@ public class EDTExecutorInternalTest {
           if (deadlockDetected.get()) return false;
           LOG.info("Iteration #" + finalIter + ", task #" + finalI + ": scheduling (" + Thread.currentThread() + "; " + semaphore + ")");
           Instant then = Instant.now();
-          edtExecutorInternal.scheduleTask(() -> {
+          edtExecutor.scheduleTask(() -> {
             int nextNum = random.nextInt(5, 15);
             LOG.info("Iteration #" + finalIter + ", task #" + finalI + ": in " + ChronoUnit.MILLIS.between(then, Instant.now()) + "ms it was found that the " + nextNum +
                      " - th fibonacci number is " + fib(nextNum) + " (" + Thread.currentThread() + "; " + semaphore + ")");
@@ -220,7 +220,7 @@ public class EDTExecutorInternalTest {
     }
     List<Future<Boolean>> futures = pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
 
-    if (!edtExecutorInternal.checkTheContract()) {
+    if (!edtExecutor.checkTheContract()) {
       Assert.fail("Contract is broken");
     }
     Assert.assertFalse("Could not wait until the task group is finished", deadlockDetected.get());
@@ -230,9 +230,9 @@ public class EDTExecutorInternalTest {
       }
     }
     LOG.info("Flushing tasks");
-    edtExecutorInternal.flushTasks();
+    edtExecutor.flushTasks();
     LOG.info("Tasks are flushed");
-    if (edtExecutorInternal.isFlushScheduled()) {
+    if (edtExecutor.isFlushScheduled()) {
       Assert.fail("The flush is still scheduled");
     }
 
@@ -257,7 +257,7 @@ public class EDTExecutorInternalTest {
 
     @Override
     public boolean tryRun() throws TaskIsOutdated {
-      LOG.info("I know what the %d-th Fibonacci number is: %d (%s) ".formatted(myC, EDTExecutorInternalTest.fib(myC), Thread.currentThread()));
+      LOG.info("I know what the %d-th Fibonacci number is: %d (%s) ".formatted(myC, EDTExecutorTest.fib(myC), Thread.currentThread()));
       myRes.set(true);
       return true;
     }
