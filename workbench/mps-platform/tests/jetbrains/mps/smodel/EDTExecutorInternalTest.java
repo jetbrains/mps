@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.EDTExecutor.Task;
+import jetbrains.mps.smodel.EDTExecutor.TaskIsOutdated;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
@@ -26,7 +28,9 @@ import org.junit.Test;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -46,7 +50,7 @@ public class EDTExecutorInternalTest {
 
   private final static long TIME_OUT_MS = 60000;
 
-  private int fib(int k) {
+  static int fib(int k) {
     if (k <= 1) return 1;
     return fib(k - 1) + fib(k - 2);
   }
@@ -73,23 +77,18 @@ public class EDTExecutorInternalTest {
     LOG.info("My thread is " + Thread.currentThread());
     EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
     ExecutorService pool = Executors.newFixedThreadPool(1);
-    Collection<Callable<Object>> taskList = new ArrayList<>();
     Semaphore semaphore = new Semaphore(0);
-    taskList.add(() -> {
-      edtExecutorInternal.scheduleTask(() -> {
-        LOG.info("I know what the 10-th fibonacci number is: " + fib(10) + " (" + Thread.currentThread() + ")");
+    Collection<Callable<Object>> taskList = asTaskList(edtExecutorInternal, Collections.singleton(new MyTask() {
+      @Override
+      public boolean tryRun() throws TaskIsOutdated {
+        boolean b = super.tryRun();
         semaphore.release();
-        return true;
-      });
-      Assert.assertTrue("Flush must be scheduled now", edtExecutorInternal.isFlushScheduled());
-      return null;
-    });
-    try {
-      pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-      Assert.fail();
-    }
+        return b;
+      }
+    }));
+
+    pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
+
     Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
     boolean success = semaphore.tryAcquire(2000, TimeUnit.MILLISECONDS);
     Assert.assertTrue("Could not execute the task", success);
@@ -100,31 +99,62 @@ public class EDTExecutorInternalTest {
   }
 
   @Test
-  public void flushTasksTest() throws InterruptedException {
+  public void flushTasksTest_Single() throws InterruptedException {
     Assume.assumeTrue(ApplicationManager.getApplication().isUnitTestMode());
+    doFlushTest(1, TIME_OUT_MS, caseSimpleTasks(1));
+  }
+
+  /**
+   * There are enough threads to publish each task
+   */
+  @Test
+  public void flushTasksTest_Many() throws InterruptedException {
+    final int nThreads = 5;
+    doFlushTest(nThreads, TIME_OUT_MS, caseSimpleTasks(nThreads));
+  }
+
+  /**
+   * Idea is to check when few threads schedule numerous tasks
+   */
+  @Test
+  public void flushTasksTest_RaceMany() throws InterruptedException {
+    final int nThreads = 2;
+    doFlushTest(nThreads, TIME_OUT_MS, caseSimpleTasks(nThreads * 5));
+  }
+
+  private void doFlushTest(int nThreads, long timeoutMillis, List<MyTask> tasks) throws InterruptedException {
     LOG.info("My thread is " + Thread.currentThread());
     EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
-    ExecutorService pool = Executors.newFixedThreadPool(1);
-    Collection<Callable<Object>> taskList = new ArrayList<>();
-    AtomicBoolean res = new AtomicBoolean(false);
-    taskList.add(() -> {
-      edtExecutorInternal.scheduleTask(() -> {
-        LOG.info("I know what the 10-th fibonacci number is: " + fib(10) + " (" + Thread.currentThread() + ")");
-        res.set(true);
-        return true;
-      });
-      Assert.assertTrue("Flush must be scheduled now", edtExecutorInternal.isFlushScheduled());
-      return null;
-    });
-    pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
+    ExecutorService pool = Executors.newFixedThreadPool(nThreads);
+    pool.invokeAll(asTaskList(edtExecutorInternal, tasks), timeoutMillis, TimeUnit.MILLISECONDS);
     Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
 
     edtExecutorInternal.flushTasks(); // the main thing
 
-    Assert.assertTrue("Could not execute the task", res.get());
+    tasks.forEach(t -> Assert.assertTrue("Could not execute the task", t.getExecResult()));
     Assert.assertTrue("Contract is broken", edtExecutorInternal.checkTheContract());
     Assert.assertFalse("The flush is still scheduled", edtExecutorInternal.isFlushScheduled());
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
+  }
+
+  private static List<MyTask> caseSimpleTasks(int number) {
+    MyTask[] tt = new MyTask[number];
+    for (int i = 0; i < number; i++) {
+      tt[i] = new MyTask();
+    }
+    return Arrays.asList(tt);
+  }
+
+  private static Collection<Callable<Object>> asTaskList(EDTExecutorInternal edtExecutorInternal, Collection<? extends Task> tasks) {
+    Collection<Callable<Object>> taskList = new ArrayList<>();
+    for (Task task : tasks) {
+      taskList.add(() -> {
+        edtExecutorInternal.scheduleTask(task);
+        Assert.assertTrue("Flush must be scheduled now", edtExecutorInternal.isFlushScheduled());
+        return null;
+      });
+    }
+    return taskList;
   }
 
 //  @Test
@@ -207,6 +237,30 @@ public class EDTExecutorInternalTest {
     }
 
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
+  }
+
+  private static class MyTask implements Task {
+    private final int myC;
+    private final AtomicBoolean myRes;
+
+    public MyTask() {
+      this(10, new AtomicBoolean(false));
+    }
+    public MyTask(int c, AtomicBoolean res) {
+      myC = c;
+      myRes = res;
+    }
+
+    boolean getExecResult() {
+      return myRes.get();
+    }
+
+    @Override
+    public boolean tryRun() throws TaskIsOutdated {
+      LOG.info("I know what the %d-th Fibonacci number is: %d (%s) ".formatted(myC, EDTExecutorInternalTest.fib(myC), Thread.currentThread()));
+      myRes.set(true);
+      return true;
+    }
   }
 }
 
