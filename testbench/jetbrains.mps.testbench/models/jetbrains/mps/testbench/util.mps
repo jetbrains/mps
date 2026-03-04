@@ -1087,27 +1087,6 @@
             </node>
           </node>
           <node concept="3clFbH" id="3PwYUBHEwqX" role="3cqZAp" />
-          <node concept="3SKdUt" id="3PwYUBHExk$" role="3cqZAp">
-            <node concept="1PaTwC" id="3PwYUBHExk_" role="1aUNEU">
-              <node concept="3oM_SD" id="3PwYUBHExkC" role="1PaTwD">
-                <property role="3oM_SC" value="jetbrains.mps.smodel.EDTExecutorInternal" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="3m4z3Ef4MiA" role="3cqZAp">
-            <node concept="2OqwBi" id="3m4z3Ef4Rqi" role="3clFbG">
-              <node concept="37vLTw" id="3m4z3Ef4Rqh" role="2Oq$k0">
-                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
-              </node>
-              <node concept="liA8E" id="3m4z3Ef4Rqj" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
-                <node concept="Xl_RD" id="3m4z3Ef4Rqk" role="37wK5m">
-                  <property role="Xl_RC" value="|(MPS EDT Executor.*)" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbH" id="3m4z3Ef7DRV" role="3cqZAp" />
           <node concept="3SKdUt" id="3m4z3Ef7EY1" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef7EY2" role="1aUNEU">
               <node concept="3oM_SD" id="3m4z3Ef7EY5" role="1PaTwD">
