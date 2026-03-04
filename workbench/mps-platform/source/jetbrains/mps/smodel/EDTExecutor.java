@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,19 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.util.Disposer;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 
 /**
  * Thread-safe
- *
+ * <p>
  * Invokes read/write/command task asynchronously on the EDT thread. Literally the essence is in the {@code myTaskQueue}
- * field which contains all the tasks in the order of invocation #scheduleXXX methods
- *
+ * field which contains all the tasks in the order of invocation {@link #scheduleTask(Task)} method
+ * </p>
  */
 @Immutable
 final class EDTExecutor implements Disposable {
-  static final int TERMINATION_TIMEOUT_MS = 2000;
-
   static final long MAX_SINGLE_EXECUTION_TIME_MS = 100;
   static final int QUEUE_MAX_EXPECTED_VALUE = 1000;
 
@@ -43,28 +39,9 @@ final class EDTExecutor implements Disposable {
     Disposer.register(this, myExecutor);
   }
 
-  void scheduleRead(@NotNull Computable<Boolean> tryRead) {
-    scheduleTask(tryRead::compute);
-  }
-
-  void scheduleWrite(@NotNull Computable<Boolean> tryWrite) {
-    scheduleTask(tryWrite::compute);
-  }
-
-  void scheduleCommand(@NotNull Computable<Boolean> tryCommand, @NotNull Project project) {
-    scheduleTask(new Task() {
-      @Override
-      public boolean tryRun() throws TaskIsOutdated {
-        if (project.isDisposed()) {
-          throw new TaskIsOutdated(this, "The project " + project + " is disposed");
-        }
-        return tryCommand.compute();
-      }
-    });
-  }
-
   /**
    * flushes the queue until at some moment it appears to be empty
+   * Note, this method waits for the task queue to become empty
    */
   void flushEventsQueue() {
     myExecutor.flushTasks();
@@ -72,10 +49,11 @@ final class EDTExecutor implements Disposable {
 
   @Internal
   void forceFlush() {
+    // Note, this method merely schedules a flush and returns immediately.
     myExecutor.forceScheduleFlushEDT();
   }
 
-  private void scheduleTask(@NotNull Task task) {
+  void scheduleTask(@NotNull Task task) {
     myExecutor.scheduleTask(task);
   }
 
@@ -88,8 +66,8 @@ final class EDTExecutor implements Disposable {
   }
 
   static final class TaskIsOutdated extends Exception {
-    TaskIsOutdated(@NotNull Task task, @NotNull String reason) {
-      super("Task " + task + " is outdated; the reason is " + reason);
+    TaskIsOutdated(@NotNull String reason) {
+      super(reason);
     }
   }
 }

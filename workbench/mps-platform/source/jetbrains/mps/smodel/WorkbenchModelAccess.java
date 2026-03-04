@@ -129,6 +129,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   @Deprecated(since = "201", forRemoval = true)
   @Internal
   public void forceFlush() {
+    // XXX in fact, just _schedules_ a flush, is it what clients expect?
     myEDTExecutor.forceFlush();
   }
 
@@ -137,7 +138,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     if (handleIfCancellable(r)) {
       return;
     }
-    myEDTExecutor.scheduleRead(() -> tryRead(r));
+    myEDTExecutor.scheduleTask(() -> tryRead(r));
   }
 
   // return true if runnable doesn't need further processing
@@ -161,12 +162,22 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     // though it seems that if we do it from the original thread, not EDT, we facilitate use of CancellableReadActions from within
     // the ED thread. Otherwise, with cancel from withing scheduleWrite(), there'd be no chances for cancellable action started in EDT to
     // get cancellation request (code in scheduleWrite would get executed *after* the read action completes).
-    myEDTExecutor.scheduleWrite(() -> tryWrite(r));
+    myEDTExecutor.scheduleTask(() -> tryWrite(r));
   }
 
-  /*package*/ void runCommandInEDT_(@NotNull Runnable r, @NotNull MPSProject project) {
+  /*package*/ void runCommandInEDT_(@NotNull final Runnable r, @NotNull final MPSProject project) {
     myCancellableReads.cancel(); // see runWriteInEDT above
-    myEDTExecutor.scheduleCommand(() -> tryWriteInCommand(r, project), project);
+    // beware, anonymous class, not lambda, as I need to use `this` inside, pointing to the right instance.
+    EDTExecutor.Task t = new EDTExecutor.Task() {
+      @Override
+      public boolean tryRun() throws EDTExecutor.TaskIsOutdated {
+        if (project.isDisposed()) {
+          throw new EDTExecutor.TaskIsOutdated("Task %s is outdated; the reason is %s is disposed".formatted(this, project));
+        }
+        return tryWriteInCommand(r, project);
+      }
+    };
+    myEDTExecutor.scheduleTask(t);
   }
 
   private boolean isInEDT() {
