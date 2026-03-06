@@ -85,16 +85,22 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   public void changed(DataSource source, Iterable<String> changedItems) {
     // FIXME it works, but is not incremental and is ugly
 
-    assertCanChange();
+    SRepository repo = getRepository();
+    if (repo == null) {
+      // shall not happen (we listen to FS events when model is attached), just in case
+      return;
+    }
 
     SModel oldModel = getCurrentModelInternal();
     // already attached but not createModel()'d yet
     if (oldModel == null) {
       return;
     }
-    MapSequence.fromMap(myRootsPerFile).clear();
-    MapSequence.fromMap(myRootsById).clear();
-    replace(createModel());
+    repo.getModelAccess().runWriteAction(() -> {
+      MapSequence.fromMap(myRootsPerFile).clear();
+      MapSequence.fromMap(myRootsById).clear();
+      replace(createModel());
+    });
   }
 
   @Override

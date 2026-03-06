@@ -1428,9 +1428,75 @@
           </node>
         </node>
         <node concept="3clFbH" id="4WQdl6XE$25" role="3cqZAp" />
-        <node concept="3clFbF" id="C3pgkf1Mfn" role="3cqZAp">
-          <node concept="1rXfSq" id="C3pgkf1Mfk" role="3clFbG">
-            <ref role="37wK5l" to="g3l6:~SModelBase.assertCanChange()" resolve="assertCanChange" />
+        <node concept="3cpWs8" id="4mwNgL7CIyr" role="3cqZAp">
+          <node concept="3cpWsn" id="4mwNgL7CIys" role="3cpWs9">
+            <property role="TrG5h" value="repo" />
+            <node concept="3uibUv" id="4mwNgL7CIyt" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+            </node>
+            <node concept="1rXfSq" id="4mwNgL7CMay" role="33vP2m">
+              <ref role="37wK5l" to="g3l6:~SModelBase.getRepository()" resolve="getRepository" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4mwNgL7CTev" role="3cqZAp">
+          <node concept="3clFbS" id="4mwNgL7CTex" role="3clFbx">
+            <node concept="3SKdUt" id="4mwNgL7D6LO" role="3cqZAp">
+              <node concept="1PaTwC" id="4mwNgL7D6LP" role="1aUNEU">
+                <node concept="3oM_SD" id="4mwNgL7D6LQ" role="1PaTwD">
+                  <property role="3oM_SC" value="shall" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7D6LT" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7D6MK" role="1PaTwD">
+                  <property role="3oM_SC" value="happen" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DaXn" role="1PaTwD">
+                  <property role="3oM_SC" value="(we" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DaZy" role="1PaTwD">
+                  <property role="3oM_SC" value="listen" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DaZz" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7Db0D" role="1PaTwD">
+                  <property role="3oM_SC" value="FS" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7Db1J" role="1PaTwD">
+                  <property role="3oM_SC" value="events" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7Dbaw" role="1PaTwD">
+                  <property role="3oM_SC" value="when" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DbbA" role="1PaTwD">
+                  <property role="3oM_SC" value="model" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DbbB" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7Dbe3" role="1PaTwD">
+                  <property role="3oM_SC" value="attached)," />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7Dahm" role="1PaTwD">
+                  <property role="3oM_SC" value="just" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DaWg" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="4mwNgL7DaWh" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="4mwNgL7DftH" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="4mwNgL7CZLW" role="3clFbw">
+            <node concept="10Nm6u" id="4mwNgL7D3T0" role="3uHU7w" />
+            <node concept="37vLTw" id="4mwNgL7CXnO" role="3uHU7B">
+              <ref role="3cqZAo" node="4mwNgL7CIys" resolve="repo" />
+            </node>
           </node>
         </node>
         <node concept="3clFbH" id="iFm7W0iWfU" role="3cqZAp" />
@@ -1478,27 +1544,46 @@
             <node concept="3cpWs6" id="1r06YY3TejL" role="3cqZAp" />
           </node>
         </node>
-        <node concept="3clFbF" id="gfoQXMn$t1" role="3cqZAp">
-          <node concept="2OqwBi" id="gfoQXMohoq" role="3clFbG">
-            <node concept="1yHZxX" id="gfoQXMostb" role="2OqNvi" />
-            <node concept="37vLTw" id="gfoQXMn$t0" role="2Oq$k0">
-              <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsPerFile" />
+        <node concept="3clFbF" id="4mwNgL7DnLG" role="3cqZAp">
+          <node concept="2OqwBi" id="4mwNgL7DuAT" role="3clFbG">
+            <node concept="2OqwBi" id="4mwNgL7DpN0" role="2Oq$k0">
+              <node concept="37vLTw" id="4mwNgL7DnLE" role="2Oq$k0">
+                <ref role="3cqZAo" node="4mwNgL7CIys" resolve="repo" />
+              </node>
+              <node concept="liA8E" id="4mwNgL7Dtq5" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
+              </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="gfoQXMovSB" role="3cqZAp">
-          <node concept="2OqwBi" id="gfoQXMoBIC" role="3clFbG">
-            <node concept="1yHZxX" id="gfoQXMoKip" role="2OqNvi" />
-            <node concept="37vLTw" id="gfoQXMovSA" role="2Oq$k0">
-              <ref role="3cqZAo" node="4YpB5dn4JhS" resolve="myRootsById" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1Y_KzzxQuLm" role="3cqZAp">
-          <node concept="1rXfSq" id="1Y_KzzxQuLk" role="3clFbG">
-            <ref role="37wK5l" to="w1kc:~RegularModelDescriptor.replace(jetbrains.mps.smodel.ModelLoadResult)" resolve="replace" />
-            <node concept="1rXfSq" id="1Y_KzzxQvof" role="37wK5m">
-              <ref role="37wK5l" node="3PyP5yK7RCK" resolve="createModel" />
+            <node concept="liA8E" id="4mwNgL7DxJq" role="2OqNvi">
+              <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
+              <node concept="1bVj0M" id="4mwNgL7D_hB" role="37wK5m">
+                <node concept="3clFbS" id="4mwNgL7D_hE" role="1bW5cS">
+                  <node concept="3clFbF" id="gfoQXMn$t1" role="3cqZAp">
+                    <node concept="2OqwBi" id="gfoQXMohoq" role="3clFbG">
+                      <node concept="1yHZxX" id="gfoQXMostb" role="2OqNvi" />
+                      <node concept="37vLTw" id="gfoQXMn$t0" role="2Oq$k0">
+                        <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsPerFile" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="gfoQXMovSB" role="3cqZAp">
+                    <node concept="2OqwBi" id="gfoQXMoBIC" role="3clFbG">
+                      <node concept="1yHZxX" id="gfoQXMoKip" role="2OqNvi" />
+                      <node concept="37vLTw" id="gfoQXMovSA" role="2Oq$k0">
+                        <ref role="3cqZAo" node="4YpB5dn4JhS" resolve="myRootsById" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="1Y_KzzxQuLm" role="3cqZAp">
+                    <node concept="1rXfSq" id="1Y_KzzxQuLk" role="3clFbG">
+                      <ref role="37wK5l" to="w1kc:~RegularModelDescriptor.replace(jetbrains.mps.smodel.ModelLoadResult)" resolve="replace" />
+                      <node concept="1rXfSq" id="1Y_KzzxQvof" role="37wK5m">
+                        <ref role="37wK5l" node="3PyP5yK7RCK" resolve="createModel" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
