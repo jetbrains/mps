@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2026 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -24,7 +12,7 @@ import javax.swing.SwingUtilities;
  * Once {@code MA.instance()} gone, we may opt to use this (or similar) implementation for a (mostly) read-only repository with deployed modules
  * not to share the same lock with the project's repository. 'Default' in the name would be unfortunate, then, as it is just some rudimentary MA impl.
  * However, if such use come to life, we might need to implement executeCommand() methods here that are final (and throw exceptions) in superclass.
- * Then, there's an intersection with {@link GlobalModelAccess}, which would need to get sorted out.
+ * Then, there's an intersection with {@code  jetbrains.mps.smodel.GlobalModelAccess}, which would need to get sorted out.
  */
 class DefaultModelAccess extends ModelAccess {
   DefaultModelAccess() {

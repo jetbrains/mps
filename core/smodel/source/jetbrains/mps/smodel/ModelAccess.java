@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2026 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -24,22 +12,20 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * This if front-end for legacy code that deals with a single instance of MA (available through MA.instance()).
- * There are 2 implementations generally available, DefaultModelAccess and WorkbenchModelAccess. Neither is an openapi.ModelAccess available
- * from SRepository#getModelAccess() call, opeanpi.MA instances from repository now merely delegate to the singleton available from #instance() method.
- *
- * For now, WMA provides implementation of methods that deal with Project (i.e. undo support), therefore we keep methods with Project as part of this class
- * implementation API. Instead, we shall implement execute* methods in respective openapi.MA implementations bound to project repositories and remove
- * Project-aware methods from this class altogether. We may want to keep this class for another release as DMA and WMA have different perspective on
- * platform locking (latter adds IDEA platform locks), and with that, we may still delegate general read/write actions of repository's MA to this singleton.
- *
- * The actual implementation of {@link org.jetbrains.mps.openapi.module.ModelAccess} interface methods
- * Probably it is better to merge it with
- * {@link jetbrains.mps.project.ProjectModelAccess} and
- * {@link jetbrains.mps.smodel.ModelAccessBase}
- * which currently simply delegate all methods to this class
- *
+ * This if a shared code for 2 MA alternatives in use by MPS now, along with the means to pick the proper one on startup (available through MA.instance()).
+ * At the moment, we share the same locks for 2 main repositories (the one where we put deployed modules and another one we keep project modules at).
+ * These 2 implementations are DefaultModelAccess and WorkbenchModelAccess. Besides, there are delegates to the shared implementation specific to the
+ * repository in use, namely GlobalModelAccess for the deployed modules repository and ProjectModelAccess/ProjectModelAccess2 for the project repository.
+ * <p>
+ *  Most relevant MA methods are in respective implementations, here we keep just a lock we use for MPS own access control. Implementations may add
+ *  other locks (e.g. IDEA's Application read/write lock) on top of that.
+ * </p>
+ * <p>
+ *   Besides, there's also MPS own internal mechanism to share read locks between different threads.
+ * </p>
  * @see org.jetbrains.mps.openapi.module.ModelAccess
+ * @see jetbrains.mps.smodel.ModelAccessBase
+ * @see jetbrains.mps.smodel.DefaultModelAccess
  */
 public abstract class ModelAccess extends AbstractModelAccess implements org.jetbrains.mps.openapi.module.ModelAccess {
   protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
@@ -48,6 +34,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
 
   /**
    * INTERNAL, TRANSITION CODE, DON'T USE!
+   * Don't want to make DefaultModelAccess public, hence exposed with this method
    */
   public static ModelAccess newInstance() {
     return new DefaultModelAccess();

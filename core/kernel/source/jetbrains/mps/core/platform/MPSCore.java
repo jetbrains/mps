@@ -137,7 +137,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     @SuppressWarnings("removal")
     ModelAccess maSingleton = ModelAccess.instance();
     GlobalModelAccess globalMA = new GlobalModelAccess(maSingleton == null ? ModelAccess.newInstance() : maSingleton);
-    // XXX note, there's use of `instanceof GMA` in mps-extensions code, they sort of account for scenario when actual repo comes with GMA
+    // XXX note, there's use of `instanceof GMA` in mps-extensions code, they sort of account for a scenario when actual repo comes with GMA
     myModuleRepository = init(new MPSModuleRepository(myRepositoryRegistry, globalMA));
     myClassLoaderManager = init(new ClassLoaderManager(myModuleRepository));
 
