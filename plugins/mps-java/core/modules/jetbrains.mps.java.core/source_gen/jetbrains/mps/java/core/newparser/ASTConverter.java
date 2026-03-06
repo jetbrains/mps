@@ -6,12 +6,12 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import org.eclipse.jdt.internal.compiler.ast.ASTNode;
 import org.eclipse.jdt.internal.compiler.ast.TypeDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -30,10 +30,10 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.eclipse.jdt.internal.compiler.ast.Initializer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.eclipse.jdt.internal.compiler.ast.MethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.AnnotationMethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration;
@@ -79,12 +79,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 @GeneratedClass(nodeId = "3493766494546486454", model = "r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)")
 public class ASTConverter {
   private static final Logger LOG = Logger.getLogger(ASTConverter.class);
-  private boolean myOnlyStubs = false;
-  private Map<Integer, SNode> myJavadocs = MapSequence.fromMap(new HashMap<Integer, SNode>());
-  protected Set<SLanguage> usedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
+  private final boolean myOnlyStubs;
+  private final Map<Integer, SNode> myJavadocs;
+  private final Set<SLanguage> usedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
 
   public ASTConverter(boolean onlyStubs) {
     myOnlyStubs = onlyStubs;
+    myJavadocs = MapSequence.fromMap(new HashMap<>());
   }
 
   protected ASTConverter(ASTConverter base) {
@@ -287,6 +288,7 @@ public class ASTConverter {
     if (x.javadoc != null) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).setNew(cls);
       MapSequence.fromMap(myJavadocs).put(x.javadoc.sourceStart, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(cls));
+      SetSequence.fromSet(usedLanguages).addElement(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"));
     }
 
     if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Annotation$he)) {
@@ -301,6 +303,10 @@ public class ASTConverter {
     ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).clear();
     ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.member$L_2d)).addSequence(ListSequence.fromList(sortedMembers));
 
+    if (childConverter != this) {
+      // propagate languages collected e.g. when parsing a field or method
+      SetSequence.fromSet(usedLanguages).addSequence(SetSequence.fromSet(childConverter.getAdditionalLanguages()));
+    }
     return cls;
   }
 
@@ -372,6 +378,7 @@ public class ASTConverter {
       } else if (SNodeOperations.isInstanceOf(fDecl, CONCEPTS.StaticFieldDeclaration$jR)) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(SNodeOperations.cast(fDecl, CONCEPTS.StaticFieldDeclaration$jR), doc);
       }
+      SetSequence.fromSet(usedLanguages).addElement(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"));
       MapSequence.fromMap(myJavadocs).put(start, doc);
     }
 
@@ -435,6 +442,7 @@ public class ASTConverter {
     if (method.javadoc != null) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).setNew(result);
       MapSequence.fromMap(myJavadocs).put(method.javadoc.sourceStart, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(result));
+      SetSequence.fromSet(usedLanguages).addElement(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"));
     }
 
     return result;

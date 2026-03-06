@@ -16,14 +16,12 @@ import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.ModelLoadResult;
 import jetbrains.mps.smodel.SModel;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import java.util.stream.Stream;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -33,16 +31,16 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.java.core.newparser.YetUnknownResolver;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.io.IOException;
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Collection;
-import java.util.Collections;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.Collections;
+import java.util.Collection;
 
 @GeneratedClass(nodeId = "4423331261408224789", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implements MultiStreamDataSourceListener {
@@ -59,10 +57,9 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   @NotNull
   protected ModelLoadResult<SModel> createModel() {
     SModel model = new SModel(getReference());
+    // XXX would be an unused import if model is empty, do I care?
+    model.addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), -1);
     processStreams(getSource().getSubStreams(), model);
-    for (SLanguage l : CollectionSequence.fromCollection(importedLanguageIds())) {
-      model.addLanguage(l, -1);
-    }
     return new ModelLoadResult<SModel>(model, ModelLoadingState.NO_IMPLEMENTATION);
   }
 
@@ -111,7 +108,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
     return true;
   }
 
-  private void processStreams(Stream<StreamDataSource> streams, SModelData into) {
+  private void processStreams(Stream<StreamDataSource> streams, SModel into) {
     JavaParser parser = new JavaParser();
 
     for (StreamDataSource ds : Sequence.fromIterable(Sequence.fromStream(streams))) {
@@ -147,6 +144,9 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         }
         SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
         MapSequence.fromMap(myRootsPerFile).put(streamName, SetSequence.fromSetWithValues(new HashSet<SNode>(), parseResult.getNodes()));
+        for (SLanguage l : parseResult.getLanguages()) {
+          into.addLanguage(l, -1);
+        }
       } catch (JavaParseException ex) {
         Logger.getLogger(JavaSourceStubModelDescriptor.class).error("Failed to parse java file. " + ex.getMessage(), ex);
       }
@@ -228,11 +228,6 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
     } else {
       return "";
     }
-  }
-
-  @Override
-  public Collection<SLanguage> importedLanguageIds() {
-    return Collections.singleton(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
   }
 
   @Override

@@ -31,6 +31,7 @@ import org.eclipse.jdt.internal.core.util.RecordedParsingInformation;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.jetbrains.annotations.Nullable;
 import java.util.Set;
@@ -90,7 +91,7 @@ public class JavaParser {
           List<SNode> roots = new ArrayList<SNode>();
           for (ASTNode astNode : astTypes) {
             SNode root = converter.convertRoot(astNode);
-            annotateWithmports(compRes, root);
+            annotateWithImports(compRes, root);
             ListSequence.fromList(roots).addElement(root);
           }
           resultNodes = roots;
@@ -480,30 +481,18 @@ public class JavaParser {
       }
     }
   }
-  public void annotateWithmports(CompilationUnitDeclaration compResult, SNode clas) {
-    SNode imports = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports"));
-
-    // putting first: current package in terms of source code
-    if (compResult.currentPackage != null) {
-      SNode currPkg = makeImport(compResult.currentPackage);
-      SPropertyOperations.assign(currPkg, PROPS.onDemand$Gmdi, true);
-      ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).addElement(currPkg);
-    }
-
+  public void annotateWithImports(CompilationUnitDeclaration compResult, SNode clas) {
     if (compResult.imports != null) {
+      SNode imports = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).setNew(clas);
       for (ImportReference imprt : compResult.imports) {
         ListSequence.fromList(SLinkOperations.getChildren(imports, LINKS.entries$neZo)).addElement(makeImport(imprt));
       }
     }
 
-    // inserting it in the beginning
-    clas.addChild(LINKS.smodelAttribute$KJ43, imports);
-
-    // we want to insert imports section before any javadoc
-    // because javadoc is data while imports section is meta-data for assisting class resolving
-
+    // here used to be some code, commented out since 2013 at least, to put JavaImports in a specific place inside smodelAttributes role
+    // Don't quite see any value, but if there is some, check commit history
   }
-  private SNode makeImport(ImportReference impRef) {
+  private static SNode makeImport(ImportReference impRef) {
     SNode imp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, "jetbrains.mps.baseLanguage.structure.JavaImport"));
 
     boolean onDemand = (impRef.bits & ASTNode.OnDemand) != 0;
@@ -667,6 +656,7 @@ public class JavaParser {
     /*package*/ static final SConcept LinkInlineDocTagTE$NH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de862c2L, "jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTagTE");
     /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
     /*package*/ static final SConcept MultiLineComment$_e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment");
+    /*package*/ static final SConcept JavaImports$b_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
   }
 
   private static final class LINKS {
@@ -687,7 +677,6 @@ public class JavaParser {
     /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
     /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
     /*package*/ static final SContainmentLink entries$neZo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
-    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class PROPS {
