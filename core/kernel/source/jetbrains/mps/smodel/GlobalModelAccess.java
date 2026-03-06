@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * This class represents a ModelAccess for cases when there is no available project in scope.
- * Therefore it lacks of some functionality: it does not support command execution.
+ * Therefore, it lacks of some functionality: it does not support command execution.
  *
  * To run project-aware command use {@link jetbrains.mps.project.ProjectModelAccess} which is available
  * through {@link jetbrains.mps.project.Project#getModelAccess()}.
@@ -51,19 +51,9 @@ public class GlobalModelAccess extends ModelAccessBase {
 
   @Override
   public boolean isCommandAction() {
-    /** AP:
-     * FIXME:
-     * must return false, because this implementation of ModelAccess does not support commands.
-     * The problem is that user can run commands through the class {@link jetbrains.mps.smodel.ModelAccess}, so
-     * we have to delegate here.
-     *
-     * Only when the {@link jetbrains.mps.smodel.ModelAccess} is gone we can change it to
-     * {@code return false;}.
-     * FIXME check if there's still need for this method to reflect actual impl.MA.isCommandAction(), provided
-     *       neither DefaultModelAccess nor WorkbenchModelAccess implement this method now
-     *       (in fact, now that WMA.isCommandAction throws exception, if all tests pass, likely there's no use of GMA.isCommandAction() any more)
-     */
-    return getDelegate().isCommandAction();
+    // this implementation of ModelAccess does not support commands.
+    throwCommandIsNotSupported();
+    return false;
   }
 
   private void throwCommandIsNotSupported() throws UnsupportedOperationException{

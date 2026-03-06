@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,15 +46,11 @@ public abstract class ModelsEventsCollector {
   private CommandListener myCommandListener = new MyCommandAdapter();
   private volatile boolean myDisposed;
 
-  private boolean myIsInCommand;
-
   /**
    * Support transition from legacy listeners to contemporary.
    */
   public ModelsEventsCollector(@NotNull org.jetbrains.mps.openapi.module.ModelAccess modelAccess) {
     myModelAccess = modelAccess;
-    // XXX In fact, I don't see a reason to care about isInCommand state (and keep isCommandAction).
-    myIsInCommand = modelAccess.isCommandAction();
     myModelAccess.addCommandListener(myCommandListener);
   }
 
@@ -139,7 +135,7 @@ public abstract class ModelsEventsCollector {
     }
   }
 
-  private class MyModelListener extends NodeChangeBridge implements SNodeChangeListener, SModelListener {
+  private static class MyModelListener extends NodeChangeBridge implements SNodeChangeListener, SModelListener {
 
     /*package*/  List<SModelEvent> flush() {
       return drainToList();

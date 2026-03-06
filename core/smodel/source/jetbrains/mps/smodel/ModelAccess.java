@@ -110,7 +110,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
   }
 
   @Override
-  public boolean isCommandAction() {
+  public final boolean isCommandAction() {
     throw new UnsupportedOperationException("Client shall not reach here. They are expected to face ProjectModelAccess2.isCommandAction");
   }
 

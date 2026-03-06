@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,9 @@ public abstract class SRepositoryBase implements SRepository {
   public void init() {
     // XXX why myEventsDispatcher is not mandatory? Do we like to get NPE in e.g. TestRepository?
     myEventsDispatcher = new SRepositoryEventsDispatcher(this);
+    // FWIW, please beware that use of this repository as a delegate results in SRepositoryListener.commandStarted()/commandFinished()
+    //      receiving wrong (root) repository instead of the one with MA dispatching the event
+    //      see note in ProjectRepository.addRepositoryListener()
     if (myRepositoryRegistry != null) {
       myRepositoryRegistry.addRepository(this);
     }

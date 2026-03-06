@@ -144,6 +144,10 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
      * Generally, we shall avoid global listeners.
      *
      * XXX once repositories are independent, remove this code and mark methods in super as 'final' back.
+     *
+     * BEWARE. Due to delegation, SRepositoryListener.commandStarted() and commandFinished() receive wrong repository instance. E.g. root's MA could be incapable
+     * of commands (and, therefore, event dispatching), yet its SRepository instance would show up in commandStarted()/commandFinished() notification dispatched
+     * for listeners registered with this ProjectRepository (the one that got command-capable MA).
      */
     getRootRepository().addRepositoryListener(listener);
   }
