@@ -17,7 +17,10 @@ package jetbrains.mps.project;
 
 import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.ModelAccessBase;
+import jetbrains.mps.smodel.ModelCommandContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 
 /**
  * This class represents a ModelAccess for cases when there is an available project in scope.
@@ -29,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * Created by Alex Pyshkin on 9/2/14.
  */
-public class ProjectModelAccess extends ModelAccessBase {
+public class ProjectModelAccess extends ModelAccessBase implements ModelCommandContext.Provider {
   private final Project myProject;
 
   public ProjectModelAccess(Project project) {
@@ -74,4 +77,12 @@ public class ProjectModelAccess extends ModelAccessBase {
     // executeUndoTransparentCommand() contract states it's a write, hence delegation to appropriate write
     getDelegate().runWriteAction(r);
   }
+
+  @Nullable
+  @Override
+  public ModelCommandContext getCommandContext(SModel model) {
+    // fwiw, if it's WMA delegate, it is MCC.Provider.
+    return getDelegate() instanceof ModelCommandContext.Provider ? ((ModelCommandContext.Provider) getDelegate()).getCommandContext(model) : null;
+  }
+
 }

@@ -59,6 +59,9 @@ public class GlobalModelAccess extends ModelAccessBase {
      *
      * Only when the {@link jetbrains.mps.smodel.ModelAccess} is gone we can change it to
      * {@code return false;}.
+     * FIXME check if there's still need for this method to reflect actual impl.MA.isCommandAction(), provided
+     *       neither DefaultModelAccess nor WorkbenchModelAccess implement this method now
+     *       (in fact, now that WMA.isCommandAction throws exception, if all tests pass, likely there's no use of GMA.isCommandAction() any more)
      */
     return getDelegate().isCommandAction();
   }

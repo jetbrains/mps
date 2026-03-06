@@ -23,6 +23,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * <p>
  *   Besides, there's also MPS own internal mechanism to share read locks between different threads.
  * </p>
+ * <p>
+ *   Eventually, shall cease to be openapi.ModelAccess and just provide shared methods (until death do us part).
+ * </p>
  * @see org.jetbrains.mps.openapi.module.ModelAccess
  * @see jetbrains.mps.smodel.ModelAccessBase
  * @see jetbrains.mps.smodel.DefaultModelAccess
@@ -108,7 +111,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
 
   @Override
   public boolean isCommandAction() {
-    return canWrite() && myCommandActionDispatcher.isInsideAction();
+    throw new UnsupportedOperationException("Client shall not reach here. They are expected to face ProjectModelAccess2.isCommandAction");
   }
 
   protected final void sharedReadIsOver() {

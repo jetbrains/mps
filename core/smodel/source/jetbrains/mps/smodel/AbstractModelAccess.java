@@ -35,6 +35,9 @@ public abstract class AbstractModelAccess implements ModelAccess {
 
   public AbstractModelAccess() {
     myReadActionDispatcher = new ActionDispatcher<>(ReadActionListener::readStarted, ReadActionListener::readFinished);
+    // FWIW, there's still TestModelAccess that relies on onCommandStarted()/onCommandFinished().
+    //      Other subclasses either don't use commands (DefaultModelAccess), or provide
+    //      their own implementations
     myCommandActionDispatcher = new ActionDispatcher<>(new CommandListener() {
       @Override
       public void commandStarted() {
