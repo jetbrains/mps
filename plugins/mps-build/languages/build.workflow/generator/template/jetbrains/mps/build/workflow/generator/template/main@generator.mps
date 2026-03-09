@@ -3870,7 +3870,7 @@
                 <node concept="2pNUuL" id="784ypGm0Axz" role="2pNNFR">
                   <property role="2pNUuO" value="name" />
                   <node concept="2pMdtt" id="784ypGm0Ax$" role="2pMdts">
-                    <property role="2pMdty" value="module-intellij.libraries.asm.jar" />
+                    <property role="2pMdty" value="intellij.libraries.asm.jar" />
                   </node>
                 </node>
               </node>

@@ -14,8 +14,9 @@
   <path id="path.javac2.classpath">
     <fileset dir="${idea_home}/lib">
       <include name="javac2.jar" />
-      <include name="intellij.libraries.asm.jar" />
       <include name="util-8.jar" />
+      <include name="intellij.libraries.asm.jar" />
+      <include name="forms*.jar" />
     </fileset>
   </path>
   
@@ -32,7 +33,7 @@
   </path>
   
   <path id="path.java.library.spellchecker">
-    <fileset file="${artifacts.IDEA}/lib/modules/intellij.spellchecker.jar" />
+    <fileset file="${artifacts.IDEA}/lib/intellij.spellchecker.jar" />
   </path>
   
   <path id="path.java.library.idea-runtime">
@@ -56,7 +57,7 @@
   </path>
   
   <path id="path.java.library.objectweb.asm">
-    <fileset file="${artifacts.IDEA}/lib/module-intellij.libraries.asm.jar" />
+    <fileset file="${artifacts.IDEA}/lib/intellij.libraries.asm.jar" />
   </path>
   
   <path id="path.java.library.org.jdom">

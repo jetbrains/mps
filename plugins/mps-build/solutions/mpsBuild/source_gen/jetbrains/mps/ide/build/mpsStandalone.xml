@@ -92,10 +92,6 @@
     <copy todir="${build.layout}/plugins/properties">
       <fileset dir="${basedir}/plugins/properties" />
     </copy>
-    <mkdir dir="${build.layout}/plugins/properties-resource-bundle-editor" />
-    <copy todir="${build.layout}/plugins/properties-resource-bundle-editor">
-      <fileset dir="${basedir}/plugins/properties-resource-bundle-editor" />
-    </copy>
     <mkdir dir="${build.layout}/plugins/sh-plugin" />
     <copy todir="${build.layout}/plugins/sh-plugin">
       <fileset dir="${basedir}/plugins/sh-plugin" />
