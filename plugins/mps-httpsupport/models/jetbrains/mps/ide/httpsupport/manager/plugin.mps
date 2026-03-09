@@ -1246,7 +1246,7 @@
       <property role="TrG5h" value="request" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="6GArDv5Ipfy" role="1tU5fm">
-        <ref role="3uigEE" node="6GArDv5HYVM" resolve="HttpRequest" />
+        <ref role="3uigEE" to="9xw8:~HttpRequest" resolve="HttpRequest" />
       </node>
       <node concept="3Tm6S6" id="6GArDv5I22Q" role="1B3o_S" />
     </node>
@@ -1369,7 +1369,7 @@
       <node concept="37vLTG" id="6GArDv5I3qJ" role="3clF46">
         <property role="TrG5h" value="request" />
         <node concept="3uibUv" id="6GArDv5Ip_3" role="1tU5fm">
-          <ref role="3uigEE" node="6GArDv5HYVM" resolve="HttpRequest" />
+          <ref role="3uigEE" to="9xw8:~HttpRequest" resolve="HttpRequest" />
         </node>
         <node concept="2AHcQZ" id="6GArDv5I5Lh" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -1496,12 +1496,17 @@
       <property role="TrG5h" value="getMethod" />
       <node concept="3clFbS" id="33sncJYNxJP" role="3clF47">
         <node concept="3cpWs6" id="33sncJYNyGP" role="3cqZAp">
-          <node concept="2OqwBi" id="33sncJYNzID" role="3cqZAk">
-            <node concept="37vLTw" id="33sncJYNyI3" role="2Oq$k0">
-              <ref role="3cqZAo" node="6GArDv5I22B" resolve="request" />
+          <node concept="2OqwBi" id="7Z2y3gaXibE" role="3cqZAk">
+            <node concept="2OqwBi" id="33sncJYNzID" role="2Oq$k0">
+              <node concept="37vLTw" id="33sncJYNyI3" role="2Oq$k0">
+                <ref role="3cqZAo" node="6GArDv5I22B" resolve="request" />
+              </node>
+              <node concept="liA8E" id="33sncJYN$zk" role="2OqNvi">
+                <ref role="37wK5l" to="9xw8:~HttpRequest.getMethod()" resolve="getMethod" />
+              </node>
             </node>
-            <node concept="liA8E" id="33sncJYN$zk" role="2OqNvi">
-              <ref role="37wK5l" node="33sncJYNxJM" resolve="getMethod" />
+            <node concept="liA8E" id="7Z2y3gaXj$a" role="2OqNvi">
+              <ref role="37wK5l" to="9xw8:~HttpMethod.name()" resolve="name" />
             </node>
           </node>
         </node>
@@ -1824,10 +1829,10 @@
         <node concept="3cpWs8" id="5FAyHK_FnbW" role="3cqZAp">
           <node concept="3cpWsn" id="5FAyHK_FnbZ" role="3cpWs9">
             <property role="TrG5h" value="refferer" />
-            <node concept="2YIFZM" id="7mDgzTUY_PY" role="33vP2m">
+            <node concept="2YIFZM" id="7Z2y3gaSDDx" role="33vP2m">
               <ref role="37wK5l" to="g1go:~NettyKt.getOrigin(io.netty.handler.codec.http.HttpRequest)" resolve="getOrigin" />
               <ref role="1Pybhc" to="g1go:~NettyKt" resolve="NettyKt" />
-              <node concept="37vLTw" id="7mDgzTUY_PZ" role="37wK5m">
+              <node concept="37vLTw" id="7Z2y3gaSDDy" role="37wK5m">
                 <ref role="3cqZAo" node="5FAyHK_FEFG" resolve="request" />
               </node>
             </node>
@@ -1893,7 +1898,7 @@
       <node concept="37vLTG" id="5FAyHK_FEFG" role="3clF46">
         <property role="TrG5h" value="request" />
         <node concept="3uibUv" id="5FAyHK_FEFF" role="1tU5fm">
-          <ref role="3uigEE" node="6GArDv5HYVM" resolve="HttpRequest" />
+          <ref role="3uigEE" to="9xw8:~HttpRequest" resolve="HttpRequest" />
         </node>
       </node>
       <node concept="3uibUv" id="5FAyHK_FR$$" role="Sfmx6">

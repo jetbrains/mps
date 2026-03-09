@@ -54,7 +54,7 @@ public class HttpRequest {
   }
 
   public String getMethod() {
-    return request.method().name();
+    return request.getMethod().name();
   }
 
   public void sendResponse(HttpResponseStatus status, String contentType, ByteBuf buffer) {
