@@ -6,11 +6,10 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.RegularModelDescriptor;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSourceListener;
 import java.util.Map;
-import java.util.Set;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +23,8 @@ import java.util.stream.Stream;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
 import java.io.InputStream;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -45,7 +41,6 @@ import java.util.Collection;
 @GeneratedClass(nodeId = "4423331261408224789", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implements MultiStreamDataSourceListener {
   private boolean myIsLoadInProgress = false;
-  private final Map<String, Set<SNode>> myRootsPerFile = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
   private final Map<SNodeId, SNode> myRootsById = MapSequence.fromMap(new HashMap<SNodeId, SNode>());
 
 
@@ -59,7 +54,13 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
     SModel model = new SModel(getReference());
     // XXX would be an unused import if model is empty, do I care?
     model.addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), -1);
+    MapSequence.fromMap(myRootsById).clear();
     processStreams(getSource().getSubStreams(), model);
+    for (SNode newNode : model.getRootNodes()) {
+      // not sure there's any justification for this map, all we use is its values, which is == model.getRootNodes().
+      // left as an exercise for future refactoring
+      MapSequence.fromMap(myRootsById).put(newNode.getNodeId(), newNode);
+    }
     return new ModelLoadResult<SModel>(model, ModelLoadingState.NO_IMPLEMENTATION);
   }
 
@@ -96,11 +97,8 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
     if (oldModel == null) {
       return;
     }
-    repo.getModelAccess().runWriteAction(() -> {
-      MapSequence.fromMap(myRootsPerFile).clear();
-      MapSequence.fromMap(myRootsById).clear();
-      replace(createModel());
-    });
+    // FIXME investigate if responsibility to grab MA could get shifted to ModelRoot, not to grab WA per model.
+    repo.getModelAccess().runWriteAction(() -> replace(createModel()));
   }
 
   @Override
@@ -118,38 +116,21 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
     JavaParser parser = new JavaParser();
 
     for (StreamDataSource ds : Sequence.fromIterable(Sequence.fromStream(streams))) {
-      final String streamName = ds.getStreamName();
-      // XXX is it possible to have multiple roots under same stream?
-      Set<SNode> oldNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), MapSequence.fromMap(myRootsPerFile).get(streamName));
-
       final String code;
       try (InputStream is = ds.openInputStream()) {
         code = readInputStream(is);
       } catch (Exception ex) {
         Logger.getLogger(JavaSourceStubModelDescriptor.class).error("Failed to read java file. " + ex.getMessage());
         // we've come from event and file has been deleted
-        SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
-        MapSequence.fromMap(myRootsPerFile).removeKey(streamName);
+        //  ^^^ ??? Does the comment make any sense now? I'd expect ds.getStreamNames() to give actual state.
         continue;
       }
       try {
+        // it possible to have multiple roots under same stream
         JavaParser.JavaParseResult parseResult = parser.parse(code, FeatureKind.CLASS_STUB, null, true);
-        if (ListSequence.fromList(parseResult.getNodes()).isNotEmpty()) {
-          for (SNode newNode : ListSequence.fromList(parseResult.getNodes())) {
-            final SNodeId newNodeId = newNode.getNodeId();
-            // oldNodes is usually very very small (number of root classes in java file)
-            SNode oldNode = SetSequence.fromSet(oldNodes).where((it) -> it.getNodeId().equals(newNodeId)).first();
-            if (oldNode == null) {
-              into.addRootNode(newNode);
-              SetSequence.fromSet(oldNodes).removeElement(oldNode);
-            } else {
-              SNodeOperations.replaceWithAnother(oldNode, newNode);
-            }
-            MapSequence.fromMap(myRootsById).put(newNode.getNodeId(), newNode);
-          }
+        for (SNode newNode : ListSequence.fromList(parseResult.getNodes())) {
+          into.addRootNode(newNode);
         }
-        SetSequence.fromSet(oldNodes).visitAll((it) -> SNodeOperations.deleteNode(it));
-        MapSequence.fromMap(myRootsPerFile).put(streamName, SetSequence.fromSetWithValues(new HashSet<SNode>(), parseResult.getNodes()));
         for (SLanguage l : parseResult.getLanguages()) {
           into.addLanguage(l, -1);
         }
