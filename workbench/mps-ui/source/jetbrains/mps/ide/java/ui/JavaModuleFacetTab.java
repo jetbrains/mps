@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -445,7 +445,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       if (selectedIndices.length == 0) {
         return;
       }
-      final Object startingPoint = mySourcePathTable.getValueAt(selectedIndices[0], 0);
+      final Object startingPoint = mySourcePathTable.getValueAt(selectedIndices[0], mySourcePathsTableModel.getPathColumnIndex());
       final VirtualFile[] files = chooser.apply(startingPoint);
       if (files.length != 0) {
         for (int i = 0; i < selectedIndices.length; i++) {
@@ -546,7 +546,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         return;
       }
       // take the first/any one as a location hint
-      final Object startingPoint = myLibrariesTable.getValueAt(selectedIndices[0], 0);
+      final Object startingPoint = myLibrariesTable.getValueAt(selectedIndices[0], myLibrariesTableModel.getPathColumnIndex());
       final VirtualFile[] files = chooseLibraryFile.apply(startingPoint);
       if (files.length != 0) {
         for (int i = 0; i < selectedIndices.length; i++) {
