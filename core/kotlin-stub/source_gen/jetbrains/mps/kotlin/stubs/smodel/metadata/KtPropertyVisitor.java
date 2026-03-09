@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import kotlin.metadata.KmType;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import kotlin.metadata.KmValueParameter;
-import jetbrains.mps.kotlin.stubs.extension.KtAnnotations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;

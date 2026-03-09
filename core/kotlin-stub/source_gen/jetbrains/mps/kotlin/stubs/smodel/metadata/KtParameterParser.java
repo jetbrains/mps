@@ -10,7 +10,6 @@ import kotlin.metadata.internal.metadata.deserialization.Flags;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import kotlin.metadata.KmType;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.kotlin.stubs.extension.KtAnnotations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
