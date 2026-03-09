@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,6 +107,9 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
 
   @Override
   public <T extends SModule> T registerModule(@NotNull T module, @NotNull MPSModuleOwner owner) {
+    if (getRootRepository() instanceof MPSModuleRepository) {
+      owner = MPSModuleRepository.wrap(owner, this);
+    }
     return getRootRepository().registerModule(module, owner);
   }
 
@@ -177,6 +180,22 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
     // don't care if the original resolver deals with any other model, our code pass only EditableSModel instances.
     if (myRootRepo instanceof MPSModuleRepository) {
       ((MPSModuleRepository) myRootRepo).setConflictResolver(resolver);
+    }
+  }
+
+  @Override
+  public void markIncompleteModelSet(SModule module) {
+    // with project modules being associated with this repo instance, we start receiving incomplete model set notifications,
+    //      and shall let root repo know as it handles actual model discovery/loading.
+    if (getRootRepository() instanceof SRepositoryBase) {
+      ((SRepositoryBase) getRootRepository()).markIncompleteModelSet(module);
+    }
+  }
+
+  @Override
+  public void markCompleteModelSet(SModule module) {
+    if (getRootRepository() instanceof SRepositoryBase) {
+      ((SRepositoryBase) getRootRepository()).markCompleteModelSet(module);
     }
   }
 }

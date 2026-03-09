@@ -30,12 +30,14 @@ import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.repository.ReadActionListener;
 
@@ -144,6 +146,8 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
     SModuleId moduleId = moduleToRegister.getModuleReference().getModuleId();
     String moduleFqName = moduleToRegister.getModuleName();
+    final MPSModuleOwner actualOwner = owner instanceof OwnerProxy ? ((OwnerProxy) owner).original : owner;
+    final SRepository repoAttach = owner instanceof OwnerProxy ? ((OwnerProxy) owner).attachTo : this;
 
     SModule existing = getModule(moduleId);
     if (existing != null) {
@@ -159,7 +163,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
         Object newModuleLocation = moduleToRegister instanceof AbstractModule ? ((AbstractModule) moduleToRegister).getDescriptorFile() : "<unknown>";
         LOG.error(String.format(msg, existing.getModuleName(), moduleFqName, existingModuleLocation, newModuleLocation));
       }
-      myModuleToOwners.addLink(existing, owner);
+      myModuleToOwners.addLink(existing, actualOwner);
       return (T) existing;
     }
 
@@ -170,9 +174,9 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
     checkModelsAreNotChanged(moduleToRegister);
     if (moduleToRegister instanceof SModuleBase) {
-      ((SModuleBase) moduleToRegister).attach(this);
+      ((SModuleBase) moduleToRegister).attach(repoAttach);
     }
-    myModuleToOwners.addLink(moduleToRegister, owner);
+    myModuleToOwners.addLink(moduleToRegister, actualOwner);
     invalidateCaches();
     fireModuleAdded(moduleToRegister);
     return moduleToRegister;
@@ -491,4 +495,25 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
       }
     }
   }
+
+  /**
+   * <em>MPS INTERNAL FACILITY, DO NOT USE</em>
+   * <p>For project modules and models, getRepository() used to give root repository, MPSModuleRepository (where actual registration happens),
+   * not ProjectRepository. With that, operations like model.getRepository().getModelAccess() gave the wrong MA instance (GMA , not PMA2),
+   * enforcing MPS to keep most of the shared MA implementation inside smodel.ModelAccess class. With the intention to keep at least command
+   * handling independently (no commands in GMA and platform-specific commands support in PMA, see 7f4548f7, and PMA2 instead of WMA), we need to give
+   * project models/modules access to their true owning repository.</p>
+   * <p>This is a HACK, indeed. Once ProjectRepository keeps track of its own project modules, there's no need for this trick</p>
+   */
+  @Internal
+  public static MPSModuleOwner wrap(MPSModuleOwner original, SRepository attachTo) {
+    return new OwnerProxy(original, attachTo);
+  }
+
+  private record OwnerProxy(MPSModuleOwner original, SRepository attachTo) implements MPSModuleOwner {
+    @Override
+    public boolean isHidden() {
+      return true;
+    }
+  };
 }
