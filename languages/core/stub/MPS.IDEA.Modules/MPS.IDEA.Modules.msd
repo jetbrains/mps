@@ -86,8 +86,6 @@
       <sourceRoot location="intellij.libraries.jvm.native.trusted.roots.jar" />
       <sourceRoot location="intellij.libraries.jzlib.jar" />
       <sourceRoot location="intellij.libraries.kotlin.reflect.jar" />
-      <sourceRoot location="intellij.libraries.kotlinx.collections.immutable.jar" />
-      <sourceRoot location="intellij.libraries.kotlinx.coroutines.core.jar" />
       <sourceRoot location="intellij.libraries.kotlinx.coroutines.debug.jar" />
       <sourceRoot location="intellij.libraries.kotlinx.coroutines.guava.jar" />
       <sourceRoot location="intellij.libraries.kotlinx.coroutines.slf4j.jar" />
@@ -355,8 +353,6 @@
       <library location="${mps_home}/lib/intellij.libraries.jvm.native.trusted.roots.jar" />
       <library location="${mps_home}/lib/intellij.libraries.jzlib.jar" />
       <library location="${mps_home}/lib/intellij.libraries.kotlin.reflect.jar" />
-      <library location="${mps_home}/lib/intellij.libraries.kotlinx.collections.immutable.jar" />
-      <library location="${mps_home}/lib/intellij.libraries.kotlinx.coroutines.core.jar" />
       <library location="${mps_home}/lib/intellij.libraries.kotlinx.coroutines.debug.jar" />
       <library location="${mps_home}/lib/intellij.libraries.kotlinx.coroutines.guava.jar" />
       <library location="${mps_home}/lib/intellij.libraries.kotlinx.coroutines.slf4j.jar" />

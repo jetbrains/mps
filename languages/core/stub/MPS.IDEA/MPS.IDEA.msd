@@ -20,6 +20,8 @@
       <sourceRoot location="intellij.libraries.netty.codec.http.jar" />
       <sourceRoot location="intellij.libraries.netty.handler.proxy.jar" />
       <!-- originally in app.jar -->
+      <sourceRoot location="intellij.libraries.kotlinx.coroutines.core.jar" />
+      <sourceRoot location="intellij.libraries.kotlinx.collections.immutable.jar" />
       <sourceRoot location="intellij.platform.analysis.impl.jar" />
       <sourceRoot location="intellij.platform.analysis.jar" />
       <sourceRoot location="intellij.platform.builtInServer.impl.jar" />
@@ -64,7 +66,7 @@
         <include prefix="io.netty."/> <!-- although there's io.netty import, keep until migration is in place -->
         <include prefix="com.google.common.collect"/> <!-- 3 uses in mps-extensions I don't want to fix now -->
         <!-- kotlin Job->Future bridge (FutureKt) -->
-        <include prefix="kotlinx.c" />
+        <include prefix="kotlinx." />
         <!-- kotlin annotations from 3rd-party-rt.jar, like JvmOverloads -->
         <include prefix="kotlin." />
         <include prefix="kotlin.annotation" />
