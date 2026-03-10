@@ -130,10 +130,12 @@ final class EDTExecutor implements Disposable {
 
   @NotNull
   private String callersString() {
+    // WMA (read/write/command) -> scheduleTask() -> traceTheCaller() -> callersString()
+    // +1 as ReflectionUtilRt.findCallerClass() takes value as "framesToSkip" but actually treats it as indexFromTop
     return " the callers are :: "
-           + ReflectionUtil.findCallerClass(9)
-           + " :: " + ReflectionUtil.findCallerClass(10)
-           + " :: " + ReflectionUtil.findCallerClass(11);
+           + ReflectionUtil.findCallerClass(5)
+           + " :: " + ReflectionUtil.findCallerClass(6)
+           + " :: " + ReflectionUtil.findCallerClass(7);
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,10 +39,14 @@ import org.jetbrains.mps.openapi.module.SRepositoryAttachListener;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
 /**
@@ -114,6 +118,58 @@ public class RepoListenerTest implements EnvironmentAware {
     l.checkStopped(1);
     closeProject();
   }
+
+  /**
+   * Test command start/finish events through SRepositoryAttachListener and its ModelAccess
+   */
+  @Test
+  public void testNotifyCommand() {
+    final Project project = createProject();
+    final CommandRepoListener repoListener = new CommandRepoListener();
+    AtomicInteger commandStarted = new AtomicInteger(0);
+    AtomicInteger commandFinished = new AtomicInteger(0);
+    final CommandListener maListener = new CommandListener() {
+      @Override
+      public void commandStarted() {
+        commandStarted.incrementAndGet();
+      }
+
+      @Override
+      public void commandFinished() {
+        commandFinished.incrementAndGet();
+      }
+    };
+    attach(project.getRepository(), repoListener);
+    project.getModelAccess().addCommandListener(maListener);
+    // sanity check
+    repoListener.checkCommandStarted(0);
+    repoListener.checkCommandFinished(0);
+    Assert.assertEquals(0, commandStarted.get());
+    Assert.assertEquals(0, commandFinished.get());
+    //
+
+    project.getRepository().getModelAccess().executeCommand(() -> {
+      repoListener.checkCommandStarted(1);
+      repoListener.checkCommandFinished(0);
+      Assert.assertEquals(1, commandStarted.get());
+      Assert.assertEquals(0, commandFinished.get());
+      repoListener.checkCommandStarted(project.getRepository());
+    });
+
+    repoListener.checkCommandFinished(1);
+    repoListener.checkCommandFinished(project.getRepository());
+    Assert.assertEquals(1, commandFinished.get());
+
+    project.getModelAccess().removeCommandListener(maListener);
+    detach(project.getRepository(), repoListener);
+    // sanity check, again (unregistration shall not change listener's state)
+    repoListener.checkCommandStarted(1);
+    repoListener.checkCommandFinished(1);
+    Assert.assertEquals(1, commandStarted.get());
+    Assert.assertEquals(1, commandFinished.get());
+    closeProject();
+  }
+
 
   /**
    * Test SRepositoryAttachListener, added globally, is notified there's a new repo.
@@ -341,6 +397,35 @@ public class RepoListenerTest implements EnvironmentAware {
       Assert.assertEquals(added, myModelAdded);
       Assert.assertEquals(beforeRemoved, myModelBeforeRemoved);
       Assert.assertEquals(removed, myModelRemoved);
+    }
+  }
+
+  private static class CommandRepoListener implements SRepositoryListener {
+    private final List<SRepository> myCommandStarted = new ArrayList<>();
+    private final List<SRepository> myCommandFinished = new ArrayList<>();
+
+    @Override
+    public void commandStarted(SRepository repository) {
+      myCommandStarted.add(repository);
+    }
+
+    @Override
+    public void commandFinished(SRepository repository) {
+      myCommandFinished.add(repository);
+    }
+
+    void checkCommandStarted(int count) {
+      Assert.assertEquals(count, myCommandStarted.size());
+    }
+    void checkCommandFinished(int count) {
+      Assert.assertEquals(count, myCommandFinished.size());
+    }
+
+    void checkCommandStarted(SRepository repository) {
+      Assert.assertTrue(myCommandStarted.contains(repository));
+    }
+    void checkCommandFinished(SRepository repository) {
+      Assert.assertTrue(myCommandFinished.contains(repository));
     }
   }
 }

@@ -67,4 +67,20 @@ public class GlobalModelAccess extends ModelAccessBase {
     throw new UnsupportedOperationException("GlobalModelAccess does not support actions which require a command to run." +
         " One needs a project to run such actions (@see ProjectModelAccess).");
   }
+
+  /*
+   * MPSModuleRepository adds CommandListener and expects it to get propagated to the actual MA impl (WMA, not DMA as the latter doesn't have command support)
+   * FIXME However, with WMA not being responsible for command listeners any longer (6a21d2c2), do I get SRepositoryListener.commandStarted events these days?!
+   * ^^^ now, it's ProjectRepository to make sure commandStarted/commandFinished reach subscribers.
+   *     I wonder shall I keep these methods empty here (GMA doesn't facilitate commands, no reason to track listeners), OTOH delegate may have
+   *     another perspective on that. Definitely not an exception as client code shall not care what kind of MA is this when adding a listener.
+   *     Likely, once we cease to extend ModelAccessBase here, these methods shall get overridden here as empty.
+  @Override
+  public void addCommandListener(CommandListener listener) {
+  }
+
+  @Override
+  public void removeCommandListener(CommandListener listener) {
+  }
+  */
 }

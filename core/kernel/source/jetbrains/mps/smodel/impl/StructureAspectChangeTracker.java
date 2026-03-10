@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryAttachListener;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -56,7 +56,7 @@ import java.util.Set;
  * </pre>
  * @author Artem Tikhomirov
  */
-public final class StructureAspectChangeTracker extends SRepositoryListenerBase implements SRepositoryAttachListener, SNodeChangeListener, SModelListener {
+public final class StructureAspectChangeTracker implements SRepositoryListener, SRepositoryAttachListener, SNodeChangeListener, SModelListener {
   // I assume model changes come in a single thread, as well as commandFinished notification, and do not care to synchronize
   private final Set<SModelReference> myChangedModels = new HashSet<>();
   private final Set<SModuleReference> myChangedModules = new HashSet<>();
@@ -79,7 +79,7 @@ public final class StructureAspectChangeTracker extends SRepositoryListenerBase 
   }
 
   @Override
-  public void stopListening(SRepository repository) {
+  public void stopListening(@NotNull SRepository repository) {
     for (SModule module : repository.getModules()) {
       stopListening(module);
     }

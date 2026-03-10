@@ -97,6 +97,10 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   public MPSModuleRepository(SRepositoryRegistry repositoryRegistry, ModelAccess modelAccess) {
     super(repositoryRegistry);
     myGlobalModelAccess = modelAccess;
+    // most likely, this listener is no-op, as MA here generally doesn't support commands.
+    // Generally, it may ignore listener registration. Though ATM it does delegate it to shared smodel.MA, this registration
+    // us of no use as PMA/PMA2 keep their own command ActionDispatchers. Nevertheless, still it's right to add the listener
+    // here not to make any assumption about a particular MA implementation.
     myCommandListener = new CommandListener() {
       @Override
       public void commandStarted() {

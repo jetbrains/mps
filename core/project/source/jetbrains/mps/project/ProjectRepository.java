@@ -31,20 +31,24 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Repository with modules visible in MPS {@link Project project}.
- *
+ * <p>
  * IMPORTANT!
  * For the time being, all modules available in this MPS instance are exposed through this repository, although
  * as we move forward with multiple projects story, this convention shall change. Likely, we'll expose modules of
  * the project and all its imports/libraries (and won't expose modules of other opened projects), though this is not
  * yet final.
- *
- * Currently delegates almost everything to the ugly singleton {@link MPSModuleRepository}. Keeps own list of
- * listeners and sends out own notifications about modules added/removed
+ * <p>
+ * Currently delegates almost everything to another repository, generally {@link MPSModuleRepository}. Doesn't keeps own list of
+ * listeners, shares listeners with the delegate  and sends out own notifications about modules added/removed
  * (i.e. module added to the global repository triggers moduleAdded for for both global and
  * each project repository
  */
@@ -52,6 +56,9 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
   private final Project myProject;
   private final ModelAccess myProjectModelAccess;
   private final SRepositoryExt myRootRepo;
+  // next are only for commandStarted()/commandFinished() ATM, to ensure it receives a proper repository.
+  private final List<SRepositoryListener> myCommandRedispatchListeners = new CopyOnWriteArrayList<>();
+  private CommandListener myCommandListener;
   //
   private StorageMemoryConflictResolver<EditableSModel> myConflictResolver;
 
@@ -66,6 +73,35 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
     myProject = project;
     myProjectModelAccess = projectModelAccess;
     myRootRepo = rootRepo;
+  }
+
+  @Override
+  public void init() {
+    super.init();
+    myCommandListener = new CommandListener() {
+      private List<SRepositoryListener> myListeners;
+      @Override
+      public void commandStarted() {
+//        fireCommandStarted();
+        myListeners = new ArrayList<>(myCommandRedispatchListeners);
+        myListeners.forEach(listener -> listener.commandStarted(ProjectRepository.this));
+      }
+
+      @Override
+      public void commandFinished() {
+        myListeners.forEach(listener -> listener.commandFinished(ProjectRepository.this));
+        myListeners = null;
+//        fireCommandFinished();
+      }
+    };
+    myProjectModelAccess.addCommandListener(myCommandListener);
+  }
+
+  @Override
+  public void dispose() {
+    myProjectModelAccess.removeCommandListener(myCommandListener);
+    myCommandListener = null;
+    super.dispose();
   }
 
   @NotNull
@@ -150,10 +186,16 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
      * for listeners registered with this ProjectRepository (the one that got command-capable MA).
      */
     getRootRepository().addRepositoryListener(listener);
+    // note, can't use SRepositoryEventsDispatcher/super.myEventsDispatcher for commandStarted()/commandFinished() ATM,
+    // as I don't want to deal with possible instanceof SRepositoryAttachListener scenarios - if using super,
+    // SRepoAttachListener would get notified twice (see RepoListenerTest).
+    // not that it's completely wrong, it's just that most of the listeners are unlikely ready for that.
+    myCommandRedispatchListeners.add(listener);
   }
 
   @Override
   public void removeRepositoryListener(@NotNull SRepositoryListener listener) {
+    myCommandRedispatchListeners.remove(listener);
     getRootRepository().removeRepositoryListener(listener);
   }
 
