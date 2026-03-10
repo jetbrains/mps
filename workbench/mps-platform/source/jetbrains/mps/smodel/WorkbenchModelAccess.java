@@ -29,6 +29,9 @@ import org.jetbrains.mps.util.RunWithOutcome;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
 
 import static java.math.BigDecimal.valueOf;
 
@@ -88,14 +91,13 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
         // the only way the application has THIS kind of write action is if the write action was suspended:
         // com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.executeSuspendingWriteAction
         // see jetbrains.mps.smodel.WorkbenchModelAccess.runWriteAction
-        // since we're in application read action and OUR write action is suspended, its safe
+        // since we're in application read action and OUR write action is suspended, it is safe
         // to assume we have read access
-        new SharedReadModelAccessImpl(mySharedReadSupport.acquireSharedReadTokenNoCheck()).execute(() -> {
-          myReadActionDispatcher.dispatch(r);
-          signalShareReadIsOver().run();
-        });
+        SharedReadModelAccess rma = shareReadNoCheck();
+        rma.execute(prepareLocked(r, new NoLock(), myReadActionDispatcher));
+        rma.release();
       } else {
-        new LockRunnable(getReadLock(), myReadActionDispatcher, r, signalShareReadIsOver()).run();
+        prepareLocked(r, getReadLock(), myReadActionDispatcher).run();
       }
     }));
     myCancellableReads.removeIfCanCancel(r);
@@ -109,7 +111,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     }
     assertNotWriteFromRead();
     myCancellableReads.cancel();
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), myWriteActionDispatcher, r, signalShareReadIsOver());
+    final Runnable lockRunnable = prepareLocked(r, getWriteLock(), myWriteActionDispatcher);
     if (isInEDT()) {
       myPlatformWriteHelper.runWrite(new PlatformCancelBlock(lockRunnable));
     } else {
@@ -179,7 +181,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
    */
   private boolean tryRead(final Runnable r) {
     // 1 ms is pretty short to be considered 'try'
-    final LockRunnable lockRunnable = new LockRunnable(getReadLock(), 1, myReadActionDispatcher, r, signalShareReadIsOver());
+    final LockRunnable lockRunnable = prepareLocked(r, getReadLock(), 1, myReadActionDispatcher);
     // XXX likely, shall try to grab IDEA's read lock much like tryWrite does
     ApplicationManager.getApplication().runReadAction(new PlatformCancelBlock(lockRunnable));
     if (lockRunnable.wasExecuted()) {
@@ -198,7 +200,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       return false;
     }
 
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, myWriteActionDispatcher, r, signalShareReadIsOver());
+    final LockRunnable lockRunnable = prepareLocked(r, getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, myWriteActionDispatcher);
 
     // XXX there's only 1 use of the method, and it's from EDT executor, are there any chance not to be in EDT here?
     assert isInEDT();
@@ -239,7 +241,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
     TaskTimer taskTimer = new TaskTimer();
     // tryWrite ensures our command runnable would be executed from a distinct thread and hence would be 'top' one
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, myWriteActionDispatcher, cmd, signalShareReadIsOver());
+    final LockRunnable lockRunnable = prepareLocked(cmd, getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, myWriteActionDispatcher);
     RunWithOutcome<Object> computable = new RunWithOutcome<>((Callable<?>) () -> {
       myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
       return null;
@@ -270,7 +272,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     assert cmd != null;
     assert project != null;
     if (!canWrite()) {
-      final LockRunnable withModelLock = new LockRunnable(getWriteLock(), myWriteActionDispatcher, cmd, signalShareReadIsOver());
+      final Runnable withModelLock = prepareLocked(cmd, getWriteLock(), myWriteActionDispatcher);
       cmd = myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock((withModelLock)));
     }
     String name = "MPS Execute Command", groupId = null;
@@ -286,12 +288,44 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   }
 
   /*package*/ void runUndoTransparentCommand(Runnable r) {
-    final LockRunnable withModelLock = new LockRunnable(getWriteLock(), myWriteActionDispatcher, r, signalShareReadIsOver());
+    final Runnable withModelLock = prepareLocked(r, getWriteLock(), myWriteActionDispatcher);
     CommandProcessor.getInstance().runUndoTransparentAction(myPlatformWriteHelper.withPlatformWrite(new PlatformCancelBlock(withModelLock)));
   }
 
   @Override
   public boolean hasScheduledWrites() {
     return myPlatformWriteHelper.hasScheduledWrites() || super.hasScheduledWrites();
+  }
+
+  private static class NoLock implements Lock {
+    @Override
+    public void lock() {
+      // no-op
+    }
+
+    @Override
+    public void lockInterruptibly() {
+      // no-op
+    }
+
+    @Override
+    public boolean tryLock() {
+      return true;
+    }
+
+    @Override
+    public boolean tryLock(long time, @NotNull TimeUnit unit) throws InterruptedException {
+      return true;
+    }
+
+    @Override
+    public void unlock() {
+      // no-op
+    }
+
+    @Override
+    public @NotNull Condition newCondition() {
+      throw new UnsupportedOperationException();
+    }
   }
 }

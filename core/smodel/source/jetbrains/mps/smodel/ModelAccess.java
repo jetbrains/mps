@@ -4,6 +4,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,8 +44,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
   }
 
   private final ReentrantReadWriteLockEx myReadWriteLock = new ReentrantReadWriteLockEx();
-  @SuppressWarnings("ClassEscapesDefinedScope")
-  protected final SharedReadSupport mySharedReadSupport; // FIXME hide completely
+  private final SharedReadSupport mySharedReadSupport;
 
   protected ModelAccess() {
     mySharedReadSupport = new SharedReadSupport();
@@ -116,6 +116,13 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
     throw new UnsupportedOperationException("Client shall not reach here. They are expected to face ProjectModelAccess2.isCommandAction");
   }
 
+  /*package*/ LockRunnable prepareLocked(Runnable r, Lock lock, ActionDispatcher<?> dispatcher) {
+    return new LockRunnable(lock, dispatcher, r, signalShareReadIsOver());
+  }
+  /*package*/ LockRunnable prepareLocked(Runnable r, Lock lock, long timeoutMillis, ActionDispatcher<?> dispatcher) {
+    return new LockRunnable(lock, timeoutMillis, dispatcher, r, signalShareReadIsOver());
+  }
+
   /*package*/ final Runnable signalShareReadIsOver() {
     return mySharedReadSupport::sharedReadIsOver;
   }
@@ -125,6 +132,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
       throw new IllegalModelAccessException("Can share a read in progress only!");
     }
     return mySharedReadSupport.acquireSharedReadTokenNoCheck();
+  }
+
+  @Hack
+  protected final SharedReadModelAccess shareReadNoCheck() {
+    return new SharedReadModelAccessImpl(mySharedReadSupport.acquireSharedReadTokenNoCheck());
   }
 
   private static class ReentrantReadWriteLockEx extends ReentrantReadWriteLock {

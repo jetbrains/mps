@@ -4,7 +4,6 @@
 package jetbrains.mps.smodel;
 
 import javax.swing.SwingUtilities;
-import java.util.concurrent.locks.Lock;
 
 /**
  * This is an instance available from {@code smodel.ModelAccess.instance()} for uses from non-IDE ant tasks and tests.
@@ -36,10 +35,6 @@ class DefaultModelAccess extends ModelAccess {
     }
     assertNotWriteFromRead();
     prepareLocked(r, getWriteLock(), myWriteActionDispatcher).run();
-  }
-
-  Runnable prepareLocked(Runnable r, Lock readLock, ActionDispatcher<?> dispatcher) {
-    return new LockRunnable(readLock, dispatcher, r, signalShareReadIsOver());
   }
 
   @Override
