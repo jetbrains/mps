@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2026 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -22,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Code that grabs a lock, either in a blocking or timeout-guarded manner,
- * runs a delegate under the lock and reports whether the execution succeeded (from the locking perspective).
+ * Code that grabs a lock, either in a blocking or timeout-guarded manner.
+ * Runs a delegate under the lock and reports whether the execution succeeded (from the locking perspective).
  * @author Artem Tikhomirov
  * @since 2018.3
  */
@@ -32,28 +20,31 @@ final class LockRunnable implements Runnable {
   private final long myTimeoutMillis;
   private final ActionDispatcher<?> myActionDispatcher;
   private final Runnable myDelegate;
+  private final Runnable myPostDispatch;
   private boolean myDelegateExecuted;
 
   public LockRunnable(Lock lock, Runnable delegate) {
-    this(lock, -1, null, delegate);
+    this(lock, -1, null, delegate, null);
   }
 
-  public LockRunnable(Lock lock, @Nullable ActionDispatcher<?> actionDispatcher, Runnable delegate) {
+  public LockRunnable(Lock lock, @Nullable ActionDispatcher<?> actionDispatcher, Runnable delegate, @Nullable Runnable postDispatch) {
     myLock = lock;
     myTimeoutMillis = -1;
     myActionDispatcher = actionDispatcher;
     myDelegate = delegate;
+    myPostDispatch = postDispatch;
   }
 
   public LockRunnable(Lock lock, long timeoutMillis, Runnable delegate) {
-    this(lock, timeoutMillis, null, delegate);
+    this(lock, timeoutMillis, null, delegate, null);
   }
 
-  public LockRunnable(Lock lock, long timeoutMillis, @Nullable ActionDispatcher<?> actionDispatcher, Runnable delegate) {
+  public LockRunnable(Lock lock, long timeoutMillis, @Nullable ActionDispatcher<?> actionDispatcher, Runnable delegate, @Nullable Runnable postDispatch) {
     myLock = lock;
     myTimeoutMillis = timeoutMillis;
     myActionDispatcher = actionDispatcher;
     myDelegate = delegate;
+    myPostDispatch = postDispatch;
   }
 
     @Override
@@ -75,6 +66,9 @@ final class LockRunnable implements Runnable {
             myDelegate.run();
           }
           myDelegateExecuted = true;
+          if (myPostDispatch != null) {
+            myPostDispatch.run();
+          }
         } finally {
           myLock.unlock();
         }

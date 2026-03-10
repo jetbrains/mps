@@ -7,12 +7,11 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * This if a shared code for 2 MA alternatives in use by MPS now, along with the means to pick the proper one on startup (available through MA.instance()).
+ * This is a shared code for 2 MA alternatives in use by MPS now, along with the means to pick the proper one on startup (available through MA.instance()).
  * At the moment, we share the same locks for 2 main repositories (the one where we put deployed modules and another one we keep project modules at).
  * These 2 implementations are DefaultModelAccess and WorkbenchModelAccess. Besides, there are delegates to the shared implementation specific to the
  * repository in use, namely GlobalModelAccess for the deployed modules repository and ProjectModelAccess/ProjectModelAccess2 for the project repository.
@@ -44,8 +43,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
   }
 
   private final ReentrantReadWriteLockEx myReadWriteLock = new ReentrantReadWriteLockEx();
+  @SuppressWarnings("ClassEscapesDefinedScope")
+  protected final SharedReadSupport mySharedReadSupport; // FIXME hide completely
 
   protected ModelAccess() {
+    mySharedReadSupport = new SharedReadSupport();
   }
 
   /**
@@ -83,7 +85,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
 
   @Override
   public boolean canRead() {
-    return isReadEnabledFlag() || myReadWriteLock.getReadHoldCount() != 0 || myReadWriteLock.isWriteLockedByCurrentThread();
+    return mySharedReadSupport.isReadEnabledFlag() || myReadWriteLock.getReadHoldCount() != 0 || myReadWriteLock.isWriteLockedByCurrentThread();
   }
 
   @Override
@@ -114,59 +116,16 @@ public abstract class ModelAccess extends AbstractModelAccess implements org.jet
     throw new UnsupportedOperationException("Client shall not reach here. They are expected to face ProjectModelAccess2.isCommandAction");
   }
 
-  protected final void sharedReadIsOver() {
-    ReadAccessToken token = myReadFlagTokens.get();
-    if (token != null) {
-      token.revoke();
-      myReadFlagTokens.remove();
-      myAllReadFlagTokens.remove(token);
-    }
+  /*package*/ final Runnable signalShareReadIsOver() {
+    return mySharedReadSupport::sharedReadIsOver;
   }
 
   /*package*/ ReadAccessToken shareRead() {
     if (!canRead()) {
       throw new IllegalModelAccessException("Can share a read in progress only!");
     }
-    return acquireSharedReadTokenNoCheck();
+    return mySharedReadSupport.acquireSharedReadTokenNoCheck();
   }
-
-  /**
-   * Acquires a shared read token for the current thread, ensuring thread-bound read access.
-   * If no token is already associated with the current thread, a new token is created,
-   * registered, and returned. The shared read token allows multiple threads to have
-   * concurrent read access, adhering to specific usage and lifecycle constraints.
-   * <p>
-   * Note: this method does not check if the current thread has read access, to establish
-   * that fact, and to ensure that all the necessary constraints are satisfied, is on the conscience
-   * of the caller. 
-   *
-   * @return an instance of {@link ReadAccessToken} representing the shared read access
-   *         bound to the current thread. If a token already exists for the thread, the
-   *         existing token is returned.
-   */
-  protected ReadAccessToken acquireSharedReadTokenNoCheck() {
-    ReadAccessToken token = myReadFlagTokens.get();
-    // XXX not sure about sharing original read, need to give it more thought/investigation
-    //     e.g. what happens if/when 'nested' read reports sharedReadIsOver(). If this is the case, perhaps, need "usage counter" for the token?
-    //     Keep in mind, token is bound to the current thread, another thread (running under 'read enabled') would get another instance.
-    //     ^^^ sounds like we can get into a state when original thread releases platform read, but there are 2 threads with 'read enabled' state.
-    //     (thread0 shared its read for thread1, thread1 was in 'read enabled' and shared its state for thread2, thread0 ends, platform lock gone)
-    if (token == null) {
-      token = new ReadAccessToken();
-      myReadFlagTokens.set(token);
-      myAllReadFlagTokens.add(token);
-    }
-    return token;
-  }
-
-  private final ConcurrentLinkedQueue<ReadAccessToken> myAllReadFlagTokens = new ConcurrentLinkedQueue<>();
-  private final ThreadLocal<ReadAccessToken> myReadFlagTokens = new ThreadLocal<>();
-
-  private boolean isReadEnabledFlag() {
-    // FIXME I wonder if we shall filter isActive (or make it part of isReadInProgressCurrentThread)
-    return myAllReadFlagTokens.stream().anyMatch(ReadAccessToken::isReadInProgressCurrentThread);
-  }
-
 
   private static class ReentrantReadWriteLockEx extends ReentrantReadWriteLock {
 

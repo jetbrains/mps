@@ -4,6 +4,7 @@
 package jetbrains.mps.smodel;
 
 import javax.swing.SwingUtilities;
+import java.util.concurrent.locks.Lock;
 
 /**
  * This is an instance available from {@code smodel.ModelAccess.instance()} for uses from non-IDE ant tasks and tests.
@@ -24,13 +25,7 @@ class DefaultModelAccess extends ModelAccess {
       r.run();
       return;
     }
-    getReadLock().lock();
-    try {
-      myReadActionDispatcher.dispatch(r);
-    } finally {
-      sharedReadIsOver();
-      getReadLock().unlock();
-    }
+    prepareLocked(r, getReadLock(), myReadActionDispatcher).run();
   }
 
   @Override
@@ -40,22 +35,20 @@ class DefaultModelAccess extends ModelAccess {
       return;
     }
     assertNotWriteFromRead();
-    getWriteLock().lock();
-    try {
-      myWriteActionDispatcher.dispatch(r);
-    } finally {
-      sharedReadIsOver();
-      getWriteLock().unlock();
-    }
+    prepareLocked(r, getWriteLock(), myWriteActionDispatcher).run();
+  }
+
+  Runnable prepareLocked(Runnable r, Lock readLock, ActionDispatcher<?> dispatcher) {
+    return new LockRunnable(readLock, dispatcher, r, signalShareReadIsOver());
   }
 
   @Override
   public void runReadInEDT(final Runnable r) {
-    SwingUtilities.invokeLater(() -> runReadAction(r));
+    SwingUtilities.invokeLater(prepareLocked(r, getReadLock(), myReadActionDispatcher));
   }
 
   @Override
   public void runWriteInEDT(final Runnable r) {
-    SwingUtilities.invokeLater(() -> runWriteAction(r));
+    SwingUtilities.invokeLater(prepareLocked(r, getWriteLock(), myWriteActionDispatcher));
   }
 }
