@@ -93,6 +93,14 @@
     </condition>
   </target>
 
+  <target name="check-kotlin-ant" description="Check kotlin ant availability">
+    <condition property="kotlinant.missing" value="true" else="false">
+      <not>
+        <available file="${kotlin.compiler}/lib/kotlin-ant-${kotlin.ant.version}.jar"/>
+      </not>
+    </condition>
+  </target>
+
   <target name="check-kotlin-plugin-libs" description="Check kotlin plugin libraries availability">
     <condition property="kotlinpluginlibs.missing" value="true" else="false">
       <not>
@@ -432,6 +440,14 @@
     <delete file="${kotlin.compiler}/compiler.zip" />
   </target>
 
+  <target name="download-kotlin-ant" depends="download-kotlin-compiler,check-kotlin-ant,install-ivy" if="${kotlinant.missing}"
+          description="Download Kotlin ant">
+    <echo message="Kotlin ant is missing. Downloading..."/>
+    <ivy:resolve file="./ivyKotlinAnt.xml" validate="false" showprogress="true"/>
+    <ivy:retrieve pattern="${kotlin.compiler}/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
+    <move file="${kotlin.compiler}/lib/kotlin-ant-${kotlin.ant.version}.jar" toFile="${kotlin.compiler}/lib/kotlin-ant.jar" />
+  </target>
+
   <target name="download-kotlin-core-libs" depends="check-kotlin-core-libs,install-ivy" if="${kotlincorelibs.missing}"
           description="Download Kotlin metadata and compiler libraries">
     <echo message="Kotlin core libraries are missing. Downloading..."/>
@@ -446,7 +462,7 @@
     <ivy:retrieve pattern="${junit5.lib}/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
-  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-plugin-libs,download-kotlin-core-libs,download-kotlin-compiler, download-junit-libs"
+  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-plugin-libs,download-kotlin-core-libs,download-kotlin-compiler,download-kotlin-ant,download-junit-libs"
           description="Download all non platform related libs"/>
 
   <!-- ===================================================== -->

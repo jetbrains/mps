@@ -1,0 +1,8 @@
+<ivy-module version="2.0">
+  <info organisation="org.jetbrains.mps" module="kotlin-ant"/>
+  <dependencies>
+    <dependency org="org.jetbrains.kotlin" name="kotlin-ant" rev="${kotlin.ant.version}">
+      <artifact name="kotlin-ant" ext="jar"/>
+    </dependency>
+  </dependencies>
+</ivy-module>
