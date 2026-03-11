@@ -17,6 +17,7 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
  * @since 2017.3
  */
 public abstract class AbstractModelAccess implements ModelAccess {
+  @SuppressWarnings("ClassEscapesDefinedScope")
   protected final ActionDispatcher<ReadActionListener> myReadActionDispatcher;
 
   /**
@@ -24,6 +25,7 @@ public abstract class AbstractModelAccess implements ModelAccess {
    * dispatch actions through {@link ActionDispatcher#dispatch(Runnable)} method of this field
    * to get proper notifications for {@link CommandListener}
    */
+  @SuppressWarnings("ClassEscapesDefinedScope")
   protected final ActionDispatcher<CommandListener> myCommandActionDispatcher;
 
   /**
@@ -31,24 +33,12 @@ public abstract class AbstractModelAccess implements ModelAccess {
    * dispatch actions through {@link ActionDispatcher#dispatch(Runnable)} method of this field
    * to get proper notifications for {@link WriteActionListener}
    */
+  @SuppressWarnings("ClassEscapesDefinedScope")
   protected final ActionDispatcher<WriteActionListener> myWriteActionDispatcher;
 
   public AbstractModelAccess() {
     myReadActionDispatcher = new ActionDispatcher<>(ReadActionListener::readStarted, ReadActionListener::readFinished);
-    // FWIW, there's still TestModelAccess that relies on onCommandStarted()/onCommandFinished().
-    //      Other subclasses either don't use commands (DefaultModelAccess), or provide
-    //      their own implementations
-    myCommandActionDispatcher = new ActionDispatcher<>(new CommandListener() {
-      @Override
-      public void commandStarted() {
-        onCommandStarted();
-      }
-
-      @Override
-      public void commandFinished() {
-        onCommandFinished();
-      }
-    }, CommandListener::commandStarted, CommandListener::commandFinished);
+    myCommandActionDispatcher = new ActionDispatcher<>(CommandListener::commandStarted, CommandListener::commandFinished);
     myWriteActionDispatcher = new ActionDispatcher<>(WriteActionListener::actionStarted, WriteActionListener::actionFinished);
   }
 
@@ -64,14 +54,6 @@ public abstract class AbstractModelAccess implements ModelAccess {
     if (!canWrite()) {
       throw new IllegalModelAccessError("You can write model only inside write actions");
     }
-  }
-
-  protected void onCommandStarted() {
-    // no-op
-  }
-
-  protected void onCommandFinished() {
-    // no-op
   }
 
   @Override

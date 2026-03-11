@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import java.util.ArrayDeque;
 
@@ -93,8 +94,8 @@ final class TestModelFactory {
   }
 
   public SNode createNode(@Nullable int... childrenAtLevel) {
-    ArrayDeque<SNode> thisLevel = new ArrayDeque<SNode>();
-    ArrayDeque<SNode> nextLevel = new ArrayDeque<SNode>();
+    ArrayDeque<SNode> thisLevel = new ArrayDeque<>();
+    ArrayDeque<SNode> nextLevel = new ArrayDeque<>();
     final SNode top = new jetbrains.mps.smodel.SNode(ourConcept);
     thisLevel.add(top);
     if (childrenAtLevel == null || childrenAtLevel.length == 0) {
@@ -303,12 +304,23 @@ final class TestModelFactory {
 
     // commands of this MA don't track undo
     TestModelAccess() {
-      myUndoHandler = null;
+      this(null);
     }
 
     // command of this MA do track undo
     TestModelAccess(UndoHandler undoHandler) {
       myUndoHandler = undoHandler;
+      myCommandActionDispatcher.addActionListener(new CommandListener() {
+        @Override
+        public void commandStarted() {
+          onCommandStarted();
+        }
+
+        @Override
+        public void commandFinished() {
+          onCommandFinished();
+        }
+      });
     }
 
     void disableRead() {
@@ -406,8 +418,7 @@ final class TestModelFactory {
       return myCommandContext;
     }
 
-    @Override
-    protected void onCommandStarted() {
+    /*package*/ void onCommandStarted() {
       enableWrite();
       if (myUndoHandler == null) {
         assert myCommandContext == null;
@@ -447,8 +458,7 @@ final class TestModelFactory {
       };
     }
 
-    @Override
-    protected void onCommandFinished() {
+    /*package*/  void onCommandFinished() {
       disableWrite();
       myCommandContext = null;
     }

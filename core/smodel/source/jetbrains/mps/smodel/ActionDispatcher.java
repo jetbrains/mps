@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -20,6 +8,7 @@ import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
@@ -79,6 +68,8 @@ import java.util.function.Consumer;
   // @param prePostListener optional T to get pre and post notification around action dispatch for the listeners.
   //        receives same onActionStart/onActionFinish events as other listeners, the difference is that
   //        prePostListener is guaranteed to be invoked as first and last.
+  //        Note, now that there's a reversed order of onActionStart/onActionFinish event dispatch, any regular listener
+  //        added early in the construction process is pretty much the same as prePostListener.
   // all arguments are non-null
   public ActionDispatcher(T prePostListener, Consumer<T> onActionStart, Consumer<T> onActionFinish) {
     myPrePostListener = prePostListener;
@@ -92,8 +83,10 @@ import java.util.function.Consumer;
    */
   public void dispatch(Runnable r) {
     InterruptedException interruptedException = null;
+    // we dispatch events over a copy of the list, and deliberately ignore any listeners added during the command.
+    final ArrayList<T> toNotify = new ArrayList<>(myListeners);
     try {
-      onEnter();
+      onEnter(toNotify);
       try {
         r.run();
       } catch (RuntimeException ex) {
@@ -111,7 +104,10 @@ import java.util.function.Consumer;
     } finally {
       if (interruptedException == null) {
         try {
-          onExit();
+          // dispatch on a reversed list to resemble an order of start notification, in case there are some interdependencies b/w different listeners.
+          // Also helps clients that receive MA early to establish a listener that they may expect to be invoked (close to) first/last, e.g. repository
+          // that re-dispatches MA's CommandListener events as its own SRepositoryListener's.
+          onExit(toNotify.reversed());
         } catch (InterruptedException ex) {
           // FIXME here we are likely in an invalid state (onEntry succeed, onExit didn't grab myNotifyGuard),
           //       although no idea how to bring it back to 'normal', seems that it's not possible right here - there
@@ -182,7 +178,7 @@ import java.util.function.Consumer;
     return String.format("%s. Thread %s, state %s, %d active clients.", msg, threadName, actualState, myActiveThreads.get());
   }
 
-  private void onEnter() throws InterruptedException {
+  private void onEnter(final List<T> toNotify) throws InterruptedException {
     if (!myNotifyGuard.tryAcquire(3, TimeUnit.MINUTES)) {
       throw new InterruptedException(formatMessageDetails("Deadlock prevention. Notify 'start' takes too long"));
     }
@@ -195,7 +191,7 @@ import java.util.function.Consumer;
           if (myPrePostListener != null) {
             myOnActionStart.accept(myPrePostListener);
           }
-          myListeners.forEach(myOnActionStart);
+          toNotify.forEach(myOnActionStart);
         } finally {
           // in any case, treat notification complete, and let other threads, if any, continue with an expected 'ACTIVE' state
           transitState(State.NOTIFY_START, State.ACTIVE);
@@ -210,7 +206,7 @@ import java.util.function.Consumer;
     }
   }
 
-  private void onExit() throws InterruptedException {
+  private void onExit(final List<T> toNotify) throws InterruptedException {
     if (!myNotifyGuard.tryAcquire(3, TimeUnit.MINUTES)) {
       throw new InterruptedException(formatMessageDetails("Deadlock prevention. Notify 'finish' takes too long"));
     }
@@ -219,9 +215,8 @@ import java.util.function.Consumer;
       if (cnt == 0) {
         transitState(State.ACTIVE, State.NOTIFY_FINISH);
         try {
-          // FIXME guess, would be better to dispatch on reversed list, to resemble an order of start notification
-          //       i.e. just in case there are some interdependencies b/w different listeners.
-          myListeners.forEach(myOnActionFinish);
+          // caller controls the order of event dispatch
+          toNotify.forEach(myOnActionFinish);
           if (myPrePostListener != null) {
             myOnActionFinish.accept(myPrePostListener);
           }
@@ -273,12 +268,11 @@ import java.util.function.Consumer;
       throw new ListenersConsistenceException("Adding the same listener again");
     }
     myListeners.add(listener);
-    if (isInsideAction()) {
-      // FIXME there's ClassLoaderManager.init that attaches listeners inside model write and expects to receive 'start' notification, otherwise
-      // internal state of BatchEventsProcessor breaks. However, I don't think it's good idea to send notifications like that when listener is added,
-      // we can violate the listener contract or expectations
-      myOnActionStart.accept(listener);
-    }
+    // here, we used to dispatch onActionStart for new listeners coming isInsideAction().
+    // now that we dispatch events over a copy of the listener list, there's no way a new listener that received onActionStart
+    // here would receive corresponding onActionFinish. Nor I think it's desirable, and the only use of this logic (I'm aware of)
+    // inside ClassLoaderManager.init that attaches listeners inside model write and expects to receive 'start' notification
+    // (otherwise, internal state of BatchEventsProcessor breaks), is most likely flawed and shall get fixed in another way.
   }
 
   /**
