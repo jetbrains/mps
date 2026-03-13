@@ -3012,7 +3012,7 @@
       <node id="1224168785803" at="49,35,50,17" concept="11" />
       <node id="1224168785803" at="54,37,55,105" concept="5" />
       <node id="1224168785803" at="56,5,57,30" concept="11" />
-      <node id="1224168829449" at="64,87,65,46" concept="11" />
+      <node id="1224168829449" at="64,87,65,104" concept="11" />
       <node id="1224168900845" at="69,78,70,98" concept="10" />
       <node id="1570762105196821318" at="70,98,71,121" concept="10" />
       <node id="1570762105197163860" at="71,121,72,83" concept="12" />
@@ -3060,31 +3060,31 @@
       <node id="1224171259848" at="143,110,144,119" concept="10" />
       <node id="1224171269433" at="144,119,145,67" concept="11" />
       <node id="1224168785803" at="150,48,151,55" concept="11" />
-      <node id="1224168785803" at="157,0,158,0" concept="14" trace="ClassConcept$bK" />
-      <node id="1224168785803" at="158,0,159,0" concept="14" trace="BaseMethodDeclaration$kD" />
-      <node id="1224168785803" at="159,0,160,0" concept="14" trace="ExpressionStatement$O8" />
-      <node id="1224168785803" at="160,0,161,0" concept="14" trace="AssignmentExpression$SE" />
-      <node id="1224168785803" at="161,0,162,0" concept="14" trace="DotExpression$yW" />
-      <node id="1224168785803" at="162,0,163,0" concept="14" trace="ThisExpression$$o" />
-      <node id="1224168785803" at="163,0,164,0" concept="14" trace="FieldReferenceOperation$fU" />
-      <node id="1224168785803" at="164,0,165,0" concept="14" trace="FieldDeclaration$ie" />
-      <node id="1224168785803" at="165,0,166,0" concept="14" trace="ConstructorDeclaration$yG" />
-      <node id="1224168785803" at="166,0,167,0" concept="14" trace="VariableReference$TC" />
-      <node id="1224168785803" at="167,0,168,0" concept="14" trace="ParameterDeclaration$RG" />
-      <node id="1224168785803" at="168,0,169,0" concept="14" trace="ReturnStatement$lt" />
-      <node id="1224168785803" at="172,0,173,0" concept="14" trace="body$5xQk" />
-      <node id="1224168785803" at="173,0,174,0" concept="14" trace="statement$53DE" />
-      <node id="1224168785803" at="174,0,175,0" concept="14" trace="expression$5L7M" />
-      <node id="1224168785803" at="175,0,176,0" concept="14" trace="lValue$splI" />
-      <node id="1224168785803" at="176,0,177,0" concept="14" trace="operand$w6IR" />
-      <node id="1224168785803" at="177,0,178,0" concept="14" trace="operation$gs9E" />
-      <node id="1224168785803" at="178,0,179,0" concept="14" trace="type$a1UY" />
-      <node id="1224168785803" at="179,0,180,0" concept="14" trace="member$L_2d" />
-      <node id="1224168785803" at="180,0,181,0" concept="14" trace="fieldDeclaration$H7Ag" />
-      <node id="1224168785803" at="181,0,182,0" concept="14" trace="variableDeclaration$N1XG" />
-      <node id="1224168785803" at="182,0,183,0" concept="14" trace="rValue$spNK" />
-      <node id="1224168785803" at="186,0,187,0" concept="14" trace="name$MnvL" />
-      <node id="1224168785803" at="187,0,188,0" concept="14" trace="isFinal$gvTP" />
+      <node id="1224168785803" at="157,0,158,0" concept="14" trace="name$MnvL" />
+      <node id="1224168785803" at="158,0,159,0" concept="14" trace="isFinal$gvTP" />
+      <node id="1224168785803" at="162,0,163,0" concept="14" trace="ClassConcept$bK" />
+      <node id="1224168785803" at="163,0,164,0" concept="14" trace="BaseMethodDeclaration$kD" />
+      <node id="1224168785803" at="164,0,165,0" concept="14" trace="ExpressionStatement$O8" />
+      <node id="1224168785803" at="165,0,166,0" concept="14" trace="AssignmentExpression$SE" />
+      <node id="1224168785803" at="166,0,167,0" concept="14" trace="DotExpression$yW" />
+      <node id="1224168785803" at="167,0,168,0" concept="14" trace="ThisExpression$$o" />
+      <node id="1224168785803" at="168,0,169,0" concept="14" trace="FieldReferenceOperation$fU" />
+      <node id="1224168785803" at="169,0,170,0" concept="14" trace="FieldDeclaration$ie" />
+      <node id="1224168785803" at="170,0,171,0" concept="14" trace="ConstructorDeclaration$yG" />
+      <node id="1224168785803" at="171,0,172,0" concept="14" trace="VariableReference$TC" />
+      <node id="1224168785803" at="172,0,173,0" concept="14" trace="ParameterDeclaration$RG" />
+      <node id="1224168785803" at="173,0,174,0" concept="14" trace="ReturnStatement$lt" />
+      <node id="1224168785803" at="177,0,178,0" concept="14" trace="body$5xQk" />
+      <node id="1224168785803" at="178,0,179,0" concept="14" trace="statement$53DE" />
+      <node id="1224168785803" at="179,0,180,0" concept="14" trace="expression$5L7M" />
+      <node id="1224168785803" at="180,0,181,0" concept="14" trace="lValue$splI" />
+      <node id="1224168785803" at="181,0,182,0" concept="14" trace="operand$w6IR" />
+      <node id="1224168785803" at="182,0,183,0" concept="14" trace="operation$gs9E" />
+      <node id="1224168785803" at="183,0,184,0" concept="14" trace="type$a1UY" />
+      <node id="1224168785803" at="184,0,185,0" concept="14" trace="member$L_2d" />
+      <node id="1224168785803" at="185,0,186,0" concept="14" trace="fieldDeclaration$H7Ag" />
+      <node id="1224168785803" at="186,0,187,0" concept="14" trace="variableDeclaration$N1XG" />
+      <node id="1224168785803" at="187,0,188,0" concept="14" trace="rValue$spNK" />
       <node id="1224168785803" at="60,0,62,0" concept="2" trace="IntentionImplementation#()V" />
       <node id="1570762105196794704" at="82,12,84,7" concept="0" />
       <node id="1224168785803" at="39,0,42,0" concept="2" trace="AddFieldForUnUsedParameter_Intention#()V" />
@@ -3114,7 +3114,7 @@
       <scope id="1224168785803" at="44,35,45,40" />
       <scope id="1224168785803" at="49,35,50,17" />
       <scope id="1224168785803" at="54,37,55,105" />
-      <scope id="1224168785805" at="64,87,65,46" />
+      <scope id="1224168785805" at="64,87,65,104" />
       <scope id="1570762105196670806" at="80,36,81,215" />
       <scope id="1570762105196794705" at="82,14,83,221" />
       <scope id="6620955700775266370" at="105,134,106,19" />
@@ -3182,9 +3182,9 @@
         <var name="editorContext" id="1224168785803" />
         <var name="node" id="1224168785803" />
       </scope>
-      <unit id="1224168785803" at="185,0,189,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$PROPS" />
-      <unit id="1224168785803" at="171,0,184,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$LINKS" />
-      <unit id="1224168785803" at="156,0,170,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$CONCEPTS" />
+      <unit id="1224168785803" at="156,0,160,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$PROPS" />
+      <unit id="1224168785803" at="176,0,189,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$LINKS" />
+      <unit id="1224168785803" at="161,0,175,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$CONCEPTS" />
       <unit id="1224168785803" at="59,0,155,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention$IntentionImplementation" />
       <unit id="1224168785803" at="36,0,190,0" name="jetbrains.mps.baseLanguage.intentions.AddFieldForUnUsedParameter_Intention" />
     </file>

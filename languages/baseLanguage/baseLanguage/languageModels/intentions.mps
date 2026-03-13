@@ -88,6 +88,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -7295,8 +7298,18 @@
     <node concept="2S6ZIM" id="hO69kuc" role="2ZfVej">
       <node concept="3clFbS" id="hO69kud" role="2VODD2">
         <node concept="3clFbF" id="hO69v89" role="3cqZAp">
-          <node concept="Xl_RD" id="hO69v8a" role="3clFbG">
-            <property role="Xl_RC" value="Add Field for Unused Parameter" />
+          <node concept="2OqwBi" id="5ClQvVXDQt9" role="3clFbG">
+            <node concept="Xl_RD" id="hO69v8a" role="2Oq$k0">
+              <property role="Xl_RC" value="Create field for %s" />
+            </node>
+            <node concept="2cAKMz" id="5ClQvVXDQYG" role="2OqNvi">
+              <node concept="2OqwBi" id="5ClQvVXDREz" role="2cAKU6">
+                <node concept="2Sf5sV" id="5ClQvVXDRaJ" role="2Oq$k0" />
+                <node concept="3TrcHB" id="5ClQvVXDSOZ" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>
