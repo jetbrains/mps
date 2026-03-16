@@ -238,7 +238,9 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invokeSpecial(__thisNode__.getConcept(), __thisNode__, concepts);
     // getImmediateSuperconcepts for an interface declaration doesn't give BaseConcept, while it's necessary when we'd like to access BaseConcept properties and links
     // for a node with type of pure interface (e.g. DotExpression.operation:IOperation.virtualPackage)
-    SetSequence.fromSet(concepts).addElement(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(__thisNode__).getRepository()));
+    if (SNodeOperations.getModel(__thisNode__) != null) {
+      SetSequence.fromSet(concepts).addElement(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(__thisNode__).getRepository()));
+    }
     return concepts;
   }
   /*package*/ static void collectSuperConcepts_id2A8AB0rB3NH(@NotNull SAbstractConcept __thisConcept__, SNode concept, final Set<SNode> result) {

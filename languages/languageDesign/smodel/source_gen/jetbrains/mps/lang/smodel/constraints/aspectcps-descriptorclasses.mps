@@ -49,9 +49,6 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
-        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -16161,9 +16158,9 @@
                               <uo k="s:originTrace" v="n:8095208975671022073" />
                               <node concept="2ShNRf" id="15o" role="3cqZAk">
                                 <uo k="s:originTrace" v="n:8095208975671024330" />
-                                <node concept="HV5vD" id="15p" role="2ShVmc">
-                                  <ref role="HV5vE" to="o8zo:7ipADkTfAzR" resolve="EmptyScope" />
-                                  <uo k="s:originTrace" v="n:8095208975671045338" />
+                                <node concept="1pGfFk" id="15p" role="2ShVmc">
+                                  <ref role="37wK5l" to="o8zo:7ipADkTfAzT" resolve="EmptyScope" />
+                                  <uo k="s:originTrace" v="n:4392855699315285415" />
                                 </node>
                               </node>
                             </node>
