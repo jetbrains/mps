@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.core.aspects.behaviour.api;
 
+import jetbrains.mps.extapi.model.SNodeFactory;
 import jetbrains.mps.smodel.language.CoreAspectRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -30,4 +31,7 @@ public interface BehaviorRegistry extends CoreAspectRegistry {
 
   @NotNull
   BHDescriptor getBHDescriptor(@NotNull SAbstractConcept concept);
+
+  @NotNull
+  SNodeFactory getNodeFactory();
 }

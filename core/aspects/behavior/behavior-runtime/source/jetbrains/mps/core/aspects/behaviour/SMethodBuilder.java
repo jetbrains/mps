@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SAbstractType;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SParameter;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 import java.util.Arrays;
@@ -31,6 +31,8 @@ import java.util.List;
  * Used in the generated behavior descriptors.
  */
 public final class SMethodBuilder<T> {
+  private static BehaviorRegistry ourRegistry;
+
   private String myName;
   private SModifiersImpl myModifiers;
   private final SAbstractType myReturnType;
@@ -38,6 +40,15 @@ public final class SMethodBuilder<T> {
   private long myBaseMethodId;
   private long myLangIdLo;
   private long myLangIdHi;
+
+  /**
+   * Internal, much like {@link jetbrains.mps.smodel.behaviour.BHReflectionInit}, ensures creates SMethod point to the registry instance
+   */
+  @Internal
+  /*package*/ static void initRegistry(BehaviorRegistry registry) {
+    // tohough we strive to avoid statics/singletons as access api, but tolerate static fields as there's no reasonable alternative at the moment.
+    ourRegistry = registry;
+  }
 
   public SMethodBuilder(SAbstractType returnType) {
     myReturnType = returnType;
@@ -59,8 +70,7 @@ public final class SMethodBuilder<T> {
 
   public SMethod<T> build2(List<SParameter> paramTypes) {
     var methodId = SMethodIdV2.create("", myBaseMethodId, myLangIdHi ^ myLangIdLo);
-    final BehaviorRegistry registry = ConceptRegistry.getInstance().getBehaviorRegistry();
-    return SMethodImpl.create(myName, myModifiers, myReturnType, myConcept, methodId, registry, paramTypes);
+    return SMethodImpl.create(myName, myModifiers, myReturnType, myConcept, methodId, ourRegistry, paramTypes);
   }
 
   public SMethodBuilder<T> name(@NotNull String name) {

@@ -19,6 +19,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.behaviour.BehaviorRegistryImpl;
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
+import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
@@ -33,7 +34,6 @@ import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +54,7 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
     myLanguageRegistry = languageRegistry;
     myStructureRegistry = new StructureRegistry(languageRegistry);
     myConcPropsRegistry = new ConceptPropertiesRegistry(languageRegistry);
-    myBehaviorRegistry = new BehaviorRegistryImpl(languageRegistry, myMRO);
+    myBehaviorRegistry = new BehaviorRegistryImpl(languageRegistry, myMRO, SNode::new);
     myConstraintsRegistry = new ConstraintsRegistry(languageRegistry, myMRO);
   }
 

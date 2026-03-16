@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.api.AncestorResolutionOrder;
 import jetbrains.mps.core.aspects.behaviour.api.BHDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.CachingAncestorResolutionOrder;
+import jetbrains.mps.extapi.model.SNodeFactory;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.behaviour.BHReflectionInit;
 import jetbrains.mps.smodel.language.ConceptInLoadingStorage;
@@ -40,14 +41,17 @@ public class BehaviorRegistryImpl implements BehaviorRegistry {
   private static final Logger LOG = Logger.getLogger(BehaviorRegistryImpl.class);
 
   private final CachingAncestorResolutionOrder<_SAbstractConcept> myMRO;
+  private final SNodeFactory myNodeFactory;
   private final ConceptInLoadingStorage<SAbstractConcept> myStorage = new ConceptInLoadingStorage<>();
   private final Map<SAbstractConcept, BHDescriptor> myBHDescriptors = new ConcurrentHashMap<>();
   private final LanguageRegistry myLanguageRegistry;
 
-  public BehaviorRegistryImpl(@NotNull LanguageRegistry languageRegistry, @NotNull CachingAncestorResolutionOrder<_SAbstractConcept> mro) {
+  public BehaviorRegistryImpl(@NotNull LanguageRegistry languageRegistry, @NotNull CachingAncestorResolutionOrder<_SAbstractConcept> mro, @NotNull SNodeFactory nodeFactory) {
     myLanguageRegistry = languageRegistry;
     myMRO = mro;
+    myNodeFactory = nodeFactory;
     BHReflectionInit.initBHReflection(this);
+    SMethodBuilder.initRegistry(this);
   }
 
   @Override
@@ -96,6 +100,12 @@ public class BehaviorRegistryImpl implements BehaviorRegistry {
     } finally {
       myStorage.finishLoading(concept);
     }
+  }
+
+  @Override
+  @NotNull
+  public SNodeFactory getNodeFactory() {
+    return myNodeFactory;
   }
 
   @Override

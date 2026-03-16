@@ -236,10 +236,9 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     if (model != null) {
       node = model.createNode(properConcept);
     } else {
-      // XXX it's unlucky we have to stick to particular SNode implementation. Perhaps, BehaviorRegistry may serve as a factory for openapi.SNode instances?
-      // This is one of few things that make [behavior-runtime] dependent on [kernel]. Either need an abstraction/factory (e.g. through BehaviorRegistryImpl) or
-      //    for smodel.SNNode to move to [smodel]. However, there are other dependencies that need to be addressed first.
-      node = new jetbrains.mps.smodel.SNode(properConcept);
+      // Would be nice if smodel.SNNode lives in [smodel], the we could have instantiated it here directly. OTOH, a factory intermediary to hide impl details
+      // isn't bad, after all.
+      node = myBehaviorRegistry.getNodeFactory().createNode(properConcept);
     }
     // once/if we support cons arguments, look at argumentsChecked()
     Object[] noArguments = new Object[0];
