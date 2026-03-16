@@ -2290,24 +2290,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2S9ydG5KI5G" role="3cqZAp">
-          <node concept="3cpWsn" id="2S9ydG5KI5H" role="3cpWs9">
-            <property role="TrG5h" value="visibleClassifiersScope" />
-            <node concept="3uibUv" id="2S9ydG5Ky0S" role="1tU5fm">
-              <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
-            </node>
-            <node concept="2YIFZM" id="2S9ydG5KI5I" role="33vP2m">
-              <ref role="37wK5l" node="7mWjQkQg3iP" resolve="getVisibleClassifiersScope" />
-              <ref role="1Pybhc" node="7mWjQkQg3ix" resolve="ClassifierScopes" />
-              <node concept="37vLTw" id="2S9ydG5KI5J" role="37wK5m">
-                <ref role="3cqZAo" node="2BTq$1wAmR4" resolve="contextNode" />
-              </node>
-              <node concept="3clFbT" id="2S9ydG5KI5K" role="37wK5m">
-                <property role="3clFbU" value="true" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="7mWjQkQg3lI" role="3cqZAp">
           <node concept="37vLTI" id="7mWjQkQg3m4" role="3clFbG">
             <node concept="2ShNRf" id="2DmG$ciznX8" role="37vLTx">
@@ -2344,20 +2326,14 @@
                     <node concept="10P_77" id="2DmG$ciznXA" role="3clF45" />
                     <node concept="3Tm1VV" id="2DmG$ciznXB" role="1B3o_S" />
                   </node>
-                  <node concept="3K4zz7" id="2S9ydG5KIZs" role="37wK5m">
-                    <node concept="37vLTw" id="2S9ydG5KJ6F" role="3K4E3e">
-                      <ref role="3cqZAo" node="2S9ydG5KI5H" resolve="visibleClassifiersScope" />
+                  <node concept="2YIFZM" id="2UZ1FLt0MpY" role="37wK5m">
+                    <ref role="37wK5l" node="7mWjQkQg3iP" resolve="getVisibleClassifiersScope" />
+                    <ref role="1Pybhc" node="7mWjQkQg3ix" resolve="ClassifierScopes" />
+                    <node concept="37vLTw" id="2UZ1FLt0MpZ" role="37wK5m">
+                      <ref role="3cqZAo" node="2BTq$1wAmR4" resolve="contextNode" />
                     </node>
-                    <node concept="2ShNRf" id="2S9ydG5KKix" role="3K4GZi">
-                      <node concept="1pGfFk" id="2S9ydG5KKiy" role="2ShVmc">
-                        <ref role="37wK5l" to="o8zo:7ipADkTfAzT" resolve="EmptyScope" />
-                      </node>
-                    </node>
-                    <node concept="3y3z36" id="2S9ydG5KIJI" role="3K4Cdx">
-                      <node concept="10Nm6u" id="2S9ydG5KITX" role="3uHU7w" />
-                      <node concept="37vLTw" id="2S9ydG5KI5L" role="3uHU7B">
-                        <ref role="3cqZAo" node="2S9ydG5KI5H" resolve="visibleClassifiersScope" />
-                      </node>
+                    <node concept="3clFbT" id="2UZ1FLt0Mq0" role="37wK5m">
+                      <property role="3clFbU" value="true" />
                     </node>
                   </node>
                 </node>
@@ -3208,6 +3184,9 @@
           <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
         </node>
       </node>
+      <node concept="2AHcQZ" id="2UZ1FLt0BOg" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
     <node concept="2YIFZL" id="cIz_w5KWbY" role="jymVt">
       <property role="TrG5h" value="filterWithClassExpressionClassifiers" />
@@ -3313,6 +3292,9 @@
         <property role="TrG5h" value="includeAncestors" />
         <node concept="10P_77" id="4QHmtG_StoL" role="1tU5fm" />
       </node>
+      <node concept="2AHcQZ" id="2UZ1FLt0_$S" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
     <node concept="2YIFZL" id="7mWjQkQg3iP" role="jymVt">
       <property role="TrG5h" value="getVisibleClassifiersScope" />
@@ -3366,7 +3348,12 @@
         <node concept="3clFbJ" id="ulsZYniyq6" role="3cqZAp">
           <node concept="3clFbS" id="ulsZYniyq8" role="3clFbx">
             <node concept="3cpWs6" id="ulsZYniyFW" role="3cqZAp">
-              <node concept="10Nm6u" id="ulsZYnizom" role="3cqZAk" />
+              <node concept="2ShNRf" id="2UZ1FLt0jBf" role="3cqZAk">
+                <node concept="1pGfFk" id="2UZ1FLt0p17" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="o8zo:7ipADkTfAzT" resolve="EmptyScope" />
+                </node>
+              </node>
             </node>
           </node>
           <node concept="3clFbC" id="ulsZYniyCx" role="3clFbw">
@@ -3399,6 +3386,9 @@
       </node>
       <node concept="3uibUv" id="7mWjQkQg3iX" role="3clF45">
         <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
+      </node>
+      <node concept="2AHcQZ" id="2UZ1FLt0zw1" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="2YIFZL" id="7HZRMj75ikF" role="jymVt">
@@ -4546,17 +4536,16 @@
         <node concept="3clFbJ" id="5LKYMd6NbLU" role="3cqZAp">
           <node concept="3clFbS" id="5LKYMd6NbLW" role="3clFbx">
             <node concept="3cpWs6" id="5LKYMd6NejY" role="3cqZAp">
-              <node concept="2ShNRf" id="5LKYMd6Nfkv" role="3cqZAk">
-                <node concept="1pGfFk" id="5LKYMd6NjHA" role="2ShVmc">
-                  <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="o8zo:7ipADkTfAzT" resolve="EmptyScope" />
-                </node>
+              <node concept="37vLTw" id="2UZ1FLt0IWi" role="3cqZAk">
+                <ref role="3cqZAo" node="5LKYMd6N72J" resolve="visibleClassifiersScope" />
               </node>
             </node>
           </node>
-          <node concept="3clFbC" id="5LKYMd6Nd8j" role="3clFbw">
-            <node concept="10Nm6u" id="5LKYMd6NdIy" role="3uHU7w" />
-            <node concept="37vLTw" id="5LKYMd6NcrP" role="3uHU7B">
+          <node concept="2ZW3vV" id="2UZ1FLt0H0w" role="3clFbw">
+            <node concept="3uibUv" id="2UZ1FLt0H$t" role="2ZW6by">
+              <ref role="3uigEE" to="o8zo:7ipADkTfAzR" resolve="EmptyScope" />
+            </node>
+            <node concept="37vLTw" id="5LKYMd6NcrP" role="2ZW6bz">
               <ref role="3cqZAo" node="5LKYMd6N72J" resolve="visibleClassifiersScope" />
             </node>
           </node>
