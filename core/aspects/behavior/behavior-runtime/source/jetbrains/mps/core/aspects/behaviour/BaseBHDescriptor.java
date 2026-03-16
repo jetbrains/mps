@@ -452,7 +452,9 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
    * @param parameters  -- parameters to pass to the constructor
    * @generated : switch by constructor; invoking without calling supers
    */
-  protected abstract void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters);
+  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
+    // no-op, override if anything necessary
+  }
 
   /**
    * invokes a method without dynamic resolution

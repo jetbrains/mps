@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ public final class SDefaultConstructorImpl implements SConstructor {
   private final SAbstractConcept myConcept;
   @NotNull
   private final BHDescriptor myDescriptor;
-  private SModifiers myModifiers;
+  final private SModifiers myModifiers;
 
   public SDefaultConstructorImpl(@NotNull BHDescriptor descriptor, @NotNull AccessPrivileges accessPrivileges) {
     myDescriptor = descriptor;
