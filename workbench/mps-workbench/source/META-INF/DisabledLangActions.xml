@@ -403,76 +403,7 @@
     <action id="ViewBreakpoints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--    </group>-->
 
-    <group id="XDebugger.Actions" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--    <group id="XDebugger.Actions">-->
-    <action id="Debugger.AddToWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.AddInlineWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.EvaluateInConsole" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
-    <action id="XDebugger.SetValue" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.CopyValue" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.CompareValueWithClipboard" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.CopyName" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.Inspect" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.JumpToSource" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.JumpToTypeSource" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
-    <action id="Debugger.Tree.EvaluateInConsole" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
-    <action id="XDebugger.NewWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.EditWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.CopyWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.RemoveWatch" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.MoveWatchUp" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.MoveWatchDown" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.RemoveAllWatches" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.MuteBreakpoints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.ToggleSortValues" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.MarkObject" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.FocusOnBreakpoint" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.ShowReferring" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.RemoveAllBreakpoints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Debugger.RemoveAllBreakpointsInFile" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--    </group>-->
-
     <group id="EditorPopupMenuDebug" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.ToolWindow.TopToolbar" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.ToolWindow.LeftToolbar" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Evaluation.Dialog.Tree.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Frames.Tree.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--    <group id="XDebugger.Frames.Tree.Popup">-->
-    <action id="Debugger.CopyStack" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--    </group>-->
-
-    <group id="XDebugger.Frames.TopToolbar" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--    <group id="XDebugger.Frames.TopToolbar">-->
-    <action id="Debugger.ShowLibraryFrames" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--    </group>-->
-
-    <group id="XDebugger.Variables.Tree.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Variables.Tree.Toolbar" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Watches.Tree.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Watches.Tree.Toolbar" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Watches.Inline.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-
-    <group id="XDebugger.Inspect.Tree.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Evaluate.Code.Fragment.Editor.Popup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
-    <group id="XDebugger.Settings" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--    <group id="XDebugger.Settings" icon="AllIcons.General.GearPlain" popup="true">-->
-    <action id="XDebugger.Inline" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="XDebugger.UnmuteOnStop" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--    </group>-->
 
     <group id="TestTreePopupMenu" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 
@@ -531,14 +462,5 @@
 
     <action id="UpdateRunningApplication" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
-    <group id="TodoMainGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--    <group id="TodoMainGroup">-->
-    <group id="TodoViewGroupByGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--      <group id="TodoViewGroupByGroup" class="com.intellij.ide.todo.TodoPanel$GroupByActionGroup" icon="AllIcons.Actions.GroupBy" popup="true">-->
-    <action id="TodoViewGroupByShowModules" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="TodoViewGroupByShowPackages" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="TodoViewGroupByFlattenPackage" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--      </group>-->
-    <!--    </group>-->
   </actions>
 </idea-plugin>
