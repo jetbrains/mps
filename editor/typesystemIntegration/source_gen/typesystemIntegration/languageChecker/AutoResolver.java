@@ -150,6 +150,11 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
           final ResolverComponent resolver = myProject.getComponent(ResolverComponent.class);
           // Trying to resolve all broken references using scope and then using substitute actions.
           for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
+            if (brokenRef.getSourceNode().getModel() == null) {
+              // reference is no longer in the model, no reason to perform resolve attempt, likely to fail without the context anyway.
+              // however, would be nice run the check once again, didn't find the way, though. doRecheckEditor doesn't look right.
+              continue;
+            }
             boolean resolvedByScope = resolver.resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
 
             final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
