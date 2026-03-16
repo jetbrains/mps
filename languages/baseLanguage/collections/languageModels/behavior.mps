@@ -6705,7 +6705,7 @@
               <property role="3oM_SC" value="but" />
             </node>
             <node concept="3oM_SD" id="3PnfBr$cX2k" role="1PaTwD">
-              <property role="3oM_SC" value="instananceOf" />
+              <property role="3oM_SC" value="instanceOf" />
             </node>
             <node concept="3oM_SD" id="3PnfBr$cX31" role="1PaTwD">
               <property role="3oM_SC" value="SAbstractConcept," />
@@ -6747,13 +6747,10 @@
                   <node concept="1bVj0M" id="1QUKo_K_i_f" role="23t8la">
                     <node concept="3clFbS" id="1QUKo_K_i_g" role="1bW5cS">
                       <node concept="3clFbF" id="1QUKo_KC74C" role="3cqZAp">
-                        <node concept="2OqwBi" id="1QUKo_KC7by" role="3clFbG">
-                          <node concept="1fM9EW" id="1u_ffTozJUg" role="2Oq$k0" />
-                          <node concept="2qgKlT" id="1QUKo_KC7tu" role="2OqNvi">
-                            <ref role="37wK5l" node="1QUKo_K_4f7" resolve="hasApplicableTypes" />
-                            <node concept="37vLTw" id="4lu_6uqsecc" role="37wK5m">
-                              <ref role="3cqZAo" node="5W7E4fV0VUz" resolve="it" />
-                            </node>
+                        <node concept="BsUDl" id="5kZ8JMyNcGI" role="3clFbG">
+                          <ref role="37wK5l" node="1QUKo_K_4f7" resolve="hasApplicableTypes" />
+                          <node concept="37vLTw" id="5kZ8JMyO0Fj" role="37wK5m">
+                            <ref role="3cqZAo" node="5W7E4fV0VUz" resolve="it" />
                           </node>
                         </node>
                       </node>

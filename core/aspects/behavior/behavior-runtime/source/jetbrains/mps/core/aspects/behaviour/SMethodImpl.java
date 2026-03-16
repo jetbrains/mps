@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import static jetbrains.mps.core.aspects.behaviour.BehaviorChecker.checkForConce
 /**
  * As for 3.2 -- we still have the behavior language which allows several methods with identical signature.
  * Moreover it urges us to point to the overridden method explicitly.
- *
+ * <p>
  * Pro & contra
  * 1. The good part is a possibility to resolve a simple case:
  * abstract I1#foo();
@@ -47,7 +47,7 @@ import static jetbrains.mps.core.aspects.behaviour.BehaviorChecker.checkForConce
  * 2. The bad part is that a user of the system can easily make a mess: methods are resolved by id.
  * Also the generated code is forced to make the most of id, because string name resolving is simply not enough here.
  * Besides it is not that easy to override method -- one needs to reference the method he wants to override.
- *
+ * </p>
  * Plan for 3.3:
  * 1. Make the 'overrides' reference optional:
  * simply rename all the methods so that overridden_method.name.equals(this.name)
@@ -55,9 +55,10 @@ import static jetbrains.mps.core.aspects.behaviour.BehaviorChecker.checkForConce
  * 2. Grant the 'virtual' keyword new semantics: automatic method resolve
  * must happen in the case of virtual methods with overridden method == null.
  * 3. Give out an error about methods' name collision, forbid generation if that is the case.
- *
+ * <p>
  * Only there is no conflict for virtual methods' names throughout in the concept hierarchy
  * it might be possible to resolve two overriding methods by name.
+ * </p>
  */
 @SuppressWarnings("Duplicates")
 @Immutable
@@ -121,7 +122,6 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invoke(@Nullable SNode operand, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     SConcept concept = operand.getConcept();
@@ -131,7 +131,6 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invoke(@Nullable SAbstractConcept operand, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     return invoke0(operand, operand, parameters);
@@ -140,15 +139,15 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invoke0(@Nullable SNode operand, @NotNull SAbstractConcept concreteConcept, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     checkForConcept(concreteConcept, myConcept);
 
     if (isPrivate()) {
-      return invokeSpecial(operand, parameters);
+      // XXX not sure if it's necessary here to use myConcept, not concreteConcept, but it's a safe bet ATM, see invoke0(concept), below
+      BHDescriptor bhDescriptor = myRegistry.getBHDescriptor(myConcept);
+      return bhDescriptor.invokeSpecial(operand, this, parameters);
     }
-
     BHDescriptor bhDescriptor = myRegistry.getBHDescriptor(concreteConcept);
     return bhDescriptor.invoke(operand, this, parameters);
   }
@@ -156,14 +155,14 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invoke0(@Nullable SAbstractConcept operand, @NotNull SAbstractConcept concreteConcept, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     checkForConcept(operand, myConcept);
     if (isPrivate()) {
-      return invokeSpecial(operand, parameters);
+      // FIXME figure out why can't use concreteConcept here. If I try, IApplicableToNothing.hasApplicableTypes() can't get properly invoked!
+      BHDescriptor bhDescriptor = myRegistry.getBHDescriptor(myConcept);
+      return bhDescriptor.invokeSpecial(operand, this, parameters);
     }
-
     BHDescriptor bhDescriptor = myRegistry.getBHDescriptor(concreteConcept);
     return bhDescriptor.invoke(operand, this, parameters);
   }
@@ -171,7 +170,6 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invokeSpecial(@Nullable SNode operand, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     checkForConcept(operand.getConcept(), myConcept);
@@ -183,7 +181,6 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invokeSpecial(@Nullable SAbstractConcept operand, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     checkForConcept(operand, myConcept);
@@ -195,7 +192,6 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invokeSuper(@Nullable SNode operand, @NotNull SAbstractConcept concept, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     checkForConcept(concept, myConcept);
@@ -214,7 +210,6 @@ public final class SMethodImpl<T> implements SMethod<T> {
   @Override
   public T invokeSuper(@Nullable SAbstractConcept operand, @NotNull SAbstractConcept concept, Object... parameters) {
     if (operand == null) {
-      //noinspection unchecked
       return (T) getReturnType().getDefaultValue();
     }
     checkForConcept(concept, myConcept);
@@ -301,8 +296,7 @@ public final class SMethodImpl<T> implements SMethod<T> {
   // FIXME remove -- do everything by id where we need it
   @Override
   public boolean equals(Object o) {
-    if (o instanceof SMethod) {
-      SMethod another = (SMethod) o;
+    if (o instanceof SMethod<?> another) {
       return getId().equals(another.getId());
     }
     return false;
