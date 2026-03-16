@@ -23,14 +23,14 @@ import jetbrains.mps.extapi.model.SNodeFactory;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.behaviour.BHReflectionInit;
 import jetbrains.mps.smodel.language.ConceptInLoadingStorage;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 /**
  * A registry for behavior descriptors. Currently contains {@link BHDescriptor}
@@ -44,10 +44,10 @@ public class BehaviorRegistryImpl implements BehaviorRegistry {
   private final SNodeFactory myNodeFactory;
   private final ConceptInLoadingStorage<SAbstractConcept> myStorage = new ConceptInLoadingStorage<>();
   private final Map<SAbstractConcept, BHDescriptor> myBHDescriptors = new ConcurrentHashMap<>();
-  private final LanguageRegistry myLanguageRegistry;
+  private final Function<SLanguage, BehaviorAspectDescriptor> myAspectSupplier;
 
-  public BehaviorRegistryImpl(@NotNull LanguageRegistry languageRegistry, @NotNull CachingAncestorResolutionOrder<_SAbstractConcept> mro, @NotNull SNodeFactory nodeFactory) {
-    myLanguageRegistry = languageRegistry;
+  public BehaviorRegistryImpl(@NotNull Function<SLanguage, BehaviorAspectDescriptor> aspectSupplier, @NotNull CachingAncestorResolutionOrder<_SAbstractConcept> mro, @NotNull SNodeFactory nodeFactory) {
+    myAspectSupplier = aspectSupplier;
     myMRO = mro;
     myNodeFactory = nodeFactory;
     BHReflectionInit.initBHReflection(this);
@@ -74,13 +74,7 @@ public class BehaviorRegistryImpl implements BehaviorRegistry {
 
     try {
       try {
-        LanguageRuntime languageRuntime = myLanguageRegistry.getLanguage(concept.getLanguage());
-        BehaviorAspectDescriptor behaviorAspect = null;
-        if (languageRuntime == null) {
-          LOG.warning("No language for: " + concept + ", while looking for the behavior descriptor.");
-        } else {
-          behaviorAspect = languageRuntime.getAspect(BehaviorAspectDescriptor.class);
-        }
+        final BehaviorAspectDescriptor behaviorAspect = myAspectSupplier.apply(concept.getLanguage());
         if (behaviorAspect != null) {
           descriptor = behaviorAspect.getDescriptor(concept);
         }

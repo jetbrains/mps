@@ -19,6 +19,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.behaviour.BehaviorRegistryImpl;
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -26,6 +27,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SDataTypeId;
 import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
+import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
@@ -34,9 +36,11 @@ import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 // TODO avoid singleton by creating a new ComponentPlugin instance with smodel-related components (it is not CoreComponent in fact)
 public class ConceptRegistry implements CoreComponent, LanguageRegistryListener {
@@ -54,7 +58,19 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
     myLanguageRegistry = languageRegistry;
     myStructureRegistry = new StructureRegistry(languageRegistry);
     myConcPropsRegistry = new ConceptPropertiesRegistry(languageRegistry);
-    myBehaviorRegistry = new BehaviorRegistryImpl(languageRegistry, myMRO, SNode::new);
+    myBehaviorRegistry = new BehaviorRegistryImpl(new Function<SLanguage, BehaviorAspectDescriptor>() {
+      @Override
+      public BehaviorAspectDescriptor apply(SLanguage language) {
+        LanguageRuntime languageRuntime = myLanguageRegistry.getLanguage(language);
+        if (languageRuntime == null) {
+          Logger.getLogger(BehaviorRegistryImpl.class).warning("No language %s while looking for the behavior descriptor.".formatted(language));
+          return null;
+        } else {
+          return languageRuntime.getAspect(BehaviorAspectDescriptor.class);
+        }
+      }
+    }, myMRO, SNode::new);
+
     myConstraintsRegistry = new ConstraintsRegistry(languageRegistry, myMRO);
   }
 

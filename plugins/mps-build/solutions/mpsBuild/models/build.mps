@@ -59709,7 +59709,10 @@
         </node>
       </node>
       <node concept="nCB5N" id="SHPhCCYuJT" role="nCB5Z">
-        <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
+        <ref role="nCB5Y" node="5StVQ8qcIGg" resolve="mps-core-components" />
+      </node>
+      <node concept="nCB5N" id="5eq4ZxpcAZ3" role="nCB5Z">
+        <ref role="nCB5Y" node="42Iv58Wf3Ei" resolve="mps-smodel" />
       </node>
       <node concept="nCB5N" id="SHPhCCYuJU" role="nCB5Z">
         <ref role="nCB5Y" node="6e4RFSGTIz7" resolve="mps-behavior-api" />
