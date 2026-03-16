@@ -62,7 +62,7 @@ public final class AddFieldForUnUsedParameter_Intention extends AbstractIntentio
 
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return String.format("Create field for %s", SPropertyOperations.getString(node, PROPS.name$MnvL));
+      return String.format("Create field for '%s'", SPropertyOperations.getString(node, PROPS.name$MnvL));
     }
 
     @Override

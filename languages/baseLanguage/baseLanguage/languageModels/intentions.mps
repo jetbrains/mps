@@ -7300,7 +7300,7 @@
         <node concept="3clFbF" id="hO69v89" role="3cqZAp">
           <node concept="2OqwBi" id="5ClQvVXDQt9" role="3clFbG">
             <node concept="Xl_RD" id="hO69v8a" role="2Oq$k0">
-              <property role="Xl_RC" value="Create field for %s" />
+              <property role="Xl_RC" value="Create field for '%s'" />
             </node>
             <node concept="2cAKMz" id="5ClQvVXDQYG" role="2OqNvi">
               <node concept="2OqwBi" id="5ClQvVXDREz" role="2cAKU6">
