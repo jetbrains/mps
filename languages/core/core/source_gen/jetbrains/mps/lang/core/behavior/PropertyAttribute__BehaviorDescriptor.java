@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.language.SEnumeration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SNode> getPropertyDeclaration_id121FNPYBLc9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPropertyDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1189424455254741769L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<String> getNameForReporting_id5gACAVBzOt1 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6063712545515980609L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id1avfQ4BBzOo, setProperty_id6Gg5Klvu8CV, getPropertyDeclaration_id121FNPYBLc9, getNameForReporting_id5gACAVBzOt1);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id1avfQ4BBzOo, setProperty_id6Gg5Klvu8CV, getPropertyDeclaration_id121FNPYBLc9, getNameForReporting_id5gACAVBzOt1);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SProperty getProperty_id1avfQ4BBzOo(@NotNull SNode __thisNode__) {
     String nonEmptyName = (SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$DqfO) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.name_DebugInfo$DqfO));
@@ -76,10 +73,6 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ PropertyAttribute__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,10 +25,8 @@ public final class PatternVariableProperty__BehaviorDescriptor extends BaseBHDes
 
   public static final SMethod<SNode> getDatatype_id5sDn0OnaQOz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDatatype").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6280652366637919523L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDatatype_id5sDn0OnaQOz);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDatatype_id5sDn0OnaQOz);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getDatatype_id5sDn0OnaQOz(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4), LINKS.dataType$5j5Y);
@@ -38,10 +35,6 @@ public final class PatternVariableProperty__BehaviorDescriptor extends BaseBHDes
   /*package*/ PatternVariableProperty__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

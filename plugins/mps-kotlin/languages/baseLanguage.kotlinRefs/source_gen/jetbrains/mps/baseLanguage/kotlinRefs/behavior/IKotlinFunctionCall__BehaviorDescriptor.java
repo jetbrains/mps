@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.behavior.KotlinParameterDeclaration;
 import jetbrains.mps.kotlin.behavior.IFunctionIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -33,10 +32,8 @@ public final class IKotlinFunctionCall__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Iterable<TypeParameterDeclaration>> getFunctionTypeParameters_id1t03WaySlJT = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getFunctionTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1675356390012574713L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
   public static final SMethod<SNode> getFunctionReturnType_idUG7NftRy8a = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFunctionReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151339530L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionParameters_idUG7NftR_2Q, getFunctionTypeParameters_id1t03WaySlJT, getFunctionReturnType_idUG7NftRy8a);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionParameters_idUG7NftR_2Q, getFunctionTypeParameters_id1t03WaySlJT, getFunctionReturnType_idUG7NftRy8a);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<ParameterDeclaration> getFunctionParameters_idUG7NftR_2Q(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$7dy6))).select((parameter) -> new KotlinParameterDeclaration(parameter));
@@ -51,10 +48,6 @@ public final class IKotlinFunctionCall__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ IKotlinFunctionCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

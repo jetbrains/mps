@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -23,10 +22,8 @@ public final class ScopeOperation__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> createType_id65fYhwGpPk$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7012097027058652452L).languageId(0x886c135ecc69b742L, 0x3ecd7c84cde345deL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id65fYhwGpPk$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id65fYhwGpPk$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createType_id65fYhwGpPk$(@NotNull SNode __thisNode__) {
     return _quotation_createNode_p44uz3_a0a0();
@@ -35,10 +32,6 @@ public final class ScopeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ScopeOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

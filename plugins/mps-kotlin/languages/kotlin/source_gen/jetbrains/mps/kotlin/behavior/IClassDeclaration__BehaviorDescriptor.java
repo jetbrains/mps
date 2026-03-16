@@ -28,7 +28,6 @@ import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -52,10 +51,8 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstractClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeKey> getSelfTypeKey_id9DkAreHC7z = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("getSelfTypeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(173760662138683875L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getThisType_id46gC9M6gB68, getPresentation_idhEwIMiw, getTypeParameters_idTmm2uCbI_X, getNestedName_id1d2BQ0ZyA$g, collectScope_id7DyvjiA20yV, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm, getConstructorDefaultVisibility_idu1nygduECM, isAbstractClass_id$q1KckYQOy, getSelfTypeKey_id9DkAreHC7z);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getThisType_id46gC9M6gB68, getPresentation_idhEwIMiw, getTypeParameters_idTmm2uCbI_X, getNestedName_id1d2BQ0ZyA$g, collectScope_id7DyvjiA20yV, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm, getConstructorDefaultVisibility_idu1nygduECM, isAbstractClass_id$q1KckYQOy, getSelfTypeKey_id9DkAreHC7z);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ITypeParameter$fG)) {
@@ -121,10 +118,6 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ IClassDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

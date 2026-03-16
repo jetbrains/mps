@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -25,10 +24,8 @@ public final class HashSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> createType_id6MGFJY7SgiV = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7830826264610014395L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> hasInitSize_id1653mnvAgtY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498238L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, hasInitSize_id1653mnvAgtY);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, hasInitSize_id1653mnvAgtY);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createType_id6MGFJY7SgiV(@NotNull SNode __thisNode__, SNode elementType) {
     return _quotation_createNode_4sjjrg_a0a0(elementType);
@@ -40,10 +37,6 @@ public final class HashSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ HashSetCreator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

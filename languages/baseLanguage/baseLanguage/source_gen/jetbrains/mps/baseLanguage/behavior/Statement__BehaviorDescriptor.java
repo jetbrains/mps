@@ -19,7 +19,6 @@ import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,8 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVBW7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383112967L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isGuardClauseStatement_idi0z$q7V, nodeDescription_id4oS1ku9jIXr, uncaughtThrowables_id4Gt7ANIVAVT, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, collectUncaughtMethodThrowables_id4Gt7ANIVBW7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isGuardClauseStatement_idi0z$q7V, nodeDescription_id4oS1ku9jIXr, uncaughtThrowables_id4Gt7ANIVAVT, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, collectUncaughtMethodThrowables_id4Gt7ANIVBW7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isGuardClauseStatement_idi0z$q7V(@NotNull SNode __thisNode__) {
     return false;
@@ -65,10 +62,6 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Statement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

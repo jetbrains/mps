@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -41,10 +40,8 @@ public final class IMethodReference__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_idhEwIPI9, getOperandClassifierType_id5kBYaa7CSet, getAvailableMethodDeclarations_id50EF2fWdwEN, getMethodDeclaration_id5DBbMQ3xohB, getMethodDeclarationReference_id5DBbMQ3ynbU, setMethodDeclaration_id5DBbMQ3xovP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_idhEwIPI9, getOperandClassifierType_id5kBYaa7CSet, getAvailableMethodDeclarations_id50EF2fWdwEN, getMethodDeclaration_id5DBbMQ3xohB, getMethodDeclarationReference_id5DBbMQ3ynbU, setMethodDeclaration_id5DBbMQ3xovP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getClassifier_idhEwIPI9(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(IMethodReference__BehaviorDescriptor.getOperandClassifierType_id5kBYaa7CSet.invoke(__thisNode__), LINKS.classifier$cxMr);
@@ -73,10 +70,6 @@ public final class IMethodReference__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ IMethodReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

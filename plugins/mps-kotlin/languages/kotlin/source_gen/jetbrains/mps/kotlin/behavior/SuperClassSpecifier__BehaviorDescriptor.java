@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -33,10 +32,8 @@ public final class SuperClassSpecifier__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Boolean> isClass_id1$jFvlEiPXX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067618173L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> convertToConstructor_id1$jFvlEWuyJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078532271L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, isClass_id1$jFvlEiPXX, convertToConstructor_id1$jFvlEWuyJ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, isClass_id1$jFvlEiPXX, convertToConstructor_id1$jFvlEWuyJ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getInheritedType_id5q426iHvzD9(@NotNull SNode __thisNode__) {
     return createClassType_cf61mw_a0a0(SLinkOperations.getTarget(__thisNode__, LINKS.target$mYQV), ITypeArguments__BehaviorDescriptor.getTypeProjections_idFn6l2JqIEF.invoke(__thisNode__));
@@ -54,10 +51,6 @@ public final class SuperClassSpecifier__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ SuperClassSpecifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

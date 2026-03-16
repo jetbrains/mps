@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class NamedTupleLiteral__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getRightBracket_id1653mnvAgsr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498139L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
   public static final SMethod<String> getLeftBracket_id1653mnvAgvE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498346L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRightBracket_id1653mnvAgsr, getLeftBracket_id1653mnvAgvE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRightBracket_id1653mnvAgsr, getLeftBracket_id1653mnvAgvE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getRightBracket_id1653mnvAgsr(@NotNull SAbstractConcept __thisConcept__) {
     return ")";
@@ -38,10 +35,6 @@ public final class NamedTupleLiteral__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ NamedTupleLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

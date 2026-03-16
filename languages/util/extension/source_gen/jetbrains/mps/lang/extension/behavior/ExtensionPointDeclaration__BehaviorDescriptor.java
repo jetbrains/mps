@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class ExtensionPointDeclaration__BehaviorDescriptor extends BaseBHD
 
   public static final SMethod<SNode> getObjectClassifierType_id5Sg$D5FMgdu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getObjectClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6778078592468845406L).languageId(0xbee99ae18e690549L, 0xc0080a477e374558L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getObjectClassifierType_id5Sg$D5FMgdu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getObjectClassifierType_id5Sg$D5FMgdu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated
   /*package*/ static SNode getObjectClassifierType_id5Sg$D5FMgdu(@NotNull SNode __thisNode__) {
@@ -44,10 +41,6 @@ public final class ExtensionPointDeclaration__BehaviorDescriptor extends BaseBHD
   /*package*/ ExtensionPointDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

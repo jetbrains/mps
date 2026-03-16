@@ -34,7 +34,6 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.typesystem.RulesFunctions_BaseLanguage;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -83,10 +82,8 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Void> markLoadedNodeAsDeprecated_id5H8W9_EDFVg = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markLoadedNodeAsDeprecated").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6577771797484584656L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canProvideInferenceContext_idJiVENj$Z0y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canProvideInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(852005705577918498L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getExpectedRetType_idi2fhBNC, isImplementation_id19gBtYEvixA, getBody_idi2fhZ_m, getChildrenToDisplayIntention_id3vsDNFqJVhw, isReturnsVoid_idhX_$1pM, getParametersPresentation_idhEwIAYw, getPresentation_idhEwIMiw, getBaseOrSelf_idpWw8KNYVCx, getBaseMethod_id4mmymf_0z7l, getNearestOverriddenMethod_id4DuBHEkPTzU, getMethodToImplement_id3RE744JWbF, hasSameParameters_idJuSt8W4$Q2, hasSameSignature_idhEwIB0z, getErasureSignature_id2t8d$bukubq, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, canBeFinal_id7viyBkzj9CS, isAnAbstractMethod_id28P2dHxCoRl, getTypeAnnotation_idhXbqSv6, jniSignature_id7F81Cd2CcPY, getThrowableTypes_id5op8ooRkkc7, hasAnnotation_id4LgT5De$Kd_, hasAnnotation_id3WDGf12DPy8, getTraceableProperty_id4pl5GY7LKmH, getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getTypeApplicationParameters_id7bu6bIyR2DR, getInferrableTypeVars_id5W9RYt5baxk, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_EDFVg, canProvideInferenceContext_idJiVENj$Z0y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getExpectedRetType_idi2fhBNC, isImplementation_id19gBtYEvixA, getBody_idi2fhZ_m, getChildrenToDisplayIntention_id3vsDNFqJVhw, isReturnsVoid_idhX_$1pM, getParametersPresentation_idhEwIAYw, getPresentation_idhEwIMiw, getBaseOrSelf_idpWw8KNYVCx, getBaseMethod_id4mmymf_0z7l, getNearestOverriddenMethod_id4DuBHEkPTzU, getMethodToImplement_id3RE744JWbF, hasSameParameters_idJuSt8W4$Q2, hasSameSignature_idhEwIB0z, getErasureSignature_id2t8d$bukubq, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, canBeFinal_id7viyBkzj9CS, isAnAbstractMethod_id28P2dHxCoRl, getTypeAnnotation_idhXbqSv6, jniSignature_id7F81Cd2CcPY, getThrowableTypes_id5op8ooRkkc7, hasAnnotation_id4LgT5De$Kd_, hasAnnotation_id3WDGf12DPy8, getTraceableProperty_id4pl5GY7LKmH, getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getTypeApplicationParameters_id7bu6bIyR2DR, getInferrableTypeVars_id5W9RYt5baxk, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_EDFVg, canProvideInferenceContext_idJiVENj$Z0y);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
     List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD));
@@ -347,10 +344,6 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ BaseMethodDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class ReloadClassesCommand__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3321948346081469500L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
   public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(473081947982699339L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doExecute_id2SpVAIqougW, getShortHelp_idqgIopNa9Hb);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doExecute_id2SpVAIqougW, getShortHelp_idqgIopNa9Hb);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
     context.getProject().getComponent(ClassLoaderManager.class).reloadAll(new EmptyProgressMonitor());
@@ -43,10 +40,6 @@ public final class ReloadClassesCommand__BehaviorDescriptor extends BaseBHDescri
   /*package*/ ReloadClassesCommand__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

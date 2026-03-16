@@ -12,15 +12,14 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -32,10 +31,8 @@ public final class RunConfiguration__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> isForeign_id3wpI_WC06mf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isForeign").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4042467058397504911L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
   public static final SMethod<String> getGeneratedFactoryName_id1XgDflG1h5w = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedFactoryName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2256484787298832736L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExecutor_id3gs394eDyIj, isForeign_id3wpI_WC06mf, getGeneratedFactoryName_id1XgDflG1h5w);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExecutor_id3gs394eDyIj, isForeign_id3wpI_WC06mf, getGeneratedFactoryName_id1XgDflG1h5w);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static SNode getExecutor_id3gs394eDyIj(@NotNull final SNode __thisNode__) {
@@ -54,10 +51,6 @@ public final class RunConfiguration__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ RunConfiguration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

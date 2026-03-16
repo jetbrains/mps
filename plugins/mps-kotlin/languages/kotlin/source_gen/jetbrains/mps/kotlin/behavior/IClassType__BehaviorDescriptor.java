@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,10 +35,8 @@ public final class IClassType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> populateSubstitutions_id4f4W8JpwgWV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4883292379416694587L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(TypeVarSubs.class, ""));
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id7an2tsIdpk7, typeKey_idJmO2PmZtH5, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id7an2tsIdpk7, typeKey_idJmO2PmZtH5, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @NotNull
   /*package*/ static TypeKey typeKey_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
@@ -67,10 +64,6 @@ public final class IClassType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IClassType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

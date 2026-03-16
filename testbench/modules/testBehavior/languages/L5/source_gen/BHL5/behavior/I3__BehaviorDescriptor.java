@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,10 +23,8 @@ public final class I3__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Void> foo_id2k7p7sTv$MS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772536L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id2k7p7sTv$MS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id2k7p7sTv$MS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void foo_id2k7p7sTv$MS(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.c$pqHs, "set");
@@ -36,10 +33,6 @@ public final class I3__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ I3__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

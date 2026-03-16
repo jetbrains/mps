@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,10 +25,8 @@ public final class BuildVariableMacroInitValue__BehaviorDescriptor extends BaseB
 
   public static final SMethod<String> getMacroName_idd_WKSiPASu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMacroName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(244868996532694558L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroName_idd_WKSiPASu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroName_idd_WKSiPASu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getMacroName_idd_WKSiPASu(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildVariableMacro$Rk), PROPS.name$MnvL);
@@ -38,10 +35,6 @@ public final class BuildVariableMacroInitValue__BehaviorDescriptor extends BaseB
   /*package*/ BuildVariableMacroInitValue__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,19 +24,13 @@ public final class IReferenceAttachable__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8333855927540237654L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ IReferenceAttachable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

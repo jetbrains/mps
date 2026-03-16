@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class StartProcessHandlerStatement__BehaviorDescriptor extends Base
   public static final SMethod<SNode> getListener_id1ovLDatOkE5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getListener").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708805L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
   /*package*/ static final SMethod<SNode> getComponentByName_id1ovLDatOkEK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getComponentByName").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1594211126127708848L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getComponent_id1ovLDatOk_Z, getDispose_id1ovLDatOkDx, getListener_id1ovLDatOkE5, getComponentByName_id1ovLDatOkEK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getComponent_id1ovLDatOk_Z, getDispose_id1ovLDatOkDx, getListener_id1ovLDatOkE5, getComponentByName_id1ovLDatOkEK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getComponent_id1ovLDatOk_Z(@NotNull SNode __thisNode__) {
     return StartProcessHandlerStatement__BehaviorDescriptor.getComponentByName_id1ovLDatOkEK.invokeSpecial(__thisNode__, "component");
@@ -61,10 +58,6 @@ public final class StartProcessHandlerStatement__BehaviorDescriptor extends Base
   /*package*/ StartProcessHandlerStatement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,10 +24,8 @@ public final class FontFamilyContainer__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<String> getFontFamily_idSLohPpeqbF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFontFamily").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1022705369068708587L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFontFamily_idSLohPpeqbF);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFontFamily_idSLohPpeqbF);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getFontFamily_idSLohPpeqbF(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getString(__thisNode__, PROPS.family$Yyw7) == null || !(FontRegistry.getInstance().getAvailableFontFamilyNames().contains(SPropertyOperations.getString(__thisNode__, PROPS.family$Yyw7)))) {
@@ -40,10 +37,6 @@ public final class FontFamilyContainer__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ FontFamilyContainer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

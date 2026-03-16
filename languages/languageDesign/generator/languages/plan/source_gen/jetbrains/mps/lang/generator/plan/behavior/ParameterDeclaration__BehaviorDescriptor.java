@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -26,10 +25,8 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<String> qualifiedName_id3ghxc3znnoq = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("qualifiedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3751925928559474202L).languageId(0x9e4875f363d6cb00L, 0x7ab1a6fa0a114b95L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(qualifiedName_id3ghxc3znnoq);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(qualifiedName_id3ghxc3znnoq);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String qualifiedName_id3ghxc3znnoq(@NotNull SNode __thisNode__) {
     if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.qualifier$evaC))) {
@@ -41,10 +38,6 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
   /*package*/ ParameterDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

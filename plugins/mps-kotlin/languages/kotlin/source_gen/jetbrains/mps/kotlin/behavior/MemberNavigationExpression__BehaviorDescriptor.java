@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,10 +28,8 @@ public final class MemberNavigationExpression__BehaviorDescriptor extends BaseBH
   public static final SMethod<Boolean> isRightUnary_id7EfieuW$AAu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRightUnary").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8831357554435189150L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<Precedence>(new SJavaCompoundTypeImpl(Precedence.class)).name("getPrecedenceLevel").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7027413324306640159L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_id1QSyUt0NT4U, takeStandalone_id1QSyUt0NYsZ, isRightUnary_id7EfieuW$AAu, getPrecedenceLevel_id666oMY59eOv);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_id1QSyUt0NT4U, takeStandalone_id1QSyUt0NYsZ, isRightUnary_id7EfieuW$AAu, getPrecedenceLevel_id666oMY59eOv);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static MemberReceiver getReceiver_id1QSyUt0NT4U(@NotNull SNode __thisNode__) {
     SNode operand = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.MemberNavigationExpression$7I), LINKS.operand$8jSC);
@@ -55,10 +52,6 @@ public final class MemberNavigationExpression__BehaviorDescriptor extends BaseBH
   /*package*/ MemberNavigationExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

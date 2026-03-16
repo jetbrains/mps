@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,19 +21,13 @@ public final class ITypeApplicable__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<List<SNode>> getTypeApplicationParameters_id7bu6bIyR2DR = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeApplicationParameters").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8277080359323839095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeApplicationParameters_id7bu6bIyR2DR);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeApplicationParameters_id7bu6bIyR2DR);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ ITypeApplicable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

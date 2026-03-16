@@ -14,7 +14,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class IYetUnresolved__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> evaluateSubst_id73E7sj5sxxG = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("evaluateSubst").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8136348407761606764L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> findClass_id4ykJ8Y83bdr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findClass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5230012391932867419L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluateSubst_id73E7sj5sxxG, findClass_id4ykJ8Y83bdr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluateSubst_id73E7sj5sxxG, findClass_id4ykJ8Y83bdr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode findClass_id4ykJ8Y83bdr(@NotNull SNode __thisNode__, SNode from, String className) {
     // FIXME remove this: it's here only to give idea-compiled solutions access to language classes
@@ -37,10 +34,6 @@ public final class IYetUnresolved__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IYetUnresolved__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

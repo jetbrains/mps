@@ -42,7 +42,6 @@ import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -88,10 +87,8 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> markLoadedNodeAsDeprecated_id5H8W9_EDlcn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markLoadedNodeAsDeprecated").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6577771797484491543L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeExtendedOrInstantiatedAt").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3434930939514787476L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtendedClassifierTypes_id1UeCwxlWKny, getIconMarks_id6TtJ6IUkhQJ, findAncestor_id3HluQRcXTJl, isDescendant_checkLoops_id6dL7A1DpKoA, checkLoops_id3sXyOQUqKq5, getMainMethod_idhEwIClG, hasStaticMemebers_idhFq8xqE, getMethodsToOverride_id4GM03FJm3zL, getSuperclass_idi3H_lLu, getUnitName_id4pl5GY7LKmR, getAllSuperClassifiers_id4fAeKISQjDi, getMembers_id1UeCwxlVpJs, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, enumerateMembers_id65_8Gi2s6iV, enumerateSupertypes_id65_8Gi1dKDs, instanceInitializers_id6Fz0RL3y9UD, staticInitializers_id2I6sE$IuBP7, fields_id4_LVZ3pC27C, staticMethods_id4_LVZ3pCeXr, constructors_id4_LVZ3pCvsd, properties_id4_LVZ3pCxYY, canBeStatic_id2L7NFMAtrRg, canBeAbstract_id6aeBP5Qh1A$, canBeFinal_id6aeBP5Qha2s, getContextClass_id6WzWPTX2$6q, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, addConstructor_id32Td0Ia9Mgr, markLoadedNodeAsDeprecated_id5H8W9_EDlcn, canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtendedClassifierTypes_id1UeCwxlWKny, getIconMarks_id6TtJ6IUkhQJ, findAncestor_id3HluQRcXTJl, isDescendant_checkLoops_id6dL7A1DpKoA, checkLoops_id3sXyOQUqKq5, getMainMethod_idhEwIClG, hasStaticMemebers_idhFq8xqE, getMethodsToOverride_id4GM03FJm3zL, getSuperclass_idi3H_lLu, getUnitName_id4pl5GY7LKmR, getAllSuperClassifiers_id4fAeKISQjDi, getMembers_id1UeCwxlVpJs, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, enumerateMembers_id65_8Gi2s6iV, enumerateSupertypes_id65_8Gi1dKDs, instanceInitializers_id6Fz0RL3y9UD, staticInitializers_id2I6sE$IuBP7, fields_id4_LVZ3pC27C, staticMethods_id4_LVZ3pCeXr, constructors_id4_LVZ3pCvsd, properties_id4_LVZ3pCxYY, canBeStatic_id2L7NFMAtrRg, canBeAbstract_id6aeBP5Qh1A$, canBeFinal_id6aeBP5Qha2s, getContextClass_id6WzWPTX2$6q, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, addConstructor_id32Td0Ia9Mgr, markLoadedNodeAsDeprecated_id5H8W9_EDlcn, canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getExtendedClassifierTypes_id1UeCwxlWKny(@NotNull SNode __thisNode__) {
     List<SNode> extendsClassifiers = new ArrayList<SNode>();
@@ -357,10 +354,6 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ClassConcept__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

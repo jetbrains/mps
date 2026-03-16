@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -25,10 +24,8 @@ public final class Selector__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isSmall_id49kBZ1LyWM8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSmall").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4779620959592893576L).languageId(0x83bed2ea6f3627c2L, 0x26b3d6d5b99a4ed6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSmall_id49kBZ1LyWM8);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSmall_id49kBZ1LyWM8);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isSmall_id49kBZ1LyWM8(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.options$pszS)).count() <= 3;
@@ -37,10 +34,6 @@ public final class Selector__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Selector__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -28,10 +27,8 @@ public final class LocalBehaviorMethodCall__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<SNode> getVirtualMethodDeclaration_id6cNV$KGvDlW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVirtualMethodDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7148319044498527612L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
   public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtualMethodCall_id6cNV$KGvFLM, getVirtualMethodDeclaration_id6cNV$KGvDlW, isLegalAsStatement_idi26MfYG);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtualMethodCall_id6cNV$KGvFLM, getVirtualMethodDeclaration_id6cNV$KGvDlW, isLegalAsStatement_idi26MfYG);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isVirtualMethodCall_id6cNV$KGvFLM(@NotNull SNode __thisNode__) {
     return (LocalBehaviorMethodCall__BehaviorDescriptor.getVirtualMethodDeclaration_id6cNV$KGvDlW.invoke(__thisNode__) != null);
@@ -54,10 +51,6 @@ public final class LocalBehaviorMethodCall__BehaviorDescriptor extends BaseBHDes
   /*package*/ LocalBehaviorMethodCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

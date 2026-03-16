@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -41,10 +40,8 @@ public final class CellModel_RefNode__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> isCellIdInitialized_idhTuDsSD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCellIdInitialized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1229948571177L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn, getDefaultCellId_id3VYF6qfIQs_, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, isCellIdInitialized_idhTuDsSD, getScope_id52_Geb4QDV$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn, getDefaultCellId_id3VYF6qfIQs_, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, isCellIdInitialized_idhTuDsSD, getScope_id52_Geb4QDV$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getRoleForCell_idhGPLstu(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc), PROPS.role$Nsjf);
@@ -81,10 +78,6 @@ public final class CellModel_RefNode__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ CellModel_RefNode__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NodeNameUtil;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.regexp.runtime.RegexpOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import java.util.regex.Pattern;
@@ -40,10 +39,8 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> makeUpperCase_idO$iR4JBsRn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("makeUpperCase").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156905431L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
   public static final SMethod<String> getValidClassName_id3gpm$NHlLi1 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getValidClassName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3754131050835940481L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSuffix_idO$iR4JBsSb, getGeneratedClassName_idO$iR4JBsSg, getFullName_idO$iR4JBsSv, getValidClassName_id2eOtvO7hJjT, getGeneratedClassName_idO$iR4JBsSG, getBaseName_id3MnZbusxcPI, getNamespace_id1XgDflG1h$6, replaceProhibitedSymbol_idO$iR4JBsQI, makeUpperCase_idO$iR4JBsRn, getValidClassName_id3gpm$NHlLi1);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSuffix_idO$iR4JBsSb, getGeneratedClassName_idO$iR4JBsSg, getFullName_idO$iR4JBsSv, getValidClassName_id2eOtvO7hJjT, getGeneratedClassName_idO$iR4JBsSG, getBaseName_id3MnZbusxcPI, getNamespace_id1XgDflG1h$6, replaceProhibitedSymbol_idO$iR4JBsQI, makeUpperCase_idO$iR4JBsRn, getValidClassName_id3gpm$NHlLi1);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGeneratedClassName_idO$iR4JBsSg(@NotNull SNode __thisNode__) {
     String name = IGeneratedToClass__BehaviorDescriptor.getBaseName_id3MnZbusxcPI.invoke(__thisNode__);
@@ -82,21 +79,17 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getValidClassName_id3gpm$NHlLi1(@NotNull SAbstractConcept __thisConcept__, @NonNls String name) {
     // in between
-    name = RegexpOperations.replace(name, REGEXP, new _Replacer_mgabp8_a0a0b0z(null));
+    name = RegexpOperations.replace(name, REGEXP, new _Replacer_mgabp8_a0a0b0y(null));
     // in the end
-    name = RegexpOperations.replace(name, REGEXP1, new _Replacer_mgabp8_a0a0d0z(null));
+    name = RegexpOperations.replace(name, REGEXP1, new _Replacer_mgabp8_a0a0d0y(null));
     // in the beggining
-    name = RegexpOperations.replace(name, REGEXP2, new _Replacer_mgabp8_a0a0f0z(null));
+    name = RegexpOperations.replace(name, REGEXP2, new _Replacer_mgabp8_a0a0f0y(null));
     return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$Cg), name, ((int) 0));
   }
 
   /*package*/ IGeneratedToClass__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

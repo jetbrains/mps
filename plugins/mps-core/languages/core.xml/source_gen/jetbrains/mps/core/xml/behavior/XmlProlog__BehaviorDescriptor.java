@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class XmlProlog__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isInValidPosition_id1Qs9WekWY$K = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInValidPosition").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437891376L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isInValidPosition_id1Qs9WekWY$K);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isInValidPosition_id1Qs9WekWY$K);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isInValidPosition_id1Qs9WekWY$K(@NotNull SNode __thisNode__, SNode element) {
     SNode declaration = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$fMpf)).findFirst((it) -> (boolean) XmlPrologElement__BehaviorDescriptor.isFirst_id1653mnvAgw8.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(it))));
@@ -42,10 +39,6 @@ public final class XmlProlog__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlProlog__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

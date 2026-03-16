@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class CellModel_AttributedPropertyCell__BehaviorDescriptor extends 
 
   public static final SMethod<Boolean> isCellIdInitialized_idhTuDsSD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCellIdInitialized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1229948571177L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCellIdInitialized_idhTuDsSD);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCellIdInitialized_idhTuDsSD);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isCellIdInitialized_idhTuDsSD(@NotNull SNode __thisNode__) {
     return true;
@@ -34,10 +31,6 @@ public final class CellModel_AttributedPropertyCell__BehaviorDescriptor extends 
   /*package*/ CellModel_AttributedPropertyCell__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

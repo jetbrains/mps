@@ -30,7 +30,6 @@ import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -52,10 +51,8 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isExpression_id3sYZzPj0plI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3980898659981170030L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, getClassifier_id7an2tsIdpk7, getTypeParameters_id7an2tsIdpkM, createConstructor_id2$1CHwF$28b, isExpression_id3sYZzPj0plI);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, getClassifier_id7an2tsIdpk7, getTypeParameters_id7an2tsIdpkM, createConstructor_id2$1CHwF$28b, isExpression_id3sYZzPj0plI);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, SuperTypesVisitor visitor) {
     // Enter class, return right away is already visited
@@ -142,10 +139,6 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ClassType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

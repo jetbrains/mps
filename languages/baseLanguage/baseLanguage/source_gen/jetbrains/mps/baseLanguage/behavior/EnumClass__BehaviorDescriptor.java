@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -43,10 +42,8 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeAbstract_id6aeBP5Qh1A$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAbstract").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7101788834635192740L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> canBeStatic_id2L7NFMAtrRg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3190746170657193424L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findConstantByName_idhEwIiGU, getSuperclass_idi3H_lLu, getExtendedClassifierTypes_id1UeCwxlWKny, getExtendedEnumJavaType_id6O4rE5gbZ0q, getMembers_idhEwJjl2, hasStaticMemebers_idhFq8xqE, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, canBeFinal_id6aeBP5Qha2s, canBeAbstract_id6aeBP5Qh1A$, canBeStatic_id2L7NFMAtrRg);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findConstantByName_idhEwIiGU, getSuperclass_idi3H_lLu, getExtendedClassifierTypes_id1UeCwxlWKny, getExtendedEnumJavaType_id6O4rE5gbZ0q, getMembers_idhEwJjl2, hasStaticMemebers_idhFq8xqE, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, canBeFinal_id6aeBP5Qha2s, canBeAbstract_id6aeBP5Qh1A$, canBeStatic_id2L7NFMAtrRg);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode findConstantByName_idhEwIiGU(@NotNull SNode __thisNode__, String name) {
     for (SNode constant : SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$qtgW)) {
@@ -110,10 +107,6 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ EnumClass__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

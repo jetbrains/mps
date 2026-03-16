@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -27,10 +26,8 @@ public final class NodeFactory__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getQueryMethodName_idhKujcRH = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getQueryMethodName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220279061997L).languageId(0xaef20004f6a1cdbdL, 0xaee9cad2acd44608L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getQueryMethodName_idhKujcRH);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getQueryMethodName_idhKujcRH);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getQueryMethodName_idhKujcRH(@NotNull SNode __thisNode__) {
     String conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$8F1V), PROPS.name$MnvL);
@@ -41,10 +38,6 @@ public final class NodeFactory__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NodeFactory__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

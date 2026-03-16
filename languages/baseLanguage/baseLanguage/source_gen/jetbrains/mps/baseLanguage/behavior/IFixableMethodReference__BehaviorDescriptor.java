@@ -20,7 +20,6 @@ import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,10 +37,8 @@ public final class IFixableMethodReference__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setMethodDeclaration").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypesByTypeVars_idJfLh5LDMrj, getInstanceType_id6WzWPTX2vuB, getAvailableMethodDeclarations_id50EF2fWdwEN, useScopesForMethodDeclarationFixer_id3EWPnx1lHq, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, getMethodDeclarationReference_id5DBbMQ3ynbU, setMethodDeclaration_id5DBbMQ3xovP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypesByTypeVars_idJfLh5LDMrj, getInstanceType_id6WzWPTX2vuB, getAvailableMethodDeclarations_id50EF2fWdwEN, useScopesForMethodDeclarationFixer_id3EWPnx1lHq, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, getMethodDeclarationReference_id5DBbMQ3ynbU, setMethodDeclaration_id5DBbMQ3xovP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
     SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
@@ -70,10 +67,6 @@ public final class IFixableMethodReference__BehaviorDescriptor extends BaseBHDes
   /*package*/ IFixableMethodReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

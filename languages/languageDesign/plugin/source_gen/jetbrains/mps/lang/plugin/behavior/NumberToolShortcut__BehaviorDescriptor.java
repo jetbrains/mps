@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import java.util.regex.Pattern;
@@ -25,10 +24,8 @@ public final class NumberToolShortcut__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<Integer> getNumber_idqbzkx46jl9 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getNumber").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(471625927510013257L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNumber_idqbzkx46jl9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNumber_idqbzkx46jl9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int getNumber_idqbzkx46jl9(@NotNull SNode __thisNode__) {
     if (REGEXP.matcher(SPropertyOperations.getString(__thisNode__, PROPS.number$WFYX)).matches()) {
@@ -41,10 +38,6 @@ public final class NumberToolShortcut__BehaviorDescriptor extends BaseBHDescript
   /*package*/ NumberToolShortcut__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

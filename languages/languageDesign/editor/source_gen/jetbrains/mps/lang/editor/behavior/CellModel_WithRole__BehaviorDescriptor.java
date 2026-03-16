@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class CellModel_WithRole__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<String> getRoleForCell_idhGPLstu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRoleForCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216377898846L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getFeatureForCell_id4YnqLFjkxyn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFeatureForCell").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5735170413438310551L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated(since = "2018.2", forRemoval = true)
   /*package*/ static String getRoleForCell_idhGPLstu(@NotNull SNode __thisNode__) {
@@ -37,10 +34,6 @@ public final class CellModel_WithRole__BehaviorDescriptor extends BaseBHDescript
   /*package*/ CellModel_WithRole__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

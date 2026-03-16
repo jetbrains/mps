@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractExtractMethodRefactoringProcessor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class IExtractMethodAvailable__BehaviorDescriptor extends BaseBHDes
 
   public static final SMethod<IExtractMethodRefactoringProcessor> getExtractMethodRefactoringProcessor_idhLwHWdT = new SMethodBuilder<IExtractMethodRefactoringProcessor>(new SJavaCompoundTypeImpl(IExtractMethodRefactoringProcessor.class)).name("getExtractMethodRefactoringProcessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1221393367929L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtractMethodRefactoringProcessor_idhLwHWdT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtractMethodRefactoringProcessor_idhLwHWdT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static IExtractMethodRefactoringProcessor getExtractMethodRefactoringProcessor_idhLwHWdT(@NotNull SNode __thisNode__, List<SNode> nodesToExtract) {
     return new AbstractExtractMethodRefactoringProcessor(__thisNode__, nodesToExtract);
@@ -36,10 +33,6 @@ public final class IExtractMethodAvailable__BehaviorDescriptor extends BaseBHDes
   /*package*/ IExtractMethodAvailable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

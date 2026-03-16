@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -26,10 +25,8 @@ public final class FunctionMemberTarget__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<FunctionDeclaration> getFunction_id4vugIDegoqT = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5178650195625346745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007011L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunction_id4vugIDegoqT, isResolved_id4MvRlgZCbFz);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunction_id4vugIDegoqT, isResolved_id4MvRlgZCbFz);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static FunctionDeclaration getFunction_id4vugIDegoqT(@NotNull SNode __thisNode__) {
     return KotlinFunctionDeclaration.of(SLinkOperations.getTarget(__thisNode__, LINKS.function$xU7v));
@@ -41,10 +38,6 @@ public final class FunctionMemberTarget__BehaviorDescriptor extends BaseBHDescri
   /*package*/ FunctionMemberTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

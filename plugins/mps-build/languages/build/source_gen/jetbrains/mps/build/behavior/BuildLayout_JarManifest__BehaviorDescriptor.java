@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,10 +33,8 @@ public final class BuildLayout_JarManifest__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Iterable<SNode>> getAttributes_id7ro1Zzt_na1 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAttributes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895840897L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<String> defaultManifestName_id7N6lJotVTmG = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("defaultManifestName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8990969321155958188L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutputPath_WithMacro_id5V$ev8kKIxP, isInJar_id5V$ev8kKReX, getSections_id7ro1Zzt_n6o, getAttributes_id7ro1Zzt_na1, defaultManifestName_id7N6lJotVTmG);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutputPath_WithMacro_id5V$ev8kKIxP, isInJar_id5V$ev8kKReX, getSections_id7ro1Zzt_n6o, getAttributes_id7ro1Zzt_na1, defaultManifestName_id7N6lJotVTmG);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getOutputPath_WithMacro_id5V$ev8kKIxP(@NotNull SNode __thisNode__, Context context) {
     if ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$vv)) {
@@ -73,10 +70,6 @@ public final class BuildLayout_JarManifest__BehaviorDescriptor extends BaseBHDes
   /*package*/ BuildLayout_JarManifest__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

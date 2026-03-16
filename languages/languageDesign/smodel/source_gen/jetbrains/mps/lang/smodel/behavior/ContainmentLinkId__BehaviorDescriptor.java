@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -36,10 +35,8 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Void> setLink_id7jb4LXp8VsD = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8415841354032330537L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
   public static final SMethod<Long> getIdValue_id7jb4LXp8Vts = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8415841354032330588L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id7jb4LXp8VrU, setLink_id5e7X3XCLq_K, setLink_id7jb4LXp8VsD, getIdValue_id7jb4LXp8Vts);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id7jb4LXp8VrU, setLink_id5e7X3XCLq_K, setLink_id7jb4LXp8VsD, getIdValue_id7jb4LXp8Vts);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SContainmentLink getLink_id7jb4LXp8VrU(@NotNull SNode __thisNode__) {
     SAbstractConcept lc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$KeU0));
@@ -76,10 +73,6 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ ContainmentLinkId__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

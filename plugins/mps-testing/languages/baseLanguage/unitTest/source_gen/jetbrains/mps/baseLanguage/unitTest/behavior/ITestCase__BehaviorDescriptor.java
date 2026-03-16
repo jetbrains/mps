@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,8 @@ public final class ITestCase__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getSimpleClassName_idhSQIE8p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1229278847513L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<Boolean> canRunInProcess_id5_jSk8paieB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canRunInProcess").modifiers(10, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6436735966448788391L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getUncommentedTestSet_id6I8tQNTsM_Z, getTestMethods_id1RfJDyhAUar, getUncommentedTestMethods_id6I8tQNTvi0f, getClassName_idhGBnqtL, getSimpleClassName_idhSQIE8p, canRunInProcess_id5_jSk8paieB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getUncommentedTestSet_id6I8tQNTsM_Z, getTestMethods_id1RfJDyhAUar, getUncommentedTestMethods_id6I8tQNTvi0f, getClassName_idhGBnqtL, getSimpleClassName_idhSQIE8p, canRunInProcess_id5_jSk8paieB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getUncommentedTestSet_id6I8tQNTsM_Z(@NotNull SNode __thisNode__) {
     List<SNode> method = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(__thisNode__);
@@ -70,10 +67,6 @@ public final class ITestCase__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ITestCase__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

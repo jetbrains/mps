@@ -14,7 +14,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,8 @@ public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<List<SNode>> getDeclaredOperations_idO$iR4J$gbn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclaredOperations").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156067031L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDeclaredOperations_idO$iR4J$gbn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDeclaredOperations_idO$iR4J$gbn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getDeclaredOperations_idO$iR4J$gbn(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.EditorOperationDeclaration$VI, false, new SAbstractConcept[]{});
@@ -36,10 +33,6 @@ public final class SettingsEditor__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ SettingsEditor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

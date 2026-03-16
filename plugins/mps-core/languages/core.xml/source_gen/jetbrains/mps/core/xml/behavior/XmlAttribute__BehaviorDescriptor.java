@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,10 +23,8 @@ public final class XmlAttribute__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isMultiline_id2EZ251fZScc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3080189811177259788L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiline_id2EZ251fZScc);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiline_id2EZ251fZScc);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isMultiline_id2EZ251fZScc(@NotNull SNode __thisNode__) {
     boolean result = false;
@@ -42,10 +39,6 @@ public final class XmlAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlAttribute__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

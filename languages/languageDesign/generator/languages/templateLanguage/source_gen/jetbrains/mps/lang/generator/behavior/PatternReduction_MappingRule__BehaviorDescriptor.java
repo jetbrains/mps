@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class PatternReduction_MappingRule__BehaviorDescriptor extends Base
   public static final SMethod<SAbstractConcept> getConcept_id1$dcvTE6OGV = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805153994417064763L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
   public static final SMethod<SNode> getTemplateType_id1$dcvTE731L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplateType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805153994417123441L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id1$dcvTE6OGV, getTemplateType_id1$dcvTE731L);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id1$dcvTE6OGV, getTemplateType_id1$dcvTE731L);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SAbstractConcept getConcept_id1$dcvTE6OGV(@NotNull SNode __thisNode__) {
     return SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$ThnR), LINKS.pattern$GuFI), LINKS.quotedNode$ip4));
@@ -41,10 +38,6 @@ public final class PatternReduction_MappingRule__BehaviorDescriptor extends Base
   /*package*/ PatternReduction_MappingRule__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

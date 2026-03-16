@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,10 +37,8 @@ public final class ConceptFunctionParameter__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNode> getType_id27DJnJtIQ9C = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2443692612523876968L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> dontUseParameterObject_id1653mnvAgv$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("dontUseParameterObject").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498340L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFromParameterObject_idhEwJh7s, isParameterObjectUsed_idhEwJh7I, findConceptFunction_idhEwJh7Q, getParameterName_idhP8qAbK, getDeclaration_idhP8xjWn, needConceptFunction_idhZKliUO, getType_id27DJnJtIQ9C, dontUseParameterObject_id1653mnvAgv$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFromParameterObject_idhEwJh7s, isParameterObjectUsed_idhEwJh7I, findConceptFunction_idhEwJh7Q, getParameterName_idhP8qAbK, getDeclaration_idhP8xjWn, needConceptFunction_idhZKliUO, getType_id27DJnJtIQ9C, dontUseParameterObject_id1653mnvAgv$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean getFromParameterObject_idhEwJh7s(@NotNull SNode __thisNode__) {
     if (!((boolean) ConceptFunctionParameter__BehaviorDescriptor.isParameterObjectUsed_idhEwJh7I.invoke(__thisNode__))) {
@@ -88,10 +85,6 @@ public final class ConceptFunctionParameter__BehaviorDescriptor extends BaseBHDe
   /*package*/ ConceptFunctionParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

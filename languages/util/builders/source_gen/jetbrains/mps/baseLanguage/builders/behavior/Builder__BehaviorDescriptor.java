@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> leaf_id1653mnvAgw2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("leaf").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498370L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
   public static final SMethod<SNode> getContextBuilder_id67LR$5LPv$c = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextBuilder").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730366732L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextBuilder_id67LR$5LPgSh, isLeaf_id67LR$5LQnln, getResultType_id67LR$5LQPoF, getCreatorExpression_id67LR$5LQRIR, getAttachStatement_id6k$kQGI5UZ7, getAttachStatementChild_id4ak9ytIaIgr, leaf_id1653mnvAgw2, getContextBuilder_id67LR$5LPv$c);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextBuilder_id67LR$5LPgSh, isLeaf_id67LR$5LQnln, getResultType_id67LR$5LQPoF, getCreatorExpression_id67LR$5LQRIR, getAttachStatement_id6k$kQGI5UZ7, getAttachStatementChild_id4ak9ytIaIgr, leaf_id1653mnvAgw2, getContextBuilder_id67LR$5LPv$c);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getContextBuilder_id67LR$5LPgSh(@NotNull SNode __thisNode__) {
     return (SNode) Builder__BehaviorDescriptor.getContextBuilder_id67LR$5LPv$c.invoke(SNodeOperations.asSConcept(CONCEPTS.Builder$Cf), SNodeOperations.getParent(__thisNode__));
@@ -65,10 +62,6 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Builder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

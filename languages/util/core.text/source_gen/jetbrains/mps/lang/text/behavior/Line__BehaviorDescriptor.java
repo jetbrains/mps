@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -49,10 +48,8 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isLastLine_id647WjQalOgm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132258326L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> parseAndAppendText_id68pBJP34v1v = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("parseAndAppendText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7068855900723867743L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initializeFromParagraphs_id2iG$EWuZbnH, merge_id1YnOZxALrLu, merge_id1YnOZxAMHtO, split_id1YnOZxANc9P, createParagraphInstance_id7q4Ywce6rMl, addTextElement_idWJz9iAYdP6, addAllTextElements_idWJz9iAYdPl, isEmptyLine_id1YnOZxAO76B, getTextElements_idWJz9iATjyN, removeTextElementAt_idWJz9iAXbMU, wrapTextForClipboard_id2iG$EWuTXuU, representAsText_id2iG$EWuTXv2, isFirstLine_id647WjQal7cZ, isLastLine_id647WjQalOgm, parseAndAppendText_id68pBJP34v1v);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initializeFromParagraphs_id2iG$EWuZbnH, merge_id1YnOZxALrLu, merge_id1YnOZxAMHtO, split_id1YnOZxANc9P, createParagraphInstance_id7q4Ywce6rMl, addTextElement_idWJz9iAYdP6, addAllTextElements_idWJz9iAYdPl, isEmptyLine_id1YnOZxAO76B, getTextElements_idWJz9iATjyN, removeTextElementAt_idWJz9iAXbMU, wrapTextForClipboard_id2iG$EWuTXuU, representAsText_id2iG$EWuTXv2, isFirstLine_id647WjQal7cZ, isLastLine_id647WjQalOgm, parseAndAppendText_id68pBJP34v1v);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void initializeFromParagraphs_id2iG$EWuZbnH(@NotNull final SNode __thisNode__, SNode l) {
     final Wrappers._T<SNode> currentWord = new Wrappers._T<SNode>(null);
@@ -124,7 +121,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
 
     final Wrappers._T<SNode> currentPosition = new Wrappers._T<SNode>(position);
     ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).visitAll((element) -> currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element));
-    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0y(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0x(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
       SNodeOperations.deleteNode(position);
     }
   }
@@ -205,10 +202,6 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Line__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
@@ -285,7 +278,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  public static String trim_chdj22_a0a0e0y(String str) {
+  public static String trim_chdj22_a0a0e0x(String str) {
     return (str == null ? null : str.trim());
   }
 

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,10 +35,8 @@ public final class CellModel_ListWithRole__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(332515575062761786L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVertical_idi2IdWzG, isVerticalGrid_idi2IfsZ1, isHorizontal_idi2IfsZo, isFoldingEnabled_id3ZqNA5Aj2vG, getScope_id52_Geb4QDV$, getLayout_iditlittTD4U);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVertical_idi2IdWzG, isVerticalGrid_idi2IfsZ1, isHorizontal_idi2IfsZo, isFoldingEnabled_id3ZqNA5Aj2vG, getScope_id52_Geb4QDV$, getLayout_iditlittTD4U);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isVertical_idi2IdWzG(@NotNull SNode __thisNode__) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Vertical$Fs);
@@ -69,10 +66,6 @@ public final class CellModel_ListWithRole__BehaviorDescriptor extends BaseBHDesc
   /*package*/ CellModel_ListWithRole__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -30,10 +29,8 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4837286298388660615L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLegalAsStatement_idi26MfYG, isInTypeInferenceContext_id4cxv$9$kw67);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLegalAsStatement_idi26MfYG, isInTypeInferenceContext_id4cxv$9$kw67);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
     String variableExpectedName = null;
@@ -63,10 +60,6 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BaseMethodCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

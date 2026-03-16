@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class FoldRightOperation__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<Iterable<String>> getClosureParameterNames_id4vR6YDfUMx0 = new SMethodBuilder<Iterable<String>>(new SJavaCompoundTypeImpl((Class<Iterable<String>>) ((Class) Object.class))).name("getClosureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5185644189117524032L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClosureParameterNames_id4vR6YDfUMx0);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClosureParameterNames_id4vR6YDfUMx0);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<String> getClosureParameterNames_id4vR6YDfUMx0(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<String>(), "it", "s");
@@ -36,10 +33,6 @@ public final class FoldRightOperation__BehaviorDescriptor extends BaseBHDescript
   /*package*/ FoldRightOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

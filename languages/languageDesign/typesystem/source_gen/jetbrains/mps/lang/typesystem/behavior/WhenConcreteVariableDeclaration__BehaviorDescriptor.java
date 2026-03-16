@@ -21,7 +21,7 @@ public final class WhenConcreteVariableDeclaration__BehaviorDescriptor extends B
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd05a27aL, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableDeclaration");
 
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setNewChild(__thisNode__, LINKS.type$a1UY, CONCEPTS.UndefinedType$uv);

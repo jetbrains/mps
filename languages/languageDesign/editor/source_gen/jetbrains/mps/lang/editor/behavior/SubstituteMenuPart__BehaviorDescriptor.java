@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -24,10 +23,8 @@ public final class SubstituteMenuPart__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<SNode> getOutputConcept_id7mC_uHFK7Hn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOutputConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8478191136882588503L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutputConcept_id7mC_uHFK7Hn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutputConcept_id7mC_uHFK7Hn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated
   /*package*/ static SNode getOutputConcept_id7mC_uHFK7Hn(@NotNull SNode __thisNode__) {
@@ -37,10 +34,6 @@ public final class SubstituteMenuPart__BehaviorDescriptor extends BaseBHDescript
   /*package*/ SubstituteMenuPart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

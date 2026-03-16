@@ -17,7 +17,6 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class BaseDocReference__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> getFQNameInContext_idM5aELaKhPF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQNameInContext").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(902174219834563947L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQNameInContextIgnoreSameClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(902174219836077010L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFQNameInContext_idM5aELaKhPF, getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFQNameInContext_idM5aELaKhPF, getFQNameInContextIgnoreSameClassifier_idM5aELaQ3fi);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getFQNameInContext_idM5aELaKhPF(@NotNull SNode __thisNode__, SNode classifier) {
     String fqNameInContext = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
@@ -55,10 +52,6 @@ public final class BaseDocReference__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ BaseDocReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

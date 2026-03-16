@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class PrimType__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> substituteWith_id1hDKT6wB3pH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("substituteWith").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1470921783545443949L).languageId(0xbae1cc709d588366L, 0x2f74e72e3e3d480eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteWith_id1hDKT6wB3pH);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteWith_id1hDKT6wB3pH);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode substituteWith_id1hDKT6wB3pH(@NotNull SNode __thisNode__, SNode subs) {
     return subs;
@@ -34,10 +31,6 @@ public final class PrimType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ PrimType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

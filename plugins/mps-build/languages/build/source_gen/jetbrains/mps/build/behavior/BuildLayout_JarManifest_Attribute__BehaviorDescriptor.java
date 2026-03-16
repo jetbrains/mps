@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.nodeEditor.MPSColors;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class BuildLayout_JarManifest_Attribute__BehaviorDescriptor extends BaseBHDescriptor {
@@ -27,10 +26,8 @@ public final class BuildLayout_JarManifest_Attribute__BehaviorDescriptor extends
   public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9184644532456897464L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
   public static final SMethod<Color> getColorForTextPart_id5hFYqIiXWl$ = new SMethodBuilder<Color>(new SJavaCompoundTypeImpl(Color.class)).name("getColorForTextPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6083230236994422116L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getColorForTextPart_id5hFYqIiXWl$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getColorForTextPart_id5hFYqIiXWl$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
     if (role.equals(LINKS.name$IAJz)) {
@@ -49,10 +46,6 @@ public final class BuildLayout_JarManifest_Attribute__BehaviorDescriptor extends
   /*package*/ BuildLayout_JarManifest_Attribute__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

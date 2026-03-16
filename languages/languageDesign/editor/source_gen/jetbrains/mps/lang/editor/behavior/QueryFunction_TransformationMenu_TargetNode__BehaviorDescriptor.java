@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -28,10 +27,8 @@ public final class QueryFunction_TransformationMenu_TargetNode__BehaviorDescript
   /*package*/ static final SMethod<SNode> getExpectedReturnConcept_id5ZcqSl_NE$j = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnConcept").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(6903010549534992659L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Boolean> showName_id1653mnvAgry = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showName").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498082L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedReturnType_idhEwIGRD, getExpectedReturnConcept_id5ZcqSl_NE$j, showName_id1653mnvAgry);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedReturnType_idhEwIGRD, getExpectedReturnConcept_id5ZcqSl_NE$j, showName_id1653mnvAgry);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     return _quotation_createNode_gq3t2b_a0a0(QueryFunction_TransformationMenu_TargetNode__BehaviorDescriptor.getExpectedReturnConcept_id5ZcqSl_NE$j.invokeSpecial(__thisNode__));
@@ -46,10 +43,6 @@ public final class QueryFunction_TransformationMenu_TargetNode__BehaviorDescript
   /*package*/ QueryFunction_TransformationMenu_TargetNode__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

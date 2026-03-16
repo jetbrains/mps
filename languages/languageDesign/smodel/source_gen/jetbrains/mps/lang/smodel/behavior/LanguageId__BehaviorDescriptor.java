@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -31,10 +30,8 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3542851458883438752L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
   public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980181733679L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(Language.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SLanguage getLanguage_id34EJa6aIcyj(@NotNull SNode __thisNode__) {
     return MetaAdapterFactory.getLanguage(SLanguageId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.languageId$dZD2)), SPropertyOperations.getString(__thisNode__, PROPS.namespace$dZq1));
@@ -51,10 +48,6 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ LanguageId__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

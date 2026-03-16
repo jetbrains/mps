@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -31,10 +30,8 @@ public final class ISuppressErrors__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3567142084961743867L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(suppress_id2WmWrdnSpX7, suppress_id3612de_vrfV);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(suppress_id2WmWrdnSpX7, suppress_id3612de_vrfV);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     return !(SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.IAntisuppressErrors$MM) || SNodeOperations.isInstanceOf(it, CONCEPTS.ISuppressErrors$qB) || Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.ISuppressErrors$qB)).isNotEmpty()), CONCEPTS.IAntisuppressErrors$MM));
@@ -50,10 +47,6 @@ public final class ISuppressErrors__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ISuppressErrors__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,19 +23,13 @@ public final class IMessage__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getThrowable_id5vyNLjQPuWe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getThrowable").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6332851714983849742L).languageId(0x8bfd65db761a9ba3L, 0x760a0a8ceabb4521L).build2();
   public static final SMethod<SNode> getMessage_id5vyNLjQPuX5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMessage").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6332851714983849797L).languageId(0x8bfd65db761a9ba3L, 0x760a0a8ceabb4521L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSeverity_id5vyNLjQPuVr, getThrowable_id5vyNLjQPuWe, getMessage_id5vyNLjQPuX5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSeverity_id5vyNLjQPuVr, getThrowable_id5vyNLjQPuWe, getMessage_id5vyNLjQPuX5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ IMessage__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

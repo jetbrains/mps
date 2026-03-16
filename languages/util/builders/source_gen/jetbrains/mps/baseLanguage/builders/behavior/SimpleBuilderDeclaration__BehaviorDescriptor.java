@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -39,10 +38,8 @@ public final class SimpleBuilderDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<List<SNode>> getProperties_id4Fc1sznat8t = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getProperties").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5389689214217081373L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getContextDeclaration_id5rdgdYBzN9n = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6254726786820551255L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRoot_id7LSrDTXbxm6, isDescendant_id3jPK7hzRvLl, getDescendants_id3jPK7hzRzcY, getAncestors_id6K2Bohp6U4S, getExtensions_id6K2Bohp73wF, getChildren_id3jPK7hzSvxE, getProperties_id4Fc1sznat8t, getContextDeclaration_id5rdgdYBzN9n);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRoot_id7LSrDTXbxm6, isDescendant_id3jPK7hzRvLl, getDescendants_id3jPK7hzRzcY, getAncestors_id6K2Bohp6U4S, getExtensions_id6K2Bohp73wF, getChildren_id3jPK7hzSvxE, getProperties_id4Fc1sznat8t, getContextDeclaration_id5rdgdYBzN9n);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isRoot_id7LSrDTXbxm6(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.root$TlZ3) || (SLinkOperations.getTarget(__thisNode__, LINKS.extends$szG$) != null) && (boolean) SimpleBuilderDeclaration__BehaviorDescriptor.isRoot_id7LSrDTXbxm6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extends$szG$));
@@ -111,10 +108,6 @@ public final class SimpleBuilderDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ SimpleBuilderDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

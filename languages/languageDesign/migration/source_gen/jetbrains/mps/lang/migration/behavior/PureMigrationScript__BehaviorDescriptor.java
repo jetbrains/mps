@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -43,10 +42,8 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getProducedAnnotationData_id5TUCQr2CN0$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProducedAnnotationData").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6807933448471392292L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getPresentation_idhEwIMiw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getPresentation_idhEwIMiw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int fromVersion_id4uVwhQyFcnl(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getInteger(__thisNode__, PROPS.fromVersion$hHKK);
@@ -108,10 +105,6 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ PureMigrationScript__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

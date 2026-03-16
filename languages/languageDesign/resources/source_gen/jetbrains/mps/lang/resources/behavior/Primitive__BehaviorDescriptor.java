@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class Primitive__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<byte[]> getImage_id4rOpugPeFSA = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(12, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(5112823507792346662L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""), SMethodBuilder.createJavaParameter(Color.class, ""));
   public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA, getImageForGeneration_id2p1v3tObywX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA, getImageForGeneration_id2p1v3tObywX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull SNode __thisNode__) {
     return ((byte[]) Primitive__BehaviorDescriptor.getImage_id4rOpugPeFSA.invoke(__thisNode__, new JBColor((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)), (int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK))), new JBColor((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37)), (int) Color__BehaviorDescriptor.getDarkIntValue_id4rOpugPdD$J.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37)))));
@@ -39,10 +36,6 @@ public final class Primitive__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Primitive__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

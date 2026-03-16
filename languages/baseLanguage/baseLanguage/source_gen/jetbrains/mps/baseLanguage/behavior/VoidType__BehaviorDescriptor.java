@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -24,10 +23,8 @@ public final class VoidType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getBoxedType_idhEwIzNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBoxedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337320L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> jniSignature_id7F81Cd2C7e3 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8847328628797633411L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBoxedType_idhEwIzNC, jniSignature_id7F81Cd2C7e3);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBoxedType_idhEwIzNC, jniSignature_id7F81Cd2C7e3);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getBoxedType_idhEwIzNC(@NotNull SNode __thisNode__) {
     return _quotation_createNode_s71av5_a0a0();
@@ -39,10 +36,6 @@ public final class VoidType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ VoidType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,10 +34,8 @@ public final class UnresolvedParsedReference__BehaviorDescriptor extends BaseBHD
   public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007011L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> tryResolve_id4MvRlgZCbFB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolve").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007015L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isResolved_id4MvRlgZCbFz, tryResolve_id4MvRlgZCbFB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isResolved_id4MvRlgZCbFz, tryResolve_id4MvRlgZCbFB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, SignatureCollector visitor) {
     {
@@ -87,10 +84,6 @@ public final class UnresolvedParsedReference__BehaviorDescriptor extends BaseBHD
   /*package*/ UnresolvedParsedReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

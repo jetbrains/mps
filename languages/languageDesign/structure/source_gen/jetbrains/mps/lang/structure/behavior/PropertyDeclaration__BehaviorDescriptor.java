@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -34,10 +33,8 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getConceptDeclaration_id2OF3rgRewqT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3254710223377139385L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<Boolean> is_id4MKjpUYnih4 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5526002086977545284L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter(SProperty.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isPrimitiveString_idhT22swA, isPrimitiveInteger_idhT23WS5, isPrimitiveBoolean_idhT23T2l, getConceptDeclaration_id2OF3rgRewqT, is_id4MKjpUYnih4);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isPrimitiveString_idhT22swA, isPrimitiveInteger_idhT23WS5, isPrimitiveBoolean_idhT23T2l, getConceptDeclaration_id2OF3rgRewqT, is_id4MKjpUYnih4);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isPrimitiveString_idhT22swA(@NotNull SNode __thisNode__) {
     return SLinkOperations.hasPointer(__thisNode__, LINKS.dataType$5j5Y, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843"));
@@ -58,10 +55,6 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ PropertyDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

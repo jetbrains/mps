@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class Node_GetChildrenOperation__BehaviorDescriptor extends BaseBHD
   public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498076L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<List<SConcept>> getParameterConcepts_id6ALWH9fQysn = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429956970263L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLinkQualifier_id30XARhxpW1K, applicableToNode_id1653mnvAgrs, getParameterConcepts_id6ALWH9fQysn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLinkQualifier_id30XARhxpW1K, applicableToNode_id1653mnvAgrs, getParameterConcepts_id6ALWH9fQysn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getLinkQualifier_id30XARhxpW1K(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperation__BehaviorDescriptor.getParameter_idhEwJdHG.invoke(__thisNode__, CONCEPTS.OperationParm_LinkQualifier$Ky), CONCEPTS.OperationParm_LinkQualifier$Ky);
@@ -46,10 +43,6 @@ public final class Node_GetChildrenOperation__BehaviorDescriptor extends BaseBHD
   /*package*/ Node_GetChildrenOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

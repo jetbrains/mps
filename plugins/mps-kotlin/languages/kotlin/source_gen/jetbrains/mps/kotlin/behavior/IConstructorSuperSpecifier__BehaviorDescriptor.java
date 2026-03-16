@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -34,10 +33,8 @@ public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBH
   public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getConstructorDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isClass_id1$jFvlEiPXX, getAvailableParameters_id1$jFvlD0xqw, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy, getArguments_id1VI7K1jROBX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isClass_id1$jFvlEiPXX, getAvailableParameters_id1$jFvlD0xqw, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy, getArguments_id1VI7K1jROBX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isClass_id1$jFvlEiPXX(@NotNull SNode __thisNode__) {
     // Constructors are always related to classes in kotlin
@@ -62,10 +59,6 @@ public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBH
   /*package*/ IConstructorSuperSpecifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

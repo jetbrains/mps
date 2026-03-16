@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -33,10 +32,8 @@ public final class MigrationTestCase__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getSimpleClassName_idhSQIE8p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1229278847513L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getSimpleClassName_idhSQIE8p, isMpsStartRequired_id2RMg39tmiFh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getSimpleClassName_idhSQIE8p, isMpsStartRequired_id2RMg39tmiFh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getTestSet_idhGB2z8L(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), __thisNode__);
@@ -60,10 +57,6 @@ public final class MigrationTestCase__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ MigrationTestCase__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

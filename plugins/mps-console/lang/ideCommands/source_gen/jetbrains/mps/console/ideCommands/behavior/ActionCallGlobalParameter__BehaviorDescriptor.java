@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -24,10 +23,8 @@ public final class ActionCallGlobalParameter__BehaviorDescriptor extends BaseBHD
 
   public static final SMethod<SNode> getParameterDeclaration_id4PRmqZe_o$D = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5582028874769074473L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterDeclaration_id4PRmqZe_o$D);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterDeclaration_id4PRmqZe_o$D);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getParameterDeclaration_id4PRmqZe_o$D(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.declaration$McH7);
@@ -36,10 +33,6 @@ public final class ActionCallGlobalParameter__BehaviorDescriptor extends BaseBHD
   /*package*/ ActionCallGlobalParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

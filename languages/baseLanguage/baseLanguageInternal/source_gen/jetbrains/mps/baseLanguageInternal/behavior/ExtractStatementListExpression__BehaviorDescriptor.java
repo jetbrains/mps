@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class ExtractStatementListExpression__BehaviorDescriptor extends Ba
 
   public static final SMethod<List<SNode>> getLocalVariableElements_idi1I$XiP = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLocalVariableElements").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1238805763253L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalVariableElements_idi1I$XiP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalVariableElements_idi1I$XiP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getLocalVariableElements_idi1I$XiP(@NotNull SNode __thisNode__) {
     List<SNode> elems = new ArrayList<SNode>();
@@ -41,10 +38,6 @@ public final class ExtractStatementListExpression__BehaviorDescriptor extends Ba
   /*package*/ ExtractStatementListExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

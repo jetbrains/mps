@@ -37,7 +37,6 @@ import java.util.Collections;
 import java.util.Objects;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -67,10 +66,8 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SConcept> getDefaultVisibility_id2WVyZr43qIN = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835375987635L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> asSingleExpression_id18X2O0FvKfA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asSingleExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1314219036497609702L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, isAbstract_id4KPNZIZDjbY, getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, isExtension_id4Cl0D9hBslM, getTypeParameters_id1VI7K1kLcNv, getScope_id52_Geb4QDV$, collectSpecificScope_id1yTI8p9qmpS, getModifiers_id4q11fqJUzWN, getDefaultInheritance_id6jE_6dusz0P, getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, getDefaultVisibility_id2WVyZr43qIN, asSingleExpression_id18X2O0FvKfA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, isAbstract_id4KPNZIZDjbY, getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, isExtension_id4Cl0D9hBslM, getTypeParameters_id1VI7K1kLcNv, getScope_id52_Geb4QDV$, collectSpecificScope_id1yTI8p9qmpS, getModifiers_id4q11fqJUzWN, getDefaultInheritance_id6jE_6dusz0P, getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, getDefaultVisibility_id2WVyZr43qIN, asSingleExpression_id18X2O0FvKfA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateDeclarations_id213J8cgCCAN(@NotNull final SNode __thisNode__, final SignatureCollector collector, SNode contextNode) {
     // Receivers are included through receiver scope, instance method through instance scope (popSignatures)
@@ -212,10 +209,6 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ FunctionDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

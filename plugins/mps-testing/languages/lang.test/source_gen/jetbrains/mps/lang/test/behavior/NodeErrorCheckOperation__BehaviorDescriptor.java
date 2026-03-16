@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class NodeErrorCheckOperation__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Void> attachReference_id2wBFdLy8qmn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987863L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8333855927540237654L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canAttachReference_id2wBFdLy7HtS(@NotNull SNode __thisNode__, SNode reference) {
     return SNodeOperations.isInstanceOf(reference, CONCEPTS.ReportErrorStatement$v1) || SNodeOperations.isInstanceOf(reference, CONCEPTS.Rule$DP);
@@ -50,10 +47,6 @@ public final class NodeErrorCheckOperation__BehaviorDescriptor extends BaseBHDes
   /*package*/ NodeErrorCheckOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

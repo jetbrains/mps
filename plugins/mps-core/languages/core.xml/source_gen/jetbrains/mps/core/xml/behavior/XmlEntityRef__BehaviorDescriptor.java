@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class XmlEntityRef__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498277L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> oneLineBlock_id1653mnvAgno = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("oneLineBlock").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497816L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(textLike_id1653mnvAgu_, oneLineBlock_id1653mnvAgno);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(textLike_id1653mnvAgu_, oneLineBlock_id1653mnvAgno);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean textLike_id1653mnvAgu_(@NotNull SAbstractConcept __thisConcept__) {
     return false;
@@ -38,10 +35,6 @@ public final class XmlEntityRef__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlEntityRef__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -30,7 +30,7 @@ public final class Table__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Integer> getInitialColumnCount_id1653mnvAgqE = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getInitialColumnCount").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498026L).languageId(0xbd67f4cc27337152L, 0xdf8799e7254a406fL).build2();
   public static final SMethod<Integer> getInitialRowCount_id1653mnvAgrI = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getInitialRowCount").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498094L).languageId(0xbd67f4cc27337152L, 0xdf8799e7254a406fL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitialColumnCount_id1653mnvAgqE, getInitialRowCount_id1653mnvAgrI);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitialColumnCount_id1653mnvAgqE, getInitialRowCount_id1653mnvAgrI);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     for (int i = 0; i < (int) Table__BehaviorDescriptor.getInitialRowCount_id1653mnvAgrI.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))); i++) {

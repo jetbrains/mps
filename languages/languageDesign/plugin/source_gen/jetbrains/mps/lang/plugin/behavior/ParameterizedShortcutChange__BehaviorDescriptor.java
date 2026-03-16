@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -29,10 +28,8 @@ public final class ParameterizedShortcutChange__BehaviorDescriptor extends BaseB
   public static final SMethod<Boolean> hasRemove_idyhFWcL2RGa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788106L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<Boolean> hasReplaceAll_idyhFWcL2RGl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788117L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedReturnType_idhEwIGRD, hasRemoveOrReplaceAllModifiers_idyhFWcL2RFY, hasRemove_idyhFWcL2RGa, hasReplaceAll_idyhFWcL2RGl);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedReturnType_idhEwIGRD, hasRemoveOrReplaceAllModifiers_idyhFWcL2RFY, hasRemove_idyhFWcL2RGa, hasReplaceAll_idyhFWcL2RGl);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     return _quotation_createNode_hegoi9_a0a0();
@@ -50,10 +47,6 @@ public final class ParameterizedShortcutChange__BehaviorDescriptor extends BaseB
   /*package*/ ParameterizedShortcutChange__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

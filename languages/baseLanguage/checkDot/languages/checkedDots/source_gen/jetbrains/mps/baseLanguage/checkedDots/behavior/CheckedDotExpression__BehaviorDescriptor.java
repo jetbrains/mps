@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,10 +28,8 @@ public final class CheckedDotExpression__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Boolean> allowsNullOperand_id3Yy2P0QQESt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowsNullOperand").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4585239809762176541L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497939L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasLocalContextInside_id3bYdGv2TyNM, allowsNullOperand_id3Yy2P0QQESt, lvalue_id1653mnvAgpj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasLocalContextInside_id3bYdGv2TyNM, allowsNullOperand_id3Yy2P0QQESt, lvalue_id1653mnvAgpj);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean hasLocalContextInside_id3bYdGv2TyNM(@NotNull SNode __thisNode__) {
     if (ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.ThisExpression$$o, false, new SAbstractConcept[]{})).isNotEmpty()) {
@@ -54,10 +51,6 @@ public final class CheckedDotExpression__BehaviorDescriptor extends BaseBHDescri
   /*package*/ CheckedDotExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

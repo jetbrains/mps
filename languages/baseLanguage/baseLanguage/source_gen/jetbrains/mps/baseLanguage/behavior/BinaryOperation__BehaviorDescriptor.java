@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,10 +37,8 @@ public final class BinaryOperation__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> canBeMultiline_id5EmmRHy2ZwK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeMultiline").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6527505295404169264L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1653mnvAgo2, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, calculateCompileTimeConstantValue_id1o8Ht9sN5Hn, bothShouldBeWidenedTo_id5otPu$gIcHo, getFlippedOperator_id14Lzlw0K236, flipChangesSemantics_id14Lzlw0RrBK, getPrecedenceLevel_id1O90zDONSxM, canBeMultiline_id5EmmRHy2ZwK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1653mnvAgo2, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, calculateCompileTimeConstantValue_id1o8Ht9sN5Hn, bothShouldBeWidenedTo_id5otPu$gIcHo, getFlippedOperator_id14Lzlw0K236, flipChangesSemantics_id14Lzlw0RrBK, getPrecedenceLevel_id1O90zDONSxM, canBeMultiline_id5EmmRHy2ZwK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int getPriority_id1653mnvAgo2(@NotNull SAbstractConcept __thisConcept__) {
     return 0;
@@ -121,10 +118,6 @@ public final class BinaryOperation__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BinaryOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

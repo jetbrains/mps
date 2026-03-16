@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class TestProjectAware__BehaviorDescriptor extends BaseBHDescriptor
 
   public static final SMethod<Boolean> requiresTestInfo_id1Zcerrmz81D = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresTestInfo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2291269767871103081L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresTestInfo_id1Zcerrmz81D);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresTestInfo_id1Zcerrmz81D);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean requiresTestInfo_id1Zcerrmz81D(@NotNull SNode __thisNode__) {
     // aka requiresProject(), indicates whether code generated for the test gonna utilize
@@ -39,10 +36,6 @@ public final class TestProjectAware__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ TestProjectAware__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

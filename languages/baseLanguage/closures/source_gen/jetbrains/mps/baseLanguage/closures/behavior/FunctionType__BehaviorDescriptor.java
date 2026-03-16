@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.closures.helper.FunctionTypeUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -60,10 +59,8 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getNormalizedSequenceParameterReturnType_idhEwIOpc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNormalizedSequenceParameterReturnType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877405260L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
   public static final SMethod<List<SNode>> getNormalizedParameterTypes_idhEwIOps = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getNormalizedParameterTypes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877405276L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getClassExpression_idhEwIzOd, getRuntimeSignature_idhEwIOjZ, getRuntimeClassifier_id6GFpWnVllMc, getResultType_idhTY4wo3, unmeet_idi0lWwAi, getTerminateType_idhVqPOyZ, findRuntimeClassifierType_id6GFpWnVbsXZ, buildClassifierType_id77je8e2WW6_, buildClassifierType_id77je8e33b1N, getDeclarationRuntimeType_idhTOKQzf, getRuntimeType_idhTOJ6nH, getDeclarationRuntimeType_idH4u0Q2K3hM, getNormalizedReturnType_idhEwIOp4, getNormalizedTerminateType_idhVr6OUT, getNormalizedThrowsTypes_id2ZrgyPlTDZP, getNormalizedSequenceParameterReturnType_idhEwIOpc, getNormalizedParameterTypes_idhEwIOps);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getClassExpression_idhEwIzOd, getRuntimeSignature_idhEwIOjZ, getRuntimeClassifier_id6GFpWnVllMc, getResultType_idhTY4wo3, unmeet_idi0lWwAi, getTerminateType_idhVqPOyZ, findRuntimeClassifierType_id6GFpWnVbsXZ, buildClassifierType_id77je8e2WW6_, buildClassifierType_id77je8e33b1N, getDeclarationRuntimeType_idhTOKQzf, getRuntimeType_idhTOJ6nH, getDeclarationRuntimeType_idH4u0Q2K3hM, getNormalizedReturnType_idhEwIOp4, getNormalizedTerminateType_idhVr6OUT, getNormalizedThrowsTypes_id2ZrgyPlTDZP, getNormalizedSequenceParameterReturnType_idhEwIOpc, getNormalizedParameterTypes_idhEwIOps);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuffer sb = new StringBuffer("{");
@@ -237,10 +234,6 @@ with_throws:
   /*package*/ FunctionType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

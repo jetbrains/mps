@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class XmlDoctypeDeclaration__BehaviorDescriptor extends BaseBHDescr
 
   public static final SMethod<Boolean> isSingle_id1653mnvAgni = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingle").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497810L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSingle_id1653mnvAgni);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSingle_id1653mnvAgni);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isSingle_id1653mnvAgni(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -34,10 +31,6 @@ public final class XmlDoctypeDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ XmlDoctypeDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

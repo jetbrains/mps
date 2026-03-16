@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class ITypeParameterReference__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<TypeParameterDeclaration> getParameter_id4W0pdSD7eWM = new SMethodBuilder<TypeParameterDeclaration>(new SJavaCompoundTypeImpl(TypeParameterDeclaration.class)).name("getParameter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5692660834331586354L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameter_id4W0pdSD7eWM, populateTypeSignatures_id5q426iHK5S9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameter_id4W0pdSD7eWM, populateTypeSignatures_id5q426iHK5S9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, SignatureCollector visitor) {
     // Nothing to declare (no need to declare bounds there, they need to be declared as supertypes by implementation)
@@ -37,10 +34,6 @@ public final class ITypeParameterReference__BehaviorDescriptor extends BaseBHDes
   /*package*/ ITypeParameterReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

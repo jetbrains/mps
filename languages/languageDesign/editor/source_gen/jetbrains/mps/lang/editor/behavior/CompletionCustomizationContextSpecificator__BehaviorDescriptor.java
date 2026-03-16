@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class CompletionCustomizationContextSpecificator__BehaviorDescripto
   public static final SMethod<Boolean> isModifying_id7U0pk79eiXG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isModifying").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9115396979021131628L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<List<SConcept>> getAdditionalParameters_idETPn3v9Kre = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(772883491827680974L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id7U0pk79eiL7, isCreating_id7U0pk79eiW7, isModifying_id7U0pk79eiXG, getAdditionalParameters_idETPn3v9Kre);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id7U0pk79eiL7, isCreating_id7U0pk79eiW7, isModifying_id7U0pk79eiXG, getAdditionalParameters_idETPn3v9Kre);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getConcept_id7U0pk79eiL7(@NotNull SNode __thisNode__) {
     return null;
@@ -48,10 +45,6 @@ public final class CompletionCustomizationContextSpecificator__BehaviorDescripto
   /*package*/ CompletionCustomizationContextSpecificator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

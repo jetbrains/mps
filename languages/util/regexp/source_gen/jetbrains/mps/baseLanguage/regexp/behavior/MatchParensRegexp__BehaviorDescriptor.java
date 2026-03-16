@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,10 +27,8 @@ public final class MatchParensRegexp__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Integer> getIndex_idhNm3Btp = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getIndex").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1223361984345L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
   public static final SMethod<SNode> getValue_idhOJcizo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224857430232L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, getIndex_idhNm3Btp, getValue_idhOJcizo);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, getIndex_idhNm3Btp, getValue_idhOJcizo);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
     ListSequence.fromList(vars).addElement(__thisNode__);
@@ -50,10 +47,6 @@ public final class MatchParensRegexp__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ MatchParensRegexp__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

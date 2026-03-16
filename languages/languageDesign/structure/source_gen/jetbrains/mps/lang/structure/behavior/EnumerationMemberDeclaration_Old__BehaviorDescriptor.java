@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -35,10 +34,8 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   public static final SMethod<String> getName_idi2ZRO7Q = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240169660918L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<SNode> findReplacement_id54m$yuDZW0l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findReplacement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5843018265613287445L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getConstantName_idi2Z$rBf, getName_idi2ZRO7Q, findReplacement_id54m$yuDZW0l);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getConstantName_idi2Z$rBf, getName_idi2ZRO7Q, findReplacement_id54m$yuDZW0l);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getString(__thisNode__, PROPS.externalValue$1oFu) != null) {
@@ -67,10 +64,6 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
   /*package*/ EnumerationMemberDeclaration_Old__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

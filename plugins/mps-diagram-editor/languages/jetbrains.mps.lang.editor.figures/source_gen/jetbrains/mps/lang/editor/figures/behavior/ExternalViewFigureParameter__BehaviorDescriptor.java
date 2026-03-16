@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
   /*package*/ static final SMethod<String> getSuffix_id3g73hQq82yQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3748979635600238774L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
   public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(342110547581236128L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMethod_id4H19mAx5nwL, getGetterName_id3g73hQq7brf, getSuffix_id3g73hQq82yQ, getParameterType_idiZqVFYvBew);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMethod_id4H19mAx5nwL, getGetterName_id3g73hQq7brf, getSuffix_id3g73hQq82yQ, getParameterType_idiZqVFYvBew);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getParameterMethod_id4H19mAx5nwL(@NotNull SNode __thisNode__) {
     final String methodName = ExternalViewFigureParameter__BehaviorDescriptor.getGetterName_id3g73hQq7brf.invoke(__thisNode__);
@@ -58,10 +55,6 @@ public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseB
   /*package*/ ExternalViewFigureParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

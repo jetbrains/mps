@@ -20,7 +20,6 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,10 +34,8 @@ public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> getLeftBracket_id1653mnvAgpU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497978L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
   public static final SMethod<String> getRightBracket_id1653mnvAgqW = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498044L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, collectGenericSubstitutions_id3zZky3wF74h, getLeftBracket_id1653mnvAgpU, getRightBracket_id1653mnvAgqW);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, collectGenericSubstitutions_id3zZky3wF74h, getLeftBracket_id1653mnvAgpU, getRightBracket_id1653mnvAgqW);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
@@ -91,10 +88,6 @@ public final class IndexedTupleType__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ IndexedTupleType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

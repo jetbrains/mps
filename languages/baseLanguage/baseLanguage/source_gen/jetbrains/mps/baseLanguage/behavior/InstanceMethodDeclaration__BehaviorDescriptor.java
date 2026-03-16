@@ -26,7 +26,6 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.baseLanguage.scopes.MethodSignature;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -50,10 +49,8 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
   public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7405920559687254644L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isAbstract_idhWjv7RO, isAnAbstractMethod_id28P2dHxCoRl, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, getChildrenToDisplayIntention_id3vsDNFqJVhw, getImplementedInterfaceMethod_id7cTWCexFh1W, getNearestOverriddenMethod_id4DuBHEkPTzU, populateMember_id6r77ob2UW9O, getFqName_idhEwIO9y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isAbstract_idhWjv7RO, isAnAbstractMethod_id28P2dHxCoRl, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, getChildrenToDisplayIntention_id3vsDNFqJVhw, getImplementedInterfaceMethod_id7cTWCexFh1W, getNearestOverriddenMethod_id4DuBHEkPTzU, populateMember_id6r77ob2UW9O, getFqName_idhEwIO9y);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isDataFlowChecked_idhRptrfk(@NotNull SNode __thisNode__) {
     return ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(__thisNode__));
@@ -155,10 +152,6 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
   /*package*/ InstanceMethodDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

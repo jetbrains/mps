@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,10 +24,8 @@ public final class CellActionMapItem__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<SEnumerationLiteral> getActionId_idJCy0JrvU0M = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(858085313522671666L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionId_idJCy0JrvU0M);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionId_idJCy0JrvU0M);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SEnumerationLiteral getActionId_idJCy0JrvU0M(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getEnum(__thisNode__, PROPS.actionId$On2r);
@@ -37,10 +34,6 @@ public final class CellActionMapItem__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ CellActionMapItem__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

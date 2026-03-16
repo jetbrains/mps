@@ -21,7 +21,6 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -38,10 +37,8 @@ public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<String> getTextWhenBroken_idigjXyuNrou = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextWhenBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(328850564593858078L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
   public static final SMethod<Boolean> isBroken_id7m$hACyVN2F = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8476977820284694699L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id7oNS25df64x, canExecute_id2QdC0h7dh1h, getText_id5E451QuvdoB, getTextWhenBroken_idigjXyuNrou, isBroken_id7m$hACyVN2F);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id7oNS25df64x, canExecute_id2QdC0h7dh1h, getText_id5E451QuvdoB, getTextWhenBroken_idigjXyuNrou, isBroken_id7m$hACyVN2F);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     final SNodeReference targetNode = SLinkOperations.getPointer(__thisNode__, LINKS.target$CsE);
@@ -66,10 +63,6 @@ public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescript
   /*package*/ INodeWithReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -20,7 +20,6 @@ import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -34,10 +33,8 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(445544999161239271L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8436901734214076745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, collectPublicScope_id58ySuOXQyMi, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, collectPublicScope_id58ySuOXQyMi, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getMembers_id213J8chg2xy(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.declarations$NgHw);
@@ -67,10 +64,6 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ KotlinFile__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

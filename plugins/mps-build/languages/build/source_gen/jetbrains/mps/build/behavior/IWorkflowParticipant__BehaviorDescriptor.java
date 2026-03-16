@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,19 +21,13 @@ public final class IWorkflowParticipant__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<SNode> getTargetTask_id5Wv1_bQ1rcK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetTask").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6854204111265837872L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetTask_id5Wv1_bQ1rcK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetTask_id5Wv1_bQ1rcK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ IWorkflowParticipant__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

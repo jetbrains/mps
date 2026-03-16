@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -28,10 +27,8 @@ public final class UnknownRuleReference__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<String> getName_id6EW1JnOFUIS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7691029917083872184L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_id6EW1JnOFUIS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_id6EW1JnOFUIS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getName_id6EW1JnOFUIS(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$oKj7), CONCEPTS.INamedConcept$Kd)) {
@@ -46,10 +43,6 @@ public final class UnknownRuleReference__BehaviorDescriptor extends BaseBHDescri
   /*package*/ UnknownRuleReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

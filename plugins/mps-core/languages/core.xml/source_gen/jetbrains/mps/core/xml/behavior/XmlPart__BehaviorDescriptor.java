@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isTextLike_id1Qs9WekVZ9O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTextLike").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631604L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyTextOnLineWithOpenTag").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2126696769318694488L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo(@NotNull SNode __thisNode__) {
     return false;
@@ -40,10 +37,6 @@ public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlPart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

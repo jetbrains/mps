@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class AbstractNodeMacroNamespace__BehaviorDescriptor extends BaseBH
   public static final SMethod<SNode> getTargetMacro_id2vVmcK3imJA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885280230L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
   public static final SMethod<SNode> getTargetMacroOfConceptFrom_id2vVmcK3rHVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetMacroOfConceptFrom").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019887734478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroConcept_id2vVmcK3iiCI, getTargetMacro_id2vVmcK3imJA, getTargetMacroOfConceptFrom_id2vVmcK3rHVe);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroConcept_id2vVmcK3iiCI, getTargetMacro_id2vVmcK3imJA, getTargetMacroOfConceptFrom_id2vVmcK3rHVe);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getTargetMacro_id2vVmcK3imJA(@NotNull SNode __thisNode__) {
     return AbstractNodeMacroNamespace__BehaviorDescriptor.getTargetMacroOfConceptFrom_id2vVmcK3rHVe.invoke(__thisNode__.getConcept(), AbstractNodeMacroNamespace__BehaviorDescriptor.getMacroConcept_id2vVmcK3iiCI.invoke(__thisNode__.getConcept()), SNodeOperations.getParent(__thisNode__));
@@ -59,10 +56,6 @@ public final class AbstractNodeMacroNamespace__BehaviorDescriptor extends BaseBH
   /*package*/ AbstractNodeMacroNamespace__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

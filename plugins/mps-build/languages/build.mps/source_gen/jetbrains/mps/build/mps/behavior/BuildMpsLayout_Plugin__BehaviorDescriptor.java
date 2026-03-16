@@ -32,7 +32,6 @@ import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_Container__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -59,10 +58,8 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static final SMethod<Boolean> isPackagedAutomatically_id36cV00CxaOW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPackagedAutomatically").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3570488090021899580L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   /*package*/ static final SMethod<Void> unpackPluginModules_id6ZIjmBZXud7 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpackPluginModules").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(8065469100328346439L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(UnpackHelper.class, ""), SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getChildrenOutputDir_WithMacro_id450ejGzh8bb, getOutputPath_WithMacro_idfzIHCHip1Q, getApproximateName_id4RsV8qJH_Br, isFolder_id1bWeed$oPYW, isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU, isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek, conflictingJar_id1RsDREvPMQ$, confictingJarNameExists_id1RsDREvQK61, findGroup_id7cOEBlPT2gC, isPackagedAutomatically_id36cV00CxaOW, unpackPluginModules_id6ZIjmBZXud7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getChildrenOutputDir_WithMacro_id450ejGzh8bb, getOutputPath_WithMacro_idfzIHCHip1Q, getApproximateName_id4RsV8qJH_Br, isFolder_id1bWeed$oPYW, isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU, isPluginDescriptorPossiblyMissingInLayout_id1RsDREvCrek, conflictingJar_id1RsDREvPMQ$, confictingJarNameExists_id1RsDREvQK61, findGroup_id7cOEBlPT2gC, isPackagedAutomatically_id36cV00CxaOW, unpackPluginModules_id6ZIjmBZXud7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Container$vv)) {
@@ -311,10 +308,6 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   /*package*/ BuildMpsLayout_Plugin__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -25,7 +25,7 @@ public final class VarVariableDeclaration__BehaviorDescriptor extends BaseBHDesc
 
   public static final SMethod<Boolean> canProvideInferenceContext_idJiVENj$Z0y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canProvideInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(852005705577918498L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canProvideInferenceContext_idJiVENj$Z0y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canProvideInferenceContext_idJiVENj$Z0y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setNewChild(__thisNode__, LINKS.type$a1UY, CONCEPTS.VarType$Um);

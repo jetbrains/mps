@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -23,10 +22,8 @@ public final class SubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> getApplicableConcept_id1quYWAD18xk = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697343060L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableConcept_id1quYWAD18xk);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableConcept_id1quYWAD18xk);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getApplicableConcept_id1quYWAD18xk(@NotNull SNode __thisNode__) {
     return ((SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke0(__thisNode__, CONCEPTS.IMenu_Concept$6_));
@@ -35,10 +32,6 @@ public final class SubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ SubstituteMenu__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

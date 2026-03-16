@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -38,10 +37,8 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Void> convertToLocal_id4APqwMfCtHb = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToLocal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5311267937735269195L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> lvalue_id1653mnvAgvW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498364L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, isDotExpressionLegalAsStatement_idi26OiY_, canBeConvertedToLocal_id4APqwMfC3hI, convertToLocal_id4APqwMfCtHb, lvalue_id1653mnvAgvW);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, isDotExpressionLegalAsStatement_idi26OiY_, canBeConvertedToLocal_id4APqwMfC3hI, convertToLocal_id4APqwMfCtHb, lvalue_id1653mnvAgvW);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String expectedName = null;
@@ -105,10 +102,6 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
   /*package*/ FieldReferenceOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

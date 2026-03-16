@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -30,10 +29,8 @@ public final class IHoldCommentLines__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> representLinesAsText_id2pw9ZXKQIYx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representLinesAsText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269024673L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, representLinesAsText_id2pw9ZXKQIYx);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, representLinesAsText_id2pw9ZXKQIYx);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean enforceExternalIndentation_id4qjHlOWQ7Jg(@NotNull SNode __thisNode__) {
     return true;
@@ -51,10 +48,6 @@ public final class IHoldCommentLines__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ IHoldCommentLines__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

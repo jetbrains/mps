@@ -13,9 +13,8 @@ import jetbrains.mps.build.util.Context;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor {
@@ -27,10 +26,8 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<String> getLastSegment_id5dwDdJ8yckN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6007983166781441331L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<SNode> getParent_id7wpYgMyTXsR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637145399L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalPath_id4Kip2_918Y$, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getLastSegment_id5dwDdJ8yckN, getParent_id7wpYgMyTXsR);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalPath_id4Kip2_918Y$, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getLastSegment_id5dwDdJ8yckN, getParent_id7wpYgMyTXsR);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static String getLocalPath_id4Kip2_918Y$(@NotNull SNode __thisNode__, Context context) {
@@ -54,10 +51,6 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildSourcePath__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

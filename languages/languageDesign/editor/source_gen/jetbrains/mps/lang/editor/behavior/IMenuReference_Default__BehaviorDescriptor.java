@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -24,10 +23,8 @@ public final class IMenuReference_Default__BehaviorDescriptor extends BaseBHDesc
 
   public static final SMethod<SNode> getApplicableConcept_id1quYWAD4TFX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958698330877L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableConcept_id1quYWAD4TFX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableConcept_id1quYWAD4TFX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getApplicableConcept_id1quYWAD4TFX(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.concept$kjNG);
@@ -36,10 +33,6 @@ public final class IMenuReference_Default__BehaviorDescriptor extends BaseBHDesc
   /*package*/ IMenuReference_Default__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

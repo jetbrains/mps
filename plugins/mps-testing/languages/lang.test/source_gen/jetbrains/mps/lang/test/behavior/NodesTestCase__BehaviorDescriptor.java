@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,10 +39,8 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> needsWriteAction_id5vTxdEzuQjU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsWriteAction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6339244025081193722L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   public static final SMethod<SEnumerationLiteral> calcAccessMode_id4wHm_MSTUi_ = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("calcAccessMode").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5200912498968470693L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, isMpsStartRequired_id2RMg39tmiFh, getTestMethods_id1RfJDyhAUar, isIntentionApplicable_idhHDM9no, getTestBodyName_idhOw0ICJ, needsWriteAction_id5vTxdEzuQjU, calcAccessMode_id4wHm_MSTUi_);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, isMpsStartRequired_id2RMg39tmiFh, getTestMethods_id1RfJDyhAUar, isIntentionApplicable_idhHDM9no, getTestBodyName_idhOw0ICJ, needsWriteAction_id5vTxdEzuQjU, calcAccessMode_id4wHm_MSTUi_);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getTestSet_idhGB2z8L(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
@@ -88,10 +85,6 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NodesTestCase__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

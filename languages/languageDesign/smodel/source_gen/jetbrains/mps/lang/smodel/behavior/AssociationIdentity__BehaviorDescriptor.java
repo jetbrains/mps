@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,19 +22,13 @@ public final class AssociationIdentity__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<SReferenceLink> getReference_id7jb4LXp9a7o = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8415841354032390616L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ AssociationIdentity__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

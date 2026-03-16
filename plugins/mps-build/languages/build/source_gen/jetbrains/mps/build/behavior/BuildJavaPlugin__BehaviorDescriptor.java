@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.scope.CompositeScope;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,8 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3734116213129936182L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224588814561807654L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProjectStructureScope_id3fifI_xCJOQ, getLayoutScope_id13YBgBBRSOA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProjectStructureScope_id3fifI_xCJOQ, getLayoutScope_id13YBgBBRSOA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getProjectStructureScope_id3fifI_xCJOQ(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
     if (kind == CONCEPTS.BuildSource_JavaOptions$D) {
@@ -71,10 +68,6 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildJavaPlugin__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

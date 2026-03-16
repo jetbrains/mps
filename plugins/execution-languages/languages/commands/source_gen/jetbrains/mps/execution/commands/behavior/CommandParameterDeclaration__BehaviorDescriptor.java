@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -39,10 +38,8 @@ public final class CommandParameterDeclaration__BehaviorDescriptor extends BaseB
   public static final SMethod<String> getTypeSuffix_id3gpm$NHlXW7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeSuffix").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3754131050835992327L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getUpperCaseName_id6mJVBGGsi5Q = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUpperCaseName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7327337331549086070L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRequired_id7c4O8d8q0tV, generateField_id7mEQKPeolUk, getSetterName_id6mJVBGGsi5s, getSetterLongName_id3gpm$NHlR8F, getUpperCaseName_id6mJVBGGsi5H, getFieldName_id6mJVBGGspQq, getFieldName_id6mJVBGGsi69, getTypeSuffix_id3gpm$NHlXW7, getUpperCaseName_id6mJVBGGsi5Q);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRequired_id7c4O8d8q0tV, generateField_id7mEQKPeolUk, getSetterName_id6mJVBGGsi5s, getSetterLongName_id3gpm$NHlR8F, getUpperCaseName_id6mJVBGGsi5H, getFieldName_id6mJVBGGspQq, getFieldName_id6mJVBGGsi69, getTypeSuffix_id3gpm$NHlXW7, getUpperCaseName_id6mJVBGGsi5Q);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isRequired_id7c4O8d8q0tV(@NotNull SNode __thisNode__) {
     return false;
@@ -75,10 +72,6 @@ public final class CommandParameterDeclaration__BehaviorDescriptor extends BaseB
   /*package*/ CommandParameterDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

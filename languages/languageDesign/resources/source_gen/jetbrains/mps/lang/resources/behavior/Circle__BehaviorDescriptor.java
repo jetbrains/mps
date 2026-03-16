@@ -18,7 +18,6 @@ import jetbrains.mps.util.IconCreationUtil;
 import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,10 +28,8 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<byte[]> getImage_id4rOpugPeFSA = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(5112823507792346662L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""), SMethodBuilder.createJavaParameter(Color.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static byte[] getImage_id4rOpugPeFSA(@NotNull final SNode __thisNode__, final Color fillColor, final Color borderColor) {
     return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
@@ -59,10 +56,6 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Circle__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

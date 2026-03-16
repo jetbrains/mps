@@ -27,7 +27,7 @@ public final class RequestURLBuilderExpression__BehaviorDescriptor extends BaseB
 
   public static final SMethod<Iterable<SNode>> getInitializedParameters_id40BYgt09_iZ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getInitializedParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4622937352055444671L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitializedParameters_id40BYgt09_iZ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitializedParameters_id40BYgt09_iZ);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setTarget(__thisNode__, LINKS.port$JG9s, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d72d05b47f59025L, "jetbrains.mps.ide.httpsupport.structure.MPSInternalPortProvider")));

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,19 +22,13 @@ public final class AbstractToolKeystroke__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<String> getKeymap_idqbzkx4pM3M = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKeymap").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(471625927515119858L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<String> getKeystroke_idqbzkx4pLZr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKeystroke").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(471625927515119579L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getKeymap_idqbzkx4pM3M, getKeystroke_idqbzkx4pLZr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getKeymap_idqbzkx4pM3M, getKeystroke_idqbzkx4pLZr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ AbstractToolKeystroke__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

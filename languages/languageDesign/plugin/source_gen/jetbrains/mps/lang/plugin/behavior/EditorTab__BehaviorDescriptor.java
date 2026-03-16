@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -27,10 +26,8 @@ public final class EditorTab__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getGeneratedName_id3fOKOapZKP0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3743831881070611776L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<String> getGeneratedClassFQName_id3fOKOapZKPb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3743831881070611787L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id3fOKOapZKP0, getGeneratedClassFQName_id3fOKOapZKPb);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id3fOKOapZKP0, getGeneratedClassFQName_id3fOKOapZKPb);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGeneratedName_id3fOKOapZKP0(@NotNull SNode __thisNode__) {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) + "_TabDescriptor";
@@ -42,10 +39,6 @@ public final class EditorTab__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ EditorTab__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -35,10 +34,8 @@ public final class FinderDeclaration__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedClassName_idhEwIc4_, getConceptName_idhEwIc4J, getGeneratedClassLongName_idhEwIc4S, getPropertyToCheck_id4cWf37B8oYh, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedClassName_idhEwIc4_, getConceptName_idhEwIc4J, getGeneratedClassLongName_idhEwIc4S, getPropertyToCheck_id4cWf37B8oYh, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGeneratedClassName_idhEwIc4_(@NotNull SNode __thisNode__) {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) + "_Finder";
@@ -62,10 +59,6 @@ public final class FinderDeclaration__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ FinderDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

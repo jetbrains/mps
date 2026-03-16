@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,10 +30,8 @@ public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SNode> getRuleKind_id1BFxp3HHhyj = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getRuleKind").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1867733327985055891L).languageId(0xb0691c7df0a4005dL, 0x134c38d4e3af4d9eL).build2();
   public static final SMethod<SNode> getHighestMember_id2mL_UKGkn8G = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighestMember").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2716118816014823980L).languageId(0xb0691c7df0a4005dL, 0x134c38d4e3af4d9eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBlock_id1BFxp3HHhy9, getRuleKind_id1BFxp3HHhyj, getHighestMember_id2mL_UKGkn8G);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBlock_id1BFxp3HHhy9, getRuleKind_id1BFxp3HHhyj, getHighestMember_id2mL_UKGkn8G);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getBlock_id1BFxp3HHhy9(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.RulesBlock$W, false, false);
@@ -50,10 +47,6 @@ public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ RuleBlockMember__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

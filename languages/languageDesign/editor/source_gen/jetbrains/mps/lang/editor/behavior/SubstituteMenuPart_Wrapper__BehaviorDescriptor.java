@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,10 +28,8 @@ public final class SubstituteMenuPart_Wrapper__BehaviorDescriptor extends BaseBH
   public static final SMethod<SNode> getCreatedConcept_id6e716hiEcRp = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatedConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7171705760540839385L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<List<SConcept>> getAdditionalFeatureParameters_id394Ruzxf8fe = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalFeatureParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3622263992593712078L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id3rSzFHWOe4u, getCreatedConcept_id6e716hiEcRp, getAdditionalFeatureParameters_id394Ruzxf8fe);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id3rSzFHWOe4u, getCreatedConcept_id6e716hiEcRp, getAdditionalFeatureParameters_id394Ruzxf8fe);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getReference_id3rSzFHWOe4u(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.reference$utyn);
@@ -47,10 +44,6 @@ public final class SubstituteMenuPart_Wrapper__BehaviorDescriptor extends BaseBH
   /*package*/ SubstituteMenuPart_Wrapper__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

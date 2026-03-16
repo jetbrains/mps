@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class Antiquotation__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SContainmentLink> getAttributedLink_id5e7X3XC_mgR = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getAttributedLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980178695223L).languageId(0xbbcc75c4219e9555L, 0x3a13115c633c4c5cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAttributedLink_id5e7X3XC_mgR);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAttributedLink_id5e7X3XC_mgR);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SContainmentLink getAttributedLink_id5e7X3XC_mgR(@NotNull SNode __thisNode__) {
     return SNodeOperations.getContainingLink(SNodeOperations.getParent(__thisNode__));
@@ -36,10 +33,6 @@ public final class Antiquotation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Antiquotation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

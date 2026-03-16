@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.math.BigDecimal;
 import org.jetbrains.mps.samples.money.runtime.StockPriceDownloader;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,10 +28,8 @@ public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<Money> getCurrentPrice_id3u6SZi0yq4L = new SMethodBuilder<Money>(new SJavaCompoundTypeImpl(Money.class)).name("getCurrentPrice").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958233293105L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCurrentPrice_id3u6SZi0yq4L);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCurrentPrice_id3u6SZi0yq4L);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Money getCurrentPrice_id3u6SZi0yq4L(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.symbol$ye9c) == null)) {
@@ -48,10 +45,6 @@ public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ CurrentStockPrice__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

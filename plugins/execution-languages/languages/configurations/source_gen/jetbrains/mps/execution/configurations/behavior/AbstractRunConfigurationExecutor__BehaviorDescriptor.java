@@ -30,7 +30,7 @@ public final class AbstractRunConfigurationExecutor__BehaviorDescriptor extends 
   public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156905483L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
   public static final SMethod<String> getGeneratedClassName_idO$iR4JBsSg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156905488L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCanExecuteMethodName_id6LlKjXrMerG, getSuffix_idO$iR4JBsSb, getGeneratedClassName_idO$iR4JBsSg);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCanExecuteMethodName_id6LlKjXrMerG, getSuffix_idO$iR4JBsSb, getGeneratedClassName_idO$iR4JBsSg);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.canRun$gS0N, true);

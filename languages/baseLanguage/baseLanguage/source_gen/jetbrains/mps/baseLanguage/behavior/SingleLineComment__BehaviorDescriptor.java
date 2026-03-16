@@ -40,7 +40,7 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.line$9eiT, null);

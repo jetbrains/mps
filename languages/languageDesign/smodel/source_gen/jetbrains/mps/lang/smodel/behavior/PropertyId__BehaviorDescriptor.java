@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,10 +34,8 @@ public final class PropertyId__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> setProperty_id5ZE7FBYZ2jW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349167868L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SProperty.class, ""));
   public static final SMethod<Long> getIdValue_id5ZE7FBZ0xVG = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349559532L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id5ZE7FBYYOoO, setProperty_id5e7X3XCIM6B, setProperty_id5ZE7FBYZ2jW, getIdValue_id5ZE7FBZ0xVG);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id5ZE7FBYYOoO, setProperty_id5e7X3XCIM6B, setProperty_id5ZE7FBYZ2jW, getIdValue_id5ZE7FBZ0xVG);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SProperty getProperty_id5ZE7FBYYOoO(@NotNull SNode __thisNode__) {
     SAbstractConcept pc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$YQHW));
@@ -72,10 +69,6 @@ public final class PropertyId__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ PropertyId__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

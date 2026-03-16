@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -34,10 +33,8 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getAnalyzerName_id9V7Nft_oXY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAnalyzerName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(178770917832626046L).languageId(0x8150573d9fd03868L, 0x97a52717898f4598L).build2();
   public static final SMethod<List<SNode>> getRules_id3_iNRJnrAhj = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getRules").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4130591939054429267L).languageId(0x8150573d9fd03868L, 0x97a52717898f4598L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAnalyzerRunnerName_id9V7Nft_oXD, getAnalyzerRunnerFqName_id9V7Nft_vlj, getAnalyzerName_id9V7Nft_oXY, getRules_id3_iNRJnrAhj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAnalyzerRunnerName_id9V7Nft_oXD, getAnalyzerRunnerFqName_id9V7Nft_vlj, getAnalyzerName_id9V7Nft_oXY, getRules_id3_iNRJnrAhj);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getAnalyzerRunnerName_id9V7Nft_oXD(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "AnalyzerRunner";
@@ -65,10 +62,6 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Analyzer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

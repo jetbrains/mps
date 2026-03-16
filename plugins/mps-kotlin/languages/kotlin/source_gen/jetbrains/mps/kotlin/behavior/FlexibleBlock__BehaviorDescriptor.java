@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,10 +28,8 @@ public final class FlexibleBlock__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isOneLiner_idCy8Bus23OC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLiner").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986701679912L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLiner_idCy8Bus23OC);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLiner_idCy8Bus23OC);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isOneLiner_idCy8Bus23OC(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.forceMultiLine$d9kx)) {
@@ -53,10 +50,6 @@ public final class FlexibleBlock__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ FlexibleBlock__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

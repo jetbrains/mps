@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -40,10 +39,8 @@ public final class BaseIntentionDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<Boolean> requiresAllFieldMembersPrivate_id441vB8LNFML = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllFieldMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116369030321L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
   public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5rGvd38DcHL, getConceptName_id5rGvd38DcHW, getGeneratedId_id2ytFvC$HDcE, getDescendantToCheck_id4cWf37B8oXJ, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5rGvd38DcHL, getConceptName_id5rGvd38DcHW, getGeneratedId_id2ytFvC$HDcE, getDescendantToCheck_id4cWf37B8oXJ, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGeneratedName_id5rGvd38DcHL(@NotNull SNode __thisNode__) {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) + "_Intention";
@@ -86,10 +83,6 @@ public final class BaseIntentionDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ BaseIntentionDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

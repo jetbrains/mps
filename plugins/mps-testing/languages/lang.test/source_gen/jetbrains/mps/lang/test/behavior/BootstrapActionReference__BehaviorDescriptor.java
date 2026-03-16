@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,10 +23,8 @@ public final class BootstrapActionReference__BehaviorDescriptor extends BaseBHDe
 
   public static final SMethod<String> getActionId_idX8Ly3typOa = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1101347953350122762L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionId_idX8Ly3typOa);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionId_idX8Ly3typOa);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getActionId_idX8Ly3typOa(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.actionId$LsCZ);
@@ -36,10 +33,6 @@ public final class BootstrapActionReference__BehaviorDescriptor extends BaseBHDe
   /*package*/ BootstrapActionReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

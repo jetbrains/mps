@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class IEditorContextAccessQualifier__BehaviorDescriptor extends Bas
 
   public static final SMethod<Boolean> useDefaultAccessor_id1PvcgmUaKhn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useDefaultAccessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2116464250555401303L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useDefaultAccessor_id1PvcgmUaKhn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useDefaultAccessor_id1PvcgmUaKhn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean useDefaultAccessor_id1PvcgmUaKhn(@NotNull SNode __thisNode__) {
     return true;
@@ -34,10 +31,6 @@ public final class IEditorContextAccessQualifier__BehaviorDescriptor extends Bas
   /*package*/ IEditorContextAccessQualifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

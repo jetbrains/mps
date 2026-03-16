@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class IStatisticsTarget__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7490254719527247609L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<Tuples._2<String, Integer>> getStat_id6vMIJHUBlVT(@NotNull SNode __thisNode__, ConsoleContext context) {
     return null;
@@ -36,10 +33,6 @@ public final class IStatisticsTarget__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ IStatisticsTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

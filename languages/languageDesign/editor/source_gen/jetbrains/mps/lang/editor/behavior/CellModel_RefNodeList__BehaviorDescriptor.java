@@ -22,7 +22,6 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,10 +39,8 @@ public final class CellModel_RefNodeList__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<String> getRoleForCell_idhGPLstu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRoleForCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216377898846L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getFeatureForCell_id4YnqLFjkxyn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFeatureForCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5735170413438310551L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getDefaultCellId_id3VYF6qfIQs_, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getDefaultCellId_id3VYF6qfIQs_, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$KA) && child != null && child == SLinkOperations.getTarget(__thisNode__, LINKS.emptyCellModel$ZSa$)) {
@@ -90,10 +87,6 @@ public final class CellModel_RefNodeList__BehaviorDescriptor extends BaseBHDescr
   /*package*/ CellModel_RefNodeList__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

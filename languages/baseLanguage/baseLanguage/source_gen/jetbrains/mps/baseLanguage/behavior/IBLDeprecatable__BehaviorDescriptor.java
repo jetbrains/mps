@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.javadoc.behavior.BaseDocComment__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,10 +42,8 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957674666L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225207468592L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, hasDeprecatedAnnotation_id7UfLy9aMQ9M, hasDeprecatedBlockDocTag_id3yvWaPI09DC, shouldDeprecatedDocBeVisible_id7gdCoemJ2WL, markDeprecated_id6Va_BJexupi, removeDeprecationFromDoc_id63oBH1IM79r, unmarkDeprecated_id6Va_BJex$aE, getMessage_idhP43_8K);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, hasDeprecatedAnnotation_id7UfLy9aMQ9M, hasDeprecatedBlockDocTag_id3yvWaPI09DC, shouldDeprecatedDocBeVisible_id7gdCoemJ2WL, markDeprecated_id6Va_BJexupi, removeDeprecationFromDoc_id63oBH1IM79r, unmarkDeprecated_id6Va_BJex$aE, getMessage_idhP43_8K);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isDeprecated_idhOwoPtR(@NotNull SNode __thisNode__) {
     return ((boolean) IBLDeprecatable__BehaviorDescriptor.hasDeprecatedAnnotation_id7UfLy9aMQ9M.invokeSpecial(__thisNode__));
@@ -100,10 +97,6 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ IBLDeprecatable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

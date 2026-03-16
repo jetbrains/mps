@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,10 +25,8 @@ public final class RefactorOperation__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7006261637493125297L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
   public static final SMethod<Iterable<String>> getClosureParameterNames_id4vR6YDfUMx0 = new SMethodBuilder<Iterable<String>>(new SJavaCompoundTypeImpl((Class<Iterable<String>>) ((Class) Object.class))).name("getClosureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5185644189117524032L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getShortHelp_idqgIopNa9Hb, getHelpPage_id64VftqEen2L, getClosureParameterNames_id4vR6YDfUMx0);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getShortHelp_idqgIopNa9Hb, getHelpPage_id64VftqEen2L, getClosureParameterNames_id4vR6YDfUMx0);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getShortHelp_idqgIopNa9Hb(@NotNull SAbstractConcept __thisConcept__) {
     return "apply a function to manually selected nodes";
@@ -44,10 +41,6 @@ public final class RefactorOperation__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ RefactorOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

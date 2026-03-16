@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class IA__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> foo_id6y7bjZdM7v8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7532038653859100616L).languageId(0x84b9ce94c2202df5L, 0x2b679aa1c9e84a47L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6y7bjZdM7v8);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6y7bjZdM7v8);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String foo_id6y7bjZdM7v8(@NotNull SNode __thisNode__) {
     return "IA";
@@ -34,10 +31,6 @@ public final class IA__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IA__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

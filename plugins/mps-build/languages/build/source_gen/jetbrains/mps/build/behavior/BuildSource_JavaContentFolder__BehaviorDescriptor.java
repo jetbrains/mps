@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,10 +28,8 @@ public final class BuildSource_JavaContentFolder__BehaviorDescriptor extends Bas
 
   public static final SMethod<String> getAntPath_id24CrdeMZy0h = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2389279258816946193L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAntPath_id24CrdeMZy0h);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAntPath_id24CrdeMZy0h);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getAntPath_id24CrdeMZy0h(@NotNull SNode __thisNode__, Context context) {
     return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildSource_JavaContentRoot$q4), LINKS.basePath$98j3), context) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.relativePath$fLZ3);
@@ -41,10 +38,6 @@ public final class BuildSource_JavaContentFolder__BehaviorDescriptor extends Bas
   /*package*/ BuildSource_JavaContentFolder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

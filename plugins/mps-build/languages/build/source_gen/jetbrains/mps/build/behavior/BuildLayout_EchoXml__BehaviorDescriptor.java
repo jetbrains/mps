@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -28,10 +27,8 @@ public final class BuildLayout_EchoXml__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9184644532456897464L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
   public static final SMethod<String> getOutputPath_WithMacro_id41K1b4v58vm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4643216374596143062L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getOutputPath_WithMacro_id41K1b4v58vm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getOutputPath_WithMacro_id41K1b4v58vm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
     return !(propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\"));
@@ -47,10 +44,6 @@ public final class BuildLayout_EchoXml__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ BuildLayout_EchoXml__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class ISubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresAllMethodMembersPrivate_id441vB8LJxAr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean requiresAllMethodMembersPrivate_id441vB8LJxAr(@NotNull SNode __thisNode__) {
     return true;
@@ -34,10 +31,6 @@ public final class ISubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ISubstituteMenu__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -29,7 +29,6 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -47,10 +46,8 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
   public static final SMethod<Iterable<SNode>> getDataKeys_id1BC2tkUXZ6F = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getDataKeys").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1866752856967082411L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isCommonDataKeysDescendant_id2KcpybedV57 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCommonDataKeysDescendant").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3174024137064034631L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id112RIkggjzD, getFieldDeclaration_id112RIkgil0h, getOperationSConcept_id6ALWH9g2mqE, getDescription_id2DsqYJxu5P, getDataKeys_id1BC2tkUXZ6F, isCommonDataKeysDescendant_id2KcpybedV57);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id112RIkggjzD, getFieldDeclaration_id112RIkgil0h, getOperationSConcept_id6ALWH9g2mqE, getDescription_id2DsqYJxu5P, getDataKeys_id1BC2tkUXZ6F, isCommonDataKeysDescendant_id2KcpybedV57);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getType_id112RIkggjzD(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.key$K5Gi), LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).first();
@@ -114,10 +111,6 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
   /*package*/ ActionDataParameterDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

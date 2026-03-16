@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -24,10 +23,8 @@ public final class IInferencePart__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> inferenceRoot_id463y4lqnr1l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("inferenceRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4720766665864622165L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inferenceRoot_id463y4lqnr1l);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inferenceRoot_id463y4lqnr1l);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode inferenceRoot_id463y4lqnr1l(@NotNull SNode __thisNode__) {
     {
@@ -42,10 +39,6 @@ public final class IInferencePart__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IInferencePart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

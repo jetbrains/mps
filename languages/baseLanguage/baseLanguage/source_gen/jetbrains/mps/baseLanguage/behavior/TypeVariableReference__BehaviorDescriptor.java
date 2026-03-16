@@ -25,7 +25,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.SNodeMatcher;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -47,10 +46,8 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Boolean> isSupersetOf_id7PgshREdQKp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSupersetOf").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9029841626175335449L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<SNode> doResolve_id3QovYE_nFjT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("doResolve").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4438438078547145977L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getLooseType_id4YTQtEKnnzf, collectGenericSubstitutions_id3zZky3wF74h, expandGenerics_id3$PgO9fYTB5, isSupersetOf_id7PgshREdQKp, doResolve_id3QovYE_nFjT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getLooseType_id4YTQtEKnnzf, collectGenericSubstitutions_id3zZky3wF74h, expandGenerics_id3$PgO9fYTB5, isSupersetOf_id7PgshREdQKp, doResolve_id3QovYE_nFjT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     SNode decl = SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I);
@@ -150,10 +147,6 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   /*package*/ TypeVariableReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

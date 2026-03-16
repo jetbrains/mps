@@ -26,7 +26,7 @@ public final class BooleanStyleSheetItem__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Boolean> useQuery_idhNn$rq2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useQuery").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1223387362946L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<StyleAttribute<Boolean>> getStyleAttribute_id3a0zHG4tjdX = new SMethodBuilder<StyleAttribute<Boolean>>(new SJavaCompoundTypeImpl(StyleAttribute.class)).name("getStyleAttribute").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3639065570239132541L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useQuery_idhNn$rq2, getStyleAttribute_id3a0zHG4tjdX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useQuery_idhNn$rq2, getStyleAttribute_id3a0zHG4tjdX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     StyleAttribute<Boolean> sa = BooleanStyleSheetItem__BehaviorDescriptor.getStyleAttribute_id3a0zHG4tjdX.invoke(__thisNode__);

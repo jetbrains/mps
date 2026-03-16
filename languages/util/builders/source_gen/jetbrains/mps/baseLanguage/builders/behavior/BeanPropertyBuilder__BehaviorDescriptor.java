@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -34,10 +33,8 @@ public final class BeanPropertyBuilder__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Boolean> leaf_id1653mnvAgw2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("leaf").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498370L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
   public static final SMethod<String> getPropertyName_id2kIZjjSEvS7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPropertyName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2679357232284040711L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResultType_id67LR$5LQPoF, getCreatorExpression_id67LR$5LQRIR, getAttachStatementChild_id4ak9ytIaIgr, leaf_id1653mnvAgw2, getPropertyName_id2kIZjjSEvS7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResultType_id67LR$5LQPoF, getCreatorExpression_id67LR$5LQRIR, getAttachStatementChild_id4ak9ytIaIgr, leaf_id1653mnvAgw2, getPropertyName_id2kIZjjSEvS7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getResultType_id67LR$5LQPoF(@NotNull SNode __thisNode__) {
     return (SNode) Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.setter$dxsb), LINKS.parameter$5xBj)).first(), LINKS.type$a1UY));
@@ -69,10 +66,6 @@ public final class BeanPropertyBuilder__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ BeanPropertyBuilder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

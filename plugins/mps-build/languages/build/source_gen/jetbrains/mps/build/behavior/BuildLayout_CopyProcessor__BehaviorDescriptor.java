@@ -21,7 +21,6 @@ import jetbrains.mps.build.util.GenerationUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,10 +36,8 @@ public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHD
   /*package*/ static final SMethod<String> representativeName_id19QsrPvAva7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representativeName").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1330375798101242503L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<String> filesetName_id19QsrPvClqt = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("filesetName").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1330375798101726877L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTaskName_id19QsrPtc4wK, getTaskArguments_id6R_3WZ31H2E, getTempFolder_id19QsrPvjYS$, representativeName_id19QsrPvAva7, filesetName_id19QsrPvClqt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTaskName_id19QsrPtc4wK, getTaskArguments_id6R_3WZ31H2E, getTempFolder_id19QsrPvjYS$, representativeName_id19QsrPvAva7, filesetName_id19QsrPvClqt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getTempFolder_id19QsrPvjYS$(@NotNull SNode __thisNode__, TemplateQueryContext genContext) {
     SNode project = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildProject$ae, false, false);
@@ -93,10 +90,6 @@ public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHD
   /*package*/ BuildLayout_CopyProcessor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

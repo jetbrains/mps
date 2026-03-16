@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -29,10 +28,8 @@ public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SEnumerationLiteral> getVarianceAfterSubstitution_id27wMicCGKaq = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getVarianceAfterSubstitution").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878667418L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteType_id27wMicCGGe5, getVarianceAfterSubstitution_id27wMicCGKaq, getPresentation_idhEwIMiw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteType_id27wMicCGGe5, getVarianceAfterSubstitution_id27wMicCGKaq, getPresentation_idhEwIMiw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode substituteType_id27wMicCGGe5(@NotNull SNode __thisNode__, SEnumerationLiteral variance, TypeParameterDeclaration parameter) {
     if (SEnumOperations.isMember(variance, 0x21e0c923289a218aL)) {
@@ -65,10 +62,6 @@ public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ StarProjection__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

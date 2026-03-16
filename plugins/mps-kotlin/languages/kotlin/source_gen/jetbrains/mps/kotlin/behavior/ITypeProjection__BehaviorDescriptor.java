@@ -15,7 +15,6 @@ import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class ITypeProjection__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SNode> substituteType_id27wMicCGGe5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("substituteType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878651269L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(TypeParameterDeclaration.class, ""));
   public static final SMethod<SEnumerationLiteral> getVarianceAfterSubstitution_id27wMicCGKaq = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getVarianceAfterSubstitution").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878667418L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteType_id27wMicCGGe5, getVarianceAfterSubstitution_id27wMicCGKaq);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteType_id27wMicCGGe5, getVarianceAfterSubstitution_id27wMicCGKaq);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @NotNull
   /*package*/ static SEnumerationLiteral getVarianceAfterSubstitution_id27wMicCGKaq(@NotNull SNode __thisNode__, @NotNull SEnumerationLiteral input) {
@@ -38,10 +35,6 @@ public final class ITypeProjection__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ITypeProjection__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

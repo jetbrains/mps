@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,10 +24,8 @@ public final class BuildMps_AbstractModule__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Boolean> isCompact_id7gAtt1ju6Jy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompact").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8369506495128693730L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   public static final SMethod<String> getModuleReference_id41K1b4v5ZCB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4643216374596368935L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompact_id7gAtt1ju6Jy, getModuleReference_id41K1b4v5ZCB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompact_id7gAtt1ju6Jy, getModuleReference_id41K1b4v5ZCB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isCompact_id7gAtt1ju6Jy(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.compact$3xo1);
@@ -40,10 +37,6 @@ public final class BuildMps_AbstractModule__BehaviorDescriptor extends BaseBHDes
   /*package*/ BuildMps_AbstractModule__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

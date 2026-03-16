@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class CellMenuPart_ReferentPrimary__BehaviorDescriptor extends Base
   public static final SMethod<SNode> getMatchingTextFunction_id6K3nYZvn7p1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMatchingTextFunction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7783170064875550273L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getVisibleMatchingTextFunction_id5KYS0pi3wd5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVisibleMatchingTextFunction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6646996417796506437L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMatchingTextFunction_id6K3nYZvn7p1, getVisibleMatchingTextFunction_id5KYS0pi3wd5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMatchingTextFunction_id6K3nYZvn7p1, getVisibleMatchingTextFunction_id5KYS0pi3wd5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getMatchingTextFunction_id6K3nYZvn7p1(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.matchingText$I7Ho) != null)) {
@@ -52,10 +49,6 @@ public final class CellMenuPart_ReferentPrimary__BehaviorDescriptor extends Base
   /*package*/ CellMenuPart_ReferentPrimary__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

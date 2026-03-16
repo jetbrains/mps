@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -34,10 +33,8 @@ public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canOperationBeChild_id3YYagzpL_8S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canOperationBeChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4593153787954614840L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SAbstractConcept>> getOperationSConcept_id6ALWH9g2mqE = new SMethodBuilder<List<SAbstractConcept>>(new SJavaCompoundTypeImpl((Class<List<SAbstractConcept>>) ((Class) Object.class))).name("getOperationSConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429960066730L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisiblity_idhEwIBC5, getOperationSConcept_id6ALWH9g2jU8, createOperation_idhEwIBCC, getContainer_idhEwIBCW, canOperationBeChild_id3YYagzpL_8S, getOperationSConcept_id6ALWH9g2mqE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisiblity_idhEwIBC5, getOperationSConcept_id6ALWH9g2jU8, createOperation_idhEwIBCC, getContainer_idhEwIBCW, canOperationBeChild_id3YYagzpL_8S, getOperationSConcept_id6ALWH9g2mqE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getVisiblity_idhEwIBC5(@NotNull SNode __thisNode__) {
     return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"));
@@ -67,10 +64,6 @@ public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMember__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

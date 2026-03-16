@@ -26,7 +26,7 @@ public final class C7__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> foo_id2k7p7sTv$MS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772536L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
   public static final SMethod<Void> foo_id2k7p7sTv$Mh = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772497L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(bar_id2k7p7sTvyr6, foo_id2k7p7sTv$MS, foo_id2k7p7sTv$Mh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(bar_id2k7p7sTvyr6, foo_id2k7p7sTv$MS, foo_id2k7p7sTv$Mh);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     C6__BehaviorDescriptor.foo_id2eC$PxWCr8m.invokeSpecial(__thisNode__);

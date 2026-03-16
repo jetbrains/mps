@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -27,10 +26,8 @@ public final class BuildMps_TestModuleGroup__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<Boolean> contains_id3X9rC2XzJi8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("contains").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4560297596904469640L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> getModules_id3X9rC2XzJij = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4560297596904469651L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(contains_id3X9rC2XzJi8, getModules_id3X9rC2XzJij);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(contains_id3X9rC2XzJi8, getModules_id3X9rC2XzJij);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean contains_id3X9rC2XzJi8(@NotNull SNode __thisNode__, SNode module) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$V1Bj), LINKS.modules$JlQo)).contains(module);
@@ -42,10 +39,6 @@ public final class BuildMps_TestModuleGroup__BehaviorDescriptor extends BaseBHDe
   /*package*/ BuildMps_TestModuleGroup__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

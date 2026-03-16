@@ -27,7 +27,7 @@ public final class IIncompleteParen__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Void> decreaseCount_idVufYxgmFtR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("decreaseCount").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1071364028373841783L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isSingleParen_idVufYxgmHsD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingleParen").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1071364028373849897L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(increaseCount_idVufYxgmE1y, decreaseCount_idVufYxgmFtR, isSingleParen_idVufYxgmHsD);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(increaseCount_idVufYxgmE1y, decreaseCount_idVufYxgmFtR, isSingleParen_idVufYxgmHsD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.count$FDpi, 1);

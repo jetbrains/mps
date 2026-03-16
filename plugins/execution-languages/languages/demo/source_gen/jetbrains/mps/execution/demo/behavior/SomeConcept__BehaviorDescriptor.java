@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,10 +23,8 @@ public final class SomeConcept__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isNodeRunnable_id431DWIovi3C = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNodeRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4666195181811081448L).languageId(0x8a9b2006b3a94898L, 0x4caf0310491e41f5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isNodeRunnable_id431DWIovi3C);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isNodeRunnable_id431DWIovi3C);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isNodeRunnable_id431DWIovi3C(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.valid$x_$w);
@@ -36,10 +33,6 @@ public final class SomeConcept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ SomeConcept__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

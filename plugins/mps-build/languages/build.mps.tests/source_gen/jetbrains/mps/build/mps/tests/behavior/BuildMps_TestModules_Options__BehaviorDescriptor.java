@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class BuildMps_TestModules_Options__BehaviorDescriptor extends Base
 
   public static final SMethod<Boolean> isBooleanOptionValueOk_id51DD0tdKxuK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBooleanOptionValueOk").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5794342746865145776L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isBooleanOptionValueOk_id51DD0tdKxuK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isBooleanOptionValueOk_id51DD0tdKxuK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isBooleanOptionValueOk_id51DD0tdKxuK(@NotNull SNode __thisNode__, String approxPresentation) {
     // FIXME: use RE or more sophisticated value parser
@@ -43,10 +40,6 @@ public final class BuildMps_TestModules_Options__BehaviorDescriptor extends Base
   /*package*/ BuildMps_TestModules_Options__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -26,10 +25,8 @@ public final class DefaultGeneratorParameter__BehaviorDescriptor extends BaseBHD
 
   public static final SMethod<String> getUniqueId_id$79JWCe2bn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUniqueId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(650531548511609559L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUniqueId_id$79JWCe2bn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUniqueId_id$79JWCe2bn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getUniqueId_id$79JWCe2bn(@NotNull SNode __thisNode__) {
     String containerName = ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$Kd) ? SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) : "default");
@@ -39,10 +36,6 @@ public final class DefaultGeneratorParameter__BehaviorDescriptor extends BaseBHD
   /*package*/ DefaultGeneratorParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

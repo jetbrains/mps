@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -26,10 +25,8 @@ public final class InstructionReference__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<String> getPresentation_id7wwiZxTDPva = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8656002014371076042L).languageId(0x8150573d9fd03868L, 0x97a52717898f4598L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_id7wwiZxTDPva);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_id7wwiZxTDPva);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_id7wwiZxTDPva(@NotNull SNode __thisNode__) {
     String result = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.instruction$dfha), PROPS.name$MnvL);
@@ -39,10 +36,6 @@ public final class InstructionReference__BehaviorDescriptor extends BaseBHDescri
   /*package*/ InstructionReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class Bar__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Void> bar_id2lc36UC2R3m = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("bar").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2687536747038601430L).languageId(0xa0c1d2291fbb28b7L, 0x81f0abb8d71e4d13L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(bar_id2lc36UC2R3m);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(bar_id2lc36UC2R3m);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void bar_id2lc36UC2R3m(@NotNull SNode __thisNode__) {
   }
@@ -33,10 +30,6 @@ public final class Bar__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Bar__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

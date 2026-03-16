@@ -28,7 +28,7 @@ public final class ConceptEditorHintDeclaration__BehaviorDescriptor extends Base
   public static final SMethod<SNode> getHintsContainer_id59ZEGVRaGvE = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHintsContainer").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5944657839039105002L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<String> getQualifiedName_id59ZEGVRaGvv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getQualifiedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5944657839039104991L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getHintsContainer_id59ZEGVRaGvE, getQualifiedName_id59ZEGVRaGvv);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getHintsContainer_id59ZEGVRaGvE, getQualifiedName_id59ZEGVRaGvv);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.showInUI$ffg3, true);

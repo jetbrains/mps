@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,19 +22,13 @@ public final class AbstractClassifierSpecification__BehaviorDescriptor extends B
   public static final SMethod<String> getClassifierFqName_id4HFrnGErDob = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassifierFqName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751112930827L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
   public static final SMethod<String> getSModelReference_id4HFrnGEt_VQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSModelReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751113441014L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifierFqName_id4HFrnGErDob, getSModelReference_id4HFrnGEt_VQ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifierFqName_id4HFrnGErDob, getSModelReference_id4HFrnGEt_VQ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ AbstractClassifierSpecification__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -17,7 +17,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class InvokeFunctionOperation__BehaviorDescriptor extends BaseBHDes
 
   public static final SMethod<List<SNode>> getParameters_idnfIF2FKNkP = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(418758558327452981L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_idnfIF2FKNkP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_idnfIF2FKNkP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getParameters_idnfIF2FKNkP(@NotNull SNode __thisNode__) {
     SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR));
@@ -44,10 +41,6 @@ public final class InvokeFunctionOperation__BehaviorDescriptor extends BaseBHDes
   /*package*/ InvokeFunctionOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

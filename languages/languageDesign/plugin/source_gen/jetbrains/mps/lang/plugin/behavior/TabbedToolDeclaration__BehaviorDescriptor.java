@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -27,10 +26,8 @@ public final class TabbedToolDeclaration__BehaviorDescriptor extends BaseBHDescr
 
   public static final SMethod<SNode> createSuperType_idhHOGPWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createSuperType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217433657148L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createSuperType_idhHOGPWW);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createSuperType_idhHOGPWW);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createSuperType_idhHOGPWW(@NotNull SNode __thisNode__) {
     return createClassifierType_se925p_a0a0();
@@ -39,10 +36,6 @@ public final class TabbedToolDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ TabbedToolDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -17,7 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class BuildLayout_Node__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> isFile_id1bWeed$oPZ2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFile").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106753986L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<Void> appendName_internal_id1bWeed$oEMe = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendName_internal").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1368030936106708110L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, exports_id5FtnUVJQES1, location_id6b4RkXS8sT2, appendName_id1bWeed$ownT, getPresentation_idhEwIMiw, isFolder_id1bWeed$oPYW, isFile_id1bWeed$oPZ2, appendName_internal_id1bWeed$oEMe);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, exports_id5FtnUVJQES1, location_id6b4RkXS8sT2, appendName_id1bWeed$ownT, getPresentation_idhEwIMiw, isFolder_id1bWeed$oPYW, isFile_id1bWeed$oPZ2, appendName_internal_id1bWeed$oEMe);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     // nop
@@ -77,10 +74,6 @@ public final class BuildLayout_Node__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ BuildLayout_Node__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

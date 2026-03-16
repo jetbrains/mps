@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,10 +28,8 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<SNode> getSourceLanguage_id7YI57w6ZMdZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSourceLanguage").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9200313594510517119L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   public static final SMethod<Boolean> isManagedBy_idtxX2LHveIs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isManagedBy").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(531974702659070876L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSourceLanguage_id7YI57w6ZMdZ, isManagedBy_idtxX2LHveIs);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSourceLanguage_id7YI57w6ZMdZ, isManagedBy_idtxX2LHveIs);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getSourceLanguage_id7YI57w6ZMdZ(@NotNull SNode __thisNode__) {
     return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$RA) ? SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$RA) : SLinkOperations.getTarget(__thisNode__, LINKS.sourceLanguage$A51U));
@@ -49,10 +46,6 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
   /*package*/ BuildMps_Generator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -48,10 +47,8 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> usesParameterObject_id1653mnvAgq0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497984L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> showName_id1653mnvAgry = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showName").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498082L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(usesParameterObjectFor_idhEwIGRw, getExpectedReturnType_idhEwIGRD, supportsCheckedExceptions_id7orZYjMoFMH, getThrowableTypes_id5op8ooRkkc7, isImplementation_id19gBtYEvixA, getExpectedRetType_idi2fhBNC, getBody_idi2fhZ_m, getParameterConcepts_id2xELmDxyi2v, isReturnOnly_id3fUxpI1uWGM, getName_idhGVcmek, getHeader_id2v69eKc6GlE, getHeaderForAliasedEditor_id2v69eKc6I0x, appendHeader_id2v69eKc6I52, getScope_id52_Geb4QDV$, usesParameterObject_id1653mnvAgq0, showName_id1653mnvAgry);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(usesParameterObjectFor_idhEwIGRw, getExpectedReturnType_idhEwIGRD, supportsCheckedExceptions_id7orZYjMoFMH, getThrowableTypes_id5op8ooRkkc7, isImplementation_id19gBtYEvixA, getExpectedRetType_idi2fhBNC, getBody_idi2fhZ_m, getParameterConcepts_id2xELmDxyi2v, isReturnOnly_id3fUxpI1uWGM, getName_idhGVcmek, getHeader_id2v69eKc6GlE, getHeaderForAliasedEditor_id2v69eKc6I0x, appendHeader_id2v69eKc6I52, getScope_id52_Geb4QDV$, usesParameterObject_id1653mnvAgq0, showName_id1653mnvAgry);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean usesParameterObjectFor_idhEwIGRw(@NotNull SNode __thisNode__, SNode parameter) {
     return (boolean) ConceptFunction__BehaviorDescriptor.usesParameterObject_id1653mnvAgq0.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
@@ -158,10 +155,6 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ConceptFunction__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

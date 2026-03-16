@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -38,10 +37,8 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<SNode> getReturnType_id3m06Jgso0l8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3855110916779541832L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
   public static final SMethod<Iterable<SNode>> find_id2gzehMfi1$l = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("find").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2603987804376013077L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, getReturnType_id3m06Jgso0l8, find_id2gzehMfi1$l);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, getReturnType_id3m06Jgso0l8, find_id2gzehMfi1$l);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
     final SNode method = SNodeFactoryOperations.createNewNode(futureModel, CONCEPTS.MethodInstance$jE, null);
@@ -69,10 +66,6 @@ public final class MethodDescriptor__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ MethodDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

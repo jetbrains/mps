@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,10 +26,8 @@ public final class Square__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> drawShape_idW6XMzE_hbz = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("drawShape").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1082824515535573731L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2(SMethodBuilder.createJavaParameter(Graphics.class, ""));
   public static final SMethod<Void> drawShapeAt_id3u6SZi0POQS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("drawShapeAt").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958238383544L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2(SMethodBuilder.createJavaParameter(Graphics.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(drawShape_idW6XMzE_hbz, drawShapeAt_id3u6SZi0POQS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(drawShape_idW6XMzE_hbz, drawShapeAt_id3u6SZi0POQS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void drawShape_idW6XMzE_hbz(@NotNull SNode __thisNode__, Graphics graphics) {
     Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invokeSuper(__thisNode__, CONCEPTS.Square$jR, graphics);
@@ -44,10 +41,6 @@ public final class Square__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Square__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

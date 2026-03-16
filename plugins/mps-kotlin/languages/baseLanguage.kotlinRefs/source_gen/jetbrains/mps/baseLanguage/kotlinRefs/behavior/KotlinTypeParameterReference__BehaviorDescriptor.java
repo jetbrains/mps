@@ -26,7 +26,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import jetbrains.mps.smodel.SNodeMatcher;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -45,10 +44,8 @@ public final class KotlinTypeParameterReference__BehaviorDescriptor extends Base
   public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4107091686347010321L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
   public static final SMethod<SNode> expandGenerics_id3$PgO9fYTB5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenerics").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4122274986016348613L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConvertedBoundType_id4L0QGs2qXZf, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getLooseType_id4YTQtEKnnzf, collectGenericSubstitutions_id3zZky3wF74h, expandGenerics_id3$PgO9fYTB5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConvertedBoundType_id4L0QGs2qXZf, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getLooseType_id4YTQtEKnnzf, collectGenericSubstitutions_id3zZky3wF74h, expandGenerics_id3$PgO9fYTB5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getConvertedBoundType_id4L0QGs2qXZf(@NotNull SNode __thisNode__) {
     return KtToJavaConversion.convert(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeParameter$U125), LINKS.bound$KhhI));
@@ -110,10 +107,6 @@ public final class KotlinTypeParameterReference__BehaviorDescriptor extends Base
   /*package*/ KotlinTypeParameterReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

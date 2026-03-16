@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -33,10 +32,8 @@ public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<Boolean> isSimple_id5pE1_aqYZtD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimple").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6226796386650421097L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
   public static final SMethod<SNode> getCommand_id5pE1_aqZ2LK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCommand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6226796386650434672L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDebuggable_idoym_8btfV8, canBeSimple_id5pE1_aqYssM, isSimple_id5pE1_aqYZtD, getCommand_id5pE1_aqZ2LK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDebuggable_idoym_8btfV8, canBeSimple_id5pE1_aqYssM, isSimple_id5pE1_aqYZtD, getCommand_id5pE1_aqZ2LK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isDebuggable_idoym_8btfV8(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.debuggerConfiguration$vTxu) != null) || (((boolean) RunConfigurationExecutor__BehaviorDescriptor.isSimple_id5pE1_aqYZtD.invoke(__thisNode__)) && SPropertyOperations.getBoolean(__thisNode__, PROPS.canDebug$cxkv));
@@ -64,10 +61,6 @@ public final class RunConfigurationExecutor__BehaviorDescriptor extends BaseBHDe
   /*package*/ RunConfigurationExecutor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

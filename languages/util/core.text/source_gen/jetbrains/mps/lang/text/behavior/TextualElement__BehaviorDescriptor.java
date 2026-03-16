@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,10 +30,8 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> findPreviousWordStart_id3VJiP1sDlYQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findPreviousWordStart").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4534926158309187510L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<SNode> findNextWordEnd_id3VJiP1sDz5g = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findNextWordEnd").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4534926158309241168L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9, findPreviousWordStart_id3VJiP1sDlYQ, findNextWordEnd_id3VJiP1sDz5g);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9, findPreviousWordStart_id3VJiP1sDlYQ, findNextWordEnd_id3VJiP1sDz5g);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode findPreviousWordStart_id3VJiP1sDlYQ(@NotNull SNode __thisNode__) {
     SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ")).last();
@@ -59,10 +56,6 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TextualElement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

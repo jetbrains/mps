@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,10 +25,8 @@ public final class CellModel_Constant__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<Boolean> shellBeSynchronized_id3TPTV99_TMT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4500758155551546553L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Boolean> canBeUsedAsEmptyCell_id6RO52Mcgrfa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeUsedAsEmptyCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7922979826015777738L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultFontStyle_idhL_r0Mx, canBeSynchronized_id3wXm3h1AYM7, shellBeSynchronized_id3TPTV99_TMT, canBeUsedAsEmptyCell_id6RO52Mcgrfa);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultFontStyle_idhL_r0Mx, canBeSynchronized_id3wXm3h1AYM7, shellBeSynchronized_id3TPTV99_TMT, canBeUsedAsEmptyCell_id6RO52Mcgrfa);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int getDefaultFontStyle_idhL_r0Mx(@NotNull SNode __thisNode__) {
     return EditorCell_Constant.DEFAULT_FONT_STYLE;
@@ -47,10 +44,6 @@ public final class CellModel_Constant__BehaviorDescriptor extends BaseBHDescript
   /*package*/ CellModel_Constant__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

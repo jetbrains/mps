@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,19 +21,13 @@ public final class IGeneratorParameter__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<String> getUniqueId_id$79JWCe2bn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUniqueId").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(650531548511609559L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUniqueId_id$79JWCe2bn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUniqueId_id$79JWCe2bn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ IGeneratorParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

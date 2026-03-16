@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class BuildLayout_War__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<String> getExpectedExtension_id62K_yvYRytT = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6967233722066020217L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedExtension_id62K_yvYRytT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedExtension_id62K_yvYRytT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getExpectedExtension_id62K_yvYRytT(@NotNull SNode __thisNode__) {
     return ".war";
@@ -34,10 +31,6 @@ public final class BuildLayout_War__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildLayout_War__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

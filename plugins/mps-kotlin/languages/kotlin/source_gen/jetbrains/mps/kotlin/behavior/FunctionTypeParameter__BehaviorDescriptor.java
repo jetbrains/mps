@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -26,10 +25,8 @@ public final class FunctionTypeParameter__BehaviorDescriptor extends BaseBHDescr
 
   public static final SMethod<String> toString_id4nn3FPm0wCn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964400663L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toString_id4nn3FPm0wCn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toString_id4nn3FPm0wCn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String toString_id4nn3FPm0wCn(@NotNull SNode __thisNode__, boolean erased) {
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
@@ -42,10 +39,6 @@ public final class FunctionTypeParameter__BehaviorDescriptor extends BaseBHDescr
   /*package*/ FunctionTypeParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

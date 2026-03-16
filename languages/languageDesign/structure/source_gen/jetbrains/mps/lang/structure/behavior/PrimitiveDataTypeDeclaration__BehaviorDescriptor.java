@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.Primitives;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -29,10 +28,8 @@ public final class PrimitiveDataTypeDeclaration__BehaviorDescriptor extends Base
   public static final SMethod<Boolean> isInteger_idhKtFYCF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268780075L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<Boolean> isBoolean_idhKtG1tp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268791641L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toBaseLanguageType_idhEwI9ym, isString_idhKtFRO6, isInteger_idhKtFYCF, isBoolean_idhKtG1tp);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toBaseLanguageType_idhEwI9ym, isString_idhKtFRO6, isInteger_idhKtFYCF, isBoolean_idhKtG1tp);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode toBaseLanguageType_idhEwI9ym(@NotNull SNode __thisNode__) {
     if (Primitives.INTEGER_TYPE.equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
@@ -56,10 +53,6 @@ public final class PrimitiveDataTypeDeclaration__BehaviorDescriptor extends Base
   /*package*/ PrimitiveDataTypeDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

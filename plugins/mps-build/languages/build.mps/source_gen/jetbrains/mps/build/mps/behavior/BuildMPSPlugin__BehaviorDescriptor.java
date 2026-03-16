@@ -30,7 +30,6 @@ import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.build.mps.util.MPSModulesPartitioner;
 import jetbrains.mps.build.mps.util.ModulePlugins;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -47,10 +46,8 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<Void> addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addPluginsRequiredForGenerationToDepBuilder").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(106891382229871058L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
   /*package*/ static final SMethod<Boolean> areLocatedInTheSameRoot_id5eGY5T7x8$N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("areLocatedInTheSameRoot").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(6029467084952734003L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLayoutScope_id13YBgBBRSOA, fetchDependencies_id57YmpYyL8F1, getProjectStructureScope_id3fifI_xCJOQ, fetchGenerationDeps_id3WZD5LHqDLU, addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi, areLocatedInTheSameRoot_id5eGY5T7x8$N);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLayoutScope_id13YBgBBRSOA, fetchDependencies_id57YmpYyL8F1, getProjectStructureScope_id3fifI_xCJOQ, fetchGenerationDeps_id3WZD5LHqDLU, addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi, areLocatedInTheSameRoot_id5eGY5T7x8$N);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$po)) {
@@ -143,10 +140,6 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BuildMPSPlugin__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

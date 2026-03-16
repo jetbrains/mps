@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class AbstractTextGenDeclaration__BehaviorDescriptor extends BaseBH
 
   public static final SMethod<List<SNode>> getAvailableOperations_idhXYHpEa = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAvailableOperations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781444746L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableOperations_idhXYHpEa);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableOperations_idhXYHpEa);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getAvailableOperations_idhXYHpEa(@NotNull SNode __thisNode__) {
     return null;
@@ -34,10 +31,6 @@ public final class AbstractTextGenDeclaration__BehaviorDescriptor extends BaseBH
   /*package*/ AbstractTextGenDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

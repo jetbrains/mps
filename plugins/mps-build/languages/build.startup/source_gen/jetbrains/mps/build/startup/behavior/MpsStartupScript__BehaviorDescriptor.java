@@ -21,7 +21,6 @@ import java.util.Collections;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -44,18 +43,16 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> getVmOptionsExtension_id54lRqzvvwXR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVmOptionsExtension").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5842819808956911479L).languageId(0xb30889d4fbde34ffL, 0xd5033ceef63244b6L).build2();
   public static final SMethod<String> getIdeaPathSelector_idBsOHnja5fe = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getIdeaPathSelector").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(710674657030198222L).languageId(0xb30889d4fbde34ffL, 0xd5033ceef63244b6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultVmoptions_id54lRqzvuHDj, getCommentedVmoptions_id31jVCtHh$86, getCommentedOptions_id54lRqzvvwVL, getVmOptions_id2lwFGYOX$qJ, getDefaultVmOptionsLines_id2lwFGYOXBOk, getCommentedVmOptionsLines_id31jVCtHhzv9, getVmOptionsTextLines_id2M0p1n5GA6s, getVmOptionsFileName_id2lwFGYOYlNP, getVmOptionsExtension_id54lRqzvvwXR, getIdeaPathSelector_idBsOHnja5fe);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultVmoptions_id54lRqzvuHDj, getCommentedVmoptions_id31jVCtHh$86, getCommentedOptions_id54lRqzvvwVL, getVmOptions_id2lwFGYOX$qJ, getDefaultVmOptionsLines_id2lwFGYOXBOk, getCommentedVmOptionsLines_id31jVCtHhzv9, getVmOptionsTextLines_id2M0p1n5GA6s, getVmOptionsFileName_id2lwFGYOYlNP, getVmOptionsExtension_id54lRqzvvwXR, getIdeaPathSelector_idBsOHnja5fe);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated(since = "2021.2.1")
   /*package*/ static String getDefaultVmoptions_id54lRqzvuHDj(@NotNull SNode __thisNode__, boolean is64bit) {
-    return trim_9sggks_a0a0r(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.commented$92Mp))).foldLeft("", (String s, SNode it) -> s + " " + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
+    return trim_9sggks_a0a0q(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getVmOptions_id2lwFGYOX$qJ.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> !(SPropertyOperations.getBoolean(it, PROPS.commented$92Mp))).foldLeft("", (String s, SNode it) -> s + " " + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
   }
   @Deprecated(since = "2021.2.1")
   /*package*/ static String getCommentedVmoptions_id31jVCtHh$86(@NotNull SNode __thisNode__, boolean is64bit) {
-    return trim_9sggks_a0a0s(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> SPropertyOperations.getBoolean(it, PROPS.commented$92Mp)).foldLeft("", (String s, SNode it) -> s + " #" + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
+    return trim_9sggks_a0a0r(Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where((it) -> SPropertyOperations.getBoolean(it, PROPS.commented$92Mp)).foldLeft("", (String s, SNode it) -> s + " #" + SPropertyOperations.getString(it, PROPS.options$D2Jv)));
   }
   @Deprecated(since = "2021.2.1")
   /*package*/ static Iterable<SNode> getCommentedOptions_id54lRqzvvwVL(@NotNull SNode __thisNode__, boolean is64bit) {
@@ -228,10 +225,6 @@ __switch__:
   /*package*/ MpsStartupScript__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
@@ -309,10 +302,10 @@ __switch__:
     n0.setProperty(PROPS.text$DMB3, p0);
     return n0.getResult();
   }
-  public static String trim_9sggks_a0a0r(String str) {
+  public static String trim_9sggks_a0a0q(String str) {
     return (str == null ? null : str.trim());
   }
-  public static String trim_9sggks_a0a0s(String str) {
+  public static String trim_9sggks_a0a0r(String str) {
     return (str == null ? null : str.trim());
   }
   private static boolean isNotEmptyString(String str) {

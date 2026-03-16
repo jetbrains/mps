@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.regex.Pattern;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,8 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> needParentheses_id1b8uQvZynii = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needParentheses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1353467374623880338L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
   public static final SMethod<Boolean> isValid_id48bMILtL4il = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4759120547781297301L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTopLevelRegexp_idhNm6Oh5, toString_idhEwIUjb, getString_idhMuDF1A, par_idhMuIPHY, checkStringForUnicode_idhMRXRyL, quote_idhMRXVXe, escape_id1b8uQvZ_lG7, needParentheses_id1b8uQvZynii, isValid_id48bMILtL4il);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTopLevelRegexp_idhNm6Oh5, toString_idhEwIUjb, getString_idhMuDF1A, par_idhMuIPHY, checkStringForUnicode_idhMRXRyL, quote_idhMRXVXe, escape_id1b8uQvZ_lG7, needParentheses_id1b8uQvZynii, isValid_id48bMILtL4il);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getTopLevelRegexp_idhNm6Oh5(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Regexp$aA)) {
@@ -91,10 +88,6 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Regexp__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

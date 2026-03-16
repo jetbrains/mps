@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.samples.money.runtime.StockPriceDownloader;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class StockSymbol__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isValidSymbol_id3u6SZi0FV5q = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidSymbol").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958235787610L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidSymbol_id3u6SZi0FV5q);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidSymbol_id3u6SZi0FV5q);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isValidSymbol_id3u6SZi0FV5q(@NotNull SNode __thisNode__, String symbol) {
     if ((symbol == null || symbol.length() == 0)) {
@@ -38,10 +35,6 @@ public final class StockSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ StockSymbol__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

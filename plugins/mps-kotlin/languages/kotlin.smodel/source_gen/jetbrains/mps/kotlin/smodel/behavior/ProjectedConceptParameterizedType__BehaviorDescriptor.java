@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -30,10 +29,8 @@ public final class ProjectedConceptParameterizedType__BehaviorDescriptor extends
   public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeErasedName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateSubstitutions_id4f4W8JpwgWV, getTypeErasedName_idAa0Z14exTA, toString_id4nn3FPlZH$r);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateSubstitutions_id4f4W8JpwgWV, getTypeErasedName_idAa0Z14exTA, toString_id4nn3FPlZH$r);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateSubstitutions_id4f4W8JpwgWV(@NotNull SNode __thisNode__, TypeVarSubs<SNode> subs) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.projection$IJnO) != null)) {
@@ -57,10 +54,6 @@ public final class ProjectedConceptParameterizedType__BehaviorDescriptor extends
   /*package*/ ProjectedConceptParameterizedType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

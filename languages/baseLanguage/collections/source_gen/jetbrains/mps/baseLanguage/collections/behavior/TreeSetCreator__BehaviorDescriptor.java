@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -29,10 +28,8 @@ public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canHaveParameter_id1XyaNs207wP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canHaveParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2261417478150191157L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
   public static final SMethod<Boolean> hasInitSize_id1653mnvAgtY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498238L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, canHaveParameter_id1XyaNs207wP, hasInitSize_id1653mnvAgtY);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id6MGFJY7SgiV, canHaveParameter_id1XyaNs207wP, hasInitSize_id1653mnvAgtY);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createType_id6MGFJY7SgiV(@NotNull SNode __thisNode__, SNode elementType) {
     return _quotation_createNode_529210_a0a0(elementType);
@@ -47,10 +44,6 @@ public final class TreeSetCreator__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TreeSetCreator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,10 +13,9 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class Concept_GetDirectSuperConcepts__BehaviorDescriptor extends Ba
   public static final SMethod<Boolean> applicableToSConcept_id7E3Sw0HhwkZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToSConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8828148184963745087L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<List<SConcept>> getParameterConcepts_id6ALWH9fQysn = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429956970263L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ, getParameterConcepts_id6ALWH9fQysn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ, getParameterConcepts_id6ALWH9fQysn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean applicableToConcept_id1653mnvAgvQ(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -45,10 +42,6 @@ public final class Concept_GetDirectSuperConcepts__BehaviorDescriptor extends Ba
   /*package*/ Concept_GetDirectSuperConcepts__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

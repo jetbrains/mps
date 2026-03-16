@@ -13,11 +13,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.awt.Color;
 import java.util.List;
 import java.util.Arrays;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class BuildStringContainer__BehaviorDescriptor extends BaseBHDescriptor {
@@ -26,10 +25,8 @@ public final class BuildStringContainer__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Boolean> isValidPart_id7XQqoCTkVIS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValidPart").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9184644532456897464L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
   public static final SMethod<Color> getColorForTextPart_id5hFYqIiXWl$ = new SMethodBuilder<Color>(new SJavaCompoundTypeImpl(Color.class)).name("getColorForTextPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6083230236994422116L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getColorForTextPart_id5hFYqIiXWl$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValidPart_id7XQqoCTkVIS, getColorForTextPart_id5hFYqIiXWl$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static Color getColorForTextPart_id5hFYqIiXWl$(@NotNull SNode __thisNode__, @NonNls SContainmentLink role) {
@@ -39,10 +36,6 @@ public final class BuildStringContainer__BehaviorDescriptor extends BaseBHDescri
   /*package*/ BuildStringContainer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

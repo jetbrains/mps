@@ -12,13 +12,12 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import java.util.List;
 import java.util.Arrays;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -32,10 +31,8 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
   public static final SMethod<String> getAntPath_id7ro1ZztyOh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895173701L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
   public static final SMethod<String> getUnpackPath_id7ro1Zzt$ck7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnpackPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895534343L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBasePath_id4jjtc7WZMYz, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getUnpackPath_id7ro1Zzt$ck7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBasePath_id4jjtc7WZMYz, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getUnpackPath_id7ro1Zzt$ck7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static String getBasePath_id4jjtc7WZMYz(@NotNull SNode __thisNode__, Context context) {
@@ -75,10 +72,6 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
   /*package*/ BuildSourceArchiveRelativePath__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

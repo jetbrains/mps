@@ -36,7 +36,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8206790888928401875L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(perform_id1kgh5YabdhC, getDefaultName_id7scb9XJdmH2, getPresentation_idhEwIMiw, expectsErrorsInside_id77$odk0vlBj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(perform_id1kgh5YabdhC, getDefaultName_id7scb9XJdmH2, getPresentation_idhEwIMiw, expectsErrorsInside_id77$odk0vlBj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$xNXw, true);

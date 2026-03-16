@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,10 +28,8 @@ public final class FigureParameterMapping__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<SNode> getDiagramNodeCell_id1iN4mn3k5m3 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDiagramNodeCell").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030355957123L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
   public static final SMethod<SNode> getParameterDeclaration_id3$rM_t_1zAw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4115105161238952352L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDiagramNodeCell_id1iN4mn3k5m3, getParameterDeclaration_id3$rM_t_1zAw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDiagramNodeCell_id1iN4mn3k5m3, getParameterDeclaration_id3$rM_t_1zAw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getDiagramNodeCell_id1iN4mn3k5m3(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellModel_DiagramNode$Jl);
@@ -44,10 +41,6 @@ public final class FigureParameterMapping__BehaviorDescriptor extends BaseBHDesc
   /*package*/ FigureParameterMapping__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

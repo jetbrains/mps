@@ -32,7 +32,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -54,10 +53,8 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<Iterable<SNode>> collectItemsOfType_id5Sx2dSLnOI$ = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("collectItemsOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6782712264200768420L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> containsItemOfType_id2pg2GNQgnKJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("containsItemOfType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2760718446999206959L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getApplicableConcept_id1hkJY7harvo, getScope_id52_Geb4QDV$, detectCycles_id7pqJbakYMN2, detectCycles_id5Sx2dSLQoMP, forEachActionOfType_id2pg2GNQfgVG, forEachActionOfType_id2pg2GNQaQaM, collectItemsOfType_id5Sx2dSLnOI$, containsItemOfType_id2pg2GNQgnKJ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getApplicableConcept_id1hkJY7harvo, getScope_id52_Geb4QDV$, detectCycles_id7pqJbakYMN2, detectCycles_id5Sx2dSLQoMP, forEachActionOfType_id2pg2GNQfgVG, forEachActionOfType_id2pg2GNQaQaM, collectItemsOfType_id5Sx2dSLnOI$, containsItemOfType_id2pg2GNQgnKJ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.applicableConcept$ZC38);
@@ -152,10 +149,6 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ CellActionMapDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

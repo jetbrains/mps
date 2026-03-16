@@ -24,7 +24,6 @@ import jetbrains.mps.lang.scopes.runtime.SimpleScope;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -39,10 +38,8 @@ public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor 
   public static final SMethod<Scope> getEditorCellIdScope_id3K0abI6bXeJ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getEditorCellIdScope").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4323500428150952879L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498076L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getPropertyDeclarationScope_id3K0abI6bsqm, getEditorCellIdScope_id3K0abI6bXeJ, applicableToNode_id1653mnvAgrs);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getPropertyDeclarationScope_id3K0abI6bsqm, getEditorCellIdScope_id3K0abI6bXeJ, applicableToNode_id1653mnvAgrs);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyDeclaration$1S) || SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.EditorCellId$Xt)) {
@@ -79,10 +76,6 @@ public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor 
   /*package*/ AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -20,7 +20,6 @@ import java.util.Collections;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.NodePresentationProviders;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -36,10 +35,8 @@ public final class BaseConcept__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Integer> getMetaLevel_id3t0v3yFOD1A = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getMetaLevel").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3981318653438234726L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("substituteInAmbigousPosition").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498020L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isInTemplates_idhEwIMij, getSideIcon_id6TtJ6IUjtJX, getIconMarks_id6TtJ6IUkhQJ, getPresentation_idhEwIMiw, getDetailedPresentation_id22G2W3WJ92t, getMetaLevel_id3t0v3yFOD1A, substituteInAmbigousPosition_id1653mnvAgq$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isInTemplates_idhEwIMij, getSideIcon_id6TtJ6IUjtJX, getIconMarks_id6TtJ6IUkhQJ, getPresentation_idhEwIMiw, getDetailedPresentation_id22G2W3WJ92t, getMetaLevel_id3t0v3yFOD1A, substituteInAmbigousPosition_id1653mnvAgq$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isInTemplates_idhEwIMij(@NotNull SNode __thisNode__) {
     return SModelStereotype.isGeneratorModel(SNodeOperations.getModel(__thisNode__));
@@ -77,10 +74,6 @@ public final class BaseConcept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BaseConcept__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

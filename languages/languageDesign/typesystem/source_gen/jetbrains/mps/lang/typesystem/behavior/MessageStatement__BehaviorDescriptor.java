@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,19 +22,13 @@ public final class MessageStatement__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Void> attachNewMessageAnnotation_id7nf9pEwlup1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachNewMessageAnnotation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8489045168661849665L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
   public static final SMethod<String> getName_id1oFBbRehoLP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1597542831856389237L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(attachNewMessageAnnotation_id7nf9pEwlup1, getName_id1oFBbRehoLP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(attachNewMessageAnnotation_id7nf9pEwlup1, getName_id1oFBbRehoLP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ MessageStatement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

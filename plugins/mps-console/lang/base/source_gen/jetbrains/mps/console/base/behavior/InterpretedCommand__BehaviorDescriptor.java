@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.SwingUtilities;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,10 +25,8 @@ public final class InterpretedCommand__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<Void> execute_id5WvH$QO9bva = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6854397602732226506L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""));
   public static final SMethod<Void> doExecute_id2SpVAIqougW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doExecute").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3321948346081469500L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id5WvH$QO9bva, doExecute_id2SpVAIqougW);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id5WvH$QO9bva, doExecute_id2SpVAIqougW);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void execute_id5WvH$QO9bva(@NotNull final SNode __thisNode__, final ConsoleContext context, final ConsoleStream console, final Runnable beforeCallback, final Runnable afterCallback) {
     SwingUtilities.invokeLater(() -> {
@@ -42,10 +39,6 @@ public final class InterpretedCommand__BehaviorDescriptor extends BaseBHDescript
   /*package*/ InterpretedCommand__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

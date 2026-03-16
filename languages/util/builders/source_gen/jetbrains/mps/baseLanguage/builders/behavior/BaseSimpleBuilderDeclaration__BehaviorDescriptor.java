@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,19 +21,13 @@ public final class BaseSimpleBuilderDeclaration__BehaviorDescriptor extends Base
 
   public static final SMethod<SNode> getContextDeclaration_id5rdgdYBzN9n = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextDeclaration").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6254726786820551255L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextDeclaration_id5rdgdYBzN9n);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextDeclaration_id5rdgdYBzN9n);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ BaseSimpleBuilderDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

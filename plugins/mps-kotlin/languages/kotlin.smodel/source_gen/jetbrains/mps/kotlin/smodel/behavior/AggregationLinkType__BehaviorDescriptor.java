@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class AggregationLinkType__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeErasedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getJavaClassPointer_idAa0Z14eCoU, getTypeErasedName_idAa0Z14exTA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getJavaClassPointer_idAa0Z14eCoU, getTypeErasedName_idAa0Z14exTA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNodeReference getJavaClassPointer_idAa0Z14eCoU(@NotNull SNode __thisNode__) {
     return new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SContainmentLink");
@@ -40,10 +37,6 @@ public final class AggregationLinkType__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ AggregationLinkType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

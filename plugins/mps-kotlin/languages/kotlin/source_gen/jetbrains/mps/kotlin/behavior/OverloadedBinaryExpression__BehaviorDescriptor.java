@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class OverloadedBinaryExpression__BehaviorDescriptor extends BaseBH
   public static final SMethod<MemberReceiver> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<MemberReceiver>(new SJavaCompoundTypeImpl(MemberReceiver.class)).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615475391L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_id5D4bOjrrgiZ, getArguments_id1VI7K1jROBX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_id5D4bOjrrgiZ, getArguments_id1VI7K1jROBX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static MemberReceiver getReceiver_id5D4bOjrrgiZ(@NotNull SNode __thisNode__) {
     return MemberReceiver.of(SLinkOperations.getTarget(__thisNode__, LINKS.left$yQgK));
@@ -43,10 +40,6 @@ public final class OverloadedBinaryExpression__BehaviorDescriptor extends BaseBH
   /*package*/ OverloadedBinaryExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

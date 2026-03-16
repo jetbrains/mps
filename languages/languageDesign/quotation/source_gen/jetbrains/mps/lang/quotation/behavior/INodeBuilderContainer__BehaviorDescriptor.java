@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,19 +21,13 @@ public final class INodeBuilderContainer__BehaviorDescriptor extends BaseBHDescr
 
   public static final SMethod<InitializerPolicy> getCheckPolicy_id4XAkAubwHns = new SMethodBuilder<InitializerPolicy>(new SJavaCompoundTypeImpl(InitializerPolicy.class)).name("getCheckPolicy").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5721350981296510428L).languageId(0xbbcc75c4219e9555L, 0x3a13115c633c4c5cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCheckPolicy_id4XAkAubwHns);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCheckPolicy_id4XAkAubwHns);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ INodeBuilderContainer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

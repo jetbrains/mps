@@ -27,7 +27,7 @@ public final class ExpectedOption__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081351397L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(classifierName_id3ZSHU3pg$b_);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(classifierName_id3ZSHU3pg$b_);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.defaultOption$pSuc, -1);

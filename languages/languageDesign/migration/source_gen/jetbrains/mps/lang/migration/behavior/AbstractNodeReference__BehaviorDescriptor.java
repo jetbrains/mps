@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,19 +26,13 @@ public final class AbstractNodeReference__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Boolean> isSameTarget_id6szrkDoc2JJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSameTarget").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7431903976166009839L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SReference.class, ""));
   public static final SMethod<SNode> tryToFindNode_id6szrkDoc2K7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryToFindNode").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7431903976166009863L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNodeReference_id4uVwhQyQbdz, isSameTarget_id6szrkDoc2JJ, tryToFindNode_id6szrkDoc2K7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNodeReference_id4uVwhQyQbdz, isSameTarget_id6szrkDoc2JJ, tryToFindNode_id6szrkDoc2K7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ AbstractNodeReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

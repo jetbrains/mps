@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,10 +23,8 @@ public final class ConsoleScript__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Iterable<SNode>> getCommands_id1whNchEKZry = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommands").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1734392475491235554L).languageId(0xaec62cb90c4af0a4L, 0xf26691d20def4c06L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCommands_id1whNchEKZry);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCommands_id1whNchEKZry);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getCommands_id1whNchEKZry(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.command$Tr1w);
@@ -36,10 +33,6 @@ public final class ConsoleScript__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ConsoleScript__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

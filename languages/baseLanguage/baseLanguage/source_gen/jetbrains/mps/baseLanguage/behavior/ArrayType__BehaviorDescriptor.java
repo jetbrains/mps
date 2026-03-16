@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -46,10 +45,8 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<SNode> eraseGenerics_id4qyz6djw13y = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("eraseGenerics").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5089784887112634594L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getJavaType_idhEwIzO1, getClassExpression_idhEwIzOd, getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getAbstractCreator_idhEwIzNW, jniSignature_id7F81Cd2C7e3, isReifiable_id2soW6EObTNQ, canBeCoerced_id476YRQvP9l3, eraseGenerics_id4qyz6djw13y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getJavaType_idhEwIzO1, getClassExpression_idhEwIzOd, getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getAbstractCreator_idhEwIzNW, jniSignature_id7F81Cd2C7e3, isReifiable_id2soW6EObTNQ, canBeCoerced_id476YRQvP9l3, eraseGenerics_id4qyz6djw13y);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     if (SLinkOperations.getTarget(__thisNode__, LINKS.componentType$F$Gi) == null) {
@@ -140,10 +137,6 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ArrayType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class KotlinFunctionCall__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<SNode> getReceiver_idUG7NftRxKM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151338034L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_idUG7NftRxKM);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_idUG7NftRxKM);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getReceiver_idUG7NftRxKM(@NotNull SNode __thisNode__) {
     // We do have a receiver this time: the operand the method is called on
@@ -36,10 +33,6 @@ public final class KotlinFunctionCall__BehaviorDescriptor extends BaseBHDescript
   /*package*/ KotlinFunctionCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

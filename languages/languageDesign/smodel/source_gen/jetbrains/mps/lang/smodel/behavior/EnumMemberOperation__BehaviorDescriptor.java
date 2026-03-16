@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.DotExpression__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class EnumMemberOperation__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<SNode> getEnumDecl_id45eRmv04ROr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnumDecl").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4705942098322619675L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnumDecl_id45eRmv04ROr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnumDecl_id45eRmv04ROr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getEnumDecl_id45eRmv04ROr(@NotNull SNode __thisNode__) {
     return SNodeOperations.as(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(DotExpression__BehaviorDescriptor.getOperandType_id7GulAc9z0dN.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$yW)), CONCEPTS.SEnumerationMemberType$td), LINKS.enum$VTAM), CONCEPTS.EnumerationDeclaration$hv);
@@ -40,10 +37,6 @@ public final class EnumMemberOperation__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ EnumMemberOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

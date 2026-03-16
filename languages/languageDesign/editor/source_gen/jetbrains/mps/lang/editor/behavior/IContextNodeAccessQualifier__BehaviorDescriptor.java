@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class IContextNodeAccessQualifier__BehaviorDescriptor extends BaseB
 
   public static final SMethod<Boolean> useNodeGetter_id6E2BWlDjMQu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useNodeGetter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7674872385216916894L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useNodeGetter_id6E2BWlDjMQu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useNodeGetter_id6E2BWlDjMQu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean useNodeGetter_id6E2BWlDjMQu(@NotNull SNode __thisNode__) {
     return true;
@@ -34,10 +31,6 @@ public final class IContextNodeAccessQualifier__BehaviorDescriptor extends BaseB
   /*package*/ IContextNodeAccessQualifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -33,10 +32,8 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getThisReceiverName_id1h3cSlxPLI4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getThisReceiverName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1460067352163326852L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, getThisReceiverName_id1h3cSlxPLI4);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, getThisReceiverName_id1h3cSlxPLI4);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, final ScopeCollector collector, SNode childNode) {
     // Declare scopes for each type
@@ -57,10 +54,6 @@ public final class IThisReceiverProvider__BehaviorDescriptor extends BaseBHDescr
   /*package*/ IThisReceiverProvider__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

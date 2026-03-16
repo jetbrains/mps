@@ -27,7 +27,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -52,10 +51,8 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> showParenthesis_id3PNJzGvtdRU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showParenthesis").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4428092019775430138L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getDetailedPresentation_id22G2W3WJ92t, getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toStringInternal_id41oFOFuJUdT, toString_id4nn3FPlZH$r, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, typeKey_idJmO2PmZtH5, showParenthesis_id3PNJzGvtdRU, createConstructor_id2$1CHwF$28b);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getDetailedPresentation_id22G2W3WJ92t, getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toStringInternal_id41oFOFuJUdT, toString_id4nn3FPlZH$r, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, typeKey_idJmO2PmZtH5, showParenthesis_id3PNJzGvtdRU, createConstructor_id2$1CHwF$28b);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return NullableType__BehaviorDescriptor.toStringInternal_id41oFOFuJUdT.invokeSpecial(__thisNode__, BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J)), ((boolean) false));
@@ -115,10 +112,6 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NullableType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

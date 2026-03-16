@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,10 +28,8 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SConcept> getVisibility_id2WVyZr44ojH = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getVisibility").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835376239853L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SConcept> getDefaultVisibility_id2WVyZr43qIN = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835375987635L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasVisibility_id2WVyZr43psb, getVisibility_id2WVyZr44ojH, getDefaultVisibility_id2WVyZr43qIN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasVisibility_id2WVyZr43psb, getVisibility_id2WVyZr44ojH, getDefaultVisibility_id2WVyZr43qIN);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean hasVisibility_id2WVyZr43psb(@NotNull SNode __thisNode__, SConcept visibility) {
     return SConceptOperations.isExactly(SNodeOperations.asSConcept(IVisible__BehaviorDescriptor.getVisibility_id2WVyZr44ojH.invoke(__thisNode__)), SNodeOperations.asSConcept(visibility));
@@ -52,10 +49,6 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IVisible__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

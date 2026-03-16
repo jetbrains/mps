@@ -25,7 +25,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -37,10 +36,8 @@ public final class ModelStatisticsTarget__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5207260697411458163L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
   /*package*/ static final SMethod<SModel> resolveModel_id4xqDcS7DWbP = new SMethodBuilder<SModel>(new SJavaCompoundTypeImpl((Class<SModel>) ((Class) Object.class))).name("resolveModel").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5213660723433423605L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT, getNodes_id4x3U0fq41hN, resolveModel_id4xqDcS7DWbP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT, getNodes_id4x3U0fq41hN, resolveModel_id4xqDcS7DWbP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<Tuples._2<String, Integer>> getStat_id6vMIJHUBlVT(@NotNull SNode __thisNode__, ConsoleContext context) {
     int references = 0;
@@ -75,10 +72,6 @@ public final class ModelStatisticsTarget__BehaviorDescriptor extends BaseBHDescr
   /*package*/ ModelStatisticsTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

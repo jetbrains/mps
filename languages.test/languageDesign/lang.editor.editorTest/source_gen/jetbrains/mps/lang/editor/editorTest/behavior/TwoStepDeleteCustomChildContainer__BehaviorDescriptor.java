@@ -20,7 +20,7 @@ public final class TwoStepDeleteCustomChildContainer__BehaviorDescriptor extends
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d67L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteCustomChildContainer");
 
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.showCellWithCustomId$nuMP, true);

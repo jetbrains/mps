@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -30,10 +29,8 @@ public final class IncompleteMemberDeclaration__BehaviorDescriptor extends BaseB
   public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2949815620938109095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> canBeMadeAbstract_id5py1MO2Oyuj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeMadeAbstract").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6224545524881696659L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, canBeInterfaceMember_id2zJQqQIUx2B, canBeMadeAbstract_id5py1MO2Oyuj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, canBeInterfaceMember_id2zJQqQIUx2B, canBeMadeAbstract_id5py1MO2Oyuj);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isStaticClassifierMember_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.static$G1Ho);
@@ -48,10 +45,6 @@ public final class IncompleteMemberDeclaration__BehaviorDescriptor extends BaseB
   /*package*/ IncompleteMemberDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

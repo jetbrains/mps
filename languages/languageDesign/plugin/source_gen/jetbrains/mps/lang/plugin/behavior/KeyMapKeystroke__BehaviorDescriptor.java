@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -28,10 +27,8 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> hasRemove_id4qYinf8$eal = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5097592589864985237L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<Boolean> hasReplaceAll_id4qYinf8$enm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5097592589864986070L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getKeyStroke_idhEwIlzu, hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU, hasRemove_id4qYinf8$eal, hasReplaceAll_id4qYinf8$enm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getKeyStroke_idhEwIlzu, hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU, hasRemove_id4qYinf8$eal, hasReplaceAll_id4qYinf8$enm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getKeyStroke_idhEwIlzu(@NotNull SNode __thisNode__) {
     String modifiers = SPropertyOperations.getString(__thisNode__, PROPS.modifiers$4CNz);
@@ -64,10 +61,6 @@ public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ KeyMapKeystroke__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

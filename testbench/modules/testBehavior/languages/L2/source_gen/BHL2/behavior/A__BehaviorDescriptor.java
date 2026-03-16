@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,10 +25,8 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Object> foo2_id4hDSxB1Zrx8 = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo2").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4929719867390408776L).languageId(0x80640955dd8aebcbL, 0xd9c7536e76b5498fL).build2();
   public static final SMethod<Void> testCommentGeneration_id1eK5xBtRrre = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("testCommentGeneration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1418658182973994702L).languageId(0x80640955dd8aebcbL, 0xd9c7536e76b5498fL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtual_id7zO8mNAVlna, foo_id6EMTxOPT5LT, foo2_id4hDSxB1Zrx8, testCommentGeneration_id1eK5xBtRrre);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtual_id7zO8mNAVlna, foo_id6EMTxOPT5LT, foo2_id4hDSxB1Zrx8, testCommentGeneration_id1eK5xBtRrre);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Object nonVirtual_id7zO8mNAVlna(@NotNull SNode __thisNode__) {
     return A__BehaviorDescriptor.foo_id6EMTxOPT5LT.invoke(__thisNode__);
@@ -46,10 +43,6 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ A__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -30,10 +29,8 @@ public final class StringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<Boolean> isHexChar_idhLEZYVw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHexChar").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1221565869792L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(Character.TYPE, ""));
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(constant_id1653mnvAgr2, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isCorrect_idhLEXzwL, isHexChar_idhLEZYVw, getPresentation_idhEwIMiw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(constant_id1653mnvAgr2, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isCorrect_idhLEXzwL, isHexChar_idhLEZYVw, getPresentation_idhEwIMiw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean constant_id1653mnvAgr2(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -111,10 +108,6 @@ public final class StringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ StringLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

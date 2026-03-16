@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,10 +27,8 @@ public final class BuildMps_DevKit__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<Iterable<SNode>> getExportedModules_id6qlcPcvboVF = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExportedModules").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7391870795496918763L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExportedModules_id6qlcPcvboVF);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExportedModules_id6qlcPcvboVF);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getExportedModules_id6qlcPcvboVF(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).select((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71)).select((it) -> SLinkOperations.getTarget(it, LINKS.solution$qxKS)));
@@ -40,10 +37,6 @@ public final class BuildMps_DevKit__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildMps_DevKit__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

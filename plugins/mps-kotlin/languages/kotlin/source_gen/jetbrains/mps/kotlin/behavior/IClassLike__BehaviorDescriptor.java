@@ -29,7 +29,6 @@ import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -51,10 +50,8 @@ public final class IClassLike__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getConstructors_id2NtWm0y9fFa = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConstructors").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3233005502713887434L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstractClass").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, getThisType_id46gC9M6gB68, getTypeParameters_idTmm2uCbI_X, getStaticScope_id3HHsmlLCHdO, getConstructorDefaultVisibility_idu1nygduECM, getCompanion_id1dpU28wP77w, hasModifier_id2NtWm0y2Y2A, getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, getConstructors_id2NtWm0y9fFa, isAbstractClass_id$q1KckYQOy);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, getThisType_id46gC9M6gB68, getTypeParameters_idTmm2uCbI_X, getStaticScope_id3HHsmlLCHdO, getConstructorDefaultVisibility_idu1nygduECM, getCompanion_id1dpU28wP77w, hasModifier_id2NtWm0y2Y2A, getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, getConstructors_id2NtWm0y9fFa, isAbstractClass_id$q1KckYQOy);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateNonMemberSignatures_id1pD7IS2T3rZ(@NotNull SNode __thisNode__, SignatureCollector visitor) {
     // default: no-op
@@ -160,10 +157,6 @@ __switch__:
   /*package*/ IClassLike__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

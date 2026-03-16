@@ -20,7 +20,6 @@ import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -33,10 +32,8 @@ public final class MoveReferenceLink__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doDeprecateOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520982494L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doDeprecateOldNode_id1NHZk5hiKRu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doDeprecateOldNode_id1NHZk5hiKRu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void doDeprecateOldNode_id1NHZk5hiKRu(@NotNull SNode __thisNode__, SRepository repository) {
     SNode from = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getFrom_id1NHZk5hj1Zl.invoke(__thisNode__, repository), CONCEPTS.LinkDeclaration$1p);
@@ -49,10 +46,6 @@ public final class MoveReferenceLink__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ MoveReferenceLink__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

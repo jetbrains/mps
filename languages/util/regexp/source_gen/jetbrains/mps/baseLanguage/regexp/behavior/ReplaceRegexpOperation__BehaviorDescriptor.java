@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,10 +23,8 @@ public final class ReplaceRegexpOperation__BehaviorDescriptor extends BaseBHDesc
 
   public static final SMethod<String> getReplacementString_id3iI_KKp9qzv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getReplacementString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3796137614137207007L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReplacementString_id3iI_KKp9qzv);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReplacementString_id3iI_KKp9qzv);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getReplacementString_id3iI_KKp9qzv(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
@@ -42,10 +39,6 @@ public final class ReplaceRegexpOperation__BehaviorDescriptor extends BaseBHDesc
   /*package*/ ReplaceRegexpOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

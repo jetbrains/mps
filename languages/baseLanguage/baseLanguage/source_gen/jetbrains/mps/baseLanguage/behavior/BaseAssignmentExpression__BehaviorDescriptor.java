@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -35,10 +34,8 @@ public final class BaseAssignmentExpression__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<Void> setSyntacticallyRightSideExpression_id1wHCnsn58ZY = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setSyntacticallyRightSideExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1742226163722653694L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isReadAsignment_idhGd96S1, isLegalAsStatement_idi26MfYG, canPropagateUnmatchedParenUp_id1wHCnsn58ZA, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getPrecedenceLevel_id1O90zDONSxM);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isReadAsignment_idhGd96S1, isLegalAsStatement_idi26MfYG, canPropagateUnmatchedParenUp_id1wHCnsn58ZA, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getPrecedenceLevel_id1O90zDONSxM);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isReadAsignment_idhGd96S1(@NotNull SNode __thisNode__) {
     return true;
@@ -68,10 +65,6 @@ public final class BaseAssignmentExpression__BehaviorDescriptor extends BaseBHDe
   /*package*/ BaseAssignmentExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

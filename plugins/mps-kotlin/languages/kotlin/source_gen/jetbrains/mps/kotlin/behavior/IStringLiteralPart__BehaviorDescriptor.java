@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class IStringLiteralPart__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<Boolean> isPunctuationLeft_id5yEpxXMAhZ6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPunctuationLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6389031306631126982L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isPunctuationLeft_id5yEpxXMAhZ6);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isPunctuationLeft_id5yEpxXMAhZ6);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isPunctuationLeft_id5yEpxXMAhZ6(@NotNull SNode __thisNode__) {
     return SNodeOperations.getIndexInParent(__thisNode__) != 0;
@@ -35,10 +32,6 @@ public final class IStringLiteralPart__BehaviorDescriptor extends BaseBHDescript
   /*package*/ IStringLiteralPart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -20,7 +20,6 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,8 @@ public final class ActionGroupDeclaration__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<SNode> createType_idhEwJimy = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877527970L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
   public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611473L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGroupPrefix_idhEwJa7y, getGeneratedName_idhEwJa82, getGeneratedClassFQName_idhEwJa8g, createType_idhEwJimy, getPropertyToCheck_id4cWf37B8oYh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGroupPrefix_idhEwJa7y, getGeneratedName_idhEwJa82, getGeneratedClassFQName_idhEwJa8g, createType_idhEwJimy, getPropertyToCheck_id4cWf37B8oYh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGroupPrefix_idhEwJa7y(@NotNull SNode __thisNode__) {
     String prefix = "";
@@ -67,10 +64,6 @@ public final class ActionGroupDeclaration__BehaviorDescriptor extends BaseBHDesc
   /*package*/ ActionGroupDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

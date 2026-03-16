@@ -35,7 +35,6 @@ import jetbrains.mps.util.MacroHelper;
 import java.io.File;
 import java.io.FileInputStream;
 import javax.imageio.ImageIO;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -55,10 +54,8 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541333312L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<String> getNewuiResourceId_id1$fQzw7$LYY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778964414L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamingConventionNewuiFileName_id1$fQzw7$wcx, getNewuiFileName_id1$fQzw7yhpR, generate_id7Mb2akaesv8, getAdditionalFiles_id2NwO_B0ZkCe, copyFile_id34SjXUxB1C6, isValid_id7Mb2akaestJ, isExplicitNewuiFileValid_id1$fQzw7$eeH, isNewuiFileAvailable_id1$fQzw7$tKW, isFileValid_id1$fQzw7$hd7, getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamingConventionNewuiFileName_id1$fQzw7$wcx, getNewuiFileName_id1$fQzw7yhpR, generate_id7Mb2akaesv8, getAdditionalFiles_id2NwO_B0ZkCe, copyFile_id34SjXUxB1C6, isValid_id7Mb2akaestJ, isExplicitNewuiFileValid_id1$fQzw7$eeH, isNewuiFileAvailable_id1$fQzw7$tKW, isFileValid_id1$fQzw7$hd7, getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getNamingConventionNewuiFileName_id1$fQzw7$wcx(@NotNull SNode __thisNode__) {
     return ((isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$686H)) ? FileUtil.getNameWithoutExtension(SPropertyOperations.getString(__thisNode__, PROPS.file$686H)) : "")) + "_newui.svg";
@@ -186,10 +183,6 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ FileIcon__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

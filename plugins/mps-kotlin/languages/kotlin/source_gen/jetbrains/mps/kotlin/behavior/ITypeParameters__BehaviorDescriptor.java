@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -30,10 +29,8 @@ public final class ITypeParameters__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameterDescriptors_id28CvMylfXMr = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameterDescriptors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008637385883L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SNode>> getExtraUpperBounds_id4Cl0D9hqdNo = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExtraUpperBounds").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760771898584L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameterDescriptors_id28CvMylfXMr, getExtraUpperBounds_id4Cl0D9hqdNo);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameterDescriptors_id28CvMylfXMr, getExtraUpperBounds_id4Cl0D9hqdNo);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameterDescriptors_id28CvMylfXMr(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select((it) -> (TypeParameterDeclaration) ITypeParameter__BehaviorDescriptor.getDescriptor_id28CvMylflrH.invoke(it)).where(new NotNullWhereFilter());
@@ -45,10 +42,6 @@ public final class ITypeParameters__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ITypeParameters__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

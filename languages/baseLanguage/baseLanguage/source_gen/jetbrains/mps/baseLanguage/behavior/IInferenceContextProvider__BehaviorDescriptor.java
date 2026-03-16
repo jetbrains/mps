@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class IInferenceContextProvider__BehaviorDescriptor extends BaseBHD
 
   public static final SMethod<Boolean> canProvideInferenceContext_idJiVENj$Z0y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canProvideInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(852005705577918498L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canProvideInferenceContext_idJiVENj$Z0y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canProvideInferenceContext_idJiVENj$Z0y);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canProvideInferenceContext_idJiVENj$Z0y(@NotNull SNode __thisNode__, SNode forChild) {
     return true;
@@ -34,10 +31,6 @@ public final class IInferenceContextProvider__BehaviorDescriptor extends BaseBHD
   /*package*/ IInferenceContextProvider__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

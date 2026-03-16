@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,8 @@ public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<Boolean> inLangConcept_idhZi_Zwx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("inLangConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1236188788769L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inLangConcept_idhZi_Zwx);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inLangConcept_idhZi_Zwx);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean inLangConcept_idhZi_Zwx(@NotNull SNode __thisNode__) {
     return SNodeOperations.isInstanceOf((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AbstractTextGenDeclaration$lk, false, false)), CONCEPTS.LanguageTextGenDeclaration$mH);
@@ -36,10 +33,6 @@ public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ WithIndentOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

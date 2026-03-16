@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -28,10 +27,8 @@ public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SModuleReference> toModuleReference_id2BHFktfnkjF = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821266667L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
   public static final SMethod<Void> populateFrom_id2BHFktfnlSL = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821273137L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(moduleReferenceAsString_id15qhGW3fE3K, toModuleReference_id2BHFktfnkjF, populateFrom_id2BHFktfnlSL);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(moduleReferenceAsString_id15qhGW3fE3K, toModuleReference_id2BHFktfnkjF, populateFrom_id2BHFktfnlSL);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String moduleReferenceAsString_id15qhGW3fE3K(@NotNull SNode __thisNode__) {
     return PersistenceFacade.getInstance().asString(ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(__thisNode__));
@@ -50,10 +47,6 @@ public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ModuleReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

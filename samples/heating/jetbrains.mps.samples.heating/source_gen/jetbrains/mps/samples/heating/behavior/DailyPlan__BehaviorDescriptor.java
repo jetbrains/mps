@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class DailyPlan__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> slotByStartTime_id2XgRSpVOzcU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("slotByStartTime").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3409470686615450426L).languageId(0x98ce995a7aa66941L, 0xa7d67633e8d9473bL).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(slotByStartTime_id2XgRSpVOzcU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(slotByStartTime_id2XgRSpVOzcU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode slotByStartTime_id2XgRSpVOzcU(@NotNull SNode __thisNode__, final int startTime) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.items$4wAy)).findFirst((it) -> SPropertyOperations.getInteger(it, PROPS.start$f2z3) == startTime);
@@ -39,10 +36,6 @@ public final class DailyPlan__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ DailyPlan__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

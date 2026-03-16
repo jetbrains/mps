@@ -17,7 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SModelName> getNameObject_id2bm9xT0zK3P = new SMethodBuilder<SModelName>(new SJavaCompoundTypeImpl(SModelName.class)).name("getNameObject").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2510235753679618293L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
   public static final SMethod<Void> updateValue_id2bm9xT0zPoJ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("updateValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2510235753679640111L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2(SMethodBuilder.createJavaParameter(SModelName.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ6bz, create_id_GDk1qZdiH, getNamespace_id_GDk1qYZiR, getStereotype_id_GDk1qZ1fV, getLongName_id_GDk1qZ1tf, getSimpleName_id_GDk1qZ1ND, getNameObject_id2bm9xT0zK3P, updateValue_id2bm9xT0zPoJ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ6bz, create_id_GDk1qZdiH, getNamespace_id_GDk1qYZiR, getStereotype_id_GDk1qZ1fV, getLongName_id_GDk1qZ1tf, getSimpleName_id_GDk1qZ1ND, getNameObject_id2bm9xT0zK3P, updateValue_id2bm9xT0zPoJ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode create_id_GDk1qZ6bz(@NotNull SAbstractConcept __thisConcept__, SModel where, String value) {
     SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelName$A4);
@@ -73,10 +70,6 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ModelName__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

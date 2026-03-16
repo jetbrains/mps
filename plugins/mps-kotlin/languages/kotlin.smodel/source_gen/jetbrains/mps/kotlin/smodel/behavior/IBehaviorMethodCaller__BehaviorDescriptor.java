@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -34,10 +33,8 @@ public final class IBehaviorMethodCaller__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConceptTypes").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateTypeSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, populateTypeSignatures_id5q426iHK5S9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, populateTypeSignatures_id5q426iHK5S9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull final SNode __thisNode__, SignatureCollector visitor) {
     // In the above code, we add all methods and links at one, as the hierarchy will not visit projection supertypes (node<X> and SNode are the only visited, not node<Y> with X extends Y)
@@ -90,10 +87,6 @@ __switch__:
   /*package*/ IBehaviorMethodCaller__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

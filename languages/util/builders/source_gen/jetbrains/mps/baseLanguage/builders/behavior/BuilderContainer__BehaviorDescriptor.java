@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class BuilderContainer__BehaviorDescriptor extends BaseBHDescriptor
 
   public static final SMethod<Boolean> isLeaf_idNLqHO$EE0f = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLeaf").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(932644095877881871L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLeaf_idNLqHO$EE0f);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLeaf_idNLqHO$EE0f);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLeaf_idNLqHO$EE0f(@NotNull SNode __thisNode__) {
     return false;
@@ -34,10 +31,6 @@ public final class BuilderContainer__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ BuilderContainer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

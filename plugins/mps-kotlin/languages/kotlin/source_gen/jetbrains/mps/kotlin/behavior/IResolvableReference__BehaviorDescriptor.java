@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,10 +26,8 @@ public final class IResolvableReference__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> tryResolveNamed_id4MvRlgZCbi_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolveNamed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094005413L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> tryResolve_id4MvRlgZCbFB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolve").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007015L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(tryResolveNamed_id4MvRlgZCbi_, tryResolve_id4MvRlgZCbFB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(tryResolveNamed_id4MvRlgZCbi_, tryResolve_id4MvRlgZCbFB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode tryResolveNamed_id4MvRlgZCbi_(@NotNull SNode __thisNode__, String name) {
     // reminder: this is an experimental non-implemented feature, whose goal is to help parse kotlin references
@@ -52,10 +49,6 @@ public final class IResolvableReference__BehaviorDescriptor extends BaseBHDescri
   /*package*/ IResolvableReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

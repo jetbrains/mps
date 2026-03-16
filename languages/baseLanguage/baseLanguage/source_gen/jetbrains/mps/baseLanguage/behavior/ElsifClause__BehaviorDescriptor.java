@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class ElsifClause__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> convertToElseClause_idhIdko9K = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToElseClause").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217846674032L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4235809288648213009L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIfStatement_idhEwIDu9, convertToElseClause_idhIdko9K, getNextProgramPoint_id3F8BxGibk8h);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIfStatement_idhEwIDu9, convertToElseClause_idhIdko9K, getNextProgramPoint_id3F8BxGibk8h);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getIfStatement_idhEwIDu9(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IfStatement$Q4);
@@ -68,10 +65,6 @@ public final class ElsifClause__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ElsifClause__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

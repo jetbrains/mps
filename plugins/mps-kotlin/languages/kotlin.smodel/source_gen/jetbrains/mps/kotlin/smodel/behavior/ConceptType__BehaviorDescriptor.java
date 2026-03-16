@@ -29,7 +29,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -49,10 +48,8 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("typeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isExpression_id3sYZzPj0plI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3980898659981170030L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, getBehaviorMethods_id6IkKv2hCcXi, populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isExpression_id3sYZzPj0plI);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, getBehaviorMethods_id6IkKv2hCcXi, populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isExpression_id3sYZzPj0plI);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, SuperTypesVisitor visitor) {
     if (visitor.enterType(__thisNode__)) {
@@ -107,10 +104,6 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ConceptType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

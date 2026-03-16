@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -45,10 +44,8 @@ public final class MigrationScript__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> isVersionSet_id4uVwhQyFpOe = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVersionSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5168866961621097742L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptionNode_id7s$_UJMUysQ, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, isRerunnable_id1JWcQ2Vfe4u, getMethod_id6d7r2Fq2j7f, hasData_idw$qRK82$4u, getGeneratedClassName_id7w5LXrJJkLe, getDescriptor_idUBgfI9eMAt, fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getPresentation_idhEwIMiw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptionNode_id7s$_UJMUysQ, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, isRerunnable_id1JWcQ2Vfe4u, getMethod_id6d7r2Fq2j7f, hasData_idw$qRK82$4u, getGeneratedClassName_id7w5LXrJJkLe, getDescriptor_idUBgfI9eMAt, fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getPresentation_idhEwIMiw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getDescriptionNode_id7s$_UJMUysQ(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "1825613483880658538"), __thisNode__)).first(), CONCEPTS.StringPropertyInstance$mg);
@@ -102,10 +99,6 @@ public final class MigrationScript__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ MigrationScript__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

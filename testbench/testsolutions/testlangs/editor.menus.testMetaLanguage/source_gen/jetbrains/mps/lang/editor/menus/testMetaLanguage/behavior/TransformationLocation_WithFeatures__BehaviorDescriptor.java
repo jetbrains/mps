@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class TransformationLocation_WithFeatures__BehaviorDescriptor exten
   public static final SMethod<Collection<SConcept>> getAvailableFeatures_id1A4kJjlZ$rL = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getAvailableFeatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1838685759389714161L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Collection<SConcept>> getRequiredFeatures_id7L5lpRJHK_w = new SMethodBuilder<Collection<SConcept>>(new SJavaCompoundTypeImpl((Class<Collection<SConcept>>) ((Class) Object.class))).name("getRequiredFeatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8954657570916075872L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableFeatures_id1A4kJjlZ$rL, getRequiredFeatures_id7L5lpRJHK_w);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableFeatures_id1A4kJjlZ$rL, getRequiredFeatures_id7L5lpRJHK_w);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Collection<SConcept> getAvailableFeatures_id1A4kJjlZ$rL(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TransformationFeature_Optional$c7, CONCEPTS.TransformationFeature_Required$pc);
@@ -42,10 +39,6 @@ public final class TransformationLocation_WithFeatures__BehaviorDescriptor exten
   /*package*/ TransformationLocation_WithFeatures__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

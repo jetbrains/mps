@@ -30,7 +30,7 @@ public final class IHoldSingleCommentLine__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> representLinesAsText_id62Y1B7f_avX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representLinesAsText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6971016359099803645L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, representLinesAsText_id62Y1B7f_avX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, representLinesAsText_id62Y1B7f_avX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
 

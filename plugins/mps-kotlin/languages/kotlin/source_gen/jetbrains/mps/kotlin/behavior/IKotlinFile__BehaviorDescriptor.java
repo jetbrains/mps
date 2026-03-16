@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -27,10 +26,8 @@ public final class IKotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getPackageName_id74Z9X$ygjTm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715734L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id74Z9X$ygjTm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id74Z9X$ygjTm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.header$Q2G5) == null)) {
@@ -43,10 +40,6 @@ public final class IKotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IKotlinFile__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

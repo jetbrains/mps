@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class SubstituteMenuPart_Action__BehaviorDescriptor extends BaseBHD
 
   public static final SMethod<SNode> getCreatedConcept_id6e716hiEcRp = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatedConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7171705760540839385L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCreatedConcept_id6e716hiEcRp);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCreatedConcept_id6e716hiEcRp);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getCreatedConcept_id6e716hiEcRp(@NotNull SNode __thisNode__) {
     return IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(__thisNode__);
@@ -34,10 +31,6 @@ public final class SubstituteMenuPart_Action__BehaviorDescriptor extends BaseBHD
   /*package*/ SubstituteMenuPart_Action__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

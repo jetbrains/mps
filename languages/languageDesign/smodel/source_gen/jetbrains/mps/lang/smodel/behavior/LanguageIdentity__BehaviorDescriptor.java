@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,19 +25,13 @@ public final class LanguageIdentity__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3542851458883438752L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
   public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980181733679L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(Language.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ LanguageIdentity__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

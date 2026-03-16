@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -37,10 +36,8 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Void> setReference_id7jb4LXp9a6q = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8415841354032390554L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
   public static final SMethod<Long> getIdValue_id7jb4LXp9a7d = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8415841354032390605L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o, setReference_id5e7X3XCLvlR, setReference_id7jb4LXp9a6q, getIdValue_id7jb4LXp9a7d);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o, setReference_id5e7X3XCLvlR, setReference_id7jb4LXp9a6q, getIdValue_id7jb4LXp9a7d);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SReferenceLink getReference_id7jb4LXp9a7o(@NotNull SNode __thisNode__) {
     SAbstractConcept rc = ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.conceptIdentity$Kg7w));
@@ -77,10 +74,6 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ReferenceLinkId__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

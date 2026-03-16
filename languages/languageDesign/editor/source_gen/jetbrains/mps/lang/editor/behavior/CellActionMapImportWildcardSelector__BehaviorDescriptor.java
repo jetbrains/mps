@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class CellActionMapImportWildcardSelector__BehaviorDescriptor exten
   public static final SMethod<CheckingResult> checkPresenceOfImportee_id3XXPjz_qqny = new SMethodBuilder<CheckingResult>(new SJavaCompoundTypeImpl(CheckingResult.class)).name("checkPresenceOfImportee").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4575047236822083042L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getNavigatableNodeWithin_id5Sx2dSLnDj7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigatableNodeWithin").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6782712264200721607L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(selectsActionId_id3XXPjz_pJfc, checkPresenceOfImportee_id3XXPjz_qqny, getNavigatableNodeWithin_id5Sx2dSLnDj7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(selectsActionId_id3XXPjz_pJfc, checkPresenceOfImportee_id3XXPjz_qqny, getNavigatableNodeWithin_id5Sx2dSLnDj7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean selectsActionId_id3XXPjz_pJfc(@NotNull SNode __thisNode__, SEnumerationLiteral id) {
     return true;
@@ -44,10 +41,6 @@ public final class CellActionMapImportWildcardSelector__BehaviorDescriptor exten
   /*package*/ CellActionMapImportWildcardSelector__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -26,10 +25,8 @@ public final class IntegerPropertyInstance__BehaviorDescriptor extends BaseBHDes
 
   public static final SMethod<SNode> getValueExpression_id3m06Jgserfw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValueExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3855110916777030624L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValueExpression_id3m06Jgserfw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValueExpression_id3m06Jgserfw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getValueExpression_id3m06Jgserfw(@NotNull SNode __thisNode__) {
     return _quotation_createNode_6r0hdw_a0a0(SPropertyOperations.getInteger(__thisNode__, PROPS.value$jBQh));
@@ -38,10 +35,6 @@ public final class IntegerPropertyInstance__BehaviorDescriptor extends BaseBHDes
   /*package*/ IntegerPropertyInstance__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -23,7 +23,6 @@ import jetbrains.mps.openapi.editor.TextBuilder;
 import javax.swing.SwingUtilities;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,13 +32,11 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<String> getTextualRepresentation_idfB3l81it7u = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147594039774L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l81it7u);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l81it7u);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
-    final String[] result = new String[]{"'''" + trim_ciopfq_a0a0a0a0a8(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$KGJq))) + "'''"};
+    final String[] result = new String[]{"'''" + trim_ciopfq_a0a0a0a0a7(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$KGJq))) + "'''"};
 
     try {
       final Runnable r = new Runnable() {
@@ -54,7 +51,7 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
               EditorCell cell = editorComponent.getRootCell();
               if (cell != null) {
                 TextBuilder text = cell.renderText();
-                result[0] = "'''" + trim_ciopfq_a0a0a1a3a0a0a0a1a0a0a0a0c0i(text.getText()) + "'''";
+                result[0] = "'''" + trim_ciopfq_a0a0a1a3a0a0a0a1a0a0a0a0c0h(text.getText()) + "'''";
               }
             }
           });
@@ -81,10 +78,6 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
   /*package*/ NodeWrapperElement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
@@ -123,10 +116,10 @@ public final class NodeWrapperElement__BehaviorDescriptor extends BaseBHDescript
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  public static String trim_ciopfq_a0a0a0a0a8(String str) {
+  public static String trim_ciopfq_a0a0a0a0a7(String str) {
     return (str == null ? null : str.trim());
   }
-  public static String trim_ciopfq_a0a0a1a3a0a0a0a1a0a0a0a0c0i(String str) {
+  public static String trim_ciopfq_a0a0a1a3a0a0a0a1a0a0a0a0c0h(String str) {
     return (str == null ? null : str.trim());
   }
 

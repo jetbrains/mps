@@ -17,7 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -29,10 +28,8 @@ public final class IKotlinFunctionLikeCall__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Iterable<TypeParameterDeclaration>> getFunctionTypeParameters_id1t03WaySlJT = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getFunctionTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1675356390012574713L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
   public static final SMethod<SNode> getFunctionReturnType_idUG7NftRy8a = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFunctionReturnType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151339530L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_idUG7NftRxKM, getFunctionParameters_idUG7NftR_2Q, getFunctionTypeParameters_id1t03WaySlJT, getFunctionReturnType_idUG7NftRy8a);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_idUG7NftRxKM, getFunctionParameters_idUG7NftR_2Q, getFunctionTypeParameters_id1t03WaySlJT, getFunctionReturnType_idUG7NftRy8a);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getFunctionTypeParameters_id1t03WaySlJT(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(Collections.<TypeParameterDeclaration>emptyList());
@@ -41,10 +38,6 @@ public final class IKotlinFunctionLikeCall__BehaviorDescriptor extends BaseBHDes
   /*package*/ IKotlinFunctionLikeCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

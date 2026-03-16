@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.util.LocalSourcePathArtifact;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -39,10 +38,8 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
   /*package*/ static final SMethod<Iterable<SNode>> getImportContentChildren_id675BBdHStY4 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportContentChildren").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(7045211410692956036L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getChildrenOutputDir_WithMacro_id450ejGzh8bb, unpack_id6IqTD4bJTWZ, isFolder_id1bWeed$oPYW, isValidPart_id7XQqoCTkVIS, exports_id5FtnUVJQES1, getImportContentChildren_id675BBdHStY4);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getChildrenOutputDir_WithMacro_id450ejGzh8bb, unpack_id6IqTD4bJTWZ, isFolder_id1bWeed$oPYW, isValidPart_id7XQqoCTkVIS, exports_id5FtnUVJQES1, getImportContentChildren_id675BBdHStY4);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getChildrenOutputDir_WithMacro_id450ejGzh8bb(@NotNull SNode __thisNode__, Context context) {
     return ((String) BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(__thisNode__, context));
@@ -111,10 +108,6 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
   /*package*/ BuildLayout_Folder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

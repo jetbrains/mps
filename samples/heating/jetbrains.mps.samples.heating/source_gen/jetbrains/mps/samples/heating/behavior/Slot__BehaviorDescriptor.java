@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -32,10 +31,8 @@ public final class Slot__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getCustomizedSlot_idNU25Mr18Am = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCustomizedSlot").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(935069066463578518L).languageId(0x98ce995a7aa66941L, 0xa7d67633e8d9473bL).build2();
   public static final SMethod<Boolean> isCustomizing_idNU25Mr1t4q = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCustomizing").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(935069066463662362L).languageId(0x98ce995a7aa66941L, 0xa7d67633e8d9473bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCustomizedSlot_idNU25Mr18Am, isCustomizing_idNU25Mr1t4q);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCustomizedSlot_idNU25Mr18Am, isCustomizing_idNU25Mr1t4q);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getCustomizedSlot_idNU25Mr18Am(@NotNull final SNode __thisNode__) {
     SNode dailyPlan = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DailyPlan$zP);
@@ -62,10 +59,6 @@ public final class Slot__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Slot__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

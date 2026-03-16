@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,19 +22,13 @@ public final class ActionParameter__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SNode> getType_id112RIkggjzD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1171743928471337193L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<SNode> getFieldDeclaration_id112RIkgil0h = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFieldDeclaration").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1171743928471867409L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id112RIkggjzD, getFieldDeclaration_id112RIkgil0h);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id112RIkggjzD, getFieldDeclaration_id112RIkgil0h);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ ActionParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

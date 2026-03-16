@@ -5,17 +5,17 @@ package jetbrains.mps.execution.common.behavior;
 import jetbrains.mps.baseLanguage.regexp.runtime.Replacer;
 import java.util.regex.Matcher;
 
-public class _Replacer_mgabp8_a0a0d0z implements Replacer {
+public class _Replacer_mgabp8_a0a0b0y implements Replacer {
   public String replace(Matcher matcher) {
-    return matcher.group(1);
+    return matcher.group(1) + matcher.group(2).toUpperCase();
   }
   /*package*/ IGeneratedToClass__BehaviorDescriptor _enclosingClass;
   /*package*/ Object _closureContext;
-  public _Replacer_mgabp8_a0a0d0z(IGeneratedToClass__BehaviorDescriptor enclosingClass, Object closureContext) {
+  public _Replacer_mgabp8_a0a0b0y(IGeneratedToClass__BehaviorDescriptor enclosingClass, Object closureContext) {
     this._enclosingClass = enclosingClass;
     this._closureContext = (Object) closureContext;
   }
-  public _Replacer_mgabp8_a0a0d0z(IGeneratedToClass__BehaviorDescriptor enclosingClass) {
+  public _Replacer_mgabp8_a0a0b0y(IGeneratedToClass__BehaviorDescriptor enclosingClass) {
     this._enclosingClass = enclosingClass;
     this._closureContext = null;
   }

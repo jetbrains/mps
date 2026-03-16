@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<Boolean> isMyAntiquotationExpression_id4SwrQttKYC0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMyAntiquotationExpression").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5629622023958555136L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMyAntiquotationExpression_id4SwrQttKYC0);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMyAntiquotationExpression_id4SwrQttKYC0);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isMyAntiquotationExpression_id4SwrQttKYC0(@NotNull SNode __thisNode__, SNode expression) {
     // when quotation is embedded into transform statement via QuotationConsequoence, antiquotations detach nodes passed to them
@@ -48,10 +45,6 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
   /*package*/ QuotationConsequence__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

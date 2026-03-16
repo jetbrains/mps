@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class ITestable__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMpsStartRequired_id2RMg39tmiFh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMpsStartRequired_id2RMg39tmiFh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isMpsStartRequired_id2RMg39tmiFh(@NotNull SNode __thisNode__) {
     return false;
@@ -34,10 +31,6 @@ public final class ITestable__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ITestable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

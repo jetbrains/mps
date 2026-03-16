@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -34,10 +33,8 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<SNode> getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConstraintFunctionBodyUsingInheritance").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4960272075650318140L).languageId(0x8b10c83066ffa4a1L, 0x3f4bc5f5c6c14a28L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<_FunctionTypes._return_P1_E0<? extends SNode, ? super SNode>>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW, requiresAllMethodMembersPrivate_id441vB8LJxAr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getConstraintFunctionBodyUsingInheritance_id4jmriKirjWW, requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getBaseConcept_id2hxg_BDjKM8(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.concept$EVpZ);
@@ -65,10 +62,6 @@ public final class ConceptConstraints__BehaviorDescriptor extends BaseBHDescript
   /*package*/ ConceptConstraints__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

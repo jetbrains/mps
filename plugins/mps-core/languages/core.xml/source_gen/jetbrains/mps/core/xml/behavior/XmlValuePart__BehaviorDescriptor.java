@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,10 +26,8 @@ public final class XmlValuePart__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> onNewLine_id2EZ251g0bS6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3080189811177340422L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> hasNewLineAfter_id2EZ251g0bSd = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3080189811177340429L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isFirstPositionAllowed_id2EZ251g0bSk, isLastPositionAllowed_id2EZ251g0bSp, onNewLine_id2EZ251g0bS6, hasNewLineAfter_id2EZ251g0bSd);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isFirstPositionAllowed_id2EZ251g0bSk, isLastPositionAllowed_id2EZ251g0bSp, onNewLine_id2EZ251g0bS6, hasNewLineAfter_id2EZ251g0bSd);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isFirstPositionAllowed_id2EZ251g0bSk(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(__thisNode__), CONCEPTS.XmlValuePart$G)) {
@@ -59,10 +56,6 @@ public final class XmlValuePart__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlValuePart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

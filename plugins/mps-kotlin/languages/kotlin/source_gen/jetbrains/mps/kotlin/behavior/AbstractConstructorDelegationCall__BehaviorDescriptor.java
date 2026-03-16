@@ -26,7 +26,6 @@ import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -43,10 +42,8 @@ public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends
   public static final SMethod<Iterable<SNode>> getAvailableConstructors_id4DC0lWpsin = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableConstructors").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(83774013505389719L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SignatureScope>> getFunctionScopeParts_id6dAo8EmAhT7 = new SMethodBuilder<Iterable<SignatureScope>>(new SJavaCompoundTypeImpl((Class<Iterable<SignatureScope>>) ((Class) Object.class))).name("getFunctionScopeParts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7162518405727723079L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableParameters_id1$jFvlD0xqw, getTargetLink_id5D4bOjrrcOr, getArguments_id1VI7K1jROBX, getFunctionDescriptor_id26mUjU3xhgD, getFunctionName_id4nn3FPlEjh5, getAvailableConstructors_id4DC0lWpsin, getFunctionScopeParts_id6dAo8EmAhT7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableParameters_id1$jFvlD0xqw, getTargetLink_id5D4bOjrrcOr, getArguments_id1VI7K1jROBX, getFunctionDescriptor_id26mUjU3xhgD, getFunctionName_id4nn3FPlEjh5, getAvailableConstructors_id4DC0lWpsin, getFunctionScopeParts_id6dAo8EmAhT7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @NotNull
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {
@@ -77,10 +74,6 @@ public final class AbstractConstructorDelegationCall__BehaviorDescriptor extends
   /*package*/ AbstractConstructorDelegationCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

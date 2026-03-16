@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,10 +35,8 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<String> getMatchingText_id2nUiI4k7qhh = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2736582054146581585L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, find_id2gzehMfi1$l, getPresentation_idhEwIMiw, getMatchingText_id2nUiI4k7qhh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7ay_HjIOVVe, find_id2gzehMfi1$l, getPresentation_idhEwIMiw, getMatchingText_id2nUiI4k7qhh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
     SNode res = SNodeFactoryOperations.createNewNode(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN)), null);
@@ -63,10 +60,6 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
   /*package*/ CustomMemberDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

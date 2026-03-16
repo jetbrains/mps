@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -34,10 +33,8 @@ public final class LanguageTextGenDeclaration__BehaviorDescriptor extends BaseBH
   public static final SMethod<List<SNode>> getAvailableFunctions_idhXYGUKO = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAvailableFunctions").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781318196L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
   /*package*/ static final SMethod<List<SNode>> getBaseTextGenComponents_idhXYGUL$ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseTextGenComponents").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1234781318244L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_idhXZLLl0, getAvailableOperations_idhXYHpEa, getAvailableFunctions_idhXYGUKO, getBaseTextGenComponents_idhXYGUL$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_idhXZLLl0, getAvailableOperations_idhXYHpEa, getAvailableFunctions_idhXYGUKO, getBaseTextGenComponents_idhXYGUL$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SConcept> getParameters_idhXZLLl0(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(new ArrayList<SConcept>());
@@ -79,10 +76,6 @@ public final class LanguageTextGenDeclaration__BehaviorDescriptor extends BaseBH
   /*package*/ LanguageTextGenDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

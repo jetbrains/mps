@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,10 +30,8 @@ public final class MoveNodeSpecialization__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Boolean> shouldKeepOldNode_id1NHZk5hi$oq = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldKeepOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520931354L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
   public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doDeprecateOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520982494L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFrom_id1NHZk5hj1Zl, getTo_id1NHZk5hj1ls, getMyMoveNodeItem_id4yRsQKnq58F, shouldKeepOldNode_id1NHZk5hi$oq, doDeprecateOldNode_id1NHZk5hiKRu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFrom_id1NHZk5hj1Zl, getTo_id1NHZk5hj1ls, getMyMoveNodeItem_id4yRsQKnq58F, shouldKeepOldNode_id1NHZk5hi$oq, doDeprecateOldNode_id1NHZk5hiKRu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getFrom_id1NHZk5hj1Zl(@NotNull SNode __thisNode__, SRepository repository) {
     return check_cflqrt_a0a0(SLinkOperations.getTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.fromNode$UG1d), repository);
@@ -54,10 +51,6 @@ public final class MoveNodeSpecialization__BehaviorDescriptor extends BaseBHDesc
   /*package*/ MoveNodeSpecialization__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

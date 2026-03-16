@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -25,10 +24,8 @@ public final class ComponentSet__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Iterable<SNode>> retrieveDependencies_id7SUlOxgz$bp = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("retrieveDependencies").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9095678365528900313L).languageId(0xa9365bd59917ae9bL, 0x3066bc0924384300L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveDependencies_id7SUlOxgz$bp);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveDependencies_id7SUlOxgz$bp);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> retrieveDependencies_id7SUlOxgz$bp(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.component$l$9M)).translate((it) -> SLinkOperations.getChildren(it, LINKS.dep$WgPG));
@@ -37,10 +34,6 @@ public final class ComponentSet__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ComponentSet__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

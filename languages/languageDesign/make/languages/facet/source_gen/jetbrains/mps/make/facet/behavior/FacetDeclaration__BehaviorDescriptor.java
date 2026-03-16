@@ -27,7 +27,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -42,10 +41,8 @@ public final class FacetDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081351397L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> getFacetFqName_id1ExXGqkc_QX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFacetFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1919086248986828221L).languageId(0xbc5d902caab85dd0L, 0x696c11654a59463bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(allExtends_id6O0kUTrsU9c, allRelated_id7fB872uckWE, classifierName_id3ZSHU3pg$b_, getFacetFqName_id1ExXGqkc_QX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(allExtends_id6O0kUTrsU9c, allRelated_id7fB872uckWE, classifierName_id3ZSHU3pg$b_, getFacetFqName_id1ExXGqkc_QX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> allExtends_id6O0kUTrsU9c(@NotNull SNode __thisNode__) {
     Set<SNode> result = SetSequence.fromSet(new LinkedHashSet<SNode>());
@@ -82,10 +79,6 @@ public final class FacetDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ FacetDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

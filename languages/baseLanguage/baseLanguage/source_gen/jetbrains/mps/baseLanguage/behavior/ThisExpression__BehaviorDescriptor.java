@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<List<SNode>> getPossibleClassifiers_idhGcjiYt = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getPossibleClassifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1215682129821L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getContextClassifierMember_id5DIwcw5fPui = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextClassifierMember").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6516287307421538194L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPossibleClassifiers_idhGcjiYt, getContextClassifierMember_id5DIwcw5fPui);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPossibleClassifiers_idhGcjiYt, getContextClassifierMember_id5DIwcw5fPui);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getPossibleClassifiers_idhGcjiYt(@NotNull SNode __thisNode__) {
     return (List<SNode>) Classifier__BehaviorDescriptor.getNonStaticContextClassifiers_id5S7J9l$QYtM.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), __thisNode__);
@@ -54,10 +51,6 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ThisExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

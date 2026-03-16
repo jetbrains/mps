@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -38,10 +37,8 @@ public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getRequieredParameters_id40BYgsZXRLw = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequieredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4622937352052374624L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
   public static final SMethod<Iterable<SNode>> supportedMethodsOrDefault_id22cXLi_Q1OU = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("supportedMethodsOrDefault").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2345521174006996282L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getRequieredParameters_id40BYgsZXRLw, supportedMethodsOrDefault_id22cXLi_Q1OU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getRequieredParameters_id40BYgsZXRLw, supportedMethodsOrDefault_id22cXLi_Q1OU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.QueryParameter$XL)) {
@@ -66,10 +63,6 @@ public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ RequestHandler__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

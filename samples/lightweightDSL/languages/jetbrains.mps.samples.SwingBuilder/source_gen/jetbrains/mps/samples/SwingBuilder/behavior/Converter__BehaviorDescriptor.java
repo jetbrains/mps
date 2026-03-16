@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class Converter__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getSourceType_id4PvwzwVa630 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSourceType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5575318041730244800L).languageId(0xa45a98e5fd0530e7L, 0xb4dbff0c8c314a79L).build2();
   public static final SMethod<SNode> getTargetType_id4PvwzwVa6sI = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5575318041730246446L).languageId(0xa45a98e5fd0530e7L, 0xb4dbff0c8c314a79L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_idUBgfI9eMAt, getSourceType_id4PvwzwVa630, getTargetType_id4PvwzwVa6sI);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_idUBgfI9eMAt, getSourceType_id4PvwzwVa630, getTargetType_id4PvwzwVa6sI);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getDescriptor_idUBgfI9eMAt(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNode("r:5e58216d-cd0e-4073-b07e-f427da07ae93(jetbrains.mps.samples.LightweightDSL.plugin.definitions)", "5575318041730181722");
@@ -48,10 +45,6 @@ public final class Converter__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Converter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -25,7 +25,6 @@ import java.util.Objects;
 import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -44,10 +43,8 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<TypeReference>> getThisTypeReferences_idxpyqH1FuA0 = new SMethodBuilder<Iterable<TypeReference>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeReference>>) ((Class) Object.class))).name("getThisTypeReferences").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(601663393865001344L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<String> getThisReceiverName_id1h3cSlxPLI4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getThisReceiverName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1460067352163326852L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, collectSpecificScope_id1yTI8p9qmpS, collectScope_id7DyvjiA20yV, getNamedTarget_id2PMtXoK3vgE, isLocal_id1vYW8S3rTh_, getType_id1TQsu41FTV5, getThisTypeReferences_idxpyqH1FuA0, getThisReceiverName_id1h3cSlxPLI4);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, collectSpecificScope_id1yTI8p9qmpS, collectScope_id7DyvjiA20yV, getNamedTarget_id2PMtXoK3vgE, isLocal_id1vYW8S3rTh_, getType_id1TQsu41FTV5, getThisTypeReferences_idxpyqH1FuA0, getThisReceiverName_id1h3cSlxPLI4);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder builder = new StringBuilder();
@@ -108,10 +105,6 @@ public final class LambdaLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ LambdaLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

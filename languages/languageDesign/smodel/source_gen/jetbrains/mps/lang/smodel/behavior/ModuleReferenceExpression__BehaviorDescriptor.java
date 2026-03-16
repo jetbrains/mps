@@ -12,9 +12,9 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SModuleId;
@@ -22,7 +22,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -32,10 +31,8 @@ public final class ModuleReferenceExpression__BehaviorDescriptor extends BaseBHD
   public static final SMethod<SModule> getModule_id3wj3sjzQUV1 = new SMethodBuilder<SModule>(new SJavaCompoundTypeImpl(SModule.class)).name("getModule").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4040588429969043137L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<List<SModule>> getVisibleModules_id3wj3sjzSgF$ = new SMethodBuilder<List<SModule>>(new SJavaCompoundTypeImpl((Class<List<SModule>>) ((Class) Object.class))).name("getVisibleModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4040588429969394404L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModule_id3wj3sjzQUV1, getVisibleModules_id3wj3sjzSgF$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModule_id3wj3sjzQUV1, getVisibleModules_id3wj3sjzSgF$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static SModule getModule_id3wj3sjzQUV1(@NotNull SNode __thisNode__) {
@@ -57,10 +54,6 @@ public final class ModuleReferenceExpression__BehaviorDescriptor extends BaseBHD
   /*package*/ ModuleReferenceExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

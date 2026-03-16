@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -25,10 +24,8 @@ public final class HtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isMultiline_idVhXOWqV8wJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1067906505789704239L).languageId(0xad374b804d24ba45L, 0x8a10cb27224943abL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiline_idVhXOWqV8wJ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiline_idVhXOWqV8wJ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isMultiline_idVhXOWqV8wJ(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.content$P4hr)).count() > 1;
@@ -37,10 +34,6 @@ public final class HtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ HtmlTag__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

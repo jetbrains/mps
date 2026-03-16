@@ -21,7 +21,6 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.ArrayList;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -47,10 +46,8 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<List<SConcept>> getParameterConcepts_id6ALWH9fQysn = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429956970263L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<SNode> getLeftNodeConcept_idhEwJdFJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeftNodeConcept").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877508847L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeftExpression_idhEwJdGu, getLeftExpressionLeftExpression_idhEwJdGS, getLeftExpressionOperation_idhEwJdHi, getParameter_idhEwJdHG, operandCanBeNull_idhWYZ0eEN6z, getVariableExpectedName_idhEwIP$B, applicableToModel_id1653mnvAf1y, applicableToConceptProperty_id1653mnvAgpp, applicableToNode_id1653mnvAgrs, applicableToProperty_id45eRmv019Ae, applicableToLink_id1653mnvAgvK, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ, applicableToLinkList_id1653mnvAgwe, getParameterConcepts_id6ALWH9fQysn, getLeftNodeConcept_idhEwJdFJ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeftExpression_idhEwJdGu, getLeftExpressionLeftExpression_idhEwJdGS, getLeftExpressionOperation_idhEwJdHi, getParameter_idhEwJdHG, operandCanBeNull_idhWYZ0eEN6z, getVariableExpectedName_idhEwIP$B, applicableToModel_id1653mnvAf1y, applicableToConceptProperty_id1653mnvAgpp, applicableToNode_id1653mnvAgrs, applicableToProperty_id45eRmv019Ae, applicableToLink_id1653mnvAgvK, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ, applicableToLinkList_id1653mnvAgwe, getParameterConcepts_id6ALWH9fQysn, getLeftNodeConcept_idhEwJdFJ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getLeftExpression_idhEwJdGu(@NotNull SNode __thisNode__) {
     SNode parent = SNodeOperations.getParent(__thisNode__);
@@ -123,10 +120,6 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ SNodeOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

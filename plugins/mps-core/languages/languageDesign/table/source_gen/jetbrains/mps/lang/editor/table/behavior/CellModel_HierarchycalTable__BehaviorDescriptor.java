@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.editor.behavior.AbstractComponent__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -25,10 +24,8 @@ public final class CellModel_HierarchycalTable__BehaviorDescriptor extends BaseB
 
   public static final SMethod<SNode> getContainingConceptDeclaration_id5p3TFWLvETA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6216065619544944230L).languageId(0x9e2f07793fbfcb41L, 0x272d3b44cc8481eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContainingConceptDeclaration_id5p3TFWLvETA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContainingConceptDeclaration_id5p3TFWLvETA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getContainingConceptDeclaration_id5p3TFWLvETA(@NotNull SNode __thisNode__) {
     SNode editorComponent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseEditorComponent$49, false, false);
@@ -38,10 +35,6 @@ public final class CellModel_HierarchycalTable__BehaviorDescriptor extends BaseB
   /*package*/ CellModel_HierarchycalTable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

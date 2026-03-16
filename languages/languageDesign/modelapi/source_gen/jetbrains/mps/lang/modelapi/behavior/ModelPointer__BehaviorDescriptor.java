@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,8 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> create_id_GDk1qZ2LQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(679099339649068150L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SModelReference.class, ""));
   public static final SMethod<SModelReference> toModelReference_id1Bs_61$mvvu = new SMethodBuilder<SModelReference>(new SJavaCompoundTypeImpl(SModelReference.class)).name("toModelReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1863527487545931742L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ2JP, create_id_GDk1qZ2LQ, toModelReference_id1Bs_61$mvvu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ2JP, create_id_GDk1qZ2LQ, toModelReference_id1Bs_61$mvvu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode create_id_GDk1qZ2JP(@NotNull SAbstractConcept __thisConcept__, SModel where, SModel target) {
     return (SNode) ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2LQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), where, SModelOperations.getPointer(target));
@@ -66,10 +63,6 @@ public final class ModelPointer__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ModelPointer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

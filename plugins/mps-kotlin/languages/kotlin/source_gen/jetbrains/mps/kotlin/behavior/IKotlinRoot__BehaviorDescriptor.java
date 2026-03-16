@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,10 +43,8 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<String> getTargetTextGenFolder_id3xoAZRzelnN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTargetTextGenFolder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4060166578815718899L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExplicitPlatform_id7xxJ3oI1zMl, getPlatform_id2Gpd$BYJrkg, getPackageName_id74Z9X$ygjTm, getFqName_id74Z9X$ygjSa, getFqName_idhEwIO9y, collectScope_id7DyvjiA20yV, isRoot_id7_XheqBfExI, enclosingRoot_id7_XheqBfOCk, collectPublicScope_id58ySuOXQyMi, getPresentation_idhEwIMiw, getTargetTextGenFolder_id3xoAZRzelnN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExplicitPlatform_id7xxJ3oI1zMl, getPlatform_id2Gpd$BYJrkg, getPackageName_id74Z9X$ygjTm, getFqName_id74Z9X$ygjSa, getFqName_idhEwIO9y, collectScope_id7DyvjiA20yV, isRoot_id7_XheqBfExI, enclosingRoot_id7_XheqBfOCk, collectPublicScope_id58ySuOXQyMi, getPresentation_idhEwIMiw, getTargetTextGenFolder_id3xoAZRzelnN);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Optional<TargetPlatform> getExplicitPlatform_id7xxJ3oI1zMl(@NotNull final SNode __thisNode__) {
     return Optional.ofNullable(TargetPlatform__BehaviorDescriptor.getPlatform_id6IEyNxjYXc_.invoke(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TargetPlatforms$Kr).get(__thisNode__), LINKS.platform$FHqw))).or(() -> IKotlinRoot__BehaviorDescriptor.enclosingRoot_id7_XheqBfOCk.invoke(__thisNode__).flatMap((root) -> (Optional<TargetPlatform>) IKotlinRoot__BehaviorDescriptor.getExplicitPlatform_id7xxJ3oI1zMl.invoke(root)));
@@ -100,10 +97,6 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IKotlinRoot__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

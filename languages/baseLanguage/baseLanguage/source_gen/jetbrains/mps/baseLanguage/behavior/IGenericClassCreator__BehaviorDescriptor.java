@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,10 +28,8 @@ public final class IGenericClassCreator__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<List<SNode>> getTypeParameter_id1HUOkcfjoPx = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeParameter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1980125072132509025L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> needInference_idQ$FjPqwIoN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needInference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(983101097696749107L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx, needInference_idQ$FjPqwIoN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx, needInference_idQ$FjPqwIoN);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean needInference_idQ$FjPqwIoN(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.inferTypeParams$bgj_) && ListSequence.fromList(IGenericClassCreator__BehaviorDescriptor.getTypeParameter_id1HUOkcfjoPx.invoke(__thisNode__)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(IGenericClassCreator__BehaviorDescriptor.getTargetClassifier_id1k0fX3j6Qov.invoke(__thisNode__), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
@@ -41,10 +38,6 @@ public final class IGenericClassCreator__BehaviorDescriptor extends BaseBHDescri
   /*package*/ IGenericClassCreator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

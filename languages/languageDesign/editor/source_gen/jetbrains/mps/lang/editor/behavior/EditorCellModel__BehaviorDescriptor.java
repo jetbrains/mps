@@ -27,7 +27,6 @@ import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -73,10 +72,8 @@ public final class EditorCellModel__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SNode> getParentCollectionCell_id7XYaZQUjT8u = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParentCollectionCell").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9186828658634887710L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Boolean> canBeUsedAsEmptyCell_id6RO52Mcgrfa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeUsedAsEmptyCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7922979826015777738L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCellModelKind_idhHfCaJf, getCellId_idhHbewHT, getDefaultCellId_id3VYF6qfIQs_, getUniqueCellIdPrefix_id7c58AbNRrel, getAbbreviation_id7c58AbNSIrP, getTopAncestorCellModel_idM76vXnqh08, getFactoryMethodName_idhHfE2BD, getParent_idhJF64sU, isSelectable_idhJF6SX1, setSelectable_idi4bRWUe, setTransparent_id3uCw42NPV2V, getColor_idhPjC$St, getForegroundColor_idhL6TA5F, getBackgroundColor_idhL7rNfN, getTextBackgroundColor_idhL7BhMP, isUnderlined_idhLmqR8u, isStrikeOut_idhNnL8J1, getFontFamily_id4qPnysr_4es, getFontSize_idhLmaQwP, getFontStyle_idhLcv3Z9, getOpeningTag_idhKxXtpm, getClosingTag_idhKxXx_K, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, getOpeningPrefix_idhKxW98J, getDefaultFontStyle_idhL_r0Mx, isCellIdInitialized_idhTuDsSD, getBooleanStyleValue_idi0pNf1r, isNewLine_idi0pLPAc, isOnNewLine_idi0pUMOG, isIndented_idi0pN94$, isNewLineChildren_idi0pNGlC, getParentCollectionCell_id7XYaZQUjT8u, canBeUsedAsEmptyCell_id6RO52Mcgrfa);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCellModelKind_idhHfCaJf, getCellId_idhHbewHT, getDefaultCellId_id3VYF6qfIQs_, getUniqueCellIdPrefix_id7c58AbNRrel, getAbbreviation_id7c58AbNSIrP, getTopAncestorCellModel_idM76vXnqh08, getFactoryMethodName_idhHfE2BD, getParent_idhJF64sU, isSelectable_idhJF6SX1, setSelectable_idi4bRWUe, setTransparent_id3uCw42NPV2V, getColor_idhPjC$St, getForegroundColor_idhL6TA5F, getBackgroundColor_idhL7rNfN, getTextBackgroundColor_idhL7BhMP, isUnderlined_idhLmqR8u, isStrikeOut_idhNnL8J1, getFontFamily_id4qPnysr_4es, getFontSize_idhLmaQwP, getFontStyle_idhLcv3Z9, getOpeningTag_idhKxXtpm, getClosingTag_idhKxXx_K, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, getOpeningPrefix_idhKxW98J, getDefaultFontStyle_idhL_r0Mx, isCellIdInitialized_idhTuDsSD, getBooleanStyleValue_idi0pNf1r, isNewLine_idi0pLPAc, isOnNewLine_idi0pUMOG, isIndented_idi0pN94$, isNewLineChildren_idi0pNGlC, getParentCollectionCell_id7XYaZQUjT8u, canBeUsedAsEmptyCell_id6RO52Mcgrfa);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getCellModelKind_idhHfCaJf(@NotNull SNode __thisNode__) {
     String result = SNodeOperations.getConcept(__thisNode__).getName();
@@ -331,10 +328,6 @@ public final class EditorCellModel__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ EditorCellModel__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

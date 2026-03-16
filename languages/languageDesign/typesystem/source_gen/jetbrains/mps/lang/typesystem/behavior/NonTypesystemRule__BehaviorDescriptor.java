@@ -26,7 +26,6 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,10 +39,8 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> findSuperRules_id21kJG8Hh$W9 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("findSuperRules").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2329696648449904393L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setBaseConcept_id5r_35Ihc58c, getScope_id52_Geb4QDV$, findSuperRules_id21kJG8Hh$W9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setBaseConcept_id5r_35Ihc58c, getScope_id52_Geb4QDV$, findSuperRules_id21kJG8Hh$W9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     IConceptAspect__BehaviorDescriptor.setBaseConcept_id5r_35Ihc58c.invokeSuper(__thisNode__, CONCEPTS.NonTypesystemRule$um, baseConcept);
@@ -77,10 +74,6 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ NonTypesystemRule__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

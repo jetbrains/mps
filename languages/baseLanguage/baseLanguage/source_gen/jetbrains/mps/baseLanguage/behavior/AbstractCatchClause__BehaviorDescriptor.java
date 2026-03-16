@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class AbstractCatchClause__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<List<SNode>> getCaughtTypes_id2FJPm3OMxhX = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCaughtTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3093926081427281021L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getCatchBody_id4iVGRTTf1R5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCatchBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4952749571005226437L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCaughtTypes_id2FJPm3OMxhX, getCatchBody_id4iVGRTTf1R5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCaughtTypes_id2FJPm3OMxhX, getCatchBody_id4iVGRTTf1R5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getCaughtTypes_id2FJPm3OMxhX(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(new ArrayList<SNode>());
@@ -40,10 +37,6 @@ public final class AbstractCatchClause__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ AbstractCatchClause__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,10 +28,8 @@ public final class LinkAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> setLink_id6Gg5KlvuxxF = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7714691473529772139L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
   public static final SMethod<String> getNameForReporting_id5gACAVBuLQd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6063712545514659213L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id1avfQ4BEFo6, setLink_id6Gg5KlvuxxF, getNameForReporting_id5gACAVBuLQd);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id1avfQ4BEFo6, setLink_id6Gg5KlvuxxF, getNameForReporting_id5gACAVBuLQd);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SReferenceLink getLink_id1avfQ4BEFo6(@NotNull SNode __thisNode__) {
     String nonEmptyLinkRole = (SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$DpOd) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$DpOd));
@@ -58,10 +55,6 @@ public final class LinkAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ LinkAttribute__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

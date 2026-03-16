@@ -16,7 +16,6 @@ import jetbrains.mps.lang.scopes.runtime.ScopeProviderContext;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class UniformScopeProvider__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Scope> getScope_id52_Geb4QFgX = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203257917L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
   public static final SMethod<Scope> getScope_id6ALWH9fZ5$3 = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429959211267L).languageId(0x9f92a9e93c803ffaL, 0xd8f591ec4d864af2L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ScopeProviderContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getScope_id6ALWH9fZ5$3);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getScope_id6ALWH9fZ5$3);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode context) {
     return ((Scope) UniformScopeProvider__BehaviorDescriptor.getScope_id6ALWH9fZ5$3.invoke(__thisNode__, kind, ScopeProviderContext.childContext(context)));
@@ -42,10 +39,6 @@ public final class UniformScopeProvider__BehaviorDescriptor extends BaseBHDescri
   /*package*/ UniformScopeProvider__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

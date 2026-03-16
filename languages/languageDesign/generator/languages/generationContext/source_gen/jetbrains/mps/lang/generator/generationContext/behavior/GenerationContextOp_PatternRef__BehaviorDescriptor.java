@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,19 +22,13 @@ public final class GenerationContextOp_PatternRef__BehaviorDescriptor extends Ba
   public static final SMethod<SNode> getTarget_id1xCtdgeTQHC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTarget").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1758784108620114792L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2();
   public static final SMethod<Void> setTarget_id1xCtdgeUoP5 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setTarget").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1758784108620254533L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTarget_id1xCtdgeTQHC, setTarget_id1xCtdgeUoP5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTarget_id1xCtdgeTQHC, setTarget_id1xCtdgeUoP5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ GenerationContextOp_PatternRef__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

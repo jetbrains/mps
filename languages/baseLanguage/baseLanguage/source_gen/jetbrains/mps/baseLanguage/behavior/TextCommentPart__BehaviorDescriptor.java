@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,10 +23,8 @@ public final class TextCommentPart__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<Boolean> isToDo_id6hHyb3YSGHZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isToDo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7236590470026152831L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isToDo_id6hHyb3YSGHZ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isToDo_id6hHyb3YSGHZ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isToDo_id6hHyb3YSGHZ(@NotNull SNode __thisNode__) {
     String text = SPropertyOperations.getString(__thisNode__, PROPS.text$ag2i);
@@ -42,10 +39,6 @@ public final class TextCommentPart__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ TextCommentPart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

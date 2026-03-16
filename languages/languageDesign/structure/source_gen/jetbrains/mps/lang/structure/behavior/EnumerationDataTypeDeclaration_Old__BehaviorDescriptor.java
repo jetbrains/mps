@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -30,10 +29,8 @@ public final class EnumerationDataTypeDeclaration_Old__BehaviorDescriptor extend
   public static final SMethod<SNode> toBaseLanguageType_idhEwI9ym = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("toBaseLanguageType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877229718L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<SNode> getDefaultMember_idhEwIM$p = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDefaultMember").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877397785L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toBaseLanguageType_idhEwI9ym, getDefaultMember_idhEwIM$p);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toBaseLanguageType_idhEwI9ym, getDefaultMember_idhEwIM$p);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode toBaseLanguageType_idhEwI9ym(@NotNull SNode __thisNode__) {
     SNode memberDataType = SLinkOperations.getTarget(__thisNode__, LINKS.memberDataType$ahxG);
@@ -53,10 +50,6 @@ public final class EnumerationDataTypeDeclaration_Old__BehaviorDescriptor extend
   /*package*/ EnumerationDataTypeDeclaration_Old__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

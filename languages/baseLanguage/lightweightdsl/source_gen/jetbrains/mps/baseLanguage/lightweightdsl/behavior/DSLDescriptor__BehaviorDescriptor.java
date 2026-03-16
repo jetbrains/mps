@@ -24,7 +24,6 @@ import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -40,10 +39,8 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedQueriesQualifiedClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4507527286374328838L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
   public static final SMethod<Iterable<SNode>> getClassLikeMembers_id2iCqkkxuhoj = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getClassLikeMembers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2641476927088039443L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPreferredConcept_id1_lSsE3TA5X, initializeInstance_id2VRROcY8CaS, getGeneratedClassName_id2VRROcY7Vt6, getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6, getClassLikeMembers_id2iCqkkxuhoj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPreferredConcept_id1_lSsE3TA5X, initializeInstance_id2VRROcY8CaS, getGeneratedClassName_id2VRROcY7Vt6, getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6, getClassLikeMembers_id2iCqkkxuhoj);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getPreferredConcept_id1_lSsE3TA5X(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.preferredConcept$1q4V) == null ? SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198") : SLinkOperations.getTarget(__thisNode__, LINKS.preferredConcept$1q4V));
@@ -88,10 +85,6 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ DSLDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

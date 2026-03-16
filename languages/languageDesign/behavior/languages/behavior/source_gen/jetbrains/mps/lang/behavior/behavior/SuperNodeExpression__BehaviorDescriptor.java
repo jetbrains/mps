@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -30,10 +29,8 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSpecifiedSuperConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468819723L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
   public static final SMethod<Boolean> isEnclosingMethodStatic_id4xnLoJyFYX5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnclosingMethodStatic").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5212852298298945349L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnclosingMethod_id4MNYYw$1vF5, getSpecifiedSuperConcept_id2k7p7sTvKkb, isEnclosingMethodStatic_id4xnLoJyFYX5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnclosingMethod_id4MNYYw$1vF5, getSpecifiedSuperConcept_id2k7p7sTvKkb, isEnclosingMethodStatic_id4xnLoJyFYX5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getEnclosingMethod_id4MNYYw$1vF5(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ConceptMethodDeclaration$N0, false, false);
@@ -50,10 +47,6 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ SuperNodeExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

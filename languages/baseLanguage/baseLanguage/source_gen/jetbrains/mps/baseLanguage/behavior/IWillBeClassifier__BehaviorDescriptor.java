@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -33,10 +32,8 @@ public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SNode> baseClassifier_id3_1Lj9FFNJ0 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("baseClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4125795553993767872L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> resolve_id3ZSHU3ph184 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("resolve").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081469956L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(classifierName_id3ZSHU3pg$b_, baseClassifier_id3_1Lj9FFNJ0, resolve_id3ZSHU3ph184);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(classifierName_id3ZSHU3pg$b_, baseClassifier_id3_1Lj9FFNJ0, resolve_id3ZSHU3ph184);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode baseClassifier_id3_1Lj9FFNJ0(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(_quotation_createNode_937vih_a0a0b(), LINKS.classifier$cxMr);
@@ -49,10 +46,6 @@ public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ IWillBeClassifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,10 +26,8 @@ public final class EnumOperation__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> getEnumDecl_id66cvXGSmQgk = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnumDecl").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7029133697938580500L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnumDecl_id66cvXGSmQgk);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnumDecl_id66cvXGSmQgk);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getEnumDecl_id66cvXGSmQgk(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(SNodeOperations.as(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.EnumerationIdRefExpression$Fx), LINKS.enumDeclaration$ee20);
@@ -39,10 +36,6 @@ public final class EnumOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ EnumOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -25,10 +24,8 @@ public final class UnaryExpression__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<Boolean> isLeftExpressionTarget_id69RFwVHPwd9 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLeftExpressionTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7095331117088506697L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SContainmentLink>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLeftExpressionTarget_id69RFwVHPwd9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLeftExpressionTarget_id69RFwVHPwd9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLeftExpressionTarget_id69RFwVHPwd9(@NotNull SNode __thisNode__, @Nullable SContainmentLink child) {
     // By default, all unary expression children are read, and what is on the left of the expression is the result of that
@@ -41,10 +38,6 @@ public final class UnaryExpression__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ UnaryExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

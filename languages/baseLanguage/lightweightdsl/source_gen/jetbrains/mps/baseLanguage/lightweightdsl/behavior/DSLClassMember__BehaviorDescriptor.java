@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,10 +39,8 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> create_id7ay_HjIOVVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8260330507834998478L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<String> getMatchingText_id2nUiI4k7qhh = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2736582054146581585L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiple_id1QReUKIGS9B, isRequired_id2WSWNq1VhVM, getPlaceholder_id7T23sO8tlHe, getDefault_id7DN9hucqR$0, createForClass_id5BD$AU437jJ, find_id2gzehMfi1$l, findPlaceholders_id5ZzANK5B6wZ, create_id7ay_HjIOVVe, getMatchingText_id2nUiI4k7qhh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiple_id1QReUKIGS9B, isRequired_id2WSWNq1VhVM, getPlaceholder_id7T23sO8tlHe, getDefault_id7DN9hucqR$0, createForClass_id5BD$AU437jJ, find_id2gzehMfi1$l, findPlaceholders_id5ZzANK5B6wZ, create_id7ay_HjIOVVe, getMatchingText_id2nUiI4k7qhh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isMultiple_id1QReUKIGS9B(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifier$xlAc), CONCEPTS.MultipleModifier$o9)).isNotEmpty();
@@ -85,10 +82,6 @@ public final class DSLClassMember__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ DSLClassMember__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
   public static final SMethod<List<SNode>> getDeclarations_id7RZWrHVaXCH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclarations").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329859117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isDeconstructing_id7RZWrHVbnio = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeconstructing").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329964184L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, isDeconstructing_id7RZWrHVbnio);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, isDeconstructing_id7RZWrHVbnio);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean hasExplicityType_id2n1mrwy6RU_(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(AbstractPropertyDeclaration__BehaviorDescriptor.getDeclarations_id7RZWrHVaXCH.invoke(__thisNode__)).all((it) -> (SLinkOperations.getTarget(it, LINKS.type$RmkT) != null));
@@ -42,10 +39,6 @@ public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseB
   /*package*/ AbstractPropertyDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

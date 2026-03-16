@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> extractDocText_id3ahYUteDckr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("extractDocText").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3643970269516973339L).languageId(0xac8b972b953bcdfeL, 0xd304f2474944479dL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeEmpty_idpB77MxqCkE, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, extractDocText_id3ahYUteDckr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeEmpty_idpB77MxqCkE, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, extractDocText_id3ahYUteDckr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canBeEmpty_idpB77MxqCkE(@NotNull SNode __thisNode__) {
     return true;
@@ -67,10 +64,6 @@ public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ DocText__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

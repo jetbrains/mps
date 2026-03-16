@@ -28,7 +28,7 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> insertTextualElementAtCaret_id2MpFNjy4v6O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertTextualElementAtCaret").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3213792450771546548L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(EditorContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7088756329566028809L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(insertTextualElementAtCaret_id2MpFNjy4v6O, getTextualRepresentation_id69wk_bF5sg9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(insertTextualElementAtCaret_id2MpFNjy4v6O, getTextualRepresentation_id69wk_bF5sg9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.value$X7Tp, "");

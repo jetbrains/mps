@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> isNewVersionFormat_id3AMbuf0qvWw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNewVersionFormat").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225387296L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   public static final SMethod<String> getVendor_id6RvRF8fBDEC = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVendor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7917291526288218792L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVersionMajor_id3AMbuf0qvyc, getVersionMinor_id3AMbuf0qHKA, getVersionBugfixNr_id3AMbuf3$r6x, getVersionEap_id3AMbuf0qQ5F, isNewVersionFormat_id3AMbuf0qvWw, getVendor_id6RvRF8fBDEC);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVersionMajor_id3AMbuf0qvyc, getVersionMinor_id3AMbuf0qHKA, getVersionBugfixNr_id3AMbuf3$r6x, getVersionEap_id3AMbuf0qQ5F, isNewVersionFormat_id3AMbuf0qvWw, getVendor_id6RvRF8fBDEC);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVersionMajor_id3AMbuf0qvyc(@NotNull SNode __thisNode__, MacroHelper helper) {
     return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI), LINKS.versionMajor$uCbh), helper) : SPropertyOperations.getInteger(__thisNode__, PROPS.major$o5cB) + "");
@@ -60,10 +57,6 @@ public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ BuildMps_Branding__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -31,10 +30,8 @@ public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519781L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("convertAmountAdvanced").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(595452003767176013L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, convertAmountAdvanced_idx3u75dl$Hd);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, convertAmountAdvanced_idx3u75dl$Hd);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
     String text = MoneyLiteral__BehaviorDescriptor.convertAmountAdvanced_idx3u75dl$Hd.invokeSpecial(__thisNode__, ((int) SPropertyOperations.getInteger(__thisNode__, PROPS.amount$FBiW)));
@@ -66,10 +63,6 @@ public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ MoneyLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

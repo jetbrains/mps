@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -31,10 +30,8 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static final SMethod<String> getMappingLabelText_idhEwJbak = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMappingLabelText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877498516L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
   public static final SMethod<Boolean> hasMappingLabel_id3uqP$qKDAVt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4006750417599229661L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getTemplateType_idhEwJbaf, getMappingLabelText_idhEwJbak, hasMappingLabel_id3uqP$qKDAVt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getTemplateType_idhEwJbaf, getMappingLabelText_idhEwJbak, hasMappingLabel_id3uqP$qKDAVt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder(SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)));
@@ -63,10 +60,6 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BaseMappingRule__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

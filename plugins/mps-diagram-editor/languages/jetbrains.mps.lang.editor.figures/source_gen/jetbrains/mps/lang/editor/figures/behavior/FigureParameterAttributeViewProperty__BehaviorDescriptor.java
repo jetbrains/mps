@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class FigureParameterAttributeViewProperty__BehaviorDescriptor exte
   public static final SMethod<SNode> getStaticFieldDeclaration_id6RaK14zkc88 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStaticFieldDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7911346875269169672L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
   public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(342110547581236128L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMember_id4H19mAwT7Py, getStaticFieldDeclaration_id6RaK14zkc88, getParameterType_idiZqVFYvBew);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMember_id4H19mAwT7Py, getStaticFieldDeclaration_id6RaK14zkc88, getParameterType_idiZqVFYvBew);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getParameterMember_id4H19mAwT7Py(@NotNull SNode __thisNode__) {
     return FigureParameterAttributeViewProperty__BehaviorDescriptor.getStaticFieldDeclaration_id6RaK14zkc88.invoke(__thisNode__);
@@ -46,10 +43,6 @@ public final class FigureParameterAttributeViewProperty__BehaviorDescriptor exte
   /*package*/ FigureParameterAttributeViewProperty__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class PunctuationRightStyleClassItem__BehaviorDescriptor extends Ba
 
   public static final SMethod<StyleAttribute<Boolean>> getStyleAttribute_id3a0zHG4tjdX = new SMethodBuilder<StyleAttribute<Boolean>>(new SJavaCompoundTypeImpl(StyleAttribute.class)).name("getStyleAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3639065570239132541L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStyleAttribute_id3a0zHG4tjdX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStyleAttribute_id3a0zHG4tjdX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static StyleAttribute<Boolean> getStyleAttribute_id3a0zHG4tjdX(@NotNull SNode __thisNode__) {
     return StyleAttributes.PUNCTUATION_RIGHT;
@@ -36,10 +33,6 @@ public final class PunctuationRightStyleClassItem__BehaviorDescriptor extends Ba
   /*package*/ PunctuationRightStyleClassItem__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

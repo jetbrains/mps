@@ -23,7 +23,7 @@ public final class ForEachNodeFoundClosureParameterDeclaration__BehaviorDescript
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16d39f72L, "jetbrains.mps.lang.findUsages.structure.ForEachNodeFoundClosureParameterDeclaration");
 
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.name$MnvL, "foundNode");

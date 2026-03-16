@@ -20,7 +20,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.baseLanguage.util.ReflectionUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -38,10 +37,8 @@ public final class StaticFieldReferenceOperation__BehaviorDescriptor extends Bas
   public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497939L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isLValue_idhEwIP$w = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410080L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id1U0U1G1L440, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, lvalue_id1653mnvAgpj, isLValue_idhEwIP$w);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id1U0U1G1L440, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, lvalue_id1653mnvAgpj, isLValue_idhEwIP$w);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getClassifier_id1U0U1G1L440(@NotNull SNode __thisNode__) {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$yW))) {
@@ -97,10 +94,6 @@ public final class StaticFieldReferenceOperation__BehaviorDescriptor extends Bas
   /*package*/ StaticFieldReferenceOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

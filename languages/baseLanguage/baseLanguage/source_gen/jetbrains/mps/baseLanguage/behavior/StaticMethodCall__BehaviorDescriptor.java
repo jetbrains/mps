@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -40,10 +39,8 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<SNode> getClassifier_id7S22xyoLQG7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079830899491040007L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> setClassifier_id7S22xyoLQH8 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079830899491040072L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id2RbFUmZleRt, convertToLocal_id2RbFUmZlhob, getPresentation_idhEwIMiw, getClassifier_id7S22xyoLQG7, setClassifier_id7S22xyoLQH8);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id2RbFUmZleRt, convertToLocal_id2RbFUmZlhob, getPresentation_idhEwIMiw, getClassifier_id7S22xyoLQG7, setClassifier_id7S22xyoLQH8);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
     return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC), __thisNode__)).where((it) -> Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName)).toList();
@@ -76,10 +73,6 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ StaticMethodCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -38,7 +38,7 @@ public final class BuildCompositePath__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<List<String>> getHeadSuggestions_id4jjtc7X04td = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getHeadSuggestions").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187212109L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<IFile> getFile_idIG8oXsODon = new SMethodBuilder<IFile>(new SJavaCompoundTypeImpl(IFile.class)).name("getFile").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(841084130032784919L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id7usrAn05okK, getLastSegment_id1bWeed$oUbg, getPathToHead_id3skBIrUiCOV, getHeadSuggestions_id4jjtc7X04td, getFile_idIG8oXsODon);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id7usrAn05okK, getLastSegment_id1bWeed$oUbg, getPathToHead_id3skBIrUiCOV, getHeadSuggestions_id4jjtc7X04td, getFile_idIG8oXsODon);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.set(__thisNode__, PROPS.head$$gC$, "");

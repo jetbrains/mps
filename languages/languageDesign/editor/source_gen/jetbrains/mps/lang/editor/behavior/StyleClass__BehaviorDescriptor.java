@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -41,10 +40,8 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getStyleClassFQName_id1OmL7qeocft = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2096078690061435869L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getStyleSheet_idVHPC7elo9L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleSheet").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1075751739012252273L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasCycles_id6rIuTvxpF4l, getPriority_id1F_pHBEuveg, hasApplyCycles_id2airAaTkVMd, getStyleClassName_idVHPC7elo9B, getStyleClassFQName_id1OmL7qeocft, getStyleSheet_idVHPC7elo9L);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasCycles_id6rIuTvxpF4l, getPriority_id1F_pHBEuveg, hasApplyCycles_id2airAaTkVMd, getStyleClassName_idVHPC7elo9B, getStyleClassFQName_id1OmL7qeocft, getStyleSheet_idVHPC7elo9L);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean hasCycles_id6rIuTvxpF4l(@NotNull SNode __thisNode__) {
     return ((int) StyleClass__BehaviorDescriptor.getPriority_id1F_pHBEuveg.invoke(__thisNode__)) == -1;
@@ -118,10 +115,6 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ StyleClass__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

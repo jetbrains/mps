@@ -23,7 +23,6 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,10 +37,8 @@ public final class NodeBuilderNode__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> isExpressionExternal_id4IuFl2JvP6C = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpressionExternal").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5448983161218224552L).languageId(0xbbcc75c4219e9555L, 0x3a13115c633c4c5cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Void> collectExternalExpressions_idRRzwLnBy10 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectExternalExpressions").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1006429225401327680L).languageId(0xbbcc75c4219e9555L, 0x3a13115c633c4c5cL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getExternalExpressions_idRRzwLnBxZy, isExpressionExternal_id4IuFl2JvP6C, collectExternalExpressions_idRRzwLnBy10);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getExternalExpressions_idRRzwLnBxZy, isExpressionExternal_id4IuFl2JvP6C, collectExternalExpressions_idRRzwLnBy10);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyDeclaration$1S)) {
@@ -101,10 +98,6 @@ public final class NodeBuilderNode__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ NodeBuilderNode__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

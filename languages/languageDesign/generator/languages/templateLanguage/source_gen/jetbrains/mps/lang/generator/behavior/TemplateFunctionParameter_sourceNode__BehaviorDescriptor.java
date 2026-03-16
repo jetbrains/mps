@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -24,10 +23,8 @@ public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor exte
 
   public static final SMethod<Boolean> needConceptFunction_idhZKliUO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needConceptFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1236687728308L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(needConceptFunction_idhZKliUO);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(needConceptFunction_idhZKliUO);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean needConceptFunction_idhZKliUO(@NotNull SNode __thisNode__) {
     // we could use this cf parameter in ITemplateCall argument expressions
@@ -37,10 +34,6 @@ public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor exte
   /*package*/ TemplateFunctionParameter_sourceNode__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

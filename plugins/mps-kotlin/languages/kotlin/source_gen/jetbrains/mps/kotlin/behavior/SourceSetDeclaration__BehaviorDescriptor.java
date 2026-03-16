@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,10 +27,8 @@ public final class SourceSetDeclaration__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<TargetPlatform> getPlatform_id2QFEoQbCMwt = new SMethodBuilder<TargetPlatform>(new SJavaCompoundTypeImpl(TargetPlatform.class)).name("getPlatform").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3290910378122487837L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPlatform_id2QFEoQbCMwt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPlatform_id2QFEoQbCMwt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static TargetPlatform getPlatform_id2QFEoQbCMwt(@NotNull SNode __thisNode__) {
     // Combines all platforms from dependant sets
@@ -41,10 +38,6 @@ public final class SourceSetDeclaration__BehaviorDescriptor extends BaseBHDescri
   /*package*/ SourceSetDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

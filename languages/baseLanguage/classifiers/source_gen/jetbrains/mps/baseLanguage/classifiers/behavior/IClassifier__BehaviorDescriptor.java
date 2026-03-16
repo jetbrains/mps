@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractExtractMethodRefactoringProcessor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,10 +42,8 @@ public final class IClassifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> requiresAllFieldMembersPrivate_id441vB8LNFML = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllFieldMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116369030321L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
   public static final SMethod<Boolean> requiresAllMethodMembersPrivate_id441vB8LJxAr = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresAllMethodMembersPrivate").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4684164116367939995L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idhEwJimy, createSuperType_idhHOGPWW, getParts_idhEwJimO, getMembers_idhEwJink, getMembers_idhEwJioW, getExtractMethodRefactoringProcessor_idhLwHWdT, getContextClassifier_idhEwJim4, requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_idhEwJimy, createSuperType_idhHOGPWW, getParts_idhEwJimO, getMembers_idhEwJink, getMembers_idhEwJioW, getExtractMethodRefactoringProcessor_idhLwHWdT, getContextClassifier_idhEwJim4, requiresAllFieldMembersPrivate_id441vB8LNFML, requiresAllMethodMembersPrivate_id441vB8LJxAr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc7942feL, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierType"));
@@ -133,10 +130,6 @@ public final class IClassifier__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IClassifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

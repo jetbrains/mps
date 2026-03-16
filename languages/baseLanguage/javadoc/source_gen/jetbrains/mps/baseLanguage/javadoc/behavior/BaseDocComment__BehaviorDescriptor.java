@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -30,10 +29,8 @@ public final class BaseDocComment__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> hasTags_id4iGwz$GSfd_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasTags").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4948473272651019109L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
   public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225207468592L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTagSectionEmpty_id7lVCwDcz6WN, hasTags_id4iGwz$GSfd_, getMessage_idhP43_8K);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTagSectionEmpty_id7lVCwDcz6WN, hasTags_id4iGwz$GSfd_, getMessage_idhP43_8K);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isTagSectionEmpty_id7lVCwDcz6WN(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.author$lgjQ)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.deprecated$M8kQ) == null) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.since$M6dH)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.version$M6sI)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.see$H9Bg)).isEmpty();
@@ -56,10 +53,6 @@ public final class BaseDocComment__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BaseDocComment__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

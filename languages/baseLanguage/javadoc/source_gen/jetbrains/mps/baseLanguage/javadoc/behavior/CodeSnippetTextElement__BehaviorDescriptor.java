@@ -24,7 +24,6 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.ILocalVariableElement__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,10 +37,8 @@ public final class CodeSnippetTextElement__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getLocalVariableDeclarations_id3tkxRydYUUs = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLocalVariableDeclarations").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3986960521977638556L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l81it7u, getScope_id52_Geb4QDV$, getLocalVariableDeclarations_id3tkxRydYUUs);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l81it7u, getScope_id52_Geb4QDV$, getLocalVariableDeclarations_id3tkxRydYUUs);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
     return "Code snippet: " + ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$BQHd)).select((it) -> (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(it)).foldLeft("", (String s, String it) -> it + "\n");
@@ -77,10 +74,6 @@ public final class CodeSnippetTextElement__BehaviorDescriptor extends BaseBHDesc
   /*package*/ CodeSnippetTextElement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

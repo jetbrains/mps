@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,10 +23,8 @@ public final class VarDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getImplName_idUesZ_nZXee = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getImplName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1048903277984338830L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImplName_idUesZ_nZXee);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImplName_idUesZ_nZXee);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getImplName_idUesZ_nZXee(@NotNull SNode __thisNode__) {
     return "var:" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
@@ -36,10 +33,6 @@ public final class VarDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ VarDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

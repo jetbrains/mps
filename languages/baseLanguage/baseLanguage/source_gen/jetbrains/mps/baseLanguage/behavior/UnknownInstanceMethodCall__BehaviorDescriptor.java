@@ -22,7 +22,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,10 +35,8 @@ public final class UnknownInstanceMethodCall__BehaviorDescriptor extends BaseBHD
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> evaluateSubst_id73E7sj5sxxG = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("evaluateSubst").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8136348407761606764L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getResolvedMethod_id1k0fX3h_taT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResolvedMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1513279640898491065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluateSubst_id73E7sj5sxxG, getResolvedMethod_id1k0fX3h_taT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluateSubst_id73E7sj5sxxG, getResolvedMethod_id1k0fX3h_taT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static _FunctionTypes._return_P0_E0<? extends SNode> evaluateSubst_id73E7sj5sxxG(@NotNull SNode __thisNode__) {
     return ResolveUnknownUtil.resolveInstanceMethodCall(__thisNode__);
@@ -82,10 +79,6 @@ public final class UnknownInstanceMethodCall__BehaviorDescriptor extends BaseBHD
   /*package*/ UnknownInstanceMethodCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

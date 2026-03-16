@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> create_id1Bs_61$mIAC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1863527487545993640L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
   public static final SMethod<SModuleReference> toModuleReference_id1Bs_61$mqDd = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1863527487545911885L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id1Bs_61$mIAC, toModuleReference_id1Bs_61$mqDd);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id1Bs_61$mIAC, toModuleReference_id1Bs_61$mqDd);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode create_id1Bs_61$mIAC(@NotNull SAbstractConcept __thisConcept__, SModel where, SModuleReference moduleRef) {
     SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModulePointer$7i);
@@ -56,10 +53,6 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ModulePointer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

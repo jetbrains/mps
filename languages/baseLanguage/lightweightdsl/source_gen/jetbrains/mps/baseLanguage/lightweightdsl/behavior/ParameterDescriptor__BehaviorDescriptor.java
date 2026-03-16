@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.lang.reflect.Method;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -35,10 +34,8 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Boolean> isNeeded_id7GXvAHO1j1d = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNeeded").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8880393040217583693L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getGeneratedMethodName_id7GXvAHO1heb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedMethodName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8880393040217576331L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id2h59CdJp99Y, isNeeded_id7GXvAHO1j1d, getGeneratedMethodName_id7GXvAHO1heb);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id2h59CdJp99Y, isNeeded_id7GXvAHO1j1d, getGeneratedMethodName_id7GXvAHO1heb);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode create_id2h59CdJp99Y(@NotNull SNode __thisNode__, SNode point) {
     return createMethodParameterInstance_e87i4c_a0a0(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL), __thisNode__, (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), point) : SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$HBuM))));
@@ -67,10 +64,6 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ ParameterDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

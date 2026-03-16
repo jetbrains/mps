@@ -20,7 +20,6 @@ import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,10 +36,8 @@ public final class PatternExpression__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> hasVariable_id4dzCQkRGUNw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasVariable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357073120L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
   public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariables_id4dzCQkRGUKX, getUniqueVariables_id4dzCQkRGULU, getOwnVariables_id7c7Ta3MgIQj, getQuotedNodeConcept_id4vXWNHn1_L$, hasVariable_id4dzCQkRGUNw, suppress_id2WmWrdnSpX7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariables_id4dzCQkRGUKX, getUniqueVariables_id4dzCQkRGULU, getOwnVariables_id7c7Ta3MgIQj, getQuotedNodeConcept_id4vXWNHn1_L$, hasVariable_id4dzCQkRGUNw, suppress_id2WmWrdnSpX7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getVariables_id4dzCQkRGUKX(@NotNull SNode __thisNode__) {
     List<SNode> variables = new ArrayList<SNode>();
@@ -85,10 +82,6 @@ public final class PatternExpression__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ PatternExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

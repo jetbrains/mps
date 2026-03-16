@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -30,10 +29,8 @@ public final class ExternalFigureReference__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030356445722L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
   public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030357120840L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFigureParameterNames_id1iN4mn3lWCq, getFigureParameter_id1iN4mn3oxt8);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFigureParameterNames_id1iN4mn3lWCq, getFigureParameter_id1iN4mn3oxt8);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<String> getFigureParameterNames_id1iN4mn3lWCq(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.figure$O2V), LINKS.fields$KUgT)).select((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL)).toList();
@@ -45,10 +42,6 @@ public final class ExternalFigureReference__BehaviorDescriptor extends BaseBHDes
   /*package*/ ExternalFigureReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

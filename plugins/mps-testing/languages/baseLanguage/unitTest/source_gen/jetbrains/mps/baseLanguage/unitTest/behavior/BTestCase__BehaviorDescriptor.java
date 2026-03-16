@@ -24,7 +24,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -44,10 +43,8 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getSimpleClassName_idhSQIE8p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1229278847513L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<Boolean> canRunInProcess_id5_jSk8paieB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canRunInProcess").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6436735966448788391L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getClassName_idhGBnqtL, isMpsStartRequired_id2RMg39tmiFh, getMembers_idhEwJjl2, getSimpleClassName_idhSQIE8p, canRunInProcess_id5_jSk8paieB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getClassName_idhGBnqtL, isMpsStartRequired_id2RMg39tmiFh, getMembers_idhEwJjl2, getSimpleClassName_idhSQIE8p, canRunInProcess_id5_jSk8paieB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getTestSet_idhGB2z8L(@NotNull SNode __thisNode__) {
     SNode node = __thisNode__;
@@ -103,10 +100,6 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BTestCase__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

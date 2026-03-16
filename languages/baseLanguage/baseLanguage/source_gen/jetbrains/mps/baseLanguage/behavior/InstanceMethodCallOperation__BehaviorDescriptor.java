@@ -25,7 +25,6 @@ import jetbrains.mps.baseLanguage.scopes.Members;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -46,10 +45,8 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
   public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4837286298388660615L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("substituteInAmbigousPosition").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498020L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, getInstanceType_id6WzWPTX2vuB, getTypesByTypeVars_idJfLh5LDMrj, getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id4APqwMfCiZK, convertToLocal_id4APqwMfCtHI, isInTypeInferenceContext_id4cxv$9$kw67, substituteInAmbigousPosition_id1653mnvAgq$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, getInstanceType_id6WzWPTX2vuB, getTypesByTypeVars_idJfLh5LDMrj, getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id4APqwMfCiZK, convertToLocal_id4APqwMfCtHI, isInTypeInferenceContext_id4cxv$9$kw67, substituteInAmbigousPosition_id1653mnvAgq$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String variableExpectedName = null;
@@ -123,10 +120,6 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
   /*package*/ InstanceMethodCallOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class ITypeConstrainedParameters__BehaviorDescriptor extends BaseBH
 
   public static final SMethod<Iterable<SNode>> getExtraUpperBounds_id4Cl0D9hqdNo = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExtraUpperBounds").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760771898584L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtraUpperBounds_id4Cl0D9hqdNo);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExtraUpperBounds_id4Cl0D9hqdNo);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getExtraUpperBounds_id4Cl0D9hqdNo(@NotNull SNode __thisNode__, final SNode typeParameter) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.constraints$BRhr)).where((it) -> SLinkOperations.getTarget(it, LINKS.parameter$oxR8) == typeParameter).select((it) -> SLinkOperations.getTarget(it, LINKS.type$PR1I));
@@ -38,10 +35,6 @@ public final class ITypeConstrainedParameters__BehaviorDescriptor extends BaseBH
   /*package*/ ITypeConstrainedParameters__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

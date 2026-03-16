@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,10 +35,8 @@ public final class SimpleBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getCreatorExpression_id67LR$5LQRIR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCreatorExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057666463730727863L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getAttachStatement_id6k$kQGI5UZ7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAttachStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7288041816792215495L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResultType_id67LR$5LQPoF, isLeaf_id67LR$5LQnln, getPossibleChildren_id7LSrDTXb8f8, getCreatorExpression_id67LR$5LQRIR, getAttachStatement_id6k$kQGI5UZ7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResultType_id67LR$5LQPoF, isLeaf_id67LR$5LQnln, getPossibleChildren_id7LSrDTXb8f8, getCreatorExpression_id67LR$5LQRIR, getAttachStatement_id6k$kQGI5UZ7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getResultType_id67LR$5LQPoF(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$kO_b), LINKS.type$BDq2);
@@ -94,10 +91,6 @@ public final class SimpleBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ SimpleBuilder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

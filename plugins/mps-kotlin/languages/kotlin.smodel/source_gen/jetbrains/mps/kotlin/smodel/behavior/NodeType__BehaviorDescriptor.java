@@ -28,7 +28,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.annotations.ApiStatus;
 import java.util.Iterator;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -47,10 +46,8 @@ public final class NodeType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConceptType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeErasedName_idAa0Z14exTA, getJavaClassPointer_idAa0Z14eCoU, unpackConceptTypes_id4VnyIrvohWf, getConceptTypes_id28CvMylq0Pm, createConstructor_id2$1CHwF$28b);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeErasedName_idAa0Z14exTA, getJavaClassPointer_idAa0Z14eCoU, unpackConceptTypes_id4VnyIrvohWf, getConceptTypes_id28CvMylq0Pm, createConstructor_id2$1CHwF$28b);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getTypeErasedName_idAa0Z14exTA(@NotNull SNode __thisNode__) {
     return "SNode";
@@ -113,10 +110,6 @@ public final class NodeType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NodeType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

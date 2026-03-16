@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -37,10 +36,8 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> expandGenericDescendants_id3zZky3wIhhm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expandGenericDescendants").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4107091686347838550L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<Void> walkDescendants_id77p1ap9WcZw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("walkDescendants").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8203593308483669984L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<_FunctionTypes._return_P2_E0<? extends Boolean, ? super SNode, ? super Queue<SNode>>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectGenericSubstitutions_id3zZky3wF74h, expandGenerics_id3zZky3wFPhu, eraseGenerics_id4qyz6djw13y, expandGenerics_id3$PgO9fYTB5, expandGenerics_id7Gunk0ZqeQo, expandGenericDescendants_id3zZky3wIhhm, walkDescendants_id77p1ap9WcZw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectGenericSubstitutions_id3zZky3wF74h, expandGenerics_id3zZky3wFPhu, eraseGenerics_id4qyz6djw13y, expandGenerics_id3$PgO9fYTB5, expandGenerics_id7Gunk0ZqeQo, expandGenericDescendants_id3zZky3wIhhm, walkDescendants_id77p1ap9WcZw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
     // do nothing by default
@@ -90,10 +87,6 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IGenericType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

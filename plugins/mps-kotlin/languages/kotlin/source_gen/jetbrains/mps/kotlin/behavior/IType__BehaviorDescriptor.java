@@ -37,7 +37,6 @@ import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -67,10 +66,8 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> asNullable_id5pwU7dG5dvS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6224230267458213880L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r, getPresentation_idhEwIMiw, asProjection_idJmO2PmVt2A, asInvariantProjection_id2gj5XQXIqKf, getInstanceScopes_id1ODRHGtuist, getFullStaticScope_id7ZA3QJnL$CF, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, getCompanionInstanceScope_id1ODRHGtugRP, typeKey_idJmO2PmZtH5, isExpression_id3sYZzPj0plI, isExpression_id2J12cYi1t5p, createConstructor_id2$1CHwF$28b, asNullable_id5pwU7dG5dvS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r, getPresentation_idhEwIMiw, asProjection_idJmO2PmVt2A, asInvariantProjection_id2gj5XQXIqKf, getInstanceScopes_id1ODRHGtuist, getFullStaticScope_id7ZA3QJnL$CF, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I, getCompanionInstanceScope_id1ODRHGtugRP, typeKey_idJmO2PmZtH5, isExpression_id3sYZzPj0plI, isExpression_id2J12cYi1t5p, createConstructor_id2$1CHwF$28b, asNullable_id5pwU7dG5dvS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id7an2tsIdpkM(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(Collections.<TypeParameterDeclaration>emptyList());
@@ -158,10 +155,6 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

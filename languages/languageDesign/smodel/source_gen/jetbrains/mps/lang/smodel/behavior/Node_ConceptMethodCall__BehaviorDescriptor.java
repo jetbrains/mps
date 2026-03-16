@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Boolean> applicableToConcept_id1653mnvAgvQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498358L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<Boolean> applicableToSConcept_id7E3Sw0HhwkZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToSConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8828148184963745087L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtualMethodCall_idhEwIWlZ, isSuperMethodCall_id1ks7HBvlL3z, getVirtualMethodDeclaration_idhEwIWm8, getVariableExpectedName_idhEwIP$B, applicableToNode_id1653mnvAgrs, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtualMethodCall_idhEwIWlZ, isSuperMethodCall_id1ks7HBvlL3z, getVirtualMethodDeclaration_idhEwIWm8, getVariableExpectedName_idhEwIP$B, applicableToNode_id1653mnvAgrs, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isVirtualMethodCall_idhEwIWlZ(@NotNull SNode __thisNode__) {
     return (Node_ConceptMethodCall__BehaviorDescriptor.getVirtualMethodDeclaration_idhEwIWm8.invoke(__thisNode__) != null);
@@ -83,10 +80,6 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
   /*package*/ Node_ConceptMethodCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

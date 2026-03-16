@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isFirstLine_id647WjQal7cZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132073791L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Boolean> isLastLine_id647WjQalOgm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132258326L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, startsWithBulletSpace_idWJz9iAWPgX, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH, isFirstLine_id647WjQal7cZ, isLastLine_id647WjQalOgm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, startsWithBulletSpace_idWJz9iAWPgX, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH, isFirstLine_id647WjQal7cZ, isLastLine_id647WjQalOgm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canBeTurnedToBullet_idWJz9iAWPfE(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(l)), CONCEPTS.Line$yC)) {
@@ -90,10 +87,6 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BulletLine__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

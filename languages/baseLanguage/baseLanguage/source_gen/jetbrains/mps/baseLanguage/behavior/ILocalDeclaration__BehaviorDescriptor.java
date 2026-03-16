@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class ILocalDeclaration__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> isReferencedInClosure_id2P5W1FWMWTY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReferencedInClosure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3262277503800823422L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isReferencedInControlFlowInterrupter_id1rgSh_h_K4n = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReferencedInControlFlowInterrupter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1644061362849513751L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isReferencedInClosure_id2P5W1FWMWTY, isReferencedInControlFlowInterrupter_id1rgSh_h_K4n);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isReferencedInClosure_id2P5W1FWMWTY, isReferencedInControlFlowInterrupter_id1rgSh_h_K4n);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isReferencedInClosure_id2P5W1FWMWTY(@NotNull SNode __thisNode__) {
     SNode container = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.StatementList$m_, false, false);
@@ -77,10 +74,6 @@ public final class ILocalDeclaration__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ ILocalDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

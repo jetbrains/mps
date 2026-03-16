@@ -30,7 +30,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,10 +48,8 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getTargetClassifier_id1k0fX3j6Qov = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1513279640924022303L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getTypeParameter_id1HUOkcfjoPx = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1980125072132509025L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInstanceType_id6WzWPTX2vuB, getAvailableMethodDeclarations_id50EF2fWdwEN, isInTypeInferenceContext_id4cxv$9$kw67, retrieveInstantiationPoints_id5qAZxlfY81X, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInstanceType_id6WzWPTX2vuB, getAvailableMethodDeclarations_id50EF2fWdwEN, isInTypeInferenceContext_id4cxv$9$kw67, retrieveInstantiationPoints_id5qAZxlfY81X, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
 
@@ -117,10 +114,6 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ClassCreator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

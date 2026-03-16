@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,10 +35,8 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
   public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
   public static final SMethod<String> pluginXml_idQkG2t1cwfm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("pluginXml").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(978600701690250198L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1, reexportsFromJar_id5bqm540K$Gb, location_id6b4RkXS8sT2, appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, pluginXml_idQkG2t1cwfm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1, reexportsFromJar_id5bqm540K$Gb, location_id6b4RkXS8sT2, appendName_id1bWeed$ownT, unpack_id6IqTD4bJTWZ, pluginXml_idQkG2t1cwfm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     if (artifactId instanceof jetbrains.mps.smodel.SNode) {
@@ -84,10 +81,6 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
   /*package*/ BuildMpsLayout_PluginDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -36,10 +35,8 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
   /*package*/ static final SMethod<Boolean> hasApplicableTypes_id1QUKo_K_4f7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplicableTypes").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2142237368811537351L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<SNode> expectedOperandType_id5xvLnyYzY1Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expectedOperandType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6368025520509018230L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableTypes_id5cL0w3DYzxf, getAllApplicableTypes_id5cL0w3DYWgB, hasApplicableTypes_id1QUKo_K_4f7, expectedOperandType_id5xvLnyYzY1Q);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableTypes_id5cL0w3DYzxf, getAllApplicableTypes_id5cL0w3DYWgB, hasApplicableTypes_id1QUKo_K_4f7, expectedOperandType_id5xvLnyYzY1Q);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Set<SNode> getAllApplicableTypes_id5cL0w3DYWgB(@NotNull final SAbstractConcept __thisConcept__) {
     final Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
@@ -75,10 +72,6 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
   /*package*/ IApplicableToNothing__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.lang.reflect.Field;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,10 +25,8 @@ public final class Note__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Color> findColor_id3o4bEdkAIk2 = new SMethodBuilder<Color>(new SJavaCompoundTypeImpl(Color.class)).name("findColor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3892287256988935426L).languageId(0x8d6197071eaaa5f1L, 0x4b0f115a88684d72L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findColor_id3o4bEdkAIk2);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findColor_id3o4bEdkAIk2);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Color findColor_id3o4bEdkAIk2(@NotNull SNode __thisNode__, String colorName) {
     try {
@@ -59,10 +56,6 @@ public final class Note__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Note__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

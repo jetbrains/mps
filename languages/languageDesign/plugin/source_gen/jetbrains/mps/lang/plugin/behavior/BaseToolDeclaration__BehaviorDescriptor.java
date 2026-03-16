@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -39,10 +38,8 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<String> getExpandedIconPath_id5FstybB4d94 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpandedIconPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547237850567463492L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611473L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5FstybB4d83, getGeneratedClassFQName_id5FstybB4d8e, hasNumber_id5FstybB4d8v, createType_idhEwJimy, createSuperType_idhHOGPWW, getExpandedIconPath_id5FstybB4d94, getPropertyToCheck_id4cWf37B8oYh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id5FstybB4d83, getGeneratedClassFQName_id5FstybB4d8e, hasNumber_id5FstybB4d8v, createType_idhEwJimy, createSuperType_idhHOGPWW, getExpandedIconPath_id5FstybB4d94, getPropertyToCheck_id4cWf37B8oYh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGeneratedName_id5FstybB4d83(@NotNull SNode __thisNode__) {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) + "_Tool";
@@ -74,10 +71,6 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ BaseToolDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

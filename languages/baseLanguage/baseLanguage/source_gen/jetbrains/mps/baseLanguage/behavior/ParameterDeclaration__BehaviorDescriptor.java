@@ -23,7 +23,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -44,10 +43,8 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> getValue_idhOJcizo = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224857430232L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> needInference_idQ$FjPqwIoN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needInference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(983101097696749107L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createReference_idhEwJfME, isCanBeUnused_idhNVeX73, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, hasAnnotation_id4LgT5De_n2I, hasAnnotation_id3WDGf12Eb7o, getValue_idhOJcizo, needInference_idQ$FjPqwIoN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createReference_idhEwJfME, isCanBeUnused_idhNVeX73, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, hasAnnotation_id4LgT5De_n2I, hasAnnotation_id3WDGf12Eb7o, getValue_idhOJcizo, needInference_idQ$FjPqwIoN);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createReference_idhEwJfME(@NotNull SNode __thisNode__) {
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
@@ -102,10 +99,6 @@ public final class ParameterDeclaration__BehaviorDescriptor extends BaseBHDescri
   /*package*/ ParameterDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

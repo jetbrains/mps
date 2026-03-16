@@ -21,7 +21,6 @@ import jetbrains.mps.kotlin.signatures.MemberSignature;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.scopes.InheritorHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -35,10 +34,8 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getReceiverType_id75chmMYh8YE = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866815402L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SConcept> getDefaultVisibility_id2WVyZr43qIN = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835375987635L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAnnotationTargetAllowed_id6nA1THM505G, getReceiverType_id75chmMYh8YE, getDefaultVisibility_id2WVyZr43qIN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAnnotationTargetAllowed_id6nA1THM505G, getReceiverType_id75chmMYh8YE, getDefaultVisibility_id2WVyZr43qIN);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLocal_id1vYW8S3rTh_(@NotNull SNode __thisNode__) {
     // Or true in the context of the constructor?
@@ -81,10 +78,6 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ClassParameter__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

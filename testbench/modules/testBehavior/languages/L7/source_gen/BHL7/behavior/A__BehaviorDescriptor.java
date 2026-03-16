@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -34,10 +33,8 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<Boolean>> seqMethod_id2eC$PxWCGmD = new SMethodBuilder<Iterable<Boolean>>(new SJavaCompoundTypeImpl((Class<Iterable<Boolean>>) ((Class) Object.class))).name("seqMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2569465595672315305L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
   public static final SMethod<Iterable<Boolean>> seqMethod2_id2eC$PxWDDfD = new SMethodBuilder<Iterable<Boolean>>(new SJavaCompoundTypeImpl((Class<Iterable<Boolean>>) ((Class) Object.class))).name("seqMethod2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2569465595672564713L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtualMethod_id5mnatV0hAPp, virtualMethod_id5mnatV0hAPC, staticMethod_id5mnatV0hAQH, staticVirtualMethod_id5mnatV0hATt, justVoidReturnTypeMethod1_id5mnatV0hB9t, justVoidReturnTypeMethod2_id4XEqvthVyKi, boolMethod1_id2eC$PxWCtoT, boolMethod2_idjZ8XPdgmd$, seqMethod_id2eC$PxWCGmD, seqMethod2_id2eC$PxWDDfD);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtualMethod_id5mnatV0hAPp, virtualMethod_id5mnatV0hAPC, staticMethod_id5mnatV0hAQH, staticVirtualMethod_id5mnatV0hATt, justVoidReturnTypeMethod1_id5mnatV0hB9t, justVoidReturnTypeMethod2_id4XEqvthVyKi, boolMethod1_id2eC$PxWCtoT, boolMethod2_idjZ8XPdgmd$, seqMethod_id2eC$PxWCGmD, seqMethod2_id2eC$PxWDDfD);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int nonVirtualMethod_id5mnatV0hAPp(@NotNull SNode __thisNode__) {
     return TestResults.DEFAULT_RETURN_VALUE;
@@ -76,10 +73,6 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ A__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

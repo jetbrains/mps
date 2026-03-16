@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -36,10 +35,8 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<List<SNode>> getCatchClauses_id3eptmOG0XgA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCatchClauses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3718132079121388582L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> collectUncatchedThrowables_id3JrbGEZ7vt$ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncatchedThrowables").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4313092516462065508L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getFinallyClause_id7LX8cXzsyj1, getCatchClauses_id3eptmOG0XgA, collectUncatchedThrowables_id3JrbGEZ7vt$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getFinallyClause_id7LX8cXzsyj1, getCatchClauses_id3eptmOG0XgA, collectUncatchedThrowables_id3JrbGEZ7vt$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     TryCatchStatement__BehaviorDescriptor.collectUncatchedThrowables_id3JrbGEZ7vt$.invoke(SNodeOperations.asSConcept(CONCEPTS.TryCatchStatement$XR), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.body$pDF2), SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$dMnP), ((boolean) ignoreMayBeThrowables));
@@ -78,10 +75,6 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ TryCatchStatement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

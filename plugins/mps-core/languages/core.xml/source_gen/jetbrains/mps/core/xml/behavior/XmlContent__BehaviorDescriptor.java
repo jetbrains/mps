@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -32,10 +31,8 @@ public final class XmlContent__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> oneLineBlock_id1653mnvAgno = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("oneLineBlock").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497816L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498277L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O, oneLineBlock_id1653mnvAgno, textLike_id1653mnvAgu_);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O, oneLineBlock_id1653mnvAgno, textLike_id1653mnvAgu_);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isOneLineBlock_id1Qs9WekVZ7e(@NotNull SNode __thisNode__) {
     return (boolean) XmlContent__BehaviorDescriptor.oneLineBlock_id1653mnvAgno.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
@@ -85,10 +82,6 @@ public final class XmlContent__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlContent__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

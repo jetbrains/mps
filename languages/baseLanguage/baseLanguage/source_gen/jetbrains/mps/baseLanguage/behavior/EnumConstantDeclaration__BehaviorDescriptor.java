@@ -33,7 +33,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -58,10 +57,8 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> findSuitableConstructor_idFdL0MDGgE3 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findSuitableConstructor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(778493869270567555L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, getIconMarks_id6TtJ6IUkhQJ, isVisible_id70J2WaK_oVl, isStaticClassifierMember_id7MS72Gc8avw, getSideIcon_id6TtJ6IUjtJX, getFqName_idhEwIO9y, getEnumConstantDeclarationPresentation_id7AEI0n132aJ, populateMember_id6r77ob2UW9O, getMembers_idhEwJjl2, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getScope_id52_Geb4QDV$, findSuitableConstructor_idFdL0MDGgE3);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, getIconMarks_id6TtJ6IUkhQJ, isVisible_id70J2WaK_oVl, isStaticClassifierMember_id7MS72Gc8avw, getSideIcon_id6TtJ6IUjtJX, getFqName_idhEwIO9y, getEnumConstantDeclarationPresentation_id7AEI0n132aJ, populateMember_id6r77ob2UW9O, getMembers_idhEwJjl2, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getScope_id52_Geb4QDV$, findSuitableConstructor_idFdL0MDGgE3);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
     SNode enumClass = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EnumClass$Vk, false, false);
@@ -146,10 +143,6 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
   /*package*/ EnumConstantDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

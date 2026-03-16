@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.behavior.ConceptIdentity__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,10 +37,8 @@ public final class TrivialNodeId__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNodeId> getNodeId_id39TODbGsIdf = new SMethodBuilder<SNodeId>(new SJavaCompoundTypeImpl(SNodeId.class)).name("getNodeId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3637169702552396623L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
   public static final SMethod<Boolean> match_id1si_nSrb46O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("match").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1662555581307437492L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(instantiate_id39TODbGt9gR, create_id7PoJpZpIp9n, getNodeId_id39TODbGsIdf, match_id1si_nSrb46O);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(instantiate_id39TODbGt9gR, create_id7PoJpZpIp9n, getNodeId_id39TODbGsIdf, match_id1si_nSrb46O);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode instantiate_id39TODbGt9gR(@NotNull SNode __thisNode__, SModel model) {
     throw new UnsupportedOperationException("There were no uses of the method. How come?!");
@@ -63,10 +60,6 @@ public final class TrivialNodeId__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TrivialNodeId__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

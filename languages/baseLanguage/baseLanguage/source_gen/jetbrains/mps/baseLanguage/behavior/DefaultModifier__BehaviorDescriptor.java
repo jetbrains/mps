@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class DefaultModifier__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> allowsBody_id10BRnhafkFC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowsBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1164142520230038248L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> makesMethodNotAbstract_id4c$BrPwobKA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("makesMethodNotAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4838165336394087462L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(allowsBody_id10BRnhafkFC, makesMethodNotAbstract_id4c$BrPwobKA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(allowsBody_id10BRnhafkFC, makesMethodNotAbstract_id4c$BrPwobKA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean allowsBody_id10BRnhafkFC(@NotNull SNode __thisNode__) {
     return true;
@@ -38,10 +35,6 @@ public final class DefaultModifier__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ DefaultModifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

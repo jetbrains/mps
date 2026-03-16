@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class UnknownMethodReference__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> evaluateSubst_id73E7sj5sxxG = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("evaluateSubst").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8136348407761606764L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getActualArguments_id5DBbMQ33xDf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getActualArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258533485135L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluateSubst_id73E7sj5sxxG, getActualArguments_id5DBbMQ33xDf);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluateSubst_id73E7sj5sxxG, getActualArguments_id5DBbMQ33xDf);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static _FunctionTypes._return_P0_E0<? extends SNode> evaluateSubst_id73E7sj5sxxG(@NotNull SNode __thisNode__) {
     return ResolveUnknownMethodRefUtil.resolveMethodRef(__thisNode__);
@@ -40,10 +37,6 @@ public final class UnknownMethodReference__BehaviorDescriptor extends BaseBHDesc
   /*package*/ UnknownMethodReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

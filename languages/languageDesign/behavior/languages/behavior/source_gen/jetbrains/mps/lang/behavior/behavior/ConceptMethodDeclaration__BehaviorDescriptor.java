@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SNodeMatcher;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,10 +42,8 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNode> getNearestOverriddenMethod_id4DuBHEkPTzU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNearestOverriddenMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5358895268254685434L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8510677279630867629L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtual_id6WSEafdhbZX, getBehaviour_idhP3pnNF, canBeAnnotated_idhWp4PwP, getContainingConcept_idi3POAMX, getOverridenMethod_idhP3pnNO, isCorrectlyOverriden_idhQYykEj, getOverridenMethodConcept_idhP3pnOc, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, isAnAbstractMethod_id28P2dHxCoRl, getNearestOverriddenMethod_id4DuBHEkPTzU, supportsCheckedExceptions_id7orZYjMoFMH);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtual_id6WSEafdhbZX, getBehaviour_idhP3pnNF, canBeAnnotated_idhWp4PwP, getContainingConcept_idi3POAMX, getOverridenMethod_idhP3pnNO, isCorrectlyOverriden_idhQYykEj, getOverridenMethodConcept_idhP3pnOc, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, isAnAbstractMethod_id28P2dHxCoRl, getNearestOverriddenMethod_id4DuBHEkPTzU, supportsCheckedExceptions_id7orZYjMoFMH);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isVirtual_id6WSEafdhbZX(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.isVirtual$quZI) || SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$quKH) != null;
@@ -119,10 +116,6 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ ConceptMethodDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -25,10 +24,8 @@ public final class IMemberTarget__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getOperand_id3xTUo83z_P9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperand").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4069540482920635721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getNavigation_id1QSyUt0Ob3M = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277888754L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperand_id3xTUo83z_P9, getNavigation_id1QSyUt0Ob3M);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperand_id3xTUo83z_P9, getNavigation_id1QSyUt0Ob3M);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated
   /*package*/ static SNode getOperand_id3xTUo83z_P9(@NotNull SNode __thisNode__) {
@@ -41,10 +38,6 @@ public final class IMemberTarget__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMemberTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

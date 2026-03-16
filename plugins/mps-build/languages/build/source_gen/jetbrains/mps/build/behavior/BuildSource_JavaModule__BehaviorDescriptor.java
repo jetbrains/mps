@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class BuildSource_JavaModule__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Iterable<SNode>> getTestSources_idV7XPpsMQaR = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTestSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1065091787192492727L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<SNode> getOptions_idgpKvTnoZBS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(295480548701501944L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSources_idV7XPpsMQaR, getOptions_idgpKvTnoZBS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSources_idV7XPpsMQaR, getOptions_idgpKvTnoZBS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getTestSources_idV7XPpsMQaR(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.sources$9b9b), CONCEPTS.BuildSource_JavaContentRoot$q4), LINKS.folders$JA5L)).where((it) -> SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.kind$ItBG), 0x48d5d03db92974f9L));
@@ -52,10 +49,6 @@ public final class BuildSource_JavaModule__BehaviorDescriptor extends BaseBHDesc
   /*package*/ BuildSource_JavaModule__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

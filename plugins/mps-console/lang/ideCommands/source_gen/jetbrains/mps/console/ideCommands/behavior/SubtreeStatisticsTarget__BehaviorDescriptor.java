@@ -22,7 +22,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Iterable<Tuples._2<String, Integer>>> getStat_id6vMIJHUBlVT = new SMethodBuilder<Iterable<Tuples._2<String, Integer>>>(new SJavaCompoundTypeImpl((Class<Iterable<Tuples._2<String, Integer>>>) ((Class) Object.class))).name("getStat").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7490254719527247609L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
   public static final SMethod<Iterable<SNode>> getNodes_id4x3U0fq41hN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNodes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5207260697411458163L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT, getNodes_id4x3U0fq41hN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStat_id6vMIJHUBlVT, getNodes_id4x3U0fq41hN);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<Tuples._2<String, Integer>> getStat_id6vMIJHUBlVT(@NotNull SNode __thisNode__, ConsoleContext context) {
     SNode targetNode = AbstractNodeRefExpression__BehaviorDescriptor.getTargetNode_id36vPRrqnscn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$bymM));
@@ -61,10 +58,6 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
   /*package*/ SubtreeStatisticsTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

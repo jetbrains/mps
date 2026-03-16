@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -44,10 +43,8 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, declaredArgumentType_id2TF6A0TNzEJ, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, declaredArgumentType_id2TF6A0TNzEJ, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Object[] getActualArguments_idhJyuD6_(@NotNull SNode __thisNode__, final SModule module) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx)).select((it) -> (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(it, module)).toGenericArray(Object.class);
@@ -159,10 +156,6 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMethodCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

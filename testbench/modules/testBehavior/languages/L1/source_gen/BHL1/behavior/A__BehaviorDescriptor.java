@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -46,10 +45,8 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Integer> conversion7_idjZ8XPdfKCq = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("conversion7").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(360045928603650586L).languageId(0x9fdda3d7dba50995L, 0x43359135f67c4a3dL).build2();
   public static final SMethod<Integer> conversion8_idjZ8XPdg3mY = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("conversion8").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(360045928603727294L).languageId(0x9fdda3d7dba50995L, 0x43359135f67c4a3dL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5jWiLvujMjC, varArgNull_id56Rew6rCKv6, arrArgNull_id56Rew6rCKDf, varArgLen_id6yTVdLqTssn, varArgPrim_id56Rew6rDMfR, varArgLen2_id6yTVdLqUPAs, varArgLen3_id6yTVdLqV1qL, varArgLen4_id6Jh0tXoS5Ab, arrayArg_id6yTVdLqT_bJ, arrayArg1_id6Jh0tXoSfUR, arrayArg2_id6yTVdLqTFk5, arrayArg3_id6Jh0tXoS5z0, longReturn_id20h3iLqUOkD, boxing1_id95Aegakr_K, boxing2_id95AegakrCe, conversion1_id3ZhVC3HVCz2, conversion2_id6rioTyS5hVU, conversion3_id6rioTyS5i4m, conversion4_id6rioTyS5icW, conversion5_id6rioTyS5ilG, conversion6_id3HzlNjB44YK, conversion0_id6rioTyS5hAT, conversion7_idjZ8XPdfKCq, conversion8_idjZ8XPdg3mY);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5jWiLvujMjC, varArgNull_id56Rew6rCKv6, arrArgNull_id56Rew6rCKDf, varArgLen_id6yTVdLqTssn, varArgPrim_id56Rew6rDMfR, varArgLen2_id6yTVdLqUPAs, varArgLen3_id6yTVdLqV1qL, varArgLen4_id6Jh0tXoS5Ab, arrayArg_id6yTVdLqT_bJ, arrayArg1_id6Jh0tXoSfUR, arrayArg2_id6yTVdLqTFk5, arrayArg3_id6Jh0tXoS5z0, longReturn_id20h3iLqUOkD, boxing1_id95Aegakr_K, boxing2_id95AegakrCe, conversion1_id3ZhVC3HVCz2, conversion2_id6rioTyS5hVU, conversion3_id6rioTyS5i4m, conversion4_id6rioTyS5icW, conversion5_id6rioTyS5ilG, conversion6_id3HzlNjB44YK, conversion0_id6rioTyS5hAT, conversion7_idjZ8XPdfKCq, conversion8_idjZ8XPdg3mY);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int foo_id5jWiLvujMjC(@NotNull SNode __thisNode__) {
     return TestResults.DEFAULT_RETURN_VALUE;
@@ -128,10 +125,6 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ A__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

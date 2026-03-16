@@ -17,7 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -42,10 +41,8 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpressionWhereThisIsTheLeftMost").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8549027947268390365L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpressionWhereThisIsTheRightMost").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7119036779762158828L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isChildAssignedInAssignment_id79$CF9VcmHc, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM, isLeftMostExpression_id7q$fTYk8pKO, isRightMostExpression_id6bbTzIwEnym, getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt, getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isChildAssignedInAssignment_id79$CF9VcmHc, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM, isLeftMostExpression_id7q$fTYk8pKO, isRightMostExpression_id6bbTzIwEnym, getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt, getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
     return null;
@@ -135,10 +132,6 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Expression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

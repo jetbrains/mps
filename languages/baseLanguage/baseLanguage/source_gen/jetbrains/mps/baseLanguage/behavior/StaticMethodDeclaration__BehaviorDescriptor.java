@@ -26,7 +26,6 @@ import jetbrains.mps.baseLanguage.scopes.Signature;
 import jetbrains.mps.baseLanguage.scopes.MethodSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -50,10 +49,8 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<Boolean> hasVisibility_id1X7GQqyPHmE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2253967391922247082L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, canBeAnnotated_idhWp4PwP, isMainMethod_idhEwJkuu, getChildrenToDisplayIntention_id3vsDNFqJVhw, isStaticClassifierMember_id7MS72Gc8avw, getSideIcon_id6TtJ6IUjtJX, populateMember_id6r77ob2UW9O, isAbstract_idhWjv7RO, isAnAbstractMethod_id28P2dHxCoRl, hasBody_id10BRnhak8m8, getFqName_idhEwIO9y, hasVisibility_id1X7GQqyPHmE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, canBeAnnotated_idhWp4PwP, isMainMethod_idhEwJkuu, getChildrenToDisplayIntention_id3vsDNFqJVhw, isStaticClassifierMember_id7MS72Gc8avw, getSideIcon_id6TtJ6IUjtJX, populateMember_id6r77ob2UW9O, isAbstract_idhWjv7RO, isAnAbstractMethod_id28P2dHxCoRl, hasBody_id10BRnhak8m8, getFqName_idhEwIO9y, hasVisibility_id1X7GQqyPHmE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
     List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticMethodDeclaration$FJ));
@@ -112,10 +109,6 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
   /*package*/ StaticMethodDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

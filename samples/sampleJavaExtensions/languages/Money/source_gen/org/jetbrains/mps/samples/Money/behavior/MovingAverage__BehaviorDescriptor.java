@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class MovingAverage__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Iterable<BigDecimal>> calculate_id3u6SZi0GsCg = new SMethodBuilder<Iterable<BigDecimal>>(new SJavaCompoundTypeImpl((Class<Iterable<BigDecimal>>) ((Class) Object.class))).name("calculate").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958235925008L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculate_id3u6SZi0GsCg);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculate_id3u6SZi0GsCg);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<BigDecimal> calculate_id3u6SZi0GsCg(@NotNull SNode __thisNode__) {
     return null;
@@ -35,10 +32,6 @@ public final class MovingAverage__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ MovingAverage__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

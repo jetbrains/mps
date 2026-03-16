@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -33,10 +32,8 @@ public final class IMigrationUnit__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getVersionedName_id5T5Tgcp0u0A = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6793087414425477158L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
   public static final SMethod<String> getClassName_id5Fumpqe4XH$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547769411406912356L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getVersionedName_id5T5Tgcp0u0A, getClassName_id5Fumpqe4XH$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getVersionedName_id5T5Tgcp0u0A, getClassName_id5Fumpqe4XH$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getVersionedName_id5T5Tgcp0u0A(@NotNull SNode __thisNode__) {
     return String.format("%03d", ((int) IMigrationUnit__BehaviorDescriptor.fromVersion_id4uVwhQyFcnl.invoke(__thisNode__))) + "_" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
@@ -48,10 +45,6 @@ public final class IMigrationUnit__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMigrationUnit__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

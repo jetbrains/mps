@@ -23,7 +23,6 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.core.behavior.ISmartReferent__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -51,10 +50,8 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<String> getPresentation_id69Qfsw3IoJg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234040272L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getMatchingText_id69Qfsw3InJX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMatchingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234036221L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isReturnsVoid_idhX_$1pM, getChildrenToDisplayIntention_id3vsDNFqJVhw, getPresentation_idhEwIMiw, getPresentationInContext_idQAyHtBupSt, getPresentationInContext_id2Yg2DIzbsBp, jniSignature_id7F81Cd2CcPY, containsImplicitSuperConstructorCall_id6d19RW5IPof, getThisConstructorInvocation_id5e6QuLS30e$, getSuperDefaultConstructor_id6d19RW5J1tP, hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, getMatchingText_id69Qfsw3InJX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, canBeAnnotated_idhWp4PwP, getSideIcon_id6TtJ6IUjtJX, isReturnsVoid_idhX_$1pM, getChildrenToDisplayIntention_id3vsDNFqJVhw, getPresentation_idhEwIMiw, getPresentationInContext_idQAyHtBupSt, getPresentationInContext_id2Yg2DIzbsBp, jniSignature_id7F81Cd2CcPY, containsImplicitSuperConstructorCall_id6d19RW5IPof, getThisConstructorInvocation_id5e6QuLS30e$, getSuperDefaultConstructor_id6d19RW5J1tP, hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, getMatchingText_id69Qfsw3InJX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isDeprecated_idhOwoPtR(@NotNull SNode __thisNode__) {
     return ((boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invokeSuper(__thisNode__, CONCEPTS.ConstructorDeclaration$yG)) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IDeprecatable$2W) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IDeprecatable$2W)));
@@ -194,10 +191,6 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   /*package*/ ConstructorDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

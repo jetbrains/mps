@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class PrivateVisibility__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<Boolean> isApplicable_id6jE_6duQ0AR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702856976823L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibilityAccess.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isApplicable_id6jE_6duQ0AR);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isApplicable_id6jE_6duQ0AR);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isApplicable_id6jE_6duQ0AR(@NotNull SAbstractConcept __thisConcept__, SNode contextNode, SNode declaration, VisibilityAccess context) {
     // private: visible in same classifier (member context), or same file (top level context)
@@ -41,10 +38,6 @@ public final class PrivateVisibility__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ PrivateVisibility__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

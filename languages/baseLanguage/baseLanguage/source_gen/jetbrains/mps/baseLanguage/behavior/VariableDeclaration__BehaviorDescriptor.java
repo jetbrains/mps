@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -42,10 +41,8 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getTypeAnnotation_idhXbqSv6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeAnnotation").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1233920952262L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getQualifiedReference_id3Zg$dTLuqo9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getQualifiedReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4598334504606213641L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, createReference_idhEwJfME, isInitializable_idhEwJfMK, getChildrenToDisplayIntention_id3vsDNFqJVhw, deriveType_idhEwIVPz, getPrefix_id2Bet8mWh2lw, getSuffix_id2Bet8mWh3pg, getTypeAnnotation_idhXbqSv6, getQualifiedReference_id3Zg$dTLuqo9);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, createReference_idhEwJfME, isInitializable_idhEwJfMK, getChildrenToDisplayIntention_id3vsDNFqJVhw, deriveType_idhEwIVPz, getPrefix_id2Bet8mWh2lw, getSuffix_id2Bet8mWh3pg, getTypeAnnotation_idhXbqSv6, getQualifiedReference_id3Zg$dTLuqo9);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
     List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.VariableDeclaration$Y0));
@@ -92,10 +89,6 @@ public final class VariableDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ VariableDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -23,7 +23,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,10 +36,8 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
   public static final SMethod<SEnumerationLiteral> getLinkMetaclass_id2LDtYz_plxI = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getLinkMetaclass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3200220852388190318L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<Iterable<SNode>> getLinkAccessScope_id2xk$X1Ld2Yi = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getLinkAccessScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2906110183022538642L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperation_id52QkhOxfj6w, getLinkMetaclass_id2LDtYz_plxI, getLinkAccessScope_id2xk$X1Ld2Yi);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperation_id52QkhOxfj6w, getLinkMetaclass_id2LDtYz_plxI, getLinkAccessScope_id2xk$X1Ld2Yi);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getOperation_id52QkhOxfj6w(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SNodeOperation$pA);
@@ -55,10 +52,6 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
   /*package*/ OperationParm_LinkQualifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

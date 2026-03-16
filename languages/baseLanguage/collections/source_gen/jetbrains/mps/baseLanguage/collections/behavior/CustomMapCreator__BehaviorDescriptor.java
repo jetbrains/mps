@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -33,10 +32,8 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> hasInitSize_id1653mnvAgqc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasInitSize").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497996L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
   public static final SMethod<String> getEntityName_id6LXz$urfgAS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getEntityName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7817560966383339960L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id1ny5gPbZSFj, hasInitSize_id1653mnvAgqc, getEntityName_id6LXz$urfgAS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(createType_id1ny5gPbZSFj, hasInitSize_id1653mnvAgqc, getEntityName_id6LXz$urfgAS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode createType_id1ny5gPbZSFj(@NotNull SNode __thisNode__, final List<SNode> typeArguments) {
     SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$QVZa), LINKS.containerType$WQze));
@@ -61,10 +58,6 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ CustomMapCreator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

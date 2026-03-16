@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import javax.swing.ImageIcon;
 import jetbrains.mps.util.IconCreationUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -32,10 +31,8 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isValid_idIb_Fk7zRKP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(831924260440079413L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValid_idIb_Fk7zRKP, getImageForGeneration_id2p1v3tObywX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValid_idIb_Fk7zRKP, getImageForGeneration_id2p1v3tObywX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isValid_idIb_Fk7zRKP(@NotNull SNode __thisNode__) {
     SModule module = SNodeOperations.getModel(__thisNode__).getModule();
@@ -68,10 +65,6 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Image__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

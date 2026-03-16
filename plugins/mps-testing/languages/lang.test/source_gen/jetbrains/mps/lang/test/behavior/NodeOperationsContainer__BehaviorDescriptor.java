@@ -26,7 +26,6 @@ import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,10 +39,8 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Void> createNodeAndAttachReference_idnMEi6H8iBO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("createNodeAndAttachReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(428590876657265140L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
   public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3567142084961743867L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(detachAllErrorOperations_id4QaU5oI0Q4j, createNodeAndAttachReference_idnMEi6H8iBO, suppress_id3612de_vrfV);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(detachAllErrorOperations_id4QaU5oI0Q4j, createNodeAndAttachReference_idnMEi6H8iBO, suppress_id3612de_vrfV);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void detachAllErrorOperations_id4QaU5oI0Q4j(@NotNull SNode __thisNode__) {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$Mgf9)).removeWhere((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractNodeRuleCheckOperation$eB));
@@ -77,10 +74,6 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
   /*package*/ NodeOperationsContainer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

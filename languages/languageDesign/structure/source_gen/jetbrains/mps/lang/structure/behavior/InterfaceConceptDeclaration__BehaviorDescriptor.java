@@ -24,7 +24,6 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,10 +37,8 @@ public final class InterfaceConceptDeclaration__BehaviorDescriptor extends BaseB
   public static final SMethod<List<SNode>> getAllMethodsInPriorityOrder_id7TwdR6lloGH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllMethodsInPriorityOrder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9106339407519386413L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   /*package*/ static final SMethod<Void> collectAllMethodsInPriorityOrder_id3waV7Ya5fRc = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectAllMethodsInPriorityOrder").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4038300048412704204L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImmediateSuperconcepts_idhMuxyK2, getAllMethodsInPriorityOrder_id7TwdR6lloGH, collectAllMethodsInPriorityOrder_id3waV7Ya5fRc);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImmediateSuperconcepts_idhMuxyK2, getAllMethodsInPriorityOrder_id7TwdR6lloGH, collectAllMethodsInPriorityOrder_id3waV7Ya5fRc);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getImmediateSuperconcepts_idhMuxyK2(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.extends$nawU), LINKS.intfc$zM4e)).where(new NotNullWhereFilter()).toList();
@@ -68,10 +65,6 @@ public final class InterfaceConceptDeclaration__BehaviorDescriptor extends BaseB
   /*package*/ InterfaceConceptDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

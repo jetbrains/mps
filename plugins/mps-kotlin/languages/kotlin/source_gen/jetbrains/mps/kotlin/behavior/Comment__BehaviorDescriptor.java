@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class Comment__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isTodo_id6CwBo1Z9RMC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTodo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7647285342489771176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTodo_id6CwBo1Z9RMC);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTodo_id6CwBo1Z9RMC);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isTodo_id6CwBo1Z9RMC(@NotNull SNode __thisNode__) {
     // would be great to have this method applied for a given line rather than the whole block
@@ -43,10 +40,6 @@ public final class Comment__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Comment__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

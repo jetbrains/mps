@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class MPSTipsAndTricks__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> getPath_id4Y6KxqQL3ag = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978686915216L).languageId(0x804f8987b652fceaL, 0xfeee615f9f2b486fL).build2();
   public static final SMethod<String> getLocatedDirectory_id4Y6KxqQN2O7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocatedDirectory").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978687438087L).languageId(0x804f8987b652fceaL, 0xfeee615f9f2b486fL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id4Y6KxqQL3ag, getLocatedDirectory_id4Y6KxqQN2O7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id4Y6KxqQL3ag, getLocatedDirectory_id4Y6KxqQN2O7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPath_id4Y6KxqQL3ag(@NotNull SNode __thisNode__) {
     return "${tips_out}";
@@ -41,10 +38,6 @@ public final class MPSTipsAndTricks__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ MPSTipsAndTricks__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class IVariableConstraintHolder__BehaviorDescriptor extends BaseBHD
   public static final SMethod<SNode> getVariablesReceiverType_id75chmMYhcwP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVariablesReceiverType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866829877L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<TypeParameterDeclaration>> getVariablesTypeParameters_id73s7TtK_Wrc = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getVariablesTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8132409762413790924L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isChildVariableAssignable_idCy8Bus9qei, getVariablesReceiverType_id75chmMYhcwP, getVariablesTypeParameters_id73s7TtK_Wrc);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isChildVariableAssignable_idCy8Bus9qei, getVariablesReceiverType_id75chmMYhcwP, getVariablesTypeParameters_id73s7TtK_Wrc);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getVariablesTypeParameters_id73s7TtK_Wrc(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(Collections.<TypeParameterDeclaration>emptyList());
@@ -39,10 +36,6 @@ public final class IVariableConstraintHolder__BehaviorDescriptor extends BaseBHD
   /*package*/ IVariableConstraintHolder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

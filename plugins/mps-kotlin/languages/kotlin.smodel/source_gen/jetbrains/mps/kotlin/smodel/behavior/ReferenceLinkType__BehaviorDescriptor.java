@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class ReferenceLinkType__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeErasedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeErasedName_idAa0Z14exTA, getJavaClassPointer_idAa0Z14eCoU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeErasedName_idAa0Z14exTA, getJavaClassPointer_idAa0Z14eCoU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getTypeErasedName_idAa0Z14exTA(@NotNull SNode __thisNode__) {
     return "SReferenceLink";
@@ -40,10 +37,6 @@ public final class ReferenceLinkType__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ ReferenceLinkType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

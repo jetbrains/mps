@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,10 +37,8 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8510677279630867629L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedRetType_idi2fhBNC, getLastStatement_idi2fhS7A, getLastStatement_id271$s5ipHtv, getBody_idi2fhZ_m, getThrowableTypes_id5op8ooRkkc7, implicitThrows_id4kX30tnJ9kz, supportsCheckedExceptions_id7orZYjMoFMH, suppress_id2WmWrdnSpX7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedRetType_idi2fhBNC, getLastStatement_idi2fhS7A, getLastStatement_id271$s5ipHtv, getBody_idi2fhZ_m, getThrowableTypes_id5op8ooRkkc7, implicitThrows_id4kX30tnJ9kz, supportsCheckedExceptions_id7orZYjMoFMH, suppress_id2WmWrdnSpX7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getLastStatement_idi2fhS7A(@NotNull SNode __thisNode__) {
     return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invokeSpecial(__thisNode__, IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(__thisNode__));
@@ -76,10 +73,6 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMethodLike__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

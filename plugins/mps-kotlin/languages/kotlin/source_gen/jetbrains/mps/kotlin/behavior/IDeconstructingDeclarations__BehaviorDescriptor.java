@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,10 +27,8 @@ public final class IDeconstructingDeclarations__BehaviorDescriptor extends BaseB
   public static final SMethod<MemberReceiver> getVariablesReceiver_id4FOkRjXx8jV = new SMethodBuilder<MemberReceiver>(new SJavaCompoundTypeImpl(MemberReceiver.class)).name("getVariablesReceiver").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5401033615058699515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isDeconstructed_id4FOkRjXxnrt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeconstructed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5401033615058761437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariablesReceiver_id4FOkRjXx8jV, isDeconstructed_id4FOkRjXxnrt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariablesReceiver_id4FOkRjXx8jV, isDeconstructed_id4FOkRjXxnrt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isDeconstructed_id4FOkRjXxnrt(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.forceDeconstructing$1mec) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.variables$EO9Z)).count() > 1;
@@ -40,10 +37,6 @@ public final class IDeconstructingDeclarations__BehaviorDescriptor extends BaseB
   /*package*/ IDeconstructingDeclarations__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.constraints.Identifiers;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -27,10 +26,8 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getImportRoot_id1d2BQ0ZAmKw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImportRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1387846870916230176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<Boolean> isRegular_idnhyiqtKtUT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRegular").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039270657721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNestedName_id1d2BQ0ZyA$g, getImportRoot_id1d2BQ0ZAmKw, isRegular_idnhyiqtKtUT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNestedName_id1d2BQ0ZyA$g, getImportRoot_id1d2BQ0ZAmKw, isRegular_idnhyiqtKtUT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
     SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinFile$wS}, false, false);
@@ -63,10 +60,6 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IIdentifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

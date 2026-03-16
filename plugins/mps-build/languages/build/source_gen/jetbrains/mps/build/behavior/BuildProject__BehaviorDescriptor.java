@@ -16,8 +16,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import java.util.List;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.build.util.RelativePathHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -37,7 +37,6 @@ import java.util.Objects;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.ArrayList;
 import jetbrains.mps.scope.CompositeScope;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -59,10 +58,8 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<Scope> getBuildMacroScope_id3h9a8EwPwcy = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getBuildMacroScope").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3767587139141108514L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canEditBaseDir_idz2ICeMSPWq = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canEditBaseDir").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(631271972590018330L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBasePath_id4jjtc7WZOyG, getScriptsPath_id4ahc858UcHk, getOutputFileName_id4gSHdTptyu0, getBasePathRelativeToScriptsPath_id4vrYmjR0nBP, getScope_id13YBgBBRT49, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getVisibleProjects_id13YBgBBRSOL, collectVisibleProjects_id13YBgBBRSXj, getBuildMacroScope_id3h9a8EwPwcy, canEditBaseDir_idz2ICeMSPWq);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBasePath_id4jjtc7WZOyG, getScriptsPath_id4ahc858UcHk, getOutputFileName_id4gSHdTptyu0, getBasePathRelativeToScriptsPath_id4vrYmjR0nBP, getScope_id13YBgBBRT49, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getVisibleProjects_id13YBgBBRSOL, collectVisibleProjects_id13YBgBBRSXj, getBuildMacroScope_id3h9a8EwPwcy, canEditBaseDir_idz2ICeMSPWq);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static String getBasePath_id4jjtc7WZOyG(@NotNull SNode __thisNode__, Context context) {
@@ -212,10 +209,6 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BuildProject__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

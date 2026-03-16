@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -27,10 +26,8 @@ public final class BuildMps_Tips__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getMpsTipsPath_id8yBQgWtrz8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMpsTipsPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(153860590143912136L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   public static final SMethod<String> getLocatedDirectory_id4Y6KxqQN2O7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocatedDirectory").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978687438087L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutPath_id1tkeUOkqjtp, getPath_id4Y6KxqQL3ag, getMpsTipsPath_id8yBQgWtrz8, getLocatedDirectory_id4Y6KxqQN2O7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutPath_id1tkeUOkqjtp, getPath_id4Y6KxqQL3ag, getMpsTipsPath_id8yBQgWtrz8, getLocatedDirectory_id4Y6KxqQN2O7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getOutPath_id1tkeUOkqjtp(@NotNull SNode __thisNode__) {
     return "${build.tmp}/out/mps-tips/";
@@ -51,10 +48,6 @@ public final class BuildMps_Tips__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BuildMps_Tips__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -24,7 +24,6 @@ import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.util.DescendantsScope;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -42,10 +41,8 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
   /*package*/ static final SMethod<SNode> getProject_id3SWSDDmdpG6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProject").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4484708481453366022L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id1aYLt$9dW4N, getMethodName_id1aYLt$9dX0a, getFQClassName_id1aYLt$9eyUg, fetchDependencies_id57YmpYyL8F1, getProject_id3SWSDDmdpG6, getScope_id52_Geb4QDV$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id1aYLt$9dW4N, getMethodName_id1aYLt$9dX0a, getFQClassName_id1aYLt$9eyUg, fetchDependencies_id57YmpYyL8F1, getProject_id3SWSDDmdpG6, getScope_id52_Geb4QDV$);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getClassName_id1aYLt$9dW4N(@NotNull SNode __thisNode__) {
     return (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.classSimpleName$kRBO)) ? "MainClass" : SPropertyOperations.getString(__thisNode__, PROPS.classSimpleName$kRBO));
@@ -87,10 +84,6 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
   /*package*/ BuildSolutionRunnerAspect__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

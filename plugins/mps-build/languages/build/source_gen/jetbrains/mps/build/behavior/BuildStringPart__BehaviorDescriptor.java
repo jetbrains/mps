@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class BuildStringPart__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> isLastPositionAllowed_idyEtdY40wNH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(624440001685490925L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<String> getText_id3NagsOfTq4Y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4380385936562037054L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(punctuationLeft_id4qU2HB9e$4N, isFirstPositionAllowed_idyEtdY40p7m, isLastPositionAllowed_idyEtdY40wNH, getText_id3NagsOfTq4Y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(punctuationLeft_id4qU2HB9e$4N, isFirstPositionAllowed_idyEtdY40p7m, isLastPositionAllowed_idyEtdY40wNH, getText_id3NagsOfTq4Y);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean punctuationLeft_id4qU2HB9e$4N(@NotNull SNode __thisNode__) {
     if (SNodeOperations.getIndexInParent(__thisNode__) == 0) {
@@ -52,10 +49,6 @@ public final class BuildStringPart__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildStringPart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

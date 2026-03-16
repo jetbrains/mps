@@ -28,7 +28,6 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -41,10 +40,8 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<Void> addToKeymapChanges_id1adAGAvXyr3 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addToKeymapChanges").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1336894855161718467L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SEnumerationLiteral>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(EditorContext.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addToKeymapChanges_id1adAGAvXyr3);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addToKeymapChanges_id1adAGAvXyr3);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void addToKeymapChanges_id1adAGAvXyr3(@NotNull SAbstractConcept __thisConcept__, SNode shortcutChange, final SModel model, Iterable<SEnumerationLiteral> keymaps, final EditorContext editorContext) {
     final Wrappers._T<SNode> _shortcutChange = new Wrappers._T<SNode>(shortcutChange);
@@ -99,10 +96,6 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
   /*package*/ SimpleShortcutChange__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

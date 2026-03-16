@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class TestNode__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> canAddTestAnnotation_id143xXLdi1EE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAddTestAnnotation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225972903834032810L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAddTestAnnotation_id143xXLdi1EE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAddTestAnnotation_id143xXLdi1EE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canAddTestAnnotation_id143xXLdi1EE(@NotNull SNode __thisNode__, SNode child) {
     return child != __thisNode__;
@@ -34,10 +31,6 @@ public final class TestNode__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TestNode__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

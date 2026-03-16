@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,8 @@ public final class AbstractInequationStatement__BehaviorDescriptor extends BaseB
 
   public static final SMethod<Boolean> isLessThanInequality_id4AS9NA730aB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLessThanInequality").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5312038888515830439L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLessThanInequality_id4AS9NA730aB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLessThanInequality_id4AS9NA730aB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLessThanInequality_id4AS9NA730aB(@NotNull SNode __thisNode__) {
     return SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.CreateLessThanInequationStatement$Qs) || SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.CreateStrongLessThanInequationStatement$ip);
@@ -36,10 +33,6 @@ public final class AbstractInequationStatement__BehaviorDescriptor extends BaseB
   /*package*/ AbstractInequationStatement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

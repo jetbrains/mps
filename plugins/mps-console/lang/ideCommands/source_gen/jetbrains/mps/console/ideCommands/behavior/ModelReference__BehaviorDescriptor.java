@@ -19,7 +19,6 @@ import java.util.Collection;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.lang.smodel.behavior.ModelReferenceExpression__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SModel> getModel_id67MRmR$z8Z2 = new SMethodBuilder<SModel>(new SJavaCompoundTypeImpl((Class<SModel>) ((Class) Object.class))).name("getModel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7057947030098579394L).languageId(0xaab368fdf1c34ed0L, 0xa5e4de5346a344daL).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModel_id67MRmR$z8Z2);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModel_id67MRmR$z8Z2);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SModel getModel_id67MRmR$z8Z2(@NotNull SNode __thisNode__, SRepository repo) {
     Collection<SModel> modelsByName = new ModuleRepositoryFacade(repo).getModelsByName(new SModelName(ModelReferenceExpression__BehaviorDescriptor.getFQName_id7K4mn_BeEzv.invoke(__thisNode__)));
@@ -41,10 +38,6 @@ public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ModelReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

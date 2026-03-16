@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.util.JavaExportUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -27,10 +26,8 @@ public final class BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor exte
 
   public static final SMethod<SNode> getDependencyTarget_id4RsV8qJH_ED = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDependencyTarget").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5610619299014531753L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDependencyTarget_id4RsV8qJH_ED);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDependencyTarget_id4RsV8qJH_ED);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getDependencyTarget_id4RsV8qJH_ED(@NotNull SNode __thisNode__, VisibleArtifacts artifacts) {
     if (SNodeOperations.getContainingRoot(__thisNode__) == SNodeOperations.getContainingRoot(SLinkOperations.getTarget(__thisNode__, LINKS.folder$95wz))) {
@@ -43,10 +40,6 @@ public final class BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor exte
   /*package*/ BuildSource_JavaExternalJarFolderRef__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

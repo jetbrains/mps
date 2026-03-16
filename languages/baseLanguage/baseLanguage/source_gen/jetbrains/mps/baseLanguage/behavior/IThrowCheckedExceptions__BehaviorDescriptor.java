@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class IThrowCheckedExceptions__BehaviorDescriptor extends BaseBHDes
 
   public static final SMethod<List<SNode>> getThrownExceptions_id6sjyiRHavr0 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrownExceptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7427431040809563840L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getThrownExceptions_id6sjyiRHavr0);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getThrownExceptions_id6sjyiRHavr0);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getThrownExceptions_id6sjyiRHavr0(@NotNull SNode __thisNode__) {
     return null;
@@ -34,10 +31,6 @@ public final class IThrowCheckedExceptions__BehaviorDescriptor extends BaseBHDes
   /*package*/ IThrowCheckedExceptions__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

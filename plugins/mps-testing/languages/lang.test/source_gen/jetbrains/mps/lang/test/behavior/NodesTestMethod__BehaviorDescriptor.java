@@ -31,7 +31,7 @@ public final class NodesTestMethod__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216136419751L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestCase_idhGBgWVd, getTestName_idhGBohAB, isMpsStartRequired_id2RMg39tmiFh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestCase_idhGBgWVd, getTestName_idhGBohAB, isMpsStartRequired_id2RMg39tmiFh);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setTarget(__thisNode__, LINKS.returnType$5xoi, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));

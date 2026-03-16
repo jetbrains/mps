@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,10 +28,8 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<String> toRegexp_id7eq8FHGGy0G = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toRegexp").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8330008649152995372L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Boolean> isHexChar_id7KMCQ$NHaYO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHexChar").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8949395081772969908L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter(Character.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, isValid_id48bMILtL4il, toRegexp_id7eq8FHGGy0G, isHexChar_id7KMCQ$NHaYO);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, isValid_id48bMILtL4il, toRegexp_id7eq8FHGGy0G, isHexChar_id7KMCQ$NHaYO);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
     return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$VShT));
@@ -104,10 +101,6 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ StringLiteralRegexp__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,10 +33,8 @@ public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> createLineInstance_id7q4Ywce6bwW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createLineInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684429649980L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7333760206680889978L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_id4ruP0NLgI8Q, startsWithBulletSpace_id4ruP0NLgL0C, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_id4ruP0NLgI8Q, startsWithBulletSpace_id4ruP0NLgL0C, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canBeTurnedToBullet_id4ruP0NLgI8Q(@NotNull SAbstractConcept __thisConcept__, SNode p) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(p)), CONCEPTS.Paragraph$XF)) {
@@ -69,10 +66,6 @@ public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BulletPoint__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

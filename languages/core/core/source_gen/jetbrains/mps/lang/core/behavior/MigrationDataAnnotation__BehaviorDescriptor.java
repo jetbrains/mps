@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class MigrationDataAnnotation__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Boolean> showInResults_id29O0pTxWdmG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showInResults").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2482611074347619756L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<String> getResultsMessage_id29O0pTxWdnZ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResultsMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2482611074347619839L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(showInResults_id29O0pTxWdmG, getResultsMessage_id29O0pTxWdnZ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(showInResults_id29O0pTxWdmG, getResultsMessage_id29O0pTxWdnZ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean showInResults_id29O0pTxWdmG(@NotNull SNode __thisNode__) {
     return false;
@@ -38,10 +35,6 @@ public final class MigrationDataAnnotation__BehaviorDescriptor extends BaseBHDes
   /*package*/ MigrationDataAnnotation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

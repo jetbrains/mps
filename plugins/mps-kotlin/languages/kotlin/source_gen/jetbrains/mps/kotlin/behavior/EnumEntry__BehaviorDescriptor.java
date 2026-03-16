@@ -29,7 +29,6 @@ import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,10 +52,8 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstractClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getFunctionScopeParts_id6dAo8EmAhT7, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G, isAbstractClass_id$q1KckYQOy);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getFunctionScopeParts_id6dAo8EmAhT7, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G, isAbstractClass_id$q1KckYQOy);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLocal_id1vYW8S3rTh_(@NotNull SNode __thisNode__) {
     return false;
@@ -115,10 +112,6 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ EnumEntry__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class IStatementScopePart__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<Void> populateStatementDeclarations_id2ZbCiJacEjm = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateStatementDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3444023549502858454L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateStatementDeclarations_id2ZbCiJacEjm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateStatementDeclarations_id2ZbCiJacEjm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateStatementDeclarations_id2ZbCiJacEjm(@NotNull SNode __thisNode__, SignatureCollector collector) {
     // default: no-op
@@ -35,10 +32,6 @@ public final class IStatementScopePart__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ IStatementScopePart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

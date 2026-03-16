@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class FigureParameterAttributeMethod__BehaviorDescriptor extends Ba
   public static final SMethod<SNode> getMethodDeclaration_id6RaK14zkbMG = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7911346875269168300L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
   public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(342110547581236128L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMember_id4H19mAwT7Py, getMethodDeclaration_id6RaK14zkbMG, getParameterType_idiZqVFYvBew);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMember_id4H19mAwT7Py, getMethodDeclaration_id6RaK14zkbMG, getParameterType_idiZqVFYvBew);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getParameterMember_id4H19mAwT7Py(@NotNull SNode __thisNode__) {
     return FigureParameterAttributeMethod__BehaviorDescriptor.getMethodDeclaration_id6RaK14zkbMG.invoke(__thisNode__);
@@ -46,10 +43,6 @@ public final class FigureParameterAttributeMethod__BehaviorDescriptor extends Ba
   /*package*/ FigureParameterAttributeMethod__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

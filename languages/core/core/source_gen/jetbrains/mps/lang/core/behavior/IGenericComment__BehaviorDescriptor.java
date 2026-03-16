@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,23 +22,17 @@ public final class IGenericComment__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<String> getTextualRepresentation_idfB3l80ylIb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147581426571L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<Boolean> isTODOComment_idfB3l7ZufMD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147563576489L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isTODOComment_idfB3l7ZufMD(@NotNull SNode __thisNode__) {
-    String text = trim_ka277t_a0a0a0j(IGenericComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
+    String text = trim_ka277t_a0a0a0i(IGenericComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
     return text.startsWith("TODO") || text.startsWith("FIX") || text.startsWith("FIXME");
   }
 
   /*package*/ IGenericComment__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
@@ -78,7 +71,7 @@ public final class IGenericComment__BehaviorDescriptor extends BaseBHDescriptor 
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  public static String trim_ka277t_a0a0a0j(String str) {
+  public static String trim_ka277t_a0a0a0i(String str) {
     return (str == null ? null : str.trim());
   }
 }

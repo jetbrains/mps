@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class BuildLayout_Zip__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> hasPrefixAttribute_id5zIo$W4pFU0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrefixAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6408167411310575232L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<Boolean> hasFileModeAttribute_id5zIo$W4pFU5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasFileModeAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6408167411310575237L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, isFile_id1bWeed$oPZ2, getFileSetExtension_id5zIo$W4pFTK, hasPrefixAttribute_id5zIo$W4pFU0, hasFileModeAttribute_id5zIo$W4pFU5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, isFile_id1bWeed$oPZ2, getFileSetExtension_id5zIo$W4pFTK, hasPrefixAttribute_id5zIo$W4pFU0, hasFileModeAttribute_id5zIo$W4pFU5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
@@ -65,10 +62,6 @@ public final class BuildLayout_Zip__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildLayout_Zip__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

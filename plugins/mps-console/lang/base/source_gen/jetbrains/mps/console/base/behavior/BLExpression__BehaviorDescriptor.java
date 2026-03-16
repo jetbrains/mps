@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -23,10 +22,8 @@ public final class BLExpression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(473081947982699339L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
   public static final SMethod<String> getShortDisplayString_id64VftqEenfn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDisplayString").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7006261637493126103L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getShortHelp_idqgIopNa9Hb, getShortDisplayString_id64VftqEenfn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getShortHelp_idqgIopNa9Hb, getShortDisplayString_id64VftqEenfn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getShortHelp_idqgIopNa9Hb(@NotNull SAbstractConcept __thisConcept__) {
     return "evaluate an expression and print its result";
@@ -38,10 +35,6 @@ public final class BLExpression__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BLExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

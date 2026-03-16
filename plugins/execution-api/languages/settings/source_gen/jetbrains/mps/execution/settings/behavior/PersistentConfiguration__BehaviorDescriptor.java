@@ -12,8 +12,8 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -21,7 +21,6 @@ import jetbrains.mps.baseLanguage.classifiers.behavior.IClassifier__BehaviorDesc
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.classifiers.behavior.IMember__BehaviorDescriptor;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -45,10 +44,8 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<List<SNode>> getContextPersistentProperties_idO$iR4J$g22 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getContextPersistentProperties").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156066434L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getCheckMethodName_idO$iR4J$g2y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCheckMethodName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156066466L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSuffix_idO$iR4JBsSb, getGeneratedEditorName_idO$iR4J$g2J, getFullEditorName_idO$iR4J$g2V, createType_idhEwJimy, getTemplateProperties_idO$iR4J$g3e, getNonTemplateProperties_idO$iR4J$g3y, getEditorSuffix_idO$iR4J$g3R, getMembers_idhEwJink, getContextPersistentConfiguration_idO$iR4J$g1l, getContextPersistentProperties_idO$iR4J$g22, getCheckMethodName_idO$iR4J$g2y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSuffix_idO$iR4JBsSb, getGeneratedEditorName_idO$iR4J$g2J, getFullEditorName_idO$iR4J$g2V, createType_idhEwJimy, getTemplateProperties_idO$iR4J$g3e, getNonTemplateProperties_idO$iR4J$g3y, getEditorSuffix_idO$iR4J$g3R, getMembers_idhEwJink, getContextPersistentConfiguration_idO$iR4J$g1l, getContextPersistentProperties_idO$iR4J$g22, getCheckMethodName_idO$iR4J$g2y);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @NonNls
   /*package*/ static String getSuffix_idO$iR4JBsSb(@NotNull SNode __thisNode__) {
@@ -103,10 +100,6 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   /*package*/ PersistentConfiguration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

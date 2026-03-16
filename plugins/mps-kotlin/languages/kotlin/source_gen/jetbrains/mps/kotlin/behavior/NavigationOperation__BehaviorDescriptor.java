@@ -19,7 +19,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,10 +33,8 @@ public final class NavigationOperation__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Assignable> assignableState_idCy8Bus9niD = new SMethodBuilder<Assignable>(new SJavaCompoundTypeImpl(Assignable.class)).name("assignableState").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703594665L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> showParenthesis_id3PNJzGvypf4 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showParenthesis").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4428092019776787396L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextType_id7ubb0gUcL0j, isResolved_id4MvRlgZCbFz, tryResolve_id4MvRlgZCbFB, isLeftExpressionTarget_id69RFwVHPwd9, assignableState_idCy8Bus9niD, showParenthesis_id3PNJzGvypf4);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getContextType_id7ubb0gUcL0j, isResolved_id4MvRlgZCbFz, tryResolve_id4MvRlgZCbFB, isLeftExpressionTarget_id69RFwVHPwd9, assignableState_idCy8Bus9niD, showParenthesis_id3PNJzGvypf4);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getContextType_id7ubb0gUcL0j(@NotNull SNode __thisNode__) {
     return SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.operand$YS5t)), CONCEPTS.IType$Ni);
@@ -67,10 +64,6 @@ public final class NavigationOperation__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ NavigationOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

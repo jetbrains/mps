@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -40,10 +39,8 @@ public final class TypeVariableDeclaration__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   /*package*/ static final SMethod<SNode> getTypeWithConcreteUpperBounds_id3LgQEacCu0b = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeWithConcreteUpperBounds").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4346214032091504651L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcreteUpperBound_id3LgQEacCviw, getConcreteUpperBound_id3LgQEacCu07, getPresentation_idhEwIMiw, getTypeWithConcreteUpperBounds_id3LgQEacCu0b);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcreteUpperBound_id3LgQEacCviw, getConcreteUpperBound_id3LgQEacCu07, getPresentation_idhEwIMiw, getTypeWithConcreteUpperBounds_id3LgQEacCu0b);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getConcreteUpperBound_id3LgQEacCviw(@NotNull SNode __thisNode__) {
     return TypeVariableDeclaration__BehaviorDescriptor.getConcreteUpperBound_id3LgQEacCu07.invokeSpecial(__thisNode__, SetSequence.fromSet(new HashSet<SNode>()));
@@ -89,10 +86,6 @@ public final class TypeVariableDeclaration__BehaviorDescriptor extends BaseBHDes
   /*package*/ TypeVariableDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

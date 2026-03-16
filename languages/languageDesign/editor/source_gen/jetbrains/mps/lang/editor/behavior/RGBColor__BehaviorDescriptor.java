@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,10 +24,8 @@ public final class RGBColor__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isFunction_idhPjjBbV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225463329531L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<String> getRGBValue_idhPj_Kt2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRGBValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225468086082L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isFunction_idhPjjBbV, getRGBValue_idhPj_Kt2);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isFunction_idhPjjBbV, getRGBValue_idhPj_Kt2);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isFunction_idhPjjBbV(@NotNull SNode __thisNode__) {
     return false;
@@ -40,10 +37,6 @@ public final class RGBColor__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ RGBColor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

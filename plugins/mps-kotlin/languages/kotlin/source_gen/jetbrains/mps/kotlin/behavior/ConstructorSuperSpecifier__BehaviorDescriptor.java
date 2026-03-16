@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -37,10 +36,8 @@ public final class ConstructorSuperSpecifier__BehaviorDescriptor extends BaseBHD
   public static final SMethod<String> getFunctionName_id4nn3FPlEjh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314958578757L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734615461147L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, convertToNonConstructor_id1$jFvlEUFDL, getFunctionDescriptor_id26mUjU3xhgD, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, convertToNonConstructor_id1$jFvlEUFDL, getFunctionDescriptor_id26mUjU3xhgD, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getInheritedType_id5q426iHvzD9(@NotNull SNode __thisNode__) {
     return createClassType_au2j0a_a0a0(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.target$VUYb), CONCEPTS.IClassDeclaration$bQ, true, false), ITypeArguments__BehaviorDescriptor.getTypeProjections_idFn6l2JqIEF.invoke(__thisNode__));
@@ -63,10 +60,6 @@ public final class ConstructorSuperSpecifier__BehaviorDescriptor extends BaseBHD
   /*package*/ ConstructorSuperSpecifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

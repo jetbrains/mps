@@ -36,7 +36,7 @@ public final class InternalAnonymousClass__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   /*package*/ static final SMethod<String> getAnonymousClassPresentation_id2XVui9ut6Db = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAnonymousClassPresentation").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3421461530438560331L).languageId(0xac6648d2a9b75d88L, 0xdf345b11b8c74213L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getJavaName_id2XVui9ut6Ed, getIndexInContainingClass_id2XVui9ut6EM, getSuperclass_idi3H_lLu, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id2XVui9ut6Db);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getJavaName_id2XVui9ut6Ed, getIndexInContainingClass_id2XVui9ut6EM, getSuperclass_idi3H_lLu, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id2XVui9ut6Db);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$aWW8, true);

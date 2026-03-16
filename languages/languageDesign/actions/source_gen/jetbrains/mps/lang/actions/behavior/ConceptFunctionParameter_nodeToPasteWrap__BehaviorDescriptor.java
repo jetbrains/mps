@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,8 @@ public final class ConceptFunctionParameter_nodeToPasteWrap__BehaviorDescriptor 
 
   public static final SMethod<SNode> getWrapper_idhLhtllw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getWrapper").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1221137356128L).languageId(0xaef20004f6a1cdbdL, 0xaee9cad2acd44608L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getWrapper_idhLhtllw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getWrapper_idhLhtllw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getWrapper_idhLhtllw(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PasteWrapper$Q0, false, false);
@@ -36,10 +33,6 @@ public final class ConceptFunctionParameter_nodeToPasteWrap__BehaviorDescriptor 
   /*package*/ ConceptFunctionParameter_nodeToPasteWrap__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

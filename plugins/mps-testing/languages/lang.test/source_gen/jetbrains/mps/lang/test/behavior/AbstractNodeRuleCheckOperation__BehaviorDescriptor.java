@@ -19,7 +19,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
 public final class AbstractNodeRuleCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
@@ -29,10 +28,8 @@ public final class AbstractNodeRuleCheckOperation__BehaviorDescriptor extends Ba
   public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1517788251554632808L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8417162567088372251L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(expectsErrorsInside_id77$odk0vlBj, perform_id1kgh5YabdhC, checkAction_id7jfLc8W17Cr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(expectsErrorsInside_id77$odk0vlBj, perform_id1kgh5YabdhC, checkAction_id7jfLc8W17Cr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository repository, @Nullable ComponentHost host) {
     return AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(__thisNode__, repository, host).isMessageExpected(reportItem);
@@ -44,10 +41,6 @@ public final class AbstractNodeRuleCheckOperation__BehaviorDescriptor extends Ba
   /*package*/ AbstractNodeRuleCheckOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

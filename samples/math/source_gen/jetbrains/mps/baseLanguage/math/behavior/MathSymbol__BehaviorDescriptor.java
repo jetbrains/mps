@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<List<SNode>> getEmptyIndexList_idi0Okz4g = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getEmptyIndexList").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237828382992L).languageId(0xa016b944934bb21fL, 0x3304fc6e7c6b401eL).build2();
   public static final SMethod<String> getOpName_id1653mnvAgoA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpName").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497894L).languageId(0xa016b944934bb21fL, 0x3304fc6e7c6b401eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisibleIndices_idhZx_LLY, getEmptyIndexList_idi0Okz4g, getOpName_id1653mnvAgoA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisibleIndices_idhZx_LLY, getEmptyIndexList_idi0Okz4g, getOpName_id1653mnvAgoA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void getVisibleIndices_idhZx_LLY(@NotNull SNode __thisNode__, SNode sender, List<SNode> indices) {
     SNode sI = SNodeOperations.getNodeAncestor(sender, CONCEPTS.AbstractIndex$lZ, true, false);
@@ -55,10 +52,6 @@ public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ MathSymbol__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

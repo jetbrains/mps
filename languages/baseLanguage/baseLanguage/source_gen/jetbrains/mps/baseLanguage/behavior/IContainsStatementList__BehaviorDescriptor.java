@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,10 +26,8 @@ public final class IContainsStatementList__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<Boolean> isStatementListCompactable_idi0zvp2S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatementListCompactable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237546012856L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isStatementListCompact_idi0zxZ6o = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatementListCompact").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237546693016L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStatementList_idi0zv5tb, isStatementListCompactable_idi0zvp2S, isStatementListCompact_idi0zxZ6o);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStatementList_idi0zv5tb, isStatementListCompactable_idi0zvp2S, isStatementListCompact_idi0zxZ6o);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getStatementList_idi0zv5tb(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), CONCEPTS.StatementList$m_)).first();
@@ -45,10 +42,6 @@ public final class IContainsStatementList__BehaviorDescriptor extends BaseBHDesc
   /*package*/ IContainsStatementList__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,10 +23,8 @@ public final class IntersectionSymbolClassPart__BehaviorDescriptor extends BaseB
 
   public static final SMethod<String> getRepresentation_id75Jea4IEZbM = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8173814113624650482L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRepresentation_id75Jea4IEZbM);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRepresentation_id75Jea4IEZbM);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getRepresentation_id75Jea4IEZbM(@NotNull SNode __thisNode__) {
     return SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.left$ocg2)) + "&&" + SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.right$8a$M));
@@ -36,10 +33,6 @@ public final class IntersectionSymbolClassPart__BehaviorDescriptor extends BaseB
   /*package*/ IntersectionSymbolClassPart__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

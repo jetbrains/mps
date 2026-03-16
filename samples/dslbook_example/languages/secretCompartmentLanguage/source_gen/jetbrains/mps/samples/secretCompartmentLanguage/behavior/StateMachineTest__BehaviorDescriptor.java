@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -26,10 +25,8 @@ public final class StateMachineTest__BehaviorDescriptor extends BaseBHDescriptor
 
   public static final SMethod<String> getStateMachineName_idhr1J3q0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStateMachineName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1197251245696L).languageId(0xa2e9565e5049c1ceL, 0x6986543d82184ebfL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStateMachineName_idhr1J3q0);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStateMachineName_idhr1J3q0);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getStateMachineName_idhr1J3q0(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.stateMachine$rUP6), PROPS.stateMachineName$ztzM);
@@ -38,10 +35,6 @@ public final class StateMachineTest__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ StateMachineTest__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class IMethodReferenceTarget__BehaviorDescriptor extends BaseBHDesc
 
   public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980011308976L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSubstituteNode_id2Yg2DIzFJuK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSubstituteNode_id2Yg2DIzFJuK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getSubstituteNode_id2Yg2DIzFJuK(@NotNull SNode __thisNode__) {
     return null;
@@ -34,10 +31,6 @@ public final class IMethodReferenceTarget__BehaviorDescriptor extends BaseBHDesc
   /*package*/ IMethodReferenceTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

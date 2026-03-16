@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -26,10 +25,8 @@ public final class XmlBaseElement__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631588L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498277L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, hasNewLineAfter_id1Qs9WekVZ9E, onNewLine_id1Qs9WekVZ9$, textLike_id1653mnvAgu_);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, hasNewLineAfter_id1Qs9WekVZ9E, onNewLine_id1Qs9WekVZ9$, textLike_id1653mnvAgu_);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isFirstPositionAllowed_id1Qs9WekVZ7m(@NotNull SNode __thisNode__) {
     return true;
@@ -50,10 +47,6 @@ public final class XmlBaseElement__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlBaseElement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

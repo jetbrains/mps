@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,10 +37,8 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
   public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPatternTestName_idlS$o0er$H8, getTestSet_idhGB2z8L, getClassName_idhGBnqtL, getTestMethods_id1RfJDyhAUar, getTestCase_idhGBgWVd, getTestName_idhGBohAB, isMpsStartRequired_id2RMg39tmiFh, suppress_id2WmWrdnSpX7);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPatternTestName_idlS$o0er$H8, getTestSet_idhGB2z8L, getClassName_idhGBnqtL, getTestMethods_id1RfJDyhAUar, getTestCase_idhGBgWVd, getTestName_idhGBohAB, isMpsStartRequired_id2RMg39tmiFh, suppress_id2WmWrdnSpX7);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPatternTestName_idlS$o0er$H8(@NotNull SNode __thisNode__) {
     return NameUtil.toValidCamelIdentifier("Pattern" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "_Test");
@@ -76,10 +73,6 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ PatternTest__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

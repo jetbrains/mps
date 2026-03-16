@@ -14,7 +14,6 @@ import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -28,10 +27,8 @@ public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getPackageName_id74Z9X$ygjTm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715734L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNestedName_id1d2BQ0ZyA$g, getPresentation_idhEwIMiw, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm, collectScope_id7DyvjiA20yV);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNestedName_id1d2BQ0ZyA$g, getPresentation_idhEwIMiw, getImportRoot_id1d2BQ0ZAmKw, getPackageName_id74Z9X$ygjTm, collectScope_id7DyvjiA20yV);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
     // If root node
@@ -69,10 +66,6 @@ public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ ObjectDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

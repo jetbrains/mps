@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class RuleConsequence__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<SAbstractConcept> getTemplateType_id6SoPMa83EEL = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getTemplateType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7933327286924651185L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTemplateType_id6SoPMa83EEL);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTemplateType_id6SoPMa83EEL);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SAbstractConcept getTemplateType_id6SoPMa83EEL(@NotNull SNode __thisNode__) {
     return null;
@@ -34,10 +31,6 @@ public final class RuleConsequence__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ RuleConsequence__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

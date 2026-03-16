@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -48,10 +47,8 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Scope> getScope_id52_Geb4QFgX = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203257917L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExternalVariablesDeclarations_idhF5UhAC, isCompact_idi0zxBt8, isOneLiner_idi0z3USV, getLocalVariableElements_idi1I$XiP, uncaughtThrowables_id2SVUfbZ9Qq1, collectUncaughtThrowables_id4Gt7ANIVHca, getFirstStatement_id4GU1DgEHJ2u, getLastStatement_id28aPEVv8l7T, getScopeVariables_id4pl5GY7LKmA, getLocalVariableDeclarations_id3tkxRydYUUs, getLocalVariableDeclarations_id7WLeqcv1izg, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExternalVariablesDeclarations_idhF5UhAC, isCompact_idi0zxBt8, isOneLiner_idi0z3USV, getLocalVariableElements_idi1I$XiP, uncaughtThrowables_id2SVUfbZ9Qq1, collectUncaughtThrowables_id4Gt7ANIVHca, getFirstStatement_id4GU1DgEHJ2u, getLastStatement_id28aPEVv8l7T, getScopeVariables_id4pl5GY7LKmA, getLocalVariableDeclarations_id3tkxRydYUUs, getLocalVariableDeclarations_id7WLeqcv1izg, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Set<SNode> getExternalVariablesDeclarations_idhF5UhAC(@NotNull SNode __thisNode__) {
     Set<SNode> declarations = SetSequence.fromSet(new HashSet<SNode>());
@@ -185,10 +182,6 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ StatementList__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

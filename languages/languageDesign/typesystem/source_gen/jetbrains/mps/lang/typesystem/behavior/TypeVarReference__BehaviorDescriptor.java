@@ -23,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -33,10 +32,8 @@ public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> suppress_id3612de_vrfV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3567142084961743867L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""));
   public static final SMethod<List<RuleIdFlavouredItem.TypesystemRuleId>> antiquotationSuppressRules_id2FXdWdhG0kq = new SMethodBuilder<List<RuleIdFlavouredItem.TypesystemRuleId>>(new SJavaCompoundTypeImpl((Class<List<RuleIdFlavouredItem.TypesystemRuleId>>) ((Class) Object.class))).name("antiquotationSuppressRules").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3097693430729409818L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(suppress_id3612de_vrfV, antiquotationSuppressRules_id2FXdWdhG0kq);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(suppress_id3612de_vrfV, antiquotationSuppressRules_id2FXdWdhG0kq);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
     if (!(Objects.equals(reportItem.getNode(), SNodeOperations.getPointer(__thisNode__)))) {
@@ -55,10 +52,6 @@ public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ TypeVarReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

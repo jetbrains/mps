@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -25,10 +24,8 @@ public final class ThisConstructorDelegationCall__BehaviorDescriptor extends Bas
 
   public static final SMethod<Iterable<SNode>> getAvailableConstructors_id4DC0lWpsin = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableConstructors").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(83774013505389719L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableConstructors_id4DC0lWpsin);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableConstructors_id4DC0lWpsin);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getAvailableConstructors_id4DC0lWpsin(@NotNull SAbstractConcept __thisConcept__, SNode contextNode) {
     SNode enclosingConstructor = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.IConstructorDeclaration$rR, true, false);
@@ -39,10 +36,6 @@ public final class ThisConstructorDelegationCall__BehaviorDescriptor extends Bas
   /*package*/ ThisConstructorDelegationCall__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

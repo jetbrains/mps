@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,10 +37,8 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<SNode> getInputNodeTypeFromEnvironment_idhEwIouc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeFromEnvironment").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290892L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
   public static final SMethod<Boolean> hasMappingLabel_id5KmckUrKj9u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314667344478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInputNodeTypeInsideOfMacro_idhEwIosJ, getPreviousNodeMacro_idhEwIot7, getPresentation_idhEwIMiw, getEnclosingMacro_idhEwIoti, getInputNodeTypeFromEnvironment_idhEwIouc, hasMappingLabel_id5KmckUrKj9u);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInputNodeTypeInsideOfMacro_idhEwIosJ, getPreviousNodeMacro_idhEwIot7, getPresentation_idhEwIMiw, getEnclosingMacro_idhEwIoti, getInputNodeTypeFromEnvironment_idhEwIouc, hasMappingLabel_id5KmckUrKj9u);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
     // Beware, this method is NOT intended for use during type calculation, as there are uses of .type operation
@@ -117,10 +114,6 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NodeMacro__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

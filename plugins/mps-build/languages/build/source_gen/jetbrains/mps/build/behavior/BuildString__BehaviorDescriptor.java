@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,10 +25,8 @@ public final class BuildString__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getText_id3NagsOfTioI = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4380385936562005550L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getText_id3NagsOfTioI);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getText_id3NagsOfTioI);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getText_id3NagsOfTioI(@NotNull SNode __thisNode__, MacroHelper helper) {
     StringBuilder sb = new StringBuilder();
@@ -42,10 +39,6 @@ public final class BuildString__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BuildString__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

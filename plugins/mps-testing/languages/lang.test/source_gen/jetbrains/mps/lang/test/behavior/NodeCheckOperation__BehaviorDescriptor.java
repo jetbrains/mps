@@ -19,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,8 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3607434973217685495L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8206790888928401875L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_idhHOMYE$, getDefaultName_id7scb9XJdmH2, isMpsStartRequired_id2RMg39tmiFh, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, expectsErrorsInside_id77$odk0vlBj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_idhHOMYE$, getDefaultName_id7scb9XJdmH2, isMpsStartRequired_id2RMg39tmiFh, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, expectsErrorsInside_id77$odk0vlBj);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getName_idhHOMYE$(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) == null || SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL).length() == 0) {
@@ -67,10 +64,6 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   /*package*/ NodeCheckOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

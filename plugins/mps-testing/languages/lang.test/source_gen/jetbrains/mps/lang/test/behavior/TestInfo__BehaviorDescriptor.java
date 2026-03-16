@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,10 +28,8 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> reOpenProject_idThWTaQhG7P = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("reOpenProject").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1031873601093419509L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<String> getProjectPath_id4qWC2JVrBcn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getProjectPath").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5097124989038916375L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(reOpenProject_idThWTaQhG7P, getProjectPath_id4qWC2JVrBcn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(reOpenProject_idThWTaQhG7P, getProjectPath_id4qWC2JVrBcn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean reOpenProject_idThWTaQhG7P(@NotNull SAbstractConcept __thisConcept__, SModel model) {
     List<SNode> infos = SModelOperations.roots(model, CONCEPTS.TestInfo$9q);
@@ -54,10 +51,6 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TestInfo__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

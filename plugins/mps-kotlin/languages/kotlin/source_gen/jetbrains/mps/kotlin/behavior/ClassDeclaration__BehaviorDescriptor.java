@@ -28,7 +28,6 @@ import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -49,10 +48,8 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<String> getFunctionPresentation_id7uO8z1BmwrX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8625556777609070333L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Boolean> hasModifier_id2NtWm0y2Y2A = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3233005502712242342L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, collectScope_id7DyvjiA20yV, getPrimaryNonPropertyVariables_id1$jFvlDFKeB, populateSignatures_id18X2O0FJBER, getConstructors_id2NtWm0y9fFa, hasPrimaryConstructor_id1$jFvlEi5P5, getParameters_id6f3juM$_Kx4, usesDefaultConstructor_id5H$PF0dBJLd, getFunctionPresentation_id7uO8z1BmwrX, hasModifier_id2NtWm0y2Y2A);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, collectScope_id7DyvjiA20yV, getPrimaryNonPropertyVariables_id1$jFvlDFKeB, populateSignatures_id18X2O0FJBER, getConstructors_id2NtWm0y9fFa, hasPrimaryConstructor_id1$jFvlEi5P5, getParameters_id6f3juM$_Kx4, usesDefaultConstructor_id5H$PF0dBJLd, getFunctionPresentation_id7uO8z1BmwrX, hasModifier_id2NtWm0y2Y2A);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateNonMemberSignatures_id1pD7IS2T3rZ(@NotNull SNode __thisNode__, final SignatureCollector visitor) {
     // Primary constructor properties signature
@@ -140,10 +137,6 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ ClassDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

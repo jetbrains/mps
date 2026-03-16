@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -27,10 +26,8 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> staticVirtualMethod_id46FlynTbAGG = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("staticVirtualMethod").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577185580L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
   public static final SMethod<Void> doInvokeAll_id46FlynTbBkw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doInvokeAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577188128L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtualMethod_id46FlynTbAz8, virtualMethod_id46FlynTbAzL, finalVirtualMethod_id46FlynTbB7_, staticMethod_id46FlynTbAAs, staticVirtualMethod_id46FlynTbAGG, doInvokeAll_id46FlynTbBkw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtualMethod_id46FlynTbAz8, virtualMethod_id46FlynTbAzL, finalVirtualMethod_id46FlynTbB7_, staticMethod_id46FlynTbAAs, staticVirtualMethod_id46FlynTbAGG, doInvokeAll_id46FlynTbBkw);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String nonVirtualMethod_id46FlynTbAz8(@NotNull SNode __thisNode__, String in, int dummy) {
     return "A";
@@ -65,10 +62,6 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ A__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

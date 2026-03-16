@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -25,10 +24,8 @@ public final class ActionStatement__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SNode> getActionPattern_id6cKyl1HJ1T = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getActionPattern").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(111677556049506425L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
   public static final SMethod<SNode> getNode_id6cKyl1HJ2s = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNode").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(111677556049506460L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionPattern_id6cKyl1HJ1T, getNode_id6cKyl1HJ2s);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActionPattern_id6cKyl1HJ1T, getNode_id6cKyl1HJ2s);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getActionPattern_id6cKyl1HJ1T(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ActionAsPattern$7o)) {
@@ -47,10 +44,6 @@ public final class ActionStatement__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ ActionStatement__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

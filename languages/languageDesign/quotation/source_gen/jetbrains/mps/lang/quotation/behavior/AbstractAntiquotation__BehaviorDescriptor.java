@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IMetaLevelChanger__BehaviorDescriptor;
 import jetbrains.mps.scope.EmptyScope;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -31,10 +30,8 @@ public final class AbstractAntiquotation__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Scope> getScope_id52_Geb4QFgX = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203257917L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
   /*package*/ static final SMethod<Scope> getScope_id6SHIBw3Z40z = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(7939206742749757475L).languageId(0xbbcc75c4219e9555L, 0x3a13115c633c4c5cL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMetaLevelChange_idbc0iGlxcsE, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getScope_id6SHIBw3Z40z);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMetaLevelChange_idbc0iGlxcsE, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getScope_id6SHIBw3Z40z);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int getMetaLevelChange_idbc0iGlxcsE(@NotNull SNode __thisNode__) {
     return 1;
@@ -66,10 +63,6 @@ public final class AbstractAntiquotation__BehaviorDescriptor extends BaseBHDescr
   /*package*/ AbstractAntiquotation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class IKotlinRunnable__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> isNodeRunnable_id431DWIovi3C = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNodeRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4666195181811081448L).languageId(0x8a9b2006b3a94898L, 0x4caf0310491e41f5L).build2();
   public static final SMethod<String> getUnitName_id4pl5GY7LKmR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnitName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5067982036267369911L).languageId(0xbfd948636cfe8bc3L, 0x9ded098bad6a4657L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, isNodeRunnable_id431DWIovi3C, getUnitName_id4pl5GY7LKmR);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, isNodeRunnable_id431DWIovi3C, getUnitName_id4pl5GY7LKmR);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isNodeRunnable_id431DWIovi3C(@NotNull SNode __thisNode__) {
     // To use in JVM configurations
@@ -42,10 +39,6 @@ public final class IKotlinRunnable__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ IKotlinRunnable__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

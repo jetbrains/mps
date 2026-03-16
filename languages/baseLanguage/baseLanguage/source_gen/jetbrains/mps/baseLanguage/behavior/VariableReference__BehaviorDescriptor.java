@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.baseLanguage.util.ReflectionUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -45,10 +44,8 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> singleValue_id1o8Ht9sES3u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("singleValue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1587718783750602974L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2092205951981422706L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeAnnotation_idhXbqSv6, getVariable_idSORzhOpB6t, getCompileTimeConstantValue_idi1LP2xI, isCompileTimeConstant_idi1LOPRp, isParameterOfThisMethod_idi3dhek3, isVariableDefinedInThisMethod_idhPiSGi6, getDeclaration_id2P5W1FWMYZ5, lvalue_id1653mnvAgpj, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeAnnotation_idhXbqSv6, getVariable_idSORzhOpB6t, getCompileTimeConstantValue_idi1LP2xI, isCompileTimeConstant_idi1LOPRp, isParameterOfThisMethod_idi3dhek3, isVariableDefinedInThisMethod_idhPiSGi6, getDeclaration_id2P5W1FWMYZ5, lvalue_id1653mnvAgpj, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getTypeAnnotation_idhXbqSv6(@NotNull SNode __thisNode__) {
     return TypeAnnotable__BehaviorDescriptor.getTypeAnnotation_idhXbqSv6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG));
@@ -153,10 +150,6 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ VariableReference__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

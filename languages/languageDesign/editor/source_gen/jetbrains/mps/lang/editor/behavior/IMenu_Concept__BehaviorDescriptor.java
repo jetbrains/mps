@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.IConceptAspect__BehaviorDescriptor;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -40,10 +39,8 @@ public final class IMenu_Concept__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isDefault_id5N_GIFFh1P5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDefault").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6693953143195311429L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Void> toggleDefault_id5N_GIFFi58L = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("toggleDefault").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6693953143195587121L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getApplicableConcept_id1quYWAD18xk, isDefault_id5N_GIFFh1P5, toggleDefault_id5N_GIFFi58L);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, getApplicableConcept_id1quYWAD18xk, isDefault_id5N_GIFFh1P5, toggleDefault_id5N_GIFFi58L);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$KA)) {
@@ -75,10 +72,6 @@ public final class IMenu_Concept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMenu_Concept__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

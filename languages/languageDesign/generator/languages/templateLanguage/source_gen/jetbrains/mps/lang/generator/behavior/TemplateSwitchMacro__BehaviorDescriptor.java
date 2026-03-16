@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -26,10 +25,8 @@ public final class TemplateSwitchMacro__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<SNode> getTemplateSwitch_idQzR6Ththuv = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplateSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(982871510068041631L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTemplateSwitch_idQzR6Ththuv);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTemplateSwitch_idQzR6Ththuv);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getTemplateSwitch_idQzR6Ththuv(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$6_6), CONCEPTS.TemplateSwitch$j_);
@@ -38,10 +35,6 @@ public final class TemplateSwitchMacro__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ TemplateSwitchMacro__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

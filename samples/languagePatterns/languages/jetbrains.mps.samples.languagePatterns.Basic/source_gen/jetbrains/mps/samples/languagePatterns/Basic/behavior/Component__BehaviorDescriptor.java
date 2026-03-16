@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -26,10 +25,8 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> fullName_id4Vpsm2KEoLo = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("fullName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5681697064999291992L).languageId(0x8cc51182671c136eL, 0x7a6f7ef73988464bL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fullName_id4Vpsm2KEoLo);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fullName_id4Vpsm2KEoLo);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String fullName_id4Vpsm2KEoLo(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + "->" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
@@ -38,10 +35,6 @@ public final class Component__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Component__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,10 +35,8 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<SNode> asSingleExpression_id18X2O0FvKfA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asSingleExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1314219036497609702L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isOneLiner_idCy8Bus23OC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLiner").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986701679912L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectDeclarationsBefore_id18X2O0Fy9mO, collectScope_id7DyvjiA20yV, collectSpecificScope_id1yTI8p9qmpS, asSingleExpression_id18X2O0FvKfA, isOneLiner_idCy8Bus23OC);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectDeclarationsBefore_id18X2O0Fy9mO, collectScope_id7DyvjiA20yV, collectSpecificScope_id1yTI8p9qmpS, asSingleExpression_id18X2O0FvKfA, isOneLiner_idCy8Bus23OC);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void collectDeclarationsBefore_id18X2O0Fy9mO(@NotNull SNode __thisNode__, SignatureCollector collector, SNode child) {
     // Statement scope -> order does matter
@@ -106,10 +103,6 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ IStatementHolder__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -40,10 +39,8 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
   /*package*/ static final SMethod<String> removeMyPrefixInternal_idO$iR4J$g9N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("removeMyPrefixInternal").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(946964771156066931L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<String> removeMyPrefix_idO$iR4J$g8k = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("removeMyPrefix").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156066836L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTemplate_idO$iR4J$g8G, getAccessorName_idO$iR4J$g8R, isInitializable_idhEwJfMK, getTypeFqName_idO$iR4J$g9n, getTypeEditorFqName_idO$iR4J$g9_, getTemplate_idO$iR4J$gak, addMyPrefix_id5uxO0H8rOhC, removeMyPrefixInternal_idO$iR4J$g9N, removeMyPrefix_idO$iR4J$g8k);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTemplate_idO$iR4J$g8G, getAccessorName_idO$iR4J$g8R, isInitializable_idhEwJfMK, getTypeFqName_idO$iR4J$g9n, getTypeEditorFqName_idO$iR4J$g9_, getTemplate_idO$iR4J$gak, addMyPrefix_id5uxO0H8rOhC, removeMyPrefixInternal_idO$iR4J$g9N, removeMyPrefix_idO$iR4J$g8k);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isTemplate_idO$iR4J$g8G(@NotNull SNode __thisNode__) {
     return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.type$a1UY), createTemplatePersistentConfigurationType_ex141d_b0a0a0());
@@ -93,10 +90,6 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
   /*package*/ PersistentPropertyDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

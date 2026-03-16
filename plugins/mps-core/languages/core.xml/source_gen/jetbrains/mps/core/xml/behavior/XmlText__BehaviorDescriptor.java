@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -31,10 +30,8 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498277L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyTextOnLineWithOpenTag").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2126696769318694488L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m, hasNewLineAfter_id1Qs9WekVZ9E, onNewLine_id1Qs9WekVZ9$, textLike_id1653mnvAgu_, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m, hasNewLineAfter_id1Qs9WekVZ9E, onNewLine_id1Qs9WekVZ9$, textLike_id1653mnvAgu_, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLastPositionAllowed_id1Qs9WekVZ8v(@NotNull SNode __thisNode__) {
     return true;
@@ -66,10 +63,6 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlText__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

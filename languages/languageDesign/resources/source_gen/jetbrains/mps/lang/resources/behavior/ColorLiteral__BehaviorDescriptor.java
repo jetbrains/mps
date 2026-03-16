@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -27,10 +26,8 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Integer> getIntValue_id1BguvjG4ybo = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1860120738943607512L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<Integer> getDarkIntValue_id4rOpugPdD$J = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getDarkIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792075055L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIntValue_id1BguvjG4ybo, getDarkIntValue_id4rOpugPdD$J);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIntValue_id1BguvjG4ybo, getDarkIntValue_id4rOpugPdD$J);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int getIntValue_id1BguvjG4ybo(@NotNull SNode __thisNode__) {
     try {
@@ -49,10 +46,6 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ColorLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

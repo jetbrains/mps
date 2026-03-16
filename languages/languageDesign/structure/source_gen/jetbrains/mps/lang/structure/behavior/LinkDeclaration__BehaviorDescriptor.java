@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -39,10 +38,8 @@ public final class LinkDeclaration__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<SNode> getConceptDeclaration_id7jb4LXpbWaP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8415841354033119925L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
   public static final SMethod<Boolean> is_id4MKjpUYniHA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5526002086977547110L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter(SAbstractLink.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGenuineLink_idhEwIf_V, getGenuineRole_idhEwIfAe, isSingular_idhEwIfAt, isAtLeastOneCardinality_id2VYdUfnkjmB, getPresentation_idhEwIMiw, getConceptDeclaration_id7jb4LXpbWaP, is_id4MKjpUYniHA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGenuineLink_idhEwIf_V, getGenuineRole_idhEwIfAe, isSingular_idhEwIfAt, isAtLeastOneCardinality_id2VYdUfnkjmB, getPresentation_idhEwIMiw, getConceptDeclaration_id7jb4LXpbWaP, is_id4MKjpUYniHA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getGenuineLink_idhEwIf_V(@NotNull SNode __thisNode__) {
     if (SLinkOperations.getTarget(__thisNode__, LINKS.specializedLink$7ZCN) == null) {
@@ -81,10 +78,6 @@ public final class LinkDeclaration__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ LinkDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

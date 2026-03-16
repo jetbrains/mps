@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunctionParameter__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -25,10 +24,8 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
 
   public static final SMethod<Boolean> useGenericAccessor_id6E2BWlDjAuB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7674872385216866215L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useGenericAccessor_id6E2BWlDjAuB);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useGenericAccessor_id6E2BWlDjAuB);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean useGenericAccessor_id6E2BWlDjAuB(@NotNull SNode __thisNode__) {
     SNode conceptFunction = ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__);
@@ -39,10 +36,6 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
   /*package*/ ConceptFunctionParameter_node__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

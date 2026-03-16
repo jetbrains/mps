@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -37,10 +36,8 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
   public static final SMethod<String> getSourceModuleJarName_id6v5CVv8csP9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSourceModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7477562766051626313L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   public static final SMethod<String> getDocModuleJarName_id1znuW2OtpMX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDocModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1790035444494605501L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getSourceModuleJarName_id6v5CVv8csP9, getDocModuleJarName_id1znuW2OtpMX);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getSourceModuleJarName_id6v5CVv8csP9, getDocModuleJarName_id1znuW2OtpMX);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
@@ -130,10 +127,6 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
   /*package*/ BuildMpsLayout_ModuleJars__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

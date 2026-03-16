@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,10 +24,8 @@ public final class BuildInputSingleFileAbsolutePath__BehaviorDescriptor extends 
   public static final SMethod<Boolean> isImplicit_id19QsrPuCW11 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isImplicit").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1330375798085107777L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
   public static final SMethod<String> getApproximateName_id4RsV8qJDnFm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApproximateName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5610619299013425878L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isImplicit_id19QsrPuCW11, getApproximateName_id4RsV8qJDnFm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isImplicit_id19QsrPuCW11, getApproximateName_id4RsV8qJDnFm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isImplicit_id19QsrPuCW11(@NotNull SNode __thisNode__) {
     return true;
@@ -43,10 +40,6 @@ public final class BuildInputSingleFileAbsolutePath__BehaviorDescriptor extends 
   /*package*/ BuildInputSingleFileAbsolutePath__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

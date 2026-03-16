@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey;
 import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -44,10 +43,8 @@ public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("shallowId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, getConceptType_id4VnyIrvoQ8N, toString_id4nn3FPlZH$r, populateSubstitutions_id4f4W8JpwgWV, getJavaClassPointer_idAa0Z14eCoU, typeKey_idJmO2PmZtH5, createConstructor_id2$1CHwF$28b);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, getConceptType_id4VnyIrvoQ8N, toString_id4nn3FPlZH$r, populateSubstitutions_id4f4W8JpwgWV, getJavaClassPointer_idAa0Z14eCoU, typeKey_idJmO2PmZtH5, createConstructor_id2$1CHwF$28b);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getConceptTypes_id28CvMylq0Pm(@NotNull SNode __thisNode__) {
     return Sequence.singleton(ShortNodeType__BehaviorDescriptor.getConceptType_id4VnyIrvoQ8N.invoke(__thisNode__));
@@ -90,10 +87,6 @@ public final class ShortNodeType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ShortNodeType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

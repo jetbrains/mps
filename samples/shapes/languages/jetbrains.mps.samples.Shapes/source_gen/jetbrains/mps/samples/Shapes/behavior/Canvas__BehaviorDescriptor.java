@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.JFrame;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import javax.swing.JPanel;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -26,10 +25,8 @@ public final class Canvas__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Void> interpret_idW6XMzE_6ci = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("interpret").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1082824515535528722L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(interpret_idW6XMzE_6ci);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(interpret_idW6XMzE_6ci);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void interpret_idW6XMzE_6ci(@NotNull SNode __thisNode__) {
     JFrame frame = new JFrame("Preview: " + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
@@ -42,10 +39,6 @@ public final class Canvas__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Canvas__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

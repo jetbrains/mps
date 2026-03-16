@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.test.runtime.CheckScopesAction;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -41,10 +40,8 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3607434973217685495L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1517788251554632808L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCheckingReference_id4IvydoGvimX, isSimple_id4IvydoGvpbr, isApplicable_id4IvydoGviup, getTestCase_idhGBgWVd, isMpsStartRequired_id2RMg39tmiFh, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, perform_id1kgh5YabdhC);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCheckingReference_id4IvydoGvimX, isSimple_id4IvydoGvpbr, isApplicable_id4IvydoGviup, getTestCase_idhGBgWVd, isMpsStartRequired_id2RMg39tmiFh, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, perform_id1kgh5YabdhC);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SReference getCheckingReference_id4IvydoGvimX(@NotNull SNode __thisNode__) {
     SNode nodeToCheck = INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__);
@@ -89,10 +86,6 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ScopesTest__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

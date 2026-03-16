@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,10 +28,8 @@ public final class EditorOperationDeclaration__BehaviorDescriptor extends BaseBH
   public static final SMethod<SNode> getPublicJavaMethod_idbkrofm9Fgz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPublicJavaMethod").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(203908296139519011L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
   public static final SMethod<SNode> getMethodbyName_idO$iR4J$gaP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodbyName").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(946964771156066997L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getJavaMethod_idO$iR4J$gaJ, getPublicJavaMethod_idbkrofm9Fgz, getMethodbyName_idO$iR4J$gaP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getJavaMethod_idO$iR4J$gaJ, getPublicJavaMethod_idbkrofm9Fgz, getMethodbyName_idO$iR4J$gaP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getMethodbyName_idO$iR4J$gaP(@NotNull SNode __thisNode__, final String name) {
     return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.getNode("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.options(MPS.IDEA/)", "~SettingsEditor"))).union(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.getNode("r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)", "3908032508224771799")))).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals(name));
@@ -41,10 +38,6 @@ public final class EditorOperationDeclaration__BehaviorDescriptor extends BaseBH
   /*package*/ EditorOperationDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

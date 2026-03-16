@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,10 +39,8 @@ public final class NodeInfoCheckOperation__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8417162567088372251L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tvJ6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMsgText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3929815563185290182L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt, getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getExpectedMsgText_id3q9wAW4tvJ6);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt, getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getExpectedMsgText_id3q9wAW4tvJ6);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canAttachReference_id2wBFdLy7HtS(@NotNull SNode __thisNode__, SNode reference) {
     return SNodeOperations.isInstanceOf(reference, CONCEPTS.InfoStatement$Y5);
@@ -79,10 +76,6 @@ public final class NodeInfoCheckOperation__BehaviorDescriptor extends BaseBHDesc
   /*package*/ NodeInfoCheckOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

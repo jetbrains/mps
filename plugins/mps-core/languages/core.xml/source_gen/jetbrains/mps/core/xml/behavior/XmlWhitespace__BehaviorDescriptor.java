@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -32,10 +31,8 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isLastPositionAllowed_id1Qs9WekVZ8v = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631519L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
   public static final SMethod<Boolean> isFirstPositionAllowed_id1Qs9WekVZ7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631446L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isOneLineBlock_id1Qs9WekVZ7e, isTextLike_id1Qs9WekVZ9O, isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isOneLineBlock_id1Qs9WekVZ7e, isTextLike_id1Qs9WekVZ9O, isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean onNewLine_id1Qs9WekVZ9$(@NotNull SNode __thisNode__) {
     SNode left = SNodeOperations.getPrevSibling(__thisNode__);
@@ -67,10 +64,6 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ XmlWhitespace__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class AbstractPointerResolveOperation__BehaviorDescriptor extends B
 
   public static final SMethod<Boolean> operandCanBeNull_idhWYZ0eEN6z = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("operandCanBeNull").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(323410281720656291L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(operandCanBeNull_idhWYZ0eEN6z);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(operandCanBeNull_idhWYZ0eEN6z);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean operandCanBeNull_idhWYZ0eEN6z(@NotNull SNode __thisNode__) {
     return true;
@@ -34,10 +31,6 @@ public final class AbstractPointerResolveOperation__BehaviorDescriptor extends B
   /*package*/ AbstractPointerResolveOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

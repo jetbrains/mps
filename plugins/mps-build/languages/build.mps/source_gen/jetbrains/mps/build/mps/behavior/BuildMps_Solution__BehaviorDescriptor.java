@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -26,10 +25,8 @@ public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<Boolean> hasTestsSources_id6ogfLD6evrW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasTestsSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7354447573575923452L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
   public static final SMethod<Boolean> hasSources_id6ogfLD6hwDf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7354447573576714831L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasTestsSources_id6ogfLD6evrW, hasSources_id6ogfLD6hwDf);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasTestsSources_id6ogfLD6evrW, hasSources_id6ogfLD6hwDf);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean hasTestsSources_id6ogfLD6evrW(@NotNull SNode __thisNode__) {
     return (SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$cgod) != null) && (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$cgod), 0x3be316509db4553L) || SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.sourcesKind$cgod), 0x3be316509db455cL));
@@ -41,10 +38,6 @@ public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ BuildMps_Solution__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

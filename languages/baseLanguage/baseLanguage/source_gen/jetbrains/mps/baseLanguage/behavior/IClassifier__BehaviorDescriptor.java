@@ -15,7 +15,6 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierHierarchyVisitor;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -30,19 +29,13 @@ public final class IClassifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> enumerateMembers_id65_8Gi2s6iV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("enumerateMembers").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7018053821724124347L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(ClassifierHierarchyVisitor.class, ""));
   public static final SMethod<Void> enumerateObjectMembers_id9QjKR8ksDs = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("enumerateObjectMembers").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(177416155941685852L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(ClassifierHierarchyVisitor.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, enumerateSupertypes_id65_8Gi1dKDs, enumerateMembers_id65_8Gi2s6iV, enumerateObjectMembers_id9QjKR8ksDs);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, enumerateSupertypes_id65_8Gi1dKDs, enumerateMembers_id65_8Gi2s6iV, enumerateObjectMembers_id9QjKR8ksDs);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
 
   /*package*/ IClassifier__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

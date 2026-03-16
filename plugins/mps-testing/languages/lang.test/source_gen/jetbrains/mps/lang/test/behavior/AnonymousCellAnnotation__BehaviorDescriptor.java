@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,10 +37,8 @@ public final class AnonymousCellAnnotation__BehaviorDescriptor extends BaseBHDes
   /*package*/ static final SMethod<Void> setupCaretAndSelection_id7TYU6fNl1yz = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setupCaretAndSelection").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(9114978211826243747L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(EditorCell.class, ""));
   /*package*/ static final SMethod<EditorComponent> setupInspector_id4VoD2D0CSEA = new SMethodBuilder<EditorComponent>(new SJavaCompoundTypeImpl(EditorComponent.class)).name("setupInspector").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5681471431307922086L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(NodeEditorComponent.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setupSelection_id5rZKa_fUiYP, setupSelection_id5g7DxxpaP55, getCaretPosition_id5rZKa_fUlry, setupCaretAndSelection_id7TYU6fNl1yz, setupInspector_id4VoD2D0CSEA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setupSelection_id5rZKa_fUiYP, setupSelection_id5g7DxxpaP55, getCaretPosition_id5rZKa_fUlry, setupCaretAndSelection_id7TYU6fNl1yz, setupInspector_id4VoD2D0CSEA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated
   /*package*/ static void setupSelection_id5rZKa_fUiYP(@NotNull SNode __thisNode__, NodeEditorComponent nodeEditorComponent, SNode node, Map<SNode, SNode> map) {
@@ -94,10 +91,6 @@ public final class AnonymousCellAnnotation__BehaviorDescriptor extends BaseBHDes
   /*package*/ AnonymousCellAnnotation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

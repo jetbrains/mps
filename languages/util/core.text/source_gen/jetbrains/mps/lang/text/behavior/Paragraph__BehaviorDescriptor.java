@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -54,10 +53,8 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static final SMethod<Void> copyLettersFromWord_id1iNeTGf7YHg = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("copyLettersFromWord").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1491601438749485904L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Void> copyLettersFromString_id1iNeTGf8gbV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("copyLettersFromString").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1491601438749557499L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initialize_id1v077Wg2A59, clearTextualElements_id1uSfHaoOxlA, clearFromEmptyLetters_id10ljsgpnzm5, getTextualElements_id250QDwq2ueg, getNonEmptyTextualElements_id250QDwq53RO, removeTextualElementAt_id250QDwq2Yav, addTextualElement_id1uSfHaoOOLl, addAllTextualElements_id1uSfHaoPgT1, isEmptyParagraph_id7r4EKYUymRW, merge_id4HqBHuNzqyw, merge_id4HqBHuNzqyK, split_id4HqBHuN_RSC, initializeFromLine_id6n6K0Pj71DU, createLineInstance_id7q4Ywce6bwW, insertTextualElementAtCaret_id7evo$BZbvad, wrapTextForClipboard_idfcFkhVLuVF, representAsText_id1iNeTGeVhLf, copyLettersFromWord_id1iNeTGf7YHg, copyLettersFromString_id1iNeTGf8gbV);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initialize_id1v077Wg2A59, clearTextualElements_id1uSfHaoOxlA, clearFromEmptyLetters_id10ljsgpnzm5, getTextualElements_id250QDwq2ueg, getNonEmptyTextualElements_id250QDwq53RO, removeTextualElementAt_id250QDwq2Yav, addTextualElement_id1uSfHaoOOLl, addAllTextualElements_id1uSfHaoPgT1, isEmptyParagraph_id7r4EKYUymRW, merge_id4HqBHuNzqyw, merge_id4HqBHuNzqyK, split_id4HqBHuN_RSC, initializeFromLine_id6n6K0Pj71DU, createLineInstance_id7q4Ywce6bwW, insertTextualElementAtCaret_id7evo$BZbvad, wrapTextForClipboard_idfcFkhVLuVF, representAsText_id1iNeTGeVhLf, copyLettersFromWord_id1iNeTGf7YHg, copyLettersFromString_id1iNeTGf8gbV);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void initialize_id1v077Wg2A59(@NotNull SNode __thisNode__) {
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.letters$rNyA)).isEmpty()) {
@@ -111,7 +108,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
         currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
       }
     });
-    if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0kb(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$kd), PROPS.value$X7Tp)))) {
+    if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0jb(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$kd), PROPS.value$X7Tp)))) {
       SNodeOperations.deleteNode(position);
     }
   }
@@ -200,10 +197,6 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Paragraph__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
@@ -293,7 +286,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  public static String trim_7af07r_a0a0e0kb(String str) {
+  public static String trim_7af07r_a0a0e0jb(String str) {
     return (str == null ? null : str.trim());
   }
 

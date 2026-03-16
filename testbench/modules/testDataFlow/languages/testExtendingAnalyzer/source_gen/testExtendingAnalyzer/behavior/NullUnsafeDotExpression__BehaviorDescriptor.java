@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.DotExpression__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,10 +25,8 @@ public final class NullUnsafeDotExpression__BehaviorDescriptor extends BaseBHDes
   public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> allowsNullOperand_id3Yy2P0QQESt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowsNullOperand").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4585239809762176541L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLegalAsStatement_idi26MfYG, allowsNullOperand_id3Yy2P0QQESt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLegalAsStatement_idi26MfYG, allowsNullOperand_id3Yy2P0QQESt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLegalAsStatement_idi26MfYG(@NotNull SNode __thisNode__) {
     return ((boolean) Expression__BehaviorDescriptor.isLegalAsStatement_idi26MfYG.invokeSuper(__thisNode__, CONCEPTS.NullUnsafeDotExpression$fT));
@@ -41,10 +38,6 @@ public final class NullUnsafeDotExpression__BehaviorDescriptor extends BaseBHDes
   /*package*/ NullUnsafeDotExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -39,10 +38,8 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SConcept> getConstructorDefaultVisibility_idu1nygduECM = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getConstructorDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(540816939199146546L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Integer> visitSuperTypes_id1WN66f3AYxj = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("visitSuperTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2248167455750613075L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SuperTypesVisitor.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStaticScope_id3HHsmlLCHdO, hasModifier_id2NtWm0y2Y2A, getInheritance_id6jE_6duswG9, getConstructorDefaultVisibility_idu1nygduECM, visitSuperTypes_id1WN66f3AYxj);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStaticScope_id3HHsmlLCHdO, hasModifier_id2NtWm0y2Y2A, getInheritance_id6jE_6duswG9, getConstructorDefaultVisibility_idu1nygduECM, visitSuperTypes_id1WN66f3AYxj);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SignatureScope getStaticScope_id3HHsmlLCHdO(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     SignatureScope parent = IClassLike__BehaviorDescriptor.getStaticScope_id3HHsmlLCHdO.invoke0(__thisNode__, CONCEPTS.ClassDeclaration$Jm, filter, contextNode);
@@ -72,10 +69,6 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
   /*package*/ EnumClassDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

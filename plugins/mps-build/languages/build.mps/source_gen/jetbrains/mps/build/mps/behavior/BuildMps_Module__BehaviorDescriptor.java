@@ -25,7 +25,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.util.JavaExportUtil;
 import jetbrains.mps.build.behavior.BuildSource_CompilablePart__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -48,10 +47,8 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static final SMethod<Boolean> fetchMPSDep_id3WZD5LHqWXL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchMPSDep").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4557542064801959793L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
   public static final SMethod<SNode> getOptions_idgpKvTnoZBS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(295480548701501944L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompilable_id6tOCIA6_7jg, getDependenciesUnwrapped_id3QtfwKhgryb, fetchDependencies_id57YmpYyL8F1, addJarPath_id3WZD5LHqnU8, getJarDeps_id3WZD5LHqufx, areLocatedInTheSameRoot_id3ZROizBPX9c, fetchJavaDeps_id3WZD5LHqUHY, fetchMPSDeps_id3WZD5LHqVGt, fetchMPSDep_id3WZD5LHqWXL, getOptions_idgpKvTnoZBS);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompilable_id6tOCIA6_7jg, getDependenciesUnwrapped_id3QtfwKhgryb, fetchDependencies_id57YmpYyL8F1, addJarPath_id3WZD5LHqnU8, getJarDeps_id3WZD5LHqufx, areLocatedInTheSameRoot_id3ZROizBPX9c, fetchJavaDeps_id3WZD5LHqUHY, fetchMPSDeps_id3WZD5LHqVGt, fetchMPSDep_id3WZD5LHqWXL, getOptions_idgpKvTnoZBS);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isCompilable_id6tOCIA6_7jg(@NotNull SNode __thisNode__) {
     // check the old value first (if it is not migrated yet)
@@ -181,10 +178,6 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ BuildMps_Module__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

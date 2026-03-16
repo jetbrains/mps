@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -33,10 +32,8 @@ public final class LocalPropertyDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNode> getVariablesReceiverType_id75chmMYhcwP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVariablesReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866829877L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isChildVariableAssignable_idCy8Bus9qei = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChildVariableAssignable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703606674L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateStatementDeclarations_id2ZbCiJacEjm, isDeconstructing_id7RZWrHVbnio, getVariablesReceiver_id4FOkRjXx8jV, getDeclarations_id7RZWrHVaXCH, getVariablesReceiverType_id75chmMYhcwP, isChildVariableAssignable_idCy8Bus9qei);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateStatementDeclarations_id2ZbCiJacEjm, isDeconstructing_id7RZWrHVbnio, getVariablesReceiver_id4FOkRjXx8jV, getDeclarations_id7RZWrHVaXCH, getVariablesReceiverType_id75chmMYhcwP, isChildVariableAssignable_idCy8Bus9qei);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateStatementDeclarations_id2ZbCiJacEjm(@NotNull SNode __thisNode__, SignatureCollector collector) {
     PropertySignature.declareAllTo(AbstractPropertyDeclaration__BehaviorDescriptor.getDeclarations_id7RZWrHVaXCH.invoke(__thisNode__), ((boolean) IVariableConstraintHolder__BehaviorDescriptor.isChildVariableAssignable_idCy8Bus9qei.invoke(__thisNode__)), null, collector);
@@ -60,10 +57,6 @@ public final class LocalPropertyDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ LocalPropertyDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

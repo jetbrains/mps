@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -32,10 +31,8 @@ public final class IClassifierType__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Void> enumerateMembers_id65_8Gi2shR6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("enumerateMembers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7018053821724171718L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(ClassifierHierarchyVisitor.class, ""));
   public static final SMethod<Void> enumerateObjectMembers_id9QjKR8mfZm = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("enumerateObjectMembers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(177416155942158294L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(ClassifierHierarchyVisitor.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, getMembers_id6r77ob2V1Fr, getVisibleMembers_id5laDzmpBPtZ, populateMembers_id6r77ob2USS_, enumerateTypesHierarchy_id65_8Gi1edLu, enumerateMembers_id65_8Gi2shR6, enumerateObjectMembers_id9QjKR8mfZm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, getMembers_id6r77ob2V1Fr, getVisibleMembers_id5laDzmpBPtZ, populateMembers_id6r77ob2USS_, enumerateTypesHierarchy_id65_8Gi1edLu, enumerateMembers_id65_8Gi2shR6, enumerateObjectMembers_id9QjKR8mfZm);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getMembers_id6r77ob2V1Fr(@NotNull SNode __thisNode__) {
     MembersPopulatingContext scope = new MembersPopulatingContext(__thisNode__);
@@ -89,10 +86,6 @@ public final class IClassifierType__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ IClassifierType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -20,7 +20,6 @@ import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import javax.swing.ImageIcon;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -30,10 +29,8 @@ public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDesc
 
   public static final SMethod<Boolean> isValid_idIb_Fk7zRKP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(831924260440079413L).languageId(0x804f8987b652fceaL, 0xfeee615f9f2b486fL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValid_idIb_Fk7zRKP);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isValid_idIb_Fk7zRKP);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isValid_idIb_Fk7zRKP(@NotNull SNode __thisNode__) {
     SModule module = SNodeOperations.getModel(__thisNode__).getModule();
@@ -59,10 +56,6 @@ public final class MPSTipsAndTricks_Image__BehaviorDescriptor extends BaseBHDesc
   /*package*/ MPSTipsAndTricks_Image__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

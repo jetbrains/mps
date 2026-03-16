@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,10 +37,8 @@ public final class ConceptTextGenDeclaration__BehaviorDescriptor extends BaseBHD
   public static final SMethod<Boolean> shallProduceOutputUnit_id3fG6dkhfrk3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shallProduceOutputUnit").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3741392693834396931L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
   public static final SMethod<Boolean> needsUnitConfigure_id1SvnOIGt_fM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsUnitConfigure").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2170558324036490226L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableOperations_idhXYHpEa, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, canBeAppliedToNode_id7IH442d05tK, shallProduceOutputUnit_id3fG6dkhfrk3, needsUnitConfigure_id1SvnOIGt_fM);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableOperations_idhXYHpEa, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, canBeAppliedToNode_id7IH442d05tK, shallProduceOutputUnit_id3fG6dkhfrk3, needsUnitConfigure_id1SvnOIGt_fM);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getAvailableOperations_idhXYHpEa(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
@@ -77,10 +74,6 @@ public final class ConceptTextGenDeclaration__BehaviorDescriptor extends BaseBHD
   /*package*/ ConceptTextGenDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

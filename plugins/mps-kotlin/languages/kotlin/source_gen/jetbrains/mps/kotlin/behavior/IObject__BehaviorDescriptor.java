@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class IObject__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isAbstractClass_id$q1KckYQOy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(655844405554146594L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeKey> getSelfTypeKey_id9DkAreHC7z = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("getSelfTypeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(173760662138683875L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasPrimaryConstructor_id1$jFvlEi5P5, getType_id6563FJLeSWZ, isAbstractClass_id$q1KckYQOy, getSelfTypeKey_id9DkAreHC7z);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasPrimaryConstructor_id1$jFvlEi5P5, getType_id6563FJLeSWZ, isAbstractClass_id$q1KckYQOy, getSelfTypeKey_id9DkAreHC7z);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean hasPrimaryConstructor_id1$jFvlEi5P5(@NotNull SNode __thisNode__) {
     // Objects are initialized once, semantically it means they have one constructor that can initialize supertypes, meaning it is primary
@@ -50,10 +47,6 @@ public final class IObject__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IObject__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

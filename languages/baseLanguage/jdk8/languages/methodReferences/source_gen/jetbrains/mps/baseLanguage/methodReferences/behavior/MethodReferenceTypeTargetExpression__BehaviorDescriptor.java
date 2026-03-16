@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -32,10 +31,8 @@ public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor exten
   public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980011308976L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
   public static final SMethod<Boolean> allowRawType_id6SseLh999LE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowRawType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7934281601832492138L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDetailedPresentation_id22G2W3WJ92t, getSubstituteNode_id2Yg2DIzFJuK, allowRawType_id6SseLh999LE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDetailedPresentation_id22G2W3WJ92t, getSubstituteNode_id2Yg2DIzFJuK, allowRawType_id6SseLh999LE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getDetailedPresentation_id22G2W3WJ92t(@NotNull SNode __thisNode__) {
     return BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$z9_f));
@@ -58,10 +55,6 @@ public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor exten
   /*package*/ MethodReferenceTypeTargetExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,10 +27,8 @@ public final class SymbolClassRegexp__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<String> getRepresentation_id75Jea4IEZbM = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8173814113624650482L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
   /*package*/ static final SMethod<String> partsToString_idhMS0769 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("partsToString").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1222857748873L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, getRepresentation_id75Jea4IEZbM, partsToString_idhMS0769);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, getRepresentation_id75Jea4IEZbM, partsToString_idhMS0769);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
     return ((String) SymbolClassRegexpAndPart__BehaviorDescriptor.getRepresentation_id75Jea4IEZbM.invoke(__thisNode__));
@@ -50,10 +47,6 @@ public final class SymbolClassRegexp__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ SymbolClassRegexp__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -28,7 +28,6 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import org.jetbrains.annotations.ApiStatus;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -47,10 +46,8 @@ public final class TypeAliasType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SignatureScope> getStaticScope_id1ODRHGtufGw = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getStaticScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733818719008L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
   public static final SMethod<SNode> getCompanionType_id13qggQDnK5I = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCompanionType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1214354576461726062L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toString_id4nn3FPlZH$r, populateTypeSignatures_id5q426iHK5S9, visitHierarchy_id5q426iHtYvR, populateSubstitutions_id4f4W8JpwgWV, typeKey_idJmO2PmZtH5, getTypeParameters_id7an2tsIdpkM, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toString_id4nn3FPlZH$r, populateTypeSignatures_id5q426iHK5S9, visitHierarchy_id5q426iHtYvR, populateSubstitutions_id4f4W8JpwgWV, typeKey_idJmO2PmZtH5, getTypeParameters_id7an2tsIdpkM, getStaticScope_id1ODRHGtufGw, getCompanionType_id13qggQDnK5I);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     StringBuilder pres = new StringBuilder();
@@ -103,10 +100,6 @@ public final class TypeAliasType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TypeAliasType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

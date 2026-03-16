@@ -27,7 +27,7 @@ public final class PropertyInstance__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<SNode> getDeclaration_id7T23sO8vZuR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9097849371503884215L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
   public static final SMethod<SNode> getValueExpression_id3m06Jgserfw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValueExpression").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3855110916777030624L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDeclaration_id7T23sO8vZuR, getValueExpression_id3m06Jgserfw);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDeclaration_id7T23sO8vZuR, getValueExpression_id3m06Jgserfw);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setTarget(__thisNode__, LINKS.visibility$Yyua, _quotation_createNode_fkmlyr_a0a0a());

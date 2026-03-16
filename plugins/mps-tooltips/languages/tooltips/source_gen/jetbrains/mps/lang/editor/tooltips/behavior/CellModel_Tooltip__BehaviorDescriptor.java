@@ -20,7 +20,7 @@ public final class CellModel_Tooltip__BehaviorDescriptor extends BaseBHDescripto
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, "jetbrains.mps.lang.editor.tooltips.structure.CellModel_Tooltip");
 
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.lazy$JsTc, true);

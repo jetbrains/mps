@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -23,10 +22,8 @@ public final class H__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Object> foo6_id186XXh$CxOf = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo6").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1298998034136440079L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo6_id186XXh$CxOf);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo6_id186XXh$CxOf);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Object foo6_id186XXh$CxOf(@NotNull SNode __thisNode__) {
     return ((Object) B__BehaviorDescriptor.foo6_id186XXh$CxOf.invokeSuper(__thisNode__, CONCEPTS.H$Rr));
@@ -35,10 +32,6 @@ public final class H__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ H__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

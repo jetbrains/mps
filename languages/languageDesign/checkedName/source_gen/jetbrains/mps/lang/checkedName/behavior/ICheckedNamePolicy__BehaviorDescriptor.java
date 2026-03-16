@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<List<? extends PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<List<? extends PropertyReference>>(new SJavaCompoundTypeImpl((Class<List<? extends PropertyReference>>) ((Class) Object.class))).name("getPropertiesToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611445L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
   public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611473L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescendantsToCheck_id4cWf37B8oXl, getDescendantToCheck_id4cWf37B8oXJ, getPropertiesToCheck_id4cWf37B8oXP, getPropertyToCheck_id4cWf37B8oYh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescendantsToCheck_id4cWf37B8oXl, getDescendantToCheck_id4cWf37B8oXJ, getPropertiesToCheck_id4cWf37B8oXP, getPropertyToCheck_id4cWf37B8oYh);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getDescendantsToCheck_id4cWf37B8oXl(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
@@ -59,10 +56,6 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   /*package*/ ICheckedNamePolicy__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

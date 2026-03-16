@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class K__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Object> foo_id6r9lTJu8BMG = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840812L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Object> foo_id6r9lTJu8BNQ = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840886L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6r9lTJu8BJM, foo_id6r9lTJu8BMG, foo_id6r9lTJu8BNQ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6r9lTJu8BJM, foo_id6r9lTJu8BMG, foo_id6r9lTJu8BNQ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Object foo_id6r9lTJu8BJM(@NotNull SNode __thisNode__, SNode node) {
     return 1;
@@ -42,10 +39,6 @@ public final class K__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ K__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

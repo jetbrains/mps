@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -36,10 +35,8 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> createLineInstance_id7q4Ywce6bwW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createLineInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684429649980L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7333760206680889978L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id5QuCpoxy5xM, canBeTurnedToNumberedPoint_id10ljsgmITo7, startsWithNumberSpace_id10ljsgmJ2Al, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id5QuCpoxy5xM, canBeTurnedToNumberedPoint_id10ljsgmITo7, startsWithNumberSpace_id10ljsgmJ2Al, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int calculatePosition_id5QuCpoxy5xM(@NotNull SNode __thisNode__) {
     for (SNode p : ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, false)).reversedList()) {
@@ -93,10 +90,6 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NumberedPoint__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

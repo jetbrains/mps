@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,10 +24,8 @@ public final class PastePostProcessor__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<String> getClassName_id4IXs4YUz$e_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5457641811177522085L).languageId(0xaef20004f6a1cdbdL, 0xaee9cad2acd44608L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id4IXs4YUz$e_);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id4IXs4YUz$e_);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getClassName_id4IXs4YUz$e_(@NotNull SNode __thisNode__) {
     SNode parent = (SNode) SNodeOperations.getParent(__thisNode__);
@@ -38,10 +35,6 @@ public final class PastePostProcessor__BehaviorDescriptor extends BaseBHDescript
   /*package*/ PastePostProcessor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

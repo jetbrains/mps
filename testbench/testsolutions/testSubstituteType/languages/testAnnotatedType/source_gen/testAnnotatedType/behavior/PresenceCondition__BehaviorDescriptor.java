@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,10 +23,8 @@ public final class PresenceCondition__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<Boolean> isSatisfied_id5zzawu2JLe0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSatisfied").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6405009306797675392L).languageId(0xbae1cc709d588366L, 0x2f74e72e3e3d480eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSatisfied_id5zzawu2JLe0);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSatisfied_id5zzawu2JLe0);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isSatisfied_id5zzawu2JLe0(@NotNull SNode __thisNode__) {
     return Boolean.valueOf(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
@@ -36,10 +33,6 @@ public final class PresenceCondition__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ PresenceCondition__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

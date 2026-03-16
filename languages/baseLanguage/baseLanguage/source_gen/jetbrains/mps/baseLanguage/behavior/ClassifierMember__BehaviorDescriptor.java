@@ -28,7 +28,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,10 +48,8 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2949815620938109095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> getDescriptionText_id69Qfsw3IqwE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescriptionText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7094926192234047530L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, isVisible_id70J2WaK_oVl, populateMember_id6r77ob2UW9O, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, needsEmptyLineBefore_idzB21h1tQit, needsEmptyLineAfter_idzB21h1tQNm, canBeInterfaceMember_id2zJQqQIUx2B, getDescriptionText_id69Qfsw3IqwE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStaticClassifierMember_id7MS72Gc8avw, isVisible_id70J2WaK_oVl, populateMember_id6r77ob2UW9O, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, needsEmptyLineBefore_idzB21h1tQit, needsEmptyLineAfter_idzB21h1tQNm, canBeInterfaceMember_id2zJQqQIUx2B, getDescriptionText_id69Qfsw3IqwE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isStaticClassifierMember_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
     return false;
@@ -144,10 +141,6 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ ClassifierMember__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

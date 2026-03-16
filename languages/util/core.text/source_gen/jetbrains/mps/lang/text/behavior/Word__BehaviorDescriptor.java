@@ -27,7 +27,7 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> normalize_id3yV2h2COV$s = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("normalize").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4087871053925431580L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<String> getTextualRepresentation_idfB3l81it7u = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(281208147594039774L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(normalize_id3yV2h2COV$s, getTextualRepresentation_idfB3l81it7u);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(normalize_id3yV2h2COV$s, getTextualRepresentation_idfB3l81it7u);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.value$zQr_, "");

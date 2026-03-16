@@ -12,10 +12,9 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
@@ -24,10 +23,8 @@ public final class SuperConceptExpression__BehaviorDescriptor extends BaseBHDesc
 
   public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSpecifiedSuperConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468819723L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSpecifiedSuperConcept_id2k7p7sTvKkb);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSpecifiedSuperConcept_id2k7p7sTvKkb);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Nullable
   /*package*/ static SNode getSpecifiedSuperConcept_id2k7p7sTvKkb(@NotNull SNode __thisNode__) {
@@ -37,10 +34,6 @@ public final class SuperConceptExpression__BehaviorDescriptor extends BaseBHDesc
   /*package*/ SuperConceptExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -40,10 +39,8 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
   public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8333855927540237654L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getExpectedMessageText_id3q9wAW4tygG, getDefaultName_id7scb9XJdmH2, canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getExpectedMessageText_id3q9wAW4tygG, getDefaultName_id7scb9XJdmH2, canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository, @Nullable ComponentHost host) {
     return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.ERROR, NodeTypeSystemErrorCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tygG.invokeSpecial(__thisNode__), ruleRepository, host);
@@ -72,10 +69,6 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
   /*package*/ NodeTypeSystemErrorCheckOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

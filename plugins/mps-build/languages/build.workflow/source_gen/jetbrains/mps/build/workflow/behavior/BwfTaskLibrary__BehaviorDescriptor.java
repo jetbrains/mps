@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.ArrayDeque;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -29,10 +28,8 @@ public final class BwfTaskLibrary__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Set<SNode>> closureWithImported_id2U15YDCRefA = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("closureWithImported").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3350985893289452518L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(closureWithImported_id2U15YDCRefA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(closureWithImported_id2U15YDCRefA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Set<SNode> closureWithImported_id2U15YDCRefA(@NotNull SNode __thisNode__) {
     //  build a closure with this library and all its imports, recursively
@@ -56,10 +53,6 @@ public final class BwfTaskLibrary__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BwfTaskLibrary__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

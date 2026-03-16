@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class NodeIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNodeReference> toNodeReference_id4nxIQVLmsc4 = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("toNodeReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5035511943546913540L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
   public static final SMethod<SNode> toNode_id46J8CTY3sAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl(SNode.class)).name("toNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4733039728785213853L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toNodeReference_id4nxIQVLmsc4, toNode_id46J8CTY3sAt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toNodeReference_id4nxIQVLmsc4, toNode_id46J8CTY3sAt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNodeReference toNodeReference_id4nxIQVLmsc4(@NotNull SNode __thisNode__) {
     return null;
@@ -45,10 +42,6 @@ public final class NodeIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NodeIdentity__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

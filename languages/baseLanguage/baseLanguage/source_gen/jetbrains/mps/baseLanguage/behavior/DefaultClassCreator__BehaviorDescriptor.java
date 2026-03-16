@@ -18,7 +18,6 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -32,10 +31,8 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getTargetClassifier_id1k0fX3j6Qov = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1513279640924022303L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getTypeParameter_id1HUOkcfjoPx = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1980125072132509025L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveInstantiationPoints_id5qAZxlfYCBV, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveInstantiationPoints_id5qAZxlfYCBV, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfYCBV(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
     return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where((it) -> !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)) && DefaultConstructorUtils.hasDefaultConstructor(it));
@@ -50,10 +47,6 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ DefaultClassCreator__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

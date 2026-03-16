@@ -27,7 +27,7 @@ public final class CodeInlineDocTagTE__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<String> buildCommentText_id4qjHlOXTWlm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816306607446L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(buildCommentText_id4qjHlOXTWlm);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(buildCommentText_id4qjHlOXTWlm);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNode l = SLinkOperations.setNewChild(__thisNode__, LINKS.commentBody$_6eD, CONCEPTS.Line$yC);

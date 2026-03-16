@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,14 +25,12 @@ public final class BuildMps_IdeaPluginContent__BehaviorDescriptor extends BaseBH
   public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
   public static final SMethod<Iterable<SNode>> getModules_id26vVkElqAGr = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2422916029138758427L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1, getModules_id26vVkElqAGr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(exports_id5FtnUVJQES1, getModules_id26vVkElqAGr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     {
-      final SNode module = as_jioj3d_a0a0a0a9(object, SNode.class);
+      final SNode module = as_jioj3d_a0a0a0a8(object, SNode.class);
       if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_AbstractModule$FZ)) {
         return Sequence.fromIterable(BuildMps_IdeaPluginContent__BehaviorDescriptor.getModules_id26vVkElqAGr.invoke(__thisNode__)).contains(module);
       }
@@ -45,10 +42,6 @@ public final class BuildMps_IdeaPluginContent__BehaviorDescriptor extends BaseBH
   /*package*/ BuildMps_IdeaPluginContent__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
@@ -87,7 +80,7 @@ public final class BuildMps_IdeaPluginContent__BehaviorDescriptor extends BaseBH
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static <T> T as_jioj3d_a0a0a0a9(Object o, Class<T> type) {
+  private static <T> T as_jioj3d_a0a0a0a8(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

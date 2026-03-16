@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -33,10 +32,8 @@ public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> shouldKeepOldNode_id1NHZk5hi$oq = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldKeepOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520931354L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
   public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doDeprecateOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520982494L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(shouldKeepOldNode_id1NHZk5hi$oq, doDeprecateOldNode_id1NHZk5hiKRu);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(shouldKeepOldNode_id1NHZk5hi$oq, doDeprecateOldNode_id1NHZk5hiKRu);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean shouldKeepOldNode_id1NHZk5hi$oq(@NotNull SNode __thisNode__) {
     return true;
@@ -52,10 +49,6 @@ public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ MoveConcept__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

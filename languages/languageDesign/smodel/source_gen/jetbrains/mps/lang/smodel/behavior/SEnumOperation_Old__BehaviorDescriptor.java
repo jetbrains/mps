@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,10 +25,8 @@ public final class SEnumOperation_Old__BehaviorDescriptor extends BaseBHDescript
 
   public static final SMethod<SNode> getEnum_idi3HhkyV = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnum").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240931322043L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnum_idi3HhkyV);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnum_idi3HhkyV);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getEnum_idi3HhkyV(@NotNull SNode __thisNode__) {
     return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.SEnumOperationInvocation$_F) ? SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SEnumOperationInvocation$_F), LINKS.enumDeclaration$Ib70) : null);
@@ -38,10 +35,6 @@ public final class SEnumOperation_Old__BehaviorDescriptor extends BaseBHDescript
   /*package*/ SEnumOperation_Old__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

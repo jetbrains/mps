@@ -31,7 +31,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -62,10 +61,8 @@ public final class StaticFieldDeclaration__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<Boolean> isConstantValue_id3dsApLDTYgy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isConstantValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3701001890862457890L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isInitializable_idhEwJfMK, createReference_idhEwJfME, getChildrenToDisplayIntention_id3vsDNFqJVhw, isStaticClassifierMember_id7MS72Gc8avw, getSideIcon_id6TtJ6IUjtJX, canBeInterfaceMember_id2zJQqQIUx2B, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, getTraceableProperty_id4pl5GY7LKmH, populateMember_id6r77ob2UW9O, getQualifiedReference_id3Zg$dTLuqo9, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_ECCQE, getFqName_idhEwIO9y, isConstantValue_id3dsApLDTYgy);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isInitializable_idhEwJfMK, createReference_idhEwJfME, getChildrenToDisplayIntention_id3vsDNFqJVhw, isStaticClassifierMember_id7MS72Gc8avw, getSideIcon_id6TtJ6IUjtJX, canBeInterfaceMember_id2zJQqQIUx2B, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, getTraceableProperty_id4pl5GY7LKmH, populateMember_id6r77ob2UW9O, getQualifiedReference_id3Zg$dTLuqo9, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_ECCQE, getFqName_idhEwIO9y, isConstantValue_id3dsApLDTYgy);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
     List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticFieldDeclaration$jR));
@@ -154,10 +151,6 @@ public final class StaticFieldDeclaration__BehaviorDescriptor extends BaseBHDesc
   /*package*/ StaticFieldDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

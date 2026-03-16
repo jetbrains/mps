@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ILocalVariableElement__BehaviorDescriptor;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,10 +34,8 @@ public final class IndexedTupleLiteral__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<String> getRightBracket_id1653mnvAgtJ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498223L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
   public static final SMethod<List<SNode>> getAllLocalVariableDeclarations_id3xYtul1v6S1 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAllLocalVariableDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4070820740696141313L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValue_idhEwJgmE, isChildAssignedInAssignment_id79$CF9VcmHc, getLeftBracket_id1653mnvAgn6, getRightBracket_id1653mnvAgtJ, getAllLocalVariableDeclarations_id3xYtul1v6S1);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValue_idhEwJgmE, isChildAssignedInAssignment_id79$CF9VcmHc, getLeftBracket_id1653mnvAgn6, getRightBracket_id1653mnvAgtJ, getAllLocalVariableDeclarations_id3xYtul1v6S1);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
     for (SNode mexp : SLinkOperations.getChildren(__thisNode__, LINKS.component$uznI)) {
@@ -69,10 +66,6 @@ public final class IndexedTupleLiteral__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ IndexedTupleLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,10 +30,8 @@ public final class LanguageAspectDescriptor__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNode> getMethod_id7phNEaHi8Cl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8525822767676295701L).languageId(0x9c5a1f245a8697afL, 0xf159adf43c9340f9L).build2(SMethodBuilder.createJavaParameter((Class<SNodeReference>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getDescriptor_idUBgfI9eMAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1055884086724995485L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMethod_id7phNEaHi8Cl, getDescriptor_idUBgfI9eMAt);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMethod_id7phNEaHi8Cl, getDescriptor_idUBgfI9eMAt);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getMethod_id7phNEaHi8Cl(@NotNull SNode __thisNode__, final SNodeReference md) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d), CONCEPTS.MethodInstance$jE)).findFirst((it) -> Objects.equals(SLinkOperations.getPointer(it, LINKS.decl$QvLv), md));
@@ -46,10 +43,6 @@ public final class LanguageAspectDescriptor__BehaviorDescriptor extends BaseBHDe
   /*package*/ LanguageAspectDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

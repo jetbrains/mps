@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,8 @@ public final class CommandClosureLiteral__BehaviorDescriptor extends BaseBHDescr
 
   public static final SMethod<Boolean> isExecuteSynchronous_idhTIpcC8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExecuteSynchronous").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1230212745736L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isExecuteSynchronous_idhTIpcC8);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isExecuteSynchronous_idhTIpcC8);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isExecuteSynchronous_idhTIpcC8(@NotNull SNode __thisNode__) {
     return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BaseExecuteCommandStatementSync$U2);
@@ -36,10 +33,6 @@ public final class CommandClosureLiteral__BehaviorDescriptor extends BaseBHDescr
   /*package*/ CommandClosureLiteral__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

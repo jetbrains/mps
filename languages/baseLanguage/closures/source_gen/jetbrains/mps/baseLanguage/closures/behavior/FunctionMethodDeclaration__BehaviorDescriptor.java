@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -28,10 +27,8 @@ public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHD
   public static final SMethod<SNode> functionType_id2uAWGxT6YKz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("functionType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2857237956452412451L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
   public static final SMethod<Boolean> canBeInterfaceMember_id2zJQqQIUx2B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeInterfaceMember").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2949815620938109095L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(functionType_id2uAWGxT6YKz, canBeInterfaceMember_id2zJQqQIUx2B);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(functionType_id2uAWGxT6YKz, canBeInterfaceMember_id2zJQqQIUx2B);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode functionType_id2uAWGxT6YKz(@NotNull SNode __thisNode__) {
     List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).select((pd) -> SNodeOperations.copyNode(SLinkOperations.getTarget(pd, LINKS.type$a1UY))).toList();
@@ -44,10 +41,6 @@ public final class FunctionMethodDeclaration__BehaviorDescriptor extends BaseBHD
   /*package*/ FunctionMethodDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

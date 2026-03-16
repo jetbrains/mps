@@ -13,7 +13,6 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -23,10 +22,8 @@ public final class ReportExecutionError__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<SNode> getException_idJzCdmU6yQ5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getException").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(856705193941282181L).languageId(0x8ac91574f25c986fL, 0xf3347d8a0e794f35L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getException_idJzCdmU6yQ5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getException_idJzCdmU6yQ5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getException_idJzCdmU6yQ5(@NotNull SNode __thisNode__) {
     return _quotation_createNode_l0tnuu_a0a0();
@@ -35,10 +32,6 @@ public final class ReportExecutionError__BehaviorDescriptor extends BaseBHDescri
   /*package*/ ReportExecutionError__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

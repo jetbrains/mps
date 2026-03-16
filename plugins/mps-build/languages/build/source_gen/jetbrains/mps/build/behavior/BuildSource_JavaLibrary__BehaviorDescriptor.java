@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class BuildSource_JavaLibrary__BehaviorDescriptor extends BaseBHDes
 
   public static final SMethod<Boolean> canExportByParts_id4RsV8qJGJnM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExportByParts").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5610619299014309362L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canExportByParts_id4RsV8qJGJnM);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canExportByParts_id4RsV8qJGJnM);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canExportByParts_id4RsV8qJGJnM(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$fli0)).all((it) -> {
@@ -46,10 +43,6 @@ public final class BuildSource_JavaLibrary__BehaviorDescriptor extends BaseBHDes
   /*package*/ BuildSource_JavaLibrary__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

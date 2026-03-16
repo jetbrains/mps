@@ -16,7 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -28,10 +27,8 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getResourceId_id2p1v3tOadt0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541333312L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
   public static final SMethod<String> getNewuiResourceId_id1$fQzw7$LYY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNewuiResourceId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1805901909778964414L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getResourceId_id2p1v3tOadt0, getNewuiResourceId_id1$fQzw7$LYY);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getResourceId_id2p1v3tOadt0(@NotNull SNode __thisNode__) {
     return "TextIcon_" + SPropertyOperations.getString(__thisNode__, PROPS.iconId$SZ3g) + ".png";
@@ -47,10 +44,6 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ TextIcon__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

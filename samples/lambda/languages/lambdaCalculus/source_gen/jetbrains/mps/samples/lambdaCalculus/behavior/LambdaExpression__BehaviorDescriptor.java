@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -33,10 +32,8 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> isInFull_id6nQdzuslK0D = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInFull").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7347119454575591465L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
   public static final SMethod<List<SNode>> getOuterVariables_id4zrttnsimEk = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOuterVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5249919352014727828L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOuterApplication_id18EhrW3IG0h, hasParameterRefs_id6qD99pUaonP, isInFull_id6nQdzuslK0D, getOuterVariables_id4zrttnsimEk);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOuterApplication_id18EhrW3IG0h, hasParameterRefs_id6qD99pUaonP, isInFull_id6nQdzuslK0D, getOuterVariables_id4zrttnsimEk);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getOuterApplication_id18EhrW3IG0h(@NotNull SNode __thisNode__) {
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv), LINKS.function$pPIV) == __thisNode__) && SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.LambdaApplication$Mv)) {
@@ -83,10 +80,6 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ LambdaExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

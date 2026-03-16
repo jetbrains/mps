@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class IdeaInitializerDescriptor__BehaviorDescriptor extends BaseBHD
   public static final SMethod<String> getGeneratesFileExtension_id3uUnGg98M_4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratesFileExtension").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4015626213814118724L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
   public static final SMethod<String> getLibrariesResourceName_id6Ug_cEzkAtK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLibrariesResourceName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7967031338862798704L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedFileName_id3uUnGg98wJc, getGeneratedFileShortName_id3uUnGg98M$X, getGeneratesFileExtension_id3uUnGg98M_4, getLibrariesResourceName_id6Ug_cEzkAtK);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedFileName_id3uUnGg98wJc, getGeneratedFileShortName_id3uUnGg98M$X, getGeneratesFileExtension_id3uUnGg98M_4, getLibrariesResourceName_id6Ug_cEzkAtK);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getGeneratedFileName_id3uUnGg98wJc(@NotNull SNode __thisNode__) {
     return IdeaInitializerDescriptor__BehaviorDescriptor.getGeneratedFileShortName_id3uUnGg98M$X.invoke(__thisNode__) + "." + IdeaInitializerDescriptor__BehaviorDescriptor.getGeneratesFileExtension_id3uUnGg98M_4.invoke(__thisNode__);
@@ -46,10 +43,6 @@ public final class IdeaInitializerDescriptor__BehaviorDescriptor extends BaseBHD
   /*package*/ IdeaInitializerDescriptor__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

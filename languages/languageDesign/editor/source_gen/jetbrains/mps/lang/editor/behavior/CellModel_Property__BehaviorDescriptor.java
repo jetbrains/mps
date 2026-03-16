@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -33,10 +32,8 @@ public final class CellModel_Property__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<Boolean> canBeSynchronized_id3wXm3h1AYM7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4052492221165595783L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<Boolean> shellBeSynchronized_id3TPTV99_TMT = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shellBeSynchronized").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4500758155551546553L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn, getDefaultCellId_id3VYF6qfIQs_, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, canBeSynchronized_id3wXm3h1AYM7, shellBeSynchronized_id3TPTV99_TMT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRoleForCell_idhGPLstu, getFeatureForCell_id4YnqLFjkxyn, getDefaultCellId_id3VYF6qfIQs_, getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, canBeSynchronized_id3wXm3h1AYM7, shellBeSynchronized_id3TPTV99_TMT);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getRoleForCell_idhGPLstu(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc), PROPS.name$MnvL);
@@ -63,10 +60,6 @@ public final class CellModel_Property__BehaviorDescriptor extends BaseBHDescript
   /*package*/ CellModel_Property__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

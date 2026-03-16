@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -24,10 +23,8 @@ public final class BuildMps_TipsPackage__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<String> getTmpPath_id59gOS57Njec = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTmpPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5931473261455815564L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTmpPath_id59gOS57Njec);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTmpPath_id59gOS57Njec);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getTmpPath_id59gOS57Njec(@NotNull SNode __thisNode__, String folder, SNode node) {
     return BuildMps_Tips__BehaviorDescriptor.getOutPath_id1tkeUOkqjtp.invoke(SLinkOperations.getTarget(node, LINKS.tips$MAEw)) + folder + "/**";
@@ -36,10 +33,6 @@ public final class BuildMps_TipsPackage__BehaviorDescriptor extends BaseBHDescri
   /*package*/ BuildMps_TipsPackage__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

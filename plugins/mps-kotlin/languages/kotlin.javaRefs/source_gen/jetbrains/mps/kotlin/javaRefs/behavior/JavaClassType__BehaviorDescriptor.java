@@ -46,7 +46,6 @@ import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescri
 import jetbrains.mps.kotlin.behavior.NodeTypeVarSubs;
 import jetbrains.mps.kotlin.behavior.FunctionTypeToLambdaHelper;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -69,10 +68,8 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SignatureScope> getStaticScope_id1ODRHGtufGw = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getStaticScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733818719008L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
   public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, getClassifier_id7an2tsIdpk7, getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, getTypeParameters_id7an2tsIdpkM, toString_id4nn3FPlZH$r, getStaticScope_id1ODRHGtufGw, createConstructor_id2$1CHwF$28b);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, getClassifier_id7an2tsIdpk7, getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, getTypeParameters_id7an2tsIdpkM, toString_id4nn3FPlZH$r, getStaticScope_id1ODRHGtufGw, createConstructor_id2$1CHwF$28b);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, SuperTypesVisitor visitor) {
     // use simplified implementation of supertypes enumeration
@@ -193,10 +190,6 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ JavaClassType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

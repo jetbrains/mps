@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -60,10 +59,8 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isValueType_id4bFkYVCcmm2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4822040111593121154L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getSupertypes_id4w2h6RLlygH, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id5uUZ$FUUb6B, canBeCoerced_id476YRQvP9l3, isValueType_id4bFkYVCcmm2);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getSupertypes_id4w2h6RLlygH, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id5uUZ$FUUb6B, canBeCoerced_id476YRQvP9l3, isValueType_id4bFkYVCcmm2);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
@@ -182,10 +179,6 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ Type__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

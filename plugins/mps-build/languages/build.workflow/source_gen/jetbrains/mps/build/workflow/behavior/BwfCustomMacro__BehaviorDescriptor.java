@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class BwfCustomMacro__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Integer> getPriority_id1Mjrj7j4T5I = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2059109515400548718L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1Mjrj7j4T5I);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1Mjrj7j4T5I);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int getPriority_id1Mjrj7j4T5I(@NotNull SNode __thisNode__) {
     return 30;
@@ -34,10 +31,6 @@ public final class BwfCustomMacro__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ BwfCustomMacro__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

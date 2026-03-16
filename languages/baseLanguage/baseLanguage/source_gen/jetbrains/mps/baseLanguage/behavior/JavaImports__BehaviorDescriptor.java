@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,10 +27,8 @@ public final class JavaImports__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> staticOnDemand_id4ykJ8Y6iCVz = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticOnDemand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5230012391903366883L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Iterable<SNode>> staticSingleName_id4ykJ8Y6iJRa = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("staticSingleName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5230012391903395274L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(staticOnDemand_id4ykJ8Y6iCVz, staticSingleName_id4ykJ8Y6iJRa);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(staticOnDemand_id4ykJ8Y6iCVz, staticSingleName_id4ykJ8Y6iJRa);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> staticOnDemand_id4ykJ8Y6iCVz(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$neZo)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.static$JAuQ) && SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
@@ -43,10 +40,6 @@ public final class JavaImports__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ JavaImports__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

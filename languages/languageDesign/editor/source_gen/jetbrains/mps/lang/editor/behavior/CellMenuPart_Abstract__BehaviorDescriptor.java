@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class CellMenuPart_Abstract__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<SNode> getEditedAggregationLink_idhJEvgUM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedAggregationLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219409809074L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getReferenceDeclaration_id1o9RazL_axx = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferenceDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1588042961790478433L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEditedFeature_idhJEvH7P, getEditedLink_idhJEvotS, getEditedAggregationLink_idhJEvgUM, getReferenceDeclaration_id1o9RazL_axx);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEditedFeature_idhJEvH7P, getEditedLink_idhJEvotS, getEditedAggregationLink_idhJEvgUM, getReferenceDeclaration_id1o9RazL_axx);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getEditedFeature_idhJEvH7P(@NotNull SNode __thisNode__) {
     return CellMenuUtil.getEditedFeature(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellMenuDescriptor$Kj));
@@ -59,10 +56,6 @@ public final class CellMenuPart_Abstract__BehaviorDescriptor extends BaseBHDescr
   /*package*/ CellMenuPart_Abstract__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

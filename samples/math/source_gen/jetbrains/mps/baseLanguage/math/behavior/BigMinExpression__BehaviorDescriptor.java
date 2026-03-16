@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -22,10 +21,8 @@ public final class BigMinExpression__BehaviorDescriptor extends BaseBHDescriptor
 
   public static final SMethod<String> getOpName_id1653mnvAgoA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpName").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497894L).languageId(0xa016b944934bb21fL, 0x3304fc6e7c6b401eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOpName_id1653mnvAgoA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOpName_id1653mnvAgoA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getOpName_id1653mnvAgoA(@NotNull SAbstractConcept __thisConcept__) {
     return "MIN";
@@ -34,10 +31,6 @@ public final class BigMinExpression__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ BigMinExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

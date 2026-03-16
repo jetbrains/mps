@@ -28,7 +28,7 @@ public final class ClassifierDocComment__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<Boolean> isTagSectionEmpty_id7lVCwDcz6WN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTagSectionEmpty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8465538089690623795L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTagSectionEmpty_id7lVCwDcz6WN);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTagSectionEmpty_id7lVCwDcz6WN);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNode line = SLinkOperations.addNewChild(__thisNode__, LINKS.commentBody$sIzh, null);

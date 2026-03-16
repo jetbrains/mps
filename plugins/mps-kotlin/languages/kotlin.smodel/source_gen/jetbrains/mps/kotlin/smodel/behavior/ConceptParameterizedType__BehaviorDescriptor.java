@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -36,10 +35,8 @@ public final class ConceptParameterizedType__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getJavaClassPointer").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("typeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, getJavaClassPointer_idAa0Z14eCoU, typeKey_idJmO2PmZtH5);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameters_id7an2tsIdpkM, visitHierarchy_id5q426iHtYvR, getJavaClassPointer_idAa0Z14eCoU, typeKey_idJmO2PmZtH5);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id7an2tsIdpkM(@NotNull SNode __thisNode__) {
     return Sequence.<TypeParameterDeclaration>singleton(new SingleConceptTypeParameter());
@@ -62,10 +59,6 @@ public final class ConceptParameterizedType__BehaviorDescriptor extends BaseBHDe
   /*package*/ ConceptParameterizedType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

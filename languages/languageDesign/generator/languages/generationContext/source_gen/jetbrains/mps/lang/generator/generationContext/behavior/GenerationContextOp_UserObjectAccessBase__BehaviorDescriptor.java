@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,10 +25,8 @@ public final class GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor 
 
   public static final SMethod<Boolean> isLValueInAssignment_idhIg3nxk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLValueInAssignment").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217892546644L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValueInAssignment_idhIg3nxk);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLValueInAssignment_idhIg3nxk);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isLValueInAssignment_idhIg3nxk(@NotNull SNode __thisNode__) {
     SNode mayBeAssignment = SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__));
@@ -44,10 +41,6 @@ public final class GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor 
   /*package*/ GenerationContextOp_UserObjectAccessBase__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

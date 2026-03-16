@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -31,10 +30,8 @@ public final class BuildMps_IdeaPluginModule__BehaviorDescriptor extends BaseBHD
 
   public static final SMethod<Iterable<SNode>> getModules_id26vVkElqAGr = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2422916029138758427L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModules_id26vVkElqAGr);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModules_id26vVkElqAGr);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getModules_id26vVkElqAGr(@NotNull SNode __thisNode__) {
     SNode generator = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.target$ccfo), CONCEPTS.BuildMps_Language$RA), LINKS.generator$OCOG);
@@ -51,10 +48,6 @@ public final class BuildMps_IdeaPluginModule__BehaviorDescriptor extends BaseBHD
   /*package*/ BuildMps_IdeaPluginModule__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

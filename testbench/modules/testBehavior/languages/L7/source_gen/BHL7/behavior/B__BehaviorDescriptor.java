@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -28,10 +27,8 @@ public final class B__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Integer> nonPrimitiveParameter_id4Tk5Y39EB1$ = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("nonPrimitiveParameter").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5644162487225577572L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter(Integer.class, ""));
   public static final SMethod<Class<Integer>> genericReturnValue_id4Rfm9LCcu90 = new SMethodBuilder<Class<Integer>>(new SJavaCompoundTypeImpl(Class.class)).name("genericReturnValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5606797489885798976L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(virtualMethod_id5mnatV0hAPC, staticVirtualMethod_id5mnatV0hATt, primitiveReturnValue_id4Rfm9LCctz9, primitiveParameter_id7zO8mNAVjjo, nonPrimitiveParameter_id4Tk5Y39EB1$, genericReturnValue_id4Rfm9LCcu90);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(virtualMethod_id5mnatV0hAPC, staticVirtualMethod_id5mnatV0hATt, primitiveReturnValue_id4Rfm9LCctz9, primitiveParameter_id7zO8mNAVjjo, nonPrimitiveParameter_id4Tk5Y39EB1$, genericReturnValue_id4Rfm9LCcu90);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Object virtualMethod_id5mnatV0hAPC(@NotNull SNode __thisNode__) {
     return TestResults.POLYMORPHIC_CHILD;
@@ -55,10 +52,6 @@ public final class B__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ B__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

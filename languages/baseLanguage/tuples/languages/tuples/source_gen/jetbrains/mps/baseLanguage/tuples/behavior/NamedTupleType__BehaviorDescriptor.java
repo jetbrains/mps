@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.Iterator;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -41,10 +40,8 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getLeftBracket_id1653mnvAgn0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497792L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
   public static final SMethod<String> getRightBracket_id1653mnvAgq6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497990L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, expandGenerics_id3$PgO9fYTB5, collectGenericSubstitutions_id3zZky3wF74h, getLeftBracket_id1653mnvAgn0, getRightBracket_id1653mnvAgq6);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, expandGenerics_id3$PgO9fYTB5, collectGenericSubstitutions_id3zZky3wF74h, getLeftBracket_id1653mnvAgn0, getRightBracket_id1653mnvAgq6);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder(NamedTupleType__BehaviorDescriptor.getLeftBracket_id1653mnvAgn0.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))));
@@ -115,10 +112,6 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ NamedTupleType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

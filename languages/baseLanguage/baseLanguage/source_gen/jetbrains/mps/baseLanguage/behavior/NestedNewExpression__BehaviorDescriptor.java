@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,10 +27,8 @@ public final class NestedNewExpression__BehaviorDescriptor extends BaseBHDescrip
 
   public static final SMethod<Boolean> doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("doesOperandHaveInnerClassesToInstantiateHere").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7718407198077999265L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean doesOperandHaveInnerClassesToInstantiateHere_id6GtiBfDgtyx(@NotNull SAbstractConcept __thisConcept__, SNode parentNode) {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW)) {
@@ -46,10 +43,6 @@ public final class NestedNewExpression__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ NestedNewExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

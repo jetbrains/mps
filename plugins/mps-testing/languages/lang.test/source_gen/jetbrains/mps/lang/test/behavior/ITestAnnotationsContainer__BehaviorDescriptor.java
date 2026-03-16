@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -25,10 +24,8 @@ public final class ITestAnnotationsContainer__BehaviorDescriptor extends BaseBHD
   public static final SMethod<Boolean> canAddTestAnnotation_id143xXLdhXGe = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAddTestAnnotation").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225972903834016526L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canAddTestAnnotation_id143xXLdi1EE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAddTestAnnotation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225972903834032810L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAddTestAnnotation_id143xXLdhXGe, canAddTestAnnotation_id143xXLdi1EE);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAddTestAnnotation_id143xXLdhXGe, canAddTestAnnotation_id143xXLdi1EE);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean canAddTestAnnotation_id143xXLdhXGe(@NotNull SAbstractConcept __thisConcept__, SNode node) {
     SNode container = SNodeOperations.getNodeAncestor(node, CONCEPTS.ITestAnnotationsContainer$Db, true, false);
@@ -41,10 +38,6 @@ public final class ITestAnnotationsContainer__BehaviorDescriptor extends BaseBHD
   /*package*/ ITestAnnotationsContainer__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

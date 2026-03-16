@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,10 +33,8 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("substituteInAmbigousPosition").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498020L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<List<SNode>> getMethods_id55buE1DVoKQ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethods").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5857910569715993654L).languageId(0xac6648d2a9b75d88L, 0xdf345b11b8c74213L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, getContainingExtractExpr_id7H3c2f3rrjt, substituteInAmbigousPosition_id1653mnvAgq$, getMethods_id55buE1DVoKQ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, getContainingExtractExpr_id7H3c2f3rrjt, substituteInAmbigousPosition_id1653mnvAgq$, getMethods_id55buE1DVoKQ);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
     List<SNode> result = new ArrayList<SNode>();
@@ -71,10 +68,6 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   /*package*/ ExtractStaticMethod_CallExpression__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

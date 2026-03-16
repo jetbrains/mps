@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -27,10 +26,8 @@ public final class SequenceOperation__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SNode> getLeft_idhEwJaTR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877497463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
   public static final SMethod<Boolean> operandCanBeNull_idhWYZ0eEN6z = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("operandCanBeNull").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(323410281720656291L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeft_idhEwJaTR, operandCanBeNull_idhWYZ0eEN6z);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeft_idhEwJaTR, operandCanBeNull_idhWYZ0eEN6z);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   @Deprecated
   /*package*/ static SNode getLeft_idhEwJaTR(@NotNull SNode __thisNode__) {
@@ -45,10 +42,6 @@ public final class SequenceOperation__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ SequenceOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

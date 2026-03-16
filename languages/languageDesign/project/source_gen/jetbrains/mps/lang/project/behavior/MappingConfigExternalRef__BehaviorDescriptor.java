@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -24,10 +23,8 @@ public final class MappingConfigExternalRef__BehaviorDescriptor extends BaseBHDe
 
   public static final SMethod<Boolean> isComplete_id2n3WChplftH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isComplete").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2721285250110257005L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isComplete_id2n3WChplftH);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isComplete_id2n3WChplftH);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isComplete_id2n3WChplftH(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.generator$bDbp) != null) && (boolean) MappingConfigRefBase__BehaviorDescriptor.isComplete_id2n3WChplftH.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.innerRef$bCWo));
@@ -36,10 +33,6 @@ public final class MappingConfigExternalRef__BehaviorDescriptor extends BaseBHDe
   /*package*/ MappingConfigExternalRef__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

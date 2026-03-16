@@ -12,9 +12,8 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import UtilSolution.util.TestResults;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class E__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Integer> foo_id5mnatV0hyuN = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392485299L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
   public static final SMethod<Object> virtual_id47lrFSh1$Ca = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("virtual").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4743819545113152010L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5mnatV0hyuN, virtual_id47lrFSh1$Ca);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5mnatV0hyuN, virtual_id47lrFSh1$Ca);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static int foo_id5mnatV0hyuN(@NotNull SAbstractConcept __thisConcept__) {
     return ((int) C__BehaviorDescriptor.foo_id5mnatV0hxLf.invokeSpecial(__thisConcept__));
@@ -39,10 +36,6 @@ public final class E__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ E__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,10 +37,8 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> setConcept_id5ZE7FBYYR6j = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349121939L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, ""));
   public static final SMethod<Long> getIdValue_id5ZE7FBZ0whU = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349552762L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id5ZE7FBYYOpv, setConcept_id5e7X3XCIPOJ, setConcept_id5ZE7FBYYR6j, getIdValue_id5ZE7FBZ0whU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id5ZE7FBYYOpv, setConcept_id5e7X3XCIPOJ, setConcept_id5ZE7FBYYR6j, getIdValue_id5ZE7FBZ0whU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SAbstractConcept getConcept_id5ZE7FBYYOpv(@NotNull SNode __thisNode__) {
     SLanguage lang = LanguageIdentity__BehaviorDescriptor.getLanguage_id34EJa6aIcyj.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.languageIdentity$2s4y));
@@ -81,10 +78,6 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ConceptId__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

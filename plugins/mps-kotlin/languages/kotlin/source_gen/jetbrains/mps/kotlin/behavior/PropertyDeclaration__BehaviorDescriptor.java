@@ -36,7 +36,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import jetbrains.mps.kotlin.scopes.InheritorHelper;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -62,10 +61,8 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Boolean> isAbstract_id4KPNZIZDjbY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5491524000807203582L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isChildVariableAssignable_idCy8Bus9qei = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChildVariableAssignable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703606674L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, declareToCollector_id4oNDtEQKIUN, getDeclarations_id7RZWrHVaXCH, getScope_id52_Geb4QDV$, getPresentation_idhEwIMiw, getVariablesReceiverType_id75chmMYhcwP, getVariablesTypeParameters_id73s7TtK_Wrc, collectScope_id7DyvjiA20yV, getThisTypeReferences_idxpyqH1FuA0, isAnnotationTargetAllowed_id6nA1THM505G, getDefaultVisibility_id2WVyZr43qIN, getDefaultInheritance_id6jE_6dusz0P, isAbstract_id4KPNZIZDjbY, isChildVariableAssignable_idCy8Bus9qei);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, declareToCollector_id4oNDtEQKIUN, getDeclarations_id7RZWrHVaXCH, getScope_id52_Geb4QDV$, getPresentation_idhEwIMiw, getVariablesReceiverType_id75chmMYhcwP, getVariablesTypeParameters_id73s7TtK_Wrc, collectScope_id7DyvjiA20yV, getThisTypeReferences_idxpyqH1FuA0, isAnnotationTargetAllowed_id6nA1THM505G, getDefaultVisibility_id2WVyZr43qIN, getDefaultInheritance_id6jE_6dusz0P, isAbstract_id4KPNZIZDjbY, isChildVariableAssignable_idCy8Bus9qei);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static void populateDeclarations_id213J8cgCCAN(@NotNull SNode __thisNode__, SignatureCollector collector, SNode contextNode) {
     // Property outside of any class or with receiver
@@ -197,10 +194,6 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ PropertyDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

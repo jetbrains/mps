@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.textgen.trace.TraceInfo;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -25,10 +24,8 @@ public final class IMainClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getUnitName_id431DWIovi3n = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnitName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4666195181811081431L).languageId(0x8a9b2006b3a94898L, 0x4caf0310491e41f5L).build2();
   public static final SMethod<Boolean> isNodeRunnable_id431DWIovi3C = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNodeRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4666195181811081448L).languageId(0x8a9b2006b3a94898L, 0x4caf0310491e41f5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id431DWIovi3n, isNodeRunnable_id431DWIovi3C);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id431DWIovi3n, isNodeRunnable_id431DWIovi3C);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getUnitName_id431DWIovi3n(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(((Iterable<String>) new TraceInfo().getUnitNames(__thisNode__))).first();
@@ -40,10 +37,6 @@ public final class IMainClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IMainClass__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

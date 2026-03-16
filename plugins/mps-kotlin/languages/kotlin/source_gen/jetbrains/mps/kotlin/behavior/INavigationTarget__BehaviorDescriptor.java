@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,10 +29,8 @@ public final class INavigationTarget__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SNode> getNavigationOperand_id2gj5XQXMv4y = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigationOperand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2599447651062247714L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> acceptNullable_id5D4bOjqGpyn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("acceptNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734603192471L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNavigationOperand_id2gj5XQXMv4y, acceptNullable_id5D4bOjqGpyn);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNavigationOperand_id2gj5XQXMv4y, acceptNullable_id5D4bOjqGpyn);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getNavigationOperand_id2gj5XQXMv4y(@NotNull SNode __thisNode__) {
     // The navigation target can also be an expression
@@ -55,10 +52,6 @@ public final class INavigationTarget__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ INavigationTarget__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

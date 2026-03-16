@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 
@@ -24,10 +23,8 @@ public final class CellModel_Indent__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> canBeUsedAsEmptyCell_id6RO52Mcgrfa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeUsedAsEmptyCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7922979826015777738L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<String> getCellModelKind_idhHfCaJf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCellModelKind").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216811674575L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCellIdInitialized_idhTuDsSD, canBeUsedAsEmptyCell_id6RO52Mcgrfa, getCellModelKind_idhHfCaJf);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCellIdInitialized_idhTuDsSD, canBeUsedAsEmptyCell_id6RO52Mcgrfa, getCellModelKind_idhHfCaJf);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static boolean isCellIdInitialized_idhTuDsSD(@NotNull SNode __thisNode__) {
     return true;
@@ -42,10 +39,6 @@ public final class CellModel_Indent__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ CellModel_Indent__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

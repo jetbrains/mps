@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,10 +26,8 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<IconResource> getVisibilityIcon_id4mxbjAOAG0d = new SMethodBuilder<IconResource>(new SJavaCompoundTypeImpl(IconResource.class)).name("getVisibilityIcon").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5017341185733869581L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisibilityIcon_id4mxbjAOAG0d);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisibilityIcon_id4mxbjAOAG0d);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static IconResource getVisibilityIcon_id4mxbjAOAG0d(@NotNull SNode __thisNode__) {
     IconResource defaultIcon = BLIconMarks.PLOCAL;
@@ -50,10 +47,6 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ IVisible__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

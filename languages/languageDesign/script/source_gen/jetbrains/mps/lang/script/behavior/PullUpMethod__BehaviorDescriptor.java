@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,10 +23,8 @@ public final class PullUpMethod__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SNode> getMigration_id4uOLjaPRkIU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMigration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5166971494091017146L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMigration_id4uOLjaPRkIU);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMigration_id4uOLjaPRkIU);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static SNode getMigration_id4uOLjaPRkIU(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExtractInterfaceMigration$Jf);
@@ -36,10 +33,6 @@ public final class PullUpMethod__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ PullUpMethod__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

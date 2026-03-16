@@ -37,7 +37,6 @@ import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.behavior.AnnotationUtil;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -67,10 +66,8 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957674666L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Void> markLoadedNodeAsDeprecated_id5H8W9_ECA0g = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markLoadedNodeAsDeprecated").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6577771797484298256L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, allExtends_id2ItBWjOSZqc, getExtendedClassifierTypes_id1UeCwxlWKny, findAncestor_id3HluQRcXTJl, isDescendant_checkLoops_id6dL7A1DpKoA, getThisType_id2RtWPFZ12w7, enumerateMembers_id65_8Gi2s6iV, enumerateSupertypes_id65_8Gi1dKDs, getLeftBracket_id1653mnvAgnc, getRightBracket_id1653mnvAgs3, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_ECA0g);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, allExtends_id2ItBWjOSZqc, getExtendedClassifierTypes_id1UeCwxlWKny, findAncestor_id3HluQRcXTJl, isDescendant_checkLoops_id6dL7A1DpKoA, getThisType_id2RtWPFZ12w7, enumerateMembers_id65_8Gi2s6iV, enumerateSupertypes_id65_8Gi1dKDs, getLeftBracket_id1653mnvAgnc, getRightBracket_id1653mnvAgs3, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_ECA0g);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder(NamedTupleDeclaration__BehaviorDescriptor.getLeftBracket_id1653mnvAgnc.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))));
@@ -200,10 +197,6 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ NamedTupleDeclaration__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

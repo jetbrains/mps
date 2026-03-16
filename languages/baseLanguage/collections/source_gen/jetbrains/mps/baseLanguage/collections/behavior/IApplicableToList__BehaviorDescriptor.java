@@ -15,7 +15,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -25,10 +24,8 @@ public final class IApplicableToList__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<List<SNode>> getApplicableTypes_id5cL0w3DYzxf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getApplicableTypes").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5994574781955586127L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableTypes_id5cL0w3DYzxf);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableTypes_id5cL0w3DYzxf);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static List<SNode> getApplicableTypes_id5cL0w3DYzxf(@NotNull SAbstractConcept __thisConcept__) {
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_u4ufxk_a0a0a0());
@@ -37,10 +34,6 @@ public final class IApplicableToList__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ IApplicableToList__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

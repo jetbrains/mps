@@ -21,7 +21,6 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,10 +34,8 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
   public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
   /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tuHA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMsgText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3929815563185285990L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getReferencedRuleNode_id2wBFdLy8qmt, getExpectedMsgText_id3q9wAW4tuHA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getReferencedRuleNode_id2wBFdLy8qmt, getExpectedMsgText_id3q9wAW4tuHA);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     String warningName;
@@ -67,10 +64,6 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
   /*package*/ AbstractNodeWarningCheckOperation__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {

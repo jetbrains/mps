@@ -34,7 +34,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -72,10 +71,8 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> collectGenericSubstitutions_id3zZky3wF74h = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectGenericSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4107091686347010321L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getPresentation_id22G2W3WJcwT, getSupertypes_id4w2h6RLlygH, getDetailedPresentation_id22G2W3WJ92t, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isRawType_idB1mAlA3eUL, getVariableSuffixes_idhEwIzNo, getClassExpression_idhEwIzOd, getAbstractCreator_idhEwIzNW, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, isReifiable_id2soW6EObTNQ, getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, expandGenerics_id3$PgO9fYTB5, eraseGenerics_id4qyz6djw13y, collectGenericSubstitutions_id3zZky3wF74h, canBeCoerced_id476YRQvP9l3);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getPresentation_id22G2W3WJcwT, getSupertypes_id4w2h6RLlygH, getDetailedPresentation_id22G2W3WJ92t, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isRawType_idB1mAlA3eUL, getVariableSuffixes_idhEwIzNo, getClassExpression_idhEwIzOd, getAbstractCreator_idhEwIzNW, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, isReifiable_id2soW6EObTNQ, getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, expandGenerics_id3$PgO9fYTB5, eraseGenerics_id4qyz6djw13y, collectGenericSubstitutions_id3zZky3wF74h, canBeCoerced_id476YRQvP9l3);
 
-  private static void ___init___(@NotNull SNode __thisNode__) {
-  }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     SNode classifier = SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr);
@@ -456,10 +453,6 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ ClassifierType__BehaviorDescriptor() {
   }
 
-  @Override
-  protected void initNode(@NotNull SNode node, @NotNull SConstructor constructor, @Nullable Object[] parameters) {
-    ___init___(node);
-  }
 
   @Override
   protected <T> T invokeSpecial0(@NotNull SNode node, @NotNull SMethod<T> method, @Nullable Object[] parameters) {
