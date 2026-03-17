@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.ui.InputValidatorEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
@@ -136,11 +135,11 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
 
   protected MessageList() {
     myUpdateQueue.setRestartTimerOnAdd(true);
-    // Recreate render to update colors after scheme change
-    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(EditorColorsManager.TOPIC, scheme -> {
-      myCellRenderer = new MessagesListCellRenderer();
-      myList.setCellRenderer(myCellRenderer);
-    });
+  }
+
+  protected void reinstallCellRenderer() {
+    myCellRenderer = new MessagesListCellRenderer();
+    myList.setCellRenderer(myCellRenderer);
   }
 
   /**

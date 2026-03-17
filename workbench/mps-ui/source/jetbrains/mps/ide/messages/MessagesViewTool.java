@@ -12,6 +12,8 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
@@ -36,6 +38,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectLifecycleListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.util.Consumer;
 
 import javax.swing.JList;
 import java.text.MessageFormat;
@@ -68,6 +71,11 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     addList(DEFAULT_LIST, myDefaultList);
     myMessageViewLoggingHandler = new MessageViewLoggingHandler(this, ProjectHelper.fromIdeaProject(project));
     myMessageViewLoggingHandler.register();
+    // Recreate render to update colors after scheme change
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> {
+      forEachList(MessageList::reinstallCellRenderer);
+    });
+
   }
 
   @Nullable
@@ -198,6 +206,10 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
       myMessageLists.put(name, lists);
     }
     lists.add(list);
+  }
+
+  private synchronized void forEachList(Consumer<MessageList> visitor) {
+    myMessageLists.values().forEach(lists -> lists.forEach(visitor));
   }
 
   private synchronized MessageList getAvailableList(String name, boolean createIfNotFound) {
