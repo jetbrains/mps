@@ -7,13 +7,13 @@
 
   <extensions defaultExtensionNs="jetbrains.mps">
     <editor.highlighter.contributor implementation="jetbrains.mps.java.platform.highlighters.JavaHighlighters" />
+    <project.lifecycleListener listenerClass="jetbrains.mps.java.platform.index.ClassifierSuccessorsFinder$Plug" priority="100"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">
     <fileBasedIndex implementation="jetbrains.mps.java.platform.index.ClassifierSuccessorsIndexer"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <projectService serviceImplementation="jetbrains.mps.java.platform.actions.OverrideImplementMethodComponent" />
-    <postStartupActivity implementation="jetbrains.mps.java.platform.index.ClassifierSuccessorsFinder$Plug" />
 
     <mps.modelRootFactory rootType="java_source_stubs" className="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRootFactory"/>
     <mps.modelRootEntry rootType="java_source_stubs" title="Java &amp;Sources" className="jetbrains.mps.java.platform.extensions.JavaSourceStubsModelRootEntryFactory"/>

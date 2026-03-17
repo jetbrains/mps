@@ -4,17 +4,13 @@ package jetbrains.mps.java.platform.index;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.baseLanguage.search.ClassifierSuccessors;
-import com.intellij.openapi.Disposable;
 import jetbrains.mps.project.MPSProject;
-import com.intellij.openapi.startup.StartupActivity;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.MPSCoreComponents;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.project.DumbService;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import java.util.Set;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -49,33 +45,32 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @GeneratedClass(nodeId = "4183391441819863852", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
-public final class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, Disposable {
+public final class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder {
   private final MPSProject myProject;
 
-  public static final class Plug implements StartupActivity.Background {
-
+  public static final class Plug implements ProjectLifecycleListener {
     @Override
-    public void runActivity(@NotNull Project project) {
-      MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(project);
-      ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
+    public void projectReady(@NotNull MPSProject project, @NotNull ProjectLifecycleListener.Context context) {
+      ClassifierSuccessors cc = project.getComponent(ClassifierSuccessors.class);
       if (cc != null) {
-        ClassifierSuccessorsFinder ccf = new ClassifierSuccessorsFinder(mpsProject);
-        cc.addFinder(mpsProject, ccf);
-        Disposer.register(project, ccf);
+        ClassifierSuccessorsFinder ccf = new ClassifierSuccessorsFinder(project);
+        cc.addFinder(project, ccf);
+        context.keep(ClassifierSuccessorsFinder.class, ccf);
+      }
+    }
+    @Override
+    public void projectDiscarded(@NotNull MPSProject project, @NotNull ProjectLifecycleListener.Context context) {
+      ClassifierSuccessors cc = project.getComponent(ClassifierSuccessors.class);
+      if (cc != null) {
+        ClassifierSuccessorsFinder toDrop = context.discard(ClassifierSuccessorsFinder.class);
+        if (toDrop != null) {
+          cc.removeFinder(project, toDrop);
+        }
       }
     }
   }
 
-
   private ClassifierSuccessorsFinder(MPSProject mpsProject) {
-    // I've got several options here how to approach IDEA's component->service transition and to address indexer need for project:
-    //  - follow MPSModelsFastFindSupport$Plug approach with postStartupActivity (or some projectListener) and keep Project
-    //    right inside Finder instance. This would require change in ClassifierSuccessor to support multiple Finders; besides,
-    //    there was already Project exposed in CS API (isIndexReady(Project)), that's why I decided not to follow 'per-project' 
-    //    instance trail.
-    //  - Keep single Finder (CS.setFinder()), and use AppLifecycleListener. For our purpose here, just to setFinder(), I see
-    //    no apparent benefit in replacing AppComponent with an AppLifecycleListener.
-    // [2022] Now it seems that we can no longer afford 'no project' scenario (guessing project from VF).
     myProject = mpsProject;
   }
 
@@ -130,14 +125,6 @@ public final class ClassifierSuccessorsFinder implements ClassifierSuccessors.Fi
       modifiedSuccessorFinder.process(nextClassifier);
     }
     return result;
-  }
-
-  @Override
-  public void dispose() {
-    ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
-    if (cc != null) {
-      cc.removeFinder(myProject, this);
-    }
   }
 
   private static class ModifiedSuccessorFinder {
