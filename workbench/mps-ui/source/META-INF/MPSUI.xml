@@ -2,14 +2,8 @@
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
     <projectService serviceImplementation="jetbrains.mps.ide.messages.MessagesViewTool"/>
-    <postStartupActivity implementation="jetbrains.mps.ide.messages.MessagesViewTool$MessageViewToolInitialization"/>
     <toolWindow id="Usages" anchor="bottom" icon="AllIcons.Toolwindows.ToolWindowFind" factoryClass="jetbrains.mps.ide.findusages.view.UsagesViewTool$Factory" doNotActivateOnStart="false" canCloseContents="true"/>
   </extensions>
-
-  <applicationListeners>
-    <listener class="jetbrains.mps.ide.messages.MessagesViewTool$MessagesViewProjectListener"
-              topic="com.intellij.openapi.project.ProjectManagerListener"/>
-  </applicationListeners>
 
   <extensionPoints>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootEntry" beanClass="jetbrains.mps.ide.ui.dialogs.properties.persistence.ModelRootEntryEP"/>
@@ -68,5 +62,9 @@
     <registryKey key="mps.ProjectPane.show.descriptor.solution" defaultValue="false" description="Show @descriptor model in Solution modules" restartRequired="false"/>
     <registryKey key="ide.favorites.tool.window.applicable" defaultValue="true" description="Allows to enable the Favorites tool window" restartRequired="false"/>
     <registryKey key="mps.projectView.generationRequired.icon" defaultValue="false" description="Display blue dot instead of (generation required)" restartRequired="false"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <project.lifecycleListener listenerClass="jetbrains.mps.ide.messages.MessagesViewTool$Plug" priority="30"/>
   </extensions>
 </idea-plugin>

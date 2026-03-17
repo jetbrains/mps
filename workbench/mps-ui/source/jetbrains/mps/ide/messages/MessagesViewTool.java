@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.messages;
 
@@ -13,8 +13,6 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.openapi.startup.ProjectActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
@@ -23,6 +21,7 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.MessageView;
 import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.ThreadUtils.RunInUIRunnable;
 import jetbrains.mps.ide.messages.MessageList.MessageListState;
 import jetbrains.mps.ide.messages.MessagesViewTool.MessageViewToolState;
@@ -34,8 +33,7 @@ import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.MPSProject;
-import kotlin.Unit;
-import kotlin.coroutines.Continuation;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -63,13 +61,13 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     myProject = project;
     myDefaultList = new MyMessageList("Messages");
     Disposer.register(this, myDefaultList);
-    Disposer.register(project, this);
     // default list doesn't need too much attention, don't activate it on any message
     myDefaultList.setActivateOnMessage(false);
     myDefaultList.setTitleUpdateFormat(
         "{1,choice,0#--|1#1 error|2#{1} errors}/{2,choice,0#--|1#1 warning|2#{2} warnings}/{3,choice,0#--|1#1 info|2#{3} infos}");
     addList(DEFAULT_LIST, myDefaultList);
     myMessageViewLoggingHandler = new MessageViewLoggingHandler(this, ProjectHelper.fromIdeaProject(project));
+    myMessageViewLoggingHandler.register();
   }
 
   @Nullable
@@ -87,6 +85,7 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
 
   @Override
   public void dispose() {
+    myMessageViewLoggingHandler.unregister();
     myMessageLists.clear();
   }
 
@@ -111,14 +110,6 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
 
   public void add(final IMessage message, String listName) {
     getAvailableList(listName, true).add(message);
-  }
-
-  public void registerLoggingHandler() {
-    myMessageViewLoggingHandler.register();
-  }
-
-  private void unregisterLoggingHandler() {
-    myMessageViewLoggingHandler.unregister();
   }
 
   @Override
@@ -209,12 +200,7 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     lists.add(list);
   }
 
-  /**
-   * @deprecated I don't feel it's a nice idea to expose implementation detail, {@link #newHandler()} shall suffice, perhaps,
-   * augmented with options object to pass info/warn/clear settings
-   */
-  @Deprecated
-  public synchronized MessageList getAvailableList(String name, boolean createIfNotFound) {
+  private synchronized MessageList getAvailableList(String name, boolean createIfNotFound) {
     List<MessageList> lists;
     if (myMessageLists.containsKey(name)) {
       lists = myMessageLists.get(name);
@@ -332,7 +318,8 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
         activateUpdate();
         myContentReady = true;
       };
-      getMessagesService().runWhenInitialized(new RunInUIRunnable(initRunnable, false));
+      // runWhenInitialized() states in the contract it needs EDT
+      ThreadUtils.runInUIThreadNoWait(() -> getMessagesService().runWhenInitialized(initRunnable));
     }
 
     @Override
@@ -383,34 +370,16 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     }
   }
 
-  public static final class MessagesViewProjectListener implements ProjectManagerListener {
+  public static final class Plug implements ProjectLifecycleListener {
     @Override
-    public void projectOpened(@NotNull Project project) {
-      final MessagesViewTool messagesViewTool = project.getService(MessagesViewTool.class);
-      messagesViewTool.registerLoggingHandler();
-    }
-
-    @Override
-    public void projectClosing(@NotNull Project project) {
-      MessagesViewTool messagesViewTool = project.getServiceIfCreated(MessagesViewTool.class);
-      if (messagesViewTool != null) {
-        messagesViewTool.unregisterLoggingHandler();
-      }
-    }
-  }
-
-  public static final class MessageViewToolInitialization implements ProjectActivity {
-
-    @Nullable
-    @Override
-    public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
+    public void projectReady(@NotNull MPSProject project, @NotNull Context context) {
       if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
-        return null;
+        return;
       }
-      // First access to the com.intellij.ui.content.MessageView service should be done from dispatch thread.
-      // This post startup activity is used to achieve this.
-      ApplicationManager.getApplication().invokeLater(() -> project.getService(MessagesViewTool.class).getDefaultList().createContent(false, false));
-      return null;
+      // don't care to get MVT right away with MPSProject, could happen a bit later
+      // however, it's necessary to create UI for the default list to trigger IDEA's MessageView activation
+      // (otherwise no tool window is registered, see MessageViewImpl)
+      ApplicationManager.getApplication().executeOnPooledThread(() -> MessagesViewTool.getInstance(project).getDefaultList().createContent(false, false));
     }
   }
 }
