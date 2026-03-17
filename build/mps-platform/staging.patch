@@ -4,8 +4,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/community/mps/build/build/build.xml b/community/mps/build/build/build.xml
---- a/community/mps/build/build/build.xml	(revision 8fb1a5193c30bc79c9345d6df72a05717adb698a)
-+++ b/community/mps/build/build/build.xml	(revision 269de5b67d8da4300fb4c575903ead6809b7fa06)
+--- a/community/mps/build/build/build.xml	(revision f922e0d317e4e0848f427c4239183ce4a1f03def)
++++ b/community/mps/build/build/build.xml	(revision 17839995c015dbab10c9bbfdd850e2370ccd5d5a)
 @@ -41,6 +41,8 @@
      <apply.patch file="${basedir}/patches/MPS-38229.patch"/>
      <apply.patch file="${basedir}/patches/MPS-38534-WelcomeScreenPromotions_for251.patch"/>
@@ -15,6 +15,40 @@ diff --git a/community/mps/build/build/build.xml b/community/mps/build/build/bui
    </target>
 
    <!-- Raw JPS build of modules and plugins required by MPS -->
+Index: community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+--- a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml	(revision 87d2dea0f10dc223d7249064eb1202fecc187efe)
++++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml	(date 1773918585256)
+@@ -16,6 +16,25 @@
+
+   <content namespace="jetbrains">
+     <module name="intellij.java.frontback.psi.impl" loading="embedded"/>
++
++    <module name="intellij.java" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.analysis"  loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.analysis.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.compiler" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.compiler.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.frontback.psi" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.indexing" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.psi" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.psi.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.syntax" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.jsp" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.compiler.instrumentationUtil" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.platform.jps.build.javac.rt" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.platform.jps.build" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.platform.uast" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.platform.uast.ide" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++
+   </content>
+
+   <module value="com.intellij.modules.java" />
 Index: community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
