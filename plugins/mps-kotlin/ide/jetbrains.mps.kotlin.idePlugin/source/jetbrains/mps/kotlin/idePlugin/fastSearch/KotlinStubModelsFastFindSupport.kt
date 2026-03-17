@@ -19,6 +19,7 @@ import jetbrains.mps.logging.Logger
 import jetbrains.mps.persistence.PersistenceRegistry
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.MPSProject
+import jetbrains.mps.project.ProjectLifecycleListener
 import jetbrains.mps.smodel.SNodeId
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.util.containers.ManyToManyMap
@@ -46,18 +47,23 @@ import java.util.function.Function
  *
  * @see jetbrains.mps.workbench.findusages.StubModelsFastFindSupport for the java equivalent
  */
-class KotlinStubModelsFastFindSupport(mpsProject: MPSProject) : FindUsagesParticipant, Disposable {
-    private val myRegistry = MPSCoreComponents.getInstance().platform.findComponent(PersistenceRegistry::class.java)!!
+class KotlinStubModelsFastFindSupport(mpsProject: MPSProject) : FindUsagesParticipant {
     private val myModelFilter = ProjectModelFilter(mpsProject)
 
-    init {
-        myRegistry.addFindUsagesParticipant(this)
-    }
+    class Plug : ProjectLifecycleListener {
+        override fun projectReady(project: MPSProject, context: ProjectLifecycleListener.Context) {
+            val sp = KotlinStubModelsFastFindSupport(project)
+            context.keep(KotlinStubModelsFastFindSupport::class.java, sp)
+            project.getComponent(PersistenceRegistry::class.java).addFindUsagesParticipant(sp)
+        }
 
-    override fun dispose() {
-        myRegistry.removeFindUsagesParticipant(this)
+        override fun projectDiscarded(project: MPSProject, context: ProjectLifecycleListener.Context) {
+            val sp = context.discard(KotlinStubModelsFastFindSupport::class.java);
+            if (sp != null) {
+                project.getComponent(PersistenceRegistry::class.java).removeFindUsagesParticipant(sp)
+            }
+        }
     }
-
 
     override fun findUsages(
         models: Collection<SModel>,
