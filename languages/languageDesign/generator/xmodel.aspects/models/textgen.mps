@@ -15,6 +15,7 @@
         <reference id="3705377275350227762" name="plan" index="NozSM" />
       </concept>
       <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
+        <property id="1152961914448142318" name="kind" index="2Qf7GI" />
         <child id="1152961914448136208" name="language" index="2Qf6Ng" />
       </concept>
       <concept id="1820634577908471803" name="jetbrains.mps.lang.generator.plan.structure.Plan" flags="ng" index="2VgMpV">
@@ -78,6 +79,13 @@
     <node concept="2VgMA2" id="2fM90PxfrMy" role="2VgMA7">
       <node concept="2Qf6Nf" id="6pkKjyUzzBX" role="2Qf7GQ">
         <node concept="2V$Bhx" id="2fM90PxfrMI" role="2Qf6Ng">
+          <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+        </node>
+      </node>
+      <node concept="2Qf6Nf" id="2UKP6XWGMNk" role="2Qf7GQ">
+        <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
+        <node concept="2V$Bhx" id="2UKP6XWGMNl" role="2Qf6Ng">
           <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
           <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
         </node>

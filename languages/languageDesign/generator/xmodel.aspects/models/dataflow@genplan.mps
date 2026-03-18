@@ -125,6 +125,13 @@
           <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
         </node>
       </node>
+      <node concept="2Qf6Nf" id="5vaTPe3G1AH" role="2Qf7GQ">
+        <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
+        <node concept="2V$Bhx" id="5vaTPe3G1AI" role="2Qf6Ng">
+          <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+        </node>
+      </node>
     </node>
     <node concept="2VgMA1" id="4LuITgyAzIv" role="2VgMA7">
       <node concept="3ps6a7" id="4LuITgyAIM1" role="3ps6aC">

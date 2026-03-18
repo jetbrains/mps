@@ -8,7 +8,6 @@
   </languages>
   <imports>
     <import index="7j7i" ref="r:647e430d-4f1a-4d18-8ace-69f2d9711419(jetbrains.mps.lang.descriptor.aspects@genplan)" />
-    <import index="x2ac" ref="r:4697de22-9b24-405b-8ea2-e5702094d1dd(jetbrains.mps.lang.descriptor.dataflow@genplan)" />
   </imports>
   <registry>
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
@@ -22,6 +21,7 @@
         <reference id="3705377275350227762" name="plan" index="NozSM" />
       </concept>
       <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
+        <property id="1152961914448142318" name="kind" index="2Qf7GI" />
         <child id="1152961914448136208" name="language" index="2Qf6Ng" />
       </concept>
       <concept id="1820634577908471803" name="jetbrains.mps.lang.generator.plan.structure.Plan" flags="ng" index="2VgMpV">
@@ -148,6 +148,13 @@
       </node>
       <node concept="2Qf6Nf" id="6pkKjyUzzC4" role="2Qf7GQ">
         <node concept="2V$Bhx" id="2fM90PxfrMI" role="2Qf6Ng">
+          <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+        </node>
+      </node>
+      <node concept="2Qf6Nf" id="5vaTPe3HQRf" role="2Qf7GQ">
+        <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
+        <node concept="2V$Bhx" id="5vaTPe3HQRg" role="2Qf6Ng">
           <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
           <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
         </node>
