@@ -327,7 +327,13 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   /*package*/ void findModuleUsages(List<SModuleReference> modules) {
-    final SearchQuery query = new SearchQuery(new GenericHolder<Object>(modules), getModuleAndOwnedModelsScope());
+    String cap;
+    if (modules.size() == 1) {
+      cap = NameUtil.compactNamespace(modules.getFirst().getModuleName());
+    } else {
+      cap = "%s: usages of %d modules".formatted(NameUtil.compactNamespace(myModule.getModuleName()), modules.size());
+    }
+    final SearchQuery query = new SearchQuery(new GenericHolder<Object>(modules, cap), getModuleAndOwnedModelsScope());
     final IResultProvider provider = FindUtils.makeProvider(new CompositeFinder(new ModuleUsagesFinder(true)));
     showUsageImpl(query, provider);
     forceCancelCloseDialog();
