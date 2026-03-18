@@ -254,7 +254,7 @@
             </node>
           </node>
           <node concept="2OqwBi" id="c" role="1DdaDG">
-            <uo k="s:originTrace" v="n:23" />
+            <uo k="s:originTrace" v="n:12" />
             <node concept="liA8E" id="m" role="2OqNvi">
               <ref role="37wK5l" to="9r19:~SMethod.invoke(org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.Object...)" resolve="invoke" />
               <uo k="s:originTrace" v="n:22" />

@@ -867,7 +867,7 @@
                 <node concept="X8dFx" id="2Z" role="2OqNvi">
                   <uo k="s:originTrace" v="n:156" />
                   <node concept="2OqwBi" id="30" role="25WWJ7">
-                    <uo k="s:originTrace" v="n:159" />
+                    <uo k="s:originTrace" v="n:157" />
                     <node concept="liA8E" id="31" role="2OqNvi">
                       <ref role="37wK5l" to="9r19:~SMethod.invoke(org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.Object...)" resolve="invoke" />
                       <uo k="s:originTrace" v="n:158" />
@@ -1137,7 +1137,7 @@
             </node>
           </node>
           <node concept="2OqwBi" id="3W" role="1DdaDG">
-            <uo k="s:originTrace" v="n:206" />
+            <uo k="s:originTrace" v="n:195" />
             <node concept="liA8E" id="47" role="2OqNvi">
               <ref role="37wK5l" to="9r19:~SMethod.invoke(org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.Object...)" resolve="invoke" />
               <uo k="s:originTrace" v="n:207" />
