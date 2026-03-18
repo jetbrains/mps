@@ -23268,6 +23268,11 @@
               <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
             </node>
           </node>
+          <node concept="1SiIV0" id="1scF1U0GCjK" role="3bR37C">
+            <node concept="3bR9La" id="1scF1U0GCjL" role="1SiIV1">
+              <ref role="3bR37D" node="7YI57w6K0hX" resolve="jetbrains.mps.lang.behavior#1225195312923" />
+            </node>
+          </node>
           <node concept="1BupzO" id="73GUf$ummMz" role="3bR31x">
             <property role="3ZfqAx" value="generator/baseLanguage" />
             <property role="1Hdu6h" value="true" />
