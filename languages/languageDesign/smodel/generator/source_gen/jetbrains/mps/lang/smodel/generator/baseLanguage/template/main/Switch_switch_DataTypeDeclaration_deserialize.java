@@ -58,13 +58,13 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_132_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_130_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_132_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_130_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377344864768", context);
       return tlist1;
     }
@@ -75,7 +75,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_132_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_130_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -87,7 +87,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_132_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_130_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/6280652366638157297", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -101,7 +101,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) {
-      return QueriesGenerated.rule_Condition_132_2(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_130_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -113,7 +113,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_132_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_130_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro2, "tpl/r:00000000-0000-4000-0000-011c89590303/6280652366638157601", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -129,7 +129,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_132_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro3));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_130_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro3));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro3, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377344864806", context);
       return tlist1;
     }
@@ -148,27 +148,27 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_132_0(new PropertyMacroContext(context1, "0L", propertyMacro)));
+          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_130_0(new PropertyMacroContext(context1, "0L", propertyMacro)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_132_1(new PropertyMacroContext(context1, "0L", propertyMacro1)));
+          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_130_1(new PropertyMacroContext(context1, "0L", propertyMacro1)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode3);
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_132_2(new PropertyMacroContext(context1, "0L", propertyMacro2)));
+          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_130_2(new PropertyMacroContext(context1, "0L", propertyMacro2)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-          SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_132_3(new PropertyMacroContext(context1, "fqName", propertyMacro3)));
+          SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_130_3(new PropertyMacroContext(context1, "fqName", propertyMacro3)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode5);
         }
         {
           Collection<SNode> tlist6 = null;
-          final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_132_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro4));
+          final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_130_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro4));
           tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro4, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377345134039", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist6);
         }

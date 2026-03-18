@@ -213,12 +213,6 @@ public class TemplateModelImpl extends TemplateModelBase {
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335249984"))) {
       return new Template_reduce_ConceptMethodCallReflectiveCommon();
     }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2391302010127536581"))) {
-      return new Template_reduce_ConceptMethodCallReflective();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335295549"))) {
-      return new Template_reduce_ConceptMethodCall();
-    }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335197469"))) {
       return new Template_reduce_ConceptMethodCallReflectiveWithThis();
     }

@@ -43,12 +43,12 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_138_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_136_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_138_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344827005")))));
+          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_136_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344827005")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode, switchContext1);
           if (tlist1 == null) {
@@ -69,12 +69,12 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_138_1(new SourceSubstituteMacroNodeContext(context, switchMacroRef1));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_136_1(new SourceSubstituteMacroNodeContext(context, switchMacroRef1));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_138_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111395")))));
+          switchContext1 = switchContext1.withVariable("parameter", ((SNode) QueriesGenerated.templateArgumentQuery_136_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111395")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode1, switchContext1);
           if (tlist1 == null) {

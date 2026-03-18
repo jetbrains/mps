@@ -42,20 +42,20 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_114_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904818"))));
+    context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_112_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904818"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
       environment.associate(tnode2, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)", "~BHReflection");
       environment.resolve(new RefResolver(tnode2, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346205522051"), "invokeSuper") {
         @Override
         public Object resolve() {
-          return QueriesGenerated.referenceMacro_GetReferent_114_1(createQueryContext());
+          return QueriesGenerated.referenceMacro_GetReferent_112_1(createQueryContext());
         }
       });
       TemplateContext context2 = context1.subContext();
       {
         Collection<SNode> tlist3 = null;
-        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_114_0(new SourceSubstituteMacroNodeContext(context2, callMacro));
+        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_112_0(new SourceSubstituteMacroNodeContext(context2, callMacro));
         TemplateContext context3 = context2;
         context3 = context3.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
@@ -70,14 +70,14 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
         environment.resolve(new RefResolver(tnode4, myAssociationLinks[2], context2, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892246538"), "BaseConcept") {
           @Override
           public Object resolve() {
-            return QueriesGenerated.referenceMacro_GetReferent_114_0(createQueryContext());
+            return QueriesGenerated.referenceMacro_GetReferent_112_0(createQueryContext());
           }
         });
         environment.aggregate(tnode2, myAggregationLinks[0], tnode4);
       }
       {
         Collection<SNode> tlist5 = null;
-        SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_114_1(new SourceSubstituteMacroNodeContext(context2, callMacro1));
+        SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_112_1(new SourceSubstituteMacroNodeContext(context2, callMacro1));
         TemplateContext context4 = context2;
         context4 = context4.subContext(null, callInputNode5);
         if (callInputNode5 != null) {
@@ -90,7 +90,7 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
       {
         Collection<SNode> tlist6 = null;
         TemplateContext context5 = context2;
-        context5 = context5.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_114_0(new TemplateArgumentContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236076")))));
+        context5 = context5.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_112_0(new TemplateArgumentContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236076")))));
         tlist6 = environment.callSite(new Template_reduce_Parameters(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236075")).apply(context5);
         environment.aggregate(tnode2, myAggregationLinks[0], tlist6);
       }

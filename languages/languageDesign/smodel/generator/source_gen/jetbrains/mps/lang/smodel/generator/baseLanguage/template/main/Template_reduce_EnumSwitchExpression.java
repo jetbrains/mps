@@ -51,7 +51,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
       TemplateContext context1 = context.subContext();
       {
         final List<SNode> tlist2 = new ArrayList<SNode>();
-        final Iterable<SNode> loopList2 = QueriesGenerated.sourceNodesQuery_134_0(new SourceSubstituteMacroNodesContext(context1, loopMacroRef));
+        final Iterable<SNode> loopList2 = QueriesGenerated.sourceNodesQuery_132_0(new SourceSubstituteMacroNodesContext(context1, loopMacroRef));
         int loopIndex_2 = 0;
         for (SNode itnode2 : loopList2) {
           if (itnode2 == null) {
@@ -65,14 +65,14 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
             TemplateContext context3 = context2.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_134_0(new PropertyMacroContext(context3, "1", propertyMacro)));
+              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_132_0(new PropertyMacroContext(context3, "1", propertyMacro)));
               environment.aggregate(tnode3, myAggregationLinks[0], tnode4);
             }
             {
               Collection<SNode> tlist5 = Collections.emptyList();
-              if (QueriesGenerated.ifMacro_Condition_134_0(new IfMacroContext(context3, ifMacroRef))) {
+              if (QueriesGenerated.ifMacro_Condition_132_0(new IfMacroContext(context3, ifMacroRef))) {
                 Collection<SNode> tlist6 = null;
-                final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_134_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro));
+                final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_132_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro));
                 tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630248880", context3);
                 tlist5 = tlist6;
               } else {
@@ -99,7 +99,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               {
                 Collection<SNode> tlist10 = null;
                 TemplateContext context6 = context5;
-                context6 = context6.withVariable("var:datatypeId", QueriesGenerated.varMacro_Value_134_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3761295454228088115"))));
+                context6 = context6.withVariable("var:datatypeId", QueriesGenerated.varMacro_Value_132_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3761295454228088115"))));
                 final SNode tnode11 = environment.createOutputNode(myConcepts[6]);
                 {
                   environment.associate(tnode11, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~EnumerationLiteralsIndex.build(long,long,long,long...)");
@@ -107,29 +107,29 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                   TemplateContext context7 = context6.subContext();
                   {
                     final SNode tnode12 = environment.createOutputNode(myConcepts[7]);
-                    SNodeAccessUtil.setPropertyValue(tnode12, myProperties[3], QueriesGenerated.propertyMacro_GetValue_134_1(new PropertyMacroContext(context7, "0L", propertyMacro1)));
+                    SNodeAccessUtil.setPropertyValue(tnode12, myProperties[3], QueriesGenerated.propertyMacro_GetValue_132_1(new PropertyMacroContext(context7, "0L", propertyMacro1)));
                     environment.aggregate(tnode11, myAggregationLinks[3], tnode12);
                   }
                   {
                     final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
-                    SNodeAccessUtil.setPropertyValue(tnode13, myProperties[3], QueriesGenerated.propertyMacro_GetValue_134_2(new PropertyMacroContext(context7, "0L", propertyMacro2)));
+                    SNodeAccessUtil.setPropertyValue(tnode13, myProperties[3], QueriesGenerated.propertyMacro_GetValue_132_2(new PropertyMacroContext(context7, "0L", propertyMacro2)));
                     environment.aggregate(tnode11, myAggregationLinks[3], tnode13);
                   }
                   {
                     final SNode tnode14 = environment.createOutputNode(myConcepts[7]);
-                    SNodeAccessUtil.setPropertyValue(tnode14, myProperties[3], QueriesGenerated.propertyMacro_GetValue_134_3(new PropertyMacroContext(context7, "0L", propertyMacro3)));
+                    SNodeAccessUtil.setPropertyValue(tnode14, myProperties[3], QueriesGenerated.propertyMacro_GetValue_132_3(new PropertyMacroContext(context7, "0L", propertyMacro3)));
                     environment.aggregate(tnode11, myAggregationLinks[3], tnode14);
                   }
                   {
                     final List<SNode> tlist15 = new ArrayList<SNode>();
-                    final Iterable<SNode> loopList15 = QueriesGenerated.sourceNodesQuery_134_1(new SourceSubstituteMacroNodesContext(context7, loopMacroRef1));
+                    final Iterable<SNode> loopList15 = QueriesGenerated.sourceNodesQuery_132_1(new SourceSubstituteMacroNodesContext(context7, loopMacroRef1));
                     for (SNode itnode15 : loopList15) {
                       if (itnode15 == null) {
                         continue;
                       }
                       TemplateContext context8 = context7.subContext(itnode15);
                       final SNode tnode16 = environment.createOutputNode(myConcepts[7]);
-                      SNodeAccessUtil.setPropertyValue(tnode16, myProperties[3], QueriesGenerated.propertyMacro_GetValue_134_4(new PropertyMacroContext(context8, "0L", propertyMacro4)));
+                      SNodeAccessUtil.setPropertyValue(tnode16, myProperties[3], QueriesGenerated.propertyMacro_GetValue_132_4(new PropertyMacroContext(context8, "0L", propertyMacro4)));
                       tlist15.add(tnode16);
                     }
                     environment.aggregate(tnode11, myAggregationLinks[3], tlist15);
@@ -148,7 +148,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               TemplateContext context9 = context4.subContext();
               {
                 Collection<SNode> tlist18 = null;
-                final SNode copySrcInput18 = QueriesGenerated.sourceNodeQuery_134_1(new SourceSubstituteMacroNodeContext(context9, copySrcMacro1));
+                final SNode copySrcInput18 = QueriesGenerated.sourceNodeQuery_132_1(new SourceSubstituteMacroNodeContext(context9, copySrcMacro1));
                 tlist18 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput18), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630249281", context9);
                 environment.aggregate(tnode17, myAggregationLinks[3], tlist18);
               }
@@ -160,11 +160,11 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
       }
       {
         Collection<SNode> tlist19 = Collections.emptyList();
-        if (QueriesGenerated.ifMacro_Condition_134_1(new IfMacroContext(context1, ifMacroRef5))) {
+        if (QueriesGenerated.ifMacro_Condition_132_1(new IfMacroContext(context1, ifMacroRef5))) {
           Collection<SNode> tlist20 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_134_2(new IfMacroContext(context1, ifMacroRef1))) {
+          if (QueriesGenerated.ifMacro_Condition_132_2(new IfMacroContext(context1, ifMacroRef1))) {
             Collection<SNode> tlist21 = null;
-            final SNode copySrcInput21 = QueriesGenerated.sourceNodeQuery_134_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
+            final SNode copySrcInput21 = QueriesGenerated.sourceNodeQuery_132_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
             tlist21 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput21), copySrcMacro2, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993631375972", context1);
             tlist20 = tlist21;
           } else {
@@ -173,7 +173,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               TemplateContext context10 = context1.subContext();
               {
                 Collection<SNode> tlist23 = Collections.emptyList();
-                if (QueriesGenerated.ifMacro_Condition_134_3(new IfMacroContext(context10, ifMacroRef2))) {
+                if (QueriesGenerated.ifMacro_Condition_132_3(new IfMacroContext(context10, ifMacroRef2))) {
                   final SNode tnode24 = environment.createOutputNode(myConcepts[9]);
                   {
                     TemplateContext context11 = context10.subContext();
@@ -184,7 +184,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                         {
                           Collection<SNode> tlist26 = null;
                           {
-                            final SNode switchInput26 = QueriesGenerated.sourceNodeQuery_134_2(new SourceSubstituteMacroNodeContext(context12, switchMacroRef));
+                            final SNode switchInput26 = QueriesGenerated.sourceNodeQuery_132_2(new SourceSubstituteMacroNodeContext(context12, switchMacroRef));
                             if (switchInput26 == null) {
                               tlist26 = Collections.emptyList();
                             } else {
@@ -202,7 +202,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                         }
                         {
                           Collection<SNode> tlist28 = null;
-                          final SNode copySrcInput28 = QueriesGenerated.sourceNodeQuery_134_3(new SourceSubstituteMacroNodeContext(context12, copySrcMacro3));
+                          final SNode copySrcInput28 = QueriesGenerated.sourceNodeQuery_132_3(new SourceSubstituteMacroNodeContext(context12, copySrcMacro3));
                           tlist28 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput28), copySrcMacro3, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993631437623", context12);
                           environment.aggregate(tnode25, myAggregationLinks[9], tlist28);
                         }
@@ -216,7 +216,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               }
               {
                 Collection<SNode> tlist29 = Collections.emptyList();
-                if (QueriesGenerated.ifMacro_Condition_134_4(new IfMacroContext(context10, ifMacroRef3))) {
+                if (QueriesGenerated.ifMacro_Condition_132_4(new IfMacroContext(context10, ifMacroRef3))) {
                   final SNode tnode30 = environment.createOutputNode(myConcepts[9]);
                   {
                     TemplateContext context13 = context10.subContext();
@@ -229,7 +229,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                           environment.resolve(new RefResolver(tnode32, myAssociationLinks[2], context14, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948210000685"), "x") {
                             @Override
                             public Object resolve() {
-                              return QueriesGenerated.referenceMacro_GetReferent_134_0(createQueryContext());
+                              return QueriesGenerated.referenceMacro_GetReferent_132_0(createQueryContext());
                             }
                           });
                           environment.aggregate(tnode31, myAggregationLinks[9], tnode32);
@@ -237,7 +237,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                         {
                           Collection<SNode> tlist33 = null;
                           {
-                            final SNode switchInput33 = QueriesGenerated.sourceNodeQuery_134_4(new SourceSubstituteMacroNodeContext(context14, switchMacroRef1));
+                            final SNode switchInput33 = QueriesGenerated.sourceNodeQuery_132_4(new SourceSubstituteMacroNodeContext(context14, switchMacroRef1));
                             if (switchInput33 == null) {
                               tlist33 = Collections.emptyList();
                             } else {
@@ -263,14 +263,14 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               }
               {
                 Collection<SNode> tlist35 = Collections.emptyList();
-                if (QueriesGenerated.ifMacro_Condition_134_5(new IfMacroContext(context10, ifMacroRef4))) {
+                if (QueriesGenerated.ifMacro_Condition_132_5(new IfMacroContext(context10, ifMacroRef4))) {
                   final SNode tnode36 = environment.createOutputNode(myConcepts[12]);
                   {
                     TemplateContext context15 = context10.subContext();
                     {
                       Collection<SNode> tlist37 = null;
                       {
-                        final SNode switchInput37 = QueriesGenerated.sourceNodeQuery_134_5(new SourceSubstituteMacroNodeContext(context15, switchMacroRef2));
+                        final SNode switchInput37 = QueriesGenerated.sourceNodeQuery_132_5(new SourceSubstituteMacroNodeContext(context15, switchMacroRef2));
                         if (switchInput37 == null) {
                           tlist37 = Collections.emptyList();
                         } else {

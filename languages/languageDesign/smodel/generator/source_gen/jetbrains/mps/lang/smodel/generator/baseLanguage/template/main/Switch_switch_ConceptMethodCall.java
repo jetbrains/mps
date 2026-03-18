@@ -41,7 +41,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
   public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_4(new SourceSubstituteMacroNodeContext(context, callMacro));
+    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_80_4(new SourceSubstituteMacroNodeContext(context, callMacro));
     TemplateContext context1 = context;
     context1 = context1.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
@@ -59,7 +59,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_0(new SourceSubstituteMacroNodeContext(context, callMacro1));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_80_0(new SourceSubstituteMacroNodeContext(context, callMacro1));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -78,7 +78,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_1(new SourceSubstituteMacroNodeContext(context, callMacro2));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_80_1(new SourceSubstituteMacroNodeContext(context, callMacro2));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -97,7 +97,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_2(new SourceSubstituteMacroNodeContext(context, callMacro3));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_80_2(new SourceSubstituteMacroNodeContext(context, callMacro3));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
@@ -116,7 +116,7 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_82_3(new SourceSubstituteMacroNodeContext(context, callMacro4));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_80_3(new SourceSubstituteMacroNodeContext(context, callMacro4));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {

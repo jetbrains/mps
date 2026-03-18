@@ -38,7 +38,7 @@ public class Template_reduce_ConceptMethodCallReflectiveWithThis extends Templat
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_80_0(new IfMacroContext(context, ifMacroRef))) {
+    if (QueriesGenerated.ifMacro_Condition_78_0(new IfMacroContext(context, ifMacroRef))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         TemplateContext context1 = context.subContext();
@@ -53,7 +53,7 @@ public class Template_reduce_ConceptMethodCallReflectiveWithThis extends Templat
             }
             {
               Collection<SNode> tlist5 = null;
-              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_80_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
+              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_78_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
               tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/4598718932037559582", context2);
               environment.aggregate(tnode3, myAggregationLinks[1], tlist5);
             }

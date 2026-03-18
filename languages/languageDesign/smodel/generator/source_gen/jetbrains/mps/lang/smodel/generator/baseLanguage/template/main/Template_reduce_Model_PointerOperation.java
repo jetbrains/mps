@@ -43,7 +43,7 @@ public class Template_reduce_Model_PointerOperation extends TemplateDeclarationB
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_127_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_125_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/3506770386464481071", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }

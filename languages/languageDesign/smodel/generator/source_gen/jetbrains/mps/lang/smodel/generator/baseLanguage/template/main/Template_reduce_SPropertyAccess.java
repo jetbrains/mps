@@ -43,7 +43,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_125_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_123_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/5834820604012843091", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
@@ -54,19 +54,19 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           environment.resolve(new RefResolver(tnode3, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1139275804876"), "getString") {
             @Override
             public Object resolve() {
-              return QueriesGenerated.referenceMacro_GetReferent_125_0(createQueryContext());
+              return QueriesGenerated.referenceMacro_GetReferent_123_0(createQueryContext());
             }
           });
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist4 = null;
-            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_125_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro1));
+            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_123_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro1));
             tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/1139275804870", context2);
             environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
           }
           {
             Collection<SNode> tlist5 = null;
-            SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_125_2(new SourceSubstituteMacroNodeContext(context2, callMacro));
+            SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_123_2(new SourceSubstituteMacroNodeContext(context2, callMacro));
             TemplateContext context3 = context2;
             context3 = context3.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
@@ -86,19 +86,19 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           environment.resolve(new RefResolver(tnode6, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012870031"), "stringPropRef") {
             @Override
             public Object resolve() {
-              return QueriesGenerated.referenceMacro_GetReferent_125_1(createQueryContext());
+              return QueriesGenerated.referenceMacro_GetReferent_123_1(createQueryContext());
             }
           });
           TemplateContext context4 = context1.subContext();
           {
             Collection<SNode> tlist7 = null;
-            final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_125_3(new SourceSubstituteMacroNodeContext(context4, copySrcMacro2));
+            final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_123_3(new SourceSubstituteMacroNodeContext(context4, copySrcMacro2));
             tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro2, "tpl/r:00000000-0000-4000-0000-011c89590303/5834820604012870998", context4);
             environment.aggregate(tnode6, myAggregationLinks[1], tlist7);
           }
           {
             Collection<SNode> tlist8 = null;
-            SNode callInputNode8 = QueriesGenerated.sourceNodeQuery_125_4(new SourceSubstituteMacroNodeContext(context4, callMacro1));
+            SNode callInputNode8 = QueriesGenerated.sourceNodeQuery_123_4(new SourceSubstituteMacroNodeContext(context4, callMacro1));
             TemplateContext context5 = context4;
             context5 = context5.subContext(null, callInputNode8);
             if (callInputNode8 != null) {
@@ -118,19 +118,19 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           environment.resolve(new RefResolver(tnode9, myAssociationLinks[1], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012874896"), "assign") {
             @Override
             public Object resolve() {
-              return QueriesGenerated.referenceMacro_GetReferent_125_2(createQueryContext());
+              return QueriesGenerated.referenceMacro_GetReferent_123_2(createQueryContext());
             }
           });
           TemplateContext context6 = context1.subContext();
           {
             Collection<SNode> tlist10 = null;
-            final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_125_5(new SourceSubstituteMacroNodeContext(context6, copySrcMacro3));
+            final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_123_5(new SourceSubstituteMacroNodeContext(context6, copySrcMacro3));
             tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro3, "tpl/r:00000000-0000-4000-0000-011c89590303/5834820604012874880", context6);
             environment.aggregate(tnode9, myAggregationLinks[1], tlist10);
           }
           {
             Collection<SNode> tlist11 = null;
-            SNode callInputNode11 = QueriesGenerated.sourceNodeQuery_125_6(new SourceSubstituteMacroNodeContext(context6, callMacro2));
+            SNode callInputNode11 = QueriesGenerated.sourceNodeQuery_123_6(new SourceSubstituteMacroNodeContext(context6, callMacro2));
             TemplateContext context7 = context6;
             context7 = context7.subContext(null, callInputNode11);
             if (callInputNode11 != null) {
