@@ -359,7 +359,7 @@ public class QueriesGenerated extends QueryProviderBase {
     Iterable<SNode> nodes = ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.ConceptType$Jb)).select((it) -> SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.ReceiverType$$f));
     ReferencesId.extractRefs(_context.getModel(), "Concepts", nodes, (ref) -> SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ref, LINKS.type$NVFj), CONCEPTS.ConceptType$Jb), LINKS.concept$PItp), (concept) -> {
       SNodeReference targetMethod = (SNodeOperations.isInstanceOf(concept, CONCEPTS.InterfaceConceptDeclaration$CG) ? new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getInterfaceConcept(long,long,long,java.lang.String)") : new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)"));
-      String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(concept, PROPS.name$MnvL), null, concept, _context);
+      String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(concept, PROPS.name$MnvL), null, concept);
       return MultiTuple.<String,SNode>from(referenceName, ReferencesId.metaAdapterCall(targetMethod, ReferencesId.conceptArguments(concept), NameUtil.nodeFQName(concept)));
     });
   }
@@ -367,7 +367,7 @@ public class QueriesGenerated extends QueryProviderBase {
     ReferencesId.extractRefs(_context.getModel(), "Links", SModelOperations.nodes(_context.getModel(), CONCEPTS.LinkReference$dY), (ref) -> SLinkOperations.getTarget(ref, LINKS.link$pSen), (link) -> {
       SNodeReference targetMethod = (SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b8L) ? new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)") : new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getContainmentLink(long,long,long,long,java.lang.String)"));
 
-      String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(link, PROPS.name$MnvL), SPropertyOperations.getString(link, PROPS.linkId$mi9g), LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(link), _context);
+      String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(link, PROPS.name$MnvL), SPropertyOperations.getString(link, PROPS.linkId$mi9g), LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(link));
       return MultiTuple.<String,SNode>from(referenceName, ReferencesId.metaAdapterCall(targetMethod, ReferencesId.linkArguments(link), SPropertyOperations.getString(link, PROPS.role$Nsjf)));
     });
   }
@@ -375,7 +375,7 @@ public class QueriesGenerated extends QueryProviderBase {
     ReferencesId.extractRefs(_context.getModel(), "Properties", SModelOperations.nodes(_context.getModel(), CONCEPTS.PropertyReference$2w), (node) -> SLinkOperations.getTarget(node, LINKS.link$$6vY), (property) -> {
       SNode conceptDeclaration = PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(property);
 
-      String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(property, PROPS.name$MnvL), SPropertyOperations.getString(property, PROPS.propertyId$m5HU), conceptDeclaration, _context);
+      String referenceName = ReferencesId.referenceName(SPropertyOperations.getString(property, PROPS.name$MnvL), SPropertyOperations.getString(property, PROPS.propertyId$m5HU), conceptDeclaration);
       return MultiTuple.<String,SNode>from(referenceName, ReferencesId.metaAdapterCall(new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory.getProperty(long,long,long,long,java.lang.String)"), ReferencesId.propertyArguments(property), SPropertyOperations.getString(property, PROPS.name$MnvL)));
 
     });

@@ -712,6 +712,7 @@ public class QueriesGenerated {
     return new ConceptMethodGenerationHelper(_context.getNode());
   }
   public static Object varMacro_Value_6_1(final TemplateVarContext _context) {
+    // FIXME likely shall use ConceptMethodGenerationHelper.getCompressedLanguageId() right away (need a new method in SMethodBuilder)
     return new LanguageIdCalculator(_context).calcLangId(ConceptMethodDeclaration__BehaviorDescriptor.getContainingConcept_idi3POAMX.invoke(((ConceptMethodGenerationHelper) _context.getVariable("var:methodHelper")).getBaseMethod()));
   }
   public static Object varMacro_Value_14_0(final TemplateVarContext _context) {

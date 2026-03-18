@@ -15,8 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.generator.template.TemplateQueryContext;
-import jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.JavaFriendlyBase64;
@@ -104,8 +102,8 @@ __switch__:
     return createValueArgument_wpvnqp_a0a8(Long.toHexString(longValue));
   }
 
-  public static String referenceName(String name, String additionalId, SNode concept, TemplateQueryContext genContext) {
-    String langId = new LanguageIdCalculator(genContext).calcLangId(concept).toString();
+  public static String referenceName(String name, String additionalId, SNode concept) {
+    String langId = MetaIdByDeclaration.getConceptId(concept).getLanguageId().toString();
     int hash;
     if ((additionalId != null && additionalId.length() > 0)) {
       hash = Objects.hash(additionalId, SPropertyOperations.getString(concept, PROPS.conceptId$rrGe), langId) & 0xFFF;

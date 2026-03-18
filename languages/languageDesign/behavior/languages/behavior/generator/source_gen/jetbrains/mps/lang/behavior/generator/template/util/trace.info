@@ -97,33 +97,34 @@
     <file name="LanguageIdCalculator.java">
       <node id="4645065164080719188" at="18,0,19,0" concept="4" trace="myContext" />
       <node id="4645065164080719192" at="20,61,21,24" concept="3" />
-      <node id="467389800996093563" at="25,77,26,89" concept="8" />
-      <node id="4645065164080722279" at="27,5,28,50" concept="7" />
-      <node id="4645065164080723701" at="29,56,30,48" concept="3" />
-      <node id="9005308665740239913" at="31,5,32,40" concept="7" />
-      <node id="9005308665740242765" at="32,40,33,73" concept="7" />
-      <node id="4645065164080764087" at="33,73,34,20" concept="8" />
-      <node id="4645065164080384548" at="38,0,39,0" concept="10" trace="languageId$79NI" />
+      <node id="3364422496940869014" at="24,38,25,124" concept="9" />
+      <node id="467389800996093563" at="26,77,27,89" concept="8" />
+      <node id="4645065164080722279" at="28,5,29,50" concept="7" />
+      <node id="4645065164080723701" at="30,56,31,48" concept="3" />
+      <node id="9005308665740239913" at="32,5,33,40" concept="7" />
+      <node id="9005308665740242765" at="33,40,34,73" concept="7" />
+      <node id="4645065164080764087" at="34,73,35,20" concept="8" />
+      <node id="4645065164080384548" at="39,0,40,0" concept="10" trace="languageId$79NI" />
       <node id="4645065164080389425" at="20,0,23,0" concept="2" trace="LanguageIdCalculator#(Ljetbrains/mps/generator/template/TemplateQueryContext;)V" />
-      <node id="4645065164080384605" at="24,38,27,5" concept="5" />
-      <node id="4645065164080725854" at="28,50,31,5" concept="5" />
-      <node id="4645065164080384569" at="24,0,36,0" concept="6" trace="calcLangId#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/UUID;" />
+      <node id="4645065164080384605" at="25,124,28,5" concept="5" />
+      <node id="4645065164080725854" at="29,50,32,5" concept="5" />
+      <node id="4645065164080384569" at="24,0,37,0" concept="6" trace="calcLangId#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/UUID;" />
       <scope id="4645065164080389429" at="20,61,21,24" />
-      <scope id="4645065164080384607" at="25,77,26,89" />
-      <scope id="4645065164080725856" at="29,56,30,48" />
+      <scope id="4645065164080384607" at="26,77,27,89" />
+      <scope id="4645065164080725856" at="30,56,31,48" />
       <scope id="4645065164080389425" at="20,0,23,0">
         <var name="context" id="4645065164080389431" />
       </scope>
-      <scope id="4645065164080384572" at="24,38,34,20">
+      <scope id="4645065164080384572" at="24,38,35,20">
         <var name="model" id="4645065164080722280" />
         <var name="module1" id="9005308665740239914" />
         <var name="moduleId" id="9005308665740242766" />
       </scope>
-      <scope id="4645065164080384569" at="24,0,36,0">
+      <scope id="4645065164080384569" at="24,0,37,0">
         <var name="decl" id="4645065164080384574" />
       </scope>
-      <unit id="4645065164080384548" at="37,0,40,0" name="jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator$PROPS" />
-      <unit id="4645065164080384548" at="17,0,41,0" name="jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator" />
+      <unit id="4645065164080384548" at="38,0,41,0" name="jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator$PROPS" />
+      <unit id="4645065164080384548" at="17,0,42,0" name="jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator" />
     </file>
   </root>
   <root nodeRef="r:9e83cf56-72a5-4ab3-ab14-b980b399f4ca(jetbrains.mps.lang.behavior.generator.template.util)/7082824793308696454">

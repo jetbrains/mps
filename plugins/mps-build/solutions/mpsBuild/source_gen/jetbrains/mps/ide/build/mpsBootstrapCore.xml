@@ -11562,7 +11562,6 @@
           <module ref="13744753-c81f-424a-9c1b-cf8943bf4e86(jetbrains.mps.lang.sharedConcepts)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
           <module ref="7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)" kind="cl" />
-          <module ref="5593bf7e-4f21-422d-947c-e60d33010362(jetbrains.mps.project)" kind="cl" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="cl" />
           <module ref="20c6e580-bdc5-4067-8049-d7e3265a86de(jetbrains.mps.typesystemEngine)" kind="cl" />
         </dependencies>
@@ -11649,7 +11648,6 @@
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
           <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
-          <module ref="2ca6a34d-0b96-4602-9cdd-f9e33d51126a(jetbrains.mps.lang.behavior#1225195312923)" kind="cl" />
           <module ref="446c26eb-2b7b-4bf0-9b35-f83fa582753e(jetbrains.mps.lang.modelapi)" kind="cl" />
           <module ref="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" kind="cl" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="cl" />
@@ -11664,7 +11662,9 @@
           <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
           <language id="l:b401a680-8325-4110-8fd3-84331ff25bef:jetbrains.mps.lang.generator" />
           <language id="l:d7706f63-9be2-479c-a3da-ae92af1e64d5:jetbrains.mps.lang.generator.generationContext" />
+          <language id="l:289fcc83-6543-41e8-a5ca-768235715ce4:jetbrains.mps.lang.generator.generationParameters" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
+          <language id="l:13744753-c81f-424a-9c1b-cf8943bf4e86:jetbrains.mps.lang.sharedConcepts" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
           <language id="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" />
@@ -30431,7 +30431,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.smodel#1139186730696" depends="java.compile.feedback-api, java.compile.findUsages-runtime, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.behavior#1225195312923, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.smodel#1139186730696" depends="java.compile.feedback-api, java.compile.findUsages-runtime, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/smodel/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.smodel#1139186730696" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.smodel#1139186730696" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
@@ -30494,7 +30494,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.logging.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.scopes" />
-        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.behavior#1225195312923" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.modelapi" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
@@ -33472,6 +33471,7 @@
     <delete dir="${mps_home}/languages/languageDesign/generator/genext/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/actions/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/customAspect/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/checkedName/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/constraints/legacy/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/constraints/rules/rules/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/constraints/rules/kinds/generator/source_gen" />
@@ -33496,11 +33496,18 @@
     <delete dir="${mps_home}/languages/languageDesign/generator/languages/templateLanguage/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/generator/languages/plan.bl/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/messages/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/migration/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/pattern/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/plugin/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/quotation/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/resources/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/messages/rules/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/script/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/sharedConcepts/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/slanguage/generator/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/smodel/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/struct.ldgen/source_gen" />
+    <delete dir="${mps_home}/languages/languageDesign/typesystem/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/source_gen" />
     <delete dir="${mps_home}/core/persistence/source_gen" />
   </target>

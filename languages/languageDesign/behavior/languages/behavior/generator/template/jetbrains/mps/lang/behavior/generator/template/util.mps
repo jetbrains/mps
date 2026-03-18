@@ -678,6 +678,40 @@
     <node concept="3clFb_" id="41Q_yvRzoCT" role="jymVt">
       <property role="TrG5h" value="calcLangId" />
       <node concept="3clFbS" id="41Q_yvRzoCW" role="3clF47">
+        <node concept="3SKdUt" id="2UKP6XWv$mm" role="3cqZAp">
+          <node concept="1PaTwC" id="2UKP6XWv$mn" role="1aUNEU">
+            <node concept="3oM_SD" id="2UKP6XWv$mo" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$mr" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$tt" role="1PaTwD">
+              <property role="3oM_SC" value="fact," />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$tu" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$uO" role="1PaTwD">
+              <property role="3oM_SC" value="(and" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$KC" role="1PaTwD">
+              <property role="3oM_SC" value="should)" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$LY" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$wa" role="1PaTwD">
+              <property role="3oM_SC" value="replaced" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$xg" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="2UKP6XWv$xx" role="1PaTwD">
+              <property role="3oM_SC" value="MetaIdByDeclaration.getConceptId(decl).getLanguageId().toString()" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="41Q_yvRzoDt" role="3cqZAp">
           <node concept="3clFbS" id="41Q_yvRzoDv" role="3clFbx">
             <node concept="3cpWs6" id="pWw8KO0NTV" role="3cqZAp">

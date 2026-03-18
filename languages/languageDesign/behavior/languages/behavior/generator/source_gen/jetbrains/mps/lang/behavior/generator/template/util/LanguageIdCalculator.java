@@ -22,6 +22,7 @@ public final class LanguageIdCalculator {
   }
 
   public UUID calcLangId(SNode decl) {
+    // FIXME in fact, could (and should) get replaced with MetaIdByDeclaration.getConceptId(decl).getLanguageId().toString()
     if (SPropertyOperations.getString(decl, PROPS.languageId$79NI) != null) {
       return UUID.fromString(SPropertyOperations.getString(decl, PROPS.languageId$79NI));
     }

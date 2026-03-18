@@ -26,7 +26,6 @@ import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.behavior.AbstractNodeRefExpression__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
-import jetbrains.mps.lang.behavior.generator.template.util.LanguageIdCalculator;
 import jetbrains.mps.lang.structure.behavior.PropertyDeclaration__BehaviorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.smodel.JavaFriendlyBase64;
@@ -430,7 +429,7 @@ public class QueriesGenerated {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_61_5(final PropertyMacroContext _context) {
-    String langId = new LanguageIdCalculator(_context).calcLangId(PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(_context.getNode())).toString();
+    String langId = MetaIdByDeclaration.getConceptId(PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(_context.getNode())).getLanguageId().toString();
     int hash = Objects.hash(SPropertyOperations.getString(_context.getNode(), PROPS.propertyId$m5HU), SPropertyOperations.getString(PropertyDeclaration__BehaviorDescriptor.getConceptDeclaration_id2OF3rgRewqT.invoke(_context.getNode()), PROPS.conceptId$rrGe), langId) & 0xFFFFFF;
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "$" + new JavaFriendlyBase64().toString(hash);
   }
@@ -474,7 +473,7 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_62_10(final PropertyMacroContext _context) {
     // link ids might be equal...
-    String langId = new LanguageIdCalculator(_context).calcLangId(LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(_context.getNode())).toString();
+    String langId = MetaIdByDeclaration.getConceptId(LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(_context.getNode())).getLanguageId().toString();
     int hash = Objects.hash(SPropertyOperations.getString(_context.getNode(), PROPS.linkId$mi9g), SPropertyOperations.getString(LinkDeclaration__BehaviorDescriptor.getConceptDeclaration_id7jb4LXpbWaP.invoke(_context.getNode()), PROPS.conceptId$rrGe), langId) & 0xFFFFFF;
     // 16^6 = 64^4
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "$" + new JavaFriendlyBase64().toString(hash);
@@ -510,7 +509,7 @@ public class QueriesGenerated {
     return NameUtil.nodeFQName(_context.getNode());
   }
   public static Object propertyMacro_GetValue_63_8(final PropertyMacroContext _context) {
-    String langId = new LanguageIdCalculator(_context).calcLangId(_context.getNode()).toString();
+    String langId = MetaIdByDeclaration.getConceptId(_context.getNode()).getLanguageId().toString();
     int hash = Objects.hash(SPropertyOperations.getString(_context.getNode(), PROPS.conceptId$rrGe), langId) & 0xFFF;
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "$" + new JavaFriendlyBase64().toString(hash);
   }
