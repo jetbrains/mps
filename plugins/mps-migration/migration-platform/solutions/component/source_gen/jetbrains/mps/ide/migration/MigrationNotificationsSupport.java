@@ -12,9 +12,8 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.notification.NotificationType;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.notification.NotificationListener;
-import org.jetbrains.annotations.NotNull;
-import javax.swing.event.HyperlinkEvent;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import com.intellij.notification.NotificationAction;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationGroupManager;
 import java.util.Set;
@@ -25,27 +24,27 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import java.util.List;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import com.intellij.openapi.ui.popup.Balloon;
-import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.notification.NotificationListener;
+import org.jetbrains.annotations.NotNull;
+import javax.swing.event.HyperlinkEvent;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.util.IStatus;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
 @GeneratedClass(nodeId = "2632090902167058889", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ abstract class MigrationNotificationsSupport {
   public static final MigrationBlock.BlockCause NOT_DEPLOYED = new MigrationBlock.BlockCause("some languages are not deployed");
   private static final String REF_GOTO_PREFIX = "goto_";
-  private static final String REF_REBUILD = "rebuild";
-  private static final String REF_RUN_MIGRATION = "migrate";
 
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
   private Notification myLastNotification = null;
@@ -68,7 +67,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
     if (myLastNotification != null) {
       myLastNotification.expire();
     }
-    myLastNotification = getNofifyGroup().createNotification("No migration required", "<p>This project doesn't need migration." + "<p>Migration Assistant will not start.", NotificationType.INFORMATION);
+    myLastNotification = getNotifyGroup().createNotification("No migration required", "<p>This project doesn't need migration." + "<p>Migration Assistant will not start.", NotificationType.INFORMATION);
     myLastNotification.addAction(new ShowProjectDetails());
     myLastNotification.notify(myIdeaProject);
   }
@@ -88,19 +87,16 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
         return false;
       }
     }
-    myLastNotification = getNofifyGroup().createNotification("Migration required", "<p>This project requires migration.</p><p><a href=\"" + REF_RUN_MIGRATION + "\">Migrate</a></p>", NotificationType.INFORMATION);
-    myLastNotification.setListener(new NotificationListener() {
-      @Override
-      public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
-        if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
-          return;
-        }
-        if (REF_RUN_MIGRATION.equals(e.getDescription())) {
-          runAssistant();
-        }
-        notification.expire();
+    StringBuilder text = new StringBuilder("<p>This project requires migration.</p>");
+    if (migrationSetup != null) {
+      int c1 = CollectionSequence.fromCollection(migrationSetup.getProjectMigrations()).count();
+      int c2 = CollectionSequence.fromCollection(migrationSetup.getModuleMigrations()).count();
+      if (c1 > 0 || c2 > 0) {
+        text.append(String.format("<p>There are %d project migrations and %d module migrations</p>", c1, c2));
       }
-    });
+    }
+    myLastNotification = getNotifyGroup().createNotification("Migration required", text.toString(), NotificationType.INFORMATION);
+    myLastNotification.addAction(NotificationAction.createSimple("Migrate", this::runAssistant));
     myLastNotification.addAction(new ShowProjectDetails());
     if (migrationSetup != null && migrationSetup.importVersionsUpdateRequired()) {
       myLastNotification.addAction(new ShowModuleVersionDetails(migrationSetup.modulesToUpdateVersions()));
@@ -109,7 +105,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
     return true;
   }
 
-  private NotificationGroup getNofifyGroup() {
+  private NotificationGroup getNotifyGroup() {
     return NotificationGroupManager.getInstance().getNotificationGroup("Migration");
   }
 
@@ -121,13 +117,11 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
       }
       myLastNotification.expire();
     }
-    myLastNotification = getNofifyGroup().createNotification("Migrations", "Project has been migrated with a newer MPS version<br/>" + extraInfo, NotificationType.ERROR);
+    myLastNotification = getNotifyGroup().createNotification("Migrations", "Project has been migrated with a newer MPS version<br/>" + extraInfo, NotificationType.ERROR);
     myLastNotification.notify(myIdeaProject);
   }
 
   public void showDeployWarn(boolean hasCleanups) {
-    Set<SLanguage> problems = getNotDeployedUsedLanguages();
-
     if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null && myLastDeployWarning.myHasCleanups == hasCleanups) {
       // migrations already blocked, warning is showing and has same "cleanup" status
       return;
@@ -138,7 +132,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
       myLastDeployWarning.expire();
     }
 
-    myLastDeployWarning = createDeployWarn(problems, hasCleanups);
+    myLastDeployWarning = createDeployWarn(hasCleanups);
     myLastDeployWarning.notify(myIdeaProject);
   }
 
@@ -157,70 +151,79 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
     return allUsedLanguages;
   }
 
-  private MigrationSuspendedNotification createDeployWarn(final Set<SLanguage> problems, boolean hasCleanups) {
-    final int treshold = 20;
-    Iterable<SLanguage> sortedProblems = SetSequence.fromSet(problems).sort((it) -> NameUtil.compactNamespace(it.getQualifiedName()), true);
+  private MigrationSuspendedNotification createDeployWarn(boolean hasCleanups) {
+    final List<SLanguage> problems = SetSequence.fromSet(getNotDeployedUsedLanguages()).sort((it) -> NameUtil.compactNamespace(it.getQualifiedName()), true).toList();
 
-    StringBuilder sb = new StringBuilder();
+    final int threshold = 20;
+
+    final StringBuilder sb = new StringBuilder();
     sb.append("Some languages used in project are not deployed. Can't check migrations applicability.<br><br>");
     sb.append("Not deployed languages");
-    if (Sequence.fromIterable(sortedProblems).count() > treshold) {
-      sb.append(" (first " + treshold + " shown)");
+    if (ListSequence.fromList(problems).count() > threshold) {
+      sb.append(" (first ").append(threshold).append(" of ").append(ListSequence.fromList(problems).count()).append(" shown)");
     }
     sb.append(":");
     sb.append("<p>");
 
-    final String space = "&nbsp;";
-    for (SLanguage langProblem : Sequence.fromIterable(sortedProblems).take(treshold)) {
-      sb.append(space + space + "-");
-      boolean absent = langProblem.getSourceModuleReference().resolve(myMpsProject.getRepository()) == null;
-      String langName = NameUtil.compactNamespace(langProblem.getQualifiedName());
-      if (absent) {
-        sb.append(langName);
-      } else {
-        sb.append("<a href=\"").append(REF_GOTO_PREFIX).append(langProblem.getSourceModuleReference().toString()).append("\">");
-        sb.append(langName);
-        sb.append("</a>");
+    sb.append("<ul>");
+    myMpsProject.getModelAccess().runReadAction(() -> {
+      for (SLanguage langProblem : ListSequence.fromList(problems).take(threshold)) {
+        sb.append("<li>");
+        boolean absent = langProblem.getSourceModuleReference().resolve(myMpsProject.getRepository()) == null;
+        String langName = NameUtil.compactNamespace(langProblem.getQualifiedName());
+        if (absent) {
+          sb.append(langName);
+        } else {
+          sb.append("<a href=\"").append(REF_GOTO_PREFIX).append(langProblem.getSourceModuleReference().toString()).append("\">");
+          sb.append(langName);
+          sb.append("</a>");
+        }
+        sb.append('(').append((absent ? "absent" : "dependency problem")).append(')');
+        sb.append("</li>");
       }
-      sb.append(" (" + ((absent ? "absent" : "dependency problem")) + ")");
-      sb.append("<br>");
+    });
+    sb.append("</ul>");
+
+    if (hasCleanups) {
+      sb.append("<br><p>There are some cleanup migrations to execute, which might fix the problem. Use \"Run migration\".");
     }
+    final List<SModuleReference> problemModules = ListSequence.fromList(problems).select((it) -> it.getSourceModuleReference()).where(new NotNullWhereFilter()).toList();
+
+    MigrationSuspendedNotification rv = new MigrationSuspendedNotification(getNotifyGroup(), sb.toString(), (idx) -> new ProjectPaneNavigator(myMpsProject).shallFocus(true).select(ListSequence.fromList(problems).getElement(idx)), hasCleanups);
 
     if (myRebuildHandler != null) {
-      sb.append("<br><p><a href=\"" + REF_REBUILD + "\">Rebuild and deploy listed languages</a></p>");
+      rv.addAction(NotificationAction.createSimple("Rebuild and deploy listed languages", () -> myRebuildHandler.accept(problemModules)));
     }
 
     if (hasCleanups) {
-      sb.append("<br><p>There are some cleanup migrations to execute, which might fix the problem. <a href=\"" + REF_RUN_MIGRATION + "\">Run migration</a></p>");
+      rv.addAction(NotificationAction.create("Run migration", (AnActionEvent e, Notification n) -> {
+        Balloon balloon = n.getBalloon();
+        if (balloon != null) {
+          balloon.hide();
+        }
+        runAssistant();
+      }));
     }
 
-    return new MigrationSuspendedNotification(sb.toString(), hasCleanups, SetSequence.fromSet(problems).select((it) -> it.getSourceModuleReference()).where(new NotNullWhereFilter()));
+    return rv;
   }
 
   public abstract void runAssistant();
 
-  private class MigrationSuspendedNotification extends Notification {
+  private static class MigrationSuspendedNotification extends Notification {
     /*package*/ boolean myHasCleanups;
-    public MigrationSuspendedNotification(String title, boolean hasCleanups, final Iterable<SModuleReference> problemModules) {
-      super("Migration", "Migration suspended", title, NotificationType.WARNING);
+    public MigrationSuspendedNotification(NotificationGroup group, String title, final Consumer<Integer> listener, boolean hasCleanups) {
+      super(group.getDisplayId(), "Migration suspended", title, NotificationType.WARNING);
       setListener(new NotificationListener() {
         @Override
         public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
           if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
             return;
           }
-          if (REF_REBUILD.equals(e.getDescription())) {
-            myRebuildHandler.accept(problemModules);
-          } else if (REF_RUN_MIGRATION.equals(e.getDescription())) {
-            Balloon balloon = MigrationSuspendedNotification.this.getBalloon();
-            if (balloon != null) {
-              balloon.hide();
-            }
-            runAssistant();
-          } else if (e.getDescription().startsWith(REF_GOTO_PREFIX)) {
-            String ref = e.getDescription().substring(REF_GOTO_PREFIX.length());
-            SModuleReference module = ModuleReference.parseReference(ref);
-            new ProjectPaneNavigator(myMpsProject).shallFocus(true).select(module);
+          String linkText = e.getDescription();
+          if (linkText != null && linkText.startsWith(REF_GOTO_PREFIX)) {
+            Integer v = Integer.parseUnsignedInt(linkText, REF_GOTO_PREFIX.length(), linkText.length(), 10);
+            listener.accept(v);
           }
         }
       });
@@ -240,11 +243,11 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
     }
     @Override
     public void update(@NotNull AnActionEvent e) {
-      e.getPresentation().setEnabled(e.getProject() != null && ProjectHelper.fromIdeaProject(e.getProject()) != null);
+      e.getPresentation().setEnabled(e.getData(MPSCommonDataKeys.MPS_PROJECT) != null);
     }
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
-      IStatus m = ProjectMigrationsRegistry.getInstance().checkMigratedToNewerVersion(ProjectHelper.fromIdeaProject(event.getProject()));
+      IStatus m = ProjectMigrationsRegistry.getInstance().checkMigratedToNewerVersion(event.getData(MPSCommonDataKeys.MPS_PROJECT));
       Messages.showInfoMessage(event.getProject(), m.getMessage(), "Project Details");
     }
   }
@@ -264,7 +267,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
     }
     @Override
     public void update(@NotNull AnActionEvent e) {
-      e.getPresentation().setEnabled(e.getProject() != null && ProjectHelper.fromIdeaProject(e.getProject()) != null);
+      e.getPresentation().setEnabled(e.getData(MPSCommonDataKeys.MPS_PROJECT) != null);
     }
     @Override
     public void actionPerformed(@NotNull AnActionEvent event) {
