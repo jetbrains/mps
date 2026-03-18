@@ -54,7 +54,7 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_67_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_66_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/3902354333653082206", context);
       return tlist1;
     }
@@ -67,7 +67,7 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_67_1(new SourceSubstituteMacroNodeContext(context, callMacro));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_66_1(new SourceSubstituteMacroNodeContext(context, callMacro));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {

@@ -38,7 +38,7 @@ public class Template_reduce_LanguageRefExpression extends TemplateDeclarationBa
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     {
-      final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_75_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
+      final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_74_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
       if (switchInput1 == null) {
         environment.nullInputSwitch(templateSwitchNode);
         tlist1 = Collections.emptyList();

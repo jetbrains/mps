@@ -62,7 +62,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_113_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_95_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/3689841190252939273", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -84,7 +84,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_113_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_95_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/3689841190252940910", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
@@ -106,13 +106,13 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_113_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_95_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro2, "tpl/r:00000000-0000-4000-0000-011c89590303/6202631021711034670", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
           Collection<SNode> tlist3 = null;
-          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_113_3(new SourceSubstituteMacroNodeContext(context1, callMacro));
+          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_95_3(new SourceSubstituteMacroNodeContext(context1, callMacro));
           TemplateContext context2 = context1;
           context2 = context2.subContext(null, callInputNode3);
           if (callInputNode3 != null) {

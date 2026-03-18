@@ -68,7 +68,7 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_85_0(new SourceSubstituteMacroNodeContext(context, callMacro));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_76_0(new SourceSubstituteMacroNodeContext(context, callMacro));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {

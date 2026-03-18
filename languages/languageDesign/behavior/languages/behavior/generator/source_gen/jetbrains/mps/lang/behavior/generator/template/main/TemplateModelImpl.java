@@ -24,8 +24,8 @@ public class TemplateModelImpl extends TemplateModelBase {
   private final SModelReference model;
   public TemplateModelImpl(TemplateModule module) {
     super(module);
-    mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_mc_Behavior(this));
-    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_switch_ClassFromType(), new Switch_switch_Parameter(), new Switch_BehaviorDescriptor());
+    mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_mc_Behavior(this), new Mapping_mc_concept_method_call(this));
+    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_switch_ClassFromType(), new Switch_switch_Parameter(), new Switch_BehaviorDescriptor(), new Switch_switch_ConceptMethodReflectiveCall(), new Switch_switch_ConceptMethodCall());
     model = PersistenceFacade.getInstance().createModelReference("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)");
   }
   public String getLongName() {
@@ -68,6 +68,54 @@ public class TemplateModelImpl extends TemplateModelBase {
     }
     if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7613853987897918834"))) {
       return new Template_reduce_SuperConceptExpression();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892228764"))) {
+      return new Template_NodeOrConceptCommon();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892235826"))) {
+      return new Template_reduce_reflectiveInvokeSuper();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "8560627202335249984"))) {
+      return new Template_reduce_ConceptMethodCallReflectiveCommon();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6862765979525687754"))) {
+      return new Template_reduce_ConceptMethodCallCommon();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892152088"))) {
+      return new Template_reduce_invokeWithThis();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892222576"))) {
+      return new Template_reduce_ConceptMethodCallReflectiveWithSuper();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "8560627202335197469"))) {
+      return new Template_reduce_ConceptMethodCallReflectiveWithThis();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892188134"))) {
+      return new Template_reduce_ConceptMethodCallWithThis();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3866789353798969378"))) {
+      return new Template_reduce_reflectiveInvokeThis();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3866789353799081477"))) {
+      return new Template_reduce_reflectiveInvoke();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892189206"))) {
+      return new Template_reduce_invokeWithSuper();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6417869169768444729"))) {
+      return new Template_reduce_ConceptMethodCallWithSuper();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "467389800995873023"))) {
+      return new Template_createSMethodId();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "311370605324439567"))) {
+      return new Template_NodeOrConcept();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3866789353799066898"))) {
+      return new Template_reduce_invoke();
+    }
+    if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4279359955658653877"))) {
+      return new Template_reduce_Parameters();
     }
     if (template.equals(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2056529430201890935"))) {
       return new Template_BehaviorAspectDescriptor();

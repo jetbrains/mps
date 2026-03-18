@@ -49,7 +49,7 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist4 = null;
-            final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_101_0(new SourceSubstituteMacroNodesContext(context2, copySrcListMacro));
+            final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_92_0(new SourceSubstituteMacroNodesContext(context2, copySrcListMacro));
             tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/7723526804946053432", context2);
             environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
           }

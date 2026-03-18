@@ -24,8 +24,8 @@ public class TemplateModelImpl extends TemplateModelBase {
   private final SModelReference model;
   public TemplateModelImpl(TemplateModule module) {
     super(module);
-    mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_mc_main(this), new Mapping_mc_property_operations(this), new Mapping_mc_link_operations(this), new Mapping_mc_node_operations(this), new Mapping_mc_model_operations(this), new Mapping_mc_linklist_operations(this), new Mapping_mc_concept_operations(this), new Mapping_mc_assignmentStatement(this), new Mapping_mc_enum_operations(this), new Mapping_mc_enums(this), new Mapping_mc_implicitSelect(this), new Mapping_mc_reflection(this), new Mapping_mc_attribute_access(this), new Mapping_mc_concept_method_call(this), new Mapping_mc_concept_switch(this), new Mapping_mc_sequence_operations(this), new Mapping_mc_pointer_operations(this), new Mapping_mc_datatype_operations(this));
-    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_switch_toLinkRoleSLinkExp(), new Switch_switch_toConceptNameStringExpr(), new Switch_switch_ILinkAccessQualifier_toSLink(), new Switch_switch_toSAbstractConcept(), new Switch_switch_IPropertyQualifier_toSProperty(), new Switch_switch_ILinkQualifier_toSLink(), new Switch_switch_ConceptMethodReflectiveCall(), new Switch_switch_ConceptMethodCall(), new Switch_switch_AbstractLanguageIdentity_SLanguage(), new Switch_switch_ModuleIdentity_SModuleReference(), new Switch_switch_ConceptIdentity_SConcept(), new Switch_switch_PropertyIdentity_SProperty(), new Switch_switch_AssociationIdentity_SReferenceLink(), new Switch_switch_AggregationIdentity_SContainmentLink(), new Switch_switch_EnumMemberOperation(), new Switch_switch_SNodeOperation_node(), new Switch_switch_SNodeOperation_model(), new Switch_switch_INodePointerArg(), new Switch_switch_DevkitIdentity_SModuleReference(), new Switch_switch_AbstractPointerResolveOperation(), new Switch_switch_DataTypeDeclaration_serialize(), new Switch_switch_DataTypeDeclaration_deserialize(), new Switch_switch_EnumOperation(), new Switch_switch_enumImplicitDefault(), new Switch_switch_AttributeQualifier());
+    mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_mc_main(this), new Mapping_mc_property_operations(this), new Mapping_mc_link_operations(this), new Mapping_mc_node_operations(this), new Mapping_mc_model_operations(this), new Mapping_mc_linklist_operations(this), new Mapping_mc_concept_operations(this), new Mapping_mc_assignmentStatement(this), new Mapping_mc_enum_operations(this), new Mapping_mc_enums(this), new Mapping_mc_implicitSelect(this), new Mapping_mc_reflection(this), new Mapping_mc_attribute_access(this), new Mapping_mc_concept_switch(this), new Mapping_mc_sequence_operations(this), new Mapping_mc_pointer_operations(this), new Mapping_mc_datatype_operations(this));
+    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_switch_toLinkRoleSLinkExp(), new Switch_switch_toConceptNameStringExpr(), new Switch_switch_ILinkAccessQualifier_toSLink(), new Switch_switch_toSAbstractConcept(), new Switch_switch_IPropertyQualifier_toSProperty(), new Switch_switch_ILinkQualifier_toSLink(), new Switch_switch_AbstractLanguageIdentity_SLanguage(), new Switch_switch_ModuleIdentity_SModuleReference(), new Switch_switch_ConceptIdentity_SConcept(), new Switch_switch_PropertyIdentity_SProperty(), new Switch_switch_AssociationIdentity_SReferenceLink(), new Switch_switch_AggregationIdentity_SContainmentLink(), new Switch_switch_EnumMemberOperation(), new Switch_switch_SNodeOperation_node(), new Switch_switch_SNodeOperation_model(), new Switch_switch_INodePointerArg(), new Switch_switch_DevkitIdentity_SModuleReference(), new Switch_switch_AbstractPointerResolveOperation(), new Switch_switch_DataTypeDeclaration_serialize(), new Switch_switch_DataTypeDeclaration_deserialize(), new Switch_switch_EnumOperation(), new Switch_switch_enumImplicitDefault(), new Switch_switch_AttributeQualifier());
     model = PersistenceFacade.getInstance().createModelReference("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)");
   }
   public String getLongName() {
@@ -210,24 +210,6 @@ public class TemplateModelImpl extends TemplateModelBase {
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4497478346159792589"))) {
       return new Template_reduce_LanguageRefExpression();
     }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335249984"))) {
-      return new Template_reduce_ConceptMethodCallReflectiveCommon();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8560627202335197469"))) {
-      return new Template_reduce_ConceptMethodCallReflectiveWithThis();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1225195370966"))) {
-      return new Template_NodeOrConcept();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6417869169768444729"))) {
-      return new Template_reduce_ConceptMethodCallWithSuper();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525687754"))) {
-      return new Template_reduce_ConceptMethodCallCommon();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4279359955658653877"))) {
-      return new Template_reduce_Parameters();
-    }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652296869"))) {
       return new Template_reduce_LanguageId_SLanguage();
     }
@@ -269,33 +251,6 @@ public class TemplateModelImpl extends TemplateModelBase {
     }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5802093636975087540"))) {
       return new Template_reduce_ModuleReferenceFromString();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3866789353798969378"))) {
-      return new Template_reduce_reflectiveInvokeThis();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3866789353799066898"))) {
-      return new Template_reduce_invoke();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3866789353799081477"))) {
-      return new Template_reduce_reflectiveInvoke();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892152088"))) {
-      return new Template_reduce_invokeWithThis();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892188134"))) {
-      return new Template_reduce_ConceptMethodCallWithThis();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189206"))) {
-      return new Template_reduce_invokeWithSuper();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892222576"))) {
-      return new Template_reduce_ConceptMethodCallReflectiveWithSuper();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892228764"))) {
-      return new Template_NodeOrConceptCommon();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892235826"))) {
-      return new Template_reduce_reflectiveInvokeSuper();
     }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5769081855527316896"))) {
       return new Template_reduce_ModuleIdentity_SLanguage();
@@ -341,9 +296,6 @@ public class TemplateModelImpl extends TemplateModelBase {
     }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8432949284911505812"))) {
       return new Template_reduce_HasPrevSiblingOperation();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "467389800995873023"))) {
-      return new Template_createSMethodId();
     }
     return null;
   }

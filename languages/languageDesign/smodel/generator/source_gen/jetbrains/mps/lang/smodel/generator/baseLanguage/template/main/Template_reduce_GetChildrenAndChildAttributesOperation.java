@@ -44,14 +44,14 @@ public class Template_reduce_GetChildrenAndChildAttributesOperation extends Temp
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_89_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_80_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/4862225818734498429", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
         Collection<SNode> tlist3 = null;
         {
-          final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_89_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
+          final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_80_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
           if (switchInput3 == null) {
             tlist3 = Collections.emptyList();
           } else {
