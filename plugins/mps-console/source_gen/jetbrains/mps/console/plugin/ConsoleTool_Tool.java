@@ -83,8 +83,8 @@ public class ConsoleTool_Tool extends BaseTabbedProjectTool {
     }
   }
   public BaseConsoleTab addConsoleTab(@Nullable TabState tabState, @Nullable Icon icon, boolean openTool) {
-    String title = check_xg3v07_a0a0f(tabState);
-    Element history = check_xg3v07_a0b0f(check_xg3v07_a0a1a5(check_xg3v07_a0a0b0f(check_xg3v07_a0a0a1a5(tabState))));
+    String title = check_39mclg_a0a0o(tabState);
+    Element history = check_39mclg_a0b0o(check_39mclg_a0a1a41(check_39mclg_a0a0b0o(check_39mclg_a0a0a1a41(tabState))));
     if (icon == null) {
       icon = MPSIcons.ToolWindows.OpenTerminal_13x13;
     }
@@ -107,7 +107,7 @@ public class ConsoleTool_Tool extends BaseTabbedProjectTool {
       }
     };
     BaseConsoleTab tab;
-    if (check_xg3v07_a6a5(tabState)) {
+    if (check_39mclg_a6a41(tabState)) {
       tab = new OutputConsoleTab(ConsoleTool_Tool.this.myMPSProject, tool, title, history);
     } else {
       tab = new DialogConsoleTab(ConsoleTool_Tool.this.myMPSProject, tool, title, history);
@@ -136,8 +136,8 @@ public class ConsoleTool_Tool extends BaseTabbedProjectTool {
       BaseConsoleTab tab = ConsoleTool_Tool.this.addConsoleTab(null, null, false);
       cm.getContent(tab).setPinned(true);
     }
-    check_xg3v07_a5a6(cm.getContent(0));
-    check_xg3v07_a6a6(cm.getContent(0));
+    check_39mclg_a5a51(cm.getContent(0));
+    check_39mclg_a6a51(cm.getContent(0));
     cm.setSelectedContent(cm.getContent(0));
   }
   public void executeCommand(final SNode command) {
@@ -178,49 +178,49 @@ public class ConsoleTool_Tool extends BaseTabbedProjectTool {
     }
     return result;
   }
-  private static String check_xg3v07_a0a0f(TabState checkedDotOperand) {
+  private static String check_39mclg_a0a0o(TabState checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.title;
     }
     return null;
   }
-  private static Element check_xg3v07_a0b0f(Element checkedDotOperand) {
+  private static Element check_39mclg_a0b0o(Element checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.clone();
     }
     return null;
   }
-  private static Element check_xg3v07_a0a1a5(List<Element> checkedDotOperand) {
+  private static Element check_39mclg_a0a1a41(List<Element> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.get(0);
     }
     return null;
   }
-  private static List<Element> check_xg3v07_a0a0b0f(Element checkedDotOperand) {
+  private static List<Element> check_39mclg_a0a0b0o(Element checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getChildren();
     }
     return null;
   }
-  private static Element check_xg3v07_a0a0a1a5(TabState checkedDotOperand) {
+  private static Element check_39mclg_a0a0a1a41(TabState checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.historyXml;
     }
     return null;
   }
-  private static boolean check_xg3v07_a6a5(TabState checkedDotOperand) {
+  private static boolean check_39mclg_a6a41(TabState checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.isHistoryTab;
     }
     return false;
   }
-  private static void check_xg3v07_a5a6(Content checkedDotOperand) {
+  private static void check_39mclg_a5a51(Content checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setPinnable(false);
     }
 
   }
-  private static void check_xg3v07_a6a6(Content checkedDotOperand) {
+  private static void check_39mclg_a6a51(Content checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setCloseable(false);
     }

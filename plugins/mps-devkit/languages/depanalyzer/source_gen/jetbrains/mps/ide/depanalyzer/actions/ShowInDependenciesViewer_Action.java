@@ -77,7 +77,7 @@ public class ShowInDependenciesViewer_Action extends BaseAction {
     projectRepo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         DependencyTreeNode treeNode = (DependencyTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"));
-        SModuleReference fromRef = check_hezs1a_a0b0a0a0a0b0a(as_nkoo1o_a0a0b0a0a0a0b0h(treeNode.getParent(), DependencyTreeNode.class));
+        SModuleReference fromRef = check_nkoo1o_a0b0a0a0a0b0h(as_nkoo1o_a0a0b0a0a0a0b0h(treeNode.getParent(), DependencyTreeNode.class));
         SModule from = (fromRef == null ? null : fromRef.resolve(projectRepo));
         if (from == null) {
           return;
@@ -87,7 +87,7 @@ public class ShowInDependenciesViewer_Action extends BaseAction {
       }
     });
   }
-  private static SModuleReference check_hezs1a_a0b0a0a0a0b0a(DependencyTreeNode checkedDotOperand) {
+  private static SModuleReference check_nkoo1o_a0b0a0a0a0b0h(DependencyTreeNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModuleReference();
     }

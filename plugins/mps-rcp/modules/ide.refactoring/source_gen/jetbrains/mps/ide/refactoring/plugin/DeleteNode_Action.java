@@ -100,7 +100,7 @@ public class DeleteNode_Action extends BaseAction {
   }
   private Iterable<SNode> getAffectedNodes(final Map<String, Object> _params) {
     Iterable<SNode> list = ((List<SNode>) MapSequence.fromMap(_params).get("nodes"));
-    Iterable<SNode> modifiableNodes = Sequence.fromIterable(list).where((it) -> !(check_v2o7qu_a0a0a0a0b0a(it.getModel())));
+    Iterable<SNode> modifiableNodes = Sequence.fromIterable(list).where((it) -> !(check_tbcoj8_a0a0a0a0b0i(it.getModel())));
     if (((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")) == null || ((List<Pair<SModel, String>>) MapSequence.fromMap(_params).get("packs")).isEmpty()) {
       return modifiableNodes;
     }
@@ -109,7 +109,7 @@ public class DeleteNode_Action extends BaseAction {
     Iterable<SNode> nodeFromPacks = SetSequence.fromSet(packs).where((it) -> !(it.o1.isReadOnly())).translate((final Pair<SModel, String> pack) -> ListSequence.fromList(SModelOperations.roots(((SModel) pack.o1), null)).where((node) -> SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) != null && SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl).startsWith(pack.o2)));
     return Sequence.fromIterable(nodeFromPacks).union(Sequence.fromIterable(modifiableNodes));
   }
-  private static boolean check_v2o7qu_a0a0a0a0b0a(SModel checkedDotOperand) {
+  private static boolean check_tbcoj8_a0a0a0a0b0i(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.isReadOnly();
     }

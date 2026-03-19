@@ -64,7 +64,7 @@ public class JUnit_Command {
   }
 
   public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests, JavaRunParameters javaRunParameters) throws ExecutionException {
-    return new JUnit_Command().setVirtualMachineParameter_String(check_txeh3_a2a0a0a(javaRunParameters)).setJrePath_String((check_txeh3_a0d0a0a0(javaRunParameters) ? javaRunParameters.jrePath() : null)).setWorkingDirectory_File((isEmptyString(check_txeh3_a0a4a0a0a(javaRunParameters)) ? null : new File(javaRunParameters.workingDirectory()))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(project, tests);
+    return new JUnit_Command().setVirtualMachineParameter_String(check_ifael_a0a0a0a0a21(javaRunParameters)).setJrePath_String((check_ifael_a0a0a0a0a21_0(javaRunParameters) ? javaRunParameters.jrePath() : null)).setWorkingDirectory_File((isEmptyString(check_ifael_a0a0a0a0a21_1(javaRunParameters)) ? null : new File(javaRunParameters.workingDirectory()))).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(project, tests);
   }
   public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests, JavaRunParameters_Configuration javaRunParameters, JUnitSettings_Configuration junitParameters) throws ExecutionException {
     JavaRunParameters javaParams = javaRunParameters.getJavaParameters();
@@ -74,7 +74,7 @@ public class JUnit_Command {
     String updatedVmParams = JUnit_Command.getUpdatedVMParameters(settings);
     List<String> calculatedCP = ListSequence.fromList(JUnit_Command.getClasspath(settings)).toList();
     String workingDir = javaParams.workingDirectory();
-    return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_txeh3_a0c0h0a1(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
+    return new Java_Command().setVirtualMachineParameter_String(updatedVmParams).setClassPath_ListString(calculatedCP).setJrePath_String((check_ifael_a0a0a0a0a7a31(javaParams) ? javaParams.jrePath() : null)).setWorkingDirectory_File((workingDir == null ? null : new File(workingDir))).setProgramParameter_String(JUnit_Command.getProgramParameters(settings)).setProject_Project(project).setDebuggerSettings_String(myDebuggerSettings_String).createProcess(testsWithParams.getParameters().getExecutorClass().getName());
   }
   public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests) throws ExecutionException {
     TestsWithParameters testsWithParams = TestsWithParameters.createFromTest2RunList(tests);
@@ -151,25 +151,25 @@ public class JUnit_Command {
       }
     };
   }
-  private static String check_txeh3_a2a0a0a(JavaRunParameters checkedDotOperand) {
+  private static String check_ifael_a0a0a0a0a21(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.vmOptions();
     }
     return null;
   }
-  private static boolean check_txeh3_a0d0a0a0(JavaRunParameters checkedDotOperand) {
+  private static boolean check_ifael_a0a0a0a0a21_0(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return (boolean) checkedDotOperand.useAlternativeJre();
     }
     return false;
   }
-  private static String check_txeh3_a0a4a0a0a(JavaRunParameters checkedDotOperand) {
+  private static String check_ifael_a0a0a0a0a21_1(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.workingDirectory();
     }
     return null;
   }
-  private static boolean check_txeh3_a0c0h0a1(JavaRunParameters checkedDotOperand) {
+  private static boolean check_ifael_a0a0a0a0a7a31(JavaRunParameters checkedDotOperand) {
     if (null != checkedDotOperand) {
       return (boolean) checkedDotOperand.useAlternativeJre();
     }

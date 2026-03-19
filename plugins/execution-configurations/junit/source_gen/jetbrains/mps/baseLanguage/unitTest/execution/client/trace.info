@@ -1849,7 +1849,7 @@
       <node id="6062668769034832963" at="56,5,57,16" concept="11" />
       <node id="6062668769034832965" at="60,35,61,49" concept="5" />
       <node id="6062668769034832965" at="62,5,63,16" concept="11" />
-      <node id="6062668769034832927" at="66,149,67,427" concept="11" />
+      <node id="6062668769034832927" at="66,149,67,440" concept="11" />
       <node id="5922413192635112173" at="69,208,70,73" concept="10" />
       <node id="5922413192634889451" at="70,73,71,92" concept="10" />
       <node id="5922413192637048124" at="71,92,72,217" concept="10" />
@@ -1857,7 +1857,7 @@
       <node id="5922413192634983633" at="73,0,74,76" concept="10" />
       <node id="5922413192634987705" at="74,76,75,101" concept="10" />
       <node id="5922413192635045090" at="75,101,76,54" concept="10" />
-      <node id="5922413192634889480" at="76,54,77,511" concept="11" />
+      <node id="5922413192634889480" at="76,54,77,516" concept="11" />
       <node id="5087507239650578470" at="79,112,80,92" concept="10" />
       <node id="5087507239650594012" at="80,92,81,88" concept="12" />
       <node id="5087507239650578486" at="81,88,82,53" concept="10" />
@@ -1917,10 +1917,10 @@
       <node id="6062668769034833058" at="96,0,99,0" concept="15" trace="getProgramParameters#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestsWithParametersAndConfiguration;)Ljava/lang/String;" />
       <node id="6005066949005676869" at="136,50,139,5" concept="8" />
       <node id="6062668769034833304" at="149,0,152,0" concept="9" trace="getDebugger#()Ljetbrains/mps/debug/api/IDebugger;" />
-      <node id="6062668769034832932" at="154,82,157,5" concept="8" />
-      <node id="6062668769034832937" at="160,84,163,5" concept="8" />
-      <node id="6062668769034832953" at="166,84,169,5" concept="8" />
-      <node id="5922413192635111803" at="172,84,175,5" concept="8" />
+      <node id="6062668769034832932" at="154,86,157,5" concept="8" />
+      <node id="6062668769034832937" at="160,89,163,5" concept="8" />
+      <node id="6062668769034832953" at="166,88,169,5" concept="8" />
+      <node id="5922413192635111803" at="172,89,175,5" concept="8" />
       <node id="6062668769034832956" at="178,0,181,0" concept="15" trace="isEmptyString#(Ljava/lang/String;)Z" />
       <node id="7316707468216758824" at="125,23,129,9" concept="7" />
       <node id="6062668769034833304" at="145,0,149,0" concept="9" trace="createDebuggerSettings#()Ljetbrains/mps/debug/api/IDebuggerSettings;" />
@@ -1929,10 +1929,10 @@
       <node id="6062668769034832961" at="47,0,53,0" concept="9" trace="setVirtualMachineParameter_String#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/JUnit_Command;" />
       <node id="6062668769034832963" at="53,0,59,0" concept="9" trace="setJrePath_String#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/JUnit_Command;" />
       <node id="6062668769034832965" at="59,0,65,0" concept="9" trace="setWorkingDirectory_File#(Ljava/io/File;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/JUnit_Command;" />
-      <node id="6062668769034832932" at="154,0,160,0" concept="15" trace="check_txeh3_a2a0a0a#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Ljava/lang/String;" />
-      <node id="6062668769034832937" at="160,0,166,0" concept="15" trace="check_txeh3_a0d0a0a0#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Z" />
-      <node id="6062668769034832953" at="166,0,172,0" concept="15" trace="check_txeh3_a0a4a0a0a#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Ljava/lang/String;" />
-      <node id="5922413192635111803" at="172,0,178,0" concept="15" trace="check_txeh3_a0c0h0a1#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Z" />
+      <node id="6062668769034832932" at="154,0,160,0" concept="15" trace="check_ifael_a0a0a0a0a21#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Ljava/lang/String;" />
+      <node id="6062668769034832937" at="160,0,166,0" concept="15" trace="check_ifael_a0a0a0a0a21_0#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Z" />
+      <node id="6062668769034832953" at="166,0,172,0" concept="15" trace="check_ifael_a0a0a0a0a21_1#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Ljava/lang/String;" />
+      <node id="5922413192635111803" at="172,0,178,0" concept="15" trace="check_ifael_a0a0a0a0a7a31#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)Z" />
       <node id="704354843111126058" at="135,0,142,0" concept="15" trace="createPropString#(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
       <node id="8164059936046382120" at="105,64,113,5" concept="8" />
       <node id="6062668769034832957" at="79,0,88,0" concept="9" trace="createProcess#(Ljetbrains/mps/project/Project;Ljava/util/List;)Lcom/intellij/execution/process/ProcessHandler;" />
@@ -1950,7 +1950,7 @@
       <scope id="6062668769034832961" at="48,42,49,65" />
       <scope id="6062668769034832963" at="54,26,55,33" />
       <scope id="6062668769034832965" at="60,35,61,49" />
-      <scope id="6062668769034832926" at="66,149,67,427" />
+      <scope id="6062668769034832926" at="66,149,67,440" />
       <scope id="6062668769034832918" at="89,41,90,52" />
       <scope id="6062668769034833245" at="93,90,94,50" />
       <scope id="6062668769034833060" at="96,118,97,65" />
@@ -1996,10 +1996,10 @@
         <var name="subdir" id="7316707468216758827" />
       </scope>
       <scope id="6062668769034833304" at="145,0,149,0" />
-      <scope id="6062668769034832932" at="154,82,158,16" />
-      <scope id="6062668769034832937" at="160,84,164,17" />
-      <scope id="6062668769034832953" at="166,84,170,16" />
-      <scope id="5922413192635111803" at="172,84,176,17" />
+      <scope id="6062668769034832932" at="154,86,158,16" />
+      <scope id="6062668769034832937" at="160,89,164,17" />
+      <scope id="6062668769034832953" at="166,88,170,16" />
+      <scope id="5922413192635111803" at="172,89,176,17" />
       <scope id="704354843111126061" at="135,77,140,40">
         <var name="val" id="6005066949005674702" />
       </scope>
@@ -2044,7 +2044,7 @@
         <var name="propName" id="704354843111126336" />
         <var name="propValue" id="704354843111128038" />
       </scope>
-      <scope id="4414733712822016196" at="69,208,77,511">
+      <scope id="4414733712822016196" at="69,208,77,516">
         <var name="calculatedCP" id="5922413192634987706" />
         <var name="javaParams" id="5922413192635112174" />
         <var name="settings" id="5922413192637048125" />

@@ -37,7 +37,7 @@ public class HighlightSuppressor_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode suppressor = HighlightSuppressor_Action.this.getSuppressor(event);
-    if (check_56mpy_a0b0a(suppressor) != event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getModel()) {
+    if (check_vinwqc_a0b0e(suppressor) != event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getModel()) {
       return false;
     }
     return true;
@@ -84,15 +84,15 @@ public class HighlightSuppressor_Action extends BaseAction {
       return null;
     }
     SRepository repository = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
-    return check_56mpy_a3a0(SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.tryToGet(mostRelevantReportItem), repository);
+    return check_vinwqc_a3a8(SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.tryToGet(mostRelevantReportItem), repository);
   }
-  private static SModel check_56mpy_a0b0a(SNode checkedDotOperand) {
+  private static SModel check_vinwqc_a0b0e(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel();
     }
     return null;
   }
-  private static SNode check_56mpy_a3a0(SNodeReference checkedDotOperand, SRepository repository) {
+  private static SNode check_vinwqc_a3a8(SNodeReference checkedDotOperand, SRepository repository) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.resolve(repository);
     }

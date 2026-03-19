@@ -91,7 +91,7 @@ public class AnalyzeModelDependencies_Action extends BaseAction {
         }
       }
       if (scope.isEmpty()) {
-        SNode node = check_94n7v7_a0a0c0a0a2a0(event.getData(MPSCommonDataKeys.NODE));
+        SNode node = check_wg3tmv_a0a0c0a0a2a8(event.getData(MPSCommonDataKeys.NODE));
         if (node != null) {
           scope.add(node);
         }
@@ -99,7 +99,7 @@ public class AnalyzeModelDependencies_Action extends BaseAction {
     });
     return scope;
   }
-  private static SNode check_94n7v7_a0a0c0a0a2a0(SNode checkedDotOperand) {
+  private static SNode check_wg3tmv_a0a0c0a0a2a8(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getContainingRoot();
     }

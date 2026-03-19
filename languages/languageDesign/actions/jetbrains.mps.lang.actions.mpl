@@ -180,9 +180,6 @@
                   <mapping-node modelUID="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)" nodeID="6407023681583038100" />
                 </mapping-set-element>
                 <mapping-set-element>
-                  <mapping-node modelUID="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)" nodeID="7552281371882288144" />
-                </mapping-set-element>
-                <mapping-set-element>
                   <mapping-node modelUID="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)" nodeID="4693937538534631146" />
                 </mapping-set-element>
               </mapping-set>
