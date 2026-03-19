@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.annotations.Internal;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.TimeUnit;
@@ -96,11 +97,26 @@ final class EDTExecutor implements Disposable {
         LOG.trace("total tasks in the queue " + tasksRemaining);
       }
       if (myFlushIsScheduled.compareAndSet(false, true)) {
+        pushTransition(true);
         LOG.debug("FlushIsScheduled is ON");
         scheduleFlushInEDT();
       }
     }
   }
+
+  private void pushTransition(boolean targetValue) {
+    final long time = System.currentTimeMillis();
+    final boolean actualValue = myFlushIsScheduled.get();
+    final int qs = myTaskQueue.size();
+    while (myTransitions.size() > 2) {
+      myTransitions.removeFirst();
+    }
+    myTransitions.addLast(new AA(Thread.currentThread().getName(), time, qs, targetValue, actualValue));
+  }
+
+  private final ConcurrentLinkedDeque<AA> myTransitions = new ConcurrentLinkedDeque<>();
+
+  private record AA(String threadName, long time, int queueSize, boolean targetValue, boolean actualValue) {}
 
   @TestOnly
   /*package*/ boolean isFlushScheduled() {
@@ -115,7 +131,8 @@ final class EDTExecutor implements Disposable {
         // technically, now this could happen in a legal scenario, when tasks has been flushed, myFlushIsScheduled became false,
         // but there are 2 threads competing to scheduleTask(), one being past offerLast(), another just in checkTheContract().
         // Therefore, we wrap this code with myLock.lock(), to ensure sequential scheduleTask() until the time I can deal with this.
-        LOG.error("Flush was not scheduled while the task queue is not empty", new Throwable());
+        String m = "Actual queue: %d, thread: %s. Transitions, from oldest to newest: %s".formatted(myTaskQueue.size(), Thread.currentThread().getName(), myTransitions);
+        LOG.error("Flush was not scheduled while the task queue is not empty", new Throwable(m));
         return false;
       }
     }
@@ -240,6 +257,7 @@ final class EDTExecutor implements Disposable {
     // here, we act as if myTaskQueue.isEmpty() == true, although indeed it could have changed since. However,
     //       if there's anything has been added meanwhile, we gonna pick this state outside and schedule one more flush
     if (myFlushIsScheduled.compareAndSet(true, false)) {
+      pushTransition(false);
       LOG.debug("FlushIsScheduled is OFF");
       signalQueueBecameEmpty();
     }

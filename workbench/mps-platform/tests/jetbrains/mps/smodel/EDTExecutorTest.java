@@ -32,6 +32,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -72,6 +73,9 @@ public class EDTExecutorTest {
   }
 
 
+  /**
+   * Schedule a task, observe that flush has been triggered and eventually completed.
+   */
   @Test
   public void firstTaskInvokesFlush() throws InterruptedException {
     LOG.info("My thread is " + Thread.currentThread());
@@ -114,12 +118,33 @@ public class EDTExecutorTest {
   }
 
   /**
-   * Idea is to check when few threads schedule numerous tasks
+   * Idea is to check when few threads schedule much more numerous tasks
    */
   @Test
   public void flushTasksTest_RaceMany() throws InterruptedException {
     final int nThreads = 2;
     doFlushTest(nThreads, TIME_OUT_MS, caseSimpleTasks(nThreads * 5));
+  }
+
+  /**
+   * Use tasks that take different time to execute.
+   * Go on with schedule attempts while some tasks are still running.
+   */
+  @Test
+  public void flushTasksTest_ManyVaryTime() throws InterruptedException {
+    final int nThreads = 3;
+    MyTask[] tt = new MyTask[nThreads * 5];
+    // Fib(30) takes ~2.3 µs
+    // Fib(31) takes ~4 µs
+    // Fib(41) takes ~440 µs
+    // Fib(49) takes ~21 seconds
+    // the idea is to get delta that noticeable change duration of the task
+    for (int i = 0; i < tt.length; i++) {
+      // delta := [-10,10] ==> [-5;15]
+      int delta = (int) (Math.sin(i) * 10) + 5;
+      tt[i] = new MyTask(30+delta);
+    }
+    doFlushTest(nThreads, TIME_OUT_MS, Arrays.asList(tt));
   }
 
   private void doFlushTest(int nThreads, long timeoutMillis, List<MyTask> tasks) throws InterruptedException {
@@ -130,10 +155,12 @@ public class EDTExecutorTest {
     Assert.assertTrue("Contract is broken", edtExecutor.checkTheContract());
 
     edtExecutor.flushTasks(); // the main thing
+    // in fact, to be honest here, we shall check what exactly is scheduled there - it could be some foreign code that dumped another task to the
+    // executor the moment it processed all our tasks but didn't get control back to us here.
+    Assert.assertFalse("The flush is still scheduled right after complete flush", edtExecutor.isFlushScheduled());
 
     tasks.forEach(t -> Assert.assertTrue("Could not execute the task", t.getExecResult()));
     Assert.assertTrue("Contract is broken", edtExecutor.checkTheContract());
-    Assert.assertFalse("The flush is still scheduled", edtExecutor.isFlushScheduled());
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
   }
 
@@ -244,7 +271,10 @@ public class EDTExecutorTest {
     private final AtomicBoolean myRes;
 
     public MyTask() {
-      this(10, new AtomicBoolean(false));
+      this(30);
+    }
+    public MyTask(int count) {
+      this(count, new AtomicBoolean(false));
     }
     public MyTask(int c, AtomicBoolean res) {
       myC = c;
@@ -257,7 +287,11 @@ public class EDTExecutorTest {
 
     @Override
     public boolean tryRun() throws TaskIsOutdated {
-      LOG.info("I know what the %d-th Fibonacci number is: %d (%s) ".formatted(myC, EDTExecutorTest.fib(myC), Thread.currentThread()));
+      final long start = System.nanoTime();
+      int fib = EDTExecutorTest.fib(myC);
+      final long end = System.nanoTime();
+//      System.out.printf("FIB(%d): %,d µs\n", myC, (end-start)/1000);
+      LOG.info("I know what the %d-th Fibonacci number is: %d (%s), calculated in %,d  ".formatted(myC, fib, Thread.currentThread(), (end-start)/1000));
       myRes.set(true);
       return true;
     }
