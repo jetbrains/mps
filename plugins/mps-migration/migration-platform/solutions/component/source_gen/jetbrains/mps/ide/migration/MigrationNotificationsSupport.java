@@ -167,6 +167,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
     sb.append("<ul>");
     myMpsProject.getModelAccess().runReadAction(() -> {
+      int ix = 0;
       for (SLanguage langProblem : ListSequence.fromList(problems).take(threshold)) {
         sb.append("<li>");
         boolean absent = langProblem.getSourceModuleReference().resolve(myMpsProject.getRepository()) == null;
@@ -174,12 +175,13 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
         if (absent) {
           sb.append(langName);
         } else {
-          sb.append("<a href=\"").append(REF_GOTO_PREFIX).append(langProblem.getSourceModuleReference().toString()).append("\">");
+          sb.append("<a href=\"").append(REF_GOTO_PREFIX).append(ix).append("\">");
           sb.append(langName);
           sb.append("</a>");
         }
         sb.append('(').append((absent ? "absent" : "dependency problem")).append(')');
         sb.append("</li>");
+        ix++;
       }
     });
     sb.append("</ul>");
