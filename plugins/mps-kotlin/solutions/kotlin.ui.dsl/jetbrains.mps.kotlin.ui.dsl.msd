@@ -3,7 +3,8 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${mps_home}/lib" type="kotlin_jvm">
-      <sourceRoot location="app.jar" />
+      <sourceRoot location="intellij.platform.ide.jar" />
+      <sourceRoot location="intellij.platform.ide.impl.jar" />
       <PackageScope>
         <!-- we only care about kotlin ui dsl here-->
         <include prefix="com.intellij.ui.dsl."/>
