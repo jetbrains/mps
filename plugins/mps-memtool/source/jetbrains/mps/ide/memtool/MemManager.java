@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,65 +15,79 @@
  */
 package jetbrains.mps.ide.memtool;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.util.registry.RegistryValue;
 import com.intellij.openapi.util.registry.RegistryValueListener;
 import com.intellij.util.Alarm;
 import com.intellij.util.Alarm.ThreadToUse;
-import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-public class MemManager implements StartupActivity.Background {
+public class MemManager implements Disposable {
   public static final int DELAY = 5;
   private static final Logger LOG = Logger.getLogger(MemManager.class);
   private static final int DELAY2 = DELAY * 2;
 
-  private Project myProject;
-  private ComponentHost myComponentHost;
+  private final MPSProject myProject;
 
   private Alarm myCleanupAlarm;
-  private Alarm myAlarm;
+  private final Alarm myAlarm;
 
-  public MemManager() {
+  public static final class Plug implements ProjectLifecycleListener {
+    @Override
+    public void projectReady(@NotNull MPSProject project, @NotNull Context context) {
+      final MemManager mm = new MemManager(project);
+      context.keep(MemManager.class, mm);
+      final RegistryValue rv = Registry.get("ide.memory.cleanup.interval");
+      mm.rescheduleRepeatingCleanup(rv.asInteger());
+      rv.addListener(new RegistryValueListener() {
+        @Override
+        public void afterValueChanged(@NotNull RegistryValue value) {
+          mm.rescheduleRepeatingCleanup(value.asInteger());
+        }
+      }, mm);
+    }
+
+    @Override
+    public void projectDiscarded(@NotNull MPSProject project, @NotNull Context context) {
+      MemManager mm = context.discard(MemManager.class);
+      if (mm != null) {
+        Disposer.dispose(mm);
+      }
+    }
+  }
+
+  public MemManager(MPSProject mpsProject) {
+    myProject = mpsProject;
+    myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, this);
   }
 
   @Override
-  public void runActivity(@NotNull Project project) {
-    myProject = project;
-    final MPSCoreComponents mpsCore = MPSCoreComponents.getInstance();
-    myComponentHost = mpsCore.getPlatform();
-    myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
-    final RegistryValue rv = Registry.get("ide.memory.cleanup.interval");
-    rescheduleRepeatingCleanup(rv.asInteger());
-    rv.addListener(new RegistryValueListener() {
-      @Override
-      public void afterValueChanged(@NotNull RegistryValue value) {
-        rescheduleRepeatingCleanup(value.asInteger());
-      }
-    }, project);
+  public void dispose() {
+    // regular Disposer logic is enough.
   }
 
   private void rescheduleRepeatingCleanup(int sec) {
     if (myCleanupAlarm != null) {
-      myCleanupAlarm.dispose();
+      Disposer.dispose(myCleanupAlarm);
       myCleanupAlarm = null;
     }
     if (sec > 0) {
-      myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
-      new MyRepeatingCleanup(Math.round(sec * 1000)).run();
+      // XXX why not scheduled executor?
+      myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, this);
+      //noinspection MathRoundingWithIntArgument
+      new MyRepeatingCleanup(myCleanupAlarm, Math.round(sec * 1000), this::cleanup).run();
     }
   }
 
   private void cleanup() {
-    if (myComponentHost.findComponent(MakeServiceComponent.class).isSessionActive()) {
+    if (myProject.getComponent(MakeServiceComponent.class).isSessionActive()) {
       return;
     }
 
@@ -98,22 +112,35 @@ public class MemManager implements StartupActivity.Background {
 
   @NotNull
   private SRepository getRepo() {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-    return mpsProject.getRepository();
+    return myProject.getRepository();
   }
 
-  private class MyRepeatingCleanup implements Runnable {
+  private static class MyRepeatingCleanup implements Runnable, Disposable {
     private final long myDelayMillis;
+    private final Runnable myCleanup;
+    private final Alarm myAlarm;
+    private boolean myDisposed;
 
-    public MyRepeatingCleanup(long delayMillis) {
+    public MyRepeatingCleanup(Alarm alarm, long delayMillis, Runnable cleanup) {
+      myAlarm = alarm;
       myDelayMillis = delayMillis;
+      myCleanup = cleanup;
+      Disposer.register(myAlarm, this);
     }
 
     @Override
     public void run() {
-      MemManager.this.cleanup();
-      myCleanupAlarm.cancelAllRequests();
-      myCleanupAlarm.addRequest(MyRepeatingCleanup.this, myDelayMillis);
+      if (myDisposed) {
+        return;
+      }
+      myCleanup.run();
+      myAlarm.cancelAllRequests();
+      myAlarm.addRequest(MyRepeatingCleanup.this, myDelayMillis);
+    }
+
+    @Override
+    public void dispose() {
+      myDisposed = true;
     }
   }
 }

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2026 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -26,7 +26,9 @@
   <extensions defaultExtensionNs="com.intellij">
     <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N seconds. Non-positive value disables models unloading" restartRequired="false"/>
     <statusBarWidgetFactory implementation="jetbrains.mps.ide.memtool.LoadedModelsPanel$WidgetFactory" id="LoadedModels" order="before notificationsWidget"/>
-    <backgroundPostStartupActivity implementation="jetbrains.mps.ide.memtool.MemManager" />
     <notificationGroup id="MPS Memory Stats" displayType="BALLOON" isLogByDefault="false"/>
+  </extensions>
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <project.lifecycleListener listenerClass="jetbrains.mps.ide.memtool.MemManager$Plug" priority="30"/>
   </extensions>
 </idea-plugin>
