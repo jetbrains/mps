@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @GeneratedClass(nodeId = "6549307287717228796", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
 public class CommentUtil {
   private CommentUtil() {
+    // FIXME why it's part of editor.runtime?! This code is not specific to Editor at all!
   }
   /**
    * 
@@ -56,7 +57,7 @@ public class CommentUtil {
 
   public static Iterable<SNode> uncommentAll(SNode container) {
     List<SNode> uncommented = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$nv)), CONCEPTS.BaseCommentAttribute$nv)).select((it) -> uncomment(it)));
+    ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(container), CONCEPTS.BaseCommentAttribute$nv)).select((it) -> uncomment(it)));
     return uncommented;
   }
 

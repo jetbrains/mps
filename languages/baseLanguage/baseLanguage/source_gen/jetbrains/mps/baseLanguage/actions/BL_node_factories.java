@@ -196,7 +196,7 @@ public class BL_node_factories {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.condition$5R17, null);
         SNodeFactoryOperations.setNewChild(newNode, LINKS.ifTrue$5Rg8, null);
-        AlterStatementListContainerFactoryUtils.buildContainer(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9), newNode);
+        AlterStatementListContainerFactoryUtils.builder(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9)).buildIfStatement(newNode);
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ExpressionStatement$O8)) {
           SNode expression = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M));
@@ -236,7 +236,7 @@ public class BL_node_factories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, null);
-        AlterStatementListContainerFactoryUtils.buildContainer(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9), newNode);
+        AlterStatementListContainerFactoryUtils.builder(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9)).buildForStatement(newNode);
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$P6));
       }
@@ -246,7 +246,7 @@ public class BL_node_factories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
         SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, null);
-        AlterStatementListContainerFactoryUtils.buildContainer(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9), newNode);
+        AlterStatementListContainerFactoryUtils.builder(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9)).buildForeachStatement(newNode);
       } else if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Statement$P6)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeFactoryOperations.setNewChild(newNode, LINKS.body$c1sm, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).addElement(SNodeOperations.cast(sampleNode, CONCEPTS.Statement$P6));
       }
