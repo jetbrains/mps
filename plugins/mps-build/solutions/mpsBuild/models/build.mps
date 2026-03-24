@@ -10235,11 +10235,6 @@
             <ref role="3bR37D" node="7Kfy9QB6KZA" resolve="jetbrains.mps.baseLanguage.classifiers" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2a9bszgrv15" role="3bR37C">
-          <node concept="3bR9La" id="2a9bszgrv14" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L0h" resolve="jetbrains.mps.baseLanguage.collections" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="2a9bszgrv17" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgrv16" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6L1S" resolve="jetbrains.mps.baseLanguage.javadoc" />
@@ -10802,11 +10797,6 @@
                 </node>
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="3ov1za0O4Kr" role="3bR37C">
-          <node concept="3bR9La" id="3ov1za0O4Ks" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
           </node>
         </node>
         <node concept="1SiIV0" id="3ov1za0O4Kt" role="3bR37C">
