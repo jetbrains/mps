@@ -19,7 +19,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.baseLanguage.actions.AlterStatementListContainerFactoryUtils;
+import jetbrains.mps.baseLanguage.actions.StatementListAlternatives;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -83,7 +83,7 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newInitializedInstance = SNodeFactoryOperations.createNewNode(myParameter, null);
-      AlterStatementListContainerFactoryUtils.buildContainerIfPossible(node, newInitializedInstance);
+      StatementListAlternatives.buildContainerIfPossible(node, newInitializedInstance);
       SNodeOperations.replaceWithAnother(node, newInitializedInstance);
       editorContext.selectWRTFocusPolicy(newInitializedInstance);
     }

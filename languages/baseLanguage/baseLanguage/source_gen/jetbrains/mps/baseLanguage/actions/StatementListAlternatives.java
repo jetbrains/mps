@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class AlterStatementListContainerFactoryUtils {
+public class StatementListAlternatives {
   private static boolean supportsCondition(SNode node) {
     return SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$Q4) || SNodeOperations.isInstanceOf(node, CONCEPTS.WhileStatement$Ay) || SNodeOperations.isInstanceOf(node, CONCEPTS.DoWhileStatement$9p);
   }
@@ -36,13 +36,13 @@ public class AlterStatementListContainerFactoryUtils {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(node), CONCEPTS.Expression$mB)).first();
   }
 
-  public static AlterStatementListContainerFactoryUtils builder(SNode sampleNode) {
-    return new AlterStatementListContainerFactoryUtils(sampleNode);
+  public static StatementListAlternatives builder(SNode sampleNode) {
+    return new StatementListAlternatives(sampleNode);
   }
 
   private final SNode mySampleNode;
 
-  private AlterStatementListContainerFactoryUtils(SNode sampleNode) {
+  private StatementListAlternatives(SNode sampleNode) {
     mySampleNode = sampleNode;
   }
 
@@ -125,21 +125,24 @@ public class AlterStatementListContainerFactoryUtils {
       SLinkOperations.setTarget(lvd, LINKS.initializer$2twD, SNodeOperations.copyNode(inputSequence));
       SNode v = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
       SLinkOperations.setTarget(v, LINKS.localVariableDeclaration$RpjM, lvd);
+      // FIXME mySampleNode here seems to be completely wrong - no point in modifying sample node (well, provided we mangle comments up there, 
+      //      it might be somewhat reasonable IF we would perform copyStatements() *after* this change, but it's not the case, 
+      //      and it's a prev-sibling, not something for copyStatements() to process)
       SNodeOperations.insertPrevSiblingChild(mySampleNode, v);
     }
     if (SNodeOperations.isInstanceOf(collectionType, CONCEPTS.ArrayType$rh)) {
       SPropertyOperations.set(iteratorVar, PROPS.name$MnvL, "index");
-      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createIntegerConstant_kz5t2g_a0a1a9a12());
-      SLinkOperations.setTarget(iteratorVar, LINKS.type$a1UY, createIntegerType_kz5t2g_a0a2a9a12());
+      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createIntegerConstant_u0jzk9_a0a1a9a12());
+      SLinkOperations.setTarget(iteratorVar, LINKS.type$a1UY, createIntegerType_u0jzk9_a0a2a9a12());
       SLinkOperations.setTarget(forStatement, LINKS.variable$JNH6, iteratorVar);
-      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createLessThanExpression_kz5t2g_a0a4a9a12());
-      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.iteration$nuP3)).addElement(createPostfixIncrementExpression_kz5t2g_a0a5a9a12());
+      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createLessThanExpression_u0jzk9_a0a4a9a12());
+      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.iteration$nuP3)).addElement(createPostfixIncrementExpression_u0jzk9_a0a5a9a12());
       SNode cond = SNodeOperations.cast(SLinkOperations.getTarget(forStatement, LINKS.condition$wARE), CONCEPTS.LessThanExpression$Li);
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(cond, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, iteratorVar);
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(cond, LINKS.rightExpression$nvX), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, inputSequenceDeclaration);
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.iteration$nuP3)).first(), CONCEPTS.PostfixIncrementExpression$wn), LINKS.expression$uRUg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, iteratorVar);
 
-      final SNode a = createArrayAccessExpression_kz5t2g_a0l0j0v();
+      final SNode a = createArrayAccessExpression_u0jzk9_a0l0j0v();
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.array$tTQe), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, inputSequenceDeclaration);
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.index$LbBP), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, iteratorVar);
       ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((it) -> SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == loopVariable.value).visitAll((it) -> SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(a)));
@@ -147,7 +150,7 @@ public class AlterStatementListContainerFactoryUtils {
 
     } else {
       SPropertyOperations.set(iteratorVar, PROPS.name$MnvL, "loopIterator");
-      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createDotExpression_kz5t2g_a0a1a0j0v());
+      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createDotExpression_u0jzk9_a0a1a0j0v());
       SNode r = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
       SLinkOperations.setTarget(r, LINKS.variableDeclaration$N1XG, inputSequenceDeclaration);
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(iteratorVar, LINKS.initializer$2twD), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR, r);
@@ -157,13 +160,13 @@ public class AlterStatementListContainerFactoryUtils {
       ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(iteratorVar, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).addElement(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(varType));
       SLinkOperations.setTarget(forStatement, LINKS.variable$JNH6, iteratorVar);
 
-      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createDotExpression_kz5t2g_a0a11a0j0v());
+      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createDotExpression_u0jzk9_a0a11a0j0v());
       SLinkOperations.setTarget(SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(forStatement, LINKS.condition$wARE), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR, SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null)), LINKS.variableDeclaration$N1XG, iteratorVar);
 
       final SNode vd = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
       SPropertyOperations.set(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), PROPS.name$MnvL, "localLoopVariable");
       SLinkOperations.setTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.type$a1UY, TypecheckingFacade.getFromContext().getTypeOf(loopVariable.value));
-      SLinkOperations.setTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD, createDotExpression_kz5t2g_a0a71a0j0v());
+      SLinkOperations.setTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD, createDotExpression_u0jzk9_a0a71a0j0v());
       SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, iteratorVar);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), LINKS.statement$53DE)).insertElement(0, vd);
 
@@ -174,7 +177,7 @@ public class AlterStatementListContainerFactoryUtils {
 
   public static void buildContainerIfPossible(SNode sampleNode, SNode newNode) {
     if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IContainsStatementList$v9)) {
-      AlterStatementListContainerFactoryUtils builder = AlterStatementListContainerFactoryUtils.builder(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9));
+      StatementListAlternatives builder = StatementListAlternatives.builder(SNodeOperations.cast(sampleNode, CONCEPTS.IContainsStatementList$v9));
       if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.IfStatement$Q4)) {
         builder.buildIfStatement(SNodeOperations.cast(newNode, CONCEPTS.IfStatement$Q4));
       } else if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ForeachStatement$Po)) {
@@ -184,16 +187,16 @@ public class AlterStatementListContainerFactoryUtils {
       }
     }
   }
-  private static SNode createIntegerConstant_kz5t2g_a0a1a9a12() {
+  private static SNode createIntegerConstant_u0jzk9_a0a1a9a12() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerConstant$Na);
     n0.setProperty(PROPS.value$jgCM, "" + (0));
     return n0.getResult();
   }
-  private static SNode createIntegerType_kz5t2g_a0a2a9a12() {
+  private static SNode createIntegerType_u0jzk9_a0a2a9a12() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$7a);
     return n0.getResult();
   }
-  private static SNode createLessThanExpression_kz5t2g_a0a4a9a12() {
+  private static SNode createLessThanExpression_u0jzk9_a0a4a9a12() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LessThanExpression$Li);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.leftExpression$sEj).init(CONCEPTS.VariableReference$TC);
@@ -209,7 +212,7 @@ public class AlterStatementListContainerFactoryUtils {
     }
     return n0.getResult();
   }
-  private static SNode createPostfixIncrementExpression_kz5t2g_a0a5a9a12() {
+  private static SNode createPostfixIncrementExpression_u0jzk9_a0a5a9a12() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PostfixIncrementExpression$wn);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.expression$uRUg).init(CONCEPTS.VariableReference$TC);
@@ -217,7 +220,7 @@ public class AlterStatementListContainerFactoryUtils {
     }
     return n0.getResult();
   }
-  private static SNode createArrayAccessExpression_kz5t2g_a0l0j0v() {
+  private static SNode createArrayAccessExpression_u0jzk9_a0l0j0v() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ArrayAccessExpression$Eu);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.array$tTQe).init(CONCEPTS.VariableReference$TC);
@@ -229,7 +232,7 @@ public class AlterStatementListContainerFactoryUtils {
     }
     return n0.getResult();
   }
-  private static SNode createDotExpression_kz5t2g_a0a1a0j0v() {
+  private static SNode createDotExpression_u0jzk9_a0a1a0j0v() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.operand$w6IR).init(CONCEPTS.VariableReference$TC);
@@ -238,7 +241,7 @@ public class AlterStatementListContainerFactoryUtils {
     n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.GetIteratorOperation$L1);
     return n0.getResult();
   }
-  private static SNode createDotExpression_kz5t2g_a0a11a0j0v() {
+  private static SNode createDotExpression_u0jzk9_a0a11a0j0v() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
     {
@@ -251,7 +254,7 @@ public class AlterStatementListContainerFactoryUtils {
     }
     return n0.getResult();
   }
-  private static SNode createDotExpression_kz5t2g_a0a71a0j0v() {
+  private static SNode createDotExpression_u0jzk9_a0a71a0j0v() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
     {
