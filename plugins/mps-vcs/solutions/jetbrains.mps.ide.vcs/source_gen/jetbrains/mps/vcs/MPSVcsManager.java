@@ -34,7 +34,7 @@ import com.intellij.openapi.vcs.VcsKey;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.vcs.VcsListener;
 import jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification;
-import com.intellij.openapi.startup.StartupActivity;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import com.intellij.openapi.application.ApplicationManager;
 
 /**
@@ -219,9 +219,11 @@ public final class MPSVcsManager {
 
 
   /**
-   * I'd love to use ProjectActivity instead, but can't get parameters of its execute(..., Continuation) right.
+   * I'd love to use ProjectActivity directly instead, but can't get parameters of its execute(..., Continuation) right, 
+   * although it's possible, provided module imports set up right.
+   * The reason we stick to IDEA's extpoint, not ProjectLifecycleListener as we don't care about MPSProject here.
    */
-  public static class OnStartup implements StartupActivity {
+  public static class OnStartup extends MPSProjectActivity {
 
     @Override
     public void runActivity(@NotNull final Project project) {
