@@ -6,45 +6,40 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
-public final class ForeachStatement__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
+public final class IForEachLoop__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x438cca3007b7857bL, "jetbrains.mps.baseLanguage.structure.IForEachLoop");
 
-  public static final SMethod<List<SNode>> getScopeVariables_id4pl5GY7LKmA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getScopeVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5067982036267369894L).languageId(0xbfd948636cfe8bc3L, 0x9ded098bad6a4657L).build2();
   public static final SMethod<SNode> inputSequence_id4ecMz07HSmN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("inputSequence").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917372339L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> loopVariableDeclaration_id4ecMz07HX68 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("loopVariableDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917391752L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> loopVariableType_id4ecMz07HYZb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("loopVariableType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917399499L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScopeVariables_id4pl5GY7LKmA, inputSequence_id4ecMz07HSmN, loopVariableDeclaration_id4ecMz07HX68, loopVariableType_id4ecMz07HYZb);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inputSequence_id4ecMz07HSmN, loopVariableDeclaration_id4ecMz07HX68, loopVariableType_id4ecMz07HYZb);
 
 
-  /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6));
-  }
   /*package*/ static SNode inputSequence_id4ecMz07HSmN(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.iterable$mImK);
+    return null;
   }
   /*package*/ static SNode loopVariableDeclaration_id4ecMz07HX68(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6);
+    return null;
   }
   /*package*/ static SNode loopVariableType_id4ecMz07HYZb(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variable$JNH6), LINKS.type$a1UY);
+    return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(IForEachLoop__BehaviorDescriptor.loopVariableDeclaration_id4ecMz07HX68.invoke(__thisNode__)), CONCEPTS.Type$bu);
   }
 
-  /*package*/ ForeachStatement__BehaviorDescriptor() {
+  /*package*/ IForEachLoop__BehaviorDescriptor() {
   }
 
 
@@ -56,12 +51,10 @@ public final class ForeachStatement__BehaviorDescriptor extends BaseBHDescriptor
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((List<SNode>) getScopeVariables_id4pl5GY7LKmA(node));
-      case 1:
         return (T) ((SNode) inputSequence_id4ecMz07HSmN(node));
-      case 2:
+      case 1:
         return (T) ((SNode) loopVariableDeclaration_id4ecMz07HX68(node));
-      case 3:
+      case 2:
         return (T) ((SNode) loopVariableType_id4ecMz07HYZb(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -92,9 +85,7 @@ public final class ForeachStatement__BehaviorDescriptor extends BaseBHDescriptor
     return CONCEPT;
   }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink iterable$mImK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
-    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

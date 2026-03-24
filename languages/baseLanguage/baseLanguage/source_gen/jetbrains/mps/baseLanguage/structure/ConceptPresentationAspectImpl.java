@@ -140,6 +140,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IExtractMethodAvailable;
   private ConceptPresentation props_IFinalWrapper;
   private ConceptPresentation props_IFixableMethodReference;
+  private ConceptPresentation props_IForEachLoop;
   private ConceptPresentation props_IGenericClassCreator;
   private ConceptPresentation props_IGenericType;
   private ConceptPresentation props_IHasModifiers;
@@ -1277,6 +1278,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IFixableMethodReference = cpb.create();
         }
         return props_IFixableMethodReference;
+      case LanguageConceptSwitch.IForEachLoop:
+        if (props_IForEachLoop == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IForEachLoop = cpb.create();
+        }
+        return props_IForEachLoop;
       case LanguageConceptSwitch.IGenericClassCreator:
         if (props_IGenericClassCreator == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -93,6 +93,9 @@
     <node concept="PrWs8" id="3tqvONyy2av" role="PzmwI">
       <ref role="PrY4T" to="tpee:htgVS9_" resolve="IStatementListContainer" />
     </node>
+    <node concept="PrWs8" id="4ecMz07Ikl1" role="PzmwI">
+      <ref role="PrY4T" to="tpee:4ecMz07HSlV" resolve="IForEachLoop" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7Joh5OuxR2F">
     <property role="TrG5h" value="ParallelLoopVariable" />

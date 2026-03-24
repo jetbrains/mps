@@ -1487,6 +1487,9 @@
     <node concept="PrWs8" id="2a$QO9k_z3x" role="PzmwI">
       <ref role="PrY4T" to="356a:4pl5GY7LKmy" resolve="ScopeConcept" />
     </node>
+    <node concept="PrWs8" id="4ecMz07I1VP" role="PzmwI">
+      <ref role="PrY4T" node="4ecMz07HSlV" resolve="IForEachLoop" />
+    </node>
   </node>
   <node concept="1TIwiD" id="gDDuprY">
     <property role="R5$K7" value="true" />
@@ -5063,6 +5066,14 @@
     <property role="EcuMT" value="7934281601832492118" />
     <property role="3GE5qa" value="type" />
     <property role="TrG5h" value="IRawTypeHolder" />
+  </node>
+  <node concept="PlHQZ" id="4ecMz07HSlV">
+    <property role="EcuMT" value="4867487604917372283" />
+    <property role="3GE5qa" value="control_flow.loops" />
+    <property role="TrG5h" value="IForEachLoop" />
+    <node concept="t5JxF" id="4ecMz07I1Vn" role="lGtFl">
+      <property role="t5JxN" value="Capture similarities between various iteration over a sequence of elements, like bl.Foreach and bl.collections.ForEach" />
+    </node>
   </node>
 </model>
 

@@ -7,9 +7,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.baseLanguage.behavior.IContainsStatementList__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.IForEachLoop__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -52,13 +53,11 @@ public class StatementListAlternatives {
       // FIXME hope to use buildGeneric() chained with specific handling of ForStatement, just need to make sure doing it outside of try-catch doesn't break anything
       copyStatements(newNode);
       copyCondition(newNode);
-      // FIXME FWIW, bl.collections.ForEachStatement extends AbstractLoopStatement (as well as ForStatement, Do/WhileStatement)
-      if (SNodeOperations.isInstanceOf(mySampleNode, CONCEPTS.ForeachStatement$Po)) {
-        SNode s = SNodeOperations.cast(mySampleNode, CONCEPTS.ForeachStatement$Po);
-        doBuildFor(newNode, SLinkOperations.getTarget(s, LINKS.iterable$mImK), SLinkOperations.getTarget(s, LINKS.variable$JNH6), SLinkOperations.getTarget(SLinkOperations.getTarget(s, LINKS.variable$JNH6), LINKS.type$a1UY));
-      } else if (SNodeOperations.isInstanceOf(mySampleNode, CONCEPTS.ForEachStatement$RO)) {
-        SNode s = SNodeOperations.cast(mySampleNode, CONCEPTS.ForEachStatement$RO);
-        doBuildFor(newNode, SLinkOperations.getTarget(s, LINKS.inputSequence$YoEF), SLinkOperations.getTarget(s, LINKS.variable$8Haf), SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(s, LINKS.variable$8Haf)), CONCEPTS.Type$bu));
+      // FWIW, bl.collections.ForEachStatement extends AbstractLoopStatement (as well as ForStatement, Do/WhileStatement)
+      //      but I could not make use of it. Instead, introduced IForEachLoop interface
+      if (SNodeOperations.isInstanceOf(mySampleNode, CONCEPTS.IForEachLoop$dx)) {
+        SNode s = SNodeOperations.cast(mySampleNode, CONCEPTS.IForEachLoop$dx);
+        doBuildFor(newNode, IForEachLoop__BehaviorDescriptor.inputSequence_id4ecMz07HSmN.invoke(s), IForEachLoop__BehaviorDescriptor.loopVariableDeclaration_id4ecMz07HX68.invoke(s), IForEachLoop__BehaviorDescriptor.loopVariableType_id4ecMz07HYZb.invoke(s));
       }
     } finally {
       CommentUtil.commentOutAll(commentedOutNodes);
@@ -216,9 +215,13 @@ public class StatementListAlternatives {
     return n0.getResult();
   }
   private static SNode createDotExpression_u0jzk9_a0a1a0d0x(SNode p0) {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
     n0.forChild(LINKS.operand$w6IR).initNode(p0, CONCEPTS.Expression$mB, true);
-    n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.GetIteratorOperation$L1);
+    {
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.InstanceMethodCallOperation$uu);
+      n1.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Iterable.iterator()")));
+    }
     return n0.getResult();
   }
   private static SNode createDotExpression_u0jzk9_a0a6a0d0x(SNode p0) {
@@ -253,16 +256,16 @@ public class StatementListAlternatives {
     /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
     /*package*/ static final SConcept WhileStatement$Ay = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept ForeachStatement$Po = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
-    /*package*/ static final SConcept ForEachStatement$RO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
-    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SInterfaceConcept IForEachLoop$dx = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x438cca3007b7857bL, "jetbrains.mps.baseLanguage.structure.IForEachLoop");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
     /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
     /*package*/ static final SInterfaceConcept IVariableReference$C = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe34de34746464f2L, "jetbrains.mps.baseLanguage.structure.IVariableReference");
     /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SInterfaceConcept IContainsStatementList$v9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL, "jetbrains.mps.baseLanguage.structure.IContainsStatementList");
+    /*package*/ static final SConcept ForeachStatement$Po = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
     /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
     /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
     /*package*/ static final SConcept IntegerType$7a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
@@ -271,18 +274,14 @@ public class StatementListAlternatives {
     /*package*/ static final SConcept ArrayLengthOperation$fn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1197781411dL, "jetbrains.mps.baseLanguage.structure.ArrayLengthOperation");
     /*package*/ static final SConcept PostfixIncrementExpression$wn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
     /*package*/ static final SConcept ArrayAccessExpression$Eu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, "jetbrains.mps.baseLanguage.structure.ArrayAccessExpression");
-    /*package*/ static final SConcept GetIteratorOperation$L1 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ecef58aL, "jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation");
     /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink iterable$mImK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
-    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink inputSequence$YoEF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
-    /*package*/ static final SContainmentLink variable$8Haf = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
     /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
     /*package*/ static final SContainmentLink condition$wARE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");

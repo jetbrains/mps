@@ -20,6 +20,7 @@ import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,8 +30,11 @@ public final class ForEachStatement__BehaviorDescriptor extends BaseBHDescriptor
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> inputSequence_id4ecMz07HSmN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("inputSequence").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917372339L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> loopVariableDeclaration_id4ecMz07HX68 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("loopVariableDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917391752L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> loopVariableType_id4ecMz07HYZb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("loopVariableType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917399499L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, inputSequence_id4ecMz07HSmN, loopVariableDeclaration_id4ecMz07HX68, loopVariableType_id4ecMz07HYZb);
 
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
@@ -40,6 +44,15 @@ public final class ForEachStatement__BehaviorDescriptor extends BaseBHDescriptor
       }
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.ForEachStatement$RO, kind, child));
+  }
+  /*package*/ static SNode inputSequence_id4ecMz07HSmN(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.inputSequence$YoEF);
+  }
+  /*package*/ static SNode loopVariableDeclaration_id4ecMz07HX68(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.variable$8Haf);
+  }
+  /*package*/ static SNode loopVariableType_id4ecMz07HYZb(@NotNull SNode __thisNode__) {
+    return SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.variable$8Haf)), CONCEPTS.Type$bu);
   }
 
   /*package*/ ForEachStatement__BehaviorDescriptor() {
@@ -55,6 +68,12 @@ public final class ForEachStatement__BehaviorDescriptor extends BaseBHDescriptor
     switch (methodIndex) {
       case 0:
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+      case 1:
+        return (T) ((SNode) inputSequence_id4ecMz07HSmN(node));
+      case 2:
+        return (T) ((SNode) loopVariableDeclaration_id4ecMz07HX68(node));
+      case 3:
+        return (T) ((SNode) loopVariableType_id4ecMz07HYZb(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -87,10 +106,12 @@ public final class ForEachStatement__BehaviorDescriptor extends BaseBHDescriptor
   private static final class LINKS {
     /*package*/ static final SContainmentLink variable$8Haf = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac7231f1L, "variable");
     /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
+    /*package*/ static final SContainmentLink inputSequence$YoEF = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, 0x10cac72911aL, "inputSequence");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ForEachVariable$mK = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable");
     /*package*/ static final SConcept ForEachStatement$RO = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac65f399L, "jetbrains.mps.baseLanguage.collections.structure.ForEachStatement");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

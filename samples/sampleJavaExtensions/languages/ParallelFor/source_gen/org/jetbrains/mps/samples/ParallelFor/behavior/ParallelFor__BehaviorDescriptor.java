@@ -44,8 +44,11 @@ public final class ParallelFor__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239354342632L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> implicitThrows_id4kX30tnJ9kz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("implicitThrows").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4989157187872658723L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> findPoolDeclaration_id6FH9fp$mItT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findPoolDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7704855178165020537L).languageId(0xbd839796e8634856L, 0xcb7388e8f1824cdaL).build2();
+  public static final SMethod<SNode> inputSequence_id4ecMz07HSmN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("inputSequence").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917372339L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> loopVariableDeclaration_id4ecMz07HX68 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("loopVariableDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917391752L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> loopVariableType_id4ecMz07HYZb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("loopVariableType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4867487604917399499L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, uncaughtThrowables_id2SVUfbZ9Qq1, getThrowableTypes_id5op8ooRkkc7, getBody_idi2fhZ_m, getExpectedRetType_idi2fhBNC, implicitThrows_id4kX30tnJ9kz, findPoolDeclaration_id6FH9fp$mItT);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, uncaughtThrowables_id2SVUfbZ9Qq1, getThrowableTypes_id5op8ooRkkc7, getBody_idi2fhZ_m, getExpectedRetType_idi2fhBNC, implicitThrows_id4kX30tnJ9kz, findPoolDeclaration_id6FH9fp$mItT, inputSequence_id4ecMz07HSmN, loopVariableDeclaration_id4ecMz07HX68, loopVariableType_id4ecMz07HYZb);
 
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
@@ -87,6 +90,15 @@ public final class ParallelFor__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return null;
   }
+  /*package*/ static SNode inputSequence_id4ecMz07HSmN(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.inputSequence$bOOx);
+  }
+  /*package*/ static SNode loopVariableDeclaration_id4ecMz07HX68(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.loopVariable$q6dq);
+  }
+  /*package*/ static SNode loopVariableType_id4ecMz07HYZb(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopVariable$q6dq), LINKS.type$a1UY);
+  }
 
   /*package*/ ParallelFor__BehaviorDescriptor() {
   }
@@ -116,6 +128,12 @@ public final class ParallelFor__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) implicitThrows_id4kX30tnJ9kz(node));
       case 7:
         return (T) ((SNode) findPoolDeclaration_id6FH9fp$mItT(node));
+      case 8:
+        return (T) ((SNode) inputSequence_id4ecMz07HSmN(node));
+      case 9:
+        return (T) ((SNode) loopVariableDeclaration_id4ecMz07HX68(node));
+      case 10:
+        return (T) ((SNode) loopVariableType_id4ecMz07HYZb(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -151,6 +169,7 @@ public final class ParallelFor__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
     /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink inputSequence$bOOx = MetaAdapterFactory.getContainmentLink(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x7bd8445d1e888c7eL, "inputSequence");
   }
 
   private static final class CONCEPTS {
