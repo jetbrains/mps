@@ -49,6 +49,7 @@ public class StatementListAlternatives {
   public void buildForStatement(SNode newNode) {
     Iterable<SNode> commentedOutNodes = CommentUtil.uncommentAll(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(mySampleNode));
     try {
+      // FIXME hope to use buildGeneric() chained with specific handling of ForStatement, just need to make sure doing it outside of try-catch doesn't break anything
       copyStatements(newNode);
       copyCondition(newNode);
       // FIXME FWIW, bl.collections.ForEachStatement extends AbstractLoopStatement (as well as ForStatement, Do/WhileStatement)
@@ -65,16 +66,14 @@ public class StatementListAlternatives {
   }
 
   public void buildForeachStatement(SNode newNode) {
-    Iterable<SNode> commentedOutNodes = CommentUtil.uncommentAll(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(mySampleNode));
-    try {
-      copyStatements(newNode);
-      copyCondition(newNode);
-    } finally {
-      CommentUtil.commentOutAll(commentedOutNodes);
-    }
+    buildGeneric(newNode);
   }
 
   public void buildIfStatement(SNode newNode) {
+    buildGeneric(newNode);
+  }
+
+  private StatementListAlternatives buildGeneric(SNode newNode) {
     // XXX why do we uncomment nodes in the sample?!
     Iterable<SNode> commentedOutNodes = CommentUtil.uncommentAll(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(mySampleNode));
     try {
@@ -83,6 +82,7 @@ public class StatementListAlternatives {
     } finally {
       CommentUtil.commentOutAll(commentedOutNodes);
     }
+    return this;
   }
 
   private void copyStatements(SNode newNode) {
@@ -105,48 +105,51 @@ public class StatementListAlternatives {
     SNode collectionType = TypecheckingFacade.getFromContext().getTypeOf(inputSequence);
     SNode iteratorVar = SNodeFactoryOperations.setNewChild(forStatement, LINKS.variable$JNH6, null);
 
-    SNode inputSequenceDeclaration;
-    if (SNodeOperations.isInstanceOf(inputSequence, CONCEPTS.VariableReference$TC)) {
-      // indeed, we can use VariableReference.copy, but for uniformity with Expression case, were we need to produce 
-      // own VaribleDeclaration, it's easier to reference VD.
-      inputSequenceDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(inputSequence, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
-    } else {
-      // e.g a method call or in-place sequence initialization
-      // can't use ForStatement.additionalVar, as it is limited to the same type as iteratorVar, which is either int or Iterator here.
-      SNode lvd = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, null);
-      inputSequenceDeclaration = lvd;
-      SLinkOperations.setTarget(lvd, LINKS.type$a1UY, SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(inputSequence), CONCEPTS.Type$bu));
-      SPropertyOperations.set(lvd, PROPS.name$MnvL, "inputCollection");
-      SLinkOperations.setTarget(lvd, LINKS.initializer$2twD, SNodeOperations.copyNode(inputSequence));
-      SNode v = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
-      SLinkOperations.setTarget(v, LINKS.localVariableDeclaration$RpjM, lvd);
-      // Here comes quite peculiar piece of code, we kind of expect forStatement to be part of a model already, not a free-floating node we just about to get ready.
-      SNodeOperations.insertPrevSiblingChild(forStatement, v);
-    }
     if (SNodeOperations.isInstanceOf(collectionType, CONCEPTS.ArrayType$rh)) {
+      SNode inputSequenceDeclaration;
+      if (SNodeOperations.isInstanceOf(inputSequence, CONCEPTS.VariableReference$TC)) {
+        // indeed, we can use VariableReference.copy, but for uniformity with Expression case, were we need to produce 
+        // own VaribleDeclaration, it's easier to reference VD.
+        inputSequenceDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(inputSequence, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
+      } else {
+        // e.g a method call or in-place sequence initialization
+        // can't use ForStatement.additionalVar, as it is limited to the same type as iteratorVar, which is either int or Iterator here.
+        SNode lvd = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, null);
+        inputSequenceDeclaration = lvd;
+        SLinkOperations.setTarget(lvd, LINKS.type$a1UY, SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(inputSequence), CONCEPTS.Type$bu));
+        SPropertyOperations.set(lvd, PROPS.name$MnvL, "inputCollection");
+        SLinkOperations.setTarget(lvd, LINKS.initializer$2twD, SNodeOperations.copyNode(inputSequence));
+        SNode v = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
+        SLinkOperations.setTarget(v, LINKS.localVariableDeclaration$RpjM, lvd);
+        // FIXME mySampleNode here seems to be completely wrong - no point in modifying sample node (well, provided we mangle comments up there, 
+        //      it might be somewhat reasonable IF we would perform copyStatements() *after* this change, but it's not the case, 
+        //      and it's a prev-sibling, not something for copyStatements() to process)
+        // Besides, sampleNode is a detached copy since 2021 (see NodeFactoryManager.setup(), 45b51b1a), this code has no effect
+        SNodeOperations.insertPrevSiblingChild(mySampleNode, v);
+      }
       SPropertyOperations.set(iteratorVar, PROPS.name$MnvL, "index");
-      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createIntegerConstant_u0jzk9_a0a1a5a12());
-      SLinkOperations.setTarget(iteratorVar, LINKS.type$a1UY, createIntegerType_u0jzk9_a0a2a5a12());
-      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createLessThanExpression_u0jzk9_a0a3a5a12(iteratorVar, inputSequenceDeclaration));
-      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.iteration$nuP3)).addElement(createPostfixIncrementExpression_u0jzk9_a0a4a5a12(iteratorVar));
-      final SNode a = createArrayAccessExpression_u0jzk9_a0f0f0v(inputSequenceDeclaration, iteratorVar);
+      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createIntegerConstant_u0jzk9_a0a3a3a32());
+      SLinkOperations.setTarget(iteratorVar, LINKS.type$a1UY, createIntegerType_u0jzk9_a0a4a3a32());
+      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createLessThanExpression_u0jzk9_a0a5a3a32(iteratorVar, inputSequenceDeclaration));
+      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.iteration$nuP3)).addElement(createPostfixIncrementExpression_u0jzk9_a0a6a3a32(iteratorVar));
+      final SNode a = createArrayAccessExpression_u0jzk9_a0h0d0x(inputSequenceDeclaration, iteratorVar);
       // we inject copy of ArrayAccessExpression 'a' in every place loopVariable has been used.
       // not sure, however, references in the statements copied into forStatement still point to the original loopVariable. Perhaps,
       // they got replaced with something from the copied tree already?
       ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).where((it) -> IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(it) == loopVarDeclaration).visitAll((it) -> SNodeOperations.replaceWithAnother(it, SNodeOperations.copyNode(a)));
     } else {
       SPropertyOperations.set(iteratorVar, PROPS.name$MnvL, "loopIterator");
-      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createDotExpression_u0jzk9_a0a1a0f0v(inputSequenceDeclaration));
+      SLinkOperations.setTarget(iteratorVar, LINKS.initializer$2twD, createDotExpression_u0jzk9_a0a1a0d0x(SNodeOperations.copyNode(inputSequence)));
       SNode f = SNodeFactoryOperations.setNewChild(iteratorVar, LINKS.type$a1UY, CONCEPTS.ClassifierType$bL);
       SLinkOperations.setPointer(f, LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Iterator"));
       ListSequence.fromList(SLinkOperations.getChildren(f, LINKS.parameter$oqG$)).addElement(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(loopVarType));
 
-      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createDotExpression_u0jzk9_a0a6a0f0v(iteratorVar));
+      SLinkOperations.setTarget(forStatement, LINKS.condition$wARE, createDotExpression_u0jzk9_a0a6a0d0x(iteratorVar));
 
       final SNode vd = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclarationStatement$4w, null);
       SPropertyOperations.set(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), PROPS.name$MnvL, SPropertyOperations.getString(loopVarDeclaration, PROPS.name$MnvL));
       SLinkOperations.setTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.type$a1UY, SNodeOperations.copyNode(loopVarType));
-      SLinkOperations.setTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD, createDotExpression_u0jzk9_a0a11a0f0v(iteratorVar));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD, createDotExpression_u0jzk9_a0a11a0d0x(iteratorVar));
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), LINKS.statement$53DE)).insertElement(0, vd);
 
       ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).where((it) -> IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(it) == loopVarDeclaration).visitAll((it) -> SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(vd, LINKS.localVariableDeclaration$RpjM)));
@@ -162,19 +165,21 @@ public class StatementListAlternatives {
         builder.buildForeachStatement(SNodeOperations.cast(newNode, CONCEPTS.ForeachStatement$Po));
       } else if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ForStatement$qV)) {
         builder.buildForStatement(SNodeOperations.cast(newNode, CONCEPTS.ForStatement$qV));
+      } else {
+        builder.buildGeneric(newNode);
       }
     }
   }
-  private static SNode createIntegerConstant_u0jzk9_a0a1a5a12() {
+  private static SNode createIntegerConstant_u0jzk9_a0a3a3a32() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerConstant$Na);
     n0.setProperty(PROPS.value$jgCM, "" + (0));
     return n0.getResult();
   }
-  private static SNode createIntegerType_u0jzk9_a0a2a5a12() {
+  private static SNode createIntegerType_u0jzk9_a0a4a3a32() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$7a);
     return n0.getResult();
   }
-  private static SNode createLessThanExpression_u0jzk9_a0a3a5a12(SNode p0, SNode p1) {
+  private static SNode createLessThanExpression_u0jzk9_a0a5a3a32(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LessThanExpression$Li);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.leftExpression$sEj).init(CONCEPTS.VariableReference$TC);
@@ -190,7 +195,7 @@ public class StatementListAlternatives {
     }
     return n0.getResult();
   }
-  private static SNode createPostfixIncrementExpression_u0jzk9_a0a4a5a12(SNode p0) {
+  private static SNode createPostfixIncrementExpression_u0jzk9_a0a6a3a32(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PostfixIncrementExpression$wn);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.expression$uRUg).init(CONCEPTS.VariableReference$TC);
@@ -198,7 +203,7 @@ public class StatementListAlternatives {
     }
     return n0.getResult();
   }
-  private static SNode createArrayAccessExpression_u0jzk9_a0f0f0v(SNode p0, SNode p1) {
+  private static SNode createArrayAccessExpression_u0jzk9_a0h0d0x(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ArrayAccessExpression$Eu);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.array$tTQe).init(CONCEPTS.VariableReference$TC);
@@ -210,16 +215,13 @@ public class StatementListAlternatives {
     }
     return n0.getResult();
   }
-  private static SNode createDotExpression_u0jzk9_a0a1a0f0v(SNode p0) {
+  private static SNode createDotExpression_u0jzk9_a0a1a0d0x(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
-    {
-      SNodeBuilder n1 = n0.forChild(LINKS.operand$w6IR).init(CONCEPTS.VariableReference$TC);
-      n1.setReferenceTarget(LINKS.variableDeclaration$N1XG, p0);
-    }
+    n0.forChild(LINKS.operand$w6IR).initNode(p0, CONCEPTS.Expression$mB, true);
     n0.forChild(LINKS.operation$gs9E).init(CONCEPTS.GetIteratorOperation$L1);
     return n0.getResult();
   }
-  private static SNode createDotExpression_u0jzk9_a0a6a0f0v(SNode p0) {
+  private static SNode createDotExpression_u0jzk9_a0a6a0d0x(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
     {
@@ -232,7 +234,7 @@ public class StatementListAlternatives {
     }
     return n0.getResult();
   }
-  private static SNode createDotExpression_u0jzk9_a0a11a0f0v(SNode p0) {
+  private static SNode createDotExpression_u0jzk9_a0a11a0d0x(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$yW);
     {
