@@ -512,6 +512,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      NonTypesystemRule_Runtime nonTypesystemRule = new genericArrayCreatorsAreIllegal_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new genericArrayCreatorsWithInitializerAreIllegal_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
       SubtypingRule_Runtime subtypingRule = new ClassifierType_Set_weakSupertypeOf_set_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
