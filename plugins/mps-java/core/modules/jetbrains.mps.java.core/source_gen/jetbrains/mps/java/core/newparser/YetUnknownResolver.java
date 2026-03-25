@@ -30,7 +30,10 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.DevKit;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -169,7 +172,19 @@ public class YetUnknownResolver {
     for (SModelReference mr : myRefTargetOfResolved) {
       mi.addModelImport(mr);
     }
-    SetSequence.fromSet(myLanguagesOfResolved).subtract(CollectionSequence.fromCollection(mi.getUsedLanguages())).visitAll((it) -> mi.addUsedLanguage(it));
+
+    // Build effective set: direct imports + languages exported by DevKits, to avoid redundant direct imports
+    Set<SLanguage> effectiveUsed = new HashSet<>(mi.getUsedLanguages());
+    SRepository repo = myModel.getRepository();
+    if (repo != null) {
+      for (SModuleReference dkRef : mi.getUsedDevKits()) {
+        SModule dk = dkRef.resolve(repo);
+        if (dk instanceof DevKit) {
+          ((DevKit) dk).getAllExportedLanguageIds().forEach(effectiveUsed::add);
+        }
+      }
+    }
+    SetSequence.fromSet(myLanguagesOfResolved).subtract(SetSequence.fromSet(effectiveUsed)).visitAll((it) -> mi.addUsedLanguage(it));
     SetSequence.fromSet(myLanguagesOfResolved).clear();
   }
 
