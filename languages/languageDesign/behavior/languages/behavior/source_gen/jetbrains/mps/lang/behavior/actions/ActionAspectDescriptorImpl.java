@@ -8,6 +8,8 @@ import java.util.Collection;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
+import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
+import java.util.Arrays;
 
 public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor implements ActionAspectDescriptor {
   private static final String LANGUAGE_FQ_NAME = "jetbrains.mps.lang.behavior";
@@ -24,4 +26,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
     return Collections.<NodeFactory>emptyList();
   }
 
+  @Override
+  public Collection<PasteWrapper> getPasteWrappers() {
+    return Arrays.asList(new PasteWrapper[]{new PasteConceptMethodDeclaration_PasteWrapper_0(), new PasteConceptMethodDeclaration_PasteWrapper_1()});
+  }
 }

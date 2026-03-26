@@ -10,9 +10,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -20,15 +21,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class wrappers_PasteWrapper_13 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.DefaultClassifierMethodDeclaration$Zx;
+    return CONCEPTS.BaseMethodDeclaration$kD;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.ClassifierMember$At;
+    return CONCEPTS.DefaultClassifierMethodDeclaration$Zx;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    SNode method = SNodeFactoryOperations.createNewNode(CONCEPTS.InstanceMethodDeclaration$39, null);
+    // FIXME likely shall move to bl.classifiers language, why it's here?!
+    SNode method = SNodeFactoryOperations.createNewNode(CONCEPTS.DefaultClassifierMethodDeclaration$Zx, null);
     SPropertyOperations.set(method, PROPS.name$MnvL, SPropertyOperations.getString(sourceNode, PROPS.name$MnvL));
     SLinkOperations.setTarget(method, LINKS.body$5xQk, SLinkOperations.getTarget(sourceNode, LINKS.body$5xQk));
     SPropertyOperations.set(method, PROPS.isFinal$eVPk, SPropertyOperations.getBoolean(sourceNode, PROPS.isFinal$eVPk));
@@ -38,19 +40,21 @@ public final class wrappers_PasteWrapper_13 implements PasteWrapper {
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.annotation$K49I)));
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.throwsItem$CdW$)));
     ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(sourceNode, LINKS.typeVariableDeclaration$Lipp)));
-    SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua, SLinkOperations.getTarget(sourceNode, LINKS.visibility$Yyua));
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.ThisClassifierExpression$xB, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisExpression$$o));
+    SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua, (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.IVisible$zu) ? SLinkOperations.getTarget(SNodeOperations.cast(sourceNode, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"))));
+    // [MM] what about supers?
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(method, LINKS.body$5xQk), CONCEPTS.IThisExpression$8h, false, new SAbstractConcept[]{})).visitAll((it) -> SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB));
+    // unfortunately, IThisExpression covers ThisClassifierExpression as well, but I feel this shall get addressed on top, 
+    // for the whole wrapper - no point in wrapping DCMD->DCMD, can paste directly.
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(sourceNode));
-    return SNodeOperations.cast(method, CONCEPTS.ClassifierMember$At);
+    return method;
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept DefaultClassifierMethodDeclaration$Zx = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd6ee3c3L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration");
-    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
-    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SInterfaceConcept IThisExpression$8h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d206f8d91L, "jetbrains.mps.baseLanguage.structure.IThisExpression");
     /*package*/ static final SConcept ThisClassifierExpression$xB = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
-    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
     /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
   }
 
