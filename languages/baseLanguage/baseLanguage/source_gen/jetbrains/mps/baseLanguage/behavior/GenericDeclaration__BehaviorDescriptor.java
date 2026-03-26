@@ -28,8 +28,9 @@ public final class GenericDeclaration__BehaviorDescriptor extends BaseBHDescript
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> supportsTypeVariables_id1HQHaHIk7vz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsTypeVariables").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1978967734659086307L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, supportsTypeVariables_id1HQHaHIk7vz);
 
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
@@ -37,6 +38,14 @@ public final class GenericDeclaration__BehaviorDescriptor extends BaseBHDescript
       return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$Lipp), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return null;
+  }
+  /*package*/ static boolean supportsTypeVariables_id1HQHaHIk7vz(@NotNull SAbstractConcept __thisConcept__) {
+    // generally, all subconcepts allow type variables (that's the whole point of GenericDeclaration).
+    // however, there are few that do not (yet?) support them, yet share parts of BL functionality and
+    // get GenericDeclaration in their hierarchy (like behavior.ConceptMethodDeclaration).
+    // Indeed, the proper way to accomplish is to remove GenericDeclaration from superconcepts, add 
+    // it as mix-in where needed, but this change is way too dramatic.
+    return true;
   }
 
   /*package*/ GenericDeclaration__BehaviorDescriptor() {
@@ -64,6 +73,8 @@ public final class GenericDeclaration__BehaviorDescriptor extends BaseBHDescript
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((Boolean) supportsTypeVariables_id1HQHaHIk7vz(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

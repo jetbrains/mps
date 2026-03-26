@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.GenericDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -34,7 +35,6 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public class addGenericTypeVariableInDeclaration extends TransformationMenuBase {
   public addGenericTypeVariableInDeclaration() {
@@ -60,7 +60,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
     }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && (boolean) GenericDeclaration__BehaviorDescriptor.supportsTypeVariables_id1HQHaHIk7vz.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())));
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -115,7 +115,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
     }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && (boolean) GenericDeclaration__BehaviorDescriptor.supportsTypeVariables_id1HQHaHIk7vz.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())));
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -167,10 +167,5 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
-    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

@@ -25,8 +25,9 @@ public final class Annotation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
 
   public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877531970L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> supportsTypeVariables_id1HQHaHIk7vz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsTypeVariables").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1978967734659086307L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwJjl2);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwJjl2, supportsTypeVariables_id1HQHaHIk7vz);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
@@ -36,6 +37,11 @@ public final class Annotation__BehaviorDescriptor extends BaseBHDescriptor {
     List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, CONCEPTS.Annotation$he);
     ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$_DCK)));
     return members;
+  }
+  /*package*/ static boolean supportsTypeVariables_id1HQHaHIk7vz(@NotNull SAbstractConcept __thisConcept__) {
+    // based on !isInstanceOf(Annotation) check in addGenericTypeVariableDeclaration and JLS 9.6
+    // Another nice example why using GenericDeclaration as superclass was poor design decision
+    return false;
   }
 
   /*package*/ Annotation__BehaviorDescriptor() {
@@ -67,6 +73,8 @@ public final class Annotation__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((Boolean) supportsTypeVariables_id1HQHaHIk7vz(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

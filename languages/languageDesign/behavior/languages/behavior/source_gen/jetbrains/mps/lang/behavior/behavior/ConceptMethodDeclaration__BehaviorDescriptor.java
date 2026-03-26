@@ -41,8 +41,9 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   public static final SMethod<Boolean> isAnAbstractMethod_id28P2dHxCoRl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnAbstractMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2464886109384052181L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getNearestOverriddenMethod_id4DuBHEkPTzU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNearestOverriddenMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5358895268254685434L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8510677279630867629L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> supportsTypeVariables_id1HQHaHIk7vz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsTypeVariables").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1978967734659086307L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtual_id6WSEafdhbZX, getBehaviour_idhP3pnNF, canBeAnnotated_idhWp4PwP, getContainingConcept_idi3POAMX, getOverridenMethod_idhP3pnNO, isCorrectlyOverriden_idhQYykEj, getOverridenMethodConcept_idhP3pnOc, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, isAnAbstractMethod_id28P2dHxCoRl, getNearestOverriddenMethod_id4DuBHEkPTzU, supportsCheckedExceptions_id7orZYjMoFMH);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtual_id6WSEafdhbZX, getBehaviour_idhP3pnNF, canBeAnnotated_idhWp4PwP, getContainingConcept_idi3POAMX, getOverridenMethod_idhP3pnNO, isCorrectlyOverriden_idhQYykEj, getOverridenMethodConcept_idhP3pnOc, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, isAnAbstractMethod_id28P2dHxCoRl, getNearestOverriddenMethod_id4DuBHEkPTzU, supportsCheckedExceptions_id7orZYjMoFMH, supportsTypeVariables_id1HQHaHIk7vz);
 
 
   /*package*/ static boolean isVirtual_id6WSEafdhbZX(@NotNull SNode __thisNode__) {
@@ -112,6 +113,9 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
   /*package*/ static boolean supportsCheckedExceptions_id7orZYjMoFMH(@NotNull SNode __thisNode__) {
     return false;
   }
+  /*package*/ static boolean supportsTypeVariables_id1HQHaHIk7vz(@NotNull SAbstractConcept __thisConcept__) {
+    return false;
+  }
 
   /*package*/ ConceptMethodDeclaration__BehaviorDescriptor() {
   }
@@ -160,6 +164,8 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 12:
+        return (T) ((Boolean) supportsTypeVariables_id1HQHaHIk7vz(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

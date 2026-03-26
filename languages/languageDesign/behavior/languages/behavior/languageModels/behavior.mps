@@ -32,6 +32,7 @@
       </concept>
       <concept id="1225194413805" name="jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration" flags="in" index="13hLZK" />
       <concept id="1225194472830" name="jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration" flags="ng" index="13i0hz">
+        <property id="5864038008284099149" name="isStatic" index="2Ki8OM" />
         <property id="1225194472832" name="isVirtual" index="13i0it" />
         <property id="1225194472834" name="isAbstract" index="13i0iv" />
         <reference id="1225194472831" name="overriddenMethod" index="13i0hy" />
@@ -2022,6 +2023,18 @@
     </node>
     <node concept="13hLZK" id="hP3pnPy" role="13h7CW">
       <node concept="3clFbS" id="hP3pnPz" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="1HQHaHIkgj9" role="13h7CS">
+      <property role="2Ki8OM" value="true" />
+      <property role="TrG5h" value="supportsTypeVariables" />
+      <ref role="13i0hy" to="tpek:1HQHaHIk7vz" resolve="supportsTypeVariables" />
+      <node concept="3Tm1VV" id="1HQHaHIkgja" role="1B3o_S" />
+      <node concept="3clFbS" id="1HQHaHIkgkn" role="3clF47">
+        <node concept="3clFbF" id="1HQHaHIkgOc" role="3cqZAp">
+          <node concept="3clFbT" id="1HQHaHIkgOb" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="10P_77" id="1HQHaHIkgko" role="3clF45" />
     </node>
   </node>
   <node concept="13h7C7" id="6tsH5JaReJr">

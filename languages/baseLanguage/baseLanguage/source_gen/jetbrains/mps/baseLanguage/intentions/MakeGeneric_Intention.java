@@ -15,6 +15,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.GenericDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -68,7 +69,7 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
       // todo: maybe not "everything except" but "just something"?
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$N0));
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp)).isEmpty() && (boolean) GenericDeclaration__BehaviorDescriptor.supportsTypeVariables_id1HQHaHIk7vz.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)));
     }
 
 
@@ -85,6 +86,5 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
-    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }
