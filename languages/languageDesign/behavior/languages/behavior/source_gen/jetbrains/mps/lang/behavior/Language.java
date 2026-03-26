@@ -20,6 +20,8 @@ import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
 import jetbrains.mps.lang.behavior.intentions.IntentionsDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.lang.behavior.migration.MigrationDescriptor;
+import jetbrains.mps.refactoring.runtime.RefactoringAspect;
+import jetbrains.mps.lang.behavior.refactorings.RefactoringAspectDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.lang.behavior.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
@@ -77,6 +79,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == MigrationAspectDescriptor.class) {
       return aspectClass.cast(new MigrationDescriptor());
+    }
+    if (aspectClass == RefactoringAspect.class) {
+      return aspectClass.cast(new RefactoringAspectDescriptor());
     }
     if (aspectClass == IHelginsDescriptor.class) {
       return aspectClass.cast(new TypesystemDescriptor());

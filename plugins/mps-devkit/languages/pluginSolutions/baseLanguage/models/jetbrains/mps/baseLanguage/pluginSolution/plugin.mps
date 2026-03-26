@@ -102,6 +102,7 @@
     <import index="j9ng" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.util(MPS.Platform/)" />
     <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
+    <import index="v0or" ref="r:604c8217-5ffe-4cd9-9dec-be90e8262c65(jetbrains.mps.lang.behavior.refactorings)" />
   </imports>
   <registry>
     <language id="97a52717-898f-4598-8150-573d9fd03868" name="jetbrains.mps.lang.dataFlow.analyzers">
@@ -9733,6 +9734,64 @@
     </node>
     <node concept="tnohg" id="2o0RM2fztWO" role="tncku">
       <node concept="3clFbS" id="2o0RM2fztWP" role="2VODD2">
+        <node concept="3SKdUt" id="1HQHaHIig5I" role="3cqZAp">
+          <node concept="1PaTwC" id="1HQHaHIig5J" role="1aUNEU">
+            <node concept="3oM_SD" id="1HQHaHIig5K" role="1PaTwD">
+              <property role="3oM_SC" value="JFYI," />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigml" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIign1" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigo6" role="1PaTwD">
+              <property role="3oM_SC" value="class" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIign8" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIignf" role="1PaTwD">
+              <property role="3oM_SC" value="reside" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigow" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigoT" role="1PaTwD">
+              <property role="3oM_SC" value="j.m.lang.behavior.pluginSolution," />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigsj" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigt5" role="1PaTwD">
+              <property role="3oM_SC" value="until" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigul" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigup" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIiguN" role="1PaTwD">
+              <property role="3oM_SC" value="one," />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIiguT" role="1PaTwD">
+              <property role="3oM_SC" value="resides" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigxH" role="1PaTwD">
+              <property role="3oM_SC" value="next" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigyi" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigym" role="1PaTwD">
+              <property role="3oM_SC" value="BL" />
+            </node>
+            <node concept="3oM_SD" id="1HQHaHIigyJ" role="1PaTwD">
+              <property role="3oM_SC" value="actions" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="2o0RM2fztWV" role="3cqZAp">
           <node concept="3cpWsn" id="2o0RM2fztWW" role="3cpWs9">
             <property role="TrG5h" value="modelAccess" />
@@ -9846,7 +9905,7 @@
                           </node>
                         </node>
                         <node concept="1Xdei3" id="2o0RM2fztZb" role="3cqZAp">
-                          <ref role="1Xdeis" to="qx6f:2DpPExh8v0x" resolve="SafeDeleteConceptMethod" />
+                          <ref role="1Xdeis" to="v0or:2DpPExh8v0x" resolve="SafeDeleteConceptMethod" />
                           <node concept="2OqwBi" id="2o0RM2fztZc" role="1Xdeiv">
                             <node concept="2WthIp" id="2o0RM2fztZd" role="2Oq$k0" />
                             <node concept="3gHZIF" id="2o0RM2fztZe" role="2OqNvi">
@@ -9878,7 +9937,7 @@
       <node concept="3clFbS" id="2o0RM2fztZp" role="2VODD2">
         <node concept="3clFbF" id="2o0RM2fztZq" role="3cqZAp">
           <node concept="3trCAK" id="2o0RM2fztZr" role="3clFbG">
-            <ref role="3trCAN" to="qx6f:2DpPExh8v0x" resolve="SafeDeleteConceptMethod" />
+            <ref role="3trCAN" to="v0or:2DpPExh8v0x" resolve="SafeDeleteConceptMethod" />
             <node concept="2OqwBi" id="2o0RM2fztZs" role="3trCLF">
               <node concept="2WthIp" id="2o0RM2fztZt" role="2Oq$k0" />
               <node concept="3gHZIF" id="2o0RM2fztZu" role="2OqNvi">

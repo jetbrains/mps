@@ -35,7 +35,7 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).isApplicable("jetbrains.mps.baseLanguage.refactorings.SafeDeleteConceptMethod", ((SNode) MapSequence.fromMap(_params).get("target")));
+    return RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).isApplicable("jetbrains.mps.lang.behavior.refactorings.SafeDeleteConceptMethod", ((SNode) MapSequence.fromMap(_params).get("target")));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -67,6 +67,7 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    // JFYI, this action class shall reside in j.m.lang.behavior.pluginSolution, but until we get one, resides next to BL actions
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     modelAccess.runReadInEDT(new Runnable() {
       @Override
@@ -75,7 +76,7 @@ public class SafeDeleteConceptMethod_Action extends BaseAction {
         if (!(node.getModel() != null) || !(SNodeUtil.isAccessible(node, ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository()))) {
           return;
         }
-        RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.SafeDeleteConceptMethod", Arrays.asList(), Arrays.asList(), ((SNode) MapSequence.fromMap(_params).get("target")), ((MPSProject) MapSequence.fromMap(_params).get("project"))));
+        RefactoringAccess.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.lang.behavior.refactorings.SafeDeleteConceptMethod", Arrays.asList(), Arrays.asList(), ((SNode) MapSequence.fromMap(_params).get("target")), ((MPSProject) MapSequence.fromMap(_params).get("project"))));
       }
     });
 

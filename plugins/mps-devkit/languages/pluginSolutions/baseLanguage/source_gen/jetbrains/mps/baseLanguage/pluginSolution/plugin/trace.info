@@ -1922,7 +1922,7 @@
       <node id="2738433904381648683" at="28,35,29,40" concept="6" />
       <node id="2738433904381648683" at="29,40,30,29" concept="6" />
       <node id="2738433904381648683" at="33,32,34,17" concept="13" />
-      <node id="2738433904381648858" at="37,87,38,235" concept="13" />
+      <node id="2738433904381648858" at="37,87,38,236" concept="13" />
       <node id="2738433904381648683" at="41,89,42,85" concept="6" />
       <node id="2738433904381648683" at="46,53,47,19" concept="13" />
       <node id="2738433904381648684" at="49,5,50,57" concept="12" />
@@ -1933,35 +1933,36 @@
       <node id="2738433904381648688" at="60,66,61,53" concept="6" />
       <node id="2738433904381648689" at="62,22,63,21" concept="13" />
       <node id="2738433904381648683" at="65,5,66,16" concept="13" />
-      <node id="2738433904381648699" at="69,96,70,122" concept="12" />
-      <node id="2738433904381648817" at="73,25,74,84" concept="12" />
-      <node id="2738433904381648828" at="75,152,76,17" concept="13" />
-      <node id="2738433904381648843" at="77,9,78,395" concept="6" />
-      <node id="2738433904381648855" at="80,7,81,0" concept="15" />
-      <node id="2738433904381648683" at="85,0,86,0" concept="16" trace="ConceptMethodDeclaration$N0" />
+      <node id="1978967734658597230" at="69,96,70,129" concept="14" />
+      <node id="2738433904381648699" at="70,129,71,122" concept="12" />
+      <node id="2738433904381648817" at="74,25,75,84" concept="12" />
+      <node id="2738433904381648828" at="76,152,77,17" concept="13" />
+      <node id="2738433904381648843" at="78,9,79,396" concept="6" />
+      <node id="2738433904381648855" at="81,7,82,0" concept="15" />
+      <node id="2738433904381648683" at="86,0,87,0" concept="16" trace="ConceptMethodDeclaration$N0" />
       <node id="2738433904381648683" at="45,95,48,5" concept="10" />
       <node id="2738433904381648684" at="50,57,53,7" concept="10" />
       <node id="2738433904381648687" at="54,55,57,7" concept="10" />
       <node id="2738433904381648689" at="61,53,64,7" concept="10" />
-      <node id="2738433904381648826" at="74,84,77,9" concept="10" />
+      <node id="2738433904381648826" at="75,84,78,9" concept="10" />
       <node id="2738433904381648683" at="32,0,36,0" concept="11" trace="isDumbAware#()Z" />
       <node id="2738433904381648683" at="36,0,40,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="2738433904381648683" at="40,0,44,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="2738433904381648683" at="26,0,32,0" concept="4" trace="SafeDeleteConceptMethod_Action#()V" />
       <node id="2738433904381648688" at="58,5,65,5" concept="2" />
-      <node id="2738433904381648813" at="72,0,80,0" concept="11" trace="run#()V" />
+      <node id="2738433904381648813" at="73,0,81,0" concept="11" trace="run#()V" />
       <node id="2738433904381648684" at="48,5,58,5" concept="2" />
-      <node id="2738433904381648805" at="70,122,80,7" concept="6" />
-      <node id="2738433904381648683" at="68,0,83,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="2738433904381648805" at="71,122,81,7" concept="6" />
+      <node id="2738433904381648683" at="68,0,84,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="2738433904381648683" at="44,0,68,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="2738433904381648683" at="33,32,34,17" />
-      <scope id="2738433904381648857" at="37,87,38,235" />
+      <scope id="2738433904381648857" at="37,87,38,236" />
       <scope id="2738433904381648683" at="41,89,42,85" />
       <scope id="2738433904381648683" at="46,53,47,19" />
       <scope id="2738433904381648684" at="51,104,52,20" />
       <scope id="2738433904381648687" at="55,25,56,21" />
       <scope id="2738433904381648689" at="62,22,63,21" />
-      <scope id="2738433904381648827" at="75,152,76,17" />
+      <scope id="2738433904381648827" at="76,152,77,17" />
       <scope id="2738433904381648683" at="26,43,30,29" />
       <scope id="2738433904381648683" at="32,0,36,0" />
       <scope id="2738433904381648683" at="36,0,40,0">
@@ -1975,18 +1976,18 @@
       <scope id="2738433904381648688" at="59,5,64,7">
         <var name="p" id="2738433904381648688" />
       </scope>
-      <scope id="2738433904381648816" at="73,25,78,395">
+      <scope id="2738433904381648816" at="74,25,79,396">
         <var name="node" id="2738433904381648818" />
       </scope>
       <scope id="2738433904381648683" at="26,0,32,0" />
       <scope id="2738433904381648684" at="49,5,57,7">
         <var name="node" id="2738433904381648684" />
       </scope>
-      <scope id="2738433904381648813" at="72,0,80,0" />
-      <scope id="2738433904381648683" at="69,96,81,0">
+      <scope id="2738433904381648813" at="73,0,81,0" />
+      <scope id="2738433904381648683" at="69,96,82,0">
         <var name="modelAccess" id="2738433904381648700" />
       </scope>
-      <scope id="2738433904381648683" at="68,0,83,0">
+      <scope id="2738433904381648683" at="68,0,84,0">
         <var name="_params" id="2738433904381648683" />
         <var name="event" id="2738433904381648683" />
       </scope>
@@ -1995,9 +1996,9 @@
         <var name="_params" id="2738433904381648683" />
         <var name="event" id="2738433904381648683" />
       </scope>
-      <unit id="2738433904381648683" at="84,0,87,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action$CONCEPTS" />
-      <unit id="2738433904381648811" at="71,33,80,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action$1" />
-      <unit id="2738433904381648683" at="23,0,88,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action" />
+      <unit id="2738433904381648683" at="85,0,88,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action$CONCEPTS" />
+      <unit id="2738433904381648811" at="72,33,81,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action$1" />
+      <unit id="2738433904381648683" at="23,0,89,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action" />
     </file>
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/3201523885428168342">
