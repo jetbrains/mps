@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -127,11 +127,10 @@ final class AttachedNodeOwner extends SNodeOwner {
     //     (copied node preserves id of the original node, and if pasted into same model, there's id conflict which is resolved in SModel.assignNewId())
     myModel.registerNode(node);
     node.setNodeOwner(this);
-    // for an attached node, its complete subtree has to share same SNodeOwner, assign it unconditionally
-    // FIXME why UnregisteredNodes.put in SNode#unRegisterFromModel (#detach(SNodeOwner)) us conditioned with !isUpdateMode(), and this one is not?
-    //       I suppose the reason was remove() doesn't hurt in case there's no such node, though not 100% sure
+    // commandContext is EMPTY in isUpdateMode(), no need to check explicitly.
     commandContext.nodeAttached(node);
 
+    // for an attached node, its complete subtree has to share same SNodeOwner, assign it unconditionally
     for (SNode child = node.firstChild(); child != null; child = child.treeNext()) {
       doRegister(child, commandContext);
     }
@@ -149,7 +148,7 @@ final class AttachedNodeOwner extends SNodeOwner {
       // as it's not possible (node.sibling.detach could come right after node.detach) we at least go easy path for references within a detached subtree
       final org.jetbrains.mps.openapi.model.SModel current = myModel.getModelDescriptor();
       final TransitionDirect transition = new TransitionDirect(current);
-      node.forEachAssociationDeep(data -> transition.makeDirect(data));
+      node.forEachAssociationDeep(transition::makeDirect);
       // Direct object pointers facilitate reference access operations from the detached nodes just in case there's need.
     }
 
@@ -159,10 +158,8 @@ final class AttachedNodeOwner extends SNodeOwner {
   // pre: myCommandContext != null
   private void doUnregister(DetachedNodeOwner detachedOwner, SNode node, ModelCommandContext commandContext) {
     myModel.unregisterNode(node);
-    if (!myModel.isUpdateMode()) {
-      // XXX perhaps, SModel shall tell myOwner.enterUpdate()/myOwner.leaveUpdate() instead of isUpdateMode checks?
-      commandContext.nodeDetached(node);
-    }
+    // commandContext is EMPTY in isUpdateMode(), no need to check explicitly.
+    commandContext.nodeDetached(node);
     // XXX when we put a node in UnregisteredNodes, it better keep original SModel so that any reference pointing to the node could still get resolved.
     //     Tests like MakeFieldNonStaticAndHaveReferencesUpdated fail if UN receives a node with detached model owner (model unset)
     node.setNodeOwner(detachedOwner);
@@ -252,11 +249,10 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   /*package*/ void fireReferenceChange(SNode node, SReferenceLink l, AssociationData oldRef, AssociationData newRef) {
-    // FIXME is it true we need to register immature even in update mode?
-    commandContext().associationSet(node, l, newRef);
     if (myModel.isUpdateMode()) {
       return;
     }
+    commandContext().associationSet(node, l, newRef);
     if (oldRef != null) {
       myModel.fireReferenceRemovedEvent(node.toAPI(l, oldRef));
     }
@@ -322,7 +318,13 @@ final class AttachedNodeOwner extends SNodeOwner {
     }
   }
 
+  // XXX I wonder if MCC shall be tracked by the model, rather than by NodeOwner?
+  //     If not, perhaps, SModel shall tell myOwner.enterUpdate()/myOwner.leaveUpdate() instead of explicit myModel.isUpdateMode() checks?
   /*package*/ ModelCommandContext commandContext() {
+    if (myModel.isUpdateMode()) {
+      // I assume update mode shall behave the same regardless of running command(i.e. could happen during model read), hence I force "no MCC" here
+      return ModelCommandContext.EMPTY;
+    }
     final SRepository repo = myModel.getRepository();
     final org.jetbrains.mps.openapi.model.SModel md = myModel.getModelDescriptor();
     if (repo == null || md == null) {
@@ -333,6 +335,7 @@ final class AttachedNodeOwner extends SNodeOwner {
       final ModelCommandContext cc = ((Provider) ma).getCommandContext(md);
       return cc == null ? ModelCommandContext.EMPTY : cc;
     }
+    // XXX as a fallback (or even as a main mechanism) could look up thread-local MA or MCC.Provider  instance here, see WMA comment for MCC.Provider
     return ModelCommandContext.EMPTY;
   }
 }
