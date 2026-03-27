@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
  * @author Alex Pyshkin
  * @author Artem.Tikhomirov
  */
-public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess {
+public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
 
   private final org.jetbrains.mps.openapi.module.ModelAccess myDelegate;
   // this is solely to address ProjectModelAccess residing in j.m.project package. PMA2 is in j.m.smodel and manages command listeners itself.
@@ -167,4 +167,18 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     //       to give SRMA or throw an error.
     return new SharedReadModelAccessImpl(actualImpl.shareRead());
   }
+
+  @Nullable
+  @Override
+  public ModelCommandContext getCommandContext(SModel model) {
+    // Provisional code, have to keep delegation to actual MA impl for MPS from sources scenarios, where core languages get loaded on MPS start into MPSModuleRepository
+    // and the hack in ProjectRepository to associate the right repo with the module doesn't work, leaving GMA for most languages discovered on the start.
+    // Once we have distinct module copies in ProjectRepository, editing them would not need this delegation, as these copies would
+    // report ProjectRepository and PMA for MCC discovery.
+    // Another alternative I entertained yet never got to explore is to have MA.executeCommand to set ThreadLocal MCC.Provider and let
+    // AttachedNodeOwner grab the right instance direcly, w/o repository->MA chain.
+    // fwiw, if it's WMA delegate, it is MCC.Provider.
+    return getDelegate() instanceof ModelCommandContext.Provider ? ((ModelCommandContext.Provider) getDelegate()).getCommandContext(model) : null;
+  }
+
 }

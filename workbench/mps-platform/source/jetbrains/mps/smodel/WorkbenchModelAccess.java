@@ -24,6 +24,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.util.RunWithOutcome;
 
 import java.math.BigDecimal;
@@ -39,7 +40,7 @@ import static java.math.BigDecimal.valueOf;
  * We access IDEA locking mechanism here in order to prevent different way of acquiring locks
  * We always first acquire IDEA's lock and only then acquire MPS's lock
  */
-public final class WorkbenchModelAccess extends ModelAccess implements Disposable {
+public final class WorkbenchModelAccess extends ModelAccess implements Disposable, ModelCommandContext.Provider {
   private static final int WAIT_FOR_WRITE_LOCK_MILLIS = 200;
   private static final String IDEA_WRITE_LOCK_FAIL = "Failed to acquire the IDEA write lock after having waited for %.3f s";
 
@@ -295,6 +296,25 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   @Override
   public boolean hasScheduledWrites() {
     return myPlatformWriteHelper.hasScheduledWrites() || super.hasScheduledWrites();
+  }
+
+  // provisional code until all project modules have proper ProjectRepository (even those duplicating modules in MPSModuleRepository, i.e. discovered on start)
+  // XXX However, even then we'd need a delegation, as I feel editing bootstrap modules (loaded before project has been initialized) should fall under the
+  // same rules as editing project modules (while in IDE). Perhaps, this means MCC or IDEA Command handling has to become a separate service to use from different
+  // MA implementations. Or it could be that GMA tracks MCC, too.
+  private ModelCommandContext.Provider myCurrentCommandContextProvider;
+
+  /*package*/ void installMCC(ModelCommandContext.Provider p) {
+    myCurrentCommandContextProvider = p;
+  }
+  /*package*/ void uninstallMCC(ModelCommandContext.Provider p) {
+    assert myCurrentCommandContextProvider == p;
+    myCurrentCommandContextProvider = null;
+  }
+
+  @Override
+  public @Nullable ModelCommandContext getCommandContext(SModel model) {
+    return myCurrentCommandContextProvider == null ? null : myCurrentCommandContextProvider.getCommandContext(model);
   }
 
   private static class NoLock implements Lock {

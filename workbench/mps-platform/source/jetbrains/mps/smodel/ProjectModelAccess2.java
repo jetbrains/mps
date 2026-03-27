@@ -45,10 +45,12 @@ final class ProjectModelAccess2 extends ModelAccessBase implements ModelCommandC
       @Override
       public void commandStarted() {
         myCommandContextProvider.engage();
+        mySharedImpl.installMCC(ProjectModelAccess2.this);
       }
 
       @Override
       public void commandFinished() {
+        mySharedImpl.uninstallMCC(ProjectModelAccess2.this);
         myCommandContextProvider.discard();
       }
     }, CommandListener::commandStarted, CommandListener::commandFinished);
