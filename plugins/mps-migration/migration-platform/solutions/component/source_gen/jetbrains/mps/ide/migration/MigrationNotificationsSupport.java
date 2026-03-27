@@ -163,7 +163,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
       sb.append(" (first ").append(threshold).append(" of ").append(ListSequence.fromList(problems).count()).append(" shown)");
     }
     sb.append(":");
-    sb.append("<p>");
+    sb.append("<br>");
 
     sb.append("<ul>");
     myMpsProject.getModelAccess().runReadAction(() -> {
@@ -179,7 +179,8 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
           sb.append(langName);
           sb.append("</a>");
         }
-        sb.append('(').append((absent ? "absent" : "dependency problem")).append(')');
+        sb.append("&nbsp;");
+        sb.append('(').append((absent ? "absent" : "dependency&nbsp;problem")).append(')');
         sb.append("</li>");
         ix++;
       }
