@@ -108,7 +108,6 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   public void registerNode(SNode node) {
-    myModel.enforceFullLoad(); // FIXME dubious need to perform full load if all we do is populating id map
     doRegister(node, commandContext());
     if (myModel.getRepository() != null) {
       // one can hardly expect to navigate/resolve indirect (aka 'mature') reference from a node that belongs to a model
