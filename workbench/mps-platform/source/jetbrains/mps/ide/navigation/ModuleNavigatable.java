@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 * evgeny, 11/6/11
 */
 public class ModuleNavigatable extends BaseNavigatable {
-  private SModuleReference myModuleReference;
+  private final SModuleReference myModuleReference;
 
   public ModuleNavigatable(@NotNull Project project, @NotNull SModuleReference moduleReference) {
     super(project);
