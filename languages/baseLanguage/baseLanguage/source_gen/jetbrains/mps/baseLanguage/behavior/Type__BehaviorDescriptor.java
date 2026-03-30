@@ -55,11 +55,10 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> hasMissingParameters_id32KZwowVoMu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMissingParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3508583411997314206L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getLooseType_id4YTQtEKnnzf = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLooseType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5744862332972792015L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<String> jniSignature_id7F81Cd2C7e3 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8847328628797633411L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> canBeCoerced_id5uUZ$FUUb6B = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6321644624958501287L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isValueType_id4bFkYVCcmm2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValueType").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4822040111593121154L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getSupertypes_id4w2h6RLlygH, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id5uUZ$FUUb6B, canBeCoerced_id476YRQvP9l3, isValueType_id4bFkYVCcmm2);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getSupertypes_id4w2h6RLlygH, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, isReifiable_id2soW6EObTNQ, isValueType_id4ctkEngAqej, getBoxedType_idhEwIzNC, getAbstractCreator_idhEwIzNW, getAbstractCreators_idhQFCQT0, getAbstractCreators_id6A07P3f4z36, getJavaType_idhEwIzO1, selectOnVariableCreation_idhEwIzO8, getClassExpression_idhEwIzOd, isSupersetOf_idhKBOZqh, isSupersetOf_id7PgshREdQKp, createDefaultTypeExpression_id2UvJdVpqUA4, hasMissingParameters_id32KZwowVoMu, getLooseType_id4YTQtEKnnzf, jniSignature_id7F81Cd2C7e3, canBeCoerced_id476YRQvP9l3, isValueType_id4bFkYVCcmm2);
 
 
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
@@ -164,13 +163,8 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String jniSignature_id7F81Cd2C7e3(@NotNull SNode __thisNode__) {
     return null;
   }
-  @Deprecated(since = "3.5", forRemoval = true)
-  /*package*/ static boolean canBeCoerced_id5uUZ$FUUb6B(@NotNull SNode __thisNode__, String conceptFqName) {
-    return true;
-  }
   /*package*/ static boolean canBeCoerced_id476YRQvP9l3(@NotNull SNode __thisNode__, SAbstractConcept c) {
-    // todo remove body after 3.5
-    return ((boolean) Type__BehaviorDescriptor.canBeCoerced_id5uUZ$FUUb6B.invoke(__thisNode__, c.getQualifiedName()));
+    return true;
   }
   /*package*/ static boolean isValueType_id4bFkYVCcmm2(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -228,8 +222,6 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
       case 19:
         return (T) ((String) jniSignature_id7F81Cd2C7e3(node));
       case 20:
-        return (T) ((Boolean) canBeCoerced_id5uUZ$FUUb6B(node, (String) parameters[0]));
-      case 21:
         return (T) ((Boolean) canBeCoerced_id476YRQvP9l3(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -243,7 +235,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 22:
+      case 21:
         return (T) ((Boolean) isValueType_id4bFkYVCcmm2(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
