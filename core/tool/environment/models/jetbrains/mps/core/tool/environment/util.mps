@@ -583,11 +583,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="15VbAzMFiCh" role="3cqZAp">
-          <node concept="1rXfSq" id="15VbAzMFiCf" role="3clFbG">
-            <ref role="37wK5l" node="2doG_VG59L8" resolve="init" />
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="2doG_VG59Hy" role="3clF46">
         <property role="TrG5h" value="file" />
@@ -815,27 +810,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="15VbAzMFoup" role="jymVt" />
-    <node concept="3clFb_" id="2doG_VG59L8" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="init" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm6S6" id="15VbAzMFOvC" role="1B3o_S" />
-      <node concept="3cqZAl" id="2doG_VG59Lc" role="3clF45" />
-      <node concept="3clFbS" id="2doG_VG59Ld" role="3clF47">
-        <node concept="3clFbF" id="7tyinJya3wk" role="3cqZAp">
-          <node concept="1rXfSq" id="7tyinJya3wi" role="3clFbG">
-            <ref role="37wK5l" node="6wBM5jhYLha" resolve="update" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="15VbAzMFufQ" role="3cqZAp">
-          <node concept="1rXfSq" id="15VbAzMFuiE" role="3clFbG">
-            <ref role="37wK5l" to="z1c3:~ProjectBase.projectOpened()" resolve="projectOpened" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3RkWhWCP1e9" role="jymVt" />
-    <node concept="2tJIrI" id="6wBM5jhYKui" role="jymVt" />
     <node concept="3clFb_" id="6wBM5jhYLha" role="jymVt">
       <property role="TrG5h" value="update" />
       <node concept="3Tmbuc" id="6wBM5jhYLhb" role="1B3o_S" />

@@ -100,8 +100,8 @@ public abstract class EnvironmentBase implements Environment {
 
   /**
    * Root class loader:
-   * 1. As a root class loader for libraries in LibraryInitializer
-   * 2. As a root class loader for dumb idea plugin facet
+   * <ol><li>As a root class loader for libraries in LibraryInitializer<li>
+   * <li>As a root class loader for dumb idea plugin facet<li></ol>
    */
   @Nullable
   protected final ClassLoader getRootClassLoader() {

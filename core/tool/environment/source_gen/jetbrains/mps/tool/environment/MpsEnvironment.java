@@ -67,6 +67,7 @@ public final class MpsEnvironment extends EnvironmentBase {
   @NotNull
   public Project doOpenProject(@NotNull File projectFile) {
     FileMPSProject project = new FileMPSProject(projectFile, myPlatform);
+    project.projectOpened();
     return project;
   }
 

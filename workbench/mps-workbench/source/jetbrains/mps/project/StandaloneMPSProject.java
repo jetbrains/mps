@@ -41,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * This class is for MPS as a standalone IDE, while MPSProject is in use in MPS as IDEA plugin.
@@ -83,6 +84,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   // empty by default until the state is initialized
   private ProjectDescriptor myProjectDescriptor = ProjectDescriptor.EMPTY;
+  private final AtomicBoolean myProjectOpened = new AtomicBoolean(false);
 
   @SuppressWarnings("UnusedParameters")
   public StandaloneMPSProject(final Project project) {
@@ -122,14 +124,19 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
       // here, global macro helper is ok, as it's IDEA's responsibility to expand $PROJECT_DIR$ in modules.xml
       myProjectDescriptor = new ProjectDescriptorPersistence(projectFile, MacrosFactory.getGlobal()).load(state);
-      // avoid blocking the thread on a read action
-      ApplicationManager.getApplication().invokeLater(this::update);
+      if (myProjectOpened.get()) {
+        // avoid blocking the thread on a read action
+        ApplicationManager.getApplication().invokeLater(this::update);
+      }
     }
   }
 
   @Override
   public void projectOpened() {
     super.projectOpened();
+    if (!myProjectOpened.compareAndSet(false, true)) {
+      LOG.error("Failed to record project state");
+    }
     new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
   }
 
@@ -138,6 +145,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     new RepoListenerRegistrar(getRepository(), myProblemsListener).detach();
     removeListener(myListener);
     super.projectClosed();
+    if (!myProjectOpened.compareAndSet(true, false)) {
+      LOG.error("Failed to record project state");
+    }
   }
 
   // todo remove; project descriptor is its internal substance which represents the persistence data

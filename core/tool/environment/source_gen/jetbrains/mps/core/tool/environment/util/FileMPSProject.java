@@ -33,7 +33,6 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
     r.init();
     initRepository(r);
     myProjectFile = file;
-    init();
   }
 
   @NotNull
@@ -54,12 +53,6 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
       ex.printStackTrace();
     }
   }
-
-  private void init() {
-    update();
-    projectOpened();
-  }
-
 
   @Override
   protected void update() {
