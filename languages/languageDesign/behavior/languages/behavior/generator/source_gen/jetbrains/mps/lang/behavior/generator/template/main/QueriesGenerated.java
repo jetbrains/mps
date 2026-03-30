@@ -143,6 +143,12 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetValue_6_14(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.concept$u6dL), PROPS.name$MnvL) + Constants.BEHAVIOR_DESCRIPTOR_SUFFIX;
   }
+  public static Object propertyMacro_GetValue_7_0(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
+  }
+  public static Object propertyMacro_GetValue_7_1(final PropertyMacroContext _context) {
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
+  }
   public static Object propertyMacro_GetValue_8_0(final PropertyMacroContext _context) {
     return (Integer) _context.getVariable("loop:index");
   }
@@ -512,7 +518,7 @@ public class QueriesGenerated {
     SNode type = SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY);
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.VariableArityType$KF)) {
       SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
-      return _quotation_createNode_x583g4_a1a1a211(componentType);
+      return _quotation_createNode_x583g4_a1a1a111(componentType);
     }
     return type;
   }
@@ -731,7 +737,7 @@ public class QueriesGenerated {
   public static Object varMacro_Value_27_0(final TemplateVarContext _context) {
     return new ConceptMethodGenerationHelper(_context.getNode());
   }
-  private static SNode _quotation_createNode_x583g4_a1a1a211(Object parameter_1) {
+  private static SNode _quotation_createNode_x583g4_a1a1a111(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"));

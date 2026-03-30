@@ -20,9 +20,12 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import java.util.Collections;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -79,6 +82,7 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
+          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_7_0(new PropertyMacroContext(context1, null, propertyMacro)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
@@ -118,6 +122,7 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
+          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_7_1(new PropertyMacroContext(context1, null, propertyMacro1)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
@@ -135,6 +140,12 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
       return rv;
     }
 
+    @Override
+    public SProperty[] properties() {
+      SProperty[] rv = new SProperty[1];
+      rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+      return rv;
+    }
 
     @Override
     public SReferenceLink[] associations() {
@@ -154,8 +165,10 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
   }
   private static final SNodePointer switchMacroRef = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515193570");
   private static final SNodePointer templateSwitchNode = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1856797460908937889");
   private static final SNodePointer switchMacroRef1 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7830995205626232435");
   private static final SNodePointer templateSwitchNode1 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1856797460908930214");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
