@@ -180,9 +180,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="363746191845183785" name="jetbrains.mps.baseLanguage.structure.LoopLabelReference" flags="ng" index="3Wmhwi">
         <reference id="363746191845183786" name="loopLabel" index="3Wmhwh" />
       </concept>
@@ -974,23 +971,6 @@
       <node concept="_YKpA" id="4Y6dJjrkGE" role="3clF45">
         <node concept="17QB3L" id="4Y6dJjrkGF" role="_ZDj9" />
       </node>
-    </node>
-    <node concept="13i0hz" id="hEwIOjT" role="13h7CS">
-      <property role="TrG5h" value="getClassExpression" />
-      <ref role="13i0hy" to="tpek:hEwIzOd" resolve="getClassExpression" />
-      <node concept="3clFbS" id="hEwIOjU" role="3clF47">
-        <node concept="3clFbF" id="hEwIOjV" role="3cqZAp">
-          <node concept="2c44tf" id="hEwIOjW" role="3clFbG">
-            <node concept="3VsKOn" id="hEwIOjX" role="2c44tc">
-              <ref role="3VsUkX" to="wyt6:~Object" resolve="Object" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tqbb2" id="hEwIOjY" role="3clF45">
-        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
-      </node>
-      <node concept="3Tm1VV" id="hJrm0th" role="1B3o_S" />
     </node>
     <node concept="13i0hz" id="hEwIOjZ" role="13h7CS">
       <property role="TrG5h" value="getRuntimeSignature" />

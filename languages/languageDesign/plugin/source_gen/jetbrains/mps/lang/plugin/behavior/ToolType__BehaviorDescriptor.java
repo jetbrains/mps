@@ -23,16 +23,12 @@ public final class ToolType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
 
   public static final SMethod<List<SNode>> getMembers_idhEwINC$ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877402148L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwINC$, getClassExpression_idhEwIzOd);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwINC$);
 
 
   /*package*/ static List<SNode> getMembers_idhEwINC$(@NotNull SNode __thisNode__, SNode contextNode) {
     return (List<SNode>) IClassifier__BehaviorDescriptor.getMembers_idhEwJioW.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.tool$pL83));
-  }
-  /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
-    return null;
   }
 
   /*package*/ ToolType__BehaviorDescriptor() {
@@ -48,8 +44,6 @@ public final class ToolType__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((List<SNode>) getMembers_idhEwINC$(node, (SNode) parameters[0]));
-      case 1:
-        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

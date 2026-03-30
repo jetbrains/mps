@@ -28,8 +28,9 @@ public final class PrimitiveType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getErasureSignature_idhEwIzNx = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getErasureSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337313L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(702942408396803226L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getJavaType_idhEwIzO1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337345L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, getJavaType_idhEwIzO1);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, getJavaType_idhEwIzO1, getClassExpression_idhEwIzOd);
 
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
@@ -46,6 +47,11 @@ public final class PrimitiveType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getJavaType_idhEwIzO1(@NotNull SNode __thisNode__) {
     return __thisNode__;
+  }
+  @Deprecated
+  /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
+    // just to track overrides in sub-concepts
+    return null;
   }
 
   /*package*/ PrimitiveType__BehaviorDescriptor() {
@@ -69,6 +75,8 @@ public final class PrimitiveType__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((SNode) getErasure_idB1mAlA38Mq(node));
       case 4:
         return (T) ((SNode) getJavaType_idhEwIzO1(node));
+      case 5:
+        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

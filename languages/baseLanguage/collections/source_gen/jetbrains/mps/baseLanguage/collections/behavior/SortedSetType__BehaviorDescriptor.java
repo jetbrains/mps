@@ -28,9 +28,8 @@ public final class SortedSetType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType");
 
   public static final SMethod<List<SNode>> getAbstractCreators_id6A07P3f4z36 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAbstractCreators").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7602110602933317830L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAbstractCreators_id6A07P3f4z36, getClassExpression_idhEwIzOd);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAbstractCreators_id6A07P3f4z36);
 
 
   /*package*/ static List<SNode> getAbstractCreators_id6A07P3f4z36(@NotNull SNode __thisNode__, SModel targetModel) {
@@ -38,9 +37,6 @@ public final class SortedSetType__BehaviorDescriptor extends BaseBHDescriptor {
     ListSequence.fromList(result).addElement(_quotation_createNode_7p913d_a0a1a0(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$tQrQ)));
     ListSequence.fromList(result).addSequence(Sequence.fromIterable(CustomContainersUtil.containerCreators(targetModel, __thisNode__)));
     return result;
-  }
-  /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_7p913d_a0a1();
   }
 
   /*package*/ SortedSetType__BehaviorDescriptor() {
@@ -56,8 +52,6 @@ public final class SortedSetType__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((List<SNode>) getAbstractCreators_id6A07P3f4z36(node, (SModel) parameters[0]));
-      case 1:
-        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -96,13 +90,6 @@ public final class SortedSetType__BehaviorDescriptor extends BaseBHDescriptor {
       quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType"), SNodeOperations.copyIfNecessary(quotedNode_3));
     }
     return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_7p913d_a0a1() {
-    SNode quotedNode_1 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression"));
-    quotedNode_1 = nb.getResult();
-    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)/~SortedSet");
-    return quotedNode_1;
   }
 
   private static final class LINKS {

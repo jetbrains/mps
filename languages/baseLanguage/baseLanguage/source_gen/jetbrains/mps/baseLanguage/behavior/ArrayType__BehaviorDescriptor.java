@@ -19,8 +19,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SNodeMatcher;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -36,7 +36,6 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(702942408396803226L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<SNode>> getSupertypes_id4w2h6RLlygH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSupertypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5188784959675311149L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getJavaType_idhEwIzO1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337345L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337304L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> hasPluralVariableSuffixes_id1gn9ujF3bz3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPluralVariableSuffixes").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(1447667470349154499L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getAbstractCreator_idhEwIzNW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAbstractCreator").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337340L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
@@ -45,7 +44,7 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<SNode> eraseGenerics_id4qyz6djw13y = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("eraseGenerics").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5089784887112634594L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getJavaType_idhEwIzO1, getClassExpression_idhEwIzOd, getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getAbstractCreator_idhEwIzNW, jniSignature_id7F81Cd2C7e3, isReifiable_id2soW6EObTNQ, canBeCoerced_id476YRQvP9l3, eraseGenerics_id4qyz6djw13y);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getErasureSignature_idhEwIzNx, getErasure_idB1mAlA38Mq, getSupertypes_id4w2h6RLlygH, getJavaType_idhEwIzO1, getVariableSuffixes_idhEwIzNo, hasPluralVariableSuffixes_id1gn9ujF3bz3, getAbstractCreator_idhEwIzNW, jniSignature_id7F81Cd2C7e3, isReifiable_id2soW6EObTNQ, canBeCoerced_id476YRQvP9l3, eraseGenerics_id4qyz6djw13y);
 
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
@@ -80,11 +79,6 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
     SNode result = SNodeOperations.copyNode(__thisNode__);
     SLinkOperations.setTarget(result, LINKS.componentType$F$Gi, Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(SLinkOperations.getTarget(result, LINKS.componentType$F$Gi)));
     return result;
-  }
-  /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
-    SNode expr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression"));
-    SLinkOperations.setTarget(expr, LINKS.arrayType$G7IM, SNodeOperations.cast(Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(__thisNode__), CONCEPTS.ArrayType$rh));
-    return expr;
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "array");
@@ -156,20 +150,18 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
       case 4:
         return (T) ((SNode) getJavaType_idhEwIzO1(node));
       case 5:
-        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
-      case 6:
         return (T) ((List<String>) getVariableSuffixes_idhEwIzNo(node));
-      case 7:
+      case 6:
         return (T) ((Boolean) hasPluralVariableSuffixes_id1gn9ujF3bz3(node));
-      case 8:
+      case 7:
         return (T) ((SNode) getAbstractCreator_idhEwIzNW(node));
-      case 9:
+      case 8:
         return (T) ((String) jniSignature_id7F81Cd2C7e3(node));
-      case 10:
+      case 9:
         return (T) ((Boolean) isReifiable_id2soW6EObTNQ(node));
-      case 11:
+      case 10:
         return (T) ((Boolean) canBeCoerced_id476YRQvP9l3(node, (SAbstractConcept) parameters[0]));
-      case 12:
+      case 11:
         return (T) ((SNode) eraseGenerics_id4qyz6djw13y(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -224,7 +216,6 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink arrayType$G7IM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
     /*package*/ static final SContainmentLink dimensionExpression$DH6N = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e4b36742L, "dimensionExpression");
     /*package*/ static final SContainmentLink componentType$SJjq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
   }

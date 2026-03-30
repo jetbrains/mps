@@ -204,9 +204,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -775,23 +772,6 @@
       </node>
       <node concept="3Tm1VV" id="hJrm0rA" role="1B3o_S" />
     </node>
-    <node concept="13i0hz" id="hEwIksR" role="13h7CS">
-      <property role="TrG5h" value="getClassExpression" />
-      <ref role="13i0hy" to="tpek:hEwIzOd" resolve="getClassExpression" />
-      <node concept="3clFbS" id="hEwIksS" role="3clF47">
-        <node concept="3clFbF" id="hEwIksT" role="3cqZAp">
-          <node concept="2c44tf" id="hEwIksU" role="3clFbG">
-            <node concept="3VsKOn" id="hEwIksV" role="2c44tc">
-              <ref role="3VsUkX" to="33ny:~List" resolve="List" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tqbb2" id="hEwIksW" role="3clF45">
-        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
-      </node>
-      <node concept="3Tm1VV" id="hJrm0v2" role="1B3o_S" />
-    </node>
     <node concept="13i0hz" id="32KZwowYg6a" role="13h7CS">
       <property role="TrG5h" value="hasMissingParameters" />
       <ref role="13i0hy" to="tpek:32KZwowVoMu" resolve="hasMissingParameters" />
@@ -1280,23 +1260,6 @@
         <ref role="ehGHo" to="tpee:gEShaYr" resolve="AbstractCreator" />
       </node>
       <node concept="3Tm1VV" id="hJrm0pd" role="1B3o_S" />
-    </node>
-    <node concept="13i0hz" id="hEwIuTb" role="13h7CS">
-      <property role="TrG5h" value="getClassExpression" />
-      <ref role="13i0hy" to="tpek:hEwIzOd" resolve="getClassExpression" />
-      <node concept="3clFbS" id="hEwIuTc" role="3clF47">
-        <node concept="3cpWs6" id="hEwIuTd" role="3cqZAp">
-          <node concept="2c44tf" id="hEwIuTe" role="3cqZAk">
-            <node concept="3VsKOn" id="3h0hLt2K7cN" role="2c44tc">
-              <ref role="3VsUkX" to="mhbf:~SNode" resolve="SNode" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tqbb2" id="hEwIuTg" role="3clF45">
-        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
-      </node>
-      <node concept="3Tm1VV" id="hJrm0tg" role="1B3o_S" />
     </node>
     <node concept="13i0hz" id="32KZwowYg6N" role="13h7CS">
       <property role="TrG5h" value="hasMissingParameters" />

@@ -14,10 +14,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.impl.reference.RefResolver;
+import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import java.util.Collections;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -30,7 +30,7 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_ClassFromType() {
     super(new MO());
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
@@ -77,7 +77,7 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
           TemplateContext context4 = context1.subContext();
           {
             Collection<SNode> tlist7 = null;
-            final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_5_3(new SourceSubstituteMacroNodeContext(context4, copySrcMacro));
+            final SNode copySrcInput7 = context4.getInput();
             tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/517651233894475606", context4);
             environment.aggregate(tnode6, myAggregationLinks[3], tlist7);
           }
@@ -118,6 +118,18 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
   }
   /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3450872231070827899"), CONCEPTS.VoidType$BF, true);
+    }
+    @Override
+    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
+      final TemplateExecutionEnvironment environment = context.getEnvironment();
+      final SNode tnode1 = environment.createOutputNode(myConcepts[2]);
+      environment.associate(tnode1, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Void");
+      return TemplateUtil.singletonList(tnode1);
+    }
+  }
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
+    public ReductionRule3() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616270997"), CONCEPTS.PrimitiveType$sR, true);
     }
     @Override
@@ -129,8 +141,8 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
       return tlist1;
     }
   }
-  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
-    public ReductionRule3() {
+  /*package*/ final class ReductionRule4 extends ReductionRuleBase {
+    public ReductionRule4() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7546323081797979702"), CONCEPTS.VariableArityType$KF, true);
     }
     @Override
@@ -155,28 +167,36 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
       return tlist1;
     }
   }
-  /*package*/ final class ReductionRule4 extends ReductionRuleBase {
-    public ReductionRule4() {
+  /*package*/ final class ReductionRule5 extends ReductionRuleBase {
+    public ReductionRule5() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7154549807540194970"), CONCEPTS.ArrayType$rh, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_5_2(new SourceSubstituteMacroNodeContext(context, copySrcMacro2));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro2, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/7154549807540211989", context);
-      return tlist1;
+      final SNode tnode1 = environment.createOutputNode(myConcepts[4]);
+      {
+        TemplateContext context1 = context.subContext();
+        {
+          Collection<SNode> tlist2 = null;
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_5_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro2));
+          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro2, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/7512392118793546425", context1);
+          environment.aggregate(tnode1, myAggregationLinks[4], tlist2);
+        }
+      }
+      return TemplateUtil.singletonList(tnode1);
     }
   }
 
   /*package*/ static final class MO implements MetaObjectContainer {
     @Override
     public SConcept[] concepts() {
-      SConcept[] rv = new SConcept[4];
+      SConcept[] rv = new SConcept[5];
       rv[0] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940dabe4aL, "CastExpression");
       rv[1] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfb4ed32b7fL, "ParenthesizedExpression");
       rv[2] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression");
       rv[3] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
+      rv[4] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x115f7830a32a65e7L, "ArrayClassExpression");
       return rv;
     }
 
@@ -191,11 +211,12 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
 
     @Override
     public SContainmentLink[] aggregations() {
-      SContainmentLink[] rv = new SContainmentLink[4];
+      SContainmentLink[] rv = new SContainmentLink[5];
       rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
       rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
       rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
       rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+      rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
       return rv;
     }
   }
@@ -203,11 +224,12 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
   private static final SNodePointer copySrcMacro1 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616272817");
   private static final SNodePointer switchMacroRef = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515243688");
   private static final SNodePointer templateSwitchNode = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
-  private static final SNodePointer copySrcMacro2 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7154549807540211991");
+  private static final SNodePointer copySrcMacro2 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7512392118795477076");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
     /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");

@@ -458,10 +458,11 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.componentType$ypmi);
   }
   public static SNode sourceNodeQuery_5_2(final SourceSubstituteMacroNodeContext _context) {
-    return Type__BehaviorDescriptor.getClassExpression_idhEwIzOd.invoke(_context.getNode());
-  }
-  public static SNode sourceNodeQuery_5_3(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode();
+    // we assume erasure doesn't need further translation and is fine as is.
+    // e.g. for a PrimitiveType, there's own logic, that gives e.g. Byte.TYPE for byte
+    // or Integer.TYPE for int, yet here we end would up with byte[] and int[].
+    // XXX ^^^ Is it fine?
+    return (SNode) Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.returnType$5xoi));
@@ -505,7 +506,7 @@ public class QueriesGenerated {
     SNode type = SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY);
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.VariableArityType$KF)) {
       SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
-      return _quotation_createNode_x583g4_a1a1a011(componentType);
+      return _quotation_createNode_x583g4_a1a1a901(componentType);
     }
     return type;
   }
@@ -724,7 +725,7 @@ public class QueriesGenerated {
   public static Object varMacro_Value_27_0(final TemplateVarContext _context) {
     return new ConceptMethodGenerationHelper(_context.getNode());
   }
-  private static SNode _quotation_createNode_x583g4_a1a1a011(Object parameter_1) {
+  private static SNode _quotation_createNode_x583g4_a1a1a901(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"));

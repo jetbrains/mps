@@ -11,8 +11,8 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +41,6 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337304L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> getRuntimeSignature_idhEwIOjZ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRuntimeSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404927L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
   public static final SMethod<SNodeReference> getRuntimeClassifier_id6GFpWnVllMc = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getRuntimeClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7722380086079741068L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
   public static final SMethod<SNode> getResultType_idhTY4wo3 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getResultType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1230475757059L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
@@ -59,7 +58,7 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getNormalizedSequenceParameterReturnType_idhEwIOpc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNormalizedSequenceParameterReturnType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877405260L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
   public static final SMethod<List<SNode>> getNormalizedParameterTypes_idhEwIOps = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getNormalizedParameterTypes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877405276L).languageId(0x907112563d152375L, 0xfd3920347849419dL).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getClassExpression_idhEwIzOd, getRuntimeSignature_idhEwIOjZ, getRuntimeClassifier_id6GFpWnVllMc, getResultType_idhTY4wo3, unmeet_idi0lWwAi, getTerminateType_idhVqPOyZ, findRuntimeClassifierType_id6GFpWnVbsXZ, buildClassifierType_id77je8e2WW6_, buildClassifierType_id77je8e33b1N, getDeclarationRuntimeType_idhTOKQzf, getRuntimeType_idhTOJ6nH, getDeclarationRuntimeType_idH4u0Q2K3hM, getNormalizedReturnType_idhEwIOp4, getNormalizedTerminateType_idhVr6OUT, getNormalizedThrowsTypes_id2ZrgyPlTDZP, getNormalizedSequenceParameterReturnType_idhEwIOpc, getNormalizedParameterTypes_idhEwIOps);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getRuntimeSignature_idhEwIOjZ, getRuntimeClassifier_id6GFpWnVllMc, getResultType_idhTY4wo3, unmeet_idi0lWwAi, getTerminateType_idhVqPOyZ, findRuntimeClassifierType_id6GFpWnVbsXZ, buildClassifierType_id77je8e2WW6_, buildClassifierType_id77je8e33b1N, getDeclarationRuntimeType_idhTOKQzf, getRuntimeType_idhTOJ6nH, getDeclarationRuntimeType_idH4u0Q2K3hM, getNormalizedReturnType_idhEwIOp4, getNormalizedTerminateType_idhVr6OUT, getNormalizedThrowsTypes_id2ZrgyPlTDZP, getNormalizedSequenceParameterReturnType_idhEwIOpc, getNormalizedParameterTypes_idhEwIOps);
 
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
@@ -74,9 +73,6 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     return Arrays.asList("function");
-  }
-  /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_ksvwin_a0a2();
   }
   /*package*/ static String getRuntimeSignature_idhEwIOjZ(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
@@ -99,7 +95,7 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
     if (SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)) {
-      return _quotation_createNode_ksvwin_a0a3a5();
+      return _quotation_createNode_ksvwin_a0a3a4();
     }
     return SNodeOperations.cast(rt, CONCEPTS.Type$bu);
   }
@@ -113,7 +109,7 @@ with_meet:
           continue with_meet;
         }
       }
-      return _quotation_createNode_ksvwin_a1a1a6();
+      return _quotation_createNode_ksvwin_a1a1a5();
     }
     if (SNodeOperations.isInstanceOf(tmp, CONCEPTS.ClassifierType$bL)) {
       for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(tmp, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)) {
@@ -130,7 +126,7 @@ with_meet:
   }
   /*package*/ static SNode findRuntimeClassifierType_id6GFpWnVbsXZ(@NotNull SNode __thisNode__) {
     SNodeReference ice = FunctionType__BehaviorDescriptor.getRuntimeClassifier_id6GFpWnVllMc.invoke(__thisNode__);
-    SNode ct = createClassifierType_ksvwin_a0b0i();
+    SNode ct = createClassifierType_ksvwin_a0b0h();
     SLinkOperations.setPointer(ct, LINKS.classifier$cxMr, ice);
     return ct;
   }
@@ -180,10 +176,10 @@ with_meet:
     return FunctionType__BehaviorDescriptor.buildClassifierType_id77je8e2WW6_.invokeSpecial(__thisNode__, SLinkOperations.getChildren(sample, LINKS.parameterType$qJs$), resultType, FunctionType__BehaviorDescriptor.getNormalizedThrowsTypes_id2ZrgyPlTDZP.invoke(sample), ((_FunctionTypes._return_P2_E0<SNode, SNode, Boolean>) (SNode type, Boolean isOutputType) -> ClassifierTypeUtil.asBoundType(type, isOutputType)));
   }
   /*package*/ static SNode getNormalizedReturnType_idhEwIOp4(@NotNull SNode __thisNode__) {
-    return ((FunctionType__BehaviorDescriptor.getResultType_idhTY4wo3.invoke(__thisNode__) != null) ? ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionType__BehaviorDescriptor.getResultType_idhTY4wo3.invoke(__thisNode__)) : _quotation_createNode_ksvwin_a0a0o());
+    return ((FunctionType__BehaviorDescriptor.getResultType_idhTY4wo3.invoke(__thisNode__) != null) ? ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionType__BehaviorDescriptor.getResultType_idhTY4wo3.invoke(__thisNode__)) : _quotation_createNode_ksvwin_a0a0n());
   }
   /*package*/ static SNode getNormalizedTerminateType_idhVr6OUT(@NotNull SNode __thisNode__) {
-    return ((FunctionType__BehaviorDescriptor.getTerminateType_idhVqPOyZ.invoke(__thisNode__) != null) ? ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionType__BehaviorDescriptor.getTerminateType_idhVqPOyZ.invoke(__thisNode__)) : _quotation_createNode_ksvwin_a0a0p());
+    return ((FunctionType__BehaviorDescriptor.getTerminateType_idhVqPOyZ.invoke(__thisNode__) != null) ? ClassifierTypeUtil.getTypeCoercedToClassifierType(FunctionType__BehaviorDescriptor.getTerminateType_idhVqPOyZ.invoke(__thisNode__)) : _quotation_createNode_ksvwin_a0a0o());
   }
   /*package*/ static List<SNode> getNormalizedThrowsTypes_id2ZrgyPlTDZP(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
@@ -211,9 +207,9 @@ with_throws:
   }
   /*package*/ static SNode getNormalizedSequenceParameterReturnType_idhEwIOpc(@NotNull SNode __thisNode__) {
     {
-      SNode coercedNode_ksvwin_a0r = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(__thisNode__, LINKS.resultType$2oOC), CONCEPTS.SequenceType$_s);
-      if (coercedNode_ksvwin_a0r != null) {
-        return SNodeOperations.cast(FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(coercedNode_ksvwin_a0r, LINKS.elementType$KpjL)))), CONCEPTS.Type$bu);
+      SNode coercedNode_ksvwin_a0q = TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(__thisNode__, LINKS.resultType$2oOC), CONCEPTS.SequenceType$_s);
+      if (coercedNode_ksvwin_a0q != null) {
+        return SNodeOperations.cast(FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(coercedNode_ksvwin_a0q, LINKS.elementType$KpjL)))), CONCEPTS.Type$bu);
       } else {
       }
     }
@@ -247,38 +243,36 @@ with_throws:
       case 1:
         return (T) ((List<String>) getVariableSuffixes_idhEwIzNo(node));
       case 2:
-        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
-      case 3:
         return (T) ((String) getRuntimeSignature_idhEwIOjZ(node));
-      case 4:
+      case 3:
         return (T) ((SNodeReference) getRuntimeClassifier_id6GFpWnVllMc(node));
-      case 5:
+      case 4:
         return (T) ((SNode) getResultType_idhTY4wo3(node));
-      case 6:
+      case 5:
         return (T) ((SNode) unmeet_idi0lWwAi(node, (SNode) parameters[0]));
-      case 7:
+      case 6:
         return (T) ((SNode) getTerminateType_idhVqPOyZ(node));
-      case 8:
+      case 7:
         return (T) ((SNode) findRuntimeClassifierType_id6GFpWnVbsXZ(node));
-      case 9:
+      case 8:
         return (T) ((SNode) buildClassifierType_id77je8e2WW6_(node, (Iterable<SNode>) parameters[0], (SNode) parameters[1], (Iterable<SNode>) parameters[2], (_FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super Boolean>) parameters[3]));
-      case 10:
+      case 9:
         return (T) ((SNode) buildClassifierType_id77je8e33b1N(node, (_FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super Boolean>) parameters[0]));
-      case 11:
+      case 10:
         return (T) ((SNode) getDeclarationRuntimeType_idhTOKQzf(node));
-      case 12:
+      case 11:
         return (T) ((SNode) getRuntimeType_idhTOJ6nH(node));
-      case 13:
+      case 12:
         return (T) ((SNode) getDeclarationRuntimeType_idH4u0Q2K3hM(node, (SNode) parameters[0]));
-      case 14:
+      case 13:
         return (T) ((SNode) getNormalizedReturnType_idhEwIOp4(node));
-      case 15:
+      case 14:
         return (T) ((SNode) getNormalizedTerminateType_idhVr6OUT(node));
-      case 16:
+      case 15:
         return (T) ((List<SNode>) getNormalizedThrowsTypes_id2ZrgyPlTDZP(node));
-      case 17:
+      case 16:
         return (T) ((SNode) getNormalizedSequenceParameterReturnType_idhEwIOpc(node));
-      case 18:
+      case 17:
         return (T) ((List<SNode>) getNormalizedParameterTypes_idhEwIOps(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -308,38 +302,31 @@ with_throws:
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_ksvwin_a0a2() {
-    SNode quotedNode_1 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression"));
-    quotedNode_1 = nb.getResult();
-    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
-    return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_ksvwin_a0a3a5() {
+  private static SNode _quotation_createNode_ksvwin_a0a3a4() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ksvwin_a1a1a6() {
+  private static SNode _quotation_createNode_ksvwin_a1a1a5() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode createClassifierType_ksvwin_a0b0i() {
+  private static SNode createClassifierType_ksvwin_a0b0h() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
     n0.setReferenceTarget(LINKS.classifier$cxMr, null);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_ksvwin_a0a0o() {
+  private static SNode _quotation_createNode_ksvwin_a0a0n() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ksvwin_a0a0p() {
+  private static SNode _quotation_createNode_ksvwin_a0a0o() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();

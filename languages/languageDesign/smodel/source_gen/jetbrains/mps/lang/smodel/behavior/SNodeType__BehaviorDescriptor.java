@@ -35,13 +35,12 @@ public final class SNodeType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<List<String>> getVariableSuffixes_idhEwIzNo = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getVariableSuffixes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337304L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getAbstractCreator_idhEwIzNW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAbstractCreator").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337340L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337357L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> hasMissingParameters_id32KZwowVoMu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMissingParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3508583411997314206L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getErasure_idB1mAlA38Mq = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(702942408396803226L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<SNode> getJavaType_idhEwIzO1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877337345L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> canBeCoerced_id476YRQvP9l3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeCoerced").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4739752174825018691L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getAbstractCreator_idhEwIzNW, getClassExpression_idhEwIzOd, hasMissingParameters_id32KZwowVoMu, getErasure_idB1mAlA38Mq, getJavaType_idhEwIzO1, canBeCoerced_id476YRQvP9l3);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableSuffixes_idhEwIzNo, getAbstractCreator_idhEwIzNW, hasMissingParameters_id32KZwowVoMu, getErasure_idB1mAlA38Mq, getJavaType_idhEwIzO1, canBeCoerced_id476YRQvP9l3);
 
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
@@ -64,9 +63,6 @@ public final class SNodeType__BehaviorDescriptor extends BaseBHDescriptor {
     SLinkOperations.setTarget(creator, LINKS.createdType$3ZFy, SNodeOperations.copyNode(__thisNode__));
     return creator;
   }
-  /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_4ouf01_a0a3();
-  }
   /*package*/ static boolean hasMissingParameters_id32KZwowVoMu(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.concept$OMgE) == null);
   }
@@ -74,7 +70,7 @@ public final class SNodeType__BehaviorDescriptor extends BaseBHDescriptor {
     return ((SNode) Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(__thisNode__));
   }
   /*package*/ static SNode getJavaType_idhEwIzO1(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_4ouf01_a0a6();
+    return _quotation_createNode_4ouf01_a0a5();
   }
   /*package*/ static boolean canBeCoerced_id476YRQvP9l3(@NotNull SNode __thisNode__, SAbstractConcept c) {
     if (CONCEPTS.SequenceType$_s.equals(c)) {
@@ -101,14 +97,12 @@ public final class SNodeType__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         return (T) ((SNode) getAbstractCreator_idhEwIzNW(node));
       case 3:
-        return (T) ((SNode) getClassExpression_idhEwIzOd(node));
-      case 4:
         return (T) ((Boolean) hasMissingParameters_id32KZwowVoMu(node));
-      case 5:
+      case 4:
         return (T) ((SNode) getErasure_idB1mAlA38Mq(node));
-      case 6:
+      case 5:
         return (T) ((SNode) getJavaType_idhEwIzO1(node));
-      case 7:
+      case 6:
         return (T) ((Boolean) canBeCoerced_id476YRQvP9l3(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -138,14 +132,7 @@ public final class SNodeType__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_4ouf01_a0a3() {
-    SNode quotedNode_1 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x103fb730c14L, "ClassifierClassExpression"));
-    quotedNode_1 = nb.getResult();
-    nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier"), "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)/~SNode");
-    return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_4ouf01_a0a6() {
+  private static SNode _quotation_createNode_4ouf01_a0a5() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
