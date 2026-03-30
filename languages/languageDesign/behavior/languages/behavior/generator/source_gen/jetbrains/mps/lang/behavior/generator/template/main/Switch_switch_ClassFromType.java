@@ -30,7 +30,7 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
   private final Iterable<TemplateReductionRule> rules;
   public Switch_switch_ClassFromType() {
     super(new MO());
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4(), new ReductionRule5());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616134045");
@@ -118,18 +118,6 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
   }
   /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3450872231070827899"), CONCEPTS.VoidType$BF, true);
-    }
-    @Override
-    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-      final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(myConcepts[2]);
-      environment.associate(tnode1, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Void");
-      return TemplateUtil.singletonList(tnode1);
-    }
-  }
-  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
-    public ReductionRule3() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2356949341616270997"), CONCEPTS.PrimitiveType$sR, true);
     }
     @Override
@@ -141,8 +129,8 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
       return tlist1;
     }
   }
-  /*package*/ final class ReductionRule4 extends ReductionRuleBase {
-    public ReductionRule4() {
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
+    public ReductionRule3() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7546323081797979702"), CONCEPTS.VariableArityType$KF, true);
     }
     @Override
@@ -167,8 +155,8 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
       return tlist1;
     }
   }
-  /*package*/ final class ReductionRule5 extends ReductionRuleBase {
-    public ReductionRule5() {
+  /*package*/ final class ReductionRule4 extends ReductionRuleBase {
+    public ReductionRule4() {
       super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7154549807540194970"), CONCEPTS.ArrayType$rh, true);
     }
     @Override
@@ -229,7 +217,6 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
-    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
     /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");

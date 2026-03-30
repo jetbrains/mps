@@ -22,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class C7__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x23a893587ca1af93L, "BHL5.structure.C7");
 
-  public static final SMethod<Void> bar_id2k7p7sTvyr6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("bar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468762822L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
-  public static final SMethod<Void> foo_id2k7p7sTv$MS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772536L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
-  public static final SMethod<Void> foo_id2k7p7sTv$Mh = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772497L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
+  public static final SMethod<Void> bar_id2k7p7sTvyr6 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("bar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468762822L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
+  public static final SMethod<Void> foo_id2k7p7sTv$MS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772536L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
+  public static final SMethod<Void> foo_id2k7p7sTv$Mh = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468772497L).languageId(0x8e953eae9632decbL, 0xb4fa1e36714a4c77L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(bar_id2k7p7sTvyr6, foo_id2k7p7sTv$MS, foo_id2k7p7sTv$Mh);
 

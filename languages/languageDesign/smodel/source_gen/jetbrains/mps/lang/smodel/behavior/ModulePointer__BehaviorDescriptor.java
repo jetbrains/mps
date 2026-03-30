@@ -25,7 +25,7 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
 
   public static final SMethod<SModuleReference> toModuleReference_id1Bs_61$mqDd = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1863527487545911885L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
-  public static final SMethod<Void> setModuleReference_idnJmxU5cSTj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(427659576753753683L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
+  public static final SMethod<Void> setModuleReference_idnJmxU5cSTj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(427659576753753683L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toModuleReference_id1Bs_61$mqDd, setModuleReference_idnJmxU5cSTj);
 

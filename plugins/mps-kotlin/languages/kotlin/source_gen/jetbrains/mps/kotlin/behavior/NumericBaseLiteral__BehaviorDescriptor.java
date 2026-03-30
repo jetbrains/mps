@@ -24,7 +24,7 @@ public final class NumericBaseLiteral__BehaviorDescriptor extends BaseBHDescript
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, "jetbrains.mps.kotlin.structure.NumericBaseLiteral");
 
   public static final SMethod<BigInteger> getValue_id6cg9X74s8pg = new SMethodBuilder<BigInteger>(new SJavaCompoundTypeImpl(BigInteger.class)).name("getValue").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279593040L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Void> setValue_id6cg9X74saKl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setValue").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279602709L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(BigInteger.class, ""));
+  public static final SMethod<Void> setValue_id6cg9X74saKl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setValue").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279602709L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(BigInteger.class, ""));
   public static final SMethod<SNode> getType_id6563FJLeSWZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417641279L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValue_id6cg9X74s8pg, setValue_id6cg9X74saKl, getType_id6563FJLeSWZ);

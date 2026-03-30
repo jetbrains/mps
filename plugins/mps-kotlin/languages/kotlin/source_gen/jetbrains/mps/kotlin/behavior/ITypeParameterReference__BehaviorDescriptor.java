@@ -22,7 +22,7 @@ public final class ITypeParameterReference__BehaviorDescriptor extends BaseBHDes
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4f0064de291cef24L, "jetbrains.mps.kotlin.structure.ITypeParameterReference");
 
   public static final SMethod<TypeParameterDeclaration> getParameter_id4W0pdSD7eWM = new SMethodBuilder<TypeParameterDeclaration>(new SJavaCompoundTypeImpl(TypeParameterDeclaration.class)).name("getParameter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5692660834331586354L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
+  public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("populateSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameter_id4W0pdSD7eWM, populateTypeSignatures_id5q426iHK5S9);
 

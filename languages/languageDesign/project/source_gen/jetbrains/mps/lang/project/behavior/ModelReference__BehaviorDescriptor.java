@@ -31,7 +31,7 @@ public final class ModelReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
 
   public static final SMethod<SModelReference> toModelReference_id2BHFktfnfdc = new SMethodBuilder<SModelReference>(new SJavaCompoundTypeImpl(SModelReference.class)).name("toModelReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821245772L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
-  public static final SMethod<Void> populateFrom_id2BHFktfniCd = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821259789L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModelReference.class, ""));
+  public static final SMethod<Void> populateFrom_id2BHFktfniCd = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821259789L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModelReference.class, ""));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toModelReference_id2BHFktfnfdc, populateFrom_id2BHFktfniCd);
 

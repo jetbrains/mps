@@ -2239,16 +2239,6 @@
         </node>
       </node>
     </node>
-    <node concept="3aamgX" id="2ZzXwaUf8lV" role="3aUrZf">
-      <property role="36QftV" value="true" />
-      <property role="2n97ot" value="FIXME provisional to keep same generated code, likely should be Void.TYPE as other PrimitiveTypes" />
-      <ref role="30HIoZ" to="tpee:fzcqZ_H" resolve="VoidType" />
-      <node concept="gft3U" id="2ZzXwaUf8t4" role="1lVwrX">
-        <node concept="3VsKOn" id="2ZzXwaUf_mF" role="gfFT$">
-          <ref role="3VsUkX" to="wyt6:~Void" resolve="Void" />
-        </node>
-      </node>
-    </node>
     <node concept="3aamgX" id="22P$f14CeUl" role="3aUrZf">
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tpee:gWaQbR$" resolve="PrimitiveType" />

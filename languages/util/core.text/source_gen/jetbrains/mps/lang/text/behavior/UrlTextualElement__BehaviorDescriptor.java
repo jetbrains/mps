@@ -29,7 +29,7 @@ public final class UrlTextualElement__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7088756329566028809L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<List<SNode>> getParagraphs_id2MpFNjy3tMn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParagraphs").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3213792450771278999L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addParagraph").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(279704510084039762L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("addParagraph").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(279704510084039762L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9, getParagraphs_id2MpFNjy3tMn, addParagraph_idfxHsktC$hi);
 

@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ReportErrorStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b251a62aL, "jetbrains.mps.lang.typesystem.structure.ReportErrorStatement");
 
-  public static final SMethod<Void> attachNewMessageAnnotation_id7nf9pEwlup1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachNewMessageAnnotation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8489045168661849665L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
+  public static final SMethod<Void> attachNewMessageAnnotation_id7nf9pEwlup1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("attachNewMessageAnnotation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8489045168661849665L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
   public static final SMethod<String> getName_id1oFBbRehoLP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1597542831856389237L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(attachNewMessageAnnotation_id7nf9pEwlup1, getName_id1oFBbRehoLP);

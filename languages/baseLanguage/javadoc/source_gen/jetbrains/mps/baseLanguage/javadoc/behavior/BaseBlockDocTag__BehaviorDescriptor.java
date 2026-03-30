@@ -19,7 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class BaseBlockDocTag__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13dL, "jetbrains.mps.baseLanguage.javadoc.structure.BaseBlockDocTag");
 
-  public static final SMethod<Void> appendTextLine_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("appendTextLine").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Void> appendTextLine_id2pw9ZXKThR2 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("appendTextLine").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2765254149269691842L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(appendTextLine_id2pw9ZXKThR2);
 
