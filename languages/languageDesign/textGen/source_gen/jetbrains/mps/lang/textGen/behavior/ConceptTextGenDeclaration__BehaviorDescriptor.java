@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -30,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ConceptTextGenDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, "jetbrains.mps.lang.textGen.structure.ConceptTextGenDeclaration");
 
-  public static final SMethod<List<SNode>> getAvailableOperations_idhXYHpEa = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAvailableOperations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781444746L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
-  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
-  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> canBeAppliedToNode_id7IH442d05tK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeAppliedToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8911797107065640816L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> shallProduceOutputUnit_id3fG6dkhfrk3 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shallProduceOutputUnit").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3741392693834396931L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
-  public static final SMethod<Boolean> needsUnitConfigure_id1SvnOIGt_fM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsUnitConfigure").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2170558324036490226L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
+  public static final SMethod<List<SNode>> getAvailableOperations_idhXYHpEa = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getAvailableOperations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781444746L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
+  public static final SMethod<SNode> getBaseConcept_id2hxg_BDjKM8 = new SMethodBuilder<>(SNode.class).name("getBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2621449412040133768L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Void> setBaseConcept_id5r_35Ihc58c = new SMethodBuilder<>(Void.TYPE).name("setBaseConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6261424444345963020L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter(SNode.class, "baseConcept"));
+  public static final SMethod<Boolean> canBeAppliedToNode_id7IH442d05tK = new SMethodBuilder<>(Boolean.TYPE).name("canBeAppliedToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8911797107065640816L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2(SMethodBuilder.createJavaParameter(SNode.class, "candidate"));
+  public static final SMethod<Boolean> shallProduceOutputUnit_id3fG6dkhfrk3 = new SMethodBuilder<>(Boolean.TYPE).name("shallProduceOutputUnit").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3741392693834396931L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
+  public static final SMethod<Boolean> needsUnitConfigure_id1SvnOIGt_fM = new SMethodBuilder<>(Boolean.TYPE).name("needsUnitConfigure").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2170558324036490226L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableOperations_idhXYHpEa, getBaseConcept_id2hxg_BDjKM8, setBaseConcept_id5r_35Ihc58c, canBeAppliedToNode_id7IH442d05tK, shallProduceOutputUnit_id3fG6dkhfrk3, needsUnitConfigure_id1SvnOIGt_fM);
 

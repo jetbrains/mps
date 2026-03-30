@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.awt.Color;
 import java.util.List;
@@ -28,8 +27,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e28b9L, "jetbrains.mps.lang.resources.structure.Text");
 
-  /*package*/ static final SMethod<byte[]> getImage_id4rOpugPeyzE = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5112823507792308458L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""));
-  public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  /*package*/ static final SMethod<byte[]> getImage_id4rOpugPeyzE = new SMethodBuilder<>(byte[].class).name("getImage").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5112823507792308458L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, "color"));
+  public static final SMethod<byte[]> getImageForGeneration_id2p1v3tObywX = new SMethodBuilder<>(byte[].class).name("getImageForGeneration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2756621024541681725L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeyzE, getImageForGeneration_id2p1v3tObywX);
 

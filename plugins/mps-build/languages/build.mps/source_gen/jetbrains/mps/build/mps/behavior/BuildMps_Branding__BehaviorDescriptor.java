@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.MacroHelper;
 import java.util.List;
@@ -25,12 +24,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, "jetbrains.mps.build.mps.structure.BuildMps_Branding");
 
-  public static final SMethod<String> getVersionMajor_id3AMbuf0qvyc = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionMajor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225385612L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<String> getVersionMinor_id3AMbuf0qHKA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionMinor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225443878L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<String> getVersionBugfixNr_id3AMbuf3$r6x = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionBugfixNr").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862278320545L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<String> getVersionEap_id3AMbuf0qQ5F = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionEap").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225477995L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<Boolean> isNewVersionFormat_id3AMbuf0qvWw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNewVersionFormat").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225387296L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
-  public static final SMethod<String> getVendor_id6RvRF8fBDEC = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVendor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7917291526288218792L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<String> getVersionMajor_id3AMbuf0qvyc = new SMethodBuilder<>(String.class).name("getVersionMajor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225385612L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, "helper"));
+  public static final SMethod<String> getVersionMinor_id3AMbuf0qHKA = new SMethodBuilder<>(String.class).name("getVersionMinor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225443878L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, "helper"));
+  public static final SMethod<String> getVersionBugfixNr_id3AMbuf3$r6x = new SMethodBuilder<>(String.class).name("getVersionBugfixNr").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862278320545L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, "helper"));
+  public static final SMethod<String> getVersionEap_id3AMbuf0qQ5F = new SMethodBuilder<>(String.class).name("getVersionEap").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225477995L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, "helper"));
+  public static final SMethod<Boolean> isNewVersionFormat_id3AMbuf0qvWw = new SMethodBuilder<>(Boolean.TYPE).name("isNewVersionFormat").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4157435862225387296L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getVendor_id6RvRF8fBDEC = new SMethodBuilder<>(String.class).name("getVendor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7917291526288218792L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(MacroHelper.class, "helper"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVersionMajor_id3AMbuf0qvyc, getVersionMinor_id3AMbuf0qHKA, getVersionBugfixNr_id3AMbuf3$r6x, getVersionEap_id3AMbuf0qQ5F, isNewVersionFormat_id3AMbuf0qvWw, getVendor_id6RvRF8fBDEC);
 

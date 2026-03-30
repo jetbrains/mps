@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
@@ -24,9 +23,9 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3cdL, "jetbrains.mps.kotlin.structure.StarProjection");
 
-  public static final SMethod<SNode> substituteType_id27wMicCGGe5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("substituteType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878651269L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(TypeParameterDeclaration.class, ""));
-  public static final SMethod<SEnumerationLiteral> getVarianceAfterSubstitution_id27wMicCGKaq = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getVarianceAfterSubstitution").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878667418L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SNode> substituteType_id27wMicCGGe5 = new SMethodBuilder<>(SNode.class).name("substituteType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878651269L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SEnumerationLiteral.class, "variance"), SMethodBuilder.createJavaParameter(TypeParameterDeclaration.class, "parameter"));
+  public static final SMethod<SEnumerationLiteral> getVarianceAfterSubstitution_id27wMicCGKaq = new SMethodBuilder<>(SEnumerationLiteral.class).name("getVarianceAfterSubstitution").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2441172150878667418L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SEnumerationLiteral.class, "input"));
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<>(String.class).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteType_id27wMicCGGe5, getVarianceAfterSubstitution_id27wMicCGKaq, getPresentation_idhEwIMiw);
 

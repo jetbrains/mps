@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import java.util.Arrays;
@@ -29,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class Closure__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
 
-  public static final SMethod<List<SNode>> getVariablesReferencedInClosure_idhNVujlz = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getVariablesReferencedInClosure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1223989736803L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getVariablesReferencedInClosure_idhNVujlz = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getVariablesReferencedInClosure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1223989736803L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SNode.class, "child"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariablesReferencedInClosure_idhNVujlz, getScope_id52_Geb4QDV$);
 

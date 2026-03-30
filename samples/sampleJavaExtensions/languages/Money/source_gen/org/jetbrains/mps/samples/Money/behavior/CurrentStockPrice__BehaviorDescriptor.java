@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.samples.money.runtime.Money;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CurrentStockPrice__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f4808999c3L, "org.jetbrains.mps.samples.Money.structure.CurrentStockPrice");
 
-  public static final SMethod<Money> getCurrentPrice_id3u6SZi0yq4L = new SMethodBuilder<Money>(new SJavaCompoundTypeImpl(Money.class)).name("getCurrentPrice").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958233293105L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2();
+  public static final SMethod<Money> getCurrentPrice_id3u6SZi0yq4L = new SMethodBuilder<>(Money.class).name("getCurrentPrice").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958233293105L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCurrentPrice_id3u6SZi0yq4L);
 

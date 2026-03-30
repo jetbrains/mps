@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,9 +23,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class RunConfigurationProducer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
 
-  public static final SMethod<String> getDisplayedName_id3MnZbusxbtz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDisplayedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4366236229294143331L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
-  public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156905483L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
-  public static final SMethod<String> getBaseName_id3MnZbusxcPI = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBaseName").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4366236229294148974L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
+  public static final SMethod<String> getDisplayedName_id3MnZbusxbtz = new SMethodBuilder<>(String.class).name("getDisplayedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4366236229294143331L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<>(String.class).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156905483L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
+  public static final SMethod<String> getBaseName_id3MnZbusxcPI = new SMethodBuilder<>(String.class).name("getBaseName").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(4366236229294148974L).languageId(0x8292b8985697c74bL, 0x73c1a49099fa4d0dL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDisplayedName_id3MnZbusxbtz, getSuffix_idO$iR4JBsSb, getBaseName_id3MnZbusxcPI);
 

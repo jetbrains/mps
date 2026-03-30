@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,8 +22,8 @@ public final class ColorLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final Logger LOG = Logger.getLogger(ColorLiteral__BehaviorDescriptor.class);
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x19d079f4ec114bddL, "jetbrains.mps.lang.resources.structure.ColorLiteral");
 
-  public static final SMethod<Integer> getIntValue_id1BguvjG4ybo = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1860120738943607512L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
-  public static final SMethod<Integer> getDarkIntValue_id4rOpugPdD$J = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getDarkIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792075055L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Integer> getIntValue_id1BguvjG4ybo = new SMethodBuilder<>(Integer.TYPE).name("getIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1860120738943607512L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Integer> getDarkIntValue_id4rOpugPdD$J = new SMethodBuilder<>(Integer.TYPE).name("getDarkIntValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5112823507792075055L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIntValue_id1BguvjG4ybo, getDarkIntValue_id4rOpugPdD$J);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
@@ -21,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ReferenceLinkType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeb56ebf4df56438eL, 0xaf06fc1cd08b495aL, 0x98a03f0443dd008L, "jetbrains.mps.kotlin.smodel.structure.ReferenceLinkType");
 
-  public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeErasedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
-  public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<>(String.class).name("getTypeErasedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<>(SNodeReference.class).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeErasedName_idAa0Z14exTA, getJavaClassPointer_idAa0Z14eCoU);
 

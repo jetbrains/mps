@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
@@ -23,11 +22,11 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class PastedNodeReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x51132a123c89fa7eL, "jetbrains.mps.console.base.structure.PastedNodeReference");
 
-  public static final SMethod<SNode> getTargetNode_id36vPRrqnscn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3575813534625153815L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<String> getText_id5E451QuvdoB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6522360277784909351L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
-  public static final SMethod<String> getText_id25MaZwhj0R7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getText").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2410037095038717383L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(SNodeId.class, ""));
-  public static final SMethod<String> getTextWhenBroken_idigjXyuNrou = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextWhenBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(328850564593858078L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
-  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3282455643657932881L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
+  public static final SMethod<SNode> getTargetNode_id36vPRrqnscn = new SMethodBuilder<>(SNode.class).name("getTargetNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3575813534625153815L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<String> getText_id5E451QuvdoB = new SMethodBuilder<>(String.class).name("getText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6522360277784909351L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
+  public static final SMethod<String> getText_id25MaZwhj0R7 = new SMethodBuilder<>(String.class).name("getText").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2410037095038717383L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(SNodeId.class, "targetNodeId"));
+  public static final SMethod<String> getTextWhenBroken_idigjXyuNrou = new SMethodBuilder<>(String.class).name("getTextWhenBroken").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(328850564593858078L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
+  public static final SMethod<Boolean> canExecute_id2QdC0h7dh1h = new SMethodBuilder<>(Boolean.TYPE).name("canExecute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3282455643657932881L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetNode_id36vPRrqnscn, getText_id5E451QuvdoB, getText_id25MaZwhj0R7, getTextWhenBroken_idigjXyuNrou, canExecute_id2QdC0h7dh1h);
 

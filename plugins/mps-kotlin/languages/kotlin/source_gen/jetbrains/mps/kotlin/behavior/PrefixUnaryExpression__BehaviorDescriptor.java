@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,8 +18,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class PrefixUnaryExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f1dL, "jetbrains.mps.kotlin.structure.PrefixUnaryExpression");
 
-  public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<Precedence>(new SJavaCompoundTypeImpl(Precedence.class)).name("getPrecedence").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7027413324306640159L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> isRightUnary_id7EfieuW$AAu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRightUnary").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8831357554435189150L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<>(Precedence.class).name("getPrecedence").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7027413324306640159L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isRightUnary_id7EfieuW$AAu = new SMethodBuilder<>(Boolean.TYPE).name("isRightUnary").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8831357554435189150L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPrecedenceLevel_id666oMY59eOv, isRightUnary_id7EfieuW$AAu);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -21,8 +20,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class OrderReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd79211L, "jetbrains.mps.lang.plugin.structure.OrderReference");
 
-  public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("presents").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1499919975383879508L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getOrder_id2CFL3ni7A9T = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOrder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3038738109029048953L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> presents_id1jgMklchcXk = new SMethodBuilder<>(Boolean.TYPE).name("presents").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1499919975383879508L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter(SNode.class, "tab"));
+  public static final SMethod<SNode> getOrder_id2CFL3ni7A9T = new SMethodBuilder<>(SNode.class).name("getOrder").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3038738109029048953L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(presents_id1jgMklchcXk, getOrder_id2CFL3ni7A9T);
 

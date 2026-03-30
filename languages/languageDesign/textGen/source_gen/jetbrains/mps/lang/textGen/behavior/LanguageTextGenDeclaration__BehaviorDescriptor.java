@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
@@ -28,10 +27,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class LanguageTextGenDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
 
-  public static final SMethod<List<SConcept>> getParameters_idhXZLLl0 = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234799367488L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
-  public static final SMethod<List<SNode>> getAvailableOperations_idhXYHpEa = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAvailableOperations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781444746L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
-  public static final SMethod<List<SNode>> getAvailableFunctions_idhXYGUKO = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAvailableFunctions").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781318196L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
-  /*package*/ static final SMethod<List<SNode>> getBaseTextGenComponents_idhXYGUL$ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getBaseTextGenComponents").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1234781318244L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SConcept>> getParameters_idhXZLLl0 = new SMethodBuilder<>((Class<List<SConcept>>) ((Class) Object.class)).name("getParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234799367488L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
+  public static final SMethod<List<SNode>> getAvailableOperations_idhXYHpEa = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getAvailableOperations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781444746L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
+  public static final SMethod<List<SNode>> getAvailableFunctions_idhXYGUKO = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getAvailableFunctions").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1234781318196L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
+  /*package*/ static final SMethod<List<SNode>> getBaseTextGenComponents_idhXYGUL$ = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getBaseTextGenComponents").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1234781318244L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), "list"), SMethodBuilder.createJavaParameter(SNode.class, "node"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_idhXZLLl0, getAvailableOperations_idhXYHpEa, getAvailableFunctions_idhXYGUKO, getBaseTextGenComponents_idhXYGUL$);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ICustomConstructorReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2f900a9ba2b698c3L, "jetbrains.mps.baseLanguage.structure.ICustomConstructorReference");
 
-  public static final SMethod<String> getNameForConstructor_id2Yg2DIzb3El = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980002740885L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getNameForConstructor_id2Yg2DIzb3El = new SMethodBuilder<>(String.class).name("getNameForConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980002740885L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SNode.class, "constructor"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNameForConstructor_id2Yg2DIzb3El);
 

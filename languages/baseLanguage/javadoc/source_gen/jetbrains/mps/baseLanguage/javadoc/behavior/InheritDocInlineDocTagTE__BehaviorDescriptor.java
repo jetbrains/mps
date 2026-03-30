@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class InheritDocInlineDocTagTE__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4693b55d3de8265aL, "jetbrains.mps.baseLanguage.javadoc.structure.InheritDocInlineDocTagTE");
 
-  public static final SMethod<String> buildCommentText_id4qjHlOXTWlm = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816306607446L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
+  public static final SMethod<String> buildCommentText_id4qjHlOXTWlm = new SMethodBuilder<>(String.class).name("buildCommentText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816306607446L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(buildCommentText_id4qjHlOXTWlm);
 

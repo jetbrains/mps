@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Arrays;
@@ -29,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class AttributedFigureReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4b412569a095b4ceL, "jetbrains.mps.lang.editor.diagram.structure.AttributedFigureReference");
 
-  public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<List<String>>(new SJavaCompoundTypeImpl((Class<List<String>>) ((Class) Object.class))).name("getFigureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030356445722L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
-  public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFigureParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030357120840L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<List<String>> getFigureParameterNames_id1iN4mn3lWCq = new SMethodBuilder<>((Class<List<String>>) ((Class) Object.class)).name("getFigureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030356445722L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
+  public static final SMethod<SNode> getFigureParameter_id1iN4mn3oxt8 = new SMethodBuilder<>(SNode.class).name("getFigureParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030357120840L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2(SMethodBuilder.createJavaParameter(String.class, "name"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFigureParameterNames_id1iN4mn3lWCq, getFigureParameter_id1iN4mn3oxt8);
 

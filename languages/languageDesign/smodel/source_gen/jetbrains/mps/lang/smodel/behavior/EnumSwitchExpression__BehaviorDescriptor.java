@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -26,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class EnumSwitchExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
 
-  public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SNode> getEnumDecl_id28aPEVv7w3k = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnumDecl").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2453008993612595412L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<Boolean> evaluatesValue_id28aPEVwg1gU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("evaluatesValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2453008993631605818L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Boolean> isLegalAsStatement_idi26MfYG = new SMethodBuilder<>(Boolean.TYPE).name("isLegalAsStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239211900844L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getEnumDecl_id28aPEVv7w3k = new SMethodBuilder<>(SNode.class).name("getEnumDecl").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2453008993612595412L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Boolean> evaluatesValue_id28aPEVwg1gU = new SMethodBuilder<>(Boolean.TYPE).name("evaluatesValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2453008993631605818L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLegalAsStatement_idi26MfYG, getEnumDecl_id28aPEVv7w3k, evaluatesValue_id28aPEVwg1gU);
 

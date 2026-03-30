@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,8 +18,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class AbstractClassifierSpecification__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a61a23aL, "jetbrains.mps.lang.script.structure.AbstractClassifierSpecification");
 
-  public static final SMethod<String> getClassifierFqName_id4HFrnGErDob = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassifierFqName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751112930827L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
-  public static final SMethod<String> getSModelReference_id4HFrnGEt_VQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSModelReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751113441014L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
+  public static final SMethod<String> getClassifierFqName_id4HFrnGErDob = new SMethodBuilder<>(String.class).name("getClassifierFqName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751112930827L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
+  public static final SMethod<String> getSModelReference_id4HFrnGEt_VQ = new SMethodBuilder<>(String.class).name("getSModelReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751113441014L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifierFqName_id4HFrnGErDob, getSModelReference_id4HFrnGEt_VQ);
 

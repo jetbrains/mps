@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -29,10 +28,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbbf1ec9L, "jetbrains.mps.lang.test.structure.AbstractNodeWarningCheckOperation");
 
-  public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8578280453511146306L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8417162567088372251L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
-  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tuHA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMsgText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3929815563185285990L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<>(String.class).name("getDefaultName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8578280453511146306L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<>(CheckExpectedMessageRunnable.class).name("checkAction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8417162567088372251L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SRepository.class, "ruleRepository"), SMethodBuilder.createJavaParameter(ComponentHost.class, "host"));
+  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<>(SNode.class).name("getReferencedRuleNode").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tuHA = new SMethodBuilder<>(String.class).name("getExpectedMsgText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3929815563185285990L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getReferencedRuleNode_id2wBFdLy8qmt, getExpectedMsgText_id3q9wAW4tuHA);
 

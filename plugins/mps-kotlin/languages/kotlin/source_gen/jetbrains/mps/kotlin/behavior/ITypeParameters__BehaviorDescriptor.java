@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -26,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ITypeParameters__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, "jetbrains.mps.kotlin.structure.ITypeParameters");
 
-  public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameterDescriptors_id28CvMylfXMr = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameterDescriptors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008637385883L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Iterable<SNode>> getExtraUpperBounds_id4Cl0D9hqdNo = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExtraUpperBounds").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760771898584L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameterDescriptors_id28CvMylfXMr = new SMethodBuilder<>((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class)).name("getTypeParameterDescriptors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008637385883L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<SNode>> getExtraUpperBounds_id4Cl0D9hqdNo = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getExtraUpperBounds").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760771898584L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SNode.class, "typeParameter"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameterDescriptors_id28CvMylfXMr, getExtraUpperBounds_id4Cl0D9hqdNo);
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,10 +26,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class StartProcessHandlerStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0xd244b712f9d44d1L, "jetbrains.mps.execution.configurations.structure.StartProcessHandlerStatement");
 
-  public static final SMethod<SNode> getComponent_id1ovLDatOk_Z = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getComponent").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708543L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
-  public static final SMethod<SNode> getDispose_id1ovLDatOkDx = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDispose").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708769L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
-  public static final SMethod<SNode> getListener_id1ovLDatOkE5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getListener").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708805L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
-  /*package*/ static final SMethod<SNode> getComponentByName_id1ovLDatOkEK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getComponentByName").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1594211126127708848L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> getComponent_id1ovLDatOk_Z = new SMethodBuilder<>(SNode.class).name("getComponent").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708543L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  public static final SMethod<SNode> getDispose_id1ovLDatOkDx = new SMethodBuilder<>(SNode.class).name("getDispose").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708769L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  public static final SMethod<SNode> getListener_id1ovLDatOkE5 = new SMethodBuilder<>(SNode.class).name("getListener").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1594211126127708805L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  /*package*/ static final SMethod<SNode> getComponentByName_id1ovLDatOkEK = new SMethodBuilder<>(SNode.class).name("getComponentByName").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1594211126127708848L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2(SMethodBuilder.createJavaParameter(String.class, "name"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getComponent_id1ovLDatOk_Z, getDispose_id1ovLDatOkDx, getListener_id1ovLDatOkE5, getComponentByName_id1ovLDatOkEK);
 

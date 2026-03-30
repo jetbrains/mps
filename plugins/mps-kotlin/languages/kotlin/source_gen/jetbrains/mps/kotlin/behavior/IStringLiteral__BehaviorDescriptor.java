@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IStringLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x33194cc2307f2e7dL, "jetbrains.mps.kotlin.structure.IStringLiteral");
 
-  public static final SMethod<Iterable<SNode>> getEvaluatedContent_id3cpjc8KvNhH = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getEvaluatedContent").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3682058567273100397L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<SNode>> getEvaluatedContent_id3cpjc8KvNhH = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getEvaluatedContent").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3682058567273100397L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEvaluatedContent_id3cpjc8KvNhH);
 

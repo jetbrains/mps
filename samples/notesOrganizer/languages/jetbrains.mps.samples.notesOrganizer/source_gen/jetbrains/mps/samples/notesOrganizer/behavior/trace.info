@@ -19,97 +19,97 @@
   </root>
   <root nodeRef="r:2ed514bb-0dfc-4876-91d2-b5b2bfa150da(jetbrains.mps.samples.notesOrganizer.behavior)/3892287256988935420">
     <file name="Note__BehaviorDescriptor.java">
-      <node id="3892287256988935420" at="23,0,24,0" concept="7" trace="LOG" />
-      <node id="3892287256988935420" at="24,0,25,0" concept="7" trace="CONCEPT" />
-      <node id="3892287256988935420" at="26,0,27,0" concept="7" trace="findColor_id3o4bEdkAIk2" />
-      <node id="3892287256988935420" at="28,0,29,0" concept="2" trace="BH_METHODS" />
-      <node id="3892287256988844902" at="33,30,34,54" concept="5" />
-      <node id="3892287256988858571" at="35,28,36,48" concept="5" />
-      <node id="3892287256988864765" at="36,48,37,65" concept="6" />
-      <node id="3818729150937331349" at="41,31,42,25" concept="1" />
-      <node id="3818729150937331357" at="45,31,46,25" concept="1" />
-      <node id="3818729150937331365" at="49,31,50,25" concept="1" />
-      <node id="3892287256988870106" at="52,5,53,23" concept="6" />
-      <node id="3892287256988935420" at="61,114,62,49" concept="5" />
-      <node id="3892287256988935420" at="63,26,64,56" concept="10" />
-      <node id="3892287256988935420" at="67,13,68,83" concept="6" />
-      <node id="3892287256988935420" at="69,14,70,58" concept="10" />
-      <node id="3892287256988935420" at="75,128,76,49" concept="5" />
-      <node id="3892287256988935420" at="77,26,78,56" concept="10" />
-      <node id="3892287256988935420" at="81,14,82,58" concept="10" />
-      <node id="3892287256988935420" at="88,48,89,22" concept="6" />
-      <node id="3892287256988935420" at="94,40,95,19" concept="6" />
-      <node id="3892287256988935420" at="56,0,58,0" concept="0" trace="Note__BehaviorDescriptor#()V" />
-      <node id="3818729150937331349" at="40,38,43,7" concept="3" />
-      <node id="3818729150937331357" at="44,40,47,7" concept="3" />
-      <node id="3818729150937331365" at="48,35,51,7" concept="3" />
-      <node id="3892287256988935420" at="62,49,65,5" concept="3" />
-      <node id="3892287256988935420" at="76,49,79,5" concept="3" />
-      <node id="3892287256988872064" at="34,54,38,9" concept="3" />
-      <node id="3892287256988935420" at="79,5,83,5" concept="9" />
-      <node id="3892287256988935420" at="86,0,91,0" concept="4" trace="getDeclaredMethods#()Ljava/util/List;" />
-      <node id="3892287256988935420" at="92,0,97,0" concept="4" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="3892287256988935420" at="65,5,71,5" concept="9" />
-      <node id="3892287256988917332" at="32,9,39,7" concept="3" />
-      <node id="3892287256988935420" at="74,0,85,0" concept="4" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
-      <node id="3892287256988935420" at="60,0,73,0" concept="4" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
-      <node id="3892287256988860755" at="31,99,52,5" concept="11" />
-      <node id="3892287256988935420" at="31,0,55,0" concept="8" trace="findColor_id3o4bEdkAIk2#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Ljava/awt/Color;" />
-      <scope id="3892287256988935420" at="56,42,56,42" />
-      <scope id="3818729150937331349" at="41,31,42,25" />
-      <scope id="3818729150937331357" at="45,31,46,25" />
-      <scope id="3818729150937331365" at="49,31,50,25" />
-      <scope id="3892287256988935420" at="63,26,64,56" />
-      <scope id="3892287256988935420" at="67,13,68,83" />
-      <scope id="3892287256988935420" at="69,14,70,58" />
-      <scope id="3892287256988935420" at="77,26,78,56" />
-      <scope id="3892287256988935420" at="81,14,82,58" />
-      <scope id="3892287256988935420" at="88,48,89,22" />
-      <scope id="3892287256988935420" at="94,40,95,19" />
-      <scope id="3892287256988872066" at="35,28,37,65">
+      <node id="3892287256988935420" at="22,0,23,0" concept="7" trace="LOG" />
+      <node id="3892287256988935420" at="23,0,24,0" concept="7" trace="CONCEPT" />
+      <node id="3892287256988935420" at="25,0,26,0" concept="7" trace="findColor_id3o4bEdkAIk2" />
+      <node id="3892287256988935420" at="27,0,28,0" concept="2" trace="BH_METHODS" />
+      <node id="3892287256988844902" at="32,30,33,54" concept="5" />
+      <node id="3892287256988858571" at="34,28,35,48" concept="5" />
+      <node id="3892287256988864765" at="35,48,36,65" concept="6" />
+      <node id="3818729150937331349" at="40,31,41,25" concept="1" />
+      <node id="3818729150937331357" at="44,31,45,25" concept="1" />
+      <node id="3818729150937331365" at="48,31,49,25" concept="1" />
+      <node id="3892287256988870106" at="51,5,52,23" concept="6" />
+      <node id="3892287256988935420" at="60,114,61,49" concept="5" />
+      <node id="3892287256988935420" at="62,26,63,56" concept="10" />
+      <node id="3892287256988935420" at="66,13,67,83" concept="6" />
+      <node id="3892287256988935420" at="68,14,69,58" concept="10" />
+      <node id="3892287256988935420" at="74,128,75,49" concept="5" />
+      <node id="3892287256988935420" at="76,26,77,56" concept="10" />
+      <node id="3892287256988935420" at="80,14,81,58" concept="10" />
+      <node id="3892287256988935420" at="87,48,88,22" concept="6" />
+      <node id="3892287256988935420" at="93,40,94,19" concept="6" />
+      <node id="3892287256988935420" at="55,0,57,0" concept="0" trace="Note__BehaviorDescriptor#()V" />
+      <node id="3818729150937331349" at="39,38,42,7" concept="3" />
+      <node id="3818729150937331357" at="43,40,46,7" concept="3" />
+      <node id="3818729150937331365" at="47,35,50,7" concept="3" />
+      <node id="3892287256988935420" at="61,49,64,5" concept="3" />
+      <node id="3892287256988935420" at="75,49,78,5" concept="3" />
+      <node id="3892287256988872064" at="33,54,37,9" concept="3" />
+      <node id="3892287256988935420" at="78,5,82,5" concept="9" />
+      <node id="3892287256988935420" at="85,0,90,0" concept="4" trace="getDeclaredMethods#()Ljava/util/List;" />
+      <node id="3892287256988935420" at="91,0,96,0" concept="4" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="3892287256988935420" at="64,5,70,5" concept="9" />
+      <node id="3892287256988917332" at="31,9,38,7" concept="3" />
+      <node id="3892287256988935420" at="73,0,84,0" concept="4" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
+      <node id="3892287256988935420" at="59,0,72,0" concept="4" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
+      <node id="3892287256988860755" at="30,99,51,5" concept="11" />
+      <node id="3892287256988935420" at="30,0,54,0" concept="8" trace="findColor_id3o4bEdkAIk2#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Ljava/awt/Color;" />
+      <scope id="3892287256988935420" at="55,42,55,42" />
+      <scope id="3818729150937331349" at="40,31,41,25" />
+      <scope id="3818729150937331357" at="44,31,45,25" />
+      <scope id="3818729150937331365" at="48,31,49,25" />
+      <scope id="3892287256988935420" at="62,26,63,56" />
+      <scope id="3892287256988935420" at="66,13,67,83" />
+      <scope id="3892287256988935420" at="68,14,69,58" />
+      <scope id="3892287256988935420" at="76,26,77,56" />
+      <scope id="3892287256988935420" at="80,14,81,58" />
+      <scope id="3892287256988935420" at="87,48,88,22" />
+      <scope id="3892287256988935420" at="93,40,94,19" />
+      <scope id="3892287256988872066" at="34,28,36,65">
         <var name="value" id="3892287256988858572" />
       </scope>
-      <scope id="3892287256988935420" at="56,0,58,0" />
-      <scope id="3892287256988860763" at="40,38,43,7" />
-      <scope id="3892287256988862727" at="44,40,47,7" />
-      <scope id="3892287256988860770" at="48,35,51,7" />
-      <scope id="3892287256988860762" at="40,5,44,5">
+      <scope id="3892287256988935420" at="55,0,57,0" />
+      <scope id="3892287256988860763" at="39,38,42,7" />
+      <scope id="3892287256988862727" at="43,40,46,7" />
+      <scope id="3892287256988860770" at="47,35,50,7" />
+      <scope id="3892287256988860762" at="39,5,43,5">
         <var name="e" id="3892287256988860766" />
       </scope>
-      <scope id="3892287256988862726" at="44,5,48,5">
+      <scope id="3892287256988862726" at="43,5,47,5">
         <var name="e" id="3892287256988862728" />
       </scope>
-      <scope id="3892287256988860769" at="48,5,52,5">
+      <scope id="3892287256988860769" at="47,5,51,5">
         <var name="e" id="3892287256988860773" />
       </scope>
-      <scope id="3892287256988917334" at="33,30,38,9">
+      <scope id="3892287256988917334" at="32,30,37,9">
         <var name="field" id="3892287256988844903" />
       </scope>
-      <scope id="3892287256988935420" at="86,0,91,0" />
-      <scope id="3892287256988935420" at="92,0,97,0" />
-      <scope id="3892287256988860760" at="32,9,39,7" />
-      <scope id="3892287256988935420" at="75,128,83,5">
+      <scope id="3892287256988935420" at="85,0,90,0" />
+      <scope id="3892287256988935420" at="91,0,96,0" />
+      <scope id="3892287256988860760" at="31,9,38,7" />
+      <scope id="3892287256988935420" at="74,128,82,5">
         <var name="methodIndex" id="3892287256988935420" />
       </scope>
-      <scope id="3892287256988935420" at="61,114,71,5">
+      <scope id="3892287256988935420" at="60,114,70,5">
         <var name="methodIndex" id="3892287256988935420" />
       </scope>
-      <scope id="3892287256988935420" at="74,0,85,0">
+      <scope id="3892287256988935420" at="73,0,84,0">
         <var name="concept" id="3892287256988935420" />
         <var name="method" id="3892287256988935420" />
         <var name="parameters" id="3892287256988935420" />
       </scope>
-      <scope id="3892287256988935420" at="60,0,73,0">
+      <scope id="3892287256988935420" at="59,0,72,0">
         <var name="method" id="3892287256988935420" />
         <var name="node" id="3892287256988935420" />
         <var name="parameters" id="3892287256988935420" />
       </scope>
-      <scope id="3892287256988935429" at="31,99,53,23" />
-      <scope id="3892287256988935420" at="31,0,55,0">
+      <scope id="3892287256988935429" at="30,99,52,23" />
+      <scope id="3892287256988935420" at="30,0,54,0">
         <var name="__thisNode__" id="3892287256988935420" />
         <var name="colorName" id="3892287256988944917" />
       </scope>
-      <unit id="3892287256988935420" at="22,0,98,0" name="jetbrains.mps.samples.notesOrganizer.behavior.Note__BehaviorDescriptor" />
+      <unit id="3892287256988935420" at="21,0,97,0" name="jetbrains.mps.samples.notesOrganizer.behavior.Note__BehaviorDescriptor" />
     </file>
   </root>
 </debug-info>

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,7 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class CalculatorType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x20e1c9c3baa061d5L, "jetbrains.mps.samples.fincalculator.structure.CalculatorType");
 
-  public static final SMethod<SNode> baselanguageType_id23xMseUC$16 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("baselanguageType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2369396721460592710L).languageId(0x83bed2ea6f3627c2L, 0x26b3d6d5b99a4ed6L).build2();
+  public static final SMethod<SNode> baselanguageType_id23xMseUC$16 = new SMethodBuilder<>(SNode.class).name("baselanguageType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2369396721460592710L).languageId(0x83bed2ea6f3627c2L, 0x26b3d6d5b99a4ed6L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(baselanguageType_id23xMseUC$16);
 

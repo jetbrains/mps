@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,8 +20,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class GenerationContextOp_NodePatternRef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x3fb2d847d55fc21eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_NodePatternRef");
 
-  public static final SMethod<SNode> getTarget_id1xCtdgeTQHC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1758784108620114792L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2();
-  public static final SMethod<Void> setTarget_id1xCtdgeUoP5 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1758784108620254533L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTarget_id1xCtdgeTQHC = new SMethodBuilder<>(SNode.class).name("getTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1758784108620114792L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2();
+  public static final SMethod<Void> setTarget_id1xCtdgeUoP5 = new SMethodBuilder<>(Void.TYPE).name("setTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1758784108620254533L).languageId(0xa3daae92af1e64d5L, 0xd7706f639be2479cL).build2(SMethodBuilder.createJavaParameter(SNode.class, "target"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTarget_id1xCtdgeTQHC, setTarget_id1xCtdgeUoP5);
 

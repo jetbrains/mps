@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IStyleContainer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, "jetbrains.mps.lang.editor.structure.IStyleContainer");
 
-  public static final SMethod<SNode> getParent_idhJF64sU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219419981626L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<List<SNode>> getClassItems_idhJF5KPu = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getClassItems").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219419901278L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<Void> fillClassItems_id2dDK17997Ii = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("fillClassItems").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2551781846503685010L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getParent_idhJF64sU = new SMethodBuilder<>(SNode.class).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219419981626L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<List<SNode>> getClassItems_idhJF5KPu = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getClassItems").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219419901278L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter(SConcept.class, "itemConcept"));
+  /*package*/ static final SMethod<Void> fillClassItems_id2dDK17997Ii = new SMethodBuilder<>(Void.TYPE).name("fillClassItems").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2551781846503685010L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), "classItems"), SMethodBuilder.createJavaParameter(SConcept.class, "itemConcept"), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), "visitedContainers"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParent_idhJF64sU, getClassItems_idhJF5KPu, fillClassItems_id2dDK17997Ii);
 

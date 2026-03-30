@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class InequationReplacementRule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x117c5668bf2L, "jetbrains.mps.lang.typesystem.structure.InequationReplacementRule");
 
-  public static final SMethod<SNode> getSecondNodeCondition_id3SW4jvYrbIS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSecondNodeCondition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4484478261143583672L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
+  public static final SMethod<SNode> getSecondNodeCondition_id3SW4jvYrbIS = new SMethodBuilder<>(SNode.class).name("getSecondNodeCondition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4484478261143583672L).languageId(0xab76d5ed1746f2b2L, 0x7a5dda6291404668L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSecondNodeCondition_id3SW4jvYrbIS);
 

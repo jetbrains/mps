@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -33,14 +32,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
 
-  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224609060727L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  /*package*/ static final SMethod<Boolean> hasDeprecatedAnnotation_id7UfLy9aMQ9M = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDeprecatedAnnotation").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(9119725621034574450L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> hasDeprecatedBlockDocTag_id3yvWaPI09DC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDeprecatedBlockDocTag").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4080244415086500456L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> shouldDeprecatedDocBeVisible_id7gdCoemJ2WL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldDeprecatedDocBeVisible").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8362517669638582065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Void> markDeprecated_id6Va_BJexupi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("markDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957651026L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Void> removeDeprecationFromDoc_id63oBH1IM79r = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("removeDeprecationFromDoc").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6978502240659599963L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957674666L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225207468592L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Boolean> isDeprecated_idhOwoPtR = new SMethodBuilder<>(Boolean.TYPE).name("isDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224609060727L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  /*package*/ static final SMethod<Boolean> hasDeprecatedAnnotation_id7UfLy9aMQ9M = new SMethodBuilder<>(Boolean.TYPE).name("hasDeprecatedAnnotation").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(9119725621034574450L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasDeprecatedBlockDocTag_id3yvWaPI09DC = new SMethodBuilder<>(Boolean.TYPE).name("hasDeprecatedBlockDocTag").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4080244415086500456L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> shouldDeprecatedDocBeVisible_id7gdCoemJ2WL = new SMethodBuilder<>(Boolean.TYPE).name("shouldDeprecatedDocBeVisible").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8362517669638582065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> markDeprecated_id6Va_BJexupi = new SMethodBuilder<>(Void.TYPE).name("markDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957651026L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> removeDeprecationFromDoc_id63oBH1IM79r = new SMethodBuilder<>(Void.TYPE).name("removeDeprecationFromDoc").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6978502240659599963L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SNode.class, "comment"));
+  public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<>(Void.TYPE).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7983358747957674666L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getMessage_idhP43_8K = new SMethodBuilder<>(String.class).name("getMessage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1225207468592L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDeprecated_idhOwoPtR, hasDeprecatedAnnotation_id7UfLy9aMQ9M, hasDeprecatedBlockDocTag_id3yvWaPI09DC, shouldDeprecatedDocBeVisible_id7gdCoemJ2WL, markDeprecated_id6Va_BJexupi, removeDeprecationFromDoc_id63oBH1IM79r, unmarkDeprecated_id6Va_BJex$aE, getMessage_idhP43_8K);
 

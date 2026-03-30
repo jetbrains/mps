@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import java.util.List;
@@ -22,8 +21,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildSourceProjectRelativePath__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
 
-  public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRelativePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787371L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBasePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187140515L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<>(String.class).name("getRelativePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787371L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<>(String.class).name("getBasePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187140515L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, "context"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRelativePath_id4Kip2_918YF, getBasePath_id4jjtc7WZMYz);
 

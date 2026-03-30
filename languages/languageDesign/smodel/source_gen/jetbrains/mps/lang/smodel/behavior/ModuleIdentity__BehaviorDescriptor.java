@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,8 +19,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ModuleIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e85338e1eL, "jetbrains.mps.lang.smodel.structure.ModuleIdentity");
 
-  public static final SMethod<SModuleReference> getModuleReference_idnJmxU5cSSU = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("getModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(427659576753753658L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<Void> setModuleReference_idnJmxU5cSTj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setModuleReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(427659576753753683L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
+  public static final SMethod<SModuleReference> getModuleReference_idnJmxU5cSSU = new SMethodBuilder<>(SModuleReference.class).name("getModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(427659576753753658L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Void> setModuleReference_idnJmxU5cSTj = new SMethodBuilder<>(Void.TYPE).name("setModuleReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(427659576753753683L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, "moduleRef"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModuleReference_idnJmxU5cSSU, setModuleReference_idnJmxU5cSTj);
 

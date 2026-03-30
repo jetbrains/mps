@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -40,11 +39,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeb56ebf4df56438eL, 0xaf06fc1cd08b495aL, 0x714c456cbe6e7b89L, "jetbrains.mps.kotlin.smodel.structure.NodeType");
 
-  public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeErasedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
-  public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl((Class<SNodeReference>) ((Class) Object.class))).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
-  /*package*/ static final SMethod<Iterable<SNode>> unpackConceptTypes_id4VnyIrvohWf = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("unpackConceptTypes").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5681162179145965327L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConceptType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
-  public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<_FunctionTypes._return_P0_E0<? extends SNode>>(new SJavaCompoundTypeImpl((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class))).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<String> getTypeErasedName_idAa0Z14exTA = new SMethodBuilder<>(String.class).name("getTypeErasedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599115878L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<SNodeReference> getJavaClassPointer_idAa0Z14eCoU = new SMethodBuilder<>(SNodeReference.class).name("getJavaClassPointer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(687366223599142458L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  /*package*/ static final SMethod<Iterable<SNode>> unpackConceptTypes_id4VnyIrvohWf = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("unpackConceptTypes").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5681162179145965327L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2(SMethodBuilder.createJavaParameter(SNode.class, "type"));
+  public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getConceptType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<_FunctionTypes._return_P0_E0<? extends SNode>> createConstructor_id2$1CHwF$28b = new SMethodBuilder<>((Class<_FunctionTypes._return_P0_E0<? extends SNode>>) ((Class) Object.class)).name("createConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2954821879859257867L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeErasedName_idAa0Z14exTA, getJavaClassPointer_idAa0Z14eCoU, unpackConceptTypes_id4VnyIrvohWf, getConceptTypes_id28CvMylq0Pm, createConstructor_id2$1CHwF$28b);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,11 +19,11 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
 
-  public static final SMethod<String> getLocalPath_id4Kip2_918Y$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocalPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787364L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRelativePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787371L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<String> getAntPath_id7ro1ZztyOh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895173701L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getLastSegment_id5dwDdJ8yckN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6007983166781441331L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<SNode> getParent_id7wpYgMyTXsR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637145399L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getLocalPath_id4Kip2_918Y$ = new SMethodBuilder<>(String.class).name("getLocalPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787364L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, "context"));
+  public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<>(String.class).name("getRelativePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787371L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getAntPath_id7ro1ZztyOh5 = new SMethodBuilder<>(String.class).name("getAntPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8563603456895173701L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, "context"));
+  public static final SMethod<String> getLastSegment_id5dwDdJ8yckN = new SMethodBuilder<>(String.class).name("getLastSegment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6007983166781441331L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<SNode> getParent_id7wpYgMyTXsR = new SMethodBuilder<>(SNode.class).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637145399L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalPath_id4Kip2_918Y$, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getLastSegment_id5dwDdJ8yckN, getParent_id7wpYgMyTXsR);
 

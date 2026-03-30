@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Canvas__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x51dcaa29974fa71dL, "jetbrains.mps.samples.Shapes.structure.Canvas");
 
-  public static final SMethod<Void> interpret_idW6XMzE_6ci = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("interpret").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1082824515535528722L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2();
+  public static final SMethod<Void> interpret_idW6XMzE_6ci = new SMethodBuilder<>(Void.TYPE).name("interpret").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1082824515535528722L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(interpret_idW6XMzE_6ci);
 

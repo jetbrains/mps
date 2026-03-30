@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.build.util.RequiredDependenciesBuilder;
@@ -34,12 +33,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, "jetbrains.mps.build.mps.runner.structure.BuildSolutionRunnerAspect");
 
-  public static final SMethod<String> getClassName_id1aYLt$9dW4N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1350734474210951475L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
-  public static final SMethod<String> getMethodName_id1aYLt$9dX0a = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMethodName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1350734474210955274L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
-  public static final SMethod<String> getFQClassName_id1aYLt$9eyUg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1350734474211110544L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
-  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("fetchDependencies").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5908258303322131137L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
-  /*package*/ static final SMethod<SNode> getProject_id3SWSDDmdpG6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProject").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4484708481453366022L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getClassName_id1aYLt$9dW4N = new SMethodBuilder<>(String.class).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1350734474210951475L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
+  public static final SMethod<String> getMethodName_id1aYLt$9dX0a = new SMethodBuilder<>(String.class).name("getMethodName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1350734474210955274L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
+  public static final SMethod<String> getFQClassName_id1aYLt$9eyUg = new SMethodBuilder<>(String.class).name("getFQClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1350734474211110544L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
+  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<>(Void.TYPE).name("fetchDependencies").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5908258303322131137L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, "artifacts"), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, "builder"));
+  /*package*/ static final SMethod<SNode> getProject_id3SWSDDmdpG6 = new SMethodBuilder<>(SNode.class).name("getProject").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4484708481453366022L).languageId(0x9905bcbceb71b996L, 0x427a473d5177432cL).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SNode.class, "child"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id1aYLt$9dW4N, getMethodName_id1aYLt$9dX0a, getFQClassName_id1aYLt$9eyUg, fetchDependencies_id57YmpYyL8F1, getProject_id3SWSDDmdpG6, getScope_id52_Geb4QDV$);
 

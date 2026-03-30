@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,8 +20,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IParameterizableMenuPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0dL, "jetbrains.mps.lang.editor.structure.IParameterizableMenuPart");
 
-  public static final SMethod<SNode> getParameterizer_id1quYWAD0Tfp = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterizer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697280473L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<Boolean> isParameterized_id1quYWAD0Tfz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isParameterized").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697280483L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getParameterizer_id1quYWAD0Tfp = new SMethodBuilder<>(SNode.class).name("getParameterizer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697280473L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isParameterized_id1quYWAD0Tfz = new SMethodBuilder<>(Boolean.TYPE).name("isParameterized").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697280483L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterizer_id1quYWAD0Tfp, isParameterized_id1quYWAD0Tfz);
 

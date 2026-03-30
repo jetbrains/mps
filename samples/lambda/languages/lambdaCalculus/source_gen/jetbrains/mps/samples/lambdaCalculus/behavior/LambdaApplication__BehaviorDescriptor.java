@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -25,10 +24,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LambdaApplication__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ee2dddL, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaApplication");
 
-  public static final SMethod<List<SNode>> getArguments_id4pfsEnSNDeV = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getArguments").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5066394162984555451L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
-  public static final SMethod<SNode> getLambdaAbstraction_id4khEFTQ$3U7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLambdaAbstraction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4976946798230781575L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
-  public static final SMethod<Boolean> isInner_id18EhrW3IE$z = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInner").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1308935328408185123L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
-  public static final SMethod<Boolean> isFullApplication_id18EhrW3IFXQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFullApplication").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1308935328408190838L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
+  public static final SMethod<List<SNode>> getArguments_id4pfsEnSNDeV = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getArguments").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5066394162984555451L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
+  public static final SMethod<SNode> getLambdaAbstraction_id4khEFTQ$3U7 = new SMethodBuilder<>(SNode.class).name("getLambdaAbstraction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4976946798230781575L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
+  public static final SMethod<Boolean> isInner_id18EhrW3IE$z = new SMethodBuilder<>(Boolean.TYPE).name("isInner").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1308935328408185123L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
+  public static final SMethod<Boolean> isFullApplication_id18EhrW3IFXQ = new SMethodBuilder<>(Boolean.TYPE).name("isFullApplication").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1308935328408190838L).languageId(0xadf0aaee45eb2895L, 0x7c9e280794ad4afcL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getArguments_id4pfsEnSNDeV, getLambdaAbstraction_id4khEFTQ$3U7, isInner_id18EhrW3IE$z, isFullApplication_id18EhrW3IFXQ);
 

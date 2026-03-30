@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -38,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
 
-  public static final SMethod<Void> addToKeymapChanges_id1adAGAvXyr3 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("addToKeymapChanges").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1336894855161718467L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Iterable<SEnumerationLiteral>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(EditorContext.class, ""));
+  public static final SMethod<Void> addToKeymapChanges_id1adAGAvXyr3 = new SMethodBuilder<>(Void.TYPE).name("addToKeymapChanges").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1336894855161718467L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2(SMethodBuilder.createJavaParameter(SNode.class, "shortcutChange"), SMethodBuilder.createJavaParameter(SModel.class, "model"), SMethodBuilder.createJavaParameter((Class<Iterable<SEnumerationLiteral>>) ((Class) Object.class), "keymaps"), SMethodBuilder.createJavaParameter(EditorContext.class, "editorContext"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(addToKeymapChanges_id1adAGAvXyr3);
 

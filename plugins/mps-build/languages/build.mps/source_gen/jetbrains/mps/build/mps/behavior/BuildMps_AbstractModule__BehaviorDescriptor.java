@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,8 +20,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildMps_AbstractModule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
 
-  public static final SMethod<Boolean> isCompact_id7gAtt1ju6Jy = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompact").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8369506495128693730L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
-  public static final SMethod<String> getModuleReference_id41K1b4v5ZCB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4643216374596368935L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<Boolean> isCompact_id7gAtt1ju6Jy = new SMethodBuilder<>(Boolean.TYPE).name("isCompact").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8369506495128693730L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getModuleReference_id41K1b4v5ZCB = new SMethodBuilder<>(String.class).name("getModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4643216374596368935L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompact_id7gAtt1ju6Jy, getModuleReference_id41K1b4v5ZCB);
 

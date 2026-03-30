@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,8 +22,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SequenceOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L, "jetbrains.mps.baseLanguage.collections.structure.SequenceOperation");
 
-  public static final SMethod<SNode> getLeft_idhEwJaTR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877497463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
-  public static final SMethod<Boolean> operandCanBeNull_idhWYZ0eEN6z = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("operandCanBeNull").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(323410281720656291L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getLeft_idhEwJaTR = new SMethodBuilder<>(SNode.class).name("getLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877497463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<Boolean> operandCanBeNull_idhWYZ0eEN6z = new SMethodBuilder<>(Boolean.TYPE).name("operandCanBeNull").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(323410281720656291L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLeft_idhEwJaTR, operandCanBeNull_idhWYZ0eEN6z);
 

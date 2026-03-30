@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class IgnoreMigrationDataOption__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x54c97349dbb25c33L, "jetbrains.mps.lang.test.structure.IgnoreMigrationDataOption");
 
-  public static final SMethod<SNode> getTestCase_id5j9sOBrGD7H = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTestCase").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6109541130560508397L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  public static final SMethod<List<SNode>> getProducingData_id5j9sOBrGDSz = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getProducingData").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6109541130560511523L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<SNode> getTestCase_id5j9sOBrGD7H = new SMethodBuilder<>(SNode.class).name("getTestCase").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6109541130560508397L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<List<SNode>> getProducingData_id5j9sOBrGDSz = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getProducingData").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6109541130560511523L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestCase_id5j9sOBrGD7H, getProducingData_id5j9sOBrGDSz);
 

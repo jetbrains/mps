@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class BwfAntTaskBundleDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2318e5dbdfc1e415L, "jetbrains.mps.build.workflow.structure.BwfAntTaskBundleDeclaration");
 
-  public static final SMethod<Integer> getPriority_id1Mjrj7j4T5I = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2059109515400548718L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
+  public static final SMethod<Integer> getPriority_id1Mjrj7j4T5I = new SMethodBuilder<>(Integer.TYPE).name("getPriority").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2059109515400548718L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1Mjrj7j4T5I);
 

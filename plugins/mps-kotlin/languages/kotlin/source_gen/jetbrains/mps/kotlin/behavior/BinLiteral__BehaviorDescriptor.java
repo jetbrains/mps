@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.math.BigInteger;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,8 +21,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BinLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d2L, "jetbrains.mps.kotlin.structure.BinLiteral");
 
-  public static final SMethod<BigInteger> getValue_id6cg9X74s8pg = new SMethodBuilder<BigInteger>(new SJavaCompoundTypeImpl(BigInteger.class)).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279593040L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Void> setValue_id6cg9X74saKl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279602709L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(BigInteger.class, ""));
+  public static final SMethod<BigInteger> getValue_id6cg9X74s8pg = new SMethodBuilder<>(BigInteger.class).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279593040L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Void> setValue_id6cg9X74saKl = new SMethodBuilder<>(Void.TYPE).name("setValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279602709L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(BigInteger.class, "value"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValue_id6cg9X74s8pg, setValue_id6cg9X74saKl);
 

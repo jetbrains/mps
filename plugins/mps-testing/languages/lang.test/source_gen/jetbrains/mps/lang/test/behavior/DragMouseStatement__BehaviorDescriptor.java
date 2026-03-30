@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class DragMouseStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2ec0ea8c55ca0a3L, "jetbrains.mps.lang.test.structure.DragMouseStatement");
 
-  public static final SMethod<SNode> getPressMouseStatement_id3CVcUJxN49_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPressMouseStatement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4196004291146433125L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<SNode> getPressMouseStatement_id3CVcUJxN49_ = new SMethodBuilder<>(SNode.class).name("getPressMouseStatement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4196004291146433125L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPressMouseStatement_id3CVcUJxN49_);
 

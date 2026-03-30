@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class RunConfiguration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, "jetbrains.mps.execution.configurations.structure.RunConfiguration");
 
-  public static final SMethod<SNode> getExecutor_id3gs394eDyIj = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExecutor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3754890006475713427L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
-  public static final SMethod<Boolean> isForeign_id3wpI_WC06mf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isForeign").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4042467058397504911L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
-  public static final SMethod<String> getGeneratedFactoryName_id1XgDflG1h5w = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedFactoryName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2256484787298832736L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  public static final SMethod<SNode> getExecutor_id3gs394eDyIj = new SMethodBuilder<>(SNode.class).name("getExecutor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3754890006475713427L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  public static final SMethod<Boolean> isForeign_id3wpI_WC06mf = new SMethodBuilder<>(Boolean.TYPE).name("isForeign").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4042467058397504911L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
+  public static final SMethod<String> getGeneratedFactoryName_id1XgDflG1h5w = new SMethodBuilder<>(String.class).name("getGeneratedFactoryName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2256484787298832736L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExecutor_id3gs394eDyIj, isForeign_id3wpI_WC06mf, getGeneratedFactoryName_id1XgDflG1h5w);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,9 +21,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class XmlComment__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, "jetbrains.mps.core.xml.structure.XmlComment");
 
-  public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498277L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> oneLineBlock_id1653mnvAgno = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("oneLineBlock").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497816L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631588L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<>(Boolean.TYPE).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498277L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> oneLineBlock_id1653mnvAgno = new SMethodBuilder<>(Boolean.TYPE).name("oneLineBlock").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741497816L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<>(Boolean.TYPE).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631588L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(textLike_id1653mnvAgu_, oneLineBlock_id1653mnvAgno, onNewLine_id1Qs9WekVZ9$);
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.List;
@@ -36,11 +35,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro");
 
-  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290799L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<String> getCounterVarName_id5KmckUrI7Lz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getCounterVarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314666773603L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<Boolean> isLoopVariableUsed_id5UJTmNZqi81 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLoopVariableUsed").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6822924216793899521L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> contextVariables_id6suuiWX_oN7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("contextVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7430509679011531975L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<>(SNode.class).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290799L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<String> getCounterVarName_id5KmckUrI7Lz = new SMethodBuilder<>(String.class).name("getCounterVarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314666773603L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> isLoopVariableUsed_id5UJTmNZqi81 = new SMethodBuilder<>(Boolean.TYPE).name("isLoopVariableUsed").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6822924216793899521L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter(SEnumerationLiteral.class, "variable"));
+  public static final SMethod<List<SNode>> contextVariables_id6suuiWX_oN7 = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("contextVariables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7430509679011531975L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<>(Boolean.TYPE).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SNode.class, "child"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInputNodeTypeInsideOfMacro_idhEwIosJ, getCounterVarName_id5KmckUrI7Lz, isLoopVariableUsed_id5UJTmNZqi81, contextVariables_id6suuiWX_oN7, suppress_id2WmWrdnSpX7);
 

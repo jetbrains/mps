@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
@@ -30,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class MoveContainmentLink__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741baL, "jetbrains.mps.lang.migration.structure.MoveContainmentLink");
 
-  public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("doDeprecateOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520982494L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Void> doDeprecateOldNode_id1NHZk5hiKRu = new SMethodBuilder<>(Void.TYPE).name("doDeprecateOldNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2084600659520982494L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2(SMethodBuilder.createJavaParameter(SRepository.class, "repository"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(doDeprecateOldNode_id1NHZk5hiKRu);
 

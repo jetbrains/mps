@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import java.util.List;
@@ -27,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class BuildFolderMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro");
 
-  public static final SMethod<String> evaluate_id4jjtc7WZOzA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("evaluate").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187146982L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<String> evaluate_id4jjtc7WZOzA = new SMethodBuilder<>(String.class).name("evaluate").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187146982L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, "context"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(evaluate_id4jjtc7WZOzA);
 

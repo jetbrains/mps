@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IndentedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
 
-  public static final SMethod<String> getIndentString_idfcFkhVQ0er = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getIndentString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(273784187009893275L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Integer> calculatePosition_id6pDt4TBBQHh = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7379557344518040401L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<String> getIndentString_idfcFkhVQ0er = new SMethodBuilder<>(String.class).name("getIndentString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(273784187009893275L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Integer> calculatePosition_id6pDt4TBBQHh = new SMethodBuilder<>(Integer.TYPE).name("calculatePosition").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7379557344518040401L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIndentString_idfcFkhVQ0er, calculatePosition_id6pDt4TBBQHh);
 

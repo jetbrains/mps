@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,10 +20,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildMps_Tips__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, "jetbrains.mps.build.mps.structure.BuildMps_Tips");
 
-  public static final SMethod<String> getOutPath_id1tkeUOkqjtp = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1681034175473858393L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
-  public static final SMethod<String> getPath_id4Y6KxqQL3ag = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978686915216L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
-  public static final SMethod<String> getMpsTipsPath_id8yBQgWtrz8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMpsTipsPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(153860590143912136L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
-  public static final SMethod<String> getLocatedDirectory_id4Y6KxqQN2O7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocatedDirectory").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978687438087L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> getOutPath_id1tkeUOkqjtp = new SMethodBuilder<>(String.class).name("getOutPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1681034175473858393L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getPath_id4Y6KxqQL3ag = new SMethodBuilder<>(String.class).name("getPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978686915216L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getMpsTipsPath_id8yBQgWtrz8 = new SMethodBuilder<>(String.class).name("getMpsTipsPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(153860590143912136L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getLocatedDirectory_id4Y6KxqQN2O7 = new SMethodBuilder<>(String.class).name("getLocatedDirectory").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978687438087L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2(SMethodBuilder.createJavaParameter(String.class, "language"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutPath_id1tkeUOkqjtp, getPath_id4Y6KxqQL3ag, getMpsTipsPath_id8yBQgWtrz8, getLocatedDirectory_id4Y6KxqQN2O7);
 

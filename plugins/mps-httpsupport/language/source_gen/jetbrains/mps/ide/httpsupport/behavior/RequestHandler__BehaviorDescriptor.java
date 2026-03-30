@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -33,9 +32,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class RequestHandler__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L, "jetbrains.mps.ide.httpsupport.structure.RequestHandler");
 
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getRequieredParameters_id40BYgsZXRLw = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequieredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4622937352052374624L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
-  public static final SMethod<Iterable<SNode>> supportedMethodsOrDefault_id22cXLi_Q1OU = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("supportedMethodsOrDefault").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2345521174006996282L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SNode.class, "child"));
+  public static final SMethod<Iterable<SNode>> getRequieredParameters_id40BYgsZXRLw = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getRequieredParameters").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4622937352052374624L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
+  public static final SMethod<Iterable<SNode>> supportedMethodsOrDefault_id22cXLi_Q1OU = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("supportedMethodsOrDefault").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2345521174006996282L).languageId(0x98a115e9f32231f1L, 0x817e4e70961e4a95L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getRequieredParameters_id40BYgsZXRLw, supportedMethodsOrDefault_id22cXLi_Q1OU);
 

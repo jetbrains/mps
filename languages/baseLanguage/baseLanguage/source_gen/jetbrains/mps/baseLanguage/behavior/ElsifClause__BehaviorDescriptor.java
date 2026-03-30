@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -25,9 +24,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ElsifClause__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, "jetbrains.mps.baseLanguage.structure.ElsifClause");
 
-  public static final SMethod<SNode> getIfStatement_idhEwIDu9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getIfStatement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877360521L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Void> convertToElseClause_idhIdko9K = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("convertToElseClause").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217846674032L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<NextProgramPoint>(new SJavaCompoundTypeImpl(NextProgramPoint.class)).name("getNextProgramPoint").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4235809288648213009L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
+  public static final SMethod<SNode> getIfStatement_idhEwIDu9 = new SMethodBuilder<>(SNode.class).name("getIfStatement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877360521L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> convertToElseClause_idhIdko9K = new SMethodBuilder<>(Void.TYPE).name("convertToElseClause").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217846674032L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<NextProgramPoint> getNextProgramPoint_id3F8BxGibk8h = new SMethodBuilder<>(NextProgramPoint.class).name("getNextProgramPoint").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4235809288648213009L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SNode.class, "child"), SMethodBuilder.createJavaParameter(Boolean.TYPE, "value"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIfStatement_idhEwIDu9, convertToElseClause_idhIdko9K, getNextProgramPoint_id3F8BxGibk8h);
 

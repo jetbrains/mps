@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ITypeArguments__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, "jetbrains.mps.kotlin.structure.ITypeArguments");
 
-  public static final SMethod<Iterable<SNode>> getTypeProjections_idFn6l2JqIEF = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeProjections").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(781120894703168171L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<SNode>> getTypeProjections_idFn6l2JqIEF = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getTypeProjections").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(781120894703168171L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeProjections_idFn6l2JqIEF);
 

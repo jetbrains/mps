@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,9 +18,9 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class K__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x66c9579bde227bd6L, "BHL7.structure.K");
 
-  public static final SMethod<Object> foo_id6r9lTJu8BJM = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840626L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Object> foo_id6r9lTJu8BMG = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840812L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Object> foo_id6r9lTJu8BNQ = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840886L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Object> foo_id6r9lTJu8BJM = new SMethodBuilder<>(Object.class).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840626L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter(SNode.class, "node"));
+  public static final SMethod<Object> foo_id6r9lTJu8BMG = new SMethodBuilder<>(Object.class).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840812L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter(SNode.class, "node"));
+  public static final SMethod<Object> foo_id6r9lTJu8BNQ = new SMethodBuilder<>(Object.class).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7406547389145840886L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2(SMethodBuilder.createJavaParameter(SNode.class, "node"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6r9lTJu8BJM, foo_id6r9lTJu8BMG, foo_id6r9lTJu8BNQ);
 

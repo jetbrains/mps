@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.List;
@@ -23,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, "jetbrains.mps.lang.project.structure.ModuleReference");
 
-  public static final SMethod<String> moduleReferenceAsString_id15qhGW3fE3K = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("moduleReferenceAsString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1250389701475344624L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
-  public static final SMethod<SModuleReference> toModuleReference_id2BHFktfnkjF = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821266667L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
-  public static final SMethod<Void> populateFrom_id2BHFktfnlSL = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821273137L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
+  public static final SMethod<String> moduleReferenceAsString_id15qhGW3fE3K = new SMethodBuilder<>(String.class).name("moduleReferenceAsString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1250389701475344624L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
+  public static final SMethod<SModuleReference> toModuleReference_id2BHFktfnkjF = new SMethodBuilder<>(SModuleReference.class).name("toModuleReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821266667L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
+  public static final SMethod<Void> populateFrom_id2BHFktfnlSL = new SMethodBuilder<>(Void.TYPE).name("populateFrom").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3021261446821273137L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2(SMethodBuilder.createJavaParameter(SModuleReference.class, "moduleRef"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(moduleReferenceAsString_id15qhGW3fE3K, toModuleReference_id2BHFktfnkjF, populateFrom_id2BHFktfnlSL);
 

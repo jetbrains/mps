@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,13 +18,13 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
 
-  public static final SMethod<Boolean> isOneLineBlock_id1Qs9WekVZ7e = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isOneLineBlock").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631438L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> isFirstPositionAllowed_id1Qs9WekVZ7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstPositionAllowed").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631446L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> isLastPositionAllowed_id1Qs9WekVZ8v = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastPositionAllowed").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631519L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631588L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631594L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> isTextLike_id1Qs9WekVZ9O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTextLike").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631604L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
-  public static final SMethod<Boolean> isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyTextOnLineWithOpenTag").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2126696769318694488L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isOneLineBlock_id1Qs9WekVZ7e = new SMethodBuilder<>(Boolean.TYPE).name("isOneLineBlock").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631438L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isFirstPositionAllowed_id1Qs9WekVZ7m = new SMethodBuilder<>(Boolean.TYPE).name("isFirstPositionAllowed").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631446L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isLastPositionAllowed_id1Qs9WekVZ8v = new SMethodBuilder<>(Boolean.TYPE).name("isLastPositionAllowed").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631519L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<>(Boolean.TYPE).name("onNewLine").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631588L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<>(Boolean.TYPE).name("hasNewLineAfter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631594L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isTextLike_id1Qs9WekVZ9O = new SMethodBuilder<>(Boolean.TYPE).name("isTextLike").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2133624044437631604L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
+  public static final SMethod<Boolean> isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo = new SMethodBuilder<>(Boolean.TYPE).name("isEmptyTextOnLineWithOpenTag").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2126696769318694488L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
 

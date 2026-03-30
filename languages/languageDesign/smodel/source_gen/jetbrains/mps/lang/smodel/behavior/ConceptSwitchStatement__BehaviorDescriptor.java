@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ConceptSwitchStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
 
-  public static final SMethod<Iterable<SNode>> getOrderedExactCases_id52uv6IIm2QO = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getOrderedExactCases").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5809217371282877876L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Iterable<SNode>> getOrderedExactCases_id52uv6IIm2QO = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getOrderedExactCases").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5809217371282877876L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOrderedExactCases_id52uv6IIm2QO);
 

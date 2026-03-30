@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class FigureParameterAttributeViewProperty__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x6595651980a1f8ecL, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeViewProperty");
 
-  public static final SMethod<SNode> getParameterMember_id4H19mAwT7Py = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5422656561931910498L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
-  public static final SMethod<SNode> getStaticFieldDeclaration_id6RaK14zkc88 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStaticFieldDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7911346875269169672L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
-  public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(342110547581236128L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<SNode> getParameterMember_id4H19mAwT7Py = new SMethodBuilder<>(SNode.class).name("getParameterMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5422656561931910498L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<SNode> getStaticFieldDeclaration_id6RaK14zkc88 = new SMethodBuilder<>(SNode.class).name("getStaticFieldDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7911346875269169672L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<>(SNode.class).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(342110547581236128L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMember_id4H19mAwT7Py, getStaticFieldDeclaration_id6RaK14zkc88, getParameterType_idiZqVFYvBew);
 

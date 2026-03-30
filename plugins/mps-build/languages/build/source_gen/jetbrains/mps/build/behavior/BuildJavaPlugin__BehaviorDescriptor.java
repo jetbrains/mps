@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -32,8 +31,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin");
 
-  public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3734116213129936182L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224588814561807654L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<>(Scope.class).name("getProjectStructureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3734116213129936182L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"));
+  public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<>(Scope.class).name("getLayoutScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224588814561807654L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProjectStructureScope_id3fifI_xCJOQ, getLayoutScope_id13YBgBBRSOA);
 

@@ -518,7 +518,7 @@ public class QueriesGenerated {
     SNode type = SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY);
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.VariableArityType$KF)) {
       SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
-      return _quotation_createNode_x583g4_a1a1a111(componentType);
+      return _quotation_createNode_x583g4_a1a1a211(componentType);
     }
     return type;
   }
@@ -737,7 +737,7 @@ public class QueriesGenerated {
   public static Object varMacro_Value_27_0(final TemplateVarContext _context) {
     return new ConceptMethodGenerationHelper(_context.getNode());
   }
-  private static SNode _quotation_createNode_x583g4_a1a1a111(Object parameter_1) {
+  private static SNode _quotation_createNode_x583g4_a1a1a211(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"));

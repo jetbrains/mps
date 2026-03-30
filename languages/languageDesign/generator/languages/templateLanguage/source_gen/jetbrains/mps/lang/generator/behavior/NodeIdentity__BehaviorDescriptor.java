@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -20,8 +19,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class NodeIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
 
-  public static final SMethod<SNodeId> getNodeId_id39TODbGsIdf = new SMethodBuilder<SNodeId>(new SJavaCompoundTypeImpl(SNodeId.class)).name("getNodeId").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3637169702552396623L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<Boolean> match_id1si_nSrb46O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("match").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1662555581307437492L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNodeId> getNodeId_id39TODbGsIdf = new SMethodBuilder<>(SNodeId.class).name("getNodeId").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3637169702552396623L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> match_id1si_nSrb46O = new SMethodBuilder<>(Boolean.TYPE).name("match").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1662555581307437492L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter(SNode.class, "n"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNodeId_id39TODbGsIdf, match_id1si_nSrb46O);
 

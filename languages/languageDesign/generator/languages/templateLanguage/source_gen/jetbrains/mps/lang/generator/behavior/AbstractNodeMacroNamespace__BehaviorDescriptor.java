@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -23,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class AbstractNodeMacroNamespace__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x27fb58cc0349297eL, "jetbrains.mps.lang.generator.structure.AbstractNodeMacroNamespace");
 
-  public static final SMethod<SAbstractConcept> getMacroConcept_id2vVmcK3iiCI = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getMacroConcept").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885263406L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<SNode> getTargetMacro_id2vVmcK3imJA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885280230L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<SNode> getTargetMacroOfConceptFrom_id2vVmcK3rHVe = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetMacroOfConceptFrom").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019887734478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SAbstractConcept> getMacroConcept_id2vVmcK3iiCI = new SMethodBuilder<>(SAbstractConcept.class).name("getMacroConcept").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885263406L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SNode> getTargetMacro_id2vVmcK3imJA = new SMethodBuilder<>(SNode.class).name("getTargetMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885280230L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SNode> getTargetMacroOfConceptFrom_id2vVmcK3rHVe = new SMethodBuilder<>(SNode.class).name("getTargetMacroOfConceptFrom").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019887734478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "macroConcept"), SMethodBuilder.createJavaParameter(SNode.class, "parent"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroConcept_id2vVmcK3iiCI, getTargetMacro_id2vVmcK3imJA, getTargetMacroOfConceptFrom_id2vVmcK3rHVe);
 

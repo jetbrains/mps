@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IDataflowPassToChild__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x61460ebbf13b4fa5L, "jetbrains.mps.kotlin.structure.IDataflowPassToChild");
 
-  public static final SMethod<SNode> getDataFlowChild_id6563FJLePC_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDataFlowChild").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417627685L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> getDataFlowChild_id6563FJLePC_ = new SMethodBuilder<>(SNode.class).name("getDataFlowChild").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417627685L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDataFlowChild_id6563FJLePC_);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,9 +20,9 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class RefactorOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x20fd2063d7de993eL, "jetbrains.mps.console.scripts.structure.RefactorOperation");
 
-  public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(473081947982699339L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
-  public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7006261637493125297L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
-  public static final SMethod<Iterable<String>> getClosureParameterNames_id4vR6YDfUMx0 = new SMethodBuilder<Iterable<String>>(new SJavaCompoundTypeImpl((Class<Iterable<String>>) ((Class) Object.class))).name("getClosureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5185644189117524032L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<>(String.class).name("getShortHelp").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(473081947982699339L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
+  public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<>(String.class).name("getHelpPage").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7006261637493125297L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
+  public static final SMethod<Iterable<String>> getClosureParameterNames_id4vR6YDfUMx0 = new SMethodBuilder<>((Class<Iterable<String>>) ((Class) Object.class)).name("getClosureParameterNames").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5185644189117524032L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getShortHelp_idqgIopNa9Hb, getHelpPage_id64VftqEen2L, getClosureParameterNames_id4vR6YDfUMx0);
 

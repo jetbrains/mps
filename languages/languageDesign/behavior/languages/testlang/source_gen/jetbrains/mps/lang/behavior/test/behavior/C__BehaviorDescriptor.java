@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,9 +19,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class C__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e6873L, "jetbrains.mps.lang.behavior.test.structure.C");
 
-  public static final SMethod<String> abstractVirtualMethod_id46FlynTbIB0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("abstractVirtualMethod").modifiers(10, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577217984L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> virtualAbstractFromInterfaceConcept_id46FlynTbALM = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("virtualAbstractFromInterfaceConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577185906L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<Void> doInvokeAll_id46FlynTbVzB = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("doInvokeAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577271015L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2();
+  public static final SMethod<String> abstractVirtualMethod_id46FlynTbIB0 = new SMethodBuilder<>(String.class).name("abstractVirtualMethod").modifiers(10, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577217984L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, "x"));
+  public static final SMethod<String> virtualAbstractFromInterfaceConcept_id46FlynTbALM = new SMethodBuilder<>(String.class).name("virtualAbstractFromInterfaceConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577185906L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, "dummy"));
+  public static final SMethod<Void> doInvokeAll_id46FlynTbVzB = new SMethodBuilder<>(Void.TYPE).name("doInvokeAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4731970554577271015L).languageId(0x97c9a13312451954L, 0xa18fb831fb54541L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(abstractVirtualMethod_id46FlynTbIB0, virtualAbstractFromInterfaceConcept_id46FlynTbALM, doInvokeAll_id46FlynTbVzB);
 

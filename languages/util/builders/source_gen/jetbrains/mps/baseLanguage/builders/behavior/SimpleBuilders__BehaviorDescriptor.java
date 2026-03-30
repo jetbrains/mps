@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -26,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
 
-  public static final SMethod<Boolean> isDescendant_id4wDZIZrG$7u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5199967550912479710L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getDescendands_id4wDZIZrG$7X = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDescendands").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5199967550912479741L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getAncestors_id5oOCLRAZ01U = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getAncestors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6211769134875410554L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
+  public static final SMethod<Boolean> isDescendant_id4wDZIZrG$7u = new SMethodBuilder<>(Boolean.TYPE).name("isDescendant").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5199967550912479710L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter(SNode.class, "b"));
+  public static final SMethod<List<SNode>> getDescendands_id4wDZIZrG$7X = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getDescendands").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5199967550912479741L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2(SMethodBuilder.createJavaParameter(SModel.class, "context"));
+  public static final SMethod<List<SNode>> getAncestors_id5oOCLRAZ01U = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getAncestors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6211769134875410554L).languageId(0xa7eb3fce23492c6aL, 0x132aa4d8a3f7441cL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDescendant_id4wDZIZrG$7u, getDescendands_id4wDZIZrG$7X, getAncestors_id5oOCLRAZ01U);
 

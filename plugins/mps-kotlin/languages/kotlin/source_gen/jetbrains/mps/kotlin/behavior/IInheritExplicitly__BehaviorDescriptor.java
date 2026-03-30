@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.members.SuperTypesVisitor;
 import jetbrains.mps.kotlin.api.types.identifiers.TypeKey;
@@ -26,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IInheritExplicitly__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, "jetbrains.mps.kotlin.structure.IInheritExplicitly");
 
-  public static final SMethod<Boolean> hasPrimaryConstructor_id1$jFvlEi5P5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrimaryConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067420997L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Integer> visitSuperTypes_id1WN66f3AYxj = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("visitSuperTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2248167455750613075L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SuperTypesVisitor.class, ""));
-  public static final SMethod<TypeKey> getSelfTypeKey_id9DkAreHC7z = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("getSelfTypeKey").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(173760662138683875L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> hasPrimaryConstructor_id1$jFvlEi5P5 = new SMethodBuilder<>(Boolean.TYPE).name("hasPrimaryConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067420997L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Integer> visitSuperTypes_id1WN66f3AYxj = new SMethodBuilder<>(Integer.TYPE).name("visitSuperTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2248167455750613075L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SuperTypesVisitor.class, "visitor"));
+  public static final SMethod<TypeKey> getSelfTypeKey_id9DkAreHC7z = new SMethodBuilder<>(TypeKey.class).name("getSelfTypeKey").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(173760662138683875L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasPrimaryConstructor_id1$jFvlEi5P5, visitSuperTypes_id1WN66f3AYxj, getSelfTypeKey_id9DkAreHC7z);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,14 +20,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class D__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec04623e8L, "BHL6.structure.D");
 
-  public static final SMethod<Integer> foo_id5mnatV0hyg4 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392484356L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Integer> foo1_id5jWiLvujSmw = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo1").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6123852159203116448L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Integer> foo2_id5jWiLvujSzJ = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo2").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6123852159203117295L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Integer> bar1_id5jWiLvujSC6 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("bar1").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6123852159203117574L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Void> bar2_id4RMBeRWcir8 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("bar2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5616724231236691656L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Integer> foo5_id1olXtyGAKsY = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo5").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1591448354302920510L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Object> foo6_id186XXh$CxOf = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo6").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1298998034136440079L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Object> foo7_id1eK5xBtRuXu = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo7").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1418658182974009182L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Integer> foo_id5mnatV0hyg4 = new SMethodBuilder<>(Integer.TYPE).name("foo").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392484356L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Integer> foo1_id5jWiLvujSmw = new SMethodBuilder<>(Integer.TYPE).name("foo1").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6123852159203116448L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Integer> foo2_id5jWiLvujSzJ = new SMethodBuilder<>(Integer.TYPE).name("foo2").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6123852159203117295L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Integer> bar1_id5jWiLvujSC6 = new SMethodBuilder<>(Integer.TYPE).name("bar1").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6123852159203117574L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Void> bar2_id4RMBeRWcir8 = new SMethodBuilder<>(Void.TYPE).name("bar2").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5616724231236691656L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Integer> foo5_id1olXtyGAKsY = new SMethodBuilder<>(Integer.TYPE).name("foo5").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1591448354302920510L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Object> foo6_id186XXh$CxOf = new SMethodBuilder<>(Object.class).name("foo6").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1298998034136440079L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Object> foo7_id1eK5xBtRuXu = new SMethodBuilder<>(Object.class).name("foo7").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1418658182974009182L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5mnatV0hyg4, foo1_id5jWiLvujSmw, foo2_id5jWiLvujSzJ, bar1_id5jWiLvujSC6, bar2_id4RMBeRWcir8, foo5_id1olXtyGAKsY, foo6_id186XXh$CxOf, foo7_id1eK5xBtRuXu);
 

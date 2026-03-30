@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.UnpackHelper;
 import jetbrains.mps.build.util.DependenciesHelper;
@@ -30,11 +29,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars");
 
-  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, ""));
-  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7117056644539862594L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
-  public static final SMethod<String> getSourceModuleJarName_id6v5CVv8csP9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSourceModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7477562766051626313L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
-  public static final SMethod<String> getDocModuleJarName_id1znuW2OtpMX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDocModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1790035444494605501L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<Void> unpack_id6IqTD4bJTWZ = new SMethodBuilder<>(Void.TYPE).name("unpack").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7753763219113484095L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(UnpackHelper.class, "helper"));
+  public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<>(String.class).name("location").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7117056644539862594L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(DependenciesHelper.class, "helper"), SMethodBuilder.createJavaParameter(Object.class, "artifactId"));
+  public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<>(Boolean.TYPE).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, "object"));
+  public static final SMethod<String> getSourceModuleJarName_id6v5CVv8csP9 = new SMethodBuilder<>(String.class).name("getSourceModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7477562766051626313L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getDocModuleJarName_id1znuW2OtpMX = new SMethodBuilder<>(String.class).name("getDocModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1790035444494605501L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getSourceModuleJarName_id6v5CVv8csP9, getDocModuleJarName_id1znuW2OtpMX);
 

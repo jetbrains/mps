@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.awt.Color;
 import java.util.List;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e61L, "jetbrains.mps.lang.resources.structure.Rect");
 
-  public static final SMethod<byte[]> getImage_id4rOpugPeFSA = new SMethodBuilder<byte[]>(new SJavaCompoundTypeImpl(byte[].class)).name("getImage").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(5112823507792346662L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, ""), SMethodBuilder.createJavaParameter(Color.class, ""));
+  public static final SMethod<byte[]> getImage_id4rOpugPeFSA = new SMethodBuilder<>(byte[].class).name("getImage").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(5112823507792346662L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(Color.class, "fillColor"), SMethodBuilder.createJavaParameter(Color.class, "borderColor"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImage_id4rOpugPeFSA);
 

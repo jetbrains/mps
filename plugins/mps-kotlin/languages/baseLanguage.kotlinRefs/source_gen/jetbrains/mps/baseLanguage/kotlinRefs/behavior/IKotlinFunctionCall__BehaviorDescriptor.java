@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -28,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class IKotlinFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x17400fc2a348282eL, "jetbrains.mps.baseLanguage.kotlinRefs.structure.IKotlinFunctionCall");
 
-  public static final SMethod<Iterable<ParameterDeclaration>> getFunctionParameters_idUG7NftR_2Q = new SMethodBuilder<Iterable<ParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class))).name("getFunctionParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151351478L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
-  public static final SMethod<Iterable<TypeParameterDeclaration>> getFunctionTypeParameters_id1t03WaySlJT = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getFunctionTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1675356390012574713L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
-  public static final SMethod<SNode> getFunctionReturnType_idUG7NftRy8a = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFunctionReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151339530L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
+  public static final SMethod<Iterable<ParameterDeclaration>> getFunctionParameters_idUG7NftR_2Q = new SMethodBuilder<>((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class)).name("getFunctionParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151351478L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
+  public static final SMethod<Iterable<TypeParameterDeclaration>> getFunctionTypeParameters_id1t03WaySlJT = new SMethodBuilder<>((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class)).name("getFunctionTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1675356390012574713L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
+  public static final SMethod<SNode> getFunctionReturnType_idUG7NftRy8a = new SMethodBuilder<>(SNode.class).name("getFunctionReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1057254320151339530L).languageId(0x938bae8e3fac20aaL, 0x2405a196e75d462cL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionParameters_idUG7NftR_2Q, getFunctionTypeParameters_id1t03WaySlJT, getFunctionReturnType_idUG7NftRy8a);
 

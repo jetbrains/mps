@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,8 +19,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class E__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x559729dec0462797L, "BHL6.structure.E");
 
-  public static final SMethod<Integer> foo_id5mnatV0hyuN = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392485299L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
-  public static final SMethod<Object> virtual_id47lrFSh1$Ca = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("virtual").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4743819545113152010L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Integer> foo_id5mnatV0hyuN = new SMethodBuilder<>(Integer.TYPE).name("foo").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6167444251392485299L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Object> virtual_id47lrFSh1$Ca = new SMethodBuilder<>(Object.class).name("virtual").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4743819545113152010L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5mnatV0hyuN, virtual_id47lrFSh1$Ca);
 

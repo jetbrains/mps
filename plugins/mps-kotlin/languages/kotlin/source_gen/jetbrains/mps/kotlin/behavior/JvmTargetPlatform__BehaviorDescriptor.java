@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.stubs.platform.TargetPlatform;
 import java.util.List;
@@ -21,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class JvmTargetPlatform__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6baa8b3853fb016fL, "jetbrains.mps.kotlin.structure.JvmTargetPlatform");
 
-  public static final SMethod<String> getName_id3xoAZRyD3Y6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4060166578805948294L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<TargetPlatform> getPlatform_id6IEyNxjYXc_ = new SMethodBuilder<TargetPlatform>(new SJavaCompoundTypeImpl(TargetPlatform.class)).name("getPlatform").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7758166382142542629L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<String> getName_id3xoAZRyD3Y6 = new SMethodBuilder<>(String.class).name("getName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4060166578805948294L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<TargetPlatform> getPlatform_id6IEyNxjYXc_ = new SMethodBuilder<>(TargetPlatform.class).name("getPlatform").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7758166382142542629L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_id3xoAZRyD3Y6, getPlatform_id6IEyNxjYXc_);
 

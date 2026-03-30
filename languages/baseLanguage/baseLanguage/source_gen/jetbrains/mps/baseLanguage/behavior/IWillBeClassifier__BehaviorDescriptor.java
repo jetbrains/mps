@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -28,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ff8b7a0d94242e1L, "jetbrains.mps.baseLanguage.structure.IWillBeClassifier");
 
-  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081351397L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SNode> baseClassifier_id3_1Lj9FFNJ0 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("baseClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4125795553993767872L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SNode> resolve_id3ZSHU3ph184 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("resolve").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081469956L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<>(String.class).name("classifierName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081351397L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> baseClassifier_id3_1Lj9FFNJ0 = new SMethodBuilder<>(SNode.class).name("baseClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4125795553993767872L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> resolve_id3ZSHU3ph184 = new SMethodBuilder<>(SNode.class).name("resolve").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081469956L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SModel.class, "targetModel"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(classifierName_id3ZSHU3pg$b_, baseClassifier_id3_1Lj9FFNJ0, resolve_id3ZSHU3ph184);
 

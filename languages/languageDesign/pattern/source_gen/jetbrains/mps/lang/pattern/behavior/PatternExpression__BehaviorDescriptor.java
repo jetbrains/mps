@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -29,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class PatternExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L, "jetbrains.mps.lang.pattern.structure.PatternExpression");
 
-  public static final SMethod<List<SNode>> getVariables_id4dzCQkRGUKX = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357072957L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
-  public static final SMethod<List<SNode>> getUniqueVariables_id4dzCQkRGULU = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getUniqueVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357073018L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
-  public static final SMethod<List<SNode>> getOwnVariables_id7c7Ta3MgIQj = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOwnVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8288845019109059987L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
-  public static final SMethod<SAbstractConcept> getQuotedNodeConcept_id4vXWNHn1_L$ = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getQuotedNodeConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5187569781989334116L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
-  public static final SMethod<Boolean> hasVariable_id4dzCQkRGUNw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasVariable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357073120L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
-  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getVariables_id4dzCQkRGUKX = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357072957L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
+  public static final SMethod<List<SNode>> getUniqueVariables_id4dzCQkRGULU = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getUniqueVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357073018L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
+  public static final SMethod<List<SNode>> getOwnVariables_id7c7Ta3MgIQj = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getOwnVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8288845019109059987L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
+  public static final SMethod<SAbstractConcept> getQuotedNodeConcept_id4vXWNHn1_L$ = new SMethodBuilder<>(SAbstractConcept.class).name("getQuotedNodeConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5187569781989334116L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
+  public static final SMethod<Boolean> hasVariable_id4dzCQkRGUNw = new SMethodBuilder<>(Boolean.TYPE).name("hasVariable").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855904478357073120L).languageId(0xaf012b78369b0ba7L, 0xd4615e3bd6714ba9L).build2();
+  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<>(Boolean.TYPE).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3393165121846091591L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SNode.class, "child"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariables_id4dzCQkRGUKX, getUniqueVariables_id4dzCQkRGULU, getOwnVariables_id7c7Ta3MgIQj, getQuotedNodeConcept_id4vXWNHn1_L$, hasVariable_id4dzCQkRGUNw, suppress_id2WmWrdnSpX7);
 

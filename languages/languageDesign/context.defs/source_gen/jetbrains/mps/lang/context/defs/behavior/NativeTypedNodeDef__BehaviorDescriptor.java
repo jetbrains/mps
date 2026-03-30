@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,7 +19,7 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 public final class NativeTypedNodeDef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
 
-  public static final SMethod<SNode> getErasedType_id4JP_D2W1aPH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getErasedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5473446470512586093L).languageId(0xbde286dba75f0d34L, 0xea3159bff48e4720L).build2();
+  public static final SMethod<SNode> getErasedType_id4JP_D2W1aPH = new SMethodBuilder<>(SNode.class).name("getErasedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5473446470512586093L).languageId(0xbde286dba75f0d34L, 0xea3159bff48e4720L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getErasedType_id4JP_D2W1aPH);
 

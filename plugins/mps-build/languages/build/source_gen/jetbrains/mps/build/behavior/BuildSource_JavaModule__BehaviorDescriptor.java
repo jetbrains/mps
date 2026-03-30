@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -29,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildSource_JavaModule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, "jetbrains.mps.build.structure.BuildSource_JavaModule");
 
-  public static final SMethod<Iterable<SNode>> getTestSources_idV7XPpsMQaR = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTestSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1065091787192492727L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<SNode> getOptions_idgpKvTnoZBS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(295480548701501944L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Iterable<SNode>> getTestSources_idV7XPpsMQaR = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getTestSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1065091787192492727L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<SNode> getOptions_idgpKvTnoZBS = new SMethodBuilder<>(SNode.class).name("getOptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(295480548701501944L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSources_idV7XPpsMQaR, getOptions_idgpKvTnoZBS);
 

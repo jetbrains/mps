@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral");
 
-  public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519781L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("convertAmountAdvanced").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(595452003767176013L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<>(String.class).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877519781L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<>(String.class).name("convertAmountAdvanced").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(595452003767176013L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, "amount"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, convertAmountAdvanced_idx3u75dl$Hd);
 

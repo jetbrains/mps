@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,8 +18,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IResolvable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4c9fdd543fa0b8d7L, "jetbrains.mps.kotlin.structure.IResolvable");
 
-  public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007011L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<SNode> tryResolve_id4MvRlgZCbFB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolve").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007015L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<>(Boolean.TYPE).name("isResolved").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007011L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> tryResolve_id4MvRlgZCbFB = new SMethodBuilder<>(SNode.class).name("tryResolve").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007015L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isResolved_id4MvRlgZCbFz, tryResolve_id4MvRlgZCbFB);
 

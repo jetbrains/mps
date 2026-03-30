@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,10 +23,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CellMenuPart_Abstract__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract");
 
-  public static final SMethod<SNode> getEditedFeature_idhJEvH7P = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedFeature").modifiers(0, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1219409924597L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<SNode> getEditedLink_idhJEvotS = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219409839992L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<SNode> getEditedAggregationLink_idhJEvgUM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedAggregationLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219409809074L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<SNode> getReferenceDeclaration_id1o9RazL_axx = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferenceDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1588042961790478433L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getEditedFeature_idhJEvH7P = new SMethodBuilder<>(SNode.class).name("getEditedFeature").modifiers(0, AccessPrivileges.PACKAGE).concept(CONCEPT).baseMethodId(1219409924597L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getEditedLink_idhJEvotS = new SMethodBuilder<>(SNode.class).name("getEditedLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219409839992L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getEditedAggregationLink_idhJEvgUM = new SMethodBuilder<>(SNode.class).name("getEditedAggregationLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1219409809074L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getReferenceDeclaration_id1o9RazL_axx = new SMethodBuilder<>(SNode.class).name("getReferenceDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1588042961790478433L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEditedFeature_idhJEvH7P, getEditedLink_idhJEvotS, getEditedAggregationLink_idhJEvgUM, getReferenceDeclaration_id1o9RazL_axx);
 

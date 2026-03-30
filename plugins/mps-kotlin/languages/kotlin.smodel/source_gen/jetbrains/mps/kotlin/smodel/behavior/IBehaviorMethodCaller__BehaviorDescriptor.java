@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import java.util.List;
@@ -30,8 +29,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IBehaviorMethodCaller__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xeb56ebf4df56438eL, 0xaf06fc1cd08b495aL, 0x6192a8532884e5a8L, "jetbrains.mps.kotlin.smodel.structure.IBehaviorMethodCaller");
 
-  public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConceptTypes").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
-  public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("populateTypeSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
+  public static final SMethod<Iterable<SNode>> getConceptTypes_id28CvMylq0Pm = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getConceptTypes").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008640019798L).languageId(0xaf06fc1cd08b495aL, 0xeb56ebf4df56438eL).build2();
+  public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<>(Void.TYPE).name("populateTypeSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, "visitor"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConceptTypes_id28CvMylq0Pm, populateTypeSignatures_id5q426iHK5S9);
 

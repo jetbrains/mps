@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -25,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class FigureParameterMapping__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a7d7c7L, "jetbrains.mps.lang.editor.diagram.structure.FigureParameterMapping");
 
-  public static final SMethod<SNode> getDiagramNodeCell_id1iN4mn3k5m3 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDiagramNodeCell").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030355957123L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
-  public static final SMethod<SNode> getParameterDeclaration_id3$rM_t_1zAw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4115105161238952352L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
+  public static final SMethod<SNode> getDiagramNodeCell_id1iN4mn3k5m3 = new SMethodBuilder<>(SNode.class).name("getDiagramNodeCell").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1491555030355957123L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
+  public static final SMethod<SNode> getParameterDeclaration_id3$rM_t_1zAw = new SMethodBuilder<>(SNode.class).name("getParameterDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4115105161238952352L).languageId(0x80deedc5c602bfd1L, 0x6106f6117a7442d1L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDiagramNodeCell_id1iN4mn3k5m3, getParameterDeclaration_id3$rM_t_1zAw);
 

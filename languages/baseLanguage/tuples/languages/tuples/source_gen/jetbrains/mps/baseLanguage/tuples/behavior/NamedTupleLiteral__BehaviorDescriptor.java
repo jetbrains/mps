@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,8 +18,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class NamedTupleLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1209b88731cL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleLiteral");
 
-  public static final SMethod<String> getRightBracket_id1653mnvAgsr = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498139L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
-  public static final SMethod<String> getLeftBracket_id1653mnvAgvE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498346L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
+  public static final SMethod<String> getRightBracket_id1653mnvAgsr = new SMethodBuilder<>(String.class).name("getRightBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498139L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
+  public static final SMethod<String> getLeftBracket_id1653mnvAgvE = new SMethodBuilder<>(String.class).name("getLeftBracket").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498346L).languageId(0xb8d207e93feba96aL, 0xa247e09e243545baL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getRightBracket_id1653mnvAgsr, getLeftBracket_id1653mnvAgvE);
 

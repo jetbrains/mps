@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,10 +22,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class PrimitiveDataTypeDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
 
-  public static final SMethod<SNode> toBaseLanguageType_idhEwI9ym = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("toBaseLanguageType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877229718L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
-  public static final SMethod<Boolean> isString_idhKtFRO6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268752134L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
-  public static final SMethod<Boolean> isInteger_idhKtFYCF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268780075L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
-  public static final SMethod<Boolean> isBoolean_idhKtG1tp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268791641L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<SNode> toBaseLanguageType_idhEwI9ym = new SMethodBuilder<>(SNode.class).name("toBaseLanguageType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877229718L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Boolean> isString_idhKtFRO6 = new SMethodBuilder<>(Boolean.TYPE).name("isString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268752134L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Boolean> isInteger_idhKtFYCF = new SMethodBuilder<>(Boolean.TYPE).name("isInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268780075L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
+  public static final SMethod<Boolean> isBoolean_idhKtG1tp = new SMethodBuilder<>(Boolean.TYPE).name("isBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220268791641L).languageId(0x8389f407dc1158b7L, 0xc72da2b97cce4447L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toBaseLanguageType_idhEwI9ym, isString_idhKtFRO6, isInteger_idhKtFYCF, isBoolean_idhKtG1tp);
 

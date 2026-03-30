@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.VisibilityAccess;
@@ -23,7 +22,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class InternalVisibility__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af397L, "jetbrains.mps.kotlin.structure.InternalVisibility");
 
-  public static final SMethod<Boolean> isApplicable_id6jE_6duQ0AR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicable").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702856976823L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibilityAccess.class, ""));
+  public static final SMethod<Boolean> isApplicable_id6jE_6duQ0AR = new SMethodBuilder<>(Boolean.TYPE).name("isApplicable").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702856976823L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SNode.class, "contextNode"), SMethodBuilder.createJavaParameter(SNode.class, "declaration"), SMethodBuilder.createJavaParameter(VisibilityAccess.class, "context"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isApplicable_id6jE_6duQ0AR);
 

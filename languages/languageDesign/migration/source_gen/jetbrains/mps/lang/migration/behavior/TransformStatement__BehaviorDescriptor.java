@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import java.util.List;
@@ -29,9 +28,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class TransformStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
 
-  public static final SMethod<SNode> getPatternConcept_id4SSaNAQl5wN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPatternConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5636302460526286899L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
-  public static final SMethod<SNode> getQuotationConcept_id4SSaNAQlbzK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getQuotationConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5636302460526311664L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getPatternConcept_id4SSaNAQl5wN = new SMethodBuilder<>(SNode.class).name("getPatternConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5636302460526286899L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<SNode> getQuotationConcept_id4SSaNAQlbzK = new SMethodBuilder<>(SNode.class).name("getQuotationConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5636302460526311664L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SNode.class, "child"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPatternConcept_id4SSaNAQl5wN, getQuotationConcept_id4SSaNAQlbzK, getScope_id52_Geb4QDV$);
 

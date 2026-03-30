@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,10 +22,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ParameterizedShortcutChange__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, "jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange");
 
-  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877374441L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> hasRemoveOrReplaceAllModifiers_idyhFWcL2RFY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemoveOrReplaceAllModifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788094L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
-  public static final SMethod<Boolean> hasRemove_idyhFWcL2RGa = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788106L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
-  public static final SMethod<Boolean> hasReplaceAll_idyhFWcL2RGl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788117L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<>(SNode.class).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877374441L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> hasRemoveOrReplaceAllModifiers_idyhFWcL2RFY = new SMethodBuilder<>(Boolean.TYPE).name("hasRemoveOrReplaceAllModifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788094L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> hasRemove_idyhFWcL2RGa = new SMethodBuilder<>(Boolean.TYPE).name("hasRemove").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788106L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<Boolean> hasReplaceAll_idyhFWcL2RGl = new SMethodBuilder<>(Boolean.TYPE).name("hasReplaceAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(617467876802788117L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedReturnType_idhEwIGRD, hasRemoveOrReplaceAllModifiers_idyhFWcL2RFY, hasRemove_idyhFWcL2RGa, hasReplaceAll_idyhFWcL2RGl);
 

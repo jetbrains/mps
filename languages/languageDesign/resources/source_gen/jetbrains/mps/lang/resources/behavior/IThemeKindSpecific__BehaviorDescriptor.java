@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.List;
@@ -25,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IThemeKindSpecific__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x3a1eeb186ecec9a3L, "jetbrains.mps.lang.resources.structure.IThemeKindSpecific");
 
-  public static final SMethod<Boolean> isSpecificFor_id3CuULxINXoF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSpecificFor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4188043193671996971L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> hasDistinctColorsForThemes_id3CuULxINMCV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasDistinctColorsForThemes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4188043193671952955L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
+  public static final SMethod<Boolean> isSpecificFor_id3CuULxINXoF = new SMethodBuilder<>(Boolean.TYPE).name("isSpecificFor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4188043193671996971L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2(SMethodBuilder.createJavaParameter(SConcept.class, "themeKind"));
+  public static final SMethod<Boolean> hasDistinctColorsForThemes_id3CuULxINMCV = new SMethodBuilder<>(Boolean.TYPE).name("hasDistinctColorsForThemes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4188043193671952955L).languageId(0x996311712ea622e5L, 0x982eb8df2c964bd7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSpecificFor_id3CuULxINXoF, hasDistinctColorsForThemes_id3CuULxINMCV);
 

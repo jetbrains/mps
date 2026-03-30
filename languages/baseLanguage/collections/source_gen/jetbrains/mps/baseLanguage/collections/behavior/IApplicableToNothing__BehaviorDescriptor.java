@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Set;
 import java.util.Arrays;
@@ -30,10 +29,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eaf6L, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToNothing");
 
-  public static final SMethod<List<SNode>> getApplicableTypes_id5cL0w3DYzxf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getApplicableTypes").modifiers(13, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(5994574781955586127L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
-  public static final SMethod<Set<SNode>> getAllApplicableTypes_id5cL0w3DYWgB = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("getAllApplicableTypes").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5994574781955687463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
-  /*package*/ static final SMethod<Boolean> hasApplicableTypes_id1QUKo_K_4f7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplicableTypes").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2142237368811537351L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> expectedOperandType_id5xvLnyYzY1Q = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("expectedOperandType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6368025520509018230L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getApplicableTypes_id5cL0w3DYzxf = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getApplicableTypes").modifiers(13, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(5994574781955586127L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  public static final SMethod<Set<SNode>> getAllApplicableTypes_id5cL0w3DYWgB = new SMethodBuilder<>((Class<Set<SNode>>) ((Class) Object.class)).name("getAllApplicableTypes").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5994574781955687463L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2();
+  /*package*/ static final SMethod<Boolean> hasApplicableTypes_id1QUKo_K_4f7 = new SMethodBuilder<>(Boolean.TYPE).name("hasApplicableTypes").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(2142237368811537351L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "concept"));
+  public static final SMethod<SNode> expectedOperandType_id5xvLnyYzY1Q = new SMethodBuilder<>(SNode.class).name("expectedOperandType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6368025520509018230L).languageId(0x9c53c54016f6ad4fL, 0x8388864671ce4f1cL).build2(SMethodBuilder.createJavaParameter(SNode.class, "elementType"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableTypes_id5cL0w3DYzxf, getAllApplicableTypes_id5cL0w3DYWgB, hasApplicableTypes_id1QUKo_K_4f7, expectedOperandType_id5xvLnyYzY1Q);
 

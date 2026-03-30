@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class Selector__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x42549ff0716bc68cL, "jetbrains.mps.samples.fincalculator.structure.Selector");
 
-  public static final SMethod<Boolean> isSmall_id49kBZ1LyWM8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSmall").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4779620959592893576L).languageId(0x83bed2ea6f3627c2L, 0x26b3d6d5b99a4ed6L).build2();
+  public static final SMethod<Boolean> isSmall_id49kBZ1LyWM8 = new SMethodBuilder<>(Boolean.TYPE).name("isSmall").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4779620959592893576L).languageId(0x83bed2ea6f3627c2L, 0x26b3d6d5b99a4ed6L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSmall_id49kBZ1LyWM8);
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -29,10 +28,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
 
-  public static final SMethod<SProperty> getProperty_id1avfQ4BBzOo = new SMethodBuilder<SProperty>(new SJavaCompoundTypeImpl(SProperty.class)).name("getProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1341860900488756504L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  public static final SMethod<Void> setProperty_id6Gg5Klvu8CV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7714691473529670203L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SProperty.class, ""));
-  public static final SMethod<SNode> getPropertyDeclaration_id121FNPYBLc9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPropertyDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1189424455254741769L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  public static final SMethod<String> getNameForReporting_id5gACAVBzOt1 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6063712545515980609L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SProperty> getProperty_id1avfQ4BBzOo = new SMethodBuilder<>(SProperty.class).name("getProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1341860900488756504L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<Void> setProperty_id6Gg5Klvu8CV = new SMethodBuilder<>(Void.TYPE).name("setProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7714691473529670203L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SProperty.class, "metaProperty"));
+  public static final SMethod<SNode> getPropertyDeclaration_id121FNPYBLc9 = new SMethodBuilder<>(SNode.class).name("getPropertyDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1189424455254741769L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<String> getNameForReporting_id5gACAVBzOt1 = new SMethodBuilder<>(String.class).name("getNameForReporting").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6063712545515980609L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id1avfQ4BBzOo, setProperty_id6Gg5Klvu8CV, getPropertyDeclaration_id121FNPYBLc9, getNameForReporting_id5gACAVBzOt1);
 

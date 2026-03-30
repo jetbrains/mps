@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -25,10 +24,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IHoldSingleCommentLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60be0671cf949a05L, "jetbrains.mps.baseLanguage.javadoc.structure.IHoldSingleCommentLine");
 
-  public static final SMethod<Boolean> enforceExternalIndentation_id4qjHlOWQ7Jg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("enforceExternalIndentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816288828368L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> representLinesAsText_id62Y1B7f_avX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representLinesAsText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6971016359099803645L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
+  public static final SMethod<Boolean> enforceExternalIndentation_id4qjHlOWQ7Jg = new SMethodBuilder<>(Boolean.TYPE).name("enforceExternalIndentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5085607816288828368L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<>(Void.TYPE).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(SNode.class, "l"));
+  public static final SMethod<String> representLinesAsText_id62Y1B7f_avX = new SMethodBuilder<>(String.class).name("representLinesAsText").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6971016359099803645L).languageId(0xbb1b463a8781b786L, 0xf280165065d5424eL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(enforceExternalIndentation_id4qjHlOWQ7Jg, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, representLinesAsText_id62Y1B7f_avX);
 

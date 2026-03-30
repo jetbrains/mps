@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -22,9 +21,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class AbstractPropertyDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, "jetbrains.mps.kotlin.structure.AbstractPropertyDeclaration");
 
-  public static final SMethod<Boolean> hasExplicityType_id2n1mrwy6RU_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasExplicityType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2720554297289572005L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<List<SNode>> getDeclarations_id7RZWrHVaXCH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclarations").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329859117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> isDeconstructing_id7RZWrHVbnio = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeconstructing").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329964184L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> hasExplicityType_id2n1mrwy6RU_ = new SMethodBuilder<>(Boolean.TYPE).name("hasExplicityType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2720554297289572005L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<List<SNode>> getDeclarations_id7RZWrHVaXCH = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getDeclarations").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329859117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isDeconstructing_id7RZWrHVbnio = new SMethodBuilder<>(Boolean.TYPE).name("isDeconstructing").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9079241161329964184L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, isDeconstructing_id7RZWrHVbnio);
 

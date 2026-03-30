@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,10 +26,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class DocText__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, "jetbrains.mps.lang.doctext.structure.DocText");
 
-  public static final SMethod<Boolean> canBeEmpty_idpB77MxqCkE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeEmpty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(461368808438400298L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
-  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> extractDocText_id3ahYUteDckr = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("extractDocText").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3643970269516973339L).languageId(0xac8b972b953bcdfeL, 0xd304f2474944479dL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeEmpty_idpB77MxqCkE = new SMethodBuilder<>(Boolean.TYPE).name("canBeEmpty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(461368808438400298L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getLines").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7723470226553559196L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<>(Void.TYPE).name("addLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684435174455L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(SNode.class, "l"));
+  public static final SMethod<SNode> extractDocText_id3ahYUteDckr = new SMethodBuilder<>(SNode.class).name("extractDocText").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3643970269516973339L).languageId(0xac8b972b953bcdfeL, 0xd304f2474944479dL).build2(SMethodBuilder.createJavaParameter(SNode.class, "oldAnnotation"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeEmpty_idpB77MxqCkE, getLines_id6GJhO0n1Xys, addLine_id7q4YwcerggR, extractDocText_id3ahYUteDckr);
 

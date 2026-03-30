@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ILocalDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2d45f01afccba89cL, "jetbrains.mps.baseLanguage.structure.ILocalDeclaration");
 
-  public static final SMethod<Boolean> isReferencedInClosure_id2P5W1FWMWTY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReferencedInClosure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3262277503800823422L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> isReferencedInControlFlowInterrupter_id1rgSh_h_K4n = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReferencedInControlFlowInterrupter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1644061362849513751L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isReferencedInClosure_id2P5W1FWMWTY = new SMethodBuilder<>(Boolean.TYPE).name("isReferencedInClosure").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3262277503800823422L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> isReferencedInControlFlowInterrupter_id1rgSh_h_K4n = new SMethodBuilder<>(Boolean.TYPE).name("isReferencedInControlFlowInterrupter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1644061362849513751L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isReferencedInClosure_id2P5W1FWMWTY, isReferencedInControlFlowInterrupter_id1rgSh_h_K4n);
 

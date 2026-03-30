@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -26,13 +25,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildRelativePath__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
 
-  public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBasePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187140515L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getLocalPath_id4Kip2_918Y$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocalPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787364L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getPathTail_id15RAxQX0M4T = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPathTail").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1258644073389171001L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<String> getLastSegment_id5dwDdJ8yckN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6007983166781441331L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<SNode> getParent_id7wpYgMyTXsR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637145399L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
-  public static final SMethod<Boolean> isEmptyTail_id7wpYgMyU0sQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyTail").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637157686L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> next_id7wpYgMyU0gZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("next").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637156927L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getBasePath_id4jjtc7WZMYz = new SMethodBuilder<>(String.class).name("getBasePath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4959435991187140515L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, "context"));
+  public static final SMethod<String> getLocalPath_id4Kip2_918Y$ = new SMethodBuilder<>(String.class).name("getLocalPath").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5481553824944787364L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Context.class, "context"));
+  public static final SMethod<String> getPathTail_id15RAxQX0M4T = new SMethodBuilder<>(String.class).name("getPathTail").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1258644073389171001L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<String> getLastSegment_id5dwDdJ8yckN = new SMethodBuilder<>(String.class).name("getLastSegment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6007983166781441331L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<SNode> getParent_id7wpYgMyTXsR = new SMethodBuilder<>(SNode.class).name("getParent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637145399L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
+  public static final SMethod<Boolean> isEmptyTail_id7wpYgMyU0sQ = new SMethodBuilder<>(Boolean.TYPE).name("isEmptyTail").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637157686L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(SNode.class, "cp"));
+  public static final SMethod<SNode> next_id7wpYgMyU0gZ = new SMethodBuilder<>(SNode.class).name("next").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8654221991637156927L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(SNode.class, "cp"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBasePath_id4jjtc7WZMYz, getLocalPath_id4Kip2_918Y$, getPathTail_id15RAxQX0M4T, getLastSegment_id5dwDdJ8yckN, getParent_id7wpYgMyTXsR, isEmptyTail_id7wpYgMyU0sQ, next_id7wpYgMyU0gZ);
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -28,10 +27,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression");
 
-  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5776618742611315379L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<SNode> getContainingExtractExpr_id7H3c2f3rrjt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainingExtractExpr").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8881995820265485533L).languageId(0xac6648d2a9b75d88L, 0xdf345b11b8c74213L).build2();
-  public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("substituteInAmbigousPosition").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498020L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  public static final SMethod<List<SNode>> getMethods_id55buE1DVoKQ = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMethods").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5857910569715993654L).languageId(0xac6648d2a9b75d88L, 0xdf345b11b8c74213L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5776618742611315379L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, "methodName"));
+  public static final SMethod<SNode> getContainingExtractExpr_id7H3c2f3rrjt = new SMethodBuilder<>(SNode.class).name("getContainingExtractExpr").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8881995820265485533L).languageId(0xac6648d2a9b75d88L, 0xdf345b11b8c74213L).build2();
+  public static final SMethod<Boolean> substituteInAmbigousPosition_id1653mnvAgq$ = new SMethodBuilder<>(Boolean.TYPE).name("substituteInAmbigousPosition").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498020L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<List<SNode>> getMethods_id55buE1DVoKQ = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getMethods").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5857910569715993654L).languageId(0xac6648d2a9b75d88L, 0xdf345b11b8c74213L).build2(SMethodBuilder.createJavaParameter(SNode.class, "context"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, getContainingExtractExpr_id7H3c2f3rrjt, substituteInAmbigousPosition_id1653mnvAgq$, getMethods_id55buE1DVoKQ);
 

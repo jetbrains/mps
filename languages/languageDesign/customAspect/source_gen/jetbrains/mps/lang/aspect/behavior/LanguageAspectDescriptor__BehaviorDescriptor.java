@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
@@ -27,8 +26,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LanguageAspectDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2d72cdccef70b086L, "jetbrains.mps.lang.aspect.structure.LanguageAspectDescriptor");
 
-  public static final SMethod<SNode> getMethod_id7phNEaHi8Cl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8525822767676295701L).languageId(0x9c5a1f245a8697afL, 0xf159adf43c9340f9L).build2(SMethodBuilder.createJavaParameter((Class<SNodeReference>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getDescriptor_idUBgfI9eMAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1055884086724995485L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
+  public static final SMethod<SNode> getMethod_id7phNEaHi8Cl = new SMethodBuilder<>(SNode.class).name("getMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8525822767676295701L).languageId(0x9c5a1f245a8697afL, 0xf159adf43c9340f9L).build2(SMethodBuilder.createJavaParameter(SNodeReference.class, "md"));
+  public static final SMethod<SNode> getDescriptor_idUBgfI9eMAt = new SMethodBuilder<>(SNode.class).name("getDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1055884086724995485L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMethod_id7phNEaHi8Cl, getDescriptor_idUBgfI9eMAt);
 

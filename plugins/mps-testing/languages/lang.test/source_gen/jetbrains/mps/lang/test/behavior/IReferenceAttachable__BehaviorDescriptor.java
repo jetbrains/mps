@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,10 +18,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IReferenceAttachable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2827acdc621ed3acL, "jetbrains.mps.lang.test.structure.IReferenceAttachable");
 
-  public static final SMethod<Boolean> canAttachReference_id2wBFdLy7HtS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAttachReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147804024L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> attachReference_id2wBFdLy8qmn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("attachReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987863L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8333855927540237654L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<Boolean> canAttachReference_id2wBFdLy7HtS = new SMethodBuilder<>(Boolean.TYPE).name("canAttachReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147804024L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SNode.class, "reference"));
+  public static final SMethod<Void> attachReference_id2wBFdLy8qmn = new SMethodBuilder<>(Void.TYPE).name("attachReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987863L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SNode.class, "reference"));
+  public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<>(SNode.class).name("getReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8333855927540237654L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<>(SNode.class).name("getReferencedRuleNode").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2893471348147987869L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt);
 

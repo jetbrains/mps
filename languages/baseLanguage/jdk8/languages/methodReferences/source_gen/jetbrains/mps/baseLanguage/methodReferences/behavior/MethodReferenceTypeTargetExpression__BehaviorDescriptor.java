@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression");
 
-  public static final SMethod<String> getDetailedPresentation_id22G2W3WJ92t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDetailedPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2354269628709769373L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980011308976L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
-  public static final SMethod<Boolean> allowRawType_id6SseLh999LE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowRawType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7934281601832492138L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getDetailedPresentation_id22G2W3WJ92t = new SMethodBuilder<>(String.class).name("getDetailedPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2354269628709769373L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<>(SNode.class).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980011308976L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
+  public static final SMethod<Boolean> allowRawType_id6SseLh999LE = new SMethodBuilder<>(Boolean.TYPE).name("allowRawType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7934281601832492138L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SNode.class, "children"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDetailedPresentation_id22G2W3WJ92t, getSubstituteNode_id2Yg2DIzFJuK, allowRawType_id6SseLh999LE);
 

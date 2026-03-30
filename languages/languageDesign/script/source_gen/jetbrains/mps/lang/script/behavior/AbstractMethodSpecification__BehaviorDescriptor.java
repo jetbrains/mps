@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,8 +20,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class AbstractMethodSpecification__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4243146ba1b46c9dL, "jetbrains.mps.lang.script.structure.AbstractMethodSpecification");
 
-  public static final SMethod<SNode> getPullUpMethod_id1ZdZFkoOe3$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPullUpMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2291767839160328420L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
-  public static final SMethod<String> getPresentation_id6SPCoQxKXmj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7941431147614164371L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
+  public static final SMethod<SNode> getPullUpMethod_id1ZdZFkoOe3$ = new SMethodBuilder<>(SNode.class).name("getPullUpMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2291767839160328420L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
+  public static final SMethod<String> getPresentation_id6SPCoQxKXmj = new SMethodBuilder<>(String.class).name("getPresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7941431147614164371L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPullUpMethod_id1ZdZFkoOe3$, getPresentation_id6SPCoQxKXmj);
 

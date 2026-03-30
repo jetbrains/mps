@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SymbolClassRegexp__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassRegexp");
 
-  public static final SMethod<String> getString_idhMuDF1A = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1222432436326L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<String> getRepresentation_id75Jea4IEZbM = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8173814113624650482L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
-  /*package*/ static final SMethod<String> partsToString_idhMS0769 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("partsToString").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1222857748873L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<String> getString_idhMuDF1A = new SMethodBuilder<>(String.class).name("getString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1222432436326L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), "vars"));
+  public static final SMethod<String> getRepresentation_id75Jea4IEZbM = new SMethodBuilder<>(String.class).name("getRepresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8173814113624650482L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2();
+  /*package*/ static final SMethod<String> partsToString_idhMS0769 = new SMethodBuilder<>(String.class).name("partsToString").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1222857748873L).languageId(0xb09669cd7c8408c0L, 0xdaafa647f1f74b0bL).build2(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), "parts"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getString_idhMuDF1A, getRepresentation_id75Jea4IEZbM, partsToString_idhMS0769);
 

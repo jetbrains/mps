@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class BuildMps_TestModules_Options__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModules_Options");
 
-  public static final SMethod<Boolean> isBooleanOptionValueOk_id51DD0tdKxuK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isBooleanOptionValueOk").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5794342746865145776L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> isBooleanOptionValueOk_id51DD0tdKxuK = new SMethodBuilder<>(Boolean.TYPE).name("isBooleanOptionValueOk").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5794342746865145776L).languageId(0x996822924406419eL, 0x3600cb0a44dd4a5bL).build2(SMethodBuilder.createJavaParameter(String.class, "approxPresentation"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isBooleanOptionValueOk_id51DD0tdKxuK);
 

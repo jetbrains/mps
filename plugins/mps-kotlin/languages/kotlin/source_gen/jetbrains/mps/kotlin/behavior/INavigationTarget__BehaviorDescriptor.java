@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class INavigationTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3b6L, "jetbrains.mps.kotlin.structure.INavigationTarget");
 
-  public static final SMethod<SNode> getNavigationOperand_id2gj5XQXMv4y = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigationOperand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2599447651062247714L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> acceptNullable_id5D4bOjqGpyn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("acceptNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734603192471L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> getNavigationOperand_id2gj5XQXMv4y = new SMethodBuilder<>(SNode.class).name("getNavigationOperand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2599447651062247714L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> acceptNullable_id5D4bOjqGpyn = new SMethodBuilder<>(Boolean.TYPE).name("acceptNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734603192471L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNavigationOperand_id2gj5XQXMv4y, acceptNullable_id5D4bOjqGpyn);
 

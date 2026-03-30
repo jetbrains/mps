@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -25,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class SuperExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression");
 
-  public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSpecifiedSuperConcept").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468819723L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
-  public static final SMethod<SNode> getSuperConcept_id2k7p7sTvKkn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468819735L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
+  public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<>(SNode.class).name("getSpecifiedSuperConcept").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468819723L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
+  public static final SMethod<SNode> getSuperConcept_id2k7p7sTvKkn = new SMethodBuilder<>(SNode.class).name("getSuperConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2668211767468819735L).languageId(0x87d963a55f2a9db1L, 0xaf65afd8f0dd4942L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getSpecifiedSuperConcept_id2k7p7sTvKkb, getSuperConcept_id2k7p7sTvKkn);
 

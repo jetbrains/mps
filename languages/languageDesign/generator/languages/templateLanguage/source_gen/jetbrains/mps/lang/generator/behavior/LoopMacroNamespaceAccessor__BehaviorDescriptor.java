@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LoopMacroNamespaceAccessor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x27fb58cc0349292cL, "jetbrains.mps.lang.generator.structure.LoopMacroNamespaceAccessor");
 
-  public static final SMethod<SAbstractConcept> getMacroConcept_id2vVmcK3iiCI = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getMacroConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885263406L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SAbstractConcept> getMacroConcept_id2vVmcK3iiCI = new SMethodBuilder<>(SAbstractConcept.class).name("getMacroConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885263406L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroConcept_id2vVmcK3iiCI);
 

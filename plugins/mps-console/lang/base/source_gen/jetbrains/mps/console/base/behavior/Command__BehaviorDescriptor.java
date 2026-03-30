@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.console.tool.ConsoleContext;
 import jetbrains.mps.console.tool.ConsoleStream;
@@ -21,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class Command__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command");
 
-  public static final SMethod<Void> execute_id5WvH$QO9bva = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6854397602732226506L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""));
-  public static final SMethod<String> getKind_id64VftqEenf4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKind").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7006261637493126084L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
+  public static final SMethod<Void> execute_id5WvH$QO9bva = new SMethodBuilder<>(Void.TYPE).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6854397602732226506L).languageId(0xb306d4d17f64c375L, 0xde1ad86d6e504a02L).build2(SMethodBuilder.createJavaParameter(ConsoleContext.class, "c"), SMethodBuilder.createJavaParameter(ConsoleStream.class, "console"), SMethodBuilder.createJavaParameter(Runnable.class, "beforeCallback"), SMethodBuilder.createJavaParameter(Runnable.class, "afterCallback"));
+  public static final SMethod<String> getKind_id64VftqEenf4 = new SMethodBuilder<>(String.class).name("getKind").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7006261637493126084L).languageId(0x8c346f0d90c6e75aL, 0x1a8554c4eb8443baL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id5WvH$QO9bva, getKind_id64VftqEenf4);
 

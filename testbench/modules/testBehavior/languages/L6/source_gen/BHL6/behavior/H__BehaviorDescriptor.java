@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -20,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class H__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x1206f7d464a22147L, "BHL6.structure.H");
 
-  public static final SMethod<Object> foo6_id186XXh$CxOf = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo6").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1298998034136440079L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
+  public static final SMethod<Object> foo6_id186XXh$CxOf = new SMethodBuilder<>(Object.class).name("foo6").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1298998034136440079L).languageId(0xbc43d0051c9b1e8fL, 0x424c173aee734dc9L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo6_id186XXh$CxOf);
 

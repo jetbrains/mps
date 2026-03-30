@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,12 +25,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6becc0L, "jetbrains.mps.baseLanguage.classifiers.structure.IMember");
 
-  public static final SMethod<SNode> getVisiblity_idhEwIBC5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVisiblity").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877352965L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
-  public static final SMethod<SAbstractConcept> getOperationSConcept_id6ALWH9g2jU8 = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getOperationSConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429960056456L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
-  public static final SMethod<SNode> createOperation_idhEwIBCC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createOperation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877353000L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
-  public static final SMethod<SNode> getContainer_idhEwIBCW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContainer").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877353020L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
-  public static final SMethod<Boolean> canOperationBeChild_id3YYagzpL_8S = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canOperationBeChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4593153787954614840L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<List<SAbstractConcept>> getOperationSConcept_id6ALWH9g2mqE = new SMethodBuilder<List<SAbstractConcept>>(new SJavaCompoundTypeImpl((Class<List<SAbstractConcept>>) ((Class) Object.class))).name("getOperationSConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429960066730L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<SNode> getVisiblity_idhEwIBC5 = new SMethodBuilder<>(SNode.class).name("getVisiblity").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877352965L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<SAbstractConcept> getOperationSConcept_id6ALWH9g2jU8 = new SMethodBuilder<>(SAbstractConcept.class).name("getOperationSConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429960056456L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<SNode> createOperation_idhEwIBCC = new SMethodBuilder<>(SNode.class).name("createOperation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877353000L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<SNode> getContainer_idhEwIBCW = new SMethodBuilder<>(SNode.class).name("getContainer").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877353020L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
+  public static final SMethod<Boolean> canOperationBeChild_id3YYagzpL_8S = new SMethodBuilder<>(Boolean.TYPE).name("canOperationBeChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4593153787954614840L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2(SMethodBuilder.createJavaParameter(SNode.class, "parentNode"));
+  public static final SMethod<List<SAbstractConcept>> getOperationSConcept_id6ALWH9g2mqE = new SMethodBuilder<>((Class<List<SAbstractConcept>>) ((Class) Object.class)).name("getOperationSConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7616135429960066730L).languageId(0x95008d06ed259e3eL, 0x443f4c36fcf54eb6L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisiblity_idhEwIBC5, getOperationSConcept_id6ALWH9g2jU8, createOperation_idhEwIBCC, getContainer_idhEwIBCW, canOperationBeChild_id3YYagzpL_8S, getOperationSConcept_id6ALWH9g2mqE);
 

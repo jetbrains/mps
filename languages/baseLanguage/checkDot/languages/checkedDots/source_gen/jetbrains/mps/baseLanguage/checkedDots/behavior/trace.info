@@ -18,92 +18,92 @@
   </root>
   <root nodeRef="r:4f21a85f-2360-4902-a7db-0bcdaedbbb5c(jetbrains.mps.baseLanguage.checkedDots.behavior)/3674434577577159919">
     <file name="CheckedDotExpression__BehaviorDescriptor.java">
-      <node id="3674434577577159919" at="25,0,26,0" concept="7" trace="CONCEPT" />
-      <node id="3674434577577159919" at="27,0,28,0" concept="7" trace="hasLocalContextInside_id3bYdGv2TyNM" />
-      <node id="3674434577577159919" at="28,0,29,0" concept="7" trace="allowsNullOperand_id3Yy2P0QQESt" />
-      <node id="3674434577577159919" at="29,0,30,0" concept="7" trace="lvalue_id1653mnvAgpj" />
-      <node id="3674434577577159919" at="31,0,32,0" concept="1" trace="BH_METHODS" />
-      <node id="4697831301626073775" at="35,156,36,18" concept="5" />
-      <node id="4697831301626073935" at="38,305,39,18" concept="5" />
-      <node id="4697831301626073945" at="40,5,41,51" concept="6" />
-      <node id="4697831301626073941" at="41,51,42,17" concept="5" />
-      <node id="671730757938930442" at="44,91,45,16" concept="5" />
-      <node id="1262430001741718801" at="47,94,48,17" concept="5" />
-      <node id="3674434577577159919" at="56,114,57,49" concept="4" />
-      <node id="3674434577577159919" at="58,26,59,56" concept="10" />
-      <node id="3674434577577159919" at="62,13,63,73" concept="5" />
-      <node id="3674434577577159919" at="64,13,65,69" concept="5" />
-      <node id="3674434577577159919" at="66,14,67,58" concept="10" />
-      <node id="3674434577577159919" at="72,128,73,49" concept="4" />
-      <node id="3674434577577159919" at="74,26,75,56" concept="10" />
-      <node id="3674434577577159919" at="78,13,79,61" concept="5" />
-      <node id="3674434577577159919" at="80,14,81,58" concept="10" />
-      <node id="3674434577577159919" at="87,48,88,22" concept="5" />
-      <node id="3674434577577159919" at="93,40,94,19" concept="5" />
-      <node id="3674434577577159919" at="98,0,99,0" concept="7" trace="ThisExpression$$o" />
-      <node id="3674434577577159919" at="99,0,100,0" concept="7" trace="LocalMethodCall$zT" />
-      <node id="3674434577577159919" at="100,0,101,0" concept="7" trace="InstanceMethodDeclaration$39" />
-      <node id="3674434577577159919" at="104,0,105,0" concept="7" trace="baseMethodDeclaration$pyYw" />
-      <node id="3674434577577159919" at="51,0,53,0" concept="0" trace="CheckedDotExpression__BehaviorDescriptor#()V" />
-      <node id="4697831301626073713" at="34,95,37,5" concept="2" />
-      <node id="4697831301626073782" at="37,5,40,5" concept="2" />
-      <node id="3674434577577159919" at="44,0,47,0" concept="8" trace="allowsNullOperand_id3Yy2P0QQESt#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3674434577577159919" at="47,0,50,0" concept="8" trace="lvalue_id1653mnvAgpj#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
-      <node id="3674434577577159919" at="57,49,60,5" concept="2" />
-      <node id="3674434577577159919" at="73,49,76,5" concept="2" />
-      <node id="3674434577577159919" at="85,0,90,0" concept="3" trace="getDeclaredMethods#()Ljava/util/List;" />
-      <node id="3674434577577159919" at="91,0,96,0" concept="3" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="3674434577577159919" at="76,5,82,5" concept="9" />
-      <node id="3674434577577159919" at="60,5,68,5" concept="9" />
-      <node id="3674434577577159919" at="34,0,44,0" concept="8" trace="hasLocalContextInside_id3bYdGv2TyNM#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3674434577577159919" at="71,0,84,0" concept="3" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
-      <node id="3674434577577159919" at="55,0,70,0" concept="3" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
-      <scope id="3674434577577159919" at="51,58,51,58" />
-      <scope id="4697831301626073714" at="35,156,36,18" />
-      <scope id="4697831301626073783" at="38,305,39,18" />
-      <scope id="671730757938930440" at="44,91,45,16" />
-      <scope id="1262430001741718800" at="47,94,48,17" />
-      <scope id="3674434577577159919" at="58,26,59,56" />
-      <scope id="3674434577577159919" at="62,13,63,73" />
-      <scope id="3674434577577159919" at="64,13,65,69" />
-      <scope id="3674434577577159919" at="66,14,67,58" />
-      <scope id="3674434577577159919" at="74,26,75,56" />
-      <scope id="3674434577577159919" at="78,13,79,61" />
-      <scope id="3674434577577159919" at="80,14,81,58" />
-      <scope id="3674434577577159919" at="87,48,88,22" />
-      <scope id="3674434577577159919" at="93,40,94,19" />
-      <scope id="3674434577577159919" at="51,0,53,0" />
-      <scope id="3674434577577159919" at="44,0,47,0">
+      <node id="3674434577577159919" at="24,0,25,0" concept="7" trace="CONCEPT" />
+      <node id="3674434577577159919" at="26,0,27,0" concept="7" trace="hasLocalContextInside_id3bYdGv2TyNM" />
+      <node id="3674434577577159919" at="27,0,28,0" concept="7" trace="allowsNullOperand_id3Yy2P0QQESt" />
+      <node id="3674434577577159919" at="28,0,29,0" concept="7" trace="lvalue_id1653mnvAgpj" />
+      <node id="3674434577577159919" at="30,0,31,0" concept="1" trace="BH_METHODS" />
+      <node id="4697831301626073775" at="34,156,35,18" concept="5" />
+      <node id="4697831301626073935" at="37,305,38,18" concept="5" />
+      <node id="4697831301626073945" at="39,5,40,51" concept="6" />
+      <node id="4697831301626073941" at="40,51,41,17" concept="5" />
+      <node id="671730757938930442" at="43,91,44,16" concept="5" />
+      <node id="1262430001741718801" at="46,94,47,17" concept="5" />
+      <node id="3674434577577159919" at="55,114,56,49" concept="4" />
+      <node id="3674434577577159919" at="57,26,58,56" concept="10" />
+      <node id="3674434577577159919" at="61,13,62,73" concept="5" />
+      <node id="3674434577577159919" at="63,13,64,69" concept="5" />
+      <node id="3674434577577159919" at="65,14,66,58" concept="10" />
+      <node id="3674434577577159919" at="71,128,72,49" concept="4" />
+      <node id="3674434577577159919" at="73,26,74,56" concept="10" />
+      <node id="3674434577577159919" at="77,13,78,61" concept="5" />
+      <node id="3674434577577159919" at="79,14,80,58" concept="10" />
+      <node id="3674434577577159919" at="86,48,87,22" concept="5" />
+      <node id="3674434577577159919" at="92,40,93,19" concept="5" />
+      <node id="3674434577577159919" at="97,0,98,0" concept="7" trace="ThisExpression$$o" />
+      <node id="3674434577577159919" at="98,0,99,0" concept="7" trace="LocalMethodCall$zT" />
+      <node id="3674434577577159919" at="99,0,100,0" concept="7" trace="InstanceMethodDeclaration$39" />
+      <node id="3674434577577159919" at="103,0,104,0" concept="7" trace="baseMethodDeclaration$pyYw" />
+      <node id="3674434577577159919" at="50,0,52,0" concept="0" trace="CheckedDotExpression__BehaviorDescriptor#()V" />
+      <node id="4697831301626073713" at="33,95,36,5" concept="2" />
+      <node id="4697831301626073782" at="36,5,39,5" concept="2" />
+      <node id="3674434577577159919" at="43,0,46,0" concept="8" trace="allowsNullOperand_id3Yy2P0QQESt#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3674434577577159919" at="46,0,49,0" concept="8" trace="lvalue_id1653mnvAgpj#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
+      <node id="3674434577577159919" at="56,49,59,5" concept="2" />
+      <node id="3674434577577159919" at="72,49,75,5" concept="2" />
+      <node id="3674434577577159919" at="84,0,89,0" concept="3" trace="getDeclaredMethods#()Ljava/util/List;" />
+      <node id="3674434577577159919" at="90,0,95,0" concept="3" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="3674434577577159919" at="75,5,81,5" concept="9" />
+      <node id="3674434577577159919" at="59,5,67,5" concept="9" />
+      <node id="3674434577577159919" at="33,0,43,0" concept="8" trace="hasLocalContextInside_id3bYdGv2TyNM#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3674434577577159919" at="70,0,83,0" concept="3" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
+      <node id="3674434577577159919" at="54,0,69,0" concept="3" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
+      <scope id="3674434577577159919" at="50,58,50,58" />
+      <scope id="4697831301626073714" at="34,156,35,18" />
+      <scope id="4697831301626073783" at="37,305,38,18" />
+      <scope id="671730757938930440" at="43,91,44,16" />
+      <scope id="1262430001741718800" at="46,94,47,17" />
+      <scope id="3674434577577159919" at="57,26,58,56" />
+      <scope id="3674434577577159919" at="61,13,62,73" />
+      <scope id="3674434577577159919" at="63,13,64,69" />
+      <scope id="3674434577577159919" at="65,14,66,58" />
+      <scope id="3674434577577159919" at="73,26,74,56" />
+      <scope id="3674434577577159919" at="77,13,78,61" />
+      <scope id="3674434577577159919" at="79,14,80,58" />
+      <scope id="3674434577577159919" at="86,48,87,22" />
+      <scope id="3674434577577159919" at="92,40,93,19" />
+      <scope id="3674434577577159919" at="50,0,52,0" />
+      <scope id="3674434577577159919" at="43,0,46,0">
         <var name="__thisNode__" id="3674434577577159919" />
       </scope>
-      <scope id="3674434577577159919" at="47,0,50,0">
+      <scope id="3674434577577159919" at="46,0,49,0">
         <var name="__thisConcept__" id="3674434577577159919" />
       </scope>
-      <scope id="3674434577577159919" at="85,0,90,0" />
-      <scope id="3674434577577159919" at="91,0,96,0" />
-      <scope id="3674434577577159925" at="34,95,42,17" />
-      <scope id="3674434577577159919" at="34,0,44,0">
+      <scope id="3674434577577159919" at="84,0,89,0" />
+      <scope id="3674434577577159919" at="90,0,95,0" />
+      <scope id="3674434577577159925" at="33,95,41,17" />
+      <scope id="3674434577577159919" at="33,0,43,0">
         <var name="__thisNode__" id="3674434577577159919" />
       </scope>
-      <scope id="3674434577577159919" at="72,128,82,5">
+      <scope id="3674434577577159919" at="71,128,81,5">
         <var name="methodIndex" id="3674434577577159919" />
       </scope>
-      <scope id="3674434577577159919" at="56,114,68,5">
+      <scope id="3674434577577159919" at="55,114,67,5">
         <var name="methodIndex" id="3674434577577159919" />
       </scope>
-      <scope id="3674434577577159919" at="71,0,84,0">
+      <scope id="3674434577577159919" at="70,0,83,0">
         <var name="concept" id="3674434577577159919" />
         <var name="method" id="3674434577577159919" />
         <var name="parameters" id="3674434577577159919" />
       </scope>
-      <scope id="3674434577577159919" at="55,0,70,0">
+      <scope id="3674434577577159919" at="54,0,69,0">
         <var name="method" id="3674434577577159919" />
         <var name="node" id="3674434577577159919" />
         <var name="parameters" id="3674434577577159919" />
       </scope>
-      <unit id="3674434577577159919" at="103,0,106,0" name="jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__BehaviorDescriptor$LINKS" />
-      <unit id="3674434577577159919" at="97,0,102,0" name="jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__BehaviorDescriptor$CONCEPTS" />
-      <unit id="3674434577577159919" at="24,0,107,0" name="jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__BehaviorDescriptor" />
+      <unit id="3674434577577159919" at="102,0,105,0" name="jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__BehaviorDescriptor$LINKS" />
+      <unit id="3674434577577159919" at="96,0,101,0" name="jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__BehaviorDescriptor$CONCEPTS" />
+      <unit id="3674434577577159919" at="23,0,106,0" name="jetbrains.mps.baseLanguage.checkedDots.behavior.CheckedDotExpression__BehaviorDescriptor" />
     </file>
   </root>
 </debug-info>

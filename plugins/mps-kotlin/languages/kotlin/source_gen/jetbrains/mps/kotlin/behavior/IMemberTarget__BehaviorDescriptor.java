@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,8 +20,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class IMemberTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af535L, "jetbrains.mps.kotlin.structure.IMemberTarget");
 
-  public static final SMethod<SNode> getOperand_id3xTUo83z_P9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperand").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4069540482920635721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<SNode> getNavigation_id1QSyUt0Ob3M = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277888754L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> getOperand_id3xTUo83z_P9 = new SMethodBuilder<>(SNode.class).name("getOperand").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4069540482920635721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> getNavigation_id1QSyUt0Ob3M = new SMethodBuilder<>(SNode.class).name("getNavigation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277888754L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperand_id3xTUo83z_P9, getNavigation_id1QSyUt0Ob3M);
 

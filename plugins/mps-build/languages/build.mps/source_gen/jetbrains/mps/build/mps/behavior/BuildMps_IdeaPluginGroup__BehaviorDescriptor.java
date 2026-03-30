@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMps_IdeaPluginGroup__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
 
-  public static final SMethod<Iterable<SNode>> getModules_id26vVkElqAGr = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2422916029138758427L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<Iterable<SNode>> getModules_id26vVkElqAGr = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2422916029138758427L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModules_id26vVkElqAGr);
 

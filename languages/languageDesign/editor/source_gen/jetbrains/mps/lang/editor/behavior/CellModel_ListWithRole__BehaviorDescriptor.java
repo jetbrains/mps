@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -28,12 +27,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class CellModel_ListWithRole__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, "jetbrains.mps.lang.editor.structure.CellModel_ListWithRole");
 
-  public static final SMethod<Boolean> isVertical_idi2IdWzG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVertical").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873472748L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<Boolean> isVerticalGrid_idi2IfsZ1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVerticalGrid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873867713L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<Boolean> isHorizontal_idi2IfsZo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isHorizontal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873867736L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<Boolean> isFoldingEnabled_id3ZqNA5Aj2vG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFoldingEnabled").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4601216887035799532L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLayout").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(332515575062761786L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isVertical_idi2IdWzG = new SMethodBuilder<>(Boolean.TYPE).name("isVertical").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873472748L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isVerticalGrid_idi2IfsZ1 = new SMethodBuilder<>(Boolean.TYPE).name("isVerticalGrid").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873867713L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isHorizontal_idi2IfsZo = new SMethodBuilder<>(Boolean.TYPE).name("isHorizontal").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1239873867736L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Boolean> isFoldingEnabled_id3ZqNA5Aj2vG = new SMethodBuilder<>(Boolean.TYPE).name("isFoldingEnabled").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4601216887035799532L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SNode.class, "child"));
+  public static final SMethod<SNode> getLayout_iditlittTD4U = new SMethodBuilder<>(SNode.class).name("getLayout").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(332515575062761786L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVertical_idi2IdWzG, isVerticalGrid_idi2IfsZ1, isHorizontal_idi2IfsZo, isFoldingEnabled_id3ZqNA5Aj2vG, getScope_id52_Geb4QDV$, getLayout_iditlittTD4U);
 

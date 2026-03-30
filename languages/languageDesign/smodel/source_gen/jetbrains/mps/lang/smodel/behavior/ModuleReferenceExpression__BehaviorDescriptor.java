@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -28,8 +27,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModuleReferenceExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, "jetbrains.mps.lang.smodel.structure.ModuleReferenceExpression");
 
-  public static final SMethod<SModule> getModule_id3wj3sjzQUV1 = new SMethodBuilder<SModule>(new SJavaCompoundTypeImpl(SModule.class)).name("getModule").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4040588429969043137L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<List<SModule>> getVisibleModules_id3wj3sjzSgF$ = new SMethodBuilder<List<SModule>>(new SJavaCompoundTypeImpl((Class<List<SModule>>) ((Class) Object.class))).name("getVisibleModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4040588429969394404L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<SModule> getModule_id3wj3sjzQUV1 = new SMethodBuilder<>(SModule.class).name("getModule").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4040588429969043137L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<List<SModule>> getVisibleModules_id3wj3sjzSgF$ = new SMethodBuilder<>((Class<List<SModule>>) ((Class) Object.class)).name("getVisibleModules").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4040588429969394404L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModule_id3wj3sjzQUV1, getVisibleModules_id3wj3sjzSgF$);
 

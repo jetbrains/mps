@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.List;
@@ -33,12 +32,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IMethodReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x30ab9441ca549e7bL, "jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference");
 
-  public static final SMethod<SNode> getClassifier_idhEwIPI9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410697L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
-  public static final SMethod<SNode> getOperandClassifierType_id5kBYaa7CSet = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperandClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6136146394259620765L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
-  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5776618742611315379L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<SNode> getMethodDeclaration_id5DBbMQ3xohB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311079L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getClassifier_idhEwIPI9 = new SMethodBuilder<>(SNode.class).name("getClassifier").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410697L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
+  public static final SMethod<SNode> getOperandClassifierType_id5kBYaa7CSet = new SMethodBuilder<>(SNode.class).name("getOperandClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6136146394259620765L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
+  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<>((Class<Iterable<SNode>>) ((Class) Object.class)).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5776618742611315379L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, "methodName"));
+  public static final SMethod<SNode> getMethodDeclaration_id5DBbMQ3xohB = new SMethodBuilder<>(SNode.class).name("getMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311079L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<>(SReference.class).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541568762L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<>(Void.TYPE).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6514227258541311989L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SNode.class, "baseMethodDeclaration"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifier_idhEwIPI9, getOperandClassifierType_id5kBYaa7CSet, getAvailableMethodDeclarations_id50EF2fWdwEN, getMethodDeclaration_id5DBbMQ3xohB, getMethodDeclarationReference_id5DBbMQ3ynbU, setMethodDeclaration_id5DBbMQ3xovP);
 

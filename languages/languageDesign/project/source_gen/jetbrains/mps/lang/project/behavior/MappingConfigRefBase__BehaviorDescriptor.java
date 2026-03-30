@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class MappingConfigRefBase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70dL, "jetbrains.mps.lang.project.structure.MappingConfigRefBase");
 
-  public static final SMethod<Boolean> isComplete_id2n3WChplftH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isComplete").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2721285250110257005L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
+  public static final SMethod<Boolean> isComplete_id2n3WChplftH = new SMethodBuilder<>(Boolean.TYPE).name("isComplete").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2721285250110257005L).languageId(0x947f093788f263a9L, 0x86ef829012bb4ca7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isComplete_id2n3WChplftH);
 

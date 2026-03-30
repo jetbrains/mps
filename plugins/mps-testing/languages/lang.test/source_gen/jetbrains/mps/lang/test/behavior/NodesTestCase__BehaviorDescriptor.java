@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.Arrays;
@@ -31,13 +30,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
 
-  public static final SMethod<List<SNode>> getTestSet_idhGB2z8L = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216130724401L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
-  public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
-  public static final SMethod<List<SNode>> getTestMethods_id1RfJDyhAUar = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestMethods").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2148145109766218395L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
-  public static final SMethod<Boolean> isIntentionApplicable_idhHDM9no = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isIntentionApplicable").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217250498008L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> getTestBodyName_idhOw0ICJ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestBodyName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224602741295L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  public static final SMethod<Boolean> needsWriteAction_id5vTxdEzuQjU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsWriteAction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6339244025081193722L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
-  public static final SMethod<SEnumerationLiteral> calcAccessMode_id4wHm_MSTUi_ = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("calcAccessMode").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5200912498968470693L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<List<SNode>> getTestSet_idhGB2z8L = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getTestSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1216130724401L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<>(Boolean.TYPE).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3310779261129403089L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<List<SNode>> getTestMethods_id1RfJDyhAUar = new SMethodBuilder<>((Class<List<SNode>>) ((Class) Object.class)).name("getTestMethods").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2148145109766218395L).languageId(0xb98d6c438812c2f6L, 0xf61473f9130f42f6L).build2();
+  public static final SMethod<Boolean> isIntentionApplicable_idhHDM9no = new SMethodBuilder<>(Boolean.TYPE).name("isIntentionApplicable").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1217250498008L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SNode.class, "node"));
+  public static final SMethod<String> getTestBodyName_idhOw0ICJ = new SMethodBuilder<>(String.class).name("getTestBodyName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1224602741295L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<Boolean> needsWriteAction_id5vTxdEzuQjU = new SMethodBuilder<>(Boolean.TYPE).name("needsWriteAction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6339244025081193722L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
+  public static final SMethod<SEnumerationLiteral> calcAccessMode_id4wHm_MSTUi_ = new SMethodBuilder<>(SEnumerationLiteral.class).name("calcAccessMode").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5200912498968470693L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, isMpsStartRequired_id2RMg39tmiFh, getTestMethods_id1RfJDyhAUar, isIntentionApplicable_idhHDM9no, getTestBodyName_idhOw0ICJ, needsWriteAction_id5vTxdEzuQjU, calcAccessMode_id4wHm_MSTUi_);
 

@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.api.declaration.ParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,11 +26,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IConstructorSuperSpecifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56ae8700cL, "jetbrains.mps.kotlin.structure.IConstructorSuperSpecifier");
 
-  public static final SMethod<Boolean> isClass_id1$jFvlEiPXX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067618173L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Iterable<ParameterDeclaration>> getAvailableParameters_id1$jFvlD0xqw = new SMethodBuilder<Iterable<ParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class))).name("getAvailableParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145046038176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<SNode> convertToNonConstructor_id1$jFvlEUFDL = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToNonConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078061681L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getConstructorDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isClass_id1$jFvlEiPXX = new SMethodBuilder<>(Boolean.TYPE).name("isClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067618173L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<ParameterDeclaration>> getAvailableParameters_id1$jFvlD0xqw = new SMethodBuilder<>((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class)).name("getAvailableParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145046038176L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> convertToNonConstructor_id1$jFvlEUFDL = new SMethodBuilder<>(SNode.class).name("convertToNonConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078061681L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<>(FunctionDeclaration.class).name("getConstructorDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<>((Class<Iterable<Argument>>) ((Class) Object.class)).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isClass_id1$jFvlEiPXX, getAvailableParameters_id1$jFvlD0xqw, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy, getArguments_id1VI7K1jROBX);
 

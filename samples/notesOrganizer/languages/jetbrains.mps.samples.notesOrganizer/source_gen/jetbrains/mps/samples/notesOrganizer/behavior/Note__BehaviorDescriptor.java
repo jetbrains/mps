@@ -9,7 +9,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.awt.Color;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,7 +22,7 @@ public final class Note__BehaviorDescriptor extends BaseBHDescriptor {
   private static final Logger LOG = Logger.getLogger(Note__BehaviorDescriptor.class);
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163df32dL, "jetbrains.mps.samples.notesOrganizer.structure.Note");
 
-  public static final SMethod<Color> findColor_id3o4bEdkAIk2 = new SMethodBuilder<Color>(new SJavaCompoundTypeImpl(Color.class)).name("findColor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3892287256988935426L).languageId(0x8d6197071eaaa5f1L, 0x4b0f115a88684d72L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Color> findColor_id3o4bEdkAIk2 = new SMethodBuilder<>(Color.class).name("findColor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3892287256988935426L).languageId(0x8d6197071eaaa5f1L, 0x4b0f115a88684d72L).build2(SMethodBuilder.createJavaParameter(String.class, "colorName"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findColor_id3o4bEdkAIk2);
 

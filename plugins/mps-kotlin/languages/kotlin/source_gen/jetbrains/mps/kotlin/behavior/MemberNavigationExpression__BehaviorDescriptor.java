@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,10 +22,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class MemberNavigationExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationExpression");
 
-  public static final SMethod<MemberReceiver> getReceiver_id1QSyUt0NT4U = new SMethodBuilder<MemberReceiver>(new SJavaCompoundTypeImpl(MemberReceiver.class)).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277815098L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> takeStandalone_id1QSyUt0NYsZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("takeStandalone").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277837119L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> isRightUnary_id7EfieuW$AAu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRightUnary").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8831357554435189150L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<Precedence>(new SJavaCompoundTypeImpl(Precedence.class)).name("getPrecedenceLevel").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7027413324306640159L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<MemberReceiver> getReceiver_id1QSyUt0NT4U = new SMethodBuilder<>(MemberReceiver.class).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277815098L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> takeStandalone_id1QSyUt0NYsZ = new SMethodBuilder<>(Boolean.TYPE).name("takeStandalone").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2141615173277837119L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isRightUnary_id7EfieuW$AAu = new SMethodBuilder<>(Boolean.TYPE).name("isRightUnary").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8831357554435189150L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<>(Precedence.class).name("getPrecedenceLevel").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7027413324306640159L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReceiver_id1QSyUt0NT4U, takeStandalone_id1QSyUt0NYsZ, isRightUnary_id7EfieuW$AAu, getPrecedenceLevel_id666oMY59eOv);
 

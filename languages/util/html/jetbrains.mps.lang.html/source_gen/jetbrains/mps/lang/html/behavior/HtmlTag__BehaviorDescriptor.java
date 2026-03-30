@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class HtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54b10b2L, "jetbrains.mps.lang.html.structure.HtmlTag");
 
-  public static final SMethod<Boolean> isMultiline_idVhXOWqV8wJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1067906505789704239L).languageId(0xad374b804d24ba45L, 0x8a10cb27224943abL).build2();
+  public static final SMethod<Boolean> isMultiline_idVhXOWqV8wJ = new SMethodBuilder<>(Boolean.TYPE).name("isMultiline").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1067906505789704239L).languageId(0xad374b804d24ba45L, 0x8a10cb27224943abL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiline_idVhXOWqV8wJ);
 

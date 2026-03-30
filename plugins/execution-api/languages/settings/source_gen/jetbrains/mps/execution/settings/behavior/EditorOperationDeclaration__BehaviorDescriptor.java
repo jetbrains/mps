@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,9 +23,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class EditorOperationDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012dL, "jetbrains.mps.execution.settings.structure.EditorOperationDeclaration");
 
-  public static final SMethod<SNode> getJavaMethod_idO$iR4J$gaJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getJavaMethod").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156066991L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
-  public static final SMethod<SNode> getPublicJavaMethod_idbkrofm9Fgz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPublicJavaMethod").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(203908296139519011L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
-  public static final SMethod<SNode> getMethodbyName_idO$iR4J$gaP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodbyName").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(946964771156066997L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> getJavaMethod_idO$iR4J$gaJ = new SMethodBuilder<>(SNode.class).name("getJavaMethod").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(946964771156066991L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
+  public static final SMethod<SNode> getPublicJavaMethod_idbkrofm9Fgz = new SMethodBuilder<>(SNode.class).name("getPublicJavaMethod").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(203908296139519011L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2();
+  public static final SMethod<SNode> getMethodbyName_idO$iR4J$gaP = new SMethodBuilder<>(SNode.class).name("getMethodbyName").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(946964771156066997L).languageId(0xbdf5a2ceb91b723cL, 0x756e911c3f1f4a48L).build2(SMethodBuilder.createJavaParameter(String.class, "name"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getJavaMethod_idO$iR4J$gaJ, getPublicJavaMethod_idbkrofm9Fgz, getMethodbyName_idO$iR4J$gaP);
 

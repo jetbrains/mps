@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IGeneratorParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, "jetbrains.mps.lang.generator.structure.IGeneratorParameter");
 
-  public static final SMethod<String> getUniqueId_id$79JWCe2bn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUniqueId").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(650531548511609559L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<String> getUniqueId_id$79JWCe2bn = new SMethodBuilder<>(String.class).name("getUniqueId").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(650531548511609559L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUniqueId_id$79JWCe2bn);
 

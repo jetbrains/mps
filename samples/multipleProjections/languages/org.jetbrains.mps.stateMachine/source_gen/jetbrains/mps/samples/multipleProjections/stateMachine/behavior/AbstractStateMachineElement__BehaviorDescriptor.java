@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class AbstractStateMachineElement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0x6e3eaf7a54e76eeaL, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.AbstractStateMachineElement");
 
-  public static final SMethod<SNode> getStateMachine_id6SYFRDkTQVW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStateMachine").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7943979732673457916L).languageId(0xba56de1bbf3afda7L, 0x530533eef7894c1eL).build2();
+  public static final SMethod<SNode> getStateMachine_id6SYFRDkTQVW = new SMethodBuilder<>(SNode.class).name("getStateMachine").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7943979732673457916L).languageId(0xba56de1bbf3afda7L, 0x530533eef7894c1eL).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStateMachine_id6SYFRDkTQVW);
 

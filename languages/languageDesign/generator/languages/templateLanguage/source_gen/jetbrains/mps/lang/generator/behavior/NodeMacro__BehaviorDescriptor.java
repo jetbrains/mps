@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -30,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
 
-  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290799L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<SNode> getPreviousNodeMacro_idhEwIot7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPreviousNodeMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290823L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  /*package*/ static final SMethod<SNode> getEnclosingMacro_idhEwIoti = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingMacro").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290834L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<SNode> getInputNodeTypeFromEnvironment_idhEwIouc = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInputNodeTypeFromEnvironment").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290892L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
-  public static final SMethod<Boolean> hasMappingLabel_id5KmckUrKj9u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasMappingLabel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314667344478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SNode> getInputNodeTypeInsideOfMacro_idhEwIosJ = new SMethodBuilder<>(SNode.class).name("getInputNodeTypeInsideOfMacro").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290799L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<SNode> getPreviousNodeMacro_idhEwIot7 = new SMethodBuilder<>(SNode.class).name("getPreviousNodeMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877290823L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<>(String.class).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877396640L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  /*package*/ static final SMethod<SNode> getEnclosingMacro_idhEwIoti = new SMethodBuilder<>(SNode.class).name("getEnclosingMacro").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290834L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2(SMethodBuilder.createJavaParameter(SNode.class, "currentMacro"), SMethodBuilder.createJavaParameter(SNode.class, "currentNode"));
+  /*package*/ static final SMethod<SNode> getInputNodeTypeFromEnvironment_idhEwIouc = new SMethodBuilder<>(SNode.class).name("getInputNodeTypeFromEnvironment").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(1213877290892L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
+  public static final SMethod<Boolean> hasMappingLabel_id5KmckUrKj9u = new SMethodBuilder<>(Boolean.TYPE).name("hasMappingLabel").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6635545314667344478L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInputNodeTypeInsideOfMacro_idhEwIosJ, getPreviousNodeMacro_idhEwIot7, getPresentation_idhEwIMiw, getEnclosingMacro_idhEwIoti, getInputNodeTypeFromEnvironment_idhEwIouc, hasMappingLabel_id5KmckUrKj9u);
 

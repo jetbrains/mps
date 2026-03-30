@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.IStaticContainerProcessor;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -20,7 +19,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IStaticContainerForMethods__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c8f444674L, "jetbrains.mps.baseLanguage.structure.IStaticContainerForMethods");
 
-  public static final SMethod<IStaticContainerProcessor> getStaticContainerProcessor_idhMfhg$W = new SMethodBuilder<IStaticContainerProcessor>(new SJavaCompoundTypeImpl(IStaticContainerProcessor.class)).name("getStaticContainerProcessor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1222174378300L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<IStaticContainerProcessor> getStaticContainerProcessor_idhMfhg$W = new SMethodBuilder<>(IStaticContainerProcessor.class).name("getStaticContainerProcessor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1222174378300L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(SNode.class, "node"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStaticContainerProcessor_idhMfhg$W);
 

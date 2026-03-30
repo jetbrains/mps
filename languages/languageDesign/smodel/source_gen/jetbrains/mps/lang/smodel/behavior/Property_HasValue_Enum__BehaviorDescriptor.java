@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class Property_HasValue_Enum__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10add1ded2bL, "jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum");
 
-  public static final SMethod<Boolean> applicableToProperty_id45eRmv019Ae = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToProperty").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4705942098321643918L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> applicableToProperty_id45eRmv019Ae = new SMethodBuilder<>(Boolean.TYPE).name("applicableToProperty").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4705942098321643918L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SNode.class, "datatype"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(applicableToProperty_id45eRmv019Ae);
 

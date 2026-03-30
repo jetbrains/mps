@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -32,10 +31,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
 
-  public static final SMethod<SAbstractConcept> getConcept_id5ZE7FBYYOpv = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349110879L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<Void> setConcept_id5e7X3XCIPOJ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980181183791L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> setConcept_id5ZE7FBYYR6j = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.TYPE)).name("setConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349121939L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, ""));
-  public static final SMethod<Long> getIdValue_id5ZE7FBZ0whU = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349552762L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<SAbstractConcept> getConcept_id5ZE7FBYYOpv = new SMethodBuilder<>(SAbstractConcept.class).name("getConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349110879L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Void> setConcept_id5e7X3XCIPOJ = new SMethodBuilder<>(Void.TYPE).name("setConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980181183791L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SNode.class, "concept"));
+  public static final SMethod<Void> setConcept_id5ZE7FBYYR6j = new SMethodBuilder<>(Void.TYPE).name("setConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349121939L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "concept"));
+  public static final SMethod<Long> getIdValue_id5ZE7FBZ0whU = new SMethodBuilder<>(Long.TYPE).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6911370362349552762L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id5ZE7FBYYOpv, setConcept_id5e7X3XCIPOJ, setConcept_id5ZE7FBYYR6j, getIdValue_id5ZE7FBZ0whU);
 

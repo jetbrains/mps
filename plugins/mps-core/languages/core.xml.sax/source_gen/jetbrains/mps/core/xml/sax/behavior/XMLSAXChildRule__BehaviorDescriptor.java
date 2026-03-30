@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -32,10 +31,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class XMLSAXChildRule__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildRule");
 
-  public static final SMethod<String> getTagName_id1XGsQcRHuf0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTagName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2264311582634140608L).languageId(0xa4cbfc7d324ecc63L, 0xdcb5a83a19a844ffL).build2();
-  public static final SMethod<Scope> getArgumentsScope_id460OzqriLdX = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getArgumentsScope").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4720003541459735421L).languageId(0xa4cbfc7d324ecc63L, 0xdcb5a83a19a844ffL).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Scope> getScope_id52_Geb4QFgX = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203257917L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SContainmentLink.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> getTagName_id1XGsQcRHuf0 = new SMethodBuilder<>(String.class).name("getTagName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2264311582634140608L).languageId(0xa4cbfc7d324ecc63L, 0xdcb5a83a19a844ffL).build2();
+  public static final SMethod<Scope> getArgumentsScope_id460OzqriLdX = new SMethodBuilder<>(Scope.class).name("getArgumentsScope").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4720003541459735421L).languageId(0xa4cbfc7d324ecc63L, 0xdcb5a83a19a844ffL).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SNode.class, "child"));
+  public static final SMethod<Scope> getScope_id52_Geb4QFgX = new SMethodBuilder<>(Scope.class).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203257917L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter(SAbstractConcept.class, "kind"), SMethodBuilder.createJavaParameter(SContainmentLink.class, "role"), SMethodBuilder.createJavaParameter(Integer.TYPE, "index"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTagName_id1XGsQcRHuf0, getArgumentsScope_id460OzqriLdX, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX);
 

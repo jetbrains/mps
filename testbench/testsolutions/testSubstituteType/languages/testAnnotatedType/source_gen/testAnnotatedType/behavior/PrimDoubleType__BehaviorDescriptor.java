@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class PrimDoubleType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09c62e6L, "testAnnotatedType.structure.PrimDoubleType");
 
-  public static final SMethod<SNode> substituteWith_id1hDKT6wB3pH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("substituteWith").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1470921783545443949L).languageId(0xbae1cc709d588366L, 0x2f74e72e3e3d480eL).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> substituteWith_id1hDKT6wB3pH = new SMethodBuilder<>(SNode.class).name("substituteWith").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1470921783545443949L).languageId(0xbae1cc709d588366L, 0x2f74e72e3e3d480eL).build2(SMethodBuilder.createJavaParameter(SNode.class, "subs"));
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(substituteWith_id1hDKT6wB3pH);
 

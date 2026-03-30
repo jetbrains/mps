@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import java.awt.Color;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
-import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ColorReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x16bafbb4c6cd4cc5L, 0x83327c6de8729b3fL, 0x3a2b0182df2201afL, "jetbrains.mps.samples.Shapes.structure.ColorReference");
 
-  public static final SMethod<Color> findColor_id1Os2kBLuoy8 = new SMethodBuilder<Color>(new SJavaCompoundTypeImpl(Color.class)).name("findColor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2097561739636344968L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2();
+  public static final SMethod<Color> findColor_id1Os2kBLuoy8 = new SMethodBuilder<>(Color.class).name("findColor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2097561739636344968L).languageId(0x83327c6de8729b3fL, 0x16bafbb4c6cd4cc5L).build2();
 
   private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findColor_id1Os2kBLuoy8);
 
