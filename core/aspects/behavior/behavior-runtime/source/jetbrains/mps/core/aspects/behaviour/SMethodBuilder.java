@@ -54,6 +54,10 @@ public final class SMethodBuilder<T> {
     myReturnType = returnType;
   }
 
+  public SMethodBuilder(Class<T> returnType) {
+    myReturnType = new SJavaCompoundTypeImpl(returnType);
+  }
+
   @Deprecated
   public SMethod<T> build(SParameter... paramTypes) {
     return build2(Arrays.asList(paramTypes));
