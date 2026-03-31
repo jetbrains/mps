@@ -17,9 +17,12 @@ import jetbrains.mps.lang.typesystem.runtime.OverloadedOpsProvider_OneTypeSpecif
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.OverloadedOperationsTypesProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.List;
+import jetbrains.mps.newTypesystem.SubtypingUtil;
+import java.util.Arrays;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -1554,7 +1557,19 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       if (SNodeOperations.isInstanceOf(leftOperandType, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rightOperandType, CONCEPTS.NullType$Ea)) {
         return null;
       } else {
-        return Queries.getBinaryOperationType(leftOperandType, rightOperandType);
+        List<SNode> leastCommonSupertypes = SubtypingUtil.leastCommonSuperTypes(Arrays.asList(leftOperandType, rightOperandType), null);
+        if (leastCommonSupertypes.isEmpty()) {
+          return null;
+        }
+        SNode type = leastCommonSupertypes.iterator().next();
+        {
+          SNode coercedNode_r12mo3_d0a0a0a = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.PrimitiveType$sR);
+          if (coercedNode_r12mo3_d0a0a0a != null) {
+            return coercedNode_r12mo3_d0a0a0a;
+          } else {
+            return type;
+          }
+        }
       }
     }
     @Override
