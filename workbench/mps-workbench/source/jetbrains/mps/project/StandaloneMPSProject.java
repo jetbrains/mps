@@ -133,20 +133,18 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   @Override
   public void projectOpened() {
-    super.projectOpened();
-    if (!myProjectOpened.compareAndSet(false, true)) {
-      LOG.error("Failed to record project state");
+    if (myProjectOpened.compareAndSet(false, true)) {
+      super.projectOpened();
+      new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
     }
-    new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
   }
 
   @Override
   public void projectClosed() {
-    new RepoListenerRegistrar(getRepository(), myProblemsListener).detach();
-    removeListener(myListener);
-    super.projectClosed();
-    if (!myProjectOpened.compareAndSet(true, false)) {
-      LOG.error("Failed to record project state");
+    if (myProjectOpened.compareAndSet(true, false)) {
+      new RepoListenerRegistrar(getRepository(), myProblemsListener).detach();
+      removeListener(myListener);
+      super.projectClosed();
     }
   }
 
