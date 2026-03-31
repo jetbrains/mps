@@ -253,7 +253,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
       ApplicationManager.getApplication().invokeAndWait(() -> {
         FileEditorManagerEx.getInstanceEx(ideaProject).closeAllFiles();
         ProjectManagerEx.getInstanceEx().closeAndDispose(ideaProject);
-      }, ModalityState.NON_MODAL);
+      }, ModalityState.nonModal());
     } else {
       super.closeProject(project);
     }
@@ -348,12 +348,17 @@ public final class IdeaEnvironment extends EnvironmentBase {
       throw new ProjectCouldNotBeOpenedException(String.format("Could not open project (null in return) from the '%s'", projectFile.getAbsolutePath()), exc.get());
     }
 
-    // does not seem applicable in test mode
-    if (!(myConfig.isTestMode())) {
-      final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get().getProject());
-      waiter.wait0(30, TimeUnit.SECONDS);
+    final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get().getProject());
+    waiter.wait0(30, TimeUnit.SECONDS);
+    // MPSProject is initialized from a ProjectActivity, however, the code above doesn't guarantee activity execution,
+    // for a reason I didn't manage to find out (completes in 1ms w/o any noticeable result, project.isOpened() == false). 
+    // Therefore, to ensure project is populated with modules (and no tests fails due to 0 models in the project), 
+    // force activation here. Note, there's a guard in StandaloneMPSProject.projectOpened() that prevent multiple runs
+    if (!(project.get().isOpened())) {
+      project.get().projectOpened();
+      // no explicit projectClosed(), hope for IDEA's code to dispatch ProjectListener event onClosing() which will reach our 
+      // project and let it shut down gracefully
     }
-
 
     return project.get();
   }
