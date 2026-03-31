@@ -110,7 +110,8 @@ public class DefaultTypecheckingController extends TypecheckingController implem
   @NotNull
   @Override
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
-    if (myActiveSession != null) {
+    SNode containingRoot = src.getContainingRoot();
+    if (myActiveSession != null && myActiveSession.flags().getRoot() == containingRoot) {
       return myActiveSession.getQueries(src, trg, trgConcept);
     }
     // request new session on demand
