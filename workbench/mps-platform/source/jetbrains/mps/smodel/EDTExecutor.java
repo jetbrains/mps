@@ -253,13 +253,20 @@ final class EDTExecutor implements Disposable {
         return;
       }
     }
-    LOG.trace("the task queue is empty, aborting the flush");
-    // here, we act as if myTaskQueue.isEmpty() == true, although indeed it could have changed since. However,
-    //       if there's anything has been added meanwhile, we gonna pick this state outside and schedule one more flush
-    if (myFlushIsScheduled.compareAndSet(true, false)) {
-      pushTransition(false);
-      LOG.debug("FlushIsScheduled is OFF");
+    LOG.trace("the task queue became empty, the flush is over");
+    try (CloseableLock ignored = myLock.lock()) {
+      // here, we act as if myTaskQueue.isEmpty() == true, although indeed it could have changed since. However,
+      //       we just signal that at some point we indeed seen the queue empty.
       signalQueueBecameEmpty();
+      if (!myTaskQueue.isEmpty()) {
+        // if the queue isn't empty, do not clear 'scheduled flush', just let it run again
+        scheduleFlushInEDT();
+        return;
+      }
+      if (myFlushIsScheduled.compareAndSet(true, false)) {
+        pushTransition(false);
+        LOG.debug("FlushIsScheduled is OFF");
+      }
     }
   }
 
