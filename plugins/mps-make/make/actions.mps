@@ -12229,7 +12229,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="5IDZVs0mEed" role="2OqNvi">
-                      <ref role="37wK5l" to="rvbb:~ProjectPane.selectTransientsFolder()" resolve="selectTransientsFolder" />
+                      <ref role="37wK5l" to="rvbb:~ProjectPane.expandTransientsFolder()" resolve="expandTransientsFolder" />
                     </node>
                   </node>
                 </node>
