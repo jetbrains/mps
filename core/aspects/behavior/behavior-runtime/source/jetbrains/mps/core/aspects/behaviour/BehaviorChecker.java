@@ -30,31 +30,36 @@ import java.util.List;
  */
 final class BehaviorChecker {
   // in fact, it's rather checkArguments()
-  static <T> void checkParameters(@NotNull BHDescriptor originalDescriptor, @NotNull SMethod<T> method, @NotNull Object[] parameters) throws BHMethodArgumentsCountDoNotMatch, BHArgumentsDoNotMatch{
+  static <T> void checkParameters(@NotNull BHDescriptor originalDescriptor, @NotNull SMethod<T> method, @NotNull Object[] arguments) throws BHMethodArgumentsCountDoNotMatch, BHArgumentsDoNotMatch{
     List<SParameter> declaredParameters = method.getParameters();
-    boolean hasVarArg = !declaredParameters.isEmpty() && declaredParameters.get(declaredParameters.size() - 1) instanceof SVarArgParameter;
+    final boolean hasVarArg = !declaredParameters.isEmpty() && declaredParameters.getLast() instanceof SVarArgParameter;
     if (!hasVarArg) {
-      if (declaredParameters.size() != parameters.length) {
-        throw new BHMethodArgumentsCountDoNotMatch(method, parameters.length);
+      if (declaredParameters.size() != arguments.length) {
+        String m = "Method %s expects %d parameters while received %d".formatted(method, declaredParameters.size(), arguments.length);
+        throw new BHMethodArgumentsCountDoNotMatch(m);
       }
     }
-    for (int i = 0; i < parameters.length; ++i) {
-      if (parameters[i] != null) {
-        Class<?> aClass = parameters[i].getClass();
+    final String fmt = "The parameter %s does not match %s while calling %s in the %s descriptor";
+    for (int i = 0; i < arguments.length; ++i) {
+      if (arguments[i] != null) {
+        Class<?> aClass = arguments[i].getClass();
         SJavaCompoundTypeImpl passedObjectType = new SJavaCompoundTypeImpl(aClass);
-        if (hasVarArg && (i >= declaredParameters.size() - 1)) { // that lies in a vararg argument
-          SArrayType varArgType = (SArrayType) declaredParameters.get(declaredParameters.size() - 1).getType();
-          if (parameters.length == declaredParameters.size()) { // an array could be passed
+        // In fact, i>= is quite odd check, as we prepare arguments in ParametersTypeConverter to pass [] for the varargs parameter
+        // Would be nice to have this aligned, not to do the same translation twice
+        if (hasVarArg && (i >= declaredParameters.size() - 1)) { // that lies in a vararg argument.
+          SArrayType varArgType = (SArrayType) declaredParameters.getLast().getType();
+          if (arguments.length == declaredParameters.size()) { // an array could be passed
             if (varArgType.isAssignableFrom(passedObjectType)) {
               continue;
             }
           }
-          if (!varArgType.getInternalType().isAssignableFrom(passedObjectType)) {
-            throw new BHArgumentsDoNotMatch(originalDescriptor, method, parameters, declaredParameters, i);
+          if (!varArgType.getComponentType().isAssignableFrom(passedObjectType)) {
+            throw new BHArgumentsDoNotMatch(fmt.formatted(declaredParameters.getLast(), arguments[i], method, originalDescriptor));
           }
         } else {
-          if (!declaredParameters.get(i).getType().isAssignableFrom(passedObjectType)) {
-            throw new BHArgumentsDoNotMatch(originalDescriptor, method, parameters, declaredParameters, i);
+          final SParameter param = declaredParameters.get(i);
+          if (!param.getType().isAssignableFrom(passedObjectType)) {
+            throw new BHArgumentsDoNotMatch(fmt.formatted(param, arguments[i], method, originalDescriptor));
           }
         }
       }
@@ -96,16 +101,14 @@ final class BehaviorChecker {
   }
 
   public static class BHMethodArgumentsCountDoNotMatch extends RuntimeException {
-    public BHMethodArgumentsCountDoNotMatch(SMethod method, int length) {
-      super("Method " + method + " has " + method.getParameters().size() + " parameters in the declaration while " + length + " have been passed");
+    public BHMethodArgumentsCountDoNotMatch(String message) {
+      super(message);
     }
   }
 
   public static class BHArgumentsDoNotMatch extends RuntimeException {
-    public BHArgumentsDoNotMatch(BHDescriptor descriptor, SMethod<?> method, Object[] parameters,
-                                 List<SParameter> sParameters, int i) {
-      super("The parameter " + parameters[i] + " of the type " + parameters[i].getClass() + " does not match " + sParameters.get(i) +
-            " while calling " + method + " in the " + descriptor + " descriptor");
+    public BHArgumentsDoNotMatch(String message) {
+      super(message);
     }
   }
 

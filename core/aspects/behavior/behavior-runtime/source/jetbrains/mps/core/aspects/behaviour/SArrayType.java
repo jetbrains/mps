@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,11 @@ import org.jetbrains.annotations.Nullable;
  * An array type
  */
 public final class SArrayType implements SAbstractType {
-  private final SAbstractType myInternalType;
+  // XXX it's usually componentType, nothing 'internal' there
+  private final SAbstractType myComponentType;
 
   public SArrayType(@NotNull SAbstractType type) {
-    myInternalType = type;
+    myComponentType = type;
   }
 
   @Nullable
@@ -38,36 +39,45 @@ public final class SArrayType implements SAbstractType {
   @Override
   public boolean isAssignableFrom(@NotNull SAbstractType another) {
     if (another instanceof SArrayType) {
-      return myInternalType.isAssignableFrom(((SArrayType) another).getInternalType());
+      return myComponentType.isAssignableFrom(((SArrayType) another).getComponentType());
     }
     if (another instanceof SJavaCompoundType) {
       Class<?> javaType = ((SJavaCompoundType) another).getJavaType();
       if (javaType.isArray()) {
-        return myInternalType.isAssignableFrom(new SJavaCompoundTypeImpl(javaType.getComponentType()));
+        return myComponentType.isAssignableFrom(new SJavaCompoundTypeImpl(javaType.getComponentType()));
       }
     }
     return false;
   }
 
+  /**
+   * @deprecated use {@link #getComponentType()}
+   */
   @NotNull
+  @Deprecated(since = "2026.1", forRemoval = true)
   public SAbstractType getInternalType() {
-    return myInternalType;
+    return getComponentType();
+  }
+
+  @NotNull
+  public SAbstractType getComponentType() {
+    return myComponentType;
   }
 
   @Override
   public String toString() {
-    return "Array(" + myInternalType +"):";
+    return "Array(" + myComponentType + "):";
   }
 
   @Override
   public int hashCode() {
-    return myInternalType.hashCode();
+    return myComponentType.hashCode();
   }
 
   @Override
   public boolean equals(Object o) {
     if (o instanceof SArrayType) {
-      return myInternalType.equals(((SArrayType) o).getInternalType());
+      return myComponentType.equals(((SArrayType) o).getComponentType());
     }
     return false;
   }
