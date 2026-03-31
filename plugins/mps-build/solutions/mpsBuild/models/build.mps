@@ -8476,6 +8476,19 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="7HgFoM_$q1_" role="3bR37C">
+          <node concept="1BurEX" id="7HgFoM_$q1A" role="1SiIV1">
+            <node concept="398BVA" id="7HgFoM_$q1B" role="1BurEY">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="7HgFoM_$q1C" role="iGT6I">
+                <property role="2Ry0Am" value="lib" />
+                <node concept="2Ry0Ak" id="7HgFoM_$qCS" role="2Ry0An">
+                  <property role="2Ry0Am" value="hamcrest.jar" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="6U$p2g0pj3R" role="2G$12L">
         <property role="BnDLt" value="true" />

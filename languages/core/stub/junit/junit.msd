@@ -5,6 +5,7 @@
     <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="junit4.jar" />
       <sourceRoot location="lib.jar" />
+      <sourceRoot location="hamcrest.jar" />
       <PackageScope>
         <include prefix="junit."/>
         <include prefix="org.junit."/>
@@ -17,6 +18,7 @@
       <classes generated="true" />
       <library location="${mps_home}/lib//junit4.jar" />
       <library location="${mps_home}/lib//lib.jar" />
+      <library location="${mps_home}/lib//hamcrest.jar" />
     </facet>
   </facets>
   <sourcePath />

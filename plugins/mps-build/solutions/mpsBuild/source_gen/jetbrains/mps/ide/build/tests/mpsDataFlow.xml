@@ -584,6 +584,7 @@
         <fileset file="${artifacts.mps}/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/lib.jar" />
+        <fileset file="${artifacts.IDEA}/lib/hamcrest.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

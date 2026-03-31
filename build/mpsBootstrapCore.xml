@@ -33223,6 +33223,7 @@
         <fileset file="${lib_ext}/java-diff-utils-4.15.jar" />
         <fileset file="${mps_home}/lib/junit4.jar" />
         <fileset file="${mps_home}/lib/lib.jar" />
+        <fileset file="${mps_home}/lib/hamcrest.jar" />
         <fileset file="${mps_home}/lib/app.jar" />
         <fileset file="${mps_home}/lib/testFramework.jar" />
         <fileset file="${mps_home}/lib/stats.jar" />
