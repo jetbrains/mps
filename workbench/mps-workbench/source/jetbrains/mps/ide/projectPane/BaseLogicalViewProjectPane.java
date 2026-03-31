@@ -409,7 +409,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     mpsProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
     mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
-    mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
+    MakeServiceComponent makeServiceComponent = mpsProject.getPlatform().findComponent(MakeServiceComponent.class);
+    if (makeServiceComponent != null && makeServiceComponent.get() != null) {
+      makeServiceComponent.get().removeListener(myMakeNotificationListener);
+    }
   }
 
   protected void addListeners() {
@@ -421,7 +424,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     //     as we always have make service in UI (at least, we never check for it in other locations)
     //     However, the idea to keep listeners inside MakeServiceComponent and install them into active
     //     IMakeService once it's updated looks nice
-    mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
+    MakeServiceComponent makeServiceComponent = mpsProject.getPlatform().findComponent(MakeServiceComponent.class);
+    if (makeServiceComponent != null && makeServiceComponent.get() != null) {
+        makeServiceComponent.get().addListener(myMakeNotificationListener);
+    }
     mpsProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
   }
 
