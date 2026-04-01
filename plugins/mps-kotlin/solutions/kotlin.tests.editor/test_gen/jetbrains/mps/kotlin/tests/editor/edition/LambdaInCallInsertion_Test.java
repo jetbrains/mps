@@ -36,7 +36,7 @@ public class LambdaInCallInsertion_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("4730004261680102912", "4730004261680102920");
-      typeString("with");
+      typeString("with(");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
 
