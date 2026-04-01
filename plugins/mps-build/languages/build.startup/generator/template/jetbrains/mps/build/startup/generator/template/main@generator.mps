@@ -168,8 +168,8 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1510949579266781519" name="jetbrains.mps.lang.generator.structure.TemplateCallMacro" flags="ln" index="5jKBG" />
-      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="ln" index="2b32R4">
+      <concept id="1510949579266781519" name="jetbrains.mps.lang.generator.structure.TemplateCallMacro" flags="lg" index="5jKBG" />
+      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="lg" index="2b32R4">
         <child id="1168278589236" name="sourceNodesQuery" index="2P8S$" />
       </concept>
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
@@ -197,7 +197,7 @@
         <reference id="1168285871518" name="applicableConcept" index="3gUMe" />
         <child id="1092060348987" name="contentNode" index="13RCb5" />
       </concept>
-      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="ln" index="17Uvod">
+      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="lg" index="17Uvod">
         <child id="1167756362303" name="propertyValueFunction" index="3zH0cK" />
       </concept>
       <concept id="1167514355419" name="jetbrains.mps.lang.generator.structure.Root_MappingRule" flags="lg" index="3lhOvk">
@@ -210,14 +210,14 @@
       <concept id="1167756080639" name="jetbrains.mps.lang.generator.structure.PropertyMacro_GetPropertyValue" flags="in" index="3zFVjK" />
       <concept id="1167756221419" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_templatePropertyValue" flags="nn" index="3zGtF$" />
       <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
-      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
+      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="ig" index="3JmXsc" />
       <concept id="1805153994415891174" name="jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration" flags="ng" index="1N15co">
         <child id="1805153994415893199" name="type" index="1N15GL" />
       </concept>
-      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="lg" index="1W57fq">
         <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
-      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
+      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="lg" index="1WS0z7">
         <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
       </concept>
     </language>
@@ -2489,7 +2489,7 @@
       <property role="2DPR8u" value="SET COMMON_JVM_ARGS=&quot;-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log&quot; &quot;-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof&quot; -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=&quot;%IDEA_VENDOR_NAME%&quot; %IDE_PROPERTIES_PROPERTY%" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm22ts" role="2DRAPQ">
-      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Dintellij.platform.load.app.info.from.resources=true -Didea.jre.check=true -Dpty4j.preferred.native.folder=&quot;%IDE_HOME%/lib/pty4j&quot; -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot; -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Dij.startup.error.report.url=&quot;https://youtrack.jetbrains.com/newissue?project=MPS&amp;clearDraft=true&amp;summary=$TITLE$&amp;description=$DESCR$&quot;" />
+      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Dintellij.platform.load.app.info.from.resources=true -Didea.jre.check=true -Dpty4j.preferred.native.folder=&quot;%IDE_HOME%/lib/pty4j&quot; -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot; -Dskiko.library.path=&quot;%IDE_HOME%/lib/skiko-awt-runtime-all&quot; -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Dij.startup.error.report.url=&quot;https://youtrack.jetbrains.com/newissue?project=MPS&amp;clearDraft=true&amp;summary=$TITLE$&amp;description=$DESCR$&quot;" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm264z" role="2DRAPQ">
       <property role="2DPR8u" value="SET ALL_JVM_ARGS=%ACC% %COMMON_JVM_ARGS% %IDE_JVM_ARGS%" />
@@ -4514,6 +4514,9 @@
     <node concept="2DRAP_" id="5gb82DdXPMj" role="2DRAPQ">
       <property role="2DPR8u" value="  -Djna.boot.library.path=&quot;${IDE_HOME}/lib/jna&quot; \" />
     </node>
+    <node concept="2DRAP_" id="2yVmrmHFcUp" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Dskiko.library.path=&quot;${IDE_HOME}/lib/skiko-awt-runtime-all&quot; \" />
+    </node>
     <node concept="2DRAP_" id="3eQw_Gy3xcG" role="2DRAPQ">
       <property role="2DPR8u" value="  -Dintellij.platform.load.app.info.from.resources=true \" />
     </node>
@@ -5949,6 +5952,86 @@
                   <node concept="3zGtF$" id="49uyDlGrfO4" role="37wK5m" />
                   <node concept="37vLTw" id="49uyDlGrfO5" role="37wK5m">
                     <ref role="3cqZAo" node="49uyDlGrfN0" resolve="jnaPath" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2DRAP_" id="2yVmrmHURFe" role="2DRAPQ">
+        <property role="2DPR8u" value="        &quot;-Dskiko.library.path=%s&quot;," />
+        <node concept="raruj" id="2yVmrmHURFf" role="lGtFl" />
+        <node concept="17Uvod" id="2yVmrmHURFg" role="lGtFl">
+          <property role="2qtEX9" value="text" />
+          <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
+          <node concept="3zFVjK" id="2yVmrmHURFh" role="3zH0cK">
+            <node concept="3clFbS" id="2yVmrmHURFi" role="2VODD2">
+              <node concept="3cpWs8" id="2yVmrmHURFj" role="3cqZAp">
+                <node concept="3cpWsn" id="2yVmrmHURFk" role="3cpWs9">
+                  <property role="TrG5h" value="path" />
+                  <node concept="17QB3L" id="2yVmrmHURFl" role="1tU5fm" />
+                  <node concept="Xl_RD" id="2yVmrmHURFm" role="33vP2m">
+                    <property role="Xl_RC" value="lib/skiko-awt-runtime-all" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2yVmrmHURFn" role="3cqZAp">
+                <node concept="37vLTI" id="2yVmrmHURFo" role="3clFbG">
+                  <node concept="37vLTw" id="2yVmrmHURFp" role="37vLTJ">
+                    <ref role="3cqZAo" node="2yVmrmHURFk" resolve="path" />
+                  </node>
+                  <node concept="3cpWs3" id="2yVmrmHURFq" role="37vLTx">
+                    <node concept="37vLTw" id="2yVmrmHURFr" role="3uHU7w">
+                      <ref role="3cqZAo" node="2yVmrmHURFk" resolve="path" />
+                    </node>
+                    <node concept="1eOMI4" id="2yVmrmHURFs" role="3uHU7B">
+                      <node concept="3K4zz7" id="2yVmrmHURFt" role="1eOMHV">
+                        <node concept="Xl_RD" id="2yVmrmHURFu" role="3K4E3e">
+                          <property role="Xl_RC" value="$APP_PACKAGE/Contents/" />
+                        </node>
+                        <node concept="3K4zz7" id="2yVmrmHURFv" role="3K4GZi">
+                          <node concept="2OqwBi" id="2yVmrmHURFw" role="3K4Cdx">
+                            <node concept="Xl_RD" id="2yVmrmHURFx" role="2Oq$k0">
+                              <property role="Xl_RC" value="Windows" />
+                            </node>
+                            <node concept="liA8E" id="2yVmrmHURFy" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                              <node concept="v3LJS" id="2yVmrmHURFz" role="37wK5m">
+                                <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Xl_RD" id="2yVmrmHURF$" role="3K4GZi">
+                            <property role="Xl_RC" value="$IDE_HOME/" />
+                          </node>
+                          <node concept="Xl_RD" id="2yVmrmHURF_" role="3K4E3e">
+                            <property role="Xl_RC" value="%IDE_HOME%/" />
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="2yVmrmHURFA" role="3K4Cdx">
+                          <node concept="Xl_RD" id="2yVmrmHURFB" role="2Oq$k0">
+                            <property role="Xl_RC" value="macOS" />
+                          </node>
+                          <node concept="liA8E" id="2yVmrmHURFC" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                            <node concept="v3LJS" id="2yVmrmHURFD" role="37wK5m">
+                              <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2yVmrmHURFE" role="3cqZAp">
+                <node concept="2YIFZM" id="2yVmrmHURFF" role="3clFbG">
+                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                  <node concept="3zGtF$" id="2yVmrmHURFG" role="37wK5m" />
+                  <node concept="37vLTw" id="2yVmrmHURFH" role="37wK5m">
+                    <ref role="3cqZAo" node="2yVmrmHURFk" resolve="path" />
                   </node>
                 </node>
               </node>

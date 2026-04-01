@@ -183,6 +183,7 @@
       <zipfileset file="${basedir}/bin/mac/aarch64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/aarch64" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/amd64" filemode="755" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/Resources" />
+      <zipfileset dir="${basedir}/lib/skiko-awt-runtime-all" prefix="MPS ${mpsBootstrapCore.version}/lib/skiko-awt-runtime-all" />
       <zipfileset dir="${basedir}/lib/jna/darwin-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
       <zipfileset dir="${basedir}/lib/jna/linux-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
       <zipfileset dir="${basedir}/lib/jna/win32-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
@@ -269,6 +270,8 @@
     </copy>
     <tar destfile="${build.layout}/${mps.build.number}-linux.tar.gz" compression="gzip" longfile="gnu">
       <tarfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
+      <tarfileset file="${basedir}/lib/skiko-awt-runtime-all/icudtl.dat" prefix="MPS ${mpsBootstrapCore.version}/lib/skiko-awt-runtime-all" />
+      <tarfileset file="${basedir}/lib/skiko-awt-runtime-all/libskiko-linux-x64.so" prefix="MPS ${mpsBootstrapCore.version}/lib/skiko-awt-runtime-all" />
       <tarfileset file="${basedir}/lib/jna/linux-x86-64/libjnidispatch.so" prefix="MPS ${mpsBootstrapCore.version}/lib/jna" />
       <tarfileset file="${basedir}/lib/pty4j/linux/x86-64/libpty.so" prefix="MPS ${mpsBootstrapCore.version}/lib/pty4j/linux/x86-64" />
       <tarfileset file="${basedir}/bin/linux/amd64/libdbm.so" prefix="MPS ${mpsBootstrapCore.version}/bin" />
@@ -351,6 +354,8 @@
       </zipfileset>
       <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset file="${basedir}/build/resources/mps.ico" prefix="MPS ${mpsBootstrapCore.version}/bin" />
+      <zipfileset file="${basedir}/lib/skiko-awt-runtime-all/icudtl.dat" prefix="MPS ${mpsBootstrapCore.version}/lib/skiko-awt-runtime-all" />
+      <zipfileset file="${basedir}/lib/skiko-awt-runtime-all/skiko-windows-x64.dll" prefix="MPS ${mpsBootstrapCore.version}/lib/skiko-awt-runtime-all" />
       <zipfileset file="${basedir}/lib/jna/win32-x86-64/jnidispatch.dll" prefix="MPS ${mpsBootstrapCore.version}/lib/jna" />
       <zipfileset dir="${basedir}/lib/pty4j/win/x86-64" prefix="MPS ${mpsBootstrapCore.version}/lib/pty4j/win/x86-64" />
       <zipfileset dir="${build.tmp}/deps/jbr-windows-x64.tar.gz1/jbr" prefix="MPS ${mpsBootstrapCore.version}/jbr" />
@@ -433,6 +438,8 @@
       <zipfileset file="${basedir}/bin/mac/amd64/restarter" prefix="MPS.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/fsnotifier" prefix="MPS.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS.app/Contents/bin" filemode="755" />
+      <zipfileset file="${basedir}/lib/skiko-awt-runtime-all/icudtl.dat" prefix="MPS.app/Contents/lib/skiko-awt-runtime-all" />
+      <zipfileset file="${basedir}/lib/skiko-awt-runtime-all/libskiko-macos-x64.dylib" prefix="MPS.app/Contents/lib/skiko-awt-runtime-all" />
       <zipfileset file="${basedir}/lib/jna/darwin-x86-64/libjnidispatch.jnilib" prefix="MPS.app/Contents/lib/jna" />
       <zipfileset file="${basedir}/lib/pty4j/darwin/libpty.dylib" prefix="MPS.app/Contents/lib/pty4j/darwin" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" filemode="755" prefix="MPS.app/Contents/MacOS" />
@@ -513,6 +520,8 @@
       <zipfileset file="${basedir}/bin/mac/aarch64/restarter" prefix="MPS.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/fsnotifier" prefix="MPS.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS.app/Contents/bin" filemode="755" />
+      <zipfileset file="${basedir}/lib/skiko-awt-runtime-all/icudtl.dat" prefix="MPS.app/Contents/lib/skiko-awt-runtime-all" />
+      <zipfileset file="${basedir}/lib/skiko-awt-runtime-all/libskiko-macos-arm64.dylib" prefix="MPS.app/Contents/lib/skiko-awt-runtime-all" />
       <zipfileset file="${basedir}/lib/jna/darwin-aarch64/libjnidispatch.jnilib" prefix="MPS.app/Contents/lib/jna" />
       <zipfileset file="${basedir}/lib/pty4j/darwin/libpty.dylib" prefix="MPS.app/Contents/lib/pty4j/darwin" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755" filemode="755" prefix="MPS.app/Contents/MacOS" />

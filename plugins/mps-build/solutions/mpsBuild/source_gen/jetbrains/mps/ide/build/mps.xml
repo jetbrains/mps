@@ -70,6 +70,7 @@
       <fileset dir="${artifacts.mpsStandalone}/lib">
         <exclude name="jna/" />
         <exclude name="pty4j/" />
+        <exclude name="skiko-awt-runtime-all/" />
       </fileset>
     </copy>
     <mkdir dir="${build.tmp}/default/branding.jar" />

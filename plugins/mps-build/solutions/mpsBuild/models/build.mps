@@ -32982,6 +32982,23 @@
             </node>
           </node>
           <node concept="398223" id="3wRozBgYU46" role="39821P">
+            <node concept="398223" id="1gByoHFa9D$" role="39821P">
+              <node concept="3_J27D" id="1gByoHFa9DA" role="Nbhlr">
+                <node concept="3Mxwew" id="1gByoHFa9Ed" role="3MwsjC">
+                  <property role="3MwjfP" value="skiko-awt-runtime-all" />
+                </node>
+              </node>
+              <node concept="2HvfSZ" id="1gByoHFa9FX" role="39821P">
+                <node concept="55IIr" id="1gByoHFa9FY" role="2HvfZ0">
+                  <node concept="2Ry0Ak" id="1gByoHFa9He" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1gByoHFa9HP" role="2Ry0An">
+                      <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="398223" id="3wRozBgYUbj" role="39821P">
               <node concept="398223" id="33kYI6S02rd" role="39821P">
                 <node concept="3_J27D" id="33kYI6S02rf" role="Nbhlr">
@@ -33305,6 +33322,39 @@
             <ref role="3ygNvj" node="3IKDaVZmzS8" />
           </node>
           <node concept="398223" id="3wRozBgeTul" role="39821P">
+            <node concept="398223" id="1gByoHFa9N5" role="39821P">
+              <node concept="3_J27D" id="1gByoHFa9N7" role="Nbhlr">
+                <node concept="3Mxwew" id="1gByoHFa9NI" role="3MwsjC">
+                  <property role="3MwjfP" value="skiko-awt-runtime-all" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="1gByoHFa9Pu" role="39821P">
+                <node concept="55IIr" id="1gByoHFa9Pv" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1gByoHFa9QF" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1gByoHFa9Ri" role="2Ry0An">
+                      <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                      <node concept="2Ry0Ak" id="2czy14fS3Gk" role="2Ry0An">
+                        <property role="2Ry0Am" value="icudtl.dat" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="28jJK3" id="2czy14fS3Dm" role="39821P">
+                <node concept="55IIr" id="2czy14fS3Dn" role="28jJRO">
+                  <node concept="2Ry0Ak" id="2czy14fS3Do" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="2czy14fS3Dp" role="2Ry0An">
+                      <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                      <node concept="2Ry0Ak" id="2czy14fS3Dq" role="2Ry0An">
+                        <property role="2Ry0Am" value="libskiko-linux-x64.so" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="398223" id="3wRozBgeTum" role="39821P">
               <node concept="3_J27D" id="3wRozBgeTun" role="Nbhlr">
                 <node concept="3Mxwew" id="3wRozBgeTuo" role="3MwsjC">
@@ -33986,6 +34036,39 @@
             </node>
           </node>
           <node concept="398223" id="3wRozBfKMSt" role="39821P">
+            <node concept="398223" id="1gByoHFa9YR" role="39821P">
+              <node concept="3_J27D" id="1gByoHFa9YS" role="Nbhlr">
+                <node concept="3Mxwew" id="1gByoHFa9YT" role="3MwsjC">
+                  <property role="3MwjfP" value="skiko-awt-runtime-all" />
+                </node>
+              </node>
+              <node concept="28jJK3" id="2czy14fS3I4" role="39821P">
+                <node concept="55IIr" id="2czy14fS3I5" role="28jJRO">
+                  <node concept="2Ry0Ak" id="2czy14fS3I6" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="2czy14fS3I7" role="2Ry0An">
+                      <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                      <node concept="2Ry0Ak" id="2czy14fS3I8" role="2Ry0An">
+                        <property role="2Ry0Am" value="icudtl.dat" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="28jJK3" id="1gByoHFa9YU" role="39821P">
+                <node concept="55IIr" id="1gByoHFa9YV" role="28jJRO">
+                  <node concept="2Ry0Ak" id="1gByoHFa9YW" role="iGT6I">
+                    <property role="2Ry0Am" value="lib" />
+                    <node concept="2Ry0Ak" id="1gByoHFa9YX" role="2Ry0An">
+                      <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                      <node concept="2Ry0Ak" id="1gByoHFaa1n" role="2Ry0An">
+                        <property role="2Ry0Am" value="skiko-windows-x64.dll" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="398223" id="3wRozBfKMU9" role="39821P">
               <node concept="3_J27D" id="3wRozBfKMUb" role="Nbhlr">
                 <node concept="3Mxwew" id="3wRozBfKMUh" role="3MwsjC">
@@ -34455,6 +34538,39 @@
               </node>
             </node>
             <node concept="398223" id="3wRozBgeTxA" role="39821P">
+              <node concept="398223" id="1gByoHFaadh" role="39821P">
+                <node concept="3_J27D" id="1gByoHFaadi" role="Nbhlr">
+                  <node concept="3Mxwew" id="1gByoHFaadj" role="3MwsjC">
+                    <property role="3MwjfP" value="skiko-awt-runtime-all" />
+                  </node>
+                </node>
+                <node concept="28jJK3" id="2czy14fS3II" role="39821P">
+                  <node concept="55IIr" id="2czy14fS3IJ" role="28jJRO">
+                    <node concept="2Ry0Ak" id="2czy14fS3IK" role="iGT6I">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="2czy14fS3IL" role="2Ry0An">
+                        <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                        <node concept="2Ry0Ak" id="2czy14fS3IM" role="2Ry0An">
+                          <property role="2Ry0Am" value="icudtl.dat" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="28jJK3" id="1gByoHFaadk" role="39821P">
+                  <node concept="55IIr" id="1gByoHFaadl" role="28jJRO">
+                    <node concept="2Ry0Ak" id="1gByoHFaadm" role="iGT6I">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="1gByoHFaadn" role="2Ry0An">
+                        <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                        <node concept="2Ry0Ak" id="1gByoHFaagR" role="2Ry0An">
+                          <property role="2Ry0Am" value="libskiko-macos-x64.dylib" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="398223" id="3wRozBgeTxB" role="39821P">
                 <node concept="3_J27D" id="3wRozBgeTxC" role="Nbhlr">
                   <node concept="3Mxwew" id="3wRozBgeTxD" role="3MwsjC">
@@ -34919,6 +35035,39 @@
               </node>
             </node>
             <node concept="398223" id="1dONgcPskIs" role="39821P">
+              <node concept="398223" id="1gByoHFaa6b" role="39821P">
+                <node concept="3_J27D" id="1gByoHFaa6c" role="Nbhlr">
+                  <node concept="3Mxwew" id="1gByoHFaa6d" role="3MwsjC">
+                    <property role="3MwjfP" value="skiko-awt-runtime-all" />
+                  </node>
+                </node>
+                <node concept="28jJK3" id="2czy14fS3Jo" role="39821P">
+                  <node concept="55IIr" id="2czy14fS3Jp" role="28jJRO">
+                    <node concept="2Ry0Ak" id="2czy14fS3Jq" role="iGT6I">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="2czy14fS3Jr" role="2Ry0An">
+                        <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                        <node concept="2Ry0Ak" id="2czy14fS3Js" role="2Ry0An">
+                          <property role="2Ry0Am" value="icudtl.dat" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="28jJK3" id="1gByoHFaa6e" role="39821P">
+                  <node concept="55IIr" id="1gByoHFaa6f" role="28jJRO">
+                    <node concept="2Ry0Ak" id="1gByoHFaa6g" role="iGT6I">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="1gByoHFaa6h" role="2Ry0An">
+                        <property role="2Ry0Am" value="skiko-awt-runtime-all" />
+                        <node concept="2Ry0Ak" id="1gByoHFaaaW" role="2Ry0An">
+                          <property role="2Ry0Am" value="libskiko-macos-arm64.dylib" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="398223" id="1dONgcPskIt" role="39821P">
                 <node concept="3_J27D" id="1dONgcPskIu" role="Nbhlr">
                   <node concept="3Mxwew" id="1dONgcPskIv" role="3MwsjC">
@@ -35651,6 +35800,9 @@
           </node>
           <node concept="3LWZYq" id="3E2PPKoUVSw" role="1juEy9">
             <property role="3LWZYl" value="pty4j/" />
+          </node>
+          <node concept="3LWZYq" id="2jsjUmEuYGz" role="1juEy9">
+            <property role="3LWZYl" value="skiko-awt-runtime-all/" />
           </node>
         </node>
         <node concept="3981dx" id="6Iq8148ghaY" role="39821P">

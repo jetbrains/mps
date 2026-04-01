@@ -245,6 +245,7 @@
         "-Didea.vendor.name=JetBrains",
         "-Didea.paths.selector=$path.selector$",
         "-Djna.boot.library.path=$APP_PACKAGE/Contents/lib/jna",
+        "-Dskiko.library.path=$APP_PACKAGE/Contents/lib/skiko-awt-runtime-all",
         "-Djna.nosys=true",
         "-Djna.noclasspath=true",
         "-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader",

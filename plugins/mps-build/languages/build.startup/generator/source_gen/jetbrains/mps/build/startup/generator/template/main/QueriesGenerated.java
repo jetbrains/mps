@@ -409,6 +409,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format(_context.getTemplateValue(), jnaPath);
   }
   public static Object propertyMacro_GetValue_6_14(final PropertyMacroContext _context) {
+    String path = "lib/skiko-awt-runtime-all";
+    path = (("macOS".equals(((String) _context.getVariable("os"))) ? "$APP_PACKAGE/Contents/" : ("Windows".equals(((String) _context.getVariable("os"))) ? "%IDE_HOME%/" : "$IDE_HOME/"))) + path;
+    return String.format(_context.getTemplateValue(), path);
+  }
+  public static Object propertyMacro_GetValue_6_15(final PropertyMacroContext _context) {
     String pty4jFolder = "lib/pty4j";
     pty4jFolder = (("macOS".equals(((String) _context.getVariable("os"))) ? "$APP_PACKAGE/Contents/" : ("Windows".equals(((String) _context.getVariable("os"))) ? "%IDE_HOME%/" : "$IDE_HOME/"))) + pty4jFolder;
     return String.format(_context.getTemplateValue(), pty4jFolder);
@@ -552,6 +557,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("7717100174560616493", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "        \"--add-opens=java.base/java.io=ALL-UNNAMED\","));
     pvqMethods.put("7717100174560616512", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "        \"-Didea.vendor.name=%s\","));
     pvqMethods.put("4782412228687886522", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "        \"-Djna.boot.library.path=%s\","));
+    pvqMethods.put("2935038219003853520", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "        \"-Dskiko.library.path=%s\","));
     pvqMethods.put("4782412228687941343", new PVQ(i++, MetaAdapterFactory.getProperty(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x180805c7b1d668a2L, 0x180805c7b1df77d9L, "text"), "        \"-Dpty4j.preferred.native.folder=%s\","));
   }
   @NotNull
@@ -701,6 +707,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.propertyMacro_GetValue_6_13(ctx);
         case 65:
           return QueriesGenerated.propertyMacro_GetValue_6_14(ctx);
+        case 66:
+          return QueriesGenerated.propertyMacro_GetValue_6_15(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
