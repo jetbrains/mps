@@ -5,6 +5,7 @@
       <root url="jar://$PROJECT_DIR$/plugins/java/lib/modules/intellij.platform.jps.build.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/java/lib/jps-builders.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/java/lib/jps-builders-6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/java/lib/modules/intellij.platform.jps.build.dependencyGraph.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
