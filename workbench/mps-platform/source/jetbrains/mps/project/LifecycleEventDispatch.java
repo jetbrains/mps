@@ -28,6 +28,12 @@ final class LifecycleEventDispatch {
 
   public void projectReady() {
     final ExtensionPointName<Bean> ep = Bean.epName();
+    if (ApplicationManager.getApplication().isUnitTestMode()) {
+      // during tests, make sure we dispatch projectReady() *before* any projectDiscarded() may fail with
+      // "no preserved instance in the context" assertion.
+      ep.forEachExtensionSafe(this::ready);
+      return;
+    }
     // XXX check if AppExecutorUtils.createCustomPriorityQueueBoundedApplicationPoolExecutor() is better alternative
     ApplicationManager.getApplication().executeOnPooledThread(() -> ep.forEachExtensionSafe(this::ready));
   }
