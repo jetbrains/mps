@@ -737,6 +737,13 @@ public class SNodeOperations {
     }
   }
 
+  /**
+   * Tells if node<Type> is a typesystem variable representing runtime state, not a final type yet.
+   */
+  public static boolean isRuntimeTypeVariable(SNode node) {
+    return node != null && node.isInstanceOfConcept(SNodeUtil.concept_RuntimeTypeVariable);
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");

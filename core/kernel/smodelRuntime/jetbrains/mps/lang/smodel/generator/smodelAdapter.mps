@@ -14288,7 +14288,91 @@
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
-    <node concept="2tJIrI" id="lhC5EIPhJL" role="jymVt" />
+    <node concept="2tJIrI" id="Tc2lae_xV3" role="jymVt" />
+    <node concept="2YIFZL" id="Tc2lae_FEq" role="jymVt">
+      <property role="TrG5h" value="isRuntimeTypeVariable" />
+      <node concept="3clFbS" id="Tc2lae_FEt" role="3clF47">
+        <node concept="3clFbF" id="Tc2lae_Q9e" role="3cqZAp">
+          <node concept="1Wc70l" id="6Hw1xIfA$9m" role="3clFbG">
+            <node concept="3y3z36" id="6Hw1xIfA_7c" role="3uHU7B">
+              <node concept="10Nm6u" id="6Hw1xIfA_LI" role="3uHU7w" />
+              <node concept="37vLTw" id="6Hw1xIfA$Rr" role="3uHU7B">
+                <ref role="3cqZAo" node="Tc2lae_Khy" resolve="node" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="Tc2lae_Qne" role="3uHU7w">
+              <node concept="37vLTw" id="Tc2lae_Q9c" role="2Oq$k0">
+                <ref role="3cqZAo" node="Tc2lae_Khy" resolve="node" />
+              </node>
+              <node concept="liA8E" id="Tc2lae_Ra6" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SNode.isInstanceOfConcept(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="isInstanceOfConcept" />
+                <node concept="10M0yZ" id="Tc2lae_MbO" role="37wK5m">
+                  <ref role="3cqZAo" to="w1kc:~SNodeUtil.concept_RuntimeTypeVariable" resolve="concept_RuntimeTypeVariable" />
+                  <ref role="1PxDUh" to="w1kc:~SNodeUtil" resolve="SNodeUtil" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="Tc2lae_B0h" role="1B3o_S" />
+      <node concept="10P_77" id="Tc2lae_EDb" role="3clF45" />
+      <node concept="37vLTG" id="Tc2lae_Khy" role="3clF46">
+        <property role="TrG5h" value="node" />
+        <node concept="3uibUv" id="Tc2lae_Khx" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="1tVw5WN$_tO" role="lGtFl">
+        <node concept="1PaTwC" id="1tVw5WN$_tP" role="1Vez_I">
+          <node concept="3oM_SD" id="1tVw5WN$_tQ" role="1PaTwD">
+            <property role="3oM_SC" value="Tells" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AAt" role="1PaTwD">
+            <property role="3oM_SC" value="if" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AAv" role="1PaTwD">
+            <property role="3oM_SC" value="node&lt;Type&gt;" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$ABw" role="1PaTwD">
+            <property role="3oM_SC" value="is" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$ACN" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AD4" role="1PaTwD">
+            <property role="3oM_SC" value="typesystem" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AD_" role="1PaTwD">
+            <property role="3oM_SC" value="variable" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AEm" role="1PaTwD">
+            <property role="3oM_SC" value="representing" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AER" role="1PaTwD">
+            <property role="3oM_SC" value="runtime" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AF8" role="1PaTwD">
+            <property role="3oM_SC" value="state," />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AFp" role="1PaTwD">
+            <property role="3oM_SC" value="not" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AFq" role="1PaTwD">
+            <property role="3oM_SC" value="a" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AFr" role="1PaTwD">
+            <property role="3oM_SC" value="final" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AFs" role="1PaTwD">
+            <property role="3oM_SC" value="type" />
+          </node>
+          <node concept="3oM_SD" id="1tVw5WN$AFX" role="1PaTwD">
+            <property role="3oM_SC" value="yet." />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="5IkW5anFfnn">
     <property role="TrG5h" value="SPropertyOperations" />

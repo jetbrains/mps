@@ -2240,5 +2240,13 @@
       <ref role="PrY4T" node="3AsFWrF9CKu" resolve="IssueTypeSpec" />
     </node>
   </node>
+  <node concept="1TIwiD" id="Tc2lae_bQK">
+    <property role="EcuMT" value="1030208664945081776" />
+    <property role="3GE5qa" value="query" />
+    <property role="TrG5h" value="Node_IsRuntimeTypeVarOperation" />
+    <property role="R4oN_" value="tell if this is runtime type variable" />
+    <property role="34LRSv" value="isRuntimeVariable" />
+    <ref role="1TJDcQ" to="tp25:g$eCIIG" resolve="SNodeOperation" />
+  </node>
 </model>
 

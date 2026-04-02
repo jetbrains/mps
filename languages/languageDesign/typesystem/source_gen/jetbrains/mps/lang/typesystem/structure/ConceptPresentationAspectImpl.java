@@ -72,6 +72,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_MessageStatementAnnotation;
   private ConceptPresentation props_MessageTarget;
   private ConceptPresentation props_Node_InferTypeOperation;
+  private ConceptPresentation props_Node_IsRuntimeTypeVarOperation;
   private ConceptPresentation props_Node_TypeOperation;
   private ConceptPresentation props_NonTypesystemRule;
   private ConceptPresentation props_NormalTypeClause;
@@ -580,6 +581,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Node_InferTypeOperation = cpb.create();
         }
         return props_Node_InferTypeOperation;
+      case LanguageConceptSwitch.Node_IsRuntimeTypeVarOperation:
+        if (props_Node_IsRuntimeTypeVarOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("tell if this is runtime type variable");
+          cpb.rawPresentation("isRuntimeVariable");
+          props_Node_IsRuntimeTypeVarOperation = cpb.create();
+        }
+        return props_Node_IsRuntimeTypeVarOperation;
       case LanguageConceptSwitch.Node_TypeOperation:
         if (props_Node_TypeOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

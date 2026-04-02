@@ -2098,12 +2098,13 @@
       <node id="383263754644020050" at="732,23,733,18" concept="12" />
       <node id="383263754644021661" at="734,12,735,61" concept="11" />
       <node id="383263754644020056" at="735,61,736,57" concept="12" />
-      <node id="6599163591527286941" at="741,0,742,0" concept="15" trace="PropertyAttribute$Gb" />
-      <node id="6599163591527286941" at="742,0,743,0" concept="15" trace="LinkAttribute$v_" />
-      <node id="6599163591527286941" at="743,0,744,0" concept="15" trace="AbstractConceptDeclaration$KA" />
-      <node id="6599163591527286941" at="744,0,745,0" concept="15" trace="ChildAttribute$m8" />
-      <node id="6599163591527286941" at="745,0,746,0" concept="15" trace="BaseConcept$gP" />
-      <node id="6599163591527286941" at="749,0,750,0" concept="15" trace="smodelAttribute$KJ43" />
+      <node id="1030208664945254990" at="743,59,744,91" concept="12" />
+      <node id="6599163591527286941" at="748,0,749,0" concept="15" trace="PropertyAttribute$Gb" />
+      <node id="6599163591527286941" at="749,0,750,0" concept="15" trace="LinkAttribute$v_" />
+      <node id="6599163591527286941" at="750,0,751,0" concept="15" trace="AbstractConceptDeclaration$KA" />
+      <node id="6599163591527286941" at="751,0,752,0" concept="15" trace="ChildAttribute$m8" />
+      <node id="6599163591527286941" at="752,0,753,0" concept="15" trace="BaseConcept$gP" />
+      <node id="6599163591527286941" at="756,0,757,0" concept="15" trace="smodelAttribute$KJ43" />
       <node id="6599163591527293152" at="49,0,51,0" concept="3" trace="SNodeOperations#()V" />
       <node id="6599163591527293325" at="93,10,95,5" concept="1" />
       <node id="6599163591527293499" at="138,10,140,5" concept="1" />
@@ -2206,6 +2207,7 @@
       <node id="3661776679763970291" at="702,0,705,0" concept="16" trace="is#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNodeReference;)Z" />
       <node id="383263754643967356" at="725,56,728,5" concept="9" />
       <node id="383263754644020052" at="734,10,737,5" concept="1" />
+      <node id="1030208664945212058" at="743,0,746,0" concept="16" trace="isRuntimeTypeVariable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6599163591527294880" at="490,0,494,0" concept="16" trace="replaceWithAnother#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6599163591527295171" at="563,0,567,0" concept="16" trace="getNode#(Ljava/lang/String;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6677504323281452765" at="645,0,649,0" concept="16" trace="asSConcept#(null)null" />
@@ -2413,6 +2415,7 @@
       <scope id="4097555883694681846" at="710,12,711,18" />
       <scope id="383263754643967358" at="726,23,727,56" />
       <scope id="383263754644020064" at="732,23,733,18" />
+      <scope id="1030208664945212061" at="743,59,744,91" />
       <scope id="6599163591527293152" at="49,0,51,0" />
       <scope id="6599163591527294887" at="490,73,492,101" />
       <scope id="4097555883694681838" at="707,80,709,39" />
@@ -2462,6 +2465,9 @@
         <var name="nodePtr" id="3661776679763976976" />
       </scope>
       <scope id="383263754643852123" at="725,56,728,5" />
+      <scope id="1030208664945212058" at="743,0,746,0">
+        <var name="node" id="1030208664945230946" />
+      </scope>
       <scope id="6599163591527293178" at="51,44,55,31" />
       <scope id="6599163591527293194" at="57,53,61,36" />
       <scope id="6599163591527293229" at="63,45,67,28" />
@@ -2847,9 +2853,9 @@
         <var name="root" id="6599163591527293438" />
         <var name="sameMetaLevel" id="6599163591527293440" />
       </scope>
-      <unit id="6599163591527286941" at="748,0,751,0" name="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations$LINKS" />
-      <unit id="6599163591527286941" at="740,0,747,0" name="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations$CONCEPTS" />
-      <unit id="6599163591527286941" at="38,0,752,0" name="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+      <unit id="6599163591527286941" at="755,0,758,0" name="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations$LINKS" />
+      <unit id="6599163591527286941" at="747,0,754,0" name="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations$CONCEPTS" />
+      <unit id="6599163591527286941" at="38,0,759,0" name="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     </file>
   </root>
   <root nodeRef="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527298519">

@@ -23,6 +23,7 @@
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" implicit="true" />
     <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
+    <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -168,6 +169,20 @@
       <concept id="1196350785117" name="jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation" flags="ng" index="2c44tb" />
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
+      </concept>
+      <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
+        <reference id="5455284157994012188" name="link" index="2pIpSl" />
+        <child id="1595412875168045827" name="initValue" index="28nt2d" />
+      </concept>
+      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
+        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
+      </concept>
+      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
+        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
+        <child id="5455284157993911099" name="values" index="2pJxcM" />
+      </concept>
+      <concept id="8182547171709614739" name="jetbrains.mps.lang.quotation.structure.NodeBuilderRef" flags="nn" index="36bGnv">
+        <reference id="8182547171709614741" name="target" index="36bGnp" />
       </concept>
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
@@ -3068,7 +3083,7 @@
     <node concept="3clFbS" id="5x0erXP9TM8" role="18ibNy">
       <node concept="2Mj0R9" id="5x0erXP9TM9" role="3cqZAp">
         <node concept="Xl_RD" id="5x0erXP9TMa" role="2MkJ7o">
-          <property role="Xl_RC" value="don't use typeOperation within inference rules" />
+          <property role="Xl_RC" value="don't use .type operation within inference rules" />
         </node>
         <node concept="3fqX7Q" id="5x0erXP9TMc" role="2MkoU_">
           <node concept="2YIFZM" id="5x0erXP9TMd" role="3fr31v">
@@ -3085,7 +3100,7 @@
       </node>
       <node concept="2Mj0R9" id="Z3KWg1iMOf" role="3cqZAp">
         <node concept="Xl_RD" id="Z3KWg1iMOg" role="2MkJ7o">
-          <property role="Xl_RC" value="don't use typeOperation within such rules" />
+          <property role="Xl_RC" value="don't use .type operation within such rules" />
         </node>
         <node concept="3fqX7Q" id="Z3KWg1iMOi" role="2MkoU_">
           <node concept="2YIFZM" id="Z3KWg1iMOl" role="3fr31v">
@@ -4710,6 +4725,59 @@
     <node concept="1YaCAy" id="e2eVnzJ06T" role="1YuTPh">
       <property role="TrG5h" value="nonTypesystemRule" />
       <ref role="1YaFvo" to="tpd4:hp8kY3U" resolve="NonTypesystemRule" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="Tc2lae_gnL">
+    <property role="TrG5h" value="typeof_Node_IsRuntimeTypeVarOperation" />
+    <property role="3GE5qa" value="query" />
+    <node concept="3clFbS" id="Tc2lae_gnM" role="18ibNy">
+      <node concept="1Z5TYs" id="Tc2lae_iq7" role="3cqZAp">
+        <node concept="mw_s8" id="Tc2lae_iqj" role="1ZfhKB">
+          <node concept="2pJPEk" id="Tc2lae_iqf" role="mwGJk">
+            <node concept="2pJPED" id="Tc2lae_iqh" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:f_0P_4Y" resolve="BooleanType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="Tc2lae_iqa" role="1ZfhK$">
+          <node concept="1Z2H0r" id="Tc2lae_h$i" role="mwGJk">
+            <node concept="1YBJjd" id="Tc2lae_hBQ" role="1Z2MuG">
+              <ref role="1YBMHb" node="Tc2lae_gnO" resolve="op" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1ZobV4" id="1tVw5WN_D28" role="3cqZAp">
+        <node concept="mw_s8" id="1tVw5WN_D2f" role="1ZfhK$">
+          <node concept="1Z2H0r" id="1tVw5WN_D2b" role="mwGJk">
+            <node concept="2OqwBi" id="1tVw5WN_DbP" role="1Z2MuG">
+              <node concept="1YBJjd" id="1tVw5WN_D2t" role="2Oq$k0">
+                <ref role="1YBMHb" node="Tc2lae_gnO" resolve="op" />
+              </node>
+              <node concept="2qgKlT" id="1tVw5WN_DoG" role="2OqNvi">
+                <ref role="37wK5l" to="tpeu:hEwJdGu" resolve="getLeftExpression" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="1tVw5WN_Dvf" role="1ZfhKB">
+          <node concept="2pJPEk" id="1tVw5WN_Dvb" role="mwGJk">
+            <node concept="2pJPED" id="1tVw5WN_Dvd" role="2pJPEn">
+              <ref role="2pJxaS" to="tp25:gzTqbfa" resolve="SNodeType" />
+              <node concept="2pIpSj" id="1tVw5WN_Dwy" role="2pJxcM">
+                <ref role="2pIpSl" to="tp25:g$ehGDh" resolve="concept" />
+                <node concept="36bGnv" id="1tVw5WN_DwJ" role="28nt2d">
+                  <ref role="36bGnp" to="tpee:fz3vP1H" resolve="Type" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="Tc2lae_gnO" role="1YuTPh">
+      <property role="TrG5h" value="op" />
+      <ref role="1YaFvo" to="tpd4:Tc2lae_bQK" resolve="Node_IsRuntimeTypeVarOperation" />
     </node>
   </node>
 </model>
