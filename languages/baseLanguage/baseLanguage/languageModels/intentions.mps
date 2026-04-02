@@ -36,7 +36,6 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
-    <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
@@ -378,6 +377,7 @@
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
+      <concept id="1030208664945081776" name="jetbrains.mps.lang.typesystem.structure.Node_IsRuntimeTypeVarOperation" flags="ng" index="20Qbjy" />
       <concept id="1174989242422" name="jetbrains.mps.lang.typesystem.structure.PatternVariableReference" flags="nn" index="2iOg4B">
         <reference id="1174989274720" name="patternVarDecl" index="2iOnXL" />
       </concept>
@@ -23682,15 +23682,16 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="3jCIZp$ukG8" role="3clFbw">
-            <node concept="37vLTw" id="3jCIZp$ukG9" role="2Oq$k0">
-              <ref role="3cqZAo" node="3jCIZp$t8pl" resolve="t" />
-            </node>
-            <node concept="1mIQ4w" id="3jCIZp$ukGa" role="2OqNvi">
-              <node concept="chp4Y" id="3jCIZp$ukGb" role="cj9EA">
-                <ref role="cht4Q" to="tpd4:hfSilrV" resolve="RuntimeTypeVariable" />
+          <node concept="2OqwBi" id="6Hw1xIfiwrD" role="3clFbw">
+            <node concept="1PxgMI" id="6Hw1xIfizp$" role="2Oq$k0">
+              <node concept="chp4Y" id="6Hw1xIfi$9d" role="3oSUPX">
+                <ref role="cht4Q" to="tpee:fz3vP1H" resolve="Type" />
+              </node>
+              <node concept="37vLTw" id="6Hw1xIfivjf" role="1m5AlR">
+                <ref role="3cqZAo" node="3jCIZp$t8pl" resolve="t" />
               </node>
             </node>
+            <node concept="20Qbjy" id="6Hw1xIfiy$S" role="2OqNvi" />
           </node>
         </node>
         <node concept="3cpWs6" id="3jCIZp$t7kO" role="3cqZAp">

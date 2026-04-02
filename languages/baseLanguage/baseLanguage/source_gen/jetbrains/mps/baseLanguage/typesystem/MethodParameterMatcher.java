@@ -37,7 +37,7 @@ public class MethodParameterMatcher {
     List<SNode> callTypes = ListSequence.fromList(callParams).select((it) -> {
       SNode argType = (it != null && !(SNodeOperations.getConcept(it).isAbstract()) ? TypecheckingFacade.getFromContext().getTypeOf(it) : createClassifierType_7zrs51_a0a0a0a0a0d0f());
 
-      if (SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$4a)) {
+      if (SNodeOperations.isRuntimeTypeVariable(SNodeOperations.as(argType, CONCEPTS.Type$bu))) {
         argType = createClassifierType_7zrs51_a0a0c0a0a0a3a5();
       }
 
@@ -99,9 +99,9 @@ public class MethodParameterMatcher {
    * method(double a, int b, string c) with the call method(3, 2.1, "test")
    * 
    * Compatible params will look like this:
-   * - double a -> 3, 2.1
-   * - int b -> 3
-   * - string c -> "test"
+   * <ul><li>double a -> 3, 2.1<li>
+   * <li>int b -> 3<li>
+   * <li>string c -> "test"<li></ul>
    * 
    * The resulting mapping of this method will be double a -> 3, string c -> test
    * The optimal mapping (not found using this method) is double a -> 2.1, int b -> 3, string c -> "test"
@@ -246,7 +246,7 @@ public class MethodParameterMatcher {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

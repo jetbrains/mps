@@ -43,7 +43,7 @@ public class CreateMethodFromCall_QuickFix extends QuickFix_Runtime {
     for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(((SNode) CreateMethodFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).count(); i++) {
       SNode argument = SNodeOperations.as(SLinkOperations.getChildren(((SNode) CreateMethodFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx).get(i), CONCEPTS.Expression$mB);
       SNode argType = (argument != null && !(SNodeOperations.getConcept(argument).isAbstract()) ? TypecheckingFacade.getFromContext().getTypeOf(argument) : createClassifierType_h317bl_a0a1a6a2());
-      if (SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$4a)) {
+      if (SNodeOperations.isRuntimeTypeVariable(SNodeOperations.as(argType, CONCEPTS.Type$bu))) {
         argType = createClassifierType_h317bl_a0a0c0g0c();
       }
       SNode currentParameter;
@@ -86,9 +86,8 @@ public class CreateMethodFromCall_QuickFix extends QuickFix_Runtime {
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
-    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
