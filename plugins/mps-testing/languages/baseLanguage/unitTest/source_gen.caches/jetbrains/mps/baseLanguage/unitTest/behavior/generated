@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-83yaw2ntaca48dazkzkzggulfo1g30h">
-  <files names="AfterTest__BehaviorDescriptor.java:BTestCase__BehaviorDescriptor.java:BeforeTest__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:ITestCase__BehaviorDescriptor.java:ITestMethod__BehaviorDescriptor.java:ITestable__BehaviorDescriptor.java:TestMethod__BehaviorDescriptor.java" />
+<product version="3" modelHash="bwj9zq53jzaseabxnlf8ssvur440l2p">
+  <files names="AfterTest__BehaviorDescriptor.java:AssertFalse__BehaviorDescriptor.java:AssertIsNotNull__BehaviorDescriptor.java:AssertIsNull__BehaviorDescriptor.java:AssertTrue__BehaviorDescriptor.java:AssertWithExpression__BehaviorDescriptor.java:BTestCase__BehaviorDescriptor.java:BeforeTest__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:ITestCase__BehaviorDescriptor.java:ITestMethod__BehaviorDescriptor.java:ITestable__BehaviorDescriptor.java:TestMethod__BehaviorDescriptor.java" />
 </product>
 

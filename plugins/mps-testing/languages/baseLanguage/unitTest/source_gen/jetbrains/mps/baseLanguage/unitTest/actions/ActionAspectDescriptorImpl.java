@@ -16,6 +16,12 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
       switch (concept.getName()) {
+        case "AssertWithExpression":
+          return Collections.<NodeFactory>singletonList(new unitTest_Factory.NodeFactory_4260437921133029147());
+        case "BinaryAssert":
+          return Collections.<NodeFactory>singletonList(new unitTest_Factory.NodeFactory_4260437921132682788());
+        case "MessageHolder":
+          return Collections.<NodeFactory>singletonList(new unitTest_Factory.NodeFactory_4260437921132690358());
         case "TestMethod":
           return Collections.<NodeFactory>singletonList(new unitTest_Factory.NodeFactory_1198167764446());
         default:

@@ -6,9 +6,13 @@ import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.unitTest.behavior.AssertWithExpression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class unitTest_Factory {
   public static class NodeFactory_1198167764446 implements NodeFactory {
@@ -16,12 +20,62 @@ public class unitTest_Factory {
       SNodeFactoryOperations.setNewChild(newNode, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
     }
   }
+  public static class NodeFactory_4260437921132682788 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.BinaryAssert$Qx)) {
+          SLinkOperations.setTarget(newNode, LINKS.expected$QBis, SLinkOperations.getTarget(original, LINKS.expected$QBis));
+          SLinkOperations.setTarget(newNode, LINKS.actual$QBxt, SLinkOperations.getTarget(original, LINKS.actual$QBxt));
+        }
+      }
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.AssertWithExpression$R5)) {
+          SLinkOperations.setTarget(newNode, LINKS.expected$QBis, SNodeOperations.copyNode(AssertWithExpression__BehaviorDescriptor.getExpressionChild_id3Gw7rtGJhho.invoke(original)));
+          SLinkOperations.setTarget(newNode, LINKS.actual$QBxt, AssertWithExpression__BehaviorDescriptor.getExpressionChild_id3Gw7rtGJhho.invoke(original));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_4260437921132690358 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.MessageHolder$iN)) {
+          SLinkOperations.setTarget(newNode, LINKS.message$SzPZ, SLinkOperations.getTarget(original, LINKS.message$SzPZ));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_4260437921133029147 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.AssertWithExpression$R5)) {
+          AssertWithExpression__BehaviorDescriptor.setExpressionChild_id3Gw7rtGJhw6.invoke(newNode, AssertWithExpression__BehaviorDescriptor.getExpressionChild_id3Gw7rtGJhho.invoke(original));
+        }
+      }
+      {
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.BinaryAssert$Qx)) {
+          AssertWithExpression__BehaviorDescriptor.setExpressionChild_id3Gw7rtGJhw6.invoke(newNode, SLinkOperations.getTarget(original, LINKS.actual$QBxt));
+        }
+      }
+    }
+  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink expected$QBis = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd44L, "expected");
+    /*package*/ static final SContainmentLink actual$QBxt = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, 0x74f562a3a993fd45L, "actual");
+    /*package*/ static final SContainmentLink message$SzPZ = MetaAdapterFactory.getContainmentLink(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5250918L, 0x110e52557daL, "message");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept BinaryAssert$Qx = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x74f562a3a993fd3dL, "jetbrains.mps.baseLanguage.unitTest.structure.BinaryAssert");
+    /*package*/ static final SInterfaceConcept AssertWithExpression$R5 = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x3b201db76cbd12caL, "jetbrains.mps.baseLanguage.unitTest.structure.AssertWithExpression");
+    /*package*/ static final SInterfaceConcept MessageHolder$iN = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e5250918L, "jetbrains.mps.baseLanguage.unitTest.structure.MessageHolder");
   }
 }

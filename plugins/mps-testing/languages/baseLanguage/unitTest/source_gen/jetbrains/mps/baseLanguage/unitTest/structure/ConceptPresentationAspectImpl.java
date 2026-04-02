@@ -14,9 +14,11 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AssertFalse;
   private ConceptPresentation props_AssertIsNotNull;
   private ConceptPresentation props_AssertIsNull;
+  private ConceptPresentation props_AssertLike;
   private ConceptPresentation props_AssertSame;
   private ConceptPresentation props_AssertThrows;
   private ConceptPresentation props_AssertTrue;
+  private ConceptPresentation props_AssertWithExpression;
   private ConceptPresentation props_BTestCase;
   private ConceptPresentation props_BeforeTest;
   private ConceptPresentation props_BinaryAssert;
@@ -70,6 +72,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AssertIsNull = cpb.create();
         }
         return props_AssertIsNull;
+      case LanguageConceptSwitch.AssertLike:
+        if (props_AssertLike == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AssertLike = cpb.create();
+        }
+        return props_AssertLike;
       case LanguageConceptSwitch.AssertSame:
         if (props_AssertSame == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -91,6 +99,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AssertTrue = cpb.create();
         }
         return props_AssertTrue;
+      case LanguageConceptSwitch.AssertWithExpression:
+        if (props_AssertWithExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AssertWithExpression = cpb.create();
+        }
+        return props_AssertWithExpression;
       case LanguageConceptSwitch.BTestCase:
         if (props_BTestCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

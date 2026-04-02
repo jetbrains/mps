@@ -36,6 +36,10 @@
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
+        <child id="1068498886297" name="rValue" index="37vLTx" />
+        <child id="1068498886295" name="lValue" index="37vLTJ" />
+      </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -66,6 +70,8 @@
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
+      <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
+      <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
@@ -74,6 +80,7 @@
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="1181808852946" name="isFinal" index="DiZV1" />
         <child id="1068580123133" name="returnType" index="3clF45" />
+        <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
@@ -1312,6 +1319,245 @@
         </node>
       </node>
       <node concept="3Tqbb2" id="$yZ68hBirq" role="3clF45" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="3Gw7rtGJhfp">
+    <property role="3GE5qa" value="assert" />
+    <ref role="13h7C2" to="tpe3:3Gw7rtGJhba" resolve="AssertWithExpression" />
+    <node concept="13i0hz" id="3Gw7rtGJhho" role="13h7CS">
+      <property role="13i0it" value="true" />
+      <property role="TrG5h" value="getExpressionChild" />
+      <property role="13i0iv" value="true" />
+      <node concept="3Tm1VV" id="3Gw7rtGJhhp" role="1B3o_S" />
+      <node concept="3Tqbb2" id="3Gw7rtGJhmo" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+      <node concept="3clFbS" id="3Gw7rtGJhhr" role="3clF47" />
+    </node>
+    <node concept="13i0hz" id="3Gw7rtGJhw6" role="13h7CS">
+      <property role="13i0it" value="true" />
+      <property role="TrG5h" value="setExpressionChild" />
+      <property role="13i0iv" value="true" />
+      <node concept="37vLTG" id="3Gw7rtGJhAv" role="3clF46">
+        <property role="TrG5h" value="expr" />
+        <node concept="3Tqbb2" id="3Gw7rtGJhw8" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3Gw7rtGJhw7" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJhw9" role="3clF47" />
+      <node concept="3cqZAl" id="3Gw7rtGJh_o" role="3clF45" />
+    </node>
+    <node concept="13hLZK" id="3Gw7rtGJhfq" role="13h7CW">
+      <node concept="3clFbS" id="3Gw7rtGJhfr" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="3Gw7rtGJhGs">
+    <property role="3GE5qa" value="assert" />
+    <ref role="13h7C2" to="tpe3:h3vFxO8" resolve="AssertFalse" />
+    <node concept="13hLZK" id="3Gw7rtGJhGt" role="13h7CW">
+      <node concept="3clFbS" id="3Gw7rtGJhGu" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="3Gw7rtGJhH_" role="13h7CS">
+      <property role="TrG5h" value="getExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhho" resolve="getExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJhHA" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJhHD" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJhK4" role="3cqZAp">
+          <node concept="2OqwBi" id="3Gw7rtGJi1T" role="3clFbG">
+            <node concept="13iPFW" id="3Gw7rtGJhK3" role="2Oq$k0" />
+            <node concept="3TrEf2" id="3Gw7rtGJikY" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpe3:h3vFAPs" resolve="condition" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="3Gw7rtGJhHE" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="3Gw7rtGJhHF" role="13h7CS">
+      <property role="TrG5h" value="setExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhw6" resolve="setExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJhHI" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJhHL" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJipX" role="3cqZAp">
+          <node concept="37vLTI" id="3Gw7rtGJjzl" role="3clFbG">
+            <node concept="37vLTw" id="3Gw7rtGJjAA" role="37vLTx">
+              <ref role="3cqZAo" node="3Gw7rtGJhHM" resolve="expr" />
+            </node>
+            <node concept="2OqwBi" id="3Gw7rtGJiFJ" role="37vLTJ">
+              <node concept="13iPFW" id="3Gw7rtGJipW" role="2Oq$k0" />
+              <node concept="3TrEf2" id="3Gw7rtGJjlm" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpe3:h3vFAPs" resolve="condition" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3Gw7rtGJhHM" role="3clF46">
+        <property role="TrG5h" value="expr" />
+        <node concept="3Tqbb2" id="3Gw7rtGJhHN" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="3Gw7rtGJhHO" role="3clF45" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="3Gw7rtGJjI1">
+    <property role="3GE5qa" value="assert" />
+    <ref role="13h7C2" to="tpe3:h3vwNi3" resolve="AssertTrue" />
+    <node concept="13i0hz" id="3Gw7rtGJjJa" role="13h7CS">
+      <property role="TrG5h" value="getExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhho" resolve="getExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJjJb" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJjJc" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJjJd" role="3cqZAp">
+          <node concept="2OqwBi" id="3Gw7rtGJjJe" role="3clFbG">
+            <node concept="13iPFW" id="3Gw7rtGJjJf" role="2Oq$k0" />
+            <node concept="3TrEf2" id="3Gw7rtGJjJg" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpe3:h3vwVM7" resolve="condition" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="3Gw7rtGJjJh" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="3Gw7rtGJjJi" role="13h7CS">
+      <property role="TrG5h" value="setExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhw6" resolve="setExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJjJj" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJjJk" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJjJl" role="3cqZAp">
+          <node concept="37vLTI" id="3Gw7rtGJjJm" role="3clFbG">
+            <node concept="37vLTw" id="3Gw7rtGJjJn" role="37vLTx">
+              <ref role="3cqZAo" node="3Gw7rtGJjJr" resolve="expr" />
+            </node>
+            <node concept="2OqwBi" id="3Gw7rtGJjJo" role="37vLTJ">
+              <node concept="13iPFW" id="3Gw7rtGJjJp" role="2Oq$k0" />
+              <node concept="3TrEf2" id="3Gw7rtGJjJq" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpe3:h3vwVM7" resolve="condition" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3Gw7rtGJjJr" role="3clF46">
+        <property role="TrG5h" value="expr" />
+        <node concept="3Tqbb2" id="3Gw7rtGJjJs" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="3Gw7rtGJjJt" role="3clF45" />
+    </node>
+    <node concept="13hLZK" id="3Gw7rtGJjI2" role="13h7CW">
+      <node concept="3clFbS" id="3Gw7rtGJjI3" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="3Gw7rtGJjSC">
+    <property role="3GE5qa" value="assert" />
+    <ref role="13h7C2" to="tpe3:692cUnf6I3R" resolve="AssertIsNotNull" />
+    <node concept="13i0hz" id="3Gw7rtGJjUB" role="13h7CS">
+      <property role="TrG5h" value="getExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhho" resolve="getExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJjUC" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJjUD" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJjUE" role="3cqZAp">
+          <node concept="2OqwBi" id="3Gw7rtGJjUF" role="3clFbG">
+            <node concept="13iPFW" id="3Gw7rtGJjUG" role="2Oq$k0" />
+            <node concept="3TrEf2" id="3Gw7rtGJjUH" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpe3:692cUnf6I3T" resolve="expression" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="3Gw7rtGJjUI" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="3Gw7rtGJjUJ" role="13h7CS">
+      <property role="TrG5h" value="setExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhw6" resolve="setExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJjUK" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJjUL" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJjUM" role="3cqZAp">
+          <node concept="37vLTI" id="3Gw7rtGJjUN" role="3clFbG">
+            <node concept="37vLTw" id="3Gw7rtGJjUO" role="37vLTx">
+              <ref role="3cqZAo" node="3Gw7rtGJjUS" resolve="expr" />
+            </node>
+            <node concept="2OqwBi" id="3Gw7rtGJjUP" role="37vLTJ">
+              <node concept="13iPFW" id="3Gw7rtGJjUQ" role="2Oq$k0" />
+              <node concept="3TrEf2" id="3Gw7rtGJjUR" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpe3:692cUnf6I3T" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3Gw7rtGJjUS" role="3clF46">
+        <property role="TrG5h" value="expr" />
+        <node concept="3Tqbb2" id="3Gw7rtGJjUT" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="3Gw7rtGJjUU" role="3clF45" />
+    </node>
+    <node concept="13hLZK" id="3Gw7rtGJjSD" role="13h7CW">
+      <node concept="3clFbS" id="3Gw7rtGJjSE" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="3Gw7rtGJkw9">
+    <property role="3GE5qa" value="assert" />
+    <ref role="13h7C2" to="tpe3:h3ykFEh" resolve="AssertIsNull" />
+    <node concept="13i0hz" id="3Gw7rtGJky8" role="13h7CS">
+      <property role="TrG5h" value="getExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhho" resolve="getExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJky9" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJkya" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJkyb" role="3cqZAp">
+          <node concept="2OqwBi" id="3Gw7rtGJkyc" role="3clFbG">
+            <node concept="13iPFW" id="3Gw7rtGJkyd" role="2Oq$k0" />
+            <node concept="3TrEf2" id="3Gw7rtGJkye" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpe3:h3ykUcf" resolve="expression" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="3Gw7rtGJkyf" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="3Gw7rtGJkyg" role="13h7CS">
+      <property role="TrG5h" value="setExpressionChild" />
+      <ref role="13i0hy" node="3Gw7rtGJhw6" resolve="setExpressionChild" />
+      <node concept="3Tm1VV" id="3Gw7rtGJkyh" role="1B3o_S" />
+      <node concept="3clFbS" id="3Gw7rtGJkyi" role="3clF47">
+        <node concept="3clFbF" id="3Gw7rtGJkyj" role="3cqZAp">
+          <node concept="37vLTI" id="3Gw7rtGJkyk" role="3clFbG">
+            <node concept="37vLTw" id="3Gw7rtGJkyl" role="37vLTx">
+              <ref role="3cqZAo" node="3Gw7rtGJkyp" resolve="expr" />
+            </node>
+            <node concept="2OqwBi" id="3Gw7rtGJkym" role="37vLTJ">
+              <node concept="13iPFW" id="3Gw7rtGJkyn" role="2Oq$k0" />
+              <node concept="3TrEf2" id="3Gw7rtGJkyo" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpe3:h3ykUcf" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3Gw7rtGJkyp" role="3clF46">
+        <property role="TrG5h" value="expr" />
+        <node concept="3Tqbb2" id="3Gw7rtGJkyq" role="1tU5fm">
+          <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="3Gw7rtGJkyr" role="3clF45" />
+    </node>
+    <node concept="13hLZK" id="3Gw7rtGJkwa" role="13h7CW">
+      <node concept="3clFbS" id="3Gw7rtGJkwb" role="2VODD2" />
     </node>
   </node>
 </model>

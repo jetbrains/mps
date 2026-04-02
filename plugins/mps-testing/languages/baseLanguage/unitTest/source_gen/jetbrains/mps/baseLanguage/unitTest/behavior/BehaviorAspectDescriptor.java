@@ -14,9 +14,14 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myTestMethod__BehaviorDescriptor = new TestMethod__BehaviorDescriptor();
   private final BHDescriptor myBTestCase__BehaviorDescriptor = new BTestCase__BehaviorDescriptor();
+  private final BHDescriptor myAssertTrue__BehaviorDescriptor = new AssertTrue__BehaviorDescriptor();
+  private final BHDescriptor myAssertFalse__BehaviorDescriptor = new AssertFalse__BehaviorDescriptor();
+  private final BHDescriptor myAssertIsNull__BehaviorDescriptor = new AssertIsNull__BehaviorDescriptor();
   private final BHDescriptor myITestable__BehaviorDescriptor = new ITestable__BehaviorDescriptor();
   private final BHDescriptor myITestCase__BehaviorDescriptor = new ITestCase__BehaviorDescriptor();
   private final BHDescriptor myITestMethod__BehaviorDescriptor = new ITestMethod__BehaviorDescriptor();
+  private final BHDescriptor myAssertWithExpression__BehaviorDescriptor = new AssertWithExpression__BehaviorDescriptor();
+  private final BHDescriptor myAssertIsNotNull__BehaviorDescriptor = new AssertIsNotNull__BehaviorDescriptor();
   private final BHDescriptor myBeforeTest__BehaviorDescriptor = new BeforeTest__BehaviorDescriptor();
   private final BHDescriptor myAfterTest__BehaviorDescriptor = new AfterTest__BehaviorDescriptor();
 
@@ -30,20 +35,30 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 0:
         return myAfterTest__BehaviorDescriptor;
       case 1:
-        return myBTestCase__BehaviorDescriptor;
+        return myAssertFalse__BehaviorDescriptor;
       case 2:
-        return myBeforeTest__BehaviorDescriptor;
+        return myAssertIsNotNull__BehaviorDescriptor;
       case 3:
-        return myITestCase__BehaviorDescriptor;
+        return myAssertIsNull__BehaviorDescriptor;
       case 4:
-        return myITestMethod__BehaviorDescriptor;
+        return myAssertTrue__BehaviorDescriptor;
       case 5:
-        return myITestable__BehaviorDescriptor;
+        return myAssertWithExpression__BehaviorDescriptor;
       case 6:
+        return myBTestCase__BehaviorDescriptor;
+      case 7:
+        return myBeforeTest__BehaviorDescriptor;
+      case 8:
+        return myITestCase__BehaviorDescriptor;
+      case 9:
+        return myITestMethod__BehaviorDescriptor;
+      case 10:
+        return myITestable__BehaviorDescriptor;
+      case 11:
         return myTestMethod__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x72682467022fd3ddL), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x72682467022fc039L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b08a01119L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x72682467022fd3ddL), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dfae1d08L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x624233a5cf1ae0f7L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110e252ba91L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110df833483L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x3b201db76cbd12caL), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x72682467022fc039L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b08a01119L), MetaIdFactory.conceptId(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc92748eL)).seal();
 }
