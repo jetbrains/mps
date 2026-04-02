@@ -15,7 +15,6 @@
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" />
     <import index="tpd5" ref="r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)" />
-    <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
@@ -4808,70 +4807,6 @@
                 <node concept="1mIQ4w" id="hPRimf8" role="2OqNvi">
                   <node concept="chp4Y" id="hPRimf9" role="cj9EA">
                     <ref role="cht4Q" to="tp25:h3THzq0" resolve="ConceptNodeType" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3eNFk2" id="vMpy$Q_e$o" role="3eNLev">
-                <node concept="3clFbS" id="vMpy$Q_e$q" role="3eOfB_">
-                  <node concept="3SKdUt" id="2S4aO2s3O2n" role="3cqZAp">
-                    <node concept="1PaTwC" id="ATZLwXnYaJ" role="1aUNEU">
-                      <node concept="3oM_SD" id="ATZLwXnYaK" role="1PaTwD">
-                        <property role="3oM_SC" value="todo" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaL" role="1PaTwD">
-                        <property role="3oM_SC" value="[MM]" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaM" role="1PaTwD">
-                        <property role="3oM_SC" value="always" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaN" role="1PaTwD">
-                        <property role="3oM_SC" value="false," />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaO" role="1PaTwD">
-                        <property role="3oM_SC" value="introduced" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaP" role="1PaTwD">
-                        <property role="3oM_SC" value="in" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaQ" role="1PaTwD">
-                        <property role="3oM_SC" value="6b8f810722d9d5733105c471d4b54f83e6462863," />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaR" role="1PaTwD">
-                        <property role="3oM_SC" value="asked" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaS" role="1PaTwD">
-                        <property role="3oM_SC" value="Fedor" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaT" role="1PaTwD">
-                        <property role="3oM_SC" value="to" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaU" role="1PaTwD">
-                        <property role="3oM_SC" value="review" />
-                      </node>
-                      <node concept="3oM_SD" id="ATZLwXnYaV" role="1PaTwD">
-                        <property role="3oM_SC" value="this" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbF" id="vMpy$Q_e$X" role="3cqZAp">
-                    <node concept="37vLTI" id="vMpy$Q_e$Y" role="3clFbG">
-                      <node concept="37vLTw" id="3GM_nagTA2t" role="37vLTJ">
-                        <ref role="3cqZAo" node="hPRimen" resolve="conceptDeclaration" />
-                      </node>
-                      <node concept="3B5_sB" id="2S4aO2s5lDl" role="37vLTx">
-                        <ref role="3B5MYn" to="tpck:gw2VY9q" resolve="BaseConcept" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="vMpy$Q_e$E" role="3eO9$A">
-                  <node concept="37vLTw" id="3GM_nagT$7o" role="2Oq$k0">
-                    <ref role="3cqZAo" node="hPRimen" resolve="conceptDeclaration" />
-                  </node>
-                  <node concept="1mIQ4w" id="vMpy$Q_e$G" role="2OqNvi">
-                    <node concept="chp4Y" id="vMpy$Q_e$H" role="cj9EA">
-                      <ref role="cht4Q" to="tpd4:hfSilrV" resolve="RuntimeTypeVariable" />
-                    </node>
                   </node>
                 </node>
               </node>
