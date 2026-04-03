@@ -12960,7 +12960,6 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="cl" />
           <module ref="3a13115c-633c-4c5c-bbcc-75c4219e9555(jetbrains.mps.lang.quotation)" kind="cl" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="cl" />
-          <module ref="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
           <module ref="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" kind="cl" />
           <module ref="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="cl" />
@@ -18465,7 +18464,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.baseLanguage" depends="java.compile.findUsages-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.psi, java.compile.vfs-tracking, java.compile.mps-textgen, java.compile.scripts-runtime, java.compile.migrations-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.dataFlow.runtime, java.compile.refactoring-runtime, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.java.modules.cycle.3, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.baseLanguage" depends="java.compile.findUsages-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.psi, java.compile.vfs-tracking, java.compile.migrations-runtime, java.compile.mps-textgen, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.dataFlow.runtime, java.compile.refactoring-runtime, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.java.modules.cycle.3, fetchDependencies">
     <mkdir dir="${mps_home}/languages/baseLanguage/baseLanguage/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="21" target="21">
@@ -18520,9 +18519,9 @@
         <pathelement path="${build.tmp}/java/out/mps-ui" />
         <pathelement path="${build.tmp}/java/out/psi" />
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
+        <pathelement path="${build.tmp}/java/out/migrations-runtime" />
         <pathelement path="${build.tmp}/java/out/mps-textgen" />
         <pathelement path="${build.tmp}/java/out/scripts-runtime" />
-        <pathelement path="${build.tmp}/java/out/migrations-runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.logging.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.regexp.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.dataFlow.runtime" />
