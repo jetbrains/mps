@@ -23,10 +23,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.actions.ExpectedType_FactoryUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -78,6 +78,9 @@ public class csharp_rTransform_Expression extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.AsExpression$$6, null);
         SNode type = ExpectedType_FactoryUtil.createExpectedType(_context.getNode());
+        if (type == null) {
+          type = SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.Type$bu);
+        }
         if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL)) {
           SLinkOperations.setTarget(result, LINKS.classifierType$eDlN, SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL));
         }
@@ -88,8 +91,10 @@ public class csharp_rTransform_Expression extends TransformationMenuBase {
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        SNode nodeType = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.SNodeType$hR);
-        return nodeType == null;
+        // we'd like to avoid `as Classifier` casts for node types, where
+        //   lang.smodel.SNodeTypeCastExpression is better fit, see MPS-30858
+        //   However, don't want to drag lang.smodel.SNodeType dependency here just for that, hence some heuristic
+        return ExpectedType_FactoryUtil.canComputeCastType(_context.getNode()) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.ClassifierType$bL);
       }
 
       @Nullable
@@ -115,8 +120,8 @@ public class csharp_rTransform_Expression extends TransformationMenuBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AsExpression$$6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, "jetbrains.mps.baseLanguage.structure.AsExpression");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 
   private static final class LINKS {
