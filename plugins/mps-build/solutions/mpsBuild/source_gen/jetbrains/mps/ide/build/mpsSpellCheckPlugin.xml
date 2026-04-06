@@ -159,6 +159,7 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
+      <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.extension.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
