@@ -9,7 +9,6 @@
   <property name="artifacts.mpsJavaCore" location="${build.dir}/artifacts/mpsJavaCore" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
-  <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.IDEA" location="${idea_home}" />
   <property file="${artifacts.mpsJavaCore}/build.properties" prefix="import.mpsJavaCore" />
   <property name="mpsBootstrapCore.version.major" value="${import.mpsJavaCore.mpsBootstrapCore.version.major}" />
@@ -257,7 +256,6 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="21" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
       <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/plaf/jetbrains.mps.ide.refactoring.platform.jar" />
