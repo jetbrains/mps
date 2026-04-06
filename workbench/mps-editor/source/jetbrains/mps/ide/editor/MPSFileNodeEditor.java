@@ -338,6 +338,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
         if (selectedNode == null) {
           selectedNode = editedNode;
         }
+        // FIXME why not MPSFileNodeEditor.myFile for editedNode, why VF at all for selectedNode (IDEA takes any Object)
         MPSNodeVirtualFile rootVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), editedNode);
         MPSNodeVirtualFile nodeVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), selectedNode);
         return new MySelectInContext(rootVirtualFile, nodeVirtualFile);

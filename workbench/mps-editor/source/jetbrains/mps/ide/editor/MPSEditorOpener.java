@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.awt.Component;
 import java.util.Collections;
@@ -136,7 +137,17 @@ public class MPSEditorOpener {
     }
 
     checkBaseNodeIsValid(root, baseNode); // assertions for MPS-7792
-    MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), baseNode);
+    // See MPS-39613, here we try to make sure we get VF instance from the same RepositoryVirtualFile instance as an already
+    //       opened editor (e.g a node from a stub model available in MPSModuleRepository - we shall not use ProjectRepository here then).
+    //       Alternatively, may try to address editor matching/comparison code, i.e. to match opened editor according no node reference from VF, rather than VF instance itself.
+    //       However, didn't find the right place in IDEA code (the one that does the check) yet.
+    SRepository repo = baseNode.getModel() != null ? baseNode.getModel().getRepository() : null;
+    final MPSNodeVirtualFile file;
+    if (repo != null) {
+      file = NodeVirtualFileSystem.getInstance().getFileFor(repo, baseNode);
+    } else {
+      file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), baseNode.getReference());
+    }
     checkVirtualFileBaseNode(baseNode, file); // assertion for MPS-9753
 
     FileEditorManager editorManager = FileEditorManager.getInstance(myProject.getProject());

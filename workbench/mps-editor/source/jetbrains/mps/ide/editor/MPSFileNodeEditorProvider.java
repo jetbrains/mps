@@ -43,6 +43,8 @@ public class MPSFileNodeEditorProvider implements FileEditorProvider, DumbAware 
   @Override
   @NotNull
   public FileEditor createEditor(@NotNull Project project, @NotNull final VirtualFile file) {
+    // FIXME see MPS-39613 - likely, we shall wait for MPSProject to get completely initialized first, and then
+    //       re-check the file to see if it comes from the right RepositoryVirtualFile instance
     final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(project);
     if (!(file instanceof MPSNodeVirtualFile)) {
       throw new IllegalArgumentException("expecting only our node virtual files");
