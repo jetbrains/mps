@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.make.java;
 
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.GenerationStatus;
@@ -24,8 +25,8 @@ import jetbrains.mps.generator.cache.ParseFacility;
 import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.project.SModuleOperations;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelDependencyScanner;
-import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.JDOMException;
@@ -108,6 +109,10 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
               continue;
             }
             if (m instanceof TransientSModel || m.getModule() instanceof TransientSModule) {
+              continue;
+            }
+            if (m.getModule() instanceof Language l && l.getAccessoryModels().contains(m) && (false == m instanceof GeneratableSModel || ((GeneratableSModel) m).isDoNotGenerate())) {
+              // accessory models meant as a source of nodes but not code could be safely ignored
               continue;
             }
             if (!SModuleOperations.classesAvailableToMPS(m.getModule())) {
