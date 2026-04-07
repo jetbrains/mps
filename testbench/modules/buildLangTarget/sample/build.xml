@@ -63,7 +63,6 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="12" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <chunk>
         <module file="${basedir}/../../../../samples/robot_Kaja/solutions/JavaKajak/JavaKajak.msd" />
       </chunk>

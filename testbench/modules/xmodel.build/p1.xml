@@ -232,7 +232,6 @@
     <echo message="generating" />
     <generate fork="true" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <chunk>
         <module file="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/jetbrains.mps.generator.test.xmodel.lang1.mpl" />
       </chunk>

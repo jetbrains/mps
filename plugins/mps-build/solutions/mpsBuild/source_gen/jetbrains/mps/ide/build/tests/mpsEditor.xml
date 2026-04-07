@@ -1548,7 +1548,6 @@
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mpsTesting}/mps-junit5" id="jetbrains.mps.junit5" />
       <plugin path="${artifacts.mpsTesting}/mps-testing" id="jetbrains.mps.testing" />
-      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <chunk>
         <module file="${basedir}/testbench/testsolutions/testlangs/lang.actions.testLang/jetbrains.mps.lang.actions.testLanguage.mpl" />
         <module file="${basedir}/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" />
@@ -3267,7 +3266,6 @@
       </jvmargs>
       
       
-      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${build.layout}/languages/jetbrains.mps.lang.actions.testLanguage.jar" />
       <library file="${build.layout}/languages/jetbrains.mps.lang.editor.editorTest.jar" />
       <library file="${build.layout}/languages/jetbrains.mps.lang.editor.editorTest.extension.jar" />

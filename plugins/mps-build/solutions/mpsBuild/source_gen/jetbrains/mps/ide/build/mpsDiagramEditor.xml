@@ -560,7 +560,6 @@
       <settings refid="m2m-defaults" />
       <plugin path="${artifacts.jetpad}/jetpad" id="jetbrains.jetpad" />
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
-      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <chunk>
         <module file="${mps_home}/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.figures/jetbrains.mps.lang.editor.figures.mpl" />
       </chunk>

@@ -146,7 +146,6 @@
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
       <plugin path="${artifacts.mps}/plugins/mps-testing" id="jetbrains.mps.testing" />
       <library file="${artifacts.mpsEditor}/languages/jetbrains.mps.lang.editor.editorTest.jar" />
-      <library file="${artifacts.mps}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <chunk>
         <module file="${basedir}/testbench/testsolutions/text.test/jetbrains.mps.lang.text.test.msd" />
       </chunk>
@@ -269,7 +268,6 @@
       
       
       <library file="${artifacts.mpsEditor}/languages/jetbrains.mps.lang.editor.editorTest.jar" />
-      <library file="${artifacts.mps}/languages/editor/jetbrains.mps.ide.editor.jar" />
       
       <plugin id="jetbrains.mps.core" path="${artifacts.mps}/plugins/mps-core" />
       <plugin id="jetbrains.mps.junit5" path="${artifacts.mps}/plugins/mps-junit5" />

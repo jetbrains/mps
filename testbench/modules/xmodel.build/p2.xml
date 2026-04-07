@@ -105,7 +105,6 @@
     <echo message="generating" />
     <generate fork="true" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <library file="${artifacts.p1}/devkits/jetbrains.mps.generator.xmodel-sample.jar" />
       <library file="${artifacts.p1}/jetbrains.mps.generator.test.xmodel.lang1.jar" />
       <library file="${artifacts.p1}/jetbrains.mps.generator.xmodel.test.jar" />

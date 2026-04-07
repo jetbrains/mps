@@ -346,7 +346,6 @@
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-junit5" id="jetbrains.mps.junit5" />
       <plugin path="${artifacts.mps}/plugins/mps-testing" id="jetbrains.mps.testing" />
-      <library file="${artifacts.mps}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${artifacts.mps}/plugins/mps-core/languages/devkits/jetbrains.mps.devkit.documentation.jar" />
       <chunk>
         <module file="${basedir}/samples/robot_Kaja/solutions/JavaKajak/JavaKajak.msd" />
@@ -689,7 +688,6 @@
       </jvmargs>
       
       
-      <library file="${artifacts.mps}/languages/editor/jetbrains.mps.ide.editor.jar" />
       <library file="${artifacts.mps}/plugins/mps-core/languages/devkits/jetbrains.mps.devkit.documentation.jar" />
       
       <plugin id="jetbrains.mps.core" path="${artifacts.mps}/plugins/mps-core" />

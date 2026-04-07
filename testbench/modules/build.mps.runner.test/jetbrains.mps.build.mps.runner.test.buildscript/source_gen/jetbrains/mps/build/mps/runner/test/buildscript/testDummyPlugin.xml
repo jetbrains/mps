@@ -113,7 +113,6 @@
     <echo message="generating" />
     <generate fork="true" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <chunk>
         <module file="${basedir}/jetbrains.mps.build.mps.runner.test.test6/jetbrains.mps.build.mps.runner.test.test6.msd" />
       </chunk>
@@ -186,7 +185,6 @@
   <target name="run.jetbrains.mps.build.mps.runner.test.test6" depends="assemble">
     <echo message="Running code from jetbrains.mps.build.mps.runner.test.test6 solution in MPS" />
     <runMPS solution="adb4254c-4802-47c5-ab55-bf6f81cce0f5(jetbrains.mps.build.mps.runner.test.test6)" startClass="jetbrains.mps.build.mps.runner.test.test6.MainClass" startMethod="mpsMain">
-      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin id="dummy.mps" path="${build.layout}/dummy-mps" />
       <library file="${build.layout}/jetbrains.mps.build.mps.runner.test.test6.jar" />
       <macro name="mps_home" path="${mps_home}" />

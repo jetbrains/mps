@@ -329,11 +329,6 @@
       <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mpsPlugins}/mps-modelchecker" id="jetbrains.mps.ide.modelchecker" />
       <plugin path="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
-      <library file="${artifacts.mpsWorkbench}/languages/editor/jetbrains.mps.ide.editor.jar" />
-      <library file="${artifacts.mpsWorkbench}/languages/plaf/jetbrains.mps.ide.ui.jar" />
-      <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
-      <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
-      <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
       <chunk>
         <module file="${mps_home}/plugins/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration.msd" />
         <module file="${plugin_home}/migration-platform/solutions/component/jetbrains.mps.migration.component.msd" />
