@@ -148,6 +148,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     if (directDependenciesOnly) {
       return SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN), LINKS.script$6Ehy);
     } else {
+      // FWIW, VisibleArtifacts has similar logic to walk transitive dependencies
       LinkedHashSet<SNode> result = new LinkedHashSet<SNode>();
       BuildProject__BehaviorDescriptor.collectVisibleProjects_id13YBgBBRSXj.invokeSpecial(__thisNode__, result, __thisNode__);
       result.remove(__thisNode__);
@@ -158,10 +159,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     if (!(result.add(current))) {
       return;
     }
-    for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(current, LINKS.dependencies$redY))) {
-      if (!(SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildProjectDependency$sN))) {
-        continue;
-      }
+    for (SNode dep : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(current, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN))) {
       BuildProject__BehaviorDescriptor.collectVisibleProjects_id13YBgBBRSXj.invokeSpecial(__thisNode__, result, SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BuildProjectDependency$sN), LINKS.script$6Ehy));
     }
   }

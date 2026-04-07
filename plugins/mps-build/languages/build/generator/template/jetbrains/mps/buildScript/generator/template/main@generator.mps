@@ -296,16 +296,16 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1510949579266781519" name="jetbrains.mps.lang.generator.structure.TemplateCallMacro" flags="ln" index="5jKBG">
+      <concept id="1510949579266781519" name="jetbrains.mps.lang.generator.structure.TemplateCallMacro" flags="lg" index="5jKBG">
         <child id="1510949579266801461" name="sourceNodeQuery" index="5jGum" />
       </concept>
-      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="ln" index="29HgVG">
+      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="lg" index="29HgVG">
         <child id="1168024447342" name="sourceNodeQuery" index="3NFExx" />
       </concept>
       <concept id="1219952072943" name="jetbrains.mps.lang.generator.structure.DropRootRule" flags="lg" index="aNPBN">
         <reference id="1219952338328" name="applicableConcept" index="aOQi4" />
       </concept>
-      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="ln" index="2b32R4">
+      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="lg" index="2b32R4">
         <child id="1168278589236" name="sourceNodesQuery" index="2P8S$" />
       </concept>
       <concept id="1202776937179" name="jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence" flags="lg" index="b5Tf3" />
@@ -366,7 +366,7 @@
         <child id="1195158608805" name="conditionFunction" index="150hEN" />
         <child id="1195158637244" name="caseConsequence" index="150oIE" />
       </concept>
-      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="ln" index="17Uvod">
+      <concept id="1087833241328" name="jetbrains.mps.lang.generator.structure.PropertyMacro" flags="lg" index="17Uvod">
         <child id="1167756362303" name="propertyValueFunction" index="3zH0cK" />
       </concept>
       <concept id="1167327847730" name="jetbrains.mps.lang.generator.structure.Reduction_MappingRule" flags="lg" index="3aamgX">
@@ -404,26 +404,26 @@
       <concept id="1167756221419" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_templatePropertyValue" flags="nn" index="3zGtF$" />
       <concept id="1167770111131" name="jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent" flags="in" index="3$xsQk" />
       <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
-      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
+      <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="ig" index="3JmXsc" />
       <concept id="8900764248744213868" name="jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence" flags="lg" index="1Koe21">
         <child id="8900764248744213871" name="contentNode" index="1Koe22" />
       </concept>
       <concept id="1805153994415891174" name="jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration" flags="ng" index="1N15co">
         <child id="1805153994415893199" name="type" index="1N15GL" />
       </concept>
-      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="in" index="3NFfHV" />
+      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="ig" index="3NFfHV" />
       <concept id="4035562641222622437" name="jetbrains.mps.lang.generator.structure.TemplateArgumentQuery" flags="in" index="1UU6SM" />
       <concept id="4035562641222585520" name="jetbrains.mps.lang.generator.structure.TemplateArgumentQueryExpression" flags="nn" index="1UUvTB">
         <child id="4035562641222618754" name="query" index="1UU7Ll" />
       </concept>
-      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="lg" index="1W57fq">
         <child id="1194989344771" name="alternativeConsequence" index="UU_$l" />
         <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
-      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
+      <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="lg" index="1WS0z7">
         <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
       </concept>
-      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="ln" index="1ZhdrF">
+      <concept id="1088761943574" name="jetbrains.mps.lang.generator.structure.ReferenceMacro" flags="lg" index="1ZhdrF">
         <child id="1167770376702" name="referentFunction" index="3$ytzL" />
       </concept>
     </language>
@@ -11241,18 +11241,13 @@
       <node concept="1WS0z7" id="3_glsEmo_Sx" role="lGtFl">
         <node concept="3JmXsc" id="3_glsEmo_Sy" role="3Jn$fo">
           <node concept="3clFbS" id="3_glsEmo_Sz" role="2VODD2">
-            <node concept="3clFbF" id="3_glsEmo_S$" role="3cqZAp">
-              <node concept="2OqwBi" id="2AbGWt_IuPn" role="3clFbG">
-                <node concept="2OqwBi" id="3_glsEmo_SA" role="2Oq$k0">
-                  <node concept="3Tsc0h" id="3_glsEmo_SB" role="2OqNvi">
-                    <ref role="3TtcxE" to="3ior:4RPz6WoY4C_" resolve="dependencies" />
-                  </node>
-                  <node concept="30H73N" id="3_glsEmo_SC" role="2Oq$k0" />
+            <node concept="3clFbF" id="5RgJqrqBmTj" role="3cqZAp">
+              <node concept="2OqwBi" id="5RgJqrqBn_T" role="3clFbG">
+                <node concept="1mL9RQ" id="5RgJqrqBmTb" role="2Oq$k0">
+                  <ref role="1mL9RD" node="1hy6_00CZ29" resolve="depHelper" />
                 </node>
-                <node concept="v3k3i" id="2AbGWt_IxJg" role="2OqNvi">
-                  <node concept="chp4Y" id="2AbGWt_Iypb" role="v3oSu">
-                    <ref role="cht4Q" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
-                  </node>
+                <node concept="liA8E" id="5RgJqrqBoaZ" role="2OqNvi">
+                  <ref role="37wK5l" to="o3n2:5RgJqrqAW7C" resolve="externalProjectDependencies" />
                 </node>
               </node>
             </node>
@@ -11644,18 +11639,13 @@
       <node concept="1WS0z7" id="6eCuTcwOXxg" role="lGtFl">
         <node concept="3JmXsc" id="6eCuTcwOXxh" role="3Jn$fo">
           <node concept="3clFbS" id="6eCuTcwOXxi" role="2VODD2">
-            <node concept="3clFbF" id="6eCuTcwOXxj" role="3cqZAp">
-              <node concept="2OqwBi" id="2AbGWt_IDip" role="3clFbG">
-                <node concept="2OqwBi" id="6eCuTcwOXxl" role="2Oq$k0">
-                  <node concept="3Tsc0h" id="6eCuTcwOXxm" role="2OqNvi">
-                    <ref role="3TtcxE" to="3ior:4RPz6WoY4C_" resolve="dependencies" />
-                  </node>
-                  <node concept="30H73N" id="6eCuTcwOXxn" role="2Oq$k0" />
+            <node concept="3clFbF" id="5RgJqrqBl$S" role="3cqZAp">
+              <node concept="2OqwBi" id="5RgJqrqBlZO" role="3clFbG">
+                <node concept="1mL9RQ" id="5RgJqrqBl$K" role="2Oq$k0">
+                  <ref role="1mL9RD" node="1hy6_00CZ29" resolve="depHelper" />
                 </node>
-                <node concept="v3k3i" id="2AbGWt_IG9p" role="2OqNvi">
-                  <node concept="chp4Y" id="2AbGWt_IGXJ" role="v3oSu">
-                    <ref role="cht4Q" to="3ior:6eCuTcwOX2$" resolve="BuildExternalLayoutDependency" />
-                  </node>
+                <node concept="liA8E" id="5RgJqrqBmnr" role="2OqNvi">
+                  <ref role="37wK5l" to="o3n2:5RgJqrqArqX" resolve="externalLayoutDependencies" />
                 </node>
               </node>
             </node>
@@ -12344,24 +12334,6 @@
                     <ref role="37wK5l" to="o3n2:41__iZjl7Te" resolve="PathProvider" />
                     <node concept="1iwH7S" id="1hy6_00_tLF" role="37wK5m" />
                     <node concept="30H73N" id="1hy6_00_tNg" role="37wK5m" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1ps_xZ" id="1hy6_00CZ29" role="1ps_xO">
-          <property role="TrG5h" value="depHelper" />
-          <node concept="2jfdEK" id="1hy6_00CZ2a" role="1ps_xN">
-            <node concept="3clFbS" id="1hy6_00CZ2b" role="2VODD2">
-              <node concept="3clFbF" id="1hy6_00CZgt" role="3cqZAp">
-                <node concept="2YIFZM" id="7FhemuaQVm7" role="3clFbG">
-                  <ref role="37wK5l" to="o3n2:7Fhemu9SE$N" resolve="get" />
-                  <ref role="1Pybhc" to="o3n2:41__iZjkZ0W" resolve="DependenciesHelper" />
-                  <node concept="1iwH7S" id="7FhemuaQVnQ" role="37wK5m" />
-                  <node concept="30H73N" id="7FhemuaQVrp" role="37wK5m" />
-                  <node concept="Xl_RD" id="7FhemuaQVuw" role="37wK5m">
-                    <property role="Xl_RC" value="j.m.build" />
                   </node>
                 </node>
               </node>
@@ -13285,6 +13257,24 @@
                 <node concept="liA8E" id="7u3RhgSjk6K" role="2OqNvi">
                   <ref role="37wK5l" to="o3n2:5DY7s5F3vd2" resolve="getMacros" />
                   <node concept="30H73N" id="7u3RhgSjkaO" role="37wK5m" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1ps_xZ" id="1hy6_00CZ29" role="1ps_xO">
+        <property role="TrG5h" value="depHelper" />
+        <node concept="2jfdEK" id="1hy6_00CZ2a" role="1ps_xN">
+          <node concept="3clFbS" id="1hy6_00CZ2b" role="2VODD2">
+            <node concept="3clFbF" id="1hy6_00CZgt" role="3cqZAp">
+              <node concept="2YIFZM" id="7FhemuaQVm7" role="3clFbG">
+                <ref role="37wK5l" to="o3n2:7Fhemu9SE$N" resolve="get" />
+                <ref role="1Pybhc" to="o3n2:41__iZjkZ0W" resolve="DependenciesHelper" />
+                <node concept="1iwH7S" id="7FhemuaQVnQ" role="37wK5m" />
+                <node concept="30H73N" id="7FhemuaQVrp" role="37wK5m" />
+                <node concept="Xl_RD" id="7FhemuaQVuw" role="37wK5m">
+                  <property role="Xl_RC" value="j.m.build" />
                 </node>
               </node>
             </node>

@@ -11,9 +11,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DependenciesHelper {
   private final Map<SNode, String> locationMap;
@@ -210,6 +212,20 @@ public class DependenciesHelper {
     return originalNode;
   }
 
+  /**
+   * Tells external layouts referenced (or actively consumed only, if possible) for artifacts tracked by this helper
+   */
+  public Iterable<SNode> externalLayoutDependencies() {
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(myProject, LINKS.dependencies$redY), CONCEPTS.BuildExternalLayoutDependency$oL);
+  }
+
+  /**
+   * Tells dependency projects referenced (or actively consumed, if possible) for artifacts of this helper
+   */
+  public Iterable<SNode> externalProjectDependencies() {
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(myProject, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN);
+  }
+
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
@@ -217,5 +233,11 @@ public class DependenciesHelper {
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
     /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildExternalLayoutDependency$oL = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d3d0a4L, "jetbrains.mps.build.structure.BuildExternalLayoutDependency");
+    /*package*/ static final SConcept BuildProjectDependency$sN = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink dependencies$redY = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
   }
 }

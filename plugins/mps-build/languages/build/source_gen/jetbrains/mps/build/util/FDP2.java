@@ -16,9 +16,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * Pretty much identical to FetchDependenciesProcessor, except for:
- * - works with actual model, doesn't assume/hides translation to original model
- * - doesn't invoke unpack()
- * - right now intended ONLY to replace support for BwfStatements/emit() in BuildLayout_Zip & co, so that no behavior code
+ * <ul><li>works with actual model, doesn't assume/hides translation to original model<li>
+ * <li>doesn't invoke unpack()<li>
+ * <li>right now intended ONLY to replace support for BwfStatements/emit() in BuildLayout_Zip & co, so that no behavior code<li></ul>
  *   is responsible to produce bwf statements.
  * 
  * Note, present use of the dependencyLayoutNodeWithContent() elements in unpackDependency switch IS BOUND to
