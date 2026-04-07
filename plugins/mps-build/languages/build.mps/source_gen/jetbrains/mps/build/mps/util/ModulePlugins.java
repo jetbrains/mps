@@ -10,7 +10,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
+import jetbrains.mps.internal.collections.runtime.ISetSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -39,31 +39,55 @@ public class ModulePlugins {
   }
 
   public void collect(@NotNull Iterable<SNode> modules, @NotNull List<SNode> additionalPlugins) {
-    IListSequence<SNode> plugins = ListSequence.fromListWithValues(new ArrayList<>(), additionalPlugins);
+    ISetSequence<SNode> plugins = SetSequence.fromSetWithValues(new HashSet<>(), additionalPlugins);
     final Set<SNode> standaloneModules = SetSequence.fromSetWithValues(new HashSet<>(), modules);
 
     // Get dependencies from idea plugins, which are pointing to actual dependencies
     Iterable<SNode> requiredPlugins = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myInitialProject, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po)).concat(Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(myInitialProject, ((boolean) false))).translate((it) -> SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po)));
 
-    ListSequence.fromList(additionalPlugins).concat(Sequence.fromIterable(requiredPlugins)).visitAll((final SNode plugin) -> {
+    final String mpsWorkbenchPluginId = "com.intellij.modules.mps";
+    // another trick, ensure mpsWorkbench, if present, is on the top of the sequence, to "consume" modules 
+    // and not report them as 'standalone' as long as they are part of mpsWorkbench. Note, have to get in front of mpsCore
+    // as their exported modules intersect at large, and ATM we don't want to see j.m.core plugin referenced in dependencies yet
+    // (although perhaps shall be good to have it listed, i.e. MpsEnvironment in WorkerBase.initEnvironmentConfig() may skip default plugins)
+    Iterable<SNode> allPlugins = ListSequence.fromList(additionalPlugins).concat(Sequence.fromIterable(requiredPlugins)).sort((a, b) -> {
+      if (mpsWorkbenchPluginId.equals(SPropertyOperations.getString(a, PROPS.id$W4AX))) {
+        return -1;
+      }
+      if (mpsWorkbenchPluginId.equals(SPropertyOperations.getString(b, PROPS.id$W4AX))) {
+        return 1;
+      }
+      return 0;
+    }, true);
+
+    Sequence.fromIterable(allPlugins).visitAll((final SNode plugin) -> {
       SNode buildProject = SNodeOperations.cast(SNodeOperations.getContainingRoot(plugin), CONCEPTS.BuildProject$ae);
 
       // Unfortunately, the moment we get here from weave_Tasks, there's no BML_Plugin (they get unwrapped on alias step)
       // and I can not tell fake mps-workbench plugin from any other regular plugin :(
       // Therefore, have a hardcoded value here. This is 'fake' idea plugin that represents MPS IDE, no reason to mention it as it's loaded
       //  automatically from lib/ jars.
-      boolean __FIXME = !("com.intellij.modules.mps".equals(SPropertyOperations.getString(plugin, PROPS.id$W4AX)));
+      // Note, below, we use both !var || var, where (!var) to indicate aforementioned hack, 
+      //     and (var) to facilitate consumption of standaloneModules through mpsWorkbench plugin, to avoid unwanted extra j.m.core dependency
+      //     which could show up as both mpsCore and mpsWorkbench expose same core modules.
+      boolean mpsWorkbenchPlugin = mpsWorkbenchPluginId.equals(SPropertyOperations.getString(plugin, PROPS.id$W4AX));
 
       // recognize plugins that get deployed as regular plugins, don't respect hand-crafted
       // layouts as there's no guarantee it would end up as a <home>/plugins (that's the case of IdeaPlugin from mpsWorkbench, which
       // I don't want to have referenced as <plugin path=".../lib/mps-workbench.jar"/>
       // Indeed, use of BML_Plugin doesn't guarantee that either, it's just 'more likely' scenario.
       // FWIW, I believe we have to refactor mpsWorkbench and the whole story around IdeaPlugins to make this sane.
-      if (__FIXME || ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), CONCEPTS.BuildMpsLayout_Plugin$cj, false, new SAbstractConcept[]{})).any((layout) -> SLinkOperations.getTarget(layout, LINKS.plugin$9ewC) == plugin)) {
+      final boolean pluginExposedInLayout = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), CONCEPTS.BuildMpsLayout_Plugin$cj, false, new SAbstractConcept[]{})).any((layout) -> SLinkOperations.getTarget(layout, LINKS.plugin$9ewC) == plugin);
+      if (!(mpsWorkbenchPlugin) || pluginExposedInLayout || mpsWorkbenchPlugin) {
         ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.content$9T6D)).visitAll((it) -> Sequence.fromIterable(BuildMps_IdeaPluginContent__BehaviorDescriptor.getModules_id26vVkElqAGr.invoke(it)).visitAll((bundledModule) -> {
           if (standaloneModules.remove(bundledModule)) {
             // Keep track of plugins in use
-            ListSequence.fromList(plugins).addElement(plugin);
+            // FIXME except, of course mpsWorkbench. HOWEVER, why do we filter it here, and not exclude it 
+            // once we get to artifacts handling (I suppose, there's no artifact for IdeaPlugin of mpsWorkbench, and we could just use this fact, no? 
+            // Except that we may want to report error for missing artifact, although we may check plugin id there?)
+            if (!(mpsWorkbenchPlugin)) {
+              SetSequence.fromSet(plugins).addElement(plugin);
+            }
           }
         }));
       }

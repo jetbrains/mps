@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-4bruyntcps5lyfc6zijjisyfj8gpunh">
+<product version="3" modelHash="6a551fio7ncb89rabrlpful626d7v8j">
   <files names="ArtifactsRelativePathHelper.java:IdeaPluginDependenciesHelper.java:MPSModulesClosure.java:MPSModulesPartitioner.java:ModuleChecker.java:ModuleFinder.java:ModuleLoader.java:ModuleMacroHelper.java:ModulePlugins.java:PathBuilder.java:PathConverter.java:RequiredPlugins.java:RuntimeDependencies.java:VisibleModules.java" />
 </product>
 

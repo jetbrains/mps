@@ -145,6 +145,8 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     return ((Scope) BuildProject__BehaviorDescriptor.getScope_id13YBgBBRT49.invokeSpecial(__thisNode__, kind, role));
   }
   /*package*/ static Iterable<SNode> getVisibleProjects_id13YBgBBRSOL(@NotNull SNode __thisNode__, boolean directDependenciesOnly) {
+    // FIXME (a) all 6 uses pass false here
+    //      (b) 5 out of 6 add this BP back
     if (directDependenciesOnly) {
       return SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN), LINKS.script$6Ehy);
     } else {
