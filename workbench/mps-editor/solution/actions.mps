@@ -19112,18 +19112,13 @@
             </node>
             <node concept="2OqwBi" id="3zdPyHKArcJ" role="33vP2m">
               <node concept="37vLTw" id="3zdPyHKAqZR" role="2Oq$k0">
-                <ref role="3cqZAo" node="706B9ZFy7qE" resolve="editorComponent" />
+                <ref role="3cqZAo" node="706B9ZFy7qE" resolve="dataContext" />
               </node>
               <node concept="liA8E" id="3zdPyHKAs_5" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
-                <node concept="2OqwBi" id="3zdPyHKAFQa" role="37wK5m">
-                  <node concept="10M0yZ" id="3zdPyHKAtgr" role="2Oq$k0">
-                    <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                    <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
-                  </node>
-                  <node concept="liA8E" id="3zdPyHKAGgI" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
-                  </node>
+                <ref role="37wK5l" to="qkt:~DataContext.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
+                <node concept="10M0yZ" id="3zdPyHKAtgr" role="37wK5m">
+                  <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                  <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
                 </node>
               </node>
             </node>
@@ -19287,10 +19282,10 @@
         </node>
       </node>
       <node concept="37vLTG" id="706B9ZFy7qE" role="3clF46">
-        <property role="TrG5h" value="editorComponent" />
+        <property role="TrG5h" value="dataContext" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3zdPyHKArCb" role="1tU5fm">
-          <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
+          <ref role="3uigEE" to="qkt:~DataContext" resolve="DataContext" />
         </node>
         <node concept="2AHcQZ" id="706B9ZFy8aH" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -19305,25 +19300,6 @@
     <property role="2uzpH1" value="Declaration" />
     <property role="1teQrl" value="true" />
     <property role="72QZ$" value="true" />
-    <node concept="2XrIbr" id="706B9ZFxXXG" role="32lrUH">
-      <property role="TrG5h" value="getNodeDeclaration" />
-      <node concept="3Tqbb2" id="706B9ZFxYmi" role="3clF45" />
-      <node concept="3clFbS" id="706B9ZFxXXI" role="3clF47">
-        <node concept="3cpWs6" id="706B9ZFyat0" role="3cqZAp">
-          <node concept="2YIFZM" id="706B9ZFyav3" role="3cqZAk">
-            <ref role="1Pybhc" node="706B9ZFy67m" resolve="FindDeclarationUtils" />
-            <ref role="37wK5l" node="706B9ZFy6EU" resolve="findDeclarationFromMenu" />
-            <node concept="2OqwBi" id="706B9ZFyaLD" role="37wK5m">
-              <node concept="2WthIp" id="706B9ZFyawA" role="2Oq$k0" />
-              <node concept="1DTwFV" id="3zdPyHKBfDy" role="2OqNvi">
-                <ref role="2WH_rO" node="3zdPyHKBfcm" resolve="editorComponent" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="441vB8Me5MD" role="1B3o_S" />
-    </node>
     <node concept="1DS2jV" id="706B9ZFvPKF" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
@@ -19355,10 +19331,38 @@
           <node concept="3cpWsn" id="odQdBSgXth" role="3cpWs9">
             <property role="TrG5h" value="declaration" />
             <node concept="3Tqbb2" id="odQdBSgXtc" role="1tU5fm" />
-            <node concept="2OqwBi" id="odQdBSgXLj" role="33vP2m">
-              <node concept="2WthIp" id="odQdBSgXLm" role="2Oq$k0" />
-              <node concept="2XshWL" id="odQdBSgXLo" role="2OqNvi">
-                <ref role="2WH_rO" node="706B9ZFxXXG" resolve="getNodeDeclaration" />
+            <node concept="2YIFZM" id="2U3vePpjmH3" role="33vP2m">
+              <ref role="1Pybhc" node="706B9ZFy67m" resolve="FindDeclarationUtils" />
+              <ref role="37wK5l" node="706B9ZFy6EU" resolve="findDeclarationFromMenu" />
+              <node concept="2OqwBi" id="2U3vePpjmH4" role="37wK5m">
+                <node concept="tl45R" id="2U3vePpjmH5" role="2Oq$k0" />
+                <node concept="liA8E" id="2U3vePpjmH6" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext()" resolve="getDataContext" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2U3vePpjtGT" role="3cqZAp">
+          <node concept="3cpWsn" id="2U3vePpjtGU" role="3cpWs9">
+            <property role="TrG5h" value="editorRepo" />
+            <node concept="3uibUv" id="2U3vePpjtDV" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+            </node>
+            <node concept="2OqwBi" id="2U3vePpjtGV" role="33vP2m">
+              <node concept="2OqwBi" id="2U3vePpjtGW" role="2Oq$k0">
+                <node concept="2OqwBi" id="2U3vePpjtGX" role="2Oq$k0">
+                  <node concept="2WthIp" id="2U3vePpjtGY" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="2U3vePpjtGZ" role="2OqNvi">
+                    <ref role="2WH_rO" node="3zdPyHKBfcm" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2U3vePpjtH0" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2U3vePpjtH1" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorContext.getRepository()" resolve="getRepository" />
               </node>
             </node>
           </node>
@@ -19366,14 +19370,11 @@
         <node concept="3clFbF" id="706B9ZFvPKP" role="3cqZAp">
           <node concept="2OqwBi" id="706B9ZFvPKQ" role="3clFbG">
             <node concept="2OqwBi" id="706B9ZFvPKR" role="2Oq$k0">
-              <node concept="2OqwBi" id="706B9ZFvPKS" role="2Oq$k0">
-                <node concept="2WthIp" id="706B9ZFvPKT" role="2Oq$k0" />
-                <node concept="1DTwFV" id="706B9ZFvPKU" role="2OqNvi">
-                  <ref role="2WH_rO" node="706B9ZFvPKF" resolve="project" />
-                </node>
-              </node>
               <node concept="liA8E" id="706B9ZFvPKV" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
+                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
+              </node>
+              <node concept="37vLTw" id="2U3vePpjum0" role="2Oq$k0">
+                <ref role="3cqZAo" node="2U3vePpjtGU" resolve="editorRepo" />
               </node>
             </node>
             <node concept="liA8E" id="706B9ZFvPKW" role="2OqNvi">
@@ -19444,10 +19445,14 @@
         <node concept="3cpWs6" id="odQdBSgUBP" role="3cqZAp">
           <node concept="3y3z36" id="odQdBSgVwj" role="3cqZAk">
             <node concept="10Nm6u" id="odQdBSgVMy" role="3uHU7w" />
-            <node concept="2OqwBi" id="odQdBSgUYo" role="3uHU7B">
-              <node concept="2WthIp" id="odQdBSgUYr" role="2Oq$k0" />
-              <node concept="2XshWL" id="odQdBSgUYt" role="2OqNvi">
-                <ref role="2WH_rO" node="706B9ZFxXXG" resolve="getNodeDeclaration" />
+            <node concept="2YIFZM" id="706B9ZFyav3" role="3uHU7B">
+              <ref role="1Pybhc" node="706B9ZFy67m" resolve="FindDeclarationUtils" />
+              <ref role="37wK5l" node="706B9ZFy6EU" resolve="findDeclarationFromMenu" />
+              <node concept="2OqwBi" id="2U3vePpjmc6" role="37wK5m">
+                <node concept="tl45R" id="2U3vePpjlUV" role="2Oq$k0" />
+                <node concept="liA8E" id="2U3vePpjmBa" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext()" resolve="getDataContext" />
+                </node>
               </node>
             </node>
           </node>

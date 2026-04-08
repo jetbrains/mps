@@ -5,7 +5,7 @@ package jetbrains.mps.ide.editor.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.nodeEditor.EditorComponent;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.nodeEditor.cellMenu.CompletionActionItemAsSubstituteAction;
 import jetbrains.mps.openapi.editor.menus.transformation.CompletionActionItem;
@@ -17,8 +17,8 @@ public class FindDeclarationUtils {
   private FindDeclarationUtils() {
   }
 
-  public static SNode findDeclarationFromMenu(@NotNull final EditorComponent editorComponent) {
-    Object selectedItem = editorComponent.getData(PlatformDataKeys.SELECTED_ITEM.getName());
+  public static SNode findDeclarationFromMenu(@NotNull final DataContext dataContext) {
+    Object selectedItem = dataContext.getData(PlatformDataKeys.SELECTED_ITEM);
 
     if (selectedItem instanceof CompletionActionItemAsSubstituteAction) {
       CompletionActionItem item = ((CompletionActionItemAsSubstituteAction) selectedItem).getItem();

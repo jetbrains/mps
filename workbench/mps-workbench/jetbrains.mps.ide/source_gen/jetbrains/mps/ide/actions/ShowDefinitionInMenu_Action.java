@@ -7,20 +7,19 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.ide.editor.actions.FindDeclarationUtils;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
 import java.awt.Component;
 import com.intellij.ui.popup.PopupPositionManager;
 import com.intellij.openapi.ui.popup.LightweightWindowEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.ide.editor.actions.FindDeclarationUtils;
-import com.intellij.openapi.ui.popup.JBPopup;
 import java.util.Collections;
 
 @GeneratedClass(nodeId = "8348041782507834008", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -39,7 +38,7 @@ public class ShowDefinitionInMenu_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ShowDefinitionInMenu_Action.this.findMenuItemDeclaration(_params) != null;
+    return FindDeclarationUtils.findDeclarationFromMenu(event.getDataContext()) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -71,6 +70,8 @@ public class ShowDefinitionInMenu_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    final SNode declaration = FindDeclarationUtils.findDeclarationFromMenu(event.getDataContext());
+
     PopupWithNodeEditor popupWithNodeEditor = new PopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) {
       @Override
       public void show() {
@@ -95,25 +96,15 @@ public class ShowDefinitionInMenu_Action extends BaseAction {
           @Override
           public void valueChanged(ListSelectionEvent ignored) {
             if (windowEvent.asPopup().isVisible()) {
-              ShowDefinitionInMenu_Action.this.updateUI(myPopup, myUI, _params);
+              myUI.update(Collections.singletonList(declaration));
             } else {
               chooser.removeSelectionChangeListener(this);
             }
           }
         });
-        ShowDefinitionInMenu_Action.this.updateUI(myPopup, myUI, _params);
+        myUI.update(Collections.singletonList(declaration));
       }
     };
     popupWithNodeEditor.show();
-  }
-  private SNode findMenuItemDeclaration(final Map<String, Object> _params) {
-    return FindDeclarationUtils.findDeclarationFromMenu(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
-  }
-  private void updateUI(JBPopup popup, PopupWithNodeEditorUI ui, final Map<String, Object> _params) {
-    SNode declaration = ShowDefinitionInMenu_Action.this.findMenuItemDeclaration(_params);
-    if (declaration == null) {
-      return;
-    }
-    ui.update(Collections.singletonList(declaration));
   }
 }

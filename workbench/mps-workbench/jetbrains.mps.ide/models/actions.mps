@@ -46169,95 +46169,19 @@
     <property role="3GE5qa" value="BaseLanguage" />
     <property role="1teQrl" value="true" />
     <property role="72QZ$" value="true" />
-    <node concept="2XrIbr" id="7bpWGQaYMQP" role="32lrUH">
-      <property role="TrG5h" value="findMenuItemDeclaration" />
-      <node concept="3Tqbb2" id="7bpWGQaYNkJ" role="3clF45" />
-      <node concept="3clFbS" id="7bpWGQaYMQR" role="3clF47">
-        <node concept="3cpWs6" id="3zdPyHKAJzX" role="3cqZAp">
-          <node concept="2YIFZM" id="3zdPyHKALHL" role="3cqZAk">
-            <ref role="37wK5l" to="ekwn:706B9ZFy6EU" resolve="findDeclarationFromMenu" />
-            <ref role="1Pybhc" to="ekwn:706B9ZFy67m" resolve="FindDeclarationUtils" />
-            <node concept="2OqwBi" id="3zdPyHKAM1i" role="37wK5m">
-              <node concept="2WthIp" id="3zdPyHKAM1l" role="2Oq$k0" />
-              <node concept="1DTwFV" id="3zdPyHKAM1n" role="2OqNvi">
-                <ref role="2WH_rO" node="7fqcWlSvSED" resolve="editorComponent" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="3VRmr9RhufE" role="1B3o_S" />
-    </node>
-    <node concept="2XrIbr" id="4gPDhRU8axV" role="32lrUH">
-      <property role="TrG5h" value="updateUI" />
-      <node concept="3cqZAl" id="4gPDhRU8b3L" role="3clF45" />
-      <node concept="3clFbS" id="4gPDhRU8axX" role="3clF47">
-        <node concept="3cpWs8" id="4gPDhRU8b7b" role="3cqZAp">
-          <node concept="3cpWsn" id="4gPDhRU8b7c" role="3cpWs9">
-            <property role="TrG5h" value="declaration" />
-            <node concept="3uibUv" id="4gPDhRU8b7d" role="1tU5fm">
-              <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-            </node>
-            <node concept="2OqwBi" id="4gPDhRU8bKo" role="33vP2m">
-              <node concept="2WthIp" id="4gPDhRU8bKr" role="2Oq$k0" />
-              <node concept="2XshWL" id="4gPDhRU8bKt" role="2OqNvi">
-                <ref role="2WH_rO" node="7bpWGQaYMQP" resolve="findMenuItemDeclaration" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="4gPDhRU8b7h" role="3cqZAp">
-          <node concept="3clFbS" id="4gPDhRU8b7i" role="3clFbx">
-            <node concept="3cpWs6" id="4gPDhRU8b7j" role="3cqZAp" />
-          </node>
-          <node concept="3clFbC" id="4gPDhRU8b7k" role="3clFbw">
-            <node concept="37vLTw" id="4gPDhRU8b7l" role="3uHU7B">
-              <ref role="3cqZAo" node="4gPDhRU8b7c" resolve="declaration" />
-            </node>
-            <node concept="10Nm6u" id="4gPDhRU8b7m" role="3uHU7w" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="4gPDhRU8b7L" role="3cqZAp">
-          <node concept="2OqwBi" id="4gPDhRU8b7M" role="3clFbG">
-            <node concept="37vLTw" id="4gPDhRU8djd" role="2Oq$k0">
-              <ref role="3cqZAo" node="4gPDhRU8cPv" resolve="ui" />
-            </node>
-            <node concept="liA8E" id="4gPDhRU8b7O" role="2OqNvi">
-              <ref role="37wK5l" node="7RNhKVKT9wp" resolve="update" />
-              <node concept="2YIFZM" id="4gPDhRU8b7P" role="37wK5m">
-                <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
-                <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                <node concept="37vLTw" id="4gPDhRU8b7Q" role="37wK5m">
-                  <ref role="3cqZAo" node="4gPDhRU8b7c" resolve="declaration" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="4gPDhRU8cAN" role="3clF46">
-        <property role="TrG5h" value="popup" />
-        <node concept="3uibUv" id="4gPDhRU8cAM" role="1tU5fm">
-          <ref role="3uigEE" to="gspm:~JBPopup" resolve="JBPopup" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="4gPDhRU8cPv" role="3clF46">
-        <property role="TrG5h" value="ui" />
-        <node concept="3uibUv" id="4gPDhRU8dd$" role="1tU5fm">
-          <ref role="3uigEE" node="_dGddVVXqt" resolve="PopupWithNodeEditorUI" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="3VRmr9RhuBT" role="1B3o_S" />
-    </node>
     <node concept="2ScWuX" id="7fqcWlSvSEp" role="tmbBb">
       <node concept="3clFbS" id="7fqcWlSvSEq" role="2VODD2">
         <node concept="3clFbF" id="7fqcWlSwIQJ" role="3cqZAp">
           <node concept="3y3z36" id="7bpWGQaZdPE" role="3clFbG">
             <node concept="10Nm6u" id="7bpWGQaZe6N" role="3uHU7w" />
-            <node concept="2OqwBi" id="7bpWGQaZdji" role="3uHU7B">
-              <node concept="2WthIp" id="7bpWGQaZdjl" role="2Oq$k0" />
-              <node concept="2XshWL" id="7bpWGQaZdjn" role="2OqNvi">
-                <ref role="2WH_rO" node="7bpWGQaYMQP" resolve="findMenuItemDeclaration" />
+            <node concept="2YIFZM" id="3zdPyHKALHL" role="3uHU7B">
+              <ref role="37wK5l" to="ekwn:706B9ZFy6EU" resolve="findDeclarationFromMenu" />
+              <ref role="1Pybhc" to="ekwn:706B9ZFy67m" resolve="FindDeclarationUtils" />
+              <node concept="2OqwBi" id="2U3vePpk9rG" role="37wK5m">
+                <node concept="tl45R" id="2U3vePpk8It" role="2Oq$k0" />
+                <node concept="liA8E" id="2U3vePpkabh" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext()" resolve="getDataContext" />
+                </node>
               </node>
             </node>
           </node>
@@ -46276,6 +46200,24 @@
     </node>
     <node concept="tnohg" id="7fqcWlSvSEF" role="tncku">
       <node concept="3clFbS" id="7fqcWlSvSEG" role="2VODD2">
+        <node concept="3cpWs8" id="2U3vePpkcdJ" role="3cqZAp">
+          <node concept="3cpWsn" id="2U3vePpkcdK" role="3cpWs9">
+            <property role="TrG5h" value="declaration" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3Tqbb2" id="2U3vePpkbNA" role="1tU5fm" />
+            <node concept="2YIFZM" id="2U3vePpkcdL" role="33vP2m">
+              <ref role="37wK5l" to="ekwn:706B9ZFy6EU" resolve="findDeclarationFromMenu" />
+              <ref role="1Pybhc" to="ekwn:706B9ZFy67m" resolve="FindDeclarationUtils" />
+              <node concept="2OqwBi" id="2U3vePpkcdM" role="37wK5m">
+                <node concept="tl45R" id="2U3vePpkcdN" role="2Oq$k0" />
+                <node concept="liA8E" id="2U3vePpkcdO" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext()" resolve="getDataContext" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="2U3vePpkbmj" role="3cqZAp" />
         <node concept="3cpWs8" id="XnzHzqOEOy" role="3cqZAp">
           <node concept="3cpWsn" id="XnzHzqOEOz" role="3cpWs9">
             <property role="TrG5h" value="popupWithNodeEditor" />
@@ -46295,11 +46237,9 @@
                       <ref role="2WH_rO" node="7fqcWlSvSE_" resolve="project" />
                     </node>
                   </node>
-                  <node concept="2OqwBi" id="3Y0R6T3LQ0L" role="37wK5m">
-                    <node concept="2WthIp" id="3Y0R6T3LQ0O" role="2Oq$k0">
-                      <ref role="32nkFo" node="7fqcWlSvSEo" resolve="ShowDefinitionInMenu" />
-                    </node>
-                    <node concept="1DTwFV" id="3Y0R6T3LQ0Q" role="2OqNvi">
+                  <node concept="2OqwBi" id="2U3vePpk$eK" role="37wK5m">
+                    <node concept="2WthIp" id="2U3vePpk$eN" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="2U3vePpk$eP" role="2OqNvi">
                       <ref role="2WH_rO" node="7fqcWlSvSED" resolve="editorComponent" />
                     </node>
                   </node>
@@ -46479,16 +46419,19 @@
                                     <node concept="3clFbS" id="XnzHzqMPjq" role="3clF47">
                                       <node concept="3clFbJ" id="XnzHzqMPjr" role="3cqZAp">
                                         <node concept="3clFbS" id="XnzHzqMPjs" role="3clFbx">
-                                          <node concept="3clFbF" id="4gPDhRU8eep" role="3cqZAp">
-                                            <node concept="2OqwBi" id="4gPDhRU8eej" role="3clFbG">
-                                              <node concept="2WthIp" id="4gPDhRU8eem" role="2Oq$k0" />
-                                              <node concept="2XshWL" id="4gPDhRU8eeo" role="2OqNvi">
-                                                <ref role="2WH_rO" node="4gPDhRU8axV" resolve="updateUI" />
-                                                <node concept="37vLTw" id="1bIGuo1NNFQ" role="2XxRq1">
-                                                  <ref role="3cqZAo" node="XnzHzqLf0U" resolve="myPopup" />
-                                                </node>
-                                                <node concept="37vLTw" id="1bIGuo1NOrC" role="2XxRq1">
-                                                  <ref role="3cqZAo" node="1bIGuo1MpZr" resolve="myUI" />
+                                          <node concept="3clFbF" id="2U3vePpkfDY" role="3cqZAp">
+                                            <node concept="2OqwBi" id="2U3vePpkgV_" role="3clFbG">
+                                              <node concept="37vLTw" id="2U3vePpkfDW" role="2Oq$k0">
+                                                <ref role="3cqZAo" node="1bIGuo1MpZr" resolve="myUI" />
+                                              </node>
+                                              <node concept="liA8E" id="2U3vePpkhOO" role="2OqNvi">
+                                                <ref role="37wK5l" node="7RNhKVKT9wp" resolve="update" />
+                                                <node concept="2YIFZM" id="4gPDhRU8b7P" role="37wK5m">
+                                                  <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
+                                                  <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                                                  <node concept="37vLTw" id="4gPDhRU8b7Q" role="37wK5m">
+                                                    <ref role="3cqZAo" node="2U3vePpkcdK" resolve="declaration" />
+                                                  </node>
                                                 </node>
                                               </node>
                                             </node>
@@ -46534,16 +46477,19 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbF" id="4gPDhRU8fZ2" role="3cqZAp">
-                        <node concept="2OqwBi" id="4gPDhRU8fYW" role="3clFbG">
-                          <node concept="2WthIp" id="4gPDhRU8fYZ" role="2Oq$k0" />
-                          <node concept="2XshWL" id="4gPDhRU8fZ1" role="2OqNvi">
-                            <ref role="2WH_rO" node="4gPDhRU8axV" resolve="updateUI" />
-                            <node concept="37vLTw" id="1bIGuo1NP9S" role="2XxRq1">
-                              <ref role="3cqZAo" node="XnzHzqLf0U" resolve="myPopup" />
-                            </node>
-                            <node concept="37vLTw" id="1bIGuo1NPWx" role="2XxRq1">
-                              <ref role="3cqZAo" node="1bIGuo1MpZr" resolve="myUI" />
+                      <node concept="3clFbF" id="2U3vePpkn6a" role="3cqZAp">
+                        <node concept="2OqwBi" id="2U3vePpkof3" role="3clFbG">
+                          <node concept="37vLTw" id="2U3vePpkn68" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1bIGuo1MpZr" resolve="myUI" />
+                          </node>
+                          <node concept="liA8E" id="2U3vePpkp9s" role="2OqNvi">
+                            <ref role="37wK5l" node="7RNhKVKT9wp" resolve="update" />
+                            <node concept="2YIFZM" id="2U3vePpkpMj" role="37wK5m">
+                              <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
+                              <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                              <node concept="37vLTw" id="2U3vePpkpMk" role="37wK5m">
+                                <ref role="3cqZAo" node="2U3vePpkcdK" resolve="declaration" />
+                              </node>
                             </node>
                           </node>
                         </node>

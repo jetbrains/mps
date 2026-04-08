@@ -15,6 +15,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
@@ -33,7 +34,7 @@ public class GoToDeclarationInMenu_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return GoToDeclarationInMenu_Action.this.getNodeDeclaration(_params) != null;
+    return FindDeclarationUtils.findDeclarationFromMenu(event.getDataContext()) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -67,13 +68,11 @@ public class GoToDeclarationInMenu_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.definition");
 
-    final SNode declaration = GoToDeclarationInMenu_Action.this.getNodeDeclaration(_params);
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> {
+    final SNode declaration = FindDeclarationUtils.findDeclarationFromMenu(event.getDataContext());
+    SRepository editorRepo = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getEditorContext().getRepository();
+    editorRepo.getModelAccess().runReadAction(() -> {
       ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).deactivateSubstituteChooser();
       new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(declaration));
     });
-  }
-  private SNode getNodeDeclaration(final Map<String, Object> _params) {
-    return FindDeclarationUtils.findDeclarationFromMenu(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
   }
 }
