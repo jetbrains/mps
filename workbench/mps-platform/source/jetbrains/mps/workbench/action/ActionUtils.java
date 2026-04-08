@@ -87,6 +87,7 @@ public class ActionUtils {
   }
 
   public static void updateAndPerformAction(AnAction action, AnActionEvent event) {
+    ActionUtil.updateAction(action, event);
     ActionUtil.performAction(action, event);
   }
 
