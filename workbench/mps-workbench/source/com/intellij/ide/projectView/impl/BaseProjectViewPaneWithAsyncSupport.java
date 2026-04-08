@@ -28,7 +28,7 @@ public abstract class BaseProjectViewPaneWithAsyncSupport extends AbstractProjec
       ProjectViewPaneSupport support = getAsyncSupport();
       if (support != null) support.updateByFile((VirtualFile) element, updateStructure, Collections.singletonList(ProjectViewUpdateCause.VFS));
     }
-    super.updateFrom(element, forceResort, updateStructure);
+    super.updateFrom(element, forceResort, updateStructure, ProjectViewUpdateCause.LEGACY);
   }
 
   /**

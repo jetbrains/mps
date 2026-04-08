@@ -40,6 +40,7 @@ import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
 import com.intellij.ui.stripe.ErrorStripe;
+import com.intellij.ui.treeStructure.ProjectViewUpdateCause;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.containers.ContainerUtil;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -241,7 +242,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
     VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
     if (virtualFile != null) {
-      updateFrom(virtualFile, false, updateStructure);
+      updateFrom(virtualFile, false, updateStructure, ProjectViewUpdateCause.LEGACY);
     }
   }
 
@@ -747,7 +748,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       }
       super.startListening(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true);
+        updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
       }
     }
 
@@ -755,19 +756,19 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     protected void stopListening(SModule module) {
       super.stopListening(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true);
+        updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
       }
     }
 
     @Override
     public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
-      updateFromRoot(true);
+      updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
     }
 
     @Override
     public void moduleChanged(SModule module) {
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true);
+        updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
       }
     }
 

@@ -32,6 +32,7 @@ import com.intellij.openapi.project.DumbAwareToggleAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.NlsActions.ActionDescription;
 import com.intellij.openapi.util.NlsActions.ActionText;
+import com.intellij.ui.treeStructure.ProjectViewUpdateCause;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -65,7 +66,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
 //      getGlobalOptions().setShowDescriptorModels(selected);
       // FIXME reuse updatePanes from the superclass
 //      if (updated) updatePanes(false);
-      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false);
+      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false, ProjectViewUpdateCause.LEGACY);
     }
   }
   ;
@@ -87,7 +88,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
 //      getGlobalOptions().setSortRootsByConcept(selected);
       // FIXME reuse updatePanes from the superclass
 //      if (updated) updatePanes(false);
-      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false);
+      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false, ProjectViewUpdateCause.LEGACY);
     }
   };
 
