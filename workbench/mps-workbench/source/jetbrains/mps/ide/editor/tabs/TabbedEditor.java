@@ -16,10 +16,12 @@
 package jetbrains.mps.ide.editor.tabs;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.Separator;
@@ -48,7 +50,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SNodeUtil;
 import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
@@ -277,16 +278,12 @@ public class TabbedEditor extends BaseNodeEditor {
     }
   }
 
-
   @Override
-  public Object getData(@NonNls String dataId) {
-    if (MPSEditorDataKeys.EDITOR_CREATE_GROUP.is(dataId)) {
-      return getCreateGroup();
-    }
-    return null;
+  protected void extraData(@NotNull DataSink dataSink) {
+    dataSink.lazy(MPSEditorDataKeys.EDITOR_CREATE_GROUP, this::getCreateGroup);
   }
 
-  private AnAction getCreateGroup() {
+  private ActionGroup getCreateGroup() {
     DefaultActionGroup result = new DefaultActionGroup();
 
     List<DefaultActionGroup> groups =

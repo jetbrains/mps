@@ -34,11 +34,6 @@ public class NodeEditor extends BaseNodeEditor {
   }
 
   @Override
-  public Object getData(@NonNls String dataId) {
-    return null;
-  }
-
-  @Override
   public List<Document> getAllEditedDocuments() {
     final MPSNodeVirtualFile virtualFile = getCurrentEditorComponent().getVirtualFile();
     if (virtualFile == null) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
 package jetbrains.mps.ide.editor;
 
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataSink;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.colors.EditorColorsListener;
@@ -40,10 +41,9 @@ import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -74,6 +74,7 @@ public abstract class BaseNodeEditor implements Editor {
 
 
   public BaseNodeEditor(@NotNull Project mpsProject) {
+    // why not MPSProject right away?
     myProject = mpsProject;
     myEditorPanel.setLayout(new BorderLayout());
     myEditorPanel.setBorder(new EmptyBorder(JBUI.emptyInsets()));
@@ -160,35 +161,32 @@ public abstract class BaseNodeEditor implements Editor {
     return false;
   }
 
-  protected abstract Object getData(@NonNls String dataId);
+  protected void extraData(@NotNull DataSink dataSink) {
+    // no-op
+  }
 
-  private final class EditorPanel extends JPanel implements DataProvider {
+  private final class EditorPanel extends JPanel implements UiDataProvider {
     private EditorPanel() {
       setLayout(new BorderLayout());
       setBorder(new EmptyBorder(JBUI.emptyInsets()));
     }
 
     @Override
-    @Nullable
-    public Object getData(@NotNull @NonNls String dataId) {
-      if (MPSEditorDataKeys.MPS_EDITOR.is(dataId)) {
-        return BaseNodeEditor.this;
-      }
+    public void uiDataSnapshot(@NotNull DataSink dataSink) {
+      dataSink.set(MPSEditorDataKeys.MPS_EDITOR, BaseNodeEditor.this);
       // FIXME I believe next keys, namely MPS_PROJECT and PROJECT, have to be part of DataProvider in
       //       MPSFileNodeEditor's component. Indeed, we've got MPSProject here, and it's not a big deal, but
       //       OTOH EditorPanel is additional JPanel with no true value.
-      if (MPSCommonDataKeys.MPS_PROJECT.is(dataId)) {
+      if (myProject instanceof MPSProject mpsProject) {
         // we need this much, LocationRule & MPSProjectRule works due to this + delegation
-        return myProject;
+        dataSink.set(MPSCommonDataKeys.MPS_PROJECT, mpsProject);
       }
-      if (CommonDataKeys.PROJECT.is(dataId)) {
-        // we do not need this much but why not
-        return ProjectHelper.toIdeaProject(myProject);
-      }
+      // we do not need this much but why not
+      dataSink.set(CommonDataKeys.PROJECT, ProjectHelper.toIdeaProject(myProject));
       // give BaseNodeEditor subclasses a chance to contribute to DataContext without
       // need to inject another Component into hierarchy.
       // TODO if (BaseNodeEditor.this instanceof DataProvider) cast+invoke or at least default impl for getData
-      return BaseNodeEditor.this.getData(dataId);
+      extraData(dataSink);
     }
   }
 
