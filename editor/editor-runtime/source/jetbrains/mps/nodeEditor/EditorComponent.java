@@ -2024,10 +2024,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return null;
     }
 
-    final jetbrains.mps.openapi.editor.cells.EditorCell[] result = new jetbrains.mps.openapi.editor.cells.EditorCell[]{null};
-    myRepository.getModelAccess().runReadAction(() -> result[0] = findCellWithIdWithingBigCell(bigCell, id, node));
-
-    return (EditorCell) result[0];
+    return (EditorCell) myRepository.getModelAccess().computeReadAction(() -> findCellWithIdWithingBigCell(bigCell, id, node));
   }
 
   private jetbrains.mps.openapi.editor.cells.EditorCell findCellWithIdWithingBigCell(jetbrains.mps.openapi.editor.cells.EditorCell root, String id,

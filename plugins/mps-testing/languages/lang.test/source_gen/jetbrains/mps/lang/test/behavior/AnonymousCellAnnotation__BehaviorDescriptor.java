@@ -6,12 +6,12 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.util.List;
@@ -30,19 +30,14 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class AnonymousCellAnnotation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
 
-  public static final SMethod<Void> setupSelection_id5rZKa_fUiYP = new SMethodBuilder<>(Void.TYPE).name("setupSelection").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6268941039745707957L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(NodeEditorComponent.class, "nodeEditorComponent"), SMethodBuilder.createJavaParameter(SNode.class, "node"), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), "map"));
   public static final SMethod<EditorComponent> setupSelection_id5g7DxxpaP55 = new SMethodBuilder<>(EditorComponent.class).name("setupSelection").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6054990847528358213L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(NodeEditorComponent.class, "nodeEditorComponent"), SMethodBuilder.createJavaParameter(SNode.class, "node"), SMethodBuilder.createJavaParameter((Class<Map<SNode, SNode>>) ((Class) Object.class), "map"));
   public static final SMethod<Integer> getCaretPosition_id5rZKa_fUlry = new SMethodBuilder<>(Integer.TYPE).name("getCaretPosition").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6268941039745717986L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(EditorCell_Label.class, "label"));
   /*package*/ static final SMethod<Void> setupCaretAndSelection_id7TYU6fNl1yz = new SMethodBuilder<>(Void.TYPE).name("setupCaretAndSelection").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(9114978211826243747L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(EditorCell.class, "cellWithId"));
   /*package*/ static final SMethod<EditorComponent> setupInspector_id4VoD2D0CSEA = new SMethodBuilder<>(EditorComponent.class).name("setupInspector").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5681471431307922086L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2(SMethodBuilder.createJavaParameter(SNode.class, "node"), SMethodBuilder.createJavaParameter(NodeEditorComponent.class, "nodeEditorComponent"));
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setupSelection_id5rZKa_fUiYP, setupSelection_id5g7DxxpaP55, getCaretPosition_id5rZKa_fUlry, setupCaretAndSelection_id7TYU6fNl1yz, setupInspector_id4VoD2D0CSEA);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(setupSelection_id5g7DxxpaP55, getCaretPosition_id5rZKa_fUlry, setupCaretAndSelection_id7TYU6fNl1yz, setupInspector_id4VoD2D0CSEA);
 
 
-  @Deprecated
-  /*package*/ static void setupSelection_id5rZKa_fUiYP(@NotNull SNode __thisNode__, NodeEditorComponent nodeEditorComponent, SNode node, Map<SNode, SNode> map) {
-    AnonymousCellAnnotation__BehaviorDescriptor.setupSelection_id5rZKa_fUiYP.invoke(__thisNode__, nodeEditorComponent, node, map);
-  }
   /*package*/ static EditorComponent setupSelection_id5g7DxxpaP55(@NotNull SNode __thisNode__, NodeEditorComponent nodeEditorComponent, SNode node, Map<SNode, SNode> map) {
     EditorComponent editorComponent = nodeEditorComponent;
     EditorCell cellWithId;
@@ -99,16 +94,13 @@ public final class AnonymousCellAnnotation__BehaviorDescriptor extends BaseBHDes
     }
     switch (methodIndex) {
       case 0:
-        setupSelection_id5rZKa_fUiYP(node, (NodeEditorComponent) parameters[0], (SNode) parameters[1], (Map<SNode, SNode>) parameters[2]);
-        return null;
-      case 1:
         return (T) ((EditorComponent) setupSelection_id5g7DxxpaP55(node, (NodeEditorComponent) parameters[0], (SNode) parameters[1], (Map<SNode, SNode>) parameters[2]));
-      case 2:
+      case 1:
         return (T) ((Integer) getCaretPosition_id5rZKa_fUlry(node, (EditorCell_Label) parameters[0]));
-      case 3:
+      case 2:
         setupCaretAndSelection_id7TYU6fNl1yz(node, (EditorCell) parameters[0]);
         return null;
-      case 4:
+      case 3:
         return (T) ((EditorComponent) setupInspector_id4VoD2D0CSEA(node, (SNode) parameters[0], (NodeEditorComponent) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);

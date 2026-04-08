@@ -24,9 +24,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class CellReference {
-  private SNode myNode;
-  private SNode myAnnotation;
-  private Map<SNode, SNode> myMap;
+  private final SNode myNode;
+  private final SNode myAnnotation;
+  private final Map<SNode, SNode> myMap;
   public CellReference(SNode node, SNode annotation, Map<SNode, SNode> map) {
     myNode = node;
     myAnnotation = SNodeOperations.cast(annotation, CONCEPTS.AnonymousCellAnnotation$hB);
