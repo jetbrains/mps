@@ -65,6 +65,9 @@ public class NodeEditorComponent extends EditorComponent {
         }
         EditorCell cell = newSelection.getEditorCell();
         boolean readOnlyInEditor = ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, Collections.singleton(cell));
+        // Note, unlike Swing hierarchy listener, below, here we're inside MPS code and can grab model lock right away, w/o postponing to EDT
+        //       Beware, here lies important aspect of MPS editor - selection in inspector is supposed to get changed *immediately* along with the
+        //       change of main editor, otherwise tests would fail to find respective cells in inspector.
         getRepository().getModelAccess().runReadAction(() -> {
           inspect(cell.getSNode(), readOnlyInEditor);
         });
@@ -78,24 +81,24 @@ public class NodeEditorComponent extends EditorComponent {
       if (!isShowing()) {
         return;
       }
-      adjustInspector();
+      // postpone MA as Swing thread in IDEA doesn't like RW lock in Dispatchers.UI, see MPS-39623
+      getRepository().getModelAccess().runReadInEDT(this::adjustInspector);
     });
   }
 
+  // expects EDT and model read
   private void adjustInspector() {
-    getRepository().getModelAccess().runReadAction(() -> {
-      EditorCell selectedCell = getSelectedCell();
-      SNode selectedNode = null;
-      if (selectedCell != null) {
-        selectedNode = selectedCell.getSNode();
-        if (selectedNode != null) {
-          if (selectedNode.getModel() == null) {
-            return;
-          }
+    EditorCell selectedCell = getSelectedCell();
+    SNode selectedNode = null;
+    if (selectedCell != null) {
+      selectedNode = selectedCell.getSNode();
+      if (selectedNode != null) {
+        if (selectedNode.getModel() == null) {
+          return;
         }
       }
-      inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isCellReadOnly(selectedCell));
-    });
+    }
+    inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isCellReadOnly(selectedCell));
   }
 
 
