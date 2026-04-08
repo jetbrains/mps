@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.nodeEditor;
 
@@ -73,7 +73,7 @@ class ReferenceUnderliner {
           myLastReferenceCell = null;
           return;
         }
-        SNode snodeWRTReference = myEditorComponent.runRead(() -> myEditorComponent.isInvalid() ? null : APICellAdapter.getSNodeWRTReference(editorCell));
+        SNode snodeWRTReference = myEditorComponent.getRepository().getModelAccess().computeReadAction(() -> myEditorComponent.isInvalid() ? null : APICellAdapter.getSNodeWRTReference(editorCell));
         String url = editorCell.getStyle().get(StyleAttributes.URL);
         if (editorCell.getSNode() == snodeWRTReference && url == null) {
           myLastReferenceCell = null;

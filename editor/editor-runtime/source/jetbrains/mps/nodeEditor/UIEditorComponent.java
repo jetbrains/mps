@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,9 @@ import javax.swing.KeyStroke;
  *       without the need for dedicated class
  */
 public class UIEditorComponent extends EditorComponent {
-  private InspectorEditorComponent myInspector;
+  private final InspectorEditorComponent myInspector;
 
+  // FWIW, there are uses in mbeddr
   public UIEditorComponent(SRepository repository, InspectorEditorComponent inspector) {
     super(repository);
     unregisterKeyboardAction(KeyStroke.getKeyStroke("ESCAPE"));

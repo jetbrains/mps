@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2026 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.nodeEditor;
 
@@ -22,11 +22,12 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Separator;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
@@ -123,13 +124,11 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -213,7 +212,7 @@ import java.util.stream.Collectors;
  *  Keep in mind headless EC story and a need to keep DataProvider separate (preferably, not in
  *  [editor-runtime] but in [mps-editor]
  */
-public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider,
+public abstract class EditorComponent extends JComponent implements Scrollable, UiDataProvider,
                                                                     jetbrains.mps.openapi.editor.EditorComponent {
 
   private static final Logger LOG = Logger.getLogger(EditorComponent.class);
@@ -2699,10 +2698,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     };
   }
 
-  <T> T runRead(final Computable<T> c) {
-    return getModelAccess().computeReadAction(c::compute);
-  }
-
   /**
    * nb: just something to think about editor component does not always correspond to a project!
    */
@@ -2873,85 +2868,59 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myReadOnly;
   }
 
+
+  public Object getData(String unused) {
+    // Just a placeholder to get overriding classes to compile
+    throw new UnsupportedOperationException("Override uiDataSnapshot(DataSink) instead");
+  }
+
   @Override
-  @Nullable
-  public Object getData(@NotNull @NonNls String dataId) {
+  public void uiDataSnapshot(@NotNull DataSink dataSink) {
     if (isDisposed()) {
-      return null;
+      return;
     }
 
     boolean isInSearchPanel = isSearchPanelVisible() && mySearchPanel.isTextFieldFocused();
     boolean isInSubstituteChooser = myNodeSubstituteChooser.isVisible();
 
     //MPSDK
-    if (SNodeActionData.KEY.is(dataId)) {
-      if (isInSubstituteChooser || isInSearchPanel) {
-        // see NODE and NODES code, below
-        return null;
-      }
+    if (!isInSubstituteChooser && !isInSearchPanel) {
+      // see 276c525c
       Selection selection = mySelectionManager.getSelection();
       final List<SNode> selectedNodes = selection == null ? Collections.emptyList() : selection.getSelectedNodes();
       if (selection instanceof SingularSelection && selectedNodes.size() == 1) {
-        return SNodeActionData.from(selectedNodes.get(0).getReference());
+        dataSink.set(SNodeActionData.KEY, SNodeActionData.from(selectedNodes.getFirst().getReference()));
+      } else if (!selectedNodes.isEmpty()) {
+        dataSink.set(SNodeActionData.KEY, SNodeActionData.from(selectedNodes.stream().map(SNode::getReference)));
       }
-      if (selectedNodes.size() > 0) {
-        return SNodeActionData.from(selectedNodes.stream().map(SNode::getReference));
-      }
     }
-    // XXX keep NODE/NODES for another release or two, for actions to switch to SNodeActionData
-    if (MPSCommonDataKeys.NODE.is(dataId)) {
-      return isInSubstituteChooser || isInSearchPanel ? null : getSelectedNode();
+    dataSink.lazy(MPSCommonDataKeys.CONTEXT_MODEL, () -> getModelAccess().computeReadAction(() -> {
+      SNode node = getRootCell().getSNode();
+      return node == null ? null : node.getModel();
+    }));
+    dataSink.lazyValue(MPSCommonDataKeys.CONTEXT_MODULE, dataMap -> {
+      SModel model = dataMap.get(MPSCommonDataKeys.CONTEXT_MODEL);
+      // XXX perhaps, read access won't hurt here, yet it works w/o one ATM
+      return model == null ? null : model.getModule();
+    });
+    dataSink.set(MPSEditorDataKeys.EDITOR_CONTEXT, getEditorContext());
+    if (!isInSubstituteChooser && !isInSearchPanel) {
+      dataSink.set(MPSEditorDataKeys.EDITOR_CELL, getSelectedCell());
     }
-    if (MPSCommonDataKeys.NODES.is(dataId)) {
-      return isInSubstituteChooser || isInSearchPanel ? null : getSelectedNodes();
+    if (!isInSearchPanel) {
+      dataSink.set(MPSEditorDataKeys.EDITOR_COMPONENT, this);
     }
-    if (dataId.equals(MPSCommonDataKeys.CONTEXT_MODEL.getName())) {
-      return runRead(() -> {
-        SNode node = getRootCell().getSNode();
-        if (node == null) {
-          return null;
-        }
-        SModel model = node.getModel();
-        if (model == null) {
-          return null; //removed model
-        }
-        return model;
-      });
+    if (isInSubstituteChooser) {
+      dataSink.set(PlatformDataKeys.SELECTED_ITEM, myNodeSubstituteChooser.getCurrentSubstituteAction());
     }
-    if (dataId.equals(MPSCommonDataKeys.CONTEXT_MODULE.getName())) {
-      return runRead(() -> {
-        SModel model = MPSCommonDataKeys.CONTEXT_MODEL.getData(this);
-        return model == null ? null : model.getModule();
-      });
-    }
-    if (dataId.equals(MPSEditorDataKeys.EDITOR_CONTEXT.getName())) {
-      return getEditorContext();
-    }
-    if (dataId.equals(MPSEditorDataKeys.EDITOR_CELL.getName())) {
-      return isInSubstituteChooser || isInSearchPanel ? null : getSelectedCell();
-    }
-    if (dataId.equals(MPSEditorDataKeys.EDITOR_COMPONENT.getName())) {
-      return isInSearchPanel ? null : this;
-    }
-    if (dataId.equals(PlatformDataKeys.SELECTED_ITEM.getName())) {
-      return isInSubstituteChooser ? myNodeSubstituteChooser.getCurrentSubstituteAction() : null;
-    }
-    if (dataId.equals(MPSCommonDataKeys.PLACE.getName())) {
-      return ActionPlace.EDITOR;
-    }
+    dataSink.set(MPSCommonDataKeys.PLACE, ActionPlace.EDITOR);
 
     //PDK
-    if (dataId.equals(PlatformDataKeys.CUT_PROVIDER.getName())) {
-      return new MyCutProvider();
+    dataSink.set(PlatformDataKeys.CUT_PROVIDER, new MyCutProvider());
+    dataSink.set(PlatformDataKeys.COPY_PROVIDER, new MyCopyProvider());
+    if (isFocusOwner() || !isSearchPanelVisible()) {
+      dataSink.set(PlatformDataKeys.PASTE_PROVIDER, new MyPasteProvider());
     }
-    if (dataId.equals(PlatformDataKeys.COPY_PROVIDER.getName())) {
-      return new MyCopyProvider();
-    }
-    if (dataId.equals(PlatformDataKeys.PASTE_PROVIDER.getName()) && (isFocusOwner() || !isSearchPanelVisible())) {
-      return new MyPasteProvider();
-    }
-    //not found
-    return null;
   }
 
   private void commitAllCellValues() {

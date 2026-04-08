@@ -17,6 +17,7 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -34,7 +35,6 @@ import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.project.Project;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -177,16 +177,15 @@ public class NodeEditorComponent extends EditorComponent {
     }
   }
 
-  @Nullable
   @Override
-  public Object getData(@NotNull @NonNls String dataId) {
+  public void uiDataSnapshot(@NotNull DataSink dataSink) {
+    super.uiDataSnapshot(dataSink);
     // FIXME there's a promise in IDEA that VIRTUAL_FILE_ARRAY is provided automatically when there's
     //  a value for VIRTUAL_FILE. However, I'm afraid to remove this code without thorough check for
     //  MPS-24343 fix (f5e279db). Perhaps, the fact we give VF_ARRAY based on active edited node
     //  (unlike VF for editor, which is the same), is essential to fix Cut action?
-    if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
-      return getVirtualFile() != null ? new VirtualFile[]{getVirtualFile()} : new VirtualFile[0];
+    if (getVirtualFile() != null) {
+      dataSink.set(PlatformDataKeys.VIRTUAL_FILE_ARRAY, new VirtualFile[]{getVirtualFile()});
     }
-    return super.getData(dataId);
   }
 }
