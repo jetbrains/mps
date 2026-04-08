@@ -177,6 +177,7 @@ public abstract class BaseNodeEditor implements Editor {
       // FIXME I believe next keys, namely MPS_PROJECT and PROJECT, have to be part of DataProvider in
       //       MPSFileNodeEditor's component. Indeed, we've got MPSProject here, and it's not a big deal, but
       //       OTOH EditorPanel is additional JPanel with no true value.
+      // FWIW, there's MPSFileNodeEditorComponent, similar JPanel+DataProvider. Why can't we have all similar code in a single place?
       if (myProject instanceof MPSProject mpsProject) {
         // we need this much, LocationRule & MPSProjectRule works due to this + delegation
         dataSink.set(MPSCommonDataKeys.MPS_PROJECT, mpsProject);

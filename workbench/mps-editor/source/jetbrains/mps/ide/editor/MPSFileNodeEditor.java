@@ -19,8 +19,9 @@ import com.intellij.codeHighlighting.BackgroundEditorHighlighter;
 import com.intellij.ide.FileEditorProvider;
 import com.intellij.ide.SelectInContext;
 import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.openapi.actionSystem.DataProvider;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.DocumentsEditor;
 import com.intellij.openapi.fileEditor.FileEditorLocation;
@@ -304,31 +305,25 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
     return myFile == null;
   }
 
-  private class MPSFileNodeEditorComponent extends JPanel implements DataProvider {
+  private class MPSFileNodeEditorComponent extends JPanel implements UiDataProvider {
     private MPSFileNodeEditorComponent() {
       super(new BorderLayout());
     }
 
     @Override
-    public Object getData(@NotNull String dataId) {
+    public void uiDataSnapshot(@NotNull DataSink dataSink) {
       // FIXME what's behind this logic? What does getParent() == null mean?
       if (getParent() == null) {
-        if (PlatformDataKeys.FILE_EDITOR.is(dataId)) {
-          return MPSFileNodeEditor.this;
-        }
-        if (PlatformDataKeys.PROJECT.is(dataId)) {
-          return myProject.getProject();
-        }
+        dataSink.set(PlatformDataKeys.FILE_EDITOR, MPSFileNodeEditor.this);
+        dataSink.set(PlatformDataKeys.PROJECT, myProject.getProject());
       }
-      if (PlatformDataKeys.VIRTUAL_FILE.is(dataId)) {
-        // MPS-15532, seems that IDEA doesn't expect VF of an editor to change. For MPS tabbed editor,
-        //  can't use VF based on SNode of active tab (aspect). Using something like
-        //  NodeEditorComponent.getVirtualFile() or CommandContextWithVF.getContextVirtualFile() would lead to
-        //  changing VF for an editor (as it used to be with EC.getData(), removed by otherwise erroneous
-        //  commit 1fa2b4a8 (original MPS-15532 fix))
-        return MPSFileNodeEditor.this.getFile();
-      }
-      if (SelectInContext.DATA_KEY.is(dataId)) {
+      dataSink.set(PlatformDataKeys.VIRTUAL_FILE, MPSFileNodeEditor.this.getFile());
+      // MPS-15532, seems that IDEA doesn't expect VF of an editor to change. For MPS tabbed editor,
+      //  can't use VF based on SNode of active tab (aspect). Using something like
+      //  NodeEditorComponent.getVirtualFile() or CommandContextWithVF.getContextVirtualFile() would lead to
+      //  changing VF for an editor (as it used to be with EC.getData(), removed by otherwise erroneous
+      //  commit 1fa2b4a8 (original MPS-15532 fix))
+      dataSink.lazy(SelectInContext.DATA_KEY, () -> {
         EditorComponent editorComponent = MPSFileNodeEditor.this.getNodeEditor().getCurrentEditorComponent();
         if (editorComponent == null || editorComponent.getEditedNode() == null) {
           return null;
@@ -342,9 +337,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
         MPSNodeVirtualFile rootVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), editedNode);
         MPSNodeVirtualFile nodeVirtualFile = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), selectedNode);
         return new MySelectInContext(rootVirtualFile, nodeVirtualFile);
-      }
-
-      return null;
+      });
     }
 
     private class MySelectInContext implements SelectInContext {
