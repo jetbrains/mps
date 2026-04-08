@@ -3500,147 +3500,255 @@
                   <ref role="1Y3XeK" to="exr9:~EditorComponent" resolve="EditorComponent" />
                   <node concept="3clFb_" id="6ysF3v1j_cH" role="jymVt">
                     <property role="1EzhhJ" value="false" />
-                    <property role="TrG5h" value="getData" />
+                    <property role="TrG5h" value="uiDataSnapshot" />
                     <property role="DiZV1" value="false" />
                     <node concept="3Tm1VV" id="6ysF3v1j_cI" role="1B3o_S" />
-                    <node concept="3uibUv" id="6ysF3v1j_cJ" role="3clF45">
-                      <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-                    </node>
+                    <node concept="3cqZAl" id="5VmfgB_yazP" role="3clF45" />
                     <node concept="37vLTG" id="6ysF3v1j_cK" role="3clF46">
-                      <property role="TrG5h" value="key" />
-                      <node concept="17QB3L" id="3ZgZ1njMHRo" role="1tU5fm" />
-                      <node concept="2AHcQZ" id="6ysF3v1j_cM" role="2AJF6D">
-                        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
+                      <property role="TrG5h" value="sink" />
+                      <node concept="3uibUv" id="5VmfgB_zinQ" role="1tU5fm">
+                        <ref role="3uigEE" to="qkt:~DataSink" resolve="DataSink" />
                       </node>
                       <node concept="2AHcQZ" id="MHQRQBEP6u" role="2AJF6D">
                         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
                       </node>
                     </node>
-                    <node concept="2AHcQZ" id="6ysF3v1j_cN" role="2AJF6D">
-                      <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-                    </node>
                     <node concept="3clFbS" id="6ysF3v1j_cO" role="3clF47">
-                      <node concept="3clFbJ" id="2lNvIS1gjiQ" role="3cqZAp">
-                        <node concept="2OqwBi" id="2lNvIS1gJrQ" role="3clFbw">
-                          <node concept="10M0yZ" id="2lNvIS1gxD0" role="2Oq$k0">
-                            <ref role="1PxDUh" to="k3nr:~MPSEditorDataKeys" resolve="MPSEditorDataKeys" />
-                            <ref role="3cqZAo" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+                      <node concept="3clFbF" id="5VmfgB_JRCR" role="3cqZAp">
+                        <node concept="3nyPlj" id="5VmfgB_JRCP" role="3clFbG">
+                          <ref role="37wK5l" to="exr9:~EditorComponent.uiDataSnapshot(com.intellij.openapi.actionSystem.DataSink)" resolve="uiDataSnapshot" />
+                          <node concept="37vLTw" id="5VmfgB_Kon9" role="37wK5m">
+                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="sink" />
                           </node>
-                          <node concept="liA8E" id="2lNvIS1gJrR" role="2OqNvi">
-                            <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
-                            <node concept="37vLTw" id="2lNvIS1gJrS" role="37wK5m">
-                              <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="5VmfgB_QAft" role="3cqZAp">
+                        <node concept="1PaTwC" id="5VmfgB_QAfu" role="1aUNEU">
+                          <node concept="3oM_SD" id="5VmfgB_QAfv" role="1PaTwD">
+                            <property role="3oM_SC" value="FIXME" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QKAM" role="1PaTwD">
+                            <property role="3oM_SC" value="this" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSe9" role="1PaTwD">
+                            <property role="3oM_SC" value="is" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSea" role="1PaTwD">
+                            <property role="3oM_SC" value="the" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSeb" role="1PaTwD">
+                            <property role="3oM_SC" value="only" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSec" role="1PaTwD">
+                            <property role="3oM_SC" value="place" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSed" role="1PaTwD">
+                            <property role="3oM_SC" value="that" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSeI" role="1PaTwD">
+                            <property role="3oM_SC" value="requires" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSfJ" role="1PaTwD">
+                            <property role="3oM_SC" value="meaningful" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSgK" role="1PaTwD">
+                            <property role="3oM_SC" value="output" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QShL" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_QSii" role="1PaTwD">
+                            <property role="3oM_SC" value="super.getData()" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="5VmfgB_SEpX" role="3cqZAp">
+                        <node concept="1PaTwC" id="5VmfgB_SEpY" role="1aUNEU">
+                          <node concept="3oM_SD" id="5VmfgB_SEpZ" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SEq2" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SOrz" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SOr$" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SOr_" role="1PaTwD">
+                            <property role="3oM_SC" value="" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SOrA" role="1PaTwD">
+                            <property role="3oM_SC" value="although" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SW7C" role="1PaTwD">
+                            <property role="3oM_SC" value="the" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SW89" role="1PaTwD">
+                            <property role="3oM_SC" value="single" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SW8a" role="1PaTwD">
+                            <property role="3oM_SC" value="use" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SW8F" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SW8G" role="1PaTwD">
+                            <property role="3oM_SC" value="the" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SW8H" role="1PaTwD">
+                            <property role="3oM_SC" value="parent_paste_provide" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWae" role="1PaTwD">
+                            <property role="3oM_SC" value="suggests" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWbf" role="1PaTwD">
+                            <property role="3oM_SC" value="we" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWbg" role="1PaTwD">
+                            <property role="3oM_SC" value="know" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWbh" role="1PaTwD">
+                            <property role="3oM_SC" value="its" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWci" role="1PaTwD">
+                            <property role="3oM_SC" value="instance" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWcj" role="1PaTwD">
+                            <property role="3oM_SC" value="and" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWcO" role="1PaTwD">
+                            <property role="3oM_SC" value="can" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWdl" role="1PaTwD">
+                            <property role="3oM_SC" value="configure" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWem" role="1PaTwD">
+                            <property role="3oM_SC" value="it" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWeR" role="1PaTwD">
+                            <property role="3oM_SC" value="as" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWfo" role="1PaTwD">
+                            <property role="3oM_SC" value="needed" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWfT" role="1PaTwD">
+                            <property role="3oM_SC" value="w/o" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWfU" role="1PaTwD">
+                            <property role="3oM_SC" value="extra" />
+                          </node>
+                          <node concept="3oM_SD" id="5VmfgB_SWgr" role="1PaTwD">
+                            <property role="3oM_SC" value="key" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3cpWs8" id="2BT5gU6Om$N" role="3cqZAp">
+                        <node concept="3cpWsn" id="2BT5gU6Om$O" role="3cpWs9">
+                          <property role="TrG5h" value="parentPasteProvider" />
+                          <node concept="3uibUv" id="2BT5gU6Om$P" role="1tU5fm">
+                            <ref role="3uigEE" to="ddhc:~PasteProvider" resolve="PasteProvider" />
+                          </node>
+                          <node concept="0kSF2" id="2BT5gU6OTta" role="33vP2m">
+                            <node concept="3uibUv" id="2BT5gU6OTtd" role="0kSFW">
+                              <ref role="3uigEE" to="ddhc:~PasteProvider" resolve="PasteProvider" />
+                            </node>
+                            <node concept="3nyPlj" id="6ysF3v1j_d4" role="0kSFX">
+                              <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
+                              <node concept="2OqwBi" id="5VmfgB_MX3M" role="37wK5m">
+                                <node concept="10M0yZ" id="5VmfgB_MFBn" role="2Oq$k0">
+                                  <ref role="3cqZAo" to="qkt:~PlatformDataKeys.PASTE_PROVIDER" resolve="PASTE_PROVIDER" />
+                                  <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                                </node>
+                                <node concept="liA8E" id="5VmfgB_Nf_b" role="2OqNvi">
+                                  <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
+                                </node>
+                              </node>
                             </node>
                           </node>
                         </node>
-                        <node concept="3clFbS" id="2lNvIS1gjiU" role="3clFbx">
-                          <node concept="3cpWs6" id="2lNvIS1gjiV" role="3cqZAp">
-                            <node concept="37vLTw" id="2lNvIS1kQmC" role="3cqZAk">
+                      </node>
+                      <node concept="3clFbF" id="5VmfgB_$aHn" role="3cqZAp">
+                        <node concept="2OqwBi" id="5VmfgB_$g5v" role="3clFbG">
+                          <node concept="37vLTw" id="5VmfgB_$aHl" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="sink" />
+                          </node>
+                          <node concept="liA8E" id="5VmfgB_$xIq" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~DataSink.set(com.intellij.openapi.actionSystem.DataKey,java.lang.Object)" resolve="set" />
+                            <node concept="10M0yZ" id="2lNvIS1gxD0" role="37wK5m">
+                              <ref role="1PxDUh" to="k3nr:~MPSEditorDataKeys" resolve="MPSEditorDataKeys" />
+                              <ref role="3cqZAo" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+                            </node>
+                            <node concept="37vLTw" id="5VmfgB__Cis" role="37wK5m">
                               <ref role="3cqZAo" node="758rrhN1tVs" resolve="myProject" />
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbJ" id="7nWAV$2m$hv" role="3cqZAp">
-                        <node concept="3clFbS" id="7nWAV$2m$hw" role="3clFbx">
-                          <node concept="3cpWs6" id="7nWAV$2m$hx" role="3cqZAp">
-                            <node concept="Xjq3P" id="7nWAV$2n8d1" role="3cqZAk">
+                      <node concept="3clFbF" id="5VmfgB_Abo9" role="3cqZAp">
+                        <node concept="2OqwBi" id="5VmfgB_Aboa" role="3clFbG">
+                          <node concept="37vLTw" id="5VmfgB_Abob" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="sink" />
+                          </node>
+                          <node concept="liA8E" id="5VmfgB_Aboc" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~DataSink.set(com.intellij.openapi.actionSystem.DataKey,java.lang.Object)" resolve="set" />
+                            <node concept="10M0yZ" id="7nWAV$2mY0L" role="37wK5m">
+                              <ref role="3cqZAo" node="7nWAV$2m10H" resolve="CONSOLE_TAB" />
+                              <ref role="1PxDUh" node="7nWAV$2lW2b" resolve="MPSConsoleDataKeys" />
+                            </node>
+                            <node concept="Xjq3P" id="7nWAV$2n8d1" role="37wK5m">
                               <ref role="1HBi2w" node="4gO8Gruz$1J" resolve="BaseConsoleTab" />
                             </node>
                           </node>
                         </node>
-                        <node concept="2OqwBi" id="7nWAV$2m$hz" role="3clFbw">
-                          <node concept="10M0yZ" id="7nWAV$2mY0L" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7nWAV$2m10H" resolve="CONSOLE_TAB" />
-                            <ref role="1PxDUh" node="7nWAV$2lW2b" resolve="MPSConsoleDataKeys" />
+                      </node>
+                      <node concept="3clFbF" id="5VmfgB_Bx32" role="3cqZAp">
+                        <node concept="2OqwBi" id="5VmfgB_Bx33" role="3clFbG">
+                          <node concept="37vLTw" id="5VmfgB_Bx34" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="sink" />
                           </node>
-                          <node concept="liA8E" id="7nWAV$2m$h_" role="2OqNvi">
-                            <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
-                            <node concept="37vLTw" id="7nWAV$2m$hA" role="37wK5m">
-                              <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
+                          <node concept="liA8E" id="5VmfgB_Bx35" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~DataSink.set(com.intellij.openapi.actionSystem.DataKey,java.lang.Object)" resolve="set" />
+                            <node concept="10M0yZ" id="gyVkU1muoJ" role="37wK5m">
+                              <ref role="3cqZAo" node="gyVkU1lAw7" resolve="PARENT_PASTE_PROVIDER" />
+                              <ref role="1PxDUh" node="7nWAV$2lW2b" resolve="MPSConsoleDataKeys" />
+                            </node>
+                            <node concept="37vLTw" id="5VmfgB_O7gV" role="37wK5m">
+                              <ref role="3cqZAo" node="2BT5gU6Om$O" resolve="parentPasteProvider" />
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbJ" id="gyVkU1mebJ" role="3cqZAp">
-                        <node concept="3clFbS" id="gyVkU1mebK" role="3clFbx">
-                          <node concept="3cpWs6" id="gyVkU1mebL" role="3cqZAp">
-                            <node concept="0kSF2" id="gyVkU1mH9S" role="3cqZAk">
-                              <node concept="3uibUv" id="gyVkU1mH9T" role="0kSFW">
-                                <ref role="3uigEE" to="ddhc:~PasteProvider" resolve="PasteProvider" />
-                              </node>
-                              <node concept="3nyPlj" id="gyVkU1mH9U" role="0kSFX">
-                                <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
-                                <node concept="2OqwBi" id="u_4lu3pxb6" role="37wK5m">
-                                  <node concept="10M0yZ" id="u_4lu3pipy" role="2Oq$k0">
-                                    <ref role="3cqZAo" to="qkt:~PlatformDataKeys.PASTE_PROVIDER" resolve="PASTE_PROVIDER" />
-                                    <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                                  </node>
-                                  <node concept="liA8E" id="u_4lu3pNwj" role="2OqNvi">
-                                    <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
-                                  </node>
-                                </node>
-                              </node>
+                      <node concept="3clFbF" id="5VmfgB_HF9q" role="3cqZAp">
+                        <node concept="2OqwBi" id="5VmfgB_HKzh" role="3clFbG">
+                          <node concept="37vLTw" id="5VmfgB_HF9o" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="sink" />
+                          </node>
+                          <node concept="liA8E" id="5VmfgB_I1Rp" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~DataSink.set(com.intellij.openapi.actionSystem.DataKey,java.lang.Object)" resolve="set" />
+                            <node concept="10M0yZ" id="6ysF3v1j_cU" role="37wK5m">
+                              <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                              <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
                             </node>
-                          </node>
-                        </node>
-                        <node concept="2OqwBi" id="gyVkU1mebN" role="3clFbw">
-                          <node concept="10M0yZ" id="gyVkU1muoJ" role="2Oq$k0">
-                            <ref role="3cqZAo" node="gyVkU1lAw7" resolve="PARENT_PASTE_PROVIDER" />
-                            <ref role="1PxDUh" node="7nWAV$2lW2b" resolve="MPSConsoleDataKeys" />
-                          </node>
-                          <node concept="liA8E" id="gyVkU1mebP" role="2OqNvi">
-                            <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
-                            <node concept="37vLTw" id="gyVkU1mebQ" role="37wK5m">
-                              <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbJ" id="6ysF3v1j_cP" role="3cqZAp">
-                        <node concept="3clFbS" id="6ysF3v1j_cQ" role="3clFbx">
-                          <node concept="3cpWs6" id="6ysF3v1j_cR" role="3cqZAp">
-                            <node concept="37vLTw" id="6ysF3v1j_cS" role="3cqZAk">
+                            <node concept="37vLTw" id="5VmfgB_IQ7O" role="37wK5m">
                               <ref role="3cqZAo" node="4gO8GruCdfo" resolve="myFileEditor" />
                             </node>
                           </node>
                         </node>
-                        <node concept="2OqwBi" id="6ysF3v1j_cT" role="3clFbw">
-                          <node concept="10M0yZ" id="6ysF3v1j_cU" role="2Oq$k0">
-                            <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                            <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
-                          </node>
-                          <node concept="liA8E" id="6ysF3v1j_cV" role="2OqNvi">
-                            <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
-                            <node concept="37vLTw" id="6ysF3v1j_cW" role="37wK5m">
-                              <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
-                            </node>
-                          </node>
-                        </node>
                       </node>
-                      <node concept="3clFbJ" id="6ysF3v1j_cX" role="3cqZAp">
-                        <node concept="3clFbS" id="6ysF3v1j_cY" role="3clFbx">
-                          <node concept="3cpWs8" id="2BT5gU6Om$N" role="3cqZAp">
-                            <node concept="3cpWsn" id="2BT5gU6Om$O" role="3cpWs9">
-                              <property role="TrG5h" value="parentPasteProvider" />
-                              <node concept="3uibUv" id="2BT5gU6Om$P" role="1tU5fm">
-                                <ref role="3uigEE" to="ddhc:~PasteProvider" resolve="PasteProvider" />
-                              </node>
-                              <node concept="0kSF2" id="2BT5gU6OTta" role="33vP2m">
-                                <node concept="3uibUv" id="2BT5gU6OTtd" role="0kSFW">
-                                  <ref role="3uigEE" to="ddhc:~PasteProvider" resolve="PasteProvider" />
-                                </node>
-                                <node concept="3nyPlj" id="6ysF3v1j_d4" role="0kSFX">
-                                  <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
-                                  <node concept="37vLTw" id="6ysF3v1j_d5" role="37wK5m">
-                                    <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
+                      <node concept="3clFbF" id="5VmfgB_KM0U" role="3cqZAp">
+                        <node concept="2OqwBi" id="5VmfgB_L6mJ" role="3clFbG">
+                          <node concept="37vLTw" id="5VmfgB_KM0S" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="sink" />
                           </node>
-                          <node concept="3cpWs6" id="2BT5gU6P2p2" role="3cqZAp">
-                            <node concept="2ShNRf" id="6ysF3v1j_d0" role="3cqZAk">
+                          <node concept="liA8E" id="5VmfgB_LoJS" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~DataSink.set(com.intellij.openapi.actionSystem.DataKey,java.lang.Object)" resolve="set" />
+                            <node concept="10M0yZ" id="6ysF3v1j_d7" role="37wK5m">
+                              <ref role="3cqZAo" to="qkt:~PlatformDataKeys.PASTE_PROVIDER" resolve="PASTE_PROVIDER" />
+                              <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                            </node>
+                            <node concept="2ShNRf" id="6ysF3v1j_d0" role="37wK5m">
                               <node concept="1pGfFk" id="6ysF3v1j_d1" role="2ShVmc">
                                 <ref role="37wK5l" node="6ysF3v1j_w4" resolve="BaseConsoleTab.MyPasteProvider" />
                                 <node concept="37vLTw" id="2BT5gU6OFRy" role="37wK5m">
@@ -3648,26 +3756,6 @@
                                 </node>
                               </node>
                             </node>
-                          </node>
-                        </node>
-                        <node concept="2OqwBi" id="6ysF3v1j_d6" role="3clFbw">
-                          <node concept="10M0yZ" id="6ysF3v1j_d7" role="2Oq$k0">
-                            <ref role="3cqZAo" to="qkt:~PlatformDataKeys.PASTE_PROVIDER" resolve="PASTE_PROVIDER" />
-                            <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                          </node>
-                          <node concept="liA8E" id="6ysF3v1j_d8" role="2OqNvi">
-                            <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
-                            <node concept="37vLTw" id="6ysF3v1j_d9" role="37wK5m">
-                              <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3cpWs6" id="6ysF3v1j_da" role="3cqZAp">
-                        <node concept="3nyPlj" id="6ysF3v1j_db" role="3cqZAk">
-                          <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
-                          <node concept="37vLTw" id="6ysF3v1j_dc" role="37wK5m">
-                            <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
                           </node>
                         </node>
                       </node>
@@ -5677,6 +5765,25 @@
           </node>
         </node>
         <node concept="3clFbS" id="6ysF3v1j_wn" role="3clF47">
+          <node concept="3SKdUt" id="5VmfgB_Rza_" role="3cqZAp">
+            <node concept="1PaTwC" id="5VmfgB_RzaA" role="1aUNEU">
+              <node concept="3oM_SD" id="5VmfgB_RzaB" role="1PaTwD">
+                <property role="3oM_SC" value="FWIW," />
+              </node>
+              <node concept="3oM_SD" id="5VmfgB_RE7m" role="1PaTwD">
+                <property role="3oM_SC" value="original" />
+              </node>
+              <node concept="3oM_SD" id="5VmfgB_RE7o" role="1PaTwD">
+                <property role="3oM_SC" value="MyPasteProvider" />
+              </node>
+              <node concept="3oM_SD" id="5VmfgB_RQT6" role="1PaTwD">
+                <property role="3oM_SC" value="does" />
+              </node>
+              <node concept="3oM_SD" id="5VmfgB_RQVS" role="1PaTwD">
+                <property role="3oM_SC" value="executeCommandInEDT()" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="7$LYU9atptK" role="3cqZAp">
             <node concept="2OqwBi" id="7$LYU9atsqD" role="3clFbG">
               <node concept="2OqwBi" id="7$LYU9atrkV" role="2Oq$k0">
@@ -6064,7 +6171,7 @@
                             <node concept="9aQIb" id="6ysF3v1j_yq" role="9aQIa">
                               <node concept="3clFbS" id="6ysF3v1j_yr" role="9aQI4">
                                 <node concept="3clFbF" id="6ysF3v1j_ys" role="3cqZAp">
-                                  <node concept="2EnYce" id="2BT5gU6G5sj" role="3clFbG">
+                                  <node concept="2OqwBi" id="5VmfgB_RQWg" role="3clFbG">
                                     <node concept="37vLTw" id="6ysF3v1j_yu" role="2Oq$k0">
                                       <ref role="3cqZAo" node="6ysF3v1j_w0" resolve="myDefaultPasteProvider" />
                                     </node>
@@ -8937,7 +9044,7 @@
       <node concept="3uibUv" id="gyVkU1lAwb" role="1tU5fm">
         <ref role="3uigEE" to="qkt:~DataKey" resolve="DataKey" />
         <node concept="3uibUv" id="gyVkU1lAwc" role="11_B2D">
-          <ref role="3uigEE" node="4gO8Gruz$1J" resolve="BaseConsoleTab" />
+          <ref role="3uigEE" to="ddhc:~PasteProvider" resolve="PasteProvider" />
         </node>
       </node>
       <node concept="2YIFZM" id="gyVkU1lAwd" role="33vP2m">

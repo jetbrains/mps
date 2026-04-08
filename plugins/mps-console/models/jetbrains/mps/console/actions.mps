@@ -486,6 +486,73 @@
         </node>
         <node concept="3clFbJ" id="9e_Vjbpg_U" role="3cqZAp">
           <node concept="3clFbS" id="9e_Vjbpg_W" role="3clFbx">
+            <node concept="3SKdUt" id="5VmfgB_T9P7" role="3cqZAp">
+              <node concept="1PaTwC" id="5VmfgB_T9P8" role="1aUNEU">
+                <node concept="3oM_SD" id="5VmfgB_T9P9" role="1PaTwD">
+                  <property role="3oM_SC" value="isApplicable()," />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9Tt" role="1PaTwD">
+                  <property role="3oM_SC" value="above," />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9TA" role="1PaTwD">
+                  <property role="3oM_SC" value="suggests" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9TK" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9TO" role="1PaTwD">
+                  <property role="3oM_SC" value="know" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9TU" role="1PaTwD">
+                  <property role="3oM_SC" value="exact" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9U1" role="1PaTwD">
+                  <property role="3oM_SC" value="class" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9U8" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9Ud" role="1PaTwD">
+                  <property role="3oM_SC" value="can" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9UA" role="1PaTwD">
+                  <property role="3oM_SC" value="as" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9VH" role="1PaTwD">
+                  <property role="3oM_SC" value="PP" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9VO" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9Xj" role="1PaTwD">
+                  <property role="3oM_SC" value="behave" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9XG" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9Y4" role="1PaTwD">
+                  <property role="3oM_SC" value="appropriate" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_T9YT" role="1PaTwD">
+                  <property role="3oM_SC" value="mode," />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_Ta0r" role="1PaTwD">
+                  <property role="3oM_SC" value="rather" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_Ta18" role="1PaTwD">
+                  <property role="3oM_SC" value="than" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_Ta1e" role="1PaTwD">
+                  <property role="3oM_SC" value="using" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_Ta1D" role="1PaTwD">
+                  <property role="3oM_SC" value="distinct" />
+                </node>
+                <node concept="3oM_SD" id="5VmfgB_Ta1N" role="1PaTwD">
+                  <property role="3oM_SC" value="key" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="7vB_l7TzD5" role="3cqZAp">
               <node concept="3cpWsn" id="7vB_l7TzD6" role="3cpWs9">
                 <property role="TrG5h" value="customizedEvent" />
@@ -563,11 +630,11 @@
                   <ref role="3cqZAo" to="qkt:~PlatformDataKeys.PASTE_PROVIDER" resolve="PASTE_PROVIDER" />
                 </node>
                 <node concept="liA8E" id="4ASMi_2fuRs" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataProvider)" resolve="getData" />
-                  <node concept="2OqwBi" id="4ASMi_2fv7N" role="37wK5m">
-                    <node concept="2WthIp" id="4ASMi_2fv7Q" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="4ASMi_2fv7S" role="2OqNvi">
-                      <ref role="2WH_rO" node="4c815Y20ZO0" resolve="editor" />
+                  <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext)" resolve="getData" />
+                  <node concept="2OqwBi" id="5VmfgB_qHXX" role="37wK5m">
+                    <node concept="tl45R" id="5VmfgB_qH_5" role="2Oq$k0" />
+                    <node concept="liA8E" id="5VmfgB_qIyG" role="2OqNvi">
+                      <ref role="37wK5l" to="qkt:~AnActionEvent.getDataContext()" resolve="getDataContext" />
                     </node>
                   </node>
                 </node>

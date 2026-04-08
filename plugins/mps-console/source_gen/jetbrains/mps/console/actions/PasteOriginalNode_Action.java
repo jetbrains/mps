@@ -8,10 +8,10 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -37,7 +37,7 @@ public class PasteOriginalNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return PlatformDataKeys.PASTE_PROVIDER.getData(((EditorComponent) MapSequence.fromMap(_params).get("editor"))) instanceof BaseConsoleTab.MyPasteProvider && !(ReadOnlyUtil.isCellOrSelectionReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editor")), ((EditorCell) MapSequence.fromMap(_params).get("cell"))));
+    return PlatformDataKeys.PASTE_PROVIDER.getData(event.getDataContext()) instanceof BaseConsoleTab.MyPasteProvider && !(ReadOnlyUtil.isCellOrSelectionReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editor")), ((EditorCell) MapSequence.fromMap(_params).get("cell"))));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -72,6 +72,7 @@ public class PasteOriginalNode_Action extends BaseAction {
     // Override the paste provider defined in BaseConsoleTab
     PasteProvider parentPP = (PasteProvider) ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getData(MPSConsoleDataKeys.PARENT_PASTE_PROVIDER.getName());
     if (parentPP != null) {
+      // isApplicable(), above, suggests we know exact class and can as PP to behave in appropriate mode, rather than using distinct key
       AnActionEvent customizedEvent = event.withDataContext(SimpleDataContext.getSimpleContext(PlatformDataKeys.PASTE_PROVIDER, parentPP, event.getDataContext()));
       ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), customizedEvent);
     }

@@ -12258,53 +12258,45 @@
         </node>
       </node>
       <node concept="2tJIrI" id="3uyMLt62KYf" role="jymVt" />
+      <node concept="2tJIrI" id="5VmfgB_rUgs" role="jymVt" />
       <node concept="3clFb_" id="3YbyueeV3Wv" role="jymVt">
         <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="getData" />
+        <property role="TrG5h" value="uiDataSnapshot" />
         <property role="DiZV1" value="false" />
         <node concept="3Tm1VV" id="3YbyueeV3Ww" role="1B3o_S" />
-        <node concept="3uibUv" id="3YbyueeV3Wy" role="3clF45">
-          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-        </node>
+        <node concept="3cqZAl" id="5VmfgB_s8sY" role="3clF45" />
         <node concept="37vLTG" id="3YbyueeV3Wz" role="3clF46">
-          <property role="TrG5h" value="dataId" />
+          <property role="TrG5h" value="sink" />
           <node concept="3uibUv" id="3YbyueeVjda" role="1tU5fm">
-            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-          </node>
-          <node concept="2AHcQZ" id="3YbyueeVpmF" role="2AJF6D">
-            <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
+            <ref role="3uigEE" to="qkt:~DataSink" resolve="DataSink" />
           </node>
           <node concept="2AHcQZ" id="MHQRQBEYnr" role="2AJF6D">
             <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
           </node>
         </node>
         <node concept="3clFbS" id="3YbyueeV3W_" role="3clF47">
-          <node concept="3clFbJ" id="3YbyueeVCPA" role="3cqZAp">
-            <node concept="3clFbS" id="3YbyueeVCPH" role="3clFbx">
-              <node concept="3cpWs6" id="3YbyueeVCPI" role="3cqZAp">
-                <node concept="37vLTw" id="HkjAzMjBon" role="3cqZAk">
-                  <ref role="3cqZAo" node="DusLnP8fZc" resolve="myDiffFileEditor" />
-                </node>
-              </node>
-            </node>
-            <node concept="2OqwBi" id="3YbyueeVCPS" role="3clFbw">
-              <node concept="10M0yZ" id="3YbyueeVCPR" role="2Oq$k0">
-                <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
-              </node>
-              <node concept="liA8E" id="3WnQdVJvUhg" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
-                <node concept="37vLTw" id="3WnQdVJw2ea" role="37wK5m">
-                  <ref role="3cqZAo" node="3YbyueeV3Wz" resolve="dataId" />
-                </node>
+          <node concept="3clFbF" id="5VmfgB_sSPp" role="3cqZAp">
+            <node concept="3nyPlj" id="5VmfgB_sSPn" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.uiDataSnapshot(com.intellij.openapi.actionSystem.DataSink)" resolve="uiDataSnapshot" />
+              <node concept="37vLTw" id="5VmfgB_to5a" role="37wK5m">
+                <ref role="3cqZAo" node="3YbyueeV3Wz" resolve="sink" />
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="3YbyueeV3WD" role="3cqZAp">
-            <node concept="3nyPlj" id="3YbyueeV3WC" role="3clFbG">
-              <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
-              <node concept="37vLTw" id="2BHiRxglB6_" role="37wK5m">
-                <ref role="3cqZAo" node="3YbyueeV3Wz" resolve="dataId" />
+          <node concept="3clFbF" id="5VmfgB_tPFa" role="3cqZAp">
+            <node concept="2OqwBi" id="5VmfgB_tZqo" role="3clFbG">
+              <node concept="37vLTw" id="5VmfgB_tPF8" role="2Oq$k0">
+                <ref role="3cqZAo" node="3YbyueeV3Wz" resolve="sink" />
+              </node>
+              <node concept="liA8E" id="5VmfgB_ulp3" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~DataSink.set(com.intellij.openapi.actionSystem.DataKey,java.lang.Object)" resolve="set" />
+                <node concept="10M0yZ" id="3YbyueeVCPR" role="37wK5m">
+                  <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                  <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
+                </node>
+                <node concept="37vLTw" id="5VmfgB_uJ0N" role="37wK5m">
+                  <ref role="3cqZAo" node="DusLnP8fZc" resolve="myDiffFileEditor" />
+                </node>
               </node>
             </node>
           </node>

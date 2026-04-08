@@ -16,11 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import jetbrains.mps.project.Project;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.ide.PasteProvider;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import javax.swing.KeyStroke;
@@ -149,26 +149,17 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
 
   protected void createEditor() {
     this.myEditor = new EditorComponent(myProject.getRepository()) {
-      @Nullable
       @Override
-      public Object getData(@NonNls @NotNull String key) {
-        if (MPSEditorDataKeys.MPS_PROJECT.is(key)) {
-          return myProject;
-        }
-        if (MPSConsoleDataKeys.CONSOLE_TAB.is(key)) {
-          return BaseConsoleTab.this;
-        }
-        if (MPSConsoleDataKeys.PARENT_PASTE_PROVIDER.is(key)) {
-          return as_6q36mf_a0a0c0a0a0a0a13(super.getData(PlatformDataKeys.PASTE_PROVIDER.getName()), PasteProvider.class);
-        }
-        if (PlatformDataKeys.FILE_EDITOR.is(key)) {
-          return myFileEditor;
-        }
-        if (PlatformDataKeys.PASTE_PROVIDER.is(key)) {
-          PasteProvider parentPasteProvider = as_6q36mf_a0a0a4a0a0a0a0fb(super.getData(key), PasteProvider.class);
-          return new MyPasteProvider(parentPasteProvider);
-        }
-        return super.getData(key);
+      public void uiDataSnapshot(@NotNull DataSink sink) {
+        super.uiDataSnapshot(sink);
+        // FIXME this is the only place that requires meaningful output of super.getData()
+        //      although the single use of the parent_paste_provide suggests we know its instance and can configure it as needed w/o extra key
+        PasteProvider parentPasteProvider = as_6q36mf_a0a3a0a0a0a0fb(super.getData(PlatformDataKeys.PASTE_PROVIDER.getName()), PasteProvider.class);
+        sink.set(MPSEditorDataKeys.MPS_PROJECT, myProject);
+        sink.set(MPSConsoleDataKeys.CONSOLE_TAB, BaseConsoleTab.this);
+        sink.set(MPSConsoleDataKeys.PARENT_PASTE_PROVIDER, parentPasteProvider);
+        sink.set(PlatformDataKeys.FILE_EDITOR, myFileEditor);
+        sink.set(PlatformDataKeys.PASTE_PROVIDER, new MyPasteProvider(parentPasteProvider));
       }
       @Override
       protected CommandContextImpl createCommandContext() {
@@ -357,6 +348,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
     public final void performPaste(@NotNull final DataContext context) {
+      // FWIW, original MyPasteProvider does executeCommandInEDT()
       myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
         protected void doExecute() {
           //  XXX I wonder if this check and clipboard access have to be part of the command?
@@ -367,8 +359,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
           final SNodeReference pastingNodeReference = nrf.orElse(null);
 
           EditorCell currentCell = myEditor.getSelectedCell();
-          SNode referenceTarget = check_6q36mf_a0g0a0a0a0a0f06(pastingNodeReference, myProject);
-          if (referenceTarget != null && currentCell != null && !(check_6q36mf_a0a7a0a0a0a0a5ic(check_6q36mf_a0a0h0a0a0a0a0f06(pastingNodeReference), myModel))) {
+          SNode referenceTarget = check_6q36mf_a0g0a0a0a0b0f06(pastingNodeReference, myProject);
+          if (referenceTarget != null && currentCell != null && !(check_6q36mf_a0a7a0a0a0a1a5ic(check_6q36mf_a0a0h0a0a0a0b0f06(pastingNodeReference), myModel))) {
             SNode refContainer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x51132a123c89fa7eL, "jetbrains.mps.console.base.structure.PastedNodeReference"));
             SLinkOperations.setTarget(refContainer, LINKS.target$CsE, referenceTarget);
             NodePaster paster = new NodePaster(ListSequence.fromListAndArray(new ArrayList<SNode>(), refContainer));
@@ -381,7 +373,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
             myEditor.getUpdater().flushModelEvents();
             SelectionUtil.selectLabelCellAnSetCaret(myEditor.getEditorContext(), refContainer, SelectionManager.LAST_CELL, -1);
           } else {
-            check_6q36mf_a0a0h0a0a0a0a0f06_0(myDefaultPasteProvider, context);
+            myDefaultPasteProvider.performPaste(context);
           }
         }
       });
@@ -520,29 +512,23 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static SNode check_6q36mf_a0g0a0a0a0a0f06(SNodeReference checkedDotOperand, MPSProject myProject) {
+  private static SNode check_6q36mf_a0g0a0a0a0b0f06(SNodeReference checkedDotOperand, MPSProject myProject) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.resolve(myProject.getRepository());
     }
     return null;
   }
-  private static boolean check_6q36mf_a0a7a0a0a0a0a5ic(SModelReference checkedDotOperand, SModel myModel) {
+  private static boolean check_6q36mf_a0a7a0a0a0a1a5ic(SModelReference checkedDotOperand, SModel myModel) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.equals(SModelOperations.getPointer(myModel));
     }
     return false;
   }
-  private static SModelReference check_6q36mf_a0a0h0a0a0a0a0f06(SNodeReference checkedDotOperand) {
+  private static SModelReference check_6q36mf_a0a0h0a0a0a0b0f06(SNodeReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelReference();
     }
     return null;
-  }
-  private static void check_6q36mf_a0a0h0a0a0a0a0f06_0(PasteProvider checkedDotOperand, DataContext context) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.performPaste(context);
-    }
-
   }
   private static void check_6q36mf_a3a0a0a0a1a0a4a27(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -556,10 +542,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static <T> T as_6q36mf_a0a0c0a0a0a0a13(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_6q36mf_a0a0a4a0a0a0a0fb(Object o, Class<T> type) {
+  private static <T> T as_6q36mf_a0a3a0a0a0a0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

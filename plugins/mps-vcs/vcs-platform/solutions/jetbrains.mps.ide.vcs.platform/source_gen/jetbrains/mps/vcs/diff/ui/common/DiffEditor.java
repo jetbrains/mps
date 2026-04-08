@@ -55,7 +55,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
@@ -402,12 +402,11 @@ public class DiffEditor implements EditorMessageOwner {
       return new EditorCell_Constant(getEditorContext(), getEditedNode(), "");
     }
 
+
     @Override
-    public Object getData(@NonNls @NotNull String dataId) {
-      if (PlatformDataKeys.FILE_EDITOR.is(dataId)) {
-        return myDiffFileEditor;
-      }
-      return super.getData(dataId);
+    public void uiDataSnapshot(@NotNull DataSink sink) {
+      super.uiDataSnapshot(sink);
+      sink.set(PlatformDataKeys.FILE_EDITOR, myDiffFileEditor);
     }
 
     @Override

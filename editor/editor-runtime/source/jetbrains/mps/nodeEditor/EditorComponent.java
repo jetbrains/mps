@@ -129,6 +129,7 @@ import jetbrains.mps.util.Reference;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -2869,8 +2870,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
 
-  public Object getData(String unused) {
-    // Just a placeholder to get overriding classes to compile
+  /**
+   * @deprecated Override uiDataSnapshot(DataSink) instead; keep for 1 release and remove then
+   */
+  @Deprecated(since = "2026.1", forRemoval = true)
+  public Object getData(String dataId) {
+    // a placeholder to get overriding classes to compile, and a hack to address PARENT_PASTE_PROVIDER scenario of BaseConsoleTab
+    if (PlatformDataKeys.PASTE_PROVIDER.is(dataId)) {
+      return new MyPasteProvider();
+    }
     throw new UnsupportedOperationException("Override uiDataSnapshot(DataSink) instead");
   }
 
