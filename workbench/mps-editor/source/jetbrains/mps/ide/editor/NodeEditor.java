@@ -21,7 +21,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.project.Project;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collections;

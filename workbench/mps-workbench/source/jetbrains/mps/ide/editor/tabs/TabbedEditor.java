@@ -25,6 +25,7 @@ import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.Separator;
+import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.actionSystem.impl.ActionButton;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileEditorManager;
@@ -71,7 +72,7 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 
-public class TabbedEditor extends BaseNodeEditor {
+public class TabbedEditor extends BaseNodeEditor implements UiDataProvider {
   private TabsComponent myTabsComponent;
   private final MyNameListener myNameListener = new MyNameListener();
   private final SNodeReference myBaseNode;
@@ -114,8 +115,8 @@ public class TabbedEditor extends BaseNodeEditor {
     myPossibleTabs = possibleTabs;
 
     myTabsPanel = new JPanel(new BorderLayout());
-    // bloody BaseNodeEditor makes us know about layout used there
-    getComponent().add(myTabsPanel, BorderLayout.SOUTH);
+    // let BaseNodeEditor care about specific layout of its panel
+    installAtBottom(myTabsPanel);
 
     myRepoChangeListener = TabRootNodesTracker.getInstance(mpsProject);
     myFileStatusListener = FileStatusChangeListener.getInstance(mpsProject);
@@ -151,7 +152,7 @@ public class TabbedEditor extends BaseNodeEditor {
       final IdeFocusManager fm = IdeFocusManager.getInstance(((MPSProject) myProject).getProject());
       fm.doWhenFocusSettlesDown(() -> fm.requestFocus(cp, false));
     };
-    myTabsComponent = TabComponentFactory.createTabsComponent(myBaseNode, myPossibleTabs, getEditorPanel(), this::showNodeInternal, createAspectCallback,
+    myTabsComponent = TabComponentFactory.createTabsComponent(myBaseNode, myPossibleTabs, getComponent(), this::showNodeInternal, createAspectCallback,
                                                               ((MPSProject) myProject).getProject());
 
     if (myRepoChangeListener != null) {
@@ -279,7 +280,12 @@ public class TabbedEditor extends BaseNodeEditor {
   }
 
   @Override
-  protected void extraData(@NotNull DataSink dataSink) {
+  public void uiDataSnapshot(@NotNull DataSink dataSink) {
+    // FIXME I don't like NodeEditor implementing UiDataProvider, but (a) there's no component
+    //       in TabbedEditor to add this interface to; and (b) I don't think EDITOR_CREATE_GROUP
+    //       is the right way to communicate action information from within UI element.
+    //       In fact, see no reason why can't use MPSEditorDataKeys.MPS_EDITOR instanceof TabbedEditor
+    //       to build set of actions, instead of using UiDataProvider
     dataSink.lazy(MPSEditorDataKeys.EDITOR_CREATE_GROUP, this::getCreateGroup);
   }
 

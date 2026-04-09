@@ -30,6 +30,7 @@ import com.intellij.openapi.fileEditor.FileEditorStateLevel;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.BaseNodeEditor.BaseEditorState;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
@@ -308,6 +309,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   private class MPSFileNodeEditorComponent extends JPanel implements UiDataProvider {
     private MPSFileNodeEditorComponent() {
       super(new BorderLayout());
+      // FWIW, there's UiDataProvider.wrapComponent() that might be useful if we'd like to avoid custom JComponent
     }
 
     @Override
@@ -315,7 +317,17 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
       // FIXME what's behind this logic? What does getParent() == null mean?
       if (getParent() == null) {
         dataSink.set(PlatformDataKeys.FILE_EDITOR, MPSFileNodeEditor.this);
-        dataSink.set(PlatformDataKeys.PROJECT, myProject.getProject());
+      }
+      // we need this much, LocationRule & MPSProjectRule works due to this + delegation
+      dataSink.set(MPSCommonDataKeys.MPS_PROJECT, myProject);
+      dataSink.set(PlatformDataKeys.PROJECT, myProject.getProject());
+
+      if (myNodeEditor != null) {
+        dataSink.set(MPSEditorDataKeys.MPS_EDITOR, myNodeEditor);
+        if (myNodeEditor instanceof UiDataProvider edp) {
+          // sort of hack, see TabbedEditor.uiDataSnapshot()
+          edp.uiDataSnapshot(dataSink);
+        }
       }
       dataSink.set(PlatformDataKeys.VIRTUAL_FILE, MPSFileNodeEditor.this.getFile());
       // MPS-15532, seems that IDEA doesn't expect VF of an editor to change. For MPS tabbed editor,

@@ -15,9 +15,6 @@
  */
 package jetbrains.mps.ide.editor;
 
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataSink;
-import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.colors.EditorColorsListener;
@@ -27,8 +24,6 @@ import com.intellij.ui.components.JBScrollPane;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorPanelManagerImpl;
@@ -41,7 +36,6 @@ import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -62,7 +56,6 @@ public abstract class BaseNodeEditor implements Editor {
   private static final Logger LOG = Logger.getLogger(BaseNodeEditor.class);
 
   private NodeEditorComponent myEditorComponent;
-  private final JComponent myComponent = new EditorPanel();
   private final JComponent myEditorPanel = new JPanel();
   protected final Project myProject;
   private JComponent myReplace = null;
@@ -78,7 +71,7 @@ public abstract class BaseNodeEditor implements Editor {
     myProject = mpsProject;
     myEditorPanel.setLayout(new BorderLayout());
     myEditorPanel.setBorder(new EmptyBorder(JBUI.emptyInsets()));
-    myComponent.add(myEditorPanel, BorderLayout.CENTER);
+    // myEditorPanel.setOpaque(), and double buffer == false, perhaps? It's just a container for other components
     if (ApplicationManager.getApplication() != null) {
       myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
       myMessageBusConnection.subscribe(
@@ -95,11 +88,11 @@ public abstract class BaseNodeEditor implements Editor {
   public abstract List<Document> getAllEditedDocuments();
 
   public final JComponent getComponent() {
-    return myComponent;
+    return myEditorPanel;
   }
 
-  protected JComponent getEditorPanel() {
-    return myEditorPanel;
+  protected final void installAtBottom(JComponent component) {
+    myEditorPanel.add(component, BorderLayout.SOUTH);
   }
 
   @Override
@@ -161,36 +154,6 @@ public abstract class BaseNodeEditor implements Editor {
     return false;
   }
 
-  protected void extraData(@NotNull DataSink dataSink) {
-    // no-op
-  }
-
-  private final class EditorPanel extends JPanel implements UiDataProvider {
-    private EditorPanel() {
-      setLayout(new BorderLayout());
-      setBorder(new EmptyBorder(JBUI.emptyInsets()));
-    }
-
-    @Override
-    public void uiDataSnapshot(@NotNull DataSink dataSink) {
-      dataSink.set(MPSEditorDataKeys.MPS_EDITOR, BaseNodeEditor.this);
-      // FIXME I believe next keys, namely MPS_PROJECT and PROJECT, have to be part of DataProvider in
-      //       MPSFileNodeEditor's component. Indeed, we've got MPSProject here, and it's not a big deal, but
-      //       OTOH EditorPanel is additional JPanel with no true value.
-      // FWIW, there's MPSFileNodeEditorComponent, similar JPanel+DataProvider. Why can't we have all similar code in a single place?
-      if (myProject instanceof MPSProject mpsProject) {
-        // we need this much, LocationRule & MPSProjectRule works due to this + delegation
-        dataSink.set(MPSCommonDataKeys.MPS_PROJECT, mpsProject);
-      }
-      // we do not need this much but why not
-      dataSink.set(CommonDataKeys.PROJECT, ProjectHelper.toIdeaProject(myProject));
-      // give BaseNodeEditor subclasses a chance to contribute to DataContext without
-      // need to inject another Component into hierarchy.
-      // TODO if (BaseNodeEditor.this instanceof DataProvider) cast+invoke or at least default impl for getData
-      extraData(dataSink);
-    }
-  }
-
   protected final void showEditor() {
     if (myReplace != null) {
       myEditorPanel.remove(myReplace);
@@ -213,7 +176,7 @@ public abstract class BaseNodeEditor implements Editor {
 
     myReplace = replace;
     myEditorPanel.add(myReplace, BorderLayout.CENTER);
-    myComponent.validate();
+    myEditorPanel.validate();
   }
 
   private void pauseOrResumeHighlighter() {
@@ -242,12 +205,12 @@ public abstract class BaseNodeEditor implements Editor {
       // Add new editor component
       JComponent externalComponent = myEditorComponent.getExternalComponent();
       //HACK to avoid strange gray border in ScrollPane after empty aspect tab
-      if (externalComponent.getComponent(0) instanceof JBScrollPane) {
-        ((JBScrollPane) externalComponent.getComponent(0)).setBorder(new EmptyBorder(JBUI.emptyInsets()));
-        ((JBScrollPane) externalComponent.getComponent(0)).getInsets().set(0, 0, 0, 0);
+      if (externalComponent.getComponent(0) instanceof JBScrollPane scrollPane) {
+        scrollPane.setBorder(new EmptyBorder(JBUI.emptyInsets()));
+        scrollPane.getInsets().set(0, 0, 0, 0);
       }
       myEditorPanel.add(externalComponent, BorderLayout.CENTER);
-      myComponent.validate();
+      myEditorPanel.validate();
       pauseOrResumeHighlighter();
     }
   }
@@ -285,11 +248,10 @@ public abstract class BaseNodeEditor implements Editor {
   }
 
   protected void loadStateImpl(@NotNull EditorState state, boolean isUndo) {
-    if (!(state instanceof BaseEditorState)) {
+    if (!(state instanceof BaseEditorState s)) {
       return;
     }
 
-    final BaseEditorState s = (BaseEditorState) state;
     final NodeEditorComponent editorComponent = getCurrentEditorComponent();
     if (s.memento == null || editorComponent == null) {
       return;
