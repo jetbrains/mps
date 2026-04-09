@@ -5,9 +5,8 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.project.ProjectHelper;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.EditorPanelManagerImpl;
@@ -15,22 +14,21 @@ import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.openapi.actionSystem.DataSink;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import com.intellij.ui.HyperlinkLabel;
 import java.awt.Color;
+import java.util.function.Consumer;
 import java.awt.BorderLayout;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import javax.swing.BorderFactory;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 @GeneratedClass(nodeId = "7481427614913697929", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class InspectorContainer {
@@ -38,18 +36,17 @@ public class InspectorContainer {
   private InspectorEditorComponent myInspectorComponent;
   private MyMessagePanel myMessagePanel;
   private FileEditor myFileEditor;
-  private Project myProject;
+  private final MPSProject myProject;
 
-  public InspectorContainer(Project project) {
+  public InspectorContainer(@NotNull MPSProject project) {
     this.myProject = project;
   }
 
   /*package*/ void createTool() {
-    final MPSProject project = ProjectHelper.fromIdeaProject(myProject);
-    myMessagePanel = new MyMessagePanel(project.getComponent(StyleRegistry.class));
+    myMessagePanel = new MyMessagePanel(this::navigateToDeclaration, myProject.getComponent(StyleRegistry.class));
     myComponent = new MyPanel();
-    myInspectorComponent = new InspectorEditorComponent(project.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
-    EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
+    myInspectorComponent = new InspectorEditorComponent(myProject.getRepository(), new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(myProject)).notifies(true).build());
+    EditorExtensionUtil.extendUsingProject(myInspectorComponent, myProject);
     myComponent.setContent(myInspectorComponent.getExternalComponent());
     myMessagePanel.setNode(null);
     myComponent.setToolbar(myMessagePanel);
@@ -72,46 +69,40 @@ public class InspectorContainer {
     myMessagePanel.setNode(node);
   }
 
+  private void navigateToDeclaration(@NotNull SNodeReference ptr) {
+    new EditorNavigator(myProject).shallFocus(true).shallSelect(false).open(ptr);
+  }
 
-  public class MyPanel extends SimpleToolWindowPanel {
+  public final class MyPanel extends SimpleToolWindowPanel {
     private MyPanel() {
       super(true, true);
       setProvideQuickActions(false);
     }
-    @Override
-    @Nullable
-    public Object getData(@NotNull @NonNls String dataId) {
-      if (MPSCommonDataKeys.FILE_EDITOR.is(dataId)) {
-        return myFileEditor;
-      }
-      if (PlatformDataKeys.VIRTUAL_FILE.is(dataId) && myFileEditor != null) {
-        return myFileEditor.getFile();
-      }
-      if (PlatformDataKeys.HELP_ID.is(dataId)) {
-        return "ideaInterface.editor.inspector";
-      }
-      if (PlatformDataKeys.PROJECT.is(dataId)) {
-        return myProject;
-      }
-      if (MPSEditorDataKeys.EDITOR_COMPONENT.is(dataId)) {
-        return myInspectorComponent;
-      }
-      if (MPSCommonDataKeys.MPS_PROJECT.is(dataId)) {
-        return ProjectHelper.fromIdeaProject(myProject);
-      }
-      return super.getData(dataId);
-    }
 
+    @Override
+    public void uiDataSnapshot(@NotNull DataSink sink) {
+      super.uiDataSnapshot(sink);
+      if (myFileEditor != null) {
+        sink.set(MPSCommonDataKeys.FILE_EDITOR, myFileEditor);
+        sink.set(PlatformDataKeys.VIRTUAL_FILE, myFileEditor.getFile());
+      }
+      sink.set(PlatformDataKeys.HELP_ID, "ideaInterface.editor.inspector");
+      sink.set(MPSEditorDataKeys.EDITOR_COMPONENT, myInspectorComponent);
+      // XXX why do we need project/mpsProject here, why couldn't UiGetDataRule help us here?
+      sink.set(PlatformDataKeys.PROJECT, myProject.getProject());
+      sink.set(MPSCommonDataKeys.MPS_PROJECT, myProject);
+    }
   }
 
-  public class MyMessagePanel extends JPanel {
+  public static class MyMessagePanel extends JPanel {
 
     private static final String NO_CONCEPT_MESSAGE = "<no node>";
     private final JLabel myLabel = new JLabel();
     private final HyperlinkLabel myOpenConceptLabel = new HyperlinkLabel("Open Concept Declaration");
     private final Color myBackgroundColor;
     private SNode myNode;
-    /*package*/ MyMessagePanel(StyleRegistry styleRegistry) {
+
+    /*package*/ MyMessagePanel(final Consumer<SNodeReference> navigation, StyleRegistry styleRegistry) {
       super(new BorderLayout());
       final Style wpStyle = styleRegistry.getStyle("INFORMATION_PANEL");
       myBackgroundColor = wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
@@ -131,11 +122,12 @@ public class InspectorContainer {
           }
           SNodeReference conceptDecl = myNode.getConcept().getSourceNode();
           if (conceptDecl != null) {
-            new EditorNavigator(ProjectHelper.fromIdeaProject(myProject)).shallFocus(true).shallSelect(false).open(conceptDecl);
+            navigation.accept(conceptDecl);
           }
         }
       });
     }
+
     public void setNode(SNode node) {
       myNode = node;
       if (node == null) {
@@ -164,7 +156,9 @@ public class InspectorContainer {
   public InspectorEditorComponent getInspectorComponent() {
     return this.myInspectorComponent;
   }
-  public Project getProject() {
+
+  @NotNull
+  public MPSProject getProject() {
     return this.myProject;
   }
 }

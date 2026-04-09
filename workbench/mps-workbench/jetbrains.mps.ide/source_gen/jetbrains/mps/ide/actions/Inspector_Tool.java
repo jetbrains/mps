@@ -6,15 +6,15 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.tool.GeneratedTool;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IdeIcons;
-import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.InspectorTool;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.tools.BaseTool;
 import com.intellij.openapi.wm.ToolWindowAnchor;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.ide.ThreadUtils;
 import javax.swing.SwingUtilities;
@@ -24,7 +24,6 @@ import javax.swing.JComponent;
 public class Inspector_Tool extends GeneratedTool {
   private static final Icon ICON = IdeIcons.INSPECTOR_ICON;
   private InspectorContainer myContainer;
-  private Project myProject;
   private InspectorTool.InspectorAccessor accessor = new InspectorTool.InspectorAccessor() {
     @Override
     public void openToolLater(boolean b) {
@@ -33,12 +32,12 @@ public class Inspector_Tool extends GeneratedTool {
 
     @Override
     public EditorComponent getInspector() {
-      return ((Inspector_Tool) Inspector_Tool.this).getInspector();
+      return Inspector_Tool.this.getInspector();
     }
 
     @Override
     public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints, boolean readOnly) {
-      ((Inspector_Tool) Inspector_Tool.this).inspect(node, fileEditor, enabledHints, readOnly);
+      Inspector_Tool.this.inspect(node, fileEditor, enabledHints, readOnly);
     }
 
     @Override
@@ -51,14 +50,15 @@ public class Inspector_Tool extends GeneratedTool {
   }
   public void init(Project project) {
     super.init(project);
-    Inspector_Tool.this.myContainer = new InspectorContainer(project);
+    MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(project);
+    Inspector_Tool.this.myContainer = new InspectorContainer(mpsProject);
+    // XXX if we createTool() here, why do we need the same in getComponent and getInspector then?
     Inspector_Tool.this.myContainer.createTool();
-    Inspector_Tool.this.myProject = project;
-    InspectorTool.registerInspectorInstance(ProjectHelper.fromIdeaProject(project), Inspector_Tool.this.accessor);
+    InspectorTool.registerInspectorInstance(mpsProject, Inspector_Tool.this.accessor);
   }
   public void dispose() {
     try {
-      InspectorTool.unregisterInspectorInstance(ProjectHelper.fromIdeaProject(Inspector_Tool.this.myProject), Inspector_Tool.this.accessor);
+      InspectorTool.unregisterInspectorInstance(Inspector_Tool.this.myContainer.getProject(), Inspector_Tool.this.accessor);
     } finally {
       Inspector_Tool.this.myContainer.getInspectorComponent().dispose();
       Inspector_Tool.this.myContainer = null;
@@ -70,9 +70,8 @@ public class Inspector_Tool extends GeneratedTool {
     return true;
   }
   public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints, boolean readOnly) {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(Inspector_Tool.this.myContainer.getProject());
-    assert mpsProject != null : "Unexpected null value of MPSProject";
-    if (node instanceof jetbrains.mps.smodel.SNode && !(SNodeUtil.isAccessible(node, mpsProject.getRepository()))) {
+    MPSProject mpsProject = Inspector_Tool.this.myContainer.getProject();
+    if (node != null && !(SNodeUtil.isAccessible(node, mpsProject.getRepository()))) {
       // Note: inspector does not support disposed nodes. If we get one, just clear the tool.
       // The editor holds references to nodes between read actions and these references are updated asynchronously.
       // This means that sometimes an editor may give us an outdated node.
