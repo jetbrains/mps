@@ -2879,6 +2879,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (PlatformDataKeys.PASTE_PROVIDER.is(dataId)) {
       return new MyPasteProvider();
     }
+    // XXX a hack to move on with MPS tests that explicitly ask ec.getData(SELECTED_ITEM)
+    if (PlatformDataKeys.SELECTED_ITEM.is(dataId) && myNodeSubstituteChooser.isVisible()) {
+      return myNodeSubstituteChooser.getCurrentSubstituteAction();
+    }
+
     throw new UnsupportedOperationException("Override uiDataSnapshot(DataSink) instead");
   }
 
