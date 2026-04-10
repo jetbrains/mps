@@ -107,19 +107,25 @@ Prefer focused validation before broad suites.
 Common assumptions for this repository:
 - developers often open the same checkout in both IntelliJ IDEA and MPS
 - MPS is frequently started from source using project run configurations such as `MPS` and `MPS (2nd inst.)`
-- JDK 21 is required for building from source
+- JDK 21 is required for building from source (verified in `misc.xml`)
 - user-facing visual choices should prefer light blue when that fits the task
+
+### Git Configuration
+
+Current environment uses:
+- `origin`: `git@github.com:JetBrains/MPS-development.git` (master branch)
 
 ---
 ## Platform sources
 
-The sources of the IntelliJ platform used by this project are located in `/Users/vaclav/work/intellij-community`
+The sources of the IntelliJ platform used by this project are located in `/Users/vaclav/work/intellij-community`. Access to these sources has been verified (e.g., `com.intellij.ide.AppLifecycleListener`).
 
 ## Build & test
 
-```bash
-TODO
-```
+The primary way for agents to build the project is through the IntelliJ IDEA MCP tools:
+- Use `mcp_my-idea-mcp-server_build_project` to compile the entire project.
+- Verified to use **JDK 21** (`JB JDK 21` in `.idea/misc.xml`).
+- Run configurations such as `CoreTestSuite` or `MPS` can be found via `mcp_my-idea-mcp-server_get_run_configurations`.
 
 ## Docs
 
