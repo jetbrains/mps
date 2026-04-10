@@ -6,6 +6,15 @@
 
 ## Branch naming
 
+`<MPS_VERSION>/vaclav<Whatever identifies the branch>`
+
+Where MPS_VERSION is derived from the MPS version number, e.g., `2023.2` -> 232 or `2024.3` - 243.
+
+## Branching
+
+Branches named `2024.3` represent release branches of past or up-coming releses.
+
+Derive a new branch of the current `master` or the current release branch in order to make changes.
 
 ## Commit format
 
