@@ -3,10 +3,15 @@
 ## Protected branch
 
 `master` is the protected branch. Never push directly to `master`.
+Release branches (e.g. `2025.1`, `2025.3`, etc.) - branches named with full release version names are protected. Never push directly to release branches.
 
 ## Branch naming
 
-`<MPS_VERSION>/vaclav<Whatever identifies the branch>`
+`<MPS_VERSION>/vaclav/<Whatever identifies the branch>` for user named Vaclav Pech
+`<MPS_VERSION>/artem/<Whatever identifies the branch>` for user named Artem Tikhomirov
+`<MPS_VERSION>/fisakov/<Whatever identifies the branch>` for user named Fedor Isakov
+`<MPS_VERSION>/mikev/<Whatever identifies the branch>` for user named Michael Vlassiev
+`<MPS_VERSION>/maros/<Whatever identifies the branch>` for user named Maros Sandor
 
 Where MPS_VERSION is derived from the MPS version number, e.g., `2023.2` -> 232 or `2024.3` - 243.
 

@@ -121,7 +121,7 @@ When the sources of the platform are required for understanding an MPS feature/c
 The sources of the IntelliJ platform used by this project are located in `../intellij-community`. Access to these sources has been verified (e.g., `com.intellij.ide.AppLifecycleListener` and `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`).
 The user can open the platform project in an IntelliJ IDEA instance making them available for coding agents through the IDE mcp tools. Ask the user to open the platform project in IDEA, if you need to access the sources.
 The IDEA mcp tools will be serving code from two project, each in its own directory - one in the platform and one is the MPS project.
-Do not make changes to the code of the platform, do not compile or run the platform code. Use the Git branch of the platform that has been set by the user, do not change branches of the platform project.
+Do not make changes to the code of the platform, do not compile or run the platform code. Use the Git branch of the platform that has been set by the user, do not switch branches of the platform project.
 
 ## Build & test
 
