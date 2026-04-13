@@ -7,13 +7,11 @@ Release branches (e.g. `2025.1`, `2025.3`, etc.) - branches named with full rele
 
 ## Branch naming
 
-`<MPS_VERSION>/vaclav/<Whatever identifies the branch>` for user named Vaclav Pech
-`<MPS_VERSION>/artem/<Whatever identifies the branch>` for user named Artem Tikhomirov
-`<MPS_VERSION>/fisakov/<Whatever identifies the branch>` for user named Fedor Isakov
-`<MPS_VERSION>/mikev/<Whatever identifies the branch>` for user named Michael Vlassiev
-`<MPS_VERSION>/maros/<Whatever identifies the branch>` for user named Maros Sandor
-
-Where MPS_VERSION is derived from the MPS version number, e.g., `2023.2` -> 232 or `2024.3` - 243.
+* `<MPS_VERSION>/<user_name>/<Whatever identifies the branch>`
+* user_name stands for the Git user name in lower-case of the current user, alternatively an OS user name can be used if the former is not suitable.
+* MPS_VERSION is derived from the MPS version number, e.g., `2023.2` -> 232 or `2024.3` - 243. The last digit is only allowed to be 1, 2, or 3.
+* * When branching off a master branch, use MPS_VERSION following right after the greates available release branch (e.g. 2027.1 (thus 271) after 2026.3).
+* * When branching off a feature branch that already follows the naming pattern `<MPS_VERSION>/<user_name>/<Whatever identifies the branch>`, use the same MPS_VERSION.
 
 ## Branching
 
