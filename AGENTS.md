@@ -10,8 +10,6 @@ Agents must adapt to the tools available in the current session. Use this file a
 
 IMPORTANT: Your reading the `MPS-AGENTS.md` file is essential for correct and efficient development in MPS - use of the `mps_mcp_...` tools and understanding of detailed MPS node, model, language, and generator workflows.
 
-MCP integration with MPS is an experimental feature. Use it with caution, expect surprises as well as future changes and report any issues to the JetBrains MPS team.
-
 ## Project Nature: JVM + MPS
 
 Treat this repository as having two kinds of source of truth:
@@ -95,7 +93,7 @@ Before editing generated code, identify:
 ## Validation Expectations
 
 Match validation to the kind of change:
-- Java/Kotlin changes: use IDEA inspections and the smallest relevant build, test, or run configuration
+- Java/Kotlin changes: use IDEA inspections (`get_file_problems`) and the smallest relevant build, test, or run configuration
 - MPS model changes: check model or root problems and rebuild or regenerate as needed
 - generator changes: validate both generation results and downstream compilation or tests
 - cross-cutting changes: validate both the MPS side and the JVM side
@@ -106,9 +104,9 @@ Prefer focused validation before broad suites.
 
 Common assumptions for this repository:
 - developers often open the same checkout in both IntelliJ IDEA and MPS
-- MPS is frequently started from source using project run configurations such as `MPS` and `MPS (2nd inst.)`
-- JDK 21 is required for building from source (verified in `misc.xml`)
-- user-facing visual choices should prefer light blue when that fits the task
+- MPS is frequently started from source using project run configurations such as `MPS` and `MPS (2nd inst.)`. Note: the run configuration may time out in the IDE tool after launching the long-running GUI, which is expected.
+- To reliably verify that MPS has started, use `ps aux | grep -i mps` (with `executeInShell: true`) to confirm the process is alive, or check `log/idea.log` for recent activity (e.g., repository saving, exiting dumb mode).
+- JDK 21 is required for building from source (verified in `misc.xml`).
 
 ### Git Configuration
 
@@ -118,7 +116,12 @@ Current environment uses:
 ---
 ## Platform sources
 
-The sources of the IntelliJ platform used by this project are located in `/Users/vaclav/work/intellij-community`. Access to these sources has been verified (e.g., `com.intellij.ide.AppLifecycleListener`).
+This project builds on top of the IntelliJ platform. It is bundled with the project as jar files. The platform Java and Kotlin classes are typically organized into `com.intellij...` packages, while MPS code is in `jetbrains.mps...`.
+When the sources of the platform are required for understanding an MPS feature/code/problem, the platform sources can be read in the source code form.
+The sources of the IntelliJ platform used by this project are located in `../intellij-community`. Access to these sources has been verified (e.g., `com.intellij.ide.AppLifecycleListener` and `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`).
+The user can open the platform project in an IntelliJ IDEA instance making them available for coding agents through the IDE mcp tools. Ask the user to open the platform project in IDEA, if you need to access the sources.
+The IDEA mcp tools will be serving code from two project, each in its own directory - one in the platform and one is the MPS project.
+Do not make changes to the code of the platform, do not compile or run the platform code. Use the Git branch of the platform that has been set by the user, do not change branches of the platform project.
 
 ## Build & test
 
