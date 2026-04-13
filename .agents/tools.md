@@ -2,9 +2,13 @@
 
 ## YouTrack (mcp__youtrack__*)
 
-- Use `mcp__youtrack__*` tools to read issue data. Do not scrape YouTrack web pages.
-- Never create or update YouTrack issues, post comments, or change issue state without an explicit user request.
-- If the MCP server is unavailable, say so clearly and ask the user how to proceed before doing anything that depends on issue data. Setup instructions are in `docs/integrations.md`.
+* Use `mcp__youtrack__*` tools to read issue data. Do not scrape YouTrack web pages.
+* Never create or update YouTrack issues, post comments, or change issue state without an explicit user request.
+* If the MCP server is unavailable, say so clearly and ask the user how to proceed before doing anything that depends on issue data. Setup instructions are in `docs/integrations.md`.
+* The YouTrack issues related to this project are grouped in the these project ids:
+ * * `MPS` - the MPS core functionality
+ * * `MPSSPRT`- support issues submitted by MPS customers
+ * * `IDEA` - issues of the underlying IntelliJ platform
 
 ## JetBrains IDE (mcp__ide__*)
 
