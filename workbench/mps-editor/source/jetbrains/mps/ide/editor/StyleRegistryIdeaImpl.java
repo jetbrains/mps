@@ -187,7 +187,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
 
   @Override
   public Color getSimpleColor(Color color, final Color bg) {
-    if (color instanceof JBColor || !isDarkTheme() || color == null || bg == null) {
+    if (color == null || bg == null || color instanceof JBColor || !isDarkTheme()) {
       return color;
     }
 
