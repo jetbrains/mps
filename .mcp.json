@@ -8,12 +8,12 @@
       }
     },
     "my-mps-mcp-server": {
-      "type": "sse",
-      "url": "http://localhost:64343/sse"
+      "type": "http",
+      "url": "http://localhost:64343/stream"
     },
     "my-idea-mcp-server": {
-      "type": "sse",
-      "url": "http://localhost:64342/sse"
+      "type": "http",
+      "url": "http://localhost:64342/stream"
     }
   }
 }
