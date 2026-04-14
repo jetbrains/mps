@@ -260,7 +260,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
 
   @Override
   public boolean isDarkTheme() {
-    return getColorsScheme().getName().contains("Darcula");
+    return EditorColorsManager.getInstance().isDarkEditor();
   }
 
   private void fillIdeaMappings() {
