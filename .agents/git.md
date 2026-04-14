@@ -21,7 +21,7 @@ Derive a new branch of the current `master` or the current release branch in ord
 
 ## Git worktrees
 
-Do use Git worktrees for branching by default.
+Use Git worktrees for new branches only when asked explicitly.
 
 ## Commit format
 
