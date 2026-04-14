@@ -1,4 +1,5 @@
 ---
+name: mps-bugfix
 description: MPS bugfixing workflow. Use when the user invokes "/bugfix", mentions "fix a bug", "work on a bug", "investigate an issue", or provides a YouTrack issue ID to investigate and fix.
 argument-hint: <YouTrack issue ID, e.g. MPS-12345>
 ---
