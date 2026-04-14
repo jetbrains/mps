@@ -1,19 +1,21 @@
 {
   "mcpServers": {
-    "youtrack": {
+    "jb-youtrack-mcp-server": {
       "type": "http",
       "url": "https://youtrack.jetbrains.com/mcp",
       "headers": {
         "Authorization": "Bearer ${YOUTRACK_TOKEN}"
       }
     },
-    "my-mps-mcp-server": {
+    "mps-mcp-server": {
       "type": "http",
-      "url": "http://localhost:64343/stream"
+      "url": "http://localhost:64343/stream",
+      "enabled": false
     },
-    "my-idea-mcp-server": {
+    "idea-mcp-server": {
       "type": "http",
-      "url": "http://localhost:64342/stream"
+      "url": "http://localhost:64342/stream",
+      "enabled": false
     }
   }
 }
