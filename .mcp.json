@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "youtrack": {
+      "type": "http",
+      "url": "https://youtrack.jetbrains.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${YOUTRACK_TOKEN}"
+      }
+    },
+    "my-mps-mcp-server": {
+      "type": "sse",
+      "url": "http://localhost:64343/sse"
+    },
+    "my-idea-mcp-server": {
+      "type": "sse",
+      "url": "http://localhost:64342/sse"
+    }
+  }
+}
