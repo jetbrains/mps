@@ -19,6 +19,10 @@ Branches named `2024.3` represent release branches of past or up-coming releses.
 
 Derive a new branch of the current `master` or the current release branch in order to make changes.
 
+## Git worktrees
+
+Do use Git worktrees for branching by default.
+
 ## Commit format
 
 ## AI co-authorship
