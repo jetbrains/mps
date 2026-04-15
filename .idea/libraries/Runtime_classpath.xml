@@ -111,6 +111,7 @@
       <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.ktor.client.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.ktor.io.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.ktor.network.tls.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.ktor.server.cio.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.ktor.utils.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.lucene.common.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.libraries.lz4.jar!/" />
