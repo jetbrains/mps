@@ -1,11 +1,7 @@
 package jetbrains.mps
 
 import com.intellij.openapi.application.ApplicationInfo
-import com.intellij.openapi.application.InitialConfigImportState
-import com.intellij.platform.whatsNew.ContentSource
-import com.intellij.platform.whatsNew.ResourceContentSource
 import com.intellij.platform.whatsNew.WhatsNewInVisionContentProvider
-import kotlin.jvm.java
 
 class MPSWhatsNewInVisionContentProvider : WhatsNewInVisionContentProvider() {
     override val baseResourcePathInClassLoader: String = "jetbrains/mps/whatsNew"
