@@ -118,10 +118,12 @@ Current environment uses:
 
 This project builds on top of the IntelliJ platform. It is bundled with the project as jar files. The platform Java and Kotlin classes are typically organized into `com.intellij...` packages, while MPS code is in `jetbrains.mps...`.
 When the sources of the platform are required for understanding an MPS feature/code/problem, the platform sources can be read in the source code form.
-The sources of the IntelliJ platform used by this project are located in `../intellij-community`. Access to these sources has been verified (e.g., `com.intellij.ide.AppLifecycleListener` and `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`).
+The sources of the IntelliJ platform used by this project are located in `../intellij-community`. Access to these sources has been verified (e.g. `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`).
 The user can open the platform project in an IntelliJ IDEA instance making them available for coding agents through the IDE mcp tools. Ask the user to open the platform project in IDEA, if you need to access the sources.
-The IDEA mcp tools will be serving code from two project, each in its own directory - one in the platform and one is the MPS project.
+The IDEA mcp tools will be serving code from two projects, each in its own directory - one in the platform and one is the MPS project.
+IMPORTANT: To access the platform sources via MCP tools, you must use the **absolute path** for the `projectPath` parameter (e.g., `/Users/vaclav/work/MPS/intellij-community/`).
 Do not make changes to the code of the platform, do not compile or run the platform code. Use the Git branch of the platform that has been set by the user, do not switch branches of the platform project.
+To verify that platform sources are accessible via MCP, use `search_symbol` (e.g., query `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`) rather than `list_directory_tree` — the latter may return an empty tree even when the project is fully loaded, and should not be used as an availability check.
 
 ## Build & test
 

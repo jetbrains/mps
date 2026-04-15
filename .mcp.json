@@ -10,12 +10,12 @@
     "mps-mcp-server": {
       "type": "http",
       "url": "http://localhost:64343/stream",
-      "enabled": false
+      "enabled": true
     },
     "idea-mcp-server": {
       "type": "http",
       "url": "http://localhost:64342/stream",
-      "enabled": false
+      "enabled": true
     }
   }
 }
