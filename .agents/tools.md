@@ -30,3 +30,39 @@
 - Never create PRs, post comments, or change PR/issue state without an explicit user request.
 - If `gh` is not installed or not authenticated, say so clearly and direct the user to `docs/integrations.md` for setup.
 - Before any `git push` run `gh auth setup-git` to configure HTTPS credentials — the remote uses HTTPS and git does not have credentials configured by default.
+
+## TeamCity
+
+- Use the `teamcity` CLI (at `~/.local/bin/teamcity`) for all TC operations. The skill at `.claude/skills/teamcity-cli/` documents all commands. Check `teamcity auth status` first to confirm connectivity.
+- Web URL: https://teamcity.jetbrains.com/
+- MPS projects: https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects
+- A concrete MPS version (2026.1) example: https://teamcity.jetbrains.com/project/MPS_20261?mode=builds#all-projects
+  - Distribution: `MPS_20261_Distribution`
+  - Feature branches: `MPS_20261_FeatureBranches` (TC **project** ID, not a build config)
+  - IntelliJ IDEA platform: `MPS_20261_IdeaPlatform`
+
+### Feature branch build chain (`MPS_20261_FeatureBranches`)
+
+The feature-branches project contains these build configurations:
+
+| Build config ID                                            | Name                               |
+|------------------------------------------------------------|------------------------------------|
+| `MPS_20261_FeatureBranches_Binaries`                       | Binaries (root — runs first)       |
+| `MPS_20261_FeatureBranches_DownloadableArtifactsNoInstallers` | Downloadable Artifacts (key gate) |
+| `MPS_20261_FeatureBranches_TestsFromIdeaProject`           | Tests from IDEA Project            |
+| `MPS_20261_FeatureBranches_TestBinaries`                   | Test Binaries                      |
+| `MPS_20261_FeatureBranches_TestTypesystem`                 | Test Typesystem                    |
+| `MPS_20261_FeatureBranches_TestParallelGeneration`         | Test Parallel Generation           |
+| `MPS_20261_FeatureBranches_TestMbeddrBuild`                | Test Mbeddr Build                  |
+| `MPS_20261_FeatureBranches_MpsProjectConsistencyTest`      | MPS Project Consistency Test       |
+| `MPS_20261_FeatureBranches_Extensions`                     | Extensions                         |
+| `MPS_20261_FeatureBranches_Statistics`                     | Statistics                         |
+| `MPS_20261_FeatureBranches_LinuxDistribution`              | Linux Distribution                 |
+| `MPS_20261_FeatureBranches_MacInstaller`                   | Mac Installer                      |
+| `MPS_20261_FeatureBranches_WindowsInstaller`               | Windows Installer                  |
+
+- The `Binaries` build is the root of the chain and runs first; downstream builds are triggered by VCS/snapshot dependency after it succeeds.
+- `DownloadableArtifactsNoInstallers` is the key gate to wait for on feature branches.
+- To find a branch's build: `teamcity run list --job MPS_20261_FeatureBranches_Binaries --limit 5` (branch names match git branch names without the `261/` prefix in TC, e.g. `vaclav/MPS-39649`).
+- To watch a build: `teamcity run watch <run-id>` (blocks until done).
+- To check status without blocking: `teamcity run list --job <job-id> --limit 3`.
