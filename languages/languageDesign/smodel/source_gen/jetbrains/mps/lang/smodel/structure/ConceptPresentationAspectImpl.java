@@ -29,6 +29,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConceptId;
   private ConceptPresentation props_ConceptIdRefExpression;
   private ConceptPresentation props_ConceptIdentity;
+  private ConceptPresentation props_ConceptJustToIntroduceAggregatedLanguage;
   private ConceptPresentation props_ConceptMemberIdentity;
   private ConceptPresentation props_ConceptNodeType;
   private ConceptPresentation props_ConceptRefExpression;
@@ -363,6 +364,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConceptIdentity = cpb.create();
         }
         return props_ConceptIdentity;
+      case LanguageConceptSwitch.ConceptJustToIntroduceAggregatedLanguage:
+        if (props_ConceptJustToIntroduceAggregatedLanguage == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
+          props_ConceptJustToIntroduceAggregatedLanguage = cpb.create();
+        }
+        return props_ConceptJustToIntroduceAggregatedLanguage;
       case LanguageConceptSwitch.ConceptMemberIdentity:
         if (props_ConceptMemberIdentity == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

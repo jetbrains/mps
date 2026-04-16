@@ -3228,5 +3228,22 @@
     <property role="34LRSv" value="get uuid" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
+  <node concept="1TIwiD" id="5sqSqyx6RqK">
+    <property role="EcuMT" value="6276577145067894448" />
+    <property role="3GE5qa" value="operation.node" />
+    <property role="R5$K7" value="true" />
+    <property role="TrG5h" value="ConceptJustToIntroduceAggregatedLanguage" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5sqSqyx6RHu" role="1TKVEi">
+      <property role="IQ2ns" value="6276577145067895646" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="mmm" />
+      <ref role="20lvS9" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
+    </node>
+    <node concept="asaX9" id="5sqSqyx6XzX" role="lGtFl" />
+    <node concept="t5JxF" id="5sqSqyx6XAV" role="lGtFl">
+      <property role="t5JxN" value="Need to introduce lang.behavior as aggregated language in models using lang.smodel only to trigger checking rules and quickfixes of the former" />
+    </node>
+  </node>
 </model>
 
