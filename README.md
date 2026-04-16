@@ -34,6 +34,40 @@ For more details on how to add an IntelliJ Platform Plugin SDK, consult this [he
 9. To debug MPS, got again to the _Run_ menu and select _Debug..._, which shows a popup menu. In this menu expand the _MPS_ option into a submenu with mouse or with the right arrow key and choose "Debug" from the submenu.
 10. Once MPS starts, open the _MPS_ project (point MPS to the root folder of what you've cloned).
 
+Setting up for Coding Agents
+----------------------------
+This project is configured to work with coding agents (like Claude or GitHub Copilot) through the Model Context Protocol (MCP).
+
+### Agent-config Files and Directories
+
+| File/Directory            | Purpose                                                        |
+|:--------------------------|:---------------------------------------------------------------|
+| `AGENTS.md` / `CLAUDE.md` | Main entry point and general guidelines for coding agents.     |
+| `.agents/skills/` / `.claude/skills/`      | Custom capabilities and workflows for agents.                  |
+| `.agents/`                | Detailed rules and conventions (Git, naming, tools, etc.).     |
+| `.ai/mcp/mcp.json`        | Template configuration for MCP servers (YouTrack, IDEA, MPS). |
+| `.mcp.json`               | Mcp configuration for Claude Code.                             |
+
+### Setup Instructions
+
+1.  **Start the IDEA MCP Server:**
+    - Install the **MCP Server** plugin in IntelliJ IDEA.
+    - Go to `Settings -> MCP Server` and check **Enable MCP Server**.
+    - The server will start on port `64342`.
+2.  **Uncheck Unneeded Tools:**
+    - In `Settings -> MCP Serve -> Exposed Tools`, you can see a list of available tools.
+    - Uncheck any tools that you don't want the agent to use to keep the context clean and focused.
+3.  **Configure YouTrack Token:**
+    - Agents need a token to access YouTrack issues.
+    - Create a personal permanent token in YouTrack: `Profile -> Account Security -> Tokens`.
+    - Install the token by setting the `YOUTRACK_TOKEN` environment variable in your shell or agent configuration.
+    - Some agents do not read the token from environment variables. You can copy the `.ai/mcp/mcp.json` file to the user home folder as e.g. `HOME/.junie/mcp/mcp.json` or `HOME/.ai/mcp/mcp.json` and paste your YOUTRACK_TOKEN directly.
+4.  **Install TeamCity CLI:**
+    - Install the `teamcity` CLI tool.
+    - Ensure it is available at `~/.local/bin/teamcity` and is in your `PATH`.
+    - Authenticate using `teamcity auth login`.
+    - To enable agents to use it do `teamcity skill install` or `teamcity skill install --project`.
+
 Download
 --------
 
