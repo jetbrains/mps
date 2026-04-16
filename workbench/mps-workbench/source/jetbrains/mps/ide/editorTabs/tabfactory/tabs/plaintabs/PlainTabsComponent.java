@@ -35,6 +35,7 @@ import jetbrains.mps.ide.editorTabs.tabfactory.tabs.TabEditorLayout.Entry;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -225,18 +226,27 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
             myRealTabs.add(pet);
             SNode node = pet.getNode().resolve(repository);
 
+            // Do not set setPreferredFocusableComponent(myEditor) here: myEditor contains myTabs
+            // in its hierarchy, so JBTabsImpl.getToFocus() would call getFocusTargetFor(myEditor),
+            // the traversal would reach myTabs, call getDefaultComponent(myTabs) -> getToFocus()
+            // again, and produce a StackOverflowError. Focus is managed explicitly by
+            // TabbedEditor.showNodeInternal() after the node is loaded. See MPS-39654.
             TabInfo info = new TabInfo(getSpacer())
                                .setIcon(GlobalIconManager.getInstance().getIconFor(node))
-                               .setText(node.getPresentation())
-                               .setPreferredFocusableComponent(myEditor);
+                               .setText(node.getPresentation());
             myTabs.addTab(info);
           }
         } else if (myShowGrayed) {
           myRealTabs.add(new PlainEditorTab(tab));
 
+          // Do not set setPreferredFocusableComponent(myEditor) for placeholder tabs.
+          // myEditor contains myTabs in its hierarchy; setting it as the preferred focusable
+          // target causes JBTabsImpl.getToFocus() to re-enter itself via
+          // IdeFocusTraversalPolicy -> getDefaultComponent(myTabs) -> getToFocus() -> SOE.
+          // For a placeholder there is no editor to focus, so no preferred component is needed.
+          // See MPS-39654.
           TabInfo info = new TabInfo(getSpacer())
-                             .setText(tab.getTitle()).setDefaultForeground(JBColor.GRAY)
-                             .setPreferredFocusableComponent(myEditor);
+                             .setText(tab.getTitle()).setDefaultForeground(JBColor.GRAY);
           myTabs.addTab(info);
         }
       }
@@ -309,6 +319,17 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
     int i = myTabs.getIndexOf(myTabs.getSelectedInfo());
     if (i > 0) {
       myTabs.select(myTabs.getTabAt(i - 1), true);
+    }
+  }
+
+  @Override
+  public synchronized void setCurrentTabPreferredFocusableComponent(@Nullable JComponent component) {
+    if (isDisposed()) {
+      return;
+    }
+    TabInfo info = myTabs.getSelectedInfo();
+    if (info != null) {
+      info.setPreferredFocusableComponent(component);
     }
   }
 

@@ -87,4 +87,12 @@ public interface TabsComponent {
   void nextTab();
 
   void prevTab();
+
+  /**
+   * Sets the component that JBTabsImpl should focus when activating the currently selected tab.
+   * Pass {@code ec.getExternalComponent()} so that the platform's focus traversal from that
+   * container reaches the actual editor component (EC) via EC's own FocusTraversalPolicy,
+   * without traversing into the tab bar itself (which would cause a cycle). See MPS-39654.
+   */
+  default void setCurrentTabPreferredFocusableComponent(@Nullable JComponent component) {}
 }

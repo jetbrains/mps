@@ -114,7 +114,11 @@ public class NodeEditorComponent extends EditorComponent {
 
     DataContext dataContext = DataManager.getInstance().getDataContext(this);
     FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(dataContext);
-    String[] inspectorInitialEditorHints = getEditorHintsForNode(toSelect);
+    // getEditorHintsForNode(null) calls getBigCell(null) which asserts !myDisposed on the updater.
+    // When adjustInspector is scheduled via runReadInEDT and the NC is disposed before that task
+    // runs (race between invokeLater-based dispose and MPS EDT queue), the assert fires.
+    // There are no meaningful hints for a null node, so skip the call entirely. See MPS-39654.
+    String[] inspectorInitialEditorHints = toSelect != null ? getEditorHintsForNode(toSelect) : null;
     if (getInspectorTool() != null) {
       getInspectorTool().inspect(toSelect, fileEditor, inspectorInitialEditorHints ,readOnly);
     }

@@ -36,6 +36,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.util.messages.Topic;
 import jetbrains.mps.ide.editor.BaseNodeEditor;
+import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabComponentFactory;
@@ -211,10 +212,22 @@ public class TabbedEditor extends BaseNodeEditor implements UiDataProvider {
   }
 
   private void showNodeInternal(SNodeReference nodeRef) {
-    if (getCurrentEditorComponent() == null) {
+    // Only (re)create the editor when there is actually a node to show.
+    // For null (empty/placeholder tab) the CreatePanel has already been installed
+    // by the createAspectCallback; calling showEditor() here would remove it and
+    // replace it with a blank NodeEditorComponent, which then triggers
+    // SHOWING_CHANGED → adjustInspector → getBigCell on a node-less editor → AssertionError.
+    // See MPS-39654.
+    if (nodeRef != null && getCurrentEditorComponent() == null) {
       showEditor();
     }
     myNameListener.detach();
+    // Save the current tab's scroll/selection state unconditionally, including when switching
+    // to a placeholder (null) tab. Without this, the state captured before cursor move to a different cell
+    // would be lost: showNodeInternal(null) returned early, setEditorComponent(null) later reset
+    // myCurrentlyEditedNode to null, and the subsequent return to the real tab found nothing to
+    // restore, reverting the cursor to its pre-move position. See MPS-39654.
+    saveCurrentState();
 
     if (nodeRef == null) {
       // Null means that it is empty tab - just update tab header
@@ -235,7 +248,6 @@ public class TabbedEditor extends BaseNodeEditor implements UiDataProvider {
     }
 
     SModel md = node.getModel();
-    saveCurrentState();
     EditorState newState = state.loadState(nodeRef);
 
     if (newState != null) {
@@ -251,6 +263,18 @@ public class TabbedEditor extends BaseNodeEditor implements UiDataProvider {
         selection = a.isEmpty() ? selection : a.iterator().next();
       }
       editNode(nodeRef, selection);
+    }
+
+    // Point JBTabsImpl at the EC's outer container (EditorComponentDecoration) rather
+    // than the root panel (myEditor). The platform's IdeFocusTraversalPolicy traverses
+    // EditorComponentDecoration → JScrollPane → JViewport → EC and, finding EC's own
+    // FocusTraversalPolicy, returns EC directly. JBTabsImpl's requestFocusLater() then
+    // calls ec.requestFocusInWindow() without any extra invokeLater indirection.
+    // myEditor cannot be used as the PFC because it also contains myTabs (the tab bar),
+    // which has its own FocusTraversalPolicy that re-enters getToFocus() → SOE. MPS-39654.
+    NodeEditorComponent ec = getCurrentEditorComponent();
+    if (ec != null) {
+      myTabsComponent.setCurrentTabPreferredFocusableComponent(ec.getExternalComponent());
     }
 
     myNameListener.attach(md);
