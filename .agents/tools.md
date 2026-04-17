@@ -4,7 +4,7 @@
 
 * Use `mcp__youtrack__*` tools to read issue data. Do not scrape YouTrack web pages.
 * Never create or update YouTrack issues, post comments, or change issue state without an explicit user request.
-* If the MCP server is unavailable, say so clearly and ask the user how to proceed before doing anything that depends on issue data. Setup instructions are in `docs/integrations.md`.
+* If the MCP server is unavailable, say so clearly and ask the user how to proceed before doing anything that depends on issue data.
 * The YouTrack issues related to this project are grouped in the these project ids:
  * * `MPS` - the MPS core functionality
  * * `MPSSPRT`- support issues submitted by MPS customers
@@ -14,7 +14,6 @@
 
 - Use `mcp__ide__*` tools for diagnostics, inspecting currently open files, and symbol renames.
 - **Prefer IDE rename over sed/grep scripts.** `mcp__ide__rename_refactoring` is type-aware: it handles type references, parameter declarations, named-argument call sites, and file renames atomically without touching unrelated identifiers. Rename calls are safe and may be performed autonomously as part of a refactoring task.
-- For any project-wide symbol rename, follow the `/rename` skill (`.agents/skills/rename/SKILL.md`).
 - Never change the state of the IDE (which files are open, run configurations, breakpoints) without an explicit user request.
 - If the MCP server is unavailable, stop and direct the user to fix the setup.
 
@@ -28,12 +27,11 @@
 
 - Use the `gh` CLI for all GitHub operations: reading and creating issues, pull requests, comments, checks, and releases.
 - Never create PRs, post comments, or change PR/issue state without an explicit user request.
-- If `gh` is not installed or not authenticated, say so clearly and direct the user to `docs/integrations.md` for setup.
-- Before any `git push` run `gh auth setup-git` to configure HTTPS credentials — the remote uses HTTPS and git does not have credentials configured by default.
+- If `gh` is not installed or not authenticated, say so clearly.
 
 ## TeamCity
 
-- Use the `teamcity` CLI (at `~/.local/bin/teamcity`) for all TC operations. The skill at `.claude/skills/teamcity-cli/` documents all commands. Check `teamcity auth status` first to confirm connectivity.
+- Use the `teamcity` CLI (at `~/.local/bin/teamcity`) for all TC operations. The skill at `skills/teamcity-cli/` documents all commands. Check `teamcity auth status` first to confirm connectivity.
 - Web URL: https://teamcity.jetbrains.com/
 - MPS projects: https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects
 - A concrete MPS version (2026.1) example: https://teamcity.jetbrains.com/project/MPS_20261?mode=builds#all-projects

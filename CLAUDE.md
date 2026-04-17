@@ -9,6 +9,7 @@ Developers typically use two environments against the same checkout:
 Agents must adapt to the tools available in the current session. Use this file as the cross-environment entry point.
 
 IMPORTANT: Your reading the `MPS-AGENTS.md` file is essential for correct and efficient development in MPS - use of the `mps_mcp_...` tools and understanding of detailed MPS node, model, language, and generator workflows.
+If the `MPS-AGENTS.md` file is not available, the MPS mcp tools are most likely unavailable, too.
 
 ## Project Nature: JVM + MPS
 
@@ -106,7 +107,6 @@ Common assumptions for this repository:
 - developers often open the same checkout in both IntelliJ IDEA and MPS
 - MPS is frequently started from source using project run configurations such as `MPS` and `MPS (2nd inst.)`. Note: the run configuration may time out in the IDE tool after launching the long-running GUI, which is expected.
 - To reliably verify that MPS has started, use `ps aux | grep -i mps` (with `executeInShell: true`) to confirm the process is alive, or check `log/idea.log` for recent activity (e.g., repository saving, exiting dumb mode).
-- JDK 21 is required for building from source (verified in `misc.xml`).
 
 ### Git Configuration
 
@@ -118,7 +118,7 @@ Current environment uses:
 
 This project builds on top of the IntelliJ platform. It is bundled with the project as jar files. The platform Java and Kotlin classes are typically organized into `com.intellij...` packages, while MPS code is in `jetbrains.mps...`.
 When the sources of the platform are required for understanding an MPS feature/code/problem, the platform sources can be read in the source code form.
-The sources of the IntelliJ platform used by this project are located in `../intellij-community`. Access to these sources has been verified (e.g. `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`).
+The sources of the IntelliJ platform used by this project are located in `../intellij-community` or a similar location. Ask the user for exact location of the platform sources and convert it to an absolute path.
 The user can open the platform project in an IntelliJ IDEA instance making them available for coding agents through the IDE mcp tools. Ask the user to open the platform project in IDEA, if you need to access the sources.
 The IDEA mcp tools will be serving code from two projects, each in its own directory - one in the platform and one is the MPS project.
 IMPORTANT: To access the platform sources via MCP tools, you must use the **absolute path** for the `projectPath` parameter (e.g., `/Users/vaclav/work/MPS/intellij-community/`).
