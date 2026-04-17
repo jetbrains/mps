@@ -336,6 +336,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_QueryFunction_Underlined;
   private ConceptPresentation props_QueryHintsSpecification;
   private ConceptPresentation props_RGBColor;
+  private ConceptPresentation props_ReadOnlyInspectorStyleClassItem;
   private ConceptPresentation props_ReadOnlyModelAccessor;
   private ConceptPresentation props_ReadOnlyStyleClassItem;
   private ConceptPresentation props_ScriptKindClassItem;
@@ -2785,6 +2786,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_RGBColor = cpb.create();
         }
         return props_RGBColor;
+      case LanguageConceptSwitch.ReadOnlyInspectorStyleClassItem:
+        if (props_ReadOnlyInspectorStyleClassItem == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("read-only-inspector");
+          props_ReadOnlyInspectorStyleClassItem = cpb.create();
+        }
+        return props_ReadOnlyInspectorStyleClassItem;
       case LanguageConceptSwitch.ReadOnlyModelAccessor:
         if (props_ReadOnlyModelAccessor == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

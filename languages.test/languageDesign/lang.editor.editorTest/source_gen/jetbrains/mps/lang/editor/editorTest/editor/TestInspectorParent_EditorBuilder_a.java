@@ -115,6 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.READ_ONLY, true);
+    style.set(StyleAttributes.READ_ONLY_INSPECTOR, true);
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createRefNode_0());
     return editorCell;

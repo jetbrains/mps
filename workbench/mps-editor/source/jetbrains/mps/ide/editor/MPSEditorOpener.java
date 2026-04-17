@@ -236,10 +236,10 @@ public class MPSEditorOpener {
   //todo remove this and make NodeEditorComponent open inspector when needed
   private boolean inspect(NodeEditorComponent editorComponent, SNode node) {
     jetbrains.mps.nodeEditor.cells.EditorCell cell = editorComponent.findNodeCell(node, true);
-    boolean cellsReadOnlyInEditor = cell != null && ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, Collections.singleton(cell));
+    boolean inspectorReadOnly = cell != null && ReadOnlyUtil.isInspectorOfCellReadOnly(cell);
     DataContext dataContext = DataManager.getInstance().getDataContext(editorComponent);
     FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(dataContext);
-    getInspector().inspect(node, fileEditor, editorComponent.getEditorHintsForNode(node), cellsReadOnlyInEditor);
+    getInspector().inspect(node, fileEditor, editorComponent.getEditorHintsForNode(node), inspectorReadOnly);
     return true;
   }
 

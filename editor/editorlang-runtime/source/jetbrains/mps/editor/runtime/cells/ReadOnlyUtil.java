@@ -26,6 +26,10 @@ import java.util.ArrayList;
 
 public class ReadOnlyUtil {
 
+  public static boolean isInspectorOfCellReadOnly(@NotNull jetbrains.mps.openapi.editor.cells.EditorCell cell) {
+    return cell.getStyle().get(StyleAttributes.READ_ONLY_INSPECTOR);
+  }
+
   public static boolean isCellReadOnly(@NotNull jetbrains.mps.openapi.editor.cells.EditorCell cell) {
     return cell.getStyle().get(StyleAttributes.READ_ONLY);
   }
