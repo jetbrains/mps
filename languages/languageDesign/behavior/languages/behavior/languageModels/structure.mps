@@ -10,6 +10,7 @@
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="mg3u" ref="r:0799ed23-f21a-4dba-ac61-5b80d66bec13(jetbrains.mps.lang.behavior.plugin)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -246,6 +247,20 @@
   <node concept="PlHQZ" id="2k7p7sTvKjz">
     <property role="EcuMT" value="2668211767468819683" />
     <property role="TrG5h" value="SuperExpression" />
+  </node>
+  <node concept="1TIwiD" id="2N_AbRfz_nd">
+    <property role="EcuMT" value="3235159848334022093" />
+    <property role="TrG5h" value="Node_ConceptMethodCall2" />
+    <ref role="1TJDcQ" to="tp25:g$eCIIG" resolve="SNodeOperation" />
+    <node concept="PrWs8" id="2N_AbRfz_y3" role="PzmwI">
+      <ref role="PrY4T" to="tpee:hxndl_i" resolve="IMethodCall" />
+    </node>
+    <node concept="1TJgyj" id="2N_AbRfz_AZ" role="1TKVEi">
+      <property role="IQ2ns" value="3235159848334023103" />
+      <property role="20kJfa" value="conceptMethodDeclaration" />
+      <ref role="20lvS9" node="hP3i0lY" resolve="ConceptMethodDeclaration" />
+      <ref role="20ksaX" to="tpee:fz7wK6H" resolve="baseMethodDeclaration" />
+    </node>
   </node>
 </model>
 

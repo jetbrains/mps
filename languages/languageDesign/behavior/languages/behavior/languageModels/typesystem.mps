@@ -16,6 +16,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
+    <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -144,6 +145,9 @@
       <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
         <child id="1185788644032" name="normalType" index="mwGJk" />
       </concept>
+      <concept id="1224760201579" name="jetbrains.mps.lang.typesystem.structure.InfoStatement" flags="nn" index="Dpp1Q">
+        <child id="1224760230762" name="infoText" index="Dpw9R" />
+      </concept>
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
@@ -201,6 +205,9 @@
         <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
       </concept>
     </language>
+    <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
+      <concept id="767145758118872828" name="jetbrains.mps.lang.actions.structure.NF_Node_ReplaceWithNewOperation" flags="nn" index="2DeJnW" />
+    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
@@ -235,6 +242,9 @@
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
+      <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
+        <reference id="1139867957129" name="concept" index="1_rbq0" />
+      </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
@@ -1927,6 +1937,76 @@
         <node concept="3clFbF" id="1fLDBPFbKbf" role="3cqZAp">
           <node concept="Xl_RD" id="1fLDBPFbKbe" role="3clFbG">
             <property role="Xl_RC" value="Make private method non virtual" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="18kY7G" id="5sqSqyx2NtQ">
+    <property role="TrG5h" value="ObsoleteConceptMethodCallCheck" />
+    <node concept="3clFbS" id="5sqSqyx2NtR" role="18ibNy">
+      <node concept="Dpp1Q" id="5sqSqyx2Rt3" role="3cqZAp">
+        <node concept="3Cnw8n" id="5sqSqyx3aQl" role="1urrFz">
+          <ref role="QpYPw" node="5sqSqyx3b0N" resolve="UpdateConceptMethodCall" />
+        </node>
+        <node concept="Xl_RD" id="5sqSqyx2S2g" role="Dpw9R">
+          <property role="Xl_RC" value="ConceptMethodCall moved from lang.smodel to lang.behavior" />
+        </node>
+        <node concept="1YBJjd" id="5sqSqyx2Rvg" role="1urrMF">
+          <ref role="1YBMHb" node="5sqSqyx2NAK" resolve="cmc" />
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="5sqSqyx2NAK" role="1YuTPh">
+      <property role="TrG5h" value="cmc" />
+      <ref role="1YaFvo" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="5sqSqyx3b0N">
+    <property role="3GE5qa" value="quickfixes" />
+    <property role="TrG5h" value="UpdateConceptMethodCall" />
+    <node concept="Q5ZZ6" id="5sqSqyx3b0O" role="Q6x$H">
+      <node concept="3clFbS" id="5sqSqyx3b0P" role="2VODD2">
+        <node concept="3SKdUt" id="2KrHZuGU4eA" role="3cqZAp">
+          <node concept="1PaTwC" id="2KrHZuGU4eB" role="1aUNEU">
+            <node concept="3oM_SD" id="2KrHZuGU4eC" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2KrHZuGU4ko" role="1PaTwD">
+              <property role="3oM_SC" value="exect" />
+            </node>
+            <node concept="3oM_SD" id="2KrHZuGU4lL" role="1PaTwD">
+              <property role="3oM_SC" value="node" />
+            </node>
+            <node concept="3oM_SD" id="2KrHZuGU4nC" role="1PaTwD">
+              <property role="3oM_SC" value="factory" />
+            </node>
+            <node concept="3oM_SD" id="2KrHZuGU4nF" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="2KrHZuGU4st" role="1PaTwD">
+              <property role="3oM_SC" value="actions" />
+            </node>
+            <node concept="3oM_SD" id="2KrHZuGU4tM" role="1PaTwD">
+              <property role="3oM_SC" value="aspect)" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2KrHZuGTtdH" role="3cqZAp">
+          <node concept="2OqwBi" id="2KrHZuGTtsR" role="3clFbG">
+            <node concept="Q6c8r" id="2KrHZuGTtdG" role="2Oq$k0" />
+            <node concept="2DeJnW" id="2KrHZuGU466" role="2OqNvi">
+              <ref role="1_rbq0" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall2" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="2KrHZuGTrQm" role="QzAvj">
+      <node concept="3clFbS" id="2KrHZuGTrQn" role="2VODD2">
+        <node concept="3clFbF" id="2KrHZuGTsbw" role="3cqZAp">
+          <node concept="Xl_RD" id="2KrHZuGTsbv" role="3clFbG">
+            <property role="Xl_RC" value="Update obsolete concept method call" />
           </node>
         </node>
       </node>
