@@ -1,11 +1,7 @@
-Index: community/mps/build/build/build.xml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/community/mps/build/build/build.xml b/community/mps/build/build/build.xml
---- a/community/mps/build/build/build.xml	(revision f922e0d317e4e0848f427c4239183ce4a1f03def)
-+++ b/community/mps/build/build/build.xml	(revision 17839995c015dbab10c9bbfdd850e2370ccd5d5a)
+index 9e0675a11d9f..6b0d4a4bda6e 100644
+--- a/community/mps/build/build/build.xml
++++ b/community/mps/build/build/build.xml
 @@ -41,6 +41,8 @@
      <apply.patch file="${basedir}/patches/MPS-38229.patch"/>
      <apply.patch file="${basedir}/patches/MPS-38534-WelcomeScreenPromotions_for251.patch"/>
@@ -13,17 +9,51 @@ diff --git a/community/mps/build/build/build.xml b/community/mps/build/build/bui
 +    <!-- After patching the platform build looks for .mps project folder instead of .idea -->
 +    <symlink link="${platform.root}/.mps" resource="${platform.root}/.idea"/>
    </target>
-
+ 
    <!-- Raw JPS build of modules and plugins required by MPS -->
-Index: community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
+@@ -60,6 +62,8 @@
+   <target name="repackage" depends="repackage-app-jar,repackage-java-plugin,extract-plugin-xml,extract-win-exe"/>
+ 
+   <!--In java-impl.jar, we remove META-INF contents for Idea not to try loading plugins from it (see MPS-30538) -->
++  <!--In java-impl.jar, we we then replace META-INF/plugin.xml with a minimal set of modules -->
++  <!--In java-impl.jar, we replace META-INF/JavaPlugin.xml with a minimal configuration (see MPS-39633)-->
+   <target name="repackage-java-plugin" description="Remove IDEA specific descriptors">
+     <jar destfile="${target.dist}/plugins/java/lib/stripped.jar">
+       <zipfileset src="${target.dist}/plugins/java/lib/java-impl.jar" excludes="META-INF/**" />
+diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml b/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml
+index 515249e2dc40..b29d063c2b37 100644
+--- a/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml
++++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml
+@@ -38,7 +38,6 @@
+ 
+     <applicationService serviceImplementation="com.intellij.debugger.settings.NodeRendererSettings"/>
+     <applicationService serviceImplementation="com.intellij.debugger.settings.ViewsGeneralSettings"/>
+-    <applicationService serviceImplementation="com.intellij.debugger.settings.DebuggerSettings"/>
+     <applicationService serviceImplementation="com.intellij.refactoring.JavaRefactoringSettings"/>
+     <projectService serviceImplementation="com.intellij.debugger.settings.DebuggerProjectSettings"/>
+     <applicationService serviceImplementation="com.intellij.debugger.settings.ThreadsViewSettings"/>
+@@ -48,7 +47,6 @@
+ 
+     <statistics.counterUsagesCollector groupId="java.find.usages" version="1"/>
+     <statistics.counterUsagesCollector groupId="java.extract.method" version="1"/>
+-    <statistics.applicationUsagesCollector implementation="com.intellij.debugger.settings.DebuggerSettingsStatisticsCollector"/>
+     <statistics.applicationUsagesCollector implementation="com.intellij.refactoring.JavaRefactoringUsageCollector"/>
+ 
+     <applicationService serviceInterface="com.intellij.packaging.elements.PackagingElementFactory"
+@@ -78,8 +76,6 @@
+     <orderRootType implementation="com.intellij.openapi.roots.JavadocOrderRootType"/>
+     <orderRootType implementation="com.intellij.openapi.roots.AnnotationOrderRootType"/>
+ 
+-    <dynamicActionConfigurationCustomizer  implementation="jetbrains.mps.ide.projectPane.ProjectPaneActionsCustomizer"/>
+-
+     <projectService serviceImplementation="com.intellij.compiler.CompilerConfigurationSettings" configurationSchemaKey="compiler"/>
+ 
+     <advancedSetting id="compiler.automake.allow.when.app.running" groupKey="advanced.settings.group.compiler" default="false"
 diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
---- a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml	(revision 0208c342d2cf70f11ff44b44d5ec5d748ec0508c)
-+++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml	(date 1775557694315)
-@@ -1,7 +1,7 @@
+index 8b5e4bf01667..ed9549a34da5 100644
+--- a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
++++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+@@ -1,9 +1,11 @@
  <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude" allow-bundled-update="true">
    <id>com.intellij.java</id>
 -  <version>253.28294.105-3</version>
@@ -31,10 +61,15 @@ diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.x
 +  <version>261.22158.999-mps</version>
 +  <idea-version since-build="261.22158" until-build="263.*" />
    <name>Java</name>
-   <description><![CDATA[FUBAR#3]]></description>
+-  <description><![CDATA[FUBAR#3]]></description>
++  <description><![CDATA[
++    Adds support for the Java language, including Java projects, language syntax highlighting, inspections, and all other coding assistance features.
++  ]]></description>
    <vendor>JetBrains</vendor>
-@@ -16,6 +16,25 @@
-
+   <category>Languages</category>
+   <resource-bundle>messages.ActionsBundle</resource-bundle>
+@@ -16,6 +18,25 @@
+ 
    <content namespace="jetbrains">
      <module name="intellij.java.frontback.psi.impl" loading="embedded"/>
 +
@@ -57,17 +92,13 @@ diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.x
 +    <module name="intellij.platform.uast.ide" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
 +
    </content>
-
+ 
    <module value="com.intellij.modules.java" />
-Index: community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
---- a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(revision 642c8f968340ce631dd786a63a60c9308ed3e5a3)
-+++ b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt	(date 1771583441670)
-@@ -51,14 +51,18 @@
+index a28997d33198..15ca2cd3b935 100644
+--- a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
++++ b/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSProperties.kt
+@@ -51,14 +51,18 @@ class MPSProperties : JetBrainsProductProperties() {
              "intellij.platform.starter",
              "intellij.idea.community.customization",
              "intellij.java.ide.resources",
@@ -86,7 +117,7 @@ diff --git a/community/mps/build/src/org/jetbrains/intellij/build/mps/MPSPropert
              "intellij.platform.syntax.psi",
              "intellij.json.syntax",
          )
-@@ -114,6 +118,7 @@
+@@ -114,6 +118,7 @@ class MPSProperties : JetBrainsProductProperties() {
              layout.withProjectLibrary("Eclipse", LibraryPackMode.MERGED)
              layout.withProjectLibrary("JUnit4", LibraryPackMode.STANDALONE_MERGED)
              layout.withProjectLibrary("http-client", LibraryPackMode.MERGED)
