@@ -65,7 +65,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
         removeAttributes(child);
       }
     }
-    boolean isAbstractMethod = ((boolean) (Boolean) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
+    boolean isAbstractMethod = ((boolean) BHReflection.invoke0(baseMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
 
     SNode defaultExpr;
     if (isAbstractMethod) {

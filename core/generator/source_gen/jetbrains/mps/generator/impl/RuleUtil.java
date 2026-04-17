@@ -307,7 +307,7 @@ public final class RuleUtil {
     return null;
   }
   public static SAbstractConcept getPatternReductionRulePatternNodeConcept(SNode reductionRule) {
-    return ((SAbstractConcept) (SAbstractConcept) BHReflection.invoke0(SLinkOperations.getTarget(reductionRule, LINKS.pattern$ThnR), CONCEPTS.PatternExpression$YJ, SMethodIdV2.create("getQuotedNodeConcept", 5187569781989334116L, 0x7b607543e0ea400eL)));
+    return ((SAbstractConcept) BHReflection.invoke0(SLinkOperations.getTarget(reductionRule, LINKS.pattern$ThnR), CONCEPTS.PatternExpression$YJ, SMethodIdV2.create("getQuotedNodeConcept", 5187569781989334116L, 0x7b607543e0ea400eL)));
   }
   public static String[] getTemplateDeclarationParameterNames(SNode template) {
     List<SNode> params = SLinkOperations.getChildren(template, LINKS.parameter$5PGb);
@@ -334,13 +334,13 @@ public final class RuleUtil {
     return SLinkOperations.getTarget(macro, LINKS.referentFunction$6c9k);
   }
   public static SReferenceLink getReferenceMacro_associationRole(SNode macro) {
-    return ((SReferenceLink) (SReferenceLink) BHReflection.invoke0(macro, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL)));
+    return ((SReferenceLink) BHReflection.invoke0(macro, CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL)));
   }
   public static SNode getPropertyMacro_ValueFunction(SNode macro) {
     return SLinkOperations.getTarget(macro, LINKS.propertyValueFunction$7Sh_);
   }
   public static SProperty getPropertyMacro_property(SNode macro) {
-    return ((SProperty) (SProperty) BHReflection.invoke0(macro, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL)));
+    return ((SProperty) BHReflection.invoke0(macro, CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL)));
   }
   public static SNode getMappingScriptReference_Script(SNode ref) {
     return SLinkOperations.getTarget(ref, LINKS.mappingScript$AU0b);
@@ -478,7 +478,7 @@ public final class RuleUtil {
     return SLinkOperations.getChildren(macro, LINKS.variables$Eqmf);
   }
   public static String getVarDecl_Name(SNode varDecl) {
-    return ((String) (String) BHReflection.invoke0(varDecl, CONCEPTS.VarDeclaration$$D, SMethodIdV2.create("getImplName", 1048903277984338830L, 0x3bd222b39cd71affL)));
+    return ((String) BHReflection.invoke0(varDecl, CONCEPTS.VarDeclaration$$D, SMethodIdV2.create("getImplName", 1048903277984338830L, 0x3bd222b39cd71affL)));
   }
   public static SNode getVarDecl_Query(SNode varDecl) {
     return SLinkOperations.getTarget(varDecl, LINKS.value$EuM$);
@@ -503,10 +503,10 @@ public final class RuleUtil {
     return SPropertyOperations.getString(loopMacro, PROPS.counterVarName$YOXn);
   }
   public static boolean isLoopMacroCounterVarUsed(SNode loopMacro) {
-    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodIdV2.create("isLoopVariableUsed", 6822924216793899521L, 0x3bd222b39cd71affL), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
+    return ((boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodIdV2.create("isLoopVariableUsed", 6822924216793899521L, 0x3bd222b39cd71affL), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
   }
   public static boolean isLoopMacroInputNodeVarUsed(SNode loopMacro) {
-    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodIdV2.create("isLoopVariableUsed", 6822924216793899521L, 0x3bd222b39cd71affL), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079dL, "inputNode")));
+    return ((boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodIdV2.create("isLoopVariableUsed", 6822924216793899521L, 0x3bd222b39cd71affL), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079dL, "inputNode")));
   }
   public static Iterable<SConcept> getModelChangeOperations() {
     return ModelChangeOperations;

@@ -34,7 +34,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((boolean) (Boolean) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodIdV2.create("canExecute", 3282455643657932881L, 0x6d1c0cbc11348977L)));
+    return ((boolean) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodIdV2.create("canExecute", 3282455643657932881L, 0x6d1c0cbc11348977L)));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

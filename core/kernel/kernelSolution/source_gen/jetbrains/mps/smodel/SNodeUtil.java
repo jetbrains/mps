@@ -82,10 +82,10 @@ public final class SNodeUtil {
     }
   }
   public static String getDetailedPresentation(SNode node) {
-    return ((String) (String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getDetailedPresentation", 2354269628709769373L, 0x553941aeb020c32eL)));
+    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getDetailedPresentation", 2354269628709769373L, 0x553941aeb020c32eL)));
   }
   public static int getMetaLevel(SNode node) {
-    return ((int) (Integer) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getMetaLevel", 3981318653438234726L, 0x553941aeb020c32eL)));
+    return ((int) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getMetaLevel", 3981318653438234726L, 0x553941aeb020c32eL)));
   }
   public static boolean isInstanceOfConceptDeclaration(SNode node) {
     if (node == null) {
@@ -94,7 +94,7 @@ public final class SNodeUtil {
     return SNodeOperations.getConcept(node).equals(CONCEPTS.ConceptDeclaration$gH);
   }
   public static SContainmentLink getChildLink(SNode attribute) {
-    return ((SContainmentLink) (SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
+    return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
   }
   public static String getConceptAlias(SNode concept) {
     return SPropertyOperations.getString(concept, PROPS.conceptAlias$OL_L);

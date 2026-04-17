@@ -52,7 +52,7 @@ public class ErrorReportHelper {
     return Sequence.fromIterable(SNodeOperations.ofConcept(possibleSuppressors, CONCEPTS.ISuppressErrors$qB)).where((attr) -> {
       boolean res = false;
       try {
-        res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodIdV2.create("suppress", 3567142084961743867L, 0x553941aeb020c32eL), reportItem));
+        res = ((boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodIdV2.create("suppress", 3567142084961743867L, 0x553941aeb020c32eL), reportItem));
       } catch (Throwable t) {
         if (LOG.isErrorLevel()) {
           LOG.error("Exception while invoking #suppress() on node " + SNodeOperations.present(node), t);

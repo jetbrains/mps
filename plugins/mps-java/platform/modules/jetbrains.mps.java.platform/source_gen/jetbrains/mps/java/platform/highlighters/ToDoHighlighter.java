@@ -31,7 +31,7 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
     for (SNode textComment : SNodeOperations.getNodeDescendants(node, CONCEPTS.IComment$KY, false, new SAbstractConcept[]{})) {
-      if (((boolean) (Boolean) BHReflection.invoke0(textComment, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x553941aeb020c32eL)))) {
+      if (((boolean) BHReflection.invoke0(textComment, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x553941aeb020c32eL)))) {
         EditorColorsScheme scheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
         Color foregroundColor = scheme.getAttributes(TextAttributesKey.createTextAttributesKey("TODO_DEFAULT_ATTRIBUTES")).getForegroundColor();
         SetSequence.fromSet(messages).addElement(new ToDoMessage(textComment, ((String) BHReflection.invoke0(textComment, CONCEPTS.IGenericComment$bD, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x553941aeb020c32eL))), this, foregroundColor));

@@ -53,7 +53,7 @@ public class BaseLanguageHierarchyViewToolState extends AbstractHierarchyViewSta
     @Override
     public void setNodePresentation(HierarchyTreeNode treeNode, SNode n) {
       super.setNodePresentation(treeNode, n);
-      if (SNodeOperations.isInstanceOf(n, CONCEPTS.IBLDeprecatable$ah) && ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.as(n, CONCEPTS.IBLDeprecatable$ah), CONCEPTS.IDeprecatable$2W, SMethodIdV2.create("isDeprecated", 1224609060727L, 0x553941aeb020c32eL)))) {
+      if (SNodeOperations.isInstanceOf(n, CONCEPTS.IBLDeprecatable$ah) && ((boolean) BHReflection.invoke0(SNodeOperations.as(n, CONCEPTS.IBLDeprecatable$ah), CONCEPTS.IDeprecatable$2W, SMethodIdV2.create("isDeprecated", 1224609060727L, 0x553941aeb020c32eL)))) {
         treeNode.addFontAttribute(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
       }
     }

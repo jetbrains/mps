@@ -268,7 +268,7 @@ public class TransformationUtil {
       } else {
         SNode rootClassifier = classifier;
         String suffix = "";
-        while (((boolean) (Boolean) BHReflection.invoke0(rootClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("isInner", 521412098689998677L, 0x5745e3015c8914d3L)))) {
+        while (((boolean) BHReflection.invoke0(rootClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("isInner", 521412098689998677L, 0x5745e3015c8914d3L)))) {
           suffix = "$" + SPropertyOperations.getString(rootClassifier, PROPS.name$MnvL);
           rootClassifier = SNodeOperations.cast(SNodeOperations.getParent(rootClassifier), CONCEPTS.Classifier$Ix);
         }

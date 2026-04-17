@@ -27,26 +27,26 @@ public class BHTestRef_Test {
   @Test
   public void test_conversion1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0a0();
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) 1))));
-    int a = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) 1.0f)));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) 1))));
+    int a = ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) 1.0f)));
     Assert.assertSame(1, a);
-    a = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) Float.valueOf(1))));
-    a = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) a)));
+    a = ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) Float.valueOf(1))));
+    a = ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) a)));
     Assert.assertSame(1, a);
-    Integer A = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) a)));
+    Integer A = ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion1", 4598718932037044418L, 0xdce832e22dd943a8L), ((float) a)));
     Assert.assertSame(1, A);
   }
   @Test
   public void test_conversion2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0b0();
-    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) 1)))));
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) 1)))));
     int a = 1;
-    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) a)))));
-    a = (int) ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) a)));
-    Float f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) a)));
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) a)))));
+    a = (int) ((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) a)));
+    Float f = ((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) a)));
     Assert.assertEquals(Float.valueOf(1.0f), f);
-    f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) Integer.valueOf(1))));
-    f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) (int) ((float) f))));
+    f = ((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) Integer.valueOf(1))));
+    f = ((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion2", 7409093844552457978L, 0xdce832e22dd943a8L), ((int) (int) ((float) f))));
     Assert.assertEquals(Float.valueOf(1.0f), f);
   }
   @Test
@@ -71,7 +71,7 @@ public class BHTestRef_Test {
     SNode nodeA = createA_cc8y9n_a0a0e0();
     int a = 1;
     float f = a;
-    a = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion5", 7409093844552459628L, 0xdce832e22dd943a8L), f));
+    a = ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion5", 7409093844552459628L, 0xdce832e22dd943a8L), f));
     Assert.assertSame(1, a);
   }
   @Test
@@ -79,7 +79,7 @@ public class BHTestRef_Test {
     SNode nodeA = createA_cc8y9n_a0a0f0();
     int a = 1;
     float f;
-    f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion6", 4279359955658624944L, 0xdce832e22dd943a8L), a));
+    f = ((float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("conversion6", 4279359955658624944L, 0xdce832e22dd943a8L), a));
     Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(f));
   }
   @Test
@@ -90,107 +90,107 @@ public class BHTestRef_Test {
   @Test
   public void test_boxing2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0h0();
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("boxing2", 163705066661984782L, 0xdce832e22dd943a8L), Integer.valueOf(1))));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("boxing2", 163705066661984782L, 0xdce832e22dd943a8L), Integer.valueOf(1))));
   }
   @Test
   public void test_varArgNull1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0i0();
-    Assert.assertSame(true, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgNull", 5888238816390744006L, 0xdce832e22dd943a8L), null)));
+    Assert.assertSame(true, ((boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgNull", 5888238816390744006L, 0xdce832e22dd943a8L), null)));
   }
   @Test
   public void test_varArgNull2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0j0();
     String[] arr = {null};
-    Assert.assertSame(false, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgNull", 5888238816390744006L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(false, ((boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgNull", 5888238816390744006L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_arrArgNull1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0k0();
-    Assert.assertSame(true, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrArgNull", 5888238816390744655L, 0xdce832e22dd943a8L), null)));
+    Assert.assertSame(true, ((boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrArgNull", 5888238816390744655L, 0xdce832e22dd943a8L), null)));
   }
   @Test
   public void test_arrArgNull2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0l0();
     String[] arr = {null};
-    Assert.assertSame(false, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrArgNull", 5888238816390744655L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(false, ((boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrArgNull", 5888238816390744655L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_varArgParam1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0m0();
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), "", "")));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), "", "")));
   }
   @Test
   public void test_varArgParam2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0n0();
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), "")));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), "")));
   }
   @Test
   public void test_varArgParam3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0o0();
-    Assert.assertSame(0, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L))));
+    Assert.assertSame(0, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L))));
   }
   @Test
   public void test_varArgParamArr1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0p0();
     String[] arr = {"", ""};
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_varArgParamArr2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0q0();
     String[] arr = {""};
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_varArgParamArr3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0r0();
     String[] arr = {};
-    Assert.assertSame(0, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(0, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen", 7546323081797945111L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_arrArgParam1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0s0();
     String[] arr = {"", ""};
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg", 7546323081797980911L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg", 7546323081797980911L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_arrArgParam2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0t0();
     String[] arr = {""};
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg", 7546323081797980911L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg", 7546323081797980911L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_arrArgParam3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0u0();
     String[] arr = {};
-    Assert.assertSame(0, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg", 7546323081797980911L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(0, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg", 7546323081797980911L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_arrArgParam4() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0v0();
     String[] arr = {"", ""};
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg1", 7768992890971291319L, 0xdce832e22dd943a8L), arr, "")));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg1", 7768992890971291319L, 0xdce832e22dd943a8L), arr, "")));
   }
   @Test
   public void test_primitiveVarArgParam() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0w0();
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen4", 7768992890971249035L, 0xdce832e22dd943a8L), ((int) 1), ((int) 2))));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("varArgLen4", 7768992890971249035L, 0xdce832e22dd943a8L), ((int) 1), ((int) 2))));
   }
   @Test
   public void test_primitiveArrayArgParam() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0x0();
     int[] arr = {1, 2};
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg3", 7768992890971248832L, 0xdce832e22dd943a8L), arr)));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodIdV2.create("arrayArg3", 7768992890971248832L, 0xdce832e22dd943a8L), arr)));
   }
   @Test
   public void test_virtualMethodCall() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0y0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.I$uc, SMethodIdV2.create("foo", 6123852159203091688L, 0xdce832e22dd943a8L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeA, CONCEPTS.I$uc, SMethodIdV2.create("foo", 6123852159203091688L, 0xdce832e22dd943a8L))));
   }
   @Test
   public void test_abstractMethodCall() throws Exception {
     SNode nodeI = createA_cc8y9n_a0a0z0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeI, CONCEPTS.I$uc, SMethodIdV2.create("foo", 6123852159203091688L, 0xdce832e22dd943a8L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeI, CONCEPTS.I$uc, SMethodIdV2.create("foo", 6123852159203091688L, 0xdce832e22dd943a8L))));
   }
   @Test
   public void test_defaultMethodWorks() throws Exception {
@@ -301,17 +301,17 @@ public class BHTestRef_Test {
   @Test
   public void test_localBehaviorCall() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0tb0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$sT, SMethodIdV2.create("foo", 6167444251392476867L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeA, CONCEPTS.A$sT, SMethodIdV2.create("foo", 6167444251392476867L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_thisBehaviorCall() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0ub0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo", 6167444251392479222L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo", 6167444251392479222L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_thisStaticBehaviorCall() throws Exception {
     SNode nodeC = createC_cc8y9n_a0a0vb0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeC)), CONCEPTS.C$bZ, SMethodIdV2.create("foo", 6167444251392482383L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeC)), CONCEPTS.C$bZ, SMethodIdV2.create("foo", 6167444251392482383L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_virtualStaticBehaviorCall1() throws Exception {
@@ -330,30 +330,30 @@ public class BHTestRef_Test {
   @Test
   public void test_superBehaviorCall() throws Exception {
     SNode nodeD = createD_cc8y9n_a0a0yb0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeD, CONCEPTS.D$sr, SMethodIdV2.create("foo", 6167444251392484356L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeD, CONCEPTS.D$sr, SMethodIdV2.create("foo", 6167444251392484356L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_superBehaviorVirtualCall() throws Exception {
     SNode nodeB = createD_cc8y9n_a0a0zb0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo1", 6123852159203116448L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo1", 6123852159203116448L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_superThisVirtualBehaviorCall() throws Exception {
     SNode nodeB = createD_cc8y9n_a0a0ac0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo2", 6123852159203117295L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo2", 6123852159203117295L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_superBehaviorOneArgumentNullCall() throws Exception {
     // against wrong varargs treatment
     SNode nodeB = createD_cc8y9n_a0b0bc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo4", 1591448354302920295L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo4", 1591448354302920295L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_superPrivateMethodVirtualCall() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0cc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo5", 1591448354302920510L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodIdV2.create("foo5", 1591448354302920510L, 0xfe0fc73ff2e85346L))));
     SNode nodeD = createD_cc8y9n_a0c0cc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeD, CONCEPTS.B$ke, SMethodIdV2.create("foo5", 1591448354302920510L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeD, CONCEPTS.B$ke, SMethodIdV2.create("foo5", 1591448354302920510L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_superResolving1() throws Exception {
@@ -375,22 +375,22 @@ public class BHTestRef_Test {
   @Test
   public void test_superStaticBehaviorCall() throws Exception {
     SNode nodeE = createE_cc8y9n_a0a0gc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeE)), CONCEPTS.E$KD, SMethodIdV2.create("foo", 6167444251392485299L, 0xfe0fc73ff2e85346L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeE)), CONCEPTS.E$KD, SMethodIdV2.create("foo", 6167444251392485299L, 0xfe0fc73ff2e85346L))));
   }
   @Test
   public void test_primitiveMethodReturnType() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0hc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodIdV2.create("primitiveReturnValue", 5606797489885796553L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodIdV2.create("primitiveReturnValue", 5606797489885796553L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_primitiveParameterPass() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0ic0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodIdV2.create("primitiveParameter", 8715627930483242200L, 0xf3d9214c9d1f9613L), ((int) 1), ((boolean) false), ((double) 1.))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodIdV2.create("primitiveParameter", 8715627930483242200L, 0xf3d9214c9d1f9613L), ((int) 1), ((boolean) false), ((double) 1.))));
   }
   @Test
   public void test_nonPrimitiveNullParameterPass() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0jc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodIdV2.create("nonPrimitiveParameter", 5644162487225577572L, 0xf3d9214c9d1f9613L), null)));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodIdV2.create("nonPrimitiveParameter", 5644162487225577572L, 0xf3d9214c9d1f9613L), null)));
   }
   @Test
   public void test_genericMethodReturnType() throws Exception {
@@ -405,49 +405,49 @@ public class BHTestRef_Test {
   @Test
   public void test_parameterTypes() throws Exception {
     SNode nodeC = createC_cc8y9n_a0a0mc0();
-    Assert.assertSame(TestResults.NOT_SPECIFIED_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeC, CONCEPTS.C$Cz, SMethodIdV2.create("argTypeResolve", 1474492522700410741L, 0xf3d9214c9d1f9613L), Integer.valueOf(1))));
-    Assert.assertSame(TestResults.SPECIFIED_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeC, CONCEPTS.C$Cz, SMethodIdV2.create("argTypeResolve", 1474492522700410264L, 0xf3d9214c9d1f9613L), Integer.valueOf(1))));
+    Assert.assertSame(TestResults.NOT_SPECIFIED_RETURN_VALUE, ((int) BHReflection.invoke0(nodeC, CONCEPTS.C$Cz, SMethodIdV2.create("argTypeResolve", 1474492522700410741L, 0xf3d9214c9d1f9613L), Integer.valueOf(1))));
+    Assert.assertSame(TestResults.SPECIFIED_RETURN_VALUE, ((int) BHReflection.invoke0(nodeC, CONCEPTS.C$Cz, SMethodIdV2.create("argTypeResolve", 1474492522700410264L, 0xf3d9214c9d1f9613L), Integer.valueOf(1))));
   }
   @Test
   public void test_twoVirtualMethodsWithTheSameName() throws Exception {
     SNode node1 = createH_cc8y9n_a0a0nc0();
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(node1, CONCEPTS.H$S$, SMethodIdV2.create("foo", 4208420198882789398L, 0xf3d9214c9d1f9613L))));
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE + 1, ((int) (Integer) BHReflection.invoke0(node1, CONCEPTS.H$S$, SMethodIdV2.create("foo", 4208420198882789409L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(node1, CONCEPTS.H$S$, SMethodIdV2.create("foo", 4208420198882789398L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE + 1, ((int) BHReflection.invoke0(node1, CONCEPTS.H$S$, SMethodIdV2.create("foo", 4208420198882789409L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_methodOverrideWithTheSameName1() throws Exception {
     // this and the next tests check current behavior to be able to resolve the method calls with identical signature
     SNode node1 = createD_cc8y9n_a0b0oc0();
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(node1, CONCEPTS.I1$oB, SMethodIdV2.create("foo", 6097773470847816317L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(node1, CONCEPTS.I1$oB, SMethodIdV2.create("foo", 6097773470847816317L, 0xf3d9214c9d1f9613L))));
     SNode node2 = createD_cc8y9n_a0d0oc0();
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(node2, CONCEPTS.I2$rC, SMethodIdV2.create("foo", 6097773470847816360L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(node2, CONCEPTS.I2$rC, SMethodIdV2.create("foo", 6097773470847816360L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_methodOverrideWithTheSameName2() throws Exception {
     SNode nodeF = createF_cc8y9n_a0a0pc0();
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeF, CONCEPTS.I1$oB, SMethodIdV2.create("foo", 6097773470847816317L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeF, CONCEPTS.I1$oB, SMethodIdV2.create("foo", 6097773470847816317L, 0xf3d9214c9d1f9613L))));
 
     SNode nodeG = createG_cc8y9n_a0d0pc0();
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeG, CONCEPTS.I1$oB, SMethodIdV2.create("foo", 6097773470847816317L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(nodeG, CONCEPTS.I1$oB, SMethodIdV2.create("foo", 6097773470847816317L, 0xf3d9214c9d1f9613L))));
     SNode nodeG2 = createG_cc8y9n_a0f0pc0();
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeG2, CONCEPTS.I2$rC, SMethodIdV2.create("foo", 6097773470847816360L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(nodeG2, CONCEPTS.I2$rC, SMethodIdV2.create("foo", 6097773470847816360L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_twoEqualMethodOverriding() throws Exception {
     SNode node3 = createE_cc8y9n_a0a0qc0();
-    Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(node3, CONCEPTS.I3$lu, SMethodIdV2.create("foo", 1203202913687794490L, 0xf3d9214c9d1f9613L))));
-    Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(node3, CONCEPTS.I3$lu, SMethodIdV2.create("foo", 1203202913687794501L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(2, ((int) BHReflection.invoke0(node3, CONCEPTS.I3$lu, SMethodIdV2.create("foo", 1203202913687794490L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(1, ((int) BHReflection.invoke0(node3, CONCEPTS.I3$lu, SMethodIdV2.create("foo", 1203202913687794501L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_conceptConstruction() throws Exception {
     SConcept node = CONCEPTS.A$TR;
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(node), CONCEPTS.A$TR, SMethodIdV2.create("staticMethod", 6167444251392503213L, 0xf3d9214c9d1f9613L))));
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.A$TR), CONCEPTS.A$TR, SMethodIdV2.create("staticMethod", 6167444251392503213L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(SNodeOperations.asSConcept(node), CONCEPTS.A$TR, SMethodIdV2.create("staticMethod", 6167444251392503213L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.A$TR), CONCEPTS.A$TR, SMethodIdV2.create("staticMethod", 6167444251392503213L, 0xf3d9214c9d1f9613L))));
     SNode aNode;
     aNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
     SNode nodeA = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x559729dec0466d3cL, "BHL7.structure.A"));
     SConcept conceptNodeA = SNodeOperations.getConcept(nodeA);
-    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(conceptNodeA), CONCEPTS.A$TR, SMethodIdV2.create("staticMethod", 6167444251392503213L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) BHReflection.invoke0(SNodeOperations.asSConcept(conceptNodeA), CONCEPTS.A$TR, SMethodIdV2.create("staticMethod", 6167444251392503213L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_methodResolving() throws Exception {
@@ -465,25 +465,25 @@ public class BHTestRef_Test {
   @Test
   public void test_booleanMethodCall1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0tc0();
-    Assert.assertSame(true, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodIdV2.create("boolMethod1", 2569465595672254009L, 0xf3d9214c9d1f9613L))));
+    Assert.assertSame(true, ((boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodIdV2.create("boolMethod1", 2569465595672254009L, 0xf3d9214c9d1f9613L))));
   }
   @Test
   public void test_booleanMethodCall2() throws Exception {
     final SNode nodeA = createA_cc8y9n_a0a0uc0();
-    boolean boolMethod2 = ((_FunctionTypes._return_P0_E0<Boolean>) () -> ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodIdV2.create("boolMethod2", 360045928603804516L, 0xf3d9214c9d1f9613L)))).invoke();
+    boolean boolMethod2 = ((_FunctionTypes._return_P0_E0<Boolean>) () -> ((boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodIdV2.create("boolMethod2", 360045928603804516L, 0xf3d9214c9d1f9613L)))).invoke();
     Assert.assertSame(true, boolMethod2);
   }
   @Test
   public void test_nullability1() throws Exception {
     SNode l = null;
     Assert.assertEquals(null, ((Object) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodIdV2.create("bar", 7341373813157757302L, 0xf3d9214c9d1f9613L))));
-    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(((int) (Integer) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L)))));
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(((int) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L)))));
   }
   @Test
   public void test_nullability2() throws Exception {
     SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, "BHL7.structure.M"));
     Assert.assertEquals(null, ((Object) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodIdV2.create("bar", 7341373813157757302L, 0xf3d9214c9d1f9613L))));
-    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(((int) (Integer) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L)))));
+    Assert.assertEquals(Integer.valueOf(0), Integer.valueOf(((int) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodIdV2.create("foo", 7341373813157757256L, 0xf3d9214c9d1f9613L)))));
   }
   private static SNode createA_cc8y9n_a0a0a0() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$jy);

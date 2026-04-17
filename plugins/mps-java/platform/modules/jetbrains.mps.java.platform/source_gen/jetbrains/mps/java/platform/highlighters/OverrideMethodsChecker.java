@@ -99,7 +99,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       StringBuilder tooltip = new StringBuilder();
       int messageCounter = 0;
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
-      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where((it) -> !((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)))).isNotEmpty();
+      boolean overrides = ((boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where((it) -> !((boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)))).isNotEmpty();
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
         SNode baseClassifier = SNodeOperations.cast(SNodeOperations.getParent(baseMethod), CONCEPTS.Classifier$Ix);
         tooltip.append((overrides ? "Overrides" : "Implements"));
@@ -155,7 +155,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       if (SPropertyOperations.getBoolean(overridenMethod, PROPS.isFinal$eVPk)) {
         continue;
       }
-      boolean overriden = !((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
+      boolean overriden = !((boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
       StringBuffer tooltip = new StringBuffer("Is ");
       tooltip.append((overriden ? "overridden" : "implemented"));
       tooltip.append(" in");
@@ -182,7 +182,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
         if (similarMethods == null) {
           continue;
         }
-        SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst((it) -> ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), derivedClassifierMethod)));
+        SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst((it) -> ((boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), derivedClassifierMethod)));
         if (overridenMethod != null) {
           Set<SNode> overridingMethods = OverridingMethodsCalculator.safeGet(result, overridenMethod);
           SetSequence.fromSet(overridingMethods).addElement(derivedClassifierMethod);
@@ -275,11 +275,11 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   }
 
   private String getClassifierPresentation(SNode classifier) {
-    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
+    return ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   private String getEnumConstantPresentation(SNode enumConstantDeclaration) {
-    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
+    return ((String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   private static boolean isParameterType(SNode type) {

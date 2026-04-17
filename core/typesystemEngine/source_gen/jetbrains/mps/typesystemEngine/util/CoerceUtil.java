@@ -26,7 +26,7 @@ public final class CoerceUtil {
     if (concept == null) {
       return true;
     }
-    return (SNodeOperations.isInstanceOf(type, CONCEPTS.Type$bu) ? ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.Type$bu), CONCEPTS.Type$bu, SMethodIdV2.create("canBeCoerced", 4739752174825018691L, 0x5745e3015c8914d3L), concept)) : true);
+    return (SNodeOperations.isInstanceOf(type, CONCEPTS.Type$bu) ? ((boolean) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.Type$bu), CONCEPTS.Type$bu, SMethodIdV2.create("canBeCoerced", 4739752174825018691L, 0x5745e3015c8914d3L), concept)) : true);
   }
 
   private static final class CONCEPTS {

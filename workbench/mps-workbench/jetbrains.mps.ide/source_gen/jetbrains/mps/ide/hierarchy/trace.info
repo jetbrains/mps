@@ -767,7 +767,7 @@
       <node id="2299985075419828869" at="49,84,50,18" concept="17" />
       <node id="2299985075419851213" at="50,18,51,44" concept="5" />
       <node id="4099892936855824092" at="54,74,55,45" concept="5" />
-      <node id="4099892936855877133" at="56,271,57,95" concept="5" />
+      <node id="4099892936855877133" at="56,261,57,95" concept="5" />
       <node id="5797068448049411518" at="61,69,62,51" concept="11" />
       <node id="5797068448049411564" at="63,73,64,82" concept="11" />
       <node id="5797068448049411570" at="64,82,65,94" concept="11" />
@@ -851,7 +851,7 @@
       <node id="5797068448049411461" at="60,0,90,0" concept="10" trace="getParents#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Set;)Ljava/util/Set;" />
       <node id="5797068448049411478" at="112,0,147,0" concept="10" trace="getDescendants#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Set;)Ljava/util/Set;" />
       <scope id="5797068448049411492" at="38,77,39,25" />
-      <scope id="4099892936855877132" at="56,271,57,95" />
+      <scope id="4099892936855877132" at="56,261,57,95" />
       <scope id="5797068448049411591" at="68,83,69,35" />
       <scope id="5797068448049411614" at="74,89,75,44" />
       <scope id="5797068448049411557" at="83,89,84,44" />

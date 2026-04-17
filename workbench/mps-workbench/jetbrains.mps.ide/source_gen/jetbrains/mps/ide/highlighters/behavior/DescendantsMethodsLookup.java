@@ -48,7 +48,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   /*package*/ List<EditorMessage> calcMessages() {
     List<EditorMessage> result = ListSequence.fromList(new ArrayList<EditorMessage>());
     for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$w_in))) {
-      if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("isVirtual", 8014340958382768125L, 0x28bccc7daff7d4f3L))) || ((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)))) {
+      if (((boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("isVirtual", 8014340958382768125L, 0x28bccc7daff7d4f3L))) || ((boolean) BHReflection.invoke0(method, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)))) {
         EditorMessage msgForMethod = calcMessage(method);
         if (msgForMethod != null) {
           ListSequence.fromList(result).addElement(msgForMethod);

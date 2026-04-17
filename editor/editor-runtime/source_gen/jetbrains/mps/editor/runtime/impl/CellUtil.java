@@ -35,7 +35,7 @@ public class CellUtil {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.IDeprecatable$2W))) {
       return false;
     }
-    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IDeprecatable$2W), CONCEPTS.IDeprecatable$2W, SMethodIdV2.create("isDeprecated", 1224609060727L, 0x553941aeb020c32eL)));
+    return ((boolean) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IDeprecatable$2W), CONCEPTS.IDeprecatable$2W, SMethodIdV2.create("isDeprecated", 1224609060727L, 0x553941aeb020c32eL)));
   }
   private static boolean isConceptDeprecated(SNode node) {
     ConceptPresentation cp = ConceptAspectsHelper.getPresentationAspect(node);

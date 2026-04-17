@@ -94,7 +94,7 @@ public final class GoToRulesHelper {
     if (exactConcept) {
       return concept == applicableConcept;
     }
-    return ((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("isSubconceptOf", 8134325418312549386L, 0x44a456bea0df1cf0L), applicableConcept));
+    return ((boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("isSubconceptOf", 8134325418312549386L, 0x44a456bea0df1cf0L), applicableConcept));
   }
   private static SNode getApplicableConcept(SNode applicableNode) {
     if (SNodeOperations.isInstanceOf(applicableNode, CONCEPTS.ConceptReference$14)) {

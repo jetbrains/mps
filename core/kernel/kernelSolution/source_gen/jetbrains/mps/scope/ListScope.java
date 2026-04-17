@@ -133,7 +133,7 @@ public abstract class ListScope extends Scope {
         if ((resolveInfo != null && resolveInfo.length() > 0)) {
           return resolveInfo;
         }
-        return ((String) (String) BHReflection.invoke0(child, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
+        return ((String) BHReflection.invoke0(child, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
       }
     };
   }

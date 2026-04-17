@@ -50,7 +50,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   /*package*/ List<EditorMessage> calcMessages() {
     List<EditorMessage> result = ListSequence.fromList(new ArrayList<EditorMessage>());
     for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$w_in))) {
-      if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("isVirtual", 8014340958382768125L, 0x28bccc7daff7d4f3L))) && SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH) != null) {
+      if (((boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodIdV2.create("isVirtual", 8014340958382768125L, 0x28bccc7daff7d4f3L))) && SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH) != null) {
         EditorMessage msgForMethod = calcMessage(method);
         if (msgForMethod != null) {
           ListSequence.fromList(result).addElement(msgForMethod);

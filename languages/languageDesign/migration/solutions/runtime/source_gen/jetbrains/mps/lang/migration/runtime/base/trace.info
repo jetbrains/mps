@@ -562,7 +562,7 @@
       <node id="3818729150937330515" at="95,37,96,113" concept="2" />
       <node id="3628660716136393040" at="97,11,98,17" concept="9" />
       <node id="1109674566550236483" at="99,9,100,334" concept="8" />
-      <node id="1109674566550326022" at="100,334,101,403" concept="8" />
+      <node id="1109674566550326022" at="100,334,101,374" concept="8" />
       <node id="1109674566550753639" at="102,177,103,233" concept="8" />
       <node id="1109674566550388666" at="103,233,104,124" concept="9" />
       <node id="2975756678465538413" at="105,20,106,296" concept="2" />
@@ -586,7 +586,7 @@
       <node id="7747342870461620644" at="53,0,57,0" concept="7" trace="getModuleActualVersion#()I" />
       <node id="5168866961623738160" at="74,0,78,0" concept="7" trace="hashCode#()I" />
       <node id="201922306411128434" at="78,0,82,0" concept="7" trace="toString#()Ljava/lang/String;" />
-      <node id="1109674566550388658" at="101,403,105,20" concept="8" />
+      <node id="1109674566550388658" at="101,374,105,20" concept="8" />
       <node id="5168866961623738070" at="39,0,44,0" concept="1" trace="RefactoringScriptReference#(Ljetbrains/mps/smodel/Language;I)V" />
       <node id="3628660716136393028" at="93,209,99,9" concept="6" />
       <node id="5168866961623738103" at="57,0,74,0" concept="7" trace="equals#(Ljava/lang/Object;)Z" />

@@ -184,7 +184,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
           if (mm.isReadOnly()) {
             continue;
           }
-          for (SNode ann : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.MigrationAnnotation_old$2i)).where((it) -> ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("showInResults", 2482611074347619756L, 0x553941aeb020c32eL))))) {
+          for (SNode ann : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.MigrationAnnotation_old$2i)).where((it) -> ((boolean) BHReflection.invoke0(it, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("showInResults", 2482611074347619756L, 0x553941aeb020c32eL))))) {
             if (!(processor.process(MigrateManually.fromAnnotation(ann)))) {
               m.done();
               return;

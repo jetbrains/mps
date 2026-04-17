@@ -128,7 +128,7 @@ public final class OverridingMethodsCalculator {
       }
       List<SNode> overridingMethods = SetSequence.fromSet(methodsWithNameOfSuperMethod).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode it) {
-          return ((boolean) (Boolean) BHReflection.invoke0(superClassifierMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), it));
+          return ((boolean) BHReflection.invoke0(superClassifierMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), it));
         }
       }).toList();
       for (SNode overridingMethod : ListSequence.fromList(overridingMethods)) {

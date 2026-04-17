@@ -62,7 +62,7 @@ public class PresentationUtil {
       return "new " + ((String) BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
     }
 
-    if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(expression)), CONCEPTS.Expression$mB, SMethodIdV2.create("constant", 1262430001741498050L, 0x5745e3015c8914d3L)))) {
+    if (((boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(expression)), CONCEPTS.Expression$mB, SMethodIdV2.create("constant", 1262430001741498050L, 0x5745e3015c8914d3L)))) {
       return ((Object) BHReflection.invoke0(expression, CONCEPTS.Expression$mB, SMethodIdV2.create("getCompileTimeConstantValue", 1238860310638L, 0x5745e3015c8914d3L), SNodeOperations.getModel(expression).getModule())) + "";
     }
 

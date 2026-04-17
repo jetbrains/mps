@@ -104,7 +104,7 @@ public class OverrideImplementMethodsHelper {
 
     Iterable<SNode> paramList = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select((it) -> _quotation_createNode_tfz3o4_a0a0a0a4a11(it));
     if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.InstanceMethodDeclaration$39)) {
-      boolean isAbstractMethod = ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(baseMethod, CONCEPTS.InstanceMethodDeclaration$39), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
+      boolean isAbstractMethod = ((boolean) BHReflection.invoke0(SNodeOperations.cast(baseMethod, CONCEPTS.InstanceMethodDeclaration$39), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
       SNode defaultExpr = null;
       if (isAbstractMethod) {
         defaultExpr = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(baseMethod, LINKS.returnType$5xoi), CONCEPTS.Type$bu, SMethodIdV2.create("createDefaultTypeExpression", 3359611512358152580L, 0x5745e3015c8914d3L)));

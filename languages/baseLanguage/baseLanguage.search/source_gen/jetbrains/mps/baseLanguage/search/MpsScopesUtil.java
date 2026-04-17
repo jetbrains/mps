@@ -43,7 +43,7 @@ public class MpsScopesUtil {
       if (!(SNodeOperations.isInstanceOf(member, CONCEPTS.ClassifierMember$At))) {
         ListSequence.fromList(result).addElement("Not ClassifierMember member: " + SNodeOperations.present(member));
       } else {
-        ListSequence.fromList(result).addElement(((((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(member, CONCEPTS.ClassifierMember$At), CONCEPTS.ClassifierMember$At, SMethodIdV2.create("isStaticClassifierMember", 8986964027630462944L, 0x5745e3015c8914d3L))) ? "static " : "")) + getSignature(member, classifier));
+        ListSequence.fromList(result).addElement(((((boolean) BHReflection.invoke0(SNodeOperations.cast(member, CONCEPTS.ClassifierMember$At), CONCEPTS.ClassifierMember$At, SMethodIdV2.create("isStaticClassifierMember", 8986964027630462944L, 0x5745e3015c8914d3L))) ? "static " : "")) + getSignature(member, classifier));
       }
     }
     return result;
