@@ -34,6 +34,12 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import jetbrains.mps.baseLanguage.dataFlow.NullableState;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import jetbrains.mps.baseLanguage.behavior.StatementList__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -255,6 +261,7 @@ __switch__:
       }
       String errorString = message + sj.toString();
       if (useQuickfix && supportsCheckedExceptions) {
+        new RuntimeException("test").printStackTrace();
         if ((SNodeOperations.getNodeAncestor(mainNode, CONCEPTS.ITryCatchStatement$pH, false, false) != null)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -367,6 +374,53 @@ __switch__:
       }
     }
   }
+  public static Iterable<SNode> getPreciseRethrowTypes(SNode throwStatement) {
+    SNode throwable = SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg);
+    SNode catchVar = SLinkOperations.getTarget(SNodeOperations.as(throwable, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
+
+    // CatchClause and MultipleCatchClause are two subconcepts of AbstractCatchClause
+    SNode catchClause = SNodeOperations.getNodeAncestor(catchVar, CONCEPTS.AbstractCatchClause$sw, false, false);
+    SNode catchBody = AbstractCatchClause__BehaviorDescriptor.getCatchBody_id4iVGRTTf1R5.invoke(catchClause);
+    boolean isEffectivelyFinal = true;
+    // Only take assignments that have not been commented out
+    for (SNode assign : ListSequence.fromList(SNodeOperations.getNodeDescendants(catchBody, CONCEPTS.BaseAssignmentExpression$PA, false, new SAbstractConcept[]{})).where((it) -> (SNodeOperations.getNodeAncestor(it, CONCEPTS.BaseCommentAttribute$nv, false, false) != null))) {
+      SNode lValue = SLinkOperations.getTarget(assign, LINKS.lValue$splI);
+      if (Objects.equals(SLinkOperations.getTarget(SNodeOperations.as(lValue, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), catchVar)) {
+        isEffectivelyFinal = false;
+        break;
+      }
+    }
+
+    List<SNode> caughtTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(catchClause);
+    if (!(isEffectivelyFinal)) {
+      return caughtTypes;
+    }
+    SNode tryBody = null;
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(catchClause), CONCEPTS.TryCatchStatement$XR)) {
+      tryBody = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(catchClause), CONCEPTS.TryCatchStatement$XR), LINKS.body$pDF2);
+    }
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(catchClause), CONCEPTS.TryUniversalStatement$$M)) {
+      tryBody = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(catchClause), CONCEPTS.TryUniversalStatement$$M), LINKS.body$KFk);
+    }
+
+    if (tryBody == null) {
+      return caughtTypes;
+      // unknown try kind → conservative fallback
+    }
+    Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(tryBody, thrownsFromBody, ((boolean) false));
+
+    List<SNode> preciseTypes = ListSequence.fromList(new ArrayList<SNode>());
+    for (final SNode caughtType : caughtTypes) {
+      for (SNode thrownClassifier : thrownsFromBody) {
+        if (ListSequence.fromList(Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(thrownClassifier))).any((superType) -> Objects.equals(superType, caughtType))) {
+          ListSequence.fromList(preciseTypes).addElement(caughtType);
+          break;
+        }
+      }
+    }
+    return preciseTypes;
+  }
   private static SNode _quotation_createNode_5ahx9e_b0a0a0a0a1a4() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
@@ -407,6 +461,9 @@ __switch__:
     /*package*/ static final SConcept LocalPropertyReference$x2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
     /*package*/ static final SConcept PropertyReference$hL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, "jetbrains.mps.baseLanguage.structure.PropertyReference");
     /*package*/ static final SConcept NullLiteral$QQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+    /*package*/ static final SConcept AbstractCatchClause$sw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f43fe1c1L, "jetbrains.mps.baseLanguage.structure.AbstractCatchClause");
+    /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 
   private static final class LINKS {
@@ -424,6 +481,8 @@ __switch__:
     /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
     /*package*/ static final SReferenceLink property$n7$M = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
     /*package*/ static final SReferenceLink property$Bjg2 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
+    /*package*/ static final SContainmentLink throwable$kKKg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
   }
 
   private static final class PROPS {

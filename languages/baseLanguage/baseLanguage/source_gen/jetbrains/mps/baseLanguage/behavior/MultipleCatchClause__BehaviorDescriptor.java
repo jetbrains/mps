@@ -40,7 +40,7 @@ public final class MultipleCatchClause__BehaviorDescriptor extends BaseBHDescrip
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$UWM1), LINKS.type$a1UY), CONCEPTS.AlternativeType$B$)) {
       return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$UWM1), LINKS.type$a1UY), CONCEPTS.AlternativeType$B$), LINKS.alternative$IEPM);
     } else {
-      return ListSequence.fromList(new ArrayList<SNode>());
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$UWM1), LINKS.type$a1UY));
     }
   }
   /*package*/ static SNode getCatchBody_id4iVGRTTf1R5(@NotNull SNode __thisNode__) {

@@ -7,9 +7,9 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -25,8 +25,10 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode throwStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<SNode> thrownTypes;
-    if (SNodeOperations.hasRole(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), LINKS.throwable$$5MH)) {
-      thrownTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG)), CONCEPTS.CatchClause$Ig));
+    SNode var = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
+    if (SNodeOperations.hasRole(var, LINKS.throwable$$5MH) || SNodeOperations.hasRole(var, LINKS.throwable$UWM1)) {
+      thrownTypes = RulesFunctions_BaseLanguage.getPreciseRethrowTypes(throwStatement);
+      LogContext.with(checkThrowedByThrowIsCaught_NonTypesystemRule.class, null, null, null).error("DDDDD");
     } else {
       thrownTypes = SNodeOperations.ofConcept(Sequence.<SNode>singleton(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg))), CONCEPTS.Type$bu);
     }
@@ -45,12 +47,12 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
   private static final class LINKS {
     /*package*/ static final SContainmentLink throwable$kKKg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink throwable$UWM1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
     /*package*/ static final SContainmentLink throwable$$5MH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
