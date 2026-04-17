@@ -13,10 +13,12 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
+import jetbrains.mps.lang.behavior.generator.template.util.ConceptMethodSuperCall;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,38 +36,52 @@ public class Template_reduce_ConceptMethodCallWithSuper extends TemplateDeclarat
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6417869169768444729");
   }
 
+  public String[] getParameterNames() {
+    return new String[]{"operand", "methodCall"};
+  }
 
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
-    Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_26_0(new IfMacroContext(context, ifMacroRef))) {
-      final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
+    Collection<SNode> tlist1 = null;
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("var:invocationTarget", QueriesGenerated.varMacro_Value_20_0(new TemplateVarContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207407469"))));
+    Collection<SNode> tlist2 = Collections.emptyList();
+    if (QueriesGenerated.ifMacro_Condition_20_0(new IfMacroContext(context1, ifMacroRef))) {
+      final SNode tnode3 = environment.createOutputNode(myConcepts[0]);
       {
-        TemplateContext context1 = context.subContext();
+        TemplateContext context2 = context1.subContext();
         {
-          final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
+          final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
           {
-            TemplateContext context2 = context1.subContext();
-            {
-              Collection<SNode> tlist4 = null;
-              tlist4 = environment.callSite(new Template_reduce_invokeWithSuper(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "633481135935145330")).apply(context2);
-              environment.aggregate(tnode3, myAggregationLinks[0], tlist4);
-            }
+            TemplateContext context3 = context2.subContext();
             {
               Collection<SNode> tlist5 = null;
-              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_26_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
-              tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4598718932037448117", context2);
-              environment.aggregate(tnode3, myAggregationLinks[1], tlist5);
+              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_20_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro));
+              tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4598718932037448117", context3);
+              environment.aggregate(tnode4, myAggregationLinks[0], tlist5);
+            }
+            {
+              Collection<SNode> tlist6 = null;
+              TemplateContext context4 = context3;
+              context4 = context4.withVariable("invocationTarget", ((ConceptMethodSuperCall.InvokationTarget) context4.getVariable("var:invocationTarget")));
+              context4 = context4.withVariable("operand", ((SNode) context4.getVariable("operand")));
+              context4 = context4.withVariable("methodCall", ((SNode) context4.getVariable("methodCall")));
+              tlist6 = environment.callSite(new Template_reduce_invokeWithSuper(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207224316")).apply(context4);
+              environment.aggregate(tnode4, myAggregationLinks[1], tlist6);
             }
           }
-          environment.aggregate(tnode2, myAggregationLinks[2], tnode3);
+          environment.aggregate(tnode3, myAggregationLinks[2], tnode4);
         }
       }
-      tlist1 = TemplateUtil.singletonList(tnode2);
+      tlist2 = TemplateUtil.singletonList(tnode3);
     } else {
-      Collection<SNode> tlist6 = environment.callSite(new Template_reduce_invokeWithSuper(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892222756")).apply(context);
-      tlist1 = tlist6;
+      TemplateContext context5 = context1.withVariable("invocationTarget", ((ConceptMethodSuperCall.InvokationTarget) context1.getVariable("var:invocationTarget")));
+      context5 = context5.withVariable("operand", ((SNode) context1.getVariable("operand")));
+      context5 = context5.withVariable("methodCall", ((SNode) context1.getVariable("methodCall")));
+      Collection<SNode> tlist7 = environment.callSite(new Template_reduce_invokeWithSuper(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892222756")).apply(context5);
+      tlist2 = tlist7;
     }
+    tlist1 = tlist2;
     FragmentResult rv = listFragment(3, tlist1);
     return rv;
   }
@@ -88,8 +104,8 @@ public class Template_reduce_ConceptMethodCallWithSuper extends TemplateDeclarat
     @Override
     public SContainmentLink[] aggregations() {
       SContainmentLink[] rv = new SContainmentLink[4];
-      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-      rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+      rv[0] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+      rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
       rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
       rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
       return rv;

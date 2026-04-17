@@ -34,29 +34,37 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6862765979525687754");
   }
 
+  public String[] getParameterNames() {
+    return new String[]{"operand", "methodCall"};
+  }
 
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_18_0(new IfMacroContext(context, ifMacroRef))) {
+    if (QueriesGenerated.ifMacro_Condition_15_0(new IfMacroContext(context, ifMacroRef))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist3 = null;
-          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_18_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_15_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
           tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4598718932037613732", context1);
           environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
         }
         {
           Collection<SNode> tlist4 = null;
-          tlist4 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "633481135935145331")).apply(context1);
+          TemplateContext context2 = context1;
+          context2 = context2.withVariable("operand", ((SNode) context2.getVariable("operand")));
+          context2 = context2.withVariable("methodCall", ((SNode) context2.getVariable("methodCall")));
+          tlist4 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207952998")).apply(context2);
           environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist5 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4656749346204521957")).apply(context);
+      TemplateContext context3 = context.withVariable("operand", ((SNode) context.getVariable("operand")));
+      context3 = context3.withVariable("methodCall", ((SNode) context.getVariable("methodCall")));
+      Collection<SNode> tlist5 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4656749346204521957")).apply(context3);
       tlist1 = tlist5;
     }
     FragmentResult rv = listFragment(2, tlist1);

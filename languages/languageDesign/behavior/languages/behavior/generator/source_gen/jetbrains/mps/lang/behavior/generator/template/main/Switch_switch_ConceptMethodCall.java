@@ -15,6 +15,7 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.template.TemplateArgumentContext;
 import java.util.Collections;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.annotations.NotNull;
@@ -41,8 +42,10 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
   public Collection<SNode> applyDefault(final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_29_4(new SourceSubstituteMacroNodeContext(context, callMacro));
+    SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_23_4(new SourceSubstituteMacroNodeContext(context, callMacro));
     TemplateContext context1 = context;
+    context1 = context1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_23_4(new TemplateArgumentContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207974510")))));
+    context1 = context1.withVariable("methodCall", ((SNode) context1.getVariable("cmc")));
     context1 = context1.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
       tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallCommon(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6862765979525743283")).apply(context1);
@@ -59,8 +62,10 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_29_0(new SourceSubstituteMacroNodeContext(context, callMacro1));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_23_0(new SourceSubstituteMacroNodeContext(context, callMacro1));
       TemplateContext context1 = context;
+      context1 = context1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_23_0(new TemplateArgumentContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207137841")))));
+      context1 = context1.withVariable("methodCall", ((SNode) context1.getVariable("cmc")));
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithThis(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6862765979525741554")).apply(context1);
@@ -78,8 +83,10 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_29_1(new SourceSubstituteMacroNodeContext(context, callMacro2));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_23_1(new SourceSubstituteMacroNodeContext(context, callMacro2));
       TemplateContext context1 = context;
+      context1 = context1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_23_1(new TemplateArgumentContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207139837")))));
+      context1 = context1.withVariable("methodCall", ((SNode) context1.getVariable("cmc")));
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithThis(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2926695023080033605")).apply(context1);
@@ -97,8 +104,10 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_29_2(new SourceSubstituteMacroNodeContext(context, callMacro3));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_23_2(new SourceSubstituteMacroNodeContext(context, callMacro3));
       TemplateContext context1 = context;
+      context1 = context1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_23_2(new TemplateArgumentContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207171987")))));
+      context1 = context1.withVariable("methodCall", ((SNode) context1.getVariable("cmc")));
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithSuper(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6862765979525743045")).apply(context1);
@@ -116,8 +125,10 @@ public class Switch_switch_ConceptMethodCall extends TemplateSwitchBase implemen
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_29_3(new SourceSubstituteMacroNodeContext(context, callMacro4));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_23_3(new SourceSubstituteMacroNodeContext(context, callMacro4));
       TemplateContext context1 = context;
+      context1 = context1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_23_3(new TemplateArgumentContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561207176961")))));
+      context1 = context1.withVariable("methodCall", ((SNode) context1.getVariable("cmc")));
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallWithSuper(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2926695023080034666")).apply(context1);

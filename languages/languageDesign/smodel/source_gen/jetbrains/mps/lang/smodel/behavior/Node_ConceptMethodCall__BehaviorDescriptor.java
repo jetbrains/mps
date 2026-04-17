@@ -8,53 +8,29 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
 
-  public static final SMethod<Boolean> isVirtualMethodCall_idhEwIWlZ = new SMethodBuilder<>(Boolean.TYPE).name("isVirtualMethodCall").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877437823L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<Boolean> isSuperMethodCall_id1ks7HBvlL3z = new SMethodBuilder<>(Boolean.TYPE).name("isSuperMethodCall").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1521124695248146659L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
-  public static final SMethod<SNode> getVirtualMethodDeclaration_idhEwIWm8 = new SMethodBuilder<>(SNode.class).name("getVirtualMethodDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877437832L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<String> getVariableExpectedName_idhEwIP$B = new SMethodBuilder<>(String.class).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877410087L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<>(Boolean.TYPE).name("applicableToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498076L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<Boolean> applicableToConcept_id1653mnvAgvQ = new SMethodBuilder<>(Boolean.TYPE).name("applicableToConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1262430001741498358L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
   public static final SMethod<Boolean> applicableToSConcept_id7E3Sw0HhwkZ = new SMethodBuilder<>(Boolean.TYPE).name("applicableToSConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8828148184963745087L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isVirtualMethodCall_idhEwIWlZ, isSuperMethodCall_id1ks7HBvlL3z, getVirtualMethodDeclaration_idhEwIWm8, getVariableExpectedName_idhEwIP$B, applicableToNode_id1653mnvAgrs, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwIP$B, applicableToNode_id1653mnvAgrs, applicableToConcept_id1653mnvAgvQ, applicableToSConcept_id7E3Sw0HhwkZ);
 
 
-  /*package*/ static boolean isVirtualMethodCall_idhEwIWlZ(@NotNull SNode __thisNode__) {
-    return (Node_ConceptMethodCall__BehaviorDescriptor.getVirtualMethodDeclaration_idhEwIWm8.invoke(__thisNode__) != null);
-  }
-  /*package*/ static boolean isSuperMethodCall_id1ks7HBvlL3z(@NotNull SNode __thisNode__) {
-    // XXX looks unused, shall drop?
-    SNode e = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__);
-    return SNodeOperations.isInstanceOf(e, CONCEPTS.SuperNodeExpression$tM) || SNodeOperations.isInstanceOf(e, CONCEPTS.SuperConceptExpression$_4);
-  }
-  /*package*/ static SNode getVirtualMethodDeclaration_idhEwIWm8(@NotNull SNode __thisNode__) {
-    SNode methodDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
-    if ((SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$quKH) != null)) {
-      return SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$quKH);
-    } else
-    if (SPropertyOperations.getBoolean(methodDeclaration, PROPS.isVirtual$quZI)) {
-      return methodDeclaration;
-    } else {
-      return null;
-    }
-  }
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String variableExpectedName;
     variableExpectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL);
@@ -88,12 +64,6 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) isVirtualMethodCall_idhEwIWlZ(node));
-      case 1:
-        return (T) ((Boolean) isSuperMethodCall_id1ks7HBvlL3z(node));
-      case 2:
-        return (T) ((SNode) getVirtualMethodDeclaration_idhEwIWm8(node));
-      case 3:
         return (T) ((String) getVariableExpectedName_idhEwIP$B(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -107,11 +77,11 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 4:
+      case 1:
         return (T) ((Boolean) applicableToNode_id1653mnvAgrs(concept));
-      case 5:
+      case 2:
         return (T) ((Boolean) applicableToConcept_id1653mnvAgvQ(concept));
-      case 6:
+      case 3:
         return (T) ((Boolean) applicableToSConcept_id7E3Sw0HhwkZ(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -130,18 +100,11 @@ public final class Node_ConceptMethodCall__BehaviorDescriptor extends BaseBHDesc
     return CONCEPT;
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept SuperNodeExpression$tM = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
-    /*package*/ static final SConcept SuperConceptExpression$_4 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
-  }
-
   private static final class LINKS {
     /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isVirtual$quZI = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -6,18 +6,20 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.behavior.Node_ConceptMethodCall__BehaviorDescriptor;
+import jetbrains.mps.lang.behavior.behavior.ConceptMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.behavior.behavior.SuperExpression__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConceptMethodSuperCall {
-  private final SNode myCall;
+  private final SNode myOperand;
+  private final SNode myOperation;
+  private final SNode myMethod;
+
   public enum InvokationType {
     INVOKE(new SNodePointer("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod.invoke0(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SAbstractConcept,java.lang.Object...)"), new SNodePointer("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)", "~BHReflection.invoke0(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.behaviour.api.SMethodId,java.lang.Object...)")),
     INVOKE_SPECIAL(new SNodePointer("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod.invokeSpecial(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...)"), new SNodePointer("d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.behaviour(jetbrains.mps.lang.behavior.api/)", "~BHReflection.invokeSpecial(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SAbstractConcept,jetbrains.mps.core.aspects.behaviour.api.SMethodId,java.lang.Object...)")),
@@ -36,12 +38,16 @@ public final class ConceptMethodSuperCall {
     }
 
     public SNodeReference reflectiveMethod() {
+      // FIXME there are no uses of this method, nor there could be any for anything but invoke0, we don't support special/super for reflective anyway.
       return myReflectiveMethod;
     }
   }
 
-  public ConceptMethodSuperCall(SNode superMethodCall) {
-    myCall = superMethodCall;
+  public ConceptMethodSuperCall(SNode operand, SNode superMethodCall, SNode method) {
+    assert SNodeOperations.isInstanceOf(operand, CONCEPTS.SuperExpression$pj);
+    myOperand = operand;
+    myOperation = superMethodCall;
+    myMethod = method;
   }
 
   public static class InvokationTarget {
@@ -57,23 +63,22 @@ public final class ConceptMethodSuperCall {
   }
 
   public InvokationTarget getMethodCallTarget() {
-    SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(myCall);
-    assert SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.SuperExpression$pj);
-    SNode methodDecl = SLinkOperations.getTarget(myCall, LINKS.baseMethodDeclaration$pyYw);
-    if (!((boolean) Node_ConceptMethodCall__BehaviorDescriptor.isVirtualMethodCall_idhEwIWlZ.invoke(myCall))) {
+    if (!((boolean) ConceptMethodDeclaration__BehaviorDescriptor.isVirtual_id6WSEafdhbZX.invoke(myMethod))) {
       // FIXME perhaps, shall check if method is static and use distinct InvokationType for invokeSpecial(SAbstractConcept), not the one with (SNode)
-      return new InvokationTarget(null, methodDecl, InvokationType.INVOKE_SPECIAL);
+      return new InvokationTarget(null, myMethod, InvokationType.INVOKE_SPECIAL);
     } else {
       SNode specifiedSuperConcept;
-      specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, CONCEPTS.SuperExpression$pj)));
+      specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke(SNodeOperations.cast(myOperand, CONCEPTS.SuperExpression$pj));
       if (specifiedSuperConcept != null) {
         // if there is no implementation in the provided concept we will fail on runtime
         // fixme quickfix for this case
-        return new InvokationTarget(specifiedSuperConcept, methodDecl, InvokationType.INVOKE);
+        return new InvokationTarget(specifiedSuperConcept, myMethod, InvokationType.INVOKE);
       } else {
-        SNode behavior = SNodeOperations.getNodeAncestor(myCall, CONCEPTS.ConceptBehavior$2, false, true);
+        SNode behavior = SNodeOperations.getNodeAncestor(myOperation, CONCEPTS.ConceptBehavior$2, false, true);
         assert behavior != null;
-        return new InvokationTarget(SLinkOperations.getTarget(behavior, LINKS.concept$u6dL), methodDecl, InvokationType.INVOKE_SUPER);
+        // XXX what is targetConcept for? It represents concept where super call is done
+        //   However, seems SMethod.invokeSuper() does expects origin concept.
+        return new InvokationTarget(SLinkOperations.getTarget(behavior, LINKS.concept$u6dL), myMethod, InvokationType.INVOKE_SUPER);
       }
     }
   }
@@ -84,7 +89,6 @@ public final class ConceptMethodSuperCall {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

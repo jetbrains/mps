@@ -25,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
-public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
+public class Template_NodeOrConceptOperand extends TemplateDeclarationBase {
 
-  public Template_NodeOrConceptCommon() {
+  public Template_NodeOrConceptOperand() {
     super(new MO());
   }
 
@@ -35,6 +35,9 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3099391750892228764");
   }
 
+  public String[] getParameterNames() {
+    return new String[]{"operand"};
+  }
 
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();

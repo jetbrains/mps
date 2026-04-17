@@ -14,9 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
 import jetbrains.mps.generator.impl.reference.RefResolver;
-import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import java.util.Collections;
-import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,6 +32,9 @@ public class Template_reduce_reflectiveInvoke extends TemplateDeclarationBase {
     return new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3866789353799081477");
   }
 
+  public String[] getParameterNames() {
+    return new String[]{"operand", "operation"};
+  }
 
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
@@ -45,7 +45,9 @@ public class Template_reduce_reflectiveInvoke extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        tlist2 = environment.callSite(new Template_NodeOrConceptCommon(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "633481135935145334")).apply(context1);
+        TemplateContext context2 = context1;
+        context2 = context2.withVariable("operand", ((SNode) context2.getVariable("operand")));
+        tlist2 = environment.callSite(new Template_NodeOrConceptOperand(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "633481135935145334")).apply(context2);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
@@ -53,27 +55,20 @@ public class Template_reduce_reflectiveInvoke extends TemplateDeclarationBase {
         environment.resolve(new RefResolver(tnode3, myAssociationLinks[2], context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7939541470171874107"), "BaseConcept") {
           @Override
           public Object resolve() {
-            return QueriesGenerated.referenceMacro_GetReferent_24_0(createQueryContext());
+            return QueriesGenerated.referenceMacro_GetReferent_18_0(createQueryContext());
           }
         });
         environment.aggregate(tnode1, myAggregationLinks[0], tnode3);
       }
       {
         Collection<SNode> tlist4 = null;
-        SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_24_0(new SourceSubstituteMacroNodeContext(context1, callMacro));
-        TemplateContext context2 = context1;
-        context2 = context2.subContext(null, callInputNode4);
-        if (callInputNode4 != null) {
-          tlist4 = environment.callSite(new Template_createSMethodId(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6138025383583026135")).apply(context2);
-        } else {
-          tlist4 = Collections.emptyList();
-        }
+        tlist4 = environment.callSite(new Template_createSMethodId(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6138025383583026135")).apply(context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist4);
       }
       {
         Collection<SNode> tlist5 = null;
         TemplateContext context3 = context1;
-        context3 = context3.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_24_0(new TemplateArgumentContext(context3, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7939541470171862556")))));
+        context3 = context3.withVariable("methodCall", ((SNode) context3.getVariable("operation")));
         tlist5 = environment.callSite(new Template_reduce_Parameters(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7939541470171862555")).apply(context3);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist5);
       }
@@ -113,5 +108,4 @@ public class Template_reduce_reflectiveInvoke extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer callMacro = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6138025383583026135");
 }
