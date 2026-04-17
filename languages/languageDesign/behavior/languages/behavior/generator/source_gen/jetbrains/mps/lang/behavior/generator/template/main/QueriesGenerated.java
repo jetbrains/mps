@@ -376,7 +376,10 @@ public class QueriesGenerated {
       return (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(parent, CONCEPTS.ExpressionStatement$O8));
     }
     SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi);
-    return returnType != null && SNodeOperations.isInstanceOf(returnType, CONCEPTS.PrimitiveType$sR) && !(SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF));
+    if (returnType == null || SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF)) {
+      return false;
+    }
+    return true;
   }
   public static boolean ifMacro_Condition_15_0(final IfMacroContext _context) {
     SNode deParent = SNodeOperations.getParent(SNodeOperations.getParent(((SNode) _context.getVariable("operand"))));
@@ -507,7 +510,11 @@ public class QueriesGenerated {
     return ((SNode) _context.getVariable("operand"));
   }
   public static SNode sourceNodeQuery_14_0(final SourceSubstituteMacroNodeContext _context) {
-    return (SNode) Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi));
+    SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi);
+    if (SNodeOperations.isInstanceOf(returnType, CONCEPTS.PrimitiveType$sR)) {
+      return returnType;
+    }
+    return (SNode) Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(returnType);
   }
   public static SNode sourceNodeQuery_14_1(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw);
