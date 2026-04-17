@@ -14,6 +14,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConceptConstructorDeclaration;
   private ConceptPresentation props_ConceptMethodDeclaration;
   private ConceptPresentation props_LocalBehaviorMethodCall;
+  private ConceptPresentation props_Node_ConceptMethodCall;
   private ConceptPresentation props_SuperConceptExpression;
   private ConceptPresentation props_SuperExpression;
   private ConceptPresentation props_SuperNodeExpression;
@@ -56,6 +57,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LocalBehaviorMethodCall = cpb.create();
         }
         return props_LocalBehaviorMethodCall;
+      case LanguageConceptSwitch.Node_ConceptMethodCall:
+        if (props_Node_ConceptMethodCall == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration", "", "");
+          props_Node_ConceptMethodCall = cpb.create();
+        }
+        return props_Node_ConceptMethodCall;
       case LanguageConceptSwitch.SuperConceptExpression:
         if (props_SuperConceptExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

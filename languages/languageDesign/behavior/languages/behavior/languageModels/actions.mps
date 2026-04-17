@@ -293,7 +293,7 @@
     </node>
     <node concept="37WvkG" id="2KrHZuGTull" role="37WGs$">
       <property role="3mWdv0" value="Move concept method call from lang.smodel to lang.behavior" />
-      <ref role="37XkoT" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall2" />
+      <ref role="37XkoT" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall" />
       <node concept="37Y9Zx" id="2KrHZuGTulm" role="37ZfLb">
         <node concept="3clFbS" id="2KrHZuGTuln" role="2VODD2">
           <node concept="3clFbJ" id="2KrHZuGTupI" role="3cqZAp">

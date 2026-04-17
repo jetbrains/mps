@@ -15,11 +15,12 @@ public final class LanguageConceptSwitch implements ConceptIndex {
   public static final int ConceptConstructorDeclaration = 1;
   public static final int ConceptMethodDeclaration = 2;
   public static final int LocalBehaviorMethodCall = 3;
-  public static final int SuperConceptExpression = 4;
-  public static final int SuperExpression = 5;
-  public static final int SuperNodeExpression = 6;
-  public static final int ThisConceptExpression = 7;
-  public static final int ThisNodeExpression = 8;
+  public static final int Node_ConceptMethodCall = 4;
+  public static final int SuperConceptExpression = 5;
+  public static final int SuperExpression = 6;
+  public static final int SuperNodeExpression = 7;
+  public static final int ThisConceptExpression = 8;
+  public static final int ThisNodeExpression = 9;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L);
@@ -27,6 +28,7 @@ public final class LanguageConceptSwitch implements ConceptIndex {
     builder.put(0x11d43471eedL, ConceptConstructorDeclaration);
     builder.put(0x11d4348057eL, ConceptMethodDeclaration);
     builder.put(0x5a277db47d54d7e1L, LocalBehaviorMethodCall);
+    builder.put(0x2ce598bdcf8e55cdL, Node_ConceptMethodCall);
     builder.put(0x69a9d7dcb057a7a7L, SuperConceptExpression);
     builder.put(0x25076477397f04e3L, SuperExpression);
     builder.put(0x11d434a6558L, SuperNodeExpression);

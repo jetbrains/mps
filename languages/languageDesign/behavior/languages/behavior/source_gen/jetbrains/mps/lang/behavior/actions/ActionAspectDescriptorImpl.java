@@ -20,6 +20,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
       switch (concept.getName()) {
         case "ConceptMethodDeclaration":
           return Collections.<NodeFactory>singletonList(new ConceptMethod.NodeFactory_1238617792578());
+        case "Node_ConceptMethodCall":
+          return Collections.<NodeFactory>singletonList(new ConceptMethod.NodeFactory_3178336236425569621());
         default:
       }
     }

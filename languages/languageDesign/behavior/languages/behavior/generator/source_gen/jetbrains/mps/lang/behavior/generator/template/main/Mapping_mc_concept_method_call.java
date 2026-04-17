@@ -21,6 +21,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
+import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
@@ -58,73 +59,82 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       if (QueriesGenerated.rule_Condition_14_1(new BaseMappingRuleContext(context, rule))) {
-        Collection<SNode> tlist2 = Collections.emptyList();
-        if (QueriesGenerated.ifMacro_Condition_14_0(new IfMacroContext(context, ifMacroRef))) {
-          final SNode tnode3 = environment.createOutputNode(myConcepts[0]);
+        Collection<SNode> tlist2 = null;
+        TemplateContext context1 = context;
+        context1 = context1.withVariable("var:methodDecl", QueriesGenerated.varMacro_Value_14_0(new TemplateVarContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3178336236425389729"))));
+        Collection<SNode> tlist3 = Collections.emptyList();
+        if (QueriesGenerated.ifMacro_Condition_14_0(new IfMacroContext(context1, ifMacroRef))) {
+          final SNode tnode4 = environment.createOutputNode(myConcepts[0]);
           {
-            TemplateContext context1 = context.subContext();
+            TemplateContext context2 = context1.subContext();
             {
-              final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+              final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
               {
-                TemplateContext context2 = context1.subContext();
-                {
-                  Collection<SNode> tlist5 = null;
-                  final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_14_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
-                  tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/5616724231236702708", context2);
-                  environment.aggregate(tnode4, myAggregationLinks[0], tlist5);
-                }
+                TemplateContext context3 = context2.subContext();
                 {
                   Collection<SNode> tlist6 = null;
-                  SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_14_1(new SourceSubstituteMacroNodeContext(context2, callMacro));
-                  TemplateContext context3 = context2;
-                  context3 = context3.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_14_0(new TemplateArgumentContext(context3, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206681213")))));
-                  context3 = context3.withVariable("operation", ((SNode) QueriesGenerated.templateArgumentQuery_14_1(new TemplateArgumentContext(context3, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206685125")))));
-                  context3 = context3.subContext(null, callInputNode6);
-                  if (callInputNode6 != null) {
-                    tlist6 = environment.callSite(new Template_reduce_reflectiveInvoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561205244825")).apply(context3);
+                  final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_14_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro));
+                  tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/5616724231236702708", context3);
+                  environment.aggregate(tnode5, myAggregationLinks[0], tlist6);
+                }
+                {
+                  Collection<SNode> tlist7 = null;
+                  SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_14_1(new SourceSubstituteMacroNodeContext(context3, callMacro));
+                  TemplateContext context4 = context3;
+                  context4 = context4.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_14_0(new TemplateArgumentContext(context4, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206681213")))));
+                  context4 = context4.withVariable("operation", ((SNode) QueriesGenerated.templateArgumentQuery_14_1(new TemplateArgumentContext(context4, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206685125")))));
+                  context4 = context4.subContext(null, callInputNode7);
+                  if (callInputNode7 != null) {
+                    tlist7 = environment.callSite(new Template_reduce_reflectiveInvoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561205244825")).apply(context4);
                   } else {
-                    tlist6 = Collections.emptyList();
+                    tlist7 = Collections.emptyList();
                   }
-                  environment.aggregate(tnode4, myAggregationLinks[1], tlist6);
+                  environment.aggregate(tnode5, myAggregationLinks[1], tlist7);
                 }
               }
-              environment.aggregate(tnode3, myAggregationLinks[2], tnode4);
+              environment.aggregate(tnode4, myAggregationLinks[2], tnode5);
             }
           }
-          tlist2 = TemplateUtil.singletonList(tnode3);
+          tlist3 = TemplateUtil.singletonList(tnode4);
         } else {
-          Collection<SNode> tlist7 = null;
-          SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_14_2(new SourceSubstituteMacroNodeContext(context, callMacro1));
-          TemplateContext context4 = context;
-          context4 = context4.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_14_2(new TemplateArgumentContext(context4, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206693378")))));
-          context4 = context4.withVariable("operation", ((SNode) QueriesGenerated.templateArgumentQuery_14_3(new TemplateArgumentContext(context4, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206695938")))));
-          context4 = context4.subContext(null, callInputNode7);
-          if (callInputNode7 != null) {
-            tlist7 = environment.callSite(new Template_reduce_reflectiveInvoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561205238862")).apply(context4);
+          Collection<SNode> tlist8 = null;
+          SNode callInputNode8 = QueriesGenerated.sourceNodeQuery_14_2(new SourceSubstituteMacroNodeContext(context1, callMacro1));
+          TemplateContext context5 = context1;
+          context5 = context5.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_14_2(new TemplateArgumentContext(context5, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206693378")))));
+          context5 = context5.withVariable("operation", ((SNode) QueriesGenerated.templateArgumentQuery_14_3(new TemplateArgumentContext(context5, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561206695938")))));
+          context5 = context5.subContext(null, callInputNode8);
+          if (callInputNode8 != null) {
+            tlist8 = environment.callSite(new Template_reduce_reflectiveInvoke(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7771214561205238862")).apply(context5);
           } else {
-            tlist7 = Collections.emptyList();
+            tlist8 = Collections.emptyList();
           }
-          tlist2 = tlist7;
+          tlist3 = tlist8;
         }
+        tlist2 = tlist3;
         tlist1 = tlist2;
       } else {
-        Collection<SNode> tlist8 = null;
+        Collection<SNode> tlist9 = null;
+        TemplateContext context6 = context;
+        context6 = context6.withVariable("var:methodDecl", QueriesGenerated.varMacro_Value_14_1(new TemplateVarContext(context6, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3178336236425476669"))));
+        Collection<SNode> tlist10 = null;
         {
-          final SNode switchInput8 = QueriesGenerated.sourceNodeQuery_14_3(new SourceSubstituteMacroNodeContext(context, switchMacroRef));
-          if (switchInput8 == null) {
-            tlist8 = Collections.emptyList();
+          final SNode switchInput10 = QueriesGenerated.sourceNodeQuery_14_3(new SourceSubstituteMacroNodeContext(context6, switchMacroRef));
+          if (switchInput10 == null) {
+            tlist10 = Collections.emptyList();
           } else {
-            TemplateContext switchContext8 = context;
-            switchContext8 = switchContext8.withVariable("cmc", ((SNode) QueriesGenerated.templateArgumentQuery_14_4(new TemplateArgumentContext(switchContext8, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "311370605323986260")))));
-            switchContext8 = switchContext8.subContext(null, switchInput8);
-            tlist8 = environment.trySwitch(templateSwitchNode, switchContext8);
-            if (tlist8 == null) {
-              final SNode tnode9 = environment.createOutputNode(myConcepts[2]);
-              tlist8 = TemplateUtil.singletonList(tnode9);
+            TemplateContext switchContext10 = context6;
+            switchContext10 = switchContext10.withVariable("cmc", ((SNode) QueriesGenerated.templateArgumentQuery_14_4(new TemplateArgumentContext(switchContext10, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "311370605323986260")))));
+            switchContext10 = switchContext10.withVariable("methodDeclaration", ((SNode) switchContext10.getVariable("var:methodDecl")));
+            switchContext10 = switchContext10.subContext(null, switchInput10);
+            tlist10 = environment.trySwitch(templateSwitchNode, switchContext10);
+            if (tlist10 == null) {
+              final SNode tnode11 = environment.createOutputNode(myConcepts[2]);
+              tlist10 = TemplateUtil.singletonList(tnode11);
             }
           }
         }
-        tlist1 = tlist8;
+        tlist9 = tlist10;
+        tlist1 = tlist9;
       }
       return tlist1;
     }

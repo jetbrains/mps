@@ -2685,7 +2685,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="2N_AbRfzZOs">
-    <ref role="13h7C2" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall2" />
+    <ref role="13h7C2" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall" />
     <node concept="13i0hz" id="hEwIWmB" role="13h7CS">
       <property role="TrG5h" value="getVariableExpectedName" />
       <ref role="13i0hy" to="tpek:hEwIP$B" resolve="getVariableExpectedName" />

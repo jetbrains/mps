@@ -66,7 +66,7 @@ public class QueriesGenerated {
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "behavior");
   }
   public static boolean rule_Condition_14_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$RC);
   }
   public static boolean rule_Condition_14_1(final BaseMappingRuleContext _context) {
     SModule module = _context.getOriginalInputModel().getModule();
@@ -375,11 +375,7 @@ public class QueriesGenerated {
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ExpressionStatement$O8)) {
       return (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(parent, CONCEPTS.ExpressionStatement$O8));
     }
-    SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi);
-    if (returnType == null || SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF)) {
-      return false;
-    }
-    return true;
+    return SLinkOperations.getTarget(((SNode) _context.getVariable("var:methodDecl")), LINKS.returnType$5xoi) != null && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(((SNode) _context.getVariable("var:methodDecl")), LINKS.returnType$5xoi), CONCEPTS.VoidType$BF));
   }
   public static boolean ifMacro_Condition_15_0(final IfMacroContext _context) {
     SNode deParent = SNodeOperations.getParent(SNodeOperations.getParent(((SNode) _context.getVariable("operand"))));
@@ -510,17 +506,13 @@ public class QueriesGenerated {
     return ((SNode) _context.getVariable("operand"));
   }
   public static SNode sourceNodeQuery_14_0(final SourceSubstituteMacroNodeContext _context) {
-    SNode returnType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi);
-    if (SNodeOperations.isInstanceOf(returnType, CONCEPTS.PrimitiveType$sR)) {
-      return returnType;
-    }
-    return (SNode) Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(returnType);
+    return SLinkOperations.getTarget(((SNode) _context.getVariable("var:methodDecl")), LINKS.returnType$5xoi);
   }
   public static SNode sourceNodeQuery_14_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("var:methodDecl"));
   }
   public static SNode sourceNodeQuery_14_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("var:methodDecl"));
   }
   public static SNode sourceNodeQuery_14_3(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.operand$w6IR);
@@ -547,20 +539,20 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.returnType$5xoi);
   }
   public static SNode sourceNodeQuery_23_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(((SNode) _context.getVariable("cmc")), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("methodDeclaration"));
   }
   public static SNode sourceNodeQuery_23_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(((SNode) _context.getVariable("cmc")), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("methodDeclaration"));
   }
   public static SNode sourceNodeQuery_23_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(((SNode) _context.getVariable("cmc")), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("methodDeclaration"));
   }
   public static SNode sourceNodeQuery_23_3(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(((SNode) _context.getVariable("cmc")), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("methodDeclaration"));
   }
   public static SNode sourceNodeQuery_23_4(final SourceSubstituteMacroNodeContext _context) {
     // node here is operand from DotExpression
-    return SLinkOperations.getTarget(((SNode) _context.getVariable("cmc")), LINKS.baseMethodDeclaration$pyYw);
+    return ((SNode) _context.getVariable("methodDeclaration"));
   }
   public static SNode sourceNodeQuery_24_0(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.returnType$5xoi));
@@ -588,13 +580,13 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.operand$w6IR);
   }
   public static Object templateArgumentQuery_14_1(final TemplateArgumentContext _context) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz);
+    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.IMethodCall$M9);
   }
   public static Object templateArgumentQuery_14_2(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.operand$w6IR);
   }
   public static Object templateArgumentQuery_14_3(final TemplateArgumentContext _context) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz);
+    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.IMethodCall$M9);
   }
   public static Object templateArgumentQuery_23_0(final TemplateArgumentContext _context) {
     return _context.getNode();
@@ -612,7 +604,7 @@ public class QueriesGenerated {
     return SNodeOperations.cast(_context.getNode(), CONCEPTS.Expression$mB);
   }
   public static Object templateArgumentQuery_14_4(final TemplateArgumentContext _context) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz);
+    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.IMethodCall$M9);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return ((List<SNode>) _context.getVariable("var:ConceptBehaviors"));
@@ -657,7 +649,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(((SNode) _context.getVariable("methodCall")), LINKS.actualArgument$pzdx);
   }
   public static boolean mc_Condition_14(final TemplateQueryContext _context) {
-    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Node_ConceptMethodCall$mz)).isNotEmpty();
+    return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Node_ConceptMethodCall$mz)).isNotEmpty() || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.Node_ConceptMethodCall$RC)).isNotEmpty();
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     SModel bhModel = _context.getInputModel();
@@ -672,6 +664,24 @@ public class QueriesGenerated {
   public static Object varMacro_Value_6_1(final TemplateVarContext _context) {
     // FIXME likely shall use ConceptMethodGenerationHelper.getCompressedLanguageId() right away (need a new method in SMethodBuilder)
     return new LanguageIdCalculator(_context).calcLangId(ConceptMethodDeclaration__BehaviorDescriptor.getContainingConcept_idi3POAMX.invoke(((ConceptMethodGenerationHelper) _context.getVariable("var:methodHelper")).getBaseMethod()));
+  }
+  public static Object varMacro_Value_14_0(final TemplateVarContext _context) {
+    SNode rv = null;
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz)) {
+      rv = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$RC)) {
+      rv = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$RC), LINKS.baseMethodDeclaration$pyYw);
+    }
+    return rv;
+  }
+  public static Object varMacro_Value_14_1(final TemplateVarContext _context) {
+    SNode rv = null;
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz)) {
+      rv = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$mz), LINKS.baseMethodDeclaration$pyYw);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$RC)) {
+      rv = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.Node_ConceptMethodCall$RC), LINKS.baseMethodDeclaration$pyYw);
+    }
+    return rv;
   }
   public static Object varMacro_Value_20_0(final TemplateVarContext _context) {
     return new ConceptMethodSuperCall(((SNode) _context.getVariable("operand")), ((SNode) _context.getVariable("methodCall")), _context.getNode()).getMethodCallTarget();
@@ -694,6 +704,7 @@ public class QueriesGenerated {
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept Node_ConceptMethodCall$RC = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x2ce598bdcf8e55cdL, "jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall");
     /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
     /*package*/ static final SInterfaceConcept SuperExpression$pj = MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression");
     /*package*/ static final SInterfaceConcept IThisExpression$8h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d206f8d91L, "jetbrains.mps.baseLanguage.structure.IThisExpression");
@@ -707,6 +718,7 @@ public class QueriesGenerated {
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept SuperConceptExpression$_4 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
     /*package*/ static final SConcept ThisConceptExpression$KM = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 

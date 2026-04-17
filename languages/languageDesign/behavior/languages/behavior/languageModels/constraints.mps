@@ -1352,7 +1352,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="2N_AbRfzNVX">
-    <ref role="1M2myG" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall2" />
+    <ref role="1M2myG" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall" />
     <node concept="1N5Pfh" id="hDMFHXL" role="1Mr941">
       <ref role="1N5Vy1" to="1i04:2N_AbRfz_AZ" resolve="conceptMethodDeclaration" />
       <node concept="3dgokm" id="5tSqQCN6ym$" role="1N6uqs">

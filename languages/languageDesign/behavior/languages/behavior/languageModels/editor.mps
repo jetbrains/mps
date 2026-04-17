@@ -1867,7 +1867,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="2N_AbRfz_WF">
-    <ref role="1XX52x" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall2" />
+    <ref role="1XX52x" to="1i04:2N_AbRfz_nd" resolve="Node_ConceptMethodCall" />
     <node concept="3EZMnI" id="haqhzWB" role="2wV5jI">
       <node concept="1iCGBv" id="haqh$Hf" role="3EZMnx">
         <ref role="1NtTu8" to="1i04:2N_AbRfz_AZ" resolve="conceptMethodDeclaration" />
