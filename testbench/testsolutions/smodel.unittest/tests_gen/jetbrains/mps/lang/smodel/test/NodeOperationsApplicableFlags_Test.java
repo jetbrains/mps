@@ -83,7 +83,11 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
           boolean toSingleLink = (boolean) SNodeOperation__BehaviorDescriptor.applicableToLink_id1653mnvAgvK.invoke(SNodeOperations.asSConcept(c));
           boolean toConceptOrNode = (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c));
           Assert.assertEquals(String.format("Wrong applicableTo for %s", c.getName()), Integer.valueOf(1), Integer.valueOf(TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), toProperty, toModel, toSingleLink, toLinkList, toConceptOrNode))));
-          Assert.assertTrue(c.getQualifiedName(), SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.AsSConcept$qr) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Node_ConceptMethodCall$mz) || TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)), (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c)))) <= 1);
+          // name match is to exclude lang.behavior.Node_CMC withoout introducing module dependency.
+          if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.AsSConcept$qr)) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Node_ConceptMethodCall$mz)) && !("Node_ConceptMethodCall".equals(c.getName()))) {
+            // for whatever reason, we allow applicability to concept AND node to selected operations only
+            Assert.assertTrue(c.getQualifiedName(), TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)), (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c)))) <= 1);
+          }
         }
       });
     }
@@ -119,7 +123,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
   private static final class CONCEPTS {
     /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
     /*package*/ static final SConcept Property_HasValue_Enum$dn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10add1ded2bL, "jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum");
-    /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
     /*package*/ static final SConcept AsSConcept$qr = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
+    /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
   }
 }

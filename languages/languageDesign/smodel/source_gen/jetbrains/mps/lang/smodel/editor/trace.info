@@ -72,13 +72,6 @@
       <unit at="45,0,60,0" name="jetbrains.mps.lang.smodel.editor.LinkRefQualifier_SubstituteMenu$SMP_Subconcepts_drj977_b" />
       <unit at="25,0,69,0" name="jetbrains.mps.lang.smodel.editor.LinkRefQualifier_SubstituteMenu" />
     </file>
-    <file name="Node_ConceptMethodCall_SubstituteMenu.java">
-      <unit at="61,0,64,0" name="jetbrains.mps.lang.smodel.editor.Node_ConceptMethodCall_SubstituteMenu$CONCEPTS" />
-      <unit at="65,0,68,0" name="jetbrains.mps.lang.smodel.editor.Node_ConceptMethodCall_SubstituteMenu$LINKS" />
-      <unit at="38,0,45,0" name="jetbrains.mps.lang.smodel.editor.Node_ConceptMethodCall_SubstituteMenu$SMP_ReferenceScope_4xwxqv_a" />
-      <unit at="45,0,60,0" name="jetbrains.mps.lang.smodel.editor.Node_ConceptMethodCall_SubstituteMenu$SMP_Subconcepts_4xwxqv_b" />
-      <unit at="25,0,69,0" name="jetbrains.mps.lang.smodel.editor.Node_ConceptMethodCall_SubstituteMenu" />
-    </file>
     <file name="PresentationProviders.java">
       <unit at="8,0,14,0" name="jetbrains.mps.lang.smodel.editor.PresentationProviders" />
     </file>
@@ -31822,6 +31815,15 @@
       </scope>
       <scope id="667652263373910288" at="34,0,46,0" />
       <unit id="8958657035619598619" at="15,0,47,0" name="jetbrains.mps.lang.smodel.editor.SModelPointerType_EditorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/920903972411514183">
+    <file name="Node_ConceptMethodCall_SubstituteMenu.java">
+      <node id="920903972411514183" at="10,50,11,222" concept="13" />
+      <node id="920903972411514183" at="10,0,13,0" concept="1" trace="Node_ConceptMethodCall_SubstituteMenu#()V" />
+      <scope id="920903972411514183" at="10,50,11,222" />
+      <scope id="920903972411514183" at="10,0,13,0" />
+      <unit id="920903972411514183" at="9,0,15,0" name="jetbrains.mps.lang.smodel.editor.Node_ConceptMethodCall_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/942336824646299498">
