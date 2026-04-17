@@ -34,8 +34,7 @@ public class ThisNodeExpression_Constraints extends BaseConstraintsDescriptor {
   }
 
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // todo [MM] remove call with "true" arg after 3.5, needed for compatibility purposes
-    return ConstraintsUtil.isInsideOfBehavior(parentNode, false) || ConstraintsUtil.isInsideOfBehavior(parentNode, true);
+    return ConstraintsUtil.isInsideOfBehavior(parentNode, false);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6786d6ee-e5cc-4a77-9efd-65a8dca8b187(jetbrains.mps.lang.behavior.constraints)", "1227128029536560974");
 

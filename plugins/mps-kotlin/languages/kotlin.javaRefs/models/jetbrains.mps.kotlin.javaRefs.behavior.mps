@@ -47,10 +47,10 @@
         <property id="5864038008284099149" name="isStatic" index="2Ki8OM" />
         <reference id="1225194472831" name="overriddenMethod" index="13i0hy" />
       </concept>
-      <concept id="1225194628440" name="jetbrains.mps.lang.behavior.structure.SuperNodeExpression" flags="nn" index="13iAh5">
-        <reference id="5299096511375896640" name="superConcept" index="3eA5LN" />
-      </concept>
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
+      <concept id="7613853987897845671" name="jetbrains.mps.lang.behavior.structure.SuperConceptExpression" flags="ng" index="3pZB1V">
+        <reference id="7613853987897845672" name="superConcept" index="3pZB1O" />
+      </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
@@ -3607,16 +3607,16 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="FkvPB6SQ_b" role="3cqZAp">
-          <node concept="2OqwBi" id="FkvPB6SQ_8" role="3clFbG">
-            <node concept="2qgKlT" id="FkvPB6SQ_a" role="2OqNvi">
+        <node concept="3clFbF" id="4$QkOk78Wtl" role="3cqZAp">
+          <node concept="2OqwBi" id="4$QkOk78Y7T" role="3clFbG">
+            <node concept="3pZB1V" id="4$QkOk78Wtj" role="2Oq$k0">
+              <ref role="3pZB1O" to="hcm8:5D4bOjrr8CG" resolve="IFunctionCall" />
+            </node>
+            <node concept="2qgKlT" id="4$QkOk78YA9" role="2OqNvi">
               <ref role="37wK5l" to="hez:6dAo8EmAhT7" resolve="getFunctionScopeParts" />
-              <node concept="37vLTw" id="pkrm6j5p8W" role="37wK5m">
+              <node concept="37vLTw" id="4$QkOk78YHD" role="37wK5m">
                 <ref role="3cqZAo" node="pkrm6j5oRv" resolve="context" />
               </node>
-            </node>
-            <node concept="13iAh5" id="5wKFMyp70Tf" role="2Oq$k0">
-              <ref role="3eA5LN" to="hcm8:5D4bOjrr8CG" resolve="IFunctionCall" />
             </node>
           </node>
         </node>

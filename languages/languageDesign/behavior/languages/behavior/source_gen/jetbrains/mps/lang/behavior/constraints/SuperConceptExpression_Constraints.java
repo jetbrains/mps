@@ -86,7 +86,7 @@ public class SuperConceptExpression_Constraints extends BaseConstraintsDescripto
     }
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return ConstraintsUtil.isInsideOfBehavior(parentNode);
+    return ConstraintsUtil.isInsideOfBehavior(parentNode, true);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6786d6ee-e5cc-4a77-9efd-65a8dca8b187(jetbrains.mps.lang.behavior.constraints)", "1227128029536560969");
 
