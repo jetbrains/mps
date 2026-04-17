@@ -5765,18 +5765,40 @@
                   <node concept="10Nm6u" id="pWw8KO4UiN" role="37wK5m" />
                   <node concept="5jKBG" id="6JoTBx1YPep" role="lGtFl">
                     <ref role="v9R2y" node="3mDA6SutdS5" resolve="reduce_reflectiveInvoke" />
+                    <node concept="2OqwBi" id="6JoTBx24jTX" role="v9R3O">
+                      <node concept="30H73N" id="6JoTBx24jhP" role="2Oq$k0" />
+                      <node concept="3TrEf2" id="6JoTBx24klT" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpee:hqOq$gm" resolve="operand" />
+                      </node>
+                    </node>
+                    <node concept="1PxgMI" id="6JoTBx24kR5" role="v9R3O">
+                      <node concept="chp4Y" id="6JoTBx24kR6" role="3oSUPX">
+                        <ref role="cht4Q" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
+                      </node>
+                      <node concept="2OqwBi" id="6JoTBx24kR7" role="1m5AlR">
+                        <node concept="30H73N" id="6JoTBx24kR8" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="6JoTBx24kR9" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3NFfHV" id="6JoTBx1YQ53" role="5jGum">
                       <node concept="3clFbS" id="6JoTBx1YQ54" role="2VODD2">
                         <node concept="3clFbF" id="6JoTBx1YQhi" role="3cqZAp">
-                          <node concept="1PxgMI" id="6JoTBx1YQOd" role="3clFbG">
-                            <node concept="chp4Y" id="6JoTBx1YQY4" role="3oSUPX">
-                              <ref role="cht4Q" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
-                            </node>
-                            <node concept="2OqwBi" id="6JoTBx1YQvN" role="1m5AlR">
-                              <node concept="30H73N" id="6JoTBx1YQhh" role="2Oq$k0" />
-                              <node concept="3TrEf2" id="6JoTBx1YQJJ" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
+                          <node concept="2OqwBi" id="6JoTBx24lFk" role="3clFbG">
+                            <node concept="1PxgMI" id="6JoTBx1YQOd" role="2Oq$k0">
+                              <node concept="chp4Y" id="6JoTBx1YQY4" role="3oSUPX">
+                                <ref role="cht4Q" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
                               </node>
+                              <node concept="2OqwBi" id="6JoTBx1YQvN" role="1m5AlR">
+                                <node concept="30H73N" id="6JoTBx1YQhh" role="2Oq$k0" />
+                                <node concept="3TrEf2" id="6JoTBx1YQJJ" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="3TrEf2" id="6JoTBx24m5Z" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tp25:haqh4HH" resolve="conceptMethodDeclaration" />
                             </node>
                           </node>
                         </node>
@@ -5899,17 +5921,39 @@
                       <node concept="3NFfHV" id="6JoTBx1YNWp" role="5jGum">
                         <node concept="3clFbS" id="6JoTBx1YNWq" role="2VODD2">
                           <node concept="3clFbF" id="6JoTBx1YNYD" role="3cqZAp">
-                            <node concept="1PxgMI" id="6JoTBx1YOTh" role="3clFbG">
-                              <node concept="chp4Y" id="6JoTBx1YOWp" role="3oSUPX">
-                                <ref role="cht4Q" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
-                              </node>
-                              <node concept="2OqwBi" id="6JoTBx1YOd_" role="1m5AlR">
-                                <node concept="30H73N" id="6JoTBx1YNYC" role="2Oq$k0" />
-                                <node concept="3TrEf2" id="6JoTBx1YOt4" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
+                            <node concept="2OqwBi" id="6JoTBx24mnV" role="3clFbG">
+                              <node concept="1PxgMI" id="6JoTBx1YOTh" role="2Oq$k0">
+                                <node concept="chp4Y" id="6JoTBx1YOWp" role="3oSUPX">
+                                  <ref role="cht4Q" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
+                                </node>
+                                <node concept="2OqwBi" id="6JoTBx1YOd_" role="1m5AlR">
+                                  <node concept="30H73N" id="6JoTBx1YNYC" role="2Oq$k0" />
+                                  <node concept="3TrEf2" id="6JoTBx1YOt4" role="2OqNvi">
+                                    <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
+                                  </node>
                                 </node>
                               </node>
+                              <node concept="3TrEf2" id="6JoTBx24mB7" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp25:haqh4HH" resolve="conceptMethodDeclaration" />
+                              </node>
                             </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="6JoTBx24mS2" role="v9R3O">
+                        <node concept="30H73N" id="6JoTBx24mGn" role="2Oq$k0" />
+                        <node concept="3TrEf2" id="6JoTBx24n68" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpee:hqOq$gm" resolve="operand" />
+                        </node>
+                      </node>
+                      <node concept="1PxgMI" id="6JoTBx24nw2" role="v9R3O">
+                        <node concept="chp4Y" id="6JoTBx24nyN" role="3oSUPX">
+                          <ref role="cht4Q" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
+                        </node>
+                        <node concept="2OqwBi" id="6JoTBx24nay" role="1m5AlR">
+                          <node concept="30H73N" id="6JoTBx24n7p" role="2Oq$k0" />
+                          <node concept="3TrEf2" id="6JoTBx24niP" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
                           </node>
                         </node>
                       </node>
@@ -6450,7 +6494,19 @@
   <node concept="13MO4I" id="3mDA6SutdS5">
     <property role="TrG5h" value="reduce_reflectiveInvoke" />
     <property role="3GE5qa" value="method_call" />
-    <ref role="3gUMe" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
+    <ref role="3gUMe" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
+    <node concept="1N15co" id="6JoTBx24apd" role="1s_3oS">
+      <property role="TrG5h" value="operand" />
+      <node concept="3Tqbb2" id="6JoTBx24ape" role="1N15GL">
+        <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="1N15co" id="6JoTBx24eCh" role="1s_3oS">
+      <property role="TrG5h" value="operation" />
+      <node concept="3Tqbb2" id="6JoTBx24f1T" role="1N15GL">
+        <ref role="ehGHo" to="tpee:hxndl_i" resolve="IMethodCall" />
+      </node>
+    </node>
     <node concept="2YIFZL" id="3mDA6SutdS6" role="13RCb5">
       <property role="TrG5h" value="foo" />
       <node concept="3cqZAl" id="pWw8KO4$BL" role="3clF45" />
@@ -6463,23 +6519,8 @@
             <node concept="10Nm6u" id="6SIUIrh4Tnj" role="37wK5m">
               <node concept="5jKBG" id="za$VMvkOlQ" role="lGtFl">
                 <ref role="v9R2y" node="2G3g61bHh2s" resolve="NodeOrConceptOperand" />
-                <node concept="3NFfHV" id="6JoTBx1YEop" role="5jGum">
-                  <node concept="3clFbS" id="6JoTBx1YEoq" role="2VODD2">
-                    <node concept="3clFbF" id="6JoTBx1YEvz" role="3cqZAp">
-                      <node concept="2OqwBi" id="6JoTBx1YERV" role="3clFbG">
-                        <node concept="30H73N" id="6JoTBx1YEvy" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="6JoTBx1YFgi" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tp25:haqh4HH" resolve="conceptMethodDeclaration" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="6JoTBx1YF$S" role="v9R3O">
-                  <node concept="30H73N" id="6JoTBx1YFul" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="6JoTBx1YFZI" role="2OqNvi">
-                    <ref role="37wK5l" to="tpeu:hEwJdGu" resolve="getLeftExpression" />
-                  </node>
+                <node concept="v3LJS" id="6JoTBx24b3i" role="v9R3O">
+                  <ref role="v3LJV" node="6JoTBx24apd" resolve="operand" />
                 </node>
               </node>
             </node>
@@ -6490,26 +6531,10 @@
                 <property role="2qtEX8" value="conceptDeclaration" />
                 <node concept="3$xsQk" id="6SIUIrh4WcW" role="3$ytzL">
                   <node concept="3clFbS" id="6SIUIrh4WcX" role="2VODD2">
-                    <node concept="3cpWs8" id="6SIUIrh4WcY" role="3cqZAp">
-                      <node concept="3cpWsn" id="6SIUIrh4WcZ" role="3cpWs9">
-                        <property role="TrG5h" value="conceptMethodDeclaration" />
-                        <node concept="3Tqbb2" id="6SIUIrh4Wd0" role="1tU5fm">
-                          <ref role="ehGHo" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
-                        </node>
-                        <node concept="2OqwBi" id="6SIUIrh4Wd1" role="33vP2m">
-                          <node concept="30H73N" id="6SIUIrh4Wd2" role="2Oq$k0" />
-                          <node concept="3TrEf2" id="6SIUIrh4Wd3" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tp25:haqh4HH" resolve="conceptMethodDeclaration" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3cpWs6" id="6SIUIrh4Wd4" role="3cqZAp">
                       <node concept="2OqwBi" id="6SIUIrh4Wd5" role="3cqZAk">
                         <node concept="2OqwBi" id="6SIUIrh4Wd6" role="2Oq$k0">
-                          <node concept="37vLTw" id="6SIUIrh4Wd7" role="2Oq$k0">
-                            <ref role="3cqZAo" node="6SIUIrh4WcZ" resolve="conceptMethodDeclaration" />
-                          </node>
+                          <node concept="30H73N" id="6JoTBx24bFI" role="2Oq$k0" />
                           <node concept="2qgKlT" id="6SIUIrh4Wd8" role="2OqNvi">
                             <ref role="37wK5l" to="csvn:hP3pnNF" resolve="getBehaviour" />
                           </node>
@@ -6535,27 +6560,19 @@
               </node>
               <node concept="5jKBG" id="5kIDp3iN0Jn" role="lGtFl">
                 <ref role="v9R2y" node="pWw8KNZY3Z" resolve="createSMethodId" />
-                <node concept="3NFfHV" id="5kIDp3iN0Jo" role="5jGum">
-                  <node concept="3clFbS" id="5kIDp3iN0Jp" role="2VODD2">
-                    <node concept="3clFbF" id="5kIDp3iN0Jq" role="3cqZAp">
-                      <node concept="2OqwBi" id="5kIDp3iN0Jr" role="3clFbG">
-                        <node concept="30H73N" id="5kIDp3iN0Js" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="5kIDp3iN0Jt" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tp25:haqh4HH" resolve="conceptMethodDeclaration" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
               </node>
             </node>
             <node concept="10Nm6u" id="6SIUIrh4Toq" role="37wK5m">
               <node concept="5jKBG" id="6SIUIrh4Tor" role="lGtFl">
                 <ref role="v9R2y" node="3HzlNjB4c2P" resolve="reduce_Parameters" />
-                <node concept="2OqwBi" id="6SIUIrh4Tos" role="v9R3O">
-                  <node concept="30H73N" id="6SIUIrh4Tot" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="6SIUIrh4Tou" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tp25:haqh4HH" resolve="conceptMethodDeclaration" />
+                <node concept="30H73N" id="6SIUIrh4Tot" role="v9R3O" />
+                <node concept="3NFfHV" id="6JoTBx24ffg" role="5jGum">
+                  <node concept="3clFbS" id="6JoTBx24ffh" role="2VODD2">
+                    <node concept="3clFbF" id="6JoTBx24fAt" role="3cqZAp">
+                      <node concept="v3LJS" id="6JoTBx24gSP" role="3clFbG">
+                        <ref role="v3LJV" node="6JoTBx24eCh" resolve="operation" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -7539,7 +7556,7 @@
   <node concept="13MO4I" id="3HzlNjB4c2P">
     <property role="TrG5h" value="reduce_Parameters" />
     <property role="3GE5qa" value="method_call" />
-    <ref role="3gUMe" to="tp25:haqgKhF" resolve="Node_ConceptMethodCall" />
+    <ref role="3gUMe" to="tpee:hxndl_i" resolve="IMethodCall" />
     <node concept="1N15co" id="3HzlNjB4L2b" role="1s_3oS">
       <property role="TrG5h" value="methodDeclaration" />
       <node concept="3Tqbb2" id="3HzlNjB4MUi" role="1N15GL">
