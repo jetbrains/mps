@@ -200,7 +200,7 @@
 <!--                        serviceImplementation="com.intellij.openapi.projectRoots.impl.DefaultJdkConfiguratorImpl"/>-->
 <!--    <orderRootType implementation="com.intellij.openapi.roots.JavadocOrderRootType"/>-->
 
-<!--    <dynamicActionConfigurationCustomizer  implementation="jetbrains.mps.ide.projectPane.ProjectPaneActionsCustomizer"/>-->
+    <dynamicActionConfigurationCustomizer  implementation="jetbrains.mps.ide.projectPane.ProjectPaneActionsCustomizer"/>
   </extensions>
 
   <actions>
