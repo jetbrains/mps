@@ -261,7 +261,6 @@ __switch__:
       }
       String errorString = message + sj.toString();
       if (useQuickfix && supportsCheckedExceptions) {
-        new RuntimeException("test").printStackTrace();
         if ((SNodeOperations.getNodeAncestor(mainNode, CONCEPTS.ITryCatchStatement$pH, false, false) != null)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();

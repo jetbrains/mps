@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -28,7 +27,6 @@ public class checkThrowedByThrowIsCaught_NonTypesystemRule extends AbstractNonTy
     SNode var = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
     if (SNodeOperations.hasRole(var, LINKS.throwable$$5MH) || SNodeOperations.hasRole(var, LINKS.throwable$UWM1)) {
       thrownTypes = RulesFunctions_BaseLanguage.getPreciseRethrowTypes(throwStatement);
-      LogContext.with(checkThrowedByThrowIsCaught_NonTypesystemRule.class, null, null, null).error("DDDDD");
     } else {
       thrownTypes = SNodeOperations.ofConcept(Sequence.<SNode>singleton(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(throwStatement, LINKS.throwable$kKKg))), CONCEPTS.Type$bu);
     }
