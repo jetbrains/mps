@@ -50,6 +50,9 @@
         <child id="1238857834412" name="index" index="1LF_Uc" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ngI" index="22mbnS">
         <child id="414384289274416996" name="parts" index="3ft7WO" />
@@ -338,7 +341,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
@@ -2315,7 +2317,7 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="2qgKlT" id="3D1tQXbZk2d" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORgl$" role="2OqNvi">
                         <ref role="37wK5l" to="tpcb:67EYkym$wx3" resolve="getConceptDeclaration" />
                       </node>
                     </node>
@@ -5351,7 +5353,7 @@
                       <node concept="37vLTw" id="4y7B6YcfWTz" role="2Oq$k0">
                         <ref role="3cqZAo" node="3D1tQXbYJRp" resolve="conceptNode" />
                       </node>
-                      <node concept="2qgKlT" id="4y7B6YcfDtM" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORglA" role="2OqNvi">
                         <ref role="37wK5l" to="tpcn:hMuxyK2" resolve="getImmediateSuperconcepts" />
                       </node>
                     </node>
@@ -5364,7 +5366,7 @@
                                 <node concept="37vLTw" id="4y7B6YcfDtT" role="2Oq$k0">
                                   <ref role="3cqZAo" node="5W7E4fV0W8N" resolve="it" />
                                 </node>
-                                <node concept="2qgKlT" id="4y7B6YcfDtU" role="2OqNvi">
+                                <node concept="3zqWPK" id="70OdufORglC" role="2OqNvi">
                                   <ref role="37wK5l" to="tpcn:hEwILL0" resolve="getReferenceLinkDeclarations" />
                                 </node>
                               </node>

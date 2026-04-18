@@ -70,6 +70,7 @@
         <property id="1225194472834" name="isAbstract" index="13i0iv" />
       </concept>
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1219920932475" name="jetbrains.mps.baseLanguage.structure.VariableArityType" flags="in" index="8X2XB">
@@ -369,7 +370,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -7736,9 +7736,9 @@
                   <node concept="37vLTw" id="hT$RY9r" role="2Oq$k0">
                     <ref role="3cqZAo" node="hT$RY9k" resolve="bla" />
                   </node>
-                  <node concept="2qgKlT" id="hT$RY9s" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcRQ" role="2OqNvi">
                     <ref role="37wK5l" to="tpcu:hEwIMij" resolve="isInTemplates" />
-                    <node concept="3xLA65" id="hT$RY9t" role="lGtFl">
+                    <node concept="3xLA65" id="70OdufORcRT" role="lGtFl">
                       <property role="TrG5h" value="call" />
                     </node>
                   </node>
@@ -7804,7 +7804,7 @@
               <node concept="1pGfFk" id="hT$RY9Q" role="2ShVmc">
                 <ref role="37wK5l" to="89o2:7nrhK3uHfcw" resolve="InlineMethodRefactoring" />
                 <node concept="3xONca" id="hT$RY9R" role="37wK5m">
-                  <ref role="3xOPvv" node="hT$RY9t" resolve="call" />
+                  <ref role="3xOPvv" node="70OdufORcRT" resolve="call" />
                 </node>
               </node>
             </node>
@@ -7861,7 +7861,7 @@
                 </node>
                 <node concept="2OqwBi" id="hT$RYax" role="3uHU7B">
                   <node concept="13iPFW" id="hT$RYay" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="hT$RYaz" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcRU" role="2OqNvi">
                     <ref role="37wK5l" node="hT$RYal" resolve="foo" />
                   </node>
                 </node>
@@ -7882,7 +7882,7 @@
                 <node concept="10Oyi0" id="hT$RYaF" role="1tU5fm" />
                 <node concept="2OqwBi" id="hT$RYaG" role="33vP2m">
                   <node concept="13iPFW" id="hT$RYaH" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="hT$RYaI" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcRW" role="2OqNvi">
                     <ref role="37wK5l" node="hT$RYal" resolve="foo" />
                   </node>
                 </node>
@@ -7922,12 +7922,12 @@
                   <node concept="37vLTw" id="hT$RYag" role="2Oq$k0">
                     <ref role="3cqZAo" node="hT$RYa6" resolve="node" />
                   </node>
-                  <node concept="2qgKlT" id="hT$RYah" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcRY" role="2OqNvi">
                     <ref role="37wK5l" node="hT$RYar" resolve="bar" />
-                    <node concept="3cmrfG" id="hT$RYai" role="37wK5m">
+                    <node concept="3cmrfG" id="70OdufORcS0" role="37wK5m">
                       <property role="3cmrfH" value="10" />
                     </node>
-                    <node concept="3xLA65" id="hT$RYaj" role="lGtFl">
+                    <node concept="3xLA65" id="70OdufORcS2" role="lGtFl">
                       <property role="TrG5h" value="call" />
                     </node>
                   </node>
@@ -7967,7 +7967,7 @@
                 </node>
                 <node concept="2OqwBi" id="hT$RYbh" role="3uHU7B">
                   <node concept="13iPFW" id="hT$RYbi" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="hT$RYbj" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcS3" role="2OqNvi">
                     <ref role="37wK5l" node="hT$RYb5" resolve="foo" />
                   </node>
                 </node>
@@ -7988,7 +7988,7 @@
                 <node concept="10Oyi0" id="hT$RYbr" role="1tU5fm" />
                 <node concept="2OqwBi" id="hT$RYbs" role="33vP2m">
                   <node concept="13iPFW" id="hT$RYbt" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="hT$RYbu" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcS5" role="2OqNvi">
                     <ref role="37wK5l" node="hT$RYb5" resolve="foo" />
                   </node>
                 </node>
@@ -8029,7 +8029,7 @@
                     <node concept="37vLTw" id="hT$RYb1" role="2Oq$k0">
                       <ref role="3cqZAo" node="hT$RYaQ" resolve="node" />
                     </node>
-                    <node concept="2qgKlT" id="hT$RYb2" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORcS7" role="2OqNvi">
                       <ref role="37wK5l" node="hT$RYb5" resolve="foo" />
                     </node>
                   </node>
@@ -8080,7 +8080,7 @@
               <node concept="1pGfFk" id="hT$RYbJ" role="2ShVmc">
                 <ref role="37wK5l" to="89o2:7nrhK3uHfcw" resolve="InlineMethodRefactoring" />
                 <node concept="3xONca" id="hT$RYbK" role="37wK5m">
-                  <ref role="3xOPvv" node="hT$RYaj" resolve="call" />
+                  <ref role="3xOPvv" node="70OdufORcS2" resolve="call" />
                 </node>
               </node>
             </node>
@@ -8134,9 +8134,9 @@
                 <node concept="10Oyi0" id="hT$RYc5" role="1tU5fm" />
                 <node concept="2OqwBi" id="hT$RYc6" role="33vP2m">
                   <node concept="13iPFW" id="hT$RYc7" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="hT$RYc8" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcS9" role="2OqNvi">
                     <ref role="37wK5l" node="hT$RYbV" resolve="foo" />
-                    <node concept="3xLA65" id="hT$RYc9" role="lGtFl">
+                    <node concept="3xLA65" id="70OdufORcSc" role="lGtFl">
                       <property role="TrG5h" value="call" />
                     </node>
                   </node>
@@ -8199,7 +8199,7 @@
               <node concept="1pGfFk" id="hT$RYcx" role="2ShVmc">
                 <ref role="37wK5l" to="89o2:7nrhK3uHfcw" resolve="InlineMethodRefactoring" />
                 <node concept="3xONca" id="hT$RYcy" role="37wK5m">
-                  <ref role="3xOPvv" node="hT$RYc9" resolve="call" />
+                  <ref role="3xOPvv" node="70OdufORcSc" resolve="call" />
                 </node>
               </node>
             </node>
@@ -15413,7 +15413,7 @@
                 <node concept="37vLTw" id="3OXbVrRKaTb" role="2Oq$k0">
                   <ref role="3cqZAo" node="3OXbVrRKaTd" resolve="node" />
                 </node>
-                <node concept="2qgKlT" id="3OXbVrRKaTc" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcSd" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
                 </node>
               </node>
@@ -15451,7 +15451,7 @@
           <node concept="3clFbF" id="3OXbVrRKdaG" role="3cqZAp">
             <node concept="2OqwBi" id="3OXbVrRKdaH" role="3clFbG">
               <node concept="2Sf5sV" id="3OXbVrRKdaI" role="2Oq$k0" />
-              <node concept="2qgKlT" id="3OXbVrRKdaJ" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcSf" role="2OqNvi">
                 <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
               </node>
             </node>
@@ -24753,9 +24753,9 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2qgKlT" id="_7nsw4h6Tf" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcSh" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:hEwIMij" resolve="isInTemplates" />
-                  <node concept="3xLA65" id="_7nsw4h7YB" role="lGtFl">
+                  <node concept="3xLA65" id="70OdufORcSk" role="lGtFl">
                     <property role="TrG5h" value="call" />
                   </node>
                 </node>
@@ -24855,7 +24855,7 @@
               <node concept="1pGfFk" id="_7nsw4gLiC" role="2ShVmc">
                 <ref role="37wK5l" to="89o2:7nrhK3uHfcw" resolve="InlineMethodRefactoring" />
                 <node concept="3xONca" id="_7nsw4gLiD" role="37wK5m">
-                  <ref role="3xOPvv" node="_7nsw4h7YB" resolve="call" />
+                  <ref role="3xOPvv" node="70OdufORcSk" resolve="call" />
                 </node>
               </node>
             </node>

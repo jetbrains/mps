@@ -18,6 +18,9 @@
     <import index="kdzh" ref="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
@@ -126,7 +129,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
@@ -187,7 +189,7 @@
             <node concept="1YBJjd" id="1aYLt$9esyV" role="2Oq$k0">
               <ref role="1YBMHb" node="6rDosczLWA$" resolve="buildSolutionRunner" />
             </node>
-            <node concept="2qgKlT" id="1aYLt$9esyW" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORc3n" role="2OqNvi">
               <ref role="37wK5l" to="tos2:1aYLt$9dW4N" resolve="getClassName" />
             </node>
           </node>
@@ -202,7 +204,7 @@
             <node concept="1YBJjd" id="1aYLt$9euiV" role="2Oq$k0">
               <ref role="1YBMHb" node="6rDosczLWA$" resolve="buildSolutionRunner" />
             </node>
-            <node concept="2qgKlT" id="1aYLt$9euiW" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORc3p" role="2OqNvi">
               <ref role="37wK5l" to="tos2:1aYLt$9dX0a" resolve="getMethodName" />
             </node>
           </node>
@@ -301,7 +303,7 @@
               <node concept="37vLTw" id="7L2U3nU1lro" role="2Oq$k0">
                 <ref role="3cqZAo" node="7L2U3nU1lrk" resolve="solution" />
               </node>
-              <node concept="2qgKlT" id="6rDosczM1nx" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORc3r" role="2OqNvi">
                 <ref role="37wK5l" to="2txq:41K1b4v5ZCB" resolve="getModuleReference" />
               </node>
             </node>
@@ -433,7 +435,7 @@
                       <node concept="37vLTw" id="1aYLt$9c3LT" role="2Oq$k0">
                         <ref role="3cqZAo" node="1aYLt$9bB$s" resolve="classToRun" />
                       </node>
-                      <node concept="2qgKlT" id="1aYLt$9c3LU" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORc3t" role="2OqNvi">
                         <ref role="37wK5l" to="tpek:4_LVZ3pCeXr" resolve="staticMethods" />
                       </node>
                     </node>

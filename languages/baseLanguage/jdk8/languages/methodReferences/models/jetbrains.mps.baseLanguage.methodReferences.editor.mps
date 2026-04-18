@@ -19,6 +19,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
       <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
@@ -344,7 +347,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -496,7 +498,7 @@
               <node concept="3fqX7Q" id="5DBbMQ1CgnN" role="3clFbG">
                 <node concept="2OqwBi" id="5DBbMQ1CgnP" role="3fr31v">
                   <node concept="pncrf" id="5DBbMQ1CgnQ" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="5DBbMQ1CgnR" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORfpB" role="2OqNvi">
                     <ref role="37wK5l" to="2fxp:5DBbMQ1v9ur" resolve="isConstructor" />
                   </node>
                 </node>
@@ -524,7 +526,7 @@
             <node concept="3clFbF" id="5DBbMQ1wGpG" role="3cqZAp">
               <node concept="2OqwBi" id="5DBbMQ1wGB6" role="3clFbG">
                 <node concept="pncrf" id="5DBbMQ1wGpF" role="2Oq$k0" />
-                <node concept="2qgKlT" id="5DBbMQ1CgfB" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORfpD" role="2OqNvi">
                   <ref role="37wK5l" to="2fxp:5DBbMQ1v9ur" resolve="isConstructor" />
                 </node>
               </node>
@@ -821,9 +823,9 @@
                     <property role="Xl_RC" value="::" />
                   </node>
                   <node concept="2OqwBi" id="1wEcoXjIIG4" role="3uHU7B">
-                    <node concept="2qgKlT" id="1wEcoXjIIG5" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORfpF" role="2OqNvi">
                       <ref role="37wK5l" to="tpek:7q4lzBFjvF8" resolve="getNestedNameInContext" />
-                      <node concept="1yR$tW" id="1wEcoXjIIG8" role="37wK5m" />
+                      <node concept="1yR$tW" id="70OdufORfpH" role="37wK5m" />
                     </node>
                     <node concept="2ZBlsa" id="1wEcoXjIIG9" role="2Oq$k0" />
                   </node>
@@ -1100,7 +1102,7 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="2qgKlT" id="2Yg2DIzFMQT" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORfpI" role="2OqNvi">
                         <ref role="37wK5l" to="2fxp:2Yg2DIzFJuK" resolve="getSubstituteNode" />
                       </node>
                     </node>

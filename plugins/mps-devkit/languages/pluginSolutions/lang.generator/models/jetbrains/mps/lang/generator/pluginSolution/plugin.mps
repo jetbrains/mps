@@ -97,6 +97,9 @@
         <child id="5538333046911298738" name="condition" index="1oa70y" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="4323500428136740385" name="jetbrains.mps.lang.editor.structure.CellIdReferenceSelector" flags="ng" index="2TlHUq">
         <reference id="4323500428136742952" name="id" index="2TlMyj" />
@@ -349,7 +352,6 @@
       <concept id="4497478346159780083" name="jetbrains.mps.lang.smodel.structure.LanguageRefExpression" flags="ng" index="pHN19">
         <child id="3542851458883491298" name="languageId" index="2V$M_3" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -785,7 +787,7 @@
               <node concept="37vLTw" id="3GM_nagTr$3" role="2Oq$k0">
                 <ref role="3cqZAo" node="nMe5u0Dxdv" resolve="node" />
               </node>
-              <node concept="2qgKlT" id="hR0Rp0k" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcSC" role="2OqNvi">
                 <ref role="37wK5l" to="tpcu:hEwIMij" resolve="isInTemplates" />
               </node>
             </node>
@@ -5622,12 +5624,12 @@
                   <node concept="35c_gC" id="21u4r8PzyHe" role="2Oq$k0">
                     <ref role="35c_gD" to="dvox:k2ZBl8Cedx" resolve="ModulePointer" />
                   </node>
-                  <node concept="2qgKlT" id="21u4r8Pz_HR" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcSE" role="2OqNvi">
                     <ref role="37wK5l" to="xlb7:1Bs_61$mIAC" resolve="create" />
-                    <node concept="37vLTw" id="21u4r8PzAJs" role="37wK5m">
+                    <node concept="37vLTw" id="70OdufORcSG" role="37wK5m">
                       <ref role="3cqZAo" node="5PAPEu$b$CV" resolve="myTargetModel" />
                     </node>
-                    <node concept="37vLTw" id="21u4r8PzCbj" role="37wK5m">
+                    <node concept="37vLTw" id="70OdufORcSH" role="37wK5m">
                       <ref role="3cqZAo" node="5PAPEu$bL0n" resolve="generatorIdentity" />
                     </node>
                   </node>
@@ -5812,9 +5814,9 @@
                   <node concept="37vLTw" id="5PAPEu$ibzI" role="2Oq$k0">
                     <ref role="3cqZAo" node="5PAPEu$ib9Y" resolve="langId" />
                   </node>
-                  <node concept="2qgKlT" id="5PAPEu$ibXq" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcSI" role="2OqNvi">
                     <ref role="37wK5l" to="tpeu:34EJa6aIcyw" resolve="setLanguage" />
-                    <node concept="37vLTw" id="3g3Xh9jeibY" role="37wK5m">
+                    <node concept="37vLTw" id="70OdufORcSK" role="37wK5m">
                       <ref role="3cqZAo" node="5PAPEu$i3aH" resolve="srcLanguage" />
                     </node>
                   </node>

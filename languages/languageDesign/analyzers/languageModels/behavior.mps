@@ -34,6 +34,7 @@
         <reference id="5299096511375896640" name="superConcept" index="3eA5LN" />
       </concept>
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
@@ -123,7 +124,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
@@ -226,7 +226,7 @@
               <node concept="13iAh5" id="2D1PBM_byao" role="2Oq$k0">
                 <ref role="3eA5LN" to="tpee:gyVMwX8" resolve="ConceptFunction" />
               </node>
-              <node concept="2qgKlT" id="2D1PBM_byan" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORfne" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2xELmDxyi2v" resolve="getParameterConcepts" />
               </node>
             </node>
@@ -331,7 +331,7 @@
               <node concept="13iAh5" id="2D1PBM_by8S" role="2Oq$k0">
                 <ref role="3eA5LN" to="tpee:gyVMwX8" resolve="ConceptFunction" />
               </node>
-              <node concept="2qgKlT" id="2D1PBM_by8R" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORfng" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2xELmDxyi2v" resolve="getParameterConcepts" />
               </node>
             </node>
@@ -424,7 +424,7 @@
               <node concept="13iAh5" id="2D1PBM_byLR" role="2Oq$k0">
                 <ref role="3eA5LN" to="tpee:gyVMwX8" resolve="ConceptFunction" />
               </node>
-              <node concept="2qgKlT" id="2D1PBM_byLQ" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORfni" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2xELmDxyi2v" resolve="getParameterConcepts" />
               </node>
             </node>
@@ -544,7 +544,7 @@
             <node concept="3cpWs6" id="9V7Nft_vlz" role="3cqZAp">
               <node concept="2OqwBi" id="9V7Nft_vl$" role="3cqZAk">
                 <node concept="13iPFW" id="9V7Nft_vl_" role="2Oq$k0" />
-                <node concept="2qgKlT" id="9V7Nft_vlN" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORfnk" role="2OqNvi">
                   <ref role="37wK5l" node="9V7Nft_oXD" resolve="getAnalyzerRunnerName" />
                 </node>
               </node>
@@ -561,7 +561,7 @@
           <node concept="3cpWs3" id="9V7Nft_vlG" role="3cqZAk">
             <node concept="2OqwBi" id="9V7Nft_vlH" role="3uHU7w">
               <node concept="13iPFW" id="9V7Nft_vlI" role="2Oq$k0" />
-              <node concept="2qgKlT" id="9V7Nft_vlO" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORfnm" role="2OqNvi">
                 <ref role="37wK5l" node="9V7Nft_oXD" resolve="getAnalyzerRunnerName" />
               </node>
             </node>

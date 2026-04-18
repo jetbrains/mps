@@ -26,6 +26,9 @@
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -269,7 +272,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
@@ -4338,7 +4340,7 @@
                 <ref role="3Tt5mk" to="tpd4:h5YuTL0" resolve="applicableNode" />
               </node>
             </node>
-            <node concept="2qgKlT" id="25idkGdl1Ne" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReAn" role="2OqNvi">
               <ref role="37wK5l" to="tpdd:hEwIszL" resolve="getApplicableConcept" />
             </node>
           </node>
@@ -4503,9 +4505,9 @@
           <node concept="37vLTw" id="25idkGdl1XI" role="2Oq$k0">
             <ref role="3cqZAo" node="25idkGdl1N9" resolve="applicableConcept" />
           </node>
-          <node concept="2qgKlT" id="25idkGdl2qt" role="2OqNvi">
+          <node concept="3zqWPK" id="70OdufOReAp" role="2OqNvi">
             <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
-            <node concept="35c_gC" id="4UTtJHKpgu7" role="37wK5m">
+            <node concept="35c_gC" id="70OdufOReAr" role="37wK5m">
               <ref role="35c_gD" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
             </node>
           </node>
@@ -4556,7 +4558,7 @@
             <node concept="37vLTw" id="6lCixFIaU36" role="2Oq$k0">
               <ref role="3cqZAo" node="25idkGdmHou" resolve="absRule" />
             </node>
-            <node concept="2qgKlT" id="6lCixFIaU37" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReAs" role="2OqNvi">
               <ref role="37wK5l" to="tpdd:6lCixFI9vx1" resolve="isAttributeRule" />
             </node>
           </node>
@@ -4610,7 +4612,7 @@
             <node concept="37vLTw" id="6lCixFIb3sz" role="2Oq$k0">
               <ref role="3cqZAo" node="6lCixFIb3sk" resolve="infRule" />
             </node>
-            <node concept="2qgKlT" id="6lCixFIb3s$" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReAu" role="2OqNvi">
               <ref role="37wK5l" to="tpdd:6lCixFI9vx1" resolve="isAttributeRule" />
             </node>
           </node>
@@ -4754,7 +4756,7 @@
               <node concept="1YBJjd" id="1tVw5WN_D2t" role="2Oq$k0">
                 <ref role="1YBMHb" node="Tc2lae_gnO" resolve="op" />
               </node>
-              <node concept="2qgKlT" id="1tVw5WN_DoG" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufOReAw" role="2OqNvi">
                 <ref role="37wK5l" to="tpeu:hEwJdGu" resolve="getLeftExpression" />
               </node>
             </node>

@@ -11,6 +11,9 @@
     <import index="wbvt" ref="r:0fa39ea9-f6a4-454d-9b16-ce07a09428ca(jetbrains.mps.lang.textGen.behavior)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -94,7 +97,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -135,7 +137,7 @@
                   </node>
                   <node concept="2OqwBi" id="13$$O5noojR" role="3K4Cdx">
                     <node concept="2Sf5sV" id="13$$O5noojS" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="13$$O5noojT" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORgP2" role="2OqNvi">
                       <ref role="37wK5l" to="wbvt:i0uJgJ6" resolve="withIndent" />
                     </node>
                   </node>
@@ -160,7 +162,7 @@
             <node concept="10P_77" id="i0uJ$xb" role="1tU5fm" />
             <node concept="2OqwBi" id="i0uJDrU" role="33vP2m">
               <node concept="2Sf5sV" id="i0uJDkO" role="2Oq$k0" />
-              <node concept="2qgKlT" id="i0uJDLd" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORgP4" role="2OqNvi">
                 <ref role="37wK5l" to="wbvt:i0uJgJ6" resolve="withIndent" />
               </node>
             </node>

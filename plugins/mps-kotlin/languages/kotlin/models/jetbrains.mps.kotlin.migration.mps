@@ -23,6 +23,9 @@
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
@@ -215,7 +218,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
@@ -3884,7 +3886,7 @@
                                 <node concept="37vLTw" id="5sK72SPKaF8" role="2Oq$k0">
                                   <ref role="3cqZAo" node="5W7E4fV0WSM" resolve="it" />
                                 </node>
-                                <node concept="2qgKlT" id="5sK72SPKaW5" role="2OqNvi">
+                                <node concept="3zqWPK" id="70OdufORcKt" role="2OqNvi">
                                   <ref role="37wK5l" to="hez:2WVyZr43qIN" resolve="getDefaultVisibility" />
                                 </node>
                               </node>
@@ -3958,7 +3960,7 @@
                                   <ref role="ehGHo" to="hcm8:2yYXHtlhVlH" resolve="IClassDeclaration" />
                                 </node>
                                 <node concept="2OqwBi" id="4oNDtESyqoR" role="33vP2m">
-                                  <node concept="2qgKlT" id="4oNDtESyqoT" role="2OqNvi">
+                                  <node concept="3zqWPK" id="70OdufORcKv" role="2OqNvi">
                                     <ref role="37wK5l" to="hez:7WpE6U5evQG" resolve="getConstructedClass" />
                                   </node>
                                   <node concept="Jnkvi" id="5sK72SPOTdq" role="2Oq$k0">
@@ -4019,7 +4021,7 @@
                                     <node concept="37vLTw" id="$q1KckMz3N" role="2Oq$k0">
                                       <ref role="3cqZAo" node="4oNDtESyqoQ" resolve="constructedClass" />
                                     </node>
-                                    <node concept="2qgKlT" id="$q1KckM$u_" role="2OqNvi">
+                                    <node concept="3zqWPK" id="70OdufORcKx" role="2OqNvi">
                                       <ref role="37wK5l" to="hez:6jE_6duswG9" resolve="getInheritance" />
                                     </node>
                                   </node>
@@ -4109,7 +4111,7 @@
                                 <node concept="37vLTw" id="5sK72SPKe_V" role="2Oq$k0">
                                   <ref role="3cqZAo" node="5W7E4fV0WSQ" resolve="it" />
                                 </node>
-                                <node concept="2qgKlT" id="5sK72SPKe_W" role="2OqNvi">
+                                <node concept="3zqWPK" id="70OdufORcKz" role="2OqNvi">
                                   <ref role="37wK5l" to="hez:6jE_6dusz0P" resolve="getDefaultInheritance" />
                                 </node>
                               </node>

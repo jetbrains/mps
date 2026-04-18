@@ -21,6 +21,9 @@
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
@@ -82,7 +85,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1180031783296" name="jetbrains.mps.lang.smodel.structure.Concept_IsSubConceptOfOperation" flags="nn" index="2Zo12i">
         <child id="1180031783297" name="conceptArgument" index="2Zo12j" />
       </concept>
@@ -118,9 +120,9 @@
                           <ref role="37wK5l" to="fnmy:2BGX2rDJlBR" resolve="MethodsScope" />
                           <node concept="2OqwBi" id="Q$FjPrpGse" role="37wK5m">
                             <node concept="3kakTB" id="Q$FjPrpFW0" role="2Oq$k0" />
-                            <node concept="2qgKlT" id="Q$FjPrpGKu" role="2OqNvi">
+                            <node concept="3zqWPK" id="70OdufORfp$" role="2OqNvi">
                               <ref role="37wK5l" to="tpek:50EF2fWdwEN" resolve="getAvailableMethodDeclarations" />
-                              <node concept="10Nm6u" id="Q$FjPrpOyP" role="37wK5m" />
+                              <node concept="10Nm6u" id="70OdufORfpA" role="37wK5m" />
                             </node>
                           </node>
                         </node>

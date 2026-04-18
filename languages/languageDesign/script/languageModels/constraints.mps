@@ -12,6 +12,9 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -83,7 +86,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
@@ -161,7 +163,7 @@
                         <ref role="3Tt5mk" to="tp33:5Ls_1gSlNir" resolve="newClassifier" />
                       </node>
                     </node>
-                    <node concept="2qgKlT" id="5Vvmn_QkR9$" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORfo3" role="2OqNvi">
                       <ref role="37wK5l" to="tpek:hEwJjl2" resolve="getMembers" />
                     </node>
                   </node>
@@ -263,7 +265,7 @@
                 <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
                 <node concept="2OqwBi" id="6yYldE4jM3o" role="37wK5m">
                   <node concept="2OqwBi" id="5Vvmn_QkR8J" role="2Oq$k0">
-                    <node concept="2qgKlT" id="5Vvmn_QkR8K" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORfo5" role="2OqNvi">
                       <ref role="37wK5l" to="tpek:hEwJjl2" resolve="getMembers" />
                     </node>
                     <node concept="2OqwBi" id="5Vvmn_QkR8L" role="2Oq$k0">

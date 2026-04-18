@@ -89,6 +89,9 @@
         <reference id="3205675194086671728" name="action" index="3$FpRE" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
         <property id="2162403111523065396" name="cellId" index="1lyBwo" />
@@ -441,7 +444,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -2522,7 +2524,7 @@
                 <node concept="1rXfSq" id="4ZD9PNE8mvH" role="2Oq$k0">
                   <ref role="37wK5l" node="4ZD9PNE2fyu" resolve="getCommandCursor" />
                 </node>
-                <node concept="2qgKlT" id="6ysF3v1j_tG" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORdxj" role="2OqNvi">
                   <ref role="37wK5l" to="zyb2:ApbqR6U7je" resolve="getCommandToEdit" />
                 </node>
               </node>
@@ -2711,7 +2713,7 @@
                     <node concept="1rXfSq" id="4ZD9PNE8KoX" role="2Oq$k0">
                       <ref role="37wK5l" node="4ZD9PNE2fyu" resolve="getCommandCursor" />
                     </node>
-                    <node concept="2qgKlT" id="6ysF3v1j_va" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORdxl" role="2OqNvi">
                       <ref role="37wK5l" to="zyb2:ApbqR6U7je" resolve="getCommandToEdit" />
                     </node>
                   </node>
@@ -7274,18 +7276,18 @@
         </node>
         <node concept="3clFbF" id="6ysF3v1j_n1" role="3cqZAp">
           <node concept="2OqwBi" id="6ysF3v1j_n2" role="3clFbG">
-            <node concept="2qgKlT" id="6ysF3v1j_n3" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORdxn" role="2OqNvi">
               <ref role="37wK5l" to="zyb2:5WvH$QO9bva" resolve="execute" />
-              <node concept="1rXfSq" id="4gO8GruTUHP" role="37wK5m">
+              <node concept="1rXfSq" id="70OdufORdxp" role="37wK5m">
                 <ref role="37wK5l" node="4gO8GruT1VH" resolve="getConsoleContext" />
               </node>
-              <node concept="37vLTw" id="44wmaesd5_O" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORdxq" role="37wK5m">
                 <ref role="3cqZAo" node="44wmaesd5_M" resolve="consoleStream" />
               </node>
-              <node concept="37vLTw" id="SA7aPjLzjI" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORdxr" role="37wK5m">
                 <ref role="3cqZAo" node="SA7aPjLziJ" resolve="beforeCommandClosure" />
               </node>
-              <node concept="37vLTw" id="SA7aPjMmTR" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORdxs" role="37wK5m">
                 <ref role="3cqZAo" node="SA7aPjMmSZ" resolve="afterCommandClosure" />
               </node>
             </node>

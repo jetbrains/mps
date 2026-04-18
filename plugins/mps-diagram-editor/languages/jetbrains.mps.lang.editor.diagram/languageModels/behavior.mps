@@ -31,6 +31,7 @@
         <reference id="1225194472831" name="overriddenMethod" index="13i0hy" />
       </concept>
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
@@ -118,7 +119,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -279,7 +279,7 @@
             <node concept="2OqwBi" id="1iN4mn3oc5G" role="2Oq$k0">
               <node concept="2OqwBi" id="1iN4mn3ob0$" role="2Oq$k0">
                 <node concept="13iPFW" id="3$rM_t_1$z3" role="2Oq$k0" />
-                <node concept="2qgKlT" id="1iN4mn3obXn" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORdtF" role="2OqNvi">
                   <ref role="37wK5l" node="1iN4mn3k5m3" resolve="getDiagramNodeCell" />
                 </node>
               </node>
@@ -287,11 +287,11 @@
                 <ref role="3Tt5mk" to="gbdf:WK6Z46CMBp" resolve="figure" />
               </node>
             </node>
-            <node concept="2qgKlT" id="1iN4mn3pasS" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORdtH" role="2OqNvi">
               <ref role="37wK5l" node="1iN4mn3oxt8" resolve="getFigureParameter" />
-              <node concept="2OqwBi" id="1iN4mn3paBn" role="37wK5m">
-                <node concept="13iPFW" id="3$rM_t_1$Aw" role="2Oq$k0" />
-                <node concept="3TrcHB" id="1iN4mn3pbCl" role="2OqNvi">
+              <node concept="2OqwBi" id="70OdufORdtJ" role="37wK5m">
+                <node concept="13iPFW" id="70OdufORdtK" role="2Oq$k0" />
+                <node concept="3TrcHB" id="70OdufORdtL" role="2OqNvi">
                   <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                 </node>
               </node>
@@ -603,7 +603,7 @@
                     <ref role="3Tt5mk" to="gbdf:4H19mAwT311" resolve="figureAttribute" />
                   </node>
                 </node>
-                <node concept="2qgKlT" id="4H19mAwTgkJ" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORdtM" role="2OqNvi">
                   <ref role="37wK5l" to="vtq6:4H19mAwT3wD" resolve="getPrameterAttributes" />
                 </node>
               </node>
@@ -617,7 +617,7 @@
                             <node concept="37vLTw" id="4H19mAwTs3k" role="2Oq$k0">
                               <ref role="3cqZAo" node="5W7E4fV0WO5" resolve="it" />
                             </node>
-                            <node concept="2qgKlT" id="4H19mAwTu8j" role="2OqNvi">
+                            <node concept="3zqWPK" id="70OdufORdtO" role="2OqNvi">
                               <ref role="37wK5l" to="vtq6:4H19mAwT7Py" resolve="getParameterMember" />
                             </node>
                           </node>
@@ -659,7 +659,7 @@
                   <ref role="3Tt5mk" to="gbdf:4H19mAwT311" resolve="figureAttribute" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="4H19mAwTI6v" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORdtQ" role="2OqNvi">
                 <ref role="37wK5l" to="vtq6:4H19mAwT3wD" resolve="getPrameterAttributes" />
               </node>
             </node>
@@ -674,7 +674,7 @@
                             <node concept="37vLTw" id="4H19mAwTTpY" role="2Oq$k0">
                               <ref role="3cqZAo" node="5W7E4fV0WO7" resolve="it" />
                             </node>
-                            <node concept="2qgKlT" id="4H19mAwTU_D" role="2OqNvi">
+                            <node concept="3zqWPK" id="70OdufORdtS" role="2OqNvi">
                               <ref role="37wK5l" to="vtq6:4H19mAwT7Py" resolve="getParameterMember" />
                             </node>
                           </node>

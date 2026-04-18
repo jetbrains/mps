@@ -43,6 +43,9 @@
         <child id="1238857834412" name="index" index="1LF_Uc" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -318,7 +321,6 @@
       <concept id="1204834851141" name="jetbrains.mps.lang.smodel.structure.PoundExpression" flags="ng" index="25Kdxt">
         <child id="1204834868751" name="expression" index="25KhWn" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
@@ -5221,7 +5223,7 @@
               <node concept="37vLTw" id="4q11fqJMhI_" role="2Oq$k0">
                 <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
               </node>
-              <node concept="2qgKlT" id="7mJe6tm_eog" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcK_" role="2OqNvi">
                 <ref role="37wK5l" to="hez:4nn3FPlEjh5" resolve="getFunctionName" />
               </node>
             </node>
@@ -5255,7 +5257,7 @@
                       <node concept="37vLTw" id="4q11fqJNfC1" role="2Oq$k0">
                         <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
                       </node>
-                      <node concept="2qgKlT" id="7mJe6tm_e1D" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORcKB" role="2OqNvi">
                         <ref role="37wK5l" to="hez:5D4bOjrrcOr" resolve="getTargetLink" />
                       </node>
                     </node>
@@ -5283,7 +5285,7 @@
             <node concept="37vLTw" id="7mJe6tm_3Bb" role="2Oq$k0">
               <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
             </node>
-            <node concept="2qgKlT" id="7mJe6tm_4cB" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKD" role="2OqNvi">
               <ref role="37wK5l" to="hez:5D4bOjruyUS" resolve="getModifierFilter" />
             </node>
           </node>
@@ -5307,7 +5309,7 @@
             <node concept="37vLTw" id="7mJe6tm_4lt" role="2Oq$k0">
               <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
             </node>
-            <node concept="2qgKlT" id="7mJe6tm_4UC" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKF" role="2OqNvi">
               <ref role="37wK5l" to="hez:1VI7K1jROBX" resolve="getArguments" />
             </node>
           </node>
@@ -5331,7 +5333,7 @@
             <node concept="37vLTw" id="7KgFmkHKZ6l" role="2Oq$k0">
               <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
             </node>
-            <node concept="2qgKlT" id="7KgFmkHL0V5" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKH" role="2OqNvi">
               <ref role="37wK5l" to="hez:5JfKd21NW9H" resolve="getTypeArguments" />
             </node>
           </node>
@@ -5353,7 +5355,7 @@
             <node concept="37vLTw" id="7mJe6tm_9q$" role="2Oq$k0">
               <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
             </node>
-            <node concept="2qgKlT" id="7mJe6tm_9Vx" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKJ" role="2OqNvi">
               <ref role="37wK5l" to="hez:5D4bOjrrcOr" resolve="getTargetLink" />
             </node>
           </node>
@@ -5382,7 +5384,7 @@
               <node concept="37vLTw" id="7iropoGZzMW" role="2Oq$k0">
                 <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
               </node>
-              <node concept="2qgKlT" id="7iropoGZzMX" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcKL" role="2OqNvi">
                 <ref role="37wK5l" to="hez:5D4bOjrrgiZ" resolve="getReceiver" />
               </node>
             </node>
@@ -5428,7 +5430,7 @@
             <node concept="37vLTw" id="7mJe6tm_I97" role="2Oq$k0">
               <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
             </node>
-            <node concept="2qgKlT" id="7mJe6tm_ITA" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKN" role="2OqNvi">
               <ref role="37wK5l" to="hez:26mUjU3xhgD" resolve="getFunctionDescriptor" />
             </node>
           </node>
@@ -5511,7 +5513,7 @@
             <node concept="37vLTw" id="13qggQCSrZN" role="2Oq$k0">
               <ref role="3cqZAo" node="7mJe6tm_2Ex" resolve="myFunctionCall" />
             </node>
-            <node concept="2qgKlT" id="13qggQCSsIV" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKP" role="2OqNvi">
               <ref role="37wK5l" to="hez:Ad0bnVTsgC" resolve="isNullSafe" />
             </node>
           </node>
@@ -6262,7 +6264,7 @@
             <node concept="37vLTw" id="7iropoGKl20" role="2Oq$k0">
               <ref role="3cqZAo" node="7iropoGKkns" resolve="myNodeToEvaluate" />
             </node>
-            <node concept="2qgKlT" id="7iropoGKlt6" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKR" role="2OqNvi">
               <ref role="37wK5l" to="hez:2PMtXoK3vgE" resolve="getNamedTarget" />
             </node>
           </node>
@@ -6283,7 +6285,7 @@
             <node concept="37vLTw" id="7iropoGKlDC" role="2Oq$k0">
               <ref role="3cqZAo" node="7iropoGKkns" resolve="myNodeToEvaluate" />
             </node>
-            <node concept="2qgKlT" id="7iropoGKm7g" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKT" role="2OqNvi">
               <ref role="37wK5l" to="hez:26mUjU3EUyw" resolve="getArgExpression" />
             </node>
           </node>
@@ -6317,7 +6319,7 @@
             <node concept="37vLTw" id="28Q2rIHdGzl" role="2Oq$k0">
               <ref role="3cqZAo" node="7iropoGKkns" resolve="myNodeToEvaluate" />
             </node>
-            <node concept="2qgKlT" id="28Q2rIHdHdy" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcKV" role="2OqNvi">
               <ref role="37wK5l" to="hez:bbFPPtRGEL" resolve="isVarArg" />
             </node>
           </node>

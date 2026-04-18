@@ -26,6 +26,9 @@
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
@@ -234,7 +237,6 @@
       <concept id="4497478346159780083" name="jetbrains.mps.lang.smodel.structure.LanguageRefExpression" flags="ng" index="pHN19">
         <child id="3542851458883491298" name="languageId" index="2V$M_3" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -348,7 +350,7 @@
                 <ref role="3Tt5mk" to="kdzh:3HwLahs6nSq" resolve="path" />
               </node>
             </node>
-            <node concept="2qgKlT" id="3HwLahs6nSC" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReMV" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:4Kip2_918YF" resolve="getRelativePath" />
             </node>
           </node>
@@ -511,9 +513,9 @@
             <node concept="1YBJjd" id="6cqWk79Lb6S" role="2Oq$k0">
               <ref role="1YBMHb" node="2cypSucdKpT" resolve="buildProject" />
             </node>
-            <node concept="2qgKlT" id="6cqWk79Lb_i" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReMX" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:4jjtc7WZOyG" resolve="getBasePath" />
-              <node concept="2YIFZM" id="6cqWk79LbO6" role="37wK5m">
+              <node concept="2YIFZM" id="70OdufOReMZ" role="37wK5m">
                 <ref role="37wK5l" to="o3n2:4jjtc7WZTjd" resolve="defaultContext" />
                 <ref role="1Pybhc" to="o3n2:4jjtc7WZOAv" resolve="Context" />
               </node>
@@ -1592,7 +1594,7 @@
                 <ref role="3Tt5mk" to="kdzh:3LQl9buGqe5" resolve="path" />
               </node>
             </node>
-            <node concept="2qgKlT" id="14TUqehuC9F" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReN0" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:4Kip2_918YF" resolve="getRelativePath" />
             </node>
           </node>
@@ -1650,7 +1652,7 @@
             </node>
           </node>
           <node concept="2OqwBi" id="4JJgtNkEHRK" role="33vP2m">
-            <node concept="2qgKlT" id="4JJgtNkEHRL" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReN2" role="2OqNvi">
               <ref role="37wK5l" to="2txq:3QtfwKhgryb" resolve="getDependenciesUnwrapped" />
             </node>
             <node concept="1PxgMI" id="4JJgtNkEHRM" role="2Oq$k0">
@@ -1694,7 +1696,7 @@
                       <node concept="37vLTw" id="14TUqehux0Z" role="2Oq$k0">
                         <ref role="3cqZAo" node="5W7E4fV0WDE" resolve="it" />
                       </node>
-                      <node concept="2qgKlT" id="14TUqehuxqF" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufOReN4" role="2OqNvi">
                         <ref role="37wK5l" to="vbkb:4Kip2_918YF" resolve="getRelativePath" />
                       </node>
                     </node>
@@ -1744,7 +1746,7 @@
                       <node concept="37vLTw" id="4JJgtNkEIpT" role="2Oq$k0">
                         <ref role="3cqZAo" node="5W7E4fV0WDG" resolve="it" />
                       </node>
-                      <node concept="2qgKlT" id="4JJgtNkEIpU" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufOReN6" role="2OqNvi">
                         <ref role="37wK5l" to="vbkb:4Kip2_918YF" resolve="getRelativePath" />
                       </node>
                     </node>
@@ -2251,9 +2253,9 @@
               <node concept="2GrUjf" id="36cV00CbE7p" role="2Oq$k0">
                 <ref role="2Gs0qQ" node="36cV00CbBZJ" resolve="layoutNode" />
               </node>
-              <node concept="2qgKlT" id="36cV00CbHGI" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufOReN8" role="2OqNvi">
                 <ref role="37wK5l" to="vbkb:5FtnUVJQES1" resolve="exports" />
-                <node concept="1YBJjd" id="36cV00CbHP0" role="37wK5m">
+                <node concept="1YBJjd" id="70OdufOReNa" role="37wK5m">
                   <ref role="1YBMHb" node="36cV00CbxrQ" resolve="ideaPlugin" />
                 </node>
               </node>
@@ -2379,7 +2381,7 @@
             <node concept="1YBJjd" id="5gKFLIN1mmx" role="2Oq$k0">
               <ref role="1YBMHb" node="3nXUieHENDY" resolve="buildModule" />
             </node>
-            <node concept="2qgKlT" id="5gKFLIN1nVd" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReNb" role="2OqNvi">
               <ref role="37wK5l" to="tpcu:hEwIMij" resolve="isInTemplates" />
             </node>
           </node>
@@ -2589,7 +2591,7 @@
                   <ref role="3Tt5mk" to="kdzh:hS0KzPP7W_" resolve="path" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="3nXUieHFF1c" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufOReNd" role="2OqNvi">
                 <ref role="37wK5l" to="vbkb:7wpYgMyTXsR" resolve="getParent" />
               </node>
             </node>
@@ -2643,7 +2645,7 @@
           <node concept="1YBJjd" id="1RsDREw1Pnl" role="2Oq$k0">
             <ref role="1YBMHb" node="1RsDREw1PeS" resolve="buildMpsLayout_Plugin" />
           </node>
-          <node concept="2qgKlT" id="1RsDREw1PA5" role="2OqNvi">
+          <node concept="3zqWPK" id="70OdufOReNf" role="2OqNvi">
             <ref role="37wK5l" to="2txq:1RsDREvCrek" resolve="isPluginDescriptorPossiblyMissingInLayout" />
           </node>
         </node>

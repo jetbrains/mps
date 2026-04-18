@@ -9,6 +9,9 @@
     <import index="6uiu" ref="r:5777900a-dedf-48c6-b3b8-5fd37f887019(jetbrains.mps.lang.util.order.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -58,7 +61,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
@@ -98,15 +100,15 @@
           <node concept="1YBJjd" id="1jgMklchA3Q" role="2Oq$k0">
             <ref role="1YBMHb" node="283lDAXQHG6" resolve="order" />
           </node>
-          <node concept="2qgKlT" id="1jgMklchA3V" role="2OqNvi">
+          <node concept="3zqWPK" id="70OdufORfAW" role="2OqNvi">
             <ref role="37wK5l" to="6uiu:1jgMklchcXk" resolve="presents" />
-            <node concept="2OqwBi" id="1jgMklchA4f" role="37wK5m">
-              <node concept="1YBJjd" id="1jgMklchA4e" role="2Oq$k0">
+            <node concept="2OqwBi" id="70OdufORfAY" role="37wK5m">
+              <node concept="1YBJjd" id="70OdufORfAZ" role="2Oq$k0">
                 <ref role="1YBMHb" node="283lDAXQHG6" resolve="order" />
               </node>
-              <node concept="2Xjw5R" id="1jgMklchA4j" role="2OqNvi">
-                <node concept="1xMEDy" id="1jgMklchA4k" role="1xVPHs">
-                  <node concept="chp4Y" id="22594Rb8c7t" role="ri$Ld">
+              <node concept="2Xjw5R" id="70OdufORfB0" role="2OqNvi">
+                <node concept="1xMEDy" id="70OdufORfB1" role="1xVPHs">
+                  <node concept="chp4Y" id="70OdufORfB2" role="ri$Ld">
                     <ref role="cht4Q" to="1po2:22594Rb8c7s" resolve="OrderParticipant" />
                   </node>
                 </node>

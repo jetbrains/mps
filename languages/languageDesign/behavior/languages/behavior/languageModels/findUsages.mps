@@ -25,6 +25,9 @@
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
       <concept id="558005353046640020" name="jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_progressMonitor" flags="ng" index="24CIHX" />
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
@@ -117,7 +120,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -271,7 +273,7 @@
                   <node concept="3clFbC" id="6ndnYgP6eeU" role="3uHU7w">
                     <node concept="2OqwBi" id="6ndnYgP6qp0" role="3uHU7w">
                       <node concept="39LhUk" id="5VO8AhfgajT" role="2Oq$k0" />
-                      <node concept="2qgKlT" id="6ndnYgP6rVf" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORh9P" role="2OqNvi">
                         <ref role="37wK5l" to="csvn:hP3pnNO" resolve="getOverridenMethod" />
                       </node>
                     </node>
@@ -339,14 +341,14 @@
           </node>
           <node concept="22lmx$" id="6ndnYgP5KMm" role="3clFbw">
             <node concept="2OqwBi" id="6ndnYgP5LDP" role="3uHU7w">
-              <node concept="2qgKlT" id="4c$BrPwbpWz" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh9R" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:28P2dHxCoRl" resolve="isAnAbstractMethod" />
               </node>
               <node concept="39LhUk" id="6ndnYgP5LbA" role="2Oq$k0" />
             </node>
             <node concept="2OqwBi" id="6ndnYgP5HAW" role="3uHU7B">
               <node concept="39LhUk" id="6ndnYgP5H3C" role="2Oq$k0" />
-              <node concept="2qgKlT" id="6ndnYgP5IU2" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh9T" role="2OqNvi">
                 <ref role="37wK5l" to="csvn:6WSEafdhbZX" resolve="isVirtual" />
               </node>
             </node>
@@ -379,14 +381,14 @@
           </node>
           <node concept="22lmx$" id="172ROKPIBuv" role="3clFbw">
             <node concept="2OqwBi" id="172ROKPIBuw" role="3uHU7w">
-              <node concept="2qgKlT" id="4c$BrPwbruy" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh9V" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:28P2dHxCoRl" resolve="isAnAbstractMethod" />
               </node>
               <node concept="39LhUk" id="172ROKPIBux" role="2Oq$k0" />
             </node>
             <node concept="2OqwBi" id="172ROKPIBuz" role="3uHU7B">
               <node concept="39LhUk" id="172ROKPIBu$" role="2Oq$k0" />
-              <node concept="2qgKlT" id="172ROKPIBu_" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh9X" role="2OqNvi">
                 <ref role="37wK5l" to="csvn:6WSEafdhbZX" resolve="isVirtual" />
               </node>
             </node>
@@ -434,7 +436,7 @@
             </node>
             <node concept="2OqwBi" id="5X7nk78BfIo" role="33vP2m">
               <node concept="39LhUk" id="5X7nk78BfIp" role="2Oq$k0" />
-              <node concept="2qgKlT" id="5X7nk78BfIq" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh9Z" role="2OqNvi">
                 <ref role="37wK5l" to="csvn:hP3pnNO" resolve="getOverridenMethod" />
               </node>
             </node>
@@ -454,7 +456,7 @@
                 <node concept="3clFbC" id="172ROKPIypt" role="3clFbw">
                   <node concept="2OqwBi" id="172ROKPIySZ" role="3uHU7w">
                     <node concept="39LhUk" id="172ROKPIyuE" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="172ROKPIzxX" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORha1" role="2OqNvi">
                       <ref role="37wK5l" to="csvn:i3POAMX" resolve="getContainingConcept" />
                     </node>
                   </node>
@@ -573,9 +575,9 @@
                     <node concept="2OqwBi" id="74j1j8ZLNNl" role="1m5AlR">
                       <node concept="2OqwBi" id="172ROKPD$W5" role="2Oq$k0">
                         <node concept="2OqwBi" id="74j1j8ZLwi2" role="2Oq$k0">
-                          <node concept="2qgKlT" id="74j1j8ZLwi4" role="2OqNvi">
+                          <node concept="3zqWPK" id="70OdufORha3" role="2OqNvi">
                             <ref role="37wK5l" to="tpcn:4G9PD8$NvPM" resolve="findConceptAspects" />
-                            <node concept="37vLTw" id="74j1j8ZLwi5" role="37wK5m">
+                            <node concept="37vLTw" id="70OdufORha5" role="37wK5m">
                               <ref role="3cqZAo" node="74j1j8ZLwhH" resolve="aspectModel" />
                             </node>
                           </node>
@@ -644,7 +646,7 @@
                                   <node concept="37vLTw" id="172ROKPDGcO" role="2Oq$k0">
                                     <ref role="3cqZAo" node="5W7E4fV0W37" resolve="it" />
                                   </node>
-                                  <node concept="2qgKlT" id="172ROKPGZpr" role="2OqNvi">
+                                  <node concept="3zqWPK" id="70OdufORha6" role="2OqNvi">
                                     <ref role="37wK5l" to="csvn:hP3pnNO" resolve="getOverridenMethod" />
                                   </node>
                                 </node>
@@ -709,7 +711,7 @@
           </node>
           <node concept="2OqwBi" id="1ofoPOHO6El" role="1ecym1">
             <node concept="39LhUk" id="1ofoPOHO67C" role="2Oq$k0" />
-            <node concept="2qgKlT" id="1ofoPOHOa1m" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORha8" role="2OqNvi">
               <ref role="37wK5l" to="csvn:i3POAMX" resolve="getContainingConcept" />
             </node>
           </node>

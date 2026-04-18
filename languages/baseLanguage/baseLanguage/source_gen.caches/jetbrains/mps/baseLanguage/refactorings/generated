@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-dlt8l7bwe5j2r1ajul96hf8tlrz67q8">
+<product version="3" modelHash="-96rhzzn4r53tghvbtxzpe5277qzaxr6">
   <files names="ChangeMethodSignature.java:ChangeMethodSignature_Target.java:MakeFieldFinal.java:MakeFieldFinal_Target.java:MakeFieldStatic.java:MakeFieldStatic_Target.java:RefactoringAspectDescriptor.java:ReplaceFieldWithProperty.java:ReplaceFieldWithProperty_Target.java:ReplacePropertyWithField.java:ReplacePropertyWithField_Target.java" />
 </product>
 

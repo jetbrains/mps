@@ -6905,14 +6905,14 @@
       <node id="4160292695789264843" at="5928,17,5929,68" concept="5" />
       <node id="6953235647888490675" at="6935,71,6936,70" concept="1" />
       <node id="6953235647888490675" at="7270,17,7271,72" concept="5" />
-      <node id="6953235647891074947" at="7564,72,7565,30" concept="4" />
-      <node id="6953235647891074947" at="7565,30,7566,225" concept="4" />
-      <node id="6953235647891074947" at="7566,225,7567,34" concept="1" />
-      <node id="6953235647891074947" at="7567,34,7568,248" concept="1" />
-      <node id="6953235647891074947" at="7568,248,7569,24" concept="5" />
+      <node id="8085146484218857394" at="7564,72,7565,30" concept="4" />
+      <node id="8085146484218857394" at="7565,30,7566,225" concept="4" />
+      <node id="8085146484218857394" at="7566,225,7567,34" concept="1" />
+      <node id="8085146484218857394" at="7567,34,7568,248" concept="1" />
+      <node id="8085146484218857394" at="7568,248,7569,24" concept="5" />
       <node id="4160292695789264844" at="1069,0,1072,0" concept="8" trace="propertyMacro_GetValue_143_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="6953235647891082003" at="1644,330,1648,5" concept="3" />
-      <node id="6953235647891074947" at="7564,0,7571,0" concept="8" trace="_quotation_createNode_x583g4_a0a0a0a0a0a0a954#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8085146484218857394" at="7564,0,7571,0" concept="8" trace="_quotation_createNode_x583g4_a0a0a0a0a0a0a954#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6953235647888490676" at="1643,0,1652,0" concept="8" trace="referenceMacro_GetReferent_143_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <scope id="4160292695789264845" at="1069,90,1070,112" />
       <scope id="4160292695789264843" at="5928,17,5929,68" />
@@ -6921,14 +6921,14 @@
       <scope id="4160292695789264844" at="1069,0,1072,0">
         <var name="_context" id="4160292695789264844" />
       </scope>
-      <scope id="6953235647891074947" at="7564,72,7569,24">
-        <var name="nb" id="6953235647891074947" />
-        <var name="quotedNode_1" id="6953235647891074947" />
+      <scope id="8085146484218857394" at="7564,72,7569,24">
+        <var name="nb" id="8085146484218857394" />
+        <var name="quotedNode_1" id="8085146484218857394" />
       </scope>
       <scope id="6953235647888490677" at="1643,95,1650,17">
         <var name="outer" id="6953235647891074931" />
       </scope>
-      <scope id="6953235647891074947" at="7564,0,7571,0" />
+      <scope id="8085146484218857394" at="7564,0,7571,0" />
       <scope id="6953235647888490676" at="1643,0,1652,0">
         <var name="_context" id="6953235647888490676" />
       </scope>

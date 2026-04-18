@@ -22,6 +22,9 @@
     <import index="av1m" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.style(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
       <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
@@ -1325,11 +1328,11 @@
               <node concept="37vLTw" id="3xhyJYa40Ie" role="2Oq$k0">
                 <ref role="3cqZAo" node="3xhyJYa3V32" resolve="placeholder" />
               </node>
-              <node concept="2qgKlT" id="3xhyJYa416i" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh5l" role="2OqNvi">
                 <ref role="37wK5l" to="tpcu:BpxLfMirzM" resolve="setLink" />
-                <node concept="2OqwBi" id="3xhyJYa41mJ" role="37wK5m">
-                  <node concept="0IXxy" id="3xhyJYa41aY" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="3xhyJYa41Ez" role="2OqNvi">
+                <node concept="2OqwBi" id="70OdufORh5n" role="37wK5m">
+                  <node concept="0IXxy" id="70OdufORh5o" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="70OdufORh5p" role="2OqNvi">
                     <ref role="37wK5l" to="tpcu:BpxLfMirzf" resolve="getLink" />
                   </node>
                 </node>
@@ -1373,11 +1376,11 @@
               <node concept="37vLTw" id="qmyvdpRlTj" role="2Oq$k0">
                 <ref role="3cqZAo" node="qmyvdpRlTc" resolve="placeholder" />
               </node>
-              <node concept="2qgKlT" id="qmyvdpRlTk" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORh5s" role="2OqNvi">
                 <ref role="37wK5l" to="tpcu:BpxLfMirzM" resolve="setLink" />
-                <node concept="2OqwBi" id="qmyvdpRlTl" role="37wK5m">
-                  <node concept="0IXxy" id="qmyvdpRlTm" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="qmyvdpRlTn" role="2OqNvi">
+                <node concept="2OqwBi" id="70OdufORh5u" role="37wK5m">
+                  <node concept="0IXxy" id="70OdufORh5v" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="70OdufORh5w" role="2OqNvi">
                     <ref role="37wK5l" to="tpcu:BpxLfMirzf" resolve="getLink" />
                   </node>
                 </node>
@@ -1804,7 +1807,7 @@
                 <node concept="2OqwBi" id="5wR$28JkaUc" role="3clFbG">
                   <node concept="2OqwBi" id="5wR$28Jkamv" role="2Oq$k0">
                     <node concept="7Obwk" id="5wR$28JkaaX" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="5wR$28Jka$j" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORh5z" role="2OqNvi">
                       <ref role="37wK5l" to="tpcu:BpxLfMirzf" resolve="getLink" />
                     </node>
                   </node>
@@ -1830,7 +1833,7 @@
                   <ref role="37wK5l" to="mhbf:~SNode.insertChildAfter(org.jetbrains.mps.openapi.language.SContainmentLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="insertChildAfter" />
                   <node concept="2OqwBi" id="5wR$28Jk8GA" role="37wK5m">
                     <node concept="7Obwk" id="5wR$28Jk8yW" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="5wR$28Jk8Tr" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORh5_" role="2OqNvi">
                       <ref role="37wK5l" to="tpcu:BpxLfMirzf" resolve="getLink" />
                     </node>
                   </node>

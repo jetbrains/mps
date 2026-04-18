@@ -14,6 +14,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
@@ -101,7 +104,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
@@ -174,7 +176,7 @@
                 <node concept="37vLTw" id="5Vvmn_Ql1Q6" role="2Oq$k0">
                   <ref role="3cqZAo" node="5Vvmn_Ql1PU" resolve="editorComponent" />
                 </node>
-                <node concept="2qgKlT" id="5Vvmn_Ql1Q7" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORccn" role="2OqNvi">
                   <ref role="37wK5l" to="tpcb:67EYkym$wx3" resolve="getConceptDeclaration" />
                 </node>
               </node>
@@ -189,7 +191,7 @@
                   <node concept="37vLTw" id="5Vvmn_Ql1U$" role="2Oq$k0">
                     <ref role="3cqZAo" node="5Vvmn_Ql1Q3" resolve="editedConcept" />
                   </node>
-                  <node concept="2qgKlT" id="5Vvmn_Ql1U_" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORccp" role="2OqNvi">
                     <ref role="37wK5l" to="tpcn:hEwILLM" resolve="getPropertyDeclarations" />
                   </node>
                 </node>
@@ -206,7 +208,7 @@
                               <ref role="3Tt5mk" to="tpce:fKAX2Z_" resolve="dataType" />
                             </node>
                           </node>
-                          <node concept="2qgKlT" id="5Vvmn_Ql1UI" role="2OqNvi">
+                          <node concept="3zqWPK" id="70OdufORccr" role="2OqNvi">
                             <ref role="37wK5l" to="tpcn:hKtGpIQ" resolve="isSimpleBoolean" />
                           </node>
                         </node>
@@ -252,9 +254,9 @@
                   <node concept="37vLTw" id="itlittRo7q" role="2Oq$k0">
                     <ref role="3cqZAo" node="itlittRiGc" resolve="styleClassItemConcept" />
                   </node>
-                  <node concept="2qgKlT" id="itlittRp7n" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcct" role="2OqNvi">
                     <ref role="37wK5l" to="tpcb:itlittOTkB" resolve="isApplicableInLayout" />
-                    <node concept="35c_gC" id="itlittSvpY" role="37wK5m">
+                    <node concept="35c_gC" id="70OdufORccv" role="37wK5m">
                       <ref role="35c_gD" to="tpc2:g6iRfq5" resolve="CellLayout_Horizontal" />
                     </node>
                   </node>
@@ -264,9 +266,9 @@
                     <node concept="37vLTw" id="itlittRkqI" role="2Oq$k0">
                       <ref role="3cqZAo" node="itlittRiGc" resolve="styleClassItemConcept" />
                     </node>
-                    <node concept="2qgKlT" id="itlittRl3B" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORccw" role="2OqNvi">
                       <ref role="37wK5l" to="tpcb:2u3gVK1lsco" resolve="isApplicableToCellConcept" />
-                      <node concept="35c_gC" id="itlittRpq5" role="37wK5m">
+                      <node concept="35c_gC" id="70OdufORccy" role="37wK5m">
                         <ref role="35c_gD" to="tpc2:fBF0icI" resolve="CellModel_Constant" />
                       </node>
                     </node>
@@ -275,9 +277,9 @@
                     <node concept="37vLTw" id="itlittRmwJ" role="2Oq$k0">
                       <ref role="3cqZAo" node="itlittRiGc" resolve="styleClassItemConcept" />
                     </node>
-                    <node concept="2qgKlT" id="itlittRnj1" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORccz" role="2OqNvi">
                       <ref role="37wK5l" to="tpcb:itlittOTie" resolve="isApplicableForLayout" />
-                      <node concept="10Nm6u" id="itlittRnu$" role="37wK5m" />
+                      <node concept="10Nm6u" id="70OdufORcc_" role="37wK5m" />
                     </node>
                   </node>
                 </node>

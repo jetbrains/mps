@@ -19,6 +19,9 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ngI" index="22mbnS">
@@ -213,7 +216,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -614,11 +616,11 @@
                   <node concept="10Nm6u" id="2uZcAeY9YYq" role="3uHU7w" />
                   <node concept="2OqwBi" id="2uZcAeY9XdY" role="3uHU7B">
                     <node concept="pncrf" id="2uZcAeY9X8I" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="2uZcAeYa032" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORgXM" role="2OqNvi">
                       <ref role="37wK5l" to="buve:6szrkDoc2K7" resolve="tryToFindNode" />
-                      <node concept="2OqwBi" id="6szrkDocjQB" role="37wK5m">
-                        <node concept="1Q80Hx" id="6szrkDocjED" role="2Oq$k0" />
-                        <node concept="liA8E" id="6szrkDock3j" role="2OqNvi">
+                      <node concept="2OqwBi" id="70OdufORgXO" role="37wK5m">
+                        <node concept="1Q80Hx" id="70OdufORgXP" role="2Oq$k0" />
+                        <node concept="liA8E" id="70OdufORgXQ" role="2OqNvi">
                           <ref role="37wK5l" to="cj4x:~EditorContext.getRepository()" resolve="getRepository" />
                         </node>
                       </node>
@@ -645,21 +647,21 @@
                   <node concept="3Tqbb2" id="2uZcAeY99gT" role="1tU5fm" />
                   <node concept="2OqwBi" id="2uZcAeY99gX" role="33vP2m">
                     <node concept="pncrf" id="4SG2RcUB161" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="6szrkDodQYh" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORgXR" role="2OqNvi">
                       <ref role="37wK5l" to="buve:6szrkDoc2K7" resolve="tryToFindNode" />
-                      <node concept="2OqwBi" id="3pibKp8qBEu" role="37wK5m">
-                        <node concept="2OqwBi" id="3pibKp8qBvb" role="2Oq$k0">
-                          <node concept="2JrnkZ" id="3pibKp8qBkK" role="2Oq$k0">
-                            <node concept="2OqwBi" id="3pibKp8qAXe" role="2JrQYb">
-                              <node concept="pncrf" id="4SG2RcUB1ar" role="2Oq$k0" />
-                              <node concept="I4A8Y" id="3pibKp8qB8D" role="2OqNvi" />
+                      <node concept="2OqwBi" id="70OdufORgXT" role="37wK5m">
+                        <node concept="2OqwBi" id="70OdufORgXU" role="2Oq$k0">
+                          <node concept="2JrnkZ" id="70OdufORgXV" role="2Oq$k0">
+                            <node concept="2OqwBi" id="70OdufORgXW" role="2JrQYb">
+                              <node concept="pncrf" id="70OdufORgXX" role="2Oq$k0" />
+                              <node concept="I4A8Y" id="70OdufORgXY" role="2OqNvi" />
                             </node>
                           </node>
-                          <node concept="liA8E" id="3pibKp8qBB5" role="2OqNvi">
+                          <node concept="liA8E" id="70OdufORgXZ" role="2OqNvi">
                             <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                           </node>
                         </node>
-                        <node concept="liA8E" id="3pibKp8qBMA" role="2OqNvi">
+                        <node concept="liA8E" id="70OdufORgY0" role="2OqNvi">
                           <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
                         </node>
                       </node>
@@ -707,11 +709,11 @@
               <node concept="3clFbF" id="UwyhPpHKtu" role="3cqZAp">
                 <node concept="2OqwBi" id="UwyhPpHJ7M" role="3clFbG">
                   <node concept="pncrf" id="UwyhPpHIVu" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="UwyhPpHJuS" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORgY1" role="2OqNvi">
                     <ref role="37wK5l" to="buve:6szrkDoc2K7" resolve="tryToFindNode" />
-                    <node concept="2OqwBi" id="UwyhPpHLUn" role="37wK5m">
-                      <node concept="1Q80Hx" id="UwyhPpHLMT" role="2Oq$k0" />
-                      <node concept="liA8E" id="UwyhPpHMhp" role="2OqNvi">
+                    <node concept="2OqwBi" id="70OdufORgY3" role="37wK5m">
+                      <node concept="1Q80Hx" id="70OdufORgY4" role="2Oq$k0" />
+                      <node concept="liA8E" id="70OdufORgY5" role="2OqNvi">
                         <ref role="37wK5l" to="cj4x:~EditorContext.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
@@ -876,7 +878,7 @@
                 <node concept="3clFbF" id="1RqXnPV3wjQ" role="3cqZAp">
                   <node concept="2OqwBi" id="1RqXnPV3wxA" role="3clFbG">
                     <node concept="pncrf" id="1RqXnPV3wjP" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="1RqXnPW5GG4" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORgY6" role="2OqNvi">
                       <ref role="37wK5l" to="buve:1RqXnPV415t" resolve="getDescription" />
                     </node>
                   </node>

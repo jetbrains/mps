@@ -20,6 +20,9 @@
     <import index="9ekg" ref="r:7b3e122e-7e64-4c05-a2c6-a91fde0cc734(jetbrains.mps.samples.SwingBuilder.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -119,7 +122,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -426,7 +428,7 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2qgKlT" id="4PvwzwVa9uM" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORdbp" role="2OqNvi">
                     <ref role="37wK5l" to="9ekg:4PvwzwVa630" resolve="getSourceType" />
                   </node>
                 </node>
@@ -455,7 +457,7 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2qgKlT" id="4PvwzwVaqDQ" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORdbr" role="2OqNvi">
                     <ref role="37wK5l" to="9ekg:4PvwzwVa630" resolve="getSourceType" />
                   </node>
                 </node>
@@ -496,7 +498,7 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2qgKlT" id="4PvwzwVagtL" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORdbt" role="2OqNvi">
                   <ref role="37wK5l" to="9ekg:4PvwzwVa6sI" resolve="getTargetType" />
                 </node>
               </node>

@@ -12,6 +12,9 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -51,9 +54,6 @@
         <child id="1169672767469" name="ruleConsequence" index="1lVwrX" />
       </concept>
     </language>
-    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
-    </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -91,7 +91,7 @@
             <node concept="3fqX7Q" id="htuwNw7" role="3clFbG">
               <node concept="2OqwBi" id="hxx$D4f" role="3fr31v">
                 <node concept="30H73N" id="htuwNw9" role="2Oq$k0" />
-                <node concept="2qgKlT" id="htuwNwa" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORccA" role="2OqNvi">
                   <ref role="37wK5l" to="tpek:hEwJh7s" resolve="getFromParameterObject" />
                 </node>
               </node>

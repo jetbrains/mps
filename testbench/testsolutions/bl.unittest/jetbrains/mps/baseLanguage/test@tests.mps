@@ -110,6 +110,9 @@
       <concept id="8101092317677916964" name="jetbrains.mps.lang.test.structure.UntypedExpression" flags="ng" index="3JI$YI" />
       <concept id="1225978065297" name="jetbrains.mps.lang.test.structure.SimpleNodeTest" flags="ng" index="1LZb2c" />
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1219920932475" name="jetbrains.mps.baseLanguage.structure.VariableArityType" flags="in" index="8X2XB">
@@ -512,7 +515,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
@@ -12165,9 +12167,9 @@
             <node concept="3xONca" id="4ukFHTHKj2e" role="2Oq$k0">
               <ref role="3xOPvv" node="4ukFHTHKikk" resolve="method" />
             </node>
-            <node concept="2qgKlT" id="4ukFHTHKj2f" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReza" role="2OqNvi">
               <ref role="37wK5l" to="tpek:hEwIB0z" resolve="hasSameSignature" />
-              <node concept="3xONca" id="4ukFHTHKj2g" role="37wK5m">
+              <node concept="3xONca" id="70OdufORezc" role="37wK5m">
                 <ref role="3xOPvv" node="4ukFHTHKikk" resolve="method" />
               </node>
             </node>
@@ -30551,7 +30553,7 @@
                   <ref role="3Tt5mk" to="tpee:hcYeSH9" resolve="cls" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="5L7DT9mfDZe" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORezd" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2_jKYQ0K_an" resolve="getJavaName" />
               </node>
             </node>
@@ -30574,7 +30576,7 @@
                   <ref role="3Tt5mk" to="tpee:hcYeSH9" resolve="cls" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="5L7DT9mglF9" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORezf" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2_jKYQ0K_an" resolve="getJavaName" />
               </node>
             </node>
@@ -30597,7 +30599,7 @@
                   <ref role="3Tt5mk" to="tpee:hcYeSH9" resolve="cls" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="5L7DT9mglT1" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORezh" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2_jKYQ0K_an" resolve="getJavaName" />
               </node>
             </node>
@@ -30620,7 +30622,7 @@
                   <ref role="3Tt5mk" to="tpee:hcYeSH9" resolve="cls" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="5L7DT9mglT_" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORezj" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2_jKYQ0K_an" resolve="getJavaName" />
               </node>
             </node>
@@ -30643,7 +30645,7 @@
                   <ref role="3Tt5mk" to="tpee:hcYeSH9" resolve="cls" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="6ah1ZNrh886" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORezl" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:2_jKYQ0K_an" resolve="getJavaName" />
               </node>
             </node>

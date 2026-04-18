@@ -65,7 +65,7 @@
       <scope id="6836281137582782361" at="69,84,73,18" />
       <scope id="6836281137582782360" at="63,0,69,0">
         <var name="checkedDotOperand" id="6836281137582782360" />
-        <var name="intentionConcept" id="6836281137582782365" />
+        <var name="intentionConcept" id="8085146484218853107" />
       </scope>
       <scope id="6836281137582782361" at="69,0,75,0">
         <var name="checkedDotOperand" id="6836281137582782361" />
@@ -152,7 +152,7 @@
       </scope>
       <scope id="6836281137582782418" at="70,0,76,0">
         <var name="checkedDotOperand" id="6836281137582782418" />
-        <var name="refactoringConcept" id="6836281137582782423" />
+        <var name="refactoringConcept" id="8085146484218853112" />
       </scope>
       <scope id="6836281137582782419" at="76,0,82,0">
         <var name="checkedDotOperand" id="6836281137582782419" />

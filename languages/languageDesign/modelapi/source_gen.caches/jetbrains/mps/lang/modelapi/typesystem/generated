@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="v8jr5az0rpuxy4cmpouugadr7cyhl6">
+<product version="3" modelHash="-4ony22ykp3j5m8l22lax1uze81ylnu7">
   <files names="NameIsActualInModelPointer_NonTypesystemRule.java:NameIsActualInModulePointer_NonTypesystemRule.java:TypesystemDescriptor.java:UpdateModelPointerName_QuickFix.java:UpdateModulePointerName_QuickFix.java:check_NodePointer_NonTypesystemRule.java" />
 </product>
 

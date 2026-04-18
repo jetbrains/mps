@@ -42,6 +42,9 @@
       </concept>
       <concept id="1225978065297" name="jetbrains.mps.lang.test.structure.SimpleNodeTest" flags="ng" index="1LZb2c" />
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -260,7 +263,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
@@ -475,14 +477,14 @@
             <node concept="3xONca" id="3wzAMVrRmzD" role="2Oq$k0">
               <ref role="3xOPvv" node="fzIHCHioZz" resolve="test.jar" />
             </node>
-            <node concept="2qgKlT" id="3wzAMVrRxK4" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcQI" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="2ShNRf" id="4Q0JLeVvAef" role="37wK5m">
-                <node concept="1pGfFk" id="4Q0JLeVvAeh" role="2ShVmc">
+              <node concept="2ShNRf" id="70OdufORcQK" role="37wK5m">
+                <node concept="1pGfFk" id="70OdufORcQL" role="2ShVmc">
                   <ref role="37wK5l" node="4Q0JLeVvAbW" resolve="TestContext" />
-                  <node concept="2OqwBi" id="Tb4PsnoMMt" role="37wK5m">
-                    <node concept="2WthIp" id="Tb4PsnoMMu" role="2Oq$k0" />
-                    <node concept="2XshWL" id="Tb4PsnoMMv" role="2OqNvi">
+                  <node concept="2OqwBi" id="70OdufORcQM" role="37wK5m">
+                    <node concept="2WthIp" id="70OdufORcQN" role="2Oq$k0" />
+                    <node concept="2XshWL" id="70OdufORcQO" role="2OqNvi">
                       <ref role="2WH_rO" node="Tb4PsnoMuN" resolve="getBuildTestsModel" />
                     </node>
                   </node>
@@ -511,14 +513,14 @@
             <node concept="3xONca" id="fzIHCHip1f" role="2Oq$k0">
               <ref role="3xOPvv" node="fzIHCHioZV" resolve="folder" />
             </node>
-            <node concept="2qgKlT" id="fzIHCHip0V" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcQP" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="2ShNRf" id="4Q0JLeVvAei" role="37wK5m">
-                <node concept="1pGfFk" id="4Q0JLeVvAej" role="2ShVmc">
+              <node concept="2ShNRf" id="70OdufORcQR" role="37wK5m">
+                <node concept="1pGfFk" id="70OdufORcQS" role="2ShVmc">
                   <ref role="37wK5l" node="4Q0JLeVvAbW" resolve="TestContext" />
-                  <node concept="2OqwBi" id="Tb4PsnoMJK" role="37wK5m">
-                    <node concept="2WthIp" id="Tb4PsnoMJL" role="2Oq$k0" />
-                    <node concept="2XshWL" id="Tb4PsnoMJM" role="2OqNvi">
+                  <node concept="2OqwBi" id="70OdufORcQT" role="37wK5m">
+                    <node concept="2WthIp" id="70OdufORcQU" role="2Oq$k0" />
+                    <node concept="2XshWL" id="70OdufORcQV" role="2OqNvi">
                       <ref role="2WH_rO" node="Tb4PsnoMuN" resolve="getBuildTestsModel" />
                     </node>
                   </node>
@@ -547,14 +549,14 @@
             <node concept="3xONca" id="6s3mHD41nV7" role="2Oq$k0">
               <ref role="3xOPvv" node="6s3mHD41nUS" resolve="internal" />
             </node>
-            <node concept="2qgKlT" id="6s3mHD41nV2" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcQW" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="2ShNRf" id="6s3mHD41nV3" role="37wK5m">
-                <node concept="1pGfFk" id="6s3mHD41nV4" role="2ShVmc">
+              <node concept="2ShNRf" id="70OdufORcQY" role="37wK5m">
+                <node concept="1pGfFk" id="70OdufORcQZ" role="2ShVmc">
                   <ref role="37wK5l" node="4Q0JLeVvAbW" resolve="TestContext" />
-                  <node concept="2OqwBi" id="Tb4PsnoME0" role="37wK5m">
-                    <node concept="2WthIp" id="Tb4PsnoME1" role="2Oq$k0" />
-                    <node concept="2XshWL" id="Tb4PsnoME2" role="2OqNvi">
+                  <node concept="2OqwBi" id="70OdufORcR0" role="37wK5m">
+                    <node concept="2WthIp" id="70OdufORcR1" role="2Oq$k0" />
+                    <node concept="2XshWL" id="70OdufORcR2" role="2OqNvi">
                       <ref role="2WH_rO" node="Tb4PsnoMuN" resolve="getBuildTestsModel" />
                     </node>
                   </node>
@@ -583,14 +585,14 @@
             <node concept="3xONca" id="fzIHCHip0F" role="2Oq$k0">
               <ref role="3xOPvv" node="fzIHCHioZU" resolve="test.jar.nested" />
             </node>
-            <node concept="2qgKlT" id="fzIHCHip0g" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcR3" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="2ShNRf" id="4Q0JLeVvAek" role="37wK5m">
-                <node concept="1pGfFk" id="4Q0JLeVvAel" role="2ShVmc">
+              <node concept="2ShNRf" id="70OdufORcR5" role="37wK5m">
+                <node concept="1pGfFk" id="70OdufORcR6" role="2ShVmc">
                   <ref role="37wK5l" node="4Q0JLeVvAbW" resolve="TestContext" />
-                  <node concept="2OqwBi" id="Tb4PsnoMGH" role="37wK5m">
-                    <node concept="2WthIp" id="Tb4PsnoMGI" role="2Oq$k0" />
-                    <node concept="2XshWL" id="Tb4PsnoMGJ" role="2OqNvi">
+                  <node concept="2OqwBi" id="70OdufORcR7" role="37wK5m">
+                    <node concept="2WthIp" id="70OdufORcR8" role="2Oq$k0" />
+                    <node concept="2XshWL" id="70OdufORcR9" role="2OqNvi">
                       <ref role="2WH_rO" node="Tb4PsnoMuN" resolve="getBuildTestsModel" />
                     </node>
                   </node>
@@ -638,9 +640,9 @@
             <node concept="3xONca" id="71TRJIlH7VI" role="2Oq$k0">
               <ref role="3xOPvv" node="71TRJIlH7Vd" resolve="internalFolder" />
             </node>
-            <node concept="2qgKlT" id="71TRJIlH7Vz" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcRa" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="37vLTw" id="3GM_nagTB3y" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORcRc" role="37wK5m">
                 <ref role="3cqZAo" node="3DDoTVA5dU9" resolve="testContext" />
               </node>
             </node>
@@ -660,9 +662,9 @@
             <node concept="3xONca" id="71TRJIlHfKa" role="2Oq$k0">
               <ref role="3xOPvv" node="71TRJIlH7VN" resolve="internalFolder2" />
             </node>
-            <node concept="2qgKlT" id="71TRJIlH7VW" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcRd" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="37vLTw" id="3GM_nagTx$v" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORcRf" role="37wK5m">
                 <ref role="3cqZAo" node="3DDoTVA5dU9" resolve="testContext" />
               </node>
             </node>
@@ -707,9 +709,9 @@
             <node concept="3xONca" id="3DDoTVA5ghY" role="2Oq$k0">
               <ref role="3xOPvv" node="3DDoTVA5ghw" resolve="someFolder" />
             </node>
-            <node concept="2qgKlT" id="3DDoTVA5ghM" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcRg" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="37vLTw" id="3GM_nagTxjw" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORcRi" role="37wK5m">
                 <ref role="3cqZAo" node="3DDoTVA5ghC" resolve="testContext" />
               </node>
             </node>
@@ -729,9 +731,9 @@
             <node concept="3xONca" id="3DDoTVA5gi2" role="2Oq$k0">
               <ref role="3xOPvv" node="3DDoTVA5ghv" resolve="someFolder_1" />
             </node>
-            <node concept="2qgKlT" id="3DDoTVA5ghU" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcRj" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />
-              <node concept="37vLTw" id="3GM_nagT$qo" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORcRl" role="37wK5m">
                 <ref role="3cqZAo" node="3DDoTVA5ghC" resolve="testContext" />
               </node>
             </node>
@@ -1656,12 +1658,12 @@
                 <node concept="3xONca" id="3DDoTVA57Hk" role="2Oq$k0">
                   <ref role="3xOPvv" node="aJO6qS76hW" resolve="build" />
                 </node>
-                <node concept="2qgKlT" id="Eob996jjpV" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRm" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8Vcbm9A" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRo" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="3DDoTVA57Hl" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRp" role="37wK5m">
                     <ref role="3xOPvv" node="Eob996jjjA" resolve="resourcesMacro" />
                   </node>
                 </node>
@@ -1693,12 +1695,12 @@
                 <node concept="3xONca" id="5HZ4e6cVo6r" role="2Oq$k0">
                   <ref role="3xOPvv" node="aJO6qS76hW" resolve="build" />
                 </node>
-                <node concept="2qgKlT" id="5HZ4e6cVo6s" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRq" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8VcblHp" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRs" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="5HZ4e6cVo6C" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRt" role="37wK5m">
                     <ref role="3xOPvv" node="Eob996jjj_" resolve="buildMacro" />
                   </node>
                 </node>
@@ -1730,12 +1732,12 @@
                 <node concept="3xONca" id="Eob996jIt6" role="2Oq$k0">
                   <ref role="3xOPvv" node="Eob996jjj$" resolve="build2" />
                 </node>
-                <node concept="2qgKlT" id="Eob996jIt7" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRu" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8Vcblhc" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRw" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="Eob996jIt9" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRx" role="37wK5m">
                     <ref role="3xOPvv" node="Eob996jjjV" resolve="resources2" />
                   </node>
                 </node>
@@ -1767,12 +1769,12 @@
                 <node concept="3xONca" id="5HZ4e6cVoL8" role="2Oq$k0">
                   <ref role="3xOPvv" node="Eob996jjj$" resolve="build2" />
                 </node>
-                <node concept="2qgKlT" id="5HZ4e6cVw_7" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRy" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8VcbkOZ" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcR$" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="5HZ4e6cVw_a" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcR_" role="37wK5m">
                     <ref role="3xOPvv" node="Eob996jjjV" resolve="resources2" />
                   </node>
                 </node>
@@ -1798,12 +1800,12 @@
                 <node concept="3xONca" id="5HZ4e6cVw_B" role="2Oq$k0">
                   <ref role="3xOPvv" node="Eob996jjj$" resolve="build2" />
                 </node>
-                <node concept="2qgKlT" id="5HZ4e6cVw_C" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRA" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8VcbkoM" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRC" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="5HZ4e6cVw_E" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRD" role="37wK5m">
                     <ref role="3xOPvv" node="Eob996jjjV" resolve="resources2" />
                   </node>
                 </node>
@@ -1835,12 +1837,12 @@
                 <node concept="3xONca" id="llfbZqvHOI" role="2Oq$k0">
                   <ref role="3xOPvv" node="Eob996jjj$" resolve="build2" />
                 </node>
-                <node concept="2qgKlT" id="llfbZqvHOR" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRE" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8VcbjWs" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRG" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="llfbZqvHOU" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRH" role="37wK5m">
                     <ref role="3xOPvv" node="llfbZqvvqc" resolve="referenceVariable" />
                   </node>
                 </node>
@@ -1872,12 +1874,12 @@
                 <node concept="3xONca" id="llfbZqvvrr" role="2Oq$k0">
                   <ref role="3xOPvv" node="llfbZqvvqI" resolve="testVarReferences" />
                 </node>
-                <node concept="2qgKlT" id="llfbZqvvrs" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRI" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8Vcbjw6" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRK" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="llfbZqvvr$" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRL" role="37wK5m">
                     <ref role="3xOPvv" node="llfbZqvvqv" resolve="forwardReference" />
                   </node>
                 </node>
@@ -1909,12 +1911,12 @@
                 <node concept="3xONca" id="llfbZqvvqJ" role="2Oq$k0">
                   <ref role="3xOPvv" node="llfbZqvvqI" resolve="testVarReferences" />
                 </node>
-                <node concept="2qgKlT" id="llfbZqvvqS" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcRM" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-                  <node concept="35c_gC" id="42Bx8VcbiZH" role="37wK5m">
+                  <node concept="35c_gC" id="70OdufORcRO" role="37wK5m">
                     <ref role="35c_gD" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
                   </node>
-                  <node concept="3xONca" id="llfbZqvvqV" role="37wK5m">
+                  <node concept="3xONca" id="70OdufORcRP" role="37wK5m">
                     <ref role="3xOPvv" node="llfbZqvvqz" resolve="backwardReference" />
                   </node>
                 </node>

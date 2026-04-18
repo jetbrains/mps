@@ -20,6 +20,9 @@
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
@@ -129,7 +132,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
@@ -344,9 +346,9 @@
                                       <node concept="37vLTw" id="5Vvmn_QkM7n" role="2Oq$k0">
                                         <ref role="3cqZAo" node="5W7E4fV0W02" resolve="it" />
                                       </node>
-                                      <node concept="2qgKlT" id="5Vvmn_QkM7o" role="2OqNvi">
+                                      <node concept="3zqWPK" id="70OdufORcQo" role="2OqNvi">
                                         <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
-                                        <node concept="35c_gC" id="4UTtJHKiBcP" role="37wK5m">
+                                        <node concept="35c_gC" id="70OdufORcQq" role="37wK5m">
                                           <ref role="35c_gD" to="tpee:fJuHJVf" resolve="BinaryOperation" />
                                         </node>
                                       </node>
@@ -400,11 +402,11 @@
               <ref role="37wK5l" to="o8zo:3jEbQoczdCs" resolve="forResolvableElements" />
               <ref role="1Pybhc" to="o8zo:4IP40Bi3e_R" resolve="ListScope" />
               <node concept="2OqwBi" id="5Vvmn_QkM9L" role="37wK5m">
-                <node concept="2qgKlT" id="5Vvmn_QkM9M" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcQr" role="2OqNvi">
                   <ref role="37wK5l" to="p369:ZogSShiOAT" resolve="getVisibleCustomOperators" />
-                  <node concept="2OqwBi" id="5Vvmn_QkM9N" role="37wK5m">
-                    <node concept="2rP1CM" id="5Vvmn_QkM9O" role="2Oq$k0" />
-                    <node concept="I4A8Y" id="5Vvmn_QkM9P" role="2OqNvi" />
+                  <node concept="2OqwBi" id="70OdufORcQt" role="37wK5m">
+                    <node concept="2rP1CM" id="70OdufORcQu" role="2Oq$k0" />
+                    <node concept="I4A8Y" id="70OdufORcQv" role="2OqNvi" />
                   </node>
                 </node>
                 <node concept="35c_gC" id="5Vvmn_QkM9Q" role="2Oq$k0">
@@ -428,11 +430,11 @@
               <ref role="37wK5l" to="o8zo:3jEbQoczdCs" resolve="forResolvableElements" />
               <ref role="1Pybhc" to="o8zo:4IP40Bi3e_R" resolve="ListScope" />
               <node concept="2OqwBi" id="5Vvmn_QkM6q" role="37wK5m">
-                <node concept="2qgKlT" id="5Vvmn_QkM6r" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcQw" role="2OqNvi">
                   <ref role="37wK5l" to="p369:ZogSShiOAT" resolve="getVisibleCustomOperators" />
-                  <node concept="2OqwBi" id="5Vvmn_QkM6s" role="37wK5m">
-                    <node concept="2rP1CM" id="5Vvmn_QkM6t" role="2Oq$k0" />
-                    <node concept="I4A8Y" id="5Vvmn_QkM6u" role="2OqNvi" />
+                  <node concept="2OqwBi" id="70OdufORcQy" role="37wK5m">
+                    <node concept="2rP1CM" id="70OdufORcQz" role="2Oq$k0" />
+                    <node concept="I4A8Y" id="70OdufORcQ$" role="2OqNvi" />
                   </node>
                 </node>
                 <node concept="35c_gC" id="5Vvmn_QkM6v" role="2Oq$k0">

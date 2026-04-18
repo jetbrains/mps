@@ -31,6 +31,9 @@
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -235,7 +238,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4065387505485742749" name="jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation" flags="ng" index="2yCiFS">
         <child id="3648723375513868575" name="repositoryArg" index="Vysub" />
       </concept>
@@ -1280,7 +1282,7 @@
                                   <node concept="37vLTw" id="u1nygdq2ZM" role="2Oq$k0">
                                     <ref role="3cqZAo" node="u1nygdq246" resolve="visible" />
                                   </node>
-                                  <node concept="2qgKlT" id="u1nygdqXw$" role="2OqNvi">
+                                  <node concept="3zqWPK" id="70OdufORcHs" role="2OqNvi">
                                     <ref role="37wK5l" to="hez:2WVyZr44ojH" resolve="getVisibility" />
                                   </node>
                                 </node>
@@ -1551,7 +1553,7 @@
                       <node concept="37vLTw" id="4gvOB2uT478" role="2Oq$k0">
                         <ref role="3cqZAo" node="4gvOB2uT3$v" resolve="target" />
                       </node>
-                      <node concept="2qgKlT" id="4z6StV4s_mA" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORcHu" role="2OqNvi">
                         <ref role="37wK5l" to="hez:46gC9M6gB68" resolve="getThisType" />
                       </node>
                     </node>
@@ -2107,9 +2109,9 @@
                   <node concept="35c_gC" id="7bIC29gJd7w" role="2Oq$k0">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6JlT" resolve="ValueArgument" />
                   </node>
-                  <node concept="2qgKlT" id="7bIC29gJeY7" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcHw" role="2OqNvi">
                     <ref role="37wK5l" to="hez:7bIC29gIZM1" resolve="getAvailableParameters" />
-                    <node concept="2rP1CM" id="7bIC29gJfyx" role="37wK5m" />
+                    <node concept="2rP1CM" id="70OdufORcHy" role="37wK5m" />
                   </node>
                 </node>
               </node>
@@ -2226,7 +2228,7 @@
                     <node concept="1xIGOp" id="5g3vQLKcpsw" role="1xVPHs" />
                   </node>
                 </node>
-                <node concept="2qgKlT" id="5b2DnJ7jwOr" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcHz" role="2OqNvi">
                   <ref role="37wK5l" to="hez:2NtWm0y9fFa" resolve="getConstructors" />
                 </node>
               </node>
@@ -2911,13 +2913,13 @@
                     <ref role="3cqZAo" node="5pwU7dGvH42" resolve="node" />
                   </node>
                 </node>
-                <node concept="2qgKlT" id="3DXqVvDmsoa" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcH_" role="2OqNvi">
                   <ref role="37wK5l" to="hez:7WpE6U5evQG" resolve="getConstructedClass" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="3DXqVvDmsob" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcHB" role="2OqNvi">
                 <ref role="37wK5l" to="hez:2NtWm0y2Y2A" resolve="hasModifier" />
-                <node concept="35c_gC" id="3DXqVvDmsoc" role="37wK5m">
+                <node concept="35c_gC" id="70OdufORcHD" role="37wK5m">
                   <ref role="35c_gD" to="hcm8:2yYXHtl6Jg9" resolve="AnnotationClassModifier" />
                 </node>
               </node>
@@ -3111,9 +3113,9 @@
                   <node concept="35c_gC" id="4DC0lWp7Kh" role="2Oq$k0">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6Jmi" resolve="SuperConstructorDelegationCall" />
                   </node>
-                  <node concept="2qgKlT" id="4DC0lWpcJp" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcHE" role="2OqNvi">
                     <ref role="37wK5l" to="hez:4DC0lWpsin" resolve="getAvailableConstructors" />
-                    <node concept="2rP1CM" id="4DC0lWpdga" role="37wK5m" />
+                    <node concept="2rP1CM" id="70OdufORcHG" role="37wK5m" />
                   </node>
                 </node>
               </node>
@@ -3219,9 +3221,9 @@
                   <node concept="35c_gC" id="7ffJaDGPASH" role="2Oq$k0">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6Jmh" resolve="ThisConstructorDelegationCall" />
                   </node>
-                  <node concept="2qgKlT" id="7ffJaDGPASI" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcHH" role="2OqNvi">
                     <ref role="37wK5l" to="hez:4DC0lWpsin" resolve="getAvailableConstructors" />
-                    <node concept="2rP1CM" id="7ffJaDGPASJ" role="37wK5m" />
+                    <node concept="2rP1CM" id="70OdufORcHJ" role="37wK5m" />
                   </node>
                 </node>
               </node>

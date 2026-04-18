@@ -25,6 +25,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
       <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
@@ -241,7 +244,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -659,13 +661,13 @@
                                   <property role="TrG5h" value="slot" />
                                   <node concept="2OqwBi" id="3NmNsDKK$ZL" role="33vP2m">
                                     <node concept="pncrf" id="3NmNsDKL5hu" role="2Oq$k0" />
-                                    <node concept="2qgKlT" id="3NmNsDKK$ZN" role="2OqNvi">
+                                    <node concept="3zqWPK" id="70OdufORcgt" role="2OqNvi">
                                       <ref role="37wK5l" to="mspw:2XgRSpVOzcU" resolve="slotByStartTime" />
-                                      <node concept="3cpWsd" id="3NmNsDKK$ZO" role="37wK5m">
-                                        <node concept="3cmrfG" id="3NmNsDKK$ZP" role="3uHU7w">
+                                      <node concept="3cpWsd" id="70OdufORcgv" role="37wK5m">
+                                        <node concept="3cmrfG" id="70OdufORcgw" role="3uHU7w">
                                           <property role="3cmrfH" value="1" />
                                         </node>
-                                        <node concept="37vLTw" id="3NmNsDKK$ZQ" role="3uHU7B">
+                                        <node concept="37vLTw" id="70OdufORcgx" role="3uHU7B">
                                           <ref role="3cqZAo" node="3NmNsDKK$Zu" resolve="row" />
                                         </node>
                                       </node>
@@ -1101,7 +1103,7 @@
             <node concept="3clFbF" id="NU25Mr1vzs" role="3cqZAp">
               <node concept="2OqwBi" id="NU25Mr1vBT" role="3clFbG">
                 <node concept="pncrf" id="NU25Mr1vzr" role="2Oq$k0" />
-                <node concept="2qgKlT" id="NU25Mr1w3k" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcgy" role="2OqNvi">
                   <ref role="37wK5l" to="mspw:NU25Mr1t4q" resolve="isCustomizing" />
                 </node>
               </node>

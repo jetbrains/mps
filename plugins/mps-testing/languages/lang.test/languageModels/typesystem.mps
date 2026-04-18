@@ -21,6 +21,9 @@
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -573,7 +576,7 @@
             <node concept="1YBJjd" id="3CVcUJxN3tH" role="2Oq$k0">
               <ref role="1YBMHb" node="3CVcUJxN1B3" resolve="dragMouseStatement" />
             </node>
-            <node concept="2qgKlT" id="3CVcUJxNria" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORdAL" role="2OqNvi">
               <ref role="37wK5l" to="tp5o:3CVcUJxN49_" resolve="getPressMouseStatement" />
             </node>
           </node>
@@ -1085,13 +1088,13 @@
               </node>
               <node concept="2yIwOk" id="7OB8Y3vLxXB" role="2OqNvi" />
             </node>
-            <node concept="2qgKlT" id="7OB8Y3vLxXC" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORdAN" role="2OqNvi">
               <ref role="37wK5l" to="tp5o:4IvydoGvpbr" resolve="isSimple" />
-              <node concept="2OqwBi" id="7OB8Y3vLxXD" role="37wK5m">
-                <node concept="1YBJjd" id="7OB8Y3vLxXE" role="2Oq$k0">
+              <node concept="2OqwBi" id="70OdufORdAP" role="37wK5m">
+                <node concept="1YBJjd" id="70OdufORdAQ" role="2Oq$k0">
                   <ref role="1YBMHb" node="7OB8Y3vLuAB" resolve="scopesTest" />
                 </node>
-                <node concept="2qgKlT" id="7OB8Y3vLxXF" role="2OqNvi">
+                <node concept="2qgKlT" id="70OdufORdAR" role="2OqNvi">
                   <ref role="37wK5l" to="tp5o:38gbJV0XvZR" resolve="getAnnotatedNode" />
                 </node>
               </node>

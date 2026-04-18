@@ -33,6 +33,9 @@
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
       <concept id="1194033889146" name="jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_editorContext" flags="nn" index="1XNTG" />
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
         <property id="2162403111523065396" name="cellId" index="1lyBwo" />
@@ -249,7 +252,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -989,7 +991,7 @@
                         <node concept="37vLTw" id="e2eVnzJJue" role="2Oq$k0">
                           <ref role="3cqZAo" node="e2eVnzJBvW" resolve="pattern" />
                         </node>
-                        <node concept="2qgKlT" id="e2eVnzJJRy" role="2OqNvi">
+                        <node concept="3zqWPK" id="70OdufOReAj" role="2OqNvi">
                           <ref role="37wK5l" to="tp2b:4vXWNHn1_L$" resolve="getQuotedNodeConcept" />
                         </node>
                       </node>
@@ -1124,7 +1126,7 @@
         <node concept="3clFbF" id="7QMvu5f$8z5" role="3cqZAp">
           <node concept="2OqwBi" id="7QMvu5f$8z6" role="3clFbG">
             <node concept="2Sf5sV" id="7QMvu5f$8z7" role="2Oq$k0" />
-            <node concept="2qgKlT" id="7QMvu5f$8z8" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReAl" role="2OqNvi">
               <ref role="37wK5l" to="tpdd:7nf9pEwlup1" resolve="attachNewMessageAnnotation" />
             </node>
           </node>

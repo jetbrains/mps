@@ -26,6 +26,9 @@
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
       <concept id="1194033889146" name="jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_editorContext" flags="nn" index="1XNTG" />
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
         <child id="1224071154657" name="classifierType" index="0kSFW" />
@@ -246,7 +249,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7400021826771268254" name="jetbrains.mps.lang.smodel.structure.SNodePointerType" flags="ig" index="2sp9CU">
         <reference id="7400021826771268269" name="concept" index="2sp9C9" />
       </concept>
@@ -2217,7 +2219,7 @@
                   <node concept="37vLTw" id="2ucOSYgctwo" role="2Oq$k0">
                     <ref role="3cqZAo" node="3v7fNhWfNYP" resolve="dataType" />
                   </node>
-                  <node concept="2qgKlT" id="2ucOSYgcvP3" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORg2C" role="2OqNvi">
                     <ref role="37wK5l" to="tpcn:hKtGY3g" resolve="isSimpleBooleanOrEnumOfBoolean" />
                   </node>
                 </node>
@@ -2257,7 +2259,7 @@
                     <node concept="37vLTw" id="2ucOSYgcwgj" role="2Oq$k0">
                       <ref role="3cqZAo" node="3v7fNhWfNYP" resolve="dataType" />
                     </node>
-                    <node concept="2qgKlT" id="2ucOSYgcxqj" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORg2E" role="2OqNvi">
                       <ref role="37wK5l" to="tpcn:hKtGTZR" resolve="isSimpleIntegerOrEnumOfInteger" />
                     </node>
                   </node>
@@ -2293,7 +2295,7 @@
                     <node concept="37vLTw" id="2ucOSYgcxWb" role="2Oq$k0">
                       <ref role="3cqZAo" node="3v7fNhWfNYP" resolve="dataType" />
                     </node>
-                    <node concept="2qgKlT" id="2ucOSYgcyl5" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORg2G" role="2OqNvi">
                       <ref role="37wK5l" to="tpcn:hKtGPCt" resolve="isSimpleStringOrEnumOfString" />
                     </node>
                   </node>

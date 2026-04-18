@@ -19,6 +19,9 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -152,7 +155,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
       <concept id="1154546950173" name="jetbrains.mps.lang.smodel.structure.ConceptReference" flags="ng" index="3gn64h">
         <reference id="1154546997487" name="concept" index="3gnhBz" />
@@ -372,9 +374,9 @@
                 <ref role="3cqZAo" node="D" resolve="_context" />
               </node>
             </node>
-            <node concept="2qgKlT" id="Y" role="2OqNvi">
+            <node concept="3zqWPK" id="Y" role="2OqNvi">
               <ref role="37wK5l" to="tpek:hTIpcC8" resolve="isExecuteSynchronous" />
-              <uo k="s:originTrace" v="n:8974276187400348277" />
+              <uo k="s:originTrace" v="n:8085146484218853829" />
             </node>
           </node>
           <node concept="9aQIb" id="J" role="9aQIa">
@@ -436,9 +438,9 @@
                       <uo k="s:originTrace" v="n:8974276187400348289" />
                     </node>
                   </node>
-                  <node concept="2qgKlT" id="1g" role="2OqNvi">
+                  <node concept="3zqWPK" id="1g" role="2OqNvi">
                     <ref role="37wK5l" to="tpek:hF5UhAC" resolve="getExternalVariablesDeclarations" />
-                    <uo k="s:originTrace" v="n:8974276187400348290" />
+                    <uo k="s:originTrace" v="n:8085146484218853831" />
                   </node>
                 </node>
               </node>

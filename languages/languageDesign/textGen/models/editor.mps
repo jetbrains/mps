@@ -24,6 +24,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
       <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
@@ -331,7 +334,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -684,7 +686,7 @@
             <node concept="3clFbF" id="4KiXFM_kERt" role="3cqZAp">
               <node concept="2OqwBi" id="3fG6dkhfN5V" role="3clFbG">
                 <node concept="pncrf" id="3fG6dkhfMZC" role="2Oq$k0" />
-                <node concept="2qgKlT" id="3fG6dkhfN$I" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORgOY" role="2OqNvi">
                   <ref role="37wK5l" to="wbvt:3fG6dkhfrk3" resolve="shallProduceOutputUnit" />
                 </node>
               </node>
@@ -1051,7 +1053,7 @@
                           <node concept="37vLTw" id="3GM_nagTwWH" role="2Oq$k0">
                             <ref role="3cqZAo" node="hXJtNyq" resolve="nodeType" />
                           </node>
-                          <node concept="2qgKlT" id="hXJtNy_" role="2OqNvi">
+                          <node concept="3zqWPK" id="70OdufORgP0" role="2OqNvi">
                             <ref role="37wK5l" to="tpek:hEwIzNo" resolve="getVariableSuffixes" />
                           </node>
                         </node>

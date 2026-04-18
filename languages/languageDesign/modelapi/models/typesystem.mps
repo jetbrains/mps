@@ -14,6 +14,9 @@
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -133,7 +136,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -207,9 +209,9 @@
             <node concept="1YBJjd" id="2Ie3R2B6LMW" role="2Oq$k0">
               <ref role="1YBMHb" node="JuRUwLLGgh" resolve="nodePointer" />
             </node>
-            <node concept="2qgKlT" id="2Ie3R2B6M7Y" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcmN" role="2OqNvi">
               <ref role="37wK5l" to="xlb7:46J8CTY3sAt" resolve="toNode" />
-              <node concept="37vLTw" id="2Ie3R2B6Mgl" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORcmP" role="37wK5m">
                 <ref role="3cqZAo" node="JuRUwLLIxk" resolve="repo" />
               </node>
             </node>
@@ -288,7 +290,7 @@
               <node concept="1YBJjd" id="2bm9xT0zBae" role="2Oq$k0">
                 <ref role="1YBMHb" node="2bm9xT0z$DN" resolve="ptr" />
               </node>
-              <node concept="2qgKlT" id="2bm9xT0zBaf" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcmQ" role="2OqNvi">
                 <ref role="37wK5l" to="xlb7:1Bs_61$mqDd" resolve="toModuleReference" />
               </node>
             </node>
@@ -468,7 +470,7 @@
               <node concept="1YBJjd" id="2bm9xT0zGNb" role="2Oq$k0">
                 <ref role="1YBMHb" node="2bm9xT0zGLi" resolve="ptr" />
               </node>
-              <node concept="2qgKlT" id="2bm9xT0zHkm" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORcmS" role="2OqNvi">
                 <ref role="37wK5l" to="xlb7:1Bs_61$mvvu" resolve="toModelReference" />
               </node>
             </node>
@@ -525,7 +527,7 @@
                 <ref role="3Tt5mk" to="dvox:_GDk1qZ2Jc" resolve="name" />
               </node>
             </node>
-            <node concept="2qgKlT" id="2bm9xT0zMeU" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcmU" role="2OqNvi">
               <ref role="37wK5l" to="xlb7:2bm9xT0zK3P" resolve="getNameObject" />
             </node>
           </node>
@@ -591,9 +593,9 @@
                 <ref role="3Tt5mk" to="dvox:_GDk1qZ2Jc" resolve="name" />
               </node>
             </node>
-            <node concept="2qgKlT" id="2bm9xT0zRm9" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORcmW" role="2OqNvi">
               <ref role="37wK5l" to="xlb7:2bm9xT0zPoJ" resolve="updateValue" />
-              <node concept="QwW4i" id="2bm9xT0zRqC" role="37wK5m">
+              <node concept="QwW4i" id="70OdufORcmY" role="37wK5m">
                 <ref role="QwW4h" node="2bm9xT0zMDJ" resolve="actualName" />
               </node>
             </node>

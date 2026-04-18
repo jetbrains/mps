@@ -15,6 +15,9 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -160,7 +163,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -247,7 +249,7 @@
                         <ref role="3Tt5mk" to="rzqf:5keEkmeCqKh" resolve="commandPart" />
                       </node>
                     </node>
-                    <node concept="2qgKlT" id="1$vg1Ecg_d4" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORd38" role="2OqNvi">
                       <ref role="37wK5l" to="mdoc:5keEkmeCqIg" resolve="getCommandDeclaration" />
                     </node>
                   </node>
@@ -524,7 +526,7 @@
                     <node concept="1YBJjd" id="7cqVL$Cf$rR" role="2Oq$k0">
                       <ref role="1YBMHb" node="7cqVL$Cf$rb" resolve="reportStatement" />
                     </node>
-                    <node concept="2qgKlT" id="7cqVL$Cf$rS" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORd3a" role="2OqNvi">
                       <ref role="37wK5l" to="mdoc:JzCdmU6yQ5" resolve="getException" />
                     </node>
                   </node>
@@ -1004,7 +1006,7 @@
               <node concept="2GrUjf" id="6T9rif_WOa7" role="2Oq$k0">
                 <ref role="2Gs0qQ" node="6T9rif_WMWD" resolve="argDeclaration" />
               </node>
-              <node concept="2qgKlT" id="6T9rif_WQmv" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORd3c" role="2OqNvi">
                 <ref role="37wK5l" to="mdoc:7c4O8d8q0tV" resolve="isRequired" />
               </node>
             </node>

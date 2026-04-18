@@ -13,6 +13,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -68,7 +71,6 @@
       <concept id="767145758118872828" name="jetbrains.mps.lang.actions.structure.NF_Node_ReplaceWithNewOperation" flags="nn" index="2DeJnW" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -123,7 +125,7 @@
         <node concept="3clFbF" id="4HFrnGEwzyW" role="3cqZAp">
           <node concept="37vLTI" id="4HFrnGEw_Cq" role="3clFbG">
             <node concept="2OqwBi" id="4HFrnGEwDr3" role="37vLTx">
-              <node concept="2qgKlT" id="4HFrnGEwDHl" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORfo7" role="2OqNvi">
                 <ref role="37wK5l" to="36cd:4HFrnGErDob" resolve="getClassifierFqName" />
               </node>
               <node concept="2Sf5sV" id="4HFrnGEwDkx" role="2Oq$k0" />
@@ -141,7 +143,7 @@
         <node concept="3clFbF" id="4HFrnGEw_Hc" role="3cqZAp">
           <node concept="37vLTI" id="4HFrnGEwAOG" role="3clFbG">
             <node concept="2OqwBi" id="4HFrnGEwDWC" role="37vLTx">
-              <node concept="2qgKlT" id="4HFrnGEwEeU" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORfo9" role="2OqNvi">
                 <ref role="37wK5l" to="36cd:4HFrnGEt_VQ" resolve="getSModelReference" />
               </node>
               <node concept="2Sf5sV" id="4HFrnGEwDQa" role="2Oq$k0" />

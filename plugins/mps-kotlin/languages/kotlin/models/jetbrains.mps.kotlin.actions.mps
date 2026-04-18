@@ -11,6 +11,9 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -138,13 +141,13 @@
               <node concept="3clFbF" id="6cg9X74skSV" role="3cqZAp">
                 <node concept="2OqwBi" id="6cg9X74sl78" role="3clFbG">
                   <node concept="1r4Lsj" id="6cg9X74skTs" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="6cg9X74slnl" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORcxJ" role="2OqNvi">
                     <ref role="37wK5l" to="hez:6cg9X74saKl" resolve="setValue" />
-                    <node concept="2OqwBi" id="6cg9X74slEl" role="37wK5m">
-                      <node concept="Jnkvi" id="6cg9X74slsB" role="2Oq$k0">
+                    <node concept="2OqwBi" id="70OdufORcxL" role="37wK5m">
+                      <node concept="Jnkvi" id="70OdufORcxM" role="2Oq$k0">
                         <ref role="1M0zk5" node="6cg9X74skR$" resolve="numeric" />
                       </node>
-                      <node concept="2qgKlT" id="6cg9X74sm1C" role="2OqNvi">
+                      <node concept="2qgKlT" id="70OdufORcxN" role="2OqNvi">
                         <ref role="37wK5l" to="hez:6cg9X74s8pg" resolve="getValue" />
                       </node>
                     </node>

@@ -14,6 +14,9 @@
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -160,7 +163,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -816,14 +818,14 @@
             <node concept="37vLTw" id="41388oPhOg0" role="2Oq$k0">
               <ref role="3cqZAo" node="41388oPhOfW" resolve="clazz" />
             </node>
-            <node concept="2qgKlT" id="41388oPhH48" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORfur" role="2OqNvi">
               <ref role="37wK5l" to="tpek:6dL7A1DpKo1" resolve="isDescendant" />
-              <node concept="2OqwBi" id="41388oPhH49" role="37wK5m">
-                <node concept="3TrEf2" id="41388oPhH4a" role="2OqNvi">
+              <node concept="2OqwBi" id="70OdufORfut" role="37wK5m">
+                <node concept="3TrEf2" id="70OdufORfuu" role="2OqNvi">
                   <ref role="3Tt5mk" to="tpee:g7uigIF" resolve="classifier" />
                 </node>
-                <node concept="2c44tf" id="41388oPhH4b" role="2Oq$k0">
-                  <node concept="3uibUv" id="41388oPhH4c" role="2c44tc">
+                <node concept="2c44tf" id="70OdufORfuv" role="2Oq$k0">
+                  <node concept="3uibUv" id="70OdufORfuw" role="2c44tc">
                     <ref role="3uigEE" to="yo81:5mqBoD3U3WC" resolve="IResource" />
                   </node>
                 </node>

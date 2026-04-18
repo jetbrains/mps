@@ -18,6 +18,9 @@
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -188,7 +191,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7400021826771268254" name="jetbrains.mps.lang.smodel.structure.SNodePointerType" flags="ig" index="2sp9CU" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -1024,9 +1026,9 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="2qgKlT" id="4Cl0D9hpN_D" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORcxQ" role="2OqNvi">
                         <ref role="37wK5l" to="hez:4nn3FPlZH$r" resolve="toString" />
-                        <node concept="3clFbT" id="4Cl0D9hpNBg" role="37wK5m" />
+                        <node concept="3clFbT" id="70OdufORcxS" role="37wK5m" />
                       </node>
                     </node>
                   </node>
@@ -1130,9 +1132,9 @@
                                                         </node>
                                                       </node>
                                                     </node>
-                                                    <node concept="2qgKlT" id="4Cl0D9h7UUi" role="2OqNvi">
+                                                    <node concept="3zqWPK" id="70OdufORcxT" role="2OqNvi">
                                                       <ref role="37wK5l" to="hez:4nn3FPlZH$r" resolve="toString" />
-                                                      <node concept="3clFbT" id="4Cl0D9h7UUj" role="37wK5m" />
+                                                      <node concept="3clFbT" id="70OdufORcxV" role="37wK5m" />
                                                     </node>
                                                   </node>
                                                 </node>
@@ -2243,9 +2245,9 @@
             <node concept="liA8E" id="4Cl0D9h8tO9" role="2OqNvi">
               <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
               <node concept="2OqwBi" id="4Cl0D9h8tOa" role="37wK5m">
-                <node concept="2qgKlT" id="4Cl0D9h8tOc" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcxW" role="2OqNvi">
                   <ref role="37wK5l" to="hez:4nn3FPlZH$r" resolve="toString" />
-                  <node concept="37vLTw" id="4Cl0D9h8tOd" role="37wK5m">
+                  <node concept="37vLTw" id="70OdufORcxY" role="37wK5m">
                     <ref role="3cqZAo" node="4Cl0D9h8tOk" resolve="erased" />
                   </node>
                 </node>
@@ -2315,7 +2317,7 @@
                     <ref role="37wK5l" to="wbbs:4XaBo_YwcqK" resolve="toClassType" />
                   </node>
                 </node>
-                <node concept="2qgKlT" id="5pwU7dH02X$" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORcxZ" role="2OqNvi">
                   <ref role="37wK5l" to="hez:5pwU7dG5dvS" resolve="asNullable" />
                 </node>
               </node>

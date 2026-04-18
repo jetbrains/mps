@@ -14,6 +14,9 @@
     <import index="tpe5" ref="r:00000000-0000-4000-0000-011c895902d1(jetbrains.mps.baseLanguage.unitTest.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -165,7 +168,7 @@
                       <node concept="Jnkvi" id="3Gw7rtGKw3Z" role="2Oq$k0">
                         <ref role="1M0zk5" node="3Gw7rtGKw4c" resolve="original" />
                       </node>
-                      <node concept="2qgKlT" id="3Gw7rtGKwx5" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORdna" role="2OqNvi">
                         <ref role="37wK5l" to="tpe5:3Gw7rtGJhho" resolve="getExpressionChild" />
                       </node>
                     </node>
@@ -185,7 +188,7 @@
                     <node concept="Jnkvi" id="3Gw7rtGKw47" role="2Oq$k0">
                       <ref role="1M0zk5" node="3Gw7rtGKw4c" resolve="original" />
                     </node>
-                    <node concept="2qgKlT" id="3Gw7rtGKxAw" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORdnc" role="2OqNvi">
                       <ref role="37wK5l" to="tpe5:3Gw7rtGJhho" resolve="getExpressionChild" />
                     </node>
                   </node>
@@ -252,13 +255,13 @@
               <node concept="3clFbF" id="3Gw7rtGJesx" role="3cqZAp">
                 <node concept="2OqwBi" id="3Gw7rtGJesA" role="3clFbG">
                   <node concept="1r4Lsj" id="3Gw7rtGJesB" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="3Gw7rtGJt3h" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORdne" role="2OqNvi">
                     <ref role="37wK5l" to="tpe5:3Gw7rtGJhw6" resolve="setExpressionChild" />
-                    <node concept="2OqwBi" id="3Gw7rtGJttm" role="37wK5m">
-                      <node concept="Jnkvi" id="3Gw7rtGJtgv" role="2Oq$k0">
+                    <node concept="2OqwBi" id="70OdufORdng" role="37wK5m">
+                      <node concept="Jnkvi" id="70OdufORdnh" role="2Oq$k0">
                         <ref role="1M0zk5" node="3Gw7rtGJesD" resolve="original" />
                       </node>
-                      <node concept="2qgKlT" id="3Gw7rtGJtPv" role="2OqNvi">
+                      <node concept="2qgKlT" id="70OdufORdni" role="2OqNvi">
                         <ref role="37wK5l" to="tpe5:3Gw7rtGJhho" resolve="getExpressionChild" />
                       </node>
                     </node>
@@ -278,13 +281,13 @@
               <node concept="3clFbF" id="3Gw7rtGKxCp" role="3cqZAp">
                 <node concept="2OqwBi" id="3Gw7rtGKxCq" role="3clFbG">
                   <node concept="1r4Lsj" id="3Gw7rtGKxCr" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="3Gw7rtGKxCs" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORdnl" role="2OqNvi">
                     <ref role="37wK5l" to="tpe5:3Gw7rtGJhw6" resolve="setExpressionChild" />
-                    <node concept="2OqwBi" id="3Gw7rtGKxCt" role="37wK5m">
-                      <node concept="Jnkvi" id="3Gw7rtGKxCu" role="2Oq$k0">
+                    <node concept="2OqwBi" id="70OdufORdnn" role="37wK5m">
+                      <node concept="Jnkvi" id="70OdufORdno" role="2Oq$k0">
                         <ref role="1M0zk5" node="3Gw7rtGKxCw" resolve="original" />
                       </node>
-                      <node concept="3TrEf2" id="3Gw7rtGKybH" role="2OqNvi">
+                      <node concept="3TrEf2" id="70OdufORdnp" role="2OqNvi">
                         <ref role="3Tt5mk" to="tpe3:7jPoEeD$ZP5" resolve="actual" />
                       </node>
                     </node>

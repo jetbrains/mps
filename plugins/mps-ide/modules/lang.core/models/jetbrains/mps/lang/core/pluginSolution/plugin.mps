@@ -72,6 +72,9 @@
         <child id="6791676465872004185" name="toolIcon" index="1nVCmq" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone">
       <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR" />
     </language>
@@ -280,7 +283,6 @@
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="5045161044515397667" name="jetbrains.mps.lang.smodel.structure.Node_PointerOperation" flags="ng" index="iZEcu" />
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="8758390115029295477" name="jetbrains.mps.lang.smodel.structure.SReferenceType" flags="in" index="2z4iKi" />
       <concept id="5708036808576088033" name="jetbrains.mps.lang.smodel.structure.Reference_GetResolveInfo" flags="nn" index="1FfNbt" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
@@ -798,7 +800,7 @@
                       <node concept="37vLTw" id="2SJclOrQvk$" role="2Oq$k0">
                         <ref role="3cqZAo" node="2SJclOrOZNc" resolve="serialized" />
                       </node>
-                      <node concept="2qgKlT" id="2SJclOrQvk_" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORgzD" role="2OqNvi">
                         <ref role="37wK5l" to="buve:4uVwhQyQbdz" resolve="getNodeReference" />
                       </node>
                     </node>
@@ -861,7 +863,7 @@
                       <node concept="37vLTw" id="2SJclOrQtXJ" role="2Oq$k0">
                         <ref role="3cqZAo" node="2SJclOrOZMM" resolve="serialized" />
                       </node>
-                      <node concept="2qgKlT" id="2SJclOrQunz" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufORgzF" role="2OqNvi">
                         <ref role="37wK5l" to="buve:4uVwhQyQbdz" resolve="getNodeReference" />
                       </node>
                     </node>

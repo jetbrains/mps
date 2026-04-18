@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-31tajdbjgbbq841s4gd66dkpl4tarcm">
+<product version="3" modelHash="485f3iqwjb3xgpiz8nr2cctmc8ox27o">
   <files names="SignatureAttributeKey.java:SignatureBuilder.java:SignatureCollector.java:SourcedSignature.java:SuperTypesVisitor.java:TypeExpander.java" />
 </product>
 

@@ -37,6 +37,9 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
       <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
@@ -476,7 +479,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1138661924179" name="jetbrains.mps.lang.smodel.structure.Property_SetOperation" flags="nn" index="tyxLq">
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
@@ -1032,7 +1034,7 @@
                     </node>
                     <node concept="2OqwBi" id="6qi8GzL_cg1" role="3uHU7B">
                       <node concept="pncrf" id="6qi8GzL_cg2" role="2Oq$k0" />
-                      <node concept="2qgKlT" id="6qi8GzL_cg3" role="2OqNvi">
+                      <node concept="3zqWPK" id="70OdufOReA6" role="2OqNvi">
                         <ref role="37wK5l" to="tpdd:6lCixFI9vx1" resolve="isAttributeRule" />
                       </node>
                     </node>
@@ -2849,7 +2851,7 @@
                                 <node concept="2OqwBi" id="21kJG8HlIhI" role="25WWJ7">
                                   <node concept="2OqwBi" id="21kJG8HlEfv" role="2Oq$k0">
                                     <node concept="3GMtW1" id="21kJG8HlDTj" role="2Oq$k0" />
-                                    <node concept="2qgKlT" id="21kJG8HlGkW" role="2OqNvi">
+                                    <node concept="3zqWPK" id="70OdufOReA8" role="2OqNvi">
                                       <ref role="37wK5l" to="tpdd:21kJG8Hh$W9" resolve="findSuperRules" />
                                     </node>
                                   </node>
@@ -5415,10 +5417,10 @@
                 <node concept="37vLTw" id="1wEcoXjJwSw" role="2Oq$k0">
                   <ref role="3cqZAo" node="1wEcoXjJwSg" resolve="method" />
                 </node>
-                <node concept="2qgKlT" id="1wEcoXjJwSx" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufOReAa" role="2OqNvi">
                   <ref role="37wK5l" to="tpek:3WDGf12DPy8" resolve="hasAnnotation" />
-                  <node concept="2tJFMh" id="3WDGf12Enxr" role="37wK5m">
-                    <node concept="ZC_QK" id="3WDGf12EnRB" role="2tJFKM">
+                  <node concept="2tJFMh" id="70OdufOReAc" role="37wK5m">
+                    <node concept="ZC_QK" id="70OdufOReAd" role="2tJFKM">
                       <ref role="2aWVGs" to="tpd5:hq1Hpmb" resolve="InferenceMethod" />
                     </node>
                   </node>
@@ -5547,13 +5549,13 @@
                     <ref role="3Tt5mk" to="tpd4:h5YuTL0" resolve="applicableNode" />
                   </node>
                 </node>
-                <node concept="2qgKlT" id="1wEcoXjJwUH" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufOReAe" role="2OqNvi">
                   <ref role="37wK5l" to="tpdd:hEwIszL" resolve="getApplicableConcept" />
                 </node>
               </node>
-              <node concept="2qgKlT" id="4UTtJHKpdWR" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufOReAg" role="2OqNvi">
                 <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
-                <node concept="35c_gC" id="4UTtJHKpdXE" role="37wK5m">
+                <node concept="35c_gC" id="70OdufOReAi" role="37wK5m">
                   <ref role="35c_gD" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
                 </node>
               </node>

@@ -61,6 +61,9 @@
         <child id="856705193941281795" name="message" index="2LYoNm" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone">
       <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR" />
     </language>
@@ -289,7 +292,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
@@ -930,9 +932,9 @@
                           <node concept="37vLTw" id="3GM_nagTw0Q" role="2Oq$k0">
                             <ref role="3cqZAo" node="1KUoCipvy8V" resolve="projectNode" />
                           </node>
-                          <node concept="2qgKlT" id="1KUoCipvy98" role="2OqNvi">
+                          <node concept="3zqWPK" id="70OdufORdxF" role="2OqNvi">
                             <ref role="37wK5l" to="vbkb:4ahc858UcHk" resolve="getScriptsPath" />
-                            <node concept="2YIFZM" id="1KUoCipvy99" role="37wK5m">
+                            <node concept="2YIFZM" id="70OdufORdxH" role="37wK5m">
                               <ref role="37wK5l" to="o3n2:4jjtc7WZTjd" resolve="defaultContext" />
                               <ref role="1Pybhc" to="o3n2:4jjtc7WZOAv" resolve="Context" />
                             </node>
@@ -1061,7 +1063,7 @@
                                 <node concept="37vLTw" id="3GM_nagTuyO" role="2Oq$k0">
                                   <ref role="3cqZAo" node="1KUoCipvy8V" resolve="projectNode" />
                                 </node>
-                                <node concept="2qgKlT" id="1KUoCipvy9v" role="2OqNvi">
+                                <node concept="3zqWPK" id="70OdufORdxI" role="2OqNvi">
                                   <ref role="37wK5l" to="vbkb:4gSHdTptyu0" resolve="getOutputFileName" />
                                 </node>
                               </node>

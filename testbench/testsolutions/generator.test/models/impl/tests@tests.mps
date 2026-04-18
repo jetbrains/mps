@@ -49,6 +49,9 @@
       </concept>
       <concept id="1225978065297" name="jetbrains.mps.lang.test.structure.SimpleNodeTest" flags="ng" index="1LZb2c" />
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -173,8 +176,8 @@
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1510949579266781519" name="jetbrains.mps.lang.generator.structure.TemplateCallMacro" flags="ln" index="5jKBG" />
-      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="ln" index="29HgVG">
+      <concept id="1510949579266781519" name="jetbrains.mps.lang.generator.structure.TemplateCallMacro" flags="lg" index="5jKBG" />
+      <concept id="1114706874351" name="jetbrains.mps.lang.generator.structure.CopySrcNodeMacro" flags="lg" index="29HgVG">
         <child id="1168024447342" name="sourceNodeQuery" index="3NFExx" />
       </concept>
       <concept id="1177093525992" name="jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence" flags="lg" index="gft3U">
@@ -190,8 +193,8 @@
         <child id="1092060348987" name="contentNode" index="13RCb5" />
       </concept>
       <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
-      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="in" index="3NFfHV" />
-      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
+      <concept id="1168024337012" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery" flags="ig" index="3NFfHV" />
+      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="lg" index="1W57fq">
         <child id="1194989344771" name="alternativeConsequence" index="UU_$l" />
         <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
@@ -250,7 +253,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
@@ -1675,7 +1677,7 @@
               <node concept="3xONca" id="2y6n3$X6BbJ" role="2Oq$k0">
                 <ref role="3xOPvv" node="2y6n3$X5Ys2" resolve="CallMacro" />
               </node>
-              <node concept="2qgKlT" id="2y6n3$X6BbK" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufOReJi" role="2OqNvi">
                 <ref role="37wK5l" to="tpfh:hEwIosJ" resolve="getInputNodeTypeInsideOfMacro" />
               </node>
             </node>
@@ -1691,7 +1693,7 @@
               <node concept="3xONca" id="2y6n3$X6GnR" role="2Oq$k0">
                 <ref role="3xOPvv" node="2y6n3$X5Ys2" resolve="CallMacro" />
               </node>
-              <node concept="2qgKlT" id="2y6n3$X6GnS" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufOReJk" role="2OqNvi">
                 <ref role="37wK5l" to="tpfh:hEwIot7" resolve="getPreviousNodeMacro" />
               </node>
             </node>
@@ -1876,7 +1878,7 @@
                 <node concept="3clFbF" id="2y6n3$X5NTs" role="3cqZAp">
                   <node concept="2OqwBi" id="2y6n3$X5O6p" role="3clFbG">
                     <node concept="30H73N" id="2y6n3$X5NTr" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="2y6n3$X5OqR" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufOReJm" role="2OqNvi">
                       <ref role="37wK5l" to="tpcu:hEwIMij" resolve="isInTemplates" />
                     </node>
                   </node>

@@ -18,6 +18,9 @@
     <import index="w8y0" ref="r:77d5d6f9-26b4-4cf8-adc6-7c4e21017b07(jetbrains.mps.baseLanguage.kotlinRefs.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326896143883" name="jetbrains.mps.lang.editor.structure.CellKeyMap_FunctionParm_selectedNode" flags="nn" index="0GJ7k" />
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
@@ -325,7 +328,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
@@ -1034,9 +1036,9 @@
                 <node concept="3clFbF" id="47y0FrqhJIQ" role="3cqZAp">
                   <node concept="2OqwBi" id="47y0FrqhJIR" role="3clFbG">
                     <node concept="1NM5Ph" id="47y0FrqhJIV" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="1CYLv9VofPN" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORg0$" role="2OqNvi">
                       <ref role="37wK5l" to="hez:1d2BQ0ZyA$g" resolve="getNestedName" />
-                      <node concept="10M0yZ" id="1CYLv9VogQm" role="37wK5m">
+                      <node concept="10M0yZ" id="70OdufORg0A" role="37wK5m">
                         <ref role="3cqZAo" to="hez:1d2BQ0ZzqJQ" resolve="Jvm" />
                         <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
                       </node>
@@ -1777,7 +1779,7 @@
               <node concept="2OqwBi" id="hPngLWl" role="3clFbG">
                 <node concept="2OqwBi" id="hPngIrA" role="2Oq$k0">
                   <node concept="pncrf" id="hPngIlf" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="1t03WazkWlq" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORg0B" role="2OqNvi">
                     <ref role="37wK5l" to="w8y0:UG7NftR_2Q" resolve="getFunctionParameters" />
                   </node>
                 </node>
@@ -1825,7 +1827,7 @@
               <node concept="2OqwBi" id="hzHktcG" role="3clFbG">
                 <node concept="2OqwBi" id="hxiFtvB" role="2Oq$k0">
                   <node concept="pncrf" id="hsdTKjc" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="1t03WazkXjy" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORg0D" role="2OqNvi">
                     <ref role="37wK5l" to="w8y0:UG7NftR_2Q" resolve="getFunctionParameters" />
                   </node>
                 </node>
@@ -1863,9 +1865,9 @@
           <node concept="3clFbF" id="1CYLv9Vohxo" role="3cqZAp">
             <node concept="2OqwBi" id="1CYLv9Vohxq" role="3clFbG">
               <node concept="1WAUZh" id="1CYLv9VohVg" role="2Oq$k0" />
-              <node concept="2qgKlT" id="1CYLv9Vohxs" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORg0F" role="2OqNvi">
                 <ref role="37wK5l" to="hez:1d2BQ0ZyA$g" resolve="getNestedName" />
-                <node concept="10M0yZ" id="1CYLv9Vohxt" role="37wK5m">
+                <node concept="10M0yZ" id="70OdufORg0H" role="37wK5m">
                   <ref role="3cqZAo" to="hez:1d2BQ0ZzqJQ" resolve="Jvm" />
                   <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
                 </node>

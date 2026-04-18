@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-6hmddmj3vibz5lmgje7o8l1isoyobth">
+<product version="3" modelHash="3xioh2jjz7pfegxkymnxp4qi76in29c">
   <files names="RemoveAbstractModifier_QuickFix.java:RemoveDefaultModifier_QuickFix.java:TypesystemDescriptor.java:check_DefaultMethodIsNotAbstract_NonTypesystemRule.java:check_DefaultMethodIsNotStatic_NonTypesystemRule.java" />
 </product>
 

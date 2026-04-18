@@ -17,6 +17,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
         <child id="2597348684684069742" name="contextHints" index="CpUAK" />
@@ -190,7 +193,6 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
@@ -411,15 +413,15 @@
                                   <node concept="3clFbF" id="3u6SZi0NuYN" role="3cqZAp">
                                     <node concept="2OqwBi" id="3u6SZi0Nv5n" role="3clFbG">
                                       <node concept="pncrf" id="3u6SZi0NuYL" role="2Oq$k0" />
-                                      <node concept="2qgKlT" id="3u6SZi0Nvpk" role="2OqNvi">
+                                      <node concept="3zqWPK" id="70OdufORdlq" role="2OqNvi">
                                         <ref role="37wK5l" to="g5uf:3u6SZi0POQS" resolve="drawShapeAt" />
-                                        <node concept="37vLTw" id="3u6SZi0NvVl" role="37wK5m">
+                                        <node concept="37vLTw" id="70OdufORdls" role="37wK5m">
                                           <ref role="3cqZAo" node="3u6SZi0viWn" resolve="graphics" />
                                         </node>
-                                        <node concept="3cmrfG" id="3u6SZi0PRkI" role="37wK5m">
+                                        <node concept="3cmrfG" id="70OdufORdlt" role="37wK5m">
                                           <property role="3cmrfH" value="10" />
                                         </node>
-                                        <node concept="3cmrfG" id="3u6SZi0PRDS" role="37wK5m">
+                                        <node concept="3cmrfG" id="70OdufORdlu" role="37wK5m">
                                           <property role="3cmrfH" value="10" />
                                         </node>
                                       </node>
@@ -665,15 +667,15 @@
                                   <node concept="3clFbF" id="3u6SZi0Qn7k" role="3cqZAp">
                                     <node concept="2OqwBi" id="3u6SZi0Qnb7" role="3clFbG">
                                       <node concept="pncrf" id="3u6SZi0Qn7d" role="2Oq$k0" />
-                                      <node concept="2qgKlT" id="3u6SZi0QnJH" role="2OqNvi">
+                                      <node concept="3zqWPK" id="70OdufORdlv" role="2OqNvi">
                                         <ref role="37wK5l" to="g5uf:3u6SZi0POQS" resolve="drawShapeAt" />
-                                        <node concept="37vLTw" id="3u6SZi0QnZ1" role="37wK5m">
+                                        <node concept="37vLTw" id="70OdufORdlx" role="37wK5m">
                                           <ref role="3cqZAo" node="3u6SZi0vt1o" resolve="graphics" />
                                         </node>
-                                        <node concept="3cmrfG" id="3u6SZi0Qoab" role="37wK5m">
+                                        <node concept="3cmrfG" id="70OdufORdly" role="37wK5m">
                                           <property role="3cmrfH" value="10" />
                                         </node>
-                                        <node concept="3cmrfG" id="3u6SZi0QolF" role="37wK5m">
+                                        <node concept="3cmrfG" id="70OdufORdlz" role="37wK5m">
                                           <property role="3cmrfH" value="10" />
                                         </node>
                                       </node>

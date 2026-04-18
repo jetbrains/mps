@@ -33,6 +33,7 @@
       </concept>
       <concept id="1225194628440" name="jetbrains.mps.lang.behavior.structure.SuperNodeExpression" flags="nn" index="13iAh5" />
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
@@ -143,7 +144,6 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -274,12 +274,12 @@
         <node concept="3clFbF" id="6oIBdQGQEW0" role="3cqZAp">
           <node concept="2OqwBi" id="59YAasRrTG7" role="3clFbG">
             <node concept="13iAh5" id="59YAasRrTFQ" role="2Oq$k0" />
-            <node concept="2qgKlT" id="59YAasRrTGf" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufOReJo" role="2OqNvi">
               <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
-              <node concept="37vLTw" id="2BHiRxgmqZW" role="37wK5m">
+              <node concept="37vLTw" id="70OdufOReJq" role="37wK5m">
                 <ref role="3cqZAo" node="3$IEDVoTlN0" resolve="kind" />
               </node>
-              <node concept="37vLTw" id="2BHiRxglrf8" role="37wK5m">
+              <node concept="37vLTw" id="70OdufOReJr" role="37wK5m">
                 <ref role="3cqZAo" node="3$IEDVoTlN2" resolve="child" />
               </node>
             </node>

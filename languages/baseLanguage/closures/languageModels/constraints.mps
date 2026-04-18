@@ -22,6 +22,9 @@
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -288,7 +291,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -1899,7 +1901,7 @@
                 <node concept="37vLTw" id="6k$qpVd4hGP" role="2Oq$k0">
                   <ref role="3cqZAo" node="hBxo4bq" resolve="ct" />
                 </node>
-                <node concept="2qgKlT" id="6k$qpVd4iIS" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORc5l" role="2OqNvi">
                   <ref role="37wK5l" to="tpek:4w2h6RLlygH" resolve="getSupertypes" />
                 </node>
               </node>
@@ -3386,7 +3388,7 @@
                           </node>
                           <node concept="2OqwBi" id="5Vvmn_Qkitj" role="3uHU7B">
                             <node concept="2OqwBi" id="5Vvmn_Qkitk" role="2Oq$k0">
-                              <node concept="2qgKlT" id="5Vvmn_Qkitl" role="2OqNvi">
+                              <node concept="3zqWPK" id="70OdufORc5n" role="2OqNvi">
                                 <ref role="37wK5l" to="tpek:4_LVZ3pBKCn" resolve="methods" />
                               </node>
                               <node concept="37vLTw" id="5Vvmn_Qkitm" role="2Oq$k0">

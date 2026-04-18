@@ -27,6 +27,9 @@
     <import index="ntzd" ref="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -250,7 +253,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -820,7 +822,7 @@
                                   <ref role="cht4Q" to="tpee:hqOqwz4" resolve="DotExpression" />
                                 </node>
                               </node>
-                              <node concept="2qgKlT" id="7GulAc9zaHt" role="2OqNvi">
+                              <node concept="3zqWPK" id="70OdufORccC" role="2OqNvi">
                                 <ref role="37wK5l" to="tpek:7GulAc9z0dN" resolve="getOperandType" />
                               </node>
                             </node>
@@ -1409,7 +1411,7 @@
                 <node concept="37vLTw" id="64oWfQmjYTx" role="2Oq$k0">
                   <ref role="3cqZAo" node="7kDY1n$EOuI" resolve="fromClassifier" />
                 </node>
-                <node concept="2qgKlT" id="64oWfQmjZHy" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORccE" role="2OqNvi">
                   <ref role="37wK5l" to="tpek:1UeCwxlWKny" resolve="getExtendedClassifierTypes" />
                 </node>
               </node>
@@ -2466,7 +2468,7 @@
                     <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
                   </node>
                 </node>
-                <node concept="2qgKlT" id="5nILdfQiWU8" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORccG" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
                 </node>
               </node>
@@ -2683,11 +2685,11 @@
               <node concept="37vLTw" id="2BHiRxglJrA" role="2Oq$k0">
                 <ref role="3cqZAo" node="5nILdfQiHit" resolve="classifier" />
               </node>
-              <node concept="2qgKlT" id="3RnGEvSGRBc" role="2OqNvi">
+              <node concept="3zqWPK" id="70OdufORccI" role="2OqNvi">
                 <ref role="37wK5l" to="tpek:6r77ob2UWbY" resolve="getThisType" />
               </node>
             </node>
-            <node concept="2qgKlT" id="3RnGEvSGRBB" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORccK" role="2OqNvi">
               <ref role="37wK5l" to="tpek:6r77ob2V1Fr" resolve="getMembers" />
             </node>
           </node>
@@ -2753,7 +2755,7 @@
                                     <ref role="cht4Q" to="tpee:h9ngReX" resolve="ClassifierMember" />
                                   </node>
                                 </node>
-                                <node concept="2qgKlT" id="5nILdfQiR8i" role="2OqNvi">
+                                <node concept="3zqWPK" id="70OdufORccM" role="2OqNvi">
                                   <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                                 </node>
                               </node>

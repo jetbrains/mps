@@ -16,6 +16,9 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
@@ -208,7 +211,6 @@
       <concept id="1140725362528" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetOperation" flags="nn" index="2oxUTD">
         <child id="1140725362529" name="linkTarget" index="2oxUTC" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC">
         <reference id="1139880128956" name="concept" index="1A9B2P" />
@@ -518,7 +520,7 @@
                 </node>
                 <node concept="2OqwBi" id="1wEcoXjJGeP" role="33vP2m">
                   <node concept="7Obwk" id="1wEcoXjJGfi" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="1wEcoXjJGeR" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORfuH" role="2OqNvi">
                     <ref role="37wK5l" to="tpek:hO_4GYO" resolve="getDotExpression" />
                   </node>
                 </node>
@@ -626,7 +628,7 @@
                 <node concept="2OqwBi" id="2aapKyRedlI" role="3fr31v">
                   <node concept="2OqwBi" id="2aapKyRedlJ" role="2Oq$k0">
                     <node concept="7Obwk" id="2aapKyRedlK" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="2aapKyRedlL" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORfuJ" role="2OqNvi">
                       <ref role="37wK5l" to="tpek:hO_4GYO" resolve="getDotExpression" />
                     </node>
                   </node>

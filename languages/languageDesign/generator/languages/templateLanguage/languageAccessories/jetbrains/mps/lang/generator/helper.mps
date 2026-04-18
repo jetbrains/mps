@@ -23,6 +23,9 @@
     <import index="uddc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.transformation(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -191,7 +194,6 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1173122760281" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorsOperation" flags="nn" index="z$bX8" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
@@ -1303,9 +1305,9 @@
             <node concept="37vLTw" id="6Gg5KlvtRnU" role="2Oq$k0">
               <ref role="3cqZAo" node="hGCsTCd" resolve="propertyMacro" />
             </node>
-            <node concept="2qgKlT" id="6Gg5KlvuwW$" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORgSF" role="2OqNvi">
               <ref role="37wK5l" to="tpcu:6Gg5Klvu8CV" resolve="setProperty" />
-              <node concept="37vLTw" id="1Tx3V$IE3YF" role="37wK5m">
+              <node concept="37vLTw" id="70OdufORgSH" role="37wK5m">
                 <ref role="3cqZAo" node="1Tx3V$IE3Ir" resolve="p" />
               </node>
             </node>
@@ -1495,9 +1497,9 @@
                 <node concept="37vLTw" id="6Gg5Klvvqsg" role="2Oq$k0">
                   <ref role="3cqZAo" node="hGCts2E" resolve="referenceMacro" />
                 </node>
-                <node concept="2qgKlT" id="6Gg5Klvvr26" role="2OqNvi">
+                <node concept="3zqWPK" id="70OdufORgSI" role="2OqNvi">
                   <ref role="37wK5l" to="tpcu:6Gg5KlvuxxF" resolve="setLink" />
-                  <node concept="37vLTw" id="1Tx3V$IE4WH" role="37wK5m">
+                  <node concept="37vLTw" id="70OdufORgSK" role="37wK5m">
                     <ref role="3cqZAo" node="1Tx3V$IE4l9" resolve="ref" />
                   </node>
                 </node>
@@ -2148,7 +2150,7 @@
             <node concept="3cpWs6" id="15RmSSdWLxj" role="3cqZAp">
               <node concept="2OqwBi" id="775sqVWgTj" role="3cqZAk">
                 <node concept="2OqwBi" id="15RmSSdWLxo" role="2Oq$k0">
-                  <node concept="2qgKlT" id="15RmSSdWLxs" role="2OqNvi">
+                  <node concept="3zqWPK" id="70OdufORgSL" role="2OqNvi">
                     <ref role="37wK5l" to="tpfh:1$dcvTE6OGV" resolve="getConcept" />
                   </node>
                   <node concept="1PxgMI" id="15RmSSdWLxm" role="2Oq$k0">
@@ -3004,9 +3006,9 @@
                     <node concept="37vLTw" id="7BS8DFNOrUK" role="2Oq$k0">
                       <ref role="3cqZAo" node="7BS8DFNNASt" resolve="myNode" />
                     </node>
-                    <node concept="2qgKlT" id="7BS8DFNOrUL" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORgSN" role="2OqNvi">
                       <ref role="37wK5l" to="tpcn:2A8AB0rAWpG" resolve="getAllSuperConcepts" />
-                      <node concept="3clFbT" id="7BS8DFNOrUM" role="37wK5m">
+                      <node concept="3clFbT" id="70OdufORgSP" role="37wK5m">
                         <property role="3clFbU" value="true" />
                       </node>
                     </node>

@@ -144,6 +144,9 @@
         <property id="1207318242774" name="keycode" index="pLAjf" />
       </concept>
     </language>
+    <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
+      <concept id="3235159848334022093" name="jetbrains.mps.lang.behavior.structure.Node_ConceptMethodCall" flags="nn" index="3zqWPK" />
+    </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
       <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
@@ -445,7 +448,6 @@
       <concept id="4497478346159780083" name="jetbrains.mps.lang.smodel.structure.LanguageRefExpression" flags="ng" index="pHN19">
         <child id="3542851458883491298" name="languageId" index="2V$M_3" />
       </concept>
-      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7400021826774799413" name="jetbrains.mps.lang.smodel.structure.NodePointerExpression" flags="ng" index="2tJFMh">
         <child id="7400021826774799510" name="ref" index="2tJFKM" />
       </concept>
@@ -919,7 +921,7 @@
                         <ref role="cht4Q" to="tpck:h0TrEE$" resolve="INamedConcept" />
                       </node>
                     </node>
-                    <node concept="2qgKlT" id="5oiZ4v5defs" role="2OqNvi">
+                    <node concept="3zqWPK" id="70OdufORfGq" role="2OqNvi">
                       <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
                     </node>
                   </node>
@@ -2038,7 +2040,7 @@
             <node concept="3xONca" id="5ZcqSl_QZFG" role="2Oq$k0">
               <ref role="3xOPvv" node="5ZcqSl_QNia" resolve="targetNodeForMenu" />
             </node>
-            <node concept="2qgKlT" id="5ZcqSl_R4n9" role="2OqNvi">
+            <node concept="3zqWPK" id="70OdufORfGs" role="2OqNvi">
               <ref role="37wK5l" to="tpek:hEwIGRD" resolve="getExpectedReturnType" />
             </node>
           </node>
