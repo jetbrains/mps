@@ -13,39 +13,40 @@
       <node id="3472837269634483379" at="23,66,24,53" concept="1" />
     </file>
     <file name="ProjectMigrations_AppPluginPart.java">
-      <node id="3472837269634483405" at="17,0,18,0" concept="2" trace="myMigrations" />
-      <node id="3472837269634538932" at="18,0,19,0" concept="2" trace="myRegistry" />
-      <node id="3472837269634526196" at="22,22,23,94" concept="1" />
-      <node id="3472837269634688790" at="23,94,24,91" concept="6" />
-      <node id="3472837269634716835" at="24,91,25,104" concept="6" />
-      <node id="7780660499362662" at="25,104,26,89" concept="1" />
-      <node id="1291799896033384798" at="26,89,27,89" concept="1" />
-      <node id="1100146153821859972" at="27,89,28,89" concept="1" />
-      <node id="419238803118915307" at="28,89,29,89" concept="1" />
-      <node id="6631294030022953180" at="29,89,30,89" concept="1" />
-      <node id="2144086068960981730" at="30,89,31,89" concept="1" />
-      <node id="3472837269634704025" at="31,89,32,56" concept="6" />
-      <node id="2400678414103294623" at="33,83,34,78" concept="1" />
-      <node id="7084733703794808505" at="38,25,39,48" concept="6" />
-      <node id="3472837269634562771" at="40,76,41,141" concept="1" />
-      <node id="3472837269634552925" at="42,5,43,59" concept="1" />
-      <node id="3472837269634483379" at="19,0,21,0" concept="0" trace="ProjectMigrations_AppPluginPart#()V" />
-      <node id="2400678414103294620" at="32,56,35,5" concept="3" />
-      <node id="3472837269634553856" at="39,48,42,5" concept="7" />
-      <node id="3472837269634483379" at="37,0,45,0" concept="4" trace="dispose#()V" />
-      <node id="3472837269634483379" at="21,0,37,0" concept="4" trace="init#()V" />
-      <scope id="3472837269634483379" at="19,44,19,44" />
-      <scope id="2400678414103294622" at="33,83,34,78" />
-      <scope id="3472837269634553858" at="40,76,41,141" />
-      <scope id="3472837269634483379" at="19,0,21,0" />
-      <scope id="2400678414103294620" at="32,56,35,5">
+      <node id="3472837269634483405" at="18,0,19,0" concept="2" trace="myMigrations" />
+      <node id="3472837269634538932" at="19,0,20,0" concept="2" trace="myRegistry" />
+      <node id="3472837269634526196" at="23,22,24,94" concept="1" />
+      <node id="3472837269634688790" at="24,94,25,91" concept="6" />
+      <node id="3472837269634716835" at="25,91,26,104" concept="6" />
+      <node id="7780660499362662" at="26,104,27,89" concept="1" />
+      <node id="1291799896033384798" at="27,89,28,89" concept="1" />
+      <node id="1100146153821859972" at="28,89,29,89" concept="1" />
+      <node id="419238803118915307" at="29,89,30,89" concept="1" />
+      <node id="6631294030022953180" at="30,89,31,89" concept="1" />
+      <node id="2144086068960981730" at="31,89,32,89" concept="1" />
+      <node id="8085146484209608697" at="32,89,33,89" concept="1" />
+      <node id="3472837269634704025" at="33,89,34,56" concept="6" />
+      <node id="2400678414103294623" at="35,83,36,78" concept="1" />
+      <node id="7084733703794808505" at="40,25,41,48" concept="6" />
+      <node id="3472837269634562771" at="42,76,43,141" concept="1" />
+      <node id="3472837269634552925" at="44,5,45,59" concept="1" />
+      <node id="3472837269634483379" at="20,0,22,0" concept="0" trace="ProjectMigrations_AppPluginPart#()V" />
+      <node id="2400678414103294620" at="34,56,37,5" concept="3" />
+      <node id="3472837269634553856" at="41,48,44,5" concept="7" />
+      <node id="3472837269634483379" at="39,0,47,0" concept="4" trace="dispose#()V" />
+      <node id="3472837269634483379" at="22,0,39,0" concept="4" trace="init#()V" />
+      <scope id="3472837269634483379" at="20,44,20,44" />
+      <scope id="2400678414103294622" at="35,83,36,78" />
+      <scope id="3472837269634553858" at="42,76,43,141" />
+      <scope id="3472837269634483379" at="20,0,22,0" />
+      <scope id="2400678414103294620" at="34,56,37,5">
         <var name="pm" id="2400678414103294628" />
       </scope>
-      <scope id="3472837269634483394" at="38,25,43,59" />
-      <scope id="3472837269634483379" at="37,0,45,0" />
-      <scope id="3472837269634483382" at="22,22,35,5" />
-      <scope id="3472837269634483379" at="21,0,37,0" />
-      <unit id="3472837269634483379" at="16,0,46,0" name="jetbrains.mps.ide.mpsmigration.ProjectMigrations_AppPluginPart" />
+      <scope id="3472837269634483394" at="40,25,45,59" />
+      <scope id="3472837269634483379" at="39,0,47,0" />
+      <scope id="3472837269634483382" at="23,22,37,5" />
+      <scope id="3472837269634483379" at="22,0,39,0" />
+      <unit id="3472837269634483379" at="17,0,48,0" name="jetbrains.mps.ide.mpsmigration.ProjectMigrations_AppPluginPart" />
     </file>
   </root>
   <root nodeRef="r:4a618277-2606-4667-90e0-556bb06e001b(jetbrains.mps.ide.mpsmigration)/3472837269634483380">

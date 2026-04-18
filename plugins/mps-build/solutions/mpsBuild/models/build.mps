@@ -59076,6 +59076,16 @@
           <ref role="3bR37D" node="7Kfy9QB6Lfd" resolve="jetbrains.mps.findUsages.runtime" />
         </node>
       </node>
+      <node concept="1SiIV0" id="70OdufO8SmU" role="3bR37C">
+        <node concept="3bR9La" id="70OdufO8SmV" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="70OdufO8SmW" role="3bR37C">
+        <node concept="3bR9La" id="70OdufO8SmX" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6L4p" resolve="jetbrains.mps.lang.behavior" />
+        </node>
+      </node>
     </node>
     <node concept="398rNT" id="77ZqjhZbMDX" role="1l3spd">
       <property role="TrG5h" value="idea_home" />

@@ -23,7 +23,7 @@ public class ObsoleteConceptMethodCallCheck_NonTypesystemRule extends AbstractNo
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(cmc, "ConceptMethodCall moved from lang.smodel to lang.behavior", "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "6276577145066846019", null, errorTarget);
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.UpdateConceptMethodCall_QuickFix", "6276577145066925461", false);
+        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.behavior.typesystem.UpdateConceptMethodCall_QuickFix", "6276577145066925461", true);
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }
     }

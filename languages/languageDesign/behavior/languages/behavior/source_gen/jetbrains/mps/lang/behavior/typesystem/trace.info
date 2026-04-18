@@ -641,8 +641,8 @@
     <file name="ObsoleteConceptMethodCallCheck_NonTypesystemRule.java">
       <node id="6276577145066846019" at="22,5,23,64" concept="9" />
       <node id="6276577145066846019" at="23,64,24,265" concept="9" />
-      <node id="6276577145066925461" at="25,7,26,179" concept="9" />
-      <node id="6276577145066925461" at="26,179,27,69" concept="4" />
+      <node id="6276577145066925461" at="25,7,26,178" concept="9" />
+      <node id="6276577145066925461" at="26,178,27,69" concept="4" />
       <node id="6276577145066829686" at="31,50,32,46" concept="10" />
       <node id="6276577145066829686" at="34,68,35,102" concept="10" />
       <node id="6276577145066829686" at="37,30,38,17" concept="10" />
