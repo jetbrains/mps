@@ -31,6 +31,7 @@
             to update these once there's new migration. I didn't notice anything suspicious when did this recently.
          FWIW, in 24.3 these three has been migrated with the same script, and only messagesCustomization didn't migrate completely
           (didn't get specific migration mentioned in the file, but the version was bumped)
+          In 26.1, project migration was applied ok for all the excluded projects.
      -->
     <exclude name="generator_demo" />
     <exclude name="messagesCustomization" />
