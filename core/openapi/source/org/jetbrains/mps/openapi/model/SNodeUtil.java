@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ public class SNodeUtil {
   }
 
   /**
-   * Replaces a node with another, preserving attributes
+   * Replaces a node with another, preserving attributes (what? no effort done here to preserve attributes)
    */
   public static SNode replaceWithAnother(@NotNull SNode node, SNode replacer) {
     SNode nodeParent = node.getParent();

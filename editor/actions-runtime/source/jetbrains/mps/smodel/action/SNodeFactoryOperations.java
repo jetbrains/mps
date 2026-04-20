@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+
+import java.util.HashMap;
 
 /**
  * Evgeny Gryaznov, 1/4/11
@@ -119,33 +121,28 @@ public class SNodeFactoryOperations {
 
   public static SNode replaceWithNewChild(SNode oldChild, SAbstractConcept concept) {
     assert oldChild != null : "can't replace node. node is NULL";
-    SNode oldChildParent = oldChild.getParent();
-    if (oldChildParent == null && !(oldChild.getModel() != null && oldChild.getParent() == null)) {
+    final SNode oldChildParent = oldChild.getParent();
+    if (oldChildParent == null && oldChild.getModel() == null) {
       return null;
     }
     SModel model = oldChild.getModel();
     SNode newChild = NodeFactoryManager.createNode(concept, oldChild, oldChildParent, model);
-    if (newChild == null) return null;
-    if (oldChildParent == null) {
-      model.addRootNode(newChild);
-      model.removeRootNode(oldChild);
-    } else {
-      SNodeUtil.replaceWithAnother(oldChild, newChild);
+    if (newChild == null) {
+      return null;
     }
-    copyAllAttributes(oldChild, newChild);
+    // XXX perhaps, makes sense to keep id of the old node for the new one? There's no mechanism to enforce this with NodeFactoryManager
+    //     but could do it here. Helps to keep external references to the original node intact (although not sure if it's always desired)
+    SNodeUtil.replaceWithAnother(oldChild, newChild);
+    // we replace the node, try to keep id of attributes the same e.g. for test annotations to stay intact
+    duplicateAllAttributes(oldChild, newChild);
     return newChild;
   }
 
-  private static void copyAllAttributes(SNode oldChild, SNode newChild) {
-    for (SNode attribute : AttributeOperations.getAllAttributes(oldChild)) {
-      // todo: should we create check like this?
-      // no such property in new child : don't copy the attribute
-//          LOG.error("couldn't copy attribute " + attribute.getOwner().getName() + " for property '" + propertyName + "' : so such property in concept " + newChild.getContainingConcept().getName(), newChild);
-      // no such link in new child : don't copy the attribute
-//          LOG.error("couldn't copy attribute " + attribute.getOwner().getName() + " for link '" + linkRole + "' : so such link in concept " + newChild.getContainingConcept().getName(), newChild);
-
-      SNode newAttribute = CopyUtil.copy(attribute);
-      newChild.addChild(attribute.getContainmentLink(), newAttribute);
+  private static void duplicateAllAttributes(SNode oldNode, SNode newNode) {
+    HashMap<SNode, SNode> mapping = new HashMap<>();
+    for (SNode clonedAttribute : CopyUtil.copyAndPreserveId(AttributeOperations.getAllAttributes(oldNode), mapping)) {
+      // as long as we copy attributes, we are confident newNode is capable of holding them
+      newNode.addChild(jetbrains.mps.smodel.SNodeUtil.link_BaseConcept_smodelAttribute, clonedAttribute);
     }
   }
 
