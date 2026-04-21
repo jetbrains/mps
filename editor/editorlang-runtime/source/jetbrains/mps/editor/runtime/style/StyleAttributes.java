@@ -161,6 +161,7 @@ public class StyleAttributes {
   public static final StyleAttribute<Boolean> TRANSPARENT = new SimpleStyleAttribute<>("transparent", false, true);
   public static final StyleAttribute<Boolean> EDITABLE = new SimpleStyleAttribute<>("editable", true, true);
   public static final StyleAttribute<Boolean> READ_ONLY = new InheritableStyleAttribute<>("read-only", false, true);
+  public static final StyleAttribute<Boolean> READ_ONLY_INSPECTOR = new InheritableStyleAttribute<>("read-only-inspector", false, true);
   public static final StyleAttribute<Boolean> UNDERLINED = new SimpleStyleAttribute<>("underlined", false, true);
   public static final StyleAttribute<Boolean> STRIKE_OUT = new SimpleStyleAttribute<>("deprecated", false, true);
   public static final StyleAttribute<Boolean> PLACEHOLDER = new SimpleStyleAttribute<>("placeholder", false, true);
