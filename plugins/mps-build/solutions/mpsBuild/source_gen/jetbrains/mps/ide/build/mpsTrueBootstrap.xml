@@ -32,10 +32,6 @@
     <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
   </path>
   
-  <path id="path.java.library.spellchecker">
-    <fileset file="${artifacts.IDEA}/lib/intellij.spellchecker.jar" />
-  </path>
-  
   <path id="path.java.library.idea-runtime">
     <fileset file="${artifacts.IDEA}/lib/app.jar" />
     <fileset file="${artifacts.IDEA}/lib/util.jar" />

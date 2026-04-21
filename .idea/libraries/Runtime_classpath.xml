@@ -297,8 +297,6 @@
       <root url="jar://$PROJECT_DIR$/lib/intellij.regexp.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.relaxng.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.settingsSync.core.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij.spellchecker.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij.spellchecker.xml.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.xml.analysis.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.xml.analysis.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij.xml.dom.impl.jar!/" />

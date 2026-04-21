@@ -31921,13 +31921,6 @@
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="3QpBWOMGYcY" role="39821P">
-        <node concept="3_J27D" id="3QpBWOMGYcZ" role="13uQ07">
-          <node concept="3Mxwew" id="3QpBWOMGYd1" role="3MwsjC">
-            <property role="3MwjfP" value="intellij.spellchecker.jar" />
-          </node>
-        </node>
-      </node>
       <node concept="13uQ2_" id="k06Em_JVTx" role="39821P">
         <node concept="3_J27D" id="k06Em_JVTy" role="13uQ07">
           <node concept="3Mxwew" id="k06Em_JVTz" role="3MwsjC">
@@ -49296,12 +49289,6 @@
     <node concept="26EafG" id="KnVildsLps" role="26Ea7d">
       <property role="26EafJ" value="lib/intellij.settingsSync.core.jar" />
     </node>
-    <node concept="26EafG" id="KnVildsK04" role="26Ea7d">
-      <property role="26EafJ" value="lib/intellij.spellchecker.jar" />
-    </node>
-    <node concept="26EafG" id="KnVildsK05" role="26Ea7d">
-      <property role="26EafJ" value="lib/intellij.spellchecker.xml.jar" />
-    </node>
     <node concept="26EafG" id="KnVildsK06" role="26Ea7d">
       <property role="26EafJ" value="lib/intellij.xml.analysis.impl.jar" />
     </node>
@@ -49753,9 +49740,6 @@
       </node>
       <node concept="nCB5N" id="5sovPIfS$mX" role="nCB5Z">
         <ref role="nCB5Y" node="2eDSGe9d1oD" resolve="mps-workbench" />
-      </node>
-      <node concept="2sjeV3" id="3gNf3ja$htS" role="nCB5Z">
-        <ref role="2sjeV2" node="3gNf3ja$h1s" resolve="spellchecker" />
       </node>
       <node concept="3_5H9E" id="4v18hQ8xNZs" role="398b2p">
         <node concept="3LXTmp" id="4v18hQ8xNZu" role="3_5H9R">
@@ -61495,16 +61479,6 @@
         </node>
       </node>
     </node>
-    <node concept="PiPfp" id="3gNf3ja$h1s" role="3989C9">
-      <property role="TrG5h" value="spellchecker" />
-      <node concept="25yagZ" id="3gNf3ja$h1t" role="PiKyV">
-        <node concept="3yqu4x" id="3gNf3ja$h1u" role="25yagT">
-          <node concept="3yrxFa" id="3gNf3ja$h1v" role="3yqu4I">
-            <ref role="3yrxFb" node="3QpBWOMGYcY" />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="PiPfp" id="5EtRBM7ROPA" role="3989C9">
       <property role="TrG5h" value="idea-runtime" />
       <node concept="25yagZ" id="5EtRBM7ROPB" role="PiKyV">
@@ -63330,32 +63304,6 @@
           <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
         </node>
       </node>
-      <node concept="1SiIV0" id="Rwku8tK5vQ" role="3bR37C">
-        <node concept="1BurEX" id="Rwku8tK5vR" role="1SiIV1">
-          <node concept="398BVA" id="Rwku8tK5vM" role="1BurEY">
-            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="Rwku8tK5vN" role="iGT6I">
-              <property role="2Ry0Am" value="lib" />
-              <node concept="2Ry0Ak" id="4nUG8V0r92E" role="2Ry0An">
-                <property role="2Ry0Am" value="intellij.spellchecker.jar" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="1SiIV0" id="Rwku8tK5vW" role="3bR37C">
-        <node concept="1BurEX" id="Rwku8tK5vX" role="1SiIV1">
-          <node concept="398BVA" id="Rwku8tK5vS" role="1BurEY">
-            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="Rwku8tK5vT" role="iGT6I">
-              <property role="2Ry0Am" value="lib" />
-              <node concept="2Ry0Ak" id="4nUG8V0r94r" role="2Ry0An">
-                <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="1SiIV0" id="409FCzytU4t" role="3bR37C">
         <node concept="1BurEX" id="409FCzytU4u" role="1SiIV1">
           <node concept="398BVA" id="409FCzytU4o" role="1BurEY">
@@ -63389,6 +63337,32 @@
                     <property role="2Ry0Am" value="org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="5sFl7Yii4b4" role="3bR37C">
+        <node concept="1BurEX" id="5sFl7Yii4b6" role="1SiIV1">
+          <node concept="398BVA" id="5sFl7Yii4b8" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="5sFl7Yii4b9" role="iGT6I">
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="5sFl7Yii4ba" role="2Ry0An">
+                <property role="2Ry0Am" value="intellij.spellchecker.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="5sFl7Yii4cL" role="3bR37C">
+        <node concept="1BurEX" id="5sFl7Yii4cN" role="1SiIV1">
+          <node concept="398BVA" id="5sFl7Yii4cP" role="1BurEY">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="5sFl7Yii4cQ" role="iGT6I">
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="5sFl7Yii4cR" role="2Ry0An">
+                <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
               </node>
             </node>
           </node>
@@ -63659,30 +63633,6 @@
           </node>
           <node concept="L2wRC" id="73FqNLcK3KW" role="39821P">
             <ref role="L2wRA" node="6k1uIrxXxBO" resolve="jetbrains.mps.spellchecker.idea.stubs" />
-            <node concept="3yLZsm" id="73FqNLcK3W3" role="3yL2VB">
-              <property role="3yLZsk" value="/lib/intellij.spellchecker.jar" />
-              <node concept="398BVA" id="73FqNLcK3Zq" role="3yLZsn">
-                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="73FqNLcK43U" role="iGT6I">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="Rwku8tK56z" role="2Ry0An">
-                    <property role="2Ry0Am" value="intellij.spellchecker.jar" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3yLZsm" id="73FqNLcVkUh" role="3yL2VB">
-              <property role="3yLZsk" value="/lib/intellij.spellchecker.xml.jar" />
-              <node concept="398BVA" id="73FqNLcVkWz" role="3yLZsn">
-                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="73FqNLcVkYR" role="iGT6I">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="Rwku8tK5eW" role="2Ry0An">
-                    <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3yLZsm" id="409FCzyCPER" role="3yL2VB">
               <property role="3yLZsk" value="/plugins/grazie/lib/org.jetbrains.intellij.deps.languagetool-languagetool-core.jar" />
               <node concept="398BVA" id="409FCzyCPES" role="3yLZsn">
@@ -63715,6 +63665,30 @@
                         <property role="2Ry0Am" value="grazie.jar" />
                       </node>
                     </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="5sFl7YiiJg2" role="3yL2VB">
+              <property role="3yLZsk" value="/lib/intellij.spellchecker.jar" />
+              <node concept="398BVA" id="5sFl7YiiJg4" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="5sFl7YiiJg5" role="iGT6I">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="5sFl7YiiJg6" role="2Ry0An">
+                    <property role="2Ry0Am" value="intellij.spellchecker.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="5sFl7YiiJi2" role="3yL2VB">
+              <property role="3yLZsk" value="/lib/intellij.spellchecker.xml.jar" />
+              <node concept="398BVA" id="5sFl7YiiJi4" role="3yLZsn">
+                <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="5sFl7YiiJi5" role="iGT6I">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="5sFl7YiiJi6" role="2Ry0An">
+                    <property role="2Ry0Am" value="intellij.spellchecker.xml.jar" />
                   </node>
                 </node>
               </node>

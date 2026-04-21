@@ -320,8 +320,6 @@
         "intellij.regexp.jar",
         "intellij.relaxng.jar",
         "intellij.settingsSync.core.jar",
-        "intellij.spellchecker.jar",
-        "intellij.spellchecker.xml.jar",
         "intellij.xml.analysis.impl.jar",
         "intellij.xml.analysis.jar",
         "intellij.xml.dom.impl.jar",
