@@ -530,6 +530,13 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     private final MPSProjectTemplate myTemplate;
     private final ProjectTemplatesGroup myGroup;
+    // Cache the settings component for this wizard session. Some templates (e.g.
+    // DefaultLanguageProjectTemplate) reset their panel in getSettings(); without caching,
+    // the wizard would wipe user input every time the user navigates back to a template.
+    // A fresh TemplateItem is created per wizard opening, so the cache naturally clears
+    // between wizard sessions, which preserves the reset-on-open behavior.
+    private JComponent mySettingsComponent;
+    private boolean mySettingsInitialized;
 
     TemplateItem(MPSProjectTemplate template, ProjectTemplatesGroup group) {
       myTemplate = template;
@@ -555,7 +562,11 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     @Nullable
     JComponent getSettings() {
-      return myTemplate.getSettings();
+      if (!mySettingsInitialized) {
+        mySettingsComponent = myTemplate.getSettings();
+        mySettingsInitialized = true;
+      }
+      return mySettingsComponent;
     }
 
     void fillProjectWithModules(MPSProject mpsProject) {
