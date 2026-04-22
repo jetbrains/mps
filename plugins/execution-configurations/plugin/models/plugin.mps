@@ -1644,9 +1644,6 @@
                         <node concept="3clFbF" id="6XGccOtFwVi" role="3cqZAp">
                           <node concept="1Wc70l" id="6XGccOtFwVk" role="3clFbG">
                             <node concept="2OqwBi" id="6XGccOtFwVl" role="3uHU7B">
-                              <node concept="3zqWPK" id="70OdufORcYh" role="2OqNvi">
-                                <ref role="37wK5l" to="nlf1:431DWIovi3C" resolve="isNodeRunnable" />
-                              </node>
                               <node concept="1PxgMI" id="6XGccOtFwVn" role="2Oq$k0">
                                 <node concept="chp4Y" id="6XGccOtFwVo" role="3oSUPX">
                                   <ref role="cht4Q" to="4fqr:431DWIovi3l" resolve="IMainClass" />
@@ -1654,6 +1651,9 @@
                                 <node concept="37vLTw" id="6XGccOtFwVp" role="1m5AlR">
                                   <ref role="3cqZAo" node="6XGccOtFosG" resolve="node" />
                                 </node>
+                              </node>
+                              <node concept="3zqWPK" id="70OdufORcYh" role="2OqNvi">
+                                <ref role="37wK5l" to="nlf1:431DWIovi3C" resolve="isNodeRunnable" />
                               </node>
                             </node>
                             <node concept="2OqwBi" id="6XGccOtFwVq" role="3uHU7w">
@@ -2361,10 +2361,10 @@
                   </node>
                 </node>
                 <node concept="2OqwBi" id="5gyVhZ17Jow" role="3K4GZi">
+                  <node concept="30xZXu" id="5gyVhZ17Joy" role="2Oq$k0" />
                   <node concept="3zqWPK" id="70OdufORcYr" role="2OqNvi">
                     <ref role="37wK5l" to="nlf1:431DWIovi3n" resolve="getUnitName" />
                   </node>
-                  <node concept="30xZXu" id="5gyVhZ17Joy" role="2Oq$k0" />
                 </node>
               </node>
             </node>
@@ -8481,20 +8481,15 @@
               <node concept="Xl_RD" id="4v0OxldvcIT" role="3uHU7w">
                 <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true\n" />
               </node>
-              <node concept="3cpWs3" id="2JQcTZRQfKV" role="3uHU7B">
-                <node concept="Xl_RD" id="2JQcTZRQeUa" role="3uHU7w">
-                  <property role="Xl_RC" value="-DjbScreenMenuBar.useStubItem=true\n" />
+              <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
+                <node concept="2OqwBi" id="20OjqTFAodj" role="3uHU7B">
+                  <node concept="2WthIp" id="20OjqTFAodm" role="2Oq$k0" />
+                  <node concept="2XshWL" id="20OjqTFAodo" role="2OqNvi">
+                    <ref role="2WH_rO" node="20OjqTF_cQ2" resolve="computeOpenedPackages" />
+                  </node>
                 </node>
-                <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
-                  <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
-                    <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
-                  </node>
-                  <node concept="2OqwBi" id="20OjqTFAodj" role="3uHU7B">
-                    <node concept="2WthIp" id="20OjqTFAodm" role="2Oq$k0" />
-                    <node concept="2XshWL" id="20OjqTFAodo" role="2OqNvi">
-                      <ref role="2WH_rO" node="20OjqTF_cQ2" resolve="computeOpenedPackages" />
-                    </node>
-                  </node>
+                <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
+                  <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
                 </node>
               </node>
             </node>

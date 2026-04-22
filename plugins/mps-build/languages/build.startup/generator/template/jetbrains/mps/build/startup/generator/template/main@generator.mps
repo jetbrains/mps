@@ -2908,11 +2908,11 @@
           <node concept="3clFbS" id="1w81suM2tkd" role="2VODD2">
             <node concept="3clFbF" id="2lwFGYPeLX2" role="3cqZAp">
               <node concept="2OqwBi" id="2lwFGYPeLX3" role="3clFbG">
+                <node concept="30H73N" id="2lwFGYPeLX6" role="2Oq$k0" />
                 <node concept="3zqWPK" id="70OdufORfN8" role="2OqNvi">
                   <ref role="37wK5l" to="tgdw:2M0p1n5GA6s" resolve="getVmOptionsTextLines" />
                   <node concept="3clFbT" id="70OdufORfNa" role="37wK5m" />
                 </node>
-                <node concept="30H73N" id="2lwFGYPeLX6" role="2Oq$k0" />
               </node>
             </node>
           </node>
@@ -2929,13 +2929,13 @@
         <node concept="3clFbS" id="1w81suM2oZU" role="2VODD2">
           <node concept="3clFbF" id="1w81suM2p04" role="3cqZAp">
             <node concept="2OqwBi" id="1w81suM2rpK" role="3clFbG">
+              <node concept="30H73N" id="1w81suM2rjm" role="2Oq$k0" />
               <node concept="3zqWPK" id="70OdufORfNb" role="2OqNvi">
                 <ref role="37wK5l" to="tgdw:2lwFGYOYlNP" resolve="getVmOptionsFileName" />
                 <node concept="3clFbT" id="70OdufORfNd" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
               </node>
-              <node concept="30H73N" id="1w81suM2rjm" role="2Oq$k0" />
             </node>
           </node>
         </node>
@@ -4664,13 +4664,13 @@
           <node concept="3clFbS" id="2lwFGYPaH$m" role="2VODD2">
             <node concept="3clFbF" id="2lwFGYPaH$s" role="3cqZAp">
               <node concept="2OqwBi" id="2lwFGYPaH$n" role="3clFbG">
+                <node concept="30H73N" id="2lwFGYPaH$r" role="2Oq$k0" />
                 <node concept="3zqWPK" id="70OdufORfOd" role="2OqNvi">
                   <ref role="37wK5l" to="tgdw:2M0p1n5GA6s" resolve="getVmOptionsTextLines" />
                   <node concept="3clFbT" id="70OdufORfOf" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
                 </node>
-                <node concept="30H73N" id="2lwFGYPaH$r" role="2Oq$k0" />
               </node>
             </node>
           </node>
@@ -4687,13 +4687,13 @@
         <node concept="3clFbS" id="2lwFGYPaBI1" role="2VODD2">
           <node concept="3clFbF" id="2lwFGYPaBSX" role="3cqZAp">
             <node concept="2OqwBi" id="2lwFGYPaBT0" role="3clFbG">
+              <node concept="30H73N" id="2lwFGYPaBT2" role="2Oq$k0" />
               <node concept="3zqWPK" id="70OdufORfOg" role="2OqNvi">
                 <ref role="37wK5l" to="tgdw:2lwFGYOYlNP" resolve="getVmOptionsFileName" />
                 <node concept="3clFbT" id="70OdufORfOi" role="37wK5m">
                   <property role="3clFbU" value="true" />
                 </node>
               </node>
-              <node concept="30H73N" id="2lwFGYPaBT2" role="2Oq$k0" />
             </node>
           </node>
         </node>
@@ -6167,10 +6167,6 @@
       <node concept="2DRAP_" id="6GoDrz8MA1j" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-DjbScreenMenuBar.enabled=true&quot;," />
         <node concept="raruj" id="6GoDrz8MKbA" role="lGtFl" />
-      </node>
-      <node concept="2DRAP_" id="6GoDrz8MA1k" role="2DRAPQ">
-        <property role="2DPR8u" value="        &quot;-DjbScreenMenuBar.useStubItem=true&quot;," />
-        <node concept="raruj" id="6GoDrz8MKbB" role="lGtFl" />
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1l" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Dide.home.macro.test=$APP_PACKAGE/Contents&quot;," />
