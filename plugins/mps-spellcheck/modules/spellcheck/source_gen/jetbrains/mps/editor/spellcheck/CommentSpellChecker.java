@@ -30,10 +30,8 @@ import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import jetbrains.mps.ide.editor.checkers.ModelProblemMessage;
-import jetbrains.mps.logging.Logger;
 
 public class CommentSpellChecker extends BaseEditorChecker {
-  private static final Logger LOG = Logger.getLogger(CommentSpellChecker.class);
   private boolean myUpdateNeeded;
   private Boolean myEnabled;
   private final Project myProject;
@@ -56,11 +54,9 @@ public class CommentSpellChecker extends BaseEditorChecker {
     if (myEnabled == null) {
       try {
         myEnabled = SpellCheckerManager.getInstance(myProject) != null;
-      } catch (Throwable t) {
-        if (LOG.isWarningLevel()) {
-          LOG.warning("Spellchecker initialization failed. Will retry later.", t);
-        }
-        return false;
+      } catch (Exception e) {
+        myEnabled = false;
+        throw new RuntimeException(e);
       }
     }
     return myEnabled.booleanValue();
