@@ -25,20 +25,9 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
-import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonStyleClass;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class CreateEquationStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -176,20 +165,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createComponent_0() {
-    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_AbstractEquationStatement_cellMenu_mi4qyq_a0d0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.typesystem.editor.AbsEqAlias");
     return editorCell;
-  }
-  public static class ReplaceWith_AbstractEquationStatement_cellMenu_mi4qyq_a0d0a extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_AbstractEquationStatement_cellMenu_mi4qyq_a0d0a() {
-    }
-    public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.AbstractEquationStatement$If;
-    }
-    @Override
-    protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "AbstractEquationStatement" + ")", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2886182022232400577"));
-    }
   }
   private EditorCell createRefNode_1() {
     SingleRoleCellProvider provider = new rightExpressionSingleRoleHandler_mi4qyq_e0a(myNode, LINKS.rightExpression$U_B_, getEditorContext());
@@ -327,20 +304,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createComponent_1() {
-    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_AbstractEquationStatement_cellMenu_mi4qyq_a0b1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.typesystem.editor.AbsEqAlias");
     return editorCell;
-  }
-  public static class ReplaceWith_AbstractEquationStatement_cellMenu_mi4qyq_a0b1a extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_AbstractEquationStatement_cellMenu_mi4qyq_a0b1a() {
-    }
-    public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.AbstractEquationStatement$If;
-    }
-    @Override
-    protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "AbstractEquationStatement" + ")", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2886182022232400075"));
-    }
   }
   private EditorCell createRefNode_3() {
     SingleRoleCellProvider provider = new rightExpressionSingleRoleHandler_mi4qyq_c1a(myNode, LINKS.rightExpression$U_B_, getEditorContext());
@@ -414,9 +379,5 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private static final class LINKS {
     /*package*/ static final SContainmentLink leftExpression$U_o$ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
     /*package*/ static final SContainmentLink rightExpression$U_B_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractEquationStatement$If = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
   }
 }

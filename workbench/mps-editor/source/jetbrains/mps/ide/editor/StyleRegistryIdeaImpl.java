@@ -29,6 +29,7 @@ import com.intellij.openapi.editor.markup.EffectType;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -86,6 +87,18 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     highlightedCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, highlightedCellColor);
     highlightedCellStyle.set(StyleAttributes.BACKGROUND_COLOR, highlightedCellColor);
     setStyle("HIGHLIGHTED_CELL", highlightedCellStyle);
+
+    final StyleImpl typesystemOperatorStyle = new StyleImpl();
+    final JBColor operatorColor = new JBColor(Color.BLACK, Color.WHITE);
+    typesystemOperatorStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, operatorColor);
+    typesystemOperatorStyle.set(StyleAttributes.BACKGROUND_COLOR, operatorColor);
+    setStyle("TYPESYSTEM_OPERATOR", typesystemOperatorStyle);
+
+    final StyleImpl typesystemCheckOnlyOperatorStyle = new StyleImpl();
+    final JBColor checkOnlyOperatorColor = new JBColor(Color.GRAY, Gray._200);
+    typesystemCheckOnlyOperatorStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, checkOnlyOperatorColor);
+    typesystemCheckOnlyOperatorStyle.set(StyleAttributes.BACKGROUND_COLOR, checkOnlyOperatorColor);
+    setStyle("TYPESYSTEM_CHECKONLY_OPERATOR", typesystemCheckOnlyOperatorStyle);
 
     final StyleImpl quotationStyle = new StyleImpl();
     final JBColor quotationColor = new JBColor(new  Color(0, 200, 200, 90), new Color(0, 155, 155, 200));

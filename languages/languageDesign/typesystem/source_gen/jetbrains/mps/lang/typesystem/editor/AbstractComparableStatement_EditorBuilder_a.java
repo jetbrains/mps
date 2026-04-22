@@ -17,25 +17,8 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
-import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
-import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
-import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
-import java.awt.Color;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
-import jetbrains.mps.nodeEditor.cellMenu.CellContext;
-import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class AbstractComparableStatement_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -123,30 +106,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createComponent_0() {
-    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_2gd5o_a0b0()));
-    editorCell.getStyle().putAll(style);
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_AbstractEquationStatement_cellMenu_2gd5o_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.typesystem.editor.AbsEqAlias");
     return editorCell;
-  }
-  private Color _StyleParameter_QueryFunction_2gd5o_a0b0() {
-    if (SPropertyOperations.getBoolean(getNode(), PROPS.checkOnly$2Mur)) {
-      return Color.GRAY;
-    } else {
-      return Color.BLACK;
-    }
-  }
-  public static class ReplaceWith_AbstractEquationStatement_cellMenu_2gd5o_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_AbstractEquationStatement_cellMenu_2gd5o_a0b0() {
-    }
-    public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.AbstractEquationStatement$If;
-    }
-    @Override
-    protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "AbstractEquationStatement" + ")", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "2886182022232400683"));
-    }
   }
   private EditorCell createRefNode_1() {
     SingleRoleCellProvider provider = new rightExpressionSingleRoleHandler_2gd5o_c0(myNode, LINKS.rightExpression$U_B_, getEditorContext());
@@ -213,13 +174,5 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private static final class LINKS {
     /*package*/ static final SContainmentLink leftExpression$U_o$ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
     /*package*/ static final SContainmentLink rightExpression$U_B_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty checkOnly$2Mur = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractEquationStatement$If = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
   }
 }

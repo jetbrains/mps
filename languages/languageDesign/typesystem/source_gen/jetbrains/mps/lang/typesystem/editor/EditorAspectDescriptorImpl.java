@@ -185,8 +185,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     return Collections.<ConceptEditor>emptyList();
   }
   private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
-    if ("jetbrains.mps.lang.typesystem.editor.AbstractEquationInspector".equals(editorComponentId)) {
-      return Collections.singletonList(new AbstractEquationInspector());
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.typesystem.editor.AbsEqAlias":
+        return Collections.singletonList(new AbsEqAlias());
+      case "jetbrains.mps.lang.typesystem.editor.AbstractEquationInspector":
+        return Collections.singletonList(new AbstractEquationInspector());
     }
     return Collections.emptyList();
   }
