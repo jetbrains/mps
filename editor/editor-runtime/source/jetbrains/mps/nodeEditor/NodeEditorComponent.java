@@ -64,12 +64,12 @@ public class NodeEditorComponent extends EditorComponent {
           return;
         }
         EditorCell cell = newSelection.getEditorCell();
-        boolean readOnlyInEditor = ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, Collections.singleton(cell));
+        boolean inspectorOfCellReadOnly = ReadOnlyUtil.isInspectorOfCellReadOnly(cell);
         // Note, unlike Swing hierarchy listener, below, here we're inside MPS code and can grab model lock right away, w/o postponing to EDT
         //       Beware, here lies important aspect of MPS editor - selection in inspector is supposed to get changed *immediately* along with the
         //       change of main editor, otherwise tests would fail to find respective cells in inspector.
         getRepository().getModelAccess().runReadAction(() -> {
-          inspect(cell.getSNode(), readOnlyInEditor);
+          inspect(cell.getSNode(), inspectorOfCellReadOnly);
         });
       }
     });
@@ -98,7 +98,7 @@ public class NodeEditorComponent extends EditorComponent {
         }
       }
     }
-    inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isCellReadOnly(selectedCell));
+    inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isInspectorOfCellReadOnly(selectedCell));
   }
 
 

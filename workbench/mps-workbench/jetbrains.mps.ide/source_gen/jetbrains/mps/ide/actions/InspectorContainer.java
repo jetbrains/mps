@@ -61,9 +61,9 @@ public class InspectorContainer {
       return;
     }
     myFileEditor = fileEditor;
-    myInspectorComponent.setReadOnly(readOnly);
     boolean needToEdit = myInspectorComponent.getUpdater().setInitialEditorHints(enabledHints);
-    if (needToEdit || myInspectorComponent.getEditedNode() != node) {
+    if (needToEdit || myInspectorComponent.getEditedNode() != node || myInspectorComponent.isReadOnlyInspector() != readOnly) {
+      myInspectorComponent.setReadOnlyInspector(readOnly);
       myInspectorComponent.editNode(node);
     }
     myMessagePanel.setNode(node);

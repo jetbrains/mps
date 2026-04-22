@@ -15,18 +15,20 @@
  */
 package jetbrains.mps.nodeEditor.inspector;
 
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.openapi.editor.style.Style;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 public class InspectorEditorComponent extends EditorComponent {
 
-  private boolean myReadOnly;
+  private boolean myReadOnlyInspector;
 
   public InspectorEditorComponent(@NotNull SRepository p) {
     this(p, EditorConfigurationBuilder.buildDefault());
@@ -64,12 +66,20 @@ public class InspectorEditorComponent extends EditorComponent {
     target.getSelectionManager().addSelectionListener(new RevealNodeListener(this));
   }
 
-  public void setReadOnly(boolean readOnly) {
-    myReadOnly = readOnly;
+  public void setReadOnlyInspector(boolean readOnly) {
+    myReadOnlyInspector = readOnly;
+  }
+
+  public boolean isReadOnlyInspector() {
+    return myReadOnlyInspector;
   }
 
   @Override
-  public boolean isReadOnly() {
-    return myReadOnly || super.isReadOnly();
+  public void setRootCell(@NotNull jetbrains.mps.openapi.editor.cells.EditorCell rootCell) {
+    super.setRootCell(rootCell);
+    Style style = rootCell.getStyle();
+    if (myReadOnlyInspector && !style.isSpecified(StyleAttributes.READ_ONLY)) {
+      style.set(StyleAttributes.READ_ONLY, true);
+    }
   }
 }
