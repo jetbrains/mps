@@ -145,7 +145,6 @@
         "-Didea.home.path=$APP_PACKAGE/Contents",
         "-Dpty4j.preferred.native.folder=$APP_PACKAGE/Contents/lib/pty4j",
         "-DjbScreenMenuBar.enabled=true",
-        "-DjbScreenMenuBar.useStubItem=true",
         "-Dide.home.macro.test=$APP_PACKAGE/Contents",
         "-Dcache.dir.macro.test=$IDE_CACHE_DIR",
         "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$"

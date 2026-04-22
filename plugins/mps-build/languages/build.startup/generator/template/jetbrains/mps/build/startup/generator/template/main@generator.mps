@@ -5862,10 +5862,6 @@
         <property role="2DPR8u" value="        &quot;-DjbScreenMenuBar.enabled=true&quot;," />
         <node concept="raruj" id="6GoDrz8MKbA" role="lGtFl" />
       </node>
-      <node concept="2DRAP_" id="6GoDrz8MA1k" role="2DRAPQ">
-        <property role="2DPR8u" value="        &quot;-DjbScreenMenuBar.useStubItem=true&quot;," />
-        <node concept="raruj" id="6GoDrz8MKbB" role="lGtFl" />
-      </node>
       <node concept="2DRAP_" id="6GoDrz8MA1l" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Dide.home.macro.test=$APP_PACKAGE/Contents&quot;," />
         <node concept="raruj" id="6GoDrz8MKbC" role="lGtFl" />

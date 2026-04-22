@@ -113,7 +113,7 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
   }
 
   public final class MyState implements Copyable<MyState>, Cloneable {
-    public String myVmOptions = computeOpenedPackages() + "-DjbScreenMenuBar.enabled=true\n" + "-DjbScreenMenuBar.useStubItem=true\n" + "-Dintellij.platform.load.app.info.from.resources=true\n" + "-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader\n" + "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$";
+    public String myVmOptions = computeOpenedPackages() + "-DjbScreenMenuBar.enabled=true\n" + "-Dintellij.platform.load.app.info.from.resources=true\n" + "-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader\n" + "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$";
     public String myJrePath;
     public String mySettingsPath = getDefaultSettingsPath();
 
