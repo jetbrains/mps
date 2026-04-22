@@ -64,9 +64,9 @@ public class NodeEditorComponent extends EditorComponent {
           return;
         }
         EditorCell cell = newSelection.getEditorCell();
-        boolean readOnlyInEditor = ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, Collections.singleton(cell));
+        boolean inspectorOfCellReadOnly = ReadOnlyUtil.isInspectorOfCellReadOnly(cell);
         getRepository().getModelAccess().runReadAction(() -> {
-          inspect(cell.getSNode(), readOnlyInEditor);
+          inspect(cell.getSNode(), inspectorOfCellReadOnly);
         });
       }
     });
@@ -94,7 +94,7 @@ public class NodeEditorComponent extends EditorComponent {
           }
         }
       }
-      inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isCellReadOnly(selectedCell));
+      inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isInspectorOfCellReadOnly(selectedCell));
     });
   }
 

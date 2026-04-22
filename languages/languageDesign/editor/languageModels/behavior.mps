@@ -28230,5 +28230,31 @@
       </node>
     </node>
   </node>
+  <node concept="13h7C7" id="5mnPslXhxMp">
+    <property role="3GE5qa" value="Stylesheet" />
+    <ref role="13h7C2" to="tpc2:5mnPslWOr0W" resolve="ReadOnlyInspectorStyleClassItem" />
+    <node concept="13hLZK" id="5mnPslXhxMq" role="13h7CW">
+      <node concept="3clFbS" id="5mnPslXhxMr" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="5mnPslXhxTa" role="13h7CS">
+      <property role="TrG5h" value="getStyleAttribute" />
+      <ref role="13i0hy" node="3a0zHG4tjdX" resolve="getStyleAttribute" />
+      <node concept="3Tm1VV" id="5mnPslXhxTd" role="1B3o_S" />
+      <node concept="3clFbS" id="5mnPslXhxTf" role="3clF47">
+        <node concept="3cpWs6" id="5mnPslXhy4W" role="3cqZAp">
+          <node concept="10M0yZ" id="5mnPslXhy9f" role="3cqZAk">
+            <ref role="3cqZAo" to="5ueo:~StyleAttributes.READ_ONLY_INSPECTOR" resolve="READ_ONLY_INSPECTOR" />
+            <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="5mnPslXhxTg" role="3clF45">
+        <ref role="3uigEE" to="hox0:~StyleAttribute" resolve="StyleAttribute" />
+        <node concept="3uibUv" id="5mnPslXhxTh" role="11_B2D">
+          <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

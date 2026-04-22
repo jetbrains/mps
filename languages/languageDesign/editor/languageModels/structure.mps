@@ -7140,5 +7140,12 @@
     <property role="EcuMT" value="7236675728702326206" />
     <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
   </node>
+  <node concept="1TIwiD" id="5mnPslWOr0W">
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="TrG5h" value="ReadOnlyInspectorStyleClassItem" />
+    <property role="34LRSv" value="read-only-inspector" />
+    <property role="EcuMT" value="6167633258886574140" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
+  </node>
 </model>
 

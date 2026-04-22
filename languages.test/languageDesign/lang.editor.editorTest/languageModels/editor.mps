@@ -124,6 +124,7 @@
       <concept id="3473224453637651916" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder" flags="ng" index="CtIbL">
         <property id="3473224453637651917" name="placeInCell" index="CtIbK" />
       </concept>
+      <concept id="6167633258886574140" name="jetbrains.mps.lang.editor.structure.ReadOnlyInspectorStyleClassItem" flags="lg" index="DhAnT" />
       <concept id="1239814640496" name="jetbrains.mps.lang.editor.structure.CellLayout_VerticalGrid" flags="nn" index="2EHx9g" />
       <concept id="308059530142752797" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized" flags="ng" index="2F$Pav">
         <child id="8371900013785948359" name="part" index="2$S_pN" />
@@ -8193,6 +8194,9 @@
       <node concept="3EZMnI" id="sVPqdgwQb9" role="3EZMnx">
         <node concept="VPM3Z" id="sVPqdgwQbb" role="3F10Kt" />
         <node concept="xShMh" id="sVPqdgwQvx" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="DhAnT" id="5mnPslXJ9u5" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
         <node concept="3F1sOY" id="sVPqdgwQlX" role="3EZMnx">

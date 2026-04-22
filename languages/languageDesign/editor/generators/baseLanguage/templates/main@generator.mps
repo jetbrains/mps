@@ -21476,6 +21476,15 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="5mnPslWOrn4" role="3aUrZf">
+      <ref role="30HIoZ" to="tpc2:5mnPslWOr0W" resolve="ReadOnlyInspectorStyleClassItem" />
+      <node concept="gft3U" id="5mnPslWOrn5" role="1lVwrX">
+        <node concept="10M0yZ" id="5mnPslWOsSW" role="gfFT$">
+          <ref role="3cqZAo" to="5ueo:~StyleAttributes.READ_ONLY_INSPECTOR" resolve="READ_ONLY_INSPECTOR" />
+          <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
+        </node>
+      </node>
+    </node>
     <node concept="3aamgX" id="2xkx6pX7Ac4" role="3aUrZf">
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tpc2:2xkx6pX7zvC" resolve="SpellCheckStyle" />

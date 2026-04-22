@@ -11694,9 +11694,9 @@
       <node id="7481427614914224893" at="58,124,59,87" concept="6" />
       <node id="3862488139637910388" at="63,44,64,13" concept="13" />
       <node id="7481427614915334449" at="65,5,66,30" concept="6" />
-      <node id="7481427614915334453" at="66,30,67,47" concept="6" />
-      <node id="7481427614915334457" at="67,47,68,95" concept="12" />
-      <node id="7481427614915334470" at="69,69,70,42" concept="6" />
+      <node id="7481427614915334457" at="66,30,67,95" concept="12" />
+      <node id="2506215592244190723" at="68,127,69,58" concept="6" />
+      <node id="7481427614915334470" at="69,58,70,42" concept="6" />
       <node id="7481427614915334473" at="71,5,72,33" concept="6" />
       <node id="7481427614913730564" at="77,23,78,24" concept="18" />
       <node id="7481427614913730567" at="78,24,79,36" concept="6" />
@@ -11741,7 +11741,6 @@
       <node id="7481427614915107700" at="167,31,168,26" concept="13" />
       <node id="7481427614915039574" at="43,0,46,0" concept="3" trace="InspectorContainer#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="3862488139637838078" at="62,104,65,5" concept="10" />
-      <node id="7481427614915334462" at="68,95,71,5" concept="10" />
       <node id="7481427614913730579" at="83,59,86,7" concept="10" />
       <node id="7481427614913730587" at="86,7,89,7" concept="10" />
       <node id="7481427614913730599" at="89,7,92,7" concept="10" />
@@ -11754,6 +11753,7 @@
       <node id="7481427614914818810" at="161,0,164,0" concept="11" trace="getComponent#()Ljetbrains/mps/ide/actions/InspectorContainer/MyPanel;" />
       <node id="7481427614914842691" at="164,0,167,0" concept="11" trace="getInspectorComponent#()Ljetbrains/mps/nodeEditor/inspector/InspectorEditorComponent;" />
       <node id="7481427614915107696" at="167,0,170,0" concept="11" trace="getProject#()Lcom/intellij/openapi/project/Project;" />
+      <node id="7481427614915334462" at="67,95,71,5" concept="10" />
       <node id="7481427614913730561" at="77,0,81,0" concept="3" trace="MyPanel#()V" />
       <node id="7481427614913786481" at="155,0,159,0" concept="11" trace="getBackground#()Ljava/awt/Color;" />
       <node id="7481427614913786436" at="149,0,155,0" concept="11" trace="setBackground#(Ljava/awt/Color;)V" />
@@ -11767,7 +11767,6 @@
       <node id="7481427614913786227" at="114,0,139,0" concept="3" trace="MyMessagePanel#(Ljetbrains/mps/openapi/editor/style/StyleRegistry;)V" />
       <scope id="7481427614915039578" at="43,46,44,29" />
       <scope id="3862488139637838080" at="63,44,64,13" />
-      <scope id="7481427614915334469" at="69,69,70,42" />
       <scope id="7481427614913730584" at="84,53,85,28" />
       <scope id="7481427614913730596" at="87,77,88,38" />
       <scope id="7481427614913730604" at="90,48,91,48" />
@@ -11780,6 +11779,7 @@
       <scope id="7481427614914818813" at="161,33,162,28" />
       <scope id="7481427614914842694" at="164,59,165,37" />
       <scope id="7481427614915107699" at="167,31,168,26" />
+      <scope id="7481427614915334469" at="68,127,70,42" />
       <scope id="7481427614913730563" at="77,23,79,36" />
       <scope id="7481427614913786423" at="141,25,143,45" />
       <scope id="7481427614913786408" at="144,14,146,44" />

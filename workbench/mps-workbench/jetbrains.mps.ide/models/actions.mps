@@ -53824,19 +53824,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6vjnGs7OT4P" role="3cqZAp">
-          <node concept="2OqwBi" id="6vjnGs7P0ha" role="3clFbG">
-            <node concept="37vLTw" id="6vjnGs7OWkL" role="2Oq$k0">
-              <ref role="3cqZAo" node="6vjnGs7IGqD" resolve="myInspectorComponent" />
-            </node>
-            <node concept="liA8E" id="6vjnGs7P0hb" role="2OqNvi">
-              <ref role="37wK5l" to="zyr2:~InspectorEditorComponent.setReadOnly(boolean)" resolve="setReadOnly" />
-              <node concept="37vLTw" id="6vjnGs7P0hc" role="37wK5m">
-                <ref role="3cqZAo" node="6vjnGs7OOQW" resolve="readOnly" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="6vjnGs7OT4T" role="3cqZAp">
           <node concept="3cpWsn" id="6vjnGs7OT4S" role="3cpWs9">
             <property role="TrG5h" value="needToEdit" />
@@ -53860,25 +53847,53 @@
           </node>
         </node>
         <node concept="3clFbJ" id="6vjnGs7OT4Y" role="3cqZAp">
-          <node concept="22lmx$" id="6vjnGs7OT4Z" role="3clFbw">
-            <node concept="37vLTw" id="6vjnGs7OT50" role="3uHU7B">
-              <ref role="3cqZAo" node="6vjnGs7OT4S" resolve="needToEdit" />
-            </node>
-            <node concept="3y3z36" id="6vjnGs7OT51" role="3uHU7w">
-              <node concept="2OqwBi" id="6vjnGs7P36I" role="3uHU7B">
-                <node concept="37vLTw" id="6vjnGs7OWkD" role="2Oq$k0">
+          <node concept="22lmx$" id="2b7RsPUgawx" role="3clFbw">
+            <node concept="3y3z36" id="2b7RsPUgrp0" role="3uHU7w">
+              <node concept="2OqwBi" id="2b7RsPUgji9" role="3uHU7B">
+                <node concept="37vLTw" id="2b7RsPUgeyf" role="2Oq$k0">
                   <ref role="3cqZAo" node="6vjnGs7IGqD" resolve="myInspectorComponent" />
                 </node>
-                <node concept="liA8E" id="6vjnGs7P36J" role="2OqNvi">
-                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
+                <node concept="liA8E" id="2b7RsPUgn$N" role="2OqNvi">
+                  <ref role="37wK5l" to="zyr2:~InspectorEditorComponent.isReadOnlyInspector()" resolve="isReadOnlyInspector" />
                 </node>
               </node>
-              <node concept="37vLTw" id="6vjnGs7OT53" role="3uHU7w">
-                <ref role="3cqZAo" node="6vjnGs7OOQP" resolve="node" />
+              <node concept="37vLTw" id="2b7RsPUgz4l" role="3uHU7w">
+                <ref role="3cqZAo" node="6vjnGs7OOQW" resolve="readOnly" />
+              </node>
+            </node>
+            <node concept="22lmx$" id="6vjnGs7OT4Z" role="3uHU7B">
+              <node concept="37vLTw" id="6vjnGs7OT50" role="3uHU7B">
+                <ref role="3cqZAo" node="6vjnGs7OT4S" resolve="needToEdit" />
+              </node>
+              <node concept="3y3z36" id="6vjnGs7OT51" role="3uHU7w">
+                <node concept="2OqwBi" id="6vjnGs7P36I" role="3uHU7B">
+                  <node concept="37vLTw" id="6vjnGs7OWkD" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6vjnGs7IGqD" resolve="myInspectorComponent" />
+                  </node>
+                  <node concept="liA8E" id="6vjnGs7P36J" role="2OqNvi">
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="6vjnGs7OT53" role="3uHU7w">
+                  <ref role="3cqZAo" node="6vjnGs7OOQP" resolve="node" />
+                </node>
               </node>
             </node>
           </node>
           <node concept="3clFbS" id="6vjnGs7OT55" role="3clFbx">
+            <node concept="3clFbF" id="2b7RsPUgDS3" role="3cqZAp">
+              <node concept="2OqwBi" id="2b7RsPUgIUU" role="3clFbG">
+                <node concept="37vLTw" id="2b7RsPUgDS1" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6vjnGs7IGqD" resolve="myInspectorComponent" />
+                </node>
+                <node concept="liA8E" id="2b7RsPUgPfy" role="2OqNvi">
+                  <ref role="37wK5l" to="zyr2:~InspectorEditorComponent.setReadOnlyInspector(boolean)" resolve="setReadOnlyInspector" />
+                  <node concept="37vLTw" id="2b7RsPUgTXg" role="37wK5m">
+                    <ref role="3cqZAo" node="6vjnGs7OOQW" resolve="readOnly" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="6vjnGs7OT56" role="3cqZAp">
               <node concept="2OqwBi" id="6vjnGs7P2$9" role="3clFbG">
                 <node concept="37vLTw" id="6vjnGs7OWl3" role="2Oq$k0">
