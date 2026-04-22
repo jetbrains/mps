@@ -9,12 +9,10 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.projectPane.logicalview.TopHierarchyProjectViewNode;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Arrays;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.project.Project;
 import java.util.Collections;
 import java.util.Set;
@@ -27,44 +25,40 @@ import jetbrains.mps.smodel.SModelStereotype;
 /*package*/ final class MigrationScriptHelper {
 
   /*package*/ static SearchScope combineModulesModelsSelectedItemsIntoScope(final boolean isGlobal, final MPSProject mpsProject, final Object[] selectedItems, final List<SModule> modules, final List<SModel> models) {
-
-    assert selectedItems != null || isGlobal;
-    if (isGlobal || (selectedItems.length == 1 && selectedItems[0] instanceof TopHierarchyProjectViewNode)) {
+    Object[] items = ((selectedItems != null ? selectedItems : new Object[0]));
+    if (isGlobal || (items.length == 1 && items[0] instanceof TopHierarchyProjectViewNode)) {
       return createMigrationScope(mpsProject);
     }
-    int selectedModulesSize = (modules != null ? modules.size() : 0);
-    int selectedModelsSize = (models != null ? models.size() : 0);
-    if ((modules != null || models != null) && selectedItems.length == selectedModulesSize + selectedModelsSize) {
+    int selectedModulesSize = ((modules != null ? modules.size() : 0));
+    int selectedModelsSize = ((models != null ? models.size() : 0));
+    if ((modules != null || models != null) && (selectedItems == null || items.length == selectedModulesSize + selectedModelsSize)) {
       return createMigrationScope(modules, models);
     }
-
-    if (selectedItems.length == 0) {
-      return new ModelsScope(ListSequence.fromList(new ArrayList<>()));
+    if (items.length == 0) {
+      return new ModelsScope(new ArrayList<SModel>());
     }
-    List<SModule> extractedModules = ListSequence.fromList(new ArrayList<SModule>());
-    List<SModel> extractedModels = ListSequence.fromList(new ArrayList<SModel>());
-    List<Object> items = ListSequence.fromList(new ArrayList<Object>());
-    ListSequence.fromList(items).addSequence(ListSequence.fromList(Arrays.asList(selectedItems)));
-    while (ListSequence.fromList(items).isNotEmpty()) {
-      Object item = ListSequence.fromList(items).removeElementAt(0);
+    List<SModule> extractedModules = new ArrayList<SModule>();
+    List<SModel> extractedModels = new ArrayList<SModel>();
+    List<Object> queue = new ArrayList<Object>(Arrays.asList(items));
+    while (!(queue.isEmpty())) {
+      Object item = queue.remove(0);
       if (item instanceof AbstractTreeNode) {
         Object value = ((AbstractTreeNode) item).getValue();
         if (value != null && value instanceof SModule) {
-          ListSequence.fromList(extractedModules).addElement((SModule) value);
+          extractedModules.add((SModule) value);
           continue;
         }
         if (value != null && value instanceof SModel) {
-          ListSequence.fromList(extractedModels).addElement((SModel) value);
+          extractedModels.add((SModel) value);
           continue;
         }
         Collection<? extends AbstractTreeNode<?>> children = ((AbstractTreeNode) item).getChildren();
-        ListSequence.fromList(items).addSequence(CollectionSequence.fromCollection(children));
+        queue.addAll(children);
       }
     }
-    if (ListSequence.fromList(extractedModules).isEmpty() && ListSequence.fromList(extractedModels).isEmpty()) {
-      return new ModelsScope(ListSequence.fromList(new ArrayList<>()));
+    if (extractedModules.isEmpty() && extractedModels.isEmpty()) {
+      return new ModelsScope(new ArrayList<SModel>());
     }
-
     return createMigrationScope(extractedModules, extractedModels);
   }
 
