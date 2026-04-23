@@ -32005,6 +32005,13 @@
           </node>
         </node>
       </node>
+      <node concept="13uQ2_" id="6uqFxHS_bd7" role="39821P">
+        <node concept="3_J27D" id="6uqFxHS_bd9" role="13uQ07">
+          <node concept="3Mxwew" id="6uqFxHS_bda" role="3MwsjC">
+            <property role="3MwjfP" value="intellij.spellchecker.jar" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="398223" id="4tNwrSpam8k" role="39821P">
       <node concept="3_J27D" id="4tNwrSpam8l" role="Nbhlr">
@@ -49760,6 +49767,9 @@
           </node>
         </node>
       </node>
+      <node concept="2sjeV3" id="6uqFxHS_bfT" role="nCB5Z">
+        <ref role="2sjeV2" node="6uqFxHS_beO" resolve="spellchecker" />
+      </node>
     </node>
     <node concept="2G$12M" id="4O0hKJplCNt" role="3989C9">
       <property role="TrG5h" value="languageDesign-plugins" />
@@ -51670,6 +51680,16 @@
             <node concept="2Ry0Ak" id="2KA2zfKHNnn" role="2Ry0An">
               <property role="2Ry0Am" value="kotlinc" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="PiPfp" id="6uqFxHS_beO" role="3989C9">
+      <property role="TrG5h" value="spellchecker" />
+      <node concept="25yagZ" id="6uqFxHS_beP" role="PiKyV">
+        <node concept="3yqu4x" id="6uqFxHS_beR" role="25yagT">
+          <node concept="3yrxFa" id="6uqFxHS_beT" role="3yqu4I">
+            <ref role="3yrxFb" node="6uqFxHS_bd7" />
           </node>
         </node>
       </node>

@@ -41,6 +41,10 @@
     </fileset>
   </path>
   
+  <path id="path.java.library.spellchecker">
+    <fileset file="${artifacts.IDEA}/lib/intellij.spellchecker.jar" />
+  </path>
+  
   <path id="path.mps.ant.path">
     <pathelement location="${artifacts.mpsBootstrapCore}/lib/ant/lib/ant-mps.jar" />
     <pathelement location="${artifacts.IDEA}/lib/util-8.jar" />
@@ -1146,6 +1150,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.vcs.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.vcs.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.xml.parser.jar" />
+        <path refid="path.java.library.spellchecker" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
