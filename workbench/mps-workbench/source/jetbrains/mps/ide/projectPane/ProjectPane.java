@@ -289,12 +289,13 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     }
   }
 
+  @SuppressWarnings("UnstableApiUsage")
   @Override
   public void rebuild() {
     // This method can be called from different threads, however updateFromRoot()
     // merely adds an update to the update queue, and thus it's safe to invoke it
     // without runReadInEDT or runInUIThreadNoWait as it used to be.
-    updateFromRoot(true, ProjectViewUpdateCause.VFS);
+    updateFromRoot(true, ProjectViewUpdateCause.UNKNOWN);
   }
 
   @Override
