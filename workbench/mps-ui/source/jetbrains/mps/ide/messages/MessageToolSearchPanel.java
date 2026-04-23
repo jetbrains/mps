@@ -28,7 +28,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -193,37 +192,56 @@ class MessageToolSearchPanel extends AbstractSearchPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-      super.paintComponent(g);
-      if (myResults.contains(myIndex)) {
-        final Color highlightColor =
-            EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES).getBackgroundColor();
-        List<Integer> columns = new ArrayList<>();
-        for (int i = 0; i < myResults.size(); i++) {
-          int value = myResults.get(i);
-          if (value == myIndex) {
-            columns.add(myColumnResults.get(i));
+      if (!myResults.contains(myIndex)) {
+        super.paintComponent(g);
+        return;
+      }
+      // Collect the match columns for this row and skip outdated ones.
+      final String text = getText();
+      final int matchLen = myText.getText().length();
+      List<Integer> columns = new ArrayList<>();
+      for (int i = 0; i < myResults.size(); i++) {
+        if (myResults.get(i) == myIndex) {
+          int column = myColumnResults.get(i);
+          if (column + matchLen < text.length()) {
+            columns.add(column);
           }
         }
-        for (Integer column : columns) {
-          final int endIndex = column + myText.getText().length();
-          if (getText().length() <= endIndex) {
-            continue; // just skip this outdated result to avoid IndexOutOfBoundsException (prevent painting problems).
-          }
-          final String foundText = getText().substring(column, endIndex);
+      }
+      if (columns.isEmpty()) {
+        super.paintComponent(g);
+        return;
+      }
+      // Paint the background ourselves, then highlight rectangles, and finally
+      // let the default label UI render the icon and text on top of the
+      // highlights. This avoids redrawing the text ourselves (which used a
+      // slightly different baseline and no antialiasing, see MPS-39275).
+      final boolean wasOpaque = isOpaque();
+      if (wasOpaque) {
+        g.setColor(getBackground());
+        g.fillRect(0, 0, getWidth(), getHeight());
+      }
 
-          Graphics2D g2 = (Graphics2D) g;
-          FontMetrics fontMetrics = g2.getFontMetrics();
-          Color color = g2.getColor();
-          g2.setColor(highlightColor);
-          int startTextX = getInsets().left + getIcon().getIconWidth()
-              + getIconTextGap()
-              + fontMetrics.stringWidth(getText().substring(0, column));
-          g2.fillRect(startTextX, 1,
-              fontMetrics.stringWidth(foundText),
-              fontMetrics.getHeight() - 1);
-          g2.setColor(color);
-          g2.drawString(foundText, startTextX, fontMetrics.getHeight() - fontMetrics.getLeading() - 1);
-        }
+      final Color highlightColor = EditorColorsManager.getInstance().getGlobalScheme()
+          .getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES).getBackgroundColor();
+      FontMetrics fontMetrics = g.getFontMetrics(getFont());
+      final int textStartX = getInsets().left
+          + (getIcon() != null ? getIcon().getIconWidth() + getIconTextGap() : 0);
+      g.setColor(highlightColor);
+      for (Integer column : columns) {
+        int highlightX = textStartX + fontMetrics.stringWidth(text.substring(0, column));
+        int highlightW = fontMetrics.stringWidth(text.substring(column, column + matchLen));
+        g.fillRect(highlightX, 1, highlightW, fontMetrics.getHeight() - 1);
+      }
+
+      // Now let the label UI draw the icon and text on top of the highlights.
+      // Temporarily mark the component as non-opaque so the background (which
+      // we have already painted) is not overwritten by the UI.
+      try {
+        setOpaque(false);
+        super.paintComponent(g);
+      } finally {
+        setOpaque(wasOpaque);
       }
     }
   }
