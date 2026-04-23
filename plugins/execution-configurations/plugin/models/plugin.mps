@@ -6234,9 +6234,7 @@
         <node concept="3cpWs8" id="3UAfElGrwoB" role="3cqZAp">
           <node concept="3cpWsn" id="3UAfElGrwoC" role="3cpWs9">
             <property role="TrG5h" value="jnaLibPath" />
-            <node concept="3uibUv" id="3UAfElGrwdP" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
+            <node concept="17QB3L" id="3tqOpo7_qNs" role="1tU5fm" />
             <node concept="2OqwBi" id="3UAfElGrwoD" role="33vP2m">
               <node concept="2ShNRf" id="3UAfElGrwoE" role="2Oq$k0">
                 <node concept="1pGfFk" id="3UAfElGrwoF" role="2ShVmc">
@@ -6273,6 +6271,51 @@
               </node>
             </node>
             <node concept="37vLTw" id="3UAfElGr$mu" role="37vLTJ">
+              <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3tqOpo7_s_D" role="3cqZAp" />
+        <node concept="3cpWs8" id="3tqOpo7_r9L" role="3cqZAp">
+          <node concept="3cpWsn" id="3tqOpo7_r9M" role="3cpWs9">
+            <property role="TrG5h" value="skikoLibPath" />
+            <node concept="17QB3L" id="3tqOpo7_r9N" role="1tU5fm" />
+            <node concept="2OqwBi" id="3tqOpo7_r9O" role="33vP2m">
+              <node concept="2ShNRf" id="3tqOpo7_r9P" role="2Oq$k0">
+                <node concept="1pGfFk" id="3tqOpo7_r9Q" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
+                  <node concept="2YIFZM" id="3tqOpo7_r9R" role="37wK5m">
+                    <ref role="37wK5l" to="bd8o:~PathManager.getLibPath()" resolve="getLibPath" />
+                    <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+                  </node>
+                  <node concept="Xl_RD" id="3tqOpo7_r9S" role="37wK5m">
+                    <property role="Xl_RC" value="skiko-awt-runtime-all" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="3tqOpo7_r9T" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3tqOpo7_r9D" role="3cqZAp">
+          <node concept="37vLTI" id="3tqOpo7_r9E" role="3clFbG">
+            <node concept="2OqwBi" id="3tqOpo7_r9F" role="37vLTx">
+              <node concept="Xl_RD" id="3tqOpo7_r9G" role="2Oq$k0">
+                <property role="Xl_RC" value="-Dskiko.library.path=\&quot;%s\&quot; %s" />
+              </node>
+              <node concept="2cAKMz" id="3tqOpo7_r9H" role="2OqNvi">
+                <node concept="37vLTw" id="3tqOpo7_r9I" role="2cAKU6">
+                  <ref role="3cqZAo" node="3tqOpo7_r9M" resolve="skikoLibPath" />
+                </node>
+                <node concept="37vLTw" id="3tqOpo7_r9J" role="2cAKU6">
+                  <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="3tqOpo7_r9K" role="37vLTJ">
               <ref role="3cqZAo" node="75c$k6X2Pup" resolve="virtualMachineParameters" />
             </node>
           </node>

@@ -89,6 +89,9 @@ public class Mps_Command {
     String jnaLibPath = new File(PathManager.getLibPath(), "jna").getAbsolutePath();
     virtualMachineParameters = String.format("-Djna.boot.library.path=\"%s\" %s", jnaLibPath, virtualMachineParameters);
 
+    String skikoLibPath = new File(PathManager.getLibPath(), "skiko-awt-runtime-all").getAbsolutePath();
+    virtualMachineParameters = String.format("-Dskiko.library.path=\"%s\" %s", skikoLibPath, virtualMachineParameters);
+
     if ((settingsPath != null && settingsPath.length() > 0)) {
       String configPath = new File(settingsPath, "config").getAbsolutePath();
       String systemPath = new File(settingsPath, "system").getAbsolutePath();
