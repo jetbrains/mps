@@ -236,13 +236,13 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
   }
 
-  @SuppressWarnings("removal")
-  protected void updateFrom(IFile iFile, boolean updateStructure) {
+  @SuppressWarnings({"removal", "UnstableApiUsage"})
+  protected void updateFrom(IFile iFile, boolean updateStructure, ProjectViewUpdateCause cause) {
     IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
 
     VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
     if (virtualFile != null) {
-      updateFrom(virtualFile, false, updateStructure, ProjectViewUpdateCause.LEGACY);
+      updateFrom(virtualFile, false, updateStructure, cause);
     }
   }
 
@@ -741,6 +741,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       model.removeModelListener(this);
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     protected void startListening(SModule module) {
       if (!isIncluded(module)) {
@@ -748,58 +749,67 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       }
       super.startListening(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
+        updateFromRoot(true, ProjectViewUpdateCause.UNKNOWN);
       }
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     protected void stopListening(SModule module) {
       super.stopListening(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
+        updateFromRoot(true, ProjectViewUpdateCause.UNKNOWN);
       }
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
-      updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
+      updateFromRoot(true, ProjectViewUpdateCause.UNKNOWN);
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void moduleChanged(SModule module) {
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true, ProjectViewUpdateCause.LEGACY);
+        updateFromRoot(true, ProjectViewUpdateCause.UNKNOWN);
       }
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
-      forEachFile(module, f -> updateFrom(f, true));
+      forEachFile(module, f -> updateFrom(f, true, ProjectViewUpdateCause.UNKNOWN));
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void modelRemoved(SModule module, SModelReference ref) {
-      forEachFile(module, f -> updateFrom(f, true));
+      forEachFile(module, f -> updateFrom(f, true, ProjectViewUpdateCause.UNKNOWN));
     }
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void modelAdded(SModule module, SModel model) {
       super.modelAdded(module, model);
-      forEachFile(module, f -> updateFrom(f, true));
+      forEachFile(module, f -> updateFrom(f, true, ProjectViewUpdateCause.UNKNOWN));
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void modelReplaced(SModel model) {
-      forEachFile(model, f -> updateFrom(f, true));
+      forEachFile(model, f -> updateFrom(f, true, ProjectViewUpdateCause.UNKNOWN));
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void dependenciesChanged(SModel model, DependencyChange change) {
-      forEachFile(model, f -> updateFrom(f, true));
+      forEachFile(model, f -> updateFrom(f, true, ProjectViewUpdateCause.UNKNOWN));
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void nodesChanged(SModel model) {
-      forEachFile(model, f -> updateFrom(f, true));
+      forEachFile(model, f -> updateFrom(f, true, ProjectViewUpdateCause.UNKNOWN));
     }
   }
 }

@@ -55,6 +55,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
       return myState.isShowDescriptorModels();
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void setSelected(boolean selected) {
       if (myProject.isDisposed()) return;
@@ -66,7 +67,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
 //      getGlobalOptions().setShowDescriptorModels(selected);
       // FIXME reuse updatePanes from the superclass
 //      if (updated) updatePanes(false);
-      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false, ProjectViewUpdateCause.LEGACY);
+      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false, ProjectViewUpdateCause.SETTINGS);
     }
   }
   ;
@@ -77,6 +78,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
       return myState.isShowErrorsOnly();
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void setSelected(boolean selected) {
       if (myProject.isDisposed()) return;
@@ -88,7 +90,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
 //      getGlobalOptions().setSortRootsByConcept(selected);
       // FIXME reuse updatePanes from the superclass
 //      if (updated) updatePanes(false);
-      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false, ProjectViewUpdateCause.LEGACY);
+      if (updated) getProjectViewPaneById(ProjectViewPane.ID).updateFromRoot(false, ProjectViewUpdateCause.SETTINGS);
     }
   };
 
