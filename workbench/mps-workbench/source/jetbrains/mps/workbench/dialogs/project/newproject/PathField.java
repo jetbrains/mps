@@ -28,8 +28,6 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentEvent.EventType;
 import java.awt.BorderLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,10 +38,18 @@ public class PathField extends JPanel {
   private final List<PathChangedListener> myListeners = new ArrayList<>();
 
   /**
-   * flag if path was changed by user
-   * if changed by user need to be careful with auto update path
+   * True once the user has edited the path — either by typing into the field or by picking a folder via the
+   * chooser dialog. Programmatic {@link #setPath(String)} calls preserve this flag rather than setting it,
+   * so callers can use it to tell whether the current value was authored by the user and skip auto-updates
+   * that would clobber a user-provided path.
    */
   private boolean myIsPathChangedByUser = false;
+
+  /**
+   * Set while {@link #setPath(String)} mutates the text field, so the document listener can distinguish
+   * programmatic updates from user edits.
+   */
+  private boolean myIsSettingPath = false;
 
   public PathField() {
     setLayout(new BorderLayout());
@@ -53,18 +59,10 @@ public class PathField extends JPanel {
 
   private JTextField createPathField() {
     JTextField component = new JTextField(40);
-    component.addKeyListener(new KeyAdapter() {
-      @Override
-      public void keyReleased(KeyEvent e) {
-        super.keyReleased(e);
-        myIsPathChangedByUser = true;
-        pathFromField();
-      }
-    });
     component.getDocument().addDocumentListener(new DocumentAdapter() {
       @Override
       protected void textChanged(DocumentEvent e) {
-        if (EventType.CHANGE.equals(e.getType())) {
+        if (!myIsSettingPath && !EventType.CHANGE.equals(e.getType())) {
           myIsPathChangedByUser = true;
           pathFromField();
         }
@@ -94,12 +92,17 @@ public class PathField extends JPanel {
   }
 
   public void setPath(String newValue) {
-    myPath = FileUtil.toSystemDependentName(newValue);
-    final boolean isPathChangedByUser = myIsPathChangedByUser; //Save current flag state.
-    myPathField.setText(newValue);
-    myIsPathChangedByUser = isPathChangedByUser; //Reset state. It was not user action.
-    for (PathChangedListener listener : myListeners) {
-      listener.firePathChanged(myPath);
+    myIsSettingPath = true;
+    try {
+      myPath = FileUtil.toSystemDependentName(newValue);
+      final boolean isPathChangedByUser = myIsPathChangedByUser; //Save current flag state.
+      myPathField.setText(newValue);
+      myIsPathChangedByUser = isPathChangedByUser; //Reset state. It was not user action.
+      for (PathChangedListener listener : myListeners) {
+        listener.firePathChanged(myPath);
+      }
+    } finally {
+      myIsSettingPath = false;
     }
   }
 
@@ -114,8 +117,8 @@ public class PathField extends JPanel {
     final String oldPath = !myPathField.getText().isEmpty() ? myPathField.getText() : "";
     final VirtualFile result = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), myPathField, null, LocalFileSystem.getInstance().findFileByPath(oldPath));
     if (result != null) {
+      myIsPathChangedByUser = true;
       setPath(result.getPath());
-      myIsPathChangedByUser = true; //User change path only if dialog has result.
     }
   }
 

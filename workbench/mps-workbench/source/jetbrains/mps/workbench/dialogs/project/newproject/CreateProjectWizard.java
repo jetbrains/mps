@@ -294,6 +294,9 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     myProjectPath = new PathField();
     myProjectPath.addPathChangedListener(newPathValue -> {
+      if (myProjectPath.isPathChangedByUser()) {
+        updateProjectNameFromPath(newPathValue);
+      }
       //If path changed need to update specific module settings
       fireProjectPathChanged(newPathValue);
       checkSettings();
@@ -438,6 +441,23 @@ public final class CreateProjectWizard extends DialogWrapper {
     if (myProjectPath.getPath() == null || myProjectPath.getPath().length() == 0 ||
         (myProjectPath.getPath().startsWith(PROJECTS_DIR) && !myProjectPath.isPathChangedByUser())) {
       myProjectPath.setPath(PROJECTS_DIR + File.separator + myProjectName.getText());
+    }
+  }
+
+  private void updateProjectNameFromPath(String path) {
+    // Mirrors IDEA's NamePathComponent.syncPathAndName: only update when the path has an unambiguous
+    // trailing segment, so the name doesn't flicker while the user is typing a separator and isn't
+    // cleared when the location field is wiped.
+    if (path == null) {
+      return;
+    }
+    int lastSeparatorIndex = path.lastIndexOf(File.separatorChar);
+    if (lastSeparatorIndex < 0 || lastSeparatorIndex + 1 >= path.length()) {
+      return;
+    }
+    String name = path.substring(lastSeparatorIndex + 1);
+    if (!Objects.equals(name, myProjectName.getText())) {
+      myProjectName.setText(name);
     }
   }
 
