@@ -19,7 +19,6 @@ import com.intellij.ide.dnd.aware.DnDAwareTree;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.DoubleClickListener;
@@ -391,7 +390,11 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   protected String getPopupMenuPlace() {
-    return ActionPlaces.UNKNOWN;
+    // Non-empty, unique place so the IntelliJ platform can deduce the popup origin
+    // (see com.intellij.openapi.actionSystem.impl.ActionPopupMenuImpl, which warns
+    // on ActionPlaces.UNKNOWN or an empty string). Subclasses may override to use a
+    // more specific MPSActionPlaces constant.
+    return "MPSTreePopup." + getClass().getName();
   }
 
   protected ActionGroup createPopupActionGroup(final MPSTreeNode node) {
