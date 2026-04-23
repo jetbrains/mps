@@ -4513,6 +4513,9 @@
     <node concept="2DRAP_" id="BsOHnjn547" role="2DRAPQ">
       <property role="2DPR8u" value="  -Didea.jre.check=true \" />
     </node>
+    <node concept="2DRAP_" id="4ZcmsD7E38$" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Dawt.toolkit.name=auto \" />
+    </node>
     <node concept="2DRAP_" id="5gb82DdXPMj" role="2DRAPQ">
       <property role="2DPR8u" value="  -Djna.boot.library.path=&quot;${IDE_HOME}/lib/jna&quot; \" />
     </node>
@@ -6060,6 +6063,29 @@
       <node concept="2DRAP_" id="6GoDrz8MA1g" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Didea.executables=mps&quot;," />
         <node concept="raruj" id="6GoDrz8MKbz" role="lGtFl" />
+      </node>
+      <node concept="2DRAP_" id="4ZcmsD7E93K" role="2DRAPQ">
+        <property role="2DPR8u" value="        &quot;-Dawt.toolkit.name=auto&quot;," />
+        <node concept="raruj" id="4ZcmsD7EakR" role="lGtFl" />
+        <node concept="1W57fq" id="4ZcmsD7EakT" role="lGtFl">
+          <node concept="3IZrLx" id="4ZcmsD7EakU" role="3IZSJc">
+            <node concept="3clFbS" id="4ZcmsD7EakV" role="2VODD2">
+              <node concept="3clFbF" id="4ZcmsD7EauD" role="3cqZAp">
+                <node concept="2OqwBi" id="4ZcmsD7EauE" role="3clFbG">
+                  <node concept="Xl_RD" id="4ZcmsD7EauF" role="2Oq$k0">
+                    <property role="Xl_RC" value="Linux" />
+                  </node>
+                  <node concept="liA8E" id="4ZcmsD7EauG" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                    <node concept="v3LJS" id="4ZcmsD7EauH" role="37wK5m">
+                      <ref role="v3LJV" node="6GoDrz8Lya0" resolve="os" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1h" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Didea.home.path=$APP_PACKAGE/Contents&quot;," />

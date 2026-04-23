@@ -419,9 +419,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format(_context.getTemplateValue(), pty4jFolder);
   }
   public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {
-    return "macOS".equals(((String) _context.getVariable("os")));
+    return "Linux".equals(((String) _context.getVariable("os")));
   }
   public static boolean ifMacro_Condition_6_1(final IfMacroContext _context) {
+    return "macOS".equals(((String) _context.getVariable("os")));
+  }
+  public static boolean ifMacro_Condition_6_2(final IfMacroContext _context) {
     return "macOS".equals(((String) _context.getVariable("os")));
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
@@ -717,6 +720,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
+    imcMethods.put("5750069549565781305", new IfMC(i++));
     imcMethods.put("4782412228687955945", new IfMC(i++));
     imcMethods.put("4782412228687957723", new IfMC(i++));
   }
@@ -738,6 +742,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_6_0(ctx);
         case 1:
           return QueriesGenerated.ifMacro_Condition_6_1(ctx);
+        case 2:
+          return QueriesGenerated.ifMacro_Condition_6_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
