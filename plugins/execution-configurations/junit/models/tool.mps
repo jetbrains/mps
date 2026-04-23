@@ -3413,7 +3413,7 @@
                 <ref role="37wK5l" node="4LTxumxZyeK" resolve="createHidePassedAction" />
               </node>
               <node concept="1rXfSq" id="4LTxumxZBZF" role="37wK5m">
-                <ref role="37wK5l" node="4LTxumxZyfr" resolve="cteateTrackRunningAction" />
+                <ref role="37wK5l" node="4LTxumxZyfr" resolve="createTrackRunningAction" />
               </node>
             </node>
           </node>
@@ -4050,7 +4050,7 @@
     </node>
     <node concept="2tJIrI" id="4LTxumy0arf" role="jymVt" />
     <node concept="3clFb_" id="4LTxumxZyfr" role="jymVt">
-      <property role="TrG5h" value="cteateTrackRunningAction" />
+      <property role="TrG5h" value="createTrackRunningAction" />
       <node concept="3clFbS" id="4LTxumxZyfs" role="3clF47">
         <node concept="3cpWs6" id="4LTxumxZyft" role="3cqZAp">
           <node concept="2ShNRf" id="4LTxumxZyfu" role="3cqZAk">
@@ -4160,8 +4160,8 @@
                 <node concept="Xl_RD" id="4LTxumxZyfY" role="37wK5m">
                   <property role="Xl_RC" value="Select currently running test in tree" />
                 </node>
-                <node concept="10M0yZ" id="6FTCJIUQw83" role="37wK5m">
-                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.TrackRunningTests" resolve="TrackRunningTests" />
+                <node concept="10M0yZ" id="mYewrI4zUs" role="37wK5m">
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.TrackRunningTest" resolve="TrackRunningTest" />
                   <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
                 </node>
               </node>

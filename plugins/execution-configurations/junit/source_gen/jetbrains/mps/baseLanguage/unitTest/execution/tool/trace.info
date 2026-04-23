@@ -592,7 +592,7 @@
       <node id="5510582840376304807" at="235,56,256,6" concept="11" />
       <node id="5510582840376304642" at="154,0,176,0" concept="9" trace="createCollapseAllAction#()Lcom/intellij/openapi/actionSystem/AnAction;" />
       <node id="5510582840376304562" at="104,49,127,6" concept="11" />
-      <node id="5510582840376304603" at="130,0,153,0" concept="9" trace="cteateTrackRunningAction#()Lcom/intellij/openapi/actionSystem/ToggleAction;" />
+      <node id="5510582840376304603" at="130,0,153,0" concept="9" trace="createTrackRunningAction#()Lcom/intellij/openapi/actionSystem/ToggleAction;" />
       <node id="5510582840376304805" at="235,0,258,0" concept="9" trace="createSelectFirstFailedAction#()Lcom/intellij/openapi/actionSystem/ToggleAction;" />
       <node id="5510582840376304560" at="104,0,129,0" concept="9" trace="createHidePassedAction#()Lcom/intellij/openapi/actionSystem/ToggleAction;" />
       <scope id="5510582840376304945" at="311,27,311,27" />

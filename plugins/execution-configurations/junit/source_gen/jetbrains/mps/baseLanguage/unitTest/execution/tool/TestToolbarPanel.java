@@ -55,7 +55,7 @@ public class TestToolbarPanel extends JPanel {
 
   private void init() {
     final DefaultActionGroup actionGroup = new DefaultActionGroup();
-    actionGroup.addAll(createHidePassedAction(), cteateTrackRunningAction());
+    actionGroup.addAll(createHidePassedAction(), createTrackRunningAction());
     actionGroup.addSeparator();
     actionGroup.addAll(createCollapseAllAction(), createExpandAllAction());
     actionGroup.addSeparator();
@@ -127,8 +127,8 @@ public class TestToolbarPanel extends JPanel {
     };
   }
 
-  private ToggleAction cteateTrackRunningAction() {
-    return new ToggleAction("Track Running Test", "Select currently running test in tree", MPSIcons.Nodes.TrackRunningTests) {
+  private ToggleAction createTrackRunningAction() {
+    return new ToggleAction("Track Running Test", "Select currently running test in tree", MPSIcons.Nodes.TrackRunningTest) {
       {
         setSelected(((AnActionEvent) null), UnitTestOptions.isTrackRunning());
       }
