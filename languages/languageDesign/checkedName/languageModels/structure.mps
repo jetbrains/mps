@@ -74,6 +74,11 @@
       <property role="TrG5h" value="nativeLanguage" />
       <ref role="AX2Wp" node="2wVzGkOoAJ5" resolve="NativeLanguage" />
     </node>
+    <node concept="1TJgyi" id="2xG1ic5zwhv" role="1TKVEl">
+      <property role="IQ2nx" value="2912708706977055839" />
+      <property role="TrG5h" value="capitalizationStyle" />
+      <ref role="AX2Wp" node="2xG1ic5zwcx" resolve="CapitalizationStyle" />
+    </node>
     <node concept="3MrDgS" id="6LsRaTz9q6Q" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="4cWf37B8oWT">
@@ -178,6 +183,26 @@
       <property role="3tVfz5" value="2899067762785149228" />
       <property role="TrG5h" value="DANISH" />
       <property role="1L1pqM" value="Danish" />
+    </node>
+  </node>
+  <node concept="25R3W" id="2xG1ic5zwcx">
+    <property role="3F6X1D" value="2912708706977055521" />
+    <property role="TrG5h" value="CapitalizationStyle" />
+    <ref role="1H5jkz" node="2xG1ic5zwcy" resolve="TitleCase" />
+    <node concept="25R33" id="2xG1ic5zwcy" role="25R1y">
+      <property role="3tVfz5" value="2912708706977055522" />
+      <property role="TrG5h" value="TitleCase" />
+      <property role="1L1pqM" value="Title case" />
+    </node>
+    <node concept="25R33" id="2xG1ic5zwfb" role="25R1y">
+      <property role="3tVfz5" value="2912708706977055691" />
+      <property role="TrG5h" value="SentenceCase" />
+      <property role="1L1pqM" value="Sentence case" />
+    </node>
+    <node concept="25R33" id="33oZzW1RrDF" role="25R1y">
+      <property role="3tVfz5" value="3519842655357745771" />
+      <property role="TrG5h" value="None" />
+      <property role="1L1pqM" value="None" />
     </node>
   </node>
 </model>

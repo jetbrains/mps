@@ -19,6 +19,9 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author evgeny, 10/1/12
  */
@@ -255,5 +258,47 @@ public final class StringUtil {
       sb.append(ch);
     }
     return sb.toString();
+  }
+
+  /**
+   * Motivated by NlsCapitalizationUtil::checkSentenceCapitalization
+   */
+  public static boolean checkShortTitleCapitalization(@NotNull String value) {
+    List<String> words = Arrays.stream(value.split(" ")).map(String::trim).toList();
+    final int wordCount = words.size();
+    if (wordCount == 0) {
+      return true;
+    }
+
+    if (Character.isLetter(words.getFirst().charAt(0)) && !isCapitalizedWord(words.getFirst())) {
+      return false;
+    }
+    if (wordCount == 1) {
+      return true;
+    }
+
+    int capitalized = 1;
+    for (int i = 1; i < wordCount; i++) {
+      String word = words.get(i);
+      if (isCapitalizedWord(word)) {
+        // check for abbreviations like 'C', 'SQL', 'I18n'
+        if (word.length() == 1 || !Character.isLowerCase(word.charAt(1))) {
+          continue;
+        }
+        capitalized++;
+      }
+    }
+
+    // "Start service"
+    if (capitalized == 1 && wordCount == 2) {
+      return true;
+    }
+
+    final double ratio = ((double) capitalized - 1) / wordCount;
+    return ratio <= 0.4; // allow reasonable amount of capitalized words
+  }
+
+  private static boolean isCapitalizedWord(String word) {
+    return !word.isEmpty() && Character.isLetter(word.charAt(0)) && Character.isUpperCase(word.charAt(0));
   }
 }

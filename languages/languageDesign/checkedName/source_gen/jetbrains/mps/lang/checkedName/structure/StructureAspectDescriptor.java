@@ -22,6 +22,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPropertyPointerValueOperation = createDescriptorForPropertyPointerValueOperation();
   /*package*/ final ConceptDescriptor myConceptPropertyRefExpression = createDescriptorForPropertyRefExpression();
   /*package*/ final ConceptDescriptor myConceptPropertyRefType = createDescriptorForPropertyRefType();
+  /*package*/ final EnumerationDescriptor myEnumerationCapitalizationStyle = new EnumerationDescriptor_CapitalizationStyle();
   /*package*/ final EnumerationDescriptor myEnumerationNativeLanguage = new EnumerationDescriptor_NativeLanguage();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -62,7 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationNativeLanguage);
+    return Arrays.asList(myEnumerationCapitalizationStyle, myEnumerationNativeLanguage);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -75,6 +76,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/4844813484172611384");
     b.version(3);
     b.property("nativeLanguage", 0x283b8ec53462d0ffL).type(MetaIdFactory.dataTypeId(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x283b8ec534626bc5L)).origin("2899067762781638911").done();
+    b.property("capitalizationStyle", 0x286c0523058e045fL).type(MetaIdFactory.dataTypeId(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x286c0523058e0321L)).origin("2912708706977055839").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPropertyPointerType() {

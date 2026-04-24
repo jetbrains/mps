@@ -7,19 +7,20 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.checkedName.behavior.ICheckedNamePolicy__BehaviorDescriptor;
+import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import jetbrains.mps.lang.checkedName.behavior.ICheckedNamePolicy__BehaviorDescriptor;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import jetbrains.mps.checkedName.PropertyReference;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import jetbrains.mps.util.NameUtil;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -30,7 +31,59 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   public check_NamingPolicy_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SRepository repository = SNodeOperations.getModel(node).getRepository();
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.capitalizationStyle$TMEQ), 0x30d8fe3f01ddba6bL)) {
+      return;
+    }
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.capitalizationStyle$TMEQ), 0x286c0523058e03cbL)) {
+      String warningMessage = "Naming policies violated: " + "sentence-case is expected";
+      for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
+        if (!(StringUtil.checkShortTitleCapitalization(SPropertyOperations.getString(s, PROPS.value$w7MM)))) {
+          String myWarning = warningMessage + ".";
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, myWarning, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "7599207314259524138", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_literal_once_QuickFix", "7599207314259524141", false);
+              intentionProvider.putArgument("caption", "Fix String");
+              intentionProvider.putArgument("literal", s);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "7599207314259524146", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+          }
+        }
+      }
+      for (PropertyReference p : ICheckedNamePolicy__BehaviorDescriptor.getPropertiesToCheck_id4cWf37B8oXP.invoke(node)) {
+        if (SPropertyOperations.getString(p.getNode(), p.getProperty()) == null) {
+          continue;
+        }
+        if (!(StringUtil.checkShortTitleCapitalization(SPropertyOperations.getString(p.getNode(), p.getProperty())))) {
+          String myWarning = warningMessage + "; no leading and trailing whitespaces are allowed.";
+          {
+            final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), myWarning, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "7599207314259524177", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_property_once_QuickFix", "7599207314259524186", false);
+              intentionProvider.putArgument("caption", "Fix " + NameUtil.capitalize(p.getProperty().getName()));
+              intentionProvider.putArgument("property", p);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "7599207314259524198", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+          }
+        }
+      }
+      return;
+    }
+
+    // Title-case
+    final SRepository repository = SNodeOperations.getModel(node).getRepository();
     if (!(ExtensionsHelper.anyNativeLangCheckersInstalled(repository)) || !(ExtensionsHelper.anyNativeLangDictionaryInstalled(repository))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -160,6 +213,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty capitalizationStyle$TMEQ = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x286c0523058e045fL, "capitalizationStyle");
     /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
     /*package*/ static final SProperty nativeLanguage$lRMr = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x283b8ec53462d0ffL, "nativeLanguage");
   }
