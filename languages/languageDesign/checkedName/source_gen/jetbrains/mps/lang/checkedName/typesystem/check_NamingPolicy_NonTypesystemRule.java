@@ -53,6 +53,16 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
               intentionProvider.putArgument("nodeToFix", node);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008296903", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008297136", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
           }
         }
       }
@@ -73,6 +83,16 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
             }
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "7599207314259524198", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008323935", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008323938", false);
               intentionProvider.putArgument("nodeToFix", node);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
@@ -108,6 +128,16 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
               intentionProvider.putArgument("nodeToFix", node);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008324301", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008324304", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
           }
         }
       }
@@ -129,6 +159,16 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
             }
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.FixNamingPolicy_QuickFix", "4844813484172611549", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008324371", false);
+              intentionProvider.putArgument("nodeToFix", node);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008324374", false);
               intentionProvider.putArgument("nodeToFix", node);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
@@ -160,11 +200,31 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
                 intentionProvider.putArgument("nodeToFix", node);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008324707", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008324710", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
           } else {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(s, warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "7495798601073764707", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008325707", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008325710", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
           }
         }
@@ -191,11 +251,31 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
                 intentionProvider.putArgument("nodeToFix", node);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008324821", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008324824", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
           } else {
             {
               final MessageTarget errorTarget = new PropertyMessageTarget(p.getProperty());
               IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(p.getNode(), warningMessage, "r:f922da3a-135f-4fe9-9051-9f018bc5c1bf(jetbrains.mps.lang.checkedName.typesystem)", "7495798601073836408", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.ChangeNamingPolicy_QuickFix", "591049574008325566", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.checkedName.typesystem.TurnOffNamingPolicy_QuickFix", "591049574008325569", false);
+                intentionProvider.putArgument("nodeToFix", node);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
           }
         }
