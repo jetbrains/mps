@@ -199,6 +199,11 @@
       <property role="TrG5h" value="SentenceCase" />
       <property role="1L1pqM" value="Sentence case" />
     </node>
+    <node concept="25R33" id="wDPNwOCuWS" role="25R1y">
+      <property role="3tVfz5" value="588237862749728568" />
+      <property role="TrG5h" value="Inherited" />
+      <property role="1L1pqM" value="Inherited" />
+    </node>
     <node concept="25R33" id="33oZzW1RrDF" role="25R1y">
       <property role="3tVfz5" value="3519842655357745771" />
       <property role="TrG5h" value="None" />

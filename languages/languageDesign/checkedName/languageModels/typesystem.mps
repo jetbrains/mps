@@ -117,6 +117,9 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
+      <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
+        <child id="1160998896846" name="condition" index="1gVkn0" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -327,21 +330,40 @@
   <node concept="18kY7G" id="4cWf37B8oYn">
     <property role="TrG5h" value="check_NamingPolicy" />
     <node concept="3clFbS" id="4cWf37B8oYo" role="18ibNy">
+      <node concept="1gVbGN" id="wDPNwODQgB" role="3cqZAp">
+        <node concept="3fqX7Q" id="wDPNwODWOK" role="1gVkn0">
+          <node concept="2OqwBi" id="wDPNwODWOM" role="3fr31v">
+            <node concept="2OqwBi" id="wDPNwODWON" role="2Oq$k0">
+              <node concept="1YBJjd" id="wDPNwODWOO" role="2Oq$k0">
+                <ref role="1YBMHb" node="4cWf37B8oZW" resolve="node" />
+              </node>
+              <node concept="3zqWPK" id="wDPNwODWOP" role="2OqNvi">
+                <ref role="37wK5l" to="mjwp:wDPNwOCZK_" resolve="getEffectiveCapitalizationStyle" />
+              </node>
+            </node>
+            <node concept="21noJN" id="wDPNwODWOQ" role="2OqNvi">
+              <node concept="21nZrQ" id="wDPNwODWOR" role="21noJM">
+                <ref role="21nZrZ" to="4j10:wDPNwOCuWS" resolve="Inherited" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="3clFbJ" id="33oZzW1REuB" role="3cqZAp">
         <node concept="3clFbS" id="33oZzW1REuD" role="3clFbx">
           <node concept="3cpWs6" id="33oZzW1Shdt" role="3cqZAp" />
         </node>
-        <node concept="2OqwBi" id="33oZzW1RY04" role="3clFbw">
+        <node concept="2OqwBi" id="wDPNwODrGm" role="3clFbw">
           <node concept="2OqwBi" id="33oZzW1RKSP" role="2Oq$k0">
             <node concept="1YBJjd" id="33oZzW1RKJA" role="2Oq$k0">
               <ref role="1YBMHb" node="4cWf37B8oZW" resolve="node" />
             </node>
-            <node concept="3TrcHB" id="33oZzW1RRhO" role="2OqNvi">
-              <ref role="3TsBF5" to="4j10:2xG1ic5zwhv" resolve="capitalizationStyle" />
+            <node concept="3zqWPK" id="wDPNwODr$A" role="2OqNvi">
+              <ref role="37wK5l" to="mjwp:wDPNwOCZK_" resolve="getEffectiveCapitalizationStyle" />
             </node>
           </node>
-          <node concept="21noJN" id="33oZzW1S4Fc" role="2OqNvi">
-            <node concept="21nZrQ" id="33oZzW1S4Fe" role="21noJM">
+          <node concept="21noJN" id="wDPNwODyp2" role="2OqNvi">
+            <node concept="21nZrQ" id="wDPNwODyp4" role="21noJM">
               <ref role="21nZrZ" to="4j10:33oZzW1RrDF" resolve="None" />
             </node>
           </node>
@@ -616,8 +638,8 @@
             <node concept="1YBJjd" id="6_PNGCWZd3a" role="2Oq$k0">
               <ref role="1YBMHb" node="4cWf37B8oZW" resolve="node" />
             </node>
-            <node concept="3TrcHB" id="6_PNGCWZd3b" role="2OqNvi">
-              <ref role="3TsBF5" to="4j10:2xG1ic5zwhv" resolve="capitalizationStyle" />
+            <node concept="3zqWPK" id="wDPNwOElVM" role="2OqNvi">
+              <ref role="37wK5l" to="mjwp:wDPNwOCZK_" resolve="getEffectiveCapitalizationStyle" />
             </node>
           </node>
           <node concept="21noJN" id="6_PNGCWZd3c" role="2OqNvi">
@@ -967,8 +989,8 @@
                   <node concept="1YBJjd" id="2wVzGkOoUfI" role="2Oq$k0">
                     <ref role="1YBMHb" node="4cWf37B8oZW" resolve="node" />
                   </node>
-                  <node concept="3TrcHB" id="2wVzGkOoUfJ" role="2OqNvi">
-                    <ref role="3TsBF5" to="4j10:2wVzGkOoH3Z" resolve="nativeLanguage" />
+                  <node concept="3zqWPK" id="wDPNwOG$6C" role="2OqNvi">
+                    <ref role="37wK5l" to="mjwp:wDPNwOGqfU" resolve="getEffectiveNativeLanguage" />
                   </node>
                 </node>
               </node>

@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="15,0,34,0" name="jetbrains.mps.lang.checkedName.constraints.ConstraintsAspectDescriptor" />
+      <unit at="15,0,36,0" name="jetbrains.mps.lang.checkedName.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:bfde7c59-4df1-47aa-b96c-63906ea441df(jetbrains.mps.lang.checkedName.constraints)/3232030656011514889">
@@ -101,6 +101,50 @@
       <unit id="4844813484172611611" at="41,17,53,7" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$RD1$1" />
       <unit id="4844813484172611611" at="34,0,56,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$RD1" />
       <unit id="4844813484172611610" at="28,0,68,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:bfde7c59-4df1-47aa-b96c-63906ea441df(jetbrains.mps.lang.checkedName.constraints)/588237862749738510">
+    <file name="ICheckedNamePolicy_Constraints.java">
+      <node id="588237862749738510" at="22,92,23,55" concept="9" />
+      <node id="588237862749738532" at="23,55,24,45" concept="1" />
+      <node id="588237862749738532" at="28,68,29,75" concept="9" />
+      <node id="588237862749738532" at="32,109,33,103" concept="4" />
+      <node id="588237862749738532" at="34,53,35,170" concept="1" />
+      <node id="588237862749738532" at="36,7,37,20" concept="5" />
+      <node id="588237862749741210" at="39,98,40,193" concept="5" />
+      <node id="588237862749738510" at="45,0,46,0" concept="7" trace="ICheckedNamePolicy$7R" />
+      <node id="588237862749738510" at="49,0,50,0" concept="7" trace="capitalizationStyle$TMEQ" />
+      <node id="588237862749738532" at="28,0,31,0" concept="0" trace="CapitalizationStyle_PD#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="588237862749738532" at="33,103,36,7" concept="2" />
+      <node id="588237862749738532" at="39,0,42,0" concept="8" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;)Z" />
+      <node id="588237862749738510" at="22,0,26,0" concept="0" trace="ICheckedNamePolicy_Constraints#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptorInitContext;)V" />
+      <node id="588237862749738532" at="31,0,39,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
+      <scope id="588237862749738532" at="28,68,29,75" />
+      <scope id="588237862749738532" at="34,53,35,170" />
+      <scope id="588237862749738635" at="39,98,40,193" />
+      <scope id="588237862749738510" at="22,92,24,45" />
+      <scope id="588237862749738532" at="28,0,31,0">
+        <var name="container" id="588237862749738532" />
+      </scope>
+      <scope id="588237862749738532" at="39,0,42,0">
+        <var name="node" id="588237862749738532" />
+        <var name="propertyValue" id="588237862749738532" />
+      </scope>
+      <scope id="588237862749738510" at="22,0,26,0">
+        <var name="initContext" id="588237862749738510" />
+      </scope>
+      <scope id="588237862749738532" at="32,109,37,20">
+        <var name="result" id="588237862749738532" />
+      </scope>
+      <scope id="588237862749738532" at="31,0,39,0">
+        <var name="checkingNodeContext" id="588237862749738532" />
+        <var name="node" id="588237862749738532" />
+        <var name="propertyValue" id="588237862749738532" />
+      </scope>
+      <unit id="588237862749738510" at="44,0,47,0" name="jetbrains.mps.lang.checkedName.constraints.ICheckedNamePolicy_Constraints$CONCEPTS" />
+      <unit id="588237862749738510" at="48,0,51,0" name="jetbrains.mps.lang.checkedName.constraints.ICheckedNamePolicy_Constraints$PROPS" />
+      <unit id="588237862749738532" at="27,0,43,0" name="jetbrains.mps.lang.checkedName.constraints.ICheckedNamePolicy_Constraints$CapitalizationStyle_PD" />
+      <unit id="588237862749738510" at="21,0,52,0" name="jetbrains.mps.lang.checkedName.constraints.ICheckedNamePolicy_Constraints" />
     </file>
   </root>
 </debug-info>

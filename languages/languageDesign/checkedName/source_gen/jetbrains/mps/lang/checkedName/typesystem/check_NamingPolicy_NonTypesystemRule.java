@@ -8,9 +8,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.checkedName.behavior.ICheckedNamePolicy__BehaviorDescriptor;
 import jetbrains.mps.util.StringUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -31,10 +31,11 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   public check_NamingPolicy_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.capitalizationStyle$TMEQ), 0x30d8fe3f01ddba6bL)) {
+    assert !(SEnumOperations.isMember(ICheckedNamePolicy__BehaviorDescriptor.getEffectiveCapitalizationStyle_idwDPNwOCZK_.invoke(node), 0x829d73834a1ef38L));
+    if (SEnumOperations.isMember(ICheckedNamePolicy__BehaviorDescriptor.getEffectiveCapitalizationStyle_idwDPNwOCZK_.invoke(node), 0x30d8fe3f01ddba6bL)) {
       return;
     }
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.capitalizationStyle$TMEQ), 0x286c0523058e03cbL)) {
+    if (SEnumOperations.isMember(ICheckedNamePolicy__BehaviorDescriptor.getEffectiveCapitalizationStyle_idwDPNwOCZK_.invoke(node), 0x286c0523058e03cbL)) {
       String warningMessage = "Naming policies violated: " + "sentence-case is expected";
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
         if (!(StringUtil.checkShortTitleCapitalization(SPropertyOperations.getString(s, PROPS.value$w7MM)))) {
@@ -177,7 +178,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
       }
     } else {
       // Use grazie
-      SEnumerationLiteral nativeLanguageEnum = SPropertyOperations.getEnum(node, PROPS.nativeLanguage$lRMr);
+      SEnumerationLiteral nativeLanguageEnum = ICheckedNamePolicy__BehaviorDescriptor.getEffectiveNativeLanguage_idwDPNwOGqfU.invoke(node);
       String nativeLanguageValue = ((nativeLanguageEnum != null) && !(SEnumOperations.isMember(nativeLanguageEnum, 0x283b8ec534712e16L)) ? nativeLanguageEnum.getName() : null);
 
       for (SNode s : ICheckedNamePolicy__BehaviorDescriptor.getDescendantsToCheck_id4cWf37B8oXl.invoke(node)) {
@@ -293,9 +294,7 @@ public class check_NamingPolicy_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty capitalizationStyle$TMEQ = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x286c0523058e045fL, "capitalizationStyle");
     /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-    /*package*/ static final SProperty nativeLanguage$lRMr = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x283b8ec53462d0ffL, "nativeLanguage");
   }
 
   private static final class CONCEPTS {

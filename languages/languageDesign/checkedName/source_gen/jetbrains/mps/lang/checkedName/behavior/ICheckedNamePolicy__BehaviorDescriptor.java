@@ -11,12 +11,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.checkedName.PropertyReference;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
@@ -25,8 +31,10 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<SNode> getDescendantToCheck_id4cWf37B8oXJ = new SMethodBuilder<>(SNode.class).name("getDescendantToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611439L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
   public static final SMethod<List<? extends PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<>((Class<List<? extends PropertyReference>>) ((Class) Object.class)).name("getPropertiesToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611445L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
   public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<>(PropertyReference.class).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4844813484172611473L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
+  public static final SMethod<SEnumerationLiteral> getEffectiveCapitalizationStyle_idwDPNwOCZK_ = new SMethodBuilder<>(SEnumerationLiteral.class).name("getEffectiveCapitalizationStyle").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(588237862749862949L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
+  public static final SMethod<SEnumerationLiteral> getEffectiveNativeLanguage_idwDPNwOGqfU = new SMethodBuilder<>(SEnumerationLiteral.class).name("getEffectiveNativeLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(588237862750757882L).languageId(0xae28a40915b4d6ffL, 0xfe9d76d7580945c9L).build2();
 
-  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescendantsToCheck_id4cWf37B8oXl, getDescendantToCheck_id4cWf37B8oXJ, getPropertiesToCheck_id4cWf37B8oXP, getPropertyToCheck_id4cWf37B8oYh);
+  private final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescendantsToCheck_id4cWf37B8oXl, getDescendantToCheck_id4cWf37B8oXJ, getPropertiesToCheck_id4cWf37B8oXP, getPropertyToCheck_id4cWf37B8oYh, getEffectiveCapitalizationStyle_idwDPNwOCZK_, getEffectiveNativeLanguage_idwDPNwOGqfU);
 
 
   /*package*/ static List<SNode> getDescendantsToCheck_id4cWf37B8oXl(@NotNull SNode __thisNode__) {
@@ -51,6 +59,20 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static PropertyReference getPropertyToCheck_id4cWf37B8oYh(@NotNull SNode __thisNode__) {
     return null;
   }
+  /*package*/ static SEnumerationLiteral getEffectiveCapitalizationStyle_idwDPNwOCZK_(@NotNull SNode __thisNode__) {
+    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.capitalizationStyle$TMEQ), 0x829d73834a1ef38L))) {
+      return SPropertyOperations.getEnum(__thisNode__, PROPS.capitalizationStyle$TMEQ);
+    }
+    SNode influencer = ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ICheckedNamePolicy$7R, false)).where((it) -> !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.capitalizationStyle$TMEQ), 0x829d73834a1ef38L))).first();
+    return ((influencer != null) ? SPropertyOperations.getEnum(influencer, PROPS.capitalizationStyle$TMEQ) : SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x286c0523058e0321L, "jetbrains.mps.lang.checkedName.structure.CapitalizationStyle"), 0x30d8fe3f01ddba6bL, "None"));
+  }
+  /*package*/ static SEnumerationLiteral getEffectiveNativeLanguage_idwDPNwOGqfU(@NotNull SNode __thisNode__) {
+    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.capitalizationStyle$TMEQ), 0x829d73834a1ef38L))) {
+      return SPropertyOperations.getEnum(__thisNode__, PROPS.nativeLanguage$lRMr);
+    }
+    SNode influencer = ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ICheckedNamePolicy$7R, false)).where((it) -> !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.capitalizationStyle$TMEQ), 0x829d73834a1ef38L))).first();
+    return ((influencer != null) ? SPropertyOperations.getEnum(influencer, PROPS.nativeLanguage$lRMr) : SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x283b8ec534626bc5L, "jetbrains.mps.lang.checkedName.structure.NativeLanguage"), 0x283b8ec534712e16L, "Unspecified"));
+  }
 
   /*package*/ ICheckedNamePolicy__BehaviorDescriptor() {
   }
@@ -71,6 +93,10 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
         return (T) ((List<? extends PropertyReference>) getPropertiesToCheck_id4cWf37B8oXP(node));
       case 3:
         return (T) ((PropertyReference) getPropertyToCheck_id4cWf37B8oYh(node));
+      case 4:
+        return (T) ((SEnumerationLiteral) getEffectiveCapitalizationStyle_idwDPNwOCZK_(node));
+      case 5:
+        return (T) ((SEnumerationLiteral) getEffectiveNativeLanguage_idwDPNwOGqfU(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -98,5 +124,14 @@ public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty capitalizationStyle$TMEQ = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x286c0523058e045fL, "capitalizationStyle");
+    /*package*/ static final SProperty nativeLanguage$lRMr = MetaAdapterFactory.getProperty(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, 0x283b8ec53462d0ffL, "nativeLanguage");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ICheckedNamePolicy$7R = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
   }
 }

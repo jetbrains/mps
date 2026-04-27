@@ -17,10 +17,11 @@ public class EnumerationDescriptor_CapitalizationStyle extends EnumerationDescri
 
   private final EnumerationDescriptor.MemberDescriptor myMember_TitleCase_0 = new EnumerationDescriptor.MemberDescriptor("TitleCase", "Title case", 0x286c0523058e0322L, "r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/2912708706977055522");
   private final EnumerationDescriptor.MemberDescriptor myMember_SentenceCase_0 = new EnumerationDescriptor.MemberDescriptor("SentenceCase", "Sentence case", 0x286c0523058e03cbL, "r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/2912708706977055691");
+  private final EnumerationDescriptor.MemberDescriptor myMember_Inherited_0 = new EnumerationDescriptor.MemberDescriptor("Inherited", "Inherited", 0x829d73834a1ef38L, "r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/588237862749728568");
   private final EnumerationDescriptor.MemberDescriptor myMember_None_0 = new EnumerationDescriptor.MemberDescriptor("None", "None", 0x30d8fe3f01ddba6bL, "r:31be9f37-1a76-49a2-a444-bd006ff675c1(jetbrains.mps.lang.checkedName.structure)/3519842655357745771");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x286c0523058e0321L, 0x286c0523058e0322L, 0x286c0523058e03cbL, 0x30d8fe3f01ddba6bL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_TitleCase_0, myMember_SentenceCase_0, myMember_None_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x286c0523058e0321L, 0x286c0523058e0322L, 0x286c0523058e03cbL, 0x829d73834a1ef38L, 0x30d8fe3f01ddba6bL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList0(myIndex, myMember_TitleCase_0, myMember_SentenceCase_0, myMember_Inherited_0, myMember_None_0);
 
   @Nullable
   @Override
@@ -45,6 +46,8 @@ public class EnumerationDescriptor_CapitalizationStyle extends EnumerationDescri
         return myMember_TitleCase_0;
       case "SentenceCase":
         return myMember_SentenceCase_0;
+      case "Inherited":
+        return myMember_Inherited_0;
       case "None":
         return myMember_None_0;
     }
