@@ -21,6 +21,8 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
   </languages>
   <imports>
     <import index="4dtg" ref="r:6ff1dacd-2ea5-47a0-9336-2eaecdee8a37(jetbrains.mps.execution.languages.plugin)" />
@@ -121,10 +123,10 @@
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
     <import index="8rsk" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem.ex(MPS.IDEA/)" />
-    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
-    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
-    <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
-    <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
+    <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
+    <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" />
+    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -3719,10 +3721,14 @@
               <property role="TrG5h" value="name" />
               <property role="3TUv4t" value="false" />
               <node concept="17QB3L" id="5gyVhZ1886R" role="1tU5fm" />
-              <node concept="2OqwBi" id="5gyVhZ1886S" role="33vP2m">
-                <node concept="30xZXu" id="5gyVhZ1886T" role="2Oq$k0" />
-                <node concept="liA8E" id="5gyVhZ1886U" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
+              <node concept="2YIFZM" id="2Q5sSRzihwH" role="33vP2m">
+                <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String)" resolve="shortNameFromLongName" />
+                <node concept="2OqwBi" id="2Q5sSRziB76" role="37wK5m">
+                  <node concept="30xZXu" id="2Q5sSRziB79" role="2Oq$k0" />
+                  <node concept="liA8E" id="2Q5sSRziB7a" role="2OqNvi">
+                    <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -3977,12 +3983,16 @@
                       <node concept="Xl_RD" id="5gyVhZ1886d" role="3uHU7B">
                         <property role="Xl_RC" value="Tests in '" />
                       </node>
-                      <node concept="2OqwBi" id="3Gv2uL5KYI2" role="3uHU7w">
-                        <node concept="liA8E" id="i96O5YONnd" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModelName.getValue()" resolve="getValue" />
-                        </node>
-                        <node concept="37vLTw" id="3Gv2uL5KYxj" role="2Oq$k0">
-                          <ref role="3cqZAo" node="5gyVhZ18860" resolve="name" />
+                      <node concept="2YIFZM" id="2Q5sSRziQmw" role="3uHU7w">
+                        <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                        <ref role="37wK5l" to="18ew:~NameUtil.shortNameFromLongName(java.lang.String)" resolve="shortNameFromLongName" />
+                        <node concept="2OqwBi" id="2Q5sSRziQmx" role="37wK5m">
+                          <node concept="37vLTw" id="2Q5sSRziQm$" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5gyVhZ18860" resolve="name" />
+                          </node>
+                          <node concept="liA8E" id="2Q5sSRziQm_" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SModelName.getValue()" resolve="getValue" />
+                          </node>
                         </node>
                       </node>
                     </node>

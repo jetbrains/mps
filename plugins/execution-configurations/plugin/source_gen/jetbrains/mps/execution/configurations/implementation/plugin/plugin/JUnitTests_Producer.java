@@ -17,6 +17,7 @@ import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.actions.ConfigurationContext;
 import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -113,7 +114,7 @@ public final class JUnitTests_Producer {
     @Override
     protected JUnitTests_Configuration doCreateConfiguration(final SModule source) {
       setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
-      String name = source.getModuleName();
+      String name = NameUtil.shortNameFromLongName(source.getModuleName());
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "Tests in '" + name + "'", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODULE);
       configuration.getJUnitSettings().setModuleRef(source.getModuleReference().toString());
@@ -157,7 +158,7 @@ public final class JUnitTests_Producer {
     protected JUnitTests_Configuration doCreateConfiguration(final SModel source) {
       setSourceElement(MPSPsiElement.createFor(source, getMpsProject()));
       SModelName name = source.getName();
-      JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "Tests in '" + name.getValue() + "'", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "Tests in '" + NameUtil.shortNameFromLongName(name.getValue()) + "'", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODEL);
       configuration.getJUnitSettings().setModelRef(PersistenceRegistry.getInstance().asString(source.getReference()));
       configuration.getJUnitSettings().setModuleRef(source.getModule().getModuleReference().toString());
