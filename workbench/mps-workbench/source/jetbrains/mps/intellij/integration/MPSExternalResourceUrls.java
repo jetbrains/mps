@@ -24,7 +24,7 @@ public class MPSExternalResourceUrls extends BaseJetBrainsExternalProductResourc
 
   @Override
   public @Nullable Url getBaseWebHelpUrl() {
-    return getBaseWebSiteUrl().resolve("mps/webhelp/");
+    return getBaseWebSiteUrl().resolve("help/mps/");
   }
 
   @Override
