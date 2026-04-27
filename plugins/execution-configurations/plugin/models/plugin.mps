@@ -8342,19 +8342,14 @@
               <node concept="Xl_RD" id="4v0OxldvcIT" role="3uHU7w">
                 <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true\n" />
               </node>
-              <node concept="3cpWs3" id="2JQcTZRQfKV" role="3uHU7B">
-                <node concept="Xl_RD" id="2JQcTZRQeUa" role="3uHU7w">
-                  <property role="Xl_RC" value="-DjbScreenMenuBar.useStubItem=true\n" />
+              <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
+                <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
+                  <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
                 </node>
-                <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
-                  <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
-                    <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
-                  </node>
-                  <node concept="2OqwBi" id="20OjqTFAodj" role="3uHU7B">
-                    <node concept="2WthIp" id="20OjqTFAodm" role="2Oq$k0" />
-                    <node concept="2XshWL" id="20OjqTFAodo" role="2OqNvi">
-                      <ref role="2WH_rO" node="20OjqTF_cQ2" resolve="computeOpenedPackages" />
-                    </node>
+                <node concept="2OqwBi" id="20OjqTFAodj" role="3uHU7B">
+                  <node concept="2WthIp" id="20OjqTFAodm" role="2Oq$k0" />
+                  <node concept="2XshWL" id="20OjqTFAodo" role="2OqNvi">
+                    <ref role="2WH_rO" node="20OjqTF_cQ2" resolve="computeOpenedPackages" />
                   </node>
                 </node>
               </node>
