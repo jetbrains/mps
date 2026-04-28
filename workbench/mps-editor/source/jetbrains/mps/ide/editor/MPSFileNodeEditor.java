@@ -100,12 +100,20 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   @Override
   @Nullable
   public JComponent getPreferredFocusedComponent() {
-    JPanel panel = new JPanel(new BorderLayout());
-    JLabel label = new JLabel("Loading...");
+    if (isDisposed()) {
+      return null;
+    }
+    if (myNodeEditor != null) {
+      return (JComponent) myNodeEditor.getCurrentEditorComponent();
+    }
+    if (myComponent.getComponentCount() == 1 && myComponent.getComponent(0) instanceof JLabel) {
+      return (JLabel) myComponent.getComponent(0);
+    }
+    JLabel label = new JLabel("Loading...", JLabel.CENTER);
     final Font font = label.getFont();
-    label.setFont(new Font(font.getName(), font.getStyle(), font.getSize() * 2)); // double size for better visibility
-    panel.add(label, BorderLayout.CENTER);
-    return isDisposed() ? null : (myNodeEditor == null ? panel : (JComponent) myNodeEditor.getCurrentEditorComponent());
+    label.setFont(font.deriveFont(font.getSize() * 2f)); // double size for better visibility
+    myComponent.add(label, BorderLayout.CENTER);
+    return label;
   }
 
   @Override
