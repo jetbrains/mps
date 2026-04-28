@@ -172,6 +172,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("extended", 0x479eb1f896fa444L).target(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L).optional(true).ordered(true).multiple(false).origin("322547369016009796").done();
     b.aggregate("implements", 0x21a3c1a0d8708ce4L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL).optional(true).ordered(true).multiple(true).origin("2423993921025641700").done();
     b.aggregate("method", 0x14d112552c72cf04L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL).optional(true).ordered(true).multiple(true).origin("1500000307918327556").specialize(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL).done();
+    b.aggregate("tupleMethod", 0x3695db631be34431L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL).optional(true).ordered(true).multiple(true).origin("3831964615739862584").specialize(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L).done();
     b.alias("Tuple");
     return b.create();
   }

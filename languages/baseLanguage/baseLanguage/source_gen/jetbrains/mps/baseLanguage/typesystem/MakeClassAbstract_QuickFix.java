@@ -5,8 +5,8 @@ package jetbrains.mps.baseLanguage.typesystem;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -16,7 +16,15 @@ public class MakeClassAbstract_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4271705194752231378"));
   }
   public String getDescription(SNode node) {
-    return "Make " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK), PROPS.name$MnvL) + " abstract";
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
+      return "Make " + SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.ClassConcept$bK), PROPS.name$MnvL) + " abstract";
+    } else {
+      return "N/A";
+    }
+  }
+  @Override
+  public boolean isApplicable(SNode node) {
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK);
   }
   public void execute(SNode node) {
     SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X, true);

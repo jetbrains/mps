@@ -1961,6 +1961,37 @@
       <ref role="13i0hy" to="tpek:65_8Gi2s6iV" resolve="enumerateMembers" />
       <node concept="3Tm1VV" id="9QjKR7khio" role="1B3o_S" />
       <node concept="3clFbS" id="9QjKR7khir" role="3clF47">
+        <node concept="1DcWWT" id="3u1tLm1ugLA" role="3cqZAp">
+          <node concept="2OqwBi" id="3u1tLm1ugLB" role="1DdaDG">
+            <node concept="13iPFW" id="3u1tLm1ugLC" role="2Oq$k0" />
+            <node concept="3Tsc0h" id="3u1tLm1ugLD" role="2OqNvi">
+              <ref role="3TtcxE" to="cx9y:3kHRSfL2ASS" resolve="tupleMethod" />
+            </node>
+          </node>
+          <node concept="3cpWsn" id="3u1tLm1ugLE" role="1Duv9x">
+            <property role="TrG5h" value="method" />
+            <property role="3TUv4t" value="false" />
+            <node concept="3Tqbb2" id="3u1tLm1ugLF" role="1tU5fm">
+              <ref role="ehGHo" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3u1tLm1ugLG" role="2LFqv$">
+            <node concept="3clFbF" id="3u1tLm1ugLH" role="3cqZAp">
+              <node concept="2OqwBi" id="3u1tLm1ugLI" role="3clFbG">
+                <node concept="37vLTw" id="3u1tLm1ugLJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="9QjKR7khis" resolve="visitor" />
+                </node>
+                <node concept="liA8E" id="3u1tLm1ugLK" role="2OqNvi">
+                  <ref role="37wK5l" to="fnmy:65_8Gi2vkw5" resolve="visitClassifierMember" />
+                  <node concept="37vLTw" id="3u1tLm1ugLL" role="37wK5m">
+                    <ref role="3cqZAo" node="3u1tLm1ugLE" resolve="method" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3u1tLm1ubNI" role="3cqZAp" />
         <node concept="1DcWWT" id="9QjKR7kov1" role="3cqZAp">
           <node concept="2OqwBi" id="9QjKR7kov2" role="1DdaDG">
             <node concept="13iPFW" id="9QjKR7kov3" role="2Oq$k0" />

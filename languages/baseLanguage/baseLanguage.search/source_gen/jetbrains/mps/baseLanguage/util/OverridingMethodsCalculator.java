@@ -17,9 +17,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.search.VisibilityUtil;
 import java.util.LinkedHashSet;
@@ -108,6 +108,17 @@ public final class OverridingMethodsCalculator {
       }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
         public void invoke(SNode intfc) {
           collectOverridingMethods(classifier, intfc, nameToMethodsMap, visitedClassifiers);
+        }
+      });
+    } else {
+      List<SNode> extendedClassifierTypes = ((List<SNode>) BHReflection.invoke0(classifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getExtendedClassifierTypes", 2201875424516179426L, 0x5745e3015c8914d3L)));
+      ListSequence.fromList(extendedClassifierTypes).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+        public Boolean invoke(SNode extendedClType) {
+          return SLinkOperations.getTarget(extendedClType, LINKS.classifier$cxMr) != null && addIfNotContains(visitedClassifiers, SLinkOperations.getTarget(extendedClType, LINKS.classifier$cxMr));
+        }
+      }).visitAll(new _FunctionTypes._void_P1_E0<SNode>() {
+        public void invoke(SNode extendedClType) {
+          collectOverridingMethods(classifier, SLinkOperations.getTarget(extendedClType, LINKS.classifier$cxMr), nameToMethodsMap, visitedClassifiers);
         }
       });
     }
@@ -211,8 +222,8 @@ public final class OverridingMethodsCalculator {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
     /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }

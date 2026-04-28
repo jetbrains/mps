@@ -79,7 +79,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_NamedTupleComponentReference;
       case LanguageConceptSwitch.NamedTupleDeclaration:
         if (props_NamedTupleDeclaration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L);
+          cpb.deprecateAggregation(0x14d112552c72cf04L, "method");
           cpb.shortDesc("Named tuple declaration");
           cpb.presentationByName();
           cpb.icon(IconContainer.RESOURCE_0);

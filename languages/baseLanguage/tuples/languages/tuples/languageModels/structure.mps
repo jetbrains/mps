@@ -53,6 +53,10 @@
         <reference id="1071599698500" name="specializedLink" index="20ksaX" />
         <reference id="1071599976176" name="target" index="20lvS9" />
       </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -163,6 +167,15 @@
       <property role="IQ2ns" value="1500000307918327556" />
       <ref role="20lvS9" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
       <ref role="20ksaX" to="tpee:g7MN44b" resolve="method" />
+      <node concept="asaX9" id="3kHRSfL2ASR" role="lGtFl" />
+    </node>
+    <node concept="1TJgyj" id="3kHRSfL2ASS" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="tupleMethod" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="3933291068294120497" />
+      <ref role="20lvS9" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+      <ref role="20ksaX" to="tpee:4EqhHTp4Mw3" resolve="member" />
     </node>
     <node concept="PrWs8" id="51HoQikMfPS" role="PzmwI">
       <ref role="PrY4T" to="tpee:hOIEacT" resolve="IBLDeprecatable" />

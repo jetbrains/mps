@@ -4874,6 +4874,26 @@
           </node>
         </node>
       </node>
+      <node concept="3clFb_" id="3u1tLm1uUV4" role="jymVt">
+        <property role="TrG5h" value="bar" />
+        <node concept="3clFbS" id="3u1tLm1uUV7" role="3clF47" />
+        <node concept="3Tm1VV" id="3u1tLm1uTty" role="1B3o_S" />
+        <node concept="3cqZAl" id="3u1tLm1uUKe" role="3clF45" />
+        <node concept="2b32R4" id="3u1tLm1uWjA" role="lGtFl">
+          <node concept="3JmXsc" id="3u1tLm1uWjD" role="2P8S$">
+            <node concept="3clFbS" id="3u1tLm1uWjE" role="2VODD2">
+              <node concept="3clFbF" id="3u1tLm1uWjK" role="3cqZAp">
+                <node concept="2OqwBi" id="3u1tLm1uWjF" role="3clFbG">
+                  <node concept="3Tsc0h" id="3u1tLm1uWjI" role="2OqNvi">
+                    <ref role="3TtcxE" to="cx9y:3kHRSfL2ASS" resolve="tupleMethod" />
+                  </node>
+                  <node concept="30H73N" id="3u1tLm1uWjJ" role="2Oq$k0" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="i2_3DiV">
@@ -7021,6 +7041,26 @@
           <ref role="2B6OnR" to="wyt6:~SuppressWarnings.value()" resolve="value" />
           <node concept="Xl_RD" id="51HoQikNum5" role="2B70Vg">
             <property role="Xl_RC" value="dummy" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFb_" id="3u1tLm1vLqU" role="jymVt">
+        <property role="TrG5h" value="bar" />
+        <node concept="3clFbS" id="3u1tLm1vLqX" role="3clF47" />
+        <node concept="3Tm1VV" id="3u1tLm1vt8v" role="1B3o_S" />
+        <node concept="3cqZAl" id="3u1tLm1vJUf" role="3clF45" />
+        <node concept="2b32R4" id="3u1tLm1vXR9" role="lGtFl">
+          <node concept="3JmXsc" id="3u1tLm1vXRc" role="2P8S$">
+            <node concept="3clFbS" id="3u1tLm1vXRd" role="2VODD2">
+              <node concept="3clFbF" id="3u1tLm1vXRj" role="3cqZAp">
+                <node concept="2OqwBi" id="3u1tLm1vXRe" role="3clFbG">
+                  <node concept="3Tsc0h" id="3u1tLm1vXRh" role="2OqNvi">
+                    <ref role="3TtcxE" to="cx9y:3kHRSfL2ASS" resolve="tupleMethod" />
+                  </node>
+                  <node concept="30H73N" id="3u1tLm1vXRi" role="2Oq$k0" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>

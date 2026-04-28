@@ -21797,27 +21797,38 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/4271705194752231378">
     <file name="MakeClassAbstract_QuickFix.java">
       <node id="4271705194752231378" at="15,39,16,132" concept="18" />
-      <node id="4271705194752316414" at="18,44,19,136" concept="13" />
-      <node id="4271705194752392579" at="21,35,22,114" concept="6" />
-      <node id="4271705194752231378" at="26,0,27,0" concept="16" trace="ClassConcept$bK" />
-      <node id="4271705194752231378" at="30,0,31,0" concept="16" trace="name$MnvL" />
-      <node id="4271705194752231378" at="31,0,32,0" concept="16" trace="abstractClass$Ta1X" />
+      <node id="3999608878336269071" at="19,71,20,136" concept="13" />
+      <node id="3999608878336271636" at="21,12,22,19" concept="13" />
+      <node id="3999608878333601655" at="26,43,27,72" concept="13" />
+      <node id="4271705194752392579" at="29,35,30,114" concept="6" />
+      <node id="4271705194752231378" at="34,0,35,0" concept="16" trace="ClassConcept$bK" />
+      <node id="4271705194752231378" at="38,0,39,0" concept="16" trace="name$MnvL" />
+      <node id="4271705194752231378" at="39,0,40,0" concept="16" trace="abstractClass$Ta1X" />
+      <node id="3999608878336269180" at="21,10,23,5" concept="1" />
       <node id="4271705194752231378" at="15,0,18,0" concept="3" trace="MakeClassAbstract_QuickFix#()V" />
-      <node id="4271705194752231378" at="18,0,21,0" concept="11" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="4271705194752231378" at="21,0,24,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="4271705194752231378" at="29,0,32,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="4271705194752231378" at="25,0,29,0" concept="11" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="3999608878336264819" at="18,44,23,5" concept="10" />
+      <node id="4271705194752231378" at="18,0,25,0" concept="11" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <scope id="4271705194752231378" at="15,39,16,132" />
-      <scope id="4271705194752267215" at="18,44,19,136" />
-      <scope id="4271705194752231731" at="21,35,22,114" />
+      <scope id="3999608878336264821" at="19,71,20,136" />
+      <scope id="3999608878336269181" at="21,12,22,19" />
+      <scope id="3999608878333594829" at="26,43,27,72" />
+      <scope id="4271705194752231731" at="29,35,30,114" />
       <scope id="4271705194752231378" at="15,0,18,0" />
-      <scope id="4271705194752231378" at="18,0,21,0">
+      <scope id="4271705194752231378" at="29,0,32,0">
         <var name="node" id="4271705194752231378" />
       </scope>
-      <scope id="4271705194752231378" at="21,0,24,0">
+      <scope id="4271705194752231378" at="25,0,29,0">
         <var name="node" id="4271705194752231378" />
       </scope>
-      <unit id="4271705194752231378" at="25,0,28,0" name="jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix$CONCEPTS" />
-      <unit id="4271705194752231378" at="29,0,33,0" name="jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix$PROPS" />
-      <unit id="4271705194752231378" at="14,0,34,0" name="jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix" />
+      <scope id="4271705194752267215" at="18,44,23,5" />
+      <scope id="4271705194752231378" at="18,0,25,0">
+        <var name="node" id="4271705194752231378" />
+      </scope>
+      <unit id="4271705194752231378" at="33,0,36,0" name="jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix$CONCEPTS" />
+      <unit id="4271705194752231378" at="37,0,41,0" name="jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix$PROPS" />
+      <unit id="4271705194752231378" at="14,0,42,0" name="jetbrains.mps.baseLanguage.typesystem.MakeClassAbstract_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/4276006055364077538">
