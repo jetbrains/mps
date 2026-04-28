@@ -251,7 +251,6 @@
         "-Didea.executables=mps",
         "-Dpty4j.preferred.native.folder=$IDE_HOME/lib/pty4j",
         "-DjbScreenMenuBar.enabled=true",
-        "-DjbScreenMenuBar.useStubItem=true",
         "-Dcache.dir.macro.test=$IDE_CACHE_DIR",
         "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$"
       ],
