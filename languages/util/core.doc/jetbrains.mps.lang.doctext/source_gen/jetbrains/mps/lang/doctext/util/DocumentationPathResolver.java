@@ -68,13 +68,32 @@ public class DocumentationPathResolver {
   }
 
   public static String getDocPath(SNode node, TemplateQueryContext genContext) {
-    String docLocation = DocumentationPathResolver.getDocumentationLocation(node, genContext);
-    if (docLocation == null) {
+    if (!(DocumentationPathResolver.docExists(node, genContext))) {
       return null;
     }
-    String modulePath = DocumentationPathResolver.getModulePath(node, genContext);
-    String fileName = DocumentationPathResolver.getDocFileNameWithExtension(node);
-    return docLocation + "/" + modulePath + "/" + fileName;
+    String targetModulePath = DocumentationPathResolver.getModulePath(node, genContext);
+    String targetFileName = DocumentationPathResolver.getDocFileNameWithExtension(node);
+    SNode sourceNode = genContext.getOriginalCopiedInputNode(node);
+    String sourceModulePath = DocumentationPathResolver.getModulePath(sourceNode, genContext);
+    return DocumentationPathResolver.computeRelativePath(sourceModulePath, targetModulePath, targetFileName);
+  }
+
+  private static String computeRelativePath(String fromDir, String toDir, String toFile) {
+    String[] from = fromDir.split("/");
+    String[] to = toDir.split("/");
+    int common = 0;
+    while (common < from.length && common < to.length && from[common].equals(to[common])) {
+      common++;
+    }
+    StringBuilder rel = new StringBuilder();
+    for (int i = common; i < from.length; i++) {
+      rel.append("../");
+    }
+    for (int i = common; i < to.length; i++) {
+      rel.append(to[i]).append("/");
+    }
+    rel.append(toFile);
+    return rel.toString();
   }
 
   public static boolean docExists(SNode node, TemplateQueryContext genContext) {
