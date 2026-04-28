@@ -43,6 +43,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -76,7 +77,13 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   }
 
   @Nullable
-  public MPSNodeVirtualFile getFile() {
+  public VirtualFile getFile() {
+    return myFile;
+  }
+
+  @Nullable
+  @Internal
+  public MPSNodeVirtualFile internalGetFile() {
     return myFile;
   }
 
@@ -212,12 +219,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   @Override
   @Nullable
   public BackgroundEditorHighlighter getBackgroundHighlighter() {
-    return null;
-  }
-
-  @Override
-  @Nullable
-  public FileEditorLocation getCurrentLocation() {
+    // XXX left as a reminder to question myself why we don't use this IDEA's facility for highlighting.
     return null;
   }
 
@@ -294,7 +296,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   }
 
   @Override
-  public Document[] getDocuments() {
+  public Document @NotNull [] getDocuments() {
     if (!isDisposed() && myNodeEditor != null) {
       List<Document> result = ((BaseNodeEditor) myNodeEditor).getAllEditedDocuments();
       return result.toArray(new Document[0]);

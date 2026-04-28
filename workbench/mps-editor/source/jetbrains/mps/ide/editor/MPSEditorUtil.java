@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,16 +60,15 @@ public final class MPSEditorUtil {
     List<NodeEditorState> res = new ArrayList<>();
     FileEditor[] editors = FileEditorManager.getInstance(project).getAllEditors();
     for (FileEditor editor : editors) {
-      if (editor instanceof MPSFileNodeEditor) {
-        MPSFileNodeEditor mpsEditor = (MPSFileNodeEditor) editor;
+      if (editor instanceof MPSFileNodeEditor mpsEditor) {
         Editor nodeEditor = mpsEditor.getNodeEditor();
-        if (nodeEditor != null) {
+        if (nodeEditor != null && mpsEditor.internalGetFile() != null) {
           EditorComponent editorComponent = nodeEditor.getCurrentEditorComponent();
           if (editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
             jetbrains.mps.nodeEditor.EditorComponent ec = (jetbrains.mps.nodeEditor.EditorComponent) editorComponent;
             Set<EditorCell> errorCells = ec.getCellTracker().getErrorCells();
             if (!errorCells.isEmpty()) {
-              res.add(new NodeEditorState(mpsEditor.getFile(), editorComponent));
+              res.add(new NodeEditorState(mpsEditor.internalGetFile(), editorComponent));
             }
           }
         }

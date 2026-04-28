@@ -137,7 +137,7 @@ public class MPSEditorWarningsManager implements Disposable {
       styleRegistry = editorComponent.getStyleRegistry();
     } else {
       // Why do we care about warnings in an editor that didn't get EC? What kind of editor is it?
-      MPSNodeVirtualFile file = editor.getFile();
+      MPSNodeVirtualFile file = editor.internalGetFile();
       node = file != null && file.isValid() ? file.getNode() : null;
       styleRegistry = myProject.getComponent(StyleRegistry.class);
     }
@@ -170,8 +170,7 @@ public class MPSEditorWarningsManager implements Disposable {
     }
 
     for (FileEditor editor : FileEditorManager.getInstance(myProject.getProject()).getAllEditors()) {
-      if (editor instanceof MPSFileNodeEditor) {
-        MPSFileNodeEditor mpsEditor = (MPSFileNodeEditor) editor;
+      if (editor instanceof MPSFileNodeEditor mpsEditor) {
         if (!mpsEditor.isDisposed()) {
           if (vf == null || vf.equals(mpsEditor.getFile())) {
             updateWarnings(mpsEditor);

@@ -8,6 +8,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.MPSProject;
@@ -81,7 +82,7 @@ public final class EditorTrackService {
   private class RefreshEditors implements ModuleDeploymentListener {
     @Override
     public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
-      final List<MPSNodeVirtualFile> files = myEditors.stream().map(MPSFileNodeEditor::getFile).toList();
+      final List<VirtualFile> files = myEditors.stream().map(MPSFileNodeEditor::getFile).toList();
       if (files.isEmpty()) {
         return;
       }
