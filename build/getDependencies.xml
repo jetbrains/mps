@@ -272,11 +272,9 @@
     </antcall>
   </target>
 
-  <target name="download-ivy" description="Download platform based on IDEA Community from TeamCity">
-    <get src="https://teamcity.jetbrains.com/guestAuth/repository/download/MPS_20261_Distribution_Platform/${mps.platform.build}/mps-platform.zip"
-         dest="${basedir}/../mps-platform.zip"
-         usetimestamp="true"
-         verbose="true"/>
+  <target name="download-ivy" depends="install-ivy" description="Download platform based on IDEA Community from TeamCity">
+    <ivy:resolve file="ivy.xml" showprogress="true"/>
+    <ivy:retrieve pattern="${basedir}/../[artifact].[ext]" overwritemode="different"/>
   </target>
 
   <target name="unzip-platform" description="Unpacks mps-platform.zip">
