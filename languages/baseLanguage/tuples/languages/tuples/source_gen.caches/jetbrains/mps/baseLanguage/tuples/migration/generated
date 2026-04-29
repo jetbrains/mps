@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="6d5112kwq10pwkxon430hollmpx8huz">
+  <files names="MigrationDescriptor.java:MoveNamedTupleMethodsToMember.java" />
+</product>
+

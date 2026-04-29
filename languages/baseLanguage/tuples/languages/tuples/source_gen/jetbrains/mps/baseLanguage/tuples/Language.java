@@ -14,6 +14,8 @@ import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.baseLanguage.tuples.editor.EditorAspectDescriptorImpl;
+import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
+import jetbrains.mps.baseLanguage.tuples.migration.MigrationDescriptor;
 import jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor;
 import jetbrains.mps.baseLanguage.tuples.scripts.ScriptsDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
@@ -40,7 +42,7 @@ public class Language extends LanguageRuntime {
 
   @Override
   public int getVersion() {
-    return 0;
+    return 1;
   }
 
   public SLanguageId getId() {
@@ -65,6 +67,9 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
+    }
+    if (aspectClass == MigrationAspectDescriptor.class) {
+      return aspectClass.cast(new MigrationDescriptor());
     }
     if (aspectClass == ScriptAspectDescriptor.class) {
       return aspectClass.cast(new ScriptsDescriptor());

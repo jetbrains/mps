@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <root>
+    <file name="MigrationDescriptor.java">
+      <unit at="11,0,17,0" name="jetbrains.mps.baseLanguage.tuples.migration.MigrationDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:0e8191fc-ea6a-4252-a69b-bcb9a52d6840(jetbrains.mps.baseLanguage.tuples.migration)/1847433766740831716">
+    <file name="MoveNamedTupleMethodsToMember.java">
+      <node id="1847433766740831716" at="28,0,29,0" concept="2" trace="description" />
+      <node id="1847433766740831716" at="29,30,30,23" concept="5" />
+      <node id="1847433766740831716" at="33,33,34,16" concept="5" />
+      <node id="1847433766740831716" at="36,41,37,17" concept="1" />
+      <node id="1847433766740831716" at="37,17,38,16" concept="5" />
+      <node id="1847433766740845716" at="41,5,42,64" concept="4" />
+      <node id="1847433766740845716" at="42,64,43,90" concept="4" />
+      <node id="1847433766740845716" at="43,90,44,69" concept="4" />
+      <node id="1847433766740847408" at="44,69,45,644" concept="1" />
+      <node id="4147037235115641619" at="49,45,50,83" concept="4" />
+      <node id="1847433766741213292" at="51,5,52,64" concept="4" />
+      <node id="1847433766741213292" at="52,64,53,90" concept="4" />
+      <node id="1847433766741213292" at="53,90,54,69" concept="4" />
+      <node id="4147037235115710932" at="60,42,61,72" concept="5" />
+      <node id="1847433766741257812" at="67,5,68,20" concept="5" />
+      <node id="1847433766741212589" at="68,20,69,0" concept="6" />
+      <node id="1847433766740831716" at="71,50,72,154" concept="5" />
+      <node id="1847433766740831716" at="76,0,77,0" concept="7" trace="NamedTupleDeclaration$aM" />
+      <node id="1847433766740831716" at="80,0,81,0" concept="7" trace="method$_DCK" />
+      <node id="1847433766740831716" at="81,0,82,0" concept="7" trace="member$L_2d" />
+      <node id="1847433766740831716" at="29,0,32,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
+      <node id="1847433766740831716" at="71,0,74,0" concept="3" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="1847433766740831716" at="32,0,36,0" concept="3" trace="isRerunnable#()Z" />
+      <node id="1847433766740831716" at="36,0,40,0" concept="3" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4147037235115710928" at="59,0,63,0" concept="3" trace="getMessage#()Ljava/lang/String;" />
+      <node id="1847433766740845716" at="40,42,46,5" concept="0" />
+      <node id="1847433766741223666" at="57,109,63,15" concept="1" />
+      <node id="1847433766740831716" at="40,0,48,0" concept="3" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="1847433766741213323" at="56,329,64,13" concept="1" />
+      <node id="1847433766741213300" at="55,116,65,11" concept="1" />
+      <node id="1847433766741213294" at="54,69,66,9" concept="1" />
+      <node id="1847433766741213292" at="50,83,67,5" concept="0" />
+      <node id="1847433766740831716" at="48,0,71,0" concept="3" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
+      <scope id="1847433766740831716" at="29,30,30,23" />
+      <scope id="1847433766740831716" at="33,33,34,16" />
+      <scope id="4147037235115710931" at="60,42,61,72" />
+      <scope id="1847433766740831716" at="71,50,72,154" />
+      <scope id="1847433766740831716" at="36,41,38,16" />
+      <scope id="1847433766740831716" at="29,0,32,0" />
+      <scope id="1847433766740831716" at="71,0,74,0" />
+      <scope id="1847433766740831716" at="32,0,36,0" />
+      <scope id="1847433766740831716" at="36,0,40,0">
+        <var name="m" id="1847433766740831716" />
+      </scope>
+      <scope id="1847433766740845716" at="41,5,45,644">
+        <var name="context" id="1847433766740845716" />
+        <var name="scope_u4tw4j_a0e" id="1847433766740845716" />
+        <var name="scope_u4tw4j_a0e_0" id="1847433766740845716" />
+      </scope>
+      <scope id="4147037235115710928" at="59,0,63,0" />
+      <scope id="1847433766740831716" at="40,42,46,5" />
+      <scope id="1847433766741213330" at="57,109,63,15" />
+      <scope id="1847433766740831716" at="40,0,48,0">
+        <var name="m" id="1847433766740831716" />
+      </scope>
+      <scope id="1847433766741213322" at="56,329,64,13" />
+      <scope id="1847433766741213299" at="55,116,65,11" />
+      <scope id="1847433766741213292" at="51,5,66,9">
+        <var name="context" id="1847433766741213292" />
+        <var name="scope_u4tw4j_b0f" id="1847433766741213292" />
+        <var name="scope_u4tw4j_b0f_0" id="1847433766741213292" />
+      </scope>
+      <scope id="1847433766740831716" at="49,45,69,0">
+        <var name="problems" id="4147037235115641620" />
+      </scope>
+      <scope id="1847433766740831716" at="48,0,71,0">
+        <var name="m" id="1847433766740831716" />
+      </scope>
+      <unit id="1847433766740831716" at="75,0,78,0" name="jetbrains.mps.baseLanguage.tuples.migration.MoveNamedTupleMethodsToMember$CONCEPTS" />
+      <unit id="1847433766740831716" at="79,0,83,0" name="jetbrains.mps.baseLanguage.tuples.migration.MoveNamedTupleMethodsToMember$LINKS" />
+      <unit id="4147037235115710925" at="58,59,63,13" name="jetbrains.mps.baseLanguage.tuples.migration.MoveNamedTupleMethodsToMember$1" />
+      <unit id="1847433766740831716" at="27,0,84,0" name="jetbrains.mps.baseLanguage.tuples.migration.MoveNamedTupleMethodsToMember" />
+    </file>
+  </root>
+</debug-info>
+
