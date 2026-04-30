@@ -88,6 +88,10 @@
     <copy todir="${build.layout}/plugins/markdown">
       <fileset dir="${basedir}/plugins/markdown" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/mcpserver" />
+    <copy todir="${build.layout}/plugins/mcpserver">
+      <fileset dir="${basedir}/plugins/mcpserver" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/properties" />
     <copy todir="${build.layout}/plugins/properties">
       <fileset dir="${basedir}/plugins/properties" />

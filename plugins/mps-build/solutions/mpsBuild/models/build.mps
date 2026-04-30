@@ -53025,6 +53025,23 @@
             </node>
           </node>
         </node>
+        <node concept="398223" id="60$pVR6LX7D" role="39821P">
+          <node concept="3_J27D" id="60$pVR6LX7E" role="Nbhlr">
+            <node concept="3Mxwew" id="60$pVR6LX7F" role="3MwsjC">
+              <property role="3MwjfP" value="mcpserver" />
+            </node>
+          </node>
+          <node concept="2HvfSZ" id="60$pVR6LX7G" role="39821P">
+            <node concept="55IIr" id="60$pVR6LX7H" role="2HvfZ0">
+              <node concept="2Ry0Ak" id="60$pVR6LX7I" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="60$pVR6LX7K" role="2Ry0An">
+                  <property role="2Ry0Am" value="mcpserver" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="398223" id="_VJVSUXfS4" role="39821P">
           <node concept="3_J27D" id="_VJVSUXfS5" role="Nbhlr">
             <node concept="3Mxwew" id="_VJVSUXfS6" role="3MwsjC">
