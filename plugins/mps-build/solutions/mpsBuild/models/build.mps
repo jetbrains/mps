@@ -756,6 +756,13 @@
           </node>
         </node>
       </node>
+      <node concept="25yagZ" id="1iagKMSsYud" role="PiKyV">
+        <node concept="3yqu4x" id="1iagKMSsYue" role="25yagT">
+          <node concept="3yrxFa" id="1iagKMSsYuf" role="3yqu4I">
+            <ref role="3yrxFb" node="1iagKMSsYKG" />
+          </node>
+        </node>
+      </node>
       <node concept="25yagZ" id="78mif4ORepr" role="PiKyV">
         <node concept="3yqu4x" id="78mif4OReps" role="25yagT">
           <node concept="3yrxFa" id="78mif4ORept" role="3yqu4I">
@@ -31659,6 +31666,13 @@
         <node concept="3_J27D" id="1pMJYkTww1E" role="13uQ07">
           <node concept="3Mxwew" id="1pMJYkTww1F" role="3MwsjC">
             <property role="3MwjfP" value="intellij.platform.diff.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="1iagKMSsYKG" role="39821P">
+        <node concept="3_J27D" id="1iagKMSsYKI" role="13uQ07">
+          <node concept="3Mxwew" id="1iagKMSsYKK" role="3MwsjC">
+            <property role="3MwjfP" value="intellij.platform.diff.impl.jar" />
           </node>
         </node>
       </node>
