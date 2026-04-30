@@ -43,6 +43,7 @@
   
   <path id="path.java.library.spellchecker">
     <fileset file="${artifacts.IDEA}/lib/intellij.spellchecker.jar" />
+    <fileset file="${artifacts.IDEA}/lib/intellij.spellchecker.xml.jar" />
   </path>
   
   <path id="path.mps.ant.path">
@@ -1135,6 +1136,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1226,6 +1228,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1324,6 +1327,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1426,6 +1430,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1518,6 +1523,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1617,6 +1623,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1718,6 +1725,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1827,6 +1835,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -1928,6 +1937,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -2021,6 +2031,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -2113,6 +2124,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -2225,6 +2237,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -2346,6 +2359,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
@@ -2462,6 +2476,7 @@
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.IDEA}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.IDEA}/lib/intellij.platform.ide.impl.jar" />
