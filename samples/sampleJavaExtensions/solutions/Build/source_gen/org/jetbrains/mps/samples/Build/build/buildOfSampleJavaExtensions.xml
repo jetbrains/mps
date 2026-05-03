@@ -871,6 +871,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -969,6 +970,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -1061,6 +1063,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -1159,6 +1162,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -1246,6 +1250,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -1339,6 +1344,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -1433,6 +1439,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
@@ -1532,6 +1539,7 @@
         <fileset file="${artifacts.mps}/lib/intellij.platform.core.ui.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.debugger.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.diff.jar" />
+        <fileset file="${artifacts.mps}/lib/intellij.platform.diff.impl.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.core.jar" />
         <fileset file="${artifacts.mps}/lib/intellij.platform.ide.impl.jar" />
