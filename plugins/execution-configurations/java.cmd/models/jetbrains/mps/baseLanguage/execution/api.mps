@@ -7,7 +7,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
-    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
+    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="1" />
     <use id="fbc14279-5e2a-4c87-a5d1-5f7061e6c456" name="jetbrains.mps.debugger.api.lang" version="-1" />
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="-1" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
@@ -294,7 +294,6 @@
       </concept>
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
-        <child id="1107880067339" name="method" index="3MN40a" />
       </concept>
       <concept id="7812454656619025416" name="jetbrains.mps.baseLanguage.structure.MethodDeclaration" flags="ng" index="1rXfSm">
         <property id="8355037393041754995" name="isNative" index="2aFKle" />
@@ -2938,7 +2937,39 @@
   </node>
   <node concept="2fD8I5" id="14R2qyOCsUf">
     <property role="TrG5h" value="JavaRunParameters" />
-    <node concept="3clFb_" id="14R2qyOCsUg" role="3MN40a">
+    <node concept="2lGYhJ" id="14R2qyOCsWC" role="2pHZQ9">
+      <property role="3dDGau" value="false" />
+      <property role="TrG5h" value="programParameters" />
+      <node concept="17QB3L" id="14R2qyOCsWD" role="2lK19J" />
+    </node>
+    <node concept="2lGYhJ" id="14R2qyOCsWE" role="2pHZQ9">
+      <property role="3dDGau" value="false" />
+      <property role="TrG5h" value="vmOptions" />
+      <node concept="17QB3L" id="14R2qyOCsWF" role="2lK19J" />
+    </node>
+    <node concept="2lGYhJ" id="14R2qyOCsWG" role="2pHZQ9">
+      <property role="3dDGau" value="false" />
+      <property role="TrG5h" value="jrePath" />
+      <node concept="17QB3L" id="14R2qyOCsWH" role="2lK19J" />
+    </node>
+    <node concept="2lGYhJ" id="14R2qyOCsWI" role="2pHZQ9">
+      <property role="3dDGau" value="false" />
+      <property role="TrG5h" value="workingDirectory" />
+      <node concept="17QB3L" id="14R2qyOCsWJ" role="2lK19J" />
+    </node>
+    <node concept="2lGYhJ" id="14R2qyOCsWK" role="2pHZQ9">
+      <property role="3dDGau" value="false" />
+      <property role="TrG5h" value="useAlternativeJre" />
+      <node concept="10P_77" id="14R2qyOCsWL" role="2lK19J" />
+    </node>
+    <node concept="3Tm1VV" id="14R2qyOCsWM" role="1B3o_S" />
+    <node concept="3uibUv" id="14R2qyOCsWN" role="3TOOP4">
+      <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
+      <node concept="3uibUv" id="1htmYMkoGx1" role="11_B2D">
+        <ref role="3uigEE" node="14R2qyOCsUf" resolve="JavaRunParameters" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="14R2qyOCsUg" role="jymVt">
       <property role="TrG5h" value="clone" />
       <node concept="2pR195" id="14R2qyOCsUh" role="3clF45">
         <ref role="3uigEE" node="14R2qyOCsUf" resolve="JavaRunParameters" />
@@ -2997,7 +3028,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="1htmYMkqUri" role="3MN40a">
+    <node concept="3clFb_" id="1htmYMkqUri" role="jymVt">
       <property role="TrG5h" value="copy" />
       <node concept="3uibUv" id="1htmYMkqUQ8" role="3clF45">
         <ref role="3uigEE" node="14R2qyOCsUf" resolve="JavaRunParameters" />
@@ -3059,7 +3090,7 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsUE" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsUE" role="jymVt">
       <property role="TrG5h" value="getAlternativeJre" />
       <node concept="17QB3L" id="14R2qyOCsUF" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsUG" role="1B3o_S" />
@@ -3090,7 +3121,7 @@
         <ref role="2AI5Lk" to="mhfm:~Nls" resolve="Nls" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsUU" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsUU" role="jymVt">
       <property role="TrG5h" value="setJrePath" />
       <node concept="3cqZAl" id="14R2qyOCsUV" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsUW" role="1B3o_S" />
@@ -3114,7 +3145,7 @@
         <node concept="17QB3L" id="14R2qyOCsV5" role="1tU5fm" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsV6" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsV6" role="jymVt">
       <property role="TrG5h" value="getJrePath" />
       <node concept="17QB3L" id="14R2qyOCsV7" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsV8" role="1B3o_S" />
@@ -3129,7 +3160,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsVe" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsVe" role="jymVt">
       <property role="TrG5h" value="setProgramParameters" />
       <node concept="3cqZAl" id="14R2qyOCsVf" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsVg" role="1B3o_S" />
@@ -3153,7 +3184,7 @@
         <node concept="17QB3L" id="14R2qyOCsVp" role="1tU5fm" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsVq" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsVq" role="jymVt">
       <property role="TrG5h" value="getProgramParameters" />
       <node concept="17QB3L" id="14R2qyOCsVr" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsVs" role="1B3o_S" />
@@ -3168,7 +3199,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsVy" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsVy" role="jymVt">
       <property role="TrG5h" value="setVmOptions" />
       <node concept="3cqZAl" id="14R2qyOCsVz" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsV$" role="1B3o_S" />
@@ -3192,7 +3223,7 @@
         <node concept="17QB3L" id="14R2qyOCsVH" role="1tU5fm" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsVI" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsVI" role="jymVt">
       <property role="TrG5h" value="getVmOptions" />
       <node concept="17QB3L" id="14R2qyOCsVJ" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsVK" role="1B3o_S" />
@@ -3207,7 +3238,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsVQ" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsVQ" role="jymVt">
       <property role="TrG5h" value="setWorkingDirectory" />
       <node concept="3cqZAl" id="14R2qyOCsVR" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsVS" role="1B3o_S" />
@@ -3231,7 +3262,7 @@
         <node concept="17QB3L" id="14R2qyOCsW1" role="1tU5fm" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsW2" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsW2" role="jymVt">
       <property role="TrG5h" value="getWorkingDirectory" />
       <node concept="17QB3L" id="14R2qyOCsW3" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsW4" role="1B3o_S" />
@@ -3246,7 +3277,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsWa" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsWa" role="jymVt">
       <property role="TrG5h" value="setUseAlternativeJre" />
       <node concept="3cqZAl" id="14R2qyOCsWb" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsWc" role="1B3o_S" />
@@ -3270,7 +3301,7 @@
         <node concept="10P_77" id="14R2qyOCsWl" role="1tU5fm" />
       </node>
     </node>
-    <node concept="3clFb_" id="14R2qyOCsWm" role="3MN40a">
+    <node concept="3clFb_" id="14R2qyOCsWm" role="jymVt">
       <property role="TrG5h" value="getUseAlternativeJre" />
       <node concept="10P_77" id="14R2qyOCsWn" role="3clF45" />
       <node concept="3Tm1VV" id="14R2qyOCsWo" role="1B3o_S" />
@@ -3363,38 +3394,6 @@
             </node>
           </node>
         </node>
-      </node>
-    </node>
-    <node concept="2lGYhJ" id="14R2qyOCsWC" role="2pHZQ9">
-      <property role="3dDGau" value="false" />
-      <property role="TrG5h" value="programParameters" />
-      <node concept="17QB3L" id="14R2qyOCsWD" role="2lK19J" />
-    </node>
-    <node concept="2lGYhJ" id="14R2qyOCsWE" role="2pHZQ9">
-      <property role="3dDGau" value="false" />
-      <property role="TrG5h" value="vmOptions" />
-      <node concept="17QB3L" id="14R2qyOCsWF" role="2lK19J" />
-    </node>
-    <node concept="2lGYhJ" id="14R2qyOCsWG" role="2pHZQ9">
-      <property role="3dDGau" value="false" />
-      <property role="TrG5h" value="jrePath" />
-      <node concept="17QB3L" id="14R2qyOCsWH" role="2lK19J" />
-    </node>
-    <node concept="2lGYhJ" id="14R2qyOCsWI" role="2pHZQ9">
-      <property role="3dDGau" value="false" />
-      <property role="TrG5h" value="workingDirectory" />
-      <node concept="17QB3L" id="14R2qyOCsWJ" role="2lK19J" />
-    </node>
-    <node concept="2lGYhJ" id="14R2qyOCsWK" role="2pHZQ9">
-      <property role="3dDGau" value="false" />
-      <property role="TrG5h" value="useAlternativeJre" />
-      <node concept="10P_77" id="14R2qyOCsWL" role="2lK19J" />
-    </node>
-    <node concept="3Tm1VV" id="14R2qyOCsWM" role="1B3o_S" />
-    <node concept="3uibUv" id="14R2qyOCsWN" role="3TOOP4">
-      <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
-      <node concept="3uibUv" id="1htmYMkoGx1" role="11_B2D">
-        <ref role="3uigEE" node="14R2qyOCsUf" resolve="JavaRunParameters" />
       </node>
     </node>
   </node>

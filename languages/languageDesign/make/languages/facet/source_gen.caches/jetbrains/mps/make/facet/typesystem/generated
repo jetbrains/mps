@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7efxafyqfwqx0t1y5z4m4n2t58tpj2p">
+<product version="3" modelHash="3j5ys7ycdt07pakpdbl9m5jsol8b2z4">
   <files names="ResourceClassifierType_notIn_ResourceTypeDeclaration_NonTypesystemRule.java:ResourceClassifierType_replaceWith_ClassifierType_QuickFix.java:TypesystemDescriptor.java:typeof_FacetJavaClassExpression_InferenceRule.java:typeof_FacetReferenceExpression_InferenceRule.java:typeof_ForeignParametersExpression_InferenceRule.java:typeof_InputResourcesParameter_InferenceRule.java:typeof_LocalParametersExpression_InferenceRule.java:typeof_ResourceSpecificPropertiesExpression_InferenceRule.java:typeof_TargetReferenceExpression_InferenceRule.java" />
 </product>
 
