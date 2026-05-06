@@ -10,12 +10,16 @@ import jetbrains.mps.project.ProjectLifecycleListener.Bean;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 final class LifecycleEventDispatch {
   private final MPSProject myProject;
@@ -69,6 +73,8 @@ final class LifecycleEventDispatch {
 
   private static class ContextImpl implements ProjectLifecycleListener.Context {
     private final Map<Class<?>, Object> myValues = new HashMap<>();
+    private final ArrayList<R> keepSeq = new ArrayList<>();
+    private final ArrayList<R> discardSeq = new ArrayList<>();
 
     @Override
     public synchronized <T> void keep(@NotNull Class<T> key, @NotNull T value) {
@@ -76,6 +82,7 @@ final class LifecycleEventDispatch {
         throw new IllegalArgumentException();
       }
       myValues.put(key, value);
+      keepSeq.add(R.create(key));
     }
 
     @Override
@@ -86,7 +93,27 @@ final class LifecycleEventDispatch {
 
     @Override
     public synchronized <T> T discard(Class<T> key) {
-      return key.cast(myValues.remove(key));
+      discardSeq.add(R.create(key));
+      T rv = key.cast(myValues.remove(key));
+      if (rv == null) {
+        // XXX note, we are inside synchronized method, don't expect concurrent modifications here
+        System.out.printf("Missing value for key %s. We have %d records for keep and %d for discard\n", key, keepSeq.size(), discardSeq.size());
+        Consumer<R> dump = r -> {
+          System.out.printf("\t%s @%2$tM:%2$tS.%2$tL\n", r.threadName, r.when);
+        };
+        Predicate<R> p = r -> r.key == key;
+        System.out.println("\trecorded:  ");
+        keepSeq.stream().filter(p).forEach(dump);
+        System.out.println("\tdiscarded: ");
+        discardSeq.stream().filter(p).forEach(dump);
+      }
+      return rv;
+    }
+  }
+
+  private record R(Class<?> key, String threadName, Instant when) {
+    static R create(Class<?> key) {
+      return new R(key, Thread.currentThread().getName(), Instant.now());
     }
   }
 }
