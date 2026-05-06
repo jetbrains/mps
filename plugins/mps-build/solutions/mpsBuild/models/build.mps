@@ -40666,6 +40666,9 @@
         <property role="TrG5h" value="jetbrains.mps.build.startup" />
         <property role="3LESm3" value="d5033cee-f632-44b6-b308-89d4fbde34ff" />
         <property role="ZpmtF" value="true" />
+        <node concept="2EVzJI" id="54b_pUb1Rb" role="2EVzJD">
+          <ref role="2EVzJJ" node="6hkEqUOoosu" resolve="jetbrains.mps.build.startup" />
+        </node>
         <node concept="3rtmxn" id="EpEP7iiigT" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiigU" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiigV" role="3LXTna">
