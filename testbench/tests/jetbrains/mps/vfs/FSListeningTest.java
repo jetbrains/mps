@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,11 +39,6 @@ import java.util.Collections;
  * Testing MPS response for direct changes in the file system
  */
 public class FSListeningTest implements EnvironmentAware {
-  private static final File DESTINATION_PROJECT_DIR = new File(FileUtil.getTempDir(), "testFS");
-  private static final File PROJECT_LOCATION = new File("testbench/projects/testFS");
-  private static final File MODULE_FILE = new File(PROJECT_LOCATION, "solutions/solution1/solution1.msd");
-  private static final File MODEL_FILE = new File(PROJECT_LOCATION, "solutions/solution1/models/solution1/model1.mps");
-
   private ProjectCloneSupport myProject;
   private Environment myEnv;
 
@@ -57,8 +52,11 @@ public class FSListeningTest implements EnvironmentAware {
 
   @Before
   public void beforeTest() {
-    FSRecords.invalidateCaches();
+    //noinspection UnstableApiUsage
+    FSRecords.invalidateCaches("Get clean slate for tests");
 
+    File PROJECT_LOCATION = new File("testbench/projects/testFS");
+    File DESTINATION_PROJECT_DIR = FileUtil.createTmpDir("testFS");
     myProject = new ProjectCloneSupport(myEnv).cloneProject(PROJECT_LOCATION, DESTINATION_PROJECT_DIR);
     Assert.assertNotNull(myProject.get().getModelAccess());
   }

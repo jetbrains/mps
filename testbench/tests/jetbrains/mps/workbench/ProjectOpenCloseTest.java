@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,7 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
     Project project = getEnvironment().createEmptyProject();
     myTestModuleFactory = new TestModuleFactoryBase(myEnvironment, (SRepositoryExt) project.getRepository());
     IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
+    // XXX I wonder if it's intentional to create files for project module *outside* of project directory?
     IFile descriptorFile = fs.getFile(FileUtil.createTmpFile().getPath());
     SModule newModule = myTestModuleFactory.createSolution(descriptorFile);
     // though addModule is capable to grab proper model write lock, have to keep this one outside as ProjectModuleLoader.fireModuleLoaded()

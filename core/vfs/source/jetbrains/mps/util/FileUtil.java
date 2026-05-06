@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ public class FileUtil {
   public static File createTmpDir(@NotNull String prefix) {
     File tmpDir = null;
     try {
-      tmpDir = Files.createTempDirectory(prefix).toFile();
+      tmpDir = Files.createTempDirectory(prefix).toRealPath().toFile();
     } catch (IOException e) {
       throw new IllegalStateException("Could not create a temporary directory", e);
     }
@@ -77,13 +77,17 @@ public class FileUtil {
   public static File createTmpFile(@NotNull String prefix) {
     File result = null;
     try {
-      result = File.createTempFile(prefix, "");
+      result = File.createTempFile(prefix, "").getCanonicalFile();
     } catch (IOException e) {
       LOG.error(e);
     }
     return result;
   }
 
+  /**
+   * Beware, returned fils in not necessarily canonical (e.g. MacOS could give /tmp/whatever with canonical variant /private/tmp/whatever), which
+   * may affect code that relies on path prefix matching
+   */
   public static File getTempDir() {
     return new File(System.getProperty("java.io.tmpdir"));
   }
