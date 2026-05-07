@@ -375,7 +375,7 @@
       <node id="6060921217273637627" at="159,78,160,88" concept="9" />
       <node id="6060921217273637632" at="160,88,161,71" concept="3" />
       <node id="6060921217273637638" at="161,71,162,93" concept="3" />
-      <node id="6060921217273637657" at="164,144,165,63" concept="9" />
+      <node id="6060921217273637657" at="164,144,165,62" concept="9" />
       <node id="6060921217273637665" at="166,34,167,42" concept="9" />
       <node id="6060921217273637674" at="168,56,169,110" concept="3" />
       <node id="6060921217273637688" at="171,57,172,111" concept="3" />
@@ -573,7 +573,7 @@
       <node id="6060921217273638460" at="335,0,365,0" concept="14" trace="getLocationHintValue#(Lorg/junit/platform/engine/TestSource;Lorg/junit/platform/engine/TestSource;)Ljava/lang/String;" />
       <node id="6060921217273637703" at="176,10,208,5" concept="7" />
       <node id="6060921217273637996" at="235,0,276,0" concept="8" trace="testFailure#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;JLjava/lang/String;Z)V" />
-      <node id="6060921217273637660" at="165,63,208,5" concept="7" />
+      <node id="6060921217273637660" at="165,62,208,5" concept="7" />
       <node id="6060921217273637646" at="164,0,210,0" concept="8" trace="executionFinished#(Lorg/junit/platform/launcher/TestIdentifier;Lorg/junit/platform/engine/TestExecutionResult/Status;Ljava/lang/Throwable;Ljava/lang/String;)V" />
       <scope id="6060921217273637555" at="139,60,139,60" />
       <scope id="6060921217273638161" at="263,38,263,38" />

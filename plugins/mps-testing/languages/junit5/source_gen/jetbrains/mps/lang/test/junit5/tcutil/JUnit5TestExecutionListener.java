@@ -162,7 +162,7 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     mySuccessful &= TestExecutionResult.Status.SUCCESSFUL == testExecutionResult.getStatus();
   }
   private void executionFinished(TestIdentifier testIdentifier, TestExecutionResult.Status status, Throwable throwableOptional, String reason) {
-    final String displayName = testIdentifier.getDisplayName();
+    final String displayName = getDisplayName(testIdentifier);
     if (testIdentifier.isTest()) {
       final long duration = getDuration();
       if (status == TestExecutionResult.Status.FAILED) {

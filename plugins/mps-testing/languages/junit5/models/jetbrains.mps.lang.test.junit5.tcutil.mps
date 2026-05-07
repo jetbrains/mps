@@ -5130,12 +5130,10 @@
             <node concept="3uibUv" id="5gsHVKBeiGq" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
-            <node concept="2OqwBi" id="5gsHVKBJwoX" role="33vP2m">
-              <node concept="37vLTw" id="5gsHVKBh9tS" role="2Oq$k0">
+            <node concept="1rXfSq" id="5r$RUaMCZ_3" role="33vP2m">
+              <ref role="37wK5l" node="1i3Gm8FoOWs" resolve="getDisplayName" />
+              <node concept="37vLTw" id="5r$RUaMDaL1" role="37wK5m">
                 <ref role="3cqZAo" node="5gsHVKBeiGf" resolve="testIdentifier" />
-              </node>
-              <node concept="liA8E" id="5gsHVKBJwoY" role="2OqNvi">
-                <ref role="37wK5l" to="bws1:~TestIdentifier.getDisplayName()" resolve="getDisplayName" />
               </node>
             </node>
           </node>
