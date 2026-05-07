@@ -1,7 +1,7 @@
 From 0f49ba074bc5333b9e4137932548aa6734308abb Mon Sep 17 00:00:00 2001
 From: Maros Sandor <maros.sandor@jetbrains.com>
 Date: Mon, 27 Apr 2026 17:26:06 +0200
-Subject: [PATCH 8/9] MPS-39675 mps: Fine tuning customized MPS java plugin
+Subject: [PATCH 08/10] MPS-39675 mps: Fine tuning customized MPS java plugin
 
 ---
  .../build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml | 2 --

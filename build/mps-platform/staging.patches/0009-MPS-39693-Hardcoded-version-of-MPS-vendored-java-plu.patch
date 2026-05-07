@@ -1,7 +1,7 @@
 From c2156f6ee1fe1b9d096f58a3f3ee8ef13dfd1e74 Mon Sep 17 00:00:00 2001
 From: Fedor Isakov <fedor.isakov@jetbrains.com>
 Date: Wed, 6 May 2026 13:43:43 +0200
-Subject: [PATCH 9/9] MPS-39693 Hardcoded version of MPS-vendored java plugin
+Subject: [PATCH 09/10] MPS-39693 Hardcoded version of MPS-vendored java plugin
 
 ---
  .../build/build/manifests/java-impl.jar/META-INF/plugin.xml | 6 +++---

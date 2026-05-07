@@ -1,0 +1,108 @@
+From 20dc168bb0d8479b1260e1a95aee94ddec7956af Mon Sep 17 00:00:00 2001
+From: Fedor Isakov <fedor.isakov@jetbrains.com>
+Date: Wed, 6 May 2026 13:43:57 +0200
+Subject: [PATCH 10/10] MPS-39682 Tree: restore cached presentation when root
+ is already loaded
+
+Co-Authored-By: Claude Sonnet 4.6 (1M context) <noreply@anthropic.com>
+---
+ .../com/intellij/ui/tree/AsyncTreeModel.java  | 15 ++++++++-
+ .../com/intellij/ui/tree/TreeStateTest.kt     | 32 +++++++++++++++++++
+ 2 files changed, 46 insertions(+), 1 deletion(-)
+
+diff --git a/community/platform/platform-impl/src/com/intellij/ui/tree/AsyncTreeModel.java b/community/platform/platform-impl/src/com/intellij/ui/tree/AsyncTreeModel.java
+index c02dafef88906..37cc74fbf5eac 100644
+--- a/community/platform/platform-impl/src/com/intellij/ui/tree/AsyncTreeModel.java
++++ b/community/platform/platform-impl/src/com/intellij/ui/tree/AsyncTreeModel.java
+@@ -1248,11 +1248,24 @@ public final class AsyncTreeModel extends AbstractTreeModel
+   @Override
+   public void setCachedPresentation(@Nullable CachedTreePresentation presentation) {
+     tree.cachedPresentation = presentation;
+-    if (tree.root == null && presentation != null) {
++    if (presentation == null) {
++      return;
++    }
++    if (tree.root == null) {
+       var rootPath = new CachingTreePath(presentation.getRoot());
+       tree.root = toNode(null, presentation, rootPath);
+       treeStructureChanged(new CachingTreePath(tree.root.object), null, null);
+     }
++    else {
++      presentation.rootLoaded(tree.root.object);
++      if (tree.root.isLoadingRequired() || tree.root.loading != null) {
++        var cachedNodes = getChildrenFromCachedPresentation(tree.root);
++        if (cachedNodes != null) {
++          tree.root.setChildren(cachedNodes);
++          treeStructureChanged(new CachingTreePath(tree.root.object), null, null);
++        }
++      }
++    }
+   }
+ 
+   @Override
+diff --git a/community/platform/platform-tests/testSrc/com/intellij/ui/tree/TreeStateTest.kt b/community/platform/platform-tests/testSrc/com/intellij/ui/tree/TreeStateTest.kt
+index 44608ee4285e2..7bfd24ac88cf5 100644
+--- a/community/platform/platform-tests/testSrc/com/intellij/ui/tree/TreeStateTest.kt
++++ b/community/platform/platform-tests/testSrc/com/intellij/ui/tree/TreeStateTest.kt
+@@ -79,6 +79,28 @@ internal class TreeStateTest : BasePlatformTestCase() {
+     )
+   }
+ 
++  fun `test restore cached presentation when root is already loaded`() {
++    cachedPresentationTest(
++      inputToSave = """
++       +root
++        +a1
++         *a1.1
++        -a2
++         *a2.1
++         *a2.2
++        *a3
++      """.trimIndent(),
++      expectedLoadedNodes = listOf(
++        "/root",
++        "/root/a1",
++        "/root/a1/a1.1",
++        "/root/a2",
++        "/root/a3",
++      ),
++      loadRootBeforeRestore = true,
++    )
++  }
++
+   fun `test restore cached presentation - no children to restore`() {
+     cachedPresentationTest(
+       inputToSave = """
+@@ -195,12 +217,16 @@ internal class TreeStateTest : BasePlatformTestCase() {
+     inputToSave: String,
+     inputToRestore: String = inputToSave,
+     expectedLoadedNodes: List<String>,
++    loadRootBeforeRestore: Boolean = false,
+   ) = timeoutRunBlocking(context = Dispatchers.UiWithModelAccess) {
+     val coroutineScope = this
+     val tree = createTree(inputToSave, coroutineScope, async = true)
+     expandInitiallyExpanded(tree)
+     val state = TreeState.createOn(tree, true, false, true)
+     val newTree = createTree(inputToRestore, coroutineScope, async = true)
++    if (loadRootBeforeRestore) {
++      loadRoot(newTree)
++    }
+     state.applyTo(newTree)
+     val actualLoadedNodes = suspendCancellableCoroutine { continuation -> 
+       newTree.addPropertyChangeListener(CACHED_TREE_PRESENTATION_PROPERTY, PropertyChangeListener {
+@@ -212,6 +238,12 @@ internal class TreeStateTest : BasePlatformTestCase() {
+     assertThat(actualLoadedNodes).isEqualTo(expectedLoadedNodes)
+   }
+ 
++  private suspend fun loadRoot(tree: Tree) {
++    TreeUtil.promiseVisit(tree, object : TreeVisitor {
++      override fun visit(path: TreePath): TreeVisitor.Action = TreeVisitor.Action.INTERRUPT
++    }).await()
++  }
++
+   private fun syncSelectionTest(inputToSave: String, inputToRestore: String) = timeoutRunBlocking(context = Dispatchers.UiWithModelAccess) {
+     val coroutineScope = this
+     val tree = createTree(inputToSave, coroutineScope, async = false)
+-- 
+2.53.0
+

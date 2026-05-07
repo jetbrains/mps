@@ -1,7 +1,7 @@
 From 278cfee4986a6d9578b38e698eb81dc3847179a3 Mon Sep 17 00:00:00 2001
 From: Maros Sandor <maros.sandor@jetbrains.com>
 Date: Fri, 17 Apr 2026 11:39:37 +0200
-Subject: [PATCH 3/9] MRI-1179 mps: Adding missing modules and libraries
+Subject: [PATCH 03/10] MRI-1179 mps: Adding missing modules and libraries
 
 ---
  .../src/org/jetbrains/intellij/build/mps/MPSProperties.kt    | 5 +++++

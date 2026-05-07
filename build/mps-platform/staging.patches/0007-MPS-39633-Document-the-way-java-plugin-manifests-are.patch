@@ -1,7 +1,7 @@
 From b61946503f1c2d706b99abfa187c95950c28a86e Mon Sep 17 00:00:00 2001
 From: Fedor Isakov <fedor.isakov@jetbrains.com>
 Date: Wed, 22 Apr 2026 12:31:42 +0200
-Subject: [PATCH 7/9] MPS-39633 Document the way java plugin manifests are
+Subject: [PATCH 07/10] MPS-39633 Document the way java plugin manifests are
  patched
 
 ---

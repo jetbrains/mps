@@ -1,7 +1,7 @@
 From ec1d9ab151e8e9ecbb804585568ca521bb70f4db Mon Sep 17 00:00:00 2001
 From: Fedor Isakov <fedor.isakov@jetbrains.com>
 Date: Wed, 22 Apr 2026 12:31:02 +0200
-Subject: [PATCH 4/9] MPS-39652 Drop unused FUS-related components
+Subject: [PATCH 04/10] MPS-39652 Drop unused FUS-related components
 
 ---
  .../build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml | 2 --

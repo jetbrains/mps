@@ -1,7 +1,7 @@
 From 0bf8fc47684f009ce908052724d5f9873695f326 Mon Sep 17 00:00:00 2001
 From: Maros Sandor <maros.sandor@jetbrains.com>
 Date: Fri, 17 Apr 2026 11:36:36 +0200
-Subject: [PATCH 2/9] MRI-1179 mps: Including minimal set of required modules
+Subject: [PATCH 02/10] MRI-1179 mps: Including minimal set of required modules
  for java plugin
 
 ---
