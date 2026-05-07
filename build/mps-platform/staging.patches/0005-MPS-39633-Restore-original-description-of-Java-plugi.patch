@@ -1,0 +1,27 @@
+From 7ef57a9eada09d457a9fb1b087f1bbe9ebbbe457 Mon Sep 17 00:00:00 2001
+From: Fedor Isakov <fedor.isakov@jetbrains.com>
+Date: Wed, 22 Apr 2026 12:31:15 +0200
+Subject: [PATCH 5/9] MPS-39633 Restore original description of Java plugin
+
+---
+ .../build/build/manifests/java-impl.jar/META-INF/plugin.xml   | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+index 3cecdb22816af..31650a14fa393 100644
+--- a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
++++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+@@ -3,7 +3,9 @@
+   <version>261.22158.999-mps</version>
+   <idea-version since-build="261.22158" until-build="263.*" />
+   <name>Java</name>
+-  <description><![CDATA[FUBAR#3]]></description>
++  <description><![CDATA[
++    Adds support for the Java language, including Java projects, language syntax highlighting, inspections, and all other coding assistance features.
++  ]]></description>
+   <vendor>JetBrains</vendor>
+   <category>Languages</category>
+   <resource-bundle>messages.ActionsBundle</resource-bundle>
+-- 
+2.53.0
+

@@ -1,0 +1,46 @@
+From 0f49ba074bc5333b9e4137932548aa6734308abb Mon Sep 17 00:00:00 2001
+From: Maros Sandor <maros.sandor@jetbrains.com>
+Date: Mon, 27 Apr 2026 17:26:06 +0200
+Subject: [PATCH 8/9] MPS-39675 mps: Fine tuning customized MPS java plugin
+
+---
+ .../build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml | 2 --
+ .../mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml | 2 ++
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml b/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml
+index b29d063c2b374..d36e7b73ab4f4 100644
+--- a/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml
++++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/JavaPlugin.xml
+@@ -38,7 +38,6 @@
+ 
+     <applicationService serviceImplementation="com.intellij.debugger.settings.NodeRendererSettings"/>
+     <applicationService serviceImplementation="com.intellij.debugger.settings.ViewsGeneralSettings"/>
+-    <applicationService serviceImplementation="com.intellij.refactoring.JavaRefactoringSettings"/>
+     <projectService serviceImplementation="com.intellij.debugger.settings.DebuggerProjectSettings"/>
+     <applicationService serviceImplementation="com.intellij.debugger.settings.ThreadsViewSettings"/>
+     <applicationService serviceImplementation="com.intellij.debugger.settings.TraceSettings"/>
+@@ -47,7 +46,6 @@
+ 
+     <statistics.counterUsagesCollector groupId="java.find.usages" version="1"/>
+     <statistics.counterUsagesCollector groupId="java.extract.method" version="1"/>
+-    <statistics.applicationUsagesCollector implementation="com.intellij.refactoring.JavaRefactoringUsageCollector"/>
+ 
+     <applicationService serviceInterface="com.intellij.packaging.elements.PackagingElementFactory"
+                         serviceImplementation="com.intellij.packaging.impl.elements.PackagingElementFactoryImpl"/>
+diff --git a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+index 31650a14fa393..520a2615e5a2d 100644
+--- a/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
++++ b/community/mps/build/build/manifests/java-impl.jar/META-INF/plugin.xml
+@@ -24,6 +24,8 @@
+     <module name="intellij.java.analysis.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
+     <module name="intellij.java.compiler" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
+     <module name="intellij.java.compiler.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.debugger" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
++    <module name="intellij.java.debugger.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
+     <module name="intellij.java.frontback.psi" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
+     <module name="intellij.java.impl" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
+     <module name="intellij.java.indexing" loading="embedded"><![CDATA[<idea-plugin visibility="public"></idea-plugin>]]></module>
+-- 
+2.53.0
+
