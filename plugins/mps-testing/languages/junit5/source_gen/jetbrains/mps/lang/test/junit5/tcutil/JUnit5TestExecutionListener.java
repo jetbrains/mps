@@ -20,10 +20,10 @@ import org.opentest4j.AssertionFailedError;
 import org.opentest4j.ValueWrapper;
 import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.util.Optional;
 import org.junit.platform.engine.TestSource;
 import org.junit.platform.engine.support.descriptor.ClassSource;
 import org.junit.platform.engine.support.descriptor.MethodSource;
-import java.util.Optional;
 import org.junit.platform.engine.support.descriptor.CompositeTestSource;
 import org.junit.platform.engine.support.descriptor.FileSource;
 import java.io.File;
@@ -295,13 +295,15 @@ public class JUnit5TestExecutionListener implements TestExecutionListener {
     return idAndName(testIdentifier, getDisplayName(testIdentifier));
   }
   private String getDisplayName(TestIdentifier testIdentifier) {
-    TestSource source = testIdentifier.getSource().get();
-    if (source instanceof ClassSource) {
-      return ((ClassSource) source).getClassName();
-
-    } else if (source instanceof MethodSource) {
-      return ((MethodSource) source).getMethodName();
-
+    Optional<TestSource> source = testIdentifier.getSource();
+    if (!(source.isPresent())) {
+      return testIdentifier.getDisplayName();
+    }
+    if (source.get() instanceof ClassSource) {
+      return ((ClassSource) source.get()).getClassName();
+    } else
+    if (source.get() instanceof MethodSource) {
+      return ((MethodSource) source.get()).getMethodName();
     } else {
       return testIdentifier.getDisplayName();
     }
