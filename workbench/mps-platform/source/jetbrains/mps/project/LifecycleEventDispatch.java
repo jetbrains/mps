@@ -12,18 +12,21 @@ import org.jetbrains.annotations.Nullable;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 final class LifecycleEventDispatch {
   private final MPSProject myProject;
   private final ProjectLifecycleListener.Context myProjectContext;
+  private final AtomicInteger myStateTransition = new AtomicInteger(Transitions.START.ordinal());
 
   LifecycleEventDispatch(@NotNull MPSProject project) {
     myProject = project;
@@ -31,15 +34,24 @@ final class LifecycleEventDispatch {
   }
 
   public void projectReady() {
-    final ExtensionPointName<Bean> ep = Bean.epName();
-    if (ApplicationManager.getApplication().isUnitTestMode()) {
-      // during tests, make sure we dispatch projectReady() *before* any projectDiscarded() may fail with
-      // "no preserved instance in the context" assertion.
-      ep.forEachExtensionSafe(this::ready);
-      return;
+    if (!myStateTransition.compareAndSet(Transitions.START.ordinal(), Transitions.READY_BEFORE.ordinal())) {
+      throw new IllegalStateException(Transitions.values()[myStateTransition.get()].name());
     }
-    // XXX check if AppExecutorUtils.createCustomPriorityQueueBoundedApplicationPoolExecutor() is better alternative
-    ApplicationManager.getApplication().executeOnPooledThread(() -> ep.forEachExtensionSafe(this::ready));
+    try {
+      final ExtensionPointName<Bean> ep = Bean.epName();
+      if (ApplicationManager.getApplication().isUnitTestMode()) {
+        // during tests, make sure we dispatch projectReady() *before* any projectDiscarded() may fail with
+        // "no preserved instance in the context" assertion.
+        ep.forEachExtensionSafe(this::ready);
+        return;
+      }
+      // XXX check if AppExecutorUtils.createCustomPriorityQueueBoundedApplicationPoolExecutor() is better alternative
+      ApplicationManager.getApplication().executeOnPooledThread(() -> ep.forEachExtensionSafe(this::ready));
+    } finally {
+      if (!myStateTransition.compareAndSet(Transitions.READY_BEFORE.ordinal(), Transitions.READY.ordinal())) {
+        Logger.getLogger(getClass()).warning("Unexpected state on project open, now %s, expected %s".formatted(Transitions.values()[myStateTransition.get()].name(), Transitions.READY_BEFORE.name()));
+      }
+    }
   }
 
   void ready(ProjectLifecycleListener.Bean bl) {
@@ -56,6 +68,10 @@ final class LifecycleEventDispatch {
 
   public void projectDiscarded() {
     final ExtensionPointName<Bean> ep = Bean.epName();
+    if (!myStateTransition.compareAndSet(Transitions.READY.ordinal(), Transitions.DISCARD_BEFORE.ordinal())) {
+      Logger.getLogger(getClass()).warning("Unexpected state on project close, now %s, expected %s".formatted(Transitions.values()[myStateTransition.get()].name(), Transitions.READY.name()));
+      return;
+    }
     // dispatches events and returns immediately
     ApplicationManager.getApplication().executeOnPooledThread(() -> ep.forEachExtensionSafe(this::goneAsync));
     // waits for each listener to finish, and then returns
@@ -68,6 +84,10 @@ final class LifecycleEventDispatch {
       Logger.getLogger(getClass()).error("Failed to dispatch 'project discarded' event", ex);
     } catch (TimeoutException ex) {
       Logger.getLogger(getClass()).error("Dispatching 'project discarded' event takes too long, aborted", ex);
+    } finally {
+      if (!myStateTransition.compareAndSet(Transitions.DISCARD_BEFORE.ordinal(), Transitions.DISCARDED.ordinal())) {
+        Logger.getLogger(getClass()).error("Unexpected state on project close, now %s, expected %s".formatted(Transitions.values()[myStateTransition.get()].name(), Transitions.DISCARD_BEFORE.name()));
+      }
     }
   }
 
@@ -99,7 +119,7 @@ final class LifecycleEventDispatch {
         // XXX note, we are inside synchronized method, don't expect concurrent modifications here
         System.out.printf("Missing value for key %s. We have %d records for keep and %d for discard\n", key, keepSeq.size(), discardSeq.size());
         Consumer<R> dump = r -> {
-          System.out.printf("\t%s @%2$tM:%2$tS.%2$tL\n", r.threadName, r.when);
+          System.out.printf("\t\t%s @%2$tM:%2$tS.%2$tL\n", r.threadName, Date.from(r.when));
         };
         Predicate<R> p = r -> r.key == key;
         System.out.println("\trecorded:  ");
@@ -115,5 +135,13 @@ final class LifecycleEventDispatch {
     static R create(Class<?> key) {
       return new R(key, Thread.currentThread().getName(), Instant.now());
     }
+  }
+
+  private enum Transitions {
+    START,
+    READY_BEFORE,
+    READY,
+    DISCARD_BEFORE,
+    DISCARDED
   }
 }
