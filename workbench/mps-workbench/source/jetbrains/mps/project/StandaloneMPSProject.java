@@ -23,9 +23,9 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectCloseListener;
+import com.intellij.openapi.startup.InitProjectActivityJavaShim;
 import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
@@ -60,7 +60,19 @@ import java.util.concurrent.atomic.AtomicBoolean;
 )
 public class StandaloneMPSProject extends MPSProject implements PersistentStateComponent<Element> {
 
-  public static class Activity extends MPSProjectActivity {
+  @SuppressWarnings("UnstableApiUsage")
+  public static class Activity extends InitProjectActivityJavaShim {
+    @Override
+    public boolean isParallelExecution() {
+      // same as defaults? anyway, just want to be explicit about my intentions
+      return false;
+    }
+
+    @Override
+    public boolean isEssential() {
+      return true;
+    }
+
     @Override
     public void runActivity(@NotNull Project project) {
       project.getService(MPSProject.class).projectOpened();

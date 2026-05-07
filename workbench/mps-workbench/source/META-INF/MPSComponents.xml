@@ -25,7 +25,8 @@
     <projectService serviceImplementation="jetbrains.mps.plugins.projectplugins.ProjectPluginManager"/>
     <projectService serviceInterface="jetbrains.mps.project.MPSProject"
             serviceImplementation="jetbrains.mps.project.StandaloneMPSProject"/>
-    <postStartupActivity implementation="jetbrains.mps.project.StandaloneMPSProject$Activity" />
+    <!--suppress PluginXmlValidity -->
+    <initProjectActivity implementation="jetbrains.mps.project.StandaloneMPSProject$Activity" />
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.TabRootNodesTracker"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.FileStatusChangeListener"/>
