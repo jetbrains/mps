@@ -16,8 +16,8 @@ public class IsolatedTypecheckingController extends DefaultTypecheckingControlle
 
   private final ParametersDiscoverable myParametersDiscoverable;
 
-  public IsolatedTypecheckingController(TypecheckingBackend typecheckingBackend, Flags defaultFlags, ParametersDiscoverable parametersDiscoverable) {
-    super(typecheckingBackend, defaultFlags);
+  public IsolatedTypecheckingController(TypecheckingBackend typecheckingBackend, Flags requestedFlags, ParametersDiscoverable parametersDiscoverable) {
+    super(typecheckingBackend, Flags.basic().withParameters(requestedFlags.getParamsMap()));
     myParametersDiscoverable = parametersDiscoverable;
   }
 
