@@ -24,7 +24,6 @@ import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.MessageView;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.ThreadUtils.RunInUIRunnable;
 import jetbrains.mps.ide.messages.MessageList.MessageListState;
 import jetbrains.mps.ide.messages.MessagesViewTool.MessageViewToolState;
 import jetbrains.mps.ide.messages.navigation.NavigationManager;
@@ -391,7 +390,7 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
       // don't care to get MVT right away with MPSProject, could happen a bit later
       // however, it's necessary to create UI for the default list to trigger IDEA's MessageView activation
       // (otherwise no tool window is registered, see MessageViewImpl)
-      ApplicationManager.getApplication().executeOnPooledThread(() -> MessagesViewTool.getInstance(project).getDefaultList().createContent(false, false));
+      ToolWindowManager.getInstance(project.getProject()).invokeLater(() -> MessagesViewTool.getInstance(project).getDefaultList().createContent(false, false));
     }
   }
 }
