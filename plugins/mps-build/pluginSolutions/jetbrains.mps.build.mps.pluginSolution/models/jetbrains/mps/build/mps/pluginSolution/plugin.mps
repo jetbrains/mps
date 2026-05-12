@@ -13451,6 +13451,9 @@
                           <node concept="3_I8Xc" id="7Knx78$Lzk_" role="39821P">
                             <ref role="3_I8Xa" to="ffeo:1KlmwaFzuoK" resolve="java" />
                           </node>
+                          <node concept="3_I8Xc" id="4$xAxPUFRb4" role="39821P">
+                            <ref role="3_I8Xa" to="ffeo:468Ez68GAKw" resolve="mps-repository" />
+                          </node>
                           <node concept="3_I8Xc" id="5DF4H22jmuq" role="39821P">
                             <ref role="3_I8Xa" to="ffeo:5DF4H224yvv" resolve="mps-rcp" />
                           </node>
