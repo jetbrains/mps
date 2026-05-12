@@ -138,11 +138,19 @@ import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
       ASMType first = myTypes.getFirst();
       ASMParameterizedType ownerType;
       if (first instanceof ASMClassType) {
-        assert myTypes.size() > 1;
+        assert myTypes.size() > 1 : first + "$" + name;
         ownerType = new ASMParameterizedType(((ASMClassType) first), myTypes.subList(1, myTypes.size()));
       } else if (first instanceof ASMParameterizedType) {
-        assert myTypes.size() == 1;
+        assert myTypes.size() >= 1 : first + "$" + name;
         ownerType = (ASMParameterizedType) first;
+        if (myTypes.size() > 1) {
+          // well, we hit an inner (level 3) class while outer (level 2) class have been noticed to be parameterized due to 
+          // top one (level 1) having type parameters, but there also some type parameters for level 2, not yet processed.
+          assert ownerType.getActualTypeArguments().isEmpty();
+          List<ASMType> typeParameters = new ArrayList<>(myTypes.subList(1, myTypes.size()));
+          // Pretty much the same way we handle PT in visitEnd() - just rewrite the type we need and consume parameters.
+          ownerType = new ASMParameterizedType(ownerType.getOwnerType(), ownerType.getRawType(), typeParameters);
+        }
       } else {
         assert false : first.toString();
         return;
@@ -171,6 +179,7 @@ import org.jetbrains.org.objectweb.asm.signature.SignatureVisitor;
           setResult(new ASMParameterizedType(pt.getOwnerType(), pt.getRawType(), myTypes.subList(1, myTypes.size())));
         }
       }
+      myTypes.clear();
     }
 
     /*package*/ ASMType getResult() {

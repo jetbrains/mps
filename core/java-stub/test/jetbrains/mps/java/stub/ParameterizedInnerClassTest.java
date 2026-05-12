@@ -97,6 +97,13 @@ public class ParameterizedInnerClassTest {
     compareGenericSignature(TestData.class.getDeclaredField(f8.getName()), f8);
   }
 
+  @Test
+  public void test_MPS_39689() throws Exception {
+    final ASMClass ac = parseResource(Outer3.class.getName().replace('.', '/')  + "$Middle$Tail" + ".class");
+    ASMField f1 = field(ac, "f1");
+    compareGenericSignature(Outer3.Middle.Tail.class.getDeclaredField(f1.getName()), f1);
+  }
+
   private static ASMClass parseResource(String resourcePath) throws Exception {
     final InputStream resourceAsStream = ParameterizedInnerClassTest.class.getClassLoader().getResourceAsStream(resourcePath);
     ClassReader cr = new ClassReader(resourceAsStream);
@@ -282,6 +289,14 @@ public class ParameterizedInnerClassTest {
 
   static class InnerStatic {
 
+  }
+}
+
+/*package*/ class Outer3<A> {
+  class Middle<B, C> {
+    class Tail<D, E> {
+      public Outer3<A>.Middle<B, C>.Tail<D, E> f1;
+    }
   }
 }
 
