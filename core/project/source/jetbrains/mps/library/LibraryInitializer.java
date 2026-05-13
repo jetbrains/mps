@@ -107,8 +107,8 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
    *
    */
   private void update(final boolean refreshFiles) {
-    myModelAccess.runWriteAction(() -> {
-      final Set<SLibrary> currentLibs = new HashSet<>();
+    final Set<SLibrary> currentLibs = new HashSet<>();
+    myModelAccess.runReadAction(() -> {
       for (LibraryContributor contributor : myContributors) {
         // XXX FWIW, it's only BootstrapLibraryContributor that tells hiddenLanguages==true
         boolean hidden = contributor.hiddenLanguages();
@@ -117,6 +117,8 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
           currentLibs.add(lib);
         }
       }
+    });
+    myModelAccess.runWriteAction(() -> {
       final Delta<SLibrary> libraryDelta = Delta.construct(myLibraries, currentLibs);
       if (libraryDelta.isEmpty()) return;
       updateState(refreshFiles, libraryDelta);
