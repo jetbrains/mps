@@ -127,6 +127,7 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
 
     myPopup = JBPopupFactory.getInstance().createComponentPopupBuilder(mainPanel, mainPanel)
                             .setResizable(true)
+                            .setFocusable(false)
                             .setCancelKeyEnabled(false)
                             .setCancelOnClickOutside(true)
                             .setCancelOnOtherWindowOpen(false)
