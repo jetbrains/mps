@@ -39,7 +39,7 @@ import java.io.OutputStream;
 public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile, VirtualFileWithoutContent {
   private static final byte[] CONTENTS = new byte[0];
   private static final Logger LOG = Logger.getLogger(MPSNodeVirtualFile.class);
-  static final String NODE_PREFIX = "node://";
+  public static final String NODE_PREFIX = "node://";
 
   @NotNull
   private final SNodeReference myNode;
