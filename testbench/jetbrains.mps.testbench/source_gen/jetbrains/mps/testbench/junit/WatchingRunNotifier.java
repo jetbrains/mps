@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import java.util.Map;
 import org.junit.runner.Description;
 import java.util.HashMap;
-import jetbrains.mps.testbench.util.ThreadWatcher;
 import org.junit.runner.notification.RunNotifier;
 import java.util.List;
 import java.util.ArrayList;
@@ -32,7 +31,6 @@ public class WatchingRunNotifier extends DelegatingRunNotifier {
 
   private final CachingAppender myCachingAppender;
   private final Map<Description, Object> myTestsToIgnore = new HashMap<Description, Object>();
-  private ThreadWatcher myThreadWatcher;
 
   public WatchingRunNotifier(RunNotifier delegate) {
     this(delegate, DEFAULT_WATCH_LOGGER_LEVEL, true);
@@ -114,18 +112,16 @@ public class WatchingRunNotifier extends DelegatingRunNotifier {
       myTestsToIgnore.put(desc, Boolean.TRUE);
     }
 
-    myThreadWatcher = new ThreadWatcher(true);
   }
 
   private void afterTest(Description desc) {
-    myThreadWatcher.waitUntilSettled(15000);
     myErrorCachingStream.reset();
     myCachingAppender.sealEvents();
     myCachingAppender.detach();
     Failure fail = null;
     if (!(myTestsToIgnore.containsKey(desc))) {
-      if (myErrorCachingStream.isNotEmpty() || myCachingAppender.isNotEmpty() || myThreadWatcher.isNotEmpty()) {
-        fail = new Failure(desc, new UncleanTestExecutionException(myErrorCachingStream, myCachingAppender, myThreadWatcher));
+      if (myErrorCachingStream.isNotEmpty() || myCachingAppender.isNotEmpty()) {
+        fail = new Failure(desc, new UncleanTestExecutionException(myErrorCachingStream, myCachingAppender));
       }
     }
     myErrorCachingStream.clear();

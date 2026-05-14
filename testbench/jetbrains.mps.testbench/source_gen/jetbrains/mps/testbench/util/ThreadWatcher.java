@@ -11,7 +11,10 @@ import java.lang.management.ManagementFactory;
 
 /**
  * fyodor, Sep 8, 2010
+ * 
+ * @deprecated 
  */
+@Deprecated
 @GeneratedClass(nodeId = "5294483648489409095", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
 public class ThreadWatcher implements Output {
   private ThreadState myState;
@@ -223,6 +226,7 @@ public class ThreadWatcher implements Output {
     }
   }
 
+  @Deprecated
   public ThreadWatcher(boolean capture) {
     if (capture) {
       this.myState = new ThreadState();

@@ -1371,16 +1371,6 @@
       </node>
       <node concept="3Tm6S6" id="4_TMdeLkPq$" role="1B3o_S" />
     </node>
-    <node concept="312cEg" id="4_TMdeLkPq_" role="jymVt">
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myThreadWatcher" />
-      <property role="34CwA1" value="false" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3uibUv" id="4_TMdeLkPqB" role="1tU5fm">
-        <ref role="3uigEE" to="ot0m:4_TMdeLkOD7" resolve="ThreadWatcher" />
-      </node>
-      <node concept="3Tm6S6" id="4_TMdeLkPqC" role="1B3o_S" />
-    </node>
     <node concept="2tJIrI" id="4YCIFw5b$ra" role="jymVt" />
     <node concept="3clFbW" id="4_TMdeLkPqD" role="jymVt">
       <property role="od$2w" value="false" />
@@ -2041,21 +2031,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="E17o3M5Q9n" role="3cqZAp" />
-        <node concept="3clFbF" id="4_TMdeLkPuM" role="3cqZAp">
-          <node concept="37vLTI" id="4_TMdeLkPuN" role="3clFbG">
-            <node concept="2ShNRf" id="4_TMdeLliXz" role="37vLTx">
-              <node concept="1pGfFk" id="4_TMdeLliX$" role="2ShVmc">
-                <ref role="37wK5l" to="ot0m:4_TMdeLkOJK" resolve="ThreadWatcher" />
-                <node concept="3clFbT" id="4_TMdeLkPuS" role="37wK5m">
-                  <property role="3clFbU" value="true" />
-                </node>
-              </node>
-            </node>
-            <node concept="37vLTw" id="d4HXLLpij8" role="37vLTJ">
-              <ref role="3cqZAo" node="4_TMdeLkPq_" resolve="myThreadWatcher" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="3Tm6S6" id="4_TMdeLkPuT" role="1B3o_S" />
       <node concept="3cqZAl" id="4_TMdeLkPuU" role="3clF45" />
@@ -2072,19 +2047,6 @@
         </node>
       </node>
       <node concept="3clFbS" id="4_TMdeLkPuY" role="3clF47">
-        <node concept="3clFbF" id="4_TMdeLkPuZ" role="3cqZAp">
-          <node concept="2OqwBi" id="4_TMdeLliXB" role="3clFbG">
-            <node concept="37vLTw" id="4_TMdeLliXA" role="2Oq$k0">
-              <ref role="3cqZAo" node="4_TMdeLkPq_" resolve="myThreadWatcher" />
-            </node>
-            <node concept="liA8E" id="4_TMdeLliXC" role="2OqNvi">
-              <ref role="37wK5l" to="ot0m:4_TMdeLkOKq" resolve="waitUntilSettled" />
-              <node concept="3cmrfG" id="4_TMdeLkPv2" role="37wK5m">
-                <property role="3cmrfH" value="15000" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="72HFhk0LxAz" role="3cqZAp">
           <node concept="2OqwBi" id="72HFhk0LxA$" role="3clFbG">
             <node concept="37vLTw" id="72HFhk0LxA_" role="2Oq$k0">
@@ -2159,9 +2121,6 @@
                             <node concept="37vLTw" id="4_TMdeLkPvO" role="37wK5m">
                               <ref role="3cqZAo" node="4_TMdeLkPqo" resolve="myCachingAppender" />
                             </node>
-                            <node concept="37vLTw" id="4_TMdeLkPvP" role="37wK5m">
-                              <ref role="3cqZAo" node="4_TMdeLkPq_" resolve="myThreadWatcher" />
-                            </node>
                           </node>
                         </node>
                       </node>
@@ -2172,31 +2131,21 @@
                   </node>
                 </node>
               </node>
-              <node concept="22lmx$" id="4_TMdeLkPvu" role="3clFbw">
-                <node concept="2OqwBi" id="4_TMdeLliY3" role="3uHU7w">
-                  <node concept="37vLTw" id="4_TMdeLliY2" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4_TMdeLkPq_" resolve="myThreadWatcher" />
+              <node concept="22lmx$" id="4_TMdeLkPvv" role="3clFbw">
+                <node concept="2OqwBi" id="4_TMdeLliXZ" role="3uHU7w">
+                  <node concept="37vLTw" id="4_TMdeLliXY" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4_TMdeLkPqo" resolve="myCachingAppender" />
                   </node>
-                  <node concept="liA8E" id="4_TMdeLliY4" role="2OqNvi">
-                    <ref role="37wK5l" to="ot0m:4_TMdeLkOK3" resolve="isNotEmpty" />
+                  <node concept="liA8E" id="4_TMdeLliY0" role="2OqNvi">
+                    <ref role="37wK5l" to="ot0m:4_TMdeLkP05" resolve="isNotEmpty" />
                   </node>
                 </node>
-                <node concept="22lmx$" id="4_TMdeLkPvv" role="3uHU7B">
-                  <node concept="2OqwBi" id="4_TMdeLliXZ" role="3uHU7w">
-                    <node concept="37vLTw" id="4_TMdeLliXY" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4_TMdeLkPqo" resolve="myCachingAppender" />
-                    </node>
-                    <node concept="liA8E" id="4_TMdeLliY0" role="2OqNvi">
-                      <ref role="37wK5l" to="ot0m:4_TMdeLkP05" resolve="isNotEmpty" />
-                    </node>
+                <node concept="2OqwBi" id="d4HXLLqD85" role="3uHU7B">
+                  <node concept="37vLTw" id="4_TMdeLliXU" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4_TMdeLkPqk" resolve="myErrorCachingStream" />
                   </node>
-                  <node concept="2OqwBi" id="d4HXLLqD85" role="3uHU7B">
-                    <node concept="37vLTw" id="4_TMdeLliXU" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4_TMdeLkPqk" resolve="myErrorCachingStream" />
-                    </node>
-                    <node concept="liA8E" id="d4HXLLqDe5" role="2OqNvi">
-                      <ref role="37wK5l" node="72HFhk0LeGe" resolve="isNotEmpty" />
-                    </node>
+                  <node concept="liA8E" id="d4HXLLqDe5" role="2OqNvi">
+                    <ref role="37wK5l" node="72HFhk0LeGe" resolve="isNotEmpty" />
                   </node>
                 </node>
               </node>

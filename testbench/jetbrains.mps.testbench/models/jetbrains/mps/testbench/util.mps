@@ -260,6 +260,7 @@
         <property id="8465538089690881934" name="text" index="TUZQ4" />
         <child id="6832197706140518123" name="parameter" index="zr_5Q" />
       </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
       <concept id="5085607816302529296" name="jetbrains.mps.baseLanguage.javadoc.structure.IHoldCommentLines" flags="ngI" index="1VezTd">
         <child id="5085607816302529587" name="commentBody" index="1Vez_I" />
@@ -303,6 +304,13 @@
         </node>
         <node concept="3oM_SD" id="1E1X3WHsDKg" role="1PaTwD">
           <property role="3oM_SC" value="2010" />
+        </node>
+      </node>
+      <node concept="TZ5HI" id="2iCva9pg4RN" role="3nqlJM">
+        <node concept="1PaTwC" id="2iCva9pg4RO" role="1Vez_I">
+          <node concept="3oM_SD" id="2iCva9pg4RP" role="1PaTwD">
+            <property role="3oM_SC" value="" />
+          </node>
         </node>
       </node>
     </node>
@@ -3245,6 +3253,9 @@
       </node>
       <node concept="3Tm1VV" id="4_TMdeLkOOe" role="1B3o_S" />
       <node concept="10P_77" id="4_TMdeLkOOf" role="3clF45" />
+    </node>
+    <node concept="2AHcQZ" id="2iCva9pg4RQ" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
   </node>
   <node concept="3HP615" id="4_TMdeLkOPS">
