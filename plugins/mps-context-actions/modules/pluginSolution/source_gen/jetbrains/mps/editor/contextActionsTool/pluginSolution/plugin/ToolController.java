@@ -93,17 +93,20 @@ public class ToolController implements ItemExecutor {
   }
 
   private void checkActiveEditorChanged() {
+    if (myProject.isDisposed()) {
+      return;
+    }
     EditorComponent activeEditor = ContextActionsUtil.findActiveEditor(myToolComponent);
     if (activeEditor == null) {
       return;
     }
-    if (check_ae45oa_a0c0s(myLastSelection) == null) {
+    if (check_ae45oa_a0d0s(myLastSelection) == null) {
       return;
     }
-    if (activeEditor == check_ae45oa_a0d0s(myLastSelection)) {
+    if (activeEditor == check_ae45oa_a0e0s(myLastSelection)) {
       return;
     }
-    if (activeEditor == check_ae45oa_a0e0s(myNextSelection)) {
+    if (activeEditor == check_ae45oa_a0f0s(myNextSelection)) {
       return;
     }
     Selection selection = activeEditor.getSelectionManager().getSelection();
@@ -159,12 +162,6 @@ public class ToolController implements ItemExecutor {
   }
 
 
-  private static jetbrains.mps.openapi.editor.EditorComponent check_ae45oa_a0c0s(Selection checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getEditorComponent();
-    }
-    return null;
-  }
   private static jetbrains.mps.openapi.editor.EditorComponent check_ae45oa_a0d0s(Selection checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getEditorComponent();
@@ -172,6 +169,12 @@ public class ToolController implements ItemExecutor {
     return null;
   }
   private static jetbrains.mps.openapi.editor.EditorComponent check_ae45oa_a0e0s(Selection checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getEditorComponent();
+    }
+    return null;
+  }
+  private static jetbrains.mps.openapi.editor.EditorComponent check_ae45oa_a0f0s(Selection checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getEditorComponent();
     }
