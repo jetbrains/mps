@@ -32,6 +32,9 @@ public class ToolController implements ItemExecutor {
 
   private final Timer myUpdateTimer = new Timer(1000, new ActionListener() {
     public void actionPerformed(ActionEvent p0) {
+      if (myProject.isDisposed()) {
+        return;
+      }
       checkActiveEditorChanged();
     }
   });
@@ -48,9 +51,9 @@ public class ToolController implements ItemExecutor {
   }
 
   public void dispose() {
+    myUpdateTimer.stop();
     myToolComponent.setItemExecutor(null);
     myProject.getComponent(EditorExtensionRegistry.class).unregisterExtension(mySelectionListener);
-    myUpdateTimer.stop();
   }
 
   private void update(@NotNull final Selection selection) {

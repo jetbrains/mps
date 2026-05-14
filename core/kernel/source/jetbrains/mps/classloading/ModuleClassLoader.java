@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,7 +96,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public Class<?> loadOwnClass(String name) throws ClassNotFoundException {
     Class<?> aClass = loadClass(name, false, true);
     if (aClass == null) {
-      throw createCLNFException(name);
+      throw createCLNFException(name, null);
     }
     return aClass;
   }
@@ -112,7 +112,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     try {
       return loadClass(name, resolve, false);
     } catch (ModuleClassLoaderIsDisposedException e) {
-      throw createCLNFException(name);
+      throw createCLNFException(name, e);
     }
   }
 
@@ -141,7 +141,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     }
 
     if (aClass == null) {
-      throw createCLNFException(fqName);
+      throw createCLNFException(fqName, null);
     }
 
     if (resolve) {
@@ -163,10 +163,10 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     return aClass;
   }
 
-  private ModuleClassNotFoundException createCLNFException(String name) {
+  private ModuleClassNotFoundException createCLNFException(String name, @Nullable Throwable cause) {
     SModuleReference module = getModule();
     String msg = String.format("Unable to load class: '%s' using ModuleClassLoader of the module '%s'", name, module.getModuleName());
-    return new ModuleClassNotFoundException(module, msg);
+    return new ModuleClassNotFoundException(module, msg, cause);
   }
 
   /**
@@ -179,7 +179,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
       return null;
     }
     if (optionalClass.isEmpty()) {
-      throw createCLNFException(name);
+      throw createCLNFException(name, null);
     }
     return optionalClass.get();
   }

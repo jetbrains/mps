@@ -2452,6 +2452,19 @@
                     </node>
                   </node>
                   <node concept="3clFbS" id="7pClCNY9Pe0" role="3clF47">
+                    <node concept="3clFbJ" id="10AfktVIMv$" role="3cqZAp">
+                      <node concept="3clFbS" id="10AfktVIMvA" role="3clFbx">
+                        <node concept="3cpWs6" id="10AfktVJgHR" role="3cqZAp" />
+                      </node>
+                      <node concept="2OqwBi" id="10AfktVJ7D0" role="3clFbw">
+                        <node concept="37vLTw" id="10AfktVJ4Wu" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7pClCNYafOO" resolve="myProject" />
+                        </node>
+                        <node concept="liA8E" id="10AfktVJdky" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c4:~Project.isDisposed()" resolve="isDisposed" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3clFbF" id="7pClCNY9Pe1" role="3cqZAp">
                       <node concept="1rXfSq" id="7pClCNY9Pe2" role="3clFbG">
                         <ref role="37wK5l" node="7pClCNY9Rk4" resolve="checkActiveEditorChanged" />
@@ -2584,6 +2597,16 @@
       <node concept="3cqZAl" id="7pClCNY9UxV" role="3clF45" />
       <node concept="3Tm1VV" id="7pClCNY9UxW" role="1B3o_S" />
       <node concept="3clFbS" id="7pClCNY9UxX" role="3clF47">
+        <node concept="3clFbF" id="7pClCNY9UxY" role="3cqZAp">
+          <node concept="2OqwBi" id="7pClCNY9UxZ" role="3clFbG">
+            <node concept="37vLTw" id="7pClCNY9Uy0" role="2Oq$k0">
+              <ref role="3cqZAo" node="7pClCNY9NBk" resolve="myUpdateTimer" />
+            </node>
+            <node concept="liA8E" id="7pClCNY9Uy1" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~Timer.stop()" resolve="stop" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="7pClCNYb$mz" role="3cqZAp">
           <node concept="2OqwBi" id="7pClCNYb_0A" role="3clFbG">
             <node concept="37vLTw" id="7pClCNYb$mx" role="2Oq$k0">
@@ -2613,16 +2636,6 @@
               <node concept="37vLTw" id="7pClCNYatOZ" role="37wK5m">
                 <ref role="3cqZAo" node="7pClCNYam8B" resolve="mySelectionListener" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7pClCNY9UxY" role="3cqZAp">
-          <node concept="2OqwBi" id="7pClCNY9UxZ" role="3clFbG">
-            <node concept="37vLTw" id="7pClCNY9Uy0" role="2Oq$k0">
-              <ref role="3cqZAo" node="7pClCNY9NBk" resolve="myUpdateTimer" />
-            </node>
-            <node concept="liA8E" id="7pClCNY9Uy1" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~Timer.stop()" resolve="stop" />
             </node>
           </node>
         </node>
