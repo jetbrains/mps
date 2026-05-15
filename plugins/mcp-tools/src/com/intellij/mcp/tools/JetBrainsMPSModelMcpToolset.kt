@@ -35,6 +35,15 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
                 "\"present\":true}"
     }
 
+    private fun resolveModel(mpsProject: MPSProject, modelRef: String): SModel? {
+        val ref = try {
+            PersistenceFacade.getInstance().createModelReference(modelRef)
+        } catch (e: Exception) {
+            return null
+        }
+        return ref.resolve(mpsProject.repository)
+    }
+
     private fun modelReferenceJson(ref: SModelReference): String {
         return "{" +
                 "\"name\":\"" + escapeJson(ref.modelName.toString()) + "\"," +
@@ -60,14 +69,47 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
 
     @McpTool
     @McpDescription("""
+        Returns a persistent model reference for the model containing the specified node.
+        Returns JSON: { ok, data: { name, reference } }
+    """)
+    suspend fun get_MPS_model_reference_by_node(
+        @McpDescription("Persistent form of SNodeReference")
+        nodeRef: String
+    ): String {
+        currentCoroutineContext().reportToolActivity("Getting MPS model reference by node")
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+
+        var reply: String? = null
+        mpsProject.repository.modelAccess.runReadAction {
+            try {
+                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+                val node = sNodeRef.resolve(mpsProject.repository)
+                if (node == null) {
+                    reply = errJson("Node '$nodeRef' not found")
+                    return@runReadAction
+                }
+                val model = node.model
+                if (model == null) {
+                    reply = errJson("Node '$nodeRef' is not in a model")
+                    return@runReadAction
+                }
+                reply = okJson(modelReferenceJson(model.reference))
+            } catch (e: Exception) {
+                reply = errJson(e.message)
+            }
+        }
+        return reply!!
+    }
+
+    @McpTool
+    @McpDescription("""
         Lists all dependencies (imported models) of an MPS model. Returns JSON.
         Response: { ok, data: [{ name, reference }, ...] }
     """)
     suspend fun list_MPS_model_dependencies(
-        @McpDescription("Module name")
-        moduleName: String,
-        @McpDescription("Model name")
-        modelName: String
+        @McpDescription("Persistent model reference")
+        modelRef: String
     ): String {
         currentCoroutineContext().reportToolActivity("Listing MPS model dependencies")
         val project = currentCoroutineContext().project
@@ -77,14 +119,11 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
             append('[')
             var first = true
             mpsProject.repository.modelAccess.runReadAction {
-                val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                if (module != null) {
-                    val model = module.models.find { it.name.value == modelName || it.name.toString() == modelName }
-                    if (model is SModelInternal) {
-                        for (ref in model.modelImports) {
-                            if (!first) append(',') else first = false
-                            append(modelReferenceJson(ref))
-                        }
+                val model = resolveModel(mpsProject, modelRef)
+                if (model is SModelInternal) {
+                    for (ref in model.modelImports) {
+                        if (!first) append(',') else first = false
+                        append(modelReferenceJson(ref))
                     }
                 }
             }
@@ -99,10 +138,8 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Also adds a "Default" dependency of the containing module on the target model's module.
     """)
     suspend fun add_MPS_model_dependency(
-        @McpDescription("Source module name")
-        moduleName: String,
-        @McpDescription("Source model name")
-        modelName: String,
+        @McpDescription("Source persistent model reference")
+        modelRefStr: String,
         @McpDescription("Target model name or reference")
         targetModel: String
     ): String {
@@ -113,18 +150,13 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         return withContext(Dispatchers.EDT) {
             var result: String? = null
             mpsProject.modelAccess.executeCommand {
-                val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                if (module == null) {
-                    result = errJson("Source module not found: $moduleName")
-                    return@executeCommand
-                }
-                val model = module.models.find { it.name.value == modelName || it.name.toString() == modelName }
+                val model = resolveModel(mpsProject, modelRefStr)
                 if (model == null) {
-                    result = errJson("Source model not found: $modelName in module $moduleName")
+                    result = errJson("Source model not found: $modelRefStr")
                     return@executeCommand
                 }
                 if (model !is EditableSModel || model !is SModelInternal) {
-                    result = errJson("Model is not editable or doesn't support imports: $modelName")
+                    result = errJson("Model is not editable or doesn't support imports: ${model.name}")
                     return@executeCommand
                 }
 
@@ -144,9 +176,10 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
                 model.addModelImport(targetRef)
                 
                 // Add module dependency
+                val module = model.module
                 val targetModelResolved = targetRef.resolve(mpsProject.repository)
                 val targetModule = targetModelResolved?.module
-                if (targetModule != null && targetModule != module) {
+                if (targetModule != null && targetModule != module && module != null) {
                     (module as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
                     (module as? AbstractModule)?.save()
                 }
@@ -166,10 +199,8 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Removes a dependency (import) from an MPS model.
     """)
     suspend fun remove_MPS_model_dependency(
-        @McpDescription("Source module name")
-        moduleName: String,
-        @McpDescription("Source model name")
-        modelName: String,
+        @McpDescription("Source persistent model reference")
+        modelRefStr: String,
         @McpDescription("Target model reference")
         targetModelRef: String
     ): String {
@@ -180,18 +211,13 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         return withContext(Dispatchers.EDT) {
             var result: String? = null
             mpsProject.modelAccess.executeCommand {
-                val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                if (module == null) {
-                    result = errJson("Source module not found: $moduleName")
-                    return@executeCommand
-                }
-                val model = module.models.find { it.name.value == modelName || it.name.toString() == modelName }
+                val model = resolveModel(mpsProject, modelRefStr)
                 if (model == null) {
-                    result = errJson("Source model not found: $modelName in module $moduleName")
+                    result = errJson("Source model not found: $modelRefStr")
                     return@executeCommand
                 }
                 if (model !is EditableSModel || model !is SModelInternal) {
-                    result = errJson("Model is not editable or doesn't support imports: $modelName")
+                    result = errJson("Model is not editable or doesn't support imports: ${model.name}")
                     return@executeCommand
                 }
 
@@ -222,10 +248,8 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Response: { ok, data: [{ name, reference, kind }, ...] }
     """)
     suspend fun list_MPS_model_used_languages(
-        @McpDescription("Module name")
-        moduleName: String,
-        @McpDescription("Model name")
-        modelName: String
+        @McpDescription("Persistent model reference")
+        modelRef: String
     ): String {
         currentCoroutineContext().reportToolActivity("Listing MPS model used languages")
         val project = currentCoroutineContext().project
@@ -235,18 +259,15 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
             append('[')
             var first = true
             mpsProject.repository.modelAccess.runReadAction {
-                val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                if (module != null) {
-                    val model = module.models.find { it.name.value == modelName || it.name.toString() == modelName }
-                    if (model is SModelInternal) {
-                        for (lang in model.importedLanguageIds()) {
-                            if (!first) append(',') else first = false
-                            append(languageReferenceJson(lang))
-                        }
-                        for (devkit in model.importedDevkits()) {
-                            if (!first) append(',') else first = false
-                            append(devkitReferenceJson(devkit))
-                        }
+                val model = resolveModel(mpsProject, modelRef)
+                if (model is SModelInternal) {
+                    for (lang in model.importedLanguageIds()) {
+                        if (!first) append(',') else first = false
+                        append(languageReferenceJson(lang))
+                    }
+                    for (devkit in model.importedDevkits()) {
+                        if (!first) append(',') else first = false
+                        append(devkitReferenceJson(devkit))
                     }
                 }
             }
@@ -260,10 +281,8 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Adds a used language or devkit to an MPS model.
     """)
     suspend fun add_MPS_model_used_language(
-        @McpDescription("Module name")
-        moduleName: String,
-        @McpDescription("Model name")
-        modelName: String,
+        @McpDescription("Persistent model reference")
+        modelRef: String,
         @McpDescription("Language or devkit name or reference")
         usedLanguage: String,
         @McpDescription("Kind: 'language' or 'devkit'")
@@ -276,18 +295,13 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         return withContext(Dispatchers.EDT) {
             var result: String? = null
             mpsProject.modelAccess.executeCommand {
-                val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                if (module == null) {
-                    result = errJson("Module not found: $moduleName")
-                    return@executeCommand
-                }
-                val model = module.models.find { it.name.value == modelName || it.name.toString() == modelName }
+                val model = resolveModel(mpsProject, modelRef)
                 if (model == null) {
-                    result = errJson("Model not found: $modelName in module $moduleName")
+                    result = errJson("Model not found: $modelRef")
                     return@executeCommand
                 }
                 if (model !is EditableSModel || model !is SModelInternal) {
-                    result = errJson("Model is not editable or doesn't support used languages: $modelName")
+                    result = errJson("Model is not editable or doesn't support used languages: ${model.name}")
                     return@executeCommand
                 }
 
@@ -340,10 +354,8 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Removes a used language or devkit from an MPS model.
     """)
     suspend fun remove_MPS_model_used_language(
-        @McpDescription("Module name")
-        moduleName: String,
-        @McpDescription("Model name")
-        modelName: String,
+        @McpDescription("Persistent model reference")
+        modelRef: String,
         @McpDescription("Language or devkit reference")
         usedLanguageRef: String,
         @McpDescription("Kind: 'language' or 'devkit'")
@@ -356,18 +368,13 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         return withContext(Dispatchers.EDT) {
             var result: String? = null
             mpsProject.modelAccess.executeCommand {
-                val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                if (module == null) {
-                    result = errJson("Module not found: $moduleName")
-                    return@executeCommand
-                }
-                val model = module.models.find { it.name.value == modelName || it.name.toString() == modelName }
+                val model = resolveModel(mpsProject, modelRef)
                 if (model == null) {
-                    result = errJson("Model not found: $modelName in module $moduleName")
+                    result = errJson("Model not found: $modelRef")
                     return@executeCommand
                 }
                 if (model !is EditableSModel || model !is SModelInternal) {
-                    result = errJson("Model is not editable or doesn't support used languages: $modelName")
+                    result = errJson("Model is not editable or doesn't support used languages: ${model.name}")
                     return@executeCommand
                 }
 
@@ -412,79 +419,79 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
     }
 
     // ---- READ: list models (JSON) ----
-    @McpTool
-    @McpDescription("""
-        Lists all MPS models available in the current project. Returns JSON.
-        Response: { ok, data: [{ name, module, reference, present:true }, ...] }
-    """)
-    suspend fun list_MPS_models(): String {
-        currentCoroutineContext().reportToolActivity("Getting MPS models")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+//    @McpTool
+//    @McpDescription("""
+//        Lists all MPS models available in the current project. Returns JSON.
+//        Response: { ok, data: [{ name, module, reference, present:true }, ...] }
+//    """)
+//    suspend fun list_MPS_models(): String {
+//        currentCoroutineContext().reportToolActivity("Getting MPS models")
+//        val project = currentCoroutineContext().project
+//        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+//
+//        val items = buildString {
+//            append('[')
+//            var first = true
+//            mpsProject.repository.modelAccess.runReadAction {
+//                for (m in mpsProject.projectModules.flatMap { it.models }) {
+//                    if (!first) append(',') else first = false
+//                    append(modelInfoJson(m))
+//                }
+//            }
+//            append(']')
+//        }
+//        return okJson(items)
+//    }
 
-        val items = buildString {
-            append('[')
-            var first = true
-            mpsProject.repository.modelAccess.runReadAction {
-                for (m in mpsProject.projectModules.flatMap { it.models }) {
-                    if (!first) append(',') else first = false
-                    append(modelInfoJson(m))
-                }
-            }
-            append(']')
-        }
-        return okJson(items)
-    }
-
-    @McpTool
-    @McpDescription("""
-        Retrieves a list of all MPS models available in the provided MPS module. Returns JSON.
-        Response: { ok, data: [{ name, module, reference, present:true }, ...] }
-        If a precise name match for the module is not found, a partial match is used (if the parameter value is part of the whole module's name).
-        If more than one partial match is found, returns an error containing the found full module names.
-    """)
-    suspend fun list_MPS_models_in_module(
-        @McpDescription("Name of the MPS module to retrieve the models of")
-        moduleName: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Getting MPS models in module")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        var reply: String? = null
-        mpsProject.repository.modelAccess.runReadAction {
-            val allModules = mpsProject.projectModulesWithGenerators
-            val moduleExactMatch = allModules.find { it.moduleName == moduleName }
-            val module = if (moduleExactMatch != null) {
-                moduleExactMatch
-            } else {
-                val partialMatches = allModules.filter { it.moduleName?.contains(moduleName) == true }
-                when (partialMatches.size) {
-                    0 -> {
-                        reply = errJson("Module '$moduleName' not found")
-                        return@runReadAction
-                    }
-                    1 -> partialMatches[0]
-                    else -> {
-                        val names = partialMatches.mapNotNull { it.moduleName }.joinToString(", ")
-                        reply = errJson("Module '$moduleName' not found. Multiple partial matches found: $names")
-                        return@runReadAction
-                    }
-                }
-            }
-            val items = buildString {
-                append('[')
-                var first = true
-                for (m in module.models) {
-                    if (!first) append(',') else first = false
-                    append(modelInfoJson(m))
-                }
-                append(']')
-            }
-            reply = okJson(items)
-        }
-        return reply!!
-    }
+//    @McpTool
+//    @McpDescription("""
+//        Retrieves a list of all MPS models available in the provided MPS module. Returns JSON.
+//        Response: { ok, data: [{ name, module, reference, present:true }, ...] }
+//        If a precise name match for the module is not found, a partial match is used (if the parameter value is part of the whole module's name).
+//        If more than one partial match is found, returns an error containing the found full module names.
+//    """)
+//    suspend fun list_MPS_models_in_module(
+//        @McpDescription("Name of the MPS module to retrieve the models of")
+//        moduleName: String
+//    ): String {
+//        currentCoroutineContext().reportToolActivity("Getting MPS models in module")
+//        val project = currentCoroutineContext().project
+//        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+//
+//        var reply: String? = null
+//        mpsProject.repository.modelAccess.runReadAction {
+//            val allModules = mpsProject.projectModulesWithGenerators
+//            val moduleExactMatch = allModules.find { it.moduleName == moduleName }
+//            val module = if (moduleExactMatch != null) {
+//                moduleExactMatch
+//            } else {
+//                val partialMatches = allModules.filter { it.moduleName?.contains(moduleName) == true }
+//                when (partialMatches.size) {
+//                    0 -> {
+//                        reply = errJson("Module '$moduleName' not found")
+//                        return@runReadAction
+//                    }
+//                    1 -> partialMatches[0]
+//                    else -> {
+//                        val names = partialMatches.mapNotNull { it.moduleName }.joinToString(", ")
+//                        reply = errJson("Module '$moduleName' not found. Multiple partial matches found: $names")
+//                        return@runReadAction
+//                    }
+//                }
+//            }
+//            val items = buildString {
+//                append('[')
+//                var first = true
+//                for (m in module.models) {
+//                    if (!first) append(',') else first = false
+//                    append(modelInfoJson(m))
+//                }
+//                append(']')
+//            }
+//            reply = okJson(items)
+//        }
+//        return reply!!
+//    }
 
     // ---- READ: get a single model by name (JSON) ----
     @McpTool
@@ -593,9 +600,10 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Updates an MPS model. Currently supports renaming. Returns JSON.
     """)
     suspend fun update_MPS_model(
-        @McpDescription("Module name") moduleName: String,
-        @McpDescription("Current model name") modelName: String,
-        @McpDescription("New model name") newModelName: String
+        @McpDescription("Persistent model reference")
+        modelRef: String,
+        @McpDescription("New model name")
+        newModelName: String
     ): String {
         currentCoroutineContext().reportToolActivity("Update MPS model")
         val project = currentCoroutineContext().project
@@ -606,18 +614,13 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
             var error: String? = null
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
-                    val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                    if (module == null) {
-                        error = "Module '$moduleName' not found"
-                        return@executeCommand
-                    }
-                    val model = module.models.find { it.name.value == modelName }
+                    val model = resolveModel(mpsProject, modelRef)
                     if (model == null) {
-                        error = "Model '$modelName' not found in module '$moduleName'"
+                        error = "Model not found: $modelRef"
                         return@executeCommand
                     }
                     if (model !is EditableSModel) {
-                        error = "Model '$modelName' is not editable"
+                        error = "Model '${model.name}' is not editable"
                         return@executeCommand
                     }
                     model.rename(newModelName, true)
@@ -639,8 +642,8 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         Deletes an MPS model. Returns JSON.
     """)
     suspend fun delete_MPS_model(
-        @McpDescription("Module name") moduleName: String,
-        @McpDescription("Model name") modelName: String
+        @McpDescription("Persistent model reference")
+        modelRef: String
     ): String {
         currentCoroutineContext().reportToolActivity("Delete MPS model")
         val project = currentCoroutineContext().project
@@ -649,18 +652,16 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
         return try {
             var deleted = false
             var error: String? = null
+            var modelName: String? = null
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
-                    val module = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                    if (module == null) {
-                        error = "Module '$moduleName' not found"
-                        return@executeCommand
-                    }
-                    val model = module.models.find { it.name.value == modelName }
+                    val model = resolveModel(mpsProject, modelRef)
                     if (model == null) {
-                        error = "Model '$modelName' not found in module '$moduleName'"
+                        error = "Model not found: $modelRef"
                         return@executeCommand
                     }
+                    modelName = model.name.value
+                    val module = model.module
                     // SModule doesn't have a direct removeModel(SModel) in openapi,
                     // but it usually has it in the implementation or we use ModelRoot.
                     // However, we can use the project-level removal if applicable,
@@ -679,7 +680,7 @@ class JetBrainsMPSModelMcpToolset : JetBrainsMPSMcpToolset() {
                 }
             }
             if (error != null) errJson(error)
-            else if (deleted) okJson("{\"name\":\"" + escapeJson(modelName) + "\",\"deleted\":true}")
+            else if (deleted) okJson("{\"name\":\"" + escapeJson(modelName ?: "") + "\",\"deleted\":true}")
             else errJson("Failed to delete model")
         } catch (e: Throwable) {
             errJson(e.message)

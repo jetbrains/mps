@@ -13,6 +13,8 @@ import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.NodeReportItem
+import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
+import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.AbstractModule
@@ -24,13 +26,11 @@ import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.withContext
-import org.jetbrains.mps.openapi.language.SConcept
-import org.jetbrains.mps.openapi.language.SContainmentLink
-import org.jetbrains.mps.openapi.language.SProperty
-import org.jetbrains.mps.openapi.language.SReferenceLink
+import org.jetbrains.mps.openapi.language.*
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.Consumer
 
@@ -38,34 +38,26 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
 
     @McpTool
     @McpDescription("""
-        Checks the specified MPS node and its descendants for errors, warnings, and infos.
-        Returns either a "no problems found" message or a deep printout of the node with problems included.
+        Returns a reference to the root node containing the specified MPS node in the node hierarchy.
         Returns JSON format:
         {
           "ok": true,
           "data": {
-            "name": "NodeName",
-            "reference": "...",
-            "concept": "...",
-            "conceptReference": "...",
-            "problems": [
-              { "severity": "error|warning|info", "message": "..." }
-            ],
-            "children": [
-              {
-                "role": "...",
-                "nodes": [
-                   { "name": "...", "problems": [...] }
-                ]
-              }
-            ]
+            "name": "RootNodeName",
+            "concept": "FullyQualifiedConceptName",
+            "conceptReference": "PersistentConceptReference",
+            "reference": "PersistentNodeReference",
+            "modelReference": "PersistentModelReference",
+            "virtualFolder": "VirtualFolderName",
+            "present": true
           }
         }
+        If the node itself is a root node, it returns itself.
     """)
-    suspend fun check_MPS_node_errors(
+    suspend fun get_MPS_containing_root_node(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String
     ): String {
-        currentCoroutineContext().reportToolActivity("Checking MPS node errors")
+        currentCoroutineContext().reportToolActivity("Getting MPS node root")
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
@@ -76,48 +68,56 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 val node = sNodeRef.resolve(mpsProject.repository)
                 if (node == null) {
                     reply = errJson("Node '$nodeRef' not found")
-                    return@runReadAction
-                }
-
-                val root = node.containingRoot
-                val host = mpsProject.platform
-                val repo = mpsProject.repository
-
-                val problems = mutableMapOf<SNode, MutableList<NodeReportItem>>()
-                val collector = Consumer<NodeReportItem> { item ->
-                    val problemNode = item.node.resolve(repo)
-                    if (problemNode != null) {
-                        problems.getOrPut(problemNode) { mutableListOf() }.add(item)
-                    }
-                }
-
-                val monitor = EmptyProgressMonitor()
-                StructureChecker(host).check(root, repo, collector, monitor)
-                ConstraintsChecker(host).check(root, repo, collector, monitor)
-                TargetConceptChecker2(host).check(root, repo, collector, monitor)
-                RefScopeChecker(host).check(root, repo, collector, monitor)
-                
-                // Optional checkers if available
-                try {
-                    TypesystemChecker().check(root, repo, collector, monitor)
-                    NonTypesystemChecker().check(root, repo, collector, monitor)
-                } catch (e: Throwable) {
-                    // Ignore if not available or failed
-                }
-
-                // Check if any problems exist for the node or its descendants
-                fun hasProblems(n: SNode): Boolean {
-                    if (problems.containsKey(n)) return true
-                    for (child in n.children) {
-                        if (hasProblems(child)) return true
-                    }
-                    return false
-                }
-
-                if (!hasProblems(node)) {
-                    reply = okJson("\"no problems found\"")
                 } else {
-                    reply = okJson(nodeWithProblemsToJson(node, problems))
+                    val root = node.containingRoot
+                    reply = okJson(nodeInfoJson(root))
+                }
+            } catch (e: Exception) {
+                reply = errJson(e.message)
+            }
+        }
+        return reply!!
+    }
+
+    @McpTool
+    @McpDescription("""
+        Returns a reference to the parent of the specified MPS node in the node hierarchy.
+        Returns JSON format:
+        {
+          "ok": true,
+          "data": {
+            "name": "ParentNodeName",
+            "concept": "FullyQualifiedConceptName",
+            "conceptReference": "PersistentConceptReference",
+            "reference": "PersistentNodeReference",
+            "modelReference": "PersistentModelReference",
+            "virtualFolder": "VirtualFolderName",
+            "present": true
+          }
+        }
+        If the node has no parent (it is a root node), "data" will be null.
+    """)
+    suspend fun get_MPS_node_parent(
+        @McpDescription("Persistent form of SNodeReference") nodeRef: String
+    ): String {
+        currentCoroutineContext().reportToolActivity("Getting MPS node parent")
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+
+        var reply: String? = null
+        mpsProject.repository.modelAccess.runReadAction {
+            try {
+                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+                val node = sNodeRef.resolve(mpsProject.repository)
+                if (node == null) {
+                    reply = errJson("Node '$nodeRef' not found")
+                } else {
+                    val parent = node.parent
+                    reply = if (parent != null) {
+                        okJson(nodeInfoJson(parent))
+                    } else {
+                        okJson("null")
+                    }
                 }
             } catch (e: Exception) {
                 reply = errJson(e.message)
@@ -212,7 +212,110 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         }
     }
 
+    @McpTool
+    @McpDescription("""
+        Checks the specified MPS node and its descendants for errors, warnings, and infos.
+        Returns either a "no problems found" message or a deep printout of the node with problems included.
+        Returns JSON format:
+        {
+          "ok": true,
+          "data": {
+            "name": "NodeName",
+            "reference": "PersistentNodeReference",
+            "concept": "ConceptName",
+            "conceptReference": "PersistentConceptReference",
+            "problems": [
+              { "severity": "error|warning|info", "message": "..." }
+            ],
+            "properties": [
+              { "name": "propertyName", "type": "propertyType", "value": "propertyValue", "problems": [ { "severity": "error|warning|info", "message": "..." } ] }
+            ],
+            "references": [
+              { "role": "linkRole", "type": "targetConcept", "typeReference": "PersistentConceptReference", "cardinality": "0..1|1", "target": "TargetNodeName", "targetReference": "PersistentTargetReference", "problems": [ { "severity": "error|warning|info", "message": "..." } ] }
+            ],
+            "children": [
+              {
+                "role": "linkRole",
+                "type": "targetConcept",
+                "typeReference": "PersistentConceptReference",
+                "cardinality": "0..1|1|0..n|1..n",
+                "problems": [ { "severity": "error|warning|info", "message": "..." } ],
+                "nodes": [
+                   { "name": "...", "reference": "...", "concept": "...", "conceptReference": "...", "problems": [...], "properties": [...], "references": [...], "children": [...] }
+                ]
+              }
+            ]
+          }
+        }
+    """)
+    suspend fun check_MPS_root_node_errors(
+        @McpDescription("Persistent form of SNodeReference") nodeRef: String
+    ): String {
+        currentCoroutineContext().reportToolActivity("Checking MPS node errors")
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+
+        var reply: String? = null
+        mpsProject.repository.modelAccess.runReadAction {
+            try {
+                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+                val node = sNodeRef.resolve(mpsProject.repository)
+                if (node == null) {
+                    reply = errJson("Node '$nodeRef' not found")
+                    return@runReadAction
+                }
+
+                val root = node.containingRoot
+                val host = mpsProject.platform
+                val repo = mpsProject.repository
+
+                val problems = mutableMapOf<SNode, MutableList<NodeReportItem>>()
+                val collector = Consumer<NodeReportItem> { item ->
+                    val problemNode = item.node.resolve(repo)
+                    if (problemNode != null) {
+                        problems.getOrPut(problemNode) { mutableListOf() }.add(item)
+                    }
+                }
+
+                val monitor = EmptyProgressMonitor()
+                StructureChecker(host).asRootChecker().check(root, repo, collector, monitor)
+                ConstraintsChecker(host).asRootChecker().check(root, repo, collector, monitor)
+                TargetConceptChecker2(host).asRootChecker().check(root, repo, collector, monitor)
+                RefScopeChecker(host).asRootChecker().check(root, repo, collector, monitor)
+                
+                // Optional checkers if available
+                try {
+                    TypesystemChecker().check(root, repo, collector, monitor)
+                    NonTypesystemChecker().check(root, repo, collector, monitor)
+                } catch (e: Throwable) {
+                    // Ignore if not available or failed
+                }
+
+                // Check if any problems exist for the node or its descendants
+                fun hasProblems(n: SNode): Boolean {
+                    if (problems.containsKey(n)) return true
+                    for (child in n.children) {
+                        if (hasProblems(child)) return true
+                    }
+                    return false
+                }
+
+                if (!hasProblems(node)) {
+                    reply = okJson("\"no problems found\"")
+                } else {
+                    reply = okJson(nodeWithProblemsToJson(node, problems))
+                }
+            } catch (e: Exception) {
+                reply = errJson(e.message)
+            }
+        }
+        return reply!!
+    }
+
     private fun nodeWithProblemsToJson(node: SNode, problems: Map<SNode, List<NodeReportItem>>): String {
+        val nodeProblems = problems[node] ?: emptyList()
+        val problemsByTarget = nodeProblems.groupBy { it.messageTarget }
+
         return buildString {
             append("{")
             append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
@@ -220,11 +323,11 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
             append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
             append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
 
-            // Problems
-            val nodeProblems = problems[node] ?: emptyList()
+            // Problems (node-level)
+            val nodeLevelProblems = problemsByTarget.filter { it.key !is PropertyMessageTarget && it.key !is ReferenceMessageTarget }.values.flatten()
             append("\"problems\":[")
             var firstProb = true
-            for (prob in nodeProblems) {
+            for (prob in nodeLevelProblems) {
                 if (!firstProb) append(",") else firstProb = false
                 append("{")
                 val severity = when (prob.severity) {
@@ -246,29 +349,74 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 append("{")
                 append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-                append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\"")
+                append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\",")
+                
+                // Property problems
+                val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
+                append("\"problems\":[")
+                var firstPropProb = true
+                for (prob in propProblems) {
+                    if (!firstPropProb) append(",") else firstPropProb = false
+                    append("{")
+                    val severity = when (prob.severity) {
+                        MessageStatus.ERROR -> "error"
+                        MessageStatus.WARNING -> "warning"
+                        else -> "info"
+                    }
+                    append("\"severity\":\"").append(severity).append("\",")
+                    append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
+                    append("}")
+                }
+                append("]")
                 append("}")
             }
             append("],")
 
             // References
             append("\"references\":[")
-            var firstRef = true
-            for (ref in node.references) {
-                if (!firstRef) append(",") else firstRef = false
-                val link = ref.link
+            var firstRefRole = true
+            val referencesByRole = node.references.associateBy { it.link }
+            for (link in node.concept.referenceLinks) {
+                val ref = referencesByRole[link]
+                val refProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
+                if (ref == null && link.isOptional && refProblems.isEmpty()) continue
+
+                if (!firstRefRole) append(",") else firstRefRole = false
                 append("{")
                 append("\"role\":\"").append(escapeJson(link.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val targetNode = ref.targetNode
-                if (targetNode != null) {
-                    append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
-                    append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\"")
+                if (ref != null) {
+                    val targetNode = ref.targetNode
+                    if (targetNode != null) {
+                        append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
+                        append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\",")
+                    } else {
+                        append("\"target\":null,")
+                        append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\",")
+                    }
                 } else {
                     append("\"target\":null,")
-                    append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\"")
+                    append("\"targetReference\":null,")
                 }
+
+                // Reference problems
+                append("\"problems\":[")
+                var firstRefProb = true
+                for (prob in refProblems) {
+                    if (!firstRefProb) append(",") else firstRefProb = false
+                    append("{")
+                    val severity = when (prob.severity) {
+                        MessageStatus.ERROR -> "error"
+                        MessageStatus.WARNING -> "warning"
+                        else -> "info"
+                    }
+                    append("\"severity\":\"").append(severity).append("\",")
+                    append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
+                    append("}")
+                }
+                append("]")
                 append("}")
             }
             append("],")
@@ -279,13 +427,33 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
             val childrenByRole = node.children.groupBy { it.containmentLink }
             for (link in node.concept.containmentLinks) {
                 val childrenInRole = childrenByRole[link] ?: emptyList()
-                if (childrenInRole.isEmpty() && link.isOptional) continue
+                val roleProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
+                if (childrenInRole.isEmpty() && link.isOptional && roleProblems.isEmpty()) continue
 
                 if (!firstChildRole) append(",") else firstChildRole = false
                 append("{")
                 append("\"role\":\"").append(escapeJson(link.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+
+                // Role-level problems (e.g. missing compulsory child)
+                append("\"problems\":[")
+                var firstRoleProb = true
+                for (prob in roleProblems) {
+                    if (!firstRoleProb) append(",") else firstRoleProb = false
+                    append("{")
+                    val severity = when (prob.severity) {
+                        MessageStatus.ERROR -> "error"
+                        MessageStatus.WARNING -> "warning"
+                        else -> "info"
+                    }
+                    append("\"severity\":\"").append(severity).append("\",")
+                    append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
+                    append("}")
+                }
+                append("],")
+
                 append("\"nodes\":[")
                 var firstChild = true
                 for (child in childrenInRole) {
@@ -311,15 +479,16 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
           "data": {
             "name": "NodeName",
             "concept": "FullyQualifiedConceptName",
+            "conceptReference": "PersistentConceptReference",
             "reference": "PersistentNodeReference",
             "properties": [
               { "name": "propertyName", "type": "propertyType", "value": "propertyValue" }
             ],
-            "children": [
-              { "role": "linkRole", "type": "targetConcept", "cardinality": "0..1|1|0..n|1..n", "count": 2 }
-            ],
             "references": [
-              { "role": "linkRole", "type": "targetConcept", "cardinality": "0..1|1", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
+              { "role": "linkRole", "type": "roleConcept", "typeReference": "PersistentRoleConceptReference", "cardinality": "0..1|1", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
+            ],
+            "children": [
+              { "role": "linkRole", "type": "roleConcept", "typeReference": "PersistentRoleConceptReference", "cardinality": "0..1|1|0..n|1..n", "count": 2 }
             ]
           }
         }
@@ -339,16 +508,22 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
           "data": {
             "name": "NodeName",
             "concept": "FullyQualifiedConceptName",
+            "conceptReference": "PersistentConceptReference",
             "reference": "PersistentNodeReference",
-            "properties": [...],
-            "references": [...],
+            "properties": [
+              { "name": "propertyName", "type": "propertyType", "value": "propertyValue" }
+            ],
+            "references": [
+              { "role": "linkRole", "type": "roleConcept", "typeReference": "PersistentRoleConceptReference", "cardinality": "0..1|1", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
+            ],
             "children": [
               { 
                 "role": "linkRole", 
-                "type": "targetConcept", 
+                "type": "roleConcept", 
+                "typeReference": "PersistentRoleConceptReference",
                 "cardinality": "0..1|1|0..n|1..n",
                 "nodes": [ 
-                   { "name": "ChildNodeName", "concept": "...", "properties": [...], "children": [...], "references": [...] }
+                   { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "reference": "...", "properties": [...], "references": [...], "children": [...] }
                 ]
               }
             ]
@@ -364,7 +539,28 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
     @McpTool
     @McpDescription("""
         Inserts a node described by a JSON deep printout as a root into the specified MPS model.
+        Updates the dependencies and used languages of the containing model.
         Verifies that the top-level concept is rootable before insertion.
+        The JSON format must follow the deep printout structure:
+        {
+          "name": "NodeName",
+          "concept": "FullyQualifiedConceptName",
+          "conceptReference": "PersistentConceptReference",
+          "properties": [
+            { "name": "propertyName", "value": "propertyValue" }
+          ],
+          "references": [
+            { "role": "linkRole", "targetReference": "PersistentTargetReference" }
+          ],
+          "children": [
+            { 
+              "role": "linkRole", 
+              "nodes": [ 
+                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+              ]
+            }
+          ]
+        }
         Returns JSON format of the created root node.
     """)
     suspend fun insert_MPS_root_node_from_json(
@@ -544,6 +740,66 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
     }
 
     @McpTool
+    @McpDescription("Returns the list of possible value-presentation pairs for an enumeration property of a node.")
+    suspend fun get_MPS_enumeration_literals(
+        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
+        @McpDescription("The name of the enumeration property") propertyName: String
+    ): String {
+        currentCoroutineContext().reportToolActivity("Getting MPS enumeration literals for '$propertyName'")
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+
+        var reply: String? = null
+        mpsProject.repository.modelAccess.runReadAction {
+            try {
+                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+                val node = sNodeRef.resolve(mpsProject.repository)
+                if (node == null) {
+                    reply = errJson("Node '$nodeRef' not found")
+                } else {
+                    val sProperty = node.concept.properties.find { it.name == propertyName }
+                    if (sProperty == null) {
+                        reply = errJson("Property '$propertyName' not found in concept '${node.concept.name}'")
+                    } else {
+                        val type = sProperty.type
+                        if (type is SEnumeration) {
+                            val list = type.literals.map { literal ->
+                                mapOf("value" to (literal.name ?: ""), "presentation" to literal.presentation)
+                            }
+                            reply = okJson(Gson().toJson(list))
+                        } else {
+                            reply = errJson("Property '$propertyName' is not an enumeration")
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                reply = errJson(e.message)
+            }
+        }
+        return reply!!
+    }
+
+    @McpTool
+    @McpDescription("Sets an enumeration property of an MPS node.")
+    suspend fun set_MPS_node_enumeration_property(
+        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
+        @McpDescription("The name of the property to set") propertyName: String,
+        @McpDescription("The name of the enumeration literal to set") literalName: String
+    ): String {
+        return update_node_property(nodeRef, propertyName, literalName)
+    }
+
+    @McpTool
+    @McpDescription("Changes an enumeration property of an MPS node.")
+    suspend fun change_MPS_node_enumeration_property(
+        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
+        @McpDescription("The name of the property to change") propertyName: String,
+        @McpDescription("The name of the enumeration literal to set") literalName: String
+    ): String {
+        return update_node_property(nodeRef, propertyName, literalName)
+    }
+
+    @McpTool
     @McpDescription("""
         Sets or adds a target node to a specified reference role of the given MPS node.
         Ensures model and module dependencies are added if the target is in a different model/module.
@@ -586,9 +842,30 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
     @McpTool
     @McpDescription("""
         Adds a child node described by a JSON blueprint to a specified containment role of the given MPS node.
-        The child is added as the last child in the role, if the role permist multiple children.
+        The child is added as the last child in the role, if the role permits multiple children.
         If the role permits only one child, the new child replaces the previous child.
         The concept of the childNode (childJson) must be assignable to the role's concept.
+        Updates the dependencies and used languages of the containing model.
+        The JSON format must follow the deep printout structure:
+        {
+          "name": "NodeName",
+          "concept": "FullyQualifiedConceptName",
+          "conceptReference": "PersistentConceptReference",
+          "properties": [
+            { "name": "propertyName", "value": "propertyValue" }
+          ],
+          "references": [
+            { "role": "linkRole", "targetReference": "PersistentTargetReference" }
+          ],
+          "children": [
+            { 
+              "role": "linkRole", 
+              "nodes": [ 
+                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+              ]
+            }
+          ]
+        }
         Returns JSON format of the parent node.
     """)
     suspend fun add_MPS_node_child(
@@ -604,6 +881,27 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         Replaces a child node with a new node described by a JSON blueprint.
         The position of the original child node in a child collection is preserved.
         The concept of the childNode (childJson) must be assignable to the role's concept.
+        Updates the dependencies and used languages of the containing model.
+        The JSON format must follow the deep printout structure:
+        {
+          "name": "NodeName",
+          "concept": "FullyQualifiedConceptName",
+          "conceptReference": "PersistentConceptReference",
+          "properties": [
+            { "name": "propertyName", "value": "propertyValue" }
+          ],
+          "references": [
+            { "role": "linkRole", "targetReference": "PersistentTargetReference" }
+          ],
+          "children": [
+            { 
+              "role": "linkRole", 
+              "nodes": [ 
+                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+              ]
+            }
+          ]
+        }
         Returns JSON format of the parent node.
     """)
     suspend fun change_MPS_node_child(
@@ -710,12 +1008,14 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                         // Repositioning
                         if (targetIndex == count - 1) {
                             // Move to last position
+                            parent.removeChild(childNode)
                             parent.addChild(role, childNode)
                         } else {
                             // Move before the child currently at targetIndex
                             // If targetIndex > currentIndex, we need to skip one child because childNode is already in the list
                             val anchorIndex = if (targetIndex > currentIndex) targetIndex + 1 else targetIndex
                             val anchor = if (anchorIndex < count) childrenInRole[anchorIndex] else null
+                            parent.removeChild(childNode)
                             parent.insertChildBefore(role, childNode, anchor)
                         }
 
@@ -914,6 +1214,24 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         }
     }
 
+    private fun setProperty(node: SNode, sProperty: SProperty, propertyValue: String?) {
+        val type = sProperty.type
+        if (type is SEnumeration && propertyValue != null) {
+            val literal = type.getLiteral(propertyValue)
+            if (literal != null) {
+                SNodeAccessUtil.setPropertyValue(node, sProperty, literal)
+                return
+            }
+            // fallback to presentation
+            val byPresentation = type.literals.find { it.presentation == propertyValue }
+            if (byPresentation != null) {
+                SNodeAccessUtil.setPropertyValue(node, sProperty, byPresentation)
+                return
+            }
+        }
+        node.setProperty(sProperty, propertyValue)
+    }
+
     private suspend fun update_node_property(nodeRef: String, propertyName: String, propertyValue: String?): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node property '$propertyName'")
         val project = currentCoroutineContext().project
@@ -945,7 +1263,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                             return@executeCommand
                         }
 
-                        node.setProperty(sProperty, propertyValue)
+                        setProperty(node, sProperty, propertyValue)
                         model.save()
                         result = nodeInfoJson(node)
                     } catch (e: Exception) {
@@ -1015,6 +1333,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 append("{")
                 append("\"role\":\"").append(escapeJson(link.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
                 val targetNode = ref.targetNode
                 if (targetNode != null) {
@@ -1040,6 +1359,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 append("{")
                 append("\"role\":\"").append(escapeJson(link.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
                 if (deep) {
                     append("\"nodes\":[")
@@ -1061,7 +1381,12 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
     }
 
     private fun getPropertyType(prop: SProperty): String {
-        return "String"
+        val type = prop.type
+        return if (type is SEnumeration) {
+            "enum:${type.name}"
+        } else {
+            type.toString()
+        }
     }
 
     private fun getCardinality(link: SContainmentLink): String {
@@ -1130,6 +1455,10 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         }
 
         val newNode = SNodeFactoryOperations.createNewNode(sConcept, null)
+        newNode.children.forEach { it.delete() }
+        
+//        val newNode = model.createNode(sConcept, null);
+//        val newNode = SModelOperations.node;
 
         // Set name if present and supported
         val name = jsonObject.get("name")?.asString
@@ -1149,7 +1478,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 val propValue = propObject.get("value").asString
                 val sProperty = sConcept.properties.find { it.name == propName }
                 if (sProperty != null) {
-                    newNode.setProperty(sProperty, propValue)
+                    setProperty(newNode, sProperty, propValue)
                 }
             }
         }

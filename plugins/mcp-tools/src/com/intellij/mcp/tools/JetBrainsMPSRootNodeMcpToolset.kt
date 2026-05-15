@@ -96,34 +96,30 @@ class JetBrainsMPSRootNodeMcpToolset : JetBrainsMPSMcpToolset() {
 
     @McpTool
     @McpDescription("""
-        Lists all root nodes in the specified MPS model. Returns JSON.
+        Searches for root nodes with the specified name in all models of the project.
+        Returns a JSON-formatted list of matching nodes.
     """)
-    suspend fun list_MPS_root_nodes(
-        @McpDescription("Persistent form of SModelReference") modelRef: String
+    suspend fun search_MPS_root_node_by_name(
+        @McpDescription("The name of the root node to search for") name: String
     ): String {
-        currentCoroutineContext().reportToolActivity("Listing MPS root nodes")
+        currentCoroutineContext().reportToolActivity("Searching for MPS root node by name")
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
         var reply: String? = null
         mpsProject.repository.modelAccess.runReadAction {
             try {
-                val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
-                val model = sModelRef.resolve(mpsProject.repository)
-                if (model == null) {
-                    reply = errJson("Model '$modelRef' not found")
-                    return@runReadAction
-                }
-                val items = buildString {
-                    append('[')
-                    var first = true
-                    for (n in model.rootNodes) {
-                        if (!first) append(',') else first = false
-                        append(nodeInfoJson(n))
+                val results = mutableListOf<String>()
+                for (module in mpsProject.repository.modules) {
+                    for (model in module.models) {
+                        for (root in model.rootNodes) {
+                            if (root.name == name) {
+                                results.add(nodeInfoJson(root))
+                            }
+                        }
                     }
-                    append(']')
                 }
-                reply = okJson(items)
+                reply = okJson("[" + results.joinToString(",") + "]")
             } catch (e: Exception) {
                 reply = errJson(e.message)
             }
@@ -131,34 +127,71 @@ class JetBrainsMPSRootNodeMcpToolset : JetBrainsMPSMcpToolset() {
         return reply!!
     }
 
-    @McpTool
-    @McpDescription("""
-        Gets information about a single MPS root node by its reference. Returns JSON.
-        Response: { ok, data: { name, concept, reference, modelReference, virtualFolder, present:true } } or { ok:false, error }
-    """)
-    suspend fun get_MPS_root_node(
-        @McpDescription("Persistent form of SNodeReference") nodeRef: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Getting MPS root node")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+//    @McpTool
+//    @McpDescription("""
+//        Lists all root nodes in the specified MPS model. Returns JSON.
+//    """)
+//    suspend fun list_MPS_root_nodes(
+//        @McpDescription("Persistent form of SModelReference") modelRef: String
+//    ): String {
+//        currentCoroutineContext().reportToolActivity("Listing MPS root nodes")
+//        val project = currentCoroutineContext().project
+//        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+//
+//        var reply: String? = null
+//        mpsProject.repository.modelAccess.runReadAction {
+//            try {
+//                val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
+//                val model = sModelRef.resolve(mpsProject.repository)
+//                if (model == null) {
+//                    reply = errJson("Model '$modelRef' not found")
+//                    return@runReadAction
+//                }
+//                val items = buildString {
+//                    append('[')
+//                    var first = true
+//                    for (n in model.rootNodes) {
+//                        if (!first) append(',') else first = false
+//                        append(nodeInfoJson(n))
+//                    }
+//                    append(']')
+//                }
+//                reply = okJson(items)
+//            } catch (e: Exception) {
+//                reply = errJson(e.message)
+//            }
+//        }
+//        return reply!!
+//    }
 
-        var reply: String? = null
-        mpsProject.repository.modelAccess.runReadAction {
-            try {
-                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                val node = sNodeRef.resolve(mpsProject.repository)
-                if (node == null) {
-                    reply = errJson("Node '$nodeRef' not found")
-                } else {
-                    reply = okJson(nodeInfoJson(node))
-                }
-            } catch (e: Exception) {
-                reply = errJson(e.message)
-            }
-        }
-        return reply!!
-    }
+//    @McpTool
+//    @McpDescription("""
+//        Gets information about a single MPS root node by its reference. Returns JSON.
+//        Response: { ok, data: { name, concept, reference, modelReference, virtualFolder, present:true } } or { ok:false, error }
+//    """)
+//    suspend fun get_MPS_root_node(
+//        @McpDescription("Persistent form of SNodeReference") nodeRef: String
+//    ): String {
+//        currentCoroutineContext().reportToolActivity("Getting MPS root node")
+//        val project = currentCoroutineContext().project
+//        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+//
+//        var reply: String? = null
+//        mpsProject.repository.modelAccess.runReadAction {
+//            try {
+//                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+//                val node = sNodeRef.resolve(mpsProject.repository)
+//                if (node == null) {
+//                    reply = errJson("Node '$nodeRef' not found")
+//                } else {
+//                    reply = okJson(nodeInfoJson(node))
+//                }
+//            } catch (e: Exception) {
+//                reply = errJson(e.message)
+//            }
+//        }
+//        return reply!!
+//    }
 
 
     @McpTool

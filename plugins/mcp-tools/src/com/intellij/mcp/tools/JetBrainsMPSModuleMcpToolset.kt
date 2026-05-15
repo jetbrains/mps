@@ -7,6 +7,7 @@ import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import jetbrains.mps.ide.project.ProjectHelper
+import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.modules.DevkitProducer
 import jetbrains.mps.project.modules.LanguageProducer
@@ -18,15 +19,18 @@ import org.jetbrains.annotations.Nullable
 import jetbrains.mps.project.structure.modules.Dependency
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.Objects
 
 class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     private fun moduleInfoJson(project: MPSProject, m: SModule): String {
         val vf: String? = try { project.getVirtualFolder(m) } catch (_: Throwable) { null }
         val name = m.moduleName ?: ""
+        val ref = PersistenceFacade.getInstance().asString(m.moduleReference)
         val vfPart = vf?.let { "\"virtualFolder\":\"" + escapeJson(it) + "\"," } ?: ""
         return "{" +
                 "\"name\":\"" + escapeJson(name) + "\"," +
+                "\"moduleRef\":\"" + escapeJson(ref) + "\"," +
                 vfPart +
                 "\"present\":true}"
     }
@@ -34,75 +38,96 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     private fun dependencyJson(d: Dependency): String {
         return "{" +
                 "\"moduleName\":\"" + escapeJson(d.moduleRef.moduleName ?: "") + "\"," +
-                "\"moduleRef\":\"" + escapeJson(d.moduleRef.toString()) + "\"," +
+                "\"moduleRef\":\"" + escapeJson(PersistenceFacade.getInstance().asString(d.moduleRef)) + "\"," +
                 "\"scope\":\"" + escapeJson(d.scope.toString()) + "\"," +
                 "\"reexport\":" + d.isReexport + "}"
     }
 
-    // ---- READ: list modules (JSON) ----
-    @McpTool
-    @McpDescription("""
-        Lists all MPS modules available in the current project. Returns JSON.
-        Response: { ok, data: [{ name, virtualFolder?, present:true }, ...] }
-    """
-    )
-    suspend fun list_MPS_modules(): String {
-        currentCoroutineContext().reportToolActivity("Getting MPS modules")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project)
-        if (mpsProject == null) {
-            return errJson("No MPS project available")
-        }
-        val items = buildString {
-            append('[')
-            var first = true
-            mpsProject.repository.modelAccess.runReadAction {
-                for (m in mpsProject.projectModules) {
-                    if (!first) append(',') else first = false
-                    append(moduleInfoJson(mpsProject, m))
+    private fun resolveModule(mpsProject: MPSProject, nameOrRef: String, projectOnly: Boolean = true): SModule? {
+        val repository = mpsProject.repository
+        val facade = PersistenceFacade.getInstance()
+
+        // 1. Try to parse as reference string
+        try {
+            val ref = facade.createModuleReference(nameOrRef)
+            val resolved = ref.resolve(repository)
+            if (resolved != null) {
+                if (!projectOnly || mpsProject.isProjectModule(resolved)) {
+                    return resolved
                 }
             }
-            append(']')
+        } catch (_: Exception) {
+            // Not a valid reference string, ignore
         }
-        return okJson(items)
+
+        // 2. Try exact name match
+        val modulesToSearch = if (projectOnly) mpsProject.projectModulesWithGenerators else repository.modules
+        return modulesToSearch.find { it.moduleName == nameOrRef }
     }
+
+    // ---- READ: list modules (JSON) ----
+//    @McpTool
+//    @McpDescription("""
+//        Lists all MPS modules available in the current project. Returns JSON.
+//        Response: { ok, data: [{ name, moduleRef, virtualFolder?, present:true }, ...] }
+//    """
+//    )
+//    suspend fun list_MPS_modules(): String {
+//        currentCoroutineContext().reportToolActivity("Getting MPS modules")
+//        val project = currentCoroutineContext().project
+//        val mpsProject = ProjectHelper.fromIdeaProject(project)
+//        if (mpsProject == null) {
+//            return errJson("No MPS project available")
+//        }
+//        val items = buildString {
+//            append('[')
+//            var first = true
+//            mpsProject.repository.modelAccess.runReadAction {
+//                for (m in mpsProject.projectModules) {
+//                    if (!first) append(',') else first = false
+//                    append(moduleInfoJson(mpsProject, m))
+//                }
+//            }
+//            append(']')
+//        }
+//        return okJson(items)
+//    }
 
     // ---- READ: list module dependencies (JSON) ----
-    @McpTool
-    @McpDescription("""
-        Lists all dependencies of an MPS module. Returns JSON.
-        Response: { ok, data: [{ moduleName, moduleRef, scope, reexport }, ...] }
-    """
-    )
-    suspend fun list_MPS_module_dependencies(
-        @McpDescription("Module name")
-        moduleName: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Listing MPS module dependencies")
-        val ideaProject = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(ideaProject) ?: return errJson("No MPS project available")
-        val items = buildString {
-            append('[')
-            var first = true
-            mpsProject.repository.modelAccess.runReadAction {
-                val allModules = mpsProject.projectModulesWithGenerators
-                val module = allModules.find { it.moduleName == moduleName }
-                if (module != null) {
-                    val abstractModule = module as? jetbrains.mps.project.AbstractModule
-                    val descriptor = abstractModule?.moduleDescriptor
-                    if (descriptor != null) {
-                        for (d in descriptor.dependencies) {
-                            if (!first) append(',') else first = false
-                            append(dependencyJson(d))
-                        }
-                    }
-                }
-            }
-            append(']')
-        }
-        return okJson(items)
-    }
-
+//    @McpTool
+//    @McpDescription("""
+//        Lists all dependencies of an MPS module. Returns JSON.
+//        Response: { ok, data: [{ moduleName, moduleRef, scope, reexport }, ...] }
+//    """
+//    )
+//    suspend fun list_MPS_module_dependencies(
+//        @McpDescription("Module name or reference")
+//        moduleName: String
+//    ): String {
+//        currentCoroutineContext().reportToolActivity("Listing MPS module dependencies")
+//        val ideaProject = currentCoroutineContext().project
+//        val mpsProject = ProjectHelper.fromIdeaProject(ideaProject) ?: return errJson("No MPS project available")
+//        val items = buildString {
+//            append('[')
+//            var first = true
+//            mpsProject.repository.modelAccess.runReadAction {
+//                val module = resolveModule(mpsProject, moduleName)
+//                if (module != null) {
+//                    val abstractModule = module as? jetbrains.mps.project.AbstractModule
+//                    val descriptor = abstractModule?.moduleDescriptor
+//                    if (descriptor != null) {
+//                        for (d in descriptor.dependencies) {
+//                            if (!first) append(',') else first = false
+//                            append(dependencyJson(d))
+//                        }
+//                    }
+//                }
+//            }
+//            append(']')
+//        }
+//        return okJson(items)
+//    }
+//
     // ---- WRITE: add module dependency (JSON) ----
     @McpTool
     @McpDescription("""
@@ -111,7 +136,7 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     """
     )
     suspend fun add_MPS_module_dependency(
-        @McpDescription("Source module name")
+        @McpDescription("Source module name or reference")
         moduleName: String,
         @McpDescription("Target module name or reference")
         targetModule: String,
@@ -126,8 +151,7 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         var error: String? = null
         withContext(Dispatchers.EDT) {
             mpsProject.repository.modelAccess.executeCommand {
-                val allModules = mpsProject.projectModulesWithGenerators
-                val module = allModules.find { it.moduleName == moduleName }
+                val module = resolveModule(mpsProject, moduleName)
                 if (module == null) {
                     error = "Module $moduleName not found"
                     return@executeCommand
@@ -144,7 +168,7 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
                 }
 
                 // Resolve target module
-                val target = mpsProject.repository.modules.find { it.moduleName == targetModule || it.moduleReference.toString() == targetModule }
+                val target = resolveModule(mpsProject, targetModule, projectOnly = false)
                 if (target == null) {
                     error = "Target module $targetModule not found"
                     return@executeCommand
@@ -185,7 +209,7 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     """
     )
     suspend fun remove_MPS_module_dependency(
-        @McpDescription("Source module name")
+        @McpDescription("Source module name or reference")
         moduleName: String,
         @McpDescription("Target module name or reference")
         targetModule: String
@@ -196,8 +220,7 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         var error: String? = null
         withContext(Dispatchers.EDT) {
             mpsProject.repository.modelAccess.executeCommand {
-                val allModules = mpsProject.projectModulesWithGenerators
-                val module = allModules.find { it.moduleName == moduleName }
+                val module = resolveModule(mpsProject, moduleName)
                 if (module == null) {
                     error = "Module $moduleName not found"
                     return@executeCommand
@@ -213,7 +236,10 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
                     return@executeCommand
                 }
 
-                val targetRef = descriptor.dependencies.find { it.moduleRef.moduleName == targetModule || it.moduleRef.toString() == targetModule }?.moduleRef
+                val targetRef = descriptor.dependencies.find { 
+                    it.moduleRef.moduleName == targetModule || 
+                    PersistenceFacade.getInstance().asString(it.moduleRef) == targetModule 
+                }?.moduleRef
                 if (targetRef == null) {
                     error = "Dependency to $targetModule not found in $moduleName"
                     return@executeCommand
@@ -230,14 +256,14 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     // ---- READ: get a single module by name (JSON) ----
     @McpTool
     @McpDescription("""
-        Gets information about a single MPS module by its name. Returns JSON.
-        Response: { ok, data: { name, virtualFolder?, present:true } } or { ok:false, error }
-        If a precise name match is not found, a partial match is used (if the parameter value is part of the whole module's name).
+        Gets information about a single MPS module by its name or reference. Returns JSON.
+        Response: { ok, data: { name, moduleRef, virtualFolder?, present:true } } or { ok:false, error }
+        If a precise match is not found, a partial match by name is used.
         If more than one partial match is found, returns an error containing the found full module names.
     """
     )
     suspend fun get_MPS_module(
-        @McpDescription("Module name")
+        @McpDescription("Module name or reference")
         moduleName: String
     ): String {
         currentCoroutineContext().reportToolActivity("Get MPS module")
@@ -245,11 +271,11 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         val mpsProject = ProjectHelper.fromIdeaProject(ideaProject) ?: return errJson("No MPS project available")
         var reply: String? = null
         mpsProject.repository.modelAccess.runReadAction {
-            val allModules = mpsProject.projectModulesWithGenerators
-            val exactMatch = allModules.find { it.moduleName == moduleName }
+            val exactMatch = resolveModule(mpsProject, moduleName)
             if (exactMatch != null) {
                 reply = okJson(moduleInfoJson(mpsProject, exactMatch))
             } else {
+                val allModules = mpsProject.projectModulesWithGenerators
                 val partialMatches = allModules.filter { it.moduleName?.contains(moduleName) == true }
                 reply = when (partialMatches.size) {
                     0 -> errJson("Module '$moduleName' not found")
@@ -267,7 +293,8 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     // ---- CREATE ----
     @McpTool
     @McpDescription("""
-        Creates a new, empty MPS module of the given type at the specified directory. Returns JSON.
+        Creates a new, empty MPS module of the given type at the specified directory (The directory gets created, if needed).
+        Returns JSON.
         Types supported: solution | language | devkit | generator.
         For type = generator, provide parentLanguage (the fully qualified language name).
         Params:
@@ -281,36 +308,44 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     suspend fun create_MPS_module(
         @McpDescription("Module type: solution|language|devkit|generator") type: String,
         @McpDescription("Module name or namespace") name: String,
-        @McpDescription("Directory to place the module in (absolute)") directory: String,
+        @McpDescription("Directory to place the module in (absolute), the directory will be created by the tool") directory: String,
         @McpDescription("Optional Project View virtual folder") @Nullable virtualFolder: String?,
         @McpDescription("Required for generator: parent language name") @Nullable parentLanguage: String?
     ): String {
         currentCoroutineContext().reportToolActivity("Create MPS module")
         val ideaProject = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(ideaProject) ?: return errJson("No MPS project available")
-        return try {
-            val fs = mpsProject.fileSystem
-            val dirFile = fs.findExistingFile(directory) ?: fs.getFile(directory).also { it.mkdirs() }
-            var result: SModule? = null
+        val res = try {
             withContext(Dispatchers.EDT) {
+                var result: SModule? = null
                 mpsProject.repository.modelAccess.executeCommand {
+                    val fs = mpsProject.fileSystem
+                    val dirFile = fs.findExistingFile(directory) ?: fs.getFile(directory).also { it.mkdirs() }
+
                     when (type.lowercase()) {
                         "solution" -> {
                             val sp = SolutionProducer(mpsProject)
                             val sol = sp.create(name, dirFile)
-                            if (virtualFolder != null) mpsProject.setVirtualFolder(sol, virtualFolder)
+                            if (virtualFolder != null) {
+                                mpsProject.setVirtualFolder(sol, virtualFolder)
+                            }
                             result = sol
                         }
                         "devkit" -> {
                             val dp = DevkitProducer(mpsProject)
                             val dk = dp.create(name, dirFile)
-                            if (virtualFolder != null) mpsProject.setVirtualFolder(dk, virtualFolder)
+                            if (virtualFolder != null) {
+                                mpsProject.setVirtualFolder(dk, virtualFolder)
+                            }
                             result = dk
                         }
                         "language" -> {
                             val lp = LanguageProducer(mpsProject).withGenerator(false)
                             val lang = lp.create(name, dirFile)
-                            if (virtualFolder != null) mpsProject.setVirtualFolder(lang, virtualFolder)
+                            if (virtualFolder != null) {
+                                mpsProject.setVirtualFolder(lang, virtualFolder)
+                            }
+                            lang.save()
                             result = lang
                         }
                         "generator" -> {
@@ -323,14 +358,20 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
                         }
                     }
                 }
-            }
-            when {
-                result != null -> okJson(moduleInfoJson(mpsProject, result!!))
-                type.lowercase() == "generator" -> errJson("Creating a standalone generator is not supported via this tool. Use language creation with generator or specify a parentLanguage in a dedicated API.")
-                else -> errJson("Unsupported module type '$type'")
+                if (result != null) {
+                    mpsProject.addModule(result!!)
+                    mpsProject.save()
+                }
+                result
             }
         } catch (e: Throwable) {
-            errJson(e.message)
+            return errJson(e.message)
+        }
+        val result = res
+        return when {
+            result != null -> okJson(moduleInfoJson(mpsProject, result!!))
+            type.lowercase() == "generator" -> errJson("Creating a standalone generator is not supported via this tool. Use language creation with generator or specify a parentLanguage in a dedicated API.")
+            else -> errJson("Unsupported module type '$type'")
         }
     }
 
@@ -340,13 +381,13 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         Updates an MPS module. Returns JSON.
         Supports: changing the Project View virtual folder; renaming returns an error if refactoring API is unavailable.
         Params:
-          - moduleName: existing module name
+          - moduleName: existing module name or reference
           - newName: optional new name (rename)
           - virtualFolder: optional new virtual folder
     """
     )
     suspend fun update_MPS_module(
-        @McpDescription("Existing module name") moduleName: String,
+        @McpDescription("Existing module name or reference") moduleName: String,
         @McpDescription("New name (rename)") @Nullable newName: String?,
         @McpDescription("New virtual folder") @Nullable virtualFolder: String?
     ): String {
@@ -356,22 +397,29 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         return try {
             var updated: SModule? = null
             var renameRequested = !newName.isNullOrBlank()
-            var renamePerformed = false
             var renameError: String? = null
             withContext(Dispatchers.EDT) {
+                var folderChanged = false
                 mpsProject.repository.modelAccess.executeCommand {
-                    val m = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
-                    if (m == null) {
-                        return@executeCommand
+                    val m = resolveModule(mpsProject, moduleName)
+                    if (m != null) {
+                        if (!virtualFolder.isNullOrBlank()) {
+                            try {
+                                mpsProject.setVirtualFolder(m, virtualFolder)
+                                folderChanged = true
+                            } catch (_: Throwable) {}
+                        }
+                        if (renameRequested) {
+                            // Proper rename requires refactoring support; report error for now
+                            renameError = "Module rename is not supported by this tool"
+                        }
+
+                        updated = m
+                        (updated as? AbstractModule)?.setChanged()
                     }
-                    if (!virtualFolder.isNullOrBlank()) {
-                        try { mpsProject.setVirtualFolder(m, virtualFolder) } catch (_: Throwable) {}
+                    if (folderChanged) {
+                        mpsProject.save()
                     }
-                    if (renameRequested) {
-                        // Proper rename requires refactoring support; report error for now
-                        renameError = "Module rename is not supported by this tool"
-                    }
-                    updated = m
                 }
             }
             when {
@@ -387,14 +435,14 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
     // ---- DELETE ----
     @McpTool
     @McpDescription("""
-        Deletes an MPS module by name. Returns JSON.
+        Deletes an MPS module by name or reference. Returns JSON.
         Params:
-          - moduleName: name of the module to delete
+          - moduleName: name or reference of the module to delete
           - deleteFiles: if true, attempts to delete module files from disk after removing from project
     """
     )
     suspend fun delete_MPS_module(
-        @McpDescription("Module name") moduleName: String,
+        @McpDescription("Module name or reference") moduleName: String,
         @McpDescription("Whether to delete files from disk as well") deleteFiles: Boolean
     ): String {
         currentCoroutineContext().reportToolActivity("Delete MPS module")
@@ -404,10 +452,14 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
             var removed: SModule? = null
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
-                    val m = mpsProject.projectModulesWithGenerators.find { it.moduleName == moduleName }
+                    val m = resolveModule(mpsProject, moduleName)
                     if (m != null) {
                         mpsProject.removeModule(m)
                         removed = m
+                        (removed as? AbstractModule)?.setChanged()
+                    }
+                    if (removed != null) {
+                        mpsProject.save()
                     }
                 }
             }

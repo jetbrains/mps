@@ -9,12 +9,14 @@
   <depends>com.intellij.modules.mps</depends>
 
   <extensions defaultExtensionNs="com.intellij">
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSSkillsMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSProjectMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSModuleMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSModelMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRootNodeMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSNodeMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSDocumentationMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSSkillsMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSStructureUtilMcpToolset" />
   </extensions>
 </idea-plugin>
